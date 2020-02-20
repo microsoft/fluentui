@@ -16,7 +16,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   ColorComponentProps,
-  rtlTextContainer,
+  rtlTextContainer
 } from '../../utils';
 
 import Icon, { IconProps } from '../Icon/Icon';
@@ -68,12 +68,12 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     styles,
     variables,
     image,
-    imagePosition,
+    imagePosition
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Label.displayName,
-    rtl: context.rtl,
+    rtl: context.rtl
   });
   const { classes, styles: resolvedStyles } = useStyles(Label.displayName, {
     className: Label.className,
@@ -82,16 +82,16 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
       hasImage: !!image,
       circular,
       color,
-      imagePosition,
+      imagePosition
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl,
+    rtl: context.rtl
   });
 
   const handleIconOverrides = (predefinedProps: IconProps) => ({
     ...(!predefinedProps.xSpacing && {
-      xSpacing: 'none',
-    }),
+      xSpacing: 'none'
+    })
   });
 
   const ElementType = getElementType(props);
@@ -103,7 +103,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
         {...getA11Props('root', {
           className: classes.root,
           ...rtlTextContainer.getAttributes({ forElements: [children] }),
-          ...unhandledProps,
+          ...unhandledProps
         })}
       >
         {children}
@@ -116,14 +116,14 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 
   const imageElement = Image.create(image, {
     defaultProps: () => ({
-      styles: resolvedStyles.image,
-    }),
+      styles: resolvedStyles.image
+    })
   });
   const iconElement = Icon.create(icon, {
     defaultProps: () => ({
-      styles: resolvedStyles.icon,
+      styles: resolvedStyles.icon
     }),
-    overrideProps: handleIconOverrides,
+    overrideProps: handleIconOverrides
   });
 
   const startImage = imagePosition === 'start' && imageElement;
@@ -138,7 +138,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
-        ...unhandledProps,
+        ...unhandledProps
       })}
     >
       <Layout
@@ -178,14 +178,14 @@ Label.propTypes = {
   iconPosition: PropTypes.oneOf(['start', 'end']),
   image: customPropTypes.itemShorthandWithoutJSX,
   imagePosition: PropTypes.oneOf(['start', 'end']),
-  fluid: PropTypes.bool,
+  fluid: PropTypes.bool
 };
 Label.handledProps = Object.keys(Label.propTypes) as any;
 
 Label.defaultProps = {
   as: 'span',
   imagePosition: 'start',
-  iconPosition: 'end',
+  iconPosition: 'end'
 };
 
 Label.create = createShorthandFactory({ Component: Label, mappedProp: 'content' });

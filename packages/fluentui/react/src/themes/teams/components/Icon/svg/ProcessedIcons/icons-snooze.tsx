@@ -1,7 +1,7 @@
-import * as React from 'react';
-import { TeamsSvgIconSpec } from '../types';
-import cx from 'classnames';
-import { teamsIconClassNames } from '../teamsIconClassNames';
+import * as React from 'react'
+import { TeamsSvgIconSpec } from '../types'
+import cx from 'classnames'
+import { teamsIconClassNames } from '../teamsIconClassNames'
 
 export default {
   icon: ({ classes }) => (
@@ -20,4 +20,4 @@ export default {
   ),
   styles: {},
   exportedAs: 'bell-snooze',
-} as TeamsSvgIconSpec;
+} as TeamsSvgIconSpec

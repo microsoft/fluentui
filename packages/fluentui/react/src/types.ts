@@ -109,7 +109,7 @@ type PickProps<T, Props extends string | number | symbol> = {
 };
 
 export const withSafeTypeForAs = <TComponentType extends React.ComponentType, TProps, TAs extends keyof JSX.IntrinsicElements = 'div'>(
-  componentType: TComponentType,
+  componentType: TComponentType
 ) => {
   /**
    * TODO: introduce overload once TS compiler issue that leads to
@@ -132,7 +132,7 @@ export type UNSAFE_TypedComponent<TComponentType, TProps> = React.FunctionCompon
 
 export const UNSAFE_typed = <TComponentType>(componentType: TComponentType) => {
   return {
-    withProps: <TProps>() => (componentType as any) as UNSAFE_TypedComponent<TComponentType, TProps>,
+    withProps: <TProps>() => (componentType as any) as UNSAFE_TypedComponent<TComponentType, TProps>
   };
 };
 

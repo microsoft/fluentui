@@ -1,9 +1,9 @@
-import { Accessibility, tableBehavior } from '@fluentui/accessibility';
-import { ReactAccessibilityBehavior } from '@fluentui/react-bindings';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PropTypes from 'prop-types';
-import * as _ from 'lodash';
-import * as React from 'react';
+import { Accessibility, tableBehavior } from '@fluentui/accessibility'
+import { ReactAccessibilityBehavior } from '@fluentui/react-bindings'
+import * as customPropTypes from '@fluentui/react-proptypes'
+import * as PropTypes from 'prop-types'
+import * as _ from 'lodash'
+import * as React from 'react'
 import {
   RenderResultConfig,
   UIComponentProps,
@@ -12,39 +12,39 @@ import {
   UIComponent,
   applyAccessibilityKeyHandlers,
   childrenExist,
-} from '../../utils';
-import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles';
-import TableRow, { TableRowProps } from './TableRow';
-import TableCell from './TableCell';
-import { WithAsProp, ShorthandCollection, ShorthandValue } from '../../types';
+} from '../../utils'
+import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles'
+import TableRow, { TableRowProps } from './TableRow'
+import TableCell from './TableCell'
+import { WithAsProp, ShorthandCollection, ShorthandValue } from '../../types'
 
 export interface TableSlotClassNames {
-  header: string;
+  header: string
 }
 
 export interface TableProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility
 
   /** The columns of the Table with a space-separated list of values.
    */
-  header?: ShorthandValue<TableRowProps>;
+  header?: ShorthandValue<TableRowProps>
 
   /** The rows of the Table with a space-separated list of values.
    */
-  rows?: ShorthandCollection<TableRowProps>;
+  rows?: ShorthandCollection<TableRowProps>
 
   /**
    * Render table in compact mode
    */
-  compact?: boolean;
+  compact?: boolean
 }
 
 const handleVariablesOverrides = variables => predefinedProps => ({
   variables: mergeComponentVariables(variables, predefinedProps.variables),
-});
+})
 
 /**
  * A Table is used to display data in tabular layout
@@ -64,15 +64,15 @@ const handleVariablesOverrides = variables => predefinedProps => ({
  * [aria-sort is not output at child elements](https://github.com/FreedomScientific/VFO-standards-support/issues/319)
  */
 class Table extends UIComponent<WithAsProp<TableProps>> {
-  static displayName = 'Table';
-  static className = 'ui-table';
+  static displayName = 'Table'
+  static className = 'ui-table'
 
-  static Cell = TableCell;
-  static Row = TableRow;
+  static Cell = TableCell
+  static Row = TableRow
 
   static slotClassNames: TableSlotClassNames = {
     header: `${Table.className}__header`,
-  };
+  }
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -80,52 +80,57 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
     }),
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
+      PropTypes.oneOfType([
+        PropTypes.arrayOf(customPropTypes.nodeContent),
+        customPropTypes.nodeContent,
+      ]),
     ]),
     header: customPropTypes.itemShorthand,
     rows: customPropTypes.collectionShorthand,
     compact: PropTypes.bool,
-  };
+  }
 
   static defaultProps = {
     as: 'div',
     accessibility: tableBehavior as Accessibility,
-  };
+  }
 
   renderRows(accessibility: ReactAccessibilityBehavior, variables: ComponentVariablesObject) {
-    const { rows, compact } = this.props;
+    const { rows, compact } = this.props
 
     return _.map(rows, (row: TableRowProps, index: number) => {
       const props = {
         compact,
         onClick: (e, props) => {
-          _.invoke(row, 'onClick', e, props);
+          _.invoke(row, 'onClick', e, props)
         },
-      } as TableRowProps;
-      const overrideProps = handleVariablesOverrides(variables);
+      } as TableRowProps
+      const overrideProps = handleVariablesOverrides(variables)
       return TableRow.create(row, {
         defaultProps: () => ({
           ...props,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined,
+          accessibility: accessibility.childBehaviors
+            ? accessibility.childBehaviors.row
+            : undefined,
         }),
         overrideProps,
-      });
-    });
+      })
+    })
   }
 
   renderHeader(accessibility: ReactAccessibilityBehavior, variables: ComponentVariablesObject) {
-    const { header, compact } = this.props;
+    const { header, compact } = this.props
     if (!header) {
-      return null;
+      return null
     }
 
     const headerRowProps = {
       header: true,
       compact,
       className: Table.slotClassNames.header,
-    } as TableRowProps;
+    } as TableRowProps
 
-    const overrideProps = handleVariablesOverrides(variables);
+    const overrideProps = handleVariablesOverrides(variables)
 
     return TableRow.create(header, {
       defaultProps: () => ({
@@ -133,12 +138,18 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
         accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined,
       }),
       overrideProps,
-    });
+    })
   }
 
-  renderComponent({ accessibility, ElementType, classes, variables, unhandledProps }: RenderResultConfig<any>): React.ReactNode {
-    const { children } = this.props;
-    const hasChildren = childrenExist(children);
+  renderComponent({
+    accessibility,
+    ElementType,
+    classes,
+    variables,
+    unhandledProps,
+  }: RenderResultConfig<any>): React.ReactNode {
+    const { children } = this.props
+    const hasChildren = childrenExist(children)
 
     return (
       <ElementType
@@ -155,8 +166,8 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
         {!hasChildren && this.renderRows(accessibility, variables)}
         {/* </tbody> */}
       </ElementType>
-    );
+    )
   }
 }
 
-export default Table;
+export default Table

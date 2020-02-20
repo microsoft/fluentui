@@ -1,10 +1,10 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { AttachmentProps } from '../../../../components/Attachment/Attachment';
-import { AttachmentVariables } from './attachmentVariables';
-import { pxToRem } from '../../../../utils';
-import Icon from '../../../../components/Icon/Icon';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { AttachmentProps } from '../../../../components/Attachment/Attachment'
+import { AttachmentVariables } from './attachmentVariables'
+import { pxToRem } from '../../../../utils'
+import Icon from '../../../../components/Icon/Icon'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -61,11 +61,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
   }),
 
   action: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
+    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false })
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
       borderRadius: v.borderRadius,
-    });
+    })
 
     return {
       [`& .${Icon.className}`]: {
@@ -84,7 +84,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
         ...iconFilledStyles,
         ...borderFocusStyles[':focus-visible'],
       },
-    };
+    }
   },
 
   progress: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -98,6 +98,6 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
     height: pxToRem(v.progressHeight),
     background: v.progressColor,
   }),
-};
+}
 
-export default attachmentStyles;
+export default attachmentStyles

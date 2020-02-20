@@ -1,9 +1,9 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
-import { getColorScheme } from '../../colors';
+import { ICSSInJSStyle } from '@fluentui/styles'
+import { getColorScheme } from '../../colors'
 
 const toolbarMenuStyles = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme);
+    const colors = getColorScheme(v.colorScheme)
 
     return {
       display: 'flex',
@@ -19,8 +19,8 @@ const toolbarMenuStyles = {
       borderRadius: v.menuBorderRadius,
       width: v.menuWidth,
       zIndex: v.overlayZIndex,
-    };
+    }
   },
-};
+}
 
-export default toolbarMenuStyles;
+export default toolbarMenuStyles

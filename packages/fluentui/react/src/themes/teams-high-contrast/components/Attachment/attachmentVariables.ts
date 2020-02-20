@@ -1,4 +1,4 @@
-import { AttachmentVariables } from '../../../teams/components/Attachment/attachmentVariables';
+import { AttachmentVariables } from '../../../teams/components/Attachment/attachmentVariables'
 
 export default (siteVariables: any): Partial<AttachmentVariables> => ({
   borderColor: siteVariables.colors.white,
@@ -9,4 +9,4 @@ export default (siteVariables: any): Partial<AttachmentVariables> => ({
   boxShadow: undefined,
   progressColor: siteVariables.accessibleGreen,
   progressHeight: 6,
-});
+})

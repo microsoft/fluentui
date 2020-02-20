@@ -1,18 +1,18 @@
-import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
+import { isConformant, handlesAccessibility } from 'test/specs/commonTests'
 
-import ToolbarRadioGroup from 'src/components/Toolbar/ToolbarRadioGroup';
-import { ReactWrapper } from 'enzyme';
-import { mountWithProvider } from 'test/utils';
-import * as React from 'react';
+import ToolbarRadioGroup from 'src/components/Toolbar/ToolbarRadioGroup'
+import { ReactWrapper } from 'enzyme'
+import { mountWithProvider } from 'test/utils'
+import * as React from 'react'
 
 describe('ToolbarRadioGroup', () => {
-  isConformant(ToolbarRadioGroup);
+  isConformant(ToolbarRadioGroup)
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarRadioGroup, {
       defaultRootRole: 'radiogroup',
-    });
-  });
+    })
+  })
 
   describe('variables', () => {
     function checkMergedVariables(toolbarRadioGroup: ReactWrapper): void {
@@ -21,7 +21,7 @@ describe('ToolbarRadioGroup', () => {
           .find('ToolbarItem')
           .first()
           .prop('variables') as Function)(),
-      ).toEqual(expect.objectContaining({ a: 'toolbarRadioGroup', b: 'overwritten', c: 'item' }));
+      ).toEqual(expect.objectContaining({ a: 'toolbarRadioGroup', b: 'overwritten', c: 'item' }))
 
       expect(
         (toolbarRadioGroup
@@ -34,7 +34,7 @@ describe('ToolbarRadioGroup', () => {
           b: 'overwrittenInDivider',
           c: 'divider',
         }),
-      );
+      )
     }
 
     it('are passed from Toolbar to all kinds of children and correctly merged', () => {
@@ -50,10 +50,10 @@ describe('ToolbarRadioGroup', () => {
             },
           ]}
         />,
-      );
+      )
 
-      checkMergedVariables(toolbarRadioGroup);
-    });
+      checkMergedVariables(toolbarRadioGroup)
+    })
 
     it('as functions are passed from Toolbar to all kinds of children and correctly merged', () => {
       const toolbarRadioGroup = mountWithProvider(
@@ -68,15 +68,15 @@ describe('ToolbarRadioGroup', () => {
             },
           ]}
         />,
-      );
+      )
 
-      checkMergedVariables(toolbarRadioGroup);
-    });
-  });
+      checkMergedVariables(toolbarRadioGroup)
+    })
+  })
 
   describe('allows cycling between items using UP/DOWN arrow keys', () => {
-    const arrowUp = 38;
-    const arrowDown = 40;
+    const arrowUp = 38
+    const arrowDown = 40
 
     const getShorthandItems = (props?: { disabledItem?: number; focusedItem?: number }) => [
       {
@@ -94,31 +94,51 @@ describe('ToolbarRadioGroup', () => {
         tabIndex: props && props.focusedItem === 2 ? 0 : -1,
         disabled: props && props.disabledItem === 2,
       },
-    ];
+    ]
 
     const testKeyDown = (testName, items, keyCode, expectedFocusedIndex) => {
       it(`keyDown test - ${testName}`, () => {
-        const radioButtons = mountWithProvider(<ToolbarRadioGroup items={items} />).find('button');
+        const radioButtons = mountWithProvider(<ToolbarRadioGroup items={items} />).find('button')
 
-        const expectedActiveElement = radioButtons.at(expectedFocusedIndex).getDOMNode();
+        const expectedActiveElement = radioButtons.at(expectedFocusedIndex).getDOMNode()
 
-        expect(document.activeElement).not.toBe(expectedActiveElement);
+        expect(document.activeElement).not.toBe(expectedActiveElement)
 
-        radioButtons.first().simulate('keyDown', { preventDefault() {}, keyCode, which: keyCode });
+        radioButtons.first().simulate('keyDown', { preventDefault() {}, keyCode, which: keyCode })
 
-        expect(document.activeElement).toBe(expectedActiveElement);
-      });
-    };
+        expect(document.activeElement).toBe(expectedActiveElement)
+      })
+    }
 
-    testKeyDown('should move focus to next, second item', getShorthandItems({ focusedItem: 0 }), arrowDown, 1);
-    testKeyDown('should move focus to next, third item', getShorthandItems({ focusedItem: 1 }), arrowDown, 2);
-    testKeyDown('should move focus to previous, first item', getShorthandItems({ focusedItem: 1 }), arrowUp, 0);
+    testKeyDown(
+      'should move focus to next, second item',
+      getShorthandItems({ focusedItem: 0 }),
+      arrowDown,
+      1,
+    )
+    testKeyDown(
+      'should move focus to next, third item',
+      getShorthandItems({ focusedItem: 1 }),
+      arrowDown,
+      2,
+    )
+    testKeyDown(
+      'should move focus to previous, first item',
+      getShorthandItems({ focusedItem: 1 }),
+      arrowUp,
+      0,
+    )
     testKeyDown(
       'should move focus to first item when the focused item is the last one',
       getShorthandItems({ focusedItem: 2 }),
       arrowDown,
       0,
-    );
-    testKeyDown('should move focus to last item when the focused item is the first one', getShorthandItems({ focusedItem: 0 }), arrowUp, 2);
-  });
-});
+    )
+    testKeyDown(
+      'should move focus to last item when the focused item is the first one',
+      getShorthandItems({ focusedItem: 0 }),
+      arrowUp,
+      2,
+    )
+  })
+})

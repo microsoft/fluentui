@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { Toolbar, Input, Button, Form } from '@fluentui/react';
-import { useBooleanKnob } from '@fluentui/docs-components';
+import * as React from 'react'
+import { Toolbar, Input, Button, Form } from '@fluentui/react'
+import { useBooleanKnob } from '@fluentui/docs-components'
 
 const fields = [
   {
@@ -35,40 +35,40 @@ const fields = [
     },
     key: 'submit',
   },
-];
+]
 
 const HighlightPopup = ({ onConfirm }) => {
-  return <Form onSubmit={onConfirm} fields={fields} />;
-};
+  return <Form onSubmit={onConfirm} fields={fields} />
+}
 
 const ToolbarExampleShorthand = () => {
-  const [isBold, setBold] = useBooleanKnob({ name: 'bold', initialValue: true });
-  const [isItalic, setItalic] = useBooleanKnob({ name: 'isItalic', initialValue: false });
-  const [isUnderline, setUnderline] = useBooleanKnob({ name: 'isUnderline', initialValue: false });
-  const [isStrike, setStrike] = useBooleanKnob({ name: 'isStrike', initialValue: false });
+  const [isBold, setBold] = useBooleanKnob({ name: 'bold', initialValue: true })
+  const [isItalic, setItalic] = useBooleanKnob({ name: 'isItalic', initialValue: false })
+  const [isUnderline, setUnderline] = useBooleanKnob({ name: 'isUnderline', initialValue: false })
+  const [isStrike, setStrike] = useBooleanKnob({ name: 'isStrike', initialValue: false })
 
   const [highlightOpen, setHighlightOpen] = useBooleanKnob({
     name: 'highlightOpen',
     initialValue: false,
-  });
+  })
   const [fontColorActive, setFontColorActive] = useBooleanKnob({
     name: 'fontColorActive',
     initialValue: false,
-  });
+  })
 
   const [moreMenuOpen, setMoreMenuOpen] = useBooleanKnob({
     name: 'moreMenuOpen',
     initialValue: false,
-  });
+  })
 
-  const [log, setLog] = React.useState<string[]>([]);
+  const [log, setLog] = React.useState<string[]>([])
   const writeLog = message => {
-    setLog(prevLog => [`${new Date().toLocaleTimeString()}: ${message}`, ...prevLog]);
-  };
+    setLog(prevLog => [`${new Date().toLocaleTimeString()}: ${message}`, ...prevLog])
+  }
 
-  const [bulletListActive, setBulletListActive] = React.useState(false);
-  const [numberListActive, setNumberListActive] = React.useState(false);
-  const [toDoListActive, setToDoListActive] = React.useState(false);
+  const [bulletListActive, setBulletListActive] = React.useState(false)
+  const [numberListActive, setNumberListActive] = React.useState(false)
+  const [toDoListActive, setToDoListActive] = React.useState(false)
 
   return (
     <>
@@ -82,7 +82,7 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'bold', outline: true },
             title: 'Toggle bold',
             onClick: () => {
-              setBold(!isBold);
+              setBold(!isBold)
             },
           },
           {
@@ -92,7 +92,7 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'italic', outline: true },
             title: 'Toggle italic',
             onClick: () => {
-              setItalic(!isItalic);
+              setItalic(!isItalic)
             },
           },
           {
@@ -102,7 +102,7 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'underline', outline: true },
             title: 'Toggle underline',
             onClick: () => {
-              setUnderline(!isUnderline);
+              setUnderline(!isUnderline)
             },
           },
           {
@@ -113,7 +113,7 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'strike', outline: true },
             title: 'Toggle strike',
             onClick: () => {
-              setStrike(!isStrike);
+              setStrike(!isStrike)
             },
           },
           { key: 'divider1', kind: 'divider' },
@@ -126,12 +126,12 @@ const ToolbarExampleShorthand = () => {
               content: (
                 <HighlightPopup
                   onConfirm={() => {
-                    setHighlightOpen(false);
+                    setHighlightOpen(false)
                   }}
                 />
               ),
               onOpenChange: (e, { open }) => {
-                setHighlightOpen(open);
+                setHighlightOpen(open)
               },
               open: highlightOpen,
             },
@@ -144,7 +144,7 @@ const ToolbarExampleShorthand = () => {
             popup: {
               content: <Input icon="search" placeholder="Search..." />,
               onOpenChange: () => {
-                setFontColorActive(!fontColorActive);
+                setFontColorActive(!fontColorActive)
               },
             },
           },
@@ -165,11 +165,11 @@ const ToolbarExampleShorthand = () => {
                 active: bulletListActive,
                 title: 'Bullets',
                 onClick: () => {
-                  setBulletListActive(!bulletListActive);
+                  setBulletListActive(!bulletListActive)
 
                   // deselect other radio items
-                  setNumberListActive(false);
-                  setToDoListActive(false);
+                  setNumberListActive(false)
+                  setToDoListActive(false)
                 },
               },
               {
@@ -178,11 +178,11 @@ const ToolbarExampleShorthand = () => {
                 active: numberListActive,
                 title: 'Number list',
                 onClick: () => {
-                  setNumberListActive(!numberListActive);
+                  setNumberListActive(!numberListActive)
 
                   // deselect other radio items
-                  setBulletListActive(false);
-                  setToDoListActive(false);
+                  setBulletListActive(false)
+                  setToDoListActive(false)
                 },
               },
               {
@@ -191,11 +191,11 @@ const ToolbarExampleShorthand = () => {
                 active: toDoListActive,
                 title: 'ToDo list',
                 onClick: () => {
-                  setToDoListActive(!toDoListActive);
+                  setToDoListActive(!toDoListActive)
 
                   // deselect other radio items
-                  setBulletListActive(false);
-                  setNumberListActive(false);
+                  setBulletListActive(false)
+                  setNumberListActive(false)
                 },
               },
             ],
@@ -214,7 +214,7 @@ const ToolbarExampleShorthand = () => {
                 content: 'Quote',
                 icon: 'quote',
                 onClick: () => {
-                  writeLog('... -> Quote');
+                  writeLog('... -> Quote')
                 },
               },
               {
@@ -222,7 +222,7 @@ const ToolbarExampleShorthand = () => {
                 icon: 'link',
                 disabled: true,
                 onClick: () => {
-                  writeLog('SHOULD NOT BE CALLED, ITEM IS DISABLED... -> Link');
+                  writeLog('SHOULD NOT BE CALLED, ITEM IS DISABLED... -> Link')
                 },
               },
               {
@@ -233,8 +233,8 @@ const ToolbarExampleShorthand = () => {
             ],
             menuOpen: moreMenuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              writeLog(`setting menu to ${menuOpen ? 'open' : 'close'}`);
-              setMoreMenuOpen(menuOpen);
+              writeLog(`setting menu to ${menuOpen ? 'open' : 'close'}`)
+              setMoreMenuOpen(menuOpen)
             },
           },
         ]}
@@ -247,7 +247,7 @@ const ToolbarExampleShorthand = () => {
         ))}
       </pre>
     </>
-  );
-};
+  )
+}
 
-export default ToolbarExampleShorthand;
+export default ToolbarExampleShorthand

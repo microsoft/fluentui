@@ -18,7 +18,7 @@ const useLogKnob = <T = (...args: any[]) => any>(name: string, callback?: T, for
 
       return null;
     },
-    [appendLog, callback, name, formatter],
+    [appendLog, callback, name, formatter]
   );
 
   return proxy as T;

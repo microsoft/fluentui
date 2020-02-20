@@ -1,6 +1,11 @@
-import * as React from 'react';
-import { KnobComponentProps, KnobComponents, KnobRangeKnobComponentProps, LogInspectorProps } from './types';
-import parseValue from './utils/parseRangeValue';
+import * as React from 'react'
+import {
+  KnobComponentProps,
+  KnobComponents,
+  KnobRangeKnobComponentProps,
+  LogInspectorProps,
+} from './types'
+import parseValue from './utils/parseRangeValue'
 
 const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
   <div
@@ -14,41 +19,41 @@ const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
   >
     {props.children}
   </div>
-);
+)
 
 const KnobControl: React.FunctionComponent<KnobComponentProps> = props => (
   <span style={{ verticalAlign: 'middle', width: '150px' }}>{props.children}</span>
-);
+)
 
 const KnobLabel: React.FunctionComponent<KnobComponentProps> = props => (
   <span style={{ marginRight: 5 }}>{props.content || <code>{props.name}</code>}</span>
-);
+)
 
 const KnobBoolean: React.FunctionComponent<KnobComponentProps> = props => (
   <input
     checked={props.value}
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setValue(e.target.checked);
+      props.setValue(e.target.checked)
     }}
     type="checkbox"
     value={props.value}
   />
-);
+)
 
 const KnobNumber: React.FunctionComponent<KnobComponentProps> = props => (
   <input
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setValue(parseInt(e.target.value, 10));
+      props.setValue(parseInt(e.target.value, 10))
     }}
     type="number"
     value={props.value}
   />
-);
+)
 
 const KnobSelect: React.FunctionComponent<KnobComponentProps> = props => (
   <select
     onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
-      props.setValue(e.target.value);
+      props.setValue(e.target.value)
     }}
     value={props.value}
   >
@@ -59,7 +64,7 @@ const KnobSelect: React.FunctionComponent<KnobComponentProps> = props => (
         </option>
       ))}
   </select>
-);
+)
 
 const KnobRange: React.FunctionComponent<KnobRangeKnobComponentProps> = props => (
   <input
@@ -69,20 +74,20 @@ const KnobRange: React.FunctionComponent<KnobRangeKnobComponentProps> = props =>
     step={props.step}
     value={parseValue(props.value)}
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setValue(`${e.target.value}${props.unit}`);
+      props.setValue(`${e.target.value}${props.unit}`)
     }}
     style={{ width: '100%' }}
   />
-);
+)
 
 const KnobString: React.FunctionComponent<KnobComponentProps> = props => (
   <input
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setValue(e.target.value);
+      props.setValue(e.target.value)
     }}
     value={props.value}
   />
-);
+)
 
 const LogInspector: React.FunctionComponent<LogInspectorProps> = props => (
   <>
@@ -124,7 +129,7 @@ const LogInspector: React.FunctionComponent<LogInspectorProps> = props => (
       </div>
     )}
   </>
-);
+)
 
 const defaultComponents: KnobComponents = {
   KnobControl,
@@ -138,6 +143,6 @@ const defaultComponents: KnobComponents = {
   KnobString,
 
   LogInspector,
-};
+}
 
-export default defaultComponents;
+export default defaultComponents

@@ -35,10 +35,10 @@ const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
   disableAnimations: false,
   performance: {
     enableStylesCaching: true,
-    enableVariablesCaching: true,
+    enableVariablesCaching: true
   },
   renderer: { renderRule: () => '' },
-  theme: emptyTheme,
+  theme: emptyTheme
 };
 
 const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, options: UseStylesOptions<StyleProps>): UseStylesResult => {
@@ -50,7 +50,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
     mapPropsToStyles = () => ({} as StyleProps),
     mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),
-    rtl = false,
+    rtl = false
   } = options;
 
   // Stores debug information for component.
@@ -61,7 +61,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
     displayName,
     props: {
       ...mapPropsToStyles(),
-      ...mapPropsToInlineStyles(),
+      ...mapPropsToInlineStyles()
     },
 
     // Context values
@@ -72,8 +72,8 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
     theme: context.theme,
     performance: {
       enableStylesCaching,
-      enableVariablesCaching,
-    },
+      enableVariablesCaching
+    }
   });
 
   return { classes, styles: resolvedStyles };

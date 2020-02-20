@@ -1,20 +1,24 @@
-import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react';
+import * as React from 'react'
+import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react'
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: { color: 'green', icon: 'icon-checkmark' },
-};
+}
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
-    message: <Chat.Message content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+    message: (
+      <Chat.Message content="Hello" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />
+    ),
     contentPosition: 'end',
     attached: 'top',
     key: 'message-id-1',
   },
   {
-    message: <Chat.Message content="I'm back!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+    message: (
+      <Chat.Message content="I'm back!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />
+    ),
     contentPosition: 'end',
     attached: true,
     key: 'message-id-2',
@@ -46,7 +50,9 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     gutter: <Avatar {...janeAvatar} />,
-    message: <Chat.Message content="Looks good!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    message: (
+      <Chat.Message content="Looks good!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />
+    ),
     attached: true,
     key: 'message-id-5',
   },
@@ -67,13 +73,26 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-6',
   },
   {
-    message: <Chat.Message content="Would you like to grab lunch there?" author="John Doe" timestamp="Yesterday, 10:16 PM" mine />,
+    message: (
+      <Chat.Message
+        content="Would you like to grab lunch there?"
+        author="John Doe"
+        timestamp="Yesterday, 10:16 PM"
+        mine
+      />
+    ),
     contentPosition: 'end',
     key: 'message-id-7',
   },
   {
     gutter: <Avatar {...janeAvatar} />,
-    message: <Chat.Message content="Sure! Let's try it." author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+    message: (
+      <Chat.Message
+        content="Sure! Let's try it."
+        author="Jane Doe"
+        timestamp="Yesterday, 10:15 PM"
+      />
+    ),
     key: 'message-id-8',
   },
   {
@@ -81,12 +100,14 @@ const items: ShorthandCollection<ChatItemProps> = [
     key: 'message-id-9',
   },
   {
-    message: <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />,
+    message: (
+      <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />
+    ),
     contentPosition: 'end',
     key: 'message-id-10',
   },
-];
+]
 
-const ChatExample = () => <Chat items={items} />;
+const ChatExample = () => <Chat items={items} />
 
-export default ChatExample;
+export default ChatExample

@@ -14,7 +14,7 @@ import {
   ShorthandCollection,
   ReactChildren,
   ProviderContextPrepared,
-  FluentComponentStaticProps,
+  FluentComponentStaticProps
 } from '../../types';
 import {
   childrenExist,
@@ -22,7 +22,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  createShorthandFactory,
+  createShorthandFactory
 } from '../../utils';
 import { ListContextProvider, ListContextValue } from './listContext';
 import ListItem, { ListItemProps } from './ListItem';
@@ -92,28 +92,28 @@ const List: React.FC<WithAsProp<ListProps>> &
     truncateContent,
     truncateHeader,
     variables,
-    wrap,
+    wrap
   } = props;
 
   const [selectedIndex, setSelectedIndex] = useAutoControlled({
     defaultValue: props.defaultSelectedIndex,
     value: props.selectedIndex,
-    initialValue: -1,
+    initialValue: -1
   });
   const getA11Props = useAccessibility(accessibility, {
     debugName: List.displayName,
     mapPropsToBehavior: () => ({
       horizontal,
       navigable,
-      selectable,
+      selectable
     }),
-    rtl: context.rtl,
+    rtl: context.rtl
   });
   const { classes } = useStyles(List.displayName, {
     className: List.className,
     mapPropsToStyles: () => ({ isListTag: as === 'ol' || as === 'ul', debug, horizontal }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl,
+    rtl: context.rtl
   });
 
   const latestProps = React.useRef<ListProps>(props);
@@ -129,11 +129,11 @@ const List: React.FC<WithAsProp<ListProps>> &
         setSelectedIndex(itemIndex);
         _.invoke(latestProps.current, 'onSelectedIndexChange', e, {
           ...latestProps.current,
-          selectedIndex: itemIndex,
+          selectedIndex: itemIndex
         });
       }
     },
-    [latestProps, setSelectedIndex],
+    [latestProps, setSelectedIndex]
   );
 
   const childProps: ListContextValue = {
@@ -144,7 +144,7 @@ const List: React.FC<WithAsProp<ListProps>> &
     selectedIndex,
     truncateContent,
     truncateHeader,
-    variables,
+    variables
   };
   const renderItems = () => _.map(items, (item, index) => ListItem.create(item, { defaultProps: () => ({ index }) }));
 
@@ -153,11 +153,11 @@ const List: React.FC<WithAsProp<ListProps>> &
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
-        ...unhandledProps,
+        ...unhandledProps
       })}
     >
       <ListContextProvider value={childProps}>{hasContent && wrap(childrenExist(children) ? children : renderItems())}</ListContextProvider>
-    </ElementType>,
+    </ElementType>
   );
   setEnd();
 
@@ -170,11 +170,11 @@ List.displayName = 'List';
 List.defaultProps = {
   as: 'ul',
   accessibility: listBehavior,
-  wrap: children => children,
+  wrap: children => children
 };
 List.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false,
+    content: false
   }),
   debug: PropTypes.bool,
   items: customPropTypes.collectionShorthand,
@@ -186,7 +186,7 @@ List.propTypes = {
   defaultSelectedIndex: PropTypes.number,
   onSelectedIndexChange: PropTypes.func,
   horizontal: PropTypes.bool,
-  wrap: PropTypes.func,
+  wrap: PropTypes.func
 };
 
 List.handledProps = Object.keys(List.propTypes) as any;

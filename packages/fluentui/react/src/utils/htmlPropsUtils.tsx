@@ -1,6 +1,6 @@
-import * as _ from 'lodash';
+import * as _ from 'lodash'
 
-export const htmlImageProps = ['alt', 'height', 'src', 'srcSet', 'width'];
+export const htmlImageProps = ['alt', 'height', 'src', 'srcSet', 'width']
 
 export type HtmlInputEvents =
   // keyboard
@@ -40,7 +40,7 @@ export type HtmlInputEvents =
   | 'onTouchCancel'
   | 'onTouchEnd'
   | 'onTouchMove'
-  | 'onTouchStart';
+  | 'onTouchStart'
 
 export type HtmlInputAttrs =
   // REACT |
@@ -71,11 +71,13 @@ export type HtmlInputAttrs =
   | 'required'
   | 'step'
   | 'type'
-  | 'value';
+  | 'value'
 
 export type SupportedIntrinsicInputProps = {
-  [K in HtmlInputProps]?: K extends keyof JSX.IntrinsicElements['input'] ? JSX.IntrinsicElements['input'][K] : any;
-};
+  [K in HtmlInputProps]?: K extends keyof JSX.IntrinsicElements['input']
+    ? JSX.IntrinsicElements['input'][K]
+    : any
+}
 
 export const htmlInputAttrs: HtmlInputAttrs[] = [
   // REACT
@@ -107,9 +109,9 @@ export const htmlInputAttrs: HtmlInputAttrs[] = [
   'step',
   'type',
   'value',
-];
+]
 
-export type HtmlInputProps = HtmlInputAttrs | HtmlInputEvents;
+export type HtmlInputProps = HtmlInputAttrs | HtmlInputEvents
 
 export const htmlInputEvents: HtmlInputEvents[] = [
   // EVENTS
@@ -153,15 +155,15 @@ export const htmlInputEvents: HtmlInputEvents[] = [
   'onTouchEnd',
   'onTouchMove',
   'onTouchStart',
-];
+]
 
-export const htmlInputProps: HtmlInputProps[] = [...htmlInputAttrs, ...htmlInputEvents];
+export const htmlInputProps: HtmlInputProps[] = [...htmlInputAttrs, ...htmlInputEvents]
 
 export interface PartitionHTMLPropsOptions {
   /** An array of html input props */
-  htmlProps?: HtmlInputProps[];
+  htmlProps?: HtmlInputProps[]
   /** Includes all input props that starts with "aria-" */
-  includeAria?: boolean;
+  includeAria?: boolean
 }
 
 /**
@@ -174,15 +176,15 @@ export const partitionHTMLProps = (
   props: { [key: string]: any },
   options: PartitionHTMLPropsOptions = {},
 ): [{ [key: string]: any }, { [key: string]: any }] => {
-  const { htmlProps = htmlInputProps, includeAria = true } = options;
-  const inputProps = {};
-  const restProps = {};
+  const { htmlProps = htmlInputProps, includeAria = true } = options
+  const inputProps = {}
+  const restProps = {}
 
   _.forEach(props, (val, prop) => {
-    const possibleAria = includeAria && (/^aria-.*$/.test(prop) || prop === 'role');
-    const target = _.includes(htmlProps, prop) || possibleAria ? inputProps : restProps;
-    target[prop] = val;
-  });
+    const possibleAria = includeAria && (/^aria-.*$/.test(prop) || prop === 'role')
+    const target = _.includes(htmlProps, prop) || possibleAria ? inputProps : restProps
+    target[prop] = val
+  })
 
-  return [inputProps, restProps];
-};
+  return [inputProps, restProps]
+}

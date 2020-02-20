@@ -1,12 +1,12 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { pxToRem } from '../../../../utils';
-import Embed, { EmbedProps, EmbedState } from '../../../../components/Embed/Embed';
-import { EmbedVariables } from './embedVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { pxToRem } from '../../../../utils'
+import Embed, { EmbedProps, EmbedState } from '../../../../components/Embed/Embed'
+import { EmbedVariables } from './embedVariables'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
 
 export default {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const borderFocusStyles = getBorderFocusStyles({ siteVariables });
+    const borderFocusStyles = getBorderFocusStyles({ siteVariables })
 
     return {
       display: 'inline-block',
@@ -32,7 +32,7 @@ export default {
           zIndex: v.zIndex,
         },
       },
-    };
+    }
   },
   control: ({ props: p, variables: v }): ICSSInJSStyle => ({
     background: `0 no-repeat ${v.controlBackgroundColor}`,
@@ -52,4 +52,4 @@ export default {
     display: 'block',
     ...(!p.iframeLoaded && { display: 'none' }),
   }),
-} as ComponentSlotStylesPrepared<EmbedProps & EmbedState, EmbedVariables>;
+} as ComponentSlotStylesPrepared<EmbedProps & EmbedState, EmbedVariables>

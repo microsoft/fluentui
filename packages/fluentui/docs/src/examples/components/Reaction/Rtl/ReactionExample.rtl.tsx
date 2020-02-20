@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Reaction } from '@fluentui/react';
+import * as React from 'react'
+import { Reaction } from '@fluentui/react'
 
 const ReactionGroupExampleRtl = () => (
   <Reaction.Group
@@ -8,6 +8,6 @@ const ReactionGroupExampleRtl = () => (
       { icon: 'emoji', content: '10 ابتسامة', key: 'smile' },
     ]}
   />
-);
+)
 
-export default ReactionGroupExampleRtl;
+export default ReactionGroupExampleRtl

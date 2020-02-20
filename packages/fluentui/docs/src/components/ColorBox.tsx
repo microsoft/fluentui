@@ -1,34 +1,40 @@
-import { CopyToClipboard } from '@fluentui/docs-components';
-import { ComponentSlotStylesInput, ComponentSlotStyle, createComponent, Icon, ICSSInJSStyle } from '@fluentui/react';
-import * as Color from 'color';
-import * as _ from 'lodash';
-import * as React from 'react';
+import { CopyToClipboard } from '@fluentui/docs-components'
+import {
+  ComponentSlotStylesInput,
+  ComponentSlotStyle,
+  createComponent,
+  Icon,
+  ICSSInJSStyle,
+} from '@fluentui/react'
+import * as Color from 'color'
+import * as _ from 'lodash'
+import * as React from 'react'
 
 type ColorBoxProps = {
-  children?: React.ReactNode;
-  name?: string;
-  copyToClipboardIcon?: boolean;
-  rounded?: boolean;
-  size?: 'small' | 'normal' | 'big';
-  value: string;
-  showColorValue?: boolean;
-  styles?: ComponentSlotStyle;
-};
+  children?: React.ReactNode
+  name?: string
+  copyToClipboardIcon?: boolean
+  rounded?: boolean
+  size?: 'small' | 'normal' | 'big'
+  value: string
+  showColorValue?: boolean
+  styles?: ComponentSlotStyle
+}
 
 type ColorBoxVariables = {
-  colorBlack: string;
-  colorWhite: string;
+  colorBlack: string
+  colorWhite: string
   fontSize: {
-    big: string;
-    normal: string;
-    small: string;
-  };
+    big: string
+    normal: string
+    small: string
+  }
   padding: {
-    big: string;
-    normal: string;
-    small: string;
-  };
-};
+    big: string
+    normal: string
+    small: string
+  }
+}
 
 export const colorBoxVariables = (siteVariables): ColorBoxVariables => ({
   colorBlack: siteVariables.colors.black,
@@ -43,7 +49,7 @@ export const colorBoxVariables = (siteVariables): ColorBoxVariables => ({
     small: '.75rem',
     normal: '2.5rem .75rem .75rem .75rem',
   },
-});
+})
 
 export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -79,7 +85,7 @@ export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVar
       cursor: 'pointer',
     },
   },
-};
+}
 
 const ColorBox = createComponent<ColorBoxProps>({
   displayName: 'ColorBox',
@@ -100,16 +106,18 @@ const ColorBox = createComponent<ColorBoxProps>({
             )}
           </CopyToClipboard>
         )}
-        {!copyToClipboardIcon && showColorValue && <span className={classes.value}>{value || 'Not defined'}</span>}
+        {!copyToClipboardIcon && showColorValue && (
+          <span className={classes.value}>{value || 'Not defined'}</span>
+        )}
       </div>
     </div>
   ),
-});
+})
 
 ColorBox.defaultProps = {
   size: 'normal',
   copyToClipboardIcon: true,
   showColorValue: true,
-};
+}
 
-export default ColorBox;
+export default ColorBox

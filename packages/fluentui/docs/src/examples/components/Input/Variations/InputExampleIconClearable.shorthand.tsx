@@ -1,6 +1,8 @@
-import * as React from 'react';
-import { Input } from '@fluentui/react';
+import * as React from 'react'
+import { Input } from '@fluentui/react'
 
-const InputExampleIconClearableShorthand = () => <Input icon="search" clearable placeholder="Search..." />;
+const InputExampleIconClearableShorthand = () => (
+  <Input icon="search" clearable placeholder="Search..." />
+)
 
-export default InputExampleIconClearableShorthand;
+export default InputExampleIconClearableShorthand

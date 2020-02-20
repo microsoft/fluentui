@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types';
+import { Accessibility } from '../../types'
 
 /**
  * @description
@@ -12,6 +12,6 @@ const toolbarRadioGroupBehavior: Accessibility = () => ({
       role: 'group',
     },
   },
-});
+})
 
-export default toolbarRadioGroupBehavior;
+export default toolbarRadioGroupBehavior

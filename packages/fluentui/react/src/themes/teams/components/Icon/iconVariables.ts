@@ -1,33 +1,33 @@
-import { pxToRem, stringLiteralsArray } from '../../../../utils';
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
-import { pickValuesFromColorScheme } from '../../../colorUtils';
+import { pxToRem, stringLiteralsArray } from '../../../../utils'
+import { ItemType } from '../../../types'
+import { TeamsSchemeMappingWithAreas } from '../../types'
+import { pickValuesFromColorScheme } from '../../../colorUtils'
 
-export type IconSizeModifier = 'x' | 'xx';
-export const iconColorAreas = stringLiteralsArray('foreground');
-export type IconColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof iconColorAreas>>;
+export type IconSizeModifier = 'x' | 'xx'
+export const iconColorAreas = stringLiteralsArray('foreground')
+export type IconColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof iconColorAreas>>
 
 export interface IconVariables {
-  color: string;
-  borderColor: string;
-  backgroundColor: string;
-  disabledColor: string;
-  horizontalSpace: string;
+  color: string
+  borderColor: string
+  backgroundColor: string
+  disabledColor: string
+  horizontalSpace: string
 
-  smallestSize: string;
-  smallerSize: string;
-  smallSize: string;
-  mediumSize: string;
-  largeSize: string;
-  largerSize: string;
-  largestSize: string;
+  smallestSize: string
+  smallerSize: string
+  smallSize: string
+  mediumSize: string
+  largeSize: string
+  largerSize: string
+  largestSize: string
 
-  colorScheme: IconColorSchemeMapping;
-  brandColor: string;
-  secondaryColor: string;
-  redColor: string;
+  colorScheme: IconColorSchemeMapping
+  brandColor: string
+  secondaryColor: string
+  redColor: string
 
-  sizeModifier?: IconSizeModifier;
+  sizeModifier?: IconSizeModifier
 }
 
 export default (siteVars): Partial<IconVariables> => ({
@@ -49,4 +49,4 @@ export default (siteVars): Partial<IconVariables> => ({
   largestSize: pxToRem(40),
 
   horizontalSpace: pxToRem(10),
-});
+})

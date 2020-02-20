@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Animation, Icon, Provider } from '@fluentui/react';
+import * as React from 'react'
+import { Animation, Icon, Provider } from '@fluentui/react'
 
 const spinner = {
   keyframe: {
@@ -12,7 +12,7 @@ const spinner = {
   },
   duration: '5s',
   iterationCount: 'infinite',
-};
+}
 
 const AnimationExampleDelay = () => (
   <div>
@@ -24,6 +24,6 @@ const AnimationExampleDelay = () => (
       </Animation>
     </Provider>
   </div>
-);
+)
 
-export default AnimationExampleDelay;
+export default AnimationExampleDelay

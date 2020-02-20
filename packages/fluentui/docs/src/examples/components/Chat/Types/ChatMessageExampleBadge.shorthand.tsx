@@ -1,10 +1,10 @@
-import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react';
+import * as React from 'react'
+import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react'
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: { color: 'green', icon: 'icon-checkmark' },
-};
+}
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
@@ -40,8 +40,8 @@ const items: ShorthandCollection<ChatItemProps> = [
     attached: 'top',
     key: 'message-id-2',
   },
-];
+]
 
-const ChatExample = () => <Chat items={items} />;
+const ChatExample = () => <Chat items={items} />
 
-export default ChatExample;
+export default ChatExample

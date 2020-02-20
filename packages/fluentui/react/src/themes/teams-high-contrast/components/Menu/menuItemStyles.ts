@@ -1,13 +1,22 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { MenuVariables } from '../../../teams/components/Menu/menuVariables';
-import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
-import { underlinedItem } from '../../../teams/components/Menu/menuItemStyles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { MenuVariables } from '../../../teams/components/Menu/menuVariables'
+import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem'
+import { underlinedItem } from '../../../teams/components/Menu/menuItemStyles'
 
-type MenuItemPropsAndState = MenuItemProps & MenuItemState;
+type MenuItemPropsAndState = MenuItemProps & MenuItemState
 
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
   wrapper: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, isFromKeyboard, vertical, active, underlined, primary, pointing, disabled } = p;
+    const {
+      iconOnly,
+      isFromKeyboard,
+      vertical,
+      active,
+      underlined,
+      primary,
+      pointing,
+      disabled,
+    } = p
 
     return {
       ':hover': {
@@ -66,11 +75,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           // reset all existing hover styles
         },
       }),
-    };
+    }
   },
 
   root: ({ props, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, isFromKeyboard, underlined, primary, active } = props;
+    const { iconOnly, isFromKeyboard, underlined, primary, active } = props
 
     return {
       ...(underlined && {
@@ -90,8 +99,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         iconOnly && {
           borderColor: 'transparent',
         }),
-    };
+    }
   },
-};
+}
 
-export default menuItemStyles;
+export default menuItemStyles

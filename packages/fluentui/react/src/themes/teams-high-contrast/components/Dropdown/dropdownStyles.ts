@@ -1,14 +1,18 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { default as Dropdown, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
-import { DropdownVariablesHC } from './dropdownVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import {
+  default as Dropdown,
+  DropdownProps,
+  DropdownState,
+} from '../../../../components/Dropdown/Dropdown'
+import { DropdownVariablesHC } from './dropdownVariables'
 
-type DropdownPropsAndState = DropdownProps & DropdownState;
+type DropdownPropsAndState = DropdownProps & DropdownState
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
   borderColor: 'transparent',
   borderBottomColor: 'transparent',
-};
+}
 
 const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, DropdownVariablesHC> = {
   container: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -35,6 +39,6 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       },
     },
   }),
-};
+}
 
-export default dropdownStyles;
+export default dropdownStyles

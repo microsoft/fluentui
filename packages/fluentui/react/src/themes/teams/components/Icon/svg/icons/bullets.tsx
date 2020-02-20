@@ -1,11 +1,16 @@
-import * as React from 'react';
-import cx from 'classnames';
-import { TeamsSvgIconSpec } from '../types';
-import { teamsIconClassNames } from '../teamsIconClassNames';
+import * as React from 'react'
+import cx from 'classnames'
+import { TeamsSvgIconSpec } from '../types'
+import { teamsIconClassNames } from '../teamsIconClassNames'
 
 export default {
   icon: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svgFlippingInRtl}>
+    <svg
+      role="presentation"
+      focusable="false"
+      viewBox="8 8 16 16"
+      className={classes.svgFlippingInRtl}
+    >
       <g>
         <g className={cx(teamsIconClassNames.outline, classes.outlinePart)}>
           <path d="M13.5 11h9a.5.5 0 1 0 0-1h-9a.5.5 0 1 0 0 1zM22.5 15h-9a.5.5 0 1 0 0 1h9a.5.5 0 1 0 0-1zM22.5 20h-9a.5.5 0 1 0 0 1h9a.5.5 0 1 0 0-1z" />
@@ -23,4 +28,4 @@ export default {
     </svg>
   ),
   styles: {},
-} as TeamsSvgIconSpec;
+} as TeamsSvgIconSpec

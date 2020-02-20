@@ -17,7 +17,7 @@ import {
   isFromKeyboard,
   setWhatInputSource,
   getOrGenerateIdFromShorthand,
-  createShorthandFactory,
+  createShorthandFactory
 } from '../../utils';
 import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { ALIGNMENTS, POSITIONS, Popper, BasicPositioningProps, PopperChildrenProps, Alignment, Position } from '../../utils/positioner';
@@ -106,7 +106,7 @@ const Tooltip: React.FC<TooltipProps> &
     defaultValue: props.defaultOpen,
     value: props.open,
 
-    initialValue: false,
+    initialValue: false
   });
 
   const contentRef = React.useRef<HTMLElement>();
@@ -124,19 +124,19 @@ const Tooltip: React.FC<TooltipProps> &
         setTooltipOpen(false, e);
         e.stopPropagation();
         e.preventDefault();
-      },
+      }
     },
     mapPropsToBehavior: () => ({
       'aria-describedby': props['aria-describedby'],
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       contentId: contentId.current,
-      open,
-    }),
+      open
+    })
   });
 
   const getContentOverrideProps = (
-    predefinedProps: TooltipContentProps,
+    predefinedProps: TooltipContentProps
   ): TooltipContentProps & Pick<React.DOMAttributes<HTMLDivElement>, 'onMouseEnter' | 'onMouseLeave'> => ({
     onMouseEnter: (e: React.MouseEvent) => {
       setTooltipOpen(true, e);
@@ -145,7 +145,7 @@ const Tooltip: React.FC<TooltipProps> &
     onMouseLeave: (e: React.MouseEvent) => {
       setTooltipOpen(false, e);
       _.invoke(predefinedProps, 'onMouseLeave', e);
-    },
+    }
   });
 
   const renderPopperChildren = (popperProps: PopperChildrenProps) => {
@@ -155,10 +155,10 @@ const Tooltip: React.FC<TooltipProps> &
           open,
           placement: popperProps.placement,
           pointing,
-          pointerRef: pointerTargetRef,
+          pointerRef: pointerTargetRef
         }),
       generateKey: false,
-      overrideProps: getContentOverrideProps,
+      overrideProps: getContentOverrideProps
     });
 
     return tooltipContent ? <Ref innerRef={contentRef}>{tooltipContent}</Ref> : null;
@@ -208,7 +208,7 @@ const Tooltip: React.FC<TooltipProps> &
     onMouseLeave: (e, ...args) => {
       setTooltipOpen(false, e);
       _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
-    },
+    }
   };
 
   const element = (
@@ -237,7 +237,7 @@ Tooltip.className = 'ui-tooltip';
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.slotClassNames = {
-  content: `${Tooltip.className}__content`,
+  content: `${Tooltip.className}__content`
 };
 
 Tooltip.defaultProps = {
@@ -245,12 +245,12 @@ Tooltip.defaultProps = {
   position: 'above',
   mouseLeaveDelay: 10,
   pointing: true,
-  accessibility: tooltipAsLabelBehavior,
+  accessibility: tooltipAsLabelBehavior
 };
 Tooltip.propTypes = {
   ...commonPropTypes.createCommon({
     as: false,
-    content: false,
+    content: false
   }),
   align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
   children: PropTypes.element,
@@ -264,7 +264,7 @@ Tooltip.propTypes = {
   position: PropTypes.oneOf<Position>(POSITIONS),
   target: customPropTypes.domNode,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
-  content: customPropTypes.shorthandAllowingChildren,
+  content: customPropTypes.shorthandAllowingChildren
 };
 Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 

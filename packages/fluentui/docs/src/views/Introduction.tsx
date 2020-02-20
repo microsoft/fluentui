@@ -16,14 +16,14 @@ const Introduction = () => (
           marginTop: '24px',
           marginBottom: '0px',
           fontSize: '2rem',
-          textAlign: 'center',
+          textAlign: 'center'
         }}
       >
         {_.capitalize(pkg.name)}
         <Header.Description
           styles={{
             margin: 0,
-            fontSize: '1.14285714rem',
+            fontSize: '1.14285714rem'
           }}
         >
           {pkg.description}

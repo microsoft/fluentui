@@ -45,7 +45,9 @@ class FunctionToken implements IToken {
   }
 
   get isResolvable(): boolean {
-    return Array.isArray(this.deps) ? this.deps.every(e => this.tokens[e].isResolved) : this.tokens[this.deps].isResolved;
+    return Array.isArray(this.deps)
+      ? this.deps.every(e => this.tokens[e].isResolved)
+      : this.tokens[this.deps].isResolved;
   }
 
   get isResolved(): boolean {

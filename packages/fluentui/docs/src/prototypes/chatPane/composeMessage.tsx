@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   Flex,
   Input,
@@ -10,21 +10,26 @@ import {
   IconXSpacing,
   ICSSInJSStyle,
   Props,
-} from '@fluentui/react';
+} from '@fluentui/react'
 
-import chatProtoStyle from './chatProtoStyle';
+import chatProtoStyle from './chatProtoStyle'
 
 type ComposeMessageProps = Props<{
-  attached?: 'top' | 'bottom' | boolean;
-  style?: React.CSSProperties;
-}>;
+  attached?: 'top' | 'bottom' | boolean
+  style?: React.CSSProperties
+}>
 
 const ComposeMessage: React.FunctionComponent<ComposeMessageProps> = props => (
   <Provider.Consumer
     render={({ siteVariables: siteVars }) => (
       <Flex column role="region" aria-labelledby="chat-compose-reader-text" style={props.style}>
         <div>
-          <div role="heading" aria-level={2} id="chat-compose-reader-text" style={chatProtoStyle.screenReaderContainerStyles}>
+          <div
+            role="heading"
+            aria-level={2}
+            id="chat-compose-reader-text"
+            style={chatProtoStyle.screenReaderContainerStyles}
+          >
             Compose
           </div>
           <Input
@@ -46,12 +51,12 @@ const ComposeMessage: React.FunctionComponent<ComposeMessageProps> = props => (
       </Flex>
     )}
   />
-);
+)
 
 const getInputWrapperStyles = ({ attached }: ComposeMessageProps): ICSSInJSStyle => {
-  const borderTopRadius = '3px';
-  const borderBottomRadius = '2px';
-  const borderWidth = '1px';
+  const borderTopRadius = '3px'
+  const borderBottomRadius = '2px'
+  const borderWidth = '1px'
 
   return {
     borderStyle: 'solid',
@@ -67,8 +72,8 @@ const getInputWrapperStyles = ({ attached }: ComposeMessageProps): ICSSInJSStyle
       borderRadius: `${borderTopRadius} ${borderTopRadius} 0 0`,
       marginBottom: `-${borderWidth}`,
     }),
-  };
-};
+  }
+}
 
 const getMenuItems = (): ShorthandCollection<MenuItemProps> => {
   const items: ShorthandCollection<MenuItemProps> = [
@@ -88,11 +93,11 @@ const getMenuItems = (): ShorthandCollection<MenuItemProps> => {
       variables: siteVars => ({ color: siteVars.colors.grey[500] }),
     },
     'aria-label': `${name} tool`,
-  }));
+  }))
 
-  items.splice(-1, 0, { key: 'separator', styles: { flex: 1 } } as any);
+  items.splice(-1, 0, { key: 'separator', styles: { flex: 1 } } as any)
 
-  return items;
-};
+  return items
+}
 
-export default ComposeMessage;
+export default ComposeMessage

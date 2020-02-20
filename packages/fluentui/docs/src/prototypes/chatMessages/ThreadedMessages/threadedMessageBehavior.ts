@@ -8,15 +8,15 @@ const threadedMessageBehavior: Accessibility<ChatMessageBehaviorProps> = props =
     ...behaviorData.focusZone.props,
     handleTabKey: FocusZoneTabbableElements.none,
     shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
-    isCircularNavigation: false,
+    isCircularNavigation: false
   };
 
   behaviorData.keyActions = {
     root: {
       focus: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }],
-      },
-    },
+        keyCombinations: [{ keyCode: keyboardKey.Escape }]
+      }
+    }
   };
 
   return behaviorData;

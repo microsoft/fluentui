@@ -1,18 +1,18 @@
-import { pxToRem } from '../../../../utils';
+import { pxToRem } from '../../../../utils'
 
 export interface ReactionVariables {
-  meReactingColor: string;
-  meReactingColorHover: string;
-  otherReactingColor: string;
-  otherReactingColorHover: string;
-  contentFontSize: string;
-  fontWeightHover: string;
-  outlineColorFocus: string;
-  outlineWidthFocus: string;
-  outlineOffsetFocus: string;
-  meReacting: boolean;
-  borderColorFocus: string;
-  boxShadowColor: string;
+  meReactingColor: string
+  meReactingColorHover: string
+  otherReactingColor: string
+  otherReactingColorHover: string
+  contentFontSize: string
+  fontWeightHover: string
+  outlineColorFocus: string
+  outlineWidthFocus: string
+  outlineOffsetFocus: string
+  meReacting: boolean
+  borderColorFocus: string
+  boxShadowColor: string
 }
 
 export default (siteVars): ReactionVariables => ({
@@ -28,4 +28,4 @@ export default (siteVars): ReactionVariables => ({
   meReacting: false,
   boxShadowColor: siteVars.colors.white,
   borderColorFocus: siteVars.colors.grey[750],
-});
+})

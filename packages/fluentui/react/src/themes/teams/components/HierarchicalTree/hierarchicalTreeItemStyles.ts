@@ -1,7 +1,7 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
-import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import HierarchicalTreeTitle from '../../../../components/HierarchicalTree/HierarchicalTreeTitle';
+import { ICSSInJSStyle } from '@fluentui/styles'
+import { pxToRem } from '../../../../utils'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
+import HierarchicalTreeTitle from '../../../../components/HierarchicalTree/HierarchicalTreeTitle'
 
 const hierarchicalTreeItemStyles = {
   root: ({ theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -15,6 +15,6 @@ const hierarchicalTreeItemStyles = {
       },
     },
   }),
-};
+}
 
-export default hierarchicalTreeItemStyles;
+export default hierarchicalTreeItemStyles

@@ -1,12 +1,25 @@
-import { debugRoot, debugArea, debugGap } from '../../../../styles/debugStyles';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { LayoutProps } from '../../../../components/Layout/Layout';
+import { debugRoot, debugArea, debugGap } from '../../../../styles/debugStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { LayoutProps } from '../../../../components/Layout/Layout'
 
-const countTrue = items => items.filter(Boolean).length;
+const countTrue = items => items.filter(Boolean).length
 
 const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
   root: ({ props }): ICSSInJSStyle => {
-    const { alignItems, debug, gap, justifyItems, main, mainSize, end, endSize, rootCSS, start, startSize, vertical } = props;
+    const {
+      alignItems,
+      debug,
+      gap,
+      justifyItems,
+      main,
+      mainSize,
+      end,
+      endSize,
+      rootCSS,
+      start,
+      startSize,
+      vertical,
+    } = props
 
     return {
       ...(debug && debugRoot()),
@@ -29,7 +42,7 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
         '-ms-grid-columns': '1fr',
       }),
       ...rootCSS,
-    };
+    }
   },
 
   gap: ({ props }): ICSSInJSStyle => ({
@@ -48,7 +61,11 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'grid',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.start, p.start && p.gap, p.main]),
+    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([
+      p.start,
+      p.start && p.gap,
+      p.main,
+    ]),
     ...p.mainCSS,
   }),
 
@@ -56,9 +73,15 @@ const layoutStyles: ComponentSlotStylesPrepared<LayoutProps> = {
     ...(p.debug && debugArea()),
     alignItems: 'center',
     display: 'inline-flex',
-    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([p.start, p.start && p.gap, p.main, p.main && p.gap, p.end]),
+    [p.vertical ? '-ms-grid-row' : '-ms-grid-column']: countTrue([
+      p.start,
+      p.start && p.gap,
+      p.main,
+      p.main && p.gap,
+      p.end,
+    ]),
     ...p.endCSS,
   }),
-};
+}
 
-export default layoutStyles;
+export default layoutStyles

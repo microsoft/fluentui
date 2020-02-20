@@ -25,7 +25,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
     options.displayName,
     options.theme,
     options.props.variables,
-    options.performance.enableVariablesCaching,
+    options.performance.enableVariablesCaching
   );
 
   const { classes, resolvedStyles, resolvedStylesDebug } = resolveStyles(options, resolvedVariables);
@@ -47,7 +47,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
         }
 
         return true;
-      }),
+      })
     });
   }
 
@@ -55,7 +55,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
     classes,
     variables: resolvedVariables,
     styles: resolvedStyles,
-    theme: options.theme,
+    theme: options.theme
   };
 };
 

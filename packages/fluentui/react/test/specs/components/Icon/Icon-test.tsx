@@ -12,8 +12,8 @@ describe('Icon', () => {
     handlesAccessibility(Icon, {
       defaultRootRole: 'img',
       requiredProps: {
-        name: 'at',
-      },
+        name: 'at'
+      }
     });
 
     describe('aria-hidden', () => {
@@ -24,12 +24,12 @@ describe('Icon', () => {
               <svg>
                 <p />
               </svg>
-            ),
+            )
           },
           fontIcon: {
-            icon: { fontFamily: 'Icons', content: `'\\f0152'` },
-          },
-        },
+            icon: { fontFamily: 'Icons', content: `'\\f0152'` }
+          }
+        }
       };
 
       test('font-based - set to true by default', () => {

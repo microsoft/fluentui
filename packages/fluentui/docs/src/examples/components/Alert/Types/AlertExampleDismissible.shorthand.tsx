@@ -1,9 +1,9 @@
-import { useBooleanKnob } from '@fluentui/docs-components';
-import { Alert } from '@fluentui/react';
-import * as React from 'react';
+import { useBooleanKnob } from '@fluentui/docs-components'
+import { Alert } from '@fluentui/react'
+import * as React from 'react'
 
 const AlertExampleDismissible = () => {
-  const [visible, setVisible] = useBooleanKnob({ name: 'visible', initialValue: true });
+  const [visible, setVisible] = useBooleanKnob({ name: 'visible', initialValue: true })
 
   return (
     <Alert
@@ -12,7 +12,7 @@ const AlertExampleDismissible = () => {
       onDismiss={() => setVisible(false)}
       visible={visible}
     />
-  );
-};
+  )
+}
 
-export default AlertExampleDismissible;
+export default AlertExampleDismissible

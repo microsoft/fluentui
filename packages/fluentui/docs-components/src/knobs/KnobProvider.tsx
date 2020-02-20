@@ -27,7 +27,7 @@ const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
   const setKnobValue = (knobName: KnobName, knobValue: any) => {
     setKnobs(prevKnob => ({
       ...prevKnob,
-      [knobName]: { ...prevKnob[knobName], value: knobValue },
+      [knobName]: { ...prevKnob[knobName], value: knobValue }
     }));
   };
   const unregisterKnob = (knobName: KnobName) => {
@@ -48,9 +48,9 @@ const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
       knobs,
       registerKnob,
       setKnobValue,
-      unregisterKnob,
+      unregisterKnob
     }),
-    [knobs, components],
+    [knobs, components]
   );
   const logValue: LogContextFunctionsValue = React.useMemo(() => ({ appendLog, clearLog }), [appendLog, clearLog]);
 
@@ -64,7 +64,7 @@ const KnobProvider: React.FunctionComponent<KnobProviderProps> = props => {
 };
 
 KnobProvider.defaultProps = {
-  components: {},
+  components: {}
 };
 
 export default KnobProvider;

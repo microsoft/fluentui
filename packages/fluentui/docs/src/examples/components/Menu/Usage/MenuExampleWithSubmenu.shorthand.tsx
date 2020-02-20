@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Menu } from '@fluentui/react';
+import * as React from 'react'
+import { Menu } from '@fluentui/react'
 
 const items = [
   {
@@ -55,8 +55,8 @@ const items = [
     },
   },
   { key: 'events', content: 'Upcoming Events' },
-];
+]
 
-const MenuExampleWithSubMenu = () => <Menu defaultActiveIndex={0} items={items} />;
+const MenuExampleWithSubMenu = () => <Menu defaultActiveIndex={0} items={items} />
 
-export default MenuExampleWithSubMenu;
+export default MenuExampleWithSubMenu

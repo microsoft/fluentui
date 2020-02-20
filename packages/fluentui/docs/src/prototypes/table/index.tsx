@@ -1,12 +1,25 @@
-import * as React from 'react';
-import { Button, Menu, Flex, Avatar, Text, Dropdown, Checkbox, Icon, MenuButton } from '@fluentui/react';
-import { gridCellWithFocusableElementBehavior, gridCellMultipleFocusableBehavior } from '@fluentui/accessibility';
+import * as React from 'react'
+import {
+  Button,
+  Menu,
+  Flex,
+  Avatar,
+  Text,
+  Dropdown,
+  Checkbox,
+  Icon,
+  MenuButton,
+} from '@fluentui/react'
+import {
+  gridCellWithFocusableElementBehavior,
+  gridCellMultipleFocusableBehavior,
+} from '@fluentui/accessibility'
 
-import AdvancedTable, { stringCellComparator } from './AdvancedTable';
-import chatProtoStyle from '.././chatPane/chatProtoStyle';
+import AdvancedTable, { stringCellComparator } from './AdvancedTable'
+import chatProtoStyle from '.././chatPane/chatProtoStyle'
 
 function handleRowClick(index) {
-  alert(`OnClick on the row ${index} executed.`);
+  alert(`OnClick on the row ${index} executed.`)
 }
 
 const roleDropdown = {
@@ -15,17 +28,21 @@ const roleDropdown = {
   key: '1-6',
   accessibility: gridCellMultipleFocusableBehavior,
   onClick: e => e.stopPropagation(),
-};
+}
 
 const tagButtons = {
   content: (
     <Flex gap="gap.small" vAlign="center">
-      <Menu variables={{ horizontalPadding: '0.5rem 0.5rem' }} items={['tag 1', 'tag 2']} data-is-focusable={true} />
+      <Menu
+        variables={{ horizontalPadding: '0.5rem 0.5rem' }}
+        items={['tag 1', 'tag 2']}
+        data-is-focusable={true}
+      />
     </Flex>
   ),
   key: '1-5',
   accessibility: gridCellMultipleFocusableBehavior,
-};
+}
 
 const columnsMembers = [
   { title: 'Name', key: 'name', name: 'name' },
@@ -33,7 +50,7 @@ const columnsMembers = [
   { title: 'Location', key: 'location', name: 'location', cellComparator: stringCellComparator },
   { title: 'Tags', key: 'tags', name: 'tags' },
   { title: 'Role', key: 'role', name: 'roles' },
-];
+]
 
 const rowsMembers = [
   {
@@ -93,7 +110,7 @@ const rowsMembers = [
     ],
     onClick: () => handleRowClick(3),
   },
-];
+]
 
 const menuButton = (
   <MenuButton
@@ -111,14 +128,14 @@ const menuButton = (
     ]}
     on="click"
   />
-);
+)
 
 const moreOptionButton = {
   content: menuButton,
   truncateContent: true,
   key: '1-6',
   accessibility: gridCellWithFocusableElementBehavior,
-};
+}
 
 const columnsChannels = [
   { key: 'Name', name: 'Name', title: 'Name' },
@@ -133,7 +150,7 @@ const columnsChannels = [
   { key: 'Type', name: 'Type', title: 'Type', cellComparator: stringCellComparator },
   { key: 'Last activity', name: 'Last activity', title: 'Last activity' },
   { key: 'more-options', name: 'more-options', title: 'More options' },
-];
+]
 
 const rowsChannels = [
   {
@@ -156,15 +173,20 @@ const rowsChannels = [
       moreOptionButton,
     ],
   },
-];
+]
 
 const StaticTable = () => (
   <>
     <AdvancedTable columns={columnsMembers} rows={rowsMembers} label="Channel members" />
     <br />
     <AdvancedTable columns={columnsChannels} rows={rowsChannels} label="Channels" />
-    <div id="ariaLive" aria-live="polite" aria-atomic="true" style={chatProtoStyle.screenReaderContainerStyles} />
+    <div
+      id="ariaLive"
+      aria-live="polite"
+      aria-atomic="true"
+      style={chatProtoStyle.screenReaderContainerStyles}
+    />
   </>
-);
+)
 
-export default StaticTable;
+export default StaticTable

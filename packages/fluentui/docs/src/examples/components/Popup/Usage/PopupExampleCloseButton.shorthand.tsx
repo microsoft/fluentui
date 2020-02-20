@@ -1,6 +1,6 @@
-import { useBooleanKnob } from '@fluentui/docs-components';
-import * as React from 'react';
-import { Button, Dropdown, Popup, Flex } from '@fluentui/react';
+import { useBooleanKnob } from '@fluentui/docs-components'
+import * as React from 'react'
+import { Button, Dropdown, Popup, Flex } from '@fluentui/react'
 
 const inputItems = [
   {
@@ -48,19 +48,19 @@ const inputItems = [
     image: 'public/images/avatar/small/ade.jpg',
     content: 'Graphic Designer',
   },
-];
+]
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item} has been selected.`,
   onRemove: item => `${item} has been removed.`,
-};
+}
 
 const PopupControlledExample = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' });
+  const [open, setOpen] = useBooleanKnob({ name: 'open' })
 
   const closePopup = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   const popupContent = (
     <>
@@ -80,7 +80,7 @@ const PopupControlledExample = () => {
         <Button primary content="Add" />
       </Flex>
     </>
-  );
+  )
 
   return (
     <Popup
@@ -93,7 +93,7 @@ const PopupControlledExample = () => {
       }}
       trapFocus
     />
-  );
-};
+  )
+}
 
-export default PopupControlledExample;
+export default PopupControlledExample

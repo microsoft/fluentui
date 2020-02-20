@@ -5,12 +5,12 @@ import { ResolveStylesOptions } from '../../src/styles/types';
 
 const componentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
-    color: v.color,
-  }),
+    color: v.color
+  })
 };
 
 const resolvedVariables: ComponentVariablesObject = {
-  color: 'red',
+  color: 'red'
 };
 
 const resolveStylesOptions = (options?: {
@@ -22,27 +22,27 @@ const resolveStylesOptions = (options?: {
     displayName = 'Test',
     performance = {
       enableVariablesCaching: true,
-      enableStylesCaching: true,
+      enableStylesCaching: true
     },
-    props = {},
+    props = {}
   } = options || {};
 
   return {
     theme: {
       ...emptyTheme,
       componentStyles: {
-        [displayName]: componentStyles,
-      },
+        [displayName]: componentStyles
+      }
     },
     displayName,
     props,
     rtl: false,
     disableAnimations: false,
     renderer: {
-      renderRule: () => '',
+      renderRule: () => ''
     },
     performance,
-    saveDebug: () => {},
+    saveDebug: () => {}
   };
 };
 
@@ -117,7 +117,7 @@ describe('resolveStyles', () => {
     spyOn(componentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions({
       displayName: 'Test2',
-      props: { primary: true },
+      props: { primary: true }
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
@@ -132,7 +132,7 @@ describe('resolveStyles', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       displayName: 'Test3',
-      props: { primary: true },
+      props: { primary: true }
     });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
@@ -147,7 +147,7 @@ describe('resolveStyles', () => {
     spyOn(componentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions({
       displayName: 'Test4',
-      props: { primary: true },
+      props: { primary: true }
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
 
@@ -164,7 +164,7 @@ describe('resolveStyles', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
       displayName: 'Test5',
-      props: { primary: true },
+      props: { primary: true }
     });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
 
@@ -205,13 +205,13 @@ describe('resolveStyles', () => {
     const propsInlineOverrides: ResolveStylesOptions['props'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
-      { variables: { backgroundColor: 'yellow' } },
+      { variables: { backgroundColor: 'yellow' } }
     ];
 
     const propsInlineOverridesResolvedStyles: ICSSInJSStyle[] = [
       { color: 'red', fontSize: '10px' },
       { color: 'red', left: '10px' },
-      { color: 'red' },
+      { color: 'red' }
     ];
 
     const propsInlineOverridesSize = propsInlineOverrides.length;
@@ -219,7 +219,7 @@ describe('resolveStyles', () => {
     _.forEach(propsInlineOverrides, (props, idx) => {
       const options = resolveStylesOptions({
         props,
-        performance: { enableStylesCaching: false },
+        performance: { enableStylesCaching: false }
       });
 
       const { resolvedStyles } = resolveStyles(options, resolvedVariables);
@@ -238,7 +238,7 @@ describe('resolveStyles', () => {
     const propsInlineOverrides: ResolveStylesOptions['props'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
-      { variables: { backgroundColor: 'yellow' } },
+      { variables: { backgroundColor: 'yellow' } }
     ];
 
     const propsInlineOverridesSize = propsInlineOverrides.length;
@@ -246,7 +246,7 @@ describe('resolveStyles', () => {
     _.forEach(propsInlineOverrides, props => {
       const options = resolveStylesOptions({
         props,
-        performance: { enableStylesCaching: false },
+        performance: { enableStylesCaching: false }
       });
       const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
       const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);

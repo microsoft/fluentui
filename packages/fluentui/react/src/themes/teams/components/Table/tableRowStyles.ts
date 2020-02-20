@@ -1,7 +1,7 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsTableVariables } from './tableVariables';
-import { TableRowProps } from '../../../../components/Table/TableRow';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles'
+import { TeamsTableVariables } from './tableVariables'
+import { TableRowProps } from '../../../../components/Table/TableRow'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
 
 export default {
   root: ({
@@ -11,7 +11,7 @@ export default {
   }: ComponentStyleFunctionParam<TableRowProps, TeamsTableVariables>): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
-    });
+    })
 
     return {
       display: 'flex',
@@ -44,6 +44,6 @@ export default {
       ...(compact && {
         height: v.compactRowHeight,
       }),
-    };
+    }
   },
-};
+}

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Icon, Tree } from '@fluentui/react';
+import * as React from 'react'
+import { Icon, Tree } from '@fluentui/react'
 
 const items = [
   {
@@ -28,15 +28,17 @@ const items = [
       },
     ],
   },
-];
+]
 
 const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
   <Component open={open} hasSubtree={hasSubtree} {...restProps}>
     {hasSubtree && <Icon name={open ? 'triangle-down' : 'triangle-right'} />}
     <span>{content}</span>
   </Component>
-);
+)
 
-const TreeTitleCustomizationExample = () => <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />;
+const TreeTitleCustomizationExample = () => (
+  <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />
+)
 
-export default TreeTitleCustomizationExample;
+export default TreeTitleCustomizationExample

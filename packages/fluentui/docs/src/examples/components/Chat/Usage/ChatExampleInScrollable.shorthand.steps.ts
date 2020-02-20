@@ -1,8 +1,9 @@
-import { ChatItem, ChatMessage } from '@fluentui/react';
+import { ChatItem, ChatMessage } from '@fluentui/react'
 
 const selectors = {
-  item: (itemIndex: number) => `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.className}`,
-};
+  item: (itemIndex: number) =>
+    `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.className}`,
+}
 
 const config: ScreenerTestsConfig = {
   steps: [
@@ -15,6 +16,6 @@ const config: ScreenerTestsConfig = {
         .hover(selectors.item(3))
         .snapshot('Hovers third message'),
   ],
-};
+}
 
-export default config;
+export default config

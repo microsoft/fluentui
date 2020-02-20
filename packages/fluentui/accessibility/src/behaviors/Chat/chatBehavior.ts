@@ -18,7 +18,7 @@ const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone';
  */
 const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
   attributes: {
-    root: {},
+    root: {}
   },
   focusZone: {
     props: {
@@ -26,9 +26,9 @@ const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
       direction: FocusZoneDirection.vertical,
       shouldResetActiveElementWhenTabFromZone: true,
       defaultTabbableElement: getLastTabbableElement, // select last chat message by default
-      [CHAT_FOCUSZONE_ATTRIBUTE]: '', // allows querying the default active element
-    },
-  },
+      [CHAT_FOCUSZONE_ATTRIBUTE]: '' // allows querying the default active element
+    }
+  }
 });
 
 const getLastTabbableElement = (root: HTMLElement): HTMLElement => {

@@ -26,20 +26,20 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
       padding: v.padding,
       ...(p.hasImage && (p.imagePosition === 'start' ? { paddingLeft: v.startPaddingLeft } : { paddingRight: v.endPaddingRight })),
       ...(p.circular && {
-        borderRadius: v.circularRadius,
-      }),
+        borderRadius: v.circularRadius
+      })
     };
   },
 
   image: ({ variables: v }): ICSSInJSStyle => ({
     height: v.height,
-    width: v.height,
+    width: v.height
   }),
 
   icon: ({ props: p }): ICSSInJSStyle =>
     p.hasActionableIcon && {
-      cursor: 'pointer',
-    },
+      cursor: 'pointer'
+    }
 };
 
 export default labelStyles;

@@ -1,8 +1,8 @@
-import { Accessibility } from '../../types';
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
-import { FocusZoneDirection } from '../../focusZone/types';
-import * as keyboardKey from 'keyboard-key';
-import gridCellBehavior from './gridCellBehavior';
+import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
+import { FocusZoneDirection } from '../../focusZone/types'
+import * as keyboardKey from 'keyboard-key'
+import gridCellBehavior from './gridCellBehavior'
 
 /**
  * @specification
@@ -40,6 +40,6 @@ const gridRowNestedBehavior: Accessibility = props => ({
   childBehaviors: {
     cell: gridCellBehavior,
   },
-});
+})
 
-export default gridRowNestedBehavior;
+export default gridRowNestedBehavior

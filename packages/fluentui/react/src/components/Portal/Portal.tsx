@@ -1,11 +1,15 @@
-import { AccessibilityAttributes } from '@fluentui/accessibility';
-import { AccessibilityHandlerProps, FocusTrapZone, FocusTrapZoneProps } from '@fluentui/react-bindings';
-import { EventListener } from '@fluentui/react-component-event-listener';
-import { handleRef, Ref } from '@fluentui/react-component-ref';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PropTypes from 'prop-types';
-import * as React from 'react';
-import * as _ from 'lodash';
+import { AccessibilityAttributes } from '@fluentui/accessibility'
+import {
+  AccessibilityHandlerProps,
+  FocusTrapZone,
+  FocusTrapZoneProps,
+} from '@fluentui/react-bindings'
+import { EventListener } from '@fluentui/react-component-event-listener'
+import { handleRef, Ref } from '@fluentui/react-component-ref'
+import * as customPropTypes from '@fluentui/react-proptypes'
+import * as PropTypes from 'prop-types'
+import * as React from 'react'
+import * as _ from 'lodash'
 
 import {
   childrenExist,
@@ -15,74 +19,74 @@ import {
   commonPropTypes,
   ContentComponentProps,
   rtlTextContainer,
-} from '../../utils';
-import PortalInner from './PortalInner';
+} from '../../utils'
+import PortalInner from './PortalInner'
 
 export type TriggerAccessibility = {
-  attributes?: AccessibilityAttributes;
-  keyHandlers?: AccessibilityHandlerProps;
-};
+  attributes?: AccessibilityAttributes
+  keyHandlers?: AccessibilityHandlerProps
+}
 
 export interface PortalProps extends ChildrenComponentProps, ContentComponentProps {
   /** Initial value of open. */
-  defaultOpen?: boolean;
+  defaultOpen?: boolean
 
   /**
    * Called when the portal is mounted on the DOM.
    *
    * @param data - All props.
    */
-  onMount?: (props: PortalProps) => void;
+  onMount?: (props: PortalProps) => void
 
   /**
    * Called when the portal is unmounted from the DOM.
    *
    * @param data - All props.
    */
-  onUnmount?: (props: PortalProps) => void;
+  onUnmount?: (props: PortalProps) => void
 
   /** Controls whether or not the portal is displayed. */
-  open?: boolean;
+  open?: boolean
 
   /** Element to be rendered in-place where the portal is defined. */
-  trigger?: JSX.Element;
+  trigger?: JSX.Element
 
   /** Controls whether or not focus trap should be applied, using boolean or FocusTrapZoneProps type value */
-  trapFocus?: FocusTrapZoneProps | boolean;
+  trapFocus?: FocusTrapZoneProps | boolean
 
   /** Accessibility behavior object to apply on trigger node. */
-  triggerAccessibility?: TriggerAccessibility;
+  triggerAccessibility?: TriggerAccessibility
 
   /** Sets trigger node to passed ref. */
-  triggerRef?: React.Ref<any>;
+  triggerRef?: React.Ref<any>
 
   /**
    * Called when trigger node was clicked.
    *
    * @param data - All props.
    */
-  onTriggerClick?: (e: React.MouseEvent) => void;
+  onTriggerClick?: (e: React.MouseEvent) => void
 
   /**
    * Called when `click` event was invoked outside portal or trigger nodes.
    *
    * @param data - All props.
    */
-  onOutsideClick?: (e: React.MouseEvent) => void;
+  onOutsideClick?: (e: React.MouseEvent) => void
 }
 
 export interface PortalState {
-  open?: boolean;
+  open?: boolean
 }
 
 /**
  * A Portal allows to render children outside of their parent.
  */
 class Portal extends AutoControlledComponent<PortalProps, PortalState> {
-  portalNode: HTMLElement;
-  triggerNode: HTMLElement;
+  portalNode: HTMLElement
+  triggerNode: HTMLElement
 
-  static autoControlledProps = ['open'];
+  static autoControlledProps = ['open']
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -101,11 +105,11 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
     onTriggerClick: PropTypes.func,
     onOutsideClick: PropTypes.func,
     trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  };
+  }
 
   static defaultProps: PortalProps = {
     triggerAccessibility: {},
-  };
+  }
 
   renderComponent(): React.ReactNode {
     return (
@@ -113,15 +117,15 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
         {this.renderPortal()}
         {this.renderTrigger()}
       </React.Fragment>
-    );
+    )
   }
 
   renderPortal(): JSX.Element | undefined {
-    const { children, content, trapFocus } = this.props;
-    const { open } = this.state;
+    const { children, content, trapFocus } = this.props
+    const { open } = this.state
 
-    const contentToRender = childrenExist(children) ? children : content;
-    const focusTrapZoneProps = (_.keys(trapFocus).length && trapFocus) || {};
+    const contentToRender = childrenExist(children) ? children : content
+    const focusTrapZoneProps = (_.keys(trapFocus).length && trapFocus) || {}
 
     return (
       open && (
@@ -131,16 +135,24 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
             onUnmount={this.handleUnmount}
             {...rtlTextContainer.getAttributes({ forElements: [contentToRender] })}
           >
-            {trapFocus ? <FocusTrapZone {...focusTrapZoneProps}>{contentToRender}</FocusTrapZone> : contentToRender}
-            <EventListener listener={this.handleDocumentClick} target={this.context.target} type="click" />
+            {trapFocus ? (
+              <FocusTrapZone {...focusTrapZoneProps}>{contentToRender}</FocusTrapZone>
+            ) : (
+              contentToRender
+            )}
+            <EventListener
+              listener={this.handleDocumentClick}
+              target={this.context.target}
+              type="click"
+            />
           </PortalInner>
         </Ref>
       )
-    );
+    )
   }
 
   renderTrigger(): JSX.Element | undefined {
-    const { trigger, triggerAccessibility } = this.props;
+    const { trigger, triggerAccessibility } = this.props
 
     return (
       trigger && (
@@ -152,32 +164,32 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
           })}
         </Ref>
       )
-    );
+    )
   }
   handleMount = () => {
-    _.invoke(this.props, 'onMount', this.props);
-  };
+    _.invoke(this.props, 'onMount', this.props)
+  }
 
   handleUnmount = () => {
-    _.invoke(this.props, 'onUnmount', this.props);
-  };
+    _.invoke(this.props, 'onUnmount', this.props)
+  }
 
   handlePortalRef = (portalNode: HTMLElement) => {
-    this.portalNode = portalNode;
-  };
+    this.portalNode = portalNode
+  }
 
   handleTriggerRef = (triggerNode: HTMLElement) => {
-    this.triggerNode = triggerNode;
-    handleRef(this.props.triggerRef, triggerNode);
-  };
+    this.triggerNode = triggerNode
+    handleRef(this.props.triggerRef, triggerNode)
+  }
 
   handleTriggerClick = (e: React.MouseEvent, ...unhandledProps) => {
-    const { trigger } = this.props;
+    const { trigger } = this.props
 
-    _.invoke(this.props, 'onTriggerClick', e); // Call handler from parent component
-    _.invoke(trigger, 'props.onClick', e, ...unhandledProps); // Call original event handler
-    this.setState({ open: !this.state.open });
-  };
+    _.invoke(this.props, 'onTriggerClick', e) // Call handler from parent component
+    _.invoke(trigger, 'props.onClick', e, ...unhandledProps) // Call original event handler
+    this.setState({ open: !this.state.open })
+  }
 
   handleDocumentClick = (e: MouseEvent) => {
     if (
@@ -185,11 +197,11 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
       doesNodeContainClick(this.triggerNode, e, this.context.target) || // event happened in trigger (delegate to trigger handlers)
       doesNodeContainClick(this.portalNode, e, this.context.target) // event happened in the portal
     ) {
-      return; // ignore the click
+      return // ignore the click
     }
-    _.invoke(this.props, 'onOutsideClick', e);
-    this.setState({ open: false });
-  };
+    _.invoke(this.props, 'onOutsideClick', e)
+    this.setState({ open: false })
+  }
 }
 
-export default Portal;
+export default Portal

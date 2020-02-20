@@ -5,14 +5,14 @@ const imageAltTags = {
   ade: 'Portrait of Ade',
   elliot: 'Portrait of Elliot',
   kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan',
+  nan: 'Portrait of Nan'
 };
 
 const tabAriaLabel = {
   ade: 'Ade',
   elliot: 'Elliot',
   kristy: 'Kristy',
-  nan: 'Nan',
+  nan: 'Nan'
 };
 
 const carouselTextContent = (
@@ -35,20 +35,20 @@ const carouselToolbarContent = (
         key: 'custom-button-1',
         kind: 'custom',
         content: <Button content="First" />,
-        fitted: 'horizontally',
+        fitted: 'horizontally'
       },
       {
         key: 'custom-button-2',
         kind: 'custom',
         content: <Button content="Second" />,
-        fitted: 'horizontally',
+        fitted: 'horizontally'
       },
       {
         key: 'custom-button-3',
         kind: 'custom',
         content: <Button content="Third" />,
-        fitted: 'horizontally',
-      },
+        fitted: 'horizontally'
+      }
     ]}
   />
 );
@@ -66,7 +66,7 @@ const carouselItems = [
         <Button content="Open" styles={buttonStyles} />
       </div>
     ),
-    'aria-label': 'Ade card',
+    'aria-label': 'Ade card'
   },
   {
     key: 'elliot',
@@ -80,7 +80,7 @@ const carouselItems = [
         {carouselToolbarContent}
       </div>
     ),
-    'aria-label': 'Elliot card',
+    'aria-label': 'Elliot card'
   },
   {
     key: 'kristy',
@@ -97,8 +97,8 @@ const carouselItems = [
         </Flex>
       </div>
     ),
-    'aria-label': 'Kristy card',
-  },
+    'aria-label': 'Kristy card'
+  }
 ];
 
 const CarouselExample = () => (
@@ -109,8 +109,8 @@ const CarouselExample = () => (
       items: carouselItems.map((item, index) => ({
         key: item.id,
         'aria-label': tabAriaLabel[item.id],
-        'aria-controls': item.id,
-      })),
+        'aria-controls': item.id
+      }))
     }}
     items={carouselItems}
     getItemPositionText={(index: number, size: number) => `${index + 1} of ${size}`}

@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { MenuButtonProps } from '../../../../components/MenuButton/MenuButton';
-import PopupContent from '../../../../components/Popup/PopupContent';
+import { ComponentSlotStylesPrepared } from '@fluentui/styles'
+import { MenuButtonProps } from '../../../../components/MenuButton/MenuButton'
+import PopupContent from '../../../../components/Popup/PopupContent'
 
 const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
   root: () => ({
@@ -13,6 +13,6 @@ const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
     },
     borderWidth: '0px',
   }),
-};
+}
 
-export default menuButtonStyles;
+export default menuButtonStyles

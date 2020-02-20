@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ImageProps } from '../../../../components/Image/Image';
-import { ImageVariables } from './imageVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { ImageProps } from '../../../../components/Image/Image'
+import { ImageVariables } from './imageVariables'
 
-export type ImageStylesProps = Pick<ImageProps, 'avatar' | 'circular' | 'fluid'>;
+export type ImageStylesProps = Pick<ImageProps, 'avatar' | 'circular' | 'fluid'>
 
 const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({
@@ -17,6 +17,6 @@ const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables>
       borderRadius: variables.avatarRadius,
     }),
   }),
-};
+}
 
-export default imageStyles;
+export default imageStyles

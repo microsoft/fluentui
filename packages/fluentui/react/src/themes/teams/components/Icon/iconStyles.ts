@@ -15,14 +15,14 @@ export type IconStylesProps = Pick<
 export const emptyIcon: ThemeIconSpec = { icon: { content: '?' } };
 
 const getPaddedStyle = (): ICSSInJSStyle => ({
-  padding: pxToRem(4),
+  padding: pxToRem(4)
 });
 
 const getBorderedStyles = (boxShadowColor: string): ICSSInJSStyle => {
   return {
     ...getPaddedStyle(),
 
-    boxShadow: `0 0 0 .05rem ${boxShadowColor} inset`,
+    boxShadow: `0 0 0 .05rem ${boxShadowColor} inset`
   };
 };
 
@@ -30,8 +30,8 @@ const getIconSize = (size: SizeValue, v: IconVariables): string => {
   const modifiedSizes = {
     large: {
       x: 24,
-      xx: 28,
-    },
+      xx: 28
+    }
   };
 
   return v.sizeModifier && modifiedSizes[size] && modifiedSizes[size][v.sizeModifier]
@@ -69,7 +69,7 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
 
       ...(p.circular && { ...getPaddedStyle(), borderRadius: '50%' }),
       ...(p.disabled && {
-        color: v.disabledColor,
+        color: v.disabledColor
       }),
       display: 'inline-block', // we overriding this for Base theme
 
@@ -90,12 +90,12 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
         height: v[`${p.size}Size`],
 
         '::before': {
-          content: (iconSpec.icon as FontIconSpec).content,
+          content: (iconSpec.icon as FontIconSpec).content
         },
 
-        transform: rtl ? `scaleX(-1) rotate(${-1 * p.rotate}deg)` : `rotate(${p.rotate}deg)`,
+        transform: rtl ? `scaleX(-1) rotate(${-1 * p.rotate}deg)` : `rotate(${p.rotate}deg)`
       }),
-      ...(p.isSvgIcon && { backgroundColor: v.backgroundColor }),
+      ...(p.isSvgIcon && { backgroundColor: v.backgroundColor })
     };
   },
 
@@ -104,16 +104,16 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
       display: 'none',
 
       ...(p.outline && {
-        display: 'block',
-      }),
+        display: 'block'
+      })
     };
   },
 
   filledPart: ({ props: p }): ICSSInJSStyle => {
     return {
       ...(p.outline && {
-        display: 'none',
-      }),
+        display: 'none'
+      })
     };
   },
 
@@ -128,12 +128,12 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
       fill: getIconColor(v, colors),
 
       ...(disabled && {
-        fill: v.disabledColor,
+        fill: v.disabledColor
       }),
 
       transform: `rotate(${rotate}deg)`,
 
-      ...getSvgStyle('svg'),
+      ...getSvgStyle('svg')
     };
   },
 
@@ -142,8 +142,8 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
     return {
       ...callable(iconStyles.svg)(config),
       ...(rtl && {
-        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`,
-      }),
+        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`
+      })
     };
   },
 
@@ -151,7 +151,7 @@ const iconStyles: ComponentSlotStylesPrepared<IconStylesProps, IconVariables> = 
 
   path: getSvgStyle('path'),
 
-  secondaryPath: getSvgStyle('secondaryPath'),
+  secondaryPath: getSvgStyle('secondaryPath')
 };
 
 export default iconStyles;

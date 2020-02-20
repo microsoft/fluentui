@@ -1,18 +1,23 @@
-import * as React from 'react';
-import { Divider, RadioGroup, Input, Text } from '@fluentui/react';
+import * as React from 'react'
+import { Divider, RadioGroup, Input, Text } from '@fluentui/react'
 
 class RadioGroupVerticalExample extends React.Component {
-  state = { selectedValue: '', inputTabIndex: '-1' };
+  state = { selectedValue: '', inputTabIndex: '-1' }
 
   render() {
-    const { selectedValue } = this.state;
+    const { selectedValue } = this.state
     return (
       <div style={{ maxWidth: '400px' }}>
         The selected value is: {selectedValue}
         <Divider />
-        <RadioGroup vertical defaultCheckedValue="prosciutto" items={this.getItems()} checkedValueChanged={this.handleChange} />
+        <RadioGroup
+          vertical
+          defaultCheckedValue="prosciutto"
+          items={this.getItems()}
+          checkedValueChanged={this.handleChange}
+        />
       </div>
-    );
+    )
   }
 
   getItems() {
@@ -59,12 +64,13 @@ class RadioGroupVerticalExample extends React.Component {
         checkedChanged: this.handleCustomCheckedChange,
         'aria-label': 'Press Tab to change flavour',
       },
-    ];
+    ]
   }
 
-  handleChange = (e, props) => this.setState({ selectedValue: props.value });
+  handleChange = (e, props) => this.setState({ selectedValue: props.value })
 
-  handleCustomCheckedChange = (e, props) => this.setState({ inputTabIndex: props.checked ? '0' : '-1' });
+  handleCustomCheckedChange = (e, props) =>
+    this.setState({ inputTabIndex: props.checked ? '0' : '-1' })
 }
 
-export default RadioGroupVerticalExample;
+export default RadioGroupVerticalExample

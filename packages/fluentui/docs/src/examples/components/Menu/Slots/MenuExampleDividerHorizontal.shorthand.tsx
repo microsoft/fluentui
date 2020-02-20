@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Icon, Menu, MenuShorthandKinds } from '@fluentui/react';
+import * as React from 'react'
+import { Icon, Menu, MenuShorthandKinds } from '@fluentui/react'
 
 const items = [
   { key: 'editorials', content: 'Editorials' },
@@ -15,8 +15,8 @@ const items = [
     content: <Icon name="triangle-right" />,
   },
   { key: 'events', content: 'Upcoming Events' },
-];
+]
 
-const MenuExampleKind = () => <Menu defaultActiveIndex={0} items={items} underlined />;
+const MenuExampleKind = () => <Menu defaultActiveIndex={0} items={items} underlined />
 
-export default MenuExampleKind;
+export default MenuExampleKind

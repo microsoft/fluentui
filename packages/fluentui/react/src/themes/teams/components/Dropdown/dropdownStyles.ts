@@ -1,16 +1,24 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle, ComponentSlotStyleFunction } from '@fluentui/styles';
-import { default as Dropdown, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
-import { DropdownVariables } from './dropdownVariables';
-import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import {
+  ComponentSlotStylesPrepared,
+  ICSSInJSStyle,
+  ComponentSlotStyleFunction,
+} from '@fluentui/styles'
+import {
+  default as Dropdown,
+  DropdownProps,
+  DropdownState,
+} from '../../../../components/Dropdown/Dropdown'
+import { DropdownVariables } from './dropdownVariables'
+import { pxToRem } from '../../../../utils'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
 
-type DropdownPropsAndState = DropdownProps & DropdownState;
+type DropdownPropsAndState = DropdownProps & DropdownState
 
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
   borderColor: 'transparent',
   borderBottomColor: 'transparent',
-};
+}
 
 const transparentColorStyleObj: ICSSInJSStyle = {
   ...transparentColorStyle,
@@ -20,9 +28,11 @@ const transparentColorStyleObj: ICSSInJSStyle = {
     ...transparentColorStyle,
     ':active': transparentColorStyle,
   },
-};
+}
 
-const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, DropdownVariables> = ({ variables: v }): ICSSInJSStyle => ({
+const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, DropdownVariables> = ({
+  variables: v,
+}): ICSSInJSStyle => ({
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
@@ -36,19 +46,19 @@ const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, Drop
   right: pxToRem(-2),
   height: '100%',
   width: v.toggleIndicatorSize,
-});
+})
 
 const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
   if (p.fluid) {
-    return '100%';
+    return '100%'
   }
 
   if (p.inline) {
-    return 'initial';
+    return 'initial'
   }
 
-  return v.width;
-};
+  return v.width
+}
 
 const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, DropdownVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
@@ -79,7 +89,10 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     },
     ...(p.focused && {
       ...(p.search && { borderBottomColor: v.borderColorFocus }),
-      ...(!p.search && !p.open && p.isFromKeyboard && getBorderFocusStyles({ siteVariables })[':focus-visible']),
+      ...(!p.search &&
+        !p.open &&
+        p.isFromKeyboard &&
+        getBorderFocusStyles({ siteVariables })[':focus-visible']),
     }),
     ...(p.inline && {
       ...transparentColorStyleObj,
@@ -127,7 +140,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
         paddingRight: 0,
         width: 'initial',
       }),
-    };
+    }
   },
 
   list: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -158,6 +171,6 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
   }),
 
   toggleIndicator: getIndicatorStyles,
-};
+}
 
-export default dropdownStyles;
+export default dropdownStyles

@@ -4,7 +4,7 @@ import {
   unstable_createAnimationStyles as createAnimationStyles,
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
   unstable_getStyles as getStyles,
-  useTelemetry,
+  useTelemetry
 } from '@fluentui/react-bindings';
 import cx from 'classnames';
 import * as _ from 'lodash';
@@ -165,7 +165,7 @@ const Animation: React.FC<AnimationProps> & {
     timeout,
     timingFunction,
     visible,
-    unmountOnExit,
+    unmountOnExit
   } = props;
 
   const handleAnimationEvent = (event: 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited') => () => {
@@ -182,7 +182,7 @@ const Animation: React.FC<AnimationProps> & {
       direction,
       fillMode,
       playState,
-      timingFunction,
+      timingFunction
     };
 
     return getStyles({
@@ -190,7 +190,7 @@ const Animation: React.FC<AnimationProps> & {
       displayName: Animation.displayName,
       props: {
         className,
-        styles: createAnimationStyles(animation, context.theme),
+        styles: createAnimationStyles(animation, context.theme)
       },
 
       disableAnimations: context.disableAnimations,
@@ -198,7 +198,7 @@ const Animation: React.FC<AnimationProps> & {
       rtl: context.rtl,
       performance: {},
       saveDebug: _.noop,
-      theme: context.theme,
+      theme: context.theme
     });
   }, [className, context, name, delay, direction, duration, fillMode, iterationCount, keyframeParams, playState, timingFunction]);
 
@@ -247,7 +247,7 @@ Animation.propTypes = {
     accessibility: false,
     as: false,
     content: false,
-    children: false,
+    children: false
   }),
   children: PropTypes.oneOfType([PropTypes.func, PropTypes.element]),
   name: PropTypes.string,
@@ -268,15 +268,15 @@ Animation.propTypes = {
     PropTypes.shape({
       appear: PropTypes.number,
       enter: PropTypes.number,
-      exit: PropTypes.number,
-    }),
+      exit: PropTypes.number
+    })
   ]),
   onEnter: PropTypes.func,
   onEntering: PropTypes.func,
   onEntered: PropTypes.func,
   onExit: PropTypes.func,
   onExiting: PropTypes.func,
-  onExited: PropTypes.func,
+  onExited: PropTypes.func
 };
 Animation.handledProps = Object.keys(Animation.propTypes) as any;
 

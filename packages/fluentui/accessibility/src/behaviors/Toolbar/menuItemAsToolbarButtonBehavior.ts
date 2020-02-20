@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key';
+import * as keyboardKey from 'keyboard-key'
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
-import { Accessibility } from '../../types';
-import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
+import { Accessibility } from '../../types'
+import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior'
 
 /**
  * @description
@@ -52,10 +52,13 @@ const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = pr
         keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
       },
       doNotNavigateNextParentItem: {
-        keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null,
+        keyCombinations:
+          props.menu && props.menuOpen
+            ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }]
+            : null,
       },
     },
   },
-});
+})
 
-export default menuItemAsToolbarButtonBehavior;
+export default menuItemAsToolbarButtonBehavior

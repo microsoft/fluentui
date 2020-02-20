@@ -1,9 +1,12 @@
-import { DropdownSelectedItemProps } from '../../../../components/Dropdown/DropdownSelectedItem';
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DropdownVariables } from './dropdownVariables';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { DropdownSelectedItemProps } from '../../../../components/Dropdown/DropdownSelectedItem'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { DropdownVariables } from './dropdownVariables'
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
 
-const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedItemProps, DropdownVariables> = {
+const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<
+  DropdownSelectedItemProps,
+  DropdownVariables
+> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     margin: '.4rem 0 0 .4rem',
     color: v.selectedItemColor,
@@ -27,6 +30,6 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
       ...getIconFillOrOutlineStyles({ outline: false }),
     },
   }),
-};
+}
 
-export default dropdownSelectedItemStyles;
+export default dropdownSelectedItemStyles

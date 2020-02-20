@@ -1,11 +1,11 @@
-import { SegmentProps } from '../../../../components/Segment/Segment';
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { SegmentVariables } from './segmentVariables';
-import { getColorScheme } from '../../colors';
+import { SegmentProps } from '../../../../components/Segment/Segment'
+import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles'
+import { SegmentVariables } from './segmentVariables'
+import { getColorScheme } from '../../colors'
 
 const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme, p.color);
+    const colors = getColorScheme(v.colorScheme, p.color)
 
     return {
       borderColor: 'transparent',
@@ -31,8 +31,8 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables>
           backgroundColor: v.disabledColor,
         }),
       }),
-    };
+    }
   },
-};
+}
 
-export default segmentStyles;
+export default segmentStyles

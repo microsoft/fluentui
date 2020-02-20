@@ -3,18 +3,18 @@ import { ComponentVariablesPrepared, emptyTheme, ThemePrepared } from '@fluentui
 
 const siteVariables = {
   ...emptyTheme.siteVariables,
-  brand: 'blue',
+  brand: 'blue'
 };
 const componentVariables: ComponentVariablesPrepared = (siteVariables = emptyTheme.siteVariables) => ({
-  backgroundColor: siteVariables.brand,
+  backgroundColor: siteVariables.brand
 });
 
 const createTheme: (displayName?: string) => ThemePrepared = displayName => ({
   ...emptyTheme,
   siteVariables,
   componentVariables: {
-    [displayName || 'Test']: componentVariables,
-  },
+    [displayName || 'Test']: componentVariables
+  }
 });
 
 describe('resolveVariables', () => {
@@ -25,7 +25,7 @@ describe('resolveVariables', () => {
 
   test('merges theme with input variables', () => {
     const propsVariables = () => ({
-      color: 'red',
+      color: 'red'
     });
     const variables = resolveVariables('Test', createTheme('Test'), propsVariables, false);
     expect(variables).toMatchObject({ backgroundColor: 'blue', color: 'red' });
@@ -33,7 +33,7 @@ describe('resolveVariables', () => {
 
   test("allows input variabes to override theme's", () => {
     const propsVariables = {
-      backgroundColor: 'green',
+      backgroundColor: 'green'
     };
     const variables = resolveVariables('Test', createTheme('Test'), propsVariables, false);
     expect(variables).toMatchObject({ backgroundColor: 'green' });

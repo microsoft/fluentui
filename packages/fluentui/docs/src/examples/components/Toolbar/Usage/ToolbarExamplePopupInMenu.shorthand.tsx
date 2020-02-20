@@ -1,9 +1,9 @@
-import * as React from 'react';
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react';
+import * as React from 'react'
+import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react'
 
 const ToolbarExamplePopupInMenu = () => {
-  const [menu1Open, setMenu1Open] = React.useState(false);
-  const [menu2Open, setMenu2Open] = React.useState(false);
+  const [menu1Open, setMenu1Open] = React.useState(false)
+  const [menu2Open, setMenu2Open] = React.useState(false)
 
   return (
     <Toolbar
@@ -23,7 +23,7 @@ const ToolbarExamplePopupInMenu = () => {
           ],
           menuOpen: menu1Open,
           onMenuOpenChange: (e, { menuOpen }) => {
-            setMenu1Open(menuOpen);
+            setMenu1Open(menuOpen)
           },
         },
         {
@@ -47,12 +47,12 @@ const ToolbarExamplePopupInMenu = () => {
           ],
           menuOpen: menu2Open,
           onMenuOpenChange: (e, { menuOpen }) => {
-            setMenu2Open(menuOpen);
+            setMenu2Open(menuOpen)
           },
         },
       ]}
     />
-  );
-};
+  )
+}
 
-export default ToolbarExamplePopupInMenu;
+export default ToolbarExamplePopupInMenu

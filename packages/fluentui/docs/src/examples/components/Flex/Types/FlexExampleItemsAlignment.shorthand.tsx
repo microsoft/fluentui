@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Flex, Segment } from '@fluentui/react';
+import * as React from 'react'
+import { Flex, Segment } from '@fluentui/react'
 
 const FlexExampleItemsAlignment = () => (
   <Flex column gap="gap.large" hAlign="center" vAlign="center" debug>
@@ -31,13 +31,19 @@ const FlexExampleItemsAlignment = () => (
     ].map(rowOfAlignmentProps => (
       <Flex gap="gap.large" key={rowOfAlignmentProps.key}>
         {rowOfAlignmentProps.items.map((alignmentProps: any) => (
-          <Flex inline {...alignmentProps} key={alignmentProps.vAlign} style={{ width: '100px', height: '100px' }} debug>
+          <Flex
+            inline
+            {...alignmentProps}
+            key={alignmentProps.vAlign}
+            style={{ width: '100px', height: '100px' }}
+            debug
+          >
             <Segment styles={{ width: '30px', height: '30px' }} />
           </Flex>
         ))}
       </Flex>
     ))}
   </Flex>
-);
+)
 
-export default FlexExampleItemsAlignment;
+export default FlexExampleItemsAlignment

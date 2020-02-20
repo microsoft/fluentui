@@ -1,16 +1,16 @@
-import * as React from 'react';
-import { isConformant, handlesAccessibility } from 'test/specs/commonTests';
-import { mountWithProviderAndGetComponent } from 'test/utils';
-import TableRow from 'src/components/Table/TableRow';
+import * as React from 'react'
+import { isConformant, handlesAccessibility } from 'test/specs/commonTests'
+import { mountWithProviderAndGetComponent } from 'test/utils'
+import TableRow from 'src/components/Table/TableRow'
 
-import Table from 'src/components/Table/Table';
+import Table from 'src/components/Table/Table'
 
 describe('Table', () => {
-  isConformant(Table);
+  isConformant(Table)
 
   describe('accessiblity', () => {
-    handlesAccessibility(Table, { defaultRootRole: 'table' });
-  });
+    handlesAccessibility(Table, { defaultRootRole: 'table' })
+  })
 
   const header = {
     key: 'header',
@@ -20,7 +20,7 @@ describe('Table', () => {
       { content: 'Picture', key: 'pic' },
       { content: 'Age', key: 'action' },
     ],
-  };
+  }
   const rows = [
     {
       key: 1,
@@ -53,77 +53,77 @@ describe('Table', () => {
         { content: '30000000000000 years', key: '3-4' },
       ],
     },
-  ];
+  ]
 
   it('renders as `div`', () => {
     const table = mountWithProviderAndGetComponent(Table, <Table rows={rows} />)
       .find('.ui-table')
-      .hostNodes();
+      .hostNodes()
 
-    expect(table.is('div')).toBe(true);
-  });
+    expect(table.is('div')).toBe(true)
+  })
 
   describe('header', () => {
     it('render children', () => {
       const table = mountWithProviderAndGetComponent(Table, <Table header={header} />)
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableHeader = table.find(TableRow);
-      expect(tableHeader.length).toBe(1);
-    });
+      const tableHeader = table.find(TableRow)
+      expect(tableHeader.length).toBe(1)
+    })
 
     it('does not render empty children', () => {
       const table = mountWithProviderAndGetComponent(Table, <Table />)
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableHeader = table.find(TableRow);
-      expect(tableHeader.length).toBe(0);
-    });
-  });
+      const tableHeader = table.find(TableRow)
+      expect(tableHeader.length).toBe(0)
+    })
+  })
 
   describe('rows', () => {
     it('render children', () => {
       const table = mountWithProviderAndGetComponent(Table, <Table rows={rows} />)
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableRows = table.find(TableRow);
-      expect(tableRows.length).toBe(3);
-    });
+      const tableRows = table.find(TableRow)
+      expect(tableRows.length).toBe(3)
+    })
 
     it('does not render empty children', () => {
       const table = mountWithProviderAndGetComponent(Table, <Table />)
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableRows = table.find(TableRow);
-      expect(tableRows.length).toBe(0);
-    });
-  });
+      const tableRows = table.find(TableRow)
+      expect(tableRows.length).toBe(0)
+    })
+  })
 
   describe('compact', () => {
     it('render compact rows when enabled', () => {
       const table = mountWithProviderAndGetComponent(Table, <Table rows={rows} compact />)
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableRows = table.find(TableRow);
-      expect(tableRows.first().props().compact).toBeTruthy();
-      expect(tableRows.last().props().compact).toBeTruthy();
-    });
+      const tableRows = table.find(TableRow)
+      expect(tableRows.first().props().compact).toBeTruthy()
+      expect(tableRows.last().props().compact).toBeTruthy()
+    })
 
     it('does not render compact rows when disabled', () => {
       const table = mountWithProviderAndGetComponent(Table, <Table rows={rows} />)
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableRows = table.find(TableRow);
-      expect(tableRows.first().props().compact).toBeFalsy();
-      expect(tableRows.last().props().compact).toBeFalsy();
-    });
-  });
+      const tableRows = table.find(TableRow)
+      expect(tableRows.first().props().compact).toBeFalsy()
+      expect(tableRows.last().props().compact).toBeFalsy()
+    })
+  })
 
   describe('children', () => {
     it('are rendered when specified', () => {
@@ -157,10 +157,10 @@ describe('Table', () => {
         </Table>,
       )
         .find('.ui-table')
-        .hostNodes();
+        .hostNodes()
 
-      const tableRows = table.find(TableRow);
-      expect(tableRows.length).toBe(4);
-    });
-  });
-});
+      const tableRows = table.find(TableRow)
+      expect(tableRows.length).toBe(4)
+    })
+  })
+})

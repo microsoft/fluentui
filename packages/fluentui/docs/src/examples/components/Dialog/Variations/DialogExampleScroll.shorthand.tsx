@@ -20,8 +20,8 @@ const DialogExampleScroll = () => (
       ),
       styles: {
         height: '500px',
-        overflow: 'scroll',
-      },
+        overflow: 'scroll'
+      }
     }}
     trigger={<Button content="Open a dialog" />}
   />

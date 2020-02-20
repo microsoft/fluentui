@@ -1,15 +1,15 @@
-import * as React from 'react';
-import { Toolbar, Button, ToolbarMenu } from '@fluentui/react';
+import * as React from 'react'
+import { Toolbar, Button, ToolbarMenu } from '@fluentui/react'
 
 export const selectors = {
   beforeToolbarId: 'before',
   afterToolbarId: 'after',
   triggerButtonId: 'trigger',
   toolbarMenu: ToolbarMenu.className,
-};
+}
 
 const ToolbarExampleMenuShorthand = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false)
 
   return (
     <>
@@ -35,7 +35,7 @@ const ToolbarExampleMenuShorthand = () => {
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              setMenuOpen(menuOpen);
+              setMenuOpen(menuOpen)
             },
           },
           {
@@ -46,7 +46,7 @@ const ToolbarExampleMenuShorthand = () => {
       />
       <Button id={selectors.afterToolbarId}>After</Button>
     </>
-  );
-};
+  )
+}
 
-export default ToolbarExampleMenuShorthand;
+export default ToolbarExampleMenuShorthand

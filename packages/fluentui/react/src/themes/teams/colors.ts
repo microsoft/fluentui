@@ -6,8 +6,13 @@ import {
   ColorScheme,
   StrictColorSchemeMapping,
   StrictColorScheme,
-} from '../types';
-import { TeamsColorNames, TeamsContextualColors, TeamsNaturalColors, TeamsTransparentColors } from './types';
+} from '../types'
+import {
+  TeamsColorNames,
+  TeamsContextualColors,
+  TeamsNaturalColors,
+  TeamsTransparentColors,
+} from './types'
 
 export const contextualColors: TeamsContextualColors = {
   brand: {
@@ -24,7 +29,7 @@ export const contextualColors: TeamsContextualColors = {
     900: '#33344A', // siteVariables.brand02, dark theme brand16, same as 900 prev
     1000: '#373644',
   },
-};
+}
 
 export const naturalColors: TeamsNaturalColors = {
   grey: {
@@ -110,17 +115,17 @@ export const naturalColors: TeamsNaturalColors = {
     800: undefined,
     900: undefined,
   },
-};
+}
 
 const contextualAndNaturalColors: TeamsContextualColors & TeamsNaturalColors = {
   ...contextualColors,
   ...naturalColors,
-};
+}
 
 export const primitiveColors: PrimitiveColors = {
   black: '#000',
   white: '#fff',
-};
+}
 
 export const transparentColors: TeamsTransparentColors = {
   silver: {
@@ -167,13 +172,13 @@ export const transparentColors: TeamsTransparentColors = {
     800: undefined,
     900: undefined,
   },
-};
+}
 
 export const colors: ColorPalette<TeamsTransparentColors> = {
   ...contextualAndNaturalColors,
   ...primitiveColors,
   ...transparentColors,
-};
+}
 
 export const createColorScheme = (customValues = {}) => {
   return {
@@ -207,8 +212,8 @@ export const createColorScheme = (customValues = {}) => {
     borderDisabled: undefined,
     shadowDisabled: undefined,
     ...customValues,
-  };
-};
+  }
+}
 
 export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
   default: createColorScheme({
@@ -480,24 +485,35 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover1: colors.amethyst[500],
     backgroundActive: colors.amethyst[700],
   }),
-};
+}
 
-colorScheme.grey = colorScheme.default;
+colorScheme.grey = colorScheme.default
 
-export const availableColors = ['default', 'black', 'white', 'brand', 'grey', 'red', 'yellow', 'green', 'pink', 'orange'];
+export const availableColors = [
+  'default',
+  'black',
+  'white',
+  'brand',
+  'grey',
+  'red',
+  'yellow',
+  'green',
+  'pink',
+  'orange',
+]
 
 export const isValidColor = (color: string): boolean => {
-  return color && availableColors.indexOf(color) >= 0;
-};
+  return color && availableColors.indexOf(color) >= 0
+}
 
 export const getColorSchemeKey = (color: string, primary?: boolean): string => {
-  return color && isValidColor(color) ? color : primary ? 'brand' : 'default';
-};
+  return color && isValidColor(color) ? color : primary ? 'brand' : 'default'
+}
 
 export const getColorScheme = <T extends ComponentAreaName | string>(
   colorScheme: StrictColorSchemeMapping<StrictColorScheme<T>, TeamsColorNames>,
   color?: string,
   primary?: boolean,
 ): StrictColorScheme<T> => {
-  return colorScheme[getColorSchemeKey(color, primary)];
-};
+  return colorScheme[getColorSchemeKey(color, primary)]
+}

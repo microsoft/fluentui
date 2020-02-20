@@ -1,9 +1,13 @@
-import { Table, Button, Flex } from '@fluentui/react';
-import { gridNestedBehavior, gridCellWithFocusableElementBehavior, gridCellMultipleFocusableBehavior } from '@fluentui/accessibility';
-import * as React from 'react';
+import { Table, Button, Flex } from '@fluentui/react'
+import {
+  gridNestedBehavior,
+  gridCellWithFocusableElementBehavior,
+  gridCellMultipleFocusableBehavior,
+} from '@fluentui/accessibility'
+import * as React from 'react'
 
 function handleRowClick(index) {
-  alert(`OnClick on the row ${index} executed.`);
+  alert(`OnClick on the row ${index} executed.`)
 }
 
 const header = {
@@ -16,7 +20,7 @@ const header = {
     { content: 'Tags', key: 'tags' },
     { key: 'more options', 'aria-label': 'options' },
   ],
-};
+}
 
 const moreOptionCell = {
   content: <Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />,
@@ -24,10 +28,10 @@ const moreOptionCell = {
   key: '1-6',
   accessibility: gridCellWithFocusableElementBehavior,
   onClick: e => {
-    alert('more option button clicked');
-    e.stopPropagation();
+    alert('more option button clicked')
+    e.stopPropagation()
   },
-};
+}
 
 const moreActionCell = {
   content: (
@@ -40,7 +44,7 @@ const moreActionCell = {
   ),
   key: '1-5',
   accessibility: gridCellMultipleFocusableBehavior,
-};
+}
 
 const rowsPlain = [
   {
@@ -80,7 +84,7 @@ const rowsPlain = [
     ],
     onClick: () => handleRowClick(3),
   },
-];
+]
 
 const StaticTable = () => (
   <Table
@@ -90,6 +94,6 @@ const StaticTable = () => (
     aria-label="Nested navigation"
     accessibility={gridNestedBehavior}
   />
-);
+)
 
-export default StaticTable;
+export default StaticTable

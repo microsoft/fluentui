@@ -16,10 +16,10 @@ export const createCheckboxManager = (config: Partial<ManagerConfig<CheckboxStat
     ...config,
     state: {
       checked: false,
-      ...config.state,
+      ...config.state
     },
     actions: {
       toggle: checked => () => ({ checked }),
-      ...config.actions,
-    },
+      ...config.actions
+    }
   });

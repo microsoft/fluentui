@@ -7,7 +7,7 @@
  * https://facebook.github.io/react/docs/events.html
  */
 
-const noop = () => undefined;
+const noop = () => undefined
 
 const baseShape = {
   bubbles: null,
@@ -25,7 +25,7 @@ const baseShape = {
   target: null,
   timeStamp: null,
   type: null,
-};
+}
 
 // ------------------------------------
 // Event Types
@@ -170,7 +170,7 @@ export const types = {
     listeners: ['onTransitionEnd'],
     eventShape: { ...baseShape, propertyName: null, pseudoElement: null, elapsedTime: null },
   },
-};
+}
 // ------------------------------------
 // Methods
 // ------------------------------------
@@ -181,11 +181,11 @@ export const types = {
  * @param type - The string name of the event shape or actual event shape to compare against.
  */
 export const hasShape = (event: object, type: string | object): boolean => {
-  const shape = typeof type === 'string' ? types[type].shape : type;
-  return Object.keys(event).every(key => key in shape);
-};
+  const shape = typeof type === 'string' ? types[type].shape : type
+  return Object.keys(event).every(key => key in shape)
+}
 
 export default {
   types,
   hasShape,
-};
+}

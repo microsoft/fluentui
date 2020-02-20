@@ -19,7 +19,9 @@ export interface Composeable {
 }
 
 /** Defines a helper type for components using forwardRef. */
-export type ForwardRefComponent<TProps, TElement> = React.FunctionComponent<TProps & React.RefAttributes<TElement>>;
+export type ForwardRefComponent<TProps, TElement> = React.FunctionComponent<
+  TProps & React.RefAttributes<TElement>
+>;
 
 interface ComposedFunctionComponent<TProps> extends React.FunctionComponent<TProps> {
   __optionsSet?: ComposeOptions[];
@@ -51,7 +53,9 @@ export const _composeFactory = (useThemeHook: any = useTheme) => {
       const slots = resolveSlots(componentName, optionsSet, theme);
 
       if (!theme) {
-        throw new Error('No theme specified. Plese provide a ThemeProvider. See aka.ms/react-theming for more details.');
+        throw new Error(
+          'No theme specified. Plese provide a ThemeProvider. See aka.ms/react-theming for more details.',
+        );
       }
 
       return renderFn({
@@ -75,7 +79,11 @@ export const _composeFactory = (useThemeHook: any = useTheme) => {
     return Component as React.FunctionComponent<TProps>;
   };
 
-  const resolveSlots = (name: string | undefined, optionsSet: Options, theme: any): SlotsAssignment => {
+  const resolveSlots = (
+    name: string | undefined,
+    optionsSet: Options,
+    theme: any,
+  ): SlotsAssignment => {
     const result = {};
     if (optionsSet && optionsSet.length > 0) {
       optionsSet.forEach(os => {
@@ -122,7 +130,12 @@ const _mergeOptions = (options: ComposeOptions, baseOptions?: Options): Options 
   return optionsSet;
 };
 
-const _getClasses = (name: string | undefined, theme: ITheme, classNamesCache: WeakMap<any, any>, optionsSet: any[]) => {
+const _getClasses = (
+  name: string | undefined,
+  theme: ITheme,
+  classNamesCache: WeakMap<any, any>,
+  optionsSet: any[],
+) => {
   let classes = classNamesCache.get(theme);
 
   if (!classes) {

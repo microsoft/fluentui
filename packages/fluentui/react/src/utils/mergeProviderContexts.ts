@@ -47,24 +47,24 @@ const mergeProviderContexts = (...contexts: (ProviderContextInput | ProviderCont
   const emptyContext: ProviderContextPrepared = {
     theme: {
       siteVariables: {
-        fontSizes: {},
+        fontSizes: {}
       },
       componentVariables: {},
       componentStyles: {},
       fontFaces: [],
       staticStyles: [],
       icons: {},
-      animations: {},
+      animations: {}
     },
     rtl: false,
     disableAnimations: false,
     target: isBrowser() ? document : undefined, // eslint-disable-line no-undef
     performance: {
       enableStylesCaching: true,
-      enableVariablesCaching: true,
+      enableVariablesCaching: true
     },
     telemetry: undefined,
-    renderer: undefined,
+    renderer: undefined
   };
 
   return contexts.reduce<ProviderContextPrepared>((acc: ProviderContextPrepared, next: ProviderContextInput | ProviderContextPrepared) => {

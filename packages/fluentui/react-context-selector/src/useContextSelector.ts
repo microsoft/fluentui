@@ -16,7 +16,7 @@ type UseSelectorRef<Value, SelectedValue> = {
  */
 const useContextSelector = <Value, SelectedValue>(
   context: Context<Value>,
-  selector: ContextSelector<Value, SelectedValue>,
+  selector: ContextSelector<Value, SelectedValue>
 ): SelectedValue => {
   const { subscribe, value } = React.useContext((context as unknown) as Context<ContextValue<Value>>);
   const [, forceUpdate] = React.useReducer((c: number) => c + 1, 0) as [never, () => void];
@@ -28,7 +28,7 @@ const useContextSelector = <Value, SelectedValue>(
     ref.current = {
       selector,
       value,
-      selected,
+      selected
     };
   });
   useIsomorphicLayoutEffect(() => {

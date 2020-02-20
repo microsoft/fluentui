@@ -1,19 +1,19 @@
-import { pxToRem, stringLiteralsArray } from '../../../../utils';
-import { ItemType } from '../../../types';
-import { TeamsSchemeMappingWithAreas } from '../../types';
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
-import { SiteVariablesPrepared } from '@fluentui/styles';
+import { pxToRem, stringLiteralsArray } from '../../../../utils'
+import { ItemType } from '../../../types'
+import { TeamsSchemeMappingWithAreas } from '../../types'
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
+import { SiteVariablesPrepared } from '@fluentui/styles'
 
-export const labelColorAreas = stringLiteralsArray('foreground', 'background');
-export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof labelColorAreas>>;
+export const labelColorAreas = stringLiteralsArray('foreground', 'background')
+export type LabelColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof labelColorAreas>>
 
 export interface LabelVariables {
-  colorScheme: LabelColorSchemeMapping;
-  circularRadius: string;
-  padding: string;
-  startPaddingLeft: string;
-  endPaddingRight: string;
-  height: string;
+  colorScheme: LabelColorSchemeMapping
+  circularRadius: string
+  padding: string
+  startPaddingLeft: string
+  endPaddingRight: string
+  height: string
 }
 
 export default (siteVars: SiteVariablesPrepared): LabelVariables => {
@@ -28,7 +28,7 @@ export default (siteVars: SiteVariablesPrepared): LabelVariables => {
     red: {
       background: siteVars.colorScheme.red.foreground1,
     },
-  });
+  })
 
   return {
     colorScheme: pickValuesFromColorScheme(colorScheme, labelColorAreas),
@@ -37,5 +37,5 @@ export default (siteVars: SiteVariablesPrepared): LabelVariables => {
     startPaddingLeft: '0px',
     endPaddingRight: '0px',
     height: pxToRem(20),
-  };
-};
+  }
+}

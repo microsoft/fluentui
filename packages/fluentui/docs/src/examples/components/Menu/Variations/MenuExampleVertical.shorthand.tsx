@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Menu } from '@fluentui/react';
+import * as React from 'react'
+import { Menu } from '@fluentui/react'
 
 const items = [
   {
@@ -41,8 +41,8 @@ const items = [
       ],
     },
   },
-];
+]
 
-const MenuExampleVertical = () => <Menu defaultActiveIndex={0} items={items} vertical />;
+const MenuExampleVertical = () => <Menu defaultActiveIndex={0} items={items} vertical />
 
-export default MenuExampleVertical;
+export default MenuExampleVertical

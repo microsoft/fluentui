@@ -4,7 +4,7 @@ import {
   ComponentVariablesObject,
   mergeComponentVariables,
   ThemePrepared,
-  withDebugId,
+  withDebugId
 } from '@fluentui/styles';
 
 const variablesCache = new WeakMap<ThemePrepared, Record<string, ComponentVariablesObject>>();
@@ -13,7 +13,7 @@ const resolveVariables = (
   displayName: string,
   theme: ThemePrepared,
   variables: ComponentVariablesInput | undefined,
-  enabledVariablesCaching: boolean | undefined,
+  enabledVariablesCaching: boolean | undefined
 ): ComponentVariablesObject => {
   //
   // Simple caching model, works only if there is no `props.variables`

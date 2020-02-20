@@ -1,6 +1,6 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
-import { pxToRem } from '../../../../utils';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ICSSInJSStyle } from '@fluentui/styles'
+import { pxToRem } from '../../../../utils'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
 
 const hierarchicalTreeTitleStyles = {
   root: ({ variables, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -10,6 +10,6 @@ const hierarchicalTreeTitleStyles = {
     position: 'relative',
     ...getBorderFocusStyles({ siteVariables }),
   }),
-};
+}
 
-export default hierarchicalTreeTitleStyles;
+export default hierarchicalTreeTitleStyles

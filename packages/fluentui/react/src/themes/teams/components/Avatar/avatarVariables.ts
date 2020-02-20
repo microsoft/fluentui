@@ -1,8 +1,8 @@
 export interface AvatarVariables {
-  avatarBorderColor: string;
-  avatarBorderWidth: string;
-  statusBorderColor: string;
-  statusBorderWidth: string;
+  avatarBorderColor: string
+  avatarBorderWidth: string
+  statusBorderColor: string
+  statusBorderWidth: string
 }
 
 export default (siteVariables): AvatarVariables => ({
@@ -10,4 +10,4 @@ export default (siteVariables): AvatarVariables => ({
   avatarBorderWidth: '0',
   statusBorderColor: siteVariables.bodyBackground,
   statusBorderWidth: '2px',
-});
+})

@@ -7,7 +7,7 @@ import {
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
-  useTelemetry,
+  useTelemetry
 } from '@fluentui/react-bindings';
 import {
   emptyTheme,
@@ -15,7 +15,7 @@ import {
   ComponentVariablesObject,
   DebugData,
   PropsWithVarsAndStyles,
-  ThemePrepared,
+  ThemePrepared
 } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -76,8 +76,8 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
     theme: context.theme || emptyTheme,
     performance: {
       enableVariablesCaching: typeof enableVariablesCaching === 'boolean' ? enableVariablesCaching : true,
-      enableStylesCaching: false, // we cannot enable caching for class components
-    },
+      enableStylesCaching: false // we cannot enable caching for class components
+    }
   });
 
   const resolvedConfig: RenderResultConfig<P> = {
@@ -88,7 +88,7 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
     styles,
     accessibility,
     rtl,
-    theme,
+    theme
   };
 
   if (accessibility.focusZone) {
@@ -97,7 +97,7 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
     resolvedConfig.ElementType = FocusZone as any;
     resolvedConfig.unhandledProps = {
       ...resolvedConfig.unhandledProps,
-      ...accessibility.focusZone.props,
+      ...accessibility.focusZone.props
     };
     resolvedConfig.unhandledProps.as = originalElementType;
     resolvedConfig.unhandledProps.isRtl = resolvedConfig.rtl;

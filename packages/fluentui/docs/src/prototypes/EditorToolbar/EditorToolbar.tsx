@@ -14,28 +14,28 @@ import {
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
   ToolbarMenuItemShorthandKinds,
-} from '@fluentui/react';
-import { useEventListener } from '@fluentui/react-component-event-listener';
-import * as keyboardKey from 'keyboard-key';
-import * as _ from 'lodash';
-import * as React from 'react';
+} from '@fluentui/react'
+import { useEventListener } from '@fluentui/react-component-event-listener'
+import * as keyboardKey from 'keyboard-key'
+import * as _ from 'lodash'
+import * as React from 'react'
 
-import { EditorToolbarAction, EditorToolbarState, FontFormatting } from './editorToolbarReducer';
-import EditorToolbarTable from './EditorToolbarTable';
+import { EditorToolbarAction, EditorToolbarState, FontFormatting } from './editorToolbarReducer'
+import EditorToolbarTable from './EditorToolbarTable'
 
 type EditorToolbarProps = EditorToolbarState & {
-  dispatch: React.Dispatch<EditorToolbarAction>;
-  target?: Document;
-};
+  dispatch: React.Dispatch<EditorToolbarAction>
+  target?: Document
+}
 
-type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
-type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
+type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>
+type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>
 
 const EditorToolbar: React.FC<EditorToolbarProps> = props => {
-  const overflowIndex = React.useRef<number>();
+  const overflowIndex = React.useRef<number>()
 
-  const linkItemRef = React.useRef<HTMLElement>(null);
-  const toolbarRef = React.useRef<HTMLElement>(null);
+  const linkItemRef = React.useRef<HTMLElement>(null)
+  const toolbarRef = React.useRef<HTMLElement>(null)
 
   const fontFormattingItems = [
     {
@@ -62,11 +62,11 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       active: props.fontFormatting === FontFormatting.Paragraph,
       onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Paragraph }),
     },
-  ];
+  ]
 
   const combinedItems: {
-    toolbarItem: ToolbarItem;
-    overflowItem?: OverflowItem;
+    toolbarItem: ToolbarItem
+    overflowItem?: OverflowItem
   }[] = [
     {
       toolbarItem: {
@@ -103,7 +103,8 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       toolbarItem: {
         menu: fontFormattingItems,
         menuOpen: props.fontFormattingOpen,
-        onMenuOpenChange: (e, { menuOpen }) => props.dispatch({ type: 'FONT_FORMATTING_OPEN', value: menuOpen }),
+        onMenuOpenChange: (e, { menuOpen }) =>
+          props.dispatch({ type: 'FONT_FORMATTING_OPEN', value: menuOpen }),
         children: (
           <Flex gap="gap.smaller">
             <Text styles={{ whiteSpace: 'nowrap' }} content={props.fontFormatting} />
@@ -120,14 +121,14 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
               <Menu
                 items={fontFormattingItems}
                 onItemClick={() => {
-                  props.dispatch({ type: 'MORE', value: false });
+                  props.dispatch({ type: 'MORE', value: false })
                 }}
                 vertical
               />
             ),
           },
           onOpenChange: (e, { open }) => {
-            props.dispatch({ type: 'FONT_FORMATTING_OPEN', value: open });
+            props.dispatch({ type: 'FONT_FORMATTING_OPEN', value: open })
           },
           open: props.fontFormattingOpen,
         },
@@ -208,8 +209,8 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
               <Text>Insert your table</Text>
               <EditorToolbarTable
                 onClick={() => {
-                  props.dispatch({ type: 'TABLE', value: false });
-                  props.dispatch({ type: 'MORE', value: false });
+                  props.dispatch({ type: 'TABLE', value: false })
+                  props.dispatch({ type: 'MORE', value: false })
                 }}
               />
             </>
@@ -219,45 +220,45 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
         },
       },
     },
-  ];
+  ]
 
   const linkItemIndex = combinedItems.findIndex(
     // @ts-ignore
     item => item.overflowItem && item.overflowItem.key === 'link',
-  );
-  const linkInOverflowMenu = overflowIndex.current <= linkItemIndex;
+  )
+  const linkInOverflowMenu = overflowIndex.current <= linkItemIndex
   // Based on position of link item we choose target element for Popup. It's safe to access
   // ".current" in this case because Popup will be opened after item will be rendered
-  const linkTarget = linkInOverflowMenu ? toolbarRef.current : linkItemRef.current;
+  const linkTarget = linkInOverflowMenu ? toolbarRef.current : linkItemRef.current
 
   useEventListener({
     listener: (e: KeyboardEvent) => {
-      const code = keyboardKey.getCode(e);
+      const code = keyboardKey.getCode(e)
 
       if (code === keyboardKey.K && e.ctrlKey) {
         // Ctrl+K is a browser hotkey, it's required to prevent defaults
-        e.preventDefault();
-        props.dispatch({ type: 'LINK', value: true });
+        e.preventDefault()
+        props.dispatch({ type: 'LINK', value: true })
       }
     },
     type: 'keydown',
     target: props.target,
-  });
+  })
   useEventListener({
     listener: () => {
       // All controlled popups should be closed on resize
 
       if (props.table) {
-        props.dispatch({ type: 'TABLE', value: false });
+        props.dispatch({ type: 'TABLE', value: false })
       }
 
       if (props.link) {
-        props.dispatch({ type: 'LINK', value: false });
+        props.dispatch({ type: 'LINK', value: false })
       }
     },
     type: 'resize',
     target: props.target.defaultView,
-  });
+  })
 
   return (
     <>
@@ -278,8 +279,15 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
             />
             <Divider hidden />
             <Flex gap="gap.small" hAlign="end">
-              <Button content="Cancel" onClick={() => props.dispatch({ type: 'LINK', value: false })} />
-              <Button content="Insert" onClick={() => props.dispatch({ type: 'LINK', value: false })} primary />
+              <Button
+                content="Cancel"
+                onClick={() => props.dispatch({ type: 'LINK', value: false })}
+              />
+              <Button
+                content="Insert"
+                onClick={() => props.dispatch({ type: 'LINK', value: false })}
+                primary
+              />
             </Flex>
           </>
         }
@@ -296,31 +304,35 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
             overflow
             overflowOpen={props.more}
             onOverflow={itemsVisible => {
-              overflowIndex.current = itemsVisible - 1;
+              overflowIndex.current = itemsVisible - 1
             }}
-            onOverflowOpenChange={(e, { overflowOpen }) => props.dispatch({ type: 'MORE', value: overflowOpen })}
+            onOverflowOpenChange={(e, { overflowOpen }) =>
+              props.dispatch({ type: 'MORE', value: overflowOpen })
+            }
             getOverflowItems={startIndex => {
-              const firstToolbarItem = combinedItems[startIndex].toolbarItem;
-              let actualIndex = startIndex;
+              const firstToolbarItem = combinedItems[startIndex].toolbarItem
+              let actualIndex = startIndex
 
               // We want to remove first item if it's a divider
               // @ts-ignore
               if (firstToolbarItem.kind === 'divider') {
-                actualIndex += 1;
+                actualIndex += 1
               }
 
-              return combinedItems.slice(actualIndex).map(item => item.overflowItem || item.toolbarItem);
+              return combinedItems
+                .slice(actualIndex)
+                .map(item => item.overflowItem || item.toolbarItem)
             }}
           />
         </Ref>
         <Toolbar items={[{ key: 'trash', icon: { name: 'trash-can', outline: true } }]} />
       </Flex>
     </>
-  );
-};
+  )
+}
 
 EditorToolbar.defaultProps = {
   target: document,
-};
+}
 
-export default EditorToolbar;
+export default EditorToolbar

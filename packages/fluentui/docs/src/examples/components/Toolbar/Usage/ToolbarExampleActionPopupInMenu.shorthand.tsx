@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Toolbar, Button, Form } from '@fluentui/react';
+import * as React from 'react'
+import { Toolbar, Button, Form } from '@fluentui/react'
 
 const CustomPopup = ({ onConfirm }) => {
   return (
@@ -23,11 +23,11 @@ const CustomPopup = ({ onConfirm }) => {
         },
       ]}
     />
-  );
-};
+  )
+}
 
 const ToolbarExampleActionPopupInMenu = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [menuOpen, setMenuOpen] = React.useState(false)
   return (
     <Toolbar
       aria-label="Popup with an action in menu"
@@ -42,7 +42,7 @@ const ToolbarExampleActionPopupInMenu = () => {
               popup: (
                 <CustomPopup
                   onConfirm={() => {
-                    setMenuOpen(false);
+                    setMenuOpen(false)
                   }}
                 />
               ),
@@ -50,12 +50,12 @@ const ToolbarExampleActionPopupInMenu = () => {
           ],
           menuOpen,
           onMenuOpenChange: (e, { menuOpen }) => {
-            setMenuOpen(menuOpen);
+            setMenuOpen(menuOpen)
           },
         },
       ]}
     />
-  );
-};
+  )
+}
 
-export default ToolbarExampleActionPopupInMenu;
+export default ToolbarExampleActionPopupInMenu

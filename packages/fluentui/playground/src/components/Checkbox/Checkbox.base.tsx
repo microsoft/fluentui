@@ -4,7 +4,8 @@ import { useCheckbox } from './useCheckbox';
 
 export const CheckboxBase: React.FunctionComponent<ICheckboxProps> = (props: ICheckboxProps) => {
   const { children, slots } = props;
-  const { root: Root = 'label', input: Input = 'input', icon: Icon = 'i' } = (slots || {}) as ICheckboxSlots;
+  const { root: Root = 'label', input: Input = 'input', icon: Icon = 'i' } = (slots ||
+    {}) as ICheckboxSlots;
 
   const { slotProps = {} } = useCheckbox(props);
 

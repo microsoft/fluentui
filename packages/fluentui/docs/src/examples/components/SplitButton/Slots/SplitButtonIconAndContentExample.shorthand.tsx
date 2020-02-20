@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { SplitButton } from '@fluentui/react';
+import * as React from 'react'
+import { SplitButton } from '@fluentui/react'
 
 const items = [
   {
@@ -23,7 +23,7 @@ const items = [
     content: 'Export to EPS',
     icon: 'files-illustrator',
   },
-];
+]
 
 const SplitButtonIconAndContentExampleShorthand = () => (
   <>
@@ -43,6 +43,6 @@ const SplitButtonIconAndContentExampleShorthand = () => (
       to open menu, press Alt + Arrow Down
     </span>
   </>
-);
+)
 
-export default SplitButtonIconAndContentExampleShorthand;
+export default SplitButtonIconAndContentExampleShorthand

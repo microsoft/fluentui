@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { DropdownVariables } from './dropdownVariables';
-import DropdownItem, { DropdownItemProps } from '../../../../components/Dropdown/DropdownItem';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import { pxToRem } from '../../../../utils';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { DropdownVariables } from './dropdownVariables'
+import DropdownItem, { DropdownItemProps } from '../../../../components/Dropdown/DropdownItem'
+import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { pxToRem } from '../../../../utils'
 
 const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemProps, DropdownVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -17,7 +17,8 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemProps, Dropdow
     }),
     position: 'relative',
     ...(p.active && {
-      ...(p.isFromKeyboard && getBorderFocusStyles({ siteVariables, borderRadius: 0 })[':focus-visible']),
+      ...(p.isFromKeyboard &&
+        getBorderFocusStyles({ siteVariables, borderRadius: 0 })[':focus-visible']),
       ...(!p.isFromKeyboard && {
         color: v.listItemColorHover,
         backgroundColor: v.listItemBackgroundColorHover,
@@ -62,6 +63,6 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemProps, Dropdow
   endMedia: () => ({
     lineHeight: pxToRem(16),
   }),
-};
+}
 
-export default dropdownItemStyles;
+export default dropdownItemStyles

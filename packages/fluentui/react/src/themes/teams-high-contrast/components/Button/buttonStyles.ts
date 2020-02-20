@@ -1,9 +1,12 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ButtonStylesProps } from '../../../teams/components/Button/buttonStyles';
-import { ButtonVariables } from '../../../teams/components/Button/buttonVariables';
-import { ButtonHighContrastVariables } from './buttonVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
+import { ButtonStylesProps } from '../../../teams/components/Button/buttonStyles'
+import { ButtonVariables } from '../../../teams/components/Button/buttonVariables'
+import { ButtonHighContrastVariables } from './buttonVariables'
 
-const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables & ButtonHighContrastVariables> = {
+const buttonStyles: ComponentSlotStylesPrepared<
+  ButtonStylesProps,
+  ButtonVariables & ButtonHighContrastVariables
+> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       // rectangular button defaults
@@ -33,8 +36,8 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
             },
           },
         }),
-    };
+    }
   },
-};
+}
 
-export default buttonStyles;
+export default buttonStyles

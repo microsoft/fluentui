@@ -1,53 +1,78 @@
-import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import * as PropTypes from 'prop-types';
-import * as React from 'react';
+import { Accessibility } from '@fluentui/accessibility'
+import {
+  getElementType,
+  getUnhandledProps,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings'
+import * as customPropTypes from '@fluentui/react-proptypes'
+import * as PropTypes from 'prop-types'
+import * as React from 'react'
 // @ts-ignore
-import { ThemeContext } from 'react-fela';
+import { ThemeContext } from 'react-fela'
 
-import Image, { ImageProps } from '../Image/Image';
-import Label, { LabelProps } from '../Label/Label';
-import Status, { StatusProps } from '../Status/Status';
-import { WithAsProp, ShorthandValue, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import Image, { ImageProps } from '../Image/Image'
+import Label, { LabelProps } from '../Label/Label'
+import Status, { StatusProps } from '../Status/Status'
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types'
+import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils'
 
 export interface AvatarProps extends UIComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<never>;
+  accessibility?: Accessibility<never>
 
   /** Shorthand for the image. */
-  image?: ShorthandValue<ImageProps>;
+  image?: ShorthandValue<ImageProps>
 
   /** Shorthand for the label. */
-  label?: ShorthandValue<LabelProps>;
+  label?: ShorthandValue<LabelProps>
 
   /** The name used for displaying the initials of the avatar if the image is not provided. */
-  name?: string;
+  name?: string
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: SizeValue
 
   /** Shorthand for the status of the user. */
-  status?: ShorthandValue<StatusProps>;
+  status?: ShorthandValue<StatusProps>
 
   /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
-  getInitials?: (name: string) => string;
+  getInitials?: (name: string) => string
 }
 
-const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
-  const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
-  setStart();
+const Avatar: React.FC<WithAsProp<AvatarProps>> &
+  FluentComponentStaticProps<AvatarProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext)
+  const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry)
+  setStart()
 
-  const { accessibility, className, design, getInitials, label, image, name, size, status, styles, variables } = props;
+  const {
+    accessibility,
+    className,
+    design,
+    getInitials,
+    label,
+    image,
+    name,
+    size,
+    status,
+    styles,
+    variables,
+  } = props
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Avatar.displayName,
     rtl: context.rtl,
-  });
+  })
   const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
     className: Avatar.className,
     mapPropsToStyles: () => ({ size }),
@@ -57,10 +82,10 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
       styles,
       variables,
     }),
-  });
+  })
 
-  const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Avatar.handledProps, props);
+  const ElementType = getElementType(props)
+  const unhandledProps = getUnhandledProps(Avatar.handledProps, props)
 
   const result = (
     <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
@@ -91,40 +116,40 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
           }),
       })}
     </ElementType>
-  );
+  )
 
-  setEnd();
+  setEnd()
 
-  return result;
-};
+  return result
+}
 
-Avatar.className = 'ui-avatar';
-Avatar.displayName = 'Avatar';
+Avatar.className = 'ui-avatar'
+Avatar.displayName = 'Avatar'
 
 Avatar.defaultProps = {
   size: 'medium',
   getInitials(name: string) {
     if (!name) {
-      return '';
+      return ''
     }
 
     const reducedName = name
       .replace(/\s*\(.*?\)\s*/g, ' ')
       .replace(/\s*{.*?}\s*/g, ' ')
-      .replace(/\s*\[.*?]\s*/g, ' ');
+      .replace(/\s*\[.*?]\s*/g, ' ')
 
     const initials = reducedName
       .split(' ')
       .filter(item => item !== '')
       .map(item => item.charAt(0))
-      .reduce((accumulator, currentValue) => accumulator + currentValue);
+      .reduce((accumulator, currentValue) => accumulator + currentValue)
 
     if (initials.length > 2) {
-      return initials.charAt(0) + initials.charAt(initials.length - 1);
+      return initials.charAt(0) + initials.charAt(initials.length - 1)
     }
-    return initials;
+    return initials
   },
-};
+}
 
 Avatar.propTypes = {
   ...commonPropTypes.createCommon({
@@ -137,12 +162,12 @@ Avatar.propTypes = {
   size: customPropTypes.size,
   status: customPropTypes.itemShorthand,
   getInitials: PropTypes.func,
-};
-Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
+}
+Avatar.handledProps = Object.keys(Avatar.propTypes) as any
 
-Avatar.create = createShorthandFactory({ Component: Avatar, mappedProp: 'name' });
+Avatar.create = createShorthandFactory({ Component: Avatar, mappedProp: 'name' })
 
 /**
  * An Avatar is a graphical representation of a user.
  */
-export default withSafeTypeForAs<typeof Avatar, AvatarProps>(Avatar);
+export default withSafeTypeForAs<typeof Avatar, AvatarProps>(Avatar)

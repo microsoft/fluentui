@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { List, Status } from '@fluentui/react';
+import * as React from 'react'
+import { List, Status } from '@fluentui/react'
 
 const items = [
   {
@@ -17,8 +17,10 @@ const items = [
     media: <Status />,
     header: 'Dante Schneider',
   },
-];
+]
 
-const ListExampleSelectable = () => <List selectable defaultSelectedIndex={0} items={items} horizontal />;
+const ListExampleSelectable = () => (
+  <List selectable defaultSelectedIndex={0} items={items} horizontal />
+)
 
-export default ListExampleSelectable;
+export default ListExampleSelectable

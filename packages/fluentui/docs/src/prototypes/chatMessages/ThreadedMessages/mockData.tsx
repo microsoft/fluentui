@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { ThreadReplyProps } from './ThreadReplies';
+import * as React from 'react'
+import { ThreadReplyProps } from './ThreadReplies'
 
 export const actionMenu = {
   iconOnly: true,
@@ -15,7 +15,7 @@ export const actionMenu = {
       title: 'More actions',
     },
   ],
-};
+}
 
 export const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
@@ -23,7 +23,7 @@ export const janeAvatar = {
     color: 'green',
     icon: 'check',
   },
-};
+}
 
 export const replies: ThreadReplyProps[] = [
   {
@@ -58,7 +58,7 @@ export const replies: ThreadReplyProps[] = [
     timestamp: 'Yesterday, 10:15 PM',
     actionMenu,
   },
-];
+]
 
 export const toolbarItems = [
   {
@@ -103,4 +103,4 @@ export const toolbarItems = [
       outline: true,
     },
   },
-];
+]

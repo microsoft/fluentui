@@ -41,7 +41,7 @@ export default function isConformant(
     autoControlledProps?: string[];
     className: string;
   },
-  options: Conformant = {},
+  options: Conformant = {}
 ) {
   const {
     constructorName = Component.prototype.constructor.name,
@@ -51,7 +51,7 @@ export default function isConformant(
     requiredProps = {},
     rendersPortal = false,
     wrapperComponent = null,
-    handlesAsProp = true,
+    handlesAsProp = true
   } = options;
   const { throwError } = helpers('isConformant', Component);
 
@@ -91,8 +91,8 @@ export default function isConformant(
     throwError(
       [
         'Component is not a named function. This should help identify it:\n\n',
-        `${ReactDOMServer.renderToStaticMarkup(<Component />)}`,
-      ].join(''),
+        `${ReactDOMServer.renderToStaticMarkup(<Component />)}`
+      ].join('')
     );
   }
 
@@ -116,8 +116,8 @@ export default function isConformant(
           '!! ==========================================================',
           `!! Missing ${infoJSONPath}.`,
           '!! Run `yarn test` or `yarn test:watch` again to generate one.',
-          '!! ==========================================================',
-        ].join('\n'),
+          '!! =========================================================='
+        ].join('\n')
       );
     });
     return null;
@@ -162,7 +162,7 @@ export default function isConformant(
         ` It must be a static prop of its parent '${info.parentDisplayName}'`;
       expect({ foundAsSubcomponent, message }).toEqual({
         message,
-        foundAsSubcomponent: true,
+        foundAsSubcomponent: true
       });
     });
   }
@@ -215,7 +215,7 @@ export default function isConformant(
             component
               .find('[as]')
               .last()
-              .prop('as'),
+              .prop('as')
           ).toEqual(MyComponent);
         }
       });
@@ -272,10 +272,10 @@ export default function isConformant(
 
       expect({
         message,
-        handledProps: Component.handledProps.sort(),
+        handledProps: Component.handledProps.sort()
       }).toEqual({
         message,
-        handledProps: expectedProps,
+        handledProps: expectedProps
       });
     });
   });
@@ -286,9 +286,9 @@ export default function isConformant(
       attributes: {
         root: {
           [IS_FOCUSABLE_ATTRIBUTE]: true,
-          role,
-        },
-      },
+          role
+        }
+      }
     });
 
     test('defines an "accessibility" prop in Component.handledProps', () => {
@@ -320,7 +320,7 @@ export default function isConformant(
         const wrapperProps = {
           ...requiredProps,
           [EVENT_TARGET_ATTRIBUTE]: true,
-          [listenerName]: handler,
+          [listenerName]: handler
         };
         const wrapper = mount(<Component {...wrapperProps} />);
 
@@ -352,7 +352,7 @@ export default function isConformant(
         const props = {
           ...requiredProps,
           [listenerName]: handlerSpy,
-          [EVENT_TARGET_ATTRIBUTE]: true,
+          [EVENT_TARGET_ATTRIBUTE]: true
         };
 
         const component = mount(<Component {...props} />);
@@ -391,8 +391,8 @@ export default function isConformant(
             [
               `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ was not called once on "${eventName}".`,
-              'You may need to hoist your event handlers up to the root element.\n',
-            ].join(''),
+              'You may need to hoist your event handlers up to the root element.\n'
+            ].join('')
           );
         }
 
@@ -404,7 +404,7 @@ export default function isConformant(
           errorMessage = [
             'was not called with (event, data).\n',
             `Ensure that 'props' object is passed to '${listenerName}'\n`,
-            `event handler of <${Component.displayName} />.`,
+            `event handler of <${Component.displayName} />.`
           ].join('');
         }
 
@@ -417,8 +417,8 @@ export default function isConformant(
               `<${info.displayName} ${listenerName}={${handlerName}} />\n`,
               `${leftPad} ^ ${errorMessage}`,
               'It was called with args:',
-              JSON.stringify(handlerSpy.mock.calls[0], null, 2),
-            ].join('\n'),
+              JSON.stringify(handlerSpy.mock.calls[0], null, 2)
+            ].join('\n')
           );
         }
       });
@@ -464,7 +464,7 @@ export default function isConformant(
         document.body.appendChild(mountNode);
 
         const wrapper = mount(<Component {...requiredProps} className={className} />, {
-          attachTo: mountNode,
+          attachTo: mountNode
         });
         wrapper.setProps({ open: true } as any);
 
@@ -492,13 +492,13 @@ export default function isConformant(
 
       const message = [
         'Make sure you are using the `getUnhandledProps` util to spread the `unhandledProps` props.',
-        'This may also be of help: https://facebook.github.io/react/docs/transferring-props.html.',
+        'This may also be of help: https://facebook.github.io/react/docs/transferring-props.html.'
       ].join(' ');
 
       defaultClasses.split(' ').forEach(defaultClass => {
         expect({ message, result: _.includes(mixedClasses, defaultClass) }).toEqual({
           message,
-          result: true,
+          result: true
         });
       });
     });
@@ -539,6 +539,6 @@ export default function isConformant(
       // test suites
       // -----------------------------------
       return this;
-    },
+    }
   };
 }

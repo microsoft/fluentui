@@ -1,6 +1,8 @@
-import * as React from 'react';
-import { Layout } from '@fluentui/react';
+import * as React from 'react'
+import { Layout } from '@fluentui/react'
 
-const LayoutExample = () => <Layout debug start="Start content." main="Main content." end="End content." />;
+const LayoutExample = () => (
+  <Layout debug start="Start content." main="Main content." end="End content." />
+)
 
-export default LayoutExample;
+export default LayoutExample
