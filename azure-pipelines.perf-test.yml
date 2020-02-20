@@ -24,18 +24,19 @@ steps:
 
   - template: azure-pipelines.tools.yml
 
+  # TODO: include perf:test:base
+  # Fluent perf-test must run before Fabric perf-test until they are consolidated.
+  - script: |
+      yarn perf:test
+    workingDirectory: packages/fluentui/perf-test
+    displayName: Perf Test (Fluent)
+    env:
+      STATS_URI: $(STATS_URI)
+
   - script: |
       yarn just perf-test
     workingDirectory: apps/perf-test
     displayName: Perf Test
-
-  # TODO: include perf:test:base
-  - script: |
-      yarn perf:test
-    workingDirectory: packages/fluentui/perf-test
-    displayName: Perf Test
-    env:
-      STATS_URI: $(STATS_URI)
 
   - task: AzureUpload@1
     displayName: Upload Perf Test Result to PR deploy site
