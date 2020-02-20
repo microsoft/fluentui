@@ -45,6 +45,10 @@ export const NeedsRepublishingSignal: Signal = (props: ISignalProps): JSX.Elemen
   return <IconSignal {...props} signalClass={SignalsStyles.needsRepublishing} iconName="readingmode" />;
 };
 
+export const ItemScheduledSignal: Signal = (props: ISignalProps): JSX.Element => {
+  return <IconSignal {...props} signalClass={SignalsStyles.itemScheduled} iconName="datetime" />;
+};
+
 /**
  * Renders a signal marking the proceeding content as new.
  */

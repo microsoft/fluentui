@@ -68,6 +68,7 @@
     "@uifabric/theme-samples": "^7.0.22",
     "@uifabric/utilities": "^7.12.1",
     "@uifabric/variants": "^7.1.12",
+    "core-js": "3",
     "deep-assign": "^2.0.0",
     "office-ui-fabric-react": "^7.93.1",
     "prop-types": "^15.5.10",
