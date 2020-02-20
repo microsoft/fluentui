@@ -101,28 +101,29 @@ function reportResults(perfCounts: any, reporter: Reporter) {
     }
   );
 
-  const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
+  // TODO: enable when repos are converged.
+  // const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
 
-  if (regressions.length > 0) {
-    reporter.warn(`${regressions.length} potential perf regressions detected`);
-    reporter.markdown(
-      [
-        '### Potential regressions comparing to master',
-        '',
-        'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
-        ':--- | ---:| ---:| ---: | ---: ',
-        ..._.map(regressions, (value, key) =>
-          [
-            value.name,
-            linkToFlamegraph(value.numTicks, value.flamegraphFile),
-            linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
-            `${value.currentToBaseline}:1`,
-            linkToFlamegraph('analysis', value.regressionFile)
-          ].join(' | ')
-        )
-      ].join('\n')
-    );
-  }
+  // if (regressions.length > 0) {
+  //   reporter.warn(`${regressions.length} potential perf regressions detected`);
+  //   reporter.markdown(
+  //     [
+  //       '### Potential regressions comparing to master',
+  //       '',
+  //       'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
+  //       ':--- | ---:| ---:| ---: | ---: ',
+  //       ..._.map(regressions, (value, key) =>
+  //         [
+  //           value.name,
+  //           linkToFlamegraph(value.numTicks, value.flamegraphFile),
+  //           linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
+  //           `${value.currentToBaseline}:1`,
+  //           linkToFlamegraph('analysis', value.regressionFile)
+  //         ].join(' | ')
+  //       )
+  //     ].join('\n')
+  //   );
+  // }
 
   fluentFabricComparison(perfCounts, reporter);
 
