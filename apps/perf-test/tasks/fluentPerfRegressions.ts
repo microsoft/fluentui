@@ -164,7 +164,7 @@ const checkPerfRegressions = (reporter: Reporter) => {
     return;
   }
 
-  reporter.markdown('## Fluent Perf Analysis');
+  reporter.markdown('## Perf Analysis (Fluent)');
 
   fluentFabricComparison(perfCounts, reporter);
   currentToMasterComparison(perfCounts, reporter);
