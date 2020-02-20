@@ -35,10 +35,8 @@ require('tsconfig-paths').register({
   paths: compilerOptions.paths
 });
 
-// this is a fake branch to pretend we have a feature branch as a separate project
-const baseBranch = 'master-fluentui';
+const baseBranch = 'master';
 const sourceBranch = process.env.BUILD_SOURCEBRANCH;
-const sourceBranchName = process.env.BUILD_SOURCEBRANCHNAME;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
@@ -87,12 +85,6 @@ module.exports = {
   ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
     ? {
         commit: getCurrentHash()
-      }
-    : null),
-
-  ...(sourceBranchName
-    ? {
-        branch: sourceBranchName === 'master' ? 'master-fluentui' : sourceBranchName
       }
     : null)
 };
