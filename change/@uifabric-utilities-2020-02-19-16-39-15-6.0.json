@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "fix memory leak caused by closure in scroll util",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "commit": "a47fd3ff5f3cd37c6af72b27142ee6279e429760",
+  "date": "2020-02-20T00:39:15.335Z"
+}
