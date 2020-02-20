@@ -1,16 +1,18 @@
-import { handlesAccessibility, isConformant } from 'test/specs/commonTests'
+import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
 
-import Chat from 'src/components/Chat/Chat'
-import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp'
-import ChatItem from 'src/components/Chat/ChatItem'
+import Chat from 'src/components/Chat/Chat';
+import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp';
+import ChatItem from 'src/components/Chat/ChatItem';
 
-const chatImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Chat)
+const chatImplementsCollectionShorthandProp = implementsCollectionShorthandProp(Chat);
 
 describe('Chat', () => {
-  isConformant(Chat)
-  chatImplementsCollectionShorthandProp('items', ChatItem, { mapsValueToProp: 'message' })
+  isConformant(Chat, {
+    constructorName: 'Chat'
+  });
+  chatImplementsCollectionShorthandProp('items', ChatItem, { mapsValueToProp: 'message' });
 
   describe('accessibility', () => {
-    handlesAccessibility(Chat)
-  })
-})
+    handlesAccessibility(Chat);
+  });
+});

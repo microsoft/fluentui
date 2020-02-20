@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
+import { TestImages } from '@uifabric/example-data';
 import { ImageFit } from '../Image/Image.types';
 import { DocumentCardImage } from './DocumentCardImage';
-import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
 describe('DocumentCard', () => {
   it('renders DocumentCardImage correctly without an image provided', () => {

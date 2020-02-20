@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, classNamesFunction } from '../../Utilities';
 import { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails, ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon, FontIcon } from '../../Icon';
@@ -14,7 +15,6 @@ import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
-import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
@@ -30,7 +30,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     useFastIcons: true
   };
 
-  private _classNames: IClassNames<IDetailsHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
   private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();

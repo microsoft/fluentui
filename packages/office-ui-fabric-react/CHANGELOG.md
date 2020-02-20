@@ -1,7 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
 
+## 7.94.0
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Minor changes
+
+- Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+- Set touchmove and touchend event handlers to get caught in the capture phase (catalina@microsoft.com)
+## 7.93.1
+Mon, 17 Feb 2020 17:06:50 GMT
+
+### Patches
+
+- List: clearing scrollElement on unmount to avoid retaining an edge to a dom element and leaking. (dzearing@microsoft.com)
+- Fix: Uncaught SyntaxError: Failed to execute 'querySelector' on 'Document'. (email not defined)
+- ShimmeredDetailsList: add aria-busy=true when shimmer is enabled (xgao@microsoft.com)
 ## 7.93.0
 Wed, 12 Feb 2020 12:24:27 GMT
 

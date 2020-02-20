@@ -1,7 +1,9 @@
-import { isConformant } from 'test/specs/commonTests'
+import { isConformant } from 'test/specs/commonTests';
 
-import TooltipContent from 'src/components/Tooltip/TooltipContent'
+import TooltipContent from 'src/components/Tooltip/TooltipContent';
 
 describe('TooltipContent', () => {
-  isConformant(TooltipContent)
-})
+  isConformant(TooltipContent, {
+    constructorName: 'TooltipContent'
+  });
+});

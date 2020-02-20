@@ -1653,14 +1653,14 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputProps?: IInputProps;
     itemLimit?: number;
-    onBlur?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+    onBlur?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onChange?: (items?: T[]) => void;
     onDismiss?: (ev?: any, selectedItem?: T) => void;
     // @deprecated
     onEmptyInputFocus?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onEmptyResolveSuggestions?: (selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     // @deprecated
-    onFocus?: React.FocusEventHandler<HTMLInputElement | BaseAutoFill>;
+    onFocus?: React.FocusEventHandler<HTMLInputElement | Autofill>;
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
@@ -4504,7 +4504,7 @@ export interface IExtendedPersonaProps extends IPersonaProps {
 export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
     applyTheme?: boolean;
     applyThemeToBody?: boolean;
-    as?: React.ReactType;
+    as?: React.ElementType;
     // (undocumented)
     componentRef?: IRefObject<{}>;
     dir?: 'rtl' | 'ltr' | 'auto';
@@ -7128,7 +7128,7 @@ export interface IStackItemTokens {
 
 // @public (undocumented)
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React.HTMLAttributes<HTMLElement> {
-    as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+    as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
     // @deprecated
     gap?: number | string;
@@ -7665,7 +7665,7 @@ export interface ITextFieldSubComponentStyles {
 
 // @public
 export interface ITextProps extends ISlottableProps<ITextSlots>, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React.HTMLAttributes<HTMLElement> {
-    as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+    as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
     block?: boolean;
     nowrap?: boolean;
     variant?: keyof IFontStyles;

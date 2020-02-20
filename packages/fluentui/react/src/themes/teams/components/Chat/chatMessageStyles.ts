@@ -1,20 +1,13 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import * as _ from 'lodash'
-import {
-  default as ChatMessage,
-  ChatMessageProps,
-  ChatMessageState,
-} from '../../../../components/Chat/ChatMessage'
-import { ChatMessageVariables } from './chatMessageVariables'
-import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles'
-import { pxToRem } from '../../../../utils'
-import initialPopperStyles from '../../../../utils/positioner/initialStyles'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import * as _ from 'lodash';
+import { default as ChatMessage, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
+import { ChatMessageVariables } from './chatMessageVariables';
+import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
+import { pxToRem } from '../../../../utils';
+import initialPopperStyles from '../../../../utils/positioner/initialStyles';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
-const chatMessageStyles: ComponentSlotStylesPrepared<
-  ChatMessageProps & ChatMessageState,
-  ChatMessageVariables
-> = {
+const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'inline-block',
     position: 'relative',
@@ -49,8 +42,8 @@ const chatMessageStyles: ComponentSlotStylesPrepared<
         top: '0',
         width: pxToRem(3),
         borderBottomLeftRadius: 'inherit',
-        borderTopLeftRadius: 'inherit',
-      },
+        borderTopLeftRadius: 'inherit'
+      }
     }),
 
     ...getBorderFocusStyles({ siteVariables }),
@@ -65,26 +58,26 @@ const chatMessageStyles: ComponentSlotStylesPrepared<
           width: 'auto',
 
           '[x-out-of-boundaries]': {
-            opacity: 0,
-          },
-        },
-      },
+            opacity: 0
+          }
+        }
+      }
     }),
 
     ...(p.attached === true && {
       [p.mine ? 'borderTopRightRadius' : 'borderTopLeftRadius']: 0,
       [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0,
       paddingTop: pxToRem(5),
-      paddingBottom: pxToRem(7),
+      paddingBottom: pxToRem(7)
     }),
     ...(p.attached === 'top' && {
-      [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0,
+      [p.mine ? 'borderBottomRightRadius' : 'borderBottomLeftRadius']: 0
     }),
     ...(p.attached === 'bottom' && {
       [p.mine ? 'borderTopRightRadius' : 'borderTopLeftRadius']: 0,
       paddingTop: pxToRem(5),
-      paddingBottom: pxToRem(7),
-    }),
+      paddingBottom: pxToRem(7)
+    })
   }),
 
   actionMenu: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -102,7 +95,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<
       overflow: p.focused ? 'visible' : 'hidden',
       // hide and squash actions menu to prevent accidental hovers over its invisible area
       opacity: p.focused ? 1 : 0,
-      width: p.focused ? 'auto' : 0,
+      width: p.focused ? 'auto' : 0
     }),
 
     ...(!_.isNil(v.showActionMenu) && {
@@ -110,30 +103,27 @@ const chatMessageStyles: ComponentSlotStylesPrepared<
       // opacity should always be preferred over visibility in order to avoid accessibility bugs in
       // JAWS behavior on Windows
       opacity: v.showActionMenu ? 1 : 0,
-      width: v.showActionMenu ? 'auto' : 0,
+      width: v.showActionMenu ? 'auto' : 0
     }),
 
     '[x-out-of-boundaries]': {
-      opacity: 0,
-    },
+      opacity: 0
+    }
   }),
   author: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    ...((p.mine || p.attached === 'bottom' || p.attached === true) &&
-      (screenReaderContainerStyles as ICSSInJSStyle)),
+    ...((p.mine || p.attached === 'bottom' || p.attached === true) && (screenReaderContainerStyles as ICSSInJSStyle)),
     color: v.authorColor,
     marginRight: v.authorMarginRight,
     marginBottom: v.headerMarginBottom,
-    fontWeight: v.authorFontWeight,
+    fontWeight: v.authorFontWeight
   }),
 
   timestamp: ({ props: p, variables: v }) => ({
     marginBottom: v.headerMarginBottom,
     ...(p.mine && {
-      color: v.timestampColorMine,
+      color: v.timestampColorMine
     }),
-    ...((p.attached === 'bottom' || p.attached === true) &&
-      !p.reactionGroup &&
-      (screenReaderContainerStyles as ICSSInJSStyle)),
+    ...((p.attached === 'bottom' || p.attached === true) && !p.hasReactionGroup && (screenReaderContainerStyles as ICSSInJSStyle))
   }),
 
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -143,16 +133,16 @@ const chatMessageStyles: ComponentSlotStylesPrepared<
       outline: 'none',
       color: p.mine ? v.linkColorMine : v.linkColor,
       ':focus': {
-        textDecoration: 'underline',
-      },
+        textDecoration: 'underline'
+      }
     },
-    ...(p.badge &&
+    ...(p.hasBadge &&
       p.badgePosition === 'end' && {
-        marginRight: pxToRem(4),
-      }),
+        marginRight: pxToRem(4)
+      })
   }),
   badge: ({ props: p, variables: v }) => {
-    const sidePosition = p.badgePosition === 'start' ? 'left' : 'right'
+    const sidePosition = p.badgePosition === 'start' ? 'left' : 'right';
     return {
       backgroundColor: v.hasMention ? v.hasMentionNubbinColor : v.isImportantColor,
       color: v.badgeTextColor,
@@ -165,17 +155,17 @@ const chatMessageStyles: ComponentSlotStylesPrepared<
       top: pxToRem(4),
       zIndex: v.zIndex,
       [sidePosition]: 0,
-      transform: p.badgePosition === 'start' ? 'translateX(-50%)' : 'translateX(50%)',
-    }
+      transform: p.badgePosition === 'start' ? 'translateX(-50%)' : 'translateX(50%)'
+    };
   },
   reactionGroup: ({ props: p, variables: v }) => ({
     marginLeft: v.reactionGroupMarginLeft,
-    ...(p.badge &&
+    ...(p.hasBadge &&
       p.badgePosition === 'end' && {
-        marginRight: pxToRem(2),
+        marginRight: pxToRem(2)
       }),
-    float: 'right',
-  }),
-}
+    float: 'right'
+  })
+};
 
-export default chatMessageStyles
+export default chatMessageStyles;

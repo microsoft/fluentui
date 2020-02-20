@@ -97,8 +97,8 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     const {
       colorCells,
       columnCount,
-      positionInSet,
-      setSize,
+      ariaPosInSet = this.props.positionInSet,
+      ariaSetSize = this.props.setSize,
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
@@ -122,8 +122,8 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
         items={this._getItemsWithIndex(colorCells)}
         columnCount={columnCount}
         onRenderItem={this._renderOption}
-        ariaPosInSet={positionInSet}
-        ariaSetSize={setSize}
+        ariaPosInSet={ariaPosInSet}
+        ariaSetSize={ariaSetSize}
         shouldFocusCircularNavigate={shouldFocusCircularNavigate}
         doNotContainWithinFocusZone={doNotContainWithinFocusZone}
         onBlur={this._onSwatchColorPickerBlur}

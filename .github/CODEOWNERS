@@ -106,7 +106,8 @@ Fabric/ @dzearing
 Facepile/ @markionium @mtennoe
 FolderCover/ @ThomasMichon @bigbadcapers
 FocusTrapZone/ @JasonGore
-FocusZone/ @JasonGore
+office-ui-fabric-react/src/components/FocusZone/ @JasonGore
+react-focus/src/components/FocusZone/ @khmakoto
 GroupedList/  @aditima @KevinTCoughlin
 HoverCard/   @atneik @Jahnp @Vitalius1
 Icon/ @dzearing

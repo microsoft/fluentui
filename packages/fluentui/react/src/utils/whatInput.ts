@@ -1,4 +1,4 @@
-import isBrowser from './isBrowser'
+import isBrowser from './isBrowser';
 
 // Taken from https://github.com/ten1seven/what-input/blob/master/src/scripts/what-input.js
 /* eslint-disable */
@@ -8,18 +8,18 @@ import isBrowser from './isBrowser'
  */
 
 // last used input type
-let currentInput = 'initial'
+let currentInput = 'initial';
 
 // check for sessionStorage support
 // then check for session variables and use if available
 try {
   if (window.sessionStorage.getItem('what-input')) {
-    currentInput = window.sessionStorage.getItem('what-input')
+    currentInput = window.sessionStorage.getItem('what-input');
   }
 } catch (e) {}
 
 // event buffer timer
-let eventTimer = null
+let eventTimer = null;
 
 // list of modifier keys commonly used with the mouse and
 // can be safely ignored to prevent false keyboard detection
@@ -28,10 +28,10 @@ const ignoreMap = [
   17, // control
   18, // alt
   91, // Windows key / left Apple cmd
-  93, // Windows menu / right Apple cmd
-]
+  93 // Windows menu / right Apple cmd
+];
 // used to count how many Providers needed to initialize whatinput.
-const whatInputInitialized = 'whatInputInitialized'
+const whatInputInitialized = 'whatInputInitialized';
 
 // mapping of events to input types
 const inputMap = {
@@ -43,30 +43,30 @@ const inputMap = {
   MSPointerMove: 'pointer',
   pointerdown: 'pointer',
   pointermove: 'pointer',
-  touchstart: 'touch',
-}
+  touchstart: 'touch'
+};
 
 // boolean: true if touch buffer is active
-let isBuffering = false
+let isBuffering = false;
 
 // map of IE 10 pointer events
 const pointerMap = {
   2: 'touch',
   3: 'touch', // treat pen like touch
-  4: 'mouse',
-}
+  4: 'mouse'
+};
 
 // check support for passive event listeners
-let supportsPassive = false
+let supportsPassive = false;
 
 try {
   const opts = Object.defineProperty({}, 'passive', {
     get: () => {
-      supportsPassive = true
-    },
-  })
+      supportsPassive = true;
+    }
+  });
 
-  window.addEventListener('test', null, opts)
+  window.addEventListener('test', null, opts);
 } catch (e) {}
 
 /*
@@ -75,11 +75,11 @@ try {
 
 const setUp = () => {
   // add correct mouse wheel event mapping to `inputMap`
-  inputMap[detectWheel()] = 'mouse'
+  inputMap[detectWheel()] = 'mouse';
 
-  addListeners(window)
-  doUpdate(window.document)
-}
+  addListeners(window);
+  doUpdate(window.document);
+};
 
 /*
  * events
@@ -89,80 +89,79 @@ const addListeners = (eventTarget: Window) => {
   // `pointermove`, `MSPointerMove`, `mousemove` and mouse wheel event binding
   // can only demonstrate potential, but not actual, interaction
   // and are treated separately
-  const options = supportsPassive ? { passive: true, capture: true } : true
+  const options = supportsPassive ? { passive: true, capture: true } : true;
 
   // pointer events (mouse, pen, touch)
   // @ts-ignore
   if (eventTarget.PointerEvent) {
-    eventTarget.addEventListener('pointerdown', setInput)
+    eventTarget.addEventListener('pointerdown', setInput);
     // @ts-ignore
   } else if (window.MSPointerEvent) {
-    eventTarget.addEventListener('MSPointerDown', setInput)
+    eventTarget.addEventListener('MSPointerDown', setInput);
   } else {
     // mouse events
-    eventTarget.addEventListener('mousedown', setInput, true)
+    eventTarget.addEventListener('mousedown', setInput, true);
 
     // touch events
     if ('ontouchstart' in eventTarget) {
-      eventTarget.addEventListener('touchstart', eventBuffer, options)
-      eventTarget.addEventListener('touchend', setInput, true)
+      eventTarget.addEventListener('touchstart', eventBuffer, options);
+      eventTarget.addEventListener('touchend', setInput, true);
     }
   }
 
   // keyboard events
-  eventTarget.addEventListener('keydown', eventBuffer, true)
-  eventTarget.addEventListener('keyup', eventBuffer, true)
-}
+  eventTarget.addEventListener('keydown', eventBuffer, true);
+  eventTarget.addEventListener('keyup', eventBuffer, true);
+};
 
 // checks conditions before updating new input
 const setInput = event => {
   // only execute if the event buffer timer isn't running
   if (!isBuffering) {
-    const eventKey = event.which
-    let value = inputMap[event.type]
+    const eventKey = event.which;
+    let value = inputMap[event.type];
 
     if (value === 'pointer') {
-      value = pointerType(event)
+      value = pointerType(event);
     }
 
-    const ignoreMatch = ignoreMap.indexOf(eventKey) === -1
-    const shouldUpdate =
-      (value === 'keyboard' && eventKey && ignoreMatch) || value === 'mouse' || value === 'touch'
+    const ignoreMatch = ignoreMap.indexOf(eventKey) === -1;
+    const shouldUpdate = (value === 'keyboard' && eventKey && ignoreMatch) || value === 'mouse' || value === 'touch';
 
     if (currentInput !== value && shouldUpdate) {
-      currentInput = value
+      currentInput = value;
 
       try {
-        window.sessionStorage.setItem('what-input', currentInput)
+        window.sessionStorage.setItem('what-input', currentInput);
       } catch (e) {}
 
-      doUpdate(event.view.document)
+      doUpdate(event.view.document);
     }
   }
-}
+};
 
 // updates the doc and `inputTypes` array with new input
 const doUpdate = (target: Document) => {
-  target.documentElement.setAttribute(`data-whatinput`, currentInput)
-}
+  target.documentElement.setAttribute(`data-whatinput`, currentInput);
+};
 
 // buffers events that frequently also fire mouse events
 const eventBuffer = event => {
   // set the current input
-  setInput(event)
+  setInput(event);
 
   // clear the timer if it happens to be running
-  window.clearTimeout(eventTimer)
+  window.clearTimeout(eventTimer);
 
   // set the isBuffering to `true`
-  isBuffering = true
+  isBuffering = true;
 
   // run the timer
   eventTimer = window.setTimeout(() => {
     // if the timer runs out, set isBuffering back to `false`
-    isBuffering = false
-  }, 100)
-}
+    isBuffering = false;
+  }, 100);
+};
 
 /*
  * utilities
@@ -170,36 +169,36 @@ const eventBuffer = event => {
 
 const pointerType = event => {
   if (typeof event.pointerType === 'number') {
-    return pointerMap[event.pointerType]
+    return pointerMap[event.pointerType];
   }
 
   // treat pen like touch
-  return event.pointerType === 'pen' ? 'touch' : event.pointerType
-}
+  return event.pointerType === 'pen' ? 'touch' : event.pointerType;
+};
 
 // detect version of mouse wheel event to use
 // via https://developer.mozilla.org/en-US/docs/Web/Events/wheel
 const detectWheel = () => {
-  let wheelType
+  let wheelType;
 
   // Modern browsers support "wheel"
   if ('onwheel' in document.createElement('div')) {
-    wheelType = 'wheel'
+    wheelType = 'wheel';
   } else {
     // Webkit and IE support at least "mousewheel"
     // or assume that remaining browsers are older Firefox
     wheelType =
       // @ts-ignore
-      document.onmousewheel !== undefined ? 'mousewheel' : 'DOMMouseScroll'
+      document.onmousewheel !== undefined ? 'mousewheel' : 'DOMMouseScroll';
   }
 
-  return wheelType
-}
+  return wheelType;
+};
 
 // don't start script unless browser cuts the mustard
 // (also passes if polyfills are used)
 if (isBrowser() && 'addEventListener' in window && Array.prototype.indexOf) {
-  setUp()
+  setUp();
 }
 
 /*
@@ -207,68 +206,64 @@ if (isBrowser() && 'addEventListener' in window && Array.prototype.indexOf) {
  */
 
 export const setUpWhatInput = (target: Document) => {
-  const targetWindow = target.defaultView
-  if (
-    isBrowser() &&
-    targetWindow &&
-    'addEventListener' in targetWindow &&
-    Array.prototype.indexOf
-  ) {
-    const initializedTimes = target[whatInputInitialized]
+  const targetWindow = target.defaultView;
+  if (isBrowser() && targetWindow && 'addEventListener' in targetWindow && Array.prototype.indexOf) {
+    const initializedTimes = target[whatInputInitialized];
     if (typeof initializedTimes === 'number' && initializedTimes > 0) {
-      target[whatInputInitialized] = initializedTimes + 1
-      return
+      target[whatInputInitialized] = initializedTimes + 1;
+      return;
     }
-    target[whatInputInitialized] = 1
+    target[whatInputInitialized] = 1;
 
-    addListeners(targetWindow)
-    doUpdate(target)
+    addListeners(targetWindow);
+    doUpdate(target);
   }
-}
+};
 
 function cleanupWhatInput(eventTarget: Window) {
-  const options = supportsPassive ? { capture: true } : true
+  const options = supportsPassive ? { capture: true } : true;
 
   // @ts-ignore
   if (eventTarget.PointerEvent) {
-    eventTarget.removeEventListener('pointerdown', setInput)
+    eventTarget.removeEventListener('pointerdown', setInput);
     // @ts-ignore
   } else if (window.MSPointerEvent) {
-    eventTarget.removeEventListener('MSPointerDown', setInput)
+    eventTarget.removeEventListener('MSPointerDown', setInput);
   } else {
     // mouse events
-    eventTarget.removeEventListener('mousedown', setInput, true)
+    eventTarget.removeEventListener('mousedown', setInput, true);
 
     // touch events
     if ('ontouchstart' in eventTarget) {
-      eventTarget.removeEventListener('touchstart', eventBuffer, options)
-      eventTarget.removeEventListener('touchend', setInput, true)
+      eventTarget.removeEventListener('touchstart', eventBuffer, options);
+      eventTarget.removeEventListener('touchend', setInput, true);
     }
   }
 
   // keyboard events
-  eventTarget.removeEventListener('keydown', eventBuffer, true)
-  eventTarget.removeEventListener('keyup', eventBuffer, true)
+  eventTarget.removeEventListener('keydown', eventBuffer, true);
+  eventTarget.removeEventListener('keyup', eventBuffer, true);
 }
 
 export const tryCleanupWhatInput = (target: Document) => {
-  const targetWindow = target.defaultView
+  const targetWindow = target.defaultView;
   if (isBrowser() && targetWindow && 'removeEventListener' in targetWindow) {
     if (target[whatInputInitialized] === 1) {
-      delete target[whatInputInitialized]
-      cleanupWhatInput(targetWindow)
+      delete target[whatInputInitialized];
+      cleanupWhatInput(targetWindow);
     } else {
-      target[whatInputInitialized] = target[whatInputInitialized] - 1
+      target[whatInputInitialized] = target[whatInputInitialized] - 1;
     }
   }
-}
+};
 
-export const setWhatInputSource = (newInput: 'mouse' | 'keyboard' | 'initial') => {
-  currentInput = newInput
-}
+export const setWhatInputSource = (target: Document, newInput: 'mouse' | 'keyboard' | 'initial') => {
+  currentInput = newInput;
+  doUpdate(target);
+};
 
 // returns string: the current input type
 // returns the same value as the `data-whatinput` attribute
-export const ask = (): string => currentInput
+export const ask = (): string => currentInput;
 
-export const isFromKeyboard = (): boolean => ask() === 'keyboard'
+export const isFromKeyboard = (): boolean => ask() === 'keyboard';

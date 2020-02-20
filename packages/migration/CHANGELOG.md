@@ -1,7 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
 
+## 7.0.10
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
 ## 7.0.7
 Fri, 17 Jan 2020 02:32:17 GMT
 

@@ -203,8 +203,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             : undefined,
         onMouseOutAction:
           total > 0
-            ? () => {
-                this._onLeave();
+            ? (isLegendFocused?: boolean) => {
+                this._onLeave(isLegendFocused);
               }
             : undefined
       };
@@ -251,7 +251,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     // add benchmark legends
     this._addLegend(legendDataItems, benchmarkData);
     this._addLegend(legendDataItems, targetData);
-    const legends = <Legends legends={legendDataItems} enabledWrapLines={this.props.enabledLegendsWrapLines} />;
+    const legends = (
+      <Legends
+        legends={legendDataItems}
+        enabledWrapLines={this.props.enabledLegendsWrapLines}
+        overflowProps={this.props.legendsOverflowProps}
+        focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+      />
+    );
     return [
       total === 0 ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)] : bars,
       legends
@@ -328,11 +335,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     }
   }
 
-  private _onLeave(): void {
-    if (this.state.isLegendSelected === false) {
+  private _onLeave(isLegendFocused?: boolean): void {
+    if (!!isLegendFocused || this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: false,
-        selectedLegendTitle: ''
+        selectedLegendTitle: '',
+        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected
       });
     }
   }

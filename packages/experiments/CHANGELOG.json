@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/experiments_v7.19.3",
+      "version": "7.19.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/experiments_v7.19.2",
+      "version": "7.19.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 12 Feb 2020 12:24:27 GMT",
       "tag": "@uifabric/experiments_v7.19.0",
       "version": "7.19.0",

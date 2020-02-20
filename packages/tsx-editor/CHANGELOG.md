@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
 
+## 0.11.20
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
 ## 0.11.18
 Wed, 12 Feb 2020 12:24:27 GMT
 
