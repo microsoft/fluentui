@@ -19,7 +19,15 @@ const DisabledScrollClassName = mergeStyles({
  */
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = 'data-is-scrollable';
 
-const _makeElementScrollAllower = () => {
+/**
+ * Allows the user to scroll within a element,
+ * while preventing the user from scrolling the body
+ */
+export const allowScrollOnElement = (element: HTMLElement | null, events: EventGroup): void => {
+  if (!element) {
+    return;
+  }
+
   let _previousClientY = 0;
   let _element: Element | null = null;
 
@@ -66,23 +74,11 @@ const _makeElementScrollAllower = () => {
     }
   };
 
-  return (element: HTMLElement | null, events: EventGroup): void => {
-    if (!element) {
-      return;
-    }
+  events.on(element, 'touchstart', _saveClientY, { passive: false });
+  events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
 
-    events.on(element, 'touchstart', _saveClientY, { passive: false });
-    events.on(element, 'touchmove', _preventOverscrolling, { passive: false });
-
-    _element = element;
-  };
+  _element = element;
 };
-
-/**
- * Allows the user to scroll within a element,
- * while preventing the user from scrolling the body
- */
-export const allowScrollOnElement = _makeElementScrollAllower();
 
 const _disableIosBodyScroll = (event: TouchEvent) => {
   event.preventDefault();
