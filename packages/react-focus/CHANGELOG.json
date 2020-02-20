@@ -2,6 +2,20 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@fluentui/react-focus_v0.0.6",
+      "version": "0.0.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "React-focus: Enabling storybook in new package.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "9c46caf35247dfe4063301b81248d1fc6971c013"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@fluentui/react-focus_v0.0.4",
       "version": "0.0.4",

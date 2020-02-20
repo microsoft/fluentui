@@ -2,6 +2,35 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "office-ui-fabric-react_v7.94.1",
+      "version": "7.94.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Use native input onBlur to fix blur getting called twice",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e07d7d3a1fc807e7bf47e04477e5251759d0e301"
+          },
+          {
+            "comment": "DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "14fa26d0ce716ddb08a64adeb81e1e3507cd2493"
+          },
+          {
+            "comment": "GroupedList: Adding checks for group and selection being undefined.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e8b1bf416fe51e14c69d5733d31996c27f092374"
+          },
+          {
+            "comment": "FocusZone: fix memory leak caused by closure",
+            "author": "xgao@microsoft.com",
+            "commit": "e2c990cb0670a4a6bf86562eb804d8774721da15"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2020 12:21:05 GMT",
       "tag": "office-ui-fabric-react_v7.94.0",
       "version": "7.94.0",

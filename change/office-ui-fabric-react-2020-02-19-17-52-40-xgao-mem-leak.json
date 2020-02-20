@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "FocusZone: fix memory leak caused by closure",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "e2c990cb0670a4a6bf86562eb804d8774721da15",
-  "dependentChangeType": "patch",
-  "date": "2020-02-20T01:52:40.532Z"
-}

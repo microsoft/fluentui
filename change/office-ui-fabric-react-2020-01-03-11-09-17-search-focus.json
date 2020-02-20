@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "SearchBox: Use native input onBlur to fix blur getting called twice",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "e07d7d3a1fc807e7bf47e04477e5251759d0e301",
-  "date": "2020-01-03T19:09:17.357Z"
-}

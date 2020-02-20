@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true.",
-  "packageName": "@uifabric/date-time",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "14fa26d0ce716ddb08a64adeb81e1e3507cd2493",
-  "dependentChangeType": "patch",
-  "date": "2020-02-19T00:30:56.711Z"
-}
