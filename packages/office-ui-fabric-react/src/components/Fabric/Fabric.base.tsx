@@ -52,7 +52,7 @@ export class FabricBase extends React.Component<
     const win = getWindow(this._rootElement.current);
     if (win) {
       this._disposables.push(
-        on(win, 'mousedown', this._onPointerDown, true),
+        on(win, 'mousedown', this._onMouseDown, true),
         on(win, 'keydown', this._onKeyDown, true),
         on(win, 'pointerdown', this._onPointerDown, true)
       );
@@ -91,8 +91,14 @@ export class FabricBase extends React.Component<
     }
   }
 
-  private _onPointerDown = (ev: PointerEvent): void => {
+  private _onMouseDown = (ev: MouseEvent): void => {
     this.setState({ isFocusVisible: false });
+  };
+
+  private _onPointerDown = (ev: PointerEvent): void => {
+    if (ev.pointerType !== 'mouse') {
+      this.setState({ isFocusVisible: false });
+    }
   };
 
   private _onKeyDown = (ev: KeyboardEvent): void => {
