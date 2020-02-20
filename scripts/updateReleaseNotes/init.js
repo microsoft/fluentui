@@ -31,7 +31,7 @@ if (argv.token === 'your token here') {
 
 const repoDetails = {
   owner: argv.owner,
-  repo: argv.repo
+  repo: argv.repo,
 };
 
 // Authenticate with github and set up logging if debug arg is provided

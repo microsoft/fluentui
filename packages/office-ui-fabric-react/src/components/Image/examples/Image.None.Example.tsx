@@ -8,7 +8,7 @@ export class ImageNoneExample extends React.Component<any, any> {
       src: 'http://placehold.it/500x250',
       imageFit: ImageFit.none,
       width: 350,
-      height: 150
+      height: 150,
     };
 
     return (

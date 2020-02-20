@@ -29,8 +29,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/ios/PersonaImplementation.md') as string}
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
 
     case 'android':
@@ -44,8 +44,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/android/PersonaImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

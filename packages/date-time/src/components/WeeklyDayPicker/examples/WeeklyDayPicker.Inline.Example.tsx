@@ -17,7 +17,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
     super(props);
 
     this.state = {
-      selectedDate: new Date()
+      selectedDate: new Date(),
     };
 
     this._onSelectDate = this._onSelectDate.bind(this);
@@ -74,7 +74,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
   private _onSelectDate(date: Date): void {
     this.setState((prevState: IWeeklyDayPickerInlineExampleState) => {
       return {
-        selectedDate: date
+        selectedDate: date,
       };
     });
   }

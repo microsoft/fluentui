@@ -15,18 +15,18 @@ export const SliderPageProps: IDocPageProps = {
     {
       title: 'Horizontal sliders',
       code: SliderBasicExampleCode,
-      view: <SliderBasicExample />
+      view: <SliderBasicExample />,
     },
     {
       title: 'Vertical sliders',
       code: SliderVerticalExampleCode,
-      view: <SliderVerticalExample />
-    }
+      view: <SliderVerticalExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Slider/docs/SliderDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

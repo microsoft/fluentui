@@ -43,7 +43,7 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
     canExpand,
     getExpandedItems,
     styles,
-    theme
+    theme,
   } = props;
   const itemId = getId();
 
@@ -55,7 +55,7 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
         onItemChange(getExpandedItems(item), index);
       }
     },
-    [onItemChange, getExpandedItems, item, index]
+    [onItemChange, getExpandedItems, item, index],
   );
 
   const onRemoveClicked = React.useCallback(
@@ -64,7 +64,7 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
       ev.preventDefault();
       onRemoveItem && onRemoveItem();
     },
-    [onRemoveItem]
+    [onRemoveItem],
   );
 
   const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
@@ -72,9 +72,9 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
       getClassNames(styles, {
         isSelected: selected || false,
         isValid: isValid ? isValid(item) : true,
-        theme: theme!
+        theme: theme!,
       }),
-    [selected, isValid, theme]
+    [selected, isValid, theme],
   );
 
   const coinProps = {};
@@ -121,6 +121,6 @@ export const SelectedPersona = styled<ISelectedPersonaProps<any>, ISelectedPerso
   getStyles,
   undefined,
   {
-    scope: 'SelectedPersona'
-  }
+    scope: 'SelectedPersona',
+  },
 ) as typeof SelectedPersonaInner;

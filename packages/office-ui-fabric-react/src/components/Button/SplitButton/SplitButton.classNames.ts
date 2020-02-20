@@ -16,7 +16,7 @@ export const getClassNames = memoizeFunction(
         styles.splitButtonMenuButton,
         expanded && [styles.splitButtonMenuButtonExpanded],
         disabled && [styles.splitButtonMenuButtonDisabled],
-        checked && !disabled && [styles.splitButtonMenuButtonChecked]
+        checked && !disabled && [styles.splitButtonMenuButtonChecked],
       ),
 
       splitButtonContainer: mergeStyles(
@@ -26,31 +26,31 @@ export const getClassNames = memoizeFunction(
             styles.splitButtonContainerChecked,
             {
               selectors: {
-                ':hover': styles.splitButtonContainerCheckedHovered
-              }
-            }
+                ':hover': styles.splitButtonContainerCheckedHovered,
+              },
+            },
           ],
         !disabled &&
           !checked && [
             {
               selectors: {
                 ':hover': styles.splitButtonContainerHovered,
-                ':focus': styles.splitButtonContainerFocused
-              }
-            }
+                ':focus': styles.splitButtonContainerFocused,
+              },
+            },
           ],
-        disabled && styles.splitButtonContainerDisabled
+        disabled && styles.splitButtonContainerDisabled,
       ),
 
       icon: mergeStyles(
         styles.splitButtonMenuIcon,
         disabled && styles.splitButtonMenuIconDisabled,
-        !disabled && primaryDisabled && styles.splitButtonMenuIcon
+        !disabled && primaryDisabled && styles.splitButtonMenuIcon,
       ),
 
       flexContainer: mergeStyles(styles.splitButtonFlexContainer),
 
-      divider: mergeStyles(styles.splitButtonDivider, (primaryDisabled || disabled) && styles.splitButtonDividerDisabled)
+      divider: mergeStyles(styles.splitButtonDivider, (primaryDisabled || disabled) && styles.splitButtonDividerDisabled),
     };
-  }
+  },
 );

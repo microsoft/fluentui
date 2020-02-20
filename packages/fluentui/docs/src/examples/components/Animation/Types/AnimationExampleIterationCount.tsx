@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react';
 
 const spinner = {
   keyframe: {
@@ -12,7 +12,7 @@ const spinner = {
   },
   duration: '5s',
   iterationCount: 'infinite',
-}
+};
 
 const AnimationExampleIterationCount = () => (
   <Provider theme={{ animations: { spinner } }}>
@@ -43,6 +43,6 @@ const AnimationExampleIterationCount = () => (
       </div>
     </Grid>
   </Provider>
-)
+);
 
-export default AnimationExampleIterationCount
+export default AnimationExampleIterationCount;

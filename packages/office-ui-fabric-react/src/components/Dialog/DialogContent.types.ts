@@ -116,7 +116,7 @@ export enum DialogType {
   /** Dialog with large header banner */
   largeHeader = 1,
   /** Dialog with an 'x' close button in the upper-right corner */
-  close = 2
+  close = 2,
 }
 
 /**

@@ -20,7 +20,7 @@ export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
   Header = 2,
-  Section = 3
+  Section = 3,
 }
 
 /**
@@ -400,7 +400,7 @@ export interface IContextualMenuItem {
     dividerClassName?: string,
     iconClassName?: string,
     subMenuClassName?: string,
-    primaryDisabled?: boolean
+    primaryDisabled?: boolean,
   ) => IMenuItemClassNames;
 
   /**

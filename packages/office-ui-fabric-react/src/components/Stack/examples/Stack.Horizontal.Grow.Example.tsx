@@ -4,8 +4,8 @@ import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } f
 // Styles definition
 const stackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.themeTertiary
-  }
+    background: DefaultPalette.themeTertiary,
+  },
 };
 const stackItemStyles: IStackItemStyles = {
   root: {
@@ -14,14 +14,14 @@ const stackItemStyles: IStackItemStyles = {
     color: DefaultPalette.white,
     display: 'flex',
     height: 50,
-    justifyContent: 'center'
-  }
+    justifyContent: 'center',
+  },
 };
 
 // Tokens definition
 const stackTokens: IStackTokens = {
   childrenGap: 5,
-  padding: 10
+  padding: 10,
 };
 
 export const HorizontalStackGrowExample: React.FunctionComponent = () => {

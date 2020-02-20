@@ -28,7 +28,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
             </Markdown>
-          )
+          ),
         },
         {
           sectionName: 'Directional Icons',
@@ -53,7 +53,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Language-optimized fonts',
@@ -67,8 +67,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <p>Fabric supports a variety of language codes, which map to the following font stacks:</p>
               <Table content={localizedFontsData} />
             </>
-          )
-        }
+          ),
+        },
       ];
   }
 }

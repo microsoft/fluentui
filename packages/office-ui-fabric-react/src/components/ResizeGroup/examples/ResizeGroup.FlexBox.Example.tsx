@@ -6,7 +6,7 @@ import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 const leftRightBoxClassName = mergeStyles({
   display: 'flex',
   justifyContent: 'space-between',
-  whiteSpace: 'nowrap'
+  whiteSpace: 'nowrap',
 }) as string;
 
 const getNumberedBoxClassName = memoizeFunction((backgroundColor: string) => {
@@ -19,7 +19,7 @@ const getNumberedBoxClassName = memoizeFunction((backgroundColor: string) => {
     width: '50px',
     marginLeft: '10px',
     marginRight: '10px',
-    backgroundColor
+    backgroundColor,
   }) as string;
 });
 

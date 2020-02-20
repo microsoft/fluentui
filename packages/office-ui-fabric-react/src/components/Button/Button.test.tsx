@@ -54,7 +54,7 @@ describe('Button', () => {
   it('renders a DefaultButton with a keytip correctly', () => {
     const keytipProps = {
       content: 'A',
-      keySequences: ['a']
+      keySequences: ['a'],
     };
     const component = renderer.create(<DefaultButton text="Button" keytipProps={keytipProps} />);
     const tree = component.toJSON();
@@ -71,16 +71,16 @@ describe('Button', () => {
             {
               key: 'emailMessage',
               text: 'Email message',
-              iconProps: { iconName: 'Mail' }
+              iconProps: { iconName: 'Mail' },
             },
             {
               key: 'calendarEvent',
               text: 'Calendar event',
-              iconProps: { iconName: 'Calendar' }
-            }
-          ]
+              iconProps: { iconName: 'Calendar' },
+            },
+          ],
         }}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -115,7 +115,7 @@ describe('Button', () => {
       const button = render(
         <DefaultButton href="http://www.microsoft.com" target="_blank">
           Hello
-        </DefaultButton>
+        </DefaultButton>,
       );
       expect(button.tagName).toEqual('A');
     });
@@ -125,7 +125,7 @@ describe('Button', () => {
         const button: any = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-label')).toBeNull();
@@ -138,7 +138,7 @@ describe('Button', () => {
         const button = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="NativeLabel" ariaLabel="ButtonLabel">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-label')).toEqual('ButtonLabel');
@@ -150,7 +150,7 @@ describe('Button', () => {
         const button = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-label')).toEqual('MyLabel');
@@ -162,7 +162,7 @@ describe('Button', () => {
         const button = render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-labelledby')).toEqual('someid');
@@ -185,7 +185,7 @@ describe('Button', () => {
             styles={{ screenReaderText: 'some-screenreader-class' }}
           >
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-label')).toBeNull();
@@ -203,7 +203,7 @@ describe('Button', () => {
             iconProps={{ iconName: 'Emoji2' }}
             ariaDescription="Description on icon button"
             styles={{ screenReaderText: 'some-screenreader-class' }}
-          />
+          />,
         );
 
         expect(button.getAttribute('aria-label')).toBeNull();
@@ -223,7 +223,7 @@ describe('Button', () => {
             styles={{ screenReaderText: 'some-screenreader-class' }}
           >
             And this is the label
-          </CompoundButton>
+          </CompoundButton>,
         );
 
         expect(button.getAttribute('aria-label')).toBeNull();
@@ -257,7 +257,7 @@ describe('Button', () => {
         const button: any = render(
           <DefaultButton toggle={true} checked={true}>
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-pressed')).toEqual('true');
@@ -274,13 +274,13 @@ describe('Button', () => {
                 {
                   key: 'emailMessage',
                   text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                }
-              ]
+                  iconProps: { iconName: 'Mail' },
+                },
+              ],
             }}
           >
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-pressed')).toEqual('false');
@@ -290,7 +290,7 @@ describe('Button', () => {
         const button: any = render(
           <DefaultButton role="menuitemcheckbox" toggle={true} checked={true}>
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-checked')).toEqual('true');
@@ -300,7 +300,7 @@ describe('Button', () => {
         const button: any = render(
           <DefaultButton role="checkbox" toggle={true} checked={true}>
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-checked')).toEqual('true');
@@ -319,14 +319,14 @@ describe('Button', () => {
             {
               key: 'emailMessage',
               text: 'Email message',
-              iconProps: { iconName: 'Mail' }
-            }
-          ]
+              iconProps: { iconName: 'Mail' },
+            },
+          ],
         };
         const button: any = render(
           <DefaultButton toggle={true} split={true} onClick={alertClicked} persistMenu={true} menuProps={menuProps}>
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button).toBeTruthy();
@@ -345,13 +345,13 @@ describe('Button', () => {
                 {
                   key: 'emailMessage',
                   text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                }
-              ]
+                  iconProps: { iconName: 'Mail' },
+                },
+              ],
             }}
           >
             Hello
-          </DefaultButton>
+          </DefaultButton>,
         );
 
         expect(button.getAttribute('aria-pressed')).toEqual('true');
@@ -404,16 +404,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
       expect(button.tagName).not.toEqual('DIV');
     });
@@ -430,16 +430,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
 
       ReactTestUtils.Simulate.keyDown(button, { which: KeyCodes.enter });
@@ -461,16 +461,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
       const primaryButtonDOM: HTMLElement = button.querySelector("[data-automationid='splitbuttonprimary']") as HTMLElement;
 
@@ -493,16 +493,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
       const buttonContainer: HTMLDivElement = button.getElementsByTagName('span')[0] as HTMLDivElement;
 
@@ -522,16 +522,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
       expect(button.tagName).toEqual('DIV');
     });
@@ -547,16 +547,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
       const menuButtonDOM: HTMLButtonElement = button.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
@@ -574,16 +574,16 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
       const primaryButtonDOM: HTMLButtonElement = button.getElementsByTagName('button')[0] as HTMLButtonElement;
 
@@ -605,20 +605,20 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
 
       ReactTestUtils.Simulate.keyDown(button, {
-        which: KeyCodes.down
+        which: KeyCodes.down,
       });
       expect(button.getAttribute('aria-expanded')).toEqual('false');
     });
@@ -633,25 +633,25 @@ describe('Button', () => {
               {
                 key: 'emailMessage',
                 text: 'Email message',
-                iconProps: { iconName: 'Mail' }
+                iconProps: { iconName: 'Mail' },
               },
               {
                 key: 'calendarEvent',
                 text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
+                iconProps: { iconName: 'Calendar' },
+              },
+            ],
           }}
-        />
+        />,
       );
 
       ReactTestUtils.Simulate.keyDown(button, {
-        which: KeyCodes.down
+        which: KeyCodes.down,
       });
       expect(button.getAttribute('aria-expanded')).toEqual('false');
 
       ReactTestUtils.Simulate.keyDown(button, {
-        which: KeyCodes.right
+        which: KeyCodes.right,
       });
       expect(button.getAttribute('aria-expanded')).toEqual('true');
     });
@@ -679,16 +679,16 @@ describe('Button', () => {
                 {
                   key: 'emailMessage',
                   text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
+                  iconProps: { iconName: 'Mail' },
                 },
                 {
                   key: 'calendarEvent',
                   text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
+                  iconProps: { iconName: 'Calendar' },
+                },
+              ],
             }}
-          />
+          />,
         );
         return button;
       }
@@ -707,7 +707,7 @@ describe('Button', () => {
 
         ReactTestUtils.Simulate.keyDown(menuButtonElement, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         expect(button.getAttribute('aria-expanded')).toEqual('true');
       });
@@ -757,41 +757,41 @@ describe('Button', () => {
                 {
                   key: 'emailMessage',
                   text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
+                  iconProps: { iconName: 'Mail' },
                 },
                 {
                   key: 'calendarEvent',
                   text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
+                  iconProps: { iconName: 'Calendar' },
+                },
+              ],
             }}
-          />
+          />,
         );
 
         ReactTestUtils.Simulate.click(button);
         ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
 
         ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
         expect(didClick).toEqual(false);
       });
@@ -808,32 +808,32 @@ describe('Button', () => {
             onKeyDown={setTrue}
             onMouseDown={setTrue}
             onMouseUp={setTrue}
-          />
+          />,
         );
 
         ReactTestUtils.Simulate.click(button);
         ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
 
         ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
         expect(didClick).toEqual(false);
       });
@@ -850,32 +850,32 @@ describe('Button', () => {
             onKeyDown={setTrue}
             onMouseDown={setTrue}
             onMouseUp={setTrue}
-          />
+          />,
         );
 
         ReactTestUtils.Simulate.click(button);
         ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
 
         ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
         expect(didClick).toEqual(false);
       });
@@ -897,41 +897,41 @@ describe('Button', () => {
                 {
                   key: 'emailMessage',
                   text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
+                  iconProps: { iconName: 'Mail' },
                 },
                 {
                   key: 'calendarEvent',
                   text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
+                  iconProps: { iconName: 'Calendar' },
+                },
+              ],
             }}
-          />
+          />,
         );
 
         ReactTestUtils.Simulate.click(button);
         ReactTestUtils.Simulate.keyDown(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyUp(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.keyPress(button, {
           which: KeyCodes.down,
-          altKey: true
+          altKey: true,
         });
         ReactTestUtils.Simulate.mouseDown(button, {
           type: 'mousedown',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
 
         ReactTestUtils.Simulate.mouseUp(button, {
           type: 'mouseup',
           clientX: 0,
-          clientY: 0
+          clientY: 0,
         });
         expect(didClick).toEqual(false);
       });
@@ -941,7 +941,7 @@ describe('Button', () => {
       function buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
         menuPropsPatch?: any,
         text?: string,
-        textAsChildElement: boolean = false
+        textAsChildElement: boolean = false,
       ): HTMLElement {
         const menuProps = { items: [{ key: 'item', name: 'Item' }], ...menuPropsPatch };
         const element: React.ReactElement<any> = (
@@ -995,7 +995,7 @@ describe('Button', () => {
         const explicitLabel = 'ExplicitLabel';
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
           { ariaLabel: explicitLabel },
-          'Button Text'
+          'Button Text',
         );
 
         expect(contextualMenuElement).not.toBeNull();
@@ -1038,7 +1038,7 @@ describe('Button', () => {
         const explicitLabelElementId = 'id_ExplicitLabel';
         const contextualMenuElement = buildRenderAndClickButtonAndReturnContextualMenuDOMElement(
           { labelElementId: explicitLabelElementId },
-          'Button Text'
+          'Button Text',
         );
 
         expect(contextualMenuElement).not.toBeNull();

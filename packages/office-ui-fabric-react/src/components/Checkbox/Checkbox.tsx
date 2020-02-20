@@ -8,5 +8,5 @@ export const Checkbox: React.FunctionComponent<ICheckboxProps> = styled<ICheckbo
   CheckboxBase,
   getStyles,
   undefined,
-  { scope: 'Checkbox' }
+  { scope: 'Checkbox' },
 );

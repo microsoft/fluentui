@@ -59,7 +59,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
     this.state = {
       selectionState: this._getSelectionState(props),
       columnMeasureInfo: undefined,
-      isDropping: false
+      isDropping: false,
     };
 
     this._droppingClassNames = '';
@@ -100,7 +100,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         this._dragDropSubscription = this.props.dragDropHelper.subscribe(
           this._root as HTMLElement,
           this._events,
-          this._getRowDragDropOptions()
+          this._getRowDragDropOptions(),
         );
       }
     }
@@ -111,7 +111,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       columnMeasureInfo.onMeasureDone(newWidth);
 
       this.setState({
-        columnMeasureInfo: undefined
+        columnMeasureInfo: undefined,
       });
     }
 
@@ -140,7 +140,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
     this.setState({
-      selectionState: this._getSelectionState(newProps)
+      selectionState: this._getSelectionState(newProps),
     });
   }
 
@@ -184,7 +184,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       styles,
       cellsByColumn,
       groupNestingDepth,
-      useFastIcons = true
+      useFastIcons = true,
     } = this.props;
     const { columnMeasureInfo, isDropping } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState;
@@ -208,8 +208,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         droppingClassName,
         className,
         compact,
-        enableUpdateAnimations
-      })
+        enableUpdateAnimations,
+      }),
     };
 
     const rowClassNames: IDetailsRowFieldsProps['rowClassNames'] = {
@@ -219,7 +219,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       cellAnimation: this._classNames.cellAnimation,
       cellPadded: this._classNames.cellPadded,
       cellUnpadded: this._classNames.cellUnpadded,
-      fields: this._classNames.fields
+      fields: this._classNames.fields,
     };
 
     // Only re-assign rowClassNames when classNames have changed.
@@ -251,7 +251,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         {...(typeof isDraggable === 'boolean'
           ? {
               'data-is-draggable': isDraggable, // This data attribute is used by some host applications.
-              draggable: isDraggable
+              draggable: isDraggable,
             }
           : {})}
         direction={FocusZoneDirection.horizontal}
@@ -281,7 +281,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
               theme,
               isVisible: checkboxVisibility === CheckboxVisibility.always,
               onRenderDetailsCheckbox: onRenderDetailsCheckbox,
-              useFastIcons
+              useFastIcons,
             })}
           </div>
         )}
@@ -330,8 +330,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       columnMeasureInfo: {
         index,
         column,
-        onMeasureDone
-      }
+        onMeasureDone,
+      },
     });
   }
 
@@ -348,7 +348,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     return {
       isSelected: !!selection && selection.isIndexSelected(itemIndex),
-      isSelectionModal: !!selection && !!selection.isModal && selection.isModal()
+      isSelectionModal: !!selection && !!selection.isModal && selection.isModal(),
     };
   }
 
@@ -357,7 +357,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
       this.setState({
-        selectionState: selectionState
+        selectionState: selectionState,
       });
     }
   };
@@ -382,7 +382,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onDragStart: dragDropEvents!.onDragStart,
       updateDropState: this._updateDroppingState,
       onDrop: dragDropEvents!.onDrop,
-      onDragEnd: dragDropEvents!.onDragEnd
+      onDragEnd: dragDropEvents!.onDragEnd,
     };
 
     return options;

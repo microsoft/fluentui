@@ -34,7 +34,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
     onRenderItemColumn,
     getCellValueKey,
     cellsByColumn,
-    enableUpdateAnimations
+    enableUpdateAnimations,
   } = props;
 
   const cellValueKeysRef = React.useRef<{
@@ -88,7 +88,7 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
               column.isRowHeader && rowClassNames.isRowHeader,
               rowClassNames.cell,
               column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-              showAnimation && rowClassNames.cellAnimation
+              showAnimation && rowClassNames.cellAnimation,
             )}
             style={{ width }}
             data-automationid="DetailsRowCell"

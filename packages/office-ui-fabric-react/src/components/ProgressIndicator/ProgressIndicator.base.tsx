@@ -16,7 +16,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
   public static defaultProps = {
     label: '',
     description: '',
-    width: 180
+    width: 180,
   };
 
   public render() {
@@ -28,7 +28,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
       styles,
       theme,
       progressHidden,
-      onRenderProgress = this._onRenderProgress
+      onRenderProgress = this._onRenderProgress,
     } = this.props;
 
     const percentComplete =
@@ -38,7 +38,7 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
       theme: theme!,
       className,
       barHeight,
-      indeterminate: percentComplete === undefined ? true : false
+      indeterminate: percentComplete === undefined ? true : false,
     });
 
     return (
@@ -48,9 +48,9 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
           ? onRenderProgress(
               {
                 ...(this.props as IProgressIndicatorProps),
-                percentComplete: percentComplete
+                percentComplete: percentComplete,
               },
-              this._onRenderProgress
+              this._onRenderProgress,
             )
           : null}
         {description ? <div className={classNames.itemDescription}>{description}</div> : null}
@@ -68,12 +68,12 @@ export class ProgressIndicatorBase extends React.Component<IProgressIndicatorPro
       theme: theme!,
       className,
       barHeight,
-      indeterminate: percentComplete === undefined ? true : false
+      indeterminate: percentComplete === undefined ? true : false,
     });
 
     const progressBarStyles = {
       width: percentComplete !== undefined ? percentComplete + '%' : undefined,
-      transition: percentComplete !== undefined && percentComplete < ZERO_THRESHOLD ? 'none' : undefined
+      transition: percentComplete !== undefined && percentComplete < ZERO_THRESHOLD ? 'none' : undefined,
     };
 
     const ariaValueMin = percentComplete !== undefined ? 0 : undefined;

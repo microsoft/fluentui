@@ -8,5 +8,5 @@ export const Breadcrumb: React.FunctionComponent<IBreadcrumbProps> = styled<IBre
   BreadcrumbBase,
   getStyles,
   undefined,
-  { scope: 'Breadcrumb' }
+  { scope: 'Breadcrumb' },
 );

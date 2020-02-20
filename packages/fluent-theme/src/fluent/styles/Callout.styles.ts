@@ -8,13 +8,13 @@ export const CalloutContentStyles = (props: ICalloutContentStyleProps): Partial<
     root: {
       borderRadius: effects.roundedCorner2,
       borderWidth: 0,
-      boxShadow: effects.elevation16
+      boxShadow: effects.elevation16,
     },
     beakCurtain: {
-      borderRadius: effects.roundedCorner2
+      borderRadius: effects.roundedCorner2,
     },
     calloutMain: {
-      borderRadius: effects.roundedCorner2
-    }
+      borderRadius: effects.roundedCorner2,
+    },
   };
 };

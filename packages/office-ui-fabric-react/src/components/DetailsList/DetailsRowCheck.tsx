@@ -37,12 +37,12 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     className,
     isHeader,
     isVisible,
-    compact
+    compact,
   });
 
   const detailsCheckboxProps: IDetailsCheckboxProps = {
     checked: selected,
-    theme
+    theme,
   };
 
   return canSelect ? (
@@ -74,5 +74,5 @@ export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckSty
   getStyles,
   undefined,
   { scope: 'DetailsRowCheck' },
-  true
+  true,
 );

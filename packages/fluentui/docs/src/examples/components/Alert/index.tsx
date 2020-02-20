@@ -1,11 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Slots from './Slots'
-import State from './State'
-import Variations from './Variations'
-import Usage from './Usage'
+import Rtl from './Rtl';
+import Types from './Types';
+import Slots from './Slots';
+import State from './State';
+import Variations from './Variations';
+import Usage from './Usage';
 
 const AlertExamples = () => (
   <>
@@ -16,6 +16,6 @@ const AlertExamples = () => (
     <Rtl />
     <Usage />
   </>
-)
+);
 
-export default AlertExamples
+export default AlertExamples;

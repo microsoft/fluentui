@@ -13,7 +13,7 @@ const _items: IFileExampleItem[] = [];
 
 const theme = getTheme();
 const dragEnterClass = mergeStyles({
-  backgroundColor: theme.palette.neutralLight
+  backgroundColor: theme.palette.neutralLight,
 });
 
 const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
@@ -24,7 +24,7 @@ const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map
     key: fieldName,
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true
+    isResizable: true,
   };
 });
 
@@ -35,7 +35,7 @@ const _names: string[] = [
   'Roko Kolar',
   'Christian Bergqvist',
   'Valentina Lovric',
-  'Makenzie Sharett'
+  'Makenzie Sharett',
 ];
 
 function getMockDateString(): string {
@@ -75,14 +75,14 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
           name: 'Item ' + i,
           modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
-          filesize: Math.floor(Math.random() * 30).toString() + ' MB'
+          filesize: Math.floor(Math.random() * 30).toString() + ' MB',
         });
       }
     }
 
     this.state = {
       items: _items,
-      numberOfItems: 0
+      numberOfItems: 0,
     };
   }
 
@@ -142,7 +142,7 @@ export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnounc
       onDragEnd: () => {
         this._draggedItem = undefined;
         this._draggedIndex = -1;
-      }
+      },
     };
   }
 

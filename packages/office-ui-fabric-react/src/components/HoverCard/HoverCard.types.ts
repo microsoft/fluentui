@@ -163,7 +163,7 @@ export enum OpenCardMode {
   /**
    * Open card by hot key
    */
-  hotKey = 1
+  hotKey = 1,
 }
 
 /**
@@ -178,7 +178,7 @@ export enum HoverCardType {
   /**
    * File card consisting of two parts: compact and expanded. Has some default sizes if not specified.
    */
-  expanding = 'ExpandingCard'
+  expanding = 'ExpandingCard',
 }
 
 /**

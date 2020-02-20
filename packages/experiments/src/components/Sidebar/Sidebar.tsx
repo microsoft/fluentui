@@ -31,7 +31,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     super(props);
 
     this.state = {
-      isCollapsed: false
+      isCollapsed: false,
     };
   }
 
@@ -66,8 +66,8 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           className={this._classNames.content}
           styles={{
             contentContainer: {
-              overflowX: 'hidden'
-            }
+              overflowX: 'hidden',
+            },
           }}
         >
           {this.props.collapsible && (
@@ -257,14 +257,14 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           root: {
             borderBottomWidth: '1px',
             borderBottomStyle: 'solid',
-            borderBottomColor: this._theme.semanticColors.bodyDivider
+            borderBottomColor: this._theme.semanticColors.bodyDivider,
           },
           icon: {
             width: '0',
-            marginRight: '0'
-          }
+            marginRight: '0',
+          },
         }),
-        onRender: this._renderSidebarButtonMenuItem
+        onRender: this._renderSidebarButtonMenuItem,
       });
     }
 
@@ -284,10 +284,10 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
             calloutProps: {
               styles: {
                 root: {
-                  borderWidth: '0'
-                }
-              }
-            }
+                  borderWidth: '0',
+                },
+              },
+            },
           }}
           menuTriggerKeyCode={KeyCodes.right}
           className={this._getClassNames('ba-SidebarContextualMenuButton', item)}

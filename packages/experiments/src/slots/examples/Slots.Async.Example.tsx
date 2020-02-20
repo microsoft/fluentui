@@ -31,9 +31,9 @@ const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (props, theme):
   text: [
     theme.fonts.large,
     {
-      fontWeight: 800
-    }
-  ]
+      fontWeight: 800,
+    },
+  ],
 });
 
 // TODO: use extendsComponent to create variants and clean up these examples
@@ -71,14 +71,14 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
             text: { children: 'Title Text' },
             slots: {
               text: {
-                render: titleTextRender
-              }
-            }
+                render: titleTextRender,
+              },
+            },
           }}
           slots={{
             body: {
-              render: bodyRender
-            }
+              render: bodyRender,
+            },
           }}
         >
           Data loaded

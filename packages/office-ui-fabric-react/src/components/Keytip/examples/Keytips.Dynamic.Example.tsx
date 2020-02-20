@@ -10,7 +10,7 @@ export class KeytipsDynamicExample extends React.Component<{}, IKeytipsTestState
     super(props);
 
     this.state = {
-      currButton: 'Button 1'
+      currButton: 'Button 1',
     };
   }
 

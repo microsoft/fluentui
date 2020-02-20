@@ -11,7 +11,7 @@ import {
   DocLinkTag,
   DocNodeContainer,
   DocCodeSpan,
-  DocBlock
+  DocBlock,
 } from '@microsoft/tsdoc';
 import { ApiItem, ApiModel, ExcerptToken, IExcerptTokenRange } from '@microsoft/api-extractor-model';
 import { ILinkToken } from './types';
@@ -82,7 +82,7 @@ export function getTokenHyperlinks(
   collectedData: ICollectedData,
   excerptTokens: ReadonlyArray<ExcerptToken>,
   excerptTokenRange: Readonly<IExcerptTokenRange>,
-  isTypeAlias?: boolean
+  isTypeAlias?: boolean,
 ): ILinkToken[] {
   const initialTokens = getTokensInRange(excerptTokens, excerptTokenRange).map((token: ExcerptToken) => {
     const result: ILinkToken = { text: token.text };
@@ -172,7 +172,7 @@ export function renderTokens(excerptTokens: ReadonlyArray<ExcerptToken>, excerpt
 
 function getTokensInRange(
   excerptTokens: ReadonlyArray<ExcerptToken>,
-  excerptTokenRange: Readonly<IExcerptTokenRange>
+  excerptTokenRange: Readonly<IExcerptTokenRange>,
 ): ReadonlyArray<ExcerptToken> {
   return excerptTokens.slice(excerptTokenRange.startIndex, excerptTokenRange.endIndex);
 }

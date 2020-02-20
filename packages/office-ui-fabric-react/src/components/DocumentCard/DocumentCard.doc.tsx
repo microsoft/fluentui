@@ -30,7 +30,7 @@ export const DocumentCardPageProps: IDocPageProps = {
           </p>
           <DocumentCardBasicExample />
         </>
-      )
+      ),
     },
     {
       title: 'DocumentCard with compact layout ',
@@ -47,7 +47,7 @@ export const DocumentCardPageProps: IDocPageProps = {
           </p>
           <DocumentCardCompactExample />
         </>
-      )
+      ),
     },
     {
       title: 'DocumentCard with multiple items, commands, and views',
@@ -60,7 +60,7 @@ export const DocumentCardPageProps: IDocPageProps = {
           </p>
           <DocumentCardCompleteExample />
         </>
-      )
+      ),
     },
     {
       title: 'DocumentCard with image or icon',
@@ -70,7 +70,7 @@ export const DocumentCardPageProps: IDocPageProps = {
           <p>This example shows a simplified method of displaying an image or icon on the DocumentCard.</p>
           <DocumentCardImageExample />
         </>
-      )
+      ),
     },
     {
       title: 'Conversation cards with logo, text preview, and status',
@@ -80,13 +80,13 @@ export const DocumentCardPageProps: IDocPageProps = {
           <p>This example shows the logo, text preview, and status used for conversation cards.</p>
           <DocumentCardConversationExample />
         </>
-      )
-    }
+      ),
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

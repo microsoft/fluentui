@@ -26,7 +26,7 @@ function onResolveSuggestions(text: string): ISimple[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map((item: string) => ({ key: item, name: item }));
@@ -61,11 +61,11 @@ const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple
 const floatingPickerProps = {
   onResolveSuggestions: onResolveSuggestions,
   onRenderSuggestionsItem: basicSuggestionRenderer,
-  suggestionsStore: new SuggestionsStore<ISimple>()
+  suggestionsStore: new SuggestionsStore<ISimple>(),
 };
 
 const selectedItemsListProps: IBaseSelectedItemsListProps<ISimple> = {
-  onRenderItem: basicItemRenderer
+  onRenderItem: basicItemRenderer,
 };
 
 export interface ISimple {
@@ -107,7 +107,7 @@ describe('Pickers', () => {
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
-        />
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -123,20 +123,20 @@ describe('Pickers', () => {
           suggestionItems={[
             {
               name: 'yellow',
-              key: 'yellow'
-            }
+              key: 'yellow',
+            },
           ]}
           selectedItems={[
             {
               name: 'red',
-              key: 'red'
+              key: 'red',
             },
             {
               name: 'green',
-              key: 'green'
-            }
+              key: 'green',
+            },
           ]}
-        />
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -151,7 +151,7 @@ describe('Pickers', () => {
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
-        />
+        />,
       );
 
       expect(pickerRef.current).not.toBeFalsy();
@@ -171,7 +171,7 @@ describe('Pickers', () => {
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
-        hostNode
+        hostNode,
       );
 
       expect(picker.state.queryString).toBe('bl');
@@ -190,7 +190,7 @@ describe('Pickers', () => {
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
         />,
-        hostNode
+        hostNode,
       );
 
       expect(picker.items.length).toBe(1);
@@ -206,7 +206,7 @@ describe('Pickers', () => {
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
-        />
+        />,
       );
 
       expect(pickerRef.current).not.toBeFalsy();
@@ -233,7 +233,7 @@ describe('Pickers', () => {
           selectedItemsListProps={selectedItemsListProps}
           onRenderSelectedItems={basicRenderSelectedItemsList}
           onRenderFloatingPicker={basicRenderFloatingPicker}
-        />
+        />,
       );
 
       expect(pickerRef.current).not.toBeFalsy();
@@ -252,15 +252,15 @@ describe('Pickers', () => {
         jasmine.objectContaining({
           item: jasmine.objectContaining({
             name: 'black',
-            key: 'black'
-          })
+            key: 'black',
+          }),
         }),
         jasmine.objectContaining({
           item: jasmine.objectContaining({
             name: 'blue',
-            key: 'blue'
-          })
-        })
+            key: 'blue',
+          }),
+        }),
       ]);
 
       // act
@@ -270,8 +270,8 @@ describe('Pickers', () => {
       expect(picker.items).toEqual([
         jasmine.objectContaining({
           name: 'black',
-          key: 'black'
-        })
+          key: 'black',
+        }),
       ]);
     });
 
@@ -290,7 +290,7 @@ describe('Pickers', () => {
             onRenderSelectedItems={basicRenderSelectedItemsList}
             onRenderFloatingPicker={basicRenderFloatingPicker}
           />,
-          root
+          root,
         );
 
         expect(document.querySelector('[aria-owns="suggestion-list"]')).not.toBeTruthy();
@@ -313,7 +313,7 @@ describe('Pickers', () => {
             onRenderSelectedItems={basicRenderSelectedItemsList}
             onRenderFloatingPicker={basicRenderFloatingPicker}
           />,
-          root
+          root,
         );
 
         pickerRef.current!.floatingPicker.current!.showPicker();
@@ -338,7 +338,7 @@ describe('Pickers', () => {
             onRenderSelectedItems={basicRenderSelectedItemsList}
             onRenderFloatingPicker={basicRenderFloatingPicker}
           />,
-          root
+          root,
         );
 
         pickerRef.current!.floatingPicker.current!.showPicker();

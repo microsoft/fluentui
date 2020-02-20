@@ -20,7 +20,7 @@ const _testTags: ITag[] = [
   'rose',
   'violet',
   'white',
-  'yellow'
+  'yellow',
 ].map(item => ({ key: item, name: item }));
 
 export interface IAnnouncedSearchResultsExampleState {
@@ -40,7 +40,7 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
     this.state = {
       seconds: 0,
       numberOfSuggestions: 0,
-      emptyInput: true
+      emptyInput: true,
     };
   }
 
@@ -58,10 +58,10 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found' // this alert handles the case when there are no suggestions available
+            noResultsFoundText: 'No Color Tags Found', // this alert handles the case when there are no suggestions available
           }}
           inputProps={{
-            'aria-label': 'Tag Picker'
+            'aria-label': 'Tag Picker',
           }}
         />
       </Stack>

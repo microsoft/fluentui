@@ -64,7 +64,7 @@ export function getFadedOverflowStyle(
   color: keyof ISemanticColors | keyof IPalette = 'bodyBackground',
   direction: 'horizontal' | 'vertical' = 'horizontal',
   width: string | number = getDefaultValue('width', direction),
-  height: string | number = getDefaultValue('height', direction)
+  height: string | number = getDefaultValue('height', direction),
 ): IRawStyle {
   // Get the color value string from the theme semanticColors or palette.
   const colorValue: string = theme.semanticColors[color as keyof ISemanticColors] || theme.palette[color as keyof IPalette];
@@ -83,7 +83,7 @@ export function getFadedOverflowStyle(
     width: width,
     height: height,
     pointerEvents: 'none',
-    backgroundImage: `linear-gradient(${gradientDirection}, ${rgba} 0%, ${colorValue} 100%)`
+    backgroundImage: `linear-gradient(${gradientDirection}, ${rgba} 0%, ${colorValue} 100%)`,
   };
 }
 
@@ -99,7 +99,7 @@ function color2rgb(colorValue: string): IRGB {
     return {
       r: parseInt(colorValue.slice(1, 3), 16),
       g: parseInt(colorValue.slice(3, 5), 16),
-      b: parseInt(colorValue.slice(5, 7), 16)
+      b: parseInt(colorValue.slice(5, 7), 16),
     };
   } else if (colorValue.indexOf('rgba(') === 0) {
     // If it's an rgba color string
@@ -109,14 +109,14 @@ function color2rgb(colorValue: string): IRGB {
     return {
       r: parts[0],
       g: parts[1],
-      b: parts[2]
+      b: parts[2],
     };
   }
   // The only remaining possibility is transparent.
   return {
     r: 255,
     g: 255,
-    b: 255
+    b: 255,
   };
 }
 

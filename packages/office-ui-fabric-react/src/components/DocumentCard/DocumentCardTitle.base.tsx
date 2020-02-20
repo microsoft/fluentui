@@ -38,7 +38,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       truncatedTitleFirstPiece: '',
       truncatedTitleSecondPiece: '',
       previousTitle: props.title,
-      needMeasurement: !!props.shouldTruncate
+      needMeasurement: !!props.shouldTruncate,
     };
   }
 
@@ -49,7 +49,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
         truncatedTitleSecondPiece: undefined,
         clientWidth: undefined,
         previousTitle: this.props.title,
-        needMeasurement: !!this.props.shouldTruncate
+        needMeasurement: !!this.props.shouldTruncate,
       });
     }
 
@@ -80,7 +80,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      showAsSecondaryTitle
+      showAsSecondaryTitle,
     });
 
     let documentCardTitle;
@@ -126,7 +126,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       if (style.width && style.lineHeight && style.height) {
         const { clientWidth, scrollWidth } = element;
         const lines: number = Math.floor(
-          (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10)
+          (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10),
         );
 
         // Use overflow to predict truncated length.
@@ -148,7 +148,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
             truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),
             clientWidth,
-            needMeasurement: false
+            needMeasurement: false,
           });
         }
       }
@@ -172,7 +172,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       ) {
         this.setState({
           truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
+          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1),
         });
       }
     }
@@ -191,9 +191,9 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
               this.setState({
                 truncatedTitleFirstPiece: undefined,
                 truncatedTitleSecondPiece: undefined,
-                needMeasurement: true
+                needMeasurement: true,
               }),
-            250
+            250,
           );
         }
       }

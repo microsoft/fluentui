@@ -7,18 +7,18 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const PersonaPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/ios/PersonaOverview.md') as string,
     dos: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/ios/PersonaDos.md') as string,
     donts: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/ios/PersonaDonts.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PersonaPage/docs/android/PersonaOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

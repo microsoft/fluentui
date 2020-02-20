@@ -17,7 +17,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
     onDismiss: undefined,
-    isMultiline: true
+    isMultiline: true,
   };
 
   private ICON_MAP = {
@@ -27,7 +27,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     [MessageBarType.blocked]: 'Blocked2',
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
-    [MessageBarType.success]: 'Completed'
+    [MessageBarType.success]: 'Completed',
   };
 
   private _classNames: { [key in keyof IMessageBarStyles]: string };
@@ -38,7 +38,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     this.state = {
       labelId: getId('MessageBar'),
       showContent: false,
-      expandSingleLine: false
+      expandSingleLine: false,
     };
   }
 
@@ -163,7 +163,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     const hasActions = !!this._getActionsDiv() || !!this._getDismissDiv();
     const regionProps = {
       'aria-describedby': this.state.labelId,
-      role: 'region'
+      role: 'region',
     };
 
     return hasActions ? regionProps : {};
@@ -181,7 +181,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
       truncated: truncated,
       isMultiline: isMultiline,
       expandSingleLine: expandSingleLine,
-      className
+      className,
     });
   }
 

@@ -5,7 +5,7 @@ import { Toolbar, ToolbarItem } from '@fluentui/react';
 export const selectors = {
   toolbarItem: ToolbarItem.className,
   toolbar: Toolbar.className,
-  toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper
+  toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper,
 };
 
 export const itemsCount = 20;
@@ -19,7 +19,7 @@ const ToolbarExampleOverflow = () => {
     icon: icons[i % icons.length],
     title: `${icons[i % icons.length]} #${i}`,
     // first hald of items are unwrapped, rest are wrapped.
-    ...(i >= itemsCount / 2 && { menu: [] })
+    ...(i >= itemsCount / 2 && { menu: [] }),
   }));
 
   const toolbarItems = itemData.map(item => {
@@ -33,7 +33,7 @@ const ToolbarExampleOverflow = () => {
       overflow
       overflowOpen={overflowOpen}
       overflowItem={{
-        title: 'More'
+        title: 'More',
       }}
       onOverflowOpenChange={(e, { overflowOpen }) => {
         setOverflowOpen(overflowOpen);

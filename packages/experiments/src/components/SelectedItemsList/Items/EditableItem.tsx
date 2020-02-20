@@ -31,7 +31,7 @@ export const EditableItem = <T extends any>(editableItemProps: EditableItemProps
         selectedItemProps.onItemChange && selectedItemProps.onItemChange(newItem, selectedItemProps.index);
         setIsEditing(false);
       },
-      [selectedItemProps.onItemChange]
+      [selectedItemProps.onItemChange],
     );
 
     const ItemComponent = editableItemProps.itemComponent;

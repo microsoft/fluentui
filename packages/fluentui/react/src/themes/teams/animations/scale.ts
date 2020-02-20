@@ -1,4 +1,4 @@
-import { easeOut, easeIn, easeEasy } from './timingFunctions'
+import { easeOut, easeIn, easeEasy } from './timingFunctions';
 
 const scaleAnimations = {
   // Scale in w/ Fade -- Useful for opening modal dialogs
@@ -256,6 +256,6 @@ const scaleAnimations = {
     duration: '600ms',
     fillMode: 'forwards',
   },
-}
+};
 
-export default scaleAnimations
+export default scaleAnimations;

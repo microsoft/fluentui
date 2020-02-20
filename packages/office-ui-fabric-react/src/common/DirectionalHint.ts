@@ -67,7 +67,7 @@ export const DirectionalHint = {
   /**
    * Appear to the right of the target element, with the bottom edges of the callout and target aligning.
    */
-  rightBottomEdge: 13 as 13
+  rightBottomEdge: 13 as 13,
 };
 
 export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];

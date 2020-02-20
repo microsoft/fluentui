@@ -17,7 +17,7 @@ export const getStyles = memoizeFunction(
       top: 4,
       bottom: 4,
       right: 4,
-      border: 'none'
+      border: 'none',
     };
 
     const commandButtonStyles: IButtonStyles = {
@@ -33,10 +33,10 @@ export const getStyles = memoizeFunction(
           borderRadius: 0,
           selectors: {
             [HighContrastSelector]: {
-              border: 'none'
-            }
-          }
-        }
+              border: 'none',
+            },
+          },
+        },
       ],
 
       rootHovered: {
@@ -44,15 +44,15 @@ export const getStyles = memoizeFunction(
         color: p.neutralDark,
         selectors: {
           [HighContrastSelector]: {
-            color: 'Highlight'
+            color: 'Highlight',
           },
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: p.themeDarkAlt
+            color: p.themeDarkAlt,
           },
           [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
-            color: p.neutralPrimary
-          }
-        }
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootPressed: {
@@ -60,12 +60,12 @@ export const getStyles = memoizeFunction(
         color: p.neutralDark,
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: p.themeDark
+            color: p.themeDark,
           },
           [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
-            color: p.neutralPrimary
-          }
-        }
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootChecked: {
@@ -73,24 +73,24 @@ export const getStyles = memoizeFunction(
         color: p.neutralDark,
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: p.themeDark
+            color: p.themeDark,
           },
           [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
-            color: p.neutralPrimary
-          }
-        }
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootCheckedHovered: {
         backgroundColor: p.neutralQuaternaryAlt,
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: p.themeDark
+            color: p.themeDark,
           },
           [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
-            color: p.neutralPrimary
-          }
-        }
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootExpanded: {
@@ -98,25 +98,25 @@ export const getStyles = memoizeFunction(
         color: p.neutralDark,
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: p.themeDark
+            color: p.themeDark,
           },
           [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
-            color: p.neutralPrimary
-          }
-        }
+            color: p.neutralPrimary,
+          },
+        },
       },
 
       rootExpandedHovered: {
-        backgroundColor: p.neutralQuaternaryAlt
+        backgroundColor: p.neutralQuaternaryAlt,
       },
 
       rootDisabled: {
         backgroundColor: p.white,
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: semanticColors.disabledBodySubtext
-          }
-        }
+            color: semanticColors.disabledBodySubtext,
+          },
+        },
       },
 
       // Split button styles
@@ -124,13 +124,13 @@ export const getStyles = memoizeFunction(
         height: '100%',
         selectors: {
           [HighContrastSelector]: {
-            border: 'none'
-          }
-        }
+            border: 'none',
+          },
+        },
       },
 
       splitButtonDivider: {
-        backgroundColor: p.neutralTertiaryAlt
+        backgroundColor: p.neutralTertiaryAlt,
       },
 
       splitButtonMenuButton: {
@@ -145,26 +145,26 @@ export const getStyles = memoizeFunction(
             color: p.neutralDark,
             selectors: {
               [HighContrastSelector]: {
-                color: 'Highlight'
+                color: 'Highlight',
               },
               [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-                color: p.neutralPrimary
-              }
-            }
+                color: p.neutralPrimary,
+              },
+            },
           },
           ':active': {
             backgroundColor: p.neutralLight,
             selectors: {
               [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-                color: p.neutralPrimary
-              }
-            }
-          }
-        }
+                color: p.neutralPrimary,
+              },
+            },
+          },
+        },
       },
 
       splitButtonMenuButtonDisabled: {
-        backgroundColor: p.white
+        backgroundColor: p.white,
       },
 
       splitButtonMenuButtonChecked: {
@@ -172,9 +172,9 @@ export const getStyles = memoizeFunction(
         color: p.neutralDark,
         selectors: {
           ':hover': {
-            backgroundColor: p.neutralQuaternaryAlt
-          }
-        }
+            backgroundColor: p.neutralQuaternaryAlt,
+          },
+        },
       },
 
       splitButtonMenuButtonExpanded: {
@@ -182,32 +182,32 @@ export const getStyles = memoizeFunction(
         color: p.black,
         selectors: {
           ':hover': {
-            backgroundColor: p.neutralQuaternaryAlt
-          }
-        }
+            backgroundColor: p.neutralQuaternaryAlt,
+          },
+        },
       },
 
       splitButtonMenuIcon: {
-        color: p.neutralPrimary
+        color: p.neutralPrimary,
       },
 
       splitButtonMenuIconDisabled: {
-        color: p.neutralTertiary
+        color: p.neutralTertiary,
       },
 
       label: {
-        fontWeight: 'normal' // theme.fontWeights.semibold,
+        fontWeight: 'normal', // theme.fontWeights.semibold,
       },
 
       icon: {
-        color: p.themePrimary
+        color: p.themePrimary,
       },
 
       menuIcon: {
-        color: p.neutralSecondary
-      }
+        color: p.neutralSecondary,
+      },
     };
 
     return concatStyleSets(baseButtonStyles, baseSplitButtonStyles, commandButtonStyles, customStyles)!;
-  }
+  },
 );

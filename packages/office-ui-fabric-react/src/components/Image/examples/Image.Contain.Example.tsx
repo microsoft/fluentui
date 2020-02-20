@@ -6,7 +6,7 @@ export class ImageContainExample extends React.Component<any, any> {
   public render(): JSX.Element {
     const imageProps: IImageProps = {
       src: 'http://placehold.it/700x300',
-      imageFit: ImageFit.contain
+      imageFit: ImageFit.contain,
     };
 
     return (

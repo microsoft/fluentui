@@ -1,32 +1,24 @@
-import * as _ from 'lodash'
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings'
-import { pxToRem } from '../../../../utils'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import Loader from '../../../../components/Loader/Loader'
-import { ButtonProps } from '../../../../components/Button/Button'
-import { ButtonVariables } from './buttonVariables'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import * as _ from 'lodash';
+import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
+import { pxToRem } from '../../../../utils';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import Loader from '../../../../components/Loader/Loader';
+import { ButtonProps } from '../../../../components/Button/Button';
+import { ButtonVariables } from './buttonVariables';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
 export type ButtonStylesProps = Pick<
   ButtonProps,
-  | 'text'
-  | 'primary'
-  | 'disabled'
-  | 'circular'
-  | 'size'
-  | 'loading'
-  | 'inverted'
-  | 'iconOnly'
-  | 'fluid'
+  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid'
 > & {
-  hasContent?: boolean
-}
+  hasContent?: boolean;
+};
 
 const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
-    const { siteVariables } = theme
-    const { borderWidth } = siteVariables
+    const { siteVariables } = theme;
+    const { borderWidth } = siteVariables;
 
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
@@ -34,7 +26,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       ...(p.circular && {
         borderPadding: pxToRem(4),
       }),
-    })
+    });
 
     return {
       height: v.height,
@@ -238,7 +230,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           minWidth: v.sizeSmallHeight,
         }),
       }),
-    }
+    };
   },
 
   // modifies the text of the button
@@ -274,9 +266,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       ':before': {
         animationName: {
           to: {
-            transform: `translate3d(0, ${
-              p.size === 'small' ? v.sizeSmallLoaderSvgAnimationHeight : v.loaderSvgAnimationHeight
-            }, 0)`,
+            transform: `translate3d(0, ${p.size === 'small' ? v.sizeSmallLoaderSvgAnimationHeight : v.loaderSvgAnimationHeight}, 0)`,
           },
         },
         borderWidth: p.size === 'small' ? v.sizeSmallLoaderBorderSize : v.loaderBorderSize,
@@ -289,6 +279,6 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       marginRight: pxToRem(4),
     }),
   }),
-}
+};
 
-export default buttonStyles
+export default buttonStyles;

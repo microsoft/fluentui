@@ -9,7 +9,7 @@ export class ImageCenterExample extends React.Component<any, any> {
       imageFit: ImageFit.center,
       width: 350,
       height: 150,
-      onLoad: ev => console.log('image loaded', ev)
+      onLoad: ev => console.log('image loaded', ev),
     };
 
     return (

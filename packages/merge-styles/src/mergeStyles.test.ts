@@ -89,9 +89,9 @@ describe('mergeStyles', () => {
       background: 'red',
       selectors: {
         '@media screen and (max-width: 100px)': {
-          background: 'green'
-        }
-      }
+          background: 'green',
+        },
+      },
     });
 
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}' + '@media screen and (max-width: 100px){.css-0{background:green;}}');

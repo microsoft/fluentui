@@ -1,22 +1,18 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles'
-import { AlertProps } from '../../../../components/Alert/Alert'
-import { AlertVariables } from './alertVariables'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
+import { AlertProps } from '../../../../components/Alert/Alert';
+import { AlertVariables } from './alertVariables';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
-const getIntentColorsFromProps = (
-  p: AlertProps,
-  v: AlertVariables,
-  siteVars: SiteVariablesPrepared,
-): ICSSInJSStyle => {
-  const { colors } = siteVars
+const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: SiteVariablesPrepared): ICSSInJSStyle => {
+  const { colors } = siteVars;
 
   if (p.danger) {
     return {
       color: v.dangerColor,
       backgroundColor: v.dangerBackgroundColor,
       borderColor: v.dangerBorderColor,
-    }
+    };
   }
 
   if (p.info) {
@@ -24,7 +20,7 @@ const getIntentColorsFromProps = (
       color: v.infoColor,
       backgroundColor: v.infoBackgroundColor,
       borderColor: v.infoBorderColor,
-    }
+    };
   }
 
   if (v.oof) {
@@ -32,7 +28,7 @@ const getIntentColorsFromProps = (
       color: v.oofColor,
       backgroundColor: v.oofBackgroundColor,
       borderColor: v.oofBorderColor,
-    }
+    };
   }
 
   if (v.urgent) {
@@ -40,7 +36,7 @@ const getIntentColorsFromProps = (
       color: v.urgentColor,
       backgroundColor: v.urgentBackgroundColor,
       borderColor: v.urgentBorderColor,
-    }
+    };
   }
 
   if (p.success) {
@@ -48,7 +44,7 @@ const getIntentColorsFromProps = (
       color: colors.green[600], // $app-green-04
       backgroundColor: colors.grey[50], // $app-white
       borderColor: colors.green[200], // $app-green
-    }
+    };
   }
 
   if (p.warning) {
@@ -56,15 +52,15 @@ const getIntentColorsFromProps = (
       color: siteVars.colors.grey[450],
       backgroundColor: colors.grey[50], // $app-white
       borderColor: colors.yellow[400], // $app-yellow
-    }
+    };
   }
 
   return {
     color: v.color,
     backgroundColor: v.backgroundColor,
     borderColor: v.borderColor,
-  }
-}
+  };
+};
 
 const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -121,8 +117,8 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
   }),
 
   dismissAction: ({ variables: v, props: p, theme: { siteVariables } }): ICSSInJSStyle => {
-    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false })
-    const borderFocusStyles = getBorderFocusStyles({ siteVariables })
+    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
+    const borderFocusStyles = getBorderFocusStyles({ siteVariables });
 
     return {
       height: v.dismissActionSize,
@@ -142,8 +138,8 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
         ...iconFilledStyles,
         ...borderFocusStyles[':focus-visible'],
       },
-    }
+    };
   },
-}
+};
 
-export default alertStyles
+export default alertStyles;

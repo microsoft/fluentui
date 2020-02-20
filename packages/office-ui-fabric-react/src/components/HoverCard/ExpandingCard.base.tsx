@@ -15,7 +15,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
   public static defaultProps = {
     compactCardHeight: 156,
     expandedCardHeight: 384,
-    directionalHintFixed: true
+    directionalHintFixed: true,
   };
 
   private _classNames: { [key in keyof IExpandingCardStyles]: string };
@@ -26,7 +26,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
 
     this.state = {
       firstFrameRendered: false,
-      needsScroll: false
+      needsScroll: false,
     };
   }
 
@@ -50,7 +50,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
       className,
       expandedCardHeight,
       needsScroll: needsScroll,
-      expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered
+      expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered,
     });
 
     const content: JSX.Element = (
@@ -79,7 +79,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
     !this.state.firstFrameRendered &&
       this._async.requestAnimationFrame(() => {
         this.setState({
-          firstFrameRendered: true
+          firstFrameRendered: true,
         });
       });
 
@@ -97,7 +97,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
     this._async.requestAnimationFrame(() => {
       if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= expandedCardHeight!) {
         this.setState({
-          needsScroll: true
+          needsScroll: true,
         });
       }
     });

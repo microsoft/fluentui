@@ -11,7 +11,7 @@ export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props
     primaryTextFontWeight: 600,
     secondaryTextPaddingTop: '6px',
     secondaryTextFontSize: '12px',
-    secondaryTextFontWeight: 300
+    secondaryTextFontWeight: 300,
   };
 };
 
@@ -24,7 +24,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       justifyContent: 'flex-start',
       width: `${tokens.verticalPersonaWidth}px`,
       padding: `0 ${tokens.horizontalTextPadding}px`,
-      boxSizing: 'border-box'
+      boxSizing: 'border-box',
     },
     primaryText: {
       width: '100%',
@@ -36,7 +36,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       textAlign: 'center',
       whiteSpace: 'initial',
       wordBreak: 'break-word',
-      wordWrap: 'break-word'
+      wordWrap: 'break-word',
     },
     secondaryText: {
       width: '100%',
@@ -48,7 +48,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       whiteSpace: 'initial',
       color: theme.palette.neutralSecondary,
       wordBreak: 'break-word',
-      wordWrap: 'break-word'
-    }
+      wordWrap: 'break-word',
+    },
   };
 };

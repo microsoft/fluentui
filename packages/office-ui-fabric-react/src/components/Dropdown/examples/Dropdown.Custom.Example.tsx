@@ -17,7 +17,7 @@ const exampleOptions: IDropdownOption[] = [
   { key: 'G', text: 'Option g', data: { icon: 'EmojiNeutral' } },
   { key: 'H', text: 'Option h', data: { icon: 'ChatInviteFriend' } },
   { key: 'I', text: 'Option i', data: { icon: 'SecurityGroup' } },
-  { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } }
+  { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } },
 ];
 
 const stackTokens: IStackTokens = { childrenGap: 20 };

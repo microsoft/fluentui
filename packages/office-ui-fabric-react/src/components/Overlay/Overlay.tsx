@@ -9,6 +9,6 @@ export const Overlay: React.FunctionComponent<IOverlayProps> = styled<IOverlayPr
   getStyles,
   undefined,
   {
-    scope: 'Overlay'
-  }
+    scope: 'Overlay',
+  },
 );

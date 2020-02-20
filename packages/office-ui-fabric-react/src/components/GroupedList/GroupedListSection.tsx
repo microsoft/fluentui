@@ -130,7 +130,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     this.state = {
       isDropping: false,
-      isSelected: selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false
+      isSelected: selection && group ? selection.isRangeSelected(group.startIndex, group.count) : false,
     };
 
     this._events = new EventGroup(this);
@@ -190,7 +190,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       groupedListClassNames,
       groups,
       compact,
-      listProps = {}
+      listProps = {},
     } = this.props;
     const { isSelected } = this.state;
     const renderCount = group && getGroupItemLimit ? getGroupItemLimit(group) : Infinity;
@@ -209,13 +209,13 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       viewport,
       selectionMode,
       groups,
-      compact
+      compact,
     };
 
     const ariaControlsProps: IGroupHeaderProps = {
       groupedListId: this._id,
       ariaSetSize: groups ? groups.length : undefined,
-      ariaPosInSet: groupIndex !== undefined ? groupIndex + 1 : undefined
+      ariaPosInSet: groupIndex !== undefined ? groupIndex + 1 : undefined,
     };
 
     const groupHeaderProps: IGroupHeaderProps = { ...headerProps, ...dividerProps, ...ariaControlsProps };
@@ -305,7 +305,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
   private _onRenderGroupCell(
     onRenderCell: any,
-    groupNestingDepth: number | undefined
+    groupNestingDepth: number | undefined,
   ): (item: any, itemIndex: number | undefined) => React.ReactNode {
     return (item: any, itemIndex: number | undefined): React.ReactNode => {
       return onRenderCell(groupNestingDepth, item, itemIndex);
@@ -354,7 +354,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onRenderGroupFooter,
       onShouldVirtualize,
       group,
-      compact
+      compact,
     } = this.props;
 
     const nestingDepth = subGroup.level ? subGroup.level + 1 : groupNestingDepth;
@@ -416,7 +416,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
       onDragStart: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragStart : undefined,
       onDragEnter: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnter : undefined,
       onDragLeave: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragLeave : undefined,
-      onDragEnd: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnd : undefined
+      onDragEnd: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnd : undefined,
     };
     return options as IDragDropOptions;
   };

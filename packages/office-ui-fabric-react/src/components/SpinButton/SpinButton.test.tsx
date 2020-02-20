@@ -29,7 +29,7 @@ describe('SpinButton', () => {
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.keyDown(inputDOM, {
-      which: KeyCodes.up
+      which: KeyCodes.up,
     });
     expect(inputDOM.value).toEqual('1');
     expect(ref.current!.value).toEqual('1');
@@ -48,7 +48,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -73,7 +73,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -85,13 +85,13 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     ReactTestUtils.Simulate.mouseUp(buttonDOM, {
       type: 'mouseup',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     expect(inputDOM.value).toEqual('13');
@@ -107,7 +107,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -119,13 +119,13 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     ReactTestUtils.Simulate.mouseUp(buttonDOM, {
       type: 'mouseup',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     expect(inputDOM.value).toEqual('11');
@@ -141,18 +141,18 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.keyDown(inputDOM, {
-      which: KeyCodes.up
+      which: KeyCodes.up,
     });
 
     ReactTestUtils.Simulate.keyUp(inputDOM, {
-      which: KeyCodes.up
+      which: KeyCodes.up,
     });
 
     expect(inputDOM.value).toEqual('13');
@@ -168,18 +168,18 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.keyDown(inputDOM, {
-      which: KeyCodes.down
+      which: KeyCodes.down,
     });
 
     ReactTestUtils.Simulate.keyUp(inputDOM, {
-      which: KeyCodes.down
+      which: KeyCodes.down,
     });
 
     expect(inputDOM.value).toEqual('11');
@@ -195,18 +195,18 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} step={2} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} step={2} />,
     );
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.keyDown(inputDOM, {
-      which: KeyCodes.up
+      which: KeyCodes.up,
     });
 
     ReactTestUtils.Simulate.keyUp(inputDOM, {
-      which: KeyCodes.up
+      which: KeyCodes.up,
     });
 
     expect(inputDOM.value).toEqual('14');
@@ -222,18 +222,18 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} step={2} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} step={2} />,
     );
 
     // Assert on the input element.
     const inputDOM: HTMLInputElement = renderedDOM.getElementsByTagName('input')[0];
 
     ReactTestUtils.Simulate.keyDown(inputDOM, {
-      which: KeyCodes.down
+      which: KeyCodes.down,
     });
 
     ReactTestUtils.Simulate.keyUp(inputDOM, {
-      which: KeyCodes.down
+      which: KeyCodes.down,
     });
 
     expect(inputDOM.value).toEqual('10');
@@ -250,7 +250,7 @@ describe('SpinButton', () => {
     const exampleNewValue = '21';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -272,7 +272,7 @@ describe('SpinButton', () => {
     const exampleNewValue = 'garbage';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -293,7 +293,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -315,7 +315,7 @@ describe('SpinButton', () => {
     const exampleNewValue = '23';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -337,7 +337,7 @@ describe('SpinButton', () => {
     const exampleNewValue = '0';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -370,7 +370,7 @@ describe('SpinButton', () => {
           const numberValue: number = +newValue;
           return !isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue ? newValue : errorMessage;
         }}
-      />
+      />,
     );
 
     // Assert on the input element.
@@ -403,7 +403,7 @@ describe('SpinButton', () => {
           const numberValue: number = Number(newValue);
           return !isNaN(numberValue) && numberValue >= exampleMinValue && numberValue <= exampleMaxValue ? newValue : errorMessage;
         }}
-      />
+      />,
     );
 
     // Assert on the input element.
@@ -433,7 +433,7 @@ describe('SpinButton', () => {
         max={exampleMaxValue}
         defaultValue={exampleDefaultValue}
         step={exampleStepValue}
-      />
+      />,
     );
 
     // Assert on the input element.
@@ -463,7 +463,7 @@ describe('SpinButton', () => {
         max={exampleMaxValue}
         defaultValue={exampleDefaultValue}
         step={exampleStepValue}
-      />
+      />,
     );
 
     // Assert on the input element.
@@ -485,7 +485,7 @@ describe('SpinButton', () => {
     const exampleStepValue = 2;
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} step={exampleStepValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} step={exampleStepValue} />,
     );
 
     // Assert on the input element.
@@ -533,7 +533,7 @@ describe('SpinButton', () => {
     const exampleDefaultValue = '12';
 
     const renderedDOM: HTMLElement = renderIntoDocument(
-      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />
+      <SpinButton label={exampleLabelValue} min={exampleMinValue} max={exampleMaxValue} defaultValue={exampleDefaultValue} />,
     );
 
     // Assert on the input element.
@@ -546,7 +546,7 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
     // spin again
     jest.runOnlyPendingTimers();
@@ -576,7 +576,7 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     expect(onIncrement).toBeCalled();
@@ -592,7 +592,7 @@ describe('SpinButton', () => {
     ReactTestUtils.Simulate.mouseDown(buttonDOM, {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     expect(onDecrement).toBeCalled();

@@ -15,8 +15,8 @@ const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSec
           <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
           <Icon iconName="warning" styles={{ root: { color: 'red' } }} />
         </Stack>
-      )
-    }
+      ),
+    },
   };
 
   // Wrap the entire title in a Tooltip
@@ -39,8 +39,8 @@ export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
             title="Shorthand Title Text"
             slots={{
               title: {
-                component: CustomizedCollapsibleSectionTitle
-              }
+                component: CustomizedCollapsibleSectionTitle,
+              },
             }}
           >
             Content 1

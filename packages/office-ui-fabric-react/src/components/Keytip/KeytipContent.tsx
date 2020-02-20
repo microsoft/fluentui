@@ -9,6 +9,6 @@ export const KeytipContent: React.FunctionComponent<IKeytipProps> = styled<IKeyt
   getStyles,
   undefined,
   {
-    scope: 'KeytipContent'
-  }
+    scope: 'KeytipContent',
+  },
 );

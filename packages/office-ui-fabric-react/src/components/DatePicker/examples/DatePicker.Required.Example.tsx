@@ -20,7 +20,7 @@ const DayPickerStrings: IDatePickerStrings = {
 
   isRequiredErrorMessage: 'Field is required.',
 
-  invalidInputErrorMessage: 'Invalid date format.'
+  invalidInputErrorMessage: 'Invalid date format.',
 };
 
 export interface IDatePickerRequiredExampleState {
@@ -30,8 +30,8 @@ export interface IDatePickerRequiredExampleState {
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
 export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRequiredExampleState> {
@@ -39,7 +39,7 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 

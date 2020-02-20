@@ -20,7 +20,7 @@ export interface IKeytipLayerState {
 // Default sequence is Alt-Windows (Alt-Meta) in Windows, Option-Control (Alt-Control) in Mac
 const defaultStartSequence: IKeytipTransitionKey = {
   key: isMac() ? 'Control' : 'Meta',
-  modifierKeys: [KeytipTransitionModifier.alt]
+  modifierKeys: [KeytipTransitionModifier.alt],
 };
 
 // Default exit sequence is the same as the start sequence
@@ -28,7 +28,7 @@ const defaultExitSequence: IKeytipTransitionKey = defaultStartSequence;
 
 // Default return sequence is Escape
 const defaultReturnSequence: IKeytipTransitionKey = {
-  key: 'Escape'
+  key: 'Escape',
 };
 
 const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>();
@@ -42,7 +42,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    content: ''
+    content: '',
   };
 
   private _keytipTree: KeytipTree;
@@ -66,7 +66,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       inKeytipMode: false,
       // Get the initial set of keytips
       keytips: managerKeytips,
-      visibleKeytips: this._getVisibleKeytips(managerKeytips)
+      visibleKeytips: this._getVisibleKeytips(managerKeytips),
     };
 
     this._keytipTree = new KeytipTree();
@@ -538,7 +538,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       if (this._keytipTree.currentKeytip.onExecute) {
         this._keytipTree.currentKeytip.onExecute(
           this._getKtpExecuteTarget(this._keytipTree.currentKeytip),
-          this._getKtpTarget(this._keytipTree.currentKeytip)
+          this._getKtpTarget(this._keytipTree.currentKeytip),
         );
       }
     }

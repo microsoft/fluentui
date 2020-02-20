@@ -17,11 +17,11 @@ describe('IKeytipTransitionKey', () => {
       const key3: IKeytipTransitionKey = { key: 'a', modifierKeys: [KeytipTransitionModifier.ctrl] };
       const key4: IKeytipTransitionKey = {
         key: 'a',
-        modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.shift]
+        modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.shift],
       };
       const key5: IKeytipTransitionKey = {
         key: 'a',
-        modifierKeys: [KeytipTransitionModifier.shift, KeytipTransitionModifier.alt]
+        modifierKeys: [KeytipTransitionModifier.shift, KeytipTransitionModifier.alt],
       };
 
       expect(transitionKeysAreEqual(key1, key2)).toEqual(false);
@@ -52,7 +52,7 @@ describe('IKeytipTransitionKey', () => {
       const keys2: IKeytipTransitionKey[] = [{ key: 'b', modifierKeys: [KeytipTransitionModifier.alt] }];
       const keys3: IKeytipTransitionKey[] = [
         { key: 'a', modifierKeys: [KeytipTransitionModifier.alt, KeytipTransitionModifier.ctrl] },
-        { key: 'a', modifierKeys: [KeytipTransitionModifier.alt] }
+        { key: 'a', modifierKeys: [KeytipTransitionModifier.alt] },
       ];
 
       expect(transitionKeysContain(keys1, key1)).toEqual(true);

@@ -22,14 +22,14 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       ariaPosInSet = props.positionInSet,
       ariaSetSize = props.setSize,
       styles,
-      doNotContainWithinFocusZone
+      doNotContainWithinFocusZone,
     } = props;
 
     const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(
       this.props,
       htmlElementProperties,
       // avoid applying onBlur on the table if it's being used in the FocusZone
-      doNotContainWithinFocusZone ? [] : ['onBlur']
+      doNotContainWithinFocusZone ? [] : ['onBlur'],
     );
 
     const classNames = getClassNames(styles!, { theme: this.props.theme! });

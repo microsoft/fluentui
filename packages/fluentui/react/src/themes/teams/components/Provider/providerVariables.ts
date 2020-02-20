@@ -27,5 +27,5 @@ export default (siteVariables): Partial<ProviderVariables> => ({
   scrollbarThumbBorderSize: pxToRem(4),
 
   scrollbarThumbHoverBackgroundColor: siteVariables.colors.grey[350],
-  scrollbarThumbHoverBorderSize: pxToRem(2)
+  scrollbarThumbHoverBorderSize: pxToRem(2),
 });

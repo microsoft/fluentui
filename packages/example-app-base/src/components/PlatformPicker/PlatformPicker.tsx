@@ -31,13 +31,13 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
                     className={css(styles.button, platformKey === activePlatform && styles.activePlatform)}
                     iconProps={{
                       iconName: icon,
-                      className: iconClassName
+                      className: iconClassName,
                     }}
                     /* tslint:disable-next-line jsx-no-lambda */
                     onClick={() => this._handlePlatformClick(platformKey)}
                     styles={{
                       ...this._platformButtonStyles(color),
-                      ...(platformKey === activePlatform && this._activePlatformButtonStyles(color))
+                      ...(platformKey === activePlatform && this._activePlatformButtonStyles(color)),
                     }}
                     disabled={disabled}
                   >
@@ -57,23 +57,23 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
       height: '30px',
       selectors: {
         '&:not([disabled])': {
-          background: 'transparent'
+          background: 'transparent',
         },
         '&:hover:not([disabled])': {
           background: 'transparent',
           borderColor: color,
-          color: 'black'
-        }
-      }
+          color: 'black',
+        },
+      },
     },
     flexContainer: {
-      flexDirection: 'row-reverse'
+      flexDirection: 'row-reverse',
     },
     label: {
       textAlign: 'left',
       fontWeight: FontWeights.semibold,
-      margin: 0
-    }
+      margin: 0,
+    },
   });
 
   private _activePlatformButtonStyles = (color?: string): IButtonStyles => ({
@@ -86,12 +86,12 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
           selectors: {
             [HighContrastSelector]: {
               borderColor: 'Highlight',
-              background: 'Window'
-            }
-          }
-        }
-      }
-    }
+              background: 'Window',
+            },
+          },
+        },
+      },
+    },
   });
 
   private _handlePlatformClick = (platformKey: TPlatforms): void => {

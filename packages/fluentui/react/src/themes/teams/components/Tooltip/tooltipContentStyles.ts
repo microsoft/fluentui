@@ -35,8 +35,8 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
       ...(p.pointing && svgPointerStyles.root),
 
       ...(!p.open && {
-        opacity: 0
-      })
+        opacity: 0,
+      }),
     };
   },
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle => {
@@ -49,7 +49,7 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
       width: v.pointerWidth,
       height: v.pointerHeight,
       backgroundImage: pointerSvg(v.backgroundColor),
-      ...svgPointerStyles.pointer
+      ...svgPointerStyles.pointer,
     };
   },
   content: ({ variables: v }): ICSSInJSStyle => ({
@@ -57,8 +57,8 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
     padding: v.padding,
 
     borderRadius: 'inherit',
-    boxShadow: v.boxShadow
-  })
+    boxShadow: v.boxShadow,
+  }),
 };
 
 export default tooltipContentStyles;

@@ -15,13 +15,13 @@ export const OverlayPageProps: IDocPageProps = {
     {
       title: 'Light',
       code: OverlayLightExampleCode,
-      view: <OverlayLightExample />
+      view: <OverlayLightExample />,
     },
     {
       title: 'Dark',
       code: OverlayDarkExampleCode,
-      view: <OverlayDarkExample />
-    }
+      view: <OverlayDarkExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayOverview.md'),
   bestPractices: '',
@@ -29,5 +29,5 @@ export const OverlayPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Overlay/docs/OverlayDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

@@ -6,7 +6,7 @@ const threadChatBehavior: Accessibility<ChatBehaviorProps> = props => {
 
   behaviorData.focusZone.props = {
     ...behaviorData.focusZone.props,
-    defaultTabbableElement: getLastTabbableElement
+    defaultTabbableElement: getLastTabbableElement,
   };
   return behaviorData;
 };

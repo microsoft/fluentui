@@ -8,7 +8,7 @@ type PartiallyOptional<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>> & Pi
 export type IFloatingPeopleSuggestionsProps<TPersona> = PartiallyOptional<IFloatingSuggestionsProps<TPersona>, 'onRenderSuggestionsItem'>;
 
 export const FloatingPeopleSuggestions = <TPersona extends IPersonaProps = IPersonaProps>(
-  props: IFloatingPeopleSuggestionsProps<TPersona>
+  props: IFloatingPeopleSuggestionsProps<TPersona>,
 ) => {
   return <FloatingSuggestions<TPersona> onRenderSuggestionsItem={DefaultPeopleSuggestionsItem} {...props} />;
 };

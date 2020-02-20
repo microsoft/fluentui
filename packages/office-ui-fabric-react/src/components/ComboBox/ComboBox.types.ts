@@ -161,7 +161,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     focused: boolean,
     allowFreeForm: boolean,
     hasErrorMessage: boolean,
-    className?: string
+    className?: string,
   ) => IComboBoxClassNames;
 
   /**

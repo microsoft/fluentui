@@ -8,5 +8,5 @@ export const HomePage: React.FunctionComponent<IHomePageProps> = styled<IHomePag
   HomePageBase,
   getStyles,
   undefined,
-  { scope: 'HomePage' }
+  { scope: 'HomePage' },
 );

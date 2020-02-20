@@ -23,7 +23,7 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
   SuggestionsItem,
   suggestionsItemStyles,
   undefined,
-  { scope: 'SuggestionItem' }
+  { scope: 'SuggestionItem' },
 );
 
 /**
@@ -39,7 +39,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
     this.state = {
-      selectedActionType: SuggestionActionType.none
+      selectedActionType: SuggestionActionType.none,
     };
   }
 
@@ -81,7 +81,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       suggestionsClassName,
       theme,
       styles,
-      suggestionsListId
+      suggestionsListId,
     } = this.props;
 
     // TODO
@@ -101,20 +101,20 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           className,
           suggestionsClassName,
           forceResolveButtonSelected: this.state.selectedActionType === SuggestionActionType.forceResolve,
-          searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
+          searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore,
         })
       : {
           root: css('ms-Suggestions', className, legacyStyles.root),
           title: css('ms-Suggestions-title', legacyStyles.suggestionsTitle),
           searchForMoreButton: css('ms-SearchMore-button', legacyStyles.actionButton, {
-            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
+            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore,
           }),
           forceResolveButton: css('ms-forceResolve-button', legacyStyles.actionButton, {
-            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
+            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve,
           }),
           suggestionsAvailable: css('ms-Suggestions-suggestionsAvailable', legacyStyles.suggestionsAvailable),
           suggestionsContainer: css('ms-Suggestions-container', legacyStyles.suggestionsContainer, suggestionsClassName),
-          noSuggestions: css('ms-Suggestions-none', legacyStyles.suggestionsNone)
+          noSuggestions: css('ms-Suggestions-none', legacyStyles.suggestionsNone),
         };
 
     const spinnerStyles = this._classNames.subComponentStyles
@@ -319,7 +319,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel,
-      suggestionsListId
+      suggestionsListId,
     } = this.props;
 
     let { suggestions } = this.props;

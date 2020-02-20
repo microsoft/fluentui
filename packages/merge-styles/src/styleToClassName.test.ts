@@ -32,9 +32,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          '.foo': { background: 'red' }
-        }
-      }
+          '.foo': { background: 'red' },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}');
@@ -45,9 +45,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          '.foo, .bar': { background: 'red' }
-        }
-      }
+          '.foo, .bar': { background: 'red' },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0 .foo{background:red;}.css-0 .bar{background:red;}');
@@ -58,9 +58,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':hover, :active': { background: 'red' }
-        }
-      }
+          ':hover, :active': { background: 'red' },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0:hover{background:red;}.css-0:active{background:red;}');
@@ -72,14 +72,14 @@ describe('styleToClassName', () => {
       {
         selectors: {
           '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
-            background: 'red'
-          }
-        }
-      }
+            background: 'red',
+          },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual(
-      '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){.css-0{background:red;}}'
+      '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){.css-0{background:red;}}',
     );
   });
 
@@ -88,9 +88,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          '&.foo': [{ background: 'red' }]
-        }
-      }
+          '&.foo': [{ background: 'red' }],
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0.foo{background:red;}');
@@ -101,9 +101,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':hover': { background: 'red' }
-        }
-      }
+          ':hover': { background: 'red' },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -116,9 +116,9 @@ describe('styleToClassName', () => {
       {
         selectors: {
           '& .child': { background: 'red' },
-          '.parent &': { background: 'green' }
-        }
-      }
+          '.parent &': { background: 'green' },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -181,9 +181,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          '& > *': className
-        }
-      }
+          '& > *': className,
+        },
+      },
     );
 
     expect(newClassName).toEqual('css-1');
@@ -195,9 +195,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(button)': { background: 'red' }
-        }
-      }
+          ':global(button)': { background: 'red' },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -209,9 +209,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          '& :global(button)': { background: 'red' }
-        }
-      }
+          '& :global(button)': { background: 'red' },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -223,9 +223,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(.ms-button):hover &': { background: 'red' }
-        }
-      }
+          ':global(.ms-button):hover &': { background: 'red' },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -237,9 +237,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(.class1, .class2, .class3)': { top: 140 }
-        }
-      }
+          ':global(.class1, .class2, .class3)': { top: 140 },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -251,9 +251,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(.class1), :global(.class2), :global(.class3)': { top: 140 }
-        }
-      }
+          ':global(.class1), :global(.class2), :global(.class3)': { top: 140 },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -265,9 +265,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(.class3, button)': { top: 140 }
-        }
-      }
+          ':global(.class3, button)': { top: 140 },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -279,9 +279,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(.class3 button)': { top: 140 }
-        }
-      }
+          ':global(.class3 button)': { top: 140 },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -293,9 +293,9 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          'button:focus, :global(.class1, .class2, .class3)': { top: 140 }
-        }
-      }
+          'button:focus, :global(.class1, .class2, .class3)': { top: 140 },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
@@ -307,14 +307,14 @@ describe('styleToClassName', () => {
       {},
       {
         selectors: {
-          ':global(.css20, .css50, #myId) button:hover :global(.class1, .class2, .class3)': { top: 140 }
-        }
-      }
+          ':global(.css20, .css50, #myId) button:hover :global(.class1, .class2, .class3)': { top: 140 },
+        },
+      },
     );
 
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual(
-      '.css20{top:140px;}.css50{top:140px;}#myId button:hover .class1{top:140px;}.class2{top:140px;}.class3{top:140px;}'
+      '.css20{top:140px;}.css50{top:140px;}#myId button:hover .class1{top:140px;}.class2{top:140px;}.class3{top:140px;}',
     );
   });
 
@@ -329,10 +329,10 @@ describe('styleToClassName', () => {
       {
         selectors: {
           '&&&': {
-            background: 'red'
-          }
-        }
-      }
+            background: 'red',
+          },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0.css-0.css-0{background:red;}');
@@ -348,12 +348,12 @@ describe('styleToClassName', () => {
             background: 'red',
             selectors: {
               ':hover': {
-                background: 'green'
-              }
-            }
-          }
-        }
-      }
+                background: 'green',
+              },
+            },
+          },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual(
@@ -363,7 +363,7 @@ describe('styleToClassName', () => {
         '}' +
         '@media(min-width: 300px){' +
         '.css-0:hover{background:green;}' +
-        '}'
+        '}',
     );
   });
 
@@ -373,10 +373,10 @@ describe('styleToClassName', () => {
       {
         selectors: {
           '@supports(display: grid)': {
-            display: 'grid'
-          }
-        }
-      }
+            display: 'grid',
+          },
+        },
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('@supports(display: grid){' + '.css-0{display:grid;}' + '}');
@@ -387,8 +387,8 @@ describe('styleToClassName', () => {
       {},
       {
         background: 'red',
-        color: undefined
-      }
+        color: undefined,
+      },
     );
 
     expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}');

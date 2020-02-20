@@ -18,7 +18,7 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
   { key: '4', text: '4' },
   { key: 'Header2', text: 'Header 2', itemType: DropdownMenuItemType.Header },
   { key: '5', text: '5' },
-  { key: '6', text: '6' }
+  { key: '6', text: '6' },
 ];
 
 describe('Dropdown', () => {
@@ -96,9 +96,9 @@ describe('Dropdown', () => {
           label="testgroup"
           options={[
             { key: '1', text: '1', selected: true },
-            { key: '2', text: '2' }
+            { key: '2', text: '2' },
           ]}
-        />
+        />,
       );
       const titleElement = wrapper.find('.ms-Dropdown-title');
 
@@ -181,7 +181,7 @@ describe('Dropdown', () => {
       const onChangeSpy = jest.fn();
 
       wrapper = mount(
-        <Dropdown label="testgroup" defaultSelectedKey="3" onChange={onChangeSpy} options={DEFAULT_OPTIONS} notifyOnReselect={true} />
+        <Dropdown label="testgroup" defaultSelectedKey="3" onChange={onChangeSpy} options={DEFAULT_OPTIONS} notifyOnReselect={true} />,
       );
 
       wrapper.find('.ms-Dropdown').simulate('click');
@@ -208,7 +208,7 @@ describe('Dropdown', () => {
     it('sets the selected item even when key is number 0', () => {
       const options = [
         { key: 0, text: 'item1' },
-        { key: 1, text: 'item2' }
+        { key: 1, text: 'item2' },
       ];
       const selectedKey = 0;
       const dropdown = React.createRef<IDropdown>();
@@ -228,7 +228,7 @@ describe('Dropdown', () => {
     it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
       const options = [
         { key: 0, text: 'item1' },
-        { key: 1, text: 'item2' }
+        { key: 1, text: 'item2' },
       ];
       let selectedKey = 0;
       const dropdown = React.createRef<IDropdown>();
@@ -459,10 +459,10 @@ describe('Dropdown', () => {
           label="testgroup"
           options={[
             { key: '1', text: '1', selected: true },
-            { key: '2', text: '2' }
+            { key: '2', text: '2' },
           ]}
           multiSelect
-        />
+        />,
       );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
@@ -472,7 +472,7 @@ describe('Dropdown', () => {
     it('sets the selected items even when key is number 0', () => {
       const options = [
         { key: 0, text: 'item1' },
-        { key: 1, text: 'item2' }
+        { key: 1, text: 'item2' },
       ];
       const selectedKeys = [0, 1];
       const dropdown = React.createRef<IDropdown>();
@@ -489,7 +489,7 @@ describe('Dropdown', () => {
     it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
       const options = [
         { key: 0, text: 'item1' },
-        { key: 1, text: 'item2' }
+        { key: 1, text: 'item2' },
       ];
       let selectedKeys = [0];
       const dropdown = React.createRef<IDropdown>();
@@ -513,10 +513,10 @@ describe('Dropdown', () => {
           label="testgroup"
           options={[
             { key: '1', text: '1', selected: true },
-            { key: '2', text: '2', selected: true }
+            { key: '2', text: '2', selected: true },
           ]}
           multiSelect
-        />
+        />,
       );
 
       const titleElement = wrapper.find('.ms-Dropdown-title');
@@ -641,7 +641,7 @@ describe('Dropdown', () => {
       const options = [
         { key: 0, text: '1' },
         { key: 1, text: '2', disabled: true },
-        { key: 2, text: '3' }
+        { key: 2, text: '3' },
       ];
 
       wrapper = mount(<Dropdown label="testgroup" options={options} />);
@@ -661,7 +661,7 @@ describe('Dropdown', () => {
       const options = [
         { key: 0, text: '1' },
         { key: 1, text: '2', disabled: true },
-        { key: 2, text: '3' }
+        { key: 2, text: '3' },
       ];
 
       wrapper = mount(<Dropdown options={options} />);
@@ -674,7 +674,7 @@ describe('Dropdown', () => {
       const options = [
         { key: 0, text: '1' },
         { key: 1, text: '2', disabled: true },
-        { key: 2, text: '3' }
+        { key: 2, text: '3' },
       ];
 
       wrapper = mount(<Dropdown label="" options={options} />);
@@ -687,7 +687,7 @@ describe('Dropdown', () => {
       const options = [
         { key: 0, text: '1' },
         { key: 1, text: '2', disabled: true },
-        { key: 2, text: '3' }
+        { key: 2, text: '3' },
       ];
 
       wrapper = mount(<Dropdown label="Test label" options={options} />);
@@ -707,7 +707,7 @@ describe('Dropdown', () => {
     /** See https://github.com/OfficeDev/office-ui-fabric-react/issues/7315 */
     class DropdownWithChangingProps extends React.Component<{ multi: boolean }, { options?: IDropdownOption[] }> {
       public state = {
-        options: undefined
+        options: undefined,
       };
 
       public componentDidMount() {
@@ -733,8 +733,8 @@ describe('Dropdown', () => {
             { key: 'B', text: 'Option b' },
             { key: 'C', text: 'Option c', disabled: true },
             { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' }
-          ]
+            { key: 'E', text: 'Option e' },
+          ],
         });
       }
     }

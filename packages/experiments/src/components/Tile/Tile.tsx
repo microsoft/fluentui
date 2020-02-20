@@ -20,7 +20,7 @@ export const TileLayoutValues = {
   nameplateMargin: 0 as 0,
   largeNameplateActivityHeight: 20 as 20,
   smallNameplateActivityHeight: 20 as 20,
-  foregroundMargin: 16 as 16
+  foregroundMargin: 16 as 16,
 };
 
 export type TileLayoutValues = typeof TileLayoutValues[keyof typeof TileLayoutValues];
@@ -44,15 +44,15 @@ export const TileLayoutSizes: {
     nameplateNameHeight: TileLayoutValues.smallNameplateNameHeight,
     nameplateMargin: TileLayoutValues.nameplateMargin,
     nameplateActivityHeight: TileLayoutValues.smallNameplateActivityHeight,
-    foregroundMargin: TileLayoutValues.foregroundMargin
+    foregroundMargin: TileLayoutValues.foregroundMargin,
   },
   large: {
     nameplatePadding: TileLayoutValues.nameplatePadding,
     nameplateNameHeight: TileLayoutValues.largeNameplateNameHeight,
     nameplateMargin: TileLayoutValues.nameplateMargin,
     nameplateActivityHeight: TileLayoutValues.largeNameplateActivityHeight,
-    foregroundMargin: TileLayoutValues.foregroundMargin
-  }
+    foregroundMargin: TileLayoutValues.foregroundMargin,
+  },
 };
 
 /**
@@ -87,7 +87,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     this.state = {
       isSelected: isSelected,
-      isModal: isModal
+      isModal: isModal,
     };
 
     this._events = new EventGroup(this);
@@ -105,7 +105,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
       this.setState({
         isSelected: isSelected,
-        isModal: isModal
+        isModal: isModal,
       });
     }
   }
@@ -181,20 +181,20 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         {background
           ? this._onRenderBackground({
               background: background,
-              hideBackground
+              hideBackground,
             })
           : null}
         {foreground
           ? this._onRenderForeground({
               foreground: foreground,
-              hideForeground
+              hideForeground,
             })
           : null}
         {itemName || itemActivity
           ? this._onRenderNameplate({
               name: itemName,
               activity: itemActivity,
-              onlyOnHover: !!nameplateOnlyOnHover
+              onlyOnHover: !!nameplateOnlyOnHover,
             })
           : null}
       </>
@@ -234,7 +234,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
           [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
           [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
-          [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling
+          [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling,
         })}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
@@ -249,7 +249,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         ) : null}
         {isSelectable
           ? this._onRenderCheck({
-              isSelected: isSelected
+              isSelected: isSelected,
             })
           : null}
       </div>
@@ -258,7 +258,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
   private _onRenderBackground({
     background,
-    hideBackground
+    hideBackground,
   }: {
     background: ITileProps['background'];
     hideBackground: boolean;
@@ -269,7 +269,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       <span
         key="background"
         className={css('ms-Tile-background', TileStyles.background, {
-          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground
+          [`ms-Tile-background--hide ${TileStyles.backgroundHide}`]: hideBackground,
         })}
       >
         {finalBackground}
@@ -279,7 +279,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
   private _onRenderForeground({
     foreground,
-    hideForeground
+    hideForeground,
   }: {
     foreground: ITileProps['foreground'];
     hideForeground: boolean;
@@ -292,7 +292,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
           <span
             role="presentation"
             className={css('ms-Tile-foreground', TileStyles.foreground, {
-              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground
+              [`ms-Tile-foreground--hide ${TileStyles.foregroundHide}`]: hideForeground,
             })}
           >
             {finalForeground}
@@ -305,7 +305,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
   private _onRenderNameplate({
     name,
     activity,
-    onlyOnHover
+    onlyOnHover,
   }: {
     name: React.ReactNode;
     activity: React.ReactNode;
@@ -336,7 +336,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
         role="checkbox"
         aria-label={toggleSelectionAriaLabel}
         className={css('ms-Tile-check', TileStyles.check, CheckStyles.checkHost, {
-          [CheckStyles.hostShowCheck]: this.state.isModal
+          [CheckStyles.hostShowCheck]: this.state.isModal,
         })}
         data-selection-toggle={true}
         aria-checked={isSelected}
@@ -354,7 +354,7 @@ export class Tile extends React.Component<ITileProps, ITileState> {
 
     this.setState({
       isSelected: isSelected,
-      isModal: isModal
+      isModal: isModal,
     });
   };
 }
@@ -396,9 +396,9 @@ function getTileLayoutFromProps(tileProps: ITileProps): ITileLayout {
   return {
     foregroundSize: {
       width: width - foregroundMargin * 2,
-      height: contentSize.height - foregroundMargin - nameplateHeight
+      height: contentSize.height - foregroundMargin - nameplateHeight,
     },
-    backgroundSize: contentSize
+    backgroundSize: contentSize,
   };
 }
 

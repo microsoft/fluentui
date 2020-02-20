@@ -11,7 +11,7 @@ export interface IPopupState {
  */
 export class Popup extends React.Component<IPopupProps, IPopupState> {
   public static defaultProps: IPopupProps = {
-    shouldRestoreFocus: true
+    shouldRestoreFocus: true,
   };
 
   public _root = React.createRef<HTMLDivElement>();
@@ -136,7 +136,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
     if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
       this.setState({
-        needsVerticalScrollBar: needsVerticalScrollBar
+        needsVerticalScrollBar: needsVerticalScrollBar,
       });
     }
   }

@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react'
-import chatProtoStyle from './chatProtoStyle'
+import * as React from 'react';
+import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react';
+import chatProtoStyle from './chatProtoStyle';
 
-import { ChatData } from './services'
+import { ChatData } from './services';
 
 export interface ChatPaneHeaderProps {
-  chat?: ChatData
+  chat?: ChatData;
 }
 
 class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
@@ -16,19 +16,13 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         {this.renderMainArea()}
         <Divider size={2} styles={{ padding: '0 32px' }} />
       </Flex>
-    )
+    );
   }
 
   renderBanner(): React.ReactElement {
     return (
       <Segment
-        content={
-          <Icon
-            name="team-create"
-            styles={{ margin: 'auto 8px' }}
-            variables={siteVars => ({ color: siteVars.colors.white })}
-          />
-        }
+        content={<Icon name="team-create" styles={{ margin: 'auto 8px' }} variables={siteVars => ({ color: siteVars.colors.white })} />}
         styles={({ variables: v }) => ({
           backgroundColor: v.backgroundColor,
           borderRadius: 0,
@@ -38,40 +32,24 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         })}
         variables={siteVars => ({ backgroundColor: siteVars.colors.brand[600] })}
       />
-    )
+    );
   }
 
   renderMainArea(): React.ReactElement {
-    const { chat } = this.props
+    const { chat } = this.props;
 
     return (
-      <Flex
-        role="region"
-        aria-labelledby="heading"
-        hAlign="stretch"
-        vAlign="center"
-        styles={{ height: '64px', padding: '0 32px' }}
-      >
+      <Flex role="region" aria-labelledby="heading" hAlign="stretch" vAlign="center" styles={{ height: '64px', padding: '0 32px' }}>
         <Avatar name={chat.title} />
-        <div
-          id="heading"
-          role="heading"
-          aria-level={2}
-          aria-labelledby="chat-header-reader-text chat-header-title"
-        >
+        <div id="heading" role="heading" aria-level={2} aria-labelledby="chat-header-reader-text chat-header-title">
           <div id="chat-header-reader-text" style={chatProtoStyle.screenReaderContainerStyles}>
             Chat header
           </div>
-          <Text
-            id="chat-header-title"
-            size="large"
-            content={chat.title}
-            styles={{ marginLeft: '12px', fontWeight: 600 }}
-          />
+          <Text id="chat-header-title" size="large" content={chat.title} styles={{ marginLeft: '12px', fontWeight: 600 }} />
         </div>
         <Flex.Item push>{this.renderHeaderButtons()}</Flex.Item>
       </Flex>
-    )
+    );
   }
 
   renderHeaderButtons(): React.ReactElement {
@@ -104,8 +82,8 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
           />
         ))}
       </div>
-    )
+    );
   }
 }
 
-export default ChatPaneHeader
+export default ChatPaneHeader;

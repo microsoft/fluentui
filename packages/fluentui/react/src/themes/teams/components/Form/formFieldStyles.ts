@@ -1,11 +1,11 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { FormFieldProps } from '../../../../components/Form/FormField'
-import { pxToRem } from '../../../../utils'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { FormFieldProps } from '../../../../components/Form/FormField';
+import { pxToRem } from '../../../../utils';
 
 const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
   root: ({ props, variables }): ICSSInJSStyle => ({}),
   label: ({ props }): ICSSInJSStyle => {
-    const { type, inline, required } = props
+    const { type, inline, required } = props;
     return {
       ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
         display: 'block',
@@ -16,20 +16,20 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
           content: '"*"',
         },
       }),
-    }
+    };
   },
   control: ({ props }): ICSSInJSStyle => {
-    const { type } = props
+    const { type } = props;
     return {
       ...(type &&
         (type === 'radio' || type === 'checkbox') && {
           marginRight: pxToRem(10),
         }),
-    }
+    };
   },
   message: (): ICSSInJSStyle => ({
     display: 'block',
   }),
-}
+};
 
-export default formFieldStyles
+export default formFieldStyles;

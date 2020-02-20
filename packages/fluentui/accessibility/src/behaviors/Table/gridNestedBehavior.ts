@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import * as keyboardKey from 'keyboard-key'
-import { FocusZoneDirection } from '../../focusZone/types'
-import gridRowBehavior from './gridRowBehavior'
+import { Accessibility } from '../../types';
+import * as keyboardKey from 'keyboard-key';
+import { FocusZoneDirection } from '../../focusZone/types';
+import gridRowBehavior from './gridRowBehavior';
 
 /**
  * @specification
@@ -36,6 +36,6 @@ const gridNestedBehavior: Accessibility = props => ({
   childBehaviors: {
     row: gridRowBehavior,
   },
-})
+});
 
-export default gridNestedBehavior
+export default gridNestedBehavior;

@@ -27,7 +27,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
         'ms-PickerPersona-container',
         styles.personaContainer,
         { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-        { ['is-invalid ' + styles.validationError]: !item.isValid }
+        { ['is-invalid ' + styles.validationError]: !item.isValid },
       )}
       data-is-focusable={true}
       data-is-sub-focuszone={true}

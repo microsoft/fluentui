@@ -10,15 +10,15 @@ const classNames = mergeStyleSets({
     height: 200,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   target: {
     fontWeight: '600',
     display: 'inline-block',
     border: '1px dashed #605e5c',
     padding: 5,
-    borderRadius: 2
-  }
+    borderRadius: 2,
+  },
 });
 
 export class HoverCardInstantDismissExample extends React.Component<{}, {}> {
@@ -26,7 +26,7 @@ export class HoverCardInstantDismissExample extends React.Component<{}, {}> {
 
   public render() {
     const plainCardProps: IPlainCardProps = {
-      onRenderPlainCard: this._onRenderPlainCard
+      onRenderPlainCard: this._onRenderPlainCard,
     };
 
     return (

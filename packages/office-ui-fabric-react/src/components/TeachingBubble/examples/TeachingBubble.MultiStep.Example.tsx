@@ -17,7 +17,7 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -25,10 +25,10 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
     const { isTeachingBubbleVisible } = this.state;
     const exampleSecondaryButtonProps: IButtonProps = {
       children: 'Previous',
-      onClick: this._onDismiss
+      onClick: this._onDismiss,
     };
     const examplePrimaryButton: IButtonProps = {
-      children: 'Next'
+      children: 'Next',
     };
 
     return (
@@ -59,13 +59,13 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

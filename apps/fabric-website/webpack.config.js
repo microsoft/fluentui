@@ -28,12 +28,12 @@ module.exports = function(env, argv) {
     isProductionArg,
     addMonacoWebpackConfig({
       entry: {
-        [entryPointName]: './lib/root.js'
+        [entryPointName]: './lib/root.js',
       },
 
       output: {
         publicPath: publicPath,
-        chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
+        chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`,
       },
 
       // The website config intentionally doesn't have React as an external because we bundle it
@@ -46,10 +46,10 @@ module.exports = function(env, argv) {
           'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
           'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
           'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
-          '@uifabric/api-docs/lib': path.resolve(__dirname, '../../packages/api-docs/lib')
-        }
-      }
+          '@uifabric/api-docs/lib': path.resolve(__dirname, '../../packages/api-docs/lib'),
+        },
+      },
     }),
-    /* only production */ isProductionArg
+    /* only production */ isProductionArg,
   );
 };

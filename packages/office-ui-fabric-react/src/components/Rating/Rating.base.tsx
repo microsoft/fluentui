@@ -7,7 +7,7 @@ import {
   format,
   getId,
   divProperties,
-  getNativeProps
+  getNativeProps,
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { Icon } from '../../Icon';
@@ -43,7 +43,7 @@ const RatingStar = (props: IRatingStarProps) => {
 export class RatingBase extends React.Component<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
     min: 1,
-    max: 5
+    max: 5,
   };
   private _id: string;
   private _min: number;
@@ -65,7 +65,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
     this._labelId = getId('RatingLabel');
 
     this.state = {
-      rating: this._getInitialValue(props)
+      rating: this._getInitialValue(props),
     };
   }
 
@@ -79,7 +79,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       size,
       theme,
       icon = 'FavoriteStarFill',
-      unselectedIcon = 'FavoriteStar'
+      unselectedIcon = 'FavoriteStar',
     } = this.props;
 
     const id = this._id;
@@ -91,7 +91,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
     this._classNames = getClassNames(styles!, {
       disabled,
       readOnly,
-      theme: theme!
+      theme: theme!,
     });
 
     for (let i = this._min as number; i <= (max as number); i++) {
@@ -101,7 +101,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           fillPercentage,
           disabled,
           classNames: this._classNames,
-          icon: fillPercentage > 0 ? icon : unselectedIcon
+          icon: fillPercentage > 0 ? icon : unselectedIcon,
         };
 
         starIds.push(this._getStarId(i - 1));
@@ -110,7 +110,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           <button
             className={css(this._classNames.ratingButton, {
               [this._classNames.ratingStarIsLarge]: size === RatingSize.Large,
-              [this._classNames.ratingStarIsSmall]: size !== RatingSize.Large
+              [this._classNames.ratingStarIsSmall]: size !== RatingSize.Large,
             })}
             id={starIds[i - 1]}
             key={i}
@@ -123,7 +123,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           >
             {this._getLabel(i)}
             <RatingStar key={i + 'rating'} {...ratingStarProps} />
-          </button>
+          </button>,
         );
       }
     }
@@ -139,7 +139,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           'aria-label': ariaLabel,
           'aria-readonly': true,
           'data-is-focusable': true,
-          tabIndex: 0
+          tabIndex: 0,
         } as IFocusZoneProps)
       : undefined;
 
@@ -147,7 +147,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
       <div
         className={css('ms-Rating-star', this._classNames.root, {
           [this._classNames.rootIsLarge]: size === RatingSize.Large,
-          [this._classNames.rootIsSmall]: size !== RatingSize.Large
+          [this._classNames.rootIsSmall]: size !== RatingSize.Large,
         })}
         aria-label={!readOnly ? ariaLabel : ''}
         id={id}
@@ -157,7 +157,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
           direction={FocusZoneDirection.horizontal}
           className={css(this._classNames.ratingFocusZone, {
             [this._classNames.rootIsLarge]: size === RatingSize.Large,
-            [this._classNames.rootIsSmall]: size !== RatingSize.Large
+            [this._classNames.rootIsSmall]: size !== RatingSize.Large,
           })}
           defaultActiveElement={rating ? starIds[Math.ceil(rating) - 1] && '#' + starIds[Math.ceil(rating) - 1] : undefined}
           {...readOnlyProps}
@@ -175,7 +175,7 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
   private _onFocus(value: number, ev: React.FocusEvent<HTMLElement>): void {
     if (Math.ceil(this.state.rating!) !== value) {
       this.setState({
-        rating: value
+        rating: value,
       } as IRatingState);
 
       const { onChange, onChanged } = this.props;

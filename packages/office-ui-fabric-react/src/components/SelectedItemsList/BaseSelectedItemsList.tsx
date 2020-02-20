@@ -19,7 +19,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
     this.state = {
-      items: items
+      items: items,
     };
 
     // Create a new selection if one is not specified
@@ -184,8 +184,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
         onRemoveItem: () => this.removeItem(item),
         onItemChange: this.onItemChange,
         removeButtonAriaLabel: removeButtonAriaLabel,
-        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy])
-      })
+        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
+      }),
     );
   };
 

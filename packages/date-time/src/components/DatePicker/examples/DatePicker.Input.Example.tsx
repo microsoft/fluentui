@@ -14,7 +14,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
-      value: null
+      value: null,
     };
   }
 

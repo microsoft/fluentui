@@ -94,7 +94,7 @@
 
         // Get fabricVer from URL param, session value, or latest version in array
         var fabricVersion = Number(
-          getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
+          getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1],
         );
 
         // Set session value if it's in array
@@ -163,7 +163,7 @@
         // Required configuration to make our Monaco wrapper work
         window.MonacoConfig = {
           baseUrl: appPath,
-          useMinified: isProduction
+          useMinified: isProduction,
         };
       }
 

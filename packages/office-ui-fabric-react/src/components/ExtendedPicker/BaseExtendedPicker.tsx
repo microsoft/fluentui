@@ -40,7 +40,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
-        : null
+        : null,
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;

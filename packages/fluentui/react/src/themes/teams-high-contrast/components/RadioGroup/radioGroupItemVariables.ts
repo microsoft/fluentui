@@ -1,4 +1,4 @@
-import { RadioGroupItemVariables } from '../../../teams/components/RadioGroup/radioGroupItemVariables'
+import { RadioGroupItemVariables } from '../../../teams/components/RadioGroup/radioGroupItemVariables';
 
 export default (siteVars: any): Partial<RadioGroupItemVariables> => ({
   colorDisabled: siteVars.accessibleGreen,
@@ -11,4 +11,4 @@ export default (siteVars: any): Partial<RadioGroupItemVariables> => ({
   iconBorderColorChecked: siteVars.accessibleCyan,
 
   iconBackgroundColorChecked: siteVars.accessibleCyan,
-})
+});

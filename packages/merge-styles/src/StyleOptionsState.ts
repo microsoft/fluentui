@@ -23,6 +23,6 @@ let _rtl = getRTL();
 
 export function getStyleOptions(): IStyleOptions {
   return {
-    rtl: getRTL()
+    rtl: getRTL(),
   };
 }

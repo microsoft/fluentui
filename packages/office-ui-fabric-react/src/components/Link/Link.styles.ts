@@ -2,7 +2,7 @@ import { getGlobalClassNames, HighContrastSelectorWhite, HighContrastSelectorBla
 import { ILinkStyleProps, ILinkStyles } from './Link.types';
 
 const GlobalClassNames = {
-  root: 'ms-Link'
+  root: 'ms-Link',
 };
 
 export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
@@ -35,15 +35,15 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
             boxShadow: `0 0 0 1px ${focusBorderColor} inset`,
             selectors: {
               [HighContrastSelector]: {
-                outline: '1px solid WindowText'
-              }
-            }
+                outline: '1px solid WindowText',
+              },
+            },
           },
           [HighContrastSelector]: {
             // For IE high contrast mode
-            borderBottom: 'none'
-          }
-        }
+            borderBottom: 'none',
+          },
+        },
       },
       isButton && {
         background: 'none',
@@ -60,43 +60,43 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         borderBottom: '1px solid transparent', // For Firefox high contrast mode
         selectors: {
           [HighContrastSelectorBlack]: {
-            color: '#FFFF00'
+            color: '#FFFF00',
           },
           [HighContrastSelectorWhite]: {
-            color: '#00009F'
-          }
-        }
+            color: '#00009F',
+          },
+        },
       },
       !isButton && {
-        textDecoration: 'none'
+        textDecoration: 'none',
       },
       isDisabled && [
         'is-disabled',
         {
           color: linkDisabledColor,
-          cursor: 'default'
+          cursor: 'default',
         },
         {
           selectors: {
             '&:link, &:visited': {
-              pointerEvents: 'none'
-            }
-          }
-        }
+              pointerEvents: 'none',
+            },
+          },
+        },
       ],
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
             color: linkInteractedColor,
-            textDecoration: 'underline'
+            textDecoration: 'underline',
           },
           '&:focus': {
-            color: linkColor
-          }
-        }
+            color: linkColor,
+          },
+        },
       },
       classNames.root,
-      className
-    ]
+      className,
+    ],
   };
 };

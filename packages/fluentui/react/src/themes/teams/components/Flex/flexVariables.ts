@@ -1,10 +1,10 @@
-import { pxToRem } from '../../../../utils'
-import { FlexProps } from '../../../../components/Flex/Flex'
+import { pxToRem } from '../../../../utils';
+import { FlexProps } from '../../../../components/Flex/Flex';
 
-type GapValues = Record<FlexProps['gap'], string>
-type PaddingValues = Record<FlexProps['padding'], string>
+type GapValues = Record<FlexProps['gap'], string>;
+type PaddingValues = Record<FlexProps['padding'], string>;
 
-export type FlexVariables = GapValues & PaddingValues
+export type FlexVariables = GapValues & PaddingValues;
 
 export default (): FlexVariables => ({
   // GAP VALUES
@@ -15,4 +15,4 @@ export default (): FlexVariables => ({
 
   // PADDING VALUES
   'padding.medium': pxToRem(10),
-})
+});

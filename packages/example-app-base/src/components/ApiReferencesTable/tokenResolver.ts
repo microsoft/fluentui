@@ -23,7 +23,7 @@ export function getTokenResolver(currentUrl?: string): TokenResolver {
 
     return {
       href: `#${linkRoute}#${token.text}`,
-      target: newTab ? '_blank' : undefined
+      target: newTab ? '_blank' : undefined,
     };
   };
 }

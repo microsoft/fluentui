@@ -12,7 +12,7 @@ const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
   root: 'test-cn-root',
   image: 'test-cn-image',
   initials: 'test-cn-initials',
-  presence: 'test-cn-presence'
+  presence: 'test-cn-presence',
 };
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage

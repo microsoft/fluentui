@@ -1,5 +1,5 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles'
-import { AccordionProps } from '../../../../components/Accordion/Accordion'
+import { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { AccordionProps } from '../../../../components/Accordion/Accordion';
 
 const accordionStyles: ComponentSlotStylesPrepared<AccordionProps> = {
   root: () => ({
@@ -9,6 +9,6 @@ const accordionStyles: ComponentSlotStylesPrepared<AccordionProps> = {
     marginBlockEnd: 0,
     marginBlockStart: 0,
   }),
-}
+};
 
-export default accordionStyles
+export default accordionStyles;

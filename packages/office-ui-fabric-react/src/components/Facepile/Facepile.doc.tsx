@@ -16,23 +16,23 @@ export const FacepilePageProps: IDocPageProps = {
     {
       title: 'Facepile with size, presence, and fade in options',
       code: FacepileBasicExampleCode,
-      view: <FacepileBasicExample />
+      view: <FacepileBasicExample />,
     },
     {
       title: 'Facepile with overflow buttons',
       code: FacepileOverflowExampleCode,
-      view: <FacepileOverflowExample />
+      view: <FacepileOverflowExample />,
     },
     {
       title: 'Facepile with face adding functionality',
       code: FacepileAddFaceExampleCode,
-      view: <FacepileAddFaceExample />
-    }
+      view: <FacepileAddFaceExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

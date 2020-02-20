@@ -18,7 +18,7 @@ class ManifestServicePlugin {
     this.moduleRequestMap = {};
 
     const baseOptions: IManifestServicePluginOptions = {
-      manifestName: 'manifest'
+      manifestName: 'manifest',
     };
     this.options = { ...baseOptions, ...options };
   }
@@ -62,12 +62,12 @@ class ManifestServicePlugin {
             bundles: {},
             scenarios: {},
             cultures: [],
-            libraries: []
+            libraries: [],
           },
           loggingData: {},
           rampInfo: {},
           buildNumber: 'dev',
-          hashes: {}
+          hashes: {},
         };
 
         for (const chunk of chunks) {
@@ -85,7 +85,7 @@ class ManifestServicePlugin {
             hashNoCompress: '',
             sourceMap: '',
             zipSize: 0,
-            path: file
+            path: file,
           });
           manifest.resources.bundles[bundleName] = bundleModules;
         }

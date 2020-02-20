@@ -1,4 +1,4 @@
-import { mergeFontFaces } from '@fluentui/styles'
+import { mergeFontFaces } from '@fluentui/styles';
 
 describe('mergeFontFaces', () => {
   test('returns a compact array', () => {
@@ -38,6 +38,6 @@ describe('mergeFontFaces', () => {
         paths: ['public/fonts/segoe-ui-bold.woff2'],
         props: { fontWeight: 700 },
       },
-    ])
-  })
-})
+    ]);
+  });
+});

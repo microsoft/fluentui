@@ -10,16 +10,16 @@ export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, opt
       style: {
         width: 118,
         height: 86,
-        overflow: 'hidden'
+        overflow: 'hidden',
       },
       icons: {
         folderCoverLargeDefaultFront: <img src={`${baseUrl}/lg-fg.svg`} />,
         folderCoverLargeDefaultBack: <img src={`${baseUrl}/lg-bg.svg`} />,
         folderCoverLargeMediaFront: <img src={`${baseUrl}/lg-fg-media.svg`} />,
-        folderCoverLargeMediaBack: <img src={`${baseUrl}/lg-bg.svg`} />
-      }
+        folderCoverLargeMediaBack: <img src={`${baseUrl}/lg-bg.svg`} />,
+      },
     },
-    options
+    options,
   );
 
   registerIcons(
@@ -28,15 +28,15 @@ export function initializeFolderCovers(baseUrl: string = ASSET_CDN_BASE_URL, opt
       style: {
         width: 78,
         height: 58,
-        overflow: 'hidden'
+        overflow: 'hidden',
       },
       icons: {
         folderCoverSmallDefaultFront: <img src={`${baseUrl}/sm-fg.svg`} />,
         folderCoverSmallDefaultBack: <img src={`${baseUrl}/sm-bg.svg`} />,
         folderCoverSmallMediaFront: <img src={`${baseUrl}/sm-fg-media.svg`} />,
-        folderCoverSmallMediaBack: <img src={`${baseUrl}/sm-bg.svg`} />
-      }
+        folderCoverSmallMediaBack: <img src={`${baseUrl}/sm-bg.svg`} />,
+      },
     },
-    options
+    options,
   );
 }

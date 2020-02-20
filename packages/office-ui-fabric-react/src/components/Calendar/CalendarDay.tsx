@@ -15,7 +15,7 @@ import {
   getWeekNumber,
   getWeekNumbersInMonth,
   getMonthStart,
-  getMonthEnd
+  getMonthEnd,
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
@@ -82,7 +82,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
 
     this.state = {
       activeDescendantId: getId('DatePickerDay-active'),
-      weeks: this._getWeeks(props)
+      weeks: this._getWeeks(props),
     };
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
@@ -93,7 +93,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps): void {
     this.setState({
-      weeks: this._getWeeks(nextProps)
+      weeks: this._getWeeks(nextProps),
     });
   }
 
@@ -112,7 +112,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       minDate,
       maxDate,
       showCloseButton,
-      allFocusable
+      allFocusable,
     } = this.props;
     const dayPickerId = getId('DatePickerDay-dayPicker');
     const monthAndYearId = getId('DatePickerDay-monthAndYear');
@@ -134,7 +134,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
         className={css(
           'ms-DatePicker-dayPicker',
           styles.dayPicker,
-          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && (getRTL() ? styles.showWeekNumbersRTL : styles.showWeekNumbers)
+          showWeekNumbers && 'ms-DatePicker-showWeekNumbers' && (getRTL() ? styles.showWeekNumbersRTL : styles.showWeekNumbers),
         )}
         id={dayPickerId}
       >
@@ -161,7 +161,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button
                 className={css('ms-DatePicker-prevMonth js-prevMonth', styles.prevMonth, {
-                  ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds
+                  ['ms-DatePicker-prevMonth--disabled ' + styles.prevMonthIsDisabled]: !prevMonthInBounds,
                 })}
                 disabled={!allFocusable && !prevMonthInBounds}
                 aria-disabled={!prevMonthInBounds}
@@ -180,7 +180,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
               </button>
               <button
                 className={css('ms-DatePicker-nextMonth js-nextMonth', styles.nextMonth, {
-                  ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds
+                  ['ms-DatePicker-nextMonth--disabled ' + styles.nextMonthIsDisabled]: !nextMonthInBounds,
                 })}
                 disabled={!allFocusable && !nextMonthInBounds}
                 aria-disabled={!nextMonthInBounds}
@@ -259,7 +259,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     >
                       <div
                         className={css('ms-DatePicker-day', styles.day, {
-                          ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]: selectedDateWeekNumber === weekNumbers[weekIndex]
+                          ['ms-DatePicker-week--highlighted ' + styles.weekIsHighlighted]:
+                            selectedDateWeekNumber === weekNumbers[weekIndex],
                         })}
                       >
                         <span>{weekNumbers[weekIndex]}</span>
@@ -286,8 +287,8 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                             ['ms-DatePicker-day--outfocus ' + styles.dayIsUnfocused]: day.isInBounds && !day.isInMonth,
                             [styles.daySelection]: dateRangeType === DateRangeType.Day,
                             [styles.weekSelection]: dateRangeType === DateRangeType.Week || dateRangeType === DateRangeType.WorkWeek,
-                            [styles.monthSelection]: dateRangeType === DateRangeType.Month
-                          }
+                            [styles.monthSelection]: dateRangeType === DateRangeType.Month,
+                          },
                         )}
                         ref={element => this._setDayCellRef(element, day, isNavigatedDate)}
                         onMouseOver={
@@ -317,7 +318,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                           onClick={day.isInBounds ? day.onSelected : undefined}
                           className={css(styles.day, 'ms-DatePicker-day-button', {
                             ['ms-DatePicker-day--disabled ' + styles.dayIsDisabled]: !day.isInBounds,
-                            ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday
+                            ['ms-DatePicker-day--today ' + styles.dayIsToday]: day.isToday,
                           })}
                           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
                           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}
@@ -509,7 +510,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     originalDate: Date,
     weekIndex: number,
     dayIndex: number,
-    dateRangeType: DateRangeType
+    dateRangeType: DateRangeType,
   ): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // set the press styling
@@ -537,7 +538,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     originalDate: Date,
     weekIndex: number,
     dayIndex: number,
-    dateRangeType: DateRangeType
+    dateRangeType: DateRangeType,
   ): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // remove press styling
@@ -562,7 +563,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     originalDate: Date,
     weekIndex: number,
     dayIndex: number,
-    dateRangeType: DateRangeType
+    dateRangeType: DateRangeType,
   ): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // set the hover styling on every day in the same month
@@ -587,7 +588,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
     originalDate: Date,
     weekIndex: number,
     dayIndex: number,
-    dateRangeType: DateRangeType
+    dateRangeType: DateRangeType,
   ): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       // remove the hover and pressed styling
@@ -663,7 +664,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       autoNavigateOnSelection,
       minDate,
       maxDate,
-      workWeekDays
+      workWeekDays,
     } = this.props;
 
     if (ev) {
@@ -749,7 +750,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
       minDate,
       maxDate,
       showSixWeeksByDefault,
-      workWeekDays
+      workWeekDays,
     } = propsToUse;
     const date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     const todaysDate = today || new Date();
@@ -790,7 +791,7 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
           isInBounds:
             (minDate ? compareDatePart(minDate, date) < 1 : true) &&
             (maxDate ? compareDatePart(date, maxDate) < 1 : true) &&
-            !this._getIsRestrictedDate(date)
+            !this._getIsRestrictedDate(date),
         };
 
         week.push(dayInfo);

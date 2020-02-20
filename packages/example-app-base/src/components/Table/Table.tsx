@@ -44,7 +44,7 @@ export class Table extends React.Component<ITableProps> {
       maxWidth,
       overflow,
       overflowX,
-      overflowY
+      overflowY,
     };
   };
 }

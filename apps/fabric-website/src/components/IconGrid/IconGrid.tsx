@@ -29,7 +29,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     super(props);
 
     this.state = {
-      searchQuery: ''
+      searchQuery: '',
     };
 
     this._iconRefs = {};
@@ -80,7 +80,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
   private _onSearchQueryChanged = (ev, newValue: string): void => {
     this.setState({
-      searchQuery: newValue
+      searchQuery: newValue,
     });
   };
 }

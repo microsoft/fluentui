@@ -25,12 +25,12 @@ function getStyles(props: ITextFieldStyleProps): Partial<ITextFieldStyles> {
     fieldGroup: [
       { width: 300 },
       required && {
-        borderTopColor: props.theme.semanticColors.errorText
-      }
+        borderTopColor: props.theme.semanticColors.errorText,
+      },
     ],
     subComponentStyles: {
-      label: getLabelStyles
-    }
+      label: getLabelStyles,
+    },
   };
 }
 
@@ -39,9 +39,9 @@ function getLabelStyles(props: ILabelStyleProps): ILabelStyles {
   return {
     root: [
       required && {
-        color: props.theme.palette.themePrimary
-      }
-    ]
+        color: props.theme.palette.themePrimary,
+      },
+    ],
   };
 }
 

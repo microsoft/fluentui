@@ -10,6 +10,6 @@ export const CommandBar: React.FunctionComponent<ICommandBarProps> = styled<ICom
   getStyles,
   undefined,
   {
-    scope: 'CommandBar'
-  }
+    scope: 'CommandBar',
+  },
 );

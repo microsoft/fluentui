@@ -7,7 +7,7 @@ import {
   IDetailsRowStyles,
   DetailsListLayoutMode,
   IColumn,
-  ColumnActionsMode
+  ColumnActionsMode,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
@@ -49,7 +49,7 @@ export const gapTokens = {
   xsmall: { childrenGap: 2.5 },
   small: { childrenGap: 8 },
   medium: { childrenGap: 16 },
-  large: { childrenGap: 48 }
+  large: { childrenGap: 48 },
 };
 
 const DEPRECATED_COLOR = '#FFF1CC';
@@ -57,8 +57,8 @@ const deprecatedTextStyles: Partial<ITextStyles> = {
   root: {
     backgroundColor: DEPRECATED_COLOR,
     padding: 10,
-    borderRadius: 2
-  }
+    borderRadius: 2,
+  },
 };
 
 const theme = getTheme();
@@ -67,13 +67,13 @@ const rootClass = mergeStyles({
     // Switch code blocks to a nicer font family and smaller size (monospace fonts tend to be large)
     code: { fontFamily: codeFontFamily, fontSize: '11px' },
     // Fix margins around Members/Methods h4 and control font size
-    h4: { margin: '16px 0 -8px 0', fontSize: '16px' }
-  }
+    h4: { margin: '16px 0 -8px 0', fontSize: '16px' },
+  },
 });
 
 export class ApiReferencesTable extends React.Component<IApiReferencesTableProps, IApiReferencesTableState> {
   public static defaultProps: Partial<IApiReferencesTableProps> = {
-    title: 'Properties'
+    title: 'Properties',
   };
 
   private _isEnum: boolean;
@@ -214,11 +214,11 @@ const rowStyles: Partial<IDetailsRowStyles> = {
     selectors: {
       ':hover': {
         background: 'none',
-        color: theme.semanticColors.bodyText
-      }
-    }
+        color: theme.semanticColors.bodyText,
+      },
+    },
   },
-  isMultiline: { wordBreak: 'break-word' }
+  isMultiline: { wordBreak: 'break-word' },
 };
 function _onRenderRow(props: IDetailsRowProps) {
   return <DetailsRow {...props} styles={rowStyles} />;
@@ -234,14 +234,14 @@ const columnWidths: { [K in ApiListFieldName]: [number, number] } = {
   type: [130, 150],
   defaultValue: [130, 150],
   description: [300, 400],
-  signature: [200, 300]
+  signature: [200, 300],
 };
 
 /** Map from item kind to list of column names (used in generating columns) */
 const columnNames: { [K in IApiDetailsListProps['itemKind']]: ApiListFieldName[] } = {
   enum: ['name', 'value', 'description'],
   method: ['name', 'signature', 'description'],
-  property: ['name', 'type', 'defaultValue', 'description']
+  property: ['name', 'type', 'defaultValue', 'description'],
 };
 
 function _getColumns(props: IApiDetailsListProps): IColumn[] {
@@ -270,15 +270,15 @@ function _getColumns(props: IApiDetailsListProps): IColumn[] {
             return undefined;
           }
           return _renderCell(item, fieldName);
-        }
+        },
       };
-    }
+    },
   );
 }
 
 function _renderCell(
   item: IApiInterfaceProperty | IApiEnumProperty | IMethod,
-  property: 'name' | 'description' | 'defaultValue' | 'value'
+  property: 'name' | 'description' | 'defaultValue' | 'value',
 ) {
   let text = (item as any)[property] || ''; // tslint:disable-line:no-any
   // Format property names and defaults as code for easier reading

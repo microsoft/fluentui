@@ -30,14 +30,14 @@ const DayPickerStrings: IDatePickerStrings = {
 
   invalidInputErrorMessage: 'Invalid date format.',
 
-  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`
+  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`,
 };
 
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
 export interface IDatePickerRequiredExampleState {
@@ -49,7 +49,7 @@ export class DatePickerBoundedExample extends React.Component<{}, IDatePickerReq
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 

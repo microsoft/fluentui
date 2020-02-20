@@ -5,7 +5,7 @@ function getMagicComments(options: loaderUtils.OptionObject): string {
   const magicCommentsOptions: { [key: string]: string } = {
     webpackChunkName: `"${options.chunkName || 'fabric.async'}"`,
     webpackPrefetch: options.prefetch,
-    webpackPreload: options.preload
+    webpackPreload: options.preload,
   };
 
   return Object.keys(magicCommentsOptions)
@@ -51,6 +51,6 @@ module.exports.pitch = function(remainingRequest: string, precedingRequest: stri
     `export var ${moduleName} = Loadable({`,
     `  loader: function() { return import(${getMagicComments(options)} ${request}).then(function(m) { return m.${moduleName}; }); },`,
     `  loading: function() { return null; }`,
-    `});`
+    `});`,
   ].join('\n');
 };

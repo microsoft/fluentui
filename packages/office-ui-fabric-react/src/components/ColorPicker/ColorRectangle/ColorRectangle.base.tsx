@@ -23,7 +23,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     minSize: 220,
     ariaLabel: 'Saturation and brightness',
     ariaValueFormat: 'Saturation {0} brightness {1}',
-    ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
+    ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
 
   private _events: EventGroup;
@@ -63,7 +63,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      minSize
+      minSize,
     });
 
     const valueText = ariaValueFormat!.replace('{0}', String(color.s)).replace('{1}', String(color.v));
@@ -201,6 +201,6 @@ export function _getNewColor(ev: React.MouseEvent, prevColor: IColor, root: HTML
   return updateSV(
     prevColor,
     clamp(Math.round(sPercentage * MAX_COLOR_SATURATION), MAX_COLOR_SATURATION),
-    clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE)
+    clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE),
   );
 }

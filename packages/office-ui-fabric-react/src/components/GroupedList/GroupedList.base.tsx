@@ -24,7 +24,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
     groupProps: {},
-    compact: false
+    compact: false,
   };
 
   public refs: {
@@ -47,7 +47,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     this.state = {
       lastWidth: 0,
-      groups: props.groups
+      groups: props.groups,
     };
   }
 
@@ -94,7 +94,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
-      compact: compact
+      compact: compact,
     });
 
     const { version } = listProps;
@@ -164,14 +164,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       viewport,
       onShouldVirtualize,
       groups,
-      compact
+      compact,
     } = this.props;
 
     // override group header/footer props as needed
     const dividerProps = {
       onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleCollapse: this._onToggleCollapse,
-      onToggleSummarize: this._onToggleSummarize
+      onToggleSummarize: this._onToggleSummarize,
     };
 
     const headerProps: IGroupHeaderProps = { ...groupProps!.headerProps, ...dividerProps };
@@ -324,14 +324,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _getPageSpecification = (
-    itemIndex: number
+    itemIndex: number,
   ): {
     key?: string;
   } => {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {
-      key: pageGroup && pageGroup.key
+      key: pageGroup && pageGroup.key,
     };
   };
 

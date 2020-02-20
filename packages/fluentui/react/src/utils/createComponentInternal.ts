@@ -1,28 +1,28 @@
-import { AccessibilityActionHandlers } from '@fluentui/react-bindings'
-import * as React from 'react'
-import * as _ from 'lodash'
+import { AccessibilityActionHandlers } from '@fluentui/react-bindings';
+import * as React from 'react';
+import * as _ from 'lodash';
 // @ts-ignore
-import { ThemeContext } from 'react-fela'
+import { ThemeContext } from 'react-fela';
 
-import renderComponent, { RenderResultConfig } from './renderComponent'
-import { createShorthandFactory, ShorthandFactory } from './factories'
-import { ObjectOf, ProviderContextPrepared } from '../types'
+import renderComponent, { RenderResultConfig } from './renderComponent';
+import { createShorthandFactory, ShorthandFactory } from './factories';
+import { ObjectOf, ProviderContextPrepared } from '../types';
 
 export interface CreateComponentConfig<P> {
-  displayName: string
-  className?: string
-  shorthandPropName?: string
-  defaultProps?: Partial<P>
-  handledProps?: string[]
-  propTypes?: React.WeakValidationMap<P>
-  actionHandlers?: AccessibilityActionHandlers
-  render: (config: RenderResultConfig<P>, props: P) => React.ReactNode
+  displayName: string;
+  className?: string;
+  shorthandPropName?: string;
+  defaultProps?: Partial<P>;
+  handledProps?: string[];
+  propTypes?: React.WeakValidationMap<P>;
+  actionHandlers?: AccessibilityActionHandlers;
+  render: (config: RenderResultConfig<P>, props: P) => React.ReactNode;
 }
 
 export type CreateComponentReturnType<P> = React.FunctionComponent<P> & {
-  className: string
-  create: ShorthandFactory<P>
-}
+  className: string;
+  create: ShorthandFactory<P>;
+};
 
 const createComponentInternal = <P extends ObjectOf<any> = any>({
   displayName = 'FluentUIComponent',
@@ -37,14 +37,14 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
   const mergedDefaultProps = {
     as: 'div',
     ...(defaultProps as any),
-  }
+  };
 
   const FluentComponent: CreateComponentReturnType<P> = (props): React.ReactElement<P> => {
     // Stores debug information for component.
     // Note that this ref should go as the first one, to be discoverable by debug utils.
-    const ref = React.useRef(null)
+    const ref = React.useRef(null);
 
-    const context: ProviderContextPrepared = React.useContext(ThemeContext)
+    const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
     return renderComponent(
       {
@@ -58,23 +58,23 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
         saveDebug: fluentUIDebug => (ref.current = { fluentUIDebug }),
       },
       context,
-    )
-  }
+    );
+  };
 
-  FluentComponent.className = className
+  FluentComponent.className = className;
 
   FluentComponent.create = createShorthandFactory({
     Component: mergedDefaultProps.as,
     mappedProp: shorthandPropName,
-  })
+  });
 
-  FluentComponent.displayName = displayName
+  FluentComponent.displayName = displayName;
 
-  FluentComponent.propTypes = propTypes // TODO: generate prop types
+  FluentComponent.propTypes = propTypes; // TODO: generate prop types
 
-  FluentComponent.defaultProps = mergedDefaultProps
+  FluentComponent.defaultProps = mergedDefaultProps;
 
-  return FluentComponent
-}
+  return FluentComponent;
+};
 
-export default createComponentInternal
+export default createComponentInternal;

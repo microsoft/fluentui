@@ -12,6 +12,6 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = styled<IDat
   styles,
   undefined,
   {
-    scope: 'DatePicker'
-  }
+    scope: 'DatePicker',
+  },
 );

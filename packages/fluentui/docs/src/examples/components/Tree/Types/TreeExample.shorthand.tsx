@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Tree } from '@fluentui/react'
+import * as React from 'react';
+import { Tree } from '@fluentui/react';
 
 const items = [
   {
@@ -68,8 +68,8 @@ const items = [
       },
     ],
   },
-]
+];
 
-const TreeExampleShorthand = () => <Tree aria-label="default" items={items} />
+const TreeExampleShorthand = () => <Tree aria-label="default" items={items} />;
 
-export default TreeExampleShorthand
+export default TreeExampleShorthand;

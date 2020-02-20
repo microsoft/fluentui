@@ -14,7 +14,7 @@ import {
   getNativeProps,
   getWindow,
   on,
-  shallowCompare
+  shallowCompare,
 } from '../../Utilities';
 import {
   positionCallout,
@@ -23,7 +23,7 @@ import {
   getMaxHeight,
   IPosition,
   RectangleEdge,
-  positionCard
+  positionCard,
 } from '../../utilities/positioning';
 import { Popup } from '../../Popup';
 import { classNamesFunction } from '../../Utilities';
@@ -33,11 +33,11 @@ const ANIMATIONS: { [key: number]: string | undefined } = {
   [RectangleEdge.top]: AnimationClassNames.slideUpIn10,
   [RectangleEdge.bottom]: AnimationClassNames.slideDownIn10,
   [RectangleEdge.left]: AnimationClassNames.slideLeftIn10,
-  [RectangleEdge.right]: AnimationClassNames.slideRightIn10
+  [RectangleEdge.right]: AnimationClassNames.slideRightIn10,
 };
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>({
-  disableCaching: true
+  disableCaching: true,
 });
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
@@ -65,7 +65,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     beakWidth: 16,
     gapSpace: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge
+    directionalHint: DirectionalHint.bottomAutoEdge,
   };
 
   private _classNames: { [key in keyof ICalloutContentStyles]: string };
@@ -95,7 +95,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       slideDirectionalClassName: undefined,
       // @TODO it looks like this is not even being used anymore.
       calloutElementRect: undefined,
-      heightOffset: 0
+      heightOffset: 0,
     };
     this._positionAttempts = 0;
   }
@@ -157,7 +157,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       // Target might have been updated while hidden.
       this._setTargetWindowAndElement(newTarget);
       this.setState({
-        positions: undefined
+        positions: undefined,
       });
       this._didSetInitialFocus = false;
       this._bounds = undefined;
@@ -195,7 +195,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       backgroundColor,
       calloutMaxHeight,
       onScroll,
-      shouldRestoreFocus = true
+      shouldRestoreFocus = true,
     } = this.props;
     target = this._getTarget();
     const { positions } = this.state;
@@ -214,13 +214,13 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       positions,
       beakWidth,
       backgroundColor,
-      calloutMaxWidth
+      calloutMaxWidth,
     });
 
     const overflowStyle: React.CSSProperties = {
       ...style,
       maxHeight: contentMaxHeight,
-      ...(overflowYHidden && { overflowY: 'hidden' })
+      ...(overflowYHidden && { overflowY: 'hidden' }),
     };
 
     const visibilityStyle: React.CSSProperties | undefined = this.props.hidden ? { visibility: 'hidden' } : undefined;
@@ -338,7 +338,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
         on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
-        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
+        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true),
       );
       this._hasListeners = true;
     }, 0);
@@ -357,7 +357,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _getBeakPosition(): React.CSSProperties {
     const { positions } = this.state;
     const beakPostionStyle: React.CSSProperties = {
-      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null)
+      ...(positions && positions.beakPosition ? positions.beakPosition.elementPosition : null),
     };
 
     if (!beakPostionStyle.top && !beakPostionStyle.bottom && !beakPostionStyle.left && !beakPostionStyle.right) {
@@ -401,7 +401,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         // and we should stop trying to reposition to prevent a stack overflow.
         this._positionAttempts++;
         this.setState({
-          positions: newPositions
+          positions: newPositions,
         });
       } else if (this._positionAttempts > 0) {
         // Only call the onPositioned callback if the callout has been re-positioned at least once.
@@ -425,7 +425,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           right: this._targetWindow.innerWidth - this.props.minPagePadding!,
           bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
           width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
+          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
         };
       }
       this._bounds = currentBounds;
@@ -525,7 +525,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff
+          heightOffset: this.state.heightOffset! + scrollDiff,
         });
 
         if (calloutMainElem.offsetHeight < this.props.finalHeight!) {

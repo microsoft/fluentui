@@ -1,40 +1,24 @@
-import * as React from 'react'
-import {
-  Button,
-  Popup,
-  Menu,
-  dialogBehavior,
-  tabBehavior,
-  tabListBehavior,
-  MenuItemProps,
-} from '@fluentui/react'
-import * as _ from 'lodash'
-import { arrayOfStickerImagesNames, getItemsData } from './dataMocks'
-import GridImagePicker from './GridImagePicker/GridImagePicker'
+import * as React from 'react';
+import { Button, Popup, Menu, dialogBehavior, tabBehavior, tabListBehavior, MenuItemProps } from '@fluentui/react';
+import * as _ from 'lodash';
+import { arrayOfStickerImagesNames, getItemsData } from './dataMocks';
+import GridImagePicker from './GridImagePicker/GridImagePicker';
 
-const tabListItemsContent = [
-  'Popular',
-  'Office drama',
-  'Meme',
-  'Designers',
-  'Dev',
-  'Legal',
-  'Team squatch',
-]
+const tabListItemsContent = ['Popular', 'Office drama', 'Meme', 'Designers', 'Dev', 'Legal', 'Team squatch'];
 
 class StickerPicker extends React.Component {
-  state = { activeMenuIndex: 0 }
-  gridPickerRef = React.createRef<GridImagePicker>()
+  state = { activeMenuIndex: 0 };
+  gridPickerRef = React.createRef<GridImagePicker>();
 
   getStickersData = () => {
-    return getItemsData(arrayOfStickerImagesNames[this.state.activeMenuIndex], 'sticker of')
-  }
+    return getItemsData(arrayOfStickerImagesNames[this.state.activeMenuIndex], 'sticker of');
+  };
 
   onMenuItemClick = (e, props) => {
     this.setState({ activeMenuIndex: props.index }, () => {
-      this.gridPickerRef.current && this.gridPickerRef.current.focusInput()
-    })
-  }
+      this.gridPickerRef.current && this.gridPickerRef.current.focusInput();
+    });
+  };
 
   getTabListItems = (): MenuItemProps[] => {
     return _.map(tabListItemsContent, item => ({
@@ -42,8 +26,8 @@ class StickerPicker extends React.Component {
       content: item,
       onClick: this.onMenuItemClick,
       accessibility: tabBehavior,
-    }))
-  }
+    }));
+  };
 
   render() {
     return (
@@ -71,8 +55,8 @@ class StickerPicker extends React.Component {
           ),
         }}
       />
-    )
+    );
   }
 }
 
-export default StickerPicker
+export default StickerPicker;

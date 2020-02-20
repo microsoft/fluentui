@@ -11,7 +11,7 @@ import { mount, ReactWrapper } from 'enzyme';
  */
 export function safeMount<TComponent extends React.Component, TProps = TComponent['props'], TState = TComponent['state']>(
   content: React.ReactElement<TProps>,
-  callback: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void
+  callback: (wrapper: ReactWrapper<TProps, TState, TComponent>) => void,
 ): void {
   const wrapper = mount<TComponent, TProps, TState>(content);
 

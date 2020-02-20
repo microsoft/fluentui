@@ -11,7 +11,7 @@ export const PersonaAlternateExample: React.FunctionComponent = () => {
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    showSecondaryText: true
+    showSecondaryText: true,
   };
 
   return (

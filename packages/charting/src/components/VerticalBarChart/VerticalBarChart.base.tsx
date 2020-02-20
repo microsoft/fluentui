@@ -58,7 +58,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       theme: theme!,
       width: this._width,
       height: this._height,
-      className
+      className,
     });
   }
 

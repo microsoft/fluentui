@@ -45,5 +45,5 @@ export const PropertiesTableSet: React.FunctionComponent<IPropertiesTableSetProp
   IPropertiesTableSetStyleProps,
   IPropertiesTableSetStyles
 >(PropertiesTableSetBase, getStyles, undefined, {
-  scope: 'PropertiesTableSet'
+  scope: 'PropertiesTableSet',
 });

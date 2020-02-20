@@ -3,7 +3,7 @@ import { memoizeFunction } from '../../Utilities';
 import { HighContrastSelector, ITheme, IRawStyle, getFocusStyle, hiddenContentStyle } from '../../Styling';
 
 const noOutline: IRawStyle = {
-  outline: 0
+  outline: 0,
 };
 
 const iconStyle = (fontSize?: string | number): IRawStyle => {
@@ -14,7 +14,7 @@ const iconStyle = (fontSize?: string | number): IRawStyle => {
     lineHeight: '16px',
     textAlign: 'center',
     verticalAlign: 'middle',
-    flexShrink: 0
+    flexShrink: 0,
   };
 };
 
@@ -36,7 +36,7 @@ export const getStyles = memoizeFunction(
       bottom: -2,
       right: -2,
       border: 'none',
-      outlineColor: 'ButtonText'
+      outlineColor: 'ButtonText',
     };
 
     return {
@@ -60,10 +60,10 @@ export const getStyles = memoizeFunction(
             ':active > *': {
               position: 'relative',
               left: 0,
-              top: 0
-            }
-          }
-        }
+              top: 0,
+            },
+          },
+        },
       ],
 
       rootDisabled: [
@@ -79,18 +79,18 @@ export const getStyles = memoizeFunction(
             ':focus': noOutline,
             [HighContrastSelector]: {
               color: 'grayText',
-              borderColor: 'grayText'
-            }
-          }
-        }
+              borderColor: 'grayText',
+            },
+          },
+        },
       ],
 
       iconDisabled: {
-        color: disabledText
+        color: disabledText,
       },
 
       menuIconDisabled: {
-        color: disabledText
+        color: disabledText,
       },
 
       flexContainer: {
@@ -98,15 +98,15 @@ export const getStyles = memoizeFunction(
         height: '100%',
         flexWrap: 'nowrap',
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
       },
       description: {
-        display: 'block'
+        display: 'block',
       },
 
       textContainer: {
         flexGrow: 1,
-        display: 'block'
+        display: 'block',
       },
 
       icon: iconStyle(fonts.mediumPlus.fontSize),
@@ -116,10 +116,10 @@ export const getStyles = memoizeFunction(
       label: {
         margin: '0 4px',
         lineHeight: '100%',
-        display: 'block'
+        display: 'block',
       },
 
-      screenReaderText: hiddenContentStyle
+      screenReaderText: hiddenContentStyle,
     };
-  }
+  },
 );

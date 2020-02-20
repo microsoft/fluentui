@@ -16,11 +16,11 @@ const FolderCoverWithImage: React.FunctionComponent<IFolderCoverWithImageProps> 
   const imageSize = fitContentToBounds({
     contentSize: originalImageSize,
     boundsSize: contentSize,
-    mode: 'cover'
+    mode: 'cover',
   });
 
   return renderFolderCoverWithLayout(folderCover, {
-    children: <img src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`} />
+    children: <img src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`} />,
   });
 };
 
@@ -33,7 +33,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={false}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="large"
           metadata={20}
@@ -44,7 +44,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={true}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="large"
           metadata={20}
@@ -55,7 +55,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={true}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="large"
           metadata={20}
@@ -65,7 +65,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={true}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="large"
           signal={<SharedSignal />}
@@ -75,7 +75,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={false}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="small"
           metadata={15}
@@ -85,7 +85,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={true}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="small"
           metadata={15}
@@ -95,7 +95,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={false}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="large"
           folderCoverType="media"
@@ -107,7 +107,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={false}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="small"
           folderCoverType="media"
@@ -118,7 +118,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={true}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="small"
           folderCoverType="media"
@@ -129,7 +129,7 @@ export class FolderCoverBasicExample extends React.Component<{}, {}> {
           isFluent={false}
           originalImageSize={{
             width: 200,
-            height: 150
+            height: 150,
           }}
           folderCoverSize="small"
           folderCoverType="media"

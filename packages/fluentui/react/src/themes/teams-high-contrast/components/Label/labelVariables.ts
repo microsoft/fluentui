@@ -1,6 +1,6 @@
-import { LabelVariables, labelColorAreas } from '../../../teams/components/Label/labelVariables'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
-import { SiteVariablesPrepared } from '@fluentui/styles'
+import { LabelVariables, labelColorAreas } from '../../../teams/components/Label/labelVariables';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import { SiteVariablesPrepared } from '@fluentui/styles';
 
 export default (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
   return {
@@ -15,5 +15,5 @@ export default (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
       }),
       labelColorAreas,
     ),
-  }
-}
+  };
+};

@@ -23,7 +23,7 @@ describe('ColorSlider', () => {
       right: 100,
       bottom: 18,
       width: 100,
-      height: 18
+      height: 18,
     } as DOMRect);
 
   afterEach(() => {
@@ -45,7 +45,7 @@ describe('ColorSlider', () => {
 
   it('renders alpha slider correctly', () => {
     component = renderer.create(
-      <ColorSlider isAlpha value={30} overlayColor="#ff0000" minValue={0} maxValue={MAX_COLOR_ALPHA} ariaLabel="Alpha" />
+      <ColorSlider isAlpha value={30} overlayColor="#ff0000" minValue={0} maxValue={MAX_COLOR_ALPHA} ariaLabel="Alpha" />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

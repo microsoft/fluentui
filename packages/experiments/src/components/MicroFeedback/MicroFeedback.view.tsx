@@ -27,7 +27,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     onLikeVote,
     onDislikeVote,
     thanksText,
-    inline
+    inline,
   } = props;
 
   const likeIcon = vote === 'like' ? 'LikeSolid' : 'Like';
@@ -43,7 +43,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     followUpOptionList: List,
     followUpOption: Button,
     followUpOptionText: Text,
-    thanksContainer: Callout
+    thanksContainer: Callout,
   });
 
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };

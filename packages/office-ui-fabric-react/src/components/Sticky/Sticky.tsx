@@ -18,7 +18,7 @@ export interface IStickyContext {
 export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public static defaultProps: IStickyProps = {
     stickyPosition: StickyPositionType.Both,
-    isScrollSynced: true
+    isScrollSynced: true,
   };
 
   public static contextType = ScrollablePaneContext;
@@ -35,7 +35,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.state = {
       isStickyTop: false,
       isStickyBottom: false,
-      distanceFromTop: undefined
+      distanceFromTop: undefined,
     };
     this._activeElement = undefined;
   }
@@ -198,7 +198,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
     return {
       backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
-      overflow: isSticky ? 'hidden' : ''
+      overflow: isSticky ? 'hidden' : '',
     };
   }
 
@@ -206,7 +206,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const height = this.nonStickyContent ? this.nonStickyContent.offsetHeight : 0;
     return {
       visibility: isSticky ? 'hidden' : 'visible',
-      height: isSticky ? 0 : height
+      height: isSticky ? 0 : height,
     };
   }
 
@@ -240,7 +240,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       }
       return {
         height: height,
-        width: width
+        width: width,
       };
     } else {
       return {};
@@ -277,7 +277,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
         isStickyBottom: isStickyBottom,
-        distanceFromTop: distanceFromTop
+        distanceFromTop: distanceFromTop,
       });
     }
   };

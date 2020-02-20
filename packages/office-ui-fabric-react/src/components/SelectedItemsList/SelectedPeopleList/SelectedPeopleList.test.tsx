@@ -16,13 +16,13 @@ describe('SelectedPeopleList', () => {
         {
           key: 'person-A',
           text: 'Person A',
-          isValid: true
+          isValid: true,
         },
         {
           key: 'person-B',
           text: 'Person B',
-          isValid: true
-        }
+          isValid: true,
+        },
       ]);
 
       const result = picker.render();
@@ -39,13 +39,13 @@ describe('SelectedPeopleList', () => {
         {
           key: 'person-A',
           text: 'Person A',
-          isValid: true
+          isValid: true,
         },
         {
           key: 'person-B',
           text: 'Person B',
-          isValid: true
-        }
+          isValid: true,
+        },
       ]);
 
       const result = picker.render();
@@ -73,13 +73,13 @@ describe('SelectedPeopleList', () => {
           key: 'person-A',
           text: 'Person A',
           isValid: true,
-          isEditing: true
+          isEditing: true,
         },
         {
           key: 'person-B',
           text: 'Person B',
-          isValid: true
-        }
+          isValid: true,
+        },
       ]);
 
       const result = picker.render();

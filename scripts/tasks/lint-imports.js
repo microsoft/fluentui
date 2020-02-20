@@ -54,7 +54,7 @@ function lintImports() {
     // Only used in experimental examples. Will need a different approach for this to work with the editor.
     '@uifabric/foundation/lib/next/composed',
     // Imported by theming examples. Need to find a different approach.
-    '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example'
+    '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example',
   ];
   const allowedReexportedImports = ['@uifabric/foundation/lib/next/composed'];
   const reExportedPackages = {
@@ -62,7 +62,7 @@ function lintImports() {
     '@uifabric/icons': 'Icons',
     '@uifabric/merge-styles': 'Styling',
     '@uifabric/styling': 'Styling',
-    '@uifabric/utilities': 'Utilities'
+    '@uifabric/utilities': 'Utilities',
   };
 
   const packagesInfo = getAllPackageInfo();
@@ -83,12 +83,12 @@ function lintImports() {
       pathReExported: { count: 0, matches: {} },
       importStar: { count: 0, matches: {} },
       exportMulti: { count: 0, matches: {} },
-      exportDefault: { count: 0, matches: {} }
+      exportDefault: { count: 0, matches: {} },
     };
     /** @type {ImportStats} */
     const importStats = {
       totalImportKeywords: 0,
-      totalImportStatements: 0
+      totalImportStatements: 0,
     };
 
     for (const file of files) {
@@ -338,7 +338,7 @@ function lintImports() {
       importStar:
         'example files are using "import *" which causes problems with the website example editor. Please import things by name instead.',
       exportMulti: 'example files are exporting multiple classes/consts (or none). Please export exactly one component per example.',
-      exportDefault: 'example files are using a default export. Please use only named exports.'
+      exportDefault: 'example files are using a default export. Please use only named exports.',
     };
 
     let hasError = false;

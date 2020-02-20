@@ -12,9 +12,9 @@ export const SelectionPageProps: IDocPageProps = {
     {
       title: 'Basic Selection Example',
       code: SelectionBasicExampleCode,
-      view: <SelectionBasicExample />
-    }
+      view: <SelectionBasicExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/utilities/selection/docs/SelectionOverview.md'),
-  isHeaderVisible: true
+  isHeaderVisible: true,
 };

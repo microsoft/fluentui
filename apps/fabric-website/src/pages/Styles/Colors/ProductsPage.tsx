@@ -5,7 +5,7 @@ import {
   ColorPalette,
   IColorSwatch,
   IColorPaletteTheme,
-  IPageSectionProps
+  IPageSectionProps,
 } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsProductsPageProps } from './ProductsPage.doc';
@@ -21,7 +21,7 @@ import {
   SharePoint,
   Skype,
   Teams,
-  Word
+  Word,
 } from './palettes/index';
 import { Platforms } from '../../../interfaces/Platforms';
 
@@ -35,7 +35,7 @@ export interface IColorsProductsPageState {
 export class ColorsProductsPage extends React.Component<IStylesPageProps, IColorsProductsPageState> {
   public readonly state = {
     activeAppColorPalette: null,
-    activeAppDetails: null
+    activeAppDetails: null,
   };
 
   public render() {
@@ -71,16 +71,16 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
                 )}
                 {activeAppDetails}
               </>
-            )
-          }
+            ),
+          },
         ];
 
       default:
         return [
           {
             sectionName: 'Coming soon',
-            content: '...'
-          }
+            content: '...',
+          },
         ];
     }
   };
@@ -131,7 +131,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
     }
 
     this.setState({
-      activeAppDetails: appDetails
+      activeAppDetails: appDetails,
     });
   };
 }

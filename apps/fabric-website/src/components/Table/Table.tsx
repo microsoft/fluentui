@@ -107,7 +107,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
 
     if (this.state.currentBreakpoint !== currBreakpoint) {
       this.setState({
-        currentBreakpoint: currBreakpoint
+        currentBreakpoint: currBreakpoint,
       });
     }
   };

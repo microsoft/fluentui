@@ -8,7 +8,7 @@ import {
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
-  getRTL
+  getRTL,
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
@@ -34,7 +34,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   public static defaultProps = {
     rootTagName: 'div',
     rootProps: {},
-    isEnabled: true
+    isEnabled: true,
   };
 
   private _root = React.createRef<HTMLDivElement>();
@@ -56,7 +56,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     super(props);
 
     this.state = {
-      dragRect: undefined
+      dragRect: undefined,
     };
   }
 
@@ -84,7 +84,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (
@@ -181,7 +181,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       left: this._rootRect.left + (this._scrollLeft - this._scrollableSurface.scrollLeft),
       top: this._rootRect.top + (this._scrollTop - this._scrollableSurface.scrollTop),
       width: this._rootRect.width,
-      height: this._rootRect.height
+      height: this._rootRect.height,
     };
   }
 
@@ -228,18 +228,18 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
         const constrainedPoint = this.props.isDraggingConstrainedToRoot
           ? {
               x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
-              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top))
+              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top)),
             }
           : {
               x: this._lastMouseEvent!.clientX - rootRect.left,
-              y: this._lastMouseEvent!.clientY - rootRect.top
+              y: this._lastMouseEvent!.clientY - rootRect.top,
             };
 
         const dragRect = {
           left: Math.min(this._dragOrigin.x, constrainedPoint.x),
           top: Math.min(this._dragOrigin.y, constrainedPoint.y),
           width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
-          height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
+          height: Math.abs(constrainedPoint.y - this._dragOrigin.y),
         };
 
         this._evaluateSelection(dragRect, rootRect);
@@ -263,7 +263,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
     if (this.state.dragRect) {
       this.setState({
-        dragRect: undefined
+        dragRect: undefined,
       });
 
       ev.preventDefault();
@@ -344,7 +344,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
           width: itemRect.width,
           height: itemRect.height,
           right: itemRect.left - rootRect.left + itemRect.width,
-          bottom: itemRect.top - rootRect.top + itemRect.height
+          bottom: itemRect.top - rootRect.top + itemRect.height,
         };
 
         if (itemRect.width > 0 && itemRect.height > 0) {

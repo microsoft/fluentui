@@ -17,7 +17,7 @@ export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
   menu: ContextualMenu,
   menuIcon: FontIcon,
   splitDividerContainer: 'span',
-  splitDivider: 'span'
+  splitDivider: 'span',
 });
 
 export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {

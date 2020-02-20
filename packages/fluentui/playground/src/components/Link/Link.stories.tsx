@@ -73,8 +73,8 @@ export const baseLinkWithoutHref = () => <LinkBase>Link without href</LinkBase>;
 
 export const fluentLink = () => (
   <Wrapper>
-    A link can be <Link href="https://www.bing.com">part of a text like this</Link>, whether it has
-    an href or <Link>whether it does not</Link>. It can{' '}
+    A link can be <Link href="https://www.bing.com">part of a text like this</Link>, whether it has an href or{' '}
+    <Link>whether it does not</Link>. It can{' '}
     <Link disabled href="https://www.bing.com">
       even be disabled
     </Link>

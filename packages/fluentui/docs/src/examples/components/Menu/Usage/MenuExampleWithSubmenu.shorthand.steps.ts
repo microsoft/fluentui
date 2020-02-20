@@ -1,5 +1,5 @@
-import getScreenerSteps from '../commonScreenerSteps'
+import getScreenerSteps from '../commonScreenerSteps';
 
-const config: ScreenerTestsConfig = { steps: getScreenerSteps() }
+const config: ScreenerTestsConfig = { steps: getScreenerSteps() };
 
-export default config
+export default config;

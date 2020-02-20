@@ -9,6 +9,6 @@ export const Dropdown: React.FunctionComponent<IDropdownProps> = styled<IDropdow
   getStyles,
   undefined,
   {
-    scope: 'Dropdown'
-  }
+    scope: 'Dropdown',
+  },
 );

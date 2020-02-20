@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility, AccessibilityDefinition } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility, AccessibilityDefinition } from '../../types';
 
 /**
  * @specification
@@ -15,8 +15,7 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
       root: {
         role: props.as === 'button' ? undefined : 'button',
         tabIndex: props.as === 'button' ? undefined : 0,
-        disabled:
-          props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
+        disabled: props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
         'aria-disabled': props.disabled || props.loading,
       },
     },
@@ -31,22 +30,22 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
           }),
       },
     },
-  }
+  };
 
   if (process.env.NODE_ENV !== 'production' && props.loading) {
     // Override the default trigger's accessibility schema class.
-    definition.attributes.root['data-aa-class'] = 'LoadingButton'
+    definition.attributes.root['data-aa-class'] = 'LoadingButton';
   }
 
-  return definition
-}
+  return definition;
+};
 
-export default buttonBehavior
+export default buttonBehavior;
 
 export type ButtonBehaviorProps = {
   /** Element type. */
-  as: string
+  as: string;
   /** A button can show it is currently unable to be interacted with. */
-  disabled?: boolean
-  loading?: boolean
-}
+  disabled?: boolean;
+  loading?: boolean;
+};

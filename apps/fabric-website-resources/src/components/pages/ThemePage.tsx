@@ -26,7 +26,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
 
     this.state = {
       palette: defaultPalette,
-      semanticColors: defaultSemanticColors
+      semanticColors: defaultSemanticColors,
     };
   }
 
@@ -42,13 +42,13 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
           otherSections: [
             {
               title: 'Default Palette',
-              section: this._colorList(palette, 'palette')
+              section: this._colorList(palette, 'palette'),
             },
             {
               title: 'Default Semantic Colors',
-              section: this._colorList(semanticColors, 'semanticColors')
-            }
-          ]
+              section: this._colorList(semanticColors, 'semanticColors'),
+            },
+          ],
         }}
       />
     );
@@ -69,7 +69,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
               name: 'Name',
               fieldName: 'name',
               minWidth: 150,
-              maxWidth: 150
+              maxWidth: 150,
             },
             {
               key: 'color',
@@ -85,14 +85,14 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
                   <span className={classNames.swatch} style={{ backgroundColor: item.value }} />
                   <span className={classNames.colorValue}>{item.value}</span>
                 </div>
-              )
+              ),
             },
             {
               key: 'desc',
               name: 'Description',
               fieldName: 'description',
-              minWidth: 90
-            }
+              minWidth: 90,
+            },
           ]}
         />
 
@@ -110,9 +110,9 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
       colorPickerProps: {
         targetElement: (ev.currentTarget as HTMLElement).children[0] as HTMLElement,
         value: item.value,
-        index: index
+        index: index,
       },
-      activeList: list
+      activeList: list,
     });
   }
 
@@ -150,7 +150,7 @@ export class ThemePage extends React.Component<IThemePageProps, IThemePageState>
 
   private _onPickerDismiss(): void {
     this.setState({
-      colorPickerProps: undefined
+      colorPickerProps: undefined,
     });
   }
 }

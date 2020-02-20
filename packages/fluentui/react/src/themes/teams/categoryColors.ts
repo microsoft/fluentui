@@ -1,4 +1,4 @@
-import { TeamsCategoryColors, TeamsCategoryColorSchemeMapping } from './types'
+import { TeamsCategoryColors, TeamsCategoryColorSchemeMapping } from './types';
 
 export const categoryColors: TeamsCategoryColors = {
   redDark: {
@@ -495,7 +495,7 @@ export const categoryColors: TeamsCategoryColors = {
     850: '#3C4212',
     900: '#272B0E',
   },
-}
+};
 
 const createCategoryColorScheme = (color: string, customValues = {}) => {
   return {
@@ -503,8 +503,8 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground1: categoryColors[color][400],
     background: categoryColors[color][200],
     ...customValues,
-  }
-}
+  };
+};
 
 export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
   redDark: createCategoryColorScheme('redDark'),
@@ -551,4 +551,4 @@ export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
     foreground8: categoryColors.maroon[500],
     background8: categoryColors.maroon[200],
   },
-}
+};

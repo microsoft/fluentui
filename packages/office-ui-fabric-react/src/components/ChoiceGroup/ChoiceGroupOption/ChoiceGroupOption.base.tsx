@@ -45,7 +45,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       disabled,
       imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
       imageSize,
-      focused
+      focused,
     });
 
     const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);

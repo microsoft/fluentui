@@ -17,5 +17,5 @@ export const DayPickerStrings: ICalendarStrings = {
   selectedDateFormatString: 'Selected date {0}',
   todayDateFormatString: "Today's date {0}",
   monthPickerHeaderAriaLabel: '{0}, select to change the year',
-  yearPickerHeaderAriaLabel: '{0}, select to change the month'
+  yearPickerHeaderAriaLabel: '{0}, select to change the month',
 };

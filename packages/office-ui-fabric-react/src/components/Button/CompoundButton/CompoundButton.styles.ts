@@ -16,18 +16,18 @@ export const getStyles = memoizeFunction(
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
-        padding: '16px 12px'
+        padding: '16px 12px',
       },
 
       flexContainer: {
         flexDirection: 'row',
         alignItems: 'flex-start',
         minWidth: '100%',
-        margin: ''
+        margin: '',
       },
 
       textContainer: {
-        textAlign: 'left'
+        textAlign: 'left',
       },
 
       icon: {
@@ -36,42 +36,42 @@ export const getStyles = memoizeFunction(
         height: '1em',
         margin: '0px 8px 0px 0px',
         flexBasis: '1em',
-        flexShrink: '0'
+        flexShrink: '0',
       },
 
       label: {
         margin: '0 0 5px',
         lineHeight: '100%',
-        fontWeight: FontWeights.semibold
+        fontWeight: FontWeights.semibold,
       },
       description: [
         fonts.small,
         {
-          lineHeight: '100%'
-        }
-      ]
+          lineHeight: '100%',
+        },
+      ],
     };
 
     const standardCompoundTheme: IButtonStyles = {
       description: {
-        color: palette.neutralSecondary
+        color: palette.neutralSecondary,
       },
 
       descriptionHovered: {
-        color: palette.neutralDark
+        color: palette.neutralDark,
       },
 
       descriptionPressed: {
-        color: 'inherit'
+        color: 'inherit',
       },
 
       descriptionChecked: {
-        color: 'inherit'
+        color: 'inherit',
       },
 
       descriptionDisabled: {
-        color: 'inherit'
-      }
+        color: 'inherit',
+      },
     };
 
     const primaryCompoundTheme: IButtonStyles = {
@@ -81,9 +81,9 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             backgroundColor: 'WindowText',
             color: 'Window',
-            MsHighContrastAdjust: 'none'
-          }
-        }
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
 
       descriptionHovered: {
@@ -91,9 +91,9 @@ export const getStyles = memoizeFunction(
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'Highlight',
-            color: 'Window'
-          }
-        }
+            color: 'Window',
+          },
+        },
       },
 
       descriptionPressed: {
@@ -103,9 +103,9 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none'
-          }
-        }
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
 
       descriptionChecked: {
@@ -115,19 +115,19 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Window',
             backgroundColor: 'WindowText',
-            MsHighContrastAdjust: 'none'
-          }
-        }
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
 
       descriptionDisabled: {
         color: 'inherit',
         selectors: {
           [HighContrastSelector]: {
-            color: 'inherit'
-          }
-        }
-      }
+            color: 'inherit',
+          },
+        },
+      },
     };
 
     return concatStyleSets(
@@ -136,7 +136,7 @@ export const getStyles = memoizeFunction(
       primary ? primaryStyles(theme) : standardStyles(theme),
       primary ? primaryCompoundTheme : standardCompoundTheme,
       splitButtonStyles,
-      customStyles
+      customStyles,
     )!;
-  }
+  },
 );

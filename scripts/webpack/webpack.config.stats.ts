@@ -34,7 +34,7 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
     filename: `${name}.js`,
     path: paths.base('stats'),
     pathinfo: true,
-    publicPath: config.compiler_public_path
+    publicPath: config.compiler_public_path,
   },
   devtool: false,
   module: {
@@ -44,29 +44,29 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
-        }
-      }
-    ]
+          cacheDirectory: true,
+        },
+      },
+    ],
   },
   externals: {
     react: 'react',
-    'react-dom': 'reactDOM'
+    'react-dom': 'reactDOM',
   },
   plugins: [
     new CleanWebpackPlugin([paths.base('stats')], {
       root: paths.base(),
-      verbose: false // do not log
+      verbose: false, // do not log
     }),
     new IgnoreNotFoundExportPlugin(),
-    new webpack.DefinePlugin(config.compiler_globals)
+    new webpack.DefinePlugin(config.compiler_globals),
   ],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   performance: {
-    hints: false // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
-  }
+    hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
+  },
 });
 
 export default [
@@ -83,5 +83,5 @@ export default [
   ...fs
     .readdirSync(paths.packageSrc('react', 'themes'))
     .filter(dir => !/.*\.\w+$/.test(dir))
-    .map(dir => makeConfig(`themes/${dir}`, `theme-${dir}`))
+    .map(dir => makeConfig(`themes/${dir}`, `theme-${dir}`)),
 ];

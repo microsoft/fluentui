@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles'
-import { FlexProps } from '../../../../components/Flex/Flex'
+import { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { FlexProps } from '../../../../components/Flex/Flex';
 
-import { toFlexAlignment } from './utils'
-import { FlexVariables } from './flexVariables'
+import { toFlexAlignment } from './utils';
+import { FlexVariables } from './flexVariables';
 
 const flexStyles: ComponentSlotStylesPrepared<FlexProps, FlexVariables> = {
   root: ({ props: p, variables: v }) => ({
@@ -13,14 +13,8 @@ const flexStyles: ComponentSlotStylesPrepared<FlexProps, FlexVariables> = {
 
     ...(p.column && { flexDirection: 'column' }),
 
-    ...(p.hAlign &&
-      (p.column
-        ? { alignItems: toFlexAlignment(p.hAlign) }
-        : { justifyContent: toFlexAlignment(p.hAlign) })),
-    ...(p.vAlign &&
-      (p.column
-        ? { justifyContent: toFlexAlignment(p.vAlign) }
-        : { alignItems: toFlexAlignment(p.vAlign) })),
+    ...(p.hAlign && (p.column ? { alignItems: toFlexAlignment(p.hAlign) } : { justifyContent: toFlexAlignment(p.hAlign) })),
+    ...(p.vAlign && (p.column ? { justifyContent: toFlexAlignment(p.vAlign) } : { alignItems: toFlexAlignment(p.vAlign) })),
 
     ...(p.space && { justifyContent: `space-${p.space}` }),
 
@@ -39,6 +33,6 @@ const flexStyles: ComponentSlotStylesPrepared<FlexProps, FlexVariables> = {
       },
     }),
   }),
-}
+};
 
-export default flexStyles
+export default flexStyles;

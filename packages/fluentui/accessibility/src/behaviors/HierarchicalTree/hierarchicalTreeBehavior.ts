@@ -1,6 +1,6 @@
-import { Accessibility, AccessibilityAttributes } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import hierarchicalSubtreeBehavior from './hierarchicalSubtreeBehavior'
+import { Accessibility, AccessibilityAttributes } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import hierarchicalSubtreeBehavior from './hierarchicalSubtreeBehavior';
 
 /**
  * @specification
@@ -10,7 +10,7 @@ import hierarchicalSubtreeBehavior from './hierarchicalSubtreeBehavior'
  * Triggers 'expandSiblings' action with '*' on 'root'.
  */
 const hierarchicalTreeBehavior: Accessibility<TreeBehaviorProps> = props => {
-  const subtreeBehaviorData = hierarchicalSubtreeBehavior({})
+  const subtreeBehaviorData = hierarchicalSubtreeBehavior({});
   return {
     attributes: {
       root: {
@@ -29,9 +29,9 @@ const hierarchicalTreeBehavior: Accessibility<TreeBehaviorProps> = props => {
         direction: FocusZoneDirection.vertical,
       },
     },
-  }
-}
+  };
+};
 
-type TreeBehaviorProps = {} & Pick<AccessibilityAttributes, 'aria-labelledby'>
+type TreeBehaviorProps = {} & Pick<AccessibilityAttributes, 'aria-labelledby'>;
 
-export default hierarchicalTreeBehavior
+export default hierarchicalTreeBehavior;

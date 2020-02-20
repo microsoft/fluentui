@@ -55,7 +55,7 @@ async function updateReleaseNotes() {
       name: `${entry.name} v${entry.version}`,
       draft: false,
       prerelease: false,
-      body: await getMarkdownForEntry(entry)
+      body: await getMarkdownForEntry(entry),
     };
     if (hasBeenReleased) {
       releaseDetails.release_id = releasesByTag.get(tag).id;

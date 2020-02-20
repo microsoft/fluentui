@@ -10,7 +10,7 @@ export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = prop
   const Slots = getSlots<ICollapsibleSectionProps, ICollapsibleSectionSlots>(props, {
     root: 'div',
     title: CollapsibleSectionTitle,
-    body: 'div'
+    body: 'div',
   });
 
   return (

@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -25,11 +25,11 @@ const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorPr
       },
     },
   },
-})
+});
 
-export default toolbarMenuItemRadioBehavior
+export default toolbarMenuItemRadioBehavior;
 
 type ToolbarMenuItemRadioBehaviorProps = {
-  active?: boolean
-  disabled?: boolean
-}
+  active?: boolean;
+  disabled?: boolean;
+};

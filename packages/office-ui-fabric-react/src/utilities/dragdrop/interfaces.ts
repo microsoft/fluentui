@@ -14,7 +14,7 @@ export interface IDragDropHelper {
   subscribe: (
     root: HTMLElement,
     events: EventGroup,
-    options: IDragDropOptions
+    options: IDragDropOptions,
   ) => {
     key: string;
     dispose: () => void;

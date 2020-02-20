@@ -14,7 +14,7 @@ export interface IFocusTrapZoneBoxExampleState {
 
 export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneBoxExampleState> {
   public state: IFocusTrapZoneBoxExampleState = {
-    useTrapZone: false
+    useTrapZone: false,
   };
 
   private _toggle = React.createRef<IToggle>();
@@ -37,7 +37,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
             horizontalAlign="start"
             tokens={{ childrenGap: 15 }}
             styles={{
-              root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
+              root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
             }}
           >
             <Toggle
@@ -60,7 +60,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
 
   private _onButtonClickHandler = (): void => {
     this.setState({
-      useTrapZone: true
+      useTrapZone: true,
     });
   };
 

@@ -12,6 +12,6 @@ export const Calendar: React.FunctionComponent<ICalendarProps> = styled<ICalenda
   styles,
   undefined,
   {
-    scope: 'Calendar'
-  }
+    scope: 'Calendar',
+  },
 );

@@ -27,43 +27,43 @@ export const PersonaPageProps: IDocPageProps = {
     {
       title: 'Persona in various sizes',
       code: PersonaBasicExampleCode,
-      view: <PersonaBasicExample />
+      view: <PersonaBasicExample />,
     },
     {
       title: 'Alternative small personas',
       code: PersonaAlternateExampleCode,
-      view: <PersonaAlternateExample />
+      view: <PersonaAlternateExample />,
     },
     {
       title: 'Persona with initials',
       code: PersonaInitialsExampleCode,
-      view: <PersonaInitialsExample />
+      view: <PersonaInitialsExample />,
     },
     {
       title: 'PersonaCoin colors',
       code: PersonaColorsExampleCode,
-      view: <PersonaColorsExample />
+      view: <PersonaColorsExample />,
     },
     {
       title: 'Rendering custom persona text',
       code: PersonaCustomRenderExampleCode,
-      view: <PersonaCustomRenderExample />
+      view: <PersonaCustomRenderExample />,
     },
     {
       title: 'Rendering custom coin',
       code: PersonaCustomCoinRenderExampleCode,
-      view: <PersonaCustomCoinRenderExample />
+      view: <PersonaCustomCoinRenderExample />,
     },
     {
       title: 'Rendering unknown persona coin',
       code: UnknownPersonaExampleCode,
-      view: <UnknownPersonaExample />
+      view: <UnknownPersonaExample />,
     },
     {
       title: 'Persona Presence',
       code: PersonaPresenceExampleCode,
-      view: <PersonaPresenceExample />
-    }
+      view: <PersonaPresenceExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),
   bestPractices: '',
@@ -71,5 +71,5 @@ export const PersonaPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

@@ -59,7 +59,7 @@ export class LineChartBase extends React.Component<
       lineColor: '',
       refSelected: '',
       hoveredLineColor: '',
-      selectedLegend: ''
+      selectedLegend: '',
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._uniqLineText =
@@ -109,11 +109,11 @@ export class LineChartBase extends React.Component<
       width: this.state._width,
       height: this.state._height,
       color: this.state.lineColor,
-      className
+      className,
     });
     const svgDimensions = {
       width: this.state.containerWidth,
-      height: this.state.containerHeight
+      height: this.state.containerHeight,
     };
     return (
       <div ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)} className={this._classNames.root}>
@@ -167,7 +167,7 @@ export class LineChartBase extends React.Component<
       if (shouldResize) {
         this.setState({
           containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight
+          containerHeight: currentContainerHeight - legendContainerHeight,
         });
       }
     });
@@ -195,7 +195,7 @@ export class LineChartBase extends React.Component<
         },
         hoverAction: () => {
           this.setState({ activeLegend: point.legend });
-        }
+        },
       };
       return legend;
     });
@@ -324,7 +324,7 @@ export class LineChartBase extends React.Component<
               onMouseMove={this._handleHover.bind(this, x1, y1, lineColor)}
               onMouseOut={this._handleMouseOut}
               opacity={1}
-            />
+            />,
           );
         } else {
           lines.push(
@@ -339,7 +339,7 @@ export class LineChartBase extends React.Component<
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={0.1}
-            />
+            />,
           );
         }
       }
@@ -355,13 +355,13 @@ export class LineChartBase extends React.Component<
       refSelected: mouseEvent,
       hoverXValue: '' + formattedData,
       hoverYValue: y,
-      lineColor: lineColor
+      lineColor: lineColor,
     });
   };
 
   private _handleMouseOut = () => {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   };
 

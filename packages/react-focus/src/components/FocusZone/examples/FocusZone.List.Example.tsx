@@ -6,7 +6,7 @@ import { KeyCodes, createArray, getRTLSafeKeyCode } from '@uifabric/utilities';
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
   name: 'Item-' + index,
-  url: 'http://placehold.it/100x' + (100 + index!)
+  url: 'http://placehold.it/100x' + (100 + index!),
 }));
 
 const listStyles = mergeStyles({
@@ -19,12 +19,12 @@ const listStyles = mergeStyles({
 
   selectors: {
     ':focus': {
-      border: '1px solid black'
-    }
-  }
+      border: '1px solid black',
+    },
+  },
 });
 const listItemStyles = mergeStyles({
-  margin: '0 10px'
+  margin: '0 10px',
 });
 
 export const FocusZoneListExample: React.FunctionComponent = () => {

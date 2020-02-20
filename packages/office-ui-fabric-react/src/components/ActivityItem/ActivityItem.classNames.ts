@@ -25,14 +25,14 @@ export const getClassNames = memoizeFunction(
       personaContainer: mergeStyles(
         'ms-ActivityItem-personaContainer',
         styles.personaContainer,
-        isCompact && styles.isCompactPersonaContainer
+        isCompact && styles.isCompactPersonaContainer,
       ),
 
       activityPersona: mergeStyles(
         'ms-ActivityItem-activityPersona',
         styles.activityPersona,
         isCompact && styles.isCompactPersona,
-        !isCompact && activityPersonas && activityPersonas.length === 2 && styles.doublePersona
+        !isCompact && activityPersonas && activityPersonas.length === 2 && styles.doublePersona,
       ),
 
       activityTypeIcon: mergeStyles('ms-ActivityItem-activityTypeIcon', styles.activityTypeIcon, isCompact && styles.isCompactIcon),
@@ -41,7 +41,7 @@ export const getClassNames = memoizeFunction(
 
       activityText: mergeStyles('ms-ActivityItem-activityText', styles.activityText),
       commentText: mergeStyles('ms-ActivityItem-commentText', styles.commentText),
-      timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp, isCompact && styles.isCompactTimeStamp)
+      timeStamp: mergeStyles('ms-ActivityItem-timeStamp', styles.timeStamp, isCompact && styles.isCompactTimeStamp),
     };
-  }
+  },
 );

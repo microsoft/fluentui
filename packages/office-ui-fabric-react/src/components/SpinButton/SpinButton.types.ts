@@ -165,7 +165,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement> {
     isFocused: boolean,
     keyboardSpinDirection: KeyboardSpinDirection,
     labelPosition?: Position,
-    className?: string
+    className?: string,
   ) => ISpinButtonClassNames;
 
   /**

@@ -31,53 +31,53 @@ export const PivotPageProps: IDocPageProps = {
     {
       title: 'Default Pivot',
       code: PivotBasicExampleCode,
-      view: <PivotBasicExample />
+      view: <PivotBasicExample />,
     },
     {
       title: 'Count and Icon',
       code: PivotIconCountExampleCode,
-      view: <PivotIconCountExample />
+      view: <PivotIconCountExample />,
     },
     {
       title: 'Large link size',
       code: PivotLargeExampleCode,
-      view: <PivotLargeExample />
+      view: <PivotLargeExample />,
     },
     {
       title: 'Links of tab style',
       code: PivotTabsExampleCode,
-      view: <PivotTabsExample />
+      view: <PivotTabsExample />,
     },
     {
       title: 'Links of large tab style',
       code: PivotTabsLargeExampleCode,
-      view: <PivotTabsLargeExample />
+      view: <PivotTabsLargeExample />,
     },
     {
       title: 'Trigger onchange event',
       code: PivotOnChangeExampleCode,
-      view: <PivotOnChangeExample />
+      view: <PivotOnChangeExample />,
     },
     {
       title: 'Show/Hide pivot item',
       code: PivotRemoveExampleCode,
-      view: <PivotRemoveExample />
+      view: <PivotRemoveExample />,
     },
     {
       title: 'Override selected item',
       code: PivotOverrideExampleCode,
-      view: <PivotOverrideExample />
+      view: <PivotOverrideExample />,
     },
     {
       title: 'Render content separately',
       code: PivotSeparateExampleCode,
-      view: <PivotSeparateExample />
+      view: <PivotSeparateExample />,
     },
     {
       title: 'No pivots selected',
       code: PivotNoSelectedKeyExampleCode,
-      view: <PivotSeparateNoSelectedKeyExample />
-    }
+      view: <PivotSeparateNoSelectedKeyExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
   bestPractices: '',
@@ -86,5 +86,5 @@ export const PivotPageProps: IDocPageProps = {
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativePropsForComponentName: 'PivotItem',
-  allowNativeProps: true
+  allowNativeProps: true,
 };

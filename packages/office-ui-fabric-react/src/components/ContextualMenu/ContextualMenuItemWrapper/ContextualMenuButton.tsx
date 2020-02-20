@@ -13,7 +13,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
       ...keytipProps,
-      hasMenu: true
+      hasMenu: true,
     };
   });
 
@@ -32,7 +32,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       onItemClick,
       openSubMenu,
       dismissSubMenu,
-      dismissMenu
+      dismissMenu,
     } = this.props;
 
     const subMenuId = this._getSubMenuId(item);
@@ -66,7 +66,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
       role: item.role || defaultRole,
-      style: item.style
+      style: item.style,
     };
 
     let { keytipProps } = item;

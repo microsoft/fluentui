@@ -17,7 +17,7 @@ export class DocumentCardDetailsBase extends BaseComponent<IDocumentCardDetailsP
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return <div className={this._classNames.root}>{children}</div>;

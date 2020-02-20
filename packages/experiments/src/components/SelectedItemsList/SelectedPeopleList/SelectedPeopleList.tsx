@@ -14,6 +14,6 @@ export type SelectedPeopleList<TPersona extends IPersonaProps & BaseSelectedItem
 export const SelectedPeopleList = React.forwardRef(
   <TPersona extends IPersonaProps & BaseSelectedItem = IPersonaProps>(
     props: ISelectedPeopleListProps<TPersona>,
-    ref: React.Ref<ISelectedPeopleList<TPersona>>
-  ) => <SelectedItemsList<TPersona> ref={ref} onRenderItem={SelectedPersona} {...props} />
+    ref: React.Ref<ISelectedPeopleList<TPersona>>,
+  ) => <SelectedItemsList<TPersona> ref={ref} onRenderItem={SelectedPersona} {...props} />,
 );

@@ -4,7 +4,7 @@ import { SharePointNeutrals, SharePointThemes } from './sharePointThemes';
 
 export class SharePoint extends React.Component<{}, { activeThemeName?: string }> {
   public readonly state = {
-    activeThemeName: null
+    activeThemeName: null,
   };
 
   public render() {
@@ -23,7 +23,7 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
           colors={SharePointThemes.map(theme => ({
             name: theme.name,
             hex: theme.colors.filter(color => color.name === 'themePrimary')[0].hex,
-            code: theme.colors.filter(color => color.name === 'themePrimary')[0].code
+            code: theme.colors.filter(color => color.name === 'themePrimary')[0].code,
           }))}
           // tslint:disable-next-line jsx-no-lambda
           onColorSelected={this._changeTheme}
@@ -46,8 +46,8 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
     this.setState(
       prevState =>
         prevState.activeThemeName !== theme.name && {
-          activeThemeName: theme.name
-        }
+          activeThemeName: theme.name,
+        },
     );
   };
 }

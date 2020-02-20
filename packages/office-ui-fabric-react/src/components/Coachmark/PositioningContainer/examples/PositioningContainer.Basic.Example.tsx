@@ -13,7 +13,7 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
     this._onDismiss = this._onDismiss.bind(this);
 
     this.state = {
-      isPositioningContainerVisible: false
+      isPositioningContainerVisible: false,
     };
   }
 
@@ -45,13 +45,13 @@ export class PositioningContainerBasicExample extends React.Component<{}, IPosit
 
   private _onShowMenuClicked(): void {
     this.setState({
-      isPositioningContainerVisible: !this.state.isPositioningContainerVisible
+      isPositioningContainerVisible: !this.state.isPositioningContainerVisible,
     });
   }
 
   private _onDismiss(): void {
     this.setState({
-      isPositioningContainerVisible: false
+      isPositioningContainerVisible: false,
     });
   }
 }

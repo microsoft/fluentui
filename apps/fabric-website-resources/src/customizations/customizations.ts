@@ -10,9 +10,9 @@ const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Teams', customizations: TeamsCustomizations },
   { title: 'Azure', customizations: AzureCustomizationsLight },
   { title: 'Azure Dark', customizations: AzureCustomizationsDark },
-  { title: 'MDL2', customizations: MDL2Customizations }
+  { title: 'MDL2', customizations: MDL2Customizations },
 ];
 
 export const AppCustomizations: IAppCustomizations = {
-  exampleCardCustomizations
+  exampleCardCustomizations,
 };

@@ -27,7 +27,7 @@ export class DropdownErrorExample extends React.Component<{}, IDropdownErrorExam
             { key: 'B', text: 'Option b' },
             { key: 'C', text: 'Option c' },
             { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' }
+            { key: 'E', text: 'Option e' },
           ]}
           errorMessage={showError ? 'This dropdown has an error' : undefined}
           styles={{ dropdown: { width: 300 }, root: { height: 100 } }}

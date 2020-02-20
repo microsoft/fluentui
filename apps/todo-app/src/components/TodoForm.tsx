@@ -49,7 +49,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
     this.state = {
       inputValue: '',
-      errorMessage: ''
+      errorMessage: '',
     };
   }
 
@@ -82,13 +82,13 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
 
     if (!this._getTitleErrorMessage(textField.value || '')) {
       this.setState({
-        inputValue: ''
+        inputValue: '',
       } as ITodoFormState);
 
       this.props.onSubmit(textField.value || '');
     } else {
       this.setState({
-        errorMessage: this._getTitleErrorMessage(this.state.inputValue)
+        errorMessage: this._getTitleErrorMessage(this.state.inputValue),
       } as ITodoFormState);
 
       textField.focus();
@@ -98,7 +98,7 @@ export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormSta
   private _onTextFieldChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined): void => {
     this.setState({
       inputValue: newValue || '',
-      errorMessage: ''
+      errorMessage: '',
     });
   };
 

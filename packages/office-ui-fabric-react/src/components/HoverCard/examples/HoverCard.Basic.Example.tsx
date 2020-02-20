@@ -10,19 +10,19 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%'
+    height: '100%',
   },
   expandedCard: {
-    padding: '16px 24px'
+    padding: '16px 24px',
   },
   item: {
     selectors: {
       '&:hover': {
         textDecoration: 'underline',
-        cursor: 'pointer'
-      }
-    }
-  }
+        cursor: 'pointer',
+      },
+    },
+  },
 });
 
 export class HoverCardBasicExample extends React.Component<{}, {}> {
@@ -45,7 +45,7 @@ export class HoverCardBasicExample extends React.Component<{}, {}> {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
-      renderData: item
+      renderData: item,
     };
 
     if (column.key === 'location') {

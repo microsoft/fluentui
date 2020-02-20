@@ -6,7 +6,7 @@ import {
   PropertiesTableSet,
   Markdown,
   FeedbackList,
-  IExampleCardProps
+  IExampleCardProps,
 } from '@uifabric/example-app-base';
 import * as React from 'react';
 

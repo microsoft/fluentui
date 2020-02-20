@@ -48,7 +48,7 @@ export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends Valid
   componentProps: TProps & IProcessedSlotProps,
   userProps: ISlotProp<TProps, TShorthandProp>,
   slotOptions: ISlotOptions<TProps> | undefined,
-  defaultStyles: IStyle
+  defaultStyles: IStyle,
 ) => ReturnType<React.FunctionComponent<TProps>>;
 
 /**
@@ -123,5 +123,5 @@ export interface ISlotOptions<TProps> {
  */
 export type ISlotRender<TProps> = (
   props: React.PropsWithChildren<TProps>,
-  defaultComponent: React.ComponentType<TProps>
+  defaultComponent: React.ComponentType<TProps>,
 ) => ReturnType<React.FunctionComponent<TProps>>;

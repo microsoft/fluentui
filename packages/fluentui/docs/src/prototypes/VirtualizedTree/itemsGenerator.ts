@@ -1,24 +1,24 @@
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 
 function getItems(minItems = 20, maxItems = 40, maxLevel = 1) {
   function getItemsNumber(minItems, maxItems) {
-    return _.random(minItems, maxItems)
+    return _.random(minItems, maxItems);
   }
 
   function generateLevel(level, parent = '') {
-    const result = []
+    const result = [];
     _.times(getItemsNumber(minItems, maxItems), index => {
       const item = {
         id: `${parent}${parent ? '-' : ''}${index}`,
         title: `Tree-Item-${parent}${parent ? '-' : ''}${index}`,
         ...(level < maxLevel && { items: generateLevel(level + 1, `${parent}${index}`) }),
-      }
-      result.push(item)
-    })
-    return result
+      };
+      result.push(item);
+    });
+    return result;
   }
 
-  return generateLevel(0)
+  return generateLevel(0);
 }
 
-export default getItems
+export default getItems;

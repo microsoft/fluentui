@@ -2,7 +2,7 @@ import { IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 import { IRawStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-ShimmerGap-root'
+  root: 'ms-ShimmerGap-root',
 };
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
@@ -27,11 +27,11 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'Window',
-            borderColor: 'Window'
-          }
-        }
+            borderColor: 'Window',
+          },
+        },
       },
-      borderStyles
-    ]
+      borderStyles,
+    ],
   };
 }

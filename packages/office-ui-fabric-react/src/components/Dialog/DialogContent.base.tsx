@@ -16,7 +16,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     showCloseButton: false,
     className: '',
     topButtonsProps: [],
-    closeButtonAriaLabel: 'Close'
+    closeButtonAriaLabel: 'Close',
   };
 
   constructor(props: IDialogContentProps) {
@@ -24,7 +24,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
 
     if (process.env.NODE_ENV !== 'production') {
       this._warnDeprecations({
-        titleId: 'titleProps.id'
+        titleId: 'titleProps.id',
       });
     }
   }
@@ -43,7 +43,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       type,
       styles,
       theme,
-      draggableHeaderClassName
+      draggableHeaderClassName,
     } = this.props;
 
     const classNames = getClassNames(styles!, {
@@ -51,7 +51,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       className,
       isLargeHeader: type === DialogType.largeHeader,
       isClose: type === DialogType.close,
-      draggableHeaderClassName
+      draggableHeaderClassName,
     });
 
     const groupings = this._groupChildren();
@@ -102,7 +102,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
   private _groupChildren(): { footers: any[]; contents: any[] } {
     const groupings: { footers: any[]; contents: any[] } = {
       footers: [],
-      contents: []
+      contents: [],
     };
 
     React.Children.map(this.props.children, child => {

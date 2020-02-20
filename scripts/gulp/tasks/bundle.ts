@@ -20,8 +20,8 @@ task('bundle:package:clean', () =>
     `${paths.packageDist(packageName)}/es/*`,
     `${paths.packageDist(packageName)}/commonjs/*`,
     `${paths.packageDist(packageName)}/umd/*`,
-    `${paths.packageDist(packageName)}/dts`
-  ])
+    `${paths.packageDist(packageName)}/dts`,
+  ]),
 );
 
 // ----------------------------------------
@@ -32,13 +32,13 @@ const componentsSrc = [paths.packageSrc(packageName, '**/*.{ts,tsx}'), `!${paths
 task('bundle:package:commonjs', () =>
   src(componentsSrc)
     .pipe(babel())
-    .pipe(dest(paths.packageDist(packageName, 'commonjs')))
+    .pipe(dest(paths.packageDist(packageName, 'commonjs'))),
 );
 
 task('bundle:package:es', () =>
   src(componentsSrc)
     .pipe(babel({ caller: { useESModules: true } } as any))
-    .pipe(dest(paths.packageDist(packageName, 'es')))
+    .pipe(dest(paths.packageDist(packageName, 'es'))),
 );
 
 task('bundle:package:types:tsc', () => {
@@ -81,7 +81,7 @@ task('bundle:package:umd', cb => {
 
 task(
   'bundle:package:no-umd',
-  series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types'))
+  series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types')),
 );
 task('bundle:package', series('bundle:package:no-umd', 'bundle:package:umd'));
 

@@ -9,6 +9,6 @@ export const PlainCard: React.FunctionComponent<IPlainCardProps> = styled<IPlain
   getStyles,
   undefined,
   {
-    scope: 'PlainCard'
-  }
+    scope: 'PlainCard',
+  },
 );

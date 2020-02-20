@@ -10,7 +10,7 @@ import {
   SelectedPersona,
   ItemWithContextMenu,
   TriggerOnContextMenu,
-  copyToClipboard
+  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
@@ -33,15 +33,15 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
         text: 'Remove',
         onClick: () => {
           this._selectionList.removeItems([item]);
-        }
+        },
       },
       {
         key: 'copy',
         text: 'Copy',
-        onClick: () => copyToClipboard(this._getCopyItemsText([item]))
-      }
+        onClick: () => copyToClipboard(this._getCopyItemsText([item])),
+      },
     ],
-    itemComponent: TriggerOnContextMenu(SelectedPersona)
+    itemComponent: TriggerOnContextMenu(SelectedPersona),
   });
 
   public render(): JSX.Element {

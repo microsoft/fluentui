@@ -100,7 +100,7 @@ export const FixedList = React.memo((props: IFixedListProps) => {
 
         // Use a 'translate' transformation instead of positioning via 'top' in order to use GPU accelleration and to
         // enable smooth transitions if an element's position changes
-        transform: `translate(0, ${i * itemHeight}px)`
+        transform: `translate(0, ${i * itemHeight}px)`,
       });
 
       childIndex++;
@@ -112,7 +112,7 @@ export const FixedList = React.memo((props: IFixedListProps) => {
     height: `${itemCount * itemHeight}px`,
 
     // Similar to react-window, we disable pointer events while scrolling to improve perf
-    pointerEvents: isScrolling ? 'none' : undefined
+    pointerEvents: isScrolling ? 'none' : undefined,
   };
 
   return <div style={style}>{children}</div>; // tslint:disable-line:jsx-ban-props

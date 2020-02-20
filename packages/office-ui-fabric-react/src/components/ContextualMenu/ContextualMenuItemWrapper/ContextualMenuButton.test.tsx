@@ -17,7 +17,7 @@ describe('ContextualMenuButton', () => {
 
     it('renders the contextual menu split button correctly', () => {
       const component = renderer.create(
-        <ContextualMenuButton item={menuItem} classNames={menuClassNames} index={0} focusableElementIndex={0} totalItemCount={1} />
+        <ContextualMenuButton item={menuItem} classNames={menuClassNames} index={0} focusableElementIndex={0} totalItemCount={1} />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -35,7 +35,7 @@ describe('ContextualMenuButton', () => {
           totalItemCount={1}
           hasCheckmarks={true}
           onItemClick={onClickMock}
-        />
+        />,
       );
 
       component
@@ -54,7 +54,7 @@ describe('ContextualMenuButton', () => {
         classNames: menuClassNames,
         index: 0,
         focusableElementIndex: 0,
-        totalItemCount: 1
+        totalItemCount: 1,
       };
       const component = mount(<ContextualMenuButton {...props} />);
 
@@ -72,7 +72,7 @@ describe('ContextualMenuButton', () => {
         classNames: menuClassNames,
         index: 0,
         focusableElementIndex: 0,
-        totalItemCount: 1
+        totalItemCount: 1,
       };
       const component = mount(<ContextualMenuButton {...props} />);
 
@@ -99,6 +99,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu'
+    linkContentMenu: 'linkContentMenu',
   };
 }

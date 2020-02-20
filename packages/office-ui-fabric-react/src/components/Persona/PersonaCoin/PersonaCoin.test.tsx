@@ -14,7 +14,7 @@ const coinProp = {
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
-  size: 15
+  size: 15,
 };
 
 describe('PersonaCoin', () => {
@@ -60,7 +60,7 @@ describe('PersonaCoin', () => {
 
   it('renders correctly with onRender callback', () => {
     const component = renderer.create(
-      <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />
+      <PersonaCoin {...coinProp} onRenderCoin={wrapPersona(coinProp)} onRenderInitials={wrapPersona(coinProp)} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

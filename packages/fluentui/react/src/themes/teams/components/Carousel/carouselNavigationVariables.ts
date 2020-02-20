@@ -1,7 +1,7 @@
-import { pxToRem, stringLiteralsArray } from '../../../../utils'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
-import { ItemType } from '../../../types'
-import { TeamsSchemeMappingWithAreas } from '../../types'
+import { pxToRem, stringLiteralsArray } from '../../../../utils';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import { ItemType } from '../../../types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const menuColorAreas = stringLiteralsArray(
   'border',
@@ -13,38 +13,38 @@ export const menuColorAreas = stringLiteralsArray(
   'backgroundActive',
   'backgroundFocus',
   'foregroundDisabled',
-)
-export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>
+);
+export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>;
 
 export interface CarouselNavigationVariables {
-  colorScheme: MenuColorSchemeMapping
-  color: string
+  colorScheme: MenuColorSchemeMapping;
+  color: string;
 
-  backgroundColor: string
-  backgroundColorFocus: string
-  backgroundColorHover: string
-  backgroundColorActive: string
+  backgroundColor: string;
+  backgroundColorFocus: string;
+  backgroundColorHover: string;
+  backgroundColorActive: string;
 
-  borderColor: string
-  borderColorActive: string
-  borderColorFocus: string
+  borderColor: string;
+  borderColorActive: string;
+  borderColorFocus: string;
 
-  outlineColorFocus: string
-  colorActive: string
-  iconOnlyColorActive: string
+  outlineColorFocus: string;
+  colorActive: string;
+  iconOnlyColorActive: string;
 
-  lineHeightBase: string
-  horizontalPadding: string
+  lineHeightBase: string;
+  horizontalPadding: string;
 
-  verticalBackgroundColor: string
-  verticalItemPadding: string
-  verticalItemBorderWidth: string
-  verticalItemBorderColor: string
-  verticalBackgroundColorFocus: string
+  verticalBackgroundColor: string;
+  verticalItemPadding: string;
+  verticalItemBorderWidth: string;
+  verticalItemBorderColor: string;
+  verticalBackgroundColorFocus: string;
 
-  primaryBorderColor: string
+  primaryBorderColor: string;
 
-  borderWidth: string
+  borderWidth: string;
 }
 
 export default (siteVars: any): CarouselNavigationVariables => {
@@ -97,5 +97,5 @@ export default (siteVars: any): CarouselNavigationVariables => {
     primaryBorderColor: siteVars.colorScheme.default.border2,
 
     borderWidth: pxToRem(1),
-  }
-}
+  };
+};

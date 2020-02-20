@@ -15,18 +15,18 @@ export const SpinnerPageProps: IDocPageProps = {
     {
       title: 'Spinner sizes',
       code: SpinnerBasicExampleCode,
-      view: <SpinnerBasicExample />
+      view: <SpinnerBasicExample />,
     },
     {
       title: 'Spinner label positioning',
       code: SpinnerLabeledExampleCode,
-      view: <SpinnerLabeledExample />
-    }
+      view: <SpinnerLabeledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

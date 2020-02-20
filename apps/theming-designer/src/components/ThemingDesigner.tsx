@@ -33,9 +33,9 @@ const Page = (props: IStackProps) => (
       selectors: {
         ':global(body)': {
           padding: 0,
-          margin: 0
-        }
-      }
+          margin: 0,
+        },
+      },
     })}
     {...props}
   />
@@ -50,7 +50,7 @@ const Sidebar = (props: IStackProps) => (
     grow={0}
     className={mergeStyles({
       borderRight: '1px solid #ddd',
-      paddingRight: '1rem'
+      paddingRight: '1rem',
     })}
     {...props}
   />
@@ -62,7 +62,7 @@ const Main = (props: IStackProps) => (
     disableShrink
     className={mergeStyles({
       minWidth: MainPanelWidth,
-      overflow: 'scroll'
+      overflow: 'scroll',
     })}
     {...props}
   />
@@ -164,7 +164,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
       const finalTheme = createTheme({
         ...{ palette: themeAsJson },
-        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
       });
       this.setState({ theme: finalTheme });
     }
@@ -206,7 +206,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     const colors = {
       primaryColor: getColorFromString('#0078d4')!,
       textColor: getColorFromString('#323130')!,
-      backgroundColor: getColorFromString('#ffffff')!
+      backgroundColor: getColorFromString('#ffffff')!,
     };
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor, undefined, false, false);
@@ -219,13 +219,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
     const finalTheme = createTheme({
       ...{ palette: themeAsJson },
-      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
     });
 
     const state = {
       ...colors,
       theme: finalTheme,
-      themeRules: themeRules
+      themeRules: themeRules,
     };
 
     return state;

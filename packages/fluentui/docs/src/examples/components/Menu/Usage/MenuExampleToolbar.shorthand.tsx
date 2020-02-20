@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react'
+import * as React from 'react';
+import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react';
 
 const items: ShorthandCollection<MenuItemProps> = [
   {
@@ -113,16 +113,10 @@ const items: ShorthandCollection<MenuItemProps> = [
       ],
     },
   },
-]
+];
 
 const MenuExampleToolbarShorthand = () => (
-  <Menu
-    defaultActiveIndex={0}
-    items={items}
-    iconOnly
-    accessibility={menuAsToolbarBehavior}
-    aria-label="Compose Editor"
-  />
-)
+  <Menu defaultActiveIndex={0} items={items} iconOnly accessibility={menuAsToolbarBehavior} aria-label="Compose Editor" />
+);
 
-export default MenuExampleToolbarShorthand
+export default MenuExampleToolbarShorthand;

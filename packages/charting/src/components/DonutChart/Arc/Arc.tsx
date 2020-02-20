@@ -11,7 +11,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc()
+    arc: shape.arc(),
   };
 
   public state: IArcState = {};

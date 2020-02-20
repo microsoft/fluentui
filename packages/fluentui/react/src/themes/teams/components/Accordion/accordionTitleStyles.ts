@@ -1,5 +1,5 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles'
-import { AccordionTitleProps } from '../../../../components/Accordion/AccordionTitle'
+import { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { AccordionTitleProps } from '../../../../components/Accordion/AccordionTitle';
 
 const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps> = {
   root: ({ props: p }) => ({
@@ -11,6 +11,6 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps> = {
   indicator: () => ({
     userSelect: 'none',
   }),
-}
+};
 
-export default accordionTitleStyles
+export default accordionTitleStyles;

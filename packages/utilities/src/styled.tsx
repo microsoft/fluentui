@@ -50,7 +50,7 @@ export function styled<
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps,
-  pure?: boolean
+  pure?: boolean,
 ): React.FunctionComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 

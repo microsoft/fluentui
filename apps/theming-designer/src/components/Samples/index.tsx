@@ -40,10 +40,10 @@ export interface ISamplesState {
 const columnSpace = 48;
 const columns = 3;
 const sampleColumn = mergeStyles({
-  width: (MainPanelNumericalWidth - columnSpace * (columns - 1)) / columns
+  width: (MainPanelNumericalWidth - columnSpace * (columns - 1)) / columns,
 });
 const iconButtonStyles = mergeStyles({
-  color: '#0078D4'
+  color: '#0078D4',
 });
 
 const commandBarItems = [
@@ -52,7 +52,7 @@ const commandBarItems = [
     name: 'New',
     cacheKey: 'myCacheKey', // changing this key will invalidate this item's cache
     iconProps: {
-      iconName: 'Add'
+      iconName: 'Add',
     },
     ariaLabel: 'New',
     subMenuProps: {
@@ -61,53 +61,53 @@ const commandBarItems = [
           key: 'emailMessage',
           name: 'Email message',
           iconProps: {
-            iconName: 'Mail'
+            iconName: 'Mail',
           },
-          ['data-automation-id']: 'newEmailButton'
+          ['data-automation-id']: 'newEmailButton',
         },
         {
           key: 'calendarEvent',
           name: 'Calendar event',
           iconProps: {
-            iconName: 'Calendar'
-          }
-        }
-      ]
-    }
+            iconName: 'Calendar',
+          },
+        },
+      ],
+    },
   },
   {
     key: 'upload',
     name: 'Upload',
     iconProps: {
-      iconName: 'Upload'
+      iconName: 'Upload',
     },
     href: 'https://dev.office.com/fabric',
-    ['data-automation-id']: 'uploadButton'
+    ['data-automation-id']: 'uploadButton',
   },
   {
     key: 'share',
     name: 'Share',
     iconProps: {
-      iconName: 'Share'
+      iconName: 'Share',
     },
-    onClick: () => console.log('Share')
+    onClick: () => console.log('Share'),
   },
   {
     key: 'download',
     name: 'Download',
     iconProps: {
-      iconName: 'Download'
+      iconName: 'Download',
     },
-    onClick: () => console.log('Download')
+    onClick: () => console.log('Download'),
   },
   {
     key: 'more',
     name: 'More',
     iconProps: {
-      iconName: 'More'
+      iconName: 'More',
     },
-    onClick: () => console.log('More')
-  }
+    onClick: () => console.log('More'),
+  },
 ];
 
 const commandBarFarItems = [
@@ -115,30 +115,30 @@ const commandBarFarItems = [
     key: 'search',
     ariaLabel: 'Search',
     iconProps: {
-      iconName: 'Search'
+      iconName: 'Search',
     },
-    onClick: () => console.log('Search')
+    onClick: () => console.log('Search'),
   },
   {
     key: 'filter',
     name: 'Filter',
     ariaLabel: 'Filter',
     iconProps: {
-      iconName: 'Filter'
+      iconName: 'Filter',
     },
     iconOnly: true,
-    onClick: () => console.log('Filter')
+    onClick: () => console.log('Filter'),
   },
   {
     key: 'list',
     name: 'List',
     ariaLabel: 'List',
     iconProps: {
-      iconName: 'List'
+      iconName: 'List',
     },
     iconOnly: true,
-    onClick: () => console.log('List')
-  }
+    onClick: () => console.log('List'),
+  },
 ];
 
 export class Samples extends React.Component<ISamplesProps, ISamplesState> {
@@ -157,7 +157,7 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
       bookmarkIconButtonDisabled: false,
       sunnyIconButtonDisabled: false,
       primaryButtonDisabled: false,
-      defaultButtonDisabled: false
+      defaultButtonDisabled: false,
     };
     this._onToggleChange = this._onToggleChange.bind(this);
   }
@@ -195,7 +195,7 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                     label="Select one"
                     options={[
                       { key: 'content', text: 'Content' },
-                      { key: 'morecontent', text: 'More content' }
+                      { key: 'morecontent', text: 'More content' },
                     ]}
                     disabled={this.state.selectOneDropdownDisabled}
                   />
@@ -213,16 +213,16 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                         options={[
                           {
                             key: 'A',
-                            text: 'Option 1'
+                            text: 'Option 1',
                           } as IChoiceGroupOption,
                           {
                             key: 'B',
-                            text: 'Option 2'
+                            text: 'Option 2',
                           },
                           {
                             key: 'C',
-                            text: 'Option 3'
-                          }
+                            text: 'Option 3',
+                          },
                         ]}
                         disabled={this.state.choicegroupDisabled}
                       />
@@ -283,7 +283,7 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
       bookmarkIconButtonDisabled: !this.state.bookmarkIconButtonDisabled,
       sunnyIconButtonDisabled: !this.state.sunnyIconButtonDisabled,
       primaryButtonDisabled: !this.state.primaryButtonDisabled,
-      defaultButtonDisabled: !this.state.defaultButtonDisabled
+      defaultButtonDisabled: !this.state.defaultButtonDisabled,
     });
   }
 }

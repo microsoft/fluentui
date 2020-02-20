@@ -13,7 +13,7 @@ export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

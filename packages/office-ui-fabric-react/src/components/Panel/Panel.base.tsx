@@ -14,7 +14,7 @@ import {
   getId,
   getNativeProps,
   getRTL,
-  css
+  css,
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
@@ -25,7 +25,7 @@ enum PanelVisibilityState {
   closed,
   animatingOpen,
   open,
-  animatingClosed
+  animatingClosed,
 }
 
 interface IPanelState {
@@ -40,7 +40,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     isOpen: undefined,
     isBlocking: true,
     hasCloseButton: true,
-    type: PanelType.smallFixedFar
+    type: PanelType.smallFixedFar,
   };
 
   private _panel = React.createRef<HTMLDivElement>();
@@ -79,13 +79,13 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     this._warnDeprecations({
       ignoreExternalFocusing: 'focusTrapZoneProps',
       forceFocusInsideTrap: 'focusTrapZoneProps',
-      firstFocusableSelector: 'focusTrapZoneProps'
+      firstFocusableSelector: 'focusTrapZoneProps',
     });
 
     this.state = {
       isFooterSticky: false,
       visibility: PanelVisibilityState.closed, // intentionally ignore props so animation takes place during componentDidMount
-      id: getId('Panel')
+      id: getId('Panel'),
     };
   }
 
@@ -146,7 +146,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       onRenderNavigation = this._onRenderNavigation,
       onRenderHeader = this._onRenderHeader,
       onRenderBody = this._onRenderBody,
-      onRenderFooter = this._onRenderFooter
+      onRenderFooter = this._onRenderFooter,
     } = this.props;
     const { isFooterSticky, visibility, id } = this.state;
     const isLeft = type === PanelType.smallFixedNear || type === PanelType.customNear ? true : false;
@@ -176,7 +176,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       isOpen,
       isHiddenOnDismiss,
       type,
-      hasCustomNavigation: this._hasCustomNavigation
+      hasCustomNavigation: this._hasCustomNavigation,
     });
 
     const { _classNames, _allowTouchBodyScroll } = this;
@@ -316,16 +316,16 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               root: [
                 this._hasCustomNavigation && {
                   height: 'auto',
-                  width: '44px'
+                  width: '44px',
                 },
                 {
                   color: theme.palette.neutralSecondary,
-                  fontSize: IconFontSizes.large
-                }
+                  fontSize: IconFontSizes.large,
+                },
               ],
               rootHovered: {
-                color: theme.palette.neutralPrimary
-              }
+                color: theme.palette.neutralPrimary,
+              },
             }}
             className={this._classNames.closeButton}
             onClick={this._onPanelClick}
@@ -343,7 +343,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
   private _onRenderHeader = (
     props: IPanelProps,
     defaultRender?: (props?: IPanelProps) => JSX.Element | null,
-    headerTextId?: string | undefined
+    headerTextId?: string | undefined,
   ): JSX.Element | null => {
     const { headerText, headerTextProps = {} } = props;
 
@@ -388,7 +388,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       const innerHeight = scrollableContent.scrollHeight;
 
       this.setState({
-        isFooterSticky: height < innerHeight ? true : false
+        isFooterSticky: height < innerHeight ? true : false,
       });
     }
   }

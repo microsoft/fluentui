@@ -27,11 +27,11 @@ describe('Panel', () => {
         headerText="Test Panel"
         headerTextProps={{
           className: 'panel_class',
-          'aria-level': 3
+          'aria-level': 3,
         }}
       >
         <span>Content goes here</span>
-      </Panel>
+      </Panel>,
     );
 
     expect(component.toJSON()).toMatchSnapshot();
@@ -72,7 +72,7 @@ describe('Panel', () => {
 
       const panel: PanelBase = ReactDOM.render(
         <PanelBase onOpen={setOpenTrue} onOpened={setOpenedTrue} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
-        div
+        div,
       ) as any;
 
       panel.open();
@@ -110,7 +110,7 @@ describe('Panel', () => {
       jest.useFakeTimers();
 
       const wrapper = mount(
-        <Panel isOpen={false} onOpen={onOpen} onOpened={onOpened} onDismiss={onDismiss} onDismissed={onDismissed} componentRef={panel} />
+        <Panel isOpen={false} onOpen={onOpen} onOpened={onOpened} onDismiss={onDismiss} onDismissed={onDismissed} componentRef={panel} />,
       );
 
       expect(onOpen).toHaveBeenCalledTimes(0);

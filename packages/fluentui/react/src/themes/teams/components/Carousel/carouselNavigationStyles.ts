@@ -1,16 +1,13 @@
-import { CarouselNavigationProps } from '../../../../components/Carousel/CarouselNavigation'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { CarouselNavigationVariables } from './carouselNavigationVariables'
-import { pxToRem } from '../../../../utils'
-import { getColorScheme } from '../../colors'
+import { CarouselNavigationProps } from '../../../../components/Carousel/CarouselNavigation';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { CarouselNavigationVariables } from './carouselNavigationVariables';
+import { pxToRem } from '../../../../utils';
+import { getColorScheme } from '../../colors';
 
-const carouselNavigationStyles: ComponentSlotStylesPrepared<
-  CarouselNavigationProps,
-  CarouselNavigationVariables
-> = {
+const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationProps, CarouselNavigationVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, primary, vertical } = p
-    const colors = getColorScheme(v.colorScheme, null, primary)
+    const { iconOnly, primary, vertical } = p;
+    const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
       display: 'flex',
@@ -38,13 +35,11 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<
       ...(!iconOnly &&
         !vertical && {
           // primary has hardcoded grey border color
-          border: `${v.borderWidth} solid ${
-            primary ? v.primaryBorderColor : v.borderColor || colors.border
-          }`,
+          border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
           borderRadius: pxToRem(4),
         }),
-    }
+    };
   },
-}
+};
 
-export default carouselNavigationStyles
+export default carouselNavigationStyles;

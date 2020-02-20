@@ -3,7 +3,6 @@
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-
 - [Getting started](#getting-started)
   - [Useful Commands](#useful-commands)
 - [Workflow](#workflow)
@@ -195,7 +194,7 @@ If your package uses Jest for unit tests, please also create a new `jest.config.
 module.exports = {
   ...require('@fluentui/internal-tooling/jest'),
   name: '__DIRECTORY_NAME__',
-}
+};
 ```
 
 #### Run `syncpack format`

@@ -16,7 +16,7 @@ const _focusClassName = 'shouldFocusInput';
 
 export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IFocusTrapZoneBoxCustomElementExampleState> {
   public state: IFocusTrapZoneBoxCustomElementExampleState = {
-    useTrapZone: false
+    useTrapZone: false,
   };
 
   private _toggle = React.createRef<IToggle>();
@@ -37,7 +37,7 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
             horizontalAlign="start"
             tokens={{ childrenGap: 15 }}
             styles={{
-              root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
+              root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 },
             }}
           >
             <Toggle
@@ -60,7 +60,7 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
 
   private _onButtonClickHandler = (): void => {
     this.setState({
-      useTrapZone: true
+      useTrapZone: true,
     });
   };
 

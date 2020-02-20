@@ -15,13 +15,13 @@ export const TogglePageProps: IDocPageProps = {
     {
       title: 'Basic Toggles',
       code: ToggleBasicExampleCode,
-      view: <ToggleBasicExample />
+      view: <ToggleBasicExample />,
     },
     {
       title: 'Toggles with Custom Labels',
       code: ToggleCustomLabelExampleCode,
-      view: <ToggleCustomLabelExample />
-    }
+      view: <ToggleCustomLabelExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
   bestPractices: '',
@@ -30,5 +30,5 @@ export const TogglePageProps: IDocPageProps = {
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: 'input'
+  nativePropsElement: 'input',
 };

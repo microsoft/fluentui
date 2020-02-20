@@ -26,17 +26,17 @@ export class DetailsListAnimationExample extends React.Component<{}, IDetailsLis
       this._allItems.push({
         key: i,
         name: 'Item ' + i,
-        value: i
+        value: i,
       });
     }
 
     this._columns = [
       { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true, getValueKey: this._getValueKey },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
     ];
 
     this.state = {
-      items: this._allItems
+      items: this._allItems,
     };
   }
 

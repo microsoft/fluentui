@@ -6,7 +6,7 @@ import {
   IScrollablePaneProps,
   IScrollablePaneStyleProps,
   IScrollablePaneStyles,
-  ScrollablePaneContext
+  ScrollablePaneContext,
 } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
 
@@ -38,7 +38,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
       scrollbarWidth: 0,
-      scrollbarHeight: 0
+      scrollbarHeight: 0,
     };
 
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
@@ -90,7 +90,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
-            scrollbarHeight: scrollbarHeight
+            scrollbarHeight: scrollbarHeight,
           });
         }
 
@@ -121,7 +121,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           childList: true,
           attributes: true,
           subtree: true,
-          characterData: true
+          characterData: true,
         });
       }
     }
@@ -169,7 +169,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      scrollbarVisibility: this.props.scrollbarVisibility
+      scrollbarVisibility: this.props.scrollbarVisibility,
     });
 
     return (
@@ -262,7 +262,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     this.setState({
       stickyTopHeight: stickyTopHeight,
-      stickyBottomHeight: stickyBottomHeight
+      stickyBottomHeight: stickyBottomHeight,
     });
   };
 
@@ -299,8 +299,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         updateStickyRefHeights: this.updateStickyRefHeights,
         sortSticky: this.sortSticky,
         notifySubscribers: this.notifySubscribers,
-        syncScrollSticky: this.syncScrollSticky
-      }
+        syncScrollSticky: this.syncScrollSticky,
+      },
     };
   };
 
@@ -390,7 +390,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     this.setState({
       scrollbarWidth,
-      scrollbarHeight
+      scrollbarHeight,
     });
 
     this.notifySubscribers();
@@ -402,19 +402,19 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       ...(getRTL(this.props.theme)
         ? {
             right: '0',
-            left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+            left: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`,
           }
         : {
             left: '0',
-            right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`
+            right: `${this.state.scrollbarWidth || this._getScrollbarWidth() || 0}px`,
           }),
       ...(isTop
         ? {
-            top: '0'
+            top: '0',
           }
         : {
-            bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`
-          })
+            bottom: `${this.state.scrollbarHeight || this._getScrollbarHeight() || 0}px`,
+          }),
     };
   };
 

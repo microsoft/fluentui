@@ -31,7 +31,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     barHeight: 16,
     hideNumberDisplay: false,
     hideLegend: false,
-    ignoreFixStyle: false
+    ignoreFixStyle: false,
   };
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
 
@@ -45,7 +45,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       dataForHoverCard: 0,
       color: '',
       isLegendHovered: false,
-      isLegendSelected: false
+      isLegendSelected: false,
     };
     this._onLeave = this._onLeave.bind(this);
     this._refCallback = this._refCallback.bind(this);
@@ -65,7 +65,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       barBackgroundColor,
       href,
       ignoreFixStyle,
-      hideDenominator
+      hideDenominator,
     } = this.props;
     const { palette } = theme!;
     const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
@@ -97,7 +97,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       benchmarkColor: benchmarkData ? benchmarkData.color : '',
       benchmarkRatio,
       targetColor: targetData ? targetData.color : '',
-      targetRatio
+      targetRatio,
     });
     return (
       <div className={this._classNames.root}>
@@ -162,7 +162,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       theme: theme!,
       width: width!,
       barHeight: barHeight!,
-      className
+      className,
     });
   }
 
@@ -173,7 +173,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     barBackgroundColor?: string,
     href?: string,
     benchmarkData?: IChartDataPoint,
-    targetData?: IChartDataPoint
+    targetData?: IChartDataPoint,
   ): [JSX.Element[], JSX.Element] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const legendDataItems: ILegend[] = [];
@@ -206,7 +206,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             ? (isLegendFocused?: boolean) => {
                 this._onLeave(isLegendFocused);
               }
-            : undefined
+            : undefined,
       };
       if (!point.placeHolder) {
         legendDataItems.push(legend);
@@ -224,7 +224,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
         shouldHighlight: shouldHighlight,
-        href: href
+        href: href,
       });
       return (
         <g
@@ -261,7 +261,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     );
     return [
       total === 0 ? [this._generateEmptyBar(barHeight, barBackgroundColor ? barBackgroundColor : palette.neutralTertiary)] : bars,
-      legends
+      legends,
     ];
   }
 
@@ -274,7 +274,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
             isCalloutVisible: true,
             selectedLegendTitle: legendText,
             dataForHoverCard: pointData,
-            color: color
+            color: color,
           });
         }
       });
@@ -286,7 +286,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const legend: ILegend = {
         title: data.legend!,
         color: data.color!,
-        shape: 'triangle'
+        shape: 'triangle',
       };
 
       legendDataItems.push(legend);
@@ -311,17 +311,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         this.setState({
           isLegendSelected: false,
           selectedLegendTitle: customMessage,
-          isLegendHovered: true
+          isLegendHovered: true,
         });
       } else {
         this.setState({
-          selectedLegendTitle: customMessage
+          selectedLegendTitle: customMessage,
         });
       }
     } else {
       this.setState({
         isLegendSelected: true,
-        selectedLegendTitle: customMessage
+        selectedLegendTitle: customMessage,
       });
     }
   }
@@ -330,7 +330,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
-        selectedLegendTitle: customMessage
+        selectedLegendTitle: customMessage,
       });
     }
   }
@@ -340,7 +340,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected
+        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }
@@ -353,14 +353,14 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         isCalloutVisible: true,
         selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
-        color: color
+        color: color,
       });
     }
   }
 
   private _onBarLeave(): void {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   }
 

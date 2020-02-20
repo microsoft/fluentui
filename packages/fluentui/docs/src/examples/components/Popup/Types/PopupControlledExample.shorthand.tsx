@@ -1,9 +1,9 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import * as React from 'react'
-import { Button, Input, Popup, Flex } from '@fluentui/react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import * as React from 'react';
+import { Button, Input, Popup, Flex } from '@fluentui/react';
 
 const PopupControlledExample = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
 
   const popupContent = (
     <Flex column>
@@ -12,7 +12,7 @@ const PopupControlledExample = () => {
       </Flex.Item>
       <Input icon="search" placeholder="Search..." />
     </Flex>
-  )
+  );
 
   return (
     <Popup
@@ -22,7 +22,7 @@ const PopupControlledExample = () => {
       content={popupContent}
       trapFocus
     />
-  )
-}
+  );
+};
 
-export default PopupControlledExample
+export default PopupControlledExample;

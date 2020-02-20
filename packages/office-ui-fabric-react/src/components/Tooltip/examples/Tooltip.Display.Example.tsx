@@ -9,7 +9,7 @@ const calloutProps = { gapSpace: 0 };
 
 // Important for correct positioning--see below
 const inlineBlockStyle: Partial<ITooltipHostStyles> = {
-  root: { display: 'inline-block' }
+  root: { display: 'inline-block' },
 };
 
 export const TooltipDisplayExample: React.FunctionComponent = () => {

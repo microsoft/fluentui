@@ -21,33 +21,33 @@ export const KeytipsPageProps: IDocPageProps = {
     {
       title: 'Keytips on Buttons',
       code: KeytipsButtonCode,
-      view: <KeytipsButtonExample />
+      view: <KeytipsButtonExample />,
     },
     {
       title: 'Keytips in a CommandBar',
       code: KeytipsCommandBarCode,
-      view: <KeytipsCommandBarExample />
+      view: <KeytipsCommandBarExample />,
     },
     {
       title: 'Keytips in an OverflowWell',
       code: KeytipsOverflowCode,
-      view: <KeytipsOverflowExample />
+      view: <KeytipsOverflowExample />,
     },
     {
       title: 'Keytips in Pivots',
       code: KeytipsBasicCode,
-      view: <KeytipsBasicExample />
+      view: <KeytipsBasicExample />,
     },
     {
       title: 'Dyanmically updating keytips',
       code: KeytipsDynamicCode,
-      view: <KeytipsDynamicExample />
-    }
+      view: <KeytipsDynamicExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

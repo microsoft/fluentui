@@ -23,7 +23,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     instantOpenOnClick: false,
     setInitialFocus: false,
     openHotKey: KeyCodes.c as KeyCodes,
-    type: HoverCardType.expanding
+    type: HoverCardType.expanding,
   };
 
   // The wrapping div that gets the hover events
@@ -47,7 +47,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     this.state = {
       isHoverCardVisible: false,
       mode: ExpandingCardMode.compact,
-      openMode: OpenCardMode.hover
+      openMode: OpenCardMode.hover,
     };
   }
 
@@ -66,17 +66,17 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         this._async.setTimeout(() => {
           this.setState(
             {
-              mode: ExpandingCardMode.expanded
+              mode: ExpandingCardMode.expanded,
             },
             () => {
               this.props.onCardExpand && this.props.onCardExpand();
-            }
+            },
           );
         }, this.props.expandedCardOpenDelay!);
         this.props.onCardVisible && this.props.onCardVisible();
       } else {
         this.setState({
-          mode: ExpandingCardMode.compact
+          mode: ExpandingCardMode.compact,
         });
         this.props.onCardHide && this.props.onCardHide();
       }
@@ -108,14 +108,14 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       type,
       plainCardProps,
       trapFocus,
-      setInitialFocus
+      setInitialFocus,
     } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
     this._classNames = getClassNames(customStyles, {
       theme: theme!,
-      className
+      className,
     });
 
     // Common props for both card types.
@@ -126,7 +126,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
       targetElement: this._getTargetElement(this.props.target),
       onEnter: this._cardOpen,
-      onLeave: this._childDismissEvent
+      onLeave: this._childDismissEvent,
     };
 
     const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
@@ -184,7 +184,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
           return {
             isHoverCardVisible: true,
             mode: ExpandingCardMode.compact,
-            openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
+            openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover,
           };
         }
 
@@ -229,7 +229,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
     this.setState({
       isHoverCardVisible: false,
       mode: ExpandingCardMode.compact,
-      openMode: OpenCardMode.hover
+      openMode: OpenCardMode.hover,
     });
   };
 
@@ -240,7 +240,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
       if (!prevState.isHoverCardVisible) {
         return {
           isHoverCardVisible: true,
-          mode: ExpandingCardMode.expanded
+          mode: ExpandingCardMode.expanded,
         };
       }
 

@@ -1,6 +1,6 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { FormProps } from '../../../../components/Form/Form'
-import { pxToRem } from '../../../../utils'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { FormProps } from '../../../../components/Form/Form';
+import { pxToRem } from '../../../../utils';
 
 const formStyles: ComponentSlotStylesPrepared<FormProps, any> = {
   root: ({ props, variables }): ICSSInJSStyle => ({
@@ -12,6 +12,6 @@ const formStyles: ComponentSlotStylesPrepared<FormProps, any> = {
     gridGap: pxToRem(20),
     justifyItems: 'start',
   }),
-}
+};
 
-export default formStyles
+export default formStyles;

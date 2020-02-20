@@ -21,7 +21,7 @@ export class KeytipTree {
       id: KTP_LAYER_ID,
       children: [],
       parent: '',
-      keySequences: []
+      keySequences: [],
     };
     this.nodeMap[this.root.id] = this.root;
   }
@@ -204,12 +204,9 @@ export class KeytipTree {
    */
   public getNode(id: string): IKeytipTreeNode | undefined {
     const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
-    return find(
-      nodeMapValues,
-      (node: IKeytipTreeNode): boolean => {
-        return node.id === id;
-      }
-    );
+    return find(nodeMapValues, (node: IKeytipTreeNode): boolean => {
+      return node.id === id;
+    });
   }
 
   /**
@@ -271,7 +268,7 @@ export class KeytipTree {
       hasDynamicChildren,
       hasMenu,
       disabled,
-      persisted
+      persisted,
     };
     node.children = Object.keys(this.nodeMap).reduce((array: string[], nodeMapKey: string): string[] => {
       if (this.nodeMap[nodeMapKey].parent === id) {

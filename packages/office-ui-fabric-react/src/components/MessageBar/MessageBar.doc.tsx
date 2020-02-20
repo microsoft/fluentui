@@ -14,13 +14,13 @@ export const MessageBarPageProps: IDocPageProps = {
     {
       title: 'Various MessageBar types',
       code: MessageBarBasicExampleCode,
-      view: <MessageBarBasicExample />
-    }
+      view: <MessageBarBasicExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/MessageBar/docs/MessageBarDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

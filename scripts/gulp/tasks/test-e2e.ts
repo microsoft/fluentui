@@ -36,11 +36,11 @@ task(
     runInBand: true,
     rootDir: paths.e2e(),
     testNamePattern: argv.testNamePattern as string,
-    testFilePattern: argv.testFilePattern as string
-  })
+    testFilePattern: argv.testFilePattern as string,
+  }),
 );
 
 task(
   'test:e2e',
-  series(...(argv.skipBuild ? [] : ['test:e2e:clean', 'test:e2e:build']), 'test:e2e:serve:start', 'test:e2e:run', 'test:e2e:serve:stop')
+  series(...(argv.skipBuild ? [] : ['test:e2e:clean', 'test:e2e:build']), 'test:e2e:serve:start', 'test:e2e:run', 'test:e2e:serve:stop'),
 );

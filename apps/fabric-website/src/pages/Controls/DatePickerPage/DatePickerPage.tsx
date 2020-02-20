@@ -24,8 +24,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
 
     case 'android':
@@ -39,8 +39,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

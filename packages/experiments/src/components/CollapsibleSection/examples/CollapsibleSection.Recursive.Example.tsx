@@ -35,7 +35,7 @@ const fileIcons: { name: string }[] = [
   { name: 'xls' },
   { name: 'xlsx' },
   { name: 'xltx' },
-  { name: 'xsn' }
+  { name: 'xsn' },
 ];
 
 /**
@@ -79,7 +79,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
           key={i}
           iconSource={_fileItems[randomFile].iconName}
           filename={_fileItems[randomFile].name}
-        />
+        />,
       );
     }
 
@@ -90,7 +90,7 @@ class CollapsibleSectionFolder extends React.Component<{ indent?: number }, {}> 
         <CollapsibleSection key={i} defaultCollapsed={true} title={_folderItems[randomFolder]} indent={this.props.indent}>
           <CollapsibleSectionFolder indent={(this.props.indent || 0) + 1} />
           {this._files}
-        </CollapsibleSection>
+        </CollapsibleSection>,
       );
     }
   }
@@ -133,7 +133,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`,
     };
   }
 }

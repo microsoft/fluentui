@@ -12,7 +12,7 @@ import {
   ISlotOptions,
   ISlotProp,
   ISlottableProps,
-  ISlotRender
+  ISlotRender,
 } from './ISlots';
 
 describe('typings', () => {
@@ -39,8 +39,8 @@ describe('typings', () => {
         testHtmlSlot: 'div',
         testElementSlot: 'button',
         testSlot: TestComponent,
-        testSlotNoShorthand: TestComponent
-      }
+        testSlotNoShorthand: TestComponent,
+      },
     );
   });
 
@@ -186,7 +186,7 @@ describe('createFactory', () => {
   const userProps: ISlotProp<any, any> = {
     user: 'userValue',
     id: 'userIdValue',
-    children: ['User Child 1', 'User Child 2']
+    children: ['User Child 1', 'User Child 2'],
   };
   const renderProps = { render: 'renderValue', id: 'renderIdValue', children: ['Render Child 1', 'Render Child 2'] };
   const userPropString = 'userPropString';
@@ -208,7 +208,7 @@ describe('createFactory', () => {
 
   it(`passes userProp string as child`, () => {
     const component = mount(
-      createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined, undefined) as JSX.Element
+      createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined, undefined) as JSX.Element,
     );
     expect(component.props()).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
   });
@@ -220,28 +220,28 @@ describe('createFactory', () => {
 
   it(`passes userProp string as defaultProp`, () => {
     const component = mount(
-      createFactory<TComponentProps, string>(TestDiv, factoryOptions)(componentProps, userPropString, undefined, undefined) as JSX.Element
+      createFactory<TComponentProps, string>(TestDiv, factoryOptions)(componentProps, userPropString, undefined, undefined) as JSX.Element,
     );
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
     const component = mount(
-      createFactory<TComponentProps, number>(TestDiv, factoryOptions)(componentProps, 42, undefined, undefined) as JSX.Element
+      createFactory<TComponentProps, number>(TestDiv, factoryOptions)(componentProps, 42, undefined, undefined) as JSX.Element,
     );
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
   });
 
   it('merges userProps over componentProps', () => {
     const component = mount(
-      createFactory<TComponentProps>(TestDiv, factoryOptions)(componentProps, userProps, undefined, undefined) as JSX.Element
+      createFactory<TComponentProps>(TestDiv, factoryOptions)(componentProps, userProps, undefined, undefined) as JSX.Element,
     );
     expect(component.props()).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
   });
 
   it('renders div and userProp integer as children', () => {
     const component = renderer.create(
-      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element
+      createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -249,7 +249,7 @@ describe('createFactory', () => {
 
   it('renders div and userProp string as children', () => {
     const component = renderer.create(
-      createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined, undefined) as JSX.Element
+      createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined, undefined) as JSX.Element,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -257,7 +257,7 @@ describe('createFactory', () => {
 
   it('renders userProp span JSX with one prop', () => {
     const component = renderer.create(
-      createFactory(TestDiv)(componentProps, <span id="I should be the only prop in the output" />, undefined, undefined) as JSX.Element
+      createFactory(TestDiv)(componentProps, <span id="I should be the only prop in the output" />, undefined, undefined) as JSX.Element,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -269,10 +269,10 @@ describe('createFactory', () => {
         componentProps,
         undefined,
         {
-          render: () => <span id="I should be the only prop in the output" />
+          render: () => <span id="I should be the only prop in the output" />,
         },
-        undefined
-      ) as JSX.Element
+        undefined,
+      ) as JSX.Element,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -284,10 +284,10 @@ describe('createFactory', () => {
         componentProps,
         undefined,
         {
-          render: props => <span {...props} id="I should be present alongside componentProps" />
+          render: props => <span {...props} id="I should be present alongside componentProps" />,
         },
-        undefined
-      ) as JSX.Element
+        undefined,
+      ) as JSX.Element,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -299,8 +299,8 @@ describe('createFactory', () => {
         componentProps,
         { id: 'I should be present alongside componentProps' },
         { component: 'span' },
-        undefined
-      ) as JSX.Element
+        undefined,
+      ) as JSX.Element,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -313,7 +313,7 @@ describe('createFactory', () => {
         expect(DefaultComponent).toEqual(TestDiv);
         done();
         return <div {...props} />;
-      }
+      },
     };
 
     createFactory(TestDiv, factoryOptions)(componentProps, renderProps, slotOptions, undefined);
@@ -338,18 +338,18 @@ describe('getSlots', () => {
     const testUserProps = {
       testSlot1: {
         className: 'testSlot1Classname',
-        testSlot1Prop: 'userProp1'
+        testSlot1Prop: 'userProp1',
       },
       testSlot2: {
-        className: 'testSlot2Classname'
-      }
+        className: 'testSlot2Classname',
+      },
     };
 
     const testSlot1Props: ITestSlotComponent1Props = {
-      testSlot1Prop: 'slotProp1'
+      testSlot1Prop: 'slotProp1',
     };
     const testSlot2Props: ITestSlotComponent2Props = {
-      testSlot2Prop: 'slotProp1'
+      testSlot2Prop: 'slotProp1',
     };
 
     const testSlotDefinition: ISlotDefinition<Required<ITestSlots>> = {
@@ -357,7 +357,7 @@ describe('getSlots', () => {
         // User props should override slot props
         expect(props).toEqual({
           ...testUserProps.testSlot1,
-          className: testUserProps.testSlot1.className
+          className: testUserProps.testSlot1.className,
         });
         return null;
       },
@@ -365,11 +365,11 @@ describe('getSlots', () => {
         // No user prop for slot in this case, so slot props should be present
         expect(props).toEqual({
           ...testSlot2Props,
-          className: testUserProps.testSlot2.className
+          className: testUserProps.testSlot2.className,
         });
         done();
         return null;
-      }
+      },
     };
 
     // Simulate inserting _defaultStyles as createComponent would

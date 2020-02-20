@@ -1,17 +1,17 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { ToolbarItemProps } from '../../../../components/Toolbar/ToolbarItem'
-import { ToolbarVariables } from './toolbarVariables'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
-import { getColorScheme } from '../../colors'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ToolbarItemProps } from '../../../../components/Toolbar/ToolbarItem';
+import { ToolbarVariables } from './toolbarVariables';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getColorScheme } from '../../colors';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme)
-    const { borderWidth } = siteVariables
+    const colors = getColorScheme(v.colorScheme);
+    const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
-    })
+    });
 
     return {
       position: 'relative',
@@ -50,8 +50,8 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemProps, ToolbarVa
           // empty to overwrite all existing hover styles
         },
       }),
-    }
+    };
   },
-}
+};
 
-export default toolbarItemStyles
+export default toolbarItemStyles;

@@ -8,12 +8,12 @@ export const ChipPageProps: TFabricPlatformPageProps = {
     title: 'Chip',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/ios/ChipOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     title: 'Chip',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/android/ChipOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

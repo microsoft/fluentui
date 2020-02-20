@@ -10,7 +10,7 @@ import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
     padding: 0,
-    fontSize: '16px'
+    fontSize: '16px',
   },
   fileIconCell: {
     textAlign: 'center',
@@ -21,33 +21,33 @@ const classNames = mergeStyleSets({
         verticalAlign: 'middle',
         height: '100%',
         width: '0px',
-        visibility: 'hidden'
-      }
-    }
+        visibility: 'hidden',
+      },
+    },
   },
   fileIconImg: {
     verticalAlign: 'middle',
     maxHeight: '16px',
-    maxWidth: '16px'
+    maxWidth: '16px',
   },
   controlWrapper: {
     display: 'flex',
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   exampleToggle: {
     display: 'inline-block',
     marginBottom: '10px',
-    marginRight: '30px'
+    marginRight: '30px',
   },
   selectionDetails: {
-    marginBottom: '20px'
-  }
+    marginBottom: '20px',
+  },
 });
 const controlStyles = {
   root: {
     margin: '0 30px 20px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 };
 
 export interface IDetailsListDocumentsExampleState {
@@ -96,7 +96,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return <img src={item.iconName} className={classNames.fileIconImg} alt={item.fileType + ' file icon'} />;
-        }
+        },
       },
       {
         key: 'column2',
@@ -112,7 +112,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         sortDescendingAriaLabel: 'Sorted Z to A',
         onColumnClick: this._onColumnClick,
         data: 'string',
-        isPadded: true
+        isPadded: true,
       },
       {
         key: 'column3',
@@ -126,7 +126,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onRender: (item: IDocument) => {
           return <span>{item.dateModified}</span>;
         },
-        isPadded: true
+        isPadded: true,
       },
       {
         key: 'column4',
@@ -141,7 +141,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onRender: (item: IDocument) => {
           return <span>{item.modifiedBy}</span>;
         },
-        isPadded: true
+        isPadded: true,
       },
       {
         key: 'column5',
@@ -155,16 +155,16 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
           return <span>{item.fileSize}</span>;
-        }
-      }
+        },
+      },
     ];
 
     this._selection = new Selection({
       onSelectionChanged: () => {
         this.setState({
-          selectionDetails: this._getSelectionDetails()
+          selectionDetails: this._getSelectionDetails(),
         });
-      }
+      },
     });
 
     this.state = {
@@ -173,7 +173,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
       isCompactMode: false,
-      announcedMessage: undefined
+      announcedMessage: undefined,
     };
   }
 
@@ -262,7 +262,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
     });
   };
 
@@ -292,7 +292,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
         currColumn.isSorted = true;
         this.setState({
-          announcedMessage: `${currColumn.name} is sorted ${currColumn.isSortedDescending ? 'descending' : 'ascending'}`
+          announcedMessage: `${currColumn.name} is sorted ${currColumn.isSortedDescending ? 'descending' : 'ascending'}`,
         });
       } else {
         newCol.isSorted = false;
@@ -302,7 +302,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     const newItems = _copyAndSort(items, currColumn.fieldName!, currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
-      items: newItems
+      items: newItems,
     });
   };
 }
@@ -335,7 +335,7 @@ function _generateDocuments() {
       dateModified: randomDate.dateFormatted,
       dateModifiedValue: randomDate.value,
       fileSize: randomFileSize.value,
-      fileSizeRaw: randomFileSize.rawSize
+      fileSizeRaw: randomFileSize.rawSize,
     });
   }
   return items;
@@ -345,7 +345,7 @@ function _randomDate(start: Date, end: Date): { value: number; dateFormatted: st
   const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
   return {
     value: date.valueOf(),
-    dateFormatted: date.toLocaleDateString()
+    dateFormatted: date.toLocaleDateString(),
   };
 }
 
@@ -364,14 +364,14 @@ const FILE_ICONS: { name: string }[] = [
   { name: 'vsdx' },
   { name: 'xls' },
   { name: 'xlsx' },
-  { name: 'xsn' }
+  { name: 'xsn' },
 ];
 
 function _randomFileIcon(): { docType: string; url: string } {
   const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
   return {
     docType,
-    url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+    url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`,
   };
 }
 
@@ -379,7 +379,7 @@ function _randomFileSize(): { value: string; rawSize: number } {
   const fileSize: number = Math.floor(Math.random() * 100) + 30;
   return {
     value: `${fileSize} KB`,
-    rawSize: fileSize
+    rawSize: fileSize,
   };
 }
 

@@ -1,9 +1,9 @@
-import { pxToRem } from '../../../../utils'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { AvatarProps } from '../../../../components/Avatar/Avatar'
-import { AvatarVariables } from './avatarVariables'
+import { pxToRem } from '../../../../utils';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { AvatarProps } from '../../../../components/Avatar/Avatar';
+import { AvatarVariables } from './avatarVariables';
 
-export type AvatarStylesProps = Pick<AvatarProps, 'size'>
+export type AvatarStylesProps = Pick<AvatarProps, 'size'>;
 
 const sizeToPxValue = {
   smallest: 24,
@@ -13,11 +13,11 @@ const sizeToPxValue = {
   large: 36,
   larger: 42,
   largest: 48,
-}
+};
 
 const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
   root: ({ props: { size } }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[size])
+    const sizeInRem = pxToRem(sizeToPxValue[size]);
 
     return {
       position: 'relative',
@@ -26,7 +26,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       verticalAlign: 'middle',
       height: sizeInRem,
       width: sizeInRem,
-    }
+    };
   },
   image: ({ variables: v }): ICSSInJSStyle => ({
     borderColor: v.avatarBorderColor,
@@ -39,7 +39,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
     width: '100%',
   }),
   label: ({ props: { size } }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[size])
+    const sizeInRem = pxToRem(sizeToPxValue[size]);
     return {
       display: 'inline-block',
       width: sizeInRem,
@@ -49,7 +49,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       verticalAlign: 'top',
       textAlign: 'center',
       padding: '0px',
-    }
+    };
   },
   status: ({ variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
@@ -57,6 +57,6 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
     right: 0,
     boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
   }),
-}
+};
 
-export default avatarStyles
+export default avatarStyles;

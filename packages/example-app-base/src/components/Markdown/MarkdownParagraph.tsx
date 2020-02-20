@@ -22,13 +22,13 @@ const getStyles: IStyleFunction<IMarkdownParagraphStyleProps, IMarkdownParagraph
     root: [
       theme.fonts.medium,
       {
-        marginBottom: 4
+        marginBottom: 4,
       },
       isTodo && {
         padding: 8,
-        background: theme.semanticColors.warningBackground
-      }
-    ]
+        background: theme.semanticColors.warningBackground,
+      },
+    ],
   };
 };
 
@@ -38,7 +38,7 @@ const MarkdownParagraphBase: React.FunctionComponent<IMarkdownParagraphProps> = 
   const { children, theme } = props;
   const classNames: IClassNames<IMarkdownParagraphStyles> = getClassNames(props.styles, {
     theme: theme!,
-    isTodo: typeof children === 'string' && children.indexOf('TODO') === 0
+    isTodo: typeof children === 'string' && children.indexOf('TODO') === 0,
   });
 
   return <p className={classNames.root}>{children}</p>;

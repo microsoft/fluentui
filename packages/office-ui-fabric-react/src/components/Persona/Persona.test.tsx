@@ -15,7 +15,7 @@ const STYLES = {
   initials: '.ms-Persona-initials',
   primaryText: '.ms-Persona-primaryText',
   black: '.ms-Persona-initials--black',
-  red: '.ms-Persona-initials--red'
+  red: '.ms-Persona-initials--red',
 };
 
 /**
@@ -23,7 +23,7 @@ const STYLES = {
  */
 export const wrapPersona = (
   example: IPersonaSharedProps,
-  shouldWrapPersonaCoin: boolean = false
+  shouldWrapPersonaCoin: boolean = false,
 ): ((coinProps: IPersonaProps, defaultRenderer: IRenderFunction<IPersonaProps>) => JSX.Element | null) => {
   return (coinProps, defaultCoinRenderer): JSX.Element | null => {
     return shouldWrapPersonaCoin ? (
@@ -46,7 +46,7 @@ const examplePersona: IPersonaSharedProps = {
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
   size: PersonaSize.size100,
-  presence: PersonaPresence.blocked
+  presence: PersonaPresence.blocked,
 };
 
 describe('Persona', () => {
@@ -99,7 +99,7 @@ describe('Persona', () => {
         onRenderPrimaryText={wrapPersona(examplePersona)}
         onRenderSecondaryText={wrapPersona(examplePersona)}
         onRenderTertiaryText={wrapPersona(examplePersona)}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -109,7 +109,7 @@ describe('Persona', () => {
     const component = renderer.create(
       <Persona text="Kat Larrson">
         <span>Persona Children</span>
-      </Persona>
+      </Persona>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

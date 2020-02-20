@@ -22,7 +22,7 @@ function _otherSections(): IPageSectionProps[] {
             require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md') as string
           }
         </Markdown>
-      )
+      ),
     },
     {
       sectionName: 'Developer resources',
@@ -33,7 +33,7 @@ function _otherSections(): IPageSectionProps[] {
             require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md') as string
           }
         </Markdown>
-      )
+      ),
     },
     {
       sectionName: 'Contribution process',
@@ -44,8 +44,8 @@ function _otherSections(): IPageSectionProps[] {
             require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md') as string
           }
         </Markdown>
-      )
-    }
+      ),
+    },
   ];
 }
 

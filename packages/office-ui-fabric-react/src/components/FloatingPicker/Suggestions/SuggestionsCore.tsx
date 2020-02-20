@@ -122,7 +122,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel
+      suggestionsContainerAriaLabel,
     } = this.props;
     const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
     let { suggestions } = this.props;

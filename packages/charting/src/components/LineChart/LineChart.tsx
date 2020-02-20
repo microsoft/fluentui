@@ -6,5 +6,5 @@ import { getStyles } from './LineChart.styles';
 // Create a LineChart variant which uses these default styles and this styled subcomponent.
 export const LineChart: React.FunctionComponent<ILineChartProps> = styled<ILineChartProps, ILineChartStyleProps, ILineChartStyles>(
   LineChartBase,
-  getStyles
+  getStyles,
 );

@@ -24,7 +24,7 @@ function onResolveSuggestions(text: string): ITag[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map(item => ({ key: item, name: item }));
@@ -37,7 +37,7 @@ describe('TagPicker', () => {
 
   it('renders correctly', () => {
     const component = renderer.create(
-      <TagPicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={onResolveSuggestions('black')} />
+      <TagPicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={onResolveSuggestions('black')} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -45,7 +45,7 @@ describe('TagPicker', () => {
 
   it('renders picker with selected item correctly', () => {
     const component = renderer.create(
-      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'test', name: 'text' }]} />
+      <TagPicker onResolveSuggestions={onResolveSuggestions} selectedItems={[{ key: 'test', name: 'text' }]} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -107,7 +107,7 @@ describe('TagPicker', () => {
         selectedItems={[{ key: 'testColor', name: 'testColor' }]}
         componentRef={pickerAfterUpdate}
       />,
-      root
+      root,
     );
 
     const updatedPicker = pickerAfterUpdate.current!.items;

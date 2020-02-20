@@ -22,8 +22,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string}
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
 
     case 'android':
@@ -35,8 +35,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string}
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

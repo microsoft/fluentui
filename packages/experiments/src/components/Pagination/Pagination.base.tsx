@@ -11,7 +11,7 @@ const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyle
 
 const DEFAULT_STRINGS: IPaginationString = {
   of: 'of',
-  divider: '-'
+  divider: '-',
 };
 
 export class PaginationBase extends BaseComponent<IPaginationProps> {
@@ -23,7 +23,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
     nextPageIconProps: { iconName: 'CaretSolidRight' },
     firstPageIconProps: { iconName: 'Previous' },
     lastPageIconProps: { iconName: 'Next' },
-    strings: DEFAULT_STRINGS
+    strings: DEFAULT_STRINGS,
   };
 
   private _classNames: IProcessedStyleSet<IPaginationStyles>;
@@ -49,12 +49,12 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       onRenderVisibleItemLabel = this._renderVisibleItemLabel,
       format,
       styles,
-      theme
+      theme,
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      format: format
+      format: format,
     });
 
     const canPrevious = selectedPageIndex! > 0;
@@ -68,7 +68,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
       for (let i = 0; i < this.props.pageCount; i++) {
         scaleOptions.push({
           key: `${i}`,
-          text: `${i + 1}`
+          text: `${i + 1}`,
         });
       }
 
@@ -87,7 +87,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
             options={scaleOptions}
             onChange={this.onComboBoxChange}
             styles={{
-              container: this._classNames.comboBox
+              container: this._classNames.comboBox,
             }}
           />
           <IconButton iconProps={nextPageIconProps} onClick={this.handleNextPage} disabled={!canNext} aria-label={nextPageAriaLabel} />
@@ -106,7 +106,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
             aria-label={firstPageAriaLabel}
             styles={{
               icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled
+              rootDisabled: this._classNames.previousNextPageDisabled,
             }}
           />
           <IconButton
@@ -116,7 +116,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
             aria-label={previousPageAriaLabel}
             styles={{
               icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled
+              rootDisabled: this._classNames.previousNextPageDisabled,
             }}
           />
           {this._pageList()}
@@ -127,7 +127,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
             aria-label={nextPageAriaLabel}
             styles={{
               icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled
+              rootDisabled: this._classNames.previousNextPageDisabled,
             }}
           />
           <TooltipHost content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`} directionalHint={DirectionalHint.bottomCenter}>
@@ -138,7 +138,7 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
               aria-label={lastPageAriaLabel}
               styles={{
                 icon: this._classNames.previousNextPage,
-                rootDisabled: this._classNames.previousNextPageDisabled
+                rootDisabled: this._classNames.previousNextPageDisabled,
               }}
             />
           </TooltipHost>

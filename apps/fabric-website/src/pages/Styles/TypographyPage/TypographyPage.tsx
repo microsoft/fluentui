@@ -30,7 +30,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </Markdown>
               {_renderWeightsTable(typeWeights)}
             </>
-          )
+          ),
         },
         {
           sectionName: 'Sizes',
@@ -42,7 +42,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </Markdown>
               {_renderSizesTable(typeSizes)}
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -53,7 +53,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string
               }
             </Markdown>
-          )
+          ),
         },
         {
           sectionName: 'Customization',
@@ -64,8 +64,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }
@@ -76,25 +76,25 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
       columns={[
         {
           title: 'Weight',
-          percentWidth: 10
+          percentWidth: 10,
         },
         {
           title: 'Example',
-          data: 'example'
+          data: 'example',
         },
         {
           title: 'Usage',
-          percentWidth: 20
+          percentWidth: 20,
         },
         {
           title: 'Core class',
-          percentWidth: 15
+          percentWidth: 15,
         },
         {
           title: 'React variable',
           percentWidth: 20,
-          overflowX: 'auto'
-        }
+          overflowX: 'auto',
+        },
       ]}
       rows={weights}
       // tslint:disable-next-line jsx-no-lambda
@@ -126,26 +126,26 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
         {
           title: 'Size',
           data: 'size',
-          percentWidth: 10
+          percentWidth: 10,
         },
         {
           title: 'Example',
           data: 'example',
-          overflowX: 'auto'
+          overflowX: 'auto',
         },
         {
           title: 'Usage',
-          percentWidth: 20
+          percentWidth: 20,
         },
         {
           title: 'Core class',
-          percentWidth: 15
+          percentWidth: 15,
         },
         {
           title: 'React variable',
           percentWidth: 20,
-          overflowX: 'auto'
-        }
+          overflowX: 'auto',
+        },
       ]}
       rows={sizes}
       // tslint:disable-next-line jsx-no-lambda

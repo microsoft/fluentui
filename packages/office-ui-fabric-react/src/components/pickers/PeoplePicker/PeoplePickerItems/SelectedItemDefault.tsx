@@ -13,7 +13,7 @@ const styles: any = stylesImport;
  * @deprecated Use the exported from the package level 'PeoplePickerItem'. Will be removed in Fabric 7.
  */
 export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX.Element = (
-  peoplePickerItemProps: IPeoplePickerItemSelectedProps
+  peoplePickerItemProps: IPeoplePickerItemSelectedProps,
 ) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel } = peoplePickerItemProps;
 
@@ -32,7 +32,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX
         'ms-PickerPersona-container',
         styles.personaContainer,
         { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-        { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning }
+        { ['is-invalid ' + styles.validationError]: item.ValidationState === ValidationState.warning },
       )}
       data-is-focusable={true}
       data-is-sub-focuszone={true}

@@ -46,14 +46,14 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
     const listClassName = listProps && listProps.className;
 
     this._classNames = getClassNames(styles, {
-      theme: theme!
+      theme: theme!,
     });
 
     const newListProps = {
       ...listProps,
       // Adds to the optional listProp className a fading out overlay className only when `enableShimmer` toggled on
       // and the overlay is not disabled by `removeFadingOverlay` prop.
-      className: enableShimmer && !removeFadingOverlay ? css(this._classNames.root, listClassName) : listClassName
+      className: enableShimmer && !removeFadingOverlay ? css(this._classNames.root, listClassName) : listClassName,
     };
 
     return (
@@ -91,7 +91,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
 
     if (showCheckbox) {
       shimmerElementsRow.push(
-        <ShimmerElementsGroup key={'checkboxGap'} shimmerElements={[{ type: ShimmerElementType.gap, width: '40px', height: gapHeight }]} />
+        <ShimmerElementsGroup key={'checkboxGap'} shimmerElements={[{ type: ShimmerElementType.gap, width: '40px', height: gapHeight }]} />,
       );
     }
 
@@ -106,25 +106,25 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
       shimmerElements.push({
         type: ShimmerElementType.gap,
         width: cellStyleProps.cellLeftPadding,
-        height: gapHeight
+        height: gapHeight,
       });
 
       if (column.isIconOnly) {
         shimmerElements.push({
           type: ShimmerElementType.line,
           width: column.calculatedWidth!,
-          height: column.calculatedWidth!
+          height: column.calculatedWidth!,
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
           width: cellStyleProps.cellRightPadding,
-          height: gapHeight
+          height: gapHeight,
         });
       } else {
         shimmerElements.push({
           type: ShimmerElementType.line,
           width: column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO,
-          height: DEFAULT_SHIMMER_HEIGHT
+          height: DEFAULT_SHIMMER_HEIGHT,
         });
         shimmerElements.push({
           type: ShimmerElementType.gap,
@@ -132,7 +132,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
             cellStyleProps.cellRightPadding +
             (column.calculatedWidth! - column.calculatedWidth! * SHIMMER_LINE_VS_CELL_WIDTH_RATIO) +
             (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0),
-          height: gapHeight
+          height: gapHeight,
         });
       }
       shimmerElementsRow.push(<ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />);
@@ -143,7 +143,7 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
         key={'endGap'}
         width={'100%'}
         shimmerElements={[{ type: ShimmerElementType.gap, width: '100%', height: gapHeight }]}
-      />
+      />,
     );
     return <div style={{ display: 'flex' }}>{shimmerElementsRow}</div>;
   };

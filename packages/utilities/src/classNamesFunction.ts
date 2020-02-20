@@ -39,7 +39,7 @@ export interface IClassNamesFunctionOptions {
  * these will cause extra recalcs to occur.
  */
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
-  options: IClassNamesFunctionOptions = {}
+  options: IClassNamesFunctionOptions = {},
 ): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet> {
   // We build a trie where each node is a Map. The map entry key represents an argument
   // value, and the entry value is another node (Map). Each node has a `__retval__`
@@ -54,7 +54,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
 
   const getClassNames = (
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
-    styleProps: TStyleProps = {} as TStyleProps
+    styleProps: TStyleProps = {} as TStyleProps,
   ): IProcessedStyleSet<TStyleSet> => {
     let current: Map<any, any> = map;
     const { theme } = styleProps as any;
@@ -82,9 +82,9 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
           [
             (typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject) as IStyleSet<
               TStyleSet
-            >
+            >,
           ],
-          { rtl: !!rtl }
+          { rtl: !!rtl },
         );
       }
 

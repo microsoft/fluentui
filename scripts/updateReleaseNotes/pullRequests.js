@@ -70,7 +70,7 @@ async function getMatchingRecentPullRequest(changelogComment) {
     if (author) {
       // Get this author's recent PRs and look for one or more with a matching commit message and email
       possiblePrs = (await getRecentPrsByAuthor(author)).filter(pr =>
-        pr.commits.some(commit => commit.message === message && commit.authorEmail === authorEmail)
+        pr.commits.some(commit => commit.message === message && commit.authorEmail === authorEmail),
       );
     }
   } catch (ex) {
@@ -113,7 +113,7 @@ async function getRecentPrsByAuthor(author, count = 10) {
           q: ['type:pr', 'is:merged', 'author:' + author, 'user:' + repoDetails.owner, 'repo:' + repoDetails.repo].join('+'),
           sort: 'updated',
           order: 'desc',
-          per_page: count
+          per_page: count,
         })
       ).data.items;
 
@@ -174,7 +174,7 @@ async function addCommitInfo(prs) {
           commit: commit.sha,
           message: commit.commit.message,
           author: commit.author.login,
-          authorEmail: commit.commit.author.email
+          authorEmail: commit.commit.author.email,
         }));
     } catch (ex) {
       // ignore
@@ -192,7 +192,7 @@ function processPr(pr) {
     number: pr.number,
     url: pr.html_url,
     author: pr.user.login,
-    authorUrl: pr.user.html_url
+    authorUrl: pr.user.html_url,
   };
 }
 

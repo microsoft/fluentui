@@ -23,7 +23,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
     super(props);
 
     this.state = {
-      size: 'large'
+      size: 'large',
     };
   }
 
@@ -94,7 +94,7 @@ export class TilesListPage extends React.Component<IComponentDemoPageProps, ITil
 
   private _onIsLargeChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      size: checked ? 'large' : 'small'
+      size: checked ? 'large' : 'small',
     });
   };
 }

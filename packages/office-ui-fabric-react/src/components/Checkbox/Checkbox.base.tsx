@@ -5,7 +5,7 @@ import {
   mergeAriaAttributeValues,
   initializeComponentRef,
   warnMutuallyExclusive,
-  initializeFocusRects
+  initializeFocusRects,
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
@@ -21,7 +21,7 @@ const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>()
 
 export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
-    boxSide: 'start'
+    boxSide: 'start',
   };
 
   private _checkBox = React.createRef<HTMLInputElement>();
@@ -52,14 +52,14 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive('Checkbox', props, {
         checked: 'defaultChecked',
-        indeterminate: 'defaultIndeterminate'
+        indeterminate: 'defaultIndeterminate',
       });
     }
 
     this._id = this.props.id || getId('checkbox-');
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-      isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate)
+      isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate),
     };
 
     initializeFocusRects();
@@ -86,7 +86,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       ariaSetSize,
       keytipProps,
       title,
-      label
+      label,
     } = this.props;
 
     const { isChecked, isIndeterminate } = this.state;
@@ -98,7 +98,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       indeterminate: isIndeterminate,
       checked: isChecked,
       reversed: boxSide !== 'start',
-      isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel
+      isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel,
     });
 
     return (

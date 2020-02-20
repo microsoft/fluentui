@@ -27,7 +27,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </Markdown>
               <div style={{ marginTop: 12 }}>{_renderDepthsTable()}</div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -36,16 +36,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationImplementation.md') as string}
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming Soon',
-          content: 'Coming Soon'
-        }
+          content: 'Coming Soon',
+        },
       ];
   }
 }
@@ -57,38 +57,38 @@ function _renderDepthsTable() {
         {
           title: 'Level',
           rowProperty: 'level',
-          percentWidth: 8
+          percentWidth: 8,
         },
         {
           title: 'Example',
-          overflow: 'visible'
+          overflow: 'visible',
         },
         {
           title: 'Usage',
           rowProperty: 'usage',
-          percentWidth: 25
+          percentWidth: 25,
         },
         {
-          title: 'Core class'
+          title: 'Core class',
         },
         {
           title: 'React variable',
-          overflowX: 'auto'
-        }
+          overflowX: 'auto',
+        },
       ]}
       rows={[
         {
-          level: '4'
+          level: '4',
         },
         {
-          level: '8'
+          level: '8',
         },
         {
-          level: '16'
+          level: '16',
         },
         {
-          level: '64'
-        }
+          level: '64',
+        },
       ]}
       /* tslint:disable-next-line jsx-no-lambda */
       formatter={(column, row) => {

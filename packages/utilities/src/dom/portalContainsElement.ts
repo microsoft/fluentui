@@ -11,7 +11,7 @@ import { DATA_PORTAL_ATTRIBUTE } from './setPortalAttribute';
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean {
   const elementMatch = findElementRecursive(
     target,
-    (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE)
+    (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE),
   );
   return elementMatch !== null && elementMatch.hasAttribute(DATA_PORTAL_ATTRIBUTE);
 }

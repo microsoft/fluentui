@@ -10,7 +10,7 @@ import {
   ISearchBoxStyles,
   Link,
   SearchBox,
-  getFocusStyle
+  getFocusStyle,
 } from 'office-ui-fabric-react';
 import { isPageActive, hasActiveChild, INavPage, INavProps, NavSortType } from '@uifabric/example-app-base/lib/index2';
 import { theme } from '@uifabric/example-app-base/lib/styles/theme';
@@ -34,14 +34,14 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     this._localItems = !!window.localStorage
       ? {
-          defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType]
+          defaultSortState: NavSortType[localStorage.getItem('defaultSortState') as keyof typeof NavSortType],
         }
       : {};
 
     this.state = {
       defaultSortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories,
       searchQuery: '',
-      sortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories
+      sortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories,
     };
   }
 
@@ -53,7 +53,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     if (nextProps.pages !== this.props.pages) {
       this.setState({
         searchQuery: '',
-        sortState: this.state.defaultSortState
+        sortState: this.state.defaultSortState,
       });
     }
     return true;
@@ -144,7 +144,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           styles.link,
           isPageActive(page.url) && styles.isActive,
           hasActiveChild(page) && styles.hasActiveChild,
-          page.isHomePage && styles.isHomePage
+          page.isHomePage && styles.isHomePage,
         )}
         key={linkIndex + page.url}
       >
@@ -171,7 +171,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       return this.props.onLinkClick(ev);
     }
     this.setState({
-      searchQuery: ''
+      searchQuery: '',
     });
   };
 
@@ -223,27 +223,27 @@ export class Nav extends React.Component<INavProps, INavState> {
 
     const searchBoxStyles: ISearchBoxStyles = {
       iconContainer: {
-        marginRight: 8
-      }
+        marginRight: 8,
+      },
     };
 
     const sortButtonStyles: IButtonStyles = {
       root: {
-        ...getFocusStyle(theme, 1)
+        ...getFocusStyle(theme, 1),
       },
       rootExpanded: {
-        background: theme.palette.neutralLighter
+        background: theme.palette.neutralLighter,
       },
       icon: {
         position: 'absolute',
-        margin: 0
-      }
+        margin: 0,
+      },
     };
 
     const menuIconProps: IIconProps = {
       styles: {
-        root: { fontSize: 16 }
-      }
+        root: { fontSize: 16 },
+      },
     };
 
     return (
@@ -266,7 +266,7 @@ export class Nav extends React.Component<INavProps, INavState> {
                 ? 'Ascending'
                 : defaultSortState === NavSortType.categories
                 ? 'GroupedList'
-                : undefined
+                : undefined,
           }}
           styles={sortButtonStyles}
           menuIconProps={{ iconName: '' }}
@@ -276,15 +276,15 @@ export class Nav extends React.Component<INavProps, INavState> {
                 key: 'categories',
                 text: 'Categories',
                 iconProps: { iconName: 'GroupedList', ...menuIconProps },
-                onClick: this._setSortTypeCategories
+                onClick: this._setSortTypeCategories,
               },
               {
                 key: 'alphabetized',
                 text: 'Alphabetical',
                 iconProps: { iconName: 'Ascending', ...menuIconProps },
-                onClick: this._setSortTypeAlphabetized
-              }
-            ]
+                onClick: this._setSortTypeAlphabetized,
+              },
+            ],
           }}
         />
       </div>
@@ -301,15 +301,15 @@ export class Nav extends React.Component<INavProps, INavState> {
     this.setState(
       {
         searchQuery: newValue,
-        sortState: NavSortType.alphabetized
+        sortState: NavSortType.alphabetized,
       },
       () => {
         if (this.state.searchQuery === '') {
           this.setState({
-            sortState: this.state.defaultSortState
+            sortState: this.state.defaultSortState,
           });
         }
-      }
+      },
     );
   };
 
@@ -341,11 +341,11 @@ export class Nav extends React.Component<INavProps, INavState> {
     this.setState(
       {
         defaultSortState: NavSortType.categories,
-        sortState: NavSortType.categories
+        sortState: NavSortType.categories,
       },
       () => {
         localStorage.setItem('defaultSortState', NavSortType[NavSortType.categories]);
-      }
+      },
     );
   };
 
@@ -353,11 +353,11 @@ export class Nav extends React.Component<INavProps, INavState> {
     this.setState(
       {
         defaultSortState: NavSortType.alphabetized,
-        sortState: NavSortType.alphabetized
+        sortState: NavSortType.alphabetized,
       },
       () => {
         localStorage.setItem('defaultSortState', NavSortType[NavSortType.alphabetized]);
-      }
+      },
     );
   };
 }

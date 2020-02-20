@@ -12,6 +12,6 @@ export const Facepile: React.FunctionComponent<IFacepileProps> = styled<IFacepil
   styles,
   undefined,
   {
-    scope: 'Facepile'
-  }
+    scope: 'Facepile',
+  },
 );

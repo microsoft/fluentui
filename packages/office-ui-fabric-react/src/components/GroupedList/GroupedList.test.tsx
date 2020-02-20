@@ -20,8 +20,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 0,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -35,9 +35,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -71,8 +71,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 0,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -86,9 +86,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -119,8 +119,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 2,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -134,9 +134,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -167,8 +167,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 0,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -182,9 +182,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -214,8 +214,8 @@ describe('GroupedList', () => {
         key: 'group0',
         name: 'group 0',
         startIndex: 0,
-        level: 0
-      }
+        level: 0,
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -229,9 +229,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}

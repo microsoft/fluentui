@@ -50,7 +50,7 @@ const _syncModuleCache =
  * This overload accepts a module with a default export for the component.
  */
 export function asAsync<TProps>(
-  options: IAsAsyncOptions<TProps>
+  options: IAsAsyncOptions<TProps>,
 ): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & { asyncPlaceholder?: React.ReactType }>> {
   class Async extends React.Component<
     TProps & {
@@ -60,7 +60,7 @@ export function asAsync<TProps>(
     { Component?: React.ReactType<TProps> }
   > {
     public state = {
-      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ReactType<TProps>) : undefined
+      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ReactType<TProps>) : undefined,
     };
 
     public render(): JSX.Element | null {
@@ -85,9 +85,9 @@ export function asAsync<TProps>(
               // Set state.
               this.setState(
                 {
-                  Component: LoadedComponent
+                  Component: LoadedComponent,
                 },
-                options.onLoad
+                options.onLoad,
               );
             }
           })

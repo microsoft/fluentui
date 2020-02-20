@@ -69,7 +69,7 @@ export class Beak extends BaseComponent<IBeakProps, {}> {
       height: `${svgHeight}px`,
       width: `${svgWidth}px`,
       transform: transform,
-      color
+      color,
     });
 
     return (

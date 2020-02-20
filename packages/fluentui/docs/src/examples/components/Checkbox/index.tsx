@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Slots from './Slots'
-import States from './States'
-import Types from './Types'
+import Rtl from './Rtl';
+import Slots from './Slots';
+import States from './States';
+import Types from './Types';
 
 const CheckboxExamples = () => (
   <>
@@ -12,6 +12,6 @@ const CheckboxExamples = () => (
     <Slots />
     <Rtl />
   </>
-)
+);
 
-export default CheckboxExamples
+export default CheckboxExamples;

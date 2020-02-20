@@ -7,7 +7,7 @@ import {
   IBasePickerSuggestionsProps,
   ValidationState,
   IBasePickerStyleProps,
-  IBasePickerStyles
+  IBasePickerStyles,
 } from '../BasePicker.types';
 import { PeoplePickerItem } from './PeoplePickerItems/PeoplePickerItem';
 import { IPersonaProps } from '../../../Persona';
@@ -42,7 +42,7 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
     ),
-    createGenericItem: createGenericItem
+    createGenericItem: createGenericItem,
   };
 }
 
@@ -57,7 +57,7 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} compact={true} />
     ),
-    createGenericItem: createGenericItem
+    createGenericItem: createGenericItem,
   };
 }
 
@@ -72,7 +72,7 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
     onRenderSuggestionsItem: (personaProps: IPersonaProps, suggestionsProps?: IBasePickerSuggestionsProps) => (
       <PeoplePickerItemSuggestion personaProps={personaProps} suggestionsProps={suggestionsProps} />
     ),
-    createGenericItem: createGenericItem
+    createGenericItem: createGenericItem,
   };
 }
 
@@ -93,7 +93,7 @@ export function createGenericItem(name: string, currentValidationState: Validati
     key: name,
     primaryText: name,
     imageInitials: '!',
-    ValidationState: currentValidationState
+    ValidationState: currentValidationState,
   };
 
   if (currentValidationState !== ValidationState.warning) {
@@ -108,8 +108,8 @@ export const NormalPeoplePicker = styled<IPeoplePickerProps, IBasePickerStylePro
   getStyles,
   undefined,
   {
-    scope: 'NormalPeoplePicker'
-  }
+    scope: 'NormalPeoplePicker',
+  },
 );
 
 export const CompactPeoplePicker = styled<IPeoplePickerProps, IBasePickerStyleProps, IBasePickerStyles>(
@@ -117,8 +117,8 @@ export const CompactPeoplePicker = styled<IPeoplePickerProps, IBasePickerStylePr
   getStyles,
   undefined,
   {
-    scope: 'CompactPeoplePicker'
-  }
+    scope: 'CompactPeoplePicker',
+  },
 );
 
 export const ListPeoplePicker = styled<IPeoplePickerProps, IBasePickerStyleProps, IBasePickerStyles>(
@@ -126,6 +126,6 @@ export const ListPeoplePicker = styled<IPeoplePickerProps, IBasePickerStyleProps
   getStyles,
   undefined,
   {
-    scope: 'ListPeoplePickerBase'
-  }
+    scope: 'ListPeoplePickerBase',
+  },
 );

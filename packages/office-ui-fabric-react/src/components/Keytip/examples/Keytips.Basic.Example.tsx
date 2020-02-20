@@ -16,7 +16,7 @@ export class KeytipsBasicExample extends React.Component<{}> {
   private _sampleOptions = [
     { key: 'A', text: 'Option 1' },
     { key: 'B', text: 'Option 2' },
-    { key: 'C', text: 'Option 3' }
+    { key: 'C', text: 'Option 3' },
   ];
 
   /* tslint:disable:jsx-no-lambda */

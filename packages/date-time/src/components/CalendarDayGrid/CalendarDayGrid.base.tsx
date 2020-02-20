@@ -9,7 +9,7 @@ import {
   format,
   classNamesFunction,
   find,
-  findIndex
+  findIndex,
 } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
@@ -19,7 +19,7 @@ import {
   compareDatePart,
   getDateRangeArray,
   isInDateRangeArray,
-  getWeekNumbersInMonth
+  getWeekNumbersInMonth,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
@@ -67,7 +67,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
     this.state = {
       activeDescendantId: getId(),
-      weeks: this._getWeeks(props)
+      weeks: this._getWeeks(props),
     };
 
     this._onClose = this._onClose.bind(this);
@@ -90,7 +90,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
     this.setState({
       weeks: weeks,
-      animateBackwards: isBackwards
+      animateBackwards: isBackwards,
     });
   }
 
@@ -104,7 +104,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       showWeekNumbers,
       labelledBy,
       lightenDaysOutsideNavigatedMonth,
-      animationDirection
+      animationDirection,
     } = this.props;
 
     this.classNames = getClassNames(styles, {
@@ -114,7 +114,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       showWeekNumbers: showWeekNumbers,
       lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth,
       animationDirection: animationDirection,
-      animateBackwards: animateBackwards
+      animateBackwards: animateBackwards,
     });
     const classNames = this.classNames;
 
@@ -144,7 +144,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
               weekCorners,
               classNames.lastTransitionWeek,
               'presentation',
-              true /*aria-hidden*/
+              true /*aria-hidden*/,
             )}
           </tbody>
         </table>
@@ -199,7 +199,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     weekCorners?: IWeekCorners,
     rowClassName?: string,
     ariaRole?: string,
-    ariaHidden?: boolean
+    ariaHidden?: boolean,
   ): JSX.Element => {
     const { showWeekNumbers, firstDayOfWeek, firstWeekOfYear, navigatedDate, strings } = this.props;
     const { weeks } = this.state;
@@ -225,7 +225,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     dayIndex: number,
     weekIndex: number,
     weekCorners?: IWeekCorners,
-    ariaHidden?: boolean
+    ariaHidden?: boolean,
   ): JSX.Element => {
     const { navigatedDate, dateTimeFormatter, allFocusable, strings } = this.props;
     const { activeDescendantId } = this.state;
@@ -239,7 +239,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           weekCorners && this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
           day.isSelected && classNames.daySelected,
           !day.isInBounds && classNames.dayOutsideBounds,
-          !day.isInMonth && classNames.dayOutsideNavigatedMonth
+          !day.isInMonth && classNames.dayOutsideNavigatedMonth,
         )}
         ref={(element: HTMLTableCellElement) => {
           this.props.customDayCellRef && this.props.customDayCellRef(element, day.originalDate, classNames);
@@ -375,7 +375,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       minDate,
       maxDate,
       workWeekDays,
-      daysToSelectInDayView
+      daysToSelectInDayView,
     } = this.props;
 
     let dateRange = getDateRangeArray(selectedDate, dateRangeType, firstDayOfWeek, workWeekDays, daysToSelectInDayView);
@@ -415,7 +415,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       maxDate,
       weeksToShow,
       workWeekDays,
-      daysToSelectInDayView
+      daysToSelectInDayView,
     } = propsToUse;
 
     let date;
@@ -462,7 +462,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: !this._getIsRestrictedDate(date)
+          isInBounds: !this._getIsRestrictedDate(date),
         };
 
         week.push(dayInfo);
@@ -556,7 +556,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             weeks[weekIndex - 1][dayIndex].originalDate,
             day.originalDate,
             weeks[weekIndex - 1][dayIndex].isSelected,
-            day.isSelected
+            day.isSelected,
           );
         const below =
           weeks[weekIndex + 1] &&
@@ -565,7 +565,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             weeks[weekIndex + 1][dayIndex].originalDate,
             day.originalDate,
             weeks[weekIndex + 1][dayIndex].isSelected,
-            day.isSelected
+            day.isSelected,
           );
         const left =
           weeks[weekIndex][dayIndex - 1] &&
@@ -573,7 +573,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             weeks[weekIndex][dayIndex - 1].originalDate,
             day.originalDate,
             weeks[weekIndex][dayIndex - 1].isSelected,
-            day.isSelected
+            day.isSelected,
           );
         const right =
           weeks[weekIndex][dayIndex + 1] &&
@@ -581,7 +581,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
             weeks[weekIndex][dayIndex + 1].originalDate,
             day.originalDate,
             weeks[weekIndex][dayIndex + 1].isSelected,
-            day.isSelected
+            day.isSelected,
           );
 
         const style = this._calculateRoundedStyles(classNames, above, below, left, right);
@@ -598,7 +598,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     above: boolean,
     below: boolean,
     left: boolean,
-    right: boolean
+    right: boolean,
   ): string {
     let style = '';
     const roundedTopLeft = !above && !left;
@@ -669,7 +669,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       dateRangeHoverType,
       firstDayOfWeek,
       workWeekDays,
-      daysToSelectInDayView
+      daysToSelectInDayView,
     ).map((date: Date) => date.getTime());
 
     // gets all the day refs for the given dates
@@ -708,7 +708,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
               this.classNames.bottomLeftCornerDate!,
               this.classNames.bottomRightCornerDate!,
               this.classNames.topLeftCornerDate!,
-              this.classNames.topRightCornerDate!
+              this.classNames.topRightCornerDate!,
             );
 
             const classNames = this._calculateRoundedStyles(this.classNames, false, false, index > 0, index < dayRefs.length - 1).trim();

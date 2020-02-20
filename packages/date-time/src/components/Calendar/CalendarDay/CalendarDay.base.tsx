@@ -19,7 +19,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<ICalendarDayProps>,
-    prevState: Readonly<ICalendarDayState>
+    prevState: Readonly<ICalendarDayState>,
   ): Partial<ICalendarDayState> | null {
     const { dateTimeFormatter, strings } = nextProps;
 
@@ -27,7 +27,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     const nextDate = nextProps.navigatedDate;
     if (!previousDate) {
       return {
-        previousNavigatedDate: nextProps.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate,
       };
     }
 
@@ -35,18 +35,18 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       if (previousDate < nextDate) {
         return {
           animateBackwards: false,
-          previousNavigatedDate: nextProps.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate,
         };
       } else if (previousDate > nextDate) {
         return {
           animateBackwards: true,
-          previousNavigatedDate: nextProps.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate,
         };
       }
     }
 
     return {
-      previousNavigatedDate: nextProps.navigatedDate
+      previousNavigatedDate: nextProps.navigatedDate,
     };
   }
 
@@ -75,7 +75,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       onNavigateDate,
       showWeekNumbers,
       dateRangeType,
-      animationDirection
+      animationDirection,
     } = this.props;
     const dayPickerId = getId();
     const monthAndYearId = getId();
@@ -86,7 +86,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       headerIsClickable: !!onHeaderSelect,
       showWeekNumbers: showWeekNumbers,
       animateBackwards: this.state.animateBackwards,
-      animationDirection: animationDirection
+      animationDirection: animationDirection,
     });
 
     return (
@@ -146,7 +146,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
       <div className={classNames.monthComponents}>
         <button
           className={css(classNames.headerIconButton, {
-            [classNames.disabledStyle]: !prevMonthInBounds
+            [classNames.disabledStyle]: !prevMonthInBounds,
           })}
           disabled={!allFocusable && !prevMonthInBounds}
           aria-disabled={!prevMonthInBounds}
@@ -164,7 +164,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
         </button>
         <button
           className={css(classNames.headerIconButton, {
-            [classNames.disabledStyle]: !nextMonthInBounds
+            [classNames.disabledStyle]: !nextMonthInBounds,
           })}
           disabled={!allFocusable && !nextMonthInBounds}
           aria-disabled={!nextMonthInBounds}

@@ -9,7 +9,7 @@ import {
   IMenuButtonSlot,
   IMenuButtonSlots,
   IMenuButtonTokens,
-  IMenuButtonViewProps
+  IMenuButtonViewProps,
 } from '../MenuButton/MenuButton.types';
 
 /**

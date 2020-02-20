@@ -22,7 +22,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     disabled: false,
     vertical: false,
     buttonProps: {},
-    originFromZero: false
+    originFromZero: false,
   };
 
   private _sliderLine = React.createRef<HTMLDivElement>();
@@ -36,7 +36,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     super(props);
 
     this._warnMutuallyExclusive({
-      value: 'defaultValue'
+      value: 'defaultValue',
     });
 
     this._id = getId('Slider');
@@ -45,7 +45,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     this.state = {
       value: value,
-      renderedValue: undefined
+      renderedValue: undefined,
     };
   }
 
@@ -64,7 +64,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       theme,
       originFromZero,
       marks,
-      showThumbTooltip
+      showThumbTooltip,
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -80,7 +80,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       vertical,
       showTransitions: renderedValue === value,
       showValue,
-      theme: theme!
+      theme: theme!,
     });
     const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
     const thumbButton = (
@@ -143,7 +143,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     gapSpace: 5,
                     beakWidth: 8,
                     target: `#${this._buttonId}`,
-                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter
+                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter,
                   }}
                 >
                   {thumbButton}
@@ -227,7 +227,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
     return {
-      [direction]: thumbOffsetPercent + '%'
+      [direction]: thumbOffsetPercent + '%',
     };
   }
 
@@ -348,7 +348,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             this._getStyleUsingOffsetPercent(vertical, i)
           }
           key={i}
-        />
+        />,
       );
     }
     return ticks;
@@ -375,20 +375,20 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     this.setState(
       {
         value: roundedValue,
-        renderedValue
+        renderedValue,
       },
       () => {
         if (valueChanged && this.props.onChange) {
           this.props.onChange(this.state.value as number);
         }
-      }
+      },
     );
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
-      renderedValue: undefined
+      renderedValue: undefined,
     });
 
     if (this.props.onChanged) {

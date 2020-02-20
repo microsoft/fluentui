@@ -7,7 +7,7 @@ export class ImageCenterContainExample extends React.Component<any, any> {
     const imageProps: Partial<IImageProps> = {
       imageFit: ImageFit.centerContain,
       width: 200,
-      height: 200
+      height: 200,
     };
 
     return (

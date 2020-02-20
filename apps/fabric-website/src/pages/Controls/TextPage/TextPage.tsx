@@ -18,8 +18,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/ios/TextImplementation.md') as string,
+        },
       ];
 
     case 'android':
@@ -27,8 +27,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/TextImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/android/TextImplementation.md') as string,
+        },
       ];
   }
 }

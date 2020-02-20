@@ -17,7 +17,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     const items = createListItems(500);
     this.state = {
       sortedItems: items,
-      columns: _buildColumns(items)
+      columns: _buildColumns(items),
     };
   }
 
@@ -64,7 +64,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         }
 
         return col;
-      })
+      }),
     });
   };
 

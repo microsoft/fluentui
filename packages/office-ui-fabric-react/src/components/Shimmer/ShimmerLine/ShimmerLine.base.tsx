@@ -13,7 +13,7 @@ export const ShimmerLineBase: React.FunctionComponent<IShimmerLineProps> = props
   const classNames = getClassNames(styles!, {
     theme: theme!,
     height,
-    borderStyle
+    borderStyle,
   });
 
   return (

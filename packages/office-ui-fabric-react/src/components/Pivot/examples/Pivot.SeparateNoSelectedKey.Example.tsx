@@ -9,7 +9,7 @@ export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any>
     const pivotItems = { Thing1: <div>thing 1</div>, Thing2: <div>thing 2</div>, Thing3: <div>thing 3</div> };
     const items: { [key: string]: React.ReactElement<any> } = {
       ...pivotItems,
-      Settings: <div>settings</div>
+      Settings: <div>settings</div>,
     };
 
     return (
@@ -18,7 +18,7 @@ export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any>
         <div
           style={{
             display: 'flex',
-            alignItems: 'center'
+            alignItems: 'center',
           }}
         >
           <Pivot
@@ -48,7 +48,7 @@ export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any>
 
   private _handleLinkClick = (item: PivotItem): void => {
     this.setState({
-      selectedKey: item.props.itemKey
+      selectedKey: item.props.itemKey,
     });
   };
 

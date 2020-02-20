@@ -1,5 +1,5 @@
-import * as _ from 'lodash'
-import * as React from 'react'
+import * as _ from 'lodash';
+import * as React from 'react';
 import {
   Button,
   Text,
@@ -22,54 +22,54 @@ import {
   mergeThemes,
   Tooltip,
   tooltipAsLabelBehavior,
-} from '@fluentui/react'
+} from '@fluentui/react';
 
 type CustomStatusVariables = {
-  isRecordingIndicator?: boolean
+  isRecordingIndicator?: boolean;
 
-  recordingIndicatorBorderColor?: string
-  recordingIndicatorBorderStyle?: string
-  recordingIndicatorBorderWidth?: string
-}
+  recordingIndicatorBorderColor?: string;
+  recordingIndicatorBorderStyle?: string;
+  recordingIndicatorBorderWidth?: string;
+};
 
 type CustomToolbarVariables = {
-  isCt?: boolean
+  isCt?: boolean;
 
-  isCtItemDanger?: boolean
-  isCtItemPrimary?: boolean
-  isCtItemIconNoFill?: boolean
-  isCtItemIndicator?: boolean
-  isCtItemWithNotification?: boolean
+  isCtItemDanger?: boolean;
+  isCtItemPrimary?: boolean;
+  isCtItemIconNoFill?: boolean;
+  isCtItemIndicator?: boolean;
+  isCtItemWithNotification?: boolean;
 
-  ctBorderRadius: string
-  ctBorderStyle: string
-  ctBorderWidth: string
-  ctHeight: string
+  ctBorderRadius: string;
+  ctBorderStyle: string;
+  ctBorderWidth: string;
+  ctHeight: string;
 
-  ctItemBackground: string
-  ctItemBackgroundHover: string
-  ctItemBorderColorFocus: string
-  ctItemColor: string
-  ctItemColorFocus: string
-  ctItemColorHover: string
+  ctItemBackground: string;
+  ctItemBackgroundHover: string;
+  ctItemBorderColorFocus: string;
+  ctItemColor: string;
+  ctItemColorFocus: string;
+  ctItemColorHover: string;
 
-  ctItemActiveColor: string
-  ctItemActiveBackground: string
-  ctItemActiveBackgroundOverlay: string
+  ctItemActiveColor: string;
+  ctItemActiveBackground: string;
+  ctItemActiveBackgroundOverlay: string;
 
-  ctItemDangerBackground: string
-  ctItemDangerColorHover: string
-  ctItemDangerBackgroundHover: string
+  ctItemDangerBackground: string;
+  ctItemDangerColorHover: string;
+  ctItemDangerBackgroundHover: string;
 
-  ctItemIndicatorPadding: string
+  ctItemIndicatorPadding: string;
 
-  ctItemNotificationBackgroundColor: string
-  ctItemNotificationSize: string
+  ctItemNotificationBackgroundColor: string;
+  ctItemNotificationSize: string;
 
-  ctItemPrimaryBackground: string
-  ctItemPrimaryBackgroundHover: string
-  ctItemPrimaryColorHover: string
-}
+  ctItemPrimaryBackground: string;
+  ctItemPrimaryBackgroundHover: string;
+  ctItemPrimaryColorHover: string;
+};
 
 const darkThemeOverrides: ThemeInput = {
   componentVariables: {
@@ -115,9 +115,7 @@ const darkThemeOverrides: ThemeInput = {
 
   componentStyles: {
     Status: {
-      root: ({
-        variables: v,
-      }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
+      root: ({ variables: v }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
         ...(v.isRecordingIndicator && {
           boxSizing: 'content-box',
           borderColor: v.recordingIndicatorBorderColor,
@@ -127,9 +125,7 @@ const darkThemeOverrides: ThemeInput = {
       }),
     },
     Toolbar: {
-      root: ({
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
+      root: ({ variables: v }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           borderRadius: v.ctBorderRadius,
           height: v.ctHeight,
@@ -139,10 +135,7 @@ const darkThemeOverrides: ThemeInput = {
     },
 
     ToolbarCustomItem: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarCustomItemProps, CustomToolbarVariables>) => ({
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarCustomItemProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           background: v.ctItemBackground,
           borderStyle: v.ctBorderStyle,
@@ -162,10 +155,7 @@ const darkThemeOverrides: ThemeInput = {
     },
 
     ToolbarItem: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarItemProps, CustomToolbarVariables>) => {
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarItemProps, CustomToolbarVariables>) => {
         return {
           ...(v.isCt && {
             alignItems: 'center',
@@ -270,22 +260,19 @@ const darkThemeOverrides: ThemeInput = {
               display: 'block',
             },
           }),
-        }
+        };
       },
     },
 
     ToolbarDivider: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           margin: 0,
         }),
       }),
     },
   },
-}
+};
 
 const tooltips = {
   videoOn: 'Turn camera off',
@@ -300,37 +287,37 @@ const tooltips = {
   addParticipants: 'Add participants',
   pptNext: 'Navigate forward',
   pptPrevious: 'Navigate back',
-}
+};
 
 interface CustomToolbarProps {
-  layout?: 'standard' | 'desktop-share' | 'powerpoint-presenter'
+  layout?: 'standard' | 'desktop-share' | 'powerpoint-presenter';
 
-  isRecording?: boolean
+  isRecording?: boolean;
 
-  cameraActive?: boolean
-  onCameraChange?: (state: boolean) => void
+  cameraActive?: boolean;
+  onCameraChange?: (state: boolean) => void;
 
-  micActive?: boolean
-  onMicChange?: (state: boolean) => void
+  micActive?: boolean;
+  onMicChange?: (state: boolean) => void;
 
-  screenShareActive?: boolean
-  onScreenShareChange?: (state: boolean) => void
+  screenShareActive?: boolean;
+  onScreenShareChange?: (state: boolean) => void;
 
-  sidebarSelected: false | 'chat' | 'participant-add'
-  onSidebarChange?: (state: false | 'chat' | 'participant-add') => void
+  sidebarSelected: false | 'chat' | 'participant-add';
+  onSidebarChange?: (state: false | 'chat' | 'participant-add') => void;
 
-  chatHasNotification?: boolean
+  chatHasNotification?: boolean;
 
-  pptSlide?: string
-  onPptPrevClick?: () => void
-  onPptNextClick?: () => void
+  pptSlide?: string;
+  onPptPrevClick?: () => void;
+  onPptNextClick?: () => void;
 
-  onEndCallClick?: () => void
+  onEndCallClick?: () => void;
 }
 
 type CustomToolbarLayout = (
   props: CustomToolbarProps,
-) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>
+) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>;
 
 const commonLayout: CustomToolbarLayout = props =>
   [
@@ -338,9 +325,7 @@ const commonLayout: CustomToolbarLayout = props =>
       key: 'recording',
       kind: 'custom' as ToolbarItemShorthandKinds,
       focusable: true,
-      content: (
-        <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />
-      ),
+      content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
       variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
@@ -400,7 +385,7 @@ const commonLayout: CustomToolbarLayout = props =>
       onClick: () => _.invoke(props, 'onMoreClick'),
       variables: { isCtItemPrimary: true },
     },
-  ].filter(Boolean)
+  ].filter(Boolean);
 
 const sidebarButtons: CustomToolbarLayout = props => [
   {
@@ -412,8 +397,7 @@ const sidebarButtons: CustomToolbarLayout = props => [
       size: 'large' as SizeValue,
     },
     key: 'chat',
-    onClick: () =>
-      _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
+    onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
     variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true },
   },
   {
@@ -425,15 +409,10 @@ const sidebarButtons: CustomToolbarLayout = props => [
       size: 'large' as SizeValue,
     },
     key: 'participant-add',
-    onClick: () =>
-      _.invoke(
-        props,
-        'onSidebarChange',
-        props.sidebarSelected === 'participant-add' ? false : 'participant-add',
-      ),
+    onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
     variables: { isCtItemIconNoFill: true },
   },
-]
+];
 
 const layoutItems: ShorthandValue<ToolbarItemProps> = {
   endCall: props => ({
@@ -446,7 +425,7 @@ const layoutItems: ShorthandValue<ToolbarItemProps> = {
     onClick: () => _.invoke(props, 'onEndCallClick'),
     variables: { isCtItemDanger: true },
   }),
-}
+};
 
 const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
   standard: props => [...commonLayout(props), ...sidebarButtons(props), layoutItems.endCall(props)],
@@ -512,35 +491,28 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
 
     layoutItems.endCall(props),
   ],
-}
+};
 
 const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
-  const { layout = 'standard' } = props
+  const { layout = 'standard' } = props;
 
   const items = layouts[layout](props).map((item: ToolbarItemProps) => ({
     ...item,
     children: (item as any).tooltip
       ? (ToolbarItem, props) => {
-          const { tooltip, key, ...rest } = props // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
+          const { tooltip, key, ...rest } = props; // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
 
-          return (
-            <Tooltip
-              key={key}
-              trigger={<ToolbarItem {...rest} />}
-              accessibility={tooltipAsLabelBehavior}
-              content={tooltip}
-            />
-          )
+          return <Tooltip key={key} trigger={<ToolbarItem {...rest} />} accessibility={tooltipAsLabelBehavior} content={tooltip} />;
         }
       : null,
-  }))
+  }));
 
-  return <Toolbar variables={{ isCt: true }} items={items} />
-}
+  return <Toolbar variables={{ isCt: true }} items={items} />;
+};
 
 const CustomToolbarPrototype = () => {
-  let theme = {}
-  theme = mergeThemes(themes.teamsDark, darkThemeOverrides)
+  let theme = {};
+  theme = mergeThemes(themes.teamsDark, darkThemeOverrides);
 
   return (
     <Provider theme={theme}>
@@ -555,10 +527,10 @@ const CustomToolbarPrototype = () => {
         pptSlide={`${1} of ${2}`}
       />
     </Provider>
-  )
-}
+  );
+};
 
-CustomToolbarPrototype.iterations = 100
-CustomToolbarPrototype.filename = 'CustomToolbar.perf.tsx'
+CustomToolbarPrototype.iterations = 100;
+CustomToolbarPrototype.filename = 'CustomToolbar.perf.tsx';
 
-export default CustomToolbarPrototype
+export default CustomToolbarPrototype;

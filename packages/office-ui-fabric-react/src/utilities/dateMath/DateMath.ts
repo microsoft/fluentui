@@ -159,7 +159,7 @@ export function getDateRangeArray(
   dateRangeType: DateRangeType,
   firstDayOfWeek: DayOfWeek,
   workWeekDays?: DayOfWeek[],
-  daysToSelectInDayView: number = 1
+  daysToSelectInDayView: number = 1,
 ): Date[] {
   const datesArray = new Array<Date>();
   let startDate: Date;
@@ -235,7 +235,7 @@ export function getWeekNumbersInMonth(
   weeksInMonth: number,
   firstDayOfWeek: DayOfWeek,
   firstWeekOfYear: FirstWeekOfYear,
-  navigatedDate: Date
+  navigatedDate: Date,
 ): number[] {
   const selectedYear = navigatedDate.getFullYear();
   const selectedMonth = navigatedDate.getMonth();

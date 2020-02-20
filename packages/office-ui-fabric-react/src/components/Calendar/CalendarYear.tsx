@@ -44,13 +44,13 @@ export interface ICalendarYearProps {
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
-  nextRangeAriaLabel: undefined
+  nextRangeAriaLabel: undefined,
 };
 
 const DefaultNavigationIcons: ICalendarIconStrings = {
   leftNavigation: 'Up',
   rightNavigation: 'Down',
-  closeIcon: 'CalculatorMultiply'
+  closeIcon: 'CalculatorMultiply',
 };
 
 interface ICalendarYearGridCell {
@@ -81,7 +81,7 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
       <button
         className={css('ms-DatePicker-yearOption', styles.yearOption, {
           ['ms-DatePicker-day--highlighted ' + styles.yearIsHighlighted]: selected,
-          ['ms-DatePicker-yearOption--disabled ' + styles.yearOptionIsDisabled]: disabled
+          ['ms-DatePicker-yearOption--disabled ' + styles.yearOptionIsDisabled]: disabled,
         })}
         type="button"
         role="gridcell"
@@ -195,7 +195,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
     return (
       <button
         className={css('ms-DatePicker-prevDecade', styles.prevDecade, {
-          ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled
+          ['ms-DatePicker-prevDecade--disabled ' + styles.prevDecadeIsDisabled]: disabled,
         })}
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
@@ -243,7 +243,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
     return (
       <button
         className={css('ms-DatePicker-nextDecade', styles.nextDecade, {
-          ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled
+          ['ms-DatePicker-nextDecade--disabled ' + styles.nextDecadeIsDisabled]: disabled,
         })}
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
@@ -425,7 +425,7 @@ export class CalendarYear extends React.Component<ICalendarYearProps, ICalendarY
     return {
       fromYear: fromYear,
       navigatedYear: navigatedYear,
-      selectedYear: selectedYear
+      selectedYear: selectedYear,
     };
   }
 }

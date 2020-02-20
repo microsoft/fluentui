@@ -25,5 +25,5 @@ module.exports.ts = {
   commonjsOnly: () => {
     const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
-  }
+  },
 };

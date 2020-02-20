@@ -29,13 +29,13 @@ interface IExtendedComponentPageSection extends IComponentPageSection {
 const headingWithEditStackProps: IStackProps = {
   horizontal: true,
   verticalAlign: 'center',
-  horizontalAlign: 'space-between'
+  horizontalAlign: 'space-between',
 };
 
 export class ComponentPageBase extends React.PureComponent<IComponentPageProps> {
   public static defaultProps: Partial<IComponentPageProps> = {
     isHeaderVisible: true,
-    areBadgesVisible: false
+    areBadgesVisible: false,
   };
 
   private _baseUrl: string;
@@ -98,7 +98,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       props.exampleCards && { title: 'Variants' },
       props.propertiesTables && { title: 'Implementation' },
       props.isFeedbackVisible && { title: 'Feedback' },
-      ...(props.otherSections || [])
+      ...(props.otherSections || []),
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
@@ -151,7 +151,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           </>
         ),
         wrapperClass: this._styles.implementationSection,
-        titleClass: null
+        titleClass: null,
       });
     }
   }
@@ -177,7 +177,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             editUrl: practicesUrl,
             wrapperClass: classNames.usageSection,
             titleClass: classNames.usageHeading,
-            id: null
+            id: null,
           })}
         {!!(dos && donts) && (
           <div className={css(classNames.section, classNames.doSections)}>
@@ -231,7 +231,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         section: overview,
         editUrl: this._getURL('Overview', editOverviewUrl),
         wrapperClass: this._styles.overviewSection,
-        titleClass: this._styles.overviewHeading
+        titleClass: this._styles.overviewHeading,
       });
     }
 
@@ -244,7 +244,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       return this._getSection({
         title: 'Accessibility',
         section: accessibility,
-        editUrl: this._getURL('Accessibility', editOverviewUrl)
+        editUrl: this._getURL('Accessibility', editOverviewUrl),
       });
     }
 
@@ -258,7 +258,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       wrapperClass = this._styles.variantsSection,
       titleClass = this._styles.variantsTitle,
       id = _idFromSectionTitle(section.title),
-      editUrl
+      editUrl,
     } = section;
     const classNames = this._styles;
     return (
@@ -303,5 +303,5 @@ export const ComponentPage: React.FunctionComponent<IComponentPageProps> = style
   IComponentPageStyleProps,
   IComponentPageStyles
 >(ComponentPageBase, getStyles, undefined, {
-  scope: 'ComponentPage'
+  scope: 'ComponentPage',
 });

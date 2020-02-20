@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Animation, Icon, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Icon, Provider } from '@fluentui/react';
 
 const spinner = {
   keyframe: {
@@ -12,13 +12,13 @@ const spinner = {
   },
   duration: '5s',
   iterationCount: 'infinite',
-}
+};
 
 const AnimatedIcon = () => (
   <Animation name="spinner">
     <Icon name="mention" circular bordered />
   </Animation>
-)
+);
 
 const ProviderExampleAnimation = () => (
   <Provider theme={{ animations: { spinner } }}>
@@ -31,6 +31,6 @@ const ProviderExampleAnimation = () => (
       <AnimatedIcon />
     </Provider>
   </Provider>
-)
+);
 
-export default ProviderExampleAnimation
+export default ProviderExampleAnimation;

@@ -18,7 +18,7 @@ export class StaticListPage extends React.PureComponent<{}, { enableProfiler: bo
     super(props);
 
     this.state = {
-      enableProfiler: false
+      enableProfiler: false,
     };
   }
 

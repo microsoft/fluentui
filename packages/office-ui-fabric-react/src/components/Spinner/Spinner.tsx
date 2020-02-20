@@ -8,5 +8,5 @@ export const Spinner: React.FunctionComponent<ISpinnerProps> = styled<ISpinnerPr
   SpinnerBase,
   getStyles,
   undefined,
-  { scope: 'Spinner' }
+  { scope: 'Spinner' },
 );

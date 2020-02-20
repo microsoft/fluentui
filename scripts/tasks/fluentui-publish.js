@@ -79,7 +79,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
       '--yes',
       '--registry',
       argv().registry,
-      bumpType
+      bumpType,
     ];
 
     logger.info(`Running this command: npx ${lernaPublishArgs.join(' ')}`);
@@ -87,7 +87,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
     spawnSync('npx', lernaPublishArgs, {
       cwd: root,
       shell: true,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
   };
 };

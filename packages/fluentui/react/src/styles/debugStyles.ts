@@ -1,4 +1,4 @@
-import { ICSSInJSStyle } from '@fluentui/styles'
+import { ICSSInJSStyle } from '@fluentui/styles';
 
 const debugStyle = ({ name, color, style }): ICSSInJSStyle => ({
   position: 'relative',
@@ -16,19 +16,19 @@ const debugStyle = ({ name, color, style }): ICSSInJSStyle => ({
     color: '#fff',
     background: color,
   },
-})
+});
 
 export const debugRoot = (): ICSSInJSStyle => ({
   ...debugStyle({ name: 'LAYOUT', color: 'cornflowerblue', style: 'solid' }),
   padding: '8px',
   margin: '2px',
-})
+});
 
 export const debugArea = (): ICSSInJSStyle => ({
   ...debugStyle({ name: 'AREA', color: 'lightsalmon', style: 'dashed' }),
   padding: '8px',
   margin: '2px',
-})
+});
 
 export const debugGap = ({ vertical }): ICSSInJSStyle => ({
   display: 'grid',
@@ -50,4 +50,4 @@ export const debugGap = ({ vertical }): ICSSInJSStyle => ({
     lineHeight: 0,
     color: '#fff',
   },
-})
+});

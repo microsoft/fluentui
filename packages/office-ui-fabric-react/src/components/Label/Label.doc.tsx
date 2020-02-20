@@ -13,8 +13,8 @@ export const LabelPageProps: IDocPageProps = {
     {
       title: 'Label',
       code: LabelBasicExampleCode,
-      view: <LabelBasicExample />
-    }
+      view: <LabelBasicExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
   bestPractices: '',
@@ -22,5 +22,5 @@ export const LabelPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

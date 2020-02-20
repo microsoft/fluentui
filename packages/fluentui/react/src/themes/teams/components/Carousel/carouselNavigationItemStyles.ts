@@ -1,18 +1,15 @@
-import { pxToRem } from '../../../../utils'
-import { CarouselNavigationItemProps } from '../../../../components/Carousel/CarouselNavigationItem'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { CarouselNavigationVariables } from './carouselNavigationVariables'
-import { getColorScheme } from '../../colors'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import { pxToRem } from '../../../../utils';
+import { CarouselNavigationItemProps } from '../../../../components/Carousel/CarouselNavigationItem';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { CarouselNavigationVariables } from './carouselNavigationVariables';
+import { getColorScheme } from '../../colors';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
-const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
-  CarouselNavigationItemProps,
-  CarouselNavigationVariables
-> = {
+const carouselNavigationItemStyles: ComponentSlotStylesPrepared<CarouselNavigationItemProps, CarouselNavigationVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { active, iconOnly, primary, vertical } = p
+    const { active, iconOnly, primary, vertical } = p;
 
-    const colors = getColorScheme(v.colorScheme, null, primary)
+    const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
       color: 'inherit',
@@ -72,11 +69,11 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
 
         ...(primary && iconOnly && { color: 'inherit' }),
       },
-    }
+    };
   },
 
   content: ({ props: p }): ICSSInJSStyle => {
-    const widthAdjust = p.icon ? 26 : 0
+    const widthAdjust = p.icon ? 26 : 0;
 
     return {
       whiteSpace: 'normal',
@@ -90,7 +87,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
         maxWidth: pxToRem(262 - widthAdjust),
         marginRight: pxToRem(16),
       }),
-    }
+    };
   },
 
   icon: ({ props: p }): ICSSInJSStyle => ({
@@ -101,6 +98,6 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       verticalAlign: 'top',
     }),
   }),
-}
+};
 
-export default carouselNavigationItemStyles
+export default carouselNavigationItemStyles;

@@ -8,6 +8,6 @@ export const LayoutPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

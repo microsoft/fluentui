@@ -24,8 +24,8 @@ task('test:circulars:run', done => {
 
         const relativePathsCycle = absolutePathsCycle.map(absolutePath => path.relative(config.paths.base(), absolutePath));
         compilation.errors.push(new Error(relativePathsCycle.join(' -> ')));
-      })
-    ]
+      }),
+    ],
   });
 
   webpackPlugin(webpackConfig, done, () => {

@@ -13,13 +13,13 @@ export const PositioningContainerPageProps: IDocPageProps = {
     {
       title: 'Positioning Container Basic',
       code: CoachmarkBasicExampleCode,
-      view: <PositioningContainerBasicExample />
-    }
+      view: <PositioningContainerBasicExample />,
+    },
   ],
   propertiesTablesSources: [require<string>('!raw-loader!experiments/src/components/PositioningContainer/PositioningContainer.types.ts')],
   overview: '',
   bestPractices: '',
   dos: '',
   donts: '',
-  isHeaderVisible: true
+  isHeaderVisible: true,
 };

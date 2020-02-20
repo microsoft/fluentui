@@ -16,7 +16,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
     super(props);
 
     this.state = {
-      btnDisabled: false
+      btnDisabled: false,
     };
   }
 
@@ -53,14 +53,14 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
                 {
                   key: 'buttonMenuItem1',
                   text: 'Menu Item 1',
-                  keytipProps: keytipMap.ButtonMenuItem1
+                  keytipProps: keytipMap.ButtonMenuItem1,
                 },
                 {
                   key: 'buttonMenuItem2',
                   text: 'Menu Item 2',
-                  keytipProps: keytipMap.ButtonMenuItem2
-                }
-              ]
+                  keytipProps: keytipMap.ButtonMenuItem2,
+                },
+              ],
             }}
           />
           <DefaultButton
@@ -76,14 +76,14 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
                 {
                   key: 'splitButtonMenuButton1',
                   text: 'Split Button Menu Item 1',
-                  keytipProps: keytipMap.SplitButtonMenuItem1
+                  keytipProps: keytipMap.SplitButtonMenuItem1,
                 },
                 {
                   key: 'splitButtonMenuButton2',
                   text: 'Split Button Menu Item 2',
-                  keytipProps: keytipMap.SplitButtonMenuItem2
-                }
-              ]
+                  keytipProps: keytipMap.SplitButtonMenuItem2,
+                },
+              ],
             }}
           />
           <DefaultButton text="I do not have a keytip" />

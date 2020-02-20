@@ -11,18 +11,18 @@ const _columns: IColumn[] = [
   {
     key: 'key',
     minWidth: 8,
-    name: 'key'
+    name: 'key',
   },
   {
     key: 'name',
     minWidth: 8,
-    name: 'name'
+    name: 'name',
   },
   {
     key: 'value',
     minWidth: 8,
-    name: 'value'
-  }
+    name: 'value',
+  },
 ];
 
 // Populate mock items for testing
@@ -33,7 +33,7 @@ function mockItems(count: number): any[] {
     items.push({
       key: i,
       name: 'Item ' + i,
-      value: i
+      value: i,
     });
   }
 
@@ -47,7 +47,7 @@ const mockProps: IDetailsListProps = {
   columns: _columns,
   onRenderRow: renderRow,
   skipViewportMeasures: true,
-  onShouldVirtualize: () => false
+  onShouldVirtualize: () => false,
 };
 
 describe('DetailsRow', () => {
@@ -98,7 +98,7 @@ describe('DetailsRow', () => {
         checkboxVisibility={CheckboxVisibility.always}
         selectionMode={SelectionMode.single}
         selection={new Selection()}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -116,7 +116,7 @@ describe('DetailsRow', () => {
         selectionMode={SelectionMode.single}
         selection={new Selection()}
         onRenderDetailsCheckbox={onRenderCheckboxMock}
-      />
+      />,
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledWith({ checked: false, theme: getTheme() }, expect.any(Function));

@@ -13,7 +13,7 @@ enum Months {
   Sep = 8,
   Oct = 9,
   Nov = 10,
-  Dec = 11
+  Dec = 11,
 }
 describe('DateMath', () => {
   it('can add days', () => {

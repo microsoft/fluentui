@@ -1,16 +1,16 @@
 export interface StatusVariables {
-  borderColor: string
-  borderWidth: number
-  successBackgroundColor: string
-  successTextColor: string
-  infoBackgroundColor: string
-  infoTextColor: string
-  warningBackgroundColor: string
-  warningTextColor: string
-  errorBackgroundColor: string
-  errorTextColor: string
-  defaultBackgroundColor: string
-  defaultTextColor: string
+  borderColor: string;
+  borderWidth: number;
+  successBackgroundColor: string;
+  successTextColor: string;
+  infoBackgroundColor: string;
+  infoTextColor: string;
+  warningBackgroundColor: string;
+  warningTextColor: string;
+  errorBackgroundColor: string;
+  errorTextColor: string;
+  defaultBackgroundColor: string;
+  defaultTextColor: string;
 }
 
 export default siteVariables => ({
@@ -26,4 +26,4 @@ export default siteVariables => ({
   errorTextColor: siteVariables.colors.white,
   defaultBackgroundColor: siteVariables.colors.grey[350],
   defaultTextColor: siteVariables.colors.white,
-})
+});

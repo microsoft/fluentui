@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -11,6 +11,6 @@ const gridCellWithFocusableElementBehavior: Accessibility = props => ({
       role: 'gridcell',
     },
   },
-})
+});
 
-export default gridCellWithFocusableElementBehavior
+export default gridCellWithFocusableElementBehavior;

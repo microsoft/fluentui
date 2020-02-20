@@ -32,7 +32,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     super(props);
     this.state = {
       openIssues: [],
-      closedIssues: []
+      closedIssues: [],
     };
   }
 
@@ -103,7 +103,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
       return {
         issueTitle: item.title,
         issueNum: item.number,
-        issueCreated: openedOn
+        issueCreated: openedOn,
       };
     });
   }
@@ -133,5 +133,5 @@ export const FeedbackList: React.FunctionComponent<IFeedbackListProps> = styled<
   IFeedbackListStyleProps,
   IFeedbackListStyles
 >(FeedbackListBase, getStyles, undefined, {
-  scope: 'FeedbackList'
+  scope: 'FeedbackList',
 });

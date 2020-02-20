@@ -9,7 +9,7 @@ import {
   getDocument,
   isDirectionalKeyCode,
   memoizeFunction,
-  getRTL
+  getRTL,
 } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
@@ -81,7 +81,7 @@ export class FabricBase extends React.Component<
       theme: theme!,
       applyTheme: applyTheme,
       className,
-      isFocusVisible: this.state.isFocusVisible
+      isFocusVisible: this.state.isFocusVisible,
     });
     return classNames;
   }

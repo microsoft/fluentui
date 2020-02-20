@@ -15,18 +15,18 @@ export const RatingPageProps: IDocPageProps = {
     {
       title: 'Rating',
       code: RatingBasicExampleCode,
-      view: <RatingBasicExample />
+      view: <RatingBasicExample />,
     },
     {
       title: 'Button Controlled Rating',
       code: RatingButtonControlledExampleCode,
-      view: <RatingButtonControlledExample />
-    }
+      view: <RatingButtonControlledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Rating/docs/RatingDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

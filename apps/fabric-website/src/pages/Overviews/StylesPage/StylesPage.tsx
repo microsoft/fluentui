@@ -34,7 +34,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="Color" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -47,7 +47,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="ArrangeSendBackward" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -60,7 +60,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="EmojiTabSymbols" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -73,7 +73,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="Tiles" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -86,7 +86,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="MiniExpand" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -99,7 +99,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="FontSize" className={styles.cardIcon} />
               </div>
             </Link>
-          )
+          ),
         },
         {
           className: styles.card,
@@ -112,16 +112,16 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 <Icon iconName="World" className={styles.cardIcon} />
               </div>
             </Link>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming soon',
-          content: '...'
-        }
+          content: '...',
+        },
       ];
   }
 }

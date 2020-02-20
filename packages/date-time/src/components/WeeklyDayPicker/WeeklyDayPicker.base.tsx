@@ -9,7 +9,7 @@ import {
   ICalendarFormatDateCallbacks,
   ICalendarStrings,
   ICalendarIconStrings,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
@@ -33,12 +33,12 @@ const DEFAULT_STRINGS = {
   closeButtonAriaLabel: 'Close date picker',
   weekNumberFormatString: 'Week number {0}',
   prevWeekAriaLabel: 'Go to previous week',
-  nextWeekAriaLabel: 'Go to next week'
+  nextWeekAriaLabel: 'Go to next week',
 };
 
 export const defaultIconStrings: ICalendarIconStrings = {
   leftNavigation: 'ChevronLeft',
-  rightNavigation: 'ChevronRight'
+  rightNavigation: 'ChevronRight',
 };
 
 const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
@@ -46,7 +46,7 @@ const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
     strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear(),
   formatMonthYear: (date: Date, strings: ICalendarStrings) => strings.months[date.getMonth()] + ' ' + date.getFullYear(),
   formatDay: (date: Date) => date.getDate().toString(),
-  formatYear: (date: Date) => date.getFullYear().toString()
+  formatYear: (date: Date) => date.getFullYear().toString(),
 };
 
 export interface IWeeklyDayPickerState {
@@ -72,7 +72,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     strings: DEFAULT_STRINGS,
     navigationIcons: defaultIconStrings,
     dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-    animationDirection: AnimationDirection.Horizontal
+    animationDirection: AnimationDirection.Horizontal,
   };
 
   private _dayGrid = React.createRef<ICalendarDayGrid>();
@@ -81,7 +81,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IWeeklyDayPickerProps>,
-    prevState: Readonly<IWeeklyDayPickerState>
+    prevState: Readonly<IWeeklyDayPickerState>,
   ): Partial<IWeeklyDayPickerState> | null {
     const currentDate =
       nextProps.initialDate && !isNaN(nextProps.initialDate.getTime()) ? nextProps.initialDate : nextProps.today || new Date();
@@ -94,7 +94,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
         selectedDate: currentDate,
         navigatedDate: currentDate,
         previousShowFullMonth: showFullMonth,
-        animationDirection: newAnimationDirection
+        animationDirection: newAnimationDirection,
       };
     }
 
@@ -102,7 +102,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
       selectedDate: currentDate,
       navigatedDate: prevState.navigatedDate,
       previousShowFullMonth: showFullMonth,
-      animationDirection: newAnimationDirection
+      animationDirection: newAnimationDirection,
     };
   }
 
@@ -114,7 +114,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
       selectedDate: currentDate,
       navigatedDate: currentDate,
       previousShowFullMonth: !!props.showFullMonth,
-      animationDirection: props.animationDirection!
+      animationDirection: props.animationDirection!,
     };
     this._focusOnUpdate = false;
   }
@@ -138,12 +138,12 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
       theme,
       className,
       showFullMonth,
-      weeksToShow
+      weeksToShow,
     } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
     });
 
     return (
@@ -192,7 +192,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
     // don't set the navigated date on selection because selection never causes navigation
     this.setState({
-      selectedDate: date
+      selectedDate: date,
     });
     this._focusOnUpdate = true;
 
@@ -205,7 +205,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     const { onNavigateDate } = this.props;
 
     this.setState({
-      navigatedDate: date
+      navigatedDate: date,
     });
     this._focusOnUpdate = focusOnNavigatedDay;
 
@@ -225,7 +225,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     return (
       <button
         className={css(classNames.navigationIconButton, {
-          [classNames.disabledStyle]: !prevWeekInBounds
+          [classNames.disabledStyle]: !prevWeekInBounds,
         })}
         disabled={!prevWeekInBounds}
         aria-disabled={!prevWeekInBounds}
@@ -252,7 +252,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
     return (
       <button
         className={css(classNames.navigationIconButton, {
-          [classNames.disabledStyle]: !nextWeekInBounds
+          [classNames.disabledStyle]: !nextWeekInBounds,
         })}
         disabled={!nextWeekInBounds}
         aria-disabled={!nextWeekInBounds}
@@ -286,7 +286,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
   private _navigateDate = (date: Date) => {
     this.setState({
-      navigatedDate: date
+      navigatedDate: date,
     });
     if (this.props.onNavigateDate) {
       this.props.onNavigateDate(date);

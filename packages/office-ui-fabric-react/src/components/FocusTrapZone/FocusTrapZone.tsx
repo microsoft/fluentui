@@ -9,7 +9,7 @@ import {
   getDocument,
   focusAsync,
   initializeComponentRef,
-  on
+  on,
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
@@ -96,10 +96,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const bumperProps = {
       style: {
         pointerEvents: 'none',
-        position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
+        position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
       tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
-      'data-is-visible': true
+      'data-is-visible': true,
     } as React.HTMLAttributes<HTMLDivElement>;
 
     return (

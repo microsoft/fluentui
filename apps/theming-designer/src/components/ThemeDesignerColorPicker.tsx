@@ -10,7 +10,7 @@ import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
 const colorLabelClassName = mergeStyles({
   fontSize: 16,
   fontWeight: 800,
-  marginLeft: 20
+  marginLeft: 20,
 });
 
 const colorBoxClassName = mergeStyles({
@@ -21,15 +21,15 @@ const colorBoxClassName = mergeStyles({
   left: 5,
   top: 5,
   border: '1px solid black',
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 const textBoxClassName = mergeStyles({
-  width: 100
+  width: 100,
 });
 
 const colorPanelClassName = mergeStyles({
-  position: 'relative' /* This is necessary to make position: absolute; work in the other style. */
+  position: 'relative' /* This is necessary to make position: absolute; work in the other style. */,
 });
 
 export interface IThemeDesignerColorPickerProps {
@@ -48,7 +48,7 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
   constructor(props: IThemeDesignerColorPickerProps) {
     super(props);
     this.state = {
-      isColorPickerVisible: false
+      isColorPickerVisible: false,
     };
 
     this._updateColorPickerVisible = this._updateColorPickerVisible.bind(this);

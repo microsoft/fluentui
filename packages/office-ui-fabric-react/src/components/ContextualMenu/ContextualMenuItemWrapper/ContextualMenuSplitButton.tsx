@@ -21,7 +21,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
       ...keytipProps,
-      hasMenu: true
+      hasMenu: true,
     };
   });
 
@@ -41,7 +41,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       hasCheckmarks,
       hasIcons,
       onItemMouseLeave,
-      expandedMenuItemKey
+      expandedMenuItemKey,
     } = this.props;
 
     const itemHasSubmenu = hasSubmenu(item);
@@ -106,7 +106,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
-    hasIcons: boolean
+    hasIcons: boolean,
   ) {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem, onItemClick } = this.props;
 
@@ -120,7 +120,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       isChecked: item.isChecked,
       checked: item.checked,
       iconProps: item.iconProps,
-      'data-is-focusable': false
+      'data-is-focusable': false,
     };
 
     const { itemProps: itemComponentProps } = item;
@@ -152,7 +152,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       onItemMouseDown,
       openSubMenu,
       dismissSubMenu,
-      dismissMenu
+      dismissMenu,
     } = this.props;
 
     const itemProps: IContextualMenuItem = {
@@ -162,7 +162,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       subMenuProps: item.subMenuProps,
       submenuIconProps: item.submenuIconProps,
       split: true,
-      key: item.key
+      key: item.key,
     };
 
     const buttonProps = {
@@ -174,8 +174,8 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
         onMouseMove: this._onItemMouseMoveIcon,
         'data-is-focusable': false,
         'data-ktp-execute-target': keytipAttributes['data-ktp-execute-target'],
-        'aria-hidden': true
-      }
+        'aria-hidden': true,
+      },
     };
 
     const { itemProps: itemComponentProps } = item;

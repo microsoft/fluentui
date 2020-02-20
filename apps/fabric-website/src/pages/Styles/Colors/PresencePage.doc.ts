@@ -6,6 +6,6 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const ColorsPresencePageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

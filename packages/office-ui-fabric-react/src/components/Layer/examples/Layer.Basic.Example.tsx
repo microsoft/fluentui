@@ -17,13 +17,13 @@ interface ILayerContentExampleState {
 
 class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
   public state = {
-    time: new Date().toLocaleTimeString()
+    time: new Date().toLocaleTimeString(),
   };
 
   public componentDidMount() {
     this._async.setInterval(() => {
       this.setState({
-        time: new Date().toLocaleTimeString()
+        time: new Date().toLocaleTimeString(),
       });
     }, 1000);
   }
@@ -48,7 +48,7 @@ interface ILayerBasicExampleState {
 
 export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState> {
   public state = {
-    showLayer: false
+    showLayer: false,
   };
 
   public render() {
@@ -56,7 +56,7 @@ export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState
     return (
       <LayerBasicExampleContext.Provider
         value={{
-          message: 'Hello world.'
+          message: 'Hello world.',
         }}
       >
         <div>

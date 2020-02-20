@@ -8,7 +8,7 @@ import {
   getDocument,
   getWindow,
   isElementTabbable,
-  css
+  css,
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -110,7 +110,7 @@ export interface ISelectionZoneState {
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
   public static defaultProps = {
     isSelectedOnFocus: true,
-    selectionMode: SelectionMode.multiple
+    selectionMode: SelectionMode.multiple,
   };
 
   private _root = React.createRef<HTMLDivElement>();
@@ -128,7 +128,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
 
     return {
       ...prevState,
-      isModal
+      isModal,
     };
   }
 
@@ -141,7 +141,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
     const isModal = selection.isModal && selection.isModal();
 
     this.state = {
-      isModal
+      isModal,
     };
   }
 
@@ -164,7 +164,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
     return (
       <div
         className={css('ms-SelectionZone', {
-          'ms-SelectionZone--modal': !!isModal
+          'ms-SelectionZone--modal': !!isModal,
         })}
         ref={this._root}
         onKeyDown={this._onKeyDown}
@@ -209,7 +209,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
     const isModal = selection.isModal && selection.isModal();
 
     this.setState({
-      isModal
+      isModal,
     });
   };
 

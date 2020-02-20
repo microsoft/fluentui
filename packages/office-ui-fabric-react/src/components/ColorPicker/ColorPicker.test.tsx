@@ -155,7 +155,7 @@ describe('ColorPicker', () => {
       svAriaLabel: 'custom rectangle',
       svAriaDescription: 'custom rectangle description',
       svAriaValueFormat: 'custom rectangle value', // missing placeholders but code doesn't check for that
-      hueAriaLabel: 'custom hue'
+      hueAriaLabel: 'custom hue',
     };
 
     wrapper = mount(
@@ -164,7 +164,7 @@ describe('ColorPicker', () => {
         // even using a mix of deprecated and new props should work
         hexLabel={fields[0]}
         strings={{ red: fields[1], green: fields[2], blue: fields[3], alpha: fields[4], ...customAria }}
-      />
+      />,
     );
 
     const tableHeaders = wrapper.find('thead td');
@@ -207,7 +207,7 @@ describe('ColorPicker', () => {
         onChange={colorChangeSpy}
         componentRef={colorPickerRef}
         styles={{ input: inputClassName }}
-      />
+      />,
     );
 
     expect(colorPicker!.color.hex).toEqual(colorStringValue);

@@ -33,7 +33,7 @@ export function getFocusStyle(
   highContrastStyle?: IRawStyle | undefined,
   borderColor?: string,
   outlineColor?: string,
-  isFocusedOnly?: boolean
+  isFocusedOnly?: boolean,
 ): IRawStyle;
 export function getFocusStyle(
   theme: ITheme,
@@ -42,7 +42,7 @@ export function getFocusStyle(
   highContrastStyle?: IRawStyle,
   borderColor?: string,
   outlineColor?: string,
-  isFocusedOnly?: boolean
+  isFocusedOnly?: boolean,
 ): IRawStyle {
   if (typeof insetOrOptions === 'number' || !insetOrOptions) {
     return _getFocusStyleInternal(theme, { inset: insetOrOptions, position, highContrastStyle, borderColor, outlineColor, isFocusedOnly });
@@ -59,7 +59,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
     highContrastStyle,
     borderColor = theme.palette.white,
     outlineColor = theme.palette.neutralSecondary,
-    isFocusedOnly = true
+    isFocusedOnly = true,
   } = options;
 
   return {
@@ -72,7 +72,7 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
       // Clear the focus border in Firefox.
       // Reference: http://stackoverflow.com/a/199319/1436671
       '::-moz-focus-inner': {
-        border: '0'
+        border: '0',
       },
 
       // When the element that uses this mixin is in a :focus state, add a pseudo-element to
@@ -88,10 +88,10 @@ function _getFocusStyleInternal(theme: ITheme, options: IGetFocusStylesOptions =
         outline: `${width}px solid ${outlineColor}`,
         zIndex: ZIndexes.FocusStyle,
         selectors: {
-          [HighContrastSelector]: highContrastStyle
-        }
-      }
-    }
+          [HighContrastSelector]: highContrastStyle,
+        },
+      },
+    },
   };
 }
 
@@ -103,13 +103,13 @@ export function focusClear(): IRawStyle {
     selectors: {
       '&::-moz-focus-inner': {
         // Clear the focus border in Firefox. Reference: http://stackoverflow.com/a/199319/1436671
-        border: 0
+        border: 0,
       },
       '&': {
         // Clear browser specific focus styles and use transparent as placeholder for focus style
-        outline: 'transparent'
-      }
-    }
+        outline: 'transparent',
+      },
+    },
   };
 }
 
@@ -127,9 +127,9 @@ export function getFocusOutlineStyle(theme: ITheme, inset: number = 0, width: nu
     selectors: {
       [`:global(${IsFocusVisibleClassName}) &:focus`]: {
         outline: `${width} solid ${color || theme.palette.neutralSecondary}`,
-        outlineOffset: `${-inset}px`
-      }
-    }
+        outlineOffset: `${-inset}px`,
+      },
+    },
   };
 }
 
@@ -147,7 +147,7 @@ export const getInputFocusStyle = (
   borderColor: string,
   borderRadius: string | number,
   borderType: 'border' | 'borderBottom' = 'border',
-  borderPosition: number = -1
+  borderPosition: number = -1,
 ): IRawStyle => {
   const isBorderBottom = borderType === 'borderBottom';
 
@@ -167,10 +167,10 @@ export const getInputFocusStyle = (
         width: borderType === 'borderBottom' ? '100%' : undefined,
         selectors: {
           [HighContrastSelector]: {
-            [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
-          }
-        }
-      }
-    }
+            [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight',
+          },
+        },
+      },
+    },
   };
 };

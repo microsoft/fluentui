@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @specification
@@ -21,6 +21,6 @@ const gridHeaderCellBehavior: Accessibility = props => ({
       },
     },
   },
-})
+});
 
-export default gridHeaderCellBehavior
+export default gridHeaderCellBehavior;

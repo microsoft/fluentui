@@ -15,7 +15,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
       className,
       isButton: !href,
       isDisabled: disabled,
-      theme: theme!
+      theme: theme!,
     });
 
     const RootType = this._getRootType(this.props);
@@ -62,7 +62,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
 
   private _adjustPropsForRootType(
     RootType: string | React.ComponentClass | React.FunctionComponent,
-    props: ILinkProps & { getStyles?: any }
+    props: ILinkProps & { getStyles?: any },
   ): Partial<ILinkProps> {
     // Deconstruct the props so we remove props like `as`, `theme` and `styles`
     // as those will always be removed. We also take some props that are optional
@@ -76,7 +76,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           target,
           href: disabled ? undefined : href,
-          ...restProps
+          ...restProps,
         };
       }
 
@@ -85,7 +85,7 @@ export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
         return {
           type: 'button',
           disabled,
-          ...restProps
+          ...restProps,
         };
       }
 

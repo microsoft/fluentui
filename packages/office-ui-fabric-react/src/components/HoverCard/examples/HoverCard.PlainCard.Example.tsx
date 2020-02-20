@@ -11,9 +11,9 @@ const itemClass = mergeStyles({
   selectors: {
     '&:hover': {
       textDecoration: 'underline',
-      cursor: 'pointer'
-    }
-  }
+      cursor: 'pointer',
+    },
+  },
 });
 
 export class HoverCardPlainCardExample extends React.Component<{}, {}> {
@@ -34,7 +34,7 @@ export class HoverCardPlainCardExample extends React.Component<{}, {}> {
   private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
     const plainCardProps: IPlainCardProps = {
       onRenderPlainCard: this._onRenderPlainCard,
-      renderData: item
+      renderData: item,
     };
 
     if (column.key === 'color') {

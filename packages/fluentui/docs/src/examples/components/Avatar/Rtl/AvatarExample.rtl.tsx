@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Avatar } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar } from '@fluentui/react';
 
 const AvatarExampleRtl = () => (
   <Avatar
@@ -9,6 +9,6 @@ const AvatarExampleRtl = () => (
       icon: 'icon-checkmark',
     }}
   />
-)
+);
 
-export default AvatarExampleRtl
+export default AvatarExampleRtl;

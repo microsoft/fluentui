@@ -23,7 +23,7 @@ export class WeeklyDayPickerInlineExpandableExample extends React.Component<
 
     this.state = {
       selectedDate: new Date(),
-      expanded: false
+      expanded: false,
     };
 
     this._onSelectDate = this._onSelectDate.bind(this);
@@ -84,7 +84,7 @@ export class WeeklyDayPickerInlineExpandableExample extends React.Component<
   private _onSelectDate(date: Date): void {
     this.setState((prevState: IWeeklyDayPickerInlineExpandableExampleState) => {
       return {
-        selectedDate: date
+        selectedDate: date,
       };
     });
   }
@@ -103,7 +103,7 @@ export class WeeklyDayPickerInlineExpandableExample extends React.Component<
 
   private _expand = () => {
     this.setState({
-      expanded: !this.state.expanded
+      expanded: !this.state.expanded,
     });
   };
 }

@@ -7,16 +7,16 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const SeparatorPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/ios/SeparatorOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/android/SeparatorOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

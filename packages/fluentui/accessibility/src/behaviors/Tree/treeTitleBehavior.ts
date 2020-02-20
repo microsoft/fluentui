@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -32,14 +32,14 @@ const treeTitleBehavior: Accessibility<TreeTitleBehavior> = props => ({
       },
     },
   },
-})
+});
 
-export default treeTitleBehavior
+export default treeTitleBehavior;
 
 type TreeTitleBehavior = {
   /** Indicated if tree title has a subtree */
-  hasSubtree?: boolean
-  level?: number
-  treeSize?: number
-  index?: number
-}
+  hasSubtree?: boolean;
+  level?: number;
+  treeSize?: number;
+  index?: number;
+};

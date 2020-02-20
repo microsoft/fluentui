@@ -39,7 +39,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
       styles.todoItem,
       this.props.item.isComplete === true ? styles.isCompleted : '',
       'ms-Grid',
-      'ms-slideDownIn20'
+      'ms-slideDownIn20',
     );
 
     return (

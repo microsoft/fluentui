@@ -10,7 +10,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
   useImperativeHandle(props.componentRef, () => ({
     focus: () => {
       toggleButtonRef.current && toggleButtonRef.current.focus();
-    }
+    },
   }));
 
   const { disabled, onChange } = props;
@@ -26,7 +26,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
         }
       }
     },
-    [checked, disabled, onChange]
+    [checked, disabled, onChange],
   );
 
   // TODO: can this be structured with helpers to reduce changes for bugs? (overriding controlled props in output, etc.)
@@ -35,7 +35,7 @@ export const useToggleState: IToggleComponent['state'] = props => {
     ...props,
     checked,
     toggleButtonRef,
-    onClick: _onClick
+    onClick: _onClick,
   };
 
   // Derived state should be performed on otherwise finalized viewProps.

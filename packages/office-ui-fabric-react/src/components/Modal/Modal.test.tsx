@@ -15,7 +15,7 @@ describe('Modal', () => {
     const component = renderer.create(
       <Modal isOpen={true} className={'test-className'} containerClassName={'test-containerClassName'}>
         Test Content
-      </Modal>
+      </Modal>,
     );
     expect(component.toJSON()).toMatchSnapshot();
 
@@ -31,7 +31,7 @@ describe('Modal', () => {
     const component = renderer.create(
       <Modal isOpen={true} isModeless={true} className={'test-className'} containerClassName={'test-containerClassName'}>
         Test Content
-      </Modal>
+      </Modal>,
     );
     expect(component.toJSON()).toMatchSnapshot();
 
@@ -53,11 +53,11 @@ describe('Modal', () => {
         dragOptions={{
           moveMenuItemText: 'Move',
           closeMenuItemText: 'Close',
-          menu: ContextualMenu
+          menu: ContextualMenu,
         }}
       >
         Test Content
-      </Modal>
+      </Modal>,
     );
     expect(component.toJSON()).toMatchSnapshot();
 

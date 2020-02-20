@@ -8,7 +8,7 @@ const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
 
 require('tsconfig-paths').register({
   baseUrl: config.path_base,
-  paths: compilerOptions.paths
+  paths: compilerOptions.paths,
 });
 
 // https://github.com/screener-io/screener-runner
@@ -20,7 +20,7 @@ module.exports = {
   tunnel: {
     host: `${config.server_host}:${config.server_port}`,
     gzip: true, // gzip compress all content being served from tunnel host
-    cache: true // sets cache-control header for all content being served from tunnel host. Must be used with gzip option
+    cache: true, // sets cache-control header for all content being served from tunnel host. Must be used with gzip option
   },
 
   diffOptions: {
@@ -31,7 +31,7 @@ module.exports = {
     minLayoutPosition: 1, // Optional threshold for Layout changes. Defaults to 4 pixels.
     minLayoutDimension: 1, // Optional threshold for Layout changes. Defaults to 10 pixels.
     minShiftGraphic: 1, // Optional threshold for pixel shifts in graphics.
-    compareSVGDOM: false // Pass if SVG DOM is the same. Defaults to false.
+    compareSVGDOM: false, // Pass if SVG DOM is the same. Defaults to false.
   },
 
   // screenshot every example in maximized mode
@@ -45,6 +45,6 @@ module.exports = {
     // - refs/heads/feature-branch-1 for "push"
     // - refs/pull/2040/merge for "pull_request"
     branch: process.env.GITHUB_REF.split('/')[2],
-    commit: process.env.GITHUB_SHA
-  })
+    commit: process.env.GITHUB_SHA,
+  }),
 };

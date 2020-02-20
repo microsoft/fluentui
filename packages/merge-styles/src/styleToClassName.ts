@@ -55,7 +55,7 @@ function expandCommaSeparatedGlobals(selectorWithGlobals: string): string {
         match[1]
           .split(',')
           .map((v: string) => `:global(${v.trim()})`)
-          .join(', ')
+          .join(', '),
       ]);
     }
   }
@@ -121,7 +121,7 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
                   .split(',')
                   .map((s: string) => s.trim())
                   .forEach((separatedSelector: string) =>
-                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector))
+                    extractRules([selectorValue], rules, expandSelector(separatedSelector, currentSelector)),
                   );
               } else {
                 extractRules([selectorValue], rules, expandSelector(newSelector, currentSelector));
@@ -220,7 +220,7 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
-      args
+      args,
     };
 
     if (!registration.className) {

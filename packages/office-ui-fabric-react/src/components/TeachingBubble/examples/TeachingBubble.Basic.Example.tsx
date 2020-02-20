@@ -17,18 +17,18 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
   public render(): JSX.Element {
     const { isTeachingBubbleVisible } = this.state;
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
+      children: 'Try it out',
     };
     const exampleSecondaryButtonProps: IButtonProps = {
       children: 'Maybe later',
-      onClick: this._onDismiss
+      onClick: this._onDismiss,
     };
 
     return (
@@ -58,13 +58,13 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

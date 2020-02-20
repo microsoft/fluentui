@@ -18,7 +18,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -26,11 +26,11 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
     const { isTeachingBubbleVisible } = this.state;
     const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x180', alt: 'Example placeholder image' };
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
+      children: 'Try it out',
     };
     const exampleSecondaryButtonProps: IButtonProps = {
       children: 'Maybe later',
-      onClick: this._onDismiss
+      onClick: this._onDismiss,
     };
 
     return (
@@ -61,13 +61,13 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

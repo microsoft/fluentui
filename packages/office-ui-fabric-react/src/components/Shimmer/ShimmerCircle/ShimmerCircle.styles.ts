@@ -3,7 +3,7 @@ import { getGlobalClassNames, HighContrastSelector, IRawStyle } from '../../../S
 
 const GlobalClassNames = {
   root: 'ms-ShimmerCircle-root',
-  svg: 'ms-ShimmerCircle-svg'
+  svg: 'ms-ShimmerCircle-svg',
 };
 
 export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles {
@@ -28,11 +28,11 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         borderColor: semanticColors.bodyBackground,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Window'
-          }
-        }
+            borderColor: 'Window',
+          },
+        },
       },
-      borderStyles
+      borderStyles,
     ],
     svg: [
       globalClassNames.svg,
@@ -41,10 +41,10 @@ export function getStyles(props: IShimmerCircleStyleProps): IShimmerCircleStyles
         fill: semanticColors.bodyBackground,
         selectors: {
           [HighContrastSelector]: {
-            fill: 'Window'
-          }
-        }
-      }
-    ]
+            fill: 'Window',
+          },
+        },
+      },
+    ],
   };
 }

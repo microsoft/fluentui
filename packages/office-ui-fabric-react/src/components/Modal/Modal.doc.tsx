@@ -15,13 +15,13 @@ export const ModalPageProps: IDocPageProps = {
     {
       title: 'Modal',
       code: ModalBasicExampleCode,
-      view: <ModalBasicExample />
+      view: <ModalBasicExample />,
     },
     {
       title: 'Modeless Modal',
       code: ModalModelessExampleCode,
-      view: <ModalModelessExample />
-    }
+      view: <ModalModelessExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalOverview.md'),
   bestPractices: '',
@@ -29,5 +29,5 @@ export const ModalPageProps: IDocPageProps = {
   accessibility: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalA11y.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Modal/docs/ModalDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

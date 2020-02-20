@@ -8,9 +8,9 @@ const wrapperClass = mergeStyles({
   padding: 2,
   selectors: {
     '& > .ms-Shimmer-container': {
-      margin: '10px 0'
-    }
-  }
+      margin: '10px 0',
+    },
+  },
 });
 
 export interface IShimmerLoadDataExampleState {
@@ -27,7 +27,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
       isDataLoadedOne: false,
       isDataLoadedTwo: false,
       contentOne: '',
-      examplePersona: {}
+      examplePersona: {},
     };
   }
 
@@ -44,7 +44,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
               textOverflow: 'ellipsis',
               whiteSpace: 'nowrap',
               lineHeight: '1',
-              minHeight: '16px' // Default height of Shimmer when no elements being provided.
+              minHeight: '16px', // Default height of Shimmer when no elements being provided.
             }}
           >
             {contentOne}
@@ -64,7 +64,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
     const { isDataLoadedOne } = this.state;
     this.setState({
       isDataLoadedOne: checked,
-      contentOne: !isDataLoadedOne ? 'Congratulations!!! You have successfully loaded the content. ' : ''
+      contentOne: !isDataLoadedOne ? 'Congratulations!!! You have successfully loaded the content. ' : '',
     });
   };
 
@@ -77,9 +77,9 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
             imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
             imageInitials: 'AL',
             primaryText: 'Annie Lindqvist',
-            secondaryText: 'Software Engineer'
+            secondaryText: 'Software Engineer',
           }
-        : {}
+        : {},
     });
   };
 
@@ -89,7 +89,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
         <ShimmerElementsGroup
           shimmerElements={[
             { type: ShimmerElementType.circle, height: 40 },
-            { type: ShimmerElementType.gap, width: 16, height: 40 }
+            { type: ShimmerElementType.gap, width: 16, height: 40 },
           ]}
         />
         <ShimmerElementsGroup
@@ -98,7 +98,7 @@ export class ShimmerLoadDataExample extends React.Component<{}, IShimmerLoadData
           shimmerElements={[
             { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
             { type: ShimmerElementType.line, width: '90%', height: 8 },
-            { type: ShimmerElementType.gap, width: '10%', height: 20 }
+            { type: ShimmerElementType.gap, width: '10%', height: 20 },
           ]}
         />
       </div>

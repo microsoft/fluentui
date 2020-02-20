@@ -27,17 +27,17 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </Markdown>
               <ColorPalette colors={sharedColors} />
             </>
-          )
+          ),
         },
-        getColorsImplementation(baseUrl, 'SharedColors', 'red20', 'sharedRed20')
+        getColorsImplementation(baseUrl, 'SharedColors', 'red20', 'sharedRed20'),
       ];
 
     default:
       return [
         {
           sectionName: 'Coming soon',
-          content: '...'
-        }
+          content: '...',
+        },
       ];
   }
 }

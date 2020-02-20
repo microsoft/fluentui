@@ -17,7 +17,7 @@ const PHOTOS: IPhoto[] = createArray(250, (index: number) => {
     key: index,
     url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
-    height: 100
+    height: 100,
   };
 });
 
@@ -29,7 +29,7 @@ const styles = mergeStyleSets({
     margin: 0,
     padding: 10,
     overflow: 'hidden',
-    userSelect: 'none'
+    userSelect: 'none',
   },
 
   photoCell: {
@@ -44,10 +44,10 @@ const styles = mergeStyleSets({
     selectors: {
       '&.is-selected': {
         background: theme.palette.themeLighter,
-        border: '1px solid ' + theme.palette.themePrimary
-      }
-    }
-  }
+        border: '1px solid ' + theme.palette.themePrimary,
+      },
+    },
+  },
 });
 
 export interface IMarqueeSelectionBasicExampleState {
@@ -62,7 +62,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     super(props);
 
     this.state = {
-      isMarqueeEnabled: true
+      isMarqueeEnabled: true,
     };
 
     this._selection = new Selection({
@@ -70,7 +70,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
         if (this._isMounted) {
           this.forceUpdate();
         }
-      }
+      },
     });
 
     this._selection.setItems(PHOTOS);

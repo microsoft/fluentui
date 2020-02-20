@@ -18,21 +18,21 @@ export const getStyles: ICollapsibleSectionTitleComponent['styles'] = (props, th
 
       selectors: {
         ':hover': {
-          background: theme.palette.neutralLight
-        }
-      }
-    }
+          background: theme.palette.neutralLight,
+        },
+      },
+    },
   ],
   chevron: [
     {
       flexShrink: 0,
       padding: 0,
       marginRight: 8,
-      transition: 'transform .1s linear'
+      transition: 'transform .1s linear',
     },
     props.collapsed && {
-      transform: 'rotate(-90deg)'
-    }
+      transform: 'rotate(-90deg)',
+    },
   ],
-  text: theme.fonts.small
+  text: theme.fonts.small,
 });

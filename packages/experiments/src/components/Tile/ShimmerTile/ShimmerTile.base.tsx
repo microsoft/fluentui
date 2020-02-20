@@ -17,7 +17,7 @@ const ShimmerTileLayoutValues = {
   smallNameWidth: 106,
   smallNameHeight: 5,
   smallActivityWidth: 62,
-  smallActivityHeight: 5
+  smallActivityHeight: 5,
 };
 
 const PLACEHOLDER_SIZES: {
@@ -36,7 +36,7 @@ const PLACEHOLDER_SIZES: {
     nameWidth: ShimmerTileLayoutValues.smallNameWidth,
     nameHeight: ShimmerTileLayoutValues.smallNameHeight,
     activityWidth: ShimmerTileLayoutValues.smallActivityWidth,
-    activityHeight: ShimmerTileLayoutValues.smallActivityHeight
+    activityHeight: ShimmerTileLayoutValues.smallActivityHeight,
   },
   large: {
     squareWidth: ShimmerTileLayoutValues.largeSquareWidth,
@@ -44,8 +44,8 @@ const PLACEHOLDER_SIZES: {
     nameWidth: ShimmerTileLayoutValues.largeNameWidth,
     nameHeight: ShimmerTileLayoutValues.largeNameHeight,
     activityWidth: ShimmerTileLayoutValues.largeActivityWidth,
-    activityHeight: ShimmerTileLayoutValues.largeActivityHeight
-  }
+    activityHeight: ShimmerTileLayoutValues.largeActivityHeight,
+  },
 };
 
 const getClassNames = classNamesFunction<IShimmerTileStyleProps, IShimmerTileStyles>();
@@ -64,7 +64,7 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
       itemActivity = true,
       itemName = true,
       itemThumbnail = true,
-      tileSize = 'large'
+      tileSize = 'large',
     } = this.props;
 
     const { nameplatePadding, nameplateMargin, nameplateActivityHeight, nameplateNameHeight } = TileLayoutSizes[tileSize];
@@ -93,24 +93,24 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
             {
               type: ShimmerElementType.gap,
               width: (contentSize.width - squareWidth) / 2,
-              height: squareHeight
+              height: squareHeight,
             },
             itemThumbnail
               ? {
                   type: ShimmerElementType.line,
                   width: squareWidth,
-                  height: squareHeight
+                  height: squareHeight,
                 }
               : {
                   type: ShimmerElementType.gap,
                   width: squareWidth,
-                  height: squareHeight
+                  height: squareHeight,
                 },
             {
               type: ShimmerElementType.gap,
               width: (contentSize.width - squareWidth) / 2,
-              height: squareHeight
-            }
+              height: squareHeight,
+            },
           ]}
         />
         {itemActivity || itemName ? (
@@ -122,18 +122,18 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                   {
                     type: ShimmerElementType.gap,
                     width: (contentSize.width - nameWidth) / 2,
-                    height: nameplateNameHeight
+                    height: nameplateNameHeight,
                   },
                   {
                     type: ShimmerElementType.line,
                     width: nameWidth,
-                    height: nameHeight
+                    height: nameHeight,
                   },
                   {
                     type: ShimmerElementType.gap,
                     width: (contentSize.width - nameWidth) / 2,
-                    height: nameplateNameHeight
-                  }
+                    height: nameplateNameHeight,
+                  },
                 ]}
               />
             ) : null}
@@ -143,18 +143,18 @@ export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
                   {
                     type: ShimmerElementType.gap,
                     width: (contentSize.width - activityWidth) / 2,
-                    height: nameplateActivityHeight
+                    height: nameplateActivityHeight,
                   },
                   {
                     type: ShimmerElementType.line,
                     width: activityWidth,
-                    height: activityHeight
+                    height: activityHeight,
                   },
                   {
                     type: ShimmerElementType.gap,
                     width: (contentSize.width - activityWidth) / 2,
-                    height: nameplateActivityHeight
-                  }
+                    height: nameplateActivityHeight,
+                  },
                 ]}
               />
             ) : null}

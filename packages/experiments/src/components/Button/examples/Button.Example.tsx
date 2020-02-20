@@ -4,15 +4,15 @@ import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
     childrenGap: 16,
-    padding: 8
+    padding: 8,
   },
   buttonStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 const alertClicked = (): void => {

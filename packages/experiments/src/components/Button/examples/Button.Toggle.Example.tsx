@@ -18,7 +18,7 @@ export class ButtonToggleExample extends React.Component<{}, IButtonToggleExampl
       defaultButtonToggled: false,
       primaryButtonToggled: false,
       defaultCircularButtonToggled: false,
-      primaryCircularButtonToggled: false
+      primaryCircularButtonToggled: false,
     };
   }
 

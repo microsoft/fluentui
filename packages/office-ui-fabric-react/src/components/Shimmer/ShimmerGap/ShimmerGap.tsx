@@ -9,6 +9,6 @@ export const ShimmerGap: React.FunctionComponent<IShimmerGapProps> = styled<IShi
   getStyles,
   undefined,
   {
-    scope: 'ShimmerGap'
-  }
+    scope: 'ShimmerGap',
+  },
 );

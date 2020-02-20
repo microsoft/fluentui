@@ -16,18 +16,18 @@ export const DividerPageProps: IDocPageProps = {
     {
       title: 'Vertical Divider',
       code: VerticalDividerBasicExampleCode,
-      view: <VerticalDividerBasicExample />
+      view: <VerticalDividerBasicExample />,
     },
     {
       title: 'Custom Vertical Divider',
       code: VerticalDividerCustomExampleCode,
-      view: <VerticalDividerCustomExample />
-    }
+      view: <VerticalDividerCustomExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md'),
   bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

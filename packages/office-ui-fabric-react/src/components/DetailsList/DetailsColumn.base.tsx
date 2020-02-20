@@ -9,7 +9,7 @@ import {
   IDetailsColumnStyleProps,
   IDetailsColumnProps,
   IDetailsColumnStyles,
-  IDetailsColumnRenderTooltipProps
+  IDetailsColumnRenderTooltipProps,
 } from './DetailsColumn.types';
 
 const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.button property, 0 means left button
@@ -47,7 +47,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       styles,
       theme,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      useFastIcons = true
+      useFastIcons = true,
     } = this.props;
     const { onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip } = this.props;
 
@@ -62,7 +62,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       isIconOnly: column.isIconOnly,
       cellStyleProps,
       transitionDurationDrag: TRANSITION_DURATION_DRAG,
-      transitionDurationDrop: TRANSITION_DURATION_DROP
+      transitionDurationDrop: TRANSITION_DURATION_DROP,
     });
 
     const classNames = this._classNames;
@@ -84,7 +84,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
               column.calculatedWidth! +
               cellStyleProps.cellLeftPadding +
               cellStyleProps.cellRightPadding +
-              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0)
+              (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0),
           }}
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
@@ -138,9 +138,9 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
                     <IconComponent aria-hidden={true} className={classNames.filterChevron} iconName="ChevronDown" />
                   )}
                 </span>
-              )
+              ),
             },
-            this._onRenderColumnHeaderTooltip
+            this._onRenderColumnHeaderTooltip,
           )}
         </div>
         {!this.props.onRenderColumnHeaderTooltip ? this._renderAccessibleLabel() : null}
@@ -226,7 +226,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
       onDragStart: this._onDragStart,
       updateDropState: () => undefined,
       onDrop: () => undefined,
-      onDragEnd: this._onDragEnd
+      onDragEnd: this._onDragEnd,
     };
     return options;
   }

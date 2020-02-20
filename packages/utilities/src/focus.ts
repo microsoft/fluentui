@@ -17,7 +17,7 @@ const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean
+  includeElementsInFocusZones?: boolean,
 ): HTMLElement | null {
   return getNextElement(
     rootElement,
@@ -25,7 +25,7 @@ export function getFirstFocusable(
     true /*checkNode*/,
     false /*suppressParentTraversal*/,
     false /*suppressChildTraversal*/,
-    includeElementsInFocusZones
+    includeElementsInFocusZones,
   );
 }
 
@@ -37,7 +37,7 @@ export function getFirstFocusable(
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean
+  includeElementsInFocusZones?: boolean,
 ): HTMLElement | null {
   return getPreviousElement(
     rootElement,
@@ -45,7 +45,7 @@ export function getLastFocusable(
     true /*checkNode*/,
     false /*suppressParentTraversal*/,
     true /*traverseChildren*/,
-    includeElementsInFocusZones
+    includeElementsInFocusZones,
   );
 }
 
@@ -63,7 +63,7 @@ export function getFirstTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean,
-  checkNode: boolean = true
+  checkNode: boolean = true,
 ): HTMLElement | null {
   return getNextElement(
     rootElement,
@@ -73,7 +73,7 @@ export function getFirstTabbable(
     false /*suppressChildTraversal*/,
     includeElementsInFocusZones,
     false /*allowFocusRoot*/,
-    true /*tabbable*/
+    true /*tabbable*/,
   );
 }
 
@@ -91,7 +91,7 @@ export function getLastTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean,
-  checkNode: boolean = true
+  checkNode: boolean = true,
 ): HTMLElement | null {
   return getPreviousElement(
     rootElement,
@@ -101,7 +101,7 @@ export function getLastTabbable(
     true /*traverseChildren*/,
     includeElementsInFocusZones,
     false /*allowFocusRoot*/,
-    true /*tabbable*/
+    true /*tabbable*/,
   );
 }
 
@@ -136,7 +136,7 @@ export function getPreviousElement(
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
-  tabbable?: boolean
+  tabbable?: boolean,
 ): HTMLElement | null {
   if (!currentElement || (!allowFocusRoot && currentElement === rootElement)) {
     return null;
@@ -158,7 +158,7 @@ export function getPreviousElement(
       true,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable
+      tabbable,
     );
 
     if (childMatch) {
@@ -174,7 +174,7 @@ export function getPreviousElement(
         true,
         includeElementsInFocusZones,
         allowFocusRoot,
-        tabbable
+        tabbable,
       );
       if (childMatchSiblingMatch) {
         return childMatchSiblingMatch;
@@ -195,7 +195,7 @@ export function getPreviousElement(
           true,
           includeElementsInFocusZones,
           allowFocusRoot,
-          tabbable
+          tabbable,
         );
 
         if (childMatchParentMatch) {
@@ -221,7 +221,7 @@ export function getPreviousElement(
     true,
     includeElementsInFocusZones,
     allowFocusRoot,
-    tabbable
+    tabbable,
   );
 
   if (siblingMatch) {
@@ -238,7 +238,7 @@ export function getPreviousElement(
       false,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable
+      tabbable,
     );
   }
 
@@ -260,7 +260,7 @@ export function getNextElement(
   suppressChildTraversal?: boolean,
   includeElementsInFocusZones?: boolean,
   allowFocusRoot?: boolean,
-  tabbable?: boolean
+  tabbable?: boolean,
 ): HTMLElement | null {
   if (!currentElement || (currentElement === rootElement && suppressChildTraversal && !allowFocusRoot)) {
     return null;
@@ -287,7 +287,7 @@ export function getNextElement(
       false,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable
+      tabbable,
     );
 
     if (childMatch) {
@@ -308,7 +308,7 @@ export function getNextElement(
     false,
     includeElementsInFocusZones,
     allowFocusRoot,
-    tabbable
+    tabbable,
   );
 
   if (siblingMatch) {
@@ -324,7 +324,7 @@ export function getNextElement(
       true,
       includeElementsInFocusZones,
       allowFocusRoot,
-      tabbable
+      tabbable,
     );
   }
 

@@ -37,11 +37,11 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/04/04'), y: 32 },
           { x: new Date('2018/04/15'), y: 29 },
           { x: new Date('2018/05/05'), y: 43 },
-          { x: new Date('2018/06/01'), y: 45 }
+          { x: new Date('2018/06/01'), y: 45 },
         ],
         legend: 'First',
         color: DefaultPalette.blue,
-        onLegendClick: this._onLegendClickHandler
+        onLegendClick: this._onLegendClickHandler,
       },
       {
         data: [
@@ -55,11 +55,11 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/04/10'), y: 32 },
           { x: new Date('2018/04/20'), y: 29 },
           { x: new Date('2018/05/16'), y: 43 },
-          { x: new Date('2018/06/01'), y: 45 }
+          { x: new Date('2018/06/01'), y: 45 },
         ],
         legend: 'Second',
         color: DefaultPalette.green,
-        onLegendClick: this._onLegendClickHandler
+        onLegendClick: this._onLegendClickHandler,
       },
       {
         data: [
@@ -73,17 +73,17 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
           { x: new Date('2018/04/10'), y: 32 },
           { x: new Date('2018/04/17'), y: 29 },
           { x: new Date('2018/05/10'), y: 43 },
-          { x: new Date('2018/06/01'), y: 45 }
+          { x: new Date('2018/06/01'), y: 45 },
         ],
         legend: 'Third',
         color: DefaultPalette.red,
-        onLegendClick: this._onLegendClickHandler
-      }
+        onLegendClick: this._onLegendClickHandler,
+      },
     ];
 
     const data: IChartProps = {
       chartTitle: 'Line Chart',
-      lineChartData: points
+      lineChartData: points,
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     const timeFormat = '%m/%d';
@@ -95,7 +95,7 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
       new Date('03-01-2018'),
       new Date('04-01-2018'),
       new Date('05-01-2018'),
-      new Date('06-01-2018')
+      new Date('06-01-2018'),
     ];
     return (
       <div className={mergeStyles(rootStyle)}>

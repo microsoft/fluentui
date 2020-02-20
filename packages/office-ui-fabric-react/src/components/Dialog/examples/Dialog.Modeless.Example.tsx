@@ -12,13 +12,13 @@ export interface IDialogModelessExampleState {
 export class DialogModelessExample extends React.Component<{}, IDialogModelessExampleState> {
   public state: IDialogModelessExampleState = {
     hideDialog: true,
-    isDraggable: false
+    isDraggable: false,
   };
 
   private _dragOptions = {
     moveMenuItemText: 'Move',
     closeMenuItemText: 'Close',
-    menu: ContextualMenu
+    menu: ContextualMenu,
   };
 
   public render() {
@@ -37,13 +37,13 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
           dialogContentProps={{
             type: DialogType.normal,
             title: 'Missing Subject',
-            subText: 'Do you want to send this message without a subject?'
+            subText: 'Do you want to send this message without a subject?',
           }}
           modalProps={{
             styles: { main: { maxWidth: 450 } },
             isModeless: true,
             dragOptions: isDraggable ? this._dragOptions : undefined,
-            onDismissed: this._closeDialog
+            onDismissed: this._closeDialog,
           }}
         >
           <DialogFooter>

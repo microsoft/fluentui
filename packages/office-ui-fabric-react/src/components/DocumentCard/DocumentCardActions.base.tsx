@@ -18,7 +18,7 @@ export class DocumentCardActionsBase extends BaseComponent<IDocumentCardActionsP
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

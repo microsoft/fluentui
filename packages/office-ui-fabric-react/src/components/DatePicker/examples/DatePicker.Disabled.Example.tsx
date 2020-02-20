@@ -16,7 +16,7 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  closeButtonAriaLabel: 'Close date picker',
 };
 
 export interface IDatePickerDisabledExampleState {
@@ -26,8 +26,8 @@ export interface IDatePickerDisabledExampleState {
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
 export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDisabledExampleState> {
@@ -35,7 +35,7 @@ export class DatePickerDisabledExample extends React.Component<{}, IDatePickerDi
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 

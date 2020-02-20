@@ -32,8 +32,8 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
           onChange={this._onCustomRenderChange}
           slots={{
             text: {
-              render: props => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>
-            }
+              render: props => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>,
+            },
           }}
         />
         <Toggle checked={checked} label="Controlled by Toggle above" onText="Checked" offText="Unchecked" />

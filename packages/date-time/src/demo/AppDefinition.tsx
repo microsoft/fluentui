@@ -12,35 +12,35 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../components/pages/CalendarPage').CalendarPage,
           key: 'Calendar',
           name: 'Calendar',
-          url: '#/examples/calendar'
+          url: '#/examples/calendar',
         },
         {
           component: require<any>('../components/pages/DatePickerPage').DatePickerPage,
           key: 'DatePicker',
           name: 'DatePicker',
-          url: '#/examples/datepicker'
+          url: '#/examples/datepicker',
         },
         {
           component: require<any>('../components/pages/WeeklyDayPickerPage').WeeklyDayPickerPage,
           key: 'WeeklyDayPicker',
           name: 'WeeklyDayPicker',
-          url: '#/examples/weeklydaypicker'
-        }
-      ]
-    }
+          url: '#/examples/weeklydaypicker',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric'
+      url: 'https://dev.microsoft.com/fabric',
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
-    }
-  ]
+      url: 'https://github.com/OfficeDev/office-ui-fabric-react',
+    },
+  ],
 };

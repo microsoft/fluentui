@@ -8,12 +8,12 @@ export const NavBarPageProps: TFabricPlatformPageProps = {
     title: 'Navigation Bar',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/ios/NavBarOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     title: 'Top App Bar',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/NavBarPage/docs/android/NavBarOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

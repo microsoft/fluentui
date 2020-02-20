@@ -302,5 +302,5 @@ export enum SuggestionActionType {
   forceResolve,
 
   /** SearchMore action is selected. */
-  searchMore
+  searchMore,
 }

@@ -13,6 +13,6 @@ export const Persona: React.FunctionComponent<IPersonaProps> = styled<IPersonaPr
   getStyles,
   undefined,
   {
-    scope: 'Persona'
-  }
+    scope: 'Persona',
+  },
 );

@@ -14,7 +14,7 @@ export interface ITextFieldCustomRenderExampleState {
 
 const stackTokens: IStackTokens = {
   childrenGap: 20,
-  maxWidth: 300
+  maxWidth: 300,
 };
 
 export class TextFieldCustomRenderExample extends React.Component<{}, ITextFieldCustomRenderExampleState> {

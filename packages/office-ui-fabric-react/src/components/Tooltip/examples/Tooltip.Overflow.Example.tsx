@@ -13,7 +13,7 @@ const contentSelf = "If the TooltipHost's content overflows, hovering here will 
 // styling and layout. Use display: block instead. (other styles are just to look nice)
 const theme = getTheme();
 const hostStyles: Partial<ITooltipHostStyles> = {
-  root: { display: 'block', padding: 10, backgroundColor: theme.palette.themeLighter }
+  root: { display: 'block', padding: 10, backgroundColor: theme.palette.themeLighter },
 };
 const classNames = mergeStyleSets({
   // Applied to make content overflow (and tooltips activate)
@@ -21,11 +21,11 @@ const classNames = mergeStyleSets({
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
-    width: 200
+    width: 200,
   },
   // Just to look nice
   example: { marginTop: 20, selectors: { '> *:first-child': { paddingBottom: 10 } } },
-  parent: { padding: 10, border: '2px dashed ' + theme.palette.neutralTertiary, selectors: { '> *:last-child': { marginTop: 10 } } }
+  parent: { padding: 10, border: '2px dashed ' + theme.palette.neutralTertiary, selectors: { '> *:last-child': { marginTop: 10 } } },
 });
 
 export const TooltipOverflowExample: React.FunctionComponent = () => {

@@ -21,7 +21,7 @@ const suggestions = [
   'rose',
   'violet',
   'white',
-  'yellow'
+  'yellow',
 ];
 
 function generateSimpleSuggestions(selectedIndex: number = 0) {
@@ -29,9 +29,9 @@ function generateSimpleSuggestions(selectedIndex: number = 0) {
     return {
       item: {
         key: value,
-        name: value
+        name: value,
       },
-      selected: index === selectedIndex
+      selected: index === selectedIndex,
     };
   });
 }
@@ -52,7 +52,11 @@ function mockOnClick() {
 describe('Suggestions', () => {
   it('renders a list properly', () => {
     const component = renderer.create(
-      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
+      <Suggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -60,7 +64,11 @@ describe('Suggestions', () => {
 
   it('scrolls to selected index properly', () => {
     const component = renderer.create(
-      <Suggestions onRenderSuggestion={basicSuggestionRenderer} onSuggestionClick={mockOnClick} suggestions={generateSimpleSuggestions()} />
+      <Suggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+      />,
     );
 
     component.update(
@@ -68,7 +76,7 @@ describe('Suggestions', () => {
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions(8)}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -77,14 +85,14 @@ describe('Suggestions', () => {
   it('renders a list properly with CSS-in-JS styles', () => {
     const StyledSuggestions = styled<ISuggestionsProps<ISimple>, ISuggestionsStyleProps, ISuggestionsStyles>(
       Suggestions,
-      suggestionsStyles
+      suggestionsStyles,
     );
     const component = renderer.create(
       <StyledSuggestions
         onRenderSuggestion={basicSuggestionRenderer}
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions()}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -94,7 +102,7 @@ describe('Suggestions', () => {
     const compRef = React.createRef<ISuggestions<ISimple>>();
     const StyledSuggestions = styled<ISuggestionsProps<ISimple>, ISuggestionsStyleProps, ISuggestionsStyles>(
       Suggestions,
-      suggestionsStyles
+      suggestionsStyles,
     );
 
     renderer.create(
@@ -105,7 +113,7 @@ describe('Suggestions', () => {
         searchForMoreText={'foo'}
         moreSuggestionsAvailable={true}
         componentRef={compRef}
-      />
+      />,
     );
 
     expect(compRef.current).toBeTruthy();
@@ -116,7 +124,7 @@ describe('Suggestions', () => {
     const compRef = React.createRef<ISuggestions<ISimple>>();
     const StyledSuggestions = styled<ISuggestionsProps<ISimple>, ISuggestionsStyleProps, ISuggestionsStyles>(
       Suggestions,
-      suggestionsStyles
+      suggestionsStyles,
     );
 
     renderer.create(
@@ -125,7 +133,7 @@ describe('Suggestions', () => {
         onSuggestionClick={mockOnClick}
         suggestions={generateSimpleSuggestions()}
         componentRef={compRef}
-      />
+      />,
     );
 
     expect(compRef.current).toBeTruthy();

@@ -22,28 +22,28 @@ export const CommandBarPageProps: IDocPageProps = {
     {
       title: 'CommandBar with overflowing menu items',
       code: CommandBarBasicExampleCode,
-      view: <CommandBarBasicExample />
+      view: <CommandBarBasicExample />,
     },
     {
       title: 'CommandBar custom buttons and overflow menu',
       code: CommandBarButtonAsExampleCode,
-      view: <CommandBarButtonAsExample />
+      view: <CommandBarButtonAsExample />,
     },
     {
       title: 'CommandBar with coachmark on individual button',
       code: IndividualCommandBarButtonAsExampleCode,
-      view: <IndividualCommandBarButtonAsExampleWrapper />
+      view: <IndividualCommandBarButtonAsExampleWrapper />,
     },
     {
       title: 'CommandBar with split and disabled buttons',
       code: CommandBarSplitDisabledExampleCode,
-      view: <CommandBarSplitDisabledExample />
-    }
+      view: <CommandBarSplitDisabledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -8,11 +8,11 @@ import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as styles from './Layer.Example.scss';
 
 const toggleStyles: Partial<IStyleSet<IToggleStyles>> = {
-  root: { margin: '10px 0' }
+  root: { margin: '10px 0' },
 };
 
 const rootClass = mergeStyles({
-  selectors: { p: { marginTop: 30 } }
+  selectors: { p: { marginTop: 30 } },
 });
 
 export interface ILayerHostedExampleState {
@@ -25,7 +25,7 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
   public state: ILayerHostedExampleState = {
     showLayer: false,
     showLayerNoId: false,
-    showHost: true
+    showHost: true,
   };
   // Use getId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string without getId() and manually ensure uniqueness.)

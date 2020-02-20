@@ -9,7 +9,7 @@ const testVerticalPersonaStyles: IVerticalPersonaComponent['styles'] = {
   root: 'test-cn-root',
   primaryText: 'test-cn-text',
   secondaryText: 'test-cn-secondaryText',
-  coin: 'test-cn-coin'
+  coin: 'test-cn-coin',
 };
 
 // Views are just pure functions with no statefulness, which means they can get full code coverage
@@ -47,7 +47,7 @@ describe('VerticalPersona', () => {
           secondaryText="Super secret agent"
           styles={testVerticalPersonaStyles}
           coin={{ initials: 'MI6', coinColor: 'red' }}
-        />
+        />,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

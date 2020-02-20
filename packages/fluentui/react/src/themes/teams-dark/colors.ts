@@ -1,7 +1,7 @@
-import { categoryColors, colors } from '../teams/siteVariables'
-import { TeamsCategoryColorSchemeMapping } from '../teams/types'
-import { ColorSchemeMapping } from '../../themes/types'
-import { createColorScheme } from '../teams/colors'
+import { categoryColors, colors } from '../teams/siteVariables';
+import { TeamsCategoryColorSchemeMapping } from '../teams/types';
+import { ColorSchemeMapping } from '../../themes/types';
+import { createColorScheme } from '../teams/colors';
 
 export const colorScheme: ColorSchemeMapping = {
   default: createColorScheme({
@@ -276,9 +276,9 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover1: colors.grey[750],
     backgroundActive: colors.amethyst[700],
   }),
-}
+};
 
-colorScheme.grey = colorScheme.default
+colorScheme.grey = colorScheme.default;
 
 const createCategoryColorScheme = (color: string, customValues = {}) => {
   return {
@@ -286,8 +286,8 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground1: categoryColors[color][550],
     background: categoryColors[color][800],
     ...customValues,
-  }
-}
+  };
+};
 
 export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
   redDark: createCategoryColorScheme('redDark'),
@@ -334,4 +334,4 @@ export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
     foreground8: categoryColors.maroon[350],
     background8: categoryColors.maroon[800],
   },
-}
+};

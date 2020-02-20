@@ -21,7 +21,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       const { observe, jumpLinks } = this.props;
       if (observe && jumpLinks) {
         this._observer = new IntersectionObserver(this._handleObserver, {
-          threshold: [0.5]
+          threshold: [0.5],
         });
 
         jumpLinks.forEach((jumpLink: ISideRailLink) => {
@@ -61,7 +61,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       const { intersectionRatio, target } = entry;
       if (intersectionRatio > 0.5) {
         this.setState({
-          activeLink: target.id
+          activeLink: target.id,
         });
         break;
       }
@@ -82,7 +82,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
           href={this._getJumpLinkUrl(jumpLink.url)}
           onClick={this._onJumpLinkClick}
           styles={{
-            root: [classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive]
+            root: [classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive],
           }}
         >
           {jumpLink.text}
@@ -158,5 +158,5 @@ export const SideRail: React.FunctionComponent<ISideRailProps> = styled<ISideRai
   SideRailBase,
   getStyles,
   undefined,
-  { scope: 'SideRail' }
+  { scope: 'SideRail' },
 );

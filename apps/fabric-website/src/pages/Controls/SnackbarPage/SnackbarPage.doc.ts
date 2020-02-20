@@ -8,6 +8,6 @@ export const SnackbarPageProps: TFabricPlatformPageProps = {
     title: 'Snackbar',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SnackbarPage/docs/android/SnackbarOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

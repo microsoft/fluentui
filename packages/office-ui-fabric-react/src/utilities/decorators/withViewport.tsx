@@ -48,7 +48,7 @@ const MAX_RESIZE_ATTEMPTS = 3;
  * @param ComposedComponent decorated React component reference.
  */
 export function withViewport<TProps extends { viewport?: IViewport }, TState>(
-  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
+  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
     private _root = React.createRef<HTMLDivElement>();
@@ -62,8 +62,8 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       this.state = {
         viewport: {
           width: 0,
-          height: 0
-        }
+          height: 0,
+        },
       };
     }
 
@@ -72,7 +72,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       const win = getWindow(this._root.current);
 
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
-        leading: false
+        leading: false,
       });
 
       // ResizeObserver seems always fire even window is not resized. This is
@@ -178,12 +178,12 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
           {
             viewport: {
               width: clientRect.width,
-              height: scrollRect.height
-            }
+              height: scrollRect.height,
+            },
           },
           () => {
             this._updateViewport(withForceUpdate);
-          }
+          },
         );
       } else {
         this._resizeAttempts = 0;

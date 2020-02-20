@@ -4,19 +4,19 @@ import { getRTL, KeyCodes } from '../../Utilities';
 import { ICollapsibleSectionProps, ICollapsibleSectionViewProps, ICollapsibleSectionComponent } from './CollapsibleSection.types';
 
 export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] = (
-  props: Readonly<ICollapsibleSectionProps>
+  props: Readonly<ICollapsibleSectionProps>,
 ): ICollapsibleSectionViewProps => {
   const titleElementRef = useRef<HTMLButtonElement | null>(null);
 
   const [collapsed, setCollapsed] = useControlledState(props, 'collapsed', {
     defaultPropName: 'defaultCollapsed',
-    defaultPropValue: false
+    defaultPropValue: false,
   });
 
   useImperativeHandle(props.componentRef, () => ({
     focus: () => {
       titleElementRef.current && titleElementRef.current.focus();
-    }
+    },
   }));
 
   const _onClick = useCallback(
@@ -25,7 +25,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
       ev.preventDefault();
       ev.stopPropagation();
     },
-    [collapsed]
+    [collapsed],
   );
 
   const _onKeyDown = useCallback(
@@ -43,7 +43,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
         ev.stopPropagation();
       }
     },
-    [collapsed]
+    [collapsed],
   );
 
   const _onRootKeyDown = useCallback((ev: React.KeyboardEvent<Element>) => {
@@ -70,7 +70,7 @@ export const useCollapsibleSectionState: ICollapsibleSectionComponent['state'] =
     onClick: _onClick,
     onKeyDown: _onKeyDown,
     onRootKeyDown: _onRootKeyDown,
-    titleElementRef
+    titleElementRef,
   };
 
   return viewProps;

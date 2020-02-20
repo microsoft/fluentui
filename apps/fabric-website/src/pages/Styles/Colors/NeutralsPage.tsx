@@ -29,17 +29,17 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </Markdown>
               <ColorPalette colors={neutralColors} />
             </>
-          )
+          ),
         },
-        getColorsImplementation(baseUrl, 'NeutralColors', 'gray10', 'gray10')
+        getColorsImplementation(baseUrl, 'NeutralColors', 'gray10', 'gray10'),
       ];
 
     default:
       return [
         {
           sectionName: 'Coming soon',
-          content: '...'
-        }
+          content: '...',
+        },
       ];
   }
 }

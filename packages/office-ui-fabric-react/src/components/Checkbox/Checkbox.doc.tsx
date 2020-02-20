@@ -17,23 +17,23 @@ export const CheckboxPageProps: IDocPageProps = {
     {
       title: 'Basic Checkboxes',
       code: CheckboxBasicExampleCode,
-      view: <CheckboxBasicExample />
+      view: <CheckboxBasicExample />,
     },
     {
       title: 'Other Implementation Examples',
       code: CheckboxOtherExampleCode,
-      view: <CheckboxOtherExample />
+      view: <CheckboxOtherExample />,
     },
     {
       title: 'Indeterminate Checkboxes',
       code: CheckboxIndeterminateExampleCode,
-      view: <CheckboxIndeterminateExample />
-    }
+      view: <CheckboxIndeterminateExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -116,7 +116,7 @@ export enum ImageFit {
    * behave as ImageFit.center if the image's natural height and width is less than the Image frame's height and width,
    * but if either natural height or width are larger than the frame it will behave as ImageFit.contain.
    */
-  centerContain = 5
+  centerContain = 5,
 }
 
 /**
@@ -132,7 +132,7 @@ export enum ImageCoverStyle {
   /**
    * The image will be shown at 100% width of container and the height will be scaled accordingly
    */
-  portrait = 1
+  portrait = 1,
 }
 
 /**
@@ -160,7 +160,7 @@ export enum ImageLoadState {
    * @deprecated Use `onLoadingStateChange` instead
    * and rerender the Image with a difference src.
    */
-  errorLoaded = 3
+  errorLoaded = 3,
 }
 
 /**

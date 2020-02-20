@@ -27,7 +27,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
       queryString: '',
-      didBind: false
+      didBind: false,
     };
   }
 
@@ -60,7 +60,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString
+        queryString: queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -77,7 +77,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     }
 
     this.setState({
-      suggestionsVisible: false
+      suggestionsVisible: false,
     });
   };
 
@@ -87,7 +87,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     }
 
     this.setState({
-      suggestionsVisible: true
+      suggestionsVisible: true,
     });
 
     // Update the suggestions if updateValue == true

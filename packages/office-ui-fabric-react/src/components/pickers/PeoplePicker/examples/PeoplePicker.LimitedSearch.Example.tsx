@@ -11,21 +11,21 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const limitedSearchAdditionalProps: IBasePickerSuggestionsProps = {
   searchForMoreText: 'Load all Results',
   resultsMaximumNumber: 10,
-  searchingText: 'Searching...'
+  searchingText: 'Searching...',
 };
 
 const limitedSearchSuggestionProps: IBasePickerSuggestionsProps = assign(limitedSearchAdditionalProps, suggestionProps);
 
 const checkboxStyles = {
   root: {
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 };
 
 export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
@@ -43,7 +43,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
   const onFilterChanged = (
     filterText: string,
     currentPersonas: IPersonaProps[],
-    limitResults?: number
+    limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
@@ -114,7 +114,7 @@ export const PeoplePickerLimitedSearchExample: React.FunctionComponent = () => {
         inputProps={{
           onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
           onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
-          'aria-label': 'People Picker'
+          'aria-label': 'People Picker',
         }}
         componentRef={picker}
         resolveDelay={300}

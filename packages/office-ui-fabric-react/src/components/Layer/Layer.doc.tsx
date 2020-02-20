@@ -19,28 +19,28 @@ export const LayerPageProps: IDocPageProps = {
     {
       title: 'Basic layered content',
       code: LayerBasicExampleCode,
-      view: <LayerBasicExample />
+      view: <LayerBasicExample />,
     },
     {
       title: 'Using LayerHost to control projection',
       code: LayerHostedExampleCode,
-      view: <LayerHostedExample />
+      view: <LayerHostedExample />,
     },
     {
       title: 'Using Customizer to control the default layer behavior',
       code: LayerCustomizedExampleCode,
-      view: <LayerCustomizedExample />
+      view: <LayerCustomizedExample />,
     },
     {
       title: 'Nested Layers Example',
       code: LayerNestedLayersExampleCode,
-      view: <LayerNestedLayersExample />
-    }
+      view: <LayerNestedLayersExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Layer/docs/LayerDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

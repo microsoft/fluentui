@@ -7,7 +7,7 @@ export class ImageCenterCoverExample extends React.Component<any, any> {
     const imageProps: Partial<IImageProps> = {
       imageFit: ImageFit.centerCover,
       width: 200,
-      height: 200
+      height: 200,
     };
 
     return (

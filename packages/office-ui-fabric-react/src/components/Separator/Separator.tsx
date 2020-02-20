@@ -9,6 +9,6 @@ export const Separator: React.FunctionComponent<ISeparatorProps> = styled<ISepar
   getStyles,
   undefined,
   {
-    scope: 'Separator'
-  }
+    scope: 'Separator',
+  },
 );

@@ -10,23 +10,23 @@ const ButtonTheme = {
       styles: {
         root: {
           fontSize: 24,
-          color: 'purple'
-        }
-      }
+          color: 'purple',
+        },
+      },
     },
     Text: {
       styles: {
         root: {
-          color: 'purple'
-        }
-      }
-    }
-  }
+          color: 'purple',
+        },
+      },
+    },
+  },
 };
 
 const getButtonStyles: IButtonComponent['styles'] = {
   icon: ButtonTheme.scopedSettings.Icon.styles.root,
-  content: ButtonTheme.scopedSettings.Text.styles.root
+  content: ButtonTheme.scopedSettings.Text.styles.root,
 };
 
 // tslint:disable:jsx-no-lambda

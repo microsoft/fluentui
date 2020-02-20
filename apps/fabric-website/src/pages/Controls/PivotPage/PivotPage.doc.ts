@@ -7,12 +7,12 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const PivotPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   ios: {
     title: 'Pivot',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PivotPage/docs/ios/PivotOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

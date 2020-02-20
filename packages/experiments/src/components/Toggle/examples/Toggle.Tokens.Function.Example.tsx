@@ -6,7 +6,7 @@ const toggleTokens: IToggleComponent['tokens'] = (props): IToggleTokenReturnType
     ...(props.checked ? { textColor: 'green' } : { textColor: 'red' }),
     ...(props.disabled
       ? { ...{ pillBackground: 'gainsboro' }, ...(props.checked ? { pillBackground: 'slategrey' } : {}) }
-      : { ...{ pillBackground: 'turquoise' }, ...(props.checked ? { pillBackground: 'navy' } : {}) })
+      : { ...{ pillBackground: 'turquoise' }, ...(props.checked ? { pillBackground: 'navy' } : {}) }),
   };
 };
 

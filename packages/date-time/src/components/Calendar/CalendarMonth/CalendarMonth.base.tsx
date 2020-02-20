@@ -7,7 +7,7 @@ import {
   getYearEnd,
   getMonthStart,
   getMonthEnd,
-  compareDatePart
+  compareDatePart,
 } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
@@ -33,7 +33,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     strings: undefined,
     navigationIcons: defaultIconStrings,
     dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-    yearPickerHidden: false
+    yearPickerHidden: false,
   };
 
   private _navigatedMonth: HTMLButtonElement;
@@ -42,7 +42,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<ICalendarMonthProps>,
-    prevState: Readonly<ICalendarMonthState>
+    prevState: Readonly<ICalendarMonthState>,
   ): Partial<ICalendarMonthState> | null {
     const previousYear = prevState.previousNavigatedDate ? prevState.previousNavigatedDate.getFullYear() : undefined;
     const nextYear = nextProps.navigatedDate.getFullYear();
@@ -53,12 +53,12 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     if (previousYear < nextYear) {
       return {
         animateBackwards: false,
-        previousNavigatedDate: nextProps.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate,
       };
     } else if (previousYear > nextYear) {
       return {
         animateBackwards: true,
-        previousNavigatedDate: nextProps.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate,
       };
     }
 
@@ -70,7 +70,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
     this.state = {
       isYearPickerVisible: false,
-      previousNavigatedDate: props.navigatedDate
+      previousNavigatedDate: props.navigatedDate,
     };
   }
 
@@ -99,7 +99,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       highlightSelectedMonth,
       onHeaderSelect,
       animationDirection,
-      yearPickerHidden
+      yearPickerHidden,
     } = this.props;
 
     // using "!" to mark as non-null since we have a default value if it is undefined, but typescript doesn't recognize it as non-null
@@ -118,7 +118,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
       highlightCurrent: highlightCurrentMonth,
       highlightSelected: highlightSelectedMonth,
       animateBackwards: this.state.animateBackwards,
-      animationDirection: animationDirection
+      animationDirection: animationDirection,
     });
 
     if (this.state.isYearPickerVisible) {
@@ -137,7 +137,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             rangeAriaLabel: this._yearRangeToString,
             prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
             nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
-            headerAriaLabelFormatString: this.props.strings.yearPickerHeaderAriaLabel
+            headerAriaLabelFormatString: this.props.strings.yearPickerHeaderAriaLabel,
           }}
           componentRef={this._calendarYearRef}
           styles={styles}
@@ -175,7 +175,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
           <div className={classNames.navigationButtonsContainer}>
             <button
               className={css(classNames.navigationButton, {
-                [classNames.disabled]: !isPrevYearInBounds
+                [classNames.disabled]: !isPrevYearInBounds,
               })}
               disabled={!allFocusable && !isPrevYearInBounds}
               onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
@@ -191,7 +191,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             </button>
             <button
               className={css(classNames.navigationButton, {
-                [classNames.disabled]: !isNextYearInBounds
+                [classNames.disabled]: !isNextYearInBounds,
               })}
               disabled={!allFocusable && !isNextYearInBounds}
               onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
@@ -231,7 +231,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
                         className={css(classNames.itemButton, {
                           [classNames.current]: highlightCurrentMonth && isCurrentMonth!,
                           [classNames.selected]: highlightSelectedMonth && isSelectedMonth && isSelectedYear,
-                          [classNames.disabled]: !isInBounds
+                          [classNames.disabled]: !isInBounds,
                         })}
                         disabled={!allFocusable && !isInBounds}
                         key={monthIndex}

@@ -17,7 +17,7 @@ const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
-    onLayerWillUnmount: () => undefined
+    onLayerWillUnmount: () => undefined,
   };
 
   private _rootRef = React.createRef<HTMLSpanElement>();
@@ -29,7 +29,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
 
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Layer', props, {
-        onLayerMounted: 'onLayerDidMount'
+        onLayerMounted: 'onLayerDidMount',
       });
     }
   }
@@ -56,7 +56,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
             <Fabric {...(!eventBubblingEnabled && _getFilteredEvents())} className={classNames.content}>
               {this.props.children}
             </Fabric>,
-            layerElement
+            layerElement,
           )}
       </span>
     );
@@ -102,7 +102,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     this.setState(
       {
         hostId,
-        layerElement
+        layerElement,
       },
       () => {
         const { onLayerDidMount, onLayerMounted } = this.props;
@@ -113,7 +113,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
         if (onLayerDidMount) {
           onLayerDidMount();
         }
-      }
+      },
     );
   };
 
@@ -138,7 +138,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isNotHost: !this.props.hostId
+      isNotHost: !this.props.hostId,
     });
 
     return classNames;
@@ -211,7 +211,7 @@ function _getFilteredEvents() {
       'onChange',
       'onInput',
       'onInvalid',
-      'onSubmit'
+      'onSubmit',
     ].forEach(name => (_filteredEventProps[name] = _onFilterEvent));
   }
 

@@ -25,43 +25,43 @@ export const SpinButtonPageProps: IDocPageProps = {
     {
       title: 'Basic SpinButton',
       code: SpinButtonBasicExampleCode,
-      view: <SpinButtonBasicExample />
+      view: <SpinButtonBasicExample />,
     },
     {
       title: 'Basic Disabled SpinButton',
       code: SpinButtonBasicDisabledExampleCode,
-      view: <SpinButtonBasicDisabledExample />
+      view: <SpinButtonBasicDisabledExample />,
     },
     {
       title: 'Stateful SpinButton',
       code: SpinButtonStatefulExampleCode,
-      view: <SpinButtonStatefulExample />
+      view: <SpinButtonStatefulExample />,
     },
     {
       title: 'Basic SpinButton With Icon',
       code: SpinButtonBasicWithIconExampleCode,
-      view: <SpinButtonBasicWithIconExample />
+      view: <SpinButtonBasicWithIconExample />,
     },
     {
       title: 'Basic SpinButton With Icon Disabled',
       code: SpinButtonBasicWithIconDisabledExampleCode,
-      view: <SpinButtonBasicWithIconDisabledExample />
+      view: <SpinButtonBasicWithIconDisabledExample />,
     },
     {
       title: 'Basic SpinButton With Icon and Positioned at the End',
       code: SpinButtonBasicWithEndPositionExampleCode,
-      view: <SpinButtonBasicWithEndPositionExample />
+      view: <SpinButtonBasicWithEndPositionExample />,
     },
     {
       title: 'Custom Styled SpinButton',
       code: SpinButtonCustomStyledExampleCode,
-      view: <SpinButtonCustomStyledExample />
-    }
+      view: <SpinButtonCustomStyledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -9,6 +9,6 @@ export const MessageBar: React.FunctionComponent<IMessageBarProps> = styled<IMes
   getStyles,
   undefined,
   {
-    scope: 'MessageBar'
-  }
+    scope: 'MessageBar',
+  },
 );

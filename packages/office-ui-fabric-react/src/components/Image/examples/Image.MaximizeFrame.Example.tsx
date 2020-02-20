@@ -7,7 +7,7 @@ export class ImageMaximizeFrameExample extends React.Component<any, any> {
     const imageProps: IImageProps = {
       src: 'http://placehold.it/500x500',
       imageFit: ImageFit.cover,
-      maximizeFrame: true
+      maximizeFrame: true,
     };
 
     return (

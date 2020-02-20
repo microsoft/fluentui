@@ -53,7 +53,7 @@ export enum ExpandingCardMode {
   /**
    * To have both top compact and bottom expanded card
    */
-  expanded = 1
+  expanded = 1,
 }
 
 /**

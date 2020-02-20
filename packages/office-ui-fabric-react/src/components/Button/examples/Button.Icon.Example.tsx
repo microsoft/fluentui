@@ -14,15 +14,15 @@ const menuProps: IContextualMenuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
+      iconProps: { iconName: 'Calendar' },
+    },
   ],
-  directionalHintFixed: true
+  directionalHintFixed: true,
 };
 
 export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = props => {

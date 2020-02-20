@@ -53,7 +53,7 @@ export class DragDropHelper implements IDragDropHelper {
   public subscribe(
     root: HTMLElement,
     events: EventGroup,
-    dragDropOptions: IDragDropOptions
+    dragDropOptions: IDragDropOptions,
   ): {
     key: string;
     dispose(): void;
@@ -101,7 +101,7 @@ export class DragDropHelper implements IDragDropHelper {
       const dragDropTarget: IDragDropTarget = {
         root: root,
         options: dragDropOptions,
-        key: key
+        key: key,
       };
 
       isDraggable = this._isDraggable(dragDropTarget);
@@ -112,7 +112,7 @@ export class DragDropHelper implements IDragDropHelper {
           for (const event of eventMap) {
             const handler = {
               callback: event.callback.bind(null, context),
-              eventName: event.eventName
+              eventName: event.eventName,
             };
 
             handlers.push(handler);
@@ -226,7 +226,7 @@ export class DragDropHelper implements IDragDropHelper {
               events.off(root, 'dragend', onDragEnd);
             }
           }
-        }
+        },
       };
 
       this._activeTargets[key] = activeTarget;
@@ -238,7 +238,7 @@ export class DragDropHelper implements IDragDropHelper {
         if (activeTarget) {
           activeTarget.dispose();
         }
-      }
+      },
     };
   }
 
@@ -301,7 +301,7 @@ export class DragDropHelper implements IDragDropHelper {
     const {
       // use buttons property here since ev.button in some edge case is not updating well during the move.
       // but firefox doesn't support it, so we set the default value when it is not defined.
-      buttons = MOUSEMOVE_PRIMARY_BUTTON
+      buttons = MOUSEMOVE_PRIMARY_BUTTON,
     } = event;
 
     if (this._dragData && buttons !== MOUSEMOVE_PRIMARY_BUTTON) {
@@ -357,7 +357,7 @@ export class DragDropHelper implements IDragDropHelper {
         clientX: event.clientX,
         clientY: event.clientY,
         eventTarget: event.target,
-        dragTarget: target
+        dragTarget: target,
       };
 
       for (const key of Object.keys(this._activeTargets)) {

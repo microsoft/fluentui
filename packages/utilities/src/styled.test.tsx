@@ -50,8 +50,8 @@ const TestStyles = (props: ITestProps): ITestStyles => {
   _styleEval++;
   return {
     root: {
-      background: props.cool ? 'blue' : 'red'
-    }
+      background: props.cool ? 'blue' : 'red',
+    },
   };
 };
 
@@ -64,7 +64,7 @@ describe('styled', () => {
     _styleEval = 0;
 
     Stylesheet.getInstance().setConfig({
-      injectionMode: InjectionMode.none
+      injectionMode: InjectionMode.none,
     });
     Stylesheet.getInstance().reset();
   });
@@ -150,17 +150,17 @@ describe('styled', () => {
           Test: {
             styles: {
               root: {
-                background: 'yellow'
-              }
-            }
-          }
+                background: 'yellow',
+              },
+            },
+          },
         }}
       >
         <Test />
       </Customizer>,
       (wrapper: renderer.ReactTestRenderer) => {
         expect(wrapper.toJSON()).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -171,17 +171,17 @@ describe('styled', () => {
           Test: {
             styles: {
               root: {
-                background: 'yellow'
-              }
-            }
-          }
+                background: 'yellow',
+              },
+            },
+          },
         }}
       >
         <Test styles={{ root: { color: 'red' } }} />
       </Customizer>,
       (wrapper: renderer.ReactTestRenderer) => {
         expect(wrapper.toJSON()).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -238,12 +238,12 @@ describe('styled', () => {
   it('respects styles arg', () => {
     const defaultStyles = () =>
       mergeStyles({
-        backgroundColor: 'red'
+        backgroundColor: 'red',
       });
 
     const greenStyles = () =>
       mergeStyles({
-        backgroundColor: 'green'
+        backgroundColor: 'green',
       });
 
     const DefaultPanel = (props: ITestProps) => {
@@ -261,7 +261,7 @@ describe('styled', () => {
       </div>,
       (wrapper: renderer.ReactTestRenderer) => {
         expect(wrapper.toJSON()).toMatchSnapshot();
-      }
+      },
     );
   });
 
@@ -299,7 +299,7 @@ describe('styled', () => {
         expect(_renderCount).toEqual(3);
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         expect(_renderCount).toEqual(6);
-      }
+      },
     );
   });
 
@@ -312,7 +312,7 @@ describe('styled', () => {
         expect(_renderCount).toEqual(1);
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         expect(_renderCount).toEqual(2);
-      }
+      },
     );
   });
 
@@ -339,7 +339,7 @@ describe('styled', () => {
         expect(_renderCount).toEqual(2);
         Customizations.applySettings({ theme: { palette: { themePrimary: 'red' } } });
         expect(_renderCount).toEqual(4);
-      }
+      },
     );
   });
 });

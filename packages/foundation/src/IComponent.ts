@@ -24,7 +24,7 @@ export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TViewProps,
   theme: ITheme,
-  tokens: TTokens
+  tokens: TTokens,
 ) => TStyleSet;
 
 /**

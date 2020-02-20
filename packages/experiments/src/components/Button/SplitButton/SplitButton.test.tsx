@@ -9,13 +9,13 @@ const menuProps: ISplitButtonProps['menu'] = {
   items: [
     {
       key: 'a',
-      name: 'Item a'
+      name: 'Item a',
     },
     {
       key: 'b',
-      name: 'Item b'
-    }
-  ]
+      name: 'Item b',
+    },
+  ],
 };
 
 describe('SplitButton', () => {
@@ -45,7 +45,7 @@ describe('SplitButton', () => {
 
   it('renders a SplitButton with its first action disabled correctly', () => {
     const component = renderer.create(
-      <SplitButton primaryActionDisabled icon="Add" content="First action disabled button" menu={menuProps} />
+      <SplitButton primaryActionDisabled icon="Add" content="First action disabled button" menu={menuProps} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
@@ -53,7 +53,7 @@ describe('SplitButton', () => {
 
   it('renders a primary SplitButton with its first action disabled correctly', () => {
     const component = renderer.create(
-      <SplitButton primaryActionDisabled primary icon="Add" content="First action disabled primary button" menu={menuProps} />
+      <SplitButton primaryActionDisabled primary icon="Add" content="First action disabled primary button" menu={menuProps} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
@@ -69,7 +69,7 @@ describe('SplitButton', () => {
         <SplitButton content="Button 1" componentRef={button1} />
         <SplitButton content="Button 2" componentRef={button2} />
         <SplitButton content="Button 3" componentRef={button3} />
-      </div>
+      </div>,
     );
 
     const buttons = wrapper.getDOMNode().querySelectorAll('span.ms-SplitButton > button.ms-Button') as NodeListOf<HTMLButtonElement>;

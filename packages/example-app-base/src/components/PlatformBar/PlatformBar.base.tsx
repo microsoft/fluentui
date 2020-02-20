@@ -14,7 +14,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
 
     this._classNames = getClassNames(styles, {
       theme: theme!,
-      innerWidth
+      innerWidth,
     });
 
     return (

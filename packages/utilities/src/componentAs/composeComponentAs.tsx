@@ -18,7 +18,7 @@ function createComposedComponent<TProps>(outer: IComponentAs<TProps>): (inner: I
 
     const innerMemoizer = createMemoizer((defaultRender: IComponentAs<TProps>) => {
       const InnerWithDefaultRender: React.ComponentType<IComponentAsProps<TProps>> = (
-        innerProps: IComponentAsProps<TProps>
+        innerProps: IComponentAsProps<TProps>,
       ): JSX.Element => {
         return <Inner {...innerProps} defaultRender={defaultRender} />;
       };

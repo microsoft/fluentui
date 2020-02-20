@@ -55,7 +55,7 @@ describe('StaticList', () => {
     const component = renderer.create(
       <StaticList items={items} as={'ol'}>
         {mockRenderFunction}
-      </StaticList>
+      </StaticList>,
     );
     const tree = component.toJSON();
 
@@ -84,7 +84,7 @@ describe('StaticList', () => {
     const wrapper = shallow(
       <StaticList as={'ol'} items={items}>
         {mockRenderFunction}
-      </StaticList>
+      </StaticList>,
     );
 
     expect(wrapper.matchesElement(<ol />)).toBe(true);
@@ -92,7 +92,7 @@ describe('StaticList', () => {
 
   it('renders child render function per item provided', () => {
     const wrapper = shallow(
-      <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
+      <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>,
     );
 
     expect(wrapper.children().length).toBe(COUNT);
@@ -100,7 +100,7 @@ describe('StaticList', () => {
 
   it('re-renders when items array mutates', () => {
     const wrapper = shallow(
-      <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
+      <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>,
     );
 
     wrapper.setProps<'items'>({ items: [...items, ...items] });
@@ -122,7 +122,7 @@ describe('StaticList', () => {
 
   it('re-renders when children mutate', () => {
     const wrapper = shallow(
-      <StaticList items={items}>{(_item: number, index: number) => <li className="foo" key={index}>{`Item #${index}`}</li>}</StaticList>
+      <StaticList items={items}>{(_item: number, index: number) => <li className="foo" key={index}>{`Item #${index}`}</li>}</StaticList>,
     );
 
     expect(wrapper.find('.foo').length).toBe(COUNT);

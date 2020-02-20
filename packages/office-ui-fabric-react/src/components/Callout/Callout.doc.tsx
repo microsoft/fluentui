@@ -22,34 +22,34 @@ export const CalloutPageProps: IDocPageProps = {
     {
       title: 'Default Callout',
       code: CalloutBasicExampleCode,
-      view: <CalloutBasicExample />
+      view: <CalloutBasicExample />,
     },
 
     {
       title: 'FocusTrapCallout Variant',
       code: CalloutFocusTrapExampleCode,
-      view: <CalloutFocusTrapExample />
+      view: <CalloutFocusTrapExample />,
     },
     {
       title: 'Non-focusable Callout with accessible text',
       code: StatusCalloutExampleCode,
-      view: <StatusCalloutExample />
+      view: <StatusCalloutExample />,
     },
     {
       title: 'Callout with directional hint',
       code: CalloutDirectionalExampleCode,
-      view: <CalloutDirectionalExample />
+      view: <CalloutDirectionalExample />,
     },
     {
       title: 'Callout that covers the target element',
       code: CalloutCoverExampleCode,
-      view: <CalloutCoverExample />
-    }
+      view: <CalloutCoverExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/docs/CalloutDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

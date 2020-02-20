@@ -14,6 +14,6 @@ export const ControlsPages: INavPage = {
   platforms: {
     web: controlsPagesWeb,
     ios: controlsPagesIos,
-    android: controlsPagesAndroid
-  }
+    android: controlsPagesAndroid,
+  },
 };

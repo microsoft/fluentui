@@ -130,10 +130,7 @@ function getContrastingLuminanceRange(color: IRGB, desiredRatio: number): ISugge
 function contrastAdjust(color: IRGB, suggestedRelLuminance: ISuggestionRange): IRGB {
   // it is possible that the current color meets the suggested relative luminance
   let currRelLuminance: number = relativeLuminance(color.r, color.g, color.b);
-  if (
-    currRelLuminance >= suggestedRelLuminance.min &&
-    currRelLuminance <= suggestedRelLuminance.max
-  ) {
+  if (currRelLuminance >= suggestedRelLuminance.min && currRelLuminance <= suggestedRelLuminance.max) {
     return { r: color.r, g: color.g, b: color.b }; // make a copy to be safe
   }
 
@@ -244,11 +241,7 @@ const _contrastCache: IContrastCache = {
  * @param backgroundColor - background color to that the color needs to be shown on
  * @param desiredRatio - desired contrast ratio, defaults to 4.5
  */
-export function getContrastingColor(
-  color: string,
-  backgroundColor: string,
-  requiredContrast: RequiredContrast = 'medium',
-): string {
+export function getContrastingColor(color: string, backgroundColor: string, requiredContrast: RequiredContrast = 'medium'): string {
   const desiredRatio = _contrastDefaults[requiredContrast];
   const cache = _contrastCache.cache;
   /* eslint-disable no-multi-assign */

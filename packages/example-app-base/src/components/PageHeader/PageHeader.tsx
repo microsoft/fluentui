@@ -14,9 +14,9 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
         [`@media screen and (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
           marginBottom: 0,
           padding: `${appPaddingLg}px 0`,
-          minHeight: pageHeaderFullHeight
-        }
-      }
+          minHeight: pageHeaderFullHeight,
+        },
+      },
     },
     title: {
       alignItems: 'baseline',
@@ -25,14 +25,14 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
       fontSize: FontSizes.size32,
       fontWeight: FontWeights.semibold,
       lineHeight: '1', // must have quotes to prevent interpretation as px
-      margin: 0
+      margin: 0,
     },
     subTitle: {
       marginLeft: '1em',
       fontSize: FontSizes.size14,
       fontWeight: FontWeights.regular,
-      color: palette.neutralSecondary
-    }
+      color: palette.neutralSecondary,
+    },
   };
 };
 
@@ -56,5 +56,5 @@ export const PageHeader: React.FunctionComponent<IPageHeaderProps> = styled<IPag
   PageHeaderBase,
   getStyles,
   undefined,
-  { scope: 'PageHeader' }
+  { scope: 'PageHeader' },
 );

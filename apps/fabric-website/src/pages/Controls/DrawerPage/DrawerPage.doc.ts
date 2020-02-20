@@ -7,11 +7,11 @@ export const DrawerPageProps: TFabricPlatformPageProps = {
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/ios/DrawerOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/android/DrawerOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

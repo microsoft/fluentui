@@ -12,14 +12,14 @@ const menuProps: IContextualMenuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
-  ]
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
   // By default, the menu will be focused when it opens. Uncomment the next line to prevent this.
   // shouldFocusOnMount: false
 };

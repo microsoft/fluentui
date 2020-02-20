@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Button, Dialog } from '@fluentui/react'
-import { useBooleanKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import { Button, Dialog } from '@fluentui/react';
+import { useBooleanKnob } from '@fluentui/docs-components';
 
 const DialogExampleHeaderAction: React.FC = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
   return (
     <Dialog
       open={open}
@@ -16,7 +16,7 @@ const DialogExampleHeaderAction: React.FC = () => {
       headerAction={{ icon: 'close', title: 'Close', onClick: () => setOpen(false) }}
       trigger={<Button content="Open a dialog" />}
     />
-  )
-}
+  );
+};
 
-export default DialogExampleHeaderAction
+export default DialogExampleHeaderAction;

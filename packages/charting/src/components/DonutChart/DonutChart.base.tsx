@@ -23,7 +23,7 @@ interface IDonutChartState {
 
 export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChartState> {
   public static defaultProps: Partial<IDonutChartProps> = {
-    innerRadius: 0
+    innerRadius: 0,
   };
   public _colors: scale.ScaleOrdinal<string, {}>;
   private _classNames: IProcessedStyleSet<IDonutChartStyles>;
@@ -34,7 +34,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
-    prevState: Readonly<IDonutChartState>
+    prevState: Readonly<IDonutChartState>,
   ): Partial<IDonutChartState> | null {
     if (nextProps.height && nextProps.height !== prevState._height && nextProps.width !== prevState._width) {
       const reducedHeight = nextProps.height / 5;
@@ -53,7 +53,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       _height: this.props.height || 200,
       activeLegend: '',
       color: '',
-      isLegendSelected: false
+      isLegendSelected: false,
     };
     this._hoverCallback = this._hoverCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
@@ -70,7 +70,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const reducedHeight = this._rootElem!.offsetHeight / 5;
     this.setState({
       _width: this._rootElem!.offsetWidth,
-      _height: this._rootElem!.offsetHeight - reducedHeight
+      _height: this._rootElem!.offsetHeight - reducedHeight,
     });
   }
   public render(): JSX.Element {
@@ -84,7 +84,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       width: _width!,
       height: _height!,
       color: this.state.color!,
-      className
+      className,
     });
     const legendBars = this._createLegends(data!, palette);
     const radius = Math.min(_width!, _height!) / 2;
@@ -128,7 +128,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   private _closeCallout = () => {
     this.setState({
-      showHover: false
+      showHover: false,
     });
   };
 
@@ -175,9 +175,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
           onMouseOutAction: () => {
             this.setState({
               showHover: false,
-              activeLegend: ''
+              activeLegend: '',
             });
-          }
+          },
         };
         return legend;
       });
@@ -198,7 +198,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       showHover: true,
       value: data.data!.toString(),
       legend: data.legend,
-      color: data.color!
+      color: data.color!,
     });
   };
 

@@ -9,7 +9,7 @@ const tooltipProps: ITooltipProps = {
       <li>1. One</li>
       <li>2. Two</li>
     </ul>
-  )
+  ),
 };
 const hostStyles: Partial<ITooltipHostStyles> = { root: { display: 'inline-block' } };
 

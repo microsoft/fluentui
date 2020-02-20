@@ -17,7 +17,7 @@ const jestConfigFromArgv: Partial<JestPluginConfig> = {
   maxWorkers: argv.maxWorkers as number,
   detectLeaks: argv.detectLeaks as boolean,
   testNamePattern: argv.testNamePattern as string,
-  testFilePattern: argv.testFilePattern as string
+  testFilePattern: argv.testFilePattern as string,
 };
 
 if (process.env.CI) {
@@ -29,8 +29,8 @@ task(
   jest({
     config: './jest.config.js',
     coverage: true,
-    ...jestConfigFromArgv
-  })
+    ...jestConfigFromArgv,
+  }),
 );
 
 task(
@@ -38,8 +38,8 @@ task(
   jest({
     config: './jest.config.js',
     watchAll: true,
-    ...jestConfigFromArgv
-  })
+    ...jestConfigFromArgv,
+  }),
 );
 
 // ----------------------------------------

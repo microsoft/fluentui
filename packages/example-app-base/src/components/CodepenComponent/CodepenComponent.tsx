@@ -44,7 +44,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       script('@uifabric/react-hooks@7/dist/react-hooks.js'),
       // load example data bundle only if used
       jsContentStr.indexOf('window.FabricExampleData') !== -1 ? script('@uifabric/example-data@7/dist/example-data.js') : '',
-      `<div id="${CONTENT_ID}"></div>`
+      `<div id="${CONTENT_ID}"></div>`,
     ]
       .filter(line => !!line)
       .join('\n');
@@ -58,7 +58,7 @@ const CodepenComponentBase: React.FunctionComponent<ICodepenProps> = props => {
       js: jsContentStr,
       js_pre_processor: 'typescript',
       css: '',
-      css_pre_processor: 'scss'
+      css_pre_processor: 'scss',
     };
 
     // reformat the JSON string to take out the quotes so it'll work with the Codepen API
@@ -88,5 +88,5 @@ export const CodepenComponent: React.FunctionComponent<ICodepenProps> = styled<I
   CodepenComponentBase,
   getStyles,
   undefined,
-  { scope: 'CodepenComponent' }
+  { scope: 'CodepenComponent' },
 );

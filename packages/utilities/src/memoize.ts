@@ -49,7 +49,7 @@ export function resetMemoizations(): void {
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>
+  descriptor: TypedPropertyDescriptor<T>,
 ): {
   configurable: boolean;
   get(): T;
@@ -62,7 +62,7 @@ export function memoize<T extends Function>(
     configurable: true,
     get(): T {
       return fn;
-    }
+    },
   };
 }
 
@@ -88,7 +88,7 @@ export function memoize<T extends Function>(
 export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
   cb: T,
   maxCacheSize: number = 100,
-  ignoreNullOrUndefinedResult: boolean = false
+  ignoreNullOrUndefinedResult: boolean = false,
 ): T {
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
@@ -192,6 +192,6 @@ function _normalizeArg(val: any): any {
 
 function _createNode(): IMemoizeNode {
   return {
-    map: _weakMap ? new _weakMap() : null
+    map: _weakMap ? new _weakMap() : null,
   };
 }

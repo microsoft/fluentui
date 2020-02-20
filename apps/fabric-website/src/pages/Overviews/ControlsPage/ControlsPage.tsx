@@ -41,8 +41,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   </li>
                 ))}
               </ul>
-            )
-          }
+            ),
+          },
       );
 
     sections.push(_otherControlsRequestSections(platform));
@@ -55,17 +55,17 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
     case 'web':
       return {
         sectionName: 'Need a control Fabric React doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
       };
     case 'ios':
       return {
         sectionName: 'Need a control Fabric iOS doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
       };
     case 'android':
       return {
         sectionName: 'Need a control Fabric Android doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
   }
 }

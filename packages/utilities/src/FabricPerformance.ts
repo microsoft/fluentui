@@ -60,14 +60,14 @@ export class FabricPerformance {
     const measurement: IPerfMeasurement = FabricPerformance.summary[name] || {
       totalDuration: 0,
       count: 0,
-      all: []
+      all: [],
     };
     const duration = end - start;
     measurement.totalDuration += duration;
     measurement.count++;
     measurement.all.push({
       duration: duration,
-      timeStamp: end
+      timeStamp: end,
     });
     FabricPerformance.summary[name] = measurement;
   }

@@ -101,7 +101,7 @@ export class AutoScroll {
     if (clientDirection! < scrollRect + SCROLL_GUTTER) {
       this._scrollVelocity = Math.max(
         -MAX_SCROLL_VELOCITY,
-        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER - (clientDirection - scrollRect)) / SCROLL_GUTTER)
+        -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER - (clientDirection - scrollRect)) / SCROLL_GUTTER),
       );
     } else if (clientDirection > scrollClient) {
       this._scrollVelocity = Math.min(MAX_SCROLL_VELOCITY, MAX_SCROLL_VELOCITY * ((clientDirection - scrollClient) / SCROLL_GUTTER));

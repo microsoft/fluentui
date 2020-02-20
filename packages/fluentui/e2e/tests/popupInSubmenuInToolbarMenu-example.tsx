@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',
@@ -8,10 +8,10 @@ export const selectors = {
   popupElementId: 'popupElement',
   submenuTriggerId: 'submenuTrigger',
   dummyButtonId: 'dummyButton',
-}
+};
 
 const ToolbarExamplePopupInMenu = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <>
@@ -35,13 +35,7 @@ const ToolbarExamplePopupInMenu = () => {
                       id: selectors.popupTriggerId,
                       key: 'popup',
                       popup: {
-                        content: (
-                          <Input
-                            id={selectors.popupElementId}
-                            icon="search"
-                            placeholder="Search..."
-                          />
-                        ),
+                        content: <Input id={selectors.popupElementId} icon="search" placeholder="Search..." />,
                       },
                     },
                   ],
@@ -50,7 +44,7 @@ const ToolbarExamplePopupInMenu = () => {
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              setMenuOpen(menuOpen)
+              setMenuOpen(menuOpen);
             },
           },
           {
@@ -62,7 +56,7 @@ const ToolbarExamplePopupInMenu = () => {
         ]}
       />
     </>
-  )
-}
+  );
+};
 
-export default ToolbarExamplePopupInMenu
+export default ToolbarExamplePopupInMenu;

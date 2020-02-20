@@ -14,51 +14,51 @@ const keytipConfig: IKeytipConfig = {
       id: 'Button',
       content: '1A',
       optionalProps: {
-        onExecute: btnExecute
-      }
+        onExecute: btnExecute,
+      },
     },
     {
       id: 'MenuButton',
       content: '1B',
       optionalProps: {
-        onExecute: btnExecute
+        onExecute: btnExecute,
       },
       children: [
         {
           id: 'MenuItem1',
-          content: 'E'
+          content: 'E',
         },
         {
           id: 'MenuItem2',
-          content: '8'
-        }
-      ]
+          content: '8',
+        },
+      ],
     },
     {
       id: 'MenuButton2',
       content: '1C',
       optionalProps: {
-        onExecute: btnExecute
+        onExecute: btnExecute,
       },
       children: [
         {
           id: 'MenuItem1',
-          content: 'E'
+          content: 'E',
         },
         {
           id: 'MenuItem2',
-          content: '8'
-        }
-      ]
+          content: '8',
+        },
+      ],
     },
     {
       id: 'SplitButton',
       content: '2',
       optionalProps: {
-        onExecute: btnExecute
-      }
-    }
-  ]
+        onExecute: btnExecute,
+      },
+    },
+  ],
 };
 const keytipMap: IKeytipConfigMap = buildKeytipConfigMap(keytipConfig);
 
@@ -71,16 +71,16 @@ const menuProps: IMenuButtonProps['menu'] = {
     {
       key: 'a',
       text: 'Item a',
-      keytipProps: keytipMap.MenuItem1
+      keytipProps: keytipMap.MenuItem1,
     },
     {
       key: 'b',
       text: 'Item b',
-      keytipProps: keytipMap.MenuItem2
-    }
+      keytipProps: keytipMap.MenuItem2,
+    },
   ],
   shouldFocusOnContainer: true,
-  shouldFocusOnMount: true
+  shouldFocusOnMount: true,
 };
 
 // tslint:disable:jsx-no-lambda

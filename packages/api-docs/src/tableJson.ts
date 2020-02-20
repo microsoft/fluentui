@@ -7,7 +7,7 @@ import {
   ApiTypeAlias,
   ApiDeclaredItem,
   HeritageType,
-  ApiItem
+  ApiItem,
 } from '@microsoft/api-extractor-model';
 import { ITableJson, ITableRowJson } from './types';
 import { renderDocNodeWithoutInlineTag, getTokenHyperlinks, renderNodes } from './rendering';
@@ -40,13 +40,13 @@ function createBasicTableJson(
   collectedData: ICollectedData,
   apiItem: ApiDeclaredItem,
   kind: ITableJson['kind'],
-  extendsTypes?: HeritageType | readonly HeritageType[]
+  extendsTypes?: HeritageType | readonly HeritageType[],
 ): ITableJson {
   const { tsdocComment } = apiItem;
   const tableJson: ITableJson = {
     kind,
     name: apiItem.displayName,
-    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined
+    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined,
   };
 
   const extendsArr: HeritageType[] | undefined = !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];

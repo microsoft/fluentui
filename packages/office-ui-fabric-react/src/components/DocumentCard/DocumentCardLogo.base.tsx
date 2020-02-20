@@ -17,7 +17,7 @@ export class DocumentCardLogoBase extends BaseComponent<IDocumentCardLogoProps, 
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

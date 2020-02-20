@@ -17,7 +17,7 @@ export interface IControlledStateOptions<TProps, TProp extends keyof TProps, TDe
 export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(
   props: Readonly<TProps>,
   propName: TProp,
-  options?: IControlledStateOptions<TProps, TProp, TDefaultProp>
+  options?: IControlledStateOptions<TProps, TProp, TDefaultProp>,
 ): [TProps[TProp] | undefined, React.Dispatch<React.SetStateAction<TProps[TProp]>>] {
   let defaultValue: TProps[TProp] | undefined;
   if (options) {
@@ -48,7 +48,7 @@ export function useControlledState<TProps, TProp extends keyof TProps, TDefaultP
 export function getControlledDerivedProps<TProps, TProp extends keyof TProps>(
   props: Readonly<TProps>,
   propName: TProp,
-  derivedValue: TProps[TProp]
+  derivedValue: TProps[TProp],
 ): TProps[TProp] {
   if (props[propName] !== undefined) {
     return props[propName];

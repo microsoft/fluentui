@@ -7,11 +7,11 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const ShimmerPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ShimmerPage/docs/ios/ShimmerOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

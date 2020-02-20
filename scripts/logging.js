@@ -11,7 +11,7 @@ module.exports.logEndTask = (packageName, task, startTime, errorMessage) => {
   console.log(
     `${getTimePrefix(packageName)} ${getPassFail(errorMessage === undefined)}: ${chalk.cyan(task)} (${getDuration(startTime)})${
       errorMessage ? chalk.white(': ') + chalk.red(errorMessage) : ''
-    }`
+    }`,
   );
 };
 
@@ -37,7 +37,7 @@ module.exports.logEndBuild = (packageName, passed, startTime) => {
       getDuration(startTime) +
       chalk.white(' ]') +
       chalk.grey('============')}
-  `
+  `,
   );
 };
 

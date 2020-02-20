@@ -29,7 +29,7 @@ function runPrettier(files, runAsync, logErrorsOnly) {
     `"${prettierIgnorePath}"`,
     ...(logErrorsOnly ? ['--loglevel', 'warn'] : []),
     '--write',
-    ...files
+    ...files,
   ].join(' ');
 
   if (runAsync) {

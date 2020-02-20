@@ -13,7 +13,7 @@ import {
   ActionButton,
   Stack,
   IRawStyle,
-  css
+  css,
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
@@ -28,8 +28,8 @@ registerIcons({
   icons: {
     'AndroidLogo-homePage': AndroidLogo({ iconColor: 'black', iconSize: 64 }),
     'AppleLogo-homePage': AppleLogo({ iconColor: 'black', iconSize: 64 }),
-    'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 })
-  }
+    'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 }),
+  },
 });
 
 const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
@@ -45,7 +45,7 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'powerpoint_48x1.svg', title: 'PowerPoint' },
   { src: fabricUsageIconBaseUrl + 'onenote_48x1.svg', title: 'OneNote' },
   { src: fabricUsageIconBaseUrl + 'sharepoint_48x1.svg', title: 'SharePoint' },
-  { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
+  { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' },
 ];
 
 const CURRENT_VERSION = '7';
@@ -53,7 +53,7 @@ const VERSIONS = ['7', '6', '5'];
 const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
   key: version,
   text: 'Fabric ' + version,
-  checked: version === CURRENT_VERSION
+  checked: version === CURRENT_VERSION,
 }));
 
 interface IRenderLinkOptions {
@@ -77,7 +77,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     this.state = {
       isMounted: false,
-      isMountedOffset: false
+      isMountedOffset: false,
     };
   }
 
@@ -102,7 +102,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     this._classNames = getClassNames(styles, {
       theme,
-      isMountedOffset
+      isMountedOffset,
     });
 
     return (
@@ -150,7 +150,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isMountedOffset,
       beforeColor,
       afterColor,
-      isInverted: true
+      isInverted: true,
     });
 
     const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
@@ -174,7 +174,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   menuIcon: versionSwitcherColor,
                   rootHovered: versionSwitcherActiveColor,
                   rootPressed: versionSwitcherActiveColor,
-                  rootExpanded: versionSwitcherActiveColor
+                  rootExpanded: versionSwitcherActiveColor,
                 }}
                 menuProps={{
                   gapSpace: 3,
@@ -185,8 +185,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   directionalHint: DirectionalHint.bottomCenter,
                   onItemClick: this._onVersionMenuClick,
                   styles: {
-                    root: { minWidth: 100 }
-                  }
+                    root: { minWidth: 100 },
+                  },
                 }}
               >
                 Fabric React {reactPackageData.version}
@@ -231,7 +231,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const classNames = getClassNames(styles, {
       theme,
       isMountedOffset,
-      isInverted: true
+      isInverted: true,
     });
 
     return (
@@ -331,7 +331,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       currentArea: getSiteArea(),
       nextArea: getSiteArea(undefined, url),
       nextPage: url,
-      currentPage: window.location.hash
+      currentPage: window.location.hash,
     });
   };
 

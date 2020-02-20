@@ -73,7 +73,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateCustom.md') as string
               }
             </Markdown>
-          )
+          ),
         },
 
         // Custom section with JSX content.
@@ -94,8 +94,8 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           ),
 
           // Optionally wrap the section with a className. Use the `css` utility from Fabric to concatenate classNames that may be falsey.
-          className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName')
-        }
+          className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName'),
+        },
       ];
   }
 }

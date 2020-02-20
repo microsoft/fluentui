@@ -9,7 +9,7 @@ import {
   IButtonProps,
   IDropdownOption,
   IStyle,
-  TeachingBubbleContent
+  TeachingBubbleContent,
 } from 'office-ui-fabric-react';
 
 export interface ICoachmarkBasicExampleState {
@@ -44,7 +44,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     this.state = {
       isCoachmarkVisible: false,
       coachmarkPosition: DirectionalHint.bottomAutoEdge,
-      dropdownSelectedOptionKey: 'H'
+      dropdownSelectedOptionKey: 'H',
     };
   }
 
@@ -55,21 +55,21 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
     const classNames = getClassNames(() => {
       return {
         dropdownContainer: {
-          maxWidth: '400px'
+          maxWidth: '400px',
         },
         buttonContainer: {
           marginTop: '30px',
-          display: 'inline-block'
-        }
+          display: 'inline-block',
+        },
       };
     }, {});
 
     const buttonProps: IButtonProps = {
-      text: 'Try it'
+      text: 'Try it',
     };
 
     const buttonProps2: IButtonProps = {
-      text: 'Try it again'
+      text: 'Try it again',
     };
 
     return (
@@ -93,7 +93,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
               { key: 'K', text: 'Left Bottom Edge', data: DirectionalHint.leftBottomEdge },
               { key: 'L', text: 'Right Top Edge', data: DirectionalHint.rightTopEdge },
               { key: 'M', text: 'Right Center', data: DirectionalHint.rightCenter },
-              { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge }
+              { key: 'N', text: 'Right Bottom Edge', data: DirectionalHint.rightBottomEdge },
             ]}
             onChange={this._onDropdownChange}
           />
@@ -107,7 +107,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
             target={this._targetButton.current}
             positioningContainerProps={{
               directionalHint: this.state.coachmarkPosition,
-              doNotLayer: false
+              doNotLayer: false,
             }}
             ariaAlertText="A Coachmark has appeared"
             ariaDescribedBy={'coachmark-desc1'}
@@ -135,20 +135,20 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
   private _onDismiss = (): void => {
     this.setState({
-      isCoachmarkVisible: false
+      isCoachmarkVisible: false,
     });
   };
 
   private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
       coachmarkPosition: option.data,
-      dropdownSelectedOptionKey: option.key
+      dropdownSelectedOptionKey: option.key,
     });
   };
 
   private _onShowMenuClicked = (): void => {
     this.setState({
-      isCoachmarkVisible: !this.state.isCoachmarkVisible
+      isCoachmarkVisible: !this.state.isCoachmarkVisible,
     });
   };
 }

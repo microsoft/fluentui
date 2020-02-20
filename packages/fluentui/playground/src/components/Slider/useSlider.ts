@@ -20,9 +20,7 @@ function _getDragValues(
     1,
     Math.max(
       0,
-      vertical
-        ? 1 - (ev.clientY - containerRect.top) / containerRect.height
-        : (ev.clientX - containerRect.left) / containerRect.width,
+      vertical ? 1 - (ev.clientY - containerRect.top) / containerRect.height : (ev.clientX - containerRect.left) / containerRect.width,
     ),
   );
   const value = Math.round(min + (percentage * range) / step) * step;
@@ -185,19 +183,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
 export const useSlider = (props: ISliderProps) => {
   const { classes = {}, disabled, vertical } = props;
   const state = useSliderState(props);
-  const {
-    min,
-    max,
-    value,
-    rootRef,
-    thumbRef,
-    onMouseDown,
-    onKeyDown,
-    onFocus,
-    onBlur,
-    percentage,
-    focused,
-  } = state;
+  const { min, max, value, rootRef, thumbRef, onMouseDown, onKeyDown, onFocus, onBlur, percentage, focused } = state;
   const { rootFocused, rootDisabled, rootVertical } = classes;
 
   const slotProps = mergeSlotProps(props, {

@@ -11,19 +11,19 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%'
+    height: '100%',
   },
   expandedCard: {
-    padding: '16px 24px'
+    padding: '16px 24px',
   },
   item: {
     selectors: {
       '&:hover': {
         textDecoration: 'underline',
-        cursor: 'pointer'
-      }
-    }
-  }
+        cursor: 'pointer',
+      },
+    },
+  },
 });
 
 interface IHoverCardFieldProps {
@@ -42,7 +42,7 @@ class HoverCardField extends React.Component<IHoverCardFieldProps, IHoverCardFie
     super(props);
 
     this.state = {
-      contentRendered: false
+      contentRendered: false,
     };
   }
 
@@ -111,8 +111,8 @@ export class HoverCardTargetExample extends React.Component<{}, {}> {
       directionalHint: DirectionalHint.rightTopEdge,
       gapSpace: 16,
       calloutProps: {
-        isBeakVisible: true
-      }
+        isBeakVisible: true,
+      },
     };
 
     if (column.key === 'key') {

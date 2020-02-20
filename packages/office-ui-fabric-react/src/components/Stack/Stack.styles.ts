@@ -4,12 +4,12 @@ import { getGlobalClassNames } from '../../Styling';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
-  end: 'flex-end'
+  end: 'flex-end',
 };
 
 const GlobalClassNames = {
   root: 'ms-Stack',
-  inner: 'ms-Stack-inner'
+  inner: 'ms-Stack-inner',
 };
 
 export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackStylesReturnType => {
@@ -29,15 +29,15 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
 
   // styles to be applied to all direct children regardless of wrap or direction
   const childStyles = {
-    textOverflow: 'ellipsis'
+    textOverflow: 'ellipsis',
   };
 
   // selectors to be applied regardless of wrap or direction
   const commonSelectors = {
     // flexShrink styles are applied by the StackItem
     '> *:not(.ms-StackItem)': {
-      flexShrink: disableShrink ? 0 : 1
-    }
+      flexShrink: disableShrink ? 0 : 1,
+    },
   };
 
   if (wrap) {
@@ -50,23 +50,23 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
           maxHeight,
           width: 'auto',
           overflow: 'visible',
-          height: '100%'
+          height: '100%',
         },
         horizontalAlign && {
-          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
+          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign,
         },
         verticalAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign,
         },
         className,
         {
           // not allowed to be overridden by className
           // since this is necessary in order to prevent collapsing margins
-          display: 'flex'
+          display: 'flex',
         },
         horizontal && {
-          height: verticalFill ? '100%' : 'auto'
-        }
+          height: verticalFill ? '100%' : 'auto',
+        },
       ],
 
       inner: [
@@ -89,16 +89,16 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
             '> *': {
               margin: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
 
-              ...childStyles
+              ...childStyles,
             },
-            ...commonSelectors
-          }
+            ...commonSelectors,
+          },
         },
         horizontalAlign && {
-          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
+          [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign,
         },
         verticalAlign && {
-          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
+          [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign,
         },
         horizontal && {
           flexDirection: reversed ? 'row-reverse' : 'row',
@@ -108,9 +108,9 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
 
           selectors: {
             '> *': {
-              maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`
-            }
-          }
+              maxWidth: columnGap.value === 0 ? '100%' : `calc(100% - ${columnGap.value}${columnGap.unit})`,
+            },
+          },
         },
         !horizontal && {
           flexDirection: reversed ? 'column-reverse' : 'column',
@@ -118,11 +118,11 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
 
           selectors: {
             '> *': {
-              maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`
-            }
-          }
-        }
-      ]
+              maxHeight: rowGap.value === 0 ? '100%' : `calc(100% - ${rowGap.value}${rowGap.unit})`,
+            },
+          },
+        },
+      ],
     } as IStackStyles;
   }
 
@@ -147,27 +147,27 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
           // and the last direct one if it is
           [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: [
             horizontal && {
-              marginLeft: `${columnGap.value}${columnGap.unit}`
+              marginLeft: `${columnGap.value}${columnGap.unit}`,
             },
             !horizontal && {
-              marginTop: `${rowGap.value}${rowGap.unit}`
-            }
+              marginTop: `${rowGap.value}${rowGap.unit}`,
+            },
           ],
 
-          ...commonSelectors
-        }
+          ...commonSelectors,
+        },
       },
       grow && {
-        flexGrow: grow === true ? 1 : grow
+        flexGrow: grow === true ? 1 : grow,
       },
       horizontalAlign && {
-        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign
+        [horizontal ? 'justifyContent' : 'alignItems']: nameMap[horizontalAlign] || horizontalAlign,
       },
       verticalAlign && {
-        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign
+        [horizontal ? 'alignItems' : 'justifyContent']: nameMap[verticalAlign] || verticalAlign,
       },
-      className
-    ]
+      className,
+    ],
     // TODO: this cast may be hiding some potential issues with styling and name
     //        lookups and should be removed
   } as IStackStyles;

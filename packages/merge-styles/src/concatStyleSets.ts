@@ -7,7 +7,7 @@ import { IStyleFunctionOrObject } from './IStyleFunction';
  * @param styleSet - The first style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
-  styleSet: TStyleSet | false | null | undefined
+  styleSet: TStyleSet | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet>;
 
 /**
@@ -17,7 +17,7 @@ export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
  */
 export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
   styleSet1: TStyleSet1 | false | null | undefined,
-  styleSet2: TStyleSet2 | false | null | undefined
+  styleSet2: TStyleSet2 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
 
 /**
@@ -33,7 +33,7 @@ export function concatStyleSets<
 >(
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
-  styleSet3: TStyleSet3 | false | null | undefined
+  styleSet3: TStyleSet3 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 /**
@@ -52,7 +52,7 @@ export function concatStyleSets<
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet3 | false | null | undefined
+  styleSet4: TStyleSet3 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 /**
@@ -71,7 +71,7 @@ export function concatStyleSets<
   styleSet1: TStyleSet1 | false | null | undefined,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
-  styleSet4: TStyleSet4 | false | null | undefined
+  styleSet4: TStyleSet4 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 /**
@@ -93,7 +93,7 @@ export function concatStyleSets<
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
-  styleSet5: TStyleSet5 | false | null | undefined
+  styleSet5: TStyleSet5 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
 
 /**
@@ -118,7 +118,7 @@ export function concatStyleSets<
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
   styleSet5: TStyleSet5 | false | null | undefined,
-  styleSet6: TStyleSet6 | false | null | undefined
+  styleSet6: TStyleSet6 | false | null | undefined,
 ): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
 
 /**
@@ -173,7 +173,7 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
             (mergedSet as any)[prop] = [
               // https://github.com/Microsoft/TypeScript/issues/25474
               ...(Array.isArray(mergedValue) ? mergedValue : [mergedValue as IStyleBase]),
-              ...(Array.isArray(currentValue) ? currentValue : [currentValue as IStyleBase])
+              ...(Array.isArray(currentValue) ? currentValue : [currentValue as IStyleBase]),
             ];
           }
         }
@@ -192,8 +192,8 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
         mergedSubStyles[subCompProp] = (styleProps: any) => {
           return concatStyleSets(
             ...workingSet.map((styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
-              typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
-            )
+              typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject,
+            ),
           );
         };
       }

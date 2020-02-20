@@ -84,7 +84,7 @@ module.exports = function preset() {
       : parallel(
           'ts:commonjs',
           'ts:esm',
-          condition('ts:amd', () => !!argv().production)
+          condition('ts:amd', () => !!argv().production),
         );
   });
 
@@ -92,7 +92,7 @@ module.exports = function preset() {
 
   task(
     'test',
-    condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js')))
+    condition('jest', () => fs.existsSync(path.join(process.cwd(), 'jest.config.js'))),
   );
 
   task('lint', parallel('lint-imports', 'tslint'));
@@ -112,16 +112,16 @@ module.exports = function preset() {
       'copy',
       'sass',
       'ts',
-      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json')))
-    )
+      condition('api-extractor:verify', () => fs.existsSync(path.join(process.cwd(), 'config/api-extractor.json'))),
+    ),
   ).cached();
 
   task(
     'bundle',
     parallel(
       condition('webpack', () => !!resolveCwd('webpack.config.js')),
-      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js'))
-    )
+      condition('storybook:build', () => !!resolveCwd('./.storybook/main.js')),
+    ),
   );
 
   task('no-op', () => {}).cached();

@@ -10,7 +10,7 @@ import {
   IPersonaCoinStyles,
   IPersonaPresenceProps,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
 } from '../Persona.types';
 import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
@@ -30,7 +30,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
   public static defaultProps: IPersonaCoinProps = {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
-    imageAlt: ''
+    imageAlt: '',
   };
 
   constructor(props: IPersonaCoinProps) {
@@ -42,7 +42,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
 
     this.state = {
       isImageLoaded: false,
-      isImageError: false
+      isImageError: false,
     };
   }
 
@@ -51,7 +51,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
     if (nextProps.imageUrl !== this.props.imageUrl) {
       this.setState({
         isImageLoaded: false,
-        isImageError: false
+        isImageError: false,
       });
     }
   }
@@ -71,7 +71,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       presence,
       presenceTitle,
       showInitialsUntilImageLoads,
-      theme
+      theme,
     } = this.props;
 
     const size = this.props.size as PersonaSize;
@@ -86,7 +86,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       presence,
       presenceTitle,
       size,
-      theme
+      theme,
     };
 
     // Use getStyles from props, or fall back to getStyles from styles file.
@@ -95,11 +95,11 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       className: coinProps && coinProps.className ? coinProps.className : className,
       size,
       coinSize,
-      showUnknownPersonaCoin
+      showUnknownPersonaCoin,
     });
 
     const shouldRenderInitials = Boolean(
-      !this.state.isImageLoaded && ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage)
+      !this.state.isImageLoaded && ((showInitialsUntilImageLoads && imageUrl) || !imageUrl || this.state.isImageError || hideImage),
     );
 
     return (
@@ -111,7 +111,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
               <div
                 className={mergeStyles(
                   classNames.initials,
-                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(this.props) }
+                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(this.props) },
                 )}
                 style={coinSizeStyle}
                 aria-hidden="true"
@@ -147,7 +147,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
     const classNames = getClassNames(styles, {
       theme: theme!,
       size,
-      showUnknownPersonaCoin
+      showUnknownPersonaCoin,
     });
 
     const dimension = coinSize || sizeToPixels[size];
@@ -192,7 +192,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
   private _onPhotoLoadingStateChange = (loadState: ImageLoadState) => {
     this.setState({
       isImageLoaded: loadState === ImageLoadState.loaded,
-      isImageError: loadState === ImageLoadState.error
+      isImageError: loadState === ImageLoadState.error,
     });
 
     this.props.onPhotoLoadingStateChange && this.props.onPhotoLoadingStateChange(loadState);

@@ -15,7 +15,7 @@ function mockData(count: number = 0): IMockItem[] {
     item = {
       key: i,
       name: 'Item ' + i,
-      value: i
+      value: i,
     };
 
     data.push(item);

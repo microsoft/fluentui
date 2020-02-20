@@ -22,7 +22,7 @@ describe('ColorRectangle', () => {
       right: size + offset,
       bottom: size + offset,
       width: size,
-      height: size
+      height: size,
     } as DOMRect);
 
   afterEach(() => {
@@ -71,14 +71,14 @@ describe('ColorRectangle', () => {
     const descriptionEl = element.querySelectorAll('#' + descriptionId)[0];
     expect(descriptionEl).toBeDefined();
     expect(descriptionEl.textContent).toBe(
-      'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
+      'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
     );
   });
 
   it('uses custom aria values', () => {
     const color = getColorFromString('#abcdef')!;
     wrapper = mount(
-      <ColorRectangle color={color} ariaLabel="custom label" ariaValueFormat="v {1} s {0}" ariaDescription="custom description" />
+      <ColorRectangle color={color} ariaLabel="custom label" ariaValueFormat="v {1} s {0}" ariaDescription="custom description" />,
     );
 
     const element = wrapper.getDOMNode();
@@ -107,7 +107,7 @@ describe('ColorRectangle', () => {
     // by default, black has s=0, but in this case it will be s=100
     const newColor = {
       ...getColorFromString('#000000'),
-      s: 100
+      s: 100,
     };
 
     expect(_getNewColor(fakeEvent, prevColor, fakeRoot)).toEqual(newColor);
@@ -128,7 +128,7 @@ describe('ColorRectangle', () => {
     const fakeEvent = { clientX: 0, clientY: 0 } as React.MouseEvent<HTMLElement>;
     const newColor = {
       ...getColorFromString('#ffffff'),
-      h: prevColor.h
+      h: prevColor.h,
     };
 
     expect(_getNewColor(fakeEvent, prevColor, fakeRoot)).toEqual(newColor);

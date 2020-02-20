@@ -65,7 +65,7 @@ function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
     }
 
     spawnSync(process.execPath, [tslintPath, '--config', tslintConfig, '-t', 'stylish', '-r', rulesPath, ...filteredFiles], {
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
   }
 }

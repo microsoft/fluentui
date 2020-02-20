@@ -13,26 +13,26 @@ import { expectOne, expectMissing, renderIntoDocument } from '../../common/testU
 const DEFAULT_OPTIONS: IComboBoxOption[] = [
   { key: '1', text: '1' },
   { key: '2', text: '2' },
-  { key: '3', text: '3' }
+  { key: '3', text: '3' },
 ];
 
 const DEFAULT_OPTIONS2: IComboBoxOption[] = [
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
-  { key: '3', text: 'Bar' }
+  { key: '3', text: 'Bar' },
 ];
 const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '0', text: 'Zero', itemType: SelectableOptionMenuItemType.Header },
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
-  { key: '3', text: 'Bar' }
+  { key: '3', text: 'Bar' },
 ];
 
 const RUSSIAN_OPTIONS: IComboBoxOption[] = [
   { key: '0', text: 'сестра' },
   { key: '1', text: 'брат' },
   { key: '2', text: 'мама' },
-  { key: '3', text: 'папа' }
+  { key: '3', text: 'папа' },
 ];
 
 const returnUndefined = () => undefined;
@@ -44,7 +44,7 @@ let domNode: HTMLElement | undefined;
 
 const createNodeMock = (el: React.ReactElement<{}>) => {
   return {
-    __events__: {}
+    __events__: {},
   };
 };
 
@@ -74,10 +74,10 @@ describe('ComboBox', () => {
   it('renders with a Keytip correctly', () => {
     const keytipProps = {
       content: 'A',
-      keySequences: ['a']
+      keySequences: ['a'],
     };
     const component = renderer.create(<ComboBox options={DEFAULT_OPTIONS} keytipProps={keytipProps} />, {
-      createNodeMock
+      createNodeMock,
     });
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -120,7 +120,7 @@ describe('ComboBox', () => {
   it('Renders a selected item with zero key', () => {
     const options: IComboBoxOption[] = [
       { key: 0, text: 'zero' },
-      { key: 1, text: 'one' }
+      { key: 1, text: 'one' },
     ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
@@ -131,7 +131,7 @@ describe('ComboBox', () => {
   it('changes to a selected key change the input', () => {
     const options: IComboBoxOption[] = [
       { key: 0, text: 'zero' },
-      { key: 1, text: 'one' }
+      { key: 1, text: 'one' },
     ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
@@ -145,7 +145,7 @@ describe('ComboBox', () => {
   it('changes to a selected item on key change', () => {
     const options: IComboBoxOption[] = [
       { key: 0, text: 'zero' },
-      { key: 1, text: 'one' }
+      { key: 1, text: 'one' },
     ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
@@ -460,7 +460,7 @@ describe('ComboBox', () => {
       }
     };
     wrapper = mount(
-      <ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="1" allowFreeform={true} onPendingValueChanged={pendingValueChangedHandler} />
+      <ComboBox options={DEFAULT_OPTIONS} defaultSelectedKey="1" allowFreeform={true} onPendingValueChanged={pendingValueChangedHandler} />,
     );
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
     inputElement.simulate('input', { target: { value: 'f' } });
@@ -481,11 +481,11 @@ describe('ComboBox', () => {
 
     const component = ReactDOM.render(
       <ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} onPendingValueChanged={pendingValueChangedHandler} />,
-      baseNode
+      baseNode,
     );
 
     const input = (ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element).querySelector(
-      'input'
+      'input',
     ) as HTMLInputElement;
     if (input === null) {
       throw 'ComboBox input element is null';
@@ -534,7 +534,7 @@ describe('ComboBox', () => {
         allowFreeform={true}
         // tslint:disable-next-line:jsx-no-lambda
         onChange={onChange}
-      />
+      />,
     );
     const inputElement: InputElementWrapper = wrapper.find('input');
     inputElement.simulate('input', { target: { value: 't' } });
@@ -574,7 +574,7 @@ describe('ComboBox', () => {
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
-      />
+      />,
     );
 
     const input = wrapper.find('input');
@@ -597,7 +597,7 @@ describe('ComboBox', () => {
         onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
           updatedText = value;
         }}
-      />
+      />,
     );
 
     const input = wrapper.find('input');
@@ -641,7 +641,7 @@ describe('ComboBox', () => {
         options={DEFAULT_OPTIONS}
         componentRef={comboBoxRef}
         selectedKey={[DEFAULT_OPTIONS[0].key as string, DEFAULT_OPTIONS[2].key as string]}
-      />
+      />,
     );
 
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
@@ -748,7 +748,7 @@ describe('ComboBox', () => {
         options={DEFAULT_OPTIONS2}
         onMenuOpen={onMenuOpenMock}
         onMenuDismissed={onMenuDismissedMock}
-      />
+      />,
     );
     const comboBoxRoot = wrapper.find('.ms-ComboBox');
 
@@ -779,7 +779,7 @@ describe('ComboBox', () => {
     const comboBoxOption: IComboBoxOption = {
       key: 'ManuallyEnteredValue',
       text: 'ManuallyEnteredValue',
-      selected: true
+      selected: true,
     };
     wrapper = mount(
       <ComboBox
@@ -788,7 +788,7 @@ describe('ComboBox', () => {
         defaultSelectedKey={['1', '2', '3']}
         allowFreeform={true}
         componentRef={componentRef}
-      />
+      />,
     );
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
     _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], [0, 1, 2]);
@@ -807,7 +807,7 @@ describe('ComboBox', () => {
     const comboBoxOption: IComboBoxOption = {
       key: 'ManuallyEnteredValue',
       text: 'ManuallyEnteredValue',
-      selected: true
+      selected: true,
     };
     wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />);
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
@@ -840,10 +840,10 @@ describe('ComboBox', () => {
         ...DEFAULT_OPTIONS,
         {
           ...comboBoxOption,
-          selected: true
-        }
+          selected: true,
+        },
       ],
-      [3]
+      [3],
     );
   });
 
@@ -853,7 +853,7 @@ describe('ComboBox', () => {
     const componentRef = React.createRef<any>();
     const comboBoxOption: IComboBoxOption = {
       key: 'ManuallyEnteredValue',
-      text: 'ManuallyEnteredValue'
+      text: 'ManuallyEnteredValue',
     };
     wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />);
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
@@ -880,7 +880,7 @@ describe('ComboBox', () => {
     componentRef: React.RefObject<any>,
     isFocused: boolean,
     currentOptions: IComboBoxOption[],
-    selectedIndices?: number[]
+    selectedIndices?: number[],
   ): void {
     expect((componentRef.current as ComboBox).state.focused).toEqual(isFocused);
     expect((componentRef.current as ComboBox).state.selectedIndices).toEqual(selectedIndices);

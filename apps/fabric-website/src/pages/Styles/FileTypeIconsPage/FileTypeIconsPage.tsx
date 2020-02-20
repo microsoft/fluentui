@@ -81,7 +81,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Format and sizes',
@@ -118,7 +118,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </div>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -129,7 +129,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
               }
             </Markdown>
-          )
+          ),
         },
 
         {
@@ -149,8 +149,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
             </>
-          )
-        }
+          ),
+        },
       ];
 
     default:

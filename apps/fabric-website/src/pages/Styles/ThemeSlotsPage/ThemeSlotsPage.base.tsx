@@ -6,7 +6,7 @@ import {
   IPageSectionProps,
   MarkdownHeader,
   ColorPalette,
-  IColorSwatch
+  IColorSwatch,
 } from '@uifabric/example-app-base/lib/index2';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';
@@ -61,13 +61,13 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
               <MarkdownHeader as="h3">Accent colors</MarkdownHeader>
               <ColorPalette colors={accentColors} />
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/web/ThemeSlotsImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsImplementation.md') as string,
+        },
       ];
 
     default:

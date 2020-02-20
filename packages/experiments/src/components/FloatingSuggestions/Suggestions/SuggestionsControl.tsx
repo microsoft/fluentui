@@ -11,7 +11,7 @@ const styles: any = stylesImport;
 export enum SuggestionItemType {
   header,
   suggestion,
-  footer
+  footer,
 }
 
 export interface ISuggestionsControlState<T> {
@@ -28,7 +28,7 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
         id={id}
         onClick={onExecute}
         className={css('ms-Suggestions-sectionButton', className, styles.actionButton, {
-          ['is-selected ' + styles.buttonSelected]: isSelected
+          ['is-selected ' + styles.buttonSelected]: isSelected,
         })}
       >
         {renderItem()}
@@ -54,7 +54,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     this.state = {
       selectedHeaderIndex: -1,
       selectedFooterIndex: -1,
-      suggestions: suggestionsProps.suggestions
+      suggestions: suggestionsProps.suggestions,
     };
   }
 
@@ -278,7 +278,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // If this is the original item type, use the current index
     const selectionChanged = this._selectNextItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined,
     );
 
     // If the selection did not change, try to select from the next suggestion type group
@@ -304,7 +304,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // Try to set the selection to the previous selectable item, of the same suggestion item type group
     const selectionChanged = this._selectPreviousItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined,
     );
 
     // If the selection did not change, try to select from the previous suggestion type group

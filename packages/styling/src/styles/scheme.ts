@@ -38,8 +38,8 @@ export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNa
     newContext = {
       customizations: {
         settings: mergeSettings(context.customizations.settings, newSettings),
-        scopedSettings: context.customizations.scopedSettings
-      }
+        scopedSettings: context.customizations.scopedSettings,
+      },
     };
   }
 

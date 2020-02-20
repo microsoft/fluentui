@@ -11,7 +11,7 @@ export interface ILayerNestedLayersExampleState {
 export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLayersExampleState> {
   public state = {
     hideDialog: true,
-    showPanel: false
+    showPanel: false,
   };
 
   public render() {
@@ -33,13 +33,13 @@ export class LayerNestedLayersExample extends React.Component<{}, ILayerNestedLa
             dialogContentProps={{
               type: DialogType.normal,
               title: 'This dialog uses Modal, which also makes use of Layer and FocusTrapZone. Focus should be trapped in the dialog.',
-              subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'."
+              subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
             }}
             modalProps={{
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
               isBlocking: false,
-              styles: { main: { maxWidth: 450 } }
+              styles: { main: { maxWidth: 450 } },
             }}
           >
             <DialogFooter>

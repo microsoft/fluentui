@@ -9,7 +9,7 @@ import { IButtonComponent, IButtonViewProps } from './Button.types';
 export const ButtonSlots: IButtonComponent['slots'] = props => ({
   root: !!props.href ? 'a' : 'button',
   icon: FontIcon,
-  content: Text
+  content: Text,
 });
 
 export const ButtonView: IButtonComponent['view'] = (props, slots) => {

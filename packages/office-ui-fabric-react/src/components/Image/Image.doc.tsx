@@ -27,43 +27,43 @@ export const ImagePageProps: IDocPageProps = {
     {
       title: 'ImageFit: Not specified',
       code: ImageDefaultExampleCode,
-      view: <ImageDefaultExample />
+      view: <ImageDefaultExample />,
     },
     {
       title: 'ImageFit: None',
       code: ImageNoneExampleCode,
-      view: <ImageNoneExample />
+      view: <ImageNoneExample />,
     },
     {
       title: 'ImageFit: Center',
       code: ImageCenterExampleCode,
-      view: <ImageCenterExample />
+      view: <ImageCenterExample />,
     },
     {
       title: 'ImageFit: Contain',
       code: ImageContainExampleCode,
-      view: <ImageContainExample />
+      view: <ImageContainExample />,
     },
     {
       title: 'ImageFit: Cover',
       code: ImageCoverExampleCode,
-      view: <ImageCoverExample />
+      view: <ImageCoverExample />,
     },
     {
       title: 'ImageFit: CenterContain',
       code: ImageCenterContainExampleCode,
-      view: <ImageCenterContainExample />
+      view: <ImageCenterContainExample />,
     },
     {
       title: 'ImageFit: CenterCover',
       code: ImageCenterCoverExampleCode,
-      view: <ImageCenterCoverExample />
+      view: <ImageCenterCoverExample />,
     },
     {
       title: 'Maximizing the image frame',
       code: ImageMaximizeFrameExampleCode,
-      view: <ImageMaximizeFrameExample />
-    }
+      view: <ImageMaximizeFrameExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md'),
   bestPractices: '',
@@ -72,5 +72,5 @@ export const ImagePageProps: IDocPageProps = {
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: 'img'
+  nativePropsElement: 'img',
 };

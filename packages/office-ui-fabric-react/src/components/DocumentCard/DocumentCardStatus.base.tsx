@@ -18,13 +18,13 @@ export class DocumentCardStatusBase extends BaseComponent<IDocumentCardStatusPro
     const iconProps = {
       iconName: statusIcon,
       styles: {
-        root: { padding: '8px' }
-      }
+        root: { padding: '8px' },
+      },
     };
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

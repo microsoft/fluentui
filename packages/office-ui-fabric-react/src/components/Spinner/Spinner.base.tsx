@@ -8,7 +8,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     size: SpinnerSize.medium,
     ariaLive: 'polite',
-    labelPosition: 'bottom'
+    labelPosition: 'bottom',
   };
 
   public render() {
@@ -27,7 +27,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
       theme: theme!,
       size: styleSize,
       className,
-      labelPosition
+      labelPosition,
     });
 
     return (

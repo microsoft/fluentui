@@ -48,7 +48,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations(PivotName, props, {
         initialSelectedKey: 'defaultSelectedKey',
-        initialSelectedIndex: 'defaultSelectedIndex'
+        initialSelectedIndex: 'defaultSelectedIndex',
       });
     }
 
@@ -68,7 +68,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     }
 
     this.state = {
-      selectedKey
+      selectedKey,
     };
   }
 
@@ -134,7 +134,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   private _renderPivotLink = (
     linkCollection: PivotLinkCollection,
     link: IPivotItemProps,
-    selectedKey: string | null | undefined
+    selectedKey: string | null | undefined,
   ): JSX.Element => {
     const { itemKey, headerButtonProps } = link;
     const tabId = linkCollection.keyToTabIdMapping[itemKey!];
@@ -216,7 +216,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const result: PivotLinkCollection = {
       links: [],
       keyToIndexMapping: {},
-      keyToTabIdMapping: {}
+      keyToTabIdMapping: {},
     };
 
     React.Children.map(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
@@ -229,7 +229,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
           // Use linkText (deprecated) if headerText is not provided
           headerText: linkText,
           ...pivotItemProps,
-          itemKey: itemKey
+          itemKey: itemKey,
         });
         result.keyToIndexMapping[itemKey] = index;
         result.keyToTabIdMapping[itemKey] = this._getTabId(itemKey, index);
@@ -282,7 +282,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
    */
   private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>): void {
     this.setState({
-      selectedKey: itemKey
+      selectedKey: itemKey,
     });
 
     const linkCollection = this._getPivotLinks(this.props);
@@ -307,7 +307,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     return getClassNames(props.styles!, {
       theme: theme!,
       rootIsLarge,
-      rootIsTabs
+      rootIsTabs,
     });
   }
 }

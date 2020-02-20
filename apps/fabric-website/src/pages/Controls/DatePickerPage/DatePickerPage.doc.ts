@@ -8,20 +8,20 @@ const componentUrl =
 export const DatePickerPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   ios: {
     title: 'Date & Time Picker',
     fileNamePrefix: 'DateTimePicker',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/ios/DateTimePickerOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     title: 'Date & Time Picker',
     fileNamePrefix: 'DateTimePicker',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/android/DateTimePickerOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

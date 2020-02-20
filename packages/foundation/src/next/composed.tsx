@@ -43,7 +43,7 @@ export function composed<
   TComponentSlots = {},
   TStatics = {}
 >(
-  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 
 /**
@@ -71,7 +71,7 @@ export function composed<
   TStatics = {}
 >(
   baseComponent: React.FunctionComponent,
-  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+  options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
 
 /**
@@ -104,7 +104,7 @@ export function composed<
   baseComponentOrOptions:
     | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
     | IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = {},
-  recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>
+  recompositionOptions?: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics {
   // Check if we are composing or recomposing.
   let options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>;
@@ -117,8 +117,8 @@ export function composed<
       ...recompositionOptions,
       slots: props => ({
         ...resolveSlots(baseComponentOptions.slots, props),
-        ...resolveSlots(recompositionSlots, props)
-      })
+        ...resolveSlots(recompositionSlots, props),
+      }),
     };
   } else {
     options = baseComponentOrOptions;
@@ -128,12 +128,12 @@ export function composed<
   const { defaultProp } = factoryOptions;
 
   const result: IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> = (
-    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode }
+    componentProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & { children?: React.ReactNode },
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
       options.displayName,
       React.useContext(CustomizerContext),
-      options.fields
+      options.fields,
     );
 
     const useState = options.state;
@@ -142,7 +142,7 @@ export function composed<
       // Don't assume state will return all props, so spread useState result over component props.
       componentProps = {
         ...componentProps,
-        ...useState(componentProps)
+        ...useState(componentProps),
       };
     }
 
@@ -222,7 +222,7 @@ export function composed<
       ...componentProps,
       styles,
       tokens,
-      _defaultStyles: displayName ? finalStyles : styles
+      _defaultStyles: displayName ? finalStyles : styles,
     } as TViewProps & IDefaultSlotProps<any>;
 
     if (!options.slots) {
@@ -259,7 +259,7 @@ export function composed<
  */
 export function resolveSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
   slots: IPartialSlotComponent<TComponentProps, TComponentSlots> | ISlotComponent<TComponentProps, TComponentSlots> | undefined,
-  data: TComponentProps
+  data: TComponentProps,
 ): ISlotDefinition<Required<TComponentSlots>> {
   const resolvedSlots = slots ? (typeof slots === 'function' ? slots(data) : slots) : {};
   return resolvedSlots as ISlotDefinition<Required<TComponentSlots>>;
@@ -276,8 +276,8 @@ function _resolveStyles<TProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>
 ): ReturnType<typeof concatStyleSets> {
   return concatStyleSets(
     ...allStyles.map((styles: IStylesFunctionOrObject<TProps, TTokens, TStyleSet> | undefined) =>
-      typeof styles === 'function' ? styles(props, theme, tokens) : styles
-    )
+      typeof styles === 'function' ? styles(props, theme, tokens) : styles,
+    ),
   );
 }
 
@@ -318,7 +318,7 @@ function _resolveTokens<TViewProps, TTokens>(
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
   displayName: string | undefined,
   context: ICustomizerContext,
-  fields?: string[]
+  fields?: string[],
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)

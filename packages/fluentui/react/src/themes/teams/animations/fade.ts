@@ -1,4 +1,4 @@
-import { easeEasy } from './timingFunctions'
+import { easeEasy } from './timingFunctions';
 
 const fadeInOutAnimations = {
   // Basic Fade In Animation -- Fast
@@ -65,6 +65,6 @@ const fadeInOutAnimations = {
     timingFunction: easeEasy,
     fillMode: 'forwards',
   },
-}
+};
 
-export default fadeInOutAnimations
+export default fadeInOutAnimations;

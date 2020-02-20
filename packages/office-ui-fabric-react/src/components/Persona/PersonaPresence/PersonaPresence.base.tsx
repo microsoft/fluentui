@@ -6,7 +6,7 @@ import {
   IPersonaPresenceStyleProps,
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
 } from '../Persona.types';
 import { sizeBoolean } from '../PersonaConsts';
 
@@ -33,7 +33,7 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       styles, // Use getStyles from props.
       presence,
       theme,
-      presenceTitle
+      presenceTitle,
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
 
@@ -60,7 +60,7 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       theme: theme!,
       presence,
       size: this.props.size,
-      isOutOfOffice
+      isOutOfOffice,
     });
 
     if (presence === PersonaPresenceEnum.none) {

@@ -14,7 +14,7 @@ const SELECTION_BACKWARD = 'backward';
  */
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
-    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
+    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
 
   private _inputElement = React.createRef<HTMLInputElement>();
@@ -26,7 +26,7 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     super(props);
     this._value = props.defaultVisibleValue || '';
     this.state = {
-      displayValue: props.defaultVisibleValue || ''
+      displayValue: props.defaultVisibleValue || '',
     };
   }
 
@@ -291,9 +291,9 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     this._value = this.props.onInputChange ? this.props.onInputChange(newValue, composing) : newValue;
     this.setState(
       {
-        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
+        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue),
       },
-      () => this._notifyInputChange(this._value, composing)
+      () => this._notifyInputChange(this._value, composing),
     );
   };
 

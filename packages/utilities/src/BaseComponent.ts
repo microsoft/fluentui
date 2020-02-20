@@ -58,7 +58,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
       'getSnapshotBeforeUpdate',
       'render',
       'componentDidUpdate',
-      'componentWillUnmount'
+      'componentWillUnmount',
     ]);
   }
 

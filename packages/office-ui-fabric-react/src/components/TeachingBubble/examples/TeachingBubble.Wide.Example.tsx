@@ -18,7 +18,7 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -54,13 +54,13 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

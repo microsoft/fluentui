@@ -25,8 +25,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/CalendarImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/CalendarPage/docs/android/CalendarImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/CalendarPage/docs/android/CalendarImplementation.md') as string,
+        },
       ];
   }
 }

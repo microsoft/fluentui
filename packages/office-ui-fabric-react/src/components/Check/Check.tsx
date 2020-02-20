@@ -10,9 +10,9 @@ export const Check: React.FunctionComponent<ICheckProps> = styled<ICheckProps, I
   getStyles,
   undefined,
   {
-    scope: 'Check'
+    scope: 'Check',
   },
-  true
+  true,
 );
 
 /**

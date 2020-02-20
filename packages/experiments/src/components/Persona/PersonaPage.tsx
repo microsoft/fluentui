@@ -27,7 +27,7 @@ export const PersonaPage = (props: IComponentDemoPageProps) => {
         <PropertiesTableSet
           sources={[
             require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Persona.types.ts'),
-            require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Vertical/VerticalPersona.types.ts')
+            require<string>('!raw-loader!@uifabric/experiments/src/components/Persona/Vertical/VerticalPersona.types.ts'),
           ]}
         />
       }

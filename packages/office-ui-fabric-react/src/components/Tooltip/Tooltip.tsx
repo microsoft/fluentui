@@ -9,6 +9,6 @@ export const Tooltip: React.FunctionComponent<ITooltipProps> = styled<ITooltipPr
   getStyles,
   undefined,
   {
-    scope: 'Tooltip'
-  }
+    scope: 'Tooltip',
+  },
 );

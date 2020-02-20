@@ -62,7 +62,7 @@ const packProjectPackages = async (logger: Function): Promise<PackedPackages> =>
       logger(`✔️Package "${packageName}" was packed to ${filename}`);
 
       projectPackages[packageName] = filename;
-    })
+    }),
   );
 
   return projectPackages;
@@ -178,7 +178,7 @@ task('test:projects:rollup', async () => {
     'rollup-plugin-node-resolve',
     'rollup-plugin-json',
     'react',
-    'react-dom'
+    'react-dom',
   ].join(' ');
   await runIn(tmpDirectory)(`yarn add ${dependencies}`);
   logger(`✔️Dependencies were installed`);

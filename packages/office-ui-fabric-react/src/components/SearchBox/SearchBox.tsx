@@ -8,5 +8,5 @@ export const SearchBox: React.FunctionComponent<ISearchBoxProps> = styled<ISearc
   SearchBoxBase,
   getStyles,
   undefined,
-  { scope: 'SearchBox' }
+  { scope: 'SearchBox' },
 );

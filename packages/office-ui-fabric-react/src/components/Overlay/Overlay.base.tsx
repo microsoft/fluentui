@@ -30,7 +30,7 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isDark
+      isDark,
     });
 
     return <div {...divProps} className={classNames.root} />;

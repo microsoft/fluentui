@@ -24,33 +24,33 @@ export const ChoiceGroupPageProps: IDocPageProps = {
     {
       title: 'Basic ChoiceGroup',
       code: ChoiceGroupBasicExampleCode,
-      view: <ChoiceGroupBasicExample />
+      view: <ChoiceGroupBasicExample />,
     },
     {
       title: 'Controlled ChoiceGroup',
       code: ChoiceGroupControlledExampleCode,
-      view: <ChoiceGroupControlledExample />
+      view: <ChoiceGroupControlledExample />,
     },
     {
       title: 'ChoiceGroup with images',
       code: ChoiceGroupImageExampleCode,
-      view: <ChoiceGroupImageExample />
+      view: <ChoiceGroupImageExample />,
     },
     {
       title: 'ChoiceGroup with icons',
       code: ChoiceGroupIconExampleCode,
-      view: <ChoiceGroupIconExample />
+      view: <ChoiceGroupIconExample />,
     },
     {
       title: 'ChoiceGroup with a custom label',
       code: ChoiceGroupLabelExampleCode,
-      view: <ChoiceGroupLabelExample />
+      view: <ChoiceGroupLabelExample />,
     },
     {
       title: 'ChoiceGroup with custom option rendering',
       code: ChoiceGroupCustomExampleCode,
-      view: <ChoiceGroupCustomExample />
-    }
+      view: <ChoiceGroupCustomExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md'),
   bestPractices: '',
@@ -59,5 +59,5 @@ export const ChoiceGroupPageProps: IDocPageProps = {
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: 'input'
+  nativePropsElement: 'input',
 };

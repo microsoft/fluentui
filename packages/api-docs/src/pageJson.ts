@@ -20,7 +20,7 @@ export function generatePageJson(apiModel: ApiModel, pageGroups: PageGroups = {}
         .map((apiItem: ApiItem) => createTableJson(collectedData, apiItem))
         .filter((table: ITableJson | undefined) => !!table) as ITableJson[],
       name: pageName,
-      group: pageData.group
+      group: pageData.group,
     });
   }
 
@@ -62,7 +62,7 @@ function initPageDataForItem(
   collectedData: ICollectedData,
   apiItem: ApiItem,
   groupsByPage: { [pageName: string]: string },
-  fallbackGroup?: string
+  fallbackGroup?: string,
 ): void {
   if (supportedApiItems.includes(apiItem.kind) && apiItem instanceof ApiDocumentedItem && apiItem.tsdocComment) {
     const docCategoryTag = findInlineTagByName('@docCategory', apiItem.tsdocComment);
@@ -75,7 +75,7 @@ function initPageDataForItem(
         pageData = {
           name: pageName,
           apiItems: [],
-          group: groupsByPage[pageName] || fallbackGroup
+          group: groupsByPage[pageName] || fallbackGroup,
         };
         collectedData.pagesByName.set(pageName, pageData);
       }

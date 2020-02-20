@@ -18,7 +18,7 @@ export interface IGroupHeaderState {
 
 export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupHeaderProps = {
-    expandButtonProps: { 'aria-label': 'expand collapse group' }
+    expandButtonProps: { 'aria-label': 'expand collapse group' },
   };
 
   private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
@@ -28,7 +28,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     this.state = {
       isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
-      isLoadingVisible: false
+      isLoadingVisible: false,
     };
   }
 
@@ -41,7 +41,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
       this.setState({
         isCollapsed: newCollapsed || false,
-        isLoadingVisible: newLoadingVisible || false
+        isLoadingVisible: newLoadingVisible || false,
       });
     }
   }
@@ -66,7 +66,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       groupedListId,
       compact,
       ariaPosInSet,
-      ariaSetSize
+      ariaSetSize,
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -82,7 +82,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       className,
       selected: currentlySelected,
       isCollapsed,
-      compact
+      compact,
     });
 
     if (!group) {
@@ -150,7 +150,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     this.setState({
       isCollapsed: newCollapsed,
-      isLoadingVisible: newLoadingVisible as boolean
+      isLoadingVisible: newLoadingVisible as boolean,
     });
     if (onToggleCollapse) {
       onToggleCollapse(group!);

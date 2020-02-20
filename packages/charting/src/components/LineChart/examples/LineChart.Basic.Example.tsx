@@ -31,15 +31,15 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           { x: 35, y: 32 },
           { x: 40, y: 29 },
           { x: 45, y: 43 },
-          { x: 50, y: 46 }
+          { x: 50, y: 46 },
         ],
         legend: 'First',
-        color: DefaultPalette.blue
-      }
+        color: DefaultPalette.blue,
+      },
     ];
     const data: IChartProps = {
       chartTitle: 'Line Chart',
-      lineChartData: points
+      lineChartData: points,
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (

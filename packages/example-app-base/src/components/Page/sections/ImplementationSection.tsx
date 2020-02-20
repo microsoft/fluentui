@@ -23,7 +23,7 @@ export const ImplementationSection: React.FunctionComponent<IImplementationSecti
     propertiesTablesSources,
     jsonDocs,
     hideImplementationTitle,
-    id
+    id,
   } = props;
   return (
     <div className={className} style={style}>

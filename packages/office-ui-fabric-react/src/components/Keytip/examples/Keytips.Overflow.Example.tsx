@@ -17,7 +17,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
       onClick: () => {
         return;
       },
-      keytipProps: keytipMap.OverflowButton1
+      keytipProps: keytipMap.OverflowButton1,
     },
     {
       key: 'item2',
@@ -25,7 +25,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
       onClick: () => {
         return;
       },
-      keytipProps: keytipMap.OverflowButton2
+      keytipProps: keytipMap.OverflowButton2,
     },
     {
       key: 'item3',
@@ -33,8 +33,8 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
       onClick: () => {
         return;
       },
-      keytipProps: keytipMap.OverflowButton3
-    }
+      keytipProps: keytipMap.OverflowButton3,
+    },
   ];
 
   private _initialOverflowItems = [
@@ -49,11 +49,11 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
           } else {
             console.log('first overflow item');
           }
-        }
+        },
       },
       onClick: () => {
         console.log('first overflow item');
-      }
+      },
     },
     {
       key: 'item6',
@@ -66,7 +66,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
           } else {
             console.log('second overflow item');
           }
-        }
+        },
       },
       onClick: () => {
         console.log('second overflow item');
@@ -76,15 +76,15 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
           {
             key: 'overflowSubMenu1',
             name: 'Overflow Submenu Item 1',
-            keytipProps: keytipMap.OverflowSubMenuButton1
+            keytipProps: keytipMap.OverflowSubMenuButton1,
           },
           {
             key: 'overflowSubMenu2',
-            name: 'Overflow Submenu Item 2'
-          }
-        ]
-      }
-    }
+            name: 'Overflow Submenu Item 2',
+          },
+        ],
+      },
+    },
   ];
 
   constructor(props: {}) {
@@ -93,7 +93,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
     // Setup state
     this.state = {
       items: this._initialItems,
-      overflowItems: this._initialOverflowItems
+      overflowItems: this._initialOverflowItems,
     };
   }
 

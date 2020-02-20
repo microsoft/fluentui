@@ -237,7 +237,7 @@ describe('MaskedTextField', () => {
         label="With input mask"
         mask="m\ask: (999) 999 - 9999"
         value="123-456-7890"
-      />
+      />,
     );
 
     const input = component.find('input'),

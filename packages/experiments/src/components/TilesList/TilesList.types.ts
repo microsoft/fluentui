@@ -46,7 +46,7 @@ export const enum TilesGridMode {
   /**
    * Items in the row are stretched horizontally only if necessary to fill the row.
    */
-  fillHorizontal
+  fillHorizontal,
 }
 
 export interface ITilesGridSegment<TItem> {

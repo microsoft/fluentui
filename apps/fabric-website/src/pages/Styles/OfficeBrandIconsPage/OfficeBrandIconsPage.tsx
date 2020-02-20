@@ -78,7 +78,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Format and sizes',
@@ -135,7 +135,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </div>
-          )
+          ),
         },
         {
           sectionName: 'Resolutions',
@@ -146,7 +146,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsResolutions.md') as string
               }
             </Markdown>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -157,7 +157,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsImplementation.md') as string
               }
             </Markdown>
-          )
+          ),
         },
 
         {
@@ -179,8 +179,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
             </>
-          )
-        }
+          ),
+        },
       ];
 
     default:

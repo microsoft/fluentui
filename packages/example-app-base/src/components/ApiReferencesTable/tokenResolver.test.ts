@@ -16,7 +16,7 @@ describe('getTokenResolver', () => {
       const resolver = getTokenResolver(baseUrl + '/button');
 
       expect(resolver({ text: 'IButtonProps', linkedPage: 'Button', linkedPageGroup: 'office-ui-fabric-react' }).href).toBe(
-        areaPath + '/button#IButtonProps'
+        areaPath + '/button#IButtonProps',
       );
     });
 
@@ -24,7 +24,7 @@ describe('getTokenResolver', () => {
       const resolver = getTokenResolver(baseUrl + '/button');
 
       expect(resolver({ text: 'IIconProps', linkedPage: 'Icon', linkedPageGroup: 'office-ui-fabric-react' }).href).toBe(
-        areaPath + '/icon#IIconProps'
+        areaPath + '/icon#IIconProps',
       );
     });
 
@@ -32,7 +32,7 @@ describe('getTokenResolver', () => {
       const resolver = getTokenResolver(baseUrl + '/button');
 
       expect(resolver({ text: 'IStyle', linkedPage: 'IStyle', linkedPageGroup: 'references' }).href).toBe(
-        areaPath + '/references/istyle#IStyle'
+        areaPath + '/references/istyle#IStyle',
       );
     });
 
@@ -40,13 +40,13 @@ describe('getTokenResolver', () => {
       const resolver = getTokenResolver(baseUrl + '/button#IButtonStyles');
 
       expect(resolver({ text: 'IButtonProps', linkedPage: 'Button', linkedPageGroup: 'office-ui-fabric-react' }).href).toBe(
-        areaPath + '/button#IButtonProps'
+        areaPath + '/button#IButtonProps',
       );
       expect(resolver({ text: 'IIconProps', linkedPage: 'Icon', linkedPageGroup: 'office-ui-fabric-react' }).href).toBe(
-        areaPath + '/icon#IIconProps'
+        areaPath + '/icon#IIconProps',
       );
       expect(resolver({ text: 'IStyle', linkedPage: 'IStyle', linkedPageGroup: 'references' }).href).toBe(
-        areaPath + '/references/istyle#IStyle'
+        areaPath + '/references/istyle#IStyle',
       );
     });
 
@@ -54,7 +54,7 @@ describe('getTokenResolver', () => {
       const resolver = getTokenResolver(baseUrl + '/references/istyle');
 
       expect(resolver({ text: 'IButtonProps', linkedPage: 'Button', linkedPageGroup: 'office-ui-fabric-react' }).href).toBe(
-        areaPath + '/button#IButtonProps'
+        areaPath + '/button#IButtonProps',
       );
     });
 

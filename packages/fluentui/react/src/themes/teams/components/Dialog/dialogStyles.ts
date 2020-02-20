@@ -1,8 +1,8 @@
-import { DialogProps } from '../../../../components/Dialog/Dialog'
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles'
-import { DialogVariables } from './dialogVariables'
+import { DialogProps } from '../../../../components/Dialog/Dialog';
+import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { DialogVariables } from './dialogVariables';
 
-type DialogStyleParams = ComponentStyleFunctionParam<DialogProps, DialogVariables>
+type DialogStyleParams = ComponentStyleFunctionParam<DialogProps, DialogVariables>;
 
 export default {
   root: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
@@ -67,4 +67,4 @@ export default {
 
     ...(p.backdrop && { background: v.overlayBackground }),
   }),
-}
+};

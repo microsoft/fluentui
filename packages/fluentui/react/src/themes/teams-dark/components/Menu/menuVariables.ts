@@ -1,5 +1,5 @@
-import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
+import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 
 export default (siteVars: any): Partial<MenuVariables> => ({
   colorScheme: pickValuesFromColorScheme(
@@ -32,4 +32,4 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   verticalBackgroundColor: siteVars.colors.grey[600],
   verticalBackgroundColorFocus: siteVars.colors.grey[550],
   iconOnlyColorActive: siteVars.colors.brand[400],
-})
+});

@@ -9,7 +9,7 @@ import {
   ApiItem,
   ApiProperty,
   ApiConstructor,
-  ApiMethod
+  ApiMethod,
 } from '@microsoft/api-extractor-model';
 import { ICollectedData } from './types-private';
 import { ITableRowJson, IEnumTableRowJson } from './types';
@@ -27,7 +27,7 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
         apiProperty,
         'property',
         apiProperty.excerptTokens,
-        apiProperty.propertyTypeExcerpt.tokenRange
+        apiProperty.propertyTypeExcerpt.tokenRange,
       );
       break;
     }
@@ -74,7 +74,7 @@ export function createEnumTableRowJson(collectedData: ICollectedData, apiItem: A
     description,
     deprecated,
     deprecatedMessage,
-    value: renderTokens(apiEnumMember.excerptTokens, apiEnumMember.excerpt.tokenRange)
+    value: renderTokens(apiEnumMember.excerptTokens, apiEnumMember.excerpt.tokenRange),
   };
 }
 
@@ -89,7 +89,7 @@ function createBasicTableRowJson(
   apiItem: ApiDeclaredItem & { name?: string },
   kind?: ITableRowJson['kind'],
   typeTokens?: readonly ExcerptToken[],
-  typeTokenRange?: Readonly<IExcerptTokenRange>
+  typeTokenRange?: Readonly<IExcerptTokenRange>,
 ): ITableRowJson {
   const { tsdocComment } = apiItem;
 
@@ -97,7 +97,7 @@ function createBasicTableRowJson(
     name: apiItem.name || '',
     typeTokens: [],
     kind,
-    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined
+    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined,
   };
 
   if (tsdocComment) {

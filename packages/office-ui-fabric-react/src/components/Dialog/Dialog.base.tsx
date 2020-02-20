@@ -15,19 +15,19 @@ const DefaultModalProps: IModalProps = {
   isBlocking: false,
   className: '',
   containerClassName: '',
-  topOffsetFixed: false
+  topOffsetFixed: false,
 };
 
 const DefaultDialogContentProps: IDialogContentProps = {
   type: DialogType.normal,
   className: '',
-  topButtonsProps: []
+  topButtonsProps: [],
 };
 
 @withResponsiveMode
 export class DialogBase extends React.Component<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
-    hidden: true
+    hidden: true,
   };
 
   private _id: string;
@@ -55,7 +55,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         onDismissed: 'modalProps.onDismissed',
         onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
         ariaDescribedById: 'modalProps.subtitleAriaId',
-        ariaLabelledById: 'modalProps.titleAriaId'
+        ariaLabelledById: 'modalProps.titleAriaId',
       });
     }
   }
@@ -86,11 +86,11 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       type,
       minWidth,
       maxWidth,
-      modalProps
+      modalProps,
     } = this.props;
 
     const mergedLayerProps: ILayerProps = {
-      ...(modalProps ? modalProps.layerProps : { onLayerDidMount })
+      ...(modalProps ? modalProps.layerProps : { onLayerDidMount }),
     };
     if (onLayerDidMount && !mergedLayerProps.onLayerDidMount) {
       mergedLayerProps.onLayerDidMount = onLayerDidMount;
@@ -105,7 +105,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       dialogDraggableClassName = 'ms-Dialog-draggable-header';
       dragOptions = {
         ...modalProps.dragOptions,
-        dragHandleSelector: `.${dialogDraggableClassName}`
+        dragHandleSelector: `.${dialogDraggableClassName}`,
       };
     } else {
       dragOptions = modalProps && modalProps.dragOptions;
@@ -115,7 +115,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       ...DefaultModalProps,
       ...modalProps,
       layerProps: mergedLayerProps,
-      dragOptions
+      dragOptions,
     };
 
     const dialogContentProps: IDialogContentProps = {
@@ -124,8 +124,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       draggableHeaderClassName: dialogDraggableClassName,
       titleProps: {
         id: this.props.dialogContentProps?.titleId || this._defaultTitleTextId,
-        ...this.props.dialogContentProps?.titleProps
-      }
+        ...this.props.dialogContentProps?.titleProps,
+      },
     };
 
     const classNames = getClassNames(styles!, {
@@ -134,7 +134,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       containerClassName: containerClassName || mergedModalProps.containerClassName,
       hidden,
       dialogDefaultMinWidth: minWidth,
-      dialogDefaultMaxWidth: maxWidth
+      dialogDefaultMaxWidth: maxWidth,
     });
 
     return (

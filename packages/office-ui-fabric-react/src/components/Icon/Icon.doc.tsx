@@ -19,23 +19,23 @@ export const IconPageProps: IDocPageProps = {
     {
       title: 'Icon',
       code: IconBasicExampleCode,
-      view: <IconBasicExample />
+      view: <IconBasicExample />,
     },
     {
       title: 'Icon with custom color',
       code: IconColorExampleCode,
-      view: <IconColorExample />
+      view: <IconColorExample />,
     },
     {
       title: 'Icon using custom svg',
       code: IconSvgExampleCode,
-      view: <IconSvgExample />
+      view: <IconSvgExample />,
     },
     {
       title: 'Icon using image sheet',
       code: IconImageSheetExampleCode,
-      view: <IconImageSheetExample />
-    }
+      view: <IconImageSheetExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
   bestPractices: '',
@@ -43,5 +43,5 @@ export const IconPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

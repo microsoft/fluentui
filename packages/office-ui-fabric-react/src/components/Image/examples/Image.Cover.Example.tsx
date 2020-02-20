@@ -6,7 +6,7 @@ export class ImageCoverExample extends React.Component<any, any> {
   public render(): JSX.Element {
     const imageProps: IImageProps = {
       src: 'http://placehold.it/500x500',
-      imageFit: ImageFit.cover
+      imageFit: ImageFit.cover,
     };
 
     return (

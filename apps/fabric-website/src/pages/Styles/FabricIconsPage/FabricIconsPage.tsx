@@ -30,8 +30,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             // prettier-ignore
             { text: enDash + ' Fabric React', url: 'fabric-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fabric Icons tool', url: 'fabric-icons-tool' }
-          ]
+            { text: enDash + ' Fabric Icons tool', url: 'fabric-icons-tool' },
+          ],
         },
 
         {
@@ -45,16 +45,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <IconGrid icons={fabricCoreIcons} />
               </PivotItem>
             </Pivot>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming Soon',
-          content: 'Coming Soon'
-        }
+          content: 'Coming Soon',
+        },
       ];
   }
 }

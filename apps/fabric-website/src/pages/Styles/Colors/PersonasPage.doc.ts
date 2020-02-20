@@ -8,6 +8,6 @@ export const ColorsPersonasPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     componentUrl,
-    fileNamePrefix
-  }
+    fileNamePrefix,
+  },
 };

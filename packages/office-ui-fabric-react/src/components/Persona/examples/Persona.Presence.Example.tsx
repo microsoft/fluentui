@@ -10,15 +10,15 @@ const examplePersona: IPersonaSharedProps = {
   text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
-  optionalText: 'Available at 4:00pm'
+  optionalText: 'Available at 4:00pm',
 };
 
 const rootClass = mergeStyles({
   selectors: {
     '.ms-Persona': {
-      margin: '0 20px 20px 0'
-    }
-  }
+      margin: '0 20px 20px 0',
+    },
+  },
 });
 
 export class PersonaPresenceExample extends React.Component<{}> {

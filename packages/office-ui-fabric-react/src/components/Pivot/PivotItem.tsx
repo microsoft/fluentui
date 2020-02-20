@@ -7,7 +7,7 @@ export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
     super(props);
 
     this._warnDeprecations({
-      linkText: 'headerText'
+      linkText: 'headerText',
     });
   }
 

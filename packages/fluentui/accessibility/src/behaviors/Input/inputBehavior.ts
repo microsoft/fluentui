@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @specification
@@ -19,10 +19,10 @@ const inputBehavior: Accessibility<InputBehaviorProps> = props => ({
       },
     },
   },
-})
+});
 
-export default inputBehavior
+export default inputBehavior;
 
 type InputBehaviorProps = {
-  disabled?: boolean
-}
+  disabled?: boolean;
+};

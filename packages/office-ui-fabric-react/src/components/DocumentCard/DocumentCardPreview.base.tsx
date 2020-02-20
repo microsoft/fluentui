@@ -8,7 +8,7 @@ import {
   IDocumentCardPreviewImage,
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
-  IDocumentCardPreviewStyles
+  IDocumentCardPreviewStyles,
 } from './DocumentCardPreview.types';
 
 const LIST_ITEM_COUNT = 3;
@@ -28,7 +28,7 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isFileList
+      isFileList,
     });
 
     if (previewImages.length > 1) {
@@ -41,7 +41,7 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
       // Override the border color if an accent color was provided
       if (previewImages[0].accentColor) {
         style = {
-          borderBottomColor: previewImages[0].accentColor
+          borderBottomColor: previewImages[0].accentColor,
         };
       }
     }

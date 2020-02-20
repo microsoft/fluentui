@@ -15,7 +15,7 @@ import {
   ComponentEventHandler,
   withSafeTypeForAs,
   ProviderContextPrepared,
-  FluentComponentStaticProps
+  FluentComponentStaticProps,
 } from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, ContentComponentProps } from '../../utils';
 import { ListContext, ListContextSubscribedValue } from './listContext';
@@ -85,7 +85,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     truncateHeader: v => v.truncateHeader,
     variables: v => v.variables,
     onItemClick: v => v.onItemClick,
-    selected: v => v.selectedIndex === props.index
+    selected: v => v.selectedIndex === props.index,
   });
   const {
     debug = parentProps.debug,
@@ -94,7 +94,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     selected = parentProps.selected,
     truncateContent = parentProps.truncateContent,
     truncateHeader = parentProps.truncateHeader,
-    variables = parentProps.variables
+    variables = parentProps.variables,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -103,14 +103,14 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       performClick: e => {
         e.preventDefault();
         handleClick(e);
-      }
+      },
     },
     mapPropsToBehavior: () => ({
       navigable,
       selectable,
-      selected
+      selected,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles(ListItem.displayName, {
     className: ListItem.className,
@@ -126,10 +126,10 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       hasContent: !!content,
       hasContentMedia: !!contentMedia,
       hasHeader: !!header,
-      hasHeaderMedia: !!headerMedia
+      hasHeaderMedia: !!headerMedia,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -143,38 +143,38 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   const contentElement = Box.create(content, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.content,
-      styles: resolvedStyles.content
-    })
+      styles: resolvedStyles.content,
+    }),
   });
   const contentMediaElement = Box.create(contentMedia, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.contentMedia,
-      styles: resolvedStyles.contentMedia
-    })
+      styles: resolvedStyles.contentMedia,
+    }),
   });
   const headerElement = Box.create(header, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.header,
-      styles: resolvedStyles.header
-    })
+      styles: resolvedStyles.header,
+    }),
   });
   const headerMediaElement = Box.create(headerMedia, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.headerMedia,
-      styles: resolvedStyles.headerMedia
-    })
+      styles: resolvedStyles.headerMedia,
+    }),
   });
   const endMediaElement = Box.create(endMedia, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.endMedia,
-      styles: resolvedStyles.endMedia
-    })
+      styles: resolvedStyles.endMedia,
+    }),
   });
   const mediaElement = Box.create(media, {
     defaultProps: () => ({
       className: ListItem.slotClassNames.media,
-      styles: resolvedStyles.media
-    })
+      styles: resolvedStyles.media,
+    }),
   });
 
   const element = (
@@ -182,7 +182,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
       {...getA11Props('root', {
         className: classes.root,
         onClick: handleClick,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {mediaElement}
@@ -216,12 +216,12 @@ ListItem.displayName = 'ListItem';
 
 ListItem.defaultProps = {
   as: 'li',
-  accessibility: listItemBehavior
+  accessibility: listItemBehavior,
 };
 
 ListItem.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false
+    content: false,
   }),
   contentMedia: PropTypes.any,
   content: PropTypes.any,
@@ -243,7 +243,7 @@ ListItem.propTypes = {
   truncateContent: PropTypes.bool,
   truncateHeader: PropTypes.bool,
 
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };
 ListItem.handledProps = Object.keys(ListItem.propTypes) as any;
 
@@ -256,7 +256,7 @@ ListItem.slotClassNames = {
   contentMedia: `${ListItem.className}__contentMedia`,
   contentWrapper: `${ListItem.className}__contentWrapper`,
   media: `${ListItem.className}__media`,
-  endMedia: `${ListItem.className}__endMedia`
+  endMedia: `${ListItem.className}__endMedia`,
 };
 
 ListItem.create = createShorthandFactory({ Component: ListItem, mappedProp: 'content' });

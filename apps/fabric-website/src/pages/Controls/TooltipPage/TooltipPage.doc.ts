@@ -7,16 +7,16 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const TooltipPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TooltipPage/docs/android/TooltipOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TooltipPage/docs/ios/TooltipOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

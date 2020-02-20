@@ -19,7 +19,7 @@ const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
  */
 export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
-    isDataLoaded: false
+    isDataLoaded: false,
   };
 
   private _classNames: { [key in keyof IShimmerStyles]: string };
@@ -32,7 +32,7 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
     initializeComponentRef(this);
 
     this.state = {
-      contentLoaded: props.isDataLoaded
+      contentLoaded: props.isDataLoaded,
     };
 
     this._async = new Async(this);
@@ -48,12 +48,12 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
       if (isDataLoaded) {
         this._lastTimeoutId = this._async.setTimeout(() => {
           this.setState({
-            contentLoaded: isDataLoaded
+            contentLoaded: isDataLoaded,
           });
         }, TRANSITION_ANIMATION_INTERVAL);
       } else {
         this.setState({
-          contentLoaded: isDataLoaded
+          contentLoaded: isDataLoaded,
         });
       }
     }
@@ -74,7 +74,7 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
       customElementsGroup,
       theme,
       ariaLabel,
-      shimmerColors
+      shimmerColors,
     } = this.props;
 
     const { contentLoaded } = this.state;
@@ -85,7 +85,7 @@ export class ShimmerBase extends React.Component<IShimmerProps, IShimmerState> {
       className,
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL,
       shimmerColor: shimmerColors && shimmerColors.shimmer,
-      shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave
+      shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave,
     });
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);

@@ -11,14 +11,14 @@ export interface IIconState {
 }
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
-  disableCaching: true
+  disableCaching: true,
 });
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
-      imageLoadError: false
+      imageLoadError: false,
     };
   }
 
@@ -34,7 +34,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
       className,
       iconClassName,
       isImage,
-      isPlaceholder
+      isPlaceholder,
     });
 
     const RootType = isImage ? 'span' : 'i';
@@ -42,17 +42,17 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const { imageLoadError } = this.state;
     const imageProps: IImageProps = {
       ...this.props.imageProps,
-      onLoadingStateChange: this.onImageLoadingStateChange
+      onLoadingStateChange: this.onImageLoadingStateChange,
     };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
     const ariaLabel = this.props.ariaLabel || this.props['aria-label'];
     const containerProps = ariaLabel
       ? {
-          'aria-label': ariaLabel
+          'aria-label': ariaLabel,
         }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
+          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true,
         };
 
     return (

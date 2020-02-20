@@ -2,13 +2,13 @@ export type Vector2D<T> = [T, T];
 
 export enum Axis {
   X = 0,
-  Y = 1
+  Y = 1,
 }
 
 export enum ScrollDirection {
   none,
   backward,
-  forward
+  forward,
 }
 
 export interface IViewportState {

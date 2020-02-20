@@ -17,7 +17,7 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'k', label: 'black', color: '#000' },
   { id: 'l', label: 'grey', color: '#888' },
   { id: 'm', label: 'white', color: '#fff' },
-  { id: 'n', label: 'something', color: '#123' }
+  { id: 'n', label: 'something', color: '#123' },
 ];
 
 describe('SwatchColorPicker', () => {

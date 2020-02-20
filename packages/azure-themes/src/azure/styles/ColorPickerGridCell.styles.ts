@@ -11,31 +11,31 @@ export const ColorPickerGridCellStyles = (props: IColorPickerGridCellStyleProps)
         selectors: {
           ':focus': {
             borderColor: semanticColors.controlOutline,
-            backgroundColor: semanticColors.listItemBackgroundHovered
+            backgroundColor: semanticColors.listItemBackgroundHovered,
           },
           ':hover': {
             borderColor: semanticColors.controlOutline,
-            backgroundColor: semanticColors.listItemBackgroundHovered
+            backgroundColor: semanticColors.listItemBackgroundHovered,
           },
           ':active:hover': {
             borderColor: semanticColors.controlOutline,
-            backgroundColor: semanticColors.listItemBackgroundHovered
-          }
-        }
+            backgroundColor: semanticColors.listItemBackgroundHovered,
+          },
+        },
       },
       selected && {
         borderColor: semanticColors.controlOutline,
         selectors: {
           ':hover': [
             !circle && {
-              outlineColor: semanticColors.controlOutline
+              outlineColor: semanticColors.controlOutline,
             },
             circle && {
-              borderColor: semanticColors.controlOutline
-            }
-          ]
-        }
-      }
-    ]
+              borderColor: semanticColors.controlOutline,
+            },
+          ],
+        },
+      },
+    ],
   };
 };

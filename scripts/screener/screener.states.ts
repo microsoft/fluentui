@@ -8,12 +8,12 @@ import getScreenerSteps from './screener.steps';
 import config from '../config';
 
 const examplePaths = glob.sync('docs/src/examples/**/*.tsx', {
-  ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx']
+  ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx'],
 });
 
 const pathFilter = process.env.SCREENER_FILTER;
 const filteredPaths: string[] = minimatch.match(examplePaths, pathFilter || '*', {
-  matchBase: true
+  matchBase: true,
 });
 
 if (pathFilter) {
@@ -34,7 +34,7 @@ const getStateForPath = (examplePath: string) => {
     name: exampleNameWithExtension,
 
     // https://www.npmjs.com/package/screener-runner#testing-interactions
-    steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`)
+    steps: getScreenerSteps(pageUrl, `${exampleDir}/${exampleNameWithoutExtension}.steps`),
   };
 };
 

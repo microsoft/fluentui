@@ -13,7 +13,7 @@ import { mountAttached } from '../../common/testUtilities';
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1', autoFocus: true } as IChoiceGroupOption,
   { key: '2', text: '2' },
-  { key: '3', text: '3' }
+  { key: '3', text: '3' },
 ];
 const CHOICE_QUERY_SELECTOR = '.ms-ChoiceField-input';
 
@@ -233,7 +233,7 @@ describe('ChoiceGroup', () => {
   it('can focus the first enabled option', () => {
     const choiceGroupRef = React.createRef<IChoiceGroup>();
     choiceGroup = mountAttached(
-      <ChoiceGroup options={[{ key: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]} componentRef={choiceGroupRef} />
+      <ChoiceGroup options={[{ key: '0', text: 'disabled', disabled: true }, ...TEST_OPTIONS]} componentRef={choiceGroupRef} />,
     );
 
     const option = choiceGroup.getDOMNode().querySelectorAll(CHOICE_QUERY_SELECTOR)![1] as HTMLInputElement;

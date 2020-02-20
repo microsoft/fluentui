@@ -11,20 +11,20 @@ export const SliderVerticalExample: React.FunctionComponent = () => {
   const marks = [
     {
       value: 0,
-      label: '0°C'
+      label: '0°C',
     },
     {
       value: 30,
-      label: '30°C'
+      label: '30°C',
     },
     {
       value: 80,
-      label: '80°C'
+      label: '80°C',
     },
     {
       value: 100,
-      label: '100°C'
-    }
+      label: '100°C',
+    },
   ];
 
   return (

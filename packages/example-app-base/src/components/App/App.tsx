@@ -131,7 +131,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
               classNames.linkFlair,
               link.status === ExampleStatus.started && classNames.linkFlairStarted,
               link.status === ExampleStatus.beta && classNames.linkFlairBeta,
-              link.status === ExampleStatus.release && classNames.linkFlairRelease
+              link.status === ExampleStatus.release && classNames.linkFlairRelease,
             )}
           >
             {ExampleStatus[link.status]}
@@ -143,5 +143,5 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 }
 
 export const App: React.FunctionComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(AppBase, getStyles, undefined, {
-  scope: 'App'
+  scope: 'App',
 });

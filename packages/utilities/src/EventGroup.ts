@@ -78,7 +78,7 @@ export class EventGroup {
     eventName: string,
     // tslint:disable-next-line:no-any
     eventArgs?: any,
-    bubbleEvent?: boolean
+    bubbleEvent?: boolean,
   ): boolean | undefined {
     let retVal;
 
@@ -201,7 +201,7 @@ export class EventGroup {
         eventName: eventName,
         parent: parent,
         callback: callback,
-        options
+        options,
       };
 
       // Initialize and wire up the record on the target, so that it can call the callback if the event fires.
@@ -209,7 +209,7 @@ export class EventGroup {
       events[eventName] =
         events[eventName] ||
         <IEventRecordList>{
-          count: 0
+          count: 0,
         };
       events[eventName][this._id] = events[eventName][this._id] || [];
       (<IEventRecord[]>events[eventName][this._id]).push(eventRecord);

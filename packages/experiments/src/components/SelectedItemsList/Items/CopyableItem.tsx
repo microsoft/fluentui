@@ -34,7 +34,7 @@ export const CopyableItem = <T extends any>(copyableItemProps: CopyableItemProps
           document.body.removeChild(copyInput);
         }
       },
-      [copyableItemProps.getCopyItemText]
+      [copyableItemProps.getCopyItemText],
     );
 
     const ItemComponent = copyableItemProps.itemComponent;

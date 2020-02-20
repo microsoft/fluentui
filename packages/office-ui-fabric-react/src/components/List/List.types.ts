@@ -21,7 +21,7 @@ export const ScrollToMode = {
   /**
    * Attempts to scroll the list so the desired item is in the exact center of the viewport.
    */
-  center: 3 as 3
+  center: 3 as 3,
 };
 
 /**

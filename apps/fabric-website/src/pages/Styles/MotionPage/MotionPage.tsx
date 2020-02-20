@@ -7,7 +7,7 @@ import {
   Markdown,
   MarkdownHeader,
   Table,
-  Video
+  Video,
 } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { MotionPageProps } from './MotionPage.doc';
@@ -20,24 +20,24 @@ const PatternTable = ({ rows }) => (
     columns={[
       {
         title: 'Element',
-        data: 'element'
+        data: 'element',
       },
       {
         title: 'Animation',
-        data: 'animation'
+        data: 'animation',
       },
       {
         title: 'Duration',
-        data: 'duration'
+        data: 'duration',
       },
       {
         title: 'Timing function',
-        data: 'timing'
+        data: 'timing',
       },
       {
         title: 'Delay',
-        data: 'delay'
-      }
+        data: 'delay',
+      },
     ]}
     rows={rows}
     // tslint:disable-next-line jsx-no-lambda
@@ -73,15 +73,15 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     animation: 'Slide',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Exiting content',
                     animation: 'Fade out',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '50 ms'
-                  }
+                    delay: '50 ms',
+                  },
                 ]}
               />
 
@@ -95,15 +95,15 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     animation: 'Slide',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Entering content',
                     animation: 'Fade in',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '50 ms'
-                  }
+                    delay: '50 ms',
+                  },
                 ]}
               />
 
@@ -120,15 +120,15 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     animation: 'Fade out',
                     duration: '100 ms',
                     timing: 'Linear',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Entering content',
                     animation: 'Scale down in',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '100 ms'
-                  }
+                    delay: '100 ms',
+                  },
                 ]}
               />
 
@@ -145,22 +145,22 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     animation: 'Fade out',
                     duration: '100 ms',
                     timing: 'Linear',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Repositioned content',
                     animation: 'Slide',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Entering content',
                     animation: 'Scale down in',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '100 ms'
-                  }
+                    delay: '100 ms',
+                  },
                 ]}
               />
 
@@ -177,26 +177,26 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     animation: 'Slide',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Exiting ribbon content',
                     animation: 'Slide out',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '0 ms'
+                    delay: '0 ms',
                   },
                   {
                     element: 'Entering ribbon content',
                     animation: 'Slide in',
                     duration: '300 ms',
                     timing: 'Decelerate',
-                    delay: '100 ms'
-                  }
+                    delay: '100 ms',
+                  },
                 ]}
               />
             </>
-          )
+          ),
         },
 
         {
@@ -261,7 +261,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 />
               </AnimationDetailGrid>
             </>
-          )
+          ),
         },
 
         {
@@ -272,43 +272,43 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 {
                   title: 'Duration',
                   data: 'duration',
-                  percentWidth: 50
+                  percentWidth: 50,
                 },
                 {
                   title: 'Core variable',
-                  data: 'core'
+                  data: 'core',
                 },
                 {
                   title: 'React variable',
-                  data: 'react'
-                }
+                  data: 'react',
+                },
               ]}
               rows={[
                 {
                   duration: '100ms',
                   core: '$ms-motion-duration-1',
-                  react: 'MotionDurations.duration1'
+                  react: 'MotionDurations.duration1',
                 },
                 {
                   duration: '200ms',
                   core: '$ms-motion-duration-2',
-                  react: 'MotionDurations.duration2'
+                  react: 'MotionDurations.duration2',
                 },
                 {
                   duration: '300ms',
                   core: '$ms-motion-duration-3',
-                  react: 'MotionDurations.duration3'
+                  react: 'MotionDurations.duration3',
                 },
                 {
                   duration: '400ms',
                   core: '$ms-motion-duration-4',
-                  react: 'MotionDurations.duration4'
-                }
+                  react: 'MotionDurations.duration4',
+                },
               ]}
               // tslint:disable-next-line jsx-no-lambda
               formatter={(column, row) => row[column.data]}
             />
-          )
+          ),
         },
 
         {
@@ -318,46 +318,46 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               columns={[
                 {
                   title: 'Name',
-                  data: 'name'
+                  data: 'name',
                 },
                 {
                   title: 'Value',
-                  data: 'value'
+                  data: 'value',
                 },
                 {
                   title: 'Core variable',
-                  data: 'core'
+                  data: 'core',
                 },
                 {
                   title: 'React variable',
-                  data: 'react'
-                }
+                  data: 'react',
+                },
               ]}
               rows={[
                 {
                   name: 'Linear',
                   value: 'cubic-bezier(0, 0, 1, 1)',
                   core: '$ms-motion-timing-linear',
-                  react: 'MotionTimings.linear'
+                  react: 'MotionTimings.linear',
                 },
                 {
                   name: 'Standard',
                   value: 'cubic-bezier(0.8, 0, 0.2, 1)',
                   core: '$ms-motion-timing-standard',
-                  react: 'MotionTimings.standard'
+                  react: 'MotionTimings.standard',
                 },
                 {
                   name: 'Accelerate',
                   value: 'cubic-bezier(0.9, 0.1, 1, 0.2)',
                   core: '$ms-motion-timing-accelerate',
-                  react: 'MotionTimings.accelerate'
+                  react: 'MotionTimings.accelerate',
                 },
                 {
                   name: 'Decelerate',
                   value: 'cubic-bezier(0.1, 0.9, 0.2, 1)',
                   core: '$ms-motion-timing-decelerate',
-                  react: 'MotionTimings.decelerate'
-                }
+                  react: 'MotionTimings.decelerate',
+                },
               ]}
               // tslint:disable-next-line jsx-no-lambda
               formatter={(column, row) => {
@@ -367,16 +367,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 return row[column.data];
               }}
             />
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming Soon',
-          content: 'Coming Soon'
-        }
+          content: 'Coming Soon',
+        },
       ];
   }
 }

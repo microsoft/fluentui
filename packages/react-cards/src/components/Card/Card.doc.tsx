@@ -18,23 +18,23 @@ export const CardPageProps: IDocPageProps = {
     {
       title: 'Vertical Card',
       code: CardVerticalExampleCode,
-      view: <CardVerticalExample />
+      view: <CardVerticalExample />,
     },
     {
       title: 'Horizontal Card',
       code: CardHorizontalExampleCode,
-      view: <CardHorizontalExample />
+      view: <CardHorizontalExample />,
     },
     {
       title: 'Configure Properties',
       code: CardConfigureExampleCode,
-      view: <CardConfigureExample />
-    }
+      view: <CardConfigureExample />,
+    },
   ],
   overview: require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDos.md'),
   donts: require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

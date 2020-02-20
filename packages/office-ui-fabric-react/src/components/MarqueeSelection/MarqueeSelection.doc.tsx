@@ -14,13 +14,13 @@ export const MarqueeSelectionPageProps: IDocPageProps = {
     {
       title: 'Basic Selection Example',
       code: MarqueeSelectionBasicExampleCode,
-      view: <MarqueeSelectionBasicExample />
-    }
+      view: <MarqueeSelectionBasicExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/MarqueeSelection/docs/MarqueeSelectionOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

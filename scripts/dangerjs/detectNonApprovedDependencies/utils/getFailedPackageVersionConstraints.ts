@@ -10,7 +10,7 @@ export type FailedConstraintsExplanation = {
 
 const getFailedPackageVersionConstraints = (
   packageId: string,
-  versionConstraintsToSatisfy: string[]
+  versionConstraintsToSatisfy: string[],
 ): FailedConstraintsExplanation | null => {
   const packageName = getPackageName(packageId);
 
@@ -37,7 +37,7 @@ const getFailedPackageVersionConstraints = (
     ? null
     : {
         failedConstraints: failedVersionConstraints.map(versionConstraint => `${packageName}@${versionConstraint}`),
-        approvedPackages: approvedPackageIds
+        approvedPackages: approvedPackageIds,
       };
 };
 

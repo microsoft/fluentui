@@ -15,7 +15,7 @@ import {
   IDefaultSlotProps,
   IProcessedSlotProps,
   ValidProps,
-  ValidShorthand
+  ValidShorthand,
 } from './ISlots';
 
 /**
@@ -74,7 +74,7 @@ export function withSlots<P>(
  */
 export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(
   DefaultComponent: React.ComponentType<TProps>,
-  options: IFactoryOptions<TProps> = {}
+  options: IFactoryOptions<TProps> = {},
 ): ISlotFactory<TProps, TShorthandProp> {
   const { defaultProp = 'children' } = options;
 
@@ -119,7 +119,7 @@ const defaultFactory = memoizeFunction(type => createFactory(type));
  */
 export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
   userProps: TComponentProps,
-  slots: ISlotDefinition<Required<TComponentSlots>>
+  slots: ISlotDefinition<Required<TComponentSlots>>,
 ): ISlots<Required<TComponentSlots>> {
   const result: ISlots<Required<TComponentSlots>> = {} as ISlots<Required<TComponentSlots>>;
 
@@ -146,7 +146,7 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
           mixedProps[name],
           mixedProps.slots && mixedProps.slots[name],
           // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
-          mixedProps._defaultStyles && mixedProps._defaultStyles[name]
+          mixedProps._defaultStyles && mixedProps._defaultStyles[name],
         );
       };
       slot.isSlot = true;
@@ -164,13 +164,13 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
  */
 function _translateShorthand<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
   defaultProp: string,
-  slotProps: ISlotProp<TProps, TShorthandProp>
+  slotProps: ISlotProp<TProps, TShorthandProp>,
 ): TProps | undefined {
   let transformedProps: TProps | undefined;
 
   if (typeof slotProps === 'string' || typeof slotProps === 'number' || typeof slotProps === 'boolean') {
     transformedProps = {
-      [defaultProp]: slotProps as any
+      [defaultProp]: slotProps as any,
     } as TProps;
   } else {
     transformedProps = slotProps as TProps;
@@ -212,7 +212,7 @@ function _renderSlot<
   componentProps: TSlotProps,
   userProps: ISlotProp<TSlotProps, TSlotShorthand>,
   slotOptions: ISlotOptions<TSlotProps> | undefined,
-  defaultStyles: IStyle
+  defaultStyles: IStyle,
 ): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
@@ -222,7 +222,7 @@ function _renderSlot<
       componentProps,
       userProps,
       slotOptions,
-      defaultStyles
+      defaultStyles,
     );
   }
 }

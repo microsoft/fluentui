@@ -7,11 +7,11 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const CalendarPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
+    related,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/CalendarPage/docs/android/CalendarOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

@@ -14,14 +14,14 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'G', text: 'Option G' },
   { key: 'H', text: 'Option H' },
   { key: 'I', text: 'Option I' },
-  { key: 'J', text: 'Option J' }
+  { key: 'J', text: 'Option J' },
 ];
 
 const wrapperClassName = mergeStyles({
   selectors: {
     '& > *': { marginBottom: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' }
-  }
+    '& .ms-ComboBox': { maxWidth: '300px' },
+  },
 });
 
 export interface IComboBoxControlledExampleState {
@@ -56,7 +56,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
       optionsMulti: [],
       // This is the text of the option which will be initially selected after the options are resolved
       initialDisplayValue: 'Option C',
-      initialDisplayValueMulti: 'Option C, Option D'
+      initialDisplayValueMulti: 'Option C, Option D',
     };
   }
 
@@ -101,7 +101,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     this.setState({
       options: options,
       selectedOptionKey: 'C',
-      initialDisplayValue: undefined
+      initialDisplayValue: undefined,
     });
 
     return options;
@@ -117,7 +117,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     this.setState({
       optionsMulti: options,
       selectedOptionKeys: ['C', 'D'],
-      initialDisplayValueMulti: undefined
+      initialDisplayValueMulti: undefined,
     });
 
     return options;
@@ -128,7 +128,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     if (option) {
       // User chose an existing option
       this.setState({
-        selectedOptionKey: option.key
+        selectedOptionKey: option.key,
       });
     } else if (value !== undefined) {
       // User typed a new option
@@ -136,7 +136,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
 
       this.setState({
         options: [...this.state.options, newOption],
-        selectedOptionKey: newOption.key
+        selectedOptionKey: newOption.key,
       });
     }
   };
@@ -147,7 +147,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     if (option) {
       // User selected/de-selected an existing option
       this.setState({
-        selectedOptionKeys: this._updateSelectedOptionKeys(currentSelectedKeys, option)
+        selectedOptionKeys: this._updateSelectedOptionKeys(currentSelectedKeys, option),
       });
     } else if (value !== undefined) {
       // User typed a freeform option
@@ -155,7 +155,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
       const updatedSelectedKeys: string[] = [...currentSelectedKeys, newOption.key as string];
       this.setState({
         optionsMulti: [...this.state.optionsMulti, newOption],
-        selectedOptionKeys: updatedSelectedKeys
+        selectedOptionKeys: updatedSelectedKeys,
       });
     }
   };

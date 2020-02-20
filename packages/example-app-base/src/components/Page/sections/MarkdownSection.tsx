@@ -17,7 +17,7 @@ export const MarkdownSection: React.FunctionComponent<IPageSectionProps> = props
     readableSectionName = sectionName,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const editUrl =
     props.editUrl ||

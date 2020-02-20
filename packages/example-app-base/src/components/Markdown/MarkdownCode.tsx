@@ -24,8 +24,8 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
       ...baseCodeStyle,
       padding: '0 4px',
       border: '1px solid ' + NeutralColors.gray30,
-      borderRadius: 3
-    }
+      borderRadius: 3,
+    },
   };
 };
 

@@ -18,7 +18,7 @@ export const AnnouncedPageProps: IDocPageProps = {
   componentName: 'Announced',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/experiments/src/components/Announced',
   overview: require('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/AnnouncedOverview.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedQuickActionsPageProps: IDocPageProps = {
@@ -29,13 +29,13 @@ export const AnnouncedQuickActionsPageProps: IDocPageProps = {
     {
       title: 'Quick actions',
       code: AnnouncedQuickActionsExampleCode,
-      view: <AnnouncedQuickActionsExample />
-    }
+      view: <AnnouncedQuickActionsExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/QuickActions/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedSearchResultsPageProps: IDocPageProps = {
@@ -46,13 +46,13 @@ export const AnnouncedSearchResultsPageProps: IDocPageProps = {
     {
       title: 'Search results',
       code: AnnouncedSearchResultsExampleCode,
-      view: <AnnouncedSearchResultsExample />
-    }
+      view: <AnnouncedSearchResultsExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/SearchResults/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
@@ -63,13 +63,13 @@ export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
     {
       title: 'Asynchronous',
       code: AnnouncedLazyLoadingExampleCode,
-      view: <AnnouncedLazyLoadingExample />
-    }
+      view: <AnnouncedLazyLoadingExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/Asynchronous/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };
 
 export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
@@ -80,11 +80,11 @@ export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
     {
       title: 'Bulk long running',
       code: AnnouncedBulkOperationsExampleCode,
-      view: <AnnouncedBulkOperationsExample />
-    }
+      view: <AnnouncedBulkOperationsExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Overview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Dos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/BulkLongRunning/Donts.md'),
-  isHeaderVisible: false
+  isHeaderVisible: false,
 };

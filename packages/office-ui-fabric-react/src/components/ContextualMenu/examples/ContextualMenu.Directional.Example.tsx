@@ -6,7 +6,7 @@ import {
   ContextualMenuItemType,
   DirectionalHint,
   IContextualMenuProps,
-  IContextualMenuItem
+  IContextualMenuItem,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
@@ -26,7 +26,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
   { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
   { key: DirectionalHint.rightCenter, text: 'Right Center' },
-  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
 const checkboxStyles: ICheckboxStyles = { root: { margin: '10px 0' } };
@@ -61,9 +61,9 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
       gapSpace: 0,
       beakWidth: 20,
       directionalHintFixed: false,
-      items: menuItems
+      items: menuItems,
     }),
-    [isBeakVisible, directionalHint, directionalHintForRTL]
+    [isBeakVisible, directionalHint, directionalHintForRTL],
   );
 
   return (
@@ -92,27 +92,27 @@ export const ContextualMenuDirectionalExample: React.FunctionComponent = () => {
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider
+    itemType: ContextualMenuItemType.Divider,
   },
   {
     key: 'rename',
-    text: 'Rename'
+    text: 'Rename',
   },
   {
     key: 'edit',
-    text: 'Edit'
+    text: 'Edit',
   },
   {
     key: 'properties',
-    text: 'Properties'
+    text: 'Properties',
   },
   {
     key: 'disabled',
     text: 'Disabled item',
-    disabled: true
-  }
+    disabled: true,
+  },
 ];

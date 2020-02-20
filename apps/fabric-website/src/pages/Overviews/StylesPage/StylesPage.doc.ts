@@ -7,6 +7,6 @@ export const StylesPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/StylesPage/docs/web/StylesOverview.md') as string,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

@@ -40,7 +40,7 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
   onRenderCustomPlaceholder?: (
     rowProps: IDetailsRowProps,
     index?: number,
-    defaultRender?: (props: IDetailsRowProps) => React.ReactNode
+    defaultRender?: (props: IDetailsRowProps) => React.ReactNode,
   ) => React.ReactNode;
 
   /**

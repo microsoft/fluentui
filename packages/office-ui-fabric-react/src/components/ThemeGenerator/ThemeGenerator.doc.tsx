@@ -11,7 +11,7 @@ import {
   BaseSlots,
   FabricSlots,
   IThemeSlotRule,
-  IThemeRules
+  IThemeRules,
 } from 'office-ui-fabric-react/lib/ThemeGenerator';
 
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -43,7 +43,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       themeRules: themeRules,
       colorPickerSlotRule: null,
       colorPickerElement: null,
-      colorPickerVisible: false
+      colorPickerVisible: false,
     };
   }
 
@@ -73,7 +73,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._fabricSlotWidget(FabricSlots.themeTertiary),
       this._fabricSlotWidget(FabricSlots.themeLight),
       this._fabricSlotWidget(FabricSlots.themeLighter),
-      this._fabricSlotWidget(FabricSlots.themeLighterAlt)
+      this._fabricSlotWidget(FabricSlots.themeLighterAlt),
     ];
     const fabricNeutralForegroundSlots = [
       this._fabricSlotWidget(FabricSlots.black),
@@ -81,7 +81,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._fabricSlotWidget(FabricSlots.neutralPrimary),
       this._fabricSlotWidget(FabricSlots.neutralPrimaryAlt),
       this._fabricSlotWidget(FabricSlots.neutralSecondary),
-      this._fabricSlotWidget(FabricSlots.neutralTertiary)
+      this._fabricSlotWidget(FabricSlots.neutralTertiary),
     ];
     const fabricNeutralBackgroundSlots = [
       this._fabricSlotWidget(FabricSlots.neutralTertiaryAlt),
@@ -90,7 +90,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._fabricSlotWidget(FabricSlots.neutralLight),
       this._fabricSlotWidget(FabricSlots.neutralLighter),
       this._fabricSlotWidget(FabricSlots.neutralLighterAlt),
-      this._fabricSlotWidget(FabricSlots.white)
+      this._fabricSlotWidget(FabricSlots.white),
     ];
 
     const stylingUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling';
@@ -146,7 +146,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
           {[
             this._baseColorSlotPicker(BaseSlots.primaryColor, 'Primary theme color'),
             this._baseColorSlotPicker(BaseSlots.foregroundColor, 'Body text color'),
-            this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body background color')
+            this._baseColorSlotPicker(BaseSlots.backgroundColor, 'Body background color'),
           ]}
         </div>
         <br />
@@ -182,13 +182,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
               options={[
                 {
                   key: 'A',
-                  text: 'Option A'
+                  text: 'Option A',
                 },
                 {
                   key: 'B',
                   text: 'Option B',
-                  checked: true
-                }
+                  checked: true,
+                },
               ]}
               label="Pick one"
               required={true}
@@ -198,14 +198,14 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
                 {
                   key: 'C',
                   text: 'Option C',
-                  disabled: true
+                  disabled: true,
                 },
                 {
                   key: 'D',
                   text: 'Option D',
                   checked: true,
-                  disabled: true
-                }
+                  disabled: true,
+                },
               ]}
               label="Pick one"
               required={true}
@@ -267,7 +267,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this.setState({
         colorPickerVisible: true,
         colorPickerSlotRule: slotRule,
-        colorPickerElement: ev.target as HTMLElement
+        colorPickerElement: ev.target as HTMLElement,
       });
     }
   };
@@ -327,7 +327,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       this._accessibilityRow(FabricSlots.white, FabricSlots.themePrimary),
       this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.neutralLighter), // neutral variant default
       this._accessibilityRow(FabricSlots.themeDark, FabricSlots.neutralLighter),
-      this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter)
+      this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter),
     ]; // neutral variant with primary color
 
     // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
@@ -335,13 +335,13 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
       // is not inverted
       accessibilityRows.push(
         this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighterAlt),
-        this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLighterAlt)
+        this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLighterAlt),
       );
     } else {
       // is inverted
       accessibilityRows.push(
         this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLight),
-        this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLight)
+        this._accessibilityRow(FabricSlots.themeDarkAlt, FabricSlots.themeLight),
       );
     }
 
@@ -394,7 +394,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     const finalTheme = loadTheme({
       ...{ palette: themeAsJson },
-      isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+      isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!),
     });
 
     const root = document.querySelector('.App-content') as HTMLElement;
@@ -449,7 +449,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade5']),
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade6']),
             this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade7']),
-            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade8'])
+            this._colorSquareSwatchWidget(this.state.themeRules[BaseSlots[baseSlot] + 'Shade8']),
           ]}
         </div>
       </div>

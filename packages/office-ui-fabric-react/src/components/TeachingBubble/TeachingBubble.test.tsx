@@ -11,7 +11,7 @@ describe('TeachingBubble', () => {
     const component = mount(
       <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }} ariaDescribedBy="content">
         <div>Not a string child</div>
-      </TeachingBubble>
+      </TeachingBubble>,
     );
 
     expect(component.find(TeachingBubbleContent).find('div#content').length).toBe(1);
@@ -21,7 +21,7 @@ describe('TeachingBubble', () => {
     const component = mount(
       <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }} ariaDescribedBy="content">
         Not a string child
-      </TeachingBubble>
+      </TeachingBubble>,
     );
 
     expect(component.find(TeachingBubbleContent).find('p#content').length).toBe(1);
@@ -31,7 +31,7 @@ describe('TeachingBubble', () => {
     const component = renderer.create(
       <TeachingBubble isWide={true} calloutProps={{ doNotLayer: true, className: 'specialClassName' }}>
         Test Content
-      </TeachingBubble>
+      </TeachingBubble>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -52,7 +52,7 @@ describe('TeachingBubble', () => {
         secondaryButtonProps={{ children: 'Test Secondary Button', className: 'secondary-className' }}
       >
         Content
-      </TeachingBubbleContent>
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -62,7 +62,7 @@ describe('TeachingBubble', () => {
     const componentContent = renderer.create(
       <TeachingBubbleContent headline="Test Title" illustrationImage={{ src: 'test image url' }}>
         Content
-      </TeachingBubbleContent>
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -72,7 +72,7 @@ describe('TeachingBubble', () => {
     const componentContent = renderer.create(
       <TeachingBubbleContent hasCondensedHeadline={true} headline="Test Title">
         Content
-      </TeachingBubbleContent>
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -82,7 +82,7 @@ describe('TeachingBubble', () => {
     const componentContent = renderer.create(
       <TeachingBubbleContent hasSmallHeadline={true} headline="Test Title">
         Content
-      </TeachingBubbleContent>
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();
@@ -96,7 +96,7 @@ describe('TeachingBubble', () => {
 
   it('renders TeachingBubbleContent with calloutProps that deal with styles', () => {
     const componentContent = renderer.create(
-      <TeachingBubbleContent calloutProps={{ beakWidth: 50, calloutWidth: 100 }}>Content</TeachingBubbleContent>
+      <TeachingBubbleContent calloutProps={{ beakWidth: 50, calloutWidth: 100 }}>Content</TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();

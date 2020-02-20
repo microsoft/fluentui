@@ -25,7 +25,7 @@ export const BestPracticesSection: React.FunctionComponent<IBestPracticesSection
     donts,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const bestPracticesUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName!), baseUrl: componentUrl, platform })

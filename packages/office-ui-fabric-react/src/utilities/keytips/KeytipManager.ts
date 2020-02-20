@@ -54,7 +54,7 @@ export class KeytipManager {
     const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_ADDED : KeytipEvents.KEYTIP_ADDED;
     EventGroup.raise(this, event, {
       keytip: props,
-      uniqueID: uniqueKeytip.uniqueID
+      uniqueID: uniqueKeytip.uniqueID,
     });
 
     return uniqueKeytip.uniqueID;
@@ -80,7 +80,7 @@ export class KeytipManager {
       // Raise event
       EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
         keytip: uniqueKeytip.keytip,
-        uniqueID: uniqueKeytip.uniqueID
+        uniqueID: uniqueKeytip.uniqueID,
       });
     }
   }
@@ -108,7 +108,7 @@ export class KeytipManager {
     const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_REMOVED : KeytipEvents.KEYTIP_REMOVED;
     EventGroup.raise(this, event, {
       keytip: keytipToRemove,
-      uniqueID: uniqueID
+      uniqueID: uniqueID,
     });
   }
 
@@ -153,7 +153,7 @@ export class KeytipManager {
       if (parentKeytip && parentKeytip.overflowSetSequence) {
         return {
           ...keytipProps,
-          overflowSetSequence: parentKeytip.overflowSetSequence
+          overflowSetSequence: parentKeytip.overflowSetSequence,
         };
       }
     }
@@ -169,7 +169,7 @@ export class KeytipManager {
   public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
     EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
       overflowButtonSequences,
-      keytipSequences
+      keytipSequences,
     });
   }
 

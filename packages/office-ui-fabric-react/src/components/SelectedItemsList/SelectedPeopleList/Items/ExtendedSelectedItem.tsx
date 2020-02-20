@@ -31,7 +31,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-          { ['is-invalid ' + styles.validationError]: !item.isValid }
+          { ['is-invalid ' + styles.validationError]: !item.isValid },
         )}
         data-is-focusable={true}
         data-is-sub-focuszone={true}

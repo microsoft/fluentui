@@ -12,7 +12,7 @@ const styles: any = stylesImport;
  */
 export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (
   personaProps: IPersonaProps,
-  suggestionItemProps?: ISuggestionItemProps<any>
+  suggestionItemProps?: ISuggestionItemProps<any>,
 ) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent)}>
@@ -33,7 +33,7 @@ export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IB
  */
 export const SuggestionItemSmall: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (
   personaProps: IPersonaProps,
-  suggestionItemProps?: ISuggestionItemProps<any>
+  suggestionItemProps?: ISuggestionItemProps<any>,
 ) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', styles.peoplePickerPersonaContent)}>

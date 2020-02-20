@@ -9,7 +9,7 @@ import {
   getYearEnd,
   getMonthStart,
   getMonthEnd,
-  compareDatePart
+  compareDatePart,
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
@@ -92,7 +92,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
       dateTimeFormatter,
       minDate,
       maxDate,
-      yearPickerHidden
+      yearPickerHidden,
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
@@ -111,7 +111,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
           strings={{
             rangeAriaLabel: this._yearRangeToString,
             prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
           }}
           ref={this._onCalendarYearRef}
         />
@@ -155,7 +155,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button
                 className={css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
-                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
+                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds,
                 })}
                 disabled={!isPrevYearInBounds}
                 onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
@@ -172,7 +172,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
               </button>
               <button
                 className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
-                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
+                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds,
                 })}
                 disabled={!isNextYearInBounds}
                 onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
@@ -214,7 +214,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                           ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
                           ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
                             (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
-                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
+                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds,
                         })}
                         disabled={!isInBounds}
                         key={monthIndex}

@@ -7,17 +7,17 @@ interface IExampleProps {
 
 const horizontalStackProps: IStackProps = {
   horizontal: true,
-  tokens: { childrenGap: 16 }
+  tokens: { childrenGap: 16 },
 };
 const verticalStackProps: IStackProps = {
   styles: { root: { overflow: 'hidden', width: '100%' } },
-  tokens: { childrenGap: 20 }
+  tokens: { childrenGap: 20 },
 };
 
 const choiceGroupStyles = {
   label: {
-    maxWidth: 250
-  }
+    maxWidth: 250,
+  },
 };
 
 const DefaultExample = () => (
@@ -137,36 +137,36 @@ const WarningExample2 = (p: IExampleProps) => (
 const choiceOptions = [
   {
     key: 'default',
-    text: 'Default'
+    text: 'Default',
   },
   {
     key: 'error',
-    text: 'Error MessageBar'
+    text: 'Error MessageBar',
   },
   {
     key: 'blocked',
-    text: 'Blocked MessageBar'
+    text: 'Blocked MessageBar',
   },
   {
     key: 'severe',
-    text: 'SevereWarning MessageBar'
+    text: 'SevereWarning MessageBar',
   },
   {
     key: 'success',
-    text: 'Success MessageBar'
+    text: 'Success MessageBar',
   },
   {
     key: 'warning',
-    text: 'Warning MessageBar - single line'
+    text: 'Warning MessageBar - single line',
   },
   {
     key: 'warning2',
-    text: 'Warning MessageBar - multiline'
+    text: 'Warning MessageBar - multiline',
   },
   {
     key: 'all',
-    text: 'Show All'
-  }
+    text: 'Show All',
+  },
 ];
 
 export const MessageBarBasicExample: React.FunctionComponent = () => {

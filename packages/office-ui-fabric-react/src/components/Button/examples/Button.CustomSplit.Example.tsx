@@ -13,9 +13,9 @@ const customSplitButtonStyles: IButtonStyles = {
   splitButtonDivider: { backgroundColor: '#c8c8c8', width: 1, right: 26, position: 'absolute', top: 4, bottom: 4 },
   splitButtonContainer: {
     selectors: {
-      [HighContrastSelector]: { border: 'none' }
-    }
-  }
+      [HighContrastSelector]: { border: 'none' },
+    },
+  },
 };
 
 const menuProps: IContextualMenuProps = {
@@ -23,14 +23,14 @@ const menuProps: IContextualMenuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
-  ]
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
 };
 
 const addIcon: IIconProps = { iconName: 'Add' };

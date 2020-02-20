@@ -14,7 +14,7 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
 } from '../../../Utilities';
 
 import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
@@ -31,7 +31,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
+  [RectangleEdge.right]: 'slideRightIn20',
 };
 
 export interface IPositioningContainerState {
@@ -53,7 +53,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge
+    directionalHint: DirectionalHint.bottomAutoEdge,
   };
 
   private _didSetInitialFocus: boolean;
@@ -92,7 +92,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
-      heightOffset: 0
+      heightOffset: 0,
     };
     this._positionAttempts = 0;
   }
@@ -159,7 +159,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
             styles.root,
             className,
             directionalClassName,
-            !!positioningContainerWidth && { width: positioningContainerWidth }
+            !!positioningContainerWidth && { width: positioningContainerWidth },
           )}
           // tslint:disable-next-line:jsx-ban-props
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
@@ -276,13 +276,13 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
           this._positionAttempts++;
           this.setState(
             {
-              positions: newPositions
+              positions: newPositions,
             },
             () => {
               if (onPositioned) {
                 onPositioned(newPositions);
               }
-            }
+            },
           );
         } else {
           this._positionAttempts = 0;
@@ -292,7 +292,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         }
       } else if (positions !== undefined) {
         this.setState({
-          positions: undefined
+          positions: undefined,
         });
       }
     }
@@ -309,7 +309,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
           right: this._targetWindow.innerWidth - this.props.minPagePadding!,
           bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
           width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
+          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
         };
       }
       this._positioningBounds = currentBounds;
@@ -396,7 +396,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff
+          heightOffset: this.state.heightOffset! + scrollDiff,
         });
 
         if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {

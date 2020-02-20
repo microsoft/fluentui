@@ -11,9 +11,9 @@ const flexStyles: IStyle = {
   selectors: {
     '> *': {
       flexShrink: 1,
-      textOverflow: 'ellipsis'
-    }
-  }
+      textOverflow: 'ellipsis',
+    },
+  },
 };
 const outerWrapStyles = mergeStyles({
   ...flexStyles,
@@ -22,9 +22,9 @@ const outerWrapStyles = mergeStyles({
   selectors: {
     ...flexStyles.selectors,
     '> *:not(:first-child)': {
-      marginTop: 20
-    }
-  }
+      marginTop: 20,
+    },
+  },
 });
 const innerWrapStyles = mergeStyles({
   ...flexStyles,
@@ -33,9 +33,9 @@ const innerWrapStyles = mergeStyles({
   selectors: {
     ...flexStyles.selectors,
     '> *:not(:first-child)': {
-      marginLeft: 20
-    }
-  }
+      marginLeft: 20,
+    },
+  },
 });
 const textFieldStyles = mergeStyles({ width: 200 });
 

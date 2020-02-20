@@ -17,23 +17,23 @@ export const BreadcrumbPageProps: IDocPageProps = {
     {
       title: 'Breadcrumb rendering options',
       code: BreadcrumbBasicExampleCode,
-      view: <BreadcrumbBasicExample />
+      view: <BreadcrumbBasicExample />,
     },
     {
       title: 'Breadcrumb collapsing options',
       code: BreadcrumbCollapsingExampleCode,
-      view: <BreadcrumbCollapsingExample />
+      view: <BreadcrumbCollapsingExample />,
     },
     {
       title: 'Breadcrumb with static width ',
       code: BreadcrumbStaticExampleCode,
-      view: <BreadcrumbStaticExample />
-    }
+      view: <BreadcrumbStaticExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Breadcrumb/docs/BreadcrumbDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

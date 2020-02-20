@@ -12,6 +12,6 @@ export const StylesPages: INavPage = {
   component: () => <LoadingComponent title="Styles" />,
   getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/StylesPage/StylesPage').StylesPage)),
   platforms: {
-    web: stylesPagesWeb
-  }
+    web: stylesPagesWeb,
+  },
 };

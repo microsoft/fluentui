@@ -8,7 +8,7 @@ import {
   IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-  IPersonaCoinProps
+  IPersonaCoinProps,
 } from './Persona.types';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
@@ -21,7 +21,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
-    imageAlt: ''
+    imageAlt: '',
   };
 
   constructor(props: IPersonaProps) {
@@ -45,7 +45,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       onRenderPrimaryText = _onRenderPrimaryText,
       onRenderSecondaryText = _onRenderSecondaryText,
       onRenderTertiaryText = _onRenderTertiaryText,
-      onRenderPersonaCoin = this._onRenderPersonaCoin
+      onRenderPersonaCoin = this._onRenderPersonaCoin,
     } = this.props;
     const size = this.props.size as PersonaSize;
 
@@ -71,7 +71,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       presenceTitle,
       showInitialsUntilImageLoads,
       showSecondaryText,
-      theme
+      theme,
     } = this.props;
 
     const personaCoinProps: IPersonaCoinProps = {
@@ -93,7 +93,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       size,
       text: this._getText(),
       isOutOfOffice,
-      ...coinProps
+      ...coinProps,
     };
 
     const classNames = getClassNames(styles, {
@@ -101,7 +101,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       className,
       showSecondaryText,
       presence,
-      size
+      size,
     });
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
@@ -133,7 +133,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
   private _renderElement(
     classNames: string,
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
-    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
+    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined,
   ): JSX.Element {
     return (
       <div dir="auto" className={classNames}>

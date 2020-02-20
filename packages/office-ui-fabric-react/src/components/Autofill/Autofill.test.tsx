@@ -151,14 +151,14 @@ describe('Autofill', () => {
 
     ReactTestUtils.Simulate.keyDown(autofill.inputElement!, {
       keyCode: KeyCodes.p,
-      which: KeyCodes.p
+      which: KeyCodes.p,
     });
     autofill.inputElement!.value = 'help';
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
 
     ReactTestUtils.Simulate.compositionEnd(autofill.inputElement!, {});
@@ -166,8 +166,8 @@ describe('Autofill', () => {
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
     jest.runOnlyPendingTimers();
 
@@ -175,15 +175,15 @@ describe('Autofill', () => {
       keyCode: KeyCodes.m,
       which: KeyCodes.m,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
     autofill.inputElement!.value = '🆘m';
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: true
-      } as any
+        isComposing: true,
+      } as any,
     });
 
     ReactTestUtils.Simulate.compositionEnd(autofill.inputElement!, {});
@@ -191,8 +191,8 @@ describe('Autofill', () => {
     ReactTestUtils.Simulate.input(autofill.inputElement!, {
       target: autofill.inputElement!,
       nativeEvent: {
-        isComposing: false
-      } as any
+        isComposing: false,
+      } as any,
     });
     jest.runOnlyPendingTimers();
 
@@ -203,7 +203,7 @@ describe('Autofill', () => {
       ['🆘', false], // from timeout on compositionEnd event
       ['🆘m', true],
       ['🆘Ⓜ', false], // from input event
-      ['🆘Ⓜ', false] // from  timeout on compositionEnd event
+      ['🆘Ⓜ', false], // from  timeout on compositionEnd event
     ]);
     expect(autofill.value).toBe('🆘Ⓜ');
   });
@@ -236,7 +236,7 @@ describe('Autofill', () => {
       ['he', false],
       ['hel', true],
       ['help', true],
-      ['🆘', false]
+      ['🆘', false],
     ]);
   });
 
@@ -270,7 +270,7 @@ describe('Autofill', () => {
       ['he', false],
       ['hel', true],
       ['help', true],
-      ['🆘', false]
+      ['🆘', false],
     ]);
   });
 });

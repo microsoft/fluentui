@@ -4,13 +4,13 @@ const fakeIconList = ['FakeIcon1', 'FakeIcon2', 'FakeIcon3', 'FakeIcon4'];
 const fakeIconSubSet: IIconSubset = {
   style: {
     fontStyle: 'normal',
-    fontWeight: 'normal'
+    fontWeight: 'normal',
   },
   fontFace: {
     fontFamily: 'fakeFontFamily',
-    src: 'fakeUrl'
+    src: 'fakeUrl',
   },
-  icons: {}
+  icons: {},
 };
 
 for (const iconName of fakeIconList) {

@@ -11,8 +11,8 @@ const chatStyles: ComponentSlotStylesPrepared<ChatStylesProps, ChatVariables> = 
     flexDirection: 'column',
     listStyle: 'none',
     padding: `0 ${pxToRem(10)} 0 ${pxToRem(10)}`,
-    margin: 0
-  })
+    margin: 0,
+  }),
 };
 
 export default chatStyles;

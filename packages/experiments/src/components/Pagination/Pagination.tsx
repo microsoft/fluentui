@@ -7,5 +7,5 @@ export const Pagination: React.FunctionComponent<IPaginationProps> = styled<IPag
   PaginationBase,
   getStyles,
   undefined,
-  { scope: 'Pagination' }
+  { scope: 'Pagination' },
 );

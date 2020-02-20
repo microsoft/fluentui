@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
-import { ListItemBehaviorProps } from './listItemBehavior'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
+import { ListItemBehaviorProps } from './listItemBehavior';
 
 /**
  * @specification
@@ -24,6 +24,6 @@ const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props =>
       },
     },
   },
-})
+});
 
-export default navigableListItemBehavior
+export default navigableListItemBehavior;

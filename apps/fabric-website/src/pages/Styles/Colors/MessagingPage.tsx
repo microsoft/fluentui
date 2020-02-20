@@ -29,49 +29,49 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 colors={[
                   {
                     name: 'Warning',
-                    hex: '#fff4ce'
+                    hex: '#fff4ce',
                   },
                   {
                     name: 'Warning Icon',
-                    hex: '#797673'
+                    hex: '#797673',
                   },
                   {
                     name: 'Severe Warning',
-                    hex: '#fed9cc'
+                    hex: '#fed9cc',
                   },
                   {
                     name: 'Severe Warning Icon',
-                    hex: '#d83b01'
+                    hex: '#d83b01',
                   },
                   {
                     name: 'Error Block',
-                    hex: '#fde7e9'
+                    hex: '#fde7e9',
                   },
                   {
                     name: 'Error Block Icon',
-                    hex: '#a80000'
+                    hex: '#a80000',
                   },
                   {
                     name: 'Success',
-                    hex: '#dff6dd'
+                    hex: '#dff6dd',
                   },
                   {
                     name: 'Success Icon',
-                    hex: '#107c10'
-                  }
+                    hex: '#107c10',
+                  },
                 ]}
               />
             </>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming soon',
-          content: '...'
-        }
+          content: '...',
+        },
       ];
   }
 }

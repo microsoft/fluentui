@@ -10,17 +10,17 @@ export const ButtonPageProps = (disabled: boolean, checked: boolean): TPlatformP
   return {
     web: {
       ...(externalProps as any),
-      related
+      related,
     },
     ios: {
       overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonOverview.md') as string,
       related,
-      componentUrl
+      componentUrl,
     },
     android: {
       overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonOverview.md') as string,
       related,
-      componentUrl
-    }
+      componentUrl,
+    },
   };
 };

@@ -40,7 +40,7 @@ if (runOnAllFiles) {
     fileGroups.map(group => () => {
       console.log(`Running for ${group.length} files!`);
       runPrettier(group, true /*async*/);
-    })
+    }),
   );
 }
 

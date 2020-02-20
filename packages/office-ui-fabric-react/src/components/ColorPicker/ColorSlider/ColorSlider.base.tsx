@@ -16,7 +16,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   public static defaultProps: Partial<IColorSliderProps> = {
     minValue: 0,
     maxValue: 100,
-    value: 0
+    value: 0,
   };
 
   private _events: EventGroup;
@@ -30,11 +30,11 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     warnDeprecations('ColorSlider', props, {
       thumbColor: 'styles.sliderThumb',
-      overlayStyle: 'overlayColor'
+      overlayStyle: 'overlayColor',
     });
 
     this.state = {
-      currentValue: props.value || 0
+      currentValue: props.value || 0,
     };
   }
 
@@ -62,7 +62,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isAlpha
+      isAlpha,
     });
 
     const currentPercentage = (100 * (currentValue! - minValue!)) / (maxValue! - minValue!);
@@ -167,7 +167,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     if (!ev.defaultPrevented) {
       this.setState({
-        currentValue: newValue
+        currentValue: newValue,
       });
       ev.preventDefault();
     }

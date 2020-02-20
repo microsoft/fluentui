@@ -2,62 +2,62 @@ import { keyframes } from '@uifabric/merge-styles';
 
 const fadeInAnimationName: string = keyframes({
   from: { opacity: 0 },
-  to: { opacity: 1 }
+  to: { opacity: 1 },
 });
 
 const fadeOutAnimationName: string = keyframes({
   from: { opacity: 1 },
-  to: { opacity: 0 }
+  to: { opacity: 0 },
 });
 
 const scaleDownInAnimationName: string = keyframes({
   from: { transform: 'scale3d(1.15, 1.15, 1)' },
-  to: { transform: 'scale3d(1, 1, 1)' }
+  to: { transform: 'scale3d(1, 1, 1)' },
 });
 
 const scaleDownOutAnimationName: string = keyframes({
   from: { transform: 'scale3d(1, 1, 1)' },
-  to: { transform: 'scale3d(0.9, 0.9, 1)' }
+  to: { transform: 'scale3d(0.9, 0.9, 1)' },
 });
 
 const slideLeftOutAnimationName: string = keyframes({
   from: { transform: 'translate3d(0, 0, 0)' },
-  to: { transform: 'translate3d(-48px, 0, 0)' }
+  to: { transform: 'translate3d(-48px, 0, 0)' },
 });
 
 const slideRightOutAnimationName: string = keyframes({
   from: { transform: 'translate3d(0, 0, 0)' },
-  to: { transform: 'translate3d(48px, 0, 0)' }
+  to: { transform: 'translate3d(48px, 0, 0)' },
 });
 
 const slideLeftInAnimationName: string = keyframes({
   from: { transform: 'translate3d(48px, 0, 0)' },
-  to: { transform: 'translate3d(0, 0, 0)' }
+  to: { transform: 'translate3d(0, 0, 0)' },
 });
 
 const slideRightInAnimationName: string = keyframes({
   from: { transform: 'translate3d(-48px, 0, 0)' },
-  to: { transform: 'translate3d(0, 0, 0)' }
+  to: { transform: 'translate3d(0, 0, 0)' },
 });
 
 const slideUpOutAnimationName: string = keyframes({
   from: { transform: 'translate3d(0, 0, 0)' },
-  to: { transform: 'translate3d(0, -48px, 0)' }
+  to: { transform: 'translate3d(0, -48px, 0)' },
 });
 
 const slideDownOutAnimationName: string = keyframes({
   from: { transform: 'translate3d(0, 0, 0)' },
-  to: { transform: 'translate3d(0, 48px, 0)' }
+  to: { transform: 'translate3d(0, 48px, 0)' },
 });
 
 const slideUpInAnimationName: string = keyframes({
   from: { transform: 'translate3d(0, 48px, 0)' },
-  to: { transform: 'translate3d(0, 0, 0)' }
+  to: { transform: 'translate3d(0, 0, 0)' },
 });
 
 const slideDownInAnimationName: string = keyframes({
   from: { transform: 'translate3d(0, -48px, 0)' },
-  to: { transform: 'translate3d(0, 0, 0)' }
+  to: { transform: 'translate3d(0, 0, 0)' },
 });
 
 export namespace MotionDurations {

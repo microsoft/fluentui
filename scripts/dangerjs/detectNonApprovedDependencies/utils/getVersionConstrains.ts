@@ -58,7 +58,7 @@ const parsePackageJson = (packageJsonPath: string): Promise<PackageJson> => {
       });
 
       resolve({
-        dependencies: normalizedDependencies
+        dependencies: normalizedDependencies,
       });
     });
   });
@@ -67,7 +67,7 @@ const parsePackageJson = (packageJsonPath: string): Promise<PackageJson> => {
 export const getDependenciesVersionConstraints = async (
   packageJsonPath: string,
   basePath: string,
-  dependencyChain: string[]
+  dependencyChain: string[],
 ): Promise<Constraints> => {
   let detectedConstraints: Constraints = {};
   const dependenciesWithConstraints = (await parsePackageJson(packageJsonPath)).dependencies;

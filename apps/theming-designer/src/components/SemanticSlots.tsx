@@ -13,7 +13,7 @@ export interface ISemanticSlotsProps {
 const slotClassName = mergeStyles({
   display: 'flex',
   alignItems: 'center',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
 const semanticPaletteColorBox = mergeStyles({
@@ -23,7 +23,7 @@ const semanticPaletteColorBox = mergeStyles({
   left: 5,
   top: 5,
   border: '1px solid black',
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 type IPaletteSlots = {

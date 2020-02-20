@@ -7,7 +7,7 @@ import {
   getScreenSelector,
   getGlobalClassNames,
   getFocusStyle,
-  IconFontSizes
+  IconFontSizes,
 } from '../../Styling';
 import { IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
 
@@ -31,7 +31,7 @@ const GlobalClassNames = {
   dismissal: 'ms-MessageBar-dismissal',
   expand: 'ms-MessageBar-expand',
   actions: 'ms-MessageBar-actions',
-  actionsSingleline: 'ms-MessageBar-actionsSingleLine'
+  actionsSingleline: 'ms-MessageBar-actionsSingleLine',
 };
 
 // Returns the background color of the MessageBar root element based on the type of MessageBar.
@@ -98,9 +98,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     selectors: {
       [HighContrastSelector]: {
         MsHighContrastAdjust: 'none',
-        color: 'WindowText'
-      }
-    }
+        color: 'WindowText',
+      },
+    },
   };
 
   const dismissalAndExpandStyle: IStyle = [
@@ -108,9 +108,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       inset: 1,
       highContrastStyle: {
         outlineOffset: '-4px',
-        outlineColor: 'Window'
+        outlineColor: 'Window',
       },
-      borderColor: 'transparent'
+      borderColor: 'transparent',
     }),
     {
       flexShrink: 0,
@@ -120,13 +120,13 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       selectors: {
         '& .ms-Button-icon': dismissalAndExpandIconStyle,
         ':hover': {
-          backgroundColor: 'transparent'
+          backgroundColor: 'transparent',
         },
         ':active': {
-          backgroundColor: 'transparent'
-        }
-      }
-    }
+          backgroundColor: 'transparent',
+        },
+      },
+    },
   ];
 
   return {
@@ -154,29 +154,29 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             ...fonts.small,
             selectors: {
               [HighContrastSelector]: {
-                MsHighContrastAdjust: 'auto'
-              }
-            }
+                MsHighContrastAdjust: 'auto',
+              },
+            },
           },
           [HighContrastSelector]: {
             background: getHighContrastRootBackground(messageBarType),
             border: '1px solid WindowText',
-            color: 'WindowText'
-          }
-        }
+            color: 'WindowText',
+          },
+        },
       },
       isMultiline && {
-        flexDirection: 'column'
+        flexDirection: 'column',
       },
-      className
+      className,
     ],
     content: [
       classNames.content,
       {
         display: 'flex',
         width: '100%',
-        lineHeight: 'normal'
-      }
+        lineHeight: 'normal',
+      },
     ],
     iconContainer: [
       classNames.iconContainer,
@@ -186,17 +186,17 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         minHeight: 16,
         display: 'flex',
         flexShrink: 0,
-        margin: '8px 0 8px 12px'
-      }
+        margin: '8px 0 8px 12px',
+      },
     ],
     icon: {
       color: getIconColor(messageBarType, palette, semanticColors),
       selectors: {
         [HighContrastSelector]: {
           MsHighContrastAdjust: 'none',
-          color: 'WindowText'
-        }
-      }
+          color: 'WindowText',
+        },
+      },
     },
     text: [
       classNames.text,
@@ -208,13 +208,13 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         ...fonts.small,
         selectors: {
           [HighContrastSelector]: {
-            MsHighContrastAdjust: 'none'
-          }
-        }
+            MsHighContrastAdjust: 'none',
+          },
+        },
       },
       !onDismiss && {
-        marginRight: 12
-      }
+        marginRight: 12,
+      },
     ],
     innerText: [
       classNames.innerText,
@@ -222,32 +222,32 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         lineHeight: 16,
         selectors: {
           '& span a': {
-            paddingLeft: 4
-          }
-        }
+            paddingLeft: 4,
+          },
+        },
       },
       truncated && {
         overflow: 'visible',
-        whiteSpace: 'pre-wrap'
+        whiteSpace: 'pre-wrap',
       },
       !isMultiline && {
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap'
+        whiteSpace: 'nowrap',
       },
       !isMultiline &&
         !truncated && {
           selectors: {
             [SmallScreenSelector]: {
               overflow: 'visible',
-              whiteSpace: 'pre-wrap'
-            }
-          }
+              whiteSpace: 'pre-wrap',
+            },
+          },
         },
       expandSingleLine && {
         overflow: 'visible',
-        whiteSpace: 'pre-wrap'
-      }
+        whiteSpace: 'pre-wrap',
+      },
     ],
     dismissSingleLine: [classNames.dismissSingleLine],
     expandSingleLine: [classNames.expandSingleLine],
@@ -265,17 +265,17 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         margin: '0 12px 0 8px',
         selectors: {
           '& button:nth-child(n+2)': {
-            marginLeft: 8
-          }
-        }
+            marginLeft: 8,
+          },
+        },
       },
       isMultiline && {
-        marginBottom: 8
+        marginBottom: 8,
       },
       onDismiss &&
         !isMultiline && {
-          marginRight: 0
-        }
-    ]
+          marginRight: 0,
+        },
+    ],
   };
 };

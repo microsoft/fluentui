@@ -27,7 +27,7 @@ describe('ContextMenuItemChildren', () => {
           index={1}
           hasIcons={undefined}
           onCheckmarkClick={onCheckmarkClick}
-        />
+        />,
       );
     });
 
@@ -66,7 +66,7 @@ describe('ContextMenuItemChildren', () => {
           index={1}
           hasIcons={undefined}
           onCheckmarkClick={onCheckmarkClick}
-        />
+        />,
       );
     });
 
@@ -160,6 +160,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu'
+    linkContentMenu: 'linkContentMenu',
   };
 }

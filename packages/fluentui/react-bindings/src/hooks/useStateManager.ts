@@ -26,12 +26,12 @@ const getDefinedProps = <Props extends Record<string, any>>(props: Props): Parti
 
 const useStateManager = <State extends Record<string, any>, Actions extends Record<string, AnyAction>>(
   managerFactory: ManagerFactory<State, Actions>,
-  options: UseStateManagerOptions<State> = {}
+  options: UseStateManagerOptions<State> = {},
 ): UseStateManagerResult<State, Actions> => {
   const {
     mapPropsToInitialState = () => ({} as Partial<State>),
     mapPropsToState = () => ({} as Partial<State>),
-    sideEffects = []
+    sideEffects = [],
   } = options;
   const latestActions = React.useMemo<Actions>(() => ({} as Actions), [managerFactory]);
   const latestManager = React.useRef<Manager<State, Actions> | null>(null);
@@ -50,8 +50,8 @@ const useStateManager = <State extends Record<string, any>, Actions extends Reco
       ...sideEffects,
       // `sideEffect` is called with two arguments, but hooks don't support the second callback
       // argument
-      () => forceUpdate()
-    ]
+      () => forceUpdate(),
+    ],
   });
 
   // We need to keep the same reference to an object with actions to allow usage them as
@@ -72,7 +72,7 @@ const useStateManager = <State extends Record<string, any>, Actions extends Reco
 
   return {
     state: process.env.NODE_ENV === 'production' ? latestManager.current.state : Object.freeze(latestManager.current.state),
-    actions: latestActions
+    actions: latestActions,
   };
 };
 

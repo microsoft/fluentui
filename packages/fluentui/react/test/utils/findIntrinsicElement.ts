@@ -1,6 +1,6 @@
-import { CommonWrapper, ReactWrapper } from 'enzyme'
+import { CommonWrapper, ReactWrapper } from 'enzyme';
 
 const findIntrinsicElement = (wrapper: ReactWrapper, selector: string): CommonWrapper =>
-  wrapper.find(selector).filterWhere(n => typeof n.type() === 'string')
+  wrapper.find(selector).filterWhere(n => typeof n.type() === 'string');
 
-export default findIntrinsicElement
+export default findIntrinsicElement;

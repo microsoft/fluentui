@@ -154,7 +154,7 @@ export class CalendarPage extends React.Component<{}, {}> {
                         (element.children[0] as HTMLButtonElement).disabled = true;
                       }
                     }
-                  }
+                  },
                 }}
               />
             </ExampleCard>

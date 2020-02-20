@@ -14,7 +14,7 @@ export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     const content: JSX.Element = (

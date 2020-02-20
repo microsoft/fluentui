@@ -9,6 +9,6 @@ export const Shimmer: React.FunctionComponent<IShimmerProps> = styled<IShimmerPr
   getStyles,
   undefined,
   {
-    scope: 'Shimmer'
-  }
+    scope: 'Shimmer',
+  },
 );

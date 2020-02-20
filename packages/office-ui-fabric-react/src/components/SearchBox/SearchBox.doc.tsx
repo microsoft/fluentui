@@ -21,33 +21,33 @@ export const SearchBoxPageProps: IDocPageProps = {
     {
       title: 'Default SearchBox',
       code: SearchBoxFullSizeExampleCode,
-      view: <SearchBoxFullSizeExample />
+      view: <SearchBoxFullSizeExample />,
     },
     {
       title: 'Underlined SearchBox',
       code: SearchBoxUnderlinedExampleCode,
-      view: <SearchBoxUnderlinedExample />
+      view: <SearchBoxUnderlinedExample />,
     },
     {
       title: 'Disabled SearchBoxes',
       code: SearchBoxDisabledExampleCode,
-      view: <SearchBoxDisabledExample />
+      view: <SearchBoxDisabledExample />,
     },
     {
       title: 'SearchBox with custom icon',
       code: SearchBoxCustomIconExampleCode,
-      view: <SearchBoxCustomIconExample />
+      view: <SearchBoxCustomIconExample />,
     },
     {
       title: 'SearchBox with fixed width and custom event handling',
       code: SearchBoxSmallExampleCode,
-      view: <SearchBoxSmallExample />
-    }
+      view: <SearchBoxSmallExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxOverview.md'),
   bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/SearchBox/docs/SearchBoxDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -14,18 +14,18 @@ const photoStackStyles: Partial<IStackStyles> = {
   root: {
     border: '1px solid black',
     padding: 10,
-    overflowY: 'auto'
+    overflowY: 'auto',
   },
   inner: {
-    padding: 0
-  }
+    padding: 0,
+  },
 };
 
 const photoCellClass = mergeStyles({
   display: 'block',
   boxSizing: 'border-box',
   width: 100,
-  height: 100
+  height: 100,
 });
 
 const DELAY = 10;
@@ -61,7 +61,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
       total: 0,
       announced: undefined,
       loading: false,
-      timeSinceLastAnnounce: 0
+      timeSinceLastAnnounce: 0,
     };
   }
 
@@ -84,7 +84,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
         if (timeSinceLastAnnounce === DELAY || total === PHOTO_COUNT) {
           this.setState({
             announced: <Announced message={`${total} of ${PHOTO_COUNT} photos loaded`} />,
-            timeSinceLastAnnounce: 0
+            timeSinceLastAnnounce: 0,
           });
 
           if (total === PHOTO_COUNT) {
@@ -150,7 +150,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
       return {
         url: `http://placehold.it/${width}x${height}`,
         width: width,
-        height: height
+        height: height,
       };
     });
     return result;

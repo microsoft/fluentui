@@ -26,7 +26,7 @@ const outputFiles = {
   Styles: pageNamePrefix + '.styles.ts',
   Types: pageNamePrefix + '.types.ts',
   Page: pageNamePrefix + '.ts',
-  PageBase: pageNamePrefix + '.base.tsx'
+  PageBase: pageNamePrefix + '.base.tsx',
 };
 
 // Markdown file paths
@@ -40,7 +40,7 @@ const markdownFiles = {
   Contact: pageDocsPath + newPageName + 'Contact.md',
   Custom: pageDocsPath + newPageName + 'Custom.md',
   Markdown: pageDocsPath + newPageName + 'Markdown.md',
-  Related: pageDocsPathRoot + newPageName + 'Related.md'
+  Related: pageDocsPathRoot + newPageName + 'Related.md',
 };
 
 // Error strings

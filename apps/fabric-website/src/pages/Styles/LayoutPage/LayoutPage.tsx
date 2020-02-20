@@ -25,7 +25,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <p>The grid and utilities use this common set of six breakpoints.</p>
               <Table content={breakpointsData} />
             </>
-          )
+          ),
         },
         {
           sectionName: 'Grid',
@@ -134,7 +134,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -231,8 +231,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
-        }
+          ),
+        },
       ];
   }
 }

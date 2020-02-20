@@ -332,6 +332,6 @@ function _defineGetter(obj: IColorClassNames, colorName: string, suffix: string,
       return mergeStyles(isHover ? { selectors: { ':hover': style } } : style).toString();
     },
     enumerable: true,
-    configurable: true
+    configurable: true,
   });
 }

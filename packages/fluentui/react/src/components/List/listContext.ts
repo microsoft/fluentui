@@ -29,9 +29,9 @@ export const ListContext = createContext<ListContextValue>(
     variables: {},
 
     onItemClick: () => {},
-    selectedIndex: -1
+    selectedIndex: -1,
   },
-  { strict: false }
+  { strict: false },
 );
 
 export const ListContextProvider = ListContext.Provider;

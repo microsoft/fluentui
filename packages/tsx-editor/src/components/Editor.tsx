@@ -18,7 +18,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
     onChange,
     debounceTime = 1000,
     ariaLabel,
-    editorOptions
+    editorOptions,
   } = props;
 
   // Hooks must be called unconditionally, so we have to create a backup ref here even if we
@@ -42,7 +42,7 @@ export const Editor: React.FunctionComponent<IEditorProps> = (props: IEditorProp
       accessibilityHelpUrl: 'https://github.com/Microsoft/monaco-editor/wiki/Monaco-Editor-Accessibility-Guide',
       // add editorOptions default value here (NOT in main destructuring) to avoid re-calling the effect
       ...(editorOptions || {}),
-      model
+      model,
     });
 
     // Handle changes (debounced)

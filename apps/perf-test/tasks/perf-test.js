@@ -233,7 +233,7 @@ module.exports = async function getPerfRegressions() {
     scenarios[scenarioName] = {
       // scenarios[scenarioName + index] = {
       baseline: `${urlForMaster}?scenario=${scenarioName}&iterations=${iterations}`,
-      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`
+      scenario: `${urlForDeploy}?scenario=${scenarioName}&iterations=${iterations}`,
     };
   });
   // });
@@ -304,7 +304,7 @@ function createReport(testResults) {
 function createScenarioTable(testResults, showAll) {
   const resultsToDisplay = Object.keys(testResults).filter(
     key =>
-      showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression)
+      showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression),
   );
 
   if (resultsToDisplay.length === 0) {
@@ -335,7 +335,7 @@ function createScenarioTable(testResults, showAll) {
            </tr>`;
       })
       .join('\n')
-      .concat(`</table>`)
+      .concat(`</table>`),
   );
 
   console.log('result: ' + result);

@@ -40,7 +40,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       selectedState: false,
       hoverState: false,
       isHoverCardVisible: false,
-      selecetedLegendInHoverCard: 'none'
+      selecetedLegendInHoverCard: 'none',
     };
   }
 
@@ -48,7 +48,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
     const dataToRender = this._generateData();
     return (
@@ -79,13 +79,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         shape: legend.shape,
-        key: index
+        key: index,
       };
       dataItems.push(legendItem);
     });
     const result: ILegendOverflowData = {
       primary: dataItems,
-      overflow: []
+      overflow: [],
     };
     return result;
   }
@@ -103,14 +103,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         styles={{
           root: {
             justifyContent: this.props.centerLegends ? 'center' : 'unset',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           },
           item: {
-            marginBottom: '16px'
+            marginBottom: '16px',
           },
           overflowButton: {
-            marginBottom: '16px'
-          }
+            marginBottom: '16px',
+          },
         }}
       />
     );
@@ -139,7 +139,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this.setState({
         selectedLegend: 'none',
         selectedState: false,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
       if (legend.action) {
         legend.action();
@@ -148,7 +148,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this.setState({
         selectedState: true,
         selectedLegend: legend.title,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
       if (legend.action) {
         legend.action();
@@ -184,24 +184,24 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { theme, className, styles } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
     const plainCardProps = {
       onRenderPlainCard: this._onRenderCompactCard,
       renderData: renderOverflowData,
-      gapSpace: 8
+      gapSpace: 8,
     };
 
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
       const selectedOverflowItem = find(
         legends,
-        (legend: ILegend) => legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend
+        (legend: ILegend) => legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend,
       );
       this.setState(
         {
           isHoverCardVisible: false,
-          selecetedLegendInHoverCard: 'none'
+          selecetedLegendInHoverCard: 'none',
         },
         () => {
           if (selectedOverflowItem) {
@@ -216,7 +216,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
               });
             });
           }
-        }
+        },
       );
     };
     return (
@@ -264,7 +264,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       shape: data.shape,
       action: data.action,
       hoverAction: data.hoverAction,
-      onMouseOutAction: data.onMouseOutAction
+      onMouseOutAction: data.onMouseOutAction,
     };
     const color = this._getColor(legend.title, legend.color);
     const { theme, className, styles } = this.props;
@@ -273,7 +273,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
       colorOnSelectedState: color,
       borderColor: legend.color,
-      overflow: overflow
+      overflow: overflow,
     });
 
     const onClickHandler = () => {

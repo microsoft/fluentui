@@ -7,6 +7,6 @@ export const PickersPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/pickers',
-    related
-  }
+    related,
+  },
 };

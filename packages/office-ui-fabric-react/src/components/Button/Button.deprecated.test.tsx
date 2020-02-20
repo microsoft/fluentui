@@ -40,7 +40,7 @@ describe('Button', () => {
       button = ReactTestUtils.renderIntoDocument<any>(
         <CompoundButton description="Some awesome description" ariaDescription="Description on icon button">
           And this is the label
-        </CompoundButton>
+        </CompoundButton>,
       );
       renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance);
       expect(renderedDOM.getAttribute('aria-label') === null);

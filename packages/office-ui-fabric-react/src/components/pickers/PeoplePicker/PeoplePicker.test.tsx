@@ -26,7 +26,7 @@ describe('PeoplePicker', () => {
 
   it('renders correctly with preselected items', () => {
     const component = renderer.create(
-      <NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={people.splice(0, 1)} />
+      <NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={people.splice(0, 1)} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -80,7 +80,7 @@ describe('PeoplePicker', () => {
         disabled={true}
         defaultSelectedItems={selectedPeople}
       />,
-      root
+      root,
     );
 
     const currentPicker = picker.current!.items;

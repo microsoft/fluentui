@@ -10,7 +10,7 @@ import {
   getId,
   isControlled,
   getNativeProps,
-  divProperties
+  divProperties,
 } from '../../Utilities';
 import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import { ChoiceGroupOption, IChoiceGroupOptionProps } from './ChoiceGroupOption/index';
@@ -49,7 +49,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
       warnMutuallyExclusive('ChoiceGroup', props, {
-        selectedKey: 'defaultSelectedKey'
+        selectedKey: 'defaultSelectedKey',
       });
     }
 
@@ -58,7 +58,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
       !_isControlled(props) && defaultSelectedKey !== undefined && options.some(option => option.key === defaultSelectedKey);
 
     this.state = {
-      keyChecked: validDefaultSelectedKey ? defaultSelectedKey : this._getKeyChecked(props)
+      keyChecked: validDefaultSelectedKey ? defaultSelectedKey : this._getKeyChecked(props),
     };
 
     this._id = getId('ChoiceGroup');
@@ -81,7 +81,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
 
       if (newKeyChecked !== oldKeyChecked) {
         this.setState({
-          keyChecked: newKeyChecked
+          keyChecked: newKeyChecked,
         });
       }
     }
@@ -96,7 +96,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc))
+      optionsContainIconOrImage: options.some(option => !!(option.iconProps || option.imageSrc)),
     });
 
     const labelId = this._id + '-label';
@@ -122,7 +122,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
                 id: this._getOptionId(option),
                 labelId: `${this._labelId}-${option.key}`,
                 name: name || this._id,
-                required
+                required,
               };
 
               return (
@@ -155,7 +155,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     if (!this._focusCallbacks[key]) {
       this._focusCallbacks[key] = (ev: React.FocusEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
         this.setState({
-          keyFocused: key
+          keyFocused: key,
         });
       };
     }
@@ -164,7 +164,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
 
   private _onBlur = (ev: React.FocusEvent<HTMLElement>, option: IChoiceGroupOption) => {
     this.setState({
-      keyFocused: undefined
+      keyFocused: undefined,
     });
   };
 
@@ -177,7 +177,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
         // Only manage state in uncontrolled scenarios.
         if (!_isControlled(this.props)) {
           this.setState({
-            keyChecked: key
+            keyChecked: key,
           });
         }
 

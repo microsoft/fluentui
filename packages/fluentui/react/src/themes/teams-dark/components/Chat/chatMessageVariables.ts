@@ -1,4 +1,4 @@
-import { ChatMessageVariables } from '../../../teams/components/Chat/chatMessageVariables'
+import { ChatMessageVariables } from '../../../teams/components/Chat/chatMessageVariables';
 
 export default (siteVars: any): Partial<ChatMessageVariables> => {
   return {
@@ -10,5 +10,5 @@ export default (siteVars: any): Partial<ChatMessageVariables> => {
     timestampColorMine: siteVars.colors.grey[250],
     hasMentionNubbinColor: siteVars.colors.orange[300],
     isImportantColor: siteVars.colors.red[300],
-  }
-}
+  };
+};

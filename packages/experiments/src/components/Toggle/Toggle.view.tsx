@@ -16,7 +16,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
     container: 'div',
     pill: 'button',
     thumb: 'div',
-    text: Label
+    text: Label,
   });
 
   // TODO: need to fix this._id usage. should _id come from state?

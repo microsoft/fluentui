@@ -7,7 +7,7 @@ module.exports = {
   resolveMergeStylesSerializer: () => resolveCwd('@uifabric/jest-serializer-merge-styles'),
   createRawConfig: () => ({
     rootDir: 'lib',
-    testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$'
+    testRegex: '(/__tests__/.*|\\.(test|spec))\\.js$',
   }),
   createConfig: customConfig =>
     merge(
@@ -15,11 +15,11 @@ module.exports = {
         moduleNameMapper: {
           'ts-jest': resolve.sync('ts-jest'),
           '\\.(scss)$': path.resolve(__dirname, 'jest-style-mock.js'),
-          KeyCodes: path.resolve(__dirname, 'jest-mock.js')
+          KeyCodes: path.resolve(__dirname, 'jest-mock.js'),
         },
 
         transform: {
-          '.(ts|tsx)': resolve.sync('ts-jest/dist')
+          '.(ts|tsx)': resolve.sync('ts-jest/dist'),
         },
 
         transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
@@ -37,12 +37,12 @@ module.exports = {
           'ts-jest': {
             tsConfig: path.resolve(process.cwd(), 'tsconfig.json'),
             packageJson: path.resolve(process.cwd(), 'package.json'),
-            diagnostics: false
-          }
+            diagnostics: false,
+          },
         },
 
-        testURL: 'http://localhost'
+        testURL: 'http://localhost',
       },
-      customConfig
-    )
+      customConfig,
+    ),
 };

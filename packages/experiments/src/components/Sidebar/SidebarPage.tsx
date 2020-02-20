@@ -9,8 +9,8 @@ const SidebarCollpasibleExampleCode = require('!raw-loader!@uifabric/experiments
 const exampleStyles: Partial<IExampleCardStyles> = {
   example: {
     height: 500,
-    paddingBottom: 0
-  }
+    paddingBottom: 0,
+  },
 };
 
 export class SidebarPage extends React.PureComponent<IComponentDemoPageProps> {

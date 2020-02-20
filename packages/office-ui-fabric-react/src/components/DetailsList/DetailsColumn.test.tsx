@@ -16,7 +16,7 @@ describe('DetailsColumn', () => {
       key: '1',
       name: 'Foo',
       minWidth: 20,
-      onColumnClick: mockOnColumnClick
+      onColumnClick: mockOnColumnClick,
     };
   });
 
@@ -35,7 +35,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -62,7 +62,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -89,7 +89,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -116,7 +116,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -143,7 +143,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(component.find('[aria-describedby]')).toHaveLength(1);
@@ -165,7 +165,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const ariaDescribedByEl = component
@@ -195,14 +195,14 @@ describe('DetailsColumn', () => {
             ...props,
             onRenderColumnHeaderTooltip: (tooltipProps: ITooltipHostProps, tooltipRenderer?: IRenderFunction<ITooltipHostProps>) => {
               return <TooltipHost {...tooltipProps} />;
-            }
+            },
           });
         }}
         // tslint:disable-next-line:jsx-no-lambda
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(component.exists('[aria-describedby]')).toBe(false);
@@ -224,7 +224,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);
@@ -249,7 +249,7 @@ describe('DetailsColumn', () => {
         componentRef={ref => (component = ref)}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     const columnHeader = component.find(DetailsColumn);

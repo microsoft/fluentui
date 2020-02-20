@@ -4,11 +4,11 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 10
+    childrenGap: 10,
   },
   headingStack: {
-    childrenGap: 5
-  }
+    childrenGap: 5,
+  },
 };
 
 export const TextWrapExample = () => (

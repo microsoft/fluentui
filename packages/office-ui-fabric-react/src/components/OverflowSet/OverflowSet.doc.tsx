@@ -18,18 +18,18 @@ export const OverflowSetPageProps: IDocPageProps = {
     {
       title: 'OverflowSet Basic Example',
       code: OverflowSetBasicExampleCode,
-      view: <OverflowSetBasicExample />
+      view: <OverflowSetBasicExample />,
     },
     {
       title: 'OverflowSet Vertical Example',
       code: OverflowSetVerticalExampleCode,
-      view: <OverflowSetVerticalExample />
+      view: <OverflowSetVerticalExample />,
     },
     {
       title: 'OverflowSet Custom Example',
       code: OverflowSetCustomExampleCode,
-      view: <OverflowSetCustomExample />
-    }
+      view: <OverflowSetCustomExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md'),
   bestPractices: '',
@@ -37,5 +37,5 @@ export const OverflowSetPageProps: IDocPageProps = {
   donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

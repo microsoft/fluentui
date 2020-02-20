@@ -18,5 +18,5 @@ export default migration(
       }
       return undefined;
     }).files;
-  }
+  },
 );

@@ -21,7 +21,7 @@ export const DialogPageProps: IDocPageProps = {
     {
       title: 'Default Dialog',
       code: DialogBasicExampleCode,
-      view: <DialogBasicExample />
+      view: <DialogBasicExample />,
     },
     {
       title: 'Dialog with large header and ChoiceGroup',
@@ -34,7 +34,7 @@ export const DialogPageProps: IDocPageProps = {
           </p>
           <DialogLargeHeaderExample />
         </>
-      )
+      ),
     },
     {
       title: 'Blocking Dialog',
@@ -48,7 +48,7 @@ export const DialogPageProps: IDocPageProps = {
           </p>
           <DialogBlockingExample />
         </>
-      )
+      ),
     },
     {
       title: 'Dialog with Top Offset Fixed',
@@ -61,18 +61,18 @@ export const DialogPageProps: IDocPageProps = {
           </p>
           <DialogTopOffsetFixedExample />
         </>
-      )
+      ),
     },
     {
       title: 'Modeless Dialog',
       code: DialogModelessExampleCode,
-      view: <DialogModelessExample />
-    }
+      view: <DialogModelessExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Dialog/docs/DialogDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

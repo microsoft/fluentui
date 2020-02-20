@@ -28,7 +28,7 @@ const outputFiles = {
   Types: componentPathNamePrefix + '.types.ts',
   TypesStateless: componentPathNamePrefix + '.types.ts',
   View: componentPathNamePrefix + '.view.tsx',
-  ViewTest: componentPathNamePrefix + '.view.test.tsx'
+  ViewTest: componentPathNamePrefix + '.view.test.tsx',
 };
 
 // Error strings
@@ -68,7 +68,7 @@ function createComponentFiles(sequence, stepIndex) {
       outputFiles[step],
       () => createComponentFiles(sequence, stepIndex + 1),
       errorUnableToOpenTemplate(mustacheTemplateName),
-      errorUnableToWriteFile(step)
+      errorUnableToWriteFile(step),
     );
   });
 }

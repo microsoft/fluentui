@@ -56,7 +56,7 @@ describe('MessageBar', () => {
         const wrapper = mount(
           <MessageBar aria-live={'polite'} isMultiline={false} className={'sampleClassName'}>
             Message
-          </MessageBar>
+          </MessageBar>,
         );
 
         const innerText = wrapper.find('.ms-MessageBar-innerText');
@@ -85,7 +85,7 @@ describe('MessageBar', () => {
         const wrapper = mount(
           <MessageBar aria-live={'polite'} isMultiline={true}>
             Message
-          </MessageBar>
+          </MessageBar>,
         );
 
         const innerText = wrapper.find('.ms-MessageBar-innerText');

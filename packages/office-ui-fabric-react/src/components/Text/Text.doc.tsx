@@ -19,23 +19,23 @@ export const TextPageProps: IDocPageProps = {
     {
       title: 'Text Ramp Example',
       code: TextRampExampleCode,
-      view: <TextRampExample />
+      view: <TextRampExample />,
     },
     {
       title: 'Text Wrap Example',
       code: TextWrapExampleCode,
-      view: <TextWrapExample />
+      view: <TextWrapExample />,
     },
     {
       title: 'Text Block Example',
       code: TextBlockExampleCode,
-      view: <TextBlockExample />
-    }
+      view: <TextBlockExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

@@ -5,7 +5,7 @@ import {
   FirstWeekOfYear,
   DateRangeType,
   ICalendarFormatDateCallbacks,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
 

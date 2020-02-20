@@ -29,48 +29,48 @@ export const TextFieldPageProps: IDocPageProps = {
     {
       title: 'Basic TextFields',
       code: TextFieldBasicExampleCode,
-      view: <TextFieldBasicExample />
+      view: <TextFieldBasicExample />,
     },
     {
       title: 'Controlled TextFields',
       code: TextFieldControlledExampleCode,
-      view: <TextFieldControlledExample />
+      view: <TextFieldControlledExample />,
     },
     {
       title: 'Multiline TextField',
       code: TextFieldMultilineExampleCode,
-      view: <TextFieldMultilineExample />
+      view: <TextFieldMultilineExample />,
     },
     {
       title: 'Underlined and borderless TextFields',
       code: TextFieldBorderlessExampleCode,
-      view: <TextFieldBorderlessExample />
+      view: <TextFieldBorderlessExample />,
     },
     {
       title: 'Customizable Masked TextField',
       code: TextFieldMaskedExampleCode,
-      view: <TextFieldMaskedExample />
+      view: <TextFieldMaskedExample />,
     },
     {
       title: 'TextField with prefix and/or suffix',
       code: TextFieldPrefixAndSuffixExampleCode,
-      view: <TextFieldPrefixAndSuffixExample />
+      view: <TextFieldPrefixAndSuffixExample />,
     },
     {
       title: 'TextFields with custom rendering',
       code: TextFieldCustomRenderExampleCode,
-      view: <TextFieldCustomRenderExample />
+      view: <TextFieldCustomRenderExample />,
     },
     {
       title: 'TextField error message variations',
       code: TextFieldErrorMessageExampleCode,
-      view: <TextFieldErrorMessageExample />
+      view: <TextFieldErrorMessageExample />,
     },
     {
       title: 'TextField subcomponent styling',
       code: TextFieldStyledExampleCode,
-      view: <TextFieldStyledExample />
-    }
+      view: <TextFieldStyledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
@@ -79,5 +79,5 @@ export const TextFieldPageProps: IDocPageProps = {
   isHeaderVisible: false,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: ['input', 'textarea']
+  nativePropsElement: ['input', 'textarea'],
 };

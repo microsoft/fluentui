@@ -1,9 +1,9 @@
-import { Toolbar } from '@fluentui/react'
-import * as React from 'react'
+import { Toolbar } from '@fluentui/react';
+import * as React from 'react';
 
 const ToolbarExampleMenuRadioGroup = () => {
-  const [activeIndex, setActiveIndex] = React.useState(0)
-  const [menuOpen, setMenuOpen] = React.useState()
+  const [activeIndex, setActiveIndex] = React.useState(0);
+  const [menuOpen, setMenuOpen] = React.useState();
 
   return (
     <Toolbar
@@ -32,12 +32,12 @@ const ToolbarExampleMenuRadioGroup = () => {
           ],
           menuOpen,
           onMenuOpenChange: (e, { menuOpen }) => {
-            setMenuOpen(menuOpen)
+            setMenuOpen(menuOpen);
           },
         },
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExampleMenuRadioGroup
+export default ToolbarExampleMenuRadioGroup;

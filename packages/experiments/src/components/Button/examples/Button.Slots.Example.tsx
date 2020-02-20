@@ -16,13 +16,13 @@ const menuProps: ISplitButtonProps['menu'] = {
   items: [
     {
       key: 'a',
-      name: 'Item a'
+      name: 'Item a',
     },
     {
       key: 'b',
-      name: 'Item b'
-    }
-  ]
+      name: 'Item b',
+    },
+  ],
 };
 
 const RibbonMenuButtonTokens: IMenuButtonTokens = {
@@ -32,7 +32,7 @@ const RibbonMenuButtonTokens: IMenuButtonTokens = {
   backgroundColorPressed: '#C8C6C4',
   backgroundColorExpandedPressed: '#C8C6C4',
   childrenGap: 0,
-  height: '100%'
+  height: '100%',
 };
 
 const RibbonMenuButtonVerticalTokens: IMenuButtonTokens = {
@@ -40,23 +40,23 @@ const RibbonMenuButtonVerticalTokens: IMenuButtonTokens = {
   contentPadding: '2px 4px 0px',
   iconSize: '32px',
   textSize: '12px',
-  minHeight: 0
+  minHeight: 0,
 };
 
 const RibbonMenuButtonVerticalStyles: IMenuButtonStyles = {
   root: {
-    flexDirection: 'column'
+    flexDirection: 'column',
   },
   icon: {
     marginBottom: 4,
-    padding: 4
+    padding: 4,
   },
   content: {
-    marginBottom: '-4px'
+    marginBottom: '-4px',
   },
   menuIcon: {
-    fontSize: '6px'
-  }
+    fontSize: '6px',
+  },
 };
 
 const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
@@ -65,7 +65,7 @@ const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
         ...props,
         menuIcon: 'ChevronDownSmall',
         styles: RibbonMenuButtonVerticalStyles,
-        tokens: RibbonMenuButtonVerticalTokens
+        tokens: RibbonMenuButtonVerticalTokens,
       }
     : { ...props, tokens: RibbonMenuButtonTokens };
 
@@ -77,7 +77,7 @@ const SplitMenuButtonVerticalTokens: ISplitButtonTokens = {
   contentPadding: 4,
   secondaryPadding: '0px 4px',
   iconSize: '32px',
-  textSize: '12px'
+  textSize: '12px',
 };
 
 const SplitMenuButtonVerticalStyles: ISplitRibbonMenuButtonProps['styles'] = (props, theme, tokens) => {
@@ -91,7 +91,7 @@ const SplitMenuButtonVerticalStyles: ISplitRibbonMenuButtonProps['styles'] = (pr
       borderLeftWidth: tokens.borderWidth,
       borderRightWidth: tokens.borderWidth,
       borderTopWidth: tokens.borderWidth,
-      width: '100%'
+      width: '100%',
     },
     menuButton: {
       borderBottomLeftRadius: tokens.borderRadius,
@@ -101,19 +101,19 @@ const SplitMenuButtonVerticalStyles: ISplitRibbonMenuButtonProps['styles'] = (pr
       borderBottomWidth: tokens.borderWidth,
       borderLeftWidth: tokens.borderWidth,
       borderRightWidth: tokens.borderWidth,
-      borderTopWidth: 0
+      borderTopWidth: 0,
     },
     splitDividerContainer: {
-      borderWidth: 0
-    }
+      borderWidth: 0,
+    },
   };
 };
 
 const SplitMenuButtonVerticalSlots: ISplitRibbonMenuButtonProps['slots'] = {
   menuButton: {
-    component: RibbonMenuButton
+    component: RibbonMenuButton,
   },
-  splitDivider: { render: () => null }
+  splitDivider: { render: () => null },
 };
 
 const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
@@ -122,8 +122,8 @@ const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
   const rootProps: React.DetailedHTMLProps<React.HtmlHTMLAttributes<any>, any> = {
     style: {
       alignItems: 'center',
-      flexDirection: 'column'
-    }
+      flexDirection: 'column',
+    },
   };
 
   // TODO: This cast is required because menu is required in IMenuButtonSlots.
@@ -139,7 +139,7 @@ const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
         menuButton: verticalMenuButtonProps,
         styles: SplitMenuButtonVerticalStyles,
         tokens: SplitMenuButtonVerticalTokens,
-        slots: SplitMenuButtonVerticalSlots
+        slots: SplitMenuButtonVerticalSlots,
       }
     : { ...rest, content, tokens: RibbonMenuButtonTokens };
 

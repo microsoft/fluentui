@@ -25,14 +25,14 @@ export const FocusZoneTabbableExample: React.FunctionComponent = () => {
                 {
                   key: 'emailMessage',
                   text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
+                  iconProps: { iconName: 'Mail' },
                 },
                 {
                   key: 'calendarEvent',
                   text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
+                  iconProps: { iconName: 'Calendar' },
+                },
+              ],
             }}
           />
         </Stack>

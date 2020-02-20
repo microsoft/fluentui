@@ -1,10 +1,10 @@
 export interface EmbedVariables {
-  controlColor: string
-  controlBackgroundColor: string
-  width: string
-  height: string
-  focusBorderColor: string
-  zIndex: number
+  controlColor: string;
+  controlBackgroundColor: string;
+  width: string;
+  height: string;
+  focusBorderColor: string;
+  zIndex: number;
 }
 
 export default (siteVariables): EmbedVariables => ({
@@ -15,4 +15,4 @@ export default (siteVariables): EmbedVariables => ({
   height: undefined,
   focusBorderColor: siteVariables.colors.brand[500],
   zIndex: siteVariables.zIndexes.foreground,
-})
+});

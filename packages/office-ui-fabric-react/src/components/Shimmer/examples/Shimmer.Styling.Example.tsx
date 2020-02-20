@@ -11,17 +11,17 @@ const customThemeForShimmer: ITheme = createTheme({
     // palette slot used in Shimmer for tip of the moving wave
     neutralLighter: '#7AAFE7',
     // palette slot used in Shimmer for all the space around the shimmering elements
-    white: '#0078D4'
-  }
+    white: '#0078D4',
+  },
 });
 
 const classNames = mergeStyleSets({
   wrapper: {
     selectors: {
       '& > .ms-Shimmer-container': {
-        margin: '10px 0'
-      }
-    }
+        margin: '10px 0',
+      },
+    },
   },
   themedBackgroundWrapper: {
     padding: 20,
@@ -34,9 +34,9 @@ const classNames = mergeStyleSets({
     background: customThemeForShimmer.palette.white, // using the palette color to match the gaps and borders of the shimmer.
     selectors: {
       '& > .ms-Shimmer-container': {
-        flexGrow: 1
-      }
-    }
+        flexGrow: 1,
+      },
+    },
   },
   themedBackgroundWrapper2: {
     width: 400,
@@ -47,11 +47,11 @@ const classNames = mergeStyleSets({
     justifyContent: 'center',
     background: customThemeForShimmer.palette.white, // using the palette color to match the gaps and borders of the shimmer.
     outline: `1px solid ${customThemeForShimmer.palette.neutralPrimary}`,
-    outlineOffset: '-10px'
+    outlineOffset: '-10px',
   },
   indent: {
-    paddingLeft: 18
-  }
+    paddingLeft: 18,
+  },
 });
 
 export class ShimmerStylingExample extends React.Component<{}, {}> {
@@ -74,7 +74,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
             shimmerColors={{
               shimmer: customThemeForShimmer.palette.themeTertiary,
               shimmerWave: customThemeForShimmer.palette.themeSecondary,
-              background: customThemeForShimmer.palette.white // to match the background color of the containing div
+              background: customThemeForShimmer.palette.white, // to match the background color of the containing div
             }}
             shimmerElements={[
               { type: ShimmerElementType.circle, height: 24 },
@@ -85,7 +85,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
               { type: ShimmerElementType.gap, width: '10%' },
               { type: ShimmerElementType.line, height: 16, width: '15%' },
               { type: ShimmerElementType.gap, width: '10%' },
-              { type: ShimmerElementType.line, height: 16 }
+              { type: ShimmerElementType.line, height: 16 },
             ]}
           />
         </div>
@@ -98,7 +98,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
             width={300}
             shimmerColors={{
               shimmer: customThemeForShimmer.palette.themeTertiary,
-              shimmerWave: customThemeForShimmer.palette.themeSecondary
+              shimmerWave: customThemeForShimmer.palette.themeSecondary,
             }}
           />
         </div>
@@ -132,7 +132,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
           backgroundColor={backgroundColor}
           shimmerElements={[
             { type: ShimmerElementType.circle, height: 40 },
-            { type: ShimmerElementType.gap, width: 16, height: 40 }
+            { type: ShimmerElementType.gap, width: 16, height: 40 },
           ]}
         />
         <ShimmerElementsGroup
@@ -142,7 +142,7 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
           shimmerElements={[
             { type: ShimmerElementType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
             { type: ShimmerElementType.line, width: '90%', height: 8 },
-            { type: ShimmerElementType.gap, width: '10%', height: 20 }
+            { type: ShimmerElementType.gap, width: '10%', height: 20 },
           ]}
         />
       </div>
@@ -153,15 +153,15 @@ export class ShimmerStylingExample extends React.Component<{}, {}> {
     return {
       shimmerWrapper: [
         {
-          backgroundColor: '#deecf9'
-        }
+          backgroundColor: '#deecf9',
+        },
       ],
       shimmerGradient: [
         {
           backgroundColor: '#deecf9',
-          backgroundImage: 'linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%)'
-        }
-      ]
+          backgroundImage: 'linear-gradient(to right, rgba(255, 255, 255, 0) 0%, #c7e0f4 50%, rgba(255, 255, 255, 0) 100%)',
+        },
+      ],
     };
   };
 }

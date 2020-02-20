@@ -8,7 +8,7 @@ import * as stylesImport from '../PeoplePicker.scss';
 
 export const SuggestionItemNormal: (persona: IPersonaProps, suggestionProps?: IBasePickerSuggestionsProps) => JSX.Element = (
   personaProps: IPersonaProps,
-  suggestionItemProps?: ISuggestionItemProps<IPersonaProps>
+  suggestionItemProps?: ISuggestionItemProps<IPersonaProps>,
 ) => {
   return (
     <div className={css('ms-PeoplePicker-personaContent', stylesImport.peoplePickerPersonaContent)}>

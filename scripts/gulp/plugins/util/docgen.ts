@@ -84,7 +84,7 @@ const defaultOptions: ts.CompilerOptions = {
   module: ts.ModuleKind.CommonJS,
   target: ts.ScriptTarget.Latest,
   allowUnusedLabels: true,
-  allowUnreachableCode: true
+  allowUnreachableCode: true,
 };
 
 const reactComponentSymbolNames = ['StatelessComponent', 'Stateless', 'StyledComponentClass', 'FunctionComponent'];
@@ -137,7 +137,7 @@ export function withCompilerOptions(compilerOptions: ts.CompilerOptions, parserO
     },
     parseWithProgramProvider(filePathOrPaths, programProvider) {
       return parseWithProgramProvider(filePathOrPaths, compilerOptions, parserOpts, programProvider);
-    }
+    },
   };
 }
 
@@ -150,7 +150,7 @@ interface JSDoc {
 const defaultJSDoc: JSDoc = {
   description: '',
   fullComment: '',
-  tags: {}
+  tags: {},
 };
 
 const defaultPropFilter = (prop, component) => {
@@ -191,7 +191,7 @@ export class Parser {
   public getComponentInfo(
     symbolParam: ts.Symbol,
     source: ts.SourceFile,
-    componentNameResolver: ComponentNameResolver = () => undefined
+    componentNameResolver: ComponentNameResolver = () => undefined,
   ): ComponentDoc | null {
     if (!!symbolParam.declarations && symbolParam.declarations.length === 0) {
       return null;
@@ -243,7 +243,7 @@ export class Parser {
       return {
         description,
         displayName,
-        props
+        props,
       };
     }
 
@@ -251,7 +251,7 @@ export class Parser {
       return {
         description,
         displayName,
-        props: {}
+        props: {},
       };
     }
 
@@ -340,7 +340,7 @@ export class Parser {
         name: propName,
         parent,
         required: !isOptional,
-        type: { name: propTypeString }
+        type: { name: propTypeString },
       };
     });
 
@@ -401,7 +401,7 @@ export class Parser {
     return {
       description: mainComment,
       fullComment: `${mainComment}\n${tagComments.join('\n')}`.trim(),
-      tags: tagMap
+      tags: tagMap,
     };
   }
 
@@ -684,7 +684,7 @@ function getParentType(prop: ts.Symbol): ParentType | undefined {
 
   return {
     fileName: trimmedFileName,
-    name: parentName
+    name: parentName,
   };
 }
 
@@ -696,7 +696,7 @@ function parseWithProgramProvider(
   filePathOrPaths: string | string[],
   compilerOptions: ts.CompilerOptions,
   parserOpts: ParserOptions,
-  programProvider?: () => ts.Program
+  programProvider?: () => ts.Program,
 ): ComponentDoc[] {
   const filePaths = Array.isArray(filePathOrPaths) ? filePathOrPaths : [filePathOrPaths];
 
@@ -722,7 +722,7 @@ function parseWithProgramProvider(
           .getExportsOfModule(moduleSymbol)
           .map(exp => parser.getComponentInfo(exp, sourceFile, parserOpts.componentNameResolver))
           .filter((comp): comp is ComponentDoc => comp !== null)
-          .filter((comp, index, comps) => comps.slice(index + 1).every(innerComp => innerComp!.displayName !== comp!.displayName))
+          .filter((comp, index, comps) => comps.slice(index + 1).every(innerComp => innerComp!.displayName !== comp!.displayName)),
       );
 
       return docs;

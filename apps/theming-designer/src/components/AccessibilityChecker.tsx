@@ -36,13 +36,13 @@ export const AccessibilityChecker: React.FunctionComponent<IAccessibilityChecker
         nonAccessiblePairs.push({
           contrastRatioValue: contrastRatioString,
           contrastRatioPair: currContrastRatioPair,
-          colorPair: colorPairString
+          colorPair: colorPairString,
         });
       } else {
         accessiblePairs.push({
           contrastRatioValue: contrastRatioString,
           contrastRatioPair: currContrastRatioPair,
-          colorPair: colorPairString
+          colorPair: colorPairString,
         });
       }
     }

@@ -45,7 +45,7 @@ let rootElement: HTMLElement;
 
 export function createSite<TPlatforms extends string>(
   siteDefinition: ISiteDefinition<TPlatforms>,
-  defaultRouteComponent?: React.ComponentType | React.ComponentType[]
+  defaultRouteComponent?: React.ComponentType | React.ComponentType[],
 ) {
   if (document.readyState === 'interactive' || document.readyState === 'complete') {
     _onLoad();
@@ -115,7 +115,7 @@ export function createSite<TPlatforms extends string>(
           <Route component={renderSite}>{_getSiteRoutes()}</Route>
         </Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 

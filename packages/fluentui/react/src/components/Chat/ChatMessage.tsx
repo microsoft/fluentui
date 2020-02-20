@@ -3,7 +3,7 @@ import {
   IS_FOCUSABLE_ATTRIBUTE,
   chatMessageBehavior,
   menuAsToolbarBehavior,
-  ChatMessageBehaviorProps
+  ChatMessageBehaviorProps,
 } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { useContextSelector } from '@fluentui/react-context-selector';
@@ -24,7 +24,7 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 import {
   WithAsProp,
@@ -33,7 +33,7 @@ import {
   withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import Label, { LabelProps } from '../Label/Label';
@@ -145,7 +145,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     timestamp,
     styles,
     variables,
-    unstable_overflow: overflow
+    unstable_overflow: overflow,
   } = props;
 
   const [focused, setFocused] = React.useState<boolean>(false);
@@ -170,8 +170,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
           messageNode.focus();
           event.stopPropagation();
         }
-      }
-    }
+      },
+    },
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
     className: ChatMessage.className,
@@ -181,15 +181,15 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       focused,
       mine,
       hasBadge: !!badge,
-      hasReactionGroup: !!reactionGroup
+      hasReactionGroup: !!reactionGroup,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleFocus = (e: React.SyntheticEvent) => {
@@ -219,8 +219,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
         [IS_FOCUSABLE_ATTRIBUTE]: true,
         accessibility: menuAsToolbarBehavior,
         className: ChatMessage.slotClassNames.actionMenu,
-        styles: resolvedStyles.actionMenu
-      })
+        styles: resolvedStyles.actionMenu,
+      }),
     });
 
     if (!actionMenuElement) {
@@ -228,7 +228,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     }
 
     const menuRect: DOMRect = (positionActionMenu && _.invoke(menuRef.current, 'getBoundingClientRect')) || {
-      height: 0
+      height: 0,
     };
     const messageRect: DOMRect = (positionActionMenu && _.invoke(messageNode, 'getBoundingClientRect')) || { height: 0 };
 
@@ -251,9 +251,9 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
               ...(overflow && {
                 boundariesElement: 'scrollParent',
                 escapeWithReference: true,
-                padding: { top: messageRect.height - menuRect.height }
-              })
-            }
+                padding: { top: messageRect.height - menuRect.height },
+              }),
+            },
           }
         }
         position="above"
@@ -278,15 +278,15 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   const badgeElement = Label.create(badge, {
     defaultProps: () => ({
       className: ChatMessage.slotClassNames.badge,
-      styles: resolvedStyles.badge
-    })
+      styles: resolvedStyles.badge,
+    }),
   });
 
   const reactionGroupElement = Reaction.Group.create(reactionGroup, {
     defaultProps: () => ({
       className: ChatMessage.slotClassNames.reactionGroup,
-      styles: resolvedStyles.reactionGroup
-    })
+      styles: resolvedStyles.reactionGroup,
+    }),
   });
 
   const actionMenuElement = renderActionMenu();
@@ -295,8 +295,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     defaultProps: () => ({
       size: 'small',
       styles: resolvedStyles.author,
-      className: ChatMessage.slotClassNames.author
-    })
+      className: ChatMessage.slotClassNames.author,
+    }),
   });
 
   const timestampElement = Text.create(timestamp, {
@@ -304,15 +304,15 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       size: 'small',
       styles: resolvedStyles.timestamp,
       timestamp: true,
-      className: ChatMessage.slotClassNames.timestamp
-    })
+      className: ChatMessage.slotClassNames.timestamp,
+    }),
   });
 
   const messageContent = Box.create(content, {
     defaultProps: () => ({
       className: ChatMessage.slotClassNames.content,
-      styles: resolvedStyles.content
-    })
+      styles: resolvedStyles.content,
+    }),
   });
 
   const element = (
@@ -325,7 +325,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
             onFocus: handleFocus,
             onMouseEnter: handleMouseEnter,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
-            ...unhandledProps
+            ...unhandledProps,
           })}
         >
           {childrenPropExists ? (
@@ -342,7 +342,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
               {badgePosition === 'end' && badgeElement}
             </>
           )}
-        </ElementType>
+        </ElementType>,
       )}
     </Ref>
   );
@@ -358,7 +358,7 @@ ChatMessage.defaultProps = {
   accessibility: chatMessageBehavior,
   badgePosition: 'end',
   positionActionMenu: true,
-  reactionGroupPosition: 'start'
+  reactionGroupPosition: 'start',
 };
 ChatMessage.propTypes = {
   ...commonPropTypes.createCommon({ content: 'shorthand' }),
@@ -375,7 +375,7 @@ ChatMessage.propTypes = {
   positionActionMenu: PropTypes.bool,
   reactionGroup: PropTypes.oneOfType([customPropTypes.collectionShorthand, customPropTypes.itemShorthand]),
   reactionGroupPosition: PropTypes.oneOf(['start', 'end']),
-  unstable_overflow: PropTypes.bool
+  unstable_overflow: PropTypes.bool,
 };
 ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
@@ -386,7 +386,7 @@ ChatMessage.slotClassNames = {
   timestamp: `${ChatMessage.className}__timestamp`,
   badge: `${ChatMessage.className}__badge`,
   content: `${ChatMessage.className}__content`,
-  reactionGroup: `${ChatMessage.className}__reactions`
+  reactionGroup: `${ChatMessage.className}__reactions`,
 };
 
 /**

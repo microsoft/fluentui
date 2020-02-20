@@ -49,19 +49,19 @@ const imageBehavior: Accessibility<{ disabled: boolean }> = props => ({
   attributes: {
     root: {
       'aria-disabled': props.disabled,
-      tabIndex: -1
+      tabIndex: -1,
     },
     img: {
-      role: 'presentation'
-    }
+      role: 'presentation',
+    },
   },
   keyActions: {
     root: {
       click: {
-        keyCombinations: [{ keyCode: 13 /* equals Enter */ }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: 13 /* equals Enter */ }],
+      },
+    },
+  },
 });
 
 type ImageProps = {
@@ -74,13 +74,13 @@ const Image: React.FC<ImageProps> = props => {
   const { disabled, onClick, src, ...rest } = props;
   const getA11Props = useAccessibility(imageBehavior, {
     mapPropsToBehavior: () => ({
-      disabled
+      disabled,
     }),
     actionHandlers: {
       click: (e: React.KeyboardEvent<HTMLDivElement>) => {
         if (onClick) onClick(e);
-      }
-    }
+      },
+    },
   });
 
   return (
@@ -109,7 +109,7 @@ type InputProps = {
 const Input: React.FC<InputProps> = props => {
   const [value, setValue] = useAutoControlled({
     defaultValue: props.defaultValue,
-    value: props.value
+    value: props.value,
   });
 
   return (
@@ -145,15 +145,15 @@ const createInputManager: ManagerFactory<InputState, InputActions> = config =>
   createManager<InputState, InputActions>({
     ...config,
     actions: {
-      change: (value: string) => () => ({ value })
+      change: (value: string) => () => ({ value }),
     },
-    state: { value: '', ...config.state }
+    state: { value: '', ...config.state },
   });
 
 const Input: React.FC<InputProps> = props => {
   const { state, actions } = useStateManager(createInputManager, {
     mapPropsToInitialState: () => ({ value: props.defaultValue }),
-    mapPropsToState: () => ({ value: props.value })
+    mapPropsToState: () => ({ value: props.value }),
   });
 
   return (
@@ -201,7 +201,7 @@ const Text: React.FunctionComponent<TextComponentProps> = props => {
 
   const { classes } = useStyles('Text', {
     className: 'ui-text',
-    mapPropsToStyles: () => ({ color })
+    mapPropsToStyles: () => ({ color }),
   });
 
   return <span className={classes.root}>{children}</span>;

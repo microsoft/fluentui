@@ -10,7 +10,7 @@ const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardS
  */
 export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
-    type: DocumentCardType.normal
+    type: DocumentCardType.normal,
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
@@ -20,7 +20,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
     super(props);
 
     this._warnDeprecations({
-      accentColor: undefined
+      accentColor: undefined,
     });
   }
 
@@ -30,7 +30,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
       'className',
       'onClick',
       'type',
-      'role'
+      'role',
     ]);
     const actionable = onClick || onClickHref ? true : false;
 
@@ -38,14 +38,14 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
       theme: theme!,
       className,
       actionable,
-      compact: type === DocumentCardType.compact ? true : false
+      compact: type === DocumentCardType.compact ? true : false,
     });
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
     if (type === DocumentCardType.compact && accentColor) {
       style = {
-        borderBottomColor: accentColor
+        borderBottomColor: accentColor,
       };
     }
 

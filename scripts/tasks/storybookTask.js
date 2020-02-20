@@ -22,7 +22,7 @@ module.exports.startStorybookTask = function startStorybookTask(options) {
       configDir: path.join(process.cwd(), '.storybook'),
       port: port || 3000,
       quiet,
-      ci
+      ci,
     });
   };
 };
@@ -43,7 +43,7 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
       outputDir: path.join(process.cwd(), 'dist-storybook'),
       quiet,
       port: port || 3000,
-      ci
+      ci,
     });
   };
 };

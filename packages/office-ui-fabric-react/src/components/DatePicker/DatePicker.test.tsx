@@ -30,7 +30,7 @@ describe('DatePicker', () => {
 
     isRequiredErrorMessage: 'Field is required.',
 
-    invalidInputErrorMessage: 'Invalid date format.'
+    invalidInputErrorMessage: 'Invalid date format.',
   };
 
   beforeEach(() => {
@@ -76,7 +76,7 @@ describe('DatePicker', () => {
       datePicker
         .find('[aria-owns]')
         .getDOMNode()
-        .getAttribute('aria-owns')
+        .getAttribute('aria-owns'),
     ).toBeDefined();
 
     datePicker.setState({ isDatePickerShown: false });
@@ -204,9 +204,9 @@ describe('DatePicker', () => {
       <PrimaryButton
         menuAs={menu}
         menuProps={{
-          items: []
+          items: [],
         }}
-      />
+      />,
     );
     wrapper.simulate('click');
     let callout = wrapper.find(Callout);
@@ -252,7 +252,7 @@ describe('DatePicker', () => {
     // initialPickerDate defaults to Date.now() if not provided so it must be given to ensure
     // that the datepicker opens on the correct month
     const datePicker = mount(
-      <DatePickerBase allowTextInput={true} today={today} formatDate={onFormatDate} initialPickerDate={initiallySelectedDate} />
+      <DatePickerBase allowTextInput={true} today={today} formatDate={onFormatDate} initialPickerDate={initiallySelectedDate} />,
     );
 
     datePicker.setState({ isDatePickerShown: true });
@@ -311,7 +311,7 @@ describe('DatePicker', () => {
       formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => 'm/d/y',
       formatMonthYear: (date: Date, strings?: ICalendarStrings) => 'm/y',
       formatDay: (date: Date) => 'd',
-      formatYear: (date: Date) => 'y'
+      formatYear: (date: Date) => 'y',
     };
 
     const datePicker = shallow(
@@ -326,7 +326,7 @@ describe('DatePicker', () => {
         firstWeekOfYear={FirstWeekOfYear.FirstFullWeek}
         showGoToToday={false}
         dateTimeFormatter={dateTimeFormatter}
-      />
+      />,
     );
     datePicker.setState({ isDatePickerShown: true });
 
@@ -385,13 +385,13 @@ describe('DatePicker', () => {
       days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
       goToToday: 'Go to today',
-      isOutOfBoundsErrorMessage: 'out of bounds'
+      isOutOfBoundsErrorMessage: 'out of bounds',
     };
     let datePicker: ReactWrapper<any, any>;
 
     beforeEach(() => {
       datePicker = mount(
-        <DatePickerBase allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />
+        <DatePickerBase allowTextInput={true} minDate={minDate} maxDate={maxDate} value={defaultDate} strings={strings} />,
       );
     });
 

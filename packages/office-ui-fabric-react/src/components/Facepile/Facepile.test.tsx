@@ -14,19 +14,19 @@ const facepilePersonas: IFacepilePersona[] = [
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Annie Lindqvist',
-    data: '50%'
+    data: '50%',
   },
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Aaron Reid',
-    data: '$1,000'
+    data: '$1,000',
   },
   {
     personaName: 'Alex Lundberg',
     data: '75%',
     onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) =>
-      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data)
-  }
+      alert('You clicked on ' + persona.personaName + '. Extra data: ' + persona.data),
+  },
 ];
 
 describe('Facepile', () => {
@@ -76,7 +76,7 @@ describe('Facepile', () => {
         maxDisplayablePersonas={5}
         overflowButtonProps={{}}
         overflowButtonType={OverflowButtonType.descriptive}
-      />
+      />,
     );
     expectOne(wrapper, '.ms-Facepile-descriptiveOverflowButton');
     expect(findNodes(wrapper, '.ms-Facepile-itemButton').length).toEqual(6);
@@ -92,7 +92,7 @@ describe('Facepile', () => {
         maxDisplayablePersonas={maxDisplayablePersonas}
         overflowButtonProps={{}}
         overflowButtonType={OverflowButtonType.descriptive}
-      />
+      />,
     );
 
     const overflowPersonasTitle = personas
@@ -103,7 +103,7 @@ describe('Facepile', () => {
     expect(
       findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
         .getDOMNode()
-        .attributes.getNamedItem('title')
+        .attributes.getNamedItem('title'),
     ).toHaveProperty('value', overflowPersonasTitle);
   });
 
@@ -116,18 +116,18 @@ describe('Facepile', () => {
         maxDisplayablePersonas={5}
         overflowButtonProps={{ title }}
         overflowButtonType={OverflowButtonType.descriptive}
-      />
+      />,
     );
     expect(
       findNodes(wrapper, '.ms-Facepile-descriptiveOverflowButton')
         .getDOMNode()
-        .attributes.getNamedItem('title')
+        .attributes.getNamedItem('title'),
     ).toHaveProperty('value', title);
   });
 
   it('renders no more than maximum allowed personas', () => {
     const wrapper = mount(
-      <Facepile personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)} maxDisplayablePersonas={2} />
+      <Facepile personas={facepilePersonas.concat(facepilePersonas, facepilePersonas, facepilePersonas)} maxDisplayablePersonas={2} />,
     );
     expect(findNodes(wrapper, '.ms-Facepile-itemButton').length).toEqual(2);
   });
@@ -140,8 +140,8 @@ describe('Facepile', () => {
         onClick: (ev: React.MouseEvent<HTMLElement>, persona: IFacepilePersona) => {
           clicked++;
           ev.preventDefault();
-        }
-      }
+        },
+      },
     ];
 
     const wrapper = mount(<Facepile personas={personas} />);
@@ -161,7 +161,7 @@ describe('Facepile', () => {
         showAddButton={true}
         overflowButtonProps={{}}
         overflowButtonType={OverflowButtonType.downArrow}
-      />
+      />,
     );
 
     expectOne(wrapper, '.ms-Facepile-addButton .ms-Persona-coin.ms-Persona--size32');

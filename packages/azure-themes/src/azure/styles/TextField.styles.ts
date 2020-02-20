@@ -9,36 +9,36 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
   return {
     fieldGroup: [
       !multiline && {
-        height: StyleConstants.inputControlHeight
+        height: StyleConstants.inputControlHeight,
       },
       focused && {
-        borderColor: semanticColors.focusBorder
+        borderColor: semanticColors.focusBorder,
       },
       disabled && {
-        borderColor: semanticColors.disabledBodyText
+        borderColor: semanticColors.disabledBodyText,
       },
       hasErrorMessage && [
         {
-          borderWidth: StyleConstants.borderWidthError
+          borderWidth: StyleConstants.borderWidthError,
         },
         focused && {
           borderColor: semanticColors.focusBorder,
           selectors: {
             '&:focus, &:hover': {
-              borderColor: semanticColors.focusBorder
-            }
-          }
-        }
-      ]
+              borderColor: semanticColors.focusBorder,
+            },
+          },
+        },
+      ],
     ],
     icon: {
-      bottom: 2
+      bottom: 2,
     },
     prefix: {
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size12,
     },
     suffix: {
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size12,
     },
     field: [
       {
@@ -48,25 +48,25 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         selectors: {
           '::placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           ':-ms-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           '::-webkit-input-placeholder': {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
-          }
-        }
+            fontStyle: 'italic',
+          },
+        },
       },
       disabled && {
         color: semanticColors.disabledBodyText,
-        backgroundColor: semanticColors.disabledBackground
-      }
+        backgroundColor: semanticColors.disabledBackground,
+      },
     ],
     errorMessage: {
-      color: semanticColors.errorText
-    }
+      color: semanticColors.errorText,
+    },
   };
 };

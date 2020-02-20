@@ -24,7 +24,7 @@ function onResolveSuggestions(text: string): ISimple[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map((item: string) => ({ key: item, name: item }));
@@ -58,7 +58,7 @@ describe('Pickers', () => {
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
           suggestionsStore={new SuggestionsStore<ISimple>()}
-        />
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -78,7 +78,7 @@ describe('Pickers', () => {
           onZeroQuerySuggestion={onZeroQuerySuggestion}
           inputElement={input}
         />,
-        root
+        root,
       ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'a';
@@ -105,7 +105,7 @@ describe('Pickers', () => {
           suggestionsStore={new SuggestionsStore<ISimple>()}
           inputElement={input}
         />,
-        root
+        root,
       ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'b';

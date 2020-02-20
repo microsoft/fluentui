@@ -11,7 +11,7 @@ export interface IDialogTopOffsetFixedExampleState {
 export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopOffsetFixedExampleState> {
   public state: IDialogTopOffsetFixedExampleState = {
     hideDialog: true,
-    optionSelected: 'A'
+    optionSelected: 'A',
   };
 
   public render() {
@@ -26,7 +26,7 @@ export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopO
           onDismiss={this._closeDialog}
           modalProps={{
             isBlocking: true,
-            topOffsetFixed: true
+            topOffsetFixed: true,
           }}
         >
           <ChoiceGroup
@@ -36,20 +36,20 @@ export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopO
                 key: 'A',
                 iconProps: { iconName: 'CalendarDay' },
                 text: 'Day',
-                checked: optionSelected === 'A'
+                checked: optionSelected === 'A',
               },
               {
                 key: 'B',
                 iconProps: { iconName: 'CalendarWeek' },
                 text: 'Week',
-                checked: optionSelected === 'B'
+                checked: optionSelected === 'B',
               },
               {
                 key: 'C',
                 iconProps: { iconName: 'Calendar' },
                 text: 'Month',
-                checked: optionSelected === 'C'
-              }
+                checked: optionSelected === 'C',
+              },
             ]}
             onChange={this._onChange}
             required={true}

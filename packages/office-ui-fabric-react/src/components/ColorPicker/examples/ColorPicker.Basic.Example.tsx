@@ -4,16 +4,16 @@ import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const classNames = mergeStyleSets({
   wrapper: { display: 'flex' },
-  column2: { marginLeft: 10 }
+  column2: { marginLeft: 10 },
 });
 
 const colorPickerStyles: Partial<IColorPickerStyles> = {
   panel: { padding: 12 },
   root: {
     maxWidth: 352,
-    minWidth: 352
+    minWidth: 352,
   },
-  colorRectangle: { height: 268 }
+  colorRectangle: { height: 268 },
 };
 
 export interface IBasicColorPickerExampleState {
@@ -26,7 +26,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
   public state: IBasicColorPickerExampleState = {
     color: getColorFromString('#ffffff')!,
     alphaSliderHidden: false,
-    showPreview: true
+    showPreview: true,
   };
 
   public render(): JSX.Element {
@@ -44,7 +44,7 @@ export class ColorPickerBasicExample extends React.Component<{}, IBasicColorPick
           // Below are the recommended aria labels for the hue and alpha slider
           strings={{
             alphaAriaLabel: 'Alpha Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
-            hueAriaLabel: 'Hue Slider: Use left and right arrow keys to change value, hold shift for a larger jump'
+            hueAriaLabel: 'Hue Slider: Use left and right arrow keys to change value, hold shift for a larger jump',
           }}
         />
 

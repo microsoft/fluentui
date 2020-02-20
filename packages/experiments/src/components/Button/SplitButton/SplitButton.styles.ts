@@ -18,7 +18,7 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
     highContrastDividerColor: 'Window',
     minHeight: 35,
     minWidth: 0,
-    secondaryPadding: '0px 10px'
+    secondaryPadding: '0px 10px',
   };
 };
 
@@ -35,7 +35,7 @@ const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBut
     highContrastBackgroundColorHovered: 'Highlight',
     highContrastBackgroundColorPressed: 'Highlight',
     highContrastColor: 'Window',
-    highContrastDividerColor: 'WindowText'
+    highContrastDividerColor: 'WindowText',
   };
 };
 
@@ -55,18 +55,18 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
     highContrastBackgroundColorPressed: 'Window',
     highContrastBorderColor: 'GrayText',
     highContrastColor: 'GrayText',
-    highContrastDividerColor: 'GrayText'
+    highContrastDividerColor: 'GrayText',
   };
 };
 
 export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
 const GlobalClassNames = {
-  msSplitButton: 'ms-SplitButton'
+  msSplitButton: 'ms-SplitButton',
 };
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
@@ -87,16 +87,16 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'transparent'
+            borderColor: 'transparent',
           },
           ':hover': {
-            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
           },
           ':active': {
-            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
-          }
-        }
-      }
+            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
+          },
+        },
+      },
     ],
     button: {
       borderBottomLeftRadius: tokens.borderRadius,
@@ -112,7 +112,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
       selectors: {
         '+ *': {
-          backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColor
+          backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColor,
         },
         ':hover': {
           borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
@@ -123,11 +123,11 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
               selectors: {
                 [HighContrastSelector]: {
-                  backgroundColor: tokens.highContrastBackgroundColorHovered
-                }
-              }
-            }
-          }
+                  backgroundColor: tokens.highContrastBackgroundColorHovered,
+                },
+              },
+            },
+          },
         },
         ':active': {
           borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
@@ -138,13 +138,13 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
               selectors: {
                 [HighContrastSelector]: {
-                  backgroundColor: tokens.highContrastBackgroundColorPressed
-                }
-              }
-            }
-          }
-        }
-      }
+                  backgroundColor: tokens.highContrastBackgroundColorPressed,
+                },
+              },
+            },
+          },
+        },
+      },
     },
     splitDividerContainer: {
       borderBottomColor: tokens.borderColor,
@@ -163,15 +163,15 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       selectors: {
         [HighContrastSelector]: {
           backgroundColor: tokens.highContrastDividerColor,
-          borderColor: tokens.highContrastBorderColor
+          borderColor: tokens.highContrastBorderColor,
         },
         ':hover': {
-          borderColor: tokens.borderColorHovered
+          borderColor: tokens.borderColorHovered,
         },
         ':active': {
-          borderColor: tokens.borderColorPressed
-        }
-      }
+          borderColor: tokens.borderColorPressed,
+        },
+      },
     },
     splitDivider: {
       backgroundColor: props.primaryActionDisabled ? semanticColors.menuDivider : tokens.dividerColor,
@@ -182,9 +182,9 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: tokens.highContrastDividerColor
-        }
-      }
+          backgroundColor: tokens.highContrastDividerColor,
+        },
+      },
     },
     menuButton: {
       borderBottomLeftRadius: '0px',
@@ -197,7 +197,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderRightWidth: tokens.borderWidth,
       borderTopWidth: tokens.borderWidth,
       boxSizing: 'border-box',
-      height: '100%'
-    }
+      height: '100%',
+    },
   };
 };

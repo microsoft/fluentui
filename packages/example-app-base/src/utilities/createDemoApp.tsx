@@ -13,9 +13,9 @@ initializeIcons();
 mergeStyles({
   selectors: {
     ':global(html), :global(body)': {
-      WebkitTapHighlightColor: 'transparent'
-    }
-  }
+      WebkitTapHighlightColor: 'transparent',
+    },
+  },
 });
 
 export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent) {
@@ -32,7 +32,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
       <Fabric>
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
@@ -52,7 +52,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     routes.push(
       <Route key="app" component={App}>
         {appRoutes}
-      </Route>
+      </Route>,
     );
 
     return routes;

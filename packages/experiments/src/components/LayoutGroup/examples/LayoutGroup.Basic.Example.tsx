@@ -29,7 +29,7 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
               { key: 'G', text: 'Option g' },
               { key: 'H', text: 'Option h' },
               { key: 'I', text: 'Option i' },
-              { key: 'J', text: 'Option j' }
+              { key: 'J', text: 'Option j' },
             ]}
           />
           <LayoutGroup layoutGap={20} direction="horizontal" justify="fill">
@@ -43,22 +43,22 @@ export class LayoutGroupBasicExample extends React.Component<{}, {}> {
               options={[
                 {
                   key: 'A',
-                  text: 'Option A'
+                  text: 'Option A',
                 },
                 {
                   key: 'B',
-                  text: 'Option B'
+                  text: 'Option B',
                 },
                 {
                   key: 'C',
                   text: 'Option C',
-                  disabled: true
+                  disabled: true,
                 },
                 {
                   key: 'D',
                   text: 'Option D',
-                  disabled: true
-                }
+                  disabled: true,
+                },
               ]}
               label="Pick one"
               required={true}

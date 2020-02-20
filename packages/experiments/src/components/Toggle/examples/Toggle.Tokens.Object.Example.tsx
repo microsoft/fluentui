@@ -3,20 +3,20 @@ import { IToggleTokens, Toggle } from '@uifabric/experiments';
 
 const tokens1: IToggleTokens = {
   pillHoveredBackground: 'black',
-  textColor: 'red'
+  textColor: 'red',
 };
 
 const tokens2: IToggleTokens = {
   pillBackground: 'orange',
   pillJustifyContent: 'center',
   textColor: 'purple',
-  thumbBackground: 'green'
+  thumbBackground: 'green',
 };
 
 const tokens3: IToggleTokens = {
   pillBackground: 'dimgrey',
   pillBorderColor: 'brown',
-  textColor: 'darkred'
+  textColor: 'darkred',
 };
 
 export class ToggleTokensObjectExample extends React.Component<{}, {}> {

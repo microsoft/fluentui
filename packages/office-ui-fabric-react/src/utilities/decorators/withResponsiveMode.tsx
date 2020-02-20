@@ -14,7 +14,7 @@ export enum ResponsiveMode {
   xLarge = 3,
   xxLarge = 4,
   xxxLarge = 5,
-  unknown = 999
+  unknown = 999,
 }
 
 const RESPONSIVE_MAX_CONSTRAINT = [479, 639, 1023, 1365, 1919, 99999999];
@@ -38,7 +38,7 @@ export function setResponsiveMode(responsiveMode: ResponsiveMode | undefined): v
 }
 
 export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveMode }, TState>(
-  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
+  ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>,
 ): any {
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
     constructor(props: TProps) {
@@ -46,7 +46,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {
-        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large
+        responsiveMode: _defaultMode || _lastMode || ResponsiveMode.large,
       };
     }
 
@@ -72,7 +72,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
 
       if (responsiveMode !== this.state.responsiveMode) {
         this.setState({
-          responsiveMode: responsiveMode
+          responsiveMode: responsiveMode,
         });
       }
     };
@@ -101,7 +101,7 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
         } else {
           throw new Error(
             'Content was rendered in a server environment without providing a default responsive mode. ' +
-              'Call setResponsiveMode to define what the responsive mode is.'
+              'Call setResponsiveMode to define what the responsive mode is.',
           );
         }
       }

@@ -18,7 +18,7 @@ export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> i
     super(props);
 
     this.state = {
-      isContentVisible: false
+      isContentVisible: false,
     };
   }
 

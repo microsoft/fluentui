@@ -18,7 +18,7 @@ export interface IHeaderState {
 }
 
 const outputPanelClassName = mergeStyles({
-  display: 'flex'
+  display: 'flex',
 });
 
 const textAreaClassName = mergeStyles({
@@ -26,12 +26,12 @@ const textAreaClassName = mergeStyles({
   width: '100%',
   marginRight: 28,
   backgroundColor: 'white',
-  color: '#333'
+  color: '#333',
 });
 
 const microsoftLogo = mergeStyles({
   width: '120px',
-  display: 'block'
+  display: 'block',
 });
 
 const pipeFabricStyles = (p: ILinkStyleProps): ILinkStyles => ({
@@ -39,8 +39,8 @@ const pipeFabricStyles = (p: ILinkStyleProps): ILinkStyles => ({
     textDecoration: 'none',
     color: p.theme.semanticColors.bodyText,
     fontWeight: '600',
-    fontSize: p.theme.fonts.medium.fontSize
-  }
+    fontSize: p.theme.fonts.medium.fontSize,
+  },
 });
 
 const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
@@ -48,8 +48,8 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
     backgroundColor: theme.semanticColors.bodyBackground,
     minHeight: 47,
     padding: '0 32px',
-    boxShadow: theme.effects.elevation16
-  }
+    boxShadow: theme.effects.elevation16,
+  },
 });
 
 const codepenHeader = `const { createTheme, Customizations, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n`;
@@ -74,7 +74,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
       showPanel: false,
       jsonTheme: '',
       powershellTheme: '',
-      themeAsCode: <div />
+      themeAsCode: <div />,
     };
   }
 
@@ -150,7 +150,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     this.setState({
       jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
       powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
-      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme)
+      themeAsCode: ThemeGenerator.getThemeAsCodeWithCreateTheme(abridgedTheme),
     });
   };
 

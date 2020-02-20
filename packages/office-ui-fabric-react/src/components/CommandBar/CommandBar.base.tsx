@@ -39,7 +39,7 @@ export interface ICommandBarData {
 export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
-    overflowItems: []
+    overflowItems: [],
   };
 
   private _overflowSet = React.createRef<IOverflowSet>();
@@ -55,7 +55,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       theme,
       dataDidRender,
       onReduceData = this._onReduceData,
-      onGrowData = this._onGrowData
+      onGrowData = this._onGrowData,
     } = this.props;
 
     const commandBarData: ICommandBarData = {
@@ -63,7 +63,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       overflowItems: [...overflowItems!],
       minimumOverflowItems: [...overflowItems!].length, // for tracking
       farItems,
-      cacheKey: ''
+      cacheKey: '',
     };
 
     this._classNames = getClassNames(styles!, { theme: theme! });
@@ -137,10 +137,10 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
     const itemText = item.text || item.name;
     const rootStyles: IStyle = {
-      height: '100%'
+      height: '100%',
     };
     const labelStyles: IStyle = {
-      whiteSpace: 'nowrap'
+      whiteSpace: 'nowrap',
     };
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
@@ -149,12 +149,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       styles: {
         ...item.buttonStyles,
         root: item.buttonStyles ? mergeStyles(rootStyles, item.buttonStyles.root) : rootStyles,
-        label: item.buttonStyles ? mergeStyles(labelStyles, item.buttonStyles.label) : labelStyles
+        label: item.buttonStyles ? mergeStyles(labelStyles, item.buttonStyles.label) : labelStyles,
       },
       className: css('ms-CommandBarItem-link', item.className),
       text: !item.iconOnly ? itemText : undefined,
       menuProps: item.subMenuProps,
-      onClick: this._onButtonClick(item)
+      onClick: this._onButtonClick(item),
     };
 
     if (item.iconOnly && itemText !== undefined) {
@@ -202,12 +202,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
 
   private _onRenderOverflowButton = (overflowItems: ICommandBarItemProps[]): JSX.Element => {
     const {
-      overflowButtonProps = {} // assure that props is not empty
+      overflowButtonProps = {}, // assure that props is not empty
     } = this.props;
 
     const combinedOverflowItems: ICommandBarItemProps[] = [
       ...(overflowButtonProps.menuProps ? overflowButtonProps.menuProps.items : []),
-      ...overflowItems
+      ...overflowItems,
     ];
 
     const overflowProps: IButtonProps = {
@@ -216,7 +216,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       styles: { menuIcon: { fontSize: '17px' }, ...overflowButtonProps.styles },
       className: css('ms-CommandBar-overflowButton', overflowButtonProps.className),
       menuProps: { ...overflowButtonProps.menuProps, items: combinedOverflowItems },
-      menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps }
+      menuIconProps: { iconName: 'More', ...overflowButtonProps.menuIconProps },
     };
 
     const OverflowButtonType = this.props.overflowButtonAs

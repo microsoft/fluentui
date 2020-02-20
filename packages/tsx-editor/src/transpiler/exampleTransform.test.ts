@@ -18,7 +18,7 @@ describe('example transform', () => {
       tsCode,
       jsCode,
       supportedPackages: SUPPORTED_PACKAGES,
-      ...transformOptions
+      ...transformOptions,
     });
   }
 

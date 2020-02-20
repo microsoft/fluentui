@@ -10,6 +10,6 @@ export const TextField: React.FunctionComponent<ITextFieldProps> = styled<ITextF
   getStyles,
   undefined,
   {
-    scope: 'TextField'
-  }
+    scope: 'TextField',
+  },
 );

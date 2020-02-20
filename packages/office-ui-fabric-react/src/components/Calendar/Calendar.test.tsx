@@ -20,7 +20,7 @@ describe('Calendar', () => {
 
     shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
 
-    goToToday: 'Go to today'
+    goToToday: 'Go to today',
   };
 
   beforeEach(() => {
@@ -50,7 +50,7 @@ describe('Calendar', () => {
 
     beforeAll(() => {
       renderedComponent = (ReactTestUtils.renderIntoDocument(
-        <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />
+        <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />,
       ) as unknown) as Calendar;
     });
 
@@ -128,7 +128,7 @@ describe('Calendar', () => {
           autoNavigateOnSelection={true}
           onSelectDate={onSelectDate()}
           className="CalendarTestClass"
-        />
+        />,
       ) as unknown) as Calendar;
     });
 
@@ -228,7 +228,7 @@ describe('Calendar', () => {
           dateRangeType={DateRangeType.Day}
           minDate={minDate}
           maxDate={maxDate}
-        />
+        />,
       ) as unknown) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
@@ -257,7 +257,7 @@ describe('Calendar', () => {
           minDate={minDate}
           maxDate={maxDate}
           onSelectDate={onSelectDate()}
-        />
+        />,
       ) as unknown) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
@@ -279,7 +279,7 @@ describe('Calendar', () => {
         dateRangeType={DateRangeType.Day}
         minDate={minDate}
         maxDate={maxDate}
-      />
+      />,
     ) as unknown) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
@@ -301,7 +301,7 @@ describe('Calendar', () => {
         dateRangeType={DateRangeType.Day}
         minDate={minDate}
         maxDate={maxDate}
-      />
+      />,
     ) as unknown) as Calendar;
 
     const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
@@ -323,7 +323,7 @@ describe('Calendar', () => {
         dateRangeType={DateRangeType.Day}
         minDate={minDate}
         maxDate={maxDate}
-      />
+      />,
     ) as unknown) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
@@ -339,7 +339,7 @@ describe('Calendar', () => {
     beforeAll(() => {
       defaultDate = new Date(2017, 2, 16);
       renderedComponent = (ReactTestUtils.renderIntoDocument(
-        <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />
+        <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />,
       ) as unknown) as Calendar;
     });
 

@@ -9,6 +9,6 @@ export const HoverCard: React.FunctionComponent<IHoverCardProps> = styled<IHover
   getStyles,
   undefined,
   {
-    scope: 'HoverCard'
-  }
+    scope: 'HoverCard',
+  },
 );

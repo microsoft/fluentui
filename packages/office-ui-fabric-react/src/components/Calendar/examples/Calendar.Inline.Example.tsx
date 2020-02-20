@@ -16,7 +16,7 @@ const DayPickerStrings = {
   nextYearAriaLabel: 'Next year',
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
+  closeButtonAriaLabel: 'Close',
 };
 
 export interface ICalendarInlineExampleState {
@@ -49,7 +49,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
     this.state = {
       selectedDate: null,
-      selectedDateRange: null
+      selectedDateRange: null,
     };
 
     this._onDismiss = this._onDismiss.bind(this);
@@ -60,11 +60,11 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
   public render(): JSX.Element {
     const divStyle: React.CSSProperties = {
-      height: 'auto'
+      height: 'auto',
     };
 
     const buttonStyle: React.CSSProperties = {
-      margin: '17px 10px 0 0'
+      margin: '17px 10px 0 0',
     };
 
     let dateRangeString: string | null = null;
@@ -157,7 +157,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const newSelectedDate = addDays(subtractFrom, -daysToSubtract);
 
       return {
-        selectedDate: newSelectedDate
+        selectedDate: newSelectedDate,
       };
     });
   }
@@ -169,7 +169,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const newSelectedDate = addDays(dateRangeArray.pop()!, 1);
 
       return {
-        selectedDate: newSelectedDate
+        selectedDate: newSelectedDate,
       };
     });
   }
@@ -178,7 +178,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this.setState((prevState: ICalendarInlineExampleState) => {
       return {
         selectedDate: date,
-        selectedDateRange: dateRangeArray
+        selectedDateRange: dateRangeArray,
       };
     });
   }

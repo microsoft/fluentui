@@ -23,14 +23,14 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
     _data = {
       key: i,
       name: 'Item ' + i,
-      value: i
+      value: i,
     };
     if (isColumn) {
       _data = {
         ..._data,
         key: `column_key_${i}`,
         ariaLabel: `column_${i}`,
-        onRenderDivider: customDivider ? customColumnDivider : columnDividerWrapper
+        onRenderDivider: customDivider ? customColumnDivider : columnDividerWrapper,
       };
     }
     data.push(_data);
@@ -42,7 +42,7 @@ function mockData(count: number, isColumn: boolean = false, customDivider: boole
 // Wrapper function which calls the defaultRenderer with the corresponding params
 function columnDividerWrapper(
   iDetailsColumnProps: IDetailsColumnProps,
-  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
 ): any {
   return defaultRenderer(iDetailsColumnProps);
 }
@@ -50,7 +50,7 @@ function columnDividerWrapper(
 // Using a bar sign as a custom divider along with the default divider
 function customColumnDivider(
   iDetailsColumnProps: IDetailsColumnProps,
-  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null
+  defaultRenderer: (props?: IDetailsColumnProps) => JSX.Element | null,
 ): any {
   return (
     <React.Fragment key={`divider_${iDetailsColumnProps.columnIndex}`}>
@@ -73,7 +73,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -91,7 +91,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -108,7 +108,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -126,7 +126,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -144,7 +144,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -164,17 +164,17 @@ describe('DetailsList', () => {
             key: 'group0',
             name: 'Group 0',
             startIndex: 0,
-            count: 2
+            count: 2,
           },
           {
             key: 'group1',
             name: 'Group 1',
             startIndex: 2,
-            count: 3
-          }
+            count: 3,
+          },
         ]}
         checkboxVisibility={CheckboxVisibility.hidden}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -192,7 +192,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(component).toBeDefined();
@@ -230,7 +230,7 @@ describe('DetailsList', () => {
       onDragEnter: jest.fn(),
       onDragLeave: jest.fn(),
       onDragStart: jest.fn(),
-      onDrop: jest.fn()
+      onDrop: jest.fn(),
     };
 
     const _dragDropEvents2: IDragDropEvents = {
@@ -240,7 +240,7 @@ describe('DetailsList', () => {
       onDragEnter: jest.fn(),
       onDragLeave: jest.fn(),
       onDragStart: jest.fn(),
-      onDrop: jest.fn()
+      onDrop: jest.fn(),
     };
 
     const _RaiseEvent = (target: any, _eventName: string, _clientX: number) => {
@@ -249,9 +249,9 @@ describe('DetailsList', () => {
         _eventName,
         {
           clientX: _clientX,
-          button: 0
+          button: 0,
         } as DragEvent,
-        true
+        true,
       );
     };
 
@@ -261,7 +261,7 @@ describe('DetailsList', () => {
 
     ReactDOM.render(
       <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
-      container
+      container,
     );
 
     let detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -275,7 +275,7 @@ describe('DetailsList', () => {
 
     ReactDOM.render(
       <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents} />,
-      container
+      container,
     );
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -288,7 +288,7 @@ describe('DetailsList', () => {
 
     ReactDOM.render(
       <DetailsListBase columns={columns} skipViewportMeasures={true} items={items} dragDropEvents={_dragDropEvents2} />,
-      container
+      container,
     );
 
     detailsRowSource = container.querySelector('div[aria-rowindex="2"][role="row"]') as HTMLDivElement;
@@ -331,7 +331,7 @@ describe('DetailsList', () => {
         onShouldVirtualize={() => false}
         onRenderItemColumn={onRenderColumn}
         getCellValueKey={getCellValueKey}
-      />
+      />,
     );
 
     expect(component).toBeDefined();
@@ -373,7 +373,7 @@ describe('DetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(component).toBeDefined();
@@ -408,7 +408,7 @@ describe('DetailsList', () => {
         columns={columns}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
 
     expect(columns[0].onColumnResize).toHaveBeenCalledTimes(1);
@@ -425,7 +425,7 @@ describe('DetailsList', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeaderMock}
-      />
+      />,
     );
 
     expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
@@ -445,7 +445,7 @@ describe('DetailsList', () => {
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
         onRenderDetailsHeader={onRenderDetailsHeader}
-      />
+      />,
     );
 
     expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
@@ -465,7 +465,7 @@ describe('DetailsList', () => {
         checkboxVisibility={CheckboxVisibility.always}
         selectionMode={SelectionMode.multiple}
         selection={selection}
-      />
+      />,
     );
 
     expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);

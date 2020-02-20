@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key'
-import * as _ from 'lodash'
+import * as keyboardKey from 'keyboard-key';
+import * as _ from 'lodash';
 
-import { Accessibility } from '../../types'
-import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior'
+import { Accessibility } from '../../types';
+import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
 
 /**
  * @description
@@ -18,7 +18,7 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior'
  * Adds attribute 'aria-labelledby=trigger-id' based on the property 'triggerId' to 'menu' slot.
  */
 const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
-  const behavior = popupBehavior(props)
+  const behavior = popupBehavior(props);
   return _.merge(behavior, {
     attributes: {
       trigger: {
@@ -55,18 +55,18 @@ const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
             }),
       },
     },
-  })
-}
+  });
+};
 
 export interface MenuButtonBehaviorProps extends PopupBehaviorProps {
   /** Defines ID of the menu element. */
-  menuId?: string
+  menuId?: string;
   /** Defines ID of the trigger element. */
-  triggerId?: string
+  triggerId?: string;
   /** Defines whether popup is displayed. */
-  open?: boolean
+  open?: boolean;
   /** Determines if the MenuButton behaves as context menu */
-  contextMenu?: boolean
+  contextMenu?: boolean;
 }
 
-export default menuButtonBehavior
+export default menuButtonBehavior;

@@ -17,7 +17,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     super(props);
 
     this.state = {
-      selectedColor: props.colors[0]
+      selectedColor: props.colors[0],
     };
   }
 
@@ -116,7 +116,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
                 {code.react && code.react.indexOf('.') > -1 ? code.react.split('.')[1] : code.react}{' '}
                 <TooltipHost
                   tooltipProps={{
-                    onRenderContent: () => this._renderCodeDetails(code)
+                    onRenderContent: () => this._renderCodeDetails(code),
                   }}
                   closeDelay={500}
                   id="code"
@@ -168,7 +168,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
 
   private _selectColor = (color: IColorSwatch): void => {
     this.setState({
-      selectedColor: color
+      selectedColor: color,
     });
 
     // Optional callback to notify parent that a color has been selected.

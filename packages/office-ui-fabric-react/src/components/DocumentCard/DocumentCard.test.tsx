@@ -13,7 +13,7 @@ describe('DocumentCard', () => {
         <DocumentCardPreview previewImages={[]} />
         <DocumentCardTitle title="" />
         <DocumentCardActivity activity="" people={[{ name: '', profileImageSrc: '' }]} />
-      </DocumentCard>
+      </DocumentCard>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

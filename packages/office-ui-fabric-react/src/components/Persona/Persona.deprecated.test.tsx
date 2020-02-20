@@ -11,7 +11,7 @@ const STYLES = {
   green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
   black: '.ms-Persona-initials--black',
-  red: '.ms-Persona-initials--red'
+  red: '.ms-Persona-initials--red',
 };
 
 describe('Persona', () => {

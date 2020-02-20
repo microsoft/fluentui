@@ -18,14 +18,14 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     maxDisplayablePersonas: 5,
     personas: [],
     overflowPersonas: [],
-    personaSize: PersonaSize.size32
+    personaSize: PersonaSize.size32,
   };
 
   private _ariaDescriptionId: string;
 
   private _classNames = getClassNames(this.props.styles, {
     theme: this.props.theme!,
-    className: this.props.className
+    className: this.props.className,
   });
 
   constructor(props: IFacepileProps) {
@@ -103,8 +103,8 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { getPersonaProps, personaSize } = this.props;
     const personaStyles: Partial<IPersonaStyles> = {
       details: {
-        flex: '1 0 auto'
-      }
+        flex: '1 0 auto',
+      },
     };
 
     return (
@@ -160,7 +160,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _getElementProps(
     persona: IFacepilePersona,
-    index: number
+    index: number,
   ): { key: React.Key; ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
     const { _classNames } = this;
 
@@ -170,7 +170,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
       className: _classNames.itemButton,
       title: persona.personaName,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),
-      onMouseOut: this._onPersonaMouseOut.bind(this, persona)
+      onMouseOut: this._onPersonaMouseOut.bind(this, persona),
     };
   }
 

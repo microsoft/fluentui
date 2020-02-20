@@ -8,6 +8,6 @@ export const Chiclet: React.FunctionComponent<IChicletProps> = styled<IChicletPr
   getStyles,
   undefined,
   {
-    scope: 'Chiclet'
-  }
+    scope: 'Chiclet',
+  },
 );

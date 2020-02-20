@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import menuItemAsToolbarButtonBehavior from './menuItemAsToolbarButtonBehavior'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import menuItemAsToolbarButtonBehavior from './menuItemAsToolbarButtonBehavior';
 
 /**
  * @description
@@ -26,6 +26,6 @@ const menuAsToolbarBehavior: Accessibility = () => ({
   childBehaviors: {
     item: menuItemAsToolbarButtonBehavior,
   },
-})
+});
 
-export default menuAsToolbarBehavior
+export default menuAsToolbarBehavior;

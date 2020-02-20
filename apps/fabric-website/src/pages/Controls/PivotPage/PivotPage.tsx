@@ -27,8 +27,8 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PivotPage/docs/ios/PivotImplementation.md') as string}
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

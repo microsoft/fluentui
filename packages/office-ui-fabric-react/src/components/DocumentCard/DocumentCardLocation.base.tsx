@@ -16,7 +16,7 @@ export class DocumentCardLocationBase extends BaseComponent<IDocumentCardLocatio
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

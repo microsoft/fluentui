@@ -8,7 +8,7 @@ enum FILTER_BY {
   CI_BUILD = 'ci build',
   RELEASE = 'release',
   DAY = 'day',
-  MONTH = 'month'
+  MONTH = 'month',
 }
 
 export const ComponentPerfChart = ({ perfTestName }) => {
@@ -95,7 +95,7 @@ export const ComponentPerfChart = ({ perfTestName }) => {
               { key: 'ci-build', label: FILTER_BY.CI_BUILD, value: FILTER_BY.CI_BUILD },
               { key: 'release', label: FILTER_BY.RELEASE, value: FILTER_BY.RELEASE },
               { key: 'day', label: FILTER_BY.DAY, value: FILTER_BY.DAY },
-              { key: 'month', label: FILTER_BY.MONTH, value: FILTER_BY.MONTH }
+              { key: 'month', label: FILTER_BY.MONTH, value: FILTER_BY.MONTH },
             ]}
           />
         )}
@@ -107,10 +107,10 @@ export const ComponentPerfChart = ({ perfTestName }) => {
           '::before': {
             paddingTop: '50%',
             content: '""',
-            display: 'block'
+            display: 'block',
           },
           overflow: 'hidden',
-          position: 'relative'
+          position: 'relative',
         }}
       >
         <Flex
@@ -121,7 +121,7 @@ export const ComponentPerfChart = ({ perfTestName }) => {
             top: '1rem',
             bottom: 0,
             left: 0,
-            right: 0
+            right: 0,
           }}
         >
           {loading ? (

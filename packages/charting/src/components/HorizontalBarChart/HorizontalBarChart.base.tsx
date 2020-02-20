@@ -36,7 +36,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       legend: '',
       refArray: [],
       refSelected: null,
-      color: ''
+      color: '',
     };
     this._uniqLineText =
       '_HorizontalLine_' +
@@ -63,9 +63,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             legend: '',
             horizontalBarChartdata: {
               x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
-              y: points.chartData![0].horizontalBarChartdata!.y
+              y: points.chartData![0].horizontalBarChartdata!.y,
             },
-            color: palette.neutralTertiaryAlt
+            color: palette.neutralTertiaryAlt,
           };
 
           const chartDataText = this._getChartDataText(points!);
@@ -91,7 +91,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       this,
                       points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                       points!.chartData![0].color,
-                      points!.chartData![0].legend
+                      points!.chartData![0].legend,
                     )}
                     onMouseLeave={this._hoverOff}
                   >
@@ -133,7 +133,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         hoverValue: hoverValue,
         lineColor: lineColor,
         legend: legend,
-        refSelected: currentHoveredElement!.refElement
+        refSelected: currentHoveredElement!.refElement,
       });
     }
   }
@@ -145,7 +145,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         hoverValue: '',
         refSelected: null,
         lineColor: '',
-        legend: ''
+        legend: '',
       });
     }
   }
@@ -158,7 +158,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       width: width,
       className,
       barHeight: this._barHeight,
-      color: this.state.lineColor
+      color: this.state.lineColor,
     });
   };
 
@@ -190,7 +190,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     const benchmarkStyles = {
       marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
-      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)'
+      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)',
     };
 
     // tslint:disable-next-line:jsx-ban-props
@@ -203,7 +203,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) => acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
-      0
+      0,
     );
     let prevPosition = 0;
     let value = 0;

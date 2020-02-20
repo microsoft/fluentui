@@ -9,6 +9,6 @@ export const Coachmark: React.FunctionComponent<ICoachmarkProps> = styled<ICoach
   getStyles,
   undefined,
   {
-    scope: 'Coachmark'
-  }
+    scope: 'Coachmark',
+  },
 );

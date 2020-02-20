@@ -5,8 +5,8 @@ describe('StackUtils', () => {
   describe('parseGap', () => {
     loadTheme({
       spacing: {
-        m: '16em'
-      }
+        m: '16em',
+      },
     });
     const theme = getTheme();
 
@@ -73,8 +73,8 @@ describe('StackUtils', () => {
         s1: '10px',
         m: '15px',
         l1: '20px',
-        l2: '25px'
-      }
+        l2: '25px',
+      },
     });
     const theme = getTheme();
 

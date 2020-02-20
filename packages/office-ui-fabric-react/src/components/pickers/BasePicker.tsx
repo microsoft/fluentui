@@ -53,7 +53,7 @@ const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyle
  */
 function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<T>) => Suggestions<T>) {
   return styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(suggestionsType, suggestionsStyles, undefined, {
-    scope: 'Suggestions'
+    scope: 'Suggestions',
   });
 }
 
@@ -88,7 +88,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this._ariaMap = {
       selectedItems: `selected-items-${this._id}`,
       selectedSuggestionAlert: `selected-suggestion-alert-${this._id}`,
-      suggestionList: `suggestion-list-${this._id}`
+      suggestionList: `suggestion-list-${this._id}`,
     };
     this.suggestionStore = new SuggestionsController<T>();
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
@@ -100,7 +100,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       moreSuggestionsAvailable: false,
       isFocused: false,
       isSearching: false,
-      selectedIndices: []
+      selectedIndices: [],
     };
   }
 
@@ -135,7 +135,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       this.setState(
         {
-          items: newProps.selectedItems
+          items: newProps.selectedItems,
         },
         () => {
           // Only update the focus if this component is currently focused to ensure that the basepicker
@@ -145,7 +145,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             // See _onSelectedItemsUpdated.
             this.resetFocus(focusIndex);
           }
-        }
+        },
       );
     }
   }
@@ -234,14 +234,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           className,
           isFocused,
           disabled,
-          inputClassName: inputProps && inputProps.className
+          inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
+          screenReaderText: legacyStyles.screenReaderOnly,
         };
 
     return (
@@ -350,8 +350,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         onRemoveItem: () => this.removeItem(item, true),
         disabled: disabled,
         onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel
-      })
+        removeButtonAriaLabel: removeButtonAriaLabel,
+      }),
     );
   }
 
@@ -384,7 +384,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onSelectionChange() {
     this.setState({
-      selectedIndices: this.selection.getSelectedIndices()
+      selectedIndices: this.selection.getSelectedIndices(),
     });
   }
 
@@ -416,7 +416,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this._updateAndResolveValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       this.setState({
-        suggestionsLoading: true
+        suggestionsLoading: true,
       });
 
       // Clear suggestions
@@ -424,11 +424,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this._getShowSuggestions()
+          suggestionsVisible: this._getShowSuggestions(),
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement
+          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement,
         });
       }
 
@@ -456,9 +456,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState(
       {
         suggestedDisplayValue: itemValue,
-        suggestionsVisible: this._getShowSuggestions()
+        suggestionsVisible: this._getShowSuggestions(),
       },
-      () => this.setState({ suggestionsLoading: false })
+      () => this.setState({ suggestionsLoading: false }),
     );
   }
 
@@ -472,7 +472,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.updateValue(value);
     this.setState({
       moreSuggestionsAvailable: true,
-      isMostRecentlyUsedVisible: false
+      isMostRecentlyUsedVisible: false,
     });
   };
 
@@ -506,12 +506,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         this.setState({
           isMostRecentlyUsedVisible: true,
           moreSuggestionsAvailable: false,
-          suggestionsVisible: true
+          suggestionsVisible: true,
         });
       } else if (this.input.current && this.input.current.value && !this._requestSuggestionsOnClick) {
         this.setState({
           isMostRecentlyUsedVisible: false,
-          suggestionsVisible: true
+          suggestionsVisible: true,
         });
       }
       if (this.props.inputProps && this.props.inputProps.onFocus) {
@@ -710,7 +710,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onGetMoreResults = (): void => {
     this.setState(
       {
-        isSearching: true
+        isSearching: true,
       },
       () => {
         if (this.props.onGetMoreResults && this.input.current) {
@@ -737,9 +737,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
         this.setState({
           moreSuggestionsAvailable: false,
-          isResultsFooterVisible: true
+          isResultsFooterVisible: true,
         });
-      }
+      },
     );
   };
 
@@ -859,7 +859,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.suggestionStore.updateSuggestions(newSuggestions, -1);
       if (this.state.suggestionsLoading) {
         this.setState({
-          suggestionsLoading: false
+          suggestionsLoading: false,
         });
       }
     }
@@ -954,13 +954,13 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           theme,
           className,
           isFocused,
-          inputClassName: inputProps && inputProps.className
+          inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
+          screenReaderText: legacyStyles.screenReaderOnly,
         };
 
     return (

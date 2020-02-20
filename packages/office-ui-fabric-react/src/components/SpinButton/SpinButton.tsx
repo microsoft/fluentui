@@ -14,7 +14,7 @@ import {
   precisionRound,
   mergeAriaAttributeValues,
   getNativeProps,
-  divProperties
+  divProperties,
 } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
@@ -25,7 +25,7 @@ import { KeytipData } from '../../KeytipData';
 export enum KeyboardSpinDirection {
   down = -1,
   notSpinning = 0,
-  up = 1
+  up = 1,
 }
 
 export interface ISpinButtonState {
@@ -64,7 +64,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     labelPosition: Position.start,
     label: '',
     incrementButtonIcon: { iconName: 'ChevronUpSmall' },
-    decrementButtonIcon: { iconName: 'ChevronDownSmall' }
+    decrementButtonIcon: { iconName: 'ChevronDownSmall' },
   };
 
   private _async: Async;
@@ -87,7 +87,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     initializeFocusRects();
 
     warnMutuallyExclusive('SpinButton', props, {
-      value: 'defaultValue'
+      value: 'defaultValue',
     });
 
     const value = props.value || props.defaultValue || String(props.min) || '0';
@@ -99,7 +99,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     this.state = {
       isFocused: false,
       value: value,
-      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
     };
 
     this._async = new Async(this);
@@ -127,7 +127,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
     if (newProps.value !== undefined) {
       this.setState({
-        value: value
+        value: value,
       });
     }
     this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
@@ -158,7 +158,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
       keytipProps,
       className,
       inputProps,
-      iconButtonProps
+      iconButtonProps,
     } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
@@ -402,7 +402,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     const value: string = element.value;
     this._valueToValidate = value;
     this.setState({
-      value: value
+      value: value,
     });
   };
 

@@ -12,7 +12,7 @@ import {
   mergeAriaAttributeValues,
   portalContainsElement,
   memoizeFunction,
-  nullRender
+  nullRender,
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -48,7 +48,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   public static defaultProps: Partial<IBaseButtonProps> = {
     baseClassName: 'ms-Button',
     styles: {},
-    split: false
+    split: false,
   };
 
   private _buttonElement = React.createRef<HTMLElement>();
@@ -68,7 +68,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
       ...keytipProps,
-      hasMenu: true
+      hasMenu: true,
     };
   });
 
@@ -80,14 +80,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._warnDeprecations({
       rootProps: undefined,
       description: 'secondaryText',
-      toggled: 'checked'
+      toggled: 'checked',
     });
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
 
     this.state = {
-      menuHidden: true
+      menuHidden: true,
     };
   }
 
@@ -110,7 +110,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       theme,
       toggle,
       getClassNames,
-      role
+      role,
     } = this.props;
 
     const { menuHidden } = this.state;
@@ -130,7 +130,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           !menuHidden,
           !!this.props.menuProps,
           this.props.split,
-          !!allowDisabledFocus
+          !!allowDisabledFocus,
         )
       : getBaseButtonClassNames(
           theme!,
@@ -143,7 +143,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           !!this.props.menuProps,
           checked!,
           !menuHidden,
-          this.props.split
+          this.props.split,
         );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;
@@ -156,8 +156,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
-        'disabled' // let disabled buttons be focused and styled as disabled.
-      ]
+        'disabled', // let disabled buttons be focused and styled as disabled.
+      ],
     );
 
     // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
@@ -216,7 +216,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'data-is-focusable': dataIsFocusable,
       // aria-pressed attribute should only be present for toggle buttons
       // aria-checked attribute should only be present for toggle buttons with checkbox type role
-      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedOrPressedValue
+      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedOrPressedValue,
     });
 
     if (ariaHidden) {
@@ -229,7 +229,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       assign(buttonProps, {
         'aria-expanded': !menuHidden,
         'aria-owns': !menuHidden ? this._labelId + '-menu' : null,
-        'aria-haspopup': true
+        'aria-haspopup': true,
       });
     }
 
@@ -284,7 +284,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderChildren = this._onRenderChildren,
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
-      disabled
+      disabled,
     } = props;
     let { keytipProps } = props;
     if (keytipProps && menuProps) {
@@ -378,7 +378,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       children,
       secondaryText = this.props.description,
       onRenderText = this._onRenderText,
-      onRenderDescription = this._onRenderDescription
+      onRenderDescription = this._onRenderDescription,
     } = this.props;
 
     if (text || typeof children === 'string' || secondaryText) {
@@ -534,7 +534,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       menuProps,
       toggle,
       role,
-      primaryActionButtonProps
+      primaryActionButtonProps,
     } = this.props;
     let { keytipProps } = this.props;
     const { menuHidden } = this.state;
@@ -548,7 +548,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onPointerDown: undefined,
       onPointerUp: undefined,
       tabIndex: -1,
-      'data-is-focusable': false
+      'data-is-focusable': false,
     });
 
     const ariaDescribedBy = buttonProps.ariaDescription;
@@ -640,7 +640,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     if (menuIconProps === undefined) {
       menuIconProps = {
-        iconName: 'ChevronDown'
+        iconName: 'ChevronDown',
       };
     }
 
@@ -656,7 +656,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       ariaLabel: splitButtonAriaLabel,
       'aria-haspopup': true,
       'aria-expanded': !menuHidden,
-      'data-is-focusable': false
+      'data-is-focusable': false,
     };
 
     // Add data-ktp-execute-target to the split button if the keytip is defined
@@ -777,7 +777,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onPointerDown(
-    ev: PointerEvent & React.PointerEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | HTMLSpanElement>
+    ev: PointerEvent & React.PointerEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | HTMLSpanElement>,
   ) {
     const { onPointerDown } = this.props;
     if (onPointerDown) {

@@ -11,16 +11,16 @@ export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProp
         selectors: {
           ':active': {
             color: palette.white,
-            backgroundColor: palette.themeDark
-          }
-        }
+            backgroundColor: palette.themeDark,
+          },
+        },
       },
       !selected && {
-        color: palette.neutralPrimary
+        color: palette.neutralPrimary,
       },
       selected && {
-        color: palette.white
-      }
-    ]
+        color: palette.white,
+      },
+    ],
   };
 };

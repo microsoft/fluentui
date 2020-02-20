@@ -8,7 +8,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
  */
 export enum ResizeGroupDirection {
   horizontal = 0,
-  vertical = 1
+  vertical = 1,
 }
 
 /**

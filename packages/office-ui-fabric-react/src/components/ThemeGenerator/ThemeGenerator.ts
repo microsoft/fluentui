@@ -18,7 +18,7 @@ export class ThemeGenerator {
     color: string | IColor,
     isInverted = false,
     isCustomization = false,
-    overwriteCustomColor = true
+    overwriteCustomColor = true,
   ) {
     if (!rule.color && rule.value) {
       // not a color rule

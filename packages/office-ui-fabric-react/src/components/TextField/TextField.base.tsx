@@ -15,7 +15,7 @@ import {
   textAreaProperties,
   warn,
   warnControlledUsage,
-  warnMutuallyExclusive
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
@@ -52,7 +52,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   public static defaultProps: ITextFieldProps = {
     resizable: true,
     deferredValidationTime: 200,
-    validateOnLoad: true
+    validateOnLoad: true,
   };
 
   /** Fallback ID if none is provided in props. Access proper value via `this._id`. */
@@ -77,7 +77,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive(COMPONENT_NAME, props, {
-        errorMessage: 'onGetErrorMessage'
+        errorMessage: 'onGetErrorMessage',
       });
     }
 
@@ -95,7 +95,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     this.state = {
       uncontrolledValue: this._isControlled ? undefined : defaultValue,
       isFocused: false,
-      errorMessage: ''
+      errorMessage: '',
     };
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
@@ -123,7 +123,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   public getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null {
     return {
-      selection: [this.selectionStart, this.selectionEnd]
+      selection: [this.selectionStart, this.selectionEnd],
     };
   }
 
@@ -188,7 +188,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
-      onRenderDescription = this._onRenderDescription
+      onRenderDescription = this._onRenderDescription,
     } = this.props;
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
@@ -207,7 +207,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       hasIcon: !!iconProps,
       underlined,
       inputClassName,
-      autoAdjustHeight
+      autoAdjustHeight,
     });
 
     return (
@@ -323,14 +323,14 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       valueProp: 'value',
       defaultValueProp: 'defaultValue',
       onChangeProp: 'onChange',
-      readOnlyProp: 'readOnly'
+      readOnlyProp: 'readOnly',
     });
 
     if (this.props.value === null && !this._hasWarnedNullValue) {
       this._hasWarnedNullValue = true;
       warn(
         `Warning: 'value' prop on '${COMPONENT_NAME}' should not be null. Consider using an ` +
-          'empty string to clear the component or undefined to indicate an uncontrolled component.'
+          'empty string to clear the component or undefined to indicate an uncontrolled component.',
       );
     }
   }
@@ -424,7 +424,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
     const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(this.props, textAreaProperties, [
-      'defaultValue'
+      'defaultValue',
     ]);
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
@@ -512,7 +512,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
         if (!isSameValue && onChange) {
           onChange(event, value);
         }
-      }
+      },
     );
   };
 

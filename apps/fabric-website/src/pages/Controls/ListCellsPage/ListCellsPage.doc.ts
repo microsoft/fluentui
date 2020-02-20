@@ -7,11 +7,11 @@ export const ListCellsPageProps: TFabricPlatformPageProps = {
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ListCellsPage/docs/ios/ListCellsOverview.md') as string,
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ListCellsPage/docs/android/ListCellsOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

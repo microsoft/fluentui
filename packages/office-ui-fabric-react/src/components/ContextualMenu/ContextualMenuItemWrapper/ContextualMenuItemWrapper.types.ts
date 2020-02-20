@@ -88,7 +88,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   onItemClickBase?: (
     item: IContextualMenuItem,
     ev: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
-    target: HTMLElement
+    target: HTMLElement,
   ) => void;
 
   /**

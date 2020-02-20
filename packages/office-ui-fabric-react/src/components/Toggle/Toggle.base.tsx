@@ -16,14 +16,14 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IToggleProps>,
-    prevState: Readonly<IToggleState>
+    prevState: Readonly<IToggleState>,
   ): Partial<IToggleState> | null {
     if (nextProps.checked === undefined) {
       return null;
     }
 
     return {
-      checked: !!nextProps.checked
+      checked: !!nextProps.checked,
     };
   }
 
@@ -31,17 +31,17 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     super(props);
 
     this._warnMutuallyExclusive({
-      checked: 'defaultChecked'
+      checked: 'defaultChecked',
     });
 
     this._warnDeprecations({
       onAriaLabel: 'ariaLabel',
       offAriaLabel: undefined,
-      onChanged: 'onChange'
+      onChanged: 'onChange',
     });
 
     this.state = {
-      checked: !!(props.checked || props.defaultChecked)
+      checked: !!(props.checked || props.defaultChecked),
     };
     this._id = props.id || getId('Toggle');
   }
@@ -67,7 +67,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       offText,
       onText,
       styles,
-      inlineLabel
+      inlineLabel,
     } = this.props;
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
@@ -79,7 +79,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       disabled,
       checked,
       inlineLabel,
-      onOffMissing: !onText && !offText
+      onOffMissing: !onText && !offText,
     });
 
     const labelId = `${this._id}-label`;
@@ -157,7 +157,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       // Only update the state if the user hasn't provided it.
       if (checkedProp === undefined) {
         this.setState({
-          checked: !checked
+          checked: !checked,
         });
       }
 
