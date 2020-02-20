@@ -1,10 +1,42 @@
+// TODO: make sure lodash is dep of perf-test package
 import * as _ from 'lodash';
 import * as path from 'path';
 
-import { DangerJS } from './types';
-import config from '../config';
+// TODO: remove. temporary relative pathing until perf-test packages are consolidated.
+import config from '../../../scripts/config';
 
-function linkToFlamegraph(value, filename) {
+// TODO: add regression analysis output to Fluent report
+// TODO: copy fluent perf-test output to blob storage
+// TODO: replace circleci links
+// TODO: test when fluent perf-test has not been run (should show warning)
+
+type Reporter = {
+  markdown: (markdown: string) => void;
+  warn: (message: string) => void;
+};
+
+export function getFluentPerfRegressions() {
+  const output: string[] = [];
+  // const outDir = path.join(__dirname, '.');
+
+  const markdown = (text: string) => {
+    console.log(text);
+    output.push(text);
+  };
+
+  const warn = (text: string) => {
+    console.warn(text);
+  };
+
+  checkPerfRegressions({ markdown, warn });
+
+  // Write results to file
+  // fs.writeFileSync(path.join(outDir, 'perfCounts.html'), output.join());
+
+  return output.join('\n');
+}
+
+function linkToFlamegraph(value: number, filename: string) {
   // This as well as the whole flamegrill URL is hardcoded to only work with CircleCI.
   const build = process.env.CIRCLE_BUILD_NUM;
   const GITHUB_REPO_ID = '141743704';
@@ -16,7 +48,7 @@ function linkToFlamegraph(value, filename) {
   return `[${value}](https://${build}-${GITHUB_REPO_ID}-gh.circle-artifacts.com/0/artifacts/perf/${path.basename(filename)})`;
 }
 
-function fluentFabricComparison(perfCounts, danger, markdown, warn) {
+function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
   const results = _.mapValues(
     _.pickBy(perfCounts, (value, key) => key.endsWith('.Fluent')),
     stats => {
@@ -33,9 +65,9 @@ function fluentFabricComparison(perfCounts, danger, markdown, warn) {
     }
   );
 
-  const getStatus = fluentToFabric => (fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄');
+  const getStatus: (arg: number) => string = fluentToFabric => (fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄');
 
-  markdown(
+  reporter.markdown(
     [
       '## Perf comparison',
       '',
@@ -56,7 +88,7 @@ function fluentFabricComparison(perfCounts, danger, markdown, warn) {
     ].join('\n')
   );
 }
-function currentToMasterComparison(perfCounts, danger, markdown, warn) {
+function currentToMasterComparison(perfCounts: any, reporter: Reporter) {
   const results = _.map(
     _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
     (stats, name) => {
@@ -80,8 +112,8 @@ function currentToMasterComparison(perfCounts, danger, markdown, warn) {
   const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
 
   if (regressions.length > 0) {
-    warn(`${regressions.length} perf regressions detected`);
-    markdown(
+    reporter.warn(`${regressions.length} perf regressions detected`);
+    reporter.markdown(
       [
         '## Potential regressions comparing to master',
         '',
@@ -103,7 +135,7 @@ function currentToMasterComparison(perfCounts, danger, markdown, warn) {
     _.filter(results, stats => !stats.isRegression),
     stats => stats.currentToBaseline * -1
   );
-  markdown(
+  reporter.markdown(
     [
       '<details><summary>Perf tests with no regressions</summary>',
       '',
@@ -123,15 +155,15 @@ function currentToMasterComparison(perfCounts, danger, markdown, warn) {
   );
 }
 
-export default ({ danger, markdown, warn }: DangerJS) => {
+const checkPerfRegressions = (reporter: Reporter) => {
   let perfCounts;
   try {
     perfCounts = require(config.paths.packageDist('perf-test', 'perfCounts.json'));
   } catch {
-    warn('No perf measurements available');
+    reporter.warn('No perf measurements available');
     return;
   }
 
-  fluentFabricComparison(perfCounts, danger, markdown, warn);
-  currentToMasterComparison(perfCounts, danger, markdown, warn);
+  fluentFabricComparison(perfCounts, reporter);
+  currentToMasterComparison(perfCounts, reporter);
 };
