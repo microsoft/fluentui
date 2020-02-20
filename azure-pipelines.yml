@@ -14,8 +14,17 @@ jobs:
     steps:
       - template: azure-pipelines.tools.yml
 
+      - task: Cache@2
+        inputs:
+          key: 'gulp-cache | "$(Agent.OS)"'
+          restoreKeys: |
+            gulp-cache | "$(Agent.OS)"
+            gulp-cache
+          path: /tmp/gulp-cache
+        displayName: Cache gulp-cache
+
       - script: |
-          yarn
+          yarn --frozen-lockfile
         displayName: yarn
 
       - script: |
@@ -135,11 +144,18 @@ jobs:
 
   - job: Screener
     dependsOn: Build
-    pool:
-      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - task: Cache@2
+        inputs:
+          key: 'gulp-cache | "$(Agent.OS)"'
+          restoreKeys: |
+            gulp-cache | "$(Agent.OS)"
+            gulp-cache
+          path: /tmp/gulp-cache
+        displayName: Cache gulp-cache
 
       - template: azure-pipelines.artifacts.yml
         parameters:
