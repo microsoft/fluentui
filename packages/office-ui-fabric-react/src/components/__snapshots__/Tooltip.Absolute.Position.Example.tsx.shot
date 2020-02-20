@@ -16,6 +16,7 @@ exports[`Component Examples renders Tooltip.Absolute.Position.Example.tsx correc
         }
     onBlurCapture={[Function]}
     onFocusCapture={[Function]}
+    onKeyDown={[Function]}
     onMouseEnter={[Function]}
     onMouseLeave={[Function]}
   >

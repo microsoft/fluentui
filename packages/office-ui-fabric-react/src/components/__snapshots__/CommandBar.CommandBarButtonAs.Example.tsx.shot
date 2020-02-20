@@ -1075,6 +1075,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   }
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
@@ -1226,6 +1227,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   }
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
@@ -2925,6 +2927,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   }
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
@@ -3076,6 +3079,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   }
               onBlurCapture={[Function]}
               onFocusCapture={[Function]}
+              onKeyDown={[Function]}
               onMouseEnter={[Function]}
               onMouseLeave={[Function]}
             >
