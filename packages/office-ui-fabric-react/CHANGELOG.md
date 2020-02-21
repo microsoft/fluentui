@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 15 Feb 2020 05:32:42 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2020 12:19:15 GMT and should not be manually modified.
 
+## 6.211.5
+Fri, 21 Feb 2020 12:19:15 GMT
+
+### Patches
+
+- Tooltip: Enable dismissing the Tooltip via pressing ESC key. (Humberto.Morimoto@microsoft.com)
 ## 6.211.4
 Sat, 15 Feb 2020 05:32:42 GMT
 

@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2020 12:19:15 GMT",
+      "tag": "office-ui-fabric-react_v6.211.5",
+      "version": "6.211.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tooltip: Enable dismissing the Tooltip via pressing ESC key.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "163eff20c5426ab4999ad92eb833d6ecd7e65372"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 15 Feb 2020 05:32:42 GMT",
       "tag": "office-ui-fabric-react_v6.211.4",
       "version": "6.211.4",
