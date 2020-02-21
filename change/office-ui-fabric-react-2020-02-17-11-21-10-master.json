@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used",
-  "packageName": "office-ui-fabric-react",
-  "email": "chce@netcompany.com",
-  "commit": "75d13a8a34e064a42b99763bdc43f8d8ca668982",
-  "dependentChangeType": "minor",
-  "date": "2020-02-17T10:21:10.193Z"
-}

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Link: text decoration should not show up even for buttons.",
-  "packageName": "office-ui-fabric-react",
-  "email": "dzearing@microsoft.com",
-  "commit": "746dbdc5c75cdd68e91b9f37c0467f44b83dff19",
-  "dependentChangeType": "patch",
-  "date": "2020-02-12T05:53:50.536Z"
-}

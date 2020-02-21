@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 20 Feb 2020 12:20:16 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
 
+## 7.95.0
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Minor changes
+
+- Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used (chce@netcompany.com)
+### Patches
+
+- Link: text decoration should not show up even for buttons. (dzearing@microsoft.com)
 ## 7.94.1
 Thu, 20 Feb 2020 12:20:16 GMT
 

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update ItemScheduledSignal icon",
-  "packageName": "@uifabric/experiments",
-  "email": "amshan@microsoft.com",
-  "commit": "da86508a3e5b1a8d9f66bc576142aa83d91a4ce4",
-  "dependentChangeType": "patch",
-  "date": "2020-02-20T21:32:43.433Z"
-}

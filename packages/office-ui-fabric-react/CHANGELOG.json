@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2020 12:20:14 GMT",
+      "tag": "office-ui-fabric-react_v7.95.0",
+      "version": "7.95.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: text decoration should not show up even for buttons.",
+            "author": "dzearing@microsoft.com",
+            "commit": "746dbdc5c75cdd68e91b9f37c0467f44b83dff19"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used",
+            "author": "chce@netcompany.com",
+            "commit": "75d13a8a34e064a42b99763bdc43f8d8ca668982"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Feb 2020 12:20:16 GMT",
       "tag": "office-ui-fabric-react_v7.94.1",
       "version": "7.94.1",

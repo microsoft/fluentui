@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2020 12:20:14 GMT",
+      "tag": "@uifabric/experiments_v7.20.0",
+      "version": "7.20.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add signal for item scheduled",
+            "author": "amshan@microsoft.com",
+            "commit": "ae7312e56ec2c8e7d7424a758405700243f15035"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "update ItemScheduledSignal icon",
+            "author": "amshan@microsoft.com",
+            "commit": "da86508a3e5b1a8d9f66bc576142aa83d91a4ce4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2020 12:21:05 GMT",
       "tag": "@uifabric/experiments_v7.19.3",
       "version": "7.19.3",
