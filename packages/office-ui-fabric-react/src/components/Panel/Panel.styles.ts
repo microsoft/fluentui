@@ -286,7 +286,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.navigation,
       {
         display: 'flex',
-        justifyContent: 'flex-end'
+        alignItems: 'flex-end'
       },
       hasCustomNavigation && {
         height: commandBarHeight

@@ -180,8 +180,8 @@ exports[`Panel renders Panel correctly 1`] = `
               className=
                   ms-Panel-navigation
                   {
+                    align-items: flex-end;
                     display: flex;
-                    justify-content: flex-end;
                   }
             >
               <div
