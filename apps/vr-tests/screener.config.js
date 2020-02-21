@@ -30,7 +30,7 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 
 // https://github.com/screener-io/screener-storybook#config-options
 const config = {
-  projectRepo: 'OfficeDev/office-ui-fabric-react',
+  projectRepo: 'OfficeDev/office-ui-fabric-react/fluentui',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
