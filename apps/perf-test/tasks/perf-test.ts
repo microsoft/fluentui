@@ -7,6 +7,10 @@ const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
+import { getFluentPerfRegressions } from './fluentPerfRegressions';
+
+// TODO: consolidate with newer version of fluent perf-test
+
 // Flamegrill Types
 /**
  * @typedef {{
@@ -203,7 +207,7 @@ const outDir = path.join(__dirname, '../dist');
 const tempDir = path.join(__dirname, '../logfiles');
 
 module.exports = async function getPerfRegressions() {
-  const iterationsArgv = /** @type {number} */ (argv().iterations);
+  const iterationsArgv = /** @type {number} */ argv().iterations;
   const iterationsArg = Number.isInteger(iterationsArgv) && iterationsArgv;
 
   const scenariosAvailable = fs
@@ -211,7 +215,7 @@ module.exports = async function getPerfRegressions() {
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
 
-  const scenariosArgv = /** @type {string} */ (argv().scenarios);
+  const scenariosArgv = /** @type {string} */ argv().scenarios;
   const scenariosArg = (scenariosArgv && scenariosArgv.split && scenariosArgv.split(',')) || [];
   scenariosArg.forEach(scenario => {
     if (!scenariosAvailable.includes(scenario)) {
@@ -259,7 +263,9 @@ module.exports = async function getPerfRegressions() {
   /** @type {CookResults} */
   const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const comment = createReport(scenarioResults);
+  let comment = createReport(scenarioResults);
+
+  comment = comment.concat(getFluentPerfRegressions());
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -281,7 +287,7 @@ module.exports = async function getPerfRegressions() {
  * @returns {string}
  */
 function createReport(testResults) {
-  const report = '### [Component Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
+  const report = '## [Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
     .concat(createScenarioTable(testResults, false))
@@ -289,7 +295,7 @@ function createReport(testResults) {
     // Show all results in a collapsible table.
     .concat('<details><summary>All results</summary><p>')
     .concat(createScenarioTable(testResults, true))
-    .concat('</p></details>');
+    .concat('</p></details>\n\n');
 
   return report;
 }

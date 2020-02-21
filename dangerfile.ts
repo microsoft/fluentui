@@ -1,7 +1,6 @@
 import { danger, fail, warn, markdown, message } from 'danger';
 
 import detectNonApprovedDependencies from './scripts/dangerjs/detectNonApprovedDependencies';
-// import checkPerfRegressions from './scripts/dangerjs/checkPerfRegressions';
 import checkChangelog from './scripts/dangerjs/checkChangelog';
 
 /**
@@ -11,13 +10,6 @@ import checkChangelog from './scripts/dangerjs/checkChangelog';
 const dangerJS = { danger, fail, warn, markdown, message };
 
 export default async () => {
-  // TODO: Make sure scripts don't trigger warnings on Fabric-only PRs. Don't confuse users.
-
-  // TODO: Consolidate approach with Fabric's change/checkchange functionality. Remove script implementation if unused.
   await checkChangelog(dangerJS);
-
   await detectNonApprovedDependencies(dangerJS);
-
-  // TODO: Enable and integrate with Fabric pipeline
-  // await checkPerfRegressions(dangerJS);
 };
