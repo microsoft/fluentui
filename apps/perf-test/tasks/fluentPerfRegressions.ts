@@ -1,8 +1,7 @@
 import * as _ from 'lodash';
 import * as path from 'path';
 
-// TODO: remove. temporary relative pathing until perf-test packages are consolidated.
-import config from '../../../scripts/config';
+import config from '@uifabric/build/config';
 
 // TODO: add regression analysis output to Fluent report
 // TODO: check false positive potential regression reports in fluent ui repo and fix
@@ -128,12 +127,16 @@ function reportResults(perfCounts: any, reporter: Reporter) {
   fluentFabricComparison(perfCounts, reporter);
 
   const noRegressions = _.sortBy(
-    _.filter(results, stats => !stats.isRegression),
+    // TODO: enable filter when repos are converged.
+    // _.filter(results, stats => !stats.isRegression),
+    results,
     stats => stats.currentToBaseline * -1
   );
   reporter.markdown(
     [
-      '<details><summary>Perf tests with no regressions</summary>',
+      // TODO: re-enable comment when repos are converged.
+      // '<details><summary>Perf tests with no regressions</summary>',
+      '<details><summary>All perf tests</summary>',
       '',
       'Scenario | Current PR Ticks | Baseline Ticks | Ratio',
       ':--- | ---:| ---:| ---:',
