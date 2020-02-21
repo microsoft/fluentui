@@ -30,11 +30,12 @@ const baseBranch = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 
 // https://github.com/screener-io/screener-storybook#config-options
 const config = {
-  projectRepo: 'OfficeDev/office-ui-fabric-react/fluentui',
+  projectRepo: 'OfficeDev/office-ui-fabric-react',
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
   baseBranch,
+  failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
   ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
     ? { commit: getCurrentHash() }
