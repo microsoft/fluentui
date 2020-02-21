@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Adding pointer down support for dismissing the fabric base layer.",
+  "packageName": "office-ui-fabric-react",
+  "email": "boalbe@microsoft.com",
+  "commit": "6a674fbc9ecc4e6bbc634eb8cf0ae320d4f979dd",
+  "date": "2019-12-31T21:42:20.440Z"
+}
