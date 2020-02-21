@@ -15,7 +15,7 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
-          yarn --frozen-lockfile
+          yarn
         displayName: yarn
 
       - script: |
