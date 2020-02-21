@@ -74,6 +74,7 @@ exports[`Link renders Link with "as=div" a div element 1`] = `
         padding-right: 0px;
         padding-top: 0px;
         text-align: left;
+        text-decoration: none;
         text-overflow: inherit;
         user-select: text;
       }
@@ -187,6 +188,7 @@ exports[`Link renders Link with no href as a button 1`] = `
         padding-right: 0px;
         padding-top: 0px;
         text-align: left;
+        text-decoration: none;
         text-overflow: inherit;
         user-select: text;
       }
@@ -295,6 +297,7 @@ exports[`Link renders disabled Link with no href as a button correctly 1`] = `
         padding-right: 0px;
         padding-top: 0px;
         text-align: left;
+        text-decoration: none;
         text-overflow: inherit;
         user-select: text;
       }
@@ -357,6 +360,7 @@ exports[`Link supports non button/anchor html attributes when "as=" is used 1`] 
         padding-right: 0px;
         padding-top: 0px;
         text-align: left;
+        text-decoration: none;
         text-overflow: inherit;
         user-select: text;
       }

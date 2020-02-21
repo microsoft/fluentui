@@ -498,7 +498,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
       cells.push(
         <div role={cellRole} className={'ms-List-cell'} key={itemKey} data-list-index={index} data-automationid="ListCell">
-          {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
+          {onRenderCell && onRenderCell(item, index, !this.props.ignoreScrollingState ? this.state.isScrolling : undefined)}
         </div>
       );
     }
@@ -527,7 +527,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    * we will call onAsyncIdle which will reset it back to it's correct value.
    */
   private _onScroll(): void {
-    if (!this.state.isScrolling) {
+    if (!this.state.isScrolling && !this.props.ignoreScrollingState) {
       this.setState({ isScrolling: true });
     }
     this._resetRequiredWindows();
@@ -583,7 +583,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    * This function is debounced.
    */
   private _onScrollingDone(): void {
-    this.setState({ isScrolling: false });
+    if (!this.props.ignoreScrollingState) {
+      this.setState({ isScrolling: false });
+    }
   }
 
   private _onAsyncResize(): void {

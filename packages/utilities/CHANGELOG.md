@@ -1,7 +1,19 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
 
+## 7.12.4
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Patches
+
+- styled: do not create new styles function if styles prop is not changed (xgao@microsoft.com)
+## 7.12.3
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- fix memory leak caused by closure in scroll util (xgao@microsoft.com)
 ## 7.12.2
 Wed, 19 Feb 2020 12:21:05 GMT
 

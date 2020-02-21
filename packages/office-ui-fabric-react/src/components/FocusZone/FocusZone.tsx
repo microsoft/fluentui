@@ -65,7 +65,7 @@ const _allInstances: {
 const _outerZones: Set<FocusZone> = new Set();
 
 // Track the 1 global keydown listener we hook to window.
-let _disposeGlobalKeyDownListener: () => void | undefined;
+let _disposeGlobalKeyDownListener: (() => void) | undefined;
 
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
@@ -193,13 +193,14 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   public componentWillUnmount(): void {
     delete _allInstances[this._id];
-
     if (!this._isInnerZone) {
       _outerZones.delete(this);
 
       // If this is the last outer zone, remove the keydown listener.
       if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
         _disposeGlobalKeyDownListener();
+        // Clear reference so closure can be garbage-collected.
+        _disposeGlobalKeyDownListener = undefined;
       }
     }
 

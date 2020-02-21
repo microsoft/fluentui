@@ -1,7 +1,16 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
 
+## 7.20.0
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Minor changes
+
+- add signal for item scheduled (amshan@microsoft.com)
+### Patches
+
+- update ItemScheduledSignal icon (amshan@microsoft.com)
 ## 7.19.3
 Wed, 19 Feb 2020 12:21:05 GMT
 

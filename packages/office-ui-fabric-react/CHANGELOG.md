@@ -1,7 +1,25 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
+This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
 
+## 7.95.0
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Minor changes
+
+- Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used (chce@netcompany.com)
+### Patches
+
+- Link: text decoration should not show up even for buttons. (dzearing@microsoft.com)
+## 7.94.1
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- SearchBox: Use native input onBlur to fix blur getting called twice (mgodbolt@microsoft.com)
+- DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true. (Humberto.Morimoto@microsoft.com)
+- GroupedList: Adding checks for group and selection being undefined. (Humberto.Morimoto@microsoft.com)
+- FocusZone: fix memory leak caused by closure (xgao@microsoft.com)
 ## 7.94.0
 Wed, 19 Feb 2020 12:21:05 GMT
 

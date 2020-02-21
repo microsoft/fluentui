@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/date-time_v7.8.25",
+      "version": "7.8.25",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "14fa26d0ce716ddb08a64adeb81e1e3507cd2493"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@uifabric/date-time_v7.8.23",
       "version": "7.8.23",
