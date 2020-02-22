@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Delete PositioningContainer docs",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "elcraig@microsoft.com",
+  "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6",
+  "dependentChangeType": "patch",
+  "date": "2020-02-22T04:27:21.689Z"
+}

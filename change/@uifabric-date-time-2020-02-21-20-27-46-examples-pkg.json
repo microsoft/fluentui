@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fixed date time doc page file layout",
+  "packageName": "@uifabric/date-time",
+  "email": "elcraig@microsoft.com",
+  "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6",
+  "dependentChangeType": "patch",
+  "date": "2020-02-22T04:27:34.498Z"
+}
