@@ -241,6 +241,13 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * @defaultvalue true;
    */
   shouldRestoreFocus?: boolean;
+  
+  /**
+   * When set to true, the menu will open on focus of the ComboBox as long as the
+   * ComboBox is not disabled.
+   * @defaultvalue false;
+   */
+  openOnKeyboardFocus?: boolean;
 
   /**
    * Optional iconButton props on combo box
