@@ -1294,9 +1294,6 @@ export function getAllSelectedOptions(options: ISelectableOption[], selectedIndi
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public
-export const getCheck: (theme?: ITheme | undefined, checked?: boolean | undefined, className?: string | undefined) => JSX.Element;
-
-// @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 
 // @public
