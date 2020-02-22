@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Update ComboBox prop documention",
+  "packageName": "office-ui-fabric-react",
+  "email": "kanoa@kanoa.ca",
+  "commit": "2784f39a0304c6fa8c3929ebb8a0589f5e5261a1",
+  "dependentChangeType": "patch",
+  "date": "2020-02-22T03:19:33.280Z"
+}
