@@ -368,6 +368,7 @@ function fixDocs(outputPath) {
   const docsPackageJsonFile = path.join(outputPath, 'docs/package.json');
   const docsPackageJson = fs.readJsonSync(docsPackageJsonFile);
   docsPackageJson.scripts = {
+    build: 'gulp build:docs',
     start: 'gulp docs'
   };
   fs.writeJsonSync(docsPackageJsonFile, docsPackageJson, { spaces: 2 });

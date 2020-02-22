@@ -135,11 +135,15 @@ jobs:
 
   - job: Screener
     dependsOn: Build
-    pool:
-      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: /tmp/gulp-cache
+          Contents: '**/*'
+        condition: always()
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -153,6 +157,14 @@ jobs:
           git config --global user.name "Fabric Tactical"
           yarn vrtest -- --debug
         displayName: run VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
 

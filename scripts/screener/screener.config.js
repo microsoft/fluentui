@@ -2,6 +2,30 @@
 
 require('@uifabric/build/babel/register');
 
+const cp = require('child_process');
+
+function getCurrentHash() {
+  try {
+    const buffer = cp.execSync('git rev-list --parents -n 1 HEAD', {
+      stdio: ['pipe', 'pipe', process.stderr]
+    });
+
+    if (buffer) {
+      // The command returns a list of hashes, the last one is the one we want
+      return buffer
+        .toString()
+        .trim()
+        .split(' ')
+        .pop();
+    }
+  } catch (e) {
+    console.error('Cannot get current git hash');
+    process.exit(1);
+  }
+
+  return '';
+}
+
 const config = require('../config').default;
 
 const { compilerOptions } = require(config.paths.docs('tsconfig.json'));
@@ -11,9 +35,12 @@ require('tsconfig-paths').register({
   paths: compilerOptions.paths
 });
 
+const baseBranch = 'master';
+const sourceBranch = process.env.BUILD_SOURCEBRANCH;
+
 // https://github.com/screener-io/screener-runner
 module.exports = {
-  projectRepo: 'microsoft/fluent-ui-react',
+  projectRepo: 'OfficeDev/office-ui-fabric-react/fluentui',
 
   apiKey: process.env.SCREENER_API_KEY,
 
@@ -37,14 +64,27 @@ module.exports = {
   // screenshot every example in maximized mode
   states: require('./screener.states').default,
 
-  ...(process.env.CI && {
-    baseBranch: 'master',
-    // Disable exit code to fail in Github Actions
-    // failureExitCode: 0,
-    // GITHUB_REF can be:
-    // - refs/heads/feature-branch-1 for "push"
-    // - refs/pull/2040/merge for "pull_request"
-    branch: process.env.GITHUB_REF.split('/')[2],
-    commit: process.env.GITHUB_SHA
-  })
+  // CircleCI config
+  // ...(process.env.CI && {
+  //   baseBranch: 'master',
+  //   // Disable exit code to fail in Github Actions
+  //   // failureExitCode: 0,
+  //   // GITHUB_REF can be:
+  //   // - refs/heads/feature-branch-1 for "push"
+  //   // - refs/pull/2040/merge for "pull_request"
+  //   branch: process.env.GITHUB_REF.split('/')[2],
+  //   commit: process.env.GITHUB_SHA
+  // })
+
+  alwaysAcceptBaseBranch: true,
+
+  failureExitCode: 0,
+
+  baseBranch,
+
+  ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1
+    ? {
+        commit: getCurrentHash()
+      }
+    : null)
 };
