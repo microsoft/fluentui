@@ -114,12 +114,6 @@ jobs:
 
       - template: azure-pipelines.tools.yml
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: /tmp/gulp-cache
-          Contents: '**/*'
-        condition: always()
-
       - script: |
           yarn bundle
         displayName: bundle
@@ -144,6 +138,12 @@ jobs:
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: /tmp/gulp-cache
+          Contents: '**/*'
+        condition: always()
 
       - template: azure-pipelines.artifacts.yml
         parameters:
