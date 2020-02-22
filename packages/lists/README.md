@@ -2,10 +2,6 @@
 
 **List components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
 
-## **WARNING**
-
-These are not production-ready components and **should never be used in product**. APIs are very likely to change before the final release.
-
 ## Overview
 
 The intent of the `@uifabric/lists` package is to prototype approaches to lists both virtualized and non-virtualized:
@@ -19,6 +15,22 @@ Eventually, this package will be a home for _all_ Fabric List controls, migrated
 - [List](https://developer.microsoft.com/en-us/fabric#/controls/web/list)
 - [DetailsList](https://developer.microsoft.com/en-us/fabric#/controls/web/detailslist)
 - [GroupedList](https://developer.microsoft.com/en-us/fabric#/controls/web/groupedlist)
+
+## Usage
+
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+
+To import Lists components:
+
+```js
+import { ComponentName } from '@uifabric/lists';
+```
+
+Once the Lists component graduates to a production release, the component will be available at:
+
+```js
+import { ComponentName } from 'office-ui-fabric-react';
+```
 
 ## Profiling
 
