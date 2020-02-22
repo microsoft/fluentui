@@ -1,10 +1,9 @@
-// import fs from 'fs';
-// import path from 'path';
+// @ts-check
 import { initializeIcons } from '@uifabric/icons';
-import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
+import * as React from 'react';
 
 addDecorator(withInfo());
 addDecorator(withA11y());
@@ -16,17 +15,13 @@ addParameters({
 
 initializeIcons();
 
-// const packageName = path.basename(process.cwd());
-// if (!fs.existsSync(path.join(__dirname, '../src', packageName))) {
-//   console.error(`Package ${packageName} does not have examples!`);
-//   process.exit(1);
-// }
-
-// const req = require.context('../src/' + packageName, true, /\.Example\.tsx$/);
-const req = require.context('../src', true, /\.Example\.tsx$/);
+configure(loadStories, module);
 
 function loadStories() {
   const stories = new Map();
+
+  // This will be updated by preview-loader with the actual current package name
+  const req = require.context('../src/PACKAGE_NAME', true, /\.Example\.tsx$/);
 
   req.keys().forEach(key => {
     generateStoriesFromExamples({ key, req, stories });
@@ -36,4 +31,45 @@ function loadStories() {
   return [...stories.values()];
 }
 
-configure(loadStories, module);
+/**
+ * @param options {{ key: string, stories: Map, req: (key: string) => any }}
+ */
+function generateStoriesFromExamples({ key, stories, req }) {
+  const nameMatcher = /\.\/([^/]+)\//;
+  const matches = key.match(nameMatcher);
+  if (!matches) {
+    return;
+  }
+
+  const componentName = matches[1];
+
+  if (!stories.has(componentName)) {
+    stories.set(componentName, {
+      default: {
+        title: componentName
+      }
+    });
+  }
+
+  const storyName = key
+    .substr(key.lastIndexOf('/') + 1)
+    .replace('.tsx', '')
+    .replace(/\./g, '_');
+
+  const story = stories.get(componentName);
+  const exampleModule = req(key);
+
+  for (let moduleExport of Object.keys(exampleModule)) {
+    const ExampleComponent = exampleModule[moduleExport];
+
+    if (typeof ExampleComponent === 'function') {
+      if (ExampleComponent.prototype.render) {
+        // class component
+        story[storyName] = () => React.createElement(ExampleComponent);
+      } else {
+        // function component
+        story[storyName] = ExampleComponent;
+      }
+    }
+  }
+}
