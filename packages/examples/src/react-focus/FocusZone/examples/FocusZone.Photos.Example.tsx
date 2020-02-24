@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { FocusZone } from '@fluentui/react-focus';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import { useConst } from '@uifabric/react-hooks';
