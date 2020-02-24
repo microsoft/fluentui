@@ -125,12 +125,16 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   private _registerPersistedKeytips() {
     Object.keys(this._persistedKeytips).forEach((key: string) => {
       const keytip = this._persistedKeytips[key];
-      const uniqueID = this._keytipManager.register(keytip, true);
+      const uniqueID = this._keytipManager.register(keytip, true, this._getKeyTip(keytip));
       // Update map
       this._persistedKeytips[uniqueID] = keytip;
       delete this._persistedKeytips[key];
     });
   }
+
+  private _getKeyTip = (keytip: IKeytipProps): (() => IKeytipProps) => {
+    return () => keytip;
+  };
 
   private _unregisterPersistedKeytips() {
     // Delete all persisted keytips saved

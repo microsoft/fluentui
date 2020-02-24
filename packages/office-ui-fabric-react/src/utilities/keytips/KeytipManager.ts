@@ -1,10 +1,11 @@
 import { IKeytipProps } from '../../Keytip';
-import { arraysEqual, replaceElement, findIndex, find, EventGroup, getId } from '../../Utilities';
+import { EventGroup, getId } from '../../Utilities';
 import { KeytipEvents } from '../../utilities/keytips/KeytipConstants';
 
 export interface IUniqueKeytip {
   uniqueID: string;
   keytip: IKeytipProps;
+  poll?: () => IKeytipProps;
 }
 
 /**
@@ -13,8 +14,9 @@ export interface IUniqueKeytip {
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
 
-  public keytips: IUniqueKeytip[] = [];
-  public persistedKeytips: IUniqueKeytip[] = [];
+  public keytips: { [Key: string]: IUniqueKeytip } = {};
+  public persistedKeytips: { [Key: string]: IUniqueKeytip } = {};
+  public sequenceMapping: { [Key: string]: IKeytipProps } = {};
 
   // This is (and should be) updated and kept in sync
   // with the inKeytipMode in KeytipLayer.
@@ -40,22 +42,26 @@ export class KeytipManager {
    * @param persisted - T/F if this keytip should be persisted, default is false
    * @returns {string} Unique ID for this keytip
    */
-  public register(keytipProps: IKeytipProps, persisted: boolean = false): string {
+  public register(keytipProps: IKeytipProps, persisted: boolean = false, pollCallback?: () => IKeytipProps): string {
     let props: IKeytipProps = keytipProps;
     if (!persisted) {
       // Add the overflowSetSequence if necessary
       props = this.addParentOverflow(keytipProps);
+      this.sequenceMapping[props.keySequences.toString()] = props;
     }
     // Create a unique keytip
-    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props);
-    // Add to array
-    persisted ? this.persistedKeytips.push(uniqueKeytip) : this.keytips.push(uniqueKeytip);
+    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props, undefined, pollCallback);
+    // Add to dictionary
+    persisted ? (this.persistedKeytips[uniqueKeytip.uniqueID] = uniqueKeytip) : (this.keytips[uniqueKeytip.uniqueID] = uniqueKeytip);
 
-    const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_ADDED : KeytipEvents.KEYTIP_ADDED;
-    EventGroup.raise(this, event, {
-      keytip: props,
-      uniqueID: uniqueKeytip.uniqueID
-    });
+    // We only want to add something new if we are currently showing keytip mode
+    if (this.inKeytipMode) {
+      const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_ADDED : KeytipEvents.KEYTIP_ADDED;
+      EventGroup.raise(this, event, {
+        keytip: props,
+        uniqueID: uniqueKeytip.uniqueID
+      });
+    }
 
     return uniqueKeytip.uniqueID;
   }
@@ -69,19 +75,24 @@ export class KeytipManager {
   public update(keytipProps: IKeytipProps, uniqueID: string): void {
     const newKeytipProps = this.addParentOverflow(keytipProps);
     const uniqueKeytip = this._getUniqueKtp(newKeytipProps, uniqueID);
-    const keytipIndex = findIndex(this.keytips, (ktp: IUniqueKeytip) => {
-      return ktp.uniqueID === uniqueID;
-    });
-    if (keytipIndex >= 0) {
+    const oldKeyTip = this.keytips[uniqueID];
+    if (oldKeyTip) {
       // Update everything except 'visible'
-      uniqueKeytip.keytip.visible = this.keytips[keytipIndex].keytip.visible;
+      uniqueKeytip.keytip.visible = oldKeyTip.keytip.visible;
       // Update keytip in this.keytips
-      this.keytips = replaceElement(this.keytips, uniqueKeytip, keytipIndex);
-      // Raise event
-      EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
-        keytip: uniqueKeytip.keytip,
-        uniqueID: uniqueKeytip.uniqueID
-      });
+      this.keytips[uniqueID] = uniqueKeytip;
+
+      // Update the sequence to be up to date
+      delete this.sequenceMapping[oldKeyTip.keytip.keySequences.toString()];
+      this.sequenceMapping[uniqueKeytip.keytip.keySequences.toString()] = uniqueKeytip.keytip;
+
+      // Raise event only if we are currently in keytip mode
+      if (this.inKeytipMode) {
+        EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
+          keytip: uniqueKeytip.keytip,
+          uniqueID: uniqueKeytip.uniqueID
+        });
+      }
     }
   }
 
@@ -93,23 +104,17 @@ export class KeytipManager {
    * @param persisted - T/F if this keytip should be persisted, default is false
    */
   public unregister(keytipToRemove: IKeytipProps, uniqueID: string, persisted: boolean = false): void {
-    if (persisted) {
-      // Remove keytip from this.persistedKeytips
-      this.persistedKeytips = this.persistedKeytips.filter((uniqueKtp: IUniqueKeytip) => {
-        return uniqueKtp.uniqueID !== uniqueID;
-      });
-    } else {
-      // Remove keytip from this.keytips
-      this.keytips = this.keytips.filter((uniqueKtp: IUniqueKeytip) => {
-        return uniqueKtp.uniqueID !== uniqueID;
-      });
-    }
+    persisted ? delete this.persistedKeytips[uniqueID] : delete this.keytips[uniqueID];
+    persisted && delete this.sequenceMapping[keytipToRemove.keySequences.toString()];
 
     const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_REMOVED : KeytipEvents.KEYTIP_REMOVED;
-    EventGroup.raise(this, event, {
-      keytip: keytipToRemove,
-      uniqueID: uniqueID
-    });
+    // Update keytips only if we're in keytip mode
+    if (this.inKeytipMode) {
+      EventGroup.raise(this, event, {
+        keytip: keytipToRemove,
+        uniqueID: uniqueID
+      });
+    }
   }
 
   /**
@@ -132,9 +137,7 @@ export class KeytipManager {
    * @returns {IKeytipProps[]} All keytips stored in the manager
    */
   public getKeytips(): IKeytipProps[] {
-    return this.keytips.map((uniqueKeytip: IUniqueKeytip) => {
-      return uniqueKeytip.keytip;
-    });
+    return Object.keys(this.keytips).map(key => this.keytips[key].keytip);
   }
 
   /**
@@ -147,9 +150,7 @@ export class KeytipManager {
     const fullSequence = [...keytipProps.keySequences];
     fullSequence.pop();
     if (fullSequence.length !== 0) {
-      const parentKeytip = find(this.getKeytips(), (keytip: IKeytipProps) => {
-        return arraysEqual(fullSequence, keytip.keySequences);
-      });
+      const parentKeytip = this.sequenceMapping[fullSequence.toString()];
       if (parentKeytip && parentKeytip.overflowSetSequence) {
         return {
           ...keytipProps,
@@ -180,7 +181,7 @@ export class KeytipManager {
    * @param uniqueID - Unique ID, will default to the next unique ID if not passed
    * @returns {IUniqueKeytip} IUniqueKeytip object
    */
-  private _getUniqueKtp(keytipProps: IKeytipProps, uniqueID: string = getId()): IUniqueKeytip {
-    return { keytip: { ...keytipProps }, uniqueID };
+  private _getUniqueKtp(keytipProps: IKeytipProps, uniqueID: string = getId(), poll?: () => IKeytipProps): IUniqueKeytip {
+    return { keytip: { ...keytipProps }, uniqueID, poll };
   }
 }

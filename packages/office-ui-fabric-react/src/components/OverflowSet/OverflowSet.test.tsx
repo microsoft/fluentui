@@ -13,16 +13,19 @@ import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
-  const ktp = find(keytipManager.keytips, (uniqueKeytip: IUniqueKeytip) => {
+  const ktp = find(Object.keys(keytipManager.keytips).map(key => keytipManager.keytips[key]), (uniqueKeytip: IUniqueKeytip) => {
     return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
   });
   return ktp ? ktp.keytip : undefined;
 }
 
 function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
-  const ktp = find(keytipManager.persistedKeytips, (uniqueKeytip: IUniqueKeytip) => {
-    return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
-  });
+  const ktp = find(
+    Object.keys(keytipManager.persistedKeytips).map(key => keytipManager.persistedKeytips[key]),
+    (uniqueKeytip: IUniqueKeytip) => {
+      return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
+    }
+  );
   return ktp ? ktp.keytip : undefined;
 }
 
@@ -174,8 +177,8 @@ describe('OverflowSet', () => {
       jest.useRealTimers();
 
       // Clean up the keytip items
-      keytipManager.keytips = [];
-      keytipManager.persistedKeytips = [];
+      keytipManager.keytips = {};
+      keytipManager.persistedKeytips = {};
 
       // Manually unmount to clean up listeners
       if (overflowSet) {
