@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react';
 
 const inputItems = [
   'Bruce Wayne',
@@ -10,8 +10,8 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle',
-]
+  'Selina Kyle'
+];
 
 const DropdownExample = () => (
   <Dropdown
@@ -20,6 +20,6 @@ const DropdownExample = () => (
     checkable
     getA11ySelectionMessage={{ onAdd: item => `${item} has been selected.` }}
   />
-)
+);
 
-export default DropdownExample
+export default DropdownExample;

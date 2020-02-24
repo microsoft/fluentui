@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Avatar } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar } from '@fluentui/react';
 
 const AvatarExampleNameShorthand = () => (
   <Avatar
@@ -7,9 +7,9 @@ const AvatarExampleNameShorthand = () => (
     status={{
       color: 'green',
       icon: 'icon-checkmark',
-      title: 'Available',
+      title: 'Available'
     }}
   />
-)
+);
 
-export default AvatarExampleNameShorthand
+export default AvatarExampleNameShorthand;

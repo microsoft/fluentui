@@ -1,18 +1,18 @@
-import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react';
+import * as _ from 'lodash';
+import * as React from 'react';
 
 const ToolbarExampleMenuItemToggle = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
-  const [activeIndexes, setActiveIndexes] = React.useState<number[]>([])
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const [activeIndexes, setActiveIndexes] = React.useState<number[]>([]);
 
   const handleToggleClick = (e: React.SyntheticEvent, props: ToolbarMenuItemProps) => {
     if (_.includes(activeIndexes, props.index)) {
-      setActiveIndexes(_.without(activeIndexes, props.index))
+      setActiveIndexes(_.without(activeIndexes, props.index));
     } else {
-      setActiveIndexes([...activeIndexes, props.index])
+      setActiveIndexes([...activeIndexes, props.index]);
     }
-  }
+  };
 
   return (
     <Toolbar
@@ -31,7 +31,7 @@ const ToolbarExampleMenuItemToggle = () => {
               kind: 'toggle',
               icon: 'bold',
               index: 0,
-              onClick: handleToggleClick,
+              onClick: handleToggleClick
             },
             {
               key: 'italic',
@@ -40,17 +40,17 @@ const ToolbarExampleMenuItemToggle = () => {
               kind: 'toggle',
               icon: 'italic',
               index: 1,
-              onClick: handleToggleClick,
+              onClick: handleToggleClick
             },
             { key: 'divider', kind: 'divider' },
-            'About...',
+            'About...'
           ],
           menuOpen,
-          onMenuOpenChange: (e, { menuOpen }) => setMenuOpen(menuOpen),
-        },
+          onMenuOpenChange: (e, { menuOpen }) => setMenuOpen(menuOpen)
+        }
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExampleMenuItemToggle
+export default ToolbarExampleMenuItemToggle;

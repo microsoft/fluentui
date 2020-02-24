@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const SplitButton = () => (
   <ExampleSection title="Split Button">
@@ -14,12 +14,8 @@ const SplitButton = () => (
       description="A SplitButton can be formatted to show primary level of emphasis."
       examplePath="components/SplitButton/Types/SplitButtonExamplePrimary"
     />
-    <ComponentExample
-      title="Small"
-      description="small splitbutton"
-      examplePath="components/SplitButton/Types/SplitButtonExampleSmall"
-    />
+    <ComponentExample title="Small" description="small splitbutton" examplePath="components/SplitButton/Types/SplitButtonExampleSmall" />
   </ExampleSection>
-)
+);
 
-export default SplitButton
+export default SplitButton;

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Icon } from '@fluentui/react';
 
 const IconExampleRtl = () => (
   <Flex gap="gap.smaller">
@@ -8,6 +8,6 @@ const IconExampleRtl = () => (
     <Icon name="redo" />
     <Icon name="send" />
   </Flex>
-)
+);
 
-export default IconExampleRtl
+export default IconExampleRtl;

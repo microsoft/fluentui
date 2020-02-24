@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { TeamsProcessedSvgIconSpec } from '../types'
+import * as React from 'react';
+import { TeamsProcessedSvgIconSpec } from '../types';
 
 export default {
   icon: ({ classes }) => (
@@ -8,5 +8,5 @@ export default {
       <path d="M17.055 12.445c-.14-.14-.301-.25-.48-.328s-.37-.117-.567-.117c-.2 0-.387.04-.567.117s-.343.188-.488.328c-.07.073-.108.162-.162.242l-.731-.731c.059-.075.114-.153.182-.222.229-.229.496-.408.805-.539a2.439 2.439 0 0 1 1.918 0 2.544 2.544 0 0 1 1.344 1.344c.132.308.199.628.199.961 0 .334-.067.651-.195.953-.131.302-.313.57-.547.805-.07.069-.147.123-.221.183l-.728-.728c.079-.055.168-.094.238-.166.144-.14.258-.3.336-.48s.117-.369.117-.567c0-.198-.04-.387-.117-.566s-.192-.343-.336-.489z" />
     </svg>
   ),
-  styles: {},
-} as TeamsProcessedSvgIconSpec
+  styles: {}
+} as TeamsProcessedSvgIconSpec;

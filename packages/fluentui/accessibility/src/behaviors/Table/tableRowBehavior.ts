@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import tableCellBehavior from './tableCellBehavior'
-import tableHeaderCellBehavior from './tableHeaderCellBehavior'
+import { Accessibility } from '../../types';
+import tableCellBehavior from './tableCellBehavior';
+import tableHeaderCellBehavior from './tableHeaderCellBehavior';
 
 /**
  * @description
@@ -11,12 +11,12 @@ import tableHeaderCellBehavior from './tableHeaderCellBehavior'
 const tableRowBehavior: Accessibility = props => ({
   attributes: {
     root: {
-      role: 'row',
-    },
+      role: 'row'
+    }
   },
   childBehaviors: {
-    cell: props.header ? tableHeaderCellBehavior : tableCellBehavior,
-  },
-})
+    cell: props.header ? tableHeaderCellBehavior : tableCellBehavior
+  }
+});
 
-export default tableRowBehavior
+export default tableRowBehavior;

@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import toolbarMenuItemBehavior from './toolbarMenuItemBehavior'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import toolbarMenuItemBehavior from './toolbarMenuItemBehavior';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @description
@@ -16,25 +16,25 @@ import * as keyboardKey from 'keyboard-key'
 const toolbarMenuBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'menu',
-    },
+      role: 'menu'
+    }
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
   },
   focusZone: {
     props: {
       isCircularNavigation: true,
       shouldFocusOnMount: true,
-      direction: FocusZoneDirection.vertical,
-    },
+      direction: FocusZoneDirection.vertical
+    }
   },
-  childBehaviors: { item: toolbarMenuItemBehavior },
-})
+  childBehaviors: { item: toolbarMenuItemBehavior }
+});
 
-export default toolbarMenuBehavior
+export default toolbarMenuBehavior;

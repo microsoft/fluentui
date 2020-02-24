@@ -72,7 +72,7 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.{js,jsx,json,scss,css,html,md,yml}": [
+      "*.{js,jsx,json,scss,css,html,htm,md,yml}": [
         "node ./scripts/lint-staged/prettier",
         "node ./scripts/lint-staged/auto-convert-change-files",
         "git add"

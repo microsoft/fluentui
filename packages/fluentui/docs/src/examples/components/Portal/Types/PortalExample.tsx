@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { Button, Divider, Flex, Header, Label, Portal } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Divider, Flex, Header, Label, Portal } from '@fluentui/react';
 
 class PortalExamplePortal extends React.Component {
-  state = { log: [], logCount: 0 }
+  state = { log: [], logCount: 0 };
 
   handleClick = () =>
     this.setState({
       log: [`${new Date().toLocaleTimeString()}: handleClick`, ...this.state.log].slice(0, 20),
-      logCount: this.state.logCount + 1,
-    })
+      logCount: this.state.logCount + 1
+    });
 
-  clearLog = () => this.setState({ log: [], logCount: 0 })
+  clearLog = () => this.setState({ log: [], logCount: 0 });
 
   render() {
-    const { log, logCount } = this.state
+    const { log, logCount } = this.state;
 
     return (
       <div>
@@ -28,7 +28,7 @@ class PortalExamplePortal extends React.Component {
               padding: '15px',
               boxShadow: 'rgb(187, 187, 187) 0px 2px 8px',
               border: '1px solid rgba(34,36,38,.15)',
-              borderRadius: '5px',
+              borderRadius: '5px'
             }}
           >
             <Header>This is a basic portal</Header>
@@ -52,8 +52,8 @@ class PortalExamplePortal extends React.Component {
           </pre>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default PortalExamplePortal
+export default PortalExamplePortal;

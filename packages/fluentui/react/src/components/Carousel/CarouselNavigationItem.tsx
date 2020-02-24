@@ -1,8 +1,8 @@
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as _ from 'lodash'
-import { Accessibility, tabBehavior } from '@fluentui/accessibility'
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
+import { Accessibility, tabBehavior } from '@fluentui/accessibility';
 
 import {
   childrenExist,
@@ -15,31 +15,28 @@ import {
   ContentComponentProps,
   applyAccessibilityKeyHandlers,
   SizeValue,
-  UIComponent,
-} from '../../utils'
-import { withSafeTypeForAs, WithAsProp, ShorthandValue, ComponentEventHandler } from '../../types'
-import Icon, { IconProps } from '../Icon/Icon'
-import Box from '../Box/Box'
+  UIComponent
+} from '../../utils';
+import { withSafeTypeForAs, WithAsProp, ShorthandValue, ComponentEventHandler } from '../../types';
+import Icon, { IconProps } from '../Icon/Icon';
+import Box from '../Box/Box';
 
 export interface CarouselNavigationItemSlotClassNames {
-  wrapper: string
+  wrapper: string;
 }
 
-export interface CarouselNavigationItemProps
-  extends UIComponentProps,
-    ChildrenComponentProps,
-    ContentComponentProps {
+export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** A menu item can be active. */
-  active?: boolean
+  active?: boolean;
 
   /** Name or shorthand for Carousel Navigation Item Icon */
-  icon?: ShorthandValue<IconProps>
+  icon?: ShorthandValue<IconProps>;
 
   /** A Carousel Navigation may have just icons. */
-  iconOnly?: boolean
+  iconOnly?: boolean;
 
   /** CarouselNavigationIntem index inside CarouselNavigation. */
-  index?: number
+  index?: number;
 
   /**
    * Called on click.
@@ -47,24 +44,24 @@ export interface CarouselNavigationItemProps
    * @param {SyntheticEvent} event - React's original SyntheticEvent.
    * @param {object} data - All props.
    */
-  onClick?: ComponentEventHandler<CarouselNavigationItemProps>
+  onClick?: ComponentEventHandler<CarouselNavigationItemProps>;
 
   /** The carousel navigation item can have primary type. */
-  primary?: boolean
+  primary?: boolean;
 
   /** The carousel navigation item can have secondary type. */
-  secondary?: boolean
+  secondary?: boolean;
 
   /** A vertical carousel navigation displays elements vertically. */
-  vertical?: boolean
+  vertical?: boolean;
 }
 
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
-  static displayName = 'CarouselNavigationItem'
+  static displayName = 'CarouselNavigationItem';
 
-  static className = 'ui-carousel__navigationitem'
+  static className = 'ui-carousel__navigationitem';
 
-  static create: ShorthandFactory<CarouselNavigationItemProps>
+  static create: ShorthandFactory<CarouselNavigationItemProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -75,17 +72,17 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
     onClick: PropTypes.func,
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    vertical: PropTypes.bool,
-  }
+    vertical: PropTypes.bool
+  };
 
   static defaultProps = {
     accessibility: tabBehavior as Accessibility,
     as: 'li',
-    icon: { name: 'icon-circle', size: 'smallest' as SizeValue },
-  }
+    icon: { name: 'icon-circle', size: 'smallest' as SizeValue }
+  };
 
   renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
-    const { children, content, icon } = this.props
+    const { children, content, icon } = this.props;
 
     return childrenExist(children) ? (
       children
@@ -103,41 +100,39 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
         {Icon.create(icon, {
           defaultProps: () => ({
             xSpacing: !!content ? 'after' : 'none',
-            styles: styles.icon,
-          }),
+            styles: styles.icon
+          })
         })}
         {Box.create(content, {
-          defaultProps: () => ({ as: 'span', styles: styles.content }),
+          defaultProps: () => ({ as: 'span', styles: styles.content })
         })}
       </ElementType>
-    )
+    );
   }
 
   handleClick = (e: Event | React.SyntheticEvent) => {
-    _.invoke(this.props, 'onClick', e, this.props)
-  }
+    _.invoke(this.props, 'onClick', e, this.props);
+  };
 
   handleBlur = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onBlur', e, this.props)
-  }
+    _.invoke(this.props, 'onBlur', e, this.props);
+  };
 
   handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onFocus', e, this.props)
-  }
+    _.invoke(this.props, 'onFocus', e, this.props);
+  };
 
   actionHandlers = {
-    performClick: event => !event.defaultPrevented && this.handleClick(event),
-  }
+    performClick: event => !event.defaultPrevented && this.handleClick(event)
+  };
 }
 
 CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
-  mappedArrayProp: 'content',
-})
+  mappedArrayProp: 'content'
+});
 
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-export default withSafeTypeForAs<typeof CarouselNavigationItem, CarouselNavigationItemProps, 'li'>(
-  CarouselNavigationItem,
-)
+export default withSafeTypeForAs<typeof CarouselNavigationItem, CarouselNavigationItemProps, 'li'>(CarouselNavigationItem);

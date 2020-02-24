@@ -1,22 +1,22 @@
-import { Renderer } from '@fluentui/react-bindings'
-import { createRenderer as createFelaRenderer } from 'fela'
-import felaPluginEmbedded from 'fela-plugin-embedded'
-import felaPluginFallbackValue from 'fela-plugin-fallback-value'
-import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer'
-import felaPluginPrefixer from 'fela-plugin-prefixer'
-import felaPluginRtl from 'fela-plugin-rtl'
+import { Renderer } from '@fluentui/react-bindings';
+import { createRenderer as createFelaRenderer } from 'fela';
+import felaPluginEmbedded from 'fela-plugin-embedded';
+import felaPluginFallbackValue from 'fela-plugin-fallback-value';
+import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
+import felaPluginPrefixer from 'fela-plugin-prefixer';
+import felaPluginRtl from 'fela-plugin-rtl';
 
-import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin'
-import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin'
-import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer'
-import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin'
-import felaSanitizeCss from './felaSanitizeCssPlugin'
+import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
+import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
+import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
+import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
+import felaSanitizeCss from './felaSanitizeCssPlugin';
 
-let felaDevMode = false
+let felaDevMode = false;
 
 try {
   // eslint-disable-next-line no-undef
-  felaDevMode = !!window.localStorage.felaDevMode
+  felaDevMode = !!window.localStorage.felaDevMode;
 } catch {}
 
 if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
@@ -26,9 +26,9 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
       [
         '@fluentui/react:',
         'You are running Fela in development mode and this can cause performance degrades.',
-        'To disable it please paste `delete window.localStorage.felaDevMode` to your browsers console and reload current page.',
-      ].join(' '),
-    )
+        'To disable it please paste `delete window.localStorage.felaDevMode` to your browsers console and reload current page.'
+      ].join(' ')
+    );
   } else {
     /* eslint-disable-next-line no-console */
     console.warn(
@@ -36,18 +36,17 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
         '@fluentui/react:',
         'You are running Fela in production mode.',
         'This limits your ability to edit styles in browsers development tools.',
-        'To enable development mode please paste `window.localStorage.felaDevMode = true` to your browsers console and reload the page.',
-      ].join(' '),
-    )
+        'To enable development mode please paste `window.localStorage.felaDevMode = true` to your browsers console and reload the page.'
+      ].join(' ')
+    );
   }
 }
 
 // Blacklist contains a list of classNames that are used by FontAwesome
 // https://fontawesome.com/how-to-use/on-the-web/referencing-icons/basic-use
-const blacklistedClassNames = ['fa', 'fas', 'far', 'fal', 'fab']
+const blacklistedClassNames = ['fa', 'fas', 'far', 'fal', 'fab'];
 
-const filterClassName = (className: string): boolean =>
-  className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1
+const filterClassName = (className: string): boolean => className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1;
 
 const rendererConfig = {
   devMode: felaDevMode,
@@ -59,7 +58,7 @@ const rendererConfig = {
     // is necessary to prevent accidental style typos
     // from breaking ALL the styles on the page
     felaSanitizeCss({
-      skip: ['content', 'keyframe'],
+      skip: ['content', 'keyframe']
     }),
 
     felaPluginPlaceholderPrefixer(),
@@ -73,10 +72,10 @@ const rendererConfig = {
 
     felaExpandCssShorthandsPlugin(),
 
-    felaPluginRtl(),
-  ],
-}
+    felaPluginRtl()
+  ]
+};
 
-export const createRenderer = (): Renderer => createFelaRenderer(rendererConfig) as Renderer
+export const createRenderer = (): Renderer => createFelaRenderer(rendererConfig) as Renderer;
 
-export const felaRenderer = createRenderer()
+export const felaRenderer = createRenderer();

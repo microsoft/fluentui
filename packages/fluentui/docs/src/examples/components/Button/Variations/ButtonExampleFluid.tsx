@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Button } from '@fluentui/react'
+import * as React from 'react';
+import { Button } from '@fluentui/react';
 
-const ButtonExampleFluid = () => <Button fluid>Fits to Container</Button>
+const ButtonExampleFluid = () => <Button fluid>Fits to Container</Button>;
 
-export default ButtonExampleFluid
+export default ButtonExampleFluid;

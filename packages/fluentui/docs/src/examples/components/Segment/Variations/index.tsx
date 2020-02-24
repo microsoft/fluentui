@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Variations = () => (
   <ExampleSection title="Variations">
@@ -15,6 +15,6 @@ const Variations = () => (
       examplePath="components/Segment/Variations/SegmentExampleColor"
     />
   </ExampleSection>
-)
+);
 
-export default Variations
+export default Variations;

@@ -1,7 +1,7 @@
 export interface ChatVariables {
-  backgroundColor: string
+  backgroundColor: string;
 }
 
 export default (siteVars): ChatVariables => ({
-  backgroundColor: siteVars.colors.grey[100],
-})
+  backgroundColor: siteVars.colors.grey[100]
+});

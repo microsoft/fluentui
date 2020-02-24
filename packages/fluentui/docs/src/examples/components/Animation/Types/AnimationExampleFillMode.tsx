@@ -1,14 +1,14 @@
-import * as React from 'react'
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react';
 
 const colorChanger = {
   keyframe: {
     from: { color: 'red' },
-    to: { color: 'blue' },
+    to: { color: 'blue' }
   },
   duration: '3s',
-  iterationCount: 'infinite',
-}
+  iterationCount: 'infinite'
+};
 
 const AnimationExampleFillMode = () => (
   <Provider theme={{ animations: { colorChanger } }}>
@@ -39,6 +39,6 @@ const AnimationExampleFillMode = () => (
       </div>
     </Grid>
   </Provider>
-)
+);
 
-export default AnimationExampleFillMode
+export default AnimationExampleFillMode;

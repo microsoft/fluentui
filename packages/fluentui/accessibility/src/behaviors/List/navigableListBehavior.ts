@@ -1,6 +1,6 @@
-import { FocusZoneDirection } from '../../focusZone/types'
-import { Accessibility } from '../../types'
-import { ListBehaviorProps } from './listBehavior'
+import { FocusZoneDirection } from '../../focusZone/types';
+import { Accessibility } from '../../types';
+import { ListBehaviorProps } from './listBehavior';
 
 /**
  * @specification
@@ -10,15 +10,15 @@ import { ListBehaviorProps } from './listBehavior'
 const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'menu',
-    },
+      role: 'menu'
+    }
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder,
-    },
-  },
-})
+      direction: FocusZoneDirection.bidirectionalDomOrder
+    }
+  }
+});
 
-export default navigableListBehavior
+export default navigableListBehavior;

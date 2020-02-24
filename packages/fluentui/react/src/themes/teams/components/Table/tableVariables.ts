@@ -1,27 +1,27 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface TeamsTableVariables {
-  color: string
-  hoverColor: string
-  backgroundColor: string
-  backgroundHoverColor: string
-  borderWidth: string
-  headerBorderColor: string
-  headerBorderHoverColor: string
-  headerBorderFocusColor: string
-  rowBorderColor: string
-  rowBorderHoverColor: string
-  rowBorderFocusColor: string
-  cellBorderColor: string
-  cellBorderHoverColor: string
-  cellBorderFocusColor: string
-  defaultRowHeight: string
-  compactRowHeight: string
-  minCellWidth: string
-  cellPadding: string
-  rowPadding: string
-  headerFontSize: string
-  bodyFontSize: string
+  color: string;
+  hoverColor: string;
+  backgroundColor: string;
+  backgroundHoverColor: string;
+  borderWidth: string;
+  headerBorderColor: string;
+  headerBorderHoverColor: string;
+  headerBorderFocusColor: string;
+  rowBorderColor: string;
+  rowBorderHoverColor: string;
+  rowBorderFocusColor: string;
+  cellBorderColor: string;
+  cellBorderHoverColor: string;
+  cellBorderFocusColor: string;
+  defaultRowHeight: string;
+  compactRowHeight: string;
+  minCellWidth: string;
+  cellPadding: string;
+  rowPadding: string;
+  headerFontSize: string;
+  bodyFontSize: string;
 }
 
 export default (siteVariables): Partial<TeamsTableVariables> => {
@@ -46,6 +46,6 @@ export default (siteVariables): Partial<TeamsTableVariables> => {
     rowBorderFocusColor: siteVariables.colorScheme.default.borderFocus,
     cellBorderColor: 'transparent',
     cellBorderHoverColor: 'transparent',
-    cellBorderFocusColor: siteVariables.colorScheme.default.borderFocus,
-  }
-}
+    cellBorderFocusColor: siteVariables.colorScheme.default.borderFocus
+  };
+};

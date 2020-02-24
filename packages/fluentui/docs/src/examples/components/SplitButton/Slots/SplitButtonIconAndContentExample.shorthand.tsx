@@ -1,29 +1,29 @@
-import * as React from 'react'
-import { SplitButton } from '@fluentui/react'
+import * as React from 'react';
+import { SplitButton } from '@fluentui/react';
 
 const items = [
   {
     key: 'pdf',
     content: 'Export to PDF',
-    icon: 'files-pdf',
+    icon: 'files-pdf'
   },
   {
     key: 'pds',
     content: 'Export to PDS',
-    icon: 'files-photoshop',
+    icon: 'files-photoshop'
   },
   {
     key: 'gif',
     content: 'Export as GIF',
     icon: 'files-gif',
-    disabled: true,
+    disabled: true
   },
   {
     key: 'eps',
     content: 'Export to EPS',
-    icon: 'files-illustrator',
-  },
-]
+    icon: 'files-illustrator'
+  }
+];
 
 const SplitButtonIconAndContentExampleShorthand = () => (
   <>
@@ -34,7 +34,7 @@ const SplitButtonIconAndContentExampleShorthand = () => (
         key: items[0].key,
         icon: items[0].icon,
         'aria-roledescription': 'splitbutton',
-        'aria-describedby': 'instruction-message-icon-content',
+        'aria-describedby': 'instruction-message-icon-content'
       }}
       onMainButtonClick={() => alert('button was clicked')}
       toggleButton={{ 'aria-label': 'more options' }}
@@ -43,6 +43,6 @@ const SplitButtonIconAndContentExampleShorthand = () => (
       to open menu, press Alt + Arrow Down
     </span>
   </>
-)
+);
 
-export default SplitButtonIconAndContentExampleShorthand
+export default SplitButtonIconAndContentExampleShorthand;

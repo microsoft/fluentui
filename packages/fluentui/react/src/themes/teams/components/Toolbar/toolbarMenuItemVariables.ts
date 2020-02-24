@@ -1,3 +1,3 @@
-import toolbarVariables from './toolbarVariables'
+import toolbarVariables from './toolbarVariables';
 
-export default toolbarVariables
+export default toolbarVariables;

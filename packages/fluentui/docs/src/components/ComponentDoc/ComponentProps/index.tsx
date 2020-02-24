@@ -1,1 +1,1 @@
-export { default } from './ComponentProps'
+export { default } from './ComponentProps';

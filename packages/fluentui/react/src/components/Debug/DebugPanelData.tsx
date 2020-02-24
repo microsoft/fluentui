@@ -1,43 +1,38 @@
-import * as React from 'react'
-import { find, isOverridden } from './utils'
+import * as React from 'react';
+import { find, isOverridden } from './utils';
 
 interface DebugPanelDataProps {
-  data: any
-  overrides?: any
-  comments?: any
-  indent?: number
-  highlightKey?: string
-  commentKeyPredicate?: (val: any) => boolean
+  data: any;
+  overrides?: any;
+  comments?: any;
+  indent?: number;
+  highlightKey?: string;
+  commentKeyPredicate?: (val: any) => boolean;
 }
 
 const DebugPanelData: React.FC<DebugPanelDataProps> = props => {
-  const { data, indent = 2, highlightKey, overrides, comments, commentKeyPredicate } = props
+  const { data, indent = 2, highlightKey, overrides, comments, commentKeyPredicate } = props;
 
-  const isValidComment =
-    typeof comments === 'string' && commentKeyPredicate && commentKeyPredicate(comments)
+  const isValidComment = typeof comments === 'string' && commentKeyPredicate && commentKeyPredicate(comments);
 
   if (typeof data === 'undefined') {
-    return isValidComment ? <abbr title={comments}>undefined</abbr> : <span>undefined</span>
+    return isValidComment ? <abbr title={comments}>undefined</abbr> : <span>undefined</span>;
   }
 
   if (data === null || typeof data !== 'object') {
-    return isValidComment ? (
-      <abbr title={comments}>{JSON.stringify(data)}</abbr>
-    ) : (
-      <span>{JSON.stringify(data)}</span>
-    )
+    return isValidComment ? <abbr title={comments}>{JSON.stringify(data)}</abbr> : <span>{JSON.stringify(data)}</span>;
   }
 
   return (
     <>
       {'{'}
       {Object.keys(data).map((key, idx) => {
-        const value = data[key]
+        const value = data[key];
 
-        const comment = comments && comments[key]
+        const comment = comments && comments[key];
 
-        const highlight = find(data, key, highlightKey)
-        const overridden = isOverridden(data, key, overrides)
+        const highlight = find(data, key, highlightKey);
+        const overridden = isOverridden(data, key, overrides);
 
         return (
           <div key={key}>
@@ -58,11 +53,11 @@ const DebugPanelData: React.FC<DebugPanelDataProps> = props => {
               {','}
             </span>
           </div>
-        )
+        );
       })}
       {`${indent > 2 ? ' '.repeat(indent - 2) : ''}}`}
     </>
-  )
-}
+  );
+};
 
-export default DebugPanelData
+export default DebugPanelData;

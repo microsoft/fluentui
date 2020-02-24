@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 /**
  * Tests if children are nil in React and Preact.
@@ -6,13 +6,13 @@ import * as React from 'react'
  * @param children - The children prop of a component.
  */
 const childrenExist = (children: React.ReactNode): boolean => {
-  if (children === null || children === undefined) return false
+  if (children === null || children === undefined) return false;
 
-  if (typeof children === 'number') return !isNaN(children)
+  if (typeof children === 'number') return !isNaN(children);
 
-  if (Array.isArray(children)) return children.length > 0
+  if (Array.isArray(children)) return children.length > 0;
 
-  return !!children
-}
+  return !!children;
+};
 
-export default childrenExist
+export default childrenExist;

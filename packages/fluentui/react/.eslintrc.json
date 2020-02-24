@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "../../../scripts/eslint/index"
-  ],
+  "extends": ["../../../scripts/eslint/index"],
   "overrides": [
     {
       "files": "**/icons/*.tsx",

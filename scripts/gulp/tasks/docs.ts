@@ -15,7 +15,7 @@ import sh from '../sh';
 import config from '../../config';
 import gulpComponentMenu from '../plugins/gulp-component-menu';
 import gulpComponentMenuBehaviors from '../plugins/gulp-component-menu-behaviors';
-import gulpDoctoc from '../plugins/gulp-doctoc';
+// import gulpDoctoc from '../plugins/gulp-doctoc';
 import gulpExampleMenu from '../plugins/gulp-example-menu';
 import gulpExampleSource from '../plugins/gulp-example-source';
 import gulpReactDocgen from '../plugins/gulp-react-docgen';
@@ -64,14 +64,14 @@ const componentsSrc = [
 const behaviorSrc = [`${paths.posix.packageSrc('accessibility')}/behaviors/*/[a-z]*Behavior.ts`];
 const examplesIndexSrc = `${paths.posix.docsSrc()}/examples/*/*/*/index.tsx`;
 const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).tsx`;
-const markdownSrc = [
-  '.github/CONTRIBUTING.md',
-  '.github/setup-local-development.md',
-  '.github/add-a-feature.md',
-  '.github/document-a-feature.md',
-  '.github/test-a-feature.md',
-  'specifications/*.md'
-];
+// const markdownSrc = [
+//   '.github/CONTRIBUTING.md',
+//   '.github/setup-local-development.md',
+//   '.github/add-a-feature.md',
+//   '.github/document-a-feature.md',
+//   '.github/test-a-feature.md',
+//   'specifications/*.md'
+// ];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>
@@ -124,12 +124,15 @@ task('build:docs:html', () => src(paths.docsSrc('404.html')).pipe(dest(paths.doc
 
 task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pipe(dest(paths.docsDist())));
 
-task('build:docs:toc', () =>
-  src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
-    cache(gulpDoctoc(), {
-      name: 'md-docs'
-    })
-  )
+// Disable temporarily to prevent conflicts with prettier
+task(
+  'build:docs:toc',
+  done => done()
+  // src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
+  //   cache(gulpDoctoc(), {
+  //     name: 'md-docs'
+  //   })
+  // )
 );
 
 task('build:docs:schema', () =>

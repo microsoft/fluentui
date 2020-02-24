@@ -1,12 +1,12 @@
-import { ThemeIcons, ThemeIconSpec } from '@fluentui/styles'
+import { ThemeIcons, ThemeIconSpec } from '@fluentui/styles';
 
 const fontIcon = (content: string, fontFamily: string): ThemeIconSpec => ({
-  icon: { content: `'\\${content}'`, fontFamily },
-})
+  icon: { content: `'\\${content}'`, fontFamily }
+});
 
-const normal = (content: string) => fontIcon(content, '"Font Awesome 5 Free"')
-const outline = (content: string) => fontIcon(content, '"Font Awesome 5 Free"')
-const brand = (content: string) => fontIcon(content, '"Font Awesome 5 Brands"')
+const normal = (content: string) => fontIcon(content, '"Font Awesome 5 Free"');
+const outline = (content: string) => fontIcon(content, '"Font Awesome 5 Free"');
+const brand = (content: string) => fontIcon(content, '"Font Awesome 5 Brands"');
 
 // Originally generated from:
 // https://github.com/Semantic-Org/Semantic-UI-CSS/blob/master/components/icon.css
@@ -1308,7 +1308,7 @@ const fontAwesomeIcons: ThemeIcons = {
 
   // Outline Aliases
   'heart empty': outline('f004'),
-  'star empty': outline('f089'),
-}
+  'star empty': outline('f089')
+};
 
-export default fontAwesomeIcons
+export default fontAwesomeIcons;

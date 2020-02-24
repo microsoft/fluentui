@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Reaction } from '@fluentui/react'
+import * as React from 'react';
+import { Reaction } from '@fluentui/react';
 
-const ReactionExample = () => <Reaction icon="like" content={10} />
+const ReactionExample = () => <Reaction icon="like" content={10} />;
 
-export default ReactionExample
+export default ReactionExample;

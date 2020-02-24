@@ -1,23 +1,23 @@
-import * as React from 'react'
-import FiberNavigator from './FiberNavigator'
+import * as React from 'react';
+import FiberNavigator from './FiberNavigator';
 
 interface DebugRectProps {
-  fiberNav: FiberNavigator
+  fiberNav: FiberNavigator;
 }
 
 class DebugRect extends React.Component<DebugRectProps> {
-  selectorRef = React.createRef<HTMLPreElement>()
+  selectorRef = React.createRef<HTMLPreElement>();
 
   componentDidMount() {
-    this.setDebugSelectorPosition()
+    this.setDebugSelectorPosition();
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
-    this.setDebugSelectorPosition()
+    this.setDebugSelectorPosition();
   }
 
   setDebugSelectorPosition = () => {
-    const { fiberNav } = this.props
+    const { fiberNav } = this.props;
 
     if (
       fiberNav &&
@@ -26,22 +26,22 @@ class DebugRect extends React.Component<DebugRectProps> {
       typeof fiberNav.domNode.getBoundingClientRect === 'function' &&
       this.selectorRef.current
     ) {
-      const rect = fiberNav.domNode.getBoundingClientRect()
+      const rect = fiberNav.domNode.getBoundingClientRect();
 
-      this.selectorRef.current.style.top = `${rect.top}px`
-      this.selectorRef.current.style.left = `${rect.left}px`
-      this.selectorRef.current.style.width = `${rect.width}px`
-      this.selectorRef.current.style.height = `${rect.height}px`
+      this.selectorRef.current.style.top = `${rect.top}px`;
+      this.selectorRef.current.style.left = `${rect.left}px`;
+      this.selectorRef.current.style.width = `${rect.width}px`;
+      this.selectorRef.current.style.height = `${rect.height}px`;
 
-      requestAnimationFrame(this.setDebugSelectorPosition)
+      requestAnimationFrame(this.setDebugSelectorPosition);
     }
-  }
+  };
 
   render() {
-    const { fiberNav } = this.props
+    const { fiberNav } = this.props;
 
     if (!fiberNav) {
-      return null
+      return null;
     }
 
     return (
@@ -55,7 +55,7 @@ class DebugRect extends React.Component<DebugRectProps> {
           border: '1px solid #6495edcc',
           zIndex: 99999999,
           pointerEvents: 'none',
-          userSelect: 'none',
+          userSelect: 'none'
         }}
       >
         <div
@@ -66,7 +66,7 @@ class DebugRect extends React.Component<DebugRectProps> {
             bottom: '100%',
             left: 0,
             color: '#fff',
-            background: '#6495ed',
+            background: '#6495ed'
           }}
         >
           <span style={{ fontWeight: 'bold' }}>{`<${fiberNav.name} />`}</span>
@@ -80,7 +80,7 @@ class DebugRect extends React.Component<DebugRectProps> {
               margin: '0 0 1px -1px',
               top: '100%',
               left: 0,
-              background: '#6495ed',
+              background: '#6495ed'
             }}
           >
             <strong style={{ fontWeight: 'bold', color: 'hsl(160, 100%, 80%)' }}>
@@ -96,8 +96,8 @@ class DebugRect extends React.Component<DebugRectProps> {
           </div>
         )}
       </pre>
-    )
+    );
   }
 }
 
-export default DebugRect
+export default DebugRect;

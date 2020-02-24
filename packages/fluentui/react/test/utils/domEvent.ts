@@ -1,9 +1,9 @@
 // simulant is written with `export = simulant` which means types must be imported like this
 // without esModuleInterop
-import * as SimulantType from 'simulant'
+import * as SimulantType from 'simulant';
 
 // But at runtime it has to be imported like this
-const simulant: typeof SimulantType = require('simulant')
+const simulant: typeof SimulantType = require('simulant');
 
 // ----------------------------------------
 // Simulate DOM Events on real DOM nodes
@@ -17,11 +17,11 @@ const simulant: typeof SimulantType = require('simulant')
  * @returns The event
  */
 export const fire = (node: Element | string, eventType: string, data: any = {}) => {
-  const DOMNode = typeof node === 'string' ? document.querySelector(node) : node
-  const event = simulant(eventType, data)
+  const DOMNode = typeof node === 'string' ? document.querySelector(node) : node;
+  const event = simulant(eventType, data);
 
-  return simulant.fire(DOMNode, event)
-}
+  return simulant.fire(DOMNode, event);
+};
 
 /**
  * Dispatch a 'click' event on a DOM node.
@@ -29,7 +29,7 @@ export const fire = (node: Element | string, eventType: string, data: any = {}) 
  * @param data - Additional event data.
  * @returns The event
  */
-export const click = (node: Element | string, data?: any) => fire(node, 'click', data)
+export const click = (node: Element | string, data?: any) => fire(node, 'click', data);
 
 /**
  * Dispatch a 'keydown' event on a DOM node.
@@ -37,7 +37,7 @@ export const click = (node: Element | string, data?: any) => fire(node, 'click',
  * @param data - Additional event data.
  * @returns The event
  */
-export const keyDown = (node: Element | string, data?: any) => fire(node, 'keydown', data)
+export const keyDown = (node: Element | string, data?: any) => fire(node, 'keydown', data);
 
 /**
  * Dispatch a 'mouseenter' event on a DOM node.
@@ -45,7 +45,7 @@ export const keyDown = (node: Element | string, data?: any) => fire(node, 'keydo
  * @param data - Additional event data.
  * @returns The event
  */
-export const mouseEnter = (node: Element | string, data?: any) => fire(node, 'mouseenter', data)
+export const mouseEnter = (node: Element | string, data?: any) => fire(node, 'mouseenter', data);
 
 /**
  * Dispatch a 'mouseleave' event on a DOM node.
@@ -53,7 +53,7 @@ export const mouseEnter = (node: Element | string, data?: any) => fire(node, 'mo
  * @param data - Additional event data.
  * @returns The event
  */
-export const mouseLeave = (node: Element | string, data?: any) => fire(node, 'mouseleave', data)
+export const mouseLeave = (node: Element | string, data?: any) => fire(node, 'mouseleave', data);
 
 /**
  * Dispatch a 'mouseover' event on a DOM node.
@@ -61,7 +61,7 @@ export const mouseLeave = (node: Element | string, data?: any) => fire(node, 'mo
  * @param data - Additional event data.
  * @returns The event
  */
-export const mouseOver = (node: Element | string, data?: any) => fire(node, 'mouseover', data)
+export const mouseOver = (node: Element | string, data?: any) => fire(node, 'mouseover', data);
 
 /**
  * Dispatch a 'mouseup' event on a DOM node.
@@ -69,7 +69,7 @@ export const mouseOver = (node: Element | string, data?: any) => fire(node, 'mou
  * @param data - Additional event data.
  * @returns The event
  */
-export const mouseUp = (node: Element | string, data?: any) => fire(node, 'mouseup', data)
+export const mouseUp = (node: Element | string, data?: any) => fire(node, 'mouseup', data);
 
 /**
  * Dispatch a 'resize' event on a DOM node.
@@ -77,7 +77,7 @@ export const mouseUp = (node: Element | string, data?: any) => fire(node, 'mouse
  * @param data - Additional event data.
  * @returns The event
  */
-export const resize = (node: Element | string, data?: any) => fire(node, 'resize', data)
+export const resize = (node: Element | string, data?: any) => fire(node, 'resize', data);
 
 /**
  * Dispatch a 'scroll' event on a DOM node.
@@ -85,7 +85,7 @@ export const resize = (node: Element | string, data?: any) => fire(node, 'resize
  * @param data - Additional event data.
  * @returns The event
  */
-export const scroll = (node: Element | string, data?: any) => fire(node, 'scroll', data)
+export const scroll = (node: Element | string, data?: any) => fire(node, 'scroll', data);
 
 export default {
   fire,
@@ -96,5 +96,5 @@ export default {
   mouseOver,
   mouseUp,
   resize,
-  scroll,
-}
+  scroll
+};

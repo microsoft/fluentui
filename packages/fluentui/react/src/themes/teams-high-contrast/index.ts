@@ -1,8 +1,8 @@
-import { mergeThemes, createTheme } from '@fluentui/styles'
-import * as siteVariables from './siteVariables'
-import * as componentVariables from './componentVariables'
-import * as componentStyles from './componentStyles'
-import teams from '../teams'
+import { mergeThemes, createTheme } from '@fluentui/styles';
+import * as siteVariables from './siteVariables';
+import * as componentVariables from './componentVariables';
+import * as componentStyles from './componentStyles';
+import teams from '../teams';
 
 export default mergeThemes(
   teams,
@@ -10,8 +10,8 @@ export default mergeThemes(
     {
       siteVariables,
       componentVariables,
-      componentStyles,
+      componentStyles
     },
-    'teams-high-contrast',
-  ),
-)
+    'teams-high-contrast'
+  )
+);

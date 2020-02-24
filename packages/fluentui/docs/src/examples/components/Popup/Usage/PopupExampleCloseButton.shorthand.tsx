@@ -1,66 +1,66 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import * as React from 'react'
-import { Button, Dropdown, Popup, Flex } from '@fluentui/react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import * as React from 'react';
+import { Button, Dropdown, Popup, Flex } from '@fluentui/react';
 
 const inputItems = [
   {
     header: 'Bruce Wayne',
     image: 'public/images/avatar/small/matt.jpg',
-    content: 'Software Engineer',
+    content: 'Software Engineer'
   },
   {
     header: 'Natasha Romanoff',
     image: 'public/images/avatar/small/jenny.jpg',
-    content: 'UX Designer 2',
+    content: 'UX Designer 2'
   },
   {
     header: 'Steven Strange',
     image: 'public/images/avatar/small/joe.jpg',
-    content: 'Principal Software Engineering Manager',
+    content: 'Principal Software Engineering Manager'
   },
   {
     header: 'Alfred Pennyworth',
     image: 'public/images/avatar/small/justen.jpg',
-    content: 'Technology Consultant',
+    content: 'Technology Consultant'
   },
   {
     header: `Scarlett O'Hara`,
     image: 'public/images/avatar/small/laura.jpg',
-    content: 'Software Engineer 2',
+    content: 'Software Engineer 2'
   },
   {
     header: 'Imperator Furiosa',
     image: 'public/images/avatar/small/veronika.jpg',
-    content: 'Boss',
+    content: 'Boss'
   },
   {
     header: 'Bruce Banner',
     image: 'public/images/avatar/small/chris.jpg',
-    content: 'Senior Computer Scientist',
+    content: 'Senior Computer Scientist'
   },
   {
     header: 'Peter Parker',
     image: 'public/images/avatar/small/daniel.jpg',
-    content: 'Partner Software Engineer',
+    content: 'Partner Software Engineer'
   },
   {
     header: 'Selina Kyle',
     image: 'public/images/avatar/small/ade.jpg',
-    content: 'Graphic Designer',
-  },
-]
+    content: 'Graphic Designer'
+  }
+];
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item} has been selected.`,
-  onRemove: item => `${item} has been removed.`,
-}
+  onRemove: item => `${item} has been removed.`
+};
 
 const PopupControlledExample = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
 
   const closePopup = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const popupContent = (
     <>
@@ -80,7 +80,7 @@ const PopupControlledExample = () => {
         <Button primary content="Add" />
       </Flex>
     </>
-  )
+  );
 
   return (
     <Popup
@@ -89,11 +89,11 @@ const PopupControlledExample = () => {
       trigger={<Button icon="user-friends" content="People Picker" aria-label="Choose a person." />}
       content={{
         content: popupContent,
-        'aria-label': 'People picker',
+        'aria-label': 'People picker'
       }}
       trapFocus
     />
-  )
-}
+  );
+};
 
-export default PopupControlledExample
+export default PopupControlledExample;

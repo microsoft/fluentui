@@ -1,32 +1,32 @@
-import * as React from 'react'
-import DebugPanelData from './DebugPanelData'
-import { filter } from './utils'
-import { deepmerge } from '@fluentui/styles'
+import * as React from 'react';
+import DebugPanelData from './DebugPanelData';
+import { filter } from './utils';
+import { deepmerge } from '@fluentui/styles';
 
 interface DebugPanelItemProps {
-  data: any
-  valueKey?: string
-  commentKey?: string
-  idKey?: string
-  commentKeyPredicate?: (val: any) => boolean
+  data: any;
+  valueKey?: string;
+  commentKey?: string;
+  idKey?: string;
+  commentKeyPredicate?: (val: any) => boolean;
 }
 
 const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
-  const [value, setValue] = React.useState('')
-  const { data: propData, valueKey, commentKey, commentKeyPredicate, idKey } = props
+  const [value, setValue] = React.useState('');
+  const { data: propData, valueKey, commentKey, commentKeyPredicate, idKey } = props;
 
-  const reversedData = JSON.parse(JSON.stringify(propData)).reverse()
+  const reversedData = JSON.parse(JSON.stringify(propData)).reverse();
 
-  const data = valueKey ? reversedData.map(v => v[valueKey]) : reversedData
-  const comments = commentKey ? reversedData.map(v => v[commentKey]) : []
-  const ids = idKey ? reversedData.map(v => v[idKey]) : []
+  const data = valueKey ? reversedData.map(v => v[valueKey]) : reversedData;
+  const comments = commentKey ? reversedData.map(v => v[commentKey]) : [];
+  const ids = idKey ? reversedData.map(v => v[idKey]) : [];
 
-  const mergedThemes = []
+  const mergedThemes = [];
 
-  mergedThemes.push({}) // init
+  mergedThemes.push({}); // init
 
   for (let i = 1; i < data.length; i++) {
-    mergedThemes.push(deepmerge(mergedThemes[i - 1], data[i - 1]))
+    mergedThemes.push(deepmerge(mergedThemes[i - 1], data[i - 1]));
   }
 
   return (
@@ -38,12 +38,12 @@ const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
           marginBottom: '4px',
           width: '100%',
           border: '1px solid #ccc',
-          background: 'none',
+          background: 'none'
         }}
         placeholder="Filter"
       />
       {data.map((theme, idx) => {
-        const filteredTheme = value === '' ? theme : filter(theme, value)
+        const filteredTheme = value === '' ? theme : filter(theme, value);
 
         return (
           <pre
@@ -51,12 +51,10 @@ const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
             style={{
               position: 'relative',
               marginBottom: '4px',
-              borderTop: idx > 0 ? '1px solid #ddd' : 'none',
+              borderTop: idx > 0 ? '1px solid #ddd' : 'none'
             }}
           >
-            {ids && ids[idx] && (
-              <div style={{ position: 'absolute', right: 0, color: '#707070' }}>{ids[idx]}</div>
-            )}
+            {ids && ids[idx] && <div style={{ position: 'absolute', right: 0, color: '#707070' }}>{ids[idx]}</div>}
             <DebugPanelData
               data={filteredTheme}
               comments={comments[idx]}
@@ -65,10 +63,10 @@ const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
               highlightKey={value}
             />
           </pre>
-        )
+        );
       })}
     </>
-  )
-}
+  );
+};
 
-export default DebugPanelItem
+export default DebugPanelItem;

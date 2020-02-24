@@ -93,9 +93,10 @@
         var fabricVersions = [5, 6, 7];
 
         // Get fabricVer from URL param, session value, or latest version in array
-        var fabricVersion = Number(
-          getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
-        );
+        var fabricVersion =
+          getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1];
+        // Put this on a separate line so prettier won't add a trailing comma to the argument (would break IE 11)
+        fabricVersion = Number(fabricVersion);
 
         // Set session value if it's in array
         if (fabricVersions.indexOf(fabricVersion) > -1) {

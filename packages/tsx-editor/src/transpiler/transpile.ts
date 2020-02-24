@@ -7,9 +7,9 @@ import { _getErrorMessages } from './transpileHelpers';
 import { IMonacoTextModel, IBasicPackageGroup, ITransformedCode, ITransformedExample } from '../interfaces/index';
 
 const win = getWindow() as
-  | Window & {
+  | (Window & {
       transpileLogging?: boolean;
-    }
+    })
   | undefined;
 
 /**

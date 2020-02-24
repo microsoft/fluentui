@@ -1,23 +1,23 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import AccordionContent from 'src/components/Accordion/AccordionContent'
-import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests'
-import { mountWithProviderAndGetComponent } from 'test/utils'
+import AccordionContent from 'src/components/Accordion/AccordionContent';
+import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
+import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('AccordionContent', () => {
-  isConformant(AccordionContent)
+  isConformant(AccordionContent);
 
   describe('accessiblity', () => {
-    handlesAccessibility(AccordionContent)
+    handlesAccessibility(AccordionContent);
 
     describe('aria-labelledby', () => {
       test('takes the value of the titleId prop', () => {
         const renderedComponent = mountWithProviderAndGetComponent(
           AccordionContent,
-          <AccordionContent accordionTitleId={'nice-titleId'} />,
-        )
-        expect(getRenderedAttribute(renderedComponent, 'aria-labelledby', '')).toBe('nice-titleId')
-      })
-    })
-  })
-})
+          <AccordionContent accordionTitleId={'nice-titleId'} />
+        );
+        expect(getRenderedAttribute(renderedComponent, 'aria-labelledby', '')).toBe('nice-titleId');
+      });
+    });
+  });
+});

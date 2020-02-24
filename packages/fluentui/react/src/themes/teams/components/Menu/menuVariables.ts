@@ -1,7 +1,7 @@
-import { pxToRem, stringLiteralsArray } from '../../../../utils'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
-import { ItemType } from '../../../types'
-import { TeamsSchemeMappingWithAreas } from '../../types'
+import { pxToRem, stringLiteralsArray } from '../../../../utils';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import { ItemType } from '../../../types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const menuColorAreas = stringLiteralsArray(
   'border',
@@ -12,54 +12,54 @@ export const menuColorAreas = stringLiteralsArray(
   'backgroundHover',
   'backgroundActive',
   'backgroundFocus',
-  'foregroundDisabled',
-)
-export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>
+  'foregroundDisabled'
+);
+export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>;
 
 export interface MenuVariables {
-  colorScheme: MenuColorSchemeMapping
-  color: string
+  colorScheme: MenuColorSchemeMapping;
+  color: string;
 
-  backgroundColor: string
-  backgroundColorFocus: string
-  backgroundColorHover: string
-  backgroundColorActive: string
+  backgroundColor: string;
+  backgroundColorFocus: string;
+  backgroundColorHover: string;
+  backgroundColorActive: string;
 
-  borderColor: string
-  borderColorHover: string
-  borderColorActive: string
-  borderColorFocus: string
+  borderColor: string;
+  borderColorHover: string;
+  borderColorActive: string;
+  borderColorFocus: string;
 
-  outlineColorFocus: string
-  colorActive: string
-  iconOnlyColorActive: string
+  outlineColorFocus: string;
+  colorActive: string;
+  iconOnlyColorActive: string;
 
-  colorFocus: string
-  underlinedBorderColor: string
+  colorFocus: string;
+  underlinedBorderColor: string;
 
-  colorDisabled: string
-  lineHeightBase: string
-  horizontalPadding: string
+  colorDisabled: string;
+  lineHeightBase: string;
+  horizontalPadding: string;
 
-  verticalBackgroundColor: string
-  verticalItemPadding: string
-  verticalBoxShadow: string
-  verticalDividerMargin: string
-  verticalItemBorderWidth: string
-  verticalItemBorderColor: string
-  verticalPointingBorderColor: string
-  verticalBackgroundColorFocus: string
+  verticalBackgroundColor: string;
+  verticalItemPadding: string;
+  verticalBoxShadow: string;
+  verticalDividerMargin: string;
+  verticalItemBorderWidth: string;
+  verticalItemBorderColor: string;
+  verticalPointingBorderColor: string;
+  verticalBackgroundColorFocus: string;
 
-  pointingIndicatorBackgroundColor: string
+  pointingIndicatorBackgroundColor: string;
 
-  underlinedBottomBorderWidth: string
-  primaryBorderColor: string
+  underlinedBottomBorderWidth: string;
+  primaryBorderColor: string;
 
-  dividerHeight: string
-  borderWidth: string
+  dividerHeight: string;
+  borderWidth: string;
 
-  menuZIndex: number
-  beakZIndex: number
+  menuZIndex: number;
+  beakZIndex: number;
 }
 
 export default (siteVars: any): MenuVariables => {
@@ -70,7 +70,7 @@ export default (siteVars: any): MenuVariables => {
           borderActive: siteVars.colorScheme.default.border2,
           backgroundActive: siteVars.colorScheme.default.backgroundActive1,
           backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
-          foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
+          foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1
         },
         brand: {
           foregroundHover: siteVars.colors.white,
@@ -80,10 +80,10 @@ export default (siteVars: any): MenuVariables => {
           backgroundActive: siteVars.colors.brand[500], // it's 600 in the color scheme
           foregroundFocus: siteVars.colors.white,
           backgroundFocus: siteVars.colors.brand[300],
-          foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
-        },
+          foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1
+        }
       }),
-      menuColorAreas,
+      menuColorAreas
     ),
     color: siteVars.colors.grey[500],
     colorActive: siteVars.colors.black,
@@ -126,6 +126,6 @@ export default (siteVars: any): MenuVariables => {
     dividerHeight: pxToRem(1),
     borderWidth: pxToRem(1),
     menuZIndex: siteVars.zIndexes.overlay,
-    beakZIndex: siteVars.zIndexes.menuItem,
-  }
-}
+    beakZIndex: siteVars.zIndexes.menuItem
+  };
+};

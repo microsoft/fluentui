@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -11,9 +11,9 @@ import { Accessibility } from '../../types'
 const menuDividerBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'presentation',
-    },
-  },
-})
+      role: 'presentation'
+    }
+  }
+});
 
-export default menuDividerBehavior
+export default menuDividerBehavior;
