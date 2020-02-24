@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const os = require('os');
 const findGitRoot = require('../monorepo/findGitRoot');
+const { runPrettierForFolder } = require('../prettier/prettier-helpers');
 const { spawnSync } = require('child_process');
 const glob = require('glob');
 
@@ -430,6 +431,11 @@ function importChangeLogMD(outputPath) {
   fs.copyFileSync(path.join(tmp, 'CHANGELOG.md'), path.join(outputPath, 'CHANGELOG.md'));
 }
 
+function runPrettier(outputPath, root) {
+  runPrettierForFolder(outputPath);
+  runPrettierForFolder(path.join(root, '.github'));
+}
+
 function removeFiles(outputPath) {
   const filesToRemove = [
     // File is modified during stats and changes do not need to be committed. Will be gitignored. Remove on import.
@@ -480,6 +486,7 @@ function importFluent() {
   fixJestMapping(outputPath);
   fixDocs(outputPath);
   fixInternalPackageDeps(outputPath);
+  runPrettier(outputPath, root);
   removeFiles(outputPath);
 
   console.log('removing tmp');
