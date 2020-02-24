@@ -129,7 +129,7 @@ function fixTsConfigs(outputPath) {
     const tsconfig = fs.readJSONSync(fullPath);
 
     if (tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
-      for (let [source, paths] of Object.entries(tsconfig.compilerOptions.paths)) {
+      for (let source of Object.keys(tsconfig.compilerOptions.paths)) {
         if (Object.keys(mapping).includes(source)) {
           tsconfig.compilerOptions.paths[source] = mapping[source];
         }
@@ -214,8 +214,8 @@ function fixTslint(outputPath) {
     const fullPath = path.join(outputPath, file);
     const content = fs.readJSONSync(fullPath);
 
-    // TODO (fui repo merge): create a @uifabric/eslint-config package to host this per: https://eslint.org/docs/developer-guide/shareable-configs
-    content.extends = ['@uifabric/tslint-rules'];
+    // TODO (fui repo merge): create a shared package for configs
+    content.extends = ['../../../scripts/tslint.fluentui.json'];
     fs.writeJSONSync(fullPath, content, { spaces: 2 });
   }
 
