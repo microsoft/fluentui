@@ -7,6 +7,7 @@ import * as scale from 'd3-scale';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IChartDataPoint, IChartProps } from './index';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 
 const getClassNames = classNamesFunction<IDonutChartStyleProps, IDonutChartStyles>();
 
@@ -56,6 +57,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       isLegendSelected: false
     };
     this._hoverCallback = this._hoverCallback.bind(this);
+    this._focusCallback = this._focusCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
     this._uniqText =
       '_Pie_' +
@@ -92,20 +94,26 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const chartData = data && data.chartData;
     return (
       <div className={this._classNames.root} ref={(rootElem: HTMLElement | null) => (this._rootElem = rootElem)}>
-        <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
-          <Pie
-            width={_width!}
-            height={_height!}
-            outerRadius={outerRadius}
-            innerRadius={innerRadius!}
-            data={chartData!}
-            hoverOnCallback={this._hoverCallback}
-            hoverLeaveCallback={this._hoverLeave}
-            uniqText={this._uniqText}
-            activeArc={this.state.activeLegend}
-            href={href}
-          />
-        </svg>
+        <FocusZone direction={FocusZoneDirection.horizontal}>
+          <div>
+            <svg className={this._classNames.chart} ref={(node: SVGElement | null) => this._setViewBox(node)}>
+              <Pie
+                width={_width!}
+                height={_height!}
+                outerRadius={outerRadius}
+                innerRadius={innerRadius!}
+                data={chartData!}
+                onFocusCallback={this._focusCallback}
+                hoverOnCallback={this._hoverCallback}
+                hoverLeaveCallback={this._hoverLeave}
+                uniqText={this._uniqText}
+                onBlurCallback={this._onBlur}
+                activeArc={this.state.activeLegend}
+                href={href}
+              />
+            </svg>
+          </div>
+        </FocusZone>
         {this.state.showHover ? (
           <Callout
             target={this._currentHoverElement}
@@ -114,6 +122,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={5}
             onDismiss={this._closeCallout}
+            preventDismissOnLostFocus={true}
           >
             <div className={this._classNames.hoverCardRoot}>
               <div className={this._classNames.hoverCardTextStyles}>{this.state.legend}</div>
@@ -192,6 +201,16 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     return legends;
   }
 
+  private _focusCallback = (data: IChartDataPoint, element: SVGPathElement): void => {
+    this._currentHoverElement = element;
+    this.setState({
+      showHover: true,
+      value: data.data!.toString(),
+      legend: data.legend,
+      color: data.color!
+    });
+  };
+
   private _hoverCallback = (data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void => {
     this._currentHoverElement = e;
     this.setState({
@@ -200,6 +219,9 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
       legend: data.legend,
       color: data.color!
     });
+  };
+  private _onBlur = (): void => {
+    this.setState({ showHover: false });
   };
 
   private _hoverLeave(): void {
