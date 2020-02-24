@@ -91,7 +91,7 @@ jobs:
           Contents: '**/*'
         condition: always()
 
-  - job: Validate (Fluent)
+  - job: Validate Fluent
     dependsOn: Build
     steps:
       # No need for checkout since we're using build artifacts.
@@ -114,9 +114,9 @@ jobs:
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
-      # - script: |
-      #     yarn test:fluentui:e2e
-      #   displayName: E2E Tests
+      - script: |
+          yarn test:fluentui:e2e
+        displayName: E2E Tests
 
       - script: |
           yarn test:fluentui:projects
