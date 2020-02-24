@@ -1,6 +1,6 @@
-import { useRangeKnob } from '@fluentui/docs-components'
-import { Alert } from '@fluentui/react'
-import * as React from 'react'
+import { useRangeKnob } from '@fluentui/docs-components';
+import { Alert } from '@fluentui/react';
+import * as React from 'react';
 
 const AlertExampleWidth = () => {
   const [width] = useRangeKnob({
@@ -8,8 +8,8 @@ const AlertExampleWidth = () => {
     min: '350px',
     max: '800px',
     initialValue: '500px',
-    step: '10px',
-  })
+    step: '10px'
+  });
 
   return (
     <div style={{ width }}>
@@ -20,7 +20,7 @@ const AlertExampleWidth = () => {
         icon="screencast"
       />
     </div>
-  )
-}
+  );
+};
 
-export default AlertExampleWidth
+export default AlertExampleWidth;

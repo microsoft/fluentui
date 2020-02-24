@@ -3,7 +3,7 @@ const getDisplayName = (Component: React.ReactType) => {
     (Component as React.ComponentType).displayName ||
     (Component as React.ComponentType).name ||
     (typeof Component === 'string' && Component.length > 0 ? Component : 'Unknown')
-  )
-}
+  );
+};
 
-export default getDisplayName
+export default getDisplayName;

@@ -1,14 +1,10 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample
-      title="Default"
-      description="A default button."
-      examplePath="components/Button/Types/ButtonExample"
-    />
+    <ComponentExample title="Default" description="A default button." examplePath="components/Button/Types/ButtonExample" />
     <ComponentExample
       title="Emphasis"
       description="A button can be formatted to show different levels of emphasis."
@@ -30,6 +26,6 @@ const Types = () => (
       examplePath="components/Button/Types/ButtonExampleIconOnly"
     />
   </ExampleSection>
-)
+);
 
-export default Types
+export default Types;

@@ -1,10 +1,10 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Grid } from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Grid } from '@fluentui/react';
 
 type EditorToolbarTableProps = {
-  onClick: () => void
-}
+  onClick: () => void;
+};
 
 const EditorToolbarTable: React.FC<EditorToolbarTableProps> = props => (
   <Grid columns={3}>
@@ -20,11 +20,11 @@ const EditorToolbarTable: React.FC<EditorToolbarTableProps> = props => (
           display: 'block',
           height: '20px',
           width: '20px',
-          margin: '3px',
+          margin: '3px'
         }}
       />
     ))}
   </Grid>
-)
+);
 
-export default EditorToolbarTable
+export default EditorToolbarTable;

@@ -1,7 +1,7 @@
-import { pxToRem, stringLiteralsArray } from '../../../../utils'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
-import { ItemType } from '../../../types'
-import { TeamsSchemeMappingWithAreas } from '../../types'
+import { pxToRem, stringLiteralsArray } from '../../../../utils';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
+import { ItemType } from '../../../types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
 
 export const toolbarColorAreas = stringLiteralsArray(
   'foreground1',
@@ -17,56 +17,54 @@ export const toolbarColorAreas = stringLiteralsArray(
 
   // custom
   'menuItemForegroundHover',
-  'menuItemBackgroundHover',
-)
+  'menuItemBackgroundHover'
+);
 
-export type ToolbarColorSchemeMapping = TeamsSchemeMappingWithAreas<
-  ItemType<typeof toolbarColorAreas>
->
+export type ToolbarColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof toolbarColorAreas>>;
 
 export interface ToolbarVariables {
-  colorScheme: ToolbarColorSchemeMapping
-  foreground: string
-  background: string
-  dividerBorder: string
+  colorScheme: ToolbarColorSchemeMapping;
+  foreground: string;
+  background: string;
+  dividerBorder: string;
 
-  foregroundHover: string
-  backgroundHover: string
+  foregroundHover: string;
+  backgroundHover: string;
 
-  foregroundActive: string
-  backgroundActive: string
+  foregroundActive: string;
+  backgroundActive: string;
 
-  foregroundDisabled: string
-  backgroundDisabled: string
+  foregroundDisabled: string;
+  backgroundDisabled: string;
 
-  itemHeight: string
-  itemPadding: string
-  borderWidth: string
-  borderRadius: string
-  dividerMargin: string
+  itemHeight: string;
+  itemPadding: string;
+  borderWidth: string;
+  borderRadius: string;
+  dividerMargin: string;
 
-  menuWidth: string
-  menuPadding: string
-  menuBackground: string
-  menuBorder: string // border color
-  menuBorderWidth: string
-  menuBorderRadius: string
-  menuBoxShadow: string
+  menuWidth: string;
+  menuPadding: string;
+  menuBackground: string;
+  menuBorder: string; // border color
+  menuBorderWidth: string;
+  menuBorderRadius: string;
+  menuBoxShadow: string;
 
-  menuItemForeground: string
-  menuItemForegroundHover: string
-  menuItemBackgroundHover: string
-  menuItemForegroundDisabled: string
-  menuItemBackgroundDisabled: string
-  menuItemPadding: string
+  menuItemForeground: string;
+  menuItemForegroundHover: string;
+  menuItemBackgroundHover: string;
+  menuItemForegroundDisabled: string;
+  menuItemBackgroundDisabled: string;
+  menuItemPadding: string;
 
-  menuDividerBorder: string // border color
-  menuDividerMargin: string
+  menuDividerBorder: string; // border color
+  menuDividerMargin: string;
 
-  customItemHorizontalPadding: string
-  customItemVerticalPadding: string
+  customItemHorizontalPadding: string;
+  customItemVerticalPadding: string;
 
-  overlayZIndex: number
+  overlayZIndex: number;
 }
 
 export default (siteVars: any): ToolbarVariables => ({
@@ -78,10 +76,10 @@ export default (siteVars: any): ToolbarVariables => ({
         foregroundActive: siteVars.colorScheme.brand.foregroundActive,
 
         menuItemForegroundHover: siteVars.colorScheme.default.foregroundHover,
-        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover,
-      },
+        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover
+      }
     }),
-    toolbarColorAreas,
+    toolbarColorAreas
   ),
   foreground: undefined,
   background: 'transparent',
@@ -123,5 +121,5 @@ export default (siteVars: any): ToolbarVariables => ({
   customItemHorizontalPadding: pxToRem(16),
   customItemVerticalPadding: pxToRem(4),
 
-  overlayZIndex: siteVars.zIndexes.overlay,
-})
+  overlayZIndex: siteVars.zIndexes.overlay
+});

@@ -1,7 +1,7 @@
-import * as React from 'react'
-import cx from 'classnames'
-import { TeamsSvgIconSpec } from '../types'
-import { teamsIconClassNames } from '../teamsIconClassNames'
+import * as React from 'react';
+import cx from 'classnames';
+import { TeamsSvgIconSpec } from '../types';
+import { teamsIconClassNames } from '../teamsIconClassNames';
 
 export default {
   icon: ({ classes }) => (
@@ -14,25 +14,10 @@ export default {
         className={cx(teamsIconClassNames.filled, classes.filledPart)}
         d="M13 20.9c0 1.3 1.2 2.1 3 2.1 1.9 0 3-.8 3-2.1V15h-6v5.9zm7 .2h1c1.9 0 3-.8 3-2.1v-3h-4v5.1zM8 19c0 1.3 1.1 2.1 3 2.1h1V16H8v3z"
       />
-      <circle
-        className={cx(teamsIconClassNames.filled, classes.filledPart)}
-        cx="10"
-        cy="13"
-        r="2"
-      />
-      <circle
-        className={cx(teamsIconClassNames.filled, classes.filledPart)}
-        cx="16"
-        cy="12"
-        r="2"
-      />
-      <circle
-        className={cx(teamsIconClassNames.filled, classes.filledPart)}
-        cx="22"
-        cy="13"
-        r="2"
-      />
+      <circle className={cx(teamsIconClassNames.filled, classes.filledPart)} cx="10" cy="13" r="2" />
+      <circle className={cx(teamsIconClassNames.filled, classes.filledPart)} cx="16" cy="12" r="2" />
+      <circle className={cx(teamsIconClassNames.filled, classes.filledPart)} cx="22" cy="13" r="2" />
     </svg>
   ),
-  styles: {},
-} as TeamsSvgIconSpec
+  styles: {}
+} as TeamsSvgIconSpec;

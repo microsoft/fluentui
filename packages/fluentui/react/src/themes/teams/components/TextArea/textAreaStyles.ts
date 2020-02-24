@@ -1,6 +1,6 @@
-import { TextAreaVariables } from './textAreaVariables'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { TextAreaProps } from '../../../../components/TextArea/TextArea'
+import { TextAreaVariables } from './textAreaVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { TextAreaProps } from '../../../../components/TextArea/TextArea';
 
 const textAreaStyles: ComponentSlotStylesPrepared<TextAreaProps, TextAreaVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -9,7 +9,7 @@ const textAreaStyles: ComponentSlotStylesPrepared<TextAreaProps, TextAreaVariabl
 
     backgroundColor: v.backgroundColor,
     ...(p.inverted && {
-      backgroundColor: v.invertedBackgroundColor,
+      backgroundColor: v.invertedBackgroundColor
     }),
 
     color: v.fontColor,
@@ -25,24 +25,24 @@ const textAreaStyles: ComponentSlotStylesPrepared<TextAreaProps, TextAreaVariabl
     resize: p.resize || 'none',
 
     ...(p.fluid && {
-      width: '100%',
+      width: '100%'
     }),
 
     ...(p.disabled && {
       pointerEvents: 'none',
       backgroundColor: v.disabledBackgroundColor,
-      color: v.disabledColor,
+      color: v.disabledColor
     }),
 
     '::placeholder': {
       color: v.placeholderColor,
-      opacity: 1, // undo Firefox default opacity
+      opacity: 1 // undo Firefox default opacity
     },
 
     ':focus': {
-      borderColor: v.borderColorFocus,
-    },
-  }),
-}
+      borderColor: v.borderColorFocus
+    }
+  })
+};
 
-export default textAreaStyles
+export default textAreaStyles;

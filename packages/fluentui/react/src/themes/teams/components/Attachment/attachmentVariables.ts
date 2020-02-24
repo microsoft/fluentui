@@ -1,28 +1,28 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export type AttachmentVariables = {
-  padding: string
-  iconSpace: string
+  padding: string;
+  iconSpace: string;
 
-  borderColor: string
-  borderRadius: string
-  backgroundColor: string
-  backgroundColorHover: string
-  textColor: string
-  textColorHover: string
-  boxShadow: string
+  borderColor: string;
+  borderRadius: string;
+  backgroundColor: string;
+  backgroundColorHover: string;
+  textColor: string;
+  textColorHover: string;
+  boxShadow: string;
 
-  progressColor: string
-  progressHeight: number
+  progressColor: string;
+  progressHeight: number;
 
-  headerFontSize: string
-  headerFontWeight: number
-  headerLineHeight: number
+  headerFontSize: string;
+  headerFontWeight: number;
+  headerLineHeight: number;
 
-  descriptionFontSize: string
-  descriptionFontWeight: number
-  descriptionLineHeight: number
-}
+  descriptionFontSize: string;
+  descriptionFontWeight: number;
+  descriptionLineHeight: number;
+};
 
 export default (siteVariables: any): AttachmentVariables => ({
   padding: `${pxToRem(7)} ${pxToRem(3)} ${pxToRem(7)} ${pxToRem(11)}`, // padding set to 1px less to account for 1px border
@@ -44,5 +44,5 @@ export default (siteVariables: any): AttachmentVariables => ({
 
   descriptionFontSize: siteVariables.fontSizes.small,
   descriptionFontWeight: siteVariables.fontWeightRegular,
-  descriptionLineHeight: siteVariables.lineHeightDefault,
-})
+  descriptionLineHeight: siteVariables.lineHeightDefault
+});

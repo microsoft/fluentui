@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react';
 
 const AlertExampleImportantMessage = () => (
   <Alert
@@ -9,6 +9,6 @@ const AlertExampleImportantMessage = () => (
     content="Please change your password"
     dismissible
   />
-)
+);
 
-export default AlertExampleImportantMessage
+export default AlertExampleImportantMessage;

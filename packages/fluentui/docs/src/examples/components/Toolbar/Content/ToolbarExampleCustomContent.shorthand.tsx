@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Text, Toolbar } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Text, Toolbar } from '@fluentui/react';
 
 const ToolbarExampleCustomContentShorthand = () => (
   <Toolbar
@@ -9,22 +9,22 @@ const ToolbarExampleCustomContentShorthand = () => (
       {
         key: 'custom-text',
         content: <Text content="Text" />,
-        kind: 'custom',
+        kind: 'custom'
       },
       {
         key: 'custom-focusable-text',
         content: <Text content="Focusable" />,
         focusable: true,
-        kind: 'custom',
+        kind: 'custom'
       },
       {
         key: 'custom-button',
         kind: 'custom',
         content: <Button content="Button" />,
-        fitted: 'horizontally',
-      },
+        fitted: 'horizontally'
+      }
     ]}
   />
-)
+);
 
-export default ToolbarExampleCustomContentShorthand
+export default ToolbarExampleCustomContentShorthand;

@@ -1,11 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Slots from './Slots'
-import States from './States'
-import Variations from './Variations'
-import Usage from './Usage'
+import Rtl from './Rtl';
+import Types from './Types';
+import Slots from './Slots';
+import States from './States';
+import Variations from './Variations';
+import Usage from './Usage';
 
 const MenuExamples = () => (
   <div>
@@ -16,6 +16,6 @@ const MenuExamples = () => (
     <Rtl />
     <Usage />
   </div>
-)
+);
 
-export default MenuExamples
+export default MenuExamples;

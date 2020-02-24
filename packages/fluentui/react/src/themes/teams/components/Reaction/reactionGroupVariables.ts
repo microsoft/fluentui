@@ -1,9 +1,9 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface ReactionGroupVariables {
-  reactionSpacing: string
+  reactionSpacing: string;
 }
 
 export default (): ReactionGroupVariables => ({
-  reactionSpacing: pxToRem(8),
-})
+  reactionSpacing: pxToRem(8)
+});

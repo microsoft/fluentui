@@ -1,18 +1,18 @@
-import { handlesAccessibility, isConformant } from 'test/specs/commonTests'
+import { handlesAccessibility, isConformant } from 'test/specs/commonTests';
 
-import Box from 'src/components/Box/Box'
-import ToolbarMenuRadioGroup from 'src/components/Toolbar/ToolbarMenuRadioGroup'
+import Box from 'src/components/Box/Box';
+import ToolbarMenuRadioGroup from 'src/components/Toolbar/ToolbarMenuRadioGroup';
 
 describe('ToolbarMenuRadioGroup', () => {
   isConformant(ToolbarMenuRadioGroup, {
-    wrapperComponent: Box,
-  })
+    wrapperComponent: Box
+  });
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarMenuRadioGroup, {
       defaultRootRole: 'group',
       partSelector: 'ul',
-      usesWrapperSlot: true,
-    })
-  })
-})
+      usesWrapperSlot: true
+    });
+  });
+});

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Divider, Button, Avatar, Text } from '@fluentui/react'
+import * as React from 'react';
+import { Divider, Button, Avatar, Text } from '@fluentui/react';
 
 const DividerVerticalExampleShorthand = () => (
   <div style={{ display: 'flex', justifyContent: 'center', height: '32px', alignItems: 'center' }}>
@@ -11,7 +11,7 @@ const DividerVerticalExampleShorthand = () => (
       status={{
         color: 'green',
         icon: 'stardust-checkmark',
-        title: 'Available',
+        title: 'Available'
       }}
     />
     <Divider vertical />
@@ -20,6 +20,6 @@ const DividerVerticalExampleShorthand = () => (
     <Button icon="icon-close" text iconOnly title="Minimize" />
     <Divider vertical />
   </div>
-)
+);
 
-export default DividerVerticalExampleShorthand
+export default DividerVerticalExampleShorthand;

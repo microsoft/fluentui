@@ -1,29 +1,20 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import {
-  DecorativeAxis,
-  DiscreteColorLegend,
-  FlexibleXYPlot,
-  HorizontalGridLines,
-  LabelSeries,
-  LineSeries,
-  XAxis,
-  YAxis,
-} from 'react-vis'
-import PerfChartTooltip from './PerfChartTooltip'
-import { PerfData } from './PerfDataContext'
-import { curveBundle } from 'd3-shape'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { DecorativeAxis, DiscreteColorLegend, FlexibleXYPlot, HorizontalGridLines, LabelSeries, LineSeries, XAxis, YAxis } from 'react-vis';
+import PerfChartTooltip from './PerfChartTooltip';
+import { PerfData } from './PerfDataContext';
+import { curveBundle } from 'd3-shape';
 
-export type PerfChartProps = { perfData: PerfData; withExtremes: boolean }
+export type PerfChartProps = { perfData: PerfData; withExtremes: boolean };
 
 const sampleToXAxis = sample => {
-  return new Date(sample.ts).getTime()
-}
+  return new Date(sample.ts).getTime();
+};
 
 const formatXAxis = val => {
-  const date = new Date(val)
-  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
-}
+  const date = new Date(val);
+  return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+};
 
 /**
  * Draws a performance chart for all items in perfData.performance.
@@ -34,17 +25,17 @@ const formatXAxis = val => {
 const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
   const availableCharts: string[] = perfData
     .reduce((acc, next) => {
-      return Array.from(new Set([...acc, ...Object.keys(next.performance)]))
+      return Array.from(new Set([...acc, ...Object.keys(next.performance)]));
     }, [] as string[])
-    .sort()
+    .sort();
 
-  const [nearestX, setNearestX] = React.useState<number>()
+  const [nearestX, setNearestX] = React.useState<number>();
 
-  const maxColor = '#ff8080'
-  const medColor = '#555555'
-  const tpiColor = '#387fc2'
-  const minColor = '#59b359'
-  const tagColor = '#888888'
+  const maxColor = '#ff8080';
+  const medColor = '#555555';
+  const tpiColor = '#387fc2';
+  const minColor = '#59b359';
+  const tagColor = '#888888';
 
   const lineSeries = (key, data = 'actualTime.median', props) =>
     availableCharts.map((chartName, index) => (
@@ -53,23 +44,23 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
         key={chartName + key}
         data={_.filter(
           perfData.map(sample => {
-            const y = _.get(sample, `performance.${chartName}.${data}`)
+            const y = _.get(sample, `performance.${chartName}.${data}`);
             if (_.isUndefined(y)) {
-              return undefined
+              return undefined;
             }
             return {
               x: sampleToXAxis(sample),
-              y,
-            }
-          }),
+              y
+            };
+          })
         )}
       />
-    ))
+    ));
 
   return (
     <FlexibleXYPlot
       onMouseLeave={() => {
-        setNearestX(undefined)
+        setNearestX(undefined);
       }}
     >
       <DiscreteColorLegend
@@ -89,21 +80,21 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
         .map(sample => {
           const data = [
             { x: sampleToXAxis(sample), y: 0 },
-            { x: sampleToXAxis(sample), y: 1000 },
-          ]
+            { x: sampleToXAxis(sample), y: 1000 }
+          ];
           return (
             <DecorativeAxis
               key={sample.build}
               style={{
                 ticks: { display: 'none' },
                 text: { display: 'none' },
-                line: { stroke: tagColor },
+                line: { stroke: tagColor }
               }}
               axisStart={data[0]}
               axisEnd={data[1]}
               axisDomain={[data[0].y, data[1].y]}
             />
-          )
+          );
         })}
 
       <LabelSeries
@@ -116,11 +107,11 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
             label: sample.tag,
             style: {
               fontSize: 10,
-              fill: tagColor,
+              fill: tagColor
             },
             labelAnchorX: 'end',
             yOffset: 0,
-            xOffset: 0,
+            xOffset: 0
           }))}
       />
 
@@ -129,13 +120,13 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
           opacity: 0.5,
           stroke: maxColor,
           strokeStyle: 'dashed',
-          curve: curveBundle.beta(0.5),
+          curve: curveBundle.beta(0.5)
         })}
 
       {lineSeries('curve-median', 'actualTime.median', {
         opacity: 0.8,
         stroke: medColor,
-        strokeWidth: '2px',
+        strokeWidth: '2px'
       })}
 
       {withExtremes &&
@@ -143,13 +134,13 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
           opacity: 0.5,
           stroke: minColor,
           strokeStyle: 'dashed',
-          curve: curveBundle.beta(1),
+          curve: curveBundle.beta(1)
         })}
 
       {lineSeries('curve-tpi', 'flamegrill.extended.tpi', {
         opacity: 0.8,
         stroke: tpiColor,
-        strokeWidth: '2px',
+        strokeWidth: '2px'
       })}
 
       <LineSeries
@@ -157,21 +148,16 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
         key="vertical-axis-hack"
         data={perfData.map(sample => ({
           x: sampleToXAxis(sample),
-          y: 0,
+          y: 0
         }))}
         onNearestX={(d: { x: number }) => {
-          setNearestX(d.x)
+          setNearestX(d.x);
         }}
       />
 
-      {nearestX && (
-        <PerfChartTooltip
-          x={nearestX}
-          data={perfData.find(sample => sampleToXAxis(sample) === nearestX)}
-        />
-      )}
+      {nearestX && <PerfChartTooltip x={nearestX} data={perfData.find(sample => sampleToXAxis(sample) === nearestX)} />}
     </FlexibleXYPlot>
-  )
-}
+  );
+};
 
-export default PerfChart
+export default PerfChart;

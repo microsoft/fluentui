@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Icon, Label } from '@fluentui/react'
+import * as React from 'react';
+import { Icon, Label } from '@fluentui/react';
 
 const IconExampleSpace = () => (
   <div>
@@ -29,6 +29,6 @@ const IconExampleSpace = () => (
       <Label>None</Label>
     </p>
   </div>
-)
+);
 
-export default IconExampleSpace
+export default IconExampleSpace;

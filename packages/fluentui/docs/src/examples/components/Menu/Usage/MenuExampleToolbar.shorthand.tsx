@@ -1,69 +1,69 @@
-import * as React from 'react'
-import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react'
+import * as React from 'react';
+import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react';
 
 const items: ShorthandCollection<MenuItemProps> = [
   {
     key: 'format',
     icon: {
       name: 'format',
-      outline: true,
+      outline: true
     },
-    'aria-label': 'Format Tool',
+    'aria-label': 'Format Tool'
   },
   {
     key: 'paperclip',
     icon: {
       name: 'paperclip',
-      outline: true,
+      outline: true
     },
-    'aria-label': 'Paperclip Tool',
+    'aria-label': 'Paperclip Tool'
   },
   {
     key: 'emoji',
     icon: {
       name: 'emoji',
-      outline: true,
+      outline: true
     },
     disabled: true,
-    'aria-label': 'Emoji Tool',
+    'aria-label': 'Emoji Tool'
   },
   {
     key: 'giphy',
     icon: {
       name: 'giphy',
-      outline: true,
+      outline: true
     },
-    'aria-label': 'Giphy tool',
+    'aria-label': 'Giphy tool'
   },
   {
     key: 'sticker',
     icon: {
       name: 'sticker',
-      outline: true,
+      outline: true
     },
-    'aria-label': 'Sticker Tool',
+    'aria-label': 'Sticker Tool'
   },
   {
     key: 'meetup',
     icon: {
       name: 'video-camera-emphasis',
-      outline: true,
+      outline: true
     },
-    'aria-label': 'Meetup Tool',
+    'aria-label': 'Meetup Tool'
   },
   {
     key: 'settings',
     icon: {
       name: 'settings',
-      outline: true,
+      outline: true
     },
-    'aria-label': 'Settings',
+    'aria-label': 'Settings'
   },
   {
     key: 'menuButton2',
     icon: {
       name: 'more',
-      outline: true,
+      outline: true
     },
     'aria-label': 'More options',
     indicator: false,
@@ -74,20 +74,20 @@ const items: ShorthandCollection<MenuItemProps> = [
           content: 'item1',
           icon: {
             name: 'bookmark',
-            outline: true,
-          },
+            outline: true
+          }
         },
         {
           key: 'divider',
-          kind: 'divider',
+          kind: 'divider'
         },
         {
           key: '6',
           content: 'item2',
           icon: {
             name: 'mark-as-unread',
-            outline: true,
-          },
+            outline: true
+          }
         },
         {
           key: '7',
@@ -95,34 +95,28 @@ const items: ShorthandCollection<MenuItemProps> = [
           disabled: true,
           icon: {
             name: 'translation',
-            outline: true,
-          },
+            outline: true
+          }
         },
         {
           key: 'divider2',
-          kind: 'divider',
+          kind: 'divider'
         },
         {
           key: '8',
           content: 'item3',
           icon: {
             name: 'trash-can',
-            outline: true,
-          },
-        },
-      ],
-    },
-  },
-]
+            outline: true
+          }
+        }
+      ]
+    }
+  }
+];
 
 const MenuExampleToolbarShorthand = () => (
-  <Menu
-    defaultActiveIndex={0}
-    items={items}
-    iconOnly
-    accessibility={menuAsToolbarBehavior}
-    aria-label="Compose Editor"
-  />
-)
+  <Menu defaultActiveIndex={0} items={items} iconOnly accessibility={menuAsToolbarBehavior} aria-label="Compose Editor" />
+);
 
-export default MenuExampleToolbarShorthand
+export default MenuExampleToolbarShorthand;

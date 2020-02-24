@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Avatar, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, Icon } from '@fluentui/react';
 
 const AvatarExampleImageCustomizationShorthand = () => (
   <>
@@ -8,10 +8,7 @@ const AvatarExampleImageCustomizationShorthand = () => (
       status={{ color: 'green', icon: 'icon-checkmark', title: 'Available' }}
     />
     &emsp;
-    <Avatar
-      image="public/images/avatar/large/jerry.png"
-      status={{ color: 'green', icon: 'icon-checkmark', title: 'Available' }}
-    />
+    <Avatar image="public/images/avatar/large/jerry.png" status={{ color: 'green', icon: 'icon-checkmark', title: 'Available' }} />
     &emsp;
     <Avatar
       image={{
@@ -27,11 +24,11 @@ const AvatarExampleImageCustomizationShorthand = () => (
             variables={{ color: 'blue' }}
             styles={{ boxSizing: 'border-box', padding: '8px' }}
           />
-        ),
+        )
       }}
       status={{ color: 'green', icon: 'icon-checkmark', title: 'Available' }}
     />
   </>
-)
+);
 
-export default AvatarExampleImageCustomizationShorthand
+export default AvatarExampleImageCustomizationShorthand;

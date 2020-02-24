@@ -1,7 +1,7 @@
-import { Accessibility } from '@fluentui/accessibility'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import { Accessibility } from '@fluentui/accessibility';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
 import {
   UIComponent,
   childrenExist,
@@ -10,55 +10,47 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ContentComponentProps,
-  rtlTextContainer,
-} from '../../utils'
-import { WithAsProp, withSafeTypeForAs } from '../../types'
+  rtlTextContainer
+} from '../../utils';
+import { WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface GridProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    * @available gridBehavior, gridHorizontalBehavior
    * */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
   /** The columns of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line. */
-  columns?: string | number
+  columns?: string | number;
 
   /** The rows of the grid with a space-separated list of values. The values represent the track size, and the space between them represents the grid line. */
-  rows?: string | number
+  rows?: string | number;
 }
 
 class Grid extends UIComponent<WithAsProp<GridProps>> {
-  static displayName = 'Grid'
+  static displayName = 'Grid';
 
-  static className = 'ui-grid'
+  static className = 'ui-grid';
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false,
+      content: false
     }),
     columns: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([
-        PropTypes.arrayOf(customPropTypes.nodeContent),
-        customPropTypes.nodeContent,
-      ]),
+      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent])
     ]),
-    rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  }
+    rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+  };
 
   static defaultProps: WithAsProp<GridProps> = {
-    as: 'div',
-  }
+    as: 'div'
+  };
 
-  renderComponent({
-    accessibility,
-    ElementType,
-    classes,
-    unhandledProps,
-  }: RenderResultConfig<any>): React.ReactNode {
-    const { children, content } = this.props
+  renderComponent({ accessibility, ElementType, classes, unhandledProps }: RenderResultConfig<any>): React.ReactNode {
+    const { children, content } = this.props;
 
     return (
       <ElementType
@@ -69,11 +61,11 @@ class Grid extends UIComponent<WithAsProp<GridProps>> {
       >
         {childrenExist(children) ? children : content}
       </ElementType>
-    )
+    );
   }
 }
 
 /**
  * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
  */
-export default withSafeTypeForAs<typeof Grid, GridProps>(Grid)
+export default withSafeTypeForAs<typeof Grid, GridProps>(Grid);

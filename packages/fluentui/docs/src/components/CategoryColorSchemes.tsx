@@ -1,37 +1,29 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import {
-  createComponent,
-  ComponentSlotStylesInput,
-  ThemePrepared,
-  Grid,
-  Header,
-  HeaderProps,
-  ShorthandCollection,
-} from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { createComponent, ComponentSlotStylesInput, ThemePrepared, Grid, Header, HeaderProps, ShorthandCollection } from '@fluentui/react';
 
-import ColorBox from './ColorBox'
+import ColorBox from './ColorBox';
 
 type ColorVariantsProps = {
-  name?: string
-  themes?: ThemePrepared[]
-  headers?: ShorthandCollection<HeaderProps>
-}
+  name?: string;
+  themes?: ThemePrepared[];
+  headers?: ShorthandCollection<HeaderProps>;
+};
 
 export const colorVariantsStyles: ComponentSlotStylesInput<ColorVariantsProps> = {
   root: {
     border: '1px solid transparent',
     borderRadius: '.25rem',
-    overflow: 'hidden',
-  },
-}
+    overflow: 'hidden'
+  }
+};
 
 const CategoryColorSchemes = createComponent<ColorVariantsProps>({
   displayName: 'ColorVariants',
   render: ({ name, themes, headers, config: { classes } }) => {
-    if (themes.length === 0) return <></>
+    if (themes.length === 0) return <></>;
 
-    const colorSchemes = _.map(themes, theme => theme.siteVariables.categoryColorScheme[name])
+    const colorSchemes = _.map(themes, theme => theme.siteVariables.categoryColorScheme[name]);
 
     const elements = _.flatMap(_.head(colorSchemes), (i, token) => [
       <ColorBox
@@ -44,16 +36,11 @@ const CategoryColorSchemes = createComponent<ColorVariantsProps>({
         styles={{ backgroundColor: '#f2f2f2' }}
       />,
       ..._.map(colorSchemes, (colorScheme, i) => (
-        <ColorBox
-          key={`${token}${i}`}
-          size="small"
-          value={colorScheme[token]}
-          copyToClipboardIcon={false}
-        />
-      )),
-    ])
+        <ColorBox key={`${token}${i}`} size="small" value={colorScheme[token]} copyToClipboardIcon={false} />
+      ))
+    ]);
 
-    const columns = `auto ${_.times(themes.length, () => '180px').join(' ')}`
+    const columns = `auto ${_.times(themes.length, () => '180px').join(' ')}`;
     return (
       <div className={classes.root}>
         <Grid columns={columns}>
@@ -61,8 +48,8 @@ const CategoryColorSchemes = createComponent<ColorVariantsProps>({
           {elements}
         </Grid>
       </div>
-    )
-  },
-})
+    );
+  }
+});
 
-export default CategoryColorSchemes
+export default CategoryColorSchemes;

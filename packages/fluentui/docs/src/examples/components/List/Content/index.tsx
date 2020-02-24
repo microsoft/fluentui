@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Content = () => (
   <ExampleSection title="Content">
@@ -40,6 +40,6 @@ const Content = () => (
       examplePath="components/List/Content/ListExampleEndMedia"
     />
   </ExampleSection>
-)
+);
 
-export default Content
+export default Content;

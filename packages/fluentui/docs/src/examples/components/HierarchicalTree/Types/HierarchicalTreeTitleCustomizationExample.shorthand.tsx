@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Icon, HierarchicalTree } from '@fluentui/react'
+import * as React from 'react';
+import { Icon, HierarchicalTree } from '@fluentui/react';
 
 const items = [
   {
@@ -12,11 +12,11 @@ const items = [
         items: [
           {
             key: '3',
-            title: 'one one one',
-          },
-        ],
-      },
-    ],
+            title: 'one one one'
+          }
+        ]
+      }
+    ]
   },
   {
     key: '4',
@@ -24,21 +24,19 @@ const items = [
     items: [
       {
         key: '5',
-        title: 'two one',
-      },
-    ],
-  },
-]
+        title: 'two one'
+      }
+    ]
+  }
+];
 
 const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
   <Component open={open} hasSubtree={hasSubtree} {...restProps}>
     {hasSubtree && <Icon name={open ? 'arrow-down' : 'arrow-right'} />}
     <span>{content}</span>
   </Component>
-)
+);
 
-const TreeTitleCustomizationExample = () => (
-  <HierarchicalTree aria-label="Custom Title" items={items} renderItemTitle={titleRenderer} />
-)
+const TreeTitleCustomizationExample = () => <HierarchicalTree aria-label="Custom Title" items={items} renderItemTitle={titleRenderer} />;
 
-export default TreeTitleCustomizationExample
+export default TreeTitleCustomizationExample;

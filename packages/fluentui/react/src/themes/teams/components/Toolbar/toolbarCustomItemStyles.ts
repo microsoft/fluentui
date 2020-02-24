@@ -1,19 +1,16 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { ToolbarCustomItemProps } from '../../../../components/Toolbar/ToolbarCustomItem'
-import { ToolbarVariables } from './toolbarVariables'
-import { getColorScheme } from '../../colors'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ToolbarCustomItemProps } from '../../../../components/Toolbar/ToolbarCustomItem';
+import { ToolbarVariables } from './toolbarVariables';
+import { getColorScheme } from '../../colors';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
-const toolbarCustomItemStyles: ComponentSlotStylesPrepared<
-  ToolbarCustomItemProps,
-  ToolbarVariables
-> = {
+const toolbarCustomItemStyles: ComponentSlotStylesPrepared<ToolbarCustomItemProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme)
-    const { borderWidth } = siteVariables
+    const colors = getColorScheme(v.colorScheme);
+    const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
-    })
+      siteVariables
+    });
 
     return {
       position: 'relative',
@@ -29,19 +26,19 @@ const toolbarCustomItemStyles: ComponentSlotStylesPrepared<
       ...(p.fitted !== true &&
         p.fitted !== 'horizontally' && {
           paddingLeft: v.customItemHorizontalPadding,
-          paddingRight: v.customItemHorizontalPadding,
+          paddingRight: v.customItemHorizontalPadding
         }),
       ...(p.fitted !== true &&
         p.fitted !== 'vertically' && {
           paddingTop: v.customItemVerticalPadding,
-          paddingBottom: v.customItemVerticalPadding,
+          paddingBottom: v.customItemVerticalPadding
         }),
 
       ':focus': borderFocusStyles[':focus'],
 
-      ':focus-visible': borderFocusStyles[':focus-visible'],
-    }
-  },
-}
+      ':focus-visible': borderFocusStyles[':focus-visible']
+    };
+  }
+};
 
-export default toolbarCustomItemStyles
+export default toolbarCustomItemStyles;

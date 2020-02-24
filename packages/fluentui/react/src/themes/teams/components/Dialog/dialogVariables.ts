@@ -1,25 +1,25 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface DialogVariables {
-  rootBackground: string
-  rootBorderRadius: string
-  rootPadding: string
-  rootWidth: string
+  rootBackground: string;
+  rootBorderRadius: string;
+  rootPadding: string;
+  rootWidth: string;
 
-  contentMargin: string
+  contentMargin: string;
 
-  headerMargin: string
+  headerMargin: string;
 
-  overlayBackground: string
-  overlayZIndex: number
+  overlayBackground: string;
+  overlayZIndex: number;
 
-  boxShadow: string
-  foregroundColor: string
+  boxShadow: string;
+  foregroundColor: string;
 
-  headerFontSize: string
-  headerFontWeight: number
+  headerFontSize: string;
+  headerFontWeight: number;
 
-  headerActionMargin: string
+  headerActionMargin: string;
 }
 
 export default (siteVariables): Partial<DialogVariables> => ({
@@ -40,5 +40,5 @@ export default (siteVariables): Partial<DialogVariables> => ({
   overlayBackground: 'rgba(37, 36, 36, .75)', // todo: update to a palette value when daisy has mapped one
   overlayZIndex: siteVariables.zIndexes.overlay,
 
-  headerActionMargin: `${pxToRem(-3)} ${pxToRem(-8)} 0 0`,
-})
+  headerActionMargin: `${pxToRem(-3)} ${pxToRem(-8)} 0 0`
+});

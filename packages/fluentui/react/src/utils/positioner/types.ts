@@ -1,23 +1,23 @@
-import * as React from 'react'
-import PopperJS from 'popper.js'
+import * as React from 'react';
+import PopperJS from 'popper.js';
 
-export type Position = 'above' | 'below' | 'before' | 'after'
-export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center'
+export type Position = 'above' | 'below' | 'before' | 'after';
+export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
-export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement
+export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement;
 
 export interface BasicPositioningProps {
   /**
    * Alignment for the component.
    */
-  align?: Alignment
+  align?: Alignment;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
    * and align is also vertical ('top' | 'bottom') or if both position and align are horizontal ('before' | 'after'
    * and 'start' | 'end' respectively), then provided value for 'align' will be ignored and 'center' will be used instead.
    */
-  position?: Position
+  position?: Position;
 }
 
 export interface PositioningProps extends BasicPositioningProps {
@@ -29,68 +29,68 @@ export interface PositioningProps extends BasicPositioningProps {
    * - vw, CSS viewport width unit
    * - vh, CSS viewport height unit
    */
-  offset?: string
+  offset?: string;
 
   /**
    * Disables automatic repositioning of the component; it will always be placed according to the values of `align` and
    * `position` props, regardless of the size of the component, the reference element or the viewport.
    */
-  unstable_pinned?: boolean
+  unstable_pinned?: boolean;
 }
 
 export interface PopperProps extends PositioningProps {
   /**
    * Ref object containing the pointer node.
    */
-  pointerTargetRef?: React.RefObject<Element>
+  pointerTargetRef?: React.RefObject<Element>;
 
   /**
    * The content of the Popper box (the element that is going to be repositioned).
    */
-  children: PopperChildrenFn | React.ReactElement
+  children: PopperChildrenFn | React.ReactElement;
 
   /**
    * Enables events (resize, scroll).
    * @default true
    */
-  enabled?: boolean
+  enabled?: boolean;
 
   /**
    * List of modifiers used to modify the offsets before they are applied to the Popper box.
    * They provide most of the functionality of Popper.js.
    */
-  modifiers?: PopperJS.Modifiers
+  modifiers?: PopperJS.Modifiers;
 
   /**
    * Array of conditions to be met in order to trigger a subsequent render to reposition the elements.
    */
-  positioningDependencies?: React.DependencyList
+  positioningDependencies?: React.DependencyList;
 
   /**
    * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
    * @default false
    */
-  positionFixed?: boolean
+  positionFixed?: boolean;
 
   /**
    * Ref object containing the target node (the element that we're using as reference for Popper box).
    */
-  targetRef: React.RefObject<Element> | PopperJS.ReferenceObject
+  targetRef: React.RefObject<Element> | PopperJS.ReferenceObject;
 
   /**
    * Rtl attribute for the component.
    */
-  rtl?: boolean
+  rtl?: boolean;
 }
 
 export interface PopperChildrenProps {
   /**
    * Popper's placement.
    */
-  placement: PopperJS.Placement
+  placement: PopperJS.Placement;
 
   /**
    * Function that updates the position of the Popper box, computing the new offsets and applying the new style.
    */
-  scheduleUpdate(): void
+  scheduleUpdate(): void;
 }

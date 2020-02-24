@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key'
-import * as _ from 'lodash'
+import * as keyboardKey from 'keyboard-key';
+import * as _ from 'lodash';
 
-import { Accessibility } from '../../types'
-import menuButtonBehavior from '../MenuButton/menuButtonBehavior'
+import { Accessibility } from '../../types';
+import menuButtonBehavior from '../MenuButton/menuButtonBehavior';
 
 /**
  * @description
@@ -21,42 +21,39 @@ import menuButtonBehavior from '../MenuButton/menuButtonBehavior'
  */
 const splitButtonBehavior: Accessibility = props => {
   const splitButtonMenuButtonBehavior = () => {
-    const menuButtonBehaviorData = menuButtonBehavior(props)
-    menuButtonBehaviorData.attributes.trigger['aria-haspopup'] = undefined
+    const menuButtonBehaviorData = menuButtonBehavior(props);
+    menuButtonBehaviorData.attributes.trigger['aria-haspopup'] = undefined;
 
     return _.merge(menuButtonBehaviorData, {
       keyActions: {
         popup: {
           closeAndFocusTrigger: {
-            keyCombinations: [
-              { keyCode: keyboardKey.Escape },
-              { keyCode: keyboardKey.ArrowUp, altKey: true },
-            ],
-          },
+            keyCombinations: [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.ArrowUp, altKey: true }]
+          }
         },
         root: {
           ...(!props.open && {
             openAndFocusFirst: {
-              keyCombinations: [{ keyCode: keyboardKey.ArrowDown, altKey: true }],
-            },
-          }),
-        },
-      },
-    })
-  }
+              keyCombinations: [{ keyCode: keyboardKey.ArrowDown, altKey: true }]
+            }
+          })
+        }
+      }
+    });
+  };
 
   return {
     attributes: {
       root: {},
       toggleButton: {
         tabIndex: -1,
-        'aria-haspopup': true,
-      },
+        'aria-haspopup': true
+      }
     },
     childBehaviors: {
-      menuButton: splitButtonMenuButtonBehavior,
-    },
-  }
-}
+      menuButton: splitButtonMenuButtonBehavior
+    }
+  };
+};
 
-export default splitButtonBehavior
+export default splitButtonBehavior;

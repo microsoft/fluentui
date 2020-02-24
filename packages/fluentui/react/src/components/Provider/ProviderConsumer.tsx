@@ -1,16 +1,16 @@
-import { ThemePrepared } from '@fluentui/styles'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import { FelaTheme } from 'react-fela'
+import { ThemePrepared } from '@fluentui/styles';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { FelaTheme } from 'react-fela';
 
-import { ProviderContextPrepared } from '../../types'
+import { ProviderContextPrepared } from '../../types';
 
 export interface ProviderConsumerProps {
   /**
    * Uses the function children pattern to access theme.
    * `theme.siteVariables` contains the siteVariables passed from the nearest Provider.
    */
-  render: (theme: ThemePrepared) => React.ReactNode
+  render: (theme: ThemePrepared) => React.ReactNode;
 }
 
 /**
@@ -18,11 +18,11 @@ export interface ProviderConsumerProps {
  */
 const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = ({ render }) => (
   <FelaTheme>{(context: ProviderContextPrepared) => render(context.theme)}</FelaTheme>
-)
+);
 
-ProviderConsumer.displayName = 'ProviderConsumer'
+ProviderConsumer.displayName = 'ProviderConsumer';
 ProviderConsumer.propTypes = {
-  render: PropTypes.func.isRequired,
-}
+  render: PropTypes.func.isRequired
+};
 
-export default ProviderConsumer
+export default ProviderConsumer;

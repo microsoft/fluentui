@@ -1,29 +1,27 @@
-import * as React from 'react'
-import { Grid, Ref, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Ref, Segment } from '@fluentui/react';
 
 type RefForwardingExampleState = {
-  isMounted: boolean
-}
+  isMounted: boolean;
+};
 
-const ExampleButton = React.forwardRef<HTMLButtonElement, { children: React.ReactNode }>(
-  (props, ref) => (
-    <div>
-      <button {...props} ref={ref} />
-    </div>
-  ),
-)
+const ExampleButton = React.forwardRef<HTMLButtonElement, { children: React.ReactNode }>((props, ref) => (
+  <div>
+    <button {...props} ref={ref} />
+  </div>
+));
 
 class RefForwardingExample extends React.Component<{}, RefForwardingExampleState> {
-  forwardedRef = React.createRef<HTMLButtonElement>()
-  state = { isMounted: false }
+  forwardedRef = React.createRef<HTMLButtonElement>();
+  state = { isMounted: false };
 
   componentDidMount() {
-    this.setState({ isMounted: true })
+    this.setState({ isMounted: true });
   }
 
   render() {
-    const { isMounted } = this.state
-    const buttonNode = this.forwardedRef.current
+    const { isMounted } = this.state;
+    const buttonNode = this.forwardedRef.current;
 
     return (
       <Grid columns={2}>
@@ -44,17 +42,17 @@ class RefForwardingExample extends React.Component<{}, RefForwardingExampleState
                 {
                   nodeName: buttonNode.nodeName,
                   nodeType: buttonNode.nodeType,
-                  textContent: buttonNode.textContent,
+                  textContent: buttonNode.textContent
                 },
                 null,
-                2,
+                2
               )}
             </pre>
           </code>
         )}
       </Grid>
-    )
+    );
   }
 }
 
-export default RefForwardingExample
+export default RefForwardingExample;

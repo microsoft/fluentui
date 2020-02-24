@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
-import * as _ from 'lodash'
+import * as keyboardKey from 'keyboard-key';
+import * as _ from 'lodash';
 
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -13,17 +13,15 @@ import { Accessibility } from '../../types'
  * Adds attribute 'aria-modal=true' to 'popup' slot if 'trapFocus' property is true. Does not set the attribute otherwise.
  */
 const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
-  const onAsArray = _.isArray(props.on) ? props.on : [props.on]
-  const tabbableTriggerProps = props.tabbableTrigger
-    ? { tabIndex: getAriaAttributeFromProps('tabIndex', props, 0) }
-    : undefined
+  const onAsArray = _.isArray(props.on) ? props.on : [props.on];
+  const tabbableTriggerProps = props.tabbableTrigger ? { tabIndex: getAriaAttributeFromProps('tabIndex', props, 0) } : undefined;
 
   if (tabbableTriggerProps) {
-    tabbableTriggerProps['aria-haspopup'] = 'true'
+    tabbableTriggerProps['aria-haspopup'] = 'true';
 
     if (process.env.NODE_ENV !== 'production') {
       // Override the default trigger's accessibility schema class.
-      tabbableTriggerProps['data-aa-class'] = 'PopupButton'
+      tabbableTriggerProps['data-aa-class'] = 'PopupButton';
     }
   }
 
@@ -31,17 +29,17 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
     attributes: {
       trigger: {
         ...tabbableTriggerProps,
-        'aria-disabled': props.disabled,
+        'aria-disabled': props.disabled
       },
       popup: {
         role: props.trapFocus ? 'dialog' : 'complementary',
-        'aria-modal': props.trapFocus ? true : undefined,
-      },
+        'aria-modal': props.trapFocus ? true : undefined
+      }
     },
     keyActions: {
       popup: {
         closeAndFocusTrigger: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }],
+          keyCombinations: [{ keyCode: keyboardKey.Escape }]
         },
         preventScroll: {
           keyCombinations: props.isOpenedByRightClick &&
@@ -51,90 +49,75 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
               { keyCode: keyboardKey.PageDown },
               { keyCode: keyboardKey.PageUp },
               { keyCode: keyboardKey.Home },
-              { keyCode: keyboardKey.End },
-            ],
-        },
+              { keyCode: keyboardKey.End }
+            ]
+        }
       },
       trigger: {
         close: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }],
+          keyCombinations: [{ keyCode: keyboardKey.Escape }]
         },
         toggle: {
-          keyCombinations: _.includes(onAsArray, 'click') && [
-            { keyCode: keyboardKey.Enter },
-            { keyCode: keyboardKey.Spacebar },
-          ],
+          keyCombinations: _.includes(onAsArray, 'click') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
         },
         open: {
           keyCombinations: _.includes(onAsArray, 'hover') &&
-            !_.includes(onAsArray, 'context') && [
-              { keyCode: keyboardKey.Enter },
-              { keyCode: keyboardKey.Spacebar },
-            ],
-        },
-      },
-    },
-  }
-}
+            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        }
+      }
+    }
+  };
+};
 
 const isFocusable = propsData => {
   try {
-    const { as, href, type } = propsData
-    return (
-      type === 'button' ||
-      type === 'input' ||
-      (type === 'a' && href !== undefined) ||
-      as === 'button'
-    )
+    const { as, href, type } = propsData;
+    return type === 'button' || type === 'input' || (type === 'a' && href !== undefined) || as === 'button';
   } catch {
-    return false
+    return false;
   }
-}
+};
 
-const getAriaAttributeFromProps = (
-  attributeName: string,
-  props: any,
-  defaultValue: number | string,
-) => {
-  if (!props.trigger) return undefined
+const getAriaAttributeFromProps = (attributeName: string, props: any, defaultValue: number | string) => {
+  if (!props.trigger) return undefined;
   if (props.trigger.props[attributeName]) {
-    return props.trigger.props[attributeName]
+    return props.trigger.props[attributeName];
   }
-  const { as, href } = props.trigger.props
-  const { type } = props.trigger
+  const { as, href } = props.trigger.props;
+  const { type } = props.trigger;
   if (isFocusable({ as, href, type })) {
-    return undefined
+    return undefined;
   }
-  return defaultValue
-}
+  return defaultValue;
+};
 
-export default popupBehavior
+export default popupBehavior;
 
-type PopupEvents = 'click' | 'hover' | 'focus' | 'context'
-type RestrictedClickEvents = 'click' | 'focus'
-type RestrictedHoverEvents = 'hover' | 'focus' | 'context'
-type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[]
+type PopupEvents = 'click' | 'hover' | 'focus' | 'context';
+type RestrictedClickEvents = 'click' | 'focus';
+type RestrictedHoverEvents = 'hover' | 'focus' | 'context';
+type PopupEventsArray = RestrictedClickEvents[] | RestrictedHoverEvents[];
 
 export type PopupBehaviorProps = {
   /** Indicates if focus should be trapped inside popup's container. */
-  trapFocus?: boolean | object
+  trapFocus?: boolean | object;
   /** Events triggering the popup. */
-  on?: PopupEvents | PopupEventsArray
+  on?: PopupEvents | PopupEventsArray;
   /** Indicates if popup's trigger is disabled. */
-  disabled?: boolean
+  disabled?: boolean;
   /** Element which triggers popup */
   trigger?: {
     props?: {
       /** Element type. */
-      as?: string
-      href?: string
-      tabIndex?: string
-    }
+      as?: string;
+      href?: string;
+      tabIndex?: string;
+    };
     /** Element type. */
-    type?: string
-  }
+    type?: string;
+  };
   /** Whether the trigger should be tabbable */
-  tabbableTrigger?: boolean
+  tabbableTrigger?: boolean;
   /** Whether the popup was opened by right click */
-  isOpenedByRightClick?: boolean
-}
+  isOpenedByRightClick?: boolean;
+};
