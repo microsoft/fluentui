@@ -4,7 +4,7 @@ import {
   getElementType,
   getUnhandledProps,
   Renderer,
-  StylesContextPerformance,
+  StylesContextPerformanceInput,
   Telemetry,
   unstable_getStyles,
   useIsomorphicLayoutEffect
@@ -34,7 +34,7 @@ export interface ProviderProps extends ChildrenComponentProps, UIComponentProps 
   renderer?: Renderer;
   rtl?: boolean;
   disableAnimations?: boolean;
-  performance?: StylesContextPerformance;
+  performance?: StylesContextPerformanceInput;
   overwrite?: boolean;
   target?: Document;
   theme?: ThemeInput;
@@ -119,10 +119,8 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   };
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
-  const incomingContext: ProviderContextPrepared = overwrite ? ({} as any) : consumedContext;
+  const incomingContext: ProviderContextInput | ProviderContextPrepared = overwrite ? {} : consumedContext;
 
-  // rehydration disabled to avoid leaking styles between renderers
-  // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
   const outgoingContext = mergeContexts(incomingContext, inputContext);
 
   const rtlProps: { dir?: 'rtl' | 'ltr' } = {};
@@ -180,6 +178,8 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
           ...unhandledProps
         };
 
+  // rehydration disabled to avoid leaking styles between renderers
+  // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
   return (
     <RendererProvider renderer={outgoingContext.renderer} {...{ rehydrate: false, targetDocument: outgoingContext.target }}>
       <ThemeProvider theme={outgoingContext} overwrite>
@@ -229,6 +229,7 @@ Provider.propTypes = {
   // Heads Up!
   // Keep in sync with packages/react-bindings/src/styles/types.ts
   performance: PropTypes.shape({
+    enableSanitizeCssPlugin: PropTypes.bool,
     enableStylesCaching: PropTypes.bool,
     enableVariablesCaching: PropTypes.bool
   }),

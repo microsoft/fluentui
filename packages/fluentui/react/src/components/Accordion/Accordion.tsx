@@ -1,8 +1,8 @@
-import { Accessibility, accordionBehavior } from '@fluentui/accessibility'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import { Accessibility, accordionBehavior } from '@fluentui/accessibility';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
 
 import {
   AutoControlledComponent,
@@ -11,37 +11,38 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-} from '../../utils'
-import AccordionTitle, { AccordionTitleProps } from './AccordionTitle'
-import AccordionContent, { AccordionContentProps } from './AccordionContent'
+  applyAccessibilityKeyHandlers
+} from '../../utils';
+import AccordionTitle, { AccordionTitleProps } from './AccordionTitle';
+import AccordionContent, { AccordionContentProps } from './AccordionContent';
 
-import {
-  ComponentEventHandler,
-  WithAsProp,
-  ShorthandValue,
-  ShorthandRenderFunction,
-  withSafeTypeForAs,
-} from '../../types'
-import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer'
+import { ComponentEventHandler, WithAsProp, ShorthandValue, ShorthandRenderFunction, withSafeTypeForAs } from '../../types';
+import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 
 export interface AccordionSlotClassNames {
-  content: string
-  title: string
+  content: string;
+  title: string;
 }
 
 export interface AccordionProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active panel. */
-  activeIndex?: number[] | number
+  activeIndex?: number[] | number;
 
   /** Initial activeIndex value. */
-  defaultActiveIndex?: number[] | number
+  defaultActiveIndex?: number[] | number;
 
   /** Only allow one panel to be expanded at a time. */
-  exclusive?: boolean
+  exclusive?: boolean;
 
   /** At least one panel should be expanded at any time. */
-  expanded?: boolean
+  expanded?: boolean;
+
+  /**
+   * Called when the active index of the Accordion changes.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props, with `activeIndex` reflecting the new state.
+   */
+  onActiveIndexChange?: ComponentEventHandler<AccordionProps>;
 
   /**
    * Called when a panel title is clicked.
@@ -49,13 +50,13 @@ export interface AccordionProps extends UIComponentProps, ChildrenComponentProps
    * @param event - React's original SyntheticEvent.
    * @param data - All item props.
    */
-  onTitleClick?: ComponentEventHandler<AccordionProps>
+  onTitleClick?: ComponentEventHandler<AccordionProps>;
 
   /** Shorthand array of props for Accordion. */
   panels?: {
-    content: ShorthandValue<AccordionContentProps>
-    title: ShorthandValue<AccordionTitleProps>
-  }[]
+    content: ShorthandValue<AccordionContentProps>;
+    title: ShorthandValue<AccordionTitleProps>;
+  }[];
 
   /**
    * A custom renderer for each Accordion's panel title.
@@ -63,7 +64,7 @@ export interface AccordionProps extends UIComponentProps, ChildrenComponentProps
    * @param Component - The panel's component type.
    * @param props - The panel's computed props.
    */
-  renderPanelTitle?: ShorthandRenderFunction<AccordionTitleProps>
+  renderPanelTitle?: ShorthandRenderFunction<AccordionTitleProps>;
 
   /**
    * A custom renderer for each Accordion's panel content.
@@ -71,153 +72,149 @@ export interface AccordionProps extends UIComponentProps, ChildrenComponentProps
    * @param Component - The panel's component type.
    * @param props - The panel's computed props.
    */
-  renderPanelContent?: ShorthandRenderFunction<AccordionContentProps>
+  renderPanelContent?: ShorthandRenderFunction<AccordionContentProps>;
 
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 }
 
 export interface AccordionState {
-  activeIndex: number[] | number
-  focusedIndex: number
+  activeIndex: number[] | number;
+  focusedIndex: number;
 }
 
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
-  static displayName = 'Accordion'
+  static displayName = 'Accordion';
 
-  static className = 'ui-accordion'
+  static className = 'ui-accordion';
 
   static slotClassNames: AccordionSlotClassNames = {
     content: `${Accordion.className}__content`,
-    title: `${Accordion.className}__title`,
-  }
+    title: `${Accordion.className}__title`
+  };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false,
+      content: false
     }),
     activeIndex: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number])
     ]),
     defaultActiveIndex: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
+      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number])
     ]),
     exclusive: PropTypes.bool,
     expanded: PropTypes.bool,
     onTitleClick: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.func]),
+    onActiveIndexChange: PropTypes.func,
     panels: customPropTypes.every([
       customPropTypes.disallow(['children']),
       PropTypes.arrayOf(
         PropTypes.shape({
           content: customPropTypes.itemShorthand,
-          title: customPropTypes.itemShorthand,
-        }),
-      ),
+          title: customPropTypes.itemShorthand
+        })
+      )
     ]),
 
     renderPanelTitle: PropTypes.func,
-    renderPanelContent: PropTypes.func,
-  }
+    renderPanelContent: PropTypes.func
+  };
 
   static defaultProps = {
     accessibility: accordionBehavior,
-    as: 'dl',
-  }
+    as: 'dl'
+  };
 
-  static autoControlledProps = ['activeIndex']
+  static autoControlledProps = ['activeIndex'];
 
-  static Title = AccordionTitle
-  static Content = AccordionContent
+  static Title = AccordionTitle;
+  static Content = AccordionContent;
 
-  focusHandler: ContainerFocusHandler = null
-  itemRefs = []
-  defaultAccordionTitleId = _.uniqueId('accordion-title-')
-  defaultAccordionContentId = _.uniqueId('accordion-content-')
+  focusHandler: ContainerFocusHandler = null;
+  itemRefs = [];
+  defaultAccordionTitleId = _.uniqueId('accordion-title-');
+  defaultAccordionContentId = _.uniqueId('accordion-content-');
 
   actionHandlers = {
     moveNext: e => {
-      e.preventDefault()
-      this.focusHandler.moveNext()
+      e.preventDefault();
+      this.focusHandler.moveNext();
     },
     movePrevious: e => {
-      e.preventDefault()
-      this.focusHandler.movePrevious()
+      e.preventDefault();
+      this.focusHandler.movePrevious();
     },
     moveFirst: e => {
-      e.preventDefault()
-      this.focusHandler.moveFirst()
+      e.preventDefault();
+      this.focusHandler.moveFirst();
     },
     moveLast: e => {
-      e.preventDefault()
-      this.focusHandler.moveLast()
-    },
-  }
+      e.preventDefault();
+      this.focusHandler.moveLast();
+    }
+  };
 
   constructor(props, context) {
-    super(props, context)
+    super(props, context);
 
-    this.focusHandler = new ContainerFocusHandler(
-      this.getNavigationItemsSize,
-      this.handleNavigationFocus,
-      true,
-    )
+    this.focusHandler = new ContainerFocusHandler(this.getNavigationItemsSize, this.handleNavigationFocus, true);
   }
 
   handleNavigationFocus = (index: number) => {
     this.setState({ focusedIndex: index }, () => {
-      const targetComponent = this.itemRefs[index] && this.itemRefs[index].current
-      targetComponent && targetComponent.focus()
-    })
-  }
+      const targetComponent = this.itemRefs[index] && this.itemRefs[index].current;
+      targetComponent && targetComponent.focus();
+    });
+  };
 
-  getNavigationItemsSize = () => this.props.panels.length
+  getNavigationItemsSize = () => this.props.panels.length;
 
   getInitialAutoControlledState({ expanded, exclusive }: AccordionProps) {
-    const alwaysActiveIndex = expanded ? 0 : -1
-    return { activeIndex: exclusive ? alwaysActiveIndex : [alwaysActiveIndex] }
+    const alwaysActiveIndex = expanded ? 0 : -1;
+    return { activeIndex: exclusive ? alwaysActiveIndex : [alwaysActiveIndex] };
   }
 
   computeNewIndex = (index: number): number | number[] => {
-    const { activeIndex } = this.state
-    const { exclusive } = this.props
+    const { activeIndex } = this.state;
+    const { exclusive } = this.props;
 
     if (!this.isIndexActionable(index)) {
-      return activeIndex
+      return activeIndex;
     }
 
-    if (exclusive) return index === activeIndex ? -1 : index
+    if (exclusive) return index === activeIndex ? -1 : index;
     // check to see if index is in array, and remove it, if not then add it
-    return _.includes(activeIndex as number[], index)
-      ? _.without(activeIndex as number[], index)
-      : [...(activeIndex as number[]), index]
-  }
+    return _.includes(activeIndex as number[], index) ? _.without(activeIndex as number[], index) : [...(activeIndex as number[]), index];
+  };
 
   handleTitleOverrides = (predefinedProps: AccordionTitleProps) => ({
     onClick: (e: React.SyntheticEvent, titleProps: AccordionTitleProps) => {
-      const { index } = titleProps
-      const activeIndex = this.computeNewIndex(index)
+      const { index } = titleProps;
+      const activeIndex = this.computeNewIndex(index);
 
-      this.setState({ activeIndex, focusedIndex: index })
+      this.setState({ activeIndex, focusedIndex: index });
 
-      _.invoke(predefinedProps, 'onClick', e, titleProps)
-      _.invoke(this.props, 'onTitleClick', e, titleProps)
+      _.invoke(this.props, 'onActiveIndexChange', e, { ...this.props, activeIndex });
+      _.invoke(predefinedProps, 'onClick', e, titleProps);
+      _.invoke(this.props, 'onTitleClick', e, titleProps);
     },
     onFocus: (e: React.SyntheticEvent, titleProps: AccordionTitleProps) => {
-      _.invoke(predefinedProps, 'onFocus', e, titleProps)
-      this.setState({ focusedIndex: predefinedProps.index })
-    },
-  })
+      _.invoke(predefinedProps, 'onFocus', e, titleProps);
+      this.setState({ focusedIndex: predefinedProps.index });
+    }
+  });
 
   isIndexActive = (index: number): boolean => {
-    const { exclusive } = this.props
-    const { activeIndex } = this.state
+    const { exclusive } = this.props;
+    const { activeIndex } = this.state;
 
-    return exclusive ? activeIndex === index : _.includes(activeIndex as number[], index)
-  }
+    return exclusive ? activeIndex === index : _.includes(activeIndex as number[], index);
+  };
 
   /**
    * Checks if panel at index can be actioned upon. Used in the case of expanded accordion,
@@ -230,31 +227,31 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
    */
   isIndexActionable = (index: number): boolean => {
     if (!this.isIndexActive(index)) {
-      return true
+      return true;
     }
 
-    const { activeIndex } = this.state
-    const { expanded, exclusive } = this.props
+    const { activeIndex } = this.state;
+    const { expanded, exclusive } = this.props;
 
-    return !expanded || (!exclusive && (activeIndex as number[]).length > 1)
-  }
+    return !expanded || (!exclusive && (activeIndex as number[]).length > 1);
+  };
 
   renderPanels = () => {
-    const children: any[] = []
-    const { panels, renderPanelContent, renderPanelTitle } = this.props
-    const { focusedIndex } = this.state
+    const children: any[] = [];
+    const { panels, renderPanelContent, renderPanelTitle } = this.props;
+    const { focusedIndex } = this.state;
 
-    this.itemRefs = []
-    this.focusHandler.syncFocusedIndex(focusedIndex)
+    this.itemRefs = [];
+    this.focusHandler.syncFocusedIndex(focusedIndex);
 
     _.each(panels, (panel, index) => {
-      const { content, title } = panel
-      const active = this.isIndexActive(index)
-      const canBeCollapsed = this.isIndexActionable(index)
-      const contentRef = React.createRef<HTMLElement>()
-      const titleId = title['id'] || `${this.defaultAccordionTitleId}${index}`
-      const contentId = content['id'] || `${this.defaultAccordionContentId}${index}`
-      this.itemRefs[index] = contentRef
+      const { content, title } = panel;
+      const active = this.isIndexActive(index);
+      const canBeCollapsed = this.isIndexActionable(index);
+      const contentRef = React.createRef<HTMLElement>();
+      const titleId = title['id'] || `${this.defaultAccordionTitleId}${index}`;
+      const contentId = content['id'] || `${this.defaultAccordionContentId}${index}`;
+      this.itemRefs[index] = contentRef;
 
       children.push(
         AccordionTitle.create(title, {
@@ -265,30 +262,30 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
             contentRef,
             canBeCollapsed,
             id: titleId,
-            accordionContentId: contentId,
+            accordionContentId: contentId
           }),
           overrideProps: this.handleTitleOverrides,
-          render: renderPanelTitle,
-        }),
-      )
+          render: renderPanelTitle
+        })
+      );
       children.push(
         AccordionContent.create(content, {
           defaultProps: () => ({
             className: Accordion.slotClassNames.content,
             active,
             id: contentId,
-            accordionTitleId: titleId,
+            accordionTitleId: titleId
           }),
-          render: renderPanelContent,
-        }),
-      )
-    })
+          render: renderPanelContent
+        })
+      );
+    });
 
-    return children
-  }
+    return children;
+  };
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children } = this.props
+    const { children } = this.props;
 
     return (
       <ElementType
@@ -300,7 +297,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       >
         {childrenExist(children) ? children : this.renderPanels()}
       </ElementType>
-    )
+    );
   }
 }
 
@@ -310,4 +307,4 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
  * @accessibility
  * Implements [ARIA Accordion](https://www.w3.org/TR/wai-aria-practices-1.1/#accordion) design pattern (keyboard navigation not yet supported).
  */
-export default withSafeTypeForAs<typeof Accordion, AccordionProps>(Accordion)
+export default withSafeTypeForAs<typeof Accordion, AccordionProps>(Accordion);
