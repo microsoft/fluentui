@@ -14,7 +14,7 @@ export const EmptyThemeProvider: React.FunctionComponent = ({ children }) => {
     rtl: false,
     theme: emptyTheme,
     telemetry: undefined,
-    performance: {}
+    performance: {} as any
   };
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;

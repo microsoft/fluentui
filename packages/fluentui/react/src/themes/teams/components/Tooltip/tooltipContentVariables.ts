@@ -10,6 +10,7 @@ export interface TooltipContentVariables {
   maxWidth: string;
 
   pointerMargin: string;
+  pointerGap: string;
   pointerHorizontalOffset: string;
   pointerVerticalOffset: string;
   pointerWidth: string;
@@ -33,6 +34,7 @@ export default (siteVars: any): TooltipContentVariables => ({
   pointerVerticalOffset: pxToRem(10),
   pointerHorizontalOffset: pxToRem(5),
   pointerMargin: pxToRem(6),
+  pointerGap: pxToRem(5),
   pointerWidth: pxToRem(6),
   pointerHeight: pxToRem(16),
   color: siteVars.colorScheme.default.foreground3,
