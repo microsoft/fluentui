@@ -15,7 +15,7 @@ task('screener:runner', cb => {
   if (argv.filter) process.env.SCREENER_FILTER = argv.filter as string;
 
   // kill the server when done
-  sh(`screener-runner --conf ${paths.base('build/screener/screener.config.js')}`)
+  sh(`screener-runner --conf ${paths.base('scripts/screener/screener.config.js')}`)
     .then(() => {
       cb();
       process.exit(0);

@@ -11,6 +11,7 @@ import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';
 import * as _ from 'lodash';
+import PopperJs from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -227,10 +228,8 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       return actionMenuElement;
     }
 
-    const menuRect: DOMRect = (positionActionMenu && _.invoke(menuRef.current, 'getBoundingClientRect')) || {
-      height: 0
-    };
-    const messageRect: DOMRect = (positionActionMenu && _.invoke(messageNode, 'getBoundingClientRect')) || { height: 0 };
+    const messageRect: DOMRect | undefined = positionActionMenu && messageNode?.getBoundingClientRect();
+    const overflowPadding: PopperJs.Padding = { top: Math.round(messageRect?.height || 0) };
 
     return (
       <Popper
@@ -250,8 +249,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
               // Is required to properly position action items
               ...(overflow && {
                 boundariesElement: 'scrollParent',
-                escapeWithReference: true,
-                padding: { top: messageRect.height - menuRect.height }
+                padding: overflowPadding
               })
             }
           }

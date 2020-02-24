@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Divider, RadioGroup } from '@fluentui/react'
+import * as React from 'react';
+import { Divider, RadioGroup } from '@fluentui/react';
 
 class RadioGroupColorPickerExample extends React.Component {
-  state = { selectedValue: '' }
+  state = { selectedValue: '' };
 
   render() {
-    const { selectedValue } = this.state
+    const { selectedValue } = this.state;
     return (
       <div>
         The selected value is: {selectedValue}
@@ -20,15 +20,15 @@ class RadioGroupColorPickerExample extends React.Component {
             icon: {
               name: 'icon-circle',
               variables: {
-                color,
-              },
-            },
+                color
+              }
+            }
           }))}
-          checkedValueChanged={(e, props) => this.setState({ selectedValue: props.value })}
+          onCheckedValueChange={(e, props) => this.setState({ selectedValue: props.value })}
         />
       </div>
-    )
+    );
   }
 }
 
-export default RadioGroupColorPickerExample
+export default RadioGroupColorPickerExample;

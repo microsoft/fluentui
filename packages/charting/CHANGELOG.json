@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/charting_v0.140.0",
+      "version": "0.140.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "8ee54b6c69ccf5e88d6794bc41d0597b139da4d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2020 12:21:05 GMT",
       "tag": "@uifabric/charting_v0.139.21",
       "version": "0.139.21",

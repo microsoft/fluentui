@@ -43,7 +43,7 @@ const resolveStyles = (
   resolvedVariables: ComponentVariablesObject,
   renderStylesInput?: (styles: ICSSInJSStyle) => string
 ): ResolveStylesResult => {
-  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance = {} } = options || {};
+  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options || {};
 
   const { className, design, styles, variables, ...stylesProps } = props;
   const noInlineOverrides = !(design || styles || variables);
@@ -80,7 +80,8 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName // does not affect styles, only used by useEnhancedRenderer in docs
+    displayName, // does not affect styles, only used by useEnhancedRenderer in docs
+    sanitizeCss: performance.enableSanitizeCssPlugin
   };
 
   const renderStyles = renderStylesInput || ((style: ICSSInJSStyle) => renderer.renderRule(() => style, felaParam));

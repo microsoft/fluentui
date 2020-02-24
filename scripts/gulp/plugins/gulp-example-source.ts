@@ -5,12 +5,12 @@ import prettier from 'prettier';
 import through from 'through2';
 import Vinyl from 'vinyl';
 
-const prettierConfig = require('../../prettier/.prettierrc.json');
-
 // TODO (fui repo merge): this script package should not take a dependency through relative paths ideally; this should be inside docs
 import { ExampleSource } from '../../../packages/fluentui/docs/src/types';
 import transformStarImportPlugin from '../../babel/transform-star-import-plugin';
 import { getRelativePathToSourceFile } from './util';
+
+const prettierConfig = require('../../../prettier.config');
 
 const ESLint = new CLIEngine({
   fix: true
@@ -29,6 +29,9 @@ const createExampleSourceCode = (file: Vinyl): ExampleSource => {
   });
   const prettierResult = prettier.format(babelResult.code, {
     ...prettierConfig,
+    trailingComma: 'all',
+    printWidth: 100,
+    semi: false,
     parser: 'babel'
   });
   // https://eslint.org/docs/developer-guide/nodejs-api#cliengineexecuteontext

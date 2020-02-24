@@ -26,6 +26,8 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         outline: 'none',
         fontSize: 'inherit',
         fontWeight: 'inherit',
+        textDecoration: 'none',
+
         selectors: {
           '.ms-Fabric--isFocusVisible &:focus': {
             // Can't use getFocusStyle because it doesn't support wrapping links
@@ -67,9 +69,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           }
         }
       },
-      !isButton && {
-        textDecoration: 'none'
-      },
+
       isDisabled && [
         'is-disabled',
         {

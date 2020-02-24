@@ -1,15 +1,19 @@
+import { ICSSInJSStyle } from '@fluentui/styles';
+import { Renderer, RendererParam } from '@fluentui/react-bindings';
+import { TRuleType } from 'fela-utils';
+
 /**
  * Checks whether provided CSS property value is safe for being rendered by Fela engine.
  */
 const isValidCssValue = (value: any) => {
   if (typeof value !== 'string') {
-    return true
+    return true;
   }
 
-  const openingBrackets = '({['
-  const closingBrackets = ')}]'
+  const openingBrackets = '({[';
+  const closingBrackets = ')}]';
 
-  const openingBracketsStack: string[] = []
+  const openingBracketsStack: string[] = [];
 
   /**
    * This loop logic checks whether braces sequence of input argument is valid.
@@ -18,47 +22,54 @@ const isValidCssValue = (value: any) => {
    * - closing brace properly corresponds to the last opened one
    */
   for (let i = 0; i < value.length; ++i) {
-    const currentCharacter = value[i]
+    const currentCharacter = value[i];
     if (openingBrackets.includes(currentCharacter)) {
-      openingBracketsStack.push(currentCharacter)
+      openingBracketsStack.push(currentCharacter);
     } else if (closingBrackets.includes(currentCharacter)) {
-      const lastOpeningBracket = openingBracketsStack.pop()
-      if (
-        lastOpeningBracket &&
-        openingBrackets.indexOf(lastOpeningBracket) !== closingBrackets.indexOf(currentCharacter)
-      ) {
-        return false
+      const lastOpeningBracket = openingBracketsStack.pop();
+      if (lastOpeningBracket && openingBrackets.indexOf(lastOpeningBracket) !== closingBrackets.indexOf(currentCharacter)) {
+        return false;
       }
     }
   }
 
-  return openingBracketsStack.length === 0
-}
+  return openingBracketsStack.length === 0;
+};
 
 export default (config?: { skip?: string[] }) => {
-  const cssPropertiesToSkip = [...((config && config.skip) || [])]
+  const cssPropertiesToSkip = [...((config && config.skip) || [])];
 
-  const sanitizeCssStyleObject = styles => {
-    const processedStyles = Array.isArray(styles) ? [] : {}
+  const sanitizeCssStyleObject = (styles: ICSSInJSStyle, type: TRuleType, renderer: Renderer, params: RendererParam) => {
+    if (!params.sanitizeCss) {
+      return styles;
+    }
+
+    const processedStyles = Array.isArray(styles) ? [] : {};
 
     Object.keys(styles).forEach(cssPropertyNameOrIndex => {
-      const cssPropertyValue = styles[cssPropertyNameOrIndex]
+      const cssPropertyValue = styles[cssPropertyNameOrIndex];
 
       if (typeof cssPropertyValue === 'object') {
-        processedStyles[cssPropertyNameOrIndex] = sanitizeCssStyleObject(cssPropertyValue)
-        return
+        processedStyles[cssPropertyNameOrIndex] = sanitizeCssStyleObject(cssPropertyValue, type, renderer, params);
+        return;
       }
 
-      const isPropertyToSkip = cssPropertiesToSkip.some(
-        propToExclude => propToExclude === cssPropertyNameOrIndex,
-      )
-      if (isPropertyToSkip || isValidCssValue(cssPropertyValue)) {
-        processedStyles[cssPropertyNameOrIndex] = cssPropertyValue
+      const isPropertyToSkip = cssPropertiesToSkip.some(propToExclude => propToExclude === cssPropertyNameOrIndex);
+
+      if (isPropertyToSkip) {
+        processedStyles[cssPropertyNameOrIndex] = cssPropertyValue;
+        return;
       }
-    })
 
-    return processedStyles
-  }
+      if (isValidCssValue(cssPropertyValue)) {
+        processedStyles[cssPropertyNameOrIndex] = cssPropertyValue;
+      } else if (process.env.NODE_ENV !== 'production') {
+        console.warn(`fela-sanitize-css: An invalid value "${cssPropertyValue}" was passed to property "${cssPropertyNameOrIndex}"`);
+      }
+    });
 
-  return sanitizeCssStyleObject
-}
+    return processedStyles;
+  };
+
+  return sanitizeCssStyleObject;
+};

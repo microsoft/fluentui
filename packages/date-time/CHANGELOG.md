@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Fri, 24 Jan 2020 12:30:27 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Feb 2020 12:20:16 GMT and should not be manually modified.
 
+## 7.8.25
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true. (Humberto.Morimoto@microsoft.com)
 ## 7.8.8
 Fri, 24 Jan 2020 12:30:27 GMT
 

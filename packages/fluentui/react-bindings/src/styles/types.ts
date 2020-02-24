@@ -54,6 +54,7 @@ export type RendererParam = {
   theme: { direction: 'ltr' | 'rtl' };
   disableAnimations: boolean;
   displayName: string;
+  sanitizeCss: boolean;
 };
 
 export type RendererRenderRule = (rule: () => ICSSInJSStyle, param: RendererParam) => string;
@@ -62,18 +63,24 @@ export type Renderer = Omit<FelaRenderer, 'renderRule'> & {
 };
 
 export interface StylesContextPerformance {
-  enableStylesCaching?: boolean;
-  enableVariablesCaching?: boolean;
+  enableSanitizeCssPlugin: boolean;
+  enableStylesCaching: boolean;
+  enableVariablesCaching: boolean;
 }
+
+export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;
 
 export type StylesContextInputValue<R = Renderer> = {
   disableAnimations?: boolean;
-  performance?: StylesContextPerformance;
+  performance?: StylesContextPerformanceInput;
   renderer?: R;
   theme?: ThemeInput;
 };
 
-export type StylesContextValue<R = Renderer> = Required<StylesContextInputValue<R>> & {
+export type StylesContextValue<R = Renderer> = {
+  disableAnimations: boolean;
+  performance: StylesContextPerformance;
+  renderer: R;
   theme: ThemePrepared;
 };
 

@@ -1,61 +1,53 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import {
-  Flex,
-  Provider,
-  RadioGroup,
-  ThemeAnimation,
-  RadioGroupItemProps,
-  Header,
-  Button,
-} from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Flex, Provider, RadioGroup, ThemeAnimation, RadioGroupItemProps, Header, Button } from '@fluentui/react';
 
-import AnimatedBannerAlert from './AnimatedBannerAlert'
-import ComposeMessage from '../chatPane/composeMessage'
+import AnimatedBannerAlert from './AnimatedBannerAlert';
+import ComposeMessage from '../chatPane/composeMessage';
 
-type BannerName = 'info' | 'oof' | 'danger' | 'urgent'
+type BannerName = 'info' | 'oof' | 'danger' | 'urgent';
 
-const isAlertClosable = (bannerName: BannerName) => bannerName !== 'info'
+const isAlertClosable = (bannerName: BannerName) => bannerName !== 'info';
 
 const getBannerContent = (bannerName: BannerName) =>
-  bannerName === 'danger' ? `Danger banner - used for errors` : `${_.startCase(bannerName)} banner`
+  bannerName === 'danger' ? `Danger banner - used for errors` : `${_.startCase(bannerName)} banner`;
 
-const bannerNames: BannerName[] = ['info', 'oof', 'danger', 'urgent']
+const bannerNames: BannerName[] = ['info', 'oof', 'danger', 'urgent'];
 
 const bannerRadioItems: RadioGroupItemProps[] = bannerNames.map(bannerName => ({
   key: bannerName,
   value: bannerName,
-  label: `${_.startCase(bannerName)}`,
-}))
+  label: `${_.startCase(bannerName)}`
+}));
 
 const slideDown: ThemeAnimation = {
   keyframe: {
     from: { transform: 'translateY(0)' },
-    to: { transform: 'translateY(100%)', display: 'none' },
+    to: { transform: 'translateY(100%)', display: 'none' }
   },
   duration: '.2s',
   iterationCount: '1',
   timingFunction: 'linear',
-  fillMode: 'forwards',
-}
+  fillMode: 'forwards'
+};
 
 interface BannerAlertsState {
-  selectedBannerName: BannerName
-  open: boolean
+  selectedBannerName: BannerName;
+  open: boolean;
 }
 
 class BannerAlerts extends React.Component<{}, BannerAlertsState> {
   state = {
     selectedBannerName: bannerRadioItems[0].value as BannerName,
-    open: true,
-  }
+    open: true
+  };
 
-  openSelectedBanner = () => this.setState({ open: true })
+  openSelectedBanner = () => this.setState({ open: true });
 
-  closeSelectedBanner = () => this.setState({ open: false })
+  closeSelectedBanner = () => this.setState({ open: false });
 
   render() {
-    const { selectedBannerName, open } = this.state
+    const { selectedBannerName, open } = this.state;
 
     return (
       <Provider theme={{ animations: { slideDown } }}>
@@ -65,7 +57,7 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
             width: '50%',
             backgroundColor: '#f3f2f1',
             padding: '10px 50px',
-            position: 'relative',
+            position: 'relative'
           }}
         >
           <Flex space="between" vAlign="center">
@@ -75,9 +67,7 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
           <RadioGroup
             checkedValue={selectedBannerName}
             items={bannerRadioItems}
-            checkedValueChanged={(e, { value }) =>
-              this.setState({ selectedBannerName: value as BannerName, open: true })
-            }
+            onCheckedValueChange={(e, { value }) => this.setState({ selectedBannerName: value as BannerName, open: true })}
           />
           <br />
           <AnimatedBannerAlert
@@ -89,15 +79,15 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
               content: getBannerContent(selectedBannerName),
               ...(isAlertClosable(selectedBannerName) && {
                 open,
-                action: { icon: 'close', onClick: this.closeSelectedBanner },
-              }),
+                action: { icon: 'close', onClick: this.closeSelectedBanner }
+              })
             }}
           />
           <ComposeMessage attached />
         </Flex>
       </Provider>
-    )
+    );
   }
 }
 
-export default BannerAlerts
+export default BannerAlerts;

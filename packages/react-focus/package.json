@@ -49,8 +49,8 @@
   "dependencies": {
     "@uifabric/merge-styles": "^7.8.6",
     "@uifabric/set-version": "^7.0.5",
-    "@uifabric/styling": "^7.10.11",
-    "@uifabric/utilities": "^7.12.2",
+    "@uifabric/styling": "^7.10.13",
+    "@uifabric/utilities": "^7.12.4",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

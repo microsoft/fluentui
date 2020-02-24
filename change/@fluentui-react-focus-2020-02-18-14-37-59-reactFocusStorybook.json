@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "React-focus: Enabling storybook in new package.",
-  "packageName": "@fluentui/react-focus",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "9c46caf35247dfe4063301b81248d1fc6971c013",
-  "dependentChangeType": "patch",
-  "date": "2020-02-18T22:37:59.707Z"
-}

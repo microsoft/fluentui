@@ -1259,9 +1259,6 @@ export function getAllSelectedOptions(options: ISelectableOption[], selectedIndi
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public
-export const getCheck: (theme?: ITheme | undefined, checked?: boolean | undefined, className?: string | undefined) => JSX.Element;
-
-// @public
 export function getColorFromHSV(hsv: IHSV, a?: number): IColor;
 
 // @public
@@ -5339,6 +5336,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
     getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
     getPageStyle?: (page: IPage<T>) => any;
+    ignoreScrollingState?: boolean;
     items?: T[];
     onPageAdded?: (page: IPage<T>) => void;
     onPageRemoved?: (page: IPage<T>) => void;
@@ -8732,8 +8730,6 @@ export const SearchBox: React.FunctionComponent<ISearchBoxProps>;
 // @public (undocumented)
 export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
     constructor(props: ISearchBoxProps);
-    // (undocumented)
-    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'>;
     focus(): void;

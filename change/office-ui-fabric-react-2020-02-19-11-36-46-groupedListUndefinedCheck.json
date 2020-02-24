@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "GroupedList: Adding checks for group and selection being undefined.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "e8b1bf416fe51e14c69d5733d31996c27f092374",
-  "dependentChangeType": "patch",
-  "date": "2020-02-19T19:36:46.664Z"
-}
