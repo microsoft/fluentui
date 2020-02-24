@@ -408,6 +408,23 @@ function importChangeLogMD(outputPath) {
   fs.copyFileSync(path.join(tmp, 'CHANGELOG.md'), path.join(outputPath, 'CHANGELOG.md'));
 }
 
+function removeFiles(outputPath) {
+  const filesToRemove = [
+    // File is modified during stats and changes do not need to be committed. Will be gitignored. Remove on import.
+    'docs/src/bundleStats.json'
+  ];
+
+  filesToRemove.forEach(file => {
+    const fileToRemove = path.join(outputPath, file);
+    if (fs.existsSync(fileToRemove)) {
+      console.log(`${fileToRemove} exists`);
+      fs.removeSync(fileToRemove);
+    } else {
+      console.log(`${fileToRemove} does not exist`);
+    }
+  });
+}
+
 function importFluent() {
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
@@ -440,6 +457,7 @@ function importFluent() {
   fixJestMapping(outputPath);
   fixDocs(outputPath);
   fixInternalPackageDeps(outputPath);
+  removeFiles(outputPath);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
