@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Accordion, Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Accordion, Button, Flex } from '@fluentui/react';
 
 const AccordionPanelCustomContentExample = () => {
   const panels = [
@@ -7,14 +7,14 @@ const AccordionPanelCustomContentExample = () => {
       title: 'Pets',
       content: (
         <Flex gap="gap.smaller" key="animals">
-          <Button primary>Add pet</Button>
+          <Button primary>Add pet CHANGED</Button>
           <Button>Remove pet</Button>
         </Flex>
-      ),
-    },
-  ]
+      )
+    }
+  ];
 
-  return <Accordion defaultActiveIndex={[0]} panels={panels} />
-}
+  return <Accordion defaultActiveIndex={[0]} panels={panels} />;
+};
 
-export default AccordionPanelCustomContentExample
+export default AccordionPanelCustomContentExample;
