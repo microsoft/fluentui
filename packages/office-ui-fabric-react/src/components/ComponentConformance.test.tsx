@@ -144,7 +144,7 @@ const mockNodeComponents = ['ScrollablePane'];
 
 /** Map from component name to alternative package name from which it should import a version file */
 const componentPackageMap: { [componentName: string]: string } = {
-  // FocusZone: '@fluentui/react-focus'
+  FocusZone: '@fluentui/react-focus'
 };
 
 /**

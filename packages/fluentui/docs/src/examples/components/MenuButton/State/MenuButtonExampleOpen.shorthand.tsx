@@ -1,9 +1,9 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import * as React from 'react'
-import { Button, MenuButton } from '@fluentui/react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import * as React from 'react';
+import { Button, MenuButton } from '@fluentui/react';
 
 const MenuButtonOpenExample = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
 
   return (
     <MenuButton
@@ -12,7 +12,7 @@ const MenuButtonOpenExample = () => {
       trigger={<Button icon="expand" title="Open MenuButton" />}
       menu={['1', '2', '3', { content: 'submenu', menu: ['4', '5'] }]}
     />
-  )
-}
+  );
+};
 
-export default MenuButtonOpenExample
+export default MenuButtonOpenExample;

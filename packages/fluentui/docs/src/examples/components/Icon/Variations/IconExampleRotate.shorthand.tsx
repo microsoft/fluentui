@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Icon } from '@fluentui/react';
 
 const IconExampleRotate = () => (
   <Flex gap="gap.smaller">
@@ -8,6 +8,6 @@ const IconExampleRotate = () => (
     <Icon name="emoji" rotate={45} />
     <Icon name="more" rotate={45} />
   </Flex>
-)
+);
 
-export default IconExampleRotate
+export default IconExampleRotate;

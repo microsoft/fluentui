@@ -78,8 +78,6 @@ module.exports = {
 
   alwaysAcceptBaseBranch: true,
 
-  failureExitCode: 0,
-
   baseBranch,
 
   ...(sourceBranch && sourceBranch.indexOf('refs/pull') > -1

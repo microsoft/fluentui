@@ -1,1 +1,1 @@
-export { default } from './ComponentControls'
+export { default } from './ComponentControls';

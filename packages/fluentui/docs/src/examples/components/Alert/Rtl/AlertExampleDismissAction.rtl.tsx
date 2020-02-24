@@ -1,20 +1,20 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react';
 
 const AlertExampleDismissActionRtl = () => (
   <Alert
     actions={[
       {
         content: 'مرحبا',
-        primary: true,
+        primary: true
       },
       {
-        content: 'عالم',
-      },
+        content: 'عالم'
+      }
     ]}
     icon="exclamation-triangle"
     content="مرحبا العالم"
   />
-)
+);
 
-export default AlertExampleDismissActionRtl
+export default AlertExampleDismissActionRtl;

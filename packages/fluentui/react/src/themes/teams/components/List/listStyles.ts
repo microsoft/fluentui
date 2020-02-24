@@ -1,8 +1,8 @@
-import { debugRoot } from '../../../../styles/debugStyles'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { ListProps } from '../../../../components/List/List'
+import { debugRoot } from '../../../../styles/debugStyles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ListProps } from '../../../../components/List/List';
 
-export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean }
+export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean };
 
 const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
   root: ({ props: p }): ICSSInJSStyle => ({
@@ -11,9 +11,9 @@ const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
     ...(p.isListTag && {
       listStyle: 'none',
       padding: 0,
-      margin: 0,
-    }),
-  }),
-}
+      margin: 0
+    })
+  })
+};
 
-export default listStyles
+export default listStyles;

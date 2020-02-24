@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Slots = () => (
   <ExampleSection title="Slots">
@@ -15,17 +15,9 @@ const Slots = () => (
       description="An Alert can contain action buttons."
       examplePath="components/Alert/Slots/AlertExampleActions"
     />
-    <ComponentExample
-      title="Icon"
-      description="An Alert can contain an icon."
-      examplePath="components/Alert/Slots/AlertExampleIcon"
-    />
-    <ComponentExample
-      title="Header"
-      description="An Alert can contain a header."
-      examplePath="components/Alert/Slots/AlertExampleHeader"
-    />
+    <ComponentExample title="Icon" description="An Alert can contain an icon." examplePath="components/Alert/Slots/AlertExampleIcon" />
+    <ComponentExample title="Header" description="An Alert can contain a header." examplePath="components/Alert/Slots/AlertExampleHeader" />
   </ExampleSection>
-)
+);
 
-export default Slots
+export default Slots;

@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Usage = () => (
   <ExampleSection title="Usage">
@@ -30,17 +30,13 @@ const Usage = () => (
       description="Context poup can be applied on a non-focusable element if the element contains focusable children."
       examplePath="components/Popup/Usage/PopupExampleContextOnElement"
     />
-    <ComponentExample
-      title="Nested"
-      description="Popups can be nested."
-      examplePath="components/Popup/Usage/PopupExampleNested"
-    />
+    <ComponentExample title="Nested" description="Popups can be nested." examplePath="components/Popup/Usage/PopupExampleNested" />
     <ComponentExample
       title="With close button"
       description="Popups can have close button."
       examplePath="components/Popup/Usage/PopupExampleCloseButton"
     />
   </ExampleSection>
-)
+);
 
-export default Usage
+export default Usage;

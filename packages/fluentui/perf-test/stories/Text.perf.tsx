@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { Text as TextFabric } from 'office-ui-fabric-react'
-import { Text as TextFluent } from '@fluentui/react'
+import * as React from 'react';
+import { Text as TextFabric } from 'office-ui-fabric-react';
+import { Text as TextFluent } from '@fluentui/react';
 
 export default {
-  iterations: 5000,
-}
+  iterations: 5000
+};
 
-export const Fabric = () => <TextFabric />
-export const Fluent = () => <TextFluent />
+export const Fabric = () => <TextFabric />;
+export const Fluent = () => <TextFluent />;

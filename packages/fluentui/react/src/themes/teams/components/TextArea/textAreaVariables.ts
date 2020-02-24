@@ -1,20 +1,20 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface TextAreaVariables {
-  backgroundColor: string
-  invertedBackgroundColor: string
-  disabledBackgroundColor: string
-  disabledColor: string
-  borderColor: string
-  borderRadius: string
-  borderWidth: string
-  fontColor: string
-  fontSize: string
-  borderColorFocus: string
-  placeholderColor: string
-  margin: string
-  padding: string
-  height: string
+  backgroundColor: string;
+  invertedBackgroundColor: string;
+  disabledBackgroundColor: string;
+  disabledColor: string;
+  borderColor: string;
+  borderRadius: string;
+  borderWidth: string;
+  fontColor: string;
+  fontSize: string;
+  borderColorFocus: string;
+  placeholderColor: string;
+  margin: string;
+  padding: string;
+  height: string;
 }
 
 export default (siteVars): TextAreaVariables => ({
@@ -37,5 +37,5 @@ export default (siteVars): TextAreaVariables => ({
 
   borderColorFocus: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
 
-  height: 'auto',
-})
+  height: 'auto'
+});

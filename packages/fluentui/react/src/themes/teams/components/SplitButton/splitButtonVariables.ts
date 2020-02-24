@@ -1,16 +1,16 @@
-import { SiteVariablesPrepared } from '@fluentui/styles'
-import { pxToRem } from '../../../../utils'
+import { SiteVariablesPrepared } from '@fluentui/styles';
+import { pxToRem } from '../../../../utils';
 
 export interface SplitButtonVariables {
-  borderRadius: string
-  borderColorPrimary: string
-  borderColor: string
-  borderColorDisabled: string
-  smallDimension: string
-  smallPadding: string
-  smallMinWidth: string
-  smallBoxShadow: string
-  padding: string
+  borderRadius: string;
+  borderColorPrimary: string;
+  borderColor: string;
+  borderColorDisabled: string;
+  smallDimension: string;
+  smallPadding: string;
+  smallMinWidth: string;
+  smallBoxShadow: string;
+  padding: string;
 }
 
 export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
@@ -23,6 +23,6 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
     smallPadding: `0 ${pxToRem(8)}`,
     smallMinWidth: '0',
     smallBoxShadow: 'none',
-    padding: `0 ${pxToRem(16)}`,
-  }
-}
+    padding: `0 ${pxToRem(16)}`
+  };
+};

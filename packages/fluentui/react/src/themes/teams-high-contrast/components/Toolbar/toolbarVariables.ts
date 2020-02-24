@@ -1,8 +1,5 @@
-import {
-  toolbarColorAreas,
-  ToolbarVariables,
-} from '../../../teams/components/Toolbar/toolbarVariables'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
+import { toolbarColorAreas, ToolbarVariables } from '../../../teams/components/Toolbar/toolbarVariables';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 
 export default (siteVars: any): Partial<ToolbarVariables> => ({
   colorScheme: pickValuesFromColorScheme(
@@ -12,14 +9,14 @@ export default (siteVars: any): Partial<ToolbarVariables> => ({
         foregroundActive: siteVars.accessibleYellow,
 
         menuItemForegroundHover: siteVars.colorScheme.default.foregroundHover,
-        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover,
-      },
+        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover
+      }
     }),
-    toolbarColorAreas,
+    toolbarColorAreas
   ),
 
   borderWidth: '0',
   borderRadius: undefined,
 
-  menuBoxShadow: undefined,
-})
+  menuBoxShadow: undefined
+});

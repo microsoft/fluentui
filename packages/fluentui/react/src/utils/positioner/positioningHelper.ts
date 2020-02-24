@@ -1,6 +1,6 @@
-import { Placement } from 'popper.js'
+import { Placement } from 'popper.js';
 
-import { Alignment, Position } from './types'
+import { Alignment, Position } from './types';
 
 enum PlacementParts {
   top = 'top',
@@ -9,32 +9,30 @@ enum PlacementParts {
   end = 'end',
   left = 'left',
   right = 'right',
-  center = '',
+  center = ''
 }
 
 const getPositionMap = (rtl: boolean): Record<Position, PlacementParts> => ({
   above: PlacementParts.top,
   below: PlacementParts.bottom,
   before: rtl ? PlacementParts.right : PlacementParts.left,
-  after: rtl ? PlacementParts.left : PlacementParts.right,
-})
+  after: rtl ? PlacementParts.left : PlacementParts.right
+});
 
 const getAlignmentMap = (rtl: boolean): Record<Alignment, PlacementParts> => ({
   start: rtl ? PlacementParts.end : PlacementParts.start,
   end: rtl ? PlacementParts.start : PlacementParts.end,
   top: PlacementParts.start,
   bottom: PlacementParts.end,
-  center: PlacementParts.center,
-})
+  center: PlacementParts.center
+});
 
 const shouldAlignToCenter = (p: Position, a: Alignment) => {
-  const positionedVertically = p === 'above' || p === 'below'
-  const alignedVertically = a === 'top' || a === 'bottom'
+  const positionedVertically = p === 'above' || p === 'below';
+  const alignedVertically = a === 'top' || a === 'bottom';
 
-  return (
-    (positionedVertically && alignedVertically) || (!positionedVertically && !alignedVertically)
-  )
-}
+  return (positionedVertically && alignedVertically) || (!positionedVertically && !alignedVertically);
+};
 
 /**
  * | position | alignment | placement       | placement RTL
@@ -52,22 +50,14 @@ const shouldAlignToCenter = (p: Position, a: Alignment) => {
  * | after    | center    |  right          |  left
  * | after    | bottom    |  right-end      |  left-end
  */
-export const getPlacement = ({
-  align,
-  position,
-  rtl,
-}: {
-  align: Alignment
-  position: Position
-  rtl: boolean
-}): Placement => {
-  const alignment: Alignment = shouldAlignToCenter(position, align) ? 'center' : align
-  const computedPosition = getPositionMap(rtl)[position]
-  const computedAlignmnent = getAlignmentMap(rtl)[alignment]
-  const stringifiedAlignment = computedAlignmnent && `-${computedAlignmnent}`
+export const getPlacement = ({ align, position, rtl }: { align: Alignment; position: Position; rtl: boolean }): Placement => {
+  const alignment: Alignment = shouldAlignToCenter(position, align) ? 'center' : align;
+  const computedPosition = getPositionMap(rtl)[position];
+  const computedAlignmnent = getAlignmentMap(rtl)[alignment];
+  const stringifiedAlignment = computedAlignmnent && `-${computedAlignmnent}`;
 
-  return `${computedPosition}${stringifiedAlignment}` as Placement
-}
+  return `${computedPosition}${stringifiedAlignment}` as Placement;
+};
 
 //
 // OFFSET VALUES ADJUSTMENT
@@ -81,17 +71,17 @@ const flipPlusMinusSigns = (offset: string): string => {
     .replace(/<plus>/g, '+')
     .replace(/<minus>/g, '-')
     .trimLeft()
-    .replace(/^\+/, '')
-}
+    .replace(/^\+/, '');
+};
 
 export const applyRtlToOffset = (offset: string, position: Position): string => {
   if (position === 'above' || position === 'below') {
-    const [horizontal, vertical] = offset.split(',')
+    const [horizontal, vertical] = offset.split(',');
     return [flipPlusMinusSigns(horizontal), vertical]
       .join(', ')
       .replace(/, $/, '')
-      .trim()
+      .trim();
   }
 
-  return offset
-}
+  return offset;
+};

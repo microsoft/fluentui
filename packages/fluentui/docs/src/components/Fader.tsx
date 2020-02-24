@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { createComponent, ComponentSlotStylesInput, Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { createComponent, ComponentSlotStylesInput, Button, Flex } from '@fluentui/react';
 
 type FaderProps = {
-  children: JSX.Element
-  url: string
-}
+  children: JSX.Element;
+  url: string;
+};
 
 export const faderStyles: ComponentSlotStylesInput<FaderProps> = {
   fader: {
@@ -21,10 +21,10 @@ export const faderStyles: ComponentSlotStylesInput<FaderProps> = {
       pointerEvents: 'none',
       backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%)',
       width: '100%',
-      height: '4em',
-    },
-  },
-}
+      height: '4em'
+    }
+  }
+};
 
 const Fader = createComponent<FaderProps>({
   displayName: 'Fader',
@@ -34,8 +34,8 @@ const Fader = createComponent<FaderProps>({
         <div className={classes.fader}>{children}</div>
         <Button as={Link} content="See more" text href={''} to={url} />
       </Flex>
-    )
-  },
-})
+    );
+  }
+});
 
-export default Fader
+export default Fader;

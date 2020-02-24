@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -17,24 +17,24 @@ const hierarchicalTreeTitleBehavior: Accessibility<TreeTitleBehavior> = props =>
       ...(!props.hasSubtree && {
         tabIndex: -1,
         [IS_FOCUSABLE_ATTRIBUTE]: true,
-        role: 'treeitem',
-      }),
-    },
+        role: 'treeitem'
+      })
+    }
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
+  }
+});
 
-export default hierarchicalTreeTitleBehavior
+export default hierarchicalTreeTitleBehavior;
 
 type TreeTitleBehavior = {
   /** Indicated if tree title has a subtree */
-  hasSubtree?: boolean
+  hasSubtree?: boolean;
   /** If subtree is opened. */
-  open?: boolean
-}
+  open?: boolean;
+};

@@ -12,6 +12,8 @@ import { IComponentAs } from '@uifabric/utilities';
 import { IComponentStyles } from '@uifabric/foundation';
 import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
+import { IFocusZone } from '@fluentui/react-focus';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
@@ -1246,43 +1248,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     // (undocumented)
     UNSAFE_componentWillReceiveProps(nextProps: IFocusTrapZoneProps): void;
     }
-
-// @public (undocumented)
-export class FocusZone extends React.Component<IFocusZoneProps> implements IFocusZone {
-    constructor(props: IFocusZoneProps);
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    static defaultProps: IFocusZoneProps;
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(element: HTMLElement): boolean;
-    static getOuterZones(): number;
-    // (undocumented)
-    render(): React.ReactNode;
-    setFocusAlignment(point: IPoint): void;
-    }
-
-// @public (undocumented)
-export enum FocusZoneDirection {
-    bidirectional = 2,
-    domOrder = 3,
-    horizontal = 1,
-    vertical = 0
-}
-
-// @public (undocumented)
-export const FocusZoneTabbableElements: {
-    none: 0;
-    all: 1;
-    inputOnly: 2;
-};
-
-// @public (undocumented)
-export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
 // @public
 export const FontIcon: React.FunctionComponent<IFontIconProps>;
@@ -4653,43 +4618,6 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
     forceFocusInsideTrap?: boolean;
     ignoreExternalFocusing?: boolean;
     isClickableOutsideFocusTrap?: boolean;
-}
-
-// @public
-export interface IFocusZone {
-    focus(forceIntoFirstElement?: boolean): boolean;
-    focusElement(childElement?: HTMLElement): boolean;
-    setFocusAlignment(point: IPoint): void;
-}
-
-// @public
-export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
-    allowFocusRoot?: boolean;
-    // @deprecated
-    allowTabKey?: boolean;
-    // @deprecated
-    ariaDescribedBy?: string;
-    // @deprecated
-    ariaLabelledBy?: string;
-    as?: React.ElementType;
-    checkForNoWrap?: boolean;
-    className?: string;
-    componentRef?: IRefObject<IFocusZone>;
-    defaultActiveElement?: string;
-    direction?: FocusZoneDirection;
-    disabled?: boolean;
-    doNotAllowFocusEventToPropagate?: boolean;
-    // @deprecated
-    elementType?: any;
-    handleTabKey?: FocusZoneTabbableElements;
-    isCircularNavigation?: boolean;
-    isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
-    onBeforeFocus?: (childElement?: HTMLElement) => boolean;
-    onFocusNotification?: () => void;
-    // @deprecated
-    rootProps?: React.HTMLAttributes<HTMLDivElement>;
-    shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 }
 
 // @public
@@ -9569,6 +9497,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 }
 
 
+export * from "@fluentui/react-focus";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";

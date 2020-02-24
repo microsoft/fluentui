@@ -9,7 +9,7 @@ const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
 const prettierBin = require.resolve('prettier/bin-prettier.js');
 
-const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'md', 'yml'];
+const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'htm', 'md', 'yml'];
 
 /**
  * Run prettier for a given set of files.

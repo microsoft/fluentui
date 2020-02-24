@@ -7,8 +7,8 @@ const animationProps = [
   'animationIterationCount',
   'animationDirection',
   'animationFillMode',
-  'animationPlayState',
-]
+  'animationPlayState'
+];
 
 /**
  * Fela plugin for disabling animations. The animations are disabled or not based on the
@@ -22,24 +22,24 @@ export default () => {
   const disableAnimations = (styles: Object, type?, renderer?, props?) => {
     if (props && props.disableAnimations && type === 'RULE') {
       return Object.keys(styles).reduce((acc, cssPropertyName) => {
-        const cssPropertyValue = styles[cssPropertyName]
+        const cssPropertyValue = styles[cssPropertyName];
 
         if (animationProps.indexOf(cssPropertyName) !== -1) {
-          return acc
+          return acc;
         }
 
         if (typeof cssPropertyValue === 'object') {
           return {
             ...acc,
-            [cssPropertyName]: disableAnimations(cssPropertyValue, type, renderer, props),
-          }
+            [cssPropertyName]: disableAnimations(cssPropertyValue, type, renderer, props)
+          };
         }
 
-        return { ...acc, [cssPropertyName]: styles[cssPropertyName] }
-      }, {})
+        return { ...acc, [cssPropertyName]: styles[cssPropertyName] };
+      }, {});
     }
-    return styles
-  }
+    return styles;
+  };
 
-  return disableAnimations
-}
+  return disableAnimations;
+};

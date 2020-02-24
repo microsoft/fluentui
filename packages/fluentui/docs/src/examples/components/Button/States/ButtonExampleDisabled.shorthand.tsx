@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex } from '@fluentui/react';
 
 const ButtonExampleDisabled = () => (
   <Flex column gap="gap.smaller">
@@ -9,16 +9,10 @@ const ButtonExampleDisabled = () => (
       <Button disabled inverted content="Inverted" />
       <Button disabled icon="emoji" content="Click me" iconPosition="before" primary />
       <Button disabled circular icon="translation" title="Translation" />
-      <Button
-        disabled
-        text
-        content="Disabled text button"
-        icon="call-video"
-        iconPosition="before"
-      />
+      <Button disabled text content="Disabled text button" icon="call-video" iconPosition="before" />
     </Flex>
     <Button disabled fluid content="Fluid" />
   </Flex>
-)
+);
 
-export default ButtonExampleDisabled
+export default ButtonExampleDisabled;

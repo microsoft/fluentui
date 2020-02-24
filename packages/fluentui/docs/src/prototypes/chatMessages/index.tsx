@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { PrototypeSection, ComponentPrototype } from '../Prototypes'
-import ImportantAndMentionMessages from './ImportantAndMentionMessages'
-import ChatMessageWithPopover from './ChatMessageWithPopover'
-import ControlMessages from './ControlMessages'
-import ThreadedMessages from './ThreadedMessages'
+import * as React from 'react';
+import { PrototypeSection, ComponentPrototype } from '../Prototypes';
+import ImportantAndMentionMessages from './ImportantAndMentionMessages';
+import ChatMessageWithPopover from './ChatMessageWithPopover';
+import ControlMessages from './ControlMessages';
+import ThreadedMessages from './ThreadedMessages';
 
 export default () => (
   <PrototypeSection title="Chat messages">
@@ -13,10 +13,7 @@ export default () => (
     >
       <ChatMessageWithPopover />
     </ComponentPrototype>
-    <ComponentPrototype
-      title="Important and mention messages"
-      description="Important and mention messages support in Teams theme."
-    >
+    <ComponentPrototype title="Important and mention messages" description="Important and mention messages support in Teams theme.">
       <ImportantAndMentionMessages />
     </ComponentPrototype>
     <ComponentPrototype title="Control messages" description="Control messages example">
@@ -26,4 +23,4 @@ export default () => (
       <ThreadedMessages />
     </ComponentPrototype>
   </PrototypeSection>
-)
+);

@@ -1,6 +1,6 @@
-import { ICSSInJSStyle } from '@fluentui/styles'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import { ICSSInJSStyle } from '@fluentui/styles';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
 const splitButtonStyles = {
   menuButton: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -13,25 +13,25 @@ const splitButtonStyles = {
       height: v.smallDimension,
       padding: v.smallPadding,
       minWidth: v.smallMinWidth,
-      boxShadow: v.smallBoxShadow,
+      boxShadow: v.smallBoxShadow
     }),
 
     ':focus-visible': {
       borderRightWidth: 0,
 
       ':before': {
-        borderRightWidth: 0,
+        borderRightWidth: 0
       },
 
       ':after': {
-        borderRightWidth: 0,
-      },
+        borderRightWidth: 0
+      }
     },
 
     ':active': {
       animationName: 'unset',
-      animationDuration: 'unset',
-    },
+      animationDuration: 'unset'
+    }
   }),
 
   toggleButton: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -42,41 +42,41 @@ const splitButtonStyles = {
 
     ...(p.primary && {
       borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
-      borderColor: v.borderColorPrimary,
+      borderColor: v.borderColorPrimary
     }),
 
     ...(p.disabled && {
       borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
-      borderColor: v.borderColorDisabled,
+      borderColor: v.borderColorDisabled
     }),
 
     ...(p.size === 'small' && {
       height: v.smallDimension,
       width: v.smallDimension,
       minWidth: v.smallMinWidth,
-      boxShadow: v.smallBoxShadow,
+      boxShadow: v.smallBoxShadow
     }),
 
     ':focus-visible': {
       ':before': {
-        borderLeftWidth: 0,
+        borderLeftWidth: 0
       },
 
       ':after': {
-        borderLeftWidth: 0,
-      },
+        borderLeftWidth: 0
+      }
     },
 
     ':active': {
       animationName: 'unset',
-      animationDuration: 'unset',
-    },
+      animationDuration: 'unset'
+    }
   }),
 
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
-    })
+      siteVariables
+    });
 
     return {
       borderRadius: v.borderRadius,
@@ -88,11 +88,11 @@ const splitButtonStyles = {
         ...(p.isFromKeyboard && {
           // make sure focus is coming from keyboard before applying the focus styles
           // otherwise focus state is applied only to the button and not the toggle
-          ...borderFocusStyles[':focus-visible'],
-        }),
-      },
-    }
-  },
-}
+          ...borderFocusStyles[':focus-visible']
+        })
+      }
+    };
+  }
+};
 
-export default splitButtonStyles
+export default splitButtonStyles;

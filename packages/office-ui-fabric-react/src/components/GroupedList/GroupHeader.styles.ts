@@ -72,9 +72,9 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
           [`:global(.${classNames.group}.${classNames.isDropping})`]: {
             selectors: {
               [`& > .${classNames.root} .${classNames.dropIcon}`]: {
-                transition: `transform ${AnimationVariables.durationValue4} ${beziers.easeOutCirc} opacity ${
-                  AnimationVariables.durationValue1
-                } ${beziers.easeOutSine}`,
+                transition:
+                  `transform ${AnimationVariables.durationValue4} ${beziers.easeOutCirc} ` +
+                  `opacity ${AnimationVariables.durationValue1} ${beziers.easeOutSine}`,
                 transitionDelay: AnimationVariables.durationValue3,
                 opacity: 1,
                 transform: `rotate(0.2deg) scale(1);` // rotation prevents jittery motion in IE
@@ -195,9 +195,9 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         left: -26,
         fontSize: IconFontSizes.large,
         color: palette.neutralSecondary,
-        transition: `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, opacity ${AnimationVariables.durationValue4} ${
-          beziers.easeOutSine
-        }`,
+        transition:
+          `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, ` +
+          `opacity ${AnimationVariables.durationValue4} ${beziers.easeOutSine}`,
         opacity: 0,
         transform: 'rotate(0.2deg) scale(0.65)', // rotation prevents jittery motion in IE
         transformOrigin: '10px 10px',

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Toolbar, Input, Button, Form } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar, Input, Button, Form } from '@fluentui/react';
 
 const HighlightPopup = ({ onConfirm }) => {
   return (
@@ -12,23 +12,23 @@ const HighlightPopup = ({ onConfirm }) => {
           id: 'first-name-inline-shorthand',
           key: 'first-name',
           required: true,
-          inline: true,
+          inline: true
         },
         {
           control: {
             as: Button,
-            content: 'Submit',
+            content: 'Submit'
           },
-          key: 'submit',
-        },
+          key: 'submit'
+        }
       ]}
     />
-  )
-}
+  );
+};
 
 const ToolbarExamplePopupShorthand = () => {
-  const [highlightOpen, setHighlightOpen] = React.useState(false)
-  const [fontColorActive, setFontColorActive] = React.useState(false)
+  const [highlightOpen, setHighlightOpen] = React.useState(false);
+  const [fontColorActive, setFontColorActive] = React.useState(false);
   return (
     <Toolbar
       aria-label="Toolbar can contain a popup"
@@ -42,15 +42,15 @@ const ToolbarExamplePopupShorthand = () => {
             content: (
               <HighlightPopup
                 onConfirm={() => {
-                  setHighlightOpen(false)
+                  setHighlightOpen(false);
                 }}
               />
             ),
             onOpenChange: (e, { open }) => {
-              setHighlightOpen(open)
+              setHighlightOpen(open);
             },
-            open: highlightOpen,
-          },
+            open: highlightOpen
+          }
         },
         {
           key: 'font-color',
@@ -60,13 +60,13 @@ const ToolbarExamplePopupShorthand = () => {
           popup: {
             content: <Input icon="search" placeholder="Search..." />,
             onOpenChange: () => {
-              setFontColorActive(!fontColorActive)
-            },
-          },
-        },
+              setFontColorActive(!fontColorActive);
+            }
+          }
+        }
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExamplePopupShorthand
+export default ToolbarExamplePopupShorthand;

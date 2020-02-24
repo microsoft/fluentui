@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react';
 
-const AlertExample = () => <Alert>This is a default alert</Alert>
+const AlertExample = () => <Alert>This is a default alert</Alert>;
 
-export default AlertExample
+export default AlertExample;

@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react';
 
 const colorChanger: ThemeAnimation<{ fromColor: string; toColor: string }> = {
   keyframe: ({ fromColor, toColor }) => ({
     from: {
-      color: fromColor,
+      color: fromColor
     },
     to: {
-      color: toColor,
-    },
+      color: toColor
+    }
   }),
   keyframeParams: { fromColor: 'red', toColor: 'blue' },
   duration: '5s',
-  iterationCount: 'infinite',
-}
+  iterationCount: 'infinite'
+};
 
 const AnimationExample = () => (
   <Provider theme={{ animations: { colorChanger } }}>
@@ -29,6 +29,6 @@ const AnimationExample = () => (
       </Animation>
     </Flex>
   </Provider>
-)
+);
 
-export default AnimationExample
+export default AnimationExample;

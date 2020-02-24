@@ -1,8 +1,8 @@
-import { Accessibility } from '../../types'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { FocusZoneDirection } from '../../focusZone/types'
-import * as keyboardKey from 'keyboard-key'
-import gridCellBehavior from './gridCellBehavior'
+import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { FocusZoneDirection } from '../../focusZone/types';
+import * as keyboardKey from 'keyboard-key';
+import gridCellBehavior from './gridCellBehavior';
 
 /**
  * @specification
@@ -18,28 +18,28 @@ const gridRowNestedBehavior: Accessibility = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
-      role: 'row',
-    },
+      role: 'row'
+    }
   },
   focusZone: {
     props: {
       shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
-      direction: FocusZoneDirection.horizontal,
-    },
+      direction: FocusZoneDirection.horizontal
+    }
   },
   keyActions: {
     root: {
       unsetRowTabbable: {
-        keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }],
+        keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }]
       },
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
   },
   childBehaviors: {
-    cell: gridCellBehavior,
-  },
-})
+    cell: gridCellBehavior
+  }
+});
 
-export default gridRowNestedBehavior
+export default gridRowNestedBehavior;

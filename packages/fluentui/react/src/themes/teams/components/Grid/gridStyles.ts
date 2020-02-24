@@ -1,21 +1,16 @@
-import { GridVariables } from './gridVariables'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { GridProps } from '../../../../components/Grid/Grid'
+import { GridVariables } from './gridVariables';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { GridProps } from '../../../../components/Grid/Grid';
 
 const getCSSTemplateValue = (template: string | number): string => {
-  const templateAsNumber = Number(template)
+  const templateAsNumber = Number(template);
 
-  return !isNaN(templateAsNumber) && templateAsNumber > 0
-    ? `repeat(${template}, 1fr)`
-    : String(template)
-}
+  return !isNaN(templateAsNumber) && templateAsNumber > 0 ? `repeat(${template}, 1fr)` : String(template);
+};
 
 const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
-  root: ({
-    props,
-    variables: { height, width, defaultColumnCount, gridGap, padding },
-  }): ICSSInJSStyle => {
-    const { rows, columns = !props.rows && defaultColumnCount } = props
+  root: ({ props, variables: { height, width, defaultColumnCount, gridGap, padding } }): ICSSInJSStyle => {
+    const { rows, columns = !props.rows && defaultColumnCount } = props;
 
     return {
       height,
@@ -29,9 +24,9 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
       ...(rows && { gridTemplateRows: getCSSTemplateValue(rows) }),
       ...(columns && { gridTemplateColumns: getCSSTemplateValue(columns) }),
 
-      '& > *': { outlineOffset: '-3px' },
-    }
-  },
-}
+      '& > *': { outlineOffset: '-3px' }
+    };
+  }
+};
 
-export default gridStyles
+export default gridStyles;

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Tree } from '@fluentui/react'
+import * as React from 'react';
+import { Tree } from '@fluentui/react';
 
 const items = [
   {
@@ -12,17 +12,17 @@ const items = [
         items: [
           {
             id: '111',
-            title: 'Jaime',
+            title: 'Jaime'
           },
           {
             id: '112',
-            title: 'Cersei',
+            title: 'Cersei'
           },
           {
             id: '113',
-            title: 'Tyrion',
-          },
-        ],
+            title: 'Tyrion'
+          }
+        ]
       },
       {
         id: '12',
@@ -30,19 +30,19 @@ const items = [
         items: [
           {
             id: '121',
-            title: 'Lancel',
+            title: 'Lancel'
           },
           {
             id: '122',
-            title: 'Willem',
+            title: 'Willem'
           },
           {
             id: '123',
-            title: 'Martyn',
-          },
-        ],
-      },
-    ],
+            title: 'Martyn'
+          }
+        ]
+      }
+    ]
   },
   {
     id: '2',
@@ -54,24 +54,22 @@ const items = [
         items: [
           {
             id: '211',
-            title: 'Rhaegar',
+            title: 'Rhaegar'
           },
           {
             id: '212',
-            title: 'Viserys',
+            title: 'Viserys'
           },
           {
             id: '213',
-            title: 'Daenerys',
-          },
-        ],
-      },
-    ],
-  },
-]
+            title: 'Daenerys'
+          }
+        ]
+      }
+    ]
+  }
+];
 
-const TreeInitiallyOpenExampleShorthand = () => (
-  <Tree items={items} aria-label="Initially open" defaultActiveItemIds={['1', '12', '2']} />
-)
+const TreeInitiallyOpenExampleShorthand = () => <Tree items={items} aria-label="Initially open" defaultActiveItemIds={['1', '12', '2']} />;
 
-export default TreeInitiallyOpenExampleShorthand
+export default TreeInitiallyOpenExampleShorthand;

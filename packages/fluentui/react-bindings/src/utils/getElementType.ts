@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 /**
  * Returns a createElement() type based on the props of the Component.
@@ -11,7 +11,7 @@ function getElementType<P extends Record<string, any>>(props: P): React.ElementT
   // ----------------------------------------
   // use defaultProp or 'div'
 
-  return props.as || 'div'
+  return props.as || 'div';
 }
 
-export default getElementType
+export default getElementType;

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { TextArea } from '@fluentui/react'
+import * as React from 'react';
+import { TextArea } from '@fluentui/react';
 
-const TextAreaExample = () => <TextArea placeholder="Type here..." />
+const TextAreaExample = () => <TextArea placeholder="Type here..." />;
 
-export default TextAreaExample
+export default TextAreaExample;

@@ -1,28 +1,28 @@
-import { pxToRem } from '../../../../utils'
-import { SiteVariablesPrepared } from '@fluentui/styles'
+import { pxToRem } from '../../../../utils';
+import { SiteVariablesPrepared } from '@fluentui/styles';
 
 export interface SliderVariables {
-  height: string
-  length: string
+  height: string;
+  length: string;
 
-  railColor: string
-  railHeight: string
-  disabledRailColor: string
+  railColor: string;
+  railHeight: string;
+  disabledRailColor: string;
 
-  thumbColor: string
-  activeThumbColor: string
-  disabledThumbColor: string
-  thumbHeight: string
-  activeThumbHeight: string
-  thumbBorderPadding: string
-  thumbWidth: string
-  activeThumbWidth: string
+  thumbColor: string;
+  activeThumbColor: string;
+  disabledThumbColor: string;
+  thumbHeight: string;
+  activeThumbHeight: string;
+  thumbBorderPadding: string;
+  thumbWidth: string;
+  activeThumbWidth: string;
 
-  trackColor: string
-  disabledTrackColor: string
+  trackColor: string;
+  disabledTrackColor: string;
 }
 export default (siteVars: SiteVariablesPrepared): SliderVariables => {
-  const { colorScheme } = siteVars
+  const { colorScheme } = siteVars;
 
   return {
     height: pxToRem(16),
@@ -42,6 +42,6 @@ export default (siteVars: SiteVariablesPrepared): SliderVariables => {
     activeThumbWidth: pxToRem(14),
 
     trackColor: colorScheme.brand.foregroundActive,
-    disabledTrackColor: colorScheme.default.foregroundDisabled1,
-  }
-}
+    disabledTrackColor: colorScheme.default.foregroundDisabled1
+  };
+};

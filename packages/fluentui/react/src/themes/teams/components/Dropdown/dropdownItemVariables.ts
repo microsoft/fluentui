@@ -1,3 +1,3 @@
-import dropdownVariables from './dropdownVariables'
+import dropdownVariables from './dropdownVariables';
 
-export default dropdownVariables
+export default dropdownVariables;

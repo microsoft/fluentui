@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "../../../scripts/eslint/index"
-  ],
+  "extends": ["../../../scripts/eslint/index"],
   "rules": {
     "no-alert": "off"
   },

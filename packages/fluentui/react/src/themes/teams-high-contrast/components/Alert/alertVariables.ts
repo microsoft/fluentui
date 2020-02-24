@@ -1,9 +1,9 @@
-import { AlertVariables } from '../../../teams/components/Alert/alertVariables'
+import { AlertVariables } from '../../../teams/components/Alert/alertVariables';
 
 export interface AlertHighContrastVariables {
-  hoverBorderColor: string
-  hoverBackgroundColor: string
-  focusBackgroundColor: string
+  hoverBorderColor: string;
+  hoverBackgroundColor: string;
+  focusBackgroundColor: string;
 }
 
 export default (siteVars: any): Partial<AlertVariables> & AlertHighContrastVariables => {
@@ -30,6 +30,6 @@ export default (siteVars: any): Partial<AlertVariables> & AlertHighContrastVaria
 
     urgentColor: siteVars.colors.black,
     urgentBackgroundColor: siteVars.colors.white,
-    urgentBorderColor: siteVars.colors.white,
-  }
-}
+    urgentBorderColor: siteVars.colors.white
+  };
+};

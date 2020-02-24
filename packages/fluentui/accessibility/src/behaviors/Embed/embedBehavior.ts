@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -16,23 +16,23 @@ const embedBehavior: Accessibility<EmbedBehaviorProps> = props => ({
     root: {
       'aria-hidden': props.alt || props.title ? undefined : true,
       role: 'presentation',
-      tabIndex: 0,
-    },
+      tabIndex: 0
+    }
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
+  }
+});
 
-export default embedBehavior
+export default embedBehavior;
 
 type EmbedBehaviorProps = {
   /** Corresponds to HTML title attribute. */
-  title?: string
+  title?: string;
   /** Alternative text. */
-  alt?: string
-}
+  alt?: string;
+};

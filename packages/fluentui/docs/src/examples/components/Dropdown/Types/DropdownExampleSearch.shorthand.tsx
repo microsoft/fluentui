@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react';
 
 const inputItems = [
   'Bruce Wayne',
@@ -10,8 +10,8 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle',
-]
+  'Selina Kyle'
+];
 
 const DropdownExampleSearch = () => (
   <Dropdown
@@ -21,6 +21,6 @@ const DropdownExampleSearch = () => (
     noResultsMessage="We couldn't find any matches."
     getA11ySelectionMessage={{ onAdd: item => `${item} has been selected.` }}
   />
-)
+);
 
-export default DropdownExampleSearch
+export default DropdownExampleSearch;

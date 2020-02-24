@@ -1,18 +1,18 @@
-import * as React from 'react'
-import { Animation, Icon, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Icon, Provider } from '@fluentui/react';
 
 const spinner = {
   keyframe: {
     from: {
-      transform: 'rotate(0deg)',
+      transform: 'rotate(0deg)'
     },
     to: {
-      transform: 'rotate(360deg)',
-    },
+      transform: 'rotate(360deg)'
+    }
   },
   duration: '5s',
-  iterationCount: 'infinite',
-}
+  iterationCount: 'infinite'
+};
 
 const AnimationExample = () => (
   <Provider theme={{ animations: { spinner } }}>
@@ -20,6 +20,6 @@ const AnimationExample = () => (
       <Icon name="mention" circular bordered />
     </Animation>
   </Provider>
-)
+);
 
-export default AnimationExample
+export default AnimationExample;

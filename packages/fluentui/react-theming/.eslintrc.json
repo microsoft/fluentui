@@ -1,11 +1,6 @@
 {
-  "extends": [
-    "../../../scripts/eslint/index"
-  ],
+  "extends": ["../../../scripts/eslint/index"],
   "rules": {
-    "semi": [
-      "error",
-      "always"
-    ]
+    "semi": ["error", "always"]
   }
 }

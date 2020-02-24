@@ -33,6 +33,16 @@ export interface IArcProps {
   hoverOnCallback?: Function;
 
   /**
+   * Defines the function that is executed upon hovering over the legend
+   */
+  onFocusCallback?: Function;
+
+  /**
+   * Defines the function that is executed upon hovering Leave the legend
+   */
+  onBlurCallback?: Function;
+
+  /**
    * Defines the function that is executed upon hovering Leave the legend
    */
   hoverLeaveCallback?: Function;

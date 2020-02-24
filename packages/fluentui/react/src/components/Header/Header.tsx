@@ -1,7 +1,7 @@
-import { Accessibility } from '@fluentui/accessibility'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import { Accessibility } from '@fluentui/accessibility';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
 
 import {
   childrenExist,
@@ -14,68 +14,64 @@ import {
   ColorComponentProps,
   rtlTextContainer,
   AlignValue,
-  ShorthandFactory,
-} from '../../utils'
-import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription'
+  ShorthandFactory
+} from '../../utils';
+import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types'
+import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 
 export interface HeaderSlotClassNames {
-  description: string
+  description: string;
 }
 
-export interface HeaderProps
-  extends UIComponentProps,
-    ChildrenComponentProps,
-    ContentComponentProps,
-    ColorComponentProps {
+export interface HeaderProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps, ColorComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
   /** Shorthand for Header.Description. */
-  description?: ShorthandValue<HeaderDescriptionProps>
+  description?: ShorthandValue<HeaderDescriptionProps>;
 
   /** Align header content. */
-  align?: AlignValue
+  align?: AlignValue;
 }
 
 class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
-  static displayName = 'Header'
+  static displayName = 'Header';
 
-  static className = 'ui-header'
+  static className = 'ui-header';
 
   static slotClassNames: HeaderSlotClassNames = {
-    description: `${Header.className}__description`,
-  }
+    description: `${Header.className}__description`
+  };
 
-  static create: ShorthandFactory<HeaderProps>
+  static create: ShorthandFactory<HeaderProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ color: true }),
     description: customPropTypes.itemShorthand,
     align: customPropTypes.align,
-    rtlAttributes: PropTypes.func,
-  }
+    rtlAttributes: PropTypes.func
+  };
 
   static defaultProps = {
-    as: 'h1',
-  }
+    as: 'h1'
+  };
 
-  static Description = HeaderDescription
+  static Description = HeaderDescription;
 
   renderComponent({ accessibility, ElementType, classes, variables: v, unhandledProps }) {
-    const { children, description, content } = this.props
+    const { children, description, content } = this.props;
 
-    const hasChildren = childrenExist(children)
-    const contentElement = childrenExist(children) ? children : content
+    const hasChildren = childrenExist(children);
+    const contentElement = childrenExist(children) ? children : content;
 
     return (
       <ElementType
         {...rtlTextContainer.getAttributes({
           forElements: [children, content],
-          condition: !description,
+          condition: !description
         })}
         {...accessibility.attributes.root}
         {...unhandledProps}
@@ -87,16 +83,16 @@ class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
             defaultProps: () => ({
               className: Header.slotClassNames.description,
               variables: {
-                ...(v.descriptionColor && { color: v.descriptionColor }),
-              },
-            }),
+                ...(v.descriptionColor && { color: v.descriptionColor })
+              }
+            })
           })}
       </ElementType>
-    )
+    );
   }
 }
 
-Header.create = createShorthandFactory({ Component: Header, mappedProp: 'content' })
+Header.create = createShorthandFactory({ Component: Header, mappedProp: 'content' });
 
 /**
  * A Header organises the content by declaring a content's topic.
@@ -108,4 +104,4 @@ Header.create = createShorthandFactory({ Component: Header, mappedProp: 'content
  * Other considerations:
  *  - when the description property is used in header, readers will narrate both header content and description within the element. In addition to that, both will be displayed in the list of headings.
  */
-export default withSafeTypeForAs<typeof Header, HeaderProps, 'h1'>(Header)
+export default withSafeTypeForAs<typeof Header, HeaderProps, 'h1'>(Header);
