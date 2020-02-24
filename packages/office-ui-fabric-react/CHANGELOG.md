@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
+This log was last generated on Mon, 24 Feb 2020 12:21:19 GMT and should not be manually modified.
 
+## 7.96.0
+Mon, 24 Feb 2020 12:21:19 GMT
+
+### Minor changes
+
+- DetailsList: fix memory leak caused by incorrect component memoization (xgao@microsoft.com)
+### Patches
+
+- Adding pointer down support for dismissing the fabric base layer. (boalbe@microsoft.com)
 ## 7.95.0
 Fri, 21 Feb 2020 12:20:14 GMT
 

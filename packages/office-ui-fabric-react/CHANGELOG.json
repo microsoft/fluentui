@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 24 Feb 2020 12:21:19 GMT",
+      "tag": "office-ui-fabric-react_v7.96.0",
+      "version": "7.96.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding pointer down support for dismissing the fabric base layer.",
+            "author": "boalbe@microsoft.com",
+            "commit": "6a674fbc9ecc4e6bbc634eb8cf0ae320d4f979dd"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "DetailsList: fix memory leak caused by incorrect component memoization",
+            "author": "xgao@microsoft.com",
+            "commit": "b292e82b235d6e6ee76f60d6b52aa0c8f7d2f418"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2020 12:20:14 GMT",
       "tag": "office-ui-fabric-react_v7.95.0",
       "version": "7.95.0",
