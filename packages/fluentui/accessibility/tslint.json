@@ -1,3 +1,3 @@
 {
-  "extends": ["../../build/tslint/tslint.json"]
+  "extends": ["@uifabric/tslint-rules"]
 }

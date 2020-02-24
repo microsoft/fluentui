@@ -206,6 +206,28 @@ function fixEslint(outputPath) {
   fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
 
+function fixTslint(outputPath) {
+  const files = glob.sync('**/tslint.json', { cwd: outputPath });
+
+  for (let file of files) {
+    console.log(`fixing ${file}`);
+    const fullPath = path.join(outputPath, file);
+    const content = fs.readJSONSync(fullPath);
+
+    // TODO (fui repo merge): create a @uifabric/eslint-config package to host this per: https://eslint.org/docs/developer-guide/shareable-configs
+    content.extends = ['@uifabric/tslint-rules'];
+    fs.writeJSONSync(fullPath, content, { spaces: 2 });
+  }
+
+  const eslintPkgJsonFile = path.join(outputPath, 'eslint-plugin/package.json');
+  let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
+  eslintPkgJson.dependencies = {
+    '@typescript-eslint/eslint-plugin': '2.8.0',
+    '@typescript-eslint/experimental-utils': '2.8.0'
+  };
+  fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
+}
+
 function fixScriptsPackageName(outputPath) {
   const files = glob.sync('**/*.+(ts|js|json)', { cwd: outputPath });
 
@@ -449,6 +471,7 @@ function importFluent() {
   fixTsConfigs(outputPath);
   fixGulp(outputPath);
   fixEslint(outputPath);
+  fixTslint(outputPath);
   fixTypings(outputPath);
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
