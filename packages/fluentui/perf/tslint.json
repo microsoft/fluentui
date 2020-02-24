@@ -1,0 +1,3 @@
+{
+  "extends": ["../build/tslint/tslint.json"]
+}

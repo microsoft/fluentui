@@ -1,6 +1,6 @@
 import { emptyTheme, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
-import { mount } from 'enzyme';
+import { mount, MountRendererProps, ComponentType } from 'enzyme';
 import { ThemeProvider } from 'react-fela';
 
 import { felaRenderer } from 'src/utils';
@@ -20,13 +20,22 @@ export const EmptyThemeProvider: React.FunctionComponent = ({ children }) => {
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
 
-export const mountWithProvider = (node, options?, theme?: ThemeInput) => {
+export const mountWithProvider = <C extends React.Component, P = C['props'], S = C['state']>(
+  node: React.ReactElement<P>,
+  options?: MountRendererProps,
+  theme?: ThemeInput
+) => {
   return mount(node, {
     wrappingComponent: EmptyThemeProvider,
     ...options
   });
 };
 
-export const mountWithProviderAndGetComponent = (Component, elementToMount, options?: {}, theme?: ThemeInput) => {
+export const mountWithProviderAndGetComponent = <C extends React.Component, P = C['props'], S = C['state']>(
+  Component: ComponentType<P>,
+  elementToMount: React.ReactElement<P>,
+  options?: MountRendererProps,
+  theme?: ThemeInput
+) => {
   return mountWithProvider(elementToMount, options, theme).find(Component);
 };

@@ -30,7 +30,11 @@
   "repository": "microsoft/fluent-ui-react.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
-    "clean": "gulp bundle:package:clean"
+    "clean": "gulp bundle:package:clean",
+    "lint": "yarn lint:eslint && yarn lint:old",
+    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
+    "lint:old": "tslint -t stylish -p ."
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts",
