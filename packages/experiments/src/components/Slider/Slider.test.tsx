@@ -28,14 +28,15 @@ describe('Slider', () => {
     const sliderLine = wrapper.find('.ms-Slider-line');
     const sliderThumb = wrapper.find('.ms-Slider-slideBox');
 
-    sliderLine.getDOMNode().getBoundingClientRect = () => ({
-      left: 0,
-      top: 0,
-      right: 100,
-      bottom: 40,
-      width: 100,
-      height: 40
-    });
+    sliderLine.getDOMNode().getBoundingClientRect = () =>
+      ({
+        left: 0,
+        top: 0,
+        right: 100,
+        bottom: 40,
+        width: 100,
+        height: 40
+      } as DOMRect);
 
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
@@ -137,7 +138,11 @@ describe('Slider', () => {
   });
 
   it('should be able to display the correct custom labels & tickmarks at the correct positions', () => {
-    const labelsArray = [{ label: '20°C', value: 20 }, { label: '80°C', value: 80 }, { label: '100°C', value: 100 }];
+    const labelsArray = [
+      { label: '20°C', value: 20 },
+      { label: '80°C', value: 80 },
+      { label: '100°C', value: 100 }
+    ];
     const expectedValuesArray = [20, 80, 100];
     const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
 
@@ -156,7 +161,10 @@ describe('Slider', () => {
   });
 
   it('custom labels should be able to handle values that are out of bounds', () => {
-    const labelsArray = [{ label: '-20°C', value: -20 }, { label: '1000°C', value: 1000 }];
+    const labelsArray = [
+      { label: '-20°C', value: -20 },
+      { label: '1000°C', value: 1000 }
+    ];
     const component = mount(<Slider marks={labelsArray} min={0} max={100} showValue={true} step={10} />);
     const expectedLabelsArray = [-20, 1000];
     const expectedValuesArray = [0, 100];

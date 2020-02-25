@@ -240,7 +240,10 @@ storiesOf('IconButton Scenarios', module)
         iconProps={{ iconName: 'Globe' }}
         primary={true}
         menuProps={{
-          items: [{ key: 'a', text: 'Item 1' }, { key: 'b', text: 'Item 2' }]
+          items: [
+            { key: 'a', text: 'Item 1' },
+            { key: 'b', text: 'Item 2' }
+          ]
         }}
       />
     </div>

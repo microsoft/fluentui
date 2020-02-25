@@ -64,6 +64,7 @@ export const EditorWrapper: React.FunctionComponent<IEditorWrapperProps> = props
             <TsxEditorLazy
               editorProps={{ code, width, height, modelRef, ariaLabel: editorAriaLabel }}
               onTransformFinished={onTransformFinished}
+              supportedPackages={supportedPackages}
             />
           </React.Suspense>
         ) : (

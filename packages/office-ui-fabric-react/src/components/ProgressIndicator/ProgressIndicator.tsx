@@ -7,7 +7,7 @@ import { getStyles } from './ProgressIndicator.styles';
 /**
  * ProgressIndicator description
  */
-export const ProgressIndicator: React.StatelessComponent<IProgressIndicatorProps> = styled<
+export const ProgressIndicator: React.FunctionComponent<IProgressIndicatorProps> = styled<
   IProgressIndicatorProps,
   IProgressIndicatorStyleProps,
   IProgressIndicatorStyles

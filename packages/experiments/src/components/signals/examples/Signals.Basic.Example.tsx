@@ -19,7 +19,8 @@ import {
   SharedSignal,
   EmailedSignal,
   RecordSignal,
-  NeedsRepublishingSignal
+  NeedsRepublishingSignal,
+  ItemScheduledSignal
 } from '@uifabric/experiments';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from 'office-ui-fabric-react';
 import { lorem } from '@uifabric/example-data';
@@ -37,7 +38,7 @@ interface ISignalExampleProps {
   text?: string;
 }
 
-const SignalExample: React.StatelessComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
+const SignalExample: React.FunctionComponent<ISignalExampleProps> = (props: ISignalExampleProps): JSX.Element => {
   const { text = lorem(4) } = props;
 
   return (
@@ -121,6 +122,7 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
           <SignalExample name="Read-only" signal={<ReadOnlySignal />} />
           <SignalExample name="Shared" signal={<SharedSignal />} />
           <SignalExample name="Needs Republishing" signal={<NeedsRepublishingSignal />} />
+          <SignalExample name="Page Scheduled" signal={<ItemScheduledSignal />} />
         </div>
       </div>
     );

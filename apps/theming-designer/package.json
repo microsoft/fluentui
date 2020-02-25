@@ -17,25 +17,24 @@
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/tslint-rules": "^7.0.6",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.109.3",
-    "@uifabric/merge-styles": "^7.8.1",
-    "@uifabric/example-app-base": "^7.11.0",
-    "@uifabric/variants": "^7.0.5",
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/icons": "^7.3.0",
+    "@uifabric/react-cards": "^0.109.26",
+    "@uifabric/merge-styles": "^7.8.6",
+    "@uifabric/example-app-base": "^7.12.6",
+    "@uifabric/variants": "^7.1.16",
+    "@uifabric/set-version": "^7.0.5",
+    "@uifabric/icons": "^7.3.12",
     "@microsoft/load-themed-styles": "^1.10.26",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.79.1",
+    "office-ui-fabric-react": "^7.96.0",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }

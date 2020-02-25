@@ -78,6 +78,11 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   headerText?: string;
 
   /**
+   * The props for header text container.
+   */
+  headerTextProps?: React.HTMLAttributes<HTMLDivElement>;
+
+  /**
    * A callback function for when the Panel is opened, before the animation completes.
    */
   onOpen?: () => void;
@@ -407,6 +412,12 @@ export interface IPanelStyleProps {
    * Optional parameter to provider the class name for header text
    */
   headerClassName?: string;
+
+  /**
+   * Determines where the header is rendered based on whether the user
+   * has passed in a custom onRenderNavigation or onRenderNavigationContent render callback
+   */
+  hasCustomNavigation?: boolean;
 }
 
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
@@ -474,7 +485,7 @@ export interface IPanelStyles {
   header: IStyle;
 
   /**
-   * Style for the header inner p element.
+   * Style for the header text div element.
    */
   headerText: IStyle;
 

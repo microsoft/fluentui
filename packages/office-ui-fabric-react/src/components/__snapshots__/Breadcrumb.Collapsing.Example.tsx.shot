@@ -150,6 +150,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -310,6 +311,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -470,6 +472,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -630,6 +633,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -879,6 +883,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1304,6 +1309,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1553,6 +1559,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -1782,6 +1789,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;
@@ -2139,6 +2147,7 @@ exports[`Component Examples renders Breadcrumb.Collapsing.Example.tsx correctly 
                         padding-top: 0;
                         position: relative;
                         text-align: left;
+                        text-decoration: none;
                         text-overflow: ellipsis;
                         user-select: text;
                         white-space: nowrap;

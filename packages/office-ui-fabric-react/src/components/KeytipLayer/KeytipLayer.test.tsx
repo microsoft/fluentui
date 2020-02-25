@@ -70,7 +70,7 @@ describe('KeytipLayer', () => {
 
   it('constructor initializes the keytips state from KeytipManager.keytips', () => {
     // Add some keytips to the Manager
-    ktpMgr.keytips = { [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB }, [uniqueIdC]: { keytip: keytipG, uniqueID: uniqueIdC } };
+    ktpMgr.keytips = { [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB }, [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
     // Create layer
     ktpLayer = mount(<KeytipLayerBase content="Alt Windows" />);
@@ -359,8 +359,23 @@ describe('KeytipLayer', () => {
       jest.useRealTimers();
     });
 
-    it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
+    it('keytipAdded event does not show a keytip if the current keytip is its parent when not in keytip mode', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
+      // Add a child under B
+      ktpMgr.register({
+        content: 'X',
+        keySequences: ['b', 'x']
+      });
+      jest.runAllTimers();
+
+      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
+      expect(visibleKeytips).toHaveLength(1);
+      expect(getKeytip(visibleKeytips, 'X')).toBeUndefined();
+    });
+
+    it('keytipAdded event delay-shows a keytip if the current keytip is its parent when in keytip mode', () => {
+      ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
+      ktpMgr.inKeytipMode = true;
       // Add a child under B
       ktpMgr.register({
         content: 'X',

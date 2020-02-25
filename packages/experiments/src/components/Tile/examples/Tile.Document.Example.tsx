@@ -45,7 +45,7 @@ interface IDocumentTileWithThumbnailProps {
   item: typeof ITEMS[0];
 }
 
-const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> = (
+const DocumentTileWithThumbnail: React.FunctionComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps
 ): JSX.Element => {
   const tile = (

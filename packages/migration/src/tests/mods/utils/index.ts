@@ -15,7 +15,8 @@ const fileSystem: any = {};
 async function recordFile(filename: string): Promise<void> {
   const contents = await readFileAsync(filename);
   const trimmedName = filename.substring(fixturesRoot.length);
-  const parts = path.dirname(trimmedName).split(path.sep);
+  // Intentionally not using path.sep, as node is giving '/' for separator instead of os-correct version.
+  const parts = path.dirname(trimmedName).split('/');
   parts[0] = '_root';
   let current = fileSystem;
   parts.forEach(p => {

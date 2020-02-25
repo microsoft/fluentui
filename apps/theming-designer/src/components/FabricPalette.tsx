@@ -33,7 +33,7 @@ const tableClassName = mergeStyles({
   }
 });
 
-export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (props: IFabricPaletteProps) => {
+export const FabricPalette: React.FunctionComponent<IFabricPaletteProps> = (props: IFabricPaletteProps) => {
   const { themeRules, onFabricPaletteColorChange } = props;
   return (
     <div className={MainPanelInnerContent}>

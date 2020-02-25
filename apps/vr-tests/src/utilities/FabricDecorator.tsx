@@ -1,8 +1,9 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import { RenderFunction } from '@storybook/react';
+import { DecoratorFunction } from '@storybook/addons';
+import { StoryFnReactReturnType } from '@storybook/react/dist/client/preview/types';
 
-export const FabricDecorator = (story: RenderFunction) => (
+export const FabricDecorator: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', overflow: 'hidden' }}>
       {story()}
@@ -10,7 +11,7 @@ export const FabricDecorator = (story: RenderFunction) => (
   </div>
 );
 
-export const FabricDecoratorTall = (story: RenderFunction) => (
+export const FabricDecoratorTall: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px' }}>
       {story()}
@@ -18,7 +19,7 @@ export const FabricDecoratorTall = (story: RenderFunction) => (
   </div>
 );
 
-export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
+export const FabricDecoratorTallFixedWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px 10px 120px', width: '300px' }}>
       {story()}
@@ -26,7 +27,7 @@ export const FabricDecoratorTallFixedWidth = (story: RenderFunction) => (
   </div>
 );
 
-export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
+export const FabricDecoratorFixedWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '300px' }}>
       {story()}
@@ -34,7 +35,7 @@ export const FabricDecoratorFixedWidth = (story: RenderFunction) => (
   </div>
 );
 
-export const FabricDecoratorFullWidth = (story: RenderFunction) => (
+export const FabricDecoratorFullWidth: DecoratorFunction<StoryFnReactReturnType> = story => (
   <div style={{ display: 'flex' }}>
     <div className="testWrapper" style={{ padding: '10px', width: '100%', overflow: 'hidden' }}>
       {story()}

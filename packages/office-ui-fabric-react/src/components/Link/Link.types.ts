@@ -72,7 +72,7 @@ export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTML
   /**
    * A component that should be used as the root element of the link returned from the Link component.
    */
-  as?: string | React.ComponentClass | React.StatelessComponent;
+  as?: string | React.ComponentClass | React.FunctionComponent;
 
   /**
    * Optional keytip for this Link

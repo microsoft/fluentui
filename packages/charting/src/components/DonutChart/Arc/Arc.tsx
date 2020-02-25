@@ -14,7 +14,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     arc: shape.arc()
   };
 
-  public state: IArcState = {};
+  private currentRef = React.createRef<SVGPathElement>();
 
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): Partial<IArcState> | null {
     _updateChart(nextProps);
@@ -32,20 +32,30 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number = this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
     return (
-      <g>
+      <g ref={this.currentRef}>
         <path
           id={id}
           d={arc(this.props.data)}
+          onFocus={this._onFocus.bind(this, this.props.data!.data)}
           className={classNames.root}
+          data-is-focusable={true}
           onMouseOver={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseMove={this._hoverOn.bind(this, this.props.data!.data)}
           onMouseLeave={this._hoverOff}
+          onBlur={this._onBlur}
           opacity={opacity}
           onClick={this._redirectToUrl.bind(this, href)}
         />
       </g>
     );
   }
+
+  private _onFocus(data: IChartDataPoint): void {
+    if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
+      this.props.onFocusCallback!(data, this.currentRef.current);
+    }
+  }
+
   private _hoverOn(data: IChartDataPoint, mouseEvent: React.MouseEvent<SVGPathElement>): void {
     mouseEvent.persist();
     if (this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '') {
@@ -55,6 +65,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 
   private _hoverOff = (): void => {
     this.props.hoverLeaveCallback!();
+  };
+
+  private _onBlur = (): void => {
+    this.props.onBlurCallback!();
   };
 
   private _redirectToUrl(href: string | undefined): void {

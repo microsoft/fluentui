@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { VerticalDivider } from 'office-ui-fabric-react/lib/Divider';
-import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 interface ICustomDividerExampleClassNames {
@@ -11,10 +11,12 @@ interface ICustomDividerExampleClassNames {
 const getExampleClassNames = memoizeFunction(
   (): ICustomDividerExampleClassNames => {
     const exampleHeight = 40;
+    const theme = getTheme();
     return mergeStyleSets({
       wrapper: {
         height: 40,
-        backgroundColor: '#F4F4F4',
+        backgroundColor: theme.semanticColors.bodyStandoutBackground,
+        color: theme.semanticColors.bodyText,
         padding: '0'
       },
       text: {

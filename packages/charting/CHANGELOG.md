@@ -1,7 +1,32 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 08 Jan 2020 17:02:57 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Feb 2020 12:20:16 GMT and should not be manually modified.
 
+## 0.140.0
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Minor changes
+
+- adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow (v-sivsar@microsoft.com)
+## 0.139.6
+Mon, 27 Jan 2020 03:59:43 GMT
+
+### Patches
+
+- Provided accessability for stacked bar chart (v-satgar@microsoft.com)
+## 0.139.4
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- adding minimun legend container height (v-sivsar@microsoft.com)
+- closing callout on pressing esc key (v-sivsar@microsoft.com)
+## 0.139.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 0.139.1
 Wed, 08 Jan 2020 17:02:57 GMT
 

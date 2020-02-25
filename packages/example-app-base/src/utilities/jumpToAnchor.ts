@@ -2,6 +2,13 @@ import { extractAnchorLink } from './extractAnchorLink';
 
 const SCROLL_DISTANCE = 52;
 
+/**
+ * Scroll to and focus an element, similar to native functionality for jumping to an anchor link.
+ *
+ * @param anchor - ID of the element to jump to. This element should be programmatically focusable
+ * (set tabIndex=-1 if not natively focusable) to fully simulate the native jumping behavior.
+ * @param scrollDistance - Offset from the top
+ */
 export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DISTANCE): void {
   const hash = anchor || extractAnchorLink(window.location.hash);
   const el = hash && document.getElementById(hash);
@@ -21,5 +28,6 @@ export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DI
         });
       }
     }
+    el.focus();
   }
 }

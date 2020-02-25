@@ -1,7 +1,19 @@
 # Change Log - @uifabric/monaco-editor
 
-This log was last generated on Thu, 09 Jan 2020 12:34:52 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 0.5.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 0.5.1
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Use standard postprocess task for get/set transforms, and remove readonly parameters (elcraig@microsoft.com)
 ## 0.5.0
 Thu, 09 Jan 2020 12:34:52 GMT
 
