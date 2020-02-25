@@ -88,11 +88,11 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
     this._textLabels = {
       // tslint:disable:deprecation
-      r: strings.red || props.redLabel || defaultStrings.red,
-      g: strings.green || props.greenLabel || defaultStrings.green,
-      b: strings.blue || props.blueLabel || defaultStrings.blue,
-      a: strings.alpha || props.alphaLabel || defaultStrings.alpha,
-      hex: strings.hex || props.hexLabel || defaultStrings.hex
+      r: props.redLabel || strings.red || defaultStrings.red,
+      g: props.greenLabel || strings.green || defaultStrings.green,
+      b: props.blueLabel || strings.blue || defaultStrings.blue,
+      a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
+      hex: props.hexLabel || strings.hex || defaultStrings.hex
       // tslint:enable:deprecation
     };
 
@@ -154,7 +154,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
               <ColorSlider
                 className="is-hue"
                 // tslint:disable-next-line:deprecation
-                ariaLabel={strings.hueAriaLabel || strings.hue}
+                ariaLabel={strings.hue || strings.hueAriaLabel}
                 minValue={0}
                 maxValue={MAX_COLOR_HUE}
                 value={color.h}

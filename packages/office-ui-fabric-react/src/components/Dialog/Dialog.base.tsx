@@ -114,6 +114,9 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     }
 
     const mergedModalProps = {
+      isBlocking,
+      isDarkOverlay,
+      onDismissed,
       ...DefaultModalProps,
       ...modalProps,
       layerProps: mergedLayerProps,
@@ -121,6 +124,11 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     };
 
     const dialogContentProps: IDialogContentProps = {
+      className: contentClassName,
+      subText,
+      title,
+      topButtonsProps,
+      type,
       ...DefaultDialogContentProps,
       ...this.props.dialogContentProps,
       draggableHeaderClassName: dialogDraggableClassName,
@@ -140,8 +148,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       dialogDefaultMaxWidth: maxWidth
     });
 
-    const isModalBlocking = mergedModalProps.isBlocking !== undefined ? mergedModalProps.isBlocking : isBlocking;
-
     return (
       <Modal
         elementToFocusOnDismiss={elementToFocusOnDismiss}
@@ -149,11 +155,11 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         forceFocusInsideTrap={forceFocusInsideTrap}
         ignoreExternalFocusing={ignoreExternalFocusing}
         isClickableOutsideFocusTrap={isClickableOutsideFocusTrap}
-        onDismissed={mergedModalProps.onDismissed !== undefined ? mergedModalProps.onDismissed : onDismissed}
+        onDismissed={mergedModalProps.onDismissed}
         responsiveMode={responsiveMode}
         {...mergedModalProps}
-        isDarkOverlay={mergedModalProps.isDarkOverlay !== undefined ? mergedModalProps.isDarkOverlay : isDarkOverlay}
-        isBlocking={isModalBlocking}
+        isDarkOverlay={mergedModalProps.isDarkOverlay}
+        isBlocking={mergedModalProps.isBlocking}
         isOpen={hidden !== undefined ? !hidden : isOpen}
         className={classNames.root}
         containerClassName={classNames.main}
@@ -163,13 +169,13 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       >
         <DialogContent
           subTextId={this._defaultSubTextId}
-          title={dialogContentProps.title !== undefined ? dialogContentProps.title : title}
-          subText={dialogContentProps.subText !== undefined ? dialogContentProps.subText : subText}
-          showCloseButton={isModalBlocking}
-          topButtonsProps={dialogContentProps.topButtonsProps ? dialogContentProps.topButtonsProps : topButtonsProps}
-          type={dialogContentProps.type !== undefined ? dialogContentProps.type : type}
+          title={dialogContentProps.title}
+          subText={dialogContentProps.subText}
+          showCloseButton={mergedModalProps.isBlocking}
+          topButtonsProps={dialogContentProps.topButtonsProps}
+          type={dialogContentProps.type}
           onDismiss={onDismiss ? onDismiss : dialogContentProps.onDismiss}
-          className={dialogContentProps.className || contentClassName}
+          className={dialogContentProps.className}
           {...dialogContentProps}
         >
           {this.props.children}
