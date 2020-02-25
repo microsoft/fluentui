@@ -273,15 +273,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [
-      classNames.commands,
-      {
-        marginTop: 18
-      },
-      hasCustomNavigation && {
-        marginTop: 'inherit'
-      }
-    ],
+    commands: [classNames.commands],
     navigation: [
       classNames.navigation,
       {
@@ -292,15 +284,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         height: commandBarHeight
       }
     ],
-    closeButton: [
-      classNames.closeButton,
-      {
-        marginRight: 14
-      },
-      hasCustomNavigation && {
-        marginRight: 0
-      }
-    ],
+    closeButton: [classNames.closeButton],
     contentInner: [
       classNames.contentInner,
       {
@@ -314,13 +298,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
-        flexShrink: 1,
-        marginRight: 'auto'
+        flexShrink: 1
       },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
-        flexShrink: 0,
-        marginRight: 0
+        flexShrink: 0
       }
     ],
     headerText: [
@@ -329,7 +311,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         color: semanticColors.bodyText,
         lineHeight: '27px',
-        margin: 0,
         overflowWrap: 'break-word',
         wordWrap: 'break-word',
         wordBreak: 'break-word',
@@ -350,7 +331,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.content,
       sharedPaddingStyles,
       {
-        marginBottom: 0,
         paddingBottom: 20
       }
     ],
