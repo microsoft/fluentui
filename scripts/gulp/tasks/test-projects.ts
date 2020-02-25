@@ -137,7 +137,7 @@ const performBrowserTest = async (publicDirectory: string, listenPort: number) =
 //  - Try and run a build
 task('test:projects:cra-ts', async () => {
   const logger = log('test:projects:cra-ts');
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/cra');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/cra');
 
   logger('STEP 1. Create test React project with TSX scripts..');
 
