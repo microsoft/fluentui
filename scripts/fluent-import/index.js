@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 const path = require('path');
 const os = require('os');
 const findGitRoot = require('../monorepo/findGitRoot');
-const { runPrettierForFolder } = require('../prettier/prettier-helpers');
+const { runPrettierForFolder, runPrettier } = require('../prettier/prettier-helpers');
 const { spawnSync } = require('child_process');
 const glob = require('glob');
 
@@ -216,8 +216,9 @@ function fixTslint(outputPath) {
     const content = fs.readJSONSync(fullPath);
 
     // TODO (fui repo merge): create a shared package for configs
-    content.extends.replace('"../build/tslint.json"', '"../../../scripts/tslint.fluentui.json"');
-    content.extends.replace('"../../build/tslint.json"', '"../../../scripts/tslint.fluentui.json"');
+    if (content && content.extends) {
+      content.extends = ['../../../scripts/tslint.fluentui.json'];
+    }
     fs.writeJSONSync(fullPath, content, { spaces: 2 });
   }
 
@@ -312,6 +313,15 @@ function fixReactDeps(outputPath) {
   const file = path.join(outputPath, 'react/package.json');
   const contents = fs.readJsonSync(file);
   contents.devDependencies['@testing-library/jest-dom'] = '^5.1.1';
+
+  const keys = Object.keys(contents.devDependencies);
+  const sortedKeys = keys.sort();
+  const devDependencies = sortedKeys.reduce((deps, key) => {
+    return { ...deps, [key]: contents.devDependencies[key] };
+  }, {});
+
+  contents.devDependencies = devDependencies;
+
   fs.writeJsonSync(file, contents, { spaces: 2 });
 }
 
@@ -439,9 +449,30 @@ function importChangeLogMD(outputPath) {
   fs.copyFileSync(path.join(tmp, 'CHANGELOG.md'), path.join(outputPath, 'CHANGELOG.md'));
 }
 
-function runPrettier(outputPath, root) {
+function runPrettierOnImportedFiles(outputPath, root) {
   runPrettierForFolder(outputPath);
   runPrettierForFolder(path.join(root, '.github'));
+
+  console.log('running prettier on ' + path.join(outputPath, 'e2e/global.d.ts'));
+  console.log('node', [
+    path.join(root, 'node_modules/prettier/bin-prettier.js'),
+    '--config',
+    path.join(root, 'prettier.config.js'),
+    '--write',
+    'packages/fluentui/e2e/global.d.ts'
+  ]);
+  spawnSync(
+    'node',
+    [
+      path.join(root, 'node_modules/prettier/bin-prettier.js'),
+      '--config',
+      path.join(root, 'prettier.config.js'),
+      '--write',
+      'packages/fluentui/e2e/global.d.ts',
+      '--ignore-path'
+    ],
+    { stdio: 'inherit' }
+  );
 }
 
 function importFluent() {
@@ -478,7 +509,7 @@ function importFluent() {
   fixJestMapping(outputPath);
   fixDocs(outputPath);
   fixInternalPackageDeps(outputPath);
-  runPrettier(outputPath, root);
+  runPrettierOnImportedFiles(outputPath, root);
 
   console.log('removing tmp');
   fs.removeSync(tmp);
