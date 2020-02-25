@@ -226,4 +226,4 @@ task('test:projects:typings', async () => {
   logger(`✔️Example project was successfully built: ${tmpDirectory}`);
 });
 
-task('test:projects', series('bundle:all-packages', 'test:projects:cra-ts', 'test:projects:rollup', 'test:projects:typings'));
+task('test:projects', series('test:projects:cra-ts', 'test:projects:rollup', 'test:projects:typings'));
