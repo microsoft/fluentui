@@ -74,11 +74,11 @@ const markdownSrc = [
 ];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
-task('build:docs:component-info', () => {
-  return src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
+task('build:docs:component-info', () =>
+  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
     .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
-    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() }));
-});
+    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() }))
+);
 
 task('build:docs:component-menu', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-menu') })
