@@ -32,14 +32,15 @@
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
+    "@testing-library/jest-dom": "^5.1.1",
     "@types/classnames": "^2.2.9",
     "@types/faker": "^4.1.3",
+    "@types/react": "16.8.11",
     "@types/simulant": "^0.2.0",
     "faker": "^4.1.0",
     "lerna-alias": "^3.0.3-0",
     "qs": "^6.8.0",
-    "simulant": "^0.2.2",
-    "@types/react": "16.8.11"
+    "simulant": "^0.2.2"
   },
   "files": [
     "dist"
@@ -60,6 +61,10 @@
   "scripts": {
     "build": "gulp bundle:package",
     "clean": "gulp bundle:package:clean",
+    "lint": "yarn lint:eslint && yarn lint:old",
+    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
+    "lint:old": "tslint -t stylish -p .",
     "test": "gulp test",
     "test:watch": "gulp test:watch"
   },

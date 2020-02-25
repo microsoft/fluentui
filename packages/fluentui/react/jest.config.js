@@ -10,5 +10,6 @@ module.exports = {
     // Legacy aliases, they should not be used in new tests
     '^src/(.*)$': `<rootDir>/src/$1`,
     'test/(.*)$': `<rootDir>/test/$1`
-  }
+  },
+  setupFilesAfterEnv: [...commonConfig.setupFilesAfterEnv, './test/setup.ts']
 };
