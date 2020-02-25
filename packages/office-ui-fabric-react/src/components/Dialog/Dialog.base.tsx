@@ -114,6 +114,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     }
 
     const mergedModalProps = {
+      className,
+      containerClassName,
       isBlocking,
       isDarkOverlay,
       onDismissed,
@@ -141,8 +143,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className: mergedModalProps.className || className,
-      containerClassName: mergedModalProps.containerClassName || containerClassName,
+      className: mergedModalProps.className,
+      containerClassName: mergedModalProps.containerClassName,
       hidden,
       dialogDefaultMinWidth: minWidth,
       dialogDefaultMaxWidth: maxWidth
