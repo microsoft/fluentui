@@ -14,7 +14,7 @@
     "ter-computed-property-spacing": [false],
     "ter-indent": [false],
     "trailing-comma": [
-      true,
+      false,
       {
         "multiline": {
           "objects": "always",
