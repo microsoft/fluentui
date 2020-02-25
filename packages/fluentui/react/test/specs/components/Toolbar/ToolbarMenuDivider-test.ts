@@ -1,7 +1,7 @@
-import { isConformant } from 'test/specs/commonTests'
+import { isConformant } from 'test/specs/commonTests';
 
-import ToolbarMenuDivider from 'src/components/Toolbar/ToolbarMenuDivider'
+import ToolbarMenuDivider from 'src/components/Toolbar/ToolbarMenuDivider';
 
 describe('ToolbarMenuDivider', () => {
-  isConformant(ToolbarMenuDivider)
-})
+  isConformant(ToolbarMenuDivider);
+});

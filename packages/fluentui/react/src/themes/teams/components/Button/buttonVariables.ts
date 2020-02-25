@@ -1,67 +1,67 @@
-import { FontWeightProperty } from 'csstype'
+import { FontWeightProperty } from 'csstype';
 
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface ButtonVariables {
-  padding: string
-  height: string
-  minWidth: string
-  loadingMinWidth: string
-  maxWidth: string
-  borderRadius: string
-  contentFontWeight: FontWeightProperty
-  contentFontSize: string
-  contentLineHeight: string
+  padding: string;
+  height: string;
+  minWidth: string;
+  loadingMinWidth: string;
+  maxWidth: string;
+  borderRadius: string;
+  contentFontWeight: FontWeightProperty;
+  contentFontSize: string;
+  contentLineHeight: string;
 
-  color: string
-  colorHover: string
-  colorActive: string
-  colorDisabled: string
-  backgroundColor: string
-  backgroundColorActive: string
-  backgroundColorHover: string
-  backgroundColorIconOnlyHover: string
+  color: string;
+  colorHover: string;
+  colorActive: string;
+  colorDisabled: string;
+  backgroundColor: string;
+  backgroundColorActive: string;
+  backgroundColorHover: string;
+  backgroundColorIconOnlyHover: string;
 
-  backgroundColorDisabled: string
-  borderColor: string
-  borderColorHover: string
-  borderColorActive: string
-  borderColorDisabled: string
+  backgroundColorDisabled: string;
+  borderColor: string;
+  borderColorHover: string;
+  borderColorActive: string;
+  borderColorDisabled: string;
 
-  primaryColor: string
-  primaryColorHover: string
-  primaryBackgroundColor: string
-  primaryBackgroundColorActive: string
-  primaryBackgroundColorHover: string
-  primaryBackgroundColorDisabled: string
-  primaryBorderColor: string
+  primaryColor: string;
+  primaryColorHover: string;
+  primaryBackgroundColor: string;
+  primaryBackgroundColorActive: string;
+  primaryBackgroundColorHover: string;
+  primaryBackgroundColorDisabled: string;
+  primaryBorderColor: string;
 
-  circularBorderRadius: string
+  circularBorderRadius: string;
 
-  textColor: string
-  textColorHover: string
-  textPrimaryColor: string
-  textPrimaryColorHover: string
-  textColorDisabled: string
-  textColorIconOnlyHover: string
+  textColor: string;
+  textColorHover: string;
+  textPrimaryColor: string;
+  textPrimaryColorHover: string;
+  textColorDisabled: string;
+  textColorIconOnlyHover: string;
 
-  primaryBoxShadow: string
-  boxShadow: string
+  primaryBoxShadow: string;
+  boxShadow: string;
 
-  loaderBorderSize: string
-  loaderSize: string
-  loaderSvgHeight: string
-  loaderSvgAnimationHeight: string
+  loaderBorderSize: string;
+  loaderSize: string;
+  loaderSvgHeight: string;
+  loaderSvgAnimationHeight: string;
 
-  sizeSmallContentFontSize: string
-  sizeSmallContentLineHeight: string
-  sizeSmallHeight: string
-  sizeSmallMinWidth: string
-  sizeSmallPadding: string
-  sizeSmallLoaderBorderSize: string
-  sizeSmallLoaderSize: string
-  sizeSmallLoaderSvgHeight: string
-  sizeSmallLoaderSvgAnimationHeight: string
+  sizeSmallContentFontSize: string;
+  sizeSmallContentLineHeight: string;
+  sizeSmallHeight: string;
+  sizeSmallMinWidth: string;
+  sizeSmallPadding: string;
+  sizeSmallLoaderBorderSize: string;
+  sizeSmallLoaderSize: string;
+  sizeSmallLoaderSvgHeight: string;
+  sizeSmallLoaderSvgAnimationHeight: string;
 }
 
 export default (siteVars: any): ButtonVariables => ({
@@ -123,5 +123,5 @@ export default (siteVars: any): ButtonVariables => ({
   sizeSmallLoaderBorderSize: pxToRem(2),
   sizeSmallLoaderSize: pxToRem(15),
   sizeSmallLoaderSvgHeight: pxToRem(895),
-  sizeSmallLoaderSvgAnimationHeight: pxToRem(-880),
-})
+  sizeSmallLoaderSvgAnimationHeight: pxToRem(-880)
+});

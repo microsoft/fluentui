@@ -1,164 +1,150 @@
-import keyboardKey from 'keyboard-key'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import { EventListener } from '@fluentui/react-component-event-listener'
+import keyboardKey from 'keyboard-key';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { EventListener } from '@fluentui/react-component-event-listener';
 
-import { isBrowser } from '../../utils'
-import { isDebugEnabled } from '@fluentui/styles'
+import { isBrowser } from '../../utils';
+import { isDebugEnabled } from '@fluentui/styles';
 
-import DebugPanel from './DebugPanel'
-import FiberNavigator from './FiberNavigator'
-import DebugRect from './DebugRect'
+import DebugPanel from './DebugPanel';
+import FiberNavigator from './FiberNavigator';
+import DebugRect from './DebugRect';
 
 type DebugProps = {
   /** Existing document the popup should add listeners. */
-  mountDocument?: Document
-}
+  mountDocument?: Document;
+};
 
 type DebugState = {
-  debugPanelPosition?: 'left' | 'right'
-  fiberNav: FiberNavigator
-  selectedFiberNav: FiberNavigator
-  isSelecting: boolean
-}
+  debugPanelPosition?: 'left' | 'right';
+  fiberNav: FiberNavigator;
+  selectedFiberNav: FiberNavigator;
+  isSelecting: boolean;
+};
 
 const INITIAL_STATE: DebugState = {
   fiberNav: null,
   selectedFiberNav: null,
-  isSelecting: false,
-}
+  isSelecting: false
+};
 
 class Debug extends React.Component<DebugProps, DebugState> {
-  state = INITIAL_STATE
+  state = INITIAL_STATE;
 
   static defaultProps = {
     // eslint-disable-next-line no-undef
-    mountDocument: isBrowser() ? window.document : null,
-  }
+    mountDocument: isBrowser() ? window.document : null
+  };
 
   static propTypes = {
-    mountDocument: PropTypes.object.isRequired,
-  }
+    mountDocument: PropTypes.object.isRequired
+  };
 
   constructor(p, s) {
-    super(p, s)
+    super(p, s);
     if (process.env.NODE_ENV !== 'production' && isDebugEnabled && isBrowser()) {
       // eslint-disable-next-line no-undef
-      ;(window as any).openDebugPanel = () => {
+      (window as any).openDebugPanel = () => {
         // eslint-disable-next-line no-undef
-        this.debugReactComponent((window as any).$r)
-      }
+        this.debugReactComponent((window as any).$r);
+      };
     }
   }
 
   debugReactComponent = r => {
     if (!r) {
-      console.error(
-        "No React component selected. Please select a Fluent UI component from the React's Component panel.",
-      )
-      return
+      console.error("No React component selected. Please select a Fluent UI component from the React's Component panel.");
+      return;
     }
     if (!r._reactInternalFiber) {
-      console.error(
-        'React does not provide data for debugging for this component. Try selecting some Fluent UI component.',
-      )
-      return
+      console.error('React does not provide data for debugging for this component. Try selecting some Fluent UI component.');
+      return;
     }
     if (!r.fluentUIDebug) {
-      console.error('Not a debuggable component. Try selecting some Fluent UI component.')
-      return
+      console.error('Not a debuggable component. Try selecting some Fluent UI component.');
+      return;
     }
 
-    const fiberNav = FiberNavigator.fromFiber(r._reactInternalFiber)
-    this.setState({ fiberNav, isSelecting: false, selectedFiberNav: null })
-  }
+    const fiberNav = FiberNavigator.fromFiber(r._reactInternalFiber);
+    this.setState({ fiberNav, isSelecting: false, selectedFiberNav: null });
+  };
 
   debugDOMNode = domNode => {
-    let fiberNav = FiberNavigator.fromDOMNode(domNode)
+    let fiberNav = FiberNavigator.fromDOMNode(domNode);
 
     if (!fiberNav) {
-      console.error('No fiber for dom node', domNode)
-      return
+      console.error('No fiber for dom node', domNode);
+      return;
     }
 
-    fiberNav = fiberNav.findOwner(fiber => fiber.fluentUIDebug)
+    fiberNav = fiberNav.findOwner(fiber => fiber.fluentUIDebug);
 
     if (fiberNav !== this.state.fiberNav) {
-      this.setState({ fiberNav })
+      this.setState({ fiberNav });
     }
-  }
+  };
 
   handleKeyDown = e => {
-    const code = keyboardKey.getCode(e)
+    const code = keyboardKey.getCode(e);
 
     switch (code) {
       case keyboardKey.Escape:
-        this.stopSelecting()
-        break
+        this.stopSelecting();
+        break;
 
       case keyboardKey.d:
         if (e.altKey && e.shiftKey) {
-          this.startSelecting()
+          this.startSelecting();
         }
-        break
+        break;
     }
-  }
+  };
 
   handleMouseMove = e => {
-    this.debugDOMNode(e.target)
-  }
+    this.debugDOMNode(e.target);
+  };
 
   handleDOMNodeClick = e => {
-    e.preventDefault()
-    e.stopPropagation()
+    e.preventDefault();
+    e.stopPropagation();
 
-    this.setState({ isSelecting: false })
-  }
+    this.setState({ isSelecting: false });
+  };
 
   startSelecting = () => {
-    const isSelecting = !this.state.isSelecting
+    const isSelecting = !this.state.isSelecting;
 
     this.setState({
       ...(!isSelecting && INITIAL_STATE),
-      isSelecting,
-    })
-  }
+      isSelecting
+    });
+  };
 
   stopSelecting = () => {
-    this.setState(INITIAL_STATE)
-  }
+    this.setState(INITIAL_STATE);
+  };
 
-  selectFiber = selectedFiberNav => this.setState({ selectedFiberNav })
+  selectFiber = selectedFiberNav => this.setState({ selectedFiberNav });
 
-  changeFiber = fiberNav => this.setState({ fiberNav })
+  changeFiber = fiberNav => this.setState({ fiberNav });
 
-  positionRight = () => this.setState({ debugPanelPosition: 'right' })
+  positionRight = () => this.setState({ debugPanelPosition: 'right' });
 
-  positionLeft = () => this.setState({ debugPanelPosition: 'left' })
+  positionLeft = () => this.setState({ debugPanelPosition: 'left' });
 
-  close = () => this.setState(INITIAL_STATE)
+  close = () => this.setState(INITIAL_STATE);
 
   render() {
-    const { mountDocument } = this.props
-    const { fiberNav, selectedFiberNav, isSelecting, debugPanelPosition } = this.state
+    const { mountDocument } = this.props;
+    const { fiberNav, selectedFiberNav, isSelecting, debugPanelPosition } = this.state;
 
     if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
       return (
         <>
           <EventListener listener={this.handleKeyDown} target={mountDocument.body} type="keydown" />
-          {isSelecting && (
-            <EventListener
-              listener={this.handleMouseMove}
-              target={mountDocument.body}
-              type="mousemove"
-            />
-          )}
+          {isSelecting && <EventListener listener={this.handleMouseMove} target={mountDocument.body} type="mousemove" />}
           {isSelecting && fiberNav && fiberNav.domNode && (
-            <EventListener
-              listener={this.handleDOMNodeClick}
-              target={fiberNav.domNode}
-              type="click"
-            />
+            <EventListener listener={this.handleDOMNodeClick} target={fiberNav.domNode} type="click" />
           )}
           {isSelecting && fiberNav && <DebugRect fiberNav={fiberNav} />}
           {selectedFiberNav && <DebugRect fiberNav={selectedFiberNav} />}
@@ -178,11 +164,11 @@ class Debug extends React.Component<DebugProps, DebugState> {
             />
           )}
         </>
-      )
+      );
     }
 
-    return null
+    return null;
   }
 }
 
-export default Debug
+export default Debug;

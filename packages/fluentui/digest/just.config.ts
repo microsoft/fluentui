@@ -1,3 +1,3 @@
-import { taskPresets } from 'just-scripts'
+import { taskPresets } from 'just-scripts';
 
-taskPresets.webapp()
+taskPresets.webapp();

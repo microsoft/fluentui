@@ -1,51 +1,51 @@
-import { FontWeightProperty } from 'csstype'
+import { FontWeightProperty } from 'csstype';
 
-import { pxToRem } from '../../../../utils'
-import { SiteVariablesPrepared } from '@fluentui/styles'
+import { pxToRem } from '../../../../utils';
+import { SiteVariablesPrepared } from '@fluentui/styles';
 
 export interface AlertVariables {
-  borderStyle: string
-  borderWidth: string
-  borderRadius: string
-  backgroundColor: string
-  borderColor: string
-  color: string
-  fontWeight: FontWeightProperty
-  minHeight: string
-  padding: string
+  borderStyle: string;
+  borderWidth: string;
+  borderRadius: string;
+  backgroundColor: string;
+  borderColor: string;
+  color: string;
+  fontWeight: FontWeightProperty;
+  minHeight: string;
+  padding: string;
 
-  actionsMargin: string
+  actionsMargin: string;
 
-  dismissActionSize: string
-  dismissActionColor: string
-  dismissiblePadding: string
+  dismissActionSize: string;
+  dismissActionColor: string;
+  dismissiblePadding: string;
 
-  dangerColor: string
-  dangerBackgroundColor: string
-  dangerBorderColor: string
+  dangerColor: string;
+  dangerBackgroundColor: string;
+  dangerBorderColor: string;
 
-  oof: boolean
-  oofColor: string
-  oofBackgroundColor: string
-  oofBorderColor: string
+  oof: boolean;
+  oofColor: string;
+  oofBackgroundColor: string;
+  oofBorderColor: string;
 
-  infoColor: string
-  infoBackgroundColor: string
-  infoBorderColor: string
+  infoColor: string;
+  infoBackgroundColor: string;
+  infoBorderColor: string;
 
-  urgent: boolean
-  urgentColor: string
-  urgentBackgroundColor: string
-  urgentBorderColor: string
+  urgent: boolean;
+  urgentColor: string;
+  urgentBackgroundColor: string;
+  urgentBorderColor: string;
 
-  headerFontWeight: FontWeightProperty
-  headerMargin: string
+  headerFontWeight: FontWeightProperty;
+  headerMargin: string;
 
-  iconMargin: string
+  iconMargin: string;
 }
 
 export default (siteVars: SiteVariablesPrepared): AlertVariables => {
-  const minHeight = pxToRem(28)
+  const minHeight = pxToRem(28);
 
   return {
     borderStyle: 'solid',
@@ -85,6 +85,6 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     headerFontWeight: siteVars.fontWeightBold,
     headerMargin: `0 ${pxToRem(10)} 0 0`,
 
-    iconMargin: `0 ${pxToRem(10)} 0 0`,
-  }
-}
+    iconMargin: `0 ${pxToRem(10)} 0 0`
+  };
+};

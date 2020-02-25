@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.24",
+      "version": "0.11.24",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2020 12:21:05 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.20",
       "version": "0.11.20",

@@ -1,30 +1,24 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import {
-  RadioGroupItemProps,
-  RadioGroupItemState,
-} from '../../../../components/RadioGroup/RadioGroupItem'
-import { RadioGroupItemVariables } from './radioGroupItemVariables'
-import { pxToRem } from '../../../../utils'
-import Icon from '../../../../components/Icon/Icon'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { RadioGroupItemProps, RadioGroupItemState } from '../../../../components/RadioGroup/RadioGroupItem';
+import { RadioGroupItemVariables } from './radioGroupItemVariables';
+import { pxToRem } from '../../../../utils';
+import Icon from '../../../../components/Icon/Icon';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
 const restHoverFocusTextColor = textColor => ({
   color: textColor,
 
   ':hover': {
-    color: textColor,
+    color: textColor
   },
 
   ':focus': {
-    color: textColor,
-  },
-})
+    color: textColor
+  }
+});
 
-const radioStyles: ComponentSlotStylesPrepared<
-  RadioGroupItemProps & RadioGroupItemState,
-  RadioGroupItemVariables
-> = {
+const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemProps & RadioGroupItemState, RadioGroupItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     position: 'relative',
     alignItems: 'center',
@@ -42,23 +36,23 @@ const radioStyles: ComponentSlotStylesPrepared<
       color: v.textColorDefaultHoverFocus,
 
       [`& .${Icon.className}`]: {
-        color: v.iconBorderColorDefaultHover,
-      },
+        color: v.iconBorderColorDefaultHover
+      }
     },
 
     ':focus': {
-      color: v.textColorDefaultHoverFocus,
+      color: v.textColorDefaultHoverFocus
     },
 
     ...(p.checked && {
-      ...restHoverFocusTextColor(v.textColorChecked),
+      ...restHoverFocusTextColor(v.textColorChecked)
     }),
 
     ...(p.disabled && {
-      ...restHoverFocusTextColor(v.colorDisabled),
+      ...restHoverFocusTextColor(v.colorDisabled)
     }),
 
-    ...getBorderFocusStyles({ siteVariables }),
+    ...getBorderFocusStyles({ siteVariables })
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -69,18 +63,18 @@ const radioStyles: ComponentSlotStylesPrepared<
     ...getIconFillOrOutlineStyles({ outline: !p.checked }),
 
     ...(p.checked && {
-      color: v.iconBackgroundColorChecked,
+      color: v.iconBackgroundColorChecked
     }),
 
     ...(p.disabled && {
-      color: v.colorDisabled,
+      color: v.colorDisabled
     }),
 
     ...(p.checked &&
       p.disabled && {
-        color: v.colorDisabled,
-      }),
-  }),
-}
+        color: v.colorDisabled
+      })
+  })
+};
 
-export default radioStyles
+export default radioStyles;

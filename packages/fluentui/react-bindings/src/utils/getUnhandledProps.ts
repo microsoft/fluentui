@@ -6,15 +6,12 @@
  * @param props - A ReactElement props object
  * @returns A shallow copy of the prop object
  */
-function getUnhandledProps<P extends Record<string, any>>(
-  handledProps: (keyof P)[],
-  props: P,
-): Partial<P> {
+function getUnhandledProps<P extends Record<string, any>>(handledProps: (keyof P)[], props: P): Partial<P> {
   return Object.keys(props).reduce<Partial<P>>((acc, prop) => {
-    if (handledProps.indexOf(prop) === -1) (acc as any)[prop] = props[prop]
+    if (handledProps.indexOf(prop) === -1) (acc as any)[prop] = props[prop];
 
-    return acc
-  }, {})
+    return acc;
+  }, {});
 }
 
-export default getUnhandledProps
+export default getUnhandledProps;

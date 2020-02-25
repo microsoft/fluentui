@@ -1,50 +1,50 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface DropdownVariables {
-  backgroundColor: string
-  backgroundColorHover: string
-  borderColor: string
-  borderColorFocus: string
-  borderWidth: string
-  containerBorderRadius: string
-  openAboveContainerBorderRadius: string
-  openBelowContainerBorderRadius: string
-  searchBorderBottomWidth: string
-  color: string
-  comboboxPaddingButton: string
-  comboboxFlexBasis: string
-  aboveListBorderRadius: string
-  belowListBorderRadius: string
-  listBackgroundColor: string
-  listBorderColor: string
-  listBorderWidth: string
-  listPadding: string
-  listBoxShadow: string
-  listMaxHeight: string
-  listItemFocusBorderWidth: string
-  listItemHeaderFontSize: string
-  listItemHeaderColor: string
-  listItemContentFontSize: string
-  listItemContentColor: string
-  listItemBackgroundColor: string
-  listItemColorHover: string
-  listItemBackgroundColorHover: string
-  listItemBackgroundColorActive: string
-  listItemColorActive: string
-  listItemSelectedFontWeight: number
-  listItemSelectedColor: string
-  selectedItemColor: string
-  selectedItemBackgroundColor: string
-  selectedItemColorFocus: string
-  selectedItemBackgroundColorFocus: string
-  selectedItemsMaxHeight: string
-  toggleIndicatorSize: string
-  triggerButtonColorHover: string
-  width: string
-  overlayZIndex: number
+  backgroundColor: string;
+  backgroundColorHover: string;
+  borderColor: string;
+  borderColorFocus: string;
+  borderWidth: string;
+  containerBorderRadius: string;
+  openAboveContainerBorderRadius: string;
+  openBelowContainerBorderRadius: string;
+  searchBorderBottomWidth: string;
+  color: string;
+  comboboxPaddingButton: string;
+  comboboxFlexBasis: string;
+  aboveListBorderRadius: string;
+  belowListBorderRadius: string;
+  listBackgroundColor: string;
+  listBorderColor: string;
+  listBorderWidth: string;
+  listPadding: string;
+  listBoxShadow: string;
+  listMaxHeight: string;
+  listItemFocusBorderWidth: string;
+  listItemHeaderFontSize: string;
+  listItemHeaderColor: string;
+  listItemContentFontSize: string;
+  listItemContentColor: string;
+  listItemBackgroundColor: string;
+  listItemColorHover: string;
+  listItemBackgroundColorHover: string;
+  listItemBackgroundColorActive: string;
+  listItemColorActive: string;
+  listItemSelectedFontWeight: number;
+  listItemSelectedColor: string;
+  selectedItemColor: string;
+  selectedItemBackgroundColor: string;
+  selectedItemColorFocus: string;
+  selectedItemBackgroundColorFocus: string;
+  selectedItemsMaxHeight: string;
+  toggleIndicatorSize: string;
+  triggerButtonColorHover: string;
+  width: string;
+  overlayZIndex: number;
 }
 
-const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v))
+const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
 
 export default (siteVars): DropdownVariables => ({
   backgroundColor: siteVars.colors.grey[100],
@@ -89,5 +89,5 @@ export default (siteVars): DropdownVariables => ({
   listItemHeaderFontSize: siteVars.fontSizes.medium,
   listItemHeaderColor: siteVars.colors.grey[1000],
   listItemContentFontSize: siteVars.fontSizes.small,
-  listItemContentColor: siteVars.colors.grey[450],
-})
+  listItemContentColor: siteVars.colors.grey[450]
+});

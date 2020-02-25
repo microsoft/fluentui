@@ -1,22 +1,22 @@
-import * as React from 'react'
-import { Button, Popup, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Popup, Segment } from '@fluentui/react';
 
 class AsyncDataLoader extends React.Component<any, any> {
   state = {
-    data: 'loading..',
-  }
+    data: 'loading..'
+  };
 
   componentDidMount() {
     setTimeout(() => {
       this.setState({
-        data: <Segment styles={{ minHeight: '300px' }}>Hello from loaded data!</Segment>,
-      })
-      this.props.onLoaded()
-    }, 1000)
+        data: <Segment styles={{ minHeight: '300px' }}>Hello from loaded data!</Segment>
+      });
+      this.props.onLoaded();
+    }, 1000);
   }
 
   render() {
-    return this.state.data
+    return this.state.data;
   }
 }
 
@@ -25,6 +25,6 @@ const PopupExampleAsync = () => (
     trigger={<Button icon="more" content="Click me!" />}
     renderContent={updatePosition => <AsyncDataLoader onLoaded={updatePosition} />}
   />
-)
+);
 
-export default PopupExampleAsync
+export default PopupExampleAsync;

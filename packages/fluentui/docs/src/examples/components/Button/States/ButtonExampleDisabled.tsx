@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex, Icon, Text } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex, Icon, Text } from '@fluentui/react';
 
 const ButtonExampleDisabled = () => (
   <Flex column gap="gap.smaller">
@@ -27,6 +27,6 @@ const ButtonExampleDisabled = () => (
       Fluid
     </Button>
   </Flex>
-)
+);
 
-export default ButtonExampleDisabled
+export default ButtonExampleDisabled;

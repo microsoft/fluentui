@@ -1,27 +1,27 @@
-import * as _ from 'lodash'
+import * as _ from 'lodash';
 
-import { Accessibility, AccessibilityAttributes } from '../../types'
-import treeBehavior from './treeBehavior'
-import treeItemAsListItemBehavior from './treeItemAsListItemBehavior'
+import { Accessibility, AccessibilityAttributes } from '../../types';
+import treeBehavior from './treeBehavior';
+import treeItemAsListItemBehavior from './treeItemAsListItemBehavior';
 
 /**
  * @specification
  * Adds role 'list' to 'root' slot.
  */
 const treeAsListBehavior: Accessibility<TreeBehaviorProps> = props => {
-  const behavior = treeBehavior(props)
+  const behavior = treeBehavior(props);
   return _.merge(behavior, {
     attributes: {
       root: {
-        role: 'list',
-      },
+        role: 'list'
+      }
     },
     childBehaviors: {
-      item: treeItemAsListItemBehavior,
-    },
-  })
-}
+      item: treeItemAsListItemBehavior
+    }
+  });
+};
 
-type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>
+type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
 
-export default treeAsListBehavior
+export default treeAsListBehavior;

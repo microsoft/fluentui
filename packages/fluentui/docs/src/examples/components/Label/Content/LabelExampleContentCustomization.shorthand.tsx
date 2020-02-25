@@ -1,18 +1,18 @@
-import * as React from 'react'
-import { Label } from '@fluentui/react'
+import * as React from 'react';
+import { Label } from '@fluentui/react';
 
 class LabelExampleContentCustomizationShorthand extends React.Component {
-  state = { hidden: false }
+  state = { hidden: false };
 
   hide = () => {
-    this.setState({ hidden: true })
-    setTimeout(() => this.setState({ hidden: false }), 2000)
-  }
+    this.setState({ hidden: true });
+    setTimeout(() => this.setState({ hidden: false }), 2000);
+  };
 
   render() {
-    const { hidden } = this.state
+    const { hidden } = this.state;
 
-    if (hidden) return 'Returning in 2 seconds...'
+    if (hidden) return 'Returning in 2 seconds...';
 
     return (
       <Label
@@ -21,8 +21,8 @@ class LabelExampleContentCustomizationShorthand extends React.Component {
         image={{ src: 'public/images/avatar/small/matt.jpg', avatar: true }}
         icon={{ name: 'close', onClick: this.hide }}
       />
-    )
+    );
   }
 }
 
-export default LabelExampleContentCustomizationShorthand
+export default LabelExampleContentCustomizationShorthand;

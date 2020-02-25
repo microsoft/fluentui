@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import { PrototypeSection, ComponentPrototype } from '../Prototypes'
-import MentionsEditor from './MentionsEditor'
-import MentionsDropdown from './MentionsDropdown'
+import { PrototypeSection, ComponentPrototype } from '../Prototypes';
+import MentionsEditor from './MentionsEditor';
+import MentionsDropdown from './MentionsDropdown';
 
 export default () => (
   <PrototypeSection title="Mentions">
@@ -14,4 +14,4 @@ export default () => (
       <MentionsEditor children={props => <MentionsDropdown {...props} />} />
     </ComponentPrototype>
   </PrototypeSection>
-)
+);

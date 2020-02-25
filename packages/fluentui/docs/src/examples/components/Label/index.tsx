@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Content from './Content'
-import Rtl from './Rtl'
-import Variations from './Variations'
+import Content from './Content';
+import Rtl from './Rtl';
+import Variations from './Variations';
 
 const LabelExamples = () => (
   <>
@@ -10,6 +10,6 @@ const LabelExamples = () => (
     <Variations />
     <Rtl />
   </>
-)
+);
 
-export default LabelExamples
+export default LabelExamples;

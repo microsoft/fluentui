@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Status } from '@fluentui/react'
+import * as React from 'react';
+import { Status } from '@fluentui/react';
 
 const StatusCustomExampleShorthand = () => (
   <div>
@@ -9,6 +9,6 @@ const StatusCustomExampleShorthand = () => (
     &emsp;
     <Status color="red" icon="ban" title="Offline" />
   </div>
-)
+);
 
-export default StatusCustomExampleShorthand
+export default StatusCustomExampleShorthand;

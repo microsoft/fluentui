@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import * as keyboardKey from 'keyboard-key'
-import { FocusZoneDirection } from '../../focusZone/types'
-import gridRowBehavior from './gridRowBehavior'
+import { Accessibility } from '../../types';
+import * as keyboardKey from 'keyboard-key';
+import { FocusZoneDirection } from '../../focusZone/types';
+import gridRowBehavior from './gridRowBehavior';
 
 /**
  * @specification
@@ -16,26 +16,26 @@ import gridRowBehavior from './gridRowBehavior'
 const gridNestedBehavior: Accessibility = props => ({
   attributes: {
     root: {
-      role: 'grid',
-    },
+      role: 'grid'
+    }
   },
   focusZone: {
     props: {
       shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.ArrowRight,
       direction: FocusZoneDirection.vertical,
-      shouldResetActiveElementWhenTabFromZone: true,
-    },
+      shouldResetActiveElementWhenTabFromZone: true
+    }
   },
   keyActions: {
     root: {
       focus: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }],
-      },
-    },
+        keyCombinations: [{ keyCode: keyboardKey.Escape }]
+      }
+    }
   },
   childBehaviors: {
-    row: gridRowBehavior,
-  },
-})
+    row: gridRowBehavior
+  }
+});
 
-export default gridNestedBehavior
+export default gridNestedBehavior;

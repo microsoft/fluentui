@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex, Provider } from '@fluentui/react';
 
 const ButtonUsageExampleShorthand = () => (
   <div>
@@ -17,9 +17,9 @@ const ButtonUsageExampleShorthand = () => (
             backgroundColorFocus: siteVars.colorScheme.default.background,
             backgroundColorDisabled: siteVars.colorScheme.brand.backgroundDisabled,
             borderColor: siteVars.colorScheme.brandBorder2,
-            borderColorHover: siteVars.colorScheme.brandBorderHover,
-          }),
-        },
+            borderColorHover: siteVars.colorScheme.brandBorderHover
+          })
+        }
       }}
     >
       <Flex gap="gap.smaller">
@@ -28,6 +28,6 @@ const ButtonUsageExampleShorthand = () => (
       </Flex>
     </Provider>
   </div>
-)
+);
 
-export default ButtonUsageExampleShorthand
+export default ButtonUsageExampleShorthand;

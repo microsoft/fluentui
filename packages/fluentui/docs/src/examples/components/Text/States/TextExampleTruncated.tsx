@@ -1,14 +1,14 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react';
 
 const [notTruncatedText, truncatedText] = [
   'Some long text here to see how it looks when not truncated',
-  'Some long text here to see how it looks truncated',
+  'Some long text here to see how it looks truncated'
 ].map(text =>
   Array(5)
     .fill(text)
-    .join('. '),
-)
+    .join('. ')
+);
 
 const TextExampleTruncated = () => (
   <div style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -17,6 +17,6 @@ const TextExampleTruncated = () => (
     <br />
     <Text truncated>{truncatedText}</Text>
   </div>
-)
+);
 
-export default TextExampleTruncated
+export default TextExampleTruncated;

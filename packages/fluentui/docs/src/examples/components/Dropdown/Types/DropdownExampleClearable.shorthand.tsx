@@ -1,5 +1,5 @@
-import { Dropdown } from '@fluentui/react'
-import * as React from 'react'
+import { Dropdown } from '@fluentui/react';
+import * as React from 'react';
 
 const inputItems = [
   'Bruce Wayne',
@@ -10,11 +10,9 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle',
-]
+  'Selina Kyle'
+];
 
-const DropdownClearableExample = () => (
-  <Dropdown clearable items={inputItems} placeholder="Select your hero" />
-)
+const DropdownClearableExample = () => <Dropdown clearable items={inputItems} placeholder="Select your hero" />;
 
-export default DropdownClearableExample
+export default DropdownClearableExample;

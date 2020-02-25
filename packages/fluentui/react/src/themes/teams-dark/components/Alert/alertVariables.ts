@@ -1,4 +1,4 @@
-import { AlertVariables } from '../../../teams/components/Alert/alertVariables'
+import { AlertVariables } from '../../../teams/components/Alert/alertVariables';
 
 export default (siteVars: any): Partial<AlertVariables> => {
   return {
@@ -20,6 +20,6 @@ export default (siteVars: any): Partial<AlertVariables> => {
 
     urgentColor: siteVars.colors.white,
     urgentBackgroundColor: siteVars.colors.red[400],
-    urgentBorderColor: siteVars.colors.red[400],
-  }
-}
+    urgentBorderColor: siteVars.colors.red[400]
+  };
+};

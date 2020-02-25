@@ -1,7 +1,7 @@
-import { ComponentSlotClasses } from '@fluentui/react-bindings'
-import * as React from 'react'
-import * as PropTypes from 'prop-types'
-import cx from 'classnames'
+import { ComponentSlotClasses } from '@fluentui/react-bindings';
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
+import cx from 'classnames';
 
 import {
   createShorthandFactory,
@@ -11,74 +11,62 @@ import {
   commonPropTypes,
   ContentComponentProps,
   rtlTextContainer,
-  ShorthandFactory,
-} from '../../utils'
-import Layout from '../Layout/Layout'
-import { WithAsProp, withSafeTypeForAs } from '../../types'
+  ShorthandFactory
+} from '../../utils';
+import Layout from '../Layout/Layout';
+import { WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface ItemLayoutSlotClassNames {
-  header: string
-  headerMedia: string
-  main: string
-  content: string
-  contentMedia: string
-  media: string
-  endMedia: string
+  header: string;
+  headerMedia: string;
+  main: string;
+  content: string;
+  contentMedia: string;
+  media: string;
+  endMedia: string;
 }
 
 export interface ItemLayoutProps extends UIComponentProps, ContentComponentProps<any> {
-  contentMedia?: any
+  contentMedia?: any;
   /** Toggle debug mode */
-  debug?: boolean
-  header?: any
-  endMedia?: any
-  headerMedia?: any
-  media?: any
-  renderContentArea?: (
-    props: ItemLayoutProps,
-    state: any,
-    classes: ComponentSlotClasses,
-  ) => React.ReactNode
-  renderHeaderArea?: (
-    props: ItemLayoutProps,
-    state: any,
-    classes: ComponentSlotClasses,
-  ) => React.ReactNode
-  renderMainArea?: (
-    props: ItemLayoutProps,
-    state: any,
-    classes: ComponentSlotClasses,
-  ) => React.ReactNode
+  debug?: boolean;
+  header?: any;
+  endMedia?: any;
+  headerMedia?: any;
+  media?: any;
+  renderContentArea?: (props: ItemLayoutProps, state: any, classes: ComponentSlotClasses) => React.ReactNode;
+  renderHeaderArea?: (props: ItemLayoutProps, state: any, classes: ComponentSlotClasses) => React.ReactNode;
+  renderMainArea?: (props: ItemLayoutProps, state: any, classes: ComponentSlotClasses) => React.ReactNode;
   /** Styled applied to the root element of the rendered component. */
-  rootCSS?: React.CSSProperties
+  rootCSS?: React.CSSProperties;
   /** Styled applied to the media element of the rendered component. */
-  mediaCSS?: React.CSSProperties
+  mediaCSS?: React.CSSProperties;
   /** Styled applied to the header element of the rendered component. */
-  headerCSS?: React.CSSProperties
+  headerCSS?: React.CSSProperties;
   /** Styled applied to the header media element of the rendered component. */
-  headerMediaCSS?: React.CSSProperties
+  headerMediaCSS?: React.CSSProperties;
   /** Styled applied to the content element of the rendered component. */
-  contentCSS?: React.CSSProperties
+  contentCSS?: React.CSSProperties;
   /** Styled applied to the content element of the rendered component. */
-  contentMediaCSS?: React.CSSProperties
+  contentMediaCSS?: React.CSSProperties;
   /** Styled applied to the end media element of the rendered component. */
-  endMediaCSS?: React.CSSProperties
+  endMediaCSS?: React.CSSProperties;
 }
 
 class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
-  static create: ShorthandFactory<ItemLayoutProps>
+  static create: ShorthandFactory<ItemLayoutProps>;
 
-  static displayName = 'ItemLayout'
+  static displayName = 'ItemLayout';
 
-  static className = 'ui-itemlayout'
+  static className = 'ui-itemlayout';
 
-  static slotClassNames: ItemLayoutSlotClassNames
+  static slotClassNames: ItemLayoutSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
       accessibility: false,
       children: false,
-      content: false,
+      content: false
     }),
     contentMedia: PropTypes.any,
     content: PropTypes.any,
@@ -96,36 +84,36 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
     headerMediaCSS: PropTypes.object,
     contentCSS: PropTypes.object,
     contentMediaCSS: PropTypes.object,
-    endMediaCSS: PropTypes.object,
-  }
+    endMediaCSS: PropTypes.object
+  };
 
   static defaultProps = {
     as: 'div',
 
     renderMainArea: (props, state, classes) => {
-      const { renderHeaderArea, renderContentArea } = props
+      const { renderHeaderArea, renderContentArea } = props;
 
-      const headerArea = renderHeaderArea(props, state, classes)
-      const contentArea = renderContentArea(props, state, classes)
+      const headerArea = renderHeaderArea(props, state, classes);
+      const contentArea = renderContentArea(props, state, classes);
 
       return (
         <div
           className={ItemLayout.slotClassNames.main}
           style={{
-            gridTemplateRows: '1fr 1fr',
+            gridTemplateRows: '1fr 1fr'
           }}
         >
           {headerArea}
           {contentArea}
         </div>
-      )
+      );
     },
 
     renderHeaderArea: (props, state, classes) => {
-      const { debug, header, headerMedia, headerCSS, headerMediaCSS } = props
+      const { debug, header, headerMedia, headerCSS, headerMediaCSS } = props;
 
-      const mergedClasses = cx(ItemLayout.slotClassNames.header, classes.header)
-      const mediaClasses = cx(ItemLayout.slotClassNames.headerMedia, classes.headerMedia)
+      const mergedClasses = cx(ItemLayout.slotClassNames.header, classes.header);
+      const mediaClasses = cx(ItemLayout.slotClassNames.headerMedia, classes.headerMedia);
 
       return !header && !headerMedia ? null : (
         <Layout
@@ -143,14 +131,14 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
             )
           }
         />
-      )
+      );
     },
 
     renderContentArea: (props, state, classes) => {
-      const { debug, content, contentMedia, contentCSS, contentMediaCSS } = props
+      const { debug, content, contentMedia, contentCSS, contentMediaCSS } = props;
 
-      const mergedClasses = cx(ItemLayout.slotClassNames.content, classes.content)
-      const mediaClasses = cx(ItemLayout.slotClassNames.contentMedia, classes.contentMedia)
+      const mergedClasses = cx(ItemLayout.slotClassNames.content, classes.content);
+      const mediaClasses = cx(ItemLayout.slotClassNames.contentMedia, classes.contentMedia);
 
       return !content && !contentMedia ? null : (
         <Layout
@@ -168,28 +156,19 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
             )
           }
         />
-      )
-    },
-  }
+      );
+    }
+  };
 
   renderComponent({ classes, unhandledProps, styles }) {
-    const {
-      as,
-      debug,
-      endMedia,
-      media,
-      renderMainArea,
-      rootCSS,
-      mediaCSS,
-      endMediaCSS,
-    } = this.props
+    const { as, debug, endMedia, media, renderMainArea, rootCSS, mediaCSS, endMediaCSS } = this.props;
 
-    const startArea = media
-    const mainArea = renderMainArea(this.props, this.state, classes)
-    const endArea = endMedia
+    const startArea = media;
+    const mainArea = renderMainArea(this.props, this.state, classes);
+    const endArea = endMedia;
 
-    const mergedMediaClasses = cx(ItemLayout.slotClassNames.media, classes.media)
-    const mergedEndMediaClasses = cx(ItemLayout.slotClassNames.endMedia, classes.endMedia)
+    const mergedMediaClasses = cx(ItemLayout.slotClassNames.media, classes.media);
+    const mergedEndMediaClasses = cx(ItemLayout.slotClassNames.endMedia, classes.endMedia);
 
     return (
       <Layout
@@ -218,11 +197,11 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
         }
         {...unhandledProps}
       />
-    )
+    );
   }
 }
 
-ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' })
+ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
 ItemLayout.slotClassNames = {
   header: `${ItemLayout.className}__header`,
   headerMedia: `${ItemLayout.className}__headerMedia`,
@@ -230,10 +209,10 @@ ItemLayout.slotClassNames = {
   content: `${ItemLayout.className}__content`,
   contentMedia: `${ItemLayout.className}__contentMedia`,
   media: `${ItemLayout.className}__media`,
-  endMedia: `${ItemLayout.className}__endMedia`,
-}
+  endMedia: `${ItemLayout.className}__endMedia`
+};
 
 /**
  * (DEPRECATED) The Item Layout handles layout styles for menu items, list items and other similar item templates.
  */
-export default withSafeTypeForAs<typeof ItemLayout, ItemLayoutProps>(ItemLayout)
+export default withSafeTypeForAs<typeof ItemLayout, ItemLayoutProps>(ItemLayout);

@@ -1,4 +1,4 @@
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings'
+import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 
 const theme = {
   siteVariables: { fontSizes: {} },
@@ -11,11 +11,11 @@ const theme = {
     spinner: {
       keyframe: {
         from: {
-          transform: 'rotate(0deg)',
+          transform: 'rotate(0deg)'
         },
         to: {
-          transform: 'rotate(360deg)',
-        },
+          transform: 'rotate(360deg)'
+        }
       },
       duration: '5s',
       iterationCount: 'infinite',
@@ -23,10 +23,10 @@ const theme = {
       playState: 'running',
       timingFunction: 'ease',
       direction: 'reverse',
-      delay: '2s',
-    },
-  },
-}
+      delay: '2s'
+    }
+  }
+};
 
 describe('createAnimationStyles', () => {
   test('applies all animation props from the theme if the animation is string', () => {
@@ -34,12 +34,12 @@ describe('createAnimationStyles', () => {
       animationName: {
         keyframe: {
           from: {
-            transform: 'rotate(0deg)',
+            transform: 'rotate(0deg)'
           },
           to: {
-            transform: 'rotate(360deg)',
-          },
-        },
+            transform: 'rotate(360deg)'
+          }
+        }
       },
       animationDuration: '5s',
       animationIterationCount: 'infinite',
@@ -47,23 +47,21 @@ describe('createAnimationStyles', () => {
       animationPlayState: 'running',
       animationTimingFunction: 'ease',
       animationDirection: 'reverse',
-      animationDelay: '2s',
-    })
-  })
+      animationDelay: '2s'
+    });
+  });
 
   test('overrides theme props if the animation prop is object', () => {
-    expect(
-      createAnimationStyles({ name: 'spinner', duration: '1s', delay: '3s' }, theme),
-    ).toMatchObject({
+    expect(createAnimationStyles({ name: 'spinner', duration: '1s', delay: '3s' }, theme)).toMatchObject({
       animationName: {
         keyframe: {
           from: {
-            transform: 'rotate(0deg)',
+            transform: 'rotate(0deg)'
           },
           to: {
-            transform: 'rotate(360deg)',
-          },
-        },
+            transform: 'rotate(360deg)'
+          }
+        }
       },
       animationDuration: '1s',
       animationIterationCount: 'infinite',
@@ -71,7 +69,7 @@ describe('createAnimationStyles', () => {
       animationPlayState: 'running',
       animationTimingFunction: 'ease',
       animationDirection: 'reverse',
-      animationDelay: '3s',
-    })
-  })
-})
+      animationDelay: '3s'
+    });
+  });
+});

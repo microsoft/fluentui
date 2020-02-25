@@ -1,61 +1,61 @@
-import { pxToRem } from '../../../../utils'
-import * as _ from 'lodash'
+import { pxToRem } from '../../../../utils';
+import * as _ from 'lodash';
 
 export type CheckboxVariables = {
-  rootPadding: string
+  rootPadding: string;
 
-  textColor: string
-  indicatorColor: string
+  textColor: string;
+  indicatorColor: string;
 
-  textColorHover: string
-  borderColorHover: string
-  background: string
-  borderColor: string
-  borderStyle: string
-  borderRadius: string
-  borderWidth: string
-  checkboxColor: string
-  gap: string
-  margin: string
-  padding: string
+  textColorHover: string;
+  borderColorHover: string;
+  background: string;
+  borderColor: string;
+  borderStyle: string;
+  borderRadius: string;
+  borderWidth: string;
+  checkboxColor: string;
+  gap: string;
+  margin: string;
+  padding: string;
 
-  toggleBackground: string
-  toggleBorderColor: string
-  toggleBorderStyle: string
-  toggleBorderRadius: string
-  toggleBorderWidth: string
-  toggleIndicatorColor: string
-  toggleMargin: string
-  togglePadding: string
+  toggleBackground: string;
+  toggleBorderColor: string;
+  toggleBorderStyle: string;
+  toggleBorderRadius: string;
+  toggleBorderWidth: string;
+  toggleIndicatorColor: string;
+  toggleMargin: string;
+  togglePadding: string;
 
-  checkedBackground: string
-  checkedBorderColor: string
-  checkboxCheckedColor: string
-  checkedBackgroundHover: string
-  checkedTextColor: string
-  checkedIndicatorColor: string
-  checkboxToggleCheckedColor: string
-  checkboxToggleCheckedBackground: string
-  checkboxToggleCheckedBorderColor: string
-  toggleCheckedPadding: string
-  toggleIndicatorSize: string
-  toggleWidth: string
-  toggleHeight: string
+  checkedBackground: string;
+  checkedBorderColor: string;
+  checkboxCheckedColor: string;
+  checkedBackgroundHover: string;
+  checkedTextColor: string;
+  checkedIndicatorColor: string;
+  checkboxToggleCheckedColor: string;
+  checkboxToggleCheckedBackground: string;
+  checkboxToggleCheckedBorderColor: string;
+  toggleCheckedPadding: string;
+  toggleIndicatorSize: string;
+  toggleWidth: string;
+  toggleHeight: string;
 
-  disabledColor: string
-  disabledBackground: string
-  disabledBorderColor: string
-  disabledCheckboxColor: string
-  disabledToggleIndicatorColor: string
-  disabledToggleBackground: string
-  disabledToggleBorderColor: string
-  disabledBackgroundChecked: string
-  disabledCheckedIndicatorColor: string
-}
+  disabledColor: string;
+  disabledBackground: string;
+  disabledBorderColor: string;
+  disabledCheckboxColor: string;
+  disabledToggleIndicatorColor: string;
+  disabledToggleBackground: string;
+  disabledToggleBorderColor: string;
+  disabledBackgroundChecked: string;
+  disabledCheckedIndicatorColor: string;
+};
 
-const toggleMovementDistance = pxToRem(20)
-const padding = pxToRem(2)
-const defaultValue = 'red'
+const toggleMovementDistance = pxToRem(20);
+const padding = pxToRem(2);
+const defaultValue = 'red';
 
 export default (siteVars: any): CheckboxVariables => ({
   checkboxColor: 'transparent',
@@ -106,20 +106,8 @@ export default (siteVars: any): CheckboxVariables => ({
   toggleCheckedPadding: `${padding} ${padding} ${padding} ${toggleMovementDistance}`,
 
   disabledBackground: _.get(siteVars, 'colorScheme.default.background', defaultValue),
-  disabledBackgroundChecked: _.get(
-    siteVars,
-    'colorScheme.default.backgroundDisabled',
-    defaultValue,
-  ),
+  disabledBackgroundChecked: _.get(siteVars, 'colorScheme.default.backgroundDisabled', defaultValue),
   disabledBorderColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled1', defaultValue),
-  disabledCheckedIndicatorColor: _.get(
-    siteVars,
-    'colorScheme.default.foregroundDisabled',
-    defaultValue,
-  ),
-  disabledToggleIndicatorColor: _.get(
-    siteVars,
-    'colorScheme.default.foregroundDisabled',
-    defaultValue,
-  ),
-})
+  disabledCheckedIndicatorColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled', defaultValue),
+  disabledToggleIndicatorColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled', defaultValue)
+});

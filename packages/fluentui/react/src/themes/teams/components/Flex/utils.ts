@@ -1,13 +1,13 @@
 export const toFlexAlignment = (propValue: string) => {
-  const trimmedValue = propValue.trim()
+  const trimmedValue = propValue.trim();
 
   if (trimmedValue === 'start' || trimmedValue === 'end') {
-    return `flex-${trimmedValue}`
+    return `flex-${trimmedValue}`;
   }
 
-  return trimmedValue
-}
+  return trimmedValue;
+};
 
 export const toFlexItemSizeValues = (sizeValue: string) => ({
-  flexBasis: sizeValue,
-})
+  flexBasis: sizeValue
+});

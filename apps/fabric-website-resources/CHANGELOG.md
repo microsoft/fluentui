@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 7.6.7
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
 ## 7.6.3
 Wed, 19 Feb 2020 12:21:05 GMT
 

@@ -1,30 +1,26 @@
-import * as React from 'react'
-import { Chat, ChatMessageProps, Text, Flex, Attachment, AttachmentProps } from '@fluentui/react'
-import threadedMessageBehavior from './threadedMessageBehavior'
-import ThreadReplies, { ThreadReplyProps } from './ThreadReplies'
-import ThreadReplyEditor from './ThreadReplyEditor'
-import ScreenReaderHeaderText from './ScreenReaderHeaderText'
-import { actionMenu } from './mockData'
-import classNames from './classNames'
+import * as React from 'react';
+import { Chat, ChatMessageProps, Text, Flex, Attachment, AttachmentProps } from '@fluentui/react';
+import threadedMessageBehavior from './threadedMessageBehavior';
+import ThreadReplies, { ThreadReplyProps } from './ThreadReplies';
+import ThreadReplyEditor from './ThreadReplyEditor';
+import ScreenReaderHeaderText from './ScreenReaderHeaderText';
+import { actionMenu } from './mockData';
+import classNames from './classNames';
 
 interface ThreadedMessageProps extends ChatMessageProps {
-  subject?: string
-  replies?: ThreadReplyProps[]
-  meeting?: AttachmentProps
+  subject?: string;
+  replies?: ThreadReplyProps[];
+  meeting?: AttachmentProps;
 }
 class ThreadedMessage extends React.Component<ThreadedMessageProps> {
   renderContent = () => {
-    const { subject, content, author, timestamp, meeting } = this.props
+    const { subject, content, author, timestamp, meeting } = this.props;
     return (
       <div>
         <Flex className={classNames.threadedMessage.innerContent} column>
           <Flex>
             <Text size="small" className={classNames.threadedMessage.author} content={author} />
-            <Text
-              size="small"
-              className={classNames.threadedMessage.timestamp}
-              content={timestamp}
-            />
+            <Text size="small" className={classNames.threadedMessage.timestamp} content={timestamp} />
           </Flex>
           {subject && <Text weight="semibold" size="large" content={subject} />}
           {content}
@@ -36,18 +32,18 @@ class ThreadedMessage extends React.Component<ThreadedMessageProps> {
             header={meeting.header}
             description={meeting.description}
             action={{
-              icon: 'more',
+              icon: 'more'
             }}
           />
         )}
       </div>
-    )
-  }
+    );
+  };
 
   render() {
-    const { author, content, replies } = this.props
-    const authorString = author.toString()
-    const messageString = content.toString()
+    const { author, content, replies } = this.props;
+    const authorString = author.toString();
+    const messageString = content.toString();
 
     return (
       <>
@@ -57,19 +53,15 @@ class ThreadedMessage extends React.Component<ThreadedMessageProps> {
           accessibility={threadedMessageBehavior}
           content={
             <Flex column>
-              <Chat.Message
-                className={classNames.threadedMessage.threadBody}
-                content={this.renderContent()}
-                actionMenu={actionMenu}
-              />
+              <Chat.Message className={classNames.threadedMessage.threadBody} content={this.renderContent()} actionMenu={actionMenu} />
               <ThreadReplies replies={replies} />
               <ThreadReplyEditor />
             </Flex>
           }
         />
       </>
-    )
+    );
   }
 }
 
-export default ThreadedMessage
+export default ThreadedMessage;

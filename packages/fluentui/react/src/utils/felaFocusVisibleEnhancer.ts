@@ -1,21 +1,21 @@
-import { IRenderer } from 'fela'
-import { RULE_TYPE } from 'fela-utils'
-import * as _ from 'lodash'
+import { IRenderer } from 'fela';
+import { RULE_TYPE } from 'fela-utils';
+import * as _ from 'lodash';
 
 type Renderer = IRenderer & {
-  cache: Record<string, RendererChange>
-  _emitChange?: (change: RendererChange) => void
-}
+  cache: Record<string, RendererChange>;
+  _emitChange?: (change: RendererChange) => void;
+};
 
 type RendererChange = {
-  type: 'RULE' | 'KEYFRAME' | 'FONT' | 'STATIC' | 'CLEAR'
-  className: string
-  selector: string
-  declaration: Object
-  pseudo: string
-  media: string
-  support: string
-}
+  type: 'RULE' | 'KEYFRAME' | 'FONT' | 'STATIC' | 'CLEAR';
+  className: string;
+  selector: string;
+  declaration: Object;
+  pseudo: string;
+  media: string;
+  support: string;
+};
 
 /**
  * A Fela enhancer that allows to use `:focus-visible`. Uses `what-input` library and its global
@@ -26,32 +26,29 @@ const felaFocusVisibleEnhancer = (renderer: Renderer) => ({
   ...renderer,
   _emitChange: (change: RendererChange) => {
     if (change.type === RULE_TYPE && change.selector.indexOf(':focus-visible') !== -1) {
-      const pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : undefined
-      const selector = `html[data-whatinput="keyboard"] ${change.selector.replace(
-        ':focus-visible',
-        ':focus',
-      )}`
+      const pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : undefined;
+      const selector = `html[data-whatinput="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
 
-      const declarationReference = _.findKey(renderer.cache, change)
+      const declarationReference = _.findKey(renderer.cache, change);
       const enhancedChange = {
         ...change,
         pseudo,
-        selector,
-      }
+        selector
+      };
 
       // Fela has two types for rendering:
       // - DOM via subscriptions that's why `_emitChange()` is replaced, it will notify all
       //   subscriptions
       // - static rendering, it directly accesses `.cache` via `clusterCache()` and generates
       //   stylesheets from changes
-      renderer.cache[declarationReference] = enhancedChange
-      renderer._emitChange(enhancedChange)
+      renderer.cache[declarationReference] = enhancedChange;
+      renderer._emitChange(enhancedChange);
 
-      return
+      return;
     }
 
-    renderer._emitChange(change)
-  },
-})
+    renderer._emitChange(change);
+  }
+});
 
-export default felaFocusVisibleEnhancer
+export default felaFocusVisibleEnhancer;
