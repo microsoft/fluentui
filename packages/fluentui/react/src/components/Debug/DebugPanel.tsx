@@ -1,29 +1,29 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import DebugPanelItem from './DebugPanelItem'
-import FiberNavigator from './FiberNavigator'
-import { getValues, removeNulls } from './utils'
-import DebugComponentViewer from './DebugComponentViewer'
+import * as React from 'react';
+import * as _ from 'lodash';
+import DebugPanelItem from './DebugPanelItem';
+import FiberNavigator from './FiberNavigator';
+import { getValues, removeNulls } from './utils';
+import DebugComponentViewer from './DebugComponentViewer';
 
 export type DebugPanelProps = {
-  cssStyles?: string[]
-  fiberNav: FiberNavigator
+  cssStyles?: string[];
+  fiberNav: FiberNavigator;
   debugData: {
-    componentStyles: { [key: string]: { styles: any; debugId: string } }
+    componentStyles: { [key: string]: { styles: any; debugId: string } };
     componentVariables: {
-      input: { [key: string]: any }
-      resolved: { [key: string]: any }
-    }[]
-    siteVariables: object[]
-  }
-  onActivateDebugSelectorClick: (e) => void
-  onClose: (e) => void
-  onPositionLeft: (e) => void
-  onPositionRight: (e) => void
-  position: 'left' | 'right'
-  onFiberChanged: (fiberNav: FiberNavigator) => void
-  onFiberSelected: (fiberNav: FiberNavigator) => void
-}
+      input: { [key: string]: any };
+      resolved: { [key: string]: any };
+    }[];
+    siteVariables: object[];
+  };
+  onActivateDebugSelectorClick: (e) => void;
+  onClose: (e) => void;
+  onPositionLeft: (e) => void;
+  onPositionRight: (e) => void;
+  position: 'left' | 'right';
+  onFiberChanged: (fiberNav: FiberNavigator) => void;
+  onFiberSelected: (fiberNav: FiberNavigator) => void;
+};
 
 const DebugPanel: React.FC<DebugPanelProps> = props => {
   const {
@@ -36,28 +36,28 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
     onPositionLeft,
     onPositionRight,
     onFiberChanged,
-    onFiberSelected,
-  } = props
+    onFiberSelected
+  } = props;
 
-  const [slot, setSlot] = React.useState('root')
+  const [slot, setSlot] = React.useState('root');
 
-  const left = position === 'left'
+  const left = position === 'left';
 
   const debugData =
     _.isNil(inputDebugData) || _.isEmpty(inputDebugData)
       ? {
           componentStyles: {},
           componentVariables: [],
-          siteVariables: [],
+          siteVariables: []
         }
-      : inputDebugData
+      : inputDebugData;
 
-  debugData.componentStyles = debugData.componentStyles || {}
-  debugData.componentVariables = debugData.componentVariables || []
-  debugData.siteVariables = debugData.siteVariables || []
+  debugData.componentStyles = debugData.componentStyles || {};
+  debugData.componentVariables = debugData.componentVariables || [];
+  debugData.siteVariables = debugData.siteVariables || [];
 
-  const styleSlots = Object.keys(debugData.componentStyles)
-  let siteVariablesUsedInComponentVariables = []
+  const styleSlots = Object.keys(debugData.componentStyles);
+  let siteVariablesUsedInComponentVariables = [];
 
   debugData.componentVariables
     .map(val => val.input)
@@ -65,24 +65,24 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
       val =>
         (siteVariablesUsedInComponentVariables = _.concat(
           siteVariablesUsedInComponentVariables,
-          getValues(val, val => val.indexOf('siteVariables.') > -1),
-        )),
-    )
+          getValues(val, val => val.indexOf('siteVariables.') > -1)
+        ))
+    );
 
-  const uniqUsedSiteVariables = _.uniq(siteVariablesUsedInComponentVariables)
+  const uniqUsedSiteVariables = _.uniq(siteVariablesUsedInComponentVariables);
   const siteVariablesDataWithNulls = debugData.siteVariables.map(val => ({
     ...val,
     resolved: uniqUsedSiteVariables.reduce((acc, next) => {
-      const key = _.replace(next, 'siteVariables.', '')
-      _.set(acc, key, _.get(val['resolved'], key))
-      return acc
-    }, {}),
-  }))
+      const key = _.replace(next, 'siteVariables.', '');
+      _.set(acc, key, _.get(val['resolved'], key));
+      return acc;
+    }, {})
+  }));
 
   const siteVariablesData = siteVariablesDataWithNulls.map(val => ({
     ...val,
-    resolved: removeNulls(val.resolved),
-  }))
+    resolved: removeNulls(val.resolved)
+  }));
 
   return (
     <div>
@@ -100,11 +100,7 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
           </div>
         </div>
 
-        <DebugComponentViewer
-          fiberNav={fiberNav}
-          onFiberChanged={onFiberChanged}
-          onFiberSelected={onFiberSelected}
-        />
+        <DebugComponentViewer fiberNav={fiberNav} onFiberChanged={onFiberChanged} onFiberSelected={onFiberSelected} />
 
         <div style={debugPanelBody}>
           {/* Styles */}
@@ -125,11 +121,7 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
               )}
             </div>
             {!_.isEmpty(debugData.componentStyles) ? (
-              <DebugPanelItem
-                data={debugData.componentStyles[slot]}
-                valueKey="styles"
-                idKey="debugId"
-              />
+              <DebugPanelItem data={debugData.componentStyles[slot]} valueKey="styles" idKey="debugId" />
             ) : (
               <div style={debugNoData()}>None in use</div>
             )}
@@ -147,9 +139,7 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
                 valueKey="resolved"
                 idKey="debugId"
                 commentKey="input"
-                commentKeyPredicate={val =>
-                  typeof val === 'string' && val.indexOf('siteVariables.') > -1
-                }
+                commentKeyPredicate={val => typeof val === 'string' && val.indexOf('siteVariables.') > -1}
               />
             ) : (
               <div style={debugNoData()}>None in use</div>
@@ -184,8 +174,8 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
         <div style={{ padding: '50px 0' }} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 const debugPanelHeader: React.CSSProperties = {
   position: 'sticky',
@@ -195,30 +185,30 @@ const debugPanelHeader: React.CSSProperties = {
   padding: '2px 2px 4px',
   top: '0',
   background: '#f3f3f3',
-  zIndex: 1,
-}
+  zIndex: 1
+};
 
 const commonIconStyle: React.CSSProperties = {
   display: 'inline-block',
   cursor: 'pointer',
   color: '#555',
   lineHeight: 1,
-  margin: '0 4px',
-}
+  margin: '0 4px'
+};
 
 const debugPanelCloseIcon: React.CSSProperties = {
   ...commonIconStyle,
   fontSize: '20px',
   outline: '0',
-  cursor: 'pointer',
-}
+  cursor: 'pointer'
+};
 
 const debugPanelArrowIcon: React.CSSProperties = {
   ...commonIconStyle,
   fontSize: '24px',
   marginTop: '-4px',
-  outline: '0',
-}
+  outline: '0'
+};
 
 const debugPanelIcon = (left, isLeftActive): React.CSSProperties => ({
   ...commonIconStyle,
@@ -229,9 +219,9 @@ const debugPanelIcon = (left, isLeftActive): React.CSSProperties => ({
   width: '16px',
   height: '14px',
   ...(left === isLeftActive && {
-    borderColor: '#6495ed',
-  }),
-})
+    borderColor: '#6495ed'
+  })
+});
 
 const debugPanelRoot = (left): React.CSSProperties => ({
   position: 'fixed',
@@ -246,8 +236,8 @@ const debugPanelRoot = (left): React.CSSProperties => ({
   fontSize: '12px',
   overflowY: 'scroll',
   [left ? 'borderRight' : 'borderLeft']: '1px solid rgba(0, 0, 0, 0.2)',
-  boxShadow: '0 0 8px rgba(0, 0, 0, .1)',
-})
+  boxShadow: '0 0 8px rgba(0, 0, 0, .1)'
+});
 
 const debugHeaderContainer = (): React.CSSProperties => ({
   display: 'flex',
@@ -258,35 +248,35 @@ const debugHeaderContainer = (): React.CSSProperties => ({
   overflow: 'hidden',
   background: '#f3f3f3',
   borderTop: '1px solid #d0d0d0',
-  borderBottom: '1px solid #d0d0d0',
-})
+  borderBottom: '1px solid #d0d0d0'
+});
 
 const debugHeader = (): React.CSSProperties => ({
   fontSize: '14px',
-  fontWeight: 'bold',
-})
+  fontWeight: 'bold'
+});
 
 const debugNoData = (): React.CSSProperties => ({
   padding: '8px',
   color: 'rgba(0, 0, 0, 0.75)',
   textAlign: 'center',
   background: 'rgba(0, 0, 0, 0.05)',
-  marginBottom: '4px',
-})
+  marginBottom: '4px'
+});
 
 const debugPanelSelectContainer = (): React.CSSProperties => ({
-  width: 'auto',
-})
+  width: 'auto'
+});
 
 const debugPanelBody: React.CSSProperties = {
   overflowWrap: 'break-word',
   wordWrap: 'break-word',
   wordBreak: 'break-all',
-  hyphens: 'auto',
-}
+  hyphens: 'auto'
+};
 
 const debugPanel: React.CSSProperties = {
-  padding: '0 4px',
-}
+  padding: '0 4px'
+};
 
-export default DebugPanel
+export default DebugPanel;

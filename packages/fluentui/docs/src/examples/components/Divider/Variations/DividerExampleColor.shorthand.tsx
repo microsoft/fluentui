@@ -1,15 +1,13 @@
-import * as _ from 'lodash'
-import * as React from 'react'
-import { Divider, ProviderConsumer } from '@fluentui/react'
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Divider, ProviderConsumer } from '@fluentui/react';
 
 const DividerExampleColor = () => (
   <ProviderConsumer
     render={({ siteVariables: { contextualColors, naturalColors } }) =>
-      _.map({ ...contextualColors, ...naturalColors }, (variants, name) => (
-        <Divider key={name} color={name} content={_.startCase(name)} />
-      ))
+      _.map({ ...contextualColors, ...naturalColors }, (variants, name) => <Divider key={name} color={name} content={_.startCase(name)} />)
     }
   />
-)
+);
 
-export default DividerExampleColor
+export default DividerExampleColor;

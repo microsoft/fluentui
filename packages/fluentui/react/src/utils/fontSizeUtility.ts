@@ -1,21 +1,20 @@
-import * as _ from 'lodash'
-import isBrowser from './isBrowser'
+import * as _ from 'lodash';
+import isBrowser from './isBrowser';
 
-const DEFAULT_REM_SIZE_IN_PX = 16
+const DEFAULT_REM_SIZE_IN_PX = 16;
 
-let _documentRemSize: number | null = null
+let _documentRemSize: number | null = null;
 
 const getDocumentRemSize = (): number => {
   return isBrowser()
     ? // eslint-disable-next-line no-undef
-      getFontSizeValue(getComputedStyle(document.documentElement).fontSize) ||
-        DEFAULT_REM_SIZE_IN_PX
-    : DEFAULT_REM_SIZE_IN_PX
-}
+      getFontSizeValue(getComputedStyle(document.documentElement).fontSize) || DEFAULT_REM_SIZE_IN_PX
+    : DEFAULT_REM_SIZE_IN_PX;
+};
 
 const getFontSizeValue = (size?: string | null): number | null => {
-  return (size && parseFloat(size)) || null
-}
+  return (size && parseFloat(size)) || null;
+};
 
 /**
  * Converts the provided px size to rem based on the default font size of 16px unless
@@ -37,11 +36,11 @@ export const pxToRem = (valueInPx: number, baseRemSize?: number): string => {
     // there is no way how to reset the cached value
     // invalidating the cache is not possible as resetting cached value won't trigger recalculation of site variables,
     // for which originally computed values will stay unchanged
-    _documentRemSize = getDocumentRemSize()
+    _documentRemSize = getDocumentRemSize();
   }
 
-  const remSize = baseRemSize || _documentRemSize || DEFAULT_REM_SIZE_IN_PX
-  const convertedValueInRems = valueInPx / remSize
+  const remSize = baseRemSize || _documentRemSize || DEFAULT_REM_SIZE_IN_PX;
+  const convertedValueInRems = valueInPx / remSize;
 
-  return `${_.round(convertedValueInRems, 4)}rem`
-}
+  return `${_.round(convertedValueInRems, 4)}rem`;
+};

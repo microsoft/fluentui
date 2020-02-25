@@ -1,14 +1,14 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import NestingContext from '../NestingContext'
-import useNestingChild from './useNestingChild'
-import useNestingRoot from './useNestingRoot'
-import { UseNestingHookResult } from './types'
+import NestingContext from '../NestingContext';
+import useNestingChild from './useNestingChild';
+import useNestingRoot from './useNestingRoot';
+import { UseNestingHookResult } from './types';
 
 const useNestingAuto = <T extends Node>(): UseNestingHookResult<T> => {
-  const context = React.useContext(NestingContext)
+  const context = React.useContext(NestingContext);
 
-  return context ? useNestingChild<T>() : useNestingRoot<T>()
-}
+  return context ? useNestingChild<T>() : useNestingRoot<T>();
+};
 
-export default useNestingAuto
+export default useNestingAuto;

@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { Alert, Button, Flex, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Alert, Button, Flex, Popup } from '@fluentui/react';
 
 class PopupExampleOn extends React.Component {
-  state = { alert: false }
+  state = { alert: false };
 
   showAlert = () => {
-    this.setState({ alert: true })
-    setTimeout(() => this.setState({ alert: false }), 2000)
-  }
+    this.setState({ alert: true });
+    setTimeout(() => this.setState({ alert: false }), 2000);
+  };
 
   render() {
     return (
@@ -29,27 +29,15 @@ class PopupExampleOn extends React.Component {
             on="focus"
           />
           <Popup
-            trigger={
-              <Button
-                icon="more"
-                content="Context"
-                aria-label="Context button"
-                onClick={this.showAlert}
-              />
-            }
+            trigger={<Button icon="more" content="Context" aria-label="Context button" onClick={this.showAlert} />}
             content="Hello from popup on context!"
             on="context"
           />
         </Flex>
-        {this.state.alert && (
-          <Alert
-            warning
-            content="Right, you can still click the button! Right click opens the popup."
-          />
-        )}
+        {this.state.alert && <Alert warning content="Right, you can still click the button! Right click opens the popup." />}
       </>
-    )
+    );
   }
 }
 
-export default PopupExampleOn
+export default PopupExampleOn;

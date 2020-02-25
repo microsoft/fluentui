@@ -1,16 +1,13 @@
-import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles'
-import { TeamsTableVariables } from './tableVariables'
-import { TableCellProps } from '../../../../components/Table/TableCell'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
+import { TeamsTableVariables } from './tableVariables';
+import { TableCellProps } from '../../../../components/Table/TableCell';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 export default {
-  root: ({
-    variables: v,
-    theme: { siteVariables },
-  }: ComponentStyleFunctionParam<TableCellProps, TeamsTableVariables>): ICSSInJSStyle => {
+  root: ({ variables: v, theme: { siteVariables } }: ComponentStyleFunctionParam<TableCellProps, TeamsTableVariables>): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
-    })
+      siteVariables
+    });
 
     return {
       display: 'flex',
@@ -25,20 +22,18 @@ export default {
       ...borderFocusStyles,
       padding: v.cellPadding,
       position: 'relative',
-      height: '100%',
-    }
+      height: '100%'
+    };
   },
-  content: ({
-    props: { truncateContent },
-  }: ComponentStyleFunctionParam<TableCellProps, TeamsTableVariables>): ICSSInJSStyle => {
+  content: ({ props: { truncateContent } }: ComponentStyleFunctionParam<TableCellProps, TeamsTableVariables>): ICSSInJSStyle => {
     return {
       alignSelf: 'center',
       ...(truncateContent && {
         display: 'block',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-      }),
-    }
-  },
-}
+        whiteSpace: 'nowrap'
+      })
+    };
+  }
+};

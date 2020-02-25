@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react';
 
 const ToolbarExamplePopupInMenu = () => {
-  const [menu1Open, setMenu1Open] = React.useState(false)
-  const [menu2Open, setMenu2Open] = React.useState(false)
+  const [menu1Open, setMenu1Open] = React.useState(false);
+  const [menu2Open, setMenu2Open] = React.useState(false);
 
   return (
     <Toolbar
@@ -18,19 +18,19 @@ const ToolbarExamplePopupInMenu = () => {
             {
               key: 'popup',
               content: 'Open Popup',
-              popup: <Input icon="search" placeholder="Search..." />,
-            },
+              popup: <Input icon="search" placeholder="Search..." />
+            }
           ],
           menuOpen: menu1Open,
           onMenuOpenChange: (e, { menuOpen }) => {
-            setMenu1Open(menuOpen)
-          },
+            setMenu1Open(menuOpen);
+          }
         },
         {
           key: 'italic',
           kind: 'toggle' as ToolbarItemShorthandKinds,
           icon: { name: 'italic', outline: true },
-          title: 'Italic',
+          title: 'Italic'
         },
         {
           key: 'menu2',
@@ -41,18 +41,18 @@ const ToolbarExamplePopupInMenu = () => {
             {
               key: 'popup',
               content: 'Open Popup',
-              popup: <Input icon="search" placeholder="Search..." />,
+              popup: <Input icon="search" placeholder="Search..." />
             },
-            { key: 'about', content: 'About...' },
+            { key: 'about', content: 'About...' }
           ],
           menuOpen: menu2Open,
           onMenuOpenChange: (e, { menuOpen }) => {
-            setMenu2Open(menuOpen)
-          },
-        },
+            setMenu2Open(menuOpen);
+          }
+        }
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExamplePopupInMenu
+export default ToolbarExamplePopupInMenu;

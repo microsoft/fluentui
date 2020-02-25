@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import treeTitleBehavior from './treeTitleBehavior'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import treeTitleBehavior from './treeTitleBehavior';
 
 /**
  * @specification
@@ -30,54 +30,54 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
         role: 'treeitem',
         'aria-setsize': props.treeSize,
         'aria-posinset': props.index,
-        'aria-level': props.level,
-      }),
-    },
+        'aria-level': props.level
+      })
+    }
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
       },
       ...(isSubtreeExpanded(props) && {
         collapse: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
         },
         focusFirstChild: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
-        },
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+        }
       }),
       ...(!isSubtreeExpanded(props) && {
         expand: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
         },
         focusParent: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
-        },
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+        }
       }),
       expandSiblings: {
-        keyCombinations: [{ keyCode: keyboardKey['*'] }],
-      },
-    },
+        keyCombinations: [{ keyCode: keyboardKey['*'] }]
+      }
+    }
   },
   childBehaviors: {
-    title: treeTitleBehavior,
-  },
-})
+    title: treeTitleBehavior
+  }
+});
 
 export type TreeItemBehaviorProps = {
   /** If item is a subtree, it indicates if it's expanded. */
-  expanded?: boolean
-  level?: number
-  index?: number
-  hasSubtree?: boolean
-  treeSize?: number
-}
+  expanded?: boolean;
+  level?: number;
+  index?: number;
+  hasSubtree?: boolean;
+  treeSize?: number;
+};
 
 /** Checks if current tree item has a subtree and it is expanded */
 const isSubtreeExpanded = (props: TreeItemBehaviorProps): boolean => {
-  const { hasSubtree, expanded } = props
-  return !!(hasSubtree && expanded)
-}
+  const { hasSubtree, expanded } = props;
+  return !!(hasSubtree && expanded);
+};
 
-export default treeItemBehavior
+export default treeItemBehavior;

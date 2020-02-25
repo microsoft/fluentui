@@ -1,10 +1,10 @@
-import { Dropdown } from '@fluentui/react'
+import { Dropdown } from '@fluentui/react';
 
 const selectors = {
   clearIndicator: `.${Dropdown.slotClassNames.clearIndicator}`,
   triggerButton: `.${Dropdown.slotClassNames.triggerButton}`,
-  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
-}
+  item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`
+};
 
 const config: ScreenerTestsConfig = {
   steps: [
@@ -14,8 +14,8 @@ const config: ScreenerTestsConfig = {
         .click(selectors.item(3))
         .snapshot('Selects an item')
         .click(selectors.clearIndicator)
-        .snapshot('Clears the value'),
-  ],
-}
+        .snapshot('Clears the value')
+  ]
+};
 
-export default config
+export default config;

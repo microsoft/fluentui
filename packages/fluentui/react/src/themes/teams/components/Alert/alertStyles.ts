@@ -1,70 +1,66 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles'
-import { AlertProps } from '../../../../components/Alert/Alert'
-import { AlertVariables } from './alertVariables'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
+import { AlertProps } from '../../../../components/Alert/Alert';
+import { AlertVariables } from './alertVariables';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
-const getIntentColorsFromProps = (
-  p: AlertProps,
-  v: AlertVariables,
-  siteVars: SiteVariablesPrepared,
-): ICSSInJSStyle => {
-  const { colors } = siteVars
+const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: SiteVariablesPrepared): ICSSInJSStyle => {
+  const { colors } = siteVars;
 
   if (p.danger) {
     return {
       color: v.dangerColor,
       backgroundColor: v.dangerBackgroundColor,
-      borderColor: v.dangerBorderColor,
-    }
+      borderColor: v.dangerBorderColor
+    };
   }
 
   if (p.info) {
     return {
       color: v.infoColor,
       backgroundColor: v.infoBackgroundColor,
-      borderColor: v.infoBorderColor,
-    }
+      borderColor: v.infoBorderColor
+    };
   }
 
   if (v.oof) {
     return {
       color: v.oofColor,
       backgroundColor: v.oofBackgroundColor,
-      borderColor: v.oofBorderColor,
-    }
+      borderColor: v.oofBorderColor
+    };
   }
 
   if (v.urgent) {
     return {
       color: v.urgentColor,
       backgroundColor: v.urgentBackgroundColor,
-      borderColor: v.urgentBorderColor,
-    }
+      borderColor: v.urgentBorderColor
+    };
   }
 
   if (p.success) {
     return {
       color: colors.green[600], // $app-green-04
       backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.green[200], // $app-green
-    }
+      borderColor: colors.green[200] // $app-green
+    };
   }
 
   if (p.warning) {
     return {
       color: siteVars.colors.grey[450],
       backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.yellow[400], // $app-yellow
-    }
+      borderColor: colors.yellow[400] // $app-yellow
+    };
   }
 
   return {
     color: v.color,
     backgroundColor: v.backgroundColor,
-    borderColor: v.borderColor,
-  }
-}
+    borderColor: v.borderColor
+  };
+};
 
 const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -82,11 +78,11 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
     ...getIntentColorsFromProps(p, v, siteVariables),
 
     ...((p.attached === 'top' || p.attached === true) && {
-      borderRadius: `${v.borderRadius} ${v.borderRadius} 0 0`,
+      borderRadius: `${v.borderRadius} ${v.borderRadius} 0 0`
     }),
 
     ...(p.attached === 'bottom' && {
-      borderRadius: `0 0 ${v.borderRadius} ${v.borderRadius}`,
+      borderRadius: `0 0 ${v.borderRadius} ${v.borderRadius}`
     }),
 
     ...(p.fitted && { display: 'inline-flex' }),
@@ -94,35 +90,35 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
     ...(p.dismissible && { padding: v.dismissiblePadding }),
 
     ...(!p.visible && {
-      visibility: 'hidden',
-    }),
+      visibility: 'hidden'
+    })
   }),
 
   actions: ({ variables: v }): ICSSInJSStyle => ({
-    margin: v.actionsMargin,
+    margin: v.actionsMargin
   }),
 
   header: ({ variables: v }): ICSSInJSStyle => ({
     fontWeight: v.headerFontWeight,
-    margin: v.headerMargin,
+    margin: v.headerMargin
   }),
 
   body: (): ICSSInJSStyle => ({
     display: 'flex',
-    flexGrow: 1,
+    flexGrow: 1
   }),
 
   content: (): ICSSInJSStyle => ({
-    flexGrow: 1,
+    flexGrow: 1
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
-    margin: v.iconMargin,
+    margin: v.iconMargin
   }),
 
   dismissAction: ({ variables: v, props: p, theme: { siteVariables } }): ICSSInJSStyle => {
-    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false })
-    const borderFocusStyles = getBorderFocusStyles({ siteVariables })
+    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
+    const borderFocusStyles = getBorderFocusStyles({ siteVariables });
 
     return {
       height: v.dismissActionSize,
@@ -134,16 +130,16 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
 
       ':hover': {
         color: 'currentColor',
-        ...iconFilledStyles,
+        ...iconFilledStyles
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
         ...iconFilledStyles,
-        ...borderFocusStyles[':focus-visible'],
-      },
-    }
-  },
-}
+        ...borderFocusStyles[':focus-visible']
+      }
+    };
+  }
+};
 
-export default alertStyles
+export default alertStyles;

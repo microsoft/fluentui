@@ -1,4 +1,4 @@
-import { Renderer } from '@fluentui/react-bindings';
+import { Renderer, StylesContextPerformance, StylesContextPerformanceInput } from '@fluentui/react-bindings';
 import { mergeThemes } from '@fluentui/styles';
 
 import { ProviderContextPrepared, ProviderContextInput } from '../types';
@@ -33,7 +33,10 @@ export const mergeRenderers = (current: Renderer, next?: Renderer, target?: Docu
   return createdRenderer;
 };
 
-export const mergePerformanceOptions = (target, ...sources) => {
+export const mergePerformanceOptions = (
+  target: StylesContextPerformance | StylesContextPerformanceInput,
+  ...sources: StylesContextPerformanceInput[]
+) => {
   return Object.assign(target, ...sources);
 };
 
@@ -60,6 +63,7 @@ const mergeProviderContexts = (...contexts: (ProviderContextInput | ProviderCont
     disableAnimations: false,
     target: isBrowser() ? document : undefined, // eslint-disable-line no-undef
     performance: {
+      enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
       enableStylesCaching: true,
       enableVariablesCaching: true
     },

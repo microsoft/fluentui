@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Slots = () => (
   <ExampleSection title="Slots">
@@ -25,6 +25,6 @@ const Slots = () => (
       examplePath="components/Attachment/Slots/AttachmentActionExample"
     />
   </ExampleSection>
-)
+);
 
-export default Slots
+export default Slots;

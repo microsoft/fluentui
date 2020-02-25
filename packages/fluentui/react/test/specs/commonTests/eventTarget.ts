@@ -1,12 +1,8 @@
-import { ReactWrapper } from 'enzyme'
+import { ReactWrapper } from 'enzyme';
 
-export const EVENT_TARGET_ATTRIBUTE = 'data-simulate-event-here'
+export const EVENT_TARGET_ATTRIBUTE = 'data-simulate-event-here';
 
-export const getEventTargetComponent = (
-  wrapper: ReactWrapper,
-  listenerName: string,
-  eventTargets: object = {},
-) => {
+export const getEventTargetComponent = (wrapper: ReactWrapper, listenerName: string, eventTargets: object = {}) => {
   const eventTarget = eventTargets[listenerName]
     ? wrapper
         .find(eventTargets[listenerName])
@@ -15,7 +11,7 @@ export const getEventTargetComponent = (
     : wrapper
         .find(`[${EVENT_TARGET_ATTRIBUTE}]`)
         .hostNodes()
-        .first()
+        .first();
 
   // if (eventTarget.length === 0) {
   //   throw new Error(
@@ -24,5 +20,5 @@ export const getEventTargetComponent = (
   //   )
   // }
 
-  return eventTarget
-}
+  return eventTarget;
+};

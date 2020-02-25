@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { Flex, Props } from '@fluentui/react'
-import { ChatData } from './services'
+import * as React from 'react';
+import { Flex, Props } from '@fluentui/react';
+import { ChatData } from './services';
 
-import ChatPaneHeader from './chatPaneHeader'
-import ChatPaneContainer from './chatPaneContent'
-import ComposeMessage from './composeMessage'
+import ChatPaneHeader from './chatPaneHeader';
+import ChatPaneContainer from './chatPaneContent';
+import ComposeMessage from './composeMessage';
 
 const ChatPaneLayout: React.FunctionComponent<Props<{ chat: ChatData }>> = ({ chat }) => (
   <Flex
@@ -13,13 +13,13 @@ const ChatPaneLayout: React.FunctionComponent<Props<{ chat: ChatData }>> = ({ ch
     styles={{
       backgroundColor: '#f3f2f1',
       width: '50%',
-      position: 'absolute',
+      position: 'absolute'
     }}
   >
     <ChatPaneHeader chat={chat} />
     <ChatPaneContainer chat={chat} />
     <ComposeMessage style={{ padding: '16px 32px' }} />
   </Flex>
-)
+);
 
-export default ChatPaneLayout
+export default ChatPaneLayout;

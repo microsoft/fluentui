@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow",
-  "packageName": "@uifabric/charting",
-  "email": "v-sivsar@microsoft.com",
-  "commit": "8ee54b6c69ccf5e88d6794bc41d0597b139da4d5",
-  "dependentChangeType": "patch",
-  "date": "2020-02-13T11:46:35.608Z"
-}

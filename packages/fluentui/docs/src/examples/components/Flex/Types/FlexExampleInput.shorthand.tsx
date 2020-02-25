@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Input, Button, Label } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Input, Button, Label } from '@fluentui/react';
 
 const FlexExampleInput = () => (
   <Flex gap="gap.medium" debug>
@@ -15,6 +15,6 @@ const FlexExampleInput = () => (
 
     <Button content="Search" />
   </Flex>
-)
+);
 
-export default FlexExampleInput
+export default FlexExampleInput;

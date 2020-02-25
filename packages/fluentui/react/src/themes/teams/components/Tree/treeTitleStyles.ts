@@ -1,5 +1,5 @@
-import { ICSSInJSStyle } from '@fluentui/styles'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ICSSInJSStyle } from '@fluentui/styles';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const treeTitleStyles = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -7,8 +7,8 @@ const treeTitleStyles = {
     cursor: 'pointer',
     color: v.color,
     position: 'relative',
-    ...getBorderFocusStyles({ siteVariables }),
-  }),
-}
+    ...getBorderFocusStyles({ siteVariables })
+  })
+};
 
-export default treeTitleStyles
+export default treeTitleStyles;

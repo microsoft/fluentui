@@ -1,7 +1,7 @@
-import * as React from 'react'
-import cx from 'classnames'
-import { TeamsSvgIconSpec } from '../types'
-import { teamsIconClassNames } from '../teamsIconClassNames'
+import * as React from 'react';
+import cx from 'classnames';
+import { TeamsSvgIconSpec } from '../types';
+import { teamsIconClassNames } from '../teamsIconClassNames';
 
 export default {
   icon: ({ classes }) => (
@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'lightning',
-} as TeamsSvgIconSpec
+  exportedAs: 'lightning'
+} as TeamsSvgIconSpec;

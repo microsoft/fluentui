@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react';
 
 const inputItems = [
   'Bruce Wayne',
@@ -10,15 +10,13 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle',
-]
+  'Selina Kyle'
+];
 
 export const selectors = {
-  triggerButtonClass: Dropdown.slotClassNames.triggerButton,
-}
+  triggerButtonClass: Dropdown.slotClassNames.triggerButton
+};
 
-const DropdownExample = () => (
-  <Dropdown multiple items={inputItems} placeholder="Select your heroes" />
-)
+const DropdownExample = () => <Dropdown multiple items={inputItems} placeholder="Select your heroes" />;
 
-export default DropdownExample
+export default DropdownExample;

@@ -204,12 +204,9 @@ export class KeytipTree {
    */
   public getNode(id: string): IKeytipTreeNode | undefined {
     const nodeMapValues = values<IKeytipTreeNode>(this.nodeMap);
-    return find(
-      nodeMapValues,
-      (node: IKeytipTreeNode): boolean => {
-        return node.id === id;
-      }
-    );
+    return find(nodeMapValues, (node: IKeytipTreeNode): boolean => {
+      return node.id === id;
+    });
   }
 
   /**

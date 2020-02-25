@@ -1,48 +1,48 @@
-import { ItemType } from '../../../../themes/types'
-import { TeamsSchemeMappingWithAreas } from '../../types'
-import { stringLiteralsArray } from '../../../../utils'
-import { pickValuesFromColorScheme } from '../../../colorUtils'
+import { ItemType } from '../../../../themes/types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
+import { stringLiteralsArray } from '../../../../utils';
+import { pickValuesFromColorScheme } from '../../../colorUtils';
 
-export const textColorAreas = stringLiteralsArray('foreground')
-export type TextColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof textColorAreas>>
+export const textColorAreas = stringLiteralsArray('foreground');
+export type TextColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof textColorAreas>>;
 
 export interface TeamsTextVariables {
-  colorScheme: TextColorSchemeMapping
+  colorScheme: TextColorSchemeMapping;
 
-  importantColor: string
-  timestampColor: string
+  importantColor: string;
+  timestampColor: string;
 
-  disabledColor: string
-  errorColor: string
-  successColor: string
+  disabledColor: string;
+  errorColor: string;
+  successColor: string;
 
-  fontSizeSmallest: string
-  fontSizeSmaller: string
-  fontSizeSmall: string
-  fontSizeMedium: string
-  fontSizeLarge: string
-  fontSizeLarger: string
-  fontSizeLargest: string
+  fontSizeSmallest: string;
+  fontSizeSmaller: string;
+  fontSizeSmall: string;
+  fontSizeMedium: string;
+  fontSizeLarge: string;
+  fontSizeLarger: string;
+  fontSizeLargest: string;
 
-  fontLineHeightSmallest: number
-  fontLineHeightSmaller: number
-  fontLineHeightSmall: number
-  fontLineHeightMedium: number
-  fontLineHeightLarge: number
-  fontLineHeightLarger: number
-  fontLineHeightLargest: number
+  fontLineHeightSmallest: number;
+  fontLineHeightSmaller: number;
+  fontLineHeightSmall: number;
+  fontLineHeightMedium: number;
+  fontLineHeightLarge: number;
+  fontLineHeightLarger: number;
+  fontLineHeightLargest: number;
 
-  fontWeightLight: number
-  fontWeightSemilight: number
-  fontWeightRegular: number
-  fontWeightSemibold: number
-  fontWeightBold: number
+  fontWeightLight: number;
+  fontWeightSemilight: number;
+  fontWeightRegular: number;
+  fontWeightSemibold: number;
+  fontWeightBold: number;
 
-  atMentionMeColor: string
-  atMentionOtherColor: string
-  atMentionMeFontWeight: number
-  importantWeight: number
-  timestampHoverColor: string
+  atMentionMeColor: string;
+  atMentionOtherColor: string;
+  atMentionMeFontWeight: number;
+  importantWeight: number;
+  timestampHoverColor: string;
 }
 
 export default (siteVariables): Partial<TeamsTextVariables> => {
@@ -84,6 +84,6 @@ export default (siteVariables): Partial<TeamsTextVariables> => {
     importantColor: siteVariables.colors.red[400],
     successColor: siteVariables.colors.green[600],
     timestampColor: siteVariables.colors.grey[350],
-    timestampHoverColor: siteVariables.colors.grey[500],
-  }
-}
+    timestampHoverColor: siteVariables.colors.grey[500]
+  };
+};

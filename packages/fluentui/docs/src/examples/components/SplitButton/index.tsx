@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Types from './Types'
-import States from './States'
-import Slots from './Slots'
+import Types from './Types';
+import States from './States';
+import Slots from './Slots';
 
 const SplitButtonExamples = () => (
   <>
@@ -10,6 +10,6 @@ const SplitButtonExamples = () => (
     <States />
     <Slots />
   </>
-)
+);
 
-export default SplitButtonExamples
+export default SplitButtonExamples;

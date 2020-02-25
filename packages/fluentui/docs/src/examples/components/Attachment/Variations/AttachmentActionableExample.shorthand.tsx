@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Attachment } from '@fluentui/react'
+import * as React from 'react';
+import { Attachment } from '@fluentui/react';
 
 class AttachmentActionableExampleShorthand extends React.Component {
   handleClick = message => e => {
-    alert(`'${message}' was clicked`)
-    e.stopPropagation()
-  }
+    alert(`'${message}' was clicked`);
+    e.stopPropagation();
+  };
 
   render() {
     return (
@@ -18,7 +18,7 @@ class AttachmentActionableExampleShorthand extends React.Component {
         progress={33}
         onClick={this.handleClick('Attachment')}
       />
-    )
+    );
   }
 }
-export default AttachmentActionableExampleShorthand
+export default AttachmentActionableExampleShorthand;

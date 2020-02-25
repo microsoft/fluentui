@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Form, Button } from '@fluentui/react'
+import * as React from 'react';
+import { Form, Button } from '@fluentui/react';
 
 const fields = [
   {
@@ -7,32 +7,32 @@ const fields = [
     name: 'firstName',
     id: 'first-name-shorthand',
     key: 'first-name',
-    required: true,
+    required: true
   },
   {
     label: 'Last name',
     name: 'lastName',
     id: 'last-name-shorthand',
     key: 'last-name',
-    required: true,
+    required: true
   },
   {
     label: 'I agree to the Terms and Conditions',
     control: { as: 'input' },
     type: 'checkbox',
     id: 'conditions-shorthand',
-    key: 'conditions',
+    key: 'conditions'
   },
-  { control: { as: Button, content: 'Submit' }, key: 'submit' },
-]
+  { control: { as: Button, content: 'Submit' }, key: 'submit' }
+];
 
 const FormExample = () => (
   <Form
     onSubmit={() => {
-      alert('Form submitted')
+      alert('Form submitted');
     }}
     fields={fields}
   />
-)
+);
 
-export default FormExample
+export default FormExample;

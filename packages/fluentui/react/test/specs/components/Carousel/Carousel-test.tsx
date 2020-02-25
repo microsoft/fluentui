@@ -60,7 +60,7 @@ const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsic
 jest.useFakeTimers();
 
 describe('Carousel', () => {
-  isConformant(Carousel);
+  isConformant(Carousel, { autoControlledProps: ['activeIndex'] });
 
   it('id for items is generated if not passed as prop', () => {
     const wrapper = renderCarousel();

@@ -1,39 +1,23 @@
-import * as React from 'react'
-import { Avatar } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar } from '@fluentui/react';
 
-const status = { color: 'green', icon: 'icon-checkmark', title: 'Available' }
+const status = { color: 'green', icon: 'icon-checkmark', title: 'Available' };
 
 const AvatarUsageExampleShorthand = () => (
   <div>
     Correct:
     <div>
       <div style={{ backgroundColor: 'violet', padding: '1rem', display: 'inline-block' }}>
-        <Avatar
-          name="John Doe (Software Developer)"
-          status={status}
-          variables={{ statusBorderColor: 'violet' }}
-        />
+        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'violet' }} />
       </div>
       <div style={{ backgroundColor: 'yellowgreen', padding: '1rem', display: 'inline-block' }}>
-        <Avatar
-          name="John Doe (Software Developer)"
-          status={status}
-          variables={{ statusBorderColor: 'yellowgreen' }}
-        />
+        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'yellowgreen' }} />
       </div>
       <div style={{ backgroundColor: 'orangered', padding: '1rem', display: 'inline-block' }}>
-        <Avatar
-          name="John Doe (Software Developer)"
-          status={status}
-          variables={{ statusBorderColor: 'orangered' }}
-        />
+        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'orangered' }} />
       </div>
       <div style={{ backgroundColor: 'cornflowerblue', padding: '1rem', display: 'inline-block' }}>
-        <Avatar
-          name="John Doe (Software Developer)"
-          status={status}
-          variables={{ statusBorderColor: 'cornflowerblue' }}
-        />
+        <Avatar name="John Doe (Software Developer)" status={status} variables={{ statusBorderColor: 'cornflowerblue' }} />
       </div>
     </div>
     Incorrect (Border should not be visible, unless in Contrast theme):
@@ -52,6 +36,6 @@ const AvatarUsageExampleShorthand = () => (
       </div>
     </div>
   </div>
-)
+);
 
-export default AvatarUsageExampleShorthand
+export default AvatarUsageExampleShorthand;

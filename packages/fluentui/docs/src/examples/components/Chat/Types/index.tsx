@@ -1,14 +1,10 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample
-      title="Default"
-      description="A default Chat."
-      examplePath="components/Chat/Types/ChatExample"
-    />
+    <ComponentExample title="Default" description="A default Chat." examplePath="components/Chat/Types/ChatExample" />
     <ComponentExample
       title="Content position"
       description="A ChatItem can position it's content at the start or at the end of the container."
@@ -25,6 +21,6 @@ const Types = () => (
       examplePath="components/Chat/Types/ChatMessageExampleBadge"
     />
   </ExampleSection>
-)
+);
 
-export default Types
+export default Types;

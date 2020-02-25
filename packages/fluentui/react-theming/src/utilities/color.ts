@@ -10,15 +10,7 @@ import { hsl2rgb } from './color.hsl';
  * value, an rgba value, and so on.
  */
 export function cssColor(color: string): IRGB | undefined {
-  return (
-    _named(color) ||
-    _hex3(color) ||
-    _hex6(color) ||
-    _rgb(color) ||
-    _rgba(color) ||
-    _hsl(color) ||
-    (_hsla(color) as IRGB)
-  );
+  return _named(color) || _hex3(color) || _hex6(color) || _rgb(color) || _rgba(color) || _hsl(color) || (_hsla(color) as IRGB);
 }
 
 /**
@@ -64,7 +56,7 @@ function _named(str: string): IRGB | undefined {
       r: c[0],
       g: c[1],
       b: c[2],
-      a: 100,
+      a: 100
     };
   }
 }
@@ -79,7 +71,7 @@ function _rgb(str: string): IRGB | undefined {
       r: parts[0],
       g: parts[1],
       b: parts[2],
-      a: 100,
+      a: 100
     };
   }
 }
@@ -94,7 +86,7 @@ function _rgba(str: string): IRGB | undefined {
       r: parts[0],
       g: parts[1],
       b: parts[2],
-      a: parts[3] * 100,
+      a: parts[3] * 100
     };
   }
 }
@@ -105,7 +97,7 @@ function _hex6(str: string): IRGB | undefined {
       r: parseInt(str.slice(1, 3), 16),
       g: parseInt(str.slice(3, 5), 16),
       b: parseInt(str.slice(5, 7), 16),
-      a: 100,
+      a: 100
     };
   }
 }
@@ -116,7 +108,7 @@ function _hex3(str: string): IRGB | undefined {
       r: parseInt(str[1] + str[1], 16),
       g: parseInt(str[2] + str[2], 16),
       b: parseInt(str[3] + str[3], 16),
-      a: 100,
+      a: 100
     };
   }
 }

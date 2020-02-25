@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Toolbar } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar } from '@fluentui/react';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',
@@ -7,13 +7,13 @@ export const selectors = {
   moreButtonId: 'moreButton',
   playId: 'play',
   playVideoId: 'playVideo',
-  hdId: 'hd',
-}
+  hdId: 'hd'
+};
 
 const ToolbarExampleMenuWithSubmenuShorthand = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
-  const onMenuOpenChange = (e, { menuOpen }) => setMenuOpen(menuOpen)
+  const onMenuOpenChange = (e, { menuOpen }) => setMenuOpen(menuOpen);
 
   return (
     <Toolbar
@@ -39,22 +39,22 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                       content: 'Play with video',
                       key: 'playVideo',
                       id: selectors.playVideoId,
-                      menu: [{ content: 'HD', id: selectors.hdId, key: 'HD' }, 'Full HD'],
-                    },
-                  ],
-                },
+                      menu: [{ content: 'HD', id: selectors.hdId, key: 'HD' }, 'Full HD']
+                    }
+                  ]
+                }
               },
               { key: 'pause', content: 'Pause', icon: 'pause' },
               { key: 'divider', kind: 'divider' },
-              'Without icon',
-            ],
+              'Without icon'
+            ]
           },
           menuOpen,
-          onMenuOpenChange,
-        },
+          onMenuOpenChange
+        }
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExampleMenuWithSubmenuShorthand
+export default ToolbarExampleMenuWithSubmenuShorthand;
