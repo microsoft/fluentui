@@ -74,7 +74,10 @@ function rewriteImports(outputPath) {
   for (let file of files) {
     const fullPath = path.join(outputPath, file);
     const content = fs.readFileSync(fullPath, 'utf-8');
-    if (content.includes('@fluentui/internal-tooling')) {
+    if (content.includes('@fluentui/internal-tooling/puppeteer.config')) {
+      console.log(`patching up ${fullPath}`);
+      fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build/puppeteer'));
+    } else if (content.includes('@fluentui/internal-tooling')) {
       console.log(`patching up ${fullPath}`);
       fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build'));
     }

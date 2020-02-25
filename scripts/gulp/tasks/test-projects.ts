@@ -137,7 +137,7 @@ const performBrowserTest = async (publicDirectory: string, listenPort: number) =
 //  - Try and run a build
 task('test:projects:cra-ts', async () => {
   const logger = log('test:projects:cra-ts');
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/cra');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/cra');
 
   logger('STEP 1. Create test React project with TSX scripts..');
 
@@ -166,7 +166,7 @@ task('test:projects:cra-ts', async () => {
 task('test:projects:rollup', async () => {
   const logger = log('test:projects:rollup');
 
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/rollup');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/rollup');
   const tmpDirectory = tmp.dirSync({ prefix: 'project-' }).name;
 
   logger(`✔️Temporary directory was created: ${tmpDirectory}`);
@@ -203,7 +203,7 @@ task('test:projects:rollup', async () => {
 task('test:projects:typings', async () => {
   const logger = log('test:projects:typings');
 
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/typings');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/typings');
   const tmpDirectory = tmp.dirSync({ prefix: 'project-' }).name;
 
   logger(`✔️Temporary directory was created: ${tmpDirectory}`);
@@ -226,4 +226,4 @@ task('test:projects:typings', async () => {
   logger(`✔️Example project was successfully built: ${tmpDirectory}`);
 });
 
-task('test:projects', series('bundle:all-packages', 'test:projects:cra-ts', 'test:projects:rollup', 'test:projects:typings'));
+task('test:projects', series('test:projects:cra-ts', 'test:projects:rollup', 'test:projects:typings'));
