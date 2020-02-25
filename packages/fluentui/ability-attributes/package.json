@@ -23,7 +23,7 @@
   },
   "repository": "microsoft/fluent-ui-react.git",
   "scripts": {
-    "build": "npm run schema && gulp bundle:package:no-umd",
+    "build": "yarn schema && gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",
     "schema": "allyschema -c \"process.env.NODE_ENV !== 'production'\" schema.json > ./src/schema.ts"
   },
