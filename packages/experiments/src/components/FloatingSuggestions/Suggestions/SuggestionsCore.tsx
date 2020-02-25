@@ -151,6 +151,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
       >
         {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
+            // tslint:disable-next-line:deprecation
             ref={this._resolveRef(suggestion.selected || index === this.currentIndex ? '_selectedElement' : '')}
             key={hasKey(suggestion.item) ? suggestion.item.key : index}
             id={'sug-' + index}

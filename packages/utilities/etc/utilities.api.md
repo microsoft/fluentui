@@ -34,7 +34,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React.ReactType;
+    asyncPlaceholder?: React.ElementType;
 }>>;
 
 // @public
@@ -393,7 +393,7 @@ export const htmlElementProperties: string[];
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
-    load: () => Promise<React.ReactType<TProps>>;
+    load: () => Promise<React.ElementType<TProps>>;
     onError?: (error: Error) => void;
     onLoad?: () => void;
 }
