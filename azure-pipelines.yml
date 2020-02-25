@@ -93,6 +93,8 @@ jobs:
 
   - job: ValidateFluent
     dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
