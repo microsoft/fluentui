@@ -174,12 +174,6 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: /tmp/gulp-cache
-          Contents: '**/*'
-        condition: always()
-
       - template: azure-pipelines.artifacts.yml
         parameters:
           artifact: Build-PR-$(Build.BuildNumber)
@@ -206,5 +200,11 @@ jobs:
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: /tmp/gulp-cache
           Contents: '**/*'
         condition: always()
