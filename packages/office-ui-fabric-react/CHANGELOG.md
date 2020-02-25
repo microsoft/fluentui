@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Feb 2020 12:21:19 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 7.97.0
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Minor changes
+
+- FocusZone: Re-exporting FocusZone from react-focus package and removing duplication in OUFR package. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
 ## 7.96.0
 Mon, 24 Feb 2020 12:21:19 GMT
 
