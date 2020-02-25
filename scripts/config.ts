@@ -7,10 +7,9 @@ import * as webpack from 'webpack';
 // ------------------------------------
 const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
-const __NOW__ = !!process.env.NOW;
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const __BASENAME__ = __PROD__ && !__NOW__ ? '/fluent-ui-react/' : '/';
+const __BASENAME__ = '/';
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 
