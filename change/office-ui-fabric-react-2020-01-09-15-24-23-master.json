@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove onBlur from being excluded in grid",
-  "packageName": "office-ui-fabric-react",
-  "email": "chiechan@microsoft.com",
-  "commit": "ea8f7234b54a21f593e35d501885052bf92278a3",
-  "date": "2020-01-09T23:24:23.206Z"
-}
