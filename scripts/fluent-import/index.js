@@ -216,7 +216,7 @@ function fixTslint(outputPath) {
     const content = fs.readJSONSync(fullPath);
 
     // TODO (fui repo merge): create a shared package for configs
-    content.extends = ['../../../scripts/tslint.fluentui.json'];
+    content.extends.replace('../build/tslint.json', '../../scripts/tslint.fluentui.json');
     fs.writeJSONSync(fullPath, content, { spaces: 2 });
   }
 
