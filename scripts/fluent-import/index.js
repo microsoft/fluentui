@@ -313,6 +313,15 @@ function fixReactDeps(outputPath) {
   const file = path.join(outputPath, 'react/package.json');
   const contents = fs.readJsonSync(file);
   contents.devDependencies['@testing-library/jest-dom'] = '^5.1.1';
+
+  const keys = Object.keys(contents.devDependencies);
+  const sortedKeys = keys.sort();
+  const devDependencies = sortedKeys.reduce((deps, key) => {
+    return { ...deps, [key]: contents.devDependencies[key] };
+  }, {});
+
+  contents.devDependencies = devDependencies;
+
   fs.writeJsonSync(file, contents, { spaces: 2 });
 }
 
