@@ -60,11 +60,14 @@ const tempPaths = {
   withRootAt: (root: string, ...subpaths: string[]) => (...args: string[]) => path.resolve(root, ...subpaths, ...args)
 };
 
-const paths = {
+const paths: typeof tempPaths & {
+  base: typeof base;
+  posix: typeof tempPaths;
+} = {
   base,
   ...tempPaths,
   // all the sibling values, but with forward slashes regardless the OS
-  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) => func(...args).replace(/\\/g, '/'))
+  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) => func(...args).replace(/\\/g, '/')) as any
 };
 
 const isRoot = process.cwd() === envConfig.path_base;
