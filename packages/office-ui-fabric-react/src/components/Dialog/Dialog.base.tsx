@@ -62,6 +62,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 
   public render(): JSX.Element {
     const {
+      // tslint:disable:deprecation
       className,
       containerClassName,
       contentClassName,
@@ -84,6 +85,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       title,
       topButtonsProps,
       type,
+      // tslint:enable:deprecation
       minWidth,
       maxWidth,
       modalProps
@@ -123,6 +125,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       ...this.props.dialogContentProps,
       draggableHeaderClassName: dialogDraggableClassName,
       titleProps: {
+        // tslint:disable-next-line:deprecation
         id: this.props.dialogContentProps?.titleId || this._defaultTitleTextId,
         ...this.props.dialogContentProps?.titleProps
       }
@@ -130,12 +133,14 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className: className || mergedModalProps.className,
-      containerClassName: containerClassName || mergedModalProps.containerClassName,
+      className: mergedModalProps.className || className,
+      containerClassName: mergedModalProps.containerClassName || containerClassName,
       hidden,
       dialogDefaultMinWidth: minWidth,
       dialogDefaultMaxWidth: maxWidth
     });
+
+    const isModalBlocking = mergedModalProps.isBlocking !== undefined ? mergedModalProps.isBlocking : isBlocking;
 
     return (
       <Modal
@@ -144,12 +149,12 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         forceFocusInsideTrap={forceFocusInsideTrap}
         ignoreExternalFocusing={ignoreExternalFocusing}
         isClickableOutsideFocusTrap={isClickableOutsideFocusTrap}
-        onDismissed={onDismissed}
+        onDismissed={mergedModalProps.onDismissed !== undefined ? mergedModalProps.onDismissed : onDismissed}
         responsiveMode={responsiveMode}
         {...mergedModalProps}
-        isDarkOverlay={isDarkOverlay !== undefined ? isDarkOverlay : mergedModalProps.isDarkOverlay}
-        isBlocking={isBlocking !== undefined ? isBlocking : mergedModalProps.isBlocking}
-        isOpen={isOpen !== undefined ? isOpen : !hidden}
+        isDarkOverlay={mergedModalProps.isDarkOverlay !== undefined ? mergedModalProps.isDarkOverlay : isDarkOverlay}
+        isBlocking={isModalBlocking}
+        isOpen={hidden !== undefined ? !hidden : isOpen}
         className={classNames.root}
         containerClassName={classNames.main}
         onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}
@@ -158,13 +163,13 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       >
         <DialogContent
           subTextId={this._defaultSubTextId}
-          title={title}
-          subText={subText}
-          showCloseButton={isBlocking !== undefined ? !isBlocking : !mergedModalProps.isBlocking}
-          topButtonsProps={topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps}
-          type={type !== undefined ? type : dialogContentProps!.type}
-          onDismiss={onDismiss ? onDismiss : dialogContentProps!.onDismiss}
-          className={contentClassName || dialogContentProps!.className}
+          title={dialogContentProps.title !== undefined ? dialogContentProps.title : title}
+          subText={dialogContentProps.subText !== undefined ? dialogContentProps.subText : subText}
+          showCloseButton={isModalBlocking}
+          topButtonsProps={dialogContentProps.topButtonsProps ? dialogContentProps.topButtonsProps : topButtonsProps}
+          type={dialogContentProps.type !== undefined ? dialogContentProps.type : type}
+          onDismiss={onDismiss ? onDismiss : dialogContentProps.onDismiss}
+          className={dialogContentProps.className || contentClassName}
           {...dialogContentProps}
         >
           {this.props.children}
@@ -174,22 +179,24 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
   }
 
   private _getSubTextId = (): string | undefined => {
+    // tslint:disable-next-line:deprecation
     const { ariaDescribedById, modalProps, dialogContentProps, subText } = this.props;
-    let id = ariaDescribedById || (modalProps && modalProps.subtitleAriaId);
+    let id = (modalProps && modalProps.subtitleAriaId) || ariaDescribedById;
 
     if (!id) {
-      id = (subText || (dialogContentProps && dialogContentProps.subText)) && this._defaultSubTextId;
+      id = ((dialogContentProps && dialogContentProps.subText) || subText) && this._defaultSubTextId;
     }
 
     return id;
   };
 
   private _getTitleTextId = (): string | undefined => {
+    // tslint:disable-next-line:deprecation
     const { ariaLabelledById, modalProps, dialogContentProps, title } = this.props;
-    let id = ariaLabelledById || (modalProps && modalProps.titleAriaId);
+    let id = (modalProps && modalProps.titleAriaId) || ariaLabelledById;
 
     if (!id) {
-      id = (title || (dialogContentProps && dialogContentProps.title)) && this._defaultTitleTextId;
+      id = ((dialogContentProps && dialogContentProps.title) || title) && this._defaultTitleTextId;
     }
 
     return id;

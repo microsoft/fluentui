@@ -41,6 +41,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
+  // tslint:disable-next-line:deprecation
   onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
 
   /**

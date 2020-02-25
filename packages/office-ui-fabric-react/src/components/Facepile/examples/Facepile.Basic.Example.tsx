@@ -83,11 +83,11 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
             selectedKey={this.state.personaSize}
             className={styles.dropdown}
             options={[
-              { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
+              { key: PersonaSize.size8, text: PersonaSize[PersonaSize.size8] },
               { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
-              { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
               { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
-              { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
+              { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] },
+              { key: PersonaSize.size48, text: PersonaSize[PersonaSize.size48] }
             ]}
             onChange={this._onChangePersonaSize}
           />

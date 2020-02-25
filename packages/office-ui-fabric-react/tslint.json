@@ -1,7 +1,7 @@
 {
   "extends": ["@uifabric/tslint-rules"],
   "rules": {
-    "deprecation": false,
+    "deprecation": true,
     "jsx-ban-props": false,
     "no-any": false,
     "typedef": [false],

@@ -114,6 +114,7 @@ export class FabricBase extends React.Component<
   };
 
   private _onKeyDown = (ev: KeyboardEvent): void => {
+    // tslint:disable-next-line:deprecation
     if (isDirectionalKeyCode(ev.which)) {
       this.setState({ isFocusVisible: true });
     }

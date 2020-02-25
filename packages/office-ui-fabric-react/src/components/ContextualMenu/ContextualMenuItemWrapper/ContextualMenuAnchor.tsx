@@ -69,6 +69,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
               aria-posinset={focusableElementIndex + 1}
               aria-setsize={totalItemCount}
               aria-disabled={isItemDisabled(item)}
+              // tslint:disable-next-line:deprecation
               style={item.style}
               onClick={this._onItemClick}
               onMouseEnter={this._onItemMouseEnter}
