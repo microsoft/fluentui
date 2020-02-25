@@ -34,6 +34,7 @@ const CarouselExample = () => (
   <Carousel
     circular
     ariaRoleDescription="carousel"
+    ariaLabel="Portrait collection"
     navigation={{
       'aria-label': 'people portraits',
       items: carouselItems.map((item, index) => ({
