@@ -307,6 +307,13 @@ function fixPlayground(outputPath) {
   fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
 }
 
+function fixReactDeps(outputPath) {
+  const file = path.join(outputPath, 'react/package.json');
+  const contents = fs.readJsonSync(file);
+  contents.devDependencies['@testing-library/jest-dom'] = '^5.1.1';
+  fs.writeJsonSync(file, contents, { spaces: 2 });
+}
+
 function fixDeps(outputPath) {
   const files = glob.sync('**/package.json', { cwd: outputPath });
 
@@ -466,6 +473,7 @@ function importFluent() {
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
   fixDeps(outputPath);
+  fixReactDeps(outputPath);
   fixJestMapping(outputPath);
   fixDocs(outputPath);
   fixInternalPackageDeps(outputPath);

@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import '@testing-library/jest-dom/extend-expect.d';
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
 import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
