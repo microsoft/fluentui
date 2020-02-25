@@ -165,6 +165,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
   // Show HoverCard
   private _cardOpen = (ev: MouseEvent): void => {
+    // tslint:disable-next-line:deprecation
     if (this._shouldBlockHoverCard() || (ev.type === 'keydown' && !(ev.which === this.props.openHotKey))) {
       return;
     }
@@ -207,11 +208,13 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
         return;
       }
 
+      // tslint:disable-next-line:deprecation
       if (ev.type === 'keydown' && ev.which !== KeyCodes.escape) {
         return;
       }
 
       // Dismiss if not sticky and currentTarget is the same element that mouse last entered
+      // tslint:disable-next-line:deprecation
       if (!this.props.sticky && (this._currentMouseTarget === ev.currentTarget || ev.which === KeyCodes.escape)) {
         this.dismiss(true);
       }

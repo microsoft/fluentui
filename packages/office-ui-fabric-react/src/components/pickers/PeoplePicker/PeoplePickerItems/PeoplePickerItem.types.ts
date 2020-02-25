@@ -115,6 +115,7 @@ export interface IPeoplePickerItemSuggestionStyles {
  * PeoplePickerItemWithMenu props interface.
  * @deprecated Do not use. Will be removed in Fabric 7.0
  */
+// tslint:disable-next-line:deprecation
 export interface IPeoplePickerItemWithMenuProps extends IPickerItemProps<IPersonaWithMenu> {}
 
 /**

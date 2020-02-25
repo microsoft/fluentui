@@ -6,6 +6,8 @@ import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
 
+// tslint:disable:deprecation
+
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 

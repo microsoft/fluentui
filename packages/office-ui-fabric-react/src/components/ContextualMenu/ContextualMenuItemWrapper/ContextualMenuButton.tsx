@@ -66,6 +66,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
       'aria-setsize': totalItemCount,
       'aria-disabled': isItemDisabled(item),
       role: item.role || defaultRole,
+      // tslint:disable-next-line:deprecation
       style: item.style
     };
 

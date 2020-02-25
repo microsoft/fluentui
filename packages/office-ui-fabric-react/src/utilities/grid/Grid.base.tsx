@@ -19,8 +19,12 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       items,
       columnCount,
       onRenderItem,
+
+      // tslint:disable:deprecation
       ariaPosInSet = props.positionInSet,
       ariaSetSize = props.setSize,
+      // tslint:enable:deprecation
+
       styles,
       doNotContainWithinFocusZone
     } = props;

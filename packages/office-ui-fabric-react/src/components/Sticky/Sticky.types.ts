@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IRefObject } from '../../Utilities';
 import { Sticky } from './Sticky';
 
+// tslint:disable-next-line:deprecation
 export interface IStickyProps extends React.Props<Sticky> {
   /**
    * Gets ref to component interface.
