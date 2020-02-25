@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ExampleCard, ComponentPage, PropertiesTableSet, Markdown } from '@uifabric/example-app-base';
-import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
-import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
+import { DateRangeType, DayOfWeek } from './Calendar.types';
+import { CalendarButtonExample } from './examples/Calendar.Button.Example';
+import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { addMonths, addYears, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { ICalendarDayGridStyles } from '@uifabric/date-time';

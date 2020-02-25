@@ -66,7 +66,6 @@ module.exports = {
       'Pickers',
       'Pivot',
       'Popup',
-      'PositioningContainer',
       'ProgressIndicator',
       'Rating',
       'ResizeGroup',

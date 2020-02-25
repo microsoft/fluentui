@@ -1,4 +1,5 @@
 const { resolveCwd, argv } = require('just-scripts');
+const fs = require('fs');
 const path = require('path');
 
 const storybook = require('@storybook/react/standalone');
@@ -19,7 +20,9 @@ module.exports.startStorybookTask = function startStorybookTask(options) {
     await storybook({
       mode: 'dev',
       staticDir: [path.join(process.cwd(), 'static')],
-      configDir: path.join(process.cwd(), '.storybook'),
+      configDir: module.exports.storybookConfigExists()
+        ? path.join(process.cwd(), '.storybook')
+        : path.resolve(__dirname, '../../packages/examples/.storybook'),
       port: port || 3000,
       quiet,
       ci
