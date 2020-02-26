@@ -61,6 +61,10 @@ export const enum IconNames {
     // (undocumented)
     AddReaction = "AddReaction",
     // (undocumented)
+    AddSpaceAfter = "AddSpaceAfter",
+    // (undocumented)
+    AddSpaceBefore = "AddSpaceBefore",
+    // (undocumented)
     AddTo = "AddTo",
     // (undocumented)
     AddToShoppingList = "AddToShoppingList",
@@ -135,6 +139,8 @@ export const enum IconNames {
     // (undocumented)
     AllCurrency = "AllCurrency",
     // (undocumented)
+    AltText = "AltText",
+    // (undocumented)
     AnalyticsLogo = "AnalyticsLogo",
     // (undocumented)
     AnalyticsQuery = "AnalyticsQuery",
@@ -154,6 +160,8 @@ export const enum IconNames {
     AppIconDefaultList = "AppIconDefaultList",
     // (undocumented)
     Archive = "Archive",
+    // (undocumented)
+    ArchiveUndo = "ArchiveUndo",
     // (undocumented)
     AreaChart = "AreaChart",
     // (undocumented)
@@ -213,13 +221,21 @@ export const enum IconNames {
     // (undocumented)
     AuthenticatorApp = "AuthenticatorApp",
     // (undocumented)
+    AutoDeploySettings = "AutoDeploySettings",
+    // (undocumented)
     AutoEnhanceOff = "AutoEnhanceOff",
     // (undocumented)
     AutoEnhanceOn = "AutoEnhanceOn",
     // (undocumented)
     AutoFillTemplate = "AutoFillTemplate",
     // (undocumented)
+    AutoFitContents = "AutoFitContents",
+    // (undocumented)
+    AutoFitWindow = "AutoFitWindow",
+    // (undocumented)
     AutoHeight = "AutoHeight",
+    // (undocumented)
+    AutomateFlow = "AutomateFlow",
     // (undocumented)
     AutoRacing = "AutoRacing",
     // (undocumented)
@@ -379,7 +395,11 @@ export const enum IconNames {
     // (undocumented)
     Bug = "Bug",
     // (undocumented)
+    BugBlock = "BugBlock",
+    // (undocumented)
     BugSolid = "BugSolid",
+    // (undocumented)
+    BugSync = "BugSync",
     // (undocumented)
     Build = "Build",
     // (undocumented)
@@ -435,6 +455,8 @@ export const enum IconNames {
     // (undocumented)
     CalculatorAddition = "CalculatorAddition",
     // (undocumented)
+    CalculatorDelta = "CalculatorDelta",
+    // (undocumented)
     CalculatorEqualTo = "CalculatorEqualTo",
     // (undocumented)
     CalculatorMultiply = "CalculatorMultiply",
@@ -462,6 +484,8 @@ export const enum IconNames {
     CalendarWeek = "CalendarWeek",
     // (undocumented)
     CalendarWorkWeek = "CalendarWorkWeek",
+    // (undocumented)
+    CalendarYear = "CalendarYear",
     // (undocumented)
     Calories = "Calories",
     // (undocumented)
@@ -651,6 +675,8 @@ export const enum IconNames {
     // (undocumented)
     CircleRing = "CircleRing",
     // (undocumented)
+    CircleShape = "CircleShape",
+    // (undocumented)
     CircleShapeSolid = "CircleShapeSolid",
     // (undocumented)
     CircleStop = "CircleStop",
@@ -783,6 +809,8 @@ export const enum IconNames {
     // (undocumented)
     Commitments = "Commitments",
     // (undocumented)
+    CommonDataServiceCDS = "CommonDataServiceCDS",
+    // (undocumented)
     Communications = "Communications",
     // (undocumented)
     CompanyDirectory = "CompanyDirectory",
@@ -790,6 +818,8 @@ export const enum IconNames {
     CompanyDirectoryMirrored = "CompanyDirectoryMirrored",
     // (undocumented)
     Compare = "Compare",
+    // (undocumented)
+    CompareUneven = "CompareUneven",
     // (undocumented)
     CompassNW = "CompassNW",
     // (undocumented)
@@ -825,11 +855,29 @@ export const enum IconNames {
     // (undocumented)
     ContactList = "ContactList",
     // (undocumented)
+    ContactLock = "ContactLock",
+    // (undocumented)
+    ContentFeed = "ContentFeed",
+    // (undocumented)
+    ContentSettings = "ContentSettings",
+    // (undocumented)
     ContextMenu = "ContextMenu",
     // (undocumented)
     Contrast = "Contrast",
     // (undocumented)
     Copy = "Copy",
+    // (undocumented)
+    CortanaLogoBeckonInner = "CortanaLogoBeckonInner",
+    // (undocumented)
+    CortanaLogoBeckonOuter = "CortanaLogoBeckonOuter",
+    // (undocumented)
+    CortanaLogoInner = "CortanaLogoInner",
+    // (undocumented)
+    CortanaLogoOuter = "CortanaLogoOuter",
+    // (undocumented)
+    CortanaLogoReadyInner = "CortanaLogoReadyInner",
+    // (undocumented)
+    CortanaLogoReadyOuter = "CortanaLogoReadyOuter",
     // (undocumented)
     Cotton = "Cotton",
     // (undocumented)
@@ -842,8 +890,6 @@ export const enum IconNames {
     CreateMailRule = "CreateMailRule",
     // (undocumented)
     Cricket = "Cricket",
-    // (undocumented)
-    CRMCustomerInsightsApp = "CRMCustomerInsightsApp",
     // (undocumented)
     CRMProcesses = "CRMProcesses",
     // (undocumented)
@@ -865,6 +911,8 @@ export const enum IconNames {
     // (undocumented)
     CubeShape = "CubeShape",
     // (undocumented)
+    CubeShapeSolid = "CubeShapeSolid",
+    // (undocumented)
     CustomizeToolbar = "CustomizeToolbar",
     // (undocumented)
     CustomList = "CustomList",
@@ -875,7 +923,11 @@ export const enum IconNames {
     // (undocumented)
     Cycling = "Cycling",
     // (undocumented)
-    D365TalentHRCore = "D365TalentHRCore",
+    D365CoreHR = "D365CoreHR",
+    // (undocumented)
+    D365CustomerInsights = "D365CustomerInsights",
+    // (undocumented)
+    D365ProjectOperations = "D365ProjectOperations",
     // (undocumented)
     D365TalentInsight = "D365TalentInsight",
     // (undocumented)
@@ -897,6 +949,8 @@ export const enum IconNames {
     // (undocumented)
     DateTime = "DateTime",
     // (undocumented)
+    DateTime12 = "DateTime12",
+    // (undocumented)
     DateTime2 = "DateTime2",
     // (undocumented)
     DateTimeMirrored = "DateTimeMirrored",
@@ -909,11 +963,15 @@ export const enum IconNames {
     // (undocumented)
     DeclineCall = "DeclineCall",
     // (undocumented)
+    DecreaseIndent = "DecreaseIndent",
+    // (undocumented)
     DecreaseIndentArrow = "DecreaseIndentArrow",
     // (undocumented)
     DecreaseIndentArrowMirrored = "DecreaseIndentArrowMirrored",
     // (undocumented)
     DecreaseIndentLegacy = "DecreaseIndentLegacy",
+    // (undocumented)
+    DecreaseIndentMirrored = "DecreaseIndentMirrored",
     // (undocumented)
     DecreaseIndentText = "DecreaseIndentText",
     // (undocumented)
@@ -960,6 +1018,12 @@ export const enum IconNames {
     DesktopScreenshot = "DesktopScreenshot",
     // (undocumented)
     DeveloperTools = "DeveloperTools",
+    // (undocumented)
+    DeviceBug = "DeviceBug",
+    // (undocumented)
+    DeviceOff = "DeviceOff",
+    // (undocumented)
+    DeviceRun = "DeviceRun",
     // (undocumented)
     Devices2 = "Devices2",
     // (undocumented)
@@ -1081,11 +1145,15 @@ export const enum IconNames {
     // (undocumented)
     DrillThrough = "DrillThrough",
     // (undocumented)
+    DriverOff = "DriverOff",
+    // (undocumented)
     DRM = "DRM",
     // (undocumented)
     Drop = "Drop",
     // (undocumented)
     Dropdown = "Dropdown",
+    // (undocumented)
+    DropShape = "DropShape",
     // (undocumented)
     DropShapeSolid = "DropShapeSolid",
     // (undocumented)
@@ -1101,7 +1169,9 @@ export const enum IconNames {
     // (undocumented)
     EatDrink = "EatDrink",
     // (undocumented)
-    EdgeLogo = "EdgeLogo",
+    EdgeOldLogo = "EdgeOldLogo",
+    // (undocumented)
+    eDiscovery = "eDiscovery",
     // (undocumented)
     Edit = "Edit",
     // (undocumented)
@@ -1144,6 +1214,8 @@ export const enum IconNames {
     EmptyRecycleBin = "EmptyRecycleBin",
     // (undocumented)
     Encryption = "Encryption",
+    // (undocumented)
+    EndPointSolid = "EndPointSolid",
     // (undocumented)
     EngineeringGroup = "EngineeringGroup",
     // (undocumented)
@@ -1243,6 +1315,8 @@ export const enum IconNames {
     // (undocumented)
     FabricFolderSearch = "FabricFolderSearch",
     // (undocumented)
+    FabricFolderUpload = "FabricFolderUpload",
+    // (undocumented)
     FabricFormLibrary = "FabricFormLibrary",
     // (undocumented)
     FabricFormLibraryMirrored = "FabricFormLibraryMirrored",
@@ -1333,6 +1407,8 @@ export const enum IconNames {
     // (undocumented)
     FileLess = "FileLess",
     // (undocumented)
+    FileOff = "FileOff",
+    // (undocumented)
     FilePDB = "FilePDB",
     // (undocumented)
     FileRequest = "FileRequest",
@@ -1350,6 +1426,10 @@ export const enum IconNames {
     FileYML = "FileYML",
     // (undocumented)
     Filter = "Filter",
+    // (undocumented)
+    FilterAscending = "FilterAscending",
+    // (undocumented)
+    FilterDescending = "FilterDescending",
     // (undocumented)
     Filters = "Filters",
     // (undocumented)
@@ -1373,11 +1453,19 @@ export const enum IconNames {
     // (undocumented)
     FiveTileGrid = "FiveTileGrid",
     // (undocumented)
+    FixedAssetManagement = "FixedAssetManagement",
+    // (undocumented)
+    FixedColumnWidth = "FixedColumnWidth",
+    // (undocumented)
     Flag = "Flag",
     // (undocumented)
     FlameSolid = "FlameSolid",
     // (undocumented)
+    FlashAuto = "FlashAuto",
+    // (undocumented)
     Flashlight = "Flashlight",
+    // (undocumented)
+    FlashOff = "FlashOff",
     // (undocumented)
     FlickDown = "FlickDown",
     // (undocumented)
@@ -1396,6 +1484,8 @@ export const enum IconNames {
     FocalPoint = "FocalPoint",
     // (undocumented)
     Focus = "Focus",
+    // (undocumented)
+    FocusView = "FocusView",
     // (undocumented)
     Fog = "Fog",
     // (undocumented)
@@ -1431,11 +1521,17 @@ export const enum IconNames {
     // (undocumented)
     FontSize = "FontSize",
     // (undocumented)
+    FontSize2 = "FontSize2",
+    // (undocumented)
     Footer = "Footer",
+    // (undocumented)
+    FormatPainter = "FormatPainter",
     // (undocumented)
     FormLibrary = "FormLibrary",
     // (undocumented)
     FormLibraryMirrored = "FormLibraryMirrored",
+    // (undocumented)
+    Forum = "Forum",
     // (undocumented)
     Forward = "Forward",
     // (undocumented)
@@ -1456,6 +1552,8 @@ export const enum IconNames {
     FullHistory = "FullHistory",
     // (undocumented)
     FullScreen = "FullScreen",
+    // (undocumented)
+    FullView = "FullView",
     // (undocumented)
     FullWidth = "FullWidth",
     // (undocumented)
@@ -1579,6 +1677,8 @@ export const enum IconNames {
     // (undocumented)
     Health = "Health",
     // (undocumented)
+    HealthRefresh = "HealthRefresh",
+    // (undocumented)
     HealthSolid = "HealthSolid",
     // (undocumented)
     Heart = "Heart",
@@ -1590,6 +1690,12 @@ export const enum IconNames {
     Help = "Help",
     // (undocumented)
     HelpMirrored = "HelpMirrored",
+    // (undocumented)
+    HexaditeInvestigation = "HexaditeInvestigation",
+    // (undocumented)
+    HexaditeInvestigationCancel = "HexaditeInvestigationCancel",
+    // (undocumented)
+    HexaditeInvestigationSemiAuto = "HexaditeInvestigationSemiAuto",
     // (undocumented)
     Hexagon = "Hexagon",
     // (undocumented)
@@ -1611,6 +1717,8 @@ export const enum IconNames {
     // (undocumented)
     Home = "Home",
     // (undocumented)
+    HomeDropdown = "HomeDropdown",
+    // (undocumented)
     HomeGroup = "HomeGroup",
     // (undocumented)
     HomeSolid = "HomeSolid",
@@ -1631,9 +1739,13 @@ export const enum IconNames {
     // (undocumented)
     IDBadge = "IDBadge",
     // (undocumented)
+    IgnoreConversation = "IgnoreConversation",
+    // (undocumented)
     ImageCrosshair = "ImageCrosshair",
     // (undocumented)
     ImageDiff = "ImageDiff",
+    // (undocumented)
+    ImageInAR = "ImageInAR",
     // (undocumented)
     ImagePixel = "ImagePixel",
     // (undocumented)
@@ -1655,15 +1767,25 @@ export const enum IconNames {
     // (undocumented)
     IncomingCall = "IncomingCall",
     // (undocumented)
+    IncreaseIndent = "IncreaseIndent",
+    // (undocumented)
     IncreaseIndentArrow = "IncreaseIndentArrow",
     // (undocumented)
     IncreaseIndentArrowMirrored = "IncreaseIndentArrowMirrored",
     // (undocumented)
+    IncreaseIndentHanging = "IncreaseIndentHanging",
+    // (undocumented)
+    IncreaseIndentHangingMirrored = "IncreaseIndentHangingMirrored",
+    // (undocumented)
     IncreaseIndentLegacy = "IncreaseIndentLegacy",
+    // (undocumented)
+    IncreaseIndentMirrored = "IncreaseIndentMirrored",
     // (undocumented)
     IncreaseIndentText = "IncreaseIndentText",
     // (undocumented)
     IncreaseIndentTextMirrored = "IncreaseIndentTextMirrored",
+    // (undocumented)
+    IndentFirstLine = "IndentFirstLine",
     // (undocumented)
     Info = "Info",
     // (undocumented)
@@ -1674,6 +1796,8 @@ export const enum IconNames {
     InfoSolid = "InfoSolid",
     // (undocumented)
     InkingTool = "InkingTool",
+    // (undocumented)
+    InputAddress = "InputAddress",
     // (undocumented)
     Insert = "Insert",
     // (undocumented)
@@ -1688,6 +1812,8 @@ export const enum IconNames {
     InsertSignatureLine = "InsertSignatureLine",
     // (undocumented)
     InsertTextBox = "InsertTextBox",
+    // (undocumented)
+    Insights = "Insights",
     // (undocumented)
     Installation = "Installation",
     // (undocumented)
@@ -1723,6 +1849,8 @@ export const enum IconNames {
     // (undocumented)
     KeyboardClassic = "KeyboardClassic",
     // (undocumented)
+    KeyPhraseExtraction = "KeyPhraseExtraction",
+    // (undocumented)
     KnowledgeArticle = "KnowledgeArticle",
     // (undocumented)
     Label = "Label",
@@ -1739,7 +1867,11 @@ export const enum IconNames {
     // (undocumented)
     LargeGrid = "LargeGrid",
     // (undocumented)
+    LearningTools = "LearningTools",
+    // (undocumented)
     Leave = "Leave",
+    // (undocumented)
+    LeaveUser = "LeaveUser",
     // (undocumented)
     Library = "Library",
     // (undocumented)
@@ -1781,6 +1913,8 @@ export const enum IconNames {
     // (undocumented)
     ListMirrored = "ListMirrored",
     // (undocumented)
+    LiveSite = "LiveSite",
+    // (undocumented)
     LocaleLanguage = "LocaleLanguage",
     // (undocumented)
     Location = "Location",
@@ -1808,6 +1942,8 @@ export const enum IconNames {
     LyncLogo = "LyncLogo",
     // (undocumented)
     M365InvoicingLogo = "M365InvoicingLogo",
+    // (undocumented)
+    MachineLearning = "MachineLearning",
     // (undocumented)
     Mail = "Mail",
     // (undocumented)
@@ -1861,6 +1997,8 @@ export const enum IconNames {
     // (undocumented)
     MapPin = "MapPin",
     // (undocumented)
+    MapPin12 = "MapPin12",
+    // (undocumented)
     MapPinSolid = "MapPinSolid",
     // (undocumented)
     MarkAsProtected = "MarkAsProtected",
@@ -1898,6 +2036,8 @@ export const enum IconNames {
     Message = "Message",
     // (undocumented)
     MessageFill = "MessageFill",
+    // (undocumented)
+    MessageFriendRequest = "MessageFriendRequest",
     // (undocumented)
     MicOff = "MicOff",
     // (undocumented)
@@ -1969,6 +2109,8 @@ export const enum IconNames {
     // (undocumented)
     MyMoviesTV = "MyMoviesTV",
     // (undocumented)
+    MyNetwork = "MyNetwork",
+    // (undocumented)
     Nav2DMapView = "Nav2DMapView",
     // (undocumented)
     NavigateBack = "NavigateBack",
@@ -2013,7 +2155,11 @@ export const enum IconNames {
     // (undocumented)
     NugetLogo = "NugetLogo",
     // (undocumented)
+    NUIFace = "NUIFace",
+    // (undocumented)
     NumberedList = "NumberedList",
+    // (undocumented)
+    NumberedListMirrored = "NumberedListMirrored",
     // (undocumented)
     NumberedListNumber = "NumberedListNumber",
     // (undocumented)
@@ -2114,6 +2260,10 @@ export const enum IconNames {
     OpenPaneMirrored = "OpenPaneMirrored",
     // (undocumented)
     OpenSource = "OpenSource",
+    // (undocumented)
+    OpenWith = "OpenWith",
+    // (undocumented)
+    OpenWithMirrored = "OpenWithMirrored",
     // (undocumented)
     Org = "Org",
     // (undocumented)
@@ -2269,6 +2419,8 @@ export const enum IconNames {
     // (undocumented)
     PhotoCollection = "PhotoCollection",
     // (undocumented)
+    PhotoError = "PhotoError",
+    // (undocumented)
     PhotoVideoMedia = "PhotoVideoMedia",
     // (undocumented)
     Picture = "Picture",
@@ -2325,6 +2477,8 @@ export const enum IconNames {
     // (undocumented)
     PlayReverseResume = "PlayReverseResume",
     // (undocumented)
+    PlaySolid = "PlaySolid",
+    // (undocumented)
     Plug = "Plug",
     // (undocumented)
     PlugConnected = "PlugConnected",
@@ -2369,6 +2523,10 @@ export const enum IconNames {
     // (undocumented)
     PowerPointLogoInverse16 = "PowerPointLogoInverse16",
     // (undocumented)
+    PowerShell = "PowerShell",
+    // (undocumented)
+    PowerShell2 = "PowerShell2",
+    // (undocumented)
     Precipitation = "Precipitation",
     // (undocumented)
     PresenceChickletVideo = "PresenceChickletVideo",
@@ -2390,6 +2548,12 @@ export const enum IconNames {
     PrintfaxPrinterFile = "PrintfaxPrinterFile",
     // (undocumented)
     Processing = "Processing",
+    // (undocumented)
+    ProcessingCancel = "ProcessingCancel",
+    // (undocumented)
+    ProcessingPause = "ProcessingPause",
+    // (undocumented)
+    ProcessingRun = "ProcessingRun",
     // (undocumented)
     ProcessMetaTask = "ProcessMetaTask",
     // (undocumented)
@@ -2438,6 +2602,8 @@ export const enum IconNames {
     ProtectionCenterLogo32 = "ProtectionCenterLogo32",
     // (undocumented)
     ProtectRestrict = "ProtectRestrict",
+    // (undocumented)
+    ProvisioningPackage = "ProvisioningPackage",
     // (undocumented)
     PublicCalendar = "PublicCalendar",
     // (undocumented)
@@ -2553,9 +2719,13 @@ export const enum IconNames {
     // (undocumented)
     RedEye = "RedEye",
     // (undocumented)
+    RedEye12 = "RedEye12",
+    // (undocumented)
     Redo = "Redo",
     // (undocumented)
     Refresh = "Refresh",
+    // (undocumented)
+    RegistryEditor = "RegistryEditor",
     // (undocumented)
     Relationship = "Relationship",
     // (undocumented)
@@ -2576,6 +2746,8 @@ export const enum IconNames {
     Remote = "Remote",
     // (undocumented)
     Remove = "Remove",
+    // (undocumented)
+    RemoveContent = "RemoveContent",
     // (undocumented)
     RemoveEvent = "RemoveEvent",
     // (undocumented)
@@ -2604,6 +2776,8 @@ export const enum IconNames {
     Repair = "Repair",
     // (undocumented)
     RepeatAll = "RepeatAll",
+    // (undocumented)
+    RepeatHeaderRows = "RepeatHeaderRows",
     // (undocumented)
     RepeatOne = "RepeatOne",
     // (undocumented)
@@ -2640,6 +2814,10 @@ export const enum IconNames {
     Rerun = "Rerun",
     // (undocumented)
     ReservationOrders = "ReservationOrders",
+    // (undocumented)
+    Reset = "Reset",
+    // (undocumented)
+    ResetDevice = "ResetDevice",
     // (undocumented)
     ResponsesMenu = "ResponsesMenu",
     // (undocumented)
@@ -2731,6 +2909,8 @@ export const enum IconNames {
     // (undocumented)
     ScrollUpDown = "ScrollUpDown",
     // (undocumented)
+    SDCard = "SDCard",
+    // (undocumented)
     Search = "Search",
     // (undocumented)
     SearchAndApps = "SearchAndApps",
@@ -2767,6 +2947,8 @@ export const enum IconNames {
     // (undocumented)
     SendMirrored = "SendMirrored",
     // (undocumented)
+    SentimentAnalysis = "SentimentAnalysis",
+    // (undocumented)
     Separator = "Separator",
     // (undocumented)
     Server = "Server",
@@ -2774,6 +2956,8 @@ export const enum IconNames {
     ServerEnviroment = "ServerEnviroment",
     // (undocumented)
     ServerProcesses = "ServerProcesses",
+    // (undocumented)
+    ServiceOff = "ServiceOff",
     // (undocumented)
     SetAction = "SetAction",
     // (undocumented)
@@ -2783,7 +2967,11 @@ export const enum IconNames {
     // (undocumented)
     Shapes = "Shapes",
     // (undocumented)
+    ShapeSolid = "ShapeSolid",
+    // (undocumented)
     Share = "Share",
+    // (undocumented)
+    SharedDatabase = "SharedDatabase",
     // (undocumented)
     ShareiOS = "ShareiOS",
     // (undocumented)
@@ -2842,6 +3030,10 @@ export const enum IconNames {
     SixPointStar = "SixPointStar",
     // (undocumented)
     SizeLegacy = "SizeLegacy",
+    // (undocumented)
+    SkipBack10 = "SkipBack10",
+    // (undocumented)
+    SkipForward30 = "SkipForward30",
     // (undocumented)
     SkiResorts = "SkiResorts",
     // (undocumented)
@@ -2923,6 +3115,8 @@ export const enum IconNames {
     // (undocumented)
     SpeedHigh = "SpeedHigh",
     // (undocumented)
+    Spelling = "Spelling",
+    // (undocumented)
     Split = "Split",
     // (undocumented)
     SplitObject = "SplitObject",
@@ -2930,6 +3124,8 @@ export const enum IconNames {
     Sprint = "Sprint",
     // (undocumented)
     Squalls = "Squalls",
+    // (undocumented)
+    SquareShape = "SquareShape",
     // (undocumented)
     SquareShapeSolid = "SquareShapeSolid",
     // (undocumented)
@@ -3005,6 +3201,10 @@ export const enum IconNames {
     // (undocumented)
     StepSharedInsert = "StepSharedInsert",
     // (undocumented)
+    StickyNotesOutlineAppIcon = "StickyNotesOutlineAppIcon",
+    // (undocumented)
+    StickyNotesSolidAppIcon = "StickyNotesSolidAppIcon",
+    // (undocumented)
     StockDown = "StockDown",
     // (undocumented)
     StockUp = "StockUp",
@@ -3067,6 +3267,8 @@ export const enum IconNames {
     // (undocumented)
     SwitcherStartEnd = "SwitcherStartEnd",
     // (undocumented)
+    SwitchUser = "SwitchUser",
+    // (undocumented)
     Sync = "Sync",
     // (undocumented)
     SyncFolder = "SyncFolder",
@@ -3087,15 +3289,27 @@ export const enum IconNames {
     // (undocumented)
     Table = "Table",
     // (undocumented)
+    TableBrandedColumn = "TableBrandedColumn",
+    // (undocumented)
+    TableBrandedRow = "TableBrandedRow",
+    // (undocumented)
     TableComputed = "TableComputed",
     // (undocumented)
+    TableFirstColumn = "TableFirstColumn",
+    // (undocumented)
     TableGroup = "TableGroup",
+    // (undocumented)
+    TableHeaderRow = "TableHeaderRow",
+    // (undocumented)
+    TableLastColumn = "TableLastColumn",
     // (undocumented)
     TableLink = "TableLink",
     // (undocumented)
     Tablet = "Tablet",
     // (undocumented)
     TabletMode = "TabletMode",
+    // (undocumented)
+    TableTotalRow = "TableTotalRow",
     // (undocumented)
     TabletSelected = "TabletSelected",
     // (undocumented)
@@ -3106,6 +3320,8 @@ export const enum IconNames {
     TabTwoColumn = "TabTwoColumn",
     // (undocumented)
     Tag = "Tag",
+    // (undocumented)
+    TagGroup = "TagGroup",
     // (undocumented)
     TagSolid = "TagSolid",
     // (undocumented)
@@ -3122,6 +3338,8 @@ export const enum IconNames {
     TaskGroup = "TaskGroup",
     // (undocumented)
     TaskGroupMirrored = "TaskGroupMirrored",
+    // (undocumented)
+    TaskList = "TaskList",
     // (undocumented)
     TaskLogo = "TaskLogo",
     // (undocumented)
@@ -3177,6 +3395,12 @@ export const enum IconNames {
     // (undocumented)
     TestUserSolid = "TestUserSolid",
     // (undocumented)
+    TextAlignBottom = "TextAlignBottom",
+    // (undocumented)
+    TextAlignMiddle = "TextAlignMiddle",
+    // (undocumented)
+    TextAlignTop = "TextAlignTop",
+    // (undocumented)
     TextBox = "TextBox",
     // (undocumented)
     TextCallout = "TextCallout",
@@ -3188,6 +3412,18 @@ export const enum IconNames {
     TextField = "TextField",
     // (undocumented)
     TextOverflow = "TextOverflow",
+    // (undocumented)
+    TextParagraphOption = "TextParagraphOption",
+    // (undocumented)
+    TextRecognition = "TextRecognition",
+    // (undocumented)
+    TextRotate270Degrees = "TextRotate270Degrees",
+    // (undocumented)
+    TextRotate90Degrees = "TextRotate90Degrees",
+    // (undocumented)
+    TextRotateHorizontal = "TextRotateHorizontal",
+    // (undocumented)
+    TextRotation = "TextRotation",
     // (undocumented)
     TFVCLogo = "TFVCLogo",
     // (undocumented)
@@ -3244,6 +3480,8 @@ export const enum IconNames {
     Toll = "Toll",
     // (undocumented)
     Toolbox = "Toolbox",
+    // (undocumented)
+    Total = "Total",
     // (undocumented)
     Touch = "Touch",
     // (undocumented)
@@ -3381,9 +3619,13 @@ export const enum IconNames {
     // (undocumented)
     Up = "Up",
     // (undocumented)
+    UpdateRestore = "UpdateRestore",
+    // (undocumented)
     UpgradeAnalysis = "UpgradeAnalysis",
     // (undocumented)
     Upload = "Upload",
+    // (undocumented)
+    URLBlock = "URLBlock",
     // (undocumented)
     USB = "USB",
     // (undocumented)
@@ -3404,6 +3646,8 @@ export const enum IconNames {
     UserWarning = "UserWarning",
     // (undocumented)
     Vacation = "Vacation",
+    // (undocumented)
+    Vaccination = "Vaccination",
     // (undocumented)
     Variable = "Variable",
     // (undocumented)
@@ -3443,6 +3687,8 @@ export const enum IconNames {
     // (undocumented)
     ViewDashboard = "ViewDashboard",
     // (undocumented)
+    ViewInAR = "ViewInAR",
+    // (undocumented)
     ViewList = "ViewList",
     // (undocumented)
     ViewListGroup = "ViewListGroup",
@@ -3468,12 +3714,6 @@ export const enum IconNames {
     VisioLogoInverse = "VisioLogoInverse",
     // (undocumented)
     VisioLogoInverse16 = "VisioLogoInverse16",
-    // (undocumented)
-    VisioOnlineLogo32 = "VisioOnlineLogo32",
-    // (undocumented)
-    VisioOnlineLogoCloud32 = "VisioOnlineLogoCloud32",
-    // (undocumented)
-    VisioOnlineLogoFill32 = "VisioOnlineLogoFill32",
     // (undocumented)
     VisualBasicLanguage = "VisualBasicLanguage",
     // (undocumented)
@@ -3535,7 +3775,11 @@ export const enum IconNames {
     // (undocumented)
     Webcam2 = "Webcam2",
     // (undocumented)
+    Webcam2Off = "Webcam2Off",
+    // (undocumented)
     WebComponents = "WebComponents",
+    // (undocumented)
+    WebEnvironment = "WebEnvironment",
     // (undocumented)
     WebPublish = "WebPublish",
     // (undocumented)
