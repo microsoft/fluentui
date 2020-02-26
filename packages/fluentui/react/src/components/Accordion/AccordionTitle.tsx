@@ -4,6 +4,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import cx from 'classnames';
 
 import {
   childrenExist,
@@ -19,7 +20,6 @@ import {
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Icon, { IconProps } from '../Icon/Icon';
-import Layout from '../Layout/Layout';
 
 export interface AccordionTitleSlotClassNames {
   content: string;
@@ -115,19 +115,20 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 
     const contentElement = (
       <Ref innerRef={contentRef}>
-        <Layout
+        <div
           onFocus={this.handleFocus}
           onClick={this.handleClick}
-          className={AccordionTitle.slotClassNames.content}
+          className={cx(AccordionTitle.slotClassNames.content, classes.content)}
           {...accessibility.attributes.content}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)}
-          start={Icon.create(indicatorWithDefaults, {
+        >
+          {Icon.create(indicatorWithDefaults, {
             defaultProps: () => ({
               styles: styles.indicator
             })
           })}
-          main={rtlTextContainer.createFor({ element: content })}
-        />
+          {rtlTextContainer.createFor({ element: content })}
+        </div>
       </Ref>
     );
 
