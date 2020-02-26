@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/charting_v0.140.3",
+      "version": "0.140.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable keyboard accessibility for Donut chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "bb05aa2eb9e36d2a5f2bbba01a2e396f9e60a0a2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Feb 2020 12:20:16 GMT",
       "tag": "@uifabric/charting_v0.140.0",
       "version": "0.140.0",

@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -12,20 +12,20 @@ import { Accessibility } from '../../types'
 const toolbarRadioGroupBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'radiogroup',
-    },
+      role: 'radiogroup'
+    }
   },
 
   keyActions: {
     root: {
       nextItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
       },
       prevItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }]
+      }
+    }
+  }
+});
 
-export default toolbarRadioGroupBehavior
+export default toolbarRadioGroupBehavior;

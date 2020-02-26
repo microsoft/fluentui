@@ -1,17 +1,17 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { ToolbarItemProps } from '../../../../components/Toolbar/ToolbarItem'
-import { ToolbarVariables } from './toolbarVariables'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
-import { getColorScheme } from '../../colors'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ToolbarItemProps } from '../../../../components/Toolbar/ToolbarItem';
+import { ToolbarVariables } from './toolbarVariables';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { getColorScheme } from '../../colors';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme)
-    const { borderWidth } = siteVariables
+    const colors = getColorScheme(v.colorScheme);
+    const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
-    })
+      siteVariables
+    });
 
     return {
       position: 'relative',
@@ -31,13 +31,13 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemProps, ToolbarVa
       ...(p.active && {
         color: v.foregroundActive || colors.foregroundActive,
         backgroundColor: v.backgroundActive,
-        ...getIconFillOrOutlineStyles({ outline: false }),
+        ...getIconFillOrOutlineStyles({ outline: false })
       }),
 
       ':hover': {
         color: v.foregroundHover || colors.foregroundHover,
         backgroundColor: v.backgroundHover || colors.backgroundHover,
-        ...getIconFillOrOutlineStyles({ outline: false }),
+        ...getIconFillOrOutlineStyles({ outline: false })
       },
 
       ':focus-visible': borderFocusStyles[':focus-visible'],
@@ -48,10 +48,10 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemProps, ToolbarVa
         cursor: 'default',
         ':hover': {
           // empty to overwrite all existing hover styles
-        },
-      }),
-    }
-  },
-}
+        }
+      })
+    };
+  }
+};
 
-export default toolbarItemStyles
+export default toolbarItemStyles;

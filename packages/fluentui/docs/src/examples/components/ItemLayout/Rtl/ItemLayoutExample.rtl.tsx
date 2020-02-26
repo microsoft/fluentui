@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { ItemLayout, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { ItemLayout, Icon } from '@fluentui/react';
 
 const ItemLayoutExampleRtlShorthand = () => (
   <>
@@ -18,6 +18,6 @@ const ItemLayoutExampleRtlShorthand = () => (
       media={<Icon name="error" />}
     />
   </>
-)
+);
 
-export default ItemLayoutExampleRtlShorthand
+export default ItemLayoutExampleRtlShorthand;

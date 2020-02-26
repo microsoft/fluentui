@@ -1,11 +1,11 @@
-import { SegmentProps } from '../../../../components/Segment/Segment'
-import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles'
-import { SegmentVariables } from './segmentVariables'
-import { getColorScheme } from '../../colors'
+import { SegmentProps } from '../../../../components/Segment/Segment';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { SegmentVariables } from './segmentVariables';
+import { getColorScheme } from '../../colors';
 
 const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const colors = getColorScheme(v.colorScheme, p.color)
+    const colors = getColorScheme(v.colorScheme, p.color);
 
     return {
       borderColor: 'transparent',
@@ -19,7 +19,7 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables>
       ...(p.color && { borderColor: colors.foreground }),
       ...(p.inverted && {
         color: v.backgroundColor,
-        backgroundColor: p.color ? colors.foreground : v.color,
+        backgroundColor: p.color ? colors.foreground : v.color
       }),
       ...(p.disabled && {
         boxShadow: 'none',
@@ -28,11 +28,11 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables>
         backgroundColor: v.disabledBackgroundColor,
         ...(p.inverted && {
           color: v.disabledBackgroundColor,
-          backgroundColor: v.disabledColor,
-        }),
-      }),
-    }
-  },
-}
+          backgroundColor: v.disabledColor
+        })
+      })
+    };
+  }
+};
 
-export default segmentStyles
+export default segmentStyles;

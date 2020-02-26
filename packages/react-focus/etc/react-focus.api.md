@@ -61,7 +61,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     ariaDescribedBy?: string;
     // @deprecated
     ariaLabelledBy?: string;
-    as?: React.ReactType;
+    as?: React.ElementType;
     checkForNoWrap?: boolean;
     className?: string;
     componentRef?: IRefObject<IFocusZone>;

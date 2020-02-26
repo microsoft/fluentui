@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { Button, Divider, Grid, Ref, Text, Tooltip } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Divider, Grid, Ref, Text, Tooltip } from '@fluentui/react';
 
 const TooltipExampleTarget = () => {
-  const [target, setTarget] = React.useState<HTMLElement>(null)
+  const [target, setTarget] = React.useState<HTMLElement>(null);
 
   return (
     <Grid columns="auto 1fr">
@@ -17,14 +17,11 @@ const TooltipExampleTarget = () => {
         <Text>Could you guess what does this text means? :)</Text>
         <Divider />
         <Ref innerRef={setTarget}>
-          <Text>
-            "To the lascivious looking-glass I, that love's majesty to strut before a want love's
-            majesto, to the souls of York."
-          </Text>
+          <Text>"To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the souls of York."</Text>
         </Ref>
       </div>
     </Grid>
-  )
-}
+  );
+};
 
-export default TooltipExampleTarget
+export default TooltipExampleTarget;

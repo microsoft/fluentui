@@ -1,5 +1,5 @@
-import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
+import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 
 export default (siteVars: any): Partial<MenuVariables> => ({
   colorScheme: pickValuesFromColorScheme(
@@ -7,14 +7,14 @@ export default (siteVars: any): Partial<MenuVariables> => ({
       default: {
         backgroundActive: siteVars.colorScheme.default.backgroundActive1,
         backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
-        foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
+        foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1
       },
       brand: {
         foregroundActive: siteVars.colors.black,
-        foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
-      },
+        foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1
+      }
     }),
-    menuColorAreas,
+    menuColorAreas
   ),
   color: siteVars.colors.white,
   colorActive: siteVars.colors.black,
@@ -23,5 +23,5 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   primaryBorderColor: siteVars.colors.white,
 
   verticalBackgroundColor: siteVars.colors.black,
-  iconOnlyColorActive: siteVars.colors.black,
-})
+  iconOnlyColorActive: siteVars.colors.black
+});

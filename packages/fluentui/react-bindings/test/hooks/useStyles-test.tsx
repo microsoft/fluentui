@@ -38,6 +38,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
   return (
     <ThemeContext.Provider
       value={{
+        performance: {},
         theme
       }}
     >

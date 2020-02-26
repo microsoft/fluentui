@@ -1,22 +1,15 @@
-import * as React from 'react'
-import {
-  Avatar,
-  AvatarProps,
-  Chat,
-  Provider,
-  ReactionProps,
-  ShorthandCollection,
-} from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   { key: 'up', icon: 'like', content: '1K' },
-  { key: 'smile', icon: 'emoji', content: 5 },
-]
+  { key: 'smile', icon: 'emoji', content: 5 }
+];
 
 const janeAvatar: AvatarProps = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'icon-checkmark' },
-}
+  status: { color: 'green', icon: 'icon-checkmark' }
+};
 
 const content = (
   <div>
@@ -27,7 +20,7 @@ const content = (
     <br />
     <a href="#">www.goodFood3.com</a>
   </div>
-)
+);
 
 const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
   position: 'relative',
@@ -45,9 +38,9 @@ const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
     fontSize: '11px',
     letterSpacing: '0.1px',
     lineHeight: '9px',
-    ...beforeStyles,
-  },
-})
+    ...beforeStyles
+  }
+});
 
 const ChatMessageExampleStyled = () => (
   <Provider
@@ -59,43 +52,39 @@ const ChatMessageExampleStyled = () => (
             ...slotLabelStyles('gutter', { bottom: '-11px' }),
             backgroundColor: '#FF00FF',
             padding: 0,
-            position: 'absolute',
-          },
+            position: 'absolute'
+          }
         },
         ChatMessage: {
           root: { ...slotLabelStyles('chat-message-root'), backgroundColor: '#87CEFA' },
           author: ({ props: { mine } }) => ({
             ...(!mine && {
               ...slotLabelStyles('author', {}, { display: 'inline-block' }),
-              backgroundColor: '#E0FFFF',
-            }),
+              backgroundColor: '#E0FFFF'
+            })
           }),
           content: { ...slotLabelStyles('content'), backgroundColor: '#F08080' },
           timestamp: {
             ...slotLabelStyles('timestamp', {}, { display: 'inline-block' }),
-            backgroundColor: '#FFFFE0',
+            backgroundColor: '#FFFFE0'
           },
           badge: {
-            ...slotLabelStyles(
-              'badge',
-              { textAlign: 'center', left: '0px' },
-              { position: 'absolute', overflow: 'visible' },
-            ),
-            backgroundColor: '#FFFF00',
+            ...slotLabelStyles('badge', { textAlign: 'center', left: '0px' }, { position: 'absolute', overflow: 'visible' }),
+            backgroundColor: '#FFFF00'
           },
           reactionGroup: {
             ...slotLabelStyles('reactions', {}, { padding: '8px' }),
-            backgroundColor: '#FFFFE0',
-          },
-        },
+            backgroundColor: '#FFFFE0'
+          }
+        }
       },
       componentVariables: {
         ChatMessage: siteVars => ({
           content: {
-            focusOutlineColor: siteVars.colors.red[400],
-          },
-        }),
-      },
+            focusOutlineColor: siteVars.colors.red[400]
+          }
+        })
+      }
     }}
   >
     <Chat
@@ -112,10 +101,10 @@ const ChatMessageExampleStyled = () => (
                 badgePosition="start"
                 reactionGroup={reactions}
               />
-            ),
+            )
           },
           contentPosition: 'end',
-          key: 'message-id-1',
+          key: 'message-id-1'
         },
         {
           key: 'message-id-2',
@@ -128,11 +117,11 @@ const ChatMessageExampleStyled = () => (
               badge={{ icon: 'exclamation-circle' }}
               reactionGroup={reactions}
             />
-          ),
-        },
+          )
+        }
       ]}
     />
   </Provider>
-)
+);
 
-export default ChatMessageExampleStyled
+export default ChatMessageExampleStyled;

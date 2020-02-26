@@ -63,7 +63,11 @@ export class FabricBase extends React.Component<
   public componentDidMount(): void {
     const win = getWindow(this._rootElement.current);
     if (win) {
-      this._disposables.push(on(win, 'mousedown', this._onMouseDown, true), on(win, 'keydown', this._onKeyDown, true));
+      this._disposables.push(
+        on(win, 'mousedown', this._onMouseDown, true),
+        on(win, 'keydown', this._onKeyDown, true),
+        on(win, 'pointerdown', this._onPointerDown, true)
+      );
     }
     this._addClassNameToBody();
   }
@@ -103,7 +107,14 @@ export class FabricBase extends React.Component<
     this.setState({ isFocusVisible: false });
   };
 
+  private _onPointerDown = (ev: PointerEvent): void => {
+    if (ev.pointerType !== 'mouse') {
+      this.setState({ isFocusVisible: false });
+    }
+  };
+
   private _onKeyDown = (ev: KeyboardEvent): void => {
+    // tslint:disable-next-line:deprecation
     if (isDirectionalKeyCode(ev.which)) {
       this.setState({ isFocusVisible: true });
     }

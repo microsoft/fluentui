@@ -105,6 +105,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       >
         {/*Primary Items*/}
         <OverflowSet
+          // tslint:disable-next-line:deprecation
           componentRef={this._resolveRef('_overflowSet')}
           className={css(this._classNames.primarySet)}
           doNotContainWithinFocusZone={true}
@@ -135,6 +136,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       return item.onRender(item, () => undefined);
     }
 
+    // tslint:disable-next-line:deprecation
     const itemText = item.text || item.name;
     const rootStyles: IStyle = {
       height: '100%'
@@ -191,6 +193,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {
     return ev => {
       // inactive is deprecated. remove check in 7.0
+      // tslint:disable-next-line:deprecation
       if (item.inactive) {
         return;
       }

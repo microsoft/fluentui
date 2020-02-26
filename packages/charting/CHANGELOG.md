@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 20 Feb 2020 12:20:16 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 0.140.3
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Enable keyboard accessibility for Donut chart (v-satgar@microsoft.com)
 ## 0.140.0
 Thu, 20 Feb 2020 12:20:16 GMT
 

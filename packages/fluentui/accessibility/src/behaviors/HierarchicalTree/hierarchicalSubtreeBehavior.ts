@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -9,16 +9,16 @@ import { Accessibility } from '../../types'
 const hierarchicalSubtreeBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'group',
-    },
+      role: 'group'
+    }
   },
   keyActions: {
     root: {
       expandSiblings: {
-        keyCombinations: [{ keyCode: keyboardKey['*'] }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey['*'] }]
+      }
+    }
+  }
+});
 
-export default hierarchicalSubtreeBehavior
+export default hierarchicalSubtreeBehavior;

@@ -1,15 +1,15 @@
-import * as React from 'react'
-import { Toolbar, Button, ToolbarMenu } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar, Button, ToolbarMenu } from '@fluentui/react';
 
 export const selectors = {
   beforeToolbarId: 'before',
   afterToolbarId: 'after',
   triggerButtonId: 'trigger',
-  toolbarMenu: ToolbarMenu.className,
-}
+  toolbarMenu: ToolbarMenu.className
+};
 
 const ToolbarExampleMenuShorthand = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <>
@@ -18,7 +18,7 @@ const ToolbarExampleMenuShorthand = () => {
         items={[
           {
             key: 'highlight',
-            icon: 'highlight',
+            icon: 'highlight'
           },
           {
             key: 'more',
@@ -30,23 +30,23 @@ const ToolbarExampleMenuShorthand = () => {
                 { key: 'play', content: 'Play', icon: 'play' },
                 { key: 'pause', content: 'Pause', icon: 'pause' },
                 { key: 'divider', kind: 'divider' },
-                'Without icon',
-              ],
+                'Without icon'
+              ]
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              setMenuOpen(menuOpen)
-            },
+              setMenuOpen(menuOpen);
+            }
           },
           {
             key: 'bold',
-            icon: 'bold',
-          },
+            icon: 'bold'
+          }
         ]}
       />
       <Button id={selectors.afterToolbarId}>After</Button>
     </>
-  )
-}
+  );
+};
 
-export default ToolbarExampleMenuShorthand
+export default ToolbarExampleMenuShorthand;

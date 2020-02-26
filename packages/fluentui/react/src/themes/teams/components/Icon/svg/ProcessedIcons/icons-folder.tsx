@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { TeamsProcessedSvgIconSpec } from '../types'
+import * as React from 'react';
+import { TeamsProcessedSvgIconSpec } from '../types';
 
 export default {
   icon: ({ classes }) => (
@@ -18,10 +18,10 @@ export default {
   ),
   styles: {
     brownPath: () => ({
-      fill: '#ddaf52',
+      fill: '#ddaf52'
     }),
     otherBrownPath: () => ({
-      fill: '#efd084',
-    }),
-  },
-} as TeamsProcessedSvgIconSpec
+      fill: '#efd084'
+    })
+  }
+} as TeamsProcessedSvgIconSpec;

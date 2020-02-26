@@ -1,36 +1,36 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface ChatMessageVariables {
-  actionMenuBoxShadow: string
-  actionMenuPositionRight: string
-  actionMenuPositionTop: string
-  backgroundColor: string
-  backgroundColorMine: string
-  borderRadius: string
-  color: string
-  offset: string
-  padding: string
-  authorMarginRight: string
-  authorColor: string
-  authorFontWeight: number
-  headerMarginBottom: string
-  contentColor: string
-  linkColor: string
-  linkColorMine: string
-  border: string
-  badgeShadow: string
-  isImportant: boolean
-  hasMention: boolean
-  hasMentionColor: string
-  hasMentionNubbinColor: string
-  isImportantColor: string
-  badgeTextColor: string
-  reactionGroupMarginLeft: string
-  reactionGroupBorderColor: string
-  showActionMenu?: boolean
-  timestampColorMine: string
-  zIndex: number
-  overlayZIndex: number
+  actionMenuBoxShadow: string;
+  actionMenuPositionRight: string;
+  actionMenuPositionTop: string;
+  backgroundColor: string;
+  backgroundColorMine: string;
+  borderRadius: string;
+  color: string;
+  offset: string;
+  padding: string;
+  authorMarginRight: string;
+  authorColor: string;
+  authorFontWeight: number;
+  headerMarginBottom: string;
+  contentColor: string;
+  linkColor: string;
+  linkColorMine: string;
+  border: string;
+  badgeShadow: string;
+  isImportant: boolean;
+  hasMention: boolean;
+  hasMentionColor: string;
+  hasMentionNubbinColor: string;
+  isImportantColor: string;
+  badgeTextColor: string;
+  reactionGroupMarginLeft: string;
+  reactionGroupBorderColor: string;
+  showActionMenu?: boolean;
+  timestampColorMine: string;
+  zIndex: number;
+  overlayZIndex: number;
 }
 
 export default (siteVars): ChatMessageVariables => ({
@@ -63,5 +63,5 @@ export default (siteVars): ChatMessageVariables => ({
   showActionMenu: undefined,
   timestampColorMine: siteVars.colors.grey[500],
   zIndex: siteVars.zIndexes.foreground,
-  overlayZIndex: siteVars.zIndexes.overlay,
-})
+  overlayZIndex: siteVars.zIndexes.overlay
+});

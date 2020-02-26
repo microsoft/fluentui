@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -15,43 +15,43 @@ import { Accessibility } from '../../types'
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'content'.
  */
 const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props => {
-  const isHeading = /(h\d{1})$/.test(props.as)
-  const forcedOpen = props.active && !props.canBeCollapsed
+  const isHeading = /(h\d{1})$/.test(props.as);
+  const forcedOpen = props.active && !props.canBeCollapsed;
   return {
     attributes: {
       root: {
         role: isHeading ? undefined : 'heading',
-        'aria-level': isHeading ? undefined : 3,
+        'aria-level': isHeading ? undefined : 3
       },
       content: {
         'aria-expanded': !!props.active,
         'aria-disabled': !!(forcedOpen || props.disabled),
         'aria-controls': props.accordionContentId,
         role: 'button',
-        tabIndex: 0,
-      },
+        tabIndex: 0
+      }
     },
     keyActions: {
       content: {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-        },
-      },
-    },
-  }
-}
+          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        }
+      }
+    }
+  };
+};
 
-export default accordionTitleBehavior
+export default accordionTitleBehavior;
 
 type AccordionTitleBehaviorProps = {
   /** Element type. */
-  as?: string
+  as?: string;
   /** Whether or not the title is in the open state. */
-  active?: boolean
+  active?: boolean;
   /** If at least one panel needs to stay active and this title does not correspond to the last active one. */
-  canBeCollapsed?: boolean
+  canBeCollapsed?: boolean;
   /** An accordion title can show it is currently unable to be interacted with. */
-  disabled?: boolean
+  disabled?: boolean;
   /** Id of the content it owns. */
-  accordionContentId?: string
-}
+  accordionContentId?: string;
+};

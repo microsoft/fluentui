@@ -19,7 +19,7 @@ const getPointerOffset = (placement: PopperChildrenProps['placement'], v: Toolti
 
 const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v, rtl }): ICSSInJSStyle => {
-    const svgPointerStyles = getPointerStyles(getPointerOffset(p.placement, v), v.pointerMargin, rtl, p.placement, true);
+    const svgPointerStyles = getPointerStyles(getPointerOffset(p.placement, v), v.pointerGap, v.pointerMargin, rtl, p.placement, true);
 
     return {
       borderRadius: v.borderRadius,
@@ -40,7 +40,7 @@ const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProp
     };
   },
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle => {
-    const svgPointerStyles = getPointerStyles(getPointerOffset(p.placement, v), v.pointerMargin, rtl, p.placement, true);
+    const svgPointerStyles = getPointerStyles(getPointerOffset(p.placement, v), v.pointerGap, v.pointerMargin, rtl, p.placement, true);
 
     return {
       display: 'block',

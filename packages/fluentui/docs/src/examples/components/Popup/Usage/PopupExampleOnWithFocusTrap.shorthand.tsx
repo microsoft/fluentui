@@ -1,20 +1,20 @@
-import * as React from 'react'
-import { Alert, Button, Flex, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Alert, Button, Flex, Popup } from '@fluentui/react';
 
 const contentWithButtons = (
   <Flex gap="gap.smaller">
     <Button>First</Button>
     <Button primary>Second</Button>
   </Flex>
-)
+);
 
 class PopupExampleOnWithFocusTrap extends React.Component {
-  state = { alert: false }
+  state = { alert: false };
 
   showAlert = () => {
-    this.setState({ alert: true })
-    setTimeout(() => this.setState({ alert: false }), 2000)
-  }
+    this.setState({ alert: true });
+    setTimeout(() => this.setState({ alert: false }), 2000);
+  };
 
   render() {
     return (
@@ -39,14 +39,7 @@ class PopupExampleOnWithFocusTrap extends React.Component {
             on="focus"
           />
           <Popup
-            trigger={
-              <Button
-                icon="more"
-                content="Context"
-                aria-label="Context button"
-                onClick={this.showAlert}
-              />
-            }
+            trigger={<Button icon="more" content="Context" aria-label="Context button" onClick={this.showAlert} />}
             content={contentWithButtons}
             trapFocus
             on="context"
@@ -54,8 +47,8 @@ class PopupExampleOnWithFocusTrap extends React.Component {
         </Flex>
         {this.state.alert && <Alert warning content="Click!" />}
       </>
-    )
+    );
   }
 }
 
-export default PopupExampleOnWithFocusTrap
+export default PopupExampleOnWithFocusTrap;

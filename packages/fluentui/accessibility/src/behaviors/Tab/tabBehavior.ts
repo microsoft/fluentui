@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility, AccessibilityAttributes } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
  * @specification
@@ -20,7 +20,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types'
 const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   attributes: {
     wrapper: {
-      role: 'presentation',
+      role: 'presentation'
     },
     root: {
       role: 'tab',
@@ -31,27 +31,24 @@ const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
       'aria-describedby': props['aria-describedby'],
       'aria-controls': props['aria-controls'],
       'aria-disabled': props['disabled'],
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
-    },
+      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled
+    }
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
+  }
+});
 
-export default tabBehavior
+export default tabBehavior;
 
 type TabBehaviorProps = {
   /** Indicates if tab is selected. */
-  active?: boolean
+  active?: boolean;
   /** Indicates if tab is disabled. */
-  disabled?: boolean
-} & Pick<
-  AccessibilityAttributes,
-  'aria-label' | 'aria-labelledby' | 'aria-describedby' | 'aria-controls'
->
+  disabled?: boolean;
+} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby' | 'aria-controls'>;

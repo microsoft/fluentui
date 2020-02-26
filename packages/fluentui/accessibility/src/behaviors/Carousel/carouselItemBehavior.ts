@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @specification
@@ -13,23 +13,23 @@ const carouselItemBehavior: Accessibility<CarouselItemProps> = props => ({
     root: {
       role: props.navigation ? 'tabpanel' : 'group',
       'aria-hidden': props.active ? 'false' : 'true',
-      tabIndex: props.active ? 0 : -1,
-    },
+      tabIndex: props.active ? 0 : -1
+    }
   },
 
   keyActions: {
     root: {
       arrowKeysNavigationStopPropagation: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }, { keyCode: keyboardKey.ArrowLeft }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }, { keyCode: keyboardKey.ArrowLeft }]
+      }
+    }
+  }
+});
 
-export default carouselItemBehavior
+export default carouselItemBehavior;
 
 export type CarouselItemProps = {
   /** If item is visible in the carousel. */
-  active?: boolean
-  navigation?: boolean
-}
+  active?: boolean;
+  navigation?: boolean;
+};

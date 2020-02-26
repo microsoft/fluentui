@@ -1,17 +1,17 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react'
-import { useSelectKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react';
+import { useSelectKnob } from '@fluentui/docs-components';
 
 const TooltipExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'above-start',
-    values: positionAndAlignValues,
-  })
+    values: positionAndAlignValues
+  });
 
-  const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment]
-  const buttonStyles = { padding: paddings[positionAndAlign], height: '38px', minWidth: '64px' }
+  const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
+  const buttonStyles = { padding: paddings[positionAndAlign], height: '38px', minWidth: '64px' };
 
   return (
     <Grid columns="1" variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
@@ -23,10 +23,10 @@ const TooltipExamplePosition = () => {
         content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}
       />
     </Grid>
-  )
-}
+  );
+};
 
-export default TooltipExamplePosition
+export default TooltipExamplePosition;
 
 const positionAndAlignValues = [
   'above-start',
@@ -40,15 +40,15 @@ const positionAndAlignValues = [
   'before-bottom',
   'after-top',
   'after-center',
-  'after-bottom',
-]
+  'after-bottom'
+];
 
 const icons: Record<Position, string> = {
   above: 'arrow circle up',
   below: 'arrow circle down',
   before: 'arrow circle left',
-  after: 'arrow circle right',
-}
+  after: 'arrow circle right'
+};
 
 const paddings: Record<string, React.CSSProperties['padding']> = {
   'above-start': '5px 42px 18px 5px',
@@ -62,5 +62,5 @@ const paddings: Record<string, React.CSSProperties['padding']> = {
   'before-bottom': '18px 42px 5px 5px',
   'after-top': '5px 5px 18px 42px',
   'after-center': '5px 5px 5px 42px',
-  'after-bottom': '18px 5px 5px 42px',
-}
+  'after-bottom': '18px 5px 5px 42px'
+};

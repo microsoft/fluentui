@@ -1,22 +1,19 @@
-import * as React from 'react'
-import { FontWeightProperty } from 'csstype'
-import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { FontWeightProperty } from 'csstype';
+import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react';
 
-import { MentionsContainerProps } from './MentionsEditor'
+import { MentionsContainerProps } from './MentionsEditor';
 
 type RenderItem = {
-  Item: React.ReactType
-  props: DropdownItemProps
-  fontWeight: FontWeightProperty
-}
+  Item: React.ReactType;
+  props: DropdownItemProps;
+  fontWeight: FontWeightProperty;
+};
 
 const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props => {
-  const { searchQuery, items, onOpenChange, onSearchQueryChange, onInputKeyDown } = props
+  const { searchQuery, items, onOpenChange, onSearchQueryChange, onInputKeyDown } = props;
 
-  const renderItem = React.useCallback(
-    (args: RenderItem) => getCustomItem({ ...args, searchQuery }),
-    [searchQuery],
-  )
+  const renderItem = React.useCallback((args: RenderItem) => getCustomItem({ ...args, searchQuery }), [searchQuery]);
 
   return (
     <Provider.Consumer
@@ -27,15 +24,11 @@ const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props 
           search
           position="above"
           items={items}
-          renderItem={
-            searchQuery
-              ? (Item, props) => renderItem({ Item, props, fontWeight: siteVars.fontWeightBold })
-              : undefined
-          }
+          renderItem={searchQuery ? (Item, props) => renderItem({ Item, props, fontWeight: siteVars.fontWeightBold }) : undefined}
           toggleIndicator={null}
           searchInput={{
             input: { autoFocus: true, size: searchQuery.length + 1 },
-            onInputKeyDown,
+            onInputKeyDown
           }}
           onOpenChange={onOpenChange}
           onSearchQueryChange={onSearchQueryChange}
@@ -43,25 +36,20 @@ const MentionsDropdown: React.FunctionComponent<MentionsContainerProps> = props 
         />
       )}
     />
-  )
-}
+  );
+};
 
-const getCustomItem = (args: {
-  Item: React.ReactType
-  props: DropdownItemProps
-  searchQuery: string
-  fontWeight: FontWeightProperty
-}) => {
-  const { Item, props, searchQuery, fontWeight } = args
-  const { header, ...rest } = props
+const getCustomItem = (args: { Item: React.ReactType; props: DropdownItemProps; searchQuery: string; fontWeight: FontWeightProperty }) => {
+  const { Item, props, searchQuery, fontWeight } = args;
+  const { header, ...rest } = props;
 
-  if (!header || typeof header !== 'string') return <Item {...props} />
+  if (!header || typeof header !== 'string') return <Item {...props} />;
 
-  const queryStartIndex = header.indexOf(searchQuery)
+  const queryStartIndex = header.indexOf(searchQuery);
 
-  if (queryStartIndex < 0) return <Item {...props} />
+  if (queryStartIndex < 0) return <Item {...props} />;
 
-  const queryEndIndex = queryStartIndex + searchQuery.length
+  const queryEndIndex = queryStartIndex + searchQuery.length;
 
   return (
     <Item
@@ -74,7 +62,7 @@ const getCustomItem = (args: {
       }
       {...rest}
     />
-  )
-}
+  );
+};
 
-export default MentionsDropdown
+export default MentionsDropdown;

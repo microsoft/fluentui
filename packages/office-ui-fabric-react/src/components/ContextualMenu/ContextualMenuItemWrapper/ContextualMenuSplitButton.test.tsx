@@ -8,6 +8,7 @@ import { ContextualMenuSplitButton } from './ContextualMenuSplitButton';
 describe('ContextualMenuSplitButton', () => {
   describe('creates a normal split button', () => {
     let menuItem: IContextualMenuItem;
+    // tslint:disable-next-line:deprecation
     let menuClassNames: IMenuItemClassNames;
 
     beforeEach(() => {
@@ -49,6 +50,7 @@ describe('ContextualMenuSplitButton', () => {
   });
 });
 
+// tslint:disable-next-line:deprecation
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',

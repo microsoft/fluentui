@@ -1,4 +1,9 @@
-<div id="metadata" title="Home - Office UI Fabric" description="The official front-end framework for building experiences that fit seamlessly into Office and Office 365." style="visibility:hidden"></div>
+<div
+  id="metadata"
+  title="Home - Office UI Fabric"
+  description="The official front-end framework for building experiences that fit seamlessly into Office and Office 365."
+  style="visibility:hidden"
+></div>
 <style>
   body,
   html {
@@ -46,9 +51,9 @@
   } else {
     var fabricVersions = [5, 6, 7];
 
-    var fabricVersion = Number(
-      getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
-    );
+    var fabricVersion =
+      getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1];
+    fabricVersion = Number(fabricVersion);
 
     if (fabricVersions.indexOf(fabricVersion) > -1) {
       window.sessionStorage.setItem('fabricVer', fabricVersion);

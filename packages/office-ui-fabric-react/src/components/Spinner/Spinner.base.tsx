@@ -12,6 +12,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
   };
 
   public render() {
+    // tslint:disable-next-line:deprecation
     const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
     const statusMessage = ariaLabel;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['size']);
@@ -20,6 +21,7 @@ export class SpinnerBase extends React.Component<ISpinnerProps, any> {
     // we'll map SpinnerType to its equivalent SpinnerSize and pass that in. Once SpinnerType finally goes away we should delete this.
     let styleSize = size;
     if (styleSize === undefined && type !== undefined) {
+      // tslint:disable-next-line:deprecation
       styleSize = type === SpinnerType.large ? SpinnerSize.large : SpinnerSize.medium;
     }
 

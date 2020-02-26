@@ -15,7 +15,7 @@ const queue = new PQueue({ concurrency: numberOfCpus });
 if (runOnAllFiles) {
   // Run on groups of files so that the operations can run in parallel
   const root = findGitRoot();
-  queue.add(() => runPrettierForFolder(root, true));
+  queue.add(() => runPrettierForFolder(root, true, true));
   queue.addAll(['apps', 'packages/!(fluentui)', 'packages/fluentui', '{.*,scripts,typings}'].map(name => () => runPrettierForFolder(name)));
 } else {
   const prettierIntroductionCommit = 'HEAD~1';

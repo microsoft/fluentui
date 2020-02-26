@@ -1,8 +1,8 @@
-import { Accessibility } from '../../types'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { FocusZoneDirection } from '../../focusZone/types'
-import * as keyboardKey from 'keyboard-key'
-import gridHeaderCellBehavior from './gridHeaderCellBehavior'
+import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { FocusZoneDirection } from '../../focusZone/types';
+import * as keyboardKey from 'keyboard-key';
+import gridHeaderCellBehavior from './gridHeaderCellBehavior';
 
 /**
  * @specification
@@ -18,26 +18,26 @@ const gridHeaderRowBehavior: Accessibility = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
-      role: 'row',
-    },
+      role: 'row'
+    }
   },
   focusZone: {
     props: {
       direction: FocusZoneDirection.horizontal,
       shouldFocusInnerElementWhenReceivedFocus: true,
-      shouldResetActiveElementWhenTabFromZone: true,
-    },
+      shouldResetActiveElementWhenTabFromZone: true
+    }
   },
   keyActions: {
     root: {
       unsetRowTabbable: {
-        keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }],
-      },
-    },
+        keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }]
+      }
+    }
   },
   childBehaviors: {
-    cell: gridHeaderCellBehavior,
-  },
-})
+    cell: gridHeaderCellBehavior
+  }
+});
 
-export default gridHeaderRowBehavior
+export default gridHeaderRowBehavior;

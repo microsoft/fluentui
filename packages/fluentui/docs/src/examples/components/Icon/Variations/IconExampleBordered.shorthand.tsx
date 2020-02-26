@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Icon } from '@fluentui/react';
 
 const IconExampleBordered = () => (
   <Flex gap="gap.smaller">
@@ -12,6 +12,6 @@ const IconExampleBordered = () => (
     <Icon name="translation" bordered />
     <Icon name="star outline" bordered />
   </Flex>
-)
+);
 
-export default IconExampleBordered
+export default IconExampleBordered;

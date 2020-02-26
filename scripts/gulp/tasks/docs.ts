@@ -75,9 +75,9 @@ const markdownSrc = [
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-info') })
+  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
     .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
-    .pipe(dest(paths.docsSrc('componentInfo')))
+    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() }))
 );
 
 task('build:docs:component-menu', () =>
@@ -101,13 +101,13 @@ task('build:docs:example-menu', () =>
 );
 
 task('build:docs:example-sources', () =>
-  src(examplesSrc, { since: lastRun('build:docs:example-sources') })
+  src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
     .pipe(
       cache(gulpExampleSource(), {
         name: 'exampleSources'
       })
     )
-    .pipe(dest(paths.docsSrc('exampleSources')))
+    .pipe(dest(paths.docsSrc('exampleSources'), { cwd: paths.base() }))
 );
 
 task(

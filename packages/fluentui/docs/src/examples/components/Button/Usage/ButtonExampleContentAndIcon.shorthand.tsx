@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex } from '@fluentui/react';
 
 const ButtonExampleContentAndIcon = () => (
   <Flex gap="gap.large">
@@ -7,6 +7,6 @@ const ButtonExampleContentAndIcon = () => (
     <Button icon="call-video" content="Join call" iconPosition="after" />
     <Button icon="call-video" content="Join call" text />
   </Flex>
-)
+);
 
-export default ButtonExampleContentAndIcon
+export default ButtonExampleContentAndIcon;

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Fri, 21 Feb 2020 12:20:14 GMT",
+      "tag": "@uifabric/utilities_v7.12.4",
+      "version": "7.12.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "styled: do not create new styles function if styles prop is not changed",
+            "author": "xgao@microsoft.com",
+            "commit": "33fd9733154fab69a3ed29f39fea34d8f07bc632"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Feb 2020 12:20:16 GMT",
       "tag": "@uifabric/utilities_v7.12.3",
       "version": "7.12.3",

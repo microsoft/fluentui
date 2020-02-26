@@ -96,7 +96,8 @@ export function styled<
 
     private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
       // tslint:disable-next-line:no-any
-      if (!this._styles || customizedStyles !== (this._styles as any).__cachedInputs__[1] || !!this.props.styles) {
+      const cache = (this._styles && (this._styles as any).__cachedInputs__) || [];
+      if (!this._styles || customizedStyles !== cache[1] || this.props.styles !== cache[2]) {
         // Cache the customized styles.
         // this._customizedStyles = customizedStyles;
 

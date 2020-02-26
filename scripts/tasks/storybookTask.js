@@ -1,11 +1,8 @@
-const { resolveCwd, argv } = require('just-scripts');
+const { argv } = require('just-scripts');
+const fs = require('fs');
 const path = require('path');
 
 const storybook = require('@storybook/react/standalone');
-
-module.exports.storybookConfigExists = function storybookConfigExists() {
-  return !!resolveCwd('./.storybook/config.js');
-};
 
 module.exports.startStorybookTask = function startStorybookTask(options) {
   options = options || {};
@@ -16,10 +13,12 @@ module.exports.startStorybookTask = function startStorybookTask(options) {
     quiet = options.quiet || quiet;
     ci = options.ci || ci;
 
+    const localConfigDir = path.join(process.cwd(), '.storybook');
+
     await storybook({
       mode: 'dev',
       staticDir: [path.join(process.cwd(), 'static')],
-      configDir: path.join(process.cwd(), '.storybook'),
+      configDir: fs.existsSync(localConfigDir) ? localConfigDir : path.resolve(__dirname, '../../packages/examples/.storybook'),
       port: port || 3000,
       quiet,
       ci

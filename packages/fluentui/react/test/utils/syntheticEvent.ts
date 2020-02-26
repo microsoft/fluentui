@@ -7,7 +7,7 @@
  * https://facebook.github.io/react/docs/events.html
  */
 
-const noop = () => undefined
+const noop = () => undefined;
 
 const baseShape = {
   bubbles: null,
@@ -24,8 +24,8 @@ const baseShape = {
   isPropagationStopped: noop,
   target: null,
   timeStamp: null,
-  type: null,
-}
+  type: null
+};
 
 // ------------------------------------
 // Event Types
@@ -33,11 +33,11 @@ const baseShape = {
 export const types = {
   clipboard: {
     listeners: ['onCopy', 'onCut', 'onPaste'],
-    eventShape: { ...baseShape, clipboardData: null },
+    eventShape: { ...baseShape, clipboardData: null }
   },
   composition: {
     listeners: ['onCompositionEnd', 'onCompositionStart', 'onCompositionUpdate'],
-    eventShape: { ...baseShape, data: null },
+    eventShape: { ...baseShape, data: null }
   },
   keyboard: {
     listeners: ['onKeyDown', 'onKeyPress', 'onKeyUp'],
@@ -54,16 +54,16 @@ export const types = {
       metaKey: null,
       repeat: null,
       shiftKey: null,
-      which: null,
-    },
+      which: null
+    }
   },
   focus: {
     listeners: ['onFocus', 'onBlur'],
-    eventShape: { ...baseShape, relatedTarget: null },
+    eventShape: { ...baseShape, relatedTarget: null }
   },
   form: {
     listeners: ['onChange', 'onInput', 'onSubmit'],
-    eventShape: { ...baseShape },
+    eventShape: { ...baseShape }
   },
   mouse: {
     listeners: [
@@ -84,7 +84,7 @@ export const types = {
       'onMouseMove',
       'onMouseOut',
       'onMouseOver',
-      'onMouseUp',
+      'onMouseUp'
     ],
     eventShape: {
       ...baseShape,
@@ -101,12 +101,12 @@ export const types = {
       relatedTarget: null,
       screenX: null,
       screenY: null,
-      shiftKey: null,
-    },
+      shiftKey: null
+    }
   },
   selection: {
     listeners: ['onSelect'],
-    eventShape: { ...baseShape },
+    eventShape: { ...baseShape }
   },
   touch: {
     listeners: ['onTouchCancel', 'onTouchEnd', 'onTouchMove', 'onTouchStart'],
@@ -119,16 +119,16 @@ export const types = {
       metaKey: null,
       shiftKey: null,
       targetTouches: null,
-      touches: null,
-    },
+      touches: null
+    }
   },
   ui: {
     listeners: ['onScroll'],
-    eventShape: { ...baseShape, detail: null, view: null },
+    eventShape: { ...baseShape, detail: null, view: null }
   },
   wheel: {
     listeners: ['onWheel'],
-    eventShape: { ...baseShape, deltaMode: null, deltaX: null, deltaY: null, deltaZ: null },
+    eventShape: { ...baseShape, deltaMode: null, deltaX: null, deltaY: null, deltaZ: null }
   },
   media: {
     listeners: [
@@ -154,23 +154,23 @@ export const types = {
       'onSuspend',
       'onTimeUpdate',
       'onVolumeChange',
-      'onWaiting',
+      'onWaiting'
     ],
-    eventShape: { ...baseShape },
+    eventShape: { ...baseShape }
   },
   image: {
     listeners: ['onLoad', 'onError'],
-    eventShape: { ...baseShape },
+    eventShape: { ...baseShape }
   },
   animation: {
     listeners: ['onAnimationStart', 'onAnimationEnd', 'onAnimationIteration'],
-    eventShape: { ...baseShape, animationName: null, pseudoElement: null, elapsedTime: null },
+    eventShape: { ...baseShape, animationName: null, pseudoElement: null, elapsedTime: null }
   },
   transition: {
     listeners: ['onTransitionEnd'],
-    eventShape: { ...baseShape, propertyName: null, pseudoElement: null, elapsedTime: null },
-  },
-}
+    eventShape: { ...baseShape, propertyName: null, pseudoElement: null, elapsedTime: null }
+  }
+};
 // ------------------------------------
 // Methods
 // ------------------------------------
@@ -181,11 +181,11 @@ export const types = {
  * @param type - The string name of the event shape or actual event shape to compare against.
  */
 export const hasShape = (event: object, type: string | object): boolean => {
-  const shape = typeof type === 'string' ? types[type].shape : type
-  return Object.keys(event).every(key => key in shape)
-}
+  const shape = typeof type === 'string' ? types[type].shape : type;
+  return Object.keys(event).every(key => key in shape);
+};
 
 export default {
   types,
-  hasShape,
-}
+  hasShape
+};

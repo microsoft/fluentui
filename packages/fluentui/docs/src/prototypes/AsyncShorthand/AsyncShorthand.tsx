@@ -1,6 +1,6 @@
-import * as _ from 'lodash'
-import * as React from 'react'
-import { Chat, Menu, Popup, Avatar } from '@fluentui/react'
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Chat, Menu, Popup, Avatar } from '@fluentui/react';
 
 /**
  * This example shows how to create custom Chat Messages.
@@ -10,28 +10,28 @@ import { Chat, Menu, Popup, Avatar } from '@fluentui/react'
 
 // Mock async data container component
 class AsyncData extends React.Component<{ render: Function; data?: any }> {
-  state = { loading: true }
+  state = { loading: true };
 
   componentDidMount() {
-    setTimeout(() => this.setState({ loading: false }), _.random(500, 2000))
+    setTimeout(() => this.setState({ loading: false }), _.random(500, 2000));
   }
 
   render() {
-    const { loading } = this.state
-    const { render, data } = this.props
+    const { loading } = this.state;
+    const { render, data } = this.props;
 
-    return render(loading ? null : data)
+    return render(loading ? null : data);
   }
 }
 
 class CustomChatMessage extends React.Component {
-  state = { open: false }
+  state = { open: false };
 
-  togglePopup = () => this.setState({ open: !this.state.open })
+  togglePopup = () => this.setState({ open: !this.state.open });
 
   renderMenuItem = (MenuItem, props) => {
     if (props.icon !== 'thumbs up') {
-      return <MenuItem {...props} />
+      return <MenuItem {...props} />;
     }
 
     return (
@@ -43,21 +43,14 @@ class CustomChatMessage extends React.Component {
           <AsyncData
             data={['User 1', 'User 2', 'User 3']}
             render={data => {
-              return !data ? '...loading' : data.map(user => <div key={user}>{user}</div>)
+              return !data ? '...loading' : data.map(user => <div key={user}>{user}</div>);
             }}
           />
         }
-        trigger={
-          <AsyncData
-            data={3}
-            render={data => (
-              <MenuItem {...props} icon="thumbs up" content={data} onClick={this.togglePopup} />
-            )}
-          />
-        }
+        trigger={<AsyncData data={3} render={data => <MenuItem {...props} icon="thumbs up" content={data} onClick={this.togglePopup} />} />}
       />
-    )
-  }
+    );
+  };
 
   render() {
     return (
@@ -72,12 +65,12 @@ class CustomChatMessage extends React.Component {
             right: '10px',
             background: '#fff',
             boxShadow: '0px 2px 4px #ddd',
-            opacity: 0,
+            opacity: 0
           },
 
           ':hover': {
-            '& .actions': { opacity: 1 },
-          },
+            '& .actions': { opacity: 1 }
+          }
         }}
         author="Jane Doe"
         timestamp="Yesterday, 10:15 PM"
@@ -92,13 +85,13 @@ class CustomChatMessage extends React.Component {
               items={[
                 { key: 'a', icon: 'thumbs up', children: this.renderMenuItem },
                 { key: 'b', icon: 'user', children: this.renderMenuItem },
-                { key: 'c', icon: 'ellipsis horizontal', children: this.renderMenuItem },
+                { key: 'c', icon: 'ellipsis horizontal', children: this.renderMenuItem }
               ]}
             />
           </div>
         }
       />
-    )
+    );
   }
 }
 
@@ -114,7 +107,7 @@ const gutterContent = (
             render={statusData =>
               renderStatus({
                 color: statusData === 'available' ? 'green' : undefined,
-                icon: statusData === 'available' ? 'check' : undefined,
+                icon: statusData === 'available' ? 'check' : undefined
               })
             }
           />
@@ -122,16 +115,16 @@ const gutterContent = (
       />
     )}
   />
-)
+);
 
 const AsyncShorthand = () => (
   <Chat
     items={[
       { key: 'a', gutter: gutterContent, message: <CustomChatMessage /> },
       { key: 'b', gutter: gutterContent, message: <CustomChatMessage /> },
-      { key: 'c', gutter: gutterContent, message: <CustomChatMessage /> },
+      { key: 'c', gutter: gutterContent, message: <CustomChatMessage /> }
     ]}
   />
-)
+);
 
-export default AsyncShorthand
+export default AsyncShorthand;

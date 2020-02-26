@@ -1,9 +1,8 @@
-import { Toolbar } from '@fluentui/react'
+import { Toolbar } from '@fluentui/react';
 
 const selectors = {
-  item: (itemIndex: number) =>
-    `.${Toolbar.className} .${Toolbar.Item.className}:nth-child(${itemIndex})`,
-}
+  item: (itemIndex: number) => `.${Toolbar.className} .${Toolbar.Item.className}:nth-child(${itemIndex})`
+};
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -14,8 +13,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Hovers 1st item (show tooltip)')
         .click(selectors.item(1))
         .keys(selectors.item(1), keys.rightArrow)
-        .snapshot('Navigates to next item (shows tooltip)'),
-  ],
-}
+        .snapshot('Navigates to next item (shows tooltip)')
+  ]
+};
 
-export default config
+export default config;

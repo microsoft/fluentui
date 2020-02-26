@@ -1,10 +1,9 @@
-import { List } from '@fluentui/react'
+import { List } from '@fluentui/react';
 
 const selectors = {
   list: `.${List.className}`,
-  item: (itemIndex: number) =>
-    `.${List.className} .${List.Item.className}:nth-of-type(${itemIndex})`,
-}
+  item: (itemIndex: number) => `.${List.className} .${List.Item.className}:nth-of-type(${itemIndex})`
+};
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -19,8 +18,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Highlights another item')
         .keys(selectors.item(2), keys.downArrow)
         .snapshot('Focuses last item using keyboard'),
-    (builder, keys) => builder.keys('body', keys.tab).snapshot('Focuses item'),
-  ],
-}
+    (builder, keys) => builder.keys('body', keys.tab).snapshot('Focuses item')
+  ]
+};
 
-export default config
+export default config;

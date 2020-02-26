@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Tree } from '@fluentui/react'
+import * as React from 'react';
+import { Tree } from '@fluentui/react';
 
 const items = [
   {
@@ -12,9 +12,9 @@ const items = [
         items: [
           {
             id: '3',
-            title: 'one one one',
-          },
-        ],
+            title: 'one one one'
+          }
+        ]
       },
       {
         id: '6',
@@ -22,11 +22,11 @@ const items = [
         items: [
           {
             id: '7',
-            title: 'one two one',
-          },
-        ],
-      },
-    ],
+            title: 'one two one'
+          }
+        ]
+      }
+    ]
   },
   {
     id: '4',
@@ -34,12 +34,12 @@ const items = [
     items: [
       {
         id: '5',
-        title: 'two one',
-      },
-    ],
-  },
-]
+        title: 'two one'
+      }
+    ]
+  }
+];
 
-const TreeExclusiveExample = () => <Tree aria-label="exclusive" items={items} exclusive />
+const TreeExclusiveExample = () => <Tree aria-label="exclusive" items={items} exclusive />;
 
-export default TreeExclusiveExample
+export default TreeExclusiveExample;

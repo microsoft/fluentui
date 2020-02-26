@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { PrototypeSection, ComponentPrototype } from '../Prototypes'
-import BannerAlerts from './BannerAlerts'
+import * as React from 'react';
+import { PrototypeSection, ComponentPrototype } from '../Prototypes';
+import BannerAlerts from './BannerAlerts';
 
 export default () => (
   <PrototypeSection title="Alerts">
@@ -11,4 +11,4 @@ export default () => (
       <BannerAlerts />
     </ComponentPrototype>
   </PrototypeSection>
-)
+);

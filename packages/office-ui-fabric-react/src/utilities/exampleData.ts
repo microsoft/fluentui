@@ -2,6 +2,8 @@
 // This file is not included in the main office-ui-fabric-react bundle.
 // If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
 
+// tslint:disable:deprecation
+
 import { IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 
 const LOREM_IPSUM = (

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
@@ -9,16 +9,8 @@ const Types = () => (
       description="Flex items alignment options."
       examplePath="components/Flex/Types/FlexExampleMediaCard"
     />
-    <ComponentExample
-      title="Input"
-      description="Flex items alignment options."
-      examplePath="components/Flex/Types/FlexExampleInput"
-    />
-    <ComponentExample
-      title="Nav Menu"
-      description="Flex items alignment options."
-      examplePath="components/Flex/Types/FlexExampleNavMenu"
-    />
+    <ComponentExample title="Input" description="Flex items alignment options." examplePath="components/Flex/Types/FlexExampleInput" />
+    <ComponentExample title="Nav Menu" description="Flex items alignment options." examplePath="components/Flex/Types/FlexExampleNavMenu" />
     <ComponentExample
       title="Items Alignment"
       description="Flex items alignment options."
@@ -35,6 +27,6 @@ const Types = () => (
       examplePath="components/Flex/Types/FlexExampleColumns"
     />
   </ExampleSection>
-)
+);
 
-export default Types
+export default Types;

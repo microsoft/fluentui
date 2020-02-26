@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -10,21 +10,21 @@ const alertWarningBehavior: Accessibility<AlertProps> = props => ({
   attributes: {
     body: {
       role: 'alert',
-      'aria-live': 'polite',
+      'aria-live': 'polite'
     },
     dismissAction: {
-      'aria-describedby': props.bodyId,
-    },
-  },
-})
+      'aria-describedby': props.bodyId
+    }
+  }
+});
 
-export default alertWarningBehavior
+export default alertWarningBehavior;
 
 export type AlertProps = {
   /** An alert may be formatted to display a danger message. */
-  danger?: boolean
+  danger?: boolean;
   /** An alert may be formatted to display a warning message. */
-  warning?: boolean
+  warning?: boolean;
   /** Id of the alert body element. */
-  bodyId?: string
-}
+  bodyId?: string;
+};

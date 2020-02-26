@@ -1,11 +1,11 @@
-import { isConformant } from 'test/specs/commonTests'
-import ButtonGroup from 'src/components/Button/ButtonGroup'
-import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp'
-import Button from 'src/components/Button/Button'
+import { isConformant } from 'test/specs/commonTests';
+import ButtonGroup from 'src/components/Button/ButtonGroup';
+import implementsCollectionShorthandProp from '../../commonTests/implementsCollectionShorthandProp';
+import Button from 'src/components/Button/Button';
 
-const buttonGroupImplementsCollectionShorthandProp = implementsCollectionShorthandProp(ButtonGroup)
+const buttonGroupImplementsCollectionShorthandProp = implementsCollectionShorthandProp(ButtonGroup);
 
 describe('ButtonGroup', () => {
-  isConformant(ButtonGroup)
-  buttonGroupImplementsCollectionShorthandProp('buttons', Button)
-})
+  isConformant(ButtonGroup);
+  buttonGroupImplementsCollectionShorthandProp('buttons', Button);
+});
