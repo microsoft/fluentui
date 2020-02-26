@@ -45,7 +45,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
+  "homepage": "https://github.com/microsoft/fluent-ui-react/tree/master/packages/react",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
