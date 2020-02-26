@@ -8,7 +8,6 @@ const { spawnSync } = require('child_process');
 const glob = require('glob');
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-import'));
-console.log(`using temp dir: ${tmp}`);
 
 function git(args, options) {
   args = args || [];
@@ -479,6 +478,13 @@ function runPrettierOnImportedFiles(outputPath, root) {
 }
 
 function importFluent() {
+  // TODO: remove this script at some point after convergence settles.
+  console.error(
+    'With the archival of fluentui repo, this script is now obsolete and should not be executed. It will overwrite all files in packages/fluentui!'
+  );
+  return;
+
+  console.log(`using temp dir: ${tmp}`);
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
 
