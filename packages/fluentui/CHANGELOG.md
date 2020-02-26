@@ -30,6 +30,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Chat`, `ChatItem`, `ChatMessage` components which are passed to styles functions @layershifter ([#2366](https://github.com/microsoft/fluent-ui-react/pull/2366))
 - `sanitize-css` plugin is disabled for production mode by default @layershifter ([#2340](https://github.com/microsoft/fluent-ui-react/pull/2340))
 - Standardise component onChange callback names and test them in `isConformant` @silviuavram ([#2293](https://github.com/microsoft/fluent-ui-react/pull/2293))
+- Renamed `content` classname to `contentWrapper` and changed `content` prop to be `Box` shorthand in `AccordionTitle` @mnajdova ([#2049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
 
 ### Fixes
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
