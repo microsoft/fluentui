@@ -30,8 +30,7 @@
     "perf": "just-scripts e2e:perf",
     "start": "just-scripts storybook:start",
     "start-test": "just-scripts test:watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest:snapshots"
+    "test": "just-scripts test"
   },
   "dependencies": {
     "@fluentui/react-theming": "^0.44.0",

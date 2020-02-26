@@ -25,8 +25,7 @@
     "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
     "lint:old": "tslint -t stylish -p .",
     "start-test": "just-scripts test:watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest:snapshots"
+    "test": "just-scripts test"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
