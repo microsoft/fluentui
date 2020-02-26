@@ -203,7 +203,7 @@ export default () => (
     <CodeSnippet label="App.jsx" value={`<Menu accessibility={overridenMenuBehavior} />`} />
     <p>
       All Fluent UI behaviors implementations can be found on the{' '}
-      {link('GitHub', 'https://github.com/microsoft/fluent-ui-react/tree/master/packages/react/src/utils/accessibility/Behaviors')}.
+      {link('GitHub', 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/accessibility/src/behaviors')}.
     </p>
     <Header as="h4" content="Available Behaviors" />
     <p>

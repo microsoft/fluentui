@@ -116,7 +116,7 @@ export default () => (
       The following props can be applied (
       {link(
         'lookup for API on GitHub',
-        'https://github.com/microsoft/fluent-ui-react/blob/master/packages/react/src/utils/accessibility/FocusZone/FocusZone.types.ts'
+        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusZone.types.ts'
       )}
       ):
     </p>
@@ -164,7 +164,7 @@ export default () => (
       {code('FocusZone')} code on{' '}
       {link(
         'GitHub.',
-        'https://github.com/microsoft/fluent-ui-react/blob/master/packages/react/src/utils/accessibility/FocusZone/FocusZone.tsx'
+        'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-bindings/src/FocusZone/FocusZone.tsx'
       )}
     </p>
   </DocPage>
