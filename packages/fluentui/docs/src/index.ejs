@@ -11,7 +11,7 @@
   <script>
     // Redirect to HTTPs
     // We need poor-mans client side redirects because we persist app router urls in localStorage
-    if (location.hostname === 'microsoft.github.io/fluent-ui-react' && location.protocol !== 'https:') {
+    if (location.hostname === 'fluentsite.z22.web.core.windows.net' && location.protocol !== 'https:') {
       location.href = location.href.replace('http:', 'https:')
     }
     // Apply gh-pages SPA redirect that was applied in 404.html
