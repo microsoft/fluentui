@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Move examples to examples package",
-  "packageName": "@fluentui/react-focus",
-  "email": "elcraig@microsoft.com",
-  "commit": "10d0914fdfaeef69a41db83a57f1da1ee1404040",
-  "dependentChangeType": "patch",
-  "date": "2020-02-24T22:23:55.561Z"
-}

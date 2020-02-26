@@ -207,6 +207,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Method to provide the classnames to style the contextual menu.
    * @deprecated Use `styles` instead to leverage mergeStyles API.
    */
+  // tslint:disable-next-line:deprecation
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
   /** Custom render function for a submenu. */
@@ -401,7 +402,8 @@ export interface IContextualMenuItem {
     iconClassName?: string,
     subMenuClassName?: string,
     primaryDisabled?: boolean
-  ) => IMenuItemClassNames;
+  ) => // tslint:disable-next-line:deprecation
+  IMenuItemClassNames;
 
   /**
    * Optional IContextualMenuItemProps overrides to customize behaviors such as item styling via `styles`.
@@ -413,6 +415,7 @@ export interface IContextualMenuItem {
    * Default value is the `getSplitButtonVerticalDividerClassNames` func defined in `ContextualMenu.classnames.ts`.
    * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
+  // tslint:disable-next-line:deprecation
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
   /**

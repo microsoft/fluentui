@@ -125,6 +125,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
+    // tslint:disable-next-line:deprecation
     if (!this.context.scrollablePane) {
       return true;
     }
@@ -145,6 +146,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyClassName, children } = this.props;
 
+    // tslint:disable-next-line:deprecation
     if (!this.context.scrollablePane) {
       return <div>{this.props.children}</div>;
     }
@@ -193,6 +195,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.setState({ distanceFromTop: distanceFromTop });
   }
 
+  // tslint:disable-next-line:deprecation
   private _getContext = (): IScrollablePaneContext => this.context;
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {

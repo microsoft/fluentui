@@ -125,6 +125,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const {
       className = '',
       elementToFocusOnDismiss,
+      // tslint:disable:deprecation
       firstFocusableSelector,
       focusTrapZoneProps,
       forceFocusInsideTrap,
@@ -132,6 +133,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       headerText,
       headerClassName = '',
       ignoreExternalFocusing,
+      // tslint:enable:deprecation
       isBlocking,
       isFooterAtBottom,
       isLightDismiss,

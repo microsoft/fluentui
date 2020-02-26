@@ -137,7 +137,7 @@ const performBrowserTest = async (publicDirectory: string, listenPort: number) =
 //  - Try and run a build
 task('test:projects:cra-ts', async () => {
   const logger = log('test:projects:cra-ts');
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/cra');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/cra');
 
   logger('STEP 1. Create test React project with TSX scripts..');
 
@@ -166,7 +166,7 @@ task('test:projects:cra-ts', async () => {
 task('test:projects:rollup', async () => {
   const logger = log('test:projects:rollup');
 
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/rollup');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/rollup');
   const tmpDirectory = tmp.dirSync({ prefix: 'project-' }).name;
 
   logger(`✔️Temporary directory was created: ${tmpDirectory}`);
@@ -200,10 +200,39 @@ task('test:projects:rollup', async () => {
   logger(`✔️Browser test was passed`);
 });
 
+task('test:projects:nextjs', async () => {
+  const logger = log('test:projects:nextjs');
+
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/nextjs');
+  const tmpDirectory = tmp.dirSync({ prefix: 'project-' }).name;
+
+  logger(`✔️Temporary directory was created: ${tmpDirectory}`);
+
+  const dependencies = ['next', 'react', 'react-dom'].join(' ');
+  await runIn(tmpDirectory)(`yarn add ${dependencies}`);
+  logger(`✔️Dependencies were installed`);
+
+  const packedPackages = await packProjectPackages(logger);
+  await addResolutionPathsForProjectPackages(tmpDirectory, packedPackages);
+  await runIn(tmpDirectory)(`yarn add ${packedPackages['@fluentui/react']}`);
+  logger(`✔️Fluent UI packages were added to dependencies`);
+
+  fs.mkdirSync(path.resolve(tmpDirectory, 'pages'));
+  fs.copyFileSync(scaffoldPath('index.js'), path.resolve(tmpDirectory, 'pages', 'index.js'));
+  logger(`✔️Source and bundler's config were created`);
+
+  await runIn(tmpDirectory)(`yarn next build`);
+  await runIn(tmpDirectory)(`yarn next export`);
+  logger(`✔️Example project was successfully built: ${tmpDirectory}`);
+
+  await performBrowserTest(path.resolve(tmpDirectory, 'out'), await portfinder.getPortPromise());
+  logger(`✔️Browser test was passed`);
+});
+
 task('test:projects:typings', async () => {
   const logger = log('test:projects:typings');
 
-  const scaffoldPath = paths.base.bind(null, 'build/gulp/tasks/test-projects/typings');
+  const scaffoldPath = paths.base.bind(null, 'scripts/gulp/tasks/test-projects/typings');
   const tmpDirectory = tmp.dirSync({ prefix: 'project-' }).name;
 
   logger(`✔️Temporary directory was created: ${tmpDirectory}`);
@@ -226,4 +255,4 @@ task('test:projects:typings', async () => {
   logger(`✔️Example project was successfully built: ${tmpDirectory}`);
 });
 
-task('test:projects', series('bundle:all-packages', 'test:projects:cra-ts', 'test:projects:rollup', 'test:projects:typings'));
+task('test:projects', series('test:projects:cra-ts', 'test:projects:nextjs', 'test:projects:rollup', 'test:projects:typings'));

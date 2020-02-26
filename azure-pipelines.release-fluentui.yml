@@ -31,7 +31,7 @@ steps:
     displayName: yarn build
 
   - script: |
-      PRODUCTION=true yarn build:fluentui:docs
+      NODE_ENV=production yarn build:fluentui:docs
     displayName: yarn build:fluentui:docs
 
   - task: AzureUpload@1

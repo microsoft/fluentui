@@ -74,6 +74,37 @@ jobs:
       - template: azure-pipelines.tools.yml
 
       - script: |
+          yarn test
+        displayName: test
+
+      - script: |
+          yarn lint
+        displayName: lint
+
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: ValidateFluent
+    dependsOn: Build
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
           if [ $BUILD_REASON == "PullRequest" ]; then
             yarn danger ci
           else
@@ -84,12 +115,16 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn test
-        displayName: test
+          yarn test:fluentui:e2e
+        displayName: E2E Tests
 
       - script: |
-          yarn lint
-        displayName: lint
+          yarn test:fluentui:projects
+        displayName: Project Tests
+
+      - script: |
+          yarn test:fluentui:circulars
+        displayName: Circular Dependencies Tests
 
       - script: |
           yarn check-for-changed-files

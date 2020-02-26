@@ -152,6 +152,8 @@ import speakerMute from './speakerMute';
 import star from './star';
 import sticker from './sticker';
 import strike from './strike';
+import survey from './survey';
+import survey20px from './survey20px';
 import sync from './sync';
 import tabs from './tabs';
 import table from './table';
@@ -324,6 +326,8 @@ export default {
   star,
   sticker,
   strike,
+  survey,
+  'survey-20px': survey20px,
   sync,
   tabs,
   table,

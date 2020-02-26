@@ -58,6 +58,7 @@ export default [
   'fela@10.6.1',
   'hyphenate-style-name@1.0.2',
   'inline-style-expand-shorthand@1.1.3',
+  'inline-style-expand-shorthand@1.2.0',
   'inline-style-prefixer@5.0.3',
   'inline-style-prefixer@5.1.0',
   'isobject@3.0.1',

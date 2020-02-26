@@ -1,4 +1,19 @@
 {
   "name": "@fluentui/examples",
-  "entries": []
+  "entries": [
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@fluentui/examples_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Create example package",
+            "author": "elcraig@microsoft.com",
+            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
+          }
+        ]
+      }
+    }
+  ]
 }

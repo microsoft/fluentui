@@ -252,6 +252,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     ) {
       return;
     }
+    // tslint:disable-next-line:deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:
