@@ -1,0 +1,7 @@
+{
+  "extends": "../../build/tsconfig.common",
+  "compilerOptions": {
+    "outDir": "dist/dts"
+  },
+  "include": ["src", "test"]
+}
