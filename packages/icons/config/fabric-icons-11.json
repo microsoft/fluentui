@@ -5,409 +5,406 @@
   "excludeThirdPartyIcons": true,
   "chunkSubsets": true,
   "hashFontFileName": true,
-  "subsetChunkSettings": {
-    "maxSubsetSize": 100
-  },
   "glyphs": [
     {
-      "name": "BoxAdditionSolid",
-      "unicode": "F2D4"
+      "name": "UnknownMirrored",
+      "unicode": "F22E"
     },
     {
-      "name": "BoxMultiplySolid",
-      "unicode": "F2D5"
+      "name": "PublicContactCardMirrored",
+      "unicode": "F230"
     },
     {
-      "name": "BoxPlaySolid",
-      "unicode": "F2D6"
+      "name": "GridViewSmall",
+      "unicode": "F232"
     },
     {
-      "name": "BoxCheckmarkSolid",
-      "unicode": "F2D7"
+      "name": "GridViewMedium",
+      "unicode": "F233"
     },
     {
-      "name": "CirclePauseSolid",
-      "unicode": "F2D8"
+      "name": "GridViewLarge",
+      "unicode": "F234"
     },
     {
-      "name": "CirclePause",
-      "unicode": "F2D9"
+      "name": "Step",
+      "unicode": "F241"
     },
     {
-      "name": "MSNVideosSolid",
-      "unicode": "F2DA"
+      "name": "StepInsert",
+      "unicode": "F242"
     },
     {
-      "name": "CircleStopSolid",
-      "unicode": "F2DB"
+      "name": "StepShared",
+      "unicode": "F243"
     },
     {
-      "name": "CircleStop",
-      "unicode": "F2DC"
+      "name": "StepSharedAdd",
+      "unicode": "F244"
     },
     {
-      "name": "NavigateBack",
-      "unicode": "F2DD"
+      "name": "StepSharedInsert",
+      "unicode": "F245"
     },
     {
-      "name": "NavigateBackMirrored",
-      "unicode": "F2DE"
+      "name": "ViewDashboard",
+      "unicode": "F246"
     },
     {
-      "name": "NavigateForward",
-      "unicode": "F2DF"
+      "name": "ViewList",
+      "unicode": "F247"
     },
     {
-      "name": "NavigateForwardMirrored",
-      "unicode": "F2E0"
+      "name": "ViewListGroup",
+      "unicode": "F248"
     },
     {
-      "name": "UnknownSolid",
-      "unicode": "F2E1"
+      "name": "ViewListTree",
+      "unicode": "F249"
     },
     {
-      "name": "UnknownMirroredSolid",
-      "unicode": "F2E2"
+      "name": "TriggerAuto",
+      "unicode": "F24A"
     },
     {
-      "name": "CircleAddition",
-      "unicode": "F2E3"
+      "name": "TriggerUser",
+      "unicode": "F24B"
     },
     {
-      "name": "CircleAdditionSolid",
-      "unicode": "F2E4"
+      "name": "PivotChart",
+      "unicode": "F24C"
     },
     {
-      "name": "FilePDB",
-      "unicode": "F2E5"
+      "name": "StackedBarChart",
+      "unicode": "F24D"
     },
     {
-      "name": "FileTemplate",
-      "unicode": "F2E6"
+      "name": "StackedLineChart",
+      "unicode": "F24E"
     },
     {
-      "name": "FileSQL",
-      "unicode": "F2E7"
+      "name": "BuildQueue",
+      "unicode": "F24F"
     },
     {
-      "name": "FileJAVA",
-      "unicode": "F2E8"
+      "name": "BuildQueueNew",
+      "unicode": "F250"
     },
     {
-      "name": "FileASPX",
-      "unicode": "F2E9"
+      "name": "UserFollowed",
+      "unicode": "F25C"
     },
     {
-      "name": "FileCSS",
-      "unicode": "F2EA"
+      "name": "ContactLink",
+      "unicode": "F25F"
     },
     {
-      "name": "FileSass",
-      "unicode": "F2EB"
+      "name": "Stack",
+      "unicode": "F26F"
     },
     {
-      "name": "FileLess",
-      "unicode": "F2EC"
+      "name": "Bullseye",
+      "unicode": "F272"
     },
     {
-      "name": "FileHTML",
-      "unicode": "F2ED"
+      "name": "VennDiagram",
+      "unicode": "F273"
     },
     {
-      "name": "JavaScriptLanguage",
-      "unicode": "F2EE"
+      "name": "FiveTileGrid",
+      "unicode": "F274"
     },
     {
-      "name": "CSharpLanguage",
-      "unicode": "F2EF"
+      "name": "FocalPoint",
+      "unicode": "F277"
     },
     {
-      "name": "CSharp",
-      "unicode": "F2F0"
+      "name": "Insert",
+      "unicode": "F278"
     },
     {
-      "name": "VisualBasicLanguage",
-      "unicode": "F2F1"
+      "name": "RingerRemove",
+      "unicode": "F279"
     },
     {
-      "name": "VB",
-      "unicode": "F2F2"
+      "name": "TeamsLogoInverse",
+      "unicode": "F27A"
     },
     {
-      "name": "CPlusPlusLanguage",
-      "unicode": "F2F3"
+      "name": "TeamsLogo",
+      "unicode": "F27B"
     },
     {
-      "name": "CPlusPlus",
-      "unicode": "F2F4"
+      "name": "TeamsLogoFill",
+      "unicode": "F27C"
     },
     {
-      "name": "FSharpLanguage",
-      "unicode": "F2F5"
+      "name": "SkypeForBusinessLogoFill",
+      "unicode": "F27D"
     },
     {
-      "name": "FSharp",
-      "unicode": "F2F6"
+      "name": "SharepointLogo",
+      "unicode": "F27E"
     },
     {
-      "name": "TypeScriptLanguage",
-      "unicode": "F2F7"
+      "name": "SharepointLogoFill",
+      "unicode": "F27F"
     },
     {
-      "name": "PythonLanguage",
-      "unicode": "F2F8"
+      "name": "DelveLogo",
+      "unicode": "F280"
     },
     {
-      "name": "PY",
-      "unicode": "F2F9"
+      "name": "DelveLogoFill",
+      "unicode": "F281"
     },
     {
-      "name": "CoffeeScript",
-      "unicode": "F2FA"
+      "name": "OfficeVideoLogo",
+      "unicode": "F282"
     },
     {
-      "name": "MarkDownLanguage",
-      "unicode": "F2FB"
+      "name": "OfficeVideoLogoFill",
+      "unicode": "F283"
     },
     {
-      "name": "FullWidth",
-      "unicode": "F2FE"
+      "name": "ExchangeLogo",
+      "unicode": "F284"
     },
     {
-      "name": "FullWidthEdit",
-      "unicode": "F2FF"
+      "name": "ExchangeLogoFill",
+      "unicode": "F285"
     },
     {
-      "name": "Plug",
-      "unicode": "F300"
+      "name": "Signin",
+      "unicode": "F286"
     },
     {
-      "name": "PlugSolid",
-      "unicode": "F301"
+      "name": "DocumentApproval",
+      "unicode": "F28B"
     },
     {
-      "name": "PlugConnected",
-      "unicode": "F302"
+      "name": "CloneToDesktop",
+      "unicode": "F28C"
     },
     {
-      "name": "PlugDisconnected",
-      "unicode": "F303"
+      "name": "InstallToDrive",
+      "unicode": "F28D"
     },
     {
-      "name": "UnlockSolid",
-      "unicode": "F304"
+      "name": "Blur",
+      "unicode": "F28E"
     },
     {
-      "name": "Variable",
-      "unicode": "F305"
+      "name": "Build",
+      "unicode": "F28F"
     },
     {
-      "name": "Parameter",
-      "unicode": "F306"
+      "name": "ProcessMetaTask",
+      "unicode": "F290"
     },
     {
-      "name": "CommentUrgent",
-      "unicode": "F307"
+      "name": "BranchFork2",
+      "unicode": "F291"
     },
     {
-      "name": "Storyboard",
-      "unicode": "F308"
+      "name": "BranchLocked",
+      "unicode": "F292"
     },
     {
-      "name": "DiffInline",
-      "unicode": "F309"
+      "name": "BranchCommit",
+      "unicode": "F293"
     },
     {
-      "name": "DiffSideBySide",
-      "unicode": "F30A"
+      "name": "BranchCompare",
+      "unicode": "F294"
     },
     {
-      "name": "ImageDiff",
-      "unicode": "F30B"
+      "name": "BranchMerge",
+      "unicode": "F295"
     },
     {
-      "name": "ImagePixel",
-      "unicode": "F30C"
+      "name": "BranchPullRequest",
+      "unicode": "F296"
     },
     {
-      "name": "FileBug",
-      "unicode": "F30D"
+      "name": "BranchSearch",
+      "unicode": "F297"
     },
     {
-      "name": "FileCode",
-      "unicode": "F30E"
+      "name": "BranchShelveset",
+      "unicode": "F298"
     },
     {
-      "name": "FileComment",
-      "unicode": "F30F"
+      "name": "RawSource",
+      "unicode": "F299"
     },
     {
-      "name": "BusinessHoursSign",
-      "unicode": "F310"
+      "name": "MergeDuplicate",
+      "unicode": "F29A"
     },
     {
-      "name": "FileImage",
-      "unicode": "F311"
+      "name": "RowsGroup",
+      "unicode": "F29B"
     },
     {
-      "name": "FileSymlink",
-      "unicode": "F312"
+      "name": "RowsChild",
+      "unicode": "F29C"
     },
     {
-      "name": "AutoFillTemplate",
-      "unicode": "F313"
+      "name": "Deploy",
+      "unicode": "F29D"
     },
     {
-      "name": "WorkItem",
-      "unicode": "F314"
+      "name": "Redeploy",
+      "unicode": "F29E"
     },
     {
-      "name": "WorkItemBug",
-      "unicode": "F315"
+      "name": "ServerEnviroment",
+      "unicode": "F29F"
     },
     {
-      "name": "LogRemove",
-      "unicode": "F316"
+      "name": "VisioDiagram",
+      "unicode": "F2A0"
     },
     {
-      "name": "ColumnOptions",
-      "unicode": "F317"
+      "name": "HighlightMappedShapes",
+      "unicode": "F2A1"
     },
     {
-      "name": "Packages",
-      "unicode": "F318"
+      "name": "TextCallout",
+      "unicode": "F2A2"
     },
     {
-      "name": "BuildIssue",
-      "unicode": "F319"
+      "name": "IconSetsFlag",
+      "unicode": "F2A4"
     },
     {
-      "name": "AssessmentGroup",
-      "unicode": "F31A"
+      "name": "VisioLogo",
+      "unicode": "F2A7"
     },
     {
-      "name": "VariableGroup",
-      "unicode": "F31B"
+      "name": "VisioLogoFill",
+      "unicode": "F2A8"
     },
     {
-      "name": "FullHistory",
-      "unicode": "F31C"
+      "name": "VisioDocument",
+      "unicode": "F2A9"
     },
     {
-      "name": "Wheelchair",
-      "unicode": "F31F"
+      "name": "TimelineProgress",
+      "unicode": "F2AA"
     },
     {
-      "name": "SingleColumnEdit",
-      "unicode": "F321"
+      "name": "TimelineDelivery",
+      "unicode": "F2AB"
     },
     {
-      "name": "DoubleColumnEdit",
-      "unicode": "F322"
+      "name": "Backlog",
+      "unicode": "F2AC"
     },
     {
-      "name": "TripleColumnEdit",
-      "unicode": "F323"
+      "name": "TeamFavorite",
+      "unicode": "F2AD"
     },
     {
-      "name": "ColumnLeftTwoThirdsEdit",
-      "unicode": "F324"
+      "name": "TaskGroup",
+      "unicode": "F2AE"
     },
     {
-      "name": "ColumnRightTwoThirdsEdit",
-      "unicode": "F325"
+      "name": "TaskGroupMirrored",
+      "unicode": "F2AF"
     },
     {
-      "name": "StreamLogo",
-      "unicode": "F329"
+      "name": "ScopeTemplate",
+      "unicode": "F2B0"
     },
     {
-      "name": "PassiveAuthentication",
-      "unicode": "F32A"
+      "name": "AssessmentGroupTemplate",
+      "unicode": "F2B1"
     },
     {
-      "name": "AlertSolid",
-      "unicode": "F331"
+      "name": "NewTeamProject",
+      "unicode": "F2B2"
     },
     {
-      "name": "MegaphoneSolid",
-      "unicode": "F332"
+      "name": "CommentAdd",
+      "unicode": "F2B3"
     },
     {
-      "name": "TaskSolid",
-      "unicode": "F333"
+      "name": "CommentNext",
+      "unicode": "F2B4"
     },
     {
-      "name": "ConfigurationSolid",
-      "unicode": "F334"
+      "name": "CommentPrevious",
+      "unicode": "F2B5"
     },
     {
-      "name": "BugSolid",
-      "unicode": "F335"
+      "name": "ShopServer",
+      "unicode": "F2B6"
     },
     {
-      "name": "CrownSolid",
-      "unicode": "F336"
+      "name": "LocaleLanguage",
+      "unicode": "F2B7"
     },
     {
-      "name": "Trophy2Solid",
-      "unicode": "F337"
+      "name": "QueryList",
+      "unicode": "F2B8"
     },
     {
-      "name": "QuickNoteSolid",
-      "unicode": "F338"
+      "name": "UserSync",
+      "unicode": "F2B9"
     },
     {
-      "name": "ConstructionConeSolid",
-      "unicode": "F339"
+      "name": "UserPause",
+      "unicode": "F2BA"
     },
     {
-      "name": "PageListSolid",
-      "unicode": "F33A"
+      "name": "StreamingOff",
+      "unicode": "F2BB"
     },
     {
-      "name": "PageListMirroredSolid",
-      "unicode": "F33B"
+      "name": "ArrowTallUpLeft",
+      "unicode": "F2BD"
     },
     {
-      "name": "StarburstSolid",
-      "unicode": "F33C"
+      "name": "ArrowTallUpRight",
+      "unicode": "F2BE"
     },
     {
-      "name": "ReadingModeSolid",
-      "unicode": "F33D"
+      "name": "ArrowTallDownLeft",
+      "unicode": "F2BF"
     },
     {
-      "name": "SadSolid",
-      "unicode": "F33E"
+      "name": "ArrowTallDownRight",
+      "unicode": "F2C0"
     },
     {
-      "name": "HealthSolid",
-      "unicode": "F33F"
+      "name": "FieldEmpty",
+      "unicode": "F2C1"
     },
     {
-      "name": "ShieldSolid",
-      "unicode": "F340"
+      "name": "FieldFilled",
+      "unicode": "F2C2"
     },
     {
-      "name": "GiftBoxSolid",
-      "unicode": "F341"
+      "name": "FieldChanged",
+      "unicode": "F2C3"
     },
     {
-      "name": "ShoppingCartSolid",
-      "unicode": "F342"
+      "name": "FieldNotChanged",
+      "unicode": "F2C4"
     },
     {
-      "name": "MailSolid",
-      "unicode": "F343"
+      "name": "RingerOff",
+      "unicode": "F2C5"
     },
     {
-      "name": "ChatSolid",
-      "unicode": "F344"
+      "name": "PlayResume",
+      "unicode": "F2C6"
     },
     {
-      "name": "RibbonSolid",
-      "unicode": "F345"
+      "name": "BulletedList2",
+      "unicode": "F2C7"
     }
   ]
 }

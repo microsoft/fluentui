@@ -5,9 +5,6 @@
   "excludeThirdPartyIcons": true,
   "chunkSubsets": true,
   "hashFontFileName": true,
-  "subsetChunkSettings": {
-    "maxSubsetSize": 100
-  },
   "glyphs": [
     {
       "name": "PageLink",
@@ -114,300 +111,300 @@
       "unicode": "E369"
     },
     {
-      "name": "InternetSharing",
-      "unicode": "E704"
+      "name": "StickyNotesOutlineAppIcon",
+      "unicode": "E36A"
     },
     {
-      "name": "Brightness",
-      "unicode": "E706"
+      "name": "StickyNotesSolidAppIcon",
+      "unicode": "E36B"
     },
     {
-      "name": "MapPin",
-      "unicode": "E707"
+      "name": "Webcam2Off",
+      "unicode": "E36D"
     },
     {
-      "name": "Airplane",
-      "unicode": "E709"
+      "name": "eDiscovery",
+      "unicode": "E370"
     },
     {
-      "name": "Tablet",
-      "unicode": "E70A"
+      "name": "CalendarYear",
+      "unicode": "E371"
     },
     {
-      "name": "QuickNote",
-      "unicode": "E70B"
+      "name": "IgnoreConversation",
+      "unicode": "E372"
     },
     {
-      "name": "Video",
-      "unicode": "E714"
+      "name": "CommonDataServiceCDS",
+      "unicode": "E377"
     },
     {
-      "name": "People",
-      "unicode": "E716"
+      "name": "Forum",
+      "unicode": "E378"
     },
     {
-      "name": "Phone",
-      "unicode": "E717"
+      "name": "SentimentAnalysis",
+      "unicode": "E393"
     },
     {
-      "name": "Pin",
-      "unicode": "E718"
+      "name": "TextRecognition",
+      "unicode": "E394"
     },
     {
-      "name": "Shop",
-      "unicode": "E719"
+      "name": "KeyPhraseExtraction",
+      "unicode": "E395"
     },
     {
-      "name": "Stop",
-      "unicode": "E71A"
+      "name": "AltText",
+      "unicode": "E397"
     },
     {
-      "name": "Link",
-      "unicode": "E71B"
+      "name": "NumberedListMirrored",
+      "unicode": "E398"
     },
     {
-      "name": "AllApps",
-      "unicode": "E71D"
+      "name": "IncreaseIndent",
+      "unicode": "E399"
     },
     {
-      "name": "Zoom",
-      "unicode": "E71E"
+      "name": "IncreaseIndentMirrored",
+      "unicode": "E39A"
     },
     {
-      "name": "ZoomOut",
-      "unicode": "E71F"
+      "name": "DecreaseIndent",
+      "unicode": "E39B"
     },
     {
-      "name": "Microphone",
-      "unicode": "E720"
+      "name": "DecreaseIndentMirrored",
+      "unicode": "E39C"
     },
     {
-      "name": "Camera",
-      "unicode": "E722"
+      "name": "IncreaseIndentHanging",
+      "unicode": "E39D"
     },
     {
-      "name": "Attach",
-      "unicode": "E723"
+      "name": "IncreaseIndentHangingMirrored",
+      "unicode": "E39E"
     },
     {
-      "name": "Send",
-      "unicode": "E724"
+      "name": "ArchiveUndo",
+      "unicode": "E3A1"
     },
     {
-      "name": "FavoriteList",
-      "unicode": "E728"
+      "name": "LeaveUser",
+      "unicode": "E3A8"
     },
     {
-      "name": "PageSolid",
-      "unicode": "E729"
+      "name": "FabricFolderUpload",
+      "unicode": "E3AC"
     },
     {
-      "name": "Forward",
-      "unicode": "E72A"
+      "name": "RedEye12",
+      "unicode": "E3AD"
     },
     {
-      "name": "Back",
-      "unicode": "E72B"
+      "name": "MapPin12",
+      "unicode": "E3AE"
     },
     {
-      "name": "Refresh",
-      "unicode": "E72C"
+      "name": "Insights",
+      "unicode": "E3AF"
     },
     {
-      "name": "Lock",
-      "unicode": "E72E"
+      "name": "TaskList",
+      "unicode": "E3B6"
     },
     {
-      "name": "ReportHacked",
-      "unicode": "E730"
+      "name": "MachineLearning",
+      "unicode": "E3B8"
     },
     {
-      "name": "EMI",
-      "unicode": "E731"
+      "name": "HealthRefresh",
+      "unicode": "E3BD"
     },
     {
-      "name": "MiniLink",
-      "unicode": "E732"
+      "name": "FontSize2",
+      "unicode": "E3C0"
     },
     {
-      "name": "Blocked",
-      "unicode": "E733"
+      "name": "SharedDatabase",
+      "unicode": "E3D9"
     },
     {
-      "name": "ReadingMode",
-      "unicode": "E736"
+      "name": "WebEnvironment",
+      "unicode": "E3DB"
     },
     {
-      "name": "Favicon",
-      "unicode": "E737"
+      "name": "FormatPainter",
+      "unicode": "E3DC"
     },
     {
-      "name": "Remove",
-      "unicode": "E738"
+      "name": "IndentFirstLine",
+      "unicode": "E3DD"
     },
     {
-      "name": "Checkbox",
-      "unicode": "E739"
+      "name": "AddSpaceBefore",
+      "unicode": "E3DE"
     },
     {
-      "name": "CheckboxComposite",
-      "unicode": "E73A"
+      "name": "AddSpaceAfter",
+      "unicode": "E3DF"
     },
     {
-      "name": "CheckboxFill",
-      "unicode": "E73B"
+      "name": "TextAlignTop",
+      "unicode": "E3E0"
     },
     {
-      "name": "CheckboxIndeterminate",
-      "unicode": "E73C"
+      "name": "TextAlignMiddle",
+      "unicode": "E3E1"
     },
     {
-      "name": "CheckboxCompositeReversed",
-      "unicode": "E73D"
+      "name": "TextAlignBottom",
+      "unicode": "E3E2"
     },
     {
-      "name": "BackToWindow",
-      "unicode": "E73F"
+      "name": "TextParagraphOption",
+      "unicode": "E3E3"
     },
     {
-      "name": "FullScreen",
-      "unicode": "E740"
+      "name": "TextRotation",
+      "unicode": "E3E4"
     },
     {
-      "name": "Print",
-      "unicode": "E749"
+      "name": "TextRotateHorizontal",
+      "unicode": "E3E5"
     },
     {
-      "name": "Up",
-      "unicode": "E74A"
+      "name": "TextRotate90Degrees",
+      "unicode": "E3E6"
     },
     {
-      "name": "Down",
-      "unicode": "E74B"
+      "name": "TextRotate270Degrees",
+      "unicode": "E3E7"
     },
     {
-      "name": "OEM",
-      "unicode": "E74C"
+      "name": "AutoFitContents",
+      "unicode": "E3E8"
     },
     {
-      "name": "Save",
-      "unicode": "E74E"
+      "name": "AutoFitWindow",
+      "unicode": "E3E9"
     },
     {
-      "name": "ReturnKey",
-      "unicode": "E751"
+      "name": "FixedColumnWidth",
+      "unicode": "E3EA"
     },
     {
-      "name": "Cloud",
-      "unicode": "E753"
+      "name": "RepeatHeaderRows",
+      "unicode": "E3EB"
     },
     {
-      "name": "Flashlight",
-      "unicode": "E754"
+      "name": "TableHeaderRow",
+      "unicode": "E3EC"
     },
     {
-      "name": "CommandPrompt",
-      "unicode": "E756"
+      "name": "TableTotalRow",
+      "unicode": "E3ED"
     },
     {
-      "name": "Sad",
-      "unicode": "E757"
+      "name": "TableBrandedRow",
+      "unicode": "E3EE"
     },
     {
-      "name": "RealEstate",
-      "unicode": "E758"
+      "name": "TableFirstColumn",
+      "unicode": "E3EF"
     },
     {
-      "name": "SIPMove",
-      "unicode": "E759"
+      "name": "TableLastColumn",
+      "unicode": "E3F0"
     },
     {
-      "name": "EraseTool",
-      "unicode": "E75C"
+      "name": "TableBrandedColumn",
+      "unicode": "E3F1"
     },
     {
-      "name": "GripperTool",
-      "unicode": "E75E"
+      "name": "AutomateFlow",
+      "unicode": "E3F5"
     },
     {
-      "name": "Dialpad",
-      "unicode": "E75F"
+      "name": "TagGroup",
+      "unicode": "E3F6"
     },
     {
-      "name": "PageLeft",
-      "unicode": "E760"
+      "name": "PhotoError",
+      "unicode": "E3F7"
     },
     {
-      "name": "PageRight",
-      "unicode": "E761"
+      "name": "HexaditeInvestigation",
+      "unicode": "E3F8"
     },
     {
-      "name": "MultiSelect",
-      "unicode": "E762"
+      "name": "HexaditeInvestigationCancel",
+      "unicode": "E3F9"
     },
     {
-      "name": "KeyboardClassic",
-      "unicode": "E765"
+      "name": "HexaditeInvestigationSemiAuto",
+      "unicode": "E3FA"
     },
     {
-      "name": "Play",
-      "unicode": "E768"
+      "name": "DriverOff",
+      "unicode": "E3FB"
     },
     {
-      "name": "Pause",
-      "unicode": "E769"
+      "name": "FileOff",
+      "unicode": "E3FC"
     },
     {
-      "name": "InkingTool",
-      "unicode": "E76D"
+      "name": "ServiceOff",
+      "unicode": "E3FD"
     },
     {
-      "name": "Emoji2",
-      "unicode": "E76E"
+      "name": "URLBlock",
+      "unicode": "E3FE"
     },
     {
-      "name": "GripperBarHorizontal",
-      "unicode": "E76F"
+      "name": "BugSync",
+      "unicode": "E3FF"
     },
     {
-      "name": "System",
-      "unicode": "E770"
+      "name": "BugBlock",
+      "unicode": "E400"
     },
     {
-      "name": "Personalize",
-      "unicode": "E771"
+      "name": "DeviceRun",
+      "unicode": "E401"
     },
     {
-      "name": "SearchAndApps",
-      "unicode": "E773"
+      "name": "DeviceOff",
+      "unicode": "E402"
     },
     {
-      "name": "Globe",
-      "unicode": "E774"
+      "name": "ProcessingCancel",
+      "unicode": "E403"
     },
     {
-      "name": "EaseOfAccess",
-      "unicode": "E776"
+      "name": "ProcessingRun",
+      "unicode": "E404"
     },
     {
-      "name": "ContactInfo",
-      "unicode": "E779"
+      "name": "ProcessingPause",
+      "unicode": "E405"
     },
     {
-      "name": "Unpin",
-      "unicode": "E77A"
+      "name": "CalculatorDelta",
+      "unicode": "E406"
     },
     {
-      "name": "Contact",
-      "unicode": "E77B"
+      "name": "InputAddress",
+      "unicode": "E41E"
     },
     {
-      "name": "Memo",
-      "unicode": "E77C"
+      "name": "ViewInAR",
+      "unicode": "E41F"
     },
     {
-      "name": "IncomingCall",
-      "unicode": "E77E"
+      "name": "ImageInAR",
+      "unicode": "E420"
     }
   ]
 }

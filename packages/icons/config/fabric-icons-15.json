@@ -5,409 +5,406 @@
   "excludeThirdPartyIcons": true,
   "chunkSubsets": true,
   "hashFontFileName": true,
-  "subsetChunkSettings": {
-    "maxSubsetSize": 100
-  },
   "glyphs": [
     {
-      "name": "CalendarSettings",
-      "unicode": "F558"
+      "name": "PrimaryCalendar",
+      "unicode": "F4AE"
     },
     {
-      "name": "CalendarSettingsMirrored",
-      "unicode": "F559"
+      "name": "SearchCalendar",
+      "unicode": "F4AF"
     },
     {
-      "name": "HardDriveLock",
-      "unicode": "F55A"
+      "name": "VideoOff",
+      "unicode": "F4B0"
     },
     {
-      "name": "HardDriveUnlock",
-      "unicode": "F55B"
+      "name": "MicrosoftFlowLogo",
+      "unicode": "F4B1"
     },
     {
-      "name": "AccountManagement",
-      "unicode": "F55C"
+      "name": "BusinessCenterLogo",
+      "unicode": "F4B2"
     },
     {
-      "name": "ReportWarning",
-      "unicode": "F569"
+      "name": "ToDoLogoBottom",
+      "unicode": "F4B3"
     },
     {
-      "name": "TransitionPop",
-      "unicode": "F5B2"
+      "name": "ToDoLogoTop",
+      "unicode": "F4B4"
     },
     {
-      "name": "TransitionPush",
-      "unicode": "F5B3"
+      "name": "EditSolid12",
+      "unicode": "F4B5"
     },
     {
-      "name": "TransitionEffect",
-      "unicode": "F5B4"
+      "name": "EditSolidMirrored12",
+      "unicode": "F4B6"
     },
     {
-      "name": "LookupEntities",
-      "unicode": "F5B5"
+      "name": "UneditableSolid12",
+      "unicode": "F4B7"
     },
     {
-      "name": "ExploreData",
-      "unicode": "F5B6"
+      "name": "UneditableSolidMirrored12",
+      "unicode": "F4B8"
     },
     {
-      "name": "AddBookmark",
-      "unicode": "F5B7"
+      "name": "UneditableMirrored",
+      "unicode": "F4B9"
     },
     {
-      "name": "SearchBookmark",
-      "unicode": "F5B8"
+      "name": "AdminALogo32",
+      "unicode": "F4BA"
     },
     {
-      "name": "DrillThrough",
-      "unicode": "F5B9"
+      "name": "AdminALogoFill32",
+      "unicode": "F4BB"
     },
     {
-      "name": "MasterDatabase",
-      "unicode": "F5BA"
+      "name": "ToDoLogoInverse",
+      "unicode": "F4BC"
     },
     {
-      "name": "CertifiedDatabase",
-      "unicode": "F5BB"
+      "name": "Snooze",
+      "unicode": "F4BD"
     },
     {
-      "name": "MaximumValue",
-      "unicode": "F5BC"
+      "name": "CortanaLogoBeckonInner",
+      "unicode": "F4C6"
     },
     {
-      "name": "MinimumValue",
-      "unicode": "F5BD"
+      "name": "CortanaLogoBeckonOuter",
+      "unicode": "F4C7"
     },
     {
-      "name": "VisualStudioIDELogo32",
-      "unicode": "F5D0"
+      "name": "CortanaLogoReadyInner",
+      "unicode": "F4C8"
     },
     {
-      "name": "PasteAsText",
-      "unicode": "F5D5"
+      "name": "CortanaLogoReadyOuter",
+      "unicode": "F4C9"
     },
     {
-      "name": "PasteAsCode",
-      "unicode": "F5D6"
+      "name": "WaffleOffice365",
+      "unicode": "F4E0"
     },
     {
-      "name": "BrowserTab",
-      "unicode": "F5D7"
+      "name": "ImageSearch",
+      "unicode": "F4E8"
     },
     {
-      "name": "BrowserTabScreenshot",
-      "unicode": "F5D8"
+      "name": "NewsSearch",
+      "unicode": "F4E9"
     },
     {
-      "name": "DesktopScreenshot",
-      "unicode": "F5D9"
+      "name": "VideoSearch",
+      "unicode": "F4EA"
     },
     {
-      "name": "FileYML",
-      "unicode": "F5DA"
+      "name": "R",
+      "unicode": "F4EB"
     },
     {
-      "name": "ClipboardSolid",
-      "unicode": "F5DC"
+      "name": "FontColorA",
+      "unicode": "F4EC"
     },
     {
-      "name": "FabricUserFolder",
-      "unicode": "F5E5"
+      "name": "FontColorSwatch",
+      "unicode": "F4ED"
     },
     {
-      "name": "FabricNetworkFolder",
-      "unicode": "F5E6"
+      "name": "LightWeight",
+      "unicode": "F4EE"
     },
     {
-      "name": "BullseyeTarget",
-      "unicode": "F5F0"
+      "name": "NormalWeight",
+      "unicode": "F4EF"
     },
     {
-      "name": "AnalyticsView",
-      "unicode": "F5F1"
+      "name": "SemiboldWeight",
+      "unicode": "F4F0"
     },
     {
-      "name": "Video360Generic",
-      "unicode": "F609"
+      "name": "GroupObject",
+      "unicode": "F4F1"
     },
     {
-      "name": "Untag",
-      "unicode": "F60B"
+      "name": "UngroupObject",
+      "unicode": "F4F2"
     },
     {
-      "name": "Leave",
-      "unicode": "F627"
+      "name": "AlignHorizontalLeft",
+      "unicode": "F4F3"
     },
     {
-      "name": "Trending12",
-      "unicode": "F62D"
+      "name": "AlignHorizontalCenter",
+      "unicode": "F4F4"
     },
     {
-      "name": "Blocked12",
-      "unicode": "F62E"
+      "name": "AlignHorizontalRight",
+      "unicode": "F4F5"
     },
     {
-      "name": "Warning12",
-      "unicode": "F62F"
+      "name": "AlignVerticalTop",
+      "unicode": "F4F6"
     },
     {
-      "name": "CheckedOutByOther12",
-      "unicode": "F630"
+      "name": "AlignVerticalCenter",
+      "unicode": "F4F7"
     },
     {
-      "name": "CheckedOutByYou12",
-      "unicode": "F631"
+      "name": "AlignVerticalBottom",
+      "unicode": "F4F8"
     },
     {
-      "name": "CircleShapeSolid",
-      "unicode": "F63C"
+      "name": "HorizontalDistributeCenter",
+      "unicode": "F4F9"
     },
     {
-      "name": "SquareShapeSolid",
-      "unicode": "F63D"
+      "name": "VerticalDistributeCenter",
+      "unicode": "F4FA"
     },
     {
-      "name": "TriangleShapeSolid",
-      "unicode": "F63E"
+      "name": "Ellipse",
+      "unicode": "F4FB"
     },
     {
-      "name": "DropShapeSolid",
-      "unicode": "F63F"
+      "name": "Line",
+      "unicode": "F4FC"
     },
     {
-      "name": "RectangleShapeSolid",
-      "unicode": "F640"
+      "name": "Octagon",
+      "unicode": "F4FD"
     },
     {
-      "name": "ZoomToFit",
-      "unicode": "F649"
+      "name": "Hexagon",
+      "unicode": "F4FE"
     },
     {
-      "name": "InsertColumnsLeft",
-      "unicode": "F64A"
+      "name": "Pentagon",
+      "unicode": "F4FF"
     },
     {
-      "name": "InsertColumnsRight",
-      "unicode": "F64B"
+      "name": "RightTriangle",
+      "unicode": "F500"
     },
     {
-      "name": "InsertRowsAbove",
-      "unicode": "F64C"
+      "name": "HalfCircle",
+      "unicode": "F501"
     },
     {
-      "name": "InsertRowsBelow",
-      "unicode": "F64D"
+      "name": "QuarterCircle",
+      "unicode": "F502"
     },
     {
-      "name": "DeleteColumns",
-      "unicode": "F64E"
+      "name": "ThreeQuarterCircle",
+      "unicode": "F503"
     },
     {
-      "name": "DeleteRows",
-      "unicode": "F64F"
+      "name": "6PointStar",
+      "unicode": "F504"
     },
     {
-      "name": "DeleteRowsMirrored",
-      "unicode": "F650"
+      "name": "12PointStar",
+      "unicode": "F505"
     },
     {
-      "name": "DeleteTable",
-      "unicode": "F651"
+      "name": "ArrangeBringToFront",
+      "unicode": "F506"
     },
     {
-      "name": "AccountBrowser",
-      "unicode": "F652"
+      "name": "ArrangeSendToBack",
+      "unicode": "F507"
     },
     {
-      "name": "VersionControlPush",
-      "unicode": "F664"
+      "name": "ArrangeSendBackward",
+      "unicode": "F508"
     },
     {
-      "name": "StackedColumnChart2",
-      "unicode": "F666"
+      "name": "ArrangeBringForward",
+      "unicode": "F509"
     },
     {
-      "name": "TripleColumnWide",
-      "unicode": "F66E"
+      "name": "BorderDash",
+      "unicode": "F50A"
     },
     {
-      "name": "QuadColumn",
-      "unicode": "F66F"
+      "name": "BorderDot",
+      "unicode": "F50B"
     },
     {
-      "name": "WhiteBoardApp16",
-      "unicode": "F673"
+      "name": "LineStyle",
+      "unicode": "F50C"
     },
     {
-      "name": "WhiteBoardApp32",
-      "unicode": "F674"
+      "name": "LineThickness",
+      "unicode": "F50D"
     },
     {
-      "name": "PinnedSolid",
-      "unicode": "F676"
+      "name": "WindowEdit",
+      "unicode": "F50E"
     },
     {
-      "name": "InsertSignatureLine",
-      "unicode": "F677"
+      "name": "HintText",
+      "unicode": "F50F"
     },
     {
-      "name": "ArrangeByFrom",
-      "unicode": "F678"
+      "name": "MediaAdd",
+      "unicode": "F510"
     },
     {
-      "name": "Phishing",
-      "unicode": "F679"
+      "name": "AnchorLock",
+      "unicode": "F511"
     },
     {
-      "name": "CreateMailRule",
-      "unicode": "F67A"
+      "name": "AutoHeight",
+      "unicode": "F512"
     },
     {
-      "name": "PublishCourse",
-      "unicode": "F699"
+      "name": "ChartSeries",
+      "unicode": "F513"
     },
     {
-      "name": "DictionaryRemove",
-      "unicode": "F69A"
+      "name": "ChartXAngle",
+      "unicode": "F514"
     },
     {
-      "name": "UserRemove",
-      "unicode": "F69B"
+      "name": "ChartYAngle",
+      "unicode": "F515"
     },
     {
-      "name": "UserEvent",
-      "unicode": "F69C"
+      "name": "Combobox",
+      "unicode": "F516"
     },
     {
-      "name": "Encryption",
-      "unicode": "F69D"
+      "name": "LineSpacing",
+      "unicode": "F517"
     },
     {
-      "name": "PasswordField",
-      "unicode": "F6AA"
+      "name": "Padding",
+      "unicode": "F518"
     },
     {
-      "name": "OpenInNewTab",
-      "unicode": "F6AB"
+      "name": "PaddingTop",
+      "unicode": "F519"
     },
     {
-      "name": "Hide3",
-      "unicode": "F6AC"
+      "name": "PaddingBottom",
+      "unicode": "F51A"
     },
     {
-      "name": "VerifiedBrandSolid",
-      "unicode": "F6AD"
+      "name": "PaddingLeft",
+      "unicode": "F51B"
     },
     {
-      "name": "MarkAsProtected",
-      "unicode": "F6AE"
+      "name": "PaddingRight",
+      "unicode": "F51C"
     },
     {
-      "name": "AuthenticatorApp",
-      "unicode": "F6B1"
+      "name": "NavigationFlipper",
+      "unicode": "F51D"
     },
     {
-      "name": "WebTemplate",
-      "unicode": "F6B2"
+      "name": "AlignJustify",
+      "unicode": "F51E"
     },
     {
-      "name": "DefenderTVM",
-      "unicode": "F6B3"
+      "name": "TextOverflow",
+      "unicode": "F51F"
     },
     {
-      "name": "MedalSolid",
-      "unicode": "F6B9"
+      "name": "VisualsFolder",
+      "unicode": "F520"
     },
     {
-      "name": "D365TalentLearn",
-      "unicode": "F6BB"
+      "name": "VisualsStore",
+      "unicode": "F521"
     },
     {
-      "name": "D365TalentInsight",
-      "unicode": "F6BC"
+      "name": "PictureCenter",
+      "unicode": "F522"
     },
     {
-      "name": "D365TalentHRCore",
-      "unicode": "F6BD"
+      "name": "PictureFill",
+      "unicode": "F523"
     },
     {
-      "name": "BacklogList",
-      "unicode": "F6BF"
+      "name": "PicturePosition",
+      "unicode": "F524"
     },
     {
-      "name": "ButtonControl",
-      "unicode": "F6C0"
+      "name": "PictureStretch",
+      "unicode": "F525"
     },
     {
-      "name": "TableGroup",
-      "unicode": "F6D9"
+      "name": "PictureTile",
+      "unicode": "F526"
     },
     {
-      "name": "MountainClimbing",
-      "unicode": "F6DB"
+      "name": "Slider",
+      "unicode": "F527"
     },
     {
-      "name": "TagUnknown",
-      "unicode": "F6DF"
+      "name": "SliderHandleSize",
+      "unicode": "F528"
     },
     {
-      "name": "TagUnknownMirror",
-      "unicode": "F6E0"
+      "name": "DefaultRatio",
+      "unicode": "F529"
     },
     {
-      "name": "TagUnknown12",
-      "unicode": "F6E1"
+      "name": "NumberSequence",
+      "unicode": "F52A"
     },
     {
-      "name": "TagUnknown12Mirror",
-      "unicode": "F6E2"
+      "name": "GUID",
+      "unicode": "F52B"
     },
     {
-      "name": "Link12",
-      "unicode": "F6E3"
+      "name": "ReportAdd",
+      "unicode": "F52C"
     },
     {
-      "name": "Presentation",
-      "unicode": "F6E4"
+      "name": "DashboardAdd",
+      "unicode": "F52D"
     },
     {
-      "name": "Presentation12",
-      "unicode": "F6E5"
+      "name": "MapPinSolid",
+      "unicode": "F52E"
     },
     {
-      "name": "Lock12",
-      "unicode": "F6E6"
+      "name": "WebPublish",
+      "unicode": "F52F"
     },
     {
-      "name": "BuildDefinition",
-      "unicode": "F6E9"
+      "name": "PieSingleSolid",
+      "unicode": "F530"
     },
     {
-      "name": "ReleaseDefinition",
-      "unicode": "F6EA"
+      "name": "BlockedSolid",
+      "unicode": "F531"
     },
     {
-      "name": "SaveTemplate",
-      "unicode": "F6EC"
+      "name": "DrillDown",
+      "unicode": "F532"
     },
     {
-      "name": "UserGauge",
-      "unicode": "F6ED"
+      "name": "DrillDownSolid",
+      "unicode": "F533"
     },
     {
-      "name": "BlockedSiteSolid12",
-      "unicode": "F70A"
+      "name": "DrillExpand",
+      "unicode": "F534"
     },
     {
-      "name": "TagSolid",
-      "unicode": "F70E"
+      "name": "DrillShow",
+      "unicode": "F535"
     },
     {
-      "name": "OfficeChat",
-      "unicode": "F70F"
+      "name": "SpecialEvent",
+      "unicode": "F536"
     }
   ]
 }

@@ -17,6 +17,7 @@ import { initializeIcons as i14 } from './fabric-icons-14';
 import { initializeIcons as i15 } from './fabric-icons-15';
 import { initializeIcons as i16 } from './fabric-icons-16';
 import { initializeIcons as i17 } from './fabric-icons-17';
+import { initializeIcons as i18 } from './fabric-icons-18';
 
 import { IIconOptions } from '@uifabric/styling';
 import { registerIconAliases } from './iconAliases';
@@ -42,7 +43,8 @@ export function initializeIcons(baseUrl: string = DEFAULT_BASE_URL, options?: II
     i14,
     i15,
     i16,
-    i17
+    i17,
+    i18
   ].forEach((initialize: (url: string, options?: IIconOptions) => void) => initialize(baseUrl, options));
 
   registerIconAliases();

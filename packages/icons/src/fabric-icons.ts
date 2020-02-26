@@ -15,7 +15,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons"`,
-      src: `url('${baseUrl}fabric-icons-a13498cf.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-32e12f1b.woff') format('woff')`
     },
     icons: {
       GlobalNavButton: '\uE700',
