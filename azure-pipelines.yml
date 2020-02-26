@@ -7,10 +7,9 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: 'Self Host Ubuntu'
-
 jobs:
   - job: Build
+    pool: 'Self Host Ubuntu'
     steps:
       - template: azure-pipelines.tools.yml
 
@@ -62,6 +61,8 @@ jobs:
 
   - job: Validate
     dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -93,6 +94,8 @@ jobs:
 
   - job: ValidateFluent
     dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -138,6 +141,8 @@ jobs:
 
   - job: Deploy
     dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -170,6 +175,7 @@ jobs:
 
   - job: Screener
     dependsOn: Build
+    pool: 'Self Host Ubuntu'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
