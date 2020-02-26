@@ -1,4 +1,5 @@
 import felaExpandCssShorthandsPlugin from 'src/utils/felaExpandCssShorthandsPlugin';
+import { ICSSInJSStyle } from '@fluentui/styles/src';
 
 const expandCssShorthands = felaExpandCssShorthandsPlugin();
 
@@ -15,6 +16,34 @@ describe('felaExpandCssShorthandsPlugin', () => {
       marginRight: '10px',
       marginBottom: '0px',
       marginLeft: '10px'
+    });
+  });
+
+  test('should handle "undefined" and "null"', () => {
+    const style = {
+      margin: '10px',
+      marginLeft: null,
+      marginRight: undefined
+    };
+
+    expect(expandCssShorthands(style)).toMatchObject({
+      marginTop: '10px',
+      marginRight: undefined,
+      marginBottom: '10px',
+      marginLeft: null
+    });
+  });
+
+  test('should handle arrays', () => {
+    const style: ICSSInJSStyle = {
+      margin: ['10px', '0px'] as any
+    };
+
+    expect(expandCssShorthands(style)).toMatchObject({
+      marginTop: ['10px', '0px'],
+      marginRight: ['10px', '0px'],
+      marginBottom: ['10px', '0px'],
+      marginLeft: ['10px', '0px']
     });
   });
 

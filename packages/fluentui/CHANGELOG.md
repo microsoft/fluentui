@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `sanitize-css` plugin is disabled for production mode by default @layershifter ([#2340](https://github.com/microsoft/fluent-ui-react/pull/2340))
 - Standardise component onChange callback names and test them in `isConformant` @silviuavram ([#2293](https://github.com/microsoft/fluent-ui-react/pull/2293))
 - Restricted prop set in the `DropdownItem` styles @silviuavram ([#2382](https://github.com/microsoft/fluent-ui-react/pull/2382))
+- `font` CSS property will be no longer expanded to longhands @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
 
 ### Fixes
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
@@ -60,6 +61,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Performance
 - Add styles caching when there aren't inline overrides defined @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
 - Styles for `Animation` component are computed again only on prop changes @layershifter ([#2258](https://github.com/microsoft/fluent-ui-react/pull/2258))
+- switch to `inline-style-expand-shorthand` for expanding CSS properties @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
 
 <!--------------------------------[ v0.44.0 ]------------------------------- -->
 ## [v0.44.0](https://github.com/microsoft/fluent-ui-react/tree/v0.44.0) (2020-02-05)
