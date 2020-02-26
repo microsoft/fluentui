@@ -30,6 +30,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `Chat`, `ChatItem`, `ChatMessage` components which are passed to styles functions @layershifter ([#2366](https://github.com/microsoft/fluent-ui-react/pull/2366))
 - `sanitize-css` plugin is disabled for production mode by default @layershifter ([#2340](https://github.com/microsoft/fluent-ui-react/pull/2340))
 - Standardise component onChange callback names and test them in `isConformant` @silviuavram ([#2293](https://github.com/microsoft/fluent-ui-react/pull/2293))
+- Restricted prop set in the `DropdownItem` styles @silviuavram ([#2382](https://github.com/microsoft/fluent-ui-react/pull/2382))
 
 ### Fixes
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
@@ -49,10 +50,12 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix wrong positioning of pointing beak on content edges in `Popup` and `Tooltip` @layershifter ([#2364](https://github.com/microsoft/fluent-ui-react/pull/2364))
 
 ### Features
+- Added 'survey' and 'survey20px' icons @TanelVari ([#2383](https://github.com/microsoft/fluent-ui-react/pull/2383))
 - Added sourcemaps to the dist output to simplify debugging @miroslavstastny ([#2329](https://github.com/microsoft/fluent-ui-react/pull/2329))
 - Adding 'expand', 'collapse', 'companion', 'share-to' and 'settings-audio' icons @TanelVari ([#2343](https://github.com/microsoft/fluent-ui-react/pull/2343))
 - Add support for Children API in `List` component @layershifter ([#2207](https://github.com/microsoft/fluent-ui-react/pull/2207))
 - Added virtualized table prototype using `react-virtualized` and `Table` components @pompomon ([#2339](https://github.com/microsoft/fluent-ui-react/pull/2339))
+- Adding prototype for popover in `Table` header @pompomon ([#2379](https://github.com/microsoft/fluent-ui-react/pull/2379))
 
 ### Performance
 - Add styles caching when there aren't inline overrides defined @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
