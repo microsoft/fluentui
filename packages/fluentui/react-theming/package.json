@@ -29,7 +29,7 @@
     "lint:old": "tslint -t stylish -p .",
     "start-test": "just-scripts test:watch",
     "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest:snapshots"
+    "update-snapshots": "just-scripts jest -u"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",
