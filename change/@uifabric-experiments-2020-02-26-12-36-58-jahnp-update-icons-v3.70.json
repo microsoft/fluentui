@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Updates MDL2 icons to version 3.70, adding various new icons.",
+  "packageName": "@uifabric/experiments",
+  "email": "pejahn@microsoft.com",
+  "commit": "45d7f27244ebcc8d06b00ff468fb2d06c70f0315",
+  "dependentChangeType": "patch",
+  "date": "2020-02-26T20:36:29.204Z"
+}
