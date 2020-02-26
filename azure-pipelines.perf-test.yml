@@ -28,8 +28,6 @@ steps:
       fi
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
-    env:
-      STATS_URI: $(STATS_URI)
 
   - script: |
       yarn just perf-test
@@ -104,6 +102,8 @@ steps:
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD`
     displayName: Save Statistics to DB (master only)
+    env:
+      STATS_URI: $(STATS_URI)
 
   - task: DeleteFiles@1
     inputs:
