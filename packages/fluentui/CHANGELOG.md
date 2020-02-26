@@ -62,6 +62,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add styles caching when there aren't inline overrides defined @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
 - Styles for `Animation` component are computed again only on prop changes @layershifter ([#2258](https://github.com/microsoft/fluent-ui-react/pull/2258))
 - switch to `inline-style-expand-shorthand` for expanding CSS properties @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
+- Add `enableHardVariablesCaching` to have styles caching for primitive `variables` overrides @layershifter ([#2373](https://github.com/microsoft/fluent-ui-react/pull/2373))
 
 <!--------------------------------[ v0.44.0 ]------------------------------- -->
 ## [v0.44.0](https://github.com/microsoft/fluent-ui-react/tree/v0.44.0) (2020-02-05)

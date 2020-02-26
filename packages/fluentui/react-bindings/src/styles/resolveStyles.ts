@@ -43,20 +43,48 @@ const resolveStyles = (
   resolvedVariables: ComponentVariablesObject,
   renderStylesInput?: (styles: ICSSInJSStyle) => string
 ): ResolveStylesResult => {
-  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options || {};
+  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-  const noInlineOverrides = !(design || styles || variables);
 
-  const cacheEnabled = performance.enableStylesCaching && noInlineOverrides;
+  const noInlineStylesOverrides = !(design || styles);
+  const noVariableOverrides = performance.enableHardVariablesCaching || !variables;
+
+  /* istanbul ignore else */
+  if (process.env.NODE_ENV !== 'production') {
+    if (!performance.enableStylesCaching && performance.enableHardVariablesCaching) {
+      throw new Error(
+        '@fluentui/react: Please check your "performance" settings on "Provider", to enable "enableHardVariablesCaching" you need to enable "enableStylesCaching"'
+      );
+    }
+
+    if (performance.enableHardVariablesCaching && variables) {
+      if (!_.isPlainObject(variables)) {
+        throw new Error('@fluentui/react: With "enableHardVariablesCaching" only plain objects can be passed to "variables" prop.');
+      }
+
+      const hasOnlyBooleanVariables = Object.keys(variables).every(variableName => {
+        return (
+          variables[variableName] === null || typeof variables[variableName] === 'boolean' || typeof variables[variableName] === 'undefined'
+        );
+      });
+
+      if (!hasOnlyBooleanVariables) {
+        throw new Error(
+          '@fluentui/react: With "enableHardVariablesCaching" only boolean or nil properties can bepassed to "variables" prop.'
+        );
+      }
+    }
+  }
+
+  const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared = theme.componentStyles[displayName] || {
     root: () => ({})
   };
-  const hasInlineStylesOverrides = !_.isNil(props.design) || !_.isNil(props.styles);
 
-  if (hasInlineStylesOverrides) {
+  if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
       props.design && withDebugId({ root: props.design }, 'props.design'),
@@ -99,10 +127,11 @@ const resolveStyles = (
     }
   }
 
-  const componentCacheKey =
-    cacheEnabled && displayName && stylesProps
-      ? `${displayName}:${JSON.stringify(stylesProps)}${styleParam.rtl}${styleParam.disableAnimations}`
-      : '';
+  const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
+  const variablesCacheKey = performance.enableHardVariablesCaching ? JSON.stringify(variables) : '';
+  const componentCacheKey = cacheEnabled
+    ? `${displayName}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
+    : '';
 
   Object.keys(mergedStyles).forEach(slotName => {
     // resolve/render slot styles once and cache
