@@ -7,7 +7,7 @@ import { mountWithProvider } from 'test/utils';
 describe('AccordionTitle', () => {
   isConformant(AccordionTitle, {
     eventTargets: {
-      onClick: `.${AccordionTitle.slotClassNames.content}`
+      onClick: `.${AccordionTitle.slotClassNames.contentWrapper}`
     }
   });
 
@@ -25,7 +25,7 @@ describe('AccordionTitle', () => {
     });
   });
 
-  const getContent = wrapper => wrapper.find(`div.${AccordionTitle.slotClassNames.content}`);
+  const getContent = wrapper => wrapper.find(`div.${AccordionTitle.slotClassNames.contentWrapper}`);
 
   describe('click handler', () => {
     it('is called on click', () => {
