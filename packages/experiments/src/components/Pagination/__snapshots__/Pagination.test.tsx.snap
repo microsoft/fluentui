@@ -117,7 +117,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-1";
+                font-family: "FabricMDL2Icons-2";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -139,7 +139,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "fontFamily": "\\"FabricMDL2Icons-1\\"",
+              "fontFamily": "\\"FabricMDL2Icons-2\\"",
             }
           }
         >
@@ -252,7 +252,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-8";
+                font-family: "FabricMDL2Icons-9";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -274,7 +274,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "fontFamily": "\\"FabricMDL2Icons-8\\"",
+              "fontFamily": "\\"FabricMDL2Icons-9\\"",
             }
           }
         >
@@ -919,7 +919,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-8";
+                font-family: "FabricMDL2Icons-9";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -941,7 +941,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
           role="presentation"
           style={
             Object {
-              "fontFamily": "\\"FabricMDL2Icons-8\\"",
+              "fontFamily": "\\"FabricMDL2Icons-9\\"",
             }
           }
         >
@@ -1063,7 +1063,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons-1";
+                  font-family: "FabricMDL2Icons-2";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -1085,7 +1085,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             role="presentation"
             style={
               Object {
-                "fontFamily": "\\"FabricMDL2Icons-1\\"",
+                "fontFamily": "\\"FabricMDL2Icons-2\\"",
               }
             }
           >
@@ -1219,7 +1219,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              font-family: "FabricMDL2Icons-1";
+              font-family: "FabricMDL2Icons-2";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1241,7 +1241,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         role="presentation"
         style={
           Object {
-            "fontFamily": "\\"FabricMDL2Icons-1\\"",
+            "fontFamily": "\\"FabricMDL2Icons-2\\"",
           }
         }
       >
@@ -1354,7 +1354,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              font-family: "FabricMDL2Icons-8";
+              font-family: "FabricMDL2Icons-9";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1376,7 +1376,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         role="presentation"
         style={
           Object {
-            "fontFamily": "\\"FabricMDL2Icons-8\\"",
+            "fontFamily": "\\"FabricMDL2Icons-9\\"",
           }
         }
       >
@@ -1856,7 +1856,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              font-family: "FabricMDL2Icons-8";
+              font-family: "FabricMDL2Icons-9";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -1877,7 +1877,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         role="presentation"
         style={
           Object {
-            "fontFamily": "\\"FabricMDL2Icons-8\\"",
+            "fontFamily": "\\"FabricMDL2Icons-9\\"",
           }
         }
       >
@@ -1987,7 +1987,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              font-family: "FabricMDL2Icons-1";
+              font-family: "FabricMDL2Icons-2";
               font-style: normal;
               font-weight: normal;
               speak: none;
@@ -2008,7 +2008,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
         role="presentation"
         style={
           Object {
-            "fontFamily": "\\"FabricMDL2Icons-1\\"",
+            "fontFamily": "\\"FabricMDL2Icons-2\\"",
           }
         }
       >

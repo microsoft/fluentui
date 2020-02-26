@@ -4814,7 +4814,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-13";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -4833,7 +4833,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #323130;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-13";
                   font-style: normal;
                   font-weight: normal;
                   height: 100 %;
@@ -4969,7 +4969,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-13";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -4988,7 +4988,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #323130;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-13";
                   font-style: normal;
                   font-weight: normal;
                   height: 100 %;
@@ -5125,7 +5125,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-13";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -5144,7 +5144,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #323130;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-11";
+                  font-family: "FabricMDL2Icons-13";
                   font-style: normal;
                   font-weight: normal;
                   height: 100 %;
@@ -5280,7 +5280,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-8";
+                  font-family: "FabricMDL2Icons-9";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -5299,7 +5299,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #323130;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-8";
+                  font-family: "FabricMDL2Icons-9";
                   font-style: normal;
                   font-weight: normal;
                   height: 100 %;
@@ -5435,7 +5435,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #605e5c;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-8";
+                  font-family: "FabricMDL2Icons-9";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -5454,7 +5454,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                   -webkit-font-smoothing: antialiased;
                   color: #323130;
                   display: inline-block;
-                  font-family: "FabricMDL2Icons-8";
+                  font-family: "FabricMDL2Icons-9";
                   font-style: normal;
                   font-weight: normal;
                   height: 100 %;

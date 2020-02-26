@@ -256,7 +256,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    font-family: "FabricMDL2Icons-2";
+                    font-family: "FabricMDL2Icons-3";
                     font-style: normal;
                     font-weight: normal;
                     speak: none;
@@ -277,7 +277,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
               role="presentation"
               style={
                 Object {
-                  "fontFamily": "\\"FabricMDL2Icons-2\\"",
+                  "fontFamily": "\\"FabricMDL2Icons-3\\"",
                 }
               }
             >

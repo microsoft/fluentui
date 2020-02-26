@@ -942,7 +942,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons-0";
+                  font-family: "FabricMDL2Icons-1";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -963,7 +963,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             role="presentation"
             style={
               Object {
-                "fontFamily": "\\"FabricMDL2Icons-0\\"",
+                "fontFamily": "\\"FabricMDL2Icons-1\\"",
               }
             }
           >
@@ -1093,7 +1093,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: "FabricMDL2Icons-4";
+                  font-family: "FabricMDL2Icons-5";
                   font-style: normal;
                   font-weight: normal;
                   speak: none;
@@ -1114,7 +1114,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             role="presentation"
             style={
               Object {
-                "fontFamily": "\\"FabricMDL2Icons-4\\"",
+                "fontFamily": "\\"FabricMDL2Icons-5\\"",
               }
             }
           >

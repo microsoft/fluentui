@@ -1105,7 +1105,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        font-family: "FabricMDL2Icons-15";
+                        font-family: "FabricMDL2Icons-16";
                         font-style: normal;
                         font-weight: normal;
                         speak: none;
@@ -1126,7 +1126,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   role="presentation"
                   style={
                     Object {
-                      "fontFamily": "\\"FabricMDL2Icons-15\\"",
+                      "fontFamily": "\\"FabricMDL2Icons-16\\"",
                     }
                   }
                 >

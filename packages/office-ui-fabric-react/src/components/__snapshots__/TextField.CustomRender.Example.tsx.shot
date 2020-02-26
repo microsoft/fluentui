@@ -428,7 +428,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-0";
+                font-family: "FabricMDL2Icons-1";
                 font-style: normal;
                 font-weight: normal;
                 margin-bottom: -3px;

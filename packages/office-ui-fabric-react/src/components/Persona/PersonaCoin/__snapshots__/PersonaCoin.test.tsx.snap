@@ -271,7 +271,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-1";
+                font-family: "FabricMDL2Icons-2";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -846,7 +846,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 display: inline-block;
-                font-family: "FabricMDL2Icons-0";
+                font-family: "FabricMDL2Icons-1";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -1280,7 +1280,7 @@ exports[`Persona renders Persona which calls onRenderPersonaCoin callback with c
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           display: inline-block;
-          font-family: "FabricMDL2Icons-1";
+          font-family: "FabricMDL2Icons-2";
           font-style: normal;
           font-weight: normal;
           speak: none;
@@ -1891,7 +1891,7 @@ exports[`PersonaCoin renders correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               display: inline-block;
-              font-family: "FabricMDL2Icons-0";
+              font-family: "FabricMDL2Icons-1";
               font-style: normal;
               font-weight: normal;
               speak: none;

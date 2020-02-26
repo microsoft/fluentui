@@ -140,7 +140,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                font-family: "FabricMDL2Icons-0";
+                font-family: "FabricMDL2Icons-1";
                 font-style: normal;
                 font-weight: normal;
                 speak: none;
@@ -161,7 +161,7 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
           role="presentation"
           style={
             Object {
-              "fontFamily": "\\"FabricMDL2Icons-0\\"",
+              "fontFamily": "\\"FabricMDL2Icons-1\\"",
             }
           }
         >
