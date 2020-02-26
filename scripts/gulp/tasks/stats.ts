@@ -127,7 +127,7 @@ task('stats:build:bundle', async () => {
   writeCurrentStats(currentStatsFilePath, results);
 });
 
-task('stats', series(parallel('bundle:all-packages', 'build:docs:component-info'), 'stats:build:bundle'));
+task('stats', series(parallel('build:docs:component-info'), 'stats:build:bundle'));
 
 function readSummaryPerfStats() {
   return _.chain(require(paths.perfDist('result.json')))
