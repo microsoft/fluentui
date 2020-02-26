@@ -179,6 +179,7 @@ task('stats:save', async () => {
     throw 'Cannot save stats because STATS_URI is not set';
   }
 
+  // TODO: make sure --tag works
   const commandLineArgs = _.pickBy(
     _.pick(argv, ['sha', 'branch', 'tag', 'pr', 'build']),
     val => val !== '' // ignore empty strings
@@ -189,20 +190,25 @@ task('stats:save', async () => {
 
   const mergedPerfStats = mergePerfStats(perfStats, flamegrillStats);
 
-  const prUrl =
-    process.env.CIRCLE_PULL_REQUEST ||
-    `${process.env.SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI}/pull/${process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}`;
+  // TODO: test in CI and fix
+  // TODO: remove console.logs after testing
+  const prUrl = `${process.env.BUILD_REPOSITORY_URI}/pull/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}`;
+
+  console.log(`prUrl = ${prUrl}`);
 
   const statsPayload = {
-    sha: process.env.BUILD_SOURCEVERSION || process.env.CIRCLE_SHA1,
-    branch: process.env.BUILD_SOURCEBRANCHNAME || process.env.CIRCLE_BRANCH,
+    sha: process.env.BUILD_SOURCEVERSION,
+    branch: process.env.BUILD_SOURCEBRANCHNAME,
     pr: prUrl, // optional
-    build: process.env.BUILD_BUILDID || process.env.CIRCLE_BUILD_NUM,
+    build: process.env.BUILD_BUILDID,
     ...commandLineArgs, // allow command line overwrites
     bundleSize: bundleStats,
     performance: mergedPerfStats,
     ts: new Date()
   };
+
+  console.log('statsPayload');
+  console.dir(statsPayload);
 
   // payload sanity check
   _.forEach(['sha', 'branch', 'build', 'bundleSize', 'performance'], fieldName => {

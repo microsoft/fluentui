@@ -12,11 +12,6 @@ steps:
   # No need for checkout since we're using build artifacts.
   - checkout: none
 
-  # TODO: why is this different from main pipeline? is this really getting the correct artifacts?
-  # I think this could be grabbing the wrong (most recent PR) artifacts rather than the one it's associated with
-  # This run is for PR 20200219.5 build #53232 but is grabbing artifacts from 2020219.6 build #53235
-  # https://uifabric.visualstudio.com/fabricpublic/_build/results?buildId=53238&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9&t=559759ef-66f4-5335-a959-132505aae30a
-  # Last PR Build: https://uifabric.visualstudio.com/fabricpublic/_build/results?buildId=53232&view=logs&jobId=92058b04-f16a-5035-546c-cae3ad5e2f5f&j=ca395085-040a-526b-2ce8-bdc85f692774&t=25a453a0-e716-5e6e-0bee-a24e8e541880
   - template: azure-pipelines.artifacts.yml
     parameters:
       artifact: $(artifact)
@@ -24,10 +19,13 @@ steps:
 
   - template: azure-pipelines.tools.yml
 
-  # TODO: include perf:test:base (if here make sure this pipeline triggers on master builds)
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   - script: |
-      yarn perf:test
+      if [ $BUILD_REASON != "PullRequest" ]; then
+        yarn perf:test:base
+      else
+        yarn perf:test
+      fi
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
     env:
@@ -73,6 +71,39 @@ steps:
       githubContext: 'Pull Request Deployed Site'
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
+
+  # TODO: this should only run on master
+  # - script: |
+  #     if [ $BUILD_REASON != "PullRequest" ]; then
+  #       yarn stats:build
+  #     else
+  #       echo "Skipping statistics collection because BUILD_REASON ${BUILD_REASON} == PullRequest"
+  #     fi
+  - script: |
+      yarn stats:build
+    displayName: Bundle Statistics (master only)
+
+  # TODO: this should only run on master
+  # - script: |
+  #     if [ $BUILD_REASON != "PullRequest" ]; then
+  #       yarn perf
+  #     else
+  #       echo "Skipping perf because BUILD_REASON ${BUILD_REASON} == PullRequest"
+  #     fi
+  - script: |
+      yarn perf
+    displayName: Performance Tests (master only)
+
+  # TODO: this should only run on master
+  # - script: |
+  #     if [ $BUILD_REASON != "PullRequest" ]; then
+  #       yarn stats:save --tag=`git tag --points-at HEAD`
+  #     else
+  #       echo "Skipping saving statistics because BUILD_REASON ${BUILD_REASON} == PullRequest"
+  #     fi
+  - script: |
+      yarn stats:save --tag=`git tag --points-at HEAD`
+    displayName: Save Statistics to DB (master only)
 
   - task: DeleteFiles@1
     inputs:
