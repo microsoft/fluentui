@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "office-ui-fabric-react_v7.97.1",
+      "version": "7.97.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on 'deprecation' tslint rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4345dcefc8266a402f497d3c020b367891b3d2a5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "office-ui-fabric-react_v7.97.0",
       "version": "7.97.0",

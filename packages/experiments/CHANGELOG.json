@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "@uifabric/experiments_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "New composite FloatingSuggestion component, to be used in UnifiedPicker",
+            "author": "sanredd@microsoft.com",
+            "commit": "222b78a9e29247dc74de795a4e1925ee53c545f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2020 12:20:14 GMT",
       "tag": "@uifabric/experiments_v7.20.0",
       "version": "7.20.0",
