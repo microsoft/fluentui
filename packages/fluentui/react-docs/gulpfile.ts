@@ -1,2 +1,1 @@
-// Build off normal tasks
-import '../../gulpfile';
+import '../../../gulpfile';
