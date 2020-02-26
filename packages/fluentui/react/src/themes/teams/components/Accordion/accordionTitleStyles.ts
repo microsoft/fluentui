@@ -8,13 +8,20 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps> = {
     padding: '.5rem 0',
     cursor: p.disabled ? 'default' : 'pointer'
   }),
-  content: ({ props: p }) => ({
+  contentWrapper: ({ props: p }) => ({
     display: 'grid',
-    alignItems: 'center',
     gridTemplateColumns: `auto ${p.content ? '1fr' : ''}`
   }),
   indicator: () => ({
-    userSelect: 'none'
+    userSelect: 'none',
+    alignItems: 'center',
+    display: 'inline-flex',
+    '-ms-grid-column': '1'
+  }),
+  content: () => ({
+    alignItems: 'center',
+    display: 'grid',
+    '-ms-grid-column': '2'
   })
 };
 

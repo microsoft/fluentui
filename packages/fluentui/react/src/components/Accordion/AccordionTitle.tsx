@@ -20,12 +20,13 @@ import {
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
 
 export interface AccordionTitleSlotClassNames {
-  content: string;
+  contentWrapper: string;
 }
 
-export interface AccordionTitleProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
+export interface AccordionTitleProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>>, ChildrenComponentProps {
   /** Id of the content it owns. */
   accordionContentId?: string;
 
@@ -73,7 +74,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static slotClassNames: AccordionTitleSlotClassNames;
 
   static propTypes = {
-    ...commonPropTypes.createCommon(),
+    ...commonPropTypes.createCommon({ content: 'shorthand' }),
     accordionContentId: PropTypes.string,
     active: PropTypes.bool,
     contentRef: customPropTypes.ref,
@@ -118,7 +119,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
         <div
           onFocus={this.handleFocus}
           onClick={this.handleClick}
-          className={cx(AccordionTitle.slotClassNames.content, classes.content)}
+          className={cx(AccordionTitle.slotClassNames.contentWrapper, classes.contentWrapper)}
           {...accessibility.attributes.content}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)}
         >
@@ -127,7 +128,11 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
               styles: styles.indicator
             })
           })}
-          {rtlTextContainer.createFor({ element: content })}
+          {Box.create(content, {
+            defaultProps: () => ({
+              styles: styles.content
+            })
+          })}
         </div>
       </Ref>
     );
@@ -149,7 +154,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
 
 AccordionTitle.slotClassNames = {
-  content: `${AccordionTitle.className}__content`
+  contentWrapper: `${AccordionTitle.className}__content-wrapper`
 };
 
 /**
