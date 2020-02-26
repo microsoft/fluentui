@@ -2,13 +2,13 @@
   "name": "@fluentui/playground",
   "version": "0.44.0",
   "description": "> TODO: description",
-  "homepage": "https://github.com/microsoft/fluent-ui#readme",
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
   "bugs": {
-    "url": "https://github.com/microsoft/fluent-ui/issues"
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microsoft/fluent-ui.git"
+    "url": "git@github.com:OfficeDev/office-ui-fabric-react.git"
   },
   "license": "ISC",
   "author": "JD Huntington <jdh@microsoft.com>",
