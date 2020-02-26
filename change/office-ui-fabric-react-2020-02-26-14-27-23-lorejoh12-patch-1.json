@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Updating Overview.mds for DatePicker and Calendar OUFR to suggest using @uifabric/date-time",
+  "packageName": "office-ui-fabric-react",
+  "email": "jolore@microsoft.com",
+  "commit": "1ea517be3bbd75574e1ff33a23da3c7b709c9252",
+  "date": "2020-02-26T22:27:23.939Z"
+}
