@@ -11,12 +11,7 @@ const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps> = {
   content: ({ props: p }) => ({
     display: 'grid',
     alignItems: 'center',
-    gridTemplateColumns: [
-      'auto', // indicator
-      !!p.content && '1fr'
-    ]
-      .filter(Boolean)
-      .join(' ')
+    gridTemplateColumns: `auto ${p.content ? '1fr' : ''}`
   }),
   indicator: () => ({
     userSelect: 'none'
