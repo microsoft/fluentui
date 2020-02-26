@@ -1,1 +1,1 @@
-module.exports = require('../../.gulp');
+module.exports = require('@uifabric/build/gulp/.gulp');
