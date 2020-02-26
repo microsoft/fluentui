@@ -48,32 +48,29 @@ const resolveStyles = (
   const { className, design, styles, variables, ...stylesProps } = props;
 
   const noInlineStylesOverrides = !(design || styles);
-  const noVariableOverrides = performance.enableHardVariablesCaching || !variables;
+  let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
 
   /* istanbul ignore else */
   if (process.env.NODE_ENV !== 'production') {
-    if (!performance.enableStylesCaching && performance.enableHardVariablesCaching) {
+    if (!performance.enableStylesCaching && performance.enableBooleanVariablesCaching) {
       throw new Error(
-        '@fluentui/react: Please check your "performance" settings on "Provider", to enable "enableHardVariablesCaching" you need to enable "enableStylesCaching"'
+        '@fluentui/react: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"'
       );
     }
+  }
 
-    if (performance.enableHardVariablesCaching && variables) {
-      if (!_.isPlainObject(variables)) {
-        throw new Error('@fluentui/react: With "enableHardVariablesCaching" only plain objects can be passed to "variables" prop.');
-      }
-
-      const hasOnlyBooleanVariables = Object.keys(variables).every(variableName => {
-        return (
-          variables[variableName] === null || typeof variables[variableName] === 'boolean' || typeof variables[variableName] === 'undefined'
-        );
-      });
+  if (performance.enableBooleanVariablesCaching) {
+    if (_.isPlainObject(variables)) {
+      const hasOnlyBooleanVariables = Object.keys(variables).every(
+        variableName =>
+          variables[variableName] === null || typeof variables[variableName] === 'undefined' || typeof variables[variableName] === 'boolean'
+      );
 
       if (!hasOnlyBooleanVariables) {
-        throw new Error(
-          '@fluentui/react: With "enableHardVariablesCaching" only boolean or nil properties can bepassed to "variables" prop.'
-        );
+        noVariableOverrides = false;
       }
+    } else {
+      noVariableOverrides = false;
     }
   }
 
@@ -128,7 +125,7 @@ const resolveStyles = (
   }
 
   const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
-  const variablesCacheKey = performance.enableHardVariablesCaching ? JSON.stringify(variables) : '';
+  const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled
     ? `${displayName}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
     : '';

@@ -77,7 +77,7 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
       ...context.performance,
       // we cannot enable caching for class components
       enableStylesCaching: false,
-      enableHardVariablesCaching: false
+      enableBooleanVariablesCaching: false
     }
   });
 

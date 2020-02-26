@@ -18,7 +18,7 @@ const defaultPerformanceOptions: StylesContextPerformance = {
   enableSanitizeCssPlugin: true,
   enableStylesCaching: true,
   enableVariablesCaching: true,
-  enableHardVariablesCaching: false
+  enableBooleanVariablesCaching: false
 };
 
 const resolveStylesOptions = (options?: {
@@ -280,12 +280,12 @@ describe('resolveStyles', () => {
     expect(renderStyles).toHaveBeenCalledTimes(2);
   });
 
-  describe('enableHardVariablesCaching', () => {
+  describe('enableBooleanVariablesCaching', () => {
     test('avoids "classes" computation when enabled', () => {
       const renderStyles = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
-        performance: { enableHardVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true }
       });
 
       expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
@@ -293,11 +293,23 @@ describe('resolveStyles', () => {
       expect(renderStyles).toHaveBeenCalledTimes(1);
     });
 
+    test('forces "classes" computation when disabled', () => {
+      const renderStyles = jest.fn().mockReturnValue('a');
+      const options = resolveStylesOptions({
+        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        performance: { enableBooleanVariablesCaching: false }
+      });
+
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(renderStyles).toHaveBeenCalledTimes(2);
+    });
+
     test('avoids "styles" computation when enabled', () => {
       spyOn(componentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
-        performance: { enableHardVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true }
       });
 
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
@@ -307,30 +319,34 @@ describe('resolveStyles', () => {
 
     test('requires "enableStylesCaching" to be enabled', () => {
       const options = resolveStylesOptions({
-        performance: { enableStylesCaching: false, enableHardVariablesCaching: true }
+        performance: { enableStylesCaching: false, enableBooleanVariablesCaching: true }
       });
 
       expect(() => resolveStyles(options, resolvedVariables)).toThrowError(/Please check your "performance" settings on "Provider"/);
     });
 
     test('when enabled only plain objects can be passed as "variables"', () => {
+      spyOn(componentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: () => {} },
-        performance: { enableHardVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true }
       });
 
-      expect(() => resolveStyles(options, resolvedVariables)).toThrowError(/With "enableHardVariablesCaching" only plain objects/);
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(componentStyles.root).toHaveBeenCalledTimes(2);
     });
 
     test('when enabled only boolean or nil properties can be passed to "variables"', () => {
+      spyOn(componentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: { foo: 'bar' } },
-        performance: { enableHardVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true }
       });
 
-      expect(() => resolveStyles(options, resolvedVariables)).toThrowError(
-        /With "enableHardVariablesCaching" only boolean or nil properties/
-      );
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(componentStyles.root).toHaveBeenCalledTimes(2);
     });
   });
 });

@@ -37,7 +37,7 @@ const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
     enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
     enableStylesCaching: true,
     enableVariablesCaching: true,
-    enableHardVariablesCaching: false
+    enableBooleanVariablesCaching: false
   },
   renderer: { renderRule: () => '' },
   theme: emptyTheme
