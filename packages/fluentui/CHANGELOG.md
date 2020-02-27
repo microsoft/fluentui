@@ -17,6 +17,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.45.0 ]------------------------------- -->
+## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
+[Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.44.0..HEAD)
+
 ### BREAKING CHANGES
 - Restricted prop sets in the `Checkbox`, `Icon`, `Label`, `Slider`, `Status`, `Text` components which are passed to styles functions @layershifter ([#2307](https://github.com/microsoft/fluent-ui-react/pull/2307))
 - Styles caching when no inline overrides are defined is enabled by default; use the `performance` prop on the `Provider` to opt out of this if needed @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
