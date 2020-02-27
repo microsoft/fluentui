@@ -1,12 +1,12 @@
-import { colors } from '../teams/siteVariables'
-import { TeamsCategoryColorSchemeMapping } from '../teams/types'
-import { ColorSchemeMapping } from '../../themes/types'
-import { createColorScheme as createEmptyColorScheme } from '../teams/colors'
+import { colors } from '../teams/siteVariables';
+import { TeamsCategoryColorSchemeMapping } from '../teams/types';
+import { ColorSchemeMapping } from '../../themes/types';
+import { createColorScheme as createEmptyColorScheme } from '../teams/colors';
 
-export const accessibleYellow = '#ffff01'
-export const accessibleGreen = '#3ff23f' // always disabled color in high contrast
-export const accessibleCyan = '#1aebff'
-export const red = '#f00'
+export const accessibleYellow = '#ffff01';
+export const accessibleGreen = '#3ff23f'; // always disabled color in high contrast
+export const accessibleCyan = '#1aebff';
+export const red = '#f00';
 
 // COLOR SCHEME
 const createColorScheme = (customValues = {}) => {
@@ -40,9 +40,9 @@ const createColorScheme = (customValues = {}) => {
     backgroundDisabled: accessibleGreen,
     borderDisabled: colors.black,
     shadowDisabled: colors.black,
-    ...customValues,
-  }
-}
+    ...customValues
+  };
+};
 
 export const colorScheme: ColorSchemeMapping = {
   default: createEmptyColorScheme({
@@ -110,7 +110,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundDisabled: accessibleGreen,
     backgroundDisabled1: colors.black,
 
-    borderDisabled: accessibleGreen,
+    borderDisabled: accessibleGreen
   }),
   brand: createEmptyColorScheme({
     foreground: colors.white,
@@ -178,7 +178,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundDisabled: accessibleGreen,
     backgroundDisabled1: colors.black,
 
-    borderDisabled: accessibleGreen,
+    borderDisabled: accessibleGreen
   }),
   black: createColorScheme(),
   white: createColorScheme(),
@@ -209,19 +209,19 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundDisabled: undefined,
     backgroundDisabled: undefined,
     borderDisabled: undefined,
-    shadowDisabled: undefined,
+    shadowDisabled: undefined
   }),
   orange: createEmptyColorScheme({
     foreground: accessibleYellow,
     foreground1: accessibleYellow,
     background: accessibleYellow,
-    border: accessibleCyan,
+    border: accessibleCyan
   }),
   pink: createEmptyColorScheme({
     foreground: colors.black,
     foreground1: colors.white,
     background: colors.white,
-    border: colors.white,
+    border: colors.white
   }),
   red: createEmptyColorScheme({
     foreground: colors.white,
@@ -240,14 +240,14 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover1: accessibleYellow,
 
     foregroundPressed: colors.black,
-    backgroundPressed: accessibleYellow,
+    backgroundPressed: accessibleYellow
   }),
   yellow: createEmptyColorScheme({
     foreground: colors.white,
     foreground1: colors.black,
     foreground2: colors.black,
     background: colors.white,
-    background2: colors.white,
+    background2: colors.white
   }),
   silver: createEmptyColorScheme({
     foreground: colors.white,
@@ -262,7 +262,7 @@ export const colorScheme: ColorSchemeMapping = {
     borderPressed: colors.white,
     foregroundDisabled: accessibleGreen,
     backgroundDisabled: colors.black,
-    borderDisabled: accessibleGreen,
+    borderDisabled: accessibleGreen
   }),
   onyx: createEmptyColorScheme({
     background: colors.black,
@@ -270,24 +270,24 @@ export const colorScheme: ColorSchemeMapping = {
     background2: colors.white,
     border: colors.white,
     border1: colors.white,
-    border2: colors.white,
+    border2: colors.white
   }),
   amethyst: createEmptyColorScheme({
     background: colors.silver[900],
     backgroundHover: accessibleYellow,
     backgroundHover1: accessibleYellow,
-    backgroundActive: accessibleCyan,
-  }),
-}
+    backgroundActive: accessibleCyan
+  })
+};
 
 const createCategoryColorScheme = (customValues = {}) => {
   return {
     foreground: colors.black,
     foreground1: accessibleYellow,
     background: accessibleYellow,
-    ...customValues,
-  }
-}
+    ...customValues
+  };
+};
 
 export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
   redDark: createCategoryColorScheme(),
@@ -332,6 +332,6 @@ export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
     foreground7: undefined,
     background7: undefined,
     foreground8: undefined,
-    background8: undefined,
-  },
-}
+    background8: undefined
+  }
+};

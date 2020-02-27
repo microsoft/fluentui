@@ -89,6 +89,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
         )}
         <div className={classNames.container}>
           <div
+            id={this._id}
             aria-valuenow={value}
             aria-valuemin={min}
             aria-valuemax={max}
@@ -100,7 +101,6 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             {...onKeyDownProp}
             {...divButtonProps}
             className={css(classNames.slideBox, buttonProps!.className)}
-            id={this._id}
             role="slider"
             tabIndex={disabled ? undefined : 0}
             data-is-focusable={!disabled}
@@ -303,6 +303,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     let diff: number | undefined = 0;
 
+    // tslint:disable-next-line:deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left, this.props.theme):
       case KeyCodes.down:

@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import State from './State'
-import Usage from './Usage'
+import Rtl from './Rtl';
+import State from './State';
+import Usage from './Usage';
 
 const MenuButtonExamples = () => (
   <>
@@ -10,6 +10,6 @@ const MenuButtonExamples = () => (
     <Rtl />
     <Usage />
   </>
-)
+);
 
-export default MenuButtonExamples
+export default MenuButtonExamples;

@@ -1,12 +1,9 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import { ButtonStylesProps } from '../../../teams/components/Button/buttonStyles'
-import { ButtonVariables } from '../../../teams/components/Button/buttonVariables'
-import { ButtonHighContrastVariables } from './buttonVariables'
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ButtonStylesProps } from '../../../teams/components/Button/buttonStyles';
+import { ButtonVariables } from '../../../teams/components/Button/buttonVariables';
+import { ButtonHighContrastVariables } from './buttonVariables';
 
-const buttonStyles: ComponentSlotStylesPrepared<
-  ButtonStylesProps,
-  ButtonVariables & ButtonHighContrastVariables
-> = {
+const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables & ButtonHighContrastVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       // rectangular button defaults
@@ -19,9 +16,9 @@ const buttonStyles: ComponentSlotStylesPrepared<
           '&:hover': {
             color: v.colorHover,
             backgroundColor: v.backgroundColorHover,
-            borderColor: 'transparent',
-          },
-        },
+            borderColor: 'transparent'
+          }
+        }
       }),
 
       // Overrides for "primary" buttons
@@ -32,12 +29,12 @@ const buttonStyles: ComponentSlotStylesPrepared<
 
             '&:hover': {
               color: v.primaryColorHover,
-              backgroundColor: v.primaryBackgroundColorHover,
-            },
-          },
-        }),
-    }
-  },
-}
+              backgroundColor: v.primaryBackgroundColorHover
+            }
+          }
+        })
+    };
+  }
+};
 
-export default buttonStyles
+export default buttonStyles;

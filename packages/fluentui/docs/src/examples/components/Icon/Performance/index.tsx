@@ -1,16 +1,12 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentPerfExample from '../../../../components/ComponentDoc/ComponentPerfExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentPerfExample from '../../../../components/ComponentDoc/ComponentPerfExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Performance = () => (
   <ExampleSection title="Performance">
-    <ComponentPerfExample
-      title="Default"
-      description="A default test."
-      examplePath="components/Icon/Performance/IconMinimal.perf"
-    />
+    <ComponentPerfExample title="Default" description="A default test." examplePath="components/Icon/Performance/IconMinimal.perf" />
   </ExampleSection>
-)
+);
 
-export default Performance
+export default Performance;

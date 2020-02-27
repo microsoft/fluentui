@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex, Input, Header, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex, Input, Header, Popup } from '@fluentui/react';
 
 const PopupFocusTrapExample = () => (
   <Flex gap="gap.smaller">
@@ -26,6 +26,6 @@ const PopupFocusTrapExample = () => (
       }
     />
   </Flex>
-)
+);
 
-export default PopupFocusTrapExample
+export default PopupFocusTrapExample;

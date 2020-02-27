@@ -3,5 +3,5 @@
 const { runPrettierForFolder } = require('../prettier/prettier-helpers');
 
 module.exports = function() {
-  runPrettierForFolder(process.cwd());
+  runPrettierForFolder(process.cwd(), true);
 };

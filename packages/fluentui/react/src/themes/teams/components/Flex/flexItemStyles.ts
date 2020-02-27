@@ -1,8 +1,8 @@
-import { ComponentSlotStylesPrepared } from '@fluentui/styles'
-import { FlexItemProps } from '../../../../components/Flex/FlexItem'
+import { ComponentSlotStylesPrepared } from '@fluentui/styles';
+import { FlexItemProps } from '../../../../components/Flex/FlexItem';
 
-import { toFlexAlignment, toFlexItemSizeValues } from './utils'
-import { FlexItemVariables } from './flexItemVariables'
+import { toFlexAlignment, toFlexItemSizeValues } from './utils';
+import { FlexItemVariables } from './flexItemVariables';
 
 const flexItemStyles: ComponentSlotStylesPrepared<FlexItemProps, FlexItemVariables> = {
   root: ({ props: p, variables: v }) => {
@@ -17,10 +17,9 @@ const flexItemStyles: ComponentSlotStylesPrepared<FlexItemProps, FlexItemVariabl
       ...(p.grow && { flexGrow: p.grow }),
       ...(p.grow === true && { flexGrow: 1 }),
 
-      ...(p.push &&
-        (p.flexDirection === 'column' ? { marginTop: 'auto' } : { marginLeft: 'auto' })),
-    }
-  },
-}
+      ...(p.push && (p.flexDirection === 'column' ? { marginTop: 'auto' } : { marginLeft: 'auto' }))
+    };
+  }
+};
 
-export default flexItemStyles
+export default flexItemStyles;

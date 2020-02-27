@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Toolbar, Input, Button, Form } from '@fluentui/react'
-import { useBooleanKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import { Toolbar, Input, Button, Form } from '@fluentui/react';
+import { useBooleanKnob } from '@fluentui/docs-components';
 
 const fields = [
   {
@@ -9,7 +9,7 @@ const fields = [
     id: 'first-name-inline-shorthand',
     key: 'first-name',
     required: true,
-    inline: true,
+    inline: true
   },
   {
     label: 'Last name',
@@ -17,58 +17,58 @@ const fields = [
     id: 'last-name-inline-shorthand',
     key: 'last-name',
     required: true,
-    inline: true,
+    inline: true
   },
   {
     label: 'I agree to the Terms and Conditions',
     control: {
-      as: 'input',
+      as: 'input'
     },
     type: 'checkbox',
     id: 'conditions-inline-shorthand',
-    key: 'conditions',
+    key: 'conditions'
   },
   {
     control: {
       as: Button,
-      content: 'Submit',
+      content: 'Submit'
     },
-    key: 'submit',
-  },
-]
+    key: 'submit'
+  }
+];
 
 const HighlightPopup = ({ onConfirm }) => {
-  return <Form onSubmit={onConfirm} fields={fields} />
-}
+  return <Form onSubmit={onConfirm} fields={fields} />;
+};
 
 const ToolbarExampleShorthand = () => {
-  const [isBold, setBold] = useBooleanKnob({ name: 'bold', initialValue: true })
-  const [isItalic, setItalic] = useBooleanKnob({ name: 'isItalic', initialValue: false })
-  const [isUnderline, setUnderline] = useBooleanKnob({ name: 'isUnderline', initialValue: false })
-  const [isStrike, setStrike] = useBooleanKnob({ name: 'isStrike', initialValue: false })
+  const [isBold, setBold] = useBooleanKnob({ name: 'bold', initialValue: true });
+  const [isItalic, setItalic] = useBooleanKnob({ name: 'isItalic', initialValue: false });
+  const [isUnderline, setUnderline] = useBooleanKnob({ name: 'isUnderline', initialValue: false });
+  const [isStrike, setStrike] = useBooleanKnob({ name: 'isStrike', initialValue: false });
 
   const [highlightOpen, setHighlightOpen] = useBooleanKnob({
     name: 'highlightOpen',
-    initialValue: false,
-  })
+    initialValue: false
+  });
   const [fontColorActive, setFontColorActive] = useBooleanKnob({
     name: 'fontColorActive',
-    initialValue: false,
-  })
+    initialValue: false
+  });
 
   const [moreMenuOpen, setMoreMenuOpen] = useBooleanKnob({
     name: 'moreMenuOpen',
-    initialValue: false,
-  })
+    initialValue: false
+  });
 
-  const [log, setLog] = React.useState<string[]>([])
+  const [log, setLog] = React.useState<string[]>([]);
   const writeLog = message => {
-    setLog(prevLog => [`${new Date().toLocaleTimeString()}: ${message}`, ...prevLog])
-  }
+    setLog(prevLog => [`${new Date().toLocaleTimeString()}: ${message}`, ...prevLog]);
+  };
 
-  const [bulletListActive, setBulletListActive] = React.useState(false)
-  const [numberListActive, setNumberListActive] = React.useState(false)
-  const [toDoListActive, setToDoListActive] = React.useState(false)
+  const [bulletListActive, setBulletListActive] = React.useState(false);
+  const [numberListActive, setNumberListActive] = React.useState(false);
+  const [toDoListActive, setToDoListActive] = React.useState(false);
 
   return (
     <>
@@ -82,8 +82,8 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'bold', outline: true },
             title: 'Toggle bold',
             onClick: () => {
-              setBold(!isBold)
-            },
+              setBold(!isBold);
+            }
           },
           {
             key: 'italic',
@@ -92,8 +92,8 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'italic', outline: true },
             title: 'Toggle italic',
             onClick: () => {
-              setItalic(!isItalic)
-            },
+              setItalic(!isItalic);
+            }
           },
           {
             key: 'underline',
@@ -102,8 +102,8 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'underline', outline: true },
             title: 'Toggle underline',
             onClick: () => {
-              setUnderline(!isUnderline)
-            },
+              setUnderline(!isUnderline);
+            }
           },
           {
             key: 'strike',
@@ -113,8 +113,8 @@ const ToolbarExampleShorthand = () => {
             icon: { name: 'strike', outline: true },
             title: 'Toggle strike',
             onClick: () => {
-              setStrike(!isStrike)
-            },
+              setStrike(!isStrike);
+            }
           },
           { key: 'divider1', kind: 'divider' },
           {
@@ -126,15 +126,15 @@ const ToolbarExampleShorthand = () => {
               content: (
                 <HighlightPopup
                   onConfirm={() => {
-                    setHighlightOpen(false)
+                    setHighlightOpen(false);
                   }}
                 />
               ),
               onOpenChange: (e, { open }) => {
-                setHighlightOpen(open)
+                setHighlightOpen(open);
               },
-              open: highlightOpen,
-            },
+              open: highlightOpen
+            }
           },
           {
             key: 'font-color',
@@ -144,15 +144,15 @@ const ToolbarExampleShorthand = () => {
             popup: {
               content: <Input icon="search" placeholder="Search..." />,
               onOpenChange: () => {
-                setFontColorActive(!fontColorActive)
-              },
-            },
+                setFontColorActive(!fontColorActive);
+              }
+            }
           },
           { key: 'font-size', icon: { name: 'font-size', outline: true }, title: 'Font size' },
           {
             key: 'remove-format',
             icon: { name: 'remove-format', outline: true },
-            title: 'Remove formatting',
+            title: 'Remove formatting'
           },
           { key: 'divider2', kind: 'divider' },
           {
@@ -165,12 +165,12 @@ const ToolbarExampleShorthand = () => {
                 active: bulletListActive,
                 title: 'Bullets',
                 onClick: () => {
-                  setBulletListActive(!bulletListActive)
+                  setBulletListActive(!bulletListActive);
 
                   // deselect other radio items
-                  setNumberListActive(false)
-                  setToDoListActive(false)
-                },
+                  setNumberListActive(false);
+                  setToDoListActive(false);
+                }
               },
               {
                 key: 'number-list',
@@ -178,12 +178,12 @@ const ToolbarExampleShorthand = () => {
                 active: numberListActive,
                 title: 'Number list',
                 onClick: () => {
-                  setNumberListActive(!numberListActive)
+                  setNumberListActive(!numberListActive);
 
                   // deselect other radio items
-                  setBulletListActive(false)
-                  setToDoListActive(false)
-                },
+                  setBulletListActive(false);
+                  setToDoListActive(false);
+                }
               },
               {
                 key: 'to-do-list',
@@ -191,14 +191,14 @@ const ToolbarExampleShorthand = () => {
                 active: toDoListActive,
                 title: 'ToDo list',
                 onClick: () => {
-                  setToDoListActive(!toDoListActive)
+                  setToDoListActive(!toDoListActive);
 
                   // deselect other radio items
-                  setBulletListActive(false)
-                  setNumberListActive(false)
-                },
-              },
-            ],
+                  setBulletListActive(false);
+                  setNumberListActive(false);
+                }
+              }
+            ]
           },
           { key: 'divider3', kind: 'divider' },
           { key: 'outdent', icon: { name: 'outdent', outline: true }, title: 'Outdent' },
@@ -214,29 +214,29 @@ const ToolbarExampleShorthand = () => {
                 content: 'Quote',
                 icon: 'quote',
                 onClick: () => {
-                  writeLog('... -> Quote')
-                },
+                  writeLog('... -> Quote');
+                }
               },
               {
                 content: 'Link',
                 icon: 'link',
                 disabled: true,
                 onClick: () => {
-                  writeLog('SHOULD NOT BE CALLED, ITEM IS DISABLED... -> Link')
-                },
+                  writeLog('SHOULD NOT BE CALLED, ITEM IS DISABLED... -> Link');
+                }
               },
               {
                 content: 'Code snippet',
                 icon: 'code-snippet',
-                onClick: () => writeLog('... -> Code snippet'),
-              },
+                onClick: () => writeLog('... -> Code snippet')
+              }
             ],
             menuOpen: moreMenuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              writeLog(`setting menu to ${menuOpen ? 'open' : 'close'}`)
-              setMoreMenuOpen(menuOpen)
-            },
-          },
+              writeLog(`setting menu to ${menuOpen ? 'open' : 'close'}`);
+              setMoreMenuOpen(menuOpen);
+            }
+          }
         ]}
       />
       <br />
@@ -247,7 +247,7 @@ const ToolbarExampleShorthand = () => {
         ))}
       </pre>
     </>
-  )
-}
+  );
+};
 
-export default ToolbarExampleShorthand
+export default ToolbarExampleShorthand;

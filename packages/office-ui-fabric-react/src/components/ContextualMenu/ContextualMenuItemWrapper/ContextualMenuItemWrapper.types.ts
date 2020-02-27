@@ -19,6 +19,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   /**
    * CSS class to apply to the context menu.
    */
+  // tslint:disable-next-line:deprecation
   classNames: IMenuItemClassNames;
 
   /**

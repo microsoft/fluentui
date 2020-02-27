@@ -22,12 +22,12 @@
  *    Some instance methods may be exposed to users via refs.  Again, these are lost with HOC unless
  *    hoisted and exposed by the HOC.
  */
-import * as _ from 'lodash'
-import * as React from 'react'
+import * as _ from 'lodash';
+import * as React from 'react';
 
-import UIComponent from './UIComponent'
+import UIComponent from './UIComponent';
 
-const getDefaultPropName = prop => `default${prop[0].toUpperCase() + prop.slice(1)}`
+const getDefaultPropName = prop => `default${prop[0].toUpperCase() + prop.slice(1)}`;
 
 /**
  * Return the auto controlled state value for a give prop. The initial value is chosen in this order:
@@ -43,78 +43,69 @@ const getDefaultPropName = prop => `default${prop[0].toUpperCase() + prop.slice(
  *  @param state - A state object
  *  @param includeDefaults - Whether or not to heed the default props or initial state
  */
-export const getAutoControlledStateValue = (
-  propName: string,
-  props: any,
-  state: any = undefined,
-  includeDefaults: boolean = false,
-) => {
+export const getAutoControlledStateValue = (propName: string, props: any, state: any = undefined, includeDefaults: boolean = false) => {
   // regular props
-  const propValue = props[propName]
-  if (propValue !== undefined) return propValue
+  const propValue = props[propName];
+  if (propValue !== undefined) return propValue;
 
   if (includeDefaults) {
     // defaultProps
-    const defaultProp = props[getDefaultPropName(propName)]
-    if (defaultProp !== undefined) return defaultProp
+    const defaultProp = props[getDefaultPropName(propName)];
+    if (defaultProp !== undefined) return defaultProp;
 
     // initial state - state may be null or undefined
     if (state) {
-      const initialState = state[propName]
-      if (initialState !== undefined) return initialState
+      const initialState = state[propName];
+      if (initialState !== undefined) return initialState;
     }
   }
 
   // React doesn't allow changing from uncontrolled to controlled components,
   // default checked/value if they were not present.
-  if (propName === 'checked') return false
-  if (propName === 'value') return props.multiple ? [] : ''
+  if (propName === 'checked') return false;
+  if (propName === 'value') return props.multiple ? [] : '';
 
   // otherwise, undefined
-}
+};
 
 export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent<P, S> {
   constructor(props: P, ctx: any) {
-    super(props, ctx)
+    super(props, ctx);
 
-    const { autoControlledProps, getAutoControlledStateFromProps } = this.constructor as any
-    const state = _.invoke(this, 'getInitialAutoControlledState', this.props) || {}
+    const { autoControlledProps, getAutoControlledStateFromProps } = this.constructor as any;
+    const state = _.invoke(this, 'getInitialAutoControlledState', this.props) || {};
 
     if (process.env.NODE_ENV !== 'production') {
-      const { defaultProps, name, propTypes, getDerivedStateFromProps } = this.constructor as any
+      const { defaultProps, name, propTypes, getDerivedStateFromProps } = this.constructor as any;
 
       // require usage of getAutoControlledStateFromProps()
       if (getDerivedStateFromProps !== AutoControlledComponent.getDerivedStateFromProps) {
         /* eslint-disable-next-line no-console */
         console.error(
-          `Auto controlled ${name} must specify a static getAutoControlledStateFromProps() instead of getDerivedStateFromProps().`,
-        )
+          `Auto controlled ${name} must specify a static getAutoControlledStateFromProps() instead of getDerivedStateFromProps().`
+        );
       }
 
       // require static autoControlledProps
       if (!autoControlledProps) {
         /* eslint-disable-next-line no-console */
-        console.error(`Auto controlled ${name} must specify a static autoControlledProps array.`)
+        console.error(`Auto controlled ${name} must specify a static autoControlledProps array.`);
       }
 
       // require propTypes
       _.each(autoControlledProps, prop => {
-        const defaultProp = getDefaultPropName(prop)
+        const defaultProp = getDefaultPropName(prop);
         // regular prop
         if (!_.has(propTypes, defaultProp)) {
           /* eslint-disable-next-line no-console */
-          console.error(
-            `${name} is missing "${defaultProp}" propTypes validation for auto controlled prop "${prop}".`,
-          )
+          console.error(`${name} is missing "${defaultProp}" propTypes validation for auto controlled prop "${prop}".`);
         }
         // its default prop
         if (!_.has(propTypes, prop)) {
           /* eslint-disable-next-line no-console */
-          console.error(
-            `${name} is missing propTypes validation for auto controlled prop "${prop}".`,
-          )
+          console.error(`${name} is missing propTypes validation for auto controlled prop "${prop}".`);
         }
-      })
+      });
 
       // prevent autoControlledProps in defaultProps
       //
@@ -126,7 +117,7 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
       // To set defaults for an AutoControlled prop, you can set the initial state in the
       // constructor or by using an ES7 property initializer:
       // https://babeljs.io/blog/2015/06/07/react-on-es6-plus#property-initializers
-      const illegalDefaults = _.intersection(autoControlledProps, _.keys(defaultProps))
+      const illegalDefaults = _.intersection(autoControlledProps, _.keys(defaultProps));
       if (!_.isEmpty(illegalDefaults)) {
         /* eslint-disable-next-line no-console */
         console.error(
@@ -134,27 +125,25 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
             'Do not set defaultProps for autoControlledProps. You can set defaults by',
             'setting state in the constructor or using an ES7 property initializer',
             '(https://babeljs.io/blog/2015/06/07/react-on-es6-plus#property-initializers)',
-            `See ${name} props: "${illegalDefaults}".`,
-          ].join(' '),
-        )
+            `See ${name} props: "${illegalDefaults}".`
+          ].join(' ')
+        );
       }
 
       // prevent listing defaultProps in autoControlledProps
       //
       // Default props are automatically handled.
       // Listing defaults in autoControlledProps would result in allowing defaultDefaultValue props.
-      const illegalAutoControlled = _.filter(autoControlledProps, prop =>
-        _.startsWith(prop, 'default'),
-      )
+      const illegalAutoControlled = _.filter(autoControlledProps, prop => _.startsWith(prop, 'default'));
       if (!_.isEmpty(illegalAutoControlled)) {
         /* eslint-disable-next-line no-console */
         console.error(
           [
             'Do not add default props to autoControlledProps.',
             'Default props are automatically handled.',
-            `See ${name} autoControlledProps: "${illegalAutoControlled}".`,
-          ].join(' '),
-        )
+            `See ${name} autoControlledProps: "${illegalAutoControlled}".`
+          ].join(' ')
+        );
       }
     }
 
@@ -163,67 +152,65 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
     // Also look for the default prop for any auto controlled props (foo => defaultFoo)
     // so we can set initial values from defaults.
     const initialAutoControlledState = autoControlledProps.reduce((acc, prop) => {
-      acc[prop] = getAutoControlledStateValue(prop, this.props, state, true)
+      acc[prop] = getAutoControlledStateValue(prop, this.props, state, true);
 
       if (process.env.NODE_ENV !== 'production') {
-        const defaultPropName = getDefaultPropName(prop)
-        const { name } = this.constructor
+        const defaultPropName = getDefaultPropName(prop);
+        const { name } = this.constructor;
         // prevent defaultFoo={} along side foo={}
         if (!_.isUndefined(this.props[defaultPropName]) && !_.isUndefined(this.props[prop])) {
           /* eslint-disable-next-line no-console */
-          console.error(
-            `${name} prop "${prop}" is auto controlled. Specify either ${defaultPropName} or ${prop}, but not both.`,
-          )
+          console.error(`${name} prop "${prop}" is auto controlled. Specify either ${defaultPropName} or ${prop}, but not both.`);
         }
       }
 
-      return acc
-    }, {})
+      return acc;
+    }, {});
 
     this.state = {
       ...state,
       ...initialAutoControlledState,
       autoControlledProps,
-      getAutoControlledStateFromProps,
-    }
+      getAutoControlledStateFromProps
+    };
   }
 
-  static getDerivedStateFromProps: React.GetDerivedStateFromProps<any, any>
+  static getDerivedStateFromProps: React.GetDerivedStateFromProps<any, any>;
 
   /**
    * Override this method to use getDerivedStateFromProps() in child components.
    */
-  static getAutoControlledStateFromProps: React.GetDerivedStateFromProps<any, any>
+  static getAutoControlledStateFromProps: React.GetDerivedStateFromProps<any, any>;
 }
 
 AutoControlledComponent.getDerivedStateFromProps = function(props, state) {
-  const { autoControlledProps, getAutoControlledStateFromProps } = state
+  const { autoControlledProps, getAutoControlledStateFromProps } = state;
 
   // Solve the next state for autoControlledProps
   const newStateFromProps = autoControlledProps.reduce((acc, prop) => {
-    const isNextDefined = !_.isUndefined(props[prop])
+    const isNextDefined = !_.isUndefined(props[prop]);
 
     // if next is defined then use its value
-    if (isNextDefined) acc[prop] = props[prop]
+    if (isNextDefined) acc[prop] = props[prop];
 
-    return acc
-  }, {})
+    return acc;
+  }, {});
 
   // Due to the inheritance of the AutoControlledComponent we should call its
   // getAutoControlledStateFromProps() and merge it with the existing state
   if (getAutoControlledStateFromProps) {
     const computedState = getAutoControlledStateFromProps(props, {
       ...state,
-      ...newStateFromProps,
-    })
+      ...newStateFromProps
+    });
 
     // We should follow the idea of getDerivedStateFromProps() and return only modified state
-    return { ...newStateFromProps, ...computedState }
+    return { ...newStateFromProps, ...computedState };
   }
 
-  return newStateFromProps
-}
+  return newStateFromProps;
+};
 
 AutoControlledComponent.getAutoControlledStateFromProps = function(props, state) {
-  return null
-}
+  return null;
+};

@@ -1,9 +1,9 @@
-import * as customPropTypes from '@fluentui/react-proptypes'
-import { Accessibility, tableCellBehavior } from '@fluentui/accessibility'
-import { Ref } from '@fluentui/react-component-ref'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import * as _ from 'lodash'
+import * as customPropTypes from '@fluentui/react-proptypes';
+import { Accessibility, tableCellBehavior } from '@fluentui/accessibility';
+import { Ref } from '@fluentui/react-component-ref';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import * as _ from 'lodash';
 import {
   UIComponent,
   childrenExist,
@@ -14,93 +14,76 @@ import {
   ContentComponentProps,
   ShorthandFactory,
   createShorthandFactory,
-  applyAccessibilityKeyHandlers,
-} from '../../utils'
-import Box, { BoxProps } from '../Box/Box'
-import { WithAsProp, ShorthandValue } from '../../types'
+  applyAccessibilityKeyHandlers
+} from '../../utils';
+import Box, { BoxProps } from '../Box/Box';
+import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 
-export interface TableCellProps
-  extends UIComponentProps,
-    ChildrenComponentProps,
-    ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface TableCellProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available TableCellBehavior
    * */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
   /**
    * Truncate cell's content
    */
-  truncateContent?: boolean
+  truncateContent?: boolean;
 }
 
 export interface TableCellSlotClassNames {
-  content: string
+  content: string;
 }
 
-/**
- * Component represents a table cell
- *
- */
-class TableCell extends UIComponent<WithAsProp<any>, any> {
-  static displayName = 'TableCell'
+class TableCell extends UIComponent<WithAsProp<TableCellProps>> {
+  static displayName = 'TableCell';
 
-  static className = 'ui-table__cell'
+  static className = 'ui-table__cell';
 
   static slotClassNames: TableCellSlotClassNames = {
-    content: `${TableCell.className}__content`,
-  }
+    content: `${TableCell.className}__content`
+  };
 
-  static create: ShorthandFactory<TableCellProps>
+  static create: ShorthandFactory<TableCellProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false,
+      content: false
     }),
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([
-        PropTypes.arrayOf(customPropTypes.nodeContent),
-        customPropTypes.nodeContent,
-      ]),
+      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent])
     ]),
-    truncateContent: PropTypes.bool,
-  }
+    truncateContent: PropTypes.bool
+  };
 
   static defaultProps = {
-    as: 'div',
-    accessibility: tableCellBehavior as Accessibility,
-  }
+    accessibility: tableCellBehavior as Accessibility
+  };
 
-  cellRef = React.createRef<HTMLElement>()
+  cellRef = React.createRef<HTMLElement>();
 
   actionHandlers = {
     focusCell: e => {
-      e.preventDefault()
-      this.cellRef.current.focus()
+      e.preventDefault();
+      this.cellRef.current.focus();
     },
     performClick: e => {
-      this.handleClick(e)
-    },
-  }
+      this.handleClick(e);
+    }
+  };
 
   handleClick = (e: React.SyntheticEvent) => {
     if (e.currentTarget === e.target) {
-      _.invoke(this.props, 'onClick', e, this.props)
-      e.preventDefault()
+      _.invoke(this.props, 'onClick', e, this.props);
+      e.preventDefault();
     }
-  }
+  };
 
-  renderComponent({
-    accessibility,
-    ElementType,
-    styles,
-    classes,
-    unhandledProps,
-  }: RenderResultConfig<any>): React.ReactNode {
-    const { children, content } = this.props
-    const hasChildren = childrenExist(children)
+  renderComponent({ accessibility, ElementType, styles, classes, unhandledProps }: RenderResultConfig<any>): React.ReactNode {
+    const { children, content } = this.props;
+    const hasChildren = childrenExist(children);
 
     return (
       <Ref innerRef={this.cellRef}>
@@ -113,14 +96,17 @@ class TableCell extends UIComponent<WithAsProp<any>, any> {
           {hasChildren
             ? children
             : Box.create(content, {
-                defaultProps: () => ({ as: 'div', styles: styles.content }),
+                defaultProps: () => ({ as: 'div', styles: styles.content })
               })}
         </ElementType>
       </Ref>
-    )
+    );
   }
 }
 
-TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' })
+TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });
 
-export default TableCell
+/**
+ * Component represents a table cell
+ */
+export default withSafeTypeForAs<typeof TableCell, TableCellProps, 'div'>(TableCell);

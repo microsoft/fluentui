@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { TeamsProcessedSvgIconSpec } from '../types'
+import * as React from 'react';
+import { TeamsProcessedSvgIconSpec } from '../types';
 
 export default {
   icon: ({ classes }) => (
@@ -17,11 +17,7 @@ export default {
         d="M20 11c.7 0 1.3.1 2 .4.6.3 1.1.6 1.6 1.1.4.4.8 1 1.1 1.6.3.6.4 1.2.4 1.9h-5m3.9 1c0 .7-.1 1.3-.4 2-.3.6-.6 1.1-1.1 1.6-.5.4-1 .8-1.6 1.1-.6.3-1.3.4-2 .4-.4 0-.7 0-1-.1s-.7-.2-1-.3V17H24z"
       />
       <path fill="#ff8f6b" d="M17 12.4c.3-.1.6-.2 1-.3s.7-.1 1-.1v5h-2v-4.6z" />
-      <path
-        fill="#fff"
-        fillOpacity=".498"
-        d="M20 11c.7 0 1.3.1 2 .4.6.3 1.1.6 1.6 1.1.4.4.8 1 1.1 1.6.3.6.4 1.2.4 1.9h-5v-5z"
-      />
+      <path fill="#fff" fillOpacity=".498" d="M20 11c.7 0 1.3.1 2 .4.6.3 1.1.6 1.6 1.1.4.4.8 1 1.1 1.6.3.6.4 1.2.4 1.9h-5v-5z" />
       <path
         fill="#c43e1c"
         d="M14.8 9c.3 0 .6.1.8.3s.4.5.4.9v11.7c0 .3-.1.6-.3.8s-.5.3-.9.3H3.2c-.3 0-.6-.1-.8-.3s-.4-.5-.4-.9V10.2c0-.3.1-.6.3-.8s.5-.4.9-.4h11.6z"
@@ -32,5 +28,5 @@ export default {
       />
     </svg>
   ),
-  styles: {},
-} as TeamsProcessedSvgIconSpec
+  styles: {}
+} as TeamsProcessedSvgIconSpec;

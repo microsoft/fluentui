@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex, Text } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex, Text } from '@fluentui/react';
 
 const ButtonExampleIconOnly = () => (
   <div>
@@ -12,6 +12,6 @@ const ButtonExampleIconOnly = () => (
       <Text content="AS A TEXT BUTTON" weight="bold" />
     </Flex>
   </div>
-)
+);
 
-export default ButtonExampleIconOnly
+export default ButtonExampleIconOnly;

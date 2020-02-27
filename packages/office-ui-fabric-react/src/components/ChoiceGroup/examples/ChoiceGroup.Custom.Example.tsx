@@ -30,6 +30,7 @@ const options: IChoiceGroupOption[] = [
             defaultSelectedKey="A"
             styles={dropdownStyles}
             options={dropdownOptions}
+            // tslint:disable-next-line:deprecation
             disabled={props ? !props.checked : false}
             ariaLabel="Select a time span"
           />

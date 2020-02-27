@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { CopyToClipboard } from '@fluentui/docs-components'
-import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react'
-import themeWithProcessedIcons from '@fluentui/react/src/themes/teams/withProcessedIcons'
-import { TeamsProcessedSvgIconSpec } from '@fluentui/react/src/themes/teams/components/Icon/svg/types'
+import * as React from 'react';
+import { CopyToClipboard } from '@fluentui/docs-components';
+import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react';
+import themeWithProcessedIcons from '@fluentui/react/src/themes/teams/withProcessedIcons';
+import { TeamsProcessedSvgIconSpec } from '@fluentui/react/src/themes/teams/components/Icon/svg/types';
 
 const cellStyles = {
-  margin: '10px 0',
-}
+  margin: '10px 0'
+};
 
-const processedIconsNamePrefix = 'processedIcons_'
+const processedIconsNamePrefix = 'processedIcons_';
 
 const renderIconName = (icon, isOutline = false) => {
-  const maybeExportedAs = (icon as any).exportedAs
+  const maybeExportedAs = (icon as any).exportedAs;
   return (
     maybeExportedAs && (
       <>
@@ -28,23 +28,23 @@ const renderIconName = (icon, isOutline = false) => {
         </CopyToClipboard>
       </>
     )
-  )
-}
+  );
+};
 
 class IconViewerExample extends React.Component<any, {}> {
   readonly iconFilters = {
     All: () => true,
     Exported: (icon: TeamsProcessedSvgIconSpec) => icon.exportedAs,
-    'Not Exported': (icon: TeamsProcessedSvgIconSpec) => !icon.exportedAs,
-  }
+    'Not Exported': (icon: TeamsProcessedSvgIconSpec) => !icon.exportedAs
+  };
 
   state = {
-    filter: 'All',
-  }
+    filter: 'All'
+  };
 
   applyCurrentFilter(icon) {
-    const currentFilter = this.iconFilters[this.state.filter]
-    return currentFilter(icon)
+    const currentFilter = this.iconFilters[this.state.filter];
+    return currentFilter(icon);
   }
 
   render() {
@@ -56,7 +56,7 @@ class IconViewerExample extends React.Component<any, {}> {
           description={{
             content:
               'These icons have been pulled directly from the Angular app and are ready to be added to the Teams theme in Fluent UI as needed.',
-            styles: { fontSize: '16px' },
+            styles: { fontSize: '16px' }
           }}
         />
 
@@ -120,8 +120,8 @@ class IconViewerExample extends React.Component<any, {}> {
           </Provider>
         </div>
       </Segment>
-    )
+    );
   }
 }
 
-export default IconViewerExample
+export default IconViewerExample;

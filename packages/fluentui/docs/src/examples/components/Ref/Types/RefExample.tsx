@@ -1,24 +1,24 @@
-import * as React from 'react'
-import { Button, Flex, Grid, Ref, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex, Grid, Ref, Segment } from '@fluentui/react';
 
 type RefExampleState = {
-  isMounted: boolean
-}
+  isMounted: boolean;
+};
 
 class RefExample extends React.Component<{}, RefExampleState> {
-  state = { isMounted: false }
+  state = { isMounted: false };
 
-  createdRef = React.createRef<HTMLButtonElement>()
-  functionalRef = null
+  createdRef = React.createRef<HTMLButtonElement>();
+  functionalRef = null;
 
-  handleRef = (node: HTMLButtonElement) => (this.functionalRef = node)
+  handleRef = (node: HTMLButtonElement) => (this.functionalRef = node);
 
   componentDidMount() {
-    this.setState({ isMounted: true })
+    this.setState({ isMounted: true });
   }
 
   render() {
-    const { isMounted } = this.state
+    const { isMounted } = this.state;
 
     return (
       <Grid columns={2}>
@@ -42,10 +42,10 @@ class RefExample extends React.Component<{}, RefExampleState> {
                 {
                   nodeName: this.functionalRef.nodeName,
                   nodeType: this.functionalRef.nodeType,
-                  textContent: this.functionalRef.textContent,
+                  textContent: this.functionalRef.textContent
                 },
                 null,
-                2,
+                2
               )}
             </pre>
             <pre>
@@ -53,17 +53,17 @@ class RefExample extends React.Component<{}, RefExampleState> {
                 {
                   nodeName: this.createdRef.current.nodeName,
                   nodeType: this.createdRef.current.nodeType,
-                  textContent: this.createdRef.current.textContent,
+                  textContent: this.createdRef.current.textContent
                 },
                 null,
-                2,
+                2
               )}
             </pre>
           </code>
         )}
       </Grid>
-    )
+    );
   }
 }
 
-export default RefExample
+export default RefExample;

@@ -1,4 +1,4 @@
-import { Accessibility, AccessibilityAttributes } from '../../types'
+import { Accessibility, AccessibilityAttributes } from '../../types';
 
 /**
  * @description
@@ -11,14 +11,14 @@ import { Accessibility, AccessibilityAttributes } from '../../types'
 const imageBehavior: Accessibility<ImageBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true',
-    },
-  },
-})
+      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true'
+    }
+  }
+});
 
-export default imageBehavior
+export default imageBehavior;
 
 export type ImageBehaviorProps = {
   /** Alternative text. */
-  alt?: string
-} & Pick<AccessibilityAttributes, 'aria-label'>
+  alt?: string;
+} & Pick<AccessibilityAttributes, 'aria-label'>;

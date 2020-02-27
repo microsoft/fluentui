@@ -23,7 +23,7 @@ task('test:e2e:build', cb => {
 
 let server: Server;
 task('test:e2e:serve:start', async () => {
-  server = await serve(paths.e2eDist(), config.server_host, config.e2e_port);
+  server = await serve(paths.e2eDist(), config.server_host, config.e2e_port, app => app.get('/favicon.ico', (req, res) => res.status(204)));
 });
 
 task('test:e2e:serve:stop', () => forceClose(server));

@@ -4,16 +4,9 @@
     "composite": true,
     "rootDir": "src",
     "outDir": "lib",
-    "types": [
-      "node",
-      "jest",
-      "expect-puppeteer",
-      "jest-environment-puppeteer"
-    ]
+    "types": ["node", "jest", "expect-puppeteer", "jest-environment-puppeteer"]
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "references": [
     {
       "path": "../react-theming/tsconfig.json"

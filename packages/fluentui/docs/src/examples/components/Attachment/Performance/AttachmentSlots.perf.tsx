@@ -1,5 +1,5 @@
-import { Attachment } from '@fluentui/react'
-import * as React from 'react'
+import { Attachment } from '@fluentui/react';
+import * as React from 'react';
 
 const AttachmentSlotsPerf = () => (
   <Attachment
@@ -10,9 +10,9 @@ const AttachmentSlotsPerf = () => (
     action={{ icon: 'more', title: 'More Action' }}
     progress={33}
   />
-)
+);
 
-AttachmentSlotsPerf.iterations = 1000
-AttachmentSlotsPerf.filename = 'AttachmentSlots.perf.tsx'
+AttachmentSlotsPerf.iterations = 1000;
+AttachmentSlotsPerf.filename = 'AttachmentSlots.perf.tsx';
 
-export default AttachmentSlotsPerf
+export default AttachmentSlotsPerf;

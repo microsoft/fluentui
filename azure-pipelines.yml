@@ -7,10 +7,9 @@ trigger:
 variables:
   - group: fabric-variables
 
-pool: 'Self Host Ubuntu'
-
 jobs:
   - job: Build
+    pool: 'Self Host Ubuntu'
     steps:
       - template: azure-pipelines.tools.yml
 
@@ -62,6 +61,41 @@ jobs:
 
   - job: Validate
     dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
+    steps:
+      # No need for checkout since we're using build artifacts.
+      - checkout: none
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          yarn test
+        displayName: test
+
+      - script: |
+          yarn lint
+        displayName: lint
+
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: ValidateFluent
+    dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -84,12 +118,16 @@ jobs:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn test
-        displayName: test
+          yarn test:fluentui:e2e
+        displayName: E2E Tests
 
       - script: |
-          yarn lint
-        displayName: lint
+          yarn test:fluentui:projects
+        displayName: Project Tests
+
+      - script: |
+          yarn test:fluentui:circulars
+        displayName: Circular Dependencies Tests
 
       - script: |
           yarn check-for-changed-files
@@ -103,6 +141,8 @@ jobs:
 
   - job: Deploy
     dependsOn: Build
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
@@ -135,11 +175,16 @@ jobs:
 
   - job: Screener
     dependsOn: Build
-    pool:
-      vmImage: 'Ubuntu 18.04'
+    pool: 'Self Host Ubuntu'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: /tmp/gulp-cache
+          Contents: '**/*'
+        condition: always()
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -156,40 +201,16 @@ jobs:
         env:
           SCREENER_API_KEY: $(screener.key)
 
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
       - task: DeleteFiles@1
         inputs:
           SourceFolder: $(Build.SourcesDirectory)
           Contents: '**/*'
         condition: always()
-
-  # - job: Danger
-  #   dependsOn: Build
-  #   steps:
-  #     # No need for checkout since we're using build artifacts.
-  #     - checkout: none
-
-  #     - template: azure-pipelines.artifacts.yml
-  #       parameters:
-  #         artifact: Build-PR-$(Build.BuildNumber)
-  #         buildId: $(Build.BuildId)
-
-  #     - template: azure-pipelines.tools.yml
-
-  #     - script: |
-  #         yarn perf:test
-  #       workingDirectory: packages/fluentui/perf-test
-  #       displayName: Perf Test
-
-  #     - script: |
-  #         if [ $BUILD_REASON == "PullRequest" ] && [ ! -z $DANGER_GITHUB_API_TOKEN ]; then
-  #           yarn danger ci
-  #         elif [ $BUILD_REASON != "PullRequest" ]; then
-  #           echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-  #         else
-  #           echo "Skipping Danger JS because API token wasn't found"
-  #         fi
-
-  #     - script: |
-  #         yarn danger ci
-  #       env:
-  #         DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)

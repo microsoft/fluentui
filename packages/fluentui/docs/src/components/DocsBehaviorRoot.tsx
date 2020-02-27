@@ -1,36 +1,36 @@
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import { Header, Segment, Divider, ICSSInJSStyle } from '@fluentui/react'
-import DocumentTitle from 'react-document-title'
-import ComponentExampleTitle from './ComponentDoc/ComponentExample/ComponentExampleTitle'
-import BehaviorDescription from './ComponentDoc/BehaviorDescription'
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { Header, Segment, Divider, ICSSInJSStyle } from '@fluentui/react';
+import DocumentTitle from 'react-document-title';
+import ComponentExampleTitle from './ComponentDoc/ComponentExample/ComponentExampleTitle';
+import BehaviorDescription from './ComponentDoc/BehaviorDescription';
 
-const behaviorMenuItems = require('../behaviorMenu')
+const behaviorMenuItems = require('../behaviorMenu');
 
 class DocsBehaviorRoot extends React.Component<any, any> {
   static propTypes = {
     children: PropTypes.node,
     match: PropTypes.shape({
       params: PropTypes.shape({
-        name: PropTypes.string.isRequired,
-      }),
-    }),
-  }
+        name: PropTypes.string.isRequired
+      })
+    })
+  };
 
   baseName(fileName: string) {
-    const divided = _.startCase(fileName.replace(/Behavior\.ts$/, ''))
-    return _.upperFirst(_.lowerCase(divided))
+    const divided = _.startCase(fileName.replace(/Behavior\.ts$/, ''));
+    return _.upperFirst(_.lowerCase(divided));
   }
 
   render() {
     const exampleStyle: ICSSInJSStyle = {
-      boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
-    }
+      boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
+    };
 
-    const { match } = this.props
-    const componentName = _.upperFirst(_.camelCase(match.params.name))
-    const pageTitle = `${componentName} accessibility behaviors`
+    const { match } = this.props;
+    const componentName = _.upperFirst(_.camelCase(match.params.name));
+    const pageTitle = `${componentName} accessibility behaviors`;
     return (
       <DocumentTitle title={pageTitle}>
         <Segment styles={{ backgroundColor: 'transparent' }}>
@@ -40,15 +40,8 @@ class DocsBehaviorRoot extends React.Component<any, any> {
             .find(behavior => behavior.displayName === componentName)
             .variations.map((variation, keyValue) => (
               <React.Fragment key={keyValue}>
-                <Segment
-                  className="docs-example"
-                  id={_.kebabCase(variation.name)}
-                  styles={exampleStyle}
-                >
-                  <ComponentExampleTitle
-                    title={this.baseName(variation.name)}
-                    description={`Name: ${variation.name.replace('.ts', '')}`}
-                  />
+                <Segment className="docs-example" id={_.kebabCase(variation.name)} styles={exampleStyle}>
+                  <ComponentExampleTitle title={this.baseName(variation.name)} description={`Name: ${variation.name.replace('.ts', '')}`} />
 
                   <Divider />
 
@@ -75,8 +68,8 @@ class DocsBehaviorRoot extends React.Component<any, any> {
             ))}
         </Segment>
       </DocumentTitle>
-    )
+    );
   }
 }
 
-export default DocsBehaviorRoot
+export default DocsBehaviorRoot;

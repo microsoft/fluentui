@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { SplitButton } from '@fluentui/react'
+import * as React from 'react';
+import { SplitButton } from '@fluentui/react';
 
 const SplitButtonExampleShorthand = () => (
   <>
     <SplitButton
       menu={[
         { key: 'group', content: 'New group message' },
-        { key: 'channel', content: 'New channel message' },
+        { key: 'channel', content: 'New channel message' }
       ]}
       button={{
         content: 'New conversation',
         'aria-roledescription': 'splitbutton',
-        'aria-describedby': 'instruction-message',
+        'aria-describedby': 'instruction-message'
       }}
       toggleButton={{ 'aria-label': 'more options' }}
       onMainButtonClick={() => alert('button was clicked')}
@@ -20,6 +20,6 @@ const SplitButtonExampleShorthand = () => (
       to open menu, press Alt + Arrow Down
     </span>
   </>
-)
+);
 
-export default SplitButtonExampleShorthand
+export default SplitButtonExampleShorthand;

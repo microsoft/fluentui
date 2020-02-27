@@ -1,31 +1,31 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export interface ListItemVariables {
-  minHeight: string
-  rootPadding: string
+  minHeight: string;
+  rootPadding: string;
 
-  headerLineHeight: string
-  headerFontSize: string
-  zIndex: number
+  headerLineHeight: string;
+  headerFontSize: string;
+  zIndex: number;
 
   // Header Media
-  headerMediaFontSize: string
+  headerMediaFontSize: string;
   // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
-  headerMediaLineHeight: string
+  headerMediaLineHeight: string;
 
   // Content
-  contentFontSize: string
-  contentLineHeight: string
+  contentFontSize: string;
+  contentLineHeight: string;
 
   // Content media
-  contentMediaFontSize: string
-  contentMediaLineHeight: string
+  contentMediaFontSize: string;
+  contentMediaLineHeight: string;
 
   // Selectable
-  selectableFocusHoverColor: string
-  selectableFocusHoverBackgroundColor: string
-  selectedColor: string
-  selectedBackgroundColor: string
+  selectableFocusHoverColor: string;
+  selectableFocusHoverBackgroundColor: string;
+  selectedColor: string;
+  selectedBackgroundColor: string;
 }
 
 export default (siteVariables: any): ListItemVariables => {
@@ -56,6 +56,6 @@ export default (siteVariables: any): ListItemVariables => {
     selectableFocusHoverColor: siteVariables.colors.white,
     selectableFocusHoverBackgroundColor: siteVariables.colors.brand[500],
     selectedColor: siteVariables.bodyColor,
-    selectedBackgroundColor: siteVariables.colors.grey[100],
-  }
-}
+    selectedBackgroundColor: siteVariables.colors.grey[100]
+  };
+};

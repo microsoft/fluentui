@@ -1,40 +1,32 @@
-import * as _ from 'lodash'
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings'
-import { pxToRem } from '../../../../utils'
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles'
-import Loader from '../../../../components/Loader/Loader'
-import { ButtonProps } from '../../../../components/Button/Button'
-import { ButtonVariables } from './buttonVariables'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles'
+import * as _ from 'lodash';
+import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
+import { pxToRem } from '../../../../utils';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import Loader from '../../../../components/Loader/Loader';
+import { ButtonProps } from '../../../../components/Button/Button';
+import { ButtonVariables } from './buttonVariables';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
 export type ButtonStylesProps = Pick<
   ButtonProps,
-  | 'text'
-  | 'primary'
-  | 'disabled'
-  | 'circular'
-  | 'size'
-  | 'loading'
-  | 'inverted'
-  | 'iconOnly'
-  | 'fluid'
+  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid'
 > & {
-  hasContent?: boolean
-}
+  hasContent?: boolean;
+};
 
 const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
-    const { siteVariables } = theme
-    const { borderWidth } = siteVariables
+    const { siteVariables } = theme;
+    const { borderWidth } = siteVariables;
 
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables,
       borderPadding: borderWidth,
       ...(p.circular && {
-        borderPadding: pxToRem(4),
-      }),
-    })
+        borderPadding: pxToRem(4)
+      })
+    });
 
     return {
       height: v.height,
@@ -54,7 +46,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       ...(p.size === 'small' && {
         padding: v.sizeSmallPadding,
         height: v.sizeSmallHeight,
-        minWidth: v.sizeSmallMinWidth,
+        minWidth: v.sizeSmallMinWidth
       }),
 
       // rectangular button defaults
@@ -68,7 +60,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         ':hover': {
           color: v.colorHover,
           backgroundColor: v.backgroundColorHover,
-          borderColor: v.borderColorHover,
+          borderColor: v.borderColorHover
         },
 
         ':active': {
@@ -76,11 +68,11 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           color: v.colorActive,
           backgroundColor: v.backgroundColorActive,
           borderColor: v.borderColorActive,
-          boxShadow: 'none',
+          boxShadow: 'none'
         },
 
         ':focus': {
-          ...borderFocusStyles[':focus'],
+          ...borderFocusStyles[':focus']
         },
 
         ':focus-visible': {
@@ -89,13 +81,13 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           borderWidth,
 
           ':hover': {
-            borderColor: v.borderColorHover,
-          },
+            borderColor: v.borderColorHover
+          }
         },
 
         ...(p.size === 'small' && {
-          boxShadow: 'none',
-        }),
+          boxShadow: 'none'
+        })
       }),
 
       // circular button defaults
@@ -106,8 +98,8 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           borderRadius: v.circularBorderRadius,
 
           ...(p.size === 'small' && {
-            minWidth: v.sizeSmallHeight,
-          }),
+            minWidth: v.sizeSmallHeight
+          })
         }),
 
       // text button defaults
@@ -122,21 +114,21 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
 
         ':hover': {
           color: v.textColorHover,
-          ...getIconFillOrOutlineStyles({ outline: false }),
+          ...getIconFillOrOutlineStyles({ outline: false })
         },
 
         ':focus': {
           boxShadow: 'none',
-          ...borderFocusStyles[':focus'],
+          ...borderFocusStyles[':focus']
         },
 
         ':focus-visible': {
-          ...borderFocusStyles[':focus-visible'],
+          ...borderFocusStyles[':focus-visible']
         },
 
         ...(p.primary && {
-          color: v.textPrimaryColor,
-        }),
+          color: v.textPrimaryColor
+        })
       }),
 
       // Overrides for "primary" buttons
@@ -150,21 +142,21 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           ':active': {
             ...createAnimationStyles('scaleDownSoft', theme),
             backgroundColor: v.primaryBackgroundColorActive,
-            boxShadow: 'none',
+            boxShadow: 'none'
           },
 
           ':focus': {
-            ...borderFocusStyles[':focus'],
+            ...borderFocusStyles[':focus']
           },
 
           ':focus-visible': {
-            ...borderFocusStyles[':focus-visible'],
+            ...borderFocusStyles[':focus-visible']
           },
 
           ':hover': {
             color: v.primaryColorHover,
-            backgroundColor: v.primaryBackgroundColorHover,
-          },
+            backgroundColor: v.primaryBackgroundColorHover
+          }
         }),
 
       ...(p.inverted && {
@@ -175,24 +167,24 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         ':active': {
           ...createAnimationStyles('scaleDownSoft', theme),
           backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
-          color: siteVariables.colorScheme.silver.foregroundHover,
+          color: siteVariables.colorScheme.silver.foregroundHover
         },
 
         ':hover': {
           backgroundColor: siteVariables.colorScheme.silver.backgroundHover,
-          color: siteVariables.colorScheme.silver.foregroundHover,
+          color: siteVariables.colorScheme.silver.foregroundHover
         },
 
         ':focus': {
           ...borderFocusStyles[':focus'],
-          boxShadow: 'none',
+          boxShadow: 'none'
         },
 
         ':focus-visible': {
           ...borderFocusStyles[':focus-visible'],
           backgroundColor: siteVariables.colorScheme.silver.backgroundPressed,
-          color: siteVariables.colorScheme.silver.foregroundHover,
-        },
+          color: siteVariables.colorScheme.silver.foregroundHover
+        }
       }),
 
       // Overrides for "disabled" buttons
@@ -202,26 +194,26 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         boxShadow: 'none',
         pointerEvents: 'none',
         ':hover': {
-          color: v.colorDisabled,
+          color: v.colorDisabled
         },
 
         ...(p.text && {
           color: v.textColorDisabled,
           backgroundColor: 'transparent',
           ':hover': {
-            color: v.textColorDisabled,
-          },
+            color: v.textColorDisabled
+          }
         }),
 
         ...(!p.text && {
           backgroundColor: v.backgroundColorDisabled,
-          borderColor: v.borderColorDisabled,
-        }),
+          borderColor: v.borderColorDisabled
+        })
       }),
 
       ...(p.fluid && {
         width: '100%',
-        maxWidth: '100%',
+        maxWidth: '100%'
       }),
 
       ...(p.iconOnly && {
@@ -231,14 +223,14 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
         ':hover': {
           ...getIconFillOrOutlineStyles({ outline: false }),
           color: v.textColorIconOnlyHover,
-          background: v.backgroundColorIconOnlyHover,
+          background: v.backgroundColorIconOnlyHover
         },
 
         ...(p.size === 'small' && {
-          minWidth: v.sizeSmallHeight,
-        }),
-      }),
-    }
+          minWidth: v.sizeSmallHeight
+        })
+      })
+    };
   },
 
   // modifies the text of the button
@@ -252,8 +244,8 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
 
     ...(p.size === 'small' && {
       fontSize: v.sizeSmallContentFontSize,
-      lineHeight: v.sizeSmallContentLineHeight,
-    }),
+      lineHeight: v.sizeSmallContentLineHeight
+    })
   }),
 
   icon: ({ props: p }) => ({
@@ -261,34 +253,32 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     ...(p.loading && {
       margin: 0,
       opacity: 0,
-      width: 0,
-    }),
+      width: 0
+    })
   }),
 
   loader: ({ props: p, variables: v }): ICSSInJSStyle => ({
     [`& .${Loader.slotClassNames.indicator}`]: {
       width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
-      height: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
+      height: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize
     },
     [`& .${Loader.slotClassNames.svg}`]: {
       ':before': {
         animationName: {
           to: {
-            transform: `translate3d(0, ${
-              p.size === 'small' ? v.sizeSmallLoaderSvgAnimationHeight : v.loaderSvgAnimationHeight
-            }, 0)`,
-          },
+            transform: `translate3d(0, ${p.size === 'small' ? v.sizeSmallLoaderSvgAnimationHeight : v.loaderSvgAnimationHeight}, 0)`
+          }
         },
         borderWidth: p.size === 'small' ? v.sizeSmallLoaderBorderSize : v.loaderBorderSize,
         width: p.size === 'small' ? v.sizeSmallLoaderSize : v.loaderSize,
-        height: p.size === 'small' ? v.sizeSmallLoaderSvgHeight : v.loaderSvgHeight,
-      },
+        height: p.size === 'small' ? v.sizeSmallLoaderSvgHeight : v.loaderSvgHeight
+      }
     },
 
     ...(p.hasContent && {
-      marginRight: pxToRem(4),
-    }),
-  }),
-}
+      marginRight: pxToRem(4)
+    })
+  })
+};
 
-export default buttonStyles
+export default buttonStyles;

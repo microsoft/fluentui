@@ -97,8 +97,10 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     const {
       colorCells,
       columnCount,
+      // tslint:disable:deprecation
       ariaPosInSet = this.props.positionInSet,
       ariaSetSize = this.props.setSize,
+      // tslint:enable:deprecation
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,

@@ -35,6 +35,7 @@ const Types = () => (
 
     <NonPublicSection title="Types for visual tests">
       <ComponentExample examplePath="components/Popup/Types/PopupExamplePointerOffset" />
+      <ComponentExample examplePath="components/Popup/Types/PopupExamplePointerMargin" />
     </NonPublicSection>
   </ExampleSection>
 );

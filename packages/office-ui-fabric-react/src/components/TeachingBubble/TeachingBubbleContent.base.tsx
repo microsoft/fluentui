@@ -54,6 +54,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
+      // tslint:disable-next-line:deprecation
       hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,

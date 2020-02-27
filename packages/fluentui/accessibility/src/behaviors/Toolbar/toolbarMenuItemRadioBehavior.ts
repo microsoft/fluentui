@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -15,21 +15,21 @@ const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorPr
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-checked': props.active,
       'aria-disabled': props.disabled,
-      role: 'menuitemradio',
-    },
+      role: 'menuitemradio'
+    }
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
+  }
+});
 
-export default toolbarMenuItemRadioBehavior
+export default toolbarMenuItemRadioBehavior;
 
 type ToolbarMenuItemRadioBehaviorProps = {
-  active?: boolean
-  disabled?: boolean
-}
+  active?: boolean;
+  disabled?: boolean;
+};

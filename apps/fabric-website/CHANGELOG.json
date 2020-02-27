@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.7",
+      "version": "7.9.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2020 12:21:05 GMT",
       "tag": "@uifabric/fabric-website_v7.9.3",
       "version": "7.9.3",

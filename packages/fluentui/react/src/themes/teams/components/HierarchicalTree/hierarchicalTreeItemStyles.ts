@@ -1,7 +1,7 @@
-import { ICSSInJSStyle } from '@fluentui/styles'
-import { pxToRem } from '../../../../utils'
-import getBorderFocusStyles from '../../getBorderFocusStyles'
-import HierarchicalTreeTitle from '../../../../components/HierarchicalTree/HierarchicalTreeTitle'
+import { ICSSInJSStyle } from '@fluentui/styles';
+import { pxToRem } from '../../../../utils';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import HierarchicalTreeTitle from '../../../../components/HierarchicalTree/HierarchicalTreeTitle';
 
 const hierarchicalTreeItemStyles = {
   root: ({ theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -11,10 +11,10 @@ const hierarchicalTreeItemStyles = {
     ':focus-visible': {
       [`> .${HierarchicalTreeTitle.className}`]: {
         position: 'relative',
-        ...getBorderFocusStyles({ siteVariables })[':focus-visible'],
-      },
-    },
-  }),
-}
+        ...getBorderFocusStyles({ siteVariables })[':focus-visible']
+      }
+    }
+  })
+};
 
-export default hierarchicalTreeItemStyles
+export default hierarchicalTreeItemStyles;

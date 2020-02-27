@@ -3,16 +3,8 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",
-    "types": [
-      "node",
-      "jest",
-      "expect-puppeteer",
-      "jest-environment-puppeteer",
-      "webpack-env"
-    ]
+    "types": ["node", "jest", "expect-puppeteer", "jest-environment-puppeteer", "webpack-env"]
   },
-  "include": [
-    "src"
-  ],
+  "include": ["src"],
   "references": []
 }

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 7.2.22
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
 ## 7.2.16
 Wed, 12 Feb 2020 12:24:27 GMT
 

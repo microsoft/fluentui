@@ -114,6 +114,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       padding: '3px 0px'
     },
     keyboardMoveIcon: {
+      // tslint:disable-next-line:deprecation
       fontSize: fonts.xLargePlus.fontSize,
       width: '24px'
     }

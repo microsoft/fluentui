@@ -1,57 +1,69 @@
-import { PopperChildrenProps } from '../../utils/positioner'
+import { ICSSInJSStyle } from '@fluentui/styles';
+import Popper from 'popper.js';
+
+import { PopperChildrenProps } from '../../utils/positioner';
 
 const rtlMapping = {
   left: 'right',
-  right: 'left',
-}
+  right: 'left'
+};
 
 const getPointerStyles = (
   pointerOffset: string,
+  pointerGap: string,
   pointerMargin: string,
   rtl: boolean,
   popperPlacement?: PopperChildrenProps['placement'],
-  isSvg?: boolean,
+  isSvg?: boolean
 ) => {
-  const placementValue = (popperPlacement || '').split('-', 1).pop()
-  const placement = (rtl && rtlMapping[placementValue]) || placementValue
+  const placementValue = (popperPlacement || '').split('-', 1).pop();
+  const placement = (rtl && rtlMapping[placementValue]) || placementValue;
 
-  const rootStyles = {
+  const rootStyles: Record<Popper.Position, ICSSInJSStyle> = {
     top: {
-      marginBottom: pointerMargin,
+      marginBottom: pointerMargin
     },
     right: {
-      marginLeft: pointerMargin,
+      marginLeft: pointerMargin
     },
     bottom: {
-      marginTop: pointerMargin,
+      marginTop: pointerMargin
     },
     left: {
-      marginRight: pointerMargin,
-    },
-  }
-  const pointerStyles = {
+      marginRight: pointerMargin
+    }
+  };
+  const pointerStyles: Record<Popper.Position, ICSSInJSStyle> = {
     top: {
       bottom: `-${pointerOffset}`,
-      transform: isSvg ? `rotate(${rtl ? 90 : -90}deg)` : 'rotate(45deg)',
+      marginLeft: pointerGap,
+      marginRight: pointerGap,
+      transform: isSvg ? `rotate(${rtl ? 90 : -90}deg)` : 'rotate(45deg)'
     },
     right: {
       left: `-${pointerOffset}`,
-      transform: isSvg ? `rotate(${rtl ? 180 : 0}deg)` : 'rotate(135deg)',
+      marginBottom: pointerGap,
+      marginTop: pointerGap,
+      transform: isSvg ? `rotate(${rtl ? 180 : 0}deg)` : 'rotate(135deg)'
     },
     bottom: {
       top: `-${pointerOffset}`,
-      transform: isSvg ? `rotate(${rtl ? -90 : 90}deg)` : 'rotate(-135deg)',
+      marginLeft: pointerGap,
+      marginRight: pointerGap,
+      transform: isSvg ? `rotate(${rtl ? -90 : 90}deg)` : 'rotate(-135deg)'
     },
     left: {
       right: `-${pointerOffset}`,
-      transform: isSvg ? `rotate(${rtl ? 0 : 180}deg)` : 'rotate(-45deg)',
-    },
-  }
+      marginBottom: pointerGap,
+      marginTop: pointerGap,
+      transform: isSvg ? `rotate(${rtl ? 0 : 180}deg)` : 'rotate(-45deg)'
+    }
+  };
 
   return {
     root: rootStyles[placement],
-    pointer: pointerStyles[placement],
-  }
-}
+    pointer: pointerStyles[placement]
+  };
+};
 
-export default getPointerStyles
+export default getPointerStyles;

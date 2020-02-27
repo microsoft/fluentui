@@ -1,25 +1,23 @@
-import { ItemType } from '../../../../themes/types'
-import { TeamsSchemeMappingWithAreas } from '../../types'
-import { pickValuesFromColorScheme } from '../../../colorUtils'
-import { stringLiteralsArray } from '../../../../utils'
+import { ItemType } from '../../../../themes/types';
+import { TeamsSchemeMappingWithAreas } from '../../types';
+import { pickValuesFromColorScheme } from '../../../colorUtils';
+import { stringLiteralsArray } from '../../../../utils';
 
-export const segmentColorAreas = stringLiteralsArray('foreground')
-export type SegmentColorSchemeMapping = TeamsSchemeMappingWithAreas<
-  ItemType<typeof segmentColorAreas>
->
+export const segmentColorAreas = stringLiteralsArray('foreground');
+export type SegmentColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof segmentColorAreas>>;
 
 export interface SegmentVariables {
-  colorScheme: SegmentColorSchemeMapping
-  color: string
-  disabledColor: string
-  backgroundColor: string
-  disabledBackgroundColor: string
-  disabledBorderColor: string
-  borderRadius: string | number
-  borderStyle: string
-  borderWidth: string
-  boxShadow: string
-  padding: string
+  colorScheme: SegmentColorSchemeMapping;
+  color: string;
+  disabledColor: string;
+  backgroundColor: string;
+  disabledBackgroundColor: string;
+  disabledBorderColor: string;
+  borderRadius: string | number;
+  borderStyle: string;
+  borderWidth: string;
+  boxShadow: string;
+  padding: string;
 }
 
 export default (siteVariables): SegmentVariables => {
@@ -37,6 +35,6 @@ export default (siteVariables): SegmentVariables => {
     borderWidth: '2px 0 0 0',
 
     boxShadow: '0 1px 1px 1px rgba(34,36,38,.15)',
-    padding: '1em',
-  }
-}
+    padding: '1em'
+  };
+};

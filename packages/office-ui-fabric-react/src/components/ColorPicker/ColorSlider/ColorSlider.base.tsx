@@ -55,6 +55,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   public render(): JSX.Element {
+    // tslint:disable-next-line:deprecation
     const { isAlpha, minValue, maxValue, overlayStyle, overlayColor, theme, className, styles } = this.props;
     const { ariaLabel = isAlpha ? 'Alpha' : 'Hue' } = this.props;
     const currentValue = this.value;
@@ -83,11 +84,13 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
         aria-label={ariaLabel}
         data-is-focusable={true}
       >
-        {!!(overlayStyle || overlayColor) && (
+        {!!(overlayColor || overlayStyle) && (
           <div
             className={classNames.sliderOverlay}
             // this isn't included in getStyles because it may change frequently
-            style={overlayStyle || { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }}
+            style={
+              overlayColor !== undefined ? { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` } : overlayStyle
+            }
           />
         )}
         <div className={classNames.sliderThumb} style={{ left: currentPercentage + '%' }} />

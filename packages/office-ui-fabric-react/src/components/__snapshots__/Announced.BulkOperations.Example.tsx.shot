@@ -1645,6 +1645,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -2287,6 +2288,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -2929,6 +2931,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -3571,6 +3574,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -4213,6 +4217,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -4855,6 +4860,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -5497,6 +5503,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -6139,6 +6146,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -6781,6 +6789,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
@@ -7423,6 +7432,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
