@@ -4,6 +4,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import * as _memoize from 'fast-memoize';
 import { Ref } from '@fluentui/react-component-ref';
 
 import TreeItem, { TreeItemProps } from './TreeItem';
@@ -28,6 +29,10 @@ import {
   ComponentEventHandler
 } from '../../types';
 import { hasSubtree, removeItemAtIndex } from './utils';
+
+// `fast-memoize` is a CJS library, there are known issues with them:
+// https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
+const memoize = (_memoize as any).default || _memoize;
 
 export interface TreeSlotClassNames {
   item: string;
@@ -123,21 +128,28 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static Item = TreeItem;
   static Title = TreeTitle;
 
-  // memoize this function if performance issue occurs.
+  static getItemSiblings = memoize((items, id) => items.filter(currentItem => currentItem.id !== id), {
+    serializer: ([items, id]) => {
+      return id; // maybe use the siblings id as well?
+    }
+  });
+
+  static getItemElementRef = memoize(id => React.createRef<HTMLElement>());
+
   static getItemsForRender = (itemsFromProps: ShorthandCollection<TreeItemProps>) => {
     const itemsForRenderGenerator = (items = itemsFromProps, level = 1, parent?: ShorthandValue<TreeItemProps>) => {
       return _.reduce(
         items,
         (acc: Object, item: ShorthandValue<TreeItemProps>, index: number) => {
-          const id = item['id'];
+          const itemId = item['id'];
           const isSubtree = hasSubtree(item);
 
-          acc[id] = {
-            elementRef: React.createRef<HTMLElement>(),
+          acc[itemId] = {
+            elementRef: Tree.getItemElementRef(itemId),
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
             parent,
-            siblings: items.filter(currentItem => currentItem !== item)
+            siblings: Tree.getItemSiblings(items, itemId)
           };
 
           return {
@@ -192,99 +204,102 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   treeRef = React.createRef<HTMLElement>();
 
-  handleTreeItemOverrides = (predefinedProps: TreeItemProps) => ({
-    onTitleClick: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-      if (!hasSubtree(treeItemProps)) {
-        return;
-      }
-
-      let { activeItemIds } = this.state;
-      const { id, siblings } = treeItemProps;
-      const { exclusive } = this.props;
-
-      const activeItemIdIndex = activeItemIds.indexOf(id);
-
-      if (activeItemIdIndex > -1) {
-        activeItemIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
-      } else {
-        if (exclusive) {
-          siblings.some(sibling => {
-            const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
-            if (activeSiblingIdIndex > -1) {
-              activeItemIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
-
-              return true;
-            }
-            return false;
-          });
+  handleTreeItemOverrides = memoize(
+    (predefinedProps: TreeItemProps) => ({
+      onTitleClick: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+        if (!hasSubtree(treeItemProps)) {
+          return;
         }
 
-        activeItemIds = [...activeItemIds, id];
-      }
+        let { activeItemIds } = this.state;
+        const { id, siblings } = treeItemProps;
+        const { exclusive } = this.props;
 
-      this.setActiveItemIds(e, activeItemIds);
+        const activeItemIdIndex = activeItemIds.indexOf(id);
 
-      _.invoke(predefinedProps, 'onTitleClick', e, treeItemProps);
-    },
-    onFocusParent: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-      const { parent } = treeItemProps;
+        if (activeItemIdIndex > -1) {
+          activeItemIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
+        } else {
+          if (exclusive) {
+            siblings.some(sibling => {
+              const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
+              if (activeSiblingIdIndex > -1) {
+                activeItemIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
 
-      if (!parent) {
-        return;
-      }
+                return true;
+              }
+              return false;
+            });
+          }
 
-      const { itemsForRender } = this.state;
-      const parentItemForRender = itemsForRender[parent['id']];
-
-      if (!parentItemForRender || !parentItemForRender.elementRef || !parentItemForRender.elementRef.current) {
-        return;
-      }
-
-      parentItemForRender.elementRef.current.focus();
-      _.invoke(predefinedProps, 'onFocusParent', e, treeItemProps);
-    },
-    onFocusFirstChild: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-      const { id } = treeItemProps;
-
-      const { itemsForRender } = this.state;
-      const currentElement = itemsForRender[id].elementRef;
-
-      if (!currentElement || !currentElement.current) {
-        return;
-      }
-
-      const elementToBeFocused = getNextElement(this.treeRef.current, currentElement.current);
-
-      if (!elementToBeFocused) {
-        return;
-      }
-
-      elementToBeFocused.focus();
-      _.invoke(predefinedProps, 'onFocusFirstChild', e, treeItemProps);
-    },
-    onSiblingsExpand: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-      if (this.props.exclusive) {
-        return;
-      }
-
-      const { id, siblings } = treeItemProps;
-      const { activeItemIds } = this.state;
-
-      siblings.forEach(sibling => {
-        if (hasSubtree(sibling) && !this.isActiveItem(sibling['id'])) {
-          activeItemIds.push(sibling['id']);
+          activeItemIds = [...activeItemIds, id];
         }
-      });
 
-      if (hasSubtree(treeItemProps) && !this.isActiveItem(id)) {
-        activeItemIds.push(id);
+        this.setActiveItemIds(e, activeItemIds);
+
+        _.invoke(predefinedProps, 'onTitleClick', e, treeItemProps);
+      },
+      onFocusParent: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+        const { parent } = treeItemProps;
+
+        if (!parent) {
+          return;
+        }
+
+        const { itemsForRender } = this.state;
+        const parentItemForRender = itemsForRender[parent['id']];
+
+        if (!parentItemForRender || !parentItemForRender.elementRef || !parentItemForRender.elementRef.current) {
+          return;
+        }
+
+        parentItemForRender.elementRef.current.focus();
+        _.invoke(predefinedProps, 'onFocusParent', e, treeItemProps);
+      },
+      onFocusFirstChild: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+        const { id } = treeItemProps;
+
+        const { itemsForRender } = this.state;
+        const currentElement = itemsForRender[id].elementRef;
+
+        if (!currentElement || !currentElement.current) {
+          return;
+        }
+
+        const elementToBeFocused = getNextElement(this.treeRef.current, currentElement.current);
+
+        if (!elementToBeFocused) {
+          return;
+        }
+
+        elementToBeFocused.focus();
+        _.invoke(predefinedProps, 'onFocusFirstChild', e, treeItemProps);
+      },
+      onSiblingsExpand: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+        if (this.props.exclusive) {
+          return;
+        }
+
+        const { id, siblings } = treeItemProps;
+        const { activeItemIds } = this.state;
+
+        siblings.forEach(sibling => {
+          if (hasSubtree(sibling) && !this.isActiveItem(sibling['id'])) {
+            activeItemIds.push(sibling['id']);
+          }
+        });
+
+        if (hasSubtree(treeItemProps) && !this.isActiveItem(id)) {
+          activeItemIds.push(id);
+        }
+
+        this.setActiveItemIds(e, activeItemIds);
+
+        _.invoke(predefinedProps, 'onSiblingsExpand', e, treeItemProps);
       }
-
-      this.setActiveItemIds(e, activeItemIds);
-
-      _.invoke(predefinedProps, 'onSiblingsExpand', e, treeItemProps);
-    }
-  });
+    }),
+    { serializer: ({ id }) => id }
+  );
 
   setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
     _.invoke(this.props, 'onActiveItemIds', e, { ...this.props, activeItemIds });
