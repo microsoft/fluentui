@@ -325,7 +325,7 @@ describe('resolveStyles', () => {
       expect(() => resolveStyles(options, resolvedVariables)).toThrowError(/Please check your "performance" settings on "Provider"/);
     });
 
-    test('when enabled only plain objects can be passed as "variables"', () => {
+    test('when enabled only "variables" as plain objects can be cached', () => {
       spyOn(componentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: () => {} },
@@ -337,7 +337,7 @@ describe('resolveStyles', () => {
       expect(componentStyles.root).toHaveBeenCalledTimes(2);
     });
 
-    test('when enabled only boolean or nil properties can be passed to "variables"', () => {
+    test('when enabled only "variables" as boolean or nil properties can be cached', () => {
       spyOn(componentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: { foo: 'bar' } },
