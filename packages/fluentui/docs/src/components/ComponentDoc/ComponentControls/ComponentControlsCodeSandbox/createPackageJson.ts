@@ -4,7 +4,7 @@ import { imports } from '../../../Playground/renderConfig';
 import { ComponentSourceManagerLanguage } from '../../ComponentSourceManager';
 
 const name = 'fluent-ui-example';
-const description = 'An exported example from Fluent UI React, https://microsoft.github.io/fluent-ui-react/';
+const description = 'An exported example from Fluent UI React, https://aka.ms/fluent-ui/';
 const dependencies = {
   ..._.mapValues(imports, pkg => pkg.version),
   // required to enable all features due old templates in https://github.com/codesandbox/codesandbox-importers

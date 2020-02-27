@@ -2,6 +2,27 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/date-time_v7.8.28",
+      "version": "7.8.28",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed date time doc page file layout",
+            "author": "elcraig@microsoft.com",
+            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Feb 2020 12:20:16 GMT",
       "tag": "@uifabric/date-time_v7.8.25",
       "version": "7.8.25",

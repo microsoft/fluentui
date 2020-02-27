@@ -37,8 +37,10 @@ export interface IButton {
 /**
  * {@docCategory Button}
  */
+// tslint:disable:deprecation
 export interface IButtonProps
   extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
+  // tslint:enable:deprecation
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Updated Tile (in experiments) to pass some link-specific props (e.g. 'target', 'download') to its internal link so that users of Tile can customize the link behavior. The Tile link now also defaults to <span> (instead of <button>) when no href or onClick is passed. Updated Tile.Media.Example to include a linking demo showing the new functionality.",
+  "packageName": "@uifabric/experiments",
+  "email": "Graham.Langston@microsoft.com",
+  "commit": "e6839e8b1e2e70aa08653ae936ecf828ca6ac597",
+  "dependentChangeType": "patch",
+  "date": "2020-02-24T23:00:09.701Z"
+}

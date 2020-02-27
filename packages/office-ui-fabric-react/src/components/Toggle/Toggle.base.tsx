@@ -62,8 +62,10 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       keytipProps,
       label,
       ariaLabel,
+      // tslint:disable:deprecation
       onAriaLabel,
       offAriaLabel,
+      // tslint:enable:deprecation
       offText,
       onText,
       styles,
@@ -150,6 +152,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
+    // tslint:disable-next-line:deprecation
     const { disabled, checked: checkedProp, onChange, onChanged, onClick } = this.props;
     const { checked } = this.state;
 

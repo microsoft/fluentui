@@ -1005,6 +1005,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
+  // tslint:disable-next-line:deprecation
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since

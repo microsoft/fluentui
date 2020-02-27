@@ -2,6 +2,34 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@fluentui/react-focus_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating deprecated ReactType to non-deprecated ElementType.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "98f285874162b07863e6c9d59816df44312ad35e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Move examples to examples package",
+            "author": "elcraig@microsoft.com",
+            "commit": "10d0914fdfaeef69a41db83a57f1da1ee1404040"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Feb 2020 12:20:16 GMT",
       "tag": "@fluentui/react-focus_v0.0.6",
       "version": "0.0.6",

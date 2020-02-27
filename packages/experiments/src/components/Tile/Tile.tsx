@@ -160,6 +160,11 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       descriptionAriaLabel,
       href,
       onClick,
+      download,
+      hrefLang,
+      media,
+      rel,
+      target,
       isFluentStyling,
       ariaLabelSelected,
       nameplateOnlyOnHover,
@@ -200,12 +205,17 @@ export class Tile extends React.Component<ITileProps, ITileState> {
       </>
     );
 
-    const LinkAs = href ? 'a' : 'button';
+    const LinkAs = href ? 'a' : onClick ? 'button' : 'span';
 
     const link = (
       <LinkAs
         href={href}
         onClick={onClick}
+        download={download}
+        hrefLang={hrefLang}
+        media={media}
+        target={target}
+        rel={rel === undefined ? (href && target ? 'noopener' : undefined) : rel}
         ref={this.props.linkRef}
         data-selection-invoke={isInvokable && selectionIndex > -1 ? true : undefined}
         className={css('ms-Tile-link', TileStyles.link)}

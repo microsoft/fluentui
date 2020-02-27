@@ -1,9 +1,10 @@
+import { gridCellMultipleFocusableBehavior, gridCellWithFocusableElementBehavior } from '@fluentui/accessibility';
+import { Avatar, Button, Checkbox, Dropdown, Flex, Icon, Menu, MenuButton, Text } from '@fluentui/react';
 import * as React from 'react';
-import { Button, Menu, Flex, Avatar, Text, Dropdown, Checkbox, Icon, MenuButton } from '@fluentui/react';
-import { gridCellWithFocusableElementBehavior, gridCellMultipleFocusableBehavior } from '@fluentui/accessibility';
-
-import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import chatProtoStyle from '.././chatPane/chatProtoStyle';
+import { ComponentPrototype, PrototypeSection } from '../Prototypes';
+import AdvancedTable, { stringCellComparator } from './AdvancedTable';
+import InteractiveTable from './InteractiveTable';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -158,13 +159,17 @@ const rowsChannels = [
   }
 ];
 
-const StaticTable = () => (
-  <>
-    <AdvancedTable columns={columnsMembers} rows={rowsMembers} label="Channel members" />
-    <br />
-    <AdvancedTable columns={columnsChannels} rows={rowsChannels} label="Channels" />
-    <div id="ariaLive" aria-live="polite" aria-atomic="true" style={chatProtoStyle.screenReaderContainerStyles} />
-  </>
+export default () => (
+  <PrototypeSection title="Advanced table">
+    <ComponentPrototype title="Table example 1" description="Table with sorting, tags and dropdown menu in a cell">
+      <AdvancedTable columns={columnsMembers} rows={rowsMembers} label="Channel members" />
+    </ComponentPrototype>
+    <ComponentPrototype title="Table example 2" description="Table with menu, checkboxes and Aria anouncements">
+      <AdvancedTable columns={columnsChannels} rows={rowsChannels} label="Channels" />
+      <div id="ariaLive" aria-live="polite" aria-atomic="true" style={chatProtoStyle.screenReaderContainerStyles} />
+    </ComponentPrototype>
+    <ComponentPrototype title="Table example 3" description="Table with popover and context menu ">
+      <InteractiveTable />
+    </ComponentPrototype>
+  </PrototypeSection>
 );
-
-export default StaticTable;

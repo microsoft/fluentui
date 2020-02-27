@@ -75,6 +75,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
+  // tslint:disable-next-line:deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _requestSuggestionsOnClick = false;
@@ -396,7 +397,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onEmptyInputFocus() {
     const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
       ? this.props.onEmptyResolveSuggestions
-      : this.props.onEmptyInputFocus;
+      : // tslint:disable-next-line:deprecation
+        this.props.onEmptyInputFocus;
 
     const suggestions = emptyResolveSuggestions!(this.state.items);
     this.updateSuggestionsList(suggestions);
@@ -499,6 +501,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (
         this.input.current &&
         this.input.current.value === '' &&
+        // tslint:disable-next-line:deprecation
         (this.props.onEmptyResolveSuggestions || this.props.onEmptyInputFocus) &&
         !this._requestSuggestionsOnClick
       ) {
@@ -566,7 +569,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (ev.button === 0 && !this.state.suggestionsVisible) {
       const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
         ? this.props.onEmptyResolveSuggestions
-        : this.props.onEmptyInputFocus;
+        : // tslint:disable-next-line:deprecation
+          this.props.onEmptyInputFocus;
 
       if (input === '') {
         if (emptyResolveSuggestions) {

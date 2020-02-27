@@ -6,6 +6,7 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
+  // tslint:disable-next-line:deprecation
   const { height, borderStyle, theme } = props;
 
   const { semanticColors } = theme;

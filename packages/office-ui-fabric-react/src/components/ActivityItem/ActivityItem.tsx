@@ -55,6 +55,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
   private _onRenderActivityDescription = (props: IActivityItemProps): JSX.Element | null => {
     const classNames = this._getClassNames(props);
 
+    // tslint:disable-next-line:deprecation
     const activityDescription = props.activityDescription || props.activityDescriptionText;
 
     if (activityDescription) {
@@ -67,6 +68,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
   private _onRenderComments = (props: IActivityItemProps): JSX.Element | null => {
     const classNames = this._getClassNames(props);
 
+    // tslint:disable-next-line:deprecation
     const comments = props.comments || props.commentText;
 
     if (!props.isCompact && comments) {
@@ -114,6 +116,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
               // tslint:disable-next-line:no-string-literal
               key={person['key'] ? person['key'] : index}
               className={classNames.activityPersona}
+              // tslint:disable-next-line:deprecation
               size={showSize16Personas ? PersonaSize.size16 : PersonaSize.size32}
               style={style}
             />
