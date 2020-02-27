@@ -21,7 +21,7 @@ const contents = [
 
 const itemData = id =>
   _.times(20, i => ({
-    id: `${id}${i}`,
+    id: `tree-perf-60-item-${id}${i}`,
     key: `key${id}${i}`,
     title: {
       content: `${contents[i % contents.length]}`,
@@ -33,18 +33,18 @@ const itemData = id =>
 
 const items = [
   {
-    id: '1',
+    id: 'tree-perf-60-item-1',
     title: 'House Lannister',
     items: itemData('list-1')
   },
   {
-    id: '2',
+    id: 'tree-perf-60-item-2',
     title: 'House Targaryen',
     items: itemData('list-2')
   },
 
   {
-    id: '3',
+    id: 'tree-perf-60-item-3',
     title: 'House Stark',
     items: itemData('list-3')
   }
