@@ -76,7 +76,7 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();
 
-  const { align, children, className, grow, flexDirection, push, shrink, size, variables } = props;
+  const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
 
   const { classes, styles: resolvedStyles } = useStyles<FlexItemStylesProps>(FlexItem.displayName, {
     className: FlexItem.className,
@@ -90,6 +90,8 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
     }),
     mapPropsToInlineStyles: () => ({
       className,
+      design,
+      styles,
       variables
     }),
     rtl: context.rtl

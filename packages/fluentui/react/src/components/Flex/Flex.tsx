@@ -51,7 +51,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & { className: string; handledProps:
   const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
   setStart();
 
-  const { children, className, column, debug, fill, gap, hAlign, inline, padding, space, variables, vAlign, wrap } = props;
+  const { children, className, column, debug, design, fill, gap, hAlign, inline, padding, space, styles, variables, vAlign, wrap } = props;
 
   const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
     className: Flex.className,
@@ -69,6 +69,8 @@ const Flex: React.FC<WithAsProp<FlexProps>> & { className: string; handledProps:
     }),
     mapPropsToInlineStyles: () => ({
       className,
+      design,
+      styles,
       variables
     }),
     rtl: context.rtl
