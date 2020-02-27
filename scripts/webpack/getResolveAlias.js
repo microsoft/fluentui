@@ -7,10 +7,8 @@ const { readConfig } = require('../read-config');
 function getOutputPath(packageJson) {
   for (const mainField of ['module', 'main']) {
     const main = packageJson[mainField];
-    if (main && main.includes('dist/es')) {
-      return 'dist/es';
-    } else {
-      return 'lib';
+    if (main) {
+      return main.includes('dist/es') ? 'dist/es' : 'lib';
     }
   }
 
