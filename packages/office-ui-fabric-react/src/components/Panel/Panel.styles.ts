@@ -273,7 +273,15 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       !isOpen && isAnimating && isOnRightSide && AnimationClassNames.slideRightOut40,
       focusTrapZoneClassName
     ],
-    commands: [classNames.commands],
+    commands: [
+      classNames.commands,
+      {
+        marginTop: 18
+      },
+      hasCustomNavigation && {
+        marginTop: 'inherit'
+      }
+    ],
     navigation: [
       classNames.navigation,
       {

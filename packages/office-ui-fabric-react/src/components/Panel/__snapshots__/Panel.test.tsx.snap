@@ -171,7 +171,9 @@ exports[`Panel renders Panel correctly 1`] = `
           <div
             className=
                 ms-Panel-commands
-
+                {
+                  margin-top: 18px;
+                }
             data-is-visible={true}
           >
             <div
