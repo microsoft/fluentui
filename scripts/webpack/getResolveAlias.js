@@ -22,7 +22,13 @@ function getResolveAlias() {
   const deps = findRepoDeps();
 
   const alias = {};
-  const excludedPackages = ['@uifabric/api-docs', '@uifabric/build'];
+  const excludedPackages = [
+    '@uifabric/api-docs',
+    '@uifabric/build',
+    '@uifabric/tslint-rules',
+    '@uifabric/webpack-utils',
+    '@uifabric/jest-serializer-merge-styles'
+  ];
 
   let cwd = process.cwd();
   const packageJson = readConfig(path.join(cwd, 'package.json'));
