@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Feb 2020 12:23:46 GMT and should not be manually modified.
 
+## 7.21.0
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Minor changes
+
+- Updated Tile (in experiments) to pass some link-specific props (e.g. 'target', 'download') to its internal link so that users of Tile can customize the link behavior. The Tile link now also defaults to <span> (instead of <button>) when no href or onClick is passed. Updated Tile.Media.Example to include a linking demo showing the new functionality. (Graham.Langston@microsoft.com)
 ## 7.20.0
 Fri, 21 Feb 2020 12:20:14 GMT
 

@@ -17,6 +17,10 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+<!--------------------------------[ v0.45.0 ]------------------------------- -->
+## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
+[Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.44.0..HEAD)
+
 ### BREAKING CHANGES
 - Restricted prop sets in the `Checkbox`, `Icon`, `Label`, `Slider`, `Status`, `Text` components which are passed to styles functions @layershifter ([#2307](https://github.com/microsoft/fluent-ui-react/pull/2307))
 - Styles caching when no inline overrides are defined is enabled by default; use the `performance` prop on the `Provider` to opt out of this if needed @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
@@ -32,6 +36,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Standardise component onChange callback names and test them in `isConformant` @silviuavram ([#2293](https://github.com/microsoft/fluent-ui-react/pull/2293))
 - Restricted prop set in the `DropdownItem` styles @silviuavram ([#2382](https://github.com/microsoft/fluent-ui-react/pull/2382))
 - `font` CSS property will be no longer expanded to longhands @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
+- Renamed `content` classname to `contentWrapper` and changed `content` prop to be `Box` shorthand in `AccordionTitle` @mnajdova ([#12049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
+- Changed `content` prop to be `Box` shorthand in `Label` @mnajdova ([#12049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
 
 ### Fixes
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
@@ -62,6 +68,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add styles caching when there aren't inline overrides defined @mnajdova ([#2309](https://github.com/microsoft/fluent-ui-react/pull/2309))
 - Styles for `Animation` component are computed again only on prop changes @layershifter ([#2258](https://github.com/microsoft/fluent-ui-react/pull/2258))
 - switch to `inline-style-expand-shorthand` for expanding CSS properties @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
+- Add `enableBooleanVariablesCaching` to have styles caching for primitive `variables` overrides @layershifter ([#12073](https://github.com/OfficeDev/office-ui-fabric-react/pull/12073))
 
 <!--------------------------------[ v0.44.0 ]------------------------------- -->
 ## [v0.44.0](https://github.com/microsoft/fluent-ui-react/tree/v0.44.0) (2020-02-05)

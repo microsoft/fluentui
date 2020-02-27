@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/accessibility",
   "description": "A set of reusable framework accessibility behaviours.",
-  "version": "0.44.0",
+  "version": "0.45.0",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {
@@ -10,9 +10,9 @@
     "lodash": "^4.17.15"
   },
   "devDependencies": {
+    "@types/react": "16.8.11",
     "@uifabric/build": "^7.0.0",
-    "lerna-alias": "^3.0.3-0",
-    "@types/react": "16.8.11"
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"
@@ -38,5 +38,6 @@
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts",
-  "private": true
+  "private": true,
+  "gitHead": "6a1c3fb6521283edb3c905846eec7c7e5410e65e"
 }

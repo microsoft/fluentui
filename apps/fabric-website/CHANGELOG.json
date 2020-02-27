@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "@uifabric/fabric-website_v7.9.9",
+      "version": "7.9.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Controls page: fix links to controls with sub-pages",
+            "author": "elcraig@microsoft.com",
+            "commit": "be9de1a5cef64a5c98aa3ca666bfe61219c4b54c"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/fabric-website_v7.9.7",
       "version": "7.9.7",

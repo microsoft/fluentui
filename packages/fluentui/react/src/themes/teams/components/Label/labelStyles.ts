@@ -4,8 +4,9 @@ import { LabelProps } from '../../../../components/Label/Label';
 import { LabelVariables } from './labelVariables';
 import { getColorScheme } from '../../colors';
 
-export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePosition'> & {
+export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePosition' | 'iconPosition'> & {
   hasImage: boolean;
+  hasIcon: boolean;
   hasActionableIcon: boolean;
 };
 
@@ -27,6 +28,20 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
       ...(p.hasImage && (p.imagePosition === 'start' ? { paddingLeft: v.startPaddingLeft } : { paddingRight: v.endPaddingRight })),
       ...(p.circular && {
         borderRadius: v.circularRadius
+      })
+    };
+  },
+
+  content: ({ props: p, variables: v }): ICSSInJSStyle => {
+    const hasStartElement = (p.hasImage && p.imagePosition === 'start') || (p.hasIcon && p.iconPosition === 'start');
+    const hasEndElement = (p.hasImage && p.imagePosition === 'end') || (p.hasIcon && p.iconPosition === 'end');
+
+    return {
+      ...(hasStartElement && {
+        marginLeft: pxToRem(3)
+      }),
+      ...(hasEndElement && {
+        marginRight: pxToRem(3)
       })
     };
   },

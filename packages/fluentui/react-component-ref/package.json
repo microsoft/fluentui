@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-component-ref",
   "description": "A set of components and utils to deal with React refs.",
-  "version": "0.44.0",
+  "version": "0.45.0",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {
@@ -10,10 +10,10 @@
     "react-is": "^16.6.3"
   },
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
+    "@types/react": "16.8.11",
     "@types/react-is": "^16.7.1",
-    "lerna-alias": "^3.0.3-0",
-    "@types/react": "16.8.11"
+    "@uifabric/build": "^7.0.0",
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"
@@ -43,5 +43,6 @@
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts",
-  "private": true
+  "private": true,
+  "gitHead": "6a1c3fb6521283edb3c905846eec7c7e5410e65e"
 }
