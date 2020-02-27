@@ -17,7 +17,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { Popper } from '../../utils/positioner';
+import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 import {
   childrenExist,
   createShorthandFactory,
@@ -62,7 +62,7 @@ export interface ChatMessageProps
   accessibility?: Accessibility<ChatMessageBehaviorProps>;
 
   /** Menu with actions of the message. */
-  actionMenu?: ShorthandValue<MenuProps> | ShorthandCollection<MenuItemProps>;
+  actionMenu?: ShorthandValue<MenuProps & { popper?: PopperShorthandProps }> | ShorthandCollection<MenuItemProps>;
 
   /** Controls messages's relation to other chat messages. Is automatically set by the ChatItem. */
   attached?: boolean | 'top' | 'bottom';
@@ -260,6 +260,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
+        {...getPopperPropsFromShorthand(actionMenu)}
       >
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;

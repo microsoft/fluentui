@@ -145,6 +145,7 @@ const Popup: React.FC<PopupProps> &
     offset,
     pointing,
     position,
+    positionFixed,
     renderContent,
     tabbableTrigger,
     target,
@@ -515,6 +516,7 @@ const Popup: React.FC<PopupProps> &
       pointerTargetRef={pointerTargetRef}
       align={align}
       position={position}
+      positionFixed={positionFixed}
       offset={offset}
       rtl={context.rtl}
       unstable_pinned={unstable_pinned}
@@ -565,6 +567,7 @@ Popup.propTypes = {
   onOpenChange: PropTypes.func,
   pointing: PropTypes.bool,
   position: PropTypes.oneOf(POSITIONS),
+  positionFixed: PropTypes.bool,
   renderContent: PropTypes.func,
   target: PropTypes.any,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
