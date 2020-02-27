@@ -49,7 +49,7 @@ export class KeytipManager {
       this.sequenceMapping[props.keySequences.toString()] = props;
     }
     // Create a unique keytip
-    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props, undefined);
+    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props);
     // Add to dictionary
     persisted ? (this.persistedKeytips[uniqueKeytip.uniqueID] = uniqueKeytip) : (this.keytips[uniqueKeytip.uniqueID] = uniqueKeytip);
 

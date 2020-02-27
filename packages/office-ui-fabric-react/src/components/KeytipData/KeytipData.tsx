@@ -16,7 +16,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
   public componentDidMount() {
     // Register Keytip in KeytipManager
     if (this.props.keytipProps) {
-      this._uniqueId = this._keytipManager.register(this._getKtpProps(), undefined);
+      this._uniqueId = this._keytipManager.register(this._getKtpProps());
     }
   }
 
@@ -41,12 +41,12 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
     return children(nativeKeytipProps);
   }
 
-  private _getKtpProps = (): IKeytipProps => {
+  private _getKtpProps(): IKeytipProps {
     return {
       disabled: this.props.disabled,
       ...this.props.keytipProps!
     };
-  };
+  }
 
   /**
    * Gets the aria- and data- attributes to attach to the component
