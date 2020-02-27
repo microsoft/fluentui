@@ -58,18 +58,29 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
     className=
 
         {
-          border-radius: 2px;
-          border: 1px solid #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
           min-width: 86px;
           position: relative;
         }
-        &:hover {
+        &:after {
+          border-color: #605e5c;
+          border-radius: 2px;
+          border-style: solid;
+          border-width: 1px;
+          bottom: 0px;
+          content: '';
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        &:hover:after {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
   >
@@ -102,7 +113,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
             outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
-            padding-left: 8px;
+            padding-left: 9px;
             padding-right: 8px;
             padding-top: 0;
             text-overflow: ellipsis;
@@ -489,18 +500,29 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
     className=
 
         {
-          border-radius: 2px;
-          border: 1px solid #605e5c;
           box-sizing: border-box;
           display: flex;
           height: 32px;
           min-width: 86px;
           position: relative;
         }
-        &:hover {
+        &:after {
+          border-color: #605e5c;
+          border-radius: 2px;
+          border-style: solid;
+          border-width: 1px;
+          bottom: 0px;
+          content: '';
+          left: 0px;
+          pointer-events: none;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
+        &:hover:after {
           border-color: #323130;
         }
-        @media screen and (-ms-high-contrast: active){&:hover {
+        @media screen and (-ms-high-contrast: active){&:hover:after {
           border-color: Highlight;
         }
     data-test="test"
@@ -535,7 +557,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
             outline: 0px;
             overflow: hidden;
             padding-bottom: 0;
-            padding-left: 8px;
+            padding-left: 9px;
             padding-right: 8px;
             padding-top: 0;
             text-overflow: ellipsis;
