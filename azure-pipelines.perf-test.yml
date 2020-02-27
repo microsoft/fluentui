@@ -16,12 +16,14 @@ steps:
     parameters:
       artifact: $(artifact)
       buildId: $(buildId)
+      buildReason: $(buildReason)
 
   - template: azure-pipelines.tools.yml
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
+  # TODO: replace BUILD_REASON with buildReason if it works
   - script: |
-      if [ $BUILD_REASON != "PullRequest" ]; then
+      if [ $buildReason != "PullRequest" ]; then
         yarn perf:test:base
       else
         yarn perf:test
