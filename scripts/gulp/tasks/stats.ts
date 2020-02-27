@@ -193,7 +193,7 @@ task('stats:save', async () => {
   // TODO: test in CI and fix
   // TODO: remove console.logs after testing
   // TODO: BUILD_SOURCEBRANCH = refs/pull/1/merge
-  const prSuffix = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.replace(/^refs\//, '').replace(/^\/merge\//, '');
+  const prSuffix = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.replace(/^refs\//, '').replace(/^\/merge/, '');
   const prUrl = `${process.env.BUILD_REPOSITORY_URI}/${prSuffix}`;
 
   console.log(`prSuffix = ${prSuffix}`);
