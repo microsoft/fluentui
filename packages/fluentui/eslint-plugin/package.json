@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/eslint-plugin",
-  "version": "0.44.0",
+  "version": "0.45.0",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "2.8.0",
     "@typescript-eslint/experimental-utils": "2.8.0"
@@ -11,5 +11,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "private": true
+  "private": true,
+  "gitHead": "6a1c3fb6521283edb3c905846eec7c7e5410e65e"
 }
