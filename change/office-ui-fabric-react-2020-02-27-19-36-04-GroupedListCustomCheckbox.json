@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Support custom checkbox in GroupHeader",
+  "packageName": "office-ui-fabric-react",
+  "email": "sebastian.mattar@gmail.com",
+  "commit": "301bbe9e12a07f37bd664cd7d9de9eccf5dc0102",
+  "dependentChangeType": "patch",
+  "date": "2020-02-27T18:36:04.445Z"
+}
