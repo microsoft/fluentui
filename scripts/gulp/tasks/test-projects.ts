@@ -166,7 +166,6 @@ task('test:projects:cra-ts', async () => {
 
   const testAppPath = paths.withRootAt(await createReactApp(tmpDirectory, 'test-app'));
 
-  throw 'hi';
   logger(`Test React project is successfully created: ${testAppPath()}`);
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
