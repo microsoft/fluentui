@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, classNamesFunction } from '../../Utilities';
 import { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails, ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon, FontIcon } from '../../Icon';
@@ -14,7 +15,6 @@ import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
-import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
@@ -30,7 +30,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     useFastIcons: true
   };
 
-  private _classNames: IClassNames<IDetailsHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
   private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();
@@ -363,8 +363,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             targetIndex: targetIndex
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
+          // tslint:disable:deprecation
         } else if (columnReorderProps.handleColumnReorder) {
           columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
+          // tslint:enable:deprecation
         }
       }
     }
@@ -699,6 +701,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const columnIndex = Number(columnIndexAttr);
 
     if (!columnResizeDetails) {
+      // tslint:disable-next-line:deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: {
@@ -713,6 +716,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     } else {
       let increment: number | undefined;
 
+      // tslint:disable-next-line:deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: undefined
@@ -720,8 +724,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
         ev.preventDefault();
         ev.stopPropagation();
+        // tslint:disable-next-line:deprecation
       } else if (ev.which === KeyCodes.left) {
         increment = getRTL(this.props.theme) ? 1 : -1;
+        // tslint:disable-next-line:deprecation
       } else if (ev.which === KeyCodes.right) {
         increment = getRTL(this.props.theme) ? -1 : 1;
       }

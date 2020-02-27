@@ -105,6 +105,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     // TODO (Fabric 8?) - if possible, move `root` class to the actual root and eliminate
     // `applicationRole` class (but the div structure will stay the same by necessity)
     return (
+      // tslint:disable-next-line:deprecation
       <div className={classNames.applicationRole} {...divProps}>
         <div className={classNames.root} role="radiogroup" {...(ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy })}>
           {label && (
@@ -172,6 +173,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     // This extra mess is necessary because React won't pass the `key` prop through to ChoiceGroupOption
     if (!this._changeCallbacks[key]) {
       this._changeCallbacks[key] = (evt: React.FormEvent<HTMLElement | HTMLInputElement>, option: IChoiceGroupOption) => {
+        // tslint:disable-next-line:deprecation
         const { onChanged, onChange } = this.props;
 
         // Only manage state in uncontrolled scenarios.
@@ -204,6 +206,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     }
 
     const { options = [] } = props;
+    // tslint:disable-next-line:deprecation
     const optionsChecked = options.filter((option: IChoiceGroupOption) => option.checked);
     return optionsChecked[0] && optionsChecked[0].key;
   }

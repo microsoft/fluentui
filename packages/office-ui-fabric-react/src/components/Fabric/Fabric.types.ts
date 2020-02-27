@@ -8,7 +8,7 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Overrides the root element type, defaults to `div`.
    */
-  as?: React.ReactType;
+  as?: React.ElementType;
 
   /**
    * Injected by the `styled` HOC wrapper.

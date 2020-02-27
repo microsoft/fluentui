@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Grid, Divider, Header, Icon, themes } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Divider, Header, Icon, themes } from '@fluentui/react';
 
 const cellStyles = {
-  margin: '10px 0',
-}
+  margin: '10px 0'
+};
 
 const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = ({ themeName }) => (
   <>
@@ -37,10 +37,10 @@ const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = 
       </Grid>
     </div>
   </>
-)
+);
 
 IconSetExampleShorthand.defaultProps = {
-  themeName: 'teams',
-}
+  themeName: 'teams'
+};
 
-export default IconSetExampleShorthand
+export default IconSetExampleShorthand;

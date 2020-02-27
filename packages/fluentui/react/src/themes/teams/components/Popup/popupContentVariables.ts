@@ -12,6 +12,7 @@ export interface PopupContentVariables {
   padding: string;
 
   pointerMargin: string;
+  pointerGap: string;
   pointerOffset: string;
   pointerSize: string;
 
@@ -31,6 +32,7 @@ export default (siteVars: any): PopupContentVariables => {
     padding: `${pxToRem(10)} ${pxToRem(14)}`,
 
     pointerOffset: pxToRem(5),
+    pointerGap: pxToRem(5),
     pointerMargin: pxToRem(10),
     pointerSize: pxToRem(10),
 

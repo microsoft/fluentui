@@ -1,5 +1,5 @@
-import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables'
-import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils'
+import { MenuVariables, menuColorAreas } from '../../../teams/components/Menu/menuVariables';
+import { extendColorScheme, pickValuesFromColorScheme } from '../../../colorUtils';
 
 export default (siteVars: any): Partial<MenuVariables> => ({
   colorScheme: pickValuesFromColorScheme(
@@ -8,7 +8,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
         borderActive: siteVars.colors.grey[600],
         backgroundFocus: siteVars.colors.grey[500],
         backgroundActive: siteVars.colorScheme.default.backgroundActive1,
-        foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
+        foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1
       },
       brand: {
         foregroundHover: siteVars.colors.white,
@@ -17,10 +17,10 @@ export default (siteVars: any): Partial<MenuVariables> => ({
         foregroundActive: siteVars.colors.white,
         foregroundFocus: siteVars.colors.white,
         backgroundFocus: siteVars.colors.brand[300],
-        foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
-      },
+        foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1
+      }
     }),
-    menuColorAreas,
+    menuColorAreas
   ),
 
   color: siteVars.colors.grey[250],
@@ -31,5 +31,5 @@ export default (siteVars: any): Partial<MenuVariables> => ({
 
   verticalBackgroundColor: siteVars.colors.grey[600],
   verticalBackgroundColorFocus: siteVars.colors.grey[550],
-  iconOnlyColorActive: siteVars.colors.brand[400],
-})
+  iconOnlyColorActive: siteVars.colors.brand[400]
+});

@@ -72,6 +72,7 @@ export class ColorPickerGridCellBase extends React.PureComponent<IColorPickerGri
   public render(): JSX.Element {
     const {
       item,
+      // tslint:disable-next-line:deprecation
       idPrefix = this.props.id,
       selected,
       disabled,

@@ -2,6 +2,48 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/charting_v0.140.3",
+      "version": "0.140.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable keyboard accessibility for Donut chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "bb05aa2eb9e36d2a5f2bbba01a2e396f9e60a0a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/charting_v0.140.0",
+      "version": "0.140.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "8ee54b6c69ccf5e88d6794bc41d0597b139da4d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/charting_v0.139.21",
+      "version": "0.139.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@uifabric/charting_v0.139.20",
       "version": "0.139.20",

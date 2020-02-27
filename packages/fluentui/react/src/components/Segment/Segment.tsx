@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as PropTypes from 'prop-types'
+import * as React from 'react';
+import * as PropTypes from 'prop-types';
 import {
   UIComponent,
   childrenExist,
@@ -8,12 +8,12 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ColorComponentProps,
-} from '../../utils'
-import { Accessibility } from '@fluentui/accessibility'
+  ColorComponentProps
+} from '../../utils';
+import { Accessibility } from '@fluentui/accessibility';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types'
-import Box, { BoxProps } from '../Box/Box'
+import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
+import Box, { BoxProps } from '../Box/Box';
 
 export interface SegmentProps
   extends UIComponentProps<SegmentProps>,
@@ -23,36 +23,36 @@ export interface SegmentProps
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility
+  accessibility?: Accessibility;
 
   /** An segment can show it is currently unable to be interacted with. */
-  disabled?: boolean
+  disabled?: boolean;
 
   /** A segment can have its colors inverted for contrast. */
-  inverted?: boolean
+  inverted?: boolean;
 }
 
 class Segment extends UIComponent<WithAsProp<SegmentProps>, any> {
-  static className = 'ui-segment'
+  static className = 'ui-segment';
 
-  static displayName = 'Segment'
+  static displayName = 'Segment';
 
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: 'shorthand',
-      color: true,
+      color: true
     }),
     disabled: PropTypes.bool,
     inverted: PropTypes.bool,
-    rtlAttributes: PropTypes.func,
-  }
+    rtlAttributes: PropTypes.func
+  };
 
   static defaultProps = {
-    as: 'div',
-  }
+    as: 'div'
+  };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }) {
-    const { children, content } = this.props
+    const { children, content } = this.props;
 
     return (
       <ElementType
@@ -63,11 +63,11 @@ class Segment extends UIComponent<WithAsProp<SegmentProps>, any> {
       >
         {childrenExist(children) ? children : Box.create(content)}
       </ElementType>
-    )
+    );
   }
 }
 
 /**
  * A Segment visually groups related content.
  */
-export default withSafeTypeForAs<typeof Segment, SegmentProps>(Segment)
+export default withSafeTypeForAs<typeof Segment, SegmentProps>(Segment);

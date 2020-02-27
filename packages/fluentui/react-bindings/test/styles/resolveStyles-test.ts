@@ -1,11 +1,12 @@
 import * as _ from 'lodash';
 import { ComponentSlotStylesPrepared, ComponentVariablesObject, emptyTheme, ICSSInJSStyle } from '@fluentui/styles';
 import resolveStyles from '../../src/styles/resolveStyles';
-import { ResolveStylesOptions } from '../../src/styles/types';
+import { ResolveStylesOptions, StylesContextPerformance } from '../../src/styles/types';
 
 const componentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
-  root: ({ variables: v }): ICSSInJSStyle => ({
-    color: v.color
+  root: ({ variables: v, rtl }): ICSSInJSStyle => ({
+    color: v.color,
+    content: `"rtl:${rtl.toString()}"`
   })
 };
 
@@ -13,19 +14,20 @@ const resolvedVariables: ComponentVariablesObject = {
   color: 'red'
 };
 
+const defaultPerformanceOptions: StylesContextPerformance = {
+  enableSanitizeCssPlugin: true,
+  enableStylesCaching: true,
+  enableVariablesCaching: true,
+  enableBooleanVariablesCaching: false
+};
+
 const resolveStylesOptions = (options?: {
   displayName?: ResolveStylesOptions['displayName'];
-  performance?: ResolveStylesOptions['performance'];
+  performance?: Partial<ResolveStylesOptions['performance']>;
   props?: ResolveStylesOptions['props'];
+  rtl?: ResolveStylesOptions['rtl'];
 }): ResolveStylesOptions => {
-  const {
-    displayName = 'Test',
-    performance = {
-      enableVariablesCaching: true,
-      enableStylesCaching: true
-    },
-    props = {}
-  } = options || {};
+  const { displayName = 'Test', performance, props = {}, rtl = false } = options || {};
 
   return {
     theme: {
@@ -36,12 +38,12 @@ const resolveStylesOptions = (options?: {
     },
     displayName,
     props,
-    rtl: false,
+    rtl,
     disableAnimations: false,
     renderer: {
       renderRule: () => ''
     },
-    performance,
+    performance: { ...defaultPerformanceOptions, ...performance },
     saveDebug: () => {}
   };
 };
@@ -76,7 +78,7 @@ describe('resolveStyles', () => {
     const { classes } = resolveStyles(resolveStylesOptions(), resolvedVariables, renderStyles);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith({ color: 'red' });
+    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
   });
 
   test('caches rendered classes', () => {
@@ -84,7 +86,7 @@ describe('resolveStyles', () => {
     const { classes } = resolveStyles(resolveStylesOptions(), resolvedVariables, renderStyles);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith({ color: 'red' });
+    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
     expect(classes['root']).toBeDefined();
     expect(renderStyles).toHaveBeenCalledTimes(1);
   });
@@ -95,9 +97,9 @@ describe('resolveStyles', () => {
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
 
-    expect(resolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(1);
-    expect(secondResolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(1);
   });
 
@@ -108,7 +110,7 @@ describe('resolveStyles', () => {
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith({ color: 'red' });
+    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
     expect(secondClasses['root']).toBeDefined();
     expect(renderStyles).toHaveBeenCalledTimes(1);
   });
@@ -122,9 +124,9 @@ describe('resolveStyles', () => {
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
 
-    expect(resolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(1);
-    expect(secondResolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(1);
   });
 
@@ -138,7 +140,7 @@ describe('resolveStyles', () => {
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith({ color: 'red' });
+    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
     expect(secondClasses['root']).toBeDefined();
     expect(renderStyles).toHaveBeenCalledTimes(1);
   });
@@ -150,13 +152,11 @@ describe('resolveStyles', () => {
       props: { primary: true }
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
+    const { resolvedStyles: secondResolvedStyles } = resolveStyles({ ...options, props: { primary: false } }, resolvedVariables);
 
-    options.props = { primary: false };
-    const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
-
-    expect(resolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(1);
-    expect(secondResolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(2);
   });
 
@@ -172,30 +172,34 @@ describe('resolveStyles', () => {
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith({ color: 'red' });
+    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
     expect(secondClasses['root']).toBeDefined();
     expect(renderStyles).toHaveBeenCalledTimes(2);
   });
 
   test('does not cache styles if caching is disabled', () => {
     spyOn(componentStyles, 'root').and.callThrough();
-    const options = resolveStylesOptions({ performance: { enableStylesCaching: false } });
+    const options = resolveStylesOptions({
+      performance: { enableStylesCaching: false }
+    });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
 
-    expect(resolvedStyles.root).toMatchObject({ color: 'red' });
-    expect(secondResolvedStyles.root).toMatchObject({ color: 'red' });
+    expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
+    expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(componentStyles.root).toHaveBeenCalledTimes(2);
   });
 
   test('does not cache classes if caching is disabled', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
-    const options = resolveStylesOptions({ performance: { enableStylesCaching: false } });
+    const options = resolveStylesOptions({
+      performance: { enableStylesCaching: false }
+    });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
 
     expect(classes['root']).toBeDefined();
-    expect(renderStyles).toHaveBeenCalledWith({ color: 'red' });
+    expect(renderStyles).toHaveBeenCalledWith(expect.objectContaining({ color: 'red' }));
     expect(secondClasses['root']).toBeDefined();
     expect(renderStyles).toHaveBeenCalledTimes(2);
   });
@@ -256,5 +260,93 @@ describe('resolveStyles', () => {
     });
 
     expect(renderStyles).toHaveBeenCalledTimes(propsInlineOverridesSize * 2);
+  });
+
+  test('computes new styles when "rtl" changes', () => {
+    const renderStyles = jest.fn().mockImplementation((style: ICSSInJSStyle) => style.content);
+
+    const ltrOptions = resolveStylesOptions({ rtl: false });
+    const rtlOptions = resolveStylesOptions({ rtl: true });
+
+    const ltrStyles = resolveStyles(ltrOptions, resolvedVariables, renderStyles);
+    const rtlStyles = resolveStyles(rtlOptions, resolvedVariables, renderStyles);
+
+    expect(ltrStyles).toHaveProperty('resolvedStyles.root.content', expect.stringMatching(/rtl:false/));
+    expect(ltrStyles).toHaveProperty('classes.root', expect.stringMatching(/rtl:false/));
+    expect(renderStyles).toHaveBeenCalledTimes(1);
+
+    expect(rtlStyles).toHaveProperty('resolvedStyles.root.content', expect.stringMatching(/rtl:true/));
+    expect(rtlStyles).toHaveProperty('classes.root', expect.stringMatching(/rtl:true/));
+    expect(renderStyles).toHaveBeenCalledTimes(2);
+  });
+
+  describe('enableBooleanVariablesCaching', () => {
+    test('avoids "classes" computation when enabled', () => {
+      const renderStyles = jest.fn().mockReturnValue('a');
+      const options = resolveStylesOptions({
+        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        performance: { enableBooleanVariablesCaching: true }
+      });
+
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(renderStyles).toHaveBeenCalledTimes(1);
+    });
+
+    test('forces "classes" computation when disabled', () => {
+      const renderStyles = jest.fn().mockReturnValue('a');
+      const options = resolveStylesOptions({
+        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        performance: { enableBooleanVariablesCaching: false }
+      });
+
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
+      expect(renderStyles).toHaveBeenCalledTimes(2);
+    });
+
+    test('avoids "styles" computation when enabled', () => {
+      spyOn(componentStyles, 'root').and.callThrough();
+      const options = resolveStylesOptions({
+        props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
+        performance: { enableBooleanVariablesCaching: true }
+      });
+
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    });
+
+    test('requires "enableStylesCaching" to be enabled', () => {
+      const options = resolveStylesOptions({
+        performance: { enableStylesCaching: false, enableBooleanVariablesCaching: true }
+      });
+
+      expect(() => resolveStyles(options, resolvedVariables)).toThrowError(/Please check your "performance" settings on "Provider"/);
+    });
+
+    test('when enabled only "variables" as plain objects can be cached', () => {
+      spyOn(componentStyles, 'root').and.callThrough();
+      const options = resolveStylesOptions({
+        props: { variables: () => {} },
+        performance: { enableBooleanVariablesCaching: true }
+      });
+
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(componentStyles.root).toHaveBeenCalledTimes(2);
+    });
+
+    test('when enabled only "variables" as boolean or nil properties can be cached', () => {
+      spyOn(componentStyles, 'root').and.callThrough();
+      const options = resolveStylesOptions({
+        props: { variables: { foo: 'bar' } },
+        performance: { enableBooleanVariablesCaching: true }
+      });
+
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
+      expect(componentStyles.root).toHaveBeenCalledTimes(2);
+    });
   });
 });

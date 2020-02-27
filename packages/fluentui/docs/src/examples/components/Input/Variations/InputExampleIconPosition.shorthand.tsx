@@ -1,8 +1,6 @@
-import * as React from 'react'
-import { Input } from '@fluentui/react'
+import * as React from 'react';
+import { Input } from '@fluentui/react';
 
-const InputExampleIconPosition = () => (
-  <Input icon="search" placeholder="Search..." iconPosition="start" />
-)
+const InputExampleIconPosition = () => <Input icon="search" placeholder="Search..." iconPosition="start" />;
 
-export default InputExampleIconPosition
+export default InputExampleIconPosition;

@@ -56,7 +56,6 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
 
   const { setStart, setEnd } = useTelemetry(displayName, context.telemetry);
   const rtl = context.rtl || false;
-  const enableVariablesCaching = context.performance?.enableVariablesCaching;
 
   setStart();
 
@@ -75,8 +74,10 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
     saveDebug,
     theme: context.theme || emptyTheme,
     performance: {
-      enableVariablesCaching: typeof enableVariablesCaching === 'boolean' ? enableVariablesCaching : true,
-      enableStylesCaching: false // we cannot enable caching for class components
+      ...context.performance,
+      // we cannot enable caching for class components
+      enableStylesCaching: false,
+      enableBooleanVariablesCaching: false
     }
   });
 

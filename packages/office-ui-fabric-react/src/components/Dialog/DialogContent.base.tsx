@@ -38,6 +38,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       subTextId,
       subText,
       titleProps = {},
+      // tslint:disable-next-line:deprecation
       titleId,
       title,
       type,

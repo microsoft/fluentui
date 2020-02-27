@@ -1,12 +1,14 @@
-import { isConformant, implementsShorthandProp } from 'test/specs/commonTests'
-import ChatItem from 'src/components/Chat/ChatItem'
-import Box from 'src/components/Box/Box'
+import { isConformant, implementsShorthandProp } from 'test/specs/commonTests';
+import ChatItem from 'src/components/Chat/ChatItem';
+import Box from 'src/components/Box/Box';
 
-const chatItemImplementsShorthandProp = implementsShorthandProp(ChatItem)
+const chatItemImplementsShorthandProp = implementsShorthandProp(ChatItem);
 
 describe('ChatItem', () => {
-  isConformant(ChatItem)
+  isConformant(ChatItem, {
+    constructorName: 'ChatItem'
+  });
 
-  chatItemImplementsShorthandProp('gutter', Box, { mapsValueToProp: 'children' })
-  chatItemImplementsShorthandProp('message', Box, { mapsValueToProp: 'children' })
-})
+  chatItemImplementsShorthandProp('gutter', Box, { mapsValueToProp: 'children' });
+  chatItemImplementsShorthandProp('message', Box, { mapsValueToProp: 'children' });
+});

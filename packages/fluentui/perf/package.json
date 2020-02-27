@@ -7,11 +7,17 @@
     "@babel/polyfill": "^7.7.0",
     "@uifabric/build": "^7.0.0",
     "@fluentui/react": "^0.44.0",
-    "@types/webpack-env": "^1.14.1",
+    "@types/webpack-env": "1.15.1",
     "minimatch": "^3.0.4",
     "@types/react": "16.8.11"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:old",
+    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
+    "lint:old": "tslint -t stylish -p ."
   }
 }

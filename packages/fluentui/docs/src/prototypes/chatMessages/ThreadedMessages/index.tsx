@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Chat, ChatItemProps, ShorthandCollection, Avatar, Provider } from '@fluentui/react'
-import ThreadedMessage from './ThreadedMessage'
-import threadChatBehavior from './threadChatBehavior'
-import { janeAvatar, replies } from './mockData'
-import customizedTheme from './theme'
+import * as React from 'react';
+import { Chat, ChatItemProps, ShorthandCollection, Avatar, Provider } from '@fluentui/react';
+import ThreadedMessage from './ThreadedMessage';
+import threadChatBehavior from './threadChatBehavior';
+import { janeAvatar, replies } from './mockData';
+import customizedTheme from './theme';
 
 const ChatExampleWithThreadedMessages = () => {
   const items: ShorthandCollection<ChatItemProps> = [
@@ -18,7 +18,7 @@ const ChatExampleWithThreadedMessages = () => {
           replies={replies}
         />
       ),
-      key: 'thread-message-id-1',
+      key: 'thread-message-id-1'
     },
     {
       gutter: <Avatar {...janeAvatar} />,
@@ -28,19 +28,19 @@ const ChatExampleWithThreadedMessages = () => {
           author="Jane Doe"
           meeting={{
             header: 'Team Standup',
-            description: 'Occurs every work day (Mon-Fri) @10:30 AM',
+            description: 'Occurs every work day (Mon-Fri) @10:30 AM'
           }}
           timestamp="Yesterday, 15:15 PM"
         />
       ),
-      key: 'thread-message-id-2',
-    },
-  ]
+      key: 'thread-message-id-2'
+    }
+  ];
 
   return (
     <Provider theme={customizedTheme}>
       <Chat accessibility={threadChatBehavior} items={items} />
     </Provider>
-  )
-}
-export default ChatExampleWithThreadedMessages
+  );
+};
+export default ChatExampleWithThreadedMessages;

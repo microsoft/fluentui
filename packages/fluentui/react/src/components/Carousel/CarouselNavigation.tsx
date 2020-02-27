@@ -1,10 +1,10 @@
-import { tabListBehavior } from '@fluentui/accessibility'
-import { ReactAccessibilityBehavior } from '@fluentui/react-bindings'
-import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import * as customPropTypes from '@fluentui/react-proptypes'
-import * as _ from 'lodash'
+import { tabListBehavior } from '@fluentui/accessibility';
+import { ReactAccessibilityBehavior } from '@fluentui/react-bindings';
+import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
 
 import {
   childrenExist,
@@ -14,25 +14,20 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ShorthandFactory,
-  UIComponent,
-} from '../../utils'
-import {
-  withSafeTypeForAs,
-  WithAsProp,
-  ShorthandCollection,
-  ComponentEventHandler,
-} from '../../types'
-import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem'
+  UIComponent
+} from '../../utils';
+import { withSafeTypeForAs, WithAsProp, ShorthandCollection, ComponentEventHandler } from '../../types';
+import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active item. */
-  activeIndex?: number | string
+  activeIndex?: number | string;
 
   /** A navigation may have just icons. */
-  iconOnly?: boolean
+  iconOnly?: boolean;
 
   /** Shorthand array of props for Navigation. */
-  items?: ShorthandCollection<CarouselNavigationItemProps>
+  items?: ShorthandCollection<CarouselNavigationItemProps>;
 
   /**
    * Called when a panel title is clicked.
@@ -40,28 +35,28 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
    * @param {SyntheticEvent} event - React's original SyntheticEvent.
    * @param {object} data - All item props.
    */
-  onItemClick?: ComponentEventHandler<CarouselNavigationItemProps>
+  onItemClick?: ComponentEventHandler<CarouselNavigationItemProps>;
 
   /** The carousel navigation can have primary type. */
-  primary?: boolean
+  primary?: boolean;
 
   /** The carousel navigation can have secondary type. */
-  secondary?: boolean
+  secondary?: boolean;
 
   /** A vertical carousel navigation displays elements vertically. */
-  vertical?: boolean
+  vertical?: boolean;
 }
 
 class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>> {
-  static displayName = 'CarouselNavigation'
+  static displayName = 'CarouselNavigation';
 
-  static className = 'ui-carousel__navigation'
+  static className = 'ui-carousel__navigation';
 
-  static create: ShorthandFactory<CarouselNavigationProps>
+  static create: ShorthandFactory<CarouselNavigationProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false,
+      content: false
     }),
     activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     iconOnly: PropTypes.bool,
@@ -69,27 +64,24 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
     onItemClick: PropTypes.func,
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    vertical: PropTypes.bool,
-  }
+    vertical: PropTypes.bool
+  };
 
   static defaultProps = {
     accessibility: tabListBehavior,
-    as: 'ul',
-  }
+    as: 'ul'
+  };
 
   handleItemOverrides = variables => predefinedProps => ({
     onClick: (e, itemProps) => {
-      _.invoke(this.props, 'onItemClick', e, itemProps)
-      _.invoke(predefinedProps, 'onClick', e, itemProps)
+      _.invoke(this.props, 'onItemClick', e, itemProps);
+      _.invoke(predefinedProps, 'onClick', e, itemProps);
     },
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
-  })
+    variables: mergeComponentVariables(variables, predefinedProps.variables)
+  });
 
-  renderItems = (
-    variables: ComponentVariablesObject,
-    accessibility: ReactAccessibilityBehavior,
-  ) => {
-    const { activeIndex, iconOnly, items, primary, secondary, vertical } = this.props
+  renderItems = (variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
+    const { activeIndex, iconOnly, items, primary, secondary, vertical } = this.props;
 
     return _.map(items, (item, index) =>
       CarouselNavigationItem.create(item, {
@@ -100,17 +92,15 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
           primary,
           secondary,
           vertical,
-          accessibility: accessibility.childBehaviors
-            ? accessibility.childBehaviors.item
-            : undefined,
+          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined
         }),
-        overrideProps: this.handleItemOverrides(variables),
-      }),
-    )
-  }
+        overrideProps: this.handleItemOverrides(variables)
+      })
+    );
+  };
 
   renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
-    const { children } = this.props
+    const { children } = this.props;
     return (
       <ElementType
         className={classes.root}
@@ -120,18 +110,16 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
       >
         {childrenExist(children) ? children : this.renderItems(variables, accessibility)}
       </ElementType>
-    )
+    );
   }
 }
 
 CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
-  mappedArrayProp: 'items',
-})
+  mappedArrayProp: 'items'
+});
 
 /**
  * A Carousel navigation helps switching between Carousel items.
  */
-export default withSafeTypeForAs<typeof CarouselNavigation, CarouselNavigationProps, 'ul'>(
-  CarouselNavigation,
-)
+export default withSafeTypeForAs<typeof CarouselNavigation, CarouselNavigationProps, 'ul'>(CarouselNavigation);

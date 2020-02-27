@@ -1,21 +1,21 @@
-import { pxToRem } from '../../../../utils'
+import { pxToRem } from '../../../../utils';
 
 export type RadioGroupItemVariables = {
-  colorDisabled: string
+  colorDisabled: string;
 
-  textFontSize: string
+  textFontSize: string;
 
-  textColorDefault: string
-  textColorDefaultHoverFocus: string
-  textColorChecked: string
+  textColorDefault: string;
+  textColorDefaultHoverFocus: string;
+  textColorChecked: string;
 
-  iconBorderColorDefaultHover: string
-  iconBorderColorChecked: string
+  iconBorderColorDefaultHover: string;
+  iconBorderColorChecked: string;
 
-  iconBackgroundColorChecked: string
+  iconBackgroundColorChecked: string;
 
-  padding: string
-}
+  padding: string;
+};
 
 export default (siteVars: any): RadioGroupItemVariables => ({
   colorDisabled: siteVars.colors.grey[250],
@@ -31,5 +31,5 @@ export default (siteVars: any): RadioGroupItemVariables => ({
 
   iconBackgroundColorChecked: siteVars.colors.brand[600],
 
-  padding: `0 ${pxToRem(4)}`,
-})
+  padding: `0 ${pxToRem(4)}`
+});

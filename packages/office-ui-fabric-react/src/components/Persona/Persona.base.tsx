@@ -65,6 +65,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       initialsColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
+      // tslint:disable-next-line:deprecation
       onRenderCoin,
       onRenderInitials,
       presence,
@@ -118,6 +119,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
     return (
       <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
         {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
+        {/* tslint:disable-next-line:deprecation */}
         {(!hidePersonaDetails || size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny) && personaDetails}
       </div>
     );
@@ -146,6 +148,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
    * Deprecation helper for getting text.
    */
   private _getText(): string {
+    // tslint:disable-next-line:deprecation
     return this.props.text || this.props.primaryText || '';
   }
 

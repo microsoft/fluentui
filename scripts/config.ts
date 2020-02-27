@@ -7,10 +7,9 @@ import * as webpack from 'webpack';
 // ------------------------------------
 const env = process.env.NODE_ENV || 'development';
 const __DEV__ = env === 'development';
-const __NOW__ = !!process.env.NOW;
 const __PERF__ = !!process.env.PERF;
 const __PROD__ = env === 'production';
-const __BASENAME__ = __PROD__ && !__NOW__ ? '/fluent-ui-react/' : '/';
+const __BASENAME__ = '/';
 
 const __SKIP_ERRORS__ = !!process.env.SKIP_ERRORS;
 
@@ -61,11 +60,14 @@ const tempPaths = {
   withRootAt: (root: string, ...subpaths: string[]) => (...args: string[]) => path.resolve(root, ...subpaths, ...args)
 };
 
-const paths = {
+const paths: typeof tempPaths & {
+  base: typeof base;
+  posix: typeof tempPaths;
+} = {
   base,
   ...tempPaths,
   // all the sibling values, but with forward slashes regardless the OS
-  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) => func(...args).replace(/\\/g, '/'))
+  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) => func(...args).replace(/\\/g, '/')) as any
 };
 
 const isRoot = process.cwd() === envConfig.path_base;

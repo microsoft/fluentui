@@ -1,10 +1,10 @@
-import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react'
+import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react';
 
 type ThemeOverrides = ThemeInput & {
   componentStyles: {
-    Notification: ComponentSlotStylesInput
-  }
-}
+    Notification: ComponentSlotStylesInput;
+  };
+};
 
 const themeOverrides: ThemeOverrides = {
   componentStyles: {
@@ -20,7 +20,7 @@ const themeOverrides: ThemeOverrides = {
 
         position: 'static',
         visibility: 'hidden',
-        zIndex: 1000,
+        zIndex: 1000
       }),
       overlay: () => ({
         alignItems: 'center',
@@ -32,10 +32,10 @@ const themeOverrides: ThemeOverrides = {
         overflow: 'auto',
         position: 'fixed',
         right: 0,
-        top: 0,
-      }),
-    },
-  },
-}
+        top: 0
+      })
+    }
+  }
+};
 
-export default themeOverrides
+export default themeOverrides;

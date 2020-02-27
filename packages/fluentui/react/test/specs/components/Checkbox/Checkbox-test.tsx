@@ -3,7 +3,11 @@ import Checkbox from 'src/components/Checkbox/Checkbox';
 import { isConformant, handlesAccessibility, htmlIsAccessibilityCompliant } from 'test/specs/commonTests';
 
 describe('Checkbox', () => {
-  isConformant(Checkbox, { constructorName: 'Checkbox' });
+  isConformant(Checkbox, {
+    constructorName: 'Checkbox',
+    autoControlledProps: ['checked']
+  });
+
   handlesAccessibility(Checkbox, { defaultRootRole: 'checkbox' });
 
   describe('HTML accessibility rules validation', () => {

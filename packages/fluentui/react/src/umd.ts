@@ -1,3 +1,3 @@
-import * as FluentUI from './index'
+import * as FluentUI from './index';
 
-module.exports = FluentUI
+module.exports = FluentUI;

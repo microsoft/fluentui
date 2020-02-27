@@ -13,6 +13,8 @@ const typeOf = (x: any) => Object.prototype.toString.call(x);
 export const domNode = (props: ObjectOf<any>, propName: string) => {
   // skip if prop is undefined
   if (props[propName] === undefined) return undefined;
+  // skip if prop is null
+  if (props[propName] === null) return null;
   // skip if prop is valid
   if (props[propName] instanceof Element) return undefined;
 

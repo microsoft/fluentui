@@ -25,6 +25,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
     [MessageBarType.blocked]: 'Blocked2',
+    // tslint:disable-next-line:deprecation
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
     [MessageBarType.success]: 'Completed'

@@ -10,6 +10,7 @@ export interface IVerticalDividerProps {
    * @deprecated Use styles instead.
    * Optional function to generate the class names for the divider for custom styling
    */
+  // tslint:disable-next-line:deprecation
   getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
   /**
    * The theme that should be used to render the vertical divider.

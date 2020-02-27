@@ -2,6 +2,145 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "office-ui-fabric-react_v7.97.1",
+      "version": "7.97.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on 'deprecation' tslint rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4345dcefc8266a402f497d3c020b367891b3d2a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "office-ui-fabric-react_v7.97.0",
+      "version": "7.97.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "FocusZone: Re-exporting FocusZone from react-focus package and removing duplication in OUFR package.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "56c46b39778efcefbb8f7401c86b5c60183ade9f"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Delete PositioningContainer docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "ef95f984ea819393b994222b1d7b3c4c4f159b9f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 24 Feb 2020 12:21:19 GMT",
+      "tag": "office-ui-fabric-react_v7.96.0",
+      "version": "7.96.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding pointer down support for dismissing the fabric base layer.",
+            "author": "boalbe@microsoft.com",
+            "commit": "6a674fbc9ecc4e6bbc634eb8cf0ae320d4f979dd"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "DetailsList: fix memory leak caused by incorrect component memoization",
+            "author": "xgao@microsoft.com",
+            "commit": "b292e82b235d6e6ee76f60d6b52aa0c8f7d2f418"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 21 Feb 2020 12:20:14 GMT",
+      "tag": "office-ui-fabric-react_v7.95.0",
+      "version": "7.95.0",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Link: text decoration should not show up even for buttons.",
+            "author": "dzearing@microsoft.com",
+            "commit": "746dbdc5c75cdd68e91b9f37c0467f44b83dff19"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used",
+            "author": "chce@netcompany.com",
+            "commit": "75d13a8a34e064a42b99763bdc43f8d8ca668982"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "office-ui-fabric-react_v7.94.1",
+      "version": "7.94.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SearchBox: Use native input onBlur to fix blur getting called twice",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e07d7d3a1fc807e7bf47e04477e5251759d0e301"
+          },
+          {
+            "comment": "DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "14fa26d0ce716ddb08a64adeb81e1e3507cd2493"
+          },
+          {
+            "comment": "GroupedList: Adding checks for group and selection being undefined.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "e8b1bf416fe51e14c69d5733d31996c27f092374"
+          },
+          {
+            "comment": "FocusZone: fix memory leak caused by closure",
+            "author": "xgao@microsoft.com",
+            "commit": "e2c990cb0670a4a6bf86562eb804d8774721da15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "office-ui-fabric-react_v7.94.0",
+      "version": "7.94.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "8327cbafb8cede2043608f0dd80a17fe7d71e5bc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          },
+          {
+            "comment": "Set touchmove and touchend event handlers to get caught in the capture phase",
+            "author": "catalina@microsoft.com",
+            "commit": "a7a7262fee8f15d105564c44c4a20c55417302a9"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "office-ui-fabric-react_v7.93.1",
       "version": "7.93.1",

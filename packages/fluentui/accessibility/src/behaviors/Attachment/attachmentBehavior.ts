@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -12,16 +12,16 @@ const attachmentBehavior: Accessibility = () => ({
   attributes: {
     root: {
       tabIndex: 0,
-      [IS_FOCUSABLE_ATTRIBUTE]: true,
-    },
+      [IS_FOCUSABLE_ATTRIBUTE]: true
+    }
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
-      },
-    },
-  },
-})
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      }
+    }
+  }
+});
 
-export default attachmentBehavior
+export default attachmentBehavior;

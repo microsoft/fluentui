@@ -2,13 +2,13 @@
   "name": "@fluentui/playground",
   "version": "0.44.0",
   "description": "> TODO: description",
-  "homepage": "https://github.com/microsoft/fluent-ui#readme",
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
   "bugs": {
-    "url": "https://github.com/microsoft/fluent-ui/issues"
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/microsoft/fluent-ui.git"
+    "url": "git@github.com:OfficeDev/office-ui-fabric-react.git"
   },
   "license": "ISC",
   "author": "JD Huntington <jdh@microsoft.com>",
@@ -30,8 +30,7 @@
     "perf": "just-scripts e2e:perf",
     "start": "just-scripts storybook:start",
     "start-test": "just-scripts test:watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest:snapshots"
+    "test": "just-scripts test"
   },
   "dependencies": {
     "@fluentui/react-theming": "^0.44.0",
@@ -40,9 +39,9 @@
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
     "@types/classnames": "^2.2.9",
-    "@types/enzyme": "^3.10.3",
-    "@types/enzyme-adapter-react-16": "1.0.5",
-    "@types/jest": "^24.0.19",
+    "@types/enzyme": "3.10.3",
+    "@types/enzyme-adapter-react-16": "1.0.3",
+    "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@types/react": "16.8.11",
     "@types/storybook__addon-info": "^5.2.1",

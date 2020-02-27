@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import menuItemBehavior from './menuItemBehavior'
-import menuDividerBehavior from './menuDividerBehavior'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import menuItemBehavior from './menuItemBehavior';
+import menuDividerBehavior from './menuDividerBehavior';
 
 /**
  * @description
@@ -17,25 +17,25 @@ import menuDividerBehavior from './menuDividerBehavior'
 const menuBehavior: Accessibility<MenuBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'menu',
-    },
+      role: 'menu'
+    }
   },
   focusZone: {
     props: {
       isCircularNavigation: true,
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: props.vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
-    },
+      direction: props.vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
+    }
   },
   childBehaviors: {
     item: menuItemBehavior,
-    divider: menuDividerBehavior,
-  },
-})
+    divider: menuDividerBehavior
+  }
+});
 
-export default menuBehavior
+export default menuBehavior;
 
 type MenuBehaviorProps = {
   /** Indicates if menu has its items displayed vertically. */
-  vertical?: boolean
-}
+  vertical?: boolean;
+};

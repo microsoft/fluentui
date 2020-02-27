@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',
@@ -7,11 +7,11 @@ export const selectors = {
   popupTriggerId: 'popupTrigger',
   popupElementId: 'popupElement',
   submenuTriggerId: 'submenuTrigger',
-  dummyButtonId: 'dummyButton',
-}
+  dummyButtonId: 'dummyButton'
+};
 
 const ToolbarExamplePopupInMenu = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <>
@@ -35,34 +35,28 @@ const ToolbarExamplePopupInMenu = () => {
                       id: selectors.popupTriggerId,
                       key: 'popup',
                       popup: {
-                        content: (
-                          <Input
-                            id={selectors.popupElementId}
-                            icon="search"
-                            placeholder="Search..."
-                          />
-                        ),
-                      },
-                    },
-                  ],
-                },
-              ],
+                        content: <Input id={selectors.popupElementId} icon="search" placeholder="Search..." />
+                      }
+                    }
+                  ]
+                }
+              ]
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              setMenuOpen(menuOpen)
-            },
+              setMenuOpen(menuOpen);
+            }
           },
           {
             id: selectors.dummyButtonId,
             key: 'italic',
             kind: 'toggle' as ToolbarItemShorthandKinds,
-            icon: { name: 'italic', outline: true },
-          },
+            icon: { name: 'italic', outline: true }
+          }
         ]}
       />
     </>
-  )
-}
+  );
+};
 
-export default ToolbarExamplePopupInMenu
+export default ToolbarExamplePopupInMenu;

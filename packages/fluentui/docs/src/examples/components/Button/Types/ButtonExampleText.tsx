@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Text, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Text, Icon } from '@fluentui/react';
 
 const ButtonExampleText = () => (
   <div>
@@ -30,6 +30,6 @@ const ButtonExampleText = () => (
       <Text content="A primary text button with an icon" />
     </Button>
   </div>
-)
+);
 
-export default ButtonExampleText
+export default ButtonExampleText;

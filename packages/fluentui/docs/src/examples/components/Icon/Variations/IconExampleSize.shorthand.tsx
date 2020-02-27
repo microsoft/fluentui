@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Grid, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Icon } from '@fluentui/react';
 
 const IconExampleSize = () => (
   <Grid rows={2} styles={{ textAlign: 'center' }}>
@@ -24,6 +24,6 @@ const IconExampleSize = () => (
     <Icon name="emoji" size="largest" />
     <Icon name="call-video" size="largest" />
   </Grid>
-)
+);
 
-export default IconExampleSize
+export default IconExampleSize;

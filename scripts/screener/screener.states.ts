@@ -7,7 +7,7 @@ import path from 'path';
 import getScreenerSteps from './screener.steps';
 import config from '../config';
 
-const examplePaths = glob.sync('docs/src/examples/**/*.tsx', {
+const examplePaths = glob.sync('packages/fluentui/docs/src/examples/**/*.tsx', {
   ignore: ['**/index.tsx', '**/*.knobs.tsx', '**/BestPractices/*.tsx', '**/Playground.tsx']
 });
 

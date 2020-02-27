@@ -1,7 +1,59 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Feb 2020 17:06:50 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Feb 2020 12:28:12 GMT and should not be manually modified.
 
+## 7.97.1
+Wed, 26 Feb 2020 12:28:12 GMT
+
+### Patches
+
+- Turning on 'deprecation' tslint rule. (Humberto.Morimoto@microsoft.com)
+## 7.97.0
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Minor changes
+
+- FocusZone: Re-exporting FocusZone from react-focus package and removing duplication in OUFR package. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
+## 7.96.0
+Mon, 24 Feb 2020 12:21:19 GMT
+
+### Minor changes
+
+- DetailsList: fix memory leak caused by incorrect component memoization (xgao@microsoft.com)
+### Patches
+
+- Adding pointer down support for dismissing the fabric base layer. (boalbe@microsoft.com)
+## 7.95.0
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Minor changes
+
+- Adds ignoreScrollingState to List, to avoid updates to scrolling state when it's not being used (chce@netcompany.com)
+### Patches
+
+- Link: text decoration should not show up even for buttons. (dzearing@microsoft.com)
+## 7.94.1
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- SearchBox: Use native input onBlur to fix blur getting called twice (mgodbolt@microsoft.com)
+- DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true. (Humberto.Morimoto@microsoft.com)
+- GroupedList: Adding checks for group and selection being undefined. (Humberto.Morimoto@microsoft.com)
+- FocusZone: fix memory leak caused by closure (xgao@microsoft.com)
+## 7.94.0
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Minor changes
+
+- Removing use of deprecated props across the office-ui-fabric-react package so we can eventually enable the tslint deprecation rule. (Humberto.Morimoto@microsoft.com)
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+- Set touchmove and touchend event handlers to get caught in the capture phase (catalina@microsoft.com)
 ## 7.93.1
 Mon, 17 Feb 2020 17:06:50 GMT
 

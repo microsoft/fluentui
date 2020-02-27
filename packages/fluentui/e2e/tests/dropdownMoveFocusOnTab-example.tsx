@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react';
 
 const inputItems = [
   'Bruce Wayne',
@@ -10,14 +10,14 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle',
-]
+  'Selina Kyle'
+];
 
 export const selectors = {
   previousFocusableSibling: 'previous-focusable-sibling',
   nextFocusableSibling: 'next-focusable-sibling',
-  triggerButtonClass: Dropdown.slotClassNames.triggerButton,
-}
+  triggerButtonClass: Dropdown.slotClassNames.triggerButton
+};
 
 const DropdownMoveFocusOnTabExample = () => (
   <>
@@ -25,6 +25,6 @@ const DropdownMoveFocusOnTabExample = () => (
     <Dropdown multiple moveFocusOnTab items={inputItems} placeholder="Select your heroes" />
     <button id={selectors.nextFocusableSibling} />
   </>
-)
+);
 
-export default DropdownMoveFocusOnTabExample
+export default DropdownMoveFocusOnTabExample;

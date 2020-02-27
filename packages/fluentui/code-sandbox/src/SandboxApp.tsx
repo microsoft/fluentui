@@ -1,52 +1,49 @@
-import { KnobInspector, KnobProvider } from '@fluentui/docs-components'
-import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react'
+import { KnobInspector, KnobProvider } from '@fluentui/docs-components';
+import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react';
 // @ts-ignore
-import pkg from '@fluentui/react/package.json'
-import * as React from 'react'
+import pkg from '@fluentui/react/package.json';
+import * as React from 'react';
 
-import KnobsSnippet from './KnobsSnippet'
-import knobComponents from './knobComponents'
+import KnobsSnippet from './KnobsSnippet';
+import knobComponents from './knobComponents';
 
 const items = [
   {
     key: 'light',
     label: 'Teams Light',
-    value: 'teams',
+    value: 'teams'
   },
   {
     key: 'dark',
     label: 'Teams Dark',
-    value: 'teamsDark',
+    value: 'teamsDark'
   },
   {
     key: 'hc',
     label: 'Teams High Contrast',
-    value: 'teamsHighContrast',
-  },
-]
+    value: 'teamsHighContrast'
+  }
+];
 
 const SandboxApp: React.FunctionComponent = props => {
-  const { children } = props
-  const [theme, setTheme] = React.useState(items[0].value)
+  const { children } = props;
+  const [theme, setTheme] = React.useState(items[0].value);
 
   return (
     <Provider theme={themes[theme]} styles={{ height: '100vh', padding: '1rem' }}>
       {/* TODO: Load it in more React way */}
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css"
-      />
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.16.0/themes/prism-tomorrow.min.css" />
 
       <KnobProvider components={knobComponents}>
         <div>
           <Header>Fluent UI @ {pkg.version}</Header>
           <p>
             This example is powered by Fluent UI, check{' '}
-            <Text as="a" href="https://microsoft.github.io/fluent-ui-react/">
+            <Text as="a" href="https://aka.ms/fluent-ui">
               our docs
             </Text>{' '}
             and{' '}
-            <Text as="a" href="https://github.com/microsoft/fluent-ui-react">
+            <Text as="a" href="https://github.com/OfficeDev/office-ui-fabric-react">
               GitHub
             </Text>
             .
@@ -54,11 +51,7 @@ const SandboxApp: React.FunctionComponent = props => {
 
           <Flex>
             Select theme:
-            <RadioGroup
-              checkedValueChanged={(e, data) => setTheme(data.value as string)}
-              checkedValue={theme}
-              items={items}
-            />
+            <RadioGroup onCheckedValueChange={(e, data) => setTheme(data.value as string)} checkedValue={theme} items={items} />
           </Flex>
           <Divider />
           <KnobInspector>
@@ -76,7 +69,7 @@ const SandboxApp: React.FunctionComponent = props => {
         </div>
       </KnobProvider>
     </Provider>
-  )
-}
+  );
+};
 
-export default SandboxApp
+export default SandboxApp;

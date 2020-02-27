@@ -39,11 +39,13 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
       preview = this._renderPreviewImage(previewImages[0]);
 
       // Override the border color if an accent color was provided
+      // tslint:disable:deprecation
       if (previewImages[0].accentColor) {
         style = {
           borderBottomColor: previewImages[0].accentColor
         };
       }
+      // tslint:enable:deprecation
     }
 
     return (
@@ -98,7 +100,8 @@ export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewP
         <Image className={this._classNames.fileListIcon} src={file.iconSrc} role="presentation" alt="" width="16px" height="16px" />
         <Link
           className={this._classNames.fileListLink}
-          {...(file.linkProps, { href: file.url || (file.linkProps && file.linkProps.href) })}
+          // tslint:disable-next-line:deprecation
+          {...(file.linkProps, { href: (file.linkProps && file.linkProps.href) || file.url })}
         >
           {file.name}
         </Link>

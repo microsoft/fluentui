@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { Accessibility } from '../../types'
-import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior'
+import { Accessibility } from '../../types';
+import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior';
 
 /**
  * @specification
@@ -15,39 +15,33 @@ import buttonBehavior, { ButtonBehaviorProps } from '../Button/buttonBehavior'
  * Triggers 'doNotNavigateNextToolbarItem' action with 'ArrowLeft' or 'ArrowRight' on 'wrapper', when toolbar button has submenu and it is opened.
  */
 const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
-  const behaviorData = buttonBehavior(props)
+  const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
-    'aria-haspopup': props.popup ? 'dialog' : props.menu ? 'menu' : undefined,
-  }
+    'aria-haspopup': props.popup ? 'dialog' : props.menu ? 'menu' : undefined
+  };
   behaviorData.keyActions.wrapper = {
     ...behaviorData.keyActions.wrapper,
     performWrapperClick: {
-      keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
     },
     closeMenuAndFocusTrigger: {
-      keyCombinations:
-        props.menu && props.menuOpen
-          ? [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.Tab, shiftKey: true }]
-          : null,
+      keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.Tab, shiftKey: true }] : null
     },
     doNotNavigateNextToolbarItem: {
-      keyCombinations:
-        props.menu && props.menuOpen
-          ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }]
-          : null,
-    },
-  }
-  return behaviorData
-}
+      keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null
+    }
+  };
+  return behaviorData;
+};
 
-export default toolbarItemBehavior
+export default toolbarItemBehavior;
 
 export type ToolbarItemBehaviorProps = {
   /** Indicated if toolbar item has a menu. */
-  menu?: boolean | object
+  menu?: boolean | object;
   /** If the menu is in open state. */
-  menuOpen?: boolean
+  menuOpen?: boolean;
   /** Indicated if toolbar item has a popup. */
-  popup?: boolean | object
-} & ButtonBehaviorProps
+  popup?: boolean | object;
+} & ButtonBehaviorProps;

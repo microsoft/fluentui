@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 
 // Visually hides elements which remain visible for screen reader
 export const screenReaderContainerStyles: React.CSSProperties = {
@@ -9,5 +9,5 @@ export const screenReaderContainerStyles: React.CSSProperties = {
   overflow: 'hidden',
   padding: '0',
   position: 'absolute',
-  width: '1px',
-}
+  width: '1px'
+};

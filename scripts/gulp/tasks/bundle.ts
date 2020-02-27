@@ -1,5 +1,6 @@
 import { task, series, parallel, src, dest } from 'gulp';
 import babel from 'gulp-babel';
+import sourcemaps from 'gulp-sourcemaps';
 import { log, PluginError } from 'gulp-util';
 import del from 'del';
 import webpack from 'webpack';
@@ -31,13 +32,17 @@ const componentsSrc = [paths.packageSrc(packageName, '**/*.{ts,tsx}'), `!${paths
 
 task('bundle:package:commonjs', () =>
   src(componentsSrc)
+    .pipe(sourcemaps.init())
     .pipe(babel())
+    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.packageDist(packageName, 'commonjs')))
 );
 
 task('bundle:package:es', () =>
   src(componentsSrc)
+    .pipe(sourcemaps.init())
     .pipe(babel({ caller: { useESModules: true } } as any))
+    .pipe(sourcemaps.write('.'))
     .pipe(dest(paths.packageDist(packageName, 'es')))
 );
 
@@ -84,8 +89,3 @@ task(
   series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types'))
 );
 task('bundle:package', series('bundle:package:no-umd', 'bundle:package:umd'));
-
-task('bundle:all-packages', async () => {
-  await sh('lerna run build --scope @fluentui/*');
-  return del(`${config.paths.packages()}/*/dist/dts`);
-});

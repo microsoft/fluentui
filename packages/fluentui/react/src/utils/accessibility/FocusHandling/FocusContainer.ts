@@ -1,70 +1,66 @@
 export class ContainerFocusHandler {
-  private focusedIndex = 0
+  private focusedIndex = 0;
 
-  constructor(
-    private getItemsCount: () => number,
-    private readonly setFocusAt: (number) => void,
-    private circular = false,
-  ) {}
+  constructor(private getItemsCount: () => number, private readonly setFocusAt: (number) => void, private circular = false) {}
 
-  private noItems = (): boolean => this.getItemsCount() === 0
+  private noItems = (): boolean => this.getItemsCount() === 0;
 
   private constrainFocusedIndex(): void {
-    const itemsCount = this.getItemsCount()
+    const itemsCount = this.getItemsCount();
     if (this.focusedIndex < 0) {
-      this.focusedIndex = this.circular ? itemsCount - 1 : 0
+      this.focusedIndex = this.circular ? itemsCount - 1 : 0;
     }
 
     if (this.focusedIndex >= itemsCount) {
-      this.focusedIndex = this.circular ? 0 : itemsCount - 1
+      this.focusedIndex = this.circular ? 0 : itemsCount - 1;
     }
   }
 
   public getFocusedIndex(): number {
-    return this.focusedIndex
+    return this.focusedIndex;
   }
 
   public syncFocusedIndex(withCurrentIndex: number) {
-    this.focusedIndex = withCurrentIndex
+    this.focusedIndex = withCurrentIndex;
   }
 
   public movePrevious(): void {
     if (this.noItems()) {
-      return
+      return;
     }
 
-    this.focusedIndex -= 1
-    this.constrainFocusedIndex()
+    this.focusedIndex -= 1;
+    this.constrainFocusedIndex();
 
-    this.setFocusAt(this.focusedIndex)
+    this.setFocusAt(this.focusedIndex);
   }
 
   public moveNext(): void {
     if (this.noItems()) {
-      return
+      return;
     }
 
-    this.focusedIndex += 1
-    this.constrainFocusedIndex()
+    this.focusedIndex += 1;
+    this.constrainFocusedIndex();
 
-    this.setFocusAt(this.focusedIndex)
+    this.setFocusAt(this.focusedIndex);
   }
 
   public moveFirst(): void {
     if (this.noItems()) {
-      return
+      return;
     }
 
-    this.focusedIndex = 0
-    this.setFocusAt(this.focusedIndex)
+    this.focusedIndex = 0;
+    this.setFocusAt(this.focusedIndex);
   }
 
   public moveLast(): void {
     if (this.noItems()) {
-      return
+      return;
     }
 
-    this.focusedIndex = this.getItemsCount() - 1
-    this.setFocusAt(this.focusedIndex)
+    this.focusedIndex = this.getItemsCount() - 1;
+    this.setFocusAt(this.focusedIndex);
   }
 }

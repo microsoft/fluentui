@@ -19,6 +19,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   constructor(props: IOverflowSetProps) {
     super(props);
 
+    // tslint:disable-next-line:deprecation
     if (props.doNotContainWithinFocusZone) {
       this._warnMutuallyExclusive({
         doNotContainWithinFocusZone: 'focusZoneProps'
@@ -27,6 +28,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
+    // tslint:disable-next-line:deprecation
     const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
@@ -72,6 +74,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   public focus(forceIntoFirstElement?: boolean): boolean {
     let focusSucceeded = false;
 
+    // tslint:disable-next-line:deprecation
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.current) {
         focusSucceeded = focusFirstChild(this._divContainer.current);
@@ -95,6 +98,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
       return false;
     }
 
+    // tslint:disable-next-line:deprecation
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
         childElement.focus();

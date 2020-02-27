@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Button, Tooltip } from '@fluentui/react'
-import { useBooleanKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import { Button, Tooltip } from '@fluentui/react';
+import { useBooleanKnob } from '@fluentui/docs-components';
 
 const TooltipOpenExample = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open', initialValue: true })
+  const [open, setOpen] = useBooleanKnob({ name: 'open', initialValue: true });
 
   return (
     <Tooltip
@@ -12,7 +12,7 @@ const TooltipOpenExample = () => {
       trigger={<Button icon="more" />}
       content="This is a controlled Tooltip"
     />
-  )
-}
+  );
+};
 
-export default TooltipOpenExample
+export default TooltipOpenExample;

@@ -1,16 +1,15 @@
-import { Accessibility, tooltipAsLabelBehavior } from '@fluentui/accessibility';
-import { ReactAccessibilityBehavior } from '@fluentui/react-bindings';
+import { Accessibility, tooltipAsLabelBehavior, TooltipBehaviorProps } from '@fluentui/accessibility';
+import { useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
-  applyAccessibilityKeyHandlers,
   childrenExist,
-  AutoControlledComponent,
-  RenderResultConfig,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -18,26 +17,20 @@ import {
   isFromKeyboard,
   setWhatInputSource,
   getOrGenerateIdFromShorthand,
-  createShorthandFactory,
-  ShorthandFactory
+  createShorthandFactory
 } from '../../utils';
-import { ShorthandValue, Props } from '../../types';
-import { ALIGNMENTS, POSITIONS, Popper, BasicPositioningProps, PopperChildrenProps } from '../../utils/positioner';
-import TooltipContent, { TooltipContentProps } from './TooltipContent';
+import { ShorthandValue, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import { ALIGNMENTS, POSITIONS, Popper, BasicPositioningProps, PopperChildrenProps, Alignment, Position } from '../../utils/positioner';
 import PortalInner from '../Portal/PortalInner';
+import TooltipContent, { TooltipContentProps } from './TooltipContent';
 
 export interface TooltipSlotClassNames {
   content: string;
 }
 
-export interface TooltipState {
-  open: boolean;
-  contentId: string;
-}
-
 export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
-    ChildrenComponentProps,
+    ChildrenComponentProps<React.ReactElement>,
     ContentComponentProps<ShorthandValue<TooltipContentProps>>,
     BasicPositioningProps {
   /**
@@ -45,7 +38,7 @@ export interface TooltipProps
    * @default tooltipBehavior
    * @available tooltipAsLabelBehavior
    * */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TooltipBehaviorProps>;
 
   /** Additional CSS class name(s) to apply.  */
   className?: string;
@@ -63,7 +56,13 @@ export interface TooltipProps
   open?: boolean;
 
   /**
-   * TODO: should this be centralized?
+   * Event for request to change 'open' value.
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onOpenChange?: (e: React.MouseEvent | React.FocusEvent | React.KeyboardEvent, data: TooltipProps) => void;
+
+  /**
    * Offset value to apply to rendered component. Accepts the following units:
    * - px or unit-less, interpreted as pixels
    * - %, percentage relative to the length of the trigger element
@@ -92,212 +91,185 @@ export interface TooltipProps
  * @accessibility
  * Implements [ARIA Tooltip](https://www.w3.org/TR/wai-aria-practices-1.1/#tooltip) design pattern.
  */
-export default class Tooltip extends AutoControlledComponent<TooltipProps, TooltipState> {
-  static displayName = 'Tooltip';
+const Tooltip: React.FC<TooltipProps> &
+  FluentComponentStaticProps<TooltipProps> & {
+    Content: typeof TooltipContent;
+    slotClassNames: TooltipSlotClassNames;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Tooltip.displayName, context.telemetry);
+  setStart();
 
-  static className = 'ui-tooltip';
+  const { accessibility, align, children, content, mountNode, mouseLeaveDelay, offset, pointing, position, target, trigger } = props;
 
-  static slotClassNames: TooltipSlotClassNames = {
-    content: `${Tooltip.className}__content`
-  };
+  const [open, setOpen] = useAutoControlled({
+    defaultValue: props.defaultOpen,
+    value: props.open,
 
-  static Content = TooltipContent;
+    initialValue: false
+  });
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      as: false,
-      content: false
-    }),
-    align: PropTypes.oneOf(ALIGNMENTS),
-    defaultOpen: PropTypes.bool,
-    inline: PropTypes.bool,
-    mountNode: customPropTypes.domNode,
-    mouseLeaveDelay: PropTypes.number,
-    offset: PropTypes.string,
-    open: PropTypes.bool,
-    onOpenChange: PropTypes.func,
-    pointing: PropTypes.bool,
-    position: PropTypes.oneOf(POSITIONS),
-    target: customPropTypes.domNode,
-    trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
-    content: customPropTypes.shorthandAllowingChildren
-  };
+  const contentRef = React.useRef<HTMLElement>();
+  const pointerTargetRef = React.useRef<HTMLDivElement>();
+  const triggerRef = React.useRef<HTMLElement>();
 
-  static defaultProps: TooltipProps = {
-    align: 'center',
-    position: 'above',
-    mouseLeaveDelay: 10,
-    pointing: true,
-    accessibility: tooltipAsLabelBehavior
-  };
+  const closeTimeoutId = React.useRef<number>();
+  // TODO: Consider `getOrGenerateIdFromShorthand()` as hook and make it SSR safe
+  const contentId = React.useRef<string>();
+  contentId.current = getOrGenerateIdFromShorthand('tooltip-content-', content, contentId.current);
 
-  static autoControlledProps = ['open'];
+  const getA11Props = useAccessibility(accessibility, {
+    actionHandlers: {
+      close: e => {
+        setTooltipOpen(false, e);
+        e.stopPropagation();
+        e.preventDefault();
+      }
+    },
+    mapPropsToBehavior: () => ({
+      'aria-describedby': props['aria-describedby'],
+      'aria-label': props['aria-label'],
+      'aria-labelledby': props['aria-labelledby'],
+      contentId: contentId.current,
+      open
+    })
+  });
 
-  static create: ShorthandFactory<TooltipProps>;
-
-  contentRef = React.createRef<HTMLElement>();
-  pointerTargetRef = React.createRef<HTMLDivElement>();
-  triggerRef = React.createRef<HTMLElement>();
-  closeTimeoutId;
-
-  actionHandlers = {
-    close: e => {
-      this.setTooltipOpen(false, e);
-      e.stopPropagation();
-      e.preventDefault();
+  const getContentOverrideProps = (
+    predefinedProps: TooltipContentProps
+  ): TooltipContentProps & Pick<React.DOMAttributes<HTMLDivElement>, 'onMouseEnter' | 'onMouseLeave'> => ({
+    onMouseEnter: (e: React.MouseEvent) => {
+      setTooltipOpen(true, e);
+      _.invoke(predefinedProps, 'onMouseEnter', e);
+    },
+    onMouseLeave: (e: React.MouseEvent) => {
+      setTooltipOpen(false, e);
+      _.invoke(predefinedProps, 'onMouseLeave', e);
     }
-  };
+  });
 
-  getInitialAutoControlledState(): Partial<TooltipState> {
-    return { open: false };
-  }
-
-  static getAutoControlledStateFromProps(props: TooltipProps, state: TooltipState): Partial<TooltipState> {
-    return {
-      contentId: getOrGenerateIdFromShorthand('tooltip-content-', props.content, state.contentId)
-    };
-  }
-
-  renderComponent({ rtl, accessibility }: RenderResultConfig<TooltipProps>): React.ReactNode {
-    const { mountNode, children, trigger } = this.props;
-    const tooltipContent = this.renderTooltipContent(rtl, accessibility);
-
-    const triggerNode = childrenExist(children) ? children : trigger;
-    const triggerElement = triggerNode && (React.Children.only(triggerNode) as React.ReactElement);
-    const triggerProps = this.getTriggerProps(triggerElement);
-
-    return (
-      <>
-        {triggerElement && (
-          <Ref innerRef={this.triggerRef}>
-            {React.cloneElement(triggerElement, {
-              ...accessibility.attributes.trigger,
-              ...triggerProps,
-              ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.trigger, triggerProps)
-            })}
-          </Ref>
-        )}
-        <PortalInner mountNode={mountNode}>{tooltipContent}</PortalInner>
-      </>
-    );
-  }
-
-  getTriggerProps(triggerElement) {
-    const triggerProps: Props = {};
-
-    triggerProps.onFocus = (e, ...args) => {
-      if (isFromKeyboard()) {
-        this.trySetOpen(true, e);
-      }
-      _.invoke(triggerElement, 'props.onFocus', e, ...args);
-    };
-    triggerProps.onBlur = (e, ...args) => {
-      if (!this.shouldStayOpen(e)) {
-        this.trySetOpen(false, e);
-      }
-      _.invoke(triggerElement, 'props.onBlur', e, ...args);
-    };
-
-    triggerProps.onMouseEnter = (e, ...args) => {
-      this.setTooltipOpen(true, e);
-      setWhatInputSource(this.context.target, 'mouse');
-      _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
-    };
-    triggerProps.onMouseLeave = (e, ...args) => {
-      this.setTooltipOpen(false, e);
-      _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
-    };
-
-    return triggerProps;
-  }
-
-  getContentProps = (predefinedProps?) => {
-    const contentHandlerProps: Props = {};
-
-    contentHandlerProps.onMouseEnter = (e, contentProps) => {
-      this.setTooltipOpen(true, e);
-      _.invoke(predefinedProps, 'onMouseEnter', e, contentProps);
-    };
-    contentHandlerProps.onMouseLeave = (e, contentProps) => {
-      this.setTooltipOpen(false, e);
-      _.invoke(predefinedProps, 'onMouseLeave', e, contentProps);
-    };
-
-    return contentHandlerProps;
-  };
-
-  shouldStayOpen = e =>
-    _.invoke(e, 'currentTarget.contains', e.relatedTarget) || _.invoke(this.contentRef.current, 'contains', e.relatedTarget);
-
-  renderTooltipContent(rtl: boolean, accessibility: ReactAccessibilityBehavior): JSX.Element {
-    const { align, position, target, offset } = this.props;
-    const { open } = this.state;
-
-    return (
-      <Popper
-        pointerTargetRef={this.pointerTargetRef}
-        align={align}
-        offset={offset}
-        position={position}
-        enabled={open}
-        rtl={rtl}
-        targetRef={target || this.triggerRef}
-        children={this.renderPopperChildren(accessibility)}
-      />
-    );
-  }
-
-  renderPopperChildren = (accessibility: ReactAccessibilityBehavior) => ({ placement }: PopperChildrenProps) => {
-    const { content, pointing } = this.props;
-
-    const tooltipContentAttributes = {
-      ...accessibility.attributes.tooltip,
-      ...accessibility.keyHandlers.tooltip,
-      ...this.getContentProps()
-    };
-
-    const tooltipContent = Tooltip.Content.create(content, {
-      defaultProps: () => ({
-        ...tooltipContentAttributes,
-        open: this.state.open,
-        placement,
-        pointing,
-        pointerRef: this.pointerTargetRef
-      }),
+  const renderPopperChildren = (popperProps: PopperChildrenProps) => {
+    const tooltipContent = TooltipContent.create(content, {
+      defaultProps: () =>
+        getA11Props('tooltip', {
+          open,
+          placement: popperProps.placement,
+          pointing,
+          pointerRef: pointerTargetRef
+        }),
       generateKey: false,
-      overrideProps: this.getContentProps
+      overrideProps: getContentOverrideProps
     });
 
-    if (!tooltipContent) return null;
-
-    return <Ref innerRef={this.contentRef}>{tooltipContent}</Ref>;
+    return tooltipContent ? <Ref innerRef={contentRef}>{tooltipContent}</Ref> : null;
   };
 
-  trySetOpen(newValue: boolean, eventArgs: any) {
-    this.setState({ open: newValue });
-    _.invoke(this.props, 'onOpenChange', eventArgs, { ...this.props, ...{ open: newValue } });
-  }
+  const shouldStayOpen = (e: React.FocusEvent) =>
+    _.invoke(e, 'currentTarget.contains', e.relatedTarget) || _.invoke(contentRef.current, 'contains', e.relatedTarget);
 
-  setTooltipOpen(newOpen, e) {
-    clearTimeout(this.closeTimeoutId);
-    newOpen ? this.trySetOpen(true, e) : this.scheduleTooltipClose(e);
-  }
-
-  scheduleTooltipClose = e => {
-    const { mouseLeaveDelay } = this.props;
-
-    this.closeTimeoutId = setTimeout(() => {
-      this.trySetOpen(false, e);
-    }, mouseLeaveDelay);
+  const trySetOpen = (newValue: boolean, e: React.MouseEvent | React.FocusEvent | React.KeyboardEvent) => {
+    setOpen(newValue);
+    _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: newValue } });
   };
 
-  close = (e, onClose?: Function) => {
-    if (this.state.open) {
-      this.trySetOpen(false, e);
-      onClose && onClose();
-      e.stopPropagation();
+  const setTooltipOpen = (newOpen: boolean, e: React.MouseEvent | React.KeyboardEvent) => {
+    clearTimeout(closeTimeoutId.current);
+
+    if (newOpen) {
+      trySetOpen(true, e);
+    } else {
+      closeTimeoutId.current = context.target.defaultView.setTimeout(() => {
+        trySetOpen(false, e);
+      }, mouseLeaveDelay);
     }
   };
-}
+
+  const triggerNode: React.ReactElement | undefined = childrenExist(children) ? children : trigger;
+  const triggerElement = triggerNode && React.Children.only(triggerNode);
+
+  const triggerProps: React.HTMLAttributes<HTMLElement> = {
+    onFocus: (e, ...args) => {
+      if (isFromKeyboard()) {
+        trySetOpen(true, e);
+      }
+      _.invoke(triggerElement, 'props.onFocus', e, ...args);
+    },
+    onBlur: (e, ...args) => {
+      if (!shouldStayOpen(e)) {
+        trySetOpen(false, e);
+      }
+      _.invoke(triggerElement, 'props.onBlur', e, ...args);
+    },
+    onMouseEnter: (e, ...args) => {
+      setTooltipOpen(true, e);
+      setWhatInputSource(context.target, 'mouse');
+      _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
+    },
+    onMouseLeave: (e, ...args) => {
+      setTooltipOpen(false, e);
+      _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
+    }
+  };
+
+  const element = (
+    <>
+      {triggerElement && <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>}
+      <PortalInner mountNode={mountNode}>
+        <Popper
+          pointerTargetRef={pointerTargetRef}
+          align={align}
+          offset={offset}
+          position={position}
+          enabled={open}
+          rtl={context.rtl}
+          targetRef={target || triggerRef}
+          children={renderPopperChildren}
+        />
+      </PortalInner>
+    </>
+  );
+  setEnd();
+
+  return element;
+};
+
+Tooltip.className = 'ui-tooltip';
+Tooltip.displayName = 'Tooltip';
+
+Tooltip.slotClassNames = {
+  content: `${Tooltip.className}__content`
+};
+
+Tooltip.defaultProps = {
+  align: 'center',
+  position: 'above',
+  mouseLeaveDelay: 10,
+  pointing: true,
+  accessibility: tooltipAsLabelBehavior
+};
+Tooltip.propTypes = {
+  ...commonPropTypes.createCommon({
+    as: false,
+    content: false
+  }),
+  align: PropTypes.oneOf<Alignment>(ALIGNMENTS),
+  children: PropTypes.element,
+  defaultOpen: PropTypes.bool,
+  mountNode: customPropTypes.domNode,
+  mouseLeaveDelay: PropTypes.number,
+  offset: PropTypes.string,
+  open: PropTypes.bool,
+  onOpenChange: PropTypes.func,
+  pointing: PropTypes.bool,
+  position: PropTypes.oneOf<Position>(POSITIONS),
+  target: customPropTypes.domNode,
+  trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
+  content: customPropTypes.shorthandAllowingChildren
+};
+Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
+
+Tooltip.Content = TooltipContent;
 
 Tooltip.create = createShorthandFactory({ Component: Tooltip, mappedProp: 'content' });
+
+export default Tooltip;
