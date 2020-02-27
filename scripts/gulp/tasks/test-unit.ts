@@ -20,7 +20,7 @@ const jestConfigFromArgv: Partial<JestPluginConfig> = {
   testFilePattern: argv.testFilePattern as string
 };
 
-if (process.env.CI) {
+if (process.env.TF_BUILD) {
   jestConfigFromArgv.maxWorkers = 2;
 }
 

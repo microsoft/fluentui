@@ -1,9 +1,9 @@
-const docSiteUrl = 'https://microsoft.github.io/fluent-ui-react';
+const docSiteUrl = 'https://fluentsite.z22.web.core.windows.net';
 
 const constants = {
   docSiteUrl,
   quickStartUrl: `${docSiteUrl}/quick-start`,
-  repoURL: 'https://github.com/microsoft/fluent-ui-react',
+  repoURL: 'https://github.com/OfficeDev/office-ui-fabric-react',
   typeOrder: ['component', 'behavior']
 };
 
