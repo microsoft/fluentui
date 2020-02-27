@@ -8,5 +8,6 @@ export const windowRef: TargetRef = {
 };
 
 export { default as EventListener } from './EventListener';
+export { default as unstable_EventListenerWithComputedTargetProps } from './EventListenerWithComputedTarget';
 export * from './types';
 export { default as useEventListener } from './useEventListener';

@@ -13,7 +13,10 @@ import {
   initializeComponentRef
 } from '../../Utilities';
 import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
-import { EventListener } from '@fluentui/react-component-event-listener';
+import {
+  EventListener,
+  unstable_EventListenerWithComputedTargetProps as EventListenerWithComputedTargetProps
+} from '@fluentui/react-component-event-listener';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -301,7 +304,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   public componentDidMount(): void {
     this._updatePages();
     this._measureVersion++;
-    this._scrollElement = findScrollableParent(this._root.current) as HTMLElement;
+    this._scrollElement = this._getScrollableElement();
   }
 
   public componentWillUnmount(): void {
@@ -394,12 +397,29 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
           </div>
         </div>
         <EventListener target={window} type="resize" listener={this._onAsyncResize} />
-        <EventListener capture target={this._scrollElement} type="focus" listener={this._onFocus} />
-        <EventListener capture target={this._scrollElement} type="scroll" listener={this._onScroll} />
-        <EventListener capture target={this._scrollElement} type="scroll" listener={this._onAsyncScroll} />
+        <EventListenerWithComputedTargetProps
+          capture
+          resolveTarget={this._getScrollableElement}
+          type="focus"
+          listener={this._onFocus.bind(this)}
+        />
+        <EventListenerWithComputedTargetProps
+          capture
+          resolveTarget={this._getScrollableElement}
+          type="scroll"
+          listener={this._onScroll.bind(this)}
+        />
+        <EventListenerWithComputedTargetProps
+          capture
+          resolveTarget={this._getScrollableElement}
+          type="scroll"
+          listener={this._onAsyncScroll.bind(this)}
+        />
       </>
     );
   }
+
+  private _getScrollableElement = (): HTMLElement => findScrollableParent(this._root.current) as HTMLElement;
 
   private _shouldVirtualize(props: IListProps<T> = this.props): boolean {
     const { onShouldVirtualize } = props;
