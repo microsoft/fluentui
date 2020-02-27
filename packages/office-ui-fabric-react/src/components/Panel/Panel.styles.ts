@@ -292,7 +292,15 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         height: commandBarHeight
       }
     ],
-    closeButton: [classNames.closeButton],
+    closeButton: [
+      classNames.closeButton,
+      {
+        marginRight: 14
+      },
+      hasCustomNavigation && {
+        marginRight: 0
+      }
+    ],
     contentInner: [
       classNames.contentInner,
       {
