@@ -51,8 +51,6 @@ function getResolveAlias() {
 
   alias[`${packageJson.name}/${outputPath}`] = path.join(cwd, 'src');
 
-  console.log(alias);
-
   return alias;
 }
 
