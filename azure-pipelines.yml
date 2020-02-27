@@ -177,7 +177,7 @@ jobs:
           Contents: '**/*'
         condition: always()
 
-  - job: Screener FluentUI
+  - job: ScreenerFluent
     dependsOn: Build
     steps:
       # No need for checkout since we're using build artifacts.
