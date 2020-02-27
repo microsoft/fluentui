@@ -42,6 +42,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            color: #323130;
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;

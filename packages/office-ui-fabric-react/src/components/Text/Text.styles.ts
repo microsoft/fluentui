@@ -15,7 +15,9 @@ export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: I
         fontFamily: variantObject.fontFamily,
         fontSize: variantObject.fontSize,
         fontWeight: variantObject.fontWeight,
-        color: variantObject.color,
+        // bodyText semantic slot is set to neutralPrimary which is standard for foreground color
+        // if variantObject.color is undefined, it will default to the theme's color
+        color: variantObject.color || theme.semanticColors.bodyText,
         mozOsxFontSmoothing: variantObject.MozOsxFontSmoothing,
         webkitFontSmoothing: variantObject.WebkitFontSmoothing
       },
