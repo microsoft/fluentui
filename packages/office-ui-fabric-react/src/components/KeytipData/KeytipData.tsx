@@ -16,7 +16,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
   public componentDidMount() {
     // Register Keytip in KeytipManager
     if (this.props.keytipProps) {
-      this._uniqueId = this._keytipManager.register(this._getKtpProps(), undefined, this._poll);
+      this._uniqueId = this._keytipManager.register(this._getKtpProps(), undefined);
     }
   }
 
@@ -46,10 +46,6 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
       disabled: this.props.disabled,
       ...this.props.keytipProps!
     };
-  };
-
-  private _poll = (): IKeytipProps => {
-    return this._getKtpProps();
   };
 
   /**

@@ -5,7 +5,6 @@ import { KeytipEvents } from '../../utilities/keytips/KeytipConstants';
 export interface IUniqueKeytip {
   uniqueID: string;
   keytip: IKeytipProps;
-  poll?: () => IKeytipProps;
 }
 
 /**
@@ -42,7 +41,7 @@ export class KeytipManager {
    * @param persisted - T/F if this keytip should be persisted, default is false
    * @returns {string} Unique ID for this keytip
    */
-  public register(keytipProps: IKeytipProps, persisted: boolean = false, pollCallback?: () => IKeytipProps): string {
+  public register(keytipProps: IKeytipProps, persisted: boolean = false): string {
     let props: IKeytipProps = keytipProps;
     if (!persisted) {
       // Add the overflowSetSequence if necessary
@@ -50,7 +49,7 @@ export class KeytipManager {
       this.sequenceMapping[props.keySequences.toString()] = props;
     }
     // Create a unique keytip
-    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props, undefined, pollCallback);
+    const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props, undefined);
     // Add to dictionary
     persisted ? (this.persistedKeytips[uniqueKeytip.uniqueID] = uniqueKeytip) : (this.keytips[uniqueKeytip.uniqueID] = uniqueKeytip);
 
@@ -181,7 +180,7 @@ export class KeytipManager {
    * @param uniqueID - Unique ID, will default to the next unique ID if not passed
    * @returns {IUniqueKeytip} IUniqueKeytip object
    */
-  private _getUniqueKtp(keytipProps: IKeytipProps, uniqueID: string = getId(), poll?: () => IKeytipProps): IUniqueKeytip {
-    return { keytip: { ...keytipProps }, uniqueID, poll };
+  private _getUniqueKtp(keytipProps: IKeytipProps, uniqueID: string = getId()): IUniqueKeytip {
+    return { keytip: { ...keytipProps }, uniqueID };
   }
 }

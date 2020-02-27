@@ -297,18 +297,14 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   private _buildTree(): void {
     this._keytipTree = new KeytipTree();
     // Add regular and persisted keytips to the tree
-    for (const id in this._keytipManager.keytips) {
-      if (id) {
-        const uniqueKeytip = this._keytipManager.keytips[id];
-        this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
-      }
+    for (const id of Object.keys(this._keytipManager.keytips)) {
+      const uniqueKeytip = this._keytipManager.keytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
     }
 
-    for (const id in this._keytipManager.persistedKeytips) {
-      if (id) {
-        const uniqueKeytip = this._keytipManager.persistedKeytips[id];
-        this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
-      }
+    for (const id of Object.keys(this._keytipManager.persistedKeytips)) {
+      const uniqueKeytip = this._keytipManager.persistedKeytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
     }
   }
 
