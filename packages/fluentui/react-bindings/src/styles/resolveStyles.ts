@@ -43,20 +43,45 @@ const resolveStyles = (
   resolvedVariables: ComponentVariablesObject,
   renderStylesInput?: (styles: ICSSInJSStyle) => string
 ): ResolveStylesResult => {
-  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options || {};
+  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
-  const noInlineOverrides = !(design || styles || variables);
 
-  const cacheEnabled = performance.enableStylesCaching && noInlineOverrides;
+  const noInlineStylesOverrides = !(design || styles);
+  let noVariableOverrides = performance.enableBooleanVariablesCaching || !variables;
+
+  /* istanbul ignore else */
+  if (process.env.NODE_ENV !== 'production') {
+    if (!performance.enableStylesCaching && performance.enableBooleanVariablesCaching) {
+      throw new Error(
+        '@fluentui/react: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"'
+      );
+    }
+  }
+
+  if (performance.enableBooleanVariablesCaching) {
+    if (_.isPlainObject(variables)) {
+      const hasOnlyBooleanVariables = Object.keys(variables).every(
+        variableName =>
+          variables[variableName] === null || typeof variables[variableName] === 'undefined' || typeof variables[variableName] === 'boolean'
+      );
+
+      if (!hasOnlyBooleanVariables) {
+        noVariableOverrides = false;
+      }
+    } else {
+      noVariableOverrides = false;
+    }
+  }
+
+  const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
   // Merge theme styles with inline overrides if any
   let mergedStyles: ComponentSlotStylesPrepared = theme.componentStyles[displayName] || {
     root: () => ({})
   };
-  const hasInlineStylesOverrides = !_.isNil(props.design) || !_.isNil(props.styles);
 
-  if (hasInlineStylesOverrides) {
+  if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
       props.design && withDebugId({ root: props.design }, 'props.design'),
@@ -99,10 +124,11 @@ const resolveStyles = (
     }
   }
 
-  const componentCacheKey =
-    cacheEnabled && displayName && stylesProps
-      ? `${displayName}:${JSON.stringify(stylesProps)}${styleParam.rtl}${styleParam.disableAnimations}`
-      : '';
+  const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
+  const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
+  const componentCacheKey = cacheEnabled
+    ? `${displayName}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
+    : '';
 
   Object.keys(mergedStyles).forEach(slotName => {
     // resolve/render slot styles once and cache
