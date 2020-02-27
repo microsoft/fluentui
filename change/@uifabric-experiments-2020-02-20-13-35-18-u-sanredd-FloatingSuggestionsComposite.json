@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "New composite FloatingSuggestion component, to be used in UnifiedPicker",
-  "packageName": "@uifabric/experiments",
-  "email": "sanredd@microsoft.com",
-  "commit": "222b78a9e29247dc74de795a4e1925ee53c545f5",
-  "dependentChangeType": "patch",
-  "date": "2020-02-20T21:35:18.674Z"
-}

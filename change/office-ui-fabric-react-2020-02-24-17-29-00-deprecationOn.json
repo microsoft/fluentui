@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Turning on 'deprecation' tslint rule.",
-  "packageName": "office-ui-fabric-react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "4345dcefc8266a402f497d3c020b367891b3d2a5",
-  "dependentChangeType": "patch",
-  "date": "2020-02-25T01:29:00.845Z"
-}

@@ -2,14 +2,11 @@
   "name": "@fluentui/react-theming",
   "version": "0.44.0",
   "description": "> TODO: description",
-  "homepage": "https://github.com/microsoft/fluent-ui#readme",
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
   "bugs": {
-    "url": "https://github.com/microsoft/fluent-ui/issues"
+    "url": "https://github.com/OfficeDev/office-ui-fabric-react/issues"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/microsoft/fluent-ui.git"
-  },
+  "repository": "OfficeDev/office-ui-fabric-react.git",
   "license": "MIT",
   "files": [
     "lib"
@@ -28,8 +25,7 @@
     "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
     "lint:old": "tslint -t stylish -p .",
     "start-test": "just-scripts test:watch",
-    "test": "just-scripts test",
-    "update-snapshots": "just-scripts jest:snapshots"
+    "test": "just-scripts test"
   },
   "dependencies": {
     "@types/classnames": "^2.2.9",

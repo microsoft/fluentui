@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Wed, 26 Feb 2020 12:28:12 GMT and should not be manually modified.
 
+## 7.97.1
+Wed, 26 Feb 2020 12:28:12 GMT
+
+### Patches
+
+- Turning on 'deprecation' tslint rule. (Humberto.Morimoto@microsoft.com)
 ## 7.97.0
 Tue, 25 Feb 2020 12:25:39 GMT
 
