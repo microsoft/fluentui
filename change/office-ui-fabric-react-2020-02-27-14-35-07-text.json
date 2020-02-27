@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Text: use semantic color slot as a default",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "9f2a8f9d54b6eb37934f1b07243bc9bb11546837",
+  "dependentChangeType": "patch",
+  "date": "2020-02-27T22:35:07.408Z"
+}
