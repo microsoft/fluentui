@@ -189,7 +189,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -287,7 +286,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronUpSmall"
               role="presentation"
@@ -335,7 +333,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 23px;
               }
               &::-moz-focus-inner {
@@ -433,7 +430,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                     margin-right: 0px;
                     margin-top: 0px;
                     text-align: center;
-                    vertical-align: middle;
                   }
               data-icon-name="ChevronDownSmall"
               role="presentation"

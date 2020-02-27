@@ -35,7 +35,6 @@ exports[`Component Examples renders TeachingBubble.Illustration.Example.tsx corr
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;

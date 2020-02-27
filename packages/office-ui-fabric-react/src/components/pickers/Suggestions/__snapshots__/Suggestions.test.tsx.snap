@@ -70,7 +70,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -207,7 +206,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -341,7 +339,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -475,7 +472,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -609,7 +605,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -743,7 +738,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -877,7 +871,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1011,7 +1004,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1145,7 +1137,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1279,7 +1270,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1413,7 +1403,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1547,7 +1536,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1681,7 +1669,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1815,7 +1802,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -1949,7 +1935,6 @@ exports[`Suggestions renders a list properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2114,7 +2099,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2251,7 +2235,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2385,7 +2368,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2519,7 +2501,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2653,7 +2634,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2787,7 +2767,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -2921,7 +2900,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3055,7 +3033,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3189,7 +3166,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3323,7 +3299,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3457,7 +3432,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3591,7 +3565,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3725,7 +3698,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3859,7 +3831,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -3993,7 +3964,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4146,7 +4116,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4280,7 +4249,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4414,7 +4382,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4548,7 +4515,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4682,7 +4648,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4816,7 +4781,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -4950,7 +4914,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5084,7 +5047,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5220,7 +5182,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5357,7 +5318,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5491,7 +5451,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5625,7 +5584,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5759,7 +5717,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -5893,7 +5850,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {
@@ -6027,7 +5983,6 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 text-align: center;
                 text-decoration: none;
                 user-select: none;
-                vertical-align: top;
                 width: 100%;
               }
               &::-moz-focus-inner {

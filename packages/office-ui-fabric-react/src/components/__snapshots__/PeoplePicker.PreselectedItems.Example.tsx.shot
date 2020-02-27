@@ -423,7 +423,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                       width: 24px;
                     }
                     &::-moz-focus-inner {
@@ -508,7 +507,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                           margin-top: 0;
                           speak: none;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Cancel"
                   >
@@ -875,7 +873,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                       width: 24px;
                     }
                     &::-moz-focus-inner {
@@ -960,7 +957,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                           margin-top: 0;
                           speak: none;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Cancel"
                   >
@@ -1327,7 +1323,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                       width: 24px;
                     }
                     &::-moz-focus-inner {
@@ -1412,7 +1407,6 @@ exports[`Component Examples renders PeoplePicker.PreselectedItems.Example.tsx co
                           margin-top: 0;
                           speak: none;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Cancel"
                   >
