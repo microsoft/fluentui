@@ -6,6 +6,10 @@ const storybook = require('@storybook/react/standalone');
 
 module.exports.startStorybookTask = function startStorybookTask(options) {
   options = options || {};
+  // This shouldn't be necessary but is needed due to strange logic in
+  // storybook lib/core/src/server/config/utils.js
+  process.env.NODE_ENV = 'development';
+
   return async function() {
     let { port, quiet, ci } = argv();
 
