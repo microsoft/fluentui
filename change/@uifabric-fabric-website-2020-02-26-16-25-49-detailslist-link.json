@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Controls page: fix links to controls with sub-pages",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "be9de1a5cef64a5c98aa3ca666bfe61219c4b54c",
-  "dependentChangeType": "patch",
-  "date": "2020-02-27T00:25:49.359Z"
-}

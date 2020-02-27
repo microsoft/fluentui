@@ -1,7 +1,16 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 26 Feb 2020 12:28:12 GMT and should not be manually modified.
+This log was last generated on Thu, 27 Feb 2020 12:23:46 GMT and should not be manually modified.
 
+## 7.98.0
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Minor changes
+
+- Toggle: allow menuitemcheckbox role (xgao@microsoft.com)
+### Patches
+
+- Slider: allow setting id on slider (xgao@microsoft.com)
 ## 7.97.1
 Wed, 26 Feb 2020 12:28:12 GMT
 

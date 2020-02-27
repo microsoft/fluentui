@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "office-ui-fabric-react_v7.98.0",
+      "version": "7.98.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Toggle: allow menuitemcheckbox role",
+            "author": "xgao@microsoft.com",
+            "commit": "bbd3393a0fe471fb4266294c84fb44800534bff1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Slider: allow setting id on slider",
+            "author": "xgao@microsoft.com",
+            "commit": "861f94c69a85c7c31af3901734237ac562e892bb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 26 Feb 2020 12:28:12 GMT",
       "tag": "office-ui-fabric-react_v7.97.1",
       "version": "7.97.1",
