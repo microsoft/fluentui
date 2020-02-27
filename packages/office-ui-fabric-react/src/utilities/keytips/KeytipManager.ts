@@ -105,7 +105,7 @@ export class KeytipManager {
    */
   public unregister(keytipToRemove: IKeytipProps, uniqueID: string, persisted: boolean = false): void {
     persisted ? delete this.persistedKeytips[uniqueID] : delete this.keytips[uniqueID];
-    persisted && delete this.sequenceMapping[keytipToRemove.keySequences.toString()];
+    !persisted && delete this.sequenceMapping[keytipToRemove.keySequences.toString()];
 
     const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_REMOVED : KeytipEvents.KEYTIP_REMOVED;
     // Update keytips only if we're in keytip mode
