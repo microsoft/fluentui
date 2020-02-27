@@ -208,6 +208,9 @@ jobs:
 
   - job: Screener
     dependsOn: Build
+    # keeping this at microsoft hosted because this doesn't require builds
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
