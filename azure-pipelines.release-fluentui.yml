@@ -50,5 +50,7 @@ steps:
   - script: |
       yarn lint
     displayName: yarn lint
-  # - script: |
-  #     yarn fluentui:release:$(bumpType)
+
+  - script: |
+      yarn release:fluentui:$(bumpType)
+    displayName: yarn release:fluentui:$(bumpType)
