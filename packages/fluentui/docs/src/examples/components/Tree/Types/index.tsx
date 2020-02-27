@@ -4,6 +4,7 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
+    <ComponentExample title="TEST" description="TEST." examplePath="components/Tree/Types/TreeExampleTest" />
     <ComponentExample title="Default" description="A default Tree." examplePath="components/Tree/Types/TreeExample" />
     <ComponentExample
       title="Exclusive"
