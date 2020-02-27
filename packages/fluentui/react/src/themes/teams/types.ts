@@ -53,6 +53,8 @@ import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/Hie
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
 import { VideoProps } from '../../components/Video/Video';
+import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
+import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
 
 export type TeamsThemeStylesProps = {
   Accordion?: AccordionProps;
@@ -104,6 +106,8 @@ export type TeamsThemeStylesProps = {
   ToolbarRadioGroup?: ToolbarRadioGroupProps;
   TooltipContent?: TooltipContentProps;
   Text?: TextStylesProps;
+  TreeItem?: TreeItemStylesProps;
+  TreeTitle?: TreeTitleStylesProps;
   HierarchicalTree?: HierarchicalTreeProps;
   HierarchicalTreeItem?: HierarchicalTreeItemProps;
   HierarchicalTreeTitle?: HierarchicalTreeTitleProps;
