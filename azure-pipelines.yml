@@ -13,6 +13,8 @@ jobs:
     steps:
       - template: azure-pipelines.tools.yml
 
+      - template: azure-pipelines.cache.yml
+
       - script: |
           yarn
         displayName: yarn
@@ -67,6 +69,8 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
+      - template: azure-pipelines.cache.yml
+
       - template: azure-pipelines.artifacts.yml
         parameters:
           artifact: Build-PR-$(Build.BuildNumber)
@@ -99,6 +103,8 @@ jobs:
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -147,6 +153,8 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
+      - template: azure-pipelines.cache.yml
+
       - template: azure-pipelines.artifacts.yml
         parameters:
           artifact: Build-PR-$(Build.BuildNumber)
@@ -180,11 +188,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: /tmp/gulp-cache
-          Contents: '**/*'
-        condition: always()
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
