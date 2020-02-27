@@ -35,4 +35,4 @@ task('test:circulars:run', done => {
   });
 });
 
-task('test:circulars', series('bundle:all-packages', 'test:circulars:run'));
+task('test:circulars', series('test:circulars:run'));

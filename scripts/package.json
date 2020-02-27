@@ -52,6 +52,7 @@
     "@types/node": "^10.3.2",
     "@types/prompts": "^2.0.3",
     "@types/puppeteer": "1.12.3",
+    "@types/tmp": "^0.1.0",
     "@types/webpack-dev-middleware": "^2.0.1",
     "@types/webpack-env": "1.15.1",
     "@types/webpack-hot-middleware": "^2.16.3",

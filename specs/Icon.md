@@ -17,10 +17,10 @@ The following section documents variants of the component that currently exist i
   - In Gestalt
 - `Bordered icons`
   - In Semantic UI
-  - In Fluent UI
+  - In Stardust
 - `Circular icons`
   - In Semantic UI
-  - In Fluent UI
+  - In Stardust
 - `Corner icons`
   - In Semantic UI
 - `Focusable icons`
@@ -34,7 +34,7 @@ The following section documents variants of the component that currently exist i
 - `Rotated icons`
   - In Ant Design
   - In Semantic UI
-  - In Fluent UI
+  - In Stardust
 - `Spinning/Loading icons`
   - In Ant Design
   - In Semantic UI
@@ -68,11 +68,11 @@ The following section documents links to different UI libraries implementations 
 
 - [Semantic UI Icon docs](https://react.semantic-ui.com/elements/icon/)
 
-- [Fluent UI Icon docs](https://microsoft.github.io/fluent-ui-react/components/icon/definition)
+- [Stardust Icon docs](https://microsoft.github.io/fluent-ui-react/components/icon/definition)
 
 ## Props
 
-The following section documents the properties that will become part of the new component, as well as the process for mitigating all changes when moving from Fabric and Fluent UI to Fluent UI.
+The following section documents the properties that will become part of the new component, as well as the process for mitigating all changes when moving from Fabric and Stardust to Fluent UI.
 
 > TODO: Consult the prop wizard to derive consistently defined props.
 
@@ -113,7 +113,7 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/icon
 | `styles`       | `IStyleFunctionOrObject<IIconStyleProps, IIconStyles>` | Should be deprecated in favor of recomposition.                                  |
 | `theme`        |                        `ITheme`                        | Should not show up in the public props contract.                                 |
 
-### Fluent UI Icon props
+### Stardust Icon props
 
 #### IconProps interface
 
@@ -143,7 +143,7 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/icon
 | `styles`       | TBD                                   |        &#x274C;        |                &#x274C;                 |       &#x274C;        |
 | `theme`        | TBD                                   |        &#x274C;        |                &#x274C;                 |       &#x274C;        |
 
-### Conversion process from Fluent UI to Fluent UI Icon
+### Conversion process from Stardust to Fluent UI Icon
 
 #### IconProps interface
 
@@ -340,7 +340,7 @@ None.
 - Only supports font icons.
 - Can support icon groups and icon superpositions with the second item in the corner.
 
-### Fluent UI Icon
+### Stardust Icon
 
 #### Example DOM
 
@@ -466,9 +466,9 @@ Fabric uses global registration for its icons which needs a call to an initializ
 - [Icon registration utilities](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/utilities/icons.ts)
 - [Icon component](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon)
 
-#### Fluent UI
+#### Stardust
 
-Fluent UI registers icons in the theme, with all default icons being SVGs but also supporting font icons via:
+Stardust registers icons in the theme, with all default icons being SVGs but also supporting font icons via:
 
 ```ts
 type ObjectOrFunc<TResult, TArg = {}> = ((arg: TArg) => TResult) | TResult;
@@ -481,12 +481,14 @@ type FontIconSpec = ObjectOrFunc<{
 
 Below are wiki and code references into this process:
 
-- [SVG icon processing](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react/src/themes/teams/components/Icon/svg/ProcessedIcons/process-icons.sh#L36)
+- [SVG icon processing](https://github.com/microsoft/fluent-ui-react/blob/21c2f9e3e495b3094e0db4610e9f8834cdc135b0/packages/react/src/themes/teams/components/Icon/svg/ProcessedIcons/stardust-icons.sh#L36)
 - [Instructions on adding new SVG Icon](https://github.com/microsoft/fluent-ui-react/pull/585)
-- [Font vs SVG icon rendering](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react/src/themes/teams/components/Icon/iconStyles.ts)
-- [Icon styles as part of theme component styles](https://github.com/OfficeDev/office-ui-fabric-react/blob/15ad5f0b98156117d738f46ae4f5490c86027bce/packages/fluentui/react/src/themes/teams/componentStyles.ts#L47)
+- [Font icon registration into the theme (fontAwesome theme example)](https://github.com/microsoft/fluent-ui-react/blob/feat/generate-css/src/themes/teams/components/Icon/fontAwesomeIconStyles.ts)
+- [Font vs SVG icon rendering](https://github.com/microsoft/fluent-ui-react/blob/master/packages/react/src/themes/teams/components/Icon/iconStyles.ts)
+- [Icon styles as part of theme component styles](https://github.com/microsoft/fluent-ui-react/blob/de10e334fc039370c4fe4b425050327d57f3f515/packages/react/src/themes/teams/componentStyles.ts#L51)
+- [Merging icons as part of theme](https://github.com/microsoft/fluent-ui-react/blob/feat/generate-css/src/themes/teams/index.ts)
 
-> - TODO: Decide on recommended thing to do. Leaning towards Fluent UI approach but worried about perf implications regarding icon definitions.
+> - TODO: Decide on recommended thing to do. Leaning towards Stardust approach but worried about perf implications regarding icon definitions.
 > - TODO: Discuss how to handle font loading if we put icons in the theme.
 >   - Should font loading also be part of the theme?
 >   - Has to be loaded somehow and is ok for the majority of customers to automatically load them, but some customers need to prevent this loading from MSFT CDNs.
