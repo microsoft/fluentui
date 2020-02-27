@@ -35,11 +35,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             sectionName: category.title,
             content: (
               <ul className={PageStyles.uListFlex}>
-                {category.pages.map(page => (
-                  <li key={page.url} className={css(PageStyles.uThird)}>
-                    <Link href={page.url}>{page.title}</Link>
-                  </li>
-                ))}
+                {category.pages.map(page => {
+                  const url = page.url || (page.pages && page.pages[0] && page.pages[0].url);
+                  return url ? (
+                    <li key={url} className={css(PageStyles.uThird)}>
+                      <Link href={url}>{page.title}</Link>
+                    </li>
+                  ) : null;
+                })}
               </ul>
             )
           }
