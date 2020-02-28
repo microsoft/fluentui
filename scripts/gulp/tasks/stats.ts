@@ -192,9 +192,6 @@ task('stats:save', async () => {
   const prSuffix = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.replace(/^refs\//, '').replace(/\/merge/, '');
   const prUrl = `${process.env.BUILD_REPOSITORY_URI}/${prSuffix}`;
 
-  console.log(`prSuffix = ${prSuffix}`);
-  console.log(`prUrl = ${prUrl}`);
-
   const statsPayload = {
     sha: process.env.BUILD_SOURCEVERSION,
     branch: process.env.BUILD_SOURCEBRANCHNAME,
