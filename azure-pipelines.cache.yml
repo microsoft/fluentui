@@ -1,0 +1,10 @@
+# Restores caches in node_modules, yarn-cache and /tmp/gulp-cache
+steps:
+  - task: Cache@2
+    inputs:
+      key: 'gulp-cache | "$(Agent.OS)"'
+      restoreKeys: |
+        gulp-cache | "$(Agent.OS)"
+        gulp-cache
+      path: /tmp/gulp-cache
+    displayName: Cache gulp-cache
