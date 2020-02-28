@@ -5721,13 +5721,13 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     doNotContainWithinFocusZone?: boolean;
     // @deprecated
     focusZoneProps?: IFocusZoneProps;
-    isOverflowReversed?: boolean;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;
     overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
     role?: string;
     styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
     vertical?: boolean;

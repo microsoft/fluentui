@@ -55,11 +55,11 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
   vertical?: boolean;
 
   /**
-   * Controls wether or not the overflow button is placed on the right or left of the items.
+   * Controls wether or not the overflow button is placed at the start or end of the items.
    * This gives a reveresed visual behavior but maintains correct keyboard navigation.
-   * @defaultValue false
+   * @defaultValue OverflowSide.End
    */
-  isOverflowReversed?: boolean;
+  overflowSide?: 'start' | 'end';
 
   /**
    * An array of items to be passed to overflow contextual menu

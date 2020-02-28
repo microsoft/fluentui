@@ -42,7 +42,7 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
         ]}
         onRenderOverflowButton={this._onRenderOverflowButton}
         onRenderItem={this._onRenderItem}
-        isOverflowReversed={true}
+        overflowSide={'start'}
       />
     );
   }
