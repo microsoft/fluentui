@@ -57,7 +57,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
   /**
    * Controls wether or not the overflow button is placed at the start or end of the items.
    * This gives a reveresed visual behavior but maintains correct keyboard navigation.
-   * @defaultValue OverflowSide.End
+   * @defaultValue 'end'
    */
   overflowSide?: 'start' | 'end';
 
