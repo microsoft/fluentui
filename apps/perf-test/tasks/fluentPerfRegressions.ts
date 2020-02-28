@@ -3,7 +3,6 @@ import * as path from 'path';
 
 import config from '@uifabric/build/config';
 
-// TODO: add regression analysis output to Fluent report
 // TODO: check false positive potential regression reports in fluent ui repo and fix
 
 type Reporter = {
@@ -126,9 +125,7 @@ function reportResults(perfCounts: any, reporter: Reporter) {
   fluentFabricComparison(perfCounts, reporter);
 
   const noRegressions = _.sortBy(
-    // TODO: enable filter when repos are converged.
-    // _.filter(results, stats => !stats.isRegression),
-    results,
+    _.filter(results, stats => !stats.isRegression),
     stats => stats.currentToBaseline * -1
   );
   reporter.markdown(
