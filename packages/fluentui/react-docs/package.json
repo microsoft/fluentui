@@ -13,11 +13,10 @@
     "@types/yargs": "^15.0.3",
     "doctrine": "2.0.0",
     "keyboard-key": "^1.0.1",
-    "lodash": "^4.17.15",
-    "yargs": "^15.1.0"
+    "lodash": "^4.17.15"
   },
   "devDependencies": {
-    "@fluentui/internal-tooling": "^0.44.0",
+    "@fluentui/internal-tooling": "^0.43.0",
     "@types/node": "^10.3.2",
     "lerna-alias": "^3.0.3-0"
   },

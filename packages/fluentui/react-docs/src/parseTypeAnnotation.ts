@@ -1,7 +1,7 @@
 import * as t from '@babel/types';
 import * as _ from 'lodash';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from '@fluentui/docs/src/types';
 
 const keywords: Record<string, Function> = {
   any: t.isTSAnyKeyword,

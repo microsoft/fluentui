@@ -1,5 +1,5 @@
 {
-  "extends": "../../build/tsconfig.common",
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "outDir": "dist/dts"
   },

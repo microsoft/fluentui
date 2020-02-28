@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { UIComponentProps } from '@fluentui/react';
 
-export default class ClassComponentPropsInline extends React.Component<UIComponentProps> {
+export default class ClassComponentPropsInlineImported extends React.Component<{ children?: JSX.Element | JSX.Element[] }> {
   render() {
     return <div>{this.props.children}</div>;
   }
 }
-
-// export default ClassComponent
