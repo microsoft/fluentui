@@ -53,5 +53,5 @@ if (config.isRoot) {
   task('test:watch', series('test:jest:setup', parallel('test:jest:watch', 'watch:docs:component-info')));
 } else {
   task('test', series('test:jest'));
-  task('test:watch', series('test:jest', 'test:jest:watch'));
+  task('test:watch', series('test:jest:watch'));
 }
