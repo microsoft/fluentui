@@ -38,7 +38,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
       vertical,
       doNotContainWithinFocusZone,
       role,
-      isOverflowReversed: isReversed = false
+      isOverflowReversed = false
     } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
@@ -69,9 +69,9 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
         {...uniqueComponentProps}
         className={this._classNames.root}
       >
-        {!isReversed && items && this._onRenderItems(items)}
+        {!isOverflowReversed && items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
-        {isReversed && items && this._onRenderItems(items)}
+        {isOverflowReversed && items && this._onRenderItems(items)}
       </Tag>
     );
   }
