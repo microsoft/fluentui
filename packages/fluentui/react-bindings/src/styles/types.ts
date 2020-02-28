@@ -66,6 +66,7 @@ export interface StylesContextPerformance {
   enableSanitizeCssPlugin: boolean;
   enableStylesCaching: boolean;
   enableVariablesCaching: boolean;
+  enableBooleanVariablesCaching: boolean;
 }
 
 export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;

@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Toggle: allow menuitemcheckbox role",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "bbd3393a0fe471fb4266294c84fb44800534bff1",
-  "dependentChangeType": "patch",
-  "date": "2020-02-26T18:32:31.192Z"
-}
