@@ -175,12 +175,10 @@ function readCurrentBundleStats() {
 }
 
 task('stats:save', async () => {
-  console.log(`argv.tag = ${argv.tag}`);
   if (!process.env.STATS_URI) {
     throw 'Cannot save stats because STATS_URI is not set';
   }
 
-  // TODO: make sure --tag works
   const commandLineArgs = _.pickBy(
     _.pick(argv, ['sha', 'branch', 'tag', 'pr', 'build']),
     val => val !== '' // ignore empty strings
@@ -191,9 +189,6 @@ task('stats:save', async () => {
 
   const mergedPerfStats = mergePerfStats(perfStats, flamegrillStats);
 
-  // TODO: test in CI and fix
-  // TODO: remove console.logs after testing
-  // TODO: BUILD_SOURCEBRANCH = refs/pull/1/merge
   const prSuffix = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.replace(/^refs\//, '').replace(/\/merge/, '');
   const prUrl = `${process.env.BUILD_REPOSITORY_URI}/${prSuffix}`;
 
@@ -210,9 +205,6 @@ task('stats:save', async () => {
     performance: mergedPerfStats,
     ts: new Date()
   };
-
-  console.log('statsPayload');
-  console.dir(statsPayload);
 
   // payload sanity check
   _.forEach(['sha', 'branch', 'build', 'bundleSize', 'performance'], fieldName => {

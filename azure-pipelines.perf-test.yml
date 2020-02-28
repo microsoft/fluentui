@@ -16,12 +16,13 @@ steps:
     parameters:
       artifact: $(artifact)
       buildId: $(buildId)
+      # $BUILD_REASON for this pipeline will always be Manual. buildReason must be passed in
+      # from triggered pipeline so that this pipeline knows the originating build reason.
       buildReason: $(buildReason)
 
   - template: azure-pipelines.tools.yml
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
-  # TODO: replace BUILD_REASON with buildReason if it works
   - script: |
       if [ $buildReason != "PullRequest" ]; then
         yarn perf:test:base
@@ -72,37 +73,28 @@ steps:
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
-  # TODO: this should only run on master
-  # - script: |
-  #     if [ $BUILD_REASON != "PullRequest" ]; then
-  #       yarn stats:build
-  #     else
-  #       echo "Skipping statistics collection because BUILD_REASON ${BUILD_REASON} == PullRequest"
-  #     fi
   - script: |
-      yarn stats:build
+      if [ $buildReason != "PullRequest" ]; then
+        yarn stats:build
+      else
+        echo "Skipping statistics collection because buildReason $(buildReason) == PullRequest"
+      fi
     displayName: Bundle Statistics (master only)
 
-  # TODO: this should only run on master
-  # - script: |
-  #     if [ $BUILD_REASON != "PullRequest" ]; then
-  #       yarn perf
-  #     else
-  #       echo "Skipping perf because BUILD_REASON ${BUILD_REASON} == PullRequest"
-  #     fi
   - script: |
-      yarn perf
+      if [ $buildReason != "PullRequest" ]; then
+        yarn perf
+      else
+        echo "Skipping perf because buildReason $(buildReason) == PullRequest"
+      fi
     displayName: Performance Tests (master only)
 
-  # TODO: this should only run on master
-  # - script: |
-  #     if [ $BUILD_REASON != "PullRequest" ]; then
-  #       yarn stats:save --tag=`git tag --points-at HEAD`
-  #     else
-  #       echo "Skipping saving statistics because BUILD_REASON ${BUILD_REASON} == PullRequest"
-  #     fi
   - script: |
-      yarn stats:save --tag=`git tag --points-at HEAD`
+      if [ $buildReason != "PullRequest" ]; then
+        yarn stats:save --tag=`git tag --points-at HEAD`
+      else
+        echo "Skipping saving statistics because buildReason $(buildReason) == PullRequest"
+      fi
     displayName: Save Statistics to DB (master only)
     env:
       STATS_URI: $(STATS_URI)
