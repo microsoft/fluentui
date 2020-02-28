@@ -196,7 +196,6 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
     const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
 
     items.splice(insertIndex, 0, ...draggedItems);
-    console.log({ insertIndex, draggedItems, items });
 
     this.setState({ items });
   }
