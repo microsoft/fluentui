@@ -17,6 +17,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Breaking changes
+- Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
+
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
 ## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.44.0..HEAD)
