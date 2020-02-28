@@ -34,6 +34,7 @@ export { default as tabListBehavior } from './Tab/tabListBehavior';
 export { default as menuAsToolbarBehavior } from './Toolbar/menuAsToolbarBehavior';
 export { default as toolbarMenuBehavior } from './Toolbar/toolbarMenuBehavior';
 export { default as toolbarMenuItemBehavior } from './Toolbar/toolbarMenuItemBehavior';
+export * from './Toolbar/toolbarMenuItemBehavior';
 export { default as menuItemAsToolbarButtonBehavior } from './Toolbar/menuItemAsToolbarButtonBehavior';
 export { default as toolbarBehavior } from './Toolbar/toolbarBehavior';
 export { default as toolbarItemBehavior } from './Toolbar/toolbarItemBehavior';
