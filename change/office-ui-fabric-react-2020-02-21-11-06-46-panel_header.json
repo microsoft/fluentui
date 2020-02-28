@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Panel: use align-items for vertical alignment",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "c465e31ed6e790aa94340698004872df80cd0c70",
-  "dependentChangeType": "patch",
-  "date": "2020-02-21T19:06:46.540Z"
-}

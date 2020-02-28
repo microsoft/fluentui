@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 28 Feb 2020 12:25:15 GMT",
+      "tag": "office-ui-fabric-react_v7.98.1",
+      "version": "7.98.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updates the Nav component's links to use aria-current",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "e3f3b9a6d0705feeade76041a1f8a183a9f16d00"
+          },
+          {
+            "comment": "Panel: use align-items for vertical alignment",
+            "author": "aneeshak@microsoft.com",
+            "commit": "c465e31ed6e790aa94340698004872df80cd0c70"
+          },
+          {
+            "comment": "Dialog: fix isOpen deprecated prop no longer being honored",
+            "author": "xgao@microsoft.com",
+            "commit": "5c496fd32a93cceed4b5e0fe4fbc3bc88a48cefd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Feb 2020 12:23:46 GMT",
       "tag": "office-ui-fabric-react_v7.98.0",
       "version": "7.98.0",
