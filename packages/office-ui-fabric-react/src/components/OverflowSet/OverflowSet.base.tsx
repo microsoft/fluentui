@@ -9,6 +9,8 @@ import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetSty
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
+const defaultIsReversed = false;
+
 export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
   private _focusZone = React.createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
@@ -29,7 +31,17 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   public render(): JSX.Element {
     // tslint:disable-next-line:deprecation
-    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role } = this.props;
+    const {
+      items,
+      overflowItems,
+      className,
+      focusZoneProps,
+      styles,
+      vertical,
+      doNotContainWithinFocusZone,
+      role,
+      isReversed = defaultIsReversed
+    } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
 
@@ -59,8 +71,9 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
         {...uniqueComponentProps}
         className={this._classNames.root}
       >
-        {items && this._onRenderItems(items)}
+        {!isReversed && items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
+        {isReversed && items && this._onRenderItems(items)}
       </Tag>
     );
   }
@@ -148,6 +161,12 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
+    const { isReversed = defaultIsReversed } = this.props;
+
+    if (isReversed) {
+      items = items.slice(0).reverse();
+    }
+
     return items.map((item, i) => {
       return (
         <div key={item.key} className={this._classNames.item}>
