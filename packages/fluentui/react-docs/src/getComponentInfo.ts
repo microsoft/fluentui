@@ -4,7 +4,7 @@ import * as _ from 'lodash';
 import * as path from 'path';
 import * as fs from 'fs';
 
-import { BehaviorInfo, ComponentInfo, ComponentProp } from 'docs/src/types';
+import { BehaviorInfo, ComponentInfo, ComponentProp } from '@fluentui/docs/src/types';
 import * as docgen from './docgen';
 import parseDefaultValue from './parseDefaultValue';
 import parseDocblock from './parseDocblock';

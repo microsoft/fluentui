@@ -1,44 +1,62 @@
 import { getComponentInfo } from '@fluentui/react-docs';
 
-const fixturePaths = {
-  ClassComponentPropsInline: './test/fixtures/ClassComponentPropsInline.tsx',
-  ClassComponentPropsInterface: './test/fixtures/ClassComponentPropsInterface.tsx',
-  ClassComponentPropsType: './test/fixtures/ClassComponentPropsType.tsx',
-  AvatarRenderer: './test/fixtures/Avatar-Renderer.tsx'
-};
+/**
+ * Make fixtures for these things as well, if helpful.
+ *
+ * Typing formats
+ *  none
+ *  inline
+ *  interface
+ *  type
+ * Components
+ *   Class
+ *   Function Declaration
+ *   Function Expression
+ * Props
+ *   built-in types (boolean, string, number, null, undefined, void, array, function, object, Map, Set)
+ *   resolves function signatures
+ *   resolves types defined in the same file (eg anmimation: AnimationType, where it is defined in the file itself)
+ *   resolves imported types
+ *   includes docblocks for props
+ * Component Docblock
+ *   description
+ *   tags
+ * Finds default exports
+ * Finds named exports
+ */
 
-describe('Get info from inline typed component', () => {
+describe('getComponentWithInlineType', () => {
   it('creates an inline typed component', () => {
-    const unit = 'ClassComponentPropsInline';
-    const componentInfo = getComponentInfo(fixturePaths[unit]);
+    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsInline.tsx');
 
-    expect(componentInfo.displayName).toEqual(unit);
+    expect(componentInfo.displayName).toEqual('ClassComponentPropsInline');
   });
 });
 
 describe('getComponentWithInterface', () => {
   it('creates an Interface typed component', () => {
-    const unit = 'ClassComponentPropsInterface';
-    const componentInfo = getComponentInfo(fixturePaths[unit]);
-    console.log(JSON.stringify(componentInfo, null, 2));
-    expect(componentInfo.displayName).toEqual(unit);
-  });
-});
-
-describe('getAvatarRendererSchema', () => {
-  it('test tmp avatar component', () => {
-    const unit = 'AvatarRenderer';
-    const componentInfo = getComponentInfo(fixturePaths[unit]);
-    console.log(JSON.stringify(componentInfo, null, 2));
-    expect(componentInfo.displayName).toEqual(unit);
+    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsInterface.tsx');
+    expect(componentInfo.displayName).toEqual('ClassComponentPropsInterface');
   });
 });
 
 describe('getComponentWithType', () => {
   it('creates an Type typed component', () => {
-    const unit = 'ClassComponentPropsType';
-    const componentInfo = getComponentInfo(fixturePaths[unit]);
+    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsType.tsx');
+    expect(componentInfo.displayName).toEqual('ClassComponentPropsType');
+  });
+});
 
-    expect(componentInfo.displayName).toEqual(unit);
+describe('getComponentWithEmptyProps', () => {
+  it('creates an Empty typed component', () => {
+    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsEmpty.tsx');
+    expect(componentInfo.displayName).toEqual('ClassComponentPropsEmpty');
+  });
+});
+
+describe('getComponentWithDisplayNameStatic', () => {
+  it('creates an Empty typed component', () => {
+    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentDisplayNameStatic.tsx');
+    expect(componentInfo.displayName).toEqual('ClassComponentDisplayNameStaticDefinition');
   });
 });

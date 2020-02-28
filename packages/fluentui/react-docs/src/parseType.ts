@@ -3,9 +3,11 @@ import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
 import * as _ from 'lodash';
 
-import { ComponentPropType } from 'docs/src/types';
+import { ComponentPropType } from '@fluentui/docs/src/types';
 import { PropItem } from './docgen';
 import parseTypeAnnotation from './parseTypeAnnotation';
+
+// TODO: Fix typing issues after elizabeth perf updates getComponentInfo
 
 /** Performs transform: `ShorthandValue<T & { kind?: N }>` to `ShorthandCollection<T, N>[]`. */
 const normalizeShorthandCollection = (propType: string): string => {
@@ -37,13 +39,15 @@ const getTypeFromBabelTree = (componentFile: t.File, componentName: string, prop
   const propertyVisitor: Babel.Visitor = {
     TSPropertySignature: path => {
       if (path.get('key').isIdentifier({ name: propName })) {
+        // @ts-ignore
         const annotationPath: NodePath<t.TSTypeAnnotation> = path.get('typeAnnotation');
-
+        // @ts-ignore
         typeAnnotation = annotationPath.get('typeAnnotation').node;
       }
     }
   };
 
+  // @ts-ignore
   Babel.traverse(componentFile, {
     TSInterfaceDeclaration: path => {
       if (path.get('id').isIdentifier({ name: `${componentName}Props` })) {

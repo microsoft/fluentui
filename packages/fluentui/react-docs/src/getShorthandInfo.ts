@@ -2,7 +2,7 @@ import * as Babel from '@babel/core';
 import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
 
-import { ComponentInfo } from 'docs/src/types';
+import { ComponentInfo } from '@fluentui/docs/src/types';
 
 type ShorthandInfo = Required<Pick<ComponentInfo, 'implementsCreateShorthand' | 'mappedShorthandProp'>>;
 
@@ -10,7 +10,7 @@ type ShorthandInfo = Required<Pick<ComponentInfo, 'implementsCreateShorthand' | 
  * Checks that an expression matches signature:
  * [componentName].create = createShorthandFactory([config])
  */
-const isShorthandExpression = (componentName: string, path: NodePath<t.AssignmentExpression>): boolean => {
+const isShorthandExpression = (componentName: string, path: any): boolean => {
   const left = path.get('left');
   const right = path.get('right');
 
@@ -33,7 +33,7 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
   let implementsCreateShorthand = false;
   let mappedShorthandProp = undefined;
 
-  Babel.traverse(componentFile, {
+  Babel.traverse(componentFile as any, {
     AssignmentExpression: path => {
       if (isShorthandExpression(componentName, path)) {
         implementsCreateShorthand = true;
