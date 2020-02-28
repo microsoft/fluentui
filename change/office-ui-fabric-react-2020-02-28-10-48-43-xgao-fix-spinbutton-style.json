@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "SpinButton: fix SpinButton content overlapping with border under certain resolutions",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "59292ee86d5ac772ff48205efa1d37e53a336720",
+  "dependentChangeType": "patch",
+  "date": "2020-02-28T18:48:43.430Z"
+}
