@@ -150,7 +150,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   const menuRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(ToolbarMenuItem.handledProps, props);
-  const getA11Props = useAccessibility(props.accessibility, {
+  const getA11yProps = useAccessibility(props.accessibility, {
     debugName: ToolbarMenuItem.displayName,
     mapPropsToBehavior: () => ({
       menu,
@@ -295,7 +295,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
 
   const element = (
     <ElementType
-      {...getA11Props('root', {
+      {...getA11yProps('root', {
         className: classes.root,
         onClick: handleClick,
         disabled,
@@ -387,7 +387,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
 
   const wrapperElement = Box.create(wrapper, {
     defaultProps: () =>
-      getA11Props('wrapper', {
+      getA11yProps('wrapper', {
         className: cx(ToolbarMenuItem.slotClassNames.wrapper, classes.wrapper)
       }),
     overrideProps: () => ({
