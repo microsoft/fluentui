@@ -5721,6 +5721,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     doNotContainWithinFocusZone?: boolean;
     // @deprecated
     focusZoneProps?: IFocusZoneProps;
+    isOverflowReversed?: boolean;
     items?: IOverflowSetItemProps[];
     itemSubMenuProvider?: (item: IOverflowSetItemProps) => any[] | undefined;
     keytipSequences?: string[];
@@ -5730,7 +5731,6 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     role?: string;
     styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
     vertical?: boolean;
-    isOverflowReversed?: boolean;
 }
 
 // @public
