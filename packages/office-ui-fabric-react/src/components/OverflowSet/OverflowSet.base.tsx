@@ -9,8 +9,6 @@ import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetSty
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 
-const defaultIsReversed = false;
-
 export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
   private _focusZone = React.createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
@@ -40,7 +38,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
       vertical,
       doNotContainWithinFocusZone,
       role,
-      isReversed = defaultIsReversed
+      isOverflowReversed: isReversed = false
     } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
@@ -161,12 +159,6 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
-    const { isReversed = defaultIsReversed } = this.props;
-
-    if (isReversed) {
-      items = items.slice(0).reverse();
-    }
-
     return items.map((item, i) => {
       return (
         <div key={item.key} className={this._classNames.item}>

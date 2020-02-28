@@ -13,8 +13,8 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
         role="menubar"
         items={[
           {
-            key: 'item1',
-            name: 'Link 1',
+            key: 'item3',
+            name: 'Link 3',
             onClick: noOp
           },
           {
@@ -23,8 +23,8 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
             onClick: noOp
           },
           {
-            key: 'item3',
-            name: 'Link 3',
+            key: 'item1',
+            name: 'Link 1',
             onClick: noOp
           }
         ]}
@@ -42,7 +42,7 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
         ]}
         onRenderOverflowButton={this._onRenderOverflowButton}
         onRenderItem={this._onRenderItem}
-        isReversed={true}
+        isOverflowReversed={true}
       />
     );
   }
