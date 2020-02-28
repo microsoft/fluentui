@@ -70,6 +70,12 @@ const items = [
   }
 ];
 
-const TreeInitiallyOpenExampleShorthand = () => <Tree items={items} aria-label="Initially open" defaultActiveItemIds={['1', '12', '2']} />;
+const TreeInitiallyOpenExampleShorthand = () => (
+  <Tree
+    items={items}
+    aria-label="Initially open"
+    defaultActiveItemIds={['tree-initially-open-item-1', 'tree-initially-open-item-12', 'tree-initially-open-item-2']}
+  />
+);
 
 export default TreeInitiallyOpenExampleShorthand;
