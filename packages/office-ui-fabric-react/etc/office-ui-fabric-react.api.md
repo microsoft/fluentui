@@ -7440,7 +7440,7 @@ export interface ISwatchColorPickerStyles {
 
 // @public
 export interface ITag {
-    key: string;
+    key: string | number;
     name: string;
 }
 
