@@ -131,6 +131,13 @@ export const AppDefinition: IAppDefinition = {
           category: 'Data Collections'
         },
         {
+          component: require<any>('../components/FloatingSuggestionsComposite/FloatingSuggestionsPage').FloatingSuggestionsPage,
+          key: 'FloatingSuggestionsPage',
+          name: 'FloatingSuggestionsPage',
+          url: '#examples/floatingpeoplesuggestions',
+          category: 'Data Collections'
+        },
+        {
           component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
           key: 'FluentColorTheme',
           name: 'Fluent Color Theme',
