@@ -17,6 +17,7 @@ import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IDetailsColumnRenderTooltipProps } from '../../DetailsList';
 
 const classNames = mergeStyleSets({
   wrapper: {
@@ -143,18 +144,30 @@ function _onItemInvoked(item: IScrollablePaneDetailsListExampleItem): void {
   alert('Item invoked: ' + item.test1);
 }
 
-function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
+const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (props, defaultRender) => {
+  if (!props) {
+    return null;
+  }
+
+  const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = tooltipHostProps => (
+    <TooltipHost {...tooltipHostProps} />
+  );
+
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
         ...props,
-        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
+        onRenderColumnHeaderTooltip
       })}
     </Sticky>
   );
-}
+};
 
-function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
+const onRenderDetailsFooter: IRenderFunction<IDetailsFooterProps> = (props, defaultRender) => {
+  if (!props) {
+    return null;
+  }
+
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div className={classNames.row}>
@@ -169,7 +182,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
       </div>
     </Sticky>
   );
-}
+};
 
 function hasText(item: IScrollablePaneDetailsListExampleItem, text: string): boolean {
   return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;
