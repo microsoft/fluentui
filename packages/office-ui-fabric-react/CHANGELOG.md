@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 27 Feb 2020 12:23:46 GMT and should not be manually modified.
+This log was last generated on Fri, 28 Feb 2020 12:25:15 GMT and should not be manually modified.
 
+## 7.98.1
+Fri, 28 Feb 2020 12:25:15 GMT
+
+### Patches
+
+- Updates the Nav component's links to use aria-current (sarah.higley@microsoft.com)
+- Panel: use align-items for vertical alignment (aneeshak@microsoft.com)
+- Dialog: fix isOpen deprecated prop no longer being honored (xgao@microsoft.com)
 ## 7.98.0
 Thu, 27 Feb 2020 12:23:46 GMT
 

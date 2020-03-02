@@ -5592,6 +5592,7 @@ export interface INavButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
+    ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true';
     ariaLabel?: string;
     automationId?: string;
     collapseAriaLabel?: string;
@@ -5639,6 +5640,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
     onRenderLink?: IRenderFunction<INavLink>;
+    // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;

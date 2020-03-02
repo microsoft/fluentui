@@ -1,9 +1,11 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
+import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ToolbarMenuItemStylesProps } from '../../../../components/Toolbar/ToolbarMenuItem';
+import { ToolbarVariables } from './toolbarVariables';
 
-const toolbarMenuItemStyles = {
+const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesProps, ToolbarVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
     const borderFocusStyles = getBorderFocusStyles({
