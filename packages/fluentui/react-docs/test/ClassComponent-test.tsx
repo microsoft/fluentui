@@ -27,7 +27,7 @@ import { getComponentInfo } from '@fluentui/react-docs';
 
 describe('getComponentWithInlineType', () => {
   it('creates an inline typed component', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsInline.tsx');
+    const componentInfo = getComponentInfo('./test/fixtures/imports/ClassComponentPropsInline.tsx');
 
     expect(componentInfo.displayName).toEqual('ClassComponentPropsInline');
   });
@@ -35,28 +35,28 @@ describe('getComponentWithInlineType', () => {
 
 describe('getComponentWithInterface', () => {
   it('creates an Interface typed component', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsInterface.tsx');
+    const componentInfo = getComponentInfo('./test/fixtures/imports/ClassComponentPropsInterface.tsx');
     expect(componentInfo.displayName).toEqual('ClassComponentPropsInterface');
   });
 });
 
 describe('getComponentWithType', () => {
   it('creates an Type typed component', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsType.tsx');
+    const componentInfo = getComponentInfo('./test/fixtures/imports/ClassComponentPropsType.tsx');
     expect(componentInfo.displayName).toEqual('ClassComponentPropsType');
   });
 });
 
 describe('getComponentWithEmptyProps', () => {
   it('creates an Empty typed component', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentPropsEmpty.tsx');
+    const componentInfo = getComponentInfo('./test/fixtures/imports/ClassComponentPropsEmpty.tsx');
     expect(componentInfo.displayName).toEqual('ClassComponentPropsEmpty');
   });
 });
 
 describe('getComponentWithDisplayNameStatic', () => {
   it('creates an Empty typed component', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/ClassComponentDisplayNameStatic.tsx');
+    const componentInfo = getComponentInfo('./test/fixtures/imports/ClassComponentDisplayNameStatic.tsx');
     expect(componentInfo.displayName).toEqual('ClassComponentDisplayNameStaticDefinition');
   });
 });

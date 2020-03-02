@@ -16,4 +16,29 @@ class Component extends React.Component {
   // ...
 }
 module.exports = Component;
+
+// or
+
+const Component = (props) => {
+  // ...
+}
+export default Component
+```
+
+**NOT** supported formats
+
+```jsx
+const Component = props => {
+  // ...
+};
+module.exports = Component;
+
+// or
+
+const Component = () => {
+  // ...
+};
+module.exports = Component;
+// or
+export default Component;
 ```

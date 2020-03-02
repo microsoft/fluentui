@@ -27,42 +27,50 @@ import { getComponentInfo } from '@fluentui/react-docs';
 
 describe('getFunctionalComponent', () => {
   it('creates an untyped functional component', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/FunctionalDeclariationComponent.tsx');
-    expect(componentInfo.displayName).toEqual('FunctionalComponent');
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponent.tsx');
+    }).toThrow();
   });
-});
 
-describe('getFunctionalComponentNoProps', () => {
   it('creates an untyped functional component with no props argument', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/FunctionalDeclariationComponentNoProps.tsx');
-    expect(componentInfo.displayName).toEqual('FunctionalComponentNoProps');
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentNoProps.tsx');
+    }).toThrow();
   });
-});
 
-describe('getFunctionalComponentPropsAny', () => {
   it('creates an untyped functional component with props as any', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/FunctionalDeclariationComponentPropsAny.tsx');
-    expect(componentInfo.displayName).toEqual('FunctionalComponentPropsAny');
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentPropsAny.tsx');
+    }).toThrow();
   });
-});
 
-describe('getFunctionalComponentPropsInline', () => {
   it('creates an untyped functional component with props as Inline', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/FunctionalDeclariationComponentPropsInline.tsx');
-    expect(componentInfo.displayName).toEqual('FunctionalComponentPropsInline');
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentPropsInline.tsx');
+    }).toThrow();
   });
-});
 
-describe('getFunctionalComponentPropsType', () => {
   it('creates an untyped functional component with props as Type', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/FunctionalDeclariationComponentPropsType.tsx');
-    expect(componentInfo.displayName).toEqual('FunctionalComponentPropsType');
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentPropsType.tsx');
+    }).toThrow();
   });
-});
 
-describe('getFunctionalComponentPropsInterface', () => {
   it('creates an untyped functional component with props as Interface', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/FunctionalDeclariationComponentPropsInterface.tsx');
-    expect(componentInfo.displayName).toEqual('FunctionalComponentPropsInterface');
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentPropsInterface.tsx');
+    }).toThrow();
+  });
+
+  it('creates an untyped functional component with props as an imported Type', () => {
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentPropsTypeImported.tsx');
+    }).toThrow();
+  });
+
+  it('creates an untyped functional component with props as an imported Interface', () => {
+    expect(() => {
+      getComponentInfo('./test/fixtures/imports/FunctionalDeclariationComponentPropsInterfaceImported.tsx');
+    }).toThrow();
   });
 });
