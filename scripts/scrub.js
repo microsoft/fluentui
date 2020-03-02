@@ -111,6 +111,10 @@ async function run() {
     }
   }
 
+  // do this first so it can use locally-installed jest (if available) before deleting it
+  console.log('\nClearing Jest cache...');
+  await spawn('npx', ['jest', '--clearCache']);
+
   const failedPaths = [];
 
   console.log("\nDeleting symlinks from packages' node_modules and rush temp files...");
