@@ -1,10 +1,13 @@
 import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
 import { TeamsTableVariables } from './tableVariables';
-import { TableCellProps } from '../../../../components/Table/TableCell';
+import { TableCellStylesProps } from '../../../../components/Table/TableCell';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 export default {
-  root: ({ variables: v, theme: { siteVariables } }: ComponentStyleFunctionParam<TableCellProps, TeamsTableVariables>): ICSSInJSStyle => {
+  root: ({
+    variables: v,
+    theme: { siteVariables }
+  }: ComponentStyleFunctionParam<TableCellStylesProps, TeamsTableVariables>): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       siteVariables
     });
@@ -25,7 +28,7 @@ export default {
       height: '100%'
     };
   },
-  content: ({ props: { truncateContent } }: ComponentStyleFunctionParam<TableCellProps, TeamsTableVariables>): ICSSInJSStyle => {
+  content: ({ props: { truncateContent } }: ComponentStyleFunctionParam<TableCellStylesProps, TeamsTableVariables>): ICSSInJSStyle => {
     return {
       alignSelf: 'center',
       ...(truncateContent && {
