@@ -59,7 +59,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
     actionHandlers: {
       performClick: e => {
         e.preventDefault();
-        this.handleClick(e);
+        handleClick(e);
       }
     },
     mapPropsToBehavior: () => ({
@@ -85,7 +85,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   const unhandledProps = getUnhandledProps(TreeTitle.handledProps, props);
 
   const handleClick = e => {
-    _.invoke(this.props, 'onClick', e, this.props);
+    _.invoke(props, 'onClick', e, props);
   };
 
   const element = (

@@ -167,7 +167,9 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   });
   const { classes } = useStyles(TreeItem.displayName, {
     className: TreeItem.className,
-    mapPropsToStyles: () => ({}),
+    mapPropsToStyles: () => ({
+      level
+    }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl
   });
