@@ -3,9 +3,7 @@ import * as path from 'path';
 
 import config from '@uifabric/build/config';
 
-// TODO: add regression analysis output to Fluent report
 // TODO: check false positive potential regression reports in fluent ui repo and fix
-// TODO: alphabetize scenarios
 
 type Reporter = {
   markdown: (markdown: string) => void;
@@ -78,6 +76,7 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
     ].join('\n')
   );
 }
+
 function reportResults(perfCounts: any, reporter: Reporter) {
   const results = _.map(
     _.pickBy(perfCounts, value => _.has(value, 'analysis.regression')),
@@ -100,43 +99,38 @@ function reportResults(perfCounts: any, reporter: Reporter) {
     }
   );
 
-  // TODO: enable when repos are converged.
-  // const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
+  const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
 
-  // if (regressions.length > 0) {
-  //   reporter.warn(`${regressions.length} potential perf regressions detected`);
-  //   reporter.markdown(
-  //     [
-  //       '### Potential regressions comparing to master',
-  //       '',
-  //       'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
-  //       ':--- | ---:| ---:| ---: | ---: ',
-  //       ..._.map(regressions, (value, key) =>
-  //         [
-  //           value.name,
-  //           linkToFlamegraph(value.numTicks, value.flamegraphFile),
-  //           linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
-  //           `${value.currentToBaseline}:1`,
-  //           linkToFlamegraph('analysis', value.regressionFile)
-  //         ].join(' | ')
-  //       )
-  //     ].join('\n')
-  //   );
-  // }
+  if (regressions.length > 0) {
+    reporter.warn(`${regressions.length} potential perf regressions detected`);
+    reporter.markdown(
+      [
+        '### Potential regressions comparing to master',
+        '',
+        'Scenario | Current PR Ticks | Baseline Ticks | Ratio | Regression Analysis',
+        ':--- | ---:| ---:| ---: | ---: ',
+        ..._.map(regressions, (value, key) =>
+          [
+            value.name,
+            linkToFlamegraph(value.numTicks, value.flamegraphFile),
+            linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
+            `${value.currentToBaseline}:1`,
+            linkToFlamegraph('analysis', value.regressionFile)
+          ].join(' | ')
+        )
+      ].join('\n')
+    );
+  }
 
   fluentFabricComparison(perfCounts, reporter);
 
   const noRegressions = _.sortBy(
-    // TODO: enable filter when repos are converged.
-    // _.filter(results, stats => !stats.isRegression),
-    results,
+    _.filter(results, stats => !stats.isRegression),
     stats => stats.currentToBaseline * -1
   );
   reporter.markdown(
     [
-      // TODO: re-enable comment when repos are converged.
-      // '<details><summary>Perf tests with no regressions</summary>',
-      '<details><summary>All perf tests</summary>',
+      '<details><summary>Perf tests with no regressions</summary>',
       '',
       'Scenario | Current PR Ticks | Baseline Ticks | Ratio',
       ':--- | ---:| ---:| ---:',

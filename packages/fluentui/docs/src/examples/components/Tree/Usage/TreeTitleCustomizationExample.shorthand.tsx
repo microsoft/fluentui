@@ -3,15 +3,15 @@ import { Icon, Tree } from '@fluentui/react';
 
 const items = [
   {
-    id: '1',
+    id: 'tree-title-customization-item-1',
     title: 'one',
     items: [
       {
-        id: '2',
+        id: 'tree-title-customization-item-2',
         title: 'one one',
         items: [
           {
-            id: '3',
+            id: 'tree-title-customization-item-3',
             title: 'one one one'
           }
         ]
@@ -19,11 +19,11 @@ const items = [
     ]
   },
   {
-    id: '4',
+    id: 'tree-title-customization-item-4',
     title: 'two',
     items: [
       {
-        id: '5',
+        id: 'tree-title-customization-item-5',
         title: 'two one'
       }
     ]

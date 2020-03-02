@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updates the Nav component's links to use aria-current",
-  "packageName": "office-ui-fabric-react",
-  "email": "sarah.higley@microsoft.com",
-  "commit": "e3f3b9a6d0705feeade76041a1f8a183a9f16d00",
-  "dependentChangeType": "patch",
-  "date": "2020-01-24T14:44:48.969Z"
-}

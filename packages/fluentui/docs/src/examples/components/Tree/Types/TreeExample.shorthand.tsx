@@ -3,41 +3,41 @@ import { Tree } from '@fluentui/react';
 
 const items = [
   {
-    id: '1',
+    id: 'tree-item-1',
     title: 'House Lannister',
     items: [
       {
-        id: '11',
+        id: 'tree-item-11',
         title: 'Tywin',
         items: [
           {
-            id: '111',
+            id: 'tree-item-111',
             title: 'Jaime'
           },
           {
-            id: '112',
+            id: 'tree-item-112',
             title: 'Cersei'
           },
           {
-            id: '113',
+            id: 'tree-item-113',
             title: 'Tyrion'
           }
         ]
       },
       {
-        id: '12',
+        id: 'tree-item-12',
         title: 'Kevan',
         items: [
           {
-            id: '121',
+            id: 'tree-item-121',
             title: 'Lancel'
           },
           {
-            id: '122',
+            id: 'tree-item-122',
             title: 'Willem'
           },
           {
-            id: '123',
+            id: 'tree-item-123',
             title: 'Martyn'
           }
         ]
@@ -45,23 +45,23 @@ const items = [
     ]
   },
   {
-    id: '2',
+    id: 'tree-item-2',
     title: 'House Targaryen',
     items: [
       {
-        id: '21',
+        id: 'tree-item-21',
         title: 'Aerys',
         items: [
           {
-            id: '211',
+            id: 'tree-item-211',
             title: 'Rhaegar'
           },
           {
-            id: '212',
+            id: 'tree-item-212',
             title: 'Viserys'
           },
           {
-            id: '213',
+            id: 'tree-item-213',
             title: 'Daenerys'
           }
         ]
