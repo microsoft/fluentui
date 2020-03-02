@@ -24,11 +24,14 @@ steps:
 
   # Fluent perf-test must run before Fabric perf-test until they are consolidated.
   - script: |
-      if [ $buildReason != "PullRequest" ]; then
-        yarn perf:test:base
-      else
-        yarn perf:test
-      fi
+      yarn perf:test:base
+    condition: ne(variables.buildReason, 'PullRequest')
+    workingDirectory: packages/fluentui/perf-test
+    displayName: Perf Test Base (Fluent)
+
+  - script: |
+      yarn perf:test
+    condition: eq(variables.buildReason, 'PullRequest')
     workingDirectory: packages/fluentui/perf-test
     displayName: Perf Test (Fluent)
 
@@ -74,27 +77,18 @@ steps:
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
   - script: |
-      if [ $buildReason != "PullRequest" ]; then
-        yarn stats:build
-      else
-        echo "Skipping statistics collection because buildReason $(buildReason) == PullRequest"
-      fi
+      yarn stats:build
+    condition: ne(variables.buildReason, 'PullRequest')
     displayName: Bundle Statistics (master only)
 
   - script: |
-      if [ $buildReason != "PullRequest" ]; then
-        yarn perf
-      else
-        echo "Skipping perf because buildReason $(buildReason) == PullRequest"
-      fi
+      yarn perf
+    condition: ne(variables.buildReason, 'PullRequest')
     displayName: Performance Tests (master only)
 
   - script: |
-      if [ $buildReason != "PullRequest" ]; then
-        yarn stats:save --tag=`git tag --points-at HEAD`
-      else
-        echo "Skipping saving statistics because buildReason $(buildReason) == PullRequest"
-      fi
+      yarn stats:save --tag=`git tag --points-at HEAD`
+    condition: ne(variables.buildReason, 'PullRequest')
     displayName: Save Statistics to DB (master only)
     env:
       STATS_URI: $(STATS_URI)

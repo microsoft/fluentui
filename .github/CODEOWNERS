@@ -33,7 +33,7 @@ azure-pipelines.*.yml @ecraig12345 @kenotron @JasonGore
 sizeauditor.json @aftab-hassan
 
 #### Fluent UI
-packages/fluentui/ @davezuko @kuzhelov @layershifter @levithomason @miroslavstastny @mnajdova @kenotron @jdhuntington @ecraig12345 @dzearing @jasongore
+packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @kenotron @jdhuntington @ecraig12345 @dzearing @jasongore @pompomon @silviuavram @jurokapsiar
 
 #### Deprecated API Files
 *.api.ts @natalieethell

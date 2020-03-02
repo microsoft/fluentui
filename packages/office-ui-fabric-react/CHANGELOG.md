@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 28 Feb 2020 12:25:15 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Mar 2020 12:25:44 GMT and should not be manually modified.
 
+## 7.98.2
+Mon, 02 Mar 2020 12:25:44 GMT
+
+### Patches
+
+- SpinButton: fix SpinButton content overlapping with border under certain resolutions (xgao@microsoft.com)
+- DetailsList Example: change drag drop behavior to be more intuitive, allow dragging to the last row (xgao@microsoft.com)
 ## 7.98.1
 Fri, 28 Feb 2020 12:25:15 GMT
 
