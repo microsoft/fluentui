@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList Example: change drag drop behavior to be more intuitive, allow dragging to the last row",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "7061c70910e6d5078c7405c839fccb4c05e2e9b1",
-  "dependentChangeType": "patch",
-  "date": "2020-02-28T23:48:39.855Z"
-}
