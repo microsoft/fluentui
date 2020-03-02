@@ -447,7 +447,7 @@ class Sidebar extends React.Component<any, any> {
       width: '36px'
     };
 
-    const changeLogUrl: string = `${constants.repoURL}/blob/master/CHANGELOG.md`;
+    const changeLogUrl: string = `${constants.repoURL}/blob/master/packages/fluentui/CHANGELOG.md`;
     const allSectionsWithoutSearchFilter = this.getSectionsWithoutSearchFilter();
 
     const escapedQuery = _.escapeRegExp(this.state.query);
