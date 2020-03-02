@@ -128,7 +128,7 @@ TableCell.propTypes = {
 TableCell.handledProps = Object.keys(TableCell.propTypes) as any;
 
 TableCell.defaultProps = {
-  accessibility: tableCellBehavior as Accessibility
+  accessibility: tableCellBehavior
 };
 
 TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });
