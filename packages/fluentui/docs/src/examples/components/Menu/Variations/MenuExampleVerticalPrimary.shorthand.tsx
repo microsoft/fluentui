@@ -36,7 +36,15 @@ const items = [
         },
         {
           key: '3',
-          content: 'item3'
+          content: 'item3',
+          menu: {
+            items: [
+              {
+                key: '3.1',
+                content: 'item3.1'
+              }
+            ]
+          }
         }
       ]
     }

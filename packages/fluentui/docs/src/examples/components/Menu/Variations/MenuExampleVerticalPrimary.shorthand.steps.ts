@@ -1,9 +1,8 @@
-import { default as getScreenerSteps, selectors } from '../commonScreenerSteps';
+import { selectors } from '../commonScreenerSteps';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
   steps: [
-    ...getScreenerSteps({ vertical: true }),
     builder =>
       builder
         .hover(selectors.item(4))
