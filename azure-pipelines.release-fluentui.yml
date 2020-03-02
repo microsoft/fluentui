@@ -42,15 +42,15 @@ steps:
       storage: fluentsite
       ContainerName: '$web'
       BlobPrefix: ''
-
-  - script: |
-      yarn test
-    displayName: yarn test
-
-  - script: |
-      yarn lint
-    displayName: yarn lint
-
-  - script: |
-      yarn release:fluentui:$(bumpType)
-    displayName: yarn release:fluentui:$(bumpType)
+# No NPM release in CI for now
+#  - script: |
+#      yarn test
+#    displayName: yarn test
+#
+#  - script: |
+#      yarn lint
+#    displayName: yarn lint
+#
+#  - script: |
+#      yarn release:fluentui:$(bumpType)
+#    displayName: yarn release:fluentui:$(bumpType)
