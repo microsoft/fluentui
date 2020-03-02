@@ -21,7 +21,7 @@ const contents = [
 
 const itemData = id =>
   _.times(20, i => ({
-    id: `${id}${i}`,
+    id: `tree-perf-60-item-${id}${i}`,
     key: `key${id}${i}`,
     title: {
       content: `${contents[i % contents.length]}`,
@@ -33,18 +33,18 @@ const itemData = id =>
 
 const items = [
   {
-    id: '1',
+    id: 'tree-perf-60-item-1',
     title: 'House Lannister',
     items: itemData('list-1')
   },
   {
-    id: '2',
+    id: 'tree-perf-60-item-2',
     title: 'House Targaryen',
     items: itemData('list-2')
   },
 
   {
-    id: '3',
+    id: 'tree-perf-60-item-3',
     title: 'House Stark',
     items: itemData('list-3')
   }
@@ -60,7 +60,13 @@ const titleRenderer = (Component, { content, header, headerMedia, media, ...rest
   );
 };
 
-const TreeWith60ListItems = () => <Tree items={items} defaultActiveItemIds={['1', '2', '3']} renderItemTitle={titleRenderer} />;
+const TreeWith60ListItems = () => (
+  <Tree
+    items={items}
+    defaultActiveItemIds={['tree-perf-60-item-1', 'tree-perf-60-item-2', 'tree-perf-60-item-3']}
+    renderItemTitle={titleRenderer}
+  />
+);
 
 TreeWith60ListItems.iterations = 1;
 TreeWith60ListItems.filename = 'TreeWith60ListItems.perf.tsx';
