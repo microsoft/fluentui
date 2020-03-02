@@ -88,7 +88,7 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   title?: ShorthandValue<TreeTitleProps>;
 }
 
-export type TreeItemStylesProps = Pick<TreeItemProps, 'level'>;
+export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
 
 const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   FluentComponentStaticProps<TreeItemProps> & { slotClassNames: TreeItemSlotClassNames } = props => {
@@ -165,7 +165,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     }),
     rtl: context.rtl
   });
-  const { classes } = useStyles(TreeItem.displayName, {
+  const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
     className: TreeItem.className,
     mapPropsToStyles: () => ({
       level
