@@ -30,7 +30,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/puppeteer": "1.12.3",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",

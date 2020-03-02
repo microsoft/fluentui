@@ -38,7 +38,7 @@
   },
   "devDependencies": {
     "@types/jss": "^9.5.8",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@uifabric/build": "^7.0.0",
     "react": "16.8.6"
   },

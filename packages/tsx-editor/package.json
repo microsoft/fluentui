@@ -28,7 +28,7 @@
     "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-syntax-highlighter": "^10.2.1",
     "@types/react-test-renderer": "^16.0.0",
