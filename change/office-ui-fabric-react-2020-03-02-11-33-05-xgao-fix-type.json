@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ScrollablePane example: fix strict function type errors",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "621b7ac2fdec59fc034e54cc2f94ff3a61c41af2",
+  "dependentChangeType": "patch",
+  "date": "2020-03-02T19:33:05.621Z"
+}

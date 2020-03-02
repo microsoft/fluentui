@@ -11,13 +11,13 @@ import {
   DetailsRow
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { IDetailsColumnRenderTooltipProps } from '../../DetailsList';
+import { IDetailsColumnRenderTooltipProps } from 'office-ui-fabric-react/lib/DetailsList';
 
 const classNames = mergeStyleSets({
   wrapper: {
