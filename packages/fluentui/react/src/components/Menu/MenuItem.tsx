@@ -122,6 +122,9 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   /** Indicates whether the menu item is part of submenu. */
   inSubmenu?: boolean;
 
+  /** Shorthand for the submenu indicator. */
+  indicator?: ShorthandValue<BoxProps>;
+
   /**
    * Event for request to change 'open' value.
    * @param event - React's original SyntheticEvent.
@@ -172,6 +175,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     defaultMenuOpen: PropTypes.bool,
     onActiveChanged: PropTypes.func,
     inSubmenu: PropTypes.bool,
+    indicator: customPropTypes.itemShorthand,
     onMenuOpenChange: PropTypes.func
   };
 
@@ -187,7 +191,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
   itemRef = React.createRef<HTMLElement>();
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, rtl }) {
-    const { children, content, icon, wrapper, menu, primary, secondary, active, vertical, disabled } = this.props;
+    const { children, content, icon, wrapper, menu, primary, secondary, active, vertical, indicator, disabled } = this.props;
     const { menuOpen } = this.state;
 
     const menuItemInner = childrenExist(children) ? (
@@ -215,16 +219,13 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
             defaultProps: () => ({ as: 'span', styles: styles.content })
           })}
           {menu &&
-            Box.create(
-              {},
-              {
-                defaultProps: () => ({
-                  className: MenuItem.slotClassNames.indicator,
-                  // name: vertical ? 'icon-menu-arrow-end' : 'icon-menu-arrow-down',
-                  styles: styles.indicator
-                })
-              }
-            )}
+            Box.create(indicator === undefined ? {} : indicator, {
+              defaultProps: () => ({
+                as: 'span',
+                className: MenuItem.slotClassNames.indicator,
+                styles: styles.indicator
+              })
+            })}
         </ElementType>
       </Ref>
     );
@@ -245,7 +246,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
                   primary,
                   secondary,
                   styles: styles.menu,
-                  submenu: true
+                  submenu: true,
+                  indicator
                 })
               })}
             </Popper>
