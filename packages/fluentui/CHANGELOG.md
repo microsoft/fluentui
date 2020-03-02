@@ -17,10 +17,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-### BREAKING CHANGES
-- Restricted prop sets in the `Flex` & `FlexItem` components which are passed to styles functions @layershifter ([#12078](https://github.com/OfficeDev/office-ui-fabric-react/pull/12078))
-- Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
-
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
 ## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
 [Compare changes](https://github.com/microsoft/fluent-ui-react/compare/v0.44.0..HEAD)
@@ -42,6 +38,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `font` CSS property will be no longer expanded to longhands @layershifter ([#1925](https://github.com/microsoft/fluent-ui-react/pull/1925))
 - Renamed `content` classname to `contentWrapper` and changed `content` prop to be `Box` shorthand in `AccordionTitle` @mnajdova ([#12049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
 - Changed `content` prop to be `Box` shorthand in `Label` @mnajdova ([#12049](https://github.com/OfficeDev/office-ui-fabric-react/pull/12049))
+- Restricted prop sets in the `Flex` & `FlexItem` components which are passed to styles functions @layershifter ([#12078](https://github.com/OfficeDev/office-ui-fabric-react/pull/12078))
+- Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
 
 ### Fixes
 - Remove dependency on Lodash in TypeScript typings @layershifter ([#2323](https://github.com/microsoft/fluent-ui-react/pull/2323))
