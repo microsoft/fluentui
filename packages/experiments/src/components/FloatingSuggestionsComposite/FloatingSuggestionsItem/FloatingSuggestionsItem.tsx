@@ -25,7 +25,7 @@ export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestion
   };
 
   return (
-    <div className={css(classNames.root, className ? className : '')}>
+    <div className={css(classNames.root, className ? className : '')} id={id}>
       <CommandButton onClick={onClickItem} className={classNames.itemButton}>
         {onRenderSuggestion ? (
           onRenderSuggestion(props as IFloatingSuggestionOnRenderItemProps<T>)
@@ -46,7 +46,7 @@ export const FloatingSuggestionsItem = <T extends {}>(props: IFloatingSuggestion
   );
 };
 
-export const FloatingSuggestionsItemMemo = React.memo<IFloatingSuggestionItemProps<T>>(FloatingSuggestionsItem, (prevProps, nextProp) => {
+export const FloatingSuggestionsItemMemo = React.memo<IFloatingSuggestionItemProps<any>>(FloatingSuggestionsItem, (prevProps, nextProp) => {
   if (
     prevProps.isSelected !== nextProp.isSelected ||
     prevProps.id !== nextProp.id ||

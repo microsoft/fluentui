@@ -12,7 +12,7 @@ const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFl
 
 export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestionsListProps<T>): JSX.Element => {
   const classNames = getClassNames(getStyles);
-  const { className, suggestionItems, onRenderNoResultFound, ariaLabel, onItemClick, noResultsFoundText, selectedSuggestionIndex } = props;
+  const { className, suggestionItems, onRenderNoResultFound, ariaLabel, onItemClick, noResultsFoundText } = props;
   const hasNoSuggestions = !suggestionItems || !suggestionItems.length;
 
   const noResults = () => {
