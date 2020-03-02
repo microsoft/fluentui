@@ -46,6 +46,7 @@ import { StatusStylesProps } from './components/Status/statusStyles';
 import { TextStylesProps } from './components/Text/textStyles';
 import { ToolbarDividerProps } from '../../components/Toolbar/ToolbarDivider';
 import { ToolbarItemProps } from '../../components/Toolbar/ToolbarItem';
+import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
 import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
@@ -102,6 +103,7 @@ export type TeamsThemeStylesProps = {
   ToolbarItem?: ToolbarItemProps;
   ToolbarDivider?: ToolbarDividerProps;
   ToolbarRadioGroup?: ToolbarRadioGroupProps;
+  ToolbarMenuItem?: ToolbarMenuItemStylesProps;
   TooltipContent?: TooltipContentProps;
   Text?: TextStylesProps;
   HierarchicalTree?: HierarchicalTreeProps;

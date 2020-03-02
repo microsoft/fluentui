@@ -181,7 +181,7 @@ exports[`Panel renders Panel correctly 1`] = `
                   ms-Panel-navigation
                   {
                     display: flex;
-                    justify-content: flex-end;
+                    justify-content: space-between;
                   }
             >
               <div
@@ -189,7 +189,6 @@ exports[`Panel renders Panel correctly 1`] = `
                     ms-Panel-header
                     {
                       flex-shrink: 1;
-                      margin-right: auto;
                       padding-left: 24px;
                       padding-right: 24px;
                     }
@@ -208,10 +207,6 @@ exports[`Panel renders Panel correctly 1`] = `
                         font-weight: 600;
                         hyphens: auto;
                         line-height: 27px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
                         overflow-wrap: break-word;
                         word-break: break-word;
                         word-wrap: break-word;
@@ -380,7 +375,6 @@ exports[`Panel renders Panel correctly 1`] = `
                 className=
                     ms-Panel-content
                     {
-                      margin-bottom: 0px;
                       padding-bottom: 20px;
                       padding-left: 24px;
                       padding-right: 24px;

@@ -162,7 +162,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
         {...mergedModalProps}
         isDarkOverlay={mergedModalProps.isDarkOverlay}
         isBlocking={mergedModalProps.isBlocking}
-        isOpen={hidden !== undefined ? !hidden : isOpen}
+        isOpen={isOpen !== undefined ? isOpen : !hidden}
         className={classNames.root}
         containerClassName={classNames.main}
         onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}

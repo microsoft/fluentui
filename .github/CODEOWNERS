@@ -102,8 +102,8 @@ packages/office-ui-fabric-react/src/components/Fabric/ @dzearing
 packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe
 packages/office-ui-fabric-react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
 packages/office-ui-fabric-react/src/components/FocusTrapZone/ @JasonGore
-packages/office-ui-fabric-react/src/components/office-ui-fabric-react/src/components/FocusZone/ @JasonGore
-packages/office-ui-fabric-react/src/components/react-focus/src/components/FocusZone/ @khmakoto
+packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
+packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
 packages/office-ui-fabric-react/src/components/Icon/ @dzearing
@@ -115,7 +115,7 @@ packages/office-ui-fabric-react/src/components/List/ @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
 packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Modal/ @JasonGore
-packages/office-ui-fabric-react/src/components/office-ui-fabric-react/src/components/Nav/ @jdhuntington
+packages/office-ui-fabric-react/src/components/Nav/ @jdhuntington
 packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
 packages/office-ui-fabric-react/src/components/Overlay/ @aneeshack4
 packages/office-ui-fabric-react/src/components/Pagination/ @caradong
