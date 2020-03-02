@@ -97,7 +97,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
         {hasChildren
           ? children
           : Box.create(content, {
-              defaultProps: () => ({ as: 'div', styles: resolvedStyles.content })
+              defaultProps: () => ({ styles: resolvedStyles.content })
             })}
       </ElementType>
     </Ref>
