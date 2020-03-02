@@ -1,25 +1,25 @@
+import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
-  UIComponent,
   childrenExist,
   createShorthandFactory,
   commonPropTypes,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
-  rtlTextContainer,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  rtlTextContainer
 } from '../../utils';
-import { Accessibility, treeTitleBehavior } from '@fluentui/accessibility';
-import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<TreeTitleBehaviorProps>;
 
   /** Whether or not the title has a subtree. */
   hasSubtree?: boolean;
@@ -45,56 +45,83 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   treeSize?: number;
 }
 
-class TreeTitle extends UIComponent<WithAsProp<TreeTitleProps>> {
-  static create: ShorthandFactory<TreeTitleProps>;
+export type TreeTitleStylesProps = never;
 
-  static className = 'ui-tree__title';
+const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticProps<TreeTitleProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
+  setStart();
 
-  static displayName = 'TreeTitle';
+  const { accessibility, children, className, content, design, hasSubtree, level, index, styles, treeSize, variables } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    hasSubtree: PropTypes.bool,
-    index: PropTypes.number,
-    level: PropTypes.number,
-    onClick: PropTypes.func,
-    expanded: PropTypes.bool,
-    treeSize: PropTypes.number
+  const getA11Props = useAccessibility(accessibility, {
+    debugName: TreeTitle.displayName,
+    actionHandlers: {
+      performClick: e => {
+        e.preventDefault();
+        handleClick(e);
+      }
+    },
+    mapPropsToBehavior: () => ({
+      hasSubtree,
+      level,
+      index,
+      treeSize
+    }),
+    rtl: context.rtl
+  });
+  const { classes } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
+    className: TreeTitle.className,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables
+    }),
+    rtl: context.rtl
+  });
+
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(TreeTitle.handledProps, props);
+
+  const handleClick = e => {
+    _.invoke(props, 'onClick', e, props);
   };
 
-  static defaultProps = {
-    as: 'a',
-    accessibility: treeTitleBehavior
-  };
+  const element = (
+    <ElementType
+      {...getA11Props('root', {
+        className: classes.root,
+        onClick: handleClick,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...unhandledProps
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
 
-  actionHandlers = {
-    performClick: e => {
-      e.preventDefault();
-      this.handleClick(e);
-    }
-  };
+  return element;
+};
 
-  handleClick = e => {
-    _.invoke(this.props, 'onClick', e, this.props);
-  };
+TreeTitle.className = 'ui-tree__title';
+TreeTitle.displayName = 'TreeTitle';
 
-  renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children, content } = this.props;
-
-    return (
-      <ElementType
-        className={classes.root}
-        onClick={this.handleClick}
-        {...accessibility.attributes.root}
-        {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-  }
-}
+TreeTitle.propTypes = {
+  ...commonPropTypes.createCommon(),
+  hasSubtree: PropTypes.bool,
+  index: PropTypes.number,
+  level: PropTypes.number,
+  onClick: PropTypes.func,
+  expanded: PropTypes.bool,
+  treeSize: PropTypes.number
+};
+TreeTitle.defaultProps = {
+  as: 'a',
+  accessibility: treeTitleBehavior
+};
+TreeTitle.handledProps = Object.keys(TreeTitle.propTypes) as any;
 
 TreeTitle.create = createShorthandFactory({
   Component: TreeTitle,
