@@ -78,14 +78,14 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
     rtl: context.rtl
   });
 
-  const handleClick = (e: React.SyntheticEvent) => {
+  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (e.currentTarget === e.target) {
       _.invoke(props, 'onClick', e, props);
       e.preventDefault();
     }
   };
 
-  const tableCell = (
+  const element = (
     <Ref innerRef={cellRef}>
       <ElementType
         {...getA11yProps('root', {
@@ -103,7 +103,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
     </Ref>
   );
   setEnd();
-  return tableCell;
+  return element;
 };
 
 TableCell.displayName = 'TableCell';
