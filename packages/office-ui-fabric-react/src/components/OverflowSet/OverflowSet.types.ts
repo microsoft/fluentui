@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IFocusZoneProps } from '../../FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
