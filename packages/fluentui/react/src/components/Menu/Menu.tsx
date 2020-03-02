@@ -19,9 +19,8 @@ import {
 } from '../../utils';
 
 import MenuItem, { MenuItemProps } from './MenuItem';
-import { WithAsProp, ShorthandCollection, ShorthandValue, withSafeTypeForAs, ComponentEventHandler } from '../../types';
+import { WithAsProp, ShorthandCollection, withSafeTypeForAs, ComponentEventHandler } from '../../types';
 import MenuDivider from './MenuDivider';
-import { IconProps } from '../Icon/Icon';
 
 export type MenuShorthandKinds = 'divider' | 'item';
 
@@ -90,9 +89,6 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Indicates whether the menu is submenu. */
   submenu?: boolean;
-
-  /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<IconProps>;
 }
 
 export interface MenuState {
@@ -128,8 +124,7 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
     underlined: PropTypes.bool,
     vertical: PropTypes.bool,
-    submenu: PropTypes.bool,
-    indicator: customPropTypes.itemShorthandWithoutJSX
+    submenu: PropTypes.bool
   };
 
   static defaultProps = {
@@ -173,7 +168,7 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
   });
 
   renderItems = (styles: ComponentSlotStylesPrepared, variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
-    const { iconOnly, items, pills, pointing, primary, secondary, underlined, vertical, submenu, indicator } = this.props;
+    const { iconOnly, items, pills, pointing, primary, secondary, underlined, vertical, submenu } = this.props;
     const { activeIndex } = this.state;
     const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
     let itemPosition = 0;
@@ -217,7 +212,6 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
           itemsCount,
           active,
           inSubmenu: submenu,
-          indicator,
           accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined
         }),
         overrideProps: overrideItemProps

@@ -30,6 +30,7 @@ import { Popper } from '../../utils/positioner';
 export interface MenuItemSlotClassNames {
   wrapper: string;
   submenu: string;
+  indicator: string;
 }
 
 export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -121,9 +122,6 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   /** Indicates whether the menu item is part of submenu. */
   inSubmenu?: boolean;
 
-  /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<IconProps>;
-
   /**
    * Event for request to change 'open' value.
    * @param event - React's original SyntheticEvent.
@@ -144,7 +142,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
 
   static slotClassNames: MenuItemSlotClassNames = {
     submenu: `${MenuItem.className}__submenu`,
-    wrapper: `${MenuItem.className}__wrapper`
+    wrapper: `${MenuItem.className}__wrapper`,
+    indicator: `${MenuItem.className}__indicator`
   };
 
   static create: ShorthandFactory<MenuItemProps>;
@@ -173,7 +172,6 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     defaultMenuOpen: PropTypes.bool,
     onActiveChanged: PropTypes.func,
     inSubmenu: PropTypes.bool,
-    indicator: customPropTypes.itemShorthandWithoutJSX,
     onMenuOpenChange: PropTypes.func
   };
 
@@ -189,11 +187,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
   itemRef = React.createRef<HTMLElement>();
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, rtl }) {
-    const { children, content, icon, wrapper, menu, primary, secondary, active, vertical, indicator, disabled } = this.props;
+    const { children, content, icon, wrapper, menu, primary, secondary, active, vertical, disabled } = this.props;
     const { menuOpen } = this.state;
-
-    const defaultIndicator = { name: vertical ? 'icon-arrow-end' : 'icon-arrow-down' };
-    const indicatorWithDefaults = indicator === undefined ? defaultIndicator : indicator;
 
     const menuItemInner = childrenExist(children) ? (
       children
@@ -220,12 +215,16 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
             defaultProps: () => ({ as: 'span', styles: styles.content })
           })}
           {menu &&
-            Icon.create(indicatorWithDefaults, {
-              defaultProps: () => ({
-                name: vertical ? 'icon-menu-arrow-end' : 'icon-menu-arrow-down',
-                styles: styles.indicator
-              })
-            })}
+            Box.create(
+              {},
+              {
+                defaultProps: () => ({
+                  className: MenuItem.slotClassNames.indicator,
+                  // name: vertical ? 'icon-menu-arrow-end' : 'icon-menu-arrow-down',
+                  styles: styles.indicator
+                })
+              }
+            )}
         </ElementType>
       </Ref>
     );
@@ -246,8 +245,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
                   primary,
                   secondary,
                   styles: styles.menu,
-                  submenu: true,
-                  indicator
+                  submenu: true
                 })
               })}
             </Popper>
