@@ -1,9 +1,12 @@
+import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import * as _ from 'lodash';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
-import { UIComponent, commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
-import { WithAsProp, withSafeTypeForAs } from '../../types';
+import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
+import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import FlexItem from './FlexItem';
 
 export interface FlexProps extends UIComponentProps, ChildrenComponentProps {
@@ -38,63 +41,93 @@ export interface FlexProps extends UIComponentProps, ChildrenComponentProps {
   fill?: boolean;
 }
 
-class Flex extends UIComponent<WithAsProp<FlexProps>> {
-  static Item = FlexItem;
+export type FlexStylesProps = Pick<
+  FlexProps,
+  'column' | 'debug' | 'fill' | 'gap' | 'hAlign' | 'inline' | 'padding' | 'space' | 'vAlign' | 'wrap'
+>;
 
-  static displayName = 'Flex';
-  static className = 'ui-flex';
+const Flex: React.FC<WithAsProp<FlexProps>> & { className: string; handledProps: (keyof FlexProps)[]; Item: typeof FlexItem } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
+  setStart();
 
-  static defaultProps = {
-    as: 'div'
-  };
+  const { children, className, column, debug, design, fill, gap, hAlign, inline, padding, space, styles, variables, vAlign, wrap } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      accessibility: false,
-      content: false
+  const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
+    className: Flex.className,
+    mapPropsToStyles: () => ({
+      column,
+      debug,
+      fill,
+      gap,
+      hAlign,
+      inline,
+      padding,
+      space,
+      vAlign,
+      wrap
     }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables
+    }),
+    rtl: context.rtl
+  });
 
-    inline: PropTypes.bool,
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(Flex.handledProps, props);
 
-    column: PropTypes.bool,
+  const content = React.Children.map(children, child => {
+    const isFlexItemElement: boolean = _.get(child, 'type.__isFlexItem');
 
-    wrap: PropTypes.bool,
+    return isFlexItemElement
+      ? React.cloneElement(child as React.ReactElement, {
+          flexDirection: column ? 'column' : 'row'
+        })
+      : child;
+  });
+  const element = (
+    <ElementType className={classes.root} {...unhandledProps}>
+      {content}
+    </ElementType>
+  );
+  setEnd();
 
-    hAlign: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
-    vAlign: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
+  return element;
+};
 
-    space: PropTypes.oneOf(['around', 'between', 'evenly']),
+Flex.className = 'ui-flex';
+Flex.displayName = 'Flex';
 
-    gap: PropTypes.oneOf(['gap.smaller', 'gap.small', 'gap.medium', 'gap.large']),
+Flex.propTypes = {
+  ...commonPropTypes.createCommon({
+    accessibility: false,
+    content: false
+  }),
 
-    padding: PropTypes.oneOf(['padding.medium']),
-    fill: PropTypes.bool,
+  inline: PropTypes.bool,
 
-    debug: PropTypes.bool
-  };
+  column: PropTypes.bool,
 
-  renderComponent({ ElementType, classes, unhandledProps }): React.ReactNode {
-    return (
-      <ElementType className={classes.root} {...unhandledProps}>
-        {this.renderChildren()}
-      </ElementType>
-    );
-  }
+  wrap: PropTypes.bool,
 
-  renderChildren = () => {
-    const { column, children } = this.props;
+  hAlign: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
+  vAlign: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
 
-    return React.Children.map(children, (child: any) => {
-      const isFlexItemElement: boolean = _.get(child, 'type.__isFlexItem');
+  space: PropTypes.oneOf(['around', 'between', 'evenly']),
 
-      return isFlexItemElement
-        ? React.cloneElement(child, {
-            flexDirection: column ? 'column' : 'row'
-          })
-        : child;
-    });
-  };
-}
+  gap: PropTypes.oneOf(['gap.smaller', 'gap.small', 'gap.medium', 'gap.large']),
+
+  padding: PropTypes.oneOf(['padding.medium']),
+  fill: PropTypes.bool,
+
+  debug: PropTypes.bool
+};
+Flex.handledProps = Object.keys(Flex.propTypes) as any;
+
+Flex.Item = FlexItem;
 
 /**
  * A Flex is a layout component that arranges group of items aligned towards common direction (either row or column).

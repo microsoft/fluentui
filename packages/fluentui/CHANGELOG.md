@@ -17,7 +17,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-### Breaking changes
+### BREAKING CHANGES
+- Restricted prop sets in the `Flex` & `FlexItem` components which are passed to styles functions @layershifter ([#12078](https://github.com/OfficeDev/office-ui-fabric-react/pull/12078))
 - Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
 
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
