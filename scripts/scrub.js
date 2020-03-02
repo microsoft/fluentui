@@ -111,9 +111,17 @@ async function run() {
     }
   }
 
-  // do this first so it can use locally-installed jest (if available) before deleting it
+  // do these before deleting node_nodules
   console.log('\nClearing Jest cache...');
   await spawn('npx', ['jest', '--clearCache']);
+  try {
+    console.log('\nAttempting to clear gulp-cache...');
+    const cache = require('gulp-cache');
+    cache.clearAll();
+    console.log('...success!');
+  } catch (err) {
+    console.log('Clearing gulp-cache failed, likely due it not being installed.');
+  }
 
   const failedPaths = [];
 
