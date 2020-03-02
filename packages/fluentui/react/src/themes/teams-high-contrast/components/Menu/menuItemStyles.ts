@@ -17,7 +17,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...(primary && !underlined && { color: v.colorActive }),
           background: v.backgroundColorFocus
         }),
-        [`& .${MenuItem.slotClassNames.indicator}`]: {
+        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
           backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
         }
       },
@@ -26,7 +26,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         !underlined && {
           background: v.backgroundColorActive,
           color: v.colorActive,
-          [`& .${MenuItem.slotClassNames.indicator}`]: {
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
             backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }),
@@ -35,7 +35,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(isFromKeyboard && {
           color: v.colorActive,
           background: v.backgroundColorFocus,
-          [`& .${MenuItem.slotClassNames.indicator}`]: {
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
             backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }),
@@ -43,7 +43,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(active && {
           color: v.colorActive,
           background: v.backgroundColorActive,
-          [`& .${MenuItem.slotClassNames.indicator}`]: {
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
             backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }),
@@ -51,7 +51,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ':hover': {
           color: v.colorActive,
           background: v.backgroundColorFocus,
-          [`& .${MenuItem.slotClassNames.indicator}`]: {
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
             backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }
