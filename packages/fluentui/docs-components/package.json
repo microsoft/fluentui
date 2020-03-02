@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/docs-components",
   "description": "A set of React components to build docs sites.",
-  "version": "0.44.0",
+  "version": "0.45.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "dependencies": {
@@ -38,5 +38,6 @@
   },
   "sideEffects": false,
   "types": "dist/es/index.d.ts",
-  "private": true
+  "private": true,
+  "gitHead": "d08e21664e66fd0203260f1d2f441007bca02915"
 }

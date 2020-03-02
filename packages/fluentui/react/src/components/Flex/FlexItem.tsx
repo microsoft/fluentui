@@ -1,13 +1,18 @@
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
+import { ComponentSlotClasses, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { ComponentSlotStylesPrepared, ComponentSlotStylesResolved, mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import { UIComponent, commonPropTypes, UIComponentProps, ChildrenComponentProps, ShorthandFactory } from '../../utils';
-import { ComponentSlotStylesPrepared, mergeStyles } from '@fluentui/styles';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
-type ChildrenFunction = (params: { styles: ComponentSlotStylesPrepared; classes: string }) => React.ReactElement<any>;
+import { commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
+import { ProviderContextPrepared } from '../../types';
 
-export type FlexItemChildren = React.ReactElement<any> | ChildrenFunction;
+type ChildrenFunction = (params: { styles: ComponentSlotStylesPrepared; classes: string }) => React.ReactElement;
+
+export type FlexItemChildren = React.ReactElement | ChildrenFunction;
 
 export interface FlexItemProps extends UIComponentProps, ChildrenComponentProps<FlexItemChildren> {
   /** Controls item's alignment. */
@@ -39,64 +44,13 @@ export interface FlexItemProps extends UIComponentProps, ChildrenComponentProps<
   flexDirection?: 'row' | 'column';
 }
 
-/**
- * A FlexItem is a layout component that customizes alignment of Flex child.
- */
-class FlexItem extends UIComponent<FlexItemProps> {
-  static className = 'ui-flex__item';
+export type FlexItemStylesProps = Pick<FlexItemProps, 'align' | 'grow' | 'flexDirection' | 'push' | 'shrink' | 'size'>;
 
-  static displayName = 'FlexItem';
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      children: false,
-      accessibility: false,
-      content: false
-    }),
-    children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
-
-    align: PropTypes.oneOf(['auto', 'start', 'end', 'center', 'baseline', 'stretch']),
-    size: PropTypes.oneOf(['size.half', 'size.quarter', 'size.small', 'size.medium', 'size.large', PropTypes.string]),
-
-    stretch: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-    shrink: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-
-    push: PropTypes.bool,
-
-    /**
-     * Will be automatically set by parent Flex component
-     */
-    flexDirection: PropTypes.oneOf(['row', 'column'])
-  };
-
-  displayName: 'FlexItem';
-
-  static create: ShorthandFactory<FlexItemProps>;
-
-  // Boolean flag for now, Symbol-based approach may be used instead.
-  // However, there are  concerns related to browser compatibility if Symbols will be used.
-  // Completely alternative approach - check class name of React element (and generalize this logic).
-  static __isFlexItem = true;
-
-  renderComponent({ styles, classes }) {
-    const { children } = this.props;
-
-    // pass calculated bits using Render Props pattern
-    if (typeof children === 'function') {
-      return children({
-        styles: styles.root,
-        classes: classes.root
-      });
-    }
-
-    if (_.isNil(children)) return children;
-    return applyStyles(React.Children.only(children) as React.ReactElement<any>, styles, classes);
-  }
-}
-
-export default FlexItem;
-
-const applyStyles = (element: React.ReactElement<any>, styles, classes): React.ReactElement<any> => {
+const applyStyles = (
+  element: React.ReactElement,
+  styles: ComponentSlotStylesResolved,
+  classes: ComponentSlotClasses
+): React.ReactElement => {
   if (!styles) {
     return element;
   }
@@ -113,3 +67,81 @@ const applyStyles = (element: React.ReactElement<any>, styles, classes): React.R
     styles: mergeStyles(styles.root || {}, element.props.styles)
   });
 };
+
+/**
+ * A FlexItem is a layout component that customizes alignment of Flex child.
+ */
+const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boolean } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
+  setStart();
+
+  const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
+
+  const { classes, styles: resolvedStyles } = useStyles<FlexItemStylesProps>(FlexItem.displayName, {
+    className: FlexItem.className,
+    mapPropsToStyles: () => ({
+      align,
+      grow,
+      flexDirection,
+      push,
+      shrink,
+      size
+    }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables
+    }),
+    rtl: context.rtl
+  });
+
+  let element: React.ReactElement;
+
+  // pass calculated bits using Render Props pattern
+  if (typeof children === 'function') {
+    element = children({
+      styles: resolvedStyles.root,
+      classes: classes.root
+    });
+  } else if (_.isNil(children)) {
+    element = null;
+  } else {
+    element = applyStyles(React.Children.only(children) as React.ReactElement, resolvedStyles, classes);
+  }
+
+  setEnd();
+
+  return element;
+};
+
+FlexItem.className = 'ui-flex__item';
+FlexItem.displayName = 'FlexItem';
+
+FlexItem.propTypes = {
+  ...commonPropTypes.createCommon({
+    children: false,
+    accessibility: false,
+    content: false
+  }),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+
+  align: PropTypes.oneOf(['auto', 'start', 'end', 'center', 'baseline', 'stretch']),
+  size: PropTypes.oneOfType([PropTypes.oneOf(['size.half', 'size.quarter', 'size.small', 'size.medium', 'size.large']), PropTypes.string]),
+  shrink: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+
+  push: PropTypes.bool,
+
+  /**
+   * Will be automatically set by parent Flex component
+   */
+  flexDirection: PropTypes.oneOf(['row', 'column'])
+};
+
+// Boolean flag for now, Symbol-based approach may be used instead.
+// However, there are  concerns related to browser compatibility if Symbols will be used.
+// Completely alternative approach - check class name of React element (and generalize this logic).
+FlexItem.__isFlexItem = true;
+
+export default FlexItem;
