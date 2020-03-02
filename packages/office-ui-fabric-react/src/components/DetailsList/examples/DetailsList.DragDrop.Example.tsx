@@ -192,16 +192,11 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
       ? (this._selection.getSelection() as IExampleItem[])
       : [this._draggedItem!];
 
+    const insertIndex = this.state.items.indexOf(item);
     const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
-    let insertIndex = items.indexOf(item);
-
-    // if dragging/dropping on itself, index will be 0.
-    if (insertIndex === -1) {
-      insertIndex = 0;
-    }
 
     items.splice(insertIndex, 0, ...draggedItems);
 
-    this.setState({ items: items });
+    this.setState({ items });
   }
 }

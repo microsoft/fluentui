@@ -1,7 +1,10 @@
-import { ICSSInJSStyle } from '@fluentui/styles';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
-const treeTitleStyles = {
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { TreeTitleStylesProps } from '../../../../components/Tree/TreeTitle';
+import { TreeTitleVariables } from './treeTitleVariables';
+
+const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     padding: v.padding,
     cursor: 'pointer',

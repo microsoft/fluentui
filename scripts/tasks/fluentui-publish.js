@@ -38,16 +38,16 @@ function setLernaPackages(root, packages) {
   }
 }
 
-function gitTagAndPush(root) {
+function gitTag(root) {
   const lernaJsonFile = path.join(root, 'lerna.json');
   const lernaJson = fs.readJSONSync(lernaJsonFile);
   const version = lernaJson.version;
-  const tag = `fluentui_v${version}`;
+  const tag = `fluentuizero_v${version}`;
   spawnSync('git', ['tag', '-a', '-f', tag, '-m', tag], { cwd: root });
 
-  if (argv().push) {
-    spawnSync('git', ['push', '--no-verify', '--follow-tags', '--verbose', 'origin', `HEAD:master`], { cwd: root });
-  }
+  logger.info(
+    `Release commit successfully tagged. To push the changes, run 'git push --no-verify --follow-tags --verbose origin HEAD:master'`
+  );
 }
 
 module.exports.fluentuiPrepublish = function() {
@@ -63,7 +63,7 @@ module.exports.fluentuiPostpublish = function() {
   spawnSync('git', ['add', 'packages/fluentui', 'lerna.json'], { cwd: root });
   spawnSync('git', ['commit', '-m', 'bumping @fluentui packages'], { cwd: root });
 
-  gitTagAndPush(root);
+  gitTag(root);
 };
 
 module.exports.fluentuiLernaPublish = function(bumpType) {
@@ -73,10 +73,10 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
     const lernaPublishArgs = [
       'lerna',
       'publish',
+      "--tag-version-prefix='fluentuizero_v'",
       '--no-git-reset',
       '--no-push',
       '--no-git-tag-version',
-      '--yes',
       '--registry',
       argv().registry,
       bumpType
@@ -84,10 +84,14 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
 
     logger.info(`Running this command: npx ${lernaPublishArgs.join(' ')}`);
 
-    spawnSync('npx', lernaPublishArgs, {
+    const result = spawnSync('npx', lernaPublishArgs, {
       cwd: root,
       shell: true,
       stdio: 'inherit'
     });
+
+    if (result.status) {
+      throw new Error(result.error || `lerna publish failed with status ${result.status}`);
+    }
   };
 };

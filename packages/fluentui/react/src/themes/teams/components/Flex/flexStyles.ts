@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared } from '@fluentui/styles';
-import { FlexProps } from '../../../../components/Flex/Flex';
+import { FlexStylesProps } from '../../../../components/Flex/Flex';
 
 import { toFlexAlignment } from './utils';
 import { FlexVariables } from './flexVariables';
 
-const flexStyles: ComponentSlotStylesPrepared<FlexProps, FlexVariables> = {
+const flexStyles: ComponentSlotStylesPrepared<FlexStylesProps, FlexVariables> = {
   root: ({ props: p, variables: v }) => ({
     display: 'flex',
     ...(p.debug && { border: '1px dotted grey', background: 'lightgrey' }),
