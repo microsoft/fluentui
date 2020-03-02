@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 02 Mar 2020 12:25:44 GMT",
+      "tag": "office-ui-fabric-react_v7.98.2",
+      "version": "7.98.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SpinButton: fix SpinButton content overlapping with border under certain resolutions",
+            "author": "xgao@microsoft.com",
+            "commit": "59292ee86d5ac772ff48205efa1d37e53a336720"
+          },
+          {
+            "comment": "DetailsList Example: change drag drop behavior to be more intuitive, allow dragging to the last row",
+            "author": "xgao@microsoft.com",
+            "commit": "7061c70910e6d5078c7405c839fccb4c05e2e9b1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 28 Feb 2020 12:25:15 GMT",
       "tag": "office-ui-fabric-react_v7.98.1",
       "version": "7.98.1",
