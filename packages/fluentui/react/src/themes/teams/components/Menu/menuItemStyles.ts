@@ -5,8 +5,7 @@ import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuIt
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import svgContentHorizontal from './submenuIndicatorUrl';
-import svgContentVertical from './submenuIndicatorVerticalUrl';
+import submenuIndicatorUrl from './submenuIndicatorUrl';
 
 type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
@@ -415,7 +414,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       left: 'unset'
     }),
 
-    backgroundImage: p.vertical ? svgContentVertical(v.color) : svgContentHorizontal(v.color),
+    backgroundImage: submenuIndicatorUrl(v.color, p.vertical),
     ...(rtl && {
       transform: `scaleX(-1)`
     }),

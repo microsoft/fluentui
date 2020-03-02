@@ -1,9 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { MenuVariables } from '../../../teams/components/Menu/menuVariables';
-import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import { default as MenuItem, MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
 import { underlinedItem } from '../../../teams/components/Menu/menuItemStyles';
-import svgContentVertical from '../../../teams/components/Menu/submenuIndicatorVerticalUrl';
-import svgContentHorizontal from '../../../teams/components/Menu/submenuIndicatorUrl';
+import submenuIndicatorUrl from '../../../teams/components/Menu/submenuIndicatorUrl';
 
 type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
@@ -18,8 +17,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...(primary && !underlined && { color: v.colorActive }),
           background: v.backgroundColorFocus
         }),
-        '& .ui-menu__item__indicator': {
-          backgroundImage: p.vertical ? svgContentVertical(v.colorActive) : svgContentHorizontal(v.colorActive)
+        [`& .${MenuItem.slotClassNames.indicator}`]: {
+          backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
         }
       },
 
@@ -27,8 +26,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         !underlined && {
           background: v.backgroundColorActive,
           color: v.colorActive,
-          '& .ui-menu__item__indicator': {
-            backgroundImage: p.vertical ? svgContentVertical(v.colorActive) : svgContentHorizontal(v.colorActive)
+          [`& .${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }),
 
@@ -36,24 +35,24 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(isFromKeyboard && {
           color: v.colorActive,
           background: v.backgroundColorFocus,
-          '& .ui-menu__item__indicator': {
-            backgroundImage: p.vertical ? svgContentVertical(v.colorActive) : svgContentHorizontal(v.colorActive)
+          [`& .${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }),
 
         ...(active && {
           color: v.colorActive,
           background: v.backgroundColorActive,
-          '& .ui-menu__item__indicator': {
-            backgroundImage: p.vertical ? svgContentVertical(v.colorActive) : svgContentHorizontal(v.colorActive)
+          [`& .${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }),
 
         ':hover': {
           color: v.colorActive,
           background: v.backgroundColorFocus,
-          '& .ui-menu__item__indicator': {
-            backgroundImage: p.vertical ? svgContentVertical(v.colorActive) : svgContentHorizontal(v.colorActive)
+          [`& .${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
           }
         }
       }),
