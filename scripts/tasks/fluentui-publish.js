@@ -42,7 +42,7 @@ function gitTag(root) {
   const lernaJsonFile = path.join(root, 'lerna.json');
   const lernaJson = fs.readJSONSync(lernaJsonFile);
   const version = lernaJson.version;
-  const tag = `fluentui_v${version}`;
+  const tag = `fluentuizero_v${version}`;
   spawnSync('git', ['tag', '-a', '-f', tag, '-m', tag], { cwd: root });
 
   logger.info(
@@ -73,6 +73,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
     const lernaPublishArgs = [
       'lerna',
       'publish',
+      "--tag-version-prefix='fluentuizero_v'",
       '--no-git-reset',
       '--no-push',
       '--no-git-tag-version',
