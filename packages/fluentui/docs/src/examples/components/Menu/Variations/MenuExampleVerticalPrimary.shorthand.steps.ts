@@ -6,10 +6,10 @@ const config: ScreenerTestsConfig = {
     ...getScreenerSteps({ vertical: true }),
     builder =>
       builder
-        .hover(selectors.item(3))
-        .snapshot('Hovers 2nd item (hover state styles)')
-        .click(selectors.item(3))
-        .snapshot('Clicks on 2nd item (active state styles)')
+        .hover(selectors.item(4))
+        .snapshot('Hovers 4th item (hover state styles)')
+        .click(selectors.item(4))
+        .snapshot('Clicks on 4th item (opens submenu)')
   ]
 };
 

@@ -43,6 +43,6 @@ const items = [
   }
 ];
 
-const MenuExampleVertical = () => <Menu defaultActiveIndex={0} items={items} vertical />;
+const MenuExampleVertical = () => <Menu primary defaultActiveIndex={0} items={items} vertical />;
 
 export default MenuExampleVertical;
