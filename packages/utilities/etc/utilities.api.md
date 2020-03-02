@@ -34,8 +34,8 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React.ElementType;
-}>>;
+    asyncPlaceholder?: any;
+}> & React.RefAttributes<React.ElementType<TProps>>>;
 
 // @public
 export function assertNever(x: never): never;
