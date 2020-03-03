@@ -16,8 +16,8 @@ import { CheckboxStylesProps } from './components/Checkbox/checkboxStyles';
 import { DividerProps } from '../../components/Divider/Divider';
 import { DropdownProps } from '../../components/Dropdown/Dropdown';
 import { EmbedProps } from '../../components/Embed/Embed';
-import { FlexItemProps } from '../../components/Flex/FlexItem';
-import { FlexProps } from '../../components/Flex/Flex';
+import { FlexItemStylesProps } from '../../components/Flex/FlexItem';
+import { FlexStylesProps } from '../../components/Flex/Flex';
 import { FormFieldProps } from '../../components/Form/FormField';
 import { FormProps } from '../../components/Form/Form';
 import { GridProps } from '../../components/Grid/Grid';
@@ -44,8 +44,10 @@ import { SegmentProps } from '../../components/Segment/Segment';
 import { SliderStylesProps } from './components/Slider/sliderStyles';
 import { StatusStylesProps } from './components/Status/statusStyles';
 import { TextStylesProps } from './components/Text/textStyles';
-import { ToolbarDividerProps } from '../../components/Toolbar/ToolbarDivider';
-import { ToolbarItemProps } from '../../components/Toolbar/ToolbarItem';
+import { ToolbarDividerStylesProps } from '../../components/Toolbar/ToolbarDivider';
+import { ToolbarItemStylesProps } from '../../components/Toolbar/ToolbarItem';
+import { ToolbarCustomItemStylesProps } from '../../components/Toolbar/ToolbarCustomItem';
+import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
 import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
@@ -53,6 +55,11 @@ import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/Hie
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
 import { VideoProps } from '../../components/Video/Video';
+import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
+import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
+import { TableProps } from '../../components/Table/Table';
+import { TableRowProps } from '../../components/Table/TableRow';
+import { TableCellStylesProps } from '../../components/Table/TableCell';
 
 export type TeamsThemeStylesProps = {
   Accordion?: AccordionProps;
@@ -71,8 +78,8 @@ export type TeamsThemeStylesProps = {
   Divider?: DividerProps;
   Dropdown?: DropdownProps;
   Embed?: EmbedProps;
-  Flex?: FlexProps;
-  FlexItem?: FlexItemProps;
+  Flex?: FlexStylesProps;
+  FlexItem?: FlexItemStylesProps;
   Form?: FormProps;
   FormField?: FormFieldProps;
   Grid?: GridProps;
@@ -99,15 +106,22 @@ export type TeamsThemeStylesProps = {
   Slider?: SliderStylesProps;
   Status?: StatusStylesProps;
   Toolbar?: ToolbarProps;
-  ToolbarItem?: ToolbarItemProps;
-  ToolbarDivider?: ToolbarDividerProps;
+  ToolbarCustomItem?: ToolbarCustomItemStylesProps;
+  ToolbarItem?: ToolbarItemStylesProps;
+  ToolbarDivider?: ToolbarDividerStylesProps;
   ToolbarRadioGroup?: ToolbarRadioGroupProps;
+  ToolbarMenuItem?: ToolbarMenuItemStylesProps;
   TooltipContent?: TooltipContentProps;
   Text?: TextStylesProps;
+  TreeItem?: TreeItemStylesProps;
+  TreeTitle?: TreeTitleStylesProps;
   HierarchicalTree?: HierarchicalTreeProps;
   HierarchicalTreeItem?: HierarchicalTreeItemProps;
   HierarchicalTreeTitle?: HierarchicalTreeTitleProps;
   Video?: VideoProps;
+  Table?: TableProps;
+  TableRow?: TableRowProps;
+  TableCell?: TableCellStylesProps;
 };
 
 export type TeamsContextualColors = {

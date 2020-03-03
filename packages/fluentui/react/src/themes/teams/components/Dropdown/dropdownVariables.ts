@@ -33,6 +33,8 @@ export interface DropdownVariables {
   listItemColorActive: string;
   listItemSelectedFontWeight: number;
   listItemSelectedColor: string;
+  listItemHeaderLineHeight: string;
+  listItemContentLineHeight: string;
   selectedItemColor: string;
   selectedItemBackgroundColor: string;
   selectedItemColorFocus: string;
@@ -76,6 +78,9 @@ export default (siteVars): DropdownVariables => ({
   listItemColorActive: siteVars.colors.grey[750],
   listItemSelectedFontWeight: siteVars.fontWeightSemibold,
   listItemSelectedColor: siteVars.colors.grey[750],
+  // TODO: prod app uses 17.5px here, it should be 16px per the design guide!
+  listItemHeaderLineHeight: siteVars.lineHeightSmall,
+  listItemContentLineHeight: siteVars.lineHeightSmall,
   selectedItemBackgroundColor: 'undefined',
   selectedItemColorFocus: siteVars.bodyColor,
   selectedItemBackgroundColorFocus: siteVars.colors.brand[200],

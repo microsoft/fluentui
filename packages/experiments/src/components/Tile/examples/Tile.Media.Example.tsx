@@ -96,6 +96,8 @@ interface IImageTileProps {
   originalImageSize: ISize;
   showBackground: boolean;
   nameplateOnlyOnHover: boolean;
+  linkHref?: string;
+  linkTarget?: string;
   item: typeof ITEMS[0];
 }
 
@@ -111,6 +113,8 @@ const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTilePr
       hideBackground={!props.showBackground}
       showBackgroundFrame={true}
       nameplateOnlyOnHover={props.nameplateOnlyOnHover}
+      href={props.linkHref}
+      target={props.linkTarget}
     />
   );
 
@@ -146,6 +150,8 @@ const ImageTile: React.FunctionComponent<IImageTileProps> = (props: IImageTilePr
 export interface ITileMediaExampleState {
   imagesLoaded: boolean;
   nameplateOnlyOnHover: boolean;
+  generateLinks: boolean;
+  linkInNewTab: boolean;
 }
 
 export class TileMediaExample extends React.Component<{}, ITileMediaExampleState> {
@@ -154,17 +160,24 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
 
     this.state = {
       imagesLoaded: true,
-      nameplateOnlyOnHover: false
+      nameplateOnlyOnHover: false,
+      generateLinks: false,
+      linkInNewTab: false
     };
   }
 
   public render(): JSX.Element {
-    const { imagesLoaded, nameplateOnlyOnHover } = this.state;
+    const { imagesLoaded, nameplateOnlyOnHover, generateLinks, linkInNewTab } = this.state;
+    const exampleUrl = 'http://www.contoso.com/';
+    const linkHref = generateLinks ? exampleUrl : undefined;
+    const linkTarget = generateLinks && linkInNewTab ? '_blank' : undefined;
 
     return (
       <div>
         <Checkbox label="Show images as loaded" checked={imagesLoaded} onChange={this._onImagesLoadedChanged} />
         <Checkbox label="Show nameplate only on hover" checked={nameplateOnlyOnHover} onChange={this._onNameplateOnlyOnHoverChanged} />
+        <Checkbox label="Generate links" checked={generateLinks} onChange={this._onGenerateLinksChanged} />
+        <Checkbox label="Open links in new tab" disabled={!generateLinks} checked={linkInNewTab} onChange={this._onLinkInNewTabChanged} />
         <h3>Landscape</h3>
         <ImageTile
           tileSize={{
@@ -178,6 +191,8 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           }}
           showBackground={imagesLoaded}
           nameplateOnlyOnHover={nameplateOnlyOnHover}
+          linkHref={linkHref}
+          linkTarget={linkTarget}
         />
         <h3>Portrait</h3>
         <ImageTile
@@ -192,6 +207,8 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           }}
           showBackground={imagesLoaded}
           nameplateOnlyOnHover={nameplateOnlyOnHover}
+          linkHref={linkHref}
+          linkTarget={linkTarget}
         />
         <h3>Small Image</h3>
         <ImageTile
@@ -206,6 +223,8 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
           }}
           showBackground={imagesLoaded}
           nameplateOnlyOnHover={nameplateOnlyOnHover}
+          linkHref={linkHref}
+          linkTarget={linkTarget}
         />
         <h3>No preview</h3>
         <div className={css(TileExampleStyles.tile, TileExampleStyles.largeTile)}>
@@ -215,6 +234,8 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
             foreground={<Icon iconName="play" style={{ margin: '11px', fontSize: '40px' }} />}
             showBackgroundFrame={true}
             nameplateOnlyOnHover={this.state.nameplateOnlyOnHover}
+            href={linkHref}
+            target={linkTarget}
           />
         </div>
       </div>
@@ -230,6 +251,18 @@ export class TileMediaExample extends React.Component<{}, ITileMediaExampleState
   private _onNameplateOnlyOnHoverChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
       nameplateOnlyOnHover: checked
+    });
+  };
+
+  private _onGenerateLinksChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      generateLinks: checked
+    });
+  };
+
+  private _onLinkInNewTabChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
+    this.setState({
+      linkInNewTab: checked
     });
   };
 }

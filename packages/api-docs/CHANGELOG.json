@@ -2,6 +2,20 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/api-docs_v7.2.22",
+      "version": "7.2.22",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Delete PositioningContainer docs",
+            "author": "elcraig@microsoft.com",
+            "commit": "75169c615330c4b0cc41a09c35f9d52fff9925a6"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 19 Feb 2020 12:21:05 GMT",
       "tag": "@uifabric/api-docs_v7.2.18",
       "version": "7.2.18",

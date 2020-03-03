@@ -2,6 +2,48 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/experiments_v7.21.3",
+      "version": "7.21.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "@uifabric/experiments_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated Tile (in experiments) to pass some link-specific props (e.g. 'target', 'download') to its internal link so that users of Tile can customize the link behavior. The Tile link now also defaults to <span> (instead of <button>) when no href or onClick is passed. Updated Tile.Media.Example to include a linking demo showing the new functionality.",
+            "author": "Graham.Langston@microsoft.com",
+            "commit": "e6839e8b1e2e70aa08653ae936ecf828ca6ac597"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "@uifabric/experiments_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "New composite FloatingSuggestion component, to be used in UnifiedPicker",
+            "author": "sanredd@microsoft.com",
+            "commit": "222b78a9e29247dc74de795a4e1925ee53c545f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2020 12:20:14 GMT",
       "tag": "@uifabric/experiments_v7.20.0",
       "version": "7.20.0",

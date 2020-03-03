@@ -4,6 +4,8 @@ import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuAnchor } from './ContextualMenuAnchor';
 
+// tslint:disable:deprecation
+
 describe('ContextualMenuButton', () => {
   describe('creates a normal button', () => {
     let menuItem: IContextualMenuItem;

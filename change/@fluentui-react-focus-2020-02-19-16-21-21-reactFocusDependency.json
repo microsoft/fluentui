@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Updating deprecated ReactType to non-deprecated ElementType.",
-  "packageName": "@fluentui/react-focus",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "98f285874162b07863e6c9d59816df44312ad35e",
-  "dependentChangeType": "patch",
-  "date": "2020-02-20T00:21:21.615Z"
-}

@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Added ApplicationInsights to public site to enable usage tracking",
+  "packageName": "@uifabric/fabric-website",
+  "email": "joschemd@microsoft.com",
+  "commit": "dd5ae96ef8d24ce591bb97214a16ee3da7b900eb",
+  "dependentChangeType": "patch",
+  "date": "2020-02-27T23:27:17.131Z"
+}

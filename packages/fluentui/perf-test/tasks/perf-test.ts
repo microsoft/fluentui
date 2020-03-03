@@ -28,6 +28,7 @@ type ExtendedCookResults = Record<string, ExtendedCookResult>;
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+// TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
 // const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 //   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
 //   : `file://${path.resolve(__dirname, '../dist/')}`;
@@ -45,22 +46,13 @@ const tempDir = path.join(__dirname, '../logfiles');
 
 console.log(`__dirname: ${__dirname}`);
 
-const GITHUB_REPO_ID = '141743704';
-async function getMasterBuild(): Promise<number> {
-  const url = 'https://fluent-ui-react-stats.azurewebsites.net/api/GetLatestBuild';
-
-  const response = await fetch(url);
-  const data = await response.json();
-  return data[0].build;
-}
-
 export default async function getPerfRegressions(baselineOnly: boolean = false) {
   let urlForMaster;
 
   if (!baselineOnly) {
-    const masterBuild = await getMasterBuild();
-    urlForMaster = `https://${masterBuild}-${GITHUB_REPO_ID}-gh.circle-artifacts.com/0/artifacts/perf/index.html`;
-    console.log('Master URL', urlForMaster);
+    urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
+      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
+      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
@@ -163,6 +155,7 @@ function createReport(stories, testResults: ExtendedCookResults): string {
   const report = ''
 
     // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+    // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
     // // Show only significant changes by default.
     // .concat(createScenarioTable(testResults, false))
 
@@ -197,6 +190,7 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   }
 
   // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+  // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
   // const result = `
   // <table>
   // <tr>
@@ -337,6 +331,7 @@ function getTicksResult(testResult: CookResult, getBaseline: boolean): string {
  * @returns {string}
  */
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+// TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
 // function getRegression(testResult: CookResult): string {
 //   const cell = testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
 //     ? testResult.analysis.regression.regressionFile

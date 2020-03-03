@@ -103,7 +103,7 @@ const webpackConfig: webpack.Configuration = {
       contextRegExp: /moment$/
     }),
     __DEV__ &&
-      !process.env.CI &&
+      !process.env.TF_BUILD &&
       new webpack.ProgressPlugin({
         entries: true,
         modules: true,

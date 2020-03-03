@@ -1,45 +1,48 @@
-import * as _ from 'lodash';
-import expand from './cssExpandShorthand';
-import * as _memoize from 'fast-memoize';
+import { ICSSInJSStyle } from '@fluentui/styles';
+import * as CSS from 'csstype';
+import { expandProperty } from 'inline-style-expand-shorthand';
 
-// `fast-memoize` is a CJS library, there are known issues with them:
-// https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
-const memoize = (_memoize as any).default || _memoize;
-
-// _.camelCase is quite fast, but we are running it for the same values many times
-const camelCase = memoize(_.camelCase);
-
-const handledCssPropsMap = {
-  font: 'font',
-  padding: 'padding',
-  margin: 'margin',
-  border: 'border',
-  borderWidth: 'border-width',
-  borderStyle: 'border-style',
-  borderColor: 'border-color',
-  borderTop: 'border-top',
-  borderRight: 'border-right',
-  borderBottom: 'border-bottom',
-  borderLeft: 'border-left',
-  borderRadius: 'border-radius',
-  background: 'background',
-  outline: 'outline'
+// https://jsperf.com/array-indexof-vs-object-key-lookup2/12
+const handledCssProps: Partial<Record<keyof CSS.Properties, true>> = {
+  // 'font', Oops, is not supported by inline-style-expand-shorthand
+  padding: true,
+  margin: true,
+  border: true,
+  borderWidth: true,
+  borderStyle: true,
+  borderColor: true,
+  borderTop: true,
+  borderRight: true,
+  borderBottom: true,
+  borderLeft: true,
+  borderRadius: true,
+  background: true,
+  outline: true
 };
 
 export default () => {
-  const expandCssShorthands = (styles: Object) => {
-    return Object.keys(styles).reduce((acc, cssPropertyName) => {
+  const expandCssShorthands = (styles: ICSSInJSStyle) => {
+    return Object.keys(styles).reduce((acc: ICSSInJSStyle, cssPropertyName: keyof CSS.Properties) => {
       const cssPropertyValue = styles[cssPropertyName];
+
+      if (cssPropertyValue === null || typeof cssPropertyValue === 'undefined') {
+        return { ...acc, [cssPropertyName]: cssPropertyValue };
+      }
+
+      if (handledCssProps[cssPropertyName]) {
+        const expandedProps = expandProperty(cssPropertyName, cssPropertyValue);
+
+        if (expandedProps) {
+          return { ...acc, ...expandedProps };
+        }
+      }
+
+      if (Array.isArray(cssPropertyValue)) {
+        return { ...acc, [cssPropertyName]: cssPropertyValue };
+      }
 
       if (typeof cssPropertyValue === 'object') {
         return { ...acc, [cssPropertyName]: expandCssShorthands(cssPropertyValue) };
-      }
-
-      if (handledCssPropsMap[cssPropertyName]) {
-        const expandedProps = expand(handledCssPropsMap[cssPropertyName], `${cssPropertyValue}`);
-        if (expandedProps) {
-          return { ...acc, ...convertKeysToCamelCase(expandedProps) };
-        }
       }
 
       return { ...acc, [cssPropertyName]: cssPropertyValue };
@@ -48,5 +51,3 @@ export default () => {
 
   return expandCssShorthands;
 };
-
-const convertKeysToCamelCase = obj => _.mapKeys(obj, (value, key) => camelCase(key));

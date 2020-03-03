@@ -239,6 +239,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     ) {
       return;
     }
+    // tslint:disable-next-line:deprecation
     const keyCode = ev.which;
     switch (keyCode) {
       case KeyCodes.escape:

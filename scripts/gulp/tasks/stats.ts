@@ -127,7 +127,7 @@ task('stats:build:bundle', async () => {
   writeCurrentStats(currentStatsFilePath, results);
 });
 
-task('stats', series(parallel('bundle:all-packages', 'build:docs:component-info'), 'stats:build:bundle'));
+task('stats', series(parallel('build:docs:component-info'), 'stats:build:bundle'));
 
 function readSummaryPerfStats() {
   return _.chain(require(paths.perfDist('result.json')))
@@ -189,15 +189,14 @@ task('stats:save', async () => {
 
   const mergedPerfStats = mergePerfStats(perfStats, flamegrillStats);
 
-  const prUrl =
-    process.env.CIRCLE_PULL_REQUEST ||
-    `${process.env.SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI}/pull/${process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}`;
+  const prSuffix = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.replace(/^refs\//, '').replace(/\/merge/, '');
+  const prUrl = `${process.env.BUILD_REPOSITORY_URI}/${prSuffix}`;
 
   const statsPayload = {
-    sha: process.env.BUILD_SOURCEVERSION || process.env.CIRCLE_SHA1,
-    branch: process.env.BUILD_SOURCEBRANCHNAME || process.env.CIRCLE_BRANCH,
+    sha: process.env.BUILD_SOURCEVERSION,
+    branch: process.env.BUILD_SOURCEBRANCHNAME,
     pr: prUrl, // optional
-    build: process.env.BUILD_BUILDID || process.env.CIRCLE_BUILD_NUM,
+    build: process.env.BUILD_BUILDID,
     ...commandLineArgs, // allow command line overwrites
     bundleSize: bundleStats,
     performance: mergedPerfStats,

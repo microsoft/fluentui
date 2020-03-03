@@ -6,7 +6,6 @@ export const NavBasicExample: React.FunctionComponent = () => {
     <Nav
       onLinkClick={_onLinkClick}
       selectedKey="key3"
-      selectedAriaLabel="Selected"
       ariaLabel="Nav basic example"
       styles={{
         root: {

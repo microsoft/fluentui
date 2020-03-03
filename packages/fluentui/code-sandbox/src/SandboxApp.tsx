@@ -39,11 +39,11 @@ const SandboxApp: React.FunctionComponent = props => {
           <Header>Fluent UI @ {pkg.version}</Header>
           <p>
             This example is powered by Fluent UI, check{' '}
-            <Text as="a" href="https://microsoft.github.io/fluent-ui-react/">
+            <Text as="a" href="https://aka.ms/fluent-ui">
               our docs
             </Text>{' '}
             and{' '}
-            <Text as="a" href="https://github.com/microsoft/fluent-ui-react">
+            <Text as="a" href="https://github.com/OfficeDev/office-ui-fabric-react">
               GitHub
             </Text>
             .

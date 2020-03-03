@@ -1,7 +1,54 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 24 Feb 2020 12:21:19 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
 
+## 7.98.3
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Using tslint:disable-next-line instead of tslint:disable without a corresponding tslint:enable afterwards for all non-tests and non-data files. (Humberto.Morimoto@microsoft.com)
+- Link: Make focus work even when Link has block children. (humbertomakotomorimoto@gmail.com)
+- ScrollablePane example: fix strict function type errors (xgao@microsoft.com)
+## 7.98.2
+Mon, 02 Mar 2020 12:25:44 GMT
+
+### Patches
+
+- SpinButton: fix SpinButton content overlapping with border under certain resolutions (xgao@microsoft.com)
+- DetailsList Example: change drag drop behavior to be more intuitive, allow dragging to the last row (xgao@microsoft.com)
+## 7.98.1
+Fri, 28 Feb 2020 12:25:15 GMT
+
+### Patches
+
+- Updates the Nav component's links to use aria-current (sarah.higley@microsoft.com)
+- Panel: use align-items for vertical alignment (aneeshak@microsoft.com)
+- Dialog: fix isOpen deprecated prop no longer being honored (xgao@microsoft.com)
+## 7.98.0
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Minor changes
+
+- Toggle: allow menuitemcheckbox role (xgao@microsoft.com)
+### Patches
+
+- Slider: allow setting id on slider (xgao@microsoft.com)
+## 7.97.1
+Wed, 26 Feb 2020 12:28:12 GMT
+
+### Patches
+
+- Turning on 'deprecation' tslint rule. (Humberto.Morimoto@microsoft.com)
+## 7.97.0
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Minor changes
+
+- FocusZone: Re-exporting FocusZone from react-focus package and removing duplication in OUFR package. (humbertomakotomorimoto@gmail.com)
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
 ## 7.96.0
 Mon, 24 Feb 2020 12:21:19 GMT
 

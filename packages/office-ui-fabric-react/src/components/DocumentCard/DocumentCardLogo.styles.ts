@@ -15,6 +15,7 @@ export const getStyles = (props: IDocumentCardLogoStyleProps): IDocumentCardLogo
     root: [
       classNames.root,
       {
+        // tslint:disable-next-line:deprecation
         fontSize: fonts.xxLargePlus.fontSize,
         color: palette.themePrimary,
         display: 'block',
