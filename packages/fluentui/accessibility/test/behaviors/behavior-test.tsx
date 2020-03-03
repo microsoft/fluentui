@@ -13,6 +13,7 @@ import {
   embedBehavior,
   iconBehavior,
   imageBehavior,
+  indicatorBehavior,
   inputBehavior,
   loaderBehavior,
   menuBehavior,
@@ -98,6 +99,7 @@ testHelper.addBehavior('embedBehavior', embedBehavior);
 testHelper.addBehavior('iconBehavior', iconBehavior);
 testHelper.addBehavior('inputBehavior', inputBehavior);
 testHelper.addBehavior('imageBehavior', imageBehavior);
+testHelper.addBehavior('indicatorBehavior', indicatorBehavior);
 testHelper.addBehavior('loaderBehavior', loaderBehavior);
 testHelper.addBehavior('menuBehavior', menuBehavior);
 testHelper.addBehavior('menuItemBehavior', menuItemBehavior);
