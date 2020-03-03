@@ -11,6 +11,7 @@ describe('BaseComponent', () => {
       public root: HTMLElement;
 
       public render(): JSX.Element {
+        // tslint:disable-next-line:deprecation
         return <div ref={this._resolveRef('root')} />;
       }
     }
