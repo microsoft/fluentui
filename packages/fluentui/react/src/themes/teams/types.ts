@@ -56,9 +56,9 @@ import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/Hi
 import { VideoProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
-import { TableProps } from 'src/components/Table/Table';
-import { TableRowProps } from 'src/components/Table/TableRow';
-import { TableCellStylesProps } from 'src/components/Table/TableCell';
+import { TableProps } from '../../components/Table/Table';
+import { TableRowProps } from '../../components/Table/TableRow';
+import { TableCellStylesProps } from '../../components/Table/TableCell';
 
 export type TeamsThemeStylesProps = {
   Accordion?: AccordionProps;
