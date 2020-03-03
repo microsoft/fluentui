@@ -106,7 +106,7 @@ export type TeamsThemeStylesProps = {
   Slider?: SliderStylesProps;
   Status?: StatusStylesProps;
   Toolbar?: ToolbarProps;
-  ToolbarCustomItem?: ToolbarCustomItemProps;
+  ToolbarCustomItem?: ToolbarCustomItemStylesProps;
   ToolbarItem?: ToolbarItemStylesProps;
   ToolbarDivider?: ToolbarDividerStylesProps;
   ToolbarRadioGroup?: ToolbarRadioGroupProps;
