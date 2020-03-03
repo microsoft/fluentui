@@ -10,17 +10,17 @@ class MockAsync extends Async {
     let timeoutId: number | null = null;
     const debounced = (...args: any[]) => {
       if (timeoutId) {
-        window.clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
       }
       // Callback functions throughout repo aren't binding properly, so we have to access
       // Async's private _parent member and invoke callbacks the same way Async.debounce does.
       const invokeFunction = () => callback.apply((this as any)._parent, args);
-      timeoutId = window.setTimeout(invokeFunction, timeout);
+      timeoutId = setTimeout(invokeFunction, timeout);
     };
 
     const cancel = () => {
       if (timeoutId) {
-        window.clearTimeout(timeoutId);
+        clearTimeout(timeoutId);
       }
     };
 
