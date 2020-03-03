@@ -3,6 +3,7 @@ import { DropdownVariables } from './dropdownVariables';
 import DropdownItem, { DropdownItemProps } from '../../../../components/Dropdown/DropdownItem';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { pxToRem } from '../../../../utils';
+import checkableIndicatorUrl from './checkableIndicatorUrl';
 
 export type DropdownItemStylesProps = Pick<DropdownItemProps, 'selected' | 'active' | 'isFromKeyboard'> & {
   hasContent?: boolean;
@@ -68,8 +69,14 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     color: v.listItemContentColor
   }),
   checkableIndicator: ({ variables: v }) => ({
+    backgroundImage: checkableIndicatorUrl(v.color),
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
     position: 'relative',
-    left: pxToRem(3)
+    width: pxToRem(24),
+    height: pxToRem(24),
+    left: pxToRem(3),
+    top: pxToRem(-3)
   }),
   endMedia: () => ({
     flexShrink: 0,
