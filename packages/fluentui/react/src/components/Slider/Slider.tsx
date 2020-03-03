@@ -23,6 +23,7 @@ import {
   ShorthandValue,
   WithAsProp,
   withSafeTypeForAs,
+  Omit,
   FluentComponentStaticProps,
   ProviderContextPrepared
 } from '../../types';

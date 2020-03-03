@@ -18,6 +18,8 @@ export type ResultOf<T> = T extends (...arg: any[]) => infer TResult ? TResult :
 
 export type ObjectOf<T> = { [key: string]: T };
 
+export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+
 // ========================================================
 // Components
 // ========================================================
