@@ -129,7 +129,7 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
     underlined: PropTypes.bool,
     vertical: PropTypes.bool,
     submenu: PropTypes.bool,
-    indicator: customPropTypes.itemShorthand
+    indicator: customPropTypes.shorthandAllowingChildren
   };
 
   static defaultProps = {

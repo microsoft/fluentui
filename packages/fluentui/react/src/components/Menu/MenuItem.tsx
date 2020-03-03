@@ -175,14 +175,15 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     defaultMenuOpen: PropTypes.bool,
     onActiveChanged: PropTypes.func,
     inSubmenu: PropTypes.bool,
-    indicator: customPropTypes.itemShorthand,
+    indicator: customPropTypes.shorthandAllowingChildren,
     onMenuOpenChange: PropTypes.func
   };
 
   static defaultProps = {
     as: 'a',
     accessibility: menuItemBehavior as Accessibility,
-    wrapper: { as: 'li' }
+    wrapper: { as: 'li' },
+    indicator: {}
   };
 
   static autoControlledProps = ['menuOpen'];
@@ -219,7 +220,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
             defaultProps: () => ({ as: 'span', styles: styles.content })
           })}
           {menu &&
-            Box.create(indicator === undefined ? {} : indicator, {
+            Box.create(indicator, {
               defaultProps: () => ({
                 as: 'span',
                 className: MenuItem.slotClassNames.indicator,
