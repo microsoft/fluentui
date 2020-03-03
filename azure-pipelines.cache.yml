@@ -6,5 +6,5 @@ steps:
       restoreKeys: |
         gulp-cache-tmp | "$(Agent.OS)"
         gulp-cache-tmp
-      path: /$(TMPDIR)/gulp-cache
+      path: /tmp/gulp-cache
     displayName: Cache gulp-cache
