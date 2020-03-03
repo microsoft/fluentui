@@ -1,5 +1,6 @@
 import { Accessibility, AccessibilityAttributes } from '../../types';
 import menuItemBehavior from '../Menu/menuItemBehavior';
+import indicatorBehavior from '../Icon/indicatorBehavior';
 
 /**
  * @description
@@ -23,7 +24,12 @@ import menuItemBehavior from '../Menu/menuItemBehavior';
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper'.
  */
 const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
-  return menuItemBehavior({ ...props, vertical: true });
+  const behavior = menuItemBehavior({ ...props, vertical: true });
+  behavior.childBehaviors = {
+    ...(behavior.childBehaviors || {}),
+    submenuIndicator: indicatorBehavior
+  };
+  return behavior;
 };
 
 export default toolbarMenuItemBehavior;

@@ -1,4 +1,5 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -127,7 +128,8 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
       ? Box.create(checkableIndicator, {
           defaultProps: () => ({
             className: DropdownItem.slotClassNames.checkableIndicator,
-            styles: resolvedStyles.checkableIndicator
+            styles: resolvedStyles.checkableIndicator,
+            accessibility: indicatorBehavior
           })
         })
       : null;

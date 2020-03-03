@@ -1,4 +1,4 @@
-import { Accessibility, toolbarMenuItemBehavior, ToolbarMenuItemBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, toolbarMenuItemBehavior, ToolbarMenuItemBehaviorProps, indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as _ from 'lodash';
 import cx from 'classnames';
@@ -316,7 +316,8 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
               defaultProps: () => ({
                 as: 'span',
                 className: ToolbarMenuItem.slotClassNames.activeIndicator,
-                styles: resolvedStyles.activeIndicator
+                styles: resolvedStyles.activeIndicator,
+                accessibility: indicatorBehavior
               })
             })}
           {menu &&
@@ -324,7 +325,8 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
               defaultProps: () => ({
                 as: 'span',
                 className: ToolbarMenuItem.slotClassNames.submenuIndicator,
-                styles: resolvedStyles.submenuIndicator
+                styles: resolvedStyles.submenuIndicator,
+                accessibility: indicatorBehavior
               })
             })}
         </>

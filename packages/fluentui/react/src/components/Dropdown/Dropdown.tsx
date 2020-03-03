@@ -1,5 +1,6 @@
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -464,7 +465,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                     ? Box.create(clearIndicator, {
                         defaultProps: () => ({
                           className: Dropdown.slotClassNames.clearIndicator,
-                          styles: styles.clearIndicator
+                          styles: styles.clearIndicator,
+                          accessibility: indicatorBehavior
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: (e: React.SyntheticEvent<HTMLElement>) => {
@@ -476,7 +478,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                     : Box.create(toggleIndicator, {
                         defaultProps: () => ({
                           className: Dropdown.slotClassNames.toggleIndicator,
-                          styles: styles.toggleIndicator
+                          styles: styles.toggleIndicator,
+                          accessibility: indicatorBehavior
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: e => {
