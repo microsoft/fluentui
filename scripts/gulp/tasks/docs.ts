@@ -74,11 +74,12 @@ const markdownSrc = [
 ];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
-task('build:docs:component-info', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
+task('build:docs:component-info', () => {
+  console.log('Caching Component Info at: ', paths.base());
+  return src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true, base: paths.base() })
     .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
-    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() }))
-);
+    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() }));
+});
 
 task('build:docs:component-menu', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-menu') })
@@ -101,7 +102,7 @@ task('build:docs:example-menu', () =>
 );
 
 task('build:docs:example-sources', () =>
-  src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
+  src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true, base: paths.base() })
     .pipe(
       cache(gulpExampleSource(), {
         name: 'exampleSources'
