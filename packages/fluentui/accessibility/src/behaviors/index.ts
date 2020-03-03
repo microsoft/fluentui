@@ -85,6 +85,7 @@ export { default as carouselItemBehavior } from './Carousel/carouselItemBehavior
 export { default as tableBehavior } from './Table/tableBehavior';
 export { default as tableRowBehavior } from './Table/tableRowBehavior';
 export { default as tableCellBehavior } from './Table/tableCellBehavior';
+export * from './Table/tableCellBehavior';
 export { default as tableHeaderCellBehavior } from './Table/tableHeaderCellBehavior';
 export { default as gridNestedBehavior } from './Table/gridNestedBehavior';
 export { default as gridHeaderRowBehavior } from './Table/gridHeaderRowBehavior';
