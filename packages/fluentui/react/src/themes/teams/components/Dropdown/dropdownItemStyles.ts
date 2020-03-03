@@ -69,7 +69,7 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     color: v.listItemContentColor
   }),
   checkableIndicator: ({ variables: v }) => ({
-    backgroundImage: checkableIndicatorUrl(v.color),
+    backgroundImage: checkableIndicatorUrl(v.listItemSelectedColor),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     position: 'relative',
