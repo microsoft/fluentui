@@ -267,7 +267,8 @@ export class ThemingSchemesCustomExample extends React.Component<{}, IThemingExa
   };
 }
 
-const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && item.name);
+// tslint:disable-next-line:deprecation
+const onCommandClick = (ev: any, item?: ICommandBarItemProps) => console.log(item && (item.text || item.name));
 const items: ICommandBarItemProps[] = [
   {
     key: 'newItem',
