@@ -21,7 +21,7 @@ import {
 import MenuItem, { MenuItemProps } from './MenuItem';
 import { WithAsProp, ShorthandCollection, ShorthandValue, withSafeTypeForAs, ComponentEventHandler } from '../../types';
 import MenuDivider from './MenuDivider';
-import { IconProps } from '../Icon/Icon';
+import { BoxProps } from '../Box/Box';
 
 export type MenuShorthandKinds = 'divider' | 'item';
 
@@ -92,7 +92,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   submenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<IconProps>;
+  indicator?: ShorthandValue<BoxProps>;
 }
 
 export interface MenuState {
@@ -129,7 +129,7 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
     underlined: PropTypes.bool,
     vertical: PropTypes.bool,
     submenu: PropTypes.bool,
-    indicator: customPropTypes.itemShorthandWithoutJSX
+    indicator: customPropTypes.itemShorthand
   };
 
   static defaultProps = {

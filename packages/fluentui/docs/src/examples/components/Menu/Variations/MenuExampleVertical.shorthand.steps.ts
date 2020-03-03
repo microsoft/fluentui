@@ -1,4 +1,4 @@
-import getScreenerSteps from '../commonScreenerSteps';
+import { default as getScreenerSteps } from '../commonScreenerSteps';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
