@@ -22,7 +22,8 @@ export class FloatingSuggestionPage extends React.Component<IComponentDemoPagePr
             sources={[
               require<
                 string
-              >('!raw-loader!@uifabric/experiments/src/components/FloatingSuggestionsComposite/FloatingPeopleSuggestions.types.ts')
+                // tslint:disable-next-line:max-line-length
+              >('!raw-loader!@uifabric/experiments/src/components/FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types.ts')
             ]}
           />
         }
