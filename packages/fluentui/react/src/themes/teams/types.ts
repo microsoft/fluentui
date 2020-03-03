@@ -46,7 +46,7 @@ import { StatusStylesProps } from './components/Status/statusStyles';
 import { TextStylesProps } from './components/Text/textStyles';
 import { ToolbarDividerStylesProps } from '../../components/Toolbar/ToolbarDivider';
 import { ToolbarItemStylesProps } from '../../components/Toolbar/ToolbarItem';
-import { ToolbarCustomItemProps } from '../../components/Toolbar/ToolbarCustomItem';
+import { ToolbarCustomItemStylesProps } from '../../components/Toolbar/ToolbarCustomItem';
 import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
