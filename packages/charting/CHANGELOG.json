@@ -2,6 +2,211 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/charting_v0.140.3",
+      "version": "0.140.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable keyboard accessibility for Donut chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "bb05aa2eb9e36d2a5f2bbba01a2e396f9e60a0a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/charting_v0.140.0",
+      "version": "0.140.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "8ee54b6c69ccf5e88d6794bc41d0597b139da4d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/charting_v0.139.21",
+      "version": "0.139.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Feb 2020 17:06:50 GMT",
+      "tag": "@uifabric/charting_v0.139.20",
+      "version": "0.139.20",
+      "comments": {
+        "none": [
+          {
+            "comment": "upgrading types for webpack-env",
+            "author": "kchau@microsoft.com",
+            "commit": "7d071a411865930641727e54da85d2d601c5722b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Feb 2020 18:37:59 GMT",
+      "tag": "@uifabric/charting_v0.139.17",
+      "version": "0.139.17",
+      "comments": {
+        "none": [
+          {
+            "comment": "update enzyme",
+            "author": "kchau@microsoft.com",
+            "commit": "495983aec20488918f3d1ee87a8af92cb93d208f"
+          },
+          {
+            "comment": "fixing released versions",
+            "author": "kchau@microsoft.com",
+            "commit": "207521eb85f200e2cda239d06eacdf5f49efdadc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 07 Feb 2020 12:41:31 GMT",
+      "tag": "@uifabric/charting_v0.139.14",
+      "version": "0.139.14",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove unused config files",
+            "author": "elcraig@microsoft.com",
+            "commit": "96ccf88b8f44981d21a3903789874a13a2f79b1d"
+          },
+          {
+            "comment": "moved storybook config",
+            "author": "kchau@microsoft.com",
+            "commit": "5612f0eff3ea9ce3f6d367979b208f3c2489d330"
+          },
+          {
+            "comment": "uniting build across fluent and fabric",
+            "author": "kchau@microsoft.com",
+            "commit": "f9503d808bc0971e843024c9fb679c0ed5a67fbb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 31 Jan 2020 19:00:10 GMT",
+      "tag": "@uifabric/charting_v0.139.10",
+      "version": "0.139.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Fix prettier error after upgrade prettier to 1.19.1",
+            "author": "xgao@microsoft.com",
+            "commit": "2242effd3e5226f313ef16f9c18ed3db87d548c4"
+          },
+          {
+            "comment": "bumping versions to fix broken publishes",
+            "author": "kchau@microsoft.com",
+            "commit": "1fd6f0a289e8f0f126c9609b8e775ac0ced03b81"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jan 2020 12:43:24 GMT",
+      "tag": "@uifabric/charting_v0.139.7",
+      "version": "0.139.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "updates yarn start experience to storybook for packages that have examples",
+            "author": "kchau@microsoft.com",
+            "commit": "b907cd26f0ee1d1a52c68a624186d255deaa1893"
+          },
+          {
+            "comment": "Rename all just configs to TS.",
+            "author": "jagore@microsoft.com",
+            "commit": "373c657b0bf9bf5d8e8433d8df8ccdccaec89e45"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 27 Jan 2020 03:59:43 GMT",
+      "tag": "@uifabric/charting_v0.139.6",
+      "version": "0.139.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Provided accessability for stacked bar chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "3b8960245b8fdd16056d56bda08a43a4adbaee9e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 23 Jan 2020 12:32:26 GMT",
+      "tag": "@uifabric/charting_v0.139.4",
+      "version": "0.139.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding minimun legend container height",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "8c0f660b6ed8df0a804cc0b4be7e5eea8c7b6c43"
+          },
+          {
+            "comment": "closing callout on pressing esc key",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "ebf2aaa92353d0f95f735bcdfa63161fa968b605"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jan 2020 02:32:17 GMT",
+      "tag": "@uifabric/charting_v0.139.2",
+      "version": "0.139.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads.",
+            "author": "jagore@microsoft.com",
+            "commit": "52dc239bf89dbe76daa5f4776ee4368957938a1a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Jan 2020 17:02:57 GMT",
+      "tag": "@uifabric/charting_v0.139.1",
+      "version": "0.139.1",
+      "comments": {
+        "none": [
+          {
+            "comment": "Break up build task into build, bundle, test and lint tasks. Add parallelization pipeline using new tasks.",
+            "author": "jagore@microsoft.com",
+            "commit": "f1f07695f5d18c2c975eef382c5b777d7ccb52e2"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "bumping load-themed-styles to take advantage of es6 version of it",
+            "author": "kchau@microsoft.com",
+            "commit": "9041aee981e0ad058920172d078af2d2cc2292db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Nov 2019 12:32:11 GMT",
       "tag": "@uifabric/charting_v0.139.0",
       "version": "0.139.0",

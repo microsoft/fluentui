@@ -4,7 +4,7 @@ import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
 import { KeytipData } from '../../../KeytipData';
-import { isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
+import { isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilities/contextualMenu/index';
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { IKeytipProps } from '../../Keytip/Keytip.types';
@@ -57,7 +57,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
           <div
             data-ktp-target={keytipAttributes['data-ktp-target']}
             ref={(splitButton: HTMLDivElement) => (this._splitButton = splitButton)}
-            role={'menuitem'}
+            role={getMenuItemAriaRole(item)}
             aria-label={item.ariaLabel}
             className={classNames.splitContainer}
             aria-disabled={isItemDisabled(item)}
@@ -103,6 +103,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
 
   private _renderSplitPrimaryButton(
     item: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -113,8 +114,10 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     const itemProps: IContextualMenuItem = {
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
+      // tslint:disable:deprecation
       name: item.name,
       text: item.text || item.name,
+      // tslint:enable:deprecation
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
@@ -145,6 +148,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     return <VerticalDivider getClassNames={getDividerClassNames} />;
   }
 
+  // tslint:disable-next-line:deprecation
   private _renderSplitIconButton(item: IContextualMenuItem, classNames: IMenuItemClassNames, index: number, keytipAttributes: any) {
     const {
       contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,

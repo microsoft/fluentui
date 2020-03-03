@@ -96,7 +96,6 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -132,7 +131,6 @@ exports[`PersonaCoin renders a correct persona 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -168,7 +166,6 @@ exports[`PersonaCoin renders a red coin 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;
@@ -238,6 +235,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "33.333333333333336px",
@@ -335,6 +333,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
           background-color: WindowText;
           border-color: Window;
         }
+    role="presentation"
     style={
       Object {
         "height": "16px",
@@ -398,7 +397,6 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: inherit;
           display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 19.2px;

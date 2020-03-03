@@ -5,6 +5,7 @@ import { classNamesFunction, divProperties, getNativeProps, getWindow, initializ
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
+import { composeComponentAs, composeRenderFunction } from '@uifabric/utilities';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;
@@ -17,7 +18,7 @@ let _urlResolver: HTMLAnchorElement | undefined;
 
 export function isRelativeUrl(url: string): boolean {
   // A URL is relative if it has no protocol.
-  return !!url && !/^[a-z0-9+-.]:\/\//i.test(url);
+  return !!url && !/^[a-z0-9+-.]+:\/\//i.test(url);
 }
 
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
@@ -88,9 +89,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
-    const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton, selectedAriaLabel } = this.props;
+    const { styles, groups, theme } = this.props;
     const isLinkWithIcon = link.icon || link.iconProps;
     const isSelectedLink = this._isLinkSelected(link);
+    const { ariaCurrent = 'page' } = link;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: isSelectedLink,
@@ -102,7 +104,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     // Prevent hijacking of the parent window if link.target is defined
     const rel = link.url && link.target && !isRelativeUrl(link.url) ? 'noopener noreferrer' : undefined;
-    const selectedStateAriaLabel = isSelectedLink && selectedAriaLabel ? selectedAriaLabel : undefined;
+
+    const LinkAs = this.props.linkAs ? composeComponentAs(this.props.linkAs, ActionButton) : ActionButton;
+    const onRenderLink = this.props.onRenderLink ? composeRenderFunction(this.props.onRenderLink, this._onRenderLink) : this._onRenderLink;
 
     return (
       <LinkAs
@@ -115,25 +119,18 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         target={link.target}
         rel={rel}
         disabled={link.disabled}
-        aria-label={
-          link.ariaLabel && selectedStateAriaLabel
-            ? `${link.ariaLabel} ${selectedStateAriaLabel}`
-            : selectedStateAriaLabel
-            ? selectedStateAriaLabel
-            : link.ariaLabel
-            ? link.ariaLabel
-            : undefined
-        }
+        aria-current={isSelectedLink ? ariaCurrent : undefined}
+        aria-label={link.ariaLabel ? link.ariaLabel : undefined}
         link={link}
-        defaultRender={ActionButton}
       >
-        {onRenderLink(link, this._onRenderLink)}
+        {onRenderLink(link)}
       </LinkAs>
     );
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
+    // tslint:disable-next-line:deprecation
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -220,6 +217,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _renderGroupHeader = (group: INavLinkGroup): React.ReactElement<{}> => {
+    // tslint:disable-next-line:deprecation
     const { styles, groups, theme, expandButtonAriaLabel } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,

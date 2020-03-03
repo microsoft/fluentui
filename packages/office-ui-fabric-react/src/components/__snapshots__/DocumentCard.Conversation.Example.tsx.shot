@@ -23,7 +23,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
         &:focus {
           outline: 0px solid;
         }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
           border: 2px solid #605e5c;
           bottom: -1px;
           content: '';
@@ -265,6 +269,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -345,6 +350,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -470,7 +476,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
         &:focus {
           outline: 0px solid;
         }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
           border: 2px solid #605e5c;
           bottom: -1px;
           content: '';
@@ -702,6 +712,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -806,6 +817,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"
@@ -907,7 +919,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
         &:focus {
           outline: 0px solid;
         }
+        .ms-Fabric--isFocusVisible &:focus {
+          border-color: #605e5c;
+        }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border-radius: 2px;
           border: 2px solid #605e5c;
           bottom: -1px;
           content: '';
@@ -1108,6 +1124,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 className=
@@ -1212,6 +1229,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                     text-align: center;
                     width: 32px;
                   }
+              role="presentation"
             >
               <div
                 aria-hidden="true"

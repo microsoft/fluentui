@@ -26,15 +26,19 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
     // Ensures that the item is passed as the first argument to the checkmark click callback.
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
 
-    return <Icon iconName={isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />;
+    return (
+      <Icon iconName={item.canCheck !== false && isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />
+    );
   }
   return null;
 };
 
 const renderItemName = ({ item, classNames }: IContextualMenuItemProps) => {
+  // tslint:disable:deprecation
   if (item.text || item.name) {
     return <span className={classNames.label}>{item.text || item.name}</span>;
   }
+  // tslint:enable:deprecation
   return null;
 };
 
@@ -45,9 +49,9 @@ const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => 
   return null;
 };
 
-const renderSubMenuIcon = ({ item, classNames }: IContextualMenuItemProps) => {
+const renderSubMenuIcon = ({ item, classNames, theme }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
-    return <Icon iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
+    return <Icon iconName={getRTL(theme) ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
   }
   return null;
 };

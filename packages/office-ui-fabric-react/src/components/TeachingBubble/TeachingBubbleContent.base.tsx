@@ -54,6 +54,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       secondaryButtonProps,
       headline,
       hasCondensedHeadline,
+      // tslint:disable-next-line:deprecation
       hasCloseButton = this.props.hasCloseIcon,
       onDismiss,
       closeButtonAriaLabel,
@@ -77,6 +78,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       hasCondensedHeadline,
       hasSmallHeadline,
       hasCloseButton,
+      hasHeadline: !!headline,
       isWide,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
       secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined
@@ -85,7 +87,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
     if (illustrationImage && illustrationImage.src) {
       imageContent = (
         <div className={classNames.imageContent}>
-          <Image {...illustrationImage as any} />
+          <Image {...(illustrationImage as any)} />
         </div>
       );
     }

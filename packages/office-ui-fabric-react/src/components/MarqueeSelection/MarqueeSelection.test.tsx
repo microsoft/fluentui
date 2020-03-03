@@ -49,7 +49,7 @@ describe('MarqueeSelection', () => {
         right: 90,
         width: 80,
         height: 80
-      };
+      } as DOMRect;
     };
 
     // Simulate clicking and dragging to select the div.

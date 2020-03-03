@@ -32,3 +32,9 @@ export function hasSubmenu(item: IContextualMenuItem): boolean {
 export function isItemDisabled(item: IContextualMenuItem): boolean {
   return !!(item.isDisabled || item.disabled);
 }
+
+export function getMenuItemAriaRole(item: IContextualMenuItem): string {
+  const isChecked = getIsChecked(item);
+  const canCheck: boolean = isChecked !== null;
+  return canCheck ? 'menuitemcheckbox' : 'menuitem';
+}

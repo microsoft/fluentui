@@ -10,14 +10,29 @@ import { IComboBox, IComboBoxOption, IComboBoxProps } from './ComboBox.types';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 import { expectOne, expectMissing, renderIntoDocument } from '../../common/testUtilities';
 
-const DEFAULT_OPTIONS: IComboBoxOption[] = [{ key: '1', text: '1' }, { key: '2', text: '2' }, { key: '3', text: '3' }];
+const DEFAULT_OPTIONS: IComboBoxOption[] = [
+  { key: '1', text: '1' },
+  { key: '2', text: '2' },
+  { key: '3', text: '3' }
+];
 
-const DEFAULT_OPTIONS2: IComboBoxOption[] = [{ key: '1', text: 'One' }, { key: '2', text: 'Foo' }, { key: '3', text: 'Bar' }];
+const DEFAULT_OPTIONS2: IComboBoxOption[] = [
+  { key: '1', text: 'One' },
+  { key: '2', text: 'Foo' },
+  { key: '3', text: 'Bar' }
+];
 const DEFAULT_OPTIONS3: IComboBoxOption[] = [
   { key: '0', text: 'Zero', itemType: SelectableOptionMenuItemType.Header },
   { key: '1', text: 'One' },
   { key: '2', text: 'Foo' },
   { key: '3', text: 'Bar' }
+];
+
+const RUSSIAN_OPTIONS: IComboBoxOption[] = [
+  { key: '0', text: 'сестра' },
+  { key: '1', text: 'брат' },
+  { key: '2', text: 'мама' },
+  { key: '3', text: 'папа' }
 ];
 
 const returnUndefined = () => undefined;
@@ -103,7 +118,10 @@ describe('ComboBox', () => {
   });
 
   it('Renders a selected item with zero key', () => {
-    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one' }
+    ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
     const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
@@ -111,7 +129,10 @@ describe('ComboBox', () => {
   });
 
   it('changes to a selected key change the input', () => {
-    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one' }
+    ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
     expect(wrapper.find('input').props().value).toEqual('zero');
@@ -122,16 +143,17 @@ describe('ComboBox', () => {
   });
 
   it('changes to a selected item on key change', () => {
-    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    const options: IComboBoxOption[] = [
+      { key: 0, text: 'zero' },
+      { key: 1, text: 'one' }
+    ];
     wrapper = mount(<ComboBox selectedKey={0} options={options} />);
 
     expect(wrapper.find('input').props().value).toEqual('zero');
 
     wrapper.setProps({ selectedKey: null });
 
-    // \u200B is a zero width space.
-    // See https://github.com/OfficeDev/office-ui-fabric-react/blob/d4e9b6d28b25a3e123b2d47c0a03f18113fbee60/packages/office-ui-fabric-react/src/components/ComboBox/ComboBox.tsx#L481.
-    expect(wrapper.find('input').props().value).toEqual('\u200B');
+    expect(wrapper.find('input').props().value).toEqual('');
   });
 
   it('Renders a placeholder', () => {
@@ -231,6 +253,14 @@ describe('ComboBox', () => {
     wrapper.find('input').simulate('input', { target: { value: 'f' } });
     wrapper.update();
     expect(wrapper.find('input').props().value).toEqual('Foo');
+  });
+
+  it('Can insert non latin text in uncontrolled case with autoComplete on and allowFreeform off', () => {
+    wrapper = mount(<ComboBox defaultSelectedKey="0" options={RUSSIAN_OPTIONS} autoComplete="on" allowFreeform={false} />);
+
+    wrapper.find('input').simulate('input', { target: { value: 'п' } });
+    wrapper.update();
+    expect(wrapper.find('input').props().value).toEqual('папа');
   });
 
   it('Can insert text in uncontrolled case with autoComplete off and allowFreeform on', () => {
@@ -482,7 +512,7 @@ describe('ComboBox', () => {
 
     // SelectedKey is set to null
     wrapper.setProps({ selectedKey: null });
-    expect(wrapper.find('input').props().value).toEqual('\u200B');
+    expect(wrapper.find('input').props().value).toEqual('');
 
     const suggestedDisplay = (componentRef.current as ComboBox).state.suggestedDisplayValue;
     expect(suggestedDisplay).toEqual(undefined);
@@ -556,6 +586,37 @@ describe('ComboBox', () => {
     expect(updatedText).toEqual('');
   });
 
+  it('Can clear text in controlled case with autoComplete off and allowFreeform on', () => {
+    let updatedText;
+    wrapper = mount(
+      <ComboBox
+        options={DEFAULT_OPTIONS}
+        autoComplete="off"
+        allowFreeform={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onChange={(event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
+          updatedText = value;
+        }}
+      />
+    );
+
+    const input = wrapper.find('input');
+    (input.instance() as any).value = 'ab';
+    input.simulate('input', { target: { value: 'ab' } });
+    input.simulate('keydown', { which: KeyCodes.backspace });
+    input.simulate('input', { target: { value: 'a' } });
+    input.simulate('keydown', { which: KeyCodes.backspace });
+    wrapper.update();
+
+    (input.instance() as any).value = '';
+    input.simulate('input', { target: { value: '' } });
+    wrapper.update();
+    expect((input.instance() as any).value).toEqual('');
+    input.simulate('keydown', { which: KeyCodes.enter });
+
+    expect(updatedText).toEqual('');
+  });
+
   it('in multiSelect mode, selectedIndices are correct after performing multiple selections using mouse click', () => {
     const comboBoxRef = React.createRef<any>();
     wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
@@ -570,6 +631,55 @@ describe('ComboBox', () => {
     ReactTestUtils.Simulate.change(buttons[1]);
 
     expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 2, 1]);
+  });
+
+  it('in multiSelect mode, defaultselected keys produce correct display input', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(
+      <ComboBox
+        multiSelect
+        options={DEFAULT_OPTIONS}
+        componentRef={comboBoxRef}
+        selectedKey={[DEFAULT_OPTIONS[0].key as string, DEFAULT_OPTIONS[2].key as string]}
+      />
+    );
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
+
+    ReactTestUtils.Simulate.change(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[0]);
+    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
+      if (previous !== '') {
+        return previous + ', ' + current.text;
+      }
+      return current.text;
+    }, '');
+
+    expect((inputElement.instance() as any).value).toEqual(compare);
+  });
+
+  it('in multiSelect mode, input has correct value', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input');
+    inputElement.simulate('keydown', { which: KeyCodes.enter });
+    const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
+
+    ReactTestUtils.Simulate.change(buttons[0]);
+    ReactTestUtils.Simulate.change(buttons[2]);
+    const compare = [DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[2]].reduce((previous: string, current: IComboBoxOption) => {
+      if (previous !== '') {
+        return previous + ', ' + current.text;
+      }
+      return current.text;
+    }, '');
+
+    expect((inputElement.instance() as any).value).toEqual(compare);
   });
 
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {

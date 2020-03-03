@@ -100,6 +100,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       disabled,
       allowDisabledFocus,
       primaryDisabled,
+      // tslint:disable-next-line:deprecation
       secondaryText = this.props.description,
       href,
       iconProps,
@@ -109,7 +110,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       variantClassName,
       theme,
       toggle,
-      getClassNames
+      getClassNames,
+      role
     } = this.props;
 
     const { menuHidden } = this.state;
@@ -152,6 +154,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const tag = renderAsAnchor ? 'a' : 'button';
 
     const nativeProps = getNativeProps(
+      // tslint:disable-next-line:deprecation
       assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
       renderAsAnchor ? anchorProperties : buttonProperties,
       [
@@ -192,6 +195,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const dataIsFocusable =
       (this.props as any)['data-is-focusable'] === false || (disabled && !allowDisabledFocus) || this._isSplitButton ? false : true;
 
+    const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
+    // if isCheckboxTypeRole, always return a checked value, otherwise only return checked value if toggle is set to true
+    // This is because role="checkbox" always needs to have an aria-checked value
+    // but our checked prop only sets aria-pressed if we mark the button as a toggle="true"
+    const checkedOrPressedValue = isCheckboxTypeRole ? !!checked : toggle === true ? !!checked : undefined;
+
     const buttonProps = assign(nativeProps, {
       className: this._classNames.root,
       ref: this._buttonElement,
@@ -207,7 +216,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       'aria-describedby': ariaDescribedBy,
       'aria-disabled': isPrimaryButtonDisabled,
       'data-is-focusable': dataIsFocusable,
-      'aria-pressed': toggle ? !!checked : undefined // aria-pressed attribute should only be present for toggle buttons
+      // aria-pressed attribute should only be present for toggle buttons
+      // aria-checked attribute should only be present for toggle buttons with checkbox type role
+      [isCheckboxTypeRole ? 'aria-checked' : 'aria-pressed']: checkedOrPressedValue
     });
 
     if (ariaHidden) {
@@ -231,8 +242,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
     // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
     // does not support Pointer events yet.
-    if (this._isSplitButton && this._splitButtonContainer.current && 'onpointerdown' in this._splitButtonContainer.current) {
-      this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
+    if (this._isSplitButton && this._splitButtonContainer.current) {
+      if ('onpointerdown' in this._splitButtonContainer.current) {
+        this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
+      }
+      if ('onpointerup' in this._splitButtonContainer.current && this.props.onPointerUp) {
+        this._events.on(this._splitButtonContainer.current, 'pointerup', this.props.onPointerUp, true);
+      }
     }
   }
 
@@ -268,6 +284,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       onRenderIcon = this._onRenderIcon,
       onRenderAriaDescription = this._onRenderAriaDescription,
       onRenderChildren = this._onRenderChildren,
+      // tslint:disable-next-line:deprecation
       onRenderMenu = this._onRenderMenu,
       onRenderMenuIcon = this._onRenderMenuIcon,
       disabled
@@ -324,6 +341,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
    */
   private _shouldRenderMenu() {
     const { menuHidden } = this.state;
+    // tslint:disable-next-line:deprecation
     const { persistMenu, renderPersistedMenuHiddenOnMount } = this.props;
 
     if (!menuHidden) {
@@ -362,6 +380,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     const {
       text,
       children,
+      // tslint:disable-next-line:deprecation
       secondaryText = this.props.description,
       onRenderText = this._onRenderText,
       onRenderDescription = this._onRenderDescription
@@ -418,6 +437,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   };
 
   private _onRenderDescription = (props: IButtonProps) => {
+    // tslint:disable-next-line:deprecation
     const { secondaryText = this.props.description } = props;
 
     // ms-Button-description is only shown when the button type is compound.
@@ -450,7 +470,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderMenu = (menuProps: IContextualMenuProps): JSX.Element => {
     const { persistMenu } = this.props;
     const { menuHidden } = this.state;
-    const MenuType = this.props.menuAs || (ContextualMenu as React.ReactType<IContextualMenuProps>);
+    const MenuType = this.props.menuAs || (ContextualMenu as React.ElementType<IContextualMenuProps>);
 
     // the accessible menu label (accessible name) has a relationship to the button.
     // If the menu props do not specify an explicit value for aria-label or aria-labelledBy,
@@ -531,6 +551,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     assign(buttonProps, {
       onClick: undefined,
+      onPointerDown: undefined,
+      onPointerUp: undefined,
       tabIndex: -1,
       'data-is-focusable': false
     });
@@ -545,7 +567,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {
-      assign(buttonProps, { ...primaryActionButtonProps });
+      assign(buttonProps, primaryActionButtonProps);
     }
 
     const SplitButton = (keytipAttributes?: any): JSX.Element => (
@@ -760,7 +782,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   };
 
-  private _onPointerDown(ev: PointerEvent) {
+  private _onPointerDown(
+    ev: PointerEvent & React.PointerEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | HTMLSpanElement>
+  ) {
+    const { onPointerDown } = this.props;
+    if (onPointerDown) {
+      onPointerDown(ev);
+    }
+
     if (ev.pointerType === 'touch') {
       this._handleTouchAndPointerEvent();
 

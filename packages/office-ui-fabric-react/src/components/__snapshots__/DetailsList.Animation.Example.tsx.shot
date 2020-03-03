@@ -4,6 +4,8 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
 <div
   className=
       ms-Fabric
+      is-focusHidden
+      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -21,6 +23,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
+  dir="ltr"
 >
   <div
     className="ms-Viewport"
@@ -303,6 +306,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                       data-icon-name="CircleRing"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -342,6 +350,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           }
                       data-icon-name="StatusCircleCheckmark"
                       role="presentation"
+                      style={
+                        Object {
+                          "fontFamily": "\\"FabricMDL2Icons\\"",
+                        }
+                      }
                     >
                       
                     </i>
@@ -1068,6 +1081,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1107,6 +1125,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1125,6 +1148,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1181,6 +1205,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1518,6 +1543,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1557,6 +1587,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -1575,6 +1610,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1631,6 +1667,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -1968,6 +2005,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2007,6 +2049,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2025,6 +2072,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2081,6 +2129,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2418,6 +2467,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2457,6 +2511,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2475,6 +2534,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2531,6 +2591,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2868,6 +2929,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2907,6 +2973,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -2925,6 +2996,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -2981,6 +3053,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3318,6 +3391,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3357,6 +3435,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3375,6 +3458,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3431,6 +3515,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3768,6 +3853,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3807,6 +3897,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -3825,6 +3920,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -3881,6 +3977,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4218,6 +4315,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4257,6 +4359,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4275,6 +4382,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4331,6 +4439,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4668,6 +4777,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4707,6 +4821,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -4725,6 +4844,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -4781,6 +4901,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5118,6 +5239,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="CircleRing"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -5157,6 +5283,11 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                                     }
                                 data-icon-name="StatusCircleCheckmark"
                                 role="presentation"
+                                style={
+                                  Object {
+                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                  }
+                                }
                               >
                                 
                               </i>
@@ -5175,6 +5306,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                         >
                           <div
                             aria-colindex={2}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {
@@ -5231,6 +5363,7 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
                           </div>
                           <div
                             aria-colindex={3}
+                            aria-readonly={true}
                             className=
                                 ms-DetailsRow-cell
                                 {

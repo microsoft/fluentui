@@ -182,6 +182,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Activity"
               >
@@ -334,6 +335,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="News"
               >
@@ -526,6 +528,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Settings"
               >
@@ -678,6 +681,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                rel="noopener noreferrer"
                 target="_blank"
                 title="Notes"
               >

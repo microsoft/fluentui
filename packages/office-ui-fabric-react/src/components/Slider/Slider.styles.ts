@@ -179,7 +179,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           }
         : {
             top: -6,
-            transform: getRTL() ? 'translateX(50%)' : 'translateX(-50%)'
+            transform: getRTL(theme) ? 'translateX(50%)' : 'translateX(-50%)'
           },
       showTransitions && {
         transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
@@ -293,7 +293,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         ? {
             width: '16px',
             height: '1px',
-            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+            transform: getRTL(theme) ? 'translateX(6px)' : 'translateX(-6px)'
           }
         : {
             width: '1px',

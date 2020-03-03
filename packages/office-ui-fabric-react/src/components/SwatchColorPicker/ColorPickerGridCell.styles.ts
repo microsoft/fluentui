@@ -33,7 +33,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
   return {
     // this is a button that wraps the color
     colorCell: [
-      getFocusStyle(theme, -1, 'relative', cellHighContrastFocus),
+      getFocusStyle(theme, { inset: -1, position: 'relative', highContrastStyle: cellHighContrastFocus }),
       {
         backgroundColor: semanticColors.bodyBackground,
         padding: 0,

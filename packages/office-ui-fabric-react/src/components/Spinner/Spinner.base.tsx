@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ISpinnerProps, ISpinnerStyleProps, ISpinnerStyles, SpinnerType, SpinnerSize } from './Spinner.types';
-import { BaseComponent, classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
+import { classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
 
 const getClassNames = classNamesFunction<ISpinnerStyleProps, ISpinnerStyles>();
 
-export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
+export class SpinnerBase extends React.Component<ISpinnerProps, any> {
   public static defaultProps: ISpinnerProps = {
     size: SpinnerSize.medium,
     ariaLive: 'polite',
@@ -12,6 +12,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   };
 
   public render() {
+    // tslint:disable-next-line:deprecation
     const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
     const statusMessage = ariaLabel;
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['size']);
@@ -20,6 +21,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
     // we'll map SpinnerType to its equivalent SpinnerSize and pass that in. Once SpinnerType finally goes away we should delete this.
     let styleSize = size;
     if (styleSize === undefined && type !== undefined) {
+      // tslint:disable-next-line:deprecation
       styleSize = type === SpinnerType.large ? SpinnerSize.large : SpinnerSize.medium;
     }
 

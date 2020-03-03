@@ -19,6 +19,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   /**
    * CSS class to apply to the context menu.
    */
+  // tslint:disable-next-line:deprecation
   classNames: IMenuItemClassNames;
 
   /**
@@ -50,7 +51,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
    * Method to override the render of the individual menu items.
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
 
   /**
    * Callback for when the user's mouse enters the wrapper.

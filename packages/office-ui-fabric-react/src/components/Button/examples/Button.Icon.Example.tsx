@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IconButton, IIconProps, IContextualMenuProps, Stack } from 'office-ui-fabric-react';
+import { IconButton, IIconProps, IContextualMenuProps, Stack, Link } from 'office-ui-fabric-react';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -35,7 +35,7 @@ export const ButtonIconExample: React.FunctionComponent<IButtonExampleProps> = p
         <IconButton menuProps={menuProps} iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
       </Stack>
       <p>
-        For a list of Icons, visit our <a href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</a>.
+        For a list of Icons, visit our <Link href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</Link>.
       </p>
     </div>
   );

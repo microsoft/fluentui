@@ -160,6 +160,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
           )}
           farItems={[{ key: 'count', text: `${this.state.selectionCount} selected` }]}
         />
+        <Announced message={`${this.state.selectionCount} selected`} />
 
         {isGrouped ? <TextField label="Group item limit" onChange={this._onItemLimitChanged} /> : null}
 
@@ -619,26 +620,23 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
   private _getGroups(groupedItems: IExampleItem[], key: keyof IExampleItem, parentGroup?: IGroup): IGroup[] {
     const separator = '-';
-    const groups = groupedItems.reduce(
-      (current: IGroup[], item: IExampleItem, index: number) => {
-        const currentGroup = current[current.length - 1];
-        const itemColumnValue = item[key];
+    const groups = groupedItems.reduce((current: IGroup[], item: IExampleItem, index: number) => {
+      const currentGroup = current[current.length - 1];
+      const itemColumnValue = item[key];
 
-        if (!currentGroup || this._getLeafGroupKey(currentGroup.key, separator) !== itemColumnValue) {
-          current.push({
-            key: (parentGroup ? parentGroup.key + separator : '') + itemColumnValue,
-            name: key + ': ' + itemColumnValue,
-            startIndex: parentGroup ? parentGroup.startIndex + index : index,
-            count: 1,
-            level: parentGroup ? parentGroup.level! + 1 : 0
-          });
-        } else {
-          currentGroup.count++;
-        }
-        return current;
-      },
-      [] as IGroup[]
-    );
+      if (!currentGroup || this._getLeafGroupKey(currentGroup.key, separator) !== itemColumnValue) {
+        current.push({
+          key: (parentGroup ? parentGroup.key + separator : '') + itemColumnValue,
+          name: key + ': ' + itemColumnValue,
+          startIndex: parentGroup ? parentGroup.startIndex + index : index,
+          count: 1,
+          level: parentGroup ? parentGroup.level! + 1 : 0
+        });
+      } else {
+        currentGroup.count++;
+      }
+      return current;
+    }, [] as IGroup[]);
 
     return groups;
   }

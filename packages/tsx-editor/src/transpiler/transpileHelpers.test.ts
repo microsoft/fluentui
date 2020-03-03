@@ -60,6 +60,7 @@ describe('_supportedPackageToGlobalMap', () => {
   it('works', () => {
     expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
       'office-ui-fabric-react': 'Fabric',
+      '@fluentui/react-focus': 'Fabric',
       '@uifabric/foundation': 'Fabric',
       '@uifabric/icons': 'Fabric',
       '@uifabric/merge-styles': 'Fabric',

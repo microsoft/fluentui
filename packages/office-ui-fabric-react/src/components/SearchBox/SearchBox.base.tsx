@@ -3,7 +3,6 @@ import { ISearchBoxProps, ISearchBoxStyleProps, ISearchBoxStyles } from './Searc
 import {
   initializeComponentRef,
   warnDeprecations,
-  EventGroup,
   getId,
   KeyCodes,
   classNamesFunction,
@@ -32,7 +31,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   private _inputElement = React.createRef<HTMLInputElement>();
   private _latestValue: string;
   private _fallbackId: string;
-  private _events: EventGroup | undefined;
 
   public constructor(props: ISearchBoxProps) {
     super(props);
@@ -65,13 +63,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     }
   }
 
-  // tslint:disable-next-line function-name
-  public UNSAFE_componentWillMount() {
-    if (this._events) {
-      this._events.dispose();
-    }
-  }
-
   public render() {
     const {
       ariaLabel,
@@ -80,6 +71,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       disabled,
       underlined,
       styles,
+      // tslint:disable-next-line:deprecation
       labelText,
       theme,
       clearButtonProps,
@@ -88,7 +80,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       id = this._fallbackId
     } = this.props;
     const { value, hasFocus } = this.state;
-    const placeholderValue = labelText === undefined ? placeholder : labelText;
+    const placeholderValue = placeholder !== undefined ? placeholder : labelText;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -120,16 +112,18 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
           placeholder={placeholderValue}
           onChange={this._onInputChange}
           onInput={this._onInputChange}
+          onBlur={this._onBlur}
           onKeyDown={this._onKeyDown}
           value={value}
           disabled={disabled}
           role="searchbox"
-          aria-label={ariaLabel ? ariaLabel : placeholder}
+          aria-label={ariaLabel}
           ref={this._inputElement}
         />
         {value!.length > 0 && (
           <div className={classNames.clearButton}>
             <IconButton
+              onBlur={this._onBlur}
               styles={{ root: { height: 'auto' }, icon: { fontSize: '12px' } }}
               iconProps={{ iconName: 'Clear' }}
               {...clearButtonProps}
@@ -185,11 +179,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       hasFocus: true
     });
 
-    if (!this._events) {
-      this._events = new EventGroup(this);
-    }
-    this._events.on(ev.currentTarget, 'blur', this._onBlur, true);
-
     if (this.props.onFocus) {
       this.props.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
@@ -238,9 +227,6 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
-    if (this._events) {
-      this._events.off();
-    }
     this.setState({
       hasFocus: false
     });
@@ -263,6 +249,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
+    // tslint:disable-next-line:deprecation
     const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.

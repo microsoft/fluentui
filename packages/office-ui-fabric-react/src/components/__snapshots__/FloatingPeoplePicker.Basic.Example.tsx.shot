@@ -39,7 +39,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
             padding-top: 1px;
           }
           @media screen and (-ms-high-contrast: active){& {
-            border: 1px solid WindowText;
+            border-color: WindowText;
           }
           &:hover {
             border-color: #323130;
@@ -92,7 +92,6 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
         </i>
       </div>
       <input
-        aria-label="Search for person"
         className=
             ms-SearchBox-field
             {
@@ -134,6 +133,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
               display: none;
             }
         id="SearchBox0"
+        onBlur={[Function]}
         onChange={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}

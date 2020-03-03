@@ -4,7 +4,7 @@ import { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separ
 
 const getClassNames = classNamesFunction<ISeparatorStyleProps, ISeparatorStyles>();
 
-export const SeparatorBase: React.StatelessComponent<ISeparatorProps> = (props: ISeparatorProps): JSX.Element => {
+export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = (props: ISeparatorProps): JSX.Element => {
   const { styles, theme, className, vertical, alignContent } = props;
 
   const _classNames = getClassNames(styles!, {

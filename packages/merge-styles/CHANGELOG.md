@@ -1,7 +1,19 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Fri, 08 Nov 2019 12:30:07 GMT and should not be manually modified.
+This log was last generated on Wed, 22 Jan 2020 12:36:43 GMT and should not be manually modified.
 
+## 7.8.3
+Wed, 22 Jan 2020 12:36:43 GMT
+
+### Patches
+
+- Documentation: Added note to merge-styles readme about working with content security policy (CSP). (elcraig@microsoft.com)
+## 7.8.2
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 7.8.1
 Fri, 08 Nov 2019 12:30:07 GMT
 

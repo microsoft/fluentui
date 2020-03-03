@@ -38,7 +38,10 @@ const _items: ICommandBarItemProps[] = [
     disabled: true,
     href: 'https://dev.office.com/fabric',
     subMenuProps: {
-      items: [{ key: 'item1', text: 'Item One' }, { key: 'item2', text: 'Item Two' }]
+      items: [
+        { key: 'item1', text: 'Item One' },
+        { key: 'item2', text: 'Item Two' }
+      ]
     }
   },
   {

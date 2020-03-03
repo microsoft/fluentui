@@ -1,7 +1,44 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 11 Dec 2019 12:30:26 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 7.8.28
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Fixed date time doc page file layout (elcraig@microsoft.com)
+## 7.8.25
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- DatePicker: Fixing onSelectDate event being called twice when allowTextInput is set to true. (Humberto.Morimoto@microsoft.com)
+## 7.8.8
+Fri, 24 Jan 2020 12:30:27 GMT
+
+### Patches
+
+- DatePicker: Fixing issue with formatted dates. (Humberto.Morimoto@microsoft.com)
+- Updating text field validation in date-time package to check new value rather than old one. (chce@netcompany.com)
+## 7.8.5
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.8.4
+Fri, 17 Jan 2020 01:24:12 GMT
+
+### Patches
+
+- DatePicker: error message for required field is not cleared when date is selected from calendar (xgao@microsoft.com)
+## 7.8.3
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
 ## 7.8.2
 Wed, 11 Dec 2019 12:30:26 GMT
 

@@ -1,7 +1,31 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 06 Dec 2019 12:33:21 GMT and should not be manually modified.
+This log was last generated on Fri, 17 Jan 2020 02:32:17 GMT and should not be manually modified.
 
+## 7.2.4
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.2.3
+Wed, 15 Jan 2020 00:21:25 GMT
+
+### Patches
+
+- Make news icon available (hjorturj@microsoft.com)
+## 7.2.2
+Tue, 31 Dec 2019 12:31:45 GMT
+
+### Patches
+
+- added stream icon code to getFileIconProps (azra.bandukwala@microsoft.com)
+## 7.2.1
+Tue, 17 Dec 2019 12:29:42 GMT
+
+### Patches
+
+- Refining typography and signal icon on top of Folder Icon, filetype mapping updates (caperez@microsoft.com)
 ## 7.2.0
 Fri, 06 Dec 2019 12:33:21 GMT
 

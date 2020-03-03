@@ -12,6 +12,9 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle:size": "just-scripts bundle",
+    "lint": "just-scripts lint",
+    "test": "just-scripts test",
     "just": "just-scripts",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
@@ -20,19 +23,18 @@
   "devDependencies": {
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.4",
-    "@uifabric/tslint-rules": "^7.0.5",
+    "@types/webpack-env": "1.15.1",
+    "@uifabric/tslint-rules": "^7.0.6",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.18.8",
-    "@uifabric/set-version": "^7.0.2",
-    "@uifabric/styling": "^7.7.4",
-    "office-ui-fabric-react": "^7.72.0",
+    "@uifabric/experiments": "^7.21.2",
+    "@uifabric/set-version": "^7.0.5",
+    "@uifabric/styling": "^7.10.14",
+    "office-ui-fabric-react": "^7.98.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
-    "tslib": "^1.7.1"
+    "tslib": "^1.10.0"
   }
 }

@@ -624,6 +624,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -680,6 +681,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -738,7 +740,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 10px;
@@ -869,6 +870,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -925,6 +927,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -983,7 +986,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 10px;
@@ -1114,6 +1116,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1170,6 +1173,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1228,7 +1232,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 12px;
@@ -1359,6 +1362,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1415,6 +1419,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1473,7 +1478,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 12px;
@@ -1604,6 +1608,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1660,6 +1665,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1718,7 +1724,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
@@ -1849,6 +1854,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1905,6 +1911,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -1963,7 +1970,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 16px;
@@ -2094,6 +2100,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2150,6 +2157,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2208,7 +2216,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 18px;
@@ -2339,6 +2346,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2395,6 +2403,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2453,7 +2462,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 20px;
@@ -2584,6 +2592,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2640,6 +2649,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2698,7 +2708,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 28px;
@@ -2829,6 +2838,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                       >
                         <div
                           aria-colindex={1}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2885,6 +2895,7 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                         </div>
                         <div
                           aria-colindex={2}
+                          aria-readonly={true}
                           className=
                               ms-DetailsRow-cell
                               {
@@ -2943,7 +2954,6 @@ exports[`Component Examples renders Text.Ramp.Example.tsx correctly 1`] = `
                                 {
                                   -moz-osx-font-smoothing: grayscale;
                                   -webkit-font-smoothing: antialiased;
-                                  color: inherit;
                                   display: block;
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 68px;

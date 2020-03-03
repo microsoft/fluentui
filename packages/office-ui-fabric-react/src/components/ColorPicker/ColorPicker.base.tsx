@@ -51,7 +51,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       green: 'Green',
       blue: 'Blue',
       alpha: 'Alpha',
-      hue: 'Hue',
+      hueAriaLabel: 'Hue',
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
       svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!
@@ -59,7 +59,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   };
 
   private _textChangeHandlers: {
-    [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
+    [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
   };
   /**
    * Strings displayed in the UI as text field labels (these are in a separate object for convenient
@@ -87,11 +87,13 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const defaultStrings = ColorPickerBase.defaultProps.strings as Required<IColorPickerStrings>;
 
     this._textLabels = {
+      // tslint:disable:deprecation
       r: props.redLabel || strings.red || defaultStrings.red,
       g: props.greenLabel || strings.green || defaultStrings.green,
       b: props.blueLabel || strings.blue || defaultStrings.blue,
       a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
       hex: props.hexLabel || strings.hex || defaultStrings.hex
+      // tslint:enable:deprecation
     };
 
     this._strings = {
@@ -151,7 +153,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             <div className={classNames.flexSlider}>
               <ColorSlider
                 className="is-hue"
-                ariaLabel={strings.hue}
+                // tslint:disable-next-line:deprecation
+                ariaLabel={strings.hue || strings.hueAriaLabel}
                 minValue={0}
                 maxValue={MAX_COLOR_HUE}
                 value={color.h}
@@ -161,7 +164,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <ColorSlider
                   className="is-alpha"
                   isAlpha
-                  ariaLabel={textLabels.a}
+                  ariaLabel={strings.alphaAriaLabel || textLabels.a}
                   overlayColor={color.hex}
                   minValue={0}
                   maxValue={MAX_COLOR_ALPHA}

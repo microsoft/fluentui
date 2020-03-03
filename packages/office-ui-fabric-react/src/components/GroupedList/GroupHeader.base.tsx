@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames, getRTL } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { classNamesFunction, getRTL } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
@@ -20,7 +21,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     expandButtonProps: { 'aria-label': 'expand collapse group' }
   };
 
-  private _classNames: IClassNames<IGroupHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
 
   constructor(props: IGroupHeaderProps) {
     super(props);
@@ -52,6 +53,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       viewport,
       selectionMode,
       loadingText,
+      // tslint:disable-next-line:deprecation
       isSelected = false,
       selected = false,
       indentWidth,
@@ -63,16 +65,18 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       styles,
       className,
       groupedListId,
-      compact
+      compact,
+      ariaPosInSet,
+      ariaSetSize
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
 
     const canSelectGroup = selectionMode === SelectionMode.multiple;
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
-    const currentlySelected = isSelected || selected;
+    const currentlySelected = selected || isSelected;
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
 
     this._classNames = getClassNames(styles, {
       theme: theme!,
@@ -90,7 +94,11 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         className={this._classNames.root}
         style={viewport ? { minWidth: viewport.width } : {}}
         onClick={this._onHeaderClick}
+        aria-expanded={!group.isCollapsed}
         aria-label={group.ariaLabel || group.name}
+        aria-level={groupLevel !== undefined ? groupLevel + 1 : undefined}
+        aria-setsize={ariaSetSize}
+        aria-posinset={ariaPosInSet}
         data-is-focusable={true}
       >
         <FocusZone className={this._classNames.groupHeaderContainer} direction={FocusZoneDirection.horizontal}>
@@ -119,7 +127,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             type="button"
             className={this._classNames.expand}
             onClick={this._onToggleCollapse}
-            aria-expanded={group ? !group.isCollapsed : undefined}
+            aria-expanded={!group.isCollapsed}
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >

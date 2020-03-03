@@ -15,7 +15,7 @@ export const ActionableView: IActionableComponent['view'] = (props, slots) => {
   const { htmlType, propertiesType } = _deriveRootType(props);
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
-  const buttonProps = { ...getNativeProps(rest, propertiesType) };
+  const buttonProps = { ...getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(rest, propertiesType) };
 
   const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {

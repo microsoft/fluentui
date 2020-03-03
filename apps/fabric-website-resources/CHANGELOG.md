@@ -1,7 +1,50 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 10 Dec 2019 12:34:47 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 7.6.7
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
+## 7.6.3
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
+## 7.6.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.5.0
+Tue, 28 Jan 2020 12:43:24 GMT
+
+### Minor changes
+
+- Add dark theme to fabric resources site. (marygans@microsoft.com)
+## 7.4.6
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.4.5
+Thu, 09 Jan 2020 12:34:52 GMT
+
+### Patches
+
+- Fix bundling issues (elcraig@microsoft.com)
+## 7.4.4
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+- For API reference pages, show all property tables on page load (elcraig@microsoft.com)
 ## 7.4.3
 Tue, 10 Dec 2019 12:34:47 GMT
 

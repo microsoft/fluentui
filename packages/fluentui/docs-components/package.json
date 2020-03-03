@@ -1,0 +1,43 @@
+{
+  "name": "@fluentui/docs-components",
+  "description": "A set of React components to build docs sites.",
+  "version": "0.45.0",
+  "author": "Oleksandr Fediashov <a@fedyashov.com>",
+  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
+  "dependencies": {
+    "@babel/runtime": "^7.7.6",
+    "copy-to-clipboard": "^3.2.0",
+    "object.values": "^1.1.0",
+    "prismjs": "^1.16.0",
+    "prop-types": "^15.7.2"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/docs-components",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "peerDependencies": {
+    "prettier": "^1.19.1",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean",
+    "lint": "yarn lint:eslint && yarn lint:old",
+    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
+    "lint:old": "tslint -t stylish -p ."
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts",
+  "private": true,
+  "gitHead": "d08e21664e66fd0203260f1d2f441007bca02915"
+}

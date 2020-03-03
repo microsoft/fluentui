@@ -246,6 +246,26 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * Optional iconButton props on combo box
    */
   iconButtonProps?: IButtonProps;
+
+  /**
+   * Custom render function for the label text.
+   */
+  onRenderLabel?: IRenderFunction<IOnRenderComboBoxLabelProps>;
+}
+
+/**
+ * {@docCategory ComboBox}
+ */
+export interface IOnRenderComboBoxLabelProps {
+  /**
+   * Props to render the combobox.
+   */
+  props: IComboBoxProps;
+
+  /**
+   * Accessible text for label when combobox is multiselected.
+   */
+  multiselectAccessibleText?: string;
 }
 
 /**
@@ -347,6 +367,11 @@ export interface IComboBoxStyles {
    * Styles for a divider in the options.
    */
   divider: IStyle;
+
+  /**
+   * Styles for hidden screen reader text.
+   */
+  screenReaderText: IStyle;
 }
 
 /**

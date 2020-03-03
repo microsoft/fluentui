@@ -43,6 +43,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -54,6 +55,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         className=
@@ -244,6 +246,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -255,6 +258,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"
@@ -421,6 +425,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
+    role="presentation"
   >
     <div
       className=
@@ -432,6 +437,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-align: center;
             width: 48px;
           }
+      role="presentation"
     >
       <div
         aria-hidden="true"

@@ -42,6 +42,7 @@ import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
+import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IDetailsListStyleProps, IDetailsListStyles>();
 
@@ -270,7 +271,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       shouldForceUpdates = true;
     }
 
-    if (isAllGroupsCollapsed === undefined && (newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined)) {
+    if (isAllGroupsCollapsed === undefined && newProps.groupProps && newProps.groupProps.isAllGroupsCollapsed !== undefined) {
       this.setState({
         isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
         isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
@@ -427,6 +428,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
           aria-rowcount={isPlaceholderData ? -1 : rowCount}
           aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
           aria-readonly="true"
+          aria-busy={isPlaceholderData}
         >
           <div onKeyDown={this._onHeaderKeyDown} role="presentation" className={classNames.headerWrapper}>
             {isHeaderVisible &&
@@ -468,7 +470,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
               componentRef={this._focusZone}
               className={classNames.focusZone}
               direction={FocusZoneDirection.vertical}
-              isInnerZoneKeystroke={isRightArrow}
+              isInnerZoneKeystroke={this.isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}
               onBlur={this._onBlur}
             >
@@ -481,7 +483,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
                   onItemInvoked={onItemInvoked}
                   onItemContextMenu={onItemContextMenu}
                   enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...selectionZoneProps || {}}
+                  {...(selectionZoneProps || {})}
                 >
                   {list}
                 </SelectionZone>
@@ -538,7 +540,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       onRenderMissingItem,
       onRenderItemColumn,
       getCellValueKey,
-      onRenderRow = this._onRenderRow,
       selectionMode = this._selection.mode,
       viewport,
       checkboxVisibility,
@@ -554,6 +555,9 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       enableUpdateAnimations,
       useFastIcons
     } = this.props;
+
+    const onRenderRow = this.props.onRenderRow ? composeRenderFunction(this.props.onRenderRow, this._onRenderRow) : this._onRenderRow;
+
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
     const dragDropHelper = this._dragDropHelper;
@@ -598,7 +602,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       return null;
     }
 
-    return onRenderRow(rowProps, this._onRenderRow);
+    return onRenderRow(rowProps);
   };
 
   private _onGroupExpandStateChanged = (isSomeGroupExpanded: boolean): void => {
@@ -850,7 +854,8 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       const minWidth = column.minWidth || MIN_COLUMN_WIDTH;
       const overflowWidth = totalWidth - availableWidth;
 
-      if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
+      // tslint:disable-next-line:deprecation
+      if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsible || column.isCollapsable)) {
         const originalWidth = column.calculatedWidth!;
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
         totalWidth -= originalWidth - column.calculatedWidth;
@@ -1038,6 +1043,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       indentWidth
     } = this.props;
     const groupNestingDepth = this._getGroupNestingDepth();
+
     const onRenderFooter = onRenderDetailsGroupFooter
       ? (props: IGroupDividerProps, defaultRender?: IRenderFunction<IGroupDividerProps>) => {
           return onRenderDetailsGroupFooter(
@@ -1082,6 +1088,10 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       onRenderHeader
     };
   }
+
+  private isRightArrow = (event: React.KeyboardEvent<HTMLElement>) => {
+    return event.which === getRTLSafeKeyCode(KeyCodes.right, this.props.theme);
+  };
 }
 
 export function buildColumns(
@@ -1122,10 +1132,6 @@ export function buildColumns(
   }
 
   return columns;
-}
-
-function isRightArrow(event: React.KeyboardEvent<HTMLElement>): boolean {
-  return event.which === getRTLSafeKeyCode(KeyCodes.right);
 }
 
 function getPaddedWidth(column: IColumn, isFirst: boolean, props: IDetailsListProps): number {

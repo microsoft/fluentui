@@ -9,7 +9,7 @@ export interface IWithPlatformProps<TPlatforms extends string = string> {
 export function withPlatform<
   TPlatforms extends string = string,
   TProps extends IWithPlatformProps<TPlatforms> = IWithPlatformProps<TPlatforms>
->(Component: React.ComponentType<TProps>): React.StatelessComponent<TProps> {
+>(Component: React.ComponentType<TProps>): React.FunctionComponent<TProps> {
   const ComponentWithPlatform: React.FunctionComponent<TProps> = (props: TProps) => (
     <PlatformContext.Consumer>{(platform: string) => <Component {...props} platform={platform} />}</PlatformContext.Consumer>
   );

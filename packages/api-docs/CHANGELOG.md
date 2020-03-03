@@ -1,7 +1,31 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Tue, 12 Nov 2019 12:32:39 GMT and should not be manually modified.
+This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
 
+## 7.2.22
+Tue, 25 Feb 2020 12:25:39 GMT
+
+### Patches
+
+- Delete PositioningContainer docs (elcraig@microsoft.com)
+## 7.2.16
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Patches
+
+- Add react-focus support (elcraig@microsoft.com)
+## 7.2.0
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Minor changes
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+## 7.1.2
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Patches
+
+- Fix API reference generation bugs (elcraig@microsoft.com)
 ## 7.1.1
 Tue, 12 Nov 2019 12:32:39 GMT
 

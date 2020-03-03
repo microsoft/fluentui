@@ -168,13 +168,14 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
       return;
     }
 
-    // If the primary button (1) isn't pressed, the user is no longer dragging, so turn off the
-    // event handlers and exit. (this may only be relevant while debugging)
+    // Leaving the following commented code which is sometimes necessary for debugging:
+    // If the primary button (1) isn't pressed, the user is no longer dragging, so turn off
+    // the event handlers and exit.
     // tslint:disable-next-line:no-bitwise
-    if (!(ev.buttons & 1)) {
-      this._disableEvents();
-      return;
-    }
+    // if (!(ev.buttons & 1)) {
+    //   this._disableEvents();
+    //   return;
+    // }
 
     const newColor = _getNewColor(ev, this.state.color, this._root.current);
     if (newColor) {

@@ -128,4 +128,4 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 // Typescript only respects unifying a generic type with a generic const _function_ of the same name for function types.
 // In order to satisfy the type checker, here we lie about the type of the const so that it is still a generic function.
 export type SelectedItemsList<TItem extends BaseSelectedItem> = React.Component<ISelectedItemsListProps<TItem>>;
-export const SelectedItemsList = React.forwardRef(_SelectedItemsList) as (typeof _SelectedItemsList);
+export const SelectedItemsList = React.forwardRef(_SelectedItemsList) as typeof _SelectedItemsList;

@@ -6,7 +6,7 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
 
-export const SeparatorPage: React.StatelessComponent<IControlsPageProps> = props => {
+export const SeparatorPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
     <ControlsAreaPage {...props} title="Separator" {...SeparatorPageProps[platform]} otherSections={_otherSections(platform) as any} />

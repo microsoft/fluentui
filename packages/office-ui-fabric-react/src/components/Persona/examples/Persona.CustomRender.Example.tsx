@@ -23,6 +23,7 @@ export const PersonaCustomRenderExample: React.FunctionComponent = () => {
         presence={PersonaPresence.offline}
         onRenderSecondaryText={_onRenderSecondaryText}
         styles={{ root: { margin: '0 0 10px 0' } }}
+        imageAlt="Annie Lindqvist, status is offline."
       />
     </Stack>
   );

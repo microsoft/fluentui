@@ -8,7 +8,7 @@ export * from './Callout';
 export * from './Check';
 export * from './Checkbox';
 export * from './ChoiceGroup';
-export * from './ChoiceGroupOption';
+// export * from './ChoiceGroupOption'; // exported by ChoiceGroup
 export * from './Coachmark';
 export * from './Color';
 export * from './ColorPicker';

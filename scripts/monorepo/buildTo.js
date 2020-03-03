@@ -8,7 +8,7 @@ const argv = process.argv.slice(2);
 if (argv.length < 1) {
   console.log(`Usage:
 
-  yarn buildto [packagename] [--min]
+  yarn buildto [packagename]
 
 This command builds all packages up to and including "packagename". The package name can actually be a substring.
 If multiple packages matched the pattern, they will all be built (along with their dependencies).`);

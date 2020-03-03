@@ -59,9 +59,11 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   public render(): JSX.Element {
     const {
       calloutProps: setCalloutProps,
+      // tslint:disable-next-line:deprecation
       targetElement,
       onDismiss,
       // Default to deprecated value if provided.
+      // tslint:disable-next-line:deprecation
       hasCloseButton = this.props.hasCloseIcon,
       isWide,
       styles,
@@ -72,7 +74,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
       isWide,
-      calloutClassName: calloutProps ? calloutProps.className : undefined,
+      calloutProps: { ...calloutProps, theme: calloutProps.theme! },
       hasCloseButton
     };
 

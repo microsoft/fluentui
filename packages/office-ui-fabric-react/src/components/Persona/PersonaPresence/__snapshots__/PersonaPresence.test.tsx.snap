@@ -41,6 +41,7 @@ exports[`PersonaPresence renders available + out of office 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -93,6 +94,7 @@ exports[`PersonaPresence renders available 1`] = `
         background-color: Highlight;
         border-color: Window;
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -162,6 +164,7 @@ exports[`PersonaPresence renders away + out of office 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -215,6 +218,7 @@ exports[`PersonaPresence renders away 1`] = `
         background-color: WindowText;
         border-color: Window;
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -291,6 +295,7 @@ exports[`PersonaPresence renders blocked + out of office 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -359,6 +364,7 @@ exports[`PersonaPresence renders blocked 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -422,6 +428,7 @@ exports[`PersonaPresence renders busy + out of office 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -468,6 +475,7 @@ exports[`PersonaPresence renders busy 1`] = `
         background-color: WindowText;
         border-color: Window;
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -531,6 +539,7 @@ exports[`PersonaPresence renders do not disturb + out of office 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -583,6 +592,7 @@ exports[`PersonaPresence renders do not disturb 1`] = `
         background-color: WindowText;
         border-color: Window;
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -656,6 +666,7 @@ exports[`PersonaPresence renders offline + out of office 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}
@@ -726,6 +737,7 @@ exports[`PersonaPresence renders offline 1`] = `
         top: 1px;
         width: calc(100% - 2px);
       }
+  role="presentation"
 >
   <i
     aria-hidden={true}

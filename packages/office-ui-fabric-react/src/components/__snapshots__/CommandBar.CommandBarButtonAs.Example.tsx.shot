@@ -47,7 +47,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         role="menubar"
       >
         <div
-          aria-orientation="horizontal"
           className=
               ms-OverflowSet
               ms-CommandBar-primaryCommand
@@ -58,7 +57,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 flex-wrap: nowrap;
                 position: relative;
               }
-          role="menubar"
+          role="group"
         >
           <div
             className=
@@ -205,6 +204,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       }
                   data-icon-name="Add"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -382,6 +386,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       }
                   data-icon-name="Upload"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>
@@ -560,6 +569,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                         }
                     data-icon-name="Share"
                     role="presentation"
+                    style={
+                      Object {
+                        "fontFamily": "\\"FabricMDL2Icons\\"",
+                      }
+                    }
                   >
                     
                   </i>
@@ -598,6 +612,8 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               <div
                 className=
                     ms-Fabric
+                    is-focusHidden
+                    ms-Fabric--isFocusHidden
                     ms-Layer-content
                     {
                       -moz-osx-font-smoothing: grayscale;
@@ -617,6 +633,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     & textarea {
                       font-family: inherit;
                     }
+                dir="ltr"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onClick={[Function]}
@@ -643,6 +660,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 onMouseOver={[Function]}
                 onMouseUp={[Function]}
                 onSubmit={[Function]}
+                onTouchCancel={[Function]}
+                onTouchEnd={[Function]}
+                onTouchMove={[Function]}
+                onTouchStart={[Function]}
               >
                 <div
                   className=
@@ -1079,6 +1100,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                                     }
                                                 data-icon-name="Cancel"
                                                 role="presentation"
+                                                style={
+                                                  Object {
+                                                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                                                  }
+                                                }
                                               >
                                                 
                                               </i>
@@ -1267,6 +1293,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       }
                   data-icon-name="Download"
                   role="presentation"
+                  style={
+                    Object {
+                      "fontFamily": "\\"FabricMDL2Icons\\"",
+                    }
+                  }
                 >
                   
                 </i>

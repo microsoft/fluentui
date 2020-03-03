@@ -5,7 +5,7 @@ import { ContextualMenuBase } from './ContextualMenu.base';
 import { getStyles } from './ContextualMenu.styles';
 
 // This is to prevent cyclic import with ContextualMenu.base.tsx.
-let LocalContextualMenu: React.StatelessComponent<IContextualMenuProps>;
+let LocalContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 function onRenderSubMenu(subMenuProps: IContextualMenuProps) {
   return <LocalContextualMenu {...subMenuProps} />;
@@ -25,4 +25,4 @@ LocalContextualMenu = styled<IContextualMenuProps, IContextualMenuStyleProps, IC
 /**
  * ContextualMenu description
  */
-export const ContextualMenu: React.StatelessComponent<IContextualMenuProps> = LocalContextualMenu;
+export const ContextualMenu: React.FunctionComponent<IContextualMenuProps> = LocalContextualMenu;

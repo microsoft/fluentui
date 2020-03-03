@@ -1,7 +1,60 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 28 Nov 2019 12:32:23 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
 
+## 7.12.0
+Wed, 12 Feb 2020 12:24:27 GMT
+
+### Minor changes
+
+- Replacing deprecated StatelessComponent references with FunctionComponent. (Humberto.Morimoto@microsoft.com)
+## 7.11.5
+Thu, 23 Jan 2020 12:32:26 GMT
+
+### Patches
+
+- Fix export to codepen for fabric 7 (#9450) (xgao@microsoft.com)
+## 7.11.3
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
+## 7.11.2
+Thu, 16 Jan 2020 12:28:58 GMT
+
+### Patches
+
+- Upgrade repo to TS3.7. (jagore@microsoft.com)
+- Router: don't render routes without component or getComponent. Also make INavPage.url optional since categories don't have a url. (elcraig@microsoft.com)
+## 7.11.1
+Mon, 13 Jan 2020 12:28:56 GMT
+
+### Patches
+
+- Update focus properly when scrolling to anchors (elcraig@microsoft.com)
+## 7.11.0
+Wed, 08 Jan 2020 17:02:57 GMT
+
+### Minor changes
+
+- Add ExampleCard prop for custom editorSupportedPackages, and add support for ICustomizations in IAppDefinition.customizations for customizing all ExampleCards. (elcraig@microsoft.com)
+- Fix API reference generation bugs and add support for showing all tables on load (elcraig@microsoft.com)
+### Patches
+
+- bumping load-themed-styles to take advantage of es6 version of it (kchau@microsoft.com)
+## 7.10.4
+Mon, 23 Dec 2019 12:34:01 GMT
+
+### Patches
+
+- Fix Link colors inside MessageBar (elcraig@microsoft.com)
+## 7.10.3
+Fri, 13 Dec 2019 12:30:51 GMT
+
+### Patches
+
+- Add missing aria labels on example card dropdowns (elcraig@microsoft.com)
 ## 7.10.2
 Thu, 28 Nov 2019 12:32:23 GMT
 

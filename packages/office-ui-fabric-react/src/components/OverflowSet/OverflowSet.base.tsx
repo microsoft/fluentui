@@ -19,6 +19,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   constructor(props: IOverflowSetProps) {
     super(props);
 
+    // tslint:disable-next-line:deprecation
     if (props.doNotContainWithinFocusZone) {
       this._warnMutuallyExclusive({
         doNotContainWithinFocusZone: 'focusZoneProps'
@@ -27,11 +28,10 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone } = this.props;
+    // tslint:disable-next-line:deprecation
+    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
-
-    const role = this.props.role || vertical ? 'menu' : 'menubar';
 
     let Tag;
     let uniqueComponentProps;
@@ -53,7 +53,12 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     }
 
     return (
-      <Tag aria-orientation={vertical ? 'vertical' : 'horizontal'} {...uniqueComponentProps} className={this._classNames.root} role={role}>
+      <Tag
+        role={role || 'group'}
+        aria-orientation={role === 'menubar' ? (vertical === true ? 'vertical' : 'horizontal') : undefined}
+        {...uniqueComponentProps}
+        className={this._classNames.root}
+      >
         {items && this._onRenderItems(items)}
         {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
       </Tag>
@@ -69,6 +74,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   public focus(forceIntoFirstElement?: boolean): boolean {
     let focusSucceeded = false;
 
+    // tslint:disable-next-line:deprecation
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.current) {
         focusSucceeded = focusFirstChild(this._divContainer.current);
@@ -92,6 +98,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
       return false;
     }
 
+    // tslint:disable-next-line:deprecation
     if (this.props.doNotContainWithinFocusZone) {
       if (this._divContainer.current && elementContains(this._divContainer.current, childElement)) {
         childElement.focus();
@@ -142,11 +149,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 
   private _onRenderItems = (items: IOverflowSetItemProps[]): JSX.Element[] => {
     return items.map((item, i) => {
-      const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-        className: this._classNames.item
-      };
       return (
-        <div key={item.key} {...wrapperDivProps}>
+        <div key={item.key} className={this._classNames.item}>
           {this.props.onRenderItem(item)}
         </div>
       );

@@ -21,7 +21,7 @@ const options: IDropdownOption[] = [
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
-export const DropdownBasicExample: React.StatelessComponent = () => {
+export const DropdownBasicExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={stackTokens}>
       <Dropdown placeholder="Select an option" label="Basic uncontrolled example" options={options} styles={dropdownStyles} />

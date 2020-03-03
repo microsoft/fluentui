@@ -39,9 +39,9 @@ export interface ITransformExampleParams {
 }
 
 const win = getWindow() as
-  | Window & {
+  | (Window & {
       transformLogging?: boolean;
-    }
+    })
   | undefined;
 
 /**

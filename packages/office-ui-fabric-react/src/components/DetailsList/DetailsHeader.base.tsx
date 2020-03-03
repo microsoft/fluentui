@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
-import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, IClassNames } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef, EventGroup, IDisposable, css, getRTL, getId, KeyCodes, classNamesFunction } from '../../Utilities';
 import { IColumn, IDetailsHeaderBaseProps, IColumnDragDropDetails, ColumnDragEndLocation, CheckboxVisibility } from './DetailsList.types';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Icon, FontIcon } from '../../Icon';
@@ -14,7 +15,6 @@ import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
-import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
 
@@ -30,7 +30,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     useFastIcons: true
   };
 
-  private _classNames: IClassNames<IDetailsHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
   private _events: EventGroup;
   private _rootComponent = React.createRef<IFocusZone>();
@@ -175,7 +175,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const classNames = this._classNames;
     const IconComponent = useFastIcons ? FontIcon : Icon;
 
-    const isRTL = getRTL();
+    const isRTL = getRTL(theme);
     return (
       <FocusZone
         role="row"
@@ -363,8 +363,10 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
             targetIndex: targetIndex
           };
           columnReorderProps.onColumnDrop(dragDropDetails);
+          // tslint:disable:deprecation
         } else if (columnReorderProps.handleColumnReorder) {
           columnReorderProps.handleColumnReorder(this._draggedColumnIndex, targetIndex);
+          // tslint:enable:deprecation
         }
       }
     }
@@ -464,6 +466,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
    * Based on the given cursor position, finds the nearest drop hint and updates the state to make it visible
    */
   private _computeDropHintToBeShown = (clientX: number): void => {
+    const isRtl = getRTL(this.props.theme);
     if (this._rootElement) {
       const clientRect = this._rootElement.getBoundingClientRect();
       const headerOriginX = clientRect.left;
@@ -472,6 +475,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       if (this._isValidCurrentDropHintIndex()) {
         if (
           _liesBetween(
+            isRtl,
             eventXRelativePosition,
             this._dropHintDetails[currentDropHintIndex!].startX,
             this._dropHintDetails[currentDropHintIndex!].endX
@@ -489,14 +493,15 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
       const currentIndex: number = frozenColumnCountFromStart;
       const lastValidColumn = columns.length - frozenColumnCountFromEnd;
       let indexToUpdate = -1;
-      if (_isBefore(eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
+      if (_isBefore(isRtl, eventXRelativePosition, this._dropHintDetails[currentIndex].endX)) {
         indexToUpdate = currentIndex;
-      } else if (_isAfter(eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
+      } else if (_isAfter(isRtl, eventXRelativePosition, this._dropHintDetails[lastValidColumn].startX)) {
         indexToUpdate = lastValidColumn;
       } else if (this._isValidCurrentDropHintIndex()) {
         if (
           this._dropHintDetails[currentDropHintIndex! + 1] &&
           _liesBetween(
+            isRtl,
             eventXRelativePosition,
             this._dropHintDetails[currentDropHintIndex! + 1].startX,
             this._dropHintDetails[currentDropHintIndex! + 1].endX
@@ -506,6 +511,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         } else if (
           this._dropHintDetails[currentDropHintIndex! - 1] &&
           _liesBetween(
+            isRtl,
             eventXRelativePosition,
             this._dropHintDetails[currentDropHintIndex! - 1].startX,
             this._dropHintDetails[currentDropHintIndex! - 1].endX
@@ -519,12 +525,14 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
         let endIndex = lastValidColumn;
         while (startIndex < endIndex) {
           const middleIndex = Math.ceil((endIndex + startIndex!) / 2);
-          if (_liesBetween(eventXRelativePosition, this._dropHintDetails[middleIndex].startX, this._dropHintDetails[middleIndex].endX)) {
+          if (
+            _liesBetween(isRtl, eventXRelativePosition, this._dropHintDetails[middleIndex].startX, this._dropHintDetails[middleIndex].endX)
+          ) {
             indexToUpdate = middleIndex;
             break;
-          } else if (_isBefore(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
+          } else if (_isBefore(isRtl, eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             endIndex = middleIndex;
-          } else if (_isAfter(eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
+          } else if (_isAfter(isRtl, eventXRelativePosition, this._dropHintDetails[middleIndex].originX)) {
             startIndex = middleIndex;
           }
         }
@@ -693,6 +701,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     const columnIndex = Number(columnIndexAttr);
 
     if (!columnResizeDetails) {
+      // tslint:disable-next-line:deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: {
@@ -707,6 +716,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     } else {
       let increment: number | undefined;
 
+      // tslint:disable-next-line:deprecation
       if (ev.which === KeyCodes.enter) {
         this.setState({
           columnResizeDetails: undefined
@@ -714,10 +724,12 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
         ev.preventDefault();
         ev.stopPropagation();
+        // tslint:disable-next-line:deprecation
       } else if (ev.which === KeyCodes.left) {
-        increment = getRTL() ? 1 : -1;
+        increment = getRTL(this.props.theme) ? 1 : -1;
+        // tslint:disable-next-line:deprecation
       } else if (ev.which === KeyCodes.right) {
-        increment = getRTL() ? -1 : 1;
+        increment = getRTL(this.props.theme) ? -1 : 1;
       }
 
       if (increment) {
@@ -772,7 +784,7 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
     if (onColumnResized) {
       let movement = ev.clientX - columnResizeDetails!.originX!;
 
-      if (getRTL()) {
+      if (getRTL(this.props.theme)) {
         movement = -movement;
       }
 
@@ -838,14 +850,14 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
   };
 }
 
-function _liesBetween(target: number, left: number, right: number): boolean {
-  return getRTL() ? target <= left && target >= right : target >= left && target <= right;
+function _liesBetween(rtl: boolean, target: number, left: number, right: number): boolean {
+  return rtl ? target <= left && target >= right : target >= left && target <= right;
 }
-function _isBefore(a: number, b: number): boolean {
-  return getRTL() ? a >= b : a <= b;
+function _isBefore(rtl: boolean, a: number, b: number): boolean {
+  return rtl ? a >= b : a <= b;
 }
-function _isAfter(a: number, b: number): boolean {
-  return getRTL() ? a <= b : a >= b;
+function _isAfter(rtl: boolean, a: number, b: number): boolean {
+  return rtl ? a <= b : a >= b;
 }
 
 function _stopPropagation(ev: React.MouseEvent<HTMLElement>): void {

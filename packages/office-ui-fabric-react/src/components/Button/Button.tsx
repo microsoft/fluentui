@@ -7,6 +7,9 @@ import { ActionButton } from './ActionButton/ActionButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
+
+// tslint:disable:deprecation
+
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated Use the individual *Button components instead.

@@ -2,7 +2,10 @@
 
 exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
 <div>
-  <div>
+  <div
+    aria-label="OnChange Pivot Example"
+    role="toolbar"
+  >
     <div
       className=
           ms-FocusZone

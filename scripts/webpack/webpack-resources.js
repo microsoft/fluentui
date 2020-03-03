@@ -134,6 +134,9 @@ module.exports = {
 
     for (let config of configs) {
       config.entry = createEntryWithPolyfill(config.entry, config);
+      config.resolveLoader = {
+        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')]
+      };
     }
 
     return configs;
@@ -152,6 +155,10 @@ module.exports = {
 
         resolve: {
           extensions: ['.ts', '.tsx', '.js']
+        },
+
+        resolveLoader: {
+          modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')]
         },
 
         devtool: 'eval',

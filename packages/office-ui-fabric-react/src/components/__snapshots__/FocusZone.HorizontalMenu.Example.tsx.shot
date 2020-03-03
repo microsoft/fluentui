@@ -11,7 +11,7 @@ exports[`Component Examples renders FocusZone.HorizontalMenu.Example.tsx correct
   onFocus={[Function]}
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
-  role="menu"
+  role="menubar"
 >
   <button
     className=

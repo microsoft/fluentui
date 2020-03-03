@@ -81,7 +81,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       isScrollable = true,
       codepenJS,
       theme,
-      isCodeVisible = this.state.isCodeVisible
+      isCodeVisible = this.state.isCodeVisible,
+      editorSupportedPackages = SUPPORTED_PACKAGES
     } = this.props;
     const { themeIndex, schemeIndex, latestCode } = this.state;
 
@@ -121,6 +122,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
                   {exampleCardCustomizations && (
                     <Dropdown
+                      ariaLabel="Example theme"
                       defaultSelectedKey={0}
                       onChange={this._onThemeChange}
                       options={this._themeOptions}
@@ -130,6 +132,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
 
                   {exampleCardCustomizations && !hideSchemes && (
                     <Dropdown
+                      ariaLabel="Example scheme"
                       defaultSelectedKey={0}
                       onChange={this._onSchemeChange}
                       options={_schemeOptions}
@@ -153,7 +156,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               {isCodeVisible ? (
                 <EditorWrapper
                   code={latestCode}
-                  supportedPackages={SUPPORTED_PACKAGES}
+                  supportedPackages={editorSupportedPackages}
                   editorClassName={classNames.code}
                   editorAriaLabel={`Editor for the example "${title}". The example will be updated as you type.`}
                   modelRef={this._monacoModelRef}
@@ -272,7 +275,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   };
 }
 
-export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
+export const ExampleCard: React.FunctionComponent<IExampleCardProps> = styled<
   IExampleCardProps,
   IExampleCardStyleProps,
   IExampleCardStyles

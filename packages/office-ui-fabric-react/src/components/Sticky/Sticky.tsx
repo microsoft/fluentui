@@ -1,6 +1,7 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
+import { hiddenContentStyle } from '../../Styling';
 import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 
@@ -124,6 +125,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
+    // tslint:disable-next-line:deprecation
     if (!this.context.scrollablePane) {
       return true;
     }
@@ -144,6 +146,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyClassName, children } = this.props;
 
+    // tslint:disable-next-line:deprecation
     if (!this.context.scrollablePane) {
       return <div>{this.props.children}</div>;
     }
@@ -161,7 +164,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
           </div>
         )}
         <div style={this._getNonStickyPlaceholderHeightAndWidth()} ref={this._placeHolder}>
+          {(isStickyTop || isStickyBottom) && <span style={hiddenContentStyle as any}>{children}</span>}
           <div
+            aria-hidden={isStickyTop || isStickyBottom}
             ref={this._nonStickyContent}
             className={isStickyTop || isStickyBottom ? stickyClassName : undefined}
             style={this._getContentStyles(isStickyTop || isStickyBottom)}
@@ -190,6 +195,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     this.setState({ distanceFromTop: distanceFromTop });
   }
 
+  // tslint:disable-next-line:deprecation
   private _getContext = (): IScrollablePaneContext => this.context;
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {

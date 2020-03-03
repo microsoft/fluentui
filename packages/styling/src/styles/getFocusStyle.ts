@@ -132,3 +132,45 @@ export function getFocusOutlineStyle(theme: ITheme, inset: number = 0, width: nu
     }
   };
 }
+
+/**
+ * Generates text input border styles on focus.
+ *
+ * @param borderColor - Color of the border.
+ * @param borderRadius - Radius of the border.
+ * @param borderType - Type of the border.
+ * @param borderPosition - Position of the border relative to the input element (default to -1
+ * as it's the most common border width of the input element)
+ * @returns The style object.
+ */
+export const getInputFocusStyle = (
+  borderColor: string,
+  borderRadius: string | number,
+  borderType: 'border' | 'borderBottom' = 'border',
+  borderPosition: number = -1
+): IRawStyle => {
+  const isBorderBottom = borderType === 'borderBottom';
+
+  return {
+    borderColor,
+    selectors: {
+      ':after': {
+        pointerEvents: 'none',
+        content: "''",
+        position: 'absolute',
+        left: isBorderBottom ? 0 : borderPosition,
+        top: borderPosition,
+        bottom: borderPosition,
+        right: isBorderBottom ? 0 : borderPosition,
+        [borderType]: `2px solid ${borderColor}`,
+        borderRadius,
+        width: borderType === 'borderBottom' ? '100%' : undefined,
+        selectors: {
+          [HighContrastSelector]: {
+            [borderType === 'border' ? 'borderColor' : 'borderBottomColor']: 'Highlight'
+          }
+        }
+      }
+    }
+  };
+};

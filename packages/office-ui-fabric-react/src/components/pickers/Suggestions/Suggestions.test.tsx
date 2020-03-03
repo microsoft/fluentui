@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { styled } from '../../../Utilities';
 import { Suggestions } from './Suggestions';
 import { getStyles as suggestionsStyles } from './Suggestions.styles';
-import { ISuggestionModel, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import { ISuggestionModel, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles, ISuggestions } from './Suggestions.types';
 
 const suggestions = [
   'black',
@@ -88,5 +88,47 @@ describe('Suggestions', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('hasSuggestedAction is true when action provided', () => {
+    const compRef = React.createRef<ISuggestions<ISimple>>();
+    const StyledSuggestions = styled<ISuggestionsProps<ISimple>, ISuggestionsStyleProps, ISuggestionsStyles>(
+      Suggestions,
+      suggestionsStyles
+    );
+
+    renderer.create(
+      <StyledSuggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+        searchForMoreText={'foo'}
+        moreSuggestionsAvailable={true}
+        componentRef={compRef}
+      />
+    );
+
+    expect(compRef.current).toBeTruthy();
+    expect(compRef.current!.hasSuggestedAction()).toEqual(true);
+  });
+
+  it('hasSuggestedAction is false when no action provided', () => {
+    const compRef = React.createRef<ISuggestions<ISimple>>();
+    const StyledSuggestions = styled<ISuggestionsProps<ISimple>, ISuggestionsStyleProps, ISuggestionsStyles>(
+      Suggestions,
+      suggestionsStyles
+    );
+
+    renderer.create(
+      <StyledSuggestions
+        onRenderSuggestion={basicSuggestionRenderer}
+        onSuggestionClick={mockOnClick}
+        suggestions={generateSimpleSuggestions()}
+        componentRef={compRef}
+      />
+    );
+
+    expect(compRef.current).toBeTruthy();
+    expect(compRef.current!.hasSuggestedAction()).toEqual(false);
   });
 });

@@ -673,10 +673,10 @@ function _getRectangleFromIRect(rect: IRectangle): Rectangle {
 function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint | undefined): Rectangle {
   let targetRectangle: Rectangle;
   if (target) {
-    if ((target as MouseEvent).preventDefault) {
+    if (!!(target as MouseEvent).preventDefault) {
       const ev = target as MouseEvent;
       targetRectangle = new Rectangle(ev.clientX, ev.clientX, ev.clientY, ev.clientY);
-    } else if ((target as Element).getBoundingClientRect) {
+    } else if (!!(target as Element).getBoundingClientRect) {
       targetRectangle = _getRectangleFromElement(target as Element);
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
@@ -898,7 +898,7 @@ export function getMaxHeight(
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
-  if (mouseTarget.stopPropagation) {
+  if (!!mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
   } else if (pointTarget.x !== undefined && pointTarget.y !== undefined) {
     targetRect = new Rectangle(pointTarget.x, pointTarget.x, pointTarget.y, pointTarget.y);

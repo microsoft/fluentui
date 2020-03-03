@@ -1,7 +1,19 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 07 Nov 2019 12:26:32 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Feb 2020 12:37:34 GMT and should not be manually modified.
 
+## 7.0.21
+Thu, 06 Feb 2020 12:37:34 GMT
+
+### Patches
+
+- Fix incorrect icon color for disabled contextual menu icon. (xinychen@microsoft.com)
+## 7.0.11
+Fri, 17 Jan 2020 02:32:17 GMT
+
+### Patches
+
+- Update tslib minver to first version containing __spreadArrays helper due to changes in how TS emits spreads. (jagore@microsoft.com)
 ## 7.0.10
 Thu, 07 Nov 2019 12:26:32 GMT
 

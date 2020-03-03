@@ -1,4 +1,4 @@
-import { IRawStyle, ITheme, concatStyleSets, HighContrastSelector, IconFontSizes } from '../../Styling';
+import { IRawStyle, ITheme, concatStyleSets, HighContrastSelector, IconFontSizes, getInputFocusStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
@@ -18,11 +18,13 @@ const _getDisabledStyles = memoizeFunction(
 
     return {
       backgroundColor: SpinButtonBackgroundColorDisabled,
-      borderColor: SpinButtonBackgroundColorDisabled,
       pointerEvents: 'none',
       cursor: 'default',
       color: SpinButtonTextColorDisabled,
       selectors: {
+        ':after': {
+          borderColor: SpinButtonBackgroundColorDisabled
+        },
         [HighContrastSelector]: {
           color: 'GrayText'
         }
@@ -33,15 +35,15 @@ const _getDisabledStyles = memoizeFunction(
 
 export const getArrowButtonStyles = memoizeFunction(
   (theme: ITheme, isUpArrow: boolean, customSpecificArrowStyles?: Partial<IButtonStyles>): IButtonStyles => {
-    const { palette, effects } = theme;
+    const { palette, semanticColors, effects } = theme;
 
     // TODO: after updating the semanticColor slots all this need to be reevaluated.
     const ArrowButtonTextColor = palette.neutralSecondary;
-    const ArrowButtonTextColorHovered = palette.neutralPrimary;
-    const ArrowButtonTextColorPressed = palette.neutralPrimary;
+    const ArrowButtonTextColorHovered = semanticColors.buttonText;
+    const ArrowButtonTextColorPressed = semanticColors.buttonText;
 
-    const ArrowButtonBackgroundHovered = palette.neutralLighter;
-    const ArrowButtonBackgroundPressed = palette.neutralLight;
+    const ArrowButtonBackgroundHovered = semanticColors.buttonBackgroundHovered;
+    const ArrowButtonBackgroundPressed = semanticColors.buttonBackgroundPressed;
 
     const defaultArrowButtonStyles: IButtonStyles = {
       root: {
@@ -123,12 +125,13 @@ export const getStyles = memoizeFunction(
     const { palette, semanticColors, effects, fonts } = theme;
 
     const SpinButtonRootBorderColor = semanticColors.inputBorder;
+    const SpinButtonRootBackgroundColor = semanticColors.inputBackground;
     const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
     const SpinButtonRootBorderColorFocused = semanticColors.inputFocusBorderAlt;
 
-    const SpinButtonInputTextColor = semanticColors.bodyText;
+    const SpinButtonInputTextColor = semanticColors.inputText;
     const SpinButtonInputTextColorSelected = palette.white;
-    const SpinButtonInputBackgroundColorSelected = palette.themePrimary;
+    const SpinButtonInputBackgroundColorSelected = semanticColors.inputBackgroundChecked;
 
     const SpinButtonIconDisabledColor = semanticColors.disabledText;
 
@@ -180,38 +183,42 @@ export const getStyles = memoizeFunction(
         boxSizing: 'border-box',
         height: DEFAULT_HEIGHT,
         minWidth: DEFAULT_MIN_WIDTH,
-        border: `1px solid ${SpinButtonRootBorderColor}`,
-        borderRadius: effects.roundedCorner2
+        selectors: {
+          // setting border using pseudo-element here in order to prevent:
+          // input and chevron buttons to overlap border under certain resolutions
+          ':after': {
+            pointerEvents: 'none',
+            content: "''",
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            bottom: 0,
+            right: 0,
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: SpinButtonRootBorderColor,
+            borderRadius: effects.roundedCorner2
+          }
+        }
       },
       spinButtonWrapperTopBottom: {
         width: '100%'
       },
       spinButtonWrapperHovered: {
-        borderColor: SpinButtonRootBorderColorHovered,
         selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          }
-        }
-      },
-      spinButtonWrapperFocused: {
-        selectors: {
-          [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          },
           ':after': {
-            pointerEvents: 'none',
-            content: "''",
-            position: 'absolute',
-            left: -1,
-            top: -1,
-            bottom: -1,
-            right: -1,
-            border: `2px solid ${SpinButtonRootBorderColorFocused}`,
-            borderRadius: effects.roundedCorner2
+            borderColor: SpinButtonRootBorderColorHovered
+          },
+          [HighContrastSelector]: {
+            selectors: {
+              ':after': {
+                borderColor: 'Highlight'
+              }
+            }
           }
         }
       },
+      spinButtonWrapperFocused: getInputFocusStyle(SpinButtonRootBorderColorFocused, effects.roundedCorner2),
       spinButtonWrapperDisabled: _getDisabledStyles(theme),
       input: {
         boxSizing: 'border-box',
@@ -221,8 +228,9 @@ export const getStyles = memoizeFunction(
         margin: 0,
         fontSize: fonts.medium.fontSize,
         color: SpinButtonInputTextColor,
+        backgroundColor: SpinButtonRootBackgroundColor,
         height: '100%',
-        padding: '0 8px',
+        padding: '0 8px 0 9px',
         outline: 0,
         display: 'block',
         minWidth: DEFAULT_MIN_WIDTH - ARROW_BUTTON_WIDTH - 2,
