@@ -2,9 +2,9 @@
 steps:
   - task: Cache@2
     inputs:
-      key: 'gulp-cache | "$(Agent.OS)"'
+      key: 'gulp-cache-tmp | "$(Agent.OS)"'
       restoreKeys: |
-        gulp-cache | "$(Agent.OS)"
-        gulp-cache
-      path: /tmp/gulp-cache
+        gulp-cache-tmp | "$(Agent.OS)"
+        gulp-cache-tmp
+      path: /$(TMPDIR)/gulp-cache
     displayName: Cache gulp-cache
