@@ -1,8 +1,8 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, color } = props;
-  const { palette, fonts } = theme!;
+  const { className, theme } = props;
+  const { fonts } = theme!;
   return {
     root: [
       theme.fonts.medium,
