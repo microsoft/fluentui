@@ -25,7 +25,7 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
       height: '100%'
     };
   },
-  content: ({ props: { truncateContent } }): ICSSInJSStyle => {
+  content: ({ props: p }): ICSSInJSStyle => {
     return {
       alignSelf: 'center',
       ...(p.truncateContent && {
