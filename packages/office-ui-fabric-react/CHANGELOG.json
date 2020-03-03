@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "office-ui-fabric-react_v7.98.3",
+      "version": "7.98.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using tslint:disable-next-line instead of tslint:disable without a corresponding tslint:enable afterwards for all non-tests and non-data files.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          },
+          {
+            "comment": "Link: Make focus work even when Link has block children.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "95336258136489ea0b76f932e36285438f2a3faf"
+          },
+          {
+            "comment": "ScrollablePane example: fix strict function type errors",
+            "author": "xgao@microsoft.com",
+            "commit": "621b7ac2fdec59fc034e54cc2f94ff3a61c41af2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Mar 2020 12:25:44 GMT",
       "tag": "office-ui-fabric-react_v7.98.2",
       "version": "7.98.2",
