@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { FloatingPeopleSuggestions } from '../FloatingPeopleSuggestions/FloatingPeopleSuggestions';
-import { IFloatingSuggestionItemProps } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
+import { IFloatingSuggestionItemProps, FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
 
