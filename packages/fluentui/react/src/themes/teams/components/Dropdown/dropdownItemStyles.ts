@@ -72,10 +72,10 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     backgroundImage: checkableIndicatorUrl(v.listItemSelectedColor),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    position: 'relative',
+    position: 'absolute',
     width: pxToRem(24),
     height: pxToRem(24),
-    left: pxToRem(3),
+    right: pxToRem(7),
     top: pxToRem(-3)
   }),
   endMedia: () => ({

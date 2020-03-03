@@ -172,7 +172,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
 
     margin: 0,
     position: 'absolute',
-    right: pxToRem(10),
+    right: pxToRem(8),
     height: '100%',
     width: pxToRem(12)
   })
