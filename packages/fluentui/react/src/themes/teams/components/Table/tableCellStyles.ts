@@ -28,7 +28,7 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
   content: ({ props: { truncateContent } }): ICSSInJSStyle => {
     return {
       alignSelf: 'center',
-      ...(truncateContent && {
+      ...(p.truncateContent && {
         display: 'block',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
