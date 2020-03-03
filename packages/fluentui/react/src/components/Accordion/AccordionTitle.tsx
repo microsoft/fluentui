@@ -81,13 +81,14 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     disabled: PropTypes.bool,
     index: PropTypes.number,
     onClick: PropTypes.func,
-    indicator: customPropTypes.itemShorthand
+    indicator: customPropTypes.shorthandAllowingChildren
   };
 
   static defaultProps = {
     accessibility: accordionTitleBehavior,
     as: 'dt',
-    contentRef: _.noop
+    contentRef: _.noop,
+    indicator: {}
   };
 
   actionHandlers = {
@@ -120,7 +121,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
           {...accessibility.attributes.content}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)}
         >
-          {Box.create(indicator === undefined ? {} : indicator, {
+          {Box.create(indicator, {
             defaultProps: () => ({
               styles: styles.indicator
             })

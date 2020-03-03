@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { AccordionTitleProps } from '../../../../components/Accordion/AccordionTitle';
 import { AccordionVariables } from './accordionVariables';
 import activeIndicatorUrl from './activeIndicatorUrl';
-import { pxToRem } from 'src/utils';
+import { pxToRem } from '../../../../utils';
 
 const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleProps, AccordionVariables> = {
   root: ({ props: p }) => ({
