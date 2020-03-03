@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ActivityItem: Added a theme to API of ActivityItem.",
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com",
+  "commit": "95557131bcb347739c0cde16d209c58ea49a318e",
+  "dependentChangeType": "patch",
+  "date": "2020-03-03T03:28:31.936Z"
+}
