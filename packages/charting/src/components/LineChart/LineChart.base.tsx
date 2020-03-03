@@ -413,7 +413,6 @@ export class LineChartBase extends React.Component<
   private _handleHover = (x: number | Date, y: number | string, lineColor: string, mouseEvent: React.MouseEvent<SVGPathElement>) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
-    console.log('this._calloutPoints', this._calloutPoints);
 
     const found = this._calloutPoints.find((element: { x: string | number }) => element.x === formattedData);
     this.setState({
