@@ -32,6 +32,9 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
   /** Shorthand for the icon. */
   icon?: ShorthandValue<IconProps>;
 
+  /** This is a new prop */
+  newProp?: string;
+
   /** Value indicating percent complete. */
   progress?: string | number;
 
