@@ -18,7 +18,7 @@ const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
-    'aria-haspopup': props.popup ? 'dialog' : props.menu ? 'menu' : undefined
+    'aria-haspopup': props.hasPopup ? 'dialog' : props.hasMenu ? 'menu' : undefined
   };
   behaviorData.keyActions.wrapper = {
     ...behaviorData.keyActions.wrapper,
@@ -26,10 +26,11 @@ const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
       keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
     },
     closeMenuAndFocusTrigger: {
-      keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.Tab, shiftKey: true }] : null
+      keyCombinations:
+        props.hasMenu && props.menuOpen ? [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.Tab, shiftKey: true }] : null
     },
     doNotNavigateNextToolbarItem: {
-      keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null
+      keyCombinations: props.hasMenu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null
     }
   };
   return behaviorData;
@@ -39,9 +40,9 @@ export default toolbarItemBehavior;
 
 export type ToolbarItemBehaviorProps = {
   /** Indicated if toolbar item has a menu. */
-  menu?: boolean | object;
+  hasMenu?: boolean;
   /** If the menu is in open state. */
   menuOpen?: boolean;
   /** Indicated if toolbar item has a popup. */
-  popup?: boolean | object;
+  hasPopup?: boolean;
 } & ButtonBehaviorProps;
