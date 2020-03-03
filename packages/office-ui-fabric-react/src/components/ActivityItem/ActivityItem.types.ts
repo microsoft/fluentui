@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
 import { IPersonaSharedProps } from '../../Persona';
 
@@ -29,6 +29,11 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.
    */
   activityPersonas?: Array<IPersonaSharedProps>;
+
+  /**
+   * Theme provided by HOC.
+   */
+  theme?: ITheme;
 
   /**
    * An element containing the text of comments or \@mention messages.

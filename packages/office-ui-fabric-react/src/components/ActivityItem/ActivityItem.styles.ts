@@ -1,4 +1,4 @@
-import { concatStyleSets, ITheme, getTheme, HighContrastSelector, keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
+import { concatStyleSets, ITheme, HighContrastSelector, keyframes, PulsingBeaconAnimationStyles } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
 import { IActivityItemStyles, IActivityItemProps } from './ActivityItem.types';
 
@@ -12,16 +12,17 @@ const ANIMATION_BORDER_WIDTH = '4px';
 
 export const getStyles = memoizeFunction(
   (
-    theme: ITheme = getTheme(),
+    theme: ITheme,
     customStyles?: IActivityItemStyles,
     animateBeaconSignal?: IActivityItemProps['animateBeaconSignal'],
     beaconColorOne?: IActivityItemProps['beaconColorOne'],
     beaconColorTwo?: IActivityItemProps['beaconColorTwo'],
     isCompact?: IActivityItemProps['isCompact']
   ): IActivityItemStyles => {
+    const { palette } = theme;
     const continuousPulse = PulsingBeaconAnimationStyles.continuousPulseAnimationSingle(
-      beaconColorOne ? beaconColorOne : theme.palette.themePrimary,
-      beaconColorTwo ? beaconColorTwo : theme.palette.themeTertiary,
+      beaconColorOne ? beaconColorOne : palette.themePrimary,
+      beaconColorTwo ? beaconColorTwo : palette.themeTertiary,
       ANIMATION_INNER_DIMENSION,
       ANIMATION_OUTER_DIMENSION,
       ANIMATION_BORDER_WIDTH
@@ -64,7 +65,7 @@ export const getStyles = memoizeFunction(
           justifyContent: 'flex-start',
           alignItems: 'flex-start',
           boxSizing: 'border-box',
-          color: theme.palette.neutralSecondary
+          color: palette.neutralSecondary
         },
         isCompact && animateBeaconSignal && fadeInAnimation
       ],
@@ -118,7 +119,7 @@ export const getStyles = memoizeFunction(
         minWidth: COMPACT_PERSONA_SIZE,
         fontSize: COMPACT_ICON_SIZE,
         lineHeight: COMPACT_ICON_SIZE,
-        color: theme.palette.themePrimary,
+        color: palette.themePrimary,
         marginTop: '1px',
         position: 'relative',
         display: 'flex',
@@ -127,7 +128,7 @@ export const getStyles = memoizeFunction(
         selectors: {
           '.ms-Persona-imageArea': {
             margin: '-2px 0 0 -2px',
-            border: '2px solid' + theme.palette.white,
+            border: '2px solid' + palette.white,
             borderRadius: '50%',
             selectors: {
               [HighContrastSelector]: {
@@ -178,14 +179,14 @@ export const getStyles = memoizeFunction(
       },
 
       commentText: {
-        color: theme.palette.neutralPrimary
+        color: palette.neutralPrimary
       },
 
       timeStamp: [
         theme.fonts.tiny,
         {
           fontWeight: 400,
-          color: theme.palette.neutralSecondary
+          color: palette.neutralSecondary
         }
       ],
 

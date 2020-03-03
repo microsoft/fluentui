@@ -3,12 +3,14 @@ import { IActivityItemProps } from './ActivityItem.types';
 import { IActivityItemClassNames, getClassNames } from './ActivityItem.classNames';
 import { getStyles } from './ActivityItem.styles';
 import { PersonaSize, PersonaCoin, IPersonaSharedProps, IPersonaCoinProps } from '../../Persona';
+import { customizable } from '../../Utilities';
 
 type OptionalReactKey = { key?: React.Key };
 
 /**
  * {@docCategory ActivityItem}
  */
+@customizable('ActivityItem', ['theme', 'styles'], true)
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
   constructor(props: IActivityItemProps) {
     super(props);
@@ -126,7 +128,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
 
   private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
     return getClassNames(
-      getStyles(undefined, props.styles, props.animateBeaconSignal, props.beaconColorOne, props.beaconColorTwo, props.isCompact),
+      getStyles(props.theme!, props.styles, props.animateBeaconSignal, props.beaconColorOne, props.beaconColorTwo, props.isCompact),
       props.className!,
       props.activityPersonas!,
       props.isCompact!
