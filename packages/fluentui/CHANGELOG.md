@@ -16,6 +16,7 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+- Updating `Menu` border in Teams dark theme to the correct color @notandrew ([#12000](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 
 ### BREAKING CHANGES
 - Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
