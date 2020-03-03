@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 import { FloatingPeopleSuggestionsExample } from './examples/FloatingPeopleSuggestions.Example';
 
-const FloatingPeoplePickerSuggestionsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FloatingSuggestionsComposite/examples/FloatingPeopleSuggestions.Example.tsx') as string;
+const FloatingPeoplePickerSuggestionsExampleCode = require('!raw-loader!./examples/FloatingPeopleSuggestions.Example') as string;
 
 export class FloatingSuggestionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -20,7 +20,9 @@ export class FloatingSuggestionPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<string>('!raw-loader!experiments/src/components/loatingSuggestionsComposite/FloatingPeopleSuggestions.types.ts')
+              require<
+                string
+              >('!raw-loader!@uifabric/experiments/src/components/FloatingSuggestionsComposite/FloatingPeopleSuggestions.types.ts')
             ]}
           />
         }
