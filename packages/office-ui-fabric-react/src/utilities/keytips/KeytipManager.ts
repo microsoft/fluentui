@@ -13,9 +13,9 @@ export interface IUniqueKeytip {
 export class KeytipManager {
   private static _instance: KeytipManager = new KeytipManager();
 
-  public keytips: { [Key: string]: IUniqueKeytip } = {};
-  public persistedKeytips: { [Key: string]: IUniqueKeytip } = {};
-  public sequenceMapping: { [Key: string]: IKeytipProps } = {};
+  public keytips: { [key: string]: IUniqueKeytip } = {};
+  public persistedKeytips: { [key: string]: IUniqueKeytip } = {};
+  public sequenceMapping: { [key: string]: IKeytipProps } = {};
 
   // This is (and should be) updated and kept in sync
   // with the inKeytipMode in KeytipLayer.
