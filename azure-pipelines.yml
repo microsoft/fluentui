@@ -14,7 +14,7 @@ jobs:
     steps:
       - template: azure-pipelines.tools.yml
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - script: |
           yarn
@@ -69,7 +69,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -102,7 +102,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -146,7 +146,7 @@ jobs:
   - job: Deploy
     dependsOn: Build
     steps:
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -180,7 +180,7 @@ jobs:
           yarn
         displayName: yarn
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.tools.yml
 
@@ -207,7 +207,7 @@ jobs:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - template: azure-pipelines.cache.yml
+      # - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:

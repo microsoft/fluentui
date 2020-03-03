@@ -26,6 +26,11 @@ import serve, { forceClose } from '../serve';
 
 const { paths } = config;
 
+const localCache = (task: NodeJS.ReadWriteStream, options: Parameters<typeof cache>[1]) => {
+  // don't cache in CI for now
+  return process.env.TF_BUILD ? task : cache(task, options);
+};
+
 const logWatchAdd = (filePath: string) => log('Created', chalk.blue(path.basename(filePath)));
 const logWatchChange = (filePath: string) => log('Changed', chalk.magenta(path.basename(filePath)));
 const logWatchUnlink = (filePath: string) => log('Deleted', chalk.red(path.basename(filePath)));
@@ -76,7 +81,7 @@ const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
-    .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
+    .pipe(localCache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
     .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() }))
 );
 
@@ -103,7 +108,7 @@ task('build:docs:example-menu', () =>
 task('build:docs:example-sources', () =>
   src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
     .pipe(
-      cache(gulpExampleSource(), {
+      localCache(gulpExampleSource(), {
         name: 'exampleSources'
       })
     )
@@ -126,7 +131,7 @@ task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pip
 
 task('build:docs:toc', () =>
   src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
-    cache(gulpDoctoc(), {
+    localCache(gulpDoctoc(), {
       name: 'md-docs'
     })
   )
