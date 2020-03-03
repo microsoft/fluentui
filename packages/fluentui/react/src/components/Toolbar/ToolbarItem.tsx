@@ -1,39 +1,48 @@
-import * as React from 'react';
-import * as _ from 'lodash';
-import * as PropTypes from 'prop-types';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import { Accessibility, toolbarItemBehavior } from '@fluentui/accessibility';
-import cx from 'classnames';
+import { Accessibility, toolbarItemBehavior, ToolbarItemBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
+import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import { mergeComponentVariables } from '@fluentui/styles';
+import cx from 'classnames';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
-  UIComponent,
   createShorthandFactory,
   doesNodeContainClick,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  childrenExist,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  childrenExist
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue, WithAsProp, withSafeTypeForAs, Omit, ShorthandCollection } from '../../types';
+import {
+  ComponentEventHandler,
+  ShorthandValue,
+  WithAsProp,
+  withSafeTypeForAs,
+  Omit,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ProviderContextPrepared
+} from '../../types';
 import { Popper } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 import Popup, { PopupProps } from '../Popup/Popup';
-import { mergeComponentVariables } from '@fluentui/styles';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
-import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { ToolbarItemShorthandKinds } from './Toolbar';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<ToolbarItemBehaviorProps>;
 
   /** A toolbar item can be active. */
   active?: boolean;
@@ -94,77 +103,111 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   wrapper?: ShorthandValue<BoxProps>;
 }
 
+export type ToolbarItemStylesProps = Required<Pick<ToolbarItemProps, 'active' | 'disabled'>>;
+
 export interface ToolbarItemSlotClassNames {
   wrapper: string;
 }
 
-class ToolbarItem extends UIComponent<WithAsProp<ToolbarItemProps>> {
-  static displayName = 'ToolbarItem';
+const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
+  FluentComponentStaticProps<ToolbarItemProps> & { slotClassNames: ToolbarItemSlotClassNames } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ToolbarItem.displayName, context.telemetry);
+  setStart();
 
-  static className = 'ui-toolbar__item';
+  const { accessibility, active, className, design, icon, children, disabled, popup, menu, menuOpen, wrapper, styles, variables } = props;
 
-  static slotClassNames: ToolbarItemSlotClassNames = {
-    wrapper: `${ToolbarItem.className}__wrapper`
+  const itemRef = React.useRef<HTMLElement>();
+  const menuRef = React.useRef<HTMLElement>();
+
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: ToolbarItem.displayName,
+    actionHandlers: {
+      performClick: event => {
+        event.preventDefault();
+        handleClick(event);
+      },
+      performWrapperClick: event => {
+        handleWrapperClick(event);
+      },
+      closeMenuAndFocusTrigger: event => {
+        trySetMenuOpen(false, event);
+        _.invoke(itemRef.current, 'focus');
+      },
+      doNotNavigateNextToolbarItem: event => {
+        event.stopPropagation();
+      }
+    },
+    mapPropsToBehavior: () => ({
+      as: String(props.as),
+      disabled,
+      hasMenu: !!menu,
+      hasPopup: !!popup,
+      menuOpen
+    }),
+    rtl: context.rtl
+  });
+  const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
+    className: ToolbarItem.className,
+    mapPropsToStyles: () => ({ active, disabled }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    rtl: context.rtl
+  });
+
+  const handleBlur = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onBlur', e, props);
   };
 
-  static create: ShorthandFactory<ToolbarItemProps>;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    active: PropTypes.bool,
-    disabled: PropTypes.bool,
-    icon: customPropTypes.itemShorthandWithoutJSX,
-    menu: PropTypes.oneOfType([customPropTypes.shorthandAllowingChildren, PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren)]),
-    menuOpen: PropTypes.bool,
-    onMenuOpenChange: PropTypes.func,
-    onClick: PropTypes.func,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func,
-    popup: PropTypes.oneOfType([
-      PropTypes.shape({
-        ...Popup.propTypes,
-        trigger: customPropTypes.never,
-        children: customPropTypes.never
-      }),
-      PropTypes.string
-    ]),
-    wrapper: customPropTypes.shorthandAllowingChildren
+  const handleFocus = (e: React.SyntheticEvent) => {
+    _.invoke(props, 'onFocus', e, props);
   };
 
-  static defaultProps = {
-    as: 'button',
-    accessibility: toolbarItemBehavior as Accessibility,
-    wrapper: {}
+  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    if (disabled) {
+      e.preventDefault();
+      return;
+    }
+
+    if (menu) {
+      trySetMenuOpen(!menuOpen, e);
+    }
+
+    _.invoke(props, 'onClick', e, props);
   };
 
-  actionHandlers = {
-    performClick: event => {
-      event.preventDefault();
-      this.handleClick(event);
-    },
-    performWrapperClick: event => {
-      this.handleWrapperClick(event);
-    },
-    closeMenuAndFocusTrigger: event => {
-      this.trySetMenuOpen(false, event);
-      _.invoke(this.itemRef.current, 'focus');
-    },
-    doNotNavigateNextToolbarItem: event => {
-      event.stopPropagation();
+  const handleWrapperClick = (e: React.MouseEvent | React.KeyboardEvent) => {
+    if (menu) {
+      if (doesNodeContainClick(menuRef.current, e.nativeEvent as MouseEvent, context.target)) {
+        trySetMenuOpen(false, e);
+        _.invoke(itemRef.current, 'focus');
+      }
     }
   };
 
-  itemRef = React.createRef<HTMLElement>();
-  menuRef = React.createRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
+  const handleOutsideClick = (getRefs: GetRefs) => (e: MouseEvent) => {
+    const isItemClick = doesNodeContainClick(itemRef.current, e, context.target);
+    const isNestedClick = _.some(getRefs(), (childRef: NodeRef) => {
+      return doesNodeContainClick(childRef.current as HTMLElement, e, context.target);
+    });
+    const isInside = isItemClick || isNestedClick;
 
-  handleMenuOverrides = (getRefs: GetRefs, variables) => (predefinedProps: ToolbarMenuProps) => ({
+    if (!isInside) {
+      trySetMenuOpen(false, e);
+    }
+  };
+
+  const trySetMenuOpen = (newValue: boolean, e: Event | React.SyntheticEvent) => {
+    _.invoke(props, 'onMenuOpenChange', e, { ...props, menuOpen: newValue });
+  };
+
+  const handleMenuOverrides = (getRefs: GetRefs) => (predefinedProps: ToolbarMenuProps) => ({
     onBlur: (e: React.FocusEvent) => {
       const isInside = _.some(getRefs(), (childRef: NodeRef) => {
         return childRef.current.contains(e.relatedTarget as HTMLElement);
       });
 
       if (!isInside) {
-        this.trySetMenuOpen(false, e);
+        trySetMenuOpen(false, e);
       }
     },
     onItemClick: (e, itemProps: ToolbarMenuItemProps) => {
@@ -174,155 +217,150 @@ class ToolbarItem extends UIComponent<WithAsProp<ToolbarItemProps>> {
         return;
       }
       // TODO: should we pass toolbarMenuItem to the user callback so he can decide if he wants to close the menu?
-      this.trySetMenuOpen(menuOpen, e);
+      trySetMenuOpen(menuOpen, e);
       if (!menuOpen) {
-        _.invoke(this.itemRef.current, 'focus');
+        _.invoke(itemRef.current, 'focus');
       }
     },
     variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
-  renderComponent({ ElementType, classes, unhandledProps, accessibility, variables }) {
-    const { icon, children, disabled, popup, menu, menuOpen, wrapper } = this.props;
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(ToolbarItem.handledProps, props);
 
-    const itemElement = (
-      <ElementType
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        disabled={disabled}
-        className={classes.root}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-        onClick={this.handleClick}
-      >
-        {childrenExist(children) ? children : Icon.create(icon)}
-      </ElementType>
-    );
-    const submenuElement = menuOpen ? (
-      <Unstable_NestingAuto>
-        {(getRefs, nestingRef) => (
-          <>
-            <Ref
-              innerRef={(node: HTMLElement) => {
-                nestingRef.current = node;
-                this.menuRef.current = node;
-              }}
-            >
-              <Popper
-                align="start"
-                position="above"
-                modifiers={{
-                  preventOverflow: {
-                    escapeWithReference: false // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
-                  }
-                }}
-                targetRef={this.itemRef}
-              >
-                {ToolbarMenu.create(menu, {
-                  overrideProps: this.handleMenuOverrides(getRefs, variables)
-                })}
-              </Popper>
-            </Ref>
-            <EventListener listener={this.handleOutsideClick(getRefs)} target={this.context.target} type="click" capture />
-          </>
-        )}
-      </Unstable_NestingAuto>
-    ) : null;
+  const itemElement = (
+    <ElementType
+      {...getA11yProps('root', {
+        ...unhandledProps,
+        disabled,
+        className: classes.root,
+        onBlur: handleBlur,
+        onFocus: handleFocus,
+        onClick: handleClick
+      })}
+    >
+      {childrenExist(children) ? children : Icon.create(icon)}
+    </ElementType>
+  );
 
-    if (popup) {
-      return Popup.create(popup, {
-        defaultProps: () => ({
-          trapFocus: true
-        }),
-        overrideProps: {
-          trigger: itemElement,
-          children: undefined // force-reset `children` defined for `Popup` as it collides with the `trigger`
-        }
-      });
-    }
-
-    // wrap the item if it has menu (even if it is closed = not rendered)
-    if (menu) {
-      const contentElement = (
+  const submenuElement = menuOpen ? (
+    <Unstable_NestingAuto>
+      {(getRefs, nestingRef) => (
         <>
-          <Ref innerRef={this.itemRef}>{itemElement}</Ref>
-          {submenuElement}
+          <Ref
+            innerRef={(node: HTMLElement) => {
+              nestingRef.current = node;
+              menuRef.current = node;
+            }}
+          >
+            <Popper
+              align="start"
+              position="above"
+              modifiers={{
+                preventOverflow: {
+                  escapeWithReference: false // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
+                }
+              }}
+              targetRef={itemRef}
+            >
+              {ToolbarMenu.create(menu, {
+                overrideProps: handleMenuOverrides(getRefs)
+              })}
+            </Popper>
+          </Ref>
+          <EventListener listener={handleOutsideClick(getRefs)} target={context.target} type="click" capture />
         </>
-      );
+      )}
+    </Unstable_NestingAuto>
+  ) : null;
 
-      if (wrapper) {
-        return Box.create(wrapper, {
-          defaultProps: () => ({
-            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper),
-            ...accessibility.attributes.wrapper,
-            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.wrapper, wrapper)
-          }),
-          overrideProps: predefinedProps => ({
-            children: contentElement,
-            onClick: e => {
-              this.handleWrapperClick(e);
-              _.invoke(predefinedProps, 'onClick', e);
-            }
-          })
-        });
+  if (popup) {
+    const popupElement = Popup.create(popup, {
+      defaultProps: () => ({
+        trapFocus: true
+      }),
+      overrideProps: {
+        trigger: itemElement,
+        children: undefined // force-reset `children` defined for `Popup` as it collides with the `trigger`
       }
-
-      return contentElement;
-    }
-
-    return <Ref innerRef={this.itemRef}>{itemElement}</Ref>;
-  }
-
-  handleBlur = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onBlur', e, this.props);
-  };
-
-  handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(this.props, 'onFocus', e, this.props);
-  };
-
-  handleClick = (e: React.SyntheticEvent) => {
-    const { disabled, menu, menuOpen } = this.props;
-
-    if (disabled) {
-      e.preventDefault();
-      return;
-    }
-
-    if (menu) {
-      this.trySetMenuOpen(!menuOpen, e);
-    }
-
-    _.invoke(this.props, 'onClick', e, this.props);
-  };
-
-  handleWrapperClick = e => {
-    const { menu } = this.props;
-    if (menu) {
-      if (doesNodeContainClick(this.menuRef.current, e, this.context.target)) {
-        this.trySetMenuOpen(false, e);
-        _.invoke(this.itemRef.current, 'focus');
-      }
-    }
-  };
-
-  handleOutsideClick = (getRefs: GetRefs) => (e: MouseEvent) => {
-    const isItemClick = doesNodeContainClick(this.itemRef.current, e, this.context.target);
-    const isNestedClick = _.some(getRefs(), (childRef: NodeRef) => {
-      return doesNodeContainClick(childRef.current as HTMLElement, e, this.context.target);
     });
-    const isInside = isItemClick || isNestedClick;
+    setEnd();
 
-    if (!isInside) {
-      this.trySetMenuOpen(false, e);
-    }
-  };
-
-  trySetMenuOpen(newValue: boolean, e: Event | React.SyntheticEvent) {
-    _.invoke(this.props, 'onMenuOpenChange', e, { ...this.props, menuOpen: newValue });
+    return popupElement;
   }
-}
+
+  // wrap the item if it has menu (even if it is closed = not rendered)
+  if (menu) {
+    const contentElement = (
+      <>
+        <Ref innerRef={itemRef}>{itemElement}</Ref>
+        {submenuElement}
+      </>
+    );
+
+    if (wrapper) {
+      const wrapperElement = Box.create(wrapper, {
+        defaultProps: () =>
+          getA11yProps('wrapper', {
+            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper)
+          }),
+        overrideProps: predefinedProps => ({
+          children: contentElement,
+          onClick: e => {
+            handleWrapperClick(e);
+            _.invoke(predefinedProps, 'onClick', e);
+          }
+        })
+      });
+      setEnd();
+
+      return wrapperElement;
+    }
+
+    setEnd();
+    return contentElement;
+  }
+
+  const refElement = <Ref innerRef={itemRef}>{itemElement}</Ref>;
+  setEnd();
+
+  return refElement;
+};
+
+ToolbarItem.className = 'ui-toolbar__item';
+ToolbarItem.displayName = 'ToolbarItem';
+
+ToolbarItem.slotClassNames = {
+  wrapper: `${ToolbarItem.className}__wrapper`
+};
+
+ToolbarItem.defaultProps = {
+  as: 'button',
+  accessibility: toolbarItemBehavior,
+  wrapper: {}
+};
+ToolbarItem.propTypes = {
+  ...commonPropTypes.createCommon(),
+  active: PropTypes.bool,
+  disabled: PropTypes.bool,
+  icon: customPropTypes.itemShorthandWithoutJSX,
+  menu: PropTypes.oneOfType([customPropTypes.shorthandAllowingChildren, PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren)]),
+  menuOpen: PropTypes.bool,
+  onMenuOpenChange: PropTypes.func,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
+  popup: PropTypes.oneOfType([
+    PropTypes.shape({
+      ...Popup.propTypes,
+      trigger: customPropTypes.never,
+      children: customPropTypes.never
+    }),
+    PropTypes.string
+  ]),
+  wrapper: customPropTypes.shorthandAllowingChildren
+};
+ToolbarItem.handledProps = Object.keys(ToolbarItem.propTypes) as any;
 
 ToolbarItem.create = createShorthandFactory({ Component: ToolbarItem, mappedProp: 'content' });
 

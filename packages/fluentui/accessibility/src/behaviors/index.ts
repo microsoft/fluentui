@@ -38,6 +38,7 @@ export * from './Toolbar/toolbarMenuItemBehavior';
 export { default as menuItemAsToolbarButtonBehavior } from './Toolbar/menuItemAsToolbarButtonBehavior';
 export { default as toolbarBehavior } from './Toolbar/toolbarBehavior';
 export { default as toolbarItemBehavior } from './Toolbar/toolbarItemBehavior';
+export * from './Toolbar/toolbarItemBehavior';
 export { default as toolbarMenuItemCheckboxBehavior } from './Toolbar/toolbarMenuItemCheckboxBehavior';
 export { default as toolbarMenuItemRadioBehavior } from './Toolbar/toolbarMenuItemRadioBehavior';
 export { default as toolbarMenuRadioGroupBehavior } from './Toolbar/toolbarMenuRadioGroupBehavior';
