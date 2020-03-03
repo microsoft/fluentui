@@ -21,6 +21,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 - Changed `indicator` prop in `MenuItem` and `Menu` to be `Box` shorthand instead of `Icon` @mnajdova ([#12145](https://github.com/OfficeDev/office-ui-fabric-react/pull/12145))
 - Restricted prop sets in the `TableCell` component which are passed to styles functions @pompomon ([#12146](https://github.com/OfficeDev/office-ui-fabric-react/pull/12146))
+- Changed `indicator` prop in `AccordionTitle` to be `Box` shorthand instead of `Icon` @mnajdova ([#12160](https://github.com/OfficeDev/office-ui-fabric-react/pull/12160))
 
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
 ## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
