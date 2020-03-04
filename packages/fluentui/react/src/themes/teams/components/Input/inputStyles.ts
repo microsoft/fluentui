@@ -3,7 +3,7 @@ import { InputProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
 import clearIndicatorUrl from './clearIndicatorUrl';
-import { pxToRem } from 'src/utils';
+import { pxToRem } from '../../../../utils';
 
 const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
