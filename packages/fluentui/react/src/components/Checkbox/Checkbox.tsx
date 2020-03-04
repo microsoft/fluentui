@@ -173,7 +173,7 @@ Checkbox.className = 'ui-checkbox';
 
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
-  indicator: {} as any,
+  indicator: {},
   labelPosition: 'end'
 };
 Checkbox.propTypes = {
