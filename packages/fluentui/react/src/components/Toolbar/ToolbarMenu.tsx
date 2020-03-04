@@ -22,7 +22,7 @@ import { ComponentEventHandler, ShorthandCollection, withSafeTypeForAs, Shorthan
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
-import { IconProps } from '../Icon/Icon';
+import { BoxProps } from '../Box/Box';
 
 export type ToolbarMenuItemShorthandKinds = 'divider' | 'item' | 'toggle';
 
@@ -42,7 +42,7 @@ export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentPro
   submenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  submenuIndicator?: ShorthandValue<IconProps>;
+  submenuIndicator?: ShorthandValue<BoxProps>;
 }
 
 class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
@@ -57,7 +57,7 @@ class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
     items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
     onItemClick: PropTypes.func,
     submenu: PropTypes.bool,
-    submenuIndicator: customPropTypes.itemShorthandWithoutJSX
+    submenuIndicator: customPropTypes.shorthandAllowingChildren
   };
 
   static defaultProps = {

@@ -29,6 +29,8 @@ export { default as loaderBehavior } from './Loader/loaderBehavior';
 export { default as inputBehavior } from './Input/inputBehavior';
 export { default as iconBehavior } from './Icon/iconBehavior';
 export * from './Icon/iconBehavior';
+export { default as indicatorBehavior } from './Box/indicatorBehavior';
+export * from './Box/indicatorBehavior';
 export { default as tabBehavior } from './Tab/tabBehavior';
 export { default as tabListBehavior } from './Tab/tabListBehavior';
 export { default as menuAsToolbarBehavior } from './Toolbar/menuAsToolbarBehavior';
