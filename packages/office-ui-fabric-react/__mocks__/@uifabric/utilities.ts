@@ -1,6 +1,8 @@
 export * from '@uifabric/utilities';
 import { Async } from '@uifabric/utilities';
 
+declare function setTimeout(cb: Function, delay: number): number;
+
 // Known issue with jest's runAllTimers and debounce implementations resulting in
 // "Ran 100000 timers, and there are still more! Assuming we've hit an infinite recursion and bailing out..."
 // https://github.com/facebook/jest/issues/3465
@@ -11,6 +13,7 @@ class MockAsync extends Async {
     const debounced = (...args: any[]) => {
       if (timeoutId) {
         clearTimeout(timeoutId);
+        timeoutId = null;
       }
       // Callback functions throughout repo aren't binding properly, so we have to access
       // Async's private _parent member and invoke callbacks the same way Async.debounce does.
@@ -21,6 +24,7 @@ class MockAsync extends Async {
     const cancel = () => {
       if (timeoutId) {
         clearTimeout(timeoutId);
+        timeoutId = null;
       }
     };
 
