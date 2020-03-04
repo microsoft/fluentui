@@ -137,6 +137,31 @@ describe('useAccessibility', () => {
     );
   });
 
+  it('handlers are referentially stable', () => {
+    const wrapper = shallow(<TestComponent />);
+    const handler = wrapper.find('div').prop('onKeyDown');
+
+    wrapper.setProps({});
+    expect(Object.is(handler, wrapper.find('div').prop('onKeyDown'))).toBe(true);
+  });
+
+  it('callbacks are referentially stable', () => {
+    const prevOnKeyDown = jest.fn();
+    const nextOnKeyDown = jest.fn();
+
+    const wrapper = shallow(<TestComponent onKeyDown={prevOnKeyDown} />);
+    wrapper.find('div').simulate('keydown');
+
+    wrapper.setProps({ onKeyDown: nextOnKeyDown });
+    wrapper.find('div').simulate('keydown');
+
+    wrapper.setProps({ onKeyDown: undefined });
+    wrapper.find('div').simulate('keydown');
+
+    expect(prevOnKeyDown).toBeCalledTimes(1);
+    expect(nextOnKeyDown).toBeCalledTimes(1);
+  });
+
   describe('FocusZone', () => {
     it('do not render FocusZone without the definition in a behavior', () => {
       expect(shallow(<TestComponent />).find('FocusZone')).toHaveLength(0);
