@@ -23,6 +23,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Restricted prop sets in the `TableCell` component which are passed to styles functions @pompomon ([#12146](https://github.com/OfficeDev/office-ui-fabric-react/pull/12146))
 - Changed `indicator` prop in `AccordionTitle` to be `Box` shorthand instead of `Icon` @mnajdova ([#12160](https://github.com/OfficeDev/office-ui-fabric-react/pull/12160))
 - Restricted prop sets in the `ToolbarDivider`, `ToolbarItem` & `ToolbarCustomItem` components which are passed to styles functions @layershifter ([#12161](https://github.com/OfficeDev/office-ui-fabric-react/pull/12161))
+- Changed `submenuIndicator` and `activeIndicator` props in `ToolbarMenu` and `ToolbarMenuItem` components to be `Box` shorthand instead of `Icon` @mnajdova ([#12164](https://github.com/OfficeDev/office-ui-fabric-react/pull/12164))
+- Changed `clearIndicator`, `toggleIndicator` and `checkableIndicator` props in `Dropdown` and `DropdownItem` components to be `Box` shorthand instead of `Icon` @mnajdova ([#12164](https://github.com/OfficeDev/office-ui-fabric-react/pull/12164))
 
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
 ## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)

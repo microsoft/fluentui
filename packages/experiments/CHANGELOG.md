@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Mar 2020 12:27:02 GMT and should not be manually modified.
 
+## 7.21.4
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Patches
+
+- Update snapshots (KevinTCoughlin@users.noreply.github.com)
 ## 7.21.3
 Tue, 03 Mar 2020 12:27:24 GMT
 

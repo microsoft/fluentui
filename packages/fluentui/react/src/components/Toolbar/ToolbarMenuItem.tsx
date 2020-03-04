@@ -1,4 +1,4 @@
-import { Accessibility, toolbarMenuItemBehavior, ToolbarMenuItemBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility, toolbarMenuItemBehavior, ToolbarMenuItemBehaviorProps, indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as _ from 'lodash';
 import cx from 'classnames';
@@ -56,7 +56,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   active?: boolean;
 
   /** A slot for a selected indicator in the dropdown list. */
-  activeIndicator?: ShorthandValue<IconProps>;
+  activeIndicator?: ShorthandValue<BoxProps>;
 
   /** A toolbar item can show it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -68,7 +68,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   index?: number;
 
   /** Shorthand for the submenu indicator. */
-  submenuIndicator?: ShorthandValue<IconProps>;
+  submenuIndicator?: ShorthandValue<BoxProps>;
 
   /** Indicates whether the menu item is part of submenu. */
   inSubmenu?: boolean;
@@ -115,6 +115,7 @@ export interface ToolbarMenuItemSlotClassNames {
   activeIndicator: string;
   wrapper: string;
   submenu: string;
+  submenuIndicator: string;
 }
 
 const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
@@ -311,17 +312,21 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
           })}
           {content}
           {active &&
-            Icon.create(activeIndicator, {
+            Box.create(activeIndicator, {
               defaultProps: () => ({
+                as: 'span',
                 className: ToolbarMenuItem.slotClassNames.activeIndicator,
-                styles: resolvedStyles.activeIndicator
+                styles: resolvedStyles.activeIndicator,
+                accessibility: indicatorBehavior
               })
             })}
           {menu &&
-            Icon.create(submenuIndicator, {
+            Box.create(submenuIndicator, {
               defaultProps: () => ({
-                name: 'icon-menu-arrow-end',
-                styles: resolvedStyles.submenuIndicator
+                as: 'span',
+                className: ToolbarMenuItem.slotClassNames.submenuIndicator,
+                styles: resolvedStyles.submenuIndicator,
+                accessibility: indicatorBehavior
               })
             })}
         </>
@@ -410,7 +415,8 @@ ToolbarMenuItem.className = 'ui-toolbar__menuitem';
 ToolbarMenuItem.slotClassNames = {
   activeIndicator: `${ToolbarMenuItem.className}__activeIndicator`,
   wrapper: `${ToolbarMenuItem.className}__wrapper`,
-  submenu: `${ToolbarMenuItem.className}__submenu`
+  submenu: `${ToolbarMenuItem.className}__submenu`,
+  submenuIndicator: `${ToolbarMenuItem.className}__submenuIndicator`
 };
 
 ToolbarMenuItem.propTypes = {
@@ -443,9 +449,9 @@ ToolbarMenuItem.handledProps = Object.keys(ToolbarMenuItem.propTypes) as any;
 ToolbarMenuItem.defaultProps = {
   as: 'button',
   accessibility: toolbarMenuItemBehavior,
-  activeIndicator: 'icon-checkmark',
-  submenuIndicator: 'icon-menu-arrow-end',
-  wrapper: { as: 'li' }
+  wrapper: { as: 'li' },
+  activeIndicator: {},
+  submenuIndicator: {}
 };
 
 ToolbarMenuItem.create = createShorthandFactory({
