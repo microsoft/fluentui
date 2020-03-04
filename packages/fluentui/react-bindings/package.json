@@ -9,6 +9,7 @@
     "@fluentui/accessibility": "^0.45.0",
     "@fluentui/state": "^0.45.0",
     "@fluentui/styles": "^0.45.0",
+    "@uifabric/utilities": "^7.13.0",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"

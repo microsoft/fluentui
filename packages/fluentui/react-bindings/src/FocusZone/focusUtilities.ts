@@ -400,6 +400,8 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
  * Helper to get the window object.
  *
  * @public
+ *
+ * @deprecated Use getWindow from @uifabric/utilities instead
  */
 export function getWindow(rootElement?: Element | null): Window | undefined {
   return (
@@ -412,6 +414,8 @@ export function getWindow(rootElement?: Element | null): Window | undefined {
  * Helper to get the document object.
  *
  * @public
+ *
+ * @deprecated Use getDocument from @uifabric/utilities instead
  */
 export function getDocument(rootElement?: Element | null): Document | undefined {
   // eslint-disable-next-line no-undef
@@ -421,6 +425,8 @@ export function getDocument(rootElement?: Element | null): Document | undefined 
 /**
  * Returns parent element of passed child element if exists
  * @param child - element to find parent for
+ *
+ * @deprecated Use getParent from @uifabric/utilities instead
  */
 export function getParent(child: HTMLElement): HTMLElement | null {
   return child && child.parentElement;
