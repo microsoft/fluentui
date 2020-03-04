@@ -6,7 +6,9 @@ import { mountWithProvider } from 'test/utils';
 import { ReactWrapper } from 'enzyme';
 
 describe('ToolbarItem', () => {
-  isConformant(ToolbarItem);
+  isConformant(ToolbarItem, {
+    constructorName: 'ToolbarItem'
+  });
 
   describe('variables', () => {
     function checkMergedVariables(toolbarItem: ReactWrapper): void {
