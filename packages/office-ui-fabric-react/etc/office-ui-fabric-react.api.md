@@ -7338,6 +7338,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsMaximumNumber?: number;
+    // @deprecated
     searchErrorText?: string;
     searchForMoreText?: string;
     searchingText?: string;
