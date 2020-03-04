@@ -24,7 +24,6 @@ import {
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
-import { MarkdownTBodyBase } from '@uifabric/example-app-base';
 
 const DAYS_IN_WEEK = 7;
 
