@@ -73,8 +73,8 @@ module.exports = function preset() {
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
 
-  task('fluentui:publish:patch', series('fluentui:prepublish', fluentuiLernaPublish('patch'), 'fluentui:postpublish'));
-  task('fluentui:publish:minor', series('fluentui:prepublish', fluentuiLernaPublish('minor'), 'fluentui:postpublish'));
+  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
+  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
 
   task('ts:compile', () => {
     return argv().commonjs
