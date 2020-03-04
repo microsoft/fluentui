@@ -2,6 +2,27 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "@uifabric/experiments_v7.21.4",
+      "version": "7.21.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "3e9562ca49b5e9b3eeb5a789edcbf6c03b5eb885"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added demo page for FloatingSuggestionsComposite",
+            "author": "sanredd@microsoft.com",
+            "commit": "94bd7374b7a08e037f3b195e4997acde2027c51e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2020 12:27:24 GMT",
       "tag": "@uifabric/experiments_v7.21.3",
       "version": "7.21.3",

@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.0",
+      "version": "7.10.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Added ApplicationInsights to public site to enable usage tracking",
+            "author": "joschemd@microsoft.com",
+            "commit": "dd5ae96ef8d24ce591bb97214a16ee3da7b900eb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Feb 2020 12:23:46 GMT",
       "tag": "@uifabric/fabric-website_v7.9.9",
       "version": "7.9.9",

@@ -1,4 +1,5 @@
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -17,7 +18,6 @@ import {
   ProviderContextPrepared
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
 
@@ -43,7 +43,7 @@ export interface DropdownItemProps extends UIComponentProps<DropdownItemProps> {
   checkable?: boolean;
 
   /** A slot for a checkable indicator. */
-  checkableIndicator?: ShorthandValue<IconProps>;
+  checkableIndicator?: ShorthandValue<BoxProps>;
 
   /** Item's header. */
   header?: ShorthandValue<BoxProps>;
@@ -125,10 +125,11 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   });
   const endMediaElement =
     selected && checkable
-      ? Icon.create(checkableIndicator, {
+      ? Box.create(checkableIndicator, {
           defaultProps: () => ({
             className: DropdownItem.slotClassNames.checkableIndicator,
-            styles: resolvedStyles.checkableIndicator
+            styles: resolvedStyles.checkableIndicator,
+            accessibility: indicatorBehavior
           })
         })
       : null;
@@ -170,7 +171,8 @@ DropdownItem.className = 'ui-dropdown__item';
 DropdownItem.displayName = 'DropdownItem';
 
 DropdownItem.defaultProps = {
-  as: 'li'
+  as: 'li',
+  checkableIndicator: {}
 };
 
 DropdownItem.propTypes = {
@@ -183,7 +185,7 @@ DropdownItem.propTypes = {
   active: PropTypes.bool,
   content: customPropTypes.itemShorthand,
   checkable: PropTypes.bool,
-  checkableIndicator: customPropTypes.itemShorthandWithoutJSX,
+  checkableIndicator: customPropTypes.shorthandAllowingChildren,
   header: customPropTypes.itemShorthand,
   image: customPropTypes.itemShorthandWithoutJSX,
   onClick: PropTypes.func,
