@@ -1,6 +1,5 @@
 import { Accessibility, treeItemBehavior, TreeItemBehaviorProps } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -27,7 +26,7 @@ import {
   ProviderContextPrepared
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
-import { hasSubtree } from './utils';
+import { hasSubtree, TreeItemContext } from './utils';
 
 export interface TreeItemSlotClassNames {
   title: string;
@@ -47,9 +46,6 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Array of props for sub tree. */
   items?: ShorthandCollection<TreeItemProps>;
 
-  /** Ref for the item DOM element. */
-  contentRef?: React.Ref<HTMLElement>;
-
   /** Level of the tree/subtree that contains this item. */
   level?: number;
 
@@ -61,9 +57,6 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Called when the item's siblings are about to be expanded. */
   onSiblingsExpand?: ComponentEventHandler<TreeItemProps>;
-
-  /** Called when the item's parent is about to be focused. */
-  onFocusParent?: ComponentEventHandler<TreeItemProps>;
 
   /** Whether or not the item is in the expanded state. Only makes sense if item has children items. */
   expanded?: boolean;
@@ -96,25 +89,12 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
 
-  const {
-    accessibility,
-    children,
-    className,
-    contentRef,
-    design,
-    title,
-    renderItemTitle,
-    expanded,
-    level,
-    index,
-    siblings,
-    styles,
-    variables
-  } = props;
+  const { accessibility, children, className, design, title, renderItemTitle, expanded, level, index, siblings, styles, variables } = props;
 
   const hasSubtreeItem = hasSubtree(props);
   // size of the tree without children.
   const treeSize = siblings ? siblings.length + 1 : 1;
+  const { onFocusParent } = React.useContext(TreeItemContext);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -128,7 +108,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.preventDefault();
         e.stopPropagation();
 
-        _.invoke(props, 'onFocusParent', e, props);
+        onFocusParent(props.id);
       },
       collapse: e => {
         e.preventDefault();
@@ -187,7 +167,9 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(TreeItem.handledProps, props);
 
-  const element = (
+  setEnd();
+
+  return (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
@@ -213,10 +195,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
           })}
     </ElementType>
   );
-  const elementWithRef = contentRef ? <Ref innerRef={contentRef}>{element}</Ref> : element;
-  setEnd();
-
-  return elementWithRef;
 };
 
 TreeItem.className = 'ui-tree__item';
@@ -231,14 +209,12 @@ TreeItem.propTypes = {
   ...commonPropTypes.createCommon({
     content: false
   }),
-  contentRef: customPropTypes.ref,
   id: PropTypes.string.isRequired,
   index: PropTypes.number,
   items: customPropTypes.collectionShorthand,
   level: PropTypes.number,
   onTitleClick: PropTypes.func,
   onFocusFirstChild: PropTypes.func,
-  onFocusParent: PropTypes.func,
   onSiblingsExpand: PropTypes.func,
   expanded: PropTypes.bool,
   parent: customPropTypes.itemShorthand,

@@ -27,7 +27,7 @@ import {
   ShorthandValue,
   ComponentEventHandler
 } from '../../types';
-import { hasSubtree, removeItemAtIndex } from './utils';
+import { hasSubtree, removeItemAtIndex, TreeItemContext, TreeItemRenderContextValue } from './utils';
 
 export interface TreeSlotClassNames {
   item: string;
@@ -80,7 +80,7 @@ export interface TreeItemForRenderProps {
   id: string;
   index: number;
   level: number;
-  parent: ShorthandValue<TreeItemProps>;
+  parentRef: React.RefObject<HTMLElement>;
   siblings: ShorthandCollection<TreeItemProps>;
 }
 
@@ -125,24 +125,25 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   // memoize this function if performance issue occurs.
   static getItemsForRender = (itemsFromProps: ShorthandCollection<TreeItemProps>) => {
-    const itemsForRenderGenerator = (items = itemsFromProps, level = 1, parent?: ShorthandValue<TreeItemProps>) => {
+    const itemsForRenderGenerator = (items = itemsFromProps, level = 1, parentRef?: React.RefObject<HTMLElement>) => {
       return _.reduce(
         items,
         (acc: Object, item: ShorthandValue<TreeItemProps>, index: number) => {
           const id = item['id'];
           const isSubtree = hasSubtree(item);
+          const elementRef = React.createRef<HTMLElement>();
 
           acc[id] = {
-            elementRef: React.createRef<HTMLElement>(),
+            elementRef,
+            parentRef,
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
-            parent,
             siblings: items.filter(currentItem => currentItem !== item)
           };
 
           return {
             ...acc,
-            ...(isSubtree ? itemsForRenderGenerator(item['items'], level + 1, item) : {})
+            ...(isSubtree ? itemsForRenderGenerator(item['items'], level + 1, elementRef) : {})
           };
         },
         {}
@@ -226,23 +227,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
       _.invoke(predefinedProps, 'onTitleClick', e, treeItemProps);
     },
-    onFocusParent: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-      const { parent } = treeItemProps;
-
-      if (!parent) {
-        return;
-      }
-
-      const { itemsForRender } = this.state;
-      const parentItemForRender = itemsForRender[parent['id']];
-
-      if (!parentItemForRender || !parentItemForRender.elementRef || !parentItemForRender.elementRef.current) {
-        return;
-      }
-
-      parentItemForRender.elementRef.current.focus();
-      _.invoke(predefinedProps, 'onFocusParent', e, treeItemProps);
-    },
     onFocusFirstChild: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
       const { id } = treeItemProps;
 
@@ -294,6 +278,20 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
+  onFocusParent = (itemId: string) => {
+    const { parentRef } = this.state.itemsForRender[itemId];
+
+    if (!parentRef || !parentRef.current) {
+      return;
+    }
+
+    parentRef.current.focus();
+  };
+
+  contextValue: TreeItemRenderContextValue = {
+    onFocusParent: this.onFocusParent
+  };
+
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
     const { itemsForRender } = this.state;
     const { items, renderItemTitle } = this.props;
@@ -302,22 +300,27 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     const renderItems = (items: ShorthandCollection<TreeItemProps>): React.ReactElement[] => {
       return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>) => {
-        const itemForRender = itemsForRender[item['id']];
+        const itemId = item['id'];
+        const itemForRender = itemsForRender[itemId];
         const { elementRef, ...restItemForRender } = itemForRender;
         const isSubtree = hasSubtree(item);
-        const isSubtreeExpanded = isSubtree && this.isActiveItem(item['id']);
-        const renderedItem = TreeItem.create(item, {
-          defaultProps: () => ({
-            accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-            className: Tree.slotClassNames.item,
-            expanded: isSubtreeExpanded,
-            renderItemTitle,
-            key: item['id'],
-            contentRef: elementRef,
-            ...restItemForRender
-          }),
-          overrideProps: this.handleTreeItemOverrides
-        });
+        const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
+        const renderedItem = (
+          <Ref innerRef={elementRef}>
+            {TreeItem.create(item, {
+              defaultProps: () => ({
+                accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
+                className: Tree.slotClassNames.item,
+                expanded: isSubtreeExpanded,
+                renderItemTitle,
+                key: item['id'],
+                contentRef: elementRef,
+                ...restItemForRender
+              }),
+              overrideProps: this.handleTreeItemOverrides
+            })}
+          </Ref>
+        );
 
         return [...renderedItems, renderedItem, ...(isSubtreeExpanded ? renderItems(item['items']) : ([] as any))];
       }, []);
@@ -330,21 +333,23 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     const { children, renderedItems } = this.props;
 
     return (
-      <Ref innerRef={this.treeRef}>
-        <ElementType
-          className={classes.root}
-          {...accessibility.attributes.root}
-          {...rtlTextContainer.getAttributes({ forElements: [children] })}
-          {...unhandledProps}
-          {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        >
-          {childrenExist(children)
-            ? children
-            : renderedItems
-            ? renderedItems(this.renderContent(accessibility))
-            : this.renderContent(accessibility)}
-        </ElementType>
-      </Ref>
+      <TreeItemContext.Provider value={this.contextValue}>
+        <Ref innerRef={this.treeRef}>
+          <ElementType
+            className={classes.root}
+            {...accessibility.attributes.root}
+            {...rtlTextContainer.getAttributes({ forElements: [children] })}
+            {...unhandledProps}
+            {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
+          >
+            {childrenExist(children)
+              ? children
+              : renderedItems
+              ? renderedItems(this.renderContent(accessibility))
+              : this.renderContent(accessibility)}
+          </ElementType>
+        </Ref>
+      </TreeItemContext.Provider>
     );
   }
 
