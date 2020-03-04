@@ -14,7 +14,7 @@ const doList = [
   <Box>
     If carousel contains `navigation`:
     <ul>
-      <li> provide label to `navigation` and to navigation item using `aria-label` attribute</li>
+      <li> provide label to `navigation` slot and to navigation item using `aria-label` attribute</li>
       <li> add `aria-controls` attribute to navigation item referencing to `carouselItem` id </li>
     </ul>
   </Box>
