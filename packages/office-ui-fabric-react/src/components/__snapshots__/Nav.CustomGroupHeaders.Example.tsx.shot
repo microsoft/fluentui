@@ -118,7 +118,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -271,7 +270,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -464,7 +462,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -617,7 +614,6 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }

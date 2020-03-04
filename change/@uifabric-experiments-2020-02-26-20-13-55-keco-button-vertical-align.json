@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Update snapshots",
+  "packageName": "@uifabric/experiments",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "3e9562ca49b5e9b3eeb5a789edcbf6c03b5eb885",
+  "dependentChangeType": "patch",
+  "date": "2020-02-27T04:13:55.006Z"
+}

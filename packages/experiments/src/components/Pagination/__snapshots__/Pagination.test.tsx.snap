@@ -44,7 +44,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 32px;
           }
           &::-moz-focus-inner {
@@ -133,7 +132,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="Previous"
           role="presentation"
@@ -179,7 +177,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 32px;
           }
           &::-moz-focus-inner {
@@ -268,7 +265,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="CaretSolidLeft"
           role="presentation"
@@ -845,7 +841,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 32px;
           }
           &::-moz-focus-inner {
@@ -935,7 +930,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="CaretSolidRight"
           role="presentation"
@@ -989,7 +983,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -1079,7 +1072,6 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Next"
             role="presentation"
@@ -1146,7 +1138,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 32px;
         }
         &::-moz-focus-inner {
@@ -1235,7 +1226,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="Previous"
         role="presentation"
@@ -1281,7 +1271,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 32px;
         }
         &::-moz-focus-inner {
@@ -1370,7 +1359,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="CaretSolidLeft"
         role="presentation"
@@ -1622,7 +1610,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -1729,7 +1716,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"
@@ -1782,7 +1768,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 32px;
         }
         &::-moz-focus-inner {
@@ -1871,7 +1856,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="CaretSolidRight"
         role="presentation"
@@ -1913,7 +1897,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 32px;
         }
         &::-moz-focus-inner {
@@ -2002,7 +1985,6 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="Next"
         role="presentation"
