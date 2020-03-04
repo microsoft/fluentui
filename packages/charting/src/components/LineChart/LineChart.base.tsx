@@ -123,7 +123,7 @@ export class LineChartBase extends React.Component<
       height: this.state.containerHeight
     };
     return (
-      <div ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)} className={this._classNames.root}>
+      <div ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)} className={this._classNames.root} role={'presentation'}>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
@@ -155,12 +155,13 @@ export class LineChartBase extends React.Component<
             role="alertdialog"
             aria-live={'assertive'}
           >
-            <div className={this._classNames.calloutContentRoot}>
+            <div className={this._classNames.calloutContentRoot} role={'presentation'}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
               {this.state.YValueHover &&
                 this.state.YValueHover.map((xValue: { legend?: string; y?: number; color?: string }, index: number) => (
                   <span key={index} className={mergeStyles(this._classNames.calloutContentY, { color: xValue.color })}>
-                    <span>{xValue.legend}</span> <span>{xValue.y}</span>
+                    <span>{xValue.legend}</span>
+                    <span>{xValue.y}</span>
                   </span>
                 ))}
             </div>
@@ -387,6 +388,7 @@ export class LineChartBase extends React.Component<
               data-is-focusable={i === 0 ? true : false}
               onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
               onBlur={this._handleMouseOut}
+              role={'img'}
             />
           );
         } else {
@@ -402,6 +404,7 @@ export class LineChartBase extends React.Component<
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={0.1}
+              role={'img'}
             />
           );
         }
