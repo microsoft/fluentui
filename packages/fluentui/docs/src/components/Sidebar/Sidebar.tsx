@@ -419,7 +419,7 @@ class Sidebar extends React.Component<any, any> {
       {
         key: 'prototype-roster',
         title: { content: 'Roster', as: NavLink, to: '/prototype-roster' },
-        public: true
+        public: false
       }
     ];
 
