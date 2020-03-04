@@ -2,7 +2,7 @@ import {
   Accessibility,
   toolbarMenuRadioGroupBehavior,
   toolbarMenuItemRadioBehavior,
-  ToolbarRadioGroupBehaviorProps
+  ToolbarMenuRadioGroupBehaviorProps
 } from '@fluentui/accessibility';
 import { mergeComponentVariables } from '@fluentui/styles';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
@@ -30,7 +30,7 @@ export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenCo
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility<ToolbarRadioGroupBehaviorProps>;
+  accessibility?: Accessibility<ToolbarMenuRadioGroupBehaviorProps>;
 
   /** Index of the currently active item. */
   activeIndex?: number;
@@ -61,7 +61,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
     slotClassNames: ToolbarMenuRadioGroupSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ToolbarMenuItem.displayName, context.telemetry);
+  const { setStart, setEnd } = useTelemetry(ToolbarMenuRadioGroup.displayName, context.telemetry);
   setStart();
 
   const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;

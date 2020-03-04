@@ -44,6 +44,7 @@ export { default as toolbarMenuItemCheckboxBehavior } from './Toolbar/toolbarMen
 export { default as toolbarMenuItemRadioBehavior } from './Toolbar/toolbarMenuItemRadioBehavior';
 export * from './Toolbar/toolbarMenuRadioGroupBehavior';
 export { default as toolbarMenuRadioGroupBehavior } from './Toolbar/toolbarMenuRadioGroupBehavior';
+export * from './Toolbar/toolbarRadioGroupBehavior';
 export { default as toolbarRadioGroupBehavior } from './Toolbar/toolbarRadioGroupBehavior';
 export { default as toolbarRadioGroupItemBehavior } from './Toolbar/toolbarRadioGroupItemBehavior';
 export { default as radioGroupBehavior } from './Radio/radioGroupBehavior';

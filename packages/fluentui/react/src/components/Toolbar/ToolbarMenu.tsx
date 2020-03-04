@@ -62,7 +62,7 @@ export type ToolbarMenuStylesProps = never;
 
 const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(ToolbarMenuItem.displayName, context.telemetry);
+  const { setStart, setEnd } = useTelemetry(ToolbarMenu.displayName, context.telemetry);
   setStart();
 
   const { accessibility, className, children, design, items, submenu, submenuIndicator, styles, variables } = props;
@@ -142,7 +142,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(ToolbarMenu.handledProps, props);
 
-  const element = (
+  const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11yProps('root', {
         ...unhandledProps,
