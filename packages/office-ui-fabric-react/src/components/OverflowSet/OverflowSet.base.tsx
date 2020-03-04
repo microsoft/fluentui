@@ -28,14 +28,15 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    // tslint:disable-next-line:deprecation
     const {
       items,
       overflowItems,
       className,
+      // tslint:disable-next-line:deprecation
       focusZoneProps,
       styles,
       vertical,
+      // tslint:disable-next-line:deprecation
       doNotContainWithinFocusZone,
       role,
       overflowSide = 'end'
