@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
+import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import clearIndicatorUrl from './clearIndicatorUrl';
 import toggleIndicatorUrl from './toggleIndicatorUrl';
-import { pxToRem } from '../../../../utils';
 
 type DropdownPropsAndState = DropdownProps & DropdownState;
 
