@@ -1,5 +1,5 @@
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import { Accessibility, AccessibilityAttributes } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -16,10 +16,8 @@ import {
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 
 export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentProps, ChildrenComponentProps {
-  'aria-label'?: AccessibilityAttributes['aria-label'];
-
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<Pick<AccessibilityAttributes, 'aria-label'>>;
+  accessibility?: Accessibility<never>;
 }
 
 const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps> = props => {
@@ -27,13 +25,10 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
   const { setStart, setEnd } = useTelemetry(Box.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, 'aria-label': ariaLabel, className, design, styles, variables, children, content } = props;
+  const { accessibility, className, design, styles, variables, children, content } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Box.displayName,
-    mapPropsToBehavior: () => ({
-      'aria-label': ariaLabel
-    }),
     rtl: context.rtl
   });
 
