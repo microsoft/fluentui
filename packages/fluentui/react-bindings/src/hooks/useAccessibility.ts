@@ -2,7 +2,7 @@ import { Accessibility, AccessibilityAttributesBySlot } from '@fluentui/accessib
 import * as React from 'react';
 
 import getAccessibility from '../accessibility/getAccessibility';
-import { AccessibilityActionHandlers } from '../accessibility/types';
+import { AccessibilityActionHandlers, KeyboardEventHandler } from '../accessibility/types';
 import FocusZone from '../FocusZone/FocusZone';
 
 type UseAccessibilityOptions<Props> = {
@@ -19,9 +19,8 @@ type UseAccessibilityResult = (<SlotProps extends Record<string, any>>(
   unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
 };
 
-type OnKeyDown = (e: React.KeyboardEvent, ...args: any[]) => void;
 type UserProps = {
-  onKeyDown?: OnKeyDown;
+  onKeyDown?: KeyboardEventHandler;
 };
 
 type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps & Partial<AccessibilityAttributesBySlot> & UserProps;
@@ -31,14 +30,14 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
 
   const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
-  const slotHandlers = React.useRef<Record<string, OnKeyDown>>({});
+  const slotHandlers = React.useRef<Record<string, KeyboardEventHandler>>({});
   const slotProps = React.useRef<Record<string, UserProps>>({});
 
   const getA11Props: UseAccessibilityResult = (slotName, userProps) => {
     slotProps.current[slotName] = userProps;
 
     if (!slotHandlers.current[slotName]) {
-      slotHandlers.current[slotName] = (e: React.KeyboardEvent, ...args: any[]) => {
+      slotHandlers.current[slotName] = (e, ...args) => {
         const accessibilityHandler = definition.keyHandlers[slotName].onKeyDown;
         const userHandler = slotProps.current[slotName].onKeyDown;
 
