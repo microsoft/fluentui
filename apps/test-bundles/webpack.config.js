@@ -7,8 +7,9 @@ const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'
 
 const Entries = _buildEntries('office-ui-fabric-react');
 
-let experimentalButtonPath = path.join(path.dirname(require.resolve('@uifabric/experiments')).replace('lib-commonjs', 'lib'), 'Button.js');
-Entries['experiments-Button'] = experimentalButtonPath;
+// TODO: fix the webpack perf somehow - experiments/button currently imports the entirety of OUFR and then relies on concat modules + terser to treeshake. It 2x the size audit time!
+// let experimentalButtonPath = path.join(path.dirname(require.resolve('@uifabric/experiments')).replace('lib-commonjs', 'lib'), 'Button.js');
+// Entries['experiments-Button'] = experimentalButtonPath;
 
 module.exports = Object.keys(Entries).map(
   entryName =>
