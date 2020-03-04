@@ -24,6 +24,7 @@ import {
 import { ICalendarDayGridProps, ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
+import { MarkdownTBodyBase } from '@uifabric/example-app-base';
 
 const DAYS_IN_WEEK = 7;
 
@@ -406,7 +407,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    */
   private _getWeeks(propsToUse: ICalendarDayGridProps): IDayInfo[][] {
     const {
-      navigatedDate,
       selectedDate,
       dateRangeType,
       firstDayOfWeek,
@@ -418,6 +418,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       daysToSelectInDayView
     } = propsToUse;
 
+    const todaysDate = today || new Date();
+
+    const navigatedDate = propsToUse.navigatedDate ? propsToUse.navigatedDate : todaysDate;
+
     let date;
     if (weeksToShow && weeksToShow <= 4) {
       // if showing less than a full month, just use date == navigatedDate
@@ -425,7 +429,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     } else {
       date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     }
-    const todaysDate = today || new Date();
     const weeks: IDayInfo[][] = [];
 
     // Cycle the date backwards to get to the first day of the week.
