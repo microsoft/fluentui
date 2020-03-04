@@ -52,7 +52,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const hasValue = (p.value as string).length !== 0;
+    const hasValue = !!p.value && (p.value as string).length !== 0;
 
     return {
       color: v.iconColor,
