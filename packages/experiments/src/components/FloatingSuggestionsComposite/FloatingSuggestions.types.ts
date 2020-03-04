@@ -31,11 +31,11 @@ export interface IBaseFloatingSuggestionsProps<T> {
   /**
    * Callback function on remove of suggestion from list
    */
-  onRemoveSuggestion?: (ev: React.MouseEvent<HTMLElement>, item: any) => void;
+  onRemoveSuggestion?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   /**
    * Callback function on selection of suggestion from list
    */
-  onSuggestionSelected?: (ev: React.MouseEvent<HTMLElement>, item: any) => void;
+  onSuggestionSelected?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   /**
    * Custom header renderer which takes suggestions and headertext if passed
    * Going forward, this should accept the user defined type as parameter

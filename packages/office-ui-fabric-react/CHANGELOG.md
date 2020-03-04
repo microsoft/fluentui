@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Mar 2020 12:27:02 GMT and should not be manually modified.
 
+## 7.98.4
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Patches
+
+- Remove vertical-align flagged as unused (KevinTCoughlin@users.noreply.github.com)
+- MarqueeSelection: deleting html element references on unmount. (dzearing@microsoft.com)
 ## 7.98.3
 Tue, 03 Mar 2020 12:27:24 GMT
 
