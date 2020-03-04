@@ -41,7 +41,5 @@
     "test:watch": "gulp test:watch"
   },
   "sideEffects": false,
-  "types": "dist/es/index.d.ts",
-  "private": true,
-  "gitHead": "d08e21664e66fd0203260f1d2f441007bca02915"
+  "types": "dist/es/index.d.ts"
 }

@@ -1,4 +1,4 @@
-import { Accessibility, menuItemBehavior, submenuBehavior } from '@fluentui/accessibility';
+import { Accessibility, menuItemBehavior, submenuBehavior, indicatorBehavior } from '@fluentui/accessibility';
 import { focusAsync } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref } from '@fluentui/react-component-ref';
@@ -224,7 +224,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
               defaultProps: () => ({
                 as: 'span',
                 className: MenuItem.slotClassNames.indicator,
-                styles: styles.indicator
+                styles: styles.indicator,
+                accessibility: indicatorBehavior
               })
             })}
         </ElementType>

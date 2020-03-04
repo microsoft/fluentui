@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "office-ui-fabric-react_v7.98.4",
+      "version": "7.98.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove vertical-align flagged as unused",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "a3c34a50545050573127b7c1c0c451fbf610ba8c"
+          },
+          {
+            "comment": "MarqueeSelection: deleting html element references on unmount.",
+            "author": "dzearing@microsoft.com",
+            "commit": "1ced31c315a5109d7576d7744ce7b6b16cf9f82a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2020 12:27:24 GMT",
       "tag": "office-ui-fabric-react_v7.98.3",
       "version": "7.98.3",

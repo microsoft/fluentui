@@ -12,7 +12,7 @@ const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFl
 
 export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestionsListProps<T>): JSX.Element => {
   const classNames = getClassNames(getStyles);
-  const { className, suggestionItems, onRenderNoResultFound, ariaLabel, onItemClick, noResultsFoundText, selectedSuggestionIndex } = props;
+  const { className, suggestionItems, onRenderNoResultFound, ariaLabel, onItemClick, noResultsFoundText } = props;
   const hasNoSuggestions = !suggestionItems || !suggestionItems.length;
 
   const noResults = () => {
@@ -54,21 +54,23 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
       <div className={classNames.suggestionsContainer} role="list" aria-label={suggestionsContainerAriaLabel}>
         {suggestionItems.map((suggestionItem, index) => (
           <div
-            key={suggestionItem.key ? suggestionItem.key : `FloatingSuggestionsItemKey-${index}`}
-            id={suggestionItem.id ? suggestionItem.id : `FloatingSuggestionsItemId-${index}`}
+            key={`FloatingSuggestionsItemKey-${index}`}
+            id={`FloatingSuggestionsItemId-${index}`}
             role="listitem"
             aria-label={suggestionItem.ariaLabel}
           >
             <FloatingSuggestionsItemMemo
               item={suggestionItem.item}
               onClick={onItemClick}
-              isSelected={index === selectedSuggestionIndex}
+              isSelected={suggestionItem.isSelected}
               onRemoveItem={onSuggestionRemove}
               onRenderSuggestion={onRenderItem}
               className={suggestionsItemClassName}
               removeButtonAriaLabel={removeItemAriaLabel}
               showRemoveButton={showSuggestionRemoveButton}
               displayText={suggestionItem.displayText}
+              key={suggestionItem.key}
+              id={suggestionItem.id}
             />
           </div>
         ))}

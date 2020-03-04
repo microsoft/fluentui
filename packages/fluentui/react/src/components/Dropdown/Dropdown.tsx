@@ -1,5 +1,6 @@
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import { indicatorBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -34,7 +35,7 @@ import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchI
 import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import ListItem, { ListItemProps } from '../List/ListItem';
-import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
 
@@ -58,13 +59,13 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   checkable?: boolean;
 
   /** A slot for a selected indicator in the dropdown list. */
-  checkableIndicator?: ShorthandValue<IconProps>;
+  checkableIndicator?: ShorthandValue<BoxProps>;
 
   /** A dropdown can be clearable to let users remove their selection. */
   clearable?: boolean;
 
   /** A slot for the clearing indicator. */
-  clearIndicator?: ShorthandValue<IconProps>;
+  clearIndicator?: ShorthandValue<BoxProps>;
 
   /** The initial value for the index of the currently selected item in a multiple selection. */
   defaultActiveSelectedIndex?: number;
@@ -217,7 +218,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   searchQuery?: string;
 
   /** Controls the appearance of the indicator that shows/hides the list of items. */
-  toggleIndicator?: ShorthandValue<IconProps>;
+  toggleIndicator?: ShorthandValue<BoxProps>;
 
   /** Controls the appearance of the trigger button if it's a selection dropdown (not a search). */
   triggerButton?: ShorthandValue<ButtonProps>;
@@ -267,9 +268,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     activeSelectedIndex: PropTypes.number,
     align: PropTypes.oneOf(ALIGNMENTS),
     checkable: PropTypes.bool,
-    checkableIndicator: customPropTypes.itemShorthandWithoutJSX,
+    checkableIndicator: customPropTypes.shorthandAllowingChildren,
     clearable: PropTypes.bool,
-    clearIndicator: customPropTypes.itemShorthand,
+    clearIndicator: customPropTypes.shorthandAllowingChildren,
     defaultActiveSelectedIndex: PropTypes.number,
     defaultOpen: PropTypes.bool,
     defaultHighlightedIndex: PropTypes.number,
@@ -305,7 +306,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     search: PropTypes.oneOfType([PropTypes.bool, PropTypes.func]),
     searchQuery: PropTypes.string,
     searchInput: customPropTypes.itemShorthand,
-    toggleIndicator: customPropTypes.itemShorthandWithoutJSX,
+    toggleIndicator: customPropTypes.shorthandAllowingChildren,
     triggerButton: customPropTypes.itemShorthand,
     unstable_pinned: PropTypes.bool,
     value: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand])
@@ -314,8 +315,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   static defaultProps = {
     align: 'start',
     as: 'div',
-    checkableIndicator: 'icon-checkmark',
-    clearIndicator: 'icon-close',
+    clearIndicator: {},
     itemToString: item => {
       if (!item || React.isValidElement(item)) {
         return '';
@@ -468,30 +468,31 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                       : this.renderTriggerButton(styles, rtl, getToggleButtonProps)}
                   </div>
                   {showClearIndicator
-                    ? Icon.create(clearIndicator, {
+                    ? Box.create(clearIndicator, {
                         defaultProps: () => ({
                           className: Dropdown.slotClassNames.clearIndicator,
                           styles: styles.clearIndicator,
-                          xSpacing: 'none'
+                          accessibility: indicatorBehavior
                         }),
-                        overrideProps: (predefinedProps: IconProps) => ({
-                          onClick: (e: React.SyntheticEvent<HTMLElement>, iconProps: IconProps) => {
-                            _.invoke(predefinedProps, 'onClick', e, iconProps);
+                        overrideProps: (predefinedProps: BoxProps) => ({
+                          onClick: (e: React.SyntheticEvent<HTMLElement>) => {
+                            _.invoke(predefinedProps, 'onClick', e);
                             this.handleClear(e);
                           }
                         })
                       })
-                    : Icon.create(toggleIndicator, {
+                    : Box.create(toggleIndicator, {
                         defaultProps: () => ({
                           className: Dropdown.slotClassNames.toggleIndicator,
                           name: 'icon-menu-arrow-down',
                           styles: styles.toggleIndicator,
                           outline: true,
-                          size: 'medium'
+                          size: 'medium',
+                          accessibility: indicatorBehavior
                         }),
-                        overrideProps: (predefinedProps: IconProps) => ({
-                          onClick: (e, indicatorProps: IconProps) => {
-                            _.invoke(predefinedProps, 'onClick', e, indicatorProps);
+                        overrideProps: (predefinedProps: BoxProps) => ({
+                          onClick: e => {
+                            _.invoke(predefinedProps, 'onClick', e);
                             getToggleButtonProps().onClick(e);
                           }
                         })
@@ -555,7 +556,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             styles: styles.triggerButton,
             ...restTriggerButtonProps
           }),
-          overrideProps: (predefinedProps: IconProps) => ({
+          overrideProps: (predefinedProps: ButtonProps) => ({
             onClick: e => {
               onClick(e);
               _.invoke(predefinedProps, 'onClick', e, predefinedProps);
@@ -665,11 +666,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             }),
 
             overrideProps: (predefinedProps: ListProps) => ({
-              onFocus: (e: React.SyntheticEvent<HTMLElement>, listProps: IconProps) => {
+              onFocus: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
                 this.handleTriggerButtonOrListFocus();
                 _.invoke(predefinedProps, 'onClick', e, listProps);
               },
-              onBlur: (e: React.SyntheticEvent<HTMLElement>, listProps: IconProps) => {
+              onBlur: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
                 this.handleListBlur(e);
                 _.invoke(predefinedProps, 'onBlur', e, listProps);
               }

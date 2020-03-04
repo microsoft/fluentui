@@ -11,8 +11,8 @@ export interface IFloatingSuggestionsListProps<T> {
   suggestionsItemClassName?: string;
   suggestionsHeaderText?: string;
   onRenderItem?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
-  onItemClick?: (ev: React.MouseEvent<HTMLElement>, item: T) => void;
-  onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: T) => void;
+  onItemClick?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
+  onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   onRenderNoResultFound?: IRenderFunction<void>;
   noResultsFoundText?: string;
   maximumSuggestionsToShow?: number;
