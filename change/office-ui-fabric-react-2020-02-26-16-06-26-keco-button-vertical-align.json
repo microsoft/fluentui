@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Remove vertical-align flagged as unused",
-  "packageName": "office-ui-fabric-react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "commit": "a3c34a50545050573127b7c1c0c451fbf610ba8c",
-  "dependentChangeType": "patch",
-  "date": "2020-02-27T00:06:26.350Z"
-}

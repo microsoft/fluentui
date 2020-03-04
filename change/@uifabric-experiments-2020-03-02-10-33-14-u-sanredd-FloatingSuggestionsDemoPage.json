@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Added demo page for FloatingSuggestionsComposite",
-  "packageName": "@uifabric/experiments",
-  "email": "sanredd@microsoft.com",
-  "commit": "94bd7374b7a08e037f3b195e4997acde2027c51e",
-  "dependentChangeType": "patch",
-  "date": "2020-03-02T18:33:14.570Z"
-}
