@@ -156,10 +156,9 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
       {Icon.create(icon, {
         defaultProps: () =>
           getA11Props('icon', {
-            outline: toggle && !state.checked,
             size: toggle ? 'medium' : 'smaller',
             className: Checkbox.slotClassNames.indicator,
-            name: toggle ? 'icon-circle' : 'icon-checkmark',
+            name: '',
             styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox
           })
       })}
