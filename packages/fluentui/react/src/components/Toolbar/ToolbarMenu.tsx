@@ -76,7 +76,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
     },
     rtl: context.rtl
   });
-  const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenuRadioGroup.displayName, {
+  const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenu.displayName, {
     className: ToolbarMenu.className,
     mapPropsToInlineStyles: () => ({
       className,

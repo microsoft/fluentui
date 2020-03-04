@@ -4,7 +4,7 @@ import { ToolbarMenuStylesProps } from '../../../../components/Toolbar/ToolbarMe
 import { ToolbarVariables } from './toolbarVariables';
 
 const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesProps, ToolbarVariables> = {
-  root: ({ props, variables: v }): ICSSInJSStyle => {
+  root: ({ variables: v }): ICSSInJSStyle => {
     const colors = getColorScheme(v.colorScheme);
 
     return {
