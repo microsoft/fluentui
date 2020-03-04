@@ -4,10 +4,6 @@ const path = require('path');
 
 const findGitRoot = require('../monorepo/findGitRoot');
 
-module.exports.fluentuiPrepublish = function() {};
-
-module.exports.fluentuiPostpublish = function() {};
-
 module.exports.fluentuiLernaPublish = function(bumpType) {
   return function() {
     const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
