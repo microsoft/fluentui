@@ -44,7 +44,7 @@ describe('carouselBehavior.ts', () => {
   describe('itemsContainer', () => {
     test(`sets "role=region" when carousel has navigation`, () => {
       const expectedResult = carouselBehavior({ ariaLiveOn: false, navigation: true });
-      expect(expectedResult.attributes.root.role).toEqual('region');
+      expect(expectedResult.attributes.itemsContainer.role).toEqual('region');
     });
 
     test('sets "aria-roledescription" when carousel has navigation', () => {
@@ -83,7 +83,7 @@ describe('carouselBehavior.ts', () => {
 
     test(`sets "tabindex=-1" when carousel has NO navigation`, () => {
       const expectedResult = carouselBehavior({ ariaLiveOn: false, navigation: false });
-      expect(expectedResult.attributes.itemsContainer.tabIndex).toEqual('-1');
+      expect(expectedResult.attributes.itemsContainer.tabIndex).toEqual(-1);
     });
   });
 });

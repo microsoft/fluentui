@@ -8,8 +8,8 @@ import * as keyboardKey from 'keyboard-key';
  * Adds attribute 'aria-label' to 'root' slot if 'navigation' property is false. Does not set the attribute otherwise.
  * Adds attribute 'aria-roledescription' to 'itemsContainer' slot if 'navigation' property is true. Does not set the attribute otherwise.
  * Adds attribute 'aria-label' to 'itemsContainer' slot if 'navigation' property is true. Does not set the attribute otherwise.
+ * Adds attribute 'role=region' to 'itemsContainer' slot if 'navigation' property is true.  Set 'role=none' otherwise.
  * Adds attribute 'tabIndex=-1' to 'itemsContainer' slot if 'navigation' property is false. Does not set the attribute otherwise.
- * Adds attribute 'role=none to 'itemsContainer' slot if 'navigation' property is false. Does not set the attribute otherwise.
  * @specification
  * Adds attribute 'role=region' to 'root' slot.
  * Adds attribute 'aria-live=polite' to 'itemsContainerWrapper' slot if 'ariaLiveOn' property is true. Sets the attribute to 'off' otherwise.
@@ -17,7 +17,6 @@ import * as keyboardKey from 'keyboard-key';
  * Adds attribute 'aria-hidden=true' to 'paddlePrevious' slot if 'navigation' property is true. Does not set the attribute otherwise.
  * Adds attribute 'tabIndex=-1' to 'paddlePrevious' slot if 'navigation' property is true. Does not set the attribute otherwise.
  * Adds attribute 'tabIndex=-1' to 'paddlePrevious' slot if 'navigation' property is true. Does not set the attribute otherwise.
- * Adds attribute 'role=region' to 'itemsContainer' slot if 'navigation' property is true. Does not set the attribute otherwise.
  * Triggers 'showNextSlideByKeyboardNavigation' action with 'ArrowRight' on 'itemsContainer'.
  * Triggers 'showPreviousSlideByKeyboardNavigation' action with 'ArrowLeft' on 'itemsContainer'.
  * Triggers 'showNextSlideByPaddlePress' action with 'Enter' or 'Spacebar' on 'paddleNext'.
