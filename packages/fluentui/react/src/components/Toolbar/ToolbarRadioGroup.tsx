@@ -105,6 +105,7 @@ class ToolbarRadioGroup extends UIComponent<WithAsProp<ToolbarRadioGroupProps>> 
 
   renderItems(variables) {
     const { activeIndex, items } = this.props;
+    // TODO: use Context
     const itemOverridesFn = this.handleItemOverrides(variables);
     this.itemRefs = [];
 
@@ -136,7 +137,7 @@ class ToolbarRadioGroup extends UIComponent<WithAsProp<ToolbarRadioGroupProps>> 
 
   renderComponent({ ElementType, classes, variables, accessibility, unhandledProps }) {
     const { children } = this.props;
-
+    // TODO: Consume Context
     return (
       <ElementType
         {...accessibility.attributes.root}

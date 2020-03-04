@@ -77,6 +77,7 @@ class ToolbarMenuRadioGroup extends UIComponent<WithAsProp<ToolbarMenuRadioGroup
       _.invoke(predefinedProps, 'onClick', e, itemProps);
       _.invoke(this.props, 'onItemClick', e, itemProps);
     },
+    // TODO: use Context
     variables: mergeComponentVariables(variables, predefinedProps.variables),
     wrapper: null
   });

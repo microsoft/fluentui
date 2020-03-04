@@ -79,6 +79,7 @@ class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
         menuOpen: !!itemProps.menu
       });
     },
+    // TODO: use context
     variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
@@ -96,6 +97,7 @@ class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
 
   renderItems(items, variables) {
     const { submenuIndicator, submenu } = this.props;
+    // TODO: use context
     const itemOverridesFn = this.handleItemOverrides(variables);
     const dividerOverridesFn = this.handleDividerOverrides(variables);
     const radioGroupOverrides = this.handleRadioGroupOverrides(variables);
