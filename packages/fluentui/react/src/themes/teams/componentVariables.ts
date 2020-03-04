@@ -1,3 +1,6 @@
+export { default as Accordion } from './components/Accordion/accordionVariables';
+export { default as AccordionTitle } from './components/Accordion/accordionTitleVariables';
+
 export { default as Attachment } from './components/Attachment/attachmentVariables';
 
 export { default as Alert } from './components/Alert/alertVariables';

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Link: Make focus work even when Link has block children.",
-  "packageName": "office-ui-fabric-react",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "95336258136489ea0b76f932e36285438f2a3faf",
-  "dependentChangeType": "patch",
-  "date": "2020-02-29T00:59:49.720Z"
-}

@@ -38,6 +38,7 @@ export * from './Toolbar/toolbarMenuItemBehavior';
 export { default as menuItemAsToolbarButtonBehavior } from './Toolbar/menuItemAsToolbarButtonBehavior';
 export { default as toolbarBehavior } from './Toolbar/toolbarBehavior';
 export { default as toolbarItemBehavior } from './Toolbar/toolbarItemBehavior';
+export * from './Toolbar/toolbarItemBehavior';
 export { default as toolbarMenuItemCheckboxBehavior } from './Toolbar/toolbarMenuItemCheckboxBehavior';
 export { default as toolbarMenuItemRadioBehavior } from './Toolbar/toolbarMenuItemRadioBehavior';
 export { default as toolbarMenuRadioGroupBehavior } from './Toolbar/toolbarMenuRadioGroupBehavior';
@@ -85,6 +86,7 @@ export { default as carouselItemBehavior } from './Carousel/carouselItemBehavior
 export { default as tableBehavior } from './Table/tableBehavior';
 export { default as tableRowBehavior } from './Table/tableRowBehavior';
 export { default as tableCellBehavior } from './Table/tableCellBehavior';
+export * from './Table/tableCellBehavior';
 export { default as tableHeaderCellBehavior } from './Table/tableHeaderCellBehavior';
 export { default as gridNestedBehavior } from './Table/gridNestedBehavior';
 export { default as gridHeaderRowBehavior } from './Table/gridHeaderRowBehavior';

@@ -3,14 +3,14 @@ import { ITheme, IStyle } from '@uifabric/styling';
 export interface IFloatingSuggestionItemProps<T> {
   item: T;
   isSelected: boolean;
-  onClick?: (ev: React.MouseEvent<HTMLElement>, item: T) => void;
-  onRemoveItem?: (ev: React.MouseEvent<HTMLElement>, item: T) => void;
+  onClick?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
+  onRemoveItem?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   displayText?: string;
   className?: string;
   showRemoveButton?: boolean;
   ariaLabel?: string;
   removeButtonAriaLabel?: string;
-  key?: string | number;
+  key?: string;
   id?: string;
   theme?: ITheme;
   onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
