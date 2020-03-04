@@ -247,7 +247,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                       width: 32px;
                     }
                     &::-moz-focus-inner {
@@ -337,7 +336,6 @@ exports[`Panel renders Panel correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Cancel"
                     role="presentation"

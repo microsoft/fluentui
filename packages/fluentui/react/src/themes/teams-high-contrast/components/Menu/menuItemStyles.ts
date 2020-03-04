@@ -1,7 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { MenuVariables } from '../../../teams/components/Menu/menuVariables';
-import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import { default as MenuItem, MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
 import { underlinedItem } from '../../../teams/components/Menu/menuItemStyles';
+import submenuIndicatorUrl from '../../../teams/components/Menu/submenuIndicatorUrl';
 
 type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
@@ -15,29 +16,44 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(!active && {
           ...(primary && !underlined && { color: v.colorActive }),
           background: v.backgroundColorFocus
-        })
+        }),
+        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+          backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
+        }
       },
 
       ...(active &&
         !underlined && {
           background: v.backgroundColorActive,
-          color: v.colorActive
+          color: v.colorActive,
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
+          }
         }),
 
       ...((iconOnly || vertical) && {
         ...(isFromKeyboard && {
           color: v.colorActive,
-          background: v.backgroundColorFocus
+          background: v.backgroundColorFocus,
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
+          }
         }),
 
         ...(active && {
           color: v.colorActive,
-          background: v.backgroundColorActive
+          background: v.backgroundColorActive,
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
+          }
         }),
 
         ':hover': {
           color: v.colorActive,
-          background: v.backgroundColorFocus
+          background: v.backgroundColorFocus,
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
+          }
         }
       }),
 

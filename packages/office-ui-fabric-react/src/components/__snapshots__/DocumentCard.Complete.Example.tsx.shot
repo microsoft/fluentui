@@ -720,7 +720,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -809,7 +808,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Share"
             role="presentation"
@@ -871,7 +869,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -960,7 +957,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Pin"
             role="presentation"
@@ -1022,7 +1018,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -1111,7 +1106,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Ringer"
             role="presentation"

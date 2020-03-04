@@ -19,7 +19,6 @@ import {
   ShorthandFactory
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 
 export interface AccordionTitleSlotClassNames {
@@ -61,7 +60,7 @@ export interface AccordionTitleProps extends UIComponentProps, ContentComponentP
   onFocus?: ComponentEventHandler<AccordionTitleProps>;
 
   /** Shorthand for the active indicator. */
-  indicator?: ShorthandValue<IconProps>;
+  indicator?: ShorthandValue<BoxProps>;
 }
 
 class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
@@ -82,13 +81,14 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     disabled: PropTypes.bool,
     index: PropTypes.number,
     onClick: PropTypes.func,
-    indicator: customPropTypes.itemShorthand
+    indicator: customPropTypes.shorthandAllowingChildren
   };
 
   static defaultProps = {
     accessibility: accordionTitleBehavior,
     as: 'dt',
-    contentRef: _.noop
+    contentRef: _.noop,
+    indicator: {}
   };
 
   actionHandlers = {
@@ -110,9 +110,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   };
 
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { contentRef, children, content, indicator, active } = this.props;
-    const defaultIndicator = { name: active ? 'icon-arrow-down' : 'icon-arrow-end' };
-    const indicatorWithDefaults = indicator === undefined ? defaultIndicator : indicator;
+    const { contentRef, children, content, indicator } = this.props;
 
     const contentElement = (
       <Ref innerRef={contentRef}>
@@ -123,13 +121,14 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
           {...accessibility.attributes.content}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)}
         >
-          {Icon.create(indicatorWithDefaults, {
+          {Box.create(indicator, {
             defaultProps: () => ({
               styles: styles.indicator
             })
           })}
           {Box.create(content, {
             defaultProps: () => ({
+              as: 'span',
               styles: styles.content
             })
           })}

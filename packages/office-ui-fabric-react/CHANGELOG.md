@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Mar 2020 12:25:44 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
 
+## 7.98.3
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Using tslint:disable-next-line instead of tslint:disable without a corresponding tslint:enable afterwards for all non-tests and non-data files. (Humberto.Morimoto@microsoft.com)
+- Link: Make focus work even when Link has block children. (humbertomakotomorimoto@gmail.com)
+- ScrollablePane example: fix strict function type errors (xgao@microsoft.com)
 ## 7.98.2
 Mon, 02 Mar 2020 12:25:44 GMT
 

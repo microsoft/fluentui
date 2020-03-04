@@ -1,7 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 27 Feb 2020 12:23:46 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
 
+## 7.21.3
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
 ## 7.21.0
 Thu, 27 Feb 2020 12:23:46 GMT
 

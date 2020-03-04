@@ -952,7 +952,6 @@ Array [
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: 100%;
           }
           &::-moz-focus-inner {

@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/experiments_v7.21.3",
+      "version": "7.21.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 27 Feb 2020 12:23:46 GMT",
       "tag": "@uifabric/experiments_v7.21.0",
       "version": "7.21.0",
