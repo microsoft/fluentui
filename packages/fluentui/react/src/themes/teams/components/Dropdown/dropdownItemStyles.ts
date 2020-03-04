@@ -17,6 +17,7 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     padding: `${pxToRem(4)} ${pxToRem(11)}`,
     whiteSpace: 'nowrap',
     border: `${v.listItemFocusBorderWidth} solid transparent`,
+    cursor: 'pointer',
     backgroundColor: v.listItemBackgroundColor,
     ...(p.selected && {
       fontWeight: v.listItemSelectedFontWeight,

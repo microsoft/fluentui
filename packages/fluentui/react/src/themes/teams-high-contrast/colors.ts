@@ -74,6 +74,8 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover: accessibleYellow,
     backgroundHover1: accessibleYellow,
     backgroundHover2: accessibleYellow,
+    backgroundHover3: accessibleYellow,
+    backgroundHover4: accessibleYellow,
 
     borderHover: accessibleYellow,
 

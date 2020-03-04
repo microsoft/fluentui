@@ -240,6 +240,8 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover: colors.grey[100],
     backgroundHover1: colors.grey[150],
     backgroundHover2: 'transparent',
+    backgroundHover3: colors.grey[150],
+    backgroundHover4: colors.grey[50],
 
     borderHover: colors.grey[250], // buttons
 

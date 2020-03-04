@@ -54,14 +54,14 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
     ':focus-visible': {
       borderColor: 'transparent',
 
-      ':before': getPseudoElementStyles({
+      '::before': getPseudoElementStyles({
         zIndex: sv.zIndexes.foreground,
         borderEdgeValue: borderPadding == null ? '0' : `-${borderPadding}`,
         borderColor: focusInnerBorderColor,
         ...defaultBorderStyles
       }),
 
-      ':after': getPseudoElementStyles({
+      '::after': getPseudoElementStyles({
         zIndex: sv.zIndexes.foreground,
         borderEdgeValue: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`,
         borderColor: focusOuterBorderColor,

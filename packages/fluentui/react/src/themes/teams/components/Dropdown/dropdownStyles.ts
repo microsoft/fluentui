@@ -1,7 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle, ComponentSlotStyleFunction } from '@fluentui/styles';
-import { default as Dropdown, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
+import { DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
-import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 type DropdownPropsAndState = DropdownProps & DropdownState;
@@ -22,7 +21,10 @@ const transparentColorStyleObj: ICSSInJSStyle = {
   }
 };
 
-const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, DropdownVariables> = ({ variables: v }): ICSSInJSStyle => ({
+const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, DropdownVariables> = ({
+  variables: v,
+  props: p
+}): ICSSInJSStyle => ({
   alignItems: 'center',
   display: 'flex',
   justifyContent: 'center',
@@ -33,9 +35,16 @@ const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, Drop
 
   margin: 0,
   position: 'absolute',
-  right: pxToRem(-2),
+  right: 0,
   height: '100%',
-  width: v.toggleIndicatorSize
+  width: v.toggleIndicatorSize,
+  ...(p.inverted && {
+    backgroundColor: v.backgroundColorInverted,
+
+    ':hover': {
+      backgroundColor: v.backgroundColorHoverInverted
+    }
+  })
 });
 
 const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
@@ -55,8 +64,6 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.inline && { display: 'inline-flex' })
   }),
 
-  clearIndicator: getIndicatorStyles,
-
   container: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'flex',
     flexWrap: 'wrap',
@@ -73,17 +80,33 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.open && p.position === 'below' && { borderRadius: v.openBelowContainerBorderRadius }),
     ':hover': {
       backgroundColor: v.backgroundColorHover,
-      [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-        // reset all styles
-      }
+      ...(!p.search && {
+        borderColor: v.borderColorHover
+      })
+    },
+    ':active': {
+      backgroundColor: v.backgroundColor
     },
     ...(p.focused && {
+      backgroundColor: v.backgroundColor,
       ...(p.search && { borderBottomColor: v.borderColorFocus }),
       ...(!p.search && !p.open && p.isFromKeyboard && getBorderFocusStyles({ siteVariables })[':focus-visible'])
     }),
     ...(p.inline && {
       ...transparentColorStyleObj,
       alignItems: 'center'
+    }),
+    ...(p.inverted && {
+      backgroundColor: v.backgroundColorInverted,
+      ':hover': {
+        backgroundColor: v.backgroundColorHoverInverted
+      },
+      ':active': {
+        backgroundColor: v.backgroundColorHoverInverted
+      },
+      ':focus': {
+        backgroundColor: v.backgroundColorHoverInverted
+      }
     })
   }),
 
@@ -100,27 +123,38 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     return {
       overflow: 'hidden',
       boxShadow: 'none',
+
+      ...transparentColorStyleObj,
       margin: '0',
       justifyContent: 'left',
       padding: v.comboboxPaddingButton,
       ...(p.multiple && { minWidth: 0, flex: 1 }),
       ...transparentColorStyleObj,
       ':focus': {
-        color: v.color
+        color: v.color,
+        ...transparentColorStyleObj
       },
       ':focus-visible': {
         color: v.color,
         ...transparentColorStyle,
         ':after': {
-          borderColor: 'transparent'
+          borderColor: 'transparent',
+          borderRightWidth: 0
         },
         ':before': {
-          borderColor: 'transparent'
-        },
-        ':active': transparentColorStyle
+          borderColor: 'transparent',
+          borderRightWidth: 0
+        }
+      },
+      ':active': {
+        color: v.color, // required for HC theme
+        ...transparentColorStyle,
+        animationName: 'unset',
+        animationDuration: 'unset'
       },
       ':hover': {
-        ...transparentColorStyle
+        ...transparentColorStyle,
+        color: v.color // required for HC theme
       },
       ...(p.inline && {
         paddingLeft: 0,
@@ -157,6 +191,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     fontWeight: 'bold'
   }),
 
+  clearIndicator: getIndicatorStyles,
   toggleIndicator: getIndicatorStyles
 };
 

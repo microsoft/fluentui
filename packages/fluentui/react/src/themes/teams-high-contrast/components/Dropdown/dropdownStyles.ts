@@ -1,5 +1,5 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { default as Dropdown, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
+import { DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariablesHC } from './dropdownVariables';
 
 type DropdownPropsAndState = DropdownProps & DropdownState;
@@ -15,18 +15,14 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(!p.open && {
       ':hover': {
         backgroundColor: v.backgroundColorHover,
-        borderColor: v.borderColorHover,
-        [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-          color: v.triggerButtonColorHover
-        }
+        borderColor: v.borderColorHover
       }
     })
   }),
 
   triggerButton: ({ props: p, variables: v }): ICSSInJSStyle => ({
     ':hover': {
-      ...transparentColorStyle,
-      color: v.triggerButtonColorHover
+      ...transparentColorStyle
     },
     ':focus': {
       color: v.color,
