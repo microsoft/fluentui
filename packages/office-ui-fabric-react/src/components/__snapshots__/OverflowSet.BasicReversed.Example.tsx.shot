@@ -62,7 +62,6 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
             width: auto;
           }
           &::-moz-focus-inner {
@@ -153,7 +152,6 @@ exports[`Component Examples renders OverflowSet.BasicReversed.Example.tsx correc
                 margin-right: 4px;
                 margin-top: 0;
                 text-align: center;
-                vertical-align: middle;
               }
           data-icon-name="More"
           role="presentation"
