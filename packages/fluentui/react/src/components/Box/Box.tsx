@@ -71,7 +71,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
 Box.className = 'ui-box';
 Box.displayName = 'Box';
 
-Box.propTypes = commonPropTypes.createCommon({ accessibility: false });
+Box.propTypes = commonPropTypes.createCommon();
 Box.handledProps = Object.keys(Box.propTypes) as any;
 
 Box.create = createShorthandFactory({ Component: Box });
