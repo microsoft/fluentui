@@ -31,7 +31,7 @@
     "dom-test": "cd apps/dom-tests && just-scripts jest-dom-with-webpack",
     "generate-version-files": "yarn workspace @uifabric/build just generate-version-files",
     "lint": "lerna run lint --parallel",
-    "publish:beachball": "beachball publish",
+    "publish:beachball": "beachball publish --scope \"!packages/fluentui/*\"",
     "check-for-changed-files": "cd scripts && just-scripts check-for-modified-files",
     "perf": "cross-env PERF=true gulp perf --times=100",
     "perf:debug": "cross-env PERF=true gulp perf:debug --debug",
@@ -60,7 +60,7 @@
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.19.0",
+    "beachball": "^1.20.0",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5",
     "cross-env": "^5.1.4",
