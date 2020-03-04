@@ -257,7 +257,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     }
   };
 
-  const handleMenuOverrides = (getRefs: GetRefs) => (predefinedProps: ToolbarMenuProps) => ({
+  const handleMenuOverrides = (predefinedProps: ToolbarMenuProps) => ({
     onItemClick: (e, itemProps: ToolbarMenuItemProps) => {
       const { popup, menuOpen } = itemProps;
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
@@ -375,7 +375,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
                     submenu: true,
                     submenuIndicator
                   }),
-                  overrideProps: handleMenuOverrides(getRefs)
+                  overrideProps: handleMenuOverrides
                 })}
               </Popper>
             </Ref>
