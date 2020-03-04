@@ -104,6 +104,7 @@ export interface ITilesGridSegment<TItem> {
 
 export { ISize as ITileSize };
 
+// tslint:disable-next-line:deprecation
 export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.

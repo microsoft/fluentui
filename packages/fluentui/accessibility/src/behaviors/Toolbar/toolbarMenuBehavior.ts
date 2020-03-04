@@ -13,7 +13,7 @@ import * as keyboardKey from 'keyboard-key';
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-const toolbarMenuBehavior: Accessibility = () => ({
+const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'menu'
@@ -36,5 +36,7 @@ const toolbarMenuBehavior: Accessibility = () => ({
   },
   childBehaviors: { item: toolbarMenuItemBehavior }
 });
+
+export type ToolbarMenuBehaviorProps = never;
 
 export default toolbarMenuBehavior;

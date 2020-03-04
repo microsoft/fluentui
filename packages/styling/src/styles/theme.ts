@@ -300,7 +300,9 @@ function _fixDeprecatedSlots(s: ISemanticColors, depComments: boolean): ISemanti
     dep = ' /* @deprecated */';
   }
 
+  // tslint:disable-next-line:deprecation
   s.listTextColor = s.listText + dep;
+  // tslint:disable-next-line:deprecation
   s.menuItemBackgroundChecked += dep;
   return s;
 }

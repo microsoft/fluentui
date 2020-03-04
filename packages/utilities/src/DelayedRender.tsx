@@ -5,6 +5,7 @@ import * as React from 'react';
  *
  * @public
  */
+// tslint:disable-next-line:deprecation
 export interface IDelayedRenderProps extends React.Props<{}> {
   /**
    * Number of milliseconds to delay rendering children.

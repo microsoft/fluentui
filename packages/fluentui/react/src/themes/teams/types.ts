@@ -44,9 +44,13 @@ import { SegmentProps } from '../../components/Segment/Segment';
 import { SliderStylesProps } from './components/Slider/sliderStyles';
 import { StatusStylesProps } from './components/Status/statusStyles';
 import { TextStylesProps } from './components/Text/textStyles';
-import { ToolbarDividerProps } from '../../components/Toolbar/ToolbarDivider';
-import { ToolbarItemProps } from '../../components/Toolbar/ToolbarItem';
+import { ToolbarDividerStylesProps } from '../../components/Toolbar/ToolbarDivider';
+import { ToolbarItemStylesProps } from '../../components/Toolbar/ToolbarItem';
+import { ToolbarCustomItemStylesProps } from '../../components/Toolbar/ToolbarCustomItem';
 import { ToolbarMenuItemStylesProps } from '../../components/Toolbar/ToolbarMenuItem';
+import { ToolbarMenuDividerStylesProps } from '../../components/Toolbar/ToolbarMenuDivider';
+import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/ToolbarMenuRadioGroup';
+import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
 import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
@@ -56,6 +60,9 @@ import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/Hi
 import { VideoProps } from '../../components/Video/Video';
 import { TreeItemStylesProps } from '../../components/Tree/TreeItem';
 import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
+import { TableProps } from '../../components/Table/Table';
+import { TableRowProps } from '../../components/Table/TableRow';
+import { TableCellStylesProps } from '../../components/Table/TableCell';
 
 export type TeamsThemeStylesProps = {
   Accordion?: AccordionProps;
@@ -102,10 +109,14 @@ export type TeamsThemeStylesProps = {
   Slider?: SliderStylesProps;
   Status?: StatusStylesProps;
   Toolbar?: ToolbarProps;
-  ToolbarItem?: ToolbarItemProps;
-  ToolbarDivider?: ToolbarDividerProps;
+  ToolbarCustomItem?: ToolbarCustomItemStylesProps;
+  ToolbarItem?: ToolbarItemStylesProps;
+  ToolbarDivider?: ToolbarDividerStylesProps;
   ToolbarRadioGroup?: ToolbarRadioGroupProps;
+  ToolbarMenu?: ToolbarMenuStylesProps;
   ToolbarMenuItem?: ToolbarMenuItemStylesProps;
+  ToolbarMenuDivider?: ToolbarMenuDividerStylesProps;
+  ToolbarMenuRadioGroup?: ToolbarMenuRadioGroupStylesProps;
   TooltipContent?: TooltipContentProps;
   Text?: TextStylesProps;
   TreeItem?: TreeItemStylesProps;
@@ -114,6 +125,9 @@ export type TeamsThemeStylesProps = {
   HierarchicalTreeItem?: HierarchicalTreeItemProps;
   HierarchicalTreeTitle?: HierarchicalTreeTitleProps;
   Video?: VideoProps;
+  Table?: TableProps;
+  TableRow?: TableRowProps;
+  TableCell?: TableCellStylesProps;
 };
 
 export type TeamsContextualColors = {

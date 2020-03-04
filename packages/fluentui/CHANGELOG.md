@@ -19,6 +19,13 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
+- Changed `indicator` prop in `MenuItem` and `Menu` to be `Box` shorthand instead of `Icon` @mnajdova ([#12145](https://github.com/OfficeDev/office-ui-fabric-react/pull/12145))
+- Restricted prop sets in the `TableCell` component which are passed to styles functions @pompomon ([#12146](https://github.com/OfficeDev/office-ui-fabric-react/pull/12146))
+- Changed `indicator` prop in `AccordionTitle` to be `Box` shorthand instead of `Icon` @mnajdova ([#12160](https://github.com/OfficeDev/office-ui-fabric-react/pull/12160))
+- Restricted prop sets in the `ToolbarDivider`, `ToolbarItem` & `ToolbarCustomItem` components which are passed to styles functions @layershifter ([#12161](https://github.com/OfficeDev/office-ui-fabric-react/pull/12161))
+- Changed `submenuIndicator` and `activeIndicator` props in `ToolbarMenu` and `ToolbarMenuItem` components to be `Box` shorthand instead of `Icon` @mnajdova ([#12164](https://github.com/OfficeDev/office-ui-fabric-react/pull/12164))
+- Changed `clearIndicator`, `toggleIndicator` and `checkableIndicator` props in `Dropdown` and `DropdownItem` components to be `Box` shorthand instead of `Icon` @mnajdova ([#12164](https://github.com/OfficeDev/office-ui-fabric-react/pull/12164))
+- Restricted prop sets in the `ToolbarMenu`, `ToolbarMenuDivider`, `ToolbarRadioGroup` & `ToolbarMenuRadioGroup` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 
 <!--------------------------------[ v0.45.0 ]------------------------------- -->
 ## [v0.45.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.45.0) (2020-02-27)
@@ -107,7 +114,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `target` prop to `EventListener` component and `useEventListener()` hook @layershifter ([#2287](https://github.com/microsoft/fluent-ui-react/pull/2287))
 - Add `disabled` prop accordion title @jurokapsiar ([#2290](https://github.com/microsoft/fluent-ui-react/pull/2290))
 - Allow custom values for `size` in `FlexItem` @silviuavram ([#2313](https://github.com/microsoft/fluent-ui-react/pull/2313))
-- Move `zIndex` values from default variable values and styles to siteVariables object in Teams theme @pompomon ([#2311](https://github.com/microsoft/fluent-ui-react/pull/2311)) 
+- Move `zIndex` values from default variable values and styles to siteVariables object in Teams theme @pompomon ([#2311](https://github.com/microsoft/fluent-ui-react/pull/2311))
 
 ### Documentation
 - Add per-component performance charts @miroslavstastny ([#2240](https://github.com/microsoft/fluent-ui-react/pull/2240))
