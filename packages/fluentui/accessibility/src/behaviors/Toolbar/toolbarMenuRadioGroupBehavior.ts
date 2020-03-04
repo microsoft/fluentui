@@ -14,4 +14,6 @@ const toolbarRadioGroupBehavior: Accessibility = () => ({
   }
 });
 
+export type ToolbarRadioGroupBehaviorProps = never;
+
 export default toolbarRadioGroupBehavior;
