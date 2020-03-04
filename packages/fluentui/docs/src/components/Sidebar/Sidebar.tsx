@@ -415,6 +415,11 @@ class Sidebar extends React.Component<any, any> {
         key: 'virtualized-table',
         title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
         public: true
+      },
+      {
+        key: 'prototype-roster',
+        title: { content: 'Roster', as: NavLink, to: '/prototype-roster' },
+        public: true
       }
     ];
 
