@@ -50,6 +50,8 @@ export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenCo
   wrapper?: ShorthandValue<BoxProps>;
 }
 
+export type ToolbarMenuRadioGroupStylesProps = never;
+
 export interface ToolbarMenuRadioGroupSlotClassNames {
   wrapper: string;
 }
@@ -68,7 +70,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
     debugName: ToolbarMenuRadioGroup.displayName,
     rtl: context.rtl
   });
-  const { classes, styles: resolvedStyles } = useStyles(ToolbarMenuRadioGroup.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuRadioGroupStylesProps>(ToolbarMenuRadioGroup.displayName, {
     className: ToolbarMenuRadioGroup.className,
     mapPropsToInlineStyles: () => ({
       className,

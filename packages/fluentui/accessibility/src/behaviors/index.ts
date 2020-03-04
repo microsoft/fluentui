@@ -32,6 +32,7 @@ export * from './Icon/iconBehavior';
 export { default as tabBehavior } from './Tab/tabBehavior';
 export { default as tabListBehavior } from './Tab/tabListBehavior';
 export { default as menuAsToolbarBehavior } from './Toolbar/menuAsToolbarBehavior';
+export * from './Toolbar/toolbarMenuBehavior';
 export { default as toolbarMenuBehavior } from './Toolbar/toolbarMenuBehavior';
 export { default as toolbarMenuItemBehavior } from './Toolbar/toolbarMenuItemBehavior';
 export * from './Toolbar/toolbarMenuItemBehavior';
