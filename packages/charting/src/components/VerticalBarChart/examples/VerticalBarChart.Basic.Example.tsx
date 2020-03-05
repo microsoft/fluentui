@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
+import { ExampleChart } from '../ExampleChart';
 
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {
@@ -26,6 +27,11 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       { x: 100, y: 19 }
     ];
 
-    return <VerticalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />;
+    return (
+      <>
+        <ExampleChart />
+        <VerticalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />
+      </>
+    );
   }
 }

@@ -1,3 +1,5 @@
+import { string } from 'prop-types';
+
 export interface IDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -109,4 +111,9 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * Data for x axis label for multistacked Vertical bar chart
+   */
+  xAxisPoint?: number | string;
 }
