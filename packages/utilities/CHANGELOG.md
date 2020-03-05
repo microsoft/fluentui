@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
 
+## 7.13.0
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Minor changes
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
 ## 7.12.4
 Fri, 21 Feb 2020 12:20:14 GMT
 

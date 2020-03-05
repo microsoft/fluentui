@@ -13,7 +13,6 @@ const iconStyle = (fontSize?: string | number): IRawStyle => {
     height: '16px',
     lineHeight: '16px',
     textAlign: 'center',
-    verticalAlign: 'middle',
     flexShrink: 0
   };
 };
@@ -51,7 +50,6 @@ export const getStyles = memoizeFunction(
           textDecoration: 'none',
           textAlign: 'center',
           cursor: 'pointer',
-          verticalAlign: 'top',
           padding: '0 16px',
           borderRadius: effects.roundedCorner2,
 

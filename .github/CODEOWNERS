@@ -33,7 +33,7 @@ azure-pipelines.*.yml @ecraig12345 @kenotron @JasonGore
 sizeauditor.json @aftab-hassan
 
 #### Fluent UI
-packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @kenotron @jdhuntington @ecraig12345 @dzearing @jasongore @pompomon @silviuavram @jurokapsiar
+packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @jdhuntington @ecraig12345 @dzearing @jasongore @pompomon @silviuavram @jurokapsiar
 
 #### Deprecated API Files
 *.api.ts @natalieethell
@@ -59,7 +59,7 @@ packages/foundation/ @JasonGore
 packages/lists/ @dzearing @KevinTCoughlin @aditima
 packages/merge-styles/ @dzearing
 packages/migration/ @ecraig12345 @kenotron
-packages/monaco-editor/ @ecraig12345 @kenotron
+packages/monaco-editor/ @ecraig12345
 packages/react-hooks/ @ecraig12345
 packages/styling/ @dzearing
 packages/styling/src/interfaces/ @phkuo

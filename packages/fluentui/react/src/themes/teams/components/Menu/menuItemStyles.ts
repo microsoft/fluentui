@@ -1,10 +1,11 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import { default as MenuItem, MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import submenuIndicatorUrl from './submenuIndicatorUrl';
 
 type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
@@ -19,7 +20,7 @@ export const underlinedItem = (color: string): ICSSInJSStyle => ({
 });
 
 const getActionStyles = ({
-  props: { primary, underlined, iconOnly },
+  props: { primary, underlined, iconOnly, vertical },
   variables: v,
   colors
 }: {
@@ -34,7 +35,10 @@ const getActionStyles = ({
     : primary
     ? {
         color: colors.foregroundActive,
-        background: v.backgroundColorActive || colors.backgroundActive
+        background: v.backgroundColorActive || colors.backgroundActive,
+        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+          backgroundImage: submenuIndicatorUrl(colors.foregroundActive, vertical)
+        }
       }
     : {
         color: v.color,
@@ -84,7 +88,10 @@ const getHoverStyles = ({
         }
       : {
           color: colors.foregroundHover,
-          background: v.backgroundColorHover || colors.backgroundHover
+          background: v.backgroundColorHover || colors.backgroundHover,
+          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+            backgroundImage: submenuIndicatorUrl(colors.foregroundHover, vertical)
+          }
         })
   };
 };
@@ -399,7 +406,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 
-  indicator: ({ props: p }) => ({
+  indicator: ({ props: p, variables: v, rtl }) => ({
     position: 'relative',
     float: 'right',
     left: pxToRem(12),
@@ -411,7 +418,17 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       top: pxToRem(6),
       right: pxToRem(2),
       left: 'unset'
-    })
+    }),
+
+    backgroundImage: submenuIndicatorUrl(v.color, p.vertical),
+    ...(rtl && {
+      transform: `scaleX(-1)`
+    }),
+    content: '" "',
+    display: 'block',
+    overflow: 'hidden',
+    height: pxToRem(16),
+    width: pxToRem(16)
   })
 };
 

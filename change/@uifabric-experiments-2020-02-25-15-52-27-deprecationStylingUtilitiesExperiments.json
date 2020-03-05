@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Turning on tslint 'deprecation' rule.",
-  "packageName": "@uifabric/experiments",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e",
-  "dependentChangeType": "patch",
-  "date": "2020-02-25T23:51:19.279Z"
-}
