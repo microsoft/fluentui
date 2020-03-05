@@ -152,16 +152,14 @@ export class LineChartBase extends React.Component<
             isBeakVisible={false}
             gapSpace={10}
             directionalHint={DirectionalHint.topAutoEdge}
-            role="alertdialog"
-            aria-live={'assertive'}
+            id={'callout'}
           >
             <div className={this._classNames.calloutContentRoot} role={'presentation'}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
               {this.state.YValueHover &&
                 this.state.YValueHover.map((xValue: { legend?: string; y?: number; color?: string }, index: number) => (
                   <span key={index} className={mergeStyles(this._classNames.calloutContentY, { color: xValue.color })}>
-                    <span>{xValue.legend}</span>
-                    <span>{xValue.y}</span>
+                    <span>{xValue.legend}</span> <span>{xValue.y}</span>
                   </span>
                 ))}
             </div>
@@ -388,6 +386,7 @@ export class LineChartBase extends React.Component<
               data-is-focusable={i === 0 ? true : false}
               onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
               onBlur={this._handleMouseOut}
+              aria-labelledby={'callout'}
               role={'img'}
             />
           );
