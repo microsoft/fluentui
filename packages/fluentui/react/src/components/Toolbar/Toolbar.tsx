@@ -29,7 +29,7 @@ import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
-import { ToolbarVariablesProvider } from 'src/components/Toolbar/toolbarVariablesContext';
+import { ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export type ToolbarItemShorthandKinds = 'divider' | 'item' | 'group' | 'toggle' | 'custom';
 
