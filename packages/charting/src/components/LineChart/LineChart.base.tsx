@@ -387,7 +387,6 @@ export class LineChartBase extends React.Component<
               onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
               onBlur={this._handleMouseOut}
               aria-labelledby={'callout'}
-              role={'img'}
             />
           );
         } else {
@@ -403,7 +402,6 @@ export class LineChartBase extends React.Component<
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={0.1}
-              role={'img'}
             />
           );
         }
