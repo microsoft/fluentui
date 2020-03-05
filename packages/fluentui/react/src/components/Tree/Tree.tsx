@@ -244,6 +244,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     this.setActiveItemIds(e, activeItemIds);
   };
 
+  setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
+    _.invoke(this.props, 'onActiveItemIdsChange', e, { ...this.props, activeItemIds });
+
+    this.setState({
+      activeItemIds
+    });
+  };
+
   contextValue: TreeItemRenderContextValue = {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
@@ -287,14 +295,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     return renderItems(items);
   }
-
-  setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
-    _.invoke(this.props, 'onActiveItemIdsChange', e, { ...this.props, activeItemIds });
-
-    this.setState({
-      activeItemIds
-    });
-  };
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
     const { children, renderedItems } = this.props;
