@@ -49,8 +49,17 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Level of the tree/subtree that contains this item. */
   level?: number;
 
+  /** Called when the item's first child is about to be focused. */
+  onFocusFirstChild?: ComponentEventHandler<TreeItemProps>;
+
+  /** Called when the item's parent is about to be focused. */
+  onFocusParent?: ComponentEventHandler<TreeItemProps>;
+
   /** Called when a tree title is clicked. */
   onTitleClick?: ComponentEventHandler<TreeItemProps>;
+
+  /** Called when the item's siblings are about to be expanded. */
+  onSiblingsExpand?: ComponentEventHandler<TreeItemProps>;
 
   /** Whether or not the item is in the expanded state. Only makes sense if item has children items. */
   expanded?: boolean;
@@ -102,6 +111,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.preventDefault();
         e.stopPropagation();
 
+        _.invoke(props, 'onFocusParent', e, props);
         onFocusParent(props.id);
       },
       collapse: e => {
@@ -120,12 +130,14 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.preventDefault();
         e.stopPropagation();
 
+        _.invoke(props, 'onFocusFirstChild', e, props);
         onFocusFirstChild(props.id);
       },
       expandSiblings: e => {
         e.preventDefault();
         e.stopPropagation();
 
+        _.invoke(props, 'onSiblingsExpand', e, props);
         onSiblingsExpand(e, props);
       }
     },
@@ -207,7 +219,10 @@ TreeItem.propTypes = {
   index: PropTypes.number,
   items: customPropTypes.collectionShorthand,
   level: PropTypes.number,
+  onFocusFirstChild: PropTypes.func,
+  onFocusParent: PropTypes.func,
   onTitleClick: PropTypes.func,
+  onSiblingsExpand: PropTypes.func,
   expanded: PropTypes.bool,
   parent: customPropTypes.itemShorthand,
   renderItemTitle: PropTypes.func,
