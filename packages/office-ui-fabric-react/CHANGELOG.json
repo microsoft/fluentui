@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 05 Mar 2020 12:27:53 GMT",
+      "tag": "office-ui-fabric-react_v7.99.0",
+      "version": "7.99.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add mock for Async to prevent spurious infinite timer issue.",
+            "author": "jagore@microsoft.com",
+            "commit": "5c78a6866573bcfa7096bc625c795c3205d69e89"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Suggestions: Deprecating unused searchErrorText prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "940dd1bbce3b97868d9895345089997b9b5b5c7b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Mar 2020 12:27:02 GMT",
       "tag": "office-ui-fabric-react_v7.98.4",
       "version": "7.98.4",

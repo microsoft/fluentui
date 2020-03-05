@@ -47,72 +47,92 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
         {
           key: 'item-menu',
           icon: 'more',
-          menu: [
-            // ToolbarMenuDivider
-            { kind: 'divider', key: 'divider' },
-            { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
+          menu: {
+            items: [
+              // ToolbarMenuDivider
+              { kind: 'divider', key: 'divider' },
+              { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
 
-            // ToolbarMenuItem
-            { key: 'item', content: 'Item' },
-            { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'orange' } },
+              // ToolbarMenuItem
+              { key: 'item', content: 'Item' },
+              { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'orange' } },
 
-            // ToolbarMenuItem with menu
-            {
-              key: 'item',
-              content: 'Item',
-              menu: [
-                { key: 'item', content: 'Item' },
-                { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
-              ],
-              menuOpen: true
-            },
-            {
-              key: 'item-variables',
-              content: 'Item',
-              menu: [
-                { key: 'item', content: 'Item' },
-                { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
-              ],
-              menuOpen: true,
-              variables: { menuItemForeground: 'orange', menuBackground: 'grey' },
-              styles: { marginTop: '100px' /* avoid collision with other opened menu */ }
-            }
-          ],
+              // ToolbarMenuItem with menu
+              {
+                key: 'item',
+                content: 'Item',
+                menu: {
+                  items: [
+                    { key: 'item', content: 'Item' },
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                  ],
+                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                },
+                menuOpen: true
+              },
+              {
+                key: 'item-variables',
+                content: 'Item',
+                menu: {
+                  items: [
+                    { key: 'item', content: 'Item' },
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                  ],
+                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                },
+                menuOpen: true,
+                variables: { menuItemForeground: 'orange', menuBackground: 'grey' },
+                styles: {
+                  marginTop: '100px' /* avoid collision with other opened menu */
+                }
+              }
+            ],
+            styles: { width: '100px' /* decrease width to fit other menus */ }
+          },
           menuOpen: true,
-          styles: { marginRight: '300px' /* avoid collision with other opened menu */ }
+          styles: { marginRight: '200px' /* avoid collision with other opened menu */ }
         },
         {
           key: 'item-menu-variables',
           icon: 'more',
-          menu: [
-            { kind: 'divider', key: 'divider' },
-            { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
+          menu: {
+            items: [
+              { kind: 'divider', key: 'divider' },
+              { kind: 'divider', key: 'divider-variables', variables: { menuDividerBorder: 'orange' } },
 
-            // ToolbarMenuItem
-            { key: 'item', content: 'Item' },
-            { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'orange' } },
-            // ToolbarMenuItem with menu
-            {
-              key: 'item',
-              content: 'Item',
-              menu: [
-                { key: 'item', content: 'Item' },
-                { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
-              ],
-              menuOpen: true
-            },
-            {
-              key: 'item-variables',
-              content: 'Item',
-              menu: [
-                { key: 'item', content: 'Item' },
-                { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
-              ],
-              menuOpen: true,
-              variables: { menuItemForeground: 'orange', menuBackground: 'grey' },
-              styles: { marginTop: '100px' /* avoid collision with other opened menu */ }
-            }
-          ],
+              // ToolbarMenuItem
+              { key: 'item', content: 'Item' },
+              { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'orange' } },
+              // ToolbarMenuItem with menu
+              {
+                key: 'item',
+                content: 'Item',
+                menu: {
+                  items: [
+                    { key: 'item', content: 'Item' },
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                  ],
+                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                },
+                menuOpen: true
+              },
+              {
+                key: 'item-variables',
+                content: 'Item',
+                menu: {
+                  items: [
+                    { key: 'item', content: 'Item' },
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                  ],
+                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                },
+                menuOpen: true,
+                variables: { menuItemForeground: 'orange', menuBackground: 'grey' },
+                styles: { marginTop: '100px' /* avoid collision with other opened menu */ }
+              }
+            ],
+            styles: { width: '100px' /* decrease width to fit other menus */ }
+          },
           menuOpen: true,
           variables: { menuBackground: 'pink', menuDividerBorder: 'white', menuItemForeground: 'olive' }
         }
