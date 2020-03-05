@@ -272,6 +272,14 @@ export interface IContextualMenuListProps {
   totalItemCount: number;
   hasCheckmarks: boolean;
   hasIcons: boolean;
+  defaultMenuItemRenderer: (
+    item: IContextualMenuItem,
+    index: number,
+    focusableElementIndex: number,
+    totalItemCount: number,
+    hasCheckmarks: boolean,
+    hasIcons: boolean
+  ) => React.ReactNode;
 }
 
 /**
