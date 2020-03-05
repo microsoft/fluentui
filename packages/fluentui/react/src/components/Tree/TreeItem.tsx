@@ -6,6 +6,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { Ref } from '@fluentui/react-component-ref';
 
 import {
   childrenExist,
@@ -37,6 +38,9 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<TreeItemBehaviorProps>;
 
+  /** Ref for the item DOM element. */
+  contentRef?: React.Ref<HTMLElement>;
+
   /** Id needed to identify this item inside the Tree. */
   id: string;
 
@@ -65,7 +69,7 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   expanded?: boolean;
 
   /** The id of the parent tree item, if any. */
-  parent?: ShorthandValue<TreeItemProps>;
+  parent?: string;
 
   /** Array with the ids of the tree item's siblings, if any. */
   siblings?: ShorthandCollection<TreeItemProps>;
@@ -92,7 +96,21 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, design, title, renderItemTitle, expanded, level, index, siblings, styles, variables } = props;
+  const {
+    accessibility,
+    children,
+    className,
+    contentRef,
+    design,
+    title,
+    renderItemTitle,
+    expanded,
+    level,
+    index,
+    siblings,
+    styles,
+    variables
+  } = props;
 
   const hasSubtreeItem = hasSubtree(props);
   // size of the tree without children.
@@ -112,7 +130,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.stopPropagation();
 
         _.invoke(props, 'onFocusParent', e, props);
-        onFocusParent(props.id);
+        onFocusParent(props.parent);
       },
       collapse: e => {
         e.preventDefault();
@@ -173,9 +191,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(TreeItem.handledProps, props);
 
-  setEnd();
-
-  return (
+  const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
@@ -201,6 +217,11 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
           })}
     </ElementType>
   );
+
+  const elementWithRef = contentRef ? <Ref innerRef={contentRef}>{element}</Ref> : element;
+  setEnd();
+
+  return elementWithRef;
 };
 
 TreeItem.className = 'ui-tree__item';
@@ -215,6 +236,7 @@ TreeItem.propTypes = {
   ...commonPropTypes.createCommon({
     content: false
   }),
+  contentRef: customPropTypes.ref,
   id: PropTypes.string.isRequired,
   index: PropTypes.number,
   items: customPropTypes.collectionShorthand,
@@ -224,7 +246,7 @@ TreeItem.propTypes = {
   onTitleClick: PropTypes.func,
   onSiblingsExpand: PropTypes.func,
   expanded: PropTypes.bool,
-  parent: customPropTypes.itemShorthand,
+  parent: PropTypes.string,
   renderItemTitle: PropTypes.func,
   siblings: customPropTypes.collectionShorthand,
   title: customPropTypes.itemShorthand

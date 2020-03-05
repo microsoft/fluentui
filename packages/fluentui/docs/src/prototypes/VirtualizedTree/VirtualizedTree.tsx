@@ -18,13 +18,11 @@ function TreeVirtualizer(props: TreeVirtualizerProps) {
     const { renderedItems } = props;
     const { parent } = treeItemProps;
 
-    renderedItems[index].props.onFocusParent(e, treeItemProps);
-
     if (!parent) {
       return;
     }
 
-    const indexOfParent = renderedItems.findIndex((renderedItem: React.ReactElement) => renderedItem.props['id'] === parent['id']);
+    const indexOfParent = renderedItems.findIndex((renderedItem: React.ReactElement) => renderedItem.props['id'] === parent);
 
     // If parent already visible, then it should be focused by Tree.
     if (renderedItems[indexOfParent].props['contentRef'].current) {

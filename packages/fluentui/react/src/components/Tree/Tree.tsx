@@ -80,13 +80,12 @@ export interface TreeItemForRenderProps {
   id: string;
   index: number;
   level: number;
-  parentRef: React.RefObject<HTMLElement>;
+  parent: string;
   siblings: ShorthandCollection<TreeItemProps>;
 }
 
 export interface TreeState {
   activeItemIds: string[];
-  itemsForRender: Record<string, TreeItemForRenderProps>;
 }
 
 class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
@@ -123,39 +122,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static Item = TreeItem;
   static Title = TreeTitle;
 
-  // memoize this function if performance issue occurs.
-  static getItemsForRender = (itemsFromProps: ShorthandCollection<TreeItemProps>) => {
-    const itemsForRenderGenerator = (items = itemsFromProps, level = 1, parentRef?: React.RefObject<HTMLElement>) => {
-      return _.reduce(
-        items,
-        (acc: Object, item: ShorthandValue<TreeItemProps>, index: number) => {
-          const id = item['id'];
-          const isSubtree = hasSubtree(item);
-          const elementRef = React.createRef<HTMLElement>();
-
-          acc[id] = {
-            elementRef,
-            parentRef,
-            level,
-            index: index + 1, // Used for aria-posinset and it's 1-based.
-            siblings: items.filter(currentItem => currentItem !== item)
-          };
-
-          return {
-            ...acc,
-            ...(isSubtree ? itemsForRenderGenerator(item['items'], level + 1, elementRef) : {})
-          };
-        },
-        {}
-      );
-    };
-
-    return itemsForRenderGenerator(itemsFromProps);
-  };
-
   static getAutoControlledStateFromProps(nextProps: TreeProps, prevState: TreeState) {
     const { items } = nextProps;
-    const itemsForRender = Tree.getItemsForRender(items);
     let { activeItemIds } = nextProps;
 
     if (!activeItemIds && items) {
@@ -182,8 +150,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     return {
-      activeItemIds,
-      itemsForRender
+      activeItemIds
     };
   }
 
@@ -192,6 +159,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   }
 
   treeRef = React.createRef<HTMLElement>();
+  itemsRef = new Map<string, React.RefObject<HTMLElement>>();
 
   handleTreeItemOverrides = (predefinedProps: TreeItemProps) => ({
     onTitleClick: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
@@ -238,8 +206,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   onFocusFirstChild = (itemId: string) => {
-    const { itemsForRender } = this.state;
-    const currentElement = itemsForRender[itemId].elementRef;
+    const currentElement = this.itemsRef.get(itemId);
 
     if (!currentElement || !currentElement.current) {
       return;
@@ -258,9 +225,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
       return;
     }
 
-    const { id: itemId } = treeItemProps;
-    const { activeItemIds, itemsForRender } = this.state;
-    const siblings = itemsForRender[itemId].siblings;
+    const { id: itemId, siblings } = treeItemProps;
+    const { activeItemIds } = this.state;
 
     siblings.forEach(sibling => {
       if (hasSubtree(sibling) && !this.isActiveItem(sibling['id'])) {
@@ -274,8 +240,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     this.setActiveItemIds(e, activeItemIds);
   };
-  onFocusParent = (itemId: string) => {
-    const { parentRef } = this.state.itemsForRender[itemId];
+  onFocusParent = (parent: string) => {
+    const parentRef = this.itemsRef.get(parent);
 
     if (!parentRef || !parentRef.current) {
       return;
@@ -291,36 +257,37 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
-    const { itemsForRender } = this.state;
     const { items, renderItemTitle } = this.props;
 
     if (!items) return null;
 
-    const renderItems = (items: ShorthandCollection<TreeItemProps>): React.ReactElement[] => {
-      return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>) => {
+    const renderItems = (items: ShorthandCollection<TreeItemProps>, level = 1, parent?: string): React.ReactElement[] => {
+      return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>, index: number) => {
         const itemId = item['id'];
-        const itemForRender = itemsForRender[itemId];
-        const { elementRef, ...restItemForRender } = itemForRender;
         const isSubtree = hasSubtree(item);
         const isSubtreeExpanded = isSubtree && this.isActiveItem(itemId);
-        const renderedItem = (
-          <Ref innerRef={elementRef}>
-            {TreeItem.create(item, {
-              defaultProps: () => ({
-                accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
-                className: Tree.slotClassNames.item,
-                expanded: isSubtreeExpanded,
-                renderItemTitle,
-                key: item['id'],
-                contentRef: elementRef,
-                ...restItemForRender
-              }),
-              overrideProps: this.handleTreeItemOverrides
-            })}
-          </Ref>
-        );
 
-        return [...renderedItems, renderedItem, ...(isSubtreeExpanded ? renderItems(item['items']) : ([] as any))];
+        if (!this.itemsRef.has(itemId)) {
+          this.itemsRef.set(itemId, React.createRef<HTMLElement>());
+        }
+
+        const renderedItem = TreeItem.create(item, {
+          defaultProps: () => ({
+            accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
+            className: Tree.slotClassNames.item,
+            expanded: isSubtreeExpanded,
+            renderItemTitle,
+            key: item['id'],
+            parent,
+            level,
+            index: index + 1, // Used for aria-posinset and it's 1-based.
+            siblings: items.filter(currentItem => currentItem !== item),
+            contentRef: this.itemsRef.get(itemId)
+          }),
+          overrideProps: this.handleTreeItemOverrides
+        });
+
+        return [...renderedItems, renderedItem, ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any))];
       }, []);
     };
 
