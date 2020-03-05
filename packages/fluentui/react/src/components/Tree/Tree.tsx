@@ -197,14 +197,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
   });
 
-  setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
-    _.invoke(this.props, 'onActiveItemIdsChange', e, { ...this.props, activeItemIds });
-
-    this.setState({
-      activeItemIds
-    });
-  };
-
   onFocusFirstChild = (itemId: string) => {
     const currentElement = this.itemsRef.get(itemId);
 
@@ -220,6 +212,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     elementToBeFocused.focus();
   };
+
   onSiblingsExpand = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     if (this.props.exclusive) {
       return;
@@ -240,6 +233,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     this.setActiveItemIds(e, activeItemIds);
   };
+
   onFocusParent = (parent: string) => {
     const parentRef = this.itemsRef.get(parent);
 
@@ -293,6 +287,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     return renderItems(items);
   }
+
+  setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
+    _.invoke(this.props, 'onActiveItemIdsChange', e, { ...this.props, activeItemIds });
+
+    this.setState({
+      activeItemIds
+    });
+  };
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
     const { children, renderedItems } = this.props;
