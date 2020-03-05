@@ -64,6 +64,9 @@ export interface IGroupHeaderStyles {
   title: IStyle;
 }
 
+/**
+ * {@docCategory GroupedList}
+ */
 export interface IGroupHeaderCheckboxProps {
   checked: boolean;
   theme?: ITheme;
