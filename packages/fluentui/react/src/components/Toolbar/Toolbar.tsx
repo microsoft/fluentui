@@ -450,8 +450,6 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     );
   }
 
-  // <Toolbar variables={{ someMagicValue: 'fff' }} />
-
   renderComponent({ accessibility, ElementType, classes, styles, unhandledProps, rtl }): React.ReactNode {
     this.rtl = rtl;
     const { children, items, overflow, overflowItem, variables } = this.props;
