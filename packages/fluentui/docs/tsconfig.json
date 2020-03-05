@@ -4,6 +4,7 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
+      "@uifabric/merge-styles": ["packages/merge-styles/src"],
       "@uifabric/utilities": ["packages/utilities/src"],
       "docs/*": ["packages/fluentui/docs/*"],
       "src/*": ["packages/fluentui/react/src/*"],
