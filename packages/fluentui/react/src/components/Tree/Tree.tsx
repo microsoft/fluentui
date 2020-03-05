@@ -197,6 +197,16 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
   });
 
+  onFocusParent = (parent: string) => {
+    const parentRef = this.itemsRef.get(parent);
+
+    if (!parentRef || !parentRef.current) {
+      return;
+    }
+
+    parentRef.current.focus();
+  };
+
   onFocusFirstChild = (itemId: string) => {
     const currentElement = this.itemsRef.get(itemId);
 
@@ -232,16 +242,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     this.setActiveItemIds(e, activeItemIds);
-  };
-
-  onFocusParent = (parent: string) => {
-    const parentRef = this.itemsRef.get(parent);
-
-    if (!parentRef || !parentRef.current) {
-      return;
-    }
-
-    parentRef.current.focus();
   };
 
   contextValue: TreeItemRenderContextValue = {
