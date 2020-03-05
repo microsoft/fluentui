@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "MarqueeSelection: deleting html element references on unmount.",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "c895cd96849c18694135f5c7ee708fa6492a3e54",
+  "date": "2020-03-05T22:57:28.418Z"
+}
