@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Add mock for Async to prevent spurious infinite timer issue.",
+  "packageName": "office-ui-fabric-react",
+  "email": "jagore@microsoft.com",
+  "commit": "5c78a6866573bcfa7096bc625c795c3205d69e89",
+  "dependentChangeType": "patch",
+  "date": "2020-03-03T23:35:01.016Z"
+}
