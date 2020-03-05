@@ -12,7 +12,9 @@ export const removeItemAtIndex = (items: any[], itemIndex: number): any[] => {
 };
 
 export interface TreeItemRenderContextValue {
+  onFocusFirstChild: (itemId: string) => void;
   onFocusParent: (itemId: string) => void;
+  onSiblingsExpand: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
 }
 
 export const TreeItemContext = React.createContext<TreeItemRenderContextValue>(null);
