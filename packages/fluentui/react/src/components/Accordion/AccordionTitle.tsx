@@ -1,4 +1,4 @@
-import { accordionTitleBehavior } from '@fluentui/accessibility';
+import { accordionTitleBehavior, indicatorBehavior } from '@fluentui/accessibility';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -123,7 +123,8 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
         >
           {Box.create(indicator, {
             defaultProps: () => ({
-              styles: styles.indicator
+              styles: styles.indicator,
+              accessibility: indicatorBehavior
             })
           })}
           {Box.create(content, {

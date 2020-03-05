@@ -36,7 +36,7 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> & FluentComponen
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(ToolbarDivider.handledProps, props);
 
-  const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root, })} />;
+  const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })} />;
   setEnd();
 
   return element;

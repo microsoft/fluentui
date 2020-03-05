@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theming",
-  "version": "0.45.0",
+  "version": "0.46.0",
   "description": "> TODO: description",
   "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
   "bugs": {
@@ -47,7 +47,5 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "private": true,
-  "gitHead": "d08e21664e66fd0203260f1d2f441007bca02915"
+  }
 }

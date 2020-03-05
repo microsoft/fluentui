@@ -6,6 +6,7 @@
     "baseUrl": "../../",
     "paths": {
       "@uifabric/build": ["scripts"],
+      "@uifabric/utilities": ["packages/utilities/src"],
       "@fluentui/*": ["packages/fluentui/*/src"]
     },
     "types": ["node", "jest"],
