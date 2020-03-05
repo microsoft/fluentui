@@ -230,7 +230,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   });
 
   setActiveItemIds = (e: React.SyntheticEvent, activeItemIds: string[]) => {
-    _.invoke(this.props, 'onActiveItemIds', e, { ...this.props, activeItemIds });
+    _.invoke(this.props, 'onActiveItemIdsChange', e, { ...this.props, activeItemIds });
 
     this.setState({
       activeItemIds
