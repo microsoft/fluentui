@@ -17,6 +17,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Make `onKeyDown` returned by `useAccessibility()` hook referentially stable between component's rerenders @layershifter ([#12185](https://github.com/OfficeDev/office-ui-fabric-react/pull/12185))
+
 <!--------------------------------[ v0.46.0 ]------------------------------- -->
 ## [v0.46.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.46.0) (2020-03-05)
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.45.0..fluentuizero_v0.46.0)
