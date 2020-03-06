@@ -161,42 +161,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   treeRef = React.createRef<HTMLElement>();
   itemsRef = new Map<string, React.RefObject<HTMLElement>>();
 
-  handleTreeItemOverrides = (predefinedProps: TreeItemProps) => ({
-    onTitleClick: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-      if (!hasSubtree(treeItemProps)) {
-        return;
-      }
-
-      let { activeItemIds } = this.state;
-      const { id, siblings } = treeItemProps;
-      const { exclusive } = this.props;
-
-      const activeItemIdIndex = activeItemIds.indexOf(id);
-
-      if (activeItemIdIndex > -1) {
-        activeItemIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
-      } else {
-        if (exclusive) {
-          siblings.some(sibling => {
-            const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
-            if (activeSiblingIdIndex > -1) {
-              activeItemIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
-
-              return true;
-            }
-            return false;
-          });
-        }
-
-        activeItemIds = [...activeItemIds, id];
-      }
-
-      this.setActiveItemIds(e, activeItemIds);
-
-      _.invoke(predefinedProps, 'onTitleClick', e, treeItemProps);
-    }
-  });
-
   onFocusParent = (parent: string) => {
     const parentRef = this.itemsRef.get(parent);
 
@@ -205,6 +169,38 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     parentRef.current.focus();
+  };
+
+  onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+    if (!hasSubtree(treeItemProps)) {
+      return;
+    }
+
+    let { activeItemIds } = this.state;
+    const { id, siblings } = treeItemProps;
+    const { exclusive } = this.props;
+
+    const activeItemIdIndex = activeItemIds.indexOf(id);
+
+    if (activeItemIdIndex > -1) {
+      activeItemIds = removeItemAtIndex(activeItemIds, activeItemIdIndex);
+    } else {
+      if (exclusive) {
+        siblings.some(sibling => {
+          const activeSiblingIdIndex = activeItemIds.indexOf(sibling['id']);
+          if (activeSiblingIdIndex > -1) {
+            activeItemIds = removeItemAtIndex(activeItemIds, activeSiblingIdIndex);
+
+            return true;
+          }
+          return false;
+        });
+      }
+
+      activeItemIds = [...activeItemIds, id];
+    }
+
+    this.setActiveItemIds(e, activeItemIds);
   };
 
   onFocusFirstChild = (itemId: string) => {
@@ -255,7 +251,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   contextValue: TreeItemRenderContextValue = {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
-    onFocusFirstChild: this.onFocusFirstChild
+    onFocusFirstChild: this.onFocusFirstChild,
+    onTitleClick: this.onTitleClick
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
@@ -285,8 +282,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             index: index + 1, // Used for aria-posinset and it's 1-based.
             siblings: items.filter(currentItem => currentItem !== item),
             contentRef: this.itemsRef.get(itemId)
-          }),
-          overrideProps: this.handleTreeItemOverrides
+          })
         });
 
         return [...renderedItems, renderedItem, ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any))];

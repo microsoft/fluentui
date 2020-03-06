@@ -115,7 +115,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   const hasSubtreeItem = hasSubtree(props);
   // size of the tree without children.
   const treeSize = siblings ? siblings.length + 1 : 1;
-  const { onFocusParent, onSiblingsExpand, onFocusFirstChild } = React.useContext(TreeItemContext);
+  const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeItemContext);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
@@ -129,8 +129,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.preventDefault();
         e.stopPropagation();
 
-        _.invoke(props, 'onFocusParent', e, props);
-        onFocusParent(props.parent);
+        handleFocusParent(e);
       },
       collapse: e => {
         e.preventDefault();
@@ -148,15 +147,13 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.preventDefault();
         e.stopPropagation();
 
-        _.invoke(props, 'onFocusFirstChild', e, props);
-        onFocusFirstChild(props.id);
+        handleFocusFirstChild(e);
       },
       expandSiblings: e => {
         e.preventDefault();
         e.stopPropagation();
 
-        _.invoke(props, 'onSiblingsExpand', e, props);
-        onSiblingsExpand(e, props);
+        handleSiblingsExpand(e);
       }
     },
     debugName: TreeItem.className,
@@ -179,7 +176,20 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   });
 
   const handleTitleClick = e => {
+    onTitleClick(e, props);
     _.invoke(props, 'onTitleClick', e, props);
+  };
+  const handleFocusFirstChild = e => {
+    _.invoke(props, 'onFocusFirstChild', e, props);
+    onFocusFirstChild(props.id);
+  };
+  const handleFocusParent = e => {
+    _.invoke(props, 'onFocusParent', e, props);
+    onFocusParent(props.parent);
+  };
+  const handleSiblingsExpand = e => {
+    _.invoke(props, 'onSiblingsExpand', e, props);
+    onSiblingsExpand(e, props);
   };
   const handleTitleOverrides = (predefinedProps: TreeTitleProps) => ({
     onClick: (e, titleProps) => {
