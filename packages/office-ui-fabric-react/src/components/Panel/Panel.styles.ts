@@ -286,7 +286,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.navigation,
       {
         display: 'flex',
-        justifyContent: 'space-between'
+        justifyContent: 'flex-end'
       },
       hasCustomNavigation && {
         height: commandBarHeight
@@ -314,7 +314,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
-        flexShrink: 1
+        flexGrow: 1
       },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
