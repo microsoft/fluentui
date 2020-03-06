@@ -27,7 +27,7 @@ import {
   ShorthandValue,
   ComponentEventHandler
 } from '../../types';
-import { hasSubtree, removeItemAtIndex, TreeItemContext, TreeItemRenderContextValue } from './utils';
+import { hasSubtree, removeItemAtIndex, getSiblings, TreeItemContext, TreeItemRenderContextValue } from './utils';
 
 export interface TreeSlotClassNames {
   item: string;
@@ -177,8 +177,9 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     let { activeItemIds } = this.state;
-    const { id, siblings } = treeItemProps;
-    const { exclusive } = this.props;
+    const { id } = treeItemProps;
+    const { exclusive, items } = this.props;
+    const siblings = getSiblings(items, id);
 
     const activeItemIdIndex = activeItemIds.indexOf(id);
 
@@ -220,12 +221,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   onSiblingsExpand = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-    if (this.props.exclusive) {
+    const { exclusive, items } = this.props;
+    if (exclusive) {
       return;
     }
 
-    const { id: itemId, siblings } = treeItemProps;
+    const { id } = treeItemProps;
     const { activeItemIds } = this.state;
+    const siblings = getSiblings(items, id);
 
     siblings.forEach(sibling => {
       if (hasSubtree(sibling) && !this.isActiveItem(sibling['id'])) {
@@ -233,8 +236,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
       }
     });
 
-    if (hasSubtree(treeItemProps) && !this.isActiveItem(itemId)) {
-      activeItemIds.push(itemId);
+    if (hasSubtree(treeItemProps) && !this.isActiveItem(id)) {
+      activeItemIds.push(id);
     }
 
     this.setActiveItemIds(e, activeItemIds);
@@ -280,8 +283,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             parent,
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
-            siblings: items.filter(currentItem => currentItem !== item),
-            contentRef: this.itemsRef.get(itemId)
+            contentRef: this.itemsRef.get(itemId),
+            treeSize: items.length
           })
         });
 

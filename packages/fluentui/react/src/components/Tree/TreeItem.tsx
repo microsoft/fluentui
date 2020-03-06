@@ -71,9 +71,6 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
   /** The id of the parent tree item, if any. */
   parent?: string;
 
-  /** Array with the ids of the tree item's siblings, if any. */
-  siblings?: ShorthandCollection<TreeItemProps>;
-
   /**
    * A custom render iterator for rendering each tree title.
    * The default component, props, and children are available for each tree title.
@@ -83,6 +80,9 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
    * @param children - The computed children for this slot.
    */
   renderItemTitle?: ShorthandRenderFunction<TreeTitleProps>;
+
+  /** Size of the tree/subtree that contains this item. */
+  treeSize?: number;
 
   /** Properties for TreeTitle. */
   title?: ShorthandValue<TreeTitleProps>;
@@ -107,14 +107,12 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     expanded,
     level,
     index,
-    siblings,
     styles,
-    variables
+    variables,
+    treeSize
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
-  // size of the tree without children.
-  const treeSize = siblings ? siblings.length + 1 : 1;
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeItemContext);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -258,7 +256,7 @@ TreeItem.propTypes = {
   expanded: PropTypes.bool,
   parent: PropTypes.string,
   renderItemTitle: PropTypes.func,
-  siblings: customPropTypes.collectionShorthand,
+  treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand
 };
 TreeItem.defaultProps = {
