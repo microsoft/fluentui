@@ -286,7 +286,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.navigation,
       {
         display: 'flex',
-        justifyContent: 'flex-end'
+        justifyContent: 'space-between'
       },
       hasCustomNavigation && {
         height: commandBarHeight
@@ -314,13 +314,11 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
-        flexShrink: 1,
-        marginRight: 'auto'
+        flexShrink: 1
       },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
-        flexShrink: 0,
-        marginRight: 0
+        flexShrink: 0
       }
     ],
     headerText: [
@@ -329,7 +327,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       {
         color: semanticColors.bodyText,
         lineHeight: '27px',
-        margin: 0,
         overflowWrap: 'break-word',
         wordWrap: 'break-word',
         wordBreak: 'break-word',
@@ -350,7 +347,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.content,
       sharedPaddingStyles,
       {
-        marginBottom: 0,
         paddingBottom: 20
       }
     ],

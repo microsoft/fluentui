@@ -1,26 +1,26 @@
 import { Accessibility, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
-import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
+import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import {
   ChildrenComponentProps,
   ContentComponentProps,
   createShorthandFactory,
   UIComponentProps,
-  UIComponent,
   childrenExist,
-  commonPropTypes,
-  ShorthandFactory
+  commonPropTypes
 } from '../../utils';
-
-import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /** A custom item can remove element padding, vertically or horizontally. */
   fitted?: boolean | 'horizontally' | 'vertically';
@@ -46,49 +46,70 @@ export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenCompon
   onBlur?: ComponentEventHandler<ToolbarCustomItemProps>;
 }
 
-class ToolbarCustomItem extends UIComponent<WithAsProp<ToolbarCustomItemProps>> {
-  static displayName = 'ToolbarCustomItem';
+export type ToolbarCustomItemStylesProps = Required<Pick<ToolbarCustomItemProps, 'fitted'>>;
 
-  static className = 'ui-toolbar__customitem';
+const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentComponentStaticProps = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ToolbarCustomItem.displayName, context.telemetry);
+  setStart();
 
-  static create: ShorthandFactory<ToolbarCustomItemProps>;
+  const { accessibility, children, className, content, design, fitted, focusable, styles, variables } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    fitted: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['horizontally', 'vertically'])]),
-    focusable: PropTypes.bool,
-    onFocus: PropTypes.func,
-    onBlur: PropTypes.func
-  };
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: ToolbarCustomItem.displayName,
+    rtl: context.rtl
+  });
+  const { classes } = useStyles<ToolbarCustomItemStylesProps>(ToolbarCustomItem.displayName, {
+    className: ToolbarCustomItem.className,
+    mapPropsToStyles: () => ({ fitted }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    rtl: context.rtl
+  });
 
-  handleBlur = (e: React.SyntheticEvent) => {
-    if (this.props.focusable) {
-      _.invoke(this.props, 'onBlur', e, this.props);
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(ToolbarCustomItem.handledProps, props);
+
+  const handleBlur = (e: React.SyntheticEvent) => {
+    if (focusable) {
+      _.invoke(props, 'onBlur', e, props);
     }
   };
 
-  handleFocus = (e: React.SyntheticEvent) => {
-    if (this.props.focusable) {
-      _.invoke(this.props, 'onFocus', e, this.props);
+  const handleFocus = (e: React.SyntheticEvent) => {
+    if (focusable) {
+      _.invoke(props, 'onFocus', e, props);
     }
   };
 
-  renderComponent({ ElementType, classes, variables, accessibility, unhandledProps }) {
-    const { children, content, focusable } = this.props;
-    return (
-      <ElementType
-        {...accessibility.attributes.root}
-        {...{ [IS_FOCUSABLE_ATTRIBUTE]: focusable }}
-        {...unhandledProps}
-        className={classes.root}
-        onBlur={this.handleBlur}
-        onFocus={this.handleFocus}
-      >
-        {childrenExist(children) ? children : content}
-      </ElementType>
-    );
-  }
-}
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        [IS_FOCUSABLE_ATTRIBUTE]: focusable,
+        ...unhandledProps,
+        className: classes.root,
+        onBlur: handleBlur,
+        onFocus: handleFocus
+      })}
+    >
+      {childrenExist(children) ? children : content}
+    </ElementType>
+  );
+  setEnd();
+
+  return element;
+};
+
+ToolbarCustomItem.className = 'ui-toolbar__customitem';
+ToolbarCustomItem.displayName = 'ToolbarCustomItem';
+
+ToolbarCustomItem.propTypes = {
+  ...commonPropTypes.createCommon(),
+  fitted: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'horizontally' | 'vertically'>(['horizontally', 'vertically'])]),
+  focusable: PropTypes.bool,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func
+};
+ToolbarCustomItem.handledProps = Object.keys(ToolbarCustomItem.propTypes) as any;
 
 ToolbarCustomItem.create = createShorthandFactory({
   Component: ToolbarCustomItem,

@@ -1,29 +1,36 @@
+import {
+  Accessibility,
+  toolbarMenuRadioGroupBehavior,
+  toolbarMenuItemRadioBehavior,
+  ToolbarMenuRadioGroupBehaviorProps
+} from '@fluentui/accessibility';
+import { mergeComponentVariables } from '@fluentui/styles';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
+import { ChildrenComponentProps, ContentComponentProps, createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
 import {
-  ChildrenComponentProps,
-  ContentComponentProps,
-  createShorthandFactory,
-  UIComponentProps,
-  commonPropTypes,
-  ShorthandFactory,
-  applyAccessibilityKeyHandlers,
-  UIComponent
-} from '../../utils';
-import { ComponentEventHandler, ShorthandCollection, ShorthandValue, WithAsProp, withSafeTypeForAs } from '../../types';
-import { Accessibility, toolbarMenuRadioGroupBehavior, toolbarMenuItemRadioBehavior } from '@fluentui/accessibility';
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandCollection,
+  ShorthandValue,
+  WithAsProp,
+  withSafeTypeForAs
+} from '../../types';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
-import { mergeComponentVariables } from '@fluentui/styles';
 import Box, { BoxProps } from '../Box/Box';
 
 export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<ToolbarMenuRadioGroupBehaviorProps>;
 
   /** Index of the currently active item. */
   activeIndex?: number;
@@ -43,82 +50,99 @@ export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenCo
   wrapper?: ShorthandValue<BoxProps>;
 }
 
+export type ToolbarMenuRadioGroupStylesProps = never;
+
 export interface ToolbarMenuRadioGroupSlotClassNames {
   wrapper: string;
 }
 
-class ToolbarMenuRadioGroup extends UIComponent<WithAsProp<ToolbarMenuRadioGroupProps>> {
-  static displayName = 'ToolbarMenuRadioGroup';
+const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
+  FluentComponentStaticProps<ToolbarMenuRadioGroupProps> & {
+    slotClassNames: ToolbarMenuRadioGroupSlotClassNames;
+  } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ToolbarMenuRadioGroup.displayName, context.telemetry);
+  setStart();
 
-  static create: ShorthandFactory<ToolbarMenuRadioGroupProps>;
+  const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
 
-  static className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: ToolbarMenuRadioGroup.displayName,
+    rtl: context.rtl
+  });
+  const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuRadioGroupStylesProps>(ToolbarMenuRadioGroup.displayName, {
+    className: ToolbarMenuRadioGroup.className,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables
+    }),
+    rtl: context.rtl
+  });
 
-  static slotClassNames: ToolbarMenuRadioGroupSlotClassNames = {
-    wrapper: `${ToolbarMenuRadioGroup.className}__wrapper`
-  };
-
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    activeIndex: PropTypes.number,
-    items: customPropTypes.collectionShorthand,
-    onItemClick: PropTypes.func,
-    wrapper: customPropTypes.itemShorthand
-  };
-
-  static defaultProps = {
-    as: 'ul',
-    accessibility: toolbarMenuRadioGroupBehavior,
-    wrapper: {}
-  };
-
-  handleItemOverrides = variables => (predefinedProps: ToolbarMenuItemProps): ToolbarMenuItemProps => ({
+  const handleItemOverrides = (predefinedProps: ToolbarMenuItemProps): ToolbarMenuItemProps => ({
     onClick: (e, itemProps) => {
       _.invoke(predefinedProps, 'onClick', e, itemProps);
-      _.invoke(this.props, 'onItemClick', e, itemProps);
+      _.invoke(props, 'onItemClick', e, itemProps);
     },
     variables: mergeComponentVariables(variables, predefinedProps.variables),
     wrapper: null
   });
 
-  renderComponent({ ElementType, classes, unhandledProps, accessibility, styles }) {
-    const { activeIndex, items, variables, wrapper } = this.props;
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(ToolbarMenuRadioGroup.handledProps, props);
 
-    const content = (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {_.map(items, (item, index) =>
-          ToolbarMenuItem.create(item, {
-            defaultProps: () => ({
-              accessibility: toolbarMenuItemRadioBehavior,
-              as: 'li',
-              active: activeIndex === index,
-              index
-            }),
-            overrideProps: this.handleItemOverrides(variables)
-          })
-        )}
-      </ElementType>
-    );
-
-    return Box.create(wrapper, {
-      defaultProps: () => ({
+  const content = (
+    <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })}>
+      {_.map(items, (item, index) =>
+        ToolbarMenuItem.create(item, {
+          defaultProps: () => ({
+            accessibility: toolbarMenuItemRadioBehavior,
+            as: 'li',
+            active: activeIndex === index,
+            index
+          }),
+          overrideProps: handleItemOverrides
+        })
+      )}
+    </ElementType>
+  );
+  const element = Box.create(wrapper, {
+    defaultProps: () =>
+      getA11yProps('wrapper', {
         as: 'li',
         className: ToolbarMenuRadioGroup.slotClassNames.wrapper,
-        styles: styles.wrapper,
-        ...accessibility.attributes.wrapper,
-        ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.wrapper, wrapper)
+        styles: resolvedStyles.wrapper
       }),
-      overrideProps: {
-        children: content
-      }
-    });
-  }
-}
+    overrideProps: {
+      children: content
+    }
+  });
+  setEnd();
+
+  return element;
+};
+
+ToolbarMenuRadioGroup.className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+ToolbarMenuRadioGroup.displayName = 'ToolbarMenuRadioGroup';
+ToolbarMenuRadioGroup.slotClassNames = {
+  wrapper: `${ToolbarMenuRadioGroup.className}__wrapper`
+};
+
+ToolbarMenuRadioGroup.defaultProps = {
+  as: 'ul',
+  accessibility: toolbarMenuRadioGroupBehavior,
+  wrapper: {}
+};
+ToolbarMenuRadioGroup.propTypes = {
+  ...commonPropTypes.createCommon(),
+  activeIndex: PropTypes.number,
+  items: customPropTypes.collectionShorthand,
+  onItemClick: PropTypes.func,
+  wrapper: customPropTypes.itemShorthand
+};
+ToolbarMenuRadioGroup.handledProps = Object.keys(ToolbarMenuRadioGroup.propTypes) as any;
 
 ToolbarMenuRadioGroup.create = createShorthandFactory({
   Component: ToolbarMenuRadioGroup

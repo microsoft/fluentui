@@ -47,7 +47,6 @@ export enum Shade {
  * @param shade - The Shade value to validate.
  */
 export function isValidShade(shade?: Shade): boolean {
-  'use strict';
   return typeof shade === 'number' && shade >= Shade.Unshaded && shade <= Shade.Shade8;
 }
 
@@ -97,7 +96,6 @@ export function isDark(color: IColor): boolean {
  * @param isInverted - Default false. Whether the given theme is inverted (reverse strongen/soften logic)
  */
 export function getShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
-  'use strict';
   if (!color) {
     return null;
   }
@@ -143,7 +141,6 @@ export function getShade(color: IColor, shade: Shade, isInverted: boolean = fals
 //   to be the darkest or lightest one. If it is <50% luminance, it will always be the darkest,
 //   otherwise it will always be the lightest.
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted: boolean = false): IColor | null {
-  'use strict';
   if (!color) {
     return null;
   }

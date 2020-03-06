@@ -189,7 +189,8 @@ task('stats:save', async () => {
 
   const mergedPerfStats = mergePerfStats(perfStats, flamegrillStats);
 
-  const prUrl = `${process.env.SYSTEM_PULLREQUEST_SOURCEREPOSITORYURI}/pull/${process.env.SYSTEM_PULLREQUEST_PULLREQUESTNUMBER}`;
+  const prSuffix = process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.replace(/^refs\//, '').replace(/\/merge/, '');
+  const prUrl = `${process.env.BUILD_REPOSITORY_URI}/${prSuffix}`;
 
   const statsPayload = {
     sha: process.env.BUILD_SOURCEVERSION,

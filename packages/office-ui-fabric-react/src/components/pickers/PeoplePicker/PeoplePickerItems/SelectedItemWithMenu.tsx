@@ -6,8 +6,6 @@ import { ContextualMenu, DirectionalHint } from '../../../../ContextualMenu';
 import { IconButton } from '../../../../Button';
 import { FocusZone } from '../../../../FocusZone';
 
-// tslint:disable:deprecation
-
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
@@ -20,6 +18,7 @@ export interface IPeoplePickerItemWithMenuState {
  * PeoplePickerItem with an additional contextual menu.
  * @deprecated Do not use. Will be removed in Fabric 7.0
  */
+// tslint:disable-next-line:deprecation
 export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMenuProps, IPeoplePickerItemWithMenuState> {
   public refs: {
     [key: string]: any;
@@ -27,6 +26,7 @@ export class SelectedItemWithMenu extends BaseComponent<IPeoplePickerItemWithMen
 
   private _ellipsisRef = React.createRef<HTMLDivElement>();
 
+  // tslint:disable-next-line:deprecation
   constructor(props: IPeoplePickerItemWithMenuProps) {
     super(props);
     this.state = { contextualMenuVisible: false };

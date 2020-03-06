@@ -71,6 +71,31 @@ describe('Dialog', () => {
     wrapper.unmount();
   });
 
+  it('deprecated isOpen controls open state of the dialog', () => {
+    setWarningCallback(() => {
+      /* suppress deprecation warning as error */
+    });
+
+    jest.useFakeTimers();
+    let dismissedCalled = false;
+
+    const handleDismissed = () => {
+      dismissedCalled = true;
+    };
+    const wrapper = mount(<DialogBase isOpen={true} modalProps={{ onDismissed: handleDismissed }} />);
+
+    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
+    wrapper.setProps({ isOpen: false });
+    wrapper.update();
+
+    jest.runAllTimers();
+    expect(document.querySelector('[role="dialog"]')).toBeNull();
+    expect(dismissedCalled).toEqual(true);
+    wrapper.unmount();
+
+    setWarningCallback();
+  });
+
   it('Properly attaches auto-generated aria attributes IDs', () => {
     const wrapper = mount(
       <DialogBase

@@ -27,7 +27,7 @@ const panels = [
 
 const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrapper => {
   return wrapper
-    .find(`.${AccordionTitle.slotClassNames.content}`)
+    .find(`.${AccordionTitle.slotClassNames.contentWrapper}`)
     .filterWhere(n => typeof n.type() === 'string')
     .at(index);
 };

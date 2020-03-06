@@ -6,6 +6,7 @@ import Box from 'src/components/Box/Box';
 describe('ToolbarMenuItem', () => {
   isConformant(ToolbarMenuItem, {
     wrapperComponent: Box,
-    autoControlledProps: ['menuOpen']
+    autoControlledProps: ['menuOpen'],
+    constructorName: 'ToolbarMenuItem'
   });
 });

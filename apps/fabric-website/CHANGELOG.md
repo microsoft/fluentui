@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Mar 2020 12:27:02 GMT and should not be manually modified.
 
+## 7.10.0
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Minor changes
+
+- Added ApplicationInsights to public site to enable usage tracking (joschemd@microsoft.com)
+## 7.9.9
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Patches
+
+- Controls page: fix links to controls with sub-pages (elcraig@microsoft.com)
 ## 7.9.0
 Wed, 12 Feb 2020 12:24:27 GMT
 

@@ -5592,6 +5592,7 @@ export interface INavButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
+    ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true';
     ariaLabel?: string;
     automationId?: string;
     collapseAriaLabel?: string;
@@ -5639,6 +5640,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
     onRenderLink?: IRenderFunction<INavLink>;
+    // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
@@ -7336,6 +7338,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsMaximumNumber?: number;
+    // @deprecated
     searchErrorText?: string;
     searchForMoreText?: string;
     searchingText?: string;

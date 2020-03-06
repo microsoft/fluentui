@@ -1,4 +1,4 @@
-import { Accessibility, menuItemBehavior, submenuBehavior } from '@fluentui/accessibility';
+import { Accessibility, menuItemBehavior, submenuBehavior, indicatorBehavior } from '@fluentui/accessibility';
 import { focusAsync } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { Ref } from '@fluentui/react-component-ref';
@@ -30,6 +30,7 @@ import { Popper } from '../../utils/positioner';
 export interface MenuItemSlotClassNames {
   wrapper: string;
   submenu: string;
+  indicator: string;
 }
 
 export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -122,7 +123,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   inSubmenu?: boolean;
 
   /** Shorthand for the submenu indicator. */
-  indicator?: ShorthandValue<IconProps>;
+  indicator?: ShorthandValue<BoxProps>;
 
   /**
    * Event for request to change 'open' value.
@@ -144,7 +145,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
 
   static slotClassNames: MenuItemSlotClassNames = {
     submenu: `${MenuItem.className}__submenu`,
-    wrapper: `${MenuItem.className}__wrapper`
+    wrapper: `${MenuItem.className}__wrapper`,
+    indicator: `${MenuItem.className}__indicator`
   };
 
   static create: ShorthandFactory<MenuItemProps>;
@@ -173,14 +175,15 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     defaultMenuOpen: PropTypes.bool,
     onActiveChanged: PropTypes.func,
     inSubmenu: PropTypes.bool,
-    indicator: customPropTypes.itemShorthandWithoutJSX,
+    indicator: customPropTypes.shorthandAllowingChildren,
     onMenuOpenChange: PropTypes.func
   };
 
   static defaultProps = {
     as: 'a',
     accessibility: menuItemBehavior as Accessibility,
-    wrapper: { as: 'li' }
+    wrapper: { as: 'li' },
+    indicator: {}
   };
 
   static autoControlledProps = ['menuOpen'];
@@ -191,9 +194,6 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
   renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, rtl }) {
     const { children, content, icon, wrapper, menu, primary, secondary, active, vertical, indicator, disabled } = this.props;
     const { menuOpen } = this.state;
-
-    const defaultIndicator = { name: vertical ? 'icon-arrow-end' : 'icon-arrow-down' };
-    const indicatorWithDefaults = indicator === undefined ? defaultIndicator : indicator;
 
     const menuItemInner = childrenExist(children) ? (
       children
@@ -220,10 +220,12 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
             defaultProps: () => ({ as: 'span', styles: styles.content })
           })}
           {menu &&
-            Icon.create(indicatorWithDefaults, {
+            Box.create(indicator, {
               defaultProps: () => ({
-                name: vertical ? 'icon-menu-arrow-end' : 'icon-menu-arrow-down',
-                styles: styles.indicator
+                as: 'span',
+                className: MenuItem.slotClassNames.indicator,
+                styles: styles.indicator,
+                accessibility: indicatorBehavior
               })
             })}
         </ElementType>

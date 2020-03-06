@@ -9,7 +9,7 @@ import { Accessibility } from '../../types';
  *  Triggers 'nextItem' action with 'ArrowDown' on 'root'.
  *  Triggers 'prevItem' action with 'ArrowUp' on 'root'.
  */
-const toolbarRadioGroupBehavior: Accessibility = () => ({
+const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'radiogroup'
@@ -27,5 +27,7 @@ const toolbarRadioGroupBehavior: Accessibility = () => ({
     }
   }
 });
+
+export type ToolbarRadioGroupBehaviorProps = never;
 
 export default toolbarRadioGroupBehavior;

@@ -7,11 +7,14 @@ trigger:
 variables:
   - group: fabric-variables
 
+pool: 'Self Host Ubuntu'
+
 jobs:
   - job: Build
-    pool: 'Self Host Ubuntu'
     steps:
       - template: azure-pipelines.tools.yml
+
+      - template: azure-pipelines.cache.yml
 
       - script: |
           yarn
@@ -48,7 +51,7 @@ jobs:
         displayName: Set up Azure CLI with DevOps
 
       - script: |
-          az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+          az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Trigger Perf-Test and Screener jobs
@@ -61,11 +64,12 @@ jobs:
 
   - job: Validate
     dependsOn: Build
-    pool:
-      vmImage: 'Ubuntu 18.04'
+    pool: 'Self Host Ubuntu'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -94,11 +98,11 @@ jobs:
 
   - job: ValidateFluent
     dependsOn: Build
-    pool:
-      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -141,11 +145,8 @@ jobs:
 
   - job: Deploy
     dependsOn: Build
-    pool:
-      vmImage: 'Ubuntu 18.04'
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -173,18 +174,40 @@ jobs:
           Contents: '**/*'
         condition: always()
 
+  - job: ScreenerFluent
+    steps:
+      - script: |
+          yarn
+        displayName: yarn
+
+      - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
   - job: Screener
     dependsOn: Build
-    pool: 'Self Host Ubuntu'
+    # keeping this at microsoft hosted because this doesn't require builds
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: /tmp/gulp-cache
-          Contents: '**/*'
-        condition: always()
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -198,14 +221,6 @@ jobs:
           git config --global user.name "Fabric Tactical"
           yarn vrtest -- --debug
         displayName: run VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
-
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-          yarn test:fluentui:visual
-        displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
 

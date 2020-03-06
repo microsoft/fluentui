@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export class SpinButtonBasicExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
-      <div style={{ width: '400px' }}>
+      <Stack tokens={{ childrenGap: 10 }} styles={{ root: { width: 400 } }}>
         <SpinButton
           defaultValue="0"
           label={'Basic SpinButton:'}
@@ -29,7 +30,7 @@ export class SpinButtonBasicExample extends React.Component<any, any> {
           incrementButtonAriaLabel={'Increase value by 0.1'}
           decrementButtonAriaLabel={'Decrease value by 0.1'}
         />
-      </div>
+      </Stack>
     );
   }
 }

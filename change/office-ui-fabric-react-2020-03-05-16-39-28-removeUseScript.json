@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "5cb5db07119d744a8a5247b6b0780f9005604b2d",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T00:39:25.504Z"
+}
