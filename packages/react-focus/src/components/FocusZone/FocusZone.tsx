@@ -18,7 +18,6 @@ import {
   isElementFocusSubZone,
   isElementFocusZone,
   isElementTabbable,
-  on,
   raiseClick,
   shouldWrapFocus,
   warnDeprecations,
@@ -63,9 +62,6 @@ const _allInstances: {
   [key: string]: FocusZone;
 } = {};
 const _outerZones: Set<FocusZone> = new Set();
-
-// Track the 1 global keydown listener we hook to window.
-let _disposeGlobalKeyDownListener: (() => void) | undefined;
 
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
 
@@ -155,11 +151,13 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         _outerZones.add(this);
 
         if (windowElement && _outerZones.size === 1) {
-          _disposeGlobalKeyDownListener = on(windowElement, 'keydown', this._onKeyDownCapture, true);
+          windowElement.addEventListener('keydown', this._onKeyDownCapture, true);
         }
       }
 
-      this._disposables.push(on(root, 'blur', this._onBlur, true));
+      if (windowElement) {
+        windowElement.addEventListener('blur', this._onBlur, true);
+      }
 
       // Assign initial tab indexes so that we can set initial focus as appropriate.
       this._updateTabIndexes();
@@ -193,16 +191,20 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
   public componentWillUnmount(): void {
     delete _allInstances[this._id];
+    const { current: root } = this._root;
+    const windowElement = getWindow(root);
 
     if (!this._isInnerZone) {
       _outerZones.delete(this);
 
       // If this is the last outer zone, remove the keydown listener.
-      if (_outerZones.size === 0 && _disposeGlobalKeyDownListener) {
-        _disposeGlobalKeyDownListener();
-        // Clear reference so closure can be garbage-collected.
-        _disposeGlobalKeyDownListener = undefined;
+      if (_outerZones.size === 0 && windowElement) {
+        windowElement.removeEventListener('keydown', this._onKeyDownCapture, true);
       }
+    }
+
+    if (windowElement) {
+      windowElement.removeEventListener('blur', this._onBlur, true);
     }
 
     // Dispose all events.
