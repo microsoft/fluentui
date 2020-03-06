@@ -140,6 +140,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   target={this.state.refSelected}
                   setInitialFocus={true}
                   directionalHint={DirectionalHint.topRightEdge}
+                  id={'callout'}
                 >
                   <div className={this._classNames.hoverCardRoot}>
                     <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
@@ -237,6 +238,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           focusable={'true'}
           onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
           onBlur={this._onBarLeave}
+          aria-labelledby={'callout'}
           onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={this._onBarLeave}
