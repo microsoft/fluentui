@@ -20,7 +20,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ### Features
 - Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
 
-### Breaking changes
+### BREAKING CHANGES
 - Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
 - Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 
