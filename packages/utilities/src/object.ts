@@ -93,6 +93,7 @@ export function mapEnumByName<T>(
         // if the property is not just a number (because enums in TypeScript will map both ways)
         return callback(p as string, theEnum[p]);
       }
+      return callback();
     })
     .filter((v: T | undefined) => !!v); // only return elements with values
 }
