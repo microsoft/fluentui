@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Remove typedef rule override",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "elcraig@microsoft.com",
+  "commit": "12186bf0a00e97c34af5c510007b70610876c500",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T02:18:42.404Z"
+}
