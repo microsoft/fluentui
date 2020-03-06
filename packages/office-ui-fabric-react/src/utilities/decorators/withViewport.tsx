@@ -112,10 +112,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentWillUnmount(): void {
       this._events.dispose();
-
-      if (this._viewportResizeObserver) {
-        this._viewportResizeObserver.disconnect();
-      }
+      this._unregisterResizeObserver();
     }
 
     public render(): JSX.Element {
@@ -124,7 +121,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
       return (
         <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
-          <ComposedComponent ref={this._updateComposedComponentRef} viewport={newViewport} {...(this.props as any)} />
+          <ComposedComponent ref={this._updateComposedComponentRef} viewport={newViewport} {...this.props as any} />
         </div>
       );
     }
@@ -153,7 +150,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _unregisterResizeObserver = () => {
       if (this._viewportResizeObserver) {
         this._viewportResizeObserver.disconnect();
-        this._viewportResizeObserver = null;
+        delete this._viewportResizeObserver;
       }
     };
 
