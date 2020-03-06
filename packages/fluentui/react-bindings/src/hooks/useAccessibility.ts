@@ -87,7 +87,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     return element;
   };
 
-  return getA11Props;
+  return getA11yProps;
 };
 
 export default useAccessibility;
