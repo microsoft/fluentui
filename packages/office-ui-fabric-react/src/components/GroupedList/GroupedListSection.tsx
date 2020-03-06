@@ -118,6 +118,7 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
   private _events: EventGroup;
 
   private _dragDropSubscription: IDisposable;
+  private _droppingClassName: string = '';
 
   constructor(props: IGroupedListSectionProps) {
     super(props);
@@ -222,9 +223,12 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     const groupShowAllProps: IGroupShowAllProps = { ...showAllProps, ...dividerProps };
     const groupFooterProps: IGroupFooterProps = { ...footerProps, ...dividerProps };
 
+    const isDraggable: boolean = !!this.props.dragDropHelper && this._getGroupDragDropOptions().canDrag!(group);
+
     return (
       <div
         ref={this._root}
+        {...(isDraggable && { draggable: true })}
         className={css(groupedListClassNames && groupedListClassNames.group, this._getDroppingClassName())}
         role="presentation"
       >
@@ -404,20 +408,20 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    */
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
-    const canDrag = dragDropEvents!.canDragGroups ? () => dragDropEvents!.canDragGroups : () => false;
+    const canDrag = dragDropEvents!.canDragGroups ? () => dragDropEvents!.canDragGroups : dragDropEvents!.canDrag || (() => false);
 
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
+      updateDropState: this._updateDroppingState,
       canDrag: canDrag,
       canDrop: dragDropEvents!.canDrop,
-      updateDropState: this._updateDroppingState,
-      onDrop: dragDropEvents!.canDragGroups ? dragDropEvents!.onDrop : undefined,
-      onDragStart: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragStart : undefined,
-      onDragEnter: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnter : undefined,
-      onDragLeave: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragLeave : undefined,
-      onDragEnd: dragDropEvents!.canDragGroups ? dragDropEvents!.onDragEnd : undefined
+      onDrop: dragDropEvents!.onDrop,
+      onDragStart: dragDropEvents!.onDragStart,
+      onDragEnter: dragDropEvents!.onDragEnter,
+      onDragLeave: dragDropEvents!.onDragLeave,
+      onDragEnd: dragDropEvents!.onDragEnd
     };
     return options as IDragDropOptions;
   };
@@ -430,19 +434,19 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    */
   private _updateDroppingState = (newIsDropping: boolean, event: DragEvent): void => {
     const { isDropping } = this.state;
-    const { dragDropEvents } = this.props;
-
-    if (!isDropping) {
-      if (dragDropEvents && dragDropEvents.onDragLeave) {
-        dragDropEvents.onDragLeave!(event, undefined);
-      }
-    } else {
-      if (dragDropEvents && dragDropEvents.onDragEnter) {
-        dragDropEvents.onDragEnter(event, undefined);
-      }
-    }
+    const { dragDropEvents, group } = this.props;
 
     if (isDropping !== newIsDropping) {
+      if (isDropping) {
+        if (dragDropEvents && dragDropEvents.onDragLeave) {
+          dragDropEvents.onDragLeave(group, event);
+        }
+      } else {
+        if (dragDropEvents && dragDropEvents.onDragEnter) {
+          this._droppingClassName = dragDropEvents.onDragEnter(group, event);
+        }
+      }
+
       this.setState({ isDropping: newIsDropping });
     }
   };
@@ -460,6 +464,10 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
 
     isDropping = !!(group && isDropping);
 
-    return css(isDropping && DEFAULT_DROPPING_CSS_CLASS, isDropping && groupedListClassNames && groupedListClassNames.groupIsDropping);
+    return css(
+      isDropping && this._droppingClassName,
+      isDropping && DEFAULT_DROPPING_CSS_CLASS,
+      isDropping && groupedListClassNames && groupedListClassNames.groupIsDropping
+    );
   }
 }
