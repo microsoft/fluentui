@@ -72,7 +72,7 @@
   },
   "dependencies": {
     "@fluentui/react-focus": "^7.1.2",
-    "@fluentui/react-component-event-listener": "^0.44.0",
+    "@fluentui/react-component-event-listener": "^0.46.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/foundation": "^7.5.15",
     "@uifabric/icons": "^7.3.14",
