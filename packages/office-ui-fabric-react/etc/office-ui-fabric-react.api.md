@@ -5727,6 +5727,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;
     overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
     role?: string;
     styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
     vertical?: boolean;
