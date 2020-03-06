@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fixing drag/drop issues with Groups in DetailsList",
+  "packageName": "office-ui-fabric-react",
+  "email": "sachinma@microsoft.com",
+  "commit": "42dd53369d3872de58f56f13f508b3134bb77659",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T09:06:14.068Z"
+}
