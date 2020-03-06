@@ -31,6 +31,7 @@ export class Accordion extends BaseComponent<IAccordionProps, IAccordionState> i
   }
 
   public render(): JSX.Element {
+    // tslint:disable-next-line:deprecation
     const { onRenderMenu, className, buttonAs, onClick, ...other } = this.props;
     let { menuIconProps } = this.props;
 

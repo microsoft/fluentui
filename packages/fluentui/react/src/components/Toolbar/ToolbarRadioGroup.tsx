@@ -1,25 +1,28 @@
-import * as React from 'react';
+import {
+  Accessibility,
+  toolbarRadioGroupBehavior,
+  toolbarRadioGroupItemBehavior,
+  ToolbarRadioGroupBehaviorProps
+} from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
-import * as customPropTypes from '@fluentui/react-proptypes';
-import { Ref } from '@fluentui/react-component-ref';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
   ChildrenComponentProps,
   ContentComponentProps,
   createShorthandFactory,
   UIComponentProps,
-  UIComponent,
   childrenExist,
-  commonPropTypes,
-  applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  commonPropTypes
 } from '../../utils';
-import { mergeComponentVariables } from '@fluentui/styles';
-
-import { ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
-import { Accessibility, toolbarRadioGroupBehavior, toolbarRadioGroupItemBehavior } from '@fluentui/accessibility';
-
+import { FluentComponentStaticProps, ProviderContextPrepared, ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
 import ToolbarDivider from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
 
@@ -29,7 +32,7 @@ export interface ToolbarRadioGroupProps extends UIComponentProps, ChildrenCompon
   /**
    * Accessibility behavior if overridden by the user.
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<ToolbarRadioGroupBehaviorProps>;
 
   /** Index of the currently active item. */
   activeIndex?: number;
@@ -38,35 +41,33 @@ export interface ToolbarRadioGroupProps extends UIComponentProps, ChildrenCompon
   items?: ShorthandCollection<ToolbarItemProps, ToolbarRadioGroupItemShorthandKinds>;
 }
 
-class ToolbarRadioGroup extends UIComponent<WithAsProp<ToolbarRadioGroupProps>> {
-  static displayName = 'ToolbarRadioGroup';
+export type ToolbarRadioGroupStylesProps = never;
 
-  static className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentComponentStaticProps<ToolbarRadioGroupProps> = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ToolbarRadioGroup.displayName, context.telemetry);
+  setStart();
 
-  static create: ShorthandFactory<ToolbarRadioGroupProps>;
+  const { accessibility, activeIndex, children, className, design, items, variables, styles } = props;
+  const itemRefs: React.RefObject<HTMLElement>[] = [];
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    activeIndex: PropTypes.number,
-    items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item'])
-  };
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: ToolbarRadioGroup.displayName,
+    actionHandlers: {
+      nextItem: event => setFocusedItem(event, 1),
+      prevItem: event => setFocusedItem(event, -1)
+    },
+    rtl: context.rtl
+  });
+  const { classes } = useStyles<ToolbarRadioGroupStylesProps>(ToolbarRadioGroup.displayName, {
+    className: ToolbarRadioGroup.className,
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    rtl: context.rtl
+  });
 
-  static defaultProps = {
-    accessibility: toolbarRadioGroupBehavior as Accessibility
-  };
-
-  itemRefs: React.RefObject<HTMLElement>[] = [];
-
-  actionHandlers = {
-    nextItem: event => this.setFocusedItem(event, 1),
-    prevItem: event => this.setFocusedItem(event, -1)
-  };
-
-  setFocusedItem = (event, direction) => {
-    const { items } = this.props;
-
+  const setFocusedItem = (event: React.KeyboardEvent, direction) => {
     // filter items which are not disabled
-    const filteredRadioItems: React.RefObject<HTMLElement>[] = _.filter(this.itemRefs, (item, index) => {
+    const filteredRadioItems: React.RefObject<HTMLElement>[] = _.filter(itemRefs, (item, index) => {
       const currentItem = items[index] as ToolbarItemProps;
       return currentItem && !currentItem.disabled;
     });
@@ -93,29 +94,25 @@ class ToolbarRadioGroup extends UIComponent<WithAsProp<ToolbarRadioGroupProps>> 
       nextItemToFocus.focus();
     }
 
-    if (this.context.target.activeElement === nextItemToFocus) {
+    if (context.target.activeElement === nextItemToFocus) {
       event.stopPropagation();
     }
     event.preventDefault();
   };
 
-  handleItemOverrides = variables => predefinedProps => ({
+  const handleItemOverrides = predefinedProps => ({
     variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
-  renderItems(variables) {
-    const { activeIndex, items } = this.props;
-    const itemOverridesFn = this.handleItemOverrides(variables);
-    this.itemRefs = [];
-
+  const renderItems = () => {
     return _.map(items, (item, index) => {
       const kind = _.get(item, 'kind', 'item');
 
       const ref = React.createRef<HTMLElement>();
-      this.itemRefs[index] = ref;
+      itemRefs[index] = ref;
 
       if (kind === 'divider') {
-        return ToolbarDivider.create(item, { overrideProps: itemOverridesFn });
+        return ToolbarDivider.create(item, { overrideProps: handleItemOverrides });
       }
 
       const toolbarItem = ToolbarItem.create(item, {
@@ -123,7 +120,7 @@ class ToolbarRadioGroup extends UIComponent<WithAsProp<ToolbarRadioGroupProps>> 
           accessibility: toolbarRadioGroupItemBehavior,
           active: activeIndex === index
         }),
-        overrideProps: itemOverridesFn
+        overrideProps: handleItemOverrides
       });
 
       return (
@@ -132,23 +129,39 @@ class ToolbarRadioGroup extends UIComponent<WithAsProp<ToolbarRadioGroupProps>> 
         </Ref>
       );
     });
-  }
+  };
 
-  renderComponent({ ElementType, classes, variables, accessibility, unhandledProps }) {
-    const { children } = this.props;
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(ToolbarRadioGroup.handledProps, props);
 
-    return (
-      <ElementType
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-        className={classes.root}
-      >
-        {childrenExist(children) ? children : this.renderItems(variables)}
-      </ElementType>
-    );
-  }
-}
+  const element = (
+    <ElementType
+      {...getA11yProps('root', {
+        ...unhandledProps,
+        className: classes.root
+      })}
+    >
+      {childrenExist(children) ? children : renderItems()}
+    </ElementType>
+  );
+  setEnd();
+
+  return element;
+};
+
+ToolbarRadioGroup.displayName = 'ToolbarRadioGroup';
+ToolbarRadioGroup.className = 'ui-toolbars'; // FIXME: required by getComponentInfo/isConformant. But this is group inside a toolbar not a group of toolbars
+
+ToolbarRadioGroup.propTypes = {
+  ...commonPropTypes.createCommon(),
+  activeIndex: PropTypes.number,
+  items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item'])
+};
+ToolbarRadioGroup.handledProps = Object.keys(ToolbarRadioGroup.propTypes) as any;
+
+ToolbarRadioGroup.defaultProps = {
+  accessibility: toolbarRadioGroupBehavior
+};
 
 ToolbarRadioGroup.create = createShorthandFactory({
   Component: ToolbarRadioGroup,

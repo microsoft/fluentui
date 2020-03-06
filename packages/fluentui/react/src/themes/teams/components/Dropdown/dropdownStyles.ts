@@ -1,8 +1,10 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle, ComponentSlotStyleFunction } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { default as Dropdown, DropdownProps, DropdownState } from '../../../../components/Dropdown/Dropdown';
 import { DropdownVariables } from './dropdownVariables';
 import { pxToRem } from '../../../../utils';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
+import clearIndicatorUrl from './clearIndicatorUrl';
+import toggleIndicatorUrl from './toggleIndicatorUrl';
 
 type DropdownPropsAndState = DropdownProps & DropdownState;
 
@@ -22,22 +24,6 @@ const transparentColorStyleObj: ICSSInJSStyle = {
   }
 };
 
-const getIndicatorStyles: ComponentSlotStyleFunction<DropdownPropsAndState, DropdownVariables> = ({ variables: v }): ICSSInJSStyle => ({
-  alignItems: 'center',
-  display: 'flex',
-  justifyContent: 'center',
-
-  backgroundColor: 'transparent',
-  cursor: 'pointer',
-  userSelect: 'none',
-
-  margin: 0,
-  position: 'absolute',
-  right: pxToRem(-2),
-  height: '100%',
-  width: v.toggleIndicatorSize
-});
-
 const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
   if (p.fluid) {
     return '100%';
@@ -55,7 +41,23 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.inline && { display: 'inline-flex' })
   }),
 
-  clearIndicator: getIndicatorStyles,
+  clearIndicator: ({ variables: v }) => ({
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+
+    backgroundImage: clearIndicatorUrl(v.color),
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    cursor: 'pointer',
+    userSelect: 'none',
+
+    margin: 0,
+    position: 'absolute',
+    right: pxToRem(6),
+    height: '100%',
+    width: pxToRem(16)
+  }),
 
   container: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     display: 'flex',
@@ -157,7 +159,23 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     fontWeight: 'bold'
   }),
 
-  toggleIndicator: getIndicatorStyles
+  toggleIndicator: ({ variables: v }) => ({
+    alignItems: 'center',
+    display: 'flex',
+    justifyContent: 'center',
+
+    backgroundImage: toggleIndicatorUrl(v.color),
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    cursor: 'pointer',
+    userSelect: 'none',
+
+    margin: 0,
+    position: 'absolute',
+    right: pxToRem(8),
+    height: '100%',
+    width: pxToRem(12)
+  })
 };
 
 export default dropdownStyles;

@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "withViewport: cleaning up resize observer.",
+  "packageName": "office-ui-fabric-react",
+  "email": "dzearing@microsoft.com",
+  "commit": "48db247b55f3e6f2809009c6a338c52b6b3e39bd",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T05:35:08.569Z"
+}

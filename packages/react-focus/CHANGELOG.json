@@ -2,6 +2,20 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 02 Mar 2020 12:25:44 GMT",
+      "tag": "@fluentui/react-focus_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone: When parking focus needs to be detected, IE11 returns `null` for `activeElement`, causing focus to not be restored. We now check for `null` to ensure the feature works correctly in this environment.",
+            "author": "dzearing@microsoft.com",
+            "commit": "c0146e0beb2f04b485bd1c3aea57058c6733c53a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@fluentui/react-focus_v7.1.0",
       "version": "7.1.0",

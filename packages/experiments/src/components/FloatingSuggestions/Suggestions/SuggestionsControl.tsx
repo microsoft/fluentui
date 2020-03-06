@@ -202,6 +202,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
           const isSelected = selectedHeaderIndex !== -1 && selectedHeaderIndex === index;
           return headerItemProps.shouldShow() ? (
             <div
+              // tslint:disable-next-line:deprecation
               ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
               id={'sug-header' + index}
               key={'sug-header' + index}
@@ -236,6 +237,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
           const isSelected = selectedFooterIndex !== -1 && selectedFooterIndex === index;
           return footerItemProps.shouldShow() ? (
             <div
+              // tslint:disable-next-line:deprecation
               ref={this._resolveRef(isSelected ? '_selectedElement' : '')}
               id={'sug-footer' + index}
               key={'sug-footer' + index}
@@ -257,6 +259,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   private _renderSuggestions(): JSX.Element {
+    // tslint:disable-next-line:deprecation
     return <SuggestionsCore<T> ref={this._resolveRef('_suggestions')} {...this.props} suggestions={this.state.suggestions} />;
   }
 

@@ -618,7 +618,7 @@ definitions.push({
   regexp: /Triggers '(\w+)' action with '(\w+)' on '([\w-]+)', when toolbar button has submenu and it is opened\./g,
   testMethod: (parameters: TestMethod) => {
     const [action, key, elementToPerformAction] = [...parameters.props];
-    const propertySubmenuOpened = { menu: { items: [] }, menuOpen: true };
+    const propertySubmenuOpened = { menu: { items: [] }, hasMenu: true, menuOpen: true };
     const expectedKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations[0]
       .keyCode;
     expect(expectedKeyNumber).toBe(keyboardKey[key]);
@@ -635,7 +635,7 @@ definitions.push({
   regexp: /Triggers '(\w+)' action with '(\w+)' or '(\w+)' on '([\w-]+)', when toolbar button has submenu and it is opened\./g,
   testMethod: (parameters: TestMethod) => {
     const [action, firstKey, secondKey, elementToPerformAction] = [...parameters.props];
-    const propertySubmenuOpened = { menu: { items: [] }, menuOpen: true };
+    const propertySubmenuOpened = { menu: { items: [] }, hasMenu: true, menuOpen: true };
     const expectedFirstKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations[0]
       .keyCode;
     const expectedSecondKeyNumber = parameters.behavior(propertySubmenuOpened).keyActions[elementToPerformAction][action].keyCombinations[1]

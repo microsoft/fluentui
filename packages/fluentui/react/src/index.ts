@@ -1,10 +1,9 @@
+import * as themes from './themes';
+
 //
 // Theme
 //
-// work around api-extractor limitation
-import { fontAwesome, teams, teamsDark, teamsHighContrast } from './themes';
-
-export const themes = { fontAwesome, teams, teamsDark, teamsHighContrast };
+export { themes };
 export * from './themes/types';
 export * from './themes/colorUtils';
 

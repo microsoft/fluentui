@@ -32,12 +32,12 @@ const normalizeType = (propType: string): string => {
 };
 
 const getTypeFromBabelTree = (componentFile: t.File, componentName: string, propName: string) => {
-  let typeAnnotation: t.TSType;
+  let typeAnnotation: t.TSType | undefined;
 
   const propertyVisitor: Babel.Visitor = {
     TSPropertySignature: path => {
       if (path.get('key').isIdentifier({ name: propName })) {
-        const annotationPath: NodePath<t.TSTypeAnnotation> = path.get('typeAnnotation');
+        const annotationPath = path.get('typeAnnotation') as NodePath<t.TSTypeAnnotation>;
 
         typeAnnotation = annotationPath.get('typeAnnotation').node;
       }
@@ -58,7 +58,7 @@ const getTypeFromBabelTree = (componentFile: t.File, componentName: string, prop
 const parseType = (componentFile: t.File, componentName: string, propName: string, propInfo: PropItem): ComponentPropType[] => {
   const propType = normalizeType(propInfo.type.name);
 
-  let typeAnnotation: t.TSType;
+  let typeAnnotation: t.TSType | undefined;
 
   try {
     const result = Babel.parse(`type __ = ${propType}`, {
@@ -78,7 +78,7 @@ const parseType = (componentFile: t.File, componentName: string, propName: strin
     typeAnnotation = getTypeFromBabelTree(componentFile, componentName, propName);
   }
 
-  return parseTypeAnnotation(propName, propType, typeAnnotation);
+  return typeAnnotation ? parseTypeAnnotation(propName, propType, typeAnnotation) : [];
 };
 
 export default parseType;

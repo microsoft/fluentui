@@ -3,25 +3,25 @@ import { Tree } from '@fluentui/react';
 
 const items = [
   {
-    id: '1',
+    id: 'tree-item-exclusive-1',
     title: 'one',
     items: [
       {
-        id: '2',
+        id: 'tree-item-exclusive-2',
         title: 'one one',
         items: [
           {
-            id: '3',
+            id: 'tree-item-exclusive-3',
             title: 'one one one'
           }
         ]
       },
       {
-        id: '6',
+        id: 'tree-item-exclusive-6',
         title: 'one two',
         items: [
           {
-            id: '7',
+            id: 'tree-item-exclusive-7',
             title: 'one two one'
           }
         ]
@@ -29,11 +29,11 @@ const items = [
     ]
   },
   {
-    id: '4',
+    id: 'tree-item-exclusive-4',
     title: 'two',
     items: [
       {
-        id: '5',
+        id: 'tree-item-exclusive-5',
         title: 'two one'
       }
     ]
