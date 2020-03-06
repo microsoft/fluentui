@@ -18,6 +18,7 @@ import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
+import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
@@ -1349,6 +1350,23 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     toggleCollapseAll(allCollapsed: boolean): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void;
+    }
+
+// @public (undocumented)
+export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
+    constructor(props: IGroupedListSectionProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IGroupedListSectionProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    forceListUpdate(): void;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    render(): JSX.Element;
     }
 
 // @public (undocumented)
@@ -4783,6 +4801,46 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     theme?: ITheme;
     usePageCache?: boolean;
     viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
+    compact?: boolean;
+    componentRef?: () => void;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    group?: IGroup;
+    groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
+    groupIndex?: number;
+    groupNestingDepth?: number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    headerProps?: IGroupHeaderProps;
+    items: any[];
+    listProps?: IListProps;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
+    onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    showAllProps?: IGroupShowAllProps;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionState {
+    // (undocumented)
+    isDropping?: boolean;
+    // (undocumented)
+    isSelected?: boolean;
 }
 
 // @public (undocumented)
