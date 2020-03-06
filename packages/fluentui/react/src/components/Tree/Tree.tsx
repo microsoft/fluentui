@@ -27,7 +27,7 @@ import {
   ShorthandValue,
   ComponentEventHandler
 } from '../../types';
-import { hasSubtree, removeItemAtIndex, getSiblings, TreeItemContext, TreeItemRenderContextValue } from './utils';
+import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
 
 export interface TreeSlotClassNames {
   item: string;
@@ -251,7 +251,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
-  contextValue: TreeItemRenderContextValue = {
+  contextValue: TreeRenderContextValue = {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
     onFocusFirstChild: this.onFocusFirstChild,
@@ -299,7 +299,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     const { children, renderedItems } = this.props;
 
     return (
-      <TreeItemContext.Provider value={this.contextValue}>
+      <TreeContext.Provider value={this.contextValue}>
         <Ref innerRef={this.treeRef}>
           <ElementType
             className={classes.root}
@@ -315,7 +315,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
               : this.renderContent(accessibility)}
           </ElementType>
         </Ref>
-      </TreeItemContext.Provider>
+      </TreeContext.Provider>
     );
   }
 

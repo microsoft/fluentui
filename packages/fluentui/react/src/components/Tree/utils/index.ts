@@ -41,11 +41,11 @@ export const getSiblings = (items: any[], itemId: string): any[] => {
   return getSiblingsFn(items);
 };
 
-export interface TreeItemRenderContextValue {
+export interface TreeRenderContextValue {
   onFocusFirstChild: (itemId: string) => void;
   onFocusParent: (itemId: string) => void;
   onSiblingsExpand: (e: React.SyntheticEvent, itemProps: TreeItemProps) => void;
   onTitleClick: (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => void;
 }
 
-export const TreeItemContext = React.createContext<TreeItemRenderContextValue>(null);
+export const TreeContext = React.createContext<TreeRenderContextValue>(null);

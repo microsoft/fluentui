@@ -27,7 +27,7 @@ import {
   ProviderContextPrepared
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
-import { hasSubtree, TreeItemContext } from './utils';
+import { hasSubtree, TreeContext } from './utils';
 
 export interface TreeItemSlotClassNames {
   title: string;
@@ -113,7 +113,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
-  const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeItemContext);
+  const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
     actionHandlers: {
