@@ -44,13 +44,7 @@
     ],
     "no-arg": true,
     "radix": true,
-    "typedef": [
-      true,
-      "call-signature",
-      "parameter",
-      "arrow-parameter",
-      "property-declaration"
-    ],
+    "typedef": [false],
     "prefer-const": true,
     "no-inferrable-types": false,
     "no-null-keyword": false,
