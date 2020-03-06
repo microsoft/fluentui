@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 04 Mar 2020 12:27:02 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Mar 2020 12:27:53 GMT and should not be manually modified.
 
+## 7.99.0
+Thu, 05 Mar 2020 12:27:53 GMT
+
+### Minor changes
+
+- Suggestions: Deprecating unused searchErrorText prop. (Humberto.Morimoto@microsoft.com)
 ## 7.98.4
 Wed, 04 Mar 2020 12:27:02 GMT
 
