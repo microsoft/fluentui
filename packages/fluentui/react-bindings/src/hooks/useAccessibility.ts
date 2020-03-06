@@ -68,7 +68,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
   };
 
   // Provides an experimental handling for FocusZone definition in behaviors
-  getA11Props.unstable_wrapWithFocusZone = (element: React.ReactElement) => {
+  getA11yProps.unstable_wrapWithFocusZone = (element: React.ReactElement) => {
     if (definition.focusZone) {
       let child: React.ReactElement = element;
 
