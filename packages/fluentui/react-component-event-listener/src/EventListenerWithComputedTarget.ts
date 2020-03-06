@@ -14,7 +14,7 @@ function EventListenerWithComputedTarget<T extends EventTypes>(props: EventListe
   React.useEffect(() => {
     targetRef.current = resolveTarget();
   }, [resolveTarget]);
-  useEventListener({ ...rest, target: undefined, targetRef });
+  useEventListener({ ...rest, targetRef });
 
   return null;
 }
