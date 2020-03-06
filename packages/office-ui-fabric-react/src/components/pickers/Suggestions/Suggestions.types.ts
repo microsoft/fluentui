@@ -113,6 +113,8 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
   /**
    * The text that should appear if there is a search error.
+   *
+   * @deprecated Use noResultsFoundText instead.
    */
   searchErrorText?: string;
 

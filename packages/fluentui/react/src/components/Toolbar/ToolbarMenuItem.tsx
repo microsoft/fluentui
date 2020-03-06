@@ -1,4 +1,5 @@
 import { Accessibility, toolbarMenuItemBehavior, ToolbarMenuItemBehaviorProps, indicatorBehavior } from '@fluentui/accessibility';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as React from 'react';
 import * as _ from 'lodash';
 import cx from 'classnames';
@@ -257,7 +258,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     }
   };
 
-  const handleMenuOverrides = (predefinedProps: ToolbarMenuProps) => ({
+  const handleMenuOverrides = variables => (predefinedProps: ToolbarMenuProps) => ({
     onItemClick: (e, itemProps: ToolbarMenuItemProps) => {
       const { popup, menuOpen } = itemProps;
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
@@ -269,7 +270,8 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
       if (!menuOpen) {
         _.invoke(itemRef.current, 'focus');
       }
-    }
+    },
+    variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -375,7 +377,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
                     submenu: true,
                     submenuIndicator
                   }),
-                  overrideProps: handleMenuOverrides
+                  overrideProps: handleMenuOverrides(variables)
                 })}
               </Popper>
             </Ref>
