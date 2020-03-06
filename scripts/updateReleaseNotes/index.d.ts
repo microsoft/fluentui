@@ -7,7 +7,7 @@ interface IChangelog {
 
 /** Represents an entry in a CHANGELOG.json's `entries` array */
 interface IChangelogEntry {
-  comments: { major: IChangelogComment[]; minor: IChangelogComment[]; patch: IChangelogComment[]; };
+  comments: { major: IChangelogComment[]; minor: IChangelogComment[]; patch: IChangelogComment[] };
   /** Package name */
   name?: string;
   /** Entry date */
@@ -26,7 +26,6 @@ interface IChangelogComment {
   /** Commit SHA */
   commit?: string;
 }
-
 
 interface ICommit {
   /** Commit SHA */
