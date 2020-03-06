@@ -39,7 +39,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     latestDefinition.current = definition;
   });
 
-  const getA11Props: UseAccessibilityResult = (slotName, userProps) => {
+  const getA11yProps: UseAccessibilityResult = (slotName, userProps) => {
     const hasKeyDownHandlers = Boolean(definition.keyHandlers[slotName] || userProps.onKeyDown);
     slotProps.current[slotName] = userProps;
 
