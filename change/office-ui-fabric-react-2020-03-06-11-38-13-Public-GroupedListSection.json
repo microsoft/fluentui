@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Export GroupedListSection",
+  "packageName": "office-ui-fabric-react",
+  "email": "owcampbe@microsoft.com",
+  "commit": "31cb2dc96b17298470b88d1a879dac9b65128b54",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T19:38:13.897Z"
+}
