@@ -9,7 +9,8 @@
   },
   "license": "MIT",
   "dependencies": {
-    "tslint-react": "^3.2.0"
+    "tslint-react": "^3.2.0",
+    "tslint-config-prettier": "^1.18.0"
   },
   "peerDependencies": {
     "tslint": "*"
