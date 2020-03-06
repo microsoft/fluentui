@@ -396,24 +396,25 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
             {pageElements}
           </div>
         </div>
+
         <EventListener target={window} type="resize" listener={this._onAsyncResize} />
         <EventListenerWithComputedTargetProps
           capture
-          resolveTarget={this._getScrollableElement}
-          type="focus"
           listener={this._onFocus.bind(this)}
+          type="focus"
+          resolveTarget={this._getScrollableElement}
         />
         <EventListenerWithComputedTargetProps
           capture
-          resolveTarget={this._getScrollableElement}
-          type="scroll"
           listener={this._onScroll.bind(this)}
+          resolveTarget={this._getScrollableElement}
+          type="scroll"
         />
         <EventListenerWithComputedTargetProps
           capture
+          listener={this._onAsyncScroll.bind(this)}
           resolveTarget={this._getScrollableElement}
           type="scroll"
-          listener={this._onAsyncScroll.bind(this)}
         />
       </>
     );

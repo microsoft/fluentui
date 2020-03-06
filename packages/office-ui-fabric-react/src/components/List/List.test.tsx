@@ -69,7 +69,7 @@ describe('List', () => {
 
       const listRoot = wrapper.find(List);
 
-      expect(listRoot.getDOMNode().getAttribute('role')).toEqual('list');
+      expect(listRoot.getDOMNode<any>()[0].getAttribute('role')).toEqual('list');
     });
 
     it("does not set the root element's role in case of an empty list", done => {
@@ -79,7 +79,7 @@ describe('List', () => {
 
       const listRoot = wrapper.find(List);
 
-      expect(listRoot.getDOMNode().getAttribute('role')).toBeNull();
+      expect(listRoot.getDOMNode<any>()[0].getAttribute('role')).toBeNull();
     });
 
     it("sets the row elements' role to 'listitem'", done => {
@@ -162,8 +162,7 @@ describe('List', () => {
       wrapper.setProps({ items: mockData(100), className: 'foo', onPagesUpdated: (pages: IPage[]) => done() });
 
       const listRoot = wrapper.find(List);
-
-      expect(listRoot.getDOMNode().className).toContain('foo');
+      expect(listRoot.getDOMNode<any>()[0].className).toContain('foo');
     });
 
     it('renders the return value of optional onRenderCell prop per row', done => {
