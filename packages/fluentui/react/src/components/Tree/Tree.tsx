@@ -72,7 +72,7 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
    * @param renderedItem - The array of rendered items.
    * @returns The render prop result.
    */
-  renderedItems?: (renderedItems: React.ReactElement[]) => React.ReactNode;
+  renderedItems?: (renderedItems: (React.ReactElement & { ref: React.RefObject<HTMLLIElement> })[]) => React.ReactNode;
 }
 
 export interface TreeItemForRenderProps {
@@ -258,7 +258,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     onTitleClick: this.onTitleClick
   };
 
-  renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
+  renderContent(accessibility: ReactAccessibilityBehavior): any {
     const { items, renderItemTitle } = this.props;
 
     if (!items) return null;
@@ -273,7 +273,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
           this.itemsRef.set(itemId, React.createRef<HTMLElement>());
         }
 
-        const renderedItem = TreeItem.create(item, {
+        const renderedItem = (TreeItem as any).create(item, {
           defaultProps: () => ({
             accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
             className: Tree.slotClassNames.item,
@@ -283,7 +283,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             parent,
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
-            contentRef: this.itemsRef.get(itemId),
+            ref: this.itemsRef.get(itemId),
             treeSize: items.length
           })
         });
