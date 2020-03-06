@@ -1,15 +1,20 @@
-const createReferenceFromContextClick = (nativeEvent: MouseEvent) => {
+import PopperJs from 'popper.js';
+
+const createReferenceFromContextClick = (nativeEvent: MouseEvent): PopperJs.ReferenceObject => {
   const left = nativeEvent.clientX;
   const top = nativeEvent.clientY;
   const right = left + 1;
   const bottom = top + 1;
 
-  function getBoundingClientRect() {
+  function getBoundingClientRect(): ClientRect {
     return {
       left,
       top,
       right,
-      bottom
+      bottom,
+
+      height: 0,
+      width: 0
     };
   }
 
