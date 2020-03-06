@@ -4,7 +4,7 @@ import { CellMeasurer, CellMeasurerCache, List as ReactVirtualizedList } from 'r
 import getItems from './itemsGenerator';
 
 interface TreeVirtualizerProps {
-  renderedItems: (React.ReactElement & { ref: React.RefObject<HTMLLIElement> })[];
+  renderedItems: React.ReactElement[];
 }
 
 function TreeVirtualizer(props: TreeVirtualizerProps) {
@@ -23,8 +23,9 @@ function TreeVirtualizer(props: TreeVirtualizerProps) {
     }
 
     const indexOfParent = renderedItems.findIndex((renderedItem: React.ReactElement) => renderedItem.props['id'] === parent);
+
     // If parent already visible, then it should be focused by Tree.
-    if (renderedItems[indexOfParent].ref.current) {
+    if (renderedItems[indexOfParent].props['contentRef'].current) {
       return;
     }
 
@@ -58,7 +59,7 @@ function TreeVirtualizer(props: TreeVirtualizerProps) {
       scrollToIndex={scrollToIndex}
       onRowsRendered={() => {
         if (scrollToIndex !== undefined) {
-          props.renderedItems[scrollToIndex].ref.current.focus();
+          props.renderedItems[scrollToIndex].props.contentRef.current.focus();
           // Once scrolling is complete we remove the index to avoid scrolling to the same
           // item at every render.
           setScrollToIndex(undefined);

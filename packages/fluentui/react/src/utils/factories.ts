@@ -112,7 +112,7 @@ export function createShorthandFactory<TInstance extends React.Component, P>(con
 }): ShorthandFactory<P>;
 export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayProp, allowsJSX }) {
   if (typeof Component !== 'function' && typeof Component !== 'string') {
-    // throw new Error('createShorthandFactory() Component must be a string or function.');
+    throw new Error('createShorthandFactory() Component must be a string or function.');
   }
 
   return (val, options: CreateShorthandOptions<P>) =>
@@ -146,7 +146,7 @@ function createShorthandFromValue<P>({
   options?: CreateShorthandOptions<P>;
 }) {
   if (typeof Component !== 'function' && typeof Component !== 'string') {
-    // throw new Error('createShorthand() Component must be a string or function.');
+    throw new Error('createShorthand() Component must be a string or function.');
   }
   // short circuit noop values
   const valIsNoop = _.isNil(value) || typeof value === 'boolean';

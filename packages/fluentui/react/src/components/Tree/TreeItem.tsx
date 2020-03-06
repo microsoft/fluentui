@@ -16,7 +16,16 @@ import {
   ChildrenComponentProps,
   rtlTextContainer
 } from '../../utils';
-import { ComponentEventHandler, ShorthandRenderFunction, ShorthandValue, ShorthandCollection, ProviderContextPrepared } from '../../types';
+import {
+  ComponentEventHandler,
+  WithAsProp,
+  ShorthandRenderFunction,
+  ShorthandValue,
+  withSafeTypeForAs,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ProviderContextPrepared
+} from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
 import { hasSubtree, TreeContext } from './utils';
 
@@ -81,16 +90,27 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
 
-const TreeItem: React.FC<TreeItemProps> & {
-  slotClassNames: TreeItemSlotClassNames;
-  className: string;
-  handledProps: (keyof TreeItemProps)[];
-} = (props, ref) => {
+const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
+  FluentComponentStaticProps<TreeItemProps> & { slotClassNames: TreeItemSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, design, title, renderItemTitle, expanded, level, index, styles, variables, treeSize } = props;
+  const {
+    accessibility,
+    children,
+    className,
+    contentRef,
+    design,
+    title,
+    renderItemTitle,
+    expanded,
+    level,
+    index,
+    styles,
+    variables,
+    treeSize
+  } = props;
 
   const hasSubtreeItem = hasSubtree(props);
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
@@ -205,7 +225,8 @@ const TreeItem: React.FC<TreeItemProps> & {
           })}
     </ElementType>
   );
-  const elementWithRef = <Ref innerRef={ref}>{element}</Ref>;
+
+  const elementWithRef = contentRef ? <Ref innerRef={contentRef}>{element}</Ref> : element;
   setEnd();
 
   return elementWithRef;
@@ -243,10 +264,8 @@ TreeItem.defaultProps = {
 };
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;
 
-const TreeItemWithRef = React.forwardRef<HTMLLIElement, TreeItemProps>(TreeItem);
-
-(TreeItemWithRef as any).create = createShorthandFactory({
-  Component: TreeItemWithRef,
+TreeItem.create = createShorthandFactory({
+  Component: TreeItem,
   mappedProp: 'title'
 });
 
@@ -256,4 +275,4 @@ const TreeItemWithRef = React.forwardRef<HTMLLIElement, TreeItemProps>(TreeItem)
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-export default TreeItemWithRef;
+export default withSafeTypeForAs<typeof TreeItem, TreeItemProps, 'li'>(TreeItem);
