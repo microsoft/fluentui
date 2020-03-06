@@ -2,8 +2,9 @@ import { Accessibility, AccessibilityAttributesBySlot } from '@fluentui/accessib
 import * as React from 'react';
 
 import getAccessibility from '../accessibility/getAccessibility';
-import { AccessibilityActionHandlers, KeyboardEventHandler } from '../accessibility/types';
+import { AccessibilityActionHandlers, KeyboardEventHandler, ReactAccessibilityBehavior } from '../accessibility/types';
 import FocusZone from '../FocusZone/FocusZone';
+import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
 
 type UseAccessibilityOptions<Props> = {
   actionHandlers?: AccessibilityActionHandlers;
@@ -12,7 +13,7 @@ type UseAccessibilityOptions<Props> = {
   rtl?: boolean;
 };
 
-type UseAccessibilityResult = (<SlotProps extends Record<string, any>>(
+type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProps>(
   slotName: string,
   slotProps: SlotProps
 ) => MergedProps<SlotProps>) & {
@@ -30,20 +31,31 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
 
   const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
+  const latestDefinition = React.useRef<ReactAccessibilityBehavior>();
   const slotHandlers = React.useRef<Record<string, KeyboardEventHandler>>({});
   const slotProps = React.useRef<Record<string, UserProps>>({});
 
+  useIsomorphicLayoutEffect(() => {
+    latestDefinition.current = definition;
+  });
+
   const getA11Props: UseAccessibilityResult = (slotName, userProps) => {
+    const hasKeyDownHandlers = Boolean(definition.keyHandlers[slotName] || userProps.onKeyDown);
     slotProps.current[slotName] = userProps;
 
-    if (!slotHandlers.current[slotName]) {
-      slotHandlers.current[slotName] = (e, ...args) => {
-        const accessibilityHandler = definition.keyHandlers[slotName].onKeyDown;
-        const userHandler = slotProps.current[slotName].onKeyDown;
+    // We want to avoid adding event handlers until it's really needed
+    if (hasKeyDownHandlers) {
+      if (!slotHandlers.current[slotName]) {
+        slotHandlers.current[slotName] = (e, ...args) => {
+          const accessibilityHandler = latestDefinition.current?.keyHandlers[slotName]?.onKeyDown;
+          const userHandler = slotProps.current[slotName].onKeyDown;
 
-        if (accessibilityHandler) accessibilityHandler(e);
-        if (userHandler) userHandler(e, ...args);
-      };
+          if (accessibilityHandler) accessibilityHandler(e);
+          if (userHandler) userHandler(e, ...args);
+        };
+      }
+    } else {
+      delete slotHandlers.current[slotName];
     }
 
     const finalProps: MergedProps = {
