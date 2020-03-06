@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 21 Feb 2020 12:19:15 GMT and should not be manually modified.
+This log was last generated on Fri, 06 Mar 2020 12:19:58 GMT and should not be manually modified.
 
+## 6.211.6
+Fri, 06 Mar 2020 12:19:58 GMT
+
+### Patches
+
+- MarqueeSelection: deleting html element references on unmount. (xgao@microsoft.com)
 ## 6.211.5
 Fri, 21 Feb 2020 12:19:15 GMT
 

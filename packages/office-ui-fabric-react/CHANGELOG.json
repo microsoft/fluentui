@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 06 Mar 2020 12:19:58 GMT",
+      "tag": "office-ui-fabric-react_v6.211.6",
+      "version": "6.211.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "MarqueeSelection: deleting html element references on unmount.",
+            "author": "xgao@microsoft.com",
+            "commit": "c895cd96849c18694135f5c7ee708fa6492a3e54"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2020 12:19:15 GMT",
       "tag": "office-ui-fabric-react_v6.211.5",
       "version": "6.211.5",
