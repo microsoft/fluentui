@@ -4,6 +4,6 @@ export default (siteVars: any): Partial<ListItemVariables> => ({
   selectedColor: siteVars.colors.black,
   selectedBackgroundColor: siteVars.accessibleCyan,
 
-  selectableFocusHoverBackgroundColor: siteVars.accessibleYellow,
+  selectableFocusHoverBackgroundColor: siteVars.accessibleCyan,
   selectableFocusHoverColor: siteVars.colors.black
 });
