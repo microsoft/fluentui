@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: directly call addEventListener & removeEventListener instead of on",
+  "packageName": "@fluentui/react-focus",
+  "email": "aneeshak@microsoft.com",
+  "commit": "0de6573cf885e8e4835e090e23d5a254af0e036b",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T22:56:39.786Z"
+}
