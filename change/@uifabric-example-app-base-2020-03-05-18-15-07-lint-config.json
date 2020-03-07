@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Run prettier on .d.ts files",
-  "packageName": "@uifabric/example-app-base",
-  "email": "elcraig@microsoft.com",
-  "commit": "eb6203e8aa6f934c2a86e1f5912d8cf5a2cfb1cb",
-  "dependentChangeType": "patch",
-  "date": "2020-03-06T02:13:46.602Z"
-}

@@ -2,6 +2,20 @@
   "name": "@uifabric/tsx-editor",
   "entries": [
     {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/tsx-editor_v0.11.32",
+      "version": "0.11.32",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/tsx-editor_v0.11.24",
       "version": "0.11.24",

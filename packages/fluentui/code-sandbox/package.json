@@ -19,7 +19,7 @@
   "main": "dist/commonjs/index.js",
   "module": "dist/es/index.js",
   "peerDependencies": {
-    "@fluentui/react": "0.45.0",
+    "@fluentui/react": "0.46.0",
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },

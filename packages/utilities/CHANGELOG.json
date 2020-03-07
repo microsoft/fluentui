@@ -2,6 +2,27 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/utilities_v7.13.1",
+      "version": "7.13.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5cb5db07119d744a8a5247b6b0780f9005604b2d"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2020 12:27:24 GMT",
       "tag": "@uifabric/utilities_v7.13.0",
       "version": "7.13.0",

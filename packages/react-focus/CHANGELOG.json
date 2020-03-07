@@ -2,6 +2,20 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@fluentui/react-focus_v7.1.3",
+      "version": "7.1.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Mar 2020 12:25:44 GMT",
       "tag": "@fluentui/react-focus_v7.1.1",
       "version": "7.1.1",
