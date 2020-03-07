@@ -10,12 +10,12 @@ import DebugPanel from './DebugPanel';
 import FiberNavigator from './FiberNavigator';
 import DebugRect from './DebugRect';
 
-type DebugProps = {
+export type DebugProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
 };
 
-type DebugState = {
+export type DebugState = {
   debugPanelPosition?: 'left' | 'right';
   fiberNav: FiberNavigator;
   selectedFiberNav: FiberNavigator;

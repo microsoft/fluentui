@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
+import Builder from '@fluentui/react-builder';
+
 import ExternalExampleLayout from './components/ExternalExampleLayout';
 import DocsLayout from './components/DocsLayout';
 import DocsRoot from './components/DocsRoot';
@@ -57,6 +59,7 @@ const Routes = () => (
   <BrowserRouter basename={__BASENAME__}>
     <Switch>
       <Route exact path="/maximize/:exampleName/:rtl?" component={ExternalExampleLayout} />
+      <Route exact path="/builder" component={Builder} />
       <DocsLayout>
         <Switch>
           <Route exact path="/" component={Introduction} />

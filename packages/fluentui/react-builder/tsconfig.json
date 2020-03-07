@@ -1,0 +1,16 @@
+{
+  "extends": "../../../scripts/typescript/tsconfig.fluentui",
+  "compilerOptions": {
+    "module": "esnext",
+    "types": ["node", "webpack-env"]
+  },
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../react"
+    },
+    {
+      "path": "../react-component-event-listener"
+    }
+  ]
+}

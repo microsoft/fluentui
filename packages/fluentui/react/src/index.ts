@@ -51,6 +51,8 @@ export { default as Checkbox } from './components/Checkbox/Checkbox';
 
 export * from './components/Debug/Debug';
 export { default as Debug } from './components/Debug/Debug';
+export * from './components/Debug/DebugSelector';
+export { default as DebugSelector } from './components/Debug/DebugSelector';
 
 export * from './components/Design/Design';
 export { default as Design } from './components/Design/Design';

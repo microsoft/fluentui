@@ -8,6 +8,7 @@
     "@babel/runtime": "^7.7.6",
     "@fluentui/accessibility": "^0.46.0",
     "@fluentui/react-bindings": "^0.46.0",
+    "@fluentui/react-builder": "^0.46.0",
     "@fluentui/react-component-event-listener": "^0.46.0",
     "@fluentui/react-component-nesting-registry": "^0.46.0",
     "@fluentui/react-component-ref": "^0.46.0",

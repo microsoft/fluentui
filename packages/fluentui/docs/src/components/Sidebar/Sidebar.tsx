@@ -550,6 +550,13 @@ class Sidebar extends React.Component<any, any> {
               <Icon name="github" styles={{ float: 'right' }} />
             </Box>
           </a>
+          <NavLink to="/builder" exact style={topItemTheme} activeStyle={{ fontWeight: 'bold' }}>
+            <Box>
+              Builder
+              <span style={{ border: 'orange', color: 'orange', marginLeft: '0.5rem' }}>alpha</span>
+              <Icon name="pencil" styles={{ float: 'right' }} />
+            </Box>
+          </NavLink>
           <a href={changeLogUrl} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               CHANGELOG

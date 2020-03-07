@@ -1,0 +1,35 @@
+{
+  "name": "@fluentui/react-builder",
+  "description": "An drag and drop UI builder.",
+  "version": "0.46.0",
+  "author": "Levi Thomason <me@levithomason.com>",
+  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react.git/issues",
+  "dependencies": {
+    "@fluentui/react": "^0.46.0",
+    "@fluentui/react-component-event-listener": "^0.46.0",
+    "@babel/runtime": "^7.7.6",
+    "react-frame-component": "^4.1.1"
+  },
+  "devDependencies": {
+    "@uifabric/build": "^7.0.0",
+    "lerna-alias": "^3.0.3-0"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react.git/tree/master/packages/state",
+  "jsnext:main": "dist/es/index.js",
+  "license": "MIT",
+  "main": "dist/commonjs/index.js",
+  "module": "dist/es/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": "OfficeDev/office-ui-fabric-react.git.git",
+  "scripts": {
+    "build": "gulp bundle:package:no-umd",
+    "clean": "gulp bundle:package:clean"
+  },
+  "sideEffects": false,
+  "types": "dist/es/index.d.ts"
+}
