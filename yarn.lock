@@ -5764,6 +5764,20 @@ beachball@^1.20.1:
     semver "^6.1.1"
     yargs-parser "^13.1.0"
 
+beachball@^1.20.2:
+  version "1.20.2"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.20.2.tgz#ad52dedae5d3582627de611c371e8a9252129fc6"
+  integrity sha512-YZ3SADQqxlerKcM7SvFeZ+1QYi08vSNlfQZ7lPfYtn2yKZv+vaBt6fRrn8VVhW590rRUCFinjBRzFr//XqdQGg==
+  dependencies:
+    cosmiconfig "^6.0.0"
+    fs-extra "^8.0.1"
+    git-url-parse "^11.1.2"
+    glob "^7.1.4"
+    minimatch "^3.0.4"
+    prompts "~2.1.0"
+    semver "^6.1.1"
+    yargs-parser "^13.1.0"
+
 beeper@^1.0.0:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/beeper/-/beeper-1.1.1.tgz#e6d5ea8c5dad001304a70b22638447f69cb2f809"
