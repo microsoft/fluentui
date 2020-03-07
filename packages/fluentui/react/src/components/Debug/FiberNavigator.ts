@@ -336,6 +336,14 @@ class FiberNavigator {
     return null;
   }
 
+  get props() {
+    return this.__fiber.memoizedProps;
+  }
+
+  get state() {
+    return this.__fiber.memoizedState;
+  }
+
   /**
    * Hooks state is represented by a recursive structure where:
    * - `memoizedState` is a current value if applicable
