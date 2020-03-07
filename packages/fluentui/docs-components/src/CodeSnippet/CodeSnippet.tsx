@@ -30,7 +30,8 @@ const CodeSnippet: React.FunctionComponent<CodeSnippetProps> = props => {
       className={className}
       style={{
         fontSize: '12px',
-        position: 'relative'
+        position: 'relative',
+        ...props.style
       }}
     >
       <CodeSnippetLabel {...props} value={code} />
