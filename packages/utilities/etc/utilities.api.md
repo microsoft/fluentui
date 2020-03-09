@@ -283,6 +283,11 @@ export function focusAsync(element: HTMLElement | {
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
+export const FocusRects: React.FunctionComponent<{
+    window?: Window;
+}>;
+
+// @public
 export function format(s: string, ...values: any[]): string;
 
 // @public
@@ -575,9 +580,6 @@ export const imgProperties: string[];
 
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
-
-// @public
-export function initializeFocusRects(window?: Window): void;
 
 // @public
 export const inputProperties: string[];
@@ -1161,6 +1163,9 @@ export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function useFocusRects(window?: Window): void;
 
 // @public
 export function values<T>(obj: any): T[];

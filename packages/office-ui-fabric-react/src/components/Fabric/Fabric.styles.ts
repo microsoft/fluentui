@@ -21,7 +21,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
     root: [
       classNames.root,
       // keywords for search: is-focusVisible ms-Fabric--isFocusVisible ms-Fabric--isFocusHidden
-      `is-focus${focusVisibility} ms-Fabric--isFocus${focusVisibility}`,
+      `is-focus${focusVisibility}`,
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,

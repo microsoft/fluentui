@@ -2,14 +2,13 @@ import * as React from 'react';
 import {
   Customizer,
   getNativeProps,
-  on,
   divProperties,
   classNamesFunction,
   getWindow,
   getDocument,
-  isDirectionalKeyCode,
   memoizeFunction,
-  getRTL
+  getRTL,
+  FocusRects
 } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
@@ -56,19 +55,17 @@ export class FabricBase extends React.Component<
     if (componentDir !== parentDir) {
       renderedContent = <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>;
     }
+    const win = getWindow(this._rootElement.current);
 
-    return renderedContent;
+    return (
+      <>
+        {renderedContent}
+        <FocusRects window={win} />
+      </>
+    );
   }
 
   public componentDidMount(): void {
-    const win = getWindow(this._rootElement.current);
-    if (win) {
-      this._disposables.push(
-        on(win, 'mousedown', this._onMouseDown, true),
-        on(win, 'keydown', this._onKeyDown, true),
-        on(win, 'pointerdown', this._onPointerDown, true)
-      );
-    }
     this._addClassNameToBody();
   }
 
@@ -102,21 +99,4 @@ export class FabricBase extends React.Component<
       }
     }
   }
-
-  private _onMouseDown = (ev: MouseEvent): void => {
-    this.setState({ isFocusVisible: false });
-  };
-
-  private _onPointerDown = (ev: PointerEvent): void => {
-    if (ev.pointerType !== 'mouse') {
-      this.setState({ isFocusVisible: false });
-    }
-  };
-
-  private _onKeyDown = (ev: KeyboardEvent): void => {
-    // tslint:disable-next-line:deprecation
-    if (isDirectionalKeyCode(ev.which)) {
-      this.setState({ isFocusVisible: true });
-    }
-  };
 }

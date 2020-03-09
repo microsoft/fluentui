@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import {
   initializeComponentRef,
-  initializeFocusRects,
+  FocusRects,
   Async,
   KeyCodes,
   elementContains,
@@ -108,7 +108,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
     super(props);
 
     initializeComponentRef(this);
-    initializeFocusRects();
     this._async = new Async(this);
 
     this._activeRows = {};
@@ -499,6 +498,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
             this._onRenderDetailsFooter
           )}
         </div>
+        <FocusRects />
       </div>
     );
   }

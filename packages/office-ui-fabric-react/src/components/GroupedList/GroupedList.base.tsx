@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, classNamesFunction, initializeFocusRects } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction, FocusRects } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
@@ -41,7 +41,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     super(props);
 
     initializeComponentRef(this);
-    initializeFocusRects();
 
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
@@ -117,6 +116,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             version={version}
           />
         )}
+        <FocusRects />
       </div>
     );
   }

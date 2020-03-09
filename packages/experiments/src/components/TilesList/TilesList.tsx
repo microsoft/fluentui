@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
 import { List, IPageProps, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css, IRenderFunction, IRectangle, initializeFocusRects } from 'office-ui-fabric-react/lib/Utilities';
+import { css, IRenderFunction, IRectangle, FocusRects } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
@@ -90,8 +90,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     this.state = {
       cells: this._getCells(props.items)
     };
-
-    initializeFocusRects();
   }
 
   // tslint:disable-next-line function-name
@@ -134,6 +132,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           usePageCache={true}
           {...this.props.listProps}
         />
+        <FocusRects />
       </FocusZone>
     );
   }

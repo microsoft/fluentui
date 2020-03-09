@@ -6,7 +6,6 @@ import { ISettingsMap } from './warn/warn';
 import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequiredProps';
 import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
 import { warnDeprecations } from './warn/warnDeprecations';
-import { initializeFocusRects } from './initializeFocusRects';
 import { initializeDir } from './initializeDir';
 import { IRefObject } from './createRef';
 import { IBaseProps } from './BaseComponent.types';
@@ -49,7 +48,6 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     super(props, context);
 
     // Ensure basic assumptions about the environment.
-    initializeFocusRects();
     initializeDir();
 
     _makeAllSafe(this, BaseComponent.prototype, [

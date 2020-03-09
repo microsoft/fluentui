@@ -1,14 +1,22 @@
-import { initializeFocusRects } from './initializeFocusRects';
+import * as React from 'react';
+import { FocusRects } from './useFocusRects';
 import { IsFocusHiddenClassName, IsFocusVisibleClassName, setFocusVisibility } from './setFocusVisibility';
 import * as getWindow from './dom/getWindow';
+import { ReactWrapper, mount } from 'enzyme';
 
 describe('setFocusVisibility', () => {
+  let focusRects: ReactWrapper;
   let classNames: string[] = [];
 
   // tslint:disable-next-line:no-any
   const mockWindow: { [key: string]: any } = {
     addEventListener: (name: string, callback: Function) => {
       mockWindow[name] = callback;
+    },
+    removeEventListener: (name: string, callback: Function) => {
+      if (mockWindow[name] === callback) {
+        mockWindow[name] = undefined;
+      }
     },
     document: {
       body: {
@@ -39,7 +47,11 @@ describe('setFocusVisibility', () => {
   beforeEach(() => {
     spyOn(getWindow, 'getWindow').and.returnValue(mockWindow);
     classNames = [];
-    initializeFocusRects(mockWindow as Window);
+    focusRects = mount(<FocusRects window={mockWindow as Window} />);
+  });
+
+  afterEach(() => {
+    focusRects.unmount();
   });
 
   it('hints to show focus', () => {
