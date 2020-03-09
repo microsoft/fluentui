@@ -123,6 +123,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         direction={FocusZoneDirection.bidirectional}
         onActiveElementChanged={this.props.onActiveElementChanged}
       >
+        <FocusRects />
         <List
           items={cells}
           role={role ? 'presentation' : undefined}
@@ -132,7 +133,6 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           usePageCache={true}
           {...this.props.listProps}
         />
-        <FocusRects />
       </FocusZone>
     );
   }

@@ -44,12 +44,11 @@ export class FabricBase extends React.Component<IFabricProps> {
     if (componentDir !== parentDir) {
       renderedContent = <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>;
     }
-    const win = getWindow(this._rootElement.current);
 
     return (
       <>
         {renderedContent}
-        <FocusRects window={win} />
+        <FocusRects window={getWindow(this._rootElement.current)} />
       </>
     );
   }

@@ -103,6 +103,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
           <div className={this._classNames.root} title={title}>
+            <FocusRects />
             <input
               type="checkbox"
               {...inputProps}
@@ -131,7 +132,6 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
               </div>
               {onRenderLabel(this.props, this._onRenderLabel)}
             </label>
-            <FocusRects />
           </div>
         )}
       </KeytipData>

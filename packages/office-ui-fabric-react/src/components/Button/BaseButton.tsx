@@ -12,8 +12,7 @@ import {
   mergeAriaAttributeValues,
   portalContainsElement,
   memoizeFunction,
-  nullRender,
-  FocusRects
+  nullRender
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -310,7 +309,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       </Tag>
     );
 
-    let Content = keytipProps ? (
+    const Content = keytipProps ? (
       // If we're making a split button, we won't put the keytip here
       <KeytipData
         keytipProps={!this._isSplitButton ? keytipProps : undefined}
@@ -321,13 +320,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       </KeytipData>
     ) : (
       Button()
-    );
-
-    Content = (
-      <>
-        {Content}
-        <FocusRects />
-      </>
     );
 
     if (menuProps && menuProps.doNotLayer) {
