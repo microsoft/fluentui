@@ -25,6 +25,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Fix exports for themes to make them treeshakable @layershifter ([#12224](https://github.com/OfficeDev/office-ui-fabric-react/pull/12224))
+- Fix referentially unstable props in `TreeItem` @silviuavram ([#12182](https://github.com/OfficeDev/office-ui-fabric-react/pull/12182))
 
 ### Fixes
 - Make `onKeyDown` returned by `useAccessibility()` hook referentially stable between component's rerenders @layershifter ([#12185](https://github.com/OfficeDev/office-ui-fabric-react/pull/12185))
