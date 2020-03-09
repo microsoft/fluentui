@@ -56,16 +56,16 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
               borderStyle: v.borderStyle,
               borderWidth: v.borderWidth,
               margin: v.togglePadding,
-              backgroundColor: 'transparent'
+              background: 'transparent'
             },
 
             ...(p.checked && {
               borderColor: v.checkedBorderColor,
-              backgroundColor: v.checkedBackgroundHover,
+              background: v.checkedBackgroundHover,
               ':before': {
                 ...commonToggleBeforeStyles(v),
                 margin: v.toggleCheckedPadding,
-                backgroundColor: v.checkedIndicatorColor
+                background: v.checkedIndicatorColor
               }
             })
           })
@@ -145,22 +145,19 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
       margin: v.togglePadding
     },
 
-    ...(p.checked &&
-      !p.disabled && {
-        borderColor: v.checkedBorderColor,
-        backgroundColor: v.checkedBackground,
-        ':before': {
-          ...commonToggleBeforeStyles(v),
-          margin: v.toggleCheckedPadding,
-          background: v.checkedIndicatorColor
-        }
-      }),
+    ...(p.checked && {
+      borderColor: v.checkedBorderColor,
+      background: v.checkedBackground,
+      ':before': {
+        ...commonToggleBeforeStyles(v),
+        margin: v.toggleCheckedPadding,
+        background: v.checkedIndicatorColor
+      }
+    }),
 
     ...(p.disabled && {
-      ...(!p.checked && {
-        background: v.disabledBackground,
-        borderColor: v.disabledBorderColor
-      }),
+      background: v.disabledBackground,
+      borderColor: v.disabledBorderColor,
       ...(p.checked && {
         background: v.disabledBackgroundChecked,
         borderColor: 'transparent',
