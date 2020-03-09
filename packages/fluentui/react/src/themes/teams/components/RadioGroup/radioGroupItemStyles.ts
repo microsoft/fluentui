@@ -1,10 +1,8 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { RadioGroupItemProps, RadioGroupItemState } from '../../../../components/RadioGroup/RadioGroupItem';
+import RadioGroupItem, { RadioGroupItemProps, RadioGroupItemState } from '../../../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupItemVariables } from './radioGroupItemVariables';
 import { pxToRem } from '../../../../utils';
-import Icon from '../../../../components/Icon/Icon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
 const restHoverFocusTextColor = textColor => ({
   color: textColor,
@@ -35,8 +33,13 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemProps & RadioGroupI
     ':hover': {
       color: v.textColorDefaultHoverFocus,
 
-      [`& .${Icon.className}`]: {
-        color: v.iconBorderColorDefaultHover
+      [`& .${RadioGroupItem.slotClassNames.indicator}`]: {
+        borderColor: v.textColorDefaultHoverFocus,
+
+        ...(!p.disabled &&
+          !p.checked && {
+            borderColor: v.indicatorBorderColorDefaultHover
+          })
       }
     },
 
@@ -55,25 +58,26 @@ const radioStyles: ComponentSlotStylesPrepared<RadioGroupItemProps & RadioGroupI
     ...getBorderFocusStyles({ siteVariables })
   }),
 
-  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    // overrides from icon styles
-    boxShadow: 'none',
+  indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
     margin: `0 ${pxToRem(12)} 0 0`,
-
-    ...getIconFillOrOutlineStyles({ outline: !p.checked }),
+    borderRadius: '50%',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    borderColor: v.indicatorBorderColorDefault,
+    width: pxToRem(12),
+    height: pxToRem(12),
 
     ...(p.checked && {
-      color: v.iconBackgroundColorChecked
+      background: v.indicatorBackgroundColorChecked,
+      borderColor: 'transparent'
     }),
 
     ...(p.disabled && {
-      color: v.colorDisabled
-    }),
-
-    ...(p.checked &&
-      p.disabled && {
-        color: v.colorDisabled
+      borderColor: v.colorDisabled,
+      ...(p.checked && {
+        background: v.colorDisabled
       })
+    })
   })
 };
 
