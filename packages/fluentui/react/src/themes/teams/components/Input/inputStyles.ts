@@ -1,11 +1,11 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { InputProps } from '../../../../components/Input/Input';
+import { InputProps, InputState } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
 import { PositionProperty } from 'csstype';
 import clearIndicatorUrl from './clearIndicatorUrl';
 import { pxToRem } from '../../../../utils';
 
-const inputStyles: ComponentSlotStylesPrepared<InputProps, InputVariables> = {
+const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
     alignItems: 'center',
     display: 'inline-flex',
