@@ -27,20 +27,9 @@ const getDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) => {
   return getRTL() ? 'rtl' : 'ltr';
 });
 
-export class FabricBase extends React.Component<
-  IFabricProps,
-  {
-    isFocusVisible: boolean;
-  }
-> {
+export class FabricBase extends React.Component<IFabricProps> {
   private _rootElement = React.createRef<HTMLDivElement>();
-  private _disposables: (() => void)[] = [];
   private _removeClassNameFromBody?: () => void = undefined;
-
-  constructor(props: IFabricProps) {
-    super(props);
-    this.state = { isFocusVisible: false };
-  }
 
   public render() {
     const { as: Root = 'div', theme, dir } = this.props;
@@ -70,7 +59,6 @@ export class FabricBase extends React.Component<
   }
 
   public componentWillUnmount(): void {
-    this._disposables.forEach((dispose: () => void) => dispose());
     if (this._removeClassNameFromBody) {
       this._removeClassNameFromBody();
     }
@@ -81,8 +69,7 @@ export class FabricBase extends React.Component<
     const classNames = getClassNames(getStyles, {
       theme: theme!,
       applyTheme: applyTheme,
-      className,
-      isFocusVisible: this.state.isFocusVisible
+      className
     });
     return classNames;
   }
