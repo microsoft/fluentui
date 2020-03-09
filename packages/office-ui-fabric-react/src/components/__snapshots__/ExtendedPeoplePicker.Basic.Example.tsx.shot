@@ -110,7 +110,6 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
         }
         &::-moz-focus-inner {
           border: 0;

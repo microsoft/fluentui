@@ -111,6 +111,18 @@ async function run() {
     }
   }
 
+  // do these before deleting node_nodules
+  console.log('\nClearing Jest cache...');
+  await spawn('npx', ['jest', '--clearCache']);
+  try {
+    console.log('\nAttempting to clear gulp-cache...');
+    const cache = require('gulp-cache');
+    cache.clearAll();
+    console.log('...success!');
+  } catch (err) {
+    console.log('Clearing gulp-cache failed, likely due it not being installed.');
+  }
+
   const failedPaths = [];
 
   console.log("\nDeleting symlinks from packages' node_modules and rush temp files...");

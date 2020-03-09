@@ -2,17 +2,6 @@
 
 The `Slider` component allows a user to slide a single thumb along a horizontal or vertical axis, representing a min/max range.
 
-## TODO List
-
-- For each TODO:
-  1. Read it
-  2. Do research
-  3. Answer questions
-  4. Remove TODO
-- Search for TODO, there should be none! Delete this section even.
-- Review with design crew
-- Check into repo where code will live
-
 ## Related variant considerations
 
 `2DSlider` - allows 2-dimensional sliding, used for color picking or 2d panning.
@@ -23,7 +12,7 @@ https://codesandbox.io/s/sliders-xi0zw
 
 Fabric Slider [docs](https://developer.microsoft.com/en-us/fabric#/controls/web/slider)
 
-Stardust Slider [docs](http://localhost:8080/components/slider/definition)
+Stardust Slider [docs](https://fluentsite.z22.web.core.windows.net/components/slider/definition)
 
 Material UI Slider [docs](https://material-ui.com/components/slider/)
 
@@ -420,13 +409,3 @@ thumbHeight: string
 thumbWidth: string
 trackColor: string
 ```
-
-## Use cases
-
-> TODO: Example use cases
-
-## Compatibility with other libraries
-
-> TODO: If this component represents a selected value, how will that be used in an HTML form? Is there a code example to illustrate?
-
-> TODO: Is it possible this component could be rendered in a focus zone? If so, should the focus model change in that case?

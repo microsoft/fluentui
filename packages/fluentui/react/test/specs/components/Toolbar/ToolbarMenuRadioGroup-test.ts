@@ -5,7 +5,8 @@ import ToolbarMenuRadioGroup from 'src/components/Toolbar/ToolbarMenuRadioGroup'
 
 describe('ToolbarMenuRadioGroup', () => {
   isConformant(ToolbarMenuRadioGroup, {
-    wrapperComponent: Box
+    wrapperComponent: Box,
+    constructorName: 'ToolbarMenuRadioGroup'
   });
 
   describe('accessibility', () => {

@@ -2,7 +2,7 @@ import { CheckboxVariables } from '../../../teams/components/Checkbox/checkboxVa
 
 export default (siteVars: any): Partial<CheckboxVariables> => {
   return {
-    borderColorHover: siteVars.accessibleYellow,
+    borderColorHover: siteVars.accessibleCyan,
     disabledToggleIndicatorColor: siteVars.accessibleGreen
   };
 };

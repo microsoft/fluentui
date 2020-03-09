@@ -6,7 +6,9 @@ import { mountWithProvider } from 'test/utils';
 import * as React from 'react';
 
 describe('ToolbarRadioGroup', () => {
-  isConformant(ToolbarRadioGroup);
+  isConformant(ToolbarRadioGroup, {
+    constructorName: 'ToolbarRadioGroup'
+  });
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarRadioGroup, {

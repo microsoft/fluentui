@@ -146,9 +146,6 @@ jobs:
   - job: Deploy
     dependsOn: Build
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
-
       - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
@@ -178,17 +175,12 @@ jobs:
         condition: always()
 
   - job: ScreenerFluent
-    dependsOn: Build
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
+      - script: |
+          yarn
+        displayName: yarn
 
       - template: azure-pipelines.cache.yml
-
-      - template: azure-pipelines.artifacts.yml
-        parameters:
-          artifact: Build-PR-$(Build.BuildNumber)
-          buildId: $(Build.BuildId)
 
       - template: azure-pipelines.tools.yml
 

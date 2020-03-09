@@ -18,8 +18,8 @@ const createColorScheme = (customValues = {}) => {
 
     foregroundHover: accessibleYellow,
     backgroundHover: colors.black,
-    borderHover: accessibleYellow,
-    shadowHover: accessibleYellow,
+    borderHover: accessibleCyan,
+    shadowHover: accessibleCyan,
 
     foregroundActive: accessibleCyan,
     backgroundActive: colors.black,
@@ -27,12 +27,12 @@ const createColorScheme = (customValues = {}) => {
     shadowActive: accessibleCyan,
 
     foregroundFocus: colors.black,
-    backgroundFocus: accessibleYellow,
+    backgroundFocus: accessibleCyan,
     borderFocus: colors.white,
     shadowFocus: colors.white,
 
     foregroundPressed: colors.black,
-    backgroundPressed: accessibleYellow,
+    backgroundPressed: accessibleCyan,
     borderPressed: colors.white,
     shadowPressed: colors.white,
 
@@ -71,15 +71,15 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundHover1: colors.black,
     foregroundHover2: accessibleCyan,
 
-    backgroundHover: accessibleYellow,
-    backgroundHover1: accessibleYellow,
-    backgroundHover2: accessibleYellow,
+    backgroundHover: accessibleCyan,
+    backgroundHover1: accessibleCyan,
+    backgroundHover2: accessibleCyan,
 
-    borderHover: accessibleYellow,
+    borderHover: accessibleCyan,
 
     foregroundPressed: colors.black,
-    backgroundPressed: accessibleYellow,
-    borderPressed: accessibleYellow,
+    backgroundPressed: accessibleCyan,
+    borderPressed: accessibleCyan,
     foregroundActive: accessibleCyan,
     foregroundActive1: colors.black,
 
@@ -136,15 +136,15 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundHover1: colors.black,
     foregroundHover2: colors.black,
 
-    borderHover: accessibleYellow,
+    borderHover: accessibleCyan,
 
-    backgroundHover: accessibleYellow,
-    backgroundHover1: accessibleYellow,
+    backgroundHover: accessibleCyan,
+    backgroundHover1: accessibleCyan,
 
     foregroundPressed: colors.black,
     foregroundPressed1: colors.black,
-    backgroundPressed: accessibleYellow,
-    borderPressed: accessibleYellow,
+    backgroundPressed: accessibleCyan,
+    borderPressed: accessibleCyan,
 
     foregroundActive: accessibleCyan,
     foregroundActive1: colors.black,
@@ -236,11 +236,11 @@ export const colorScheme: ColorSchemeMapping = {
     border: colors.white,
 
     foregroundHover: colors.black,
-    backgroundHover: accessibleYellow,
-    backgroundHover1: accessibleYellow,
+    backgroundHover: accessibleCyan,
+    backgroundHover1: accessibleCyan,
 
     foregroundPressed: colors.black,
-    backgroundPressed: accessibleYellow
+    backgroundPressed: accessibleCyan
   }),
   yellow: createEmptyColorScheme({
     foreground: colors.white,
@@ -274,8 +274,8 @@ export const colorScheme: ColorSchemeMapping = {
   }),
   amethyst: createEmptyColorScheme({
     background: colors.silver[900],
-    backgroundHover: accessibleYellow,
-    backgroundHover1: accessibleYellow,
+    backgroundHover: accessibleCyan,
+    backgroundHover1: accessibleCyan,
     backgroundActive: accessibleCyan
   })
 };

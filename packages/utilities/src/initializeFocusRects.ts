@@ -34,5 +34,6 @@ function _onMouseDown(ev: MouseEvent): void {
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
+  // tslint:disable-next-line:deprecation
   isDirectionalKeyCode(ev.which) && setFocusVisibility(true, ev.target as Element);
 }

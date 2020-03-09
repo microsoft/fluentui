@@ -1,7 +1,13 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Mar 2020 12:25:44 GMT and should not be manually modified.
 
+## 7.1.1
+Mon, 02 Mar 2020 12:25:44 GMT
+
+### Patches
+
+- FocusZone: When parking focus needs to be detected, IE11 returns `null` for `activeElement`, causing focus to not be restored. We now check for `null` to ensure the feature works correctly in this environment. (dzearing@microsoft.com)
 ## 7.1.0
 Tue, 25 Feb 2020 12:25:39 GMT
 

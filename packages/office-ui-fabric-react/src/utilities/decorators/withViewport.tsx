@@ -112,10 +112,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentWillUnmount(): void {
       this._events.dispose();
-
-      if (this._viewportResizeObserver) {
-        this._viewportResizeObserver.disconnect();
-      }
+      this._unregisterResizeObserver();
     }
 
     public render(): JSX.Element {
@@ -153,7 +150,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _unregisterResizeObserver = () => {
       if (this._viewportResizeObserver) {
         this._viewportResizeObserver.disconnect();
-        this._viewportResizeObserver = null;
+        delete this._viewportResizeObserver;
       }
     };
 
