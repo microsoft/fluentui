@@ -5,38 +5,65 @@ import { pxToRem } from '../../../../utils';
 import Icon from '../../../../components/Icon/Icon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import Button from '../../../../components/Button/Button';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentVariables> = {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
-    position: 'relative',
-    display: 'inline-flex',
-    alignItems: 'center',
-    width: '100%',
-    maxWidth: pxToRem(440),
-    minHeight: pxToRem(48),
-    padding: v.padding,
-    marginBottom: pxToRem(2),
-    marginRight: pxToRem(2),
-    background: v.backgroundColor,
-    color: v.textColor,
-    boxShadow: v.boxShadow,
-    border: `${siteVariables.borderWidth} solid ${v.borderColor}`,
-    borderRadius: v.borderRadius,
-
-    ...getBorderFocusStyles({
-      siteVariables,
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: siteVariables,
       borderRadius: v.borderRadius
-    }),
+    });
 
-    ...((p.actionable || p.onClick) && {
-      cursor: 'pointer',
+    return {
+      position: 'relative',
+      display: 'inline-flex',
+      alignItems: 'center',
+      width: '100%',
+      maxWidth: pxToRem(440),
+      minHeight: pxToRem(48),
+      padding: v.padding,
+      marginBottom: pxToRem(2),
+      marginRight: pxToRem(2),
+      background: v.backgroundColor,
+      color: v.textColor,
+      boxShadow: v.boxShadow,
+      border: `${siteVariables.borderWidth} solid ${v.borderColor}`,
+      borderRadius: v.borderRadius,
 
-      ':hover': {
-        background: v.backgroundColorHover,
-        color: v.textColorHover
-      }
-    })
-  }),
+      ...borderFocusStyles,
+
+      ...((p.actionable || p.onClick) && {
+        cursor: 'pointer',
+
+        ':focus-visible': {
+          ...borderFocusStyles[':focus-visible'],
+          backgroundColor: v.focusBackgroundColor,
+          color: v.focusColor,
+
+          [`& .${Button.className}`]: {
+            color: v.siblingsFocusColor
+          },
+
+          [`& .${Icon.className}`]: {
+            color: v.siblingsFocusColor
+          }
+        },
+
+        ':hover': {
+          background: v.backgroundColorHover,
+          color: v.textColorHover,
+
+          [`& .${Button.className}`]: {
+            color: v.siblingsHoverColor
+          },
+
+          [`& .${Icon.className}`]: {
+            color: v.siblingsHoverColor
+          }
+        }
+      })
+    };
+  },
 
   content: (): ICSSInJSStyle => ({
     flex: 1
@@ -63,7 +90,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
   action: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
+      variables: siteVariables,
       borderRadius: v.borderRadius
     });
 

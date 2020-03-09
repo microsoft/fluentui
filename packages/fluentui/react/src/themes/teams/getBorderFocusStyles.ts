@@ -4,7 +4,16 @@ import * as React from 'react';
 type CSSBorderStyles = Pick<React.CSSProperties, 'borderWidth' | 'borderRadius'>;
 
 type BorderFocusStyles = CSSBorderStyles & {
-  siteVariables?: SiteVariablesPrepared;
+  variables?:
+    | SiteVariablesPrepared
+    | {
+        borderWidth: string;
+        borderRadius: string;
+        focusInnerBorderColor: string;
+        focusOuterBorderColor: string;
+
+        zIndexes: { foreground: string };
+      };
   focusInnerBorderColor?: string;
   focusOuterBorderColor?: string;
   borderPadding?: React.CSSProperties['padding'];
@@ -36,7 +45,7 @@ const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle 
  * pseudo elements created on focus can be properly positioned.
  */
 const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
-  const sv = args.siteVariables;
+  const sv = args.variables;
   const {
     borderWidth = sv.borderWidth,
     borderRadius = sv.borderRadius,

@@ -6,7 +6,7 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTableVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables
+      variables: siteVariables
     });
 
     return {

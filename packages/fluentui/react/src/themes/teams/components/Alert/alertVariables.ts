@@ -14,6 +14,16 @@ export interface AlertVariables {
   minHeight: string;
   padding: string;
 
+  hoverBorderColor: string;
+  hoverBackgroundColor: string;
+  focusBackgroundColor: string;
+
+  focusHoverBorderRadius: string;
+  focusHoverBorderWidth: string;
+  focusHoverInnerBorderColor: string;
+  focusHoverOuterBorderColor: string;
+  focusHoverZIndex: string;
+
   actionsMargin: string;
 
   dismissActionSize: string;
@@ -59,6 +69,16 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     padding: `0 ${pxToRem(16)}`,
 
     actionsMargin: pxToRem(5),
+
+    hoverBorderColor: undefined,
+    hoverBackgroundColor: undefined,
+    focusBackgroundColor: undefined,
+
+    focusHoverBorderRadius: undefined,
+    focusHoverBorderWidth: undefined,
+    focusHoverInnerBorderColor: undefined,
+    focusHoverOuterBorderColor: undefined,
+    focusHoverZIndex: undefined,
 
     dismissActionSize: minHeight,
     dismissActionColor: undefined,

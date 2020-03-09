@@ -6,6 +6,10 @@ export default (siteVariables: any): Partial<AttachmentVariables> => ({
   backgroundColorHover: siteVariables.accessibleCyan,
   textColor: siteVariables.colors.white,
   textColorHover: siteVariables.colors.black,
+  focusBackgroundColor: siteVariables.accessibleCyan,
+  focusColor: siteVariables.colors.black,
+  siblingsFocusColor: siteVariables.colors.black,
+  siblingsHoverColor: siteVariables.colors.black,
   boxShadow: undefined,
   progressColor: siteVariables.accessibleGreen,
   progressHeight: 6
