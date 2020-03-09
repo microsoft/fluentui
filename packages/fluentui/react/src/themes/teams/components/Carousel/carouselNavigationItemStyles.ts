@@ -77,7 +77,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<CarouselNavigati
   },
 
   content: ({ props: p }): ICSSInJSStyle => {
-    const widthAdjust = p.icon ? 26 : 0;
+    const widthAdjust = p.indicator ? 26 : 0;
 
     return {
       whiteSpace: 'normal',
