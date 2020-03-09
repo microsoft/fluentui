@@ -1,6 +1,6 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { useAccessibility } from '@fluentui/react-bindings';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 // @ts-ignore
 import * as keyboardKey from 'keyboard-key';
 import * as React from 'react';
@@ -29,6 +29,28 @@ const testBehavior: Accessibility<TestBehaviorProps> = props => ({
   }
 });
 
+const conditionalBehavior: Accessibility<{ disabled: boolean }> = props => ({
+  attributes: {
+    root: {
+      'aria-label': 'Noop behavior'
+    }
+  },
+  keyActions: {
+    root: {
+      ...((!props.disabled && {
+        click: {
+          keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+        }
+      }) as any)
+    },
+    img: {
+      click: {
+        keyCombinations: [props.disabled ? { keyCode: keyboardKey.ArrowDown } : { keyCode: keyboardKey.ArrowUp }]
+      }
+    }
+  }
+});
+
 const focusZoneBehavior: Accessibility<never> = () => ({
   focusZone: {
     props: {
@@ -39,14 +61,15 @@ const focusZoneBehavior: Accessibility<never> = () => ({
 });
 
 type TestComponentProps = {
+  accessibility?: Accessibility<TestBehaviorProps>;
   disabled?: boolean;
   onClick?: (e: React.KeyboardEvent<HTMLDivElement>, slotName: string) => void;
   onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>;
 } & React.HTMLAttributes<HTMLDivElement>;
 
 const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
-  const { disabled, onClick, onKeyDown, ...rest } = props;
-  const getA11Props = useAccessibility(testBehavior, {
+  const { accessibility = testBehavior, disabled, onClick, onKeyDown, ...rest } = props;
+  const getA11Props = useAccessibility(accessibility, {
     mapPropsToBehavior: () => ({
       disabled
     }),
@@ -112,7 +135,7 @@ describe('useAccessibility', () => {
   it('adds event handlers', () => {
     const onKeyDown = jest.fn();
     const onClick = jest.fn();
-    const wrapper = shallow(<TestComponent onClick={onClick} onKeyDown={onKeyDown} />);
+    const wrapper = mount(<TestComponent onClick={onClick} onKeyDown={onKeyDown} />);
 
     wrapper
       .find('div')
@@ -135,6 +158,75 @@ describe('useAccessibility', () => {
       }),
       'root'
     );
+  });
+
+  it("adds user's keydown handler", () => {
+    const onKeyDown = jest.fn();
+    const wrapper = mount(<TestComponent accessibility={conditionalBehavior} onKeyDown={onKeyDown} />);
+
+    wrapper.find('div').simulate('keydown');
+    expect(onKeyDown).toBeCalledTimes(1);
+  });
+
+  it('do not add any handlers by default', () => {
+    const wrapper = mount(<TestComponent accessibility={conditionalBehavior} disabled />);
+
+    expect(wrapper.find('div').prop('onKeyDown')).toBeUndefined();
+  });
+
+  it('handles conditional adding of handlers', () => {
+    const wrapper = mount(<TestComponent accessibility={conditionalBehavior} disabled />);
+    expect(wrapper.find('div').prop('onKeyDown')).toBeUndefined();
+
+    wrapper.setProps({ disabled: false });
+    expect(wrapper.find('div').prop('onKeyDown')).toBeDefined();
+
+    wrapper.setProps({ disabled: true });
+    expect(wrapper.find('div').prop('onKeyDown')).toBeUndefined();
+  });
+
+  it('handles conditional key combinations', () => {
+    const onClick = jest.fn();
+    const wrapper = mount(<TestComponent accessibility={conditionalBehavior} onClick={onClick} />);
+
+    wrapper.find('img').simulate('keydown', {
+      keyCode: keyboardKey.ArrowUp
+    });
+
+    wrapper.setProps({ disabled: true });
+    wrapper.find('img').simulate('keydown', {
+      keyCode: keyboardKey.ArrowUp // Noop, will not call handler
+    });
+    wrapper.find('img').simulate('keydown', {
+      keyCode: keyboardKey.ArrowDown
+    });
+
+    expect(onClick).toBeCalledTimes(2);
+  });
+
+  it('handlers are referentially stable', () => {
+    const wrapper = shallow(<TestComponent />);
+    const handler = wrapper.find('div').prop('onKeyDown');
+
+    wrapper.setProps({});
+    expect(Object.is(handler, wrapper.find('div').prop('onKeyDown'))).toBe(true);
+  });
+
+  it('callbacks are referentially stable', () => {
+    const prevOnKeyDown = jest.fn();
+    const nextOnKeyDown = jest.fn();
+
+    const wrapper = shallow(<TestComponent onKeyDown={prevOnKeyDown} />);
+    wrapper.find('div').simulate('keydown');
+
+    wrapper.setProps({ onKeyDown: nextOnKeyDown });
+    wrapper.find('div').simulate('keydown');
+
+    wrapper.setProps({ onKeyDown: undefined });
+    wrapper.find('div').simulate('keydown');
+
+    expect(prevOnKeyDown).toBeCalledTimes(1);
+    expect(nextOnKeyDown).toBeCalledTimes(1);
   });
 
   describe('FocusZone', () => {
