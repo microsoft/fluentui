@@ -34,7 +34,7 @@ describe('getKeyDownHandlers', () => {
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
       expect(keyHandlers.hasOwnProperty(partElementName)).toBeTruthy();
-      expect(keyHandlers[partElementName].hasOwnProperty('onKeyDown')).toBeTruthy();
+      expect(keyHandlers[partElementName]?.hasOwnProperty('onKeyDown')).toBeTruthy();
     });
 
     test('for few component elements', () => {
@@ -54,8 +54,8 @@ describe('getKeyDownHandlers', () => {
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
       expect(keyHandlers.hasOwnProperty(partElementName)).toBeTruthy();
       expect(keyHandlers.hasOwnProperty(anotherPartName)).toBeTruthy();
-      expect(keyHandlers[partElementName].hasOwnProperty('onKeyDown')).toBeTruthy();
-      expect(keyHandlers[anotherPartName].hasOwnProperty('onKeyDown')).toBeTruthy();
+      expect(keyHandlers[partElementName]?.hasOwnProperty('onKeyDown')).toBeTruthy();
+      expect(keyHandlers[anotherPartName]?.hasOwnProperty('onKeyDown')).toBeTruthy();
     });
 
     test('when there is 1 common action and few others that are not common', () => {
@@ -73,7 +73,7 @@ describe('getKeyDownHandlers', () => {
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
       expect(keyHandlers.hasOwnProperty(partElementName)).toBeTruthy();
-      expect(keyHandlers[partElementName].hasOwnProperty('onKeyDown')).toBeTruthy();
+      expect(keyHandlers[partElementName]?.hasOwnProperty('onKeyDown')).toBeTruthy();
     });
 
     test('and action should be invoked if keydown event has keycode mapped to that action', () => {
