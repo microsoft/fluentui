@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "ITag: key can be number, in addition to string.",
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com",
+  "commit": "93886728575eb30677efac4e593c71f30eaed14e",
+  "dependentChangeType": "patch",
+  "date": "2020-03-02T21:03:02.307Z"
+}
