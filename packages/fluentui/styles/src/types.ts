@@ -188,7 +188,7 @@ export interface ComponentStyleFunctionParam<
   TProps extends PropsWithVarsAndStyles = PropsWithVarsAndStyles,
   TVars extends ComponentVariablesObject = ComponentVariablesObject
 > {
-  displayName: string;
+  displayNames: string[];
   props: TProps;
   variables: TVars;
   theme: ThemePrepared;
