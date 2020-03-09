@@ -17,6 +17,7 @@ export interface ButtonVariables {
   colorHover: string;
   colorActive: string;
   colorDisabled: string;
+  colorFocus: string;
   backgroundColor: string;
   backgroundColorActive: string;
   backgroundColorHover: string;
@@ -27,12 +28,15 @@ export interface ButtonVariables {
   borderColorHover: string;
   borderColorActive: string;
   borderColorDisabled: string;
+  borderColorFocus: string;
+  backgroundColorFocus: string;
 
   primaryColor: string;
   primaryColorHover: string;
   primaryBackgroundColor: string;
   primaryBackgroundColorActive: string;
   primaryBackgroundColorHover: string;
+  primaryBackgroundColorFocus: string;
   primaryBackgroundColorDisabled: string;
   primaryBorderColor: string;
 
@@ -80,12 +84,15 @@ export default (siteVars: any): ButtonVariables => ({
   colorHover: siteVars.colorScheme.default.foregroundHover,
   colorActive: siteVars.colorScheme.default.foregroundPressed,
   colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
+  colorFocus: undefined,
   backgroundColor: siteVars.colorScheme.default.background,
   backgroundColorActive: siteVars.colorScheme.default.backgroundPressed,
   backgroundColorHover: siteVars.colorScheme.default.backgroundHover1,
+  backgroundColorFocus: undefined,
   backgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
   borderColor: siteVars.colorScheme.default.border,
   borderColorHover: siteVars.colorScheme.default.borderHover,
+  borderColorFocus: undefined,
   borderColorActive: siteVars.colorScheme.default.borderPressed,
   borderColorDisabled: 'transparent',
   backgroundColorIconOnlyHover: siteVars.colorScheme.default.backgroundHover2,
@@ -96,6 +103,7 @@ export default (siteVars: any): ButtonVariables => ({
   primaryBackgroundColorActive: siteVars.colorScheme.brand.backgroundPressed,
   primaryBackgroundColorHover: siteVars.colorScheme.brand.backgroundHover,
   primaryBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+  primaryBackgroundColorFocus: undefined,
   primaryBorderColor: 'transparent',
 
   circularBorderRadius: pxToRem(999),

@@ -1,6 +1,7 @@
 import { pxToRem } from '../../../../utils';
 
 export interface DialogVariables {
+  border: string;
   rootBackground: string;
   rootBorderRadius: string;
   rootPadding: string;
@@ -23,6 +24,8 @@ export interface DialogVariables {
 }
 
 export default (siteVariables): Partial<DialogVariables> => ({
+  border: 'none',
+
   rootBackground: siteVariables.colors.white,
   rootBorderRadius: pxToRem(3),
   rootWidth: '50vw',
