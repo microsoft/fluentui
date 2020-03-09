@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
+import { FocusZone, FocusZoneDirection, IFocusZone } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { BaseComponent, classNamesFunction, divProperties, elementContains, focusFirstChild, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
@@ -28,8 +28,19 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   }
 
   public render(): JSX.Element {
-    // tslint:disable-next-line:deprecation
-    const { items, overflowItems, className, focusZoneProps, styles, vertical, doNotContainWithinFocusZone, role } = this.props;
+    const {
+      items,
+      overflowItems,
+      className,
+      // tslint:disable-next-line:deprecation
+      focusZoneProps,
+      styles,
+      vertical,
+      // tslint:disable-next-line:deprecation
+      doNotContainWithinFocusZone,
+      role,
+      overflowSide = 'end'
+    } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
 
@@ -52,6 +63,8 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
       };
     }
 
+    const showOverflow = overflowItems && overflowItems.length > 0;
+
     return (
       <Tag
         role={role || 'group'}
@@ -59,8 +72,9 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
         {...uniqueComponentProps}
         className={this._classNames.root}
       >
+        {overflowSide === 'start' && showOverflow && this._onRenderOverflowButtonWrapper(overflowItems!)}
         {items && this._onRenderItems(items)}
-        {overflowItems && overflowItems.length > 0 && this._onRenderOverflowButtonWrapper(overflowItems)}
+        {overflowSide === 'end' && showOverflow && this._onRenderOverflowButtonWrapper(overflowItems!)}
       </Tag>
     );
   }

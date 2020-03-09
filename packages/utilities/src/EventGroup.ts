@@ -58,7 +58,6 @@ export interface IDeclaredEventsByName {
  * {@docCategory EventGroup}
  */
 export class EventGroup {
-  // tslint:disable-next-line:no-inferrable-types
   private static _uniqueId: number = 0;
   // tslint:disable-next-line:no-any
   private _parent: any;

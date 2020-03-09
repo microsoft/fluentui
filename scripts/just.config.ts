@@ -23,7 +23,7 @@ const { postprocessTask } = require('./tasks/postprocess');
 const { postprocessAmdTask } = require('./tasks/postprocess-amd');
 const { postprocessCommonjsTask } = require('./tasks/postprocess-commonjs');
 const { startStorybookTask, buildStorybookTask } = require('./tasks/storybookTask');
-const { fluentuiPrepublish, fluentuiLernaPublish, fluentuiPostpublish } = require('./tasks/fluentui-publish');
+const { fluentuiLernaPublish } = require('./tasks/fluentui-publish');
 
 /** Do only the bare minimum setup of options and resolve paths */
 function basicPreset() {
@@ -72,11 +72,9 @@ module.exports = function preset() {
   task('generate-package-manifest', generatePackageManifestTask);
   task('storybook:start', startStorybookTask());
   task('storybook:build', buildStorybookTask());
-  task('fluentui:prepublish', fluentuiPrepublish);
-  task('fluentui:postpublish', fluentuiPostpublish);
 
-  task('fluentui:publish:patch', series('fluentui:prepublish', fluentuiLernaPublish('patch'), 'fluentui:postpublish'));
-  task('fluentui:publish:minor', series('fluentui:prepublish', fluentuiLernaPublish('minor'), 'fluentui:postpublish'));
+  task('fluentui:publish:patch', fluentuiLernaPublish('patch'));
+  task('fluentui:publish:minor', fluentuiLernaPublish('minor'));
 
   task('ts:compile', () => {
     return argv().commonjs

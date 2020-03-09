@@ -1,23 +1,31 @@
-import * as React from 'react';
+import { Accessibility, toolbarMenuBehavior, toolbarMenuItemCheckboxBehavior, ToolbarMenuBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import * as customPropTypes from '@fluentui/react-proptypes';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
-import { toolbarMenuBehavior, toolbarMenuItemCheckboxBehavior } from '@fluentui/accessibility';
-import * as customPropTypes from '@fluentui/react-proptypes';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
   createShorthandFactory,
   commonPropTypes,
-  UIComponent,
   childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
-  ContentComponentProps,
-  ShorthandFactory,
-  applyAccessibilityKeyHandlers
+  ContentComponentProps
 } from '../../utils';
-import { mergeComponentVariables } from '@fluentui/styles';
 
-import { ComponentEventHandler, ShorthandCollection, withSafeTypeForAs, ShorthandValue } from '../../types';
+import {
+  ComponentEventHandler,
+  ShorthandCollection,
+  withSafeTypeForAs,
+  ShorthandValue,
+  WithAsProp,
+  FluentComponentStaticProps,
+  ProviderContextPrepared
+} from '../../types';
 
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
 import ToolbarMenuDivider from './ToolbarMenuDivider';
@@ -27,6 +35,11 @@ import { BoxProps } from '../Box/Box';
 export type ToolbarMenuItemShorthandKinds = 'divider' | 'item' | 'toggle';
 
 export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
+  /**
+   * Accessibility behavior if overridden by the user.
+   */
+  accessibility?: Accessibility<ToolbarMenuBehaviorProps>;
+
   /** Shorthand array of props for ToolbarMenu. */
   items?: ShorthandCollection<ToolbarMenuItemProps, ToolbarMenuItemShorthandKinds>;
 
@@ -45,36 +58,39 @@ export interface ToolbarMenuProps extends UIComponentProps, ChildrenComponentPro
   submenuIndicator?: ShorthandValue<BoxProps>;
 }
 
-class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
-  static displayName = 'ToolbarMenu';
+export type ToolbarMenuStylesProps = never;
 
-  static className = 'ui-toolbar__menu';
+const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStaticProps = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(ToolbarMenu.displayName, context.telemetry);
+  setStart();
 
-  static create: ShorthandFactory<ToolbarMenuProps>;
+  const { accessibility, className, children, design, items, submenu, submenuIndicator, styles, variables } = props;
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
-    onItemClick: PropTypes.func,
-    submenu: PropTypes.bool,
-    submenuIndicator: customPropTypes.shorthandAllowingChildren
-  };
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: ToolbarMenu.displayName,
+    actionHandlers: {
+      performClick: e => {
+        _.invoke(props, 'onClick', e, props);
+      }
+    },
+    rtl: context.rtl
+  });
+  const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenu.displayName, {
+    className: ToolbarMenu.className,
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables
+    }),
+    rtl: context.rtl
+  });
 
-  static defaultProps = {
-    accessibility: toolbarMenuBehavior,
-    as: 'ul'
-  };
-
-  actionHandlers = {
-    performClick: e => {
-      _.invoke(this.props, 'onClick', e, this.props);
-    }
-  };
-
-  handleItemOverrides = variables => predefinedProps => ({
+  const handleItemOverrides = predefinedProps => ({
     onClick: (e, itemProps) => {
       _.invoke(predefinedProps, 'onClick', e, itemProps);
-      _.invoke(this.props, 'onItemClick', e, {
+      _.invoke(props, 'onItemClick', e, {
         ...itemProps,
         menuOpen: !!itemProps.menu
       });
@@ -82,38 +98,33 @@ class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
     variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
-  handleDividerOverrides = variables => predefinedProps => ({
+  const handleDividerOverrides = predefinedProps => ({
     variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
-  handleRadioGroupOverrides = variables => (predefinedProps: ToolbarMenuRadioGroupProps) => ({
+  const handleRadioGroupOverrides = (predefinedProps: ToolbarMenuRadioGroupProps) => ({
     onItemClick: (e, itemProps) => {
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
-      _.invoke(this.props, 'onItemClick', e, itemProps);
+      _.invoke(props, 'onItemClick', e, itemProps);
     },
     variables: mergeComponentVariables(variables, predefinedProps.variables)
   });
 
-  renderItems(items, variables) {
-    const { submenuIndicator, submenu } = this.props;
-    const itemOverridesFn = this.handleItemOverrides(variables);
-    const dividerOverridesFn = this.handleDividerOverrides(variables);
-    const radioGroupOverrides = this.handleRadioGroupOverrides(variables);
-
+  const renderItems = () => {
     return _.map(items, item => {
       const kind = _.get(item, 'kind', 'item');
 
       switch (kind) {
         case 'divider':
-          return ToolbarMenuDivider.create(item, { overrideProps: dividerOverridesFn });
+          return ToolbarMenuDivider.create(item, { overrideProps: handleDividerOverrides });
 
         case 'group':
-          return ToolbarMenuRadioGroup.create(item, { overrideProps: radioGroupOverrides });
+          return ToolbarMenuRadioGroup.create(item, { overrideProps: handleRadioGroupOverrides });
 
         case 'toggle':
           return ToolbarMenuItem.create(item, {
             defaultProps: () => ({ accessibility: toolbarMenuItemCheckboxBehavior }),
-            overrideProps: itemOverridesFn
+            overrideProps: handleItemOverrides
           });
 
         default:
@@ -122,26 +133,46 @@ class ToolbarMenu extends UIComponent<ToolbarMenuProps> {
               submenuIndicator,
               inSubmenu: submenu
             }),
-            overrideProps: itemOverridesFn
+            overrideProps: handleItemOverrides
           });
       }
     });
-  }
+  };
 
-  renderComponent({ ElementType, classes, accessibility, variables, unhandledProps }) {
-    const { children, items } = this.props;
-    return (
-      <ElementType
-        className={classes.root}
-        {...accessibility.attributes.root}
-        {...unhandledProps}
-        {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
-      >
-        {childrenExist(children) ? children : this.renderItems(items, variables)}
-      </ElementType>
-    );
-  }
-}
+  const ElementType = getElementType(props);
+  const unhandledProps = getUnhandledProps(ToolbarMenu.handledProps, props);
+
+  const element = getA11yProps.unstable_wrapWithFocusZone(
+    <ElementType
+      {...getA11yProps('root', {
+        ...unhandledProps,
+        className: classes.root
+      })}
+    >
+      {childrenExist(children) ? children : renderItems()}
+    </ElementType>
+  );
+  setEnd();
+
+  return element;
+};
+
+ToolbarMenu.className = 'ui-toolbar__menu';
+ToolbarMenu.displayName = 'ToolbarMenu';
+
+ToolbarMenu.propTypes = {
+  ...commonPropTypes.createCommon(),
+  items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
+  onItemClick: PropTypes.func,
+  submenu: PropTypes.bool,
+  submenuIndicator: customPropTypes.shorthandAllowingChildren
+};
+ToolbarMenu.handledProps = Object.keys(ToolbarMenu.propTypes) as any;
+
+ToolbarMenu.defaultProps = {
+  accessibility: toolbarMenuBehavior,
+  as: 'ul'
+};
 
 ToolbarMenu.create = createShorthandFactory({ Component: ToolbarMenu, mappedArrayProp: 'items' });
 
