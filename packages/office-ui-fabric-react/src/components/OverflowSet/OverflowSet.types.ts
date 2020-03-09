@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { IFocusZoneProps } from '../../FocusZone';
+import { IFocusZoneProps } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
 import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -53,6 +53,13 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
    * @defaultvalue false
    */
   vertical?: boolean;
+
+  /**
+   * Controls wether or not the overflow button is placed at the start or end of the items.
+   * This gives a reveresed visual behavior but maintains correct keyboard navigation.
+   * @defaultValue 'end'
+   */
+  overflowSide?: 'start' | 'end';
 
   /**
    * An array of items to be passed to overflow contextual menu

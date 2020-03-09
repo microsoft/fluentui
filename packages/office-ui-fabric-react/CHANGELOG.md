@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Mar 2020 12:27:53 GMT and should not be manually modified.
+This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
 
+## 7.100.0
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Minor changes
+
+- Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation. (matejera@microsoft.com)
+- Export GroupedListSection (owcampbe@microsoft.com)
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
+- withViewport: cleaning up resize observer. (dzearing@microsoft.com)
 ## 7.99.0
 Thu, 05 Mar 2020 12:27:53 GMT
 

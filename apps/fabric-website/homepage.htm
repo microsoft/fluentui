@@ -126,9 +126,9 @@
   } else {
     var fabricVersions = [5, 6, 7];
 
-    var fabricVersion =
-      getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1];
-    fabricVersion = Number(fabricVersion);
+    var fabricVersion = Number(
+      getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
+    );
 
     if (fabricVersions.indexOf(fabricVersion) > -1) {
       window.sessionStorage.setItem('fabricVer', fabricVersion);
