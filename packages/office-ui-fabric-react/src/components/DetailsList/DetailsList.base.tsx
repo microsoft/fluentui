@@ -421,6 +421,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
         aria-label={ariaLabel}
         {...(shouldApplyApplicationRole ? { role: 'application' } : {})}
       >
+        <FocusRects />
         <div
           role="grid"
           aria-label={ariaLabelForGrid}
@@ -498,7 +499,6 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
             this._onRenderDetailsFooter
           )}
         </div>
-        <FocusRects />
       </div>
     );
   }
