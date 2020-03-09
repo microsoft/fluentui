@@ -1,47 +1,22 @@
 import * as Babel from '@babel/core';
+import * as fs from 'fs';
+import * as path from 'path';
 import * as t from '@babel/types';
 import * as _ from 'lodash';
-import * as path from 'path';
-import * as fs from 'fs';
 
-import { BehaviorInfo, ComponentInfo, ComponentProp } from '@fluentui/docs/src/types';
-import * as docgen from './docgen';
-import parseDefaultValue from './parseDefaultValue';
-import parseDocblock from './parseDocblock';
 import parseType from './parseType';
-import getShorthandInfo from './getShorthandInfo';
+import parseDefaultValue from './parseDefaultValue';
+import { ComponentInfo, ComponentProp, FileInfo } from './types';
+import * as docgen from './docgen';
+import parseDocblock from './parseDocblock';
+// import getShorthandInfo from './getShorthandInfo';
 
-const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[] => {
-  const docTags = accessibilityProp && accessibilityProp.tags;
-  const availableTag = _.find(docTags, { title: 'available' });
-  const availableBehaviorNames = _.get(availableTag, 'description', '');
-
-  if (!availableBehaviorNames) {
-    return undefined;
-  }
-
-  return availableBehaviorNames
-    .replace(/\s/g, '')
-    .split(',')
-    .map(name => ({
-      name,
-      displayName: _.upperFirst(name.replace('Behavior', '')),
-      category: _.upperFirst(name.split(/(?=[A-Z])/)[0])
-    }));
-};
-
-const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[] = []): ComponentInfo => {
+const getFileInfo = (filepath: string): FileInfo => {
   const absPath = path.resolve(process.cwd(), filepath);
-
   const dir = path.dirname(absPath);
   const dirname = path.basename(dir);
   const filename = path.basename(absPath);
   const filenameWithoutExt = path.basename(absPath, path.extname(absPath));
-
-  // singular form of the component's ../../ directory
-  // "element" for "src/elements/Button/Button.js"
-  const componentType = path.basename(path.dirname(dir)).replace(/s$/, '') as ComponentInfo['type'];
-
   const components = docgen.withDefaultConfig().parse(absPath);
 
   if (!components.length) {
@@ -55,10 +30,28 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[] = 
       ].join(' ')
     );
   }
+
   const info: docgen.ComponentDoc = components[0];
 
+  return {
+    absPath,
+    dir,
+    dirname,
+    filename,
+    filenameWithoutExt,
+    info
+  };
+};
+
+const getComponentInfoWithoutMiddleware = (filepath: string, ignoredParentInterfaces: string[] = []): ComponentInfo => {
+  const { absPath, dir, filename, filenameWithoutExt, info } = getFileInfo(filepath);
+
+  const componentFile = Babel.parse(fs.readFileSync(absPath).toString(), {
+    configFile: false,
+    presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]]
+  }) as t.File;
+
   // add exported Component info
-  //
   // this 'require' instruction might break by producing partially initialized types - because of ts-node module's cache used during processing
   // - in that case we might consider to disable ts-node cache when running this command: https://github.com/ReactiveX/rxjs/commit/2f86b9ddccbf020b2e695dd8fe0b79194efa3f56
   const Component = require(absPath).default;
@@ -67,56 +60,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[] = 
     throw new Error(`Your file with component under "${absPath}" doesn't have a default export`);
   }
 
-  const componentFile = Babel.parse(fs.readFileSync(absPath).toString(), {
-    configFile: false,
-    presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]]
-  }) as t.File;
-  const constructorName = _.get(Component, 'prototype.constructor.name', null);
-
-  // add component type
-  let type = componentType;
-  // add parent/child info
-  let isParent = filenameWithoutExt === dirname;
-
-  // Tweak for Ref component as it is distributed as a separate package
-  if (info.displayName === 'Ref') {
-    type = 'component';
-    isParent = true;
-  }
-
-  const isChild = !isParent;
-  const parentDisplayName = isParent ? null : dirname;
-  // "Field" for "FormField" since it is accessed as "Form.Field" in the API
-  const subcomponentName = isParent ? null : info.displayName.replace(parentDisplayName, '');
-
-  // "ListItem.js" is a subcomponent is the "List" directory
-  const subcomponentRegExp = new RegExp(`^${dirname}\\w+\\.tsx$`);
-  const subcomponents = isParent
-    ? fs
-        .readdirSync(dir)
-        .filter(file => subcomponentRegExp.test(file))
-        .map(file => path.basename(file, path.extname(file)))
-    : null;
-
-  // where this component should be exported in the api
-  const apiPath = isChild ? `${parentDisplayName}.${subcomponentName}` : info.displayName;
-
-  // class name for the component
-  // example, the "button" in class="ui-button"
-  // name of the component, sub component, or plural parent for sub component groups
-  const componentClassName = (isChild
-    ? _.includes(subcomponentName, 'Group')
-      ? `ui-${parentDisplayName}s`
-      : `ui-${parentDisplayName}__${subcomponentName}`
-    : `ui-${info.displayName}`
-  ).toLowerCase();
-
-  // replace the component.description string with a parsed docblock object
-  const docblock = parseDocblock(info.description);
-
-  // file and path info
-  const repoPath = absPath.replace(`${process.cwd()}${path.sep}`, '').replace(new RegExp(_.escapeRegExp(path.sep), 'g'), '/');
-
+  // Create props definition for this component.
   let props: ComponentProp[] = [];
 
   _.forEach(info.props, (propDef: docgen.PropItem, propName: string) => {
@@ -142,43 +86,58 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[] = 
     }
   });
 
-  // manually insert `as` prop
-  if (info.props.as) {
-    props.push({
-      description: 'An element type to render as (string or component).',
-      defaultValue: parseDefaultValue(Component, info.props.as, []) || 'div',
-      tags: [],
-      types: [{ name: 'React.ElementType' }],
-      name: 'as',
-      required: false
-    });
-  }
-
   // sort props
   props = _.sortBy(props, 'name');
 
-  // available behaviors
-  const behaviors = getAvailableBehaviors(_.find(props, { name: 'accessibility' }));
+  const constructorName = _.get(Component, 'prototype.constructor.name', null);
+
+  // replace the component.description string with a parsed docblock object
+  const docblock = parseDocblock(info.description);
+
+  // file and path info
+  const repoPath = absPath.replace(`${process.cwd()}${path.sep}`, '').replace(new RegExp(_.escapeRegExp(path.sep), 'g'), '/');
+
+  // singular form of the component's ../../ directory
+  // "element" for "src/elements/Button/Button.js"
+  const componentType = path.basename(path.dirname(dir)).replace(/s$/, '') as ComponentInfo['type'];
+
+  // add component type
+  let type = componentType;
 
   return {
-    ...getShorthandInfo(componentFile, info.displayName),
-    apiPath,
-    behaviors,
-    componentClassName,
+    // ...getShorthandInfo(componentFile, info.displayName),
+    // apiPath,
+    // behaviors,
+    // componentClassName,
     constructorName,
+    Component,
     displayName: info.displayName,
     docblock,
     filename,
     filenameWithoutExt,
-    isChild,
-    isParent,
-    parentDisplayName,
+    // isChild,
+    // isParent,
+    // parentDisplayName,
     props,
     repoPath,
-    subcomponentName,
-    subcomponents,
+    // subcomponentName,
+    // subcomponents,
     type
   };
+};
+
+const getComponentInfo = <T extends ComponentInfo>(
+  filepath: string,
+  ignoredParentInterfaces: string[] = [],
+  middleware?: (fileInfo: FileInfo, ignoredParentInterfaces: string[], componentInfo: ComponentInfo) => T
+): T | ComponentInfo => {
+  const componentInfo = getComponentInfoWithoutMiddleware(filepath, ignoredParentInterfaces);
+  if (middleware) {
+    const fileInfo = getFileInfo(filepath);
+    return middleware(fileInfo, (ignoredParentInterfaces = []), componentInfo);
+  }
+
+  return componentInfo;
 };
 
 export default getComponentInfo;

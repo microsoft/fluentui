@@ -1,5 +1,6 @@
 import { UseKnobOptions } from '@fluentui/docs-components';
 import { ThemePrepared } from '@fluentui/react';
+import { docgen } from '@fluentui/react-docs';
 
 export type ExampleSource = {
   js: string;
@@ -61,6 +62,15 @@ export type ComponentPropType = {
   keyword?: boolean;
   parameters?: ComponentPropType[];
   value?: string;
+};
+
+export type FileInfo = {
+  absPath: string;
+  dir: string;
+  dirname: string;
+  filename: string;
+  filenameWithoutExt: string;
+  info: docgen.ComponentDoc;
 };
 
 export type KnobGeneratorOptions = {
