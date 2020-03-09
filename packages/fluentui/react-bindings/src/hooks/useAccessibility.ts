@@ -29,6 +29,7 @@ type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps & Part
 const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAccessibilityOptions<Props> = {}) => {
   const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
 
+  // TODO: use composeOptions!
   const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
   const latestDefinition = React.useRef<ReactAccessibilityBehavior>();

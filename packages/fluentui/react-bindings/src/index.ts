@@ -1,6 +1,10 @@
 export { default as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
+export { default as compose } from './compose/compose';
+export * from './compose/types';
+export { default as useCompose } from './compose/useCompose';
+
 export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
 export { default as FocusTrapZone } from './FocusZone/FocusTrapZone';
@@ -13,6 +17,7 @@ export { default as useAccessibility } from './hooks/useAccessibility';
 export { default as useAutoControlled } from './hooks/useAutoControlled';
 export { default as unstable_useDispatchEffect } from './hooks/useDispatchEffect';
 export { default as useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayoutEffect';
+export { default as useUnhandledProps } from './hooks/useUnhandledProps';
 export { default as useStateManager } from './hooks/useStateManager';
 export { default as useStyles } from './hooks/useStyles';
 

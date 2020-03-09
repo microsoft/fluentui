@@ -1,6 +1,7 @@
 import * as Accessibility from '@fluentui/accessibility';
 import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as DocsComponent from '@fluentui/docs-components';
+import * as Bindings from '@fluentui/react-bindings';
 import * as FluentUI from '@fluentui/react';
 import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
@@ -22,7 +23,6 @@ export const imports: Record<string, { version: string; module: any }> = {
     version: accessibilityPackageJson.version,
     module: Accessibility
   },
-
   '@fluentui/code-sandbox': {
     version: 'latest',
     module: CodeSandbox
@@ -34,6 +34,10 @@ export const imports: Record<string, { version: string; module: any }> = {
   '@fluentui/react': {
     version: projectPackageJson.version,
     module: FluentUI
+  },
+  '@fluentui/react-bindings': {
+    version: projectPackageJson.dependencies['@fluentui/react-bindings'],
+    module: Bindings
   },
   classnames: {
     version: projectPackageJson.dependencies['classnames'],

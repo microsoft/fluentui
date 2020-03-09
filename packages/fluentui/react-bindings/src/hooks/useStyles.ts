@@ -3,6 +3,7 @@ import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings
 import { ThemeContext } from 'react-fela';
 
+import useCompose from '../compose/useCompose';
 import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps, RendererRenderRule, StylesContextValue } from '../styles/types';
 import getStyles from '../styles/getStyles';
 
@@ -52,16 +53,18 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
     mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),
     rtl = false
   } = options;
+  const composeOptions = useCompose();
 
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
-    className,
-    displayNames: [displayName],
+    className: composeOptions?.className || className,
+    displayNames: composeOptions?.displayNames || [displayName],
     props: {
       ...mapPropsToStyles(),
-      ...mapPropsToInlineStyles()
+      ...mapPropsToInlineStyles(),
+      ...composeOptions?.stylesProps
     },
 
     // Context values
