@@ -3,6 +3,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { pxToRem } from '../../../../utils';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedItemProps, DropdownVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -12,10 +13,14 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     position: 'relative',
     border: v.selectedItemBorder,
     height: pxToRem(24),
+    ...getBorderFocusStyles({ siteVariables, borderRadius: '3px' }),
     fontWeight: siteVariables.fontWeightSemibold,
     ...(v.selectedItemBackgroundColor && {
       backgroundColor: v.selectedItemBackgroundColor
     }),
+    ':focus': {
+      outline: 0
+    },
     ':hover': {
       color: v.selectedItemColorHover,
       backgroundColor: v.selectedItemBackgroundColorHover
