@@ -113,11 +113,11 @@ describe('Input', () => {
       expect(inputComp.find('Icon[name="search"]').length).toBeGreaterThan(0);
     });
 
-    it('creates the "close" Icon component when the clearable prop is provided and the input has content, removes the icon and value when the icon is clicked', () => {
+    it('creates an empty Icon component when the clearable prop is provided and the input has content, removes the icon and value when the icon is clicked', () => {
       const inputComp = mount(<Input clearable />);
       const domNode = getInputDomNode(inputComp);
       setUserInputValue(inputComp, testValue); // user types into the input
-      const iconComp = inputComp.find('Icon[name="icon-close"]');
+      const iconComp = inputComp.find('Icon[name=""]');
 
       expect(domNode.value).toEqual(testValue); // input value is the one typed by the user
       expect(iconComp.length).toBeGreaterThan(0); // the 'x' icon appears
@@ -125,7 +125,7 @@ describe('Input', () => {
       iconComp.simulate('click'); // user clicks on 'x' icon
 
       expect(domNode.value).toEqual(''); // input value gets cleared
-      expect(inputComp.find('Icon[name="icon-close"]').length).toEqual(0); // the 'x' icon disappears
+      expect(inputComp.find('Icon[name=""]').length).toEqual(0); // the 'x' icon disappears
     });
   });
 });

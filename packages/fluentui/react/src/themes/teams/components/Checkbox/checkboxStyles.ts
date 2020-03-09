@@ -2,8 +2,19 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import Checkbox, { CheckboxProps } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from './checkboxVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
+import checkboxIndicatorUrl from './checkboxIndicatorUrl';
+import { pxToRem } from '../../../../utils';
 
 export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
+
+const commonToggleBeforeStyles = v => ({
+  content: "' '",
+  display: 'block',
+  borderRadius: '50%',
+  width: v.toggleIndicatorSize,
+  height: v.toggleIndicatorSize,
+  transition: 'margin .3s ease'
+});
 
 const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxVariables> = {
   root: ({ props: p, variables: v, theme: t }): ICSSInJSStyle => ({
@@ -26,17 +37,38 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
       color: v.textColorHover,
 
       [`& .${Checkbox.slotClassNames.indicator}`]: {
-        ...(p.checked && {
-          background: v.checkedBackgroundHover
-        }),
-
-        ...(!p.checked && {
-          borderColor: v.borderColorHover,
-
-          ...(p.toggle && {
-            color: v.borderColorHover
+        ...(!p.toggle && {
+          ...(p.checked && {
+            borderColor: v.checkedBackgroundHover,
+            backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackgroundHover)
+          }),
+          ...(!p.checked && {
+            borderColor: v.borderColorHover
           })
-        })
+        }),
+        ...(p.toggle &&
+          !p.disabled && {
+            borderColor: v.borderColorHover,
+
+            ':before': {
+              ...commonToggleBeforeStyles(v),
+              borderColor: v.borderColorHover,
+              borderStyle: v.borderStyle,
+              borderWidth: v.borderWidth,
+              margin: v.togglePadding,
+              background: 'transparent'
+            },
+
+            ...(p.checked && {
+              borderColor: v.checkedBorderColor,
+              background: v.checkedBackgroundHover,
+              ':before': {
+                ...commonToggleBeforeStyles(v),
+                margin: v.toggleCheckedPadding,
+                background: v.checkedIndicatorColor
+              }
+            })
+          })
       }
     },
 
@@ -55,8 +87,9 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     gridColumn: p.labelPosition === 'start' ? 3 : 1,
     '-ms-grid-row-align': 'center',
     boxShadow: 'unset',
+    width: pxToRem(16),
+    height: pxToRem(16),
 
-    background: v.background,
     borderColor: v.borderColor,
     borderStyle: v.borderStyle,
     borderRadius: v.borderRadius,
@@ -66,10 +99,13 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     padding: v.padding,
     userSelect: 'none',
 
+    backgroundImage: checkboxIndicatorUrl(v.indicatorColor, v.background),
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+
     ...(p.checked && {
-      background: v.checkedBackground,
       borderColor: v.checkedBorderColor,
-      color: v.checkedIndicatorColor
+      backgroundImage: checkboxIndicatorUrl(v.checkedIndicatorColor, v.checkedBackground)
     }),
 
     ...(p.disabled && {
@@ -80,8 +116,8 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     ...(p.disabled &&
       p.checked && {
         color: v.disabledCheckedIndicatorColor,
-        background: v.disabledBackgroundChecked,
-        borderColor: 'transparent'
+        borderColor: v.disabledBackgroundChecked,
+        backgroundImage: checkboxIndicatorUrl(v.disabledCheckedIndicatorColor, v.disabledBackgroundChecked)
       })
   }),
 
@@ -89,44 +125,49 @@ const checkboxStyles: ComponentSlotStylesPrepared<CheckboxStylesProps, CheckboxV
     '-ms-grid-row-align': 'center',
     gridColumn: p.labelPosition === 'start' ? 3 : 1,
     boxShadow: 'unset',
+    boxSizing: 'border-box',
 
     background: v.background,
     borderColor: v.borderColor,
     borderStyle: v.borderStyle,
     borderRadius: v.toggleBorderRadius,
     borderWidth: v.borderWidth,
-    color: v.borderColor,
     margin: v.toggleMargin,
-    padding: v.togglePadding,
-    transition: 'padding .3s ease',
     userSelect: 'none',
     width: v.toggleWidth,
     height: v.toggleHeight,
 
-    [`& svg`]: {
-      width: v.toggleIndicatorSize,
-      height: v.toggleIndicatorSize
+    ':before': {
+      ...commonToggleBeforeStyles(v),
+      borderColor: p.disabled ? v.disabledToggleIndicatorColor : v.borderColor,
+      borderStyle: v.borderStyle,
+      borderWidth: v.borderWidth,
+      margin: v.togglePadding
     },
 
     ...(p.checked && {
-      background: v.checkedBackground,
       borderColor: v.checkedBorderColor,
-      color: v.checkedIndicatorColor,
-      padding: v.toggleCheckedPadding
+      background: v.checkedBackground,
+      ':before': {
+        ...commonToggleBeforeStyles(v),
+        margin: v.toggleCheckedPadding,
+        background: v.checkedIndicatorColor
+      }
     }),
 
     ...(p.disabled && {
-      color: v.disabledToggleIndicatorColor,
       background: v.disabledBackground,
-      borderColor: v.disabledBorderColor
-    }),
-
-    ...(p.disabled &&
-      p.checked && {
-        color: v.disabledCheckedIndicatorColor,
+      borderColor: v.disabledBorderColor,
+      ...(p.checked && {
         background: v.disabledBackgroundChecked,
-        borderColor: 'transparent'
+        borderColor: 'transparent',
+        ':before': {
+          ...commonToggleBeforeStyles(v),
+          margin: v.toggleCheckedPadding,
+          background: v.disabledCheckedIndicatorColor
+        }
       })
+    })
   }),
 
   label: ({ props: p }): ICSSInJSStyle => ({
