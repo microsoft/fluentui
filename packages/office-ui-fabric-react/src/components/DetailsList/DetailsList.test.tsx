@@ -300,7 +300,7 @@ describe('DetailsList', () => {
     expect(_dragDropEvents2.onDragStart).toHaveBeenCalledTimes(1);
   });
 
-  fit('focuses into row element', () => {
+  it('focuses into row element', () => {
     const onRenderColumn = (item: any, index: number, column: IColumn) => {
       let value = item && column && column.fieldName ? item[column.fieldName] : '';
       if (value === null || value === undefined) {

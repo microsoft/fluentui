@@ -18,19 +18,30 @@ export { IsFocusVisibleClassName } from './setFocusVisibility';
  * the existence of global classnames, which simplifies logic overall.
  *
  * @param window - the window used to add the event listeners
+ * @deprecated Use useFocusRects hook or FocusRects component instead.
  */
 export function initializeFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean };
+  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean; disableFabricFocusRects: boolean };
+  if (win.disableFabricFocusRects === true) {
+    return;
+  }
 
   if (win && !win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;
     win.addEventListener('mousedown', _onMouseDown, true);
+    win.removeEventListener('pointerdown', _onPointerDown, true);
     win.addEventListener('keydown', _onKeyDown as () => void, true);
   }
 }
 
 function _onMouseDown(ev: MouseEvent): void {
   setFocusVisibility(false, ev.target as Element);
+}
+
+function _onPointerDown(ev: PointerEvent): void {
+  if (ev.pointerType !== 'mouse') {
+    setFocusVisibility(false, ev.target as Element);
+  }
 }
 
 function _onKeyDown(ev: KeyboardEvent): void {
