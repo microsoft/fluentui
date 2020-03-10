@@ -102,7 +102,7 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
   };
 
   static defaultProps = {
-    accessibility: radioGroupItemBehavior as Accessibility,
+    accessibility: radioGroupItemBehavior,
     indicator: {}
   };
 
