@@ -14,6 +14,7 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     height: pxToRem(24),
     overflow: 'visible',
     outline: 0,
+    fontWeight: siteVariables.fontWeightSemibold,
     ...(v.selectedItemBackgroundColor && {
       backgroundColor: v.selectedItemBackgroundColor
     }),

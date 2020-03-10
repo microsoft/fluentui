@@ -90,7 +90,7 @@ export default (siteVars): DropdownVariables => ({
   listItemHeaderLineHeight: siteVars.lineHeightSmall,
   listItemContentLineHeight: siteVars.lineHeightSmall,
   selectedItemBackgroundColor: siteVars.colorScheme.default.background,
-  selectedItemBackgroundColorHover: siteVars.colorScheme.brand.background1,
+  selectedItemBackgroundColorHover: siteVars.colorScheme.brand.backgroundHover2,
   selectedItemBorder: 'none',
   selectedItemColorHover: siteVars.colorScheme.default.foreground,
   selectedItemIconColor: siteVars.colorScheme.default.foreground1,

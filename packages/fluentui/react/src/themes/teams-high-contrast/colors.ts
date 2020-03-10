@@ -142,6 +142,7 @@ export const colorScheme: ColorSchemeMapping = {
 
     backgroundHover: accessibleCyan,
     backgroundHover1: accessibleCyan,
+    backgroundHover2: accessibleYellow,
 
     foregroundPressed: colors.black,
     foregroundPressed1: colors.black,
