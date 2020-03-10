@@ -18,18 +18,18 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ':hover': {
         color: v.colorActive,
 
-        ...(underlined && {
-          color: v.color
-        }),
-
         ...((iconOnly || vertical) && {
           color: v.colorActive,
           background: v.backgroundColorFocus
         }),
 
         ...(!active && {
-          ...(primary && !underlined && { color: v.colorActive }),
+          ...(primary && { color: v.colorActive }),
           background: v.backgroundColorFocus
+        }),
+
+        ...(underlined && {
+          color: v.color
         })
       },
 
