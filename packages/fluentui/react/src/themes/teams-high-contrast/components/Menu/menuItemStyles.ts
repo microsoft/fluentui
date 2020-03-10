@@ -17,6 +17,16 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       ':hover': {
         color: v.colorActive,
+
+        ...(underlined && {
+          color: v.color
+        }),
+
+        ...((iconOnly || vertical) && {
+          color: v.colorActive,
+          background: v.backgroundColorFocus
+        }),
+
         ...(!active && {
           ...(primary && !underlined && { color: v.colorActive }),
           background: v.backgroundColorFocus
@@ -34,19 +44,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         color: v.colorActive,
 
         ...(!underlined && { background: v.backgroundColorFocus })
-      }),
-
-      ...((iconOnly || vertical) && {
-        ':hover': {
-          color: v.colorActive,
-          background: v.backgroundColorFocus
-        }
-      }),
-
-      ...(underlined && {
-        ':hover': {
-          color: v.color
-        }
       }),
 
       ...(pointing &&
