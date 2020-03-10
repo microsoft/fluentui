@@ -30,6 +30,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Make `onKeyDown` returned by `useAccessibility()` hook referentially stable between component's rerenders @layershifter ([#12185](https://github.com/OfficeDev/office-ui-fabric-react/pull/12185))
 - Fix passing down `variables` in `ToolbarMenuItem` @layershifter ([#12204](https://github.com/OfficeDev/office-ui-fabric-react/pull/12204))
 
+### Features
+- Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
+
 <!--------------------------------[ v0.46.0 ]------------------------------- -->
 ## [v0.46.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.46.0) (2020-03-05)
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.45.0..fluentuizero_v0.46.0)
