@@ -6,7 +6,7 @@ import {
   IContextualMenuListProps,
   IContextualMenuStyleProps,
   IContextualMenuStyles,
-  IInternalContextualMenuItem
+  IContextualMenuItemRenderProps
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
@@ -459,7 +459,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     );
   };
 
-  private _renderMenuItem = (item: IInternalContextualMenuItem): React.ReactNode => {
+  private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     // tslint:disable-next-line:deprecation

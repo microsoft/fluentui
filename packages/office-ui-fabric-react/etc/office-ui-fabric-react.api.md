@@ -2960,6 +2960,20 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
 }
 
 // @public (undocumented)
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
+    // (undocumented)
+    focusableElementIndex: number;
+    // (undocumented)
+    hasCheckmarks: boolean;
+    // (undocumented)
+    hasIcons: boolean;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    totalItemCount: number;
+}
+
+// @public (undocumented)
 export interface IContextualMenuItemStyleProps {
     checked: boolean;
     className?: string;
@@ -2997,7 +3011,7 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
 // @public (undocumented)
 export interface IContextualMenuListProps {
     // (undocumented)
-    defaultMenuItemRenderer: (item: IInternalContextualMenuItem) => React.ReactNode;
+    defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
     // (undocumented)
     hasCheckmarks: boolean;
     // (undocumented)
@@ -5104,20 +5118,6 @@ export interface IImageStyles {
 export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     'aria-label'?: string;
     defaultVisibleValue?: string;
-}
-
-// @public (undocumented)
-export interface IInternalContextualMenuItem extends IContextualMenuItem {
-    // (undocumented)
-    focusableElementIndex: number;
-    // (undocumented)
-    hasCheckmarks: boolean;
-    // (undocumented)
-    hasIcons: boolean;
-    // (undocumented)
-    index: number;
-    // (undocumented)
-    totalItemCount: number;
 }
 
 // @public (undocumented)
