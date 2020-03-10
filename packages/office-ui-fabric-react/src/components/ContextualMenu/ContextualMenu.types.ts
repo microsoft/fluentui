@@ -267,19 +267,23 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 /**
  * {@docCategory ContextualMenu}
  */
+export interface IInternalContextualMenuItem extends IContextualMenuItem {
+  index: number;
+  focusableElementIndex: number;
+  totalItemCount: number;
+  hasCheckmarks: boolean;
+  hasIcons: boolean;
+}
+
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuListProps {
   items: IContextualMenuItem[];
   totalItemCount: number;
   hasCheckmarks: boolean;
   hasIcons: boolean;
-  defaultMenuItemRenderer: (
-    item: IContextualMenuItem,
-    index: number,
-    focusableElementIndex: number,
-    totalItemCount: number,
-    hasCheckmarks: boolean,
-    hasIcons: boolean
-  ) => React.ReactNode;
+  defaultMenuItemRenderer: (item: IInternalContextualMenuItem) => React.ReactNode;
 }
 
 /**
