@@ -2,6 +2,70 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 10 Mar 2020 12:25:14 GMT",
+      "tag": "office-ui-fabric-react_v7.101.0",
+      "version": "7.101.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ITag: key can be number, in addition to string.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "93886728575eb30677efac4e593c71f30eaed14e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix the legacy items wrapper styles.",
+            "author": "lijunle@gmail.com",
+            "commit": "2e985195c35027e9e6aa31e788168ec191d96903"
+          },
+          {
+            "comment": "restore onRenderIcon prop for ContextualMenuSplitButton",
+            "author": "kinhln@microsoft.com",
+            "commit": "a0e64f183eb1f65310e7e635145a71ce3238ddd8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "office-ui-fabric-react_v7.100.0",
+      "version": "7.100.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation.",
+            "author": "matejera@microsoft.com",
+            "commit": "7f20df70eadca62a05a64023121c7167d389ce70"
+          },
+          {
+            "comment": "Export GroupedListSection",
+            "author": "owcampbe@microsoft.com",
+            "commit": "31cb2dc96b17298470b88d1a879dac9b65128b54"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5cb5db07119d744a8a5247b6b0780f9005604b2d"
+          },
+          {
+            "comment": "withViewport: cleaning up resize observer.",
+            "author": "dzearing@microsoft.com",
+            "commit": "48db247b55f3e6f2809009c6a338c52b6b3e39bd"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Mar 2020 12:27:53 GMT",
       "tag": "office-ui-fabric-react_v7.99.0",
       "version": "7.99.0",

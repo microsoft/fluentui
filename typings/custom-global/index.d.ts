@@ -66,6 +66,6 @@ declare var process: {
      * For `mode` see: https://webpack.js.org/configuration/mode/#usage
      * For DefinePlugin see: https://webpack.js.org/plugins/define-plugin/#root
      */
-    NODE_ENV: "development" | "production"
+    NODE_ENV: 'development' | 'production';
   };
 };

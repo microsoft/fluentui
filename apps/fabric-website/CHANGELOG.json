@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.2",
+      "version": "7.10.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove trailing comma prevention hack",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb6203e8aa6f934c2a86e1f5912d8cf5a2cfb1cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Mar 2020 12:27:02 GMT",
       "tag": "@uifabric/fabric-website_v7.10.0",
       "version": "7.10.0",

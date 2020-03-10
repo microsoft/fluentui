@@ -1,7 +1,28 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 05 Mar 2020 12:27:53 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Mar 2020 12:25:14 GMT and should not be manually modified.
 
+## 7.101.0
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Minor changes
+
+- ITag: key can be number, in addition to string. (aneeshak@microsoft.com)
+### Patches
+
+- Fix the legacy items wrapper styles. (lijunle@gmail.com)
+- restore onRenderIcon prop for ContextualMenuSplitButton (kinhln@microsoft.com)
+## 7.100.0
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Minor changes
+
+- Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation. (matejera@microsoft.com)
+- Export GroupedListSection (owcampbe@microsoft.com)
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
+- withViewport: cleaning up resize observer. (dzearing@microsoft.com)
 ## 7.99.0
 Thu, 05 Mar 2020 12:27:53 GMT
 
