@@ -1,4 +1,4 @@
-import { Table, Button, Flex } from '@fluentui/react';
+import { Table, Button, Flex, MenuButton } from '@fluentui/react';
 import { gridNestedBehavior, gridCellWithFocusableElementBehavior, gridCellMultipleFocusableBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 
@@ -42,6 +42,8 @@ const moreActionCell = {
   accessibility: gridCellMultipleFocusableBehavior
 };
 
+const contextMenuItems = ['Add to selection', 'Remove', 'Download'];
+
 const rowsPlain = [
   {
     key: 1,
@@ -54,7 +56,8 @@ const rowsPlain = [
       moreOptionCell
     ],
     onClick: () => handleRowClick(1),
-    'aria-labelledby': 'name-1 age-1'
+    'aria-labelledby': 'name-1 age-1',
+    children: (Component, props) => <MenuButton menu={contextMenuItems} contextMenu trigger={<Component {...props} />} />
   },
   {
     key: 2,
@@ -66,7 +69,8 @@ const rowsPlain = [
       moreActionCell,
       moreOptionCell
     ],
-    onClick: () => handleRowClick(2)
+    onClick: () => handleRowClick(2),
+    children: (Component, props) => <MenuButton menu={contextMenuItems} contextMenu trigger={<Component {...props} />} />
   },
   {
     key: 3,
@@ -78,7 +82,8 @@ const rowsPlain = [
       {},
       moreOptionCell
     ],
-    onClick: () => handleRowClick(3)
+    onClick: () => handleRowClick(3),
+    children: (Component, props) => <MenuButton menu={contextMenuItems} contextMenu trigger={<Component {...props} />} />
   }
 ];
 
