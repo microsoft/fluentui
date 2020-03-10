@@ -1,9 +1,8 @@
-import { getComponentInfo, fluentuiMiddleware } from '@fluentui/react-docs';
+import { getComponentInfo, fluentuiSchema } from '@fluentui/react-docs';
 
 describe('Documents type annotation via JS docs', () => {
   it('generates docs for in-file interfaces', () => {
-    const componentInfo = getComponentInfo('./test/fixtures/documentation/ClassComponentInterface.tsx', null, fluentuiMiddleware);
-    // console.log(JSON.stringify(componentInfo, null, 2));
+    const componentInfo = getComponentInfo('./test/fixtures/documentation/ClassComponentInterface.tsx', null, fluentuiSchema);
 
     //------------------------------------------------
     // Component level tests
