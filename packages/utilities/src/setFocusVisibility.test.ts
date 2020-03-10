@@ -39,6 +39,7 @@ describe('setFocusVisibility', () => {
   beforeEach(() => {
     spyOn(getWindow, 'getWindow').and.returnValue(mockWindow);
     classNames = [];
+    // tslint:disable-next-line:deprecation
     initializeFocusRects(mockWindow as Window);
   });
 
