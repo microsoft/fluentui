@@ -6,6 +6,8 @@ import { select as d3Select } from 'd3-selection';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IChartProps, IChartDataPoint, IDataPoint } from '@uifabric/charting';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 
 import {
   IVerticalStackedBarChartProps,
@@ -17,7 +19,21 @@ const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVe
 type numericAxis = D3Axis<number | { valueOf(): number }>;
 type stringAxis = D3Axis<string>;
 
-export class VerticalStackedBarChartBase extends React.Component<IVerticalStackedBarChartProps, {}> {
+export interface IRefArrayData {
+  legendText?: string;
+  refElement?: SVGGElement;
+}
+export interface IVerticalStackedBarChartState {
+  isCalloutVisible: boolean;
+  isLegendSelected: boolean;
+  isLegendHovered: boolean;
+  selectedLegendTitle: string;
+  refSelected: any;
+  dataForHoverCard: number;
+  color: string;
+}
+
+export class VerticalStackedBarChartBase extends React.Component<IVerticalStackedBarChartProps, IVerticalStackedBarChartState> {
   private _points: IChartProps[];
   private _width: number;
   private _height: number;
@@ -25,6 +41,23 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
   private _yAxisTickCount: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
+  private _refArray: any;
+
+  public constructor(props: IVerticalStackedBarChartProps) {
+    super(props);
+    this.state = {
+      isCalloutVisible: false,
+      isLegendSelected: false,
+      isLegendHovered: false,
+      selectedLegendTitle: '',
+      refSelected: null,
+      dataForHoverCard: 0,
+      color: ''
+    };
+    // this._onLeave = this._onLeave.bind(this);
+    this._onBarLeave = this._onBarLeave.bind(this);
+    this._refArray = [];
+  }
 
   public render(): JSX.Element {
     this._adjustProps();
@@ -40,19 +73,36 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     this._points.map((singleChartData: IChartProps, index: number) => {
       const singleChartBar = isNumeric
         ? this._createBars(singleChartData, dataset)
-        : this._createStringBars(singleChartData, dataset, index);
+        : this._createStringBars(singleChartData, dataset, index, this.props.href!);
       bars.push(singleChartBar);
     });
+    const { isCalloutVisible } = this.state;
     return (
       <div className={this._classNames.root}>
         {this.props.chartLabel && <p className={this._classNames.chartLabel}>{this.props.chartLabel}</p>}
-        <svg className={this._classNames.chart}>
-          {/** transform: (0, height-margin.bottom) X-axis*/}
-          <g ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)} className={this._classNames.xAxis} />
-          {/**transform:  (margin.left, 0) Y-Axis*/}
-          <g ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)} className={this._classNames.yAxis} />
-          <g className={this._classNames.bars}>{bars}</g>
-        </svg>
+        <FocusZone direction={FocusZoneDirection.vertical}>
+          <svg className={this._classNames.chart}>
+            {/** transform: (0, height-margin.bottom) X-axis*/}
+            <g ref={(node: SVGGElement | null) => this._setXAxis(node, xAxis)} className={this._classNames.xAxis} />
+            {/**transform:  (margin.left, 0) Y-Axis*/}
+            <g ref={(node: SVGGElement | null) => this._setYAxis(node, yAxis)} className={this._classNames.yAxis} />
+            <g className={this._classNames.bars}>{bars}</g>
+          </svg>
+        </FocusZone>
+        {isCalloutVisible ? (
+          <Callout
+            gapSpace={5}
+            isBeakVisible={false}
+            target={this.state.refSelected}
+            setInitialFocus={true}
+            directionalHint={DirectionalHint.topRightEdge}
+          >
+            <div className={this._classNames.hoverCardRoot}>
+              <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
+              <div className={this._classNames.hoverCardDataStyles}>{this.state.dataForHoverCard}</div>
+            </div>
+          </Callout>
+        ) : null}
       </div>
     );
   }
@@ -74,7 +124,8 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       theme: theme!,
       width: this._width,
       height: this._height,
-      className
+      className,
+      legendColor: this.state.color
     });
   }
 
@@ -161,34 +212,108 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     return bar;
   }
 
-  private _createStringBars(singleChartData: IChartProps, dataset: IDataPoint[], indexNumber: number): JSX.Element[] {
+  private _onBarHover(customMessage: string, pointData: number, color: string, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+    mouseEvent.persist();
+    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)) {
+      this.setState({
+        refSelected: mouseEvent,
+        isCalloutVisible: true,
+        selectedLegendTitle: customMessage,
+        dataForHoverCard: pointData,
+        color: color
+      });
+    }
+  }
+
+  private _onBarLeave(): void {
+    this.setState({
+      isCalloutVisible: false
+    });
+  }
+
+  private _refCallback(element: SVGRectElement, legendTitle: string, index: number): void {
+    this._refArray[index] = { legendText: legendTitle, refElement: element };
+  }
+
+  private _onBarFocus(legendText: string, pointData: number, color: string, refArrayIndexNumber: number): void {
+    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)) {
+      this._refArray.map((obj: IRefArrayData, index: number) => {
+        if (obj.legendText === legendText && refArrayIndexNumber === index) {
+          this.setState({
+            refSelected: obj.refElement,
+            isCalloutVisible: true,
+            selectedLegendTitle: legendText,
+            dataForHoverCard: pointData,
+            color: color
+          });
+        }
+      });
+    }
+  }
+
+  private _redirectToUrl(href: string | undefined): void {
+    href ? (window.location.href = href) : '';
+  }
+
+  private _createStringBars(singleChartData: IChartProps, dataset: IDataPoint[], indexNumber: number, href: string): JSX.Element {
     const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
 
     const endpointDistance = 0.5 * (this._width / dataset.length);
     const xBarScale = d3ScaleLinear()
       .domain([0, dataset.length - 1])
-      .range([endpointDistance - 0.5 * this._barWidth, this._width - endpointDistance - 0.5 * this._barWidth]);
+      .range([endpointDistance - 0.5 * this._barWidth + 5, this._width - endpointDistance - 0.5 * this._barWidth - 5]); // added 5 here
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
       .range([0, this._height]);
 
     let startingPointOfY = 0;
+    // single bar chart
     const bar = singleChartData.chartData!.map((point: IChartDataPoint, index: number) => {
       const gap = index >= 1 ? 1 : 0;
       startingPointOfY = startingPointOfY + point.data! + gap;
       const color = point.color ? point.color : this._colors[index];
+      const refArrayIndexNumber = indexNumber * singleChartData.chartData!.length + index;
+
+      let shouldHighlight = true;
+      if (this.state.isLegendHovered || this.state.isLegendSelected) {
+        shouldHighlight = this.state.selectedLegendTitle === point.legend;
+      }
+
+      const { theme, styles, className } = this.props;
+      this._classNames = getClassNames(styles!, {
+        theme: theme!,
+        width: this._width,
+        height: this._height,
+        className: className,
+        shouldHighlight: shouldHighlight,
+        href: href,
+        legendColor: this.state.color
+      });
+
       return (
         <rect
           key={index} // change key value
+          className={point.placeHolder ? this._classNames.placeHolderOnHover : this._classNames.opacityChangeOnHover}
           x={xBarScale(indexNumber)}
           y={this._height - yBarScale(startingPointOfY)}
           width={this._barWidth}
           height={yBarScale(point.data!)}
           fill={color}
+          ref={(e: SVGRectElement) => {
+            this._refCallback(e, point.legend!, refArrayIndexNumber);
+          }}
+          data-is-focusable={true}
+          focusable={'true'}
+          onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, point.data, color)}
+          onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, point.data, color)}
+          onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
+          onFocus={this._onBarFocus.bind(this, point.legend!, point.data, color, refArrayIndexNumber)} // chech point.data = null case also
+          onBlur={this._onBarLeave}
+          onClick={point.placeHolder ? undefined : this._redirectToUrl.bind(this, href)}
         />
       );
     });
-    return bar;
+    return <g>{bar}</g>;
   }
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
@@ -214,5 +339,6 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
   private _createDateXAxis = () => {
     const xAxisData: Date[] = [];
     let sDate = new Date();
+    let lDate = new Date(-8640000000000000);
   };
 }

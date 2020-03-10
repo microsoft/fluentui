@@ -49,16 +49,51 @@ export interface IVerticalStackedBarChartProps {
   theme?: ITheme;
 
   /**
+   * Url that the data-viz needs to redirect to upon clicking on it
+   */
+  href?: string;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
 }
 
 export interface IVerticalStackedBarChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
   theme: ITheme;
+
+  /**
+   * Additional CSS class(es) to apply to the StackedBarChart.
+   */
   className?: string;
+
+  /**
+   * Width of the chart.
+   */
   width: number;
+
+  /**
+   * Height of the chart.
+   */
   height: number;
+
+  /**
+   * color of the datapoint legend
+   */
+  legendColor?: string;
+
+  /**
+   * Link to redirect if click action for graph
+   */
+  href?: string;
+
+  /**
+   * prop to check if the chart is selcted or hovered upon to determine opacity
+   */
+  shouldHighlight?: boolean;
 }
 
 export interface IVerticalStackedBarChartStyles {
@@ -121,4 +156,29 @@ export interface IVerticalStackedBarChartStyles {
    * Style for the element containing all the bars in the chart.
    */
   bars?: IStyle;
+
+  /**
+   * Style for the root of the hover card
+   */
+  hoverCardRoot: IStyle;
+
+  /**
+   * Style for the legend card title displayed in the hover card
+   */
+  hoverCardTextStyles: IStyle;
+
+  /**
+   * Style for the data displayed in the hover card
+   */
+  hoverCardDataStyles: IStyle;
+
+  /**
+   * Style to change the opacity of placeholder data point when we hover a single bar or legend
+   */
+  placeHolderOnHover: IStyle;
+
+  /**
+   * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
+   */
+  opacityChangeOnHover: IStyle;
 }
