@@ -20,9 +20,9 @@ const renderDropdown = (props: DropdownProps = {}) => {
 
   return {
     wrapper,
-    triggerButtonNode: triggerButtonWrapper.length ? triggerButtonWrapper.getDOMNode() : null,
-    toggleIndicatorNode: toggleIndicatorWrapper.length ? toggleIndicatorWrapper.getDOMNode() : null,
-    itemsListNode: itemsListWrapper.getDOMNode(),
+    triggerButtonNode: triggerButtonWrapper.length ? triggerButtonWrapper.getDOMNode<HTMLElement>() : null,
+    toggleIndicatorNode: toggleIndicatorWrapper.length ? toggleIndicatorWrapper.getDOMNode<HTMLElement>() : null,
+    itemsListNode: itemsListWrapper.getDOMNode<HTMLElement>(),
     searchInputNode: searchInputWrapper.length ? searchInputWrapper.getDOMNode<HTMLInputElement>() : null,
     getA11yMessageContainerNode: () => findIntrinsicElement(wrapper, '[role="status"]').getDOMNode(),
     getItemNodes: () => getItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
