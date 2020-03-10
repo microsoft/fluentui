@@ -24,6 +24,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Fixes
 - Updating `Menu` border in Teams dark theme to the correct color @notandrew ([#12171](https://github.com/OfficeDev/office-ui-fabric-react/pull/12171))
+
+### Fixes
 - Fix exports for themes to make them treeshakable @layershifter ([#12224](https://github.com/OfficeDev/office-ui-fabric-react/pull/12224))
 - Fix referentially unstable props in `TreeItem` @silviuavram ([#12182](https://github.com/OfficeDev/office-ui-fabric-react/pull/12182))
 
@@ -37,9 +39,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 ## [v0.46.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.46.0) (2020-03-05)
 [Compare changes](https://github.com/OfficeDev/office-ui-fabric-react/compare/fluentuizero_v0.45.0..fluentuizero_v0.46.0)
 
-
 ### BREAKING CHANGES
-- Restricted prop sets in the `ToolbarMenuItem` component which are passed to styles functions @pompomon ([#12120](https://github.com/OfficeDev/office-ui-fabric-react/pull/12120))
 - Restricted prop sets in the `TreeTitle` & `TreeItem` components which are passed to styles functions @layershifter ([#12103](https://github.com/OfficeDev/office-ui-fabric-react/pull/12103))
 - Changed `indicator` prop in `MenuItem` and `Menu` to be `Box` shorthand instead of `Icon` @mnajdova ([#12145](https://github.com/OfficeDev/office-ui-fabric-react/pull/12145))
 - Restricted prop sets in the `TableCell` component which are passed to styles functions @pompomon ([#12146](https://github.com/OfficeDev/office-ui-fabric-react/pull/12146))
