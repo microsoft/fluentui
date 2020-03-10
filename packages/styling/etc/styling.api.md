@@ -39,7 +39,7 @@ export function buildClassMap<T extends Object>(styles: T): {
 };
 
 // Warning: (ae-forgotten-export) The symbol "IColorClassNames" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export const ColorClassNames: IColorClassNames;
 
@@ -152,7 +152,7 @@ export function getScreenSelector(min: number, max: number): string;
 export function getTheme(depComments?: boolean): ITheme;
 
 // Warning: (ae-internal-missing-underscore) The name "getThemedContext" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
@@ -466,7 +466,7 @@ export interface IScheme {
 }
 
 // Warning: (ae-internal-missing-underscore) The name "ISchemeNames" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
@@ -494,6 +494,7 @@ export interface ISemanticColors extends ISemanticTextColors {
     disabledBorder: string;
     errorBackground: string;
     focusBorder: string;
+    infoBackground: string;
     inputBackground: string;
     inputBackgroundChecked: string;
     inputBackgroundCheckedHovered: string;
@@ -527,6 +528,7 @@ export interface ISemanticColors extends ISemanticTextColors {
     primaryButtonBackgroundHovered: string;
     primaryButtonBackgroundPressed: string;
     primaryButtonBorder: string;
+    severeWarningBackground: string;
     smallInputBorder: string;
     successBackground: string;
     variantBorder: string;
@@ -566,12 +568,13 @@ export interface ISemanticTextColors {
     primaryButtonTextDisabled: string;
     primaryButtonTextHovered: string;
     primaryButtonTextPressed: string;
+    severeWarningText: string;
     successText: string;
     warningText: string;
 }
 
 // Warning: (ae-internal-missing-underscore) The name "ISpacing" should be prefixed with an underscore because the declaration is marked as @internal
-// 
+//
 // @internal
 export interface ISpacing {
     // (undocumented)
@@ -702,7 +705,7 @@ export namespace ZIndexes {
 
 
 // Warnings were encountered during analysis:
-// 
+//
 // lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
 // lib/interfaces/ITheme.d.ts:72:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:6:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationDouble" needs to be exported by the entry point index.d.ts
