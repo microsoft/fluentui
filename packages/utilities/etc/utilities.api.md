@@ -284,7 +284,7 @@ export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
 export const FocusRects: React.FunctionComponent<{
-    window?: Window;
+    rootRef?: React.RefObject<HTMLElement>;
 }>;
 
 // @public
@@ -1165,7 +1165,7 @@ export const trProperties: string[];
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export function useFocusRects(window?: Window): void;
+export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 
 // @public
 export function values<T>(obj: any): T[];

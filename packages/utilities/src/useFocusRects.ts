@@ -9,7 +9,20 @@ export { IsFocusVisibleClassName } from './setFocusVisibility';
  * Counter for mounting component that uses focus rectangle.
  * We want to cleanup the listners before last component that uses focus rectangle unmounts.
  */
-let mountCounter = 0;
+let mountCounters = new WeakMap<Window, number>();
+
+function setMountCounters(key: Window, delta: number): number {
+  let newValue;
+  const currValue = mountCounters.get(key);
+  if (currValue) {
+    newValue = currValue + delta;
+  } else {
+    newValue = 1;
+  }
+
+  mountCounters.set(key, newValue);
+  return newValue;
+}
 
 /**
  * Initializes the logic which:
@@ -24,18 +37,17 @@ let mountCounter = 0;
  * This logic allows components on the page to conditionally render focus treatments based on
  * the existence of global classnames, which simplifies logic overall.
  *
- * @param window - the window used to add the event listeners
+ * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
-export function useFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean; disableFabricFocusRects: boolean };
+export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
+  const win = getWindow(rootRef?.current) as Window & { disableFabricFocusRects: boolean };
   React.useEffect(() => {
     if (win.disableFabricFocusRects === true) {
       return;
     }
 
-    mountCounter++;
-    if (win && !win.__hasInitializeFocusRects__ && win.disableFabricFocusRects !== false) {
-      win.__hasInitializeFocusRects__ = true;
+    let count = setMountCounters(win, 1);
+    if (win && count <= 1 && win.disableFabricFocusRects !== false) {
       win.addEventListener('mousedown', _onMouseDown, true);
       win.addEventListener('pointerdown', _onPointerDown, true);
       win.addEventListener('keydown', _onKeyDown, true);
@@ -46,9 +58,8 @@ export function useFocusRects(window?: Window): void {
         return;
       }
 
-      mountCounter--;
-      if (mountCounter === 0) {
-        win.__hasInitializeFocusRects__ = false;
+      count = setMountCounters(win, -1);
+      if (count === 0) {
         win.removeEventListener('mousedown', _onMouseDown, true);
         win.removeEventListener('pointerdown', _onPointerDown, true);
         win.removeEventListener('keydown', _onKeyDown, true);
@@ -61,8 +72,8 @@ export function useFocusRects(window?: Window): void {
  * Function Component wrapper which enables calling `useFocusRects` hook.
  * Renders nothing.
  */
-export const FocusRects: React.FunctionComponent<{ window?: Window }> = props => {
-  useFocusRects(props.window);
+export const FocusRects: React.FunctionComponent<{ rootRef?: React.RefObject<HTMLElement> }> = props => {
+  useFocusRects(props.rootRef);
   return null;
 };
 

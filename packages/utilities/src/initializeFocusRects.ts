@@ -29,7 +29,7 @@ export function initializeFocusRects(window?: Window): void {
   if (win && !win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;
     win.addEventListener('mousedown', _onMouseDown, true);
-    win.removeEventListener('pointerdown', _onPointerDown, true);
+    win.addEventListener('pointerdown', _onPointerDown, true);
     win.addEventListener('keydown', _onKeyDown as () => void, true);
   }
 }

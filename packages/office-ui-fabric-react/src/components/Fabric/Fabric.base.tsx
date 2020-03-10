@@ -4,7 +4,6 @@ import {
   getNativeProps,
   divProperties,
   classNamesFunction,
-  getWindow,
   getDocument,
   memoizeFunction,
   getRTL,
@@ -48,7 +47,7 @@ export class FabricBase extends React.Component<IFabricProps> {
     return (
       <>
         {renderedContent}
-        <FocusRects window={getWindow(this._rootElement.current)} />
+        <FocusRects rootRef={this._rootElement} />
       </>
     );
   }
