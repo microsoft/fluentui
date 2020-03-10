@@ -17,7 +17,7 @@ import {
   ProviderContextPrepared,
   FluentComponentStaticProps
 } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 
@@ -40,7 +40,7 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   disabled?: SupportedIntrinsicInputProps['disabled'];
 
   /** A checkbox's indicator icon can be customized. */
-  icon?: ShorthandValue<IconProps>;
+  indicator?: ShorthandValue<BoxProps>;
 
   /** A checkbox can render a label next to its indicator. */
   label?: ShorthandValue<TextProps>;
@@ -74,7 +74,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
 
-  const { checked, className, defaultChecked, design, disabled, label, labelPosition, icon, styles, toggle, variables } = props;
+  const { checked, className, defaultChecked, design, disabled, label, labelPosition, indicator, styles, toggle, variables } = props;
 
   const { state, actions } = useStateManager(createCheckboxManager, {
     mapPropsToInitialState: () => ({ checked: defaultChecked }),
@@ -153,13 +153,10 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
       })}
     >
       {labelPosition === 'start' && labelElement}
-      {Icon.create(icon, {
+      {Box.create(indicator, {
         defaultProps: () =>
-          getA11Props('icon', {
-            outline: toggle && !state.checked,
-            size: toggle ? 'medium' : 'smaller',
+          getA11Props('indicator', {
             className: Checkbox.slotClassNames.indicator,
-            name: toggle ? 'icon-circle' : 'icon-checkmark',
             styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox
           })
       })}
@@ -176,7 +173,7 @@ Checkbox.className = 'ui-checkbox';
 
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
-  icon: {} as any,
+  indicator: {},
   labelPosition: 'end'
 };
 Checkbox.propTypes = {
@@ -186,7 +183,7 @@ Checkbox.propTypes = {
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  indicator: customPropTypes.shorthandAllowingChildren,
   label: customPropTypes.itemShorthand,
   labelPosition: PropTypes.oneOf(['start', 'end']),
   onChange: PropTypes.func,

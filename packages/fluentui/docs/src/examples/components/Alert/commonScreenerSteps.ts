@@ -7,7 +7,11 @@ const selectors = {
 const focusDismissAction: ScreenerStep = (builder, keys) => builder.keys('body', keys.tab);
 
 export const getFocusScreenerSteps = (): ScreenerSteps => [
-  (builder, keys) => focusDismissAction(builder, keys).snapshot('Focuses the action button')
+  (builder, keys) =>
+    focusDismissAction(builder, keys)
+      .snapshot('Focuses the action button')
+      .hover(selectors.dismissAction)
+      .snapshot('Hovers the focused action button')
 ];
 
 export const getHoverScreenerSteps = (): ScreenerSteps => [

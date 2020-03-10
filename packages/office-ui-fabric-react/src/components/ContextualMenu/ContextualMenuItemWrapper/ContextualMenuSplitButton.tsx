@@ -117,12 +117,15 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
       // tslint:disable:deprecation
       name: item.name,
       text: item.text || item.name,
+      secondaryText: item.secondaryText,
       // tslint:enable:deprecation
       className: classNames.splitPrimary,
       canCheck: item.canCheck,
       isChecked: item.isChecked,
       checked: item.checked,
       iconProps: item.iconProps,
+      onRenderIcon: item.onRenderIcon,
+      data: item.data,
       'data-is-focusable': false
     };
 
