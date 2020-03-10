@@ -169,7 +169,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     fontWeight: 'bold'
   }),
 
-  toggleIndicator: ({ variables: v }) => ({
+  toggleIndicator: ({ props: p, variables: v }) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
@@ -177,7 +177,9 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     backgroundImage: toggleIndicatorUrl(v.color),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    cursor: 'pointer',
+    ...(!p.disabled && {
+      cursor: 'pointer'
+    }),
     userSelect: 'none',
 
     margin: 0,
