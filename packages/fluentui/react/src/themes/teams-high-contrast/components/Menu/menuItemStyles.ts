@@ -77,7 +77,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         }),
 
       ...(disabled && {
-        cursor: 'default',
         ':hover': {
           // reset all existing hover styles
         }
