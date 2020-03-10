@@ -280,8 +280,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _enterKeytipMode(): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
-      this._buildTree();
-      this._setKeytips();
+      if (this._keytipManager.delayUpdatingKeytipChange) {
+        this._buildTree();
+        this._setKeytips();
+      }
       this._keytipTree.currentKeytip = this._keytipTree.root;
       // Show children of root
       this.showKeytips(this._keytipTree.getChildren());

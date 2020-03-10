@@ -339,6 +339,8 @@ describe('KeytipLayer', () => {
   describe('event listeners', () => {
     beforeEach(() => {
       jest.useFakeTimers();
+      ktpMgr.delayUpdatingKeytipChange = false;
+      ktpMgr.inKeytipMode = false;
 
       // Add keytips to the manager
       ktpMgr.keytips = {
@@ -359,7 +361,7 @@ describe('KeytipLayer', () => {
       jest.useRealTimers();
     });
 
-    it('keytipAdded event does not show a keytip if the current keytip is its parent when not in keytip mode', () => {
+    it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
       ktpMgr.register({
@@ -370,12 +372,28 @@ describe('KeytipLayer', () => {
 
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
       expect(visibleKeytips).toHaveLength(1);
+      expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
+    });
+
+    it('keytipAdded event does not show a keytip if the current keytip is its parent when delay updating and not in keytip mode', () => {
+      ktpMgr.delayUpdatingKeytipChange = true;
+      ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
+      // Add a child under B
+      ktpMgr.register({
+        content: 'X',
+        keySequences: ['b', 'x']
+      });
+      jest.runAllTimers();
+
+      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
+      expect(visibleKeytips).toHaveLength(0);
       expect(getKeytip(visibleKeytips, 'X')).toBeUndefined();
     });
 
-    it('keytipAdded event delay-shows a keytip if the current keytip is its parent when in keytip mode', () => {
-      ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
+    it('keytipAdded event delay-shows a keytip if the current keytip is its parent when delay updating and in keytip mode', () => {
+      ktpMgr.delayUpdatingKeytipChange = true;
       ktpMgr.inKeytipMode = true;
+      ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
       ktpMgr.register({
         content: 'X',

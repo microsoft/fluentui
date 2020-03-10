@@ -25,6 +25,10 @@ export class KeytipManager {
   // Used for an override in special cases (e.g. Disable entering keytip mode when a modal is shown)
   public shouldEnterKeytipMode = true;
 
+  // Boolean to indicate whether to delay firing an event to update subscribers of
+  // keytip data changed.
+  public delayUpdatingKeytipChange = false;
+
   /**
    * Static function to get singleton KeytipManager instance
    *
@@ -32,6 +36,17 @@ export class KeytipManager {
    */
   public static getInstance(): KeytipManager {
     return this._instance;
+  }
+
+  /**
+   * Initialization code to set set parameters to define
+   * how the KeytipManager handles keytip data.
+   *
+   * @param delayUpdatingKeytipChange - T/F if we should delay notifiying keytip subscribers
+   * of keytip changes
+   */
+  public init(delayUpdatingKeytipChange: boolean) {
+    this.delayUpdatingKeytipChange = delayUpdatingKeytipChange;
   }
 
   /**
@@ -54,7 +69,7 @@ export class KeytipManager {
     persisted ? (this.persistedKeytips[uniqueKeytip.uniqueID] = uniqueKeytip) : (this.keytips[uniqueKeytip.uniqueID] = uniqueKeytip);
 
     // We only want to add something new if we are currently showing keytip mode
-    if (this.inKeytipMode) {
+    if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
       const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_ADDED : KeytipEvents.KEYTIP_ADDED;
       EventGroup.raise(this, event, {
         keytip: props,
@@ -86,7 +101,7 @@ export class KeytipManager {
       this.sequenceMapping[uniqueKeytip.keytip.keySequences.toString()] = uniqueKeytip.keytip;
 
       // Raise event only if we are currently in keytip mode
-      if (this.inKeytipMode) {
+      if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
         EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
           keytip: uniqueKeytip.keytip,
           uniqueID: uniqueKeytip.uniqueID
@@ -108,7 +123,7 @@ export class KeytipManager {
 
     const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_REMOVED : KeytipEvents.KEYTIP_REMOVED;
     // Update keytips only if we're in keytip mode
-    if (this.inKeytipMode) {
+    if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
       EventGroup.raise(this, event, {
         keytip: keytipToRemove,
         uniqueID: uniqueID
