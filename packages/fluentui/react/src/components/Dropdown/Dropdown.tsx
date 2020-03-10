@@ -478,12 +478,15 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                           accessibility: indicatorBehavior
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
-                          ...(!disabled && {
-                            onClick: e => {
-                              _.invoke(predefinedProps, 'onClick', e);
-                              getToggleButtonProps().onClick(e);
+                          onClick: e => {
+                            if (disabled) {
+                              e.preventDefault();
+                              return;
                             }
-                          })
+
+                            _.invoke(predefinedProps, 'onClick', e);
+                            getToggleButtonProps({ disabled }).onClick(e);
+                          }
                         })
                       })}
                   {this.renderItemsList(
@@ -523,6 +526,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const triggerButtonId = triggerButton['id'] || this.defaultTriggerButtonId;
 
     const triggerButtonProps = getToggleButtonProps({
+      disabled,
       onFocus: this.handleTriggerButtonOrListFocus,
       onBlur: this.handleTriggerButtonBlur,
       onKeyDown: e => {
@@ -548,18 +552,38 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
             onClick: e => {
+              if (disabled) {
+                e.preventDefault();
+                return;
+              }
+
               onClick(e);
               _.invoke(predefinedProps, 'onClick', e, predefinedProps);
             },
             onFocus: e => {
+              if (disabled) {
+                e.preventDefault();
+                return;
+              }
+
               onFocus(e);
               _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
             },
             onBlur: e => {
+              if (disabled) {
+                e.preventDefault();
+                return;
+              }
+
               onBlur(e);
               _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
             },
             onKeyDown: e => {
+              if (disabled) {
+                e.preventDefault();
+                return;
+              }
+
               onKeyDown(e);
               _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
             }
@@ -863,12 +887,24 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     getInputProps: (options?: GetInputPropsOptions) => any
   ) => (predefinedProps: DropdownSearchInputProps) => {
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
       this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
+
       e.nativeEvent['preventDownshiftDefault'] = true;
       _.invoke(predefinedProps, 'onInputBlur', e, searchInputProps);
     };
+    const { disabled } = this.props;
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+      if (disabled) {
+        e.preventDefault();
+        return;
+      }
+
       switch (keyboardKey.getCode(e)) {
         case keyboardKey.Tab:
           this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
@@ -902,6 +938,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // user handlers were also added to our handlers previously, at the beginning of this function.
       accessibilityInputProps: {
         ...getInputProps({
+          disabled,
           onBlur: e => {
             handleInputBlur(e, predefinedProps);
           },
@@ -913,6 +950,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // same story as above for getRootProps.
       accessibilityComboboxProps,
       onFocus: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
+        if (disabled) {
+          e.preventDefault();
+          return;
+        }
+
         this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
