@@ -71,13 +71,12 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           boxShadow: 'none'
         },
 
-        ':focus': {
-          ...borderFocusStyles[':focus']
-        },
-
+        ':focus': borderFocusStyles[':focus'],
         ':focus-visible': {
           ...borderFocusStyles[':focus-visible'],
-          borderColor: v.borderColor,
+          backgroundColor: v.backgroundColorFocus,
+          borderColor: v.borderColorFocus,
+          color: v.colorFocus,
           borderWidth,
 
           ':hover': {
@@ -121,10 +120,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           boxShadow: 'none',
           ...borderFocusStyles[':focus']
         },
-
-        ':focus-visible': {
-          ...borderFocusStyles[':focus-visible']
-        },
+        ':focus-visible': borderFocusStyles[':focus-visible'],
 
         ...(p.primary && {
           color: v.textPrimaryColor
@@ -145,12 +141,10 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
             boxShadow: 'none'
           },
 
-          ':focus': {
-            ...borderFocusStyles[':focus']
-          },
-
+          ':focus': borderFocusStyles[':focus'],
           ':focus-visible': {
-            ...borderFocusStyles[':focus-visible']
+            ...borderFocusStyles[':focus-visible'],
+            backgroundColor: v.primaryBackgroundColorFocus
           },
 
           ':hover': {
