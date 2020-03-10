@@ -30,12 +30,13 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(!underlined && { background: v.backgroundColorActive })
       }),
 
-      ...((iconOnly || vertical) && {
-        ...(isFromKeyboard && {
-          color: v.colorActive,
-          background: v.backgroundColorFocus
-        }),
+      ...(isFromKeyboard && {
+        color: v.colorActive,
 
+        ...(!underlined && { background: v.backgroundColorFocus })
+      }),
+
+      ...((iconOnly || vertical) && {
         ':hover': {
           color: v.colorActive,
           background: v.backgroundColorFocus
@@ -45,10 +46,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ...(underlined && {
         ':hover': {
           color: v.color
-        },
-        ...(isFromKeyboard && {
-          color: v.colorActive
-        })
+        }
       }),
 
       ...(pointing &&
