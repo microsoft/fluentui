@@ -49,13 +49,11 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 
   public componentDidMount(): void {
     let { delay } = this.props;
-    this._timeoutId = (setTimeout(() => {
+    this._timeoutId = window.setTimeout(() => {
       this.setState({
         isRendered: true
       });
-      // This cast has to be done so that Fluent can take @uifabric/utilities as a dependency given diferent transpilations between TS to
-      // ES5 and babel to ES6-like.
-    }, delay) as unknown) as number;
+    }, delay);
   }
 
   public componentWillUnmount(): void {
