@@ -1304,6 +1304,8 @@ describe('Dropdown', () => {
         disabled: true
       });
 
+      expect(triggerButtonNode).toHaveAttribute('disabled');
+
       clickOnTriggerButton();
 
       expect(getItemNodes()).toHaveLength(0);
@@ -1322,6 +1324,8 @@ describe('Dropdown', () => {
         disabled: true,
         search: true
       });
+
+      expect(searchInputNode).toHaveAttribute('disabled');
 
       keyDownOnSearchInput('ArrowDown');
 
