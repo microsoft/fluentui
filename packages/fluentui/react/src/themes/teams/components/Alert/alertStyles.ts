@@ -118,8 +118,7 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
 
   dismissAction: ({ variables: v, props: p, theme: { siteVariables } }): ICSSInJSStyle => {
     const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
-    const borderFocusStyles = getBorderFocusStyles({ siteVariables });
-
+    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
     return {
       height: v.dismissActionSize,
       minWidth: v.dismissActionSize,
@@ -129,12 +128,24 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
       ...getIconFillOrOutlineStyles({ outline: true }),
 
       ':hover': {
+        backgroundColor: v.hoverBackgroundColor,
         color: 'currentColor',
-        ...iconFilledStyles
+        ...iconFilledStyles,
+        // TODO: consider creating dedicated method for border styles on hover
+        ...getBorderFocusStyles({
+          variables: {
+            borderRadius: v.dismissActionHoverBorderRadius,
+            borderWidth: v.dismissActionHoverBorderWidth,
+            focusInnerBorderColor: v.dismissActionHoverInnerBorderColor,
+            focusOuterBorderColor: v.dismissActionHoverOuterBorderColor,
+            zIndexes: { foreground: v.dismissActionHoverZIndex }
+          }
+        })[':focus-visible']
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
+        backgroundColor: v.focusBackgroundColor,
         ...iconFilledStyles,
         ...borderFocusStyles[':focus-visible']
       }
