@@ -9,7 +9,6 @@ import parseDefaultValue from './parseDefaultValue';
 import { ComponentInfo, ComponentProp, FileInfo } from './types';
 import * as docgen from './docgen';
 import parseDocblock from './parseDocblock';
-// import getShorthandInfo from './getShorthandInfo';
 
 const getFileInfo = (filepath: string): FileInfo => {
   const absPath = path.resolve(process.cwd(), filepath);
@@ -43,7 +42,7 @@ const getFileInfo = (filepath: string): FileInfo => {
   };
 };
 
-const getComponentInfoWithoutMiddleware = (filepath: string, ignoredParentInterfaces: string[] = []): ComponentInfo => {
+const getComponentInfoDefaultSchema = (filepath: string, ignoredParentInterfaces: string[] = []): ComponentInfo => {
   const { absPath, dir, filename, filenameWithoutExt, info } = getFileInfo(filepath);
 
   const componentFile = Babel.parse(fs.readFileSync(absPath).toString(), {
@@ -105,23 +104,14 @@ const getComponentInfoWithoutMiddleware = (filepath: string, ignoredParentInterf
   let type = componentType;
 
   return {
-    // ...getShorthandInfo(componentFile, info.displayName),
-    // apiPath,
-    // behaviors,
-    // componentClassName,
     constructorName,
     Component,
     displayName: info.displayName,
     docblock,
     filename,
     filenameWithoutExt,
-    // isChild,
-    // isParent,
-    // parentDisplayName,
     props,
     repoPath,
-    // subcomponentName,
-    // subcomponents,
     type
   };
 };
@@ -129,12 +119,12 @@ const getComponentInfoWithoutMiddleware = (filepath: string, ignoredParentInterf
 const getComponentInfo = <T extends ComponentInfo>(
   filepath: string,
   ignoredParentInterfaces: string[] = [],
-  middleware?: (fileInfo: FileInfo, ignoredParentInterfaces: string[], componentInfo: ComponentInfo) => T
+  schemaResolver?: (fileInfo: FileInfo, ignoredParentInterfaces: string[], componentInfo: ComponentInfo) => T
 ): T | ComponentInfo => {
-  const componentInfo = getComponentInfoWithoutMiddleware(filepath, ignoredParentInterfaces);
-  if (middleware) {
+  const componentInfo = getComponentInfoDefaultSchema(filepath, ignoredParentInterfaces);
+  if (schemaResolver) {
     const fileInfo = getFileInfo(filepath);
-    return middleware(fileInfo, (ignoredParentInterfaces = []), componentInfo);
+    return schemaResolver(fileInfo, (ignoredParentInterfaces = []), componentInfo);
   }
 
   return componentInfo;
