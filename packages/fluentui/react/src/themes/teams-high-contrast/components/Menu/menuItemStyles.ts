@@ -19,12 +19,10 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         color: v.colorActive,
 
         ...((iconOnly || vertical) && {
-          color: v.colorActive,
           background: v.backgroundColorFocus
         }),
 
         ...(!active && {
-          ...(primary && { color: v.colorActive }),
           background: v.backgroundColorFocus
         }),
 
