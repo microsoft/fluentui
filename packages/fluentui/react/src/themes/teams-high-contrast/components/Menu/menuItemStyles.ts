@@ -11,49 +11,38 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
     const { iconOnly, isFromKeyboard, vertical, active, underlined, primary, pointing, disabled } = p;
 
     return {
+      [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+        backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
+      },
+
       ':hover': {
         color: v.colorActive,
         ...(!active && {
           ...(primary && !underlined && { color: v.colorActive }),
           background: v.backgroundColorFocus
-        }),
-        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-          backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-        }
+        })
       },
 
       ...(active &&
         !underlined && {
           background: v.backgroundColorActive,
-          color: v.colorActive,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
+          color: v.colorActive
         }),
 
       ...((iconOnly || vertical) && {
         ...(isFromKeyboard && {
           color: v.colorActive,
-          background: v.backgroundColorFocus,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
+          background: v.backgroundColorFocus
         }),
 
         ...(active && {
           color: v.colorActive,
-          background: v.backgroundColorActive,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
+          background: v.backgroundColorActive
         }),
 
         ':hover': {
           color: v.colorActive,
-          background: v.backgroundColorFocus,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
+          background: v.backgroundColorFocus
         }
       }),
 
