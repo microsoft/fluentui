@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation.",
-  "packageName": "office-ui-fabric-react",
-  "email": "matejera@microsoft.com",
-  "commit": "7f20df70eadca62a05a64023121c7167d389ce70",
-  "dependentChangeType": "patch",
-  "date": "2020-02-28T00:19:22.382Z"
-}

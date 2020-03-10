@@ -11,7 +11,7 @@ export interface ReactAccessibilityBehavior extends AccessibilityDefinition {
 }
 
 export type AccessibilityKeyHandlers = {
-  [slotName: string]: AccessibilityHandlerProps;
+  [slotName: string]: AccessibilityHandlerProps | undefined;
 };
 
 export type AccessibilityHandlerProps = {

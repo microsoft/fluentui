@@ -77,6 +77,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
 
 export interface InputState {
   value?: InputProps['value'];
+  hasValue?: boolean;
 }
 
 class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> {
@@ -115,6 +116,14 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
   };
 
   static autoControlledProps = ['value'];
+
+  static getAutoControlledStateFromProps(props: InputProps, state: InputState): Partial<InputState> {
+    const { value } = state;
+
+    return {
+      hasValue: !!value && (value as string).length !== 0
+    };
+  }
 
   actionHandlers = {
     clear: (e: React.KeyboardEvent) => {
@@ -202,7 +211,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     const { value } = this.state;
 
     if (clearable && (value as string).length !== 0) {
-      return 'icon-close';
+      return { name: '' };
     }
 
     return icon || null;

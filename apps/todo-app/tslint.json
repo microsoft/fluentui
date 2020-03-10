@@ -3,7 +3,6 @@
   "rules": {
     "deprecation": false,
     "no-any": false,
-    "typedef": [false],
     "prefer-const": false
   }
 }

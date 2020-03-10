@@ -21,7 +21,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     const { borderWidth } = siteVariables;
 
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
+      variables: siteVariables,
       borderPadding: borderWidth,
       ...(p.circular && {
         borderPadding: pxToRem(4)
