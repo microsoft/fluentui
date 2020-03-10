@@ -14,7 +14,7 @@ export interface ITag {
   name: string;
 
   /** Unique key for the item. */
-  key: string;
+  key: string | number;
 }
 
 /**

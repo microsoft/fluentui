@@ -3,7 +3,7 @@ import { AttachmentVariables } from '../../../teams/components/Attachment/attach
 export default (siteVariables: any): Partial<AttachmentVariables> => ({
   borderColor: siteVariables.colors.white,
   backgroundColor: siteVariables.colors.black,
-  backgroundColorHover: siteVariables.accessibleYellow,
+  backgroundColorHover: siteVariables.accessibleCyan,
   textColor: siteVariables.colors.white,
   textColorHover: siteVariables.colors.black,
   boxShadow: undefined,
