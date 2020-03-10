@@ -7,8 +7,9 @@ export default (siteVars: any): Partial<RadioGroupItemVariables> => ({
   textColorDefaultHoverFocus: siteVars.colors.white,
   textColorChecked: siteVars.colors.white,
 
-  iconBorderColorDefaultHover: siteVars.accessibleCyan,
-  iconBorderColorChecked: siteVars.accessibleCyan,
+  indicatorBorderColorDefault: siteVars.colors.white,
+  indicatorBorderColorDefaultHover: siteVars.accessibleCyan,
+  indicatorBorderColorChecked: siteVars.accessibleCyan,
 
-  iconBackgroundColorChecked: siteVars.accessibleCyan
+  indicatorBackgroundColorChecked: siteVars.accessibleCyan
 });

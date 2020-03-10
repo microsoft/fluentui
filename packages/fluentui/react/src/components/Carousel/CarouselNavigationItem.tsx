@@ -14,23 +14,21 @@ import {
   ShorthandFactory,
   ContentComponentProps,
   applyAccessibilityKeyHandlers,
-  SizeValue,
   UIComponent
 } from '../../utils';
 import { withSafeTypeForAs, WithAsProp, ShorthandValue, ComponentEventHandler } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
-import Box from '../Box/Box';
+import Box, { BoxProps } from '../Box/Box';
 
 export interface CarouselNavigationItemSlotClassNames {
-  wrapper: string;
+  indicator: string;
 }
 
 export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** A menu item can be active. */
   active?: boolean;
 
-  /** Name or shorthand for Carousel Navigation Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  /** Indicator for the Carousel Navigation Item. */
+  indicator?: ShorthandValue<BoxProps>;
 
   /** A Carousel Navigation may have just icons. */
   iconOnly?: boolean;
@@ -61,12 +59,16 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
 
   static className = 'ui-carousel__navigationitem';
 
+  static slotClassNames: CarouselNavigationItemSlotClassNames = {
+    indicator: `${CarouselNavigationItem.className}__indicator`
+  };
+
   static create: ShorthandFactory<CarouselNavigationItemProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
     active: PropTypes.bool,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    indicator: customPropTypes.shorthandAllowingChildren,
     iconOnly: PropTypes.bool,
     index: PropTypes.number,
     onClick: PropTypes.func,
@@ -78,11 +80,11 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
   static defaultProps = {
     accessibility: tabBehavior as Accessibility,
     as: 'li',
-    icon: { name: 'icon-circle', size: 'smallest' as SizeValue }
+    indicator: {}
   };
 
   renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
-    const { children, content, icon } = this.props;
+    const { children, content, indicator } = this.props;
 
     return childrenExist(children) ? (
       children
@@ -97,10 +99,10 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
         {...unhandledProps}
       >
-        {Icon.create(icon, {
+        {Box.create(indicator, {
           defaultProps: () => ({
-            xSpacing: !!content ? 'after' : 'none',
-            styles: styles.icon
+            className: CarouselNavigationItem.slotClassNames.indicator,
+            styles: styles.indicator
           })
         })}
         {Box.create(content, {

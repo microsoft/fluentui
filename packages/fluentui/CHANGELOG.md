@@ -19,6 +19,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - Replaced `icon` with `indicator` in the `Checkbox` component and change it's type to `ShorthandValue<BoxProps>` @mnajdova ([#12183](https://github.com/OfficeDev/office-ui-fabric-react/pull/12183))
+- Changed type of `control` in `Embed` from `ShorthandValue<IconProps>` to `ShorthandValue<BoxProps>` @mnajdova ([#12242](https://github.com/OfficeDev/office-ui-fabric-react/pull/12242))
+- Renamed `icon` on `indicator` and change the type from `ShorthandValue<IconProps>` to `ShorthandValue<BoxProps>` in `RadioGroupItem` and `CarouselNavigationItem` @mnajdova ([#12242](https://github.com/OfficeDev/office-ui-fabric-react/pull/12242))
 
 ### Fixes
 - Updating `Menu` border in Teams dark theme to the correct color @notandrew ([#12171](https://github.com/OfficeDev/office-ui-fabric-react/pull/12171))
