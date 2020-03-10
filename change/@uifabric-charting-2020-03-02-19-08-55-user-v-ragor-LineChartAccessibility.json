@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Line chart Accessibility with screen reader",
+  "packageName": "@uifabric/charting",
+  "email": "v-satgar@microsoft.com",
+  "commit": "403f5effff2c0cdf28cff73328f629208a1bb418",
+  "dependentChangeType": "patch",
+  "date": "2020-03-02T13:38:54.964Z"
+}
