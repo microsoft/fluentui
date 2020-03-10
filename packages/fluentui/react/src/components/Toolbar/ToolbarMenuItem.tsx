@@ -1,5 +1,4 @@
 import { Accessibility, toolbarMenuItemBehavior, ToolbarMenuItemBehaviorProps, indicatorBehavior } from '@fluentui/accessibility';
-import { mergeComponentVariables } from '@fluentui/styles';
 import * as React from 'react';
 import * as _ from 'lodash';
 import cx from 'classnames';
@@ -17,6 +16,7 @@ import {
   getUnhandledProps,
   useAccessibility
 } from '@fluentui/react-bindings';
+import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -45,7 +45,8 @@ import { Popper } from '../../utils/positioner';
 import Box, { BoxProps } from '../Box/Box';
 import Icon, { IconProps } from '../Icon/Icon';
 import Popup, { PopupProps } from '../Popup/Popup';
-import { ToolbarMenuProps, ToolbarMenuItemShorthandKinds, default as ToolbarMenu } from './ToolbarMenu';
+import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
+import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -126,6 +127,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenuItem.displayName, context.telemetry);
   setStart();
+
   const {
     active,
     activeIndicator,
@@ -143,15 +145,22 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     styles,
     variables
   } = props;
+
   const [menuOpen, setMenuOpen] = useAutoControlled({
     defaultValue: props.defaultMenuOpen,
     value: props.menuOpen,
     initialValue: false
   });
+
   const itemRef = React.useRef<HTMLElement>();
   const menuRef = React.useRef<HTMLElement>();
+
+  const parentVariables = React.useContext(ToolbarVariablesContext);
+  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(ToolbarMenuItem.handledProps, props);
+
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: ToolbarMenuItem.displayName,
     mapPropsToBehavior: () => ({
@@ -188,7 +197,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
       className,
       design,
       styles,
-      variables
+      variables: mergedVariables
     }),
     rtl: context.rtl
   });
@@ -258,7 +267,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     }
   };
 
-  const handleMenuOverrides = variables => (predefinedProps: ToolbarMenuProps) => ({
+  const handleMenuOverrides = (predefinedProps: ToolbarMenuProps) => ({
     onItemClick: (e, itemProps: ToolbarMenuItemProps) => {
       const { popup, menuOpen } = itemProps;
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
@@ -270,8 +279,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
       if (!menuOpen) {
         _.invoke(itemRef.current, 'focus');
       }
-    },
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    }
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -370,15 +378,17 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
               }}
             >
               <Popper align="top" position={context.rtl ? 'before' : 'after'} targetRef={itemRef}>
-                {ToolbarMenu.create(menu, {
-                  defaultProps: () => ({
-                    className: ToolbarMenuItem.slotClassNames.submenu,
-                    styles: resolvedStyles.menu,
-                    submenu: true,
-                    submenuIndicator
-                  }),
-                  overrideProps: handleMenuOverrides(variables)
-                })}
+                <ToolbarVariablesProvider value={mergedVariables}>
+                  {ToolbarMenu.create(menu, {
+                    defaultProps: () => ({
+                      className: ToolbarMenuItem.slotClassNames.submenu,
+                      styles: resolvedStyles.menu,
+                      submenu: true,
+                      submenuIndicator
+                    }),
+                    overrideProps: handleMenuOverrides
+                  })}
+                </ToolbarVariablesProvider>
               </Popper>
             </Ref>
             <EventListener listener={outsideClickHandler(getRefs)} target={context.target} type="click" />
@@ -406,6 +416,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
       )
     })
   });
+  setEnd();
 
   return wrapperElement;
 };

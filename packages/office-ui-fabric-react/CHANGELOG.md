@@ -1,7 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Mar 2020 12:25:14 GMT and should not be manually modified.
 
+## 7.101.0
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Minor changes
+
+- ITag: key can be number, in addition to string. (aneeshak@microsoft.com)
+### Patches
+
+- Fix the legacy items wrapper styles. (lijunle@gmail.com)
+- restore onRenderIcon prop for ContextualMenuSplitButton (kinhln@microsoft.com)
 ## 7.100.0
 Sat, 07 Mar 2020 01:39:37 GMT
 

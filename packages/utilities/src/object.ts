@@ -3,8 +3,13 @@ import { getId, resetIds } from './getId';
 
 export { getId, resetIds };
 
+/**
+ * Compares a to b and b to a.
+ *
+ * @public
+ */
 // tslint:disable-next-line:no-any
-function checkProperties(a: any, b: any): boolean {
+export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean {
   for (let propName in a) {
     if (a.hasOwnProperty(propName)) {
       if (!b.hasOwnProperty(propName) || b[propName] !== a[propName]) {
@@ -12,17 +17,14 @@ function checkProperties(a: any, b: any): boolean {
       }
     }
   }
-
+  for (let propName in b) {
+    if (b.hasOwnProperty(propName)) {
+      if (!a.hasOwnProperty(propName)) {
+        return false;
+      }
+    }
+  }
   return true;
-}
-
-/**
- * Compares a to b and b to a.
- *
- * @public
- */
-export function shallowCompare<TA, TB>(a: TA, b: TB): boolean {
-  return checkProperties(a, b) && checkProperties(b, a);
 }
 
 /**
