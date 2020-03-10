@@ -145,6 +145,11 @@ export interface ISemanticColors extends ISemanticTextColors {
 
   //// Invariants - slots that rarely change color theme-to-theme because the color has meaning
   /**
+   * The background for informational messages.
+   */
+  infoBackground: string;
+
+  /**
    * The background for errors, if necessary, or highlighting the section of the page where the error is present.
    */
   errorBackground: string;
@@ -156,6 +161,10 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Background for warning messages.
    */
   warningBackground: string;
+  /**
+   * Background for severe warning messages.
+   */
+  severeWarningBackground: string;
   /**
    * Foreground color for warning highlights
    */

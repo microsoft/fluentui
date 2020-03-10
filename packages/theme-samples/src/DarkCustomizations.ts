@@ -51,7 +51,17 @@ const DarkTheme: ITheme = createTheme({
     menuIcon: DarkDefaultPalette.themeDarkAlt,
     menuHeader: DarkDefaultPalette.black,
     menuItemText: DarkDefaultPalette.neutralPrimary,
-    menuItemTextHovered: DarkDefaultPalette.neutralDark
+    menuItemTextHovered: DarkDefaultPalette.neutralDark,
+    errorText: '#ff5f5f',
+    warningText: '#ffffff',
+    severeWarningText: '#FCE100',
+    successText: '#92c353',
+    infoBackground: '#323130',
+    errorBackground: '#442726',
+    blockingBackground: '#442726',
+    severeWarningBackground: '#4F2A0F',
+    warningBackground: '#433519',
+    successBackground: '#393D1B'
   }
 });
 
