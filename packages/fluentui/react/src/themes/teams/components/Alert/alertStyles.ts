@@ -134,11 +134,11 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
         // TODO: consider creating dedicated method for border styles on hover
         ...getBorderFocusStyles({
           variables: {
-            borderRadius: v.focusHoverBorderRadius,
-            borderWidth: v.focusHoverBorderWidth,
-            focusInnerBorderColor: v.focusHoverInnerBorderColor,
-            focusOuterBorderColor: v.focusHoverOuterBorderColor,
-            zIndexes: { foreground: v.focusHoverZIndex }
+            borderRadius: v.dismissActionHoverBorderRadius,
+            borderWidth: v.dismissActionHoverBorderWidth,
+            focusInnerBorderColor: v.dismissActionHoverInnerBorderColor,
+            focusOuterBorderColor: v.dismissActionHoverOuterBorderColor,
+            zIndexes: { foreground: v.dismissActionHoverZIndex }
           }
         })[':focus-visible']
       },
@@ -147,11 +147,7 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
       ':focus-visible': {
         backgroundColor: v.focusBackgroundColor,
         ...iconFilledStyles,
-        ...borderFocusStyles[':focus-visible'],
-
-        ':hover': {
-          backgroundColor: v.hoverBackgroundColor
-        }
+        ...borderFocusStyles[':focus-visible']
       }
     };
   }

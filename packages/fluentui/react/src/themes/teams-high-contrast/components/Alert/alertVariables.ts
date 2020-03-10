@@ -10,11 +10,11 @@ export default (siteVars: any): Partial<AlertVariables> => {
     hoverBackgroundColor: siteVars.accessibleCyan,
     focusBackgroundColor: siteVars.accessibleCyan,
 
-    focusHoverBorderRadius: siteVars.borderRadius,
-    focusHoverBorderWidth: siteVars.borderWidth,
-    focusHoverInnerBorderColor: siteVars.focusInnerBorderColor,
-    focusHoverOuterBorderColor: siteVars.focusOuterBorderColor,
-    focusHoverZIndex: siteVars.zIndexes.foreground,
+    dismissActionHoverBorderRadius: siteVars.borderRadius,
+    dismissActionHoverBorderWidth: siteVars.borderWidth,
+    dismissActionHoverInnerBorderColor: siteVars.focusInnerBorderColor,
+    dismissActionHoverOuterBorderColor: siteVars.focusOuterBorderColor,
+    dismissActionHoverZIndex: siteVars.zIndexes.foreground,
 
     dangerColor: siteVars.colors.black,
     dangerBackgroundColor: siteVars.colors.white,

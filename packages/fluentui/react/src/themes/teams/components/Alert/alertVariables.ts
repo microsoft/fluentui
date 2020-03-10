@@ -18,11 +18,11 @@ export interface AlertVariables {
   hoverBackgroundColor: string;
   focusBackgroundColor: string;
 
-  focusHoverBorderRadius: string;
-  focusHoverBorderWidth: string;
-  focusHoverInnerBorderColor: string;
-  focusHoverOuterBorderColor: string;
-  focusHoverZIndex: string;
+  dismissActionHoverBorderRadius: string;
+  dismissActionHoverBorderWidth: string;
+  dismissActionHoverInnerBorderColor: string;
+  dismissActionHoverOuterBorderColor: string;
+  dismissActionHoverZIndex: string;
 
   actionsMargin: string;
 
@@ -74,11 +74,11 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     hoverBackgroundColor: undefined,
     focusBackgroundColor: undefined,
 
-    focusHoverBorderRadius: undefined,
-    focusHoverBorderWidth: undefined,
-    focusHoverInnerBorderColor: undefined,
-    focusHoverOuterBorderColor: undefined,
-    focusHoverZIndex: undefined,
+    dismissActionHoverBorderRadius: undefined,
+    dismissActionHoverBorderWidth: undefined,
+    dismissActionHoverInnerBorderColor: undefined,
+    dismissActionHoverOuterBorderColor: undefined,
+    dismissActionHoverZIndex: undefined,
 
     dismissActionSize: minHeight,
     dismissActionColor: undefined,
