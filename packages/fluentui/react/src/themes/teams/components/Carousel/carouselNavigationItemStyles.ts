@@ -104,7 +104,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<CarouselNavigati
       background: v.indicatorActiveBackgroundColor
     }),
 
-    ...(!!p.content && {
+    ...(p.content && {
       marginRight: pxToRem(10)
     }),
 
