@@ -8,8 +8,6 @@ type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
   wrapper: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, isFromKeyboard, vertical, active, underlined, primary, pointing, disabled } = p;
-
     return {
       [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
         backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
@@ -18,31 +16,31 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ':hover': {
         color: v.colorActive,
 
-        ...(underlined && { color: v.color }),
-        ...(!underlined && { background: v.backgroundColorFocus })
+        ...(p.underlined && { color: v.color }),
+        ...(!p.underlined && { background: v.backgroundColorFocus })
       },
 
-      ...(active && {
+      ...(p.active && {
         color: v.colorActive,
 
-        ...(underlined && { color: v.color }),
-        ...(!underlined && { background: v.backgroundColorActive })
+        ...(p.underlined && { color: v.color }),
+        ...(!p.underlined && { background: v.backgroundColorActive })
       }),
 
-      ...(isFromKeyboard && {
+      ...(p.isFromKeyboard && {
         color: v.colorActive,
 
-        ...(!underlined && { background: v.backgroundColorFocus })
+        ...(!p.underlined && { background: v.backgroundColorFocus })
       }),
 
-      ...(pointing &&
-        vertical && {
+      ...(p.pointing &&
+        p.vertical && {
           '::before': {
             display: 'none'
           }
         }),
 
-      ...(disabled && {
+      ...(p.disabled && {
         ':hover': {
           // reset all existing hover styles
         }
