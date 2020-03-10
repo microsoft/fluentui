@@ -42,7 +42,7 @@ function setMountCounters(key: Window, delta: number): number {
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
   const win = getWindow(rootRef?.current) as Window & { disableFabricFocusRects: boolean };
   React.useEffect(() => {
-    if (win.disableFabricFocusRects === true) {
+    if (win && win.disableFabricFocusRects === true) {
       return;
     }
 
@@ -54,7 +54,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     }
 
     return () => {
-      if (win.disableFabricFocusRects === true) {
+      if (win && win.disableFabricFocusRects === true) {
         return;
       }
 

@@ -22,7 +22,7 @@ export { IsFocusVisibleClassName } from './setFocusVisibility';
  */
 export function initializeFocusRects(window?: Window): void {
   const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean; disableFabricFocusRects: boolean };
-  if (win.disableFabricFocusRects === true) {
+  if (win && win.disableFabricFocusRects === true) {
     return;
   }
 
