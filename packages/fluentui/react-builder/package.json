@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-builder",
-  "description": "An drag and drop UI builder.",
+  "description": "A drag and drop UI builder.",
   "version": "0.46.0",
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react.git/issues",
