@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Styling: fix sideEffects scope",
+  "packageName": "@uifabric/styling",
+  "email": "xgao@microsoft.com",
+  "commit": "68624cb99c28f7febb5166ae8160d83b01321dad",
+  "dependentChangeType": "patch",
+  "date": "2020-03-11T18:20:28.603Z"
+}
