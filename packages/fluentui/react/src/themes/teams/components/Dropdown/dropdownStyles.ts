@@ -83,7 +83,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.focused && {
       backgroundColor: v.backgroundColor,
       ...(p.search && { borderBottomColor: v.borderColorFocus }),
-      ...(!p.search && !p.open && p.isFromKeyboard && getBorderFocusStyles({ siteVariables })[':focus-visible'])
+      ...(!p.search && !p.open && p.isFromKeyboard && getBorderFocusStyles({ variables: siteVariables })[':focus-visible'])
     }),
     ...(p.inline && {
       ...transparentColorStyleObj,

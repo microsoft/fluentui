@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Mar 2020 12:24:03 GMT and should not be manually modified.
 
+## 0.141.0
+Wed, 11 Mar 2020 12:24:03 GMT
+
+### Minor changes
+
+- Line chart Accessibility with screen reader (v-satgar@microsoft.com)
 ## 0.140.3
 Tue, 25 Feb 2020 12:25:39 GMT
 

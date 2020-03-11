@@ -1,5 +1,6 @@
 import { Accessibility, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -15,6 +16,7 @@ import {
   childrenExist,
   commonPropTypes
 } from '../../utils';
+import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarCustomItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -54,6 +56,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   setStart();
 
   const { accessibility, children, className, content, design, fitted, focusable, styles, variables } = props;
+  const parentVariables = React.useContext(ToolbarVariablesContext);
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarCustomItem.displayName,
@@ -62,7 +65,12 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   const { classes } = useStyles<ToolbarCustomItemStylesProps>(ToolbarCustomItem.displayName, {
     className: ToolbarCustomItem.className,
     mapPropsToStyles: () => ({ fitted }),
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables: mergeComponentVariables(parentVariables, variables)
+    }),
     rtl: context.rtl
   });
 

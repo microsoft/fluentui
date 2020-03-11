@@ -135,7 +135,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
               <g>{bars[0]}</g>
               {isCalloutVisible ? (
                 <Callout
-                  gapSpace={5}
+                  gapSpace={10}
                   isBeakVisible={false}
                   target={this.state.refSelected}
                   setInitialFocus={true}

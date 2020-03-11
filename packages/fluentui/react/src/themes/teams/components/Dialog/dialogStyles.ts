@@ -7,6 +7,7 @@ type DialogStyleParams = ComponentStyleFunctionParam<DialogProps, DialogVariable
 export default {
   root: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
     background: v.rootBackground,
+    border: v.border,
     borderRadius: v.rootBorderRadius,
     outline: 'none',
     padding: v.rootPadding,
