@@ -121,6 +121,7 @@ import numberList from './numberList';
 import oneDrive from './oneDrive';
 import outdent from './outdent';
 import openOutside from './openOutside';
+import panorama from './panorama';
 import pause from './pause';
 import pauseThick from './pauseThick';
 import paperclip from './paperclip';
@@ -155,6 +156,7 @@ import shareTo from './shareTo';
 import skypeLogo from './skypeLogo';
 import snooze from './snooze';
 import speakerMute from './speakerMute';
+import spotlight from './spotlight';
 import star from './star';
 import sticker from './sticker';
 import strike from './strike';
@@ -306,6 +308,7 @@ export default {
   paperclip,
   'participant-add': addParticipant,
   'participant-remove': participantRemove,
+  panorama,
   pause,
   'pause-thick': pauseThick,
   'phone-clock': phoneClock,
@@ -335,6 +338,7 @@ export default {
   'share-alt': shareAlt,
   'share-location': shareLocation,
   'share-to': shareTo,
+  spotlight,
   star,
   sticker,
   strike,
