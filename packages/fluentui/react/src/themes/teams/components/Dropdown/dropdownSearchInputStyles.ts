@@ -15,7 +15,7 @@ const dropdownSearchInputStyles: ComponentSlotStylesPrepared<DropdownSearchInput
     borderWidth: 0,
     ':focus-within': {
       // apply border around selectedItems when they are focused
-      ...getBorderFocusStyles({ siteVariables })
+      ...getBorderFocusStyles({ variables: siteVariables })
     },
     ...(p.inline && {
       padding: 0,
