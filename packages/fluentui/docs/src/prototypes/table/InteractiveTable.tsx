@@ -43,38 +43,37 @@ const InteractiveTable = () => {
                 />
               </>
             }
-            key="id"
             accessibility={gridHeaderCellBehavior}
             aria-describedby="columnDescription"
             onFocus={handleFocus}
             onBlur={handleBlur}
           />
-          <Table.Cell content="Name" key="name" accessibility={gridHeaderCellBehavior} />
-          <Table.Cell content="Picture" key="pic" accessibility={gridHeaderCellBehavior} />
-          <Table.Cell content="Age" key="age" accessibility={gridHeaderCellBehavior} />
+          <Table.Cell content="Name" accessibility={gridHeaderCellBehavior} />
+          <Table.Cell content="Picture" accessibility={gridHeaderCellBehavior} />
+          <Table.Cell content="Age" accessibility={gridHeaderCellBehavior} />
         </Table.Row>
         {withContextMenu(
-          <Table.Row key="1" accessibility={gridRowBehavior}>
-            <Table.Cell content="1" key="1-1" accessibility={gridCellBehavior} />
-            <Table.Cell content="Roman van von der Longername" key="1-2" accessibility={gridCellBehavior} />
-            <Table.Cell content="None" key="1-3" accessibility={gridCellBehavior} />
-            <Table.Cell content="30 years" key="1-4" accessibility={gridCellBehavior} />
+          <Table.Row accessibility={gridRowBehavior}>
+            <Table.Cell content="1" accessibility={gridCellBehavior} />
+            <Table.Cell content="Roman van von der Longername" accessibility={gridCellBehavior} />
+            <Table.Cell content="None" accessibility={gridCellBehavior} />
+            <Table.Cell content="30 years" accessibility={gridCellBehavior} />
           </Table.Row>
         )}
         {withContextMenu(
-          <Table.Row key="2" accessibility={gridRowBehavior}>
-            <Table.Cell content="2" key="1-1" accessibility={gridCellBehavior} />
-            <Table.Cell content="Alex" key="1-2" accessibility={gridCellBehavior} />
-            <Table.Cell content="None" key="1-3" accessibility={gridCellBehavior} />
-            <Table.Cell content="1 year" key="1-4" accessibility={gridCellBehavior} />
+          <Table.Row accessibility={gridRowBehavior}>
+            <Table.Cell content="2" accessibility={gridCellBehavior} />
+            <Table.Cell content="Alex" accessibility={gridCellBehavior} />
+            <Table.Cell content="None" accessibility={gridCellBehavior} />
+            <Table.Cell content="1 year" accessibility={gridCellBehavior} />
           </Table.Row>
         )}
         {withContextMenu(
-          <Table.Row key="3" accessibility={gridRowBehavior}>
-            <Table.Cell content="3" key="1-1" accessibility={gridCellBehavior} />
-            <Table.Cell content="Ali" key="1-2" accessibility={gridCellBehavior} />
-            <Table.Cell content="None" key="1-3" accessibility={gridCellBehavior} />
-            <Table.Cell content="30000000000000 years" key="1-4" accessibility={gridCellBehavior} />
+          <Table.Row accessibility={gridRowBehavior}>
+            <Table.Cell content="3" accessibility={gridCellBehavior} />
+            <Table.Cell content="Ali" accessibility={gridCellBehavior} />
+            <Table.Cell content="None" accessibility={gridCellBehavior} />
+            <Table.Cell content="30000000000000 years" accessibility={gridCellBehavior} />
           </Table.Row>
         )}
       </Table>
