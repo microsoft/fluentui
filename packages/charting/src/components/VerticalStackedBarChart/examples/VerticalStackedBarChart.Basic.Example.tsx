@@ -3,7 +3,8 @@ import { VerticalStackedBarChart } from '../VerticalStackedBarChart';
 import { IChartDataPoint, IChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-import { IVerticalStackedBarChartProps } from '../VerticalStackedBarChart.types';
+import { IVerticalStackedBarChartProps } from '@uifabric/charting/lib/VerticalStackedBarChart';
+// '../VerticalStackedBarChart.types';
 // '@uifabric/charting/lib/VerticalStackedBarChart';
 
 export class VerticalStackedBarChartBasicExample extends React.Component<IVerticalStackedBarChartProps, {}> {
@@ -16,6 +17,15 @@ export class VerticalStackedBarChartBasicExample extends React.Component<IVertic
       { legend: 'redDelicious', data: 40, color: DefaultPalette.accent },
       { legend: 'mcintosh', data: 10, color: DefaultPalette.blueMid },
       { legend: 'oranges', data: 80, color: DefaultPalette.blueLight }
+      // { legend: 'redDelicious2', data: 40, color: DefaultPalette.accent },
+      // { legend: 'mcintosh2', data: 10, color: DefaultPalette.blueMid },
+      // { legend: 'oranges2', data: 80, color: DefaultPalette.blueLight },
+      // { legend: 'redDelicious3', data: 40, color: DefaultPalette.accent },
+      // { legend: 'mcintosh3', data: 10, color: DefaultPalette.blueMid },
+      // { legend: 'oranges3', data: 80, color: DefaultPalette.blueLight },
+      // { legend: 'redDelicious4', data: 40, color: DefaultPalette.accent },
+      // { legend: 'mcintosh4', data: 10, color: DefaultPalette.blueMid },
+      // { legend: 'oranges4', data: 80, color: DefaultPalette.blueLight }
     ];
 
     const secondChartPoints: IChartDataPoint[] = [

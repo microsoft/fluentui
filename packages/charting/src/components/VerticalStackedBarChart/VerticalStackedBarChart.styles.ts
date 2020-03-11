@@ -124,6 +124,10 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       cursor: href ? 'pointer' : 'default'
       // stroke: theme.palette.white
       // strokeWidth: 2
+    },
+
+    legendContainer: {
+      marginTop: '5px'
     }
 
     // yAxisDomain: [

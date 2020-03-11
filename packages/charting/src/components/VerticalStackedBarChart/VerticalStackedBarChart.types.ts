@@ -1,5 +1,7 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IChartProps } from '@uifabric/charting';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IVerticalStackedBarChartProps {
@@ -57,6 +59,21 @@ export interface IVerticalStackedBarChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>;
+
+  /**
+   * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
+   */
+  enabledLegendsWrapLines?: boolean;
+
+  /**
+   * overflow props for the legends
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 }
 
 export interface IVerticalStackedBarChartStyleProps {
@@ -181,4 +198,9 @@ export interface IVerticalStackedBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the legends container
+   */
+  legendContainer: IStyle;
 }
