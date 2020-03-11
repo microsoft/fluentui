@@ -55,6 +55,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     this._pivotId = getId(PivotName);
     const links: IPivotItemProps[] = this._getPivotLinks(props).links;
 
+    // tslint:disable-next-line:deprecation
     const { defaultSelectedKey = props.initialSelectedKey, defaultSelectedIndex = props.initialSelectedIndex } = props;
 
     let selectedKey: string | undefined;

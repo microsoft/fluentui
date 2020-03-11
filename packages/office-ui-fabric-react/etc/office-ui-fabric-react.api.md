@@ -18,6 +18,7 @@ import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
+import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
@@ -1349,6 +1350,23 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     toggleCollapseAll(allCollapsed: boolean): void;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: IGroupedListProps): void;
+    }
+
+// @public (undocumented)
+export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
+    constructor(props: IGroupedListSectionProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IGroupedListSectionProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    forceListUpdate(): void;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    render(): JSX.Element;
     }
 
 // @public (undocumented)
@@ -4786,6 +4804,46 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
 }
 
 // @public (undocumented)
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
+    compact?: boolean;
+    componentRef?: () => void;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    group?: IGroup;
+    groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
+    groupIndex?: number;
+    groupNestingDepth?: number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    headerProps?: IGroupHeaderProps;
+    items: any[];
+    listProps?: IListProps;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
+    onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    showAllProps?: IGroupShowAllProps;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionState {
+    // (undocumented)
+    isDropping?: boolean;
+    // (undocumented)
+    isSelected?: boolean;
+}
+
+// @public (undocumented)
 export interface IGroupedListState {
     // (undocumented)
     groups?: IGroup[];
@@ -5592,6 +5650,7 @@ export interface INavButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
+    ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true';
     ariaLabel?: string;
     automationId?: string;
     collapseAriaLabel?: string;
@@ -5639,6 +5698,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
     onRenderLink?: IRenderFunction<INavLink>;
+    // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
@@ -5725,6 +5785,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;
     overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
     role?: string;
     styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
     vertical?: boolean;
@@ -7336,6 +7397,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsMaximumNumber?: number;
+    // @deprecated
     searchErrorText?: string;
     searchForMoreText?: string;
     searchingText?: string;
@@ -7438,7 +7500,7 @@ export interface ISwatchColorPickerStyles {
 
 // @public
 export interface ITag {
-    key: string;
+    key: string | number;
     name: string;
 }
 
@@ -7743,7 +7805,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
-    role?: 'checkbox' | 'switch';
+    role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
 }

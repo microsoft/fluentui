@@ -13,7 +13,7 @@ enzyme.configure({
   disableLifecycleMethods: true
 });
 
-if (process.env.CI) {
+if (process.env.TF_BUILD) {
   jest.spyOn(console, 'log');
   jest.spyOn(console, 'info');
   jest.spyOn(console, 'warn');

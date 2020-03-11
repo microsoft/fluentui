@@ -10,7 +10,6 @@ import { ThemeContext } from 'react-fela';
 import {
   childrenExist,
   createShorthandFactory,
-  pxToRem,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
@@ -21,11 +20,15 @@ import {
 
 import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
-import Layout from '../Layout/Layout';
+import Box, { BoxProps } from '../Box/Box';
 
 import { WithAsProp, ShorthandValue, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 
-export interface LabelProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps, ColorComponentProps {
+export interface LabelProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps<ShorthandValue<BoxProps>>,
+    ColorComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -80,9 +83,11 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     mapPropsToStyles: () => ({
       hasActionableIcon: _.has(icon, 'onClick'),
       hasImage: !!image,
+      hasIcon: !!icon,
       circular,
       color,
-      imagePosition
+      imagePosition,
+      iconPosition
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl
@@ -125,14 +130,16 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     }),
     overrideProps: handleIconOverrides
   });
+  const contentElement = Box.create(content, {
+    defaultProps: () => ({
+      styles: resolvedStyles.content
+    })
+  });
 
   const startImage = imagePosition === 'start' && imageElement;
   const startIcon = iconPosition === 'start' && iconElement;
   const endIcon = iconPosition === 'end' && iconElement;
   const endImage = imagePosition === 'end' && imageElement;
-
-  const hasStartElement = startImage || startIcon;
-  const hasEndElement = endIcon || endImage;
 
   const element = (
     <ElementType
@@ -141,26 +148,11 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
         ...unhandledProps
       })}
     >
-      <Layout
-        start={
-          hasStartElement && (
-            <>
-              {startImage}
-              {startIcon}
-            </>
-          )
-        }
-        main={content}
-        end={
-          hasEndElement && (
-            <>
-              {endIcon}
-              {endImage}
-            </>
-          )
-        }
-        gap={pxToRem(3)}
-      />
+      {startImage}
+      {startIcon}
+      {contentElement}
+      {endIcon}
+      {endImage}
     </ElementType>
   );
   setEnd();
@@ -172,7 +164,7 @@ Label.displayName = 'Label';
 Label.className = 'ui-label';
 
 Label.propTypes = {
-  ...commonPropTypes.createCommon({ color: true }),
+  ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
   circular: PropTypes.bool,
   icon: customPropTypes.itemShorthandWithoutJSX,
   iconPosition: PropTypes.oneOf(['start', 'end']),

@@ -59,7 +59,7 @@ const RibbonMenuButtonVerticalStyles: IMenuButtonStyles = {
   }
 };
 
-const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
+const RibbonMenuButton: React.FunctionComponent<IRibbonMenuButtonProps> = props => {
   const mergedProps: IMenuButtonProps = props.vertical
     ? {
         ...props,
@@ -116,7 +116,7 @@ const SplitMenuButtonVerticalSlots: ISplitRibbonMenuButtonProps['slots'] = {
   splitDivider: { render: () => null }
 };
 
-const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
+const RibbonSplitMenuButton: React.FunctionComponent<ISplitRibbonMenuButtonProps> = props => {
   const { content, vertical, ...rest } = props;
 
   const rootProps: React.DetailedHTMLProps<React.HtmlHTMLAttributes<any>, any> = {

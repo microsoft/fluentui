@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fix the legacy items wrapper styles.",
+  "packageName": "office-ui-fabric-react",
+  "email": "lijunle@gmail.com",
+  "commit": "2e985195c35027e9e6aa31e788168ec191d96903",
+  "dependentChangeType": "patch",
+  "date": "2020-03-05T20:41:55.509Z"
+}

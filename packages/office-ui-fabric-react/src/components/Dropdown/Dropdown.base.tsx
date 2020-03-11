@@ -208,6 +208,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       onRenderLabel = this._onRenderLabel
     } = props;
     const { isOpen, selectedIndices, calloutRenderEdge } = this.state;
+    // tslint:disable-next-line:deprecation
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
@@ -378,6 +379,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     checked?: boolean,
     multiSelect?: boolean
   ) => {
+    // tslint:disable-next-line:deprecation
     const { onChange, onChanged } = this.props;
     if (onChange || onChanged) {
       // for single-select, option passed in will always be selected.
@@ -391,6 +393,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {
+    // tslint:disable-next-line:deprecation
     return this.props.placeholder || this.props.placeHolder;
   }
 
@@ -851,7 +854,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       if (selectedKey != null) {
         return option.key === selectedKey;
       } else {
-        return !!option.isSelected || !!option.selected;
+        // tslint:disable-next-line:deprecation
+        return !!option.selected || !!option.isSelected;
       }
     });
   }
@@ -1141,10 +1145,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
    */
   private _isDisabled: () => boolean | undefined = () => {
     let { disabled } = this.props;
+    // tslint:disable-next-line:deprecation
     const { isDisabled } = this.props;
 
     // Remove this deprecation workaround at 1.0.0
-    if (isDisabled !== undefined) {
+    if (disabled === undefined) {
       disabled = isDisabled;
     }
 

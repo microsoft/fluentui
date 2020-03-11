@@ -114,6 +114,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _adjustedFocusZoneProps: IFocusZoneProps;
 
+  // tslint:disable-next-line:deprecation
   private _classNames: IProcessedStyleSet<IContextualMenuStyles> | IContextualMenuClassNames;
 
   constructor(props: IContextualMenuProps) {
@@ -238,6 +239,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       onRenderSubMenu = this._onRenderSubMenu,
       onRenderMenuList = this._onRenderMenuList,
       focusZoneProps,
+      // tslint:disable-next-line:deprecation
       getMenuClassNames
     } = this.props;
 
@@ -465,6 +467,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
+    // tslint:disable-next-line:deprecation
     const { getItemClassNames, itemProps } = item;
     const styles = itemProps ? itemProps.styles : undefined;
 
@@ -472,6 +475,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
+    // tslint:disable-next-line:deprecation
     let itemClassNames: IMenuItemClassNames;
 
     // IContextualMenuItem#getItemClassNames for backwards compatibility
@@ -518,6 +522,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       );
     }
 
+    // tslint:disable-next-line:deprecation
     if (item.text === '-' || item.name === '-') {
       item.itemType = ContextualMenuItemType.Divider;
     }
@@ -552,6 +557,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -597,6 +603,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
   }
 
+  // tslint:disable-next-line:deprecation
   private _renderListItem(content: React.ReactNode, key: string | number, classNames: IMenuItemClassNames, title?: string) {
     return (
       <li role="presentation" title={title} key={key} className={classNames.item}>
@@ -605,6 +612,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     );
   }
 
+  // tslint:disable-next-line:deprecation
   private _renderSeparator(index: number, classNames: IMenuItemClassNames, top?: boolean, fromSection?: boolean): React.ReactNode {
     if (fromSection || index > 0) {
       return (
@@ -621,6 +629,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderNormalItem(
     item: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
@@ -644,6 +653,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderHeaderMenuItem(
     item: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     classNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
@@ -653,6 +663,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     const { itemProps, id } = item;
     const divHtmlProperties = itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);
     return (
+      // tslint:disable-next-line:deprecation
       <div id={id} className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
@@ -668,6 +679,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderAnchorMenuItem(
     item: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
@@ -705,6 +717,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderButtonItem(
     item: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,
@@ -744,6 +757,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _renderSplitButton(
     item: IContextualMenuItem,
+    // tslint:disable-next-line:deprecation
     classNames: IMenuItemClassNames,
     index: number,
     focusableElementIndex: number,

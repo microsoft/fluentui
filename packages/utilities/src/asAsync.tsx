@@ -19,7 +19,7 @@ export interface IAsAsyncOptions<TProps> {
   /**
    * Callback which returns a promise resolving an object which exports the component.
    */
-  load: () => Promise<React.ReactType<TProps>>;
+  load: () => Promise<React.ElementType<TProps>>;
 
   /**
    * Callback executed when async loading is complete.
@@ -40,7 +40,7 @@ export interface IAsAsyncOptions<TProps> {
 const _syncModuleCache =
   typeof WeakMap !== 'undefined'
     ? // tslint:disable-next-line:no-any
-      new WeakMap<() => Promise<React.ReactType<any>>, React.ReactType<any> | undefined>()
+      new WeakMap<() => Promise<React.ElementType<any>>, React.ElementType<any> | undefined>()
     : undefined;
 
 /**
@@ -51,16 +51,16 @@ const _syncModuleCache =
  */
 export function asAsync<TProps>(
   options: IAsAsyncOptions<TProps>
-): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & { asyncPlaceholder?: React.ReactType }>> {
+): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & { asyncPlaceholder?: React.ElementType }>> {
   class Async extends React.Component<
     TProps & {
-      asyncPlaceholder?: React.ReactType;
+      asyncPlaceholder?: React.ElementType;
       forwardedRef: React.Ref<TProps>;
     },
-    { Component?: React.ReactType<TProps> }
+    { Component?: React.ElementType<TProps> }
   > {
     public state = {
-      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ReactType<TProps>) : undefined
+      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined
     };
 
     public render(): JSX.Element | null {
@@ -77,7 +77,7 @@ export function asAsync<TProps>(
       if (!Component) {
         options
           .load()
-          .then((LoadedComponent: React.ReactType<TProps>) => {
+          .then((LoadedComponent: React.ElementType<TProps>) => {
             if (LoadedComponent) {
               // Cache component for future reference.
               _syncModuleCache && _syncModuleCache.set(options.load, LoadedComponent);
@@ -95,7 +95,7 @@ export function asAsync<TProps>(
       }
     }
   }
-  return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ReactType }, ref: React.Ref<TProps>) => (
+  return React.forwardRef((props: TProps & { asyncPlaceholder?: React.ElementType }, ref: React.Ref<TProps>) => (
     <Async {...props} forwardedRef={ref} />
   ));
 }

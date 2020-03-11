@@ -7,6 +7,7 @@ import { ActionButton } from './ActionButton/ActionButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
+
 /**
  * This class is deprecated. Use the individual *Button components instead.
  * @deprecated Use the individual *Button components instead.
@@ -30,6 +31,7 @@ export class Button extends BaseComponent<IButtonProps, {}> {
   public render(): JSX.Element {
     const props = this.props;
 
+    // tslint:disable-next-line:deprecation
     switch (props.buttonType) {
       case ButtonType.command:
         return <ActionButton {...props} />;

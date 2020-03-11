@@ -7,7 +7,7 @@ declare module 'markdown-to-jsx' {
       [key: string]: {
         component: string | React.ComponentClass<any> | React.FunctionComponent<any>;
         props?: any;
-      }
+      };
     };
   }
 
@@ -16,5 +16,5 @@ declare module 'markdown-to-jsx' {
     children?: string | React.ComponentClass<any> | React.FunctionComponent<any>;
   }
 
-  export default class Markdown extends React.Component<IMarkdownProps> { }
+  export default class Markdown extends React.Component<IMarkdownProps> {}
 }

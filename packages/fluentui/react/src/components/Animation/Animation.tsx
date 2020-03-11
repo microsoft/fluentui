@@ -199,7 +199,8 @@ const Animation: React.FC<AnimationProps> & {
       performance: {
         enableSanitizeCssPlugin: false,
         enableStylesCaching: false,
-        enableVariablesCaching: false
+        enableVariablesCaching: false,
+        enableBooleanVariablesCaching: false
       },
       saveDebug: _.noop,
       theme: context.theme

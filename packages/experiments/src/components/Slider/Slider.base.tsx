@@ -404,6 +404,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     let diff: number | undefined = 0;
 
+    // tslint:disable-next-line:deprecation
     switch (event.which) {
       case getRTLSafeKeyCode(KeyCodes.left):
       case KeyCodes.down:

@@ -136,17 +136,19 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     }
 
     const ButtonAs = this._getButtonAs(item);
+    // tslint:disable-next-line:deprecation
+    const name = item.text || item.name;
 
     return (
       <div key={item.key}>
         <ButtonAs
-          text={this.state.isCollapsed && !overrideCollapse ? null : item.name}
+          text={this.state.isCollapsed && !overrideCollapse ? null : name}
           iconProps={item.iconProps ? item.iconProps : { iconName: '' }}
           menuIconProps={this.state.isCollapsed ? null : item.subMenuIconProps}
           className={this._getClassNames('ba-SidebarButton', item)}
           role="menuitem"
-          ariaLabel={item.name}
-          title={item.title ? item.title : item.name}
+          ariaLabel={name}
+          title={item.title ? item.title : name}
           styles={concatStyleSets(this._buttonStyles, item.styles)}
           theme={this._theme}
           checked={item.active}
@@ -184,15 +186,17 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     }
 
     const ButtonAs = this._getButtonAs(item);
+    // tslint:disable-next-line:deprecation
+    const name = item.text || item.name;
 
     return (
       <div className={this._getClassNames('ba-SidebarAccordion', item)} key={item.key}>
         <Accordion
-          text={item.name}
+          text={name}
           iconProps={item.iconProps}
           menuIconProps={item.subMenuIconProps}
           role={'menuitem'}
-          ariaLabel={item.name}
+          ariaLabel={name}
           title={item.tooltip}
           styles={concatStyleSets(this._buttonStyles, item.styles as IButtonStyles)}
           theme={this._theme}
@@ -246,10 +250,13 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
       return child;
     });
 
-    if (item.name) {
+    // tslint:disable-next-line:deprecation
+    const name = item.text || item.name;
+
+    if (name) {
       children.unshift({
-        key: item.name + '-header',
-        name: item.name,
+        key: name + '-header',
+        name: name,
         iconProps: { iconName: '' },
         className: 'ba-SidebarContextualMenuButton-header ',
         disabled: true,
@@ -274,13 +281,13 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
       <div key={item.key}>
         <ButtonAs
           key={item.key}
-          text={this.state.isCollapsed ? '' : item.name}
+          text={this.state.isCollapsed ? '' : name}
           iconProps={item.iconProps}
           menuIconProps={this.state.isCollapsed ? { iconName: '' } : item.subMenuIconProps}
           menuProps={{
             items: children,
             directionalHint: DirectionalHint.rightTopEdge,
-            ariaLabel: item.name,
+            ariaLabel: name,
             calloutProps: {
               styles: {
                 root: {
@@ -292,8 +299,8 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
           menuTriggerKeyCode={KeyCodes.right}
           className={this._getClassNames('ba-SidebarContextualMenuButton', item)}
           role="menuitem"
-          ariaLabel={item.name}
-          title={item.title ? item.title : item.name}
+          ariaLabel={name}
+          title={item.title ? item.title : name}
           styles={concatStyleSets(this._buttonStyles, item.styles)}
           theme={this._theme}
           checked={numActiveChildren > 0 ? true : false}

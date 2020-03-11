@@ -34,7 +34,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React.ReactType;
+    asyncPlaceholder?: React.ElementType;
 }>>;
 
 // @public
@@ -393,7 +393,7 @@ export const htmlElementProperties: string[];
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
-    load: () => Promise<React.ReactType<TProps>>;
+    load: () => Promise<React.ElementType<TProps>>;
     onError?: (error: Error) => void;
     onLoad?: () => void;
 }
@@ -1133,7 +1133,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
+export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;

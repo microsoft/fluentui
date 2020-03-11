@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.15",
+      "version": "7.12.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on .d.ts files",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb6203e8aa6f934c2a86e1f5912d8cf5a2cfb1cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@uifabric/example-app-base_v7.12.2",
       "version": "7.12.2",

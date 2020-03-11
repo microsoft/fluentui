@@ -31,4 +31,4 @@ require('./scripts/gulp/tasks/test-circulars');
 require('./scripts/gulp/tasks/test-dependencies');
 
 // global tasks
-task('build', parallel('bundle:all-packages', 'build:docs'));
+task('build', parallel('build:docs'));

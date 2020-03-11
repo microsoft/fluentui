@@ -1,7 +1,13 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Fri, 23 Aug 2019 12:35:28 GMT and should not be manually modified.
+This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
 
+## 7.1.0
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Minor changes
+
+- Add dep on tslint-config-prettier and remove redundant rules; disable typedef rule (elcraig@microsoft.com)
 ## 7.0.5
 Fri, 23 Aug 2019 12:35:28 GMT
 

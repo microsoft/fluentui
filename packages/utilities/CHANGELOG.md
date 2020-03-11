@@ -1,7 +1,19 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 21 Feb 2020 12:20:14 GMT and should not be manually modified.
+This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
 
+## 7.13.1
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
+## 7.13.0
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Minor changes
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
 ## 7.12.4
 Fri, 21 Feb 2020 12:20:14 GMT
 

@@ -29,6 +29,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       imageSrc,
       imageSize = { width: 32, height: 32 },
       disabled,
+      // tslint:disable-next-line:deprecation
       checked,
       id,
       styles,

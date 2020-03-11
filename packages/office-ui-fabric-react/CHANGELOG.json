@@ -2,6 +2,186 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "office-ui-fabric-react_v7.100.0",
+      "version": "7.100.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation.",
+            "author": "matejera@microsoft.com",
+            "commit": "7f20df70eadca62a05a64023121c7167d389ce70"
+          },
+          {
+            "comment": "Export GroupedListSection",
+            "author": "owcampbe@microsoft.com",
+            "commit": "31cb2dc96b17298470b88d1a879dac9b65128b54"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "5cb5db07119d744a8a5247b6b0780f9005604b2d"
+          },
+          {
+            "comment": "withViewport: cleaning up resize observer.",
+            "author": "dzearing@microsoft.com",
+            "commit": "48db247b55f3e6f2809009c6a338c52b6b3e39bd"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Mar 2020 12:27:53 GMT",
+      "tag": "office-ui-fabric-react_v7.99.0",
+      "version": "7.99.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add mock for Async to prevent spurious infinite timer issue.",
+            "author": "jagore@microsoft.com",
+            "commit": "5c78a6866573bcfa7096bc625c795c3205d69e89"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Suggestions: Deprecating unused searchErrorText prop.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "940dd1bbce3b97868d9895345089997b9b5b5c7b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "office-ui-fabric-react_v7.98.4",
+      "version": "7.98.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove vertical-align flagged as unused",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "a3c34a50545050573127b7c1c0c451fbf610ba8c"
+          },
+          {
+            "comment": "MarqueeSelection: deleting html element references on unmount.",
+            "author": "dzearing@microsoft.com",
+            "commit": "1ced31c315a5109d7576d7744ce7b6b16cf9f82a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "office-ui-fabric-react_v7.98.3",
+      "version": "7.98.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Using tslint:disable-next-line instead of tslint:disable without a corresponding tslint:enable afterwards for all non-tests and non-data files.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          },
+          {
+            "comment": "Link: Make focus work even when Link has block children.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "95336258136489ea0b76f932e36285438f2a3faf"
+          },
+          {
+            "comment": "ScrollablePane example: fix strict function type errors",
+            "author": "xgao@microsoft.com",
+            "commit": "621b7ac2fdec59fc034e54cc2f94ff3a61c41af2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Mar 2020 12:25:44 GMT",
+      "tag": "office-ui-fabric-react_v7.98.2",
+      "version": "7.98.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "SpinButton: fix SpinButton content overlapping with border under certain resolutions",
+            "author": "xgao@microsoft.com",
+            "commit": "59292ee86d5ac772ff48205efa1d37e53a336720"
+          },
+          {
+            "comment": "DetailsList Example: change drag drop behavior to be more intuitive, allow dragging to the last row",
+            "author": "xgao@microsoft.com",
+            "commit": "7061c70910e6d5078c7405c839fccb4c05e2e9b1"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Feb 2020 12:25:15 GMT",
+      "tag": "office-ui-fabric-react_v7.98.1",
+      "version": "7.98.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updates the Nav component's links to use aria-current",
+            "author": "sarah.higley@microsoft.com",
+            "commit": "e3f3b9a6d0705feeade76041a1f8a183a9f16d00"
+          },
+          {
+            "comment": "Panel: use align-items for vertical alignment",
+            "author": "aneeshak@microsoft.com",
+            "commit": "c465e31ed6e790aa94340698004872df80cd0c70"
+          },
+          {
+            "comment": "Dialog: fix isOpen deprecated prop no longer being honored",
+            "author": "xgao@microsoft.com",
+            "commit": "5c496fd32a93cceed4b5e0fe4fbc3bc88a48cefd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "office-ui-fabric-react_v7.98.0",
+      "version": "7.98.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Toggle: allow menuitemcheckbox role",
+            "author": "xgao@microsoft.com",
+            "commit": "bbd3393a0fe471fb4266294c84fb44800534bff1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Slider: allow setting id on slider",
+            "author": "xgao@microsoft.com",
+            "commit": "861f94c69a85c7c31af3901734237ac562e892bb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "office-ui-fabric-react_v7.97.1",
+      "version": "7.97.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on 'deprecation' tslint rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "4345dcefc8266a402f497d3c020b367891b3d2a5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "office-ui-fabric-react_v7.97.0",
       "version": "7.97.0",

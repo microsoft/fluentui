@@ -162,6 +162,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       subtitleAriaId,
       theme,
       topOffsetFixed,
+      // tslint:disable-next-line:deprecation
       onLayerDidMount,
       isModeless,
       dragOptions
