@@ -35,7 +35,7 @@ describe('Toolbar menu on', () => {
     expect(await e2e.exists(toolbarMenu)).toBe(false);
   });
 
-  it('moves focus to particular element, after click on menu item', async () => {
+  it('moves focus to particular element, after press "Enter" on menu item', async () => {
     // opens menu
     await e2e.clickOn(menuTrigger);
     expect(await e2e.exists(toolbarMenu)).toBe(true);
