@@ -75,9 +75,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.open && p.position === 'below' && { borderRadius: v.openBelowContainerBorderRadius }),
     ':hover': {
       backgroundColor: v.backgroundColorHover,
-      ...(!p.search && {
-        borderColor: v.borderColorHover
-      })
+      borderColor: v.borderColorHover
     },
     ':active': {
       backgroundColor: v.backgroundColor
