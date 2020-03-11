@@ -14,17 +14,11 @@ export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
   const { className, imageProps } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties);
-
-  const containerProps = props['aria-label']
-    ? {}
-    : {
-        role: 'presentation',
-        'aria-hidden': imageProps.alt || imageProps['aria-labelledby'] ? false : true,
-      };
+  const imageAlt = imageProps['alt'] || props['aria-label'] || '';
 
   return (
-    <div {...containerProps} {...nativeProps} className={css(MS_ICON, classNames.root, classNames.image, className)}>
-      <Image {...imageProps} />
+    <div {...nativeProps} className={css(MS_ICON, classNames.root, classNames.image, className)}>
+      <Image {...imageProps} alt={imageAlt} />
     </div>
   );
 };

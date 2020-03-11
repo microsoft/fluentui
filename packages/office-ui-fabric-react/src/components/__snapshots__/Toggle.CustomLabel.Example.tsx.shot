@@ -79,7 +79,6 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
           onMouseLeave={[Function]}
         >
           <i
-            aria-label="Info tooltip"
             className=
 
                 {
@@ -92,6 +91,7 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
                   speak: none;
                 }
             data-icon-name="Info"
+            role="img"
           >
             
           </i>
@@ -284,7 +284,6 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
           onMouseLeave={[Function]}
         >
           <i
-            aria-label="Info tooltip"
             className=
 
                 {
@@ -297,6 +296,7 @@ exports[`Component Examples renders Toggle.CustomLabel.Example.tsx correctly 1`]
                   speak: none;
                 }
             data-icon-name="Info"
+            role="img"
           >
             
           </i>

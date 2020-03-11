@@ -153,7 +153,6 @@ exports[`Component Examples renders HoverCard.EventListenerTarget.Example.tsx co
                 text-align: center;
               }
           data-icon-name="Emoji2"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-0\\"",

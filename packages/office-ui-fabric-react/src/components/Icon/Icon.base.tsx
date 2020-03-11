@@ -42,6 +42,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const RootType = isImage ? 'span' : 'i';
     const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
       'aria-label',
+      'role'
     ]);
     const { imageLoadError } = this.state;
     const imageProps: IImageProps = {
@@ -51,14 +52,14 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
     // tslint:disable-next-line:deprecation
-    const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
-    const containerProps = ariaLabel
+    const hasName = this.props['aria-label'] || this.props.ariaLabel || this.props['aria-labelledby'] || imageProps['aria-labelledby'];
+    const containerProps = hasName
       ? {
-          'aria-label': ariaLabel,
-        }
+        role: isImage ? undefined : 'img'
+      }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true,
-        };
+        'aria-hidden': true
+      };
 
     return (
       <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>

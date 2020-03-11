@@ -19,8 +19,8 @@ export const IconColorExample: React.FunctionComponent = () => {
   // You could also use the standard Icon here.
   return (
     <div>
-      <FontIcon iconName="CompassNW" className={classNames.deepSkyBlue} />
-      <FontIcon iconName="Dictionary" className={classNames.greenYellow} />
+      <FontIcon iconName="CompassNW" aria-label="compass" className={classNames.deepSkyBlue} />
+      <FontIcon iconName="Dictionary" aria-label="dictionary" className={classNames.greenYellow} />
       <FontIcon iconName="TrainSolid" className={classNames.salmon} />
     </div>
   );

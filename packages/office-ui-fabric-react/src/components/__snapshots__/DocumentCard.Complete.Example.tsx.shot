@@ -810,7 +810,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-align: center;
                 }
             data-icon-name="Share"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -959,7 +958,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-align: center;
                 }
             data-icon-name="Pin"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-0\\"",
@@ -1108,7 +1106,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   text-align: center;
                 }
             data-icon-name="Ringer"
-            role="presentation"
             style={
               Object {
                 "fontFamily": "\\"FabricMDL2Icons-4\\"",

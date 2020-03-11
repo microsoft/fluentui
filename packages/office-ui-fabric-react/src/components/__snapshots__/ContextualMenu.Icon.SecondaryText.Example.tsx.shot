@@ -147,7 +147,6 @@ exports[`Component Examples renders ContextualMenu.Icon.SecondaryText.Example.ts
             text-align: center;
           }
       data-icon-name="ChevronDown"
-      role="presentation"
       style={
         Object {
           "fontFamily": "\\"FabricMDL2Icons\\"",

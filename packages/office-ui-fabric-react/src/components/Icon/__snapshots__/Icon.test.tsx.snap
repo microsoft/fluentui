@@ -2,7 +2,6 @@
 
 exports[`Icon renders Icon correctly 1`] = `
 <i
-  aria-label="asdf"
   className=
 
       {
@@ -15,6 +14,7 @@ exports[`Icon renders Icon correctly 1`] = `
         speak: none;
       }
   data-icon-name="CompassNW"
+  role="img"
 >
   
 </i>

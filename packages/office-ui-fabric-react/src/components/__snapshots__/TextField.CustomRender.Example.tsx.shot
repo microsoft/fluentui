@@ -198,7 +198,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                     text-align: center;
                   }
               data-icon-name="Info"
-              role="presentation"
               style={
                 Object {
                   "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -419,7 +418,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           </label>
         </span>
         <i
-          aria-label="Globe"
           className=
 
               {
@@ -433,6 +431,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 speak: none;
               }
           data-icon-name="Globe"
+          role="img"
           title="Globe"
         >
           
