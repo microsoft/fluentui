@@ -25,7 +25,7 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     }),
     position: 'relative',
     ...(p.active && {
-      ...(p.isFromKeyboard && getBorderFocusStyles({ siteVariables, borderRadius: 0 })[':focus-visible']),
+      ...(p.isFromKeyboard && getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 })[':focus-visible']),
       ...(!p.isFromKeyboard && {
         color: v.listItemColorHover,
         backgroundColor: v.listItemBackgroundColorHover,

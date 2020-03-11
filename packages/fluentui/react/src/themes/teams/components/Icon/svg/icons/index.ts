@@ -14,6 +14,8 @@ import bellMute from './bellMute';
 import bold from './bold';
 import bookmark from './bookmark';
 import broadcast from './broadcast';
+import broadcastViewFullscreen from './broadcastViewFullscreen';
+import broadcastViewLeft from './broadcastViewLeft';
 import bullets from './bullets';
 import calendar from './calendar';
 import call from './call';
@@ -201,6 +203,8 @@ export default {
   bold,
   bookmark,
   broadcast,
+  'broadcast-view-fullscreen': broadcastViewFullscreen,
+  'broadcast-view-left': broadcastViewLeft,
   bullets,
   calendar,
   call,

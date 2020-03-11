@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "restore onRenderIcon prop for ContextualMenuSplitButton",
-  "packageName": "office-ui-fabric-react",
-  "email": "kinhln@microsoft.com",
-  "commit": "a0e64f183eb1f65310e7e635145a71ce3238ddd8",
-  "dependentChangeType": "patch",
-  "date": "2020-03-06T11:40:23.862Z"
-}

@@ -71,6 +71,39 @@ type CustomToolbarVariables = {
   ctItemPrimaryColorHover: string;
 };
 
+const toolbarVariables = (siteVars): CustomToolbarVariables => ({
+  ctBorderRadius: '4px',
+  ctBorderStyle: 'solid',
+  ctBorderWidth: '2px',
+  ctHeight: '4rem',
+
+  ctItemBackground: siteVars.colorScheme.default.background1,
+  ctItemBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
+  ctItemBorderColorFocus: siteVars.colorScheme.default.borderFocus,
+  ctItemColor: siteVars.colorScheme.default.foreground,
+  ctItemColorFocus: siteVars.colorScheme.default.foregroundFocus,
+  ctItemColorHover: siteVars.colorScheme.default.foregroundHover,
+
+  ctItemActiveBackground: siteVars.colorScheme.default.backgroundActive1,
+  // FIXME: use variables for colors!
+  ctItemActiveBackgroundOverlay:
+    'linear-gradient(90deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(135deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 70%),linear-gradient(180deg,rgba(60,62,93,.6) 70%,rgba(60,62,93,0) 94%),linear-gradient(225deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 73%),linear-gradient(270deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(0deg,rgba(98,100,167,.75) 6%,rgba(98,100,167,0) 70%)',
+  ctItemActiveColor: siteVars.colorScheme.default.foregroundActive1,
+
+  ctItemDangerBackground: siteVars.colorScheme.red.background2,
+  ctItemDangerBackgroundHover: siteVars.colorScheme.red.backgroundHover,
+  ctItemDangerColorHover: siteVars.colorScheme.red.foregroundHover,
+
+  ctItemIndicatorPadding: pxToRem(8),
+
+  ctItemNotificationBackgroundColor: siteVars.colors.red[400],
+  ctItemNotificationSize: pxToRem(8),
+
+  ctItemPrimaryBackground: siteVars.colorScheme.default.background3,
+  ctItemPrimaryBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
+  ctItemPrimaryColorHover: siteVars.colorScheme.brand.foregroundHover1
+});
+
 const darkThemeOverrides: ThemeInput = {
   componentVariables: {
     Status: (siteVars): CustomStatusVariables => ({
@@ -79,40 +112,11 @@ const darkThemeOverrides: ThemeInput = {
       recordingIndicatorBorderWidth: '2px'
     }),
 
-    Toolbar: (siteVars): CustomToolbarVariables => ({
-      ctBorderRadius: '4px',
-      ctBorderStyle: 'solid',
-      ctBorderWidth: '2px',
-      ctHeight: '4rem',
-
-      ctItemBackground: siteVars.colorScheme.default.background1,
-      ctItemBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
-      ctItemBorderColorFocus: siteVars.colorScheme.default.borderFocus,
-      ctItemColor: siteVars.colorScheme.default.foreground,
-      ctItemColorFocus: siteVars.colorScheme.default.foregroundFocus,
-      ctItemColorHover: siteVars.colorScheme.default.foregroundHover,
-
-      ctItemActiveBackground: siteVars.colorScheme.default.backgroundActive1,
-      // FIXME: use variables for colors!
-      ctItemActiveBackgroundOverlay:
-        'linear-gradient(90deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(135deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 70%),linear-gradient(180deg,rgba(60,62,93,.6) 70%,rgba(60,62,93,0) 94%),linear-gradient(225deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 73%),linear-gradient(270deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(0deg,rgba(98,100,167,.75) 6%,rgba(98,100,167,0) 70%)',
-      ctItemActiveColor: siteVars.colorScheme.default.foregroundActive1,
-
-      ctItemDangerBackground: siteVars.colorScheme.red.background2,
-      ctItemDangerBackgroundHover: siteVars.colorScheme.red.backgroundHover,
-      ctItemDangerColorHover: siteVars.colorScheme.red.foregroundHover,
-
-      ctItemIndicatorPadding: pxToRem(8),
-
-      ctItemNotificationBackgroundColor: siteVars.colors.red[400],
-      ctItemNotificationSize: pxToRem(8),
-
-      ctItemPrimaryBackground: siteVars.colorScheme.default.background3,
-      ctItemPrimaryBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
-      ctItemPrimaryColorHover: siteVars.colorScheme.brand.foregroundHover1
-    })
+    Toolbar: toolbarVariables,
+    ToolbarCustomItem: toolbarVariables,
+    ToolbarDivider: toolbarVariables,
+    ToolbarItem: toolbarVariables
   },
-
   componentStyles: {
     Status: {
       root: ({ variables: v }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({

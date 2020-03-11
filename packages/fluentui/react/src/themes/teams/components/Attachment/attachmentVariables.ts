@@ -12,6 +12,12 @@ export type AttachmentVariables = {
   textColorHover: string;
   boxShadow: string;
 
+  focusBackgroundColor: string;
+  focusColor: string;
+  siblingsFocusColor: string;
+
+  siblingsHoverColor: string;
+
   progressColor: string;
   progressHeight: number;
 
@@ -34,6 +40,12 @@ export default (siteVariables: any): AttachmentVariables => ({
   textColor: siteVariables.colors.grey[750],
   textColorHover: siteVariables.colors.grey[750],
   boxShadow: siteVariables.shadowLevel1,
+
+  focusBackgroundColor: undefined,
+  focusColor: undefined,
+  siblingsFocusColor: undefined,
+
+  siblingsHoverColor: undefined,
 
   progressColor: siteVariables.colors.green[200],
   progressHeight: 4,
