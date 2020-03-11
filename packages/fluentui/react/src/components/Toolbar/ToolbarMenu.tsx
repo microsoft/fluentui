@@ -31,6 +31,7 @@ import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenu
 import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import { BoxProps } from '../Box/Box';
+import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export type ToolbarMenuItemShorthandKinds = 'divider' | 'item' | 'toggle';
 
@@ -67,6 +68,9 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
 
   const { accessibility, className, children, design, items, submenu, submenuIndicator, styles, variables } = props;
 
+  const parentVariables = React.useContext(ToolbarVariablesContext);
+  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarMenu.displayName,
     actionHandlers: {
@@ -82,7 +86,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
       className,
       design,
       styles,
-      variables
+      variables: mergedVariables
     }),
     rtl: context.rtl
   });
@@ -94,20 +98,14 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
         ...itemProps,
         menuOpen: !!itemProps.menu
       });
-    },
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
-  });
-
-  const handleDividerOverrides = predefinedProps => ({
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    }
   });
 
   const handleRadioGroupOverrides = (predefinedProps: ToolbarMenuRadioGroupProps) => ({
     onItemClick: (e, itemProps) => {
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
       _.invoke(props, 'onItemClick', e, itemProps);
-    },
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    }
   });
 
   const renderItems = () => {
@@ -116,7 +114,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
 
       switch (kind) {
         case 'divider':
-          return ToolbarMenuDivider.create(item, { overrideProps: handleDividerOverrides });
+          return ToolbarMenuDivider.create(item);
 
         case 'group':
           return ToolbarMenuRadioGroup.create(item, { overrideProps: handleRadioGroupOverrides });
@@ -149,7 +147,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
         className: classes.root
       })}
     >
-      {childrenExist(children) ? children : renderItems()}
+      <ToolbarVariablesProvider value={mergedVariables}>{childrenExist(children) ? children : renderItems()}</ToolbarVariablesProvider>
     </ElementType>
   );
   setEnd();

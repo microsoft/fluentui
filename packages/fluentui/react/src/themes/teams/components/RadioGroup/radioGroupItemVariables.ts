@@ -9,10 +9,11 @@ export type RadioGroupItemVariables = {
   textColorDefaultHoverFocus: string;
   textColorChecked: string;
 
-  iconBorderColorDefaultHover: string;
-  iconBorderColorChecked: string;
+  indicatorBorderColorDefault: string;
+  indicatorBorderColorDefaultHover: string;
+  indicatorBorderColorChecked: string;
 
-  iconBackgroundColorChecked: string;
+  indicatorBackgroundColorChecked: string;
 
   padding: string;
 };
@@ -26,10 +27,11 @@ export default (siteVars: any): RadioGroupItemVariables => ({
   textColorDefaultHoverFocus: siteVars.colors.grey[750],
   textColorChecked: siteVars.colors.grey[750],
 
-  iconBorderColorDefaultHover: siteVars.colors.grey[750],
-  iconBorderColorChecked: siteVars.colors.brand[600],
+  indicatorBorderColorDefault: siteVars.colors.grey[500],
+  indicatorBorderColorDefaultHover: siteVars.colors.grey[750],
+  indicatorBorderColorChecked: siteVars.colors.brand[600],
 
-  iconBackgroundColorChecked: siteVars.colors.brand[600],
+  indicatorBackgroundColorChecked: siteVars.colors.brand[600],
 
   padding: `0 ${pxToRem(4)}`
 });

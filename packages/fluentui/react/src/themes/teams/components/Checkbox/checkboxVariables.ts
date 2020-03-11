@@ -101,7 +101,7 @@ export default (siteVars: any): CheckboxVariables => ({
 
   checkedTextColor: _.get(siteVars, 'colorScheme.default.foreground', defaultValue),
   checkedBackground: _.get(siteVars, 'colorScheme.brand.backgroundActive1', defaultValue),
-  checkedBorderColor: 'transparent',
+  checkedBorderColor: _.get(siteVars, 'colorScheme.brand.backgroundActive1', defaultValue),
   checkedIndicatorColor: _.get(siteVars, 'colorScheme.default.background', defaultValue),
   toggleCheckedPadding: `${padding} ${padding} ${padding} ${toggleMovementDistance}`,
 

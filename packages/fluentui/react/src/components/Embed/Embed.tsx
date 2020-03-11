@@ -12,7 +12,6 @@ import {
   AutoControlledComponent,
   ShorthandFactory
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
 import Image from '../Image/Image';
 import Video, { VideoProps } from '../Video/Video';
 import Box, { BoxProps } from '../Box/Box';
@@ -34,7 +33,7 @@ export interface EmbedProps extends UIComponentProps {
   defaultActive?: boolean;
 
   /** Shorthand for an control. */
-  control?: ShorthandValue<IconProps>;
+  control?: ShorthandValue<BoxProps>;
 
   /** Shorthand for an embedded iframe. */
   iframe?: ShorthandValue<BoxProps>;
@@ -187,12 +186,9 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
 
         {placeholderVisible && placeholderElement}
         {controlVisible &&
-          Icon.create(control, {
+          Box.create(control, {
             defaultProps: () => ({
               className: Embed.slotClassNames.control,
-              circular: true,
-              name: active ? 'icon-pause' : 'icon-play',
-              size: 'largest',
               styles: styles.control
             })
           })}

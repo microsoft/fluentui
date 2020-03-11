@@ -44,6 +44,9 @@ export interface CarouselNavigationVariables {
 
   primaryBorderColor: string;
 
+  indicatorBackgroundColor: string;
+  indicatorActiveBackgroundColor: string;
+
   borderWidth: string;
 }
 
@@ -95,6 +98,9 @@ export default (siteVars: any): CarouselNavigationVariables => {
     verticalItemBorderColor: 'transparent',
     verticalBackgroundColorFocus: siteVars.colors.grey[150],
     primaryBorderColor: siteVars.colorScheme.default.border2,
+
+    indicatorBackgroundColor: siteVars.colors.grey[500],
+    indicatorActiveBackgroundColor: siteVars.colors.brand[600],
 
     borderWidth: pxToRem(1)
   };

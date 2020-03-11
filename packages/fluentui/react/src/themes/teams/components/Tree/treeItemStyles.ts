@@ -8,12 +8,12 @@ const treeItemStyles: ComponentSlotStylesPrepared<TreeItemStylesProps> = {
   root: ({ theme: { siteVariables }, props: p }): ICSSInJSStyle => ({
     listStyleType: 'none',
     padding: `0 0 0 ${pxToRem(1 + (p.level - 1) * 10)}`,
-    ...getBorderFocusStyles({ siteVariables })[':focus'],
+    ...getBorderFocusStyles({ variables: siteVariables })[':focus'],
     ':focus-visible': {
       outline: 0,
       [`> .${TreeTitle.className}`]: {
         position: 'relative',
-        ...getBorderFocusStyles({ siteVariables })[':focus-visible']
+        ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible']
       }
     }
   })

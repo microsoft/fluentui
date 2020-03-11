@@ -1,7 +1,19 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
+This log was last generated on Tue, 10 Mar 2020 12:25:14 GMT and should not be manually modified.
 
+## 7.13.2
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Patches
+
+- Skips unnecessary equality check in shallowCompare to increase performance (chce@netcompany.com)
+## 7.13.1
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
 ## 7.13.0
 Tue, 03 Mar 2020 12:27:24 GMT
 

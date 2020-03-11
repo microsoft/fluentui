@@ -1,20 +1,20 @@
 import { AlertVariables } from '../../../teams/components/Alert/alertVariables';
 
-export interface AlertHighContrastVariables {
-  hoverBorderColor: string;
-  hoverBackgroundColor: string;
-  focusBackgroundColor: string;
-}
-
-export default (siteVars: any): Partial<AlertVariables> & AlertHighContrastVariables => {
+export default (siteVars: any): Partial<AlertVariables> => {
   return {
     backgroundColor: siteVars.colors.white,
     borderColor: siteVars.colors.white,
     color: siteVars.colors.black,
 
     hoverBorderColor: siteVars.colors.black,
-    hoverBackgroundColor: siteVars.accessibleYellow,
+    hoverBackgroundColor: siteVars.accessibleCyan,
     focusBackgroundColor: siteVars.accessibleCyan,
+
+    dismissActionHoverBorderRadius: siteVars.borderRadius,
+    dismissActionHoverBorderWidth: siteVars.borderWidth,
+    dismissActionHoverInnerBorderColor: siteVars.focusInnerBorderColor,
+    dismissActionHoverOuterBorderColor: siteVars.focusOuterBorderColor,
+    dismissActionHoverZIndex: siteVars.zIndexes.foreground,
 
     dangerColor: siteVars.colors.black,
     dangerBackgroundColor: siteVars.colors.white,

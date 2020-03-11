@@ -1133,7 +1133,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
+export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
