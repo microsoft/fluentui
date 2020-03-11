@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Tue, 10 Mar 2020 12:25:14 GMT",
+      "tag": "@uifabric/utilities_v7.13.2",
+      "version": "7.13.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Skips unnecessary equality check in shallowCompare to increase performance",
+            "author": "chce@netcompany.com",
+            "commit": "e590df08d02260882e225af34674b61285d66261"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 07 Mar 2020 01:39:37 GMT",
       "tag": "@uifabric/utilities_v7.13.1",
       "version": "7.13.1",

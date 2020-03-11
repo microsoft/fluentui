@@ -48,7 +48,7 @@ const selectedStyle = variables => ({
 const listItemStyles: ComponentSlotStylesPrepared<ListItemStylesProps, ListItemVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables
+      variables: siteVariables
     });
 
     return {

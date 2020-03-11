@@ -1,19 +1,19 @@
-import { Accessibility, popupBehavior } from '@fluentui/accessibility';
-import { ReactAccessibilityBehavior, AutoFocusZoneProps, FocusTrapZoneProps } from '@fluentui/react-bindings';
+import { Accessibility, popupBehavior, PopupBehaviorProps } from '@fluentui/accessibility';
+import { AutoFocusZoneProps, FocusTrapZoneProps, useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import * as keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
+import PopperJs from 'popper.js';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
 import {
-  applyAccessibilityKeyHandlers,
   childrenExist,
-  AutoControlledComponent,
-  RenderResultConfig,
   ChildrenComponentProps,
   ContentComponentProps,
   StyledComponentProps,
@@ -22,11 +22,11 @@ import {
   doesNodeContainClick,
   setWhatInputSource
 } from '../../utils';
-import { ComponentEventHandler, ShorthandValue } from '../../types';
+import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared, ShorthandValue } from '../../types';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
 import PopupContent, { PopupContentProps } from './PopupContent';
 
-import { createShorthandFactory, ShorthandFactory } from '../../utils/factories';
+import { createShorthandFactory } from '../../utils/factories';
 import createReferenceFromContextClick from './createReferenceFromContextClick';
 import isRightClick from '../../utils/isRightClick';
 import PortalInner from '../Portal/PortalInner';
@@ -49,7 +49,7 @@ export interface PopupProps
    * Accessibility behavior if overridden by the user.
    * @available dialogBehavior
    */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<PopupBehaviorProps>;
 
   /** Additional CSS class name(s) to apply.  */
   className?: string;
@@ -94,7 +94,7 @@ export interface PopupProps
   target?: HTMLElement;
 
   /** Element to be rendered in-place where the popup is defined. */
-  trigger?: JSX.Element;
+  trigger?: React.ReactNode;
 
   /** Whether the trigger should be tabbable */
   tabbableTrigger?: boolean;
@@ -109,191 +109,135 @@ export interface PopupProps
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
-export interface PopupState {
-  open: boolean;
-  isOpenedByRightClick: boolean;
-}
-
 /**
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
-export default class Popup extends AutoControlledComponent<PopupProps, PopupState> {
-  static displayName = 'Popup';
+const Popup: React.FC<PopupProps> &
+  FluentComponentStaticProps<PopupProps> & { slotClassNames: PopupSlotClassNames; Content: typeof PopupContent } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(Popup.displayName, context.telemetry);
+  setStart();
 
-  static className = 'ui-popup';
+  const {
+    accessibility,
+    align,
+    autoFocus,
+    inline,
+    children,
+    contentRef,
+    on,
+    mountNode,
+    mouseLeaveDelay,
+    offset,
+    pointing,
+    position,
+    renderContent,
+    tabbableTrigger,
+    target,
+    trapFocus,
+    trigger,
+    unstable_pinned
+  } = props;
 
-  static create: ShorthandFactory<PopupProps>;
+  const [open, setOpen] = useAutoControlled({
+    initialValue: false,
+    defaultValue: props.defaultOpen,
+    value: props.open
+  });
+  const [isOpenedByRightClick, setIsOpenedByRightClick] = React.useState(false);
 
-  static slotClassNames: PopupSlotClassNames = {
-    content: `${Popup.className}__content`
-  };
+  const closeTimeoutId = React.useRef<number | undefined>();
 
-  static Content = PopupContent;
-
-  static propTypes = {
-    ...commonPropTypes.createCommon({
-      as: false,
-      content: false
-    }),
-    align: PropTypes.oneOf(ALIGNMENTS),
-    defaultOpen: PropTypes.bool,
-    inline: PropTypes.bool,
-    mountNode: customPropTypes.domNode,
-    mouseLeaveDelay: PropTypes.number,
-    offset: PropTypes.string,
-    on: PropTypes.oneOfType([
-      PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
-      PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
-      PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context']))
-    ]),
-    open: PropTypes.bool,
-    onOpenChange: PropTypes.func,
-    pointing: PropTypes.bool,
-    position: PropTypes.oneOf(POSITIONS),
-    renderContent: PropTypes.func,
-    target: PropTypes.any,
-    trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
-    tabbableTrigger: PropTypes.bool,
-    unstable_pinned: PropTypes.bool,
-    content: customPropTypes.shorthandAllowingChildren,
-    contentRef: customPropTypes.ref,
-    trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
-  };
-
-  static defaultProps: PopupProps = {
-    accessibility: popupBehavior,
-    align: 'start',
-    position: 'above',
-    on: 'click',
-    mouseLeaveDelay: 500,
-    tabbableTrigger: true
-  };
-
-  static autoControlledProps = ['open'];
-
-  pointerTargetRef = React.createRef<HTMLElement>();
-  triggerRef = React.createRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
+  const popupContentRef = React.useRef<HTMLElement>();
+  const pointerTargetRef = React.useRef<HTMLElement>();
+  const triggerRef = React.useRef<HTMLElement>();
   // focusable element which has triggered Popup, can be either triggerDomElement or the element inside it
-  triggerFocusableDomElement = null;
-  popupDomElement = null;
-  rightClickReferenceObject = null;
+  const triggerFocusableRef = React.useRef<HTMLElement>();
+  const rightClickReferenceObject = React.useRef<PopperJs.ReferenceObject | null>();
 
-  closeTimeoutId;
-
-  actionHandlers = {
-    closeAndFocusTrigger: e => {
-      e.preventDefault();
-      this.close(e, () => _.invoke(this.triggerFocusableDomElement, 'focus'));
-    },
-    close: e => {
-      this.close(e);
-    },
-    toggle: e => {
-      e.preventDefault();
-      this.trySetOpen(!this.state.open, e);
-    },
-    open: e => {
-      e.preventDefault();
-      this.setPopupOpen(true, e);
-    },
-    preventScroll: e => {
-      e.preventDefault();
-    }
-  };
-
-  componentDidMount() {
-    const { inline, trapFocus, autoFocus, open } = this.props;
-
-    if (open) {
-      // when new state 'open' === 'true', save the last focused element
-      this.updateTriggerFocusableDomElement();
-    }
-
-    if (process.env.NODE_ENV !== 'production') {
-      if (inline && trapFocus) {
-        console.warn('Using "trapFocus" in inline popup leads to broken behavior for screen reader users.');
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: Popup.displayName,
+    actionHandlers: {
+      closeAndFocusTrigger: e => {
+        e.preventDefault();
+        close(e, () => _.invoke(triggerFocusableRef.current, 'focus'));
+      },
+      close: e => {
+        close(e);
+      },
+      toggle: e => {
+        e.preventDefault();
+        trySetOpen(!open, e);
+      },
+      open: e => {
+        e.preventDefault();
+        setPopupOpen(true, e);
+      },
+      preventScroll: e => {
+        e.preventDefault();
       }
-      if (!inline && autoFocus) {
-        console.warn(
-          'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.'
-        );
-      }
-    }
-  }
+    },
+    mapPropsToBehavior: () => ({
+      disabled: false, // definition has this prop, but `Popup` doesn't support it
+      isOpenedByRightClick,
+      on,
+      trapFocus,
+      tabbableTrigger,
+      trigger: trigger as any
+    }),
+    rtl: context.rtl
+  });
 
-  componentDidUpdate({ open }) {
-    if (open) {
-      // when new state 'open' === 'true', save the last focused element
-      this.updateTriggerFocusableDomElement();
-    }
-  }
-
-  renderComponent({ rtl, accessibility }: RenderResultConfig<PopupProps>): React.ReactNode {
-    const { inline, mountNode } = this.props;
-    const { open } = this.state;
-    const popupContent = open && this.renderPopupContent(rtl, accessibility);
-
-    return (
-      <>
-        {this.renderTrigger(accessibility)}
-        {open && (inline ? popupContent : <PortalInner mountNode={mountNode}>{popupContent}</PortalInner>)}
-      </>
-    );
-  }
-
-  handleDocumentClick = (getRefs: Function) => e => {
-    if (this.state.isOpenedByRightClick && this.isOutsidePopupElement(getRefs(), e)) {
-      this.trySetOpen(false, e);
+  const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
+    if (isOpenedByRightClick && isOutsidePopupElement(getRefs(), e)) {
+      trySetOpen(false, e);
       return;
     }
 
-    if (this.isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
-      this.trySetOpen(false, e);
+    if (isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
+      trySetOpen(false, e);
     }
   };
 
-  handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
+  const handleDocumentKeyDown = (getRefs: Function) => (e: KeyboardEvent) => {
     const keyCode = keyboardKey.getCode(e);
     const isMatchingKey = keyCode === keyboardKey.Enter || keyCode === keyboardKey.Spacebar;
 
-    if (isMatchingKey && this.isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
-      this.trySetOpen(false, e);
+    if (isMatchingKey && isOutsidePopupElementAndOutsideTriggerElement(getRefs(), e)) {
+      trySetOpen(false, e);
     }
 
     // if focus was lost from Popup and moved to body, for e.g. when click on popup content
     // and ESC is pressed, the last opened Popup should get closed and the trigger should get focus
     const lastContentRef = getRefs().pop();
-    const isLastOpenedPopup: boolean = lastContentRef && lastContentRef.current === this.popupDomElement;
+    const isLastOpenedPopup: boolean = lastContentRef && lastContentRef.current === popupContentRef.current;
 
-    const activeDocument: HTMLDocument = this.context.target;
+    const activeDocument: HTMLDocument = context.target;
     const bodyHasFocus: boolean = activeDocument.activeElement === activeDocument.body;
 
     if (keyCode === keyboardKey.Escape && bodyHasFocus && isLastOpenedPopup) {
-      this.close(e, () => _.invoke(this.triggerFocusableDomElement, 'focus'));
+      close(e, () => _.invoke(triggerFocusableRef.current, 'focus'));
     }
   };
 
-  isOutsidePopupElementAndOutsideTriggerElement(refs: NodeRef[], e) {
-    const isOutsidePopupElement = this.isOutsidePopupElement(refs, e);
-    const isInsideTriggerElement = this.triggerRef.current && doesNodeContainClick(this.triggerRef.current, e, this.context.target);
+  const isOutsidePopupElementAndOutsideTriggerElement = (refs: NodeRef[], e: KeyboardEvent | MouseEvent) => {
+    const isOutsidePopup = isOutsidePopupElement(refs, e);
+    const isInsideTrigger = triggerRef.current && doesNodeContainClick(triggerRef.current, e as MouseEvent, context.target);
 
-    return isOutsidePopupElement && !isInsideTriggerElement;
-  }
+    return isOutsidePopup && !isInsideTrigger;
+  };
 
-  isOutsidePopupElement(refs: NodeRef[], e) {
+  const isOutsidePopupElement = (refs: NodeRef[], e) => {
     const isInsideNested = _.some(refs, (childRef: NodeRef) => {
-      return doesNodeContainClick(childRef.current as HTMLElement, e, this.context.target);
+      return doesNodeContainClick(childRef.current as HTMLElement, e, context.target);
     });
+    const isOutsidePopup = popupContentRef.current && !isInsideNested;
 
-    const isOutsidePopupElement = this.popupDomElement && !isInsideNested;
-    return isOutsidePopupElement;
-  }
+    return isOutsidePopup;
+  };
 
-  getTriggerProps(triggerElement) {
+  const getTriggerProps = triggerElement => {
     const triggerProps: any = {};
-
-    const { on } = this.props;
     const normalizedOn = _.isArray(on) ? on : [on];
 
     /**
@@ -303,19 +247,19 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     if (_.includes(normalizedOn, 'focus')) {
       triggerProps.onFocus = (e, ...args) => {
         if (isFromKeyboard()) {
-          this.trySetOpen(true, e);
+          trySetOpen(true, e);
         }
         _.invoke(triggerElement, 'props.onFocus', e, ...args);
       };
       triggerProps.onBlur = (e, ...args) => {
-        if (this.shouldBlurClose(e)) {
-          this.trySetOpen(false, e);
+        if (shouldBlurClose(e)) {
+          trySetOpen(false, e);
         }
         _.invoke(triggerElement, 'props.onBlur', e, ...args);
       };
       if (!_.includes(normalizedOn, 'context')) {
         triggerProps.onClick = (e, ...args) => {
-          this.setPopupOpen(true, e);
+          setPopupOpen(true, e);
           _.invoke(triggerElement, 'props.onClick', e, ...args);
         };
       }
@@ -326,7 +270,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
      */
     if (_.includes(normalizedOn, 'click')) {
       triggerProps.onClick = (e, ...args) => {
-        this.trySetOpen(!this.state.open, e);
+        trySetOpen(!open, e);
         _.invoke(triggerElement, 'props.onClick', e, ...args);
       };
     }
@@ -336,7 +280,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
      */
     if (_.includes(normalizedOn, 'context')) {
       triggerProps.onContextMenu = (e, ...args) => {
-        this.setPopupOpen(!this.state.open, e);
+        setPopupOpen(!open, e);
         _.invoke(triggerElement, 'props.onContextMenu', e, ...args);
         e.preventDefault();
       };
@@ -348,35 +292,33 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
      */
     if (_.includes(normalizedOn, 'hover')) {
       triggerProps.onMouseEnter = (e, ...args) => {
-        this.setPopupOpen(true, e);
-        setWhatInputSource(this.context.target, 'mouse');
+        setPopupOpen(true, e);
+        setWhatInputSource(context.target, 'mouse');
         _.invoke(triggerElement, 'props.onMouseEnter', e, ...args);
       };
       triggerProps.onMouseLeave = (e, ...args) => {
-        this.setPopupOpen(false, e);
+        setPopupOpen(false, e);
         _.invoke(triggerElement, 'props.onMouseLeave', e, ...args);
       };
       if (!_.includes(normalizedOn, 'context')) {
         triggerProps.onClick = (e, ...args) => {
-          this.setPopupOpen(true, e);
+          setPopupOpen(true, e);
           _.invoke(triggerElement, 'props.onClick', e, ...args);
         };
       }
       triggerProps.onBlur = (e, ...args) => {
-        if (this.shouldBlurClose(e)) {
-          this.trySetOpen(false, e);
+        if (shouldBlurClose(e)) {
+          trySetOpen(false, e);
         }
         _.invoke(triggerElement, 'props.onBlur', e, ...args);
       };
     }
 
     return triggerProps;
-  }
+  };
 
-  getContentProps = (predefinedProps?) => {
+  const getContentProps = (predefinedProps?) => {
     const contentHandlerProps: any = {};
-
-    const { on } = this.props;
     const normalizedOn = _.isArray(on) ? on : [on];
 
     /**
@@ -384,12 +326,12 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
      */
     if (_.includes(normalizedOn, 'focus')) {
       contentHandlerProps.onFocus = (e, contentProps) => {
-        this.trySetOpen(true, e);
+        trySetOpen(true, e);
         predefinedProps && _.invoke(predefinedProps, 'onFocus', e, contentProps);
       };
       contentHandlerProps.onBlur = (e, contentProps) => {
-        if (this.shouldBlurClose(e)) {
-          this.trySetOpen(false, e);
+        if (shouldBlurClose(e)) {
+          trySetOpen(false, e);
         }
         predefinedProps && _.invoke(predefinedProps, 'onBlur', e, contentProps);
       };
@@ -400,15 +342,15 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
      */
     if (_.includes(normalizedOn, 'hover')) {
       contentHandlerProps.onMouseEnter = (e, contentProps) => {
-        this.setPopupOpen(true, e);
+        setPopupOpen(true, e);
         predefinedProps && _.invoke(predefinedProps, 'onMouseEnter', e, contentProps);
       };
       contentHandlerProps.onMouseLeave = (e, contentProps) => {
-        this.setPopupOpen(false, e);
+        setPopupOpen(false, e);
         predefinedProps && _.invoke(predefinedProps, 'onMouseLeave', e, contentProps);
       };
       contentHandlerProps.onClick = (e, contentProps) => {
-        this.setPopupOpen(true, e);
+        setPopupOpen(true, e);
         predefinedProps && _.invoke(predefinedProps, 'onClick', e, contentProps);
       };
     }
@@ -416,64 +358,27 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     return contentHandlerProps;
   };
 
-  shouldBlurClose = e => {
+  const shouldBlurClose = e => {
     return (
       !e.currentTarget ||
-      !this.popupDomElement ||
-      (!e.currentTarget.contains(e.relatedTarget) && !this.popupDomElement.contains(e.relatedTarget))
+      !popupContentRef.current ||
+      (!e.currentTarget.contains(e.relatedTarget) && !popupContentRef.current.contains(e.relatedTarget))
     );
   };
 
-  renderTrigger(accessibility) {
-    const { children, trigger } = this.props;
-    const triggerElement = childrenExist(children) ? children : (trigger as any);
-    const triggerProps = this.getTriggerProps(triggerElement);
-    return (
-      triggerElement && (
-        <Ref innerRef={this.triggerRef}>
-          {React.cloneElement(triggerElement, {
-            ...accessibility.attributes.trigger,
-            ...triggerProps,
-            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.trigger, triggerProps)
-          })}
-        </Ref>
-      )
-    );
-  }
-
-  renderPopupContent(rtl: boolean, accessibility: ReactAccessibilityBehavior): JSX.Element {
-    const { align, position, offset, target, unstable_pinned } = this.props;
-
-    return (
-      <Popper
-        pointerTargetRef={this.pointerTargetRef}
-        align={align}
-        position={position}
-        offset={offset}
-        rtl={rtl}
-        unstable_pinned={unstable_pinned}
-        targetRef={this.rightClickReferenceObject || target || this.triggerRef}
-        children={this.renderPopperChildren(accessibility)}
-      />
-    );
-  }
-
-  renderPopperChildren = (accessibility: ReactAccessibilityBehavior) => ({ placement, scheduleUpdate }: PopperChildrenProps) => {
-    const { content: propsContent, renderContent, contentRef, pointing, trapFocus, autoFocus } = this.props;
-
-    const content = renderContent ? renderContent(scheduleUpdate) : propsContent;
+  const renderPopperChildren = ({ placement, scheduleUpdate }: PopperChildrenProps) => {
+    const content = renderContent ? renderContent(scheduleUpdate) : props.content;
     const popupContent = Popup.Content.create(content || {}, {
-      defaultProps: () => ({
-        ...accessibility.attributes.popup,
-        ...accessibility.keyHandlers.popup,
-        ...this.getContentProps(),
-        placement,
-        pointing,
-        pointerRef: this.pointerTargetRef,
-        trapFocus,
-        autoFocus
-      }),
-      overrideProps: this.getContentProps
+      defaultProps: () =>
+        getA11yProps('popup', {
+          ...getContentProps(),
+          placement,
+          pointing,
+          pointerRef: pointerTargetRef,
+          trapFocus,
+          autoFocus
+        }),
+      overrideProps: getContentProps
     });
 
     return (
@@ -482,7 +387,7 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
           <>
             <Ref
               innerRef={domElement => {
-                this.popupDomElement = domElement;
+                popupContentRef.current = domElement;
                 handleRef(contentRef, domElement);
                 nestingRef.current = domElement;
               }}
@@ -490,14 +395,14 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
               {popupContent}
             </Ref>
 
-            <EventListener listener={this.handleDocumentClick(getRefs)} target={this.context.target} type="click" capture />
-            <EventListener listener={this.handleDocumentClick(getRefs)} target={this.context.target} type="contextmenu" capture />
-            <EventListener listener={this.handleDocumentKeyDown(getRefs)} target={this.context.target} type="keydown" capture />
+            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="click" capture />
+            <EventListener listener={handleDocumentClick(getRefs)} target={context.target} type="contextmenu" capture />
+            <EventListener listener={handleDocumentKeyDown(getRefs)} target={context.target} type="keydown" capture />
 
-            {this.state.isOpenedByRightClick && (
+            {isOpenedByRightClick && (
               <>
-                <EventListener listener={this.dismissOnScroll} target={this.context.target} type="wheel" capture />
-                <EventListener listener={this.dismissOnScroll} target={this.context.target} type="touchmove" capture />
+                <EventListener listener={dismissOnScroll} target={context.target} type="wheel" capture />
+                <EventListener listener={dismissOnScroll} target={context.target} type="touchmove" capture />
               </>
             )}
           </>
@@ -506,38 +411,42 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
     );
   };
 
-  dismissOnScroll = (e: Event) => {
-    this.trySetOpen(false, e);
+  const dismissOnScroll = (e: TouchEvent | WheelEvent) => {
+    trySetOpen(false, e);
   };
 
-  trySetOpen(newValue: boolean, eventArgs: any) {
-    const isOpenedByRightClick = newValue && isRightClick(eventArgs);
+  const trySetOpen = (
+    newValue: boolean,
+    event: React.KeyboardEvent | React.MouseEvent | KeyboardEvent | MouseEvent | TouchEvent | WheelEvent
+  ) => {
+    const isOpenedByRightClick = newValue && isRightClick(event as React.MouseEvent);
 
     // when new state 'open' === 'true', save the last focused element
     if (newValue) {
-      this.updateTriggerFocusableDomElement();
-      this.updateContextPosition(isOpenedByRightClick && eventArgs.nativeEvent);
+      updateTriggerFocusableRef();
+      updateContextPosition(isOpenedByRightClick && (event as React.MouseEvent).nativeEvent);
     }
-    this.setState({ open: newValue, isOpenedByRightClick });
-    _.invoke(this.props, 'onOpenChange', eventArgs, { ...this.props, ...{ open: newValue } });
-  }
 
-  setPopupOpen(newOpen, e) {
-    clearTimeout(this.closeTimeoutId);
-    newOpen ? this.trySetOpen(true, e) : this.schedulePopupClose(e);
-  }
+    setOpen(newValue);
+    setIsOpenedByRightClick(isOpenedByRightClick);
 
-  schedulePopupClose = e => {
-    const { mouseLeaveDelay } = this.props;
-
-    this.closeTimeoutId = setTimeout(() => {
-      this.trySetOpen(false, e);
-    }, mouseLeaveDelay);
+    _.invoke(props, 'onOpenChange', event, { ...props, ...{ open: newValue } });
   };
 
-  close = (e, onClose?: Function) => {
-    if (this.state.open) {
-      this.trySetOpen(false, e);
+  const setPopupOpen = (newOpen: boolean, e: React.KeyboardEvent) => {
+    clearTimeout(closeTimeoutId.current);
+    newOpen ? trySetOpen(true, e) : schedulePopupClose(e);
+  };
+
+  const schedulePopupClose = (e: React.KeyboardEvent) => {
+    closeTimeoutId.current = setTimeout(() => {
+      trySetOpen(false, e);
+    }, mouseLeaveDelay) as any;
+  };
+
+  const close = (e, onClose?: Function) => {
+    if (open) {
+      trySetOpen(false, e);
       onClose && onClose();
       e.stopPropagation();
     }
@@ -547,17 +456,116 @@ export default class Popup extends AutoControlledComponent<PopupProps, PopupStat
    * Save DOM element which had focus before Popup opens.
    * Can be either trigger DOM element itself or the element inside it.
    */
-  updateTriggerFocusableDomElement() {
-    const activeDocument: HTMLDocument = this.context.target;
+  const updateTriggerFocusableRef = () => {
+    const activeDocument: HTMLDocument = context.target;
     const activeElement = activeDocument.activeElement;
 
-    this.triggerFocusableDomElement =
-      this.triggerRef.current && this.triggerRef.current.contains(activeElement) ? activeElement : this.triggerRef.current;
+    triggerFocusableRef.current =
+      triggerRef.current && triggerRef.current.contains(activeElement) ? (activeElement as HTMLElement) : triggerRef.current;
+  };
+
+  const updateContextPosition = (nativeEvent: MouseEvent) => {
+    rightClickReferenceObject.current = nativeEvent ? createReferenceFromContextClick(nativeEvent) : null;
+  };
+
+  if (process.env.NODE_ENV !== 'production') {
+    React.useEffect(() => {
+      if (inline && trapFocus) {
+        console.warn('Using "trapFocus" in inline popup leads to broken behavior for screen reader users.');
+      }
+      if (!inline && autoFocus) {
+        console.warn(
+          'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.'
+        );
+      }
+    }, [autoFocus, inline, trapFocus]);
   }
 
-  updateContextPosition(nativeEvent: MouseEvent) {
-    this.rightClickReferenceObject = nativeEvent && createReferenceFromContextClick(nativeEvent);
-  }
-}
+  React.useEffect(() => {
+    if (open) {
+      // when new state 'open' === 'true', save the last focused element
+      updateTriggerFocusableRef();
+    }
+  });
+
+  const triggerNode: React.ReactNode | null = childrenExist(children) ? children : trigger;
+  const triggerProps = getTriggerProps(triggerNode);
+
+  const contentElement = open && (
+    <Popper
+      pointerTargetRef={pointerTargetRef}
+      align={align}
+      position={position}
+      offset={offset}
+      rtl={context.rtl}
+      unstable_pinned={unstable_pinned}
+      targetRef={rightClickReferenceObject.current || target || triggerRef}
+      children={renderPopperChildren}
+    />
+  );
+  const triggerElement = triggerNode && (
+    <Ref innerRef={triggerRef}>{React.cloneElement(triggerNode as React.ReactElement, getA11yProps('trigger', triggerProps))}</Ref>
+  );
+
+  const element = (
+    <>
+      {triggerElement}
+      {open && (inline ? contentElement : <PortalInner mountNode={mountNode}>{contentElement}</PortalInner>)}
+    </>
+  );
+  setEnd();
+
+  return element;
+};
+
+Popup.className = 'ui-popup';
+Popup.displayName = 'Popup';
+Popup.slotClassNames = {
+  content: `${Popup.className}__content`
+};
+
+Popup.propTypes = {
+  ...commonPropTypes.createCommon({
+    as: false,
+    content: false
+  }),
+  align: PropTypes.oneOf(ALIGNMENTS),
+  defaultOpen: PropTypes.bool,
+  inline: PropTypes.bool,
+  mountNode: customPropTypes.domNode,
+  mouseLeaveDelay: PropTypes.number,
+  offset: PropTypes.string,
+  on: PropTypes.oneOfType([
+    PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
+    PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
+    PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context']))
+  ]) as any,
+  open: PropTypes.bool,
+  onOpenChange: PropTypes.func,
+  pointing: PropTypes.bool,
+  position: PropTypes.oneOf(POSITIONS),
+  renderContent: PropTypes.func,
+  target: PropTypes.any,
+  trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
+  tabbableTrigger: PropTypes.bool,
+  unstable_pinned: PropTypes.bool,
+  content: customPropTypes.shorthandAllowingChildren,
+  contentRef: customPropTypes.ref,
+  trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+};
+Popup.defaultProps = {
+  accessibility: popupBehavior,
+  align: 'start',
+  position: 'above',
+  on: 'click',
+  mouseLeaveDelay: 500,
+  tabbableTrigger: true
+};
+Popup.handledProps = Object.keys(Popup.propTypes) as any;
+
+Popup.Content = PopupContent;
 
 Popup.create = createShorthandFactory({ Component: Popup, mappedProp: 'content' });
+
+export default Popup;

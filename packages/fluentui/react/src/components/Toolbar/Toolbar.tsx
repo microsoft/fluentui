@@ -18,7 +18,6 @@ import {
   ColorComponentProps,
   ShorthandFactory
 } from '../../utils';
-import { mergeComponentVariables } from '@fluentui/styles';
 
 import { ComponentEventHandler, ShorthandCollection, ShorthandValue, WithAsProp, withSafeTypeForAs } from '../../types';
 
@@ -30,6 +29,7 @@ import ToolbarMenuDivider from './ToolbarMenuDivider';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
+import { ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export type ToolbarItemShorthandKinds = 'divider' | 'item' | 'group' | 'toggle' | 'custom';
 
@@ -128,29 +128,23 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   animationFrameId: number;
   rtl: boolean;
 
-  handleItemOverrides = variables => predefinedProps => ({
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
-  });
-
-  renderItems(items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>, variables) {
-    const itemOverridesFn = this.handleItemOverrides(variables);
+  renderItems(items: ShorthandCollection<ToolbarItemProps, ToolbarItemShorthandKinds>) {
     return _.map(items, (item: ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>) => {
       const kind = _.get(item, 'kind', 'item');
 
       switch (kind) {
         case 'divider':
-          return ToolbarDivider.create(item, { overrideProps: itemOverridesFn });
+          return ToolbarDivider.create(item);
         case 'group':
-          return ToolbarRadioGroup.create(item, { overrideProps: itemOverridesFn });
+          return ToolbarRadioGroup.create(item);
         case 'toggle':
           return ToolbarItem.create(item, {
-            defaultProps: () => ({ accessibility: toggleButtonBehavior }),
-            overrideProps: itemOverridesFn
+            defaultProps: () => ({ accessibility: toggleButtonBehavior })
           });
         case 'custom':
-          return ToolbarCustomItem.create(item, { overrideProps: itemOverridesFn });
+          return ToolbarCustomItem.create(item);
         default:
-          return ToolbarItem.create(item, { overrideProps: itemOverridesFn });
+          return ToolbarItem.create(item);
       }
     });
   }
@@ -456,15 +450,17 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     );
   }
 
-  renderComponent({ accessibility, ElementType, classes, styles, variables, unhandledProps, rtl }): React.ReactNode {
+  renderComponent({ accessibility, ElementType, classes, styles, unhandledProps, rtl }): React.ReactNode {
     this.rtl = rtl;
-    const { children, items, overflow, overflowItem } = this.props;
+    const { children, items, overflow, overflowItem, variables } = this.props;
 
     if (!overflow) {
       return (
         <Ref innerRef={this.containerRef}>
           <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
-            {childrenExist(children) ? children : this.renderItems(items, variables)}
+            <ToolbarVariablesProvider value={variables}>
+              {childrenExist(children) ? children : this.renderItems(items)}
+            </ToolbarVariablesProvider>
           </ElementType>
         </Ref>
       );
@@ -475,8 +471,10 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
         <Ref innerRef={this.containerRef}>
           <ElementType className={classes.root} {...accessibility.attributes.root} {...unhandledProps}>
             <div className={classes.overflowContainer} ref={this.overflowContainerRef}>
-              {childrenExist(children) ? children : this.renderItems(this.getVisibleItems(), variables)}
-              {this.renderOverflowItem(overflowItem)}
+              <ToolbarVariablesProvider value={variables}>
+                {childrenExist(children) ? children : this.renderItems(this.getVisibleItems())}
+                {this.renderOverflowItem(overflowItem)}
+              </ToolbarVariablesProvider>
             </div>
             <div className={classes.offsetMeasure} ref={this.offsetMeasureRef} />
           </ElementType>

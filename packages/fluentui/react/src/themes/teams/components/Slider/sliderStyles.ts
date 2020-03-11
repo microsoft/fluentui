@@ -46,7 +46,7 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
       marginLeft: `calc(-${v.activeThumbWidth} / 2)`
     };
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
+      variables: siteVariables,
       borderPadding: v.thumbBorderPadding
     });
     const thumbStyles = { border: 0, width: '1px' };
