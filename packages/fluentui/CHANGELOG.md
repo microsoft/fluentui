@@ -19,6 +19,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### BREAKING CHANGES
 - Replaced `icon` with `indicator` in the `Checkbox` component and change it's type to `ShorthandValue<BoxProps>` @mnajdova ([#12183](https://github.com/OfficeDev/office-ui-fabric-react/pull/12183))
+- Adding context menu for table row to example and prototype @kolaps33 ([#12253](https://github.com/OfficeDev/office-ui-fabric-react/pull/12253))
 
 ### Fixes
 - Updating `Menu` border in Teams dark theme to the correct color @notandrew ([#12171](https://github.com/OfficeDev/office-ui-fabric-react/pull/12171))
