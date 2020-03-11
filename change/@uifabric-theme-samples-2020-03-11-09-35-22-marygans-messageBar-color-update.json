@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Themes: adding message bar colors to dark customizations",
+  "packageName": "@uifabric/theme-samples",
+  "email": "marygans@microsoft.com",
+  "commit": "cca603f49f4f396a566f6c17011fddb58f0412af",
+  "dependentChangeType": "patch",
+  "date": "2020-03-11T16:35:22.626Z"
+}

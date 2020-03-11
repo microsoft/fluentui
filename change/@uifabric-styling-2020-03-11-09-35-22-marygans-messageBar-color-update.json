@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "MessageBar: remove transparency and update color values to reflect designs",
+  "packageName": "@uifabric/styling",
+  "email": "marygans@microsoft.com",
+  "commit": "cca603f49f4f396a566f6c17011fddb58f0412af",
+  "dependentChangeType": "patch",
+  "date": "2020-03-11T16:33:44.803Z"
+}
