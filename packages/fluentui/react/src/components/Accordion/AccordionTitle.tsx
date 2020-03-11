@@ -61,6 +61,9 @@ export interface AccordionTitleProps extends UIComponentProps, ContentComponentP
 
   /** Shorthand for the active indicator. */
   indicator?: ShorthandValue<BoxProps>;
+
+  /** Shorthand for the wrapper component. */
+  wrapper?: ShorthandValue<BoxProps>;
 }
 
 class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
@@ -81,14 +84,16 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     disabled: PropTypes.bool,
     index: PropTypes.number,
     onClick: PropTypes.func,
-    indicator: customPropTypes.shorthandAllowingChildren
+    indicator: customPropTypes.shorthandAllowingChildren,
+    wrapper: customPropTypes.wrapperShorthand
   };
 
   static defaultProps = {
     accessibility: accordionTitleBehavior,
     as: 'dt',
     contentRef: _.noop,
-    indicator: {}
+    indicator: {},
+    wrapper: {}
   };
 
   actionHandlers = {
@@ -109,31 +114,46 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     _.invoke(this.props, 'onFocus', e, this.props);
   };
 
+  handleWrapperOverrides = () => ({
+    onFocus: (e: React.SyntheticEvent) => {
+      this.handleFocus(e);
+    },
+    onClick: (e: React.SyntheticEvent) => {
+      this.handleClick(e);
+    }
+  });
+
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { contentRef, children, content, indicator } = this.props;
+    const { contentRef, children, content, indicator, wrapper } = this.props;
 
     const contentElement = (
       <Ref innerRef={contentRef}>
-        <div
-          onFocus={this.handleFocus}
-          onClick={this.handleClick}
-          className={cx(AccordionTitle.slotClassNames.contentWrapper, classes.contentWrapper)}
-          {...accessibility.attributes.content}
-          {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)}
-        >
-          {Box.create(indicator, {
-            defaultProps: () => ({
-              styles: styles.indicator,
-              accessibility: indicatorBehavior
-            })
-          })}
-          {Box.create(content, {
-            defaultProps: () => ({
-              as: 'span',
-              styles: styles.content
-            })
-          })}
-        </div>
+        {Box.create(wrapper, {
+          defaultProps: () => ({
+            className: cx(AccordionTitle.slotClassNames.contentWrapper, classes.contentWrapper),
+            ...accessibility.attributes.content,
+            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)
+          }),
+          overrideProps: () => ({
+            children: (
+              <>
+                {Box.create(indicator, {
+                  defaultProps: () => ({
+                    styles: styles.indicator,
+                    accessibility: indicatorBehavior
+                  })
+                })}
+                {Box.create(content, {
+                  defaultProps: () => ({
+                    as: 'span',
+                    styles: styles.content
+                  })
+                })}
+              </>
+            ),
+            ...this.handleWrapperOverrides()
+          })
+        })}
       </Ref>
     );
 
