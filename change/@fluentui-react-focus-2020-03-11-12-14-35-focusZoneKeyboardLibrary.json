@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "FocusZone: Using keyboard-key library in v7 to align it closer to v0.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "811e4b0267e3c130dc58af2b5148179576a004de",
+  "dependentChangeType": "patch",
+  "date": "2020-03-11T19:14:35.380Z"
+}
