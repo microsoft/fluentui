@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "update font icon roles and naming, use alt text and empty alt for image icons",
+  "packageName": "office-ui-fabric-react",
+  "email": "sarah.higley@microsoft.com",
+  "commit": "821502584785a516fddb160004c9d3429db52510",
+  "dependentChangeType": "patch",
+  "date": "2020-03-11T02:14:01.159Z"
+}
