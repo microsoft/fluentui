@@ -170,6 +170,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
 
     return (
       <div className={classNames.root}>
+        <FocusRects />
         {labelPosition !== Position.bottom && (iconProps || label) && (
           <div className={classNames.labelWrapper}>
             {iconProps && <Icon {...iconProps} className={classNames.icon} aria-hidden="true" />}
@@ -259,7 +260,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
             )}
           </div>
         )}
-        <FocusRects />
       </div>
     );
   }

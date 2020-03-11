@@ -4,6 +4,8 @@ import { setFocusVisibility } from './setFocusVisibility';
 
 export { IsFocusVisibleClassName } from './setFocusVisibility';
 
+type AppWindow = (Window & { __hasInitializeFocusRects__: boolean; FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+
 /**
  * Initializes the logic which:
  *
@@ -21,12 +23,12 @@ export { IsFocusVisibleClassName } from './setFocusVisibility';
  * @deprecated Use useFocusRects hook or FocusRects component instead.
  */
 export function initializeFocusRects(window?: Window): void {
-  const win = (window || getWindow()) as Window & { __hasInitializeFocusRects__: boolean; disableFabricFocusRects: boolean };
-  if (win && win.disableFabricFocusRects === true) {
+  const win = (window || getWindow()) as AppWindow;
+  if (!win || win.FabricConfig?.disableFocusRects === true) {
     return;
   }
 
-  if (win && !win.__hasInitializeFocusRects__) {
+  if (!win.__hasInitializeFocusRects__) {
     win.__hasInitializeFocusRects__ = true;
     win.addEventListener('mousedown', _onMouseDown, true);
     win.addEventListener('pointerdown', _onPointerDown, true);

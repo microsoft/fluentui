@@ -6,7 +6,7 @@ import { setFocusVisibility } from './setFocusVisibility';
 export { IsFocusVisibleClassName } from './setFocusVisibility';
 
 /**
- * Counter for mounting component that uses focus rectangle.
+ * Counter for mounted component that uses focus rectangle.
  * We want to cleanup the listners before last component that uses focus rectangle unmounts.
  */
 let mountCounters = new WeakMap<Window, number>();
@@ -24,6 +24,8 @@ function setMountCounters(key: Window, delta: number): number {
   return newValue;
 }
 
+type AppWindow = (Window & { FabricConfig?: { disableFocusRects?: boolean } }) | undefined;
+
 /**
  * Initializes the logic which:
  *
@@ -40,9 +42,10 @@ function setMountCounters(key: Window, delta: number): number {
  * @param rootRef - A Ref object. Focus rectangle can be applied on itself and all its children.
  */
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
-  const win = getWindow(rootRef?.current) as Window & { disableFabricFocusRects: boolean };
+  const win = getWindow(rootRef?.current) as AppWindow;
+
   React.useEffect(() => {
-    if (!win || win.disableFabricFocusRects === true) {
+    if (!win || win.FabricConfig?.disableFocusRects === true) {
       return;
     }
 
@@ -54,7 +57,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
     }
 
     return () => {
-      if (!win || win.disableFabricFocusRects === true) {
+      if (!win || win.FabricConfig?.disableFocusRects === true) {
         return;
       }
 

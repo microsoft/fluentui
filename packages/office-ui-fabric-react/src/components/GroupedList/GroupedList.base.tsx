@@ -100,6 +100,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
     return (
       <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
+        <FocusRects />
         {!groups ? (
           this._renderGroup(undefined, 0)
         ) : (
@@ -116,7 +117,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
             version={version}
           />
         )}
-        <FocusRects />
       </div>
     );
   }

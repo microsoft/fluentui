@@ -15,8 +15,11 @@ describe('useFocusRects', () => {
     public addEventListenerCallCount = 0;
     public removeEventListenerCallCount = 0;
     public eventListeners: { [key: string]: Function | undefined } = {};
-
-    public disableFabricFocusRects: boolean;
+    public FabricConfig:
+      | {
+          disableFocusRects: boolean | undefined;
+        }
+      | undefined;
 
     public document = {
       body: {
@@ -55,6 +58,7 @@ describe('useFocusRects', () => {
       this.addEventListenerCallCount = 0;
       this.removeEventListenerCallCount = 0;
       this.eventListeners = {};
+      this.FabricConfig = undefined;
     }
   }
 
@@ -79,7 +83,7 @@ describe('useFocusRects', () => {
     mockWindow2.reset();
   });
 
-  fit('can hint to show focus when you press a directional key', () => {
+  it('can hint to show focus when you press a directional key', () => {
     focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
     focusRects2 = mount(<FocusRects rootRef={mockRefObject} />);
 
@@ -216,7 +220,7 @@ describe('useFocusRects', () => {
 
   it('can hint to show focus when you press a custom directional key', () => {
     focusRects1 = mount(<FocusRects rootRef={mockRefObject} />);
-    focusRects2 = mount(<FocusRects rootRef={mockRefObject2} />);
+    focusRects2 = mount(<FocusRects rootRef={mockRefObject} />);
 
     const { eventListeners, classNames } = mockWindow;
 
@@ -240,7 +244,9 @@ describe('useFocusRects', () => {
   });
 
   it('can disable focus rects', () => {
-    mockWindow.disableFabricFocusRects = true;
+    mockWindow.FabricConfig = {
+      disableFocusRects: true
+    };
     const focusRect = mount(<FocusRects rootRef={mockRefObject} />);
 
     const { eventListeners, classNames } = mockWindow;
