@@ -1,11 +1,13 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { mergeComponentVariables } from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
 import { ChildrenComponentProps, ContentComponentProps, createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -22,6 +24,7 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> & Fluent
   setStart();
 
   const { accessibility, className, design, styles, variables } = props;
+  const parentVariables = React.useContext(ToolbarVariablesContext);
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarMenuDivider.displayName,
@@ -29,7 +32,7 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> & Fluent
   });
   const { classes } = useStyles<ToolbarMenuDividerStylesProps>(ToolbarMenuDivider.displayName, {
     className: ToolbarMenuDivider.className,
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergeComponentVariables(parentVariables, variables) }),
     rtl: context.rtl
   });
 

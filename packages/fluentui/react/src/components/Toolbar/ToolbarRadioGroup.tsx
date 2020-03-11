@@ -25,6 +25,7 @@ import {
 import { FluentComponentStaticProps, ProviderContextPrepared, ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
 import ToolbarDivider from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
+import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export type ToolbarRadioGroupItemShorthandKinds = 'divider' | 'item';
 
@@ -51,6 +52,9 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
   const { accessibility, activeIndex, children, className, design, items, variables, styles } = props;
   const itemRefs: React.RefObject<HTMLElement>[] = [];
 
+  const parentVariables = React.useContext(ToolbarVariablesContext);
+  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarRadioGroup.displayName,
     actionHandlers: {
@@ -61,7 +65,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
   });
   const { classes } = useStyles<ToolbarRadioGroupStylesProps>(ToolbarRadioGroup.displayName, {
     className: ToolbarRadioGroup.className,
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergedVariables }),
     rtl: context.rtl
   });
 
@@ -100,10 +104,6 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
     event.preventDefault();
   };
 
-  const handleItemOverrides = predefinedProps => ({
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
-  });
-
   const renderItems = () => {
     return _.map(items, (item, index) => {
       const kind = _.get(item, 'kind', 'item');
@@ -112,15 +112,14 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
       itemRefs[index] = ref;
 
       if (kind === 'divider') {
-        return ToolbarDivider.create(item, { overrideProps: handleItemOverrides });
+        return ToolbarDivider.create(item);
       }
 
       const toolbarItem = ToolbarItem.create(item, {
         defaultProps: () => ({
           accessibility: toolbarRadioGroupItemBehavior,
           active: activeIndex === index
-        }),
-        overrideProps: handleItemOverrides
+        })
       });
 
       return (
@@ -141,7 +140,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
         className: classes.root
       })}
     >
-      {childrenExist(children) ? children : renderItems()}
+      <ToolbarVariablesProvider value={mergedVariables}>{childrenExist(children) ? children : renderItems()}</ToolbarVariablesProvider>
     </ElementType>
   );
   setEnd();

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Skips unnecessary equality check in shallowCompare to increase performance",
-  "packageName": "@uifabric/utilities",
-  "email": "chce@netcompany.com",
-  "commit": "e590df08d02260882e225af34674b61285d66261",
-  "dependentChangeType": "patch",
-  "date": "2020-02-29T11:36:47.081Z"
-}

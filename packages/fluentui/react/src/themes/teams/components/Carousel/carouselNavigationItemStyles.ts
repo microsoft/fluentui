@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { CarouselNavigationItemProps } from '../../../../components/Carousel/CarouselNavigationItem';
+import CarouselNavigationItem, { CarouselNavigationItemProps } from '../../../../components/Carousel/CarouselNavigationItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
 import { getColorScheme } from '../../colors';
@@ -65,6 +65,10 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<CarouselNavigati
       ':hover': {
         color: 'inherit',
 
+        [`& .${CarouselNavigationItem.slotClassNames.indicator}`]: {
+          background: v.indicatorBackgroundColor
+        },
+
         ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
 
         ...(primary && iconOnly && { color: 'inherit' })
@@ -73,7 +77,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<CarouselNavigati
   },
 
   content: ({ props: p }): ICSSInJSStyle => {
-    const widthAdjust = p.icon ? 26 : 0;
+    const widthAdjust = p.indicator ? 26 : 0;
 
     return {
       whiteSpace: 'normal',
@@ -90,7 +94,20 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<CarouselNavigati
     };
   },
 
-  icon: ({ props: p }): ICSSInJSStyle => ({
+  indicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    borderRadius: '50%',
+    width: pxToRem(7),
+    height: pxToRem(7),
+    background: v.indicatorBackgroundColor,
+
+    ...(p.active && {
+      background: v.indicatorActiveBackgroundColor
+    }),
+
+    ...(p.content && {
+      marginRight: pxToRem(10)
+    }),
+
     ...(!p.iconOnly && {
       // reduce margins so text has the dominant influence on the vertical height
       marginTop: 0,

@@ -39,6 +39,7 @@ import Box, { BoxProps } from '../Box/Box';
 import Popup, { PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
 import { ToolbarItemShorthandKinds } from './Toolbar';
+import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -120,6 +121,9 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   const itemRef = React.useRef<HTMLElement>();
   const menuRef = React.useRef<HTMLElement>();
 
+  const parentVariables = React.useContext(ToolbarVariablesContext);
+  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarItem.displayName,
     actionHandlers: {
@@ -150,7 +154,12 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
     className: ToolbarItem.className,
     mapPropsToStyles: () => ({ active, disabled }),
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables: mergedVariables
+    }),
     rtl: context.rtl
   });
 
@@ -217,8 +226,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       }
       // TODO: should we pass toolbarMenuItem to the user callback so he can decide if he wants to close the menu?
       trySetMenuOpen(menuOpen, e);
-    },
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    }
   });
 
   const ElementType = getElementType(props);
@@ -259,9 +267,11 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
               }}
               targetRef={itemRef}
             >
-              {ToolbarMenu.create(menu, {
-                overrideProps: handleMenuOverrides(getRefs)
-              })}
+              <ToolbarVariablesProvider value={mergedVariables}>
+                {ToolbarMenu.create(menu, {
+                  overrideProps: handleMenuOverrides(getRefs)
+                })}
+              </ToolbarVariablesProvider>
             </Popper>
           </Ref>
           <EventListener listener={handleOutsideClick(getRefs)} target={context.target} type="click" capture />
