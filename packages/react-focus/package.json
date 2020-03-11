@@ -51,6 +51,7 @@
     "@uifabric/set-version": "^7.0.6",
     "@uifabric/styling": "^7.10.17",
     "@uifabric/utilities": "^7.13.2",
+    "keyboard-key": "1.0.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

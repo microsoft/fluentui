@@ -1,7 +1,8 @@
 import * as React from 'react';
+// @ts-ignore
+import * as keyboardKey from 'keyboard-key';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
-  KeyCodes,
   css,
   elementContains,
   getDocument,
@@ -213,10 +214,11 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   public render(): React.ReactNode {
-    // tslint:disable:deprecation
+    // tslint:disable-next-line:deprecation
     const { rootProps, ariaDescribedBy, ariaLabelledBy, className } = this.props;
     const divProps = getNativeProps(this.props, htmlElementProperties);
 
+    // tslint:disable-next-line:deprecation
     const Tag = this.props.as || this.props.elementType || 'div';
 
     // Note, right before rendering/reconciling proceeds, we need to record if focus
@@ -431,7 +433,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (ev.which === KeyCodes.tab) {
+    if (keyboardKey.getCode(ev) === keyboardKey.Tab) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
@@ -544,49 +546,50 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      switch (ev.which) {
-        case KeyCodes.space:
+      switch (keyboardKey.getCode(ev)) {
+        case keyboardKey.Spacebar:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
           return;
 
-        case KeyCodes.left:
+        case keyboardKey.ArrowLeft:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
             break;
           }
           return;
 
-        case KeyCodes.right:
+        case keyboardKey.ArrowRight:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
             break;
           }
           return;
 
-        case KeyCodes.up:
+        case keyboardKey.ArrowUp:
           if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
             break;
           }
           return;
 
-        case KeyCodes.down:
+        case keyboardKey.ArrowDown:
           if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
             break;
           }
           return;
-        case KeyCodes.pageDown:
+        case keyboardKey.PageDown:
           if (this._moveFocusPaging(true)) {
             break;
           }
           return;
-        case KeyCodes.pageUp:
+        case keyboardKey.PageUp:
           if (this._moveFocusPaging(false)) {
             break;
           }
           return;
 
-        case KeyCodes.tab:
+        case keyboardKey.Tab:
           if (
+            // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
             this.props.handleTabKey === FocusZoneTabbableElements.all ||
             (this.props.handleTabKey === FocusZoneTabbableElements.inputOnly && this._isElementInput(ev.target as HTMLElement))
@@ -609,7 +612,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case KeyCodes.home:
+        case keyboardKey.Home:
           if (this._isElementInput(ev.target as HTMLElement) && !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)) {
             return false;
           }
@@ -619,7 +622,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case KeyCodes.end:
+        case keyboardKey.End:
           if (this._isElementInput(ev.target as HTMLElement) && !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)) {
             return false;
           }
@@ -630,7 +633,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case KeyCodes.enter:
+        case keyboardKey.Enter:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
