@@ -18,18 +18,19 @@ const header = {
   ]
 };
 
-const moreOptionCell = {
+const moreOptionCell = key => ({
+  key: key,
   content: <Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />,
   truncateContent: true,
-  key: '1-6',
   accessibility: gridCellWithFocusableElementBehavior,
   onClick: e => {
     alert('more option button clicked');
     e.stopPropagation();
   }
-};
+});
 
-const moreActionCell = {
+const moreActionCell = key => ({
+  key: key,
   content: (
     <Flex gap="gap.small" vAlign="center">
       <Button size="small" content="tag 1" />
@@ -38,9 +39,8 @@ const moreActionCell = {
       {/* <Button tabIndex={-1} icon="edit" circular text iconOnly title="edit tags" /> */}
     </Flex>
   ),
-  key: '1-5',
   accessibility: gridCellMultipleFocusableBehavior
-};
+});
 
 const contextMenuItems = ['Add to selection', 'Remove', 'Download'];
 
@@ -52,12 +52,14 @@ const rowsPlain = [
       { content: 'Roman van von der Longername', key: '1-2', id: 'name-1' },
       { content: 'None', key: '1-3' },
       { content: '30 years', key: '1-4', id: 'age-1' },
-      moreActionCell,
-      moreOptionCell
+      moreActionCell('1-5'),
+      moreOptionCell('1-6')
     ],
     onClick: () => handleRowClick(1),
     'aria-labelledby': 'name-1 age-1',
-    children: (Component, props) => <MenuButton menu={contextMenuItems} contextMenu trigger={<Component {...props} />} />
+    children: (Component, { key, ...rest }) => (
+      <MenuButton menu={contextMenuItems} key={key} contextMenu trigger={<Component {...rest} />} />
+    )
   },
   {
     key: 2,
@@ -66,11 +68,13 @@ const rowsPlain = [
       { content: 'Alex', key: '2-2' },
       { content: 'None', key: '2-3' },
       { content: '1 year', key: '2-4' },
-      moreActionCell,
-      moreOptionCell
+      moreActionCell('2-5'),
+      moreOptionCell('2-6')
     ],
     onClick: () => handleRowClick(2),
-    children: (Component, props) => <MenuButton menu={contextMenuItems} contextMenu trigger={<Component {...props} />} />
+    children: (Component, { key, ...rest }) => (
+      <MenuButton menu={contextMenuItems} key={key} contextMenu trigger={<Component {...rest} />} />
+    )
   },
   {
     key: 3,
@@ -79,11 +83,13 @@ const rowsPlain = [
       { content: 'Ali', key: '3-2' },
       { content: 'None', key: '3-3' },
       { content: '30000000000000 years', truncateContent: true, key: '3-4' },
-      {},
-      moreOptionCell
+      { key: '3-5' },
+      moreOptionCell('3-6')
     ],
     onClick: () => handleRowClick(3),
-    children: (Component, props) => <MenuButton menu={contextMenuItems} contextMenu trigger={<Component {...props} />} />
+    children: (Component, { key, ...rest }) => (
+      <MenuButton menu={contextMenuItems} key={key} contextMenu trigger={<Component {...rest} />} />
+    )
   }
 ];
 
