@@ -42,19 +42,19 @@ function setMountCounters(key: Window, delta: number): number {
 export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
   const win = getWindow(rootRef?.current) as Window & { disableFabricFocusRects: boolean };
   React.useEffect(() => {
-    if (win && win.disableFabricFocusRects === true) {
+    if (!win || win.disableFabricFocusRects === true) {
       return;
     }
 
     let count = setMountCounters(win, 1);
-    if (win && count <= 1 && win.disableFabricFocusRects !== false) {
+    if (count <= 1) {
       win.addEventListener('mousedown', _onMouseDown, true);
       win.addEventListener('pointerdown', _onPointerDown, true);
       win.addEventListener('keydown', _onKeyDown, true);
     }
 
     return () => {
-      if (win && win.disableFabricFocusRects === true) {
+      if (!win || win.disableFabricFocusRects === true) {
         return;
       }
 
