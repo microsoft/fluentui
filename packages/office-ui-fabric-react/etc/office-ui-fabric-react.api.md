@@ -44,10 +44,9 @@ import { SelectionDirection } from '@uifabric/utilities';
 import { SelectionMode } from '@uifabric/utilities';
 
 // @public (undocumented)
-export class ActionButton extends BaseComponent<IButtonProps, {}> {
+export class ActionButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -72,12 +71,14 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
 }
 
 // @public (undocumented)
-export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
+export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
     constructor(props: IAutofillProps);
     // (undocumented)
     clear(): void;
     // (undocumented)
     componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     readonly cursorLocation: number | null;
     // (undocumented)
@@ -458,11 +459,10 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
 export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
 
 // @public @deprecated
-export class Button extends BaseComponent<IButtonProps, {}> {
+export class Button extends React.Component<IButtonProps, {}> {
     constructor(props: IButtonProps);
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -675,10 +675,9 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
 
 // @public (undocumented)
-export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
+export class CommandBarButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -697,10 +696,9 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
 }
 
 // @public (undocumented)
-export class CompoundButton extends BaseComponent<IButtonProps, {}> {
+export class CompoundButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -834,10 +832,9 @@ export enum DayOfWeek {
 export const DEFAULT_MASK_CHAR = "_";
 
 // @public (undocumented)
-export class DefaultButton extends BaseComponent<IButtonProps, {}> {
+export class DefaultButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -2899,10 +2896,9 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 }
 
 // @public (undocumented)
-export class IconButton extends BaseComponent<IButtonProps, {}> {
+export class IconButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -8133,7 +8129,6 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     setSelectionStart(value: number): void;
     // (undocumented)
     setValue(newValue: string): void;
-    protected _skipComponentRefResolution: boolean;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
     // (undocumented)
@@ -8616,10 +8611,9 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 };
 
 // @public (undocumented)
-export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
+export class PrimaryButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public

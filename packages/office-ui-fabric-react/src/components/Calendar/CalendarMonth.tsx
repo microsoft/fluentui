@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
+import { KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
@@ -43,7 +43,7 @@ export interface ICalendarMonthState {
   isYearPickerVisible?: boolean;
 }
 
-export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
+export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
   /**
    * @deprecated unused, prefer 'ref' and 'componentRef' of ICalendarMonthProps.
    */
