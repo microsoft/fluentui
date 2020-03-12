@@ -1,8 +1,8 @@
 # [Fabric website](https://dev.microsoft.com/fabric)
 
-**The official website for the UI Fabric project.**
+**The official website for the Fluent UI project.**
 
-UI Fabric is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fabric.
+Fluent UI is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fabric.
 
 ## Build the website
 

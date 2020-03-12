@@ -1,4 +1,4 @@
-Reference these step-by-step processes for contributing to UI Fabric.
+Reference these step-by-step processes for contributing to Fluent UI.
 
 ### Fabric for web
 
