@@ -10,7 +10,7 @@
     "@fluentui/state": "^0.46.0",
     "@fluentui/styles": "^0.46.0",
     "classnames": "^2.2.6",
-    "fela": "^10.6.1",
+    "fela": "^11.2.0",
     "lodash": "^4.17.15"
   },
   "devDependencies": {

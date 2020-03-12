@@ -1,9 +1,8 @@
-import { Renderer } from '@fluentui/react-bindings';
-import { createRenderer as createFelaRenderer } from 'fela';
+// import { Renderer } from '@fluentui/react-bindings';
+import { createRenderer as createFelaRenderer, IRenderer } from 'fela';
 import felaPluginEmbedded from 'fela-plugin-embedded';
 import felaPluginFallbackValue from 'fela-plugin-fallback-value';
 import felaPluginPlaceholderPrefixer from 'fela-plugin-placeholder-prefixer';
-import felaPluginPrefixer from 'fela-plugin-prefixer';
 import felaPluginRtl from 'fela-plugin-rtl';
 
 import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
@@ -11,6 +10,8 @@ import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
+import { RULE_TYPE } from 'fela-utils';
+import * as Stylis from 'stylis';
 
 let felaDevMode = false;
 
@@ -48,10 +49,73 @@ const blacklistedClassNames = ['fa', 'fas', 'far', 'fal', 'fab'];
 
 const filterClassName = (className: string): boolean => className.indexOf('ad') === -1 && blacklistedClassNames.indexOf(className) === -1;
 
+type Renderer = IRenderer & {
+  cache: Record<string, RendererChange>;
+  _emitChange?: (change: RendererChange) => void;
+};
+
+type RendererChange = {
+  type: 'RULE' | 'KEYFRAME' | 'FONT' | 'STATIC' | 'CLEAR';
+  className: string;
+  selector: string;
+  declaration: string;
+  pseudo: string;
+  media: string;
+  support: string;
+};
+
+const stylis = new Stylis({
+  cascade: false,
+  compress: false,
+  global: false,
+  keyframe: false,
+  preserve: false,
+  semicolon: false
+});
+
+const felaStylis = (renderer: Renderer) => ({
+  ...renderer,
+  _emitChange: (change: RendererChange) => {
+    if (change.type === RULE_TYPE) {
+      // const pseudo = change.pseudo ? change.pseudo.replace(':focus-visible', ':focus') : undefined;
+      // const selector = `html[data-whatinput="keyboard"] ${change.selector.replace(':focus-visible', ':focus')}`;
+
+      // const declarationReference = _.findKey(renderer.cache, change);
+      // const enhancedChange = {
+      //   ...change,
+      //   pseudo,
+      //   selector
+      // };
+
+      // if (change.declaration === 'display:grid') {
+      // console.log(change);
+      const prefixed = stylis('', change.declaration);
+      const enhancedChange = {
+        ...change,
+        declaration: prefixed.slice(1, -1)
+      };
+      // console.log(prefixed, change.declaration);
+      // }
+
+      // Fela has two types for rendering:
+      // - DOM via subscriptions that's why `_emitChange()` is replaced, it will notify all
+      //   subscriptions
+      // - static rendering, it directly accesses `.cache` via `clusterCache()` and generates
+      //   stylesheets from changes
+      // renderer.cache[declarationReference] = enhancedChange;
+      renderer._emitChange(enhancedChange);
+
+      return;
+    }
+
+    renderer._emitChange(change);
+  }
+});
+
 const rendererConfig = {
   devMode: felaDevMode,
   filterClassName,
-  enhancers: [felaFocusVisibleEnhancer],
+  enhancers: [felaFocusVisibleEnhancer, felaStylis],
   plugins: [
     felaDisableAnimationsPlugin(),
 
@@ -64,7 +128,7 @@ const rendererConfig = {
     felaPluginPlaceholderPrefixer(),
     felaInvokeKeyframesPlugin(),
     felaPluginEmbedded(),
-    felaPluginPrefixer(),
+    // felaPluginPrefixer(),
 
     felaExpandCssShorthandsPlugin(),
 
