@@ -6,8 +6,8 @@ const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred
 const DropdownExampleDisabled = () => {
   return (
     <Flex column gap="gap.smaller">
-      <Dropdown disabled={true} items={inputItems} placeholder="Select your hero, if you can ..." />
-      <Dropdown disabled={true} search={true} items={inputItems} placeholder="Start typing a name, if you can ..." />
+      <Dropdown disabled items={inputItems} placeholder="Select your hero, if you can ..." />
+      <Dropdown disabled search items={inputItems} placeholder="Start typing a name, if you can ..." />
     </Flex>
   );
 };
