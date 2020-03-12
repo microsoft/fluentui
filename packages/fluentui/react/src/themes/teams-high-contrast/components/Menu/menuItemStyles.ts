@@ -38,13 +38,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           '::before': {
             display: 'none'
           }
-        }),
-
-      ...(p.disabled && {
-        ':hover': {
-          // reset all existing hover styles
-        }
-      })
+        })
     };
   },
 
