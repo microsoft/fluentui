@@ -606,8 +606,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               <div
                 className=
                     ms-Fabric
-                    is-focusHidden
-                    ms-Fabric--isFocusHidden
                     ms-Layer-content
                     {
                       -moz-osx-font-smoothing: grayscale;

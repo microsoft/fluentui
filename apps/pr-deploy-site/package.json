@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/pr-deploy-site",
-  "version": "7.0.33",
+  "version": "7.0.34",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "scripts": {
@@ -11,7 +11,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uifabric/charting": "^0.140.12",
+    "@uifabric/charting": "^0.141.0",
     "@uifabric/date-time": "^7.8.37",
     "@uifabric/experiments": "^7.21.7",
     "@uifabric/fabric-website": "^7.10.3",

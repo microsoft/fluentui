@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "convert initializeFocusRects to hook",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "commit": "b0ce989570bbf0394bb14913017150357ebccee2",
+  "dependentChangeType": "patch",
+  "date": "2020-03-09T20:43:32.979Z"
+}

@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 11 Mar 2020 12:24:03 GMT",
+      "tag": "@uifabric/charting_v0.141.0",
+      "version": "0.141.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart Accessibility with screen reader",
+            "author": "v-satgar@microsoft.com",
+            "commit": "403f5effff2c0cdf28cff73328f629208a1bb418"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/charting_v0.140.3",
       "version": "0.140.3",
