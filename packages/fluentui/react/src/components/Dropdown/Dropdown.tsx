@@ -7,15 +7,7 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import * as keyboardKey from 'keyboard-key';
 
-import {
-  DebounceResultFn,
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ComponentEventHandler,
-  ShorthandCollection,
-  WithAsProp,
-  withSafeTypeForAs
-} from '../../types';
+import { DebounceResultFn, ShorthandRenderFunction, ShorthandValue, ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/styles';
 import Downshift, {
   DownshiftState,
