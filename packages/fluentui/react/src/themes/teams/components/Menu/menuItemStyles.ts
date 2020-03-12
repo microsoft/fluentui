@@ -310,7 +310,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(underlined && {
           color: v.activeUnderlineColor,
 
-          ...underlinedItem(v.colorActive),
+          ...underlinedItem(v.activeUnderlinedBorderBottomColor),
 
           ...(primary && {
             color: colors.borderActive,

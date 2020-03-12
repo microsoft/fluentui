@@ -40,17 +40,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           }
         })
     };
-  },
-
-  root: ({ props, variables: v }): ICSSInJSStyle => {
-    const { underlined, primary, active } = props;
-
-    return {
-      ...(underlined &&
-        active && {
-          ...(!primary && underlinedItem(v.color))
-        })
-    };
   }
 };
 
