@@ -354,7 +354,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // hover styles
       ':hover': {
-        color: 'inherit',
+        color: v.colorHover,
 
         ...(!disabled && {
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),

@@ -50,10 +50,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(active && {
           color: v.color,
           ...(!primary && underlinedItem(v.color))
-        }),
-        ':hover': {
-          color: v.color
-        }
+        })
       })
     };
   }

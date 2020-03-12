@@ -36,6 +36,7 @@ export interface MenuVariables {
   iconOnlyColorFocus: string;
 
   colorFocus: string;
+  colorHover: string;
   underlinedBorderColor: string;
 
   colorDisabled: string;
@@ -89,6 +90,7 @@ export default (siteVars: any): MenuVariables => {
     color: siteVars.colors.grey[500],
     colorActive: siteVars.colors.black,
     colorFocus: undefined,
+    colorHover: 'inherit',
     colorDisabled: undefined,
 
     borderColor: undefined,
