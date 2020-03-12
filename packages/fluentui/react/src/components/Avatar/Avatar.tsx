@@ -6,6 +6,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
+import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Label, { LabelProps } from '../Label/Label';
 import Status, { StatusProps } from '../Status/Status';
@@ -17,6 +18,9 @@ export interface AvatarProps extends UIComponentProps {
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<never>;
+
+  /** Shorthand for the icon. */
+  icon?: ShorthandValue<IconProps>;
 
   /** Shorthand for the image. */
   image?: ShorthandValue<ImageProps>;
@@ -42,7 +46,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, className, design, getInitials, label, image, name, size, status, styles, variables } = props;
+  const { accessibility, className, design, getInitials, label, icon, image, name, size, status, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Avatar.displayName,
@@ -74,6 +78,17 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
           })
       })}
       {!image &&
+        Icon.create(icon, {
+          defaultProps: () =>
+            getA11Props('icon', {
+              size,
+              circular: true,
+              title: name,
+              styles: resolvedStyles.icon
+            })
+        })}
+      {!image &&
+        !icon &&
         Label.create(label || {}, {
           defaultProps: () =>
             getA11Props('label', {
@@ -132,6 +147,7 @@ Avatar.propTypes = {
     content: false
   }),
   name: PropTypes.string,
+  icon: customPropTypes.itemShorthandWithoutJSX,
   image: customPropTypes.itemShorthandWithoutJSX,
   label: customPropTypes.itemShorthand,
   size: customPropTypes.size,

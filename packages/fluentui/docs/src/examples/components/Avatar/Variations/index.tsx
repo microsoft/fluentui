@@ -9,11 +9,7 @@ const Variations = () => (
       description="An Avatar can show the image of the user."
       examplePath="components/Avatar/Variations/AvatarExampleImage"
     />
-    <ComponentExample
-      title="Image customizations"
-      description="The image slot inside the Avatar can be customized."
-      examplePath="components/Avatar/Variations/AvatarExampleImageCustomization"
-    />
+    <ComponentExample title="Icon" description="An avatar can show icon." examplePath="components/Avatar/Variations/AvatarExampleIcon" />
     <ComponentExample
       title="Label"
       description="The avatars without image can show label containing the user's initials."

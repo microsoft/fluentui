@@ -3,7 +3,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { AvatarProps } from '../../../../components/Avatar/Avatar';
 import { AvatarVariables } from './avatarVariables';
 
-export type AvatarStylesProps = Pick<AvatarProps, 'size'>;
+export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'icon'>;
 
 const sizeToPxValue = {
   smallest: 24,
@@ -16,8 +16,8 @@ const sizeToPxValue = {
 };
 
 const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
-  root: ({ props: { size } }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[size]);
+  root: ({ props: p }): ICSSInJSStyle => {
+    const sizeInRem = pxToRem(sizeToPxValue[p.size]);
 
     return {
       position: 'relative',
@@ -49,6 +49,13 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       verticalAlign: 'top',
       textAlign: 'center',
       padding: '0px'
+    };
+  },
+  icon: (): ICSSInJSStyle => {
+    return {
+      // TODO: figure out the color
+      backgroundColor: 'red',
+      padding: pxToRem(8)
     };
   },
   status: ({ variables: v }): ICSSInJSStyle => ({
