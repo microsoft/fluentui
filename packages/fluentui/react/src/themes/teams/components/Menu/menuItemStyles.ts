@@ -19,30 +19,6 @@ export const underlinedItem = (color: string): ICSSInJSStyle => ({
   transition: 'color .1s ease'
 });
 
-const getActionStyles = ({
-  props: { primary, underlined, iconOnly, vertical },
-  variables: v,
-  colors
-}: {
-  props: MenuItemPropsAndState;
-  variables: MenuVariables;
-  colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
-}): ICSSInJSStyle => ({
-  color: v.color,
-
-  ...(!underlined &&
-    !iconOnly && {
-      background: v.backgroundColorActive || colors.backgroundActive,
-
-      ...(primary && {
-        color: colors.foregroundActive,
-        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-          backgroundImage: submenuIndicatorUrl(colors.foregroundActive, vertical)
-        }
-      })
-    })
-});
-
 const getFocusedStyles = ({
   props,
   variables: v,
@@ -197,7 +173,19 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // active styles
       ...(active && {
-        ...getActionStyles({ props, variables: v, colors }),
+        color: v.color,
+
+        ...(!underlined &&
+          !iconOnly && {
+            background: v.backgroundColorActive || colors.backgroundActive,
+
+            ...(primary && {
+              color: colors.foregroundActive,
+              [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+                backgroundImage: submenuIndicatorUrl(colors.foregroundActive, vertical)
+              }
+            })
+          }),
 
         ...(pointing &&
           vertical && {
