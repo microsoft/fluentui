@@ -88,7 +88,7 @@ export default (siteVars: any): MenuVariables => {
     ),
     color: siteVars.colors.grey[500],
     colorActive: siteVars.colors.black,
-    colorFocus: siteVars.colors.white,
+    colorFocus: undefined,
     colorDisabled: undefined,
 
     borderColor: undefined,

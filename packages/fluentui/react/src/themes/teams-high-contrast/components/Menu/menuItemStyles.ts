@@ -43,7 +43,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
   },
 
   root: ({ props, variables: v }): ICSSInJSStyle => {
-    const { isFromKeyboard, underlined, primary, active } = props;
+    const { underlined, primary, active } = props;
 
     return {
       ...(underlined && {
@@ -53,10 +53,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         }),
         ':hover': {
           color: v.color
-        },
-        ...(isFromKeyboard && {
-          color: v.colorActive
-        })
+        }
       })
     };
   }

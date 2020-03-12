@@ -18,6 +18,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   ),
   color: siteVars.colors.white,
   colorActive: siteVars.colors.black,
+  colorFocus: siteVars.colors.black,
   backgroundColorFocus: siteVars.accessibleCyan,
   backgroundColorActive: siteVars.accessibleCyan,
   primaryBorderColor: siteVars.colors.white,
