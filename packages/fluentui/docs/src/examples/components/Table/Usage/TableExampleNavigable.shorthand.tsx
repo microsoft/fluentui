@@ -18,8 +18,7 @@ const header = {
   ]
 };
 
-const moreOptionCell = key => ({
-  key: key,
+const moreOptionCell = {
   content: <Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />,
   truncateContent: true,
   accessibility: gridCellWithFocusableElementBehavior,
@@ -27,10 +26,9 @@ const moreOptionCell = key => ({
     alert('more option button clicked');
     e.stopPropagation();
   }
-});
+};
 
-const moreActionCell = key => ({
-  key: key,
+const moreActionCell = {
   content: (
     <Flex gap="gap.small" vAlign="center">
       <Button size="small" content="tag 1" />
@@ -40,7 +38,7 @@ const moreActionCell = key => ({
     </Flex>
   ),
   accessibility: gridCellMultipleFocusableBehavior
-});
+};
 
 const contextMenuItems = ['Add to selection', 'Remove', 'Download'];
 
@@ -52,8 +50,8 @@ const rowsPlain = [
       { content: 'Roman van von der Longername', key: '1-2', id: 'name-1' },
       { content: 'None', key: '1-3' },
       { content: '30 years', key: '1-4', id: 'age-1' },
-      moreActionCell('1-5'),
-      moreOptionCell('1-6')
+      { key: '1-5', ...moreActionCell },
+      { key: '1-6', ...moreOptionCell }
     ],
     onClick: () => handleRowClick(1),
     'aria-labelledby': 'name-1 age-1',
@@ -68,8 +66,8 @@ const rowsPlain = [
       { content: 'Alex', key: '2-2' },
       { content: 'None', key: '2-3' },
       { content: '1 year', key: '2-4' },
-      moreActionCell('2-5'),
-      moreOptionCell('2-6')
+      { key: '2-5', ...moreActionCell },
+      { key: '2-6', ...moreOptionCell }
     ],
     onClick: () => handleRowClick(2),
     children: (Component, { key, ...rest }) => (
@@ -84,7 +82,7 @@ const rowsPlain = [
       { content: 'None', key: '3-3' },
       { content: '30000000000000 years', truncateContent: true, key: '3-4' },
       { key: '3-5' },
-      moreOptionCell('3-6')
+      { key: '3-6', ...moreOptionCell }
     ],
     onClick: () => handleRowClick(3),
     children: (Component, { key, ...rest }) => (

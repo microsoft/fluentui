@@ -10,23 +10,21 @@ function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
 }
 
-const roleDropdown = key => ({
-  key: key,
+const roleDropdown = {
   content: <Dropdown inline items={['Owner', 'Member']} defaultValue={'Owner'} />,
   truncateContent: false,
   accessibility: gridCellMultipleFocusableBehavior,
   onClick: e => e.stopPropagation()
-});
+};
 
-const tagButtons = key => ({
-  key: key,
+const tagButtons = {
   content: (
     <Flex gap="gap.small" vAlign="center">
       <Menu variables={{ horizontalPadding: '0.5rem 0.5rem' }} items={['tag 1', 'tag 2']} data-is-focusable={true} />
     </Flex>
   ),
   accessibility: gridCellMultipleFocusableBehavior
-});
+};
 
 const columnsMembers = [
   { title: 'Name', key: 'name', name: 'name' },
@@ -51,8 +49,8 @@ const rowsMembers = [
       },
       { content: 'SOFTWARE DEVELOPER', key: '1-3' },
       { content: 'PRAGUE', key: '1-4' },
-      tagButtons('1-5'),
-      roleDropdown('1-6')
+      { key: '1-5', ...tagButtons },
+      { key: '1-6', ...roleDropdown }
     ],
     onClick: () => handleRowClick(1)
   },
@@ -70,8 +68,8 @@ const rowsMembers = [
       },
       { content: 'PROGRAM MANAGER', key: '2-3' },
       { content: 'PRAGUE', key: '2-4' },
-      tagButtons('2-5'),
-      roleDropdown('2-6')
+      { key: '2-5', ...tagButtons },
+      { key: '2-6', ...roleDropdown }
     ],
     onClick: () => handleRowClick(2)
   },
@@ -90,7 +88,7 @@ const rowsMembers = [
       { content: 'BATMAN', key: '3-3' },
       { content: 'GOTHAM CITY', key: '3-4' },
       { key: '3-5' },
-      roleDropdown('3-6')
+      { key: '3-6', ...roleDropdown }
     ],
     onClick: () => handleRowClick(3)
   }
