@@ -13,16 +13,22 @@ import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
-  const ktp = find(keytipManager.keytips, (uniqueKeytip: IUniqueKeytip) => {
-    return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
-  });
+  const ktp = find(
+    Object.keys(keytipManager.keytips).map(key => keytipManager.keytips[key]),
+    (uniqueKeytip: IUniqueKeytip) => {
+      return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
+    }
+  );
   return ktp ? ktp.keytip : undefined;
 }
 
 function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
-  const ktp = find(keytipManager.persistedKeytips, (uniqueKeytip: IUniqueKeytip) => {
-    return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
-  });
+  const ktp = find(
+    Object.keys(keytipManager.persistedKeytips).map(key => keytipManager.persistedKeytips[key]),
+    (uniqueKeytip: IUniqueKeytip) => {
+      return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
+    }
+  );
   return ktp ? ktp.keytip : undefined;
 }
 
@@ -174,8 +180,9 @@ describe('OverflowSet', () => {
       jest.useRealTimers();
 
       // Clean up the keytip items
-      keytipManager.keytips = [];
-      keytipManager.persistedKeytips = [];
+      keytipManager.keytips = {};
+      keytipManager.persistedKeytips = {};
+      keytipManager.inKeytipMode = false;
 
       // Manually unmount to clean up listeners
       if (overflowSet) {
@@ -243,6 +250,9 @@ describe('OverflowSet', () => {
       it('triggering the overflow button keytip should register the menu item keytips with their modified sequence', () => {
         jest.useFakeTimers();
 
+        // enable keytip mode to update the KeytipTree
+        keytipManager.inKeytipMode = true;
+
         overflowSet = mount(
           <div>
             <OverflowSet
@@ -281,6 +291,7 @@ describe('OverflowSet', () => {
 
       it('overflowSetSequence gets set correctly on overflowItems keytipProps when the overflow menu is opened', () => {
         jest.useFakeTimers();
+        keytipManager.inKeytipMode = true;
 
         // Set current keytip at root, like we've entered keytip mode
         overflowSet = mount(
@@ -410,7 +421,7 @@ describe('OverflowSet', () => {
       describe('with children keytips', () => {
         it('should open the overflow and submenu when the persisted keytip is triggered', () => {
           jest.useFakeTimers();
-
+          keytipManager.inKeytipMode = true;
           const overflowItemsWithSubMenuAndKeytips = [
             item3,
             {
