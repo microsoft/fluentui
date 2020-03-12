@@ -62,7 +62,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       path: '#',
       text: (
         <span>
-          <strong style={{ fontWeight: 700 }}>Coming soon</strong> UI Fabric is evolving into Fluent UI.
+          <strong style={{ fontWeight: 700 }}>Coming soon</strong> We're renaming UI Fabric to Fluent UI.
         </span>
       ),
       linkText: 'Learn more',
