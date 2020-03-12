@@ -27,23 +27,21 @@ const getActionStyles = ({
   props: MenuItemPropsAndState;
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
-}): ICSSInJSStyle =>
-  underlined || iconOnly
-    ? {
-        color: v.color
-      }
-    : primary
-    ? {
+}): ICSSInJSStyle => ({
+  color: v.color,
+
+  ...(!underlined &&
+    !iconOnly && {
+      background: v.backgroundColorActive || colors.backgroundActive,
+
+      ...(primary && {
         color: colors.foregroundActive,
-        background: v.backgroundColorActive || colors.backgroundActive,
         [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
           backgroundImage: submenuIndicatorUrl(colors.foregroundActive, vertical)
         }
-      }
-    : {
-        color: v.color,
-        background: v.backgroundColorActive || colors.backgroundActive
-      };
+      })
+    })
+});
 
 const getFocusedStyles = ({
   props,
