@@ -19,6 +19,8 @@ const AvatarExampleSizeShorthand = () => (
           &emsp;
           <Avatar size={size} image="public/images/avatar/small/matt.jpg" />
           &emsp;
+          <Avatar size={size} image="public/images/avatar/small/matt.jpg" square />
+          &emsp;
           <Avatar size={size} icon="calendar" />
         </div>
       </React.Fragment>

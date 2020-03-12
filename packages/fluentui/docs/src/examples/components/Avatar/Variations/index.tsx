@@ -45,6 +45,11 @@ const Variations = () => (
       description="An Avatar can have different sizes."
       examplePath="components/Avatar/Variations/AvatarExampleSize"
     />
+    <ComponentExample
+      title="Square"
+      description="An Avatar can have a square shape."
+      examplePath="components/Avatar/Variations/AvatarExampleSquare"
+    />
   </ExampleSection>
 );
 
