@@ -190,12 +190,11 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
   handleIconOverrides = predefinedProps => ({
     onClick: (e: React.SyntheticEvent) => {
-      if (this.props.disabled) {
-        return;
+      if (!this.props.disabled) {
+        this.handleOnClear(e);
+        this.inputRef.current.focus();
       }
 
-      this.handleOnClear(e);
-      this.inputRef.current.focus();
       _.invoke(predefinedProps, 'onClick', e, this.props);
     }
   });

@@ -177,8 +177,9 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     backgroundImage: toggleIndicatorUrl(v.color),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
-    ...(!p.disabled && {
-      cursor: 'pointer'
+    cursor: 'pointer',
+    ...(p.disabled && {
+      cursor: 'default'
     }),
     userSelect: 'none',
 

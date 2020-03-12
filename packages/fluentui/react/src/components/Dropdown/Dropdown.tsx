@@ -74,7 +74,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** The initial value (or value array if the array has multiple selection). */
   defaultValue?: ShorthandValue<DropdownItemProps> | ShorthandCollection<DropdownItemProps>;
 
-  /** A Dropdown can be disabled. */
+  /** A dropdown can show that it cannot be interacted with. */
   disabled?: boolean;
 
   /** A dropdown can fill the width of its container. */
