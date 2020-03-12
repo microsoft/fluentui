@@ -43,6 +43,8 @@ export interface MenuVariables {
   lineHeightBase: string;
   horizontalPadding: string;
 
+  activeUnderlineColor: string;
+
   verticalBackgroundColor: string;
   verticalItemPadding: string;
   verticalBoxShadow: string;
@@ -121,6 +123,8 @@ export default (siteVars: any): MenuVariables => {
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
     verticalBackgroundColorFocus: siteVars.colors.grey[150],
+
+    activeUnderlineColor: undefined,
 
     pointingIndicatorBackgroundColor: siteVars.colors.brand[600],
 
