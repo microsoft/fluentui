@@ -56,11 +56,14 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       })
     };
   },
-  icon: ({ variables: v }): ICSSInJSStyle => ({
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
     color: v.iconColor,
     backgroundColor: v.iconBackgroundColor,
     height: '100%',
     width: '100%',
+    ...(p.square && {
+      borderRadius: v.squareAvatarBorderRadius
+    }),
     '& > :first-child': {
       height: '100%',
       display: 'block',
