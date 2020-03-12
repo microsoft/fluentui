@@ -139,6 +139,7 @@ import questionCircle from './questionCircle';
 import quote from './quote';
 import readAloud from './read-aloud';
 import raiseHand from './raiseHand';
+import raiseHandColored from './raiseHandColored';
 import raiseHandDisabled from './raiseHandDisabled';
 import redbang from './redbang';
 import redo from './redo';
@@ -323,6 +324,7 @@ export default {
   'question-circle': questionCircle,
   quote,
   'raise-hand': raiseHand,
+  'raise-hand-colored': raiseHandColored,
   'raise-hand-disabled': raiseHandDisabled,
   'read-aloud': readAloud,
   redbang,
