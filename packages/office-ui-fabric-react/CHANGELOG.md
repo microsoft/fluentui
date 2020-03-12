@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Mar 2020 12:25:14 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
 
+## 7.102.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+- withResponsiveMode: Add initializeResponsiveMode render performance optimization (KevinTCoughlin@users.noreply.github.com)
 ## 7.101.0
 Tue, 10 Mar 2020 12:25:14 GMT
 

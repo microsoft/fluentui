@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/experiments_v7.22.0",
+      "version": "7.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "convert initializeFocusRects to hook",
+            "author": "xgao@microsoft.com",
+            "commit": "b0ce989570bbf0394bb14913017150357ebccee2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 07 Mar 2020 01:39:37 GMT",
       "tag": "@uifabric/experiments_v7.21.6",
       "version": "7.21.6",
