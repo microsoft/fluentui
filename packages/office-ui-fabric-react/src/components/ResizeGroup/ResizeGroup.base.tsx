@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, divProperties, getNativeProps } from '../../Utilities';
+import { Async, EventGroup, divProperties, getNativeProps, warnDeprecations } from '../../Utilities';
 import { IResizeGroupProps, ResizeGroupDirection } from './ResizeGroup.types';
+import { initializeComponentRef } from '@uifabric/utilities';
 
 const RESIZE_DELAY = 16;
 
@@ -300,7 +301,7 @@ export const MeasuredContext = React.createContext({ isMeasured: false });
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
 
-export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
   // The root div which is the container inside of which we are trying to fit content.
   private _root = React.createRef<HTMLDivElement>();
@@ -314,11 +315,18 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   // for the initial render.
   private _hasRenderedContent = false;
 
+  private _async: Async;
+  private _events: EventGroup;
+
   constructor(props: IResizeGroupProps) {
     super(props);
     this.state = this._nextResizeGroupStateProvider.getInitialResizeGroupState(this.props.data);
 
-    this._warnDeprecations({
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+
+    warnDeprecations(this.constructor.name, props, {
       styles: 'className'
     });
   }
@@ -377,6 +385,11 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
       }
     }
     this._afterComponentRendered(this.props.direction);
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public remeasure(): void {

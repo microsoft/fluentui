@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import { classNamesFunction, css, warnDeprecations, initializeComponentRef, FocusRects } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -11,7 +11,7 @@ const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogConten
 const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooterProps>).type;
 
 @withResponsiveMode
-export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
+export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {
     showCloseButton: false,
     className: '',
@@ -22,11 +22,10 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
   constructor(props: IDialogContentProps) {
     super(props);
 
-    if (process.env.NODE_ENV !== 'production') {
-      this._warnDeprecations({
-        titleId: 'titleProps.id'
-      });
-    }
+    initializeComponentRef(this);
+    warnDeprecations(this.constructor.name, props, {
+      titleId: 'titleProps.id'
+    });
   }
 
   public render(): JSX.Element {
@@ -93,6 +92,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
           </div>
           {groupings.footers}
         </div>
+        <FocusRects />
       </div>
     );
   }

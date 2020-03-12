@@ -3,7 +3,7 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { classNamesFunction, getDocument, arraysEqual, warn, isMac, EventGroup, Async } from '../../Utilities';
+import { classNamesFunction, getDocument, arraysEqual, warn, isMac, EventGroup, Async, initializeComponentRef } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -64,6 +64,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
 
+    initializeComponentRef(this);
     this._events = new EventGroup(this);
     this._async = new Async(this);
 

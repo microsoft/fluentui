@@ -1,7 +1,6 @@
 // Utilities
 import * as React from 'react';
 import {
-  BaseComponent,
   classNamesFunction,
   elementContains,
   focusFirstChild,
@@ -9,7 +8,11 @@ import {
   IRectangle,
   KeyCodes,
   shallowCompare,
-  getRTL
+  getRTL,
+  warnDeprecations,
+  EventGroup,
+  Async,
+  initializeComponentRef
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -110,7 +113,7 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
-export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
     mouseProximityOffset: 10,
@@ -121,6 +124,9 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       directionalHint: DirectionalHint.bottomAutoEdge
     }
   };
+
+  private _async: Async;
+  private _events: EventGroup;
 
   /**
    * The cached HTMLElement reference to the Entity Inner Host
@@ -142,7 +148,11 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
   constructor(props: ICoachmarkProps) {
     super(props);
 
-    this._warnDeprecations({
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(this.constructor.name, props, {
       teachingBubbleRef: undefined,
       collapsed: 'isCollapsed',
       beakWidth: undefined,
@@ -363,6 +373,11 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
         }, 1000);
       }
     });
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
