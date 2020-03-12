@@ -4,7 +4,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
   const { className, theme, width, height, legendColor, shouldHighlight, href } = props;
 
   const chartWidth = width! + 50;
-  const chartPadding = 20;
+  const chartPadding = 0; // need to remove no need classes
   const chartHeight = height! + 50;
   const chartMargin = { left: 35, right: 0, top: 35, bottom: 0 };
 
@@ -29,7 +29,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       {
         width: chartWidth,
         height: chartHeight,
-        padding: chartPadding,
+        // padding: chartPadding,
         boxSizing: 'content-box',
         marginLeft: chartMargin.left,
         marginRight: chartMargin.right,
@@ -122,18 +122,12 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default'
-      // stroke: theme.palette.white
+      // stroke: theme.palette.white,
       // strokeWidth: 2
     },
 
     legendContainer: {
       marginTop: '5px'
     }
-
-    // yAxisDomain: [
-    //   {
-    //     transform: 'scaleX(-1)'
-    //   }
-    // ]
   };
 };
