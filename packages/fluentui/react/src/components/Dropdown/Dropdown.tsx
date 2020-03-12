@@ -480,7 +480,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: e => {
                             if (disabled) {
-                              e.preventDefault();
                               return;
                             }
 
@@ -553,7 +552,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           overrideProps: (predefinedProps: ButtonProps) => ({
             onClick: e => {
               if (disabled) {
-                e.preventDefault();
                 return;
               }
 
@@ -562,7 +560,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             },
             onFocus: e => {
               if (disabled) {
-                e.preventDefault();
                 return;
               }
 
@@ -571,7 +568,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             },
             onBlur: e => {
               if (disabled) {
-                e.preventDefault();
                 return;
               }
 
@@ -580,7 +576,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             },
             onKeyDown: e => {
               if (disabled) {
-                e.preventDefault();
                 return;
               }
 
@@ -888,7 +883,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   ) => (predefinedProps: DropdownSearchInputProps) => {
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
       if (disabled) {
-        e.preventDefault();
         return;
       }
 
@@ -901,7 +895,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
       if (disabled) {
-        e.preventDefault();
         return;
       }
 
@@ -951,7 +944,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       accessibilityComboboxProps,
       onFocus: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
         if (disabled) {
-          e.preventDefault();
           return;
         }
 

@@ -191,7 +191,6 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
   handleIconOverrides = predefinedProps => ({
     onClick: (e: React.SyntheticEvent) => {
       if (this.props.disabled) {
-        e.preventDefault();
         return;
       }
 
@@ -203,7 +202,6 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (this.props.disabled) {
-      e.preventDefault();
       return;
     }
 
