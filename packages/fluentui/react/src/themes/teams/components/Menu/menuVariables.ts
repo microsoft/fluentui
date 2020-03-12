@@ -65,6 +65,8 @@ export interface MenuVariables {
 
   menuZIndex: number;
   beakZIndex: number;
+
+  wrapperColorFocus: string;
 }
 
 export default (siteVars: any): MenuVariables => {
@@ -136,6 +138,8 @@ export default (siteVars: any): MenuVariables => {
     dividerHeight: pxToRem(1),
     borderWidth: pxToRem(1),
     menuZIndex: siteVars.zIndexes.overlay,
-    beakZIndex: siteVars.zIndexes.menuItem
+    beakZIndex: siteVars.zIndexes.menuItem,
+
+    wrapperColorFocus: undefined
   };
 };

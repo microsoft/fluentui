@@ -27,8 +27,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       }),
 
       ...(p.isFromKeyboard && {
-        color: v.colorActive,
-
         ...(!p.underlined && { background: v.backgroundColorFocus })
       })
     };
