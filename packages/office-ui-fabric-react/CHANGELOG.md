@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 06 Mar 2020 12:19:58 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Mar 2020 12:18:32 GMT and should not be manually modified.
 
+## 6.212.0
+Thu, 12 Mar 2020 12:18:32 GMT
+
+### Minor changes
+
+- withResponsiveMode: Add initializeResponsiveMode perf optimization to avoid unnecessary render (KevinTCoughlin@users.noreply.github.com)
 ## 6.211.6
 Fri, 06 Mar 2020 12:19:58 GMT
 

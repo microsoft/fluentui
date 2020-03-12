@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 12 Mar 2020 12:18:32 GMT",
+      "tag": "office-ui-fabric-react_v6.212.0",
+      "version": "6.212.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "withResponsiveMode: Add initializeResponsiveMode perf optimization to avoid unnecessary render",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "e3c270fdb5a20549d0868c82df9d442c998f71db"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 06 Mar 2020 12:19:58 GMT",
       "tag": "office-ui-fabric-react_v6.211.6",
       "version": "6.211.6",
