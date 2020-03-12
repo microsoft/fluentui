@@ -11,7 +11,7 @@ export interface AvatarVariables {
 export default (siteVariables): AvatarVariables => ({
   avatarBorderColor: '',
   avatarBorderWidth: '0',
-  squareAvatarBorderRadius: pxToRem(4),
+  squareAvatarBorderRadius: pxToRem(3),
   statusBorderColor: siteVariables.bodyBackground,
   statusBorderWidth: '2px'
 });
