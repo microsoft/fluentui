@@ -1,17 +1,17 @@
 import { pxToRem } from '../../../../utils';
 
 export interface AvatarVariables {
-  avatarBorderRadius: string;
   avatarBorderColor: string;
   avatarBorderWidth: string;
+  squareAvatarBorderRadius: string;
   statusBorderColor: string;
   statusBorderWidth: string;
 }
 
 export default (siteVariables): AvatarVariables => ({
-  avatarBorderRadius: pxToRem(4),
   avatarBorderColor: '',
   avatarBorderWidth: '0',
+  squareAvatarBorderRadius: pxToRem(4),
   statusBorderColor: siteVariables.bodyBackground,
   statusBorderWidth: '2px'
 });

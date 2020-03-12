@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react';
 
-const AvatarExampleStatusShorthand = () => (
+const AvatarExampleSquare = () => (
   <div>
     <Avatar image="public/images/avatar/small/matt.jpg" square status={{ color: 'green', icon: 'icon-checkmark', title: 'Available' }} />
     &emsp;
@@ -10,4 +10,4 @@ const AvatarExampleStatusShorthand = () => (
   </div>
 );
 
-export default AvatarExampleStatusShorthand;
+export default AvatarExampleSquare;

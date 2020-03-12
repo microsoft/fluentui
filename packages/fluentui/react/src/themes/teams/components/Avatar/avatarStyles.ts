@@ -1,9 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { AvatarProps } from '../../../../components/Avatar/Avatar';
+import { AvatarStylesProps } from '../../../../components/Avatar/Avatar';
 import { AvatarVariables } from './avatarVariables';
-
-export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
 
 const sizeToPxValue = {
   smallest: 24,
@@ -39,7 +37,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
     width: '100%',
 
     ...(p.square && {
-      borderRadius: v.avatarBorderRadius
+      borderRadius: v.squareAvatarBorderRadius
     })
   }),
   label: ({ props: p, variables: v }): ICSSInJSStyle => {
@@ -54,7 +52,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       textAlign: 'center',
       padding: '0px',
       ...(p.square && {
-        borderRadius: v.avatarBorderRadius
+        borderRadius: v.squareAvatarBorderRadius
       })
     };
   },

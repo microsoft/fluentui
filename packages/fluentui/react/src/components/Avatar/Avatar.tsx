@@ -40,6 +40,8 @@ export interface AvatarProps extends UIComponentProps {
   getInitials?: (name: string) => string;
 }
 
+export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
+
 const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
