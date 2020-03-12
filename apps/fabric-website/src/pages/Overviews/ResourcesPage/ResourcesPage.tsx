@@ -47,7 +47,7 @@ function _otherSections(): IPageSectionProps[] {
       )
     },
     {
-      sectionName: 'Microsoft Employees',
+      sectionName: 'Microsoft employees',
       editUrl: baseUrl + 'docs/default/MicrosoftEmployees.md',
       content: (
         <Markdown>

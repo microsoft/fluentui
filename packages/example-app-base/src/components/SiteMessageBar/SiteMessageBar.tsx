@@ -31,8 +31,6 @@ export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteM
     const { text, linkUrl, linkText, styles, ...rest } = this.props;
     const { isVisible } = this.state;
 
-    console.log(text);
-
     return isVisible ? (
       <MessageBar onDismiss={this._onClose} isMultiline dismissButtonAriaLabel="Close" styles={styles} {...rest}>
         {text}{' '}
