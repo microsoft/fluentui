@@ -13,6 +13,17 @@ const sizeToPxValue = {
   largest: 48
 };
 
+// TODO: figure out icon sizes
+const iconSizeToPxValue = {
+  smallest: 7,
+  smaller: 10,
+  small: 12,
+  medium: 16,
+  large: 20,
+  larger: 32,
+  largest: 40
+};
+
 const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
   root: ({ props: p }): ICSSInJSStyle => {
     const sizeInRem = pxToRem(sizeToPxValue[p.size]);
@@ -56,13 +67,11 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       })
     };
   },
-  icon: (): ICSSInJSStyle => {
-    return {
-      // TODO: figure out the color
-      backgroundColor: 'red',
-      padding: pxToRem(8)
-    };
-  },
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    color: v.iconColor,
+    backgroundColor: v.iconBackgroundColor,
+    padding: pxToRem((sizeToPxValue[p.size] - iconSizeToPxValue[p.size]) / 2)
+  }),
   status: ({ variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
     bottom: 0,
