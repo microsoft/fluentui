@@ -31,5 +31,6 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   iconOnlyColorActive: siteVars.colors.black,
   iconOnlyColorFocus: 'transparent',
 
+  wrapperBackgroundColorFocus: siteVars.accessibleCyan,
   wrapperColorFocus: siteVars.colors.black
 });
