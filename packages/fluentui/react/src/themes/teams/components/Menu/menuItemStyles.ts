@@ -397,30 +397,41 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 
-  indicator: ({ props: p, variables: v, rtl }) => ({
-    position: 'relative',
-    float: 'right',
-    left: pxToRem(12),
-    userSelect: 'none',
-    marginRight: pxToRem(4),
+  indicator: ({ props: p, variables: v, rtl }) => {
+    const colors = getColorScheme(v.colorScheme, null, p.primary);
 
-    ...(p.inSubmenu && {
-      position: 'absolute',
-      top: pxToRem(6),
-      right: pxToRem(2),
-      left: 'unset'
-    }),
+    return {
+      position: 'relative',
+      float: 'right',
+      left: pxToRem(12),
+      userSelect: 'none',
+      marginRight: pxToRem(4),
 
-    backgroundImage: submenuIndicatorUrl(v.color, p.vertical),
-    ...(rtl && {
-      transform: `scaleX(-1)`
-    }),
-    content: '" "',
-    display: 'block',
-    overflow: 'hidden',
-    height: pxToRem(16),
-    width: pxToRem(16)
-  })
+      ...(p.inSubmenu && {
+        position: 'absolute',
+        top: pxToRem(6),
+        right: pxToRem(2),
+        left: 'unset'
+      }),
+
+      backgroundImage: submenuIndicatorUrl(v.color, p.vertical),
+      ...(rtl && {
+        transform: `scaleX(-1)`
+      }),
+      content: '" "',
+      display: 'block',
+      overflow: 'hidden',
+      height: pxToRem(16),
+      width: pxToRem(16),
+
+      ...(p.active &&
+        !p.underlined &&
+        !p.iconOnly &&
+        p.primary && {
+          backgroundImage: submenuIndicatorUrl(colors.foregroundActive, p.vertical)
+        })
+    };
+  }
 };
 
 export default menuItemStyles;
