@@ -4,7 +4,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
   const { className, theme, width, height, legendColor, shouldHighlight, href } = props;
 
   const chartWidth = width! + 50;
-  const chartPadding = 0; // need to remove no need classes
   const chartHeight = height! + 50;
   const chartMargin = { left: 35, right: 0, top: 35, bottom: 0 };
 
@@ -14,7 +13,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       'ms-VerticalStackedBarChart',
       className,
       {
-        width: chartWidth + 2 * chartPadding
+        width: chartWidth
       }
     ],
 
@@ -29,7 +28,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       {
         width: chartWidth,
         height: chartHeight,
-        // padding: chartPadding,
         boxSizing: 'content-box',
         marginLeft: chartMargin.left,
         marginRight: chartMargin.right,
@@ -59,6 +57,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       }
     ],
 
+    // cross check thest
     yAxis: [
       {
         transform: `translate(${chartMargin.left}px, 0px)`
@@ -104,6 +103,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       fontSize: '12px',
       lineHeight: '14px'
     },
+
     hoverCardDataStyles: {
       color: legendColor === '' ? theme.palette.black : legendColor,
       fontSize: '28px',
@@ -115,19 +115,17 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     placeHolderOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: 'default'
-      // stroke: theme.palette.white
-      // strokeWidth: '2'
     },
 
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default'
-      // stroke: theme.palette.white,
-      // strokeWidth: 2
     },
 
     legendContainer: {
       marginTop: '5px'
-    }
+    },
+
+    xAxisText: []
   };
 };

@@ -1,5 +1,3 @@
-import { string } from 'prop-types';
-
 export interface IDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -111,9 +109,38 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+}
+
+export interface IVSChartDataPoint {
+  /**
+   * data the datapoint in the chart
+   */
+  data: number;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+}
+
+export interface IVerticalStackedChartProps {
+  /**
+   * data for the points in the chart
+   */
+  chartData: IVSChartDataPoint[];
 
   /**
    * Data for x axis label for multistacked Vertical bar chart
    */
-  xAxisPoint?: number | string;
+  xAxisPoint: number | string;
+
+  /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
 }

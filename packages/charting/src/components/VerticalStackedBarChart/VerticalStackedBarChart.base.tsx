@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { max as d3Max } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom, Axis as D3Axis } from 'd3-axis';
-import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear } from 'd3-scale';
+import { scaleBand as d3ScaleBand, scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IChartProps, IChartDataPoint, IDataPoint } from '@uifabric/charting';
+import { IVSChartDataPoint, IDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { ILegend, Legends } from '../Legends/index';
@@ -19,6 +19,8 @@ import {
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type numericAxis = D3Axis<number | { valueOf(): number }>;
 type stringAxis = D3Axis<string>;
+type numericScale = D3ScaleLinear<number, number>;
+type stringScale = D3ScaleLinear<string, string>;
 
 export interface IRefArrayData {
   legendText?: string;
@@ -29,19 +31,21 @@ export interface IVerticalStackedBarChartState {
   isLegendSelected: boolean;
   isLegendHovered: boolean;
   selectedLegendTitle: string;
+  // tslint:disable-next-line:no-any
   refSelected: any;
   dataForHoverCard: number;
   color: string;
 }
 
 export class VerticalStackedBarChartBase extends React.Component<IVerticalStackedBarChartProps, IVerticalStackedBarChartState> {
-  private _points: IChartProps[];
+  private _points: IVerticalStackedChartProps[];
   private _width: number;
   private _height: number;
   private _barWidth: number;
   private _yAxisTickCount: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
+  // tslint:disable-next-line:no-any
   private _refArray: any;
 
   public constructor(props: IVerticalStackedBarChartProps) {
@@ -58,28 +62,34 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._refArray = [];
+    this._adjustProps();
   }
 
   public render(): JSX.Element {
-    this._adjustProps();
-
     const dataset: IDataPoint[] = this._createDataSetLayer();
 
     const isNumeric: boolean = dataset.length > 0 && typeof dataset[0].x === 'number';
 
     const xAxis = isNumeric ? this._createNumericXAxis(dataset) : this._createStringXAxis(dataset);
-    // const xAxis = this._createDateXAxis();
     const yAxis = this._createYAxis(dataset);
     const bars: JSX.Element[] = [];
-    const legends = this._getLegendData(this._points!, this.props.theme!.palette);
-    this._points.map((singleChartData: IChartProps, index: number) => {
-      // const singleChartBar = this._createBar(singleChartData, dataset, index, this.props.href!);
+    // theme case
+    const legends = this._getLegendData(this._points, this.props.theme!.palette);
+    this._points.map((singleChartData: IVerticalStackedChartProps, index: number) => {
       const singleChartBar = isNumeric
         ? this._createNumericBars(singleChartData, dataset, index, this.props.href!)
         : this._createStringBars(singleChartData, dataset, index, this.props.href!);
       bars.push(singleChartBar);
     });
+    const { theme, className, styles } = this.props;
     const { isCalloutVisible } = this.state;
+    this._classNames = getClassNames(styles!, {
+      theme: theme!,
+      width: this._width,
+      height: this._height,
+      className,
+      legendColor: this.state.color
+    });
     return (
       <div className={this._classNames.root}>
         {this.props.chartLabel && <p className={this._classNames.chartLabel}>{this.props.chartLabel}</p>}
@@ -112,37 +122,28 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
   }
 
   private _adjustProps(): void {
-    this._points = this.props.data || [];
+    this._points = this.props.data;
 
     this._width = this.props.width || 600;
     this._height = this.props.height || 350;
     this._barWidth = this.props.barWidth || 32;
     this._yAxisTickCount = this.props.yAxisTickCount || 5;
 
-    const { theme, className, styles } = this.props;
+    const { theme } = this.props;
     const { palette } = theme!;
-    // need to change based on length
-    this._colors = this.props.colors || [theme.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
-
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      width: this._width,
-      height: this._height,
-      className,
-      legendColor: this.state.color
-    });
+    this._colors = this.props.colors || [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
   }
 
   private _createDataSetLayer(): IDataPoint[] {
     const dataset: IDataPoint[] = [];
 
-    this._points!.map((singlePointData: IChartProps) => {
+    this._points.map((singlePointData: IVerticalStackedChartProps) => {
       let total: number = 0;
-      singlePointData.chartData!.forEach((point: IChartDataPoint) => {
+      singlePointData.chartData!.forEach((point: IVSChartDataPoint) => {
         total = total + point.data!;
       });
       const singleBarDataPoint: IDataPoint = {
-        x: singlePointData.xAxisPoint!,
+        x: singlePointData.xAxisPoint,
         y: total
       };
       dataset.push(singleBarDataPoint);
@@ -152,7 +153,6 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
 
   private _createNumericXAxis(dataset: IDataPoint[]): numericAxis {
     const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
-    // need to calculate min and draw axis from min to max
     const xAxisScale = d3ScaleLinear()
       .domain([0, xMax])
       .range([0, this._width]); // (margins.left, _width - margins.right)
@@ -184,7 +184,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     }
     const yAxisScale = d3ScaleLinear()
       .domain([0, domains[domains.length - 1]])
-      .range([this._height, 10]); // (_height-margin.bottom, margin.top)
+      .range([this._height, 0]); // (_height-margin.bottom, margin.top)
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSizeInner(-this._width)
       .tickPadding(10)
@@ -231,28 +231,26 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     }
   }
 
-  private _getLegendData = (data: IChartProps[], palette: IPalette): JSX.Element => {
+  private _getLegendData = (data: IVerticalStackedChartProps[], palette: IPalette): JSX.Element => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
 
-    data.map((singleChartData: IChartProps, index: number) => {
-      const validChartData = singleChartData.chartData!.filter((_: IChartDataPoint) => !_.placeHolder);
-
-      validChartData!.map((point: IChartDataPoint) => {
+    data.map((singleChartData: IVerticalStackedChartProps) => {
+      singleChartData.chartData.map((point: IVSChartDataPoint) => {
         const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
-        const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend! && leg.color === color);
+        const checkSimilarLegends = actions.filter((leg: ILegend) => leg.title === point.legend && leg.color === color);
         if (checkSimilarLegends!.length > 0) {
           return;
         }
 
         const legend: ILegend = {
-          title: point.legend!,
+          title: point.legend,
           color: color,
           action: () => {
-            this._onLegendClick(point.legend!);
+            this._onLegendClick(point.legend);
           },
           hoverAction: () => {
-            this._onLegendHover(point.legend!);
+            this._onLegendHover(point.legend);
           },
           onMouseOutAction: (isLegendSelected?: boolean) => {
             this._onLegendLeave(isLegendSelected);
@@ -316,20 +314,19 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
   }
 
   private createBar = (
-    singleChartData: IChartProps,
-    dataset: IDataPoint[],
-    xBarScale: any,
-    yBarScale: any,
+    singleChartData: IVerticalStackedChartProps,
+    xBarScale: numericScale | stringScale,
+    yBarScale: numericScale,
     indexNumber: number,
     href: string,
     isNumeric: boolean
   ): JSX.Element => {
     let startingPointOfY = 0;
-    const bar = singleChartData.chartData!.map((point: IChartDataPoint, index: number) => {
-      const gap = index >= 1 ? 0.6 : 0;
-      startingPointOfY = startingPointOfY + point.data! + gap;
+    const bar = singleChartData.chartData.map((point: IVSChartDataPoint, index: number) => {
+      const gap = index >= 1 ? 0.4 : 0;
+      startingPointOfY = startingPointOfY + point.data + gap;
       const color = point.color ? point.color : this._colors[index];
-      const refArrayIndexNumber = indexNumber * singleChartData.chartData!.length + index;
+      const refArrayIndexNumber = indexNumber * singleChartData.chartData.length + index;
 
       let shouldHighlight = true;
       if (this.state.isLegendHovered || this.state.isLegendSelected) {
@@ -346,24 +343,31 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
         href: href,
         legendColor: this.state.color
       });
+      let xPoint;
+      if (isNumeric) {
+        xPoint = xBarScale(singleChartData.xAxisPoint as number);
+      } else {
+        xPoint = xBarScale(indexNumber);
+      }
+
       return (
         <rect
           key={index + indexNumber}
           className={this._classNames.opacityChangeOnHover}
-          x={isNumeric ? xBarScale(singleChartData.xAxisPoint as number) : xBarScale(indexNumber)}
+          x={xPoint}
           y={this._height - yBarScale(startingPointOfY)}
           width={this._barWidth}
-          height={yBarScale(point.data!)}
+          height={yBarScale(point.data)}
           fill={color}
           ref={(e: SVGRectElement) => {
-            this._refCallback(e, point.legend!, refArrayIndexNumber);
+            this._refCallback(e, point.legend, refArrayIndexNumber);
           }}
           data-is-focusable={true}
           focusable={'true'}
-          onMouseOver={this._onBarHover.bind(this, point.legend!, point.data, color)}
-          onMouseMove={this._onBarHover.bind(this, point.legend!, point.data, color)}
+          onMouseOver={this._onBarHover.bind(this, point.legend, point.data, color)}
+          onMouseMove={this._onBarHover.bind(this, point.legend, point.data, color)}
           onMouseLeave={this._onBarLeave}
-          onFocus={this._onBarFocus.bind(this, point.legend!, point.data, color, refArrayIndexNumber)} // chech point.data = null case also
+          onFocus={this._onBarFocus.bind(this, point.legend, point.data, color, refArrayIndexNumber)} // chech point.data = null case also
           onBlur={this._onBarLeave}
           onClick={this._redirectToUrl.bind(this, href)}
         />
@@ -372,7 +376,12 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     return <g>{bar}</g>;
   };
 
-  private _createNumericBars = (singleChartData: IChartProps, dataset: IDataPoint[], indexNumber: number, href: string): JSX.Element => {
+  private _createNumericBars = (
+    singleChartData: IVerticalStackedChartProps,
+    dataset: IDataPoint[],
+    indexNumber: number,
+    href: string
+  ): JSX.Element => {
     const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
     const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
 
@@ -383,10 +392,15 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       .domain([0, yMax])
       .range([0, this._height]);
 
-    return this.createBar(singleChartData, dataset, xBarScale, yBarScale, indexNumber, href, true);
+    return this.createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, true);
   };
 
-  private _createStringBars = (singleChartData: IChartProps, dataset: IDataPoint[], indexNumber: number, href: string): JSX.Element => {
+  private _createStringBars = (
+    singleChartData: IVerticalStackedChartProps,
+    dataset: IDataPoint[],
+    indexNumber: number,
+    href: string
+  ): JSX.Element => {
     const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
 
     const endpointDistance = 0.5 * (this._width / dataset.length);
@@ -397,150 +411,22 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       .domain([0, yMax])
       .range([0, this._height]);
 
-    return this.createBar(singleChartData, dataset, xBarScale, yBarScale, indexNumber, href, false);
+    return this.createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, false);
   };
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
     if (node === null) {
       return;
     }
-    d3Select(node).call(xAxis);
+    const axisNode = d3Select(node).call(xAxis);
+    axisNode.selectAll('text').attr('class', this._classNames.xAxisText!);
   }
 
   private _setYAxis(node: SVGElement | null, yAxis: numericAxis): void {
     if (node === null) {
       return;
     }
-    d3Select(node).call(yAxis);
+    const axisNode = d3Select(node).call(yAxis);
+    axisNode.selectAll('text').attr('class', this._classNames.yAxisText!);
   }
-
-  // private _createDateXAxis = () => {
-  //   const xAxisData: Date[] = [];
-  //   let sDate = new Date();
-  //   let lDate = new Date(-8640000000000000);
-  // };
 }
-
-// ======================================================== un wanted code=================================
-// private _createStringBars(singleChartData: IChartProps, dataset: IDataPoint[], indexNumber: number, href: string): JSX.Element {
-//   const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
-
-//   const endpointDistance = 0.5 * (this._width / dataset.length);
-//   const xBarScale = d3ScaleLinear()
-//     .domain([0, dataset.length - 1])
-//     .range([endpointDistance - 0.5 * this._barWidth + 5, this._width - endpointDistance - 0.5 * this._barWidth - 5]); // added 5 here
-//   const yBarScale = d3ScaleLinear()
-//     .domain([0, yMax])
-//     .range([0, this._height]);
-
-// let startingPointOfY = 0;
-// // single bar chart
-// const bar = singleChartData.chartData!.map((point: IChartDataPoint, index: number) => {
-//   const gap = index >= 1 ? 0.6 : 0;
-//   startingPointOfY = startingPointOfY + point.data! + gap;
-//   const color = point.color ? point.color : this._colors[index];
-//   const refArrayIndexNumber = indexNumber * singleChartData.chartData!.length + index;
-
-//   let shouldHighlight = true;
-//   if (this.state.isLegendHovered || this.state.isLegendSelected) {
-//     shouldHighlight = this.state.selectedLegendTitle === point.legend;
-//   }
-
-//   const { theme, styles, className } = this.props;
-//   this._classNames = getClassNames(styles!, {
-//     theme: theme!,
-//     width: this._width,
-//     height: this._height,
-//     className: className,
-//     shouldHighlight: shouldHighlight,
-//     href: href,
-//     legendColor: this.state.color
-//   });
-
-//   return (
-//     <rect
-//       key={index + indexNumber}
-//       className={this._classNames.opacityChangeOnHover}
-//       x={xBarScale(indexNumber)}
-//       y={this._height - yBarScale(startingPointOfY)}
-//       width={this._barWidth}
-//       height={yBarScale(point.data!)}
-//       fill={color}
-//         ref={(e: SVGRectElement) => {
-//           this._refCallback(e, point.legend!, refArrayIndexNumber);
-//         }}
-//         data-is-focusable={true}
-//         focusable={'true'}
-//         onMouseOver={this._onBarHover.bind(this, point.legend!, point.data, color)}
-//         onMouseMove={this._onBarHover.bind(this, point.legend!, point.data, color)}
-//         onMouseLeave={this._onBarLeave}
-//         onFocus={this._onBarFocus.bind(this, point.legend!, point.data, color, refArrayIndexNumber)} // chech point.data = null case also
-//         onBlur={this._onBarLeave}
-//         onClick={this._redirectToUrl.bind(this, href)}
-//       />
-//     );
-//   });
-//   return <g>{bar}</g>;
-// }
-
-// private _createNumericBars(singleChartData: IChartProps, dataset: IDataPoint[], indexNumber: number, href: string): JSX.Element {
-//   const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
-//   const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
-
-//   const xBarScale = d3ScaleLinear()
-//     .domain([0, xMax])
-//   .range([0, this._width - this._barWidth]);
-// const yBarScale = d3ScaleLinear()
-//   .domain([0, yMax])
-//   .range([0, this._height]);
-
-// let startingPointOfY: number = 0;
-// const bar = singleChartData.chartData!.map((point: IChartDataPoint, index: number) => {
-//   const gap = index >= 1 ? 0.6 : 0;
-//   startingPointOfY = startingPointOfY + point.data! + gap;
-//   const color = point.color ? point.color : this._colors[index];
-//   const refArrayIndexNumber = indexNumber * singleChartData.chartData!.length + index;
-
-//   let shouldHighlight = true;
-//   if (this.state.isLegendHovered || this.state.isLegendSelected) {
-//     shouldHighlight = this.state.selectedLegendTitle === point.legend;
-//   }
-
-//   const { theme, styles, className } = this.props;
-//   this._classNames = getClassNames(styles!, {
-//     theme: theme!,
-//     width: this._width,
-//     height: this._height,
-//       className: className,
-//       shouldHighlight: shouldHighlight,
-//       href: href,
-//       legendColor: this.state.color
-//     });
-
-//     return (
-//       <>
-//         <rect
-//           key={index + indexNumber}
-//           className={this._classNames.opacityChangeOnHover}
-//           x={xBarScale(singleChartData.xAxisPoint as number)}
-//           y={this._height - yBarScale(startingPointOfY)} // startingPoint[index]
-//           width={this._barWidth}
-//           height={yBarScale(point.data!)}
-//           fill={color}
-//           ref={(e: SVGRectElement) => {
-//             this._refCallback(e, point.legend!, refArrayIndexNumber);
-//           }}
-//           data-is-focusable={true}
-//           focusable={'true'}
-//           onMouseOver={this._onBarHover.bind(this, point.legend!, point.data, color)}
-//           onMouseMove={this._onBarHover.bind(this, point.legend!, point.data, color)}
-//           onMouseLeave={this._onBarLeave}
-//           onFocus={this._onBarFocus.bind(this, point.legend!, point.data, color, refArrayIndexNumber)} // chech point.data = null case also
-//           onBlur={this._onBarLeave}
-//           onClick={this._redirectToUrl.bind(this, href)}
-//         />
-//       </>
-//     );
-//   });
-//   return <g>{bar}</g>;
-// }
