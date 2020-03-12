@@ -9,8 +9,7 @@ import {
   IRefObject,
   findIndex,
   find,
-  initializeComponentRef,
-  FocusRects
+  initializeComponentRef
 } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
@@ -355,7 +354,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDay
             </tbody>
           </table>
         </FocusZone>
-        {/* <FocusRects /> */}
       </div>
     );
   }

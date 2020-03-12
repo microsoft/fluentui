@@ -113,6 +113,7 @@ export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicEx
             ariaLabelledBy={'coachmark-label1'}
             ariaDescribedByText={'Press enter or alt + C to open the Coachmark notification'}
             ariaLabelledByText={'Coachmark notification'}
+            beakWidth={100}
           >
             <TeachingBubbleContent
               headline="Example Title"

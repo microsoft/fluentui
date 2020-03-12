@@ -1,15 +1,25 @@
 import * as React from 'react';
-import { BaseComponent, getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import {
+  getId,
+  toMatrix,
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties,
+  initializeComponentRef,
+  FocusRects
+} from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
-export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
+export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
   private _id: string;
 
   constructor(props: IGridProps) {
     super(props);
+
+    initializeComponentRef(this);
     this._id = props.id || getId();
   }
 
@@ -42,23 +52,26 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
-        <tbody>
-          {rowsOfItems.map((rows: any[], rowIndex: number) => {
-            return (
-              <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
-                {rows.map((cell: any, cellIndex: number) => {
-                  return (
-                    <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
-                      {onRenderItem(cell, cellIndex)}
-                    </td>
-                  );
-                })}
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <>
+        <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
+          <tbody>
+            {rowsOfItems.map((rows: any[], rowIndex: number) => {
+              return (
+                <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
+                  {rows.map((cell: any, cellIndex: number) => {
+                    return (
+                      <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
+                        {onRenderItem(cell, cellIndex)}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        <FocusRects />
+      </>
     );
 
     // Create the table/grid

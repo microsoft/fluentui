@@ -3,7 +3,7 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn, isMac } from '../../Utilities';
+import { classNamesFunction, getDocument, arraysEqual, warn, isMac, EventGroup, Async } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -37,13 +37,16 @@ const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerSty
  * A layer that holds all keytip items
  * {@docCategory Keytips}
  */
-export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
+export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
     content: ''
   };
+
+  private _events: EventGroup;
+  private _async: Async;
 
   private _keytipTree: KeytipTree;
 
@@ -60,6 +63,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
+
+    this._events = new EventGroup(this);
+    this._async = new Async(this);
+
     const managerKeytips = [...this._keytipManager.getKeytips()];
     this.state = {
       inKeytipMode: false,
@@ -139,6 +146,9 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
     this._events.off(this._keytipManager, KeytipEvents.ENTER_KEYTIP_MODE, this._enterKeytipMode);
     this._events.off(this._keytipManager, KeytipEvents.EXIT_KEYTIP_MODE, this._exitKeytipMode);
+
+    this._events.dispose();
+    this._async.dispose();
   }
 
   // The below public functions are only public for testing purposes
