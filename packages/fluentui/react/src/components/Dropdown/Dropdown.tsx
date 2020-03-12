@@ -551,18 +551,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
             onClick: e => {
-              if (disabled) {
-                return;
-              }
-
               onClick(e);
               _.invoke(predefinedProps, 'onClick', e, predefinedProps);
             },
             onFocus: e => {
-              if (disabled) {
-                return;
-              }
-
               onFocus(e);
               _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
             },
