@@ -219,13 +219,15 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           })
       }),
 
+      ...(isFromKeyboard && {
+        ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
+        ...(iconOnly && {
+          color: v.iconOnlyColorActive
+        })
+      }),
+
       ...(iconOnly && {
         display: 'flex',
-
-        // focus styles
-        ...(isFromKeyboard && {
-          color: v.iconOnlyColorActive
-        }),
 
         // hover styles
         ':hover': {
@@ -234,9 +236,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       }),
 
       ...(!iconOnly && {
-        // focus styles
-        ...(isFromKeyboard && getFocusedStyles({ props, variables: v, colors })),
-
         // hover styles
         ':hover': getHoverStyles({ props, variables: v, colors })
       }),
