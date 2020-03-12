@@ -1,10 +1,18 @@
-let { createConfig, resolveMergeStylesSerializer } = require('@uifabric/build/jest/jest-resources');
-let path = require('path');
+let { createConfig } = require('@uifabric/build/jest/jest-resources');
 
 const config = createConfig({
-  setupFiles: [path.resolve(path.join(__dirname, 'config', 'tests.js'))],
-
-  snapshotSerializers: [resolveMergeStylesSerializer()]
+  collectCoverage: true,
+  collectCoverageFrom: ['src/**/*.ts', '!src/**/*.test.ts', '!node_modules/**'],
+  coverageDirectory: 'coverage',
+  coverageThreshold: {
+    global: {
+      branches: 50,
+      functions: 50,
+      lines: 50,
+      statements: 50
+    }
+  },
+  testEnvironment: 'node'
 });
 
 module.exports = config;

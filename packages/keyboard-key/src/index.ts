@@ -1,11 +1,222 @@
-import './version';
+export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
+
+export interface KeyNames {
+  Cancel: 3;
+  Help: 6;
+  Backspace: 8;
+  Tab: 9;
+  Clear: 12;
+  Enter: 13;
+  Shift: 16;
+  Control: 17;
+  Alt: 18;
+  Pause: 19;
+  CapsLock: 20;
+  Escape: 27;
+  Convert: 28;
+  NonConvert: 29;
+  Accept: 30;
+  ModeChange: 31;
+  ' ': 32;
+  PageUp: 33;
+  PageDown: 34;
+  End: 35;
+  Home: 36;
+  ArrowLeft: 37;
+  ArrowUp: 38;
+  ArrowRight: 39;
+  ArrowDown: 40;
+  Select: 41;
+  Print: 42;
+  Execute: 43;
+  PrintScreen: 44;
+  Insert: 45;
+  Delete: 46;
+  0: 48;
+  ')': 48;
+  1: 49;
+  '!': 49;
+  2: 50;
+  '@': 50;
+  3: 51;
+  '#': 51;
+  4: 52;
+  $: 52;
+  5: 53;
+  '%': 53;
+  6: 54;
+  '^': 54;
+  7: 55;
+  '&': 55;
+  8: 56;
+  '*': 56;
+  9: 57;
+  '(': 57;
+  a: 65;
+  A: 65;
+  b: 66;
+  B: 66;
+  c: 67;
+  C: 67;
+  d: 68;
+  D: 68;
+  e: 69;
+  E: 69;
+  f: 70;
+  F: 70;
+  g: 71;
+  G: 71;
+  h: 72;
+  H: 72;
+  i: 73;
+  I: 73;
+  j: 74;
+  J: 74;
+  k: 75;
+  K: 75;
+  l: 76;
+  L: 76;
+  m: 77;
+  M: 77;
+  n: 78;
+  N: 78;
+  o: 79;
+  O: 79;
+  p: 80;
+  P: 80;
+  q: 81;
+  Q: 81;
+  r: 82;
+  R: 82;
+  s: 83;
+  S: 83;
+  t: 84;
+  T: 84;
+  u: 85;
+  U: 85;
+  v: 86;
+  V: 86;
+  w: 87;
+  W: 87;
+  x: 88;
+  X: 88;
+  y: 89;
+  Y: 89;
+  z: 90;
+  Z: 90;
+  OS: 91;
+  ContextMenu: 93;
+  F1: 112;
+  F2: 113;
+  F3: 114;
+  F4: 115;
+  F5: 116;
+  F6: 117;
+  F7: 118;
+  F8: 119;
+  F9: 120;
+  F10: 121;
+  F11: 122;
+  F12: 123;
+  F13: 124;
+  F14: 125;
+  F15: 126;
+  F16: 127;
+  F17: 128;
+  F18: 129;
+  F19: 130;
+  F20: 131;
+  F21: 132;
+  F22: 133;
+  F23: 134;
+  F24: 135;
+  NumLock: 144;
+  ScrollLock: 145;
+  VolumeMute: 181;
+  VolumeDown: 182;
+  VolumeUp: 183;
+  ';': 186;
+  ':': 186;
+  '=': 187;
+  '+': 187;
+  ',': 188;
+  '<': 188;
+  '-': 189;
+  _: 189;
+  '.': 190;
+  '>': 190;
+  '/': 191;
+  '?': 191;
+  '`': 192;
+  '~': 192;
+  '[': 219;
+  '{': 219;
+  '\\': 220;
+  '|': 220;
+  ']': 221;
+  '}': 221;
+  "'": 222;
+  '"': 222;
+  Meta: 224;
+  AltGraph: 225;
+  Attn: 246;
+  CrSel: 247;
+  ExSel: 248;
+  EraseEof: 249;
+  Play: 250;
+  ZoomOut: 251;
+
+  /*
+  Spacebar: 32;
+  Digit0: 48;
+  Digit1: 49;
+  Digit2: 50;
+  Digit3: 51;
+  Digit4: 52;
+  Digit5: 53;
+  Digit6: 54;
+  Digit7: 55;
+  Digit8: 56;
+  Digit9: 57;
+  Tilde: 192;
+  GraveAccent: 192;
+  ExclamationPoint: 49;
+  AtSign: 50;
+  PoundSign: 51;
+  PercentSign: 53;
+  Caret: 54;
+  Ampersand: 55;
+  PlusSign: 187;
+  MinusSign: 189;
+  EqualsSign: 187;
+  DivisionSign: 191;
+  MultiplicationSign: 56;
+  Comma: 188;
+  Decimal: 190;
+  Colon: 186;
+  Semicolon: 186;
+  Pipe: 220;
+  BackSlash: 220;
+  QuestionMark: 191;
+  SingleQuote: 222;
+  DoubleQuote: 222;
+  LeftCurlyBrace: 219;
+  RightCurlyBrace: 221;
+  LeftParenthesis: 57;
+  RightParenthesis: 48;
+  LeftAngleBracket: 188;
+  RightAngleBracket: 190;
+  LeftSquareBracket: 219;
+  RightSquareBracket: 221;
+  */
+}
 
 // tslint:disable-next-line:no-any
-const isObject = (val: any) => {
+const isObject = (val: any): val is KeyboardEventLike => {
   return val !== null && !Array.isArray(val) && typeof val === 'object';
 };
 
-const codes: { [key: string]: string | string[] } = {
+const codes: { [code: number]: string | string[] } = {
   // ----------------------------------------
   // By Code
   // ----------------------------------------
@@ -90,32 +301,23 @@ for (let j = 0; j < 26; j += 1) {
   codes[n] = [String.fromCharCode(n + 32), String.fromCharCode(n)];
 }
 
-export type KeyboardEventLikeObject = {
-  which?: number;
-  keyCode?: number;
-  key?: string;
-  shiftKey?: boolean;
-};
-
-const keyboardKey = {
+const keyboardKeyTemp = {
+  /**
+   * Mapping from numeric key code to key name. If the value is an array, the first element is the
+   * primary key name, and the second element is the key name when shift is pressed.
+   */
   codes: codes,
 
   /**
    * Get the `keyCode` or `which` value from a keyboard event or `key` name.
-   * @param {string|object} eventOrKey A keyboard event-like object or `key` name.
-   * @param {string} [eventOrKey.key] If object, it must have one of these keys.
-   * @param {number} [eventOrKey.keyCode] If object, it must have one of these keys.
-   * @param {number} [eventOrKey.which] If object, it must have one of these keys.
-   * @returns {number|undefined}
+   * If an object is provided, the precedence of properties is `keyCode`, `which`, `key`.
+   * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
+   * `key`, `keyCode`, or `which` must be defined.
    */
-  getCode: function getCode(eventOrKey: KeyboardEventLikeObject | string): number | undefined {
+  getCode: function getCode(eventOrKey: KeyboardEventLike | string): number | undefined {
     if (isObject(eventOrKey)) {
-      // tslint:disable-next-line: deprecation
-      return (
-        (eventOrKey as KeyboardEventLikeObject).keyCode ||
-        (eventOrKey as KeyboardEventLikeObject).which ||
-        this[(eventOrKey as KeyboardEventLikeObject).key as string]
-      );
+      // tslint:disable-next-line:deprecation
+      return eventOrKey.keyCode || eventOrKey.which || this[eventOrKey.key as string];
     }
     // tslint:disable-next-line:no-any
     return (this as any)[eventOrKey as string];
@@ -123,16 +325,13 @@ const keyboardKey = {
 
   /**
    * Get the key name from a keyboard event, `keyCode`, or `which` value.
-   * @param {number|object} eventOrCode A keyboard event-like object or key code.
-   * @param {string} [eventOrCode.key] If object with a `key` name, it will be returned.
-   * @param {number} [eventOrCode.keyCode] If object, it must have one of these keys.
-   * @param {number} [eventOrCode.which] If object, it must have one of these keys.
-   * @param {boolean} [eventOrCode.shiftKey] If object, it must have one of these keys.
-   * @returns {string|undefined}
+   * If an object is provided, the precedence of properties is `key`, `keyCode`, `which`.
+   * @param eventOrCode - A keyboard event-like object or key code. If an object, at least one of
+   * `key`, `keyCode`, or `which` must be defined.
    */
-  getKey: (eventOrCode: KeyboardEventLikeObject | number): string | undefined => {
+  getKey: (eventOrCode: KeyboardEventLike | number): string | undefined => {
     const isEvent = isObject(eventOrCode);
-    const event = eventOrCode as KeyboardEventLikeObject;
+    const event = eventOrCode as KeyboardEventLike;
 
     // handle events with a `key` already defined
     if (isEvent && event.key) {
@@ -153,6 +352,8 @@ const keyboardKey = {
     return name;
   }
 };
+
+const keyboardKey = keyboardKeyTemp as typeof keyboardKeyTemp & KeyNames;
 
 // Populate names on keyboardKey.
 for (const code in codes) {
@@ -218,4 +419,5 @@ keyboardKey.RightAngleBracket = keyboardKey['>'];
 keyboardKey.LeftSquareBracket = keyboardKey['['];
 keyboardKey.RightSquareBracket = keyboardKey[']'];
 */
+
 export default keyboardKey;
