@@ -49,7 +49,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
   },
 
   root: ({ props, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, isFromKeyboard, underlined, primary, active } = props;
+    const { isFromKeyboard, underlined, primary, active } = props;
 
     return {
       ...(underlined && {
@@ -63,12 +63,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(isFromKeyboard && {
           color: v.colorActive
         })
-      }),
-      // focus styles
-      ...(isFromKeyboard &&
-        iconOnly && {
-          borderColor: 'transparent'
-        })
+      })
     };
   }
 };

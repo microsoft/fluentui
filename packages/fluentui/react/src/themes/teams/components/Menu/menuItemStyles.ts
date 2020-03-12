@@ -324,7 +324,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ...(isFromKeyboard && {
         ...(iconOnly && {
           borderRadius: '50%',
-          borderColor: v.iconOnlyColorActive,
+          borderColor: v.iconOnlyColorFocus,
           ...getIconFillOrOutlineStyles({ outline: false })
         }),
 

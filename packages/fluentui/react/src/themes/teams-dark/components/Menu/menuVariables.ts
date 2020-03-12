@@ -32,5 +32,6 @@ export default (siteVars: any): Partial<MenuVariables> => ({
 
   verticalBackgroundColor: siteVars.colors.grey[600],
   verticalBackgroundColorFocus: siteVars.colors.grey[550],
-  iconOnlyColorActive: siteVars.colors.brand[400]
+  iconOnlyColorActive: siteVars.colors.brand[400],
+  iconOnlyColorFocus: siteVars.colors.brand[400]
 });
