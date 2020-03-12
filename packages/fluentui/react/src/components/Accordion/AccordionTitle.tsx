@@ -35,7 +35,7 @@ export interface AccordionTitleProps extends UIComponentProps, ContentComponentP
   canBeCollapsed?: boolean;
 
   /** Shorthand for the content wrapper element. */
-  contentWrapperElement?: ShorthandValue<BoxProps>;
+  contentWrapper?: ShorthandValue<BoxProps>;
 
   /** An accordion title can show it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -79,7 +79,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     accordionContentId: PropTypes.string,
     active: PropTypes.bool,
     contentRef: customPropTypes.ref,
-    contentWrapperElement: customPropTypes.wrapperShorthand,
+    contentWrapper: customPropTypes.wrapperShorthand,
     canBeCollapsed: PropTypes.bool,
     disabled: PropTypes.bool,
     index: PropTypes.number,
@@ -92,7 +92,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     as: 'dt',
     contentRef: _.noop,
     indicator: {},
-    wrapper: {}
+    contentWrapper: {}
   };
 
   actionHandlers = {
@@ -125,11 +125,11 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   });
 
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { contentRef, children, content, indicator, contentWrapperElement } = this.props;
+    const { contentRef, children, content, indicator, contentWrapper } = this.props;
 
     const contentElement = (
       <Ref innerRef={contentRef}>
-        {Box.create(contentWrapperElement, {
+        {Box.create(contentWrapper, {
           defaultProps: () => ({
             className: AccordionTitle.slotClassNames.contentWrapper,
             styles: styles.contentWrapper,
