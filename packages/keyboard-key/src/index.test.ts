@@ -5,7 +5,7 @@ import keyboardKey from './index';
 describe('keyboardKey', () => {
   it('has a key/value for every value/key in codes', () => {
     Object.keys(keyboardKey.codes).forEach(code => {
-      const name = keyboardKey.codes[code];
+      const name = keyboardKey.codes[Number(code)];
 
       if (Array.isArray(name)) {
         expect(String((keyboardKey as any)[name[0]])).toEqual(code);

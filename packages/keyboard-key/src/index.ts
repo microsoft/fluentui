@@ -165,8 +165,6 @@ export interface KeyNames {
   EraseEof: 249;
   Play: 250;
   ZoomOut: 251;
-
-  /*
   Spacebar: 32;
   Digit0: 48;
   Digit1: 49;
@@ -208,7 +206,6 @@ export interface KeyNames {
   RightAngleBracket: 190;
   LeftSquareBracket: 219;
   RightSquareBracket: 221;
-  */
 }
 
 // tslint:disable-next-line:no-any
@@ -216,7 +213,7 @@ const isObject = (val: any): val is KeyboardEventLike => {
   return val !== null && !Array.isArray(val) && typeof val === 'object';
 };
 
-const codes: { [code: number]: string | string[] } = {
+const codes: { [code: string]: string | string[] } = {
   // ----------------------------------------
   // By Code
   // ----------------------------------------
@@ -301,7 +298,7 @@ for (let j = 0; j < 26; j += 1) {
   codes[n] = [String.fromCharCode(n + 32), String.fromCharCode(n)];
 }
 
-const keyboardKeyTemp = {
+const keyboardKeyDefinition = {
   /**
    * Mapping from numeric key code to key name. If the value is an array, the first element is the
    * primary key name, and the second element is the key name when shift is pressed.
@@ -314,7 +311,7 @@ const keyboardKeyTemp = {
    * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
    * `key`, `keyCode`, or `which` must be defined.
    */
-  getCode: function getCode(eventOrKey: KeyboardEventLike | string): number | undefined {
+  getCode: function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
     if (isObject(eventOrKey)) {
       // tslint:disable-next-line:deprecation
       return eventOrKey.keyCode || eventOrKey.which || this[eventOrKey.key as string];
@@ -329,7 +326,7 @@ const keyboardKeyTemp = {
    * @param eventOrCode - A keyboard event-like object or key code. If an object, at least one of
    * `key`, `keyCode`, or `which` must be defined.
    */
-  getKey: (eventOrCode: KeyboardEventLike | number): string | undefined => {
+  getKey: (eventOrCode: Partial<KeyboardEventLike> | number): string | undefined => {
     const isEvent = isObject(eventOrCode);
     const event = eventOrCode as KeyboardEventLike;
 
@@ -353,7 +350,7 @@ const keyboardKeyTemp = {
   }
 };
 
-const keyboardKey = keyboardKeyTemp as typeof keyboardKeyTemp & KeyNames;
+const keyboardKey = keyboardKeyDefinition as typeof keyboardKeyDefinition & KeyNames;
 
 // Populate names on keyboardKey.
 for (const code in codes) {
@@ -361,12 +358,12 @@ for (const code in codes) {
     const value = codes[code];
     if (typeof value === 'string') {
       // tslint:disable-next-line:no-any
-      (keyboardKey as any)[value] = code;
+      (keyboardKey as any)[value] = Number(code);
     } else {
       // Array of valid values which map to the same code.
       for (let i = 0; i < value.length; i++) {
         // tslint:disable-next-line:no-any
-        (keyboardKey as any)[value[i]] = code;
+        (keyboardKey as any)[value[i]] = Number(code);
       }
     }
   }
@@ -376,7 +373,6 @@ for (const code in codes) {
 // By Alias
 // ----------------------------------------
 // provide dot-notation accessible keys for all key names
-/*
 keyboardKey.Spacebar = keyboardKey[' '];
 keyboardKey.Digit0 = keyboardKey['0'];
 keyboardKey.Digit1 = keyboardKey['1'];
@@ -418,6 +414,5 @@ keyboardKey.LeftAngleBracket = keyboardKey['<'];
 keyboardKey.RightAngleBracket = keyboardKey['>'];
 keyboardKey.LeftSquareBracket = keyboardKey['['];
 keyboardKey.RightSquareBracket = keyboardKey[']'];
-*/
 
 export default keyboardKey;
