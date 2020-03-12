@@ -29,7 +29,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix referentially unstable props in `TreeItem` @silviuavram ([#12182](https://github.com/OfficeDev/office-ui-fabric-react/pull/12182))
 - Make `onKeyDown` returned by `useAccessibility()` hook referentially stable between component's rerenders @layershifter ([#12185](https://github.com/OfficeDev/office-ui-fabric-react/pull/12185))
 - Fix passing down `variables` in `ToolbarMenuItem` @layershifter ([#12204](https://github.com/OfficeDev/office-ui-fabric-react/pull/12204))
-- Fix `onChange` typings of `Dropdown` to relect that we are passing `null` for event @silviuavram ([#12280](https://github.com/OfficeDev/office-ui-fabric-react/pull/12280))
+- Fix change handler typings of `Dropdown` to relect that we are passing `null` for event @silviuavram ([#12280](https://github.com/OfficeDev/office-ui-fabric-react/pull/12280))
 
 ### Features
 - Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
