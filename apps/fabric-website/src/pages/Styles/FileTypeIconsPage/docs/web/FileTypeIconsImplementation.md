@@ -8,7 +8,7 @@ import { initializeFileTypeIcons } from ‘@uifabric/file-type-icons’;
 initializeFileTypeIcons(/* optional base url */);
 
 // Done in components
-import { Icon } from 'office-ui-fabric-react';
+import { Icon } from '@fluentui/react';
 import { getFileTypeIconProps, FileIconType } from '@uifabric/file-type-icons';
 
 <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'png' }) } />

@@ -22,7 +22,7 @@ Once you've initialized the icons, you can use the Icon component in your app li
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 const MyIcon = () => <Icon iconName="CompassNW" className="ms-IconExample" />;
 
@@ -34,7 +34,7 @@ Some components also include baked-in support for Icon via `iconProps`, which yo
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Add" ariaLabel="Add" />;
 
