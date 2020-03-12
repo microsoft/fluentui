@@ -187,6 +187,10 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
             })
           }),
 
+        ...(underlined && {
+          color: v.activeUnderlinedWrapperColor
+        }),
+
         ...(pointing &&
           vertical && {
             '::before': {

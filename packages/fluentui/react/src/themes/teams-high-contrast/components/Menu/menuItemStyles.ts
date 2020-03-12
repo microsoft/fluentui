@@ -20,7 +20,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       },
 
       ...(p.active && {
-        ...(p.underlined && { color: v.color }),
         ...(!p.underlined && { background: v.backgroundColorActive })
       })
     };
