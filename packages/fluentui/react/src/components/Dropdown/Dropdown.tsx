@@ -179,7 +179,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
    * @param event - React's original SyntheticEvent.
    * @param data - All props and the new selected value(s).
    */
-  onChange?: ComponentEventHandler<DropdownProps>;
+  onChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /** A dropdown's open state can be controlled. */
   open?: boolean;
