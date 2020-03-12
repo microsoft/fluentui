@@ -54,7 +54,7 @@ const getFocusedStyles = ({
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
-  const { primary, underlined, isFromKeyboard, active, vertical } = props;
+  const { primary, underlined, active, vertical } = props;
   if (active && !underlined && !vertical) return {};
   return {
     color: v.colorActive,
@@ -64,7 +64,6 @@ const getFocusedStyles = ({
       color: colors.foregroundFocus
     }),
     ...(vertical &&
-      isFromKeyboard &&
       !primary && {
         border: `solid 1px ${v.borderColorFocus}`,
         outline: `solid 1px ${v.outlineColorFocus}`,
