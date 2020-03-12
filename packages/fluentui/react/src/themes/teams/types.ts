@@ -6,7 +6,7 @@ import { AccordionTitleProps } from '../../components/Accordion/AccordionTitle';
 import { AlertProps } from '../../components/Alert/Alert';
 import { AnimationProps } from '../../components/Animation/Animation';
 import { AttachmentProps } from '../../components/Attachment/Attachment';
-import { AvatarStylesProps } from './components/Avatar/avatarStyles';
+import { AvatarStylesProps } from '../../components/Avatar/Avatar';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
 import { ButtonStylesProps } from './components/Button/buttonStyles';
 import { ChatItemStylesProps } from '../../components/Chat/ChatItem';
