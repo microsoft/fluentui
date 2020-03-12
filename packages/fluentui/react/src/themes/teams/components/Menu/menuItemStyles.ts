@@ -215,11 +215,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ...(isFromKeyboard && {
         color: v.wrapperColorFocus,
 
+        ...(!underlined && { background: v.wrapperBackgroundColorFocus }),
         ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
         ...(iconOnly && {
           color: v.iconOnlyColorActive
-        }),
-        ...(!underlined && { background: v.wrapperBackgroundColorFocus })
+        })
       }),
 
       ...(iconOnly && {
