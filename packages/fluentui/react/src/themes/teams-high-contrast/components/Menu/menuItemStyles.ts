@@ -1,7 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { MenuVariables } from '../../../teams/components/Menu/menuVariables';
 import { default as MenuItem, MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
-import { underlinedItem } from '../../../teams/components/Menu/menuItemStyles';
 import submenuIndicatorUrl from '../../../teams/components/Menu/submenuIndicatorUrl';
 
 type MenuItemPropsAndState = MenuItemProps & MenuItemState;
