@@ -38,6 +38,7 @@ describe('initializeFocusRects', () => {
 
   beforeEach(() => {
     classNames = [];
+    // tslint:disable-next-line:deprecation
     initializeFocusRects(mockWindow as Window);
   });
 

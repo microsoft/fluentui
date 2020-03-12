@@ -84,7 +84,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         {!hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
         {isCalloutVisible ? (
           <Callout
-            gapSpace={5}
+            gapSpace={10}
             isBeakVisible={false}
             target={this.state.refSelected}
             setInitialFocus={true}
