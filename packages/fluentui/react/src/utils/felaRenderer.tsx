@@ -11,7 +11,8 @@ import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
 import { RULE_TYPE } from 'fela-utils';
-import * as Stylis from 'stylis';
+// @ts-ignore
+import Stylis from 'stylis';
 
 let felaDevMode = false;
 
