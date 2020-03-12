@@ -307,17 +307,15 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...getIconFillOrOutlineStyles({ outline: false })
         }),
 
-        ...(primary
-          ? {
-              ...(underlined && {
-                color: colors.borderActive,
-                ...underlinedItem(v.borderColorActive || colors.borderActive)
-              })
-            }
-          : underlined && {
-              fontWeight: 700,
-              ...underlinedItem(v.colorActive)
-            })
+        ...(underlined && {
+          ...underlinedItem(v.colorActive),
+
+          ...(primary && {
+            color: colors.borderActive,
+            ...underlinedItem(v.borderColorActive || colors.borderActive)
+          }),
+          ...(!primary && { fontWeight: 700 })
+        })
       }),
 
       // focus styles
