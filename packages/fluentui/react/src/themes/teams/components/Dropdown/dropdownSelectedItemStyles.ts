@@ -1,4 +1,4 @@
-import { DropdownSelectedItemProps } from '../../../../components/Dropdown/DropdownSelectedItem';
+import { default as DropDownSelectedItem, DropdownSelectedItemProps } from '../../../../components/Dropdown/DropdownSelectedItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
@@ -20,7 +20,10 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     }),
     ':hover': {
       color: v.selectedItemColorHover,
-      backgroundColor: v.selectedItemBackgroundColorHover
+      backgroundColor: v.selectedItemBackgroundColorHover,
+      [`& .${DropDownSelectedItem.slotClassNames.icon}`]: {
+        color: v.selectedItemIconColorHover
+      }
     },
     ':focus-visible': {
       '::before': {

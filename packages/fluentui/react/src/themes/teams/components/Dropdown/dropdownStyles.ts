@@ -116,7 +116,6 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     return {
       overflow: 'hidden',
       boxShadow: 'none',
-
       ...transparentColorStyleObj,
       margin: '0',
       justifyContent: 'left',
