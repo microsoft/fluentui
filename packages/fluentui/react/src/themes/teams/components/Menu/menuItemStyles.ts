@@ -356,22 +356,19 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ':hover': {
         color: 'inherit',
 
-        ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
-
-        ...(primary
-          ? {
-              ...(iconOnly && { color: 'inherit' }),
-              ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive))
-            }
-          : !active && underlined && underlinedItem(v.backgroundColorActive || colors.backgroundActive))
+        ...(!disabled && {
+          ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
+          ...(primary
+            ? {
+                ...(iconOnly && { color: 'inherit' }),
+                ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive))
+              }
+            : !active && underlined && underlinedItem(v.backgroundColorActive || colors.backgroundActive))
+        })
       },
 
       ...(disabled && {
-        cursor: 'default',
-        ':hover': {
-          // reset all existing hover styles
-          color: 'inherit'
-        }
+        cursor: 'default'
       })
     };
   },
