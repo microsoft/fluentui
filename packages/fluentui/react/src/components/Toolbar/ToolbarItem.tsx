@@ -188,7 +188,6 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
     if (menu) {
       if (doesNodeContainClick(menuRef.current, e.nativeEvent as MouseEvent, context.target)) {
         trySetMenuOpen(false, e);
-        _.invoke(itemRef.current, 'focus');
       }
     }
   };
@@ -227,9 +226,6 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       }
       // TODO: should we pass toolbarMenuItem to the user callback so he can decide if he wants to close the menu?
       trySetMenuOpen(menuOpen, e);
-      if (!menuOpen) {
-        _.invoke(itemRef.current, 'focus');
-      }
     }
   });
 
