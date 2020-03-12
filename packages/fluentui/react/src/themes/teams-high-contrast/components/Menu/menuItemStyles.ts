@@ -46,12 +46,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
     const { underlined, primary, active } = props;
 
     return {
-      ...(underlined && {
-        ...(active && {
+      ...(underlined &&
+        active && {
           color: v.color,
           ...(!primary && underlinedItem(v.color))
         })
-      })
     };
   }
 };
