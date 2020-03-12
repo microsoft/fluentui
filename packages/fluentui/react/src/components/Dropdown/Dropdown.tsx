@@ -151,28 +151,28 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
    * @param event - React's original SyntheticEvent.
    * @param data - All props and the new selected value(s).
    */
-  onActiveSelectedIndexChange?: ComponentEventHandler<DropdownProps>;
+  onActiveSelectedIndexChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown's highlighted index change.
    * @param event - React's original SyntheticEvent.
    * @param data - All props and the new selected value(s).
    */
-  onHighlightedIndexChange?: ComponentEventHandler<DropdownProps>;
+  onHighlightedIndexChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown opens or closes.
    * @param event - React's original SyntheticEvent.
    * @param data - All props, with `open` reflecting the new open state.
    */
-  onOpenChange?: ComponentEventHandler<DropdownProps>;
+  onOpenChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown's search query changes.
    * @param event - React's original SyntheticEvent.
    * @param data - All props, with `searchQuery` reflecting its new value.
    */
-  onSearchQueryChange?: ComponentEventHandler<DropdownProps>;
+  onSearchQueryChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown's selected item(s) change.
