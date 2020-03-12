@@ -30,14 +30,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         color: v.colorActive,
 
         ...(!p.underlined && { background: v.backgroundColorFocus })
-      }),
-
-      ...(p.pointing &&
-        p.vertical && {
-          '::before': {
-            display: 'none'
-          }
-        })
+      })
     };
   }
 };

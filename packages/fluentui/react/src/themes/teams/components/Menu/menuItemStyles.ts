@@ -199,8 +199,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...getActionStyles({ props, variables: v, colors }),
 
         ...(pointing &&
-          vertical &&
-          !isFromKeyboard && {
+          vertical && {
             '::before': {
               content: `''`,
               position: 'absolute',
@@ -208,6 +207,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
               height: `calc(100% + ${pxToRem(4)})`,
               top: pxToRem(-2),
               backgroundColor: v.pointingIndicatorBackgroundColor,
+
+              ...(isFromKeyboard && { display: 'none' }),
               ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) })
             }
           }),
