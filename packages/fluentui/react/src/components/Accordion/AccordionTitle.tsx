@@ -4,7 +4,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import cx from 'classnames';
 
 import {
   childrenExist,
@@ -35,6 +34,9 @@ export interface AccordionTitleProps extends UIComponentProps, ContentComponentP
   /** If at least one panel needs to stay active and this title does not correspond to the last active one. */
   canBeCollapsed?: boolean;
 
+  /** Shorthand for the content wrapper element. */
+  contentWrapperElement?: ShorthandValue<BoxProps>;
+
   /** An accordion title can show it is currently unable to be interacted with. */
   disabled?: boolean;
 
@@ -61,9 +63,6 @@ export interface AccordionTitleProps extends UIComponentProps, ContentComponentP
 
   /** Shorthand for the active indicator. */
   indicator?: ShorthandValue<BoxProps>;
-
-  /** Shorthand for the wrapper component. */
-  wrapper?: ShorthandValue<BoxProps>;
 }
 
 class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
@@ -80,12 +79,12 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     accordionContentId: PropTypes.string,
     active: PropTypes.bool,
     contentRef: customPropTypes.ref,
+    contentWrapperElement: customPropTypes.wrapperShorthand,
     canBeCollapsed: PropTypes.bool,
     disabled: PropTypes.bool,
     index: PropTypes.number,
     onClick: PropTypes.func,
-    indicator: customPropTypes.shorthandAllowingChildren,
-    wrapper: customPropTypes.wrapperShorthand
+    indicator: customPropTypes.shorthandAllowingChildren
   };
 
   static defaultProps = {
@@ -114,27 +113,30 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     _.invoke(this.props, 'onFocus', e, this.props);
   };
 
-  handleWrapperOverrides = () => ({
-    onFocus: (e: React.SyntheticEvent) => {
+  handleWrapperOverrides = predefinedProps => ({
+    onFocus: (e: React.FocusEvent) => {
       this.handleFocus(e);
+      _.invoke(predefinedProps, 'onFocus', e, this.props);
     },
-    onClick: (e: React.SyntheticEvent) => {
+    onClick: (e: React.MouseEvent) => {
       this.handleClick(e);
+      _.invoke(predefinedProps, 'onClick', e, this.props);
     }
   });
 
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { contentRef, children, content, indicator, wrapper } = this.props;
+    const { contentRef, children, content, indicator, contentWrapperElement } = this.props;
 
     const contentElement = (
       <Ref innerRef={contentRef}>
-        {Box.create(wrapper, {
+        {Box.create(contentWrapperElement, {
           defaultProps: () => ({
-            className: cx(AccordionTitle.slotClassNames.contentWrapper, classes.contentWrapper),
+            className: AccordionTitle.slotClassNames.contentWrapper,
+            styles: styles.contentWrapper,
             ...accessibility.attributes.content,
             ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)
           }),
-          overrideProps: () => ({
+          overrideProps: predefinedProps => ({
             children: (
               <>
                 {Box.create(indicator, {
@@ -151,7 +153,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
                 })}
               </>
             ),
-            ...this.handleWrapperOverrides()
+            ...this.handleWrapperOverrides(predefinedProps)
           })
         })}
       </Ref>
