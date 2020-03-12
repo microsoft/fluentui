@@ -1,4 +1,7 @@
+import { pxToRem } from '../../../../utils';
+
 export interface AvatarVariables {
+  avatarBorderRadius: string;
   avatarBorderColor: string;
   avatarBorderWidth: string;
   statusBorderColor: string;
@@ -6,6 +9,7 @@ export interface AvatarVariables {
 }
 
 export default (siteVariables): AvatarVariables => ({
+  avatarBorderRadius: pxToRem(4),
   avatarBorderColor: '',
   avatarBorderWidth: '0',
   statusBorderColor: siteVariables.bodyBackground,
