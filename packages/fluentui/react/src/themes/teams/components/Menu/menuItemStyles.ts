@@ -173,7 +173,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // active styles
       ...(active && {
-        color: v.color,
+        color: v.wrapperColorActive,
 
         ...(!underlined &&
           !iconOnly && {
