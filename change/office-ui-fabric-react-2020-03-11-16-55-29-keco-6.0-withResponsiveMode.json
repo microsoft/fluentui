@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "withResponsiveMode: Add initializeResponsiveMode perf optimization to avoid unnecessary render",
+  "packageName": "office-ui-fabric-react",
+  "email": "KevinTCoughlin@users.noreply.github.com",
+  "commit": "e3c270fdb5a20549d0868c82df9d442c998f71db",
+  "date": "2020-03-11T23:55:29.258Z"
+}
