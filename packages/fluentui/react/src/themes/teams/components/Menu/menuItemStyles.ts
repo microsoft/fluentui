@@ -57,16 +57,20 @@ const getFocusedStyles = ({
   const { primary, underlined, isFromKeyboard, active, vertical } = props;
   if (active && !underlined && !vertical) return {};
   return {
-    color: primary ? colors.foregroundFocus : v.colorActive,
+    color: v.colorActive,
     background: v.backgroundColorFocus || colors.backgroundFocus,
-    ...(vertical && isFromKeyboard && !primary
-      ? {
-          border: `solid 1px ${v.borderColorFocus}`,
-          outline: `solid 1px ${v.outlineColorFocus}`,
-          margin: pxToRem(1),
-          background: v.verticalBackgroundColorFocus || colors.backgroundFocus
-        }
-      : {})
+
+    ...(primary && {
+      color: colors.foregroundFocus
+    }),
+    ...(vertical &&
+      isFromKeyboard &&
+      !primary && {
+        border: `solid 1px ${v.borderColorFocus}`,
+        outline: `solid 1px ${v.outlineColorFocus}`,
+        margin: pxToRem(1),
+        background: v.verticalBackgroundColorFocus || colors.backgroundFocus
+      })
   };
 };
 
