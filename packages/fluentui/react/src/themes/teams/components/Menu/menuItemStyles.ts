@@ -214,6 +214,10 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           background: v.backgroundColorHover || colors.backgroundHover
         }),
 
+        ...(primary && {
+          color: v.primaryWrapperColorHover
+        }),
+
         ...(underlined && {
           color: v.underlinedWrapperColorHover,
           background: v.underlinedWrapperBackgroundHover
@@ -225,7 +229,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         }),
 
         [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical)
+          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
+
+          ...(primary && {
+            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover, vertical)
+          })
         }
       },
 

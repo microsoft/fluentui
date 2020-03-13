@@ -81,11 +81,13 @@ export interface MenuVariables {
   wrapperColorActive: string;
   wrapperColorFocus: string;
   wrapperColorHover: string;
+  primaryWrapperColorHover: string;
   wrapperBackgroundColorFocus: string;
 
   activeIndicatorColor: string;
   activePrimaryIndicatorColor: string;
   indicatorColor: string;
+  primaryIndicatorColorHover: string;
   indicatorColorHover: string;
 }
 
@@ -174,6 +176,7 @@ export default (siteVars: any): MenuVariables => {
     wrapperColorActive: siteVars.colors.grey[500],
     wrapperColorFocus: siteVars.colors.grey[500],
     wrapperColorHover: undefined,
+    primaryWrapperColorHover: siteVars.colors.white,
     wrapperBackgroundColorFocus: siteVars.colors.grey[150],
 
     activeWrapperBackgroundColorHover: undefined,
@@ -181,6 +184,7 @@ export default (siteVars: any): MenuVariables => {
     indicatorColor: siteVars.colors.grey[500],
     activeIndicatorColor: siteVars.colors.grey[750],
     activePrimaryIndicatorColor: siteVars.colors.grey[750],
+    primaryIndicatorColorHover: siteVars.colors.white,
     indicatorColorHover: siteVars.colors.grey[500]
   };
 };
