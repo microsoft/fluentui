@@ -108,12 +108,14 @@ export class BaseAutoFill extends Autofill {
 }
 
 // @public (undocumented)
-export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
-    constructor(props: IBaseButtonProps, rootClassName: string);
+export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonState> implements IButton {
+    constructor(props: IBaseButtonProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
@@ -131,7 +133,7 @@ export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends React.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected canAddItems(): boolean;
@@ -269,7 +271,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -484,7 +486,7 @@ export enum ButtonType {
 }
 
 // @public (undocumented)
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
+export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
     constructor(props: ICalendarProps);
     // (undocumented)
     componentDidUpdate(): void;
@@ -569,12 +571,14 @@ export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
     constructor(props: ICoachmarkProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Partial<ICoachmarkProps>;
     // (undocumented)
@@ -637,7 +641,7 @@ export enum ColumnDragEndLocation {
 }
 
 // @public (undocumented)
-export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
+export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     constructor(props: IComboBoxProps);
     // (undocumented)
     componentDidMount(): void;
@@ -663,7 +667,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 export const CommandBar: React.FunctionComponent<ICommandBarProps>;
 
 // @public (undocumented)
-export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
+export class CommandBarBase extends React.Component<ICommandBarProps, {}> implements ICommandBar {
+    constructor(props: ICommandBarProps);
     // (undocumented)
     static defaultProps: ICommandBarProps;
     // (undocumented)
@@ -711,7 +716,7 @@ export enum ConstrainMode {
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
+export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
     constructor(props: IContextualMenuProps);
     // (undocumented)
     componentDidMount(): void;
@@ -735,7 +740,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
 
 // @public (undocumented)
-export class ContextualMenuItemBase extends BaseComponent<IContextualMenuItemProps, {}> {
+export class ContextualMenuItemBase extends React.Component<IContextualMenuItemProps, {}> {
+    constructor(props: IContextualMenuItemProps);
     // (undocumented)
     dismissMenu: (dismissAll?: boolean | undefined) => void;
     // (undocumented)
@@ -782,7 +788,7 @@ export function cssColor(color?: string): IRGB | undefined;
 export const DatePicker: React.FunctionComponent<IDatePickerProps>;
 
 // @public (undocumented)
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
     constructor(props: IDatePickerProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
@@ -982,7 +988,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 export const DialogContent: React.FunctionComponent<IDialogContentProps>;
 
 // @public (undocumented)
-export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
+export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
     constructor(props: IDialogContentProps);
     // (undocumented)
     static defaultProps: IDialogContentProps;
@@ -994,7 +1000,8 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
 export const DialogFooter: React.FunctionComponent<IDialogFooterProps>;
 
 // @public (undocumented)
-export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
+export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
+    constructor(props: IDialogFooterProps);
     // (undocumented)
     render(): JSX.Element;
     }
@@ -1098,7 +1105,7 @@ export enum ElementType {
 export const ExpandingCard: React.FunctionComponent<IExpandingCardProps>;
 
 // @public (undocumented)
-export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExpandingCardState> {
     constructor(props: IExpandingCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1198,7 +1205,7 @@ export enum FabricSlots {
 export const Facepile: React.FunctionComponent<IFacepileProps>;
 
 // @public
-export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
+export class FacepileBase extends React.Component<IFacepileProps, {}> {
     constructor(props: IFacepileProps);
     // (undocumented)
     static defaultProps: IFacepileProps;
@@ -7982,7 +7989,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
 
 // @public
-export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
+export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipLayerState> {
     constructor(props: IKeytipLayerProps, context: any);
     // (undocumented)
     componentDidMount(): void;
@@ -8048,7 +8055,8 @@ export class LayerHost extends React.Component<ILayerHostProps> {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
+export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
+    constructor(props: ILinkProps);
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -8172,7 +8180,7 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
+export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
     constructor(props: IMessageBarProps);
     // (undocumented)
     static defaultProps: IMessageBarProps;
@@ -8181,7 +8189,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     }
 
 // @public (undocumented)
-export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
+export class MessageBarButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
@@ -8208,12 +8216,14 @@ export const MIN_RGBA_LENGTH = 1;
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
-export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
+export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IModalProps;
     // (undocumented)
@@ -8278,7 +8288,7 @@ export enum OverflowButtonType {
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
     constructor(props: IOverflowSetProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8298,7 +8308,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 export const Overlay: React.FunctionComponent<IOverlayProps>;
 
 // @public (undocumented)
-export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+export class OverlayBase extends React.Component<IOverlayProps, {}> {
     constructor(props: IOverlayProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8525,7 +8535,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     }
 
 // @public (undocumented)
-export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
     constructor(props: IPivotItemProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8547,7 +8557,8 @@ export enum PivotLinkSize {
 export const PlainCard: React.FunctionComponent<IPlainCardProps>;
 
 // @public (undocumented)
-export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
+export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
+    constructor(props: IPlainCardProps);
     // (undocumented)
     render(): JSX.Element;
 }
@@ -8572,12 +8583,14 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
 
 // @public (undocumented)
-export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
+export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
     constructor(props: IPositioningContainerProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IPositioningContainerProps;
     // @deprecated
@@ -8655,12 +8668,14 @@ export enum RatingSize {
 export const ResizeGroup: typeof ResizeGroupBase;
 
 // @public (undocumented)
-export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
     constructor(props: IResizeGroupProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     remeasure(): void;
     // (undocumented)
@@ -8832,12 +8847,14 @@ export { SelectionDirection }
 export { SelectionMode }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
+export class SelectionZone extends React.Component<ISelectionZoneProps, ISelectionZoneState> {
     constructor(props: ISelectionZoneProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(previousProps: ISelectionZoneProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
@@ -9328,6 +9345,7 @@ export const TagPicker: React.FunctionComponent<ITagPickerProps>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
+    constructor(props: ITagPickerProps);
     // (undocumented)
     static defaultProps: {
         onRenderItem: (props: ITagItemProps) => JSX.Element;
@@ -9454,7 +9472,7 @@ export function themeRulesStandardCreator(): IThemeRules;
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
+export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
     constructor(props: IToggleProps);
     readonly checked: boolean;
     // (undocumented)
@@ -9533,7 +9551,7 @@ export enum ValidationState {
 export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
-export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
+export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)
