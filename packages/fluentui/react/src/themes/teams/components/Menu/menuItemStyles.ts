@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import { default as MenuItem, MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
@@ -44,32 +44,6 @@ const getFocusedStyles = ({
         margin: pxToRem(1),
         background: v.verticalBackgroundColorFocus || colors.backgroundFocus
       })
-  };
-};
-
-const getHoverStyles = ({
-  props,
-  variables: v,
-  colors
-}: {
-  props: MenuItemPropsAndState;
-  variables: MenuVariables;
-  colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
-}): ICSSInJSStyle => {
-  const { underlined, active, vertical } = props;
-  if (active && !underlined && !vertical) return {};
-  return {
-    ...(underlined
-      ? {
-          color: v.colorActive
-        }
-      : {
-          color: colors.foregroundHover,
-          background: v.backgroundColorHover || colors.backgroundHover,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(colors.foregroundHover, vertical)
-          }
-        })
   };
 };
 
@@ -229,8 +203,22 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       // hover styles
       ':hover': {
         color: v.wrapperColorHover,
+        background: v.backgroundColorHover || colors.backgroundHover,
 
-        ...getHoverStyles({ props, variables: v, colors }),
+        ...(active && {
+          background: v.activeWrapperBackgroundColorHover
+        }),
+
+        ...(vertical && {
+          color: v.wrapperColorHover,
+          background: v.backgroundColorHover || colors.backgroundHover
+        }),
+
+        ...(underlined && {
+          color: v.underlinedWrapperColorHover,
+          background: v.underlinedWrapperBackgroundHover
+        }),
+
         ...(iconOnly && {
           background: v.iconOnlyBackgroundColorHover,
           color: v.iconOnlyColorHover

@@ -62,8 +62,12 @@ export interface MenuVariables {
 
   pointingIndicatorBackgroundColor: string;
 
+  activeWrapperBackgroundColorHover: string;
+
   underlinedBottomBorderWidth: string;
   underlinedColorHover: string;
+  underlinedWrapperColorHover: string;
+  underlinedWrapperBackgroundHover: string;
   primaryBorderColor: string;
   primaryWrapperColorFocus: string;
   primaryWrapperBackgroundColorFocus: string;
@@ -156,6 +160,9 @@ export default (siteVars: any): MenuVariables => {
     primaryWrapperColorFocus: siteVars.colors.white,
     primaryWrapperBackgroundColorFocus: siteVars.colors.brand[500],
 
+    underlinedWrapperColorHover: siteVars.colors.black,
+    underlinedWrapperBackgroundHover: 'transparent',
+
     dividerHeight: pxToRem(1),
     borderWidth: pxToRem(1),
     menuZIndex: siteVars.zIndexes.overlay,
@@ -165,6 +172,8 @@ export default (siteVars: any): MenuVariables => {
     wrapperColorFocus: siteVars.colors.grey[500],
     wrapperColorHover: undefined,
     wrapperBackgroundColorFocus: siteVars.colors.grey[150],
+
+    activeWrapperBackgroundColorHover: undefined,
 
     indicatorColor: siteVars.colors.grey[500]
   };
