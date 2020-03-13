@@ -220,18 +220,16 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         })
       }),
 
-      ...(iconOnly && {
-        display: 'flex',
-
-        // hover styles
-        ':hover': {
+      // hover styles
+      ':hover': {
+        ...getHoverStyles({ props, variables: v, colors }),
+        ...(iconOnly && {
           color: v.iconOnlyColorActive
-        }
-      }),
+        })
+      },
 
-      ...(!iconOnly && {
-        // hover styles
-        ':hover': getHoverStyles({ props, variables: v, colors })
+      ...(iconOnly && {
+        display: 'flex'
       }),
 
       ':first-child': {
