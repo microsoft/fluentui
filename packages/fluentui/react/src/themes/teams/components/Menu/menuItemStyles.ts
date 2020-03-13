@@ -270,7 +270,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { active, iconOnly, isFromKeyboard, pointing, primary, underlined, vertical, disabled } = p;
-
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
@@ -314,7 +313,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...underlinedItem(v.activeUnderlinedBorderBottomColor),
 
           ...(primary && {
-            color: colors.borderActive,
+            color: v.activeUnderlinedPrimaryColor,
             ...underlinedItem(v.borderColorActive || colors.borderActive)
           }),
           ...(!primary && { fontWeight: 700 })

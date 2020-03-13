@@ -47,6 +47,7 @@ export interface MenuVariables {
   horizontalPadding: string;
 
   activeUnderlinedColor: string;
+  activeUnderlinedPrimaryColor: string;
   activeUnderlinedBorderBottomColor: string;
   activeUnderlinedWrapperColor: string;
   activeIconOnlyWrapperBackgroundColor: string;
@@ -154,6 +155,7 @@ export default (siteVars: any): MenuVariables => {
     verticalBackgroundColorFocus: siteVars.colors.grey[150],
 
     activeUnderlinedColor: undefined,
+    activeUnderlinedPrimaryColor: siteVars.colors.brand[600],
     activeUnderlinedBorderBottomColor: siteVars.colors.black,
     activeUnderlinedWrapperColor: undefined,
 

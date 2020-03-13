@@ -31,6 +31,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   pointingIndicatorBackgroundColor: siteVars.colors.brand[400],
 
   activeUnderlinedBorderBottomColor: siteVars.colors.white,
+  activeUnderlinedPrimaryColor: siteVars.colors.brand[400],
 
   verticalBackgroundColor: siteVars.colors.grey[600],
   verticalBackgroundColorFocus: siteVars.colors.grey[550],
