@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, css, warnDeprecations, initializeComponentRef, FocusRects } from '../../Utilities';
+import { classNamesFunction, css, warnDeprecations, initializeComponentRef } from '../../Utilities';
 import { DialogType, IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } from './DialogContent.types';
 import { IconButton } from '../../Button';
 import { DialogFooter } from './DialogFooter';
@@ -92,7 +92,6 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
           </div>
           {groupings.footers}
         </div>
-        <FocusRects />
       </div>
     );
   }

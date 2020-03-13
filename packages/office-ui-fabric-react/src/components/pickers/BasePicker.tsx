@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {
-  Async,
-  KeyCodes,
-  css,
-  elementContains,
-  getId,
-  classNamesFunction,
-  styled,
-  initializeComponentRef,
-  FocusRects
-} from '../../Utilities';
+import { Async, KeyCodes, css, elementContains, getId, classNamesFunction, styled, initializeComponentRef } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -305,7 +295,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           </SelectionZone>
         </FocusZone>
         {this.renderSuggestions()}
-        <FocusRects />
       </div>
     );
   }

@@ -33,8 +33,7 @@ import {
   IStyleFunctionOrObject,
   isIOS,
   isMac,
-  initializeComponentRef,
-  FocusRects
+  initializeComponentRef
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -370,7 +369,6 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
             ) : null}
             {submenuProps && onRenderSubMenu(submenuProps, this._onRenderSubMenu)}
           </div>
-          <FocusRects />
         </Callout>
       );
     } else {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
-import { initializeComponentRef, css, KeyCodes, FocusRects } from '../../Utilities';
+import { initializeComponentRef, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
@@ -178,7 +178,6 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           shouldLoopSelection={false}
           {...this.props.pickerSuggestionsProps}
         />
-        <FocusRects />
       </Callout>
     ) : null;
   }

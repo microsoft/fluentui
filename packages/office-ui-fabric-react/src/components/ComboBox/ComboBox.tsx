@@ -17,8 +17,7 @@ import {
   mergeAriaAttributeValues,
   warnMutuallyExclusive,
   Async,
-  EventGroup,
-  FocusRects
+  EventGroup
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -474,7 +473,6 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         >
           {errorMessage !== undefined ? errorMessage : ''}
         </div>
-        <FocusRects />
       </div>
     );
   }

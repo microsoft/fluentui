@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  getId,
-  toMatrix,
-  classNamesFunction,
-  getNativeProps,
-  htmlElementProperties,
-  initializeComponentRef,
-  FocusRects
-} from '../../Utilities';
+import { getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties, initializeComponentRef } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 
@@ -70,7 +62,6 @@ export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
             })}
           </tbody>
         </table>
-        <FocusRects />
       </>
     );
 

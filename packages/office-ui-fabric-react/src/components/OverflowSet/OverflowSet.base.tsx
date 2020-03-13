@@ -9,8 +9,7 @@ import {
   elementContains,
   focusFirstChild,
   getNativeProps,
-  warnMutuallyExclusive,
-  FocusRects
+  warnMutuallyExclusive
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
@@ -82,7 +81,6 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
         {overflowSide === 'start' && showOverflow && this._onRenderOverflowButtonWrapper(overflowItems!)}
         {items && this._onRenderItems(items)}
         {overflowSide === 'end' && showOverflow && this._onRenderOverflowButtonWrapper(overflowItems!)}
-        <FocusRects />
       </Tag>
     );
   }
