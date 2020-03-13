@@ -217,6 +217,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(!underlined && { background: v.wrapperBackgroundColorFocus }),
         ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
         ...(iconOnly && {
+          background: v.iconOnlyWrapperBackgroundColorFocus,
           color: v.iconOnlyColorActive
         })
       }),
