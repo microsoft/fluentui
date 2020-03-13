@@ -41,6 +41,7 @@ export interface IBaseButtonState {
 }
 
 const TouchIdleDelay = 500; /* ms */
+const COMPONENT_NAME = 'BaseButton';
 
 /**
  * {@docCategory Button}
@@ -86,9 +87,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     this._async = new Async(this);
     this._events = new EventGroup(this);
 
-    warnConditionallyRequiredProps(this.constructor.name, props, ['menuProps', 'onClick'], 'split', this.props.split!);
+    warnConditionallyRequiredProps(COMPONENT_NAME, props, ['menuProps', 'onClick'], 'split', this.props.split!);
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       rootProps: undefined,
       description: 'secondaryText',
       toggled: 'checked'

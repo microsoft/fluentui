@@ -23,6 +23,7 @@ import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
+const COMPONENT_NAME = 'Panel';
 
 enum PanelVisibilityState {
   closed,
@@ -85,7 +86,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this._events = new EventGroup(this);
     initializeComponentRef(this);
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       ignoreExternalFocusing: 'focusTrapZoneProps',
       forceFocusInsideTrap: 'focusTrapZoneProps',
       firstFocusableSelector: 'focusTrapZoneProps'

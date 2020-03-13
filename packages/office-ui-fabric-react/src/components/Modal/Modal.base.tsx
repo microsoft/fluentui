@@ -42,6 +42,7 @@ export interface IDialogState {
 }
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
+const COMPONENT_NAME = 'Modal';
 
 @withResponsiveMode
 export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
@@ -70,7 +71,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     this._events = new EventGroup(this);
     initializeComponentRef(this);
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       onLayerDidMount: 'layerProps.onLayerDidMount'
     });
 

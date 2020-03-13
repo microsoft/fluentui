@@ -2,12 +2,14 @@ import * as React from 'react';
 import { getNativeProps, divProperties, initializeComponentRef, warnDeprecations } from '../../Utilities';
 import { IPivotItemProps } from './PivotItem.types';
 
+const COMPONENT_NAME = 'PivotItem';
+
 export class PivotItem extends React.Component<IPivotItemProps, {}> {
   constructor(props: IPivotItemProps) {
     super(props);
 
     initializeComponentRef(this);
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       linkText: 'headerText'
     });
   }

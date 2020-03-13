@@ -21,6 +21,7 @@ export interface ISliderState {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
+const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
 export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
@@ -49,7 +50,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     this._events = new EventGroup(this);
     initializeComponentRef(this);
 
-    warnMutuallyExclusive(this.constructor.name, this.props, {
+    warnMutuallyExclusive(COMPONENT_NAME, this.props, {
       value: 'defaultValue'
     });
 

@@ -113,6 +113,8 @@ export interface ICoachmarkState {
   alertText?: string;
 }
 
+const COMPONENT_NAME = 'Coachmark';
+
 export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
   public static defaultProps: Partial<ICoachmarkProps> = {
     isCollapsed: true,
@@ -152,7 +154,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     this._events = new EventGroup(this);
     initializeComponentRef(this);
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       teachingBubbleRef: undefined,
       collapsed: 'isCollapsed',
       beakWidth: undefined,

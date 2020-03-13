@@ -16,6 +16,7 @@ import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
+const COMPONENT_NAME = 'OverflowSet';
 
 export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
   private _focusZone = React.createRef<IFocusZone>();
@@ -28,7 +29,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
     super(props);
 
     initializeComponentRef(this);
-    warnMutuallyExclusive(this.constructor.name, props, {
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
       doNotContainWithinFocusZone: 'focusZoneProps'
     });
   }

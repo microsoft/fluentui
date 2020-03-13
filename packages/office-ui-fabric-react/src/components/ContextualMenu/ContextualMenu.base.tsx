@@ -89,6 +89,8 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
 
 const NavigationIdleDelay = 250 /* ms */;
 
+const COMPONENT_NAME = 'ContextualMenu';
+
 @withResponsiveMode
 export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
@@ -129,7 +131,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     this._events = new EventGroup(this);
     initializeComponentRef(this);
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       getMenuClassNames: 'styles'
     });
 

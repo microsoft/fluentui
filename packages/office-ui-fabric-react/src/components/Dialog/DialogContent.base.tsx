@@ -10,6 +10,8 @@ const getClassNames = classNamesFunction<IDialogContentStyleProps, IDialogConten
 
 const DialogFooterType = ((<DialogFooter />) as React.ReactElement<IDialogFooterProps>).type;
 
+const COMPONENT_NAME = 'DialogContent';
+
 @withResponsiveMode
 export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
   public static defaultProps: IDialogContentProps = {
@@ -23,7 +25,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
     super(props);
 
     initializeComponentRef(this);
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       titleId: 'titleProps.id'
     });
   }

@@ -5,6 +5,8 @@ import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyle
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
+const COMPONENT_NAME = 'DocumentCard';
+
 /**
  * {@docCategory DocumentCard}
  */
@@ -20,7 +22,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
     super(props);
 
     initializeComponentRef(this);
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       accentColor: undefined
     });
   }

@@ -18,6 +18,7 @@ export interface IToggleState {
 }
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
+const COMPONENT_NAME = 'Toggle';
 
 export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
@@ -40,11 +41,11 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
     super(props);
 
     initializeComponentRef(this);
-    warnMutuallyExclusive(this.constructor.name, props, {
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
       checked: 'defaultChecked'
     });
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       onAriaLabel: 'ariaLabel',
       offAriaLabel: undefined,
       onChanged: 'onChange'

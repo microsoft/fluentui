@@ -117,6 +117,8 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
   }
 }
 
+const COMPONENT_NAME = 'ComboBox';
+
 @customizable('ComboBox', ['theme', 'styles'], true)
 export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
@@ -185,7 +187,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     this._async = new Async(this);
     this._events = new EventGroup(this);
 
-    warnMutuallyExclusive(this.constructor.name, props, {
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
       defaultSelectedKey: 'selectedKey',
       text: 'defaultSelectedKey',
       selectedKey: 'value',

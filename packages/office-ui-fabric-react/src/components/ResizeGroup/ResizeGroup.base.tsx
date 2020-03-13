@@ -300,6 +300,7 @@ export const MeasuredContext = React.createContext({ isMeasured: false });
 // Styles for the hidden div used for measurement
 const hiddenDivStyles: React.CSSProperties = { position: 'fixed', visibility: 'hidden' };
 const hiddenParentStyles: React.CSSProperties = { position: 'relative' };
+const COMPONENT_NAME = 'ResizeGroup';
 
 export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
   private _nextResizeGroupStateProvider = getNextResizeGroupStateProvider();
@@ -326,7 +327,7 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
     this._async = new Async(this);
     this._events = new EventGroup(this);
 
-    warnDeprecations(this.constructor.name, props, {
+    warnDeprecations(COMPONENT_NAME, props, {
       styles: 'className'
     });
   }
