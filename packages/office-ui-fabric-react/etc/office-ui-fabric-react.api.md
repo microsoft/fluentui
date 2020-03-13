@@ -4,7 +4,6 @@
 
 ```ts
 
-import { BaseComponent } from '@uifabric/utilities';
 import { EventGroup } from '@uifabric/utilities';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
@@ -196,7 +195,7 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
+export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends React.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
     constructor(basePickerProps: P);
     // (undocumented)
     completeSuggestion: () => void;
@@ -385,7 +384,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 }
 
 // @public (undocumented)
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     addItems: (items: T[]) => void;
@@ -1132,7 +1131,7 @@ export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 }
 
 // @public (undocumented)
-export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
+export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
     constructor(props: ISelectedPeopleItemProps);
     // (undocumented)
     protected persona: React.RefObject<HTMLDivElement>;
@@ -1389,12 +1388,14 @@ export const HEX_REGEX: RegExp;
 export const HoverCard: React.FunctionComponent<IHoverCardProps>;
 
 // @public (undocumented)
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
+export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardState> implements IHoverCard {
     constructor(props: IHoverCardProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
         cardOpenDelay: number;
@@ -8723,7 +8724,7 @@ export const RGBA_REGEX: RegExp;
 export const ScrollablePane: React.FunctionComponent<IScrollablePaneProps>;
 
 // @public (undocumented)
-export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
+export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
     constructor(props: IScrollablePaneProps);
     // (undocumented)
     addSticky: (sticky: Sticky) => void;
@@ -8996,8 +8997,10 @@ export const sizeToPixels: {
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
     constructor(props: ISliderProps);
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: ISliderProps;
     // (undocumented)
@@ -9062,7 +9065,7 @@ export const Stack: React.FunctionComponent<IStackProps> & {
 export const StackItem: React.FunctionComponent<IStackItemProps>;
 
 // @public (undocumented)
-export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
+export class Sticky extends React.Component<IStickyProps, IStickyState> {
     constructor(props: IStickyProps);
     // (undocumented)
     addSticky(stickyContent: HTMLDivElement): void;
@@ -9130,7 +9133,7 @@ export enum SuggestionItemType {
 }
 
 // @public (undocumented)
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISuggestionsState> {
     constructor(suggestionsProps: ISuggestionsProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -9162,7 +9165,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 }
 
 // @public
-export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
+export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
     constructor(suggestionsProps: ISuggestionsControlProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -9171,7 +9174,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    readonly currentSuggestion: ISuggestionModel<T>;
+    readonly currentSuggestion: ISuggestionModel<T> | undefined;
     // (undocumented)
     readonly currentSuggestionIndex: number;
     // (undocumented)
@@ -9201,13 +9204,13 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // (undocumented)
     readonly selectedElement: HTMLDivElement | undefined;
     // (undocumented)
-    protected _selectedElement: HTMLDivElement;
+    protected _selectedElement: React.RefObject<HTMLDivElement>;
     protected selectFirstItem(): void;
     protected selectLastItem(): void;
     protected selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
-    protected _suggestions: SuggestionsCore<T>;
+    protected _suggestions: React.RefObject<SuggestionsCore<T>>;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
 }
@@ -9246,7 +9249,7 @@ export class SuggestionsController<T> {
 }
 
 // @public
-export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
     constructor(suggestionsProps: ISuggestionsCoreProps<T>);
     // (undocumented)
     componentDidUpdate(): void;
@@ -9273,19 +9276,21 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
     // (undocumented)
     readonly selectedElement: HTMLDivElement | undefined;
     // (undocumented)
-    protected _selectedElement: HTMLDivElement;
+    protected _selectedElement: React.RefObject<HTMLDivElement>;
     // (undocumented)
     setSelectedSuggestion(index: number): void;
     }
 
 // @public (undocumented)
-export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
+export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHeaderFooterItemProps, {}> {
+    constructor(props: ISuggestionsHeaderFooterItemProps);
     // (undocumented)
     render(): JSX.Element;
 }
 
 // @public (undocumented)
-export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
+export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
+    constructor(props: ISuggestionItemProps<T>);
     // (undocumented)
     render(): JSX.Element;
 }
@@ -9360,7 +9365,7 @@ export type Target = Element | string | MouseEvent | IPoint | null | React.RefOb
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
     constructor(props: ITeachingBubbleProps);
     // (undocumented)
     static defaultProps: {
@@ -9384,7 +9389,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
 export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
     constructor(props: ITeachingBubbleProps);
     // (undocumented)
     componentDidMount(): void;
@@ -9552,6 +9557,7 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
+    constructor(props: IComboBoxProps);
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)
