@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 11 Mar 2020 12:24:03 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
 
+## 0.141.1
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted (v-satgar@microsoft.com)
 ## 0.141.0
 Wed, 11 Mar 2020 12:24:03 GMT
 

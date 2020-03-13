@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "commit": "988c73430e51994f3703b3953b2516f5544ec4a7",
-  "dependentChangeType": "patch",
-  "date": "2020-03-11T07:44:26.791Z"
-}

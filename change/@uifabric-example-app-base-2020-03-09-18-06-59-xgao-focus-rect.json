@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "use ms-Fabric--isFocusVisible instead of .is-focusVisible",
-  "packageName": "@uifabric/example-app-base",
-  "email": "xgao@microsoft.com",
-  "commit": "56ef8bc2f930978aaa63be962726cff5a6ce5b87",
-  "dependentChangeType": "patch",
-  "date": "2020-03-10T01:06:59.856Z"
-}

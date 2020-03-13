@@ -70,10 +70,7 @@ describe('KeytipLayer', () => {
 
   it('constructor initializes the keytips state from KeytipManager.keytips', () => {
     // Add some keytips to the Manager
-    ktpMgr.keytips = [
-      { keytip: keytipB, uniqueID: '1' },
-      { keytip: keytipG, uniqueID: '2' }
-    ];
+    ktpMgr.keytips = { [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB }, [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
     // Create layer
     ktpLayer = mount(<KeytipLayerBase content="Alt Windows" />);
@@ -88,12 +85,12 @@ describe('KeytipLayer', () => {
 
     beforeEach(() => {
       // Add keytips to the manager
-      ktpMgr.keytips = [
-        { keytip: keytipB, uniqueID: uniqueIdB },
-        { keytip: keytipC, uniqueID: uniqueIdC },
-        { keytip: keytipD, uniqueID: uniqueIdD }
-      ];
-      ktpMgr.persistedKeytips = [{ keytip: keytipG, uniqueID: uniqueIdG }];
+      ktpMgr.keytips = {
+        [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+        [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+        [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD }
+      };
+      ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
       // Create layer
       ktpLayer = mount(
@@ -157,12 +154,12 @@ describe('KeytipLayer', () => {
       describe('with a default layer', () => {
         beforeEach(() => {
           // Add keytips to the manager
-          ktpMgr.keytips = [
-            { keytip: keytipB, uniqueID: uniqueIdB },
-            { keytip: keytipC, uniqueID: uniqueIdC },
-            { keytip: keytipD, uniqueID: uniqueIdD }
-          ];
-          ktpMgr.persistedKeytips = [{ keytip: keytipG, uniqueID: uniqueIdG }];
+          ktpMgr.keytips = {
+            [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+            [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+            [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD }
+          };
+          ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
           // Create layer
           ktpLayer = mount(
@@ -227,14 +224,14 @@ describe('KeytipLayer', () => {
     describe('processInput', () => {
       beforeEach(() => {
         // Add keytips to the manager
-        ktpMgr.keytips = [
-          { keytip: keytipB, uniqueID: uniqueIdB },
-          { keytip: keytipC, uniqueID: uniqueIdC },
-          { keytip: keytipD, uniqueID: uniqueIdD },
-          { keytip: keytipE1, uniqueID: uniqueIdE1 },
-          { keytip: keytipE2, uniqueID: uniqueIdE2 }
-        ];
-        ktpMgr.persistedKeytips = [{ keytip: keytipG, uniqueID: uniqueIdG }];
+        ktpMgr.keytips = {
+          [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+          [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+          [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD },
+          [uniqueIdE1]: { keytip: keytipE1, uniqueID: uniqueIdE1 },
+          [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 }
+        };
+        ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
         // Create layer
         ktpLayer = mount(
@@ -302,13 +299,13 @@ describe('KeytipLayer', () => {
   describe('showKeytips', () => {
     // Create layer
     it('shows the defined keytips and hides all others', () => {
-      ktpMgr.keytips = [
-        { keytip: keytipB, uniqueID: uniqueIdB },
-        { keytip: keytipC, uniqueID: uniqueIdC },
-        { keytip: keytipD, uniqueID: uniqueIdD },
-        { keytip: keytipE1, uniqueID: uniqueIdE1 },
-        { keytip: keytipE2, uniqueID: uniqueIdE2 }
-      ];
+      ktpMgr.keytips = {
+        [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+        [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+        [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD },
+        [uniqueIdE1]: { keytip: keytipE1, uniqueID: uniqueIdE1 },
+        [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 }
+      };
       ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
       layerRef.current!.showKeytips([keytipIdB, keytipIdC]);
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
@@ -318,19 +315,19 @@ describe('KeytipLayer', () => {
     });
 
     it('should handle overflowSetSequence correctly', () => {
-      ktpMgr.keytips = [
-        {
+      ktpMgr.keytips = {
+        [uniqueIdB]: {
           keytip: {
             ...keytipB,
             overflowSetSequence: ['x']
           },
           uniqueID: uniqueIdB
         },
-        { keytip: keytipC, uniqueID: uniqueIdC },
-        { keytip: keytipD, uniqueID: uniqueIdD },
-        { keytip: keytipE1, uniqueID: uniqueIdE1 },
-        { keytip: keytipE2, uniqueID: uniqueIdE2 }
-      ];
+        [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+        [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD },
+        [uniqueIdE1]: { keytip: keytipE1, uniqueID: uniqueIdE1 },
+        [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 }
+      };
       ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
       layerRef.current!.showKeytips(['ktp-x-b']);
       const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
@@ -342,16 +339,18 @@ describe('KeytipLayer', () => {
   describe('event listeners', () => {
     beforeEach(() => {
       jest.useFakeTimers();
+      ktpMgr.delayUpdatingKeytipChange = false;
+      ktpMgr.inKeytipMode = false;
 
       // Add keytips to the manager
-      ktpMgr.keytips = [
-        { keytip: keytipB, uniqueID: uniqueIdB },
-        { keytip: keytipC, uniqueID: uniqueIdC },
-        { keytip: keytipD, uniqueID: uniqueIdD },
-        { keytip: keytipE1, uniqueID: uniqueIdE1 },
-        { keytip: keytipE2, uniqueID: uniqueIdE2 }
-      ];
-      ktpMgr.persistedKeytips = [{ keytip: keytipG, uniqueID: uniqueIdG }];
+      ktpMgr.keytips = {
+        [uniqueIdB]: { keytip: keytipB, uniqueID: uniqueIdB },
+        [uniqueIdC]: { keytip: keytipC, uniqueID: uniqueIdC },
+        [uniqueIdD]: { keytip: keytipD, uniqueID: uniqueIdD },
+        [uniqueIdE1]: { keytip: keytipE1, uniqueID: uniqueIdE1 },
+        [uniqueIdE2]: { keytip: keytipE2, uniqueID: uniqueIdE2 }
+      };
+      ktpMgr.persistedKeytips = { [uniqueIdG]: { keytip: keytipG, uniqueID: uniqueIdG } };
 
       // Create layer
       ktpLayer = mount(<KeytipLayerBase componentRef={layerRef} content="Alt Windows" />);
@@ -363,6 +362,37 @@ describe('KeytipLayer', () => {
     });
 
     it('keytipAdded event delay-shows a keytip if the current keytip is its parent', () => {
+      ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
+      // Add a child under B
+      ktpMgr.register({
+        content: 'X',
+        keySequences: ['b', 'x']
+      });
+      jest.runAllTimers();
+
+      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
+      expect(visibleKeytips).toHaveLength(1);
+      expect(getKeytip(visibleKeytips, 'X')).toBeDefined();
+    });
+
+    it('keytipAdded event does not show a keytip if the current keytip is its parent when delay updating and not in keytip mode', () => {
+      ktpMgr.delayUpdatingKeytipChange = true;
+      ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
+      // Add a child under B
+      ktpMgr.register({
+        content: 'X',
+        keySequences: ['b', 'x']
+      });
+      jest.runAllTimers();
+
+      const visibleKeytips: IKeytipProps[] = ktpLayer.state('visibleKeytips');
+      expect(visibleKeytips).toHaveLength(0);
+      expect(getKeytip(visibleKeytips, 'X')).toBeUndefined();
+    });
+
+    it('keytipAdded event delay-shows a keytip if the current keytip is its parent when delay updating and in keytip mode', () => {
+      ktpMgr.delayUpdatingKeytipChange = true;
+      ktpMgr.inKeytipMode = true;
       ktpTree.currentKeytip = ktpTree.getNode(keytipIdB);
       // Add a child under B
       ktpMgr.register({
