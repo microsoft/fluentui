@@ -226,7 +226,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
         ...getHoverStyles({ props, variables: v, colors }),
         ...(iconOnly && {
-          color: v.iconOnlyColorActive
+          background: v.iconOnlyBackgroundColorHover,
+          color: v.iconOnlyColorHover
         })
       },
 

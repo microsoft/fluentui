@@ -34,6 +34,8 @@ export interface MenuVariables {
   colorActive: string;
   iconOnlyColorActive: string;
   iconOnlyColorFocus: string;
+  iconOnlyBackgroundColorHover: string;
+  iconOnlyColorHover: string;
   iconOnlyWrapperBackgroundColorFocus: string;
 
   colorFocus: string;
@@ -123,6 +125,8 @@ export default (siteVars: any): MenuVariables => {
     iconOnlyColorFocus: siteVars.colors.brand[600],
     iconOnlyWrapperBackgroundColorFocus: undefined,
     activeIconOnlyWrapperBackgroundColor: undefined,
+    iconOnlyBackgroundColorHover: undefined,
+    iconOnlyColorHover: siteVars.colors.brand[600],
 
     underlinedBorderColor: siteVars.colors.grey[200],
 
