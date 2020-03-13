@@ -32,9 +32,10 @@ module.exports = function bundleSizeCollect() {
   }
 
   function getComponentName(fileName) {
-    if (fileName.startsWith('experiments-')) {
-      return path.basename(fileName, '.min.js');
+    if (fileName.startsWith('office-ui-fabric-react-')) {
+      return fileName.match('office-ui-fabric-react-(.*).min.js')[1];
     }
-    return fileName.match('office-ui-fabric-react-(.*).min.js')[1];
+
+    return path.basename(fileName, '.min.js');
   }
 };

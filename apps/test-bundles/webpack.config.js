@@ -63,7 +63,7 @@ module.exports = Object.keys(Entries).map(
 /**
  * Build webpack entries based on top level imports available in a package.
  */
-function _buildEntries(packageName, exclusions = TopLevelEntryFileExclusions) {
+function _buildEntries(packageName) {
   const entries = {};
   let packagePath = '';
 
@@ -77,7 +77,7 @@ function _buildEntries(packageName, exclusions = TopLevelEntryFileExclusions) {
 
   fs.readdirSync(packagePath).forEach(itemName => {
     const isJavascriptFile = itemName.match(/.js$/);
-    const isAllowedFile = exclusions.indexOf(itemName) === -1;
+    const isAllowedFile = TopLevelEntryFileExclusions.indexOf(itemName) === -1;
 
     if (isJavascriptFile && isAllowedFile) {
       const entryName = itemName.replace(/.js$/, '');
