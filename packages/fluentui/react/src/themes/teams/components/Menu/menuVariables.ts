@@ -59,6 +59,7 @@ export interface MenuVariables {
   pointingIndicatorBackgroundColor: string;
 
   underlinedBottomBorderWidth: string;
+  underlinedColorHover: string;
   primaryBorderColor: string;
 
   dividerHeight: string;
@@ -139,6 +140,7 @@ export default (siteVars: any): MenuVariables => {
     pointingIndicatorBackgroundColor: siteVars.colors.brand[600],
 
     underlinedBottomBorderWidth: pxToRem(2),
+    underlinedColorHover: 'inherit',
     primaryBorderColor: siteVars.colorScheme.default.border2,
 
     dividerHeight: pxToRem(1),

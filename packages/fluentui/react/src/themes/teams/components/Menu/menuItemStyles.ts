@@ -351,6 +351,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ':hover': {
         color: v.colorHover,
 
+        ...(underlined && { color: v.underlinedColorHover }),
+
         ...(!disabled && {
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
           ...(primary
