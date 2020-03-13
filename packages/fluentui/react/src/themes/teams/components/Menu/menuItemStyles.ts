@@ -179,10 +179,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
             background: v.backgroundColorActive || colors.backgroundActive,
 
             ...(primary && {
-              color: colors.foregroundActive,
-              [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-                backgroundImage: submenuIndicatorUrl(colors.foregroundActive, vertical)
-              }
+              color: colors.foregroundActive
             })
           }),
 
