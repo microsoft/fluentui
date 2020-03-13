@@ -43,6 +43,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   wrapperColorHover: siteVars.colors.white,
   primaryIndicatorColorHover: siteVars.colors.white,
   wrapperBackgroundColorFocus: siteVars.colors.brand[400],
+  underlinedWrapperColorHover: siteVars.colors.white,
 
   primaryWrapperColorFocus: siteVars.colors.white,
   primaryWrapperBackgroundColorFocus: siteVars.colors.brand[400],
