@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import MenuItem, { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
@@ -222,7 +222,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(iconOnly && {
           background: v.iconOnlyBackgroundColorHover,
           color: v.iconOnlyColorHover
-        })
+        }),
+
+        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical)
+        }
       },
 
       ...(iconOnly && {
@@ -393,8 +397,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 
   indicator: ({ props: p, variables: v, rtl }) => {
-    const colors = getColorScheme(v.colorScheme, null, p.primary);
-
     return {
       position: 'relative',
       float: 'right',
@@ -409,7 +411,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         left: 'unset'
       }),
 
-      backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
       ...(rtl && {
         transform: `scaleX(-1)`
       }),
@@ -419,12 +420,15 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       height: pxToRem(16),
       width: pxToRem(16),
 
-      ...(p.active &&
-        !p.underlined &&
-        !p.iconOnly &&
-        p.primary && {
-          backgroundImage: submenuIndicatorUrl(colors.foregroundActive, p.vertical)
-        })
+      backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
+
+      ...(p.active && {
+        backgroundImage: submenuIndicatorUrl(v.activeIndicatorColor, p.vertical),
+        ...(p.primary && { backgroundImage: submenuIndicatorUrl(v.activePrimaryIndicatorColor, p.vertical) })
+      }),
+
+      ...(p.underlined && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) }),
+      ...(p.iconOnly && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) })
     };
   }
 };
