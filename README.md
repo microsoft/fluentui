@@ -1,4 +1,4 @@
-> :warning: The **Office UI Fabric React** project is evolving to **Fluent UI**. :warning:
+> :tada: The **Office UI Fabric React** project is evolving to **Fluent UI**. :tada:
 > 
 > As a result, this repo will be moving to a new location: [https://github.com/microsoft/fluentui](https://github.com/microsoft/fluentui). This move is expected to happen March 20, 2020. This should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location once the repo move is complete.
 >
