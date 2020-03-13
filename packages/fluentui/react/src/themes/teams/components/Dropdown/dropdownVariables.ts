@@ -4,7 +4,9 @@ export interface DropdownVariables {
   backgroundColor: string;
   backgroundColorHover: string;
   borderColor: string;
+  openBorderColorHover: string;
   borderColorFocus: string;
+  borderColorHover: string;
   borderWidth: string;
   containerBorderRadius: string;
   openAboveContainerBorderRadius: string;
@@ -41,6 +43,7 @@ export interface DropdownVariables {
   selectedItemBackgroundColorFocus: string;
   selectedItemsMaxHeight: string;
   toggleIndicatorSize: string;
+  triggerButtonColorFocusActive: string;
   triggerButtonColorHover: string;
   width: string;
   overlayZIndex: number;
@@ -53,6 +56,8 @@ export default (siteVars): DropdownVariables => ({
   backgroundColorHover: siteVars.colors.grey[150],
   borderColor: 'transparent',
   borderColorFocus: siteVars.colors.brand[600],
+  openBorderColorHover: undefined,
+  borderColorHover: undefined,
   borderWidth: '0px',
   containerBorderRadius: `${cornerRadius}`,
   openAboveContainerBorderRadius: `0 0 ${cornerRadius} ${cornerRadius}`,
@@ -86,6 +91,7 @@ export default (siteVars): DropdownVariables => ({
   selectedItemBackgroundColorFocus: siteVars.colors.brand[200],
   selectedItemsMaxHeight: pxToRem(82),
   toggleIndicatorSize: pxToRem(32),
+  triggerButtonColorFocusActive: undefined,
   triggerButtonColorHover: siteVars.bodyColor,
   width: pxToRem(356),
   overlayZIndex: siteVars.zIndexes.overlay,

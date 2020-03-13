@@ -8,76 +8,39 @@ type MenuItemPropsAndState = MenuItemProps & MenuItemState;
 
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
   wrapper: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, isFromKeyboard, vertical, active, underlined, primary, pointing, disabled } = p;
-
     return {
-      ':hover': {
-        color: v.colorActive,
-        ...(!active && {
-          ...(primary && !underlined && { color: v.colorActive }),
-          background: v.backgroundColorFocus
-        }),
-        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-          backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-        }
+      [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+        backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
       },
 
-      ...(active &&
-        !underlined && {
-          background: v.backgroundColorActive,
-          color: v.colorActive,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
-        }),
+      ':hover': {
+        color: v.colorActive,
 
-      ...((iconOnly || vertical) && {
-        ...(isFromKeyboard && {
-          color: v.colorActive,
-          background: v.backgroundColorFocus,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
-        }),
+        ...(p.underlined && { color: v.color }),
+        ...(!p.underlined && { background: v.backgroundColorFocus })
+      },
 
-        ...(active && {
-          color: v.colorActive,
-          background: v.backgroundColorActive,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
-        }),
+      ...(p.active && {
+        color: v.colorActive,
 
-        ':hover': {
-          color: v.colorActive,
-          background: v.backgroundColorFocus,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(v.colorActive, p.vertical)
-          }
-        }
+        ...(p.underlined && { color: v.color }),
+        ...(!p.underlined && { background: v.backgroundColorActive })
       }),
 
-      ...(underlined && {
-        ...(active && {
-          color: v.color
-        }),
-        ':hover': {
-          color: v.color
-        },
-        ...(isFromKeyboard && {
-          color: v.colorActive
-        })
+      ...(p.isFromKeyboard && {
+        color: v.colorActive,
+
+        ...(!p.underlined && { background: v.backgroundColorFocus })
       }),
 
-      ...(pointing &&
-        vertical && {
+      ...(p.pointing &&
+        p.vertical && {
           '::before': {
             display: 'none'
           }
         }),
 
-      ...(disabled && {
-        cursor: 'default',
+      ...(p.disabled && {
         ':hover': {
           // reset all existing hover styles
         }

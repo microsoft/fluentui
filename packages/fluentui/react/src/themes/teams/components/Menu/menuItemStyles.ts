@@ -259,6 +259,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       ...(disabled && {
         color: v.colorDisabled || colors.foregroundDisabled,
+        cursor: 'default',
         ':hover': {
           // empty - overwrite all existing hover styles
         }
@@ -286,15 +287,10 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         border: `${pxToRem(2)} solid transparent`
       }),
 
-      ...(underlined
-        ? { padding: `${pxToRem(4)} 0` }
-        : pointing && vertical
-        ? { padding: `${pxToRem(8)} ${pxToRem(18)}` }
-        : vertical
-        ? { padding: v.verticalItemPadding }
-        : {
-            padding: v.horizontalPadding
-          }),
+      padding: v.horizontalPadding,
+      ...(vertical && { padding: v.verticalItemPadding }),
+      ...(pointing && vertical && { padding: `${pxToRem(8)} ${pxToRem(18)}` }),
+      ...(underlined && { padding: `${pxToRem(4)} 0` }),
 
       ...(iconOnly && {
         margin: pxToRem(1),

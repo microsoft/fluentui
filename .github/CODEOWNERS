@@ -106,7 +106,7 @@ packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
-packages/office-ui-fabric-react/src/components/Icon/ @dzearing
+packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing
 packages/office-ui-fabric-react/src/components/Label/ @cliffkoh
 packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon @JasonGore

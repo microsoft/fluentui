@@ -1,7 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Mar 2020 12:30:22 GMT and should not be manually modified.
 
+## 7.103.0
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Minor changes
+
+- KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips (chiechan@microsoft.com)
+## 7.102.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+- withResponsiveMode: Add initializeResponsiveMode render performance optimization (KevinTCoughlin@users.noreply.github.com)
+## 7.101.0
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Minor changes
+
+- ITag: key can be number, in addition to string. (aneeshak@microsoft.com)
+### Patches
+
+- Fix the legacy items wrapper styles. (lijunle@gmail.com)
+- restore onRenderIcon prop for ContextualMenuSplitButton (kinhln@microsoft.com)
 ## 7.100.0
 Sat, 07 Mar 2020 01:39:37 GMT
 

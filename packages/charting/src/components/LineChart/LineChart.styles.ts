@@ -1,8 +1,8 @@
 import { ILineChartStyleProps, ILineChartStyles } from './LineChart.types';
 
 export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
-  const { className, theme, color } = props;
-  const { palette, fonts } = theme!;
+  const { className, theme } = props;
+  const { fonts } = theme!;
   return {
     root: [
       theme.fonts.medium,
@@ -54,7 +54,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
         display: 'grid',
         overflow: 'hidden',
         padding: '10px 16px 10px 16px',
-        backgroundColor: palette.white
+        backgroundColor: theme.semanticColors.bodyBackground
       }
     ],
     calloutContentX: [
@@ -65,8 +65,8 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     calloutContentY: [
       {
-        color: color === '' ? palette.black : color,
-        ...fonts.xxLarge,
+        color: theme.semanticColors.bodyText,
+        ...fonts.large,
         fontWeight: 'bold',
         lineHeight: '31px'
       }

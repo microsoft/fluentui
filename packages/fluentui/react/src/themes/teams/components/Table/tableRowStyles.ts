@@ -10,7 +10,7 @@ export default {
     theme: { siteVariables }
   }: ComponentStyleFunctionParam<TableRowProps, TeamsTableVariables>): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables
+      variables: siteVariables
     });
 
     return {

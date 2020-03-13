@@ -1140,10 +1140,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
-export class FabricBase extends React.Component<IFabricProps, {
-    isFocusVisible: boolean;
-}> {
-    constructor(props: IFabricProps);
+export class FabricBase extends React.Component<IFabricProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -4530,8 +4527,6 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
 // @public (undocumented)
 export interface IFabricStyleProps extends IFabricProps {
     // (undocumented)
-    isFocusVisible: boolean;
-    // (undocumented)
     theme: ITheme;
 }
 
@@ -7500,7 +7495,7 @@ export interface ISwatchColorPickerStyles {
 
 // @public
 export interface ITag {
-    key: string;
+    key: string | number;
     name: string;
 }
 

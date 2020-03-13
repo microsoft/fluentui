@@ -283,6 +283,11 @@ export function focusAsync(element: HTMLElement | {
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
+export const FocusRects: React.FunctionComponent<{
+    rootRef?: React.RefObject<HTMLElement>;
+}>;
+
+// @public
 export function format(s: string, ...values: any[]): string;
 
 // @public
@@ -575,9 +580,6 @@ export const imgProperties: string[];
 
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
-
-// @public
-export function initializeFocusRects(window?: Window): void;
 
 // @public
 export const inputProperties: string[];
@@ -1133,7 +1135,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
+export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
@@ -1161,6 +1163,9 @@ export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 
 // @public
 export function values<T>(obj: any): T[];

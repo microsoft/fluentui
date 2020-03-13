@@ -46,7 +46,7 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       }
     }),
 
-    ...getBorderFocusStyles({ siteVariables }),
+    ...getBorderFocusStyles({ variables: siteVariables }),
 
     // actions menu's appearance can be controlled by the value of showActionMenu variable - in this
     // case this variable will serve the single source of truth on whether actions menu should be shown.
