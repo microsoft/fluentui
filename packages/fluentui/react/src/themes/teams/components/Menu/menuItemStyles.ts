@@ -222,6 +222,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // hover styles
       ':hover': {
+        color: v.wrapperColorHover,
+
         ...getHoverStyles({ props, variables: v, colors }),
         ...(iconOnly && {
           color: v.iconOnlyColorActive

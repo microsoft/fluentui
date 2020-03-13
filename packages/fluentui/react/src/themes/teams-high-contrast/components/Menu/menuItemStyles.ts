@@ -8,8 +8,6 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
   wrapper: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       ':hover': {
-        color: v.colorActive,
-
         ...(p.underlined && { color: v.color }),
         ...(!p.underlined && { background: v.backgroundColorFocus })
       }
