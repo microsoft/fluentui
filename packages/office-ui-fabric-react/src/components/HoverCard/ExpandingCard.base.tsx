@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, KeyCodes, Async } from '../../Utilities';
+import { classNamesFunction, KeyCodes, Async, initializeComponentRef } from '../../Utilities';
 import { ExpandingCardMode, IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
 import { CardCallout } from './CardCallout/CardCallout';
 
@@ -25,6 +25,8 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
     super(props);
 
     this._async = new Async(this);
+    initializeComponentRef(this);
+
     this.state = {
       firstFrameRendered: false,
       needsScroll: false

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyCodes, css, getRTL, IRefObject } from '../../Utilities';
+import { KeyCodes, css, getRTL, IRefObject, initializeComponentRef } from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { FocusZone } from '../../FocusZone';
 import {
@@ -59,6 +59,8 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
 
   public constructor(props: ICalendarMonthProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this._selectMonthCallbacks = [];
     props.strings.shortMonths.map((month, index) => {

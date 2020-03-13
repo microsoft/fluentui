@@ -8,7 +8,8 @@ declare function setTimeout(cb: Function, delay: number): number;
 // https://github.com/facebook/jest/issues/3465
 // Mock impl inspired from issue.
 class MockAsync extends Async {
-  private _timeoutId;
+  private _timeoutId: number | null;
+
   public debounce(callback: Function, timeout: number) {
     this._timeoutId = null;
     const debounced = (...args: any[]) => {
