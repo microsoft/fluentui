@@ -65,6 +65,8 @@ export interface MenuVariables {
   underlinedBottomBorderWidth: string;
   underlinedColorHover: string;
   primaryBorderColor: string;
+  primaryWrapperColorFocus: string;
+  primaryWrapperBackgroundColorFocus: string;
 
   dividerHeight: string;
   borderWidth: string;
@@ -151,6 +153,8 @@ export default (siteVars: any): MenuVariables => {
     underlinedBottomBorderWidth: pxToRem(2),
     underlinedColorHover: 'inherit',
     primaryBorderColor: siteVars.colorScheme.default.border2,
+    primaryWrapperColorFocus: siteVars.colors.white,
+    primaryWrapperBackgroundColorFocus: siteVars.colors.brand[500],
 
     dividerHeight: pxToRem(1),
     borderWidth: pxToRem(1),
@@ -158,9 +162,9 @@ export default (siteVars: any): MenuVariables => {
     beakZIndex: siteVars.zIndexes.menuItem,
 
     wrapperColorActive: siteVars.colors.grey[500],
-    wrapperColorFocus: siteVars.colors.white,
+    wrapperColorFocus: siteVars.colors.grey[500],
     wrapperColorHover: undefined,
-    wrapperBackgroundColorFocus: siteVars.colors.brand[500],
+    wrapperBackgroundColorFocus: siteVars.colors.grey[150],
 
     indicatorColor: siteVars.colors.grey[500]
   };
