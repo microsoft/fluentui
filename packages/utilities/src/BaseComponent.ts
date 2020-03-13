@@ -49,6 +49,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     super(props, context);
 
     // Ensure basic assumptions about the environment.
+    // tslint:disable-next-line:deprecation
     initializeFocusRects();
     initializeDir();
 

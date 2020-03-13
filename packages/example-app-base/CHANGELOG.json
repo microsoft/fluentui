@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.17",
+      "version": "7.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use ms-Fabric--isFocusVisible instead of .is-focusVisible",
+            "author": "xgao@microsoft.com",
+            "commit": "56ef8bc2f930978aaa63be962726cff5a6ce5b87"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 07 Mar 2020 01:39:37 GMT",
       "tag": "@uifabric/example-app-base_v7.12.15",
       "version": "7.12.15",
