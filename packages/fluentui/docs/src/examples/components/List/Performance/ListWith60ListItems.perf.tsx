@@ -29,7 +29,7 @@ const items = _.times(60, i => ({
 
 const ListWith60ListItems = () => <List items={items} />;
 
-ListWith60ListItems.iterations = 1;
+ListWith60ListItems.iterations = 10;
 ListWith60ListItems.filename = 'ListWith60ListItems.perf.tsx';
 
 export default ListWith60ListItems;
