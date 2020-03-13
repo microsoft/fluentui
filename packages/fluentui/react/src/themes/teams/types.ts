@@ -9,6 +9,7 @@ import { AttachmentProps } from '../../components/Attachment/Attachment';
 import { AvatarStylesProps } from '../../components/Avatar/Avatar';
 import { ButtonGroupProps } from '../../components/Button/ButtonGroup';
 import { ButtonStylesProps } from './components/Button/buttonStyles';
+import { ButtonContentStylesProps } from '../../components/Button/ButtonContent';
 import { ChatItemStylesProps } from '../../components/Chat/ChatItem';
 import { ChatMessageStylesProps } from '../../components/Chat/ChatMessage';
 import { ChatStylesProps } from '../../components/Chat/Chat';
@@ -73,6 +74,7 @@ export type TeamsThemeStylesProps = {
   Attachment?: AttachmentProps;
   Avatar?: AvatarStylesProps;
   Button?: ButtonStylesProps;
+  ButtonContent?: ButtonContentStylesProps;
   ButtonGroup?: ButtonGroupProps;
   Chat?: ChatStylesProps;
   ChatItem?: ChatItemStylesProps;

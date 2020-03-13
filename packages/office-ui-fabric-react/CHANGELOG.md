@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Mar 2020 12:30:22 GMT and should not be manually modified.
 
+## 7.103.0
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Minor changes
+
+- KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips (chiechan@microsoft.com)
 ## 7.102.0
 Thu, 12 Mar 2020 12:35:00 GMT
 
