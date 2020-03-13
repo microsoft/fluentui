@@ -3,11 +3,11 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as t from '@babel/types';
 import * as _ from 'lodash';
+import { ComponentDoc, parse, PropItem } from 'react-docgen-typescript';
 
 import parseType from './parseType';
 import parseDefaultValue from './parseDefaultValue';
 import { ComponentInfo, ComponentProp, FileInfo } from './types';
-import * as docgen from './docgen';
 import parseDocblock from './parseDocblock';
 
 const getFileInfo = (filepath: string): FileInfo => {
@@ -16,7 +16,7 @@ const getFileInfo = (filepath: string): FileInfo => {
   const dirname = path.basename(dir);
   const filename = path.basename(absPath);
   const filenameWithoutExt = path.basename(absPath, path.extname(absPath));
-  const components = docgen.withDefaultConfig().parse(absPath);
+  const components = parse(absPath);
 
   if (!components.length) {
     throw new Error(`Could not find a component definition in "${filepath}".`);
@@ -30,7 +30,7 @@ const getFileInfo = (filepath: string): FileInfo => {
     );
   }
 
-  const info: docgen.ComponentDoc = components[0];
+  const info: ComponentDoc = components[0];
 
   return {
     absPath,
@@ -62,7 +62,7 @@ const getComponentInfoDefaultSchema = (filepath: string, ignoredParentInterfaces
   // Create props definition for this component.
   let props: ComponentProp[] = [];
 
-  _.forEach(info.props, (propDef: docgen.PropItem, propName: string) => {
+  _.forEach(info.props, (propDef: PropItem, propName: string) => {
     const { description, tags } = parseDocblock(propDef.description);
     const parentInterface = _.get(propDef, 'parent.name');
 

@@ -1,13 +1,13 @@
-import { docgen } from '@fluentui/react-docs';
+import { ComponentDoc } from 'react-docgen-typescript';
 
 export type ComponentInfo = {
   Component: any;
   constructorName: string;
   displayName: string;
-    docblock: {
-      description: string;
-      tags: { description: string; title: string }[];
-    };
+  docblock: {
+    description: string;
+    tags: { description: string; title: string }[];
+  };
   filename: string;
   filenameWithoutExt: string;
   props: ComponentProp[];
@@ -36,12 +36,11 @@ export type ComponentPropType = {
   value?: string;
 };
 
-
 export type FileInfo = {
   absPath: string;
   dir: string;
   dirname: string;
   filename: string;
   filenameWithoutExt: string;
-  info: docgen.ComponentDoc;
+  info: ComponentDoc;
 };

@@ -1,4 +1,8 @@
-<!-- TOC -->autoauto- [Basic Use](#basic-use)auto  - [Schema Resolver Callback](#schema-resolver-callback)auto  - [Errors](#errors)auto    - [Error: Could not find a component definition in "YourComponent.tsx".](#error-could-not-find-a-component-definition-in-yourcomponenttsx)auto    - [Error: Can't parse a value in "`componentName`.defaultProps.`propName`"](#error-cant-parse-a-value-in-componentnamedefaultpropspropname)autoauto<!-- /TOC -->
+# TOC
+
+[Basic Use](#basic-use)
+[Schema Resolver Callback](#schema-resolver-callback)
+[Errors](#errors)
 
 # Basic Use
 
@@ -26,11 +30,11 @@ _react-docs_ allows you to modify the object generated via the schema resolver c
 | Arguments                           |                                                                                                                                                                                                                       |
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `<signature>`                       | (**fileInfo**, **ignoredParentInterfaces**, **componentInfo**)                                                                                                                                                        |
-| fileInfo: `object`                  | absPath: `string` <br> dir: `string` <br> dirname: `string` <br> filename: `string` <br> filenameWithoutExt: `string` <br> info: `docgen.ComponentDoc`                                                                |
+| fileInfo: `object`                  | absPath: `string` <br> dir: `string` <br> dirname: `string` <br> filename: `string` <br> filenameWithoutExt: `string` <br> info: `ComponentDoc`                                                                       |
 | ignoredParentInterfaces: `string[]` |                                                                                                                                                                                                                       |
 | componentInfo: `object`             | constructorName: `string`<br>Component: `React.Component`<br>displayName: `string`<br>docblock `string`<br>filename `string`<br>filenameWithoutExt `string`<br>props `string[]`<br>repoPath `string`<br>type `string` |
 
-## Errors
+# Errors
 
 ### Error: Could not find a component definition in "YourComponent.tsx".
 
