@@ -1,10 +1,10 @@
 import * as Babel from '@babel/core';
 import { NodePath } from '@babel/traverse';
 import * as t from '@babel/types';
+import { ComponentInfo } from './types';
+import { FluentComponentInfo } from './fluentuiTypes';
 
-import { ComponentInfo } from '@fluentui/docs/src/types';
-
-type ShorthandInfo = Required<Pick<ComponentInfo, 'implementsCreateShorthand' | 'mappedShorthandProp'>>;
+type ShorthandInfo = Required<Pick<FluentComponentInfo<ComponentInfo>, 'implementsCreateShorthand' | 'mappedShorthandProp'>>;
 
 /**
  * Checks that an expression matches signature:

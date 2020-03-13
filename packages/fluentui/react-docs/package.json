@@ -3,7 +3,7 @@
   "description": "Tools for documenting FluentUI React components.",
   "version": "0.44.0",
   "author": "Levi Thomason <lethoma@microsoft.com>",
-  "bugs": "https://github.com/microsoft/fluent-ui-react/issues",
+  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "bin": "dist/commonjs/index.js",
   "dependencies": {
     "@babel/core": "^7.7.7",
@@ -12,7 +12,6 @@
     "@babel/runtime": "^7.7.6",
     "@types/yargs": "^15.0.3",
     "doctrine": "2.0.0",
-    "keyboard-key": "^1.0.1",
     "lodash": "^4.17.15"
   },
   "devDependencies": {
@@ -23,7 +22,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/microsoft/fluent-ui-react/tree/master/packages/accessibility",
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-docs",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
@@ -31,7 +30,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "microsoft/fluent-ui-react.git",
+  "repository": "OfficeDev/office-ui-fabric-react.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",

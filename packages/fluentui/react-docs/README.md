@@ -1,12 +1,4 @@
-<!-- TOC -->
-
-[Basic Use](#basic-use)
-[Schema Resolver Callback](#schema-resolver-callback)
-[schemaCallbackResolver(fileInfo, ignoredParentInterfaces, componentInfo)](#schemacallbackresolverfileinfo-ignoredparentinterfaces-componentinfo)
-[Errors](#errors)
-[Error: Could not find a component definition in "YourComponent.tsx".](#error-could-not-find-a-component-definition-in-yourcomponenttsx)
-
-<!-- /TOC -->
+<!-- TOC -->autoauto- [Basic Use](#basic-use)auto  - [Schema Resolver Callback](#schema-resolver-callback)auto  - [Errors](#errors)auto    - [Error: Could not find a component definition in "YourComponent.tsx".](#error-could-not-find-a-component-definition-in-yourcomponenttsx)auto    - [Error: Can't parse a value in "`componentName`.defaultProps.`propName`"](#error-cant-parse-a-value-in-componentnamedefaultpropspropname)autoauto<!-- /TOC -->
 
 # Basic Use
 
@@ -82,3 +74,17 @@ module.exports = Component;
 // or
 export default Component;
 ```
+
+### Error: Can't parse a value in "`componentName`.defaultProps.`propName`"
+
+This error occures if you have a prop that is of an unrecognized type. Supported types are
+
+- `array`
+- `function`
+- `number`
+- `object`
+- `string`
+- `undefined`
+- `null`
+
+Values other than this will cause this error. If you must use some other type, try passing it within a function, object or array.
