@@ -401,8 +401,8 @@ function fixDocs(outputPath) {
     let contents = fs.readFileSync(fullPath, 'utf-8');
 
     if (contents.includes('packages/react/package.json')) {
-      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react/package.json`);
-      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react/package.json'");
+      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react-experimental/package.json`);
+      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react-experimental/package.json'");
     }
 
     fs.writeFileSync(fullPath, contents);

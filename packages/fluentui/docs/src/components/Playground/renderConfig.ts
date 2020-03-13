@@ -10,7 +10,7 @@ import * as Classnames from 'classnames';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
-const projectPackageJson = require('@fluentui/react/package.json');
+const projectPackageJson = require('@fluentui/react-experimental/package.json');
 
 export const babelConfig = {
   plugins: ['proposal-class-properties', 'proposal-object-rest-spread', ['transform-typescript', { isTSX: true }], 'transform-classes'],

@@ -1,7 +1,7 @@
 import { KnobInspector, KnobProvider } from '@fluentui/docs-components';
 import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react-experimental';
 // @ts-ignore
-import pkg from '@fluentui/react/package.json';
+import pkg from '@fluentui/react-experimental/package.json';
 import * as React from 'react';
 
 import KnobsSnippet from './KnobsSnippet';
