@@ -127,7 +127,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
     const { contentRef, children, content, indicator, contentWrapper } = this.props;
 
-    const contentElement = (
+    const contentWrapperElement = (
       <Ref innerRef={contentRef}>
         {Box.create(contentWrapper, {
           defaultProps: () => ({
@@ -167,7 +167,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
         {...unhandledProps}
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
       >
-        {childrenExist(children) ? children : contentElement}
+        {childrenExist(children) ? children : contentWrapperElement}
       </ElementType>
     );
   }
