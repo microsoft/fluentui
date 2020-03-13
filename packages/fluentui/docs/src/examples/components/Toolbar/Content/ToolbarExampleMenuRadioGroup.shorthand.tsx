@@ -1,4 +1,4 @@
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const ToolbarExampleMenuRadioGroup = () => {

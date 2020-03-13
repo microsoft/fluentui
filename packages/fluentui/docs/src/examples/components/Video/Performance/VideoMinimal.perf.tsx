@@ -1,4 +1,4 @@
-import { Video } from '@fluentui/react';
+import { Video } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const VideoMinimalPerf = () => <Video />;

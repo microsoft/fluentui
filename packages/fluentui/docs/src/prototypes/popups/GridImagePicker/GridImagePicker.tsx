@@ -1,4 +1,4 @@
-import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react';
+import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react-experimental';
 import * as React from 'react';
 import * as _ from 'lodash';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Segment } from '@fluentui/react';
+import { Flex, Segment } from '@fluentui/react-experimental';
 
 const FlexExampleItemsAlignment = () => (
   <Flex column gap="gap.large" hAlign="center" vAlign="center" debug>

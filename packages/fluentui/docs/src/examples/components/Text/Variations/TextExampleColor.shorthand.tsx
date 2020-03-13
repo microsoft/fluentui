@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Text, ProviderConsumer } from '@fluentui/react';
+import { Text, ProviderConsumer } from '@fluentui/react-experimental';
 
 const TextExampleColor = () => (
   <ProviderConsumer

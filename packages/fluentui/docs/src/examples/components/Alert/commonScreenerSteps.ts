@@ -1,4 +1,4 @@
-import { Alert } from '@fluentui/react';
+import { Alert } from '@fluentui/react-experimental';
 
 const selectors = {
   dismissAction: `.${Alert.slotClassNames.dismissAction}`

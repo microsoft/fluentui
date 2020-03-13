@@ -1,4 +1,4 @@
-import { Loader } from '@fluentui/react';
+import { Loader } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 import useComponentProps from '../useComponentProps';

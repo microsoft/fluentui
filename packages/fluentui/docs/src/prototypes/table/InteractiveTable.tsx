@@ -7,7 +7,7 @@ import {
   gridRowBehavior,
   gridCellBehavior,
   MenuButton
-} from '@fluentui/react';
+} from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const columnDescription = 'ID uniquely identifies a uniquely indetifiable item';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Button, Flex, MenuButton } from '@fluentui/react';
+import { Alert, Button, Flex, MenuButton } from '@fluentui/react-experimental';
 
 class MenuButtonExampleOn extends React.Component {
   state = { alert: false };

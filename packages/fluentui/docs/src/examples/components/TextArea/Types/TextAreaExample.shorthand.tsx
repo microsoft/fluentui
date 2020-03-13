@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextArea } from '@fluentui/react';
+import { TextArea } from '@fluentui/react-experimental';
 
 const TextAreaExample = () => <TextArea placeholder="Type here..." />;
 

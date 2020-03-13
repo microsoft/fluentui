@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Chat, Menu, Popup, Avatar } from '@fluentui/react';
+import { Chat, Menu, Popup, Avatar } from '@fluentui/react-experimental';
 
 /**
  * This example shows how to create custom Chat Messages.

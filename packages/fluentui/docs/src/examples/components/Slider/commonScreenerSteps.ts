@@ -1,4 +1,4 @@
-import { Slider } from '@fluentui/react';
+import { Slider } from '@fluentui/react-experimental';
 
 const selectors = {
   input: `.${Slider.slotClassNames.input}`

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-experimental';
 
 const inputItems = [
   'Bruce Wayne',

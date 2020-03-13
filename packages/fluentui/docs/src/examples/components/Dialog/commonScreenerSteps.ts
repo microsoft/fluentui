@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-experimental';
 
 const button = `.${Button.className}`;
 

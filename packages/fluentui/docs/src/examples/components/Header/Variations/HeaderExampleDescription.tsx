@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-experimental';
 
 const HeaderExampleDescription = () => (
   <Header as="h2">

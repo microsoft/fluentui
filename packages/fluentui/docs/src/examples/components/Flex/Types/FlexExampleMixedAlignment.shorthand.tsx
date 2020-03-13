@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Segment } from '@fluentui/react';
+import { Flex, Segment } from '@fluentui/react-experimental';
 
 const FlexExampleMixedAlignment = () => (
   <Flex gap="gap.small" hAlign="center" vAlign="center" debug>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-experimental';
 
 const AvatarExampleStatusShorthand = () => (
   <div>

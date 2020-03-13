@@ -1,4 +1,11 @@
-import { Accordion, gridCellBehavior, gridHeaderCellBehavior, gridNestedBehavior, gridRowBehavior, Table } from '@fluentui/react';
+import {
+  Accordion,
+  gridCellBehavior,
+  gridHeaderCellBehavior,
+  gridNestedBehavior,
+  gridRowBehavior,
+  Table
+} from '@fluentui/react-experimental';
 import * as React from 'react';
 import { AutoSizer, List as ReactVirtualizedList, WindowScroller, ListProps, ListRowRenderer } from 'react-virtualized';
 import getItems from './itemsGenerator';

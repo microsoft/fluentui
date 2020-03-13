@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-experimental';
 import { link } from '../../../../utils/helpers';
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 

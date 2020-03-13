@@ -1,4 +1,4 @@
-import { Segment } from '@fluentui/react';
+import { Segment } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const SegmentMinimalPerf = () => <Segment />;

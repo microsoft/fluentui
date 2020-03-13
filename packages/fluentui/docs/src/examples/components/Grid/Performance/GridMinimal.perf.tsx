@@ -1,4 +1,4 @@
-import { Grid } from '@fluentui/react';
+import { Grid } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const GridMinimalPerf = () => <Grid />;

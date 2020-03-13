@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Button, Form } from '@fluentui/react';
+import { Toolbar, Button, Form } from '@fluentui/react-experimental';
 
 const CustomPopup = ({ onConfirm }) => {
   return (

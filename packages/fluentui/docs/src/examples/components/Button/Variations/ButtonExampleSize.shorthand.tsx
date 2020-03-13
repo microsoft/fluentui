@@ -1,4 +1,4 @@
-import { Button, Divider, Flex } from '@fluentui/react';
+import { Button, Divider, Flex } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const ButtonExampleSizeShorthand: React.FC = () => (

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Flex, Divider } from '@fluentui/react';
+import { Button, Flex, Divider } from '@fluentui/react-experimental';
 
 export type PageDescriptor = {
   name: string;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Icon } from '@fluentui/react';
+import { Flex, Icon } from '@fluentui/react-experimental';
 
 const IconExampleRotateRtl = () => (
   <Flex gap="gap.smaller">

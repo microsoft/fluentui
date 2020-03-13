@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, treeAsListBehavior } from '@fluentui/react';
+import { Tree, treeAsListBehavior } from '@fluentui/react-experimental';
 
 const items = [
   {

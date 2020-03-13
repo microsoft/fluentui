@@ -1,4 +1,4 @@
-import { TreeItem, TreeTitle } from '@fluentui/react';
+import { TreeItem, TreeTitle } from '@fluentui/react-experimental';
 
 const selectors = {
   treeItem: (itemIndex: number) => `.${TreeItem.className}:nth-of-type(${itemIndex})`,

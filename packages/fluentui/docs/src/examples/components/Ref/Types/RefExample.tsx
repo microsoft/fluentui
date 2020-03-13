@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Grid, Ref, Segment } from '@fluentui/react';
+import { Button, Flex, Grid, Ref, Segment } from '@fluentui/react-experimental';
 
 type RefExampleState = {
   isMounted: boolean;

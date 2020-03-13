@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-experimental';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',

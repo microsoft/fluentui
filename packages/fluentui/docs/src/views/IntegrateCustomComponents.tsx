@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Header, Provider, createComponent, ComponentSlotStyle, ComponentVariablesInput, ReactChildren } from '@fluentui/react';
+import {
+  Header,
+  Provider,
+  createComponent,
+  ComponentSlotStyle,
+  ComponentVariablesInput,
+  ReactChildren
+} from '@fluentui/react-experimental';
 
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
@@ -35,7 +42,7 @@ export default () => (
     </p>
     <ExampleSnippet
       value={`
-        import { createComponent } from '@fluentui/react'
+        import { createComponent } from '@fluentui/react-experimental'
 
         const StyledButton = createComponent({
           displayName: 'StyledButton',
@@ -235,7 +242,7 @@ export default () => (
     </p>
     <ExampleSnippet
       value={`
-        import { createComponent, buttonBehavior } from '@fluentui/react'
+        import { createComponent, buttonBehavior } from '@fluentui/react-experimental'
 
         const StyledButton = createComponent({
           displayName: 'StyledButton',

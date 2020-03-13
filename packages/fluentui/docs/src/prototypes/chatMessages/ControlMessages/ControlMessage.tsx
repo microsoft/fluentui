@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Ref, ChatMessageProps, Chat, Icon } from '@fluentui/react';
+import { Ref, ChatMessageProps, Chat, Icon } from '@fluentui/react-experimental';
 
 interface ControlMessageProps {
   focused?: boolean;

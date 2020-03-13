@@ -1,4 +1,4 @@
-import { SplitButton } from '@fluentui/react';
+import { SplitButton } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const SplitButtonMinimalPerf = () => <SplitButton />;

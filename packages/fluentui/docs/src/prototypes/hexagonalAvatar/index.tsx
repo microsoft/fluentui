@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Flex, StatusProps, WithAsProp, Extendable, Text } from '@fluentui/react';
+import { Flex, StatusProps, WithAsProp, Extendable, Text } from '@fluentui/react-experimental';
 import CustomAvatar from './CustomAvatar';
 
 const statusProps: Extendable<WithAsProp<StatusProps>> = {

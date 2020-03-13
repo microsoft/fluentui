@@ -1,6 +1,6 @@
 import * as React from 'react';
 import DocumentTitle from 'react-document-title';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-experimental';
 
 interface DocPageProps {
   title: string;

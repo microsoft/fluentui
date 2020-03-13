@@ -1,4 +1,4 @@
-import { Chat } from '@fluentui/react';
+import { Chat } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const ChatMinimalPerf = () => <Chat />;

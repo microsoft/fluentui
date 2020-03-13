@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Image } from '@fluentui/react';
+import { List, Image } from '@fluentui/react-experimental';
 
 class SelectableListControlledExample extends React.Component<any, any> {
   state = { selectedIndex: -1 };

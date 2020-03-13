@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Tooltip } from '@fluentui/react';
+import { Button, Tooltip } from '@fluentui/react-experimental';
 
 const TooltipExample = () => (
   <Tooltip content="Hello from tooltip!">

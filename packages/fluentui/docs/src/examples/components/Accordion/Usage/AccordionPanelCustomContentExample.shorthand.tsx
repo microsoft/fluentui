@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion, Button, Flex } from '@fluentui/react';
+import { Accordion, Button, Flex } from '@fluentui/react-experimental';
 
 const AccordionPanelCustomContentExample = () => {
   const panels = [

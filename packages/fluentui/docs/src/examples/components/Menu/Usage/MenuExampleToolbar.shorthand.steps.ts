@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react';
+import { Menu } from '@fluentui/react-experimental';
 import getScreenerSteps from '../commonScreenerSteps';
 
 const selectors = {

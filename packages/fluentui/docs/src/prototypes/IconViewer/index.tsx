@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react';
+import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react-experimental';
 import themeWithProcessedIcons from '@fluentui/react/src/themes/teams/withProcessedIcons';
 import { TeamsProcessedSvgIconSpec } from '@fluentui/react/src/themes/teams/components/Icon/svg/types';
 

@@ -1,4 +1,4 @@
-import { Accordion } from '@fluentui/react';
+import { Accordion } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const AccordionMinimalPerf = () => <Accordion />;

@@ -1,7 +1,7 @@
 import * as Accessibility from '@fluentui/accessibility';
 import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as DocsComponent from '@fluentui/docs-components';
-import * as FluentUI from '@fluentui/react';
+import * as FluentUI from '@fluentui/react-experimental';
 import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -31,7 +31,7 @@ export const imports: Record<string, { version: string; module: any }> = {
     version: docsComponentsPackageJson.version,
     module: DocsComponent
   },
-  '@fluentui/react': {
+  '@fluentui/react-experimental': {
     version: projectPackageJson.version,
     module: FluentUI
   },

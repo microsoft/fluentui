@@ -1,4 +1,4 @@
-import { Box } from '@fluentui/react';
+import { Box } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const BoxMinimalPerf = () => <Box />;

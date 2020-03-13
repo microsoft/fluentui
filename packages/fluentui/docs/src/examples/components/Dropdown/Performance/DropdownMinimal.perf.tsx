@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const DropdownMinimalPerf = () => <Dropdown />;

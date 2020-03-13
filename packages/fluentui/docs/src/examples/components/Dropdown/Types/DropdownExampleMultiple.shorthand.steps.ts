@@ -1,4 +1,4 @@
-import { Dropdown, DropdownSelectedItem } from '@fluentui/react';
+import { Dropdown, DropdownSelectedItem } from '@fluentui/react-experimental';
 
 const selectors = {
   triggerButton: `.${Dropdown.slotClassNames.triggerButton}`,

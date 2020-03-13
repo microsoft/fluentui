@@ -1,5 +1,5 @@
 import { CodeSnippet, KnobComponents } from '@fluentui/docs-components';
-import { Button, Checkbox, Label, Segment, Text } from '@fluentui/react';
+import { Button, Checkbox, Label, Segment, Text } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const knobComponents: Partial<KnobComponents> = {

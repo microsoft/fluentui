@@ -172,7 +172,7 @@ task('test:projects:cra-ts', async () => {
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(testAppPath());
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, testAppPath());
+  await sh(`yarn add ${packedPackages['@fluentui/react-experimental']}`, testAppPath());
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   logger("STEP 3. Reference Fluent UI components in test project's App.tsx");
@@ -207,7 +207,7 @@ task('test:projects:rollup', async () => {
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(tmpDirectory);
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-experimental']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.copyFileSync(scaffoldPath('app.js'), path.resolve(tmpDirectory, 'app.js'));
@@ -236,7 +236,7 @@ task('test:projects:nextjs', async () => {
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(tmpDirectory);
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-experimental']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.mkdirSync(path.resolve(tmpDirectory, 'pages'));
@@ -265,7 +265,7 @@ task('test:projects:typings', async () => {
 
   await packProjectPackages(logger);
   await addResolutionPathsForProjectPackages(tmpDirectory);
-  await sh(`yarn add ${packedPackages['@fluentui/react']}`, tmpDirectory);
+  await sh(`yarn add ${packedPackages['@fluentui/react-experimental']}`, tmpDirectory);
   logger(`✔️ Fluent UI packages were added to dependencies`);
 
   fs.mkdirSync(path.resolve(tmpDirectory, 'src'));

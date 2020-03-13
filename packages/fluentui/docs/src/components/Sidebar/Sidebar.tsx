@@ -12,7 +12,7 @@ import {
   Segment,
   Text,
   ShorthandValue
-} from '@fluentui/react';
+} from '@fluentui/react-experimental';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';

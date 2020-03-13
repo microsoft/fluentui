@@ -1,4 +1,4 @@
-import { Dropdown, DropdownSearchInput } from '@fluentui/react';
+import { Dropdown, DropdownSearchInput } from '@fluentui/react-experimental';
 
 const selectors = {
   toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,

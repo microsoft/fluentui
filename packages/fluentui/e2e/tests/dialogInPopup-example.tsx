@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Dialog, Popup } from '@fluentui/react';
+import { Button, Dialog, Popup } from '@fluentui/react-experimental';
 
 export const selectors = {
   dialogCancel: 'dialog-cancel',

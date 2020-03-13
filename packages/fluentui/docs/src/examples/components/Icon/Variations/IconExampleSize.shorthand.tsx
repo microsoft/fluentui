@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Icon } from '@fluentui/react';
+import { Grid, Icon } from '@fluentui/react-experimental';
 
 const IconExampleSize = () => (
   <Grid rows={2} styles={{ textAlign: 'center' }}>

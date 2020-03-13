@@ -7,7 +7,7 @@ import {
   ToolbarDividerProps,
   StatusProps,
   pxToRem
-} from '@fluentui/react';
+} from '@fluentui/react-experimental';
 
 export type CustomStatusVariables = {
   isRecordingIndicator?: boolean;

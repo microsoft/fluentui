@@ -1,4 +1,4 @@
-import { Slider } from '@fluentui/react';
+import { Slider } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const SliderMinimalPerf = () => <Slider />;

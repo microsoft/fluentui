@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { tabListBehavior, Header, Icon, Dropdown, Text, Grid, Menu } from '@fluentui/react';
+import { tabListBehavior, Header, Icon, Dropdown, Text, Grid, Menu } from '@fluentui/react-experimental';
 
 import { getFormattedHash } from '../../utils';
 // import ComponentDocLinks from './ComponentDocLinks'

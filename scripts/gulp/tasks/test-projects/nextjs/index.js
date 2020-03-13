@@ -1,4 +1,4 @@
-import { Button, Dropdown, Provider, themes } from '@fluentui/react';
+import { Button, Dropdown, Provider, themes } from '@fluentui/react-experimental';
 import React from 'react';
 
 const Page = () => (

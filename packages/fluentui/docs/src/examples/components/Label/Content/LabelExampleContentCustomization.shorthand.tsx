@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react';
+import { Label } from '@fluentui/react-experimental';
 
 class LabelExampleContentCustomizationShorthand extends React.Component {
   state = { hidden: false };

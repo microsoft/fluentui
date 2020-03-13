@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image } from '@fluentui/react';
+import { Image } from '@fluentui/react-experimental';
 
 const ImageExampleAvatar = () => (
   <div>

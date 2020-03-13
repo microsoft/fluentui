@@ -1,4 +1,4 @@
-import { Button, Dialog } from '@fluentui/react';
+import { Button, Dialog } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const DialogExample: React.FC = () => (

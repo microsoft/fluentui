@@ -1,4 +1,4 @@
-import { MenuButton } from '@fluentui/react';
+import { MenuButton } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const MenuButtonMinimalPerf = () => <MenuButton />;

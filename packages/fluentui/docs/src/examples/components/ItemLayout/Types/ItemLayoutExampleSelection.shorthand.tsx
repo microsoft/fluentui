@@ -1,4 +1,4 @@
-import { ItemLayout, Image } from '@fluentui/react';
+import { ItemLayout, Image } from '@fluentui/react-experimental';
 import * as React from 'react';
 
 const ItemLayoutExampleSelectionShorthand = () => {

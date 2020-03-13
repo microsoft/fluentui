@@ -1,4 +1,4 @@
-import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react';
+import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react-experimental';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],

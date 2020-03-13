@@ -1,4 +1,4 @@
-import { Icon } from '@fluentui/react';
+import { Icon } from '@fluentui/react-experimental';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 

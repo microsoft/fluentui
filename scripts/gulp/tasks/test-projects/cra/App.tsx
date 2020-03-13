@@ -13,7 +13,7 @@ import {
   Popup,
   Provider,
   themes
-} from '@fluentui/react';
+} from '@fluentui/react-experimental';
 import * as React from 'react';
 
 class App extends React.Component {
