@@ -174,14 +174,15 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       ...(active && {
         color: v.wrapperColorActive,
 
-        ...(!underlined &&
-          !iconOnly && {
-            background: v.backgroundColorActive || colors.backgroundActive,
+        ...(!underlined && {
+          background: v.backgroundColorActive || colors.backgroundActive,
 
-            ...(primary && {
+          ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
+          ...(!iconOnly &&
+            primary && {
               color: colors.foregroundActive
             })
-          }),
+        }),
 
         ...(underlined && {
           color: v.activeUnderlinedWrapperColor
