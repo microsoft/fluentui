@@ -1,8 +1,0 @@
-{
-  "type": "minor",
-  "comment": "KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips",
-  "packageName": "office-ui-fabric-react",
-  "email": "chiechan@microsoft.com",
-  "commit": "4d3eaef425a024ad2b0099a32645801a067c1076",
-  "date": "2020-02-25T01:30:43.755Z"
-}

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "new blog announcement, support jsx in message bar, move hig link",
-  "packageName": "@uifabric/fabric-website",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "59f0c66f540deefe7a108a4be8e2760d16e2dc56",
-  "dependentChangeType": "patch",
-  "date": "2020-03-12T16:49:13.407Z"
-}
