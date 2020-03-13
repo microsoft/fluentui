@@ -2,7 +2,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 
 import { ComponentPropType } from '@fluentui/docs/src/types';
-import { PropItem } from './docgen';
+import { PropItem } from 'react-docgen-typescript';
 
 const parseDefaultValue = (Component: React.ComponentType, propDef: PropItem, types: ComponentPropType[]) => {
   if (Component.defaultProps && _.has(Component.defaultProps, propDef.name)) {
