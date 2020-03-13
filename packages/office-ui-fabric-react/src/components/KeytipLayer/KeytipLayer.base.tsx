@@ -60,7 +60,6 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   // tslint:disable-next-line:no-any
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
-
     const managerKeytips = [...this._keytipManager.getKeytips()];
     this.state = {
       inKeytipMode: false,
@@ -69,11 +68,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       visibleKeytips: this._getVisibleKeytips(managerKeytips)
     };
 
-    this._keytipTree = new KeytipTree();
-    // Add regular and persisted keytips to the tree
-    for (const uniqueKeytip of this._keytipManager.keytips.concat(this._keytipManager.persistedKeytips)) {
-      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
-    }
+    this._buildTree();
 
     this._currentSequence = '';
 
@@ -285,6 +280,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _enterKeytipMode(): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
+      if (this._keytipManager.delayUpdatingKeytipChange) {
+        this._buildTree();
+        this._setKeytips();
+      }
       this._keytipTree.currentKeytip = this._keytipTree.root;
       // Show children of root
       this.showKeytips(this._keytipTree.getChildren());
@@ -294,6 +293,20 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       if (this.props.onEnterKeytipMode) {
         this.props.onEnterKeytipMode();
       }
+    }
+  }
+
+  private _buildTree(): void {
+    this._keytipTree = new KeytipTree();
+    // Add regular and persisted keytips to the tree
+    for (const id of Object.keys(this._keytipManager.keytips)) {
+      const uniqueKeytip = this._keytipManager.keytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
+    }
+
+    for (const id of Object.keys(this._keytipManager.persistedKeytips)) {
+      const uniqueKeytip = this._keytipManager.persistedKeytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
     }
   }
 
