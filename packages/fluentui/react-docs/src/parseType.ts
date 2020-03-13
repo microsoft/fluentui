@@ -4,7 +4,7 @@ import * as t from '@babel/types';
 import * as _ from 'lodash';
 
 import { ComponentPropType } from '@fluentui/docs/src/types';
-import { PropItem } from './docgen';
+import { PropItem } from 'react-docgen-typescript';
 import parseTypeAnnotation from './parseTypeAnnotation';
 
 // TODO: Fix typing issues after elizabeth perf updates getComponentInfo
