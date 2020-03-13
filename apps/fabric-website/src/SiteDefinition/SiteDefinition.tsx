@@ -3,6 +3,7 @@ import { ISiteDefinition, LoadingComponent } from '@uifabric/example-app-base/li
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
+import { MessageBarType } from 'office-ui-fabric-react';
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Office UI Fabric',
@@ -58,18 +59,15 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   ],
   messageBars: [
     {
-      path: '#/controls/web',
-      text: 'Fabric 7 is now released with the new Fluent styles.',
+      path: '#',
+      text: (
+        <span>
+          <strong style={{ fontWeight: 700 }}>Coming soon</strong> UI Fabric is evolivng into Fluent UI.
+        </span>
+      ),
       linkText: 'Learn more',
-      linkUrl: '#/styles/web/fabric-7',
-      sessionStoragePrefix: 'Fabric7'
-    },
-    {
-      path: new RegExp(/^#?\/?$/),
-      text: 'Microsoft employees can sign in to see additional documentation.',
-      linkText: 'Sign in',
-      linkUrl: 'https://aka.ms/hig',
-      sessionStoragePrefix: 'SignIn'
+      linkUrl: 'https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/',
+      sessionStoragePrefix: 'FluentUI'
     }
   ]
 };

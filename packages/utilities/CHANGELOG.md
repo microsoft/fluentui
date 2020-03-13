@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 10 Mar 2020 12:25:14 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
 
+## 7.14.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
 ## 7.13.2
 Tue, 10 Mar 2020 12:25:14 GMT
 

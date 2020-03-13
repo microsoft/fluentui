@@ -1,10 +1,16 @@
+> :warning: The **Office UI Fabric React** project is evolving to **Fluent UI**. :warning:
+> 
+> As a result, this repo will be moving to a new location: [https://github.com/microsoft/fluentui](https://github.com/microsoft/fluentui). This move is expected to happen March 20, 2020. This should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location once the repo move is complete.
+>
+> We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
+
 # [Office UI Fabric React](https://dev.microsoft.com/fabric)
 
 **The React-based front-end framework for building experiences for Office and Office 365.**
 
-**Fabric 7**: Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
-
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react) [![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
+
+**Fabric 7**: Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 

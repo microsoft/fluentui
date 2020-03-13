@@ -14,14 +14,11 @@ export interface IFabricClassNames {
 }
 
 export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
-  const { theme, className, isFocusVisible, applyTheme } = props;
+  const { theme, className, applyTheme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
-  const focusVisibility = isFocusVisible ? 'Visible' : 'Hidden';
   return {
     root: [
       classNames.root,
-      // keywords for search: is-focusVisible ms-Fabric--isFocusVisible ms-Fabric--isFocusHidden
-      `is-focus${focusVisibility} ms-Fabric--isFocus${focusVisibility}`,
       theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
