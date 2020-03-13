@@ -122,8 +122,8 @@ function fixTsConfigs(outputPath) {
   const mapping = {
     '@fluentui/*': ['packages/fluentui/*/src/index'],
     'docs/*': ['packages/fluentui/docs/*'],
-    'src/*': ['packages/fluentui/react/src/*'],
-    'test/*': ['packages/fluentui/react/test/*']
+    'src/*': ['packages/fluentui/react-experimental/src/*'],
+    'test/*': ['packages/fluentui/react-experimental/test/*']
   };
 
   for (let file of files) {

@@ -54,7 +54,7 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
 
   packedPackages = {};
 
-  // packages/fluentui/react/src -> packages/fluentui/react,
+  // packages/fluentui/react-experimental/src -> packages/fluentui/react,
   // as lernaAliases append 'src' by default
   const projectPackages = lernaAliases({ sourceDirectory: false });
 
