@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
+import { Async } from '../../Utilities';
 
 export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, S>
@@ -7,6 +8,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
   return class WithContainsFocusComponent extends BaseDecorator<TProps & { containsFocus?: boolean }, { containsFocus?: boolean }> {
     private _newContainsFocus: boolean;
     private _delayedSetContainsFocus: () => void;
+    private _async: Async;
 
     constructor(props: TProps) {
       super(props);
@@ -15,6 +17,7 @@ export function withContainsFocus<TProps extends { containsFocus?: boolean }, S>
         containsFocus: false
       };
 
+      this._async = new Async(this);
       this._delayedSetContainsFocus = this._async.debounce(this._setContainsFocus, 20);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
       this._handleFocus = this._handleFocus.bind(this);

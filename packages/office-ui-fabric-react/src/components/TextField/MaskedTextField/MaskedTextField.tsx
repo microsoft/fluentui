@@ -40,10 +40,6 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     maskChar: DEFAULT_MASK_CHAR,
     maskFormat: DEFAULT_MASK_FORMAT_CHARS
   };
-  /**
-   * Tell BaseComponent to bypass resolution of componentRef.
-   */
-  protected _skipComponentRefResolution = true;
 
   private _textField = React.createRef<ITextField>();
 

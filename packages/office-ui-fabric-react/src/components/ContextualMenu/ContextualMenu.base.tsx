@@ -10,11 +10,14 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
-import { divProperties, getNativeProps, shallowCompare } from '../../Utilities';
-
 import {
+  divProperties,
+  getNativeProps,
+  shallowCompare,
+  warnDeprecations,
+  Async,
+  EventGroup,
   assign,
-  BaseComponent,
   classNamesFunction,
   css,
   getDocument,
@@ -29,7 +32,8 @@ import {
   shouldWrapFocus,
   IStyleFunctionOrObject,
   isIOS,
-  isMac
+  isMac,
+  initializeComponentRef
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -38,7 +42,6 @@ import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-
 import { getItemStyles } from './ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
@@ -86,8 +89,10 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
 
 const NavigationIdleDelay = 250 /* ms */;
 
+const COMPONENT_NAME = 'ContextualMenu';
+
 @withResponsiveMode
-export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
+export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
   public static defaultProps: IContextualMenuProps = {
     items: [],
@@ -97,6 +102,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     beakWidth: 16
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _id: string;
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
@@ -120,14 +127,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   constructor(props: IContextualMenuProps) {
     super(props);
 
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
+      getMenuClassNames: 'styles'
+    });
+
     this.state = {
       contextualMenuItems: undefined,
       subMenuId: getId('ContextualMenu')
     };
-
-    this._warnDeprecations({
-      getMenuClassNames: 'styles'
-    });
 
     this._id = props.id || getId('ContextualMenu');
     this._isFocusingPreviousElement = false;

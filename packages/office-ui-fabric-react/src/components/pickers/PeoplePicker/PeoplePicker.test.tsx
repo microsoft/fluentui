@@ -33,6 +33,7 @@ describe('PeoplePicker', () => {
   });
 
   it('can search for, select people and remove them', () => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
 
@@ -45,6 +46,7 @@ describe('PeoplePicker', () => {
     input.value = 'Valentyna';
 
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();

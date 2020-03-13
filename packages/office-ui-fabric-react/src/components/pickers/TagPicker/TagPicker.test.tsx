@@ -52,6 +52,7 @@ describe('TagPicker', () => {
   });
 
   it('can search for and select tags', () => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
 
@@ -64,6 +65,7 @@ describe('TagPicker', () => {
     input.value = 'bl';
 
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
 
@@ -81,6 +83,7 @@ describe('TagPicker', () => {
   });
 
   it('can be a controlled component', () => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
 
@@ -93,6 +96,7 @@ describe('TagPicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 
@@ -118,6 +122,7 @@ describe('TagPicker', () => {
   });
 
   it('fires change events correctly for controlled components', done => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
     const onChange = (items: ITag[] | undefined): void => {
@@ -132,6 +137,7 @@ describe('TagPicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
 

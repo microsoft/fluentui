@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   classNamesFunction,
   getId,
   allowScrollOnElement,
   allowOverscrollOnElement,
   KeyCodes,
-  elementContains
+  elementContains,
+  warnDeprecations,
+  Async,
+  EventGroup
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
@@ -18,6 +20,7 @@ import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/w
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
 import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
+import { initializeComponentRef } from '@uifabric/utilities';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -39,9 +42,10 @@ export interface IDialogState {
 }
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
+const COMPONENT_NAME = 'Modal';
 
 @withResponsiveMode
-export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
+export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
   public static defaultProps: IModalProps = {
     isOpen: false,
     isDarkOverlay: true,
@@ -57,9 +61,20 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _lastSetY: number;
   private _allowTouchBodyScroll: boolean;
   private _hasRegisteredKeyUp: boolean;
+  private _async: Async;
+  private _events: EventGroup;
 
   constructor(props: IModalProps) {
     super(props);
+
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
+      onLayerDidMount: 'layerProps.onLayerDidMount'
+    });
+
     this.state = {
       id: getId('Modal'),
       isOpen: props.isOpen,
@@ -71,10 +86,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 
     this._lastSetX = 0;
     this._lastSetY = 0;
-
-    this._warnDeprecations({
-      onLayerDidMount: 'layerProps.onLayerDidMount'
-    });
 
     const { allowTouchBodyScroll = false } = this.props;
     this._allowTouchBodyScroll = allowTouchBodyScroll;
@@ -139,6 +150,11 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         isVisible: true
       });
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {

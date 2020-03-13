@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as stylesImport from './BaseFloatingPicker.scss';
-import { BaseComponent, css, KeyCodes } from '../../Utilities';
+import { Async, initializeComponentRef, css, KeyCodes } from '../../Utilities';
 import { Callout, DirectionalHint } from '../../Callout';
 import { IBaseFloatingPicker, IBaseFloatingPickerProps } from './BaseFloatingPicker.types';
 import { ISuggestionModel } from '../../Pickers';
@@ -16,7 +16,7 @@ export interface IBaseFloatingPickerState {
   didBind: boolean;
 }
 
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState>
+export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends React.Component<P, IBaseFloatingPickerState>
   implements IBaseFloatingPicker {
   protected selection: Selection;
 
@@ -29,8 +29,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   protected currentPromise: PromiseLike<T[]>;
   protected isComponentMounted: boolean = false;
 
+  private _async: Async;
   constructor(basePickerProps: P) {
     super(basePickerProps);
+
+    this._async = new Async(this);
+    initializeComponentRef(this);
 
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
