@@ -73,7 +73,7 @@ export const IconSvgExample: React.FunctionComponent = () => {
   // You could also use the standard Icon here.
   return (
     <div>
-      <FontIcon iconName="onedrive-svg" aria-label="One Drive" className={iconClass} />
+      <FontIcon iconName="onedrive-svg" aria-label="OneDrive" className={iconClass} />
       <FontIcon
         iconName="yammer-svg"
         aria-label="Yammer"

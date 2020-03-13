@@ -2,6 +2,7 @@
 
 exports[`Icon renders Icon correctly 1`] = `
 <i
+  aria-label="asdf"
   className=
 
       {

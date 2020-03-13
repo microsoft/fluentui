@@ -418,6 +418,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
           </label>
         </span>
         <i
+          aria-label="Globe"
           className=
 
               {
