@@ -479,12 +479,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: e => {
-                            if (disabled) {
-                              return;
+                            if (!disabled) {
+                              getToggleButtonProps({ disabled }).onClick(e);
                             }
 
                             _.invoke(predefinedProps, 'onClick', e);
-                            getToggleButtonProps({ disabled }).onClick(e);
                           }
                         })
                       })}
@@ -559,19 +558,17 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
             },
             onBlur: e => {
-              if (disabled) {
-                return;
+              if (!disabled) {
+                onBlur(e);
               }
 
-              onBlur(e);
               _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
             },
             onKeyDown: e => {
-              if (disabled) {
-                return;
+              if (!disabled) {
+                onKeyDown(e);
               }
 
-              onKeyDown(e);
               _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
             }
           })
@@ -874,41 +871,38 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     getInputProps: (options?: GetInputPropsOptions) => any
   ) => (predefinedProps: DropdownSearchInputProps) => {
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-      if (disabled) {
-        return;
+      if (!disabled) {
+        this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
+
+        e.nativeEvent['preventDownshiftDefault'] = true;
       }
 
-      this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
-
-      e.nativeEvent['preventDownshiftDefault'] = true;
       _.invoke(predefinedProps, 'onInputBlur', e, searchInputProps);
     };
     const { disabled } = this.props;
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-      if (disabled) {
-        return;
-      }
-
-      switch (keyboardKey.getCode(e)) {
-        case keyboardKey.Tab:
-          this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
-          break;
-        case keyboardKey.ArrowLeft:
-          if (!rtl) {
-            this.trySetLastSelectedItemAsActive();
-          }
-          break;
-        case keyboardKey.ArrowRight:
-          if (rtl) {
-            this.trySetLastSelectedItemAsActive();
-          }
-          break;
-        case keyboardKey.Backspace:
-          this.tryRemoveItemFromValue();
-          break;
-        default:
-          break;
+      if (!disabled) {
+        switch (keyboardKey.getCode(e)) {
+          case keyboardKey.Tab:
+            this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
+            break;
+          case keyboardKey.ArrowLeft:
+            if (!rtl) {
+              this.trySetLastSelectedItemAsActive();
+            }
+            break;
+          case keyboardKey.ArrowRight:
+            if (rtl) {
+              this.trySetLastSelectedItemAsActive();
+            }
+            break;
+          case keyboardKey.Backspace:
+            this.tryRemoveItemFromValue();
+            break;
+          default:
+            break;
+        }
       }
 
       _.invoke(predefinedProps, 'onInputKeyDown', e, {
@@ -935,11 +929,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // same story as above for getRootProps.
       accessibilityComboboxProps,
       onFocus: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-        if (disabled) {
-          return;
+        if (!disabled) {
+          this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
         }
-
-        this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
       },
