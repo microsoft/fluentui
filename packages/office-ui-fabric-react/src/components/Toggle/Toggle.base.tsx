@@ -151,7 +151,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
             </Label>
           )}
         </div>
-        {/* <FocusRects /> */}
+        <FocusRects />
       </RootType>
     );
   }

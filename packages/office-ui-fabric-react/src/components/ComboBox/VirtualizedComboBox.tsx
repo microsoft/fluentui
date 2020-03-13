@@ -3,12 +3,19 @@ import { ComboBox } from './ComboBox';
 import { IComboBoxProps, IComboBox, IComboBoxOption } from './ComboBox.types';
 import { IList, List } from '../../List';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import { initializeComponentRef } from '../../Utilities';
 
 export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
   /** The combo box element */
   private _comboBox = React.createRef<IComboBox>();
   /** The virtualized list element */
   private _list = React.createRef<IList>();
+
+  constructor(props: IComboBoxProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   /**
    * All selected options

@@ -44,25 +44,23 @@ export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <>
-        <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
-          <tbody>
-            {rowsOfItems.map((rows: any[], rowIndex: number) => {
-              return (
-                <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
-                  {rows.map((cell: any, cellIndex: number) => {
-                    return (
-                      <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
-                        {onRenderItem(cell, cellIndex)}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
-      </>
+      <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
+        <tbody>
+          {rowsOfItems.map((rows: any[], rowIndex: number) => {
+            return (
+              <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
+                {rows.map((cell: any, cellIndex: number) => {
+                  return (
+                    <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
+                      {onRenderItem(cell, cellIndex)}
+                    </td>
+                  );
+                })}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     );
 
     // Create the table/grid

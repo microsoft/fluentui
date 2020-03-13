@@ -79,13 +79,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _requestSuggestionsOnClick = false;
-  private _async2: Async;
+  private _async: Async;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
     initializeComponentRef(this);
-    this._async2 = new Async(this);
+    this._async = new Async(this);
 
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
@@ -122,7 +122,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   public componentDidMount(): void {
     this.selection.setItems(this.state.items);
-    this._onResolveSuggestions = this._async2.debounce(this._onResolveSuggestions, this.props.resolveDelay);
+    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
   // tslint:disable-next-line function-name
@@ -159,7 +159,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     if (this.currentPromise) {
       this.currentPromise = undefined;
     }
-    this._async2.dispose();
+    this._async.dispose();
   }
 
   public focus() {
@@ -908,13 +908,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     return areSuggestionsVisible;
   }
 
-  private _onResolveSuggestions = (updatedValue: string): void => {
+  private _onResolveSuggestions(updatedValue: string): void {
     const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
 
     if (suggestions !== null) {
       this.updateSuggestionsList(suggestions, updatedValue);
     }
-  };
+  }
 
   private _completeGenericSuggestion = (): void => {
     if (
