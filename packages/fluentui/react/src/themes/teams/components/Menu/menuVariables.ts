@@ -145,7 +145,7 @@ export default (siteVars: any): MenuVariables => {
     beakZIndex: siteVars.zIndexes.menuItem,
 
     wrapperColorActive: siteVars.colors.grey[500],
-    wrapperColorFocus: undefined,
+    wrapperColorFocus: siteVars.colors.white,
     wrapperBackgroundColorFocus: siteVars.colors.brand[500]
   };
 };
