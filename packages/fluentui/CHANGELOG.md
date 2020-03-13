@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix passing down `variables` in `ToolbarMenuItem` @layershifter ([#12204](https://github.com/OfficeDev/office-ui-fabric-react/pull/12204))
 - Fix `ToolbarMenuItem` shouldn't focus menu trigger element after 'onClick' was executed on menu item @kolaps33 ([#12266](https://github.com/OfficeDev/office-ui-fabric-react/pull/12266))
 - `Carousel` accessibility fixes @kolaps33 ([#12050](https://github.com/OfficeDev/office-ui-fabric-react/pull/12050))
+- Fix different styles between children and shorthand API in `Button` component @mnajdova ([#12292](https://github.com/OfficeDev/office-ui-fabric-react/pull/12292))
 
 ### Features
 - Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
