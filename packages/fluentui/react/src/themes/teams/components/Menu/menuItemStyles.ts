@@ -126,8 +126,8 @@ const pointingBeak = ({
 
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
   wrapper: ({ props, variables: v }): ICSSInJSStyle => {
-    const { active, disabled, iconOnly, isFromKeyboard, pills, pointing, secondary, underlined, vertical, primary } = props;
-
+    const { active, disabled, iconOnly, pills, pointing, secondary, underlined, vertical, primary } = props;
+    const isFromKeyboard = true;
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {

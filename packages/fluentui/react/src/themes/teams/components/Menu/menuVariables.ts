@@ -146,6 +146,6 @@ export default (siteVars: any): MenuVariables => {
 
     wrapperColorActive: siteVars.colors.grey[500],
     wrapperColorFocus: undefined,
-    wrapperBackgroundColorFocus: undefined
+    wrapperBackgroundColorFocus: siteVars.colors.brand[500]
   };
 };
