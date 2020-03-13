@@ -10,7 +10,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
   return {
     root: [
       theme.fonts.medium,
-      'ms-VerticalStackedBarChart',
       className,
       {
         width: chartWidth
@@ -27,12 +26,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     chart: [
       {
         width: chartWidth,
-        height: chartHeight,
-        boxSizing: 'content-box',
-        marginLeft: chartMargin.left,
-        marginRight: chartMargin.right,
-        marginBottom: chartMargin.bottom,
-        marginTop: chartMargin.top
+        height: chartHeight
       }
     ],
 
@@ -57,7 +51,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       }
     ],
 
-    // cross check thest
     yAxis: [
       {
         transform: `translate(${chartMargin.left}px, 0px)`
@@ -123,7 +116,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     },
 
     legendContainer: {
-      marginTop: '5px'
+      marginTop: '8px'
     },
 
     xAxisText: []

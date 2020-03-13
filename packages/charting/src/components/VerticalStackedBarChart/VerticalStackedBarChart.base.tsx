@@ -45,8 +45,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
   private _yAxisTickCount: number;
   private _colors: string[];
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
-  // tslint:disable-next-line:no-any
-  private _refArray: any;
+  private _refArray: IRefArrayData[];
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -72,17 +71,11 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
 
     const xAxis = isNumeric ? this._createNumericXAxis(dataset) : this._createStringXAxis(dataset);
     const yAxis = this._createYAxis(dataset);
-    const bars: JSX.Element[] = [];
-    // theme case
     const legends = this._getLegendData(this._points, this.props.theme!.palette);
-    this._points.map((singleChartData: IVerticalStackedChartProps, index: number) => {
-      const singleChartBar = isNumeric
-        ? this._createNumericBars(singleChartData, dataset, index, this.props.href!)
-        : this._createStringBars(singleChartData, dataset, index, this.props.href!);
-      bars.push(singleChartBar);
-    });
-    const { theme, className, styles } = this.props;
+    const bars: JSX.Element[] = this._getBars(this._points, dataset, isNumeric);
     const { isCalloutVisible } = this.state;
+
+    const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       width: this._width,
@@ -412,6 +405,18 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       .range([0, this._height]);
 
     return this.createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, false);
+  };
+
+  private _getBars = (_points: IVerticalStackedChartProps[], dataset: IDataPoint[], isNumeric: boolean): JSX.Element[] => {
+    const bars: JSX.Element[] = [];
+    _points.map((singleChartData: IVerticalStackedChartProps, index: number) => {
+      const singleChartBar = isNumeric
+        ? this._createNumericBars(singleChartData, dataset, index, this.props.href!)
+        : this._createStringBars(singleChartData, dataset, index, this.props.href!);
+      bars.push(singleChartBar);
+    });
+
+    return bars;
   };
 
   private _setXAxis(node: SVGGElement | null, xAxis: numericAxis | stringAxis): void {
