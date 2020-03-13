@@ -270,6 +270,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     const { active, iconOnly, isFromKeyboard, pointing, primary, underlined, vertical, disabled } = p;
+
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
