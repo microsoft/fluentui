@@ -908,13 +908,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     return areSuggestionsVisible;
   }
 
-  private _onResolveSuggestions(updatedValue: string): void {
+  private _onResolveSuggestions = (updatedValue: string): void => {
     const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
 
     if (suggestions !== null) {
       this.updateSuggestionsList(suggestions, updatedValue);
     }
-  }
+  };
 
   private _completeGenericSuggestion = (): void => {
     if (
