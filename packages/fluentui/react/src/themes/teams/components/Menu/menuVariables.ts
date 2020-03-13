@@ -70,6 +70,8 @@ export interface MenuVariables {
   wrapperColorActive: string;
   wrapperColorFocus: string;
   wrapperBackgroundColorFocus: string;
+
+  indicatorColor: string;
 }
 
 export default (siteVars: any): MenuVariables => {
@@ -146,6 +148,8 @@ export default (siteVars: any): MenuVariables => {
 
     wrapperColorActive: siteVars.colors.grey[500],
     wrapperColorFocus: siteVars.colors.white,
-    wrapperBackgroundColorFocus: siteVars.colors.brand[500]
+    wrapperBackgroundColorFocus: siteVars.colors.brand[500],
+
+    indicatorColor: siteVars.colors.grey[500]
   };
 };

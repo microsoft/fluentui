@@ -413,7 +413,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         left: 'unset'
       }),
 
-      backgroundImage: submenuIndicatorUrl(v.color, p.vertical),
+      backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
       ...(rtl && {
         transform: `scaleX(-1)`
       }),

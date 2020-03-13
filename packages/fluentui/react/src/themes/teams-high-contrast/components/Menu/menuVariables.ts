@@ -34,5 +34,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
 
   wrapperColorActive: siteVars.colors.black,
   wrapperBackgroundColorFocus: siteVars.accessibleCyan,
-  wrapperColorFocus: siteVars.colors.black
+  wrapperColorFocus: siteVars.colors.black,
+
+  indicatorColor: siteVars.colors.black
 });
