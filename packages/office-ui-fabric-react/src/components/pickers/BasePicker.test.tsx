@@ -52,6 +52,7 @@ describe('BasePicker', () => {
 
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(root);
+    jest.clearAllTimers();
   });
   const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
   const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => <div key={props.item.name}>{basicRenderer(props)}</div>;
@@ -86,6 +87,7 @@ describe('BasePicker', () => {
   });
 
   it('can provide custom renderers', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -105,6 +107,7 @@ describe('BasePicker', () => {
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
 
+    jest.runOnlyPendingTimers();
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
 
@@ -162,6 +165,7 @@ describe('BasePicker', () => {
   });
 
   it('has force suggestions button', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -198,6 +202,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
+    jest.runOnlyPendingTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -212,6 +217,7 @@ describe('BasePicker', () => {
   });
 
   it('can will not render input when items reach itemLimit', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -231,6 +237,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runOnlyPendingTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     ReactTestUtils.Simulate.click(suggestionOptions[0]);

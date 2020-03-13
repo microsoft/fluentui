@@ -104,8 +104,6 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
       this.__className = results && results.length > 1 ? results[1] : '';
     }
 
-    console.log('class name', this.__className, this.constructor.name, this.constructor.toString());
-
     return this.__className;
   }
 

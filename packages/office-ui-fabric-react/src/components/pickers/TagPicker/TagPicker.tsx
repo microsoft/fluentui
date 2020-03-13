@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { styled } from '../../../Utilities';
+import { styled, initializeComponentRef } from '../../../Utilities';
 import { BasePicker } from '../BasePicker';
 import { IBasePickerStyleProps, IBasePickerStyles } from '../BasePicker.types';
 import { getStyles } from '../BasePicker.styles';
@@ -17,6 +17,11 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
     onRenderItem: (props: ITagItemProps) => <TagItem {...props}>{props.item.name}</TagItem>,
     onRenderSuggestionsItem: (props: ITag) => <TagItemSuggestion>{props.name}</TagItemSuggestion>
   };
+
+  constructor(props: ITagPickerProps) {
+    super(props);
+    initializeComponentRef(this);
+  }
 }
 
 export const TagPicker = styled<ITagPickerProps, IBasePickerStyleProps, IBasePickerStyles>(TagPickerBase, getStyles, undefined, {

@@ -111,7 +111,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     this._bindToInputElement();
     this.isComponentMounted = true;
 
-    this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
+    // this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
 
   public componentDidUpdate(): void {

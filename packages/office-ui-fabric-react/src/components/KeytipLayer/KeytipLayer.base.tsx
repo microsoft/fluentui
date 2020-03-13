@@ -130,26 +130,8 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   }
 
   public componentWillUnmount(): void {
-    // Remove window listeners
-    this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
-    this._events.off(window, 'pointerup', this._onDismiss, true /* useCapture */);
-    this._events.off(window, 'resize', this._onDismiss);
-    this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
-    this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
-    this._events.off(window, 'scroll', this._onDismiss, true /* useCapture */);
-
-    // Remove keytip listeners
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_ADDED, this._onKeytipAdded);
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_UPDATED, this._onKeytipUpdated);
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_REMOVED, this._onKeytipRemoved);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_ADDED, this._onPersistedKeytipAdded);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_REMOVED, this._onPersistedKeytipRemoved);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
-    this._events.off(this._keytipManager, KeytipEvents.ENTER_KEYTIP_MODE, this._enterKeytipMode);
-    this._events.off(this._keytipManager, KeytipEvents.EXIT_KEYTIP_MODE, this._exitKeytipMode);
-
-    this._events.dispose();
     this._async.dispose();
+    this._events.dispose();
   }
 
   // The below public functions are only public for testing purposes

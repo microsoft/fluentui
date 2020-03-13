@@ -772,7 +772,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
-        onMenuClick(ev, this);
+        onMenuClick(ev, this.props);
       }
 
       this._onToggleMenu(false);
@@ -854,7 +854,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement | HTMLSpanElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
-      onMenuClick(ev, this);
+      onMenuClick(ev, this.props);
     }
 
     if (!ev.defaultPrevented) {
