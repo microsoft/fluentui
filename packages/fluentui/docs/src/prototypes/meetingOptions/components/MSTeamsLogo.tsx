@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react';
+import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react-experimental';
 
 export interface LogoProps {
   companyName?: string;
