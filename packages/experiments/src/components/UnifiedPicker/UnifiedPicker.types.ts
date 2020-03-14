@@ -19,7 +19,7 @@ export interface IUnifiedPickerProps<T> {
    * Component to render selected items
    * selectedItemsListProps will be passed as props to this component
    */
-  onRenderSelectedItems: () => JSX.Element;
+  onRenderSelectedItems: (props: ISelectedItemsListProps<T>) => JSX.Element;
 
   /**
    * Props to pass to SelectedItems component
@@ -30,7 +30,7 @@ export interface IUnifiedPickerProps<T> {
    * Component to render floating suggestions
    * floatingSuggestionProps will be passed as props to this component
    */
-  onRederFloatingSuggestions: () => JSX.Element;
+  onRederFloatingSuggestions: (props: IBaseFloatingSuggestionsProps<T>) => JSX.Element;
 
   /**
    * Props to pass to floating suggestions component
@@ -67,4 +67,9 @@ export interface IUnifiedPickerProps<T> {
    * @defaultvalue undefined
    */
   inputProps?: IInputProps;
+
+  /**
+   * Header component
+   */
+  headerComponent?: JSX.Element;
 }

@@ -13,7 +13,16 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const input = React.createRef<Autofill>();
   const [selection] = React.useState(new Selection());
 
-  const { className, focusZoneProps, inputProps } = props;
+  const {
+    className,
+    focusZoneProps,
+    inputProps,
+    onRenderSelectedItems,
+    selectedItemsListProps,
+    onRederFloatingSuggestions,
+    floatingSuggestionProps,
+    headerComponent
+  } = props;
 
   const activeDescendant = '';
   const isExpanded = true;
@@ -37,9 +46,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     console.log('on paste');
   };
 
-  const _renderSelectedItemsList = () => <div>Selected items list</div>;
+  const _renderSelectedItemsList = () => onRenderSelectedItems(selectedItemsListProps);
   const _canAddItems = () => true;
-  const _renderFloatingPicker = () => <div>floating picker</div>;
+  const _renderFloatingPicker = () => onRederFloatingSuggestions(floatingSuggestionProps);
 
   return (
     <div
@@ -51,7 +60,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
         <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
           <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
-            {/** render header here */}
+            {headerComponent}
             {_renderSelectedItemsList()}
             {_canAddItems() && (
               <Autofill
