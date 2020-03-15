@@ -3,6 +3,7 @@ import { IStyle } from '@uifabric/styling';
 import {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,
+  IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@uifabric/utilities';
 
@@ -18,7 +19,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
   /**
    * List of suggestions to be displayed with Type T
    */
-  suggestions: IFloatingSuggestionItemProps<T>[];
+  suggestions: IFloatingSuggestionItem<T>[];
   /**
    * This param decides whether to display suggestions or not
    * Must be set by parent component

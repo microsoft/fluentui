@@ -19,6 +19,11 @@ export interface IFloatingSuggestionItemProps<T> {
   onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
 }
 
+export type IFloatingSuggestionItem<T> = Omit<
+  IFloatingSuggestionItemProps<T>,
+  'onRenderSuggestion' | 'onClick' | 'onRemoveItem' | 'theme'
+>;
+
 export type IFloatingSuggestionOnClickItemProps<T> = Pick<
   IFloatingSuggestionItemProps<T>,
   'item' | 'isSelected' | 'key' | 'id'
