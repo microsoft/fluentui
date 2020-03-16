@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, css, KeyCodes, getRTL } from '@uifabric/utilities';
+import { classNamesFunction, css, KeyCodes, getRTL, initializeComponentRef } from '@uifabric/utilities';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { IWeeklyDayPickerProps, IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import {
@@ -63,7 +63,7 @@ export interface IWeeklyDayPickerState {
   animationDirection: AnimationDirection;
 }
 
-export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IWeeklyDayPickerState> {
+export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, IWeeklyDayPickerState> {
   public static defaultProps: IWeeklyDayPickerProps = {
     onSelectDate: undefined,
     initialDate: undefined,
@@ -108,6 +108,9 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
 
   public constructor(props: IWeeklyDayPickerProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     const currentDate = props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
 
     this.state = {

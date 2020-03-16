@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
-  BaseComponent,
+  Async,
+  EventGroup,
   KeyCodes,
   elementContains,
   findScrollableParent,
@@ -8,7 +9,9 @@ import {
   getDocument,
   getWindow,
   isElementTabbable,
-  css
+  css,
+  initializeComponentRef,
+  FocusRects
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
 
@@ -107,12 +110,14 @@ export interface ISelectionZoneState {
 /**
  * {@docCategory Selection}
  */
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
+export class SelectionZone extends React.Component<ISelectionZoneProps, ISelectionZoneState> {
   public static defaultProps = {
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _isCtrlPressed: boolean;
   private _isShiftPressed: boolean;
@@ -134,6 +139,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
 
   constructor(props: ISelectionZoneProps) {
     super(props);
+
+    this._events = new EventGroup(this);
+    this._async = new Async(this);
+    initializeComponentRef(this);
 
     const { selection } = this.props;
 
@@ -179,6 +188,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
         data-selection-is-modal={isModal ? true : undefined}
       >
         {this.props.children}
+        <FocusRects />
       </div>
     );
   }
@@ -191,6 +201,11 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelection
       this._events.off(previousProps.selection);
       this._events.on(selection, 'change', this._onSelectionChange);
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._events.dispose();
+    this._async.dispose();
   }
 
   /**

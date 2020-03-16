@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   IRenderFunction,
   anchorProperties,
   assign,
@@ -12,7 +11,13 @@ import {
   mergeAriaAttributeValues,
   portalContainsElement,
   memoizeFunction,
-  nullRender
+  nullRender,
+  warnConditionallyRequiredProps,
+  warnDeprecations,
+  EventGroup,
+  initializeComponentRef,
+  Async,
+  FocusRects
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -36,11 +41,12 @@ export interface IBaseButtonState {
 }
 
 const TouchIdleDelay = 500; /* ms */
+const COMPONENT_NAME = 'BaseButton';
 
 /**
  * {@docCategory Button}
  */
-export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
+export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonState> implements IButton {
   private get _isSplitButton(): boolean {
     return !!this.props.menuProps && !!this.props.onClick && this.props.split === true;
   }
@@ -51,6 +57,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     split: false
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _buttonElement = React.createRef<HTMLElement>();
   private _splitButtonContainer = React.createRef<HTMLDivElement>();
   private _labelId: string;
@@ -72,12 +80,16 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     };
   });
 
-  constructor(props: IBaseButtonProps, rootClassName: string) {
+  constructor(props: IBaseButtonProps) {
     super(props);
 
-    this._warnConditionallyRequiredProps(['menuProps', 'onClick'], 'split', this.props.split!);
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
 
-    this._warnDeprecations({
+    warnConditionallyRequiredProps(COMPONENT_NAME, props, ['menuProps', 'onClick'], 'split', this.props.split!);
+
+    warnDeprecations(COMPONENT_NAME, props, {
       rootProps: undefined,
       description: 'secondaryText',
       toggled: 'checked'
@@ -259,6 +271,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     }
   }
 
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
+  }
+
   public focus(): void {
     if (this._isSplitButton && this._splitButtonContainer.current) {
       this._splitButtonContainer.current.focus();
@@ -331,7 +348,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       );
     }
 
-    return Content;
+    return (
+      <>
+        {Content}
+        <FocusRects />
+      </>
+    );
   }
 
   /**
@@ -751,7 +773,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
-        onMenuClick(ev, this);
+        onMenuClick(ev, this.props);
       }
 
       this._onToggleMenu(false);
@@ -833,7 +855,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onMenuClick = (ev: React.MouseEvent<HTMLDivElement | HTMLButtonElement | HTMLAnchorElement | HTMLSpanElement>) => {
     const { onMenuClick } = this.props;
     if (onMenuClick) {
-      onMenuClick(ev, this);
+      onMenuClick(ev, this.props);
     }
 
     if (!ev.defaultPrevented) {

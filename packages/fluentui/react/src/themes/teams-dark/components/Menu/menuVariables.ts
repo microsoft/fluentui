@@ -30,7 +30,28 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   primaryBorderColor: siteVars.colors.grey[600],
   pointingIndicatorBackgroundColor: siteVars.colors.brand[400],
 
+  activeUnderlinedBorderBottomColor: siteVars.colors.white,
+  activeUnderlinedPrimaryColor: siteVars.colors.brand[400],
+
   verticalBackgroundColor: siteVars.colors.grey[600],
   verticalBackgroundColorFocus: siteVars.colors.grey[550],
-  iconOnlyColorActive: siteVars.colors.brand[400]
+  iconOnlyColorActive: siteVars.colors.brand[400],
+  iconOnlyColorFocus: siteVars.colors.brand[400],
+  iconOnlyColorHover: siteVars.colors.brand[400],
+
+  wrapperColorActive: siteVars.colors.grey[250],
+  wrapperColorFocus: siteVars.colors.white,
+  wrapperColorHover: siteVars.colors.white,
+  primaryIndicatorColorHover: siteVars.colors.white,
+  wrapperBackgroundColorFocus: siteVars.colors.brand[400],
+  underlinedWrapperColorHover: siteVars.colors.white,
+
+  primaryWrapperColorFocus: siteVars.colors.white,
+  primaryWrapperBackgroundColorFocus: siteVars.colors.brand[400],
+
+  indicatorColor: siteVars.colors.grey[250],
+  activeIndicatorColor: siteVars.colors.white,
+  activePrimaryIndicatorColor: siteVars.colors.white,
+  activePrimaryVerticalIndicatorColor: siteVars.colors.white,
+  indicatorColorHover: siteVars.colors.white
 });

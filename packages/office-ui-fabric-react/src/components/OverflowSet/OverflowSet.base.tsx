@@ -2,14 +2,23 @@ import * as React from 'react';
 
 import { FocusZone, FocusZoneDirection, IFocusZone } from '@fluentui/react-focus';
 import { IKeytipProps } from '../../Keytip';
-import { BaseComponent, classNamesFunction, divProperties, elementContains, focusFirstChild, getNativeProps } from '../../Utilities';
+import {
+  initializeComponentRef,
+  classNamesFunction,
+  divProperties,
+  elementContains,
+  focusFirstChild,
+  getNativeProps,
+  warnMutuallyExclusive
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
+const COMPONENT_NAME = 'OverflowSet';
 
-export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
   private _focusZone = React.createRef<IFocusZone>();
   private _persistedKeytips: { [uniqueID: string]: IKeytipProps } = {};
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
@@ -19,12 +28,10 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
   constructor(props: IOverflowSetProps) {
     super(props);
 
-    // tslint:disable-next-line:deprecation
-    if (props.doNotContainWithinFocusZone) {
-      this._warnMutuallyExclusive({
-        doNotContainWithinFocusZone: 'focusZoneProps'
-      });
-    }
+    initializeComponentRef(this);
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
+      doNotContainWithinFocusZone: 'focusZoneProps'
+    });
   }
 
   public render(): JSX.Element {

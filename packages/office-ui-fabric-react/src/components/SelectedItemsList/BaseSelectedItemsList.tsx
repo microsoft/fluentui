@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
 import { Selection } from '../../Selection';
 
 import { IBaseSelectedItemsList, IBaseSelectedItemsListProps, ISelectedItemProps } from './BaseSelectedItemsList.types';
+import { initializeComponentRef } from '../../Utilities';
 
 export interface IBaseSelectedItemsListState<T = any> {
   // tslint:disable-next-line:no-any
   items: T[];
 }
 
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>>
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
   protected selection: Selection;
@@ -17,6 +17,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
+    initializeComponentRef(this);
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
     this.state = {
       items: items

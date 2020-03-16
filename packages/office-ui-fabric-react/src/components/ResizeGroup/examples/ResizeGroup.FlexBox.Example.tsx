@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 
@@ -69,16 +69,14 @@ function onReduceData(props: ILeftRightBoxSetProps): ILeftRightBoxSetProps | und
   return { ...result, cacheKey: `${result.leftCount + result.rightCount}` };
 }
 
-export class FlexBoxResizeGroupExample extends BaseComponent<{}, {}> {
-  public render(): JSX.Element {
-    const data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
-    return (
-      <ResizeGroup
-        data={data}
-        // tslint:disable-next-line:jsx-no-lambda
-        onRenderData={(scaledData: ILeftRightBoxSetProps) => <LeftRightBoxSet {...scaledData} />}
-        onReduceData={onReduceData}
-      />
-    );
-  }
-}
+export const FlexBoxResizeGroupExample: React.FunctionComponent<{}> = () => {
+  const data: ILeftRightBoxSetProps = { leftCount: 5, rightCount: 5, cacheKey: '10' };
+  return (
+    <ResizeGroup
+      data={data}
+      // tslint:disable-next-line:jsx-no-lambda
+      onRenderData={(scaledData: ILeftRightBoxSetProps) => <LeftRightBoxSet {...scaledData} />}
+      onReduceData={onReduceData}
+    />
+  );
+};

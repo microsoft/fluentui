@@ -7,19 +7,23 @@ import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
   allowOverscrollOnElement,
-  BaseComponent,
   classNamesFunction,
   divProperties,
   elementContains,
   getId,
   getNativeProps,
   getRTL,
-  css
+  css,
+  warnDeprecations,
+  Async,
+  EventGroup,
+  initializeComponentRef
 } from '../../Utilities';
 import { FocusTrapZone } from '../FocusTrapZone/index';
 import { IPanel, IPanelProps, IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
 
 const getClassNames = classNamesFunction<IPanelStyleProps, IPanelStyles>();
+const COMPONENT_NAME = 'Panel';
 
 enum PanelVisibilityState {
   closed,
@@ -34,7 +38,7 @@ interface IPanelState {
   visibility: PanelVisibilityState;
 }
 
-export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implements IPanel {
+export class PanelBase extends React.Component<IPanelProps, IPanelState> implements IPanel {
   public static defaultProps: IPanelProps = {
     isHiddenOnDismiss: false,
     isOpen: undefined,
@@ -43,6 +47,8 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     type: PanelType.smallFixedFar
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _panel = React.createRef<HTMLDivElement>();
   private _classNames: IProcessedStyleSet<IPanelStyles>;
   private _scrollableContent: HTMLDivElement | null;
@@ -76,7 +82,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     const { allowTouchBodyScroll = false } = this.props;
     this._allowTouchBodyScroll = allowTouchBodyScroll;
 
-    this._warnDeprecations({
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
       ignoreExternalFocusing: 'focusTrapZoneProps',
       forceFocusInsideTrap: 'focusTrapZoneProps',
       firstFocusableSelector: 'focusTrapZoneProps'
@@ -119,6 +129,11 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     } else if (!shouldListenOnOuterClick && previousShouldListenOnOuterClick) {
       this._events.off(document.body, 'mousedown', this._dismissOnOuterClick, true);
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {

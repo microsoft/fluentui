@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   KeyCodes,
   css,
   getId,
@@ -9,7 +8,8 @@ import {
   format,
   classNamesFunction,
   find,
-  findIndex
+  findIndex,
+  initializeComponentRef
 } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
@@ -57,13 +57,15 @@ export interface ICalendarDayGridState {
   animateBackwards?: boolean;
 }
 
-export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, ICalendarDayGridState> {
+export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, ICalendarDayGridState> {
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
   private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
   public constructor(props: ICalendarDayGridProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this.state = {
       activeDescendantId: getId(),
@@ -406,7 +408,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
    */
   private _getWeeks(propsToUse: ICalendarDayGridProps): IDayInfo[][] {
     const {
-      navigatedDate,
       selectedDate,
       dateRangeType,
       firstDayOfWeek,
@@ -418,6 +419,10 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       daysToSelectInDayView
     } = propsToUse;
 
+    const todaysDate = today || new Date();
+
+    const navigatedDate = propsToUse.navigatedDate ? propsToUse.navigatedDate : todaysDate;
+
     let date;
     if (weeksToShow && weeksToShow <= 4) {
       // if showing less than a full month, just use date == navigatedDate
@@ -425,7 +430,6 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     } else {
       date = new Date(navigatedDate.getFullYear(), navigatedDate.getMonth(), 1);
     }
-    const todaysDate = today || new Date();
     const weeks: IDayInfo[][] = [];
 
     // Cycle the date backwards to get to the first day of the week.

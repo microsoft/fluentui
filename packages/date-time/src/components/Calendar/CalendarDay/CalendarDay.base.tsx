@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, classNamesFunction } from '@uifabric/utilities';
+import { KeyCodes, css, getId, classNamesFunction, initializeComponentRef } from '@uifabric/utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
@@ -14,7 +14,7 @@ export interface ICalendarDayState {
   animateBackwards?: boolean;
 }
 
-export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
+export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalendarDayState> {
   private _dayGrid = React.createRef<ICalendarDayGrid>();
 
   public static getDerivedStateFromProps(
@@ -52,6 +52,8 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
   public constructor(props: ICalendarDayProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this._onSelectNextMonth = this._onSelectNextMonth.bind(this);
     this._onSelectPrevMonth = this._onSelectPrevMonth.bind(this);
