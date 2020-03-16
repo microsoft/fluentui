@@ -3,7 +3,7 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'icon-checkmark' }
+  status: { color: 'green', icon: 'icon-checkmark' },
 };
 
 const items: ShorthandCollection<ChatItemProps> = [
@@ -15,14 +15,14 @@ const items: ShorthandCollection<ChatItemProps> = [
         timestamp="Yesterday, 10:15 PM"
         mine
         badge={{
-          icon: 'redbang'
+          icon: 'redbang',
         }}
         badgePosition="start"
         variables={{ isImportant: true }}
       />
     ),
     contentPosition: 'end',
-    key: 'message-id-1'
+    key: 'message-id-1',
   },
   {
     gutter: <Avatar {...janeAvatar} />,
@@ -32,14 +32,14 @@ const items: ShorthandCollection<ChatItemProps> = [
         author="Jane Doe"
         timestamp="Yesterday, 10:15 PM"
         badge={{
-          icon: 'mention'
+          icon: 'mention',
         }}
         variables={{ hasMention: true }}
       />
     ),
     attached: 'top',
-    key: 'message-id-2'
-  }
+    key: 'message-id-2',
+  },
 ];
 
 const ChatExample = () => <Chat items={items} />;

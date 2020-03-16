@@ -2,7 +2,7 @@ import { Chat, ChatItem, ChatMessage } from '@fluentui/react-northstar';
 
 const selectors = {
   chat: `.${Chat.className}`,
-  item: (itemIndex: number) => `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.className}`
+  item: (itemIndex: number) => `.${ChatItem.className}:nth-child(${itemIndex}) .${ChatMessage.className}`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -22,8 +22,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Hovers first message in scrolled view: actions are visible')
         .executeScript(`document.querySelector("${selectors.chat}").parentNode.scrollTop = 20`)
         .hover(selectors.item(1))
-        .snapshot('Hovers first message in scrolled view: actions are hidden')
-  ]
+        .snapshot('Hovers first message in scrolled view: actions are hidden'),
+  ],
 };
 
 export default config;

@@ -42,10 +42,10 @@ class RefExample extends React.Component<{}, RefExampleState> {
                 {
                   nodeName: this.functionalRef.nodeName,
                   nodeType: this.functionalRef.nodeType,
-                  textContent: this.functionalRef.textContent
+                  textContent: this.functionalRef.textContent,
                 },
                 null,
-                2
+                2,
               )}
             </pre>
             <pre>
@@ -53,10 +53,10 @@ class RefExample extends React.Component<{}, RefExampleState> {
                 {
                   nodeName: this.createdRef.current.nodeName,
                   nodeType: this.createdRef.current.nodeType,
-                  textContent: this.createdRef.current.textContent
+                  textContent: this.createdRef.current.textContent,
                 },
                 null,
-                2
+                2,
               )}
             </pre>
           </code>

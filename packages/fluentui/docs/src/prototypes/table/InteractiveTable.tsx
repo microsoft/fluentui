@@ -6,7 +6,7 @@ import {
   gridHeaderCellBehavior,
   gridRowBehavior,
   gridCellBehavior,
-  MenuButton
+  MenuButton,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 
@@ -58,7 +58,7 @@ const InteractiveTable = () => {
             <Table.Cell content="Roman van von der Longername" accessibility={gridCellBehavior} />
             <Table.Cell content="None" accessibility={gridCellBehavior} />
             <Table.Cell content="30 years" accessibility={gridCellBehavior} />
-          </Table.Row>
+          </Table.Row>,
         )}
         {withContextMenu(
           <Table.Row accessibility={gridRowBehavior}>
@@ -66,7 +66,7 @@ const InteractiveTable = () => {
             <Table.Cell content="Alex" accessibility={gridCellBehavior} />
             <Table.Cell content="None" accessibility={gridCellBehavior} />
             <Table.Cell content="1 year" accessibility={gridCellBehavior} />
-          </Table.Row>
+          </Table.Row>,
         )}
         {withContextMenu(
           <Table.Row accessibility={gridRowBehavior}>
@@ -74,7 +74,7 @@ const InteractiveTable = () => {
             <Table.Cell content="Ali" accessibility={gridCellBehavior} />
             <Table.Cell content="None" accessibility={gridCellBehavior} />
             <Table.Cell content="30000000000000 years" accessibility={gridCellBehavior} />
-          </Table.Row>
+          </Table.Row>,
         )}
       </Table>
     </>

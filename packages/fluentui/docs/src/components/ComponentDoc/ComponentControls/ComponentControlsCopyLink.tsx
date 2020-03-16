@@ -23,7 +23,12 @@ export default class ComponentControlsCopyLink extends React.Component<any, any>
   render() {
     const { active } = this.state;
 
-    return <Tooltip trigger={<Icon name="linkify" onClick={this.handleClick} />} content={active ? 'Copied!' : this.btnLabel} />;
+    return (
+      <Tooltip
+        trigger={<Icon name="linkify" onClick={this.handleClick} />}
+        content={active ? 'Copied!' : this.btnLabel}
+      />
+    );
   }
 
   handleClick = e => {

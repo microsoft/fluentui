@@ -10,7 +10,7 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle'
+  'Selina Kyle',
 ];
 
 const DropdownExampleRender: React.FC = () => (

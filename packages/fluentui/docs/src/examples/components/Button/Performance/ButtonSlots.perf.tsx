@@ -10,7 +10,7 @@ const ButtonSlotsPerf = () => (
       inline: true,
       label: 'Loading',
       labelPosition: 'end',
-      size: 'smallest'
+      size: 'smallest',
     }}
   />
 );

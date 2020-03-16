@@ -10,7 +10,7 @@ const PopupExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'above-start',
-    values: positionAndAlignValues
+    values: positionAndAlignValues,
   });
 
   const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
@@ -23,7 +23,13 @@ const PopupExamplePosition = () => {
         align={align}
         position={position}
         unstable_pinned={unstable_pinned}
-        trigger={<Button icon={{ name: iconNames[position], circular: true, bordered: true }} styles={buttonStyles} title="Show popup" />}
+        trigger={
+          <Button
+            icon={{ name: iconNames[position], circular: true, bordered: true }}
+            styles={buttonStyles}
+            title="Show popup"
+          />
+        }
         content={
           <p>
             The popup is rendered {position} the trigger
@@ -50,14 +56,14 @@ const positionAndAlignValues = [
   'before-bottom',
   'after-top',
   'after-center',
-  'after-bottom'
+  'after-bottom',
 ];
 
 const iconNames: Record<Position, string> = {
   above: 'arrow-up',
   below: 'arrow-down',
   before: 'arrow-left',
-  after: 'arrow-right'
+  after: 'arrow-right',
 };
 
 const paddings: Record<string, React.CSSProperties['padding']> = {
@@ -72,5 +78,5 @@ const paddings: Record<string, React.CSSProperties['padding']> = {
   'before-bottom': '18px 42px 5px 5px',
   'after-top': '5px 5px 18px 42px',
   'after-center': '5px 5px 5px 42px',
-  'after-bottom': '18px 5px 5px 42px'
+  'after-bottom': '18px 5px 5px 42px',
 };

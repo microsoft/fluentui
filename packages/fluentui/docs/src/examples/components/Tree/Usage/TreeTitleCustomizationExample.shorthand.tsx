@@ -12,11 +12,11 @@ const items = [
         items: [
           {
             id: 'tree-title-customization-item-3',
-            title: 'one one one'
-          }
-        ]
-      }
-    ]
+            title: 'one one one',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'tree-title-customization-item-4',
@@ -24,10 +24,10 @@ const items = [
     items: [
       {
         id: 'tree-title-customization-item-5',
-        title: 'two one'
-      }
-    ]
-  }
+        title: 'two one',
+      },
+    ],
+  },
 ];
 
 const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
@@ -37,6 +37,8 @@ const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) =
   </Component>
 );
 
-const TreeTitleCustomizationExample = () => <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />;
+const TreeTitleCustomizationExample = () => (
+  <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />
+);
 
 export default TreeTitleCustomizationExample;

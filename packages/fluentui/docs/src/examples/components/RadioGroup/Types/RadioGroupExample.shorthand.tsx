@@ -10,7 +10,11 @@ class RadioGroupVerticalExample extends React.Component {
       <div>
         The selected value is: {selectedValue}
         <Divider />
-        <RadioGroup defaultCheckedValue="capricciosa" items={this.getItems()} onCheckedValueChange={this.handleChange} />
+        <RadioGroup
+          defaultCheckedValue="capricciosa"
+          items={this.getItems()}
+          onCheckedValueChange={this.handleChange}
+        />
       </div>
     );
   }
@@ -23,7 +27,7 @@ class RadioGroupVerticalExample extends React.Component {
         key: 'Prosciutto',
         label: 'Prosciutto',
         value: 'prosciutto',
-        disabled: true
+        disabled: true,
       },
       {
         name: 'pizza',
@@ -35,8 +39,8 @@ class RadioGroupVerticalExample extends React.Component {
         ),
         value: 'custom',
         checkedChanged: this.handleCustomCheckedChange,
-        'aria-label': 'Press Tab to change flavour'
-      }
+        'aria-label': 'Press Tab to change flavour',
+      },
     ];
   }
 

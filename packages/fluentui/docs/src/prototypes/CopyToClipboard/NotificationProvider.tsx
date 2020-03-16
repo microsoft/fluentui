@@ -48,7 +48,7 @@ export const Notification = createComponent<NotificationProps>({
       open: true,
       pointing: false,
       target,
-      trigger
+      trigger,
     };
 
     if (target || trigger) {
@@ -61,11 +61,11 @@ export const Notification = createComponent<NotificationProps>({
           <div className={classes.overlay}>
             {Tooltip.create({
               ...tooltipProps,
-              trigger: <div className={classes.content} />
+              trigger: <div className={classes.content} />,
             })}
           </div>
         </div>
       </Portal>
     );
-  }
+  },
 });

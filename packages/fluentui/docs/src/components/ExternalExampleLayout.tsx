@@ -42,7 +42,13 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
       <KnobProvider>
-        <SourceRender babelConfig={babelConfig} onRender={setError} source={exampleSource.js} resolver={importResolver} hot />
+        <SourceRender
+          babelConfig={babelConfig}
+          onRender={setError}
+          source={exampleSource.js}
+          resolver={importResolver}
+          hot
+        />
         {/* This block allows to see issues with examples as visual regressions. */}
         {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
       </KnobProvider>

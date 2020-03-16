@@ -6,7 +6,9 @@ import componentInfoContext from './componentInfoContext';
 const getInfoForSeeTags = (displayName: string) => {
   const info = componentInfoContext.byDisplayName[displayName];
 
-  return info.docblock.tags.filter(tag => tag.title === 'see').map(tag => componentInfoContext.byDisplayName[tag.description]);
+  return info.docblock.tags
+    .filter(tag => tag.title === 'see')
+    .map(tag => componentInfoContext.byDisplayName[tag.description]);
 };
 
 export default getInfoForSeeTags;

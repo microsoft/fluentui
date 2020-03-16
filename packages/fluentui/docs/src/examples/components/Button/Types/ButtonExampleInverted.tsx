@@ -6,7 +6,7 @@ const ButtonExampleInverted = () => (
     gap="gap.smaller"
     styles={({ theme: { siteVariables } }) => ({
       backgroundColor: siteVariables.colorScheme.brand.background2,
-      padding: '20px'
+      padding: '20px',
     })}
   >
     <Button inverted content="Inverted Button" />

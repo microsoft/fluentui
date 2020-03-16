@@ -8,7 +8,7 @@ const AlertExampleWidth = () => {
     min: '350px',
     max: '800px',
     initialValue: '500px',
-    step: '10px'
+    step: '10px',
   });
 
   return (

@@ -10,13 +10,13 @@ const inputItems = [
   { header: 'Honoré de Balzac' },
   { header: 'Louis XIV' },
   { header: 'Brigitte Bardot' },
-  { header: 'Marion Cotillard' }
+  { header: 'Marion Cotillard' },
 ].map(item => ({
   ...item,
   icon: {
     name: 'close',
-    'aria-label': `Éliminer ${item.header} de la sélection.`
-  }
+    'aria-label': `Éliminer ${item.header} de la sélection.`,
+  },
 }));
 
 const DropdownExampleSearchMultipleFrenchLanguage = () => (
@@ -48,7 +48,7 @@ const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resul
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item.header} a été choisi.`,
-  onRemove: item => `${item.header} a été éliminé.`
+  onRemove: item => `${item.header} a été éliminé.`,
 };
 
 export default DropdownExampleSearchMultipleFrenchLanguage;

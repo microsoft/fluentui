@@ -13,7 +13,7 @@ const ChatPaneLayout: React.FunctionComponent<Props<{ chat: ChatData }>> = ({ ch
     styles={{
       backgroundColor: '#f3f2f1',
       width: '50%',
-      position: 'absolute'
+      position: 'absolute',
     }}
   >
     <ChatPaneHeader chat={chat} />

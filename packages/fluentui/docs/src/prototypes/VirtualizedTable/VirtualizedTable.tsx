@@ -13,7 +13,7 @@ const accessibilityListProperties: Partial<ListProps> = {
   'aria-label': '',
   'aria-readonly': undefined,
   containerRole: 'presentation',
-  role: 'presentation'
+  role: 'presentation',
 };
 
 const rowRenderer: ListRowRenderer = ({ index, style }) => {

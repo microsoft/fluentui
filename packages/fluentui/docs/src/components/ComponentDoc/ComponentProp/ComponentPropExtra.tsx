@@ -8,18 +8,18 @@ export interface ComponentPropExtraProps {
 }
 
 const descriptionStyle = {
-  color: '#666'
+  color: '#666',
 };
 const contentStyle = {
-  marginLeft: '0.5em'
+  marginLeft: '0.5em',
 };
 const contentBlockStyle = {
   ...contentStyle,
-  display: 'block'
+  display: 'block',
 };
 const contentInlineStyle = {
   ...contentStyle,
-  display: 'inline'
+  display: 'inline',
 };
 
 const ComponentPropExtra = ({ children, inline, title, ...restProps }: Extendable<ComponentPropExtraProps>) => (

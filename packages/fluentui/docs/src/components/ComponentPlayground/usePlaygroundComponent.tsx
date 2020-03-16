@@ -16,12 +16,14 @@ const usePlaygroundComponent = (componentName: string): [React.ReactElement, str
   if (process.env.NODE_ENV !== 'production') {
     if (!componentInfo) {
       throw new Error(
-        `Cannot find a definition for "${componentName}", please check that "docs/src/componentInfo/${componentName}.info.json" file exists`
+        `Cannot find a definition for "${componentName}", please check that "docs/src/componentInfo/${componentName}.info.json" file exists`,
       );
     }
 
     if (!FluentUI[componentName]) {
-      throw new Error(`Cannot find an export for "${componentName}", please check that it is exported from "@fluentui/react-northstar"`);
+      throw new Error(
+        `Cannot find an export for "${componentName}", please check that it is exported from "@fluentui/react-northstar"`,
+      );
     }
   }
 
@@ -33,7 +35,7 @@ const usePlaygroundComponent = (componentName: string): [React.ReactElement, str
       componentInfo,
       propName: propDef.name,
       propDef,
-      theme: context.theme
+      theme: context.theme,
     });
 
     if (hookDefinition) {

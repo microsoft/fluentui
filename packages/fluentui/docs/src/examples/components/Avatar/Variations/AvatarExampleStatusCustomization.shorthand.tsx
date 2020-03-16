@@ -7,13 +7,16 @@ const defaultAvatar = (
     status={{
       color: 'green',
       icon: 'icon-checkmark',
-      title: 'Available'
+      title: 'Available',
     }}
   />
 );
 
 const AvatarExampleStatusCustomizationShorthand = () => (
-  <Grid columns="50% 50px 50px" styles={{ justifyContent: 'start', justifyItems: 'start', gap: '10px', alignItems: 'center' }}>
+  <Grid
+    columns="50% 50px 50px"
+    styles={{ justifyContent: 'start', justifyItems: 'start', gap: '10px', alignItems: 'center' }}
+  >
     <Text content="Status can receive variables." />
     {defaultAvatar}
     <Avatar
@@ -21,7 +24,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       status={{
         color: 'green',
         icon: 'icon-checkmark',
-        title: 'Available'
+        title: 'Available',
       }}
       variables={{ statusBorderColor: 'orange' }}
     />
@@ -33,7 +36,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       status={{
         color: 'green',
         icon: 'icon-checkmark',
-        title: 'Available'
+        title: 'Available',
       }}
     />
     <Text content="Status can have different size for the same avatar size." />
@@ -44,7 +47,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
         color: 'green',
         icon: 'icon-checkmark',
         title: 'Available',
-        size: 'larger'
+        size: 'larger',
       }}
     />
     <Text content="Status can have same size for different avatar sizes." />
@@ -56,7 +59,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
         color: 'green',
         icon: 'icon-checkmark',
         title: 'Available',
-        size: 'medium'
+        size: 'medium',
       }}
     />
   </Grid>

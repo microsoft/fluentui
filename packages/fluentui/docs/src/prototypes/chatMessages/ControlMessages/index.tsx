@@ -8,8 +8,8 @@ const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: {
     color: 'green',
-    icon: 'check'
-  }
+    icon: 'check',
+  },
 };
 
 const ChatExampleWithControlMessages = () => {
@@ -24,33 +24,33 @@ const ChatExampleWithControlMessages = () => {
               <div>
                 <a href="/">John Doe</a> joined the team
               </div>
-            )
+            ),
           }}
         />
       ),
       className: 'ui-chat__item_control',
-      key: 'message-id-6'
+      key: 'message-id-6',
     },
     {
       // Adding Grouped control messages
       message: <GroupControlMessages items={groupControlMessageItems} mainMessage={mainControlMessage} />,
       className: 'ui-chat__item_control_group',
-      key: 'message-id-7'
+      key: 'message-id-7',
     },
     {
       gutter: <Avatar {...janeAvatar} />,
       message: <Chat.Message content="Sure! Let's try it." author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
-      key: 'message-id-8'
+      key: 'message-id-8',
     },
     {
       children: <Divider content="Today" color="brand" important />,
-      key: 'message-id-9'
+      key: 'message-id-9',
     },
     {
       message: <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />,
       contentPosition: 'end',
-      key: 'message-id-10'
-    }
+      key: 'message-id-10',
+    },
   ];
   return (
     <Provider
@@ -59,12 +59,12 @@ const ChatExampleWithControlMessages = () => {
           ChatItem: {
             root: {
               '&.ui-chat__item_control_group .ui-chat__item__message': {
-                marginLeft: 0
+                marginLeft: 0,
               },
               '&.ui-chat__item_control .ui-chat__item__message': {
-                marginLeft: '16px'
-              }
-            }
+                marginLeft: '16px',
+              },
+            },
           },
           ChatMessage: {
             root: ({ props: p, theme: { siteVariables } }) => ({
@@ -72,18 +72,18 @@ const ChatExampleWithControlMessages = () => {
                 padding: 0,
                 marginLeft: '10px',
                 backgroundColor: siteVariables.colors.grey[100],
-                fontSize: '14px'
-              }
-            })
+                fontSize: '14px',
+              },
+            }),
           },
           ListItem: {
             root: {
               padding: 0,
               display: 'block',
-              minHeight: '25px'
-            }
-          }
-        }
+              minHeight: '25px',
+            },
+          },
+        },
       }}
     >
       <Chat items={items} />

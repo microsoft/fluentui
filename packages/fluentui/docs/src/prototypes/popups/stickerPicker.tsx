@@ -25,7 +25,7 @@ class StickerPicker extends React.Component {
       key: item,
       content: item,
       onClick: this.onMenuItemClick,
-      accessibility: tabBehavior
+      accessibility: tabBehavior,
     }));
   };
 
@@ -52,7 +52,7 @@ class StickerPicker extends React.Component {
                 <GridImagePicker ref={this.gridPickerRef} items={this.getStickersData()} />
               </div>
             </div>
-          )
+          ),
         }}
       />
     );

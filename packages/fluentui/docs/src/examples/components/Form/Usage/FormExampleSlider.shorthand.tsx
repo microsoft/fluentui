@@ -6,7 +6,7 @@ const FormExampleFormExampleSliderShorthand = () => (
     onSubmit={() => alert('Form submitted')}
     fields={[
       { label: 'Age', control: { as: Slider }, id: 'age', key: 'age' },
-      { control: { as: Button, content: 'Submit' }, key: 'submit' }
+      { control: { as: Button, content: 'Submit' }, key: 'submit' },
     ]}
   />
 );

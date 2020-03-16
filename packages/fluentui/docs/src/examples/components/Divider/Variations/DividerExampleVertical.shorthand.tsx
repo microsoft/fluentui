@@ -11,7 +11,7 @@ const DividerVerticalExampleShorthand = () => (
       status={{
         color: 'green',
         icon: 'stardust-checkmark',
-        title: 'Available'
+        title: 'Available',
       }}
     />
     <Divider vertical />

@@ -20,7 +20,7 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
     return _.map(items, (item, index) => {
       return {
         content: <ControlMessage message={item} />,
-        key: `control-message-${index}`
+        key: `control-message-${index}`,
       };
     });
   };

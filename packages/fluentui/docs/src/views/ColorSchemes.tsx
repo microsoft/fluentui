@@ -19,13 +19,13 @@ export default () => {
           Fader: faderStyles,
           Header: {
             root: {
-              fontWeight: 700
-            }
-          }
+              fontWeight: 700,
+            },
+          },
         },
         componentVariables: {
-          ColorBox: colorBoxVariables
-        }
+          ColorBox: colorBoxVariables,
+        },
       }}
     >
       <DocPage title="Color schemes">
@@ -41,20 +41,20 @@ export default () => {
             headers={[
               {
                 as: 'h3',
-                content: 'Design token'
+                content: 'Design token',
               },
               {
                 as: 'h3',
-                content: 'Light theme'
+                content: 'Light theme',
               },
               {
                 as: 'h3',
-                content: 'HC theme'
+                content: 'HC theme',
               },
               {
                 as: 'h3',
-                content: 'Dark theme'
-              }
+                content: 'Dark theme',
+              },
             ]}
             name={color}
           />

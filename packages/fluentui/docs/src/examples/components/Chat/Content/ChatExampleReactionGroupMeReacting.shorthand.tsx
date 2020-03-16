@@ -3,7 +3,7 @@ import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from 
 
 const reactions: ShorthandCollection<ReactionProps> = [
   { icon: 'like', content: '1K', key: 'likes', variables: { meReacting: true }, as: 'button' },
-  { icon: 'emoji', content: 2, key: 'smiles', as: 'button' }
+  { icon: 'emoji', content: 2, key: 'smiles', as: 'button' },
 ];
 
 const items: ShorthandCollection<ChatItemProps> = [
@@ -13,7 +13,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: (
       <Chat.Message
         reactionGroup={{
-          items: reactions
+          items: reactions,
         }}
         content="Hello"
         author="John Doe"
@@ -21,7 +21,7 @@ const items: ShorthandCollection<ChatItemProps> = [
         mine
       />
     ),
-    key: 'message-1'
+    key: 'message-1',
   },
   {
     attached: 'bottom',
@@ -36,13 +36,13 @@ const items: ShorthandCollection<ChatItemProps> = [
         timestamp="Yesterday, 10:15 PM"
         mine
       />
-    )
+    ),
   },
   {
     gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
     message: <Chat.Message reactionGroup={reactions} content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
-    key: 'message-3'
-  }
+    key: 'message-3',
+  },
 ];
 
 const MessageReactionsWithPopup = () => <Chat items={items} />;

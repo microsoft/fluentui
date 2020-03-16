@@ -6,7 +6,11 @@ import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSecti
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample title="Default" description="A default popup." examplePath="components/Popup/Types/PopupExample" />
+    <ComponentExample
+      title="Default"
+      description="A default popup."
+      examplePath="components/Popup/Types/PopupExample"
+    />
     <ComponentExample
       title="Pointing"
       description="A popup can have a pointer."

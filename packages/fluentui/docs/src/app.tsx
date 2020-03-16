@@ -20,7 +20,7 @@ class App extends React.Component<any, ThemeContextData> {
   // be passed down into the context provider
   state: ThemeContextData = {
     ...themeContextDefaults,
-    changeTheme: (e, { value: item }) => this.setState({ themeName: item.value })
+    changeTheme: (e, { value: item }) => this.setState({ themeName: item.value }),
   };
 
   render() {
@@ -33,10 +33,10 @@ class App extends React.Component<any, ThemeContextData> {
             staticStyles: [
               {
                 a: {
-                  textDecoration: 'none'
-                }
-              }
-            ]
+                  textDecoration: 'none',
+                },
+              },
+            ],
           })}
         >
           <PerfDataProvider>

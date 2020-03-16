@@ -26,7 +26,7 @@ const ComponentPlaygroundTemplate: React.FunctionComponent<ComponentPlaygroundTe
         flexDirection: 'column',
         alignItems: props.fluid ? 'stretch' : 'center',
         justifyContent: 'center',
-        gridRow: 1
+        gridRow: 1,
       }}
     >
       {props.element || React.createElement(props.component)}

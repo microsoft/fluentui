@@ -36,13 +36,13 @@ export const colorBoxVariables = (siteVariables): ColorBoxVariables => ({
   fontSize: {
     big: '1.25em',
     small: '.85em',
-    normal: '1.25em'
+    normal: '1.25em',
   },
   padding: {
     big: '4rem .75rem .75rem .75rem',
     small: '.75rem',
-    normal: '2.5rem .75rem .75rem .75rem'
-  }
+    normal: '2.5rem .75rem .75rem .75rem',
+  },
 });
 
 export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVariables> = {
@@ -51,24 +51,24 @@ export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVar
       !_.isNil(p.value) && {
         backgroundImage:
           'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
-        backgroundRepeat: 'repeat'
+        backgroundRepeat: 'repeat',
       }),
     ...(p.showColorValue &&
       _.isNil(p.value) && {
-        backgroundColor: 'transparent'
+        backgroundColor: 'transparent',
       }),
     borderRadius: p.rounded && '.25rem',
-    color: p.value !== undefined && Color(p.value).isDark() ? v.colorWhite : v.colorBlack
+    color: p.value !== undefined && Color(p.value).isDark() ? v.colorWhite : v.colorBlack,
   }),
   inner: ({ props: p, variables: v }) => ({
     backgroundColor: p.value,
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
     fontSize: v.padding[p.size],
-    padding: v.padding[p.size]
+    padding: v.padding[p.size],
   }),
   name: {
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   value: {
     fontFamily: 'Monospace',
@@ -76,9 +76,9 @@ export const colorBoxStyles: ComponentSlotStylesInput<ColorBoxProps, ColorBoxVar
     userSelect: 'all',
 
     '> span': {
-      cursor: 'pointer'
-    }
-  }
+      cursor: 'pointer',
+    },
+  },
 };
 
 const ColorBox = createComponent<ColorBoxProps>({
@@ -103,13 +103,13 @@ const ColorBox = createComponent<ColorBoxProps>({
         {!copyToClipboardIcon && showColorValue && <span className={classes.value}>{value || 'Not defined'}</span>}
       </div>
     </div>
-  )
+  ),
 });
 
 ColorBox.defaultProps = {
   size: 'normal',
   copyToClipboardIcon: true,
-  showColorValue: true
+  showColorValue: true,
 };
 
 export default ColorBox;

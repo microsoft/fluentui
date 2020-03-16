@@ -34,15 +34,15 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                   content: 'Show example',
                   styles: ({ theme }) => {
                     return {
-                      fontSize: theme.siteVariables.fontSizes.smaller
+                      fontSize: theme.siteVariables.fontSizes.smaller,
                     };
-                  }
+                  },
                 },
                 content: {
                   key: 'c',
-                  content: <ComponentExample {..._.omit(props, 'title', 'description')} /> // FIXME: defer rendering until opened
-                }
-              }
+                  content: <ComponentExample {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
+                },
+              },
             ] as any[]
           }
         />

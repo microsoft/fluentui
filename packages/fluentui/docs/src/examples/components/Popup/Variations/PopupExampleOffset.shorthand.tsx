@@ -7,7 +7,7 @@ const renderButton = () => (
       name: 'arrow-up',
       circular: true,
       bordered: true,
-      rotate: -45
+      rotate: -45,
     }}
     styles={{ height: '80px', minWidth: '80px', padding: 0 }}
     title="Show popup"

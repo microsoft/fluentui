@@ -6,12 +6,12 @@ const SplitButtonExampleSmallShorthand = () => (
     <SplitButton
       menu={[
         { key: 'group', content: 'New group message' },
-        { key: 'channel', content: 'New channel message' }
+        { key: 'channel', content: 'New channel message' },
       ]}
       button={{
         content: 'small',
         'aria-roledescription': 'splitbutton',
-        'aria-describedby': 'instruction-message'
+        'aria-describedby': 'instruction-message',
       }}
       size="small"
       toggleButton={{ 'aria-label': 'expand options menu' }}

@@ -25,7 +25,7 @@ const popoverBehavior: Accessibility = (props: any) => {
 
 class Popover extends React.Component<PopoverProps, PopoverState> {
   state = {
-    focused: false
+    focused: false,
   };
 
   handleFocus = () => this.setState({ focused: true });
@@ -57,27 +57,27 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             icon: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile one',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile2',
             icon: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile two',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile3',
             icon: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile three',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'a',
             icon: 'thumbs up',
             'aria-label': 'thumbs up',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'c',
@@ -93,10 +93,10 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
               items: [
                 { key: 'bookmark', icon: 'folder', content: 'Save this message' },
                 { key: 'linkify', icon: 'linkify', content: 'Copy link' },
-                { key: 'translate', icon: 'translate', content: 'Translate' }
-              ]
-            }
-          }
+                { key: 'translate', icon: 'translate', content: 'Translate' },
+              ],
+            },
+          },
         ]}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}

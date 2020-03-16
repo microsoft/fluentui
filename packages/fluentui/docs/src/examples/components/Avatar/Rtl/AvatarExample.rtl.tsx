@@ -6,7 +6,7 @@ const AvatarExampleRtl = () => (
     name="جون دو"
     status={{
       color: 'green',
-      icon: 'icon-checkmark'
+      icon: 'icon-checkmark',
     }}
   />
 );

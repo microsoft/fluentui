@@ -26,12 +26,26 @@ class PopupExampleOnMultiple extends React.Component {
         </Flex>
         <Flex gap="gap.smaller" padding="padding.medium">
           <Popup
-            trigger={<Button icon="more" content="Context + Focus" aria-label="Right click or focus button" onClick={this.showAlert} />}
+            trigger={
+              <Button
+                icon="more"
+                content="Context + Focus"
+                aria-label="Right click or focus button"
+                onClick={this.showAlert}
+              />
+            }
             content="Hello from popup on click!"
             on={['context', 'focus']}
           />
           <Popup
-            trigger={<Button icon="more" content="Context + Hover" aria-label="Right click or hover button" onClick={this.showAlert} />}
+            trigger={
+              <Button
+                icon="more"
+                content="Context + Hover"
+                aria-label="Right click or hover button"
+                onClick={this.showAlert}
+              />
+            }
             content="Hello from popup on hover!"
             on={['context', 'hover']}
           />

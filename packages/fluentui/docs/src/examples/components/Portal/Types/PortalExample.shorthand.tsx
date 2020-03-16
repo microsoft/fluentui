@@ -7,7 +7,7 @@ class PortalExamplePortal extends React.Component {
   handleClick = () =>
     this.setState({
       log: [`${new Date().toLocaleTimeString()}: handleClick`, ...this.state.log].slice(0, 20),
-      logCount: this.state.logCount + 1
+      logCount: this.state.logCount + 1,
     });
 
   clearLog = () => this.setState({ log: [], logCount: 0 });
@@ -29,7 +29,7 @@ class PortalExamplePortal extends React.Component {
                 padding: '15px',
                 boxShadow: 'rgb(187, 187, 187) 0px 2px 8px',
                 border: '1px solid rgba(34,36,38,.15)',
-                borderRadius: '5px'
+                borderRadius: '5px',
               }}
             >
               <Header>This is a basic portal</Header>
