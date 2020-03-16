@@ -1,7 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
 import { MenuVariables, menuColorAreas } from './menuVariables';
-import { default as MenuItem, MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
+import MenuItem, { MenuItemProps, MenuItemState } from '../../../../components/Menu/MenuItem';
 import { getColorScheme } from '../../colors';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
@@ -19,32 +19,6 @@ export const underlinedItem = (color: string): ICSSInJSStyle => ({
   transition: 'color .1s ease'
 });
 
-const getActionStyles = ({
-  props: { primary, underlined, iconOnly, vertical },
-  variables: v,
-  colors
-}: {
-  props: MenuItemPropsAndState;
-  variables: MenuVariables;
-  colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
-}): ICSSInJSStyle =>
-  underlined || iconOnly
-    ? {
-        color: v.color
-      }
-    : primary
-    ? {
-        color: colors.foregroundActive,
-        background: v.backgroundColorActive || colors.backgroundActive,
-        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-          backgroundImage: submenuIndicatorUrl(colors.foregroundActive, vertical)
-        }
-      }
-    : {
-        color: v.color,
-        background: v.backgroundColorActive || colors.backgroundActive
-      };
-
 const getFocusedStyles = ({
   props,
   variables: v,
@@ -54,45 +28,22 @@ const getFocusedStyles = ({
   variables: MenuVariables;
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
-  const { primary, underlined, isFromKeyboard, active, vertical } = props;
+  const { primary, underlined, active, vertical } = props;
   if (active && !underlined && !vertical) return {};
   return {
-    color: primary ? colors.foregroundFocus : v.colorActive,
+    color: v.colorActive,
     background: v.backgroundColorFocus || colors.backgroundFocus,
-    ...(vertical && isFromKeyboard && !primary
-      ? {
-          border: `solid 1px ${v.borderColorFocus}`,
-          outline: `solid 1px ${v.outlineColorFocus}`,
-          margin: pxToRem(1),
-          background: v.verticalBackgroundColorFocus || colors.backgroundFocus
-        }
-      : {})
-  };
-};
 
-const getHoverStyles = ({
-  props,
-  variables: v,
-  colors
-}: {
-  props: MenuItemPropsAndState;
-  variables: MenuVariables;
-  colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
-}): ICSSInJSStyle => {
-  const { underlined, active, vertical } = props;
-  if (active && !underlined && !vertical) return {};
-  return {
-    ...(underlined
-      ? {
-          color: v.colorActive
-        }
-      : {
-          color: colors.foregroundHover,
-          background: v.backgroundColorHover || colors.backgroundHover,
-          [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
-            backgroundImage: submenuIndicatorUrl(colors.foregroundHover, vertical)
-          }
-        })
+    ...(primary && {
+      color: colors.foregroundFocus
+    }),
+    ...(vertical &&
+      !primary && {
+        border: `solid 1px ${v.borderColorFocus}`,
+        outline: `solid 1px ${v.outlineColorFocus}`,
+        margin: pxToRem(1),
+        background: v.verticalBackgroundColorFocus || colors.backgroundFocus
+      })
   };
 };
 
@@ -150,7 +101,6 @@ const pointingBeak = ({
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
   wrapper: ({ props, variables: v }): ICSSInJSStyle => {
     const { active, disabled, iconOnly, isFromKeyboard, pills, pointing, secondary, underlined, vertical, primary } = props;
-
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
@@ -196,11 +146,24 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // active styles
       ...(active && {
-        ...getActionStyles({ props, variables: v, colors }),
+        color: v.wrapperColorActive,
+
+        ...(!underlined && {
+          background: v.backgroundColorActive || colors.backgroundActive,
+
+          ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
+          ...(!iconOnly &&
+            primary && {
+              color: colors.foregroundActive
+            })
+        }),
+
+        ...(underlined && {
+          color: v.activeUnderlinedWrapperColor
+        }),
 
         ...(pointing &&
-          vertical &&
-          !isFromKeyboard && {
+          vertical && {
             '::before': {
               content: `''`,
               position: 'absolute',
@@ -208,6 +171,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
               height: `calc(100% + ${pxToRem(4)})`,
               top: pxToRem(-2),
               backgroundColor: v.pointingIndicatorBackgroundColor,
+
+              ...(isFromKeyboard && { display: 'none' }),
               ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) })
             }
           }),
@@ -218,26 +183,62 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           })
       }),
 
-      ...(iconOnly && {
-        display: 'flex',
+      ...(isFromKeyboard && {
+        color: v.wrapperColorFocus,
 
-        // focus styles
-        ...(isFromKeyboard && {
-          color: v.iconOnlyColorActive
+        ...(!underlined && {
+          background: v.wrapperBackgroundColorFocus,
+          ...(primary && {
+            background: v.primaryWrapperBackgroundColorFocus,
+            color: v.primaryWrapperColorFocus
+          })
         }),
-
-        // hover styles
-        ':hover': {
+        ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
+        ...(iconOnly && {
+          background: v.iconOnlyWrapperBackgroundColorFocus,
           color: v.iconOnlyColorActive
-        }
+        })
       }),
 
-      ...(!iconOnly && {
-        // focus styles
-        ...(isFromKeyboard && getFocusedStyles({ props, variables: v, colors })),
+      // hover styles
+      ':hover': {
+        color: v.wrapperColorHover,
+        background: v.backgroundColorHover || colors.backgroundHover,
 
-        // hover styles
-        ':hover': getHoverStyles({ props, variables: v, colors })
+        ...(active && {
+          background: v.activeWrapperBackgroundColorHover
+        }),
+
+        ...(vertical && {
+          color: v.wrapperColorHover,
+          background: v.backgroundColorHover || colors.backgroundHover
+        }),
+
+        ...(primary && {
+          color: v.primaryWrapperColorHover
+        }),
+
+        ...(underlined && {
+          color: v.underlinedWrapperColorHover,
+          background: v.underlinedWrapperBackgroundHover
+        }),
+
+        ...(iconOnly && {
+          background: v.iconOnlyBackgroundColorHover,
+          color: v.iconOnlyColorHover
+        }),
+
+        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+          backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
+
+          ...(primary && {
+            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover, vertical)
+          })
+        }
+      },
+
+      ...(iconOnly && {
+        display: 'flex'
       }),
 
       ':first-child': {
@@ -307,24 +308,26 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...getIconFillOrOutlineStyles({ outline: false })
         }),
 
-        ...(primary
-          ? {
-              ...(underlined && {
-                color: colors.borderActive,
-                ...underlinedItem(v.borderColorActive || colors.borderActive)
-              })
-            }
-          : underlined && {
-              fontWeight: 700,
-              ...underlinedItem(v.colorActive)
-            })
+        ...(underlined && {
+          color: v.activeUnderlinedColor,
+
+          ...underlinedItem(v.activeUnderlinedBorderBottomColor),
+
+          ...(primary && {
+            color: v.activeUnderlinedPrimaryColor,
+            ...underlinedItem(v.borderColorActive || colors.borderActive)
+          }),
+          ...(!primary && { fontWeight: 700 })
+        })
       }),
 
       // focus styles
       ...(isFromKeyboard && {
+        color: v.colorFocus,
+
         ...(iconOnly && {
           borderRadius: '50%',
-          borderColor: v.iconOnlyColorActive,
+          borderColor: v.iconOnlyColorFocus,
           ...getIconFillOrOutlineStyles({ outline: false })
         }),
 
@@ -352,24 +355,23 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // hover styles
       ':hover': {
-        color: 'inherit',
+        color: v.colorHover,
 
-        ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
+        ...(underlined && { color: v.underlinedColorHover }),
 
-        ...(primary
-          ? {
-              ...(iconOnly && { color: 'inherit' }),
-              ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive))
-            }
-          : !active && underlined && underlinedItem(v.backgroundColorActive || colors.backgroundActive))
+        ...(!disabled && {
+          ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
+          ...(primary
+            ? {
+                ...(iconOnly && { color: 'inherit' }),
+                ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive))
+              }
+            : !active && underlined && underlinedItem(v.backgroundColorActive || colors.backgroundActive))
+        })
       },
 
       ...(disabled && {
-        cursor: 'default',
-        ':hover': {
-          // reset all existing hover styles
-          color: 'inherit'
-        }
+        cursor: 'default'
       })
     };
   },
@@ -402,30 +404,46 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
 
-  indicator: ({ props: p, variables: v, rtl }) => ({
-    position: 'relative',
-    float: 'right',
-    left: pxToRem(12),
-    userSelect: 'none',
-    marginRight: pxToRem(4),
+  indicator: ({ props: p, variables: v, rtl }) => {
+    return {
+      position: 'relative',
+      float: 'right',
+      left: pxToRem(12),
+      userSelect: 'none',
+      marginRight: pxToRem(4),
 
-    ...(p.inSubmenu && {
-      position: 'absolute',
-      top: pxToRem(6),
-      right: pxToRem(2),
-      left: 'unset'
-    }),
+      ...(p.inSubmenu && {
+        position: 'absolute',
+        top: pxToRem(6),
+        right: pxToRem(2),
+        left: 'unset'
+      }),
 
-    backgroundImage: submenuIndicatorUrl(v.color, p.vertical),
-    ...(rtl && {
-      transform: `scaleX(-1)`
-    }),
-    content: '" "',
-    display: 'block',
-    overflow: 'hidden',
-    height: pxToRem(16),
-    width: pxToRem(16)
-  })
+      ...(rtl && {
+        transform: `scaleX(-1)`
+      }),
+      content: '" "',
+      display: 'block',
+      overflow: 'hidden',
+      height: pxToRem(16),
+      width: pxToRem(16),
+
+      backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical),
+
+      ...(p.active && {
+        backgroundImage: submenuIndicatorUrl(v.activeIndicatorColor, p.vertical),
+
+        ...(p.primary && {
+          backgroundImage: submenuIndicatorUrl(v.activePrimaryIndicatorColor, p.vertical),
+
+          ...(p.vertical && { backgroundImage: submenuIndicatorUrl(v.activePrimaryVerticalIndicatorColor, p.vertical) })
+        })
+      }),
+
+      ...(p.underlined && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) }),
+      ...(p.iconOnly && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) })
+    };
+  }
 };
 
 export default menuItemStyles;
