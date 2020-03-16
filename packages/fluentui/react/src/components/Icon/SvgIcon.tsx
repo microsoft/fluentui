@@ -53,7 +53,7 @@ export interface SvgIconProps extends UIComponentProps, ChildrenComponentProps<S
 const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   className: string;
   handledProps: (keyof SvgIconProps)[];
-  create: any; // FIX ME pls
+  create: (svg: SvgIconChildrenFn) => React.FC;
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
