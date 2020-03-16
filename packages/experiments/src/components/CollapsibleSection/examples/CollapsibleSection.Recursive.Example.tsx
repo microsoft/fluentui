@@ -133,7 +133,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+      url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`
     };
   }
 }
