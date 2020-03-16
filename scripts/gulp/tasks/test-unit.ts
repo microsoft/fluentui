@@ -9,13 +9,11 @@ const argv = yargs
   .option('runInBand', {})
   .option('maxWorkers', {})
   .option('detectLeaks', {})
-  .option('coverage', { default: true })
   .option('testNamePattern', { alias: 't' })
   .option('testFilePattern', { alias: 'F' }).argv;
 
 const jestConfigFromArgv: Partial<JestPluginConfig> = {
   runInBand: argv.runInBand as boolean,
-  coverage: argv.coverage as boolean,
   maxWorkers: argv.maxWorkers as number,
   detectLeaks: argv.detectLeaks as boolean,
   testNamePattern: argv.testNamePattern as string,
@@ -30,6 +28,7 @@ task(
   'test:jest',
   jest({
     config: './jest.config.js',
+    coverage: true,
     ...jestConfigFromArgv
   })
 );
@@ -54,5 +53,5 @@ if (config.isRoot) {
   task('test:watch', series('test:jest:setup', parallel('test:jest:watch', 'watch:docs:component-info')));
 } else {
   task('test', series('test:jest'));
-  task('test:watch', series('test:jest:watch'));
+  task('test:watch', series('test:jest', 'test:jest:watch'));
 }
