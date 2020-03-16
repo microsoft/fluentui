@@ -68,7 +68,7 @@ const Main = (props: IStackProps) => (
   />
 );
 
-export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
+export class ThemingDesigner extends React.Component<{}, IThemingDesignerState> {
   private _colorChangeTimeout: number;
   private _fabricPaletteColorChangeTimeout: number;
 

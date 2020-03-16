@@ -15,6 +15,8 @@ import { IBaseProps } from './BaseComponent.types';
  *
  * @public
  * {@docCategory BaseComponent}
+ *
+ * @deprecated Do not use. We are moving away from class component.
  */
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
   /**
@@ -51,6 +53,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     // tslint:disable-next-line:deprecation
     initializeFocusRects();
 
+    // tslint:disable-next-line:deprecation
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentDidMount',
       'shouldComponentUpdate',
@@ -230,12 +233,14 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
+// tslint:disable-next-line:deprecation
 function _makeAllSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodNames: string[]): void {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
+// tslint:disable-next-line:deprecation
 function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: string): void {
   // tslint:disable:no-any
   let classMethod = (obj as any)[methodName];

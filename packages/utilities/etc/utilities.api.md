@@ -80,7 +80,7 @@ export class AutoScroll {
     dispose(): void;
     }
 
-// @public
+// @public @deprecated
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected readonly _async: Async;

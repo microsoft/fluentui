@@ -41,7 +41,7 @@ export interface ITodoFormState {
  * TextField: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/textfield
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
-export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
+export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormState> {
   private _textField = React.createRef<ITextField>();
 
   constructor(props: ITodoFormProps) {

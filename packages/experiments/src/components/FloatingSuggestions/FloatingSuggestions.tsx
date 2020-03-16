@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as styles from './FloatingSuggestions.scss';
-import { BaseComponent, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { initializeComponentRef, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { IFloatingSuggestions, IFloatingSuggestionsProps, IFloatingSuggestionsInnerSuggestionProps } from './FloatingSuggestions.types';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
@@ -13,7 +13,7 @@ export interface IFloatingSuggestionsState {
   didBind: boolean;
 }
 
-export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
+export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
   implements IFloatingSuggestions<TItem> {
   private root = React.createRef<HTMLDivElement>();
   private suggestionStore: SuggestionsStore<TItem>;
@@ -23,6 +23,8 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
   constructor(basePickerProps: IFloatingSuggestionsProps<TItem>) {
     super(basePickerProps);
+
+    initializeComponentRef(this);
 
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
