@@ -10,7 +10,7 @@ const config: ScreenerTestsConfig = {
         .click(selectors.item(4))
         .snapshot('Clicks on 4th item (opens submenu)')
         .click(selectors.item(1))
-        .snapshot('Hovers 4th item (hover state styles)')
+        .snapshot('Hovers 1st item (hover state styles)')
   ]
 };
 
