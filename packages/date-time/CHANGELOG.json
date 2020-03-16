@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "@uifabric/date-time_v7.8.40",
+      "version": "7.8.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CalendarDayGrid: navigatedDate should have defaultValue of today",
+            "author": "aneeshak@microsoft.com",
+            "commit": "57428b9f8b27b0aa6d048cbab9d43ac2f0f83b2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/date-time_v7.8.28",
       "version": "7.8.28",

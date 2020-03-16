@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BaseComponent: remove using BaseComponent from oufr package",
-  "packageName": "office-ui-fabric-react",
-  "email": "xgao@microsoft.com",
-  "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36",
-  "dependentChangeType": "patch",
-  "date": "2020-03-13T16:32:56.436Z"
-}

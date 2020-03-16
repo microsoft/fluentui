@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "CalendarDayGrid: navigatedDate should have defaultValue of today",
-  "packageName": "@uifabric/date-time",
-  "email": "aneeshak@microsoft.com",
-  "commit": "57428b9f8b27b0aa6d048cbab9d43ac2f0f83b2e",
-  "dependentChangeType": "patch",
-  "date": "2020-03-04T22:20:59.155Z"
-}
