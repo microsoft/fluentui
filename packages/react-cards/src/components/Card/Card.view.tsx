@@ -12,7 +12,7 @@ import { ICardSectionProps } from './CardSection/CardSection.types';
 
 export const CardView: ICardComponent['view'] = props => {
   const Slots = getSlots<ICardProps, ICardSlots>(props, {
-    root: Stack
+    root: Stack,
   });
 
   const { children, styles, tokens, horizontal, onClick, onKeyDown, ...rest } = props;
@@ -65,20 +65,20 @@ export const CardView: ICardComponent['view'] = props => {
         const resolvedTokens = {
           margin,
           childrenGap: isSection ? childrenGap : undefined,
-          ...childTokens
+          ...childTokens,
         };
 
         // Clone the child with the correct tokens.
         return React.cloneElement(child, {
           tokens: resolvedTokens,
-          ...childRest
+          ...childRest,
         });
       }
 
       warn('The children of a Card component should be of type CardItem or CardSection.');
 
       return child;
-    }
+    },
   );
 
   const _onKeyDown = (ev?: React.KeyboardEvent<HTMLElement>): void => {

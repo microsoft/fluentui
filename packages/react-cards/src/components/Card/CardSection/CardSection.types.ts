@@ -5,7 +5,12 @@ import { IStackProps, IStackSlots, IStackTokens } from 'office-ui-fabric-react';
 /**
  * {@docCategory Card}
  */
-export type ICardSectionComponent = IComponent<ICardSectionProps, ICardSectionTokens, ICardSectionStyles, ICardSectionViewProps>;
+export type ICardSectionComponent = IComponent<
+  ICardSectionProps,
+  ICardSectionTokens,
+  ICardSectionStyles,
+  ICardSectionViewProps
+>;
 
 // These types are redundant with ICardSectionComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
@@ -43,7 +48,15 @@ export interface ICardSectionProps
   extends ICardSectionSlots,
     Pick<
       IStackProps,
-      'as' | 'horizontal' | 'reversed' | 'horizontalAlign' | 'verticalAlign' | 'verticalFill' | 'disableShrink' | 'grow' | 'wrap'
+      | 'as'
+      | 'horizontal'
+      | 'reversed'
+      | 'horizontalAlign'
+      | 'verticalAlign'
+      | 'verticalFill'
+      | 'disableShrink'
+      | 'grow'
+      | 'wrap'
     >,
     IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>,
     IBaseProps<ICardSection> {

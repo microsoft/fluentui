@@ -15,7 +15,11 @@ import { ISchemeNames, ITheme } from '../interfaces/index';
  * @param theme - Theme to merge into context.
  * @returns modified schemed context if scheme is valid and not already applied, unmodified context otherwise.
  */
-export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext {
+export function getThemedContext(
+  context: ICustomizerContext,
+  scheme?: ISchemeNames,
+  theme?: ITheme,
+): ICustomizerContext {
   let newContext: ICustomizerContext = context;
   let newSettings;
 
@@ -26,7 +30,8 @@ export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNa
     newSettings = { theme };
   }
 
-  const schemeTheme: ITheme | undefined = scheme && schemeSource && schemeSource.schemes && schemeSource.schemes[scheme];
+  const schemeTheme: ITheme | undefined =
+    scheme && schemeSource && schemeSource.schemes && schemeSource.schemes[scheme];
 
   // These first two checks are logically redundant but TS doesn't infer schemeSource.schemes is defined when schemeTheme is defined.
   if (schemeSource && schemeTheme && schemeSource !== schemeTheme) {
@@ -38,8 +43,8 @@ export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNa
     newContext = {
       customizations: {
         settings: mergeSettings(context.customizations.settings, newSettings),
-        scopedSettings: context.customizations.scopedSettings
-      }
+        scopedSettings: context.customizations.scopedSettings,
+      },
     };
   }
 

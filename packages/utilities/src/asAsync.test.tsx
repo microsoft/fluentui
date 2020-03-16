@@ -15,7 +15,7 @@ describe('asAsync', () => {
       load: () => {
         _loadCalled = true;
         return loadThingPromise;
-      }
+      },
     });
     const wrapper = mount(<AsyncThing />);
 
@@ -50,7 +50,7 @@ describe('asAsync', () => {
       load: () => {
         _loadCalled = true;
         return loadThingPromise;
-      }
+      },
     });
     // tslint:disable:jsx-no-lambda
     const wrapper = mount(<AsyncThing asyncPlaceholder={() => <div>placeholder</div>} />);

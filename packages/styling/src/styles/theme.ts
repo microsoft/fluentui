@@ -11,7 +11,7 @@ let _theme: ITheme = createTheme({
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  disableGlobalClassNames: false
+  disableGlobalClassNames: false,
 });
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 
@@ -126,7 +126,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   // mix in custom overrides with good slots first, since custom overrides might be used in fixing deprecated slots
   let newSemanticColors = {
     ..._makeSemanticColorsFromPalette(newPalette, !!theme.isInverted, depComments),
-    ...theme.semanticColors
+    ...theme.semanticColors,
   };
 
   let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
@@ -146,7 +146,7 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
   return {
     palette: newPalette,
     fonts: {
-      ...defaultFontStyles
+      ...defaultFontStyles,
     },
     rtl: theme.rtl,
     semanticColors: newSemanticColors,
@@ -154,12 +154,12 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
     spacing: {
       ...DefaultSpacing,
-      ...theme.spacing
+      ...theme.spacing,
     },
     effects: {
       ...DefaultEffects,
-      ...theme.effects
-    }
+      ...theme.effects,
+    },
   };
 }
 
@@ -287,7 +287,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     // Deprecated slots, second pass by _fixDeprecatedSlots() later for self-referential slots
     listTextColor: '',
-    menuItemBackgroundChecked: p.neutralLight
+    menuItemBackgroundChecked: p.neutralLight,
   };
 
   return _fixDeprecatedSlots(toReturn, depComments!);

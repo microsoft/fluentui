@@ -70,7 +70,7 @@ const LanguageToFontMap = {
   'zh-hans': LocalizedFontFamilies.ChineseSimplified,
   'zh-hant': LocalizedFontFamilies.ChineseTraditional,
   hy: LocalizedFontFamilies.Armenian,
-  ka: LocalizedFontFamilies.Georgian
+  ka: LocalizedFontFamilies.Georgian,
 };
 
 // Standard font sizes.
@@ -129,7 +129,7 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.semibold, fontFamilyWithFallback),
     xxLargePlus: _createFont(FontSizes.xxLargePlus, FontWeights.semibold, fontFamilyWithFallback),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.semibold, fontFamilyWithFallback),
-    mega: _createFont(FontSizes.mega, FontWeights.semibold, fontFamilyWithFallback)
+    mega: _createFont(FontSizes.mega, FontWeights.semibold, fontFamilyWithFallback),
   };
 
   return fontStyles;
@@ -155,6 +155,6 @@ function _createFont(size: string, weight: IFontWeight, fontFamily: string): IRa
     MozOsxFontSmoothing: 'grayscale',
     WebkitFontSmoothing: 'antialiased',
     fontSize: size,
-    fontWeight: weight
+    fontWeight: weight,
   };
 }

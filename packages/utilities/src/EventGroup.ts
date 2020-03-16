@@ -77,7 +77,7 @@ export class EventGroup {
     eventName: string,
     // tslint:disable-next-line:no-any
     eventArgs?: any,
-    bubbleEvent?: boolean
+    bubbleEvent?: boolean,
   ): boolean | undefined {
     let retVal;
 
@@ -153,7 +153,9 @@ export class EventGroup {
   }
 
   private static _isElement(target: HTMLElement): boolean {
-    return !!target && (!!target.addEventListener || (typeof HTMLElement !== 'undefined' && target instanceof HTMLElement));
+    return (
+      !!target && (!!target.addEventListener || (typeof HTMLElement !== 'undefined' && target instanceof HTMLElement))
+    );
   }
 
   /** parent: the context in which events attached to non-HTMLElements are called */
@@ -186,7 +188,12 @@ export class EventGroup {
    * of this instance of EventGroup.
    */
   // tslint:disable-next-line:no-any
-  public on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void {
+  public on(
+    target: any,
+    eventName: string,
+    callback: (args?: any) => void,
+    options?: boolean | AddEventListenerOptions,
+  ): void {
     if (eventName.indexOf(',') > -1) {
       let events = eventName.split(/[ ,]+/);
 
@@ -200,7 +207,7 @@ export class EventGroup {
         eventName: eventName,
         parent: parent,
         callback: callback,
-        options
+        options,
       };
 
       // Initialize and wire up the record on the target, so that it can call the callback if the event fires.
@@ -208,7 +215,7 @@ export class EventGroup {
       events[eventName] =
         events[eventName] ||
         <IEventRecordList>{
-          count: 0
+          count: 0,
         };
       events[eventName][this._id] = events[eventName][this._id] || [];
       (<IEventRecord[]>events[eventName][this._id]).push(eventRecord);
@@ -273,7 +280,12 @@ export class EventGroup {
   }
 
   // tslint:disable-next-line:no-any
-  public off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void {
+  public off(
+    target?: any,
+    eventName?: string,
+    callback?: (args?: any) => void,
+    options?: boolean | AddEventListenerOptions,
+  ): void {
     for (let i = 0; i < this._eventRecords.length; i++) {
       let eventRecord = this._eventRecords[i];
       if (
@@ -303,7 +315,11 @@ export class EventGroup {
 
         if (eventRecord.elementCallback) {
           if (eventRecord.target.removeEventListener) {
-            eventRecord.target.removeEventListener(eventRecord.eventName, eventRecord.elementCallback, eventRecord.options);
+            eventRecord.target.removeEventListener(
+              eventRecord.eventName,
+              eventRecord.elementCallback,
+              eventRecord.options,
+            );
           } else if (eventRecord.target.detachEvent) {
             // IE8
             eventRecord.target.detachEvent('on' + eventRecord.eventName, eventRecord.elementCallback);

@@ -85,7 +85,7 @@ if (stylesheet && stylesheet.onReset) {
 export function mapEnumByName<T>(
   // tslint:disable-next-line:no-any
   theEnum: any,
-  callback: (name?: string, value?: string | number) => T | undefined
+  callback: (name?: string, value?: string | number) => T | undefined,
 ): (T | undefined)[] | undefined {
   // map<any> to satisfy compiler since it doesn't realize we strip out undefineds in the .filter() call
   return Object.keys(theEnum)
