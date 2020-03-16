@@ -14,17 +14,19 @@ import { TeamsSvgIconSpec, SvgIconSpecWithStyles } from './components/Icon/svg/t
 
 const declareSvg = (svgIcon: SvgIconSpec): ThemeIconSpec => ({
   isSvg: true,
-  icon: svgIcon
+  icon: svgIcon,
 });
 
 export const getIcon = (iconAndMaybeStyles): SvgIconSpec => {
-  return (iconAndMaybeStyles as any).styles ? (iconAndMaybeStyles as SvgIconSpecWithStyles).icon : (iconAndMaybeStyles as SvgIconSpec);
+  return (iconAndMaybeStyles as any).styles
+    ? (iconAndMaybeStyles as SvgIconSpecWithStyles).icon
+    : (iconAndMaybeStyles as SvgIconSpec);
 };
 
 const themeIcons: ThemeIcons = Object.keys(
   svgIconsAndStyles as {
     [iconName: string]: TeamsSvgIconSpec;
-  }
+  },
 ).reduce<ThemeIcons>((accIcons, iconName) => {
   const iconAndMaybeStyles = svgIconsAndStyles[iconName];
 
@@ -44,7 +46,7 @@ const icons: ThemeIcons = {
   'icon-menu-arrow-down': themeIcons['chevron-down-medium'],
   'icon-menu-arrow-end': themeIcons['chevron-right-medium'],
   'icon-pause': themeIcons['pause'],
-  'icon-play': themeIcons['play']
+  'icon-play': themeIcons['play'],
 };
 
 const teamsTheme: ThemePrepared<TeamsThemeStylesProps> = createTheme(
@@ -55,9 +57,9 @@ const teamsTheme: ThemePrepared<TeamsThemeStylesProps> = createTheme(
     fontFaces,
     staticStyles,
     icons,
-    animations
+    animations,
   },
-  'teams'
+  'teams',
 );
 
 export default teamsTheme;

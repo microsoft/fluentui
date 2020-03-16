@@ -6,7 +6,7 @@ const chatItemImplementsShorthandProp = implementsShorthandProp(ChatItem);
 
 describe('ChatItem', () => {
   isConformant(ChatItem, {
-    constructorName: 'ChatItem'
+    constructorName: 'ChatItem',
   });
 
   chatItemImplementsShorthandProp('gutter', Box, { mapsValueToProp: 'children' });

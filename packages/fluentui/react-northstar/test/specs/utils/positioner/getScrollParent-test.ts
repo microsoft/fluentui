@@ -7,7 +7,7 @@ const overflowStyles: Partial<CSSStyleDeclaration>[] = [
   { overflowX: 'auto' },
   { overflowY: 'overlay' },
   { overflowX: 'scroll', overflowY: 'auto' },
-  { overflowX: 'scroll', overflowY: 'auto', overflow: 'overlay' }
+  { overflowX: 'scroll', overflowY: 'auto', overflow: 'overlay' },
 ];
 
 const setStylesForElement = (element: HTMLElement, style: Partial<CSSStyleDeclaration>) => {
@@ -19,7 +19,8 @@ const setStylesForElement = (element: HTMLElement, style: Partial<CSSStyleDeclar
 const setStylesForElements = (elements: HTMLElement[], style: Partial<CSSStyleDeclaration>) =>
   elements.forEach(element => setStylesForElement(element, style));
 
-const resetOverflowStyles = (element: HTMLElement) => ['overflow', 'overflowX', 'overflowY'].map(prop => (element.style[prop] = ''));
+const resetOverflowStyles = (element: HTMLElement) =>
+  ['overflow', 'overflowX', 'overflowY'].map(prop => (element.style[prop] = ''));
 
 const testsSetupFactory = () => {
   const treeElements = _.range(4).map(() => document.createElement('div'));
@@ -43,7 +44,7 @@ const testsSetupFactory = () => {
 
     destroy() {
       document.body.removeChild(scrollableGrandparent);
-    }
+    },
   };
 };
 
@@ -89,7 +90,10 @@ describe('getScrollParent', () => {
   describe('when there are scrollable parents for the node argument and the node argument is scrollable', () => {
     test('returns the first scrollable parent node', () => {
       overflowStyles.forEach(styles => {
-        setStylesForElements([testsSetup.element, testsSetup.scrollableParent, testsSetup.scrollableGrandparent], styles);
+        setStylesForElements(
+          [testsSetup.element, testsSetup.scrollableParent, testsSetup.scrollableGrandparent],
+          styles,
+        );
 
         expect(getScrollParent(testsSetup.element)).toBe(testsSetup.scrollableParent);
       });

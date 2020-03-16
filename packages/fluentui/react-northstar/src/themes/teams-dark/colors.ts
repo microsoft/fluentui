@@ -70,7 +70,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundDisabled1: colors.grey[550],
     backgroundDisabled: colors.grey[550],
 
-    borderDisabled: colors.grey[550]
+    borderDisabled: colors.grey[550],
   }),
   brand: createColorScheme({
     foreground: colors.brand[400],
@@ -139,7 +139,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundDisabled1: colors.grey[550],
     backgroundDisabled: colors.grey[550],
 
-    borderDisabled: colors.grey[550]
+    borderDisabled: colors.grey[550],
   }),
   black: {
     foreground: colors.black,
@@ -170,7 +170,7 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundDisabled: colors.white,
     backgroundDisabled: colors.black,
     borderDisabled: colors.black,
-    shadowDisabled: colors.black
+    shadowDisabled: colors.black,
   },
   white: {
     foreground: colors.white,
@@ -201,25 +201,25 @@ export const colorScheme: ColorSchemeMapping = {
     foregroundDisabled: colors.black,
     backgroundDisabled: colors.white,
     borderDisabled: colors.white,
-    shadowDisabled: colors.white
+    shadowDisabled: colors.white,
   },
   green: createColorScheme({
     foreground: colors.green[200],
     foreground1: colors.grey[800],
     foreground2: colors.green[200],
-    background: colors.green[200]
+    background: colors.green[200],
   }),
   orange: createColorScheme({
     foreground: colors.orange[300],
     foreground1: colors.orange[300],
     background: colors.orange[300],
-    border: colors.grey[400]
+    border: colors.grey[400],
   }),
   pink: createColorScheme({
     foreground: colors.pink[200],
     foreground1: colors.pink[400],
     background: colors.pink[800],
-    border: colors.pink[900]
+    border: colors.pink[900],
   }),
   red: createColorScheme({
     foreground: colors.red[200],
@@ -238,7 +238,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundHover1: colors.red[400],
 
     foregroundPressed: colors.white,
-    backgroundPressed: colors.ruby[700]
+    backgroundPressed: colors.ruby[700],
   }),
   yellow: createColorScheme({
     foreground: colors.yellow[300],
@@ -246,7 +246,7 @@ export const colorScheme: ColorSchemeMapping = {
     foreground2: colors.grey[800],
     background: colors.yellow[400],
     background1: colors.grey[450],
-    background2: colors.yellow[500]
+    background2: colors.yellow[500],
   }),
   silver: createColorScheme({
     foreground: colors.white,
@@ -260,7 +260,7 @@ export const colorScheme: ColorSchemeMapping = {
     backgroundPressed: colors.silver[700],
     borderPressed: colors.silver[600],
     foregroundDisabled: colors.silver[600],
-    backgroundDisabled: colors.silver[900]
+    backgroundDisabled: colors.silver[900],
   }),
   onyx: createColorScheme({
     background: colors.onyx[500],
@@ -268,14 +268,14 @@ export const colorScheme: ColorSchemeMapping = {
     background2: colors.onyx[500],
     border: colors.onyx[800],
     border1: 'transparent',
-    border2: colors.silver[400]
+    border2: colors.silver[400],
   }),
   amethyst: createColorScheme({
     background: colors.onyx[200],
     backgroundHover: colors.amethyst[700],
     backgroundHover1: colors.grey[750],
-    backgroundActive: colors.amethyst[700]
-  })
+    backgroundActive: colors.amethyst[700],
+  }),
 };
 
 colorScheme.grey = colorScheme.default;
@@ -285,7 +285,7 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground: categoryColors[color][250],
     foreground1: categoryColors[color][550],
     background: categoryColors[color][800],
-    ...customValues
+    ...customValues,
   };
 };
 
@@ -332,6 +332,6 @@ export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
     foreground7: categoryColors.blueDark[250],
     background7: categoryColors.blueDark[450],
     foreground8: categoryColors.maroon[350],
-    background8: categoryColors.maroon[800]
-  }
+    background8: categoryColors.maroon[800],
+  },
 };

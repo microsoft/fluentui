@@ -8,7 +8,7 @@ const chatImplementsCollectionShorthandProp = implementsCollectionShorthandProp(
 
 describe('Chat', () => {
   isConformant(Chat, {
-    constructorName: 'Chat'
+    constructorName: 'Chat',
   });
   chatImplementsCollectionShorthandProp('items', ChatItem, { mapsValueToProp: 'message' });
 

@@ -16,13 +16,13 @@ export const verticalPointingBottomMargin = pxToRem(12);
 export const underlinedItem = (color: string): ICSSInJSStyle => ({
   paddingBottom: 0,
   borderBottom: `solid ${pxToRem(4)} ${color}`,
-  transition: 'color .1s ease'
+  transition: 'color .1s ease',
 });
 
 const getFocusedStyles = ({
   props,
   variables: v,
-  colors
+  colors,
 }: {
   props: MenuItemPropsAndState;
   variables: MenuVariables;
@@ -35,22 +35,22 @@ const getFocusedStyles = ({
     background: v.backgroundColorFocus || colors.backgroundFocus,
 
     ...(primary && {
-      color: colors.foregroundFocus
+      color: colors.foregroundFocus,
     }),
     ...(vertical &&
       !primary && {
         border: `solid 1px ${v.borderColorFocus}`,
         outline: `solid 1px ${v.outlineColorFocus}`,
         margin: pxToRem(1),
-        background: v.verticalBackgroundColorFocus || colors.backgroundFocus
-      })
+        background: v.verticalBackgroundColorFocus || colors.backgroundFocus,
+      }),
   };
 };
 
 const pointingBeak = ({
   props,
   variables: v,
-  colors
+  colors,
 }: {
   props: MenuItemProps;
   variables: MenuVariables;
@@ -67,13 +67,13 @@ const pointingBeak = ({
   if (pointing === 'start') {
     borders = {
       borderTop: `1px solid ${borderColor}`,
-      borderLeft: `1px solid ${borderColor}`
+      borderLeft: `1px solid ${borderColor}`,
     };
     top = '-1px'; // 1px for the border
   } else {
     borders = {
       borderBottom: `1px solid ${borderColor}`,
-      borderRight: `1px solid ${borderColor}`
+      borderRight: `1px solid ${borderColor}`,
     };
     top = '100%';
   }
@@ -93,14 +93,25 @@ const pointingBeak = ({
       border: 'none',
       ...borders,
       zIndex: v.beakZIndex,
-      transition: 'background .1s ease'
-    }
+      transition: 'background .1s ease',
+    },
   };
 };
 
 const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVariables> = {
   wrapper: ({ props, variables: v }): ICSSInJSStyle => {
-    const { active, disabled, iconOnly, isFromKeyboard, pills, pointing, secondary, underlined, vertical, primary } = props;
+    const {
+      active,
+      disabled,
+      iconOnly,
+      isFromKeyboard,
+      pills,
+      pointing,
+      secondary,
+      underlined,
+      vertical,
+      primary,
+    } = props;
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
@@ -111,16 +122,18 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       display: 'block',
 
       ...(secondary && {
-        background: 'salmon'
+        background: 'salmon',
       }),
 
       ...(vertical && {
-        border: `solid ${v.verticalItemBorderWidth} ${v.verticalItemBorderColor}`
+        border: `solid ${v.verticalItemBorderWidth} ${v.verticalItemBorderColor}`,
       }),
 
       ...(pills && {
-        ...(vertical ? { margin: `0 0 ${verticalPillsBottomMargin} 0` } : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
-        borderRadius: pxToRem(5)
+        ...(vertical
+          ? { margin: `0 0 ${verticalPillsBottomMargin} 0` }
+          : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
+        borderRadius: pxToRem(5),
       }),
 
       ...(underlined && {
@@ -131,9 +144,9 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         padding: `0 ${pxToRem(4)}`,
         margin: `0 ${pxToRem(4)} 0 0`,
         ':nth-child(n+2)': {
-          marginLeft: `${pxToRem(4)}`
+          marginLeft: `${pxToRem(4)}`,
         },
-        boxShadow: 'none'
+        boxShadow: 'none',
       }),
 
       // item separator
@@ -141,7 +154,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         !pills &&
         !underlined &&
         !iconOnly && {
-          boxShadow: `-1px 0 0 0 ${primary ? v.primaryBorderColor : v.borderColor || colors.border} inset`
+          boxShadow: `-1px 0 0 0 ${primary ? v.primaryBorderColor : v.borderColor || colors.border} inset`,
         }),
 
       // active styles
@@ -154,12 +167,12 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
           ...(!iconOnly &&
             primary && {
-              color: colors.foregroundActive
-            })
+              color: colors.foregroundActive,
+            }),
         }),
 
         ...(underlined && {
-          color: v.activeUnderlinedWrapperColor
+          color: v.activeUnderlinedWrapperColor,
         }),
 
         ...(pointing &&
@@ -173,14 +186,14 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
               backgroundColor: v.pointingIndicatorBackgroundColor,
 
               ...(isFromKeyboard && { display: 'none' }),
-              ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) })
-            }
+              ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) }),
+            },
           }),
 
         ...(pointing &&
           !vertical && {
-            ...pointingBeak({ props, variables: v, colors })
-          })
+            ...pointingBeak({ props, variables: v, colors }),
+          }),
       }),
 
       ...(isFromKeyboard && {
@@ -190,14 +203,14 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           background: v.wrapperBackgroundColorFocus,
           ...(primary && {
             background: v.primaryWrapperBackgroundColorFocus,
-            color: v.primaryWrapperColorFocus
-          })
+            color: v.primaryWrapperColorFocus,
+          }),
         }),
         ...(!iconOnly && getFocusedStyles({ props, variables: v, colors })),
         ...(iconOnly && {
           background: v.iconOnlyWrapperBackgroundColorFocus,
-          color: v.iconOnlyColorActive
-        })
+          color: v.iconOnlyColorActive,
+        }),
       }),
 
       // hover styles
@@ -206,39 +219,39 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         background: v.backgroundColorHover || colors.backgroundHover,
 
         ...(active && {
-          background: v.activeWrapperBackgroundColorHover
+          background: v.activeWrapperBackgroundColorHover,
         }),
 
         ...(vertical && {
           color: v.wrapperColorHover,
-          background: v.backgroundColorHover || colors.backgroundHover
+          background: v.backgroundColorHover || colors.backgroundHover,
         }),
 
         ...(primary && {
-          color: v.primaryWrapperColorHover
+          color: v.primaryWrapperColorHover,
         }),
 
         ...(underlined && {
           color: v.underlinedWrapperColorHover,
-          background: v.underlinedWrapperBackgroundHover
+          background: v.underlinedWrapperBackgroundHover,
         }),
 
         ...(iconOnly && {
           background: v.iconOnlyBackgroundColorHover,
-          color: v.iconOnlyColorHover
+          color: v.iconOnlyColorHover,
         }),
 
         [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
           backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
 
           ...(primary && {
-            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover, vertical)
-          })
-        }
+            backgroundImage: submenuIndicatorUrl(v.primaryIndicatorColorHover, vertical),
+          }),
+        },
       },
 
       ...(iconOnly && {
-        display: 'flex'
+        display: 'flex',
       }),
 
       ':first-child': {
@@ -248,14 +261,14 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           !underlined && {
             ...(vertical && {
               '::before': {
-                display: 'none'
-              }
+                display: 'none',
+              },
             }),
             ...(!vertical && {
               borderBottomLeftRadius: pxToRem(3),
-              borderTopLeftRadius: pxToRem(3)
-            })
-          })
+              borderTopLeftRadius: pxToRem(3),
+            }),
+          }),
       },
 
       ...(disabled && {
@@ -263,8 +276,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         cursor: 'default',
         ':hover': {
           // empty - overwrite all existing hover styles
-        }
-      })
+        },
+      }),
     };
   },
 
@@ -281,11 +294,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       ...(pointing &&
         vertical && {
-          border: '1px solid transparent'
+          border: '1px solid transparent',
         }),
 
       ...(iconOnly && {
-        border: `${pxToRem(2)} solid transparent`
+        border: `${pxToRem(2)} solid transparent`,
       }),
 
       padding: v.horizontalPadding,
@@ -298,14 +311,14 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         padding: pxToRem(5), // padding works this way to get the border to only be 30x30px on focus which is the current design
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }),
 
       // active styles
       ...(active && {
         ...(iconOnly && {
           color: v.iconOnlyColorActive,
-          ...getIconFillOrOutlineStyles({ outline: false })
+          ...getIconFillOrOutlineStyles({ outline: false }),
         }),
 
         ...(underlined && {
@@ -315,10 +328,10 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
           ...(primary && {
             color: v.activeUnderlinedPrimaryColor,
-            ...underlinedItem(v.borderColorActive || colors.borderActive)
+            ...underlinedItem(v.borderColorActive || colors.borderActive),
           }),
-          ...(!primary && { fontWeight: 700 })
-        })
+          ...(!primary && { fontWeight: 700 }),
+        }),
       }),
 
       // focus styles
@@ -328,29 +341,29 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(iconOnly && {
           borderRadius: '50%',
           borderColor: v.iconOnlyColorFocus,
-          ...getIconFillOrOutlineStyles({ outline: false })
+          ...getIconFillOrOutlineStyles({ outline: false }),
         }),
 
         ...(primary
           ? {
               ...(iconOnly && {
                 color: 'inherit',
-                borderColor: v.borderColorActive || colors.borderActive
+                borderColor: v.borderColorActive || colors.borderActive,
               }),
 
               ...(underlined && { color: 'inherit' }),
 
-              ...(underlined && active && underlinedItem(colors.foregroundActive))
+              ...(underlined && active && underlinedItem(colors.foregroundActive)),
             }
           : {
               ...(underlined && { fontWeight: 700 }),
 
-              ...(underlined && active && underlinedItem(v.colorActive))
-            })
+              ...(underlined && active && underlinedItem(v.colorActive)),
+            }),
       }),
 
       ':focus': {
-        outline: 0
+        outline: 0,
       },
 
       // hover styles
@@ -364,15 +377,15 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           ...(primary
             ? {
                 ...(iconOnly && { color: 'inherit' }),
-                ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive))
+                ...(!active && underlined && underlinedItem(v.underlinedBorderColor || colors.backgroundActive)),
               }
-            : !active && underlined && underlinedItem(v.backgroundColorActive || colors.backgroundActive))
-        })
+            : !active && underlined && underlinedItem(v.backgroundColorActive || colors.backgroundActive)),
+        }),
       },
 
       ...(disabled && {
-        cursor: 'default'
-      })
+        cursor: 'default',
+      }),
     };
   },
 
@@ -388,8 +401,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         width: 'max-content',
         minWidth: pxToRem(46 - widthAdjust),
         maxWidth: pxToRem(262 - widthAdjust),
-        marginRight: pxToRem(16)
-      })
+        marginRight: pxToRem(16),
+      }),
     };
   },
 
@@ -398,8 +411,8 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
       // reduce margins so text has the dominant influence on the vertical height
       marginTop: 0,
       marginBottom: pxToRem(-8),
-      verticalAlign: 'top'
-    })
+      verticalAlign: 'top',
+    }),
   }),
 
   menu: ({ variables: v }) => ({ zIndex: v.menuZIndex }),
@@ -416,11 +429,11 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         position: 'absolute',
         top: pxToRem(6),
         right: pxToRem(2),
-        left: 'unset'
+        left: 'unset',
       }),
 
       ...(rtl && {
-        transform: `scaleX(-1)`
+        transform: `scaleX(-1)`,
       }),
       content: '" "',
       display: 'block',
@@ -436,14 +449,16 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(p.primary && {
           backgroundImage: submenuIndicatorUrl(v.activePrimaryIndicatorColor, p.vertical),
 
-          ...(p.vertical && { backgroundImage: submenuIndicatorUrl(v.activePrimaryVerticalIndicatorColor, p.vertical) })
-        })
+          ...(p.vertical && {
+            backgroundImage: submenuIndicatorUrl(v.activePrimaryVerticalIndicatorColor, p.vertical),
+          }),
+        }),
       }),
 
       ...(p.underlined && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) }),
-      ...(p.iconOnly && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) })
+      ...(p.iconOnly && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) }),
     };
-  }
+  },
 };
 
 export default menuItemStyles;

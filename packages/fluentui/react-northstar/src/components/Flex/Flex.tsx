@@ -46,12 +46,32 @@ export type FlexStylesProps = Pick<
   'column' | 'debug' | 'fill' | 'gap' | 'hAlign' | 'inline' | 'padding' | 'space' | 'vAlign' | 'wrap'
 >;
 
-const Flex: React.FC<WithAsProp<FlexProps>> & { className: string; handledProps: (keyof FlexProps)[]; Item: typeof FlexItem } = props => {
+const Flex: React.FC<WithAsProp<FlexProps>> & {
+  className: string;
+  handledProps: (keyof FlexProps)[];
+  Item: typeof FlexItem;
+} = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Flex.displayName, context.telemetry);
   setStart();
 
-  const { children, className, column, debug, design, fill, gap, hAlign, inline, padding, space, styles, variables, vAlign, wrap } = props;
+  const {
+    children,
+    className,
+    column,
+    debug,
+    design,
+    fill,
+    gap,
+    hAlign,
+    inline,
+    padding,
+    space,
+    styles,
+    variables,
+    vAlign,
+    wrap,
+  } = props;
 
   const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
     className: Flex.className,
@@ -65,15 +85,15 @@ const Flex: React.FC<WithAsProp<FlexProps>> & { className: string; handledProps:
       padding,
       space,
       vAlign,
-      wrap
+      wrap,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -84,7 +104,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & { className: string; handledProps:
 
     return isFlexItemElement
       ? React.cloneElement(child as React.ReactElement, {
-          flexDirection: column ? 'column' : 'row'
+          flexDirection: column ? 'column' : 'row',
         })
       : child;
   });
@@ -104,7 +124,7 @@ Flex.displayName = 'Flex';
 Flex.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,
-    content: false
+    content: false,
   }),
 
   inline: PropTypes.bool,
@@ -123,7 +143,7 @@ Flex.propTypes = {
   padding: PropTypes.oneOf(['padding.medium']),
   fill: PropTypes.bool,
 
-  debug: PropTypes.bool
+  debug: PropTypes.bool,
 };
 Flex.handledProps = Object.keys(Flex.propTypes) as any;
 

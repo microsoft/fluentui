@@ -8,5 +8,5 @@ export default (siteVariables): Partial<TeamsTextVariables> => ({
   importantColor: siteVariables.red,
   successColor: siteVariables.colors.green[200],
   timestampColor: siteVariables.colors.white,
-  timestampHoverColor: siteVariables.colors.white
+  timestampHoverColor: siteVariables.colors.white,
 });

@@ -30,5 +30,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'horizontal-rule'
+  exportedAs: 'horizontal-rule',
 } as TeamsProcessedSvgIconSpec;

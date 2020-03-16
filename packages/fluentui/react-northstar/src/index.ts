@@ -252,7 +252,7 @@ import {
   getLastFocusable,
   getNextElement,
   getPreviousElement,
-  focusAsync
+  focusAsync,
 } from '@fluentui/react-bindings';
 
 export const FocusZoneUtilities = {
@@ -262,7 +262,7 @@ export const FocusZoneUtilities = {
   getLastFocusable,
   getNextElement,
   getPreviousElement,
-  focusAsync
+  focusAsync,
 };
 
 export * from '@fluentui/accessibility';

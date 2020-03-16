@@ -5,7 +5,7 @@ import { isConformant, handlesAccessibility, htmlIsAccessibilityCompliant } from
 describe('Checkbox', () => {
   isConformant(Checkbox, {
     constructorName: 'Checkbox',
-    autoControlledProps: ['checked']
+    autoControlledProps: ['checked'],
   });
 
   handlesAccessibility(Checkbox, { defaultRootRole: 'checkbox' });
@@ -16,7 +16,8 @@ describe('Checkbox', () => {
 
       test('checked', async () => await htmlIsAccessibilityCompliant(<Checkbox label="test label" checked />));
 
-      test('checked and disabled', async () => await htmlIsAccessibilityCompliant(<Checkbox label="test label" checked disabled />));
+      test('checked and disabled', async () =>
+        await htmlIsAccessibilityCompliant(<Checkbox label="test label" checked disabled />));
     });
   });
 });

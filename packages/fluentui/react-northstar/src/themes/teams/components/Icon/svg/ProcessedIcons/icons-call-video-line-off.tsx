@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-video-off'
+  exportedAs: 'call-video-off',
 } as TeamsProcessedSvgIconSpec;

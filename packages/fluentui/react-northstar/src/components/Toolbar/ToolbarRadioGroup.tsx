@@ -2,7 +2,7 @@ import {
   Accessibility,
   toolbarRadioGroupBehavior,
   toolbarRadioGroupItemBehavior,
-  ToolbarRadioGroupBehaviorProps
+  ToolbarRadioGroupBehaviorProps,
 } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
@@ -20,9 +20,15 @@ import {
   createShorthandFactory,
   UIComponentProps,
   childrenExist,
-  commonPropTypes
+  commonPropTypes,
 } from '../../utils';
-import { FluentComponentStaticProps, ProviderContextPrepared, ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandCollection,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '../../types';
 import ToolbarDivider from './ToolbarDivider';
 import ToolbarItem, { ToolbarItemProps } from './ToolbarItem';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -44,7 +50,8 @@ export interface ToolbarRadioGroupProps extends UIComponentProps, ChildrenCompon
 
 export type ToolbarRadioGroupStylesProps = never;
 
-const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentComponentStaticProps<ToolbarRadioGroupProps> = props => {
+const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
+  FluentComponentStaticProps<ToolbarRadioGroupProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarRadioGroup.displayName, context.telemetry);
   setStart();
@@ -59,14 +66,14 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
     debugName: ToolbarRadioGroup.displayName,
     actionHandlers: {
       nextItem: event => setFocusedItem(event, 1),
-      prevItem: event => setFocusedItem(event, -1)
+      prevItem: event => setFocusedItem(event, -1),
     },
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarRadioGroupStylesProps>(ToolbarRadioGroup.displayName, {
     className: ToolbarRadioGroup.className,
     mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergedVariables }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const setFocusedItem = (event: React.KeyboardEvent, direction) => {
@@ -118,8 +125,8 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
       const toolbarItem = ToolbarItem.create(item, {
         defaultProps: () => ({
           accessibility: toolbarRadioGroupItemBehavior,
-          active: activeIndex === index
-        })
+          active: activeIndex === index,
+        }),
       });
 
       return (
@@ -137,10 +144,12 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> & FluentCo
     <ElementType
       {...getA11yProps('root', {
         ...unhandledProps,
-        className: classes.root
+        className: classes.root,
       })}
     >
-      <ToolbarVariablesProvider value={mergedVariables}>{childrenExist(children) ? children : renderItems()}</ToolbarVariablesProvider>
+      <ToolbarVariablesProvider value={mergedVariables}>
+        {childrenExist(children) ? children : renderItems()}
+      </ToolbarVariablesProvider>
     </ElementType>
   );
   setEnd();
@@ -154,17 +163,17 @@ ToolbarRadioGroup.className = 'ui-toolbars'; // FIXME: required by getComponentI
 ToolbarRadioGroup.propTypes = {
   ...commonPropTypes.createCommon(),
   activeIndex: PropTypes.number,
-  items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item'])
+  items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
 };
 ToolbarRadioGroup.handledProps = Object.keys(ToolbarRadioGroup.propTypes) as any;
 
 ToolbarRadioGroup.defaultProps = {
-  accessibility: toolbarRadioGroupBehavior
+  accessibility: toolbarRadioGroupBehavior,
 };
 
 ToolbarRadioGroup.create = createShorthandFactory({
   Component: ToolbarRadioGroup,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

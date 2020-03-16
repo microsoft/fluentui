@@ -9,9 +9,9 @@ const toolbarMenuDividerStyles: ComponentSlotStylesPrepared<ToolbarMenuDividerSt
     return {
       borderTop: `1px solid ${v.menuDividerBorder || colors.border}`,
       margin: v.menuDividerMargin,
-      alignSelf: 'stretch'
+      alignSelf: 'stretch',
     };
-  }
+  },
 };
 
 export default toolbarMenuDividerStyles;

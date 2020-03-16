@@ -8,7 +8,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ColorComponentProps
+  ColorComponentProps,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
@@ -40,15 +40,15 @@ class Segment extends UIComponent<WithAsProp<SegmentProps>, any> {
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: 'shorthand',
-      color: true
+      color: true,
     }),
     disabled: PropTypes.bool,
     inverted: PropTypes.bool,
-    rtlAttributes: PropTypes.func
+    rtlAttributes: PropTypes.func,
   };
 
   static defaultProps = {
-    as: 'div'
+    as: 'div',
   };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }) {

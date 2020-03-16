@@ -6,17 +6,17 @@ const globalStyles: StaticStyleFunction = siteVars => ({
     margin: siteVars.bodyMargin,
     fontFamily: siteVars.bodyFontFamily,
     fontSize: siteVars.bodyFontSize,
-    lineHeight: siteVars.bodyLineHeight
+    lineHeight: siteVars.bodyLineHeight,
   },
   '*': {
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   '*:before': {
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   '*:after': {
-    boxSizing: 'border-box'
-  }
+    boxSizing: 'border-box',
+  },
 });
 
 export default globalStyles;

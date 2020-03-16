@@ -6,21 +6,21 @@ const toolbarStyles: ComponentSlotStylesPrepared<ToolbarProps, ToolbarVariables>
   root: (): ICSSInJSStyle => ({
     display: 'flex',
     alignItems: 'center',
-    position: 'relative'
+    position: 'relative',
   }),
 
   offsetMeasure: (): ICSSInJSStyle => ({
     position: 'absolute',
     visibility: 'hidden',
     left: 0,
-    top: 0
+    top: 0,
   }),
 
   overflowContainer: () => ({
     display: 'flex',
     overflow: 'hidden',
-    flexGrow: 1
-  })
+    flexGrow: 1,
+  }),
 };
 
 export default toolbarStyles;

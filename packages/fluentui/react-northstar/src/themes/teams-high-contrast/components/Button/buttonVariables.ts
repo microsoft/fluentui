@@ -14,6 +14,6 @@ export default (siteVars: any): Partial<ButtonVariables> => {
     primaryBackgroundColorFocus: siteVars.accessibleCyan,
 
     boxShadow: 'none',
-    primaryBoxShadow: 'none'
+    primaryBoxShadow: 'none',
   };
 };

@@ -9,7 +9,7 @@ const makeNode = (rect?: any, node?: any) => ({
   offsetWidth: 1,
   offsetHeight: 1,
   getClientRects: jest.fn(() => ({ length: 1, 0: makeRect(rect) })),
-  ...node
+  ...node,
 });
 
 describe('doesNodeContainClick', () => {

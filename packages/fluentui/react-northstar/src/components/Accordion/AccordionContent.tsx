@@ -12,7 +12,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, withSafeTypeForAs } from '../../types';
 
@@ -43,12 +43,12 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
     ...commonPropTypes.createCommon(),
     accordionTitleId: PropTypes.string,
     active: PropTypes.bool,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
   };
 
   static defaultProps = {
     accessibility: accordionContentBehavior,
-    as: 'dd'
+    as: 'dd',
   };
 
   handleClick = (e: React.SyntheticEvent) => {
@@ -74,7 +74,7 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
 
 AccordionContent.create = createShorthandFactory({
   Component: AccordionContent,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

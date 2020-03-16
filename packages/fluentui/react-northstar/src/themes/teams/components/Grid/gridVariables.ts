@@ -9,5 +9,5 @@ export interface GridVariables {
 export default (): GridVariables => ({
   defaultColumnCount: 5,
   gridGap: undefined,
-  padding: undefined
+  padding: undefined,
 });

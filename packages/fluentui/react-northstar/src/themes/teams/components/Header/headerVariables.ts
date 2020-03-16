@@ -16,6 +16,6 @@ export default (siteVars: any): HeaderVariables => {
   return {
     colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, headerColorAreas),
     color: siteVars.colors.grey[750],
-    descriptionColor: undefined
+    descriptionColor: undefined,
   };
 };

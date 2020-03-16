@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'window-restore'
+  exportedAs: 'window-restore',
 } as TeamsProcessedSvgIconSpec;

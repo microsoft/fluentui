@@ -36,7 +36,7 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
     onPositionLeft,
     onPositionRight,
     onFiberChanged,
-    onFiberSelected
+    onFiberSelected,
   } = props;
 
   const [slot, setSlot] = React.useState('root');
@@ -48,7 +48,7 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
       ? {
           componentStyles: {},
           componentVariables: [],
-          siteVariables: []
+          siteVariables: [],
         }
       : inputDebugData;
 
@@ -65,8 +65,8 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
       val =>
         (siteVariablesUsedInComponentVariables = _.concat(
           siteVariablesUsedInComponentVariables,
-          getValues(val, val => val.indexOf('siteVariables.') > -1)
-        ))
+          getValues(val, val => val.indexOf('siteVariables.') > -1),
+        )),
     );
 
   const uniqUsedSiteVariables = _.uniq(siteVariablesUsedInComponentVariables);
@@ -76,12 +76,12 @@ const DebugPanel: React.FC<DebugPanelProps> = props => {
       const key = _.replace(next, 'siteVariables.', '');
       _.set(acc, key, _.get(val['resolved'], key));
       return acc;
-    }, {})
+    }, {}),
   }));
 
   const siteVariablesData = siteVariablesDataWithNulls.map(val => ({
     ...val,
-    resolved: removeNulls(val.resolved)
+    resolved: removeNulls(val.resolved),
   }));
 
   return (
@@ -185,7 +185,7 @@ const debugPanelHeader: React.CSSProperties = {
   padding: '2px 2px 4px',
   top: '0',
   background: '#f3f3f3',
-  zIndex: 1
+  zIndex: 1,
 };
 
 const commonIconStyle: React.CSSProperties = {
@@ -193,21 +193,21 @@ const commonIconStyle: React.CSSProperties = {
   cursor: 'pointer',
   color: '#555',
   lineHeight: 1,
-  margin: '0 4px'
+  margin: '0 4px',
 };
 
 const debugPanelCloseIcon: React.CSSProperties = {
   ...commonIconStyle,
   fontSize: '20px',
   outline: '0',
-  cursor: 'pointer'
+  cursor: 'pointer',
 };
 
 const debugPanelArrowIcon: React.CSSProperties = {
   ...commonIconStyle,
   fontSize: '24px',
   marginTop: '-4px',
-  outline: '0'
+  outline: '0',
 };
 
 const debugPanelIcon = (left, isLeftActive): React.CSSProperties => ({
@@ -219,8 +219,8 @@ const debugPanelIcon = (left, isLeftActive): React.CSSProperties => ({
   width: '16px',
   height: '14px',
   ...(left === isLeftActive && {
-    borderColor: '#6495ed'
-  })
+    borderColor: '#6495ed',
+  }),
 });
 
 const debugPanelRoot = (left): React.CSSProperties => ({
@@ -236,7 +236,7 @@ const debugPanelRoot = (left): React.CSSProperties => ({
   fontSize: '12px',
   overflowY: 'scroll',
   [left ? 'borderRight' : 'borderLeft']: '1px solid rgba(0, 0, 0, 0.2)',
-  boxShadow: '0 0 8px rgba(0, 0, 0, .1)'
+  boxShadow: '0 0 8px rgba(0, 0, 0, .1)',
 });
 
 const debugHeaderContainer = (): React.CSSProperties => ({
@@ -248,12 +248,12 @@ const debugHeaderContainer = (): React.CSSProperties => ({
   overflow: 'hidden',
   background: '#f3f3f3',
   borderTop: '1px solid #d0d0d0',
-  borderBottom: '1px solid #d0d0d0'
+  borderBottom: '1px solid #d0d0d0',
 });
 
 const debugHeader = (): React.CSSProperties => ({
   fontSize: '14px',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
 });
 
 const debugNoData = (): React.CSSProperties => ({
@@ -261,22 +261,22 @@ const debugNoData = (): React.CSSProperties => ({
   color: 'rgba(0, 0, 0, 0.75)',
   textAlign: 'center',
   background: 'rgba(0, 0, 0, 0.05)',
-  marginBottom: '4px'
+  marginBottom: '4px',
 });
 
 const debugPanelSelectContainer = (): React.CSSProperties => ({
-  width: 'auto'
+  width: 'auto',
 });
 
 const debugPanelBody: React.CSSProperties = {
   overflowWrap: 'break-word',
   wordWrap: 'break-word',
   wordBreak: 'break-all',
-  hyphens: 'auto'
+  hyphens: 'auto',
 };
 
 const debugPanel: React.CSSProperties = {
-  padding: '0 4px'
+  padding: '0 4px',
 };
 
 export default DebugPanel;

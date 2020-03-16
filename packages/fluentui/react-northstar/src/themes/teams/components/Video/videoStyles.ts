@@ -7,6 +7,6 @@ export default {
     display: 'inline-block',
     verticalAlign: 'middle',
     width: v.width,
-    height: v.height || 'auto'
-  })
+    height: v.height || 'auto',
+  }),
 } as ComponentSlotStylesPrepared<VideoProps, VideoVariables>;

@@ -3,6 +3,6 @@ import { isConformant } from 'test/specs/commonTests';
 
 describe('ToolbarMenu', () => {
   isConformant(ToolbarMenu, {
-    constructorName: 'ToolbarMenu'
+    constructorName: 'ToolbarMenu',
   });
 });

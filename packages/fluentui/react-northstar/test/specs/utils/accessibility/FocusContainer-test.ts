@@ -2,8 +2,8 @@ import { ContainerFocusHandler } from 'src/utils/accessibility/FocusHandling/Foc
 
 const createFocusContainer = (
   { itemsCount, setFocusAtFn }: { itemsCount: number; setFocusAtFn?: () => void } = {
-    itemsCount: 0
-  }
+    itemsCount: 0,
+  },
 ) => new ContainerFocusHandler(() => itemsCount, setFocusAtFn || (() => {}));
 
 describe('Focus Container', () => {

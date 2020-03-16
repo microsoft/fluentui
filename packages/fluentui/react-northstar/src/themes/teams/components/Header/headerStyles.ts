@@ -11,9 +11,9 @@ const headerStyles: ComponentSlotStylesPrepared<HeaderProps, HeaderVariables> = 
       display: 'block',
       color: _.get(colors, 'foreground', v.color),
       textAlign: translateAlignProp(p.align),
-      ...(p.description && { marginBottom: 0 })
+      ...(p.description && { marginBottom: 0 }),
     };
-  }
+  },
 };
 
 export default headerStyles;

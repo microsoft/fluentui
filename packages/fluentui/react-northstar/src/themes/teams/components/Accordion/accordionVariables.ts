@@ -3,5 +3,5 @@ export interface AccordionVariables {
 }
 
 export default (siteVariables): AccordionVariables => ({
-  color: siteVariables.bodyColor
+  color: siteVariables.bodyColor,
 });

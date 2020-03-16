@@ -5,5 +5,5 @@ export interface TeamsIconClassNames {
 
 export const teamsIconClassNames: TeamsIconClassNames = {
   filled: 'ui-icon__filled',
-  outline: 'ui-icon__outline'
+  outline: 'ui-icon__outline',
 };

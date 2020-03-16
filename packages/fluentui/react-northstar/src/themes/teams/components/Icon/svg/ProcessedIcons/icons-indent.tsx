@@ -34,5 +34,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'indent'
+  exportedAs: 'indent',
 } as TeamsProcessedSvgIconSpec;

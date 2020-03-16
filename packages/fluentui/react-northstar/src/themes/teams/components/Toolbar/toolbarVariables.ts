@@ -17,7 +17,7 @@ export const toolbarColorAreas = stringLiteralsArray(
 
   // custom
   'menuItemForegroundHover',
-  'menuItemBackgroundHover'
+  'menuItemBackgroundHover',
 );
 
 export type ToolbarColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof toolbarColorAreas>>;
@@ -76,10 +76,10 @@ export default (siteVars: any): ToolbarVariables => ({
         foregroundActive: siteVars.colorScheme.brand.foregroundActive,
 
         menuItemForegroundHover: siteVars.colorScheme.default.foregroundHover,
-        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover
-      }
+        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover,
+      },
     }),
-    toolbarColorAreas
+    toolbarColorAreas,
   ),
   foreground: undefined,
   background: 'transparent',
@@ -121,5 +121,5 @@ export default (siteVars: any): ToolbarVariables => ({
   customItemHorizontalPadding: pxToRem(16),
   customItemVerticalPadding: pxToRem(4),
 
-  overlayZIndex: siteVars.zIndexes.overlay
+  overlayZIndex: siteVars.zIndexes.overlay,
 });

@@ -63,5 +63,5 @@ export default (siteVars): ChatMessageVariables => ({
   showActionMenu: undefined,
   timestampColorMine: siteVars.colors.grey[500],
   zIndex: siteVars.zIndexes.foreground,
-  overlayZIndex: siteVars.zIndexes.overlay
+  overlayZIndex: siteVars.zIndexes.overlay,
 });

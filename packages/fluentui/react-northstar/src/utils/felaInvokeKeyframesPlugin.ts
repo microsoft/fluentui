@@ -21,13 +21,13 @@ export default () => {
 
           return {
             ...acc,
-            [cssPropertyName]: styles[cssPropertyName]
+            [cssPropertyName]: styles[cssPropertyName],
           };
         }
 
         return {
           ...acc,
-          [cssPropertyName]: invokeKeyframes(cssPropertyValue)
+          [cssPropertyName]: invokeKeyframes(cssPropertyValue),
         };
       }
 

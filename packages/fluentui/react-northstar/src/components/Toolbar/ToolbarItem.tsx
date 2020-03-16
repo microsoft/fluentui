@@ -19,7 +19,7 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  childrenExist
+  childrenExist,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -29,7 +29,7 @@ import {
   Omit,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 import { Popper } from '../../utils/positioner';
 
@@ -116,7 +116,21 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   const { setStart, setEnd } = useTelemetry(ToolbarItem.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, active, className, design, icon, children, disabled, popup, menu, menuOpen, wrapper, styles, variables } = props;
+  const {
+    accessibility,
+    active,
+    className,
+    design,
+    icon,
+    children,
+    disabled,
+    popup,
+    menu,
+    menuOpen,
+    wrapper,
+    styles,
+    variables,
+  } = props;
 
   const itemRef = React.useRef<HTMLElement>();
   const menuRef = React.useRef<HTMLElement>();
@@ -140,16 +154,16 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       },
       doNotNavigateNextToolbarItem: event => {
         event.stopPropagation();
-      }
+      },
     },
     mapPropsToBehavior: () => ({
       as: String(props.as),
       disabled,
       hasMenu: !!menu,
       hasPopup: !!popup,
-      menuOpen
+      menuOpen,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
     className: ToolbarItem.className,
@@ -158,9 +172,9 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       className,
       design,
       styles,
-      variables: mergedVariables
+      variables: mergedVariables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleBlur = (e: React.SyntheticEvent) => {
@@ -226,7 +240,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       }
       // TODO: should we pass toolbarMenuItem to the user callback so he can decide if he wants to close the menu?
       trySetMenuOpen(menuOpen, e);
-    }
+    },
   });
 
   const ElementType = getElementType(props);
@@ -240,7 +254,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
         className: classes.root,
         onBlur: handleBlur,
         onFocus: handleFocus,
-        onClick: handleClick
+        onClick: handleClick,
       })}
     >
       {childrenExist(children) ? children : Icon.create(icon)}
@@ -262,14 +276,14 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
               position="above"
               modifiers={{
                 preventOverflow: {
-                  escapeWithReference: false // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
-                }
+                  escapeWithReference: false, // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
+                },
               }}
               targetRef={itemRef}
             >
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {
-                  overrideProps: handleMenuOverrides(getRefs)
+                  overrideProps: handleMenuOverrides(getRefs),
                 })}
               </ToolbarVariablesProvider>
             </Popper>
@@ -283,12 +297,12 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   if (popup) {
     const popupElement = Popup.create(popup, {
       defaultProps: () => ({
-        trapFocus: true
+        trapFocus: true,
       }),
       overrideProps: {
         trigger: itemElement,
-        children: undefined // force-reset `children` defined for `Popup` as it collides with the `trigger`
-      }
+        children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger`
+      },
     });
     setEnd();
 
@@ -308,15 +322,15 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       const wrapperElement = Box.create(wrapper, {
         defaultProps: () =>
           getA11yProps('wrapper', {
-            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper)
+            className: cx(ToolbarItem.slotClassNames.wrapper, classes.wrapper),
           }),
         overrideProps: predefinedProps => ({
           children: contentElement,
           onClick: e => {
             handleWrapperClick(e);
             _.invoke(predefinedProps, 'onClick', e);
-          }
-        })
+          },
+        }),
       });
       setEnd();
 
@@ -337,20 +351,23 @@ ToolbarItem.className = 'ui-toolbar__item';
 ToolbarItem.displayName = 'ToolbarItem';
 
 ToolbarItem.slotClassNames = {
-  wrapper: `${ToolbarItem.className}__wrapper`
+  wrapper: `${ToolbarItem.className}__wrapper`,
 };
 
 ToolbarItem.defaultProps = {
   as: 'button',
   accessibility: toolbarItemBehavior,
-  wrapper: {}
+  wrapper: {},
 };
 ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
   icon: customPropTypes.itemShorthandWithoutJSX,
-  menu: PropTypes.oneOfType([customPropTypes.shorthandAllowingChildren, PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren)]),
+  menu: PropTypes.oneOfType([
+    customPropTypes.shorthandAllowingChildren,
+    PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren),
+  ]),
   menuOpen: PropTypes.bool,
   onMenuOpenChange: PropTypes.func,
   onClick: PropTypes.func,
@@ -360,11 +377,11 @@ ToolbarItem.propTypes = {
     PropTypes.shape({
       ...Popup.propTypes,
       trigger: customPropTypes.never,
-      children: customPropTypes.never
+      children: customPropTypes.never,
     }),
-    PropTypes.string
+    PropTypes.string,
   ]),
-  wrapper: customPropTypes.shorthandAllowingChildren
+  wrapper: customPropTypes.shorthandAllowingChildren,
 };
 ToolbarItem.handledProps = Object.keys(ToolbarItem.propTypes) as any;
 

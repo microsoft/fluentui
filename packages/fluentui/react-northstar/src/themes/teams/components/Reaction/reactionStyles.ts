@@ -19,12 +19,12 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionVariabl
     ':hover': {
       color: v.meReacting ? v.meReactingColorHover : v.otherReactingColorHover,
       [contentClassNameSelector]: {
-        fontWeight: v.fontWeightHover as FontWeightProperty
-      }
+        fontWeight: v.fontWeightHover as FontWeightProperty,
+      },
     },
     position: 'relative',
     ':focus': {
-      outline: 'none'
+      outline: 'none',
     },
     ':focus-visible': {
       ':after': {
@@ -38,16 +38,16 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionVariabl
         borderStyle: 'solid',
         borderColor: v.borderColorFocus,
         borderRadius: pxToRem(2),
-        boxShadow: `0px 0px 0px 1px ${v.boxShadowColor} inset`
-      }
-    }
+        boxShadow: `0px 0px 0px 1px ${v.boxShadowColor} inset`,
+      },
+    },
   }),
   icon: ({ props: p }) => ({
-    marginRight: p.content ? pxToRem(4) : pxToRem(0)
+    marginRight: p.content ? pxToRem(4) : pxToRem(0),
   }),
   content: ({ variables: v }) => ({
-    fontSize: v.contentFontSize
-  })
+    fontSize: v.contentFontSize,
+  }),
 };
 
 export default reactionStyles;

@@ -9,14 +9,14 @@ enum PlacementParts {
   end = 'end',
   left = 'left',
   right = 'right',
-  center = ''
+  center = '',
 }
 
 const getPositionMap = (rtl: boolean): Record<Position, PlacementParts> => ({
   above: PlacementParts.top,
   below: PlacementParts.bottom,
   before: rtl ? PlacementParts.right : PlacementParts.left,
-  after: rtl ? PlacementParts.left : PlacementParts.right
+  after: rtl ? PlacementParts.left : PlacementParts.right,
 });
 
 const getAlignmentMap = (rtl: boolean): Record<Alignment, PlacementParts> => ({
@@ -24,7 +24,7 @@ const getAlignmentMap = (rtl: boolean): Record<Alignment, PlacementParts> => ({
   end: rtl ? PlacementParts.start : PlacementParts.end,
   top: PlacementParts.start,
   bottom: PlacementParts.end,
-  center: PlacementParts.center
+  center: PlacementParts.center,
 });
 
 const shouldAlignToCenter = (p: Position, a: Alignment) => {
@@ -50,7 +50,15 @@ const shouldAlignToCenter = (p: Position, a: Alignment) => {
  * | after    | center    |  right          |  left
  * | after    | bottom    |  right-end      |  left-end
  */
-export const getPlacement = ({ align, position, rtl }: { align: Alignment; position: Position; rtl: boolean }): Placement => {
+export const getPlacement = ({
+  align,
+  position,
+  rtl,
+}: {
+  align: Alignment;
+  position: Position;
+  rtl: boolean;
+}): Placement => {
   const alignment: Alignment = shouldAlignToCenter(position, align) ? 'center' : align;
   const computedPosition = getPositionMap(rtl)[position];
   const computedAlignmnent = getAlignmentMap(rtl)[alignment];

@@ -15,7 +15,8 @@ export interface ButtonContentProps extends BoxProps {
 
 export type ButtonContentStylesProps = Pick<ButtonContentProps, 'size'>;
 
-const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> & FluentComponentStaticProps<ButtonContentProps> = props => {
+const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
+  FluentComponentStaticProps<ButtonContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ButtonContent.displayName, context.telemetry);
   setStart();
@@ -29,16 +30,20 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> & FluentComponentS
       className,
       styles,
       variables,
-      design
+      design,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(ButtonContent.handledProps, props);
 
   const result = (
-    <ElementType {...rtlTextContainer.getAttributes({ forElements: [children, content] })} className={classes.root} {...unhandledProps}>
+    <ElementType
+      {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
+      className={classes.root}
+      {...unhandledProps}
+    >
       {childrenExist(children) ? children : content}
     </ElementType>
   );
@@ -53,14 +58,14 @@ ButtonContent.className = 'ui-button__content';
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),
-  size: customPropTypes.size
+  size: customPropTypes.size,
 };
 
 ButtonContent.handledProps = Object.keys(ButtonContent.propTypes) as any;
 
 ButtonContent.create = createShorthandFactory({
   Component: ButtonContent,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

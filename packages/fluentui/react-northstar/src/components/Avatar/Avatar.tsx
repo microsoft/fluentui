@@ -9,7 +9,13 @@ import { ThemeContext } from 'react-fela';
 import Image, { ImageProps } from '../Image/Image';
 import Label, { LabelProps } from '../Label/Label';
 import Status, { StatusProps } from '../Status/Status';
-import { WithAsProp, ShorthandValue, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
 
 export interface AvatarProps extends UIComponentProps {
@@ -47,11 +53,24 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, className, design, getInitials, label, image, name, square, size, status, styles, variables } = props;
+  const {
+    accessibility,
+    className,
+    design,
+    getInitials,
+    label,
+    image,
+    name,
+    square,
+    size,
+    status,
+    styles,
+    variables,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Avatar.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
     className: Avatar.className,
@@ -60,8 +79,8 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
       className,
       design,
       styles,
-      variables
-    })
+      variables,
+    }),
   });
 
   const ElementType = getElementType(props);
@@ -75,8 +94,8 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
             fluid: true,
             avatar: !square,
             title: name,
-            styles: resolvedStyles.image
-          })
+            styles: resolvedStyles.image,
+          }),
       })}
       {!image &&
         Label.create(label || {}, {
@@ -85,15 +104,15 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
               content: getInitials(name),
               circular: !square,
               title: name,
-              styles: resolvedStyles.label
-            })
+              styles: resolvedStyles.label,
+            }),
         })}
       {Status.create(status, {
         defaultProps: () =>
           getA11Props('status', {
             size,
-            styles: resolvedStyles.status
-          })
+            styles: resolvedStyles.status,
+          }),
       })}
     </ElementType>
   );
@@ -128,13 +147,13 @@ Avatar.defaultProps = {
       return initials.charAt(0) + initials.charAt(initials.length - 1);
     }
     return initials;
-  }
+  },
 };
 
 Avatar.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
-    content: false
+    content: false,
   }),
   name: PropTypes.string,
   image: customPropTypes.itemShorthandWithoutJSX,
@@ -142,7 +161,7 @@ Avatar.propTypes = {
   square: PropTypes.bool,
   size: customPropTypes.size,
   status: customPropTypes.itemShorthand,
-  getInitials: PropTypes.func
+  getInitials: PropTypes.func,
 };
 Avatar.handledProps = Object.keys(Avatar.propTypes) as any;
 

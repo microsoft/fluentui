@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'phone-clock'
+  exportedAs: 'phone-clock',
 } as TeamsProcessedSvgIconSpec;

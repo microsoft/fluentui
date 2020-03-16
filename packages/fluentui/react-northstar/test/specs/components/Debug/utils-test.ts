@@ -47,11 +47,11 @@ describe('debugUtils', () => {
     test('returns true if there is override', () => {
       const key = 'color';
       const data = {
-        [key]: 'red'
+        [key]: 'red',
       };
 
       const overrides = {
-        [key]: 'blue'
+        [key]: 'blue',
       };
 
       expect(isOverridden(data, key, overrides)).toEqual(true);
@@ -60,11 +60,11 @@ describe('debugUtils', () => {
     test('returns false if is not override', () => {
       const key = 'color';
       const data = {
-        [key]: 'red'
+        [key]: 'red',
       };
 
       const overrides = {
-        backgroundColor: 'blue'
+        backgroundColor: 'blue',
       };
 
       expect(isOverridden(data, key, overrides)).toEqual(false);
@@ -73,7 +73,7 @@ describe('debugUtils', () => {
     test('gracefully handles null and undefine', () => {
       const key = 'color';
       const data = {
-        [key]: 'red'
+        [key]: 'red',
       };
 
       let overrides = null;
@@ -85,13 +85,13 @@ describe('debugUtils', () => {
       expect(() => isOverridden(data, key, overrides)).not.toThrow();
 
       overrides = {
-        [key]: null
+        [key]: null,
       };
       expect(isOverridden(data, key, overrides)).toEqual(false);
       expect(() => isOverridden(data, key, overrides)).not.toThrow();
 
       overrides = {
-        [key]: undefined
+        [key]: undefined,
       };
       expect(isOverridden(data, key, overrides)).toEqual(false);
       expect(() => isOverridden(data, key, overrides)).not.toThrow();
@@ -103,11 +103,11 @@ describe('debugUtils', () => {
       const search = 'backgroundColor';
       const data = {
         color: 'red',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       };
 
       expect(filter(data, search)).toMatchObject({
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       });
     });
 
@@ -115,11 +115,11 @@ describe('debugUtils', () => {
       const search = 'white';
       const data = {
         color: 'red',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       };
 
       expect(filter(data, search)).toMatchObject({
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       });
     });
 
@@ -127,7 +127,7 @@ describe('debugUtils', () => {
       const search = 'color';
       const data = {
         color: 'red',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
       };
 
       expect(filter(data, search)).toMatchObject(data);
@@ -140,8 +140,8 @@ describe('debugUtils', () => {
         backgroundColor: 'white',
         ':hover': {
           color: 'red',
-          border: '1px'
-        }
+          border: '1px',
+        },
       };
 
       expect(filter(data, search)).toMatchObject(data);
@@ -154,15 +154,15 @@ describe('debugUtils', () => {
         backgroundColor: 'white',
         ':hover': {
           color: 'red',
-          border: '1px'
-        }
+          border: '1px',
+        },
       };
 
       expect(filter(data, search)).toMatchObject({
         ':hover': {
           color: 'red',
-          border: '1px'
-        }
+          border: '1px',
+        },
       });
     });
 
@@ -173,16 +173,16 @@ describe('debugUtils', () => {
         backgroundColor: 'white',
         ':hover': {
           color: 'red',
-          border: '1px'
-        }
+          border: '1px',
+        },
       };
 
       expect(filter(data, search)).toMatchObject({
         color: 'red',
         ':hover': {
           color: 'red',
-          border: '1px'
-        }
+          border: '1px',
+        },
       });
     });
   });
@@ -224,9 +224,9 @@ describe('debugUtils', () => {
           key5: `${prefix}value5`,
           key6: {
             key7: `${prefix}value7`,
-            key8: `value8`
-          }
-        }
+            key8: `value8`,
+          },
+        },
       };
 
       expect(getValues(data, predicate)).toEqual([`${prefix}value1`, `${prefix}value5`, `${prefix}value7`]);
@@ -237,7 +237,7 @@ describe('debugUtils', () => {
     test('removes nulls values on first level', () => {
       const data = {
         key1: null,
-        key2: 'value2'
+        key2: 'value2',
       };
 
       expect(removeNulls(data)).toMatchObject({ key2: 'value2' });
@@ -247,14 +247,14 @@ describe('debugUtils', () => {
       const data = {
         key1: {
           key2: null,
-          key3: 'value2'
-        }
+          key3: 'value2',
+        },
       };
 
       expect(removeNulls(data)).toMatchObject({
         key1: {
-          key3: 'value2'
-        }
+          key3: 'value2',
+        },
       });
     });
 
@@ -262,9 +262,9 @@ describe('debugUtils', () => {
       const data = {
         key1: {
           key2: null,
-          key3: null
+          key3: null,
         },
-        key4: 'value4'
+        key4: 'value4',
       };
 
       expect(removeNulls(data)).toMatchObject({ key4: 'value4' });

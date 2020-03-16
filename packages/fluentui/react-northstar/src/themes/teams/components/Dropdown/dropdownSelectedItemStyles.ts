@@ -8,25 +8,25 @@ const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedIt
     margin: '.4rem 0 0 .4rem',
     color: v.selectedItemColor,
     ...(v.selectedItemBackgroundColor && {
-      backgroundColor: v.selectedItemBackgroundColor
+      backgroundColor: v.selectedItemBackgroundColor,
     }),
     ':focus': {
       color: v.selectedItemColorFocus,
       backgroundColor: v.selectedItemBackgroundColorFocus,
-      outline: '0'
+      outline: '0',
     },
     ':hover': {
       color: v.selectedItemColorFocus,
-      backgroundColor: v.selectedItemBackgroundColorFocus
-    }
+      backgroundColor: v.selectedItemBackgroundColorFocus,
+    },
   }),
   icon: ({ variables: v }) => ({
     ...getIconFillOrOutlineStyles({ outline: true }),
     ':hover': {
       color: v.selectedItemColorFocus,
-      ...getIconFillOrOutlineStyles({ outline: false })
-    }
-  })
+      ...getIconFillOrOutlineStyles({ outline: false }),
+    },
+  }),
 };
 
 export default dropdownSelectedItemStyles;

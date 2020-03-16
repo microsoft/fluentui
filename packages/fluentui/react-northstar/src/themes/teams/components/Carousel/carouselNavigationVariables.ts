@@ -12,7 +12,7 @@ export const menuColorAreas = stringLiteralsArray(
   'backgroundHover',
   'backgroundActive',
   'backgroundFocus',
-  'foregroundDisabled'
+  'foregroundDisabled',
 );
 export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>;
 
@@ -58,7 +58,7 @@ export default (siteVars: any): CarouselNavigationVariables => {
           borderActive: siteVars.colorScheme.default.border2,
           backgroundActive: siteVars.colorScheme.default.backgroundActive1,
           backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
-          foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1
+          foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
         },
         brand: {
           foregroundHover: siteVars.colors.white,
@@ -68,10 +68,10 @@ export default (siteVars: any): CarouselNavigationVariables => {
           backgroundActive: siteVars.colors.brand[500], // it's 600 in the color scheme
           foregroundFocus: siteVars.colors.white,
           backgroundFocus: siteVars.colors.brand[300],
-          foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1
-        }
+          foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
+        },
       }),
-      menuColorAreas
+      menuColorAreas,
     ),
     color: siteVars.colors.grey[500],
     colorActive: siteVars.colors.black,
@@ -102,6 +102,6 @@ export default (siteVars: any): CarouselNavigationVariables => {
     indicatorBackgroundColor: siteVars.colors.grey[500],
     indicatorActiveBackgroundColor: siteVars.colors.brand[600],
 
-    borderWidth: pxToRem(1)
+    borderWidth: pxToRem(1),
   };
 };

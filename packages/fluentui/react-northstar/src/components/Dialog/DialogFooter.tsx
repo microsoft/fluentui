@@ -8,7 +8,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   ShorthandFactory,
-  childrenExist
+  childrenExist,
 } from '../../utils';
 
 import { WithAsProp, withSafeTypeForAs } from '../../types';
@@ -22,7 +22,7 @@ class DialogFooter extends UIComponent<WithAsProp<DialogFooterProps>> {
   static className = 'ui-dialog__footer';
 
   static propTypes = {
-    ...commonPropTypes.createCommon()
+    ...commonPropTypes.createCommon(),
   };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }): React.ReactNode {

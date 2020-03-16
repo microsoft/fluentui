@@ -49,7 +49,7 @@ export type FlexItemStylesProps = Pick<FlexItemProps, 'align' | 'grow' | 'flexDi
 const applyStyles = (
   element: React.ReactElement,
   styles: ComponentSlotStylesResolved,
-  classes: ComponentSlotClasses
+  classes: ComponentSlotClasses,
 ): React.ReactElement => {
   if (!styles) {
     return element;
@@ -58,13 +58,13 @@ const applyStyles = (
   // if element is DOM element
   if (typeof element.type === 'string') {
     return React.cloneElement(element, {
-      className: cx(element.props.className, classes.root)
+      className: cx(element.props.className, classes.root),
     });
   }
 
   // assuming element is Fluent UI element
   return React.cloneElement(element, {
-    styles: mergeStyles(styles.root || {}, element.props.styles)
+    styles: mergeStyles(styles.root || {}, element.props.styles),
   });
 };
 
@@ -86,15 +86,15 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
       flexDirection,
       push,
       shrink,
-      size
+      size,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   let element: React.ReactElement;
@@ -103,7 +103,7 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
   if (typeof children === 'function') {
     element = children({
       styles: resolvedStyles.root,
-      classes: classes.root
+      classes: classes.root,
     });
   } else if (_.isNil(children)) {
     element = null;
@@ -123,12 +123,15 @@ FlexItem.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
     accessibility: false,
-    content: false
+    content: false,
   }),
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
 
   align: PropTypes.oneOf(['auto', 'start', 'end', 'center', 'baseline', 'stretch']),
-  size: PropTypes.oneOfType([PropTypes.oneOf(['size.half', 'size.quarter', 'size.small', 'size.medium', 'size.large']), PropTypes.string]),
+  size: PropTypes.oneOfType([
+    PropTypes.oneOf(['size.half', 'size.quarter', 'size.small', 'size.medium', 'size.large']),
+    PropTypes.string,
+  ]),
   shrink: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
 
   push: PropTypes.bool,
@@ -136,7 +139,7 @@ FlexItem.propTypes = {
   /**
    * Will be automatically set by parent Flex component
    */
-  flexDirection: PropTypes.oneOf(['row', 'column'])
+  flexDirection: PropTypes.oneOf(['row', 'column']),
 };
 
 // Boolean flag for now, Symbol-based approach may be used instead.

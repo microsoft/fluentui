@@ -3,6 +3,6 @@ import TreeTitle from 'src/components/Tree/TreeTitle';
 
 describe('TreeTitle', () => {
   isConformant(TreeTitle, {
-    constructorName: 'TreeTitle'
+    constructorName: 'TreeTitle',
   });
 });

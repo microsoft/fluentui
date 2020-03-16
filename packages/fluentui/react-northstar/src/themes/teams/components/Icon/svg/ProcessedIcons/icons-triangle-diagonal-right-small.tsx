@@ -7,5 +7,5 @@ export default {
       <path opacity=".7" fill="#201f1f" d="M21 14l-7 7h7z" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

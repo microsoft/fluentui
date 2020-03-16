@@ -9,7 +9,7 @@ const toolbarCustomItemStyles: ComponentSlotStylesPrepared<ToolbarCustomItemStyl
     const colors = getColorScheme(v.colorScheme);
     const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables
+      variables: siteVariables,
     });
 
     return {
@@ -26,19 +26,19 @@ const toolbarCustomItemStyles: ComponentSlotStylesPrepared<ToolbarCustomItemStyl
       ...(p.fitted !== true &&
         p.fitted !== 'horizontally' && {
           paddingLeft: v.customItemHorizontalPadding,
-          paddingRight: v.customItemHorizontalPadding
+          paddingRight: v.customItemHorizontalPadding,
         }),
       ...(p.fitted !== true &&
         p.fitted !== 'vertically' && {
           paddingTop: v.customItemVerticalPadding,
-          paddingBottom: v.customItemVerticalPadding
+          paddingBottom: v.customItemVerticalPadding,
         }),
 
       ':focus': borderFocusStyles[':focus'],
 
-      ':focus-visible': borderFocusStyles[':focus-visible']
+      ':focus-visible': borderFocusStyles[':focus-visible'],
     };
-  }
+  },
 };
 
 export default toolbarCustomItemStyles;

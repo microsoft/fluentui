@@ -7,10 +7,10 @@ export default {
   root: ({
     props: { header, compact },
     variables: v,
-    theme: { siteVariables }
+    theme: { siteVariables },
   }: ComponentStyleFunctionParam<TableRowProps, TeamsTableVariables>): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables
+      variables: siteVariables,
     });
 
     return {
@@ -31,19 +31,19 @@ export default {
       ':hover': {
         color: v.hoverColor,
         backgroundColor: v.backgroundHoverColor,
-        borderColor: v.rowBorderHoverColor
+        borderColor: v.rowBorderHoverColor,
       },
       ...borderFocusStyles,
       ...(header && {
         fontSize: v.headerFontSize,
         ':hover': {
           color: v.color,
-          backgroundColor: v.backgroundColor
-        }
+          backgroundColor: v.backgroundColor,
+        },
       }),
       ...(compact && {
-        height: v.compactRowHeight
-      })
+        height: v.compactRowHeight,
+      }),
     };
-  }
+  },
 };

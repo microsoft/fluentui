@@ -9,7 +9,7 @@ const rtlTextContainer = {
       return <span dir="auto">{element}</span>;
     }
     return element;
-  }
+  },
 };
 
 export default rtlTextContainer;

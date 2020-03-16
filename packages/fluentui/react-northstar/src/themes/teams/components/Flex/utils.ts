@@ -9,5 +9,5 @@ export const toFlexAlignment = (propValue: string) => {
 };
 
 export const toFlexItemSizeValues = (sizeValue: string) => ({
-  flexBasis: sizeValue
+  flexBasis: sizeValue,
 });

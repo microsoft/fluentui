@@ -8,24 +8,24 @@ export type CollectionShorthandTestOptions<TProps = any> = {
 };
 
 export const DefaultCollectionShorthandTestOptions: CollectionShorthandTestOptions = {
-  mapsValueToProp: 'content'
+  mapsValueToProp: 'content',
 };
 
 export type CollectionShorthandPropTestsRunner<TComponent> = <TShorthandComponent extends React.ComponentType>(
   shorthandProp: keyof PropsOf<TComponent>,
   ShorthandComponent: TShorthandComponent,
-  options?: CollectionShorthandTestOptions<PropsOf<TShorthandComponent>>
+  options?: CollectionShorthandTestOptions<PropsOf<TShorthandComponent>>,
 ) => any;
 
 export type CollectionShorthandPropTestsFactory = <TComponent extends React.ComponentType>(
-  Component: TComponent
+  Component: TComponent,
 ) => CollectionShorthandPropTestsRunner<TComponent>;
 
 export default ((Component: React.ComponentType) => {
   return function implementsCollectionShorthandProp(
     shorthandPropertyName: string,
     ShorthandComponent: React.ComponentType,
-    options: CollectionShorthandTestOptions = DefaultCollectionShorthandTestOptions
+    options: CollectionShorthandTestOptions = DefaultCollectionShorthandTestOptions,
   ) {
     const mapsValueToProp = options.mapsValueToProp as string;
 
@@ -50,7 +50,7 @@ export default ((Component: React.ComponentType) => {
       test(`object value is spread as ${ShorthandComponent.displayName}'s props`, () => {
         const shorthandValue = [
           { key: 'first', foo: 'foo value', bar: 'bar value' },
-          { key: 'last', foo: 'foo last value', bar: 'bar last value' }
+          { key: 'last', foo: 'foo last value', bar: 'bar last value' },
         ];
 
         const props = { [shorthandPropertyName]: shorthandValue };
@@ -59,11 +59,15 @@ export default ((Component: React.ComponentType) => {
         const shorthandComponents = wrapper.find(ShorthandComponent.displayName);
 
         const allShorthandPropertiesArePassedToFirstShorthandComponent = Object.keys(_.first(shorthandValue)).every(
-          propertyName => propertyName === 'key' || _.first(shorthandValue)[propertyName] === shorthandComponents.first().prop(propertyName)
+          propertyName =>
+            propertyName === 'key' ||
+            _.first(shorthandValue)[propertyName] === shorthandComponents.first().prop(propertyName),
         );
 
         const allShorthandPropertiesArePassedToLastShorthandComponent = Object.keys(_.last(shorthandValue)).every(
-          propertyName => propertyName === 'key' || _.last(shorthandValue)[propertyName] === shorthandComponents.last().prop(propertyName)
+          propertyName =>
+            propertyName === 'key' ||
+            _.last(shorthandValue)[propertyName] === shorthandComponents.last().prop(propertyName),
         );
 
         expect(allShorthandPropertiesArePassedToFirstShorthandComponent).toBe(true);

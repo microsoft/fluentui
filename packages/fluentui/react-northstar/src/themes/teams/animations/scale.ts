@@ -6,105 +6,105 @@ const scaleAnimations = {
     keyframe: {
       '0%': {
         transform: 'scale(.88)',
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'scale(1)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     },
     duration: '500ms',
     timingFunction: easeOut,
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   scaleEnterMedium: {
     keyframe: {
       '0%': {
         transform: 'scale(.88)',
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'scale(1)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     },
     duration: '600ms',
     timingFunction: easeOut,
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   scaleEnterSlow: {
     keyframe: {
       '0%': {
         transform: 'scale(.88)',
-        opacity: 0
+        opacity: 0,
       },
       '100%': {
         transform: 'scale(1)',
-        opacity: 1
-      }
+        opacity: 1,
+      },
     },
     duration: '700ms',
     timingFunction: easeOut,
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Scale Out w/ Fade --Useful for dismissing modal dialogs
   scaleExitFast: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: 'scale(.9)',
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     duration: '200ms',
     timingFunction: easeIn,
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   scaleExitMedium: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: 'scale(.9)',
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     duration: '275ms',
     timingFunction: easeIn,
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   scaleExitSlow: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: 'scale(.9)',
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     duration: '350ms',
     timingFunction: easeIn,
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   scaleDownSoft: {
     keyframe: {
       '0%': {
-        transform: 'scale(1)'
+        transform: 'scale(1)',
       },
       '100%': {
-        transform: 'scale(.96)'
-      }
+        transform: 'scale(.96)',
+      },
     },
     duration: '100ms',
     timingFunction: 'cubic-bezier(.78, 0, .22, 1)',
-    fillMode: 'both'
+    fillMode: 'both',
   },
 
   // Bounce in w/ fade --Useful for explicity grabbing the users attention.
@@ -113,149 +113,149 @@ const scaleAnimations = {
       '0%': {
         transform: 'scale(.92)',
         opacity: 0,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '50%': {
         transform: 'scale(1.03)',
         animationTimingFunction: easeOut,
-        opacity: 1
+        opacity: 1,
       },
       '100%': {
         transform: 'scale(1)',
-        animationTimingFunction: easeOut
-      }
+        animationTimingFunction: easeOut,
+      },
     },
     delay: '0ms',
     duration: '450ms',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   bounceEnterMedium: {
     keyframe: {
       '0%': {
         transform: 'scale(.92)',
         opacity: 0,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '50%': {
         transform: 'scale(1.03)',
         opacity: 1,
-        animationTimingFunction: easeOut
+        animationTimingFunction: easeOut,
       },
       '100%': {
         transform: 'scale(1)',
-        animationTimingFunction: easeOut
-      }
+        animationTimingFunction: easeOut,
+      },
     },
     delay: '0ms',
     duration: '550ms',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   bounceEnterSlow: {
     keyframe: {
       '0%': {
         transform: 'scale(.92)',
         opacity: 0,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '50%': {
         transform: 'scale(1.03)',
         opacity: 1,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '100%': {
         transform: 'scale(1)',
-        animationTimingFunction: easeOut
-      }
+        animationTimingFunction: easeOut,
+      },
     },
     delay: '0ms',
     duration: '600ms',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Bounce exit w/ fade.
   bounceExitFast: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
-        animationTimingFunction: easeEasy
+        animationTimingFunction: easeEasy,
       },
       '30%': {
         transform: 'scale(1.03)',
         opacity: 1,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '100%': {
         transform: 'scale(.96)',
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     delay: '0ms',
     duration: '400ms',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   bounceExitMedium: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
 
-        animationTimingFunction: easeEasy
+        animationTimingFunction: easeEasy,
       },
       '30%': {
         transform: 'scale(1.03)',
         opacity: 1,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '100%': {
         transform: 'scale(.96)',
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     delay: '0ms',
     duration: '500ms',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   bounceExitSlow: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
-        animationTimingFunction: easeEasy
+        animationTimingFunction: easeEasy,
       },
       '30%': {
         transform: 'scale(1.03)',
         opacity: 1,
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '100%': {
         transform: 'scale(.95)',
-        opacity: 0
-      }
+        opacity: 0,
+      },
     },
     delay: '0ms',
     duration: '600ms',
-    fillMode: 'forwards'
+    fillMode: 'forwards',
   },
   // Bounce in w/ fade --Useful for explicity grabbing the users attention.
   bounceNotify: {
     keyframe: {
       '0%': {
         transform: 'scale(1)',
-        animationTimingFunction: easeIn
+        animationTimingFunction: easeIn,
       },
       '30%': {
         transform: 'scale(.92)',
-        animationTimingFunction: easeEasy
+        animationTimingFunction: easeEasy,
       },
       '60%': {
         transform: 'scale(1.05)',
-        animationTimingFunction: easeEasy
+        animationTimingFunction: easeEasy,
       },
       '100%': {
-        transform: 'scale(1)'
-      }
+        transform: 'scale(1)',
+      },
     },
     delay: '0ms',
     duration: '600ms',
-    fillMode: 'forwards'
-  }
+    fillMode: 'forwards',
+  },
 };
 
 export default scaleAnimations;

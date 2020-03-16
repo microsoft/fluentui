@@ -23,5 +23,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'calendar'
+  exportedAs: 'calendar',
 } as TeamsProcessedSvgIconSpec;

@@ -1,4 +1,9 @@
-import { Accessibility, toolbarMenuBehavior, toolbarMenuItemCheckboxBehavior, ToolbarMenuBehaviorProps } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  toolbarMenuBehavior,
+  toolbarMenuItemCheckboxBehavior,
+  ToolbarMenuBehaviorProps,
+} from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { mergeComponentVariables } from '@fluentui/styles';
@@ -14,7 +19,7 @@ import {
   childrenExist,
   UIComponentProps,
   ChildrenComponentProps,
-  ContentComponentProps
+  ContentComponentProps,
 } from '../../utils';
 
 import {
@@ -24,7 +29,7 @@ import {
   ShorthandValue,
   WithAsProp,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 
 import ToolbarMenuRadioGroup, { ToolbarMenuRadioGroupProps } from './ToolbarMenuRadioGroup';
@@ -76,9 +81,9 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
     actionHandlers: {
       performClick: e => {
         _.invoke(props, 'onClick', e, props);
-      }
+      },
     },
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenu.displayName, {
     className: ToolbarMenu.className,
@@ -86,9 +91,9 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
       className,
       design,
       styles,
-      variables: mergedVariables
+      variables: mergedVariables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleItemOverrides = predefinedProps => ({
@@ -96,16 +101,16 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
       _.invoke(predefinedProps, 'onClick', e, itemProps);
       _.invoke(props, 'onItemClick', e, {
         ...itemProps,
-        menuOpen: !!itemProps.menu
+        menuOpen: !!itemProps.menu,
       });
-    }
+    },
   });
 
   const handleRadioGroupOverrides = (predefinedProps: ToolbarMenuRadioGroupProps) => ({
     onItemClick: (e, itemProps) => {
       _.invoke(predefinedProps, 'onItemClick', e, itemProps);
       _.invoke(props, 'onItemClick', e, itemProps);
-    }
+    },
   });
 
   const renderItems = () => {
@@ -122,16 +127,16 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
         case 'toggle':
           return ToolbarMenuItem.create(item, {
             defaultProps: () => ({ accessibility: toolbarMenuItemCheckboxBehavior }),
-            overrideProps: handleItemOverrides
+            overrideProps: handleItemOverrides,
           });
 
         default:
           return ToolbarMenuItem.create(item, {
             defaultProps: () => ({
               submenuIndicator,
-              inSubmenu: submenu
+              inSubmenu: submenu,
             }),
-            overrideProps: handleItemOverrides
+            overrideProps: handleItemOverrides,
           });
       }
     });
@@ -144,11 +149,13 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
     <ElementType
       {...getA11yProps('root', {
         ...unhandledProps,
-        className: classes.root
+        className: classes.root,
       })}
     >
-      <ToolbarVariablesProvider value={mergedVariables}>{childrenExist(children) ? children : renderItems()}</ToolbarVariablesProvider>
-    </ElementType>
+      <ToolbarVariablesProvider value={mergedVariables}>
+        {childrenExist(children) ? children : renderItems()}
+      </ToolbarVariablesProvider>
+    </ElementType>,
   );
   setEnd();
 
@@ -163,13 +170,13 @@ ToolbarMenu.propTypes = {
   items: customPropTypes.collectionShorthandWithKindProp(['divider', 'item']),
   onItemClick: PropTypes.func,
   submenu: PropTypes.bool,
-  submenuIndicator: customPropTypes.shorthandAllowingChildren
+  submenuIndicator: customPropTypes.shorthandAllowingChildren,
 };
 ToolbarMenu.handledProps = Object.keys(ToolbarMenu.propTypes) as any;
 
 ToolbarMenu.defaultProps = {
   accessibility: toolbarMenuBehavior,
-  as: 'ul'
+  as: 'ul',
 };
 
 ToolbarMenu.create = createShorthandFactory({ Component: ToolbarMenu, mappedArrayProp: 'items' });

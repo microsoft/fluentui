@@ -10,7 +10,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
@@ -58,7 +58,7 @@ class FormField extends UIComponent<WithAsProp<FormFieldProps>, any> {
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     control: customPropTypes.itemShorthand,
     id: PropTypes.string,
@@ -67,12 +67,12 @@ class FormField extends UIComponent<WithAsProp<FormFieldProps>, any> {
     message: customPropTypes.itemShorthand,
     name: PropTypes.string,
     required: PropTypes.bool,
-    type: PropTypes.string
+    type: PropTypes.string,
   };
 
   static defaultProps = {
     as: 'div',
-    control: { as: Input }
+    control: { as: Input },
   };
 
   renderComponent({ ElementType, classes, accessibility, styles, unhandledProps }): React.ReactNode {
@@ -82,18 +82,18 @@ class FormField extends UIComponent<WithAsProp<FormFieldProps>, any> {
       defaultProps: () => ({
         as: 'label',
         htmlFor: id,
-        styles: styles.label
-      })
+        styles: styles.label,
+      }),
     });
 
     const messageElement = Text.create(message, {
       defaultProps: () => ({
-        styles: styles.message
-      })
+        styles: styles.message,
+      }),
     });
 
     const controlElement = Box.create(control || {}, {
-      defaultProps: () => ({ required, id, name, type, styles: styles.control })
+      defaultProps: () => ({ required, id, name, type, styles: styles.control }),
     });
 
     const content = (

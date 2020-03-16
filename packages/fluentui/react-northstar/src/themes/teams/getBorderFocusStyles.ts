@@ -35,7 +35,7 @@ const getPseudoElementStyles = (args: BorderPseudoElementStyles): ICSSInJSStyle 
     right: borderEdgeValue,
     bottom: borderEdgeValue,
     left: borderEdgeValue,
-    ...styles
+    ...styles,
   };
 };
 
@@ -51,14 +51,14 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
     borderRadius = sv.borderRadius,
     focusInnerBorderColor = sv.focusInnerBorderColor || defaultColor,
     focusOuterBorderColor = sv.focusOuterBorderColor || defaultColor,
-    borderPadding
+    borderPadding,
   } = args;
 
   const defaultBorderStyles: React.CSSProperties = { borderWidth, borderRadius };
 
   return {
     ':focus': {
-      outline: 0
+      outline: 0,
     },
     ':focus-visible': {
       borderColor: 'transparent',
@@ -67,16 +67,16 @@ const getBorderFocusStyles = (args: BorderFocusStyles): ICSSInJSStyle => {
         zIndex: sv.zIndexes.foreground,
         borderEdgeValue: borderPadding == null ? '0' : `-${borderPadding}`,
         borderColor: focusInnerBorderColor,
-        ...defaultBorderStyles
+        ...defaultBorderStyles,
       }),
 
       ':after': getPseudoElementStyles({
         zIndex: sv.zIndexes.foreground,
         borderEdgeValue: borderPadding == null ? `-${borderWidth}` : `calc(0px - ${borderPadding} - ${borderWidth})`,
         borderColor: focusOuterBorderColor,
-        ...defaultBorderStyles
-      })
-    }
+        ...defaultBorderStyles,
+      }),
+    },
   };
 };
 

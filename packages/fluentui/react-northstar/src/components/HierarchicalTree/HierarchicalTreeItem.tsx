@@ -17,7 +17,7 @@ import {
   ChildrenComponentProps,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -25,7 +25,7 @@ import {
   ShorthandRenderFunction,
   ShorthandValue,
   withSafeTypeForAs,
-  ShorthandCollection
+  ShorthandCollection,
 } from '../../types';
 
 export interface HierarchicalTreeItemSlotClassNames {
@@ -75,12 +75,12 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
 
   static slotClassNames: HierarchicalTreeItemSlotClassNames = {
     title: `${HierarchicalTreeItem.className}__title`,
-    subtree: `${HierarchicalTreeItem.className}__subtree`
+    subtree: `${HierarchicalTreeItem.className}__subtree`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     items: customPropTypes.collectionShorthand,
     index: PropTypes.number,
@@ -88,12 +88,12 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
     onTitleClick: PropTypes.func,
     open: PropTypes.bool,
     renderItemTitle: PropTypes.func,
-    title: customPropTypes.itemShorthand
+    title: customPropTypes.itemShorthand,
   };
 
   static defaultProps = {
     as: 'li',
-    accessibility: hierarchicalTreeItemBehavior
+    accessibility: hierarchicalTreeItemBehavior,
   };
 
   itemRef = React.createRef<HTMLElement>();
@@ -138,7 +138,7 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
       if (element) {
         element.focus();
       }
-    }
+    },
   };
 
   eventComesFromChildItem = e => {
@@ -153,7 +153,7 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
     onClick: (e, titleProps) => {
       this.handleTitleClick(e);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
-    }
+    },
   });
 
   renderContent() {
@@ -167,10 +167,10 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
             className: HierarchicalTreeItem.slotClassNames.title,
             open,
             hasSubtree,
-            as: hasSubtree ? 'span' : 'a'
+            as: hasSubtree ? 'span' : 'a',
           }),
           render: renderItemTitle,
-          overrideProps: this.handleTitleOverrides
+          overrideProps: this.handleTitleOverrides,
         })}
         {hasSubtree && open && (
           <Ref innerRef={this.treeRef}>
@@ -179,8 +179,8 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
                 accessibility: hierarchicalSubtreeBehavior,
                 className: HierarchicalTreeItem.slotClassNames.subtree,
                 exclusive,
-                renderItemTitle
-              })
+                renderItemTitle,
+              }),
             })}
           </Ref>
         )}
@@ -209,7 +209,7 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
 
 HierarchicalTreeItem.create = createShorthandFactory({
   Component: HierarchicalTreeItem,
-  mappedProp: 'title'
+  mappedProp: 'title',
 });
 
 /**

@@ -9,5 +9,5 @@ export interface ChatItemVariables {
 export default (): ChatItemVariables => ({
   margin: pxToRem(8),
   gutterMargin: pxToRem(10),
-  messageMargin: pxToRem(40)
+  messageMargin: pxToRem(40),
 });

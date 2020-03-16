@@ -19,25 +19,29 @@ const items = [
       <div>
         <Text content={'item1'} /> <Button id={buttonName} content={buttonName} />
       </div>
-    )
+    ),
   },
   {
     key: 'item2',
-    content: <Text content={'item2'} />
+    content: <Text content={'item2'} />,
   },
   {
     key: 'item3',
-    content: <Text content={'item3'} />
+    content: <Text content={'item3'} />,
   },
   {
     key: 'item4',
-    content: <Text content={'item4'} />
-  }
+    content: <Text content={'item4'} />,
+  },
 ];
 
 function renderCarousel(props?: CarouselProps): ReactWrapper {
   return mountWithProvider(
-    <Carousel items={items} getItemPositionText={(index: number, length: number) => `${index + 1} of ${length}`} {...props} />
+    <Carousel
+      items={items}
+      getItemPositionText={(index: number, length: number) => `${index + 1} of ${length}`}
+      {...props}
+    />,
   );
 }
 
@@ -68,7 +72,7 @@ describe('Carousel', () => {
     expect(
       getItemAtIndexWrapper(wrapper, 0)
         .getDOMNode()
-        .getAttribute('id')
+        .getAttribute('id'),
     ).toMatch(/carousel-item-(\d)+/);
   });
 
@@ -226,7 +230,7 @@ describe('Carousel', () => {
 
   describe('navigation', () => {
     const navigation = {
-      items: items.map(item => ({ key: item.key, icon: { name: 'icon-circle' } }))
+      items: items.map(item => ({ key: item.key, icon: { name: 'icon-circle' } })),
     };
 
     afterEach(() => {

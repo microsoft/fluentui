@@ -57,7 +57,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     ...commonPropTypes.createCommon({
       accessibility: false,
       children: false,
-      content: false
+      content: false,
     }),
     debug: PropTypes.bool,
 
@@ -88,7 +88,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     reducing: PropTypes.bool,
     disappearing: PropTypes.bool,
 
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -101,7 +101,10 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     renderStartArea({ start, classes }) {
       return (
         start && (
-          <div className={cx(Layout.slotClassNames.start, classes.start)} {...rtlTextContainer.getAttributes({ forElements: [start] })}>
+          <div
+            className={cx(Layout.slotClassNames.start, classes.start)}
+            {...rtlTextContainer.getAttributes({ forElements: [start] })}
+          >
             {start}
           </div>
         )
@@ -111,7 +114,10 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     renderMainArea({ main, classes }) {
       return (
         main && (
-          <div className={cx(Layout.slotClassNames.main, classes.main)} {...rtlTextContainer.getAttributes({ forElements: [main] })}>
+          <div
+            className={cx(Layout.slotClassNames.main, classes.main)}
+            {...rtlTextContainer.getAttributes({ forElements: [main] })}
+          >
             {main}
           </div>
         )
@@ -121,7 +127,10 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     renderEndArea({ end, classes }) {
       return (
         end && (
-          <div className={cx(Layout.slotClassNames.end, classes.end)} {...rtlTextContainer.getAttributes({ forElements: [end] })}>
+          <div
+            className={cx(Layout.slotClassNames.end, classes.end)}
+            {...rtlTextContainer.getAttributes({ forElements: [end] })}
+          >
             {end}
           </div>
         )
@@ -132,11 +141,21 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
     // IE11 Doesn't support grid-gap, insert virtual columns instead
     renderGap({ gap, classes }) {
       return gap && <span className={cx(Layout.slotClassNames.gap, classes.gap)} />;
-    }
+    },
   };
 
   renderComponent({ ElementType, classes, unhandledProps }) {
-    const { reducing, disappearing, start, main, end, renderStartArea, renderMainArea, renderEndArea, renderGap } = this.props;
+    const {
+      reducing,
+      disappearing,
+      start,
+      main,
+      end,
+      renderStartArea,
+      renderMainArea,
+      renderEndArea,
+      renderGap,
+    } = this.props;
 
     const startArea = renderStartArea({ ...this.props, classes });
     const mainArea = renderMainArea({ ...this.props, classes });
@@ -159,7 +178,7 @@ class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
         classes.root,
         startArea && Layout.slotClassNames.reducedStart,
         mainArea && Layout.slotClassNames.reducedMain,
-        endArea && Layout.slotClassNames.reducedEnd
+        endArea && Layout.slotClassNames.reducedEnd,
       );
       return (
         <ElementType {...unhandledProps} className={composedClasses}>
@@ -187,7 +206,7 @@ Layout.slotClassNames = {
   gap: `${Layout.className}__gap`,
   reducedStart: `${Layout.className}--reduced__start`,
   reducedMain: `${Layout.className}--reduced__main`,
-  reducedEnd: `${Layout.className}--reduced__end`
+  reducedEnd: `${Layout.className}--reduced__end`,
 };
 
 /**

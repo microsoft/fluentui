@@ -8,6 +8,6 @@ export interface TreeTitleVariables {
 export default (siteVars: any): TreeTitleVariables => {
   return {
     color: siteVars.colorScheme.default.foreground,
-    padding: `${pxToRem(1)} 0`
+    padding: `${pxToRem(1)} 0`,
   };
 };

@@ -21,7 +21,7 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     backgroundColor: v.listItemBackgroundColor,
     ...(p.selected && {
       fontWeight: v.listItemSelectedFontWeight,
-      color: v.listItemSelectedColor
+      color: v.listItemSelectedColor,
     }),
     position: 'relative',
     ...(p.active && {
@@ -31,19 +31,19 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
         backgroundColor: v.listItemBackgroundColorHover,
         ...(p.hasHeader && {
           [`& .${DropdownItem.slotClassNames.header}`]: {
-            color: v.listItemColorHover
-          }
+            color: v.listItemColorHover,
+          },
         }),
         ...(p.hasContent && {
           [`& .${DropdownItem.slotClassNames.content}`]: {
-            color: v.listItemColorHover
-          }
-        })
-      })
-    })
+            color: v.listItemColorHover,
+          },
+        }),
+      }),
+    }),
   }),
   image: ({ props: p }): ICSSInJSStyle => ({
-    margin: `${pxToRem(3)} ${pxToRem(12)} ${pxToRem(3)} ${pxToRem(4)}`
+    margin: `${pxToRem(3)} ${pxToRem(12)} ${pxToRem(3)} ${pxToRem(4)}`,
   }),
   header: ({ props: p, variables: v }): ICSSInJSStyle => ({
     flexGrow: 1,
@@ -55,18 +55,18 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     ...(p.hasContent && {
       // if there is content it needs to be "tightened up" to the header
       marginBottom: pxToRem(-1),
-      color: v.listItemHeaderColor
+      color: v.listItemHeaderColor,
     }),
     ...(p.selected && {
       fontWeight: v.listItemSelectedFontWeight,
-      color: v.listItemSelectedColor
-    })
+      color: v.listItemSelectedColor,
+    }),
   }),
   content: ({ variables: v }): ICSSInJSStyle => ({
     flexGrow: 1,
     lineHeight: v.listItemContentLineHeight,
     fontSize: v.listItemContentFontSize,
-    color: v.listItemContentColor
+    color: v.listItemContentColor,
   }),
   checkableIndicator: ({ variables: v }) => ({
     backgroundImage: checkableIndicatorUrl(v.listItemSelectedColor),
@@ -76,18 +76,18 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
     width: pxToRem(24),
     height: pxToRem(24),
     right: pxToRem(7),
-    top: pxToRem(-3)
+    top: pxToRem(-3),
   }),
   endMedia: () => ({
     flexShrink: 0,
-    lineHeight: pxToRem(16)
+    lineHeight: pxToRem(16),
   }),
   main: () => ({
     display: 'flex',
     flexDirection: 'column',
     flexGrow: 1,
-    minWidth: 0 // needed for the truncate styles to work
-  })
+    minWidth: 0, // needed for the truncate styles to work
+  }),
 };
 
 export default dropdownItemStyles;

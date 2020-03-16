@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'participant-remove'
+  exportedAs: 'participant-remove',
 } as TeamsProcessedSvgIconSpec;

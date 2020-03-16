@@ -33,7 +33,7 @@ const felaFocusVisibleEnhancer = (renderer: Renderer) => ({
       const enhancedChange = {
         ...change,
         pseudo,
-        selector
+        selector,
       };
 
       // Fela has two types for rendering:
@@ -48,7 +48,7 @@ const felaFocusVisibleEnhancer = (renderer: Renderer) => ({
     }
 
     renderer._emitChange(change);
-  }
+  },
 });
 
 export default felaFocusVisibleEnhancer;

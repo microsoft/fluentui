@@ -9,7 +9,7 @@ import {
   commonPropTypes,
   RenderResultConfig,
   AutoControlledComponent,
-  applyAccessibilityKeyHandlers
+  applyAccessibilityKeyHandlers,
 } from '../../utils';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
@@ -54,22 +54,29 @@ class TextArea extends AutoControlledComponent<WithAsProp<TextAreaProps>, TextAr
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     defaultValue: PropTypes.string,
     onChange: PropTypes.func,
     value: PropTypes.string,
-    disabled: PropTypes.bool
+    disabled: PropTypes.bool,
   };
 
   static defaultProps = {
     as: 'textarea',
-    accessibility: textAreaBehavior
+    accessibility: textAreaBehavior,
   };
 
   static autoControlledProps = ['value'];
 
-  renderComponent({ ElementType, classes, accessibility, variables, styles, unhandledProps }: RenderResultConfig<TextAreaProps>) {
+  renderComponent({
+    ElementType,
+    classes,
+    accessibility,
+    variables,
+    styles,
+    unhandledProps,
+  }: RenderResultConfig<TextAreaProps>) {
     const { disabled } = this.props;
     const { value = '' } = this.state;
 

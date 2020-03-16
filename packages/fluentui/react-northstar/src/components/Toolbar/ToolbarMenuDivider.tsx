@@ -5,7 +5,13 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { ChildrenComponentProps, ContentComponentProps, createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
+import {
+  ChildrenComponentProps,
+  ContentComponentProps,
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+} from '../../utils';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
@@ -18,7 +24,8 @@ export interface ToolbarMenuDividerProps extends UIComponentProps, ChildrenCompo
 
 export type ToolbarMenuDividerStylesProps = never;
 
-const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> & FluentComponentStaticProps<ToolbarMenuDividerProps> = props => {
+const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> &
+  FluentComponentStaticProps<ToolbarMenuDividerProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarMenuDivider.displayName, context.telemetry);
   setStart();
@@ -28,12 +35,17 @@ const ToolbarMenuDivider: React.FC<WithAsProp<ToolbarMenuDividerProps>> & Fluent
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarMenuDivider.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuDividerStylesProps>(ToolbarMenuDivider.displayName, {
     className: ToolbarMenuDivider.className,
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables: mergeComponentVariables(parentVariables, variables) }),
-    rtl: context.rtl
+    mapPropsToInlineStyles: () => ({
+      className,
+      design,
+      styles,
+      variables: mergeComponentVariables(parentVariables, variables),
+    }),
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -50,13 +62,13 @@ ToolbarMenuDivider.displayName = 'ToolbarMenuDivider';
 
 ToolbarMenuDivider.propTypes = commonPropTypes.createCommon();
 ToolbarMenuDivider.defaultProps = {
-  as: 'li'
+  as: 'li',
 };
 ToolbarMenuDivider.handledProps = Object.keys(ToolbarMenuDivider.propTypes) as any;
 
 ToolbarMenuDivider.create = createShorthandFactory({
   Component: ToolbarMenuDivider,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

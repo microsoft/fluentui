@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'trash-can'
+  exportedAs: 'trash-can',
 } as TeamsProcessedSvgIconSpec;

@@ -63,5 +63,5 @@ export default {
       />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsSvgIconSpec;

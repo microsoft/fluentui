@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-missed-line'
+  exportedAs: 'call-missed-line',
 } as TeamsProcessedSvgIconSpec;

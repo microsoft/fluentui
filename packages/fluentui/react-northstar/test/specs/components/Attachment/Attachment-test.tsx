@@ -17,10 +17,10 @@ const getAttachment = (onClickAttachment: jest.Mock, onClickButton: jest.Mock): 
       actionable
       action={{
         icon: 'more',
-        onClick: onClickButton
+        onClick: onClickButton,
       }}
       onClick={onClickAttachment}
-    />
+    />,
   );
 };
 
@@ -30,13 +30,13 @@ describe('Attachment', () => {
   attachmentImplementsShorthandProp('description', Text);
   attachmentImplementsShorthandProp('icon', Icon, {
     mapsValueToProp: 'name',
-    requiredShorthandProps: { name: 'at' }
+    requiredShorthandProps: { name: 'at' },
   });
   attachmentImplementsShorthandProp('action', Button);
 
   describe('accessibility', () => {
     handlesAccessibility(Attachment, {
-      defaultRootRole: undefined
+      defaultRootRole: undefined,
     });
 
     test('handleClick is executed when Enter is pressed on attachment element', () => {
@@ -52,7 +52,7 @@ describe('Attachment', () => {
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
       findIntrinsicElement(attachment, `.${Attachment.slotClassNames.action}`).simulate('keydown', {
-        keyCode: keyboardKey.Enter
+        keyCode: keyboardKey.Enter,
       });
       expect(onClickAttachment).not.toBeCalled();
     });

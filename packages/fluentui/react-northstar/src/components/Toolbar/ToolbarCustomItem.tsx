@@ -7,14 +7,20 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '../../types';
 import {
   ChildrenComponentProps,
   ContentComponentProps,
   createShorthandFactory,
   UIComponentProps,
   childrenExist,
-  commonPropTypes
+  commonPropTypes,
 } from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
@@ -60,7 +66,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarCustomItem.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarCustomItemStylesProps>(ToolbarCustomItem.displayName, {
     className: ToolbarCustomItem.className,
@@ -69,9 +75,9 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
       className,
       design,
       styles,
-      variables: mergeComponentVariables(parentVariables, variables)
+      variables: mergeComponentVariables(parentVariables, variables),
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -96,7 +102,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
         ...unhandledProps,
         className: classes.root,
         onBlur: handleBlur,
-        onFocus: handleFocus
+        onFocus: handleFocus,
       })}
     >
       {childrenExist(children) ? children : content}
@@ -112,16 +118,19 @@ ToolbarCustomItem.displayName = 'ToolbarCustomItem';
 
 ToolbarCustomItem.propTypes = {
   ...commonPropTypes.createCommon(),
-  fitted: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf<'horizontally' | 'vertically'>(['horizontally', 'vertically'])]),
+  fitted: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.oneOf<'horizontally' | 'vertically'>(['horizontally', 'vertically']),
+  ]),
   focusable: PropTypes.bool,
   onFocus: PropTypes.func,
-  onBlur: PropTypes.func
+  onBlur: PropTypes.func,
 };
 ToolbarCustomItem.handledProps = Object.keys(ToolbarCustomItem.propTypes) as any;
 
 ToolbarCustomItem.create = createShorthandFactory({
   Component: ToolbarCustomItem,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

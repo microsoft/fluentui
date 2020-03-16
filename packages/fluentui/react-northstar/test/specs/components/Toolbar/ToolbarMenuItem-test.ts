@@ -7,6 +7,6 @@ describe('ToolbarMenuItem', () => {
   isConformant(ToolbarMenuItem, {
     wrapperComponent: Box,
     autoControlledProps: ['menuOpen'],
-    constructorName: 'ToolbarMenuItem'
+    constructorName: 'ToolbarMenuItem',
   });
 });

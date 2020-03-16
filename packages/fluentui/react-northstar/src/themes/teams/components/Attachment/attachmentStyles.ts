@@ -11,7 +11,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderRadius: v.borderRadius
+      borderRadius: v.borderRadius,
     });
 
     return {
@@ -41,12 +41,12 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
           color: v.focusColor,
 
           [`& .${Button.className}`]: {
-            color: v.siblingsFocusColor
+            color: v.siblingsFocusColor,
           },
 
           [`& .${Icon.className}`]: {
-            color: v.siblingsFocusColor
-          }
+            color: v.siblingsFocusColor,
+          },
         },
 
         ':hover': {
@@ -54,63 +54,63 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
           color: v.textColorHover,
 
           [`& .${Button.className}`]: {
-            color: v.siblingsHoverColor
+            color: v.siblingsHoverColor,
           },
 
           [`& .${Icon.className}`]: {
-            color: v.siblingsHoverColor
-          }
-        }
-      })
+            color: v.siblingsHoverColor,
+          },
+        },
+      }),
     };
   },
 
   content: (): ICSSInJSStyle => ({
-    flex: 1
+    flex: 1,
   }),
 
   header: ({ variables: v }): ICSSInJSStyle => ({
     fontSize: v.headerFontSize,
     fontWeight: v.headerFontWeight,
-    lineHeight: v.headerLineHeight
+    lineHeight: v.headerLineHeight,
   }),
 
   description: ({ variables: v }): ICSSInJSStyle => ({
     display: 'block',
     fontSize: v.descriptionFontSize,
     fontWeight: v.descriptionFontWeight,
-    lineHeight: v.descriptionLineHeight
+    lineHeight: v.descriptionLineHeight,
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
     flex: '0 0 auto',
-    marginRight: v.iconSpace
+    marginRight: v.iconSpace,
   }),
 
   action: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderRadius: v.borderRadius
+      borderRadius: v.borderRadius,
     });
 
     return {
       [`& .${Icon.className}`]: {
-        color: v.textColor // this breaks the color change on hover
+        color: v.textColor, // this breaks the color change on hover
       },
 
       ...getIconFillOrOutlineStyles({ outline: true }),
 
       ':hover': {
         ...iconFilledStyles,
-        background: 'transparent'
+        background: 'transparent',
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
         ...iconFilledStyles,
-        ...borderFocusStyles[':focus-visible']
-      }
+        ...borderFocusStyles[':focus-visible'],
+      },
     };
   },
 
@@ -123,8 +123,8 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
     width: `${p.progress}%`,
     maxWidth: '100%',
     height: pxToRem(v.progressHeight),
-    background: v.progressColor
-  })
+    background: v.progressColor,
+  }),
 };
 
 export default attachmentStyles;

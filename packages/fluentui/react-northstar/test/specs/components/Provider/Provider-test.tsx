@@ -12,7 +12,7 @@ const createDocumentMock = (): Document => {
     ontouchstart: () => {}, // whatInput asserts for this method
 
     addEventListener: () => {},
-    removeEventListener: () => {}
+    removeEventListener: () => {},
   };
 
   externalDocument.documentElement.appendChild(externalDocument.createElement('body'));
@@ -42,24 +42,24 @@ describe('Provider', () => {
           <Provider theme={innerTheme}>
             <span />
           </Provider>
-        </Provider>
+        </Provider>,
       );
 
       expect(
         wrapper
           .find('ThemeProvider')
           .at(1)
-          .prop('theme')
+          .prop('theme'),
       ).toEqual(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {
               brand: 'blue',
               secondary: 'yellow',
-              fontSizes: {}
-            }
-          })
-        })
+              fontSizes: {},
+            },
+          }),
+        }),
       );
     });
 
@@ -69,23 +69,23 @@ describe('Provider', () => {
           <Provider overwrite theme={innerTheme}>
             <span />
           </Provider>
-        </Provider>
+        </Provider>,
       );
 
       expect(
         wrapper
           .find('ThemeProvider')
           .at(1)
-          .prop('theme')
+          .prop('theme'),
       ).toEqual(
         expect.objectContaining({
           theme: expect.objectContaining({
             siteVariables: {
               secondary: 'yellow',
-              fontSizes: {}
-            }
-          })
-        })
+              fontSizes: {},
+            },
+          }),
+        }),
       );
     });
   });
@@ -99,20 +99,20 @@ describe('Provider', () => {
           <Provider
             theme={{
               siteVariables: { brand: 'yellow', gray: '#868686' },
-              staticStyles: [staticStyle]
+              staticStyles: [staticStyle],
             }}
           >
             <span />
           </Provider>
-        </Provider>
+        </Provider>,
       );
 
       expect(staticStyle).toHaveBeenCalledWith(
         expect.objectContaining({
           background: 'red',
           brand: 'yellow',
-          gray: '#868686'
-        })
+          gray: '#868686',
+        }),
       );
     });
 
@@ -123,7 +123,7 @@ describe('Provider', () => {
       const providerInstance = mount(
         <Provider theme={{ staticStyles: [firstStaticStyle] }}>
           <span />
-        </Provider>
+        </Provider>,
       );
       providerInstance.setProps({ theme: { staticStyles: [secondStaticStyle] } });
 
@@ -137,7 +137,7 @@ describe('Provider', () => {
       const component = mount(
         <Provider id="top-level-provider" rtl>
           <span />
-        </Provider>
+        </Provider>,
       );
       const providerDiv = component.find('div#top-level-provider');
       expect(providerDiv.exists()).toBe(true);
@@ -148,7 +148,7 @@ describe('Provider', () => {
       const component = mount(
         <Provider id="top-level-provider">
           <span />
-        </Provider>
+        </Provider>,
       );
       const providerDiv = component.find('div#top-level-provider');
       expect(providerDiv.exists()).toBe(true);
@@ -159,33 +159,33 @@ describe('Provider', () => {
       {
         parentIsRtl: true,
         childIsRtl: true,
-        expectedChildDir: undefined
+        expectedChildDir: undefined,
       },
       {
         parentIsRtl: true,
         childIsRtl: undefined,
-        expectedChildDir: undefined
+        expectedChildDir: undefined,
       },
       {
         parentIsRtl: true,
         childIsRtl: false,
-        expectedChildDir: 'ltr'
+        expectedChildDir: 'ltr',
       },
       {
         parentIsRtl: false,
         childIsRtl: false,
-        expectedChildDir: undefined
+        expectedChildDir: undefined,
       },
       {
         parentIsRtl: false,
         childIsRtl: undefined,
-        expectedChildDir: undefined
+        expectedChildDir: undefined,
       },
       {
         parentIsRtl: false,
         childIsRtl: true,
-        expectedChildDir: 'rtl'
-      }
+        expectedChildDir: 'rtl',
+      },
     ];
 
     parentChildMatrix.forEach(({ parentIsRtl, childIsRtl, expectedChildDir }) => {
@@ -195,7 +195,7 @@ describe('Provider', () => {
             <Provider id="nested-provider" rtl={childIsRtl}>
               <span />
             </Provider>
-          </Provider>
+          </Provider>,
         );
         const nestedProviderDiv = component.find('div#nested-provider');
         expect(nestedProviderDiv.exists()).toBe(true);
@@ -211,9 +211,9 @@ describe('Provider', () => {
           {
             name: 'Segoe UI',
             paths: ['public/fonts/segoe-ui-regular.woff2'],
-            props: { fontWeight: 400 }
-          }
-        ]
+            props: { fontWeight: 400 },
+          },
+        ],
       };
       const renderer = createRenderer();
       const renderFont = jest.spyOn(renderer, 'renderFont');
@@ -221,7 +221,7 @@ describe('Provider', () => {
       mount(
         <Provider theme={theme} renderer={renderer}>
           <div />
-        </Provider>
+        </Provider>,
       );
 
       expect(renderFont).toHaveBeenCalled();
@@ -233,10 +233,10 @@ describe('Provider', () => {
       staticStyles: [
         {
           a: {
-            textDecoration: 'none'
-          }
-        }
-      ]
+            textDecoration: 'none',
+          },
+        },
+      ],
     };
     const renderer = createRenderer();
     const renderStatic = jest.spyOn(renderer, 'renderStatic');
@@ -244,7 +244,7 @@ describe('Provider', () => {
     mount(
       <Provider theme={theme} renderer={renderer}>
         <div />
-      </Provider>
+      </Provider>,
     );
 
     expect(renderStatic).toHaveBeenCalled();
@@ -262,7 +262,7 @@ describe('Provider', () => {
           <Provider id="second-provider" target={externalDocument}>
             <div />
           </Provider>
-        </Provider>
+        </Provider>,
       );
 
       // mousedown + touchstart + touchend + keyup + keydown
@@ -279,7 +279,7 @@ describe('Provider', () => {
           <Provider id="second-provider" target={externalDocument}>
             <div />
           </Provider>
-        </Provider>
+        </Provider>,
       );
       wrapper.unmount();
 

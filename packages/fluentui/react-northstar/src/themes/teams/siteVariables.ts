@@ -32,7 +32,7 @@ export const fontSizes = {
   small: pxToRem(12),
   medium: pxToRem(14),
   large: pxToRem(18),
-  larger: pxToRem(24)
+  larger: pxToRem(24),
 };
 
 //
@@ -63,7 +63,7 @@ export const zIndexes: Record<string, number> = {
   foreground: 1, // Put a component in front
   menuItem: 2, // Currently used only for menu item beak element
   overlay: 1000, // Dialog/popup/menu overlays
-  debug: 999999999 // for debug purposes
+  debug: 999999999, // for debug purposes
 };
 
 //
@@ -71,7 +71,8 @@ export const zIndexes: Record<string, number> = {
 //
 export const bodyPadding = 0;
 export const bodyMargin = 0;
-export const bodyFontFamily = '"Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Helvetica, Arial, sans-serif';
+export const bodyFontFamily =
+  '"Segoe UI", "Helvetica Neue", "Apple Color Emoji", "Segoe UI Emoji", Helvetica, Arial, sans-serif';
 export const bodyFontSize = fontSizes.medium;
 export const bodyBackground = colors.white;
 export const bodyColor = colors.grey[750];

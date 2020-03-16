@@ -11,7 +11,7 @@ const sanitize = (styles: ICSSInJSStyle, options: { sanitizeCss?: boolean; skip?
     displayName: 'Test',
     disableAnimations: false,
     theme: {} as any,
-    sanitizeCss
+    sanitizeCss,
   };
   const renderer = (() => {}) as any;
 
@@ -39,7 +39,7 @@ describe('felaSanitizeCssPlugin', () => {
   test('should ensure there are no non-closed brackets in CSS property value', () => {
     const style = {
       display: 'block',
-      backgroundImage: 'url(../../'
+      backgroundImage: 'url(../../',
     };
 
     expect(sanitize(style)).toEqual({ display: 'block' });
@@ -53,13 +53,13 @@ describe('felaSanitizeCssPlugin', () => {
     const style = {
       display: 'inline',
       '::before': {
-        color: 'rgba('
-      }
+        color: 'rgba(',
+      },
     };
 
     expect(sanitize(style)).toEqual({
       display: 'inline',
-      '::before': {}
+      '::before': {},
     });
   });
 
@@ -67,7 +67,7 @@ describe('felaSanitizeCssPlugin', () => {
     const style = {
       display: 'block',
       margin: '0 0 0 0',
-      propertyWithInvalidValue: 'rgba('
+      propertyWithInvalidValue: 'rgba(',
     };
 
     expect(sanitize(style, { skip: ['propertyWithInvalidValue'] })).toEqual(style);
@@ -86,7 +86,7 @@ describe('felaSanitizeCssPlugin', () => {
       const style: ICSSInJSStyle = {
         color: ['red', 'blue'] as any,
         ':hover': { color: 'red' },
-        display: 'block'
+        display: 'block',
       };
 
       expect(sanitize(style)).toEqual(style);
@@ -95,11 +95,11 @@ describe('felaSanitizeCssPlugin', () => {
     test('should sanitize its items and remove invalid ones', () => {
       const style: ICSSInJSStyle = {
         color: ['red', 'blue', 'rgba('] as any,
-        display: 'block'
+        display: 'block',
       };
       expect(sanitize(style)).toEqual({
         color: ['red', 'blue'],
-        display: 'block'
+        display: 'block',
       });
     });
   });

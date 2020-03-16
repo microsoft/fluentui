@@ -16,7 +16,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ColorComponentProps,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 
 import { ComponentEventHandler, ShorthandCollection, ShorthandValue, WithAsProp, withSafeTypeForAs } from '../../types';
@@ -40,7 +40,11 @@ type PositionOffset = {
 
 const WAS_FOCUSABLE_ATTRIBUTE = 'data-was-focusable';
 
-export interface ToolbarProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps, ColorComponentProps {
+export interface ToolbarProps
+  extends UIComponentProps,
+    ContentComponentProps,
+    ChildrenComponentProps,
+    ColorComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
 
@@ -99,13 +103,13 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     overflowItem: customPropTypes.shorthandAllowingChildren,
     onOverflow: PropTypes.func,
     onOverflowOpenChange: PropTypes.func,
-    getOverflowItems: PropTypes.func
+    getOverflowItems: PropTypes.func,
   };
 
   static defaultProps = {
     accessibility: toolbarBehavior,
     items: [],
-    overflowItem: {}
+    overflowItem: {},
   };
 
   static CustomItem = ToolbarCustomItem;
@@ -139,7 +143,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
           return ToolbarRadioGroup.create(item);
         case 'toggle':
           return ToolbarItem.create(item, {
-            defaultProps: () => ({ accessibility: toggleButtonBehavior })
+            defaultProps: () => ({ accessibility: toggleButtonBehavior }),
           });
         case 'custom':
           return ToolbarCustomItem.create(item);
@@ -156,7 +160,10 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
 
     if (this.context.target.activeElement === el || el.contains(this.context.target.activeElement)) {
       if (this.containerRef.current) {
-        const firstFocusableItem = getFirstFocusable(this.containerRef.current, this.containerRef.current.firstElementChild as HTMLElement);
+        const firstFocusableItem = getFirstFocusable(
+          this.containerRef.current,
+          this.containerRef.current.firstElementChild as HTMLElement,
+        );
 
         if (firstFocusableItem) {
           firstFocusableItem.focus();
@@ -200,13 +207,19 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   /**
    * Checks if `item` would collide with eventual position of `overflowItem`.
    */
-  wouldItemCollide($item: Element, itemBoundingRect: ClientRect, overflowItemBoundingRect: ClientRect, containerBoundingRect: ClientRect) {
+  wouldItemCollide(
+    $item: Element,
+    itemBoundingRect: ClientRect,
+    overflowItemBoundingRect: ClientRect,
+    containerBoundingRect: ClientRect,
+  ) {
     const actualWindow: Window = this.context.target.defaultView;
     let wouldCollide;
 
     if (this.rtl) {
       const itemLeftMargin = parseFloat(actualWindow.getComputedStyle($item).marginLeft) || 0;
-      wouldCollide = itemBoundingRect.left - overflowItemBoundingRect.width - itemLeftMargin < containerBoundingRect.left;
+      wouldCollide =
+        itemBoundingRect.left - overflowItemBoundingRect.width - itemLeftMargin < containerBoundingRect.left;
 
       // console.log('Collision [RTL]', {
       //   wouldCollide,
@@ -218,7 +231,8 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       // })
     } else {
       const itemRightMargin = parseFloat(actualWindow.getComputedStyle($item).marginRight) || 0;
-      wouldCollide = itemBoundingRect.right + overflowItemBoundingRect.width + itemRightMargin > containerBoundingRect.right;
+      wouldCollide =
+        itemBoundingRect.right + overflowItemBoundingRect.width + itemRightMargin > containerBoundingRect.right;
 
       // console.log('Collision', {
       //   wouldCollide,
@@ -242,7 +256,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     $lastVisibleItem: HTMLElement | undefined,
     lastVisibleItemRect: ClientRect | undefined,
     containerBoundingRect: ClientRect,
-    absolutePositioningOffset: PositionOffset
+    absolutePositioningOffset: PositionOffset,
   ) {
     const actualWindow: Window = this.context.target.defaultView;
 
@@ -305,7 +319,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       horizontal: this.rtl
         ? offsetMeasureBoundingRect.right - overflowContainerBoundingRect.right
         : overflowContainerBoundingRect.left - offsetMeasureBoundingRect.left,
-      vertical: overflowContainerBoundingRect.top - offsetMeasureBoundingRect.top
+      vertical: overflowContainerBoundingRect.top - offsetMeasureBoundingRect.top,
     };
 
     let isOverflowing = false;
@@ -364,7 +378,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
         $lastVisibleItem,
         lastVisibleItemRect,
         overflowContainerBoundingRect,
-        absolutePositioningOffset
+        absolutePositioningOffset,
       );
       this.show($overflowItem);
     } else {
@@ -423,7 +437,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
     if (this.props.overflowOpen) {
       _.invoke(this.props, 'onOverflowOpenChange', e, {
         ...this.props,
-        overflowOpen: false
+        overflowOpen: false,
       });
     }
   }, 16);
@@ -433,7 +447,7 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       <Ref innerRef={this.overflowItemRef}>
         {ToolbarItem.create(overflowItem, {
           defaultProps: () => ({
-            icon: { name: 'more', outline: true }
+            icon: { name: 'more', outline: true },
           }),
           overrideProps: {
             menu: this.props.overflowOpen ? this.getOverflowItems() : [],
@@ -441,10 +455,10 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
             onMenuOpenChange: (e, { menuOpen }) => {
               _.invoke(this.props, 'onOverflowOpenChange', e, {
                 ...this.props,
-                overflowOpen: menuOpen
+                overflowOpen: menuOpen,
               });
-            }
-          }
+            },
+          },
         })}
       </Ref>
     );

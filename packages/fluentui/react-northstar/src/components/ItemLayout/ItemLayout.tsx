@@ -11,7 +11,7 @@ import {
   commonPropTypes,
   ContentComponentProps,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import Layout from '../Layout/Layout';
 import { WithAsProp, withSafeTypeForAs } from '../../types';
@@ -66,7 +66,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
     ...commonPropTypes.createCommon({
       accessibility: false,
       children: false,
-      content: false
+      content: false,
     }),
     contentMedia: PropTypes.any,
     content: PropTypes.any,
@@ -84,7 +84,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
     headerMediaCSS: PropTypes.object,
     contentCSS: PropTypes.object,
     contentMediaCSS: PropTypes.object,
-    endMediaCSS: PropTypes.object
+    endMediaCSS: PropTypes.object,
   };
 
   static defaultProps = {
@@ -100,7 +100,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
         <div
           className={ItemLayout.slotClassNames.main}
           style={{
-            gridTemplateRows: '1fr 1fr'
+            gridTemplateRows: '1fr 1fr',
           }}
         >
           {headerArea}
@@ -157,7 +157,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
           }
         />
       );
-    }
+    },
   };
 
   renderComponent({ classes, unhandledProps, styles }) {
@@ -209,7 +209,7 @@ ItemLayout.slotClassNames = {
   content: `${ItemLayout.className}__content`,
   contentMedia: `${ItemLayout.className}__contentMedia`,
   media: `${ItemLayout.className}__media`,
-  endMedia: `${ItemLayout.className}__endMedia`
+  endMedia: `${ItemLayout.className}__endMedia`,
 };
 
 /**

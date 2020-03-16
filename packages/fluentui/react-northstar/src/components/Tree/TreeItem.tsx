@@ -14,7 +14,7 @@ import {
   commonPropTypes,
   UIComponentProps,
   ChildrenComponentProps,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -24,7 +24,7 @@ import {
   withSafeTypeForAs,
   ShorthandCollection,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
 import { hasSubtree, TreeContext } from './utils';
@@ -109,7 +109,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     index,
     styles,
     variables,
-    treeSize
+    treeSize,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
@@ -152,7 +152,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         e.stopPropagation();
 
         handleSiblingsExpand(e);
-      }
+      },
     },
     debugName: TreeItem.className,
     mapPropsToBehavior: () => ({
@@ -160,17 +160,17 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
       level,
       index,
       hasSubtree: hasSubtreeItem,
-      treeSize
+      treeSize,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<TreeItemStylesProps>(TreeItem.displayName, {
     className: TreeItem.className,
     mapPropsToStyles: () => ({
-      level
+      level,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleTitleClick = e => {
@@ -193,7 +193,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     onClick: (e, titleProps) => {
       handleTitleClick(e);
       _.invoke(predefinedProps, 'onClick', e, titleProps);
-    }
+    },
   });
 
   const ElementType = getElementType(props);
@@ -204,7 +204,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {childrenExist(children)
@@ -218,10 +218,10 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
                 as: hasSubtreeItem ? 'span' : 'a',
                 level,
                 treeSize,
-                index
+                index,
               }),
             render: renderItemTitle,
-            overrideProps: handleTitleOverrides
+            overrideProps: handleTitleOverrides,
           })}
     </ElementType>
   );
@@ -237,12 +237,12 @@ TreeItem.displayName = 'TreeItem';
 
 TreeItem.slotClassNames = {
   title: `${TreeItem.className}__title`,
-  subtree: `${TreeItem.className}__subtree`
+  subtree: `${TreeItem.className}__subtree`,
 };
 
 TreeItem.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false
+    content: false,
   }),
   contentRef: customPropTypes.ref,
   id: PropTypes.string.isRequired,
@@ -257,16 +257,16 @@ TreeItem.propTypes = {
   parent: PropTypes.string,
   renderItemTitle: PropTypes.func,
   treeSize: PropTypes.number,
-  title: customPropTypes.itemShorthand
+  title: customPropTypes.itemShorthand,
 };
 TreeItem.defaultProps = {
-  accessibility: treeItemBehavior
+  accessibility: treeItemBehavior,
 };
 TreeItem.handledProps = Object.keys(TreeItem.propTypes) as any;
 
 TreeItem.create = createShorthandFactory({
   Component: TreeItem,
-  mappedProp: 'title'
+  mappedProp: 'title',
 });
 
 /**

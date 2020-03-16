@@ -15,7 +15,7 @@ import {
   ChildrenComponentProps,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import {
   ShorthandValue,
@@ -23,7 +23,7 @@ import {
   WithAsProp,
   withSafeTypeForAs,
   ShorthandCollection,
-  ComponentEventHandler
+  ComponentEventHandler,
 } from '../../types';
 
 export interface HierarchicalTreeSlotClassNames {
@@ -75,30 +75,30 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
   static className = 'ui-hierarchicaltree';
 
   static slotClassNames: HierarchicalTreeSlotClassNames = {
-    item: `${HierarchicalTree.className}__item`
+    item: `${HierarchicalTree.className}__item`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     activeIndex: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number])
+      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
     ]),
     defaultActiveIndex: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number])
+      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
     ]),
     exclusive: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
     renderItemTitle: PropTypes.func,
-    onActiveIndexChange: PropTypes.func
+    onActiveIndexChange: PropTypes.func,
   };
 
   static defaultProps = {
     as: 'ul',
-    accessibility: hierarchicalTreeBehavior
+    accessibility: hierarchicalTreeBehavior,
   };
 
   static autoControlledProps = ['activeIndex'];
@@ -121,7 +121,7 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
           }, [])
         : [];
       this.trySetActiveIndexAndTriggerEvent(e, activeIndex);
-    }
+    },
   };
 
   trySetActiveIndexAndTriggerEvent = (e, activeIndex) => {
@@ -131,7 +131,7 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
 
   getInitialAutoControlledState({ exclusive }): HierarchicalTreeState {
     return {
-      activeIndex: exclusive ? -1 : []
+      activeIndex: exclusive ? -1 : [],
     };
   }
 
@@ -158,7 +158,7 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
     onTitleClick: (e: React.SyntheticEvent, treeItemProps: HierarchicalTreeItemProps) => {
       this.trySetActiveIndexAndTriggerEvent(e, this.computeNewIndex(treeItemProps));
       _.invoke(predefinedProps, 'onTitleClick', e, treeItemProps);
-    }
+    },
   });
 
   renderContent() {
@@ -173,10 +173,10 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
           index,
           exclusive,
           renderItemTitle,
-          open: exclusive ? index === activeIndex : _.includes(activeIndexes, index)
+          open: exclusive ? index === activeIndex : _.includes(activeIndexes, index),
         }),
-        overrideProps: this.handleTreeItemOverrides
-      })
+        overrideProps: this.handleTreeItemOverrides,
+      }),
     );
   }
 
@@ -199,7 +199,7 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
 
 HierarchicalTree.create = createShorthandFactory({
   Component: HierarchicalTree,
-  mappedArrayProp: 'items'
+  mappedArrayProp: 'items',
 });
 
 /**

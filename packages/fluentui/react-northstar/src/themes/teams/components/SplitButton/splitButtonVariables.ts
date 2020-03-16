@@ -23,6 +23,6 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
     smallPadding: `0 ${pxToRem(8)}`,
     smallMinWidth: '0',
     smallBoxShadow: 'none',
-    padding: `0 ${pxToRem(16)}`
+    padding: `0 ${pxToRem(16)}`,
   };
 };

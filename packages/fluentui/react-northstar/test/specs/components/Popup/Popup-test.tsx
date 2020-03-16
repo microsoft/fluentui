@@ -26,15 +26,15 @@ describe('Popup', () => {
   const expectPopupToOpenAndClose = ({ onProp, eventToOpen, eventToClose }: ExpectPopupToOpenAndCloseParams) => {
     const openEvent = {
       event: eventToOpen.event || 'keydown',
-      keyCode: eventToOpen.event ? undefined : eventToOpen
+      keyCode: eventToOpen.event ? undefined : eventToOpen,
     };
     const closeEvent = {
       event: eventToClose.event || 'keydown',
-      keyCode: eventToClose.event ? undefined : eventToClose
+      keyCode: eventToClose.event ? undefined : eventToClose,
     };
 
     const popup = mountWithProvider(
-      <Popup trigger={<span id={triggerId}> text to trigger popup </span>} content={{ id: contentId }} on={onProp} />
+      <Popup trigger={<span id={triggerId}> text to trigger popup </span>} content={{ id: contentId }} on={onProp} />,
     );
     // check popup open on key press
     const popupTriggerElement = popup.find(`#${triggerId}`);
@@ -100,7 +100,7 @@ describe('Popup', () => {
       expectPopupToOpenAndClose({
         onProp: 'context',
         eventToOpen: { event: 'contextmenu' },
-        eventToClose: keyboardKey.Escape
+        eventToClose: keyboardKey.Escape,
       });
     });
 
@@ -116,7 +116,7 @@ describe('Popup', () => {
           }
           content={{ id: contentId }}
           on="context"
-        />
+        />,
       );
       const popupTriggerElement = popup.find(`#${triggerId}`);
       popupTriggerElement.simulate('click');
@@ -131,28 +131,28 @@ describe('Popup', () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
         eventToOpen: keyboardKey.Enter,
-        eventToClose: keyboardKey.Enter
+        eventToClose: keyboardKey.Enter,
       });
     });
     test(`toggle popup with Space key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'click',
         eventToOpen: keyboardKey.Spacebar,
-        eventToClose: keyboardKey.Spacebar
+        eventToClose: keyboardKey.Spacebar,
       });
     });
     test(`open popup with Enter key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
         eventToOpen: keyboardKey.Enter,
-        eventToClose: keyboardKey.Escape
+        eventToClose: keyboardKey.Escape,
       });
     });
     test(`open popup with Space key and close it with escape key`, () => {
       expectPopupToOpenAndClose({
         onProp: 'hover',
         eventToOpen: keyboardKey.Spacebar,
-        eventToClose: keyboardKey.Escape
+        eventToClose: keyboardKey.Escape,
       });
     });
     test(`close previous popup with Enter key`, () => {
@@ -166,11 +166,19 @@ describe('Popup', () => {
         ReactDOM.render(
           <EmptyThemeProvider>
             <React.Fragment>
-              <Popup trigger={<span id={triggerId}>text to trigger popup</span>} content={{ id: contentId }} on="click" />
-              <Popup trigger={<span id={triggerId2}>text to trigger popup</span>} content={{ id: contentId2 }} on="click" />
+              <Popup
+                trigger={<span id={triggerId}>text to trigger popup</span>}
+                content={{ id: contentId }}
+                on="click"
+              />
+              <Popup
+                trigger={<span id={triggerId2}>text to trigger popup</span>}
+                content={{ id: contentId2 }}
+                on="click"
+              />
             </React.Fragment>
           </EmptyThemeProvider>,
-          attachTo
+          attachTo,
         );
       });
 
@@ -208,7 +216,9 @@ describe('Popup', () => {
       const attachTo = document.createElement('div');
       document.body.appendChild(attachTo);
 
-      const wrapper = mountWithProvider(<Popup trigger={<button id={triggerId} />} inline content="Content" open />, { attachTo });
+      const wrapper = mountWithProvider(<Popup trigger={<button id={triggerId} />} inline content="Content" open />, {
+        attachTo,
+      });
       const contentElement = document.querySelector(`#${triggerId}`).nextSibling as HTMLDivElement;
 
       expect(contentElement.classList.contains(Popup.Content.className)).toEqual(true);
@@ -221,7 +231,11 @@ describe('Popup', () => {
   describe('keyboard event propagation', () => {
     const expectPopupToHandleStopPropagation = (trapFocus: boolean, shouldStopPropagation: boolean) => {
       const popup = mountWithProvider(
-        <Popup trigger={<span id={triggerId}> text to trigger popup </span>} content={{ id: contentId }} trapFocus={trapFocus} />
+        <Popup
+          trigger={<span id={triggerId}> text to trigger popup </span>}
+          content={{ id: contentId }}
+          trapFocus={trapFocus}
+        />,
       );
 
       // open popup

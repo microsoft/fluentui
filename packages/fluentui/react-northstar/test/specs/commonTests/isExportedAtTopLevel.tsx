@@ -14,7 +14,7 @@ export default (constructorName: string, displayName: string) => {
 
     expect({ isTopLevelAPIProp, message }).toEqual({
       message,
-      isTopLevelAPIProp: true
+      isTopLevelAPIProp: true,
     });
   });
 };

@@ -8,5 +8,5 @@ export default {
       <circle cx="16" cy="20.8" r=".8" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

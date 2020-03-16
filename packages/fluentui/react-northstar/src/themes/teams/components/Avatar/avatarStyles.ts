@@ -10,7 +10,7 @@ const sizeToPxValue = {
   medium: 32,
   large: 36,
   larger: 42,
-  largest: 48
+  largest: 48,
 };
 
 const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
@@ -23,7 +23,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       display: 'inline-block',
       verticalAlign: 'middle',
       height: sizeInRem,
-      width: sizeInRem
+      width: sizeInRem,
     };
   },
   image: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -37,8 +37,8 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
     width: '100%',
 
     ...(p.square && {
-      borderRadius: v.squareAvatarBorderRadius
-    })
+      borderRadius: v.squareAvatarBorderRadius,
+    }),
   }),
   label: ({ props: p, variables: v }): ICSSInJSStyle => {
     const sizeInRem = pxToRem(sizeToPxValue[p.size]);
@@ -52,16 +52,16 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       textAlign: 'center',
       padding: '0px',
       ...(p.square && {
-        borderRadius: v.squareAvatarBorderRadius
-      })
+        borderRadius: v.squareAvatarBorderRadius,
+      }),
     };
   },
   status: ({ variables: v }): ICSSInJSStyle => ({
     position: 'absolute',
     bottom: 0,
     right: 0,
-    boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`
-  })
+    boxShadow: `0 0 0 ${v.statusBorderWidth} ${v.statusBorderColor}`,
+  }),
 };
 
 export default avatarStyles;

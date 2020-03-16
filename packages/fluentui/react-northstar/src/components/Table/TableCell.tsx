@@ -10,15 +10,24 @@ import {
   commonPropTypes,
   ContentComponentProps,
   createShorthandFactory,
-  UIComponentProps
+  UIComponentProps,
 } from '../../utils';
 import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import Box, { BoxProps } from '../Box/Box';
-import { WithAsProp, ShorthandValue, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 
-export interface TableCellProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface TableCellProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps<ShorthandValue<BoxProps>> {
   /**
    * Accessibility behavior if overridden by the user.
    * @available TableCellBehavior
@@ -59,23 +68,23 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
       },
       performClick: e => {
         handleClick(e);
-      }
+      },
     },
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes, styles: resolvedStyles } = useStyles<TableCellStylesProps>(TableCell.displayName, {
     className: TableCell.className,
     mapPropsToStyles: () => ({
-      truncateContent
+      truncateContent,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -91,13 +100,13 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
         {...getA11yProps('root', {
           className: classes.root,
           onClick: handleClick,
-          ...unhandledProps
+          ...unhandledProps,
         })}
       >
         {hasChildren
           ? children
           : Box.create(content, {
-              defaultProps: () => ({ styles: resolvedStyles.content })
+              defaultProps: () => ({ styles: resolvedStyles.content }),
             })}
       </ElementType>
     </Ref>
@@ -111,24 +120,24 @@ TableCell.displayName = 'TableCell';
 TableCell.className = 'ui-table__cell';
 
 TableCell.slotClassNames = {
-  content: `${TableCell.className}__content`
+  content: `${TableCell.className}__content`,
 };
 
 TableCell.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false
+    content: false,
   }),
   content: customPropTypes.every([
     customPropTypes.disallow(['children']),
-    PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent])
+    PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
   ]),
-  truncateContent: PropTypes.bool
+  truncateContent: PropTypes.bool,
 };
 
 TableCell.handledProps = Object.keys(TableCell.propTypes) as any;
 
 TableCell.defaultProps = {
-  accessibility: tableCellBehavior
+  accessibility: tableCellBehavior,
 };
 
 TableCell.create = createShorthandFactory({ Component: TableCell, mappedProp: 'content' });

@@ -14,7 +14,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ContentComponentProps,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 import PortalInner from './PortalInner';
 
@@ -89,7 +89,7 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
       accessibility: false,
       as: false,
       className: false,
-      styled: false
+      styled: false,
     }),
     defaultOpen: PropTypes.bool,
     onMount: PropTypes.func,
@@ -100,11 +100,11 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
     triggerAccessibility: PropTypes.object,
     onTriggerClick: PropTypes.func,
     onOutsideClick: PropTypes.func,
-    trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+    trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   };
 
   static defaultProps: PortalProps = {
-    triggerAccessibility: {}
+    triggerAccessibility: {},
   };
 
   renderComponent(): React.ReactNode {
@@ -148,7 +148,7 @@ class Portal extends AutoControlledComponent<PortalProps, PortalState> {
           {React.cloneElement(trigger, {
             onClick: this.handleTriggerClick,
             ...triggerAccessibility.attributes,
-            ...triggerAccessibility.keyHandlers
+            ...triggerAccessibility.keyHandlers,
           })}
         </Ref>
       )

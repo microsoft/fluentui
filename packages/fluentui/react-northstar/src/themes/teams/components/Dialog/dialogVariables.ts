@@ -43,5 +43,5 @@ export default (siteVariables): Partial<DialogVariables> => ({
   overlayBackground: 'rgba(37, 36, 36, .75)', // todo: update to a palette value when daisy has mapped one
   overlayZIndex: siteVariables.zIndexes.overlay,
 
-  headerActionMargin: `${pxToRem(-3)} ${pxToRem(-8)} 0 0`
+  headerActionMargin: `${pxToRem(-3)} ${pxToRem(-8)} 0 0`,
 });

@@ -9,7 +9,7 @@ const { getInitials } = (Avatar as any).defaultProps;
 
 describe('Avatar', () => {
   isConformant(Avatar, {
-    constructorName: 'Avatar'
+    constructorName: 'Avatar',
   });
   avatarImplementsShorthandProp('label', Label);
   avatarImplementsShorthandProp('image', Image, { mapsValueToProp: 'src' });

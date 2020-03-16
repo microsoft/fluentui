@@ -14,7 +14,7 @@ import {
   ShorthandFactory,
   ContentComponentProps,
   applyAccessibilityKeyHandlers,
-  UIComponent
+  UIComponent,
 } from '../../utils';
 import { withSafeTypeForAs, WithAsProp, ShorthandValue, ComponentEventHandler } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -60,7 +60,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
   static className = 'ui-carousel__navigationitem';
 
   static slotClassNames: CarouselNavigationItemSlotClassNames = {
-    indicator: `${CarouselNavigationItem.className}__indicator`
+    indicator: `${CarouselNavigationItem.className}__indicator`,
   };
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;
@@ -74,13 +74,13 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
     onClick: PropTypes.func,
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   static defaultProps = {
     accessibility: tabBehavior as Accessibility,
     as: 'li',
-    indicator: {}
+    indicator: {},
   };
 
   renderComponent({ ElementType, classes, accessibility, styles, variables, unhandledProps }) {
@@ -102,11 +102,11 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
         {Box.create(indicator, {
           defaultProps: () => ({
             className: CarouselNavigationItem.slotClassNames.indicator,
-            styles: styles.indicator
-          })
+            styles: styles.indicator,
+          }),
         })}
         {Box.create(content, {
-          defaultProps: () => ({ as: 'span', styles: styles.content })
+          defaultProps: () => ({ as: 'span', styles: styles.content }),
         })}
       </ElementType>
     );
@@ -125,16 +125,18 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
   };
 
   actionHandlers = {
-    performClick: event => !event.defaultPrevented && this.handleClick(event)
+    performClick: event => !event.defaultPrevented && this.handleClick(event),
   };
 }
 
 CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
-  mappedArrayProp: 'content'
+  mappedArrayProp: 'content',
 });
 
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-export default withSafeTypeForAs<typeof CarouselNavigationItem, CarouselNavigationItemProps, 'li'>(CarouselNavigationItem);
+export default withSafeTypeForAs<typeof CarouselNavigationItem, CarouselNavigationItemProps, 'li'>(
+  CarouselNavigationItem,
+);

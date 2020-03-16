@@ -15,7 +15,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 import { PopperChildrenProps } from '../../utils/positioner';
@@ -74,7 +74,7 @@ class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
     onMouseLeave: PropTypes.func,
     pointerRef: customPropTypes.ref,
     trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+    autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
   };
 
   handleMouseEnter = e => {
@@ -85,7 +85,13 @@ class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
     _.invoke(this.props, 'onMouseLeave', e, this.props);
   };
 
-  renderComponent({ accessibility, ElementType, classes, unhandledProps, styles }: RenderResultConfig<PopupContentProps>): React.ReactNode {
+  renderComponent({
+    accessibility,
+    ElementType,
+    classes,
+    unhandledProps,
+    styles,
+  }: RenderResultConfig<PopupContentProps>): React.ReactNode {
     const { children, content, pointing, pointerRef, trapFocus, autoFocus } = this.props;
 
     const popupContentProps: PopupContentProps = {
@@ -94,13 +100,15 @@ class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
       ...accessibility.attributes.root,
       ...unhandledProps,
       onMouseEnter: this.handleMouseEnter,
-      onMouseLeave: this.handleMouseLeave
+      onMouseLeave: this.handleMouseLeave,
     };
 
     const popupContent = (
       <>
         {pointing && <div className={classes.pointer} ref={pointerRef} />}
-        <div className={cx(PopupContent.slotClassNames.content, classes.content)}>{childrenExist(children) ? children : content}</div>
+        <div className={cx(PopupContent.slotClassNames.content, classes.content)}>
+          {childrenExist(children) ? children : content}
+        </div>
       </>
     );
 
@@ -108,7 +116,7 @@ class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
       const focusTrapZoneProps = {
         ...popupContentProps,
         ...((_.keys(trapFocus).length && trapFocus) as FocusTrapZoneProps),
-        as: ElementType
+        as: ElementType,
       };
 
       return <FocusTrapZone {...focusTrapZoneProps}>{popupContent}</FocusTrapZone>;
@@ -118,7 +126,7 @@ class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
       const autoFocusZoneProps = {
         ...popupContentProps,
         ...((_.keys(autoFocus).length && autoFocus) as AutoFocusZoneProps),
-        as: ElementType
+        as: ElementType,
       };
 
       return <AutoFocusZone {...autoFocusZoneProps}>{popupContent}</AutoFocusZone>;
@@ -129,7 +137,7 @@ class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
 }
 
 PopupContent.slotClassNames = {
-  content: `${PopupContent.className}__content`
+  content: `${PopupContent.className}__content`,
 };
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });

@@ -11,7 +11,7 @@ import {
   commonPropTypes,
   UIComponent,
   applyAccessibilityKeyHandlers,
-  childrenExist
+  childrenExist,
 } from '../../utils';
 import { ComponentVariablesObject, mergeComponentVariables } from '@fluentui/styles';
 import TableRow, { TableRowProps } from './TableRow';
@@ -43,7 +43,7 @@ export interface TableProps extends UIComponentProps, ChildrenComponentProps {
 }
 
 const handleVariablesOverrides = variables => predefinedProps => ({
-  variables: mergeComponentVariables(variables, predefinedProps.variables)
+  variables: mergeComponentVariables(variables, predefinedProps.variables),
 });
 
 class Table extends UIComponent<WithAsProp<TableProps>> {
@@ -54,25 +54,25 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
   static Row = TableRow;
 
   static slotClassNames: TableSlotClassNames = {
-    header: `${Table.className}__header`
+    header: `${Table.className}__header`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent])
+      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
     ]),
     header: customPropTypes.itemShorthand,
     rows: customPropTypes.collectionShorthand,
-    compact: PropTypes.bool
+    compact: PropTypes.bool,
   };
 
   static defaultProps = {
     as: 'div',
-    accessibility: tableBehavior as Accessibility
+    accessibility: tableBehavior as Accessibility,
   };
 
   renderRows(accessibility: ReactAccessibilityBehavior, variables: ComponentVariablesObject) {
@@ -83,15 +83,15 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
         compact,
         onClick: (e, props) => {
           _.invoke(row, 'onClick', e, props);
-        }
+        },
       } as TableRowProps;
       const overrideProps = handleVariablesOverrides(variables);
       return TableRow.create(row, {
         defaultProps: () => ({
           ...props,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined
+          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined,
         }),
-        overrideProps
+        overrideProps,
       });
     });
   }
@@ -105,7 +105,7 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
     const headerRowProps = {
       header: true,
       compact,
-      className: Table.slotClassNames.header
+      className: Table.slotClassNames.header,
     } as TableRowProps;
 
     const overrideProps = handleVariablesOverrides(variables);
@@ -113,13 +113,19 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
     return TableRow.create(header, {
       defaultProps: () => ({
         ...headerRowProps,
-        accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined
+        accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.row : undefined,
       }),
-      overrideProps
+      overrideProps,
     });
   }
 
-  renderComponent({ accessibility, ElementType, classes, variables, unhandledProps }: RenderResultConfig<any>): React.ReactNode {
+  renderComponent({
+    accessibility,
+    ElementType,
+    classes,
+    variables,
+    unhandledProps,
+  }: RenderResultConfig<any>): React.ReactNode {
     const { children } = this.props;
     const hasChildren = childrenExist(children);
 

@@ -23,17 +23,23 @@ describe('mergeRenderers', () => {
 describe('mergePerformanceOptions', () => {
   test(`options from "sources" always override`, () => {
     expect(mergePerformanceOptions({ enableVariablesCaching: true }, {})).toMatchObject({
-      enableVariablesCaching: true
+      enableVariablesCaching: true,
     });
     expect(mergePerformanceOptions({ enableVariablesCaching: true }, undefined)).toMatchObject({
-      enableVariablesCaching: true
+      enableVariablesCaching: true,
     });
 
     expect(
-      mergePerformanceOptions({ enableVariablesCaching: true, enableStylesCaching: true }, { enableStylesCaching: false })
+      mergePerformanceOptions(
+        { enableVariablesCaching: true, enableStylesCaching: true },
+        { enableStylesCaching: false },
+      ),
     ).toMatchObject({});
     expect(
-      mergePerformanceOptions({ enableVariablesCaching: true, enableStylesCaching: true }, { enableStylesCaching: undefined })
+      mergePerformanceOptions(
+        { enableVariablesCaching: true, enableStylesCaching: true },
+        { enableStylesCaching: undefined },
+      ),
     ).toMatchObject({});
   });
 });
@@ -59,15 +65,15 @@ describe('mergeContexts', () => {
       theme: {
         siteVariables: { color: 'black' },
         componentVariables: { Button: { color: 'black' } },
-        componentStyles: { Button: { root: { color: 'black' } } }
+        componentStyles: { Button: { root: { color: 'black' } } },
       },
       rtl: true,
-      disableAnimations: false
+      disableAnimations: false,
     };
     const source = {
       theme: undefined,
       rtl: undefined,
-      disableAnimations: undefined
+      disableAnimations: undefined,
     };
     expect(() => mergeProviderContexts(target, source)).not.toThrow();
   });
@@ -76,16 +82,16 @@ describe('mergeContexts', () => {
     const target = {
       theme: undefined,
       rtl: undefined,
-      disableAnimations: undefined
+      disableAnimations: undefined,
     };
     const source = {
       theme: {
         siteVariables: { color: 'black' },
         componentVariables: { Button: { color: 'black' } },
-        componentStyles: { Button: { root: { color: 'black' } } }
+        componentStyles: { Button: { root: { color: 'black' } } },
       },
       rtl: true,
-      disableAnimations: false
+      disableAnimations: false,
     };
     expect(() => mergeProviderContexts(target, source)).not.toThrow();
   });

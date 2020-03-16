@@ -2,7 +2,7 @@ import constants from './constants';
 
 const warning = {
   message: `You probably forgot to use a 'Provider'. Check ${constants.quickStartUrl} for correct usage.`,
-  wasLogged: false
+  wasLogged: false,
 };
 
 const logProviderMissingWarning = (): void => {

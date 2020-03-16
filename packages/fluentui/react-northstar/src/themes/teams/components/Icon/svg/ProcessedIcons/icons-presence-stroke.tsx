@@ -15,5 +15,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'presence-stroke'
+  exportedAs: 'presence-stroke',
 } as TeamsProcessedSvgIconSpec;

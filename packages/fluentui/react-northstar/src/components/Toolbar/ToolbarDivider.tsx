@@ -6,7 +6,13 @@ import { ThemeContext } from 'react-fela';
 
 import * as React from 'react';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
-import { ChildrenComponentProps, ContentComponentProps, createShorthandFactory, UIComponentProps, commonPropTypes } from '../../utils';
+import {
+  ChildrenComponentProps,
+  ContentComponentProps,
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+} from '../../utils';
 import { ToolbarVariablesContext } from './toolbarVariablesContext';
 
 export interface ToolbarDividerProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -18,7 +24,8 @@ export interface ToolbarDividerProps extends UIComponentProps, ChildrenComponent
 
 export type ToolbarDividerStylesProps = never;
 
-const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> & FluentComponentStaticProps<ToolbarDividerProps> = props => {
+const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> &
+  FluentComponentStaticProps<ToolbarDividerProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(ToolbarDivider.displayName, context.telemetry);
   setStart();
@@ -28,7 +35,7 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> & FluentComponen
 
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarDivider.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarDividerStylesProps>(ToolbarDivider.displayName, {
     className: ToolbarDivider.className,
@@ -36,9 +43,9 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> & FluentComponen
       className,
       design,
       styles,
-      variables: mergeComponentVariables(parentVariables, variables)
+      variables: mergeComponentVariables(parentVariables, variables),
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);

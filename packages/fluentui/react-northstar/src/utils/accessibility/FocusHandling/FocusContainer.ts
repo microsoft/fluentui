@@ -1,7 +1,11 @@
 export class ContainerFocusHandler {
   private focusedIndex = 0;
 
-  constructor(private getItemsCount: () => number, private readonly setFocusAt: (number) => void, private circular = false) {}
+  constructor(
+    private getItemsCount: () => number,
+    private readonly setFocusAt: (number) => void,
+    private circular = false,
+  ) {}
 
   private noItems = (): boolean => this.getItemsCount() === 0;
 

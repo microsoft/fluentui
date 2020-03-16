@@ -11,7 +11,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  UIComponentProps
+  UIComponentProps,
 } from '../../utils';
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 
@@ -29,7 +29,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Box.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles(Box.displayName, {
@@ -38,9 +38,9 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const unhandledProps = getUnhandledProps(Box.handledProps, props);
@@ -51,7 +51,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
       {...getA11Props('root', {
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {childrenExist(children) ? children : content}

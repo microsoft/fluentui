@@ -4,6 +4,6 @@ import { isConformant } from 'test/specs/commonTests';
 describe('Toolbar', () => {
   isConformant(Toolbar);
   isConformant(Toolbar, {
-    requiredProps: { overflow: true }
+    requiredProps: { overflow: true },
   });
 });

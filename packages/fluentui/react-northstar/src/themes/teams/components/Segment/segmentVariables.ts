@@ -35,6 +35,6 @@ export default (siteVariables): SegmentVariables => {
     borderWidth: '2px 0 0 0',
 
     boxShadow: '0 1px 1px 1px rgba(34,36,38,.15)',
-    padding: '1em'
+    padding: '1em',
   };
 };
