@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { Input } from '@fluentui/react';
+import { Input, Flex } from '@fluentui/react';
 
-const InputExampleDisabled = () => <Input fluid disabled placeholder="You shall not type ..." />;
+const InputExampleDisabled = () => (
+  <Flex gap="gap.smaller">
+    <Input fluid disabled placeholder="You shall not type ..." />
+    <Input fluid disabled clearable value="Same but clearable (apparently)" />
+  </Flex>
+);
 
 export default InputExampleDisabled;
