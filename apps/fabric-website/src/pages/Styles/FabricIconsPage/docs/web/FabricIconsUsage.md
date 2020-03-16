@@ -15,14 +15,14 @@ By default, this will load the icon fonts from the CDN used by OneDrive, SharePo
 initializeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-For more details about what `initializeIcons` does, check out Fabric's [wiki page about icons](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Using-icons).
+For more details about what `initializeIcons` does, check out Fabric's [wiki page about icons](https://github.com/microsoft/fluentui/wiki/Using-icons).
 
 Once you've initialized the icons, you can use the Icon component in your app like any other Fabric component:
 
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 
 const MyIcon = () => <Icon iconName="CompassNW" className="ms-IconExample" />;
 
@@ -34,7 +34,7 @@ Some components also include baked-in support for Icon via `iconProps`, which yo
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from '@fluentui/react/lib/Button';
 
 const MyIconButton = () => <IconButton iconProps={{ iconName: 'Add' }} title="Add" ariaLabel="Add" />;
 
