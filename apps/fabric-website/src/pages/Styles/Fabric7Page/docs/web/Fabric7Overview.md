@@ -9,11 +9,11 @@ We’ve updated Fluent UI to include a new set of Web Fluent design styles, whic
 
 ### Upgrading to Fluent UI 7
 
-Along with a visual refresh, Fluent UI 7 updates the minimum required version of React to 16.8.1 and TypeScript to 3.3. It also includes a number of behavior improvements and removes old deprecated props. For a full rundown of these changes, and upgrade instructions, see the [release notes](https://github.com/Microsoft/fluentui/wiki/Fabric-7) on our wiki.
+Along with a visual refresh, Fluent UI 7 updates the minimum required version of React to 16.8.1 and TypeScript to 3.3. It also includes a number of behavior improvements and removes old deprecated props. For a full rundown of these changes, and upgrade instructions, see the [release notes](https://github.com/microsoft/fluentui/wiki/Fabric-7) on our wiki.
 
 ### Can I preview the Fluent styles using Fluent UI 6?
 
-If you want to preview the Fluent styles and how they will affect your existing Fluent UI 6 site, follow the [Fluent customization steps](https://github.com/Microsoft/fluentui/wiki/Fluent-theme-in-Fabric-6) outlined in our wiki.
+If you want to preview the Fluent styles and how they will affect your existing Fluent UI 6 site, follow the [Fluent customization steps](https://github.com/microsoft/fluentui/wiki/Fluent-theme-in-Fabric-6) outlined in our wiki.
 
 ### Fluent for Fabric Core (CSS styles)
 

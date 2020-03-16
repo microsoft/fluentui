@@ -4,7 +4,7 @@ Get started with React and learn how to build your first projects.
 
 <ul class="md-list--flex">
   <li class="mdut--full">[Get started with Fluent UI React](#/get-started)</li>
-  <li class="mdut--full">[Fluent UI React tutorial](https://github.com/Microsoft/fluentui/wiki/Getting-Started-with-UI-Fabric)</li>
+  <li class="mdut--full">[Fluent UI React tutorial](https://github.com/microsoft/fluentui/wiki/Getting-Started-with-UI-Fabric)</li>
 </ul>
 
 ### Documentation
