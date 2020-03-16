@@ -15,7 +15,7 @@ const getRuntimeDependencies = (packageName: string) => {
     shell: true,
     cwd: paths.base(),
     stdio: 'pipe',
-    encoding: 'utf-8'
+    encoding: 'utf-8',
   });
 
   const output = `${result.stdout}`;

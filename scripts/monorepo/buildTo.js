@@ -42,6 +42,10 @@ foundProjects.forEach(projectName => {
 
 // Lerna has many flags, --scope limits build to a specified package while --include-filtered-Dependencies makes the build include dependencies
 // --stream allows the build to proceed in parallel but still in order
-spawnSync(process.execPath, [lernaBin, 'run', 'build', ...scopes, '--include-filtered-dependencies', '--stream', '--', ...rest], {
-  stdio: 'inherit'
-});
+spawnSync(
+  process.execPath,
+  [lernaBin, 'run', 'build', ...scopes, '--include-filtered-dependencies', '--stream', '--', ...rest],
+  {
+    stdio: 'inherit',
+  },
+);

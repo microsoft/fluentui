@@ -60,7 +60,7 @@ function fixDocPageTypesPaths() {
   replaceInFile.sync({
     files: path.posix.join(examplesSrc, '**/*'),
     from: /(..\/)+common\/DocPage\.types/,
-    to: 'office-ui-fabric-react/lib/common/DocPage.types'
+    to: 'office-ui-fabric-react/lib/common/DocPage.types',
   });
 }
 
@@ -75,7 +75,10 @@ function fixDocFilePaths() {
   const docRegex = /\b(?:@[\w-]+\/)?([\w-]+)\/(lib|src)\/([\w\/]+\/(?:examples|docs|\w+\.doc|\w+Page)\b)/g;
   // @ts-ignore
   replaceInFile.sync({
-    files: [path.posix.join(rootDir, 'apps/{fabric-website,fabric-website-resources}/src/**/*'), path.posix.join(examplesSrc, '**/*')],
+    files: [
+      path.posix.join(rootDir, 'apps/{fabric-website,fabric-website-resources}/src/**/*'),
+      path.posix.join(examplesSrc, '**/*'),
+    ],
     from: docRegex,
     to: substr => {
       docRegex.lastIndex = 0;
@@ -86,7 +89,7 @@ function fixDocFilePaths() {
       const result = path.posix.join('@fluentui/examples', match[2], match[1], _transformRelativePath(match[3]));
       console.log(`updating ${substr} to ${result}`);
       return result;
-    }
+    },
   });
 }
 
@@ -97,7 +100,7 @@ function fixDemoAppPaths() {
     files: path.posix.join(examplesSrc, '*/demo/AppDefinition.tsx'),
     // remove "components" or other extra segments which don't exist in the new layout
     from: /'\.\.\/(\w+)/,
-    to: '..'
+    to: '..',
   });
 }
 

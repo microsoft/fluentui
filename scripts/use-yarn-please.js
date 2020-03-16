@@ -24,7 +24,7 @@ Or start a development inner loop against the UI Fabric demo:
 To learn more about all the commands that this monorepo supports, see the wiki:
 
   https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands
-`
+`,
 };
 
 if (path.basename(npmPath) !== 'yarn.js') {
