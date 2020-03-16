@@ -3,7 +3,7 @@ import { IMessageBarStyles, IMessageBarStyleProps } from 'office-ui-fabric-react
 
 export interface ISiteMessageBarProps {
   /** Text for the message bar */
-  text: string;
+  text: string | JSX.Element;
 
   /** Text for a link shown after the main text */
   linkText?: string;

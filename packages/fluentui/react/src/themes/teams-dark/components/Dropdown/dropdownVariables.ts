@@ -18,6 +18,5 @@ export default (siteVars): Partial<DropdownVariables> => ({
   selectedItemBackgroundColor: siteVars.colors.grey[650],
   selectedItemColorFocus: siteVars.colors.grey[700], // check this value
   listItemSelectedColor: siteVars.colors.white,
-  selectedItemBackgroundColorFocus: siteVars.colors.brand[200],
-  triggerButtonColorHover: siteVars.colors.grey[250]
+  selectedItemBackgroundColorFocus: siteVars.colors.brand[200]
 });

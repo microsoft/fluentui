@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -69,7 +68,7 @@ function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
   return primaryControls.reduce((acc, current) => acc + current.key, '');
 }
 
-export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGroupOverflowSetExampleState> {
+export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGroupOverflowSetExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {

@@ -1,7 +1,5 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
-import { BaseComponent, css, getId } from '../../../../Utilities';
+import { css, getId, initializeComponentRef } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from '../../../../Button';
@@ -13,11 +11,13 @@ export interface IPeoplePickerItemState {
   contextualMenuVisible: boolean;
 }
 
-export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
+export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
   protected persona = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedPeopleItemProps) {
     super(props);
+
+    initializeComponentRef(this);
     this.state = { contextualMenuVisible: false };
   }
 

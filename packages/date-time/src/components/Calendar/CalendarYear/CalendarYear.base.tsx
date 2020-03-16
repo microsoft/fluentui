@@ -9,7 +9,7 @@ import {
   ICalendarYearStyleProps,
   ICalendarYearStyles
 } from './CalendarYear.types';
-import { BaseComponent, KeyCodes, getRTL, classNamesFunction, css, format } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes, getRTL, classNamesFunction, css, format, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarIconStrings } from '../Calendar.types';
@@ -396,7 +396,13 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
   };
 }
 
-class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
+class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, {}> {
+  constructor(props: ICalendarYearHeaderProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
+
   public render(): JSX.Element {
     const { styles, theme, className, animateBackwards, animationDirection } = this.props;
 
@@ -428,7 +434,7 @@ class CalendarYearHeader extends BaseComponent<ICalendarYearHeaderProps, {}> {
   };
 }
 
-export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
+export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalendarYearState> implements ICalendarYear {
   private _gridRef: CalendarYearGrid;
 
   public static getDerivedStateFromProps(
@@ -465,6 +471,9 @@ export class CalendarYearBase extends BaseComponent<ICalendarYearProps, ICalenda
 
   constructor(props: ICalendarYearProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     this.state = CalendarYearBase._getState(props);
   }
 

@@ -15,7 +15,6 @@ import {
   SizeValue
 } from '../../utils';
 import Icon, { IconProps } from '../Icon/Icon';
-import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
 import {
   ComponentEventHandler,
@@ -26,11 +25,12 @@ import {
   ProviderContextPrepared
 } from '../../types';
 import ButtonGroup from './ButtonGroup';
+import ButtonContent, { ButtonContentProps } from './ButtonContent';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-export interface ButtonProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>>, ChildrenComponentProps {
+export interface ButtonProps extends UIComponentProps, ContentComponentProps<ShorthandValue<ButtonContentProps>>, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
 
@@ -88,7 +88,8 @@ export interface ButtonProps extends UIComponentProps, ContentComponentProps<Sho
   size?: SizeValue;
 }
 
-const Button: React.FC<WithAsProp<ButtonProps>> & FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup } = props => {
+const Button: React.FC<WithAsProp<ButtonProps>> &
+  FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup; Content: typeof ButtonContent } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Button.displayName, context.telemetry);
   setStart();
@@ -212,8 +213,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> & FluentComponentStaticProps<But
         <>
           {loading && renderLoader()}
           {iconPosition !== 'after' && renderIcon()}
-          {Box.create(content, {
-            defaultProps: () => getA11Props('content', { as: 'span', styles: resolvedStyles.content })
+          {ButtonContent.create(content, {
+            defaultProps: () => getA11Props('content', { as: 'span', size, styles: resolvedStyles.content })
           })}
           {iconPosition === 'after' && renderIcon()}
         </>
@@ -258,6 +259,7 @@ Button.propTypes = {
 Button.handledProps = Object.keys(Button.propTypes) as any;
 
 Button.Group = ButtonGroup;
+Button.Content = ButtonContent;
 
 Button.create = createShorthandFactory({ Component: Button, mappedProp: 'content' });
 

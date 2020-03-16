@@ -143,6 +143,7 @@ describe('Pickers', () => {
     });
 
     it('force resolves to the first suggestion', () => {
+      jest.useFakeTimers();
       const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
       create(
         <BaseExtendedPickerWithType
@@ -160,6 +161,7 @@ describe('Pickers', () => {
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
         ReactTestUtils.Simulate.input(picker.inputElement);
+        jest.runAllTimers();
       }
 
       ReactDOM.render(
@@ -198,6 +200,7 @@ describe('Pickers', () => {
     });
 
     it('Can hide and show picker', () => {
+      jest.useFakeTimers();
       const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
       create(
         <BaseExtendedPickerWithType
@@ -215,6 +218,7 @@ describe('Pickers', () => {
       if (picker.inputElement) {
         picker.inputElement.value = 'bl';
         ReactTestUtils.Simulate.input(picker.inputElement);
+        jest.runAllTimers();
       }
 
       expect(picker.floatingPicker.current && picker.floatingPicker.current.isSuggestionsShown).toBeTruthy();
@@ -225,6 +229,7 @@ describe('Pickers', () => {
     });
 
     it('Completes the suggestion', () => {
+      jest.useFakeTimers();
       const pickerRef: React.RefObject<TypedBaseExtendedPicker> = React.createRef();
       create(
         <BaseExtendedPickerWithType
@@ -244,6 +249,7 @@ describe('Pickers', () => {
         picker.inputElement.value = 'bl';
         ReactTestUtils.Simulate.input(picker.inputElement);
         ReactTestUtils.Simulate.keyDown(picker.inputElement, { which: KeyCodes.down });
+        jest.runAllTimers();
       }
 
       // precondition check

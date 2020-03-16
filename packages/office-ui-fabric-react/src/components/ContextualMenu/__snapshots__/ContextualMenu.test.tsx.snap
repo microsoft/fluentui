@@ -137,8 +137,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
       <div
         className=
             ms-Fabric
-            is-focusHidden
-            ms-Fabric--isFocusHidden
             ms-Layer-content
             {
               -moz-osx-font-smoothing: grayscale;

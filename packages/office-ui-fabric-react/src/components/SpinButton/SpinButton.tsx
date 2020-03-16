@@ -4,7 +4,6 @@ import { Label } from '../../Label';
 import { Icon } from '../../Icon';
 import {
   initializeComponentRef,
-  initializeFocusRects,
   warnMutuallyExclusive,
   Async,
   getId,
@@ -84,7 +83,6 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
     super(props);
 
     initializeComponentRef(this);
-    initializeFocusRects();
 
     warnMutuallyExclusive('SpinButton', props, {
       value: 'defaultValue'
