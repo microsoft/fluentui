@@ -11,18 +11,18 @@ Integrating components into your project depends heavily on your setup. The reco
 Within an npm project, you should install the package and save it as a dependency:
 
 ```bash
-npm install --save office-ui-fabric-react
+npm install --save @fluentui/react
 ```
 
-This will add the fabric-react project as a dependency in your package.json file, and will drop the project under node_modules/office-ui-fabric-react.
+This will add the fabric-react project as a dependency in your package.json file, and will drop the project under node_modules/@fluentui/react.
 
-The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.
+The library includes commonjs entry points under the `lib-commonjs` folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.
 
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { Fabric } from '@fluentui/react/lib/Fabric';
+import { DefaultButton } from '@fluentui/react/lib/Button';
 
 const MyPage = () => (
   <Fabric>
@@ -38,15 +38,15 @@ ReactDOM.render(<MyPage />, document.body.firstChild);
 While it is possible to import all components as named imports from the main module entry point, it is not recommended to do so without using a bundler that supports es6 tree shaking. In other words, if you import the Button component like this:
 
 ```tsx
-import { Button } from 'office-ui-fabric-react';
+import { Button } from '@fluentui/react';
 ```
 
 ...this would work, but then unless you are using a tree-shaking bundler such as Rollup.js or Webpack 2, Webpack will assume you want every module exported from the main entry file to be included in your final bundle, which produces unnecessary large bundles and slows your page load down. Instead you can import the specific paths to trim down your bundle size:
 
 ```tsx
-import { Button } from 'office-ui-fabric-react/lib/Button';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { List } from 'office-ui-fabric-react/lib/List';
+import { Button } from '@fluentui/react/lib/Button';
+import { Dropdown } from '@fluentui/react/lib/Dropdown';
+import { List } from '@fluentui/react/lib/List';
 ```
 
 ## Using an AMD bundler like r.js
