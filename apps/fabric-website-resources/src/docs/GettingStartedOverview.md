@@ -16,7 +16,7 @@ npm install --save @fluentui/react
 
 This will add the fabric-react project as a dependency in your package.json file, and will drop the project under node_modules/@fluentui/react.
 
-The library includes commonjs entry points under the lib folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.
+The library includes commonjs entry points under the `lib-commonjs` folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.
 
 ```tsx
 import * as React from 'react';
