@@ -7,7 +7,7 @@ const knobsSnippetStyles = {
   background: 'whitesmoke',
   color: '#777',
   lineHeight: '1.5',
-  padding: `5px 10px`
+  padding: `5px 10px`,
 };
 
 const KnobsSnippet = createComponent({
@@ -21,16 +21,23 @@ const KnobsSnippet = createComponent({
         <div className={config.classes.root}>{children}</div>
         <Flex.Item grow>
           {({ classes }) => (
-            <CodeSnippet className={classes} copyable={false} fitted label="Knobs" mode="json" value={JSON.stringify(values, null, 2)} />
+            <CodeSnippet
+              className={classes}
+              copyable={false}
+              fitted
+              label="Knobs"
+              mode="json"
+              value={JSON.stringify(values, null, 2)}
+            />
           )}
         </Flex.Item>
       </Flex>
     );
-  }
+  },
 });
 
 KnobsSnippet.defaultProps = {
-  styles: knobsSnippetStyles
+  styles: knobsSnippetStyles,
 };
 
 export default KnobsSnippet;

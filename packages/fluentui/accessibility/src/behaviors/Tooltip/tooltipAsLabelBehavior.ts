@@ -14,12 +14,12 @@ const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
 
   behaviorData.attributes = {
     trigger: {
-      'aria-labelledby': defaultAriaLabeledBy || props['aria-labelledby']
+      'aria-labelledby': defaultAriaLabeledBy || props['aria-labelledby'],
     },
     tooltip: {
       ...behaviorData.attributes.tooltip,
-      id: defaultAriaLabeledBy
-    }
+      id: defaultAriaLabeledBy,
+    },
   };
 
   return behaviorData;
