@@ -10,7 +10,7 @@ export const selectors = {
   innerClose: 'inner-close',
   innerHeader: 'inner-header',
   innerTrigger: 'inner-trigger',
-  innerOverlay: 'inner-overlay'
+  innerOverlay: 'inner-overlay',
 };
 
 const DialogInPopupExample = () => (

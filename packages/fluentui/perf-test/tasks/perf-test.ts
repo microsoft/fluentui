@@ -79,8 +79,8 @@ export default async function getPerfRegressions(baselineOnly: boolean = false) 
           ...(!baselineOnly &&
             storyKey !== 'Fabric' && {
               // Optimization: skip baseline comparision for Fabric
-              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey))
-            })
+              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
+            }),
         };
       });
   });
@@ -139,8 +139,8 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
         iterations,
         tpi,
         fabricTpi,
-        filename: stories[kind][story].filename
-      }
+        filename: stories[kind][story].filename,
+      },
     };
   });
 }
@@ -180,7 +180,10 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
   const resultsToDisplay = Object.keys(testResults)
     .filter(
       key =>
-        showAll || (testResults[key].analysis && testResults[key].analysis.regression && testResults[key].analysis.regression.isRegression)
+        showAll ||
+        (testResults[key].analysis &&
+          testResults[key].analysis.regression &&
+          testResults[key].analysis.regression.isRegression),
     )
     .filter(testResultKey => getStoryKey(testResultKey) !== 'Fabric')
     .sort();
@@ -235,10 +238,18 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
       .map(resultKey => {
         const testResult = testResults[resultKey];
         const tpi = testResult.extended.tpi
-          ? linkifyResult(testResult, testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }), false)
+          ? linkifyResult(
+              testResult,
+              testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
+              false,
+            )
           : 'n/a';
         const fabricTpi = testResult.extended.fabricTpi
-          ? linkifyResult(testResult, testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }), false)
+          ? linkifyResult(
+              testResult,
+              testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
+              false,
+            )
           : '';
 
         return `<tr>
@@ -251,7 +262,7 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
            </tr>`;
       })
       .join('\n')
-      .concat(`</table>`)
+      .concat(`</table>`),
   );
 
   return result;
@@ -281,7 +292,9 @@ function getTpiResult(testResults, stories, kind, story): number | undefined {
 
 function getIterations(stories, kind, story): number {
   // Give highest priority to most localized definition of iterations. Story => kind => default.
-  return stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations;
+  return (
+    stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations
+  );
 }
 
 function getTicks(testResult: CookResult): number | undefined {
