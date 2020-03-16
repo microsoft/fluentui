@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { classNamesFunction, BaseComponent, css } from '../../../Utilities';
+import { classNamesFunction, css, initializeComponentRef } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IconButton } from '../../../Button';
 import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
@@ -13,7 +13,13 @@ const getClassNames = classNamesFunction<ISuggestionsItemStyleProps, ISuggestion
 /**
  * {@docCategory Pickers}
  */
-export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
+export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
+  constructor(props: ISuggestionItemProps<T>) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
+
   public render(): JSX.Element {
     const {
       suggestionModel,

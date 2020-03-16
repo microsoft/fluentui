@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
+import { initializeComponentRef, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
@@ -29,7 +29,7 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
 /**
  * {@docCategory Pickers}
  */
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = React.createRef<IButton>();
   protected _searchForMoreButton = React.createRef<IButton>();
   protected _selectedElement = React.createRef<HTMLDivElement>();
@@ -38,6 +38,9 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
   constructor(suggestionsProps: ISuggestionsProps<T>) {
     super(suggestionsProps);
+
+    initializeComponentRef(this);
+
     this.state = {
       selectedActionType: SuggestionActionType.none
     };

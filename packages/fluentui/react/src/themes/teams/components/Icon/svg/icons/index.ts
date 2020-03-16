@@ -108,6 +108,7 @@ import markAsUnread from './markAsUnread';
 import meetingNew from './meetingNew';
 import mention from './mention';
 import menu from './menu';
+import mergeCalls from './mergeCalls';
 import messageSeen from './messageSeen';
 import mic from './mic';
 import micOff from './micOff';
@@ -120,6 +121,7 @@ import numberList from './numberList';
 import oneDrive from './oneDrive';
 import outdent from './outdent';
 import openOutside from './openOutside';
+import panorama from './panorama';
 import pause from './pause';
 import pauseThick from './pauseThick';
 import paperclip from './paperclip';
@@ -136,6 +138,9 @@ import qna from './qna';
 import questionCircle from './questionCircle';
 import quote from './quote';
 import readAloud from './read-aloud';
+import raiseHand from './raiseHand';
+import raiseHandColored from './raiseHandColored';
+import raiseHandDisabled from './raiseHandDisabled';
 import redbang from './redbang';
 import redo from './redo';
 import removeFormat from './removeFormat';
@@ -147,10 +152,12 @@ import send from './send';
 import settings from './settings';
 import settingsAudio from './settingsAudio';
 import shareAlt from './shareAlt';
+import shareLocation from './shareLocation';
 import shareTo from './shareTo';
 import skypeLogo from './skypeLogo';
 import snooze from './snooze';
 import speakerMute from './speakerMute';
+import spotlight from './spotlight';
 import star from './star';
 import sticker from './sticker';
 import strike from './strike';
@@ -285,6 +292,7 @@ export default {
   'meeting-new': meetingNew,
   mention,
   menu,
+  'merge-calls': mergeCalls,
   'message-seen': messageSeen,
   mic,
   'no-presenter': noPresenter,
@@ -301,6 +309,7 @@ export default {
   paperclip,
   'participant-add': addParticipant,
   'participant-remove': participantRemove,
+  panorama,
   pause,
   'pause-thick': pauseThick,
   'phone-clock': phoneClock,
@@ -314,6 +323,9 @@ export default {
   qna,
   'question-circle': questionCircle,
   quote,
+  'raise-hand': raiseHand,
+  'raise-hand-colored': raiseHandColored,
+  'raise-hand-disabled': raiseHandDisabled,
   'read-aloud': readAloud,
   redbang,
   redo,
@@ -326,7 +338,9 @@ export default {
   settings,
   'settings-audio': settingsAudio,
   'share-alt': shareAlt,
+  'share-location': shareLocation,
   'share-to': shareTo,
+  spotlight,
   star,
   sticker,
   strike,

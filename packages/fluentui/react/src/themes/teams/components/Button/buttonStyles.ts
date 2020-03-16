@@ -227,21 +227,6 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     };
   },
 
-  // modifies the text of the button
-  content: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    fontSize: v.contentFontSize,
-    fontWeight: v.contentFontWeight,
-    lineHeight: v.contentLineHeight,
-
-    ...(p.size === 'small' && {
-      fontSize: v.sizeSmallContentFontSize,
-      lineHeight: v.sizeSmallContentLineHeight
-    })
-  }),
-
   icon: ({ props: p }) => ({
     // when loading, hide the icon
     ...(p.loading && {

@@ -93,6 +93,7 @@ describe('Pickers', () => {
     });
 
     it('updates suggestions on query string changed', () => {
+      jest.useFakeTimers();
       const root = document.createElement('div');
       const input = document.createElement('input');
       document.body.appendChild(input);
@@ -110,6 +111,7 @@ describe('Pickers', () => {
 
       input.value = 'b';
       picker.onQueryStringChanged('b');
+      jest.runAllTimers();
 
       expect(picker.suggestions.length).toEqual(3);
 

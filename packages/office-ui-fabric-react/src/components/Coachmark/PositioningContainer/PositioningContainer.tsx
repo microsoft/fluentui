@@ -6,7 +6,6 @@ import { Layer } from '../../../Layer';
 // Utilites/Helpers
 import { DirectionalHint } from '../../../common/DirectionalHint';
 import {
-  BaseComponent,
   IPoint,
   IRectangle,
   assign,
@@ -14,7 +13,10 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument
+  getDocument,
+  initializeComponentRef,
+  Async,
+  EventGroup
 } from '../../../Utilities';
 
 import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
@@ -47,7 +49,7 @@ export interface IPositioningContainerState {
   heightOffset?: number;
 }
 
-export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState>
+export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState>
   implements PositioningContainer {
   public static defaultProps: IPositioningContainerProps = {
     preventDismissOnScroll: false,
@@ -86,9 +88,16 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   private _positionAttempts: number;
   private _target: HTMLElement | MouseEvent | IPoint | null;
   private _setHeightOffsetTimer: number;
+  private _async: Async;
+  private _events: EventGroup;
 
   constructor(props: IPositioningContainerProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
@@ -130,6 +139,11 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     if (newProps.finalHeight !== this.props.finalHeight) {
       this._setHeightOffsetEveryFrame();
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {

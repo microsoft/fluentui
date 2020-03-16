@@ -27,6 +27,9 @@ export interface AvatarProps extends UIComponentProps {
   /** The name used for displaying the initials of the avatar if the image is not provided. */
   name?: string;
 
+  /** The avatar can have a square shape. */
+  square?: boolean;
+
   /** Size multiplier. */
   size?: SizeValue;
 
@@ -37,12 +40,14 @@ export interface AvatarProps extends UIComponentProps {
   getInitials?: (name: string) => string;
 }
 
+export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
+
 const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Avatar.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, className, design, getInitials, label, image, name, size, status, styles, variables } = props;
+  const { accessibility, className, design, getInitials, label, image, name, square, size, status, styles, variables } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Avatar.displayName,
@@ -50,7 +55,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   });
   const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
     className: Avatar.className,
-    mapPropsToStyles: () => ({ size }),
+    mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -68,7 +73,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
         defaultProps: () =>
           getA11Props('image', {
             fluid: true,
-            avatar: true,
+            avatar: !square,
             title: name,
             styles: resolvedStyles.image
           })
@@ -78,7 +83,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
           defaultProps: () =>
             getA11Props('label', {
               content: getInitials(name),
-              circular: true,
+              circular: !square,
               title: name,
               styles: resolvedStyles.label
             })
@@ -134,6 +139,7 @@ Avatar.propTypes = {
   name: PropTypes.string,
   image: customPropTypes.itemShorthandWithoutJSX,
   label: customPropTypes.itemShorthand,
+  square: PropTypes.bool,
   size: customPropTypes.size,
   status: customPropTypes.itemShorthand,
   getInitials: PropTypes.func
