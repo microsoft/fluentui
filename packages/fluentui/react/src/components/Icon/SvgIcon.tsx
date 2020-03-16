@@ -1,6 +1,6 @@
-import { Accessibility, AccessibilityAttributes, IconBehaviorProps, iconBehavior } from '@fluentui/accessibility';
+import { AccessibilityAttributes } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { callable } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -24,9 +24,6 @@ export interface SvgIconProps extends UIComponentProps, ChildrenComponentProps<S
   /** Alternative text. */
   alt?: string;
   'aria-label'?: AccessibilityAttributes['aria-label'];
-
-  /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility<IconBehaviorProps>;
 
   /** SvgIcon can appear with rectangular border. */
   bordered?: boolean;
@@ -61,7 +58,6 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   setStart();
 
   const {
-    accessibility,
     alt,
     'aria-label': ariaLabel,
     bordered,
@@ -78,14 +74,6 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
     xSpacing
   } = props;
 
-  const getA11Props = useAccessibility(accessibility, {
-    debugName: SvgIcon.displayName,
-    mapPropsToBehavior: () => ({
-      alt,
-      'aria-label': ariaLabel
-    }),
-    rtl: context.rtl
-  });
   const { classes } = useStyles(SvgIcon.displayName, {
     className: SvgIcon.className,
     mapPropsToStyles: () => ({
@@ -105,7 +93,13 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   const unhandledProps = getUnhandledProps(SvgIcon.handledProps, props);
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
+    <ElementType
+      role="img"
+      aria-hidden={alt || ariaLabel ? undefined : 'true'}
+      aria-label={ariaLabel}
+      className={classes.root}
+      {...unhandledProps}
+    >
       {callable(children)({ classes, rtl: context.rtl, props })}
     </ElementType>
   );
@@ -118,7 +112,6 @@ SvgIcon.className = 'ui-icon';
 SvgIcon.displayName = 'SvgIcon';
 SvgIcon.defaultProps = {
   as: 'span',
-  accessibility: iconBehavior,
   size: 'medium',
   rotate: 0
 };
