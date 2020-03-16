@@ -24,7 +24,7 @@ export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TViewProps,
   theme: ITheme,
-  tokens: TTokens
+  tokens: TTokens,
 ) => TStyleSet;
 
 /**
@@ -85,7 +85,9 @@ export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<
 /**
  * Defines the contract for view components.
  */
-export type IViewComponent<TViewProps> = (props: React.PropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
+export type IViewComponent<TViewProps> = (
+  props: React.PropsWithChildren<TViewProps>,
+) => ReturnType<React.FunctionComponent>;
 
 /**
  * Component options used by foundation to tie elements together.

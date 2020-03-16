@@ -8,7 +8,7 @@ import { ISlots, ISlotDefinition, ISlottableProps } from '../ISlots';
  */
 export type IViewComponent<TViewProps, TComponentSlots = {}> = (
   props: React.PropsWithChildren<TViewProps>,
-  slots: ISlots<Required<TComponentSlots>>
+  slots: ISlots<Required<TComponentSlots>>,
 ) => ReturnType<React.FunctionComponent>;
 
 /**

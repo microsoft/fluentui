@@ -1125,7 +1125,15 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  justifyContent?:
+    | ICSSRule
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch';
 
   /**
    * Justifies the box (as the alignment subject) within its containing block (as the alignment container)

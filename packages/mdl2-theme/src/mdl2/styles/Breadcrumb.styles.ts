@@ -9,16 +9,16 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
   const stateSelectors = {
     ':hover': {
       backgroundColor: palette.neutralLighter,
-      textDecoration: 'none'
+      textDecoration: 'none',
     },
     ':active': {
       backgroundColor: palette.neutralTertiaryAlt,
-      textDecoration: 'none'
+      textDecoration: 'none',
     },
     '&:active:hover': {
       backgroundColor: palette.neutralQuaternary,
-      textDecoration: 'none'
-    }
+      textDecoration: 'none',
+    },
   };
 
   const itemStyle = {
@@ -30,37 +30,45 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
     selectors: {
       '.ms-Fabric--isFocusVisible &:focus': {
         // Necessary due to changes of Link component not using getFocusStyle.
-        outline: 'none'
+        outline: 'none',
       },
       // Leaving this breakpoint selectors here as there might be some design discussions regarding scaling breadcrumb.
-      [MediumScreenSelector]: { fontSize: fonts.xLarge.fontSize, fontWeight: FontWeights.regular, lineHeight: 'normal' },
-      [MinimumScreenSelector]: { fontSize: fonts.xLarge.fontSize, fontWeight: FontWeights.regular, lineHeight: 'normal' },
-      ...stateSelectors
-    }
+      [MediumScreenSelector]: {
+        fontSize: fonts.xLarge.fontSize,
+        fontWeight: FontWeights.regular,
+        lineHeight: 'normal',
+      },
+      [MinimumScreenSelector]: {
+        fontSize: fonts.xLarge.fontSize,
+        fontWeight: FontWeights.regular,
+        lineHeight: 'normal',
+      },
+      ...stateSelectors,
+    },
   };
 
   const lastChildItem = {
     fontWeight: FontWeights.light,
-    color: palette.neutralPrimary
+    color: palette.neutralPrimary,
   };
 
   return {
     root: {
-      marginTop: 23
+      marginTop: 23,
     },
     itemLink: itemStyle,
     item: itemStyle,
     listItem: {
       selectors: {
         '&:last-child .ms-Breadcrumb-itemLink': lastChildItem,
-        '&:last-child .ms-Breadcrumb-item': lastChildItem
-      }
+        '&:last-child .ms-Breadcrumb-item': lastChildItem,
+      },
     },
     overflowButton: {
       color: palette.neutralSecondary,
       selectors: {
-        ...stateSelectors
-      }
-    }
+        ...stateSelectors,
+      },
+    },
   };
 };

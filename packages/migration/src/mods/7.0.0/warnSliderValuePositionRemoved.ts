@@ -14,9 +14,11 @@ export default migration(
         const sourceFile = node.getSourceFile();
         const sourceFileName = sourceFile.fileName;
         const lineAndCharacter = sourceFile.getLineAndCharacterOfPosition(node.getStart());
-        opts.warn(`${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${typeName} no longer available`);
+        opts.warn(
+          `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${typeName} no longer available`,
+        );
       }
       return undefined;
     }).files;
-  }
+  },
 );

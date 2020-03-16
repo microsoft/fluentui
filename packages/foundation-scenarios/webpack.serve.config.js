@@ -8,12 +8,12 @@ module.exports = resources.createServeConfig({
   entry: './src/demo/index.tsx',
 
   output: {
-    filename: 'demo-app.js'
+    filename: 'demo-app.js',
   },
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
 
   resolve: {
@@ -22,7 +22,7 @@ module.exports = resources.createServeConfig({
       '@uifabric/foundation-scenarios/lib': path.join(__dirname, 'src'),
       '@uifabric/foundation-scenarios': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
-      'Example.tsx.js': 'Example'
-    }
-  }
+      'Example.tsx.js': 'Example',
+    },
+  },
 });
