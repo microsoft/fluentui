@@ -7,7 +7,7 @@ import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { ScrollablePane } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { concatStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { BaseComponent, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
+import { KeyCodes, initializeComponentRef, FocusRects } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
 import { Accordion } from '../BAFAccordion/Accordion';
 import { getSidebarClassNames, ISidebarClassNames } from './Sidebar.classNames';
@@ -21,7 +21,7 @@ export interface ISidebarState {
   isCollapsed: boolean;
 }
 
-export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> implements ISidebar {
+export class Sidebar extends React.Component<ISidebarProps, ISidebarState> implements ISidebar {
   private _theme: ITheme;
   private _classNames: ISidebarClassNames;
   private _colors: SidebarColors;
@@ -30,6 +30,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
   constructor(props: ISidebarProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {
       isCollapsed: false
     };
@@ -90,6 +91,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
             {footerItems.map((item: ISidebarItemProps) => this._renderItemInSidebar(item))}
           </FocusZone>
         )}
+        <FocusRects />
       </div>
     );
   }
