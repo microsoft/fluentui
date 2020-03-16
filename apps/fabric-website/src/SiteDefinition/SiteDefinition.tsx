@@ -59,7 +59,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   messageBars: [
     {
       path: '#/controls/web',
-      text: 'Fabric 7 is now released with the new Fluent styles.',
+      text: 'Fluent UI 7 is now released with the new Fluent styles.',
       linkText: 'Learn more',
       linkUrl: '#/styles/web/fabric-7',
       sessionStoragePrefix: 'Fabric7'

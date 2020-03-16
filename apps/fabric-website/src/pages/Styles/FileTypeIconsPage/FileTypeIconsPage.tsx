@@ -49,8 +49,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       <br />
                       <br />
                       If you are looking for icons for command bars, navigation, status indicators, or similar, check out the{' '}
-                      <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for brand logos, or the
-                      icons of apps themselves, check out the <Link href="#/styles/web/office-brand-icons">Fabric brand icons page</Link>.
+                      <Link href="#/styles/web/icons">Fluent UI icons page</Link>. Alternatively, if you're looking for brand logos, or the
+                      icons of apps themselves, check out the <Link href="#/styles/web/office-brand-icons">Fluent UI brand icons page</Link>
+                      .
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">

@@ -8,7 +8,7 @@ If you're using Fabric React, you may not need Fabric Core. Most of the styles f
 
 ### Adding Fabric Core to your site
 
-To add the latest Fluent version of Fabric Core to your site, link to this CSS file in the `<head>` of your webpage. (For the pre-Fluent styles, replace `11.0.0` with `9.6.1` in the `href`.)
+To add the latest version of Fabric Core to your site, link to this CSS file in the `<head>` of your webpage. (For the pre-Fabric styles, replace `11.0.0` with `9.6.1` in the `href`.)
 
 ```html
 <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/11.0.0/css/fabric.min.css" />
