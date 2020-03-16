@@ -30,7 +30,7 @@ const callVideoSvg = ({ classes }) => (
   </svg>
 );
 
-const CallVideoIcon = SvgIcon.create(callVideoSvg);
+const CallVideoIcon = SvgIcon.create({ svg: callVideoSvg, displayName: 'CallVideoIcon', handledProps: SvgIcon.handledProps });
 
 const IconExample = () => (
   <Flex gap="gap.smaller">
