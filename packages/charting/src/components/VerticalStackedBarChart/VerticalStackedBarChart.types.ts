@@ -202,5 +202,5 @@ export interface IVerticalStackedBarChartStyles {
   /**
    * Style for the legends container
    */
-  legendContainer: IStyle;
+  legendContainer?: IStyle;
 }

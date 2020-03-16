@@ -41,8 +41,8 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
             // opacity: 1
           },
           line: {
-            opacity: 0.6, // need to change later
-            width: '3px'
+            opacity: 0.3,
+            width: '1px'
           },
           path: {
             display: 'none'
@@ -62,8 +62,8 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
             opacity: 1
           },
           line: {
-            opacity: 0.4,
-            width: '2px'
+            opacity: 0.2,
+            width: '1px'
           },
           path: {
             display: 'none'
@@ -116,7 +116,8 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
     },
 
     legendContainer: {
-      marginTop: '8px'
+      marginTop: '8px',
+      marginLeft: '35px'
     },
 
     xAxisText: []

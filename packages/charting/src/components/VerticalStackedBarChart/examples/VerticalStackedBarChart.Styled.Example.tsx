@@ -3,23 +3,17 @@ import { VerticalStackedBarChart } from '../VerticalStackedBarChart';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { DefaultPalette, DefaultFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
-import { IVerticalStackedBarChartProps } from '@uifabric/charting/lib/VerticalStackedBarChart';
-
-export class VerticalStackedBarChartBasicExample extends React.Component<IVerticalStackedBarChartProps, {}> {
-  constructor(props: IVerticalStackedBarChartProps) {
-    super(props);
-  }
-
+export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 50, color: DefaultPalette.blueLight }
+      { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight }
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
-      { legend: 'Metadata2', data: 30, color: DefaultPalette.blueMid },
+      { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
       { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight }
     ];
 
