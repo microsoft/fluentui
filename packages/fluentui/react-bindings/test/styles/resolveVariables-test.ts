@@ -77,11 +77,15 @@ describe('resolveVariables', () => {
     });
 
     test('handles multiple displayNames', () => {
-      const fooVariables = jest.fn().mockReturnValue({ backgroundColor: 'blue' });
-      const barVariables = jest.fn().mockReturnValue({ color: 'red' });
+      const fooVariables = jest.fn().mockReturnValue({ backgroundColor: 'blue', borderColor: 'black' });
+      const barVariables = jest.fn().mockReturnValue({ backgroundColor: 'green', color: 'red' });
       const theme = createTheme({ Foo: fooVariables, Bar: barVariables });
 
-      expect(resolveVariables(['Foo', 'Bar'], theme, {}, true)).toMatchObject({ backgroundColor: 'blue', color: 'red' });
+      expect(resolveVariables(['Foo', 'Bar'], theme, {}, true)).toMatchObject({
+        backgroundColor: 'blue',
+        borderColor: 'black',
+        color: 'red'
+      });
 
       // Runs to check cache
       _.times(3, () => resolveVariables(['Foo', 'Bar'], theme, {}, true));
