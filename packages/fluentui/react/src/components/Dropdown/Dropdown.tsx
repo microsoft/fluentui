@@ -26,7 +26,6 @@ import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelec
 import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
 import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import ListItem, { ListItemProps } from '../List/ListItem';
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
@@ -127,7 +126,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   loading?: boolean;
 
   /** A message to be displayed in the list when the dropdown is loading. */
-  loadingMessage?: ShorthandValue<ListItemProps>;
+  loadingMessage?: ShorthandValue<DropdownItemProps>;
 
   /** When selecting an element with Tab, focus stays on the dropdown by default. If true, the focus will jump to next/previous element in DOM. Only available to multiple selection dropdowns. */
   moveFocusOnTab?: boolean;
@@ -136,7 +135,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   multiple?: boolean;
 
   /** A message to be displayed in the list when the dropdown has no items. */
-  noResultsMessage?: ShorthandValue<ListItemProps>;
+  noResultsMessage?: ShorthandValue<DropdownItemProps>;
 
   /**
    * Called when the dropdown's selected items index change.
@@ -699,21 +698,25 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return [
       ...items,
-      loading &&
-        ListItem.create(loadingMessage, {
-          defaultProps: () => ({
-            key: 'loading-message',
-            styles: styles.loadingMessage
+      loading && {
+        children: () =>
+          DropdownItem.create(loadingMessage, {
+            defaultProps: () => ({
+              key: 'loading-message',
+              styles: styles.loadingMessage
+            })
           })
-        }),
+      },
       !loading &&
-        items.length === 0 &&
-        ListItem.create(noResultsMessage, {
-          defaultProps: () => ({
-            key: 'no-results-message',
-            styles: styles.noResultsMessage
-          })
-        })
+        items.length === 0 && {
+          children: () =>
+            DropdownItem.create(noResultsMessage, {
+              defaultProps: () => ({
+                key: 'no-results-message',
+                styles: styles.noResultsMessage
+              })
+            })
+        }
     ];
   }
 
