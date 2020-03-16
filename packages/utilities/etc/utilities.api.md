@@ -581,6 +581,9 @@ export const imgProperties: string[];
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
+// @public @deprecated
+export function initializeFocusRects(window?: Window): void;
+
 // @public
 export const inputProperties: string[];
 

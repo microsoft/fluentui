@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './ColorsPage.global.scss';
 
+import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import { CodepenComponent } from '@uifabric/example-app-base';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
@@ -43,9 +44,12 @@ const codepenSamples =
 
 export class ColorsPage extends React.Component<{}, IColorsPageState> {
   private _semanticSlotColorChangeTimeout: number;
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
+
+    this._async = new Async(this);
 
     const themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
@@ -70,6 +74,8 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
 
     // and apply the default theme to overwrite any existing custom theme
     loadTheme({});
+
+    this._async.dispose();
   }
 
   public render(): JSX.Element {

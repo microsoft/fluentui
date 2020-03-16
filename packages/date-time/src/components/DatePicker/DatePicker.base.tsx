@@ -91,6 +91,7 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
   constructor(props: IDatePickerProps) {
     super(props);
 
+    this._async = new Async(this);
     initializeComponentRef(this);
 
     this.state = this._getDefaultState();

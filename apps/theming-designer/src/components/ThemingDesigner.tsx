@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AccessibilityChecker } from './AccessibilityChecker';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { BaseSlots, IThemeRules, FabricSlots, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ThemeSlots } from './ThemeSlots';

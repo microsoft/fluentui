@@ -13,7 +13,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { BaseComponent, css, getRTL, classNamesFunction, KeyCodes, format, initializeComponentRef } from '@uifabric/utilities';
+import { css, getRTL, classNamesFunction, KeyCodes, format, initializeComponentRef } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 
