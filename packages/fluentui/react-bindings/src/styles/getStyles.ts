@@ -32,7 +32,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   // conditionally add sources for evaluating debug information to component
   if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
     options.saveDebug({
-      componentName: options.displayNames[0],
+      componentName: options.displayNames.join(':'),
       componentVariables: _.filter(resolvedVariables._debug, variables => !_.isEmpty(variables.resolved)),
       componentStyles: resolvedStylesDebug,
       siteVariables: _.filter(options.theme.siteVariables._debug, siteVars => {
