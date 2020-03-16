@@ -4,7 +4,7 @@ import {
   ComponentVariablesObject,
   mergeComponentVariables,
   ThemePrepared,
-  withDebugId
+  withDebugId,
 } from '@fluentui/styles';
 
 const variablesCache = new WeakMap<ThemePrepared, Record<string, ComponentVariablesObject>>();
@@ -13,7 +13,7 @@ const resolveVariables = (
   displayNames: string[],
   theme: ThemePrepared,
   variables: ComponentVariablesInput | undefined,
-  enabledVariablesCaching: boolean | undefined
+  enabledVariablesCaching: boolean | undefined,
 ): ComponentVariablesObject => {
   let componentThemeVariables: ComponentVariablesObject;
 
@@ -56,7 +56,10 @@ const resolveVariables = (
     return componentThemeVariables;
   }
 
-  return mergeComponentVariables(componentThemeVariables, withDebugId(variables, 'props.variables'))(theme.siteVariables);
+  return mergeComponentVariables(
+    componentThemeVariables,
+    withDebugId(variables, 'props.variables'),
+  )(theme.siteVariables);
 };
 
 export default resolveVariables;

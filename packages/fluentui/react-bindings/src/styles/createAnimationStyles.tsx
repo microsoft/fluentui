@@ -10,9 +10,17 @@ const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePr
   if (animation) {
     const animationName = typeof animation === 'string' ? animation : animation.name;
     if (animations[animationName]) {
-      const { keyframe, duration, delay, direction, fillMode, iterationCount, playState, timingFunction, keyframeParams } = animations[
-        animationName
-      ];
+      const {
+        keyframe,
+        duration,
+        delay,
+        direction,
+        fillMode,
+        iterationCount,
+        playState,
+        timingFunction,
+        keyframeParams,
+      } = animations[animationName];
 
       const animationThemeKeyframeParams = keyframeParams || {};
       const animationPropKeyframeParams = (animation as any).keyframeParams;
@@ -33,7 +41,7 @@ const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePr
           animationFillMode: fillMode,
           animationIterationCount: iterationCount,
           animationPlayState: playState,
-          animationTimingFunction: timingFunction
+          animationTimingFunction: timingFunction,
         };
       } else {
         animationCSSProp = {
@@ -44,7 +52,7 @@ const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePr
           animationFillMode: animation.fillMode || fillMode,
           animationIterationCount: animation.iterationCount || iterationCount,
           animationPlayState: animation.playState || playState,
-          animationTimingFunction: animation.timingFunction || timingFunction
+          animationTimingFunction: animation.timingFunction || timingFunction,
         };
       }
     } else {
@@ -62,12 +70,12 @@ const createAnimationStyles = (animation: ComponentAnimationProp, theme: ThemePr
           ...(animation.duration && { animationDuration: animation.duration }),
           ...(animation.fillMode && { animationFillMode: animation.fillMode }),
           ...(animation.iterationCount && {
-            animationIterationCount: animation.iterationCount
+            animationIterationCount: animation.iterationCount,
           }),
           ...(animation.playState && { animationPlayState: animation.playState }),
           ...(animation.timingFunction && {
-            animationTimingFunction: animation.timingFunction
-          })
+            animationTimingFunction: animation.timingFunction,
+          }),
         };
       }
     }

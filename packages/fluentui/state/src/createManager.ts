@@ -1,6 +1,8 @@
 import { AnyActions, EnhancedAction, Manager, ManagerConfig } from './types';
 
-const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<State, Actions>): Manager<State, Actions> => {
+const createManager = <State, Actions extends AnyActions>(
+  config: ManagerConfig<State, Actions>,
+): Manager<State, Actions> => {
   const { actions, debug, middleware = [], sideEffects = [], state } = config;
   const _state: State = Object.assign({}, state) as State;
 
@@ -11,7 +13,7 @@ const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<
     actions: {} as Actions,
     get state() {
       return getState();
-    }
+    },
   };
 
   // assign actions to manager's api
@@ -47,7 +49,7 @@ const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<
         if (debug) {
           console.log(`manager MIDDLEWARE[${index}]`, {
             prev: prevState,
-            next: getState()
+            next: getState(),
           });
         }
       }

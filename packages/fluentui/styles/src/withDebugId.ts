@@ -14,7 +14,7 @@ const withDebugId =
             Object.defineProperty(copy, '_debugId', {
               value: debugId,
               writable: false,
-              enumerable: false
+              enumerable: false,
             });
             return copy;
           }

@@ -10,7 +10,7 @@ const handleRef = <N>(ref: React.Ref<N> | undefined, node: N) => {
   if (process.env.NODE_ENV !== 'production') {
     if (typeof ref === 'string') {
       throw new Error(
-        'We do not support refs as string, this is a legacy API and will be likely to be removed in one of the future releases of React.'
+        'We do not support refs as string, this is a legacy API and will be likely to be removed in one of the future releases of React.',
       );
     }
   }
