@@ -22,8 +22,8 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
   const { fail, markdown } = dangerJS;
   const allFailedVersionConstraints: FailedConstraintsExplanation[] = [];
 
-  const dependencyPackageIds = getRuntimeDependencies('react');
-  const versionConstraints = await getVersionConstrains(paths.packages('react', 'package.json'));
+  const dependencyPackageIds = getRuntimeDependencies('react-experimental');
+  const versionConstraints = await getVersionConstrains(paths.packages('react-experimental', 'package.json'));
 
   dependencyPackageIds.forEach(packageId => {
     const failedPackageVersionConstraints = getFailedPackageVersionConstraints(
