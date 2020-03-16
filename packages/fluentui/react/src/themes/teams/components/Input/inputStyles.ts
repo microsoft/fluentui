@@ -42,6 +42,15 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
       opacity: 1 // undo Firefox default opacity
     },
 
+    // Overrides for "disabled" inputs
+    ...(p.disabled && {
+      color: v.colorDisabled,
+      boxShadow: 'none',
+      '::placeholder': {
+        color: v.colorDisabled
+      }
+    }),
+
     ':focus': {
       borderColor: v.inputFocusBorderColor
     },

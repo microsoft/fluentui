@@ -181,7 +181,8 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     ...(p.disabled && {
-      cursor: 'default'
+      cursor: 'default',
+      fill: v.disabledColor
     }),
     userSelect: 'none',
 

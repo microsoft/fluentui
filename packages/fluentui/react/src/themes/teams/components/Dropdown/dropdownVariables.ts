@@ -9,6 +9,7 @@ export interface DropdownVariables {
   borderColorHover: string;
   borderWidth: string;
   containerBorderRadius: string;
+  disabledColor: string;
   openAboveContainerBorderRadius: string;
   openBelowContainerBorderRadius: string;
   searchBorderBottomWidth: string;
@@ -60,6 +61,7 @@ export default (siteVars): DropdownVariables => ({
   borderColorHover: undefined,
   borderWidth: '0px',
   containerBorderRadius: `${cornerRadius}`,
+  disabledColor: siteVars.colors.grey[250],
   openAboveContainerBorderRadius: `0 0 ${cornerRadius} ${cornerRadius}`,
   openBelowContainerBorderRadius: `${cornerRadius} ${cornerRadius} 0 0`,
   searchBorderBottomWidth: pxToRem(2),
