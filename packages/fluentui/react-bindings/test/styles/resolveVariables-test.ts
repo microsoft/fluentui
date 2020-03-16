@@ -82,7 +82,7 @@ describe('resolveVariables', () => {
       const theme = createTheme({ Foo: fooVariables, Bar: barVariables });
 
       expect(resolveVariables(['Foo', 'Bar'], theme, {}, true)).toMatchObject({
-        backgroundColor: 'blue',
+        backgroundColor: 'green',
         borderColor: 'black',
         color: 'red'
       });
