@@ -37,8 +37,6 @@ const resolveVariables = (
     const handlingDisplayName = effectiveDisplayNames[effectiveDisplayNames.length - 1];
 
     if (!variablesThemeCache[handlingDisplayName]) {
-      effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]);
-
       variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
         ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName])
       )(theme.siteVariables);
