@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, divProperties, getNativeProps, getRTL } from '../../Utilities';
+import { Async, EventGroup, classNamesFunction, divProperties, getNativeProps, getRTL, initializeComponentRef } from '../../Utilities';
 import {
   IScrollablePane,
   IScrollablePaneContext,
@@ -19,7 +19,7 @@ export interface IScrollablePaneState {
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
-export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
+export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -28,11 +28,17 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _stickies: Set<Sticky>;
   private _mutationObserver: MutationObserver;
   private _notifyThrottled: () => void;
+  private _async: Async;
+  private _events: EventGroup;
 
   constructor(props: IScrollablePaneProps) {
     super(props);
     this._subscribers = new Set<Function>();
     this._stickies = new Set<Sticky>();
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
 
     this.state = {
       stickyTopHeight: 0,
@@ -128,8 +134,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public componentWillUnmount() {
-    this._events.off(this.contentContainer);
-    this._events.off(window);
+    this._events.dispose();
+    this._async.dispose();
 
     if (this._mutationObserver) {
       this._mutationObserver.disconnect();

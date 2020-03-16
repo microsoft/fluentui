@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, IRefObject, findIndex, find } from '../../Utilities';
+import {
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  format,
+  IRefObject,
+  findIndex,
+  find,
+  initializeComponentRef
+} from '../../Utilities';
 import { ICalendarStrings, ICalendarIconStrings, ICalendarFormatDateCallbacks } from './Calendar.types';
 import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateValues/DateValues';
 import { FocusZone } from '../../FocusZone';
@@ -19,6 +30,7 @@ import {
 } from '../../utilities/dateMath/DateMath';
 
 import * as stylesImport from './Calendar.scss';
+
 const styles: any = stylesImport;
 
 const DAYS_IN_WEEK = 7;
@@ -73,12 +85,14 @@ interface IWeekCorners {
   [key: string]: string;
 }
 
-export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDayState> {
+export class CalendarDay extends React.Component<ICalendarDayProps, ICalendarDayState> {
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
 
   public constructor(props: ICalendarDayProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this.state = {
       activeDescendantId: getId('DatePickerDay-active'),

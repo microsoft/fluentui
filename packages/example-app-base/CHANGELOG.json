@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "new blog announcement, support jsx in message bar, move hig link",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "59f0c66f540deefe7a108a4be8e2760d16e2dc56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2020 12:35:00 GMT",
       "tag": "@uifabric/example-app-base_v7.12.17",
       "version": "7.12.17",

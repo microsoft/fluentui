@@ -1,6 +1,4 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-
 import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
@@ -22,6 +20,7 @@ import { TeachingBubbleBasicExample } from '../../components/TeachingBubble/exam
 import { TextFieldBasicExample } from '../TextField/examples/TextField.Basic.Example';
 import { ToggleBasicExample } from '../../components/Toggle/examples/Toggle.Basic.Example';
 import { ProgressIndicatorBasicExample } from '../ProgressIndicator/examples/ProgressIndicator.Basic.Example';
+import { Async } from '@uifabric/utilities';
 
 export interface IThemeGeneratorPageState {
   themeRules: IThemeRules;
@@ -30,12 +29,14 @@ export interface IThemeGeneratorPageState {
   colorPickerVisible: boolean;
 }
 
-export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageState> {
+export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageState> {
   private _semanticSlotColorChangeTimeout: number;
+  private _async: Async;
 
   constructor(props: {}) {
     super(props);
 
+    this._async = new Async(this);
     const themeRules = themeRulesStandardCreator();
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
@@ -59,6 +60,8 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
 
     // and apply the default theme to overwrite any existing custom theme
     loadTheme({});
+
+    this._async.dispose();
   }
 
   public render(): JSX.Element {

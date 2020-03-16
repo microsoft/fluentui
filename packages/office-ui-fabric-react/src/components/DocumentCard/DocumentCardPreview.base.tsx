@@ -3,7 +3,7 @@ import { Icon } from '../../Icon';
 import { Image } from '../../Image';
 import { Link } from '../../Link';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, css } from '../../Utilities';
+import { classNamesFunction, css, initializeComponentRef } from '../../Utilities';
 import {
   IDocumentCardPreviewImage,
   IDocumentCardPreviewProps,
@@ -17,8 +17,14 @@ const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocume
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewProps, any> {
+export class DocumentCardPreviewBase extends React.Component<IDocumentCardPreviewProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardPreviewStyles>;
+
+  constructor(props: IDocumentCardPreviewProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { previewImages, styles, theme, className } = this.props;

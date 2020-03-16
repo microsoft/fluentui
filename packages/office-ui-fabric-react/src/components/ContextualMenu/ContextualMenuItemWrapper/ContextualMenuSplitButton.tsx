@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps, KeyCodes, mergeAriaAttributeValues, memoizeFunction } from '../../../Utilities';
+import {
+  buttonProperties,
+  getNativeProps,
+  KeyCodes,
+  mergeAriaAttributeValues,
+  memoizeFunction,
+  Async,
+  EventGroup
+} from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IContextualMenuItem } from '../ContextualMenu.types';
 import { IMenuItemClassNames, getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
@@ -8,6 +16,7 @@ import { isItemDisabled, hasSubmenu, getMenuItemAriaRole } from '../../../utilit
 import { VerticalDivider } from '../../../Divider';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { IKeytipProps } from '../../Keytip/Keytip.types';
+import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
 
 export interface IContextualMenuSplitButtonState {}
 
@@ -18,6 +27,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
   private _lastTouchTimeoutId: number | undefined;
   private _processingTouch: boolean;
 
+  private _async: Async;
+  private _events: EventGroup;
+
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
       ...keytipProps,
@@ -25,10 +37,22 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     };
   });
 
+  constructor(props: IContextualMenuItemWrapperProps) {
+    super(props);
+
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+  }
+
   public componentDidMount() {
     if (this._splitButton && 'onpointerdown' in this._splitButton) {
       this._events.on(this._splitButton, 'pointerdown', this._onPointerDown, true);
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {

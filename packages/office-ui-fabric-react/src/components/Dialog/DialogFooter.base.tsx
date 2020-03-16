@@ -1,12 +1,18 @@
 import * as React from 'react';
 import { IDialogFooterProps, IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDialogFooterStyleProps, IDialogFooterStyles>();
 
-export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
+export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
   private _classNames: IProcessedStyleSet<IDialogFooterStyles>;
+
+  constructor(props: IDialogFooterProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { className, styles, theme } = this.props;

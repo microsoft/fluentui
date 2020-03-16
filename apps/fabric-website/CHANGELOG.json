@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.5",
+      "version": "7.10.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "new blog announcement, support jsx in message bar, move hig link",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "59f0c66f540deefe7a108a4be8e2760d16e2dc56"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2020 12:35:00 GMT",
       "tag": "@uifabric/fabric-website_v7.10.4",
       "version": "7.10.4",

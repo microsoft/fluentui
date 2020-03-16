@@ -1,8 +1,9 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { Async, EventGroup, classNamesFunction } from '../../Utilities';
 import { IDocumentCardTitleProps, IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
 import { IProcessedStyleSet } from '../../Styling';
+import { initializeComponentRef } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
@@ -24,15 +25,22 @@ const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
+export class DocumentCardTitleBase extends React.Component<IDocumentCardTitleProps, IDocumentCardTitleState> {
   private _titleElement = React.createRef<HTMLDivElement>();
   private _measureTitleElement = React.createRef<HTMLDivElement>();
 
   private _titleTruncationTimer: number;
   private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
 
+  private _async: Async;
+  private _events: EventGroup;
+
   constructor(props: IDocumentCardTitleProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
 
     this.state = {
       truncatedTitleFirstPiece: '',
@@ -70,7 +78,8 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
   }
 
   public componentWillUnmount(): void {
-    this._events.off(window, 'resize', this._updateTruncation);
+    this._events.dispose();
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
