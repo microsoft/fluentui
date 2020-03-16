@@ -31,10 +31,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix passing down `variables` in `ToolbarMenuItem` @layershifter ([#12204](https://github.com/OfficeDev/office-ui-fabric-react/pull/12204))
 - Fix `ToolbarMenuItem` shouldn't focus menu trigger element after 'onClick' was executed on menu item @kolaps33 ([#12266](https://github.com/OfficeDev/office-ui-fabric-react/pull/12266))
 - `Carousel` accessibility fixes @kolaps33 ([#12050](https://github.com/OfficeDev/office-ui-fabric-react/pull/12050))
+- Fix different styles between children and shorthand API in `Button` component @mnajdova ([#12292](https://github.com/OfficeDev/office-ui-fabric-react/pull/12292))
+- Fix change handler typings of `Dropdown` to relect that we are passing `null` for event @silviuavram ([#12280](https://github.com/OfficeDev/office-ui-fabric-react/pull/12280))
 
 ### Features
 - Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
 - Add `square` prop on the `Avatar` component @mnajdova ([#12277](https://github.com/OfficeDev/office-ui-fabric-react/pull/12277))
+- Adding `raise hand`, `raise hand colored`, `raise hand disabled`, `merge calls`, `share location`, `panorama` and `spotlight` icons @TanelVari ([#12212](https://github.com/OfficeDev/office-ui-fabric-react/pull/12212))
+- Expose `contentWrapper` shorthand from `AccordionTitle` @silviuavram ([#12265](https://github.com/OfficeDev/office-ui-fabric-react/pull/12265))
 
 ### Documentation
 - Adding context menu for table row to example and prototype @kolaps33 ([#12253](https://github.com/OfficeDev/office-ui-fabric-react/pull/12253))

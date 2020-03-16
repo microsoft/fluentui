@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { TeachingBubbleContent } from './TeachingBubbleContent';
 import {
   ITeachingBubbleProps,
@@ -16,7 +16,7 @@ export interface ITeachingBubbleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
   public static defaultProps = {
     /**
      * Default calloutProps is deprecated in favor of private `_defaultCalloutProps`.
@@ -39,6 +39,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
   constructor(props: ITeachingBubbleProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {};
 
     this._defaultCalloutProps = {

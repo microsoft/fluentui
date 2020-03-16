@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as styles from './Layer.Example.scss';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
-import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
+import { css, Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
@@ -15,10 +15,12 @@ interface ILayerContentExampleState {
   time: string;
 }
 
-class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
+class LayerContentExample extends React.Component<{}, ILayerContentExampleState> {
   public state = {
     time: new Date().toLocaleTimeString()
   };
+
+  private _async = new Async(this);
 
   public componentDidMount() {
     this._async.setInterval(() => {
@@ -26,6 +28,10 @@ class LayerContentExample extends BaseComponent<{}, ILayerContentExampleState> {
         time: new Date().toLocaleTimeString()
       });
     }, 1000);
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render() {
@@ -46,7 +52,7 @@ interface ILayerBasicExampleState {
   showLayer: boolean;
 }
 
-export class LayerBasicExample extends BaseComponent<{}, ILayerBasicExampleState> {
+export class LayerBasicExample extends React.Component<{}, ILayerBasicExampleState> {
   public state = {
     showLayer: false
   };

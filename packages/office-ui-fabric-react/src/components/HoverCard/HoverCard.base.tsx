@@ -1,6 +1,16 @@
 import * as React from 'react';
 
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction } from '../../Utilities';
+import {
+  divProperties,
+  getNativeProps,
+  getId,
+  KeyCodes,
+  getDocument,
+  classNamesFunction,
+  initializeComponentRef,
+  EventGroup,
+  Async
+} from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
@@ -15,7 +25,7 @@ export interface IHoverCardState {
   openMode?: OpenCardMode;
 }
 
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
+export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardState> implements IHoverCard {
   public static defaultProps = {
     cardOpenDelay: 500,
     cardDismissDelay: 100,
@@ -37,9 +47,16 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
   private _classNames: { [key in keyof IHoverCardStyles]: string };
 
+  private _async: Async;
+  private _events: EventGroup;
+
   // Constructor
   constructor(props: IHoverCardProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
 
     this._nativeDismissEvent = this._cardDismiss.bind(this, true);
     this._childDismissEvent = this._cardDismiss.bind(this, false);
@@ -53,6 +70,11 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
   public componentDidMount(): void {
     this._setEventListeners();
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState) {

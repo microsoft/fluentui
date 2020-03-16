@@ -3,7 +3,9 @@ import { Button, Flex, Icon } from '@fluentui/react';
 
 const ButtonExampleCircular = () => (
   <Flex gap="gap.smaller">
-    <Button circular>C</Button>
+    <Button circular>
+      <Button.Content>C</Button.Content>
+    </Button>
     <Button circular icon title="Emoji">
       <Icon name="emoji" xSpacing="none" />
     </Button>

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Mar 2020 12:30:22 GMT and should not be manually modified.
 
+## 7.10.5
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Patches
+
+- new blog announcement, support jsx in message bar, move hig link (mgodbolt@microsoft.com)
 ## 7.10.4
 Thu, 12 Mar 2020 12:35:00 GMT
 

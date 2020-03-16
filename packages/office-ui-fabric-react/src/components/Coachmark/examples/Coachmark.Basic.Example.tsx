@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   classNamesFunction,
   Coachmark,
   DefaultButton,
@@ -35,7 +34,7 @@ export interface ICoachmarkBasicExampleStyles {
   dropdownContainer: IStyle;
 }
 
-export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExampleState> {
+export class CoachmarkBasicExample extends React.Component<{}, ICoachmarkBasicExampleState> {
   private _targetButton = React.createRef<HTMLDivElement>();
 
   public constructor(props: {}) {

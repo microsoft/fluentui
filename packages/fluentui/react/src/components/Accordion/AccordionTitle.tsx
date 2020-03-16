@@ -4,7 +4,6 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import cx from 'classnames';
 
 import {
   childrenExist,
@@ -34,6 +33,9 @@ export interface AccordionTitleProps extends UIComponentProps, ContentComponentP
 
   /** If at least one panel needs to stay active and this title does not correspond to the last active one. */
   canBeCollapsed?: boolean;
+
+  /** Shorthand for the content wrapper element. */
+  contentWrapper?: ShorthandValue<BoxProps>;
 
   /** An accordion title can show it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -77,6 +79,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     accordionContentId: PropTypes.string,
     active: PropTypes.bool,
     contentRef: customPropTypes.ref,
+    contentWrapper: customPropTypes.wrapperShorthand,
     canBeCollapsed: PropTypes.bool,
     disabled: PropTypes.bool,
     index: PropTypes.number,
@@ -88,7 +91,8 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     accessibility: accordionTitleBehavior,
     as: 'dt',
     contentRef: _.noop,
-    indicator: {}
+    indicator: {},
+    contentWrapper: {}
   };
 
   actionHandlers = {
@@ -109,31 +113,49 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     _.invoke(this.props, 'onFocus', e, this.props);
   };
 
-  renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
-    const { contentRef, children, content, indicator } = this.props;
+  handleWrapperOverrides = predefinedProps => ({
+    onFocus: (e: React.FocusEvent) => {
+      this.handleFocus(e);
+      _.invoke(predefinedProps, 'onFocus', e, this.props);
+    },
+    onClick: (e: React.MouseEvent) => {
+      this.handleClick(e);
+      _.invoke(predefinedProps, 'onClick', e, this.props);
+    }
+  });
 
-    const contentElement = (
+  renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
+    const { contentRef, children, content, indicator, contentWrapper } = this.props;
+
+    const contentWrapperElement = (
       <Ref innerRef={contentRef}>
-        <div
-          onFocus={this.handleFocus}
-          onClick={this.handleClick}
-          className={cx(AccordionTitle.slotClassNames.contentWrapper, classes.contentWrapper)}
-          {...accessibility.attributes.content}
-          {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)}
-        >
-          {Box.create(indicator, {
-            defaultProps: () => ({
-              styles: styles.indicator,
-              accessibility: indicatorBehavior
-            })
-          })}
-          {Box.create(content, {
-            defaultProps: () => ({
-              as: 'span',
-              styles: styles.content
-            })
-          })}
-        </div>
+        {Box.create(contentWrapper, {
+          defaultProps: () => ({
+            className: AccordionTitle.slotClassNames.contentWrapper,
+            styles: styles.contentWrapper,
+            ...accessibility.attributes.content,
+            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)
+          }),
+          overrideProps: predefinedProps => ({
+            children: (
+              <>
+                {Box.create(indicator, {
+                  defaultProps: () => ({
+                    styles: styles.indicator,
+                    accessibility: indicatorBehavior
+                  })
+                })}
+                {Box.create(content, {
+                  defaultProps: () => ({
+                    as: 'span',
+                    styles: styles.content
+                  })
+                })}
+              </>
+            ),
+            ...this.handleWrapperOverrides(predefinedProps)
+          })
+        })}
       </Ref>
     );
 
@@ -145,7 +167,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
         {...unhandledProps}
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
       >
-        {childrenExist(children) ? children : contentElement}
+        {childrenExist(children) ? children : contentWrapperElement}
       </ElementType>
     );
   }

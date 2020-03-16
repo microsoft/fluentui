@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { IDocumentCardStatusProps, IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
 import { Icon } from '../../Icon';
 import { IProcessedStyleSet } from '../../Styling';
@@ -10,8 +10,14 @@ const getClassNames = classNamesFunction<IDocumentCardStatusStyleProps, IDocumen
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardStatusBase extends BaseComponent<IDocumentCardStatusProps, any> {
+export class DocumentCardStatusBase extends React.Component<IDocumentCardStatusProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardStatusStyles>;
+
+  constructor(props: IDocumentCardStatusProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { statusIcon, status, styles, theme, className } = this.props;

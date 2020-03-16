@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, elementContains, getId, classNamesFunction, styled } from '../../Utilities';
+import { Async, KeyCodes, css, elementContains, getId, classNamesFunction, styled, initializeComponentRef } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
@@ -60,7 +60,7 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
 /**
  * {@docCategory Pickers}
  */
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
@@ -79,9 +79,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _requestSuggestionsOnClick = false;
+  private _async: Async;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
 
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
@@ -152,10 +156,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   public componentWillUnmount(): void {
-    super.componentWillUnmount();
     if (this.currentPromise) {
       this.currentPromise = undefined;
     }
+    this._async.dispose();
   }
 
   public focus() {
@@ -904,13 +908,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return areSuggestionsVisible;
   }
 
-  private _onResolveSuggestions(updatedValue: string): void {
+  private _onResolveSuggestions = (updatedValue: string): void => {
     const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
 
     if (suggestions !== null) {
       this.updateSuggestionsList(suggestions, updatedValue);
     }
-  }
+  };
 
   private _completeGenericSuggestion = (): void => {
     if (

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { findDOMNode } from 'react-dom';
 import { BaseDecorator } from './BaseDecorator';
-import { getWindow, hoistStatics } from '../../Utilities';
+import { getWindow, hoistStatics, EventGroup } from '../../Utilities';
 
 export interface IWithResponsiveModeState {
   responsiveMode?: ResponsiveMode;
@@ -54,8 +54,11 @@ export function withResponsiveMode<TProps extends { responsiveMode?: ResponsiveM
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
 ): any {
   const resultClass = class WithResponsiveMode extends BaseDecorator<TProps, IWithResponsiveModeState> {
+    private _events: EventGroup;
+
     constructor(props: TProps) {
       super(props);
+      this._events = new EventGroup(this);
       this._updateComposedComponentRef = this._updateComposedComponentRef.bind(this);
 
       this.state = {

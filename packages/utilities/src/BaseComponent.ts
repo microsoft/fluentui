@@ -7,7 +7,6 @@ import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequired
 import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
 import { warnDeprecations } from './warn/warnDeprecations';
 import { initializeFocusRects } from './initializeFocusRects';
-import { initializeDir } from './initializeDir';
 import { IRefObject } from './createRef';
 import { IBaseProps } from './BaseComponent.types';
 
@@ -51,7 +50,6 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     // Ensure basic assumptions about the environment.
     // tslint:disable-next-line:deprecation
     initializeFocusRects();
-    initializeDir();
 
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentDidMount',

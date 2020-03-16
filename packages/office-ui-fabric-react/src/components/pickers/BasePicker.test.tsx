@@ -86,6 +86,7 @@ describe('BasePicker', () => {
   });
 
   it('can provide custom renderers', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -104,6 +105,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -118,6 +120,7 @@ describe('BasePicker', () => {
   });
 
   it('can select generic items.', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -148,6 +151,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -162,6 +166,7 @@ describe('BasePicker', () => {
   });
 
   it('has force suggestions button', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -198,6 +203,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -211,7 +217,8 @@ describe('BasePicker', () => {
     expect(currentPicker![0].name).toEqual('asdff');
   });
 
-  it('can will not render input when items reach itemLimit', () => {
+  it('will not render input when items reach itemLimit', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -231,6 +238,7 @@ describe('BasePicker', () => {
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     ReactTestUtils.Simulate.click(suggestionOptions[0]);

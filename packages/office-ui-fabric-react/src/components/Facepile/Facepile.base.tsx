@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, buttonProperties, classNamesFunction, getId, getNativeProps } from '../../Utilities';
+import { buttonProperties, classNamesFunction, getId, getNativeProps, initializeComponentRef } from '../../Utilities';
 import { IFacepileProps, IFacepilePersona, IFacepileStyleProps, IFacepileStyles, OverflowButtonType } from './Facepile.types';
 import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
@@ -13,7 +13,7 @@ const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>()
  * FacePile with no default styles.
  * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
  */
-export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
+export class FacepileBase extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
@@ -31,6 +31,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   constructor(props: IFacepileProps) {
     super(props);
 
+    initializeComponentRef(this);
     this._ariaDescriptionId = getId();
   }
 

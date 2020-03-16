@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Icon } from '../../Icon';
 import { Image } from '../../Image';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { IDocumentCardImageProps, IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
 
 export interface IDocumentCardImageState {
@@ -14,11 +14,13 @@ const getClassNames = classNamesFunction<IDocumentCardImageStyleProps, IDocument
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardImageBase extends BaseComponent<IDocumentCardImageProps, IDocumentCardImageState> {
+export class DocumentCardImageBase extends React.Component<IDocumentCardImageProps, IDocumentCardImageState> {
   private _classNames: IProcessedStyleSet<IDocumentCardImageStyles>;
 
   constructor(props: IDocumentCardImageProps) {
     super(props);
+
+    initializeComponentRef(this);
     this.state = { imageHasLoaded: false };
   }
 
