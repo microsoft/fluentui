@@ -4,14 +4,15 @@ import { SharePointNeutrals, SharePointThemes } from './sharePointThemes';
 
 export class SharePoint extends React.Component<{}, { activeThemeName?: string }> {
   public readonly state = {
-    activeThemeName: null
+    activeThemeName: null,
   };
 
   public render() {
     const { activeThemeName } = this.state;
     const activeThemeData = SharePointThemes.filter(theme => theme.name === activeThemeName)[0];
     const activeThemeColors = activeThemeData && activeThemeData.colors;
-    const activeNeutralData = activeThemeData && SharePointNeutrals.filter(theme => theme.background === activeThemeData.background)[0];
+    const activeNeutralData =
+      activeThemeData && SharePointNeutrals.filter(theme => theme.background === activeThemeData.background)[0];
     const activeNeutralColors = activeNeutralData && activeNeutralData.colors;
 
     return (
@@ -23,7 +24,7 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
           colors={SharePointThemes.map(theme => ({
             name: theme.name,
             hex: theme.colors.filter(color => color.name === 'themePrimary')[0].hex,
-            code: theme.colors.filter(color => color.name === 'themePrimary')[0].code
+            code: theme.colors.filter(color => color.name === 'themePrimary')[0].code,
           }))}
           // tslint:disable-next-line jsx-no-lambda
           onColorSelected={this._changeTheme}
@@ -46,8 +47,8 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
     this.setState(
       prevState =>
         prevState.activeThemeName !== theme.name && {
-          activeThemeName: theme.name
-        }
+          activeThemeName: theme.name,
+        },
     );
   };
 }

@@ -19,7 +19,7 @@ import {
   TPlatformPages,
   jumpToAnchor,
   removeAnchorLink,
-  SiteMessageBar
+  SiteMessageBar,
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
@@ -46,9 +46,12 @@ export interface ISiteState<TPlatforms extends string = string> {
   activePlatforms: { [topLevelPage: string]: TPlatforms };
 }
 
-export class Site<TPlatforms extends string = string> extends React.Component<ISiteProps<TPlatforms>, ISiteState<TPlatforms>> {
+export class Site<TPlatforms extends string = string> extends React.Component<
+  ISiteProps<TPlatforms>,
+  ISiteState<TPlatforms>
+> {
   public static defaultProps: ISiteProps = {
-    siteDefinition: { ...baseDefinition }
+    siteDefinition: { ...baseDefinition },
   };
 
   private _async: Async;
@@ -90,14 +93,14 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       platform = firstPlatform;
       activePlatforms = {
         ...activePlatforms,
-        [currentPage]: firstPlatform
+        [currentPage]: firstPlatform,
       };
     }
 
     this.state = {
       activePlatforms,
       platform,
-      ...navData
+      ...navData,
     };
   }
 
@@ -143,7 +146,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const { children, siteDefinition } = this.props;
     const { customizations } = siteDefinition;
     const childrenWithPlatform = React.Children.map(children, (child: React.ReactElement<IWithPlatformProps>) =>
-      React.cloneElement(child, { platform })
+      React.cloneElement(child, { platform }),
     );
 
     const SiteContent = () => (
@@ -228,7 +231,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       searchablePageTitle,
       isContentFullBleed,
       hasPlatformPicker,
-      pagePlatforms
+      pagePlatforms,
     };
   }
 
@@ -289,7 +292,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   /**
    * Determines the current page's platform.
    */
-  private _getPlatform = (activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = this.state.activePlatforms): TPlatforms => {
+  private _getPlatform = (
+    activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = this.state.activePlatforms,
+  ): TPlatforms => {
     const currentPage = getSiteArea(this.props.siteDefinition.pages);
 
     if (activePlatforms && activePlatforms[currentPage]) {
@@ -367,7 +372,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       nextPage: target.hash || target.href,
       currentPage: window.location.hash,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
-      currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
+      currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
     });
   };
 
@@ -386,7 +391,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       nextPage: target.hash || target.href,
       currentPage: window.location.hash,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
-      currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
+      currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
     });
   };
 
@@ -401,7 +406,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       topic: getSiteArea(siteDefinition.pages), // @TODO: Remove topic when data is stale.
       currentArea: getSiteArea(siteDefinition.pages),
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
-      currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
+      currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
     });
   };
 
@@ -417,7 +422,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
         currentArea: getSiteArea(siteDefinition.pages),
         platform: platformKey, // @TODO: Remove platform when data is stale.
         currentPlatform: this.state.platform,
-        nextPlatform: platformKey
+        nextPlatform: platformKey,
       });
 
       const { activePlatforms } = this.state;
@@ -428,10 +433,10 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
           platform: platformKey,
           activePlatforms: {
             ...activePlatforms,
-            [currentPage]: platformKey
-          }
+            [currentPage]: platformKey,
+          },
         },
-        this._setActivePlatforms
+        this._setActivePlatforms,
       );
     }
   };
@@ -484,7 +489,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       previousPage: prevPagePath,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
       currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
-      referrer: document.referrer.length ? document.referrer : undefined
+      referrer: document.referrer.length ? document.referrer : undefined,
     });
 
     // @TODO: investigate using history to save a re-render.

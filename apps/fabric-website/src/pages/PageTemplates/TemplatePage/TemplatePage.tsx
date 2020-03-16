@@ -9,7 +9,8 @@ import * as styles from './TemplatePage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 // If you'll have multiple custom sections, define the base url on the remote host
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
+const baseUrl =
+  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/PageTemplates/TemplatePage/';
 
 // You can add additional page props by extending `IPageProps`.
 export interface ITemplatePageProps extends IPageProps<Platforms> {}
@@ -73,7 +74,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateCustom.md') as string
               }
             </Markdown>
-          )
+          ),
         },
 
         // Custom section with JSX content.
@@ -94,13 +95,15 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           ),
 
           // Optionally wrap the section with a className. Use the `css` utility from Fabric to concatenate classNames that may be falsey.
-          className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName')
-        }
+          className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName'),
+        },
       ];
   }
 }
 
 // Use the `PlatformContext.Consumer` component to ensure the platform prop is passed to the page from App correctly using react context.
 export const TemplatePage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <TemplatePageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <TemplatePageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

@@ -13,7 +13,7 @@ export interface ISemanticSlotsProps {
 const slotClassName = mergeStyles({
   display: 'flex',
   alignItems: 'center',
-  overflow: 'auto'
+  overflow: 'auto',
 });
 
 const semanticPaletteColorBox = mergeStyles({
@@ -23,7 +23,7 @@ const semanticPaletteColorBox = mergeStyles({
   left: 5,
   top: 5,
   border: '1px solid black',
-  flexShrink: 0
+  flexShrink: 0,
 });
 
 type IPaletteSlots = {
@@ -101,7 +101,9 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
    */
   function trimSemanticSlotsOrNames(semanticSlots: ISemanticColors): Partial<ISemanticColors>;
   function trimSemanticSlotsOrNames(semanticSlots: Array<string>): Array<string>;
-  function trimSemanticSlotsOrNames(semanticSlots: Array<string> | ISemanticColors): Array<string> | Partial<ISemanticColors> {
+  function trimSemanticSlotsOrNames(
+    semanticSlots: Array<string> | ISemanticColors,
+  ): Array<string> | Partial<ISemanticColors> {
     if (semanticSlots instanceof Array) {
       let trimmedSemanticSlotNames = [];
       for (let i = 0; i < semanticSlots.length; i++) {
@@ -115,7 +117,8 @@ export const SemanticSlots: React.FunctionComponent<ISemanticSlotsProps> = (prop
       let trimmedSemanticSlots: Partial<ISemanticColors> = {};
       for (let semanticColor in semanticSlots) {
         if (isASemanticColor(semanticColor)) {
-          trimmedSemanticSlots[semanticColor as keyof ISemanticColors] = semanticSlots[semanticColor as keyof ISemanticColors];
+          trimmedSemanticSlots[semanticColor as keyof ISemanticColors] =
+            semanticSlots[semanticColor as keyof ISemanticColors];
         }
       }
       return trimmedSemanticSlots;

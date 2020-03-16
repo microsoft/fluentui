@@ -15,11 +15,11 @@ function start(): void {
         items: [
           { key: 'a', name: 'Item a' },
           { key: 'c', name: 'Item b' },
-          { key: 'b', name: 'Item c' }
-        ]
+          { key: 'b', name: 'Item c' },
+        ],
       }}
     />,
-    div
+    div,
   );
 }
 
