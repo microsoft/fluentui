@@ -10,7 +10,6 @@ const providerMergeThemesPerf = () => {
   const resolvedStyles = _.mapValues(merged.componentStyles, (componentStyle, componentName) => {
     const compVariables = _.get(merged.componentVariables, componentName, callable({}))(merged.siteVariables);
     const styleParam: ComponentStyleFunctionParam = {
-      displayNames: [componentName],
       props: {},
       variables: compVariables,
       theme: merged,

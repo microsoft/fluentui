@@ -94,7 +94,6 @@ const resolveStyles = (
   }
 
   const styleParam: ComponentStyleFunctionParam = {
-    displayNames,
     props,
     variables: resolvedVariables,
     theme,
