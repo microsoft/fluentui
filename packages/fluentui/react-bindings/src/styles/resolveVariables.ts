@@ -44,14 +44,12 @@ const resolveVariables = (
     }
 
     componentThemeVariables = variablesThemeCache[handlingDisplayName];
+  } else if (effectiveDisplayNames.length === 1) {
+    componentThemeVariables = callable(theme.componentVariables[effectiveDisplayNames[0]])(theme.siteVariables) || {};
   } else {
-    if (effectiveDisplayNames.length === 1) {
-      componentThemeVariables = callable(theme.componentVariables[effectiveDisplayNames[0]])(theme.siteVariables) || {};
-    } else {
-      componentThemeVariables = mergeComponentVariables(...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]))(
-        theme.siteVariables
-      );
-    }
+    componentThemeVariables = mergeComponentVariables(...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]))(
+      theme.siteVariables
+    );
   }
 
   if (variables === undefined) {
