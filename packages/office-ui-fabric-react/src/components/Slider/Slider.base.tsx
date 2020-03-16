@@ -1,5 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode } from '../../Utilities';
+import {
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  warnMutuallyExclusive,
+  initializeComponentRef,
+  Async,
+  EventGroup,
+  FocusRects
+} from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from '../../Label';
@@ -10,9 +21,10 @@ export interface ISliderState {
 }
 
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
+const COMPONENT_NAME = 'SliderBase';
 export const ONKEYDOWN_TIMEOUT_DURATION = 1000;
 
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
     step: 1,
     min: 0,
@@ -24,6 +36,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     originFromZero: false
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _sliderLine = React.createRef<HTMLDivElement>();
   private _thumb = React.createRef<HTMLSpanElement>();
   private _id: string;
@@ -32,7 +46,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   constructor(props: ISliderProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnMutuallyExclusive(COMPONENT_NAME, this.props, {
       value: 'defaultValue'
     });
 
@@ -44,6 +62,11 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       value: value,
       renderedValue: undefined
     };
+  }
+
+  public componentWillUnmount() {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): React.ReactElement<{}> {
@@ -145,6 +168,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             </Label>
           )}
         </div>
+        <FocusRects />
       </div>
     ) as React.ReactElement<{}>;
   }

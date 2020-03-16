@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { findScrollableParent, getRect, getWindow } from '../../Utilities';
+import { findScrollableParent, getRect, getWindow, Async, EventGroup } from '../../Utilities';
 
 /**
  * Viewport rectangle dimensions.
@@ -54,9 +54,14 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _root = React.createRef<HTMLDivElement>();
     private _resizeAttempts: number;
     private _viewportResizeObserver: any;
+    private _async: Async;
+    private _events: EventGroup;
 
     constructor(props: TProps) {
       super(props);
+
+      this._async = new Async(this);
+      this._events = new EventGroup(this);
       this._resizeAttempts = 0;
 
       this.state = {
@@ -112,6 +117,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentWillUnmount(): void {
       this._events.dispose();
+      this._async.dispose();
       this._unregisterResizeObserver();
     }
 
@@ -121,7 +127,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
       return (
         <div className="ms-Viewport" ref={this._root} style={{ minWidth: 1, minHeight: 1 }}>
-          <ComposedComponent ref={this._updateComposedComponentRef} viewport={newViewport} {...this.props as any} />
+          <ComposedComponent ref={this._updateComposedComponentRef} viewport={newViewport} {...(this.props as any)} />
         </div>
       );
     }

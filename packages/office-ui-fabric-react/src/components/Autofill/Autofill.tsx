@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { BaseComponent, KeyCodes, getNativeProps, inputProperties, isIE11 } from '../../Utilities';
+import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -12,7 +12,7 @@ const SELECTION_BACKWARD = 'backward';
 /**
  * {@docCategory Autofill}
  */
-export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
+export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
   };
@@ -21,9 +21,14 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
   private _autoFillEnabled = true;
   private _value: string;
   private _isComposing: boolean = false;
+  private _async: Async;
 
   constructor(props: IAutofillProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+
     this._value = props.defaultVisibleValue || '';
     this.state = {
       displayValue: props.defaultVisibleValue || ''
@@ -111,6 +116,10 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
         }
       }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {

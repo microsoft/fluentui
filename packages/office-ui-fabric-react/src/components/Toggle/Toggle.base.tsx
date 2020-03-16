@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId, inputProperties, getNativeProps } from '../../Utilities';
+import {
+  initializeComponentRef,
+  classNamesFunction,
+  getId,
+  inputProperties,
+  getNativeProps,
+  warnDeprecations,
+  warnMutuallyExclusive,
+  FocusRects
+} from '../../Utilities';
 import { IToggleProps, IToggle, IToggleStyleProps, IToggleStyles } from './Toggle.types';
 import { Label } from '../../Label';
 import { KeytipData } from '../../KeytipData';
@@ -9,8 +18,9 @@ export interface IToggleState {
 }
 
 const getClassNames = classNamesFunction<IToggleStyleProps, IToggleStyles>();
+const COMPONENT_NAME = 'Toggle';
 
-export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
+export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
   private _id: string;
   private _toggleButton = React.createRef<HTMLButtonElement>();
 
@@ -30,11 +40,12 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   constructor(props: IToggleProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
+    initializeComponentRef(this);
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
       checked: 'defaultChecked'
     });
 
-    this._warnDeprecations({
+    warnDeprecations(COMPONENT_NAME, props, {
       onAriaLabel: 'ariaLabel',
       offAriaLabel: undefined,
       onChanged: 'onChange'
@@ -141,6 +152,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
             </Label>
           )}
         </div>
+        <FocusRects />
       </RootType>
     );
   }

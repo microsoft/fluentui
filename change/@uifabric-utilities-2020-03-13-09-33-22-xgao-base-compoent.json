@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "BaseComponent: remove initializeDir",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36",
+  "dependentChangeType": "patch",
+  "date": "2020-03-13T16:33:22.982Z"
+}

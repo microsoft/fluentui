@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Autofill, IAutofill } from '../Autofill/index';
 import {
-  BaseComponent,
+  initializeComponentRef,
   css,
   customizable,
   divProperties,
@@ -14,7 +14,10 @@ import {
   isMac,
   KeyCodes,
   shallowCompare,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  warnMutuallyExclusive,
+  Async,
+  EventGroup
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
@@ -114,8 +117,10 @@ class ComboBoxOptionWrapper extends React.Component<IComboBoxOptionWrapperProps,
   }
 }
 
+const COMPONENT_NAME = 'ComboBox';
+
 @customizable('ComboBox', ['theme', 'styles'], true)
-export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
+export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   public static defaultProps: IComboBoxProps = {
     options: [],
     allowFreeform: false,
@@ -172,10 +177,17 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
   private _processingClearPendingInfo: boolean;
 
+  private _async: Async;
+  private _events: EventGroup;
+
   constructor(props: IComboBoxProps) {
     super(props);
 
-    this._warnMutuallyExclusive({
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+
+    warnMutuallyExclusive(COMPONENT_NAME, props, {
       defaultSelectedKey: 'selectedKey',
       text: 'defaultSelectedKey',
       selectedKey: 'value',
@@ -306,10 +318,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentWillUnmount(): void {
-    super.componentWillUnmount();
-
-    // remove the eventHanlder that was added in componentDidMount
-    this._events.off(this._comboBoxWrapper.current);
+    this._async.dispose();
+    this._events.dispose();
   }
 
   // Primary Render

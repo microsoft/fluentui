@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import {
+  DelayedRender,
+  getId,
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties,
+  css,
+  initializeComponentRef
+} from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
-import { css } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
@@ -13,7 +20,7 @@ export interface IMessageBarState {
   expandSingleLine?: boolean;
 }
 
-export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
+export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
     onDismiss: undefined,
@@ -36,6 +43,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   constructor(props: IMessageBarProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {
       labelId: getId('MessageBar'),
       showContent: false,
