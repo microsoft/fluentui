@@ -22,7 +22,10 @@ export class ThemingPage extends React.Component<IComponentDemoPageProps, {}> {
         isHeaderVisible={this.props.isHeaderVisible}
         exampleCards={
           <div>
-            <ExampleCard title="Schemes: Using one Customizer to theme components" code={ThemingSchemesCustomExampleCode}>
+            <ExampleCard
+              title="Schemes: Using one Customizer to theme components"
+              code={ThemingSchemesCustomExampleCode}
+            >
               <ThemingSchemesCustomExample />
             </ExampleCard>
             <ExampleCard

@@ -42,13 +42,25 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
             <ExampleCard title="Basic Collapsible Section" isOptIn={true} code={CollapsibleSectionBasicExampleCode}>
               <CollapsibleSectionBasicExample />
             </ExampleCard>
-            <ExampleCard title="Collapsible Section Slots Customization" isOptIn={true} code={CollapsibleSectionSlotsExampleCode}>
+            <ExampleCard
+              title="Collapsible Section Slots Customization"
+              isOptIn={true}
+              code={CollapsibleSectionSlotsExampleCode}
+            >
               <CollapsibleSectionSlotsExample />
             </ExampleCard>
-            <ExampleCard title="Recursive Collapsible Section" isOptIn={true} code={CollapsibleSectionRecursiveExampleCode}>
+            <ExampleCard
+              title="Recursive Collapsible Section"
+              isOptIn={true}
+              code={CollapsibleSectionRecursiveExampleCode}
+            >
               <CollapsibleSectionRecursiveExample />
             </ExampleCard>
-            <ExampleCard title="Controlled Collapsible Section" isOptIn={true} code={CollapsibleSectionControlledExampleCode}>
+            <ExampleCard
+              title="Controlled Collapsible Section"
+              isOptIn={true}
+              code={CollapsibleSectionControlledExampleCode}
+            >
               <CollapsibleSectionControlledExample />
             </ExampleCard>
             <ExampleCard title="Styled Collapsible Section" isOptIn={true} code={CollapsibleSectionStyledExampleCode}>
@@ -61,7 +73,11 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts')]}
+            sources={[
+              require<
+                string
+              >('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/CollapsibleSection.types.ts'),
+            ]}
           />
         }
         overview={<div />}

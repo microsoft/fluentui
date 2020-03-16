@@ -8,8 +8,8 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
     root: [
       {
         borderRadius: effects.roundedCorner2,
-        borderColor: palette.neutralSecondaryAlt
-      }
-    ]
+        borderColor: palette.neutralSecondaryAlt,
+      },
+    ],
   };
 };

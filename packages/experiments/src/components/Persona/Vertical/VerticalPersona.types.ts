@@ -3,7 +3,11 @@ import { IComponent, IHTMLSlot, IStyleableComponentProps } from '../../../Founda
 import { ITextSlot } from 'office-ui-fabric-react';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
-export type IVerticalPersonaComponent = IComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;
+export type IVerticalPersonaComponent = IComponent<
+  IVerticalPersonaProps,
+  IVerticalPersonaTokens,
+  IVerticalPersonaStyles
+>;
 
 // These types are redundant with IVerticalPersonaComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241

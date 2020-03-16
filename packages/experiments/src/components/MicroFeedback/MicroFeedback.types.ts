@@ -4,7 +4,12 @@ import { IBaseProps } from '../../Utilities';
 import { IButtonSlot } from '../Button/Button.types';
 import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 
-export type IMicroFeedbackComponent = IComponent<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles, IMicroFeedbackViewProps>;
+export type IMicroFeedbackComponent = IComponent<
+  IMicroFeedbackProps,
+  IMicroFeedbackTokens,
+  IMicroFeedbackStyles,
+  IMicroFeedbackViewProps
+>;
 
 // These types are redundant with IMicroFeedbackComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241

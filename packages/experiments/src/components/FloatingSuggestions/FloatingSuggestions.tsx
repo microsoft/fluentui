@@ -2,7 +2,11 @@ import * as React from 'react';
 import * as styles from './FloatingSuggestions.scss';
 import { Async, initializeComponentRef, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { IFloatingSuggestions, IFloatingSuggestionsProps, IFloatingSuggestionsInnerSuggestionProps } from './FloatingSuggestions.types';
+import {
+  IFloatingSuggestions,
+  IFloatingSuggestionsProps,
+  IFloatingSuggestionsInnerSuggestionProps,
+} from './FloatingSuggestions.types';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
@@ -13,7 +17,8 @@ export interface IFloatingSuggestionsState {
   didBind: boolean;
 }
 
-export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
+export class FloatingSuggestions<TItem>
+  extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
   implements IFloatingSuggestions<TItem> {
   private root = React.createRef<HTMLDivElement>();
   private suggestionStore: SuggestionsStore<TItem>;
@@ -31,7 +36,7 @@ export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggest
     this.suggestionStore = basePickerProps.suggestionsStore;
     this.state = {
       queryString: '',
-      didBind: false
+      didBind: false,
     };
   }
 
@@ -64,7 +69,7 @@ export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggest
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString
+        queryString: queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -81,7 +86,7 @@ export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggest
     }
 
     this.setState({
-      suggestionsVisible: false
+      suggestionsVisible: false,
     });
   };
 
@@ -91,7 +96,7 @@ export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggest
     }
 
     this.setState({
-      suggestionsVisible: true
+      suggestionsVisible: true,
     });
 
     // Update the suggestions if updateValue == true
@@ -186,8 +191,8 @@ export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggest
   private _renderSuggestions(): JSX.Element | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
-    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined = this.props
-      .onRenderSuggestionControl;
+    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined = this
+      .props.onRenderSuggestionControl;
     if (TypedSuggestionsControl === undefined) {
       TypedSuggestionsControl = SuggestionsControl;
     }
@@ -255,7 +260,12 @@ export class FloatingSuggestions<TItem> extends React.Component<IFloatingSuggest
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && !ev.ctrlKey && this.suggestionsControl.current && this.suggestionsControl.current.handleKeyDown(keyCode)) {
+        if (
+          !ev.shiftKey &&
+          !ev.ctrlKey &&
+          this.suggestionsControl.current &&
+          this.suggestionsControl.current.handleKeyDown(keyCode)
+        ) {
           ev.preventDefault();
           ev.stopPropagation();
         } else {

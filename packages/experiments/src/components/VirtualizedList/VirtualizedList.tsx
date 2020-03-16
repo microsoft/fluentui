@@ -22,7 +22,10 @@ export interface IVirtualizedListState {
   items: React.ReactNode[];
 }
 
-export class VirtualizedList<TItem extends IObjectWithKey> extends React.Component<IVirtualizedListProps<TItem>, IVirtualizedListState> {
+export class VirtualizedList<TItem extends IObjectWithKey> extends React.Component<
+  IVirtualizedListProps<TItem>,
+  IVirtualizedListState
+> {
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
@@ -43,12 +46,12 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     this._focusedIndex = -1;
 
     const {
-      initialViewportHeight = window.innerHeight // Start with the window height if not passed in props, this does not cause layout
+      initialViewportHeight = window.innerHeight, // Start with the window height if not passed in props, this does not cause layout
     } = this.props;
 
     this.state = {
       viewportHeight: initialViewportHeight,
-      items: this._renderItems(0, initialViewportHeight)
+      items: this._renderItems(0, initialViewportHeight),
     };
   }
 
@@ -111,7 +114,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
 
     const visibleRange = {
       start: startIndex,
-      end: endIndex
+      end: endIndex,
     };
 
     ranges.push(visibleRange);
@@ -120,7 +123,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     if (this._focusedIndex !== -1 && !isInRange(visibleRange, this._focusedIndex)) {
       const focusRange: IRange = {
         start: this._focusedIndex,
-        end: this._focusedIndex + 1
+        end: this._focusedIndex + 1,
       };
 
       if (this._focusedIndex < visibleRange.start) {
@@ -201,7 +204,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     scrollTop = Math.floor(scrollTop);
 
     this.setState({
-      items: this._renderItems(scrollTop, this.state.viewportHeight)
+      items: this._renderItems(scrollTop, this.state.viewportHeight),
     });
   }
 

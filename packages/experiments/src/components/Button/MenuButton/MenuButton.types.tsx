@@ -3,7 +3,15 @@ import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
 import { IComponentStyles, IHTMLSlot, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IFontIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
+import {
+  IButton,
+  IButtonProps,
+  IButtonSlot,
+  IButtonSlots,
+  IButtonTokens,
+  IButtonViewProps,
+  INativeButtonProps,
+} from '../Button.types';
 
 /**
  * {@docCategory Button}
@@ -68,7 +76,10 @@ export interface IMenuButton extends IButton {}
  */
 export interface IMenuButtonProps
   extends ISlottableProps<IMenuButtonSlots>,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
+    Pick<
+      IButtonProps,
+      'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'
+    >,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton>,
     INativeButtonProps {

@@ -24,7 +24,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     minHeight: ITEM_HEIGHT,
     padding: '0 8px',
     display: 'flex',
-    alignItems: 'center'
+    alignItems: 'center',
   };
 
   const itemSelectors = (isSelected: boolean = false) => {
@@ -35,16 +35,16 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       selectors: {
         '&:hover:focus': {
           color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight,
         },
         '&:focus': {
-          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight
+          backgroundColor: !isSelected ? 'transparent' : palette.neutralLight,
         },
         '&:active': {
           color: palette.neutralDark,
-          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight
-        }
-      }
+          backgroundColor: !isSelected ? palette.neutralLighter : palette.neutralLight,
+        },
+      },
     };
   };
 
@@ -55,8 +55,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           // Title placeholder states when disabled.
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary },
           ['&:focus .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary },
-          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary }
-        }
+          ['&:active .ms-Dropdown-titleIsPlaceHolder']: { color: palette.neutralTertiary },
+        },
       },
       !disabled && {
         selectors: {
@@ -64,52 +64,52 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           // reasons in order :active borderColor to work.
           ['&:hover .ms-Dropdown-title']: {
             color: palette.neutralDark,
-            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary
+            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary,
           },
           ['&:focus .ms-Dropdown-title']: {
             color: palette.neutralDark,
-            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary
+            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary,
           },
           ['&:active .ms-Dropdown-title']: {
             color: palette.neutralDark,
-            borderColor: palette.themePrimary
+            borderColor: palette.themePrimary,
           },
 
           // CaretDown states are the same for focus, hover, active.
           ['&:hover .ms-Dropdown-caretDown, &:focus .ms-Dropdown-caretDown, &:active .ms-Dropdown-caretDown']: {
-            color: palette.neutralPrimary
+            color: palette.neutralPrimary,
           },
 
           // Title placeholder states when not disabled.
           ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, &:active .ms-Dropdown-titleIsPlaceHolder']: {
-            color: palette.neutralDark
+            color: palette.neutralDark,
           },
 
           // Title has error states
           ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
             borderColor: palette.redDark,
-            color: isRenderingPlaceholder ? palette.neutralSecondary : palette.neutralPrimary
-          }
-        }
-      }
+            color: isRenderingPlaceholder ? palette.neutralSecondary : palette.neutralPrimary,
+          },
+        },
+      },
     ],
     title: [
       {
         borderRadius: isOpen ? titleOpenBorderRadius : effects.roundedCorner2,
         borderColor: palette.neutralSecondaryAlt,
-        padding: `0 28px 0 8px`
+        padding: `0 28px 0 8px`,
       },
       hasError && { borderColor: !isOpen ? palette.red : palette.redDark },
       isOpen && !hasError && { borderColor: palette.themePrimary },
-      disabled && { color: palette.neutralTertiary }
+      disabled && { color: palette.neutralTertiary },
     ],
     caretDownWrapper: {
-      right: 8
+      right: 8,
     },
     caretDown: [
       disabled && {
-        color: palette.neutralTertiary
-      }
+        color: palette.neutralTertiary,
+      },
     ],
     errorMessage: { color: palette.redDark },
     callout: {
@@ -117,30 +117,30 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       borderRadius: calloutOpenBorderRadius,
       boxShadow: effects.elevation8,
       selectors: {
-        ['.ms-Callout-main']: { borderRadius: calloutOpenBorderRadius }
-      }
+        ['.ms-Callout-main']: { borderRadius: calloutOpenBorderRadius },
+      },
     },
     dropdownItemHeader: {
       padding: '0 8px',
       height: ITEM_HEIGHT,
-      lineHeight: ITEM_HEIGHT
+      lineHeight: ITEM_HEIGHT,
     },
     dropdownItem: [commonItemStyles, itemSelectors()],
     dropdownItemSelected: [
       {
         backgroundColor: palette.neutralLight,
-        color: palette.neutralDark
+        color: palette.neutralDark,
       },
       commonItemStyles,
-      itemSelectors(true)
+      itemSelectors(true),
     ],
     dropdownItemDisabled: {
       ...commonItemStyles,
-      color: palette.neutralTertiary
+      color: palette.neutralTertiary,
     },
     dropdownItemSelectedAndDisabled: {
       ...commonItemStyles,
-      color: palette.neutralTertiary
-    }
+      color: palette.neutralTertiary,
+    },
   };
 };

@@ -20,7 +20,7 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
     initializeComponentRef(this);
 
     this.state = {
-      isContentVisible: false
+      isContentVisible: false,
     };
   }
 
@@ -43,7 +43,9 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
       menuIconProps = this.state.isContentVisible ? { iconName: 'ChevronUp' } : { iconName: 'ChevronDown' };
     }
 
-    const onRenderContent = onRenderMenu ? composeRenderFunction(this.props.onRenderContent, onRenderMenu) : this.props.onRenderContent;
+    const onRenderContent = onRenderMenu
+      ? composeRenderFunction(this.props.onRenderContent, onRenderMenu)
+      : this.props.onRenderContent;
 
     return (
       <div className={css('ba-Accordion', this.state.isContentVisible && 'ba-Accordion--contentVisible', className)}>
@@ -55,7 +57,9 @@ export class Accordion extends React.Component<IAccordionProps, IAccordionState>
           aria-expanded={this.state.isContentVisible}
           {...other}
         />
-        {this.state.isContentVisible && <div className={'ba-Accordion-content'}>{onRenderContent(this.props.menuProps)}</div>}
+        {this.state.isContentVisible && (
+          <div className={'ba-Accordion-content'}>{onRenderContent(this.props.menuProps)}</div>
+        )}
       </div>
     );
   }

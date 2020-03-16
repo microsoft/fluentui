@@ -6,7 +6,7 @@ import {
   IFontIconProps,
   IIconProps,
   ILabelProps,
-  IPersonaPresenceProps
+  IPersonaPresenceProps,
 } from 'office-ui-fabric-react';
 // PersonaPresence is not exported by OUFR, so we have to import it directly.
 import { PersonaPresence as FabricPersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
@@ -26,12 +26,14 @@ import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundat
 
 // These wrappers will temporarily add a layer to the hierarchy (identified with displayName) until their functionality
 // can be absorbed into their respective OUFR components.
-export const FontIcon: ISlottableComponentType<IFontIconProps, string> = props => (props.iconName ? <FabricFontIcon {...props} /> : null);
+export const FontIcon: ISlottableComponentType<IFontIconProps, string> = props =>
+  props.iconName ? <FabricFontIcon {...props} /> : null;
 FontIcon.displayName = 'FontIcon';
 const fontIconFactory: ISlotFactory<IFontIconProps, string> = createFactory(FontIcon, { defaultProp: 'iconName' });
 FontIcon.create = fontIconFactory;
 
-export const Icon: ISlottableComponentType<IIconProps, string> = props => (props.iconName ? <FabricIcon {...props} /> : null);
+export const Icon: ISlottableComponentType<IIconProps, string> = props =>
+  props.iconName ? <FabricIcon {...props} /> : null;
 Icon.displayName = 'Icon';
 const iconFactory: ISlotFactory<IIconProps, string> = createFactory(Icon, { defaultProp: 'iconName' });
 Icon.create = iconFactory;
@@ -47,5 +49,7 @@ export const PersonaPresence: ISlottableComponentType<IPersonaPresenceProps, num
   //        if presence is undefined, but it does render. Check for undefined here for now.
   props => (props.presence !== undefined ? <FabricPersonaPresence {...props} /> : null);
 PersonaPresence.displayName = 'PersonaPresence';
-const personaPresenceFactory: ISlotFactory<IPersonaPresenceProps, number> = createFactory(PersonaPresence, { defaultProp: 'presence' });
+const personaPresenceFactory: ISlotFactory<IPersonaPresenceProps, number> = createFactory(PersonaPresence, {
+  defaultProp: 'presence',
+});
 PersonaPresence.create = personaPresenceFactory;

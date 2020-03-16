@@ -22,7 +22,7 @@ export class VirtualizedListBasicExample extends React.Component {
     if (items.length === 0) {
       for (let i = 0; i < 2000; i++) {
         items.push({
-          key: `Item ${i}`
+          key: `Item ${i}`,
         });
       }
     }

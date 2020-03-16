@@ -9,7 +9,7 @@ import { Sidebar } from '@uifabric/experiments/lib/Sidebar';
 export class SidebarCollapsibleExample extends React.Component {
   public render(): JSX.Element {
     this.state = {
-      active: true
+      active: true,
     };
 
     /*
@@ -37,35 +37,35 @@ export class SidebarCollapsibleExample extends React.Component {
                 key: 'collapsible-example-footer-item-link1',
                 name: 'Footer Item 1',
                 iconProps: { iconName: 'CollegeFootball' },
-                active: false
+                active: false,
               },
               {
                 key: 'collapsible-example-footer-item-link2',
                 name: 'Footer Item 2',
                 iconProps: { iconName: 'Soccer' },
-                active: false
-              }
-            ]
-          }
+                active: false,
+              },
+            ],
+          },
         ]}
         items={[
           {
             key: 'collapsible-example-item1',
             name: 'Item 1',
             iconProps: { iconName: 'BuildQueue' },
-            active: false
+            active: false,
           },
           {
             key: 'collapsible-example-item2',
             name: 'Item 2',
             iconProps: { iconName: 'Bullseye' },
-            active: true
+            active: true,
           },
           {
             key: 'collapsible-example-item3',
             name: 'Item 3',
             subMenuIconProps: { iconName: 'ArrowUpRight' },
-            active: false
+            active: false,
           },
           {
             key: 'collapsible-example-accordion1',
@@ -76,15 +76,15 @@ export class SidebarCollapsibleExample extends React.Component {
                 key: 'collapsible-example-accordion1-link1',
                 name: 'Inner Link 1',
                 iconProps: { iconName: 'Mail' },
-                active: false
+                active: false,
               },
               {
                 key: 'collapsible-example-accordion1-link2',
                 name: 'Inner Link 2',
                 iconProps: { iconName: 'AlarmClock' },
-                active: true
-              }
-            ]
+                active: true,
+              },
+            ],
           },
           {
             key: 'collapsible-example-accordion2',
@@ -95,16 +95,16 @@ export class SidebarCollapsibleExample extends React.Component {
                 key: 'collapsible-example-accordion2-link1',
                 name: 'Inner Link 1',
                 iconProps: { iconName: 'DiamondSolid' },
-                active: false
+                active: false,
               },
               {
                 key: 'collapsible-example-accordion2-link2',
                 name: 'Inner Link 2',
                 iconProps: { iconName: 'DeliveryTruck' },
-                active: false
-              }
-            ]
-          }
+                active: false,
+              },
+            ],
+          },
         ]}
       />
     );

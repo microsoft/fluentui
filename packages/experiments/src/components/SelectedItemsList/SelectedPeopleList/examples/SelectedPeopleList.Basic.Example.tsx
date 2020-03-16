@@ -22,7 +22,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
 
     this.state = {
       controlledComponent: false,
-      currentSelectedItems: [people[40]]
+      currentSelectedItems: [people[40]],
     };
   }
 
