@@ -87,6 +87,7 @@ export interface MenuVariables {
 
   activeIndicatorColor: string;
   activePrimaryIndicatorColor: string;
+  activePrimaryVerticalIndicatorColor: string;
   indicatorColor: string;
   primaryIndicatorColorHover: string;
   indicatorColorHover: string;
@@ -186,6 +187,7 @@ export default (siteVars: any): MenuVariables => {
     indicatorColor: siteVars.colors.grey[500],
     activeIndicatorColor: siteVars.colors.grey[750],
     activePrimaryIndicatorColor: siteVars.colors.grey[750],
+    activePrimaryVerticalIndicatorColor: siteVars.colors.white,
     primaryIndicatorColorHover: siteVars.colors.white,
     indicatorColorHover: siteVars.colors.grey[500]
   };

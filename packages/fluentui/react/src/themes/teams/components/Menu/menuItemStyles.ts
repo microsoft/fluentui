@@ -432,7 +432,12 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       ...(p.active && {
         backgroundImage: submenuIndicatorUrl(v.activeIndicatorColor, p.vertical),
-        ...(p.primary && { backgroundImage: submenuIndicatorUrl(v.activePrimaryIndicatorColor, p.vertical) })
+
+        ...(p.primary && {
+          backgroundImage: submenuIndicatorUrl(v.activePrimaryIndicatorColor, p.vertical),
+
+          ...(p.vertical && { backgroundImage: submenuIndicatorUrl(v.activePrimaryVerticalIndicatorColor, p.vertical) })
+        })
       }),
 
       ...(p.underlined && { backgroundImage: submenuIndicatorUrl(v.indicatorColor, p.vertical) }),

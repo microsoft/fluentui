@@ -52,5 +52,6 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   indicatorColor: siteVars.colors.grey[250],
   activeIndicatorColor: siteVars.colors.white,
   activePrimaryIndicatorColor: siteVars.colors.white,
+  activePrimaryVerticalIndicatorColor: siteVars.colors.white,
   indicatorColorHover: siteVars.colors.white
 });
