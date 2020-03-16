@@ -14,18 +14,18 @@ const photoStackStyles: Partial<IStackStyles> = {
   root: {
     border: '1px solid black',
     padding: 10,
-    overflowY: 'auto'
+    overflowY: 'auto',
   },
   inner: {
-    padding: 0
-  }
+    padding: 0,
+  },
 };
 
 const photoCellClass = mergeStyles({
   display: 'block',
   boxSizing: 'border-box',
   width: 100,
-  height: 100
+  height: 100,
 });
 
 const DELAY = 10;
@@ -47,7 +47,10 @@ export interface IAnnouncedLazyLoadingExampleState {
 
 export interface IAnnouncedLazyLoadingExampleProps {}
 
-export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyLoadingExampleProps, IAnnouncedLazyLoadingExampleState> {
+export class AnnouncedLazyLoadingExample extends React.Component<
+  IAnnouncedLazyLoadingExampleProps,
+  IAnnouncedLazyLoadingExampleState
+> {
   private _photos: IPhoto[];
   private _async: Async;
 
@@ -61,7 +64,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
       total: 0,
       announced: undefined,
       loading: false,
-      timeSinceLastAnnounce: 0
+      timeSinceLastAnnounce: 0,
     };
   }
 
@@ -84,7 +87,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
         if (timeSinceLastAnnounce === DELAY || total === PHOTO_COUNT) {
           this.setState({
             announced: <Announced message={`${total} of ${PHOTO_COUNT} photos loaded`} />,
-            timeSinceLastAnnounce: 0
+            timeSinceLastAnnounce: 0,
           });
 
           if (total === PHOTO_COUNT) {
@@ -103,15 +106,18 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
     return (
       <Stack tokens={stackTokens}>
         <Text>
-          Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos loaded every 10
-          seconds, as that is the delay chosen for this example.
+          Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos
+          loaded every 10 seconds, as that is the delay chosen for this example.
         </Text>
         <DefaultButton
           text={loading ? 'Pause loading' : 'Load photos'}
           onClick={loading ? this._pauseLoading : this._startLoading}
           styles={{ root: { width: 150 } }}
         />
-        <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
+        <ProgressIndicator
+          label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'}
+          percentComplete={percentComplete}
+        />
         {announced}
         <FocusZone>
           <Stack
@@ -150,7 +156,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
       return {
         url: `http://placehold.it/${width}x${height}`,
         width: width,
-        height: height
+        height: height,
       };
     });
     return result;

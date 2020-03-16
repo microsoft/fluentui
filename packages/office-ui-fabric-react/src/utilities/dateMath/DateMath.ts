@@ -40,7 +40,10 @@ export function addMonths(date: Date, months: number): Date {
   // We want to maintain the same day-of-month, but that may not be possible if the new month doesn't have enough days.
   // Loop until we back up to a day the new month has.
   // (Weird modulo math is due to Javascript's treatment of negative numbers in modulo)
-  if (result.getMonth() !== ((newMonth % TimeConstants.MonthInOneYear) + TimeConstants.MonthInOneYear) % TimeConstants.MonthInOneYear) {
+  if (
+    result.getMonth() !==
+    ((newMonth % TimeConstants.MonthInOneYear) + TimeConstants.MonthInOneYear) % TimeConstants.MonthInOneYear
+  ) {
     result = addDays(result, -result.getDate());
   }
   return result;
@@ -128,7 +131,11 @@ export function compareDates(date1: Date, date2: Date): boolean {
   } else if (!date1 || !date2) {
     return false;
   } else {
-    return date1.getFullYear() === date2.getFullYear() && date1.getMonth() === date2.getMonth() && date1.getDate() === date2.getDate();
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
   }
 }
 
@@ -159,7 +166,7 @@ export function getDateRangeArray(
   dateRangeType: DateRangeType,
   firstDayOfWeek: DayOfWeek,
   workWeekDays?: DayOfWeek[],
-  daysToSelectInDayView: number = 1
+  daysToSelectInDayView: number = 1,
 ): Date[] {
   const datesArray = new Array<Date>();
   let startDate: Date;
@@ -235,14 +242,16 @@ export function getWeekNumbersInMonth(
   weeksInMonth: number,
   firstDayOfWeek: DayOfWeek,
   firstWeekOfYear: FirstWeekOfYear,
-  navigatedDate: Date
+  navigatedDate: Date,
 ): number[] {
   const selectedYear = navigatedDate.getFullYear();
   const selectedMonth = navigatedDate.getMonth();
   let dayOfMonth = 1;
   const fistDayOfMonth = new Date(selectedYear, selectedMonth, dayOfMonth);
   const endOfFirstWeek =
-    dayOfMonth + (firstDayOfWeek + TimeConstants.DaysInOneWeek - 1) - adjustWeekDay(firstDayOfWeek, fistDayOfMonth.getDay());
+    dayOfMonth +
+    (firstDayOfWeek + TimeConstants.DaysInOneWeek - 1) -
+    adjustWeekDay(firstDayOfWeek, fistDayOfMonth.getDay());
   let endOfWeekRange = new Date(selectedYear, selectedMonth, endOfFirstWeek);
   dayOfMonth = endOfWeekRange.getDate();
 
@@ -372,7 +381,9 @@ function getFirstDayWeekOfYear(date: Date, firstDayOfWeek: number): number {
  * @return {DayOfWeek} The day of week adjusted to firstDayOfWeek. E.g. when FirstDyOfWeek is Monday (1), Sunday becomes = 7 (7 > 1).
  */
 function adjustWeekDay(firstDayOfWeek: DayOfWeek, dateWeekDay: DayOfWeek): number {
-  return firstDayOfWeek !== DayOfWeek.Sunday && dateWeekDay < firstDayOfWeek ? dateWeekDay + TimeConstants.DaysInOneWeek : dateWeekDay;
+  return firstDayOfWeek !== DayOfWeek.Sunday && dateWeekDay < firstDayOfWeek
+    ? dateWeekDay + TimeConstants.DaysInOneWeek
+    : dateWeekDay;
 }
 
 /**

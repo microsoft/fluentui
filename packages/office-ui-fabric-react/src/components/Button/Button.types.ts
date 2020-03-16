@@ -39,7 +39,9 @@ export interface IButton {
  */
 // tslint:disable:deprecation
 export interface IButtonProps
-  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
+  extends React.AllHTMLAttributes<
+    HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement
+  > {
   // tslint:enable:deprecation
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
@@ -255,7 +257,7 @@ export interface IButtonProps
     expanded: boolean,
     hasMenu: boolean,
     isSplit: boolean | undefined,
-    allowDisabledFocus: boolean
+    allowDisabledFocus: boolean,
   ) => IButtonClassNames;
 
   /**
@@ -268,7 +270,7 @@ export interface IButtonProps
     disabled: boolean,
     expanded: boolean,
     checked: boolean,
-    allowDisabledFocus: boolean
+    allowDisabledFocus: boolean,
   ) => ISplitButtonClassNames;
 
   /**
@@ -341,7 +343,7 @@ export enum ElementType {
   /** <button> element. */
   button = 0,
   /** <a> element. */
-  anchor = 1
+  anchor = 1,
 }
 
 /**
@@ -354,7 +356,7 @@ export enum ButtonType {
   compound = 3,
   command = 4,
   icon = 5,
-  default = 6
+  default = 6,
 }
 
 /**

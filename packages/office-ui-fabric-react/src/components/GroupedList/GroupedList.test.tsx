@@ -20,8 +20,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 0,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -35,9 +35,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -48,7 +48,9 @@ describe('GroupedList', () => {
       );
     }
 
-    const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
+    const wrapper = mount(
+      <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
+    );
     const listPage = wrapper
       .find(List)
       .find('.ms-List-page')
@@ -71,8 +73,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 0,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -86,9 +88,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -99,7 +101,9 @@ describe('GroupedList', () => {
       );
     }
 
-    const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
+    const wrapper = mount(
+      <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
+    );
 
     const listRows = wrapper.find(DetailsRow);
     expect(listRows).toHaveLength(3);
@@ -119,8 +123,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 2,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -134,9 +138,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -147,7 +151,9 @@ describe('GroupedList', () => {
       );
     }
 
-    const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
+    const wrapper = mount(
+      <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
+    );
 
     const listRows = wrapper.find(DetailsRow);
     expect(listRows).toHaveLength(1);
@@ -167,8 +173,8 @@ describe('GroupedList', () => {
         name: 'group 0',
         startIndex: 0,
         level: 0,
-        children: []
-      }
+        children: [],
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -182,9 +188,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -195,7 +201,9 @@ describe('GroupedList', () => {
       );
     }
 
-    const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
+    const wrapper = mount(
+      <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
+    );
 
     const listRows = wrapper.find(DetailsRow);
     expect(listRows).toHaveLength(0);
@@ -214,8 +222,8 @@ describe('GroupedList', () => {
         key: 'group0',
         name: 'group 0',
         startIndex: 0,
-        level: 0
-      }
+        level: 0,
+      },
     ];
 
     function _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
@@ -229,9 +237,9 @@ describe('GroupedList', () => {
                   key: value,
                   name: value,
                   fieldName: value,
-                  minWidth: 300
+                  minWidth: 300,
                 };
-              }
+              },
             )}
           groupNestingDepth={nestingDepth}
           item={item}
@@ -242,7 +250,9 @@ describe('GroupedList', () => {
       );
     }
 
-    const wrapper = mount(<GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />);
+    const wrapper = mount(
+      <GroupedList items={_items} groups={_groups} onRenderCell={_onRenderCell} selection={_selection} />,
+    );
 
     let listRows = wrapper.find(DetailsRow);
     expect(listRows).toHaveLength(1);

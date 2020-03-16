@@ -59,7 +59,7 @@ export const getMeasurementCache = () => {
       if (data.cacheKey) {
         measurementsCache[data.cacheKey] = measurement;
       }
-    }
+    },
   };
 };
 
@@ -99,7 +99,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   function _shrinkContentsUntilTheyFit(
     data: any,
     onReduceData: (prevData: any) => any,
-    getElementToMeasureDimension: () => number
+    getElementToMeasureDimension: () => number,
   ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
@@ -114,7 +114,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
         return {
           renderedData: dataToMeasure,
           resizeDirection: undefined,
-          dataToMeasure: undefined
+          dataToMeasure: undefined,
         };
       }
 
@@ -124,7 +124,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (measuredDimension === undefined) {
         return {
           dataToMeasure: nextMeasuredData,
-          resizeDirection: 'shrink'
+          resizeDirection: 'shrink',
         };
       }
 
@@ -134,7 +134,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return {
       renderedData: dataToMeasure,
       resizeDirection: undefined,
-      dataToMeasure: undefined
+      dataToMeasure: undefined,
     };
   }
 
@@ -150,7 +150,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     data: any,
     onGrowData: (prevData: any) => any,
     getElementToMeasureDimension: () => number,
-    onReduceData: (prevData: any) => any
+    onReduceData: (prevData: any) => any,
   ): IResizeGroupState {
     let dataToMeasure = data;
     let measuredDimension: number | undefined = _getMeasuredDimension(data, getElementToMeasureDimension);
@@ -165,7 +165,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
         return {
           renderedData: dataToMeasure,
           resizeDirection: undefined,
-          dataToMeasure: undefined
+          dataToMeasure: undefined,
         };
       }
 
@@ -173,7 +173,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       // If the measurement isn't in the cache, we need to rerender with some data in a hidden div
       if (measuredDimension === undefined) {
         return {
-          dataToMeasure: nextMeasuredData
+          dataToMeasure: nextMeasuredData,
         };
       }
 
@@ -183,7 +183,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     // Once the loop is done, we should now shrink until the contents fit.
     return {
       resizeDirection: 'shrink',
-      ..._shrinkContentsUntilTheyFit(dataToMeasure, onReduceData, getElementToMeasureDimension)
+      ..._shrinkContentsUntilTheyFit(dataToMeasure, onReduceData, getElementToMeasureDimension),
     };
   }
 
@@ -198,25 +198,25 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     newDimension: number,
     fullDimensionData: any,
     renderedData: any,
-    onGrowData?: (prevData: any) => any
+    onGrowData?: (prevData: any) => any,
   ): IResizeGroupState {
     let nextState: IResizeGroupState;
     if (newDimension > _containerDimension!) {
       if (onGrowData) {
         nextState = {
           resizeDirection: 'grow',
-          dataToMeasure: onGrowData(renderedData)
+          dataToMeasure: onGrowData(renderedData),
         };
       } else {
         nextState = {
           resizeDirection: 'shrink',
-          dataToMeasure: fullDimensionData
+          dataToMeasure: fullDimensionData,
         };
       }
     } else {
       nextState = {
         resizeDirection: 'shrink',
-        dataToMeasure: renderedData
+        dataToMeasure: renderedData,
       };
     }
     _containerDimension = newDimension;
@@ -227,7 +227,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     props: IResizeGroupProps,
     currentState: IResizeGroupState,
     getElementToMeasureDimension: () => number,
-    newContainerDimension?: number
+    newContainerDimension?: number,
   ): IResizeGroupState | undefined {
     // If there is no new container width/height or data to measure, there is no need for a new state update
     if (newContainerDimension === undefined && currentState.dataToMeasure === undefined) {
@@ -239,7 +239,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
       if (_containerDimension && currentState.renderedData && !currentState.dataToMeasure) {
         return {
           ...currentState,
-          ..._updateContainerDimension(newContainerDimension, props.data, currentState.renderedData, props.onGrowData)
+          ..._updateContainerDimension(newContainerDimension, props.data, currentState.renderedData, props.onGrowData),
         };
       }
 
@@ -249,19 +249,24 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
 
     let nextState: IResizeGroupState = {
       ...currentState,
-      measureContainer: false
+      measureContainer: false,
     };
 
     if (currentState.dataToMeasure) {
       if (currentState.resizeDirection === 'grow' && props.onGrowData) {
         nextState = {
           ...nextState,
-          ..._growDataUntilItDoesNotFit(currentState.dataToMeasure, props.onGrowData, getElementToMeasureDimension, props.onReduceData)
+          ..._growDataUntilItDoesNotFit(
+            currentState.dataToMeasure,
+            props.onGrowData,
+            getElementToMeasureDimension,
+            props.onReduceData,
+          ),
         };
       } else {
         nextState = {
           ...nextState,
-          ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureDimension)
+          ..._shrinkContentsUntilTheyFit(currentState.dataToMeasure, props.onReduceData, getElementToMeasureDimension),
         };
       }
     }
@@ -282,14 +287,14 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     return {
       dataToMeasure: { ...data },
       resizeDirection: 'grow',
-      measureContainer: true
+      measureContainer: true,
     };
   }
 
   return {
     getNextState,
     shouldRenderDataForMeasurement,
-    getInitialResizeGroupState
+    getInitialResizeGroupState,
   };
 };
 
@@ -328,7 +333,7 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
     this._events = new EventGroup(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
-      styles: 'className'
+      styles: 'className',
     });
   }
 
@@ -352,11 +357,17 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
         <div style={hiddenParentStyles}>
           {dataNeedsMeasuring && !isInitialMeasure && (
             <div style={hiddenDivStyles} ref={this._updateHiddenDiv}>
-              <MeasuredContext.Provider value={{ isMeasured: true }}>{onRenderData(dataToMeasure)}</MeasuredContext.Provider>
+              <MeasuredContext.Provider value={{ isMeasured: true }}>
+                {onRenderData(dataToMeasure)}
+              </MeasuredContext.Provider>
             </div>
           )}
 
-          <div ref={this._initialHiddenDiv} style={isInitialMeasure ? hiddenDivStyles : undefined} data-automation-id="visibleContent">
+          <div
+            ref={this._initialHiddenDiv}
+            style={isInitialMeasure ? hiddenDivStyles : undefined}
+            data-automation-id="visibleContent"
+          >
             {isInitialMeasure ? onRenderData(dataToMeasure) : renderedData && onRenderData(renderedData)}
           </div>
         </div>
@@ -374,7 +385,7 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
-      measureContainer: true // Receiving new props means the parent might rerender and the root width/height might change
+      measureContainer: true, // Receiving new props means the parent might rerender and the root width/height might change
     });
   }
 
@@ -404,7 +415,8 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
       let containerDimension = undefined;
       if (this.state.measureContainer && this._root.current) {
         const boundingRect = this._root.current.getBoundingClientRect();
-        containerDimension = direction && direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
+        containerDimension =
+          direction && direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
       }
       const nextState = this._nextResizeGroupStateProvider.getNextState(
         this.props,
@@ -418,7 +430,7 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
             ? refToMeasure.current.scrollHeight
             : refToMeasure.current.scrollWidth;
         },
-        containerDimension
+        containerDimension,
       );
 
       if (nextState) {

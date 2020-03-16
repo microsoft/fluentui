@@ -34,7 +34,9 @@ export type IStackItemStylesReturnType = ReturnType<Extract<IStackItemComponent[
 /**
  * {@docCategory Stack}
  */
-export interface IStackItemProps extends IStackItemSlots, IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
+export interface IStackItemProps
+  extends IStackItemSlots,
+    IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles> {
   /**
    * Defines a CSS class name used to style the StackItem.
    */

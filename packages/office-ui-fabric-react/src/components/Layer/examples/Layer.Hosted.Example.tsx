@@ -8,11 +8,11 @@ import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as styles from './Layer.Example.scss';
 
 const toggleStyles: Partial<IStyleSet<IToggleStyles>> = {
-  root: { margin: '10px 0' }
+  root: { margin: '10px 0' },
 };
 
 const rootClass = mergeStyles({
-  selectors: { p: { marginTop: 30 } }
+  selectors: { p: { marginTop: 30 } },
 });
 
 export interface ILayerHostedExampleState {
@@ -25,7 +25,7 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
   public state: ILayerHostedExampleState = {
     showLayer: false,
     showLayerNoId: false,
-    showHost: true
+    showHost: true,
   };
   // Use getId() to ensure that the ID is unique on the page.
   // (It's also okay to use a plain string without getId() and manually ensure uniqueness.)
@@ -33,7 +33,9 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
 
   public render(): JSX.Element {
     const { showLayer, showLayerNoId, showHost } = this.state;
-    const content = <div className={css(styles.content, AnimationClassNames.scaleUpIn100)}>This is example layer content.</div>;
+    const content = (
+      <div className={css(styles.content, AnimationClassNames.scaleUpIn100)}>This is example layer content.</div>
+    );
 
     return (
       <div className={rootClass}>
@@ -42,9 +44,9 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
         {showHost && <LayerHost id={this._layerHostId} className={styles.customHost} />}
 
         <p>
-          In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along with an id, and
-          provide a hostId on the layer to render it within the specific host. (Note that it's important that you don't include children
-          within the LayerHost. It's meant to contain Layered content only.)
+          In some cases, you may need to contain layered content within an area. Create an instance of a LayerHost along
+          with an id, and provide a hostId on the layer to render it within the specific host. (Note that it's important
+          that you don't include children within the LayerHost. It's meant to contain Layered content only.)
         </p>
 
         <Toggle
@@ -56,7 +58,11 @@ export class LayerHostedExample extends React.Component<{}, ILayerHostedExampleS
         />
 
         {showLayer ? (
-          <Layer hostId={this._layerHostId} onLayerDidMount={this._log('didmount')} onLayerWillUnmount={this._log('willunmount')}>
+          <Layer
+            hostId={this._layerHostId}
+            onLayerDidMount={this._log('didmount')}
+            onLayerWillUnmount={this._log('willunmount')}
+          >
             {content}
           </Layer>
         ) : (

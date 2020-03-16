@@ -28,7 +28,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.warmGray,
   PersonaInitialsColor.cyan,
   PersonaInitialsColor.rust,
-  PersonaInitialsColor.coolGray
+  PersonaInitialsColor.coolGray,
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;

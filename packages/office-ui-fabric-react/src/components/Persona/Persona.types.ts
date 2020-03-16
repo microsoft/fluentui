@@ -468,7 +468,7 @@ export enum PersonaSize {
   /**
    * Renders a 120px `PersonaCoin`.
    */
-  size120 = 18
+  size120 = 18,
 }
 
 /**
@@ -481,7 +481,7 @@ export enum PersonaPresence {
   away = 3,
   dnd = 4,
   blocked = 5,
-  busy = 6
+  busy = 6,
 }
 
 /**
@@ -527,5 +527,5 @@ export enum PersonaInitialsColor {
    */
   gray = 22,
   cyan = 23,
-  rust = 24
+  rust = 24,
 }

@@ -85,7 +85,7 @@ export enum TooltipDelay {
   /** 300 ms delay before showng the tooltip */
   medium = 1,
   /** 500 ms delay before showing the tooltip */
-  long = 2
+  long = 2,
 }
 
 /**

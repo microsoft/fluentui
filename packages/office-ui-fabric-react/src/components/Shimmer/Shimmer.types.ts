@@ -208,7 +208,7 @@ export enum ShimmerElementType {
   /**
    * Gap element type
    */
-  gap = 3
+  gap = 3,
 }
 
 /**
@@ -229,7 +229,7 @@ export enum ShimmerElementsDefaultHeights {
   /**
    * Default height of the circle element when not provided by user: 24px
    */
-  circle = 24
+  circle = 24,
 }
 
 /**

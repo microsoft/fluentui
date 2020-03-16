@@ -9,7 +9,7 @@ import {
   getYearEnd,
   getMonthStart,
   getMonthEnd,
-  compareDatePart
+  compareDatePart,
 } from '../../utilities/dateMath/DateMath';
 import { Icon } from '../../Icon';
 import * as stylesImport from './Calendar.scss';
@@ -94,7 +94,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
       dateTimeFormatter,
       minDate,
       maxDate,
-      yearPickerHidden
+      yearPickerHidden,
     } = this.props;
 
     if (this.state.isYearPickerVisible) {
@@ -113,7 +113,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
           strings={{
             rangeAriaLabel: this._yearRangeToString,
             prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
-            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel,
           }}
           ref={this._onCalendarYearRef}
         />
@@ -137,7 +137,11 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
         <div className={css('ms-DatePicker-header', styles.header)}>
           {this.props.onHeaderSelect || !yearPickerHidden ? (
             <div
-              className={css('ms-DatePicker-currentYear js-showYearPicker', styles.currentYear, styles.headerToggleView)}
+              className={css(
+                'ms-DatePicker-currentYear js-showYearPicker',
+                styles.currentYear,
+                styles.headerToggleView,
+              )}
               onClick={this._onHeaderSelect}
               onKeyDown={this._onHeaderKeyDown}
               aria-label={dateTimeFormatter.formatYear(navigatedDate)}
@@ -157,7 +161,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
             <div className={css('ms-DatePicker-navContainer', styles.navContainer)}>
               <button
                 className={css('ms-DatePicker-prevYear js-prevYear', styles.prevYear, {
-                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds
+                  ['ms-DatePicker-prevYear--disabled ' + styles.prevYearIsDisabled]: !isPrevYearInBounds,
                 })}
                 disabled={!isPrevYearInBounds}
                 onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
@@ -174,7 +178,7 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
               </button>
               <button
                 className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
-                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds
+                  ['ms-DatePicker-nextYear--disabled ' + styles.nextYearIsDisabled]: !isNextYearInBounds,
                 })}
                 disabled={!isNextYearInBounds}
                 onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
@@ -213,10 +217,11 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
                       <button
                         role={'gridcell'}
                         className={css('ms-DatePicker-monthOption', styles.monthOption, {
-                          ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]: highlightCurrentMonth && isCurrentMonth!,
+                          ['ms-DatePicker-day--today ' + styles.monthIsCurrentMonth]:
+                            highlightCurrentMonth && isCurrentMonth!,
                           ['ms-DatePicker-day--highlighted ' + styles.monthIsHighlighted]:
                             (highlightCurrentMonth || highlightSelectedMonth) && isSelectedMonth && isSelectedYear,
-                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds
+                          ['ms-DatePicker-monthOption--disabled ' + styles.monthOptionIsDisabled]: !isInBounds,
                         })}
                         disabled={!isInBounds}
                         key={monthIndex}
@@ -300,12 +305,16 @@ export class CalendarMonth extends React.Component<ICalendarMonthProps, ICalenda
 
   private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
     const { strings } = this.props;
-    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+    return strings.nextYearRangeAriaLabel
+      ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
+      : '';
   };
 
   private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
     const { strings } = this.props;
-    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+    return strings.prevYearRangeAriaLabel
+      ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}`
+      : '';
   };
 
   private _onRenderYear = (year: number) => {

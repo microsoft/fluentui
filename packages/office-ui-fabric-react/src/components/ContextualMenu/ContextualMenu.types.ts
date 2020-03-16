@@ -10,7 +10,11 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
+import {
+  IContextualMenuItemProps,
+  IContextualMenuRenderItem,
+  IContextualMenuItemStyleProps,
+} from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
 /**
@@ -20,7 +24,7 @@ export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
   Header = 2,
-  Section = 3
+  Section = 3,
 }
 
 /**
@@ -152,7 +156,10 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * menu item.
    * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
    */
-  onItemClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onItemClick?: (
+    ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    item?: IContextualMenuItem,
+  ) => boolean | void;
 
   /**
    * Whether this menu is a submenu of another menu.
@@ -227,7 +234,9 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Method to override the render of the individual menu items
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.FunctionComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?:
+    | React.ComponentClass<IContextualMenuItemProps>
+    | React.FunctionComponent<IContextualMenuItemProps>;
 
   /**
    * Props to pass down to the FocusZone.
@@ -372,7 +381,10 @@ export interface IContextualMenuItem {
    * the click will not close the menu.
    * Returning true will dismiss the menu even if `ev.preventDefault()` was called.
    */
-  onClick?: (ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>, item?: IContextualMenuItem) => boolean | void;
+  onClick?: (
+    ev?: React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+    item?: IContextualMenuItem,
+  ) => boolean | void;
 
   /**
    * Navigate to this URL when the menu item is clicked.
@@ -413,7 +425,7 @@ export interface IContextualMenuItem {
     dividerClassName?: string,
     iconClassName?: string,
     subMenuClassName?: string,
-    primaryDisabled?: boolean
+    primaryDisabled?: boolean,
   ) => // tslint:disable-next-line:deprecation
   IMenuItemClassNames;
 

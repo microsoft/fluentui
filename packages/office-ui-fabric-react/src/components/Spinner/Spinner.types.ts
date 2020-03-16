@@ -93,7 +93,7 @@ export enum SpinnerSize {
   /**
    * 28px Spinner diameter
    */
-  large = 3
+  large = 3,
 }
 
 /**
@@ -119,7 +119,7 @@ export enum SpinnerType {
    * Deprecated and will be removed at \>= 2.0.0. Use `SpinnerSize.large` instead.
    * @deprecated Use `SpinnerSize.large` instead.
    */
-  large = 1
+  large = 1,
 }
 
 /**

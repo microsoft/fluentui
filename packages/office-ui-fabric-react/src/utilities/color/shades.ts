@@ -38,7 +38,7 @@ export enum Shade {
   Shade5 = 5,
   Shade6 = 6,
   Shade7 = 7,
-  Shade8 = 8
+  Shade8 = 8,
   // remember to update isValidShade()!
 }
 
@@ -62,7 +62,7 @@ function _darken(hsv: IHSV, factor: number): IHSV {
   return {
     h: hsv.h,
     s: hsv.s,
-    v: clamp(hsv.v - hsv.v * factor, 100, 0)
+    v: clamp(hsv.v - hsv.v * factor, 100, 0),
   };
 }
 
@@ -70,7 +70,7 @@ function _lighten(hsv: IHSV, factor: number): IHSV {
   return {
     h: hsv.h,
     s: clamp(hsv.s - hsv.s * factor, 100, 0),
-    v: clamp(hsv.v + (100 - hsv.v) * factor, 100, 0)
+    v: clamp(hsv.v + (100 - hsv.v) * factor, 100, 0),
   };
 }
 

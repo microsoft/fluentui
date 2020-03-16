@@ -16,7 +16,7 @@ import { IGroupFooterProps } from './GroupFooter.types';
  */
 export enum CollapseAllVisibility {
   hidden = 0,
-  visible = 1
+  visible = 1,
 }
 
 /**

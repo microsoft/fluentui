@@ -87,7 +87,7 @@ export enum DocumentCardType {
   /**
    * Compact layout. Displays the preview beside the details, rather than above.
    */
-  compact = 1
+  compact = 1,
 }
 
 /**

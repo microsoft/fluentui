@@ -6,7 +6,7 @@ import {
   DocumentCardDetails,
   DocumentCardImage,
   IDocumentCardStyles,
-  IDocumentCardActivityPerson
+  IDocumentCardActivityPerson,
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '@uifabric/example-data';
@@ -15,12 +15,12 @@ const people: IDocumentCardActivityPerson[] = [
   { name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale },
   { name: 'Roko Kolar', profileImageSrc: '', initials: 'RK' },
   { name: 'Aaron Reid', profileImageSrc: TestImages.personaMale },
-  { name: 'Christian Bergqvist', profileImageSrc: '', initials: 'CB' }
+  { name: 'Christian Bergqvist', profileImageSrc: '', initials: 'CB' },
 ];
 
 export const DocumentCardImageExample: React.FunctionComponent = () => {
   const cardStyles: IDocumentCardStyles = {
-    root: { display: 'inline-block', marginRight: 20, marginBottom: 20, width: 320 }
+    root: { display: 'inline-block', marginRight: 20, marginBottom: 20, width: 320 },
   };
 
   return (
@@ -46,7 +46,7 @@ export const DocumentCardImageExample: React.FunctionComponent = () => {
           imageFit={ImageFit.cover}
           iconProps={{
             iconName: 'OneNoteLogo',
-            styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } }
+            styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
           }}
         />
         <DocumentCardDetails>

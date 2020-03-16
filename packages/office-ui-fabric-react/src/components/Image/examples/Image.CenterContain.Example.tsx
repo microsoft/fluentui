@@ -7,15 +7,15 @@ export class ImageCenterContainExample extends React.Component<any, any> {
     const imageProps: Partial<IImageProps> = {
       imageFit: ImageFit.centerContain,
       width: 200,
-      height: 200
+      height: 200,
     };
 
     return (
       <div>
         <p>
-          Setting the imageFit property to "centerContain" will cause the image to scale up or down proportionally. Images smaller than
-          their frame will be rendered as "ImageFit.center", while images larger than both either frame's height or width will render as
-          "ImageFit.contain".
+          Setting the imageFit property to "centerContain" will cause the image to scale up or down proportionally.
+          Images smaller than their frame will be rendered as "ImageFit.center", while images larger than both either
+          frame's height or width will render as "ImageFit.contain".
         </p>
         <Label>The image is smaller than the frame, so it's centered and rendered at its natural size.</Label>
         <Image

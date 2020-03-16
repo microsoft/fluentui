@@ -9,5 +9,5 @@ export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps> = styled<
   IKeytipLayerStyleProps,
   IKeytipLayerStyles
 >(KeytipLayerBase, getStyles, undefined, {
-  scope: 'KeytipLayer'
+  scope: 'KeytipLayer',
 });

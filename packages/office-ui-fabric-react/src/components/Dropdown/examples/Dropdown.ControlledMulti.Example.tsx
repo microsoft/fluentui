@@ -7,7 +7,7 @@ export interface IDropdownControlledMultiExampleState {
 
 export class DropdownControlledMultiExample extends React.Component<{}, IDropdownControlledMultiExampleState> {
   public state: IDropdownControlledMultiExampleState = {
-    selectedItems: []
+    selectedItems: [],
   };
 
   public render() {
@@ -30,7 +30,7 @@ export class DropdownControlledMultiExample extends React.Component<{}, IDropdow
           { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
           { key: 'broccoli', text: 'Broccoli' },
           { key: 'carrot', text: 'Carrot' },
-          { key: 'lettuce', text: 'Lettuce' }
+          { key: 'lettuce', text: 'Lettuce' },
         ]}
         styles={{ dropdown: { width: 300 } }}
       />
@@ -50,7 +50,7 @@ export class DropdownControlledMultiExample extends React.Component<{}, IDropdow
       }
     }
     this.setState({
-      selectedItems: newSelectedItems
+      selectedItems: newSelectedItems,
     });
   };
 }

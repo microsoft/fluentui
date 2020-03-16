@@ -1,7 +1,11 @@
 import * as React from 'react';
 
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IDocumentCardStatusProps, IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
+import {
+  IDocumentCardStatusProps,
+  IDocumentCardStatusStyleProps,
+  IDocumentCardStatusStyles,
+} from './DocumentCardStatus.types';
 import { Icon } from '../../Icon';
 import { IProcessedStyleSet } from '../../Styling';
 
@@ -24,13 +28,13 @@ export class DocumentCardStatusBase extends React.Component<IDocumentCardStatusP
     const iconProps = {
       iconName: statusIcon,
       styles: {
-        root: { padding: '8px' }
-      }
+        root: { padding: '8px' },
+      },
     };
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

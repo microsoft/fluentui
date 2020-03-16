@@ -57,7 +57,9 @@ const deprecatedTag = ' /* @deprecated */';
 for (const color in semanticColors) {
   const name = color + 'Color';
   if (semanticColors[color].indexOf(deprecatedTag) >= 0) {
-    semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color].replace(deprecatedTag, '')}]'; ${deprecatedTag}`);
+    semanticLines.push(
+      `$${name}: '[theme:${color}, default: ${semanticColors[color].replace(deprecatedTag, '')}]'; ${deprecatedTag}`,
+    );
   } else {
     semanticLines.push(`$${name}: '[theme:${color}, default: ${semanticColors[color]}]'; `);
   }

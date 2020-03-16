@@ -1,12 +1,27 @@
 import * as React from 'react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
+import {
+  IComponentStyles,
+  IHTMLSlot,
+  ISlotProp,
+  IComponent,
+  IStyleableComponentProps,
+  ISlottableProps,
+} from '../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
  * properties can take.
  * {@docCategory Stack}
  */
-export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
+export type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'baseline'
+  | 'stretch';
 
 /**
  * {@docCategory Stack}

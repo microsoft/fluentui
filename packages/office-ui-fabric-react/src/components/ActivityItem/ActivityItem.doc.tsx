@@ -17,23 +17,25 @@ export const ActivityItemPageProps: IDocPageProps = {
     {
       title: 'Activity Items with Icons',
       code: ActivityItemBasicExampleCode,
-      view: <ActivityItemBasicExample />
+      view: <ActivityItemBasicExample />,
     },
     {
       title: 'Activity Items with Personas',
       code: ActivityItemPersonaExampleCode,
-      view: <ActivityItemPersonaExample />
+      view: <ActivityItemPersonaExample />,
     },
     {
       title: 'Compact Activity Items',
       code: ActivityItemCompactExampleCode,
-      view: <ActivityItemCompactExample />
-    }
+      view: <ActivityItemCompactExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

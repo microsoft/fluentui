@@ -12,62 +12,62 @@ describe('SuggestionsStore', () => {
   describe('when getting the aria-label', () => {
     it('uses getAriaLabel for item text when it is set', () => {
       const store = new SuggestionsStore<IMockSuggestion>({
-        getAriaLabel: getCustomName
+        getAriaLabel: getCustomName,
       });
       store.updateSuggestions([
         {
-          customName: 'me'
-        }
+          customName: 'me',
+        },
       ]);
 
       expect(store.getSuggestionAtIndex(0)).toEqual({
         item: {
-          customName: 'me'
+          customName: 'me',
         },
         selected: false,
-        ariaLabel: 'me label'
+        ariaLabel: 'me label',
       });
     });
 
     it('prioritizes getAriaLabel over name', () => {
       const store = new SuggestionsStore<IMockSuggestion>({
-        getAriaLabel: getCustomName
+        getAriaLabel: getCustomName,
       });
       store.updateSuggestions([
         {
           customName: 'u',
-          name: 'name'
-        }
+          name: 'name',
+        },
       ]);
 
       expect(store.getSuggestionAtIndex(0)).toEqual({
         item: {
           customName: 'u',
-          name: 'name'
+          name: 'name',
         },
         selected: false,
-        ariaLabel: 'u label'
+        ariaLabel: 'u label',
       });
     });
 
     it('prioritizes getAriaLabel over primaryText', () => {
       const store = new SuggestionsStore<IMockSuggestion>({
-        getAriaLabel: getCustomName
+        getAriaLabel: getCustomName,
       });
       store.updateSuggestions([
         {
           customName: 'us',
-          primaryText: 'primaryText'
-        }
+          primaryText: 'primaryText',
+        },
       ]);
 
       expect(store.getSuggestionAtIndex(0)).toEqual({
         item: {
           customName: 'us',
-          primaryText: 'primaryText'
+          primaryText: 'primaryText',
         },
         selected: false,
-        ariaLabel: 'us label'
+        ariaLabel: 'us label',
       });
     });
 
@@ -77,18 +77,18 @@ describe('SuggestionsStore', () => {
         {
           customName: 'us',
           primaryText: 'primaryText',
-          name: 'name'
-        }
+          name: 'name',
+        },
       ]);
 
       expect(store.getSuggestionAtIndex(0)).toEqual({
         item: {
           customName: 'us',
           primaryText: 'primaryText',
-          name: 'name'
+          name: 'name',
         },
         selected: false,
-        ariaLabel: 'name'
+        ariaLabel: 'name',
       });
     });
   });

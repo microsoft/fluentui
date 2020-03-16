@@ -17,7 +17,7 @@ describe('KeytipManager', () => {
     const keytipSequenceB: string[] = ['b'];
     const keytipBProps: IKeytipProps = {
       keySequences: keytipSequenceB,
-      content: 'B'
+      content: 'B',
     };
 
     describe('registerKeytip', () => {
@@ -237,7 +237,7 @@ describe('KeytipManager', () => {
         // Keytip that is a child of B
         let keytipCProps: IKeytipProps = {
           keySequences: ['b', 'c'],
-          content: 'C'
+          content: 'C',
         };
         // Add overflowSetSequence to B
         keytipBProps.overflowSetSequence = ['x'];

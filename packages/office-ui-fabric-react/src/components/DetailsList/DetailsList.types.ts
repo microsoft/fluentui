@@ -24,7 +24,7 @@ export {
   IDragDropHelper,
   IDragDropOptions,
   IViewport,
-  IWithViewportProps
+  IWithViewportProps,
 };
 
 /**
@@ -51,7 +51,7 @@ export interface IDetailsList extends IList {
     index: number,
     forceIntoFirstElement?: boolean,
     measureItem?: (itemIndex: number) => number,
-    scrollToMode?: ScrollToMode
+    scrollToMode?: ScrollToMode,
   ) => void;
 
   /**
@@ -548,7 +548,7 @@ export enum ColumnActionsMode {
   /**
    * Renders the column header ias clickable and displays the dropdown cheveron.
    */
-  hasDropdown = 2
+  hasDropdown = 2,
 }
 
 /**
@@ -561,7 +561,7 @@ export enum ConstrainMode {
   /**
    * If specified, constrains the list to the given layout space.
    */
-  horizontalConstrained = 1
+  horizontalConstrained = 1,
 }
 
 /**
@@ -641,7 +641,7 @@ export enum ColumnDragEndLocation {
   /**
    * Drag ended on Header
    */
-  header = 2
+  header = 2,
 }
 
 /**
@@ -657,7 +657,7 @@ export enum DetailsListLayoutMode {
    * Manages which columns are visible, tries to size them according to their min/max rules and drops
    * off columns that can't fit and have isCollapsible set.
    */
-  justified = 1
+  justified = 1,
 }
 
 /**
@@ -677,7 +677,7 @@ export enum CheckboxVisibility {
   /**
    * Hide checkboxes.
    */
-  hidden = 2
+  hidden = 2,
 }
 
 /**

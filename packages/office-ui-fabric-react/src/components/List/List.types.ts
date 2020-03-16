@@ -21,7 +21,7 @@ export const ScrollToMode = {
   /**
    * Attempts to scroll the list so the desired item is in the exact center of the viewport.
    */
-  center: 3 as 3
+  center: 3 as 3,
 };
 
 /**
@@ -211,7 +211,9 @@ export interface IPage<T = any> {
 /**
  * {@docCategory List}
  */
-export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
+export interface IPageProps<T = any>
+  extends React.HTMLAttributes<HTMLDivElement>,
+    React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */

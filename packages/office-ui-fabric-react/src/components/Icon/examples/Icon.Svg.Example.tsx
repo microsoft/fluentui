@@ -57,15 +57,15 @@ registerIcons({
           <path className="borderblinds-part3" d="M768 224l256-192v768l-256 192z" />
         </g>
       </svg>
-    )
-  }
+    ),
+  },
 });
 
 const iconClass = mergeStyles({
   fontSize: 50,
   height: 50,
   width: 50,
-  margin: '0 25px'
+  margin: '0 25px',
 });
 
 const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: string; color3?: string }> = props => {
@@ -81,15 +81,15 @@ const BorderBlindsIcon: React.FunctionComponent<{ color1?: string; color2?: stri
         height: 50,
         selectors: {
           '.borderblinds-part1': {
-            fill: color1
+            fill: color1,
           },
           '.borderblinds-part2': {
-            fill: color2
+            fill: color2,
           },
           '.borderblinds-part3': {
-            fill: color3
-          }
-        }
+            fill: color3,
+          },
+        },
       })}
     />
   );
@@ -107,9 +107,9 @@ export const IconSvgExample: React.FunctionComponent = () => {
           fill: 'red',
           selectors: {
             '.thing': {
-              fill: 'green'
-            }
-          }
+              fill: 'green',
+            },
+          },
         })}
       />
       <BorderBlindsIcon color3="pink" />

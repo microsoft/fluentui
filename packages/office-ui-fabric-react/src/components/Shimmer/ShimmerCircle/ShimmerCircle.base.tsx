@@ -10,7 +10,7 @@ export const ShimmerCircleBase: React.FunctionComponent<IShimmerCircleProps> = p
   const classNames = getClassNames(styles!, {
     theme: theme!,
     height,
-    borderStyle
+    borderStyle,
   });
 
   return (

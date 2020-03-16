@@ -161,7 +161,7 @@ export enum OverflowButtonType {
   /** More overflow icon */
   more = 2,
   /** Chevron overflow icon */
-  downArrow = 3
+  downArrow = 3,
 }
 
 /**

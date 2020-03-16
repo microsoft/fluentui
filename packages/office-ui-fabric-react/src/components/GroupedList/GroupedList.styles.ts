@@ -6,11 +6,11 @@ const GlobalClassNames = {
   compact: 'ms-GroupedList--Compact',
   group: 'ms-GroupedList-group',
   link: 'ms-Link',
-  listCell: 'ms-List-cell'
+  listCell: 'ms-List-cell',
 };
 
 const beziers = {
-  easeInOutSine: 'cubic-bezier(0.445, 0.050, 0.550, 0.950)'
+  easeInOutSine: 'cubic-bezier(0.445, 0.050, 0.550, 0.950)',
 };
 
 export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => {
@@ -26,30 +26,30 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
         position: 'relative',
         selectors: {
           [`.${classNames.listCell}`]: {
-            minHeight: 38 // be consistent with DetailsList styles
-          }
-        }
+            minHeight: 38, // be consistent with DetailsList styles
+          },
+        },
       },
       compact && [
         classNames.compact,
         {
           selectors: {
             [`.${classNames.listCell}`]: {
-              minHeight: 32 // be consistent with DetailsList styles
-            }
-          }
-        }
+              minHeight: 32, // be consistent with DetailsList styles
+            },
+          },
+        },
       ],
-      className
+      className,
     ],
     group: [
       classNames.group,
       {
-        transition: `background-color ${AnimationVariables.durationValue2} ${beziers.easeInOutSine}`
-      }
+        transition: `background-color ${AnimationVariables.durationValue2} ${beziers.easeInOutSine}`,
+      },
     ],
     groupIsDropping: {
-      backgroundColor: palette.neutralLight
-    }
+      backgroundColor: palette.neutralLight,
+    },
   };
 };

@@ -4,35 +4,35 @@ import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } f
 // Styles definition
 const stackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.themeTertiary
-  }
+    background: DefaultPalette.themeTertiary,
+  },
 };
 const stackItemStyles: IStackItemStyles = {
   root: {
     background: DefaultPalette.themePrimary,
     color: DefaultPalette.white,
-    padding: 5
-  }
+    padding: 5,
+  },
 };
 const itemAlignmentsStackStyles: IStackStyles = {
   root: {
     background: DefaultPalette.themeTertiary,
-    height: 100
-  }
+    height: 100,
+  },
 };
 
 // Tokens definition
 const containerStackTokens: IStackTokens = { childrenGap: 5 };
 const horizontalGapStackTokens: IStackTokens = {
   childrenGap: 10,
-  padding: 10
+  padding: 10,
 };
 const itemAlignmentsStackTokens: IStackTokens = {
   childrenGap: 5,
-  padding: 10
+  padding: 10,
 };
 const clickableStackTokens: IStackTokens = {
-  padding: 10
+  padding: 10,
 };
 
 export const HorizontalStackReversedExample: React.FunctionComponent = () => {

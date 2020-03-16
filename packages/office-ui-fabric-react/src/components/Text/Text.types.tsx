@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
+import {
+  IComponentStyles,
+  IHTMLSlot,
+  ISlotProp,
+  IComponent,
+  IStyleableComponentProps,
+  ISlottableProps,
+} from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
 /**

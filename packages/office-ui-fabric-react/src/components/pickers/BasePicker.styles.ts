@@ -5,7 +5,7 @@ const GlobalClassNames = {
   root: 'ms-BasePicker',
   text: 'ms-BasePicker-text',
   itemsWrapper: 'ms-BasePicker-itemsWrapper',
-  input: 'ms-BasePicker-input'
+  input: 'ms-BasePicker-input',
 };
 
 export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
@@ -38,15 +38,15 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         minWidth: 180,
         minHeight: 30,
         border: `1px solid ${inputBorder}`,
-        borderRadius: effects.roundedCorner2
+        borderRadius: effects.roundedCorner2,
       },
       !isFocused &&
         !disabled && {
           selectors: {
             ':hover': {
-              borderColor: inputBorderHovered
-            }
-          }
+              borderColor: inputBorderHovered,
+            },
+          },
         },
       isFocused && !disabled && getInputFocusStyle(inputFocusBorderAlt, effects.roundedCorner2),
       disabled && {
@@ -59,26 +59,26 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
             right: 0,
             bottom: 0,
             left: 0,
-            background: disabledOverlayColor
+            background: disabledOverlayColor,
           },
           [HighContrastSelector]: {
             borderColor: 'GrayText',
             selectors: {
               ':after': {
-                background: 'none'
-              }
-            }
-          }
-        }
-      }
+                background: 'none',
+              },
+            },
+          },
+        },
+      },
     ],
     itemsWrapper: [
       classNames.itemsWrapper,
       {
         display: 'flex',
         flexWrap: 'wrap',
-        maxWidth: '100%'
-      }
+        maxWidth: '100%',
+      },
     ],
     input: [
       classNames.input,
@@ -95,12 +95,12 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         color: semanticColors.inputText,
         selectors: {
           '::-ms-clear': {
-            display: 'none'
-          }
-        }
+            display: 'none',
+          },
+        },
       },
-      inputClassName
+      inputClassName,
     ],
-    screenReaderText: hiddenContentStyle
+    screenReaderText: hiddenContentStyle,
   };
 }

@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction, EventGroup, initializeComponentRef, KeyCodes, getId } from '../../../Utilities';
-import { IColorRectangleProps, IColorRectangleStyleProps, IColorRectangleStyles, IColorRectangle } from './ColorRectangle.types';
+import {
+  IColorRectangleProps,
+  IColorRectangleStyleProps,
+  IColorRectangleStyles,
+  IColorRectangle,
+} from './ColorRectangle.types';
 
 // These imports are separated to help with bundling
 import { IColor } from '../../../utilities/color/interfaces';
@@ -18,12 +23,13 @@ export interface IColorRectangleState {
 /**
  * {@docCategory ColorPicker}
  */
-export class ColorRectangleBase extends React.Component<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
+export class ColorRectangleBase extends React.Component<IColorRectangleProps, IColorRectangleState>
+  implements IColorRectangle {
   public static defaultProps: Partial<IColorRectangleProps> = {
     minSize: 220,
     ariaLabel: 'Saturation and brightness',
     ariaValueFormat: 'Saturation {0} brightness {1}',
-    ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.'
+    ariaDescription: 'Use left and right arrow keys to set saturation. Use up and down arrow keys to set brightness.',
   };
 
   private _events: EventGroup;
@@ -44,7 +50,10 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     return this.state.color;
   }
 
-  public componentDidUpdate(prevProps: Readonly<IColorRectangleProps>, prevState: Readonly<IColorRectangleState>): void {
+  public componentDidUpdate(
+    prevProps: Readonly<IColorRectangleProps>,
+    prevState: Readonly<IColorRectangleState>,
+  ): void {
     // if props changed (as opposed to a state update), set the value
     // TODO: switch to strict controlled pattern instead
     if (prevProps !== this.props && this.props.color) {
@@ -63,7 +72,7 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      minSize
+      minSize,
     });
 
     const valueText = ariaValueFormat!.replace('{0}', String(color.s)).replace('{1}', String(color.v));
@@ -201,6 +210,6 @@ export function _getNewColor(ev: React.MouseEvent, prevColor: IColor, root: HTML
   return updateSV(
     prevColor,
     clamp(Math.round(sPercentage * MAX_COLOR_SATURATION), MAX_COLOR_SATURATION),
-    clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE)
+    clamp(Math.round(MAX_COLOR_VALUE - vPercentage * MAX_COLOR_VALUE), MAX_COLOR_VALUE),
   );
 }

@@ -346,7 +346,7 @@ export enum PanelType {
    * - When screen width reaches the `customWidth` value it will behave like a fluid width Panel
    * taking up 100% of the viewport width
    */
-  customNear = 8
+  customNear = 8,
 }
 
 /**

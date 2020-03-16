@@ -254,7 +254,7 @@ export enum ValidationState {
   warning,
 
   /** User input is invalid. */
-  invalid
+  invalid,
 }
 
 /**

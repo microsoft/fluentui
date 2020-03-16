@@ -12,13 +12,13 @@ interface ITestScalingData {
 
 function onReduceScalingData(data: ITestScalingData): ITestScalingData {
   return {
-    scalingIndex: data.scalingIndex - 1
+    scalingIndex: data.scalingIndex - 1,
   };
 }
 
 function onGrowScalingData(data: ITestScalingData): ITestScalingData {
   return {
-    scalingIndex: data.scalingIndex + 1
+    scalingIndex: data.scalingIndex + 1,
   };
 }
 
@@ -26,7 +26,7 @@ function getRequiredResizeGroupProps(): { data: {}; onReduceData: sinon.SinonStu
   return {
     data: {},
     onReduceData: sinon.stub(),
-    onRenderData: sinon.stub()
+    onRenderData: sinon.stub(),
   };
 }
 
@@ -38,9 +38,14 @@ describe('ResizeGroup', () => {
     expect(
       renderer
         .create(
-          <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} className={'TestClassName'} />
+          <ResizeGroup
+            data={initialData}
+            onReduceData={onReduceScalingData}
+            onRenderData={onRenderData}
+            className={'TestClassName'}
+          />,
         )
-        .toJSON()
+        .toJSON(),
     ).toMatchSnapshot();
   });
 
@@ -49,7 +54,9 @@ describe('ResizeGroup', () => {
     const renderedDataId = 'onRenderDataId';
     const onRenderData = (data: any) => <div id={renderedDataId}> Rendered data: {data.content}</div>;
 
-    const wrapper = mount(<ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />);
+    const wrapper = mount(
+      <ResizeGroup data={initialData} onReduceData={onReduceScalingData} onRenderData={onRenderData} />,
+    );
 
     expect(wrapper.find('#' + renderedDataId).length).toEqual(1);
   });
@@ -81,7 +88,7 @@ describe('ResizeGroup', () => {
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
@@ -100,7 +107,7 @@ describe('ResizeGroup', () => {
       expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: { index: 4 },
-        resizeDirection: 'shrink'
+        resizeDirection: 'shrink',
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
@@ -122,7 +129,7 @@ describe('ResizeGroup', () => {
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -149,7 +156,7 @@ describe('ResizeGroup', () => {
         renderedData: dataArray[2],
         measureContainer: false,
         dataToMeasure: undefined,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -172,7 +179,7 @@ describe('ResizeGroup', () => {
       expect(result).toEqual({
         dataToMeasure: dataArray[1],
         measureContainer: false,
-        resizeDirection: 'shrink'
+        resizeDirection: 'shrink',
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -195,7 +202,7 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         renderedData: dataToMeasure,
         measureContainer: false,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
@@ -221,7 +228,7 @@ describe('ResizeGroup', () => {
         dataToMeasure: undefined,
         renderedData: dataArray[1],
         measureContainer: false,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -234,7 +241,7 @@ describe('ResizeGroup', () => {
       const result = getNextResizeGroupState(resizeGroupProps, {}, getMeasuredElementWidthStub, 50);
 
       expect(result).toEqual({
-        measureContainer: false
+        measureContainer: false,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
@@ -252,7 +259,7 @@ describe('ResizeGroup', () => {
 
       // Pass in a state that reflects some rendered data
       const currentState = {
-        renderedData: renderedData
+        renderedData: renderedData,
       };
 
       const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, reducedWidth);
@@ -263,7 +270,7 @@ describe('ResizeGroup', () => {
         renderedData: renderedData,
         dataToMeasure: renderedData,
         measureContainer: false,
-        resizeDirection: 'shrink'
+        resizeDirection: 'shrink',
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
@@ -281,16 +288,21 @@ describe('ResizeGroup', () => {
 
       // Pass in a state that reflects some rendered data
       const currentState = {
-        renderedData: renderedData
+        renderedData: renderedData,
       };
 
-      const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, increasedWidth);
+      const result = getNextResizeGroupState(
+        resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        increasedWidth,
+      );
 
       expect(result).toEqual({
         renderedData: renderedData,
         dataToMeasure: resizeGroupProps.data,
         resizeDirection: 'shrink',
-        measureContainer: false
+        measureContainer: false,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(0);
     });
@@ -309,7 +321,7 @@ describe('ResizeGroup', () => {
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
@@ -328,7 +340,7 @@ describe('ResizeGroup', () => {
       expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: { index: 7 },
-        resizeDirection: 'shrink'
+        resizeDirection: 'shrink',
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
       expect(resizeGroupProps.onReduceData.callCount).toEqual(1);
@@ -349,7 +361,7 @@ describe('ResizeGroup', () => {
       expect(result).toEqual({
         measureContainer: false,
         dataToMeasure: { index: 2 },
-        resizeDirection: 'grow'
+        resizeDirection: 'grow',
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
       expect(onGrowData.callCount).toEqual(1);
@@ -371,7 +383,7 @@ describe('ResizeGroup', () => {
         measureContainer: false,
         dataToMeasure: undefined,
         renderedData: dataToMeasure,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
       expect(onGrowData.callCount).toEqual(1);
@@ -393,16 +405,21 @@ describe('ResizeGroup', () => {
 
       // Pass in a state that reflects some rendered data
       const currentState = {
-        renderedData: renderedData
+        renderedData: renderedData,
       };
 
-      const result = getNextResizeGroupState(resizeGroupProps, currentState, getMeasuredElementWidthStub, increasedWidth);
+      const result = getNextResizeGroupState(
+        resizeGroupProps,
+        currentState,
+        getMeasuredElementWidthStub,
+        increasedWidth,
+      );
 
       expect(result).toEqual({
         renderedData: renderedData,
         dataToMeasure: { index: 4 },
         resizeDirection: 'grow',
-        measureContainer: false
+        measureContainer: false,
       });
       expect(getMeasuredElementWidthStub.callCount).toEqual(0);
       expect(onGrowData.callCount).toEqual(1);
@@ -426,7 +443,7 @@ describe('ResizeGroup', () => {
         renderedData: dataToMeasure,
         measureContainer: false,
         dataToMeasure: undefined,
-        resizeDirection: undefined
+        resizeDirection: undefined,
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -436,7 +453,7 @@ describe('ResizeGroup', () => {
         { scalingIndex: 0, cacheKey: '0' },
         { scalingIndex: 1, cacheKey: '1' },
         { scalingIndex: 2, cacheKey: '2' },
-        { scalingIndex: 3, cacheKey: '3' }
+        { scalingIndex: 3, cacheKey: '3' },
       ];
 
       const measurementCache = getMeasurementCache();
@@ -449,7 +466,7 @@ describe('ResizeGroup', () => {
       const resizeGroupProps = {
         ...getRequiredResizeGroupProps(),
         onGrowData: (data: ITestScalingData) => dataArray[data.scalingIndex + 1],
-        onReduceData: (data: ITestScalingData) => dataArray[data.scalingIndex - 1]
+        onReduceData: (data: ITestScalingData) => dataArray[data.scalingIndex - 1],
       };
 
       const resizeGroupState: IResizeGroupState = { dataToMeasure: dataArray[0], resizeDirection: 'grow' };
@@ -460,7 +477,7 @@ describe('ResizeGroup', () => {
       expect(result).toEqual({
         measureContainer: false,
         renderedData: dataArray[2],
-        dataToMeasure: undefined
+        dataToMeasure: undefined,
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -485,7 +502,7 @@ describe('ResizeGroup', () => {
       expect(result).toEqual({
         dataToMeasure: dataArray[1],
         measureContainer: false,
-        resizeDirection: 'grow'
+        resizeDirection: 'grow',
       });
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
@@ -506,7 +523,7 @@ describe('ResizeGroup', () => {
     const currentState: IResizeGroupState = {
       renderedData: renderedData,
       dataToMeasure: { index: 8 },
-      resizeDirection: 'grow'
+      resizeDirection: 'grow',
     };
 
     resizeGroupProps.onReduceData.returns({ index: 7 });
@@ -519,7 +536,7 @@ describe('ResizeGroup', () => {
       renderedData: renderedData,
       dataToMeasure: { index: 7 },
       measureContainer: false,
-      resizeDirection: 'shrink'
+      resizeDirection: 'shrink',
     });
     expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     expect(resizeGroupProps.onReduceData.callCount).toEqual(1);
@@ -557,7 +574,7 @@ describe('ResizeGroup', () => {
       data: { scalingIndex: 8 },
       onReduceData: onReduceScalingData,
       onGrowData: onGrowScalingData,
-      onRenderData: sinon.stub()
+      onRenderData: sinon.stub(),
     };
 
     const stateProvider = getNextResizeGroupStateProvider();
