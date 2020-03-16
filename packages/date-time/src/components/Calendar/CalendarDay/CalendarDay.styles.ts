@@ -11,9 +11,9 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
     selectors: {
       '&, &:disabled, & button': {
         color: palette.neutralTertiaryAlt,
-        pointerEvents: 'none'
-      }
-    }
+        pointerEvents: 'none',
+      },
+    },
   };
 
   return {
@@ -22,19 +22,19 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       {
         width: 196,
         padding: 12,
-        boxSizing: 'content-box'
+        boxSizing: 'content-box',
       },
       showWeekNumbers && {
-        width: 226
+        width: 226,
       },
-      className
+      className,
     ],
     header: {
       position: 'relative',
       display: 'inline-flex',
       height: 28,
       lineHeight: 44,
-      width: '100%'
+      width: '100%',
     },
     monthAndYear: [
       getFocusStyle(theme, { inset: 1 }),
@@ -54,21 +54,21 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         overflow: 'hidden',
         whiteSpace: 'nowrap',
         textAlign: 'left',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
       },
       headerIsClickable && {
         selectors: {
           '&:hover': {
             cursor: 'pointer',
             background: palette.neutralLight,
-            color: palette.black
-          }
-        }
-      }
+            color: palette.black,
+          },
+        },
+      },
     ],
     monthComponents: {
       display: 'inline-flex',
-      alignSelf: 'flex-end'
+      alignSelf: 'flex-end',
     },
     headerIconButton: [
       getFocusStyle(theme, { inset: -1 }),
@@ -91,11 +91,11 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
             color: palette.neutralDark,
             backgroundColor: palette.neutralLight,
             cursor: 'pointer',
-            outline: '1px solid transparent'
-          }
-        }
-      }
+            outline: '1px solid transparent',
+          },
+        },
+      },
     ],
-    disabledStyle: disabledStyle
+    disabledStyle: disabledStyle,
   };
 };

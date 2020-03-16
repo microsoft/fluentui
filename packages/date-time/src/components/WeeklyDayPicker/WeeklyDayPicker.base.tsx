@@ -9,17 +9,36 @@ import {
   ICalendarFormatDateCallbacks,
   ICalendarStrings,
   ICalendarIconStrings,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { CalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid';
 import { ICalendarDayGrid } from '../CalendarDayGrid/CalendarDayGrid.types';
-import { compareDatePart, getStartDateOfWeek, addDays, addMonths, compareDates } from '../../utilities/dateMath/DateMath';
+import {
+  compareDatePart,
+  getStartDateOfWeek,
+  addDays,
+  addMonths,
+  compareDates,
+} from '../../utilities/dateMath/DateMath';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 const getClassNames = classNamesFunction<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>();
 
 const DEFAULT_STRINGS = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -33,20 +52,21 @@ const DEFAULT_STRINGS = {
   closeButtonAriaLabel: 'Close date picker',
   weekNumberFormatString: 'Week number {0}',
   prevWeekAriaLabel: 'Go to previous week',
-  nextWeekAriaLabel: 'Go to next week'
+  nextWeekAriaLabel: 'Go to next week',
 };
 
 export const defaultIconStrings: ICalendarIconStrings = {
   leftNavigation: 'ChevronLeft',
-  rightNavigation: 'ChevronRight'
+  rightNavigation: 'ChevronRight',
 };
 
 const defaultDateTimeFormatterCallbacks: ICalendarFormatDateCallbacks = {
   formatMonthDayYear: (date: Date, strings: ICalendarStrings) =>
     strings.months[date.getMonth()] + ' ' + date.getDate() + ', ' + date.getFullYear(),
-  formatMonthYear: (date: Date, strings: ICalendarStrings) => strings.months[date.getMonth()] + ' ' + date.getFullYear(),
+  formatMonthYear: (date: Date, strings: ICalendarStrings) =>
+    strings.months[date.getMonth()] + ' ' + date.getFullYear(),
   formatDay: (date: Date) => date.getDate().toString(),
-  formatYear: (date: Date) => date.getFullYear().toString()
+  formatYear: (date: Date) => date.getFullYear().toString(),
 };
 
 export interface IWeeklyDayPickerState {
@@ -72,7 +92,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     strings: DEFAULT_STRINGS,
     navigationIcons: defaultIconStrings,
     dateTimeFormatter: defaultDateTimeFormatterCallbacks,
-    animationDirection: AnimationDirection.Horizontal
+    animationDirection: AnimationDirection.Horizontal,
   };
 
   private _dayGrid = React.createRef<ICalendarDayGrid>();
@@ -81,10 +101,12 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IWeeklyDayPickerProps>,
-    prevState: Readonly<IWeeklyDayPickerState>
+    prevState: Readonly<IWeeklyDayPickerState>,
   ): Partial<IWeeklyDayPickerState> | null {
     const currentDate =
-      nextProps.initialDate && !isNaN(nextProps.initialDate.getTime()) ? nextProps.initialDate : nextProps.today || new Date();
+      nextProps.initialDate && !isNaN(nextProps.initialDate.getTime())
+        ? nextProps.initialDate
+        : nextProps.today || new Date();
     const showFullMonth = !!nextProps.showFullMonth;
     const newAnimationDirection =
       showFullMonth !== prevState.previousShowFullMonth ? AnimationDirection.Vertical : AnimationDirection.Horizontal;
@@ -94,7 +116,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
         selectedDate: currentDate,
         navigatedDate: currentDate,
         previousShowFullMonth: showFullMonth,
-        animationDirection: newAnimationDirection
+        animationDirection: newAnimationDirection,
       };
     }
 
@@ -102,7 +124,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       selectedDate: currentDate,
       navigatedDate: prevState.navigatedDate,
       previousShowFullMonth: showFullMonth,
-      animationDirection: newAnimationDirection
+      animationDirection: newAnimationDirection,
     };
   }
 
@@ -111,13 +133,14 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
     initializeComponentRef(this);
 
-    const currentDate = props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
+    const currentDate =
+      props.initialDate && !isNaN(props.initialDate.getTime()) ? props.initialDate : props.today || new Date();
 
     this.state = {
       selectedDate: currentDate,
       navigatedDate: currentDate,
       previousShowFullMonth: !!props.showFullMonth,
-      animationDirection: props.animationDirection!
+      animationDirection: props.animationDirection!,
     };
     this._focusOnUpdate = false;
   }
@@ -141,12 +164,12 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
       theme,
       className,
       showFullMonth,
-      weeksToShow
+      weeksToShow,
     } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
     });
 
     return (
@@ -195,7 +218,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
     // don't set the navigated date on selection because selection never causes navigation
     this.setState({
-      selectedDate: date
+      selectedDate: date,
     });
     this._focusOnUpdate = true;
 
@@ -208,7 +231,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     const { onNavigateDate } = this.props;
 
     this.setState({
-      navigatedDate: date
+      navigatedDate: date,
     });
     this._focusOnUpdate = focusOnNavigatedDay;
 
@@ -217,25 +240,31 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     }
   };
 
-  private renderPreviousWeekNavigationButton = (classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>): JSX.Element => {
+  private renderPreviousWeekNavigationButton = (
+    classNames: IProcessedStyleSet<IWeeklyDayPickerStyles>,
+  ): JSX.Element => {
     const { minDate, firstDayOfWeek, strings, navigationIcons } = this.props;
     const { navigatedDate } = this.state;
     const leftNavigationIcon = navigationIcons!.leftNavigation;
 
     // determine if previous week in bounds
-    const prevWeekInBounds = minDate ? compareDatePart(minDate, getStartDateOfWeek(navigatedDate, firstDayOfWeek!)) < 0 : true;
+    const prevWeekInBounds = minDate
+      ? compareDatePart(minDate, getStartDateOfWeek(navigatedDate, firstDayOfWeek!)) < 0
+      : true;
 
     return (
       <button
         className={css(classNames.navigationIconButton, {
-          [classNames.disabledStyle]: !prevWeekInBounds
+          [classNames.disabledStyle]: !prevWeekInBounds,
         })}
         disabled={!prevWeekInBounds}
         aria-disabled={!prevWeekInBounds}
         onClick={prevWeekInBounds ? this._onSelectPrevDateRange : undefined}
         onKeyDown={prevWeekInBounds ? this._onButtonKeyDown(this._onSelectPrevDateRange) : undefined}
         title={
-          strings.prevWeekAriaLabel ? strings.prevWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()] : undefined
+          strings.prevWeekAriaLabel
+            ? strings.prevWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()]
+            : undefined
         }
         type="button"
       >
@@ -250,19 +279,23 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
     const rightNavigationIcon = navigationIcons!.rightNavigation;
 
     // determine if next week in bounds
-    const nextWeekInBounds = maxDate ? compareDatePart(addDays(getStartDateOfWeek(navigatedDate, firstDayOfWeek!), 7), maxDate) < 0 : true;
+    const nextWeekInBounds = maxDate
+      ? compareDatePart(addDays(getStartDateOfWeek(navigatedDate, firstDayOfWeek!), 7), maxDate) < 0
+      : true;
 
     return (
       <button
         className={css(classNames.navigationIconButton, {
-          [classNames.disabledStyle]: !nextWeekInBounds
+          [classNames.disabledStyle]: !nextWeekInBounds,
         })}
         disabled={!nextWeekInBounds}
         aria-disabled={!nextWeekInBounds}
         onClick={nextWeekInBounds ? this._onSelectNextDateRange : undefined}
         onKeyDown={nextWeekInBounds ? this._onButtonKeyDown(this._onSelectNextDateRange) : undefined}
         title={
-          strings.nextWeekAriaLabel ? strings.nextWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()] : undefined
+          strings.nextWeekAriaLabel
+            ? strings.nextWeekAriaLabel + ' ' + strings.months[addDays(navigatedDate!, -7).getMonth()]
+            : undefined
         }
         type="button"
       >
@@ -289,7 +322,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
   private _navigateDate = (date: Date) => {
     this.setState({
-      navigatedDate: date
+      navigatedDate: date,
     });
     if (this.props.onNavigateDate) {
       this.props.onNavigateDate(date);

@@ -12,5 +12,5 @@ export const TestImages = {
   iconOne: baseProductionCdnUrl + 'icon-one.png',
   iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
-  personaMale: baseProductionCdnUrl + 'persona-male.png'
+  personaMale: baseProductionCdnUrl + 'persona-male.png',
 };

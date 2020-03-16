@@ -4,7 +4,7 @@ import {
   DayOfWeek,
   ICalendarFormatDateCallbacks,
   ICalendarIconStrings,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../CalendarDayGrid/CalendarDayGrid.types';

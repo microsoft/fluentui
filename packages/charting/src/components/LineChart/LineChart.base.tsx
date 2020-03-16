@@ -7,7 +7,13 @@ import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { ILineChartProps, ILineChartStyleProps, ILineChartStyles, ILineChartDataPoint, ILineChartPoints } from './LineChart.types';
+import {
+  ILineChartProps,
+  ILineChartStyleProps,
+  ILineChartStyles,
+  ILineChartDataPoint,
+  ILineChartPoints,
+} from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
 
@@ -65,7 +71,7 @@ export class LineChartBase extends React.Component<
       lineColor: '',
       refSelected: '',
       hoveredLineColor: '',
-      selectedLegend: ''
+      selectedLegend: '',
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
@@ -116,14 +122,18 @@ export class LineChartBase extends React.Component<
       width: this.state._width,
       height: this.state._height,
       color: this.state.lineColor,
-      className
+      className,
     });
     const svgDimensions = {
       width: this.state.containerWidth,
-      height: this.state.containerHeight
+      height: this.state.containerHeight,
     };
     return (
-      <div ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)} className={this._classNames.root} role={'presentation'}>
+      <div
+        ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
+        className={this._classNames.root}
+        role={'presentation'}
+      >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <svg width={svgDimensions.width} height={svgDimensions.height}>
             <g
@@ -180,21 +190,28 @@ export class LineChartBase extends React.Component<
     });
 
     const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-    combinedResult.forEach((e1: { legend: string; y: number; x: number | Date | string; color: string }, index: number) => {
-      e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
-      const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color }];
-      combinedResult.slice(index + 1).forEach((e2: { legend: string; y: number; x: number | Date | string; color: string }) => {
-        e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
-        if (e1.x === e2.x) {
-          filteredValues.push({ legend: e2.legend, y: e2.y, color: e2.color });
-        }
-      });
-      result.push({ x: e1.x, values: filteredValues });
-    });
+    combinedResult.forEach(
+      (e1: { legend: string; y: number; x: number | Date | string; color: string }, index: number) => {
+        e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
+        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color }];
+        combinedResult
+          .slice(index + 1)
+          .forEach((e2: { legend: string; y: number; x: number | Date | string; color: string }) => {
+            e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
+            if (e1.x === e2.x) {
+              filteredValues.push({ legend: e2.legend, y: e2.y, color: e2.color });
+            }
+          });
+        result.push({ x: e1.x, values: filteredValues });
+      },
+    );
     return this.getUnique(result, 'x');
   };
 
-  private getUnique = (arr: { x: number | Date | string; values: { legend: string; y: number }[] }[], comp: string | number) => {
+  private getUnique = (
+    arr: { x: number | Date | string; values: { legend: string; y: number }[] }[],
+    comp: string | number,
+  ) => {
     const unique = arr
       // tslint:disable-next-line:no-any
       .map((e: { [x: string]: any }) => e[comp])
@@ -220,12 +237,15 @@ export class LineChartBase extends React.Component<
       const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
       const currentContainerWidth = container.getBoundingClientRect().width;
       const currentContainerHeight =
-        container.getBoundingClientRect().height > legendContainerHeight ? container.getBoundingClientRect().height : 350;
-      const shouldResize = containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
+        container.getBoundingClientRect().height > legendContainerHeight
+          ? container.getBoundingClientRect().height
+          : 350;
+      const shouldResize =
+        containerWidth !== currentContainerWidth || containerHeight !== currentContainerHeight - legendContainerHeight;
       if (shouldResize) {
         this.setState({
           containerWidth: currentContainerWidth,
-          containerHeight: currentContainerHeight - legendContainerHeight
+          containerHeight: currentContainerHeight - legendContainerHeight,
         });
       }
     });
@@ -253,7 +273,7 @@ export class LineChartBase extends React.Component<
         },
         hoverAction: () => {
           this.setState({ activeLegend: point.legend });
-        }
+        },
       };
       return legend;
     });
@@ -363,7 +383,16 @@ export class LineChartBase extends React.Component<
         const keyVal = this._uniqLineText + i;
         const x1 = this._points[i].data[0].x;
         const y1 = this._points[i].data[0].y;
-        lines.push(<circle id={keyVal} key={keyVal} r={3.5} cx={this._xAxisScale(x1)} cy={this._yAxisScale(y1)} fill={lineColor} />);
+        lines.push(
+          <circle
+            id={keyVal}
+            key={keyVal}
+            r={3.5}
+            cx={this._xAxisScale(x1)}
+            cy={this._yAxisScale(y1)}
+            fill={lineColor}
+          />,
+        );
       }
       for (let j = 1; j < this._points[i].data.length; j++) {
         const keyVal = this._uniqLineText + i + '_' + j;
@@ -390,7 +419,7 @@ export class LineChartBase extends React.Component<
               onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
               onBlur={this._handleMouseOut}
               aria-labelledby={'callout'}
-            />
+            />,
           );
         } else {
           lines.push(
@@ -405,7 +434,7 @@ export class LineChartBase extends React.Component<
               stroke={lineColor}
               strokeLinecap={'round'}
               opacity={0.1}
-            />
+            />,
           );
         }
       }
@@ -413,7 +442,12 @@ export class LineChartBase extends React.Component<
     return lines;
   }
 
-  private _handleHover = (x: number | Date, y: number | string, lineColor: string, mouseEvent: React.MouseEvent<SVGPathElement>) => {
+  private _handleHover = (
+    x: number | Date,
+    y: number | string,
+    lineColor: string,
+    mouseEvent: React.MouseEvent<SVGPathElement>,
+  ) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
 
@@ -424,13 +458,13 @@ export class LineChartBase extends React.Component<
       hoverXValue: '' + formattedData,
       hoverYValue: y,
       YValueHover: found.values,
-      lineColor: lineColor
+      lineColor: lineColor,
     });
   };
 
   private _handleMouseOut = () => {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   };
 

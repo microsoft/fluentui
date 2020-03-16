@@ -19,7 +19,8 @@ export interface IMarkdownTableCellProps extends IMarkdownTableProps {
   as?: 'th' | 'td';
 }
 
-export type IMarkdownTableStyleProps = Required<Pick<IMarkdownTableProps, 'theme'>> & Pick<IMarkdownTableProps, 'className'>;
+export type IMarkdownTableStyleProps = Required<Pick<IMarkdownTableProps, 'theme'>> &
+  Pick<IMarkdownTableProps, 'className'>;
 
 export interface IMarkdownTableStyles {
   root: IStyle;

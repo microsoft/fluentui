@@ -34,7 +34,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
   if (propsInterfaceOrEnumName) {
     regex = new RegExp(
       `^export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}(?:\\s+extends\\s+(?:.|\\s)*?)? \\{( |.*[\\r\\n]*)*?\\}`,
-      'm'
+      'm',
     );
     const regexResult = regex.exec(escapedSource);
     if (regexResult && regexResult.length > 0) {
@@ -44,12 +44,15 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
           name: propsInterfaceOrEnumName,
           propertyName: propsInterfaceOrEnumName + propertyNameSuffix(regexResult[1]),
           propertyType: propertyType(regexResult[1]),
-          property: parseInfo
-        }
+          property: parseInfo,
+        },
       ];
     }
   } else {
-    regex = new RegExp(`^export (interface|(?:const )?enum) (\\S*?)(?:\\s+extends\\s+(?:.|\\s)*?)? \\{( |.*[\\r\\n]*)*?\\}`, 'gm');
+    regex = new RegExp(
+      `^export (interface|(?:const )?enum) (\\S*?)(?:\\s+extends\\s+(?:.|\\s)*?)? \\{( |.*[\\r\\n]*)*?\\}`,
+      'gm',
+    );
     let regexResult: RegExpExecArray | null;
     const results: Array<IProperty> = [];
     while ((regexResult = regex.exec(escapedSource)) !== null) {
@@ -58,7 +61,7 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
         name: regexResult[2],
         propertyName: regexResult[2] + propertyNameSuffix(regexResult[1]),
         propertyType: propertyType(regexResult[1]),
-        property: parseInfo
+        property: parseInfo,
       });
     }
 

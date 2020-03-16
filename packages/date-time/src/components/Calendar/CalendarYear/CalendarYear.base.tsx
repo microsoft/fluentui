@@ -7,7 +7,7 @@ import {
   ICalendarYear,
   ICalendarYearHeaderProps,
   ICalendarYearStyleProps,
-  ICalendarYearStyles
+  ICalendarYearStyles,
 } from './CalendarYear.types';
 import { KeyCodes, getRTL, classNamesFunction, css, format, initializeComponentRef } from 'office-ui-fabric-react/lib/Utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
@@ -21,13 +21,13 @@ const CELLS_PER_ROW = 4;
 
 const DefaultCalendarYearStrings: ICalendarYearStrings = {
   prevRangeAriaLabel: undefined,
-  nextRangeAriaLabel: undefined
+  nextRangeAriaLabel: undefined,
 };
 
 const DefaultNavigationIcons: ICalendarIconStrings = {
   leftNavigation: 'Up',
   rightNavigation: 'Down',
-  closeIcon: 'CalculatorMultiply'
+  closeIcon: 'CalculatorMultiply',
 };
 
 export interface ICalendarYearState {
@@ -71,20 +71,30 @@ class CalendarYearGridCell extends React.Component<ICalendarYearGridCellProps, {
   }
 
   public render(): JSX.Element {
-    const { styles, theme, className, highlightCurrentYear, highlightSelectedYear, year, selected, disabled, onSelectYear } = this.props;
+    const {
+      styles,
+      theme,
+      className,
+      highlightCurrentYear,
+      highlightSelectedYear,
+      year,
+      selected,
+      disabled,
+      onSelectYear,
+    } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
       highlightCurrent: highlightCurrentYear,
-      highlightSelected: highlightSelectedYear
+      highlightSelected: highlightSelectedYear,
     });
 
     return (
       <button
         className={css(classNames.itemButton, {
           [classNames.selected]: selected,
-          [classNames.disabled]: disabled
+          [classNames.disabled]: disabled,
         })}
         type="button"
         role="gridcell"
@@ -145,7 +155,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
       theme: theme!,
       className: className,
       animateBackwards: animateBackwards,
-      animationDirection: animationDirection
+      animationDirection: animationDirection,
     });
 
     let year = fromYear;
@@ -210,7 +220,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
     });
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
@@ -227,7 +237,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
     return (
       <button
         className={css(classNames.navigationButton, {
-          [classNames.disabled]: disabled
+          [classNames.disabled]: disabled,
         })}
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
@@ -264,7 +274,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
     });
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
@@ -281,7 +291,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
     return (
       <button
         className={css(classNames.navigationButton, {
-          [classNames.disabled]: disabled
+          [classNames.disabled]: disabled,
         })}
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
@@ -318,7 +328,7 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
     });
 
     return (
@@ -332,14 +342,24 @@ class CalendarYearNav extends React.Component<ICalendarYearHeaderProps, {}> {
 
 class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className, fromYear, toYear, onHeaderSelect, strings, animateBackwards, animationDirection } = this.props;
+    const {
+      styles,
+      theme,
+      className,
+      fromYear,
+      toYear,
+      onHeaderSelect,
+      strings,
+      animateBackwards,
+      animationDirection,
+    } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
       hasHeaderClickCallback: !!this.props.onHeaderSelect,
       animateBackwards: animateBackwards,
-      animationDirection: animationDirection
+      animationDirection: animationDirection,
     });
 
     if (onHeaderSelect) {
@@ -351,7 +371,9 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           : (rangeAriaLabel as ICalendarYearRangeToString)(this.props)
         : undefined;
 
-      const ariaLabel = headerAriaLabelFormatString ? format(headerAriaLabelFormatString, currentDateRange) : currentDateRange;
+      const ariaLabel = headerAriaLabelFormatString
+        ? format(headerAriaLabelFormatString, currentDateRange)
+        : currentDateRange;
 
       return (
         <button
@@ -411,7 +433,7 @@ class CalendarYearHeader extends React.Component<ICalendarYearHeaderProps, {}> {
       className: className,
       hasHeaderClickCallback: !!this.props.onHeaderSelect,
       animateBackwards: animateBackwards,
-      animationDirection: animationDirection
+      animationDirection: animationDirection,
     });
 
     return (
@@ -439,12 +461,12 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<ICalendarYearProps>,
-    prevState: Readonly<ICalendarYearState>
+    prevState: Readonly<ICalendarYearState>,
   ): Partial<ICalendarYearState> | null {
     if (prevState && prevState.internalNavigate) {
       return {
         ...prevState,
-        internalNavigate: false
+        internalNavigate: false,
       };
     }
 
@@ -453,7 +475,10 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
     return {
       ...newState,
       animateBackwards:
-        prevState && (prevState.animateBackwards !== undefined ? prevState.animateBackwards : prevState.fromYear > newState.fromYear)
+        prevState &&
+        (prevState.animateBackwards !== undefined
+          ? prevState.animateBackwards
+          : prevState.fromYear > newState.fromYear),
     };
   }
 
@@ -465,7 +490,7 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
     return {
       fromYear: fromYear,
       navigatedYear: navigatedYear,
-      selectedYear: selectedYear
+      selectedYear: selectedYear,
     };
   };
 
@@ -488,7 +513,7 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className
+      className: className,
     });
 
     return (
@@ -506,7 +531,7 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
       previousFromYear: previousFromYear,
       fromYear: nextFromYear,
       animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear),
-      internalNavigate: true
+      internalNavigate: true,
     });
   };
 
@@ -517,7 +542,7 @@ export class CalendarYearBase extends React.Component<ICalendarYearProps, ICalen
       previousFromYear: previousFromYear,
       fromYear: nextFromYear,
       animateBackwards: this._computeAnimateBackwards(previousFromYear, nextFromYear),
-      internalNavigate: true
+      internalNavigate: true,
     });
   };
 

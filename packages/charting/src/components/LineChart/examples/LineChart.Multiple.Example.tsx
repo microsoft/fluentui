@@ -29,25 +29,25 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
         data: [{ x: new Date('2018/01/01'), y: 10 }],
         legend: 'First',
         color: DefaultPalette.blue,
-        onLegendClick: this._onLegendClickHandler
+        onLegendClick: this._onLegendClickHandler,
       },
       {
         data: [{ x: new Date('2018/03/15'), y: 30 }],
         legend: 'Second',
         color: DefaultPalette.green,
-        onLegendClick: this._onLegendClickHandler
+        onLegendClick: this._onLegendClickHandler,
       },
       {
         data: [{ x: new Date('2018/06/01'), y: 45 }],
         legend: 'Third',
         color: DefaultPalette.red,
-        onLegendClick: this._onLegendClickHandler
-      }
+        onLegendClick: this._onLegendClickHandler,
+      },
     ];
 
     const data: IChartProps = {
       chartTitle: 'Line Chart',
-      lineChartData: points
+      lineChartData: points,
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     const timeFormat = '%m/%d';
@@ -59,11 +59,17 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
       new Date('03-01-2018'),
       new Date('04-01-2018'),
       new Date('05-01-2018'),
-      new Date('06-01-2018')
+      new Date('06-01-2018'),
     ];
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} tickFormat={timeFormat} tickValues={tickValues} enabledLegendsWrapLines={true} />
+        <LineChart
+          data={data}
+          strokeWidth={4}
+          tickFormat={timeFormat}
+          tickValues={tickValues}
+          enabledLegendsWrapLines={true}
+        />
       </div>
     );
   }

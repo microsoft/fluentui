@@ -387,5 +387,5 @@ export enum AnimationDirection {
   /**
    * Grid will transition out and in vertically
    */
-  Vertical
+  Vertical,
 }

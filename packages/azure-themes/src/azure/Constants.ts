@@ -1,4 +1,9 @@
-import { ScreenWidthMaxMedium, ScreenWidthMaxSmall, ScreenWidthMinMedium, getScreenSelector } from 'office-ui-fabric-react/lib/Styling';
+import {
+  ScreenWidthMaxMedium,
+  ScreenWidthMaxSmall,
+  ScreenWidthMinMedium,
+  getScreenSelector,
+} from 'office-ui-fabric-react/lib/Styling';
 
 export const borderWidth = '1px';
 export const borderWidthError = '2px';
