@@ -6,7 +6,6 @@ import { ISettingsMap } from './warn/warn';
 import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequiredProps';
 import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
 import { warnDeprecations } from './warn/warnDeprecations';
-import { initializeFocusRects } from './initializeFocusRects';
 import { IRefObject } from './createRef';
 import { IBaseProps } from './BaseComponent.types';
 
@@ -48,10 +47,6 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
   // tslint:disable-next-line:no-any
   constructor(props: TProps, context?: any) {
     super(props, context);
-
-    // Ensure basic assumptions about the environment.
-    // tslint:disable-next-line:deprecation
-    initializeFocusRects();
 
     // tslint:disable-next-line:deprecation
     _makeAllSafe(this, BaseComponent.prototype, [
