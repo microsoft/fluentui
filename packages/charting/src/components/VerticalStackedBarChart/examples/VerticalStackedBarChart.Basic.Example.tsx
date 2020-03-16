@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalStackedBarChart } from '../VerticalStackedBarChart';
+import { VerticalStackedBarChart } from '@uifabric/charting/lib/VerticalStackedBarChart';
 import { IVSChartDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
