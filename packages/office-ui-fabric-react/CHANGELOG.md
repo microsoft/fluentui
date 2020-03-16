@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 13 Mar 2020 12:30:22 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Mar 2020 12:28:27 GMT and should not be manually modified.
 
+## 7.104.0
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Minor changes
+
+- BaseComponent: remove using BaseComponent from oufr package (xgao@microsoft.com)
 ## 7.103.0
 Fri, 13 Mar 2020 12:30:22 GMT
 
