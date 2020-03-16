@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { BaseComponent, getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import { getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties, initializeComponentRef } from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
-export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
+export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
   private _id: string;
 
   constructor(props: IGridProps) {
     super(props);
+
+    initializeComponentRef(this);
     this._id = props.id || getId();
   }
 

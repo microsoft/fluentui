@@ -1,17 +1,20 @@
 import * as React from 'react';
 
 import {
+  Async,
+  EventGroup,
   AutoScroll,
-  BaseComponent,
   IPoint,
   IRectangle,
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
-  getRTL
+  getRTL,
+  initializeComponentRef
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
+import {} from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>();
 
@@ -30,13 +33,15 @@ const MIN_DRAG_DISTANCE = 5;
  * fall within the bounds of the rectangle. The measure is memoized during the drag as a performance optimization
  * so if the items change sizes while dragging, that could cause incorrect results.
  */
-export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, IMarqueeSelectionState> {
+export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps, IMarqueeSelectionState> {
   public static defaultProps = {
     rootTagName: 'div',
     rootProps: {},
     isEnabled: true
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
   private _dragOrigin: IPoint | undefined;
   private _rootRect: IRectangle;
@@ -54,6 +59,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
   constructor(props: IMarqueeSelectionProps) {
     super(props);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
 
     this.state = {
       dragRect: undefined
@@ -78,6 +87,9 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     }
     delete this._scrollableParent;
     delete this._scrollableSurface;
+
+    this._events.dispose();
+    this._async.dispose();
   }
 
   public render(): JSX.Element {

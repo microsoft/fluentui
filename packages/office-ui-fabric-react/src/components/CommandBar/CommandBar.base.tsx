@@ -1,6 +1,5 @@
 import * as React from 'react';
-
-import { BaseComponent, css, nullRender } from '../../Utilities';
+import { css, nullRender } from '../../Utilities';
 import { ICommandBar, ICommandBarItemProps, ICommandBarProps, ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
 import { IOverflowSet, OverflowSet } from '../../OverflowSet';
 import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
@@ -8,7 +7,7 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { classNamesFunction } from '../../Utilities';
 import { CommandBarButton, IButtonProps } from '../../Button';
 import { TooltipHost } from '../../Tooltip';
-import { IComponentAs, getNativeProps, divProperties, composeComponentAs } from '@uifabric/utilities';
+import { IComponentAs, getNativeProps, divProperties, composeComponentAs, initializeComponentRef } from '@uifabric/utilities';
 import { mergeStyles, IStyle } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
@@ -36,7 +35,7 @@ export interface ICommandBarData {
   cacheKey: string;
 }
 
-export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
+export class CommandBarBase extends React.Component<ICommandBarProps, {}> implements ICommandBar {
   public static defaultProps: ICommandBarProps = {
     items: [],
     overflowItems: []
@@ -45,6 +44,12 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   private _overflowSet = React.createRef<IOverflowSet>();
   private _resizeGroup = React.createRef<IResizeGroup>();
   private _classNames: { [key in keyof ICommandBarStyles]: string };
+
+  constructor(props: ICommandBarProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const {
@@ -106,7 +111,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
         {/*Primary Items*/}
         <OverflowSet
           // tslint:disable-next-line:deprecation
-          componentRef={this._resolveRef('_overflowSet')}
+          componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           doNotContainWithinFocusZone={true}
           items={data.primaryItems}

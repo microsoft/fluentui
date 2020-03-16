@@ -1,12 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { ILink, ILinkProps, ILinkStyleProps, ILinkStyles } from './Link.types';
 import { KeytipData } from '../../KeytipData';
 
 const getClassNames = classNamesFunction<ILinkStyleProps, ILinkStyles>();
 
-export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
+export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
   private _link = React.createRef<HTMLAnchorElement | HTMLButtonElement | null>();
+
+  constructor(props: ILinkProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { disabled, children, className, href, theme, styles, keytipProps } = this.props;
