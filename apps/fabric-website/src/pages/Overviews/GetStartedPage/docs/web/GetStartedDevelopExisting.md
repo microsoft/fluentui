@@ -6,16 +6,16 @@ You can also add Fabric React to an existing project or use one of our starter k
 
 ### Add to existing project
 
-Fabric React is available via the `office-ui-fabric-react` [npm package](https://www.npmjs.com/package/office-ui-fabric-react). To use this package in an existing project:
+Fabric React is available via the `@fluentui/react` [npm package](https://www.npmjs.com/package/@fluentui/react). To use this package in an existing project:
 
 ```shell
 # with npm
-npm install office-ui-fabric-react
+npm install @fluentui/react
 
 # with yarn
-yarn add office-ui-fabric-react
+yarn add @fluentui/react
 ```
 
 ```jsx
-import { PrimaryButton } from 'office-ui-fabric-react';
+import { PrimaryButton } from '@fluentui/react';
 ```
