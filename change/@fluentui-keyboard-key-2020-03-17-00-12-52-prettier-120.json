@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "Run prettier on all files",
+  "packageName": "@fluentui/keyboard-key",
+  "email": "elcraig@microsoft.com",
+  "commit": "f3befc0bad68483270afcfbdaff4473cd68939cb",
+  "dependentChangeType": "patch",
+  "date": "2020-03-17T07:12:42.910Z"
+}
