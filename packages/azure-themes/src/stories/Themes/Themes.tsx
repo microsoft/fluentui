@@ -3,6 +3,7 @@ import { Customizer, DefaultButton, PrimaryButton, TextField, Stack, Fabric } fr
 import { AzureCustomizationsLight, AzureCustomizationsDark } from '../../index';
 
 const Example = () => (
+  // tslint:disable-next-line:jsx-ban-props
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 400 }}>
     <DefaultButton text="Hello, world" />
     <PrimaryButton text="Hello, world" />
