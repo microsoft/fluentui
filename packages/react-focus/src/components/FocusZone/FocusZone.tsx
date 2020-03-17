@@ -1,6 +1,5 @@
 import * as React from 'react';
-// @ts-ignore
-import * as keyboardKey from '@fluentui/keyboard-key';
+import keyboardKey from '@fluentui/keyboard-key';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
   css,
