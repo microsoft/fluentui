@@ -1,6 +1,6 @@
 ## Overview
 
-Fabric React components are built as production-ready, generalized, documented, and reusable components to be used in Microsoft products. This enables us and our partners to more easily build great applications without spending a ton of time implementing the same things over and over.
+Fluent UI React components are built as production-ready, generalized, documented, and reusable components to be used in Microsoft products. This enables us and our partners to more easily build great applications without spending a ton of time implementing the same things over and over.
 
 Each component is designed to be RTL-friendly, keyboard accessible, screen reader-friendly, themeable, and generalized. TypeScript definition files are also included, so if you use TypeScript (which isn't a requirement), you will get compiler validation and using an editor like VS Code, you'll get intellisense. Each component is exported as a named module that can be easily imported in your code, allowing your external bundler to create small bundles that include just what you need.
 
@@ -14,15 +14,14 @@ Within an npm project, you should install the package and save it as a dependenc
 npm install --save @fluentui/react
 ```
 
-This will add the fabric-react project as a dependency in your package.json file, and will drop the project under node_modules/@fluentui/react.
+This will add the `@fluentui/react` project as a dependency in your package.json file, and will drop the project under `node_modules/@fluentui/react`.
 
-The library includes commonjs entry points under the `lib-commonjs` folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the Fabric component is required to support RTL, keyboard focus and other features.
+The library includes commonjs entry points under the `lib-commonjs` folder. To use a control, you should be able to import it and use it in your render method. Note that wrapping your application in the `<Fabric>` component is required to support RTL, keyboard focus and other features.
 
 ```tsx
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Fabric } from '@fluentui/react/lib/Fabric';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Fabric, DefaultButton } from '@fluentui/react';
 
 const MyPage = () => (
   <Fabric>

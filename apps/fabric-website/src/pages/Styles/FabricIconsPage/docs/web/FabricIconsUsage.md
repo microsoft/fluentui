@@ -1,4 +1,4 @@
-You can use Fabric's icons in a few ways, depending on if you're using Fluent UI React or Fabric Core.
+You can use Fluent UI's icons in a few ways, depending on if you're using Fluent UI React or Fabric Core.
 
 ### Fluent UI React
 
@@ -15,7 +15,7 @@ By default, this will load the icon fonts from the CDN used by OneDrive, SharePo
 initializeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-For more details about what `initializeIcons` does, check out Fabric's [wiki page about icons](https://github.com/microsoft/fluentui/wiki/Using-icons).
+For more details about what `initializeIcons` does, check out Fluent UI's [wiki page about icons](https://github.com/microsoft/fluentui/wiki/Using-icons).
 
 Once you've initialized the icons, you can use the Icon component in your app like any other Fluent UI component:
 
@@ -55,4 +55,4 @@ Note the `aria-hidden` attribute, which prevents screen readers from reading the
 
 ### Fluent UI Icons tool
 
-The [Fluent UI Icons tool](https://aka.ms/uifabric-icons) lets you search and browse all of Fabric's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons several times a month, whereas the default Fluent UI set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/uifabric-icons?help.
+The [Fluent UI Icons tool](https://aka.ms/uifabric-icons) lets you search and browse all of Fluent UI's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons several times a month, whereas the default Fluent UI set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/uifabric-icons?help.

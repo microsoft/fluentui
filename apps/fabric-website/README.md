@@ -2,7 +2,7 @@
 
 **The official website for the Fluent UI project.**
 
-Fluent UI is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fabric.
+Fluent UI is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fluent UI.
 
 ## Build the website
 
