@@ -1,6 +1,6 @@
 import config from '../../../config';
 
-const reactPackageDist = (filePath: string) => config.paths.packageDist('react', 'es', filePath);
+const reactPackageDist = (filePath: string) => config.paths.packageDist('react-future', 'es', filePath);
 
 export const cyclesToSkip = [
   [
