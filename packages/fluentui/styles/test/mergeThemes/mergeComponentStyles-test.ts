@@ -5,7 +5,6 @@ import { mergeComponentStyles__PROD, mergeComponentStyles__DEV } from '../../src
 
 const styleParam: ComponentStyleFunctionParam = {
   disableAnimations: false,
-  displayName: 'Test',
   props: {},
   rtl: false,
   theme: emptyTheme,

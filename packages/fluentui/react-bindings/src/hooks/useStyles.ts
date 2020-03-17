@@ -58,7 +58,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
     className,
-    displayName,
+    displayNames: [displayName],
     props: {
       ...mapPropsToStyles(),
       ...mapPropsToInlineStyles()

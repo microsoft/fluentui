@@ -5,7 +5,8 @@ import {
   ContextualMenuItemType,
   IContextualMenuListProps,
   IContextualMenuStyleProps,
-  IContextualMenuStyles
+  IContextualMenuStyles,
+  IContextualMenuItemRenderProps
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
@@ -363,7 +364,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
                     items,
                     totalItemCount,
                     hasCheckmarks,
-                    hasIcons
+                    hasIcons,
+                    defaultMenuItemRenderer: this._renderMenuItem
                   },
                   this._onRenderMenuList
                 )}
@@ -450,14 +452,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          const menuItem = this._renderMenuItem(
-            item,
+          const menuItem = this._renderMenuItem({
+            ...item,
             index,
-            indexCorrection,
-            menuListProps.totalItemCount,
-            menuListProps.hasCheckmarks,
-            menuListProps.hasIcons
-          );
+            focusableElementIndex: indexCorrection,
+            totalItemCount: menuListProps.totalItemCount,
+            hasCheckmarks: menuListProps.hasCheckmarks,
+            hasIcons: menuListProps.hasIcons
+          });
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -468,18 +470,11 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   };
 
-  private _renderMenuItem(
-    item: IContextualMenuItem,
-    index: number,
-    focusableElementIndex: number,
-    totalItemCount: number,
-    hasCheckmarks: boolean,
-    hasIcons: boolean
-  ): React.ReactNode {
+  private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     // tslint:disable-next-line:deprecation
-    const { getItemClassNames, itemProps } = item;
+    const { getItemClassNames, itemProps, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = item;
     const styles = itemProps ? itemProps.styles : undefined;
 
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
@@ -564,7 +559,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     }
 
     return renderedItems;
-  }
+  };
 
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
@@ -605,7 +600,14 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, sectionProps.items.length, hasCheckmarks, hasIcons)
+                this._renderMenuItem({
+                  ...contextualMenuItem,
+                  index: itemsIndex,
+                  focusableElementIndex: itemsIndex,
+                  totalItemCount: sectionProps.items.length,
+                  hasCheckmarks,
+                  hasIcons
+                })
               )}
               {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
