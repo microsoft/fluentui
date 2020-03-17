@@ -25,7 +25,7 @@ View Fluent UI React's versioned release notes and component demos.
 
 <h3 id="sharepoint-framework-dev">SharePoint Framework</h3>
 
-SharePoint uses Fabric, so if you’re building on top of or within a SharePoint experience, you can be sure that your UI will blend in.
+SharePoint uses Fluent UI, so if you’re building on top of or within a SharePoint experience, you can be sure that your UI will blend in.
 
 <ul class="md-list--flex">
   <li class="mdut--half">[SharePoint Framework overview](https://aka.ms/spfx)</li>
