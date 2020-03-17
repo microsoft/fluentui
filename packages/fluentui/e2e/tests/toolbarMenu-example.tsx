@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react-experimental';
+import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react-future';
 
 export const selectors = {
   beforeToolbarId: 'before',

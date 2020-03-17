@@ -1,4 +1,4 @@
-import { List } from '@fluentui/react-experimental';
+import { List } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ListMinimalPerf = () => <List />;

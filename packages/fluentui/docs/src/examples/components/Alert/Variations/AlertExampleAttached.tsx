@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Input } from '@fluentui/react-experimental';
+import { Alert, Input } from '@fluentui/react-future';
 
 const AlertExampleShorthand = () => (
   <>

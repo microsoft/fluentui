@@ -1,4 +1,4 @@
-import { Table, Button, Flex, MenuButton } from '@fluentui/react-experimental';
+import { Table, Button, Flex, MenuButton } from '@fluentui/react-future';
 import { gridNestedBehavior, gridCellWithFocusableElementBehavior, gridCellMultipleFocusableBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 

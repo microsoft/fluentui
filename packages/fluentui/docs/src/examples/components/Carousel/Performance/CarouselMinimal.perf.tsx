@@ -1,4 +1,4 @@
-import { Carousel } from '@fluentui/react-experimental';
+import { Carousel } from '@fluentui/react-future';
 import * as React from 'react';
 
 const CarouselMinimalPerf = () => <Carousel />;

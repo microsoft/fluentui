@@ -73,7 +73,7 @@ declare module 'screener-runner' {
 
     // These ones are not actually part of screener-runner
 
-    /** Keys of `themes` object exported from `@fluentui/react-experimental/src/index`. */
+    /** Keys of `themes` object exported from `@fluentui/react-future/src/index`. */
     export type ScreenerThemeName = 'teams' | 'teamsDark' | 'teamsHighContrast';
 
     export type ScreenerStep = (steps: ScreenerStepBuilder, keys: ScreenerRunnerKeys) => ScreenerStepBuilder;

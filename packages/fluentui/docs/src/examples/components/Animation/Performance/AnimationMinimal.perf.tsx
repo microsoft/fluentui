@@ -1,4 +1,4 @@
-import { Animation } from '@fluentui/react-experimental';
+import { Animation } from '@fluentui/react-future';
 import * as React from 'react';
 
 const AnimationMinimalPerf = () => (

@@ -1,4 +1,4 @@
-import { Accessibility, Avatar, Chat, Menu, Provider, menuAsToolbarBehavior } from '@fluentui/react-experimental';
+import { Accessibility, Avatar, Chat, Menu, Provider, menuAsToolbarBehavior } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import cx from 'classnames';
 import * as React from 'react';

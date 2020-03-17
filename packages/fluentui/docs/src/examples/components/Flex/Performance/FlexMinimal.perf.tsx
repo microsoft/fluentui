@@ -1,4 +1,4 @@
-import { Flex } from '@fluentui/react-experimental';
+import { Flex } from '@fluentui/react-future';
 import * as React from 'react';
 
 const FlexMinimalPerf = () => <Flex />;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react-experimental';
+import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react-future';
 
 const IconExampleColor = () => (
   <Grid

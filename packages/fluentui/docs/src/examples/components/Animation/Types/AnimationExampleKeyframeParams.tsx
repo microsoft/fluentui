@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react-experimental';
+import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react-future';
 
 const colorChanger: ThemeAnimation<{ fromColor: string; toColor: string }> = {
   keyframe: ({ fromColor, toColor }) => ({

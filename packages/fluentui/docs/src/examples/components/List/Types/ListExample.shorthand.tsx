@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { List, Image } from '@fluentui/react-experimental';
+import { List, Image } from '@fluentui/react-future';
 import * as React from 'react';
 
 const items = [

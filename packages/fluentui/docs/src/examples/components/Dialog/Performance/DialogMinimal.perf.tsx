@@ -1,4 +1,4 @@
-import { Dialog } from '@fluentui/react-experimental';
+import { Dialog } from '@fluentui/react-future';
 import * as React from 'react';
 
 const DialogMinimalPerf = () => <Dialog />;

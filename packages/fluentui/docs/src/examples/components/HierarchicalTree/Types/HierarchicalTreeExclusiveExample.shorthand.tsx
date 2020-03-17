@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HierarchicalTree } from '@fluentui/react-experimental';
+import { HierarchicalTree } from '@fluentui/react-future';
 
 const items = [
   {

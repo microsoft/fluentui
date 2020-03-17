@@ -1,4 +1,4 @@
-import { Table } from '@fluentui/react-experimental';
+import { Table } from '@fluentui/react-future';
 import * as React from 'react';
 
 const TableMinimalPerf = () => <Table />;

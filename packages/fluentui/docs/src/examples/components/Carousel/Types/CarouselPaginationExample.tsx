@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Carousel, Image } from '@fluentui/react-experimental';
+import { Carousel, Image } from '@fluentui/react-future';
 
 const carouselItems = [
   {

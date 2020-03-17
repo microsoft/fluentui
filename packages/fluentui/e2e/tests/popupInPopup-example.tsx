@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Popup } from '@fluentui/react-experimental';
+import { Button, Popup } from '@fluentui/react-future';
 
 export const selectors = {
   popupContentId: 'popup-content-id',

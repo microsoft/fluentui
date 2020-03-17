@@ -1,6 +1,6 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
 import * as React from 'react';
-import { Button, Input, Popup, Flex } from '@fluentui/react-experimental';
+import { Button, Input, Popup, Flex } from '@fluentui/react-future';
 
 const PopupControlledExample = () => {
   const [open, setOpen] = useBooleanKnob({ name: 'open' });

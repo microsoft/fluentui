@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ImageProps } from '@fluentui/react-experimental';
+import { Image, ImageProps } from '@fluentui/react-future';
 
 export type LogoProps = ImageProps & {
   flavor?: 'black' | 'white' | 'inverted';

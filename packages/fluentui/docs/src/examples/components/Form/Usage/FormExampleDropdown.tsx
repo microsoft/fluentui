@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Dropdown, Button } from '@fluentui/react-experimental';
+import { Form, Dropdown, Button } from '@fluentui/react-future';
 
 const labelId = 'choose-friend-label';
 

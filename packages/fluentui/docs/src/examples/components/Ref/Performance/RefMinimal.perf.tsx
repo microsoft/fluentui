@@ -1,4 +1,4 @@
-import { Ref } from '@fluentui/react-experimental';
+import { Ref } from '@fluentui/react-future';
 import * as React from 'react';
 
 const RefMinimalPerf = () => (

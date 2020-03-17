@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Icon } from '@fluentui/react-experimental';
+import { Avatar, Icon } from '@fluentui/react-future';
 
 const AvatarExampleImageCustomizationShorthand = () => (
   <>

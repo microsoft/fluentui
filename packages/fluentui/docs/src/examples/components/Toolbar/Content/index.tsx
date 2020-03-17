@@ -1,4 +1,4 @@
-import { Alert } from '@fluentui/react-experimental';
+import { Alert } from '@fluentui/react-future';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 

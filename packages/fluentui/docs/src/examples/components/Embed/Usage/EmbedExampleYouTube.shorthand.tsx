@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Embed, Flex, Text } from '@fluentui/react-experimental';
+import { Embed, Flex, Text } from '@fluentui/react-future';
 
 const EmbedExampleYouTube = () => (
   <Flex column>

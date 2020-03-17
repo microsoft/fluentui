@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion } from '@fluentui/react-experimental';
+import { Accordion } from '@fluentui/react-future';
 
 const panels = [
   {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Status } from '@fluentui/react-experimental';
+import { Status } from '@fluentui/react-future';
 
 const StatusCustomExampleShorthand = () => (
   <div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextArea } from '@fluentui/react-experimental';
+import { TextArea } from '@fluentui/react-future';
 
 const TextAreaDisabledExample = () => <TextArea disabled placeholder="You can't type here" />;
 

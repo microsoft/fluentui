@@ -5,8 +5,8 @@
     "outDir": "dist/dts",
     "paths": {
       "docs/*": ["packages/fluentui/docs/*"],
-      "src/*": ["packages/fluentui/react-experimental/src/*"],
-      "test/*": ["packages/fluentui/react-experimental/test/*"]
+      "src/*": ["packages/fluentui/react-future/src/*"],
+      "test/*": ["packages/fluentui/react-future/test/*"]
     }
   },
   "include": ["src", "test"],

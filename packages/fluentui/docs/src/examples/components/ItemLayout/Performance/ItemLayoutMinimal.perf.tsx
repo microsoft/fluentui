@@ -1,4 +1,4 @@
-import { ItemLayout } from '@fluentui/react-experimental';
+import { ItemLayout } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ItemLayoutMinimalPerf = () => <ItemLayout />;

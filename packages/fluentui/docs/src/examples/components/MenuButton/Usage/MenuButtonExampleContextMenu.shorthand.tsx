@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Button, MenuButton } from '@fluentui/react-experimental';
+import { Alert, Button, MenuButton } from '@fluentui/react-future';
 
 const items = ['1', '2', '3', { content: 'submenu', menu: { items: ['4', '5'] } }];
 

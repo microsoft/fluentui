@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label } from '@fluentui/react-experimental';
+import { Label } from '@fluentui/react-future';
 
 const LabelExampleImageShorthand = () => <Label content="John Doe" image="public/images/avatar/small/matt.jpg" imagePosition="end" />;
 

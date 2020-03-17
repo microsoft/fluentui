@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header, Text } from '@fluentui/react-experimental';
+import { Header, Text } from '@fluentui/react-future';
 
 const titleStyle = {
   margin: 0

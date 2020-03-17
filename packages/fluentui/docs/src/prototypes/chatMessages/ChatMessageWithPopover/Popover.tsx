@@ -1,4 +1,4 @@
-import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react-experimental';
+import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react-future';
 import * as React from 'react';
 import cx from 'classnames';
 

@@ -1,4 +1,4 @@
-import { Divider } from '@fluentui/react-experimental';
+import { Divider } from '@fluentui/react-future';
 import * as React from 'react';
 
 const DividerMinimalPerf = () => <Divider />;

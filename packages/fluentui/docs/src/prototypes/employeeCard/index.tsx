@@ -1,6 +1,6 @@
 import * as React from 'react';
 import EmployeeCard from './EmployeeCard';
-import { Divider, Header } from '@fluentui/react-experimental';
+import { Divider, Header } from '@fluentui/react-future';
 import AvatarEmployeeCard from './AvatarEmployeeCard';
 
 class EmployeeCardPrototype extends React.Component<any, { popupOpen: boolean }> {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton as ButtonFabric } from 'office-ui-fabric-react';
-import { Button as ButtonFluent } from '@fluentui/react-experimental';
+import { Button as ButtonFluent } from '@fluentui/react-future';
 
 export default {
   iterations: 5000

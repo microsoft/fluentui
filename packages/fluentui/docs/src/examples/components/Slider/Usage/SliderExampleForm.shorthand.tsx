@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider, SliderProps, Flex, Form, Label } from '@fluentui/react-experimental';
+import { Slider, SliderProps, Flex, Form, Label } from '@fluentui/react-future';
 
 const CustomSlider: React.FunctionComponent<SliderProps> = props => {
   const [value, setValue] = React.useState<string>('35');

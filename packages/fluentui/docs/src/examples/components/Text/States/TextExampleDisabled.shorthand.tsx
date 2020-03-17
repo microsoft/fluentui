@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react-experimental';
+import { Text } from '@fluentui/react-future';
 
 const TextExampleDisabledShorthand = () => <Text disabled content="This feature has been disabled." />;
 

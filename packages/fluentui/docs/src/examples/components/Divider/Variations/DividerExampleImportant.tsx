@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider } from '@fluentui/react-experimental';
+import { Divider } from '@fluentui/react-future';
 
 const DividerExampleImportant = () => <Divider important>This is important</Divider>;
 

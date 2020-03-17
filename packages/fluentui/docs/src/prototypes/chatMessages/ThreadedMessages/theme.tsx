@@ -1,4 +1,4 @@
-import { ThemeInput, ChatItem, Input, Icon, Button, pxToRem } from '@fluentui/react-experimental';
+import { ThemeInput, ChatItem, Input, Icon, Button, pxToRem } from '@fluentui/react-future';
 import classNames from './classNames';
 
 const customizedTheme: ThemeInput = {

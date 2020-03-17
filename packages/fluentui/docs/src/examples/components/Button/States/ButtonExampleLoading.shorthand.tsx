@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button } from '@fluentui/react-experimental';
+import { Button } from '@fluentui/react-future';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
 const ButtonExampleLoading = () => {

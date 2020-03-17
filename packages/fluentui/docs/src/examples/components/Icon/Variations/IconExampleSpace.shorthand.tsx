@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Label } from '@fluentui/react-experimental';
+import { Icon, Label } from '@fluentui/react-future';
 
 const IconExampleSpace = () => (
   <div>

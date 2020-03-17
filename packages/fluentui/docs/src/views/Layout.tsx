@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Button, Box, Flex, Header, Segment, Divider } from '@fluentui/react-experimental';
+import { Button, Box, Flex, Header, Segment, Divider } from '@fluentui/react-future';
 
 import ExampleSnippet from '../components/ExampleSnippet';
 import DocPage from '../components/DocPage';
@@ -45,7 +45,7 @@ export default () => (
     <CodeSnippet
       label="OpaqueBackground.jsx"
       value={`
-        import { Segment } from '@fluentui/react-experimental'
+        import { Segment } from '@fluentui/react-future'
 
         const OpaqueBackground = ({ children, color }) =>
           <Segment styles={{ backgroundColor: color }} content={{ children }} />
@@ -63,7 +63,7 @@ export default () => (
     <CodeSnippet
       label="RelativePositioned.jsx"
       value={`
-        import { Box } from '@fluentui/react-experimental'
+        import { Box } from '@fluentui/react-future'
 
         const RelativePositioned = ({ children, top, right, bottom, left }) =>
           <Box styles={{ position: 'relative', top, right, bottom, left }} content={children} />

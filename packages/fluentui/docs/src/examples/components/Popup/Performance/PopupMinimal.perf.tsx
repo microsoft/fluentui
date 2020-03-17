@@ -1,4 +1,4 @@
-import { Popup } from '@fluentui/react-experimental';
+import { Popup } from '@fluentui/react-future';
 import * as React from 'react';
 
 const PopupMinimalPerf = () => <Popup />;

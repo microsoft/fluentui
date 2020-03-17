@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Provider, Text, Button, Menu, Ref } from '@fluentui/react-experimental';
+import { Flex, Provider, Text, Button, Menu, Ref } from '@fluentui/react-future';
 import CopyToClipboard from './CopyToClipboard';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 import themeOverrides from './themeOverrides';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Button, Animation, Provider } from '@fluentui/react-experimental';
+import { Icon, Button, Animation, Provider } from '@fluentui/react-future';
 
 const spinner = {
   keyframe: {

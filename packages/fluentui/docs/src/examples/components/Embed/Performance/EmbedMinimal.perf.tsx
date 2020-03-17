@@ -1,4 +1,4 @@
-import { Embed } from '@fluentui/react-experimental';
+import { Embed } from '@fluentui/react-future';
 import * as React from 'react';
 
 const EmbedMinimalPerf = () => <Embed />;

@@ -1,4 +1,4 @@
-import { Checkbox, Flex } from '@fluentui/react-experimental';
+import { Checkbox, Flex } from '@fluentui/react-future';
 import * as React from 'react';
 
 const CheckboxExampleLabel = () => (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Slider, Button } from '@fluentui/react-experimental';
+import { Form, Slider, Button } from '@fluentui/react-future';
 
 const FormExampleSlider = () => (
   <Form onSubmit={() => alert('Form submitted')}>

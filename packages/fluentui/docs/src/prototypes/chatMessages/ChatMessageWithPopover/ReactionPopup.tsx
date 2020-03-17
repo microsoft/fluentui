@@ -1,6 +1,6 @@
 import * as React from 'react';
 import keyboardKey from 'keyboard-key';
-import { Popup, Menu, Reaction, ReactionProps } from '@fluentui/react-experimental';
+import { Popup, Menu, Reaction, ReactionProps } from '@fluentui/react-future';
 
 const getAriaLabel = ({ content: numberOfPersons, icon: emojiType }: ReactionProps) => {
   if (numberOfPersons === 1) {

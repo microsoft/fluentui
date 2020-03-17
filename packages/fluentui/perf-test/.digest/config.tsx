@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, themes } from '@fluentui/react-experimental';
+import { Provider, themes } from '@fluentui/react-future';
 
 const reqContexts = [
   // TODO: Relative pathing isn't the best here, but docs containing perf stories isn't a package that can be added as a dep.

@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 
-import { Provider, Telemetry, themes } from '@fluentui/react-experimental';
+import { Provider, Telemetry, themes } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';

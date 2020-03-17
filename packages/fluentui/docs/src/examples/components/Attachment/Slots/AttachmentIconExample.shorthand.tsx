@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Attachment } from '@fluentui/react-experimental';
+import { Attachment } from '@fluentui/react-future';
 
 const AttachmentIconExampleShorthand = () => (
   <div>

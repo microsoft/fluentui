@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from '@fluentui/react-experimental';
+import { Icon } from '@fluentui/react-future';
 
 const IconExampleDisabled = () => (
   <div>

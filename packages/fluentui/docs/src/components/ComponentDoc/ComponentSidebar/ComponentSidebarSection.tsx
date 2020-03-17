@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Icon, HierarchicalTree } from '@fluentui/react-experimental';
+import { Icon, HierarchicalTree } from '@fluentui/react-future';
 
 import { examplePathToHash } from '../../../utils';
 

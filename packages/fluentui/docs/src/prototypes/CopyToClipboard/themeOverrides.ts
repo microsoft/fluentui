@@ -1,4 +1,4 @@
-import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react-experimental';
+import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react-future';
 
 type ThemeOverrides = ThemeInput & {
   componentStyles: {

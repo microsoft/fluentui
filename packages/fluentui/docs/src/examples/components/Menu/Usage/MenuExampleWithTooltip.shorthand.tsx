@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, Tooltip } from '@fluentui/react-experimental';
+import { Menu, Tooltip } from '@fluentui/react-future';
 
 const itemRenderer = (MenuItem, props) => {
   const { tooltip = '', ...rest } = props;

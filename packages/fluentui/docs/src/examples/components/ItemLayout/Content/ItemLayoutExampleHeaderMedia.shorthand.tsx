@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ItemLayout } from '@fluentui/react-experimental';
+import { ItemLayout } from '@fluentui/react-future';
 
 const ItemLayoutExampleHeaderMediaShorthand = () => <ItemLayout header="Irving Kuhic" headerMedia="7:26:56 AM" />;
 

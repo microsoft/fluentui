@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Header } from '@fluentui/react-experimental';
+import { Header } from '@fluentui/react-future';
 import { CodeSnippet } from '@fluentui/docs-components';
 
 import ComponentPropsTable from '../components/ComponentDoc/ComponentPropsTable';

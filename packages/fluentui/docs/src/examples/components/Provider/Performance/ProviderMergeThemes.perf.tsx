@@ -1,4 +1,4 @@
-import { mergeThemes, callable, ComponentStyleFunctionParam, themes } from '@fluentui/react-experimental';
+import { mergeThemes, callable, ComponentStyleFunctionParam, themes } from '@fluentui/react-future';
 import * as React from 'react';
 import * as _ from 'lodash';
 

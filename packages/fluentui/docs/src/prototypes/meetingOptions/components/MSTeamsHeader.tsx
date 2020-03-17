@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider } from '@fluentui/react-experimental';
+import { Provider } from '@fluentui/react-future';
 import { middleColumnStyles } from '../styles';
 
 export default props => {

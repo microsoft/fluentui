@@ -1,4 +1,4 @@
-import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-experimental';
+import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import * as React from 'react';
 

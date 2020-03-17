@@ -1,4 +1,4 @@
-import { TextArea } from '@fluentui/react-experimental';
+import { TextArea } from '@fluentui/react-future';
 import * as React from 'react';
 
 const TextAreaMinimalPerf = () => <TextArea />;

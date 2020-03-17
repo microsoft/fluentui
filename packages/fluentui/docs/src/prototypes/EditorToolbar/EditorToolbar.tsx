@@ -14,7 +14,7 @@ import {
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
   ToolbarMenuItemShorthandKinds
-} from '@fluentui/react-experimental';
+} from '@fluentui/react-future';
 import { useEventListener } from '@fluentui/react-component-event-listener';
 import * as keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';

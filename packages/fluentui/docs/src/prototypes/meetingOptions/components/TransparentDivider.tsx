@@ -1,4 +1,4 @@
-import { Divider } from '@fluentui/react-experimental';
+import { Divider } from '@fluentui/react-future';
 
 export default props => {
   return Divider.create(props, {

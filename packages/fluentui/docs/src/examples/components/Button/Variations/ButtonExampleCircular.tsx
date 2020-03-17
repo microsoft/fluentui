@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Icon } from '@fluentui/react-experimental';
+import { Button, Flex, Icon } from '@fluentui/react-future';
 
 const ButtonExampleCircular = () => (
   <Flex gap="gap.smaller">

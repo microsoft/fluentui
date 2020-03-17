@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Flex, Icon, constants } from '@fluentui/react-experimental';
+import { Flex, Icon, constants } from '@fluentui/react-future';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {

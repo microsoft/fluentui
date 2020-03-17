@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Divider, Header, Icon, themes } from '@fluentui/react-experimental';
+import { Grid, Divider, Header, Icon, themes } from '@fluentui/react-future';
 
 const cellStyles = {
   margin: '10px 0'

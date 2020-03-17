@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Video, Text, Flex } from '@fluentui/react-experimental';
+import { Video, Text, Flex } from '@fluentui/react-future';
 
 const VideoExample = () => (
   <Flex column>

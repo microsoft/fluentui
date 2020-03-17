@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react-experimental';
+import { Menu } from '@fluentui/react-future';
 import * as React from 'react';
 
 const MenuMinimalPerf = () => <Menu />;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SplitButton } from '@fluentui/react-experimental';
+import { SplitButton } from '@fluentui/react-future';
 
 const items = [
   {

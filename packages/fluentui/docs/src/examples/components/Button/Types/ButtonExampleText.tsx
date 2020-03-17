@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon } from '@fluentui/react-experimental';
+import { Button, Icon } from '@fluentui/react-future';
 
 const ButtonExampleText = () => (
   <div>

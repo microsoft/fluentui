@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu } from '@fluentui/react-experimental';
+import { Menu } from '@fluentui/react-future';
 
 const items = [
   { key: 'editorials', content: 'افتتاحيات' },

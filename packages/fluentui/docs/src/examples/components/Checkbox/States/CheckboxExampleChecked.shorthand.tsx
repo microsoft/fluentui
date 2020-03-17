@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { Checkbox } from '@fluentui/react-experimental';
+import { Checkbox } from '@fluentui/react-future';
 import * as React from 'react';
 
 const CheckboxExampleChecked = () => {

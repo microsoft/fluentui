@@ -1,4 +1,4 @@
-import { Image, Button } from '@fluentui/react-experimental';
+import { Image, Button } from '@fluentui/react-future';
 
 import * as React from 'react';
 

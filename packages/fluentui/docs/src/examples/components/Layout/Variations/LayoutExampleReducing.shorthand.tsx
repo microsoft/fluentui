@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout } from '@fluentui/react-experimental';
+import { Layout } from '@fluentui/react-future';
 
 const LayoutExampleReducing = () => (
   <div>

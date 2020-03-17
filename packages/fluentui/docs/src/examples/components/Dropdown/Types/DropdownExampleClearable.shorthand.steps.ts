@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react-experimental';
+import { Dropdown } from '@fluentui/react-future';
 
 const selectors = {
   clearIndicator: `.${Dropdown.slotClassNames.clearIndicator}`,

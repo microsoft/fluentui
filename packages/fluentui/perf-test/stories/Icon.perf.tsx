@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FontIcon as IconFabric, initializeIcons } from 'office-ui-fabric-react';
-import { Icon as IconFluent } from '@fluentui/react-experimental';
+import { Icon as IconFluent } from '@fluentui/react-future';
 
 initializeIcons();
 

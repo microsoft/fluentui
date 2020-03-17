@@ -1,4 +1,4 @@
-import { Label } from '@fluentui/react-experimental';
+import { Label } from '@fluentui/react-future';
 import * as React from 'react';
 
 const LabelMinimalPerf = () => <Label />;

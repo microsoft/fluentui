@@ -1,4 +1,4 @@
-import { Header } from '@fluentui/react-experimental';
+import { Header } from '@fluentui/react-future';
 import * as React from 'react';
 
 const HeaderMinimalPerf = () => <Header />;

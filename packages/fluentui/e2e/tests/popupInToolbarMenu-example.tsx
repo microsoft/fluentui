@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, ToolbarItemShorthandKinds, Input, ToolbarMenu } from '@fluentui/react-experimental';
+import { Toolbar, ToolbarItemShorthandKinds, Input, ToolbarMenu } from '@fluentui/react-future';
 
 export const selectors = {
   toolbarMenu: ToolbarMenu.className,

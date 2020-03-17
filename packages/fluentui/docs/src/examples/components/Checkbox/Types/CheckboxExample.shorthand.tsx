@@ -1,4 +1,4 @@
-import { Checkbox } from '@fluentui/react-experimental';
+import { Checkbox } from '@fluentui/react-future';
 import * as React from 'react';
 
 const CheckboxExample = () => (

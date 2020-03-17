@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table, Flex, Text, Icon } from '@fluentui/react-experimental';
+import { Table, Flex, Text, Icon } from '@fluentui/react-future';
 import { gridNestedBehavior } from '@fluentui/accessibility';
 
 type TableCellComparator<T> = (cell1: T, cell2: T) => number;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button } from '@fluentui/react-experimental';
+import { Form, Button } from '@fluentui/react-future';
 
 const fields = [
   {

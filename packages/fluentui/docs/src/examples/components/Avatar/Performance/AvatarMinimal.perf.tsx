@@ -1,4 +1,4 @@
-import { Avatar } from '@fluentui/react-experimental';
+import { Avatar } from '@fluentui/react-future';
 import * as React from 'react';
 
 const AvatarMinimalPerf = () => <Avatar />;

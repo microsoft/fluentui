@@ -1,4 +1,4 @@
-import { Provider, themes } from '@fluentui/react-experimental';
+import { Provider, themes } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { match } from 'react-router-dom';

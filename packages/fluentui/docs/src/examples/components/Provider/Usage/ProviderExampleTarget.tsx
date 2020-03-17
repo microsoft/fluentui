@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Attachment, Button, Provider, themes } from '@fluentui/react-experimental';
+import { Attachment, Button, Provider, themes } from '@fluentui/react-future';
 
 type PortalWindowProps = {
   children: (externalDocument: Document) => React.ReactElement;

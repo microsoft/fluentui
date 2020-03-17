@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-experimental';
+import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-future';
 
 const imageAltTags = {
   ade: 'Portrait of Ade',

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Text as TextFabric } from 'office-ui-fabric-react';
-import { Text as TextFluent } from '@fluentui/react-experimental';
+import { Text as TextFluent } from '@fluentui/react-future';
 
 export default {
   iterations: 5000

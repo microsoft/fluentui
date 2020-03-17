@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, Layout } from '@fluentui/react-experimental';
+import { Image, Layout } from '@fluentui/react-future';
 
 const ImageExampleFluent = () => (
   <div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Grid, SizeValue } from '@fluentui/react-experimental';
+import { Avatar, Grid, SizeValue } from '@fluentui/react-future';
 
 const statusProps = {
   icon: 'icon-checkmark',

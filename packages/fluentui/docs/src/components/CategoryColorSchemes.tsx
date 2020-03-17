@@ -8,7 +8,7 @@ import {
   Header,
   HeaderProps,
   ShorthandCollection
-} from '@fluentui/react-experimental';
+} from '@fluentui/react-future';
 
 import ColorBox from './ColorBox';
 

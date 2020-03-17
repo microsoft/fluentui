@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Segment, ProviderConsumer } from '@fluentui/react-experimental';
+import { Segment, ProviderConsumer } from '@fluentui/react-future';
 
 const SegmentExampleColor = () => (
   <ProviderConsumer

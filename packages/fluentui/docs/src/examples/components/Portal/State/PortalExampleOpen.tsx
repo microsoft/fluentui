@@ -1,6 +1,6 @@
 import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useBooleanKnob, useLogKnob } from '@fluentui/docs-components';
-import { Button, Header, Portal } from '@fluentui/react-experimental';
+import { Button, Header, Portal } from '@fluentui/react-future';
 import * as React from 'react';
 
 const PortalExampleOpen = () => {

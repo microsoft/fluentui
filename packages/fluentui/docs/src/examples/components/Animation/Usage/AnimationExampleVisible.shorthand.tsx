@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, Animation, Button, Icon } from '@fluentui/react-experimental';
+import { Provider, Animation, Button, Icon } from '@fluentui/react-future';
 import { useLogKnob } from '@fluentui/docs-components';
 
 const AnimationExampleVisible = () => {

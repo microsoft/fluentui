@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, Popup, Button } from '@fluentui/react-experimental';
+import { Menu, Popup, Button } from '@fluentui/react-future';
 
 export const selectors = {
   menuId: 'menu',

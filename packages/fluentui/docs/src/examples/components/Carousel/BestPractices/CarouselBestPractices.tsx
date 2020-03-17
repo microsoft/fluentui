@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, Box } from '@fluentui/react-experimental';
+import { Text, Box } from '@fluentui/react-future';
 import { link } from '../../../../utils/helpers';
 
 import ComponentBestPractices from 'docs/src/components/ComponentBestPractices';

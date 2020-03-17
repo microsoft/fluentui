@@ -1,4 +1,4 @@
-import { List, Avatar } from '@fluentui/react-experimental';
+import { List, Avatar } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import * as React from 'react';
 

@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react-experimental';
+import { Button } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ButtonMinimalPerf = () => <Button />;

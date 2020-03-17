@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar } from '@fluentui/react-experimental';
+import { Toolbar } from '@fluentui/react-future';
 
 const ToolbarExampleRadioGroupShorthand = () => {
   const [bulletListActive, setBulletListActive] = React.useState(false);

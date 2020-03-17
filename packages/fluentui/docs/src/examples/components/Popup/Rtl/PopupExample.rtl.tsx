@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Popup, Text } from '@fluentui/react-experimental';
+import { Button, Popup, Text } from '@fluentui/react-future';
 
 const PopupExampleRtl = () => (
   <Popup

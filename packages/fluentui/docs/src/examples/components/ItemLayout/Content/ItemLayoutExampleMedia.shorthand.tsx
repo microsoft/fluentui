@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ItemLayout, Image } from '@fluentui/react-experimental';
+import { ItemLayout, Image } from '@fluentui/react-future';
 
 const ItemLayoutExampleMediaShorthand = () => (
   <ItemLayout

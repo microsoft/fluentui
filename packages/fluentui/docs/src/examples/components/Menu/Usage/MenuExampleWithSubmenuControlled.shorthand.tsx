@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, Header } from '@fluentui/react-experimental';
+import { Menu, Header } from '@fluentui/react-future';
 
 class MenuWithSubmenuControlledExample extends React.Component {
   state = { menuOpen: false };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeThemes, Provider, themes } from '@fluentui/react-experimental';
+import { mergeThemes, Provider, themes } from '@fluentui/react-future';
 
 const ProviderExampleShorthand = () => (
   <Provider

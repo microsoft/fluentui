@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table, tableHeaderCellBehavior } from '@fluentui/react-experimental';
+import { Table, tableHeaderCellBehavior } from '@fluentui/react-future';
 
 const StaticTable = () => (
   <Table aria-label="table">

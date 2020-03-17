@@ -1,14 +1,5 @@
 import { useSelectKnob, useStringKnob } from '@fluentui/docs-components';
-import {
-  AvatarProps,
-  BoxProps,
-  DialogProps,
-  DividerProps,
-  EmbedProps,
-  IconProps,
-  ImageProps,
-  VideoProps
-} from '@fluentui/react-experimental';
+import { AvatarProps, BoxProps, DialogProps, DividerProps, EmbedProps, IconProps, ImageProps, VideoProps } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import * as faker from 'faker';
 

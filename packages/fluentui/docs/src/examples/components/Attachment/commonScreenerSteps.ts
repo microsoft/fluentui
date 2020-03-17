@@ -1,4 +1,4 @@
-import { Attachment } from '@fluentui/react-experimental';
+import { Attachment } from '@fluentui/react-future';
 
 const selectors = {
   root: `.${Attachment.className}`,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Dropdown, Grid, Alignment, Position } from '@fluentui/react-experimental';
+import { Dropdown, Grid, Alignment, Position } from '@fluentui/react-future';
 import { useSelectKnob, useBooleanKnob } from '@fluentui/docs-components';
 
 const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];

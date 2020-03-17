@@ -1,4 +1,4 @@
-import { RadioGroup } from '@fluentui/react-experimental';
+import { RadioGroup } from '@fluentui/react-future';
 import * as React from 'react';
 
 const RadioGroupMinimalPerf = () => <RadioGroup />;

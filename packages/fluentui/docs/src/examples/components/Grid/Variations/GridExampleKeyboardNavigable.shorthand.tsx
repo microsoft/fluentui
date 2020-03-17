@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Image, Button, Text, Label, gridBehavior, gridHorizontalBehavior } from '@fluentui/react-experimental';
+import { Grid, Image, Button, Text, Label, gridBehavior, gridHorizontalBehavior } from '@fluentui/react-future';
 import * as _ from 'lodash';
 
 const imageNames = [

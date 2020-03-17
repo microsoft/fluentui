@@ -1,4 +1,4 @@
-import { callable, Grid, Header, Segment, ProviderContextPrepared, ThemeComponentVariablesPrepared } from '@fluentui/react-experimental';
+import { callable, Grid, Header, Segment, ProviderContextPrepared, ThemeComponentVariablesPrepared } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import * as React from 'react';
 // @ts-ignore

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Grid, Popup } from '@fluentui/react-experimental';
+import { Button, Grid, Popup } from '@fluentui/react-future';
 
 const PopupWithButton = props => (
   <Popup

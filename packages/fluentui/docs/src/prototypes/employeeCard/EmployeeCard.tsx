@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, Divider, Extendable, Grid, ShorthandValue } from '@fluentui/react-experimental';
+import { Avatar, AvatarProps, Divider, Extendable, Grid, ShorthandValue } from '@fluentui/react-future';
 import CustomText from './CustomText';
 
 export interface EmployeeCardProps {

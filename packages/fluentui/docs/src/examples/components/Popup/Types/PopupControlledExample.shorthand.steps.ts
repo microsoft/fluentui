@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react-experimental';
+import { Button } from '@fluentui/react-future';
 
 const selectors = {
   triggerButton: `.${Button.className}[title*="Open popup"]`,

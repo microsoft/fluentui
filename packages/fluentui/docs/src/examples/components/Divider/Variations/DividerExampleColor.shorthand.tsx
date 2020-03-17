@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Divider, ProviderConsumer } from '@fluentui/react-experimental';
+import { Divider, ProviderConsumer } from '@fluentui/react-future';
 
 const DividerExampleColor = () => (
   <ProviderConsumer

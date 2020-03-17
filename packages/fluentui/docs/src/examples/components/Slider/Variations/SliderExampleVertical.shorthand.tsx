@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Slider } from '@fluentui/react-experimental';
+import { Slider } from '@fluentui/react-future';
 
 const SliderExampleVerticalShorthand = () => <Slider vertical />;
 

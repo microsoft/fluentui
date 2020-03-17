@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react-experimental';
+import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react-future';
 
 const items: ShorthandCollection<MenuItemProps> = [
   {

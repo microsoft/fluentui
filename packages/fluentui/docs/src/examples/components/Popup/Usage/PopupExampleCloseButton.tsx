@@ -1,6 +1,6 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
 import * as React from 'react';
-import { Button, Dropdown, Popup, Flex } from '@fluentui/react-experimental';
+import { Button, Dropdown, Popup, Flex } from '@fluentui/react-future';
 
 const inputItems = [
   {

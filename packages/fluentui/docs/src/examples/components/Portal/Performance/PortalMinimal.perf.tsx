@@ -1,4 +1,4 @@
-import { Portal } from '@fluentui/react-experimental';
+import { Portal } from '@fluentui/react-future';
 import * as React from 'react';
 
 const PortalMinimalPerf = () => <Portal />;

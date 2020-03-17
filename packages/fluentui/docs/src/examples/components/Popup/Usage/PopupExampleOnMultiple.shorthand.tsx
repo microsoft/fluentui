@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Button, Flex, Popup } from '@fluentui/react-experimental';
+import { Alert, Button, Flex, Popup } from '@fluentui/react-future';
 
 class PopupExampleOnMultiple extends React.Component {
   state = { alert: false };

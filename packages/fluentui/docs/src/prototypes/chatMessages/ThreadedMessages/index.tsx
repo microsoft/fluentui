@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Chat, ChatItemProps, ShorthandCollection, Avatar, Provider } from '@fluentui/react-experimental';
+import { Chat, ChatItemProps, ShorthandCollection, Avatar, Provider } from '@fluentui/react-future';
 import ThreadedMessage from './ThreadedMessage';
 import threadChatBehavior from './threadChatBehavior';
 import { janeAvatar, replies } from './mockData';

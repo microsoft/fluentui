@@ -1,5 +1,5 @@
 import { useNumberKnob } from '@fluentui/docs-components';
-import { SplitButton } from '@fluentui/react-experimental';
+import { SplitButton } from '@fluentui/react-future';
 import * as React from 'react';
 
 const items = [

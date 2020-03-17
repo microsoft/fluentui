@@ -1,4 +1,4 @@
-import { Status } from '@fluentui/react-experimental';
+import { Status } from '@fluentui/react-future';
 import * as React from 'react';
 
 const StatusMinimalPerf = () => <Status />;

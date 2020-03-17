@@ -1,5 +1,5 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { Layout } from '@fluentui/react-experimental';
+import { Layout } from '@fluentui/react-future';
 import * as React from 'react';
 
 const LayoutExampleGap = () => {

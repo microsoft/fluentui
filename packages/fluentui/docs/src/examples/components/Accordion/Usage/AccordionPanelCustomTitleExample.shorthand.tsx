@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion, Label, Layout } from '@fluentui/react-experimental';
+import { Accordion, Label, Layout } from '@fluentui/react-future';
 
 const AccordionPanelCustomTitleExample = () => {
   const panels = [

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Reaction } from '@fluentui/react-experimental';
+import { Reaction } from '@fluentui/react-future';
 
 const ReactionGroupExample = () => (
   <Reaction.Group

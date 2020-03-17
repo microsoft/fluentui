@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, ToolbarItem } from '@fluentui/react-experimental';
+import { Toolbar, ToolbarItem } from '@fluentui/react-future';
 
 export const selectors = {
   toolbarItem: ToolbarItem.className,

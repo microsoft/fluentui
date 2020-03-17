@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, Toolbar } from '@fluentui/react-experimental';
+import { Button, Text, Toolbar } from '@fluentui/react-future';
 
 const ToolbarExampleCustomContentShorthand = () => (
   <Toolbar

@@ -1,4 +1,4 @@
-import { chatMessageBehavior, Accessibility, FocusZoneTabbableElements, ChatMessageBehaviorProps } from '@fluentui/react-experimental';
+import { chatMessageBehavior, Accessibility, FocusZoneTabbableElements, ChatMessageBehaviorProps } from '@fluentui/react-future';
 import * as keyboardKey from 'keyboard-key';
 
 const threadedMessageBehavior: Accessibility<ChatMessageBehaviorProps> = props => {

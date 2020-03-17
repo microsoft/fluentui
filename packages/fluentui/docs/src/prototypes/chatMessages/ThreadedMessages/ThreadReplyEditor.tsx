@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 
-import { Button, Flex, Input, Toolbar, Ref, Chat } from '@fluentui/react-experimental';
+import { Button, Flex, Input, Toolbar, Ref, Chat } from '@fluentui/react-future';
 import { toolbarItems } from './mockData';
 import classNames from './classNames';
 

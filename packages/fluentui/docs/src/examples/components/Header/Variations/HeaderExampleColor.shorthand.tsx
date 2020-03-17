@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Header, ProviderConsumer } from '@fluentui/react-experimental';
+import { Header, ProviderConsumer } from '@fluentui/react-future';
 
 const HeaderExampleColor = () => (
   <ProviderConsumer

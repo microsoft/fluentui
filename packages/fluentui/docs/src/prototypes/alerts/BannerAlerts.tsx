@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Provider, RadioGroup, ThemeAnimation, RadioGroupItemProps, Header, Button } from '@fluentui/react-experimental';
+import { Flex, Provider, RadioGroup, ThemeAnimation, RadioGroupItemProps, Header, Button } from '@fluentui/react-future';
 
 import AnimatedBannerAlert from './AnimatedBannerAlert';
 import ComposeMessage from '../chatPane/composeMessage';

@@ -1,4 +1,4 @@
-import { Reaction } from '@fluentui/react-experimental';
+import { Reaction } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ReactionMinimalPerf = () => <Reaction />;

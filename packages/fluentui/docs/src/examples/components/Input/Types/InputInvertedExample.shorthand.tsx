@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Input } from '@fluentui/react-experimental';
+import { Grid, Input } from '@fluentui/react-future';
 
 const InputExample = () => (
   <div>

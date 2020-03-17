@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Image, Text, Header } from '@fluentui/react-experimental';
+import { Flex, Image, Text, Header } from '@fluentui/react-future';
 
 const FlexExampleMediaCard = () => (
   <Flex gap="gap.medium" padding="padding.medium" debug>

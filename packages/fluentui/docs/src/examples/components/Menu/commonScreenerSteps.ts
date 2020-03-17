@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react-experimental';
+import { Menu } from '@fluentui/react-future';
 
 interface StepsOptions {
   vertical?: boolean;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Ref, Segment } from '@fluentui/react-experimental';
+import { Grid, Ref, Segment } from '@fluentui/react-future';
 
 type RefForwardingExampleState = {
   isMounted: boolean;

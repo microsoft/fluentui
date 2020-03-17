@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Image } from '@fluentui/react-experimental';
+import { List, Image } from '@fluentui/react-future';
 
 const items = [
   {

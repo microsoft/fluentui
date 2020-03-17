@@ -1,4 +1,4 @@
-import { Checkbox } from '@fluentui/react-experimental';
+import { Checkbox } from '@fluentui/react-future';
 
 const getScreenerSteps = (): ScreenerSteps => [
   builder => builder.click(`.${Checkbox.className}`).snapshot('Checks checkbox'),

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react-experimental';
+import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react-future';
 
 const headerStyle: ICSSInJSStyle = {
   marginTop: '1.5em',

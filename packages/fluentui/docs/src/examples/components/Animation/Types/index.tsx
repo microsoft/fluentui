@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
 import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
-import { Segment } from '@fluentui/react-experimental';
+import { Segment } from '@fluentui/react-future';
 
 const Types = () => (
   <ExampleSection title="Types">

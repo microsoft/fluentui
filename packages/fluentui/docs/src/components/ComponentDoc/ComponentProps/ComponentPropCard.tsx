@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ComponentTableProps from '../ComponentPropsTable';
-import { Divider, ICSSInJSStyle, Segment } from '@fluentui/react-experimental';
+import { Divider, ICSSInJSStyle, Segment } from '@fluentui/react-future';
 
 export const cardStyle: ICSSInJSStyle = {
   boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'

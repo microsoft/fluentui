@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header } from '@fluentui/react-experimental';
+import { Header } from '@fluentui/react-future';
 
 const HeadersExampleShorthand = () => (
   <div>

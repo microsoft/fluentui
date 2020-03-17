@@ -3,7 +3,7 @@ import * as React from 'react';
 import { KnobsSnippet } from '@fluentui/code-sandbox';
 import { Telemetry } from '@fluentui/react-bindings';
 import { KnobProvider, useBooleanKnob, useSelectKnob, KnobInspector } from '@fluentui/docs-components';
-import { Provider, Flex, themes, mergeThemes } from '@fluentui/react-experimental';
+import { Provider, Flex, themes, mergeThemes } from '@fluentui/react-future';
 
 import { darkThemeOverrides } from './darkThemeOverrides';
 import { highContrastThemeOverrides } from './highContrastThemeOverrides';

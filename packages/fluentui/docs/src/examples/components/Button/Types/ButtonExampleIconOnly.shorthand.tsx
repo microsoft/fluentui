@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Text } from '@fluentui/react-experimental';
+import { Button, Flex, Text } from '@fluentui/react-future';
 
 const ButtonExampleIconOnly = () => (
   <div>

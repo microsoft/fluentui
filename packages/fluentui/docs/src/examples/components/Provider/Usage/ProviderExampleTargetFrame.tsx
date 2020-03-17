@@ -1,4 +1,4 @@
-import { Attachment, Button, Provider, themes } from '@fluentui/react-experimental';
+import { Attachment, Button, Provider, themes } from '@fluentui/react-future';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 

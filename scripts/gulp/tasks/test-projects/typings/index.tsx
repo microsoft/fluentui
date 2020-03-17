@@ -1,4 +1,4 @@
-import * as FluentUI from '@fluentui/react-experimental';
+import * as FluentUI from '@fluentui/react-future';
 import * as React from 'react';
 
 const App = () => (

@@ -1,4 +1,4 @@
-import { Provider } from '@fluentui/react-experimental';
+import { Provider } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ProviderMinimalPerf = () => <Provider />;

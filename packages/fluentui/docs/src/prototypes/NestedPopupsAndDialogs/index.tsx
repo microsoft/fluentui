@@ -1,4 +1,4 @@
-import { Button, Dialog, Popup } from '@fluentui/react-experimental';
+import { Button, Dialog, Popup } from '@fluentui/react-future';
 import * as React from 'react';
 
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';

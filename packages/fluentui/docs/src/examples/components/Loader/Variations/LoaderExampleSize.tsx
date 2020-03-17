@@ -1,4 +1,4 @@
-import { Grid, Loader } from '@fluentui/react-experimental';
+import { Grid, Loader } from '@fluentui/react-future';
 import * as React from 'react';
 
 const LoaderExampleSize: React.FC = () => (

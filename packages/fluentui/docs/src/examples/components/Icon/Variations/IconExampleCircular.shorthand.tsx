@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Icon } from '@fluentui/react-experimental';
+import { Flex, Icon } from '@fluentui/react-future';
 
 const IconExampleCircular = () => (
   <Flex gap="gap.smaller">

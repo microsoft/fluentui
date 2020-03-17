@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RadioGroup } from '@fluentui/react-experimental';
+import { RadioGroup } from '@fluentui/react-future';
 
 const handleChange = () => {
   alert('The radio checked value was changed!');

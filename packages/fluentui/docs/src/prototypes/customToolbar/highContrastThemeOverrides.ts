@@ -1,4 +1,4 @@
-import { ThemeInput } from '@fluentui/react-experimental';
+import { ThemeInput } from '@fluentui/react-future';
 import { CustomToolbarVariables } from './darkThemeOverrides';
 
 export const highContrastThemeOverrides: ThemeInput = {

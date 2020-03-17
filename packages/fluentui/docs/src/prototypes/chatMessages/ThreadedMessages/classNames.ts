@@ -1,4 +1,4 @@
-import { Button, ChatMessage, ChatItem } from '@fluentui/react-experimental';
+import { Button, ChatMessage, ChatItem } from '@fluentui/react-future';
 
 const classNames = {
   threadedMessage: {

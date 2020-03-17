@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popup, Button, Divider, Text, Grid, Ref } from '@fluentui/react-experimental';
+import { Popup, Button, Divider, Text, Grid, Ref } from '@fluentui/react-future';
 
 const PopupCustomTargetExample: React.FC = () => {
   const [textRef, setTextRef] = React.useState<HTMLSpanElement | null>(null);

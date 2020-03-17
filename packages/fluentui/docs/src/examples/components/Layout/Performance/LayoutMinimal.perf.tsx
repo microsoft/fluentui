@@ -1,4 +1,4 @@
-import { Layout } from '@fluentui/react-experimental';
+import { Layout } from '@fluentui/react-future';
 import * as React from 'react';
 
 const LayoutMinimalPerf = () => <Layout />;

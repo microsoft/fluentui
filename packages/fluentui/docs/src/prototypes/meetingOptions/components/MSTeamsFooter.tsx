@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, Layout } from '@fluentui/react-experimental';
+import { Divider, Layout } from '@fluentui/react-future';
 
 export default props => {
   return (

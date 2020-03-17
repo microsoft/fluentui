@@ -1,4 +1,4 @@
-import { Input } from '@fluentui/react-experimental';
+import { Input } from '@fluentui/react-future';
 import * as React from 'react';
 
 const InputMinimalPerf = () => <Input />;

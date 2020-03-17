@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react-experimental';
-import themeWithProcessedIcons from '@fluentui/react-experimental/src/themes/teams/withProcessedIcons';
-import { TeamsProcessedSvgIconSpec } from '@fluentui/react-experimental/src/themes/teams/components/Icon/svg/types';
+import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react-future';
+import themeWithProcessedIcons from '@fluentui/react-future/src/themes/teams/withProcessedIcons';
+import { TeamsProcessedSvgIconSpec } from '@fluentui/react-future/src/themes/teams/components/Icon/svg/types';
 
 const cellStyles = {
   margin: '10px 0'

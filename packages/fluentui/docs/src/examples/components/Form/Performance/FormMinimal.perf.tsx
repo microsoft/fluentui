@@ -1,4 +1,4 @@
-import { Form } from '@fluentui/react-experimental';
+import { Form } from '@fluentui/react-future';
 import * as React from 'react';
 
 const FormMinimalPerf = () => <Form />;

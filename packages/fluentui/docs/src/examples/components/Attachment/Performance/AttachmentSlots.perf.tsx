@@ -1,4 +1,4 @@
-import { Attachment } from '@fluentui/react-experimental';
+import { Attachment } from '@fluentui/react-future';
 import * as React from 'react';
 
 const AttachmentSlotsPerf = () => (

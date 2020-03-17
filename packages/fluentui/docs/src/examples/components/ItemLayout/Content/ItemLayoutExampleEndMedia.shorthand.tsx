@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ItemLayout } from '@fluentui/react-experimental';
+import { ItemLayout } from '@fluentui/react-future';
 
 const ellipsis = <span>&hellip;</span>;
 

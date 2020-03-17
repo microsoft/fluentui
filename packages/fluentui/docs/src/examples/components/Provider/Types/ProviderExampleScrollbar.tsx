@@ -1,4 +1,4 @@
-import { Image } from '@fluentui/react-experimental';
+import { Image } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ProviderExampleScrollbar = () => (

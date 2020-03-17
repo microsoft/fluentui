@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TextArea } from '@fluentui/react-experimental';
+import { TextArea } from '@fluentui/react-future';
 import { useStringKnob } from '@fluentui/docs-components';
 
 const TextAreaValueExample: React.FC = () => {

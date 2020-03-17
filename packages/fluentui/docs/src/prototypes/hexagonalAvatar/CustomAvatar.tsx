@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from '@fluentui/react-experimental';
+import { Avatar, AvatarProps } from '@fluentui/react-future';
 
 const CustomAvatar = (props: AvatarProps & { hexagonal?: boolean }) => {
   const { hexagonal, ...rest } = props;

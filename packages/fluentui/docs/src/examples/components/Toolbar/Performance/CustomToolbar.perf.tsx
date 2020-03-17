@@ -22,7 +22,7 @@ import {
   mergeThemes,
   Tooltip,
   tooltipAsLabelBehavior
-} from '@fluentui/react-experimental';
+} from '@fluentui/react-future';
 
 type CustomStatusVariables = {
   isRecordingIndicator?: boolean;

@@ -1,6 +1,6 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
 import * as React from 'react';
-import { Button, MenuButton } from '@fluentui/react-experimental';
+import { Button, MenuButton } from '@fluentui/react-future';
 
 const MenuButtonOpenExample = () => {
   const [open, setOpen] = useBooleanKnob({ name: 'open' });

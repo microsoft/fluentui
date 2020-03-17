@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Label, Provider } from '@fluentui/react-experimental';
+import { Label, Provider } from '@fluentui/react-future';
 import * as _ from 'lodash';
 
 const LabelExampleColor = () => (

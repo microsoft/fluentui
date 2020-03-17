@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid } from '@fluentui/react-experimental';
+import { Grid } from '@fluentui/react-future';
 
 const GridExample = () => (
   <Grid columns={2}>

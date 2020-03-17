@@ -11,7 +11,7 @@ import {
   ToolbarItemShorthandKinds,
   SizeValue,
   ShorthandValue
-} from '@fluentui/react-experimental';
+} from '@fluentui/react-future';
 
 const tooltips = {
   videoOn: 'Turn camera off',

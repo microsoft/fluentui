@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Props } from '@fluentui/react-experimental';
+import { Flex, Props } from '@fluentui/react-future';
 import { ChatData } from './services';
 
 import ChatPaneHeader from './chatPaneHeader';

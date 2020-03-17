@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Input, Text } from '@fluentui/react-experimental';
+import { Grid, Input, Text } from '@fluentui/react-future';
 
 const inputStyles = { color: 'blue', background: 'yellow' };
 const InputExampleInputSlot = () => (

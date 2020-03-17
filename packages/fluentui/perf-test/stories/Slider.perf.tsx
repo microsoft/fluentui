@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Slider as SliderFabric } from 'office-ui-fabric-react';
-import { Slider as SliderFluent } from '@fluentui/react-experimental';
+import { Slider as SliderFluent } from '@fluentui/react-future';
 
 export default {
   iterations: 1000

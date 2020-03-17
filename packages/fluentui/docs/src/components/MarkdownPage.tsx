@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header } from '@fluentui/react-experimental';
+import { Header } from '@fluentui/react-future';
 import * as React from 'react';
 import { RouteProps } from 'react-router-dom';
 

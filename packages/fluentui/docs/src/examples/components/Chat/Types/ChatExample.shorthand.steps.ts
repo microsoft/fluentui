@@ -1,4 +1,4 @@
-import { ChatMessage } from '@fluentui/react-experimental';
+import { ChatMessage } from '@fluentui/react-future';
 
 const selectors = {
   message: `.${ChatMessage.className}`

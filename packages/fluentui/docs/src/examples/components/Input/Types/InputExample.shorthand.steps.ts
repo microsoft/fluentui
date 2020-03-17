@@ -1,4 +1,4 @@
-import { Input } from '@fluentui/react-experimental';
+import { Input } from '@fluentui/react-future';
 
 const config: ScreenerTestsConfig = {
   steps: [builder => builder.focus(`.${Input.className} input`).snapshot('Can be focused')],

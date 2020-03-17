@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Loader } from '@fluentui/react-experimental';
+import { Flex, Loader } from '@fluentui/react-future';
 
 const LoaderExampleRtl = () => (
   <Flex column gap="gap.medium">

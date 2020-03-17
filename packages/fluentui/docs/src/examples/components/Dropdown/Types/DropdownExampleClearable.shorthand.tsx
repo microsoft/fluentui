@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react-experimental';
+import { Dropdown } from '@fluentui/react-future';
 import * as React from 'react';
 
 const inputItems = [

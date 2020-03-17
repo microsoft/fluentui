@@ -1,6 +1,6 @@
 import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
-import { Toolbar } from '@fluentui/react-experimental';
+import { Toolbar } from '@fluentui/react-future';
 import * as React from 'react';
 
 const ToolbarExampleMenuShorthand = () => {

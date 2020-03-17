@@ -1,4 +1,4 @@
-import { ProviderContextPrepared, ColorVariants } from '@fluentui/react-experimental';
+import { ProviderContextPrepared, ColorVariants } from '@fluentui/react-future';
 import * as Color from 'color';
 import * as _ from 'lodash';
 import * as React from 'react';

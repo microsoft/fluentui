@@ -1,5 +1,5 @@
 import { useSelectKnob } from '@fluentui/docs-components';
-import * as FluentUI from '@fluentui/react-experimental';
+import * as FluentUI from '@fluentui/react-future';
 
 import componentInfoContext from '../../utils/componentInfoContext';
 import useComponentProps from './useComponentProps';

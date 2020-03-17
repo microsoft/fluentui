@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox, Divider, Flex } from '@fluentui/react-experimental';
+import { Checkbox, Divider, Flex } from '@fluentui/react-future';
 
 const CheckboxExampleRtl = () => (
   <Flex column hAlign="start">

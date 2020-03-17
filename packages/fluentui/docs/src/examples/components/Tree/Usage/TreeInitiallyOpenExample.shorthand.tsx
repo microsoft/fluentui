@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree } from '@fluentui/react-experimental';
+import { Tree } from '@fluentui/react-future';
 
 const items = [
   {

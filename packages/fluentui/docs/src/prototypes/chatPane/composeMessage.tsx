@@ -10,7 +10,7 @@ import {
   IconXSpacing,
   ICSSInJSStyle,
   Props
-} from '@fluentui/react-experimental';
+} from '@fluentui/react-future';
 
 import chatProtoStyle from './chatProtoStyle';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon, Flex } from '@fluentui/react-experimental';
+import { Button, Icon, Flex } from '@fluentui/react-future';
 
 const ButtonExampleContentAndIcon = () => (
   <Flex gap="gap.large">

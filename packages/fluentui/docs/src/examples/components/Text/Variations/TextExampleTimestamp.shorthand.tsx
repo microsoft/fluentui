@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react-experimental';
+import { Text } from '@fluentui/react-future';
 
 const TextExampleTimestampShorthand = () => <Text timestamp title="August 28, 2018 at 11:16PM" content="Yesterday 11:16PM" />;
 

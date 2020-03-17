@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Icon, Label, Provider, Header } from '@fluentui/react-experimental';
+import { Button, Icon, Label, Provider, Header } from '@fluentui/react-future';
 
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
@@ -40,7 +40,7 @@ export default () => (
     <ExampleSnippet
       value={`
         import React from 'react'
-        import { Button, Icon, Label, Provider, themes } from '@fluentui/react-experimental'
+        import { Button, Icon, Label, Provider, themes } from '@fluentui/react-future'
 
         export default () =>
          <Provider theme={themes.teams}>
@@ -73,7 +73,7 @@ export default () => (
     <ExampleSnippet
       value={`
         import React from 'react'
-        import { Button } from '@fluentui/react-experimental'
+        import { Button } from '@fluentui/react-future'
 
         const styles = {
           color: "coral",
@@ -113,7 +113,7 @@ export default () => (
     <ExampleSnippet
       value={`
         import React from 'react'
-        import { Button } from '@fluentui/react-experimental'
+        import { Button } from '@fluentui/react-future'
 
         const btnExample = () => (
         <Button
@@ -179,7 +179,7 @@ export default () => (
     <ExampleSnippet
       value={`
         import React from 'react'
-        import { Button, Icon, Label, Provider } from '@fluentui/react-experimental'
+        import { Button, Icon, Label, Provider } from '@fluentui/react-future'
 
         const theme = {
           siteVariables: {

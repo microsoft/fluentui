@@ -1,4 +1,4 @@
-import { TextArea } from '@fluentui/react-experimental';
+import { TextArea } from '@fluentui/react-future';
 
 const config: ScreenerTestsConfig = {
   steps: [builder => builder.focus(`.${TextArea.className}`).snapshot('Can be focused')],

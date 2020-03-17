@@ -1,5 +1,5 @@
 import { UseKnobOptions } from '@fluentui/docs-components';
-import { ThemePrepared } from '@fluentui/react-experimental';
+import { ThemePrepared } from '@fluentui/react-future';
 
 export type ExampleSource = {
   js: string;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react-experimental';
+import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react-future';
 
 const ToolbarExamplePopupInMenu = () => {
   const [menu1Open, setMenu1Open] = React.useState(false);

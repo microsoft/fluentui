@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, ICSSInJSStyle, Segment, Text } from '@fluentui/react-experimental';
+import { Divider, ICSSInJSStyle, Segment, Text } from '@fluentui/react-future';
 import * as _ from 'lodash';
 import ComponentExampleTitle from './ComponentExample/ComponentExampleTitle';
 import BehaviorDescription from './BehaviorDescription';
