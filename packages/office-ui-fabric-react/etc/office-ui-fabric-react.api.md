@@ -6119,13 +6119,13 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     optionalText?: string;
     presence?: PersonaPresence;
     presenceColors?: {
-        presenceColorAvailable: string;
-        presenceColorAway: string;
-        presenceColorBusy: string;
-        presenceColorDnd: string;
-        presenceColorOffline: string;
-        presenceColorOof: string;
-        presenceColorBackground: string;
+        available: string;
+        away: string;
+        busy: string;
+        dnd: string;
+        offline: string;
+        oof: string;
+        background: string;
     };
     presenceTitle?: string;
     // @deprecated
