@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/charting_v0.141.1",
+      "version": "0.141.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted",
+            "author": "v-satgar@microsoft.com",
+            "commit": "988c73430e51994f3703b3953b2516f5544ec4a7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Mar 2020 12:24:03 GMT",
       "tag": "@uifabric/charting_v0.141.0",
       "version": "0.141.0",

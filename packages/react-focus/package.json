@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "7.1.4",
+  "version": "7.1.6",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -47,11 +47,11 @@
     "react-test-renderer": "^16.3.0"
   },
   "dependencies": {
+    "@fluentui/keyboard-key": "0.1.0",
     "@uifabric/merge-styles": "^7.8.7",
     "@uifabric/set-version": "^7.0.6",
-    "@uifabric/styling": "^7.10.17",
-    "@uifabric/utilities": "^7.13.2",
-    "keyboard-key": "1.0.1",
+    "@uifabric/styling": "^7.10.19",
+    "@uifabric/utilities": "^7.14.1",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

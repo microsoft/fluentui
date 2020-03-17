@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '@uifabric/utilities';
+import {
+  KeyCodes,
+  classNamesFunction,
+  getId,
+  getNativeProps,
+  divProperties,
+  css,
+  initializeComponentRef,
+  Async
+} from '@uifabric/utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -34,7 +43,7 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   weekNumberFormatString: 'Week number {0}'
 };
 
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
@@ -77,8 +86,14 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _preventFocusOpeningPicker: boolean;
   private _id: string;
 
+  private _async: Async;
+
   constructor(props: IDatePickerProps) {
     super(props);
+
+    this._async = new Async(this);
+    initializeComponentRef(this);
+
     this.state = this._getDefaultState();
 
     this._id = props.id || getId('DatePicker');
@@ -139,6 +154,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         this.props.onAfterMenuDismiss();
       }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {

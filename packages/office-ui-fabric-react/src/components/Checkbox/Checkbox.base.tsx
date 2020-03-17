@@ -5,7 +5,7 @@ import {
   mergeAriaAttributeValues,
   initializeComponentRef,
   warnMutuallyExclusive,
-  initializeFocusRects
+  FocusRects
 } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
@@ -61,8 +61,6 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
       isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate)
     };
-
-    initializeFocusRects();
   }
 
   /**
@@ -105,6 +103,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (
           <div className={this._classNames.root} title={title}>
+            <FocusRects />
             <input
               type="checkbox"
               {...inputProps}

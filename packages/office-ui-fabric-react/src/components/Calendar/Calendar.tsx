@@ -4,7 +4,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { CalendarDay, ICalendarDay } from './CalendarDay';
 import { CalendarMonth, ICalendarMonth } from './CalendarMonth';
 import { compareDates, getDateRangeArray } from '../../utilities/dateMath/DateMath';
-import { css, BaseComponent, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
+import { css, KeyCodes, getNativeProps, divProperties, initializeComponentRef, FocusRects } from '../../Utilities';
 import * as stylesImport from './Calendar.scss';
 const styles: any = stylesImport;
 
@@ -43,7 +43,7 @@ export interface ICalendarState {
   isDayPickerVisible?: boolean;
 }
 
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
+export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
   public static defaultProps: ICalendarProps = {
     onSelectDate: undefined,
     onDismiss: undefined,
@@ -76,6 +76,9 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 
   constructor(props: ICalendarProps) {
     super(props);
+
+    initializeComponentRef(this);
+
     const currentDate = props.value && !isNaN(props.value.getTime()) ? props.value : props.today || new Date();
 
     this.state = {
@@ -244,6 +247,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
             </div>
           </div>
         </div>
+        <FocusRects />
       </div>
     );
   }

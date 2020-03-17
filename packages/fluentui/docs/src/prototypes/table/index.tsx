@@ -13,7 +13,6 @@ function handleRowClick(index) {
 const roleDropdown = {
   content: <Dropdown inline items={['Owner', 'Member']} defaultValue={'Owner'} />,
   truncateContent: false,
-  key: '1-6',
   accessibility: gridCellMultipleFocusableBehavior,
   onClick: e => e.stopPropagation()
 };
@@ -24,7 +23,6 @@ const tagButtons = {
       <Menu variables={{ horizontalPadding: '0.5rem 0.5rem' }} items={['tag 1', 'tag 2']} data-is-focusable={true} />
     </Flex>
   ),
-  key: '1-5',
   accessibility: gridCellMultipleFocusableBehavior
 };
 
@@ -43,7 +41,7 @@ const rowsMembers = [
       {
         content: (
           <Flex gap="gap.medium" vAlign="center">
-            <Avatar name="John Doe (Software Developer)" status="available" />
+            <Avatar name="John Doe (Software Developer)" status="success" />
             <Text>John Doe</Text>
           </Flex>
         ),
@@ -51,8 +49,8 @@ const rowsMembers = [
       },
       { content: 'SOFTWARE DEVELOPER', key: '1-3' },
       { content: 'PRAGUE', key: '1-4' },
-      tagButtons,
-      roleDropdown
+      { key: '1-5', ...tagButtons },
+      { key: '1-6', ...roleDropdown }
     ],
     onClick: () => handleRowClick(1)
   },
@@ -62,7 +60,7 @@ const rowsMembers = [
       {
         content: (
           <Flex gap="gap.medium" vAlign="center">
-            <Avatar name="John Smith" status="available" />
+            <Avatar name="John Smith" status="success" />
             <Text>John Smith</Text>
           </Flex>
         ),
@@ -70,8 +68,8 @@ const rowsMembers = [
       },
       { content: 'PROGRAM MANAGER', key: '2-3' },
       { content: 'PRAGUE', key: '2-4' },
-      tagButtons,
-      roleDropdown
+      { key: '2-5', ...tagButtons },
+      { key: '2-6', ...roleDropdown }
     ],
     onClick: () => handleRowClick(2)
   },
@@ -81,7 +79,7 @@ const rowsMembers = [
       {
         content: (
           <Flex gap="gap.medium" vAlign="center">
-            <Avatar name="Bruce Wayne" status="available" />
+            <Avatar name="Bruce Wayne" status="success" />
             <Text>Bruce Wayne</Text>
           </Flex>
         ),
@@ -89,8 +87,8 @@ const rowsMembers = [
       },
       { content: 'BATMAN', key: '3-3' },
       { content: 'GOTHAM CITY', key: '3-4' },
-      {},
-      roleDropdown
+      { key: '3-5' },
+      { key: '3-6', ...roleDropdown }
     ],
     onClick: () => handleRowClick(3)
   }

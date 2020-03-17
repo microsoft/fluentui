@@ -1,7 +1,26 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 10 Mar 2020 12:25:14 GMT and should not be manually modified.
+This log was last generated on Mon, 16 Mar 2020 12:28:27 GMT and should not be manually modified.
 
+## 7.104.0
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Minor changes
+
+- BaseComponent: remove using BaseComponent from oufr package (xgao@microsoft.com)
+## 7.103.0
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Minor changes
+
+- KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips (chiechan@microsoft.com)
+## 7.102.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+- withResponsiveMode: Add initializeResponsiveMode render performance optimization (KevinTCoughlin@users.noreply.github.com)
 ## 7.101.0
 Tue, 10 Mar 2020 12:25:14 GMT
 

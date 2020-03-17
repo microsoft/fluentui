@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
+import { initializeComponentRef } from '../../Utilities';
 import { hiddenContentStyle } from '../../Styling';
 import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
@@ -15,7 +15,7 @@ export interface IStickyContext {
   scrollablePane: PropTypes.Requireable<object>;
 }
 
-export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
+export class Sticky extends React.Component<IStickyProps, IStickyState> {
   public static defaultProps: IStickyProps = {
     stickyPosition: StickyPositionType.Both,
     isScrollSynced: true
@@ -32,6 +32,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   constructor(props: IStickyProps) {
     super(props);
+
+    initializeComponentRef(this);
     this.state = {
       isStickyTop: false,
       isStickyBottom: false,

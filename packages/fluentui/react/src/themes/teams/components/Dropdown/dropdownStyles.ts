@@ -75,8 +75,14 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.open && p.position === 'below' && { borderRadius: v.openBelowContainerBorderRadius }),
     ':hover': {
       backgroundColor: v.backgroundColorHover,
+      borderColor: v.borderColorHover,
+
+      ...(p.open && {
+        borderColor: v.openBorderColorHover
+      }),
+
       [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-        // reset all styles
+        color: v.triggerButtonColorHover
       }
     },
     ...(p.focused && {
@@ -108,7 +114,10 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ...(p.multiple && { minWidth: 0, flex: 1 }),
       ...transparentColorStyleObj,
       ':focus': {
-        color: v.color
+        color: v.color,
+        ':active': {
+          color: v.triggerButtonColorFocusActive
+        }
       },
       ':focus-visible': {
         color: v.color,
@@ -122,7 +131,8 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
         ':active': transparentColorStyle
       },
       ':hover': {
-        ...transparentColorStyle
+        ...transparentColorStyle,
+        color: v.triggerButtonColorHover
       },
       ...(p.inline && {
         paddingLeft: 0,
