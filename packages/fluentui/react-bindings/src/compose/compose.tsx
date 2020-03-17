@@ -26,21 +26,31 @@ function compose<OverrideProps, BehaviorProps, StylesProps, ComponentProps = {}>
     [COMPOSE_PROP]: ComposePreparedOptions;
   } = InputComponent.bind(null);
 
-  ComposedComponent.displayName = options.displayName || InputComponent.displayName;
+  const { handledProps = [], mapPropsToBehavior, mapPropsToStyles } = options;
+  const inputOptions: ComposePreparedOptions = InputComponent[COMPOSE_PROP] || {
+    className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
+    displayNames: [],
 
+    mapPropsToBehaviorChain: [],
+    mapPropsToStylesChain: [],
+
+    handledProps: [],
+    overrideStyles: false
+  };
+
+  ComposedComponent.displayName = options.displayName || InputComponent.displayName;
   ComposedComponent[COMPOSE_PROP] = {
-    className:
-      options.className || InputComponent[COMPOSE_PROP]?.className || (process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉'),
+    className: options.className || inputOptions.className,
     displayNames: computeDisplayNames(InputComponent, options),
 
-    mapPropsToBehaviorChain: [...(InputComponent[COMPOSE_PROP]?.mapPropsToBehaviorChain || []), options.mapPropsToBehavior].filter(
-      Boolean
-    ) as any /* TODO */,
-    mapPropsToStylesChain: [...(InputComponent[COMPOSE_PROP]?.mapPropsToStylesChain || []), options.mapPropsToStyles].filter(
-      Boolean
-    ) as any /* TODO */,
+    mapPropsToBehaviorChain: mapPropsToBehavior
+      ? inputOptions.mapPropsToBehaviorChain.concat(mapPropsToBehavior)
+      : inputOptions.mapPropsToBehaviorChain,
+    mapPropsToStylesChain: mapPropsToStyles
+      ? inputOptions.mapPropsToStylesChain.concat(mapPropsToStyles)
+      : inputOptions.mapPropsToStylesChain,
 
-    handledProps: [...(InputComponent[COMPOSE_PROP]?.handledProps || []), ...(options.handledProps || [])] as any /* TODO */,
+    handledProps: [...inputOptions.handledProps, ...(handledProps as string[])],
     overrideStyles: options.overrideStyles || false
   };
 
