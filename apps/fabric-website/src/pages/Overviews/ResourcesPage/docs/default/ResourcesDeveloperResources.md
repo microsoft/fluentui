@@ -29,7 +29,7 @@ SharePoint uses Fabric, so if you’re building on top of or within a SharePoint
 
 <ul class="md-list--flex">
   <li class="mdut--half">[SharePoint Framework overview](https://aka.ms/spfx)</li>
-  <li class="mdut--half">[Use Fluent UI components in web parts](https://aka.ms/spfx-fabric-react)</li>
+  <li class="mdut--half">[Use Fluent UI React components in web parts](https://aka.ms/spfx-fabric-react)</li>
   <li class="mdut--half">[Theme Designer](https://aka.ms/themedesigner)</li>
   <li class="mdut--half">[Get started with building client-side web parts](https://aka.ms/spfx-tutorials)</li>
 </ul>
