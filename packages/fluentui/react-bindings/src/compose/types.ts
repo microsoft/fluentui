@@ -1,3 +1,9 @@
+import * as React from 'react';
+
+import { COMPOSE_PROP } from './compose';
+
+export type ComposeInputComponent<P = {}> = React.FunctionComponent<P> & { [COMPOSE_PROP]?: ComposePreparedOptions };
+
 export type ComposeInputOptions<
   AllProps extends Record<string, any>,
   BehaviorProps extends Record<string, any>,
@@ -12,6 +18,8 @@ export type ComposeInputOptions<
   handledProps?: (keyof AllProps)[];
   overrideStyles?: boolean;
 };
+
+export type ComposePreparedComponent<P = {}> = React.FunctionComponent<P> & { [COMPOSE_PROP]: ComposePreparedOptions };
 
 export type ComposePreparedOptions = {
   className: string;

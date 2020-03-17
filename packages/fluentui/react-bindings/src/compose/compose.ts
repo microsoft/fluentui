@@ -1,12 +1,9 @@
 import * as React from 'react';
-import { ComposeInputOptions, ComposePreparedOptions } from './types';
+import { ComposeInputComponent, ComposeInputOptions, ComposePreparedComponent, ComposePreparedOptions } from './types';
 
 export const COMPOSE_PROP = 'FLUENT_COMPOSE_CONFIG';
 
-function computeDisplayNames(
-  InputComponent: React.FunctionComponent & { [COMPOSE_PROP]?: ComposePreparedOptions },
-  options: ComposeInputOptions<any, any, any>
-): string[] {
+function computeDisplayNames(InputComponent: ComposeInputComponent, options: ComposeInputOptions<any, any, any>): string[] {
   if (options.overrideStyles) {
     return [options.displayName || InputComponent.displayName].filter(Boolean) as string[];
   }
@@ -21,12 +18,10 @@ function computeDisplayNames(
   return [InputComponent.displayName, options.displayName].filter(Boolean) as string[];
 }
 
-function compose<OverrideProps, BehaviorProps, StylesProps, ComponentProps>(
-  InputComponent: React.FunctionComponent<ComponentProps> & { [COMPOSE_PROP]?: ComposePreparedOptions },
+function compose<OverrideProps, BehaviorProps, StylesProps, ComponentProps = {}>(
+  InputComponent: ComposeInputComponent<ComponentProps>,
   options: ComposeInputOptions<ComponentProps & OverrideProps, BehaviorProps, StylesProps> = {}
-): React.FunctionComponent<ComponentProps & OverrideProps> & {
-  [COMPOSE_PROP]: ComposePreparedOptions;
-} {
+): ComposePreparedComponent<ComponentProps & OverrideProps> {
   const ComposedComponent: React.FunctionComponent<ComponentProps & OverrideProps> & {
     [COMPOSE_PROP]: ComposePreparedOptions;
   } = InputComponent.bind(null);
@@ -34,7 +29,8 @@ function compose<OverrideProps, BehaviorProps, StylesProps, ComponentProps>(
   ComposedComponent.displayName = options.displayName || InputComponent.displayName;
 
   ComposedComponent[COMPOSE_PROP] = {
-    className: options.className || process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
+    className:
+      options.className || InputComponent[COMPOSE_PROP]?.className || (process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉'),
     displayNames: computeDisplayNames(InputComponent, options),
 
     mapPropsToBehaviorChain: [...(InputComponent[COMPOSE_PROP]?.mapPropsToBehaviorChain || []), options.mapPropsToBehavior].filter(
