@@ -307,6 +307,11 @@ const keyboardKeyDefinition = {
 };
 
 /**
+ * Mapping of keyboard keys with aliases and codes.
+ */
+export const keyboardKey = keyboardKeyDefinition as typeof keyboardKeyDefinition & KeyNames;
+
+/**
  * Get the `keyCode` or `which` value from a keyboard event or `key` name.
  * If an object is provided, the precedence of properties is `keyCode`, `which`, `key`.
  * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
@@ -314,11 +319,11 @@ const keyboardKeyDefinition = {
  */
 export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
   if (isObject(eventOrKey)) {
-    // tslint:disable-next-line:deprecation
-    return eventOrKey.keyCode || eventOrKey.which || this[eventOrKey.key as string];
+    // tslint:disable-next-line:deprecation no-any
+    return eventOrKey.keyCode || eventOrKey.which || (keyboardKey as any)[eventOrKey.key as string];
   }
   // tslint:disable-next-line:no-any
-  return (this as any)[eventOrKey as string];
+  return (keyboardKey as any)[eventOrKey as string];
 }
 
 /**
@@ -349,11 +354,6 @@ export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string
 
   return name;
 }
-
-/**
- * Mapping of keyboard keys with aliases and codes.
- */
-export const keyboardKey = keyboardKeyDefinition as typeof keyboardKeyDefinition & KeyNames;
 
 // Populate names on keyboardKey.
 for (const code in codes) {
