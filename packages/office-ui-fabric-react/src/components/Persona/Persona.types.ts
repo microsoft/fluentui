@@ -88,6 +88,17 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    */
   initialsColor?: PersonaInitialsColor | string;
 
+  /** The colors to be used for the presence-icon and it's background */
+  presenceColors?: {
+    available: string;
+    away: string;
+    busy: string;
+    dnd: string;
+    offline: string;
+    oof: string;
+    background: string;
+  };
+
   /**
    * Presence of the person to display - will not display presence if undefined.
    * @defaultvalue PersonaPresence.none
@@ -338,7 +349,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
  * {@docCategory Persona}
  */
 export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> &
-  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> &
+  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> &
   Pick<IPersonaProps, 'className'>;
 
 /**

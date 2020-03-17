@@ -1,4 +1,19 @@
 {
   "name": "@fluentui/keyboard-key",
-  "entries": []
+  "entries": [
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@fluentui/keyboard-key_v0.1.1",
+      "version": "0.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Creating a fork of the keyboard-key library to convert to typescript, produce es6, add typings, and reduce bundle. Hooking up to bundle validation as well.",
+            "author": "dzearing@microsoft.com",
+            "commit": "d4c7a9dfb5c92bf9512d6f9df1a954f292d8cc76"
+          }
+        ]
+      }
+    }
+  ]
 }
