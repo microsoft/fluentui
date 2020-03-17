@@ -35,7 +35,7 @@ module.exports.createInternalFlightConfigTask = function() {
 };
 
 /**
- * A Task Function for Fluent UI Website that Generates a Manifest for UHF Public Site
+ * Task function for the Fluent UI website that generates a manifest for the UHF public site
  */
 module.exports.createPublicFlightConfigTask = function() {
   return function() {
