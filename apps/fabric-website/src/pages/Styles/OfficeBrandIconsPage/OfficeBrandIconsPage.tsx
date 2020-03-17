@@ -49,9 +49,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </p>
                     <p>
                       If you are looking for icons for command bars, navigation, status indicators, or similar, check out the{' '}
-                      <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for file type icons to
+                      <Link href="#/styles/web/icons">Fluent UI icons page</Link>. Alternatively, if you're looking for file type icons to
                       represent digital content or to indicate to users that they are creating a new file of that type, check out the{' '}
-                      <Link href="#/styles/web/file-type-icons">Fabric file type icons page</Link>.
+                      <Link href="#/styles/web/file-type-icons">Fluent UI file type icons page</Link>.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
