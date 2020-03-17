@@ -32,7 +32,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <p>
-                Fluent UI comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for a variety of
+                Fabric Core comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for a variety of
                 screen sizes and device types.
               </p>
               <div className="ms-Grid" aria-label="Example fabric grid where every row has a different number of columns.">
