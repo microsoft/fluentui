@@ -1,7 +1,7 @@
 ### Fluent UI React (JavaScript variables)
 
 ```jsx
-import { CommunicationColors } from '@fluentui/fluent-theme/lib/fluent/FluentColors';
+import { CommunicationColors } from '@uifabric/fluent-theme/lib/fluent/FluentColors';
 
 <div style={{ color: CommunicationColors.primary }} />;
 ```

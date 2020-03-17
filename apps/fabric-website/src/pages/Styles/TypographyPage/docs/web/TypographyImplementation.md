@@ -1,7 +1,7 @@
 ### Fluent UI React (JavaScript variables)
 
 ```tsx
-import { FontSizes } from '@fluentui/fluent-theme/lib/fluent/FluentType';
+import { FontSizes } from '@uifabric/fluent-theme/lib/fluent/FluentType';
 
 <div style={{ fontSize: FontSizes.size42 }} />;
 ```

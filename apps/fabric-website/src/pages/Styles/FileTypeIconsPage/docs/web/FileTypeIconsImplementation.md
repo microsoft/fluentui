@@ -1,15 +1,15 @@
-The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package](https://github.com/microsoft/fluentui/tree/master/packages/file-type-icons) from Fluent UI (`@fluentui/file-type-icons` on npm).
+The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package](https://github.com/microsoft/fluentui/tree/master/packages/file-type-icons) from Fluent UI (`@uifabric/file-type-icons` on npm).
 
 The following code shows you how to specify a file type icon by extension, item type, icon size, and image type using the `file-type-icons` package along with Fluent UI's `<Icon>` component:
 
 ```jsx
 // Done by the app.
-import { initializeFileTypeIcons } from ‘@fluentui/file-type-icons’;
+import { initializeFileTypeIcons } from ‘@uifabric/file-type-icons’;
 initializeFileTypeIcons(/* optional base url */);
 
 // Done in components
 import { Icon } from '@fluentui/react';
-import { getFileTypeIconProps, FileIconType } from '@fluentui/file-type-icons';
+import { getFileTypeIconProps, FileIconType } from '@uifabric/file-type-icons';
 
 <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'png' }) } />
 <Icon {...getFileTypeIconProps({ type: FileIconType.folder, size: 20, imageFileType: 'svg' }) } />
