@@ -17,7 +17,7 @@ export type ComposeOptions<
   className?: string;
   displayName?: string;
 
-  mapPropsToStyles?: (props: ParentStylesProps & InputProps) => InputStylesProps;
+  mapPropsToStylesProps?: (props: ParentStylesProps & InputProps) => InputStylesProps;
 
   handledProps?: (keyof InputProps)[];
   overrideStyles?: boolean;
@@ -32,7 +32,7 @@ export type ComposePreparedOptions<
   className: string;
   displayNames: string[];
 
-  mapPropsToStylesChain: ((props: ParentStylesProps & InputProps) => InputStylesProps)[];
+  mapPropsToStylesPropsChain: ((props: ParentStylesProps & InputProps) => InputStylesProps)[];
 
   handledProps: (keyof (ParentProps & InputProps))[];
   overrideStyles: boolean;

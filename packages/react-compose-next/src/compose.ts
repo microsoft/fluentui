@@ -5,7 +5,7 @@ const defaultComposeOptions: ComposePreparedOptions = {
   className: process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
   displayNames: [],
 
-  mapPropsToStylesChain: [],
+  mapPropsToStylesPropsChain: [],
 
   handledProps: [],
   overrideStyles: false
@@ -39,7 +39,7 @@ function compose<
 ): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps> {
   const Component = InputComponent.bind(null) as ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 
-  const { handledProps = [], mapPropsToStyles } = composeOptions;
+  const { handledProps = [], mapPropsToStylesProps } = composeOptions;
   const inputOptions: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps> =
     (InputComponent as any).fluentComposeConfig || defaultComposeOptions;
 
@@ -48,9 +48,9 @@ function compose<
     className: composeOptions.className || inputOptions.className,
     displayNames: computeDisplayNames(composeOptions, InputComponent.displayName, inputOptions),
 
-    mapPropsToStylesChain: mapPropsToStyles
-      ? inputOptions.mapPropsToStylesChain.concat(mapPropsToStyles)
-      : inputOptions.mapPropsToStylesChain,
+    mapPropsToStylesPropsChain: mapPropsToStylesProps
+      ? inputOptions.mapPropsToStylesPropsChain.concat(mapPropsToStylesProps)
+      : inputOptions.mapPropsToStylesPropsChain,
 
     handledProps: [...inputOptions.handledProps, ...handledProps],
     overrideStyles: composeOptions.overrideStyles || false
