@@ -71,7 +71,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
               </Markdown>
               <MarkdownHeader as="h3">Supported languages</MarkdownHeader>
-              <p>Fabric supports a variety of language codes, which map to the following font stacks:</p>
+              <p>Fluent UI supports a variety of language codes, which map to the following font stacks:</p>
               <Table content={localizedFontsData} />
             </>
           ),
