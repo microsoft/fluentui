@@ -190,11 +190,6 @@ export interface IVerticalStackedBarChartStyles {
   hoverCardDataStyles: IStyle;
 
   /**
-   * Style to change the opacity of placeholder data point when we hover a single bar or legend
-   */
-  placeHolderOnHover: IStyle;
-
-  /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;

@@ -78,12 +78,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       }
     ],
 
-    yAxisTicks: [
-      {
-        transform: 'scaleX(1)'
-      }
-    ],
-
     hoverCardRoot: {
       paddingLeft: '16px',
       paddingRight: '22px',
@@ -103,11 +97,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       fontFamily: 'Segoe UI',
       fontWeight: 'bold',
       lineHeight: '31px'
-    },
-
-    placeHolderOnHover: {
-      opacity: shouldHighlight ? '' : '0.1',
-      cursor: 'default'
     },
 
     opacityChangeOnHover: {

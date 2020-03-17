@@ -36,8 +36,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
     ];
 
     const textStyle = {
-      fill: DefaultPalette.blueMid,
-      fontSize: '14px'
+      fill: DefaultPalette.black,
+      fontSize: '10px',
+      lineHeight: '14px'
     };
 
     const customStyles = () => {
@@ -50,8 +51,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
           ...DefaultFontStyles.large
         },
         xAxisText: {
-          transform: 'rotateZ(-40deg)',
-          textAnchor: 'end',
+          transform: 'rotate(45deg)',
+          'alignment-baseline': 'text-after-edge',
+          textAnchor: 'start',
           ...textStyle
         }
       };
