@@ -13,7 +13,7 @@ import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';
 import { defaultIconStrings, defaultDateTimeFormatterCallbacks } from '../Calendar.base';
-import { BaseComponent, css, getRTL, classNamesFunction, KeyCodes, format } from '@uifabric/utilities';
+import { css, getRTL, classNamesFunction, KeyCodes, format, initializeComponentRef } from '@uifabric/utilities';
 import { ICalendarYear, ICalendarYearRange } from '../CalendarYear/CalendarYear.types';
 import { CalendarYear } from '../CalendarYear/CalendarYear';
 
@@ -27,7 +27,7 @@ export interface ICalendarMonthState {
   previousNavigatedDate?: Date;
 }
 
-export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalendarMonthState> {
+export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICalendarMonthState> {
   public static defaultProps: Partial<ICalendarMonthProps> = {
     styles: getStyles,
     strings: undefined,
@@ -67,6 +67,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
   constructor(props: ICalendarMonthProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this.state = {
       isYearPickerVisible: false,

@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "office-ui-fabric-react_v7.104.0",
+      "version": "7.104.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BaseComponent: remove using BaseComponent from oufr package",
+            "author": "xgao@microsoft.com",
+            "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Mar 2020 12:30:22 GMT",
       "tag": "office-ui-fabric-react_v7.103.0",
       "version": "7.103.0",
