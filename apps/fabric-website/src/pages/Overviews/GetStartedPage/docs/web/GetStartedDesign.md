@@ -1,6 +1,6 @@
 ### Styles
 
-Fluent UI gives you access to Segoe, Microsoft’s official typeface, along with the color palette, type ramp, icons, and responsive grid for Office 365. [Learn more](#/styles/web)
+Fluent UI gives you access to Segoe, Microsoft’s official typeface, along with the color palette, type ramp, icons, and responsive grid. [Learn more](#/styles/web)
 
 ### Icons
 
