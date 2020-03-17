@@ -42,7 +42,7 @@ describe('resolveVariables', () => {
     expect(variables).toMatchObject({ backgroundColor: 'green' });
   });
 
-  test('avoid merging if variables are undefined', () => {
+  test('avoids merging if variables are undefined', () => {
     const theme = createTheme();
     const variables = resolveVariables(['Test'], theme, undefined, false);
 
