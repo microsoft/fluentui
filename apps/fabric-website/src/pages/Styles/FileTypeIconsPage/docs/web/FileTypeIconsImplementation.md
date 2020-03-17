@@ -1,6 +1,6 @@
 The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package](https://github.com/microsoft/fluentui/tree/master/packages/file-type-icons) from Fluent UI (`@uifabric/file-type-icons` on npm).
 
-The following code shows you how to specify a file type icon by extension, item type, icon size, and image type using the `file-type-icons` package along with Fluent UI's `<Icon>` component:
+The following code shows you how to specify a file type icon by extension, item type, icon size, and image type using the `@uifabric/file-type-icons` package along with Fluent UI's `<Icon>` component:
 
 ```jsx
 // Done by the app.
