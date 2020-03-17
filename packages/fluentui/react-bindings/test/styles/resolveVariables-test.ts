@@ -49,7 +49,7 @@ describe('resolveVariables', () => {
     expect(variables).toMatchObject({ backgroundColor: 'blue' });
   });
 
-  test('avoid merging for multiple display names if variables are undefined', () => {
+  test('avoids merging for multiple display names if variables are undefined', () => {
     const theme = createTheme({ Foo: testVariables, Bar: testVariables });
     const variables = resolveVariables(['Foo', 'Bar'], theme, undefined, false);
 
