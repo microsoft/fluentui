@@ -7,7 +7,7 @@ const path = require('path');
 const { argv, logger } = require('@uifabric/build').just;
 
 /**
- * A Task Function for Fluent UI Website that Generates a Manifest for Non-UHF "Internal" Site
+ * Task function for the Fluent UI website that generates a manifest for the non-UHF "internal" site
  */
 module.exports.createInternalFlightConfigTask = function() {
   return function() {
