@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added support for overriding persona presence colors",
-  "packageName": "office-ui-fabric-react",
-  "email": "andreas.hage@microsoft.com",
-  "commit": "1280b6fba26f5f31773c122173dc6fdfa7095f09",
-  "dependentChangeType": "patch",
-  "date": "2020-03-16T15:10:50.607Z"
-}

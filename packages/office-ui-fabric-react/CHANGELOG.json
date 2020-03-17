@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2020 20:48:59 GMT",
+      "tag": "office-ui-fabric-react_v7.105.0",
+      "version": "7.105.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass default ContextualMenuItem renderer to onRenderMenuList",
+            "author": "owcampbe@microsoft.com",
+            "commit": "8e158df51b7a51595af7c16822966eee148b3359"
+          },
+          {
+            "comment": "Added support for overriding persona presence colors",
+            "author": "andreas.hage@microsoft.com",
+            "commit": "1280b6fba26f5f31773c122173dc6fdfa7095f09"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove duplicated export",
+            "author": "nakanaki@microsoft.com",
+            "commit": "d3021b0c647c3a8d0db2d9b74b44109e6db1e013"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Mar 2020 12:28:58 GMT",
       "tag": "office-ui-fabric-react_v7.104.1",
       "version": "7.104.1",
