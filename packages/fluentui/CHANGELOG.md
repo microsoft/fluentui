@@ -33,6 +33,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `Carousel` accessibility fixes @kolaps33 ([#12050](https://github.com/OfficeDev/office-ui-fabric-react/pull/12050))
 - Fix different styles between children and shorthand API in `Button` component @mnajdova ([#12292](https://github.com/OfficeDev/office-ui-fabric-react/pull/12292))
 - Fix change handler typings of `Dropdown` to relect that we are passing `null` for event @silviuavram ([#12280](https://github.com/OfficeDev/office-ui-fabric-react/pull/12280))
+- Fix nested `<li>` elements in no results and loading messages for `Dropdown` @silviuavram ([#12330](https://github.com/OfficeDev/office-ui-fabric-react/pull/12330))
 
 ### Features
 - Export `broadcast-view-fullscreen` and `broadcast-view-left` as SVG icons @davidfoulkejr ([#12126](https://github.com/OfficeDev/office-ui-fabric-react/pull/12126))
