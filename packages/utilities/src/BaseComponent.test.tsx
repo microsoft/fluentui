@@ -7,6 +7,7 @@ import { BaseComponent } from './BaseComponent';
 
 describe('BaseComponent', () => {
   it('can resolve refs', () => {
+    // tslint:disable-next-line:deprecation
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
 

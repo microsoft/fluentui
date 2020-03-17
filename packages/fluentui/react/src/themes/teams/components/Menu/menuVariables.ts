@@ -33,13 +33,24 @@ export interface MenuVariables {
   outlineColorFocus: string;
   colorActive: string;
   iconOnlyColorActive: string;
+  iconOnlyColorFocus: string;
+  iconOnlyBackgroundColorHover: string;
+  iconOnlyColorHover: string;
+  iconOnlyWrapperBackgroundColorFocus: string;
 
   colorFocus: string;
+  colorHover: string;
   underlinedBorderColor: string;
 
   colorDisabled: string;
   lineHeightBase: string;
   horizontalPadding: string;
+
+  activeUnderlinedColor: string;
+  activeUnderlinedPrimaryColor: string;
+  activeUnderlinedBorderBottomColor: string;
+  activeUnderlinedWrapperColor: string;
+  activeIconOnlyWrapperBackgroundColor: string;
 
   verticalBackgroundColor: string;
   verticalItemPadding: string;
@@ -52,14 +63,34 @@ export interface MenuVariables {
 
   pointingIndicatorBackgroundColor: string;
 
+  activeWrapperBackgroundColorHover: string;
+
   underlinedBottomBorderWidth: string;
+  underlinedColorHover: string;
+  underlinedWrapperColorHover: string;
+  underlinedWrapperBackgroundHover: string;
   primaryBorderColor: string;
+  primaryWrapperColorFocus: string;
+  primaryWrapperBackgroundColorFocus: string;
 
   dividerHeight: string;
   borderWidth: string;
 
   menuZIndex: number;
   beakZIndex: number;
+
+  wrapperColorActive: string;
+  wrapperColorFocus: string;
+  wrapperColorHover: string;
+  primaryWrapperColorHover: string;
+  wrapperBackgroundColorFocus: string;
+
+  activeIndicatorColor: string;
+  activePrimaryIndicatorColor: string;
+  activePrimaryVerticalIndicatorColor: string;
+  indicatorColor: string;
+  primaryIndicatorColorHover: string;
+  indicatorColorHover: string;
 }
 
 export default (siteVars: any): MenuVariables => {
@@ -87,7 +118,8 @@ export default (siteVars: any): MenuVariables => {
     ),
     color: siteVars.colors.grey[500],
     colorActive: siteVars.colors.black,
-    colorFocus: siteVars.colors.white,
+    colorFocus: undefined,
+    colorHover: 'inherit',
     colorDisabled: undefined,
 
     borderColor: undefined,
@@ -103,6 +135,11 @@ export default (siteVars: any): MenuVariables => {
     backgroundColorActive: undefined,
 
     iconOnlyColorActive: siteVars.colors.brand[600],
+    iconOnlyColorFocus: siteVars.colors.brand[600],
+    iconOnlyWrapperBackgroundColorFocus: undefined,
+    activeIconOnlyWrapperBackgroundColor: undefined,
+    iconOnlyBackgroundColorHover: undefined,
+    iconOnlyColorHover: siteVars.colors.brand[600],
 
     underlinedBorderColor: siteVars.colors.grey[200],
 
@@ -118,14 +155,40 @@ export default (siteVars: any): MenuVariables => {
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
     verticalBackgroundColorFocus: siteVars.colors.grey[150],
 
+    activeUnderlinedColor: undefined,
+    activeUnderlinedPrimaryColor: siteVars.colors.brand[600],
+    activeUnderlinedBorderBottomColor: siteVars.colors.black,
+    activeUnderlinedWrapperColor: undefined,
+
     pointingIndicatorBackgroundColor: siteVars.colors.brand[600],
 
     underlinedBottomBorderWidth: pxToRem(2),
+    underlinedColorHover: 'inherit',
     primaryBorderColor: siteVars.colorScheme.default.border2,
+    primaryWrapperColorFocus: siteVars.colors.white,
+    primaryWrapperBackgroundColorFocus: siteVars.colors.brand[500],
+
+    underlinedWrapperColorHover: siteVars.colors.black,
+    underlinedWrapperBackgroundHover: 'transparent',
 
     dividerHeight: pxToRem(1),
     borderWidth: pxToRem(1),
     menuZIndex: siteVars.zIndexes.overlay,
-    beakZIndex: siteVars.zIndexes.menuItem
+    beakZIndex: siteVars.zIndexes.menuItem,
+
+    wrapperColorActive: siteVars.colors.grey[500],
+    wrapperColorFocus: siteVars.colors.grey[500],
+    wrapperColorHover: undefined,
+    primaryWrapperColorHover: siteVars.colors.white,
+    wrapperBackgroundColorFocus: siteVars.colors.grey[150],
+
+    activeWrapperBackgroundColorHover: undefined,
+
+    indicatorColor: siteVars.colors.grey[500],
+    activeIndicatorColor: siteVars.colors.grey[750],
+    activePrimaryIndicatorColor: siteVars.colors.grey[750],
+    activePrimaryVerticalIndicatorColor: siteVars.colors.white,
+    primaryIndicatorColorHover: siteVars.colors.white,
+    indicatorColorHover: siteVars.colors.grey[500]
   };
 };

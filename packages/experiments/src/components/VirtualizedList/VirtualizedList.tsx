@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { BaseComponent, getParent, css } from 'office-ui-fabric-react/lib/Utilities';
+import { getParent, css, initializeComponentRef, EventGroup } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -22,7 +22,7 @@ export interface IVirtualizedListState {
   items: React.ReactNode[];
 }
 
-export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent<IVirtualizedListProps<TItem>, IVirtualizedListState> {
+export class VirtualizedList<TItem extends IObjectWithKey> extends React.Component<IVirtualizedListProps<TItem>, IVirtualizedListState> {
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
@@ -32,8 +32,13 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
 
   private _focusedIndex: number;
 
+  private _events: EventGroup;
+
   constructor(props: IVirtualizedListProps<TItem>, context: IScrollContainerContext) {
     super(props, context);
+
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
 
     this._focusedIndex = -1;
 
@@ -61,6 +66,10 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
 
   public componentDidUpdate(): void {
     this._updateObservedElements();
+  }
+
+  public componentWillUnmount(): void {
+    this._events.dispose();
   }
 
   // tslint:disable-next-line function-name

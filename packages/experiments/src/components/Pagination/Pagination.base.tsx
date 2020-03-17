@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { initializeComponentRef, classNamesFunction } from '../../Utilities';
 import { PageNumber } from './PageNumber';
 import { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
 import { ComboBox, IComboBoxOption, IComboBox } from 'office-ui-fabric-react/lib/ComboBox';
@@ -14,7 +14,7 @@ const DEFAULT_STRINGS: IPaginationString = {
   divider: '-'
 };
 
-export class PaginationBase extends BaseComponent<IPaginationProps> {
+export class PaginationBase extends React.Component<IPaginationProps> {
   public static defaultProps: Partial<IPaginationProps> = {
     selectedPageIndex: 0,
     format: 'comboBox',
@@ -30,6 +30,8 @@ export class PaginationBase extends BaseComponent<IPaginationProps> {
 
   constructor(props: IPaginationProps) {
     super(props);
+
+    initializeComponentRef(this);
   }
 
   public render(): JSX.Element {
