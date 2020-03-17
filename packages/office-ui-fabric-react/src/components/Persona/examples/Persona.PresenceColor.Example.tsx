@@ -5,13 +5,13 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const presenceColors = {
-  presenceColorAvailable: '#fff',
-  presenceColorAway: '#fff',
-  presenceColorBusy: '#fff',
-  presenceColorDnd: '#fff',
-  presenceColorOffline: '#8A8886',
-  presenceColorOof: '#fff',
-  presenceColorBackground: '#000'
+  available: '#fff',
+  away: '#fff',
+  busy: '#fff',
+  dnd: '#fff',
+  offline: '#8A8886',
+  oof: '#fff',
+  background: '#000'
 };
 
 const examplePersona: IPersonaSharedProps = {

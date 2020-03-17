@@ -90,13 +90,13 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
 
   /** The colors to be used for the presence-icon and it's background */
   presenceColors?: {
-    presenceColorAvailable: string;
-    presenceColorAway: string;
-    presenceColorBusy: string;
-    presenceColorDnd: string;
-    presenceColorOffline: string;
-    presenceColorOof: string;
-    presenceColorBackground: string;
+    available: string;
+    away: string;
+    busy: string;
+    dnd: string;
+    offline: string;
+    oof: string;
+    background: string;
   };
 
   /**

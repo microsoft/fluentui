@@ -17,13 +17,13 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
   const presence = presenceBoolean(props.presence as PersonaPresence);
 
   // Presence colors
-  const presenceColorAvailable = (presenceColors && presenceColors.presenceColorAvailable) || '#6BB700';
-  const presenceColorAway = (presenceColors && presenceColors.presenceColorAway) || '#FFAA44';
-  const presenceColorBusy = (presenceColors && presenceColors.presenceColorBusy) || '#C43148';
-  const presenceColorDnd = (presenceColors && presenceColors.presenceColorDnd) || '#C50F1F';
-  const presenceColorOffline = (presenceColors && presenceColors.presenceColorOffline) || '#8A8886';
-  const presenceColorOof = (presenceColors && presenceColors.presenceColorOof) || '#B4009E';
-  const presenceColorBackground = (presenceColors && presenceColors.presenceColorBackground) || semanticColors.bodyBackground;
+  const presenceColorAvailable = (presenceColors && presenceColors.available) || '#6BB700';
+  const presenceColorAway = (presenceColors && presenceColors.away) || '#FFAA44';
+  const presenceColorBusy = (presenceColors && presenceColors.busy) || '#C43148';
+  const presenceColorDnd = (presenceColors && presenceColors.dnd) || '#C50F1F';
+  const presenceColorOffline = (presenceColors && presenceColors.offline) || '#8A8886';
+  const presenceColorOof = (presenceColors && presenceColors.oof) || '#B4009E';
+  const presenceColorBackground = (presenceColors && presenceColors.background) || semanticColors.bodyBackground;
 
   const isOpenCirclePresence =
     presence.isOffline || (props.isOutOfOffice && (presence.isAvailable || presence.isBusy || presence.isAway || presence.isDoNotDisturb));
