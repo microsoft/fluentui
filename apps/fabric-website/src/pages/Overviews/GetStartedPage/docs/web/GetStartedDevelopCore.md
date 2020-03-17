@@ -1,10 +1,10 @@
-[Fabric Core](https://github.com/OfficeDev/office-ui-fabric-core) is a collection of CSS classes and Sass mixins that give you access to Fabric's colors, animations, fonts, icons and grid.
+[Fabric Core](https://github.com/OfficeDev/office-ui-fabric-core) is a collection of CSS classes and Sass mixins that give you access to colors, animations, fonts, icons and grid.
 
 ### Who should use Fabric Core
 
 Fabric Core is primarily meant for non-React applications or static pages.
 
-If you're using Fabric React, you may not need Fabric Core. Most of the styles from Fabric Core are also available via CSS-in-JS styling, which is the recommended styling approach with Fabric React.
+If you're using Fluent UI React, you may not need Fabric Core. Most of the styles from Fabric Core are also available via CSS-in-JS styling, which is the recommended styling approach with Fluent UI React.
 
 ### Adding Fabric Core to your site
 
@@ -18,7 +18,7 @@ Fabric Core is also available [via npm](https://www.npmjs.com/package/office-ui-
 
 ### Using Fabric Core class names
 
-To use the styles, add the `ms-Fabric` class to a containing element, such as `<body>`, to set the `font-family` for all Fabric typography classes used within that element. Then apply the Fabric styles directly to your HTML elements.
+To use the styles, add the `ms-Fabric` class to a containing element, such as `<body>`, to set the `font-family` for all Fabric Core typography classes used within that element. Then apply the Fabric Core styles directly to your HTML elements.
 
 ```html
 <body class="ms-Fabric" dir="ltr">

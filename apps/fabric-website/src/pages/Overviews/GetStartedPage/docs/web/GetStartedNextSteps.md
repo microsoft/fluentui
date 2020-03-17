@@ -14,7 +14,7 @@ The [Fluent UI React wiki](https://github.com/microsoft/fluentui/wiki) has infor
 
 Fluent UI React components are highly customizable using CSS-in-JS. We also support customization of colors and more throughout the entire app using themes.
 
-For an overview of styling and theming approaches in Fabric, see [this page](https://github.com/Microsoft/frontend-bootcamp/tree/master/step2-03/demo). Then check out the links below for more details:
+For an overview of styling and theming approaches in Fluent UI, see [this page](https://github.com/Microsoft/frontend-bootcamp/tree/master/step2-03/demo). Then check out the links below for more details:
 
 <ul class="md-list--flex">
   <li class="mdut--full">[Theme designer](https://aka.ms/themedesigner)</li>
