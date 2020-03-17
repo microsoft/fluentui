@@ -29,6 +29,7 @@ import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/ac
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
+import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -126,7 +127,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   loading?: boolean;
 
   /** A message to be displayed in the list when the dropdown is loading. */
-  loadingMessage?: ShorthandValue<DropdownItemProps>;
+  loadingMessage?: ShorthandValue<ListItemProps>;
 
   /** When selecting an element with Tab, focus stays on the dropdown by default. If true, the focus will jump to next/previous element in DOM. Only available to multiple selection dropdowns. */
   moveFocusOnTab?: boolean;
@@ -135,7 +136,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   multiple?: boolean;
 
   /** A message to be displayed in the list when the dropdown has no items. */
-  noResultsMessage?: ShorthandValue<DropdownItemProps>;
+  noResultsMessage?: ShorthandValue<ListItemProps>;
 
   /**
    * Called when the dropdown's selected items index change.
@@ -700,7 +701,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       ...items,
       loading && {
         children: () =>
-          DropdownItem.create(loadingMessage, {
+          ListItem.create(loadingMessage, {
             defaultProps: () => ({
               key: 'loading-message',
               styles: styles.loadingMessage
@@ -710,7 +711,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       !loading &&
         items.length === 0 && {
           children: () =>
-            DropdownItem.create(noResultsMessage, {
+            ListItem.create(noResultsMessage, {
               defaultProps: () => ({
                 key: 'no-results-message',
                 styles: styles.noResultsMessage
