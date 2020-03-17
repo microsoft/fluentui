@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Pass default ContextualMenuItem renderer to onRenderMenuList",
+  "packageName": "office-ui-fabric-react",
+  "email": "owcampbe@microsoft.com",
+  "commit": "8e158df51b7a51595af7c16822966eee148b3359",
+  "dependentChangeType": "patch",
+  "date": "2020-03-05T22:11:07.095Z"
+}
