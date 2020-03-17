@@ -15,7 +15,6 @@ export interface IMarkdownTableCellProps extends IMarkdownTableProps {
    * Render the table cell as a th or td.
    * @default 'td'
    */
-  // TODO: doc says default is 'td', where is it set? if it has a default, why is 'as' required? making optional for now.
   as?: 'th' | 'td';
 }
 

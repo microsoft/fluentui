@@ -42,7 +42,8 @@ export interface IViewportProps {
   width: number;
 
   /**
-   * The child component is a function component which receives the scroll container's current scroll state as its only argument.
+   * The child component is a function component which receives the scroll container's current scroll state
+   * as its only argument.
    */
   children: (viewportState: IViewportState) => JSX.Element[] | JSX.Element;
 }

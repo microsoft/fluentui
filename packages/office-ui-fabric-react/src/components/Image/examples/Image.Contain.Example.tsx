@@ -20,8 +20,8 @@ export class ImageContainExample extends React.Component<any, any> {
           and centered in the available vertical space.
         </Label>
         <Image
-          {...(imageProps as any)}
-          alt="Example implementation of the property image fit using the contain value on an image wider than the frame."
+          {...imageProps}
+          alt='Example of the image fit value "contain" on an image wider than the frame.'
           width={200}
           height={200}
         />
@@ -31,8 +31,8 @@ export class ImageContainExample extends React.Component<any, any> {
           and centered in the available horizontal space.
         </Label>
         <Image
-          {...(imageProps as any)}
-          alt="Example implementation of the property image fit using the contain value on an image taller than the frame."
+          {...imageProps}
+          alt='Example of the image fit value "contain" on an image taller than the frame.'
           width={300}
           height={50}
         />

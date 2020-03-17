@@ -18,18 +18,12 @@ export class ImageMaximizeFrameExample extends React.Component<any, any> {
         </p>
         <Label>The image is placed within a landscape container.</Label>
         <div style={{ width: '200px', height: '100px' }}>
-          <Image
-            {...(imageProps as any)}
-            alt="Example implementation of the property maximize frame with a landscape container."
-          />
+          <Image {...imageProps} alt="Example of the maximizeFrame property with a landscape container." />
         </div>
         <br />
         <Label>The image is placed within a portrait container.</Label>
         <div style={{ width: '100px', height: '200px' }}>
-          <Image
-            {...(imageProps as any)}
-            alt="Example implementation of the property maximize frame with a portrait container"
-          />
+          <Image {...imageProps} alt="Example of the maximizeFrame property with a portrait container" />
         </div>
       </div>
     );

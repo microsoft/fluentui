@@ -96,7 +96,8 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   ) => void;
 
   /**
-   * Callback for when the click event on the icon button which also takes in a specific HTMLElement that will be focused.
+   * Callback for when the click event on the icon button which also takes in a specific HTMLElement
+   * that will be focused.
    */
   onItemClickBase?: (
     item: IContextualMenuItem,

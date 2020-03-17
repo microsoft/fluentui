@@ -232,25 +232,25 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
     if (isStickyTop || isStickyBottom) {
       let height = 0,
         width = 0;
-      // Why is placeHolder width needed?
-      // ScrollablePane content--container is reponsible for providing scrollbars depending on content overflow.
-      // If the overflow is caused by content of sticky component when it is in non-sticky state,
-      // ScrollablePane content--conatiner will provide horizontal scrollbar.
-      // If the component becomes sticky, i.e., when state.isStickyTop || state.isStickyBottom becomes true,
-      // it's actual content is no more inside ScrollablePane content--container.
-      // ScrollablePane content--conatiner will see no need for horizontal scrollbar. (Assuming no other content is causing overflow)
-      // The complete content of sticky component will not be viewable.
-      // It is necessary to provide a placeHolder of a certain width (height is already being set) in the content--container,
-      // to get a horizontal scrollbar & be able to view the complete content of sticky component.
+      // Why is placeholder width needed?
+      // ScrollablePane's content container is reponsible for providing scrollbars depending on content overflow.
+      // - If the overflow is caused by content of sticky component when it is in non-sticky state, the container will
+      //   provide horizontal scrollbar.
+      // - If the component becomes sticky, i.e., when state.isStickyTop || state.isStickyBottom becomes true,
+      //   its actual content is no longer inside the container, so the container will see no need for horizontal
+      //   scrollbar (assuming no other content is causing overflow). The complete content of sticky component will
+      //   not be viewable. So it is necessary to provide a placeholder of a certain width (height is already being set)
+      //   in the container, to get a horizontal scrollbar & be able to view the complete content of sticky component.
       if (this.nonStickyContent && this.nonStickyContent.firstElementChild) {
         height = this.nonStickyContent.offsetHeight;
-        // What value should be substituted for placeHolder width?
-        // Assumption:
+        // What value should be substituted for placeholder width?
+        // Assumptions:
         //    1. Content inside <Sticky> should always be wrapped in a single div.
         //        <Sticky><div id={'firstElementChild'}>{intended_content}</div><Sticky/>
         //    2. -ve padding, margin, etc. are not be used.
-        //    3. scrollWidth of a parent is greater than or equal to max of scrollWidths of it's children and same holds for children.
-        // placeHolder width should be computed in the best possible way to prevent overscroll/underscroll.
+        //    3. scrollWidth of a parent is greater than or equal to max of scrollWidths of its children, and same holds
+        //       for children.
+        // placeholder width should be computed in the best possible way to prevent overscroll/underscroll.
         width =
           this.nonStickyContent.firstElementChild.scrollWidth +
           ((this.nonStickyContent.firstElementChild as HTMLElement).offsetWidth -
@@ -276,7 +276,8 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
         isStickyTop = distanceToStickTop < container.scrollTop;
       }
 
-      // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance from the top of the pane
+      // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance
+      // from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= distanceFromTop) {
         isStickyBottom =
           distanceFromTop - Math.floor(container.scrollTop) >=

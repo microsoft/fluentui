@@ -290,9 +290,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
           // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
-          // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
-          // A bug tracking this can be found:
-          // https://github.com/dequelabs/axe-core/issues/1009
+          // Currently accessibility insights will flag this as not a valid child because the AXE rules are
+          // out of date. Tracking issue: https://github.com/dequelabs/axe-core/issues/1009
           aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
         >
           {this.getSuggestionsAlert(classNames.screenReaderText)}
@@ -450,7 +449,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function .
-    // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+    // If the returned value is not an array then check to see if it's a promise or PromiseLike.
+    // If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
       this._updateAndResolveValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
@@ -568,7 +568,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   protected onBlur = (ev: React.FocusEvent<HTMLElement | Autofill>): void => {
     if (this.state.isFocused) {
-      // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+      // Only blur the entire component if an unrelated element gets focus.
+      // Otherwise treat it as though it still has focus.
       // Do nothing if the blur is coming from something
       // inside the comboBox root or the comboBox menu since
       // it we are not really bluring from the whole comboBox
@@ -918,7 +919,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
-   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+   * If `selectedItems` is provided, this will act as a controlled component and it will not update its own state.
    */
   private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
@@ -1026,9 +1027,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             aria-owns={suggestionsAvailable || undefined}
             aria-expanded={!!this.state.suggestionsVisible}
             // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
-            // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
-            // A bug tracking this can be found:
-            // https://github.com/dequelabs/axe-core/issues/1009
+            // Currently accessibility insights will flag this as not a valid child because the AXE rules are
+            // out of date. Tracking issue: https://github.com/dequelabs/axe-core/issues/1009
             aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
             role="combobox"
           >

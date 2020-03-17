@@ -12,7 +12,8 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 
 export const DetailsRowGlobalClassNames = {
   root: 'ms-DetailsRow',
-  compact: 'ms-DetailsList--Compact', // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
+  // TODO: in Fabric 7.0 lowercase the 'Compact' for consistency across other components.
+  compact: 'ms-DetailsList--Compact',
   cell: 'ms-DetailsRow-cell',
   cellAnimation: 'ms-DetailsRow-cellAnimation',
   cellCheck: 'ms-DetailsRow-cellCheck',
@@ -285,7 +286,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackground,
         color: colors.defaultMetaText,
-        display: 'inline-flex', // This ensures that the row always tries to consume is minimum width and does not compress.
+        // This ensures that the row always tries to consume is minimum width and does not compress.
+        display: 'inline-flex',
         minWidth: '100%',
         minHeight: values.rowHeight,
         whiteSpace: 'nowrap',

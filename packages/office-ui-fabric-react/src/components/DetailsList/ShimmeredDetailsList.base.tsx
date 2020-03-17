@@ -87,7 +87,8 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
     const { columns, compact, selectionMode, checkboxVisibility, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = rowProps;
 
     const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
-    const gapHeight: number = compact ? compactRowHeight : rowHeight + 1; // 1px to take into account the border-bottom of DetailsRow.
+    // 1px to take into account the border-bottom of DetailsRow.
+    const gapHeight: number = compact ? compactRowHeight : rowHeight + 1;
 
     const shimmerElementsRow: JSX.Element[] = [];
 
@@ -146,7 +147,8 @@ export class ShimmeredDetailsListBase extends React.Component<IShimmeredDetailsL
         <ShimmerElementsGroup key={columnIdx} width={`${groupWidth}px`} shimmerElements={shimmerElements} />,
       );
     });
-    // When resizing the window from narrow to wider, we need to cover the exposed Shimmer wave until the column resizing logic is done.
+    // When resizing the window from narrow to wider, we need to cover the exposed Shimmer wave
+    // until the column resizing logic is done.
     shimmerElementsRow.push(
       <ShimmerElementsGroup
         key={'endGap'}

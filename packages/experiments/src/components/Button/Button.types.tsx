@@ -116,7 +116,7 @@ export interface IButtonTokens extends IActionableTokens {
   borderWidthFocused?: number | string;
 
   /**
-   * Defines the padding of the Button, between the Button border and the Button contents, when the focus is on the Button.
+   * Defines the padding of the Button, between the Button border and contents, when the focus is on the Button.
    */
   contentPaddingFocused?: number | string;
 

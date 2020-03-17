@@ -38,13 +38,11 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             ]}
           />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>VerticalBarChart description</p>
           </div>
         }
-        /* tslint:enable:max-line-length */
         bestPractices={<div />}
         dos={
           <div>

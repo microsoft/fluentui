@@ -111,7 +111,7 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  it('should clear error message when required input has date selected from calendar and allowTextInput is true', () => {
+  it('clears error message when required input has date selected from calendar and allowTextInput is true', () => {
     const datePicker = mount(<DatePickerBase isRequired={true} allowTextInput={true} />);
     const textField = datePicker.find('input');
 
@@ -183,7 +183,7 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
-  it('should reflect the correct date in the input field when selecting a value and a different format is given', () => {
+  it('reflects the correct date in the input field when selecting a value and a different format is given', () => {
     const today = new Date('January 15, 2020');
     const initiallySelectedDate = new Date('January 10, 2020');
     const onFormatDate = (date: Date): string => {

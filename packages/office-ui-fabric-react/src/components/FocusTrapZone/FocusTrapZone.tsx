@@ -222,7 +222,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
       if (nextFocusable) {
         if (this._isBumper(nextFocusable)) {
-          // This can happen when FTZ contains no tabbable elements. focus will take care of finding a focusable element in FTZ.
+          // This can happen when FTZ contains no tabbable elements.
+          // focus will take care of finding a focusable element in FTZ.
           this.focus();
         } else {
           nextFocusable.focus();

@@ -81,8 +81,8 @@ export function memoize<T extends Function>(
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @param ignoreNullOrUndefinedResult - Flag to decide whether to cache callback result if it is undefined/null.
- * If the flag is set to true, the callback result is recomputed every time till the callback result is not undefined/null
- * for the first time and then the non-undefined/null version gets cached.
+ * If the flag is set to true, the callback result is recomputed every time till the callback result is
+ * not undefined/null for the first time, and then the non-undefined/null version gets cached.
  * @returns A memoized version of the function.
  */
 export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(

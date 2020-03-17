@@ -505,7 +505,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     } = item;
     const styles = itemProps ? itemProps.styles : undefined;
 
-    // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
+    // We only send a dividerClassName when the item to be rendered is a divider.
+    // For all other cases, the default divider style is used.
     const dividerClassName = item.itemType === ContextualMenuItemType.Divider ? item.className : undefined;
     const subMenuIconClassName = item.submenuIconProps ? item.submenuIconProps.className : '';
 
@@ -649,11 +650,10 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     }
   }
 
-  // tslint:disable-next-line:deprecation
   private _renderListItem(
     content: React.ReactNode,
     key: string | number,
-    classNames: IMenuItemClassNames,
+    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
     title?: string,
   ) {
     return (
@@ -663,10 +663,9 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     );
   }
 
-  // tslint:disable-next-line:deprecation
   private _renderSeparator(
     index: number,
-    classNames: IMenuItemClassNames,
+    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
     top?: boolean,
     fromSection?: boolean,
   ): React.ReactNode {
@@ -685,8 +684,7 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
 
   private _renderNormalItem(
     item: IContextualMenuItem,
-    // tslint:disable-next-line:deprecation
-    classNames: IMenuItemClassNames,
+    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
     index: number,
     focusableElementIndex: number,
     totalItemCount: number,

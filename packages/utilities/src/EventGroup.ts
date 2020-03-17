@@ -184,14 +184,14 @@ export class EventGroup {
     }
   }
 
-  /** On the target, attach an event whose handler will be called in the context of the parent
+  /**
+   * On the target, attach an event whose handler will be called in the context of the parent
    * of this instance of EventGroup.
    */
-  // tslint:disable-next-line:no-any
   public on(
-    target: any,
+    target: any, // tslint:disable-line:no-any
     eventName: string,
-    callback: (args?: any) => void,
+    callback: (args?: any) => void, // tslint:disable-line:no-any
     options?: boolean | AddEventListenerOptions,
   ): void {
     if (eventName.indexOf(',') > -1) {
@@ -279,11 +279,10 @@ export class EventGroup {
     }
   }
 
-  // tslint:disable-next-line:no-any
   public off(
-    target?: any,
+    target?: any, // tslint:disable-line:no-any
     eventName?: string,
-    callback?: (args?: any) => void,
+    callback?: (args?: any) => void, // tslint:disable-line:no-any
     options?: boolean | AddEventListenerOptions,
   ): void {
     for (let i = 0; i < this._eventRecords.length; i++) {

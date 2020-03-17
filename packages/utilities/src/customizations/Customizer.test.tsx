@@ -226,7 +226,7 @@ describe('Customizer', () => {
         // afterwards it should have updated
         expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
 
-        // verify it doesn't update during suppressUpdates(), and it works through errors, and it can suppress final update
+        // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
         Customizations.applyBatchedUpdates(() => {
           Customizations.applySettings({ field: 'notUpdated' });
           // it should not update inside

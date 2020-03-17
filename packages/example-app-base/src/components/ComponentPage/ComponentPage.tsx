@@ -139,6 +139,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
       }
 
+      // tslint:disable:max-line-length
       return (
         <MessageBar>
           <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
@@ -146,6 +147,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           {componentNameJsx || 'this component'}.
         </MessageBar>
       );
+      // tslint:enable:max-line-length
     }
   }
 

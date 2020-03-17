@@ -278,7 +278,8 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
       this._autoScroll.dispose();
     }
 
-    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = undefined;
+    this._autoScroll = this._dragOrigin = this._lastMouseEvent = undefined;
+    this._selectedIndicies = this._itemRectCache = undefined;
 
     if (this.state.dragRect) {
       this.setState({

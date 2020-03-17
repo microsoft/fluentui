@@ -112,7 +112,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
-   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+   * If selectedItems is provided, this will act as a controlled component and will not update its own state.
    */
   public updateItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {

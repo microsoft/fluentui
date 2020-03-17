@@ -15,7 +15,7 @@ export class ImageDefaultExample extends React.Component<any, any> {
         </Label>
         <Image
           src="http://placehold.it/350x150"
-          alt="Example implementation with no image fit property and no height or width is specified."
+          alt="Example with no image fit value and no height or width is specified."
         />
         <br />
         <Label>
@@ -24,7 +24,7 @@ export class ImageDefaultExample extends React.Component<any, any> {
         </Label>
         <Image
           src="http://placehold.it/350x150"
-          alt="Example implementation with no image fit property and only width is specified."
+          alt="Example with no image fit value and only width is specified."
           width={600}
         />
         <br />
@@ -34,7 +34,7 @@ export class ImageDefaultExample extends React.Component<any, any> {
         </Label>
         <Image
           src="http://placehold.it/350x150"
-          alt="Example implementation with no image fit property and only height is specified."
+          alt="Example with no image fit value and only height is specified."
           height={100}
         />
         <br />
@@ -44,7 +44,7 @@ export class ImageDefaultExample extends React.Component<any, any> {
         </Label>
         <Image
           src="http://placehold.it/350x150"
-          alt="Example implementation with no image fit property and height or width is specified."
+          alt="Example with no image fit value and height or width is specified."
           width={100}
           height={100}
         />

@@ -29,9 +29,9 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
 
   const itemSelectors = (isSelected: boolean = false) => {
     return {
-      // TODO
-      // After moving fluent to become the default design of Fabric we should revisit this selectors to match the fluent redlines.
-      // Currently whenever you hover over an item it forces focus on it so we style the background change through focus selector.
+      // TODO: After moving fluent to become the default design of Fabric we should revisit this selectors to match the
+      // fluent redlines. Currently whenever you hover over an item it forces focus on it so we style the background
+      // change through focus selector.
       selectors: {
         '&:hover:focus': {
           color: palette.neutralDark,
@@ -60,8 +60,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
       !disabled && {
         selectors: {
-          // Title and border states. For :hover and :focus even if the styles are the same we need to keep them separate for specificity
-          // reasons in order :active borderColor to work.
+          // Title and border states. For :hover and :focus even if the styles are the same we need to keep them
+          // separate for specificity reasons in order :active borderColor to work.
           ['&:hover .ms-Dropdown-title']: {
             color: palette.neutralDark,
             borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary,
@@ -81,12 +81,14 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           },
 
           // Title placeholder states when not disabled.
-          ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, &:active .ms-Dropdown-titleIsPlaceHolder']: {
+          ['&:hover .ms-Dropdown-titleIsPlaceHolder, &:focus .ms-Dropdown-titleIsPlaceHolder, ' +
+          '&:active .ms-Dropdown-titleIsPlaceHolder']: {
             color: palette.neutralDark,
           },
 
           // Title has error states
-          ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, &:active .ms-Dropdown-title--hasError']: {
+          ['&:hover .ms-Dropdown-title--hasError, &:focus .ms-Dropdown-title--hasError, ' +
+          '&:active .ms-Dropdown-title--hasError']: {
             borderColor: palette.redDark,
             color: isRenderingPlaceholder ? palette.neutralSecondary : palette.neutralPrimary,
           },

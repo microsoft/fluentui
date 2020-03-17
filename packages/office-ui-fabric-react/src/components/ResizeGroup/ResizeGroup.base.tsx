@@ -74,8 +74,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   /**
    * Gets the width/height of the data rendered in a hidden div.
    * @param measuredData - The data corresponding to the measurement we wish to take.
-   * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data. Only called when the measurement
-   * is not in the cache.
+   * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data.
+   * Only called when the measurement is not in the cache.
    */
   function _getMeasuredDimension(measuredData: any, getElementToMeasureDimension: () => number): number {
     const cachedDimension = _measurementCache.getCachedMeasurement(measuredData);
@@ -93,8 +93,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * to fit in the container.
    * @param data - The initial data point to start measuring.
    * @param onReduceData - Function that transforms the data into something that should render with less width/height.
-   * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data. Only called when the measurement
-   * is not in the cache.
+   * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data.
+   * Only called when the measurement is not in the cache.
    */
   function _shrinkContentsUntilTheyFit(
     data: any,
@@ -143,8 +143,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
    * on the screen, such as the window width/height growing.
    * @param data - The initial data point to start measuring.
    * @param onGrowData - Function that transforms the data into something that may take up more space when rendering.
-   * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data. Only called when the measurement
-   * is not in the cache.
+   * @param getElementToMeasureDimension - A function that returns the measurement of the rendered data.
+   * Only called when the measurement is not in the cache.
    */
   function _growDataUntilItDoesNotFit(
     data: any,
@@ -188,7 +188,8 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
   }
 
   /**
-   * Handles an update to the container width/eheight. Should only be called when we knew the previous container width/height.
+   * Handles an update to the container width/height.
+   * Should only be called when we knew the previous container width/height.
    * @param newDimension - The new width/height of the container.
    * @param fullDimensionData - The initial data passed in as a prop to resizeGroup.
    * @param renderedData - The data that was rendered prior to the container size changing.
@@ -235,7 +236,7 @@ export const getNextResizeGroupStateProvider = (measurementCache = getMeasuremen
     }
 
     if (newContainerDimension) {
-      // If we know what the last container size was and we rendered data at that width/height, we can do an optimized render
+      // If we know the last container size and we rendered data at that width/height, we can do an optimized render
       if (_containerDimension && currentState.renderedData && !currentState.dataToMeasure) {
         return {
           ...currentState,
@@ -347,11 +348,11 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
     const isInitialMeasure = !this._hasRenderedContent && dataNeedsMeasuring;
 
     // We only ever render the final content to the user. All measurements are done in a hidden div.
-    // For the initial render, we want this to be as fast as possible, so we need to make sure that we only mount one version of the
-    // component for measurement and the final render. For renders that update what is on screen, we want to make sure that
-    // there are no jarring effects such as the screen flashing as we apply scaling steps for meassurement. In the update case,
-    // we mount a second version of the component just for measurement purposes and leave the rendered content untouched until we know the
-    // next state sto show to the user.
+    // For the initial render, we want this to be as fast as possible, so we need to make sure that we only mount one
+    // version of the component for measurement and the final render. For renders that update what is on screen, we
+    // want to make sure that there are no jarring effects such as the screen flashing as we apply scaling steps for
+    // measurement. In the update case, we mount a second version of the component just for measurement purposes and
+    // leave the rendered content untouched until we know the next state to show to the user.
     return (
       <div {...divProps} className={className} ref={this._root}>
         <div style={hiddenParentStyles}>
@@ -385,7 +386,8 @@ export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeG
     this.setState({
       dataToMeasure: { ...nextProps.data },
       resizeDirection: 'grow',
-      measureContainer: true, // Receiving new props means the parent might rerender and the root width/height might change
+      // Receiving new props means the parent might rerender and the root width/height might change
+      measureContainer: true,
     });
   }
 

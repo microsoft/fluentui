@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-/* tslint:disable:max-line-length */
 import { SignalFieldBasicExample } from './examples/SignalField.Basic.Example';
 const SignalFieldBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/signals/examples/SignalField.Basic.Example.tsx') as string;
 

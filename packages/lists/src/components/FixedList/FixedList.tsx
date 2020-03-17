@@ -35,8 +35,8 @@ function getMaterializedItemRanges(props: IFixedListProps): ItemRange[] {
 
   const itemRange = getVisibleItemRange(props);
 
-  // Add item overscan. Inspired by react-window, we overscan in a given direction only when the user is not scrolling or
-  // when the overscan direction equals the scroll direction.
+  // Add item overscan. Inspired by react-window, we overscan in a given direction only when the user is not scrolling
+  // or when the overscan direction equals the scroll direction.
   // https://github.com/bvaughn/react-window/blob/729f621fb0b127ecec8ce71e1d0952920006658c/src/createListComponent.js#L506
   const overscanCount = Math.min(Math.ceil(overscanHeight / itemHeight), MIN_OVERSCAN_COUNT);
   const overscanBehind =

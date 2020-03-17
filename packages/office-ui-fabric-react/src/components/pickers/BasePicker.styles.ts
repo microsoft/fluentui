@@ -20,7 +20,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   // The following lines are to create a semi-transparent color overlay for the disabled state with designer's approval.
-  // @todo: investigate the performance cost of the calculation below and apply if negligible. Replacing with a static color for now.
+  // @todo: investigate the performance cost of the calculation below and apply if negligible.
+  //   Replacing with a static color for now.
   // const rgbColor: IRGB | undefined = cssColor(palette.neutralQuaternaryAlt);
   // const disabledOverlayColor = rgbColor ? `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.29)` : 'transparent';
   const disabledOverlayColor = 'rgba(218, 218, 218, 0.29)';

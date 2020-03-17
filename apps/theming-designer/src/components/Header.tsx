@@ -52,7 +52,14 @@ const headerStackStyles = (p: IStackProps, theme: ITheme) => ({
   },
 });
 
-const codepenHeader = `const { createTheme, Customizations, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n`;
+const codepenHeader = `const {
+  createTheme,
+  Customizations,
+  DefaultButton,
+  PrimaryButton,
+  Toggle,
+  TooltipHost
+} = Fabric;\n\n`;
 const codepenSamples = `\n\nclass Content extends React.Component {
     public render()
     {

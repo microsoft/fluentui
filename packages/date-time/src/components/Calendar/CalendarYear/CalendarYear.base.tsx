@@ -384,7 +384,8 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           role="button"
           type="button"
           aria-atomic={true}
-          aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+          // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+          aria-live="polite"
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>

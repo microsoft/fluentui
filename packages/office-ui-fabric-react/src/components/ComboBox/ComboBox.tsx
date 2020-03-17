@@ -1039,7 +1039,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       const newOptions = this.props.onResolveOptions([...this.state.currentOptions]);
 
       // Check to see if the returned value is an array, if it is update the state
-      // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+      // If the returned value is not an array then check to see if it's a promise or PromiseLike.
+      // If it is then resolve it asynchronously.
       if (Array.isArray(newOptions)) {
         this.setState({
           currentOptions: newOptions,
@@ -1084,8 +1085,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
         // when event coming from within the comboBox list menu
         (this._comboBoxMenu.current &&
           (this._comboBoxMenu.current.contains(relatedTarget as HTMLElement) ||
-            // when event coming from the callout containing the comboBox list menu (ex: when scrollBar of the Callout clicked)
-            // checks if the relatedTarget is a parent of _comboBoxMenu
+            // when event coming from the callout containing the comboBox list menu (ex: when scrollBar of the
+            // Callout is clicked) checks if the relatedTarget is a parent of _comboBoxMenu
             findElementRecursive(this._comboBoxMenu.current, element => element === relatedTarget))))
     ) {
       event.preventDefault();
@@ -2190,7 +2191,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   /**
    * Get the aria-activedescendant value for the comboxbox.
-   * @returns the id of the current focused combo item, otherwise the id of the currently selected element, null otherwise
+   * @returns the id of the current focused combo item, otherwise the id of the currently selected element,
+   * null otherwise
    */
   private _getAriaActiveDescentValue(): string | undefined {
     let descendantText =
@@ -2205,8 +2207,8 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
 
   /**
    * Get the aria autocomplete value for the Combobox
-   * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from and can
-   * dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
+   * @returns 'inline' if auto-complete automatically dynamic, 'both' if we have a list of possible values to pick from
+   * and can dynamically populate input, and 'none' if auto-complete is not enabled as we can't give user inputs.
    */
   private _getAriaAutoCompleteValue(): 'none' | 'inline' | 'list' | 'both' | undefined {
     const autoComplete = !this.props.disabled && this.props.autoComplete === 'on';

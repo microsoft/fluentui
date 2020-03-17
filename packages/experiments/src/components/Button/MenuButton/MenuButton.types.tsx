@@ -84,8 +84,8 @@ export interface IMenuButtonProps
     IBaseProps<IMenuButton>,
     INativeButtonProps {
   /**
-   * Defines the inital expanded state of the MenuButton. If you want the MenuButton to maintain its own state, use this.
-   * Otherwise refer to `expanded`.
+   * Inital expanded state of the MenuButton. Use this if you want the MenuButton to maintain its own state.
+   * Otherwise use `expanded`.
    * @defaultvalue false
    */
   defaultExpanded?: boolean;
@@ -122,12 +122,14 @@ export interface IMenuButtonTokens extends IButtonTokens {
   backgroundColorExpanded?: string;
 
   /**
-   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in a hovered state.
+   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in
+   * a hovered state.
    */
   backgroundColorExpandedHovered?: string;
 
   /**
-   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in an active state.
+   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in
+   * an active state.
    */
   backgroundColorExpandedPressed?: string;
 

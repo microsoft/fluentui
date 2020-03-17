@@ -206,7 +206,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
     }
 
     if (this.floatingPicker.current && this.inputElement) {
-      // Update the value if the input value is empty or it is different than the current inputText from the floatingPicker
+      // Update the value if the input value is empty or is different than the current inputText from the floatingPicker
       const shoudUpdateValue =
         this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);

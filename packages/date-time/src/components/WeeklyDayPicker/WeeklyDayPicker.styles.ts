@@ -49,7 +49,8 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         backgroundColor: palette.neutralLighter,
         fontSize: FontSizes.small,
         selectors: {
-          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, .${IsFocusVisibleClassName} &:focus`]: {
+          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, ` +
+          `.${IsFocusVisibleClassName} &:focus`]: {
             height: 53,
             minHeight: 12,
             overflow: 'initial',

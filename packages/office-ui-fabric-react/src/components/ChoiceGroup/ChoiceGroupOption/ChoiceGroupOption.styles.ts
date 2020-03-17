@@ -358,7 +358,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     innerField: [
       classNames.innerField,
       hasImage && {
-        height: imageSize!.height, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
+        // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
+        height: imageSize!.height,
         width: imageSize!.width,
       },
       (hasIcon || hasImage) && {
@@ -402,7 +403,8 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         margin: '4px 8px 2px 8px',
         height: labelWrapperHeight,
         lineHeight: labelWrapperLineHeight,
-        maxWidth: imageSize!.width * 2, // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
+        // using non-null assertion because we have a default in `ChoiceGroupOptionBase` class.
+        maxWidth: imageSize!.width * 2,
         overflow: 'hidden',
         whiteSpace: 'pre-wrap',
       },

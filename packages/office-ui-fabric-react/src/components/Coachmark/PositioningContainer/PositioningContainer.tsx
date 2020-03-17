@@ -184,8 +184,9 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
           )}
           // tslint:disable-next-line:jsx-ban-props
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
-          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+          tabIndex={-1}
           ref={this._contentHost}
         >
           {children}
@@ -287,14 +288,14 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
       if (document.body.contains(currentProps!.target as Node)) {
         currentProps!.gapSpace = offsetFromTarget;
         const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
-        // The position should not change if the position is within 2 decimal places.
+        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
+        // are different. The position should not change if the position is within 2 decimal places.
         if (
           (!positions && newPositions) ||
           (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
         ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
-          // and we should stop trying to reposition to prevent a stack overflow.
+          // We should not reposition the positioningContainer more than a few times, if it is then the content is
+          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
           this._positionAttempts++;
           this.setState(
             {
@@ -363,7 +364,6 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
 
   private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
-      // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {
         const oldPositionEdge = oldPositions[key];
         const newPositionEdge = newPositions[key];

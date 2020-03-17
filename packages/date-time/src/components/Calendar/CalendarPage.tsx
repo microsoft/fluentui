@@ -105,7 +105,10 @@ export class CalendarPage extends React.Component<{}, {}> {
               />
             </ExampleCard>
             <ExampleCard
-              title="Calendar with selectableDays = [Monday, Tuesday, Wednesday, Thursday, Friday] provided, first day of week = Sunday"
+              title={
+                'Calendar with selectableDays = [Monday, Tuesday, Wednesday, Thursday, Friday] provided, ' +
+                'first day of week = Sunday'
+              }
               code={CalendarInlineExampleCode}
             >
               <CalendarInlineExample
@@ -124,7 +127,10 @@ export class CalendarPage extends React.Component<{}, {}> {
               />
             </ExampleCard>
             <ExampleCard
-              title="Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday"
+              title={
+                'Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, ' +
+                'first day of week = Monday'
+              }
               code={CalendarInlineExampleCode}
             >
               <CalendarInlineExample
@@ -137,7 +143,7 @@ export class CalendarPage extends React.Component<{}, {}> {
               />
             </ExampleCard>
             <ExampleCard
-              title="Calendar with multiday view using dateRangeType === DateRangeType.Day and daysToSelectInDayView = 4"
+              title="Calendar with multiday view using dateRangeType = Day and daysToSelectInDayView = 4"
               code={CalendarInlineExampleCode}
             >
               <CalendarInlineExample

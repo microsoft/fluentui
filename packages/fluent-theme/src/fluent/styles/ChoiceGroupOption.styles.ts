@@ -13,12 +13,14 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
               borderColor: palette.neutralPrimary,
             },
             disabled && {
-              backgroundColor: semanticColors.bodyBackground, // using semanticColor to override unnecessary ternary check at source styles
+              // using semanticColor to override unnecessary ternary check at source styles
+              backgroundColor: semanticColors.bodyBackground,
               borderColor: palette.neutralTertiaryAlt,
             },
             checked &&
               !disabled && {
-                borderColor: semanticColors.inputBackgroundChecked, // re-assign the semanticColor after changing it above
+                // re-assign the semanticColor after changing it above
+                borderColor: semanticColors.inputBackgroundChecked,
               },
             (hasIcon || hasImage) &&
               disabled &&

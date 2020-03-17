@@ -300,7 +300,8 @@ export interface IContextualMenuListProps {
  */
 export interface IContextualMenuItem {
   /**
-   * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
+   * Optional callback to access the IContextualMenuRenderItem interface.
+   * This will get passed down to ContextualMenuItem.
    */
   componentRef?: IRefObject<IContextualMenuRenderItem>;
 
@@ -397,7 +398,8 @@ export interface IContextualMenuItem {
   target?: string;
 
   /**
-   * Link relation setting when using `href`. If `target` is `_blank`, `rel` is defaulted to a value to prevent clickjacking.
+   * Link relation setting when using `href`.
+   * If `target` is `_blank`, `rel` is defaulted to a value to prevent clickjacking.
    */
   rel?: string;
 

@@ -120,9 +120,10 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
   styles?: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 
   /**
-   * Optional target element to tag hover card on.
-   * If not provided and using HoverCard as a wrapper, don't set 'data-is-focusable=true' attribute to the root of the wrapped child.
-   * When no target given, HoverCard will use it's root as a target and become the focusable element with a focus listener attached to it.
+   * Optional target element to tag hover card on. If not provided and using HoverCard as a wrapper, don't set the
+   * 'data-is-focusable=true' attribute to the root of the wrapped child.
+   * If no target is given, HoverCard will use its root as a target and become the focusable element with a
+   * focus listener attached to it.
    */
   target?: HTMLElement | string | null;
 

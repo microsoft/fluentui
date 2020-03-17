@@ -25,8 +25,8 @@ export interface IFocusZone {
   focusElement(childElement?: HTMLElement): boolean;
 
   /**
-   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
-   * the last horizontal motion.
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather
+   * than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
   setFocusAlignment(point: IPoint): void;

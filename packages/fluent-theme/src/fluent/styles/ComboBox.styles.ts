@@ -21,7 +21,8 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
       },
     },
     rootError: {
-      borderColor: palette.red, // current structure of ComboBox does not allow to change the hover/focus color when has error
+      // current structure of ComboBox does not allow to change the hover/focus color when has error
+      borderColor: palette.red,
     },
     callout: {
       borderRadius: effects.roundedCorner2,

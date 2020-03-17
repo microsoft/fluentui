@@ -309,14 +309,14 @@ describe('Dropdown', () => {
       expect(titleElement.text()).toEqual('1');
     });
 
-    it('is possible to programatically focus on Dropdown when it has tabIndex of `-1, and it will select the first valid item`', () => {
+    it('can be programmatically focused when tabIndex=-1, and will select the first valid item', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');
       document.body.appendChild(container);
 
-      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div being focused.
-      // Utilize JSDOM instead.
+      // in enzyme, when we call the programatic focus(), it does not trigger the onFocus callback of the div
+      // being focused. Utilize JSDOM instead.
       ReactDOM.render(
         <Dropdown componentRef={dropdown} label="testgroup" tabIndex={-1} options={DEFAULT_OPTIONS} />,
         container,
@@ -329,7 +329,7 @@ describe('Dropdown', () => {
       expect(titleElement.innerHTML).toEqual('1');
     });
 
-    it('calling programatic focus() with `true` opens up the Dropdown and focuses/selects on first selectable option`', () => {
+    it('opens and focuses/selects first selectable option when focus(true) is called', () => {
       const dropdown = React.createRef<IDropdown>();
 
       const container = document.createElement('div');

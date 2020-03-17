@@ -128,6 +128,7 @@ describe('PersonaCoin', () => {
 
   describe('image', () => {
     const testImage1x1 =
+      // tslint:disable-next-line:max-line-length
       'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
     it('renders empty alt text by default', () => {

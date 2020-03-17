@@ -124,7 +124,10 @@ export class DocumentCardCompactExample extends React.PureComponent {
         </DocumentCard>
         {/* Folder or site activity */}
         <DocumentCard
-          aria-label="Document Card with folder or site activity. 4 files were uploaded. Created by Annie Lindqvist a few minutes ago"
+          aria-label={
+            'Document Card with folder or site activity. 4 files were uploaded. ' +
+            'Created by Annie Lindqvist a few minutes ago'
+          }
           type={DocumentCardType.compact}
           onClickHref="http://bing.com"
         >
@@ -148,8 +151,10 @@ export class DocumentCardCompactExample extends React.PureComponent {
         </DocumentCard>
         {/* Email conversation */}
         <DocumentCard
-          aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
-          Sent by Christian Bergqvist a few minutes ago"
+          aria-label={
+            'Document Card with email conversation. Conversation about takeaways from annual SharePoint conference. ' +
+            'Sent by Christian Bergqvist a few minutes ago'
+          }
           type={DocumentCardType.compact}
           onClickHref="http://bing.com"
         >

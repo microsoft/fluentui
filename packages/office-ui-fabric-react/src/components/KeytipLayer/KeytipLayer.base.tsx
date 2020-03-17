@@ -475,9 +475,9 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
-      // Check to make sure that child of currentKeytip is successfully added to currentKeytip's children and update it if not
-      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node in currentKeytip
-      // when that parent is the currentKeytip
+      // Ensure the child of currentKeytip is successfully added to currentKeytip's children and update it if not.
+      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node
+      // in currentKeytip when that parent is the currentKeytip.
       if (
         this._keytipTree.currentKeytip &&
         this._keytipTree.currentKeytip.hasDynamicChildren &&
@@ -654,11 +654,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   };
 
   /**
-   * Returns duplicates among keytip IDs
-   * If the returned array is empty, no duplicates were found
+   * Returns duplicates among keytip IDs.
+   * If the returned array is empty, no duplicates were found.
    *
    * @param keytipIds - Array of keytip IDs to find duplicates for
-   * @returns - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
+   * @returns - Array of duplicates that were found. Each duplicate will only be added once to this array.
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};

@@ -1877,7 +1877,7 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonA);
     expect(buttonA.tabIndex).toBe(0);
 
-    // Pressing tab when our focus zone doesn't allow tabbing will allow us to propagate our tab to our key down event handler
+    // Pressing tab when our focus zone doesn't allow tabbing should propagate our tab to our key down event handler
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
     expect(tabDownListener.mock.calls.length).toBe(1);
     const onKeyDownEvent = tabDownListener.mock.calls[0][0];
@@ -2055,7 +2055,7 @@ describe('FocusZone', () => {
     expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
   });
 
-  it('Handles focus moving to different targets correctly in focus zone following DOM order diretion and allowing tabbing', () => {
+  it('Handles focus moving to different targets in focus zone following DOM order and allowing tabbing', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>

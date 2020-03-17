@@ -24,9 +24,13 @@ import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
  * State component, if provided, is passed in props for processing. Props from state / user are automatically processed
  * and styled before finally being passed to view.
  *
- * State components should contain all stateful behavior and should not generate any JSX, but rather simply call the view prop.
+ * State components should contain all stateful behavior and should not generate any JSX, but rather simply call
+ * the view prop.
+ *
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
- * State component is optional. If state is not provided, created component is essentially a functional stateless component.
+ *
+ * State component is optional. If state is not provided, created component is essentially a functional
+ * stateless component.
  *
  * @param options - component Component options. See IComponentOptions for more detail.
  */

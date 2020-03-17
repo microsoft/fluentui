@@ -51,8 +51,8 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     const timeFormat = '%m/%d';
-    // passing tick values is optional. If you do not pass them the line chart will render them for you based on D3 standard
-    // This is a optional prop for more control
+    // Passing tick values is optional, for more control.
+    // If you do not pass them the line chart will render them for you based on D3's standard.
     const tickValues: Date[] = [
       new Date('01-01-2018'),
       new Date('02-01-2018'),

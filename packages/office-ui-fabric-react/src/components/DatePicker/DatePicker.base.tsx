@@ -527,8 +527,9 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
               errorMessage: '',
             });
 
-            // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
-            // This occurs when an invalid date is entered twice
+            // When formatting is available:
+            // If formatted date is valid, but is different from input, update with formatted date.
+            // This occurs when an invalid date is entered twice.
             if (formatDate && formatDate(date) !== inputValue) {
               this.setState({
                 formattedDate: formatDate(date).toString(),

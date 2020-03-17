@@ -47,7 +47,8 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   /**
    * Callback issued when a month is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 

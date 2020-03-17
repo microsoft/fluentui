@@ -131,8 +131,8 @@ const RibbonSplitMenuButton: React.FunctionComponent<ISplitRibbonMenuButtonProps
     },
   };
 
-  // TODO: This cast is required because menu is required in IMenuButtonSlots.
-  // However, it's provided by the top level props of ISplitRibbonMenuButton props, so it shouldn't be required in multiple places.
+  // TODO: This cast is required because menu is required in IMenuButtonSlots. However, it's provided by the top level
+  // props of ISplitRibbonMenuButton props, so it shouldn't be required in multiple places.
   // Should menu be made optional in IMenuButtonSlots?
   const verticalMenuButtonProps: IRibbonMenuButtonProps = {
     content: props.content,

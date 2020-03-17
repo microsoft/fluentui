@@ -172,7 +172,8 @@ export class FloatingSuggestions<TItem>
 
   public updateSuggestionsList(suggestions: TItem[] | PromiseLike<TItem[]>): void {
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
-    // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+    // If the returned value is not an array then check to see if it's a promise or PromiseLike.
+    // If it is then resolve it asynchronously.
     if (Array.isArray(suggestions)) {
       this.updateSuggestions(suggestions, true /*forceUpdate*/);
     } else if (suggestions && suggestions.then) {

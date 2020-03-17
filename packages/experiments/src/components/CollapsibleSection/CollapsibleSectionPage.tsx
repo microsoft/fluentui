@@ -2,34 +2,22 @@ import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { CollapsibleSectionAccordionExample } from './examples/CollapsibleSection.Accordion.Example';
-const CollapsibleSectioAccordionExampleCode =
-  /* tslint:disable-next-line:max-line-length */
-  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Accordion.Example.tsx') as string;
+const CollapsibleSectioAccordionExampleCode = require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Accordion.Example.tsx') as string;
 
 import { CollapsibleSectionBasicExample } from './examples/CollapsibleSection.Basic.Example';
-const CollapsibleSectionBasicExampleCode =
-  /* tslint:disable-next-line:max-line-length */
-  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Basic.Example.tsx') as string;
+const CollapsibleSectionBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Basic.Example.tsx') as string;
 
 import { CollapsibleSectionSlotsExample } from './examples/CollapsibleSection.Slots.Example';
-const CollapsibleSectionSlotsExampleCode =
-  /* tslint:disable-next-line:max-line-length */
-  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Slots.Example.tsx') as string;
+const CollapsibleSectionSlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Slots.Example.tsx') as string;
 
 import { CollapsibleSectionControlledExample } from './examples/CollapsibleSection.Controlled.Example';
-const CollapsibleSectionControlledExampleCode =
-  /* tslint:disable-next-line:max-line-length */
-  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Controlled.Example.tsx') as string;
+const CollapsibleSectionControlledExampleCode = require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Controlled.Example.tsx') as string;
 
 import { CollapsibleSectionRecursiveExample } from './examples/CollapsibleSection.Recursive.Example';
-const CollapsibleSectionRecursiveExampleCode =
-  /* tslint:disable-next-line:max-line-length */
-  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example.tsx') as string;
+const CollapsibleSectionRecursiveExampleCode = require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example.tsx') as string;
 
 import { CollapsibleSectionStyledExample } from './examples/CollapsibleSection.Styled.Example';
-const CollapsibleSectionStyledExampleCode =
-  /* tslint:disable-next-line:max-line-length */
-  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Styled.Example.tsx') as string;
+const CollapsibleSectionStyledExampleCode = require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Styled.Example.tsx') as string;
 
 export class CollapsibleSectionPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

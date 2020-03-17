@@ -417,8 +417,8 @@ export class SelectionZone extends React.Component<ISelectionZoneProps, ISelecti
   }
 
   /**
-   * In multi selection, if you double click within an item's root (but not within the invoke element or input elements),
-   * we should execute the invoke handler.
+   * In multi selection, if you double click within an item's root (but not within the invoke element or
+   * input elements), we should execute the invoke handler.
    */
   private _onDoubleClick = (ev: React.MouseEvent<HTMLElement>): void => {
     let target = ev.target as HTMLElement;

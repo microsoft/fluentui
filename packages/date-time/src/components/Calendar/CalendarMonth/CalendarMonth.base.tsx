@@ -104,7 +104,7 @@ export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICal
       yearPickerHidden,
     } = this.props;
 
-    // using "!" to mark as non-null since we have a default value if it is undefined, but typescript doesn't recognize it as non-null
+    // navigationIcons has a default value in defaultProps, but typescript doesn't recognize this
     const leftNavigationIcon = navigationIcons!.leftNavigation;
     const rightNavigationIcon = navigationIcons!.rightNavigation;
     const dateFormatter = dateTimeFormatter!;
@@ -174,7 +174,8 @@ export class CalendarMonthBase extends React.Component<ICalendarMonthProps, ICal
             tabIndex={!!onHeaderSelect || !yearPickerHidden ? 0 : -1}
             type="button"
             aria-atomic={true}
-            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            aria-live="polite"
           >
             {yearString}
           </button>

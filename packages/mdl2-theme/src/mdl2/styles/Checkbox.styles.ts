@@ -12,7 +12,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         },
     ],
     checkmark: {
-      color: semanticColors.inputForegroundChecked, // using semanticColor to override original behavior on checked/disabled
+      // using semanticColor to override original behavior on checked/disabled
+      color: semanticColors.inputForegroundChecked,
     },
     root: [
       !disabled && [

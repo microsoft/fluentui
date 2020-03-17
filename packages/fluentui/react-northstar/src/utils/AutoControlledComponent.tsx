@@ -190,6 +190,7 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
   static getAutoControlledStateFromProps: React.GetDerivedStateFromProps<any, any>;
 }
 
+// eslint-disable-next-line func-names
 AutoControlledComponent.getDerivedStateFromProps = function(props, state) {
   const { autoControlledProps, getAutoControlledStateFromProps } = state;
 
@@ -218,6 +219,7 @@ AutoControlledComponent.getDerivedStateFromProps = function(props, state) {
   return newStateFromProps;
 };
 
+// eslint-disable-next-line func-names
 AutoControlledComponent.getAutoControlledStateFromProps = function(props, state) {
   return null;
 };

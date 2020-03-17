@@ -135,8 +135,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillUpdate(newProps: ICalloutProps): void {
-    // If the target element changed, find the new one. If we are tracking target with class name, always find element because we
-    // do not know if fabric has rendered a new element and disposed the old element.
+    // If the target element changed, find the new one. If we are tracking target with class name, always find element
+    // because we do not know if fabric has rendered a new element and disposed the old element.
     const newTarget = this._getTarget(newProps);
     const oldTarget = this._getTarget();
     if (
@@ -238,8 +238,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
           {...getNativeProps(this.props, divProperties, ARIA_ROLE_ATTRIBUTES)}
           className={css(this._classNames.root, positions && positions.targetEdge && ANIMATIONS[positions.targetEdge!])}
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
-          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+          tabIndex={-1}
           ref={this._calloutElement}
         >
           {beakVisible && <div className={this._classNames.beak} style={this._getBeakPosition()} />}
@@ -488,7 +489,6 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
 
   private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
-      // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {
         const oldPositionEdge = oldPositions[key];
         const newPositionEdge = newPositions[key];

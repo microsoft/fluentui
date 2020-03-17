@@ -75,8 +75,8 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...params, props: { value: 'test' } });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler. This will render a read-only field. ` +
-        `If the field should be mutable use 'defaultValue'. Otherwise, set 'onChange' or 'readOnly'.`,
+      `Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler. This will render a ` +
+        `read-only field. If the field should be mutable use 'defaultValue'. Otherwise, set 'onChange' or 'readOnly'.`,
     );
 
     // Don't re-warn
@@ -89,8 +89,8 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...otherParams, props: { value: 'test' } });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler. This will render a read-only field. ` +
-        `If the field should be mutable use 'defaultValue'. Otherwise, set 'onChange'.`,
+      `Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler. This will render a ` +
+        `read-only field. If the field should be mutable use 'defaultValue'. Otherwise, set 'onChange'.`,
     );
 
     // Don't re-warn
@@ -110,8 +110,8 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...params, props: { value: 'test', readOnly: false } });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler. This will render a read-only field. ` +
-        `If the field should be mutable use 'defaultValue'. Otherwise, set 'onChange' or 'readOnly'.`,
+      `Warning: You provided a 'value' prop to a TestComponent without an 'onChange' handler. This will render a ` +
+        `read-only field. If the field should be mutable use 'defaultValue'. Otherwise, set 'onChange' or 'readOnly'.`,
     );
 
     // Don't re-warn
@@ -123,9 +123,10 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...params, props: { value: 'hello', defaultValue: 'world', onChange: noOp } });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: You provided both 'value' and 'defaultValue' to a TestComponent. Form fields must be either controlled or uncontrolled ` +
-        `(specify either the 'value' prop, or the 'defaultValue' prop, but not both). Decide between using a controlled or uncontrolled ` +
-        `TestComponent and remove one of these props. More info: https://fb.me/react-controlled-components`,
+      `Warning: You provided both 'value' and 'defaultValue' to a TestComponent. Form fields must be either ` +
+        `controlled or uncontrolled (specify either the 'value' prop, or the 'defaultValue' prop, but not both). ` +
+        `Decide between using a controlled or uncontrolled TestComponent and remove one of these props. ` +
+        `More info: https://fb.me/react-controlled-components`,
     );
 
     // Don't re-warn
@@ -166,9 +167,9 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...params, oldProps: {}, props: { value: 'test', onChange: noOp } });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: A component is changing an uncontrolled TestComponent to be controlled. TestComponents should not switch from ` +
-        `controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled for the lifetime of the component. ` +
-        `More info: https://fb.me/react-controlled-components`,
+      `Warning: A component is changing an uncontrolled TestComponent to be controlled. TestComponents should not ` +
+        `switch from controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled ` +
+        `for the lifetime of the component. More info: https://fb.me/react-controlled-components`,
     );
 
     // Don't re-warn
@@ -180,9 +181,9 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...params, oldProps: {}, props: { value: 'test', onChange: noOp } });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: A component is changing an uncontrolled TestComponent to be controlled. TestComponents should not switch from ` +
-        `controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled for the lifetime of the component. ` +
-        `More info: https://fb.me/react-controlled-components`,
+      `Warning: A component is changing an uncontrolled TestComponent to be controlled. TestComponents should not ` +
+        `switch from controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled ` +
+        `for the lifetime of the component. More info: https://fb.me/react-controlled-components`,
     );
   });
 
@@ -203,9 +204,9 @@ describe('warnControlledUsage', () => {
     warnControlledUsage<IProps>({ ...params, oldProps: { value: 'test', onChange: noOp }, props: {} });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: A component is changing a controlled TestComponent to be uncontrolled. TestComponents should not switch from ` +
-        `controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled for the lifetime of the component. ` +
-        `More info: https://fb.me/react-controlled-components`,
+      `Warning: A component is changing a controlled TestComponent to be uncontrolled. TestComponents should not ` +
+        `switch from controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled ` +
+        `for the lifetime of the component. More info: https://fb.me/react-controlled-components`,
     );
 
     // Don't re-warn
@@ -221,9 +222,9 @@ describe('warnControlledUsage', () => {
     });
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(
-      `Warning: A component is changing a controlled TestComponent to be uncontrolled. TestComponents should not switch from ` +
-        `controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled for the lifetime of the component. ` +
-        `More info: https://fb.me/react-controlled-components`,
+      `Warning: A component is changing a controlled TestComponent to be uncontrolled. TestComponents should not ` +
+        `switch from controlled to uncontrolled (or vice versa). Decide between using controlled or uncontrolled ` +
+        `for the lifetime of the component. More info: https://fb.me/react-controlled-components`,
     );
 
     // Don't re-warn

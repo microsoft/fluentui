@@ -181,7 +181,7 @@ describe('DetailsColumn', () => {
     expect(component.exists(`#${referenceId}`)).toBe(true);
   });
 
-  it('if custom DetailsHeader has optional onRenderColumnHeaderTooltip, do not render invalid aria-describedby attribute', () => {
+  it('does not render invalid aria-describedby if custom DetailsHeader has onRenderColumnHeaderTooltip', () => {
     const column: IColumn = { ...baseColumn, ariaLabel: 'Foo' };
     let component: any;
     const columns = [column];

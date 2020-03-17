@@ -3,12 +3,13 @@ import { ISchemeNames, ITheme } from '../interfaces/index';
 
 /**
  * @internal
- * This function is still in experimental phase in support of Foundation experimental development. Its API signature and existence
- * are subject to change.
+ * This function is still in experimental phase in support of Foundation experimental development.
+ * Its API signature and existence are subject to change.
  *
- * Modify context to activate the specified scheme or theme. For schemes, look in context (if available) and fall back to global
- * Customizations. If both scheme and theme are specified, scheme will be looked up in theme. In this case, scheme must be
- * present in theme arg, otherwise new context will default to theme arg (there is no fallback to settings to look up scheme.)
+ * Modify context to activate the specified scheme or theme. For schemes, look in context (if available) and fall back
+ * to global Customizations. If both scheme and theme are specified, scheme will be looked up in theme. In this case,
+ * scheme must be present in theme arg, otherwise new context will default to theme arg (there is no fallback to
+ * settings to look up scheme.)
  *
  * @param context - Context in which to get schemed customizations.
  * @param scheme - Scheme to get customizations for from theme arg (if supplied) OR from context and global settings.
@@ -33,7 +34,8 @@ export function getThemedContext(
   const schemeTheme: ITheme | undefined =
     scheme && schemeSource && schemeSource.schemes && schemeSource.schemes[scheme];
 
-  // These first two checks are logically redundant but TS doesn't infer schemeSource.schemes is defined when schemeTheme is defined.
+  // These first two checks are logically redundant but TS doesn't infer schemeSource.schemes is defined
+  // when schemeTheme is defined.
   if (schemeSource && schemeTheme && schemeSource !== schemeTheme) {
     newSettings = { theme: schemeTheme };
     newSettings.theme.schemes = schemeSource.schemes;

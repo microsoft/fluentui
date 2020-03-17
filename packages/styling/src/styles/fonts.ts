@@ -136,7 +136,8 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
 }
 
 /**
- * If there is a localized font for this language, return that. Returns undefined if there is no localized font for that language.
+ * If there is a localized font for this language, return that.
+ * Returns undefined if there is no localized font for that language.
  */
 function _getLocalizedFontFamily(language: string | null): string {
   for (let lang in LanguageToFontMap) {

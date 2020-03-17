@@ -12,7 +12,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
       },
       !disabled &&
         checked && {
-          borderColor: semanticColors.inputBackgroundChecked, // using semanticColor because I am setting a new color above
+          // using semanticColor because of setting a new color above
+          borderColor: semanticColors.inputBackgroundChecked,
         },
       disabled && {
         borderColor: palette.neutralTertiaryAlt,
@@ -24,7 +25,8 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
         },
     ],
     checkmark: {
-      color: semanticColors.inputForegroundChecked, // using semanticColor to override original behavior on checked/disabled
+      // using semanticColor to override original behavior on checked/disabled
+      color: semanticColors.inputForegroundChecked,
     },
     root: [
       !disabled && [

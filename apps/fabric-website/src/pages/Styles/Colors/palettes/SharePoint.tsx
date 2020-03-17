@@ -26,7 +26,6 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
             hex: theme.colors.filter(color => color.name === 'themePrimary')[0].hex,
             code: theme.colors.filter(color => color.name === 'themePrimary')[0].code,
           }))}
-          // tslint:disable-next-line jsx-no-lambda
           onColorSelected={this._changeTheme}
         />
 
@@ -35,7 +34,9 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
             <MarkdownHeader as="h3">{`${activeThemeName} theme`}</MarkdownHeader>
             <ColorPalette colors={activeThemeColors} />
 
-            <MarkdownHeader as="h3">{`Neutrals for ${activeThemeName} theme (${activeThemeData.background} background)`}</MarkdownHeader>
+            <MarkdownHeader as="h3">
+              Neutrals for {activeThemeName} theme ({activeThemeData.background} background)
+            </MarkdownHeader>
             <ColorPalette colors={activeNeutralColors} />
           </>
         )}

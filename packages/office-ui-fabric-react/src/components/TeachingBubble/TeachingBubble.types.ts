@@ -81,7 +81,8 @@ export interface ITeachingBubbleProps
   secondaryButtonProps?: IButtonProps;
 
   /**
-   * Text that will be rendered in the footer of the TeachingBubble. May be rendered alongside primary and secondary buttons.
+   * Text that will be rendered in the footer of the TeachingBubble.
+   * May be rendered alongside primary and secondary buttons.
    */
   footerContent?: string | JSX.Element;
 
@@ -108,7 +109,8 @@ export interface ITeachingBubbleProps
   isWide?: boolean;
 
   /**
-   * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
+   * A variation with smaller bold headline and margins to the body.
+   * (`hasCondensedHeadline` takes precedence if it is also set to true.)
    */
   hasSmallHeadline?: boolean;
 

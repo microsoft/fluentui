@@ -47,7 +47,7 @@ describe('Facepile', () => {
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
-  it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType equals downArrow', () => {
+  it('renders chevron overflow button if overflowButtonProps are not null and OverflowButtonType is downArrow', () => {
     const wrapper = mount(
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.downArrow} />,
     );
@@ -56,7 +56,7 @@ describe('Facepile', () => {
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
-  it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType equals more', () => {
+  it('renders more overflow button if overflowButtonProps are not null as OverflowButtonType is more', () => {
     const wrapper = mount(
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.more} />,
     );
@@ -65,6 +65,7 @@ describe('Facepile', () => {
     expectOne(wrapper, '.ms-Facepile-itemButton');
   });
 
+  // tslint:disable-next-line:max-line-length
   it('renders without descriptive overflow button if overflowButtonProps are not null and maximum personas are not exceeded', () => {
     const wrapper = mount(
       <Facepile personas={[]} overflowButtonProps={{}} overflowButtonType={OverflowButtonType.descriptive} />,
@@ -74,6 +75,7 @@ describe('Facepile', () => {
     expectMissing(wrapper, '.ms-Facepile-itemButton');
   });
 
+  // tslint:disable-next-line:max-line-length
   it('renders with descriptive overflow button if overflowButtonProps are not null and maximum personas are exceeded', () => {
     const personas: IFacepilePersona[] = facepilePersonas.concat(...facepilePersonas, ...facepilePersonas);
     const wrapper = mount(

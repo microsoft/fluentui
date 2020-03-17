@@ -17,8 +17,8 @@ export interface IStackItemSlots {
   root?: IHTMLSlot;
 }
 
-// The following two types are redundant with IStackItemComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// The following two types are redundant with IStackItemComponent but are needed until TS function return widening
+// issue is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**

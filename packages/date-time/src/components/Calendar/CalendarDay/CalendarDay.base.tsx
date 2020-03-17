@@ -102,7 +102,8 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
       <div className={classNames.root} id={dayPickerId}>
         <div className={classNames.header}>
           <button
-            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            aria-live="polite"
             aria-atomic="true"
             id={monthAndYearId}
             className={classNames.monthAndYear}

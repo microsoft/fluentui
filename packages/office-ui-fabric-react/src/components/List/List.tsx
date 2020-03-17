@@ -60,9 +60,9 @@ const _measureSurfaceRect = _measurePageRect;
 const _measureScrollRect = _measurePageRect;
 
 /**
- * The List renders virtualized pages of items. Each page's item count is determined by the getItemCountForPage callback if
- * provided by the caller, or 10 as default. Each page's height is determined by the getPageHeight callback if provided by
- * the caller, or by cached measurements if available, or by a running average, or a default fallback.
+ * The List renders virtualized pages of items. Each page's item count is determined by the getItemCountForPage callback
+ * if provided by the caller, or 10 as default. Each page's height is determined by the getPageHeight callback if
+ * provided by the caller, or by cached measurements if available, or by a running average, or a default fallback.
  *
  * The algorithm for rendering pages works like this:
  *
@@ -75,8 +75,8 @@ const _measureScrollRect = _measurePageRect;
  * we can avoid re-measuring during operations that should not alter heights, like scrolling.
  *
  * To optimize glass rendering performance, onShouldVirtualize can be set. When onShouldVirtualize return false,
- * List will run in fast mode (not virtualized) to render all items without any measurements to improve page load time. And we
- * start doing measurements and rendering in virtualized mode when items grows larger than this threshold.
+ * List will run in fast mode (not virtualized) to render all items without any measurements to improve page load time.
+ * And we start doing measurements and rendering in virtualized mode when items grows larger than this threshold.
  *
  * However, certain operations can make measure data stale. For example, resizing the list, or passing in new props,
  * or forcing an update change cause pages to shrink/grow. When these operations occur, we increment a measureVersion
@@ -210,8 +210,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
       const requestedIndexIsInPage = itemIndex <= index && itemIndex + itemsPerPage > index;
       if (requestedIndexIsInPage) {
-        // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in just
-        // the given item, otherwise we'll only bring the page into view
+        // We have found the page. If the user provided a way to measure an individual item, we will try to scroll in
+        // just the given item, otherwise we'll only bring the page into view
         if (measureItem && this._scrollElement) {
           const scrollRect = _measureScrollRect(this._scrollElement);
           const scrollWindow = {

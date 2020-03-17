@@ -77,7 +77,8 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
       process.env.NODE_ENV !== 'production'
     ) {
       warn(
-        'ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. Otherwise the show/hide code button will not work.',
+        'ExampleCard: the onToggleEditor prop is required if isCodeVisible is set. ' +
+          'Otherwise the show/hide code button will not work.',
       );
     }
   }

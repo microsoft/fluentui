@@ -20,9 +20,9 @@ export class ImageCenterExample extends React.Component<any, any> {
         </p>
         <Label>The image is larger than the frame, so all sides are cropped to center the image.</Label>
         <Image
-          {...(imageProps as any)}
+          {...imageProps}
           src="http://placehold.it/800x300"
-          alt="Example implementation of the property image fit using the center value on an image larger than the frame."
+          alt='Example of the image fit value "center" on an image larger than the frame.'
         />
         <br />
         <Label>
@@ -30,9 +30,9 @@ export class ImageCenterExample extends React.Component<any, any> {
           available space.
         </Label>
         <Image
-          {...(imageProps as any)}
+          {...imageProps}
           src="http://placehold.it/100x100"
-          alt="Example implementation of the property image fit using the center value on an image smaller than the frame."
+          alt='Example of the image fit value "center" on an image smaller than the frame.'
         />
       </div>
     );

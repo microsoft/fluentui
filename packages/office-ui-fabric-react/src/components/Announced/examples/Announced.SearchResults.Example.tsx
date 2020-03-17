@@ -59,7 +59,8 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found', // this alert handles the case when there are no suggestions available
+            // this alert handles the case when there are no suggestions available
+            noResultsFoundText: 'No Color Tags Found',
           }}
           inputProps={{
             'aria-label': 'Tag Picker',

@@ -488,9 +488,11 @@ const Popup: React.FC<PopupProps> &
   if (process.env.NODE_ENV !== 'production') {
     React.useEffect(() => {
       if (inline && trapFocus) {
+        // eslint-disable-next-line no-console
         console.warn('Using "trapFocus" in inline popup leads to broken behavior for screen reader users.');
       }
       if (!inline && autoFocus) {
+        // eslint-disable-next-line no-console
         console.warn(
           'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.',
         );

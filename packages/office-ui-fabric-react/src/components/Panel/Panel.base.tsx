@@ -99,7 +99,8 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
     this.state = {
       isFooterSticky: false,
-      visibility: PanelVisibilityState.closed, // intentionally ignore props so animation takes place during componentDidMount
+      // intentionally ignore props so animation takes place during componentDidMount
+      visibility: PanelVisibilityState.closed,
       id: getId('Panel'),
     };
   }

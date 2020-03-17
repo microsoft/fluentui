@@ -37,7 +37,8 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'stretch',
-    background: customThemeForShimmer.palette.white, // using the palette color to match the gaps and borders of the shimmer.
+    // using the palette color to match the gaps and borders of the shimmer.
+    background: customThemeForShimmer.palette.white,
     selectors: {
       '& > .ms-Shimmer-container': {
         flexGrow: 1,
@@ -51,7 +52,8 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    background: customThemeForShimmer.palette.white, // using the palette color to match the gaps and borders of the shimmer.
+    // using the palette color to match the gaps and borders of the shimmer.
+    background: customThemeForShimmer.palette.white,
     outline: `1px solid ${customThemeForShimmer.palette.neutralPrimary}`,
     outlineOffset: '-10px',
   },

@@ -321,7 +321,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
 
   /**
    * Creates an updated DragData based off the current position and given baseDragData
-   * @param baseDragData The base DragData (gotten from _createDragDataFromPosition) used to calculate the updated positions
+   * @param baseDragData The base DragData (from _createDragDataFromPosition) used to calculate the updated positions
    */
   private _createUpdatedDragData(baseDragData: IDragData): IDragData {
     const { position } = this.state;

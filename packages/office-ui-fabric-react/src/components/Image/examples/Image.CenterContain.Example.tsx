@@ -21,34 +21,34 @@ export class ImageCenterContainExample extends React.Component<any, any> {
         <Image
           {...imageProps}
           src="http://placehold.it/100x150"
-          alt="Example implementation of the property image fit using the centerContain value on an image smaller than the frame."
+          alt='Example of the image fit value "centerContain" on an image smaller than the frame.'
         />
         <br />
         <Label>The image has a wider width than the frame so it's contained.</Label>
         <Image
           {...imageProps}
           src="http://placehold.it/300x100"
-          alt="Example implementation of the property image fit using the centerContain value on an image wider than the frame."
+          alt='Example of the image fit value "centerContain" on an image wider than the frame.'
         />
         <br />
         <Label>The image is taller than the frame so it's contained.</Label>
         <Image
           {...imageProps}
           src="http://placehold.it/100x300"
-          alt="Example implementation of the property image fit using the centerContain value on an image taller than the frame."
+          alt='Example of the image fit value "centerContain" on an image taller than the frame.'
         />
         <br />
         <Label>These images are taller and wider than the frame and so they are contained.</Label>
         <Image
           {...imageProps}
           src="http://placehold.it/400x500"
-          alt="Example implementation of the property image fit using the centerContain value on an image taller and wider than the frame."
+          alt='Example of the image fit value "centerContain" on an image taller and wider than the frame.'
         />
         <br />
         <Image
           {...imageProps}
           src="http://placehold.it/500x400"
-          alt="Example implementation of the property image fit using the centerContain value on an image taller and wider than the frame."
+          alt='Example of the image fit value "centerContain" on an image taller and wider than the frame.'
         />
       </div>
     );

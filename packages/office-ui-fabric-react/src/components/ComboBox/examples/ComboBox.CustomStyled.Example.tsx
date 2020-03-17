@@ -96,7 +96,9 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
 
         <ComboBox
           defaultSelectedKey="Calibri"
-          label="ComboBox with custom option rendering (type the name of a font and the option will render in that font)"
+          label={
+            'ComboBox with custom option rendering (type the name of a font and the option will render in that font)'
+          }
           allowFreeform={true}
           autoComplete="on"
           options={this._optionsForCustomRender}

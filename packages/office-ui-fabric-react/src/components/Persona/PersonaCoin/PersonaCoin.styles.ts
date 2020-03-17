@@ -115,7 +115,8 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
         color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
         fontSize: fonts.large.fontSize,
         fontWeight: FontWeights.semibold,
-        lineHeight: dimension === 48 ? 46 : dimension, // copying the logic for the dimensions; defaulted to 46 for size48
+        // copying the logic for the dimensions; defaulted to 46 for size48
+        lineHeight: dimension === 48 ? 46 : dimension,
         height: dimension,
 
         selectors: {

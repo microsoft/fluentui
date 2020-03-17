@@ -180,8 +180,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
     const resolvedAriaLabel = ariaLabel || (nativeProps as any)['aria-label'];
 
-    // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of aria-describedby
-    // otherwise default to undefined so property does not appear in output.
+    // Check for ariaDescription, secondaryText or aria-describedby in the native props to determine source of
+    // aria-describedby. Otherwise default to undefined so property does not appear in output.
     let ariaDescribedBy = undefined;
     if (ariaDescription) {
       ariaDescribedBy = _ariaDescriptionId;
@@ -213,7 +213,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         : true;
 
     const isCheckboxTypeRole = role === 'menuitemcheckbox' || role === 'checkbox';
-    // if isCheckboxTypeRole, always return a checked value, otherwise only return checked value if toggle is set to true
+    // if isCheckboxTypeRole, always return a checked value.
+    // Otherwise only return checked value if toggle is set to true.
     // This is because role="checkbox" always needs to have an aria-checked value
     // but our checked prop only sets aria-pressed if we mark the button as a toggle="true"
     const checkedOrPressedValue = isCheckboxTypeRole ? !!checked : toggle === true ? !!checked : undefined;
@@ -256,9 +257,9 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   }
 
   public componentDidMount() {
-    // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the primary action.
-    // This gives more hit target space for touch environments. We're setting the onpointerdown here, because React
-    // does not support Pointer events yet.
+    // For split buttons, touching anywhere in the button should drop the dropdown, which should contain the
+    // primary action. This gives more hit target space for touch environments. We're setting the onpointerdown here,
+    // because React does not support Pointer events yet.
     if (this._isSplitButton && this._splitButtonContainer.current) {
       if ('onpointerdown' in this._splitButtonContainer.current) {
         this._events.on(this._splitButtonContainer.current, 'pointerdown', this._onPointerDown, true);
@@ -395,7 +396,8 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     if (iconProps && (iconProps.iconName !== undefined || iconProps.imageProps)) {
       const { className, imageProps, ...rest } = iconProps;
 
-      // If the styles prop is specified as part of iconProps, fall back to regular Icon as FontIcon and ImageIcon do not have such prop.
+      // If the styles prop is specified as part of iconProps, fall back to regular Icon as FontIcon and ImageIcon
+      // do not have this prop.
       if (iconProps.styles) {
         return <Icon className={css(this._classNames.icon, className)} imageProps={imageProps} {...rest} />;
       }
@@ -451,9 +453,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
   };
 
   private _hasText(): boolean {
-    // _onRenderTextContents and _onRenderText do not perform the same checks. Below is parity with what _onRenderText used to have
-    // before the refactor that introduced this function. _onRenderTextContents does not require props.text to be undefined in order
-    // for props.children to be used as a fallback. Purely a code maintainability/reuse issue, but logged as Issue #4979
+    // _onRenderTextContents and _onRenderText do not perform the same checks. Below is parity with what _onRenderText
+    // used to have before the refactor that introduced this function. _onRenderTextContents does not require props.
+    // text to be undefined in order for props.children to be used as a fallback.
+    // Purely a code maintainability/reuse issue, but logged as Issue #4979.
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
@@ -611,7 +614,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
         aria-disabled={disabled}
         aria-haspopup={true}
         aria-expanded={!menuHidden}
-        aria-pressed={toggle ? !!checked : undefined} // aria-pressed attribute should only be present for toggle buttons
+        aria-pressed={toggle ? !!checked : undefined} // should only be present for toggle buttons
         aria-describedby={mergeAriaAttributeValues(
           ariaDescribedBy,
           keytipAttributes ? keytipAttributes['aria-describedby'] : undefined,

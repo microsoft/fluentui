@@ -65,7 +65,8 @@ describe('typings', () => {
   });
 
   it('do not generate TS compile error on valid ISlotOption assignments', () => {
-    // TODO: assigning TestRender to component and TestComponent to render does not cause errors. why? because context is any?
+    // TODO: assigning TestRender to component and TestComponent to render does not cause errors.
+    // why? because context is any?
     const p00: ISlotOptions<ITestProps> = {};
     const p01: ISlotOptions<ITestProps> = {};
     const p02: ISlotOptions<ITestProps> = {};
@@ -92,7 +93,8 @@ describe('typings', () => {
   //   tHtml = { component: 'div' };
   //   tHtml = { component: 'button' };
 
-  //   // IHTMLElementSlot should accept its specified element and elements sharing the same shared subset of its attributes.
+  //   // IHTMLElementSlot should accept its specified element and elements sharing the same shared subset
+  //   // of its attributes.
   //   let tDiv: IHTMLElementSlot<'div'> = { component: 'div' };
   //   tDiv = { component: 'b' };
 

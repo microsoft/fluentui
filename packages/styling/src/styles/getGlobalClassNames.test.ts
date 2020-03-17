@@ -45,7 +45,7 @@ describe('getGlobalClassNames', () => {
     });
   });
 
-  it('returns the correct classNames when global classes are enabled; also disableGlobalClassNames argument has priority', () => {
+  it('returns correct classNames when global classes are enabled; disableGlobalClassNames has priority', () => {
     const theme = createTheme({ disableGlobalClassNames: true });
 
     expect(getGlobalClassNames({ root: 'ms-Link' }, theme, false)).toEqual({ root: 'ms-Link' });

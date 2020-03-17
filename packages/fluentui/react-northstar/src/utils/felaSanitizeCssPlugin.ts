@@ -72,6 +72,7 @@ export default (config?: { skip?: string[] }) => {
       if (isValidCssValue(cssPropertyValue)) {
         processedStyles[cssPropertyNameOrIndex] = cssPropertyValue;
       } else if (process.env.NODE_ENV !== 'production') {
+        // eslint-disable-next-line no-console
         console.warn(
           `fela-sanitize-css: An invalid value "${cssPropertyValue}" was passed to property "${cssPropertyNameOrIndex}"`,
         );

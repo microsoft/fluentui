@@ -240,7 +240,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         WebkitOverflowScrolling: 'touch',
         bottom: 0,
         top: 0,
-        // (left, right, width) - Properties to be overridden depending on the type of the Panel and the screen breakpoint.
+        // left, right, width are overridden depending on the type of the Panel and the screen breakpoint.
         left: panelMargin.auto,
         right: panelMargin.none,
         width: panelWidth.full,

@@ -178,10 +178,9 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     return <VerticalDivider getClassNames={getDividerClassNames} />;
   }
 
-  // tslint:disable-next-line:deprecation
   private _renderSplitIconButton(
     item: IContextualMenuItem,
-    classNames: IMenuItemClassNames,
+    classNames: IMenuItemClassNames, // tslint:disable-line:deprecation
     index: number,
     keytipAttributes: any,
   ) {

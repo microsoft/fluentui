@@ -125,12 +125,14 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
         style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
       >
         {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
-        {/* tslint:disable-next-line:deprecation */}
-        {(!hidePersonaDetails ||
+        {// tslint:disable:deprecation
+        (!hidePersonaDetails ||
           size === PersonaSize.size8 ||
           size === PersonaSize.size10 ||
           size === PersonaSize.tiny) &&
-          personaDetails}
+          personaDetails
+        // tslint:enable:deprecation
+        }
       </div>
     );
   }

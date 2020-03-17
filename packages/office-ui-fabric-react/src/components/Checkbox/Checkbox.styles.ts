@@ -31,7 +31,8 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
   const checkboxBorderHoveredColor = semanticColors.inputBorderHovered;
   const checkboxBorderIndeterminateHoveredColor = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBackgroundChecked = semanticColors.inputBackgroundChecked;
-  // TODO: after updating the semanticColors slots mapping following 2 tokens need to be semanticColors.inputBackgroundCheckedHovered
+  // TODO: after updating the semanticColors slots mapping the following 2 tokens need to be
+  // semanticColors.inputBackgroundCheckedHovered
   const checkboxBackgroundCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxBorderColorCheckedHovered = semanticColors.inputBackgroundCheckedHovered;
   const checkboxHoveredTextColor = semanticColors.inputTextHovered;
@@ -224,10 +225,10 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
         borderColor: checkboxBorderIndeterminateColor,
       },
       !reversed
-        ? // this margin on the checkbox is for backwards compat.
-          // notably it has the effect where a customRender is used, there will be only a 4px margin from checkbox to label.
-          // the label by default would have another 4px margin for a total of 8px margin between checkbox and label.
-          // we don't combine the two (and move it into the text) to not incur a breaking change for everyone using custom render atm.
+        ? // This margin on the checkbox is for backwards compat. Notably it has the effect where a customRender
+          // is used, there will be only a 4px margin from checkbox to label. The label by default would have
+          // another 4px margin for a total of 8px margin between checkbox and label. We don't combine the two
+          // (and move it into the text) to not incur a breaking change for everyone using custom render atm.
           {
             marginRight: 4,
           }

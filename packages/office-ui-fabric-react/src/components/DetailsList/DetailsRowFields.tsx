@@ -74,7 +74,8 @@ export const DetailsRowFields: React.FunctionComponent<IDetailsRowFieldsProps> =
 
         cellValueKeys[column.key] = cellValueKey;
 
-        // generate a key that auto-dirties when content changes, to force the container to re-render, to trigger animation
+        // generate a key that auto-dirties when content changes, to force the container to re-render,
+        // to trigger animation
         const key = `${column.key}${cellValueKey !== undefined ? `-${cellValueKey}` : ''}`;
         return (
           <div

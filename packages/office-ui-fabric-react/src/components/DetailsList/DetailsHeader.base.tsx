@@ -746,7 +746,8 @@ export class DetailsHeaderBase extends React.Component<IDetailsHeaderBaseProps, 
 
   private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
-      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      // Need to resolve the actual DOM node, not the component.
+      // The element itself will be used for drag/drop and focusing.
       this._rootElement = findDOMNode(focusZone) as HTMLElement;
     } else {
       this._rootElement = undefined;

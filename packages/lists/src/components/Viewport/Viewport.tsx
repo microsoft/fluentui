@@ -108,7 +108,8 @@ export const Viewport = (props: IViewportProps): JSX.Element => {
   return (
     <div
       ref={scrollContainerRef}
-      data-is-scrollable={true} // some Fabric components need this to detect their parent scroll container more efficiently
+      // some Fabric components need this to detect their parent scroll container more efficiently
+      data-is-scrollable={true}
       style={style} // tslint:disable-line:jsx-ban-props
     >
       {children(viewportState)}

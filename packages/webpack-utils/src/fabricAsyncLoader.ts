@@ -21,8 +21,9 @@ function getMagicComments(options: loaderUtils.OptionObject): string {
 }
 
 /**
- * Fabric async loader will automatically replace the Fabric components specified in the "include" option of the loader with below code
- * The code below uses the `react-loadable` control to facilitate auto code-splitting at the Fabric component level
+ * Fabric async loader will automatically replace the Fabric components specified in the "include" option of the
+ * loader with the below code.
+ * The code uses the `react-loadable` control to facilitate auto code-splitting at the Fabric component level.
  *
  * NOTE: This code is heavily inspired by https://github.com/baflo/react-loadable-loader.
  *
@@ -33,7 +34,8 @@ module.exports = function(content: string): string {
 };
 
 /**
- * Pitch is first phase of the loading process, it gives access to the module name. This method actually injects the code.
+ * Pitch is first phase of the loading process; it gives access to the module name.
+ * This method actually injects the code.
  * @see https://github.com/webpack/docs/wiki/loaders
  *
  * @param remainingRequest the remaining requested module

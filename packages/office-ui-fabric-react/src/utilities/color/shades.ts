@@ -1,6 +1,7 @@
 // Technically this should be shades and tints, but for simplicity we'll call everything a shade.
-/* This utility module is used with theming. Given a color to shade, whether the theme is inverted (i.e. is a dark color),
- * and the desired shade enum, this will return an appropriate shade of that color.
+/*
+ * This utility module is used with theming. Given a color to shade, whether the theme is inverted
+ * (i.e. is a dark color), and the desired shade enum, this will return an appropriate shade of that color.
  */
 import { IHSV, IColor } from './interfaces';
 import { MAX_COLOR_RGB } from './consts';

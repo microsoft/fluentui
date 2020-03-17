@@ -36,11 +36,20 @@ export interface IColorsPageState {
 
 const codeHeader = "import { loadTheme } from 'office-ui-fabric-react';\n\n";
 const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
-const codepenSamples =
-  '\n\nclass Content extends React.Component {\n  public render() {\n    return (<div>' +
-  '<DefaultButton text="DefaultButton"/><PrimaryButton text="PrimaryButton"/><Toggle label="Enabled"/><Toggle label="Disabled" disabled={true}/>' +
-  '</div>);\n  }\n}\n' +
-  "ReactDOM.render(<Content />,document.getElementById('content'));";
+const codepenSamples = `
+
+class Content extends React.Component {
+  public render() {
+    return <div>
+      <DefaultButton text="DefaultButton"/>
+      <PrimaryButton text="PrimaryButton"/>
+      <Toggle label="Enabled"/>
+      <Toggle label="Disabled" disabled={true}/>
+    </div>;
+  }
+}
+
+ReactDOM.render(<Content />,document.getElementById('content'));`;
 
 export class ColorsPage extends React.Component<{}, IColorsPageState> {
   private _semanticSlotColorChangeTimeout: number;
@@ -146,7 +155,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
         {*/}
 
         {/* the shared popup color picker for slots */}
-        {colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement && (
+        {colorPickerVisible && colorPickerSlotRule && colorPickerElement && (
           <Callout
             key={colorPickerSlotRule.name}
             gapSpace={10}
@@ -361,7 +370,8 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
       this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter),
     ]; // neutral variant with primary color
 
-    // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
+    // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of
+    // the original theme
     if (!isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
       // is not inverted
       accessibilityRows.push(

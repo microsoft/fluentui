@@ -323,7 +323,8 @@ describe('styleToClassName', () => {
 
     expect(className).toEqual('css-0');
     expect(_stylesheet.getRules()).toEqual(
-      '.css20{top:140px;}.css50{top:140px;}#myId button:hover .class1{top:140px;}.class2{top:140px;}.class3{top:140px;}',
+      '.css20{top:140px;}.css50{top:140px;}#myId button:hover ' +
+        '.class1{top:140px;}.class2{top:140px;}.class3{top:140px;}',
     );
   });
 

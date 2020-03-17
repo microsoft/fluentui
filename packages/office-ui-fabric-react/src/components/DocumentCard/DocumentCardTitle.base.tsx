@@ -126,7 +126,8 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     return documentCardTitle;
   }
 
-  // Truncate logic here way can't handle the case that chars with different widths are mixed very well, let _shrinkTitle take care of that.
+  // Truncate logic here way can't handle the case that chars with different widths are mixed very well.
+  // Let _shrinkTitle take care of that.
   private _truncateTitle = (): void => {
     if (!this.state.needMeasurement) {
       return;

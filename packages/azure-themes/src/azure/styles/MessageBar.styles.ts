@@ -51,7 +51,8 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
   return {
     actions: {
       // Buttons utilizes an alpha channel < 1 for their pressed and hover state background colors.
-      // This styling effectively makes the button background the body background and applies hover / active styles to next child down.
+      // This styling effectively makes the button background the body background and applies hover / active styles
+      // to next child down.
       selectors: {
         '.ms-Button': {
           backgroundColor: semanticColors.bodyBackground,

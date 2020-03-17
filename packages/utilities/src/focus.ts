@@ -50,8 +50,8 @@ export function getLastFocusable(
 }
 
 /**
- * Gets the first tabbable element.
- * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
+ * Gets the first tabbable element. (The difference between focusable and tabbable is that tabbable elements are
+ * focusable elements that also have tabIndex != -1.)
  * @param rootElement - The parent element to search beneath.
  * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues forward.  Typical use passes rootElement.firstChild.
@@ -78,8 +78,8 @@ export function getFirstTabbable(
 }
 
 /**
- * Gets the last tabbable element.
- * The difference between focusable and tabbable is that tabbable elements are focusable elements that also have tabIndex != -1.
+ * Gets the last tabbable element. (The difference between focusable and tabbable is that tabbable elements are
+ * focusable elements that also have tabIndex != -1.)
  * @param rootElement - The parent element to search beneath.
  * @param currentElement - The descendant of rootElement to start the search at.  This element is the first one checked,
  * and iteration continues in reverse.  Typical use passes rootElement.lastChild.
@@ -360,7 +360,8 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
 
 /**
  * Determines if an element can receive focus programmatically or via a mouse click.
- * If checkTabIndex is true, additionally checks to ensure the element can be focused with the tab key, meaning tabIndex != -1.
+ * If checkTabIndex is true, additionally checks to ensure the element can be focused with the tab key,
+ * meaning tabIndex != -1.
  *
  * @public
  */

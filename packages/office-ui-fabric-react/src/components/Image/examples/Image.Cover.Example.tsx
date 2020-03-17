@@ -20,8 +20,8 @@ export class ImageCoverExample extends React.Component<any, any> {
           and the sides are cropped evenly.
         </Label>
         <Image
-          {...(imageProps as any)}
-          alt="Example implementation of the property image fit using the cover value on an image wider than the frame."
+          {...imageProps}
+          alt='Example of the image fit value "cover" on an image wider than the frame.'
           width={150}
           height={250}
         />
@@ -31,8 +31,8 @@ export class ImageCoverExample extends React.Component<any, any> {
           and the top and bottom are cropped evenly.
         </Label>
         <Image
-          {...(imageProps as any)}
-          alt="Example implementation of the property image fit using the cover value on an image taller than the frame."
+          {...imageProps}
+          alt='Example of the image fit value "cover" on an image taller than the frame.'
           width={250}
           height={150}
         />

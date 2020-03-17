@@ -37,8 +37,10 @@ export const DocumentCardConversationExample: React.FunctionComponent = () => {
   return (
     <div>
       <DocumentCard
-        aria-label="Document Card with logo, text preview, and status. Conversation about annual report. Content preview. 3 attachments.
-        Sent by Annie Lindqvist and 2 others in March 13, 2018."
+        aria-label={
+          'Document Card with logo, text preview, and status. Conversation about annual report. ' +
+          'Content preview. 3 attachments. Sent by Annie Lindqvist and 2 others in March 13, 2018.'
+        }
         styles={cardStyles}
         onClickHref="http://bing.com"
       >
@@ -61,8 +63,10 @@ export const DocumentCardConversationExample: React.FunctionComponent = () => {
         <DocumentCardActivity activity="Sent March 13, 2018" people={people.slice(0, 3)} />
       </DocumentCard>
       <DocumentCard
-        aria-label="Document Card with logo, text preview, and status. Further annual report conversation. Content preview. 3 attachments.
-        Sent by Christian Bergqvist and 2 others in March 13, 2018."
+        aria-label={
+          'Document Card with logo, text preview, and status. Further annual report conversation. ' +
+          'Content preview. 3 attachments. Sent by Christian Bergqvist and 2 others in March 13, 2018.'
+        }
         styles={cardStyles}
         onClickHref="http://bing.com"
       >
@@ -75,8 +79,10 @@ export const DocumentCardConversationExample: React.FunctionComponent = () => {
         <DocumentCardActivity activity="Sent March 13, 2018" people={people.slice(3, 6)} />
       </DocumentCard>
       <DocumentCard
-        aria-label="Document Card with logo and text preview. Conversation about annual report. Content preview. Sent by Velatine Lourvric
-        and 1 other in March 13, 2018."
+        aria-label={
+          'Document Card with logo and text preview. Conversation about annual report. Content preview. ' +
+          'Sent by Velatine Lourvric and 1 other in March 13, 2018.'
+        }
         styles={cardStyles}
         onClickHref="http://bing.com"
       >

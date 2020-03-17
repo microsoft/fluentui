@@ -246,19 +246,23 @@ describe('Button', () => {
         expect(button.getAttribute('aria-describedby')).toBeDefined();
       });
 
-      it('applies aria-labelledby and aria-describedby to a CompoundButton with secondaryText and no ariaDescription', () => {
-        const button = render(
-          <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>,
-        );
+      it(
+        'applies aria-labelledby and aria-describedby to a CompoundButton with secondaryText ' +
+          'and no ariaDescription',
+        () => {
+          const button = render(
+            <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>,
+          );
 
-        expect(button.getAttribute('aria-label')).toBeNull();
+          expect(button.getAttribute('aria-label')).toBeNull();
 
-        expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector('.ms-Button-label')!.id);
-        expect(button.getAttribute('aria-labelledby')).toBeDefined();
+          expect(button.getAttribute('aria-labelledby')).toEqual(button.querySelector('.ms-Button-label')!.id);
+          expect(button.getAttribute('aria-labelledby')).toBeDefined();
 
-        expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.ms-Button-description')!.id);
-        expect(button.getAttribute('aria-describedby')).toBeDefined();
-      });
+          expect(button.getAttribute('aria-describedby')).toEqual(button.querySelector('.ms-Button-description')!.id);
+          expect(button.getAttribute('aria-describedby')).toBeDefined();
+        },
+      );
 
       it('does not apply aria-pressed to an unchecked button', () => {
         const button: any = render(<DefaultButton toggle={true}>Hello</DefaultButton>);
@@ -460,7 +464,7 @@ describe('Button', () => {
       expect(keyDownSpy).toHaveBeenCalled();
     });
 
-    it('Providing onKeyDown, menuProps and setting splitButton to true fires provided onKeyDown on both buttons', () => {
+    it('Providing onKeyDown, menuProps and splitButton=true fires provided onKeyDown on both buttons', () => {
       const keyDownSpy = jest.fn();
 
       const button = render(
@@ -741,7 +745,7 @@ describe('Button', () => {
         expect(callbackMock.mock.calls.length).toBe(1);
       });
 
-      it('[PersistedMenu] Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
+      it('[PersistedMenu] Opens on first click, closes on second click and calls onAfterMenuDismiss', () => {
         const callbackMock = jest.fn();
 
         const button: HTMLElement = buildRenderButtonWithMenu(callbackMock, true);

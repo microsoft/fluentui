@@ -341,60 +341,76 @@ describe('ComboBox', () => {
 
   // jeremy
 
-  it('Can insert an empty string after removing a pending value in uncontrolled case with autoComplete and allowFreeform on', () => {
-    wrapper = mount(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
-    );
+  it(
+    'Can insert an empty string after removing a pending value in uncontrolled case ' +
+      'with autoComplete and allowFreeform on',
+    () => {
+      wrapper = mount(
+        <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={true} />,
+      );
 
-    (wrapper.find('input').instance() as any).value = 'f';
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    (wrapper.find('input').instance() as any).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('');
-  });
+      (wrapper.find('input').instance() as any).value = 'f';
+      wrapper.find('input').simulate('input', { target: { value: 'f' } });
+      (wrapper.find('input').instance() as any).value = '';
+      wrapper.find('input').simulate('input', { target: { value: '' } });
+      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+      wrapper.update();
+      expect(wrapper.find('input').props().value).toEqual('');
+    },
+  );
 
-  it('Cannot insert an empty string after removing a pending value in uncontrolled case with autoComplete on and allowFreeform off', () => {
-    wrapper = mount(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={false} />,
-    );
+  it(
+    'Cannot insert an empty string after removing a pending value in uncontrolled case ' +
+      'with autoComplete on and allowFreeform off',
+    () => {
+      wrapper = mount(
+        <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="on" allowFreeform={false} />,
+      );
 
-    (wrapper.find('input').instance() as any).value = 'f';
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    (wrapper.find('input').instance() as any).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('Foo');
-  });
+      (wrapper.find('input').instance() as any).value = 'f';
+      wrapper.find('input').simulate('input', { target: { value: 'f' } });
+      (wrapper.find('input').instance() as any).value = '';
+      wrapper.find('input').simulate('input', { target: { value: '' } });
+      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+      wrapper.update();
+      expect(wrapper.find('input').props().value).toEqual('Foo');
+    },
+  );
 
-  it('Can insert an empty string after removing a pending value in uncontrolled case with autoComplete off and allowFreeform on', () => {
-    wrapper = mount(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
-    );
+  it(
+    'Can insert an empty string after removing a pending value in uncontrolled case ' +
+      'with autoComplete off and allowFreeform on',
+    () => {
+      wrapper = mount(
+        <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={true} />,
+      );
 
-    (wrapper.find('input').instance() as any).value = 'f';
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    (wrapper.find('input').instance() as any).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('');
-  });
+      (wrapper.find('input').instance() as any).value = 'f';
+      wrapper.find('input').simulate('input', { target: { value: 'f' } });
+      (wrapper.find('input').instance() as any).value = '';
+      wrapper.find('input').simulate('input', { target: { value: '' } });
+      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+      wrapper.update();
+      expect(wrapper.find('input').props().value).toEqual('');
+    },
+  );
 
-  it('Cannot insert an empty string after removing a pending value in uncontrolled case with autoComplete and allowFreeform off', () => {
-    wrapper = mount(
-      <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={false} />,
-    );
-    (wrapper.find('input').instance() as any).value = 'f';
-    wrapper.find('input').simulate('input', { target: { value: 'f' } });
-    (wrapper.find('input').instance() as any).value = '';
-    wrapper.find('input').simulate('input', { target: { value: '' } });
-    wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
-    wrapper.update();
-    expect(wrapper.find('input').props().value).toEqual('One');
-  });
+  it(
+    'Cannot insert an empty string after removing a pending value in uncontrolled case ' +
+      'with autoComplete and allowFreeform off',
+    () => {
+      wrapper = mount(
+        <ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} autoComplete="off" allowFreeform={false} />,
+      );
+      (wrapper.find('input').instance() as any).value = 'f';
+      wrapper.find('input').simulate('input', { target: { value: 'f' } });
+      (wrapper.find('input').instance() as any).value = '';
+      wrapper.find('input').simulate('input', { target: { value: '' } });
+      wrapper.find('input').simulate('keydown', { which: KeyCodes.enter });
+      wrapper.update();
+      expect(wrapper.find('input').props().value).toEqual('One');
+    },
+  );
 
   it('Can change selected option with keyboard', () => {
     wrapper = mount(<ComboBox defaultSelectedKey="1" options={DEFAULT_OPTIONS2} />);
@@ -871,8 +887,8 @@ describe('ComboBox', () => {
     inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
     _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
 
-    // this should toggle the checkbox off
-    // With multi-select the currentPendingValue is not reset on input change because it would break keyboard accessibility
+    // This should toggle the checkbox off. With multi-select the currentPendingValue is not reset on input change
+    // because it would break keyboard accessibility
     wrapper.find('.ms-ComboBox button').simulate('click');
     const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
     ReactTestUtils.Simulate.change(buttons[3]);

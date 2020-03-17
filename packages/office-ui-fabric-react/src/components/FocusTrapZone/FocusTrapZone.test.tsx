@@ -499,8 +499,8 @@ describe('FocusTrapZone', () => {
 
       setupTest({ isClickableOutsideFocusTrap: true });
 
-      // FTZ doesn't register a window click listener when isClickableOutsideFocusTrap is true, so we can't simulate clicks directly.
-      // Therefore we test indirectly by making sure FTZ doesn't register a window click listener.
+      // FTZ doesn't register a window click listener when isClickableOutsideFocusTrap is true, so we can't simulate
+      // clicks directly. Therefore we test indirectly by making sure FTZ doesn't register a window click listener.
       expect(componentEventListeners.click).toBeUndefined();
     });
 
@@ -554,8 +554,8 @@ describe('FocusTrapZone', () => {
 
       setupTest({ forceFocusInsideTrap: false });
 
-      // FTZ doesn't register a window focus listener when isClickableOutsideFocusTrap is true, so we can't simulate focus directly.
-      // Therefore we test indirectly by making sure FTZ doesn't register a window focus listener.
+      // FTZ doesn't register a window focus listener when isClickableOutsideFocusTrap is true, so we can't simulate
+      // focus directly. Therefore we test indirectly by making sure FTZ doesn't register a window focus listener.
       expect(componentEventListeners.focus).toBeUndefined();
     });
 

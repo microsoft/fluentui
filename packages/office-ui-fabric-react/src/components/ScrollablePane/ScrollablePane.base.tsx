@@ -100,9 +100,9 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
           return false;
         }
 
-        // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
+        // Compute the scrollbar height, which might have changed if the content's width changed and caused overflow
         const scrollbarHeight = this._getScrollbarHeight();
-        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
+        // If the scrollbar height changed, update state so it's postioned correctly below sticky footer
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
             scrollbarHeight: scrollbarHeight,
@@ -403,7 +403,8 @@ export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IS
           }
         }
 
-        // If target element to append before is known, then grab respective stickyContentTop/Bottom element and insert before
+        // If target element to append before is known, grab respective stickyContentTop/Bottom element
+        // and insert before
         let targetContainer: HTMLDivElement | null = null;
         if (targetStickyToAppendBefore) {
           targetContainer =

@@ -256,7 +256,7 @@ describe('OverflowSet', () => {
         expect(getKeytip(keytipManager, overflowKeytips.overflowButtonKeytip.keySequences)).toBeDefined();
       });
 
-      it('triggering the overflow button keytip should register the menu item keytips with their modified sequence', () => {
+      it('registers menu item keytips with modified sequents when overflow button is triggered', () => {
         jest.useFakeTimers();
 
         // enable keytip mode to update the KeytipTree

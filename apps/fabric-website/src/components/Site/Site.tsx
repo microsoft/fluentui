@@ -77,7 +77,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<
         // ignore
       }
 
-      // Set active platform for each top level page to local storage platform or the first platform defined for that page.
+      // Set active platform for each top level page to local storage platform or the first platform defined for
+      // that page.
       topLevelPages.forEach(item => {
         activePlatforms[item] = activePlatforms[item] || getPageFirstPlatform(item, siteDefinition);
       });
@@ -473,7 +474,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
       if (!currentPlatformRegex.test(newPagePath)) {
         for (const key of platformKeys) {
-          // If the user navigates directly to a platform specific page, set the active platform to that of the new page.
+          // If the user navigates directly to a platform-specific page, set the active platform to that of the new page
           const isNewPlatform = new RegExp(`/${key}`, 'gi');
           if (isNewPlatform.test(newPagePath)) {
             this._onPlatformChanged(key);

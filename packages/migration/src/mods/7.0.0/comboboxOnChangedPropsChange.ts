@@ -24,7 +24,8 @@ export default migration(
           if (ts.isJsxAttribute(prop) && prop && prop.name && prop.name.getText() === propName && prop.initializer) {
             opts.warn(
               `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${propName} is removed; ` +
-                `please use onChange instead (NOTE: the arguments have changed from ${propName} to onChange; please update accordingly)`,
+                `please use onChange instead (NOTE: the arguments have changed from ${propName} to onChange; ` +
+                `please update accordingly)`,
             );
           }
         }

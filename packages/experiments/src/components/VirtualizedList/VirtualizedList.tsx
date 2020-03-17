@@ -46,7 +46,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
     this._focusedIndex = -1;
 
     const {
-      initialViewportHeight = window.innerHeight, // Start with the window height if not passed in props, this does not cause layout
+      // Start with the window height if not passed in props, this does not cause layout
+      initialViewportHeight = window.innerHeight,
     } = this.props;
 
     this.state = {
@@ -95,8 +96,8 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends React.Compone
   }
 
   private _updateObservedElements(): void {
-    // (Re-)register with the observer after every update, so we'll get an intersection event immediately if one of the spacer
-    // elements is visible right now.
+    // (Re-)register with the observer after every update, so we'll get an intersection event immediately if one of
+    // the spacer elements is visible right now.
     for (const key of Object.keys(this._spacerElements)) {
       const ref = this._spacerElements[key];
       this.context.scrollContainer.observe(ref);

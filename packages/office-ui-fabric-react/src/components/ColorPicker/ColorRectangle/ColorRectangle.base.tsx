@@ -86,7 +86,8 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
         onMouseDown={this._onMouseDown}
         onKeyDown={this._onKeyDown}
         role="slider"
-        // Proper description of the current hue *and* saturation (screen reader typically chooses this over aria-valuenow)
+        // Proper description of the current hue *and* saturation
+        // (screen reader typically chooses this over aria-valuenow)
         aria-valuetext={valueText}
         // Narrator reads aria-valuetext first, but it also reads aria-valuenow after a pause, and
         // per the aria spec this defaults to halfway between min/max (50) if we don't provide it.

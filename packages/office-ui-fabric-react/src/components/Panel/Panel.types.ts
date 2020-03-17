@@ -312,7 +312,8 @@ export enum PanelType {
   large = 4,
 
   /**
-   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at XX-Large breakpoint.
+   * Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at
+   * XX-Large breakpoint.
    * - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint
    * - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint
    * - Large (640-1023): adapts to `PanelType.medium` at this breakpoint

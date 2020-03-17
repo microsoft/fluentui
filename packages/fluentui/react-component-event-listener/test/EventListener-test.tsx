@@ -119,6 +119,7 @@ describe('EventListener', () => {
       );
 
       // We need to clean up mocks to avoid errors reported by React
+      // eslint-disable-next-line no-console
       (console.error as any).mockClear();
     });
 
@@ -139,6 +140,7 @@ describe('EventListener', () => {
       );
 
       // We need to clean up mocks to avoid errors reported by React
+      // eslint-disable-next-line no-console
       (console.error as any).mockClear();
     });
   });

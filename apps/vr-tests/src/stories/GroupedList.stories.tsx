@@ -56,7 +56,7 @@ const items = [
     height: 208,
   },
 ];
-// tslint:disable-next-line:max-line-length
+
 const groups = [
   {
     count: 4,

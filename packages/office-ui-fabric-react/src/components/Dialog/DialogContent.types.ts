@@ -53,7 +53,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   className?: string;
 
   /**
-   * A callback function for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
+   * Callback for when the Dialog is dismissed from the close button or light dismiss, before the animation completes.
    */
   onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
 

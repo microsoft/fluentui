@@ -1,5 +1,3 @@
-/* tslint:disable:no-trailing-whitespace */
-
 import { IEnumProperty, IInterfaceProperty, IProperty, PropertyType } from './interfaces';
 import { InterfaceParserHelper } from './InterfaceParserHelper';
 import { EnumParserHelper } from './EnumParserHelper';
@@ -14,10 +12,9 @@ import { EnumParserHelper } from './EnumParserHelper';
  * To specify default values for interfaces, use the JSDoc @default or @defaultvalue or TSDoc @defaultValue markup.
  * The rest of the line after @default will be captured as the default value.
  *
- * @export
- * @param {string} source Valid, reasonably well linted Typescript source code.
- * @param {string} [propsInterfaceOrEnumName] Name of an interface or enum if you only want to parse said interface or enum.
- * @returns {Array<IProperty>} An array of properties.
+ * @param source - Valid, reasonably well linted Typescript source code.
+ * @param propsInterfaceOrEnumName - Name of an interface or enum if you only want to parse said interface or enum.
+ * @returns An array of properties.
  */
 export function parse(source: string, propsInterfaceOrEnumName?: string): IProperty[] {
   const props: IProperty[] = [];
@@ -33,7 +30,8 @@ export function parse(source: string, propsInterfaceOrEnumName?: string): IPrope
 
   if (propsInterfaceOrEnumName) {
     regex = new RegExp(
-      `^export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}(?:\\s+extends\\s+(?:.|\\s)*?)? \\{( |.*[\\r\\n]*)*?\\}`,
+      `^export (interface|(?:const )?enum) ${propsInterfaceOrEnumName}` +
+        `(?:\\s+extends\\s+(?:.|\\s)*?)? \\{( |.*[\\r\\n]*)*?\\}`,
       'm',
     );
     const regexResult = regex.exec(escapedSource);

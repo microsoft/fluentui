@@ -164,7 +164,8 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
 }
 
 /**
- * Helper to pull a given property name from a given set of sources, in order, if available. Otherwise returns the property name.
+ * Helper to pull a given property name from a given set of sources, in order, if available.
+ * Otherwise returns the property name.
  */
 function _expandFrom<TRetVal, TMapType>(propertyName: string | TRetVal | undefined, ...maps: TMapType[]): TRetVal {
   if (propertyName) {

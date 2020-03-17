@@ -120,10 +120,6 @@ function _setEdgeValue(rect: Rectangle, edge: RectangleEdge, value: number) {
  * Returns the middle value of an edge. Only returns 1 value rather than xy coordinates as
  * the itself already contains the other coordinate.
  * For instance, a bottom edge's current value is it's y coordinate, so the number returned is the x.
- *
- * @param {Rectangle} rect
- * @param {RectangleEdge} edge
- * @returns {number}
  */
 function _getCenterValue(rect: Rectangle, edge: RectangleEdge): number {
   const edges = _getFlankingEdges(edge);
@@ -134,15 +130,12 @@ function _getCenterValue(rect: Rectangle, edge: RectangleEdge): number {
  * Flips the value depending on the edge.
  * If the edge is a "positive" edge, Top or Left, then the value should stay as it is.
  * If the edge is a "negative" edge, Bottom or Right, then the value should be flipped.
- * This is to account for the fact that the coordinates are effectively reveserved in certain cases for the "negative" edges.
- * For example, when testing to see if a bottom edge 1 is within the bounds of another bottom edge 2.
+ * This is to account for the fact that the coordinates are effectively reveserved in certain cases for the
+ * "negative" edges.
+ *
+ * For example, when testing to see if a bottom edge 1 is within the bounds of another bottom edge 2:
  * If edge 1 is greater than edge 2 then it is out of bounds. This is reversed for top edge 1 and top edge 2.
  * If top edge 1 is less than edge 2 then it is out of bounds.
- *
- *
- * @param {RectangleEdge} edge
- * @param {number} value
- * @returns {number}
  */
 function _getRelativeEdgeValue(edge: RectangleEdge, value: number): number {
   if (edge > 0) {
@@ -164,11 +157,6 @@ function _getRelativeEdgeDifference(rect: Rectangle, hostRect: Rectangle, edge: 
 /**
  * Moves the edge of a rectangle to the value given. It only moves the edge in a linear direction based on that edge.
  * For example, if it's a bottom edge it will only change y coordinates.
- *
- * @param {Rectangle} rect
- * @param {RectangleEdge} edge
- * @param {number} newValue
- * @returns {Rectangle}
  */
 function _moveEdge(rect: Rectangle, edge: RectangleEdge, newValue: number): Rectangle {
   const difference = _getEdgeValue(rect, edge) - newValue;
@@ -179,12 +167,6 @@ function _moveEdge(rect: Rectangle, edge: RectangleEdge, newValue: number): Rect
 
 /**
  * Aligns the edge on the passed in rect to the target. If there is a gap then it will have that space between the two.
- *
- * @param {Rectangle} rect
- * @param {Rectangle} target
- * @param {RectangleEdge} edge
- * @param {number} [gap=0]
- * @returns {Rectangle}
  */
 function _alignEdges(rect: Rectangle, target: Rectangle, edge: RectangleEdge, gap: number = 0): Rectangle {
   return _moveEdge(rect, edge, _getEdgeValue(target, edge) + _getRelativeEdgeValue(edge, gap));
@@ -193,12 +175,6 @@ function _alignEdges(rect: Rectangle, target: Rectangle, edge: RectangleEdge, ga
 /**
  * Aligns the targetEdge on the passed in target to the rects corresponding opposite edge.
  * For instance if targetEdge is bottom, then the rects top will be moved to match it.
- *
- * @param {Rectangle} rect
- * @param {Rectangle} target
- * @param {RectangleEdge} targetEdge
- * @param {number} [gap=0]
- * @returns {Rectangle}
  */
 function _alignOppositeEdges(
   rect: Rectangle,
@@ -213,11 +189,6 @@ function _alignOppositeEdges(
 
 /**
  * Tests to see if the given edge is within the bounds of the given rectangle.
- *
- * @param {Rectangle} rect
- * @param {Rectangle} bounds
- * @param {RectangleEdge} edge
- * @returns {boolean}
  */
 function _isEdgeInBounds(rect: Rectangle, bounds: Rectangle, edge: RectangleEdge): boolean {
   const adjustedRectValue = _getRelativeRectEdgeValue(edge, rect);
@@ -227,13 +198,6 @@ function _isEdgeInBounds(rect: Rectangle, bounds: Rectangle, edge: RectangleEdge
 /**
  * Attempts to move the rectangle through various sides of the target to find a place to fit.
  * If no fit is found, the original position should be returned.
- *
- * @param {Rectangle} rect
- * @param {Rectangle} target
- * @param {Rectangle} bounding
- * @param {IPositionDirectionalHintData} positionData
- * @param {number} [gap=0]
- * @returns {IElementPosition}
  */
 function _flipToFit(
   rect: Rectangle,
@@ -248,7 +212,7 @@ function _flipToFit(
     RectangleEdge.bottom,
     RectangleEdge.top,
   ];
-  // In RTL page, RectangleEdge.right has a higher priority than RectangleEdge.left, therefore the order should be updated.
+  // In RTL page, RectangleEdge.right has a higher priority than RectangleEdge.left, so the order should be updated.
   if (getRTL()) {
     directions[0] *= -1;
     directions[1] *= -1;
@@ -256,7 +220,8 @@ function _flipToFit(
   let currentEstimate = rect;
   let currentEdge = positionData.targetEdge;
   let currentAlignment = positionData.alignmentEdge;
-  // Keep switching sides until one is found with enough space. If all sides don't fit then return the unmodified element.
+  // Keep switching sides until one is found with enough space.
+  // If all sides don't fit then return the unmodified element.
   for (let i = 0; i < 4; i++) {
     if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
       directions.splice(directions.indexOf(currentEdge), 1);
@@ -290,12 +255,8 @@ function _flipToFit(
 }
 
 /**
- * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
- * when alignTargetEdge is specified.
- * @param elementEstimate
- * @param target
- * @param bounding
- * @param gap
+ * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges
+ * into position, when alignTargetEdge is specified.
  */
 function _flipAlignmentEdge(
   elementEstimate: IElementPosition,
@@ -323,15 +284,6 @@ function _flipAlignmentEdge(
 /**
  * Adjusts a element rectangle to fit within the bounds given. If directionalHintFixed or covertarget is passed in
  * then the element will not flip sides on the target. They will, however, be nudged to fit within the bounds given.
- *
- * @param {Rectangle} element
- * @param {Rectangle} target
- * @param {Rectangle} bounding
- * @param {IPositionDirectionalHintData} positionData
- * @param {number} [gap=0]
- * @param {boolean} [directionalHintFixed]
- * @param {boolean} [coverTarget]
- * @returns {IElementPosition}
  */
 function _adjustFitWithinBounds(
   element: Rectangle,
@@ -355,7 +307,8 @@ function _adjustFitWithinBounds(
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
   if (alignTargetEdge) {
-    // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
+    // The edge opposite to the alignment edge might be out of bounds.
+    // Flip alignment to see if we can get it within bounds.
     if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
       const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
       if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
@@ -378,9 +331,9 @@ function _adjustFitWithinBounds(
 
 /**
  * Iterates through a list of out of bounds edges and tries to nudge and align them.
- * @param outOfBoundsEdges Array of edges that are out of bounds
- * @param elementEstimate The current element positioning estimate
- * @param bounding The current bounds
+ * @param outOfBoundsEdges - Array of edges that are out of bounds
+ * @param elementEstimate - The current element positioning estimate
+ * @param bounding - The current bounds
  */
 function _alignOutOfBoundsEdges(
   outOfBoundsEdges: RectangleEdge[],
@@ -398,11 +351,6 @@ function _alignOutOfBoundsEdges(
  * Moves the middle point on an edge to the point given.
  * Only moves in one direction. For instance if a bottom edge is passed in, then
  * the bottom edge will be moved in the x axis to match the point.
- *
- * @param {Rectangle} rect
- * @param {RectangleEdge} edge
- * @param {number} point
- * @returns {Rectangle}
  */
 function _centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number): Rectangle {
   const { positiveEdge } = _getFlankingEdges(edge);
@@ -414,13 +362,6 @@ function _centerEdgeToPoint(rect: Rectangle, edge: RectangleEdge, point: number)
 /**
  * Moves the element rectangle to be appropriately positioned relative to a given target.
  * Does not flip or adjust the element.
- *
- * @param {Rectangle} elementToPosition
- * @param {Rectangle} target
- * @param {IPositionDirectionalHintData} positionData
- * @param {number} [gap=0]
- * @param {boolean} [coverTarget]
- * @returns {Rectangle}
  */
 function _estimatePosition(
   elementToPosition: Rectangle,
@@ -449,9 +390,6 @@ function _estimatePosition(
 /**
  * Returns the non-opposite edges of the target edge.
  * For instance if bottom is passed in then left and right will be returned.
- *
- * @param {RectangleEdge} edge
- * @returns {{ firstEdge: RectangleEdge, secondEdge: RectangleEdge }}
  */
 function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; negativeEdge: RectangleEdge } {
   if (edge === RectangleEdge.top || edge === RectangleEdge.bottom) {
@@ -468,12 +406,8 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
 }
 
 /**
- * Retrieve the final value for the return edge of elementRectangle.
- * If the elementRectangle is closer to one side of the bounds versus the other, the return edge is flipped to grow inward.
- *
- * @param elementRectangle
- * @param targetEdge
- * @param bounds
+ * Retrieve the final value for the return edge of elementRectangle. If the elementRectangle is closer to one side
+ * of the bounds versus the other, the return edge is flipped to grow inward.
  */
 function _finalizeReturnEdge(
   elementRectangle: Rectangle,
@@ -497,15 +431,6 @@ function _finalizeReturnEdge(
  * This helps prevent resizing from looking very strange.
  * For instance, if the target edge is top and aligned with the left side then
  * the bottom and left values are returned so as the callou shrinks it shrinks towards that corner.
- *
- * @param {Rectangle} elementRectangle
- * @param {HTMLElement} hostElement
- * @param {RectangleEdge} targetEdge
- * @param {RectangleEdge} bounds
- * @param {RectangleEdge} [alignmentEdge]
- * @param {boolean} coverTarget
- * @param {boolean} doNotFinalizeReturnEdge
- * @returns {IPartialIRectangle}
  */
 function _finalizeElementPosition(
   elementRectangle: Rectangle,
@@ -542,12 +467,10 @@ function _calculateActualBeakWidthInPixels(beakWidth: number): number {
 /**
  * Returns the appropriate IPositionData based on the props altered for RTL.
  * If directionalHintForRTL is passed in that is used if the page is RTL.
- * If a directionalHint is specified and no directionalHintForRTL is available and the page is RTL the hint will be flipped.
- * For instance bottomLeftEdge would become bottomRightEdge.
- * If there is no directionalHint passed in bottomAutoEdge is chosen automatically.
+ * If directionalHint is specified, no directionalHintForRTL is available, and the page is RTL, the hint will be
+ * flipped (e.g. bottomLeftEdge would become bottomRightEdge).
  *
- * @param {IPositionProps} props
- * @returns {IPositionDirectionalHintData}
+ * If there is no directionalHint passed in, bottomAutoEdge is chosen automatically.
  */
 function _getPositionData(
   directionalHint: DirectionalHint = DirectionalHint.bottomAutoEdge,
@@ -577,12 +500,6 @@ function _getPositionData(
  * Get's the alignment data for the given information. This only really matters if the positioning is Auto.
  * If it is auto then the alignmentEdge should be chosen based on the target edge's position relative to
  * the center of the page.
- *
- * @param {IPositionDirectionalHintData} positionData
- * @param {Rectangle} target
- * @param {Rectangle} boundingRect
- * @param {boolean} [coverTarget]
- * @returns {IPositionDirectionalHintData}
  */
 function _getAlignmentData(
   positionData: IPositionDirectionalHintData,
@@ -682,7 +599,7 @@ function _positionBeak(beakWidth: number, elementPosition: IElementPositionInfo)
    * target, it does not impact the beak placement within the callout. For example example, if the beakWidth is 8,
    * then the actual beakWidth is sqrroot(8^2 + 8^2) = 11.31x11.31. So the callout will need to be an extra 3 pixels
    * away from its target. While the beak is being positioned in the callout it still acts as though it were 8x8.
-   * */
+   */
   const { positiveEdge, negativeEdge } = _getFlankingEdges(elementPosition.targetEdge);
   const beakTargetPoint = _getCenterValue(target, elementPosition.targetEdge);
   const elementBounds = new Rectangle(
@@ -904,16 +821,8 @@ export const __positioningTestPackage = {
 
 /**
  * Used to position an element relative to the given positioning props.
- * If positioning has been completed before, previousPositioningData
- * can be passed to ensure that the positioning element repositions based on
- * its previous targets rather than starting with directionalhint.
- *
- * @export
- * @param {IPositionProps} props
- * @param {HTMLElement} hostElement
- * @param {HTMLElement} elementToPosition
- * @param {IPositionedData} previousPositions
- * @returns
+ * If positioning has been completed before, previousPositions can be passed to ensure that the positioning element
+ * repositions based on its previous targets rather than starting with directionalhint.
  */
 export function positionElement(
   props: IPositionProps,

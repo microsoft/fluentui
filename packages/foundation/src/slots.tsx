@@ -30,7 +30,8 @@ import {
  *
  * See React.createElement
  */
-// Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
+// Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now
+// and widen as needed.
 export function withSlots<P>(
   type: ISlot<P> | React.FunctionComponent<P> | string,
   props?: (React.Attributes & P) | null,
@@ -46,7 +47,8 @@ export function withSlots<P>(
       return slotType(props);
     }
 
-    // Since we are bypassing createElement, use React.Children.toArray to make sure children are properly assigned keys.
+    // Since we are bypassing createElement, use React.Children.toArray to make sure children are
+    // properly assigned keys.
     // TODO: should this be mutating? does React mutate children subprop with createElement?
     // TODO: will toArray clobber existing keys?
     // TODO: React generates warnings because it doesn't detect hidden member _store that is set in createElement.
@@ -128,24 +130,28 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
 
   for (const name in slots) {
     if (slots.hasOwnProperty(name)) {
-      // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
-      //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
-      //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
+      // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React
+      // detects each closure as a different component (since it is a new instance) from the previous one and then
+      // forces a rerender of the entire slot subtree. For now, the only way to avoid this is to use withSlots, which
+      // bypasses the call to React.createElement.
       const slot: ISlots<Required<TComponentSlots>>[keyof TComponentSlots] = (componentProps, ...args: any[]) => {
         if (args.length > 0) {
           // If React.createElement is being incorrectly used with slots, there will be additional arguments.
           // We can detect these additional arguments and error on their presence.
           throw new Error('Any module using getSlots must use withSlots. Please see withSlots javadoc for more info.');
         }
-        // TODO: having TS infer types here seems to cause infinite loop. use explicit types or casting to preserve typing if possible.
-        // TODO: this should be a lookup on TProps property instead of being TProps directly, which is probably causing the infinite loop
+        // TODO: having TS infer types here seems to cause infinite loop.
+        //   use explicit types or casting to preserve typing if possible.
+        // TODO: this should be a lookup on TProps property instead of being TProps directly, which is probably
+        //   causing the infinite loop
         return _renderSlot<any, any, any>(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
           mixedProps[name],
           mixedProps.slots && mixedProps.slots[name],
-          // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
+          // _defaultStyles should always be present, but a check for existence is added to make view tests
+          // easier to use.
           mixedProps._defaultStyles && mixedProps._defaultStyles[name],
         );
       };

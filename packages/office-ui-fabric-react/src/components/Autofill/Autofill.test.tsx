@@ -132,7 +132,7 @@ describe('Autofill', () => {
     expect(autofill.inputElement!.value).toBe('Updated');
   });
 
-  it('will handle composition events', () => {
+  it('handles composition events', () => {
     component = mount(<Autofill componentRef={autofillRef} suggestedDisplayValue="he" />);
 
     autofill.inputElement!.value = 'he';
@@ -155,7 +155,7 @@ describe('Autofill', () => {
     expect(autofill.value).toBe('🆘');
   });
 
-  it('will handle composition events when multiple compositionEnd events are dispatched without a compositionStart', () => {
+  it('handles composition events when multiple compositionEnd events are dispatched without a compositionStart', () => {
     const onInputChange = jest.fn((a: string, b: boolean) => a);
     component = mount(<Autofill componentRef={autofillRef} onInputChange={onInputChange} suggestedDisplayValue="he" />);
 

@@ -85,7 +85,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   const fieldPrefixSuffix: IStyle = {
-    background: semanticColors.disabledBackground, // Suffix/Prefix are not editable so the disabled slot perfectly fits.
+    // Suffix/Prefix are not editable so the disabled slot perfectly fits.
+    background: semanticColors.disabledBackground,
     color: !disabled ? semanticColors.inputPlaceholderText : semanticColors.disabledText,
     display: 'flex',
     alignItems: 'center',

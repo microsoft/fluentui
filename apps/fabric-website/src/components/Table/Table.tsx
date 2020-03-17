@@ -48,7 +48,10 @@ export class Table extends React.Component<ITableProps, ITableState> {
       : this._renderDesktop(content);
   }
 
-  /** Render Table cell.  Cell content is either cell's value property, or cell's html property (if value is an empty string) */
+  /**
+   * Render Table cell.  Cell content is either cell's value property, or cell's html property
+   * (if value is an empty string).
+   */
   private _renderCell(cell: ITableCell, index: number): JSX.Element {
     return cell.value.length ? (
       <td className={cell.className} key={index}>

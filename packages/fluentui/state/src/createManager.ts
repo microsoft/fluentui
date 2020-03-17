@@ -33,6 +33,7 @@ const createManager = <State, Actions extends AnyActions>(
   const applyAction = <A extends EnhancedAction<State, Actions>>(action: A, ...args: Parameters<A>) => {
     if (process.env.NODE_ENV !== 'production') {
       if (debug) {
+        // eslint-disable-next-line no-console
         console.log('manager ACTION', action.name || 'Anonymous');
       }
     }
@@ -47,6 +48,7 @@ const createManager = <State, Actions extends AnyActions>(
     middleware.forEach((middlewareItem, index) => {
       if (process.env.NODE_ENV !== 'production') {
         if (debug) {
+          // eslint-disable-next-line no-console
           console.log(`manager MIDDLEWARE[${index}]`, {
             prev: prevState,
             next: getState(),
@@ -62,6 +64,7 @@ const createManager = <State, Actions extends AnyActions>(
     sideEffects.forEach((sideEffect, index) => {
       if (process.env.NODE_ENV !== 'production') {
         if (debug) {
+          // eslint-disable-next-line no-console
           console.log(`manager SIDE_EFFECT[${index}]`);
         }
       }

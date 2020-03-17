@@ -1,6 +1,7 @@
 import { IPalette } from '../interfaces/index';
 
-// When adding or removing a color, make sure you keep this consistent with IColorClassNames by adding the color variants.
+// When adding or removing a color, make sure you keep this consistent with IColorClassNames
+// by adding the color variants.
 export const DefaultPalette: IPalette = {
   themeDarker: '#004578',
   themeDark: '#005a9e',

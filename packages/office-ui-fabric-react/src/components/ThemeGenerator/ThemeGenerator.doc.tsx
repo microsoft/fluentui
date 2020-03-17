@@ -132,7 +132,7 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
         {*/}
 
         {/* the shared popup color picker for slots */}
-        {colorPickerVisible && colorPickerSlotRule !== null && colorPickerSlotRule !== undefined && colorPickerElement && (
+        {colorPickerVisible && colorPickerSlotRule && colorPickerElement && (
           <Callout
             key={colorPickerSlotRule.name}
             gapSpace={10}
@@ -343,7 +343,8 @@ export class ThemeGeneratorPage extends React.Component<{}, IThemeGeneratorPageS
       this._accessibilityRow(FabricSlots.neutralPrimary, FabricSlots.themeLighter),
     ]; // neutral variant with primary color
 
-    // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
+    // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of
+    // the original theme
     if (!isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
       // is not inverted
       accessibilityRows.push(

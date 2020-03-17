@@ -21,8 +21,8 @@ export type IActionableComponent = IComponent<
   IActionableSlots
 >;
 
-// These types are redundant with IActionableComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// These types are redundant with IActionableComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 /**
  * {@docCategory Actionable}

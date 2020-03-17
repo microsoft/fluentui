@@ -355,7 +355,8 @@ export interface IRawStyleBase extends IRawFontStyle {
   animation?: ICSSRule | string;
 
   /**
-   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
+   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution
+   * some time after it is applied.
    */
   animationDelay?: ICSSRule | string;
 

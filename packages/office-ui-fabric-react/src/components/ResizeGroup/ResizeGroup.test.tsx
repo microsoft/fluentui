@@ -161,7 +161,7 @@ describe('ResizeGroup', () => {
       expect(measuredElementWidthStub.callCount).toEqual(0);
     });
 
-    it('sets dataToMeasure when the current data is in the cache but the onReduceData result is not in the cache', () => {
+    it('sets dataToMeasure when the current data is cached but the onReduceData result is not cached', () => {
       const dataArray = [{ cacheKey: '5' }, { cacheKey: '4' }];
 
       const measurementCache = getMeasurementCache();
@@ -326,7 +326,8 @@ describe('ResizeGroup', () => {
       expect(getMeasuredElementWidthStub.callCount).toEqual(1);
     });
 
-    it('sets the resize direction to shrink when the resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
+    // tslint:disable-next-line:max-line-length
+    it('sets resize direction to shrink when resizeDirection is grow, contents do not fit, and there is no onGrowData', () => {
       const dataToMeasure = { index: 8 };
       const resizeGroupProps = getRequiredResizeGroupProps();
       resizeGroupProps.onReduceData.returns({ index: 7 });
@@ -425,7 +426,7 @@ describe('ResizeGroup', () => {
       expect(onGrowData.callCount).toEqual(1);
     });
 
-    it('does not call getMeasuredElementBounds when the data has already been cached in the grow resizeDirection', () => {
+    it('does not call getMeasuredElementBounds when data has already been cached in the grow resizeDirection', () => {
       const dataToMeasure = { index: 5, cacheKey: 'foo' };
 
       const measurementCache = getMeasurementCache();
@@ -569,7 +570,7 @@ describe('ResizeGroup', () => {
     expect(result).toEqual(false);
   });
 
-  it('it tries to measure smaller data when the contents do not fit on the initial measure and an onGrowData is provided', () => {
+  it('it tries to measure smaller data when contents do not fit on initial measure and onGrowData is provided', () => {
     const props = {
       data: { scalingIndex: 8 },
       onReduceData: onReduceScalingData,

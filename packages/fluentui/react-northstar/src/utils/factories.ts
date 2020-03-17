@@ -59,6 +59,7 @@ export function createShorthand<P>({
     typeof valueOrRenderCallback === 'function' && !React.isValidElement(valueOrRenderCallback);
   if (valIsRenderFunction) {
     if (process.env.NODE_ENV !== 'production') {
+      // eslint-disable-next-line no-console
       console.warn(
         [
           '@microsoft/fluent-ui-react:',

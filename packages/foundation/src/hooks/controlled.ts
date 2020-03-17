@@ -6,9 +6,9 @@ export interface IControlledStateOptions<TProps, TProp extends keyof TProps, TDe
 }
 
 /**
- * Controlled state helper that gives priority to props value. Useful for components that have props with both controlled
- * and uncontrolled modes. Any props values will override state, but will not update internal state. If prop is defined
- * and then later undefined, state will revert to its previous value.
+ * Controlled state helper that gives priority to props value. Useful for components that have props with both
+ * controlled and uncontrolled modes. Any props values will override state, but will not update internal state.
+ * If prop is defined and then later undefined, state will revert to its previous value.
  *
  * @param props - The props object containing controlled prop values.
  * @param propName - The controlled prop name.

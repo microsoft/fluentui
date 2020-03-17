@@ -26,7 +26,10 @@ export const DocumentCardImageExample: React.FunctionComponent = () => {
   return (
     <div>
       <DocumentCard
-        aria-label="Document Card with image. How to make a good design. Last modified by Annie Lindqvist and 2 others in March 13, 2018."
+        aria-label={
+          'Document Card with image. How to make a good design. ' +
+          'Last modified by Annie Lindqvist and 2 others in March 13, 2018.'
+        }
         styles={cardStyles}
         onClickHref="http://bing.com"
       >
@@ -37,7 +40,10 @@ export const DocumentCardImageExample: React.FunctionComponent = () => {
         <DocumentCardActivity activity="Modified March 13, 2018" people={people.slice(0, 3)} />
       </DocumentCard>
       <DocumentCard
-        aria-label="Document Card with icon. How to make a good design. Last modified by Christian Bergqvist in January 1, 2019."
+        aria-label={
+          'Document Card with icon. How to make a good design. ' +
+          'Last modified by Christian Bergqvist in January 1, 2019.'
+        }
         styles={cardStyles}
         onClickHref="http://bing.com"
       >

@@ -385,7 +385,8 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
   private _onRootRef = (focusZone: FocusZone): void => {
     if (focusZone) {
-      // Need to resolve the actual DOM node, not the component. The element itself will be used for drag/drop and focusing.
+      // Need to resolve the actual DOM node, not the component.
+      // The element itself will be used for drag/drop and focusing.
       this._root = ReactDOM.findDOMNode(focusZone) as HTMLElement;
     } else {
       this._root = undefined;

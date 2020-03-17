@@ -101,7 +101,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   private _isInnerZone: boolean;
   private _parkedTabIndex: string | null | undefined;
 
-  /** Used to allow us to move to next focusable element even when we're focusing on a input element when pressing tab */
+  /** Used to allow moving to next focusable element even when we're focusing on a input element when pressing tab */
   private _processingTabKey: boolean;
 
   /** Used for testing purposes only. */
@@ -324,8 +324,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   }
 
   /**
-   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
-   * the last horizontal motion.
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference,
+   * rather than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
   public setFocusAlignment(point: IPoint): void {
@@ -1238,9 +1238,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
       // 1. There is range selected.
       // 2. When selection start is larger than 0 and it is backward and not readOnly.
       // 3. when selection start is not the end of length, it is forward and not readOnly.
-      // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit tab)
-      // and if shouldInputLoseFocusOnArrowKey is defined, if scenario prefers to not loose the focus which is determined by calling the
-      // callback shouldInputLoseFocusOnArrowKey
+      // 4. We press any of the arrow keys when our handleTabKey isn't none or undefined (only losing focus if we hit
+      // tab) and if shouldInputLoseFocusOnArrowKey is defined, if scenario prefers to not loose the focus which is
+      // determined by calling the callback shouldInputLoseFocusOnArrowKey
       if (
         isRangeSelected ||
         (selectionStart! > 0 && !isForward && !isReadonly) ||

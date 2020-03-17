@@ -95,8 +95,8 @@ export type IViewComponent<TViewProps> = (
  * * TComponentProps: A styleable props interface for the created component.
  * * TTokens: The type for tokens props.
  * * TStyleSet: The type for styles properties.
- * * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
- * component is not provided, TComponentProps is the same as TViewProps.
+ * * TViewProps: The props specific to the view, including processed properties outputted by optional state component.
+ * If state component is not provided, TComponentProps is the same as TViewProps.
  * * TStatics: Static type for statics applied to created component object.
  */
 export interface IComponentOptions<
@@ -107,7 +107,8 @@ export interface IComponentOptions<
   TStatics = {}
 > {
   /**
-   * Display name to identify component in React hierarchy. This parameter is required for targeted component styling via theming.
+   * Display name to identify component in React hierarchy. This parameter is required for targeted component styling
+   * via theming.
    */
   displayName?: string;
   /**

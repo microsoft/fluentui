@@ -13,7 +13,8 @@ const propReplacementMap: { [key: string]: string } = {
 
 export default migration(
   getModificationNote(
-    'TextField deprecated props addonString, onRenderAddon and componentId were renamed to prefix, onRenderPrefix and id respectively',
+    'TextField deprecated props addonString, onRenderAddon and componentId were renamed to prefix, onRenderPrefix ' +
+      'and id respectively',
   ),
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.tsx', opts).asTypescript((node, modder) => {

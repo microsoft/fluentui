@@ -431,7 +431,7 @@ describe('DetailsList', () => {
     expect(onRenderDetailsHeaderMock).toHaveBeenCalledTimes(1);
   });
 
-  it('invokes optional onRenderColumnHeaderTooltip prop to customize DetailsColumn tooltip rendering when provided', () => {
+  it('invokes onRenderColumnHeaderTooltip to customize DetailsColumn tooltip rendering when provided', () => {
     const NUM_COLUMNS = 2;
     const onRenderColumnHeaderTooltipMock = jest.fn();
     const onRenderDetailsHeader = (

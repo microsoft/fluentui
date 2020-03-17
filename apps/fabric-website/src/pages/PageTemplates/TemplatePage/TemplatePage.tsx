@@ -31,7 +31,8 @@ const TemplatePageBase: React.FunctionComponent<ITemplatePageProps> = props => {
       {...TemplatePageProps[platform]}
       // Use the getSubTitle helper function to get the page header subtitle from the active platform.
       subTitle={getSubTitle(platform)}
-      // You can define custom sections using the `otherSections` prop. Here it is using a method that takes the platform as an argument to return the correct array of section props.
+      // You can define custom sections using the `otherSections` prop.
+      // Here it is using a method that takes the platform as an argument to return the correct array of section props.
       otherSections={_otherSections(platform) as IPageSectionProps[]}
 
       // You can hide the side rail by setting `showSideRail` to false.
@@ -63,7 +64,8 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           // Optionally define the name of the section.
           sectionName: 'Custom markdown section',
 
-          // If the content of the section is markdown, define the editUrl to enable the edit button as the file's hosted location.
+          // If the content of the section is markdown, define the editUrl to enable the edit button as the
+          // file's hosted location.
           editUrl: baseUrl + 'docs/default/TemplateCustom.md',
 
           // Define the content of the page using the `Markdown` component.
@@ -94,14 +96,16 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
             </div>
           ),
 
-          // Optionally wrap the section with a className. Use the `css` utility from Fabric to concatenate classNames that may be falsey.
+          // Optionally wrap the section with a className. Use the `css` utility from Fabric to concatenate
+          // classNames that may be falsey.
           className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName'),
         },
       ];
   }
 }
 
-// Use the `PlatformContext.Consumer` component to ensure the platform prop is passed to the page from App correctly using react context.
+// Use the `PlatformContext.Consumer` component to ensure the platform prop is passed to the page from App correctly
+// using react context.
 export const TemplatePage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
   <PlatformContext.Consumer>
     {(platform: Platforms) => <TemplatePageBase platform={platform} {...props} />}

@@ -38,7 +38,8 @@ const COMPACT_GROUP_HEADER_HEIGHT = 40;
 
 export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => {
   const { theme, className, selected, isCollapsed, compact } = props;
-  const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS; // padding from the source to align GroupHeader title with DetailsRow's first cell.
+  // padding from the source to align GroupHeader title with DetailsRow's first cell.
+  const { cellLeftPadding } = DEFAULT_CELL_STYLE_PROPS;
   const finalRowHeight = compact ? COMPACT_GROUP_HEADER_HEIGHT : DEFAULT_GROUP_HEADER_HEIGHT;
 
   const { semanticColors, palette, fonts } = theme;
@@ -62,7 +63,8 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       getFocusStyle(theme),
       theme.fonts.medium,
       {
-        borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.
+        // keep the border for height but color it so it's invisible.
+        borderBottom: `1px solid ${semanticColors.listBackground}`,
         cursor: 'default',
         userSelect: 'none',
         selectors: {

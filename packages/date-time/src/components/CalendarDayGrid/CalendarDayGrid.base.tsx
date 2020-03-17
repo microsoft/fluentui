@@ -335,7 +335,8 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       return;
     }
 
-    // target date is restricted, search in whatever direction until finding the next possible date, stopping at boundaries
+    // target date is restricted, search in whatever direction until finding the next possible date,
+    // stopping at boundaries
     let nextDate = this._findAvailableDate(date, targetDate, direction);
 
     if (!nextDate) {
@@ -343,8 +344,8 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
       nextDate = this._findAvailableDate(date, targetDate, -direction);
     }
 
-    // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we don't jump
-    // the view unnecessarily
+    // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we
+    // don't jump the view unnecessarily
     const isInCurrentView =
       this.state.weeks &&
       nextDate &&
@@ -436,7 +437,7 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
 
   /**
    * Initial parsing of the given props to generate IDayInfo two dimensional array, which contains a representation
-   * of every day in the grid. Convenient for helping with conversions between day refs and Date objects during callbacks.
+   * of every day in the grid. Convenient for helping with conversions between day refs and Date objects in callbacks.
    */
   private _getWeeks(propsToUse: ICalendarDayGridProps): IDayInfo[][] {
     const {
@@ -840,8 +841,8 @@ export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, 
   };
 
   /**
-   * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous work weeks,
-   * we'll just show week view instead
+   * When given work week, if the days are non-contiguous, the hover states look really weird. So for non-contiguous
+   * work weeks, we'll just show week view instead.
    */
   private getDateRangeTypeToUse = (
     dateRangeType: DateRangeType,

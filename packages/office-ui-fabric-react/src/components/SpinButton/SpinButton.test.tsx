@@ -579,7 +579,7 @@ describe('SpinButton', () => {
     expect(inputDOM.getAttribute('aria-valuenow')).toEqual(String(0));
   });
 
-  it('should use the default onIncrement function when no value, defaultValue nor onIncrement function is passed', () => {
+  it('uses the default onIncrement function when no value, defaultValue nor onIncrement function is passed', () => {
     const exampleLabelValue = 'SpinButton';
 
     const renderedDOM: HTMLElement = renderIntoDocument(<SpinButton label={exampleLabelValue} />);

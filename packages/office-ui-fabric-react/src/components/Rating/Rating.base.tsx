@@ -136,8 +136,8 @@ export class RatingBase extends React.Component<IRatingProps, IRatingState> {
 
     const ariaLabel = getAriaLabel ? getAriaLabel(rating ? rating : 0, max as number) : undefined;
 
-    // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element is read-only.
-    // https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
+    // When in read-only mode, we allow focus (per ARIA standards) and set up ARIA attributes to indicate element
+    // is read-only. https://www.w3.org/TR/wai-aria-1.1/#aria-readonly
     const readOnlyProps: IFocusZoneProps | undefined = readOnly
       ? ({
           allowFocusRoot: true,

@@ -107,7 +107,8 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       // to avoid confusing consumers.
 
       // if (process.env.NODE_ENV !== 'production') {
-      //  console.log('Styles are being recalculated far too frequently. Something is mutating the class over and over.');
+      //  console.log(
+      //    'Styles are being recalculated far too frequently. Something is mutating the class over and over.');
       //  // tslint:disable-next-line:no-console
       //  console.trace();
       // }

@@ -12,12 +12,14 @@ const DEFAULT_WIDTH = 20;
 
 /**
  * - Generates a style used to fade out an overflowing content by defining a style for an :after pseudo element.
- * - Apply it to the :after selector for all combination of states the parent of content might have (normal, hover, selected, focus).
+ * - Apply it to the :after selector for all combination of states the parent of content might have (normal, hover,
+ * selected, focus).
  * - Requires the target to have position set to relative and overflow set to hidden.
  *
  * @example
  * ```tsx
- * // Assuming the following DOM structure and the different background colors coming from the parent holding the content.
+ * // Assuming the following DOM structure and the different background colors coming from
+ * // the parent holding the content.
  * <div className={classNames.parent}>
  *   <span className={classNames.content}>Overflown Content</span>
  * </div>
@@ -27,7 +29,8 @@ const DEFAULT_WIDTH = 20;
  * const { bodyBackground } = theme.semanticColors;
  * const { neutralLighter } = theme.palette;
  *
- * // The second argument of getFadedOverflowStyle function is a string representing a key of ISemanticColors or IPalette.
+ * // The second argument of getFadedOverflowStyle function is a string representing a key of
+ * // ISemanticColors or IPalette.
  *
  * const styles = {
  *   parent: [
@@ -53,7 +56,8 @@ const DEFAULT_WIDTH = 20;
  * }
  * ```
  * @param theme - The theme object to use.
- * @param color - The background color to fade out to. Accepts only keys of ISemanticColors or IPalette. Defaults to 'bodyBackground'.
+ * @param color - The background color to fade out to. Accepts only keys of ISemanticColors or IPalette.
+ * Defaults to 'bodyBackground'.
  * @param direction - The direction of the overflow. Defaults to horizontal.
  * @param width - The width of the fading overflow. Vertical direction defaults it to 100% vs 20px when horizontal.
  * @param height - The Height of the fading overflow. Vertical direction defaults it to 50% vs 100% when horizontal.
@@ -73,8 +77,8 @@ export function getFadedOverflowStyle(
   const rgbColor: IRGB = color2rgb(colorValue);
   // Apply opacity 0 to serve as a start color of the gradient.
   const rgba = `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0)`;
-  // Get the direction of the gradient.
-  const gradientDirection = direction === 'vertical' ? 'to bottom' : 'to right'; // mergeStyles take care of RTL direction.
+  // Get the direction of the gradient. (mergeStyles takes care of RTL direction)
+  const gradientDirection = direction === 'vertical' ? 'to bottom' : 'to right';
 
   return {
     content: '""',

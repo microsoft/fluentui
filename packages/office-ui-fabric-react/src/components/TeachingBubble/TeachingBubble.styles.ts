@@ -167,7 +167,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         alignItems: 'center',
         color: palette.white,
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          // TODO: global class name usage should be converted to a styles function once Button supports JS styling
           [`.${classNames.button}:not(:first-child)`]: {
             marginLeft: 10,
           },
@@ -216,7 +216,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         color: palette.themePrimary,
         whiteSpace: 'nowrap',
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          // TODO: global class name usage should be converted to a styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: fonts.medium,
           ':hover': {
             backgroundColor: palette.themeLighter,
@@ -243,7 +243,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         borderColor: palette.white,
         whiteSpace: 'nowrap',
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          // TODO: global class name usage should be converted to a styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
             fonts.medium,
             {

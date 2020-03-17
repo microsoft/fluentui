@@ -41,11 +41,10 @@ export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX
       aria-labelledby={'selectedItemPersona-' + itemId}
     >
       <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
-        {/* tslint:disable-next-line:deprecation */}
         <Persona
           {...item}
           presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
-          size={PersonaSize.size28}
+          size={PersonaSize.size28} // tslint:disable-line:deprecation
         />
       </div>
       <IconButton
