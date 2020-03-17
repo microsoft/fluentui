@@ -108,7 +108,7 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName: displayNames[0], // does not affect styles, only used by useEnhancedRenderer in docs
+    displayName: displayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performance.enableSanitizeCssPlugin
   };
 
