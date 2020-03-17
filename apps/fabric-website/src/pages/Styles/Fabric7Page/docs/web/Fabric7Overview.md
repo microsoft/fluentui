@@ -13,7 +13,7 @@ Along with a visual refresh, Fluent UI 7 updates the minimum required version of
 
 ### Can I preview the Fluent styles using Fluent UI 6?
 
-If you want to preview the Fluent styles and how they will affect your existing Fluent UI 6 site, follow the [Fluent customization steps](https://github.com/microsoft/fluentui/wiki/Fluent-theme-in-Fabric-6) outlined in our wiki.
+If you want to preview the Fluent styles and how they will affect your existing Fabric 6 site, follow the [Fluent customization steps](https://github.com/microsoft/fluentui/wiki/Fluent-theme-in-Fabric-6) outlined in our wiki.
 
 ### Fluent for Fabric Core (CSS styles)
 
