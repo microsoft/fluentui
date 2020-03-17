@@ -80,7 +80,7 @@ export class AutoScroll {
     dispose(): void;
     }
 
-// @public
+// @public @deprecated
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected readonly _async: Async;
@@ -580,6 +580,9 @@ export const imgProperties: string[];
 
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
+
+// @public @deprecated
+export function initializeFocusRects(window?: Window): void;
 
 // @public
 export const inputProperties: string[];

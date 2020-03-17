@@ -656,7 +656,10 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
   private _onRenderSplitButtonDivider(classNames: ISplitButtonClassNames | undefined): JSX.Element | null {
     if (classNames && classNames.divider) {
-      return <span className={classNames.divider} aria-hidden={true} />;
+      const onClick = (ev: React.MouseEvent<HTMLSpanElement, MouseEvent>) => {
+        ev.stopPropagation();
+      };
+      return <span className={classNames.divider} aria-hidden={true} onClick={onClick} />;
     }
     return null;
   }

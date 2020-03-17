@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   KeyCodes,
   css,
   getId,
@@ -9,7 +8,8 @@ import {
   format,
   classNamesFunction,
   find,
-  findIndex
+  findIndex,
+  initializeComponentRef
 } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import {
@@ -57,13 +57,15 @@ export interface ICalendarDayGridState {
   animateBackwards?: boolean;
 }
 
-export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, ICalendarDayGridState> {
+export class CalendarDayGridBase extends React.Component<ICalendarDayGridProps, ICalendarDayGridState> {
   private navigatedDay: HTMLElement | null;
   private days: { [key: string]: HTMLElement | null } = {};
   private classNames: IProcessedStyleSet<ICalendarDayGridStyles>;
 
   public constructor(props: ICalendarDayGridProps) {
     super(props);
+
+    initializeComponentRef(this);
 
     this.state = {
       activeDescendantId: getId(),

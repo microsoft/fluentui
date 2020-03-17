@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { initializeComponentRef, classNamesFunction } from '../../../Utilities';
 import { IShimmerTileProps, IShimmerTileStyleProps, IShimmerTileStyles } from './ShimmerTile.types';
 import { TileSize } from '../Tile.types';
 import { TileLayoutSizes } from '../Tile';
@@ -50,11 +50,13 @@ const PLACEHOLDER_SIZES: {
 
 const getClassNames = classNamesFunction<IShimmerTileStyleProps, IShimmerTileStyles>();
 
-export class ShimmerTileBase extends BaseComponent<IShimmerTileProps, {}> {
+export class ShimmerTileBase extends React.Component<IShimmerTileProps, {}> {
   private _classNames: { [key in keyof IShimmerTileStyles]: string };
 
   constructor(props: IShimmerTileProps) {
     super(props);
+
+    initializeComponentRef(this);
   }
 
   public render(): JSX.Element {
