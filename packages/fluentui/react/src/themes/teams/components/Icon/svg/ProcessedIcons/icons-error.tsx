@@ -10,6 +10,7 @@ export default {
       />
     </svg>
   ),
+  // TODO: style overrides
   styles: {
     redPath: ({ variables: v }) => ({
       fill: v.redColor

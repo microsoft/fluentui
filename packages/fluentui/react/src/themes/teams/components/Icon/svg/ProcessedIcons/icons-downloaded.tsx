@@ -11,6 +11,7 @@ export default {
       />
     </svg>
   ),
+  // TODO: style overrides
   styles: {
     brandPath: ({ variables: v }) => ({
       fill: v.brandColor

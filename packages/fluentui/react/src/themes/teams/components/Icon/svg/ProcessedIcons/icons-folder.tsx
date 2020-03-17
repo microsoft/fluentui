@@ -16,6 +16,7 @@ export default {
       </g>
     </svg>
   ),
+  // TODO: style overrides
   styles: {
     brownPath: () => ({
       fill: '#ddaf52'
