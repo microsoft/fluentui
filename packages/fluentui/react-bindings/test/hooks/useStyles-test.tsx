@@ -63,21 +63,6 @@ describe('useStyles', () => {
   });
 
   describe('styles', () => {
-    it('passes "displayName" to styles functions', () => {
-      const styles = jest.fn();
-      mount(<TestComponent />, {
-        // @ts-ignore typings are outdated
-        wrappingComponent: TestProvider,
-        wrappingComponentProps: { theme: createTheme(styles) }
-      });
-
-      expect(styles).toBeCalledWith(
-        expect.objectContaining({
-          displayName: 'Test'
-        })
-      );
-    });
-
     it('passes props mapped via "mapPropsToStyles" to styles functions', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
@@ -88,7 +73,6 @@ describe('useStyles', () => {
 
       expect(styles).toBeCalledWith(
         expect.objectContaining({
-          displayName: 'Test',
           props: { color: 'green' }
         })
       );

@@ -7,7 +7,6 @@ import ProviderConsumer from 'src/components/Provider/ProviderConsumer';
 
 const styleParam: ComponentStyleFunctionParam = {
   disableAnimations: false,
-  displayName: 'Test',
   props: {},
   rtl: false,
   theme: emptyTheme,

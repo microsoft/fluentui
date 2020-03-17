@@ -131,7 +131,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
 
   const { classes } = unstable_getStyles({
     className: Provider.className,
-    displayName: Provider.displayName,
+    displayNames: [Provider.displayName],
     props: {
       className,
       design,
