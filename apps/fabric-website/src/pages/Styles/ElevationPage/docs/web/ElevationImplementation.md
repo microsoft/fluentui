@@ -1,7 +1,7 @@
 ### Fluent UI React (JavaScript variables)
 
 ```jsx
-import { Depths } from '@uifabric/fluent-theme/lib/fluent/FluentDepths';
+import { Depths } from '@fluentui/fluent-theme/lib/fluent/FluentDepths';
 
 <div style={{ boxShadow: Depths.depth8 }} />;
 ```
