@@ -32,10 +32,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <p>
-                Fabric comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for a variety of
-                screen sizes and device types.
+                Fabric Core comes with a mobile-first, 12-column, responsive grid that you can use to create flexible layouts for a variety
+                of screen sizes and device types.
               </p>
-              <div className="ms-Grid" aria-label="Example fabric grid where every row has a different number of columns.">
+              <div className="ms-Grid" aria-label="Example Fabric Core grid where every row has a different number of columns.">
                 <div className="ms-Grid-row" aria-label="Example of 12 equal columns using the grid">
                   <div className={'ms-Grid-col ms-sm1 ' + styles.demoBlockCol}>
                     <div className={styles.demoBlock}>1</div>
@@ -146,7 +146,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 add up to 12 for each device size.
               </p>
               <p>
-                Newer versions of Fabric require the <code>dir</code> attribute to be set to specify how the content should be rendered
+                Newer versions of Fabric Core require the <code>dir</code> attribute to be set to specify how the content should be rendered
                 (whether left-to-right, <code>ltr</code>, or right-to-left, <code>rtl</code>
                 ).
               </p>
@@ -171,9 +171,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h4">Inheritance</MarkdownHeader>
               <p>
-                Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium and large screens.
-                The small size utilities (ms-sm6) are required. If you want to change the layout on larger screens, you can apply the other
-                utility classes.
+                Because Fabric Core is mobile-first, any layout defined for small screens is automatically inherited by medium and large
+                screens. The small size utilities (ms-sm6) are required. If you want to change the layout on larger screens, you can apply
+                the other utility classes.
               </p>
               <p>
                 Try this out! On a large screen, the example block will be smaller. Try shrinking your browser window to see how the example
@@ -210,8 +210,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
 
               <MarkdownHeader as="h4">Visibility</MarkdownHeader>
               <p>
-                Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve this using
-                Fabric's responsive visibility classes. These allow you to show or hide content at a specific screen size, or across a whole
+                Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve this using Fabric
+                Core's responsive visibility classes. These allow you to show or hide content at a specific screen size, or across a whole
                 range of sizes.
               </p>
               <Table content={visibilityData} responsive={true} />

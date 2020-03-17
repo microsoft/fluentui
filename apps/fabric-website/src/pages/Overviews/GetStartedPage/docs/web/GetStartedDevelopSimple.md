@@ -1,4 +1,4 @@
-Fabric React provides several starter kit options. Make sure you have the [latest LTS Node.js](https://nodejs.org/en/) installed, then choose one of the options below:
+Fluent UI React provides several starter kit options. Make sure you have the [latest LTS Node.js](https://nodejs.org/en/) installed, then choose one of the options below:
 
 - [Option 1: Quick start](#option-1-quick-start)
 - [Option 2: Using Create React App](#option-2-create-react-app)
