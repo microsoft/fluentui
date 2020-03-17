@@ -4,19 +4,21 @@
 
 ```ts
 
+// @public
+export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined;
+
+// @public
+export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string | undefined;
+
 // @public (undocumented)
 export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
 
-// @public (undocumented)
-const keyboardKey: {
+// @public
+export const keyboardKey: {
     codes: {
         [code: string]: string | string[];
     };
-    getCode: (eventOrKey: string | Partial<Pick<KeyboardEvent, "key" | "keyCode" | "which" | "shiftKey">>) => number | undefined;
-    getKey: (eventOrCode: number | Partial<Pick<KeyboardEvent, "key" | "keyCode" | "which" | "shiftKey">>) => string | undefined;
 } & KeyNames;
-
-export default keyboardKey;
 
 // @public (undocumented)
 export interface KeyNames {

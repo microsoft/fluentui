@@ -303,54 +303,57 @@ const keyboardKeyDefinition = {
    * Mapping from numeric key code to key name. If the value is an array, the first element is the
    * primary key name, and the second element is the key name when shift is pressed.
    */
-  codes: codes,
-
-  /**
-   * Get the `keyCode` or `which` value from a keyboard event or `key` name.
-   * If an object is provided, the precedence of properties is `keyCode`, `which`, `key`.
-   * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
-   * `key`, `keyCode`, or `which` must be defined.
-   */
-  getCode: function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
-    if (isObject(eventOrKey)) {
-      // tslint:disable-next-line:deprecation
-      return eventOrKey.keyCode || eventOrKey.which || this[eventOrKey.key as string];
-    }
-    // tslint:disable-next-line:no-any
-    return (this as any)[eventOrKey as string];
-  },
-
-  /**
-   * Get the key name from a keyboard event, `keyCode`, or `which` value.
-   * If an object is provided, the precedence of properties is `key`, `keyCode`, `which`.
-   * @param eventOrCode - A keyboard event-like object or key code. If an object, at least one of
-   * `key`, `keyCode`, or `which` must be defined.
-   */
-  getKey: (eventOrCode: Partial<KeyboardEventLike> | number): string | undefined => {
-    const isEvent = isObject(eventOrCode);
-    const event = eventOrCode as KeyboardEventLike;
-
-    // handle events with a `key` already defined
-    if (isEvent && event.key) {
-      return event.key;
-    }
-
-    // tslint:disable-next-line: deprecation
-    let name = codes[(isEvent ? event.keyCode || event.which : eventOrCode) as number];
-
-    if (Array.isArray(name)) {
-      if (isEvent) {
-        name = name[event.shiftKey ? 1 : 0];
-      } else {
-        name = name[0];
-      }
-    }
-
-    return name;
-  }
+  codes: codes
 };
 
-const keyboardKey = keyboardKeyDefinition as typeof keyboardKeyDefinition & KeyNames;
+/**
+ * Get the `keyCode` or `which` value from a keyboard event or `key` name.
+ * If an object is provided, the precedence of properties is `keyCode`, `which`, `key`.
+ * @param eventOrKey - A keyboard event-like object or `key` name. If an object, at least one of
+ * `key`, `keyCode`, or `which` must be defined.
+ */
+export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined {
+  if (isObject(eventOrKey)) {
+    // tslint:disable-next-line:deprecation
+    return eventOrKey.keyCode || eventOrKey.which || this[eventOrKey.key as string];
+  }
+  // tslint:disable-next-line:no-any
+  return (this as any)[eventOrKey as string];
+}
+
+/**
+ * Get the key name from a keyboard event, `keyCode`, or `which` value.
+ * If an object is provided, the precedence of properties is `key`, `keyCode`, `which`.
+ * @param eventOrCode - A keyboard event-like object or key code. If an object, at least one of
+ * `key`, `keyCode`, or `which` must be defined.
+ */
+export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string | undefined {
+  const isEvent = isObject(eventOrCode);
+  const event = eventOrCode as KeyboardEventLike;
+
+  // handle events with a `key` already defined
+  if (isEvent && event.key) {
+    return event.key;
+  }
+
+  // tslint:disable-next-line: deprecation
+  let name = codes[(isEvent ? event.keyCode || event.which : eventOrCode) as number];
+
+  if (Array.isArray(name)) {
+    if (isEvent) {
+      name = name[event.shiftKey ? 1 : 0];
+    } else {
+      name = name[0];
+    }
+  }
+
+  return name;
+}
+
+/**
+ * Mapping of keyboard keys with aliases and codes.
+ */
+export const keyboardKey = keyboardKeyDefinition as typeof keyboardKeyDefinition & KeyNames;
 
 // Populate names on keyboardKey.
 for (const code in codes) {
@@ -414,5 +417,3 @@ keyboardKey.LeftAngleBracket = keyboardKey['<'];
 keyboardKey.RightAngleBracket = keyboardKey['>'];
 keyboardKey.LeftSquareBracket = keyboardKey['['];
 keyboardKey.RightSquareBracket = keyboardKey[']'];
-
-export default keyboardKey;
