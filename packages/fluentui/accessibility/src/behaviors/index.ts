@@ -2,7 +2,6 @@ export { default as alertBehavior } from './Alert/alertBehavior';
 export { default as alertWarningBehavior } from './Alert/alertWarningBehavior';
 export { default as alertBaseBehavior } from './Alert/alertBaseBehavior';
 export { default as attachmentBehavior } from './Attachment/attachmentBehavior';
-export * from './Button/buttonBehavior';
 export { default as buttonBehavior } from './Button/buttonBehavior';
 export { default as toggleButtonBehavior } from './Button/toggleButtonBehavior';
 export * from './Image/imageBehavior';
