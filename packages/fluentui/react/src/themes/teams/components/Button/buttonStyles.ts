@@ -3,17 +3,10 @@ import { unstable_createAnimationStyles as createAnimationStyles } from '@fluent
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import Loader from '../../../../components/Loader/Loader';
-import { ButtonProps } from '../../../../components/Button/Button';
+import { ButtonStylesProps } from '../../../../components/Button/Button';
 import { ButtonVariables } from './buttonVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-
-export type ButtonStylesProps = Pick<
-  ButtonProps,
-  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid'
-> & {
-  hasContent?: boolean;
-};
 
 const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {

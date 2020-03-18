@@ -3,14 +3,9 @@ import { callable, ComponentSlotStylesPrepared, FontIconSpec, ICSSInJSStyle, The
 
 import { pxToRem, SizeValue } from '../../../../utils';
 import { StrictColorScheme, ItemType } from '../../../types';
-import { IconXSpacing, IconProps } from '../../../../components/Icon/Icon';
+import { IconXSpacing, IconStylesProps } from '../../../../components/Icon/Icon';
 import { getStyle as getSvgStyle } from './svg';
 import { IconVariables, iconColorAreas } from './iconVariables';
-
-export type IconStylesProps = Pick<
-  IconProps,
-  'bordered' | 'circular' | 'color' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'
-> & { isFontIcon: boolean; isSvgIcon: boolean; name?: IconProps['name'] };
 
 export const emptyIcon: ThemeIconSpec = { icon: { content: '?' } };
 

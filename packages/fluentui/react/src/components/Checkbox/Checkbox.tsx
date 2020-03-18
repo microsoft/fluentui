@@ -66,6 +66,8 @@ export interface CheckboxProps extends UIComponentProps, ChildrenComponentProps 
   toggle?: boolean;
 }
 
+export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
+
 const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
   FluentComponentStaticProps<CheckboxProps> & {
     slotClassNames: CheckboxSlotClassNames;
@@ -94,7 +96,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     },
     rtl: context.rtl
   });
-  const { classes, styles: resolvedStyles } = useStyles(Checkbox.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
     className: Checkbox.className,
     mapPropsToStyles: () => ({
       checked: state.checked,

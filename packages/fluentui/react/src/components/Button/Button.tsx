@@ -88,6 +88,13 @@ export interface ButtonProps extends UIComponentProps, ContentComponentProps<Sho
   size?: SizeValue;
 }
 
+export type ButtonStylesProps = Pick<
+  ButtonProps,
+  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid'
+> & {
+  hasContent?: boolean;
+};
+
 const Button: React.FC<WithAsProp<ButtonProps>> &
   FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup; Content: typeof ButtonContent } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -137,7 +144,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     },
     rtl: context.rtl
   });
-  const { classes, styles: resolvedStyles } = useStyles(Button.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
     className: Button.className,
     mapPropsToStyles: () => ({
       text,

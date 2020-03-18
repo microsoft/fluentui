@@ -1,9 +1,7 @@
 import { pxToRem, SizeValue } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { StatusProps } from '../../../../components/Status/Status';
+import { StatusStylesProps } from '../../../../components/Status/Status';
 import { StatusVariables } from './statusVariables';
-
-export type StatusStylesProps = Pick<StatusProps, 'color' | 'size' | 'state'>;
 
 const getBackgroundColor = (state: string, variables: StatusVariables) => {
   switch (state) {

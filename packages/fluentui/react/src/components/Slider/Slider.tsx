@@ -105,6 +105,8 @@ export interface SliderProps extends UIComponentProps, ChildrenComponentProps, O
   vertical?: boolean;
 }
 
+export type SliderStylesProps = Pick<SliderProps, 'fluid' | 'disabled' | 'vertical'>;
+
 const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & { slotClassNames: SliderSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
@@ -156,7 +158,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & {
       vertical
     })
   });
-  const { classes, styles: resolvedStyles } = useStyles(Slider.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<SliderStylesProps>(Slider.displayName, {
     className: Slider.className,
     mapPropsToStyles: () => ({
       fluid,

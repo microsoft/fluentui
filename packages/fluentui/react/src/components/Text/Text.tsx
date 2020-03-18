@@ -61,6 +61,22 @@ export interface TextProps extends UIComponentProps, ContentComponentProps, Chil
   truncated?: boolean;
 }
 
+export type TextStylesProps = Pick<
+  TextProps,
+  | 'atMention'
+  | 'color'
+  | 'important'
+  | 'timestamp'
+  | 'truncated'
+  | 'disabled'
+  | 'error'
+  | 'success'
+  | 'temporary'
+  | 'align'
+  | 'weight'
+  | 'size'
+>;
+
 const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Text.displayName, context.telemetry);
@@ -92,7 +108,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
     debugName: Text.displayName,
     rtl: context.rtl
   });
-  const { classes } = useStyles(Text.displayName, {
+  const { classes } = useStyles<TextStylesProps>(Text.displayName, {
     className: Text.className,
     mapPropsToStyles: () => ({
       atMention,
