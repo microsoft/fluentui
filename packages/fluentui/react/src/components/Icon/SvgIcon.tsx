@@ -54,8 +54,6 @@ export interface SvgIconProps extends UIComponentProps {
   xSpacing?: SvgIconXSpacing;
 }
 
-export type SvgIconCreateFnParams = { svg: SvgIconChildrenFn; displayName: string; handledProps: string[] };
-
 const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   className: string;
   handledProps: (keyof SvgIconProps)[];

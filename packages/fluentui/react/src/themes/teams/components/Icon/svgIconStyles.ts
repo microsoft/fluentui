@@ -1,4 +1,4 @@
-import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { pxToRem, SizeValue } from '../../../../utils';
 import { SvgIconXSpacing, SvgIconProps } from '../../../../components/Icon/SvgIcon';
@@ -97,6 +97,15 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       transform: `rotate(${rotate}deg)`,
 
       ...getSvgStyle('svg')
+    };
+  },
+  svgFlippingInRtl: config => {
+    const { props, rtl } = config;
+    return {
+      ...callable(svgIconStyles.svg)(config),
+      ...(rtl && {
+        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`
+      })
     };
   },
 

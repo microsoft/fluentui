@@ -5,9 +5,11 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import { ProviderContextPrepared } from '../../types';
-import { default as SvgIcon, SvgIconProps, SvgIconCreateFnParams } from './SvgIcon';
+import { default as SvgIcon, SvgIconProps, SvgIconChildrenFn } from './SvgIcon';
 
-const createIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProps }: SvgIconCreateFnParams) => {
+export type SvgIconCreateFnParams = { svg: SvgIconChildrenFn; displayName: string; handledProps?: string[] };
+
+const createIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProps = SvgIcon.handledProps }: SvgIconCreateFnParams) => {
   const Component: React.FC<TProps> & { handledProps: string[] } = (props: Extendable<SvgIconProps>) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
