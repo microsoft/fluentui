@@ -19,7 +19,8 @@
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "code-style": "just-scripts code-style",
-    "clean": "just-scripts clean"
+    "clean": "just-scripts clean",
+    "start": "just-scripts dev:storybook"
   },
   "devDependencies": {
     "@uifabric/build": "^7.0.0",
