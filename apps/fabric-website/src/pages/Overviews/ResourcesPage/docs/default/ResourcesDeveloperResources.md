@@ -20,7 +20,7 @@ In addition to the API documentation and control examples found in the [Controls
 View Fluent UI React's versioned release notes and component demos.
 
 <ul class="md-list--flex">
-  <li class="mdut--full">[Release notes and demos](https://aka.ms/FabricDemo)</li>
+  <li class="mdut--full">[Release notes and demos](https://aka.ms/fluentuidemo)</li>
 </ul>
 
 <h3 id="sharepoint-framework-dev">SharePoint Framework</h3>

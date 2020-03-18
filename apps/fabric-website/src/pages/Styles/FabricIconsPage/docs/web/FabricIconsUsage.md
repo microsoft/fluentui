@@ -55,4 +55,4 @@ Note the `aria-hidden` attribute, which prevents screen readers from reading the
 
 ### Fluent UI Icons tool
 
-The [Fluent UI Icons tool](https://aka.ms/uifabric-icons) lets you search and browse all of Fluent UI's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons several times a month, whereas the default Fluent UI set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/uifabric-icons?help.
+The [Fluent UI Icons tool](https://aka.ms/fluentui-icons) lets you search and browse all of Fluent UI's icons. You can also use it to create and maintain subsets of the icon font to use in your web apps, which are drop-in replacements for the default Fabric Core and Fluent UI React icon sets. In addition, the Fluent UI Icons tool is updated with new icons several times a month, whereas the default Fluent UI set is updated only occasionally. You can see detailed docs for the tool at https://aka.ms/fluentui-icons?help.

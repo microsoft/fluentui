@@ -147,7 +147,7 @@ For info about testing, see our [testing documentation](https://github.com/Offic
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](https://aka.ms/fabric-assets-license).
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](https://aka.ms/fluentui-assets-license).
 
 ## Changelog
 

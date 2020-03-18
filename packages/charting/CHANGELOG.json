@@ -1247,7 +1247,7 @@
       "comments": {
         "patch": [
           {
-            "comment": "Fix an issue with the demo site not being able to load (in npm start or aka.ms/fabricdemo).",
+            "comment": "Fix an issue with the demo site not being able to load (in npm start or aka.ms/fluentuidemo).",
             "author": "Cliff Koh <cliff.koh@microsoft.com>",
             "commit": "b23bf4ef703ae9fef95dd41a1f7b3d0906a04344"
           }
