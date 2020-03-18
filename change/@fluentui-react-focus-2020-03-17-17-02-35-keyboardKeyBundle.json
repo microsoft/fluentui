@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Adding keyboard-key to FocusZone.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "commit": "95baae819a21aaa682dd54074d1a18030e128647",
+  "dependentChangeType": "patch",
+  "date": "2020-03-18T00:02:35.155Z"
+}
