@@ -1,19 +1,12 @@
 import * as React from 'react';
 
-export type ComposedComponent<
-  InputProps extends Record<string, any> = {},
-  InputStylesProps extends Record<string, any> = {},
-  ParentProps extends Record<string, any> = {},
-  ParentStylesProps extends Record<string, any> = {}
-> = React.FunctionComponent<InputProps & ParentProps> & {
+export type ComposedComponent<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = React.FunctionComponent<
+  InputProps & ParentProps
+> & {
   fluentComposeConfig: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 };
 
-export type ComposeOptions<
-  InputProps extends Record<string, any> = {},
-  InputStylesProps extends Record<string, any> = {},
-  ParentStylesProps extends Record<string, any> = {}
-> = {
+export type ComposeOptions<InputProps = {}, InputStylesProps = {}, ParentStylesProps = {}> = {
   className?: string;
   displayName?: string;
 
@@ -23,12 +16,7 @@ export type ComposeOptions<
   overrideStyles?: boolean;
 };
 
-export type ComposePreparedOptions<
-  InputProps extends Record<string, any> = {},
-  InputStylesProps extends Record<string, any> = {},
-  ParentProps extends Record<string, any> = {},
-  ParentStylesProps extends Record<string, any> = {}
-> = {
+export type ComposePreparedOptions<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = {
   className: string;
   displayNames: string[];
 

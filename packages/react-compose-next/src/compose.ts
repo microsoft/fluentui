@@ -11,10 +11,10 @@ const defaultComposeOptions: ComposePreparedOptions = {
   overrideStyles: false
 };
 
-function computeDisplayNames(
-  options: ComposeOptions<any, any, any>,
+function computeDisplayNames<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
+  options: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>,
   inputDisplayName?: string,
-  inputOptions?: ComposePreparedOptions<any, any, any, any>
+  inputOptions?: ComposePreparedOptions
 ): string[] {
   if (options.overrideStyles) {
     return [options.displayName || inputDisplayName].filter(Boolean) as string[];
@@ -28,29 +28,28 @@ function computeDisplayNames(
   return [inputDisplayName, options.displayName].filter(Boolean) as string[];
 }
 
-function compose<
-  InputProps extends Record<string, any>,
-  InputStylesProps extends Record<string, any>,
-  ParentProps extends Record<string, any>,
-  ParentStylesProps extends Record<string, any>
->(
-  InputComponent: React.FunctionComponent<ParentProps>,
+function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
+  InputComponent: React.FunctionComponent<ParentProps> & { fluentComposeConfig?: ComposePreparedOptions },
   composeOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {}
 ): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps> {
-  const Component = InputComponent.bind(null) as ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
+  const Component = (InputComponent.bind(null) as unknown) as ComposedComponent<
+    InputProps,
+    InputStylesProps,
+    ParentProps,
+    ParentStylesProps
+  >;
 
+  const inputOptions: ComposePreparedOptions = InputComponent.fluentComposeConfig || defaultComposeOptions;
   const { handledProps = [], mapPropsToStylesProps } = composeOptions;
-  const inputOptions: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps> =
-    (InputComponent as any).fluentComposeConfig || defaultComposeOptions;
 
   Component.displayName = composeOptions.displayName || InputComponent.displayName;
   Component.fluentComposeConfig = {
     className: composeOptions.className || inputOptions.className,
     displayNames: computeDisplayNames(composeOptions, InputComponent.displayName, inputOptions),
 
-    mapPropsToStylesPropsChain: mapPropsToStylesProps
-      ? inputOptions.mapPropsToStylesPropsChain.concat(mapPropsToStylesProps)
-      : inputOptions.mapPropsToStylesPropsChain,
+    mapPropsToStylesPropsChain: (mapPropsToStylesProps
+      ? [...inputOptions.mapPropsToStylesPropsChain, mapPropsToStylesProps]
+      : inputOptions.mapPropsToStylesPropsChain) as ((props: ParentStylesProps & InputProps) => InputStylesProps)[],
 
     handledProps: [...inputOptions.handledProps, ...handledProps],
     overrideStyles: composeOptions.overrideStyles || false
