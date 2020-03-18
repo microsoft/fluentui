@@ -74,6 +74,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** The initial value (or value array if the array has multiple selection). */
   defaultValue?: ShorthandValue<DropdownItemProps> | ShorthandCollection<DropdownItemProps>;
 
+  /** A dropdown can show that it cannot be interacted with. */
+  disabled?: boolean;
+
   /** A dropdown can fill the width of its container. */
   fluid?: boolean;
 
@@ -264,6 +267,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     defaultHighlightedIndex: PropTypes.number,
     defaultSearchQuery: PropTypes.string,
     defaultValue: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
+    disabled: PropTypes.bool,
     fluid: PropTypes.bool,
     getA11ySelectionMessage: PropTypes.object,
     getA11yStatusMessage: PropTypes.func,
@@ -399,7 +403,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   };
 
   renderComponent({ ElementType, classes, styles, variables, unhandledProps, rtl }: RenderResultConfig<DropdownProps>) {
-    const { clearable, clearIndicator, search, multiple, getA11yStatusMessage, itemToString, toggleIndicator } = this.props;
+    const { clearable, clearIndicator, disabled, search, multiple, getA11yStatusMessage, itemToString, toggleIndicator } = this.props;
     const { highlightedIndex, open, searchQuery, value } = this.state;
 
     return (
@@ -475,8 +479,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                         }),
                         overrideProps: (predefinedProps: BoxProps) => ({
                           onClick: e => {
+                            if (!disabled) {
+                              getToggleButtonProps({ disabled }).onClick(e);
+                            }
+
                             _.invoke(predefinedProps, 'onClick', e);
-                            getToggleButtonProps().onClick(e);
                           }
                         })
                       })}
@@ -510,13 +517,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     rtl: boolean,
     getToggleButtonProps: (options?: GetToggleButtonPropsOptions) => any
   ): JSX.Element {
-    const { triggerButton } = this.props;
+    const { triggerButton, disabled } = this.props;
     const { value } = this.state;
 
     const content = this.getSelectedItemAsString(value[0]);
     const triggerButtonId = triggerButton['id'] || this.defaultTriggerButtonId;
 
     const triggerButtonProps = getToggleButtonProps({
+      disabled,
       onFocus: this.handleTriggerButtonOrListFocus,
       onBlur: this.handleTriggerButtonBlur,
       onKeyDown: e => {
@@ -534,6 +542,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           defaultProps: () => ({
             className: Dropdown.slotClassNames.triggerButton,
             content,
+            disabled,
             id: triggerButtonId,
             fluid: true,
             styles: styles.triggerButton,
@@ -549,11 +558,17 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               _.invoke(predefinedProps, 'onFocus', e, predefinedProps);
             },
             onBlur: e => {
-              onBlur(e);
+              if (!disabled) {
+                onBlur(e);
+              }
+
               _.invoke(predefinedProps, 'onBlur', e, predefinedProps);
             },
             onKeyDown: e => {
-              onKeyDown(e);
+              if (!disabled) {
+                onKeyDown(e);
+              }
+
               _.invoke(predefinedProps, 'onKeyDown', e, predefinedProps);
             }
           })
@@ -571,7 +586,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     toggleMenu: () => void,
     variables
   ): JSX.Element {
-    const { inline, searchInput, multiple, placeholder } = this.props;
+    const { inline, searchInput, multiple, placeholder, disabled } = this.props;
     const { searchQuery, value } = this.state;
 
     const noPlaceholder = searchQuery.length > 0 || (multiple && value.length > 0);
@@ -582,7 +597,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         placeholder: noPlaceholder ? '' : placeholder,
         inline,
         variables,
-        inputRef: this.inputRef
+        inputRef: this.inputRef,
+        disabled
       }),
       overrideProps: this.handleSearchInputOverrides(
         highlightedIndex,
@@ -855,31 +871,38 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     getInputProps: (options?: GetInputPropsOptions) => any
   ) => (predefinedProps: DropdownSearchInputProps) => {
     const handleInputBlur = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-      this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
-      e.nativeEvent['preventDownshiftDefault'] = true;
+      if (!disabled) {
+        this.setState({ focused: false, isFromKeyboard: isFromKeyboard() });
+
+        e.nativeEvent['preventDownshiftDefault'] = true;
+      }
+
       _.invoke(predefinedProps, 'onInputBlur', e, searchInputProps);
     };
+    const { disabled } = this.props;
 
     const handleInputKeyDown = (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-      switch (keyboardKey.getCode(e)) {
-        case keyboardKey.Tab:
-          this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
-          break;
-        case keyboardKey.ArrowLeft:
-          if (!rtl) {
-            this.trySetLastSelectedItemAsActive();
-          }
-          break;
-        case keyboardKey.ArrowRight:
-          if (rtl) {
-            this.trySetLastSelectedItemAsActive();
-          }
-          break;
-        case keyboardKey.Backspace:
-          this.tryRemoveItemFromValue();
-          break;
-        default:
-          break;
+      if (!disabled) {
+        switch (keyboardKey.getCode(e)) {
+          case keyboardKey.Tab:
+            this.handleTabSelection(e, highlightedIndex, selectItemAtIndex, toggleMenu);
+            break;
+          case keyboardKey.ArrowLeft:
+            if (!rtl) {
+              this.trySetLastSelectedItemAsActive();
+            }
+            break;
+          case keyboardKey.ArrowRight:
+            if (rtl) {
+              this.trySetLastSelectedItemAsActive();
+            }
+            break;
+          case keyboardKey.Backspace:
+            this.tryRemoveItemFromValue();
+            break;
+          default:
+            break;
+        }
       }
 
       _.invoke(predefinedProps, 'onInputKeyDown', e, {
@@ -894,6 +917,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // user handlers were also added to our handlers previously, at the beginning of this function.
       accessibilityInputProps: {
         ...getInputProps({
+          disabled,
           onBlur: e => {
             handleInputBlur(e, predefinedProps);
           },
@@ -905,7 +929,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       // same story as above for getRootProps.
       accessibilityComboboxProps,
       onFocus: (e: React.SyntheticEvent, searchInputProps: DropdownSearchInputProps) => {
-        this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
+        if (!disabled) {
+          this.setState({ focused: true, isFromKeyboard: isFromKeyboard() });
+        }
 
         _.invoke(predefinedProps, 'onFocus', e, searchInputProps);
       },

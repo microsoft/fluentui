@@ -9,6 +9,7 @@ export interface DropdownVariables {
   borderColorHover: string;
   borderWidth: string;
   containerBorderRadius: string;
+  disabledColor: string;
   openAboveContainerBorderRadius: string;
   openBelowContainerBorderRadius: string;
   searchBorderBottomWidth: string;
@@ -47,6 +48,9 @@ export interface DropdownVariables {
   triggerButtonColorHover: string;
   width: string;
   overlayZIndex: number;
+  disabledBorderColorHover: string;
+  disabledTriggerColorHover: string;
+  disabledBackgroundColorHover: string;
 }
 
 const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
@@ -60,6 +64,7 @@ export default (siteVars): DropdownVariables => ({
   borderColorHover: undefined,
   borderWidth: '0px',
   containerBorderRadius: `${cornerRadius}`,
+  disabledColor: siteVars.colors.grey[250],
   openAboveContainerBorderRadius: `0 0 ${cornerRadius} ${cornerRadius}`,
   openBelowContainerBorderRadius: `${cornerRadius} ${cornerRadius} 0 0`,
   searchBorderBottomWidth: pxToRem(2),
@@ -95,6 +100,10 @@ export default (siteVars): DropdownVariables => ({
   triggerButtonColorHover: siteVars.bodyColor,
   width: pxToRem(356),
   overlayZIndex: siteVars.zIndexes.overlay,
+  // disabled state
+  disabledBorderColorHover: 'transparent',
+  disabledTriggerColorHover: siteVars.bodyColor,
+  disabledBackgroundColorHover: siteVars.colors.grey[100],
 
   // these should only apply when there is content in the image/media slot:
   listItemHeaderFontSize: siteVars.fontSizes.medium,

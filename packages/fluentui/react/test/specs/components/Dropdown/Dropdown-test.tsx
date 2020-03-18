@@ -696,14 +696,14 @@ describe('Dropdown', () => {
     });
 
     it('is replaced when another item is selected', () => {
-      const defaultSelectedIndex = 0;
+      const defaultValue = items[0];
       const itemSelectedIndex = 2;
       const { triggerButtonNode, clickOnItemAtIndex } = renderDropdown({
         defaultOpen: true,
-        defaultValue: items[defaultSelectedIndex]
+        defaultValue
       });
 
-      expect(triggerButtonNode).toHaveTextContent(items[defaultSelectedIndex]);
+      expect(triggerButtonNode).toHaveTextContent(defaultValue);
 
       clickOnItemAtIndex(itemSelectedIndex);
 
@@ -721,7 +721,7 @@ describe('Dropdown', () => {
       expect(getSelectedItemNodeAtIndex(1)).toHaveTextContent(items[1]);
     });
 
-    it('emoves last item on backspace when query is emtpy', () => {
+    it('removes last item on backspace when query is emtpy', () => {
       const { getSelectedItemNodes, getSelectedItemNodeAtIndex, keyDownOnSearchInput } = renderDropdown({
         multiple: true,
         search: true,
@@ -734,7 +734,7 @@ describe('Dropdown', () => {
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[0]);
     });
 
-    it('does not rempve last item on backspace when query is not empty', () => {
+    it('does not remove last item on backspace when query is not empty', () => {
       const { getSelectedItemNodes, keyDownOnSearchInput, searchInputNode } = renderDropdown({
         multiple: true,
         search: true,
@@ -763,7 +763,7 @@ describe('Dropdown', () => {
       expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[0]);
     });
 
-    it('does not rempve last item on backspace when selection range is 0, (y>0)', () => {
+    it('does not remove last item on backspace when selection range is 0, (y>0)', () => {
       const { getSelectedItemNodes, keyDownOnSearchInput, searchInputNode } = renderDropdown({
         multiple: true,
         search: true,
@@ -894,6 +894,7 @@ describe('Dropdown', () => {
       });
 
       wrapper.setProps({ searchQuery: newSearchQueryProp });
+
       expect(searchInputNode).toHaveValue(newSearchQueryProp);
     });
 
@@ -1294,6 +1295,63 @@ describe('Dropdown', () => {
       renderDropdown({ renderSelectedItem, multiple: true, value });
 
       expect(renderSelectedItem).toBeCalledTimes(value.length);
+    });
+  });
+
+  describe('disabled', () => {
+    it('allows no action on the trigger button', () => {
+      const { clickOnTriggerButton, focusTriggerButton, getItemNodes, triggerButtonNode, keyDownOnTriggerButton } = renderDropdown({
+        disabled: true
+      });
+
+      expect(triggerButtonNode).toHaveAttribute('disabled');
+
+      clickOnTriggerButton();
+
+      expect(getItemNodes()).toHaveLength(0);
+
+      focusTriggerButton();
+
+      expect(triggerButtonNode).not.toHaveFocus();
+
+      keyDownOnTriggerButton('ArrowDown');
+
+      expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('allows no action on the search input', () => {
+      const { keyDownOnSearchInput, clickOnSearchInput, focusSearchInput, getItemNodes, searchInputNode } = renderDropdown({
+        disabled: true,
+        search: true
+      });
+
+      expect(searchInputNode).toHaveAttribute('disabled');
+
+      keyDownOnSearchInput('ArrowDown');
+
+      expect(getItemNodes()).toHaveLength(0);
+
+      focusSearchInput();
+
+      expect(searchInputNode).not.toHaveFocus();
+
+      clickOnSearchInput();
+
+      expect(searchInputNode).not.toHaveFocus();
+    });
+
+    it('allows no action on the toggle indicator', () => {
+      const { clickOnToggleIndicator, toggleIndicatorNode, getItemNodes } = renderDropdown({
+        disabled: true
+      });
+
+      clickOnToggleIndicator();
+
+      expect(getItemNodes()).toHaveLength(0);
+
+      toggleIndicatorNode.focus();
+
+      expect(toggleIndicatorNode).not.toHaveFocus();
     });
   });
 });

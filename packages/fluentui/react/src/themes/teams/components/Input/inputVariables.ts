@@ -6,6 +6,7 @@ export interface InputVariables {
   borderColor: string;
   borderRadius: string;
   borderWidth: string;
+  colorDisabled: string;
   fontColor: string;
   fontSize: string;
   iconColor: string;
@@ -21,6 +22,7 @@ export interface InputVariables {
 }
 
 export default (siteVars): InputVariables => ({
+  colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
   iconPosition: 'absolute',
   iconRight: pxToRem(10),
   iconLeft: pxToRem(6),

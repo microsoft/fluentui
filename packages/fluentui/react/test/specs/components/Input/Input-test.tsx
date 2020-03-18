@@ -128,4 +128,23 @@ describe('Input', () => {
       expect(inputComp.find('Icon[name=""]').length).toEqual(0); // the 'x' icon disappears
     });
   });
+
+  it('disabled prop makes the input un-actionable', () => {
+    const inputComp = mount(<Input disabled />);
+    const domNode = getInputDomNode(inputComp);
+
+    expect(domNode).toHaveAttribute('disabled');
+
+    setUserInputValue(inputComp, testValue); // user types into the input
+
+    expect(domNode.value).toEqual(''); // but nothing happens
+
+    domNode.focus();
+
+    expect(domNode).not.toHaveFocus();
+
+    domNode.click();
+
+    expect(domNode).not.toHaveFocus();
+  });
 });

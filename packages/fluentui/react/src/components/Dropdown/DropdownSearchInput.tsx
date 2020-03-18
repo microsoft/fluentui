@@ -20,6 +20,9 @@ export interface DropdownSearchInputProps extends UIComponentProps<DropdownSearc
   /** Accessibility props for input slot. */
   accessibilityInputProps?: any;
 
+  /** A dropdown search input can show that it cannot be interacted with. */
+  disabled?: boolean;
+
   /** A dropdown search input can be formatted to appear inline in the context of a Dropdown. */
   inline?: boolean;
 
@@ -76,6 +79,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
     }),
     accessibilityInputProps: PropTypes.object,
     accessibilityComboboxProps: PropTypes.object,
+    disabled: PropTypes.bool,
     inline: PropTypes.bool,
     inputRef: customPropTypes.ref,
     onFocus: PropTypes.func,
@@ -102,9 +106,10 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
   };
 
   renderComponent({ unhandledProps, styles }: RenderResultConfig<DropdownSearchInputProps>) {
-    const { accessibilityComboboxProps, accessibilityInputProps, inputRef, placeholder } = this.props;
+    const { accessibilityComboboxProps, accessibilityInputProps, inputRef, placeholder, disabled } = this.props;
     return (
       <Input
+        disabled={disabled}
         inputRef={inputRef}
         onFocus={this.handleFocus}
         onKeyUp={this.handleKeyUp}
