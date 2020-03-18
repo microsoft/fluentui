@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat(compose): add compose() & scaffold react-compose-next",
-  "packageName": "@fluentui/react-compose",
-  "email": "olfedias@microsoft.com",
-  "commit": "62509a3ed7d9c3b1686d4a20cb5411a826302c77",
-  "dependentChangeType": "patch",
-  "date": "2020-03-18T09:43:53.205Z"
-}

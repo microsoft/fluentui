@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Azure theme: Adding storybook `yarn start` workflow for helping to design and debug the Azure themes.",
-  "packageName": "@uifabric/azure-themes",
-  "email": "dzearing@microsoft.com",
-  "commit": "24376ffa07222f4f35d3a5ec17f84f126b06af6f",
-  "dependentChangeType": "patch",
-  "date": "2020-03-17T22:00:49.678Z"
-}
