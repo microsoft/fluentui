@@ -1,11 +1,12 @@
+import { codes } from './codes';
 import { getCode, getKey, keyboardKey } from './index';
 
 // tslint:disable:no-any
 
 describe('keyboardKey', () => {
   it('has a key/value for every value/key in codes', () => {
-    Object.keys(keyboardKey.codes).forEach(code => {
-      const name = keyboardKey.codes[Number(code)];
+    Object.keys(codes).forEach(code => {
+      const name = codes[Number(code)];
 
       if (Array.isArray(name)) {
         expect(String((keyboardKey as any)[name[0]])).toEqual(code);
@@ -24,8 +25,8 @@ describe('keyboardKey', () => {
       expect(getCode('Enter')).toEqual(13);
     });
     it('handles all key names in codes', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const _code = Number(code);
 
         if (Array.isArray(name)) {
@@ -38,8 +39,8 @@ describe('keyboardKey', () => {
     });
 
     it('handles event like objects with `key` prop', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const _code = Number(code);
 
         if (Array.isArray(name)) {
@@ -64,8 +65,8 @@ describe('keyboardKey', () => {
       expect(getKey(13)).toEqual('Enter');
     });
     it('handles all codes', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const keyName = getKey(Number(code));
         if (Array.isArray(name)) {
           expect(keyName).toEqual(name[0]);
@@ -75,8 +76,8 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { keyCode: code, shiftKey: false }`', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const _code = Number(code);
         const keyName = getKey({ which: _code, keyCode: _code, shiftKey: false });
 
@@ -88,8 +89,8 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { keyCode: code, shiftKey: true }`', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const keyName = getKey({ keyCode: Number(code), shiftKey: true });
 
         if (Array.isArray(name)) {
@@ -100,8 +101,8 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { which: code, shiftKey: false }', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const keyName = getKey({ which: Number(code), shiftKey: false });
 
         if (Array.isArray(name)) {
@@ -112,8 +113,8 @@ describe('keyboardKey', () => {
       });
     });
     it('handles event like object: { which: code, shiftKey: true }', () => {
-      Object.keys(keyboardKey.codes).forEach(code => {
-        const name = keyboardKey.codes[code];
+      Object.keys(codes).forEach(code => {
+        const name = codes[code];
         const keyName = getKey({ which: Number(code), shiftKey: true });
 
         if (Array.isArray(name)) {

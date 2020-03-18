@@ -14,11 +14,7 @@ export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string
 export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
 
 // @public
-export const keyboardKey: {
-    codes: {
-        [code: string]: string | string[];
-    };
-} & KeyNames;
+export const keyboardKey: KeyNames;
 
 // @public (undocumented)
 export interface KeyNames {
