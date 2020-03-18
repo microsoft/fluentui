@@ -70,6 +70,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       onRenderInitials,
       presence,
       presenceTitle,
+      presenceColors,
       showInitialsUntilImageLoads,
       showSecondaryText,
       theme
@@ -94,6 +95,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       size,
       text: this._getText(),
       isOutOfOffice,
+      presenceColors,
       ...coinProps
     };
 
