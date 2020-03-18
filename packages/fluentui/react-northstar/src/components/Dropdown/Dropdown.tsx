@@ -63,14 +63,6 @@ export interface DropdownSlotClassNames {
   triggerButton: string;
 }
 
-export type OnChangeHandlerNames = (
-  | 'onChange'
-  | 'onHighlightedIndexChange'
-  | 'onOpenChange'
-  | 'onActiveSelectedIndexChange'
-  | 'onSearchQueryChange'
-)[];
-
 export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownState>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
@@ -449,8 +441,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
         <Downshift
           isOpen={open}
-          onChange={this.handleSelectedChange}
-          onInputValueChange={this.handleSearchQueryChange}
+          // onChange={this.handleSelectedChange}
+          // onInputValueChange={this.handleSearchQueryChange}
           inputValue={search ? searchQuery : null}
           stateReducer={this.handleDownshiftStateChanges}
           itemToString={itemToString}
@@ -816,29 +808,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     );
   }
 
-  handleSearchQueryChange = (searchQuery: string) => {
-    const { value } = this.state;
-    const { multiple } = this.props;
-    // we clear value when in single selection user cleared the query.
-    const shouldValueChange = searchQuery === '' && !multiple && !!value.length;
-    const handlersToBeCalled: OnChangeHandlerNames = [
-      'onSearchQueryChange',
-      'onHighlightedIndexChange',
-      'onOpenChange',
-    ];
-
-    if (shouldValueChange) {
-      handlersToBeCalled.push('onChange');
-    }
-
-    this.setStateAndInvokeHandler(handlersToBeCalled, null, {
-      searchQuery,
-      highlightedIndex: this.props.highlightFirstItemOnOpen ? 0 : null,
-      open: searchQuery === '' ? false : this.state.open,
-      ...(shouldValueChange && { value: [] }),
-    });
-  };
-
   handleDownshiftStateChanges = (
     state: DownshiftState<ShorthandValue<DropdownItemProps>>,
     changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
@@ -857,32 +826,125 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
   };
 
-  handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    if (changes.isOpen !== undefined && changes.isOpen !== this.state.open) {
-      const newState = { open: changes.isOpen, highlightedIndex: this.state.highlightedIndex };
+  handleIsOpenChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>): Partial<DropdownState> => {
+    const { isOpen: newOpen } = changes;
+    const { open, highlightedIndex } = this.state;
 
-      if (changes.isOpen) {
-        const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
-        if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
-          newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
-        }
-        if (!this.props.search) {
-          this.listRef.current.focus();
-        }
-      } else {
-        newState.highlightedIndex = null;
+    if (newOpen === undefined || open === newOpen) {
+      return null;
+    }
+
+    const newState = { open: newOpen, highlightedIndex };
+
+    if (newOpen) {
+      const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+      if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+        newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
       }
 
-      this.setStateAndInvokeHandler(['onOpenChange'], null, newState);
+      if (!this.props.search) {
+        this.listRef.current.focus();
+      }
+    } else {
+      newState.highlightedIndex = null;
     }
 
-    if (this.state.open && _.isNumber(changes.highlightedIndex)) {
-      const itemIsFromKeyboard = changes.type !== Downshift.stateChangeTypes.itemMouseEnter;
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
+    return newState;
+  };
+
+  handleHighlightedIndexChange = (
+    changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
+  ): Partial<DropdownState> => {
+    const { open } = this.state;
+    const { highlightedIndex: newHighlightedIndex, type } = changes;
+
+    if (open && _.isNumber(newHighlightedIndex)) {
+      const itemIsFromKeyboard = type !== Downshift.stateChangeTypes.itemMouseEnter;
+
+      return {
         itemIsFromKeyboard,
-        highlightedIndex: changes.highlightedIndex,
-      });
+        highlightedIndex: newHighlightedIndex,
+      };
     }
+
+    return null;
+  };
+
+  handleSelectedItemChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
+    const { items, multiple, getA11ySelectionMessage } = this.props;
+    const { value } = this.state;
+    const { selectedItem: item } = changes;
+
+    if (item === undefined || (!multiple && item === value[0])) {
+      return null;
+    }
+
+    const newState = {
+      searchQuery: this.getSelectedItemAsString(item),
+      value: item === null ? [] : multiple ? [...value, item] : [item],
+      ...(!multiple &&
+        items && {
+          highlightedIndex: items.indexOf(item),
+        }),
+    };
+
+    if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+      this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(item));
+    }
+
+    if (multiple) {
+      setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
+    }
+
+    this.tryFocusTriggerButton();
+
+    return newState;
+  };
+
+  handleInputValueChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
+    const { value, searchQuery } = this.state;
+    const { multiple, highlightFirstItemOnOpen } = this.props;
+    const { inputValue: newSearchQuery, selectedItem } = changes;
+
+    if (newSearchQuery === undefined || newSearchQuery === searchQuery) {
+      return null;
+    }
+
+    // we clear value when in single selection user cleared the query.
+    const shouldValueChange = newSearchQuery === '' && !multiple && !!value.length;
+
+    return {
+      highlightedIndex: highlightFirstItemOnOpen ? 0 : null,
+      ...(!multiple && selectedItem === undefined && { searchQuery: newSearchQuery }),
+      ...((newSearchQuery === '' || selectedItem !== undefined) && { open: false }),
+      ...(shouldValueChange && { value: [] }),
+    };
+  };
+
+  handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
+    const newState = {
+      ...this.handleIsOpenChange(changes),
+      ...this.handleHighlightedIndexChange(changes),
+      ...this.handleSelectedItemChange(changes),
+      ...this.handleInputValueChange(changes),
+    };
+    const handlers = [];
+
+    if (newState.searchQuery !== undefined) {
+      handlers.push('onSearchQueryChange');
+    }
+    if (newState.value !== undefined) {
+      handlers.push('onChange');
+    }
+    if (newState.highlightedIndex !== undefined) {
+      handlers.push('onHighlightedIndexChange');
+    }
+    if (newState.open !== undefined) {
+      handlers.push('onOpenChange');
+    }
+
+    this.setStateAndInvokeHandler(handlers, null, newState);
   };
 
   isSelectedItemActive = (index: number): boolean => {
@@ -1147,32 +1209,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
   };
 
-  handleSelectedChange = (item: ShorthandValue<DropdownItemProps>) => {
-    const { items, multiple, getA11ySelectionMessage } = this.props;
-    const { value } = this.state;
-
-    this.setStateAndInvokeHandler(['onChange'], null, {
-      searchQuery: this.getSelectedItemAsString(item),
-      value: item === null ? [] : multiple ? [...value, item] : [item],
-    });
-
-    if (!multiple && items) {
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
-        highlightedIndex: items.indexOf(item),
-      });
-    }
-
-    if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-      this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(item));
-    }
-
-    if (multiple) {
-      setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
-    }
-
-    this.tryFocusTriggerButton();
-  };
-
   handleSelectedItemKeyDown(
     e: React.SyntheticEvent,
     item: ShorthandValue<DropdownItemProps>,
@@ -1305,7 +1341,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * because we want to keep the event handling interface
    */
   setStateAndInvokeHandler = (
-    handlerNames: OnChangeHandlerNames,
+    handlerNames: (keyof DropdownProps)[],
     event: React.SyntheticEvent<HTMLElement>,
     newState: Partial<DropdownState>,
   ) => {
