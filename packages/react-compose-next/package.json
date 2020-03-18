@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react-compose-next",
+  "name": "@fluentui/react-compose",
   "version": "0.1.0",
   "description": "UI Fabric React hooks.",
   "main": "lib-commonjs/index.js",
