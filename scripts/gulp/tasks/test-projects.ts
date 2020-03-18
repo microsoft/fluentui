@@ -54,7 +54,7 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
 
   packedPackages = {};
 
-  // packages/fluentui/react-northstar/src -> packages/fluentui/react,
+  // packages/fluentui/react-northstar/src -> packages/fluentui/react-northstar,
   // as lernaAliases append 'src' by default
   const projectPackages = lernaAliases({ sourceDirectory: false });
 

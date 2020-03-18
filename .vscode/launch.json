@@ -196,7 +196,7 @@
       "runtimeArgs": ["--nolazy", "--debug"],
       // You can change the task name and cwd locally as needed
       "args": ["build"],
-      "cwd": "${workspaceRoot}/packages/fluentui/react",
+      "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
       "env": {
         "NODE_ENV": "development",
         // This is used in scripts/babel/index.js to enable sourcemaps
