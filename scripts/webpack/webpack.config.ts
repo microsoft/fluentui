@@ -114,7 +114,7 @@ const webpackConfig: webpack.Configuration = {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
       ...lernaAliases(),
-      src: paths.packageSrc('react'),
+      src: paths.packageSrc('react-northstar'),
       docs: paths.docs()
     }
   },

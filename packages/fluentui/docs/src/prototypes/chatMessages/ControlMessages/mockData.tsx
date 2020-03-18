@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ChatMessageProps } from '@fluentui/react';
+import { ChatMessageProps } from '@fluentui/react-northstar';
 
 export const groupControlMessageItems: ChatMessageProps[] = [
   {

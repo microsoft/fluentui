@@ -8,7 +8,7 @@ import {
   DividerProps,
   StatusProps,
   ShorthandValue
-} from '@fluentui/react';
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';

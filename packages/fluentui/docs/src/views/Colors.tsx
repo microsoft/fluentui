@@ -1,5 +1,5 @@
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Provider, ProviderConsumer, Grid, Header, Box, Text, Alert, mergeThemes, themes } from '@fluentui/react';
+import { Provider, ProviderConsumer, Grid, Header, Box, Text, Alert, mergeThemes, themes } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
@@ -183,7 +183,7 @@ const Colors = () => (
           <ExampleSnippet
             value={`
 import React from "react";
-import { Box, Provider, mergeThemes, themes } from "@fluentui/react";
+import { Box, Provider, mergeThemes, themes } from "@fluentui/react-northstar";
 
 const theme = {
   componentVariables: {

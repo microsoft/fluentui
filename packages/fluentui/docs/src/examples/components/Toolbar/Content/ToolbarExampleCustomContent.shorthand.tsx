@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Text, Toolbar } from '@fluentui/react';
+import { Button, Text, Toolbar } from '@fluentui/react-northstar';
 
 const ToolbarExampleCustomContentShorthand = () => (
   <Toolbar

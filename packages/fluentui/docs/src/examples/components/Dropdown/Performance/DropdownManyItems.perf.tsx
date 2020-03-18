@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 

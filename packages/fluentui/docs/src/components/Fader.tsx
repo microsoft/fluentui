@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { createComponent, ComponentSlotStylesInput, Button, Flex } from '@fluentui/react';
+import { createComponent, ComponentSlotStylesInput, Button, Flex } from '@fluentui/react-northstar';
 
 type FaderProps = {
   children: JSX.Element;

@@ -5,7 +5,7 @@ import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import { Link } from 'react-router-dom';
 
 import { code, link } from '../utils/helpers';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 
 export default () => (
   <DocPage title="Accessibility in Fluent UI">

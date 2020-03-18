@@ -24,7 +24,7 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     /* eslint-disable-next-line no-console */
     console.warn(
       [
-        '@fluentui/react:',
+        '@fluentui/react-northstar:',
         'You are running Fela in development mode and this can cause performance degrades.',
         'To disable it please paste `delete window.localStorage.felaDevMode` to your browsers console and reload current page.'
       ].join(' ')
@@ -33,7 +33,7 @@ if (process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
     /* eslint-disable-next-line no-console */
     console.warn(
       [
-        '@fluentui/react:',
+        '@fluentui/react-northstar:',
         'You are running Fela in production mode.',
         'This limits your ability to edit styles in browsers development tools.',
         'To enable development mode please paste `window.localStorage.felaDevMode = true` to your browsers console and reload the page.'

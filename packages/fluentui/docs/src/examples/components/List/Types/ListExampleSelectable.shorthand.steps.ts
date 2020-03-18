@@ -1,4 +1,4 @@
-import { List } from '@fluentui/react';
+import { List } from '@fluentui/react-northstar';
 
 const selectors = {
   list: `.${List.className}`,

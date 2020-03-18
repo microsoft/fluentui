@@ -1,4 +1,4 @@
-import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react';
+import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 

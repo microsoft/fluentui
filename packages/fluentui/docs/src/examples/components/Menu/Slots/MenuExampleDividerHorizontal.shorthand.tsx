@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, Menu, MenuShorthandKinds } from '@fluentui/react';
+import { Icon, Menu, MenuShorthandKinds } from '@fluentui/react-northstar';
 
 const items = [
   { key: 'editorials', content: 'Editorials' },

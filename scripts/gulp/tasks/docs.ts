@@ -57,7 +57,7 @@ task('clean:docs', () =>
 // ----------------------------------------
 
 const componentsSrc = [
-  `${paths.posix.packageSrc('react')}/components/*/[A-Z]*.tsx`,
+  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]*.tsx`,
   `${paths.posix.packageSrc('react-bindings')}/FocusZone/[A-Z]!(*.types).tsx`,
   `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`
 ];

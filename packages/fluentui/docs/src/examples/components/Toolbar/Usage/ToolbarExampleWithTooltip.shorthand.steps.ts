@@ -1,4 +1,4 @@
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
 
 const selectors = {
   item: (itemIndex: number) => `.${Toolbar.className} .${Toolbar.Item.className}:nth-child(${itemIndex})`

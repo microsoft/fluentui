@@ -11,7 +11,7 @@ import {
   ToolbarItemShorthandKinds,
   SizeValue,
   ShorthandValue
-} from '@fluentui/react';
+} from '@fluentui/react-northstar';
 
 const tooltips = {
   videoOn: 'Turn camera off',

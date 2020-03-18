@@ -1,5 +1,5 @@
 import { gridCellMultipleFocusableBehavior, gridCellWithFocusableElementBehavior } from '@fluentui/accessibility';
-import { Avatar, Button, Checkbox, Dropdown, Flex, Icon, Menu, MenuButton, Text } from '@fluentui/react';
+import { Avatar, Button, Checkbox, Dropdown, Flex, Icon, Menu, MenuButton, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 import chatProtoStyle from '.././chatPane/chatProtoStyle';
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';

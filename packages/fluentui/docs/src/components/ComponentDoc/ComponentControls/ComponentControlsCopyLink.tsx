@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Icon, Tooltip } from '@fluentui/react';
+import { Icon, Tooltip } from '@fluentui/react-northstar';
 
 export default class ComponentControlsCopyLink extends React.Component<any, any> {
   mounted: boolean;

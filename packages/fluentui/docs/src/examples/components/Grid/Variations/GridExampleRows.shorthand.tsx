@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Image } from '@fluentui/react';
+import { Grid, Image } from '@fluentui/react-northstar';
 
 const images = [
   <Image key="ade" fluid src="public/images/avatar/large/ade.jpg" />,

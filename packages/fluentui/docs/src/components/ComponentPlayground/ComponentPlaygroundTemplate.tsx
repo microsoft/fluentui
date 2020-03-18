@@ -1,5 +1,5 @@
 import { KnobInspector, unstable_KnobContext } from '@fluentui/docs-components';
-import { Grid, Header, Segment } from '@fluentui/react';
+import { Grid, Header, Segment } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 

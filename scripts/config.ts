@@ -71,7 +71,7 @@ const paths: typeof tempPaths & {
 };
 
 const isRoot = process.cwd() === envConfig.path_base;
-let packageName = isRoot ? 'react' : path.basename(process.cwd());
+let packageName = isRoot ? 'react-northstar' : path.basename(process.cwd());
 // don't use yargs here because it causes build errors in certain circumstances
 const packageArgIndex = process.argv.indexOf('--package');
 if (packageArgIndex > -1 && process.argv[packageArgIndex + 1]) {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeThemes, Provider, themes } from '@fluentui/react';
+import { mergeThemes, Provider, themes } from '@fluentui/react-northstar';
 
 const ProviderExampleShorthand = () => (
   <Provider

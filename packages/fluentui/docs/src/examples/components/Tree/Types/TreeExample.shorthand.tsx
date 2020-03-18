@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree } from '@fluentui/react';
+import { Tree } from '@fluentui/react-northstar';
 
 const items = [
   {

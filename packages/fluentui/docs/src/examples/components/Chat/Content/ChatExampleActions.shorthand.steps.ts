@@ -1,4 +1,4 @@
-import { ChatMessage } from '@fluentui/react';
+import { ChatMessage } from '@fluentui/react-northstar';
 
 const selectors = {
   message: `.${ChatMessage.className}`

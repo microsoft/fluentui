@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, Popup, Button } from '@fluentui/react';
+import { Menu, Popup, Button } from '@fluentui/react-northstar';
 
 export const selectors = {
   menuId: 'menu',

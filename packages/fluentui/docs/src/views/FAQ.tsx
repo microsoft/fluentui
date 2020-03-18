@@ -4,7 +4,7 @@ import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
 import { link, code } from '../utils/helpers';
 
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 
 const Category = props => <Header as="h2" {...props} />;
 const Question = props => <Header as="h3" {...props} />;
@@ -155,7 +155,7 @@ export default () => (
           <CodeSnippet
             mode="js"
             value={`
-              import { themes } from '@fluentui/react'
+              import { themes } from '@fluentui/react-northstar'
 
               // 💡 Your overrides should be defined before rendering any Fluent UI components
 

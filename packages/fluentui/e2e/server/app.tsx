@@ -4,7 +4,7 @@ import _ from 'lodash';
 import E2EExample from './E2EExample';
 import routes from './routes';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import { Provider, themes, Flex, Header, List } from '@fluentui/react';
+import { Provider, themes, Flex, Header, List } from '@fluentui/react-northstar';
 
 const ContentList = () => (
   <>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 import { link } from '../../../../utils/helpers';
 

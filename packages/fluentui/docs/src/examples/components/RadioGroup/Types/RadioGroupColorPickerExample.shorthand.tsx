@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, RadioGroup } from '@fluentui/react';
+import { Divider, RadioGroup } from '@fluentui/react-northstar';
 
 class RadioGroupColorPickerExample extends React.Component {
   state = { selectedValue: '' };

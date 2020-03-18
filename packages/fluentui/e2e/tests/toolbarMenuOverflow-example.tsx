@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import { Toolbar, ToolbarItem, ToolbarMenu, Ref, Button } from '@fluentui/react';
+import { Toolbar, ToolbarItem, ToolbarMenu, Ref, Button } from '@fluentui/react-northstar';
 
 export const selectors = {
   toolbarItem: ToolbarItem.className,

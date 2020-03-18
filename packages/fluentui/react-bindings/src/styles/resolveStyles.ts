@@ -54,7 +54,7 @@ const resolveStyles = (
   if (process.env.NODE_ENV !== 'production') {
     if (!performance.enableStylesCaching && performance.enableBooleanVariablesCaching) {
       throw new Error(
-        '@fluentui/react: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"'
+        '@fluentui/react-northstar: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"'
       );
     }
   }

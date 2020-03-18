@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, Tooltip } from '@fluentui/react';
+import { Menu, Tooltip } from '@fluentui/react-northstar';
 
 const itemRenderer = (MenuItem, props) => {
   const { tooltip = '', ...rest } = props;

@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Menu, Segment } from '@fluentui/react';
+import { Menu, Segment } from '@fluentui/react-northstar';
 
 import ComponentSidebarSection from './ComponentSidebarSection';
 

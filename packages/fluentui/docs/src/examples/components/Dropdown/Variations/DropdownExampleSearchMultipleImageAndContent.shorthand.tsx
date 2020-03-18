@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const inputItems = [
   {

@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react';
+import { Menu } from '@fluentui/react-northstar';
 
 const selectors = {
   menu: `.${Menu.className}`,

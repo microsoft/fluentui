@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Header, Segment, Divider, ICSSInJSStyle } from '@fluentui/react';
+import { Header, Segment, Divider, ICSSInJSStyle } from '@fluentui/react-northstar';
 import DocumentTitle from 'react-document-title';
 import ComponentExampleTitle from './ComponentDoc/ComponentExample/ComponentExampleTitle';
 import BehaviorDescription from './ComponentDoc/BehaviorDescription';

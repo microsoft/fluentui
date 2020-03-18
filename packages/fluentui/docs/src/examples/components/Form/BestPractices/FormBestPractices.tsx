@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 import { link, code } from '../../../../utils/helpers';
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 
 const doList = [
   'Provide label by using `aria-label`, or `aria-labelledby` prop.',

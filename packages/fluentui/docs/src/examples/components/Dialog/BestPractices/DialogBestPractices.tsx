@@ -1,7 +1,7 @@
 import * as React from 'react';
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 import { link, code } from '../../../../utils/helpers';
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 
 const doList = [
   <Text>Do use {link('trapFocus', '/focus-trap-zone#usage')} prop to control focus trapping behavior.</Text>,

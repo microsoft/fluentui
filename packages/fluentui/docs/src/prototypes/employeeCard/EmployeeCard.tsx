@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps, Divider, Extendable, Grid, ShorthandValue } from '@fluentui/react';
+import { Avatar, AvatarProps, Divider, Extendable, Grid, ShorthandValue } from '@fluentui/react-northstar';
 import CustomText from './CustomText';
 
 export interface EmployeeCardProps {

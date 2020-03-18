@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Ref, Segment } from '@fluentui/react';
+import { Grid, Ref, Segment } from '@fluentui/react-northstar';
 
 type RefForwardingExampleState = {
   isMounted: boolean;

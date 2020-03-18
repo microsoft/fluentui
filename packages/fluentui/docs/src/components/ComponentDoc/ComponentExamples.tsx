@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 import { exampleIndexContext, exampleSourcesContext } from '../../utils';
-import { List, Segment } from '@fluentui/react';
+import { List, Segment } from '@fluentui/react-northstar';
 import { componentAPIs } from './ComponentSourceManager';
 
 import ContributionPrompt from './ContributionPrompt';

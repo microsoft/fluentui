@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input, Flex } from '@fluentui/react';
+import { Input, Flex } from '@fluentui/react-northstar';
 
 const InputExampleDisabled = () => (
   <Flex gap="gap.smaller">

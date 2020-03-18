@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Reaction } from '@fluentui/react';
+import { Reaction } from '@fluentui/react-northstar';
 
 const ReactionGroupExampleRtl = () => (
   <Reaction.Group

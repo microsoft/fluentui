@@ -1,4 +1,4 @@
-import { ThemeInput, ChatItem, Input, Icon, Button, pxToRem } from '@fluentui/react';
+import { ThemeInput, ChatItem, Input, Icon, Button, pxToRem } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
 const customizedTheme: ThemeInput = {

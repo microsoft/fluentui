@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid } from '@fluentui/react';
+import { Grid } from '@fluentui/react-northstar';
 
 const GridExample = () => (
   <Grid columns={2}>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Chat, ChatMessageProps, Text, Flex, Attachment, AttachmentProps } from '@fluentui/react';
+import { Chat, ChatMessageProps, Text, Flex, Attachment, AttachmentProps } from '@fluentui/react-northstar';
 import threadedMessageBehavior from './threadedMessageBehavior';
 import ThreadReplies, { ThreadReplyProps } from './ThreadReplies';
 import ThreadReplyEditor from './ThreadReplyEditor';

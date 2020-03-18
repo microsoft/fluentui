@@ -1,4 +1,4 @@
-import { ShorthandValue, Tooltip, TooltipProps } from '@fluentui/react';
+import { ShorthandValue, Tooltip, TooltipProps } from '@fluentui/react-northstar';
 import * as copyToClipboard from 'copy-to-clipboard';
 import * as _ from 'lodash';
 import * as React from 'react';

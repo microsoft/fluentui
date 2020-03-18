@@ -1,4 +1,4 @@
-import { mergeThemes, callable, ComponentStyleFunctionParam, themes } from '@fluentui/react';
+import { mergeThemes, callable, ComponentStyleFunctionParam, themes } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 

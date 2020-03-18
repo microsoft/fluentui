@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Chat, ChatItemProps, ShorthandCollection, Avatar, Divider, Provider } from '@fluentui/react';
+import { Chat, ChatItemProps, ShorthandCollection, Avatar, Divider, Provider } from '@fluentui/react-northstar';
 import GroupControlMessages from './GroupControlMessages';
 import ControlMessage from './ControlMessage';
 import { groupControlMessageItems, mainControlMessage } from './mockData';

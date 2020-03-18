@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react';
+import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react-northstar';
 import { useSelectKnob } from '@fluentui/docs-components';
 
 const TooltipExamplePosition = () => {

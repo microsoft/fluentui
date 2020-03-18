@@ -1,4 +1,4 @@
-import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react';
+import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react-northstar';
 import * as React from 'react';
 import cx from 'classnames';
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react';
+import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react-northstar';
 
 export const selectors = {
   beforeToolbarId: 'before',

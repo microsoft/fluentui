@@ -29,7 +29,7 @@ const makeConfig = (srcPath: string, name: string): webpack.Configuration => ({
   mode: 'production',
   name: 'client',
   target: 'web',
-  entry: paths.packageDist('react', path.join('es', srcPath)),
+  entry: paths.packageDist('react-northstar', path.join('es', srcPath)),
   output: {
     filename: `${name}.js`,
     path: paths.base('stats'),
@@ -77,11 +77,13 @@ export default [
   makeConfig('utils/index', 'bundle-utils'),
 
   // individual components
-  ...fs.readdirSync(paths.packageSrc('react', 'components')).map(dir => makeConfig(`components/${dir}/${dir}`, `component-${dir}`)),
+  ...fs
+    .readdirSync(paths.packageSrc('react-northstar', 'components'))
+    .map(dir => makeConfig(`components/${dir}/${dir}`, `component-${dir}`)),
 
   // individual themes
   ...fs
-    .readdirSync(paths.packageSrc('react', 'themes'))
+    .readdirSync(paths.packageSrc('react-northstar', 'themes'))
     .filter(dir => !/.*\.\w+$/.test(dir))
     .map(dir => makeConfig(`themes/${dir}`, `theme-${dir}`))
 ];

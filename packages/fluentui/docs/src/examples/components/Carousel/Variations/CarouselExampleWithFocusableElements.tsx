@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react';
+import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-northstar';
 
 const imageAltTags = {
   ade: 'Portrait of Ade',

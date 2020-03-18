@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Status } from '@fluentui/react';
+import { Status } from '@fluentui/react-northstar';
 
 const StatusColorExampleShorthand = () => (
   <div>

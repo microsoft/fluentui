@@ -1,5 +1,5 @@
 {
-  "name": "@fluentui/react",
+  "name": "@fluentui/react-northstar",
   "description": "A themable React component library.",
   "version": "0.46.0",
   "author": "Levi Thomason <me@levithomason.com>",
@@ -45,7 +45,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react",
+  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-northstar",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",

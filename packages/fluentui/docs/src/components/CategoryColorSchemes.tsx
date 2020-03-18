@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { createComponent, ComponentSlotStylesInput, ThemePrepared, Grid, Header, HeaderProps, ShorthandCollection } from '@fluentui/react';
+import {
+  createComponent,
+  ComponentSlotStylesInput,
+  ThemePrepared,
+  Grid,
+  Header,
+  HeaderProps,
+  ShorthandCollection
+} from '@fluentui/react-northstar';
 
 import ColorBox from './ColorBox';
 

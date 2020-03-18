@@ -1,6 +1,6 @@
 import { MDXProvider } from '@mdx-js/react';
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { RouteProps } from 'react-router-dom';
 

@@ -1,5 +1,5 @@
 import { callable } from '@fluentui/styles';
-import { ComponentSlotStylesPrepared, Renderer } from '@fluentui/react';
+import { ComponentSlotStylesPrepared, Renderer } from '@fluentui/react-northstar';
 import flat from 'flat';
 import * as _ from 'lodash';
 import * as React from 'react';

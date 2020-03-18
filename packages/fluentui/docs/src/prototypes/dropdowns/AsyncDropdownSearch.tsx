@@ -1,5 +1,5 @@
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Dropdown, DropdownProps, Flex, Label, Loader } from '@fluentui/react';
+import { Dropdown, DropdownProps, Flex, Label, Loader } from '@fluentui/react-northstar';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';

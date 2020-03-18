@@ -1,4 +1,4 @@
-import { Button, Dialog, Popup } from '@fluentui/react';
+import { Button, Dialog, Popup } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';

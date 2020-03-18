@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
-import { Accordion, Segment } from '@fluentui/react';
+import { Accordion, Segment } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
 import { ComponentPerfChart } from './ComponentPerfChart';
 

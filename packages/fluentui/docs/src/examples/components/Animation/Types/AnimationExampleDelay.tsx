@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animation, Icon, Provider } from '@fluentui/react';
+import { Animation, Icon, Provider } from '@fluentui/react-northstar';
 
 const spinner = {
   keyframe: {

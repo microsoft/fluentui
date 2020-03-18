@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Flex, Icon, constants } from '@fluentui/react';
+import { Flex, Icon, constants } from '@fluentui/react-northstar';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {

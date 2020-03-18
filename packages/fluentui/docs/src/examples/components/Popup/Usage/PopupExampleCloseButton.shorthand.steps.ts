@@ -1,4 +1,4 @@
-import { Dropdown, Button } from '@fluentui/react';
+import { Dropdown, Button } from '@fluentui/react-northstar';
 
 const selectors = {
   toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,

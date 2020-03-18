@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Popup, Segment } from '@fluentui/react';
+import { Button, Popup, Segment } from '@fluentui/react-northstar';
 
 class AsyncDataLoader extends React.Component<any, any> {
   state = {

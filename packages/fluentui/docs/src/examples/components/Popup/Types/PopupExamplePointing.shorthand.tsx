@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Grid, Popup } from '@fluentui/react';
+import { Button, Grid, Popup } from '@fluentui/react-northstar';
 
 const PopupWithButton = props => (
   <Popup

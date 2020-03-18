@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Input, Text } from '@fluentui/react';
+import { Grid, Input, Text } from '@fluentui/react-northstar';
 
 // This object contains properties that will be applied to the input
 const propsForInput = { placeholder: 'Search...', id: 'inputId', role: 'checkbox' };

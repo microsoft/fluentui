@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FontWeightProperty } from 'csstype';
-import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react';
+import { Dropdown, DropdownItemProps, Provider } from '@fluentui/react-northstar';
 
 import { MentionsContainerProps } from './MentionsEditor';
 

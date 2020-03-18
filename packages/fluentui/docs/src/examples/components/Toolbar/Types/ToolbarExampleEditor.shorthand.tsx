@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Input, Button, Form } from '@fluentui/react';
+import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
 const fields = [

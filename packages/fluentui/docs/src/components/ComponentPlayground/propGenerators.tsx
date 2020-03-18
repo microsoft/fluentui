@@ -1,5 +1,5 @@
 import { useBooleanKnob, useSelectKnob, useStringKnob } from '@fluentui/docs-components';
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as faker from 'faker';
 import * as React from 'react';

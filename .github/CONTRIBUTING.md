@@ -209,7 +209,7 @@ yarn syncpack format
 ### Add a new dependency
 
 Please always use [`lerna add`][16] to manage all dependencies including internal packages. The command bellow will add
-`@fluentui/react-proptypes` as production dependency to the `@fluentui/react` package.
+`@fluentui/react-proptypes` as production dependency to the `@fluentui/react-northstar` package.
 
 ```yarn
 lerna add @fluentui/react-proptypes packages/react

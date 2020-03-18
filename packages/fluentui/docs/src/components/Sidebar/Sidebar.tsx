@@ -12,7 +12,7 @@ import {
   Segment,
   Text,
   ShorthandValue
-} from '@fluentui/react';
+} from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
@@ -24,7 +24,7 @@ import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
-const pkg = require('@fluentui/react/package.json');
+const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 

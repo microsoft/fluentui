@@ -61,7 +61,7 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
       extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
         ...lernaAliases(),
-        src: paths.packageSrc('react'),
+        src: paths.packageSrc('react-northstar'),
         docs: paths.base('docs')
       }
     }

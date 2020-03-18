@@ -1,5 +1,5 @@
 import { UseKnobOptions } from '@fluentui/docs-components';
-import { ThemePrepared } from '@fluentui/react';
+import { ThemePrepared } from '@fluentui/react-northstar';
 
 export type ExampleSource = {
   js: string;

@@ -5,8 +5,8 @@
     "outDir": "dist/dts",
     "paths": {
       "docs/*": ["packages/fluentui/docs/*"],
-      "src/*": ["packages/fluentui/react/src/*"],
-      "test/*": ["packages/fluentui/react/test/*"]
+      "src/*": ["packages/fluentui/react-northstar/src/*"],
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
     }
   },
   "include": ["src", "test"],

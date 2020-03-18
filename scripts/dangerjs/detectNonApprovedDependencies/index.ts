@@ -12,7 +12,7 @@ const { paths } = config;
 
 /**
  * This check uses the following logic:
- * - request runtime dependencies of @fluentui/react package (by crawling the code, starting from index file),
+ * - request runtime dependencies of @fluentui/react-northstar package (by crawling the code, starting from index file),
  * - for each of the runtime dependencies:
  *    - get corresponding set of version restrictions (by analyzing related package.json files),
  *    - get list of approved dependency's versions,
@@ -22,8 +22,8 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
   const { fail, markdown } = dangerJS;
   const allFailedVersionConstraints: FailedConstraintsExplanation[] = [];
 
-  const dependencyPackageIds = getRuntimeDependencies('react');
-  const versionConstraints = await getVersionConstrains(paths.packages('react', 'package.json'));
+  const dependencyPackageIds = getRuntimeDependencies('react-northstar');
+  const versionConstraints = await getVersionConstrains(paths.packages('react-northstar', 'package.json'));
 
   dependencyPackageIds.forEach(packageId => {
     const failedPackageVersionConstraints = getFailedPackageVersionConstraints(

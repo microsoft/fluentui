@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useRangeKnob } from '@fluentui/docs-components';
-import { TextArea } from '@fluentui/react';
+import { TextArea } from '@fluentui/react-northstar';
 
 const TextAreaExampleHeight = () => {
   const [height] = useRangeKnob({

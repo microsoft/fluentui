@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react';
+import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react-northstar';
 
 const IconExampleColor = () => (
   <Grid

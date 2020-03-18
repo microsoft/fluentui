@@ -1,4 +1,4 @@
-import { Image, Button } from '@fluentui/react';
+import { Image, Button } from '@fluentui/react-northstar';
 
 import * as React from 'react';
 

@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react';
+import { Menu } from '@fluentui/react-northstar';
 import getScreenerSteps from '../commonScreenerSteps';
 
 const selectors = {
