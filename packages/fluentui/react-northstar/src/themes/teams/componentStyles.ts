@@ -116,3 +116,10 @@ export { default as CarouselNavigationItem } from './components/Carousel/carouse
 export { default as Table } from './components/Table/tableStyles';
 export { default as TableRow } from './components/Table/tableRowStyles';
 export { default as TableCell } from './components/Table/tableCellStyles';
+
+export { default as Card } from './components/Card/cardStyles';
+export { default as CardHeader } from './components/Card/cardHeaderStyles';
+export { default as CardBody } from './components/Card/cardBodyStyles';
+export { default as CardFooter } from './components/Card/cardFooterStyles';
+export { default as CardPreview } from './components/Card/cardPreviewStyles';
+export { default as CardTopControls } from './components/Card/cardTopControlsStyles';

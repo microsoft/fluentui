@@ -71,6 +71,7 @@ import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
 import { TableProps } from '../../components/Table/Table';
 import { TableRowProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
+import { CardStylesProps } from '../../components/Card/Card';
 
 export type TeamsThemeStylesProps = {
   Accordion?: AccordionProps;
@@ -137,6 +138,7 @@ export type TeamsThemeStylesProps = {
   Table?: TableProps;
   TableRow?: TableRowProps;
   TableCell?: TableCellStylesProps;
+  Card?: CardStylesProps;
 };
 
 export type TeamsContextualColors = {

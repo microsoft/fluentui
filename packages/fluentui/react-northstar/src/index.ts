@@ -235,6 +235,8 @@ export { default as TableRow } from './components/Table/TableRow';
 export * from './components/Table/TableCell';
 export { default as TableCell } from './components/Table/TableCell';
 
+export * from './components/Card/Card';
+export { default as Card } from './components/Card/Card';
 //
 // Utilities
 //
