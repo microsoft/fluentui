@@ -1,11 +1,9 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import Checkbox, { CheckboxProps } from '../../../../components/Checkbox/Checkbox';
+import Checkbox, { CheckboxStylesProps } from '../../../../components/Checkbox/Checkbox';
 import { CheckboxVariables } from './checkboxVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import checkboxIndicatorUrl from './checkboxIndicatorUrl';
 import { pxToRem } from '../../../../utils';
-
-export type CheckboxStylesProps = Pick<CheckboxProps, 'checked' | 'disabled' | 'labelPosition' | 'toggle'>;
 
 const commonToggleBeforeStyles = v => ({
   content: "' '",

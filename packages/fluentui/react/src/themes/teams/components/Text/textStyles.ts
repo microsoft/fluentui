@@ -1,24 +1,8 @@
 import { ComponentStyleFunctionParam, ICSSInJSStyle } from '@fluentui/styles';
 import { TeamsTextVariables } from './textVariables';
-import { TextProps } from '../../../../components/Text/Text';
+import { TextStylesProps } from '../../../../components/Text/Text';
 import { getColorSchemeKey } from '../../colors';
 import translateAlignProp from '../../../../styles/translateAlignProp';
-
-export type TextStylesProps = Pick<
-  TextProps,
-  | 'atMention'
-  | 'color'
-  | 'important'
-  | 'timestamp'
-  | 'truncated'
-  | 'disabled'
-  | 'error'
-  | 'success'
-  | 'temporary'
-  | 'align'
-  | 'weight'
-  | 'size'
->;
 
 export default {
   root: ({ props: p, variables: v }: ComponentStyleFunctionParam<TextStylesProps, TeamsTextVariables>): ICSSInJSStyle => {

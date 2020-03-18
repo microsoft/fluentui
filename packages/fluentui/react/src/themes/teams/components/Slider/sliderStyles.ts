@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { SliderVariables } from './sliderVariables';
-import Slider, { SliderProps } from '../../../../components/Slider/Slider';
+import Slider, { SliderStylesProps } from '../../../../components/Slider/Slider';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
-
-export type SliderStylesProps = Pick<SliderProps, 'fluid' | 'disabled' | 'vertical'>;
 
 const selectors = {
   WEBKIT_THUMB: '::-webkit-slider-thumb',
@@ -14,7 +12,7 @@ const selectors = {
   MS_THUMB: '::-ms-thumb'
 };
 
-const getCommonSlotStyles = (p: SliderProps, v: SliderVariables): ICSSInJSStyle => ({
+const getCommonSlotStyles = (p: SliderStylesProps, v: SliderVariables): ICSSInJSStyle => ({
   cursor: 'pointer',
   pointerEvents: 'none',
   position: 'absolute',
@@ -26,7 +24,7 @@ const getCommonSlotStyles = (p: SliderProps, v: SliderVariables): ICSSInJSStyle 
 // this selector is used to identify the thumb slot from a previous sibling
 const thumbFromPreviousSiblingSelector = `&+ .${Slider.slotClassNames.thumb}`;
 
-const getFluidStyles = (p: SliderProps) => p.fluid && !p.vertical && { width: '100%' };
+const getFluidStyles = (p: SliderStylesProps) => p.fluid && !p.vertical && { width: '100%' };
 
 const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
