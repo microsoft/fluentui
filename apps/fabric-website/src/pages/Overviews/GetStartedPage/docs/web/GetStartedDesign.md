@@ -16,4 +16,4 @@ Our Fluent UI design toolkits provide styles, controls and layout templates that
 
 ---
 
-Usage of Fluent UI assets, such as fonts and icons, is subject to the [assets license agreement](https://aka.ms/fabric-assets-license).
+Usage of Fluent UI assets, such as fonts and icons, is subject to the [assets license agreement](https://aka.ms/fluentui-assets-license).
