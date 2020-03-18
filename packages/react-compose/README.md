@@ -1,8 +1,8 @@
 # @fluentui/react-compose
 
-**Composition functionality for in [Fluent UI](https://aka.ms/fluent-ui/)**
+**Composition functionality for [Fluent UI](https://aka.ms/fluent-ui/)**
 
-This functionality is in the experimental stage and **should never be used in product** as APIs might change before final release.
+This functionality is in the experimental stage and **should never be used in production** as APIs might change before final release.
 
 ### Usage
 
@@ -29,4 +29,4 @@ const PrimaryButton = compose(Button, {
 - `displayName` modifies a React's `displayName` for component, it will be also used as a selector for styles overrides in your theme
 - `mapPropsToStylesProps` passes additional design terms to styles functions
 - `handledProps` is an array of props that will not be bypassed to the component's root slot
-- `overrideStyles` indicates should the component use only its styles or will merge with parent's
+- `overrideStyles` indicates should the component will use only its own styles or will merge those with parent's
