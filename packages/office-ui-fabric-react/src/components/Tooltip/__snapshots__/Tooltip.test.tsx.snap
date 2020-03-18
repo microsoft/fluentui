@@ -118,6 +118,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           }
         >
           <div
+            onMouseDown={[Function]}
             role="tooltip"
           >
             <p />

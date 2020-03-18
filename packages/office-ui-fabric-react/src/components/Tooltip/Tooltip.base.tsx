@@ -45,6 +45,10 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       maxWidth: maxWidth!
     });
 
+    const onMouseDown = (ev: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      ev.preventDefault();
+    };
+
     return (
       <Callout
         target={targetElement}
@@ -58,6 +62,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
           className={this._classNames.content}
           id={id}
           role="tooltip"
+          onMouseDown={onMouseDown}
           onMouseEnter={this.props.onMouseEnter}
           onMouseLeave={this.props.onMouseLeave}
         >
