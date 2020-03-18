@@ -1,6 +1,6 @@
 # @fluentui/react-compose
 
-**Composition functionality for in [Fluent UI](https://aka.ms/fluent-ui/)**
+**Composition functionality for [Fluent UI](https://aka.ms/fluent-ui/)**
 
 This functionality is in the experimental stage and **should never be used in production** as APIs might change before final release.
 
