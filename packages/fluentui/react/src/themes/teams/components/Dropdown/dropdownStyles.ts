@@ -73,20 +73,27 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     borderRadius: v.containerBorderRadius,
     ...(p.open && p.position === 'above' && { borderRadius: v.openAboveContainerBorderRadius }),
     ...(p.open && p.position === 'below' && { borderRadius: v.openBelowContainerBorderRadius }),
-    ...(!p.disabled && {
-      ':hover': {
-        backgroundColor: v.backgroundColorHover,
-        borderColor: v.borderColorHover,
+    ':hover': {
+      backgroundColor: v.backgroundColorHover,
+      borderColor: v.borderColorHover,
 
-        ...(p.open && {
-          borderColor: v.openBorderColorHover
-        }),
+      ...(p.open && {
+        borderColor: v.openBorderColorHover
+      }),
 
-        [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-          color: v.triggerButtonColorHover
-        }
+      ...(p.disabled && {
+        backgroundColor: v.disabledBackgroundColorHover,
+        borderColor: v.disabledBorderColorHover
+      }),
+
+      [`& .${Dropdown.slotClassNames.triggerButton}`]: {
+        color: v.triggerButtonColorHover,
+
+        ...(p.disabled && {
+          color: v.disabledTriggerColorHover
+        })
       }
-    }),
+    },
     ...(p.focused && {
       ...(p.search && { borderBottomColor: v.borderColorFocus }),
       ...(!p.search && !p.open && p.isFromKeyboard && getBorderFocusStyles({ variables: siteVariables })[':focus-visible'])
