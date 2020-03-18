@@ -223,7 +223,8 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
     const groupShowAllProps: IGroupShowAllProps = { ...showAllProps, ...dividerProps };
     const groupFooterProps: IGroupFooterProps = { ...footerProps, ...dividerProps };
 
-    const isDraggable: boolean = !!this.props.dragDropHelper && this._getGroupDragDropOptions().canDrag!(group);
+    const isDraggable: boolean =
+      !!this.props.dragDropHelper && this._getGroupDragDropOptions().canDrag!(group) && !!this.props.dragDropEvents!.canDragGroups;
 
     return (
       <div
@@ -408,14 +409,12 @@ export class GroupedListSection extends React.Component<IGroupedListSectionProps
    */
   private _getGroupDragDropOptions = (): IDragDropOptions => {
     const { group, groupIndex, dragDropEvents, eventsToRegister } = this.props;
-    const canDrag = dragDropEvents!.canDragGroups ? () => dragDropEvents!.canDragGroups : dragDropEvents!.canDrag || (() => false);
-
     const options = {
       eventMap: eventsToRegister,
       selectionIndex: -1,
       context: { data: group, index: groupIndex, isGroup: true },
       updateDropState: this._updateDroppingState,
-      canDrag: canDrag,
+      canDrag: dragDropEvents!.canDrag,
       canDrop: dragDropEvents!.canDrop,
       onDrop: dragDropEvents!.onDrop,
       onDragStart: dragDropEvents!.onDragStart,
