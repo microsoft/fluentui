@@ -1,4 +1,4 @@
-import { Text } from '@fluentui/react-future';
+import { Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const TextMinimalPerf = () => <Text />;

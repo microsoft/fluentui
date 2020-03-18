@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Header, Portal } from '@fluentui/react-future';
+import { Button, Header, Portal } from '@fluentui/react-northstar';
 
 class PortalExampleFocusTrapped extends React.Component {
   state = { open: false };

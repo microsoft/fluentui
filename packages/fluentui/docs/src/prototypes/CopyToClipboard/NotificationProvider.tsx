@@ -1,4 +1,4 @@
-import { Portal, Tooltip, createComponent, TooltipProps } from '@fluentui/react-future';
+import { Portal, Tooltip, createComponent, TooltipProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 type NotificationProps = {

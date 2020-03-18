@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Button } from '@fluentui/react-future';
+import { Form, Button } from '@fluentui/react-northstar';
 
 const FormExample = () => (
   <Form

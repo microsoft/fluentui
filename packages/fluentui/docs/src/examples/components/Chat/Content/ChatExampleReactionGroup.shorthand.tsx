@@ -1,4 +1,4 @@
-import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react-future';
+import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const reactions: ShorthandCollection<ReactionProps> = [

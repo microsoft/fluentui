@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react-future';
+import { Dropdown } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const inputItems = [

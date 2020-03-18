@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box } from '@fluentui/react-future';
+import { Box } from '@fluentui/react-northstar';
 
 const BoxExample = () => (
   <Box

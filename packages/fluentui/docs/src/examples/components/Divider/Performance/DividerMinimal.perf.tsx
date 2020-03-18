@@ -1,4 +1,4 @@
-import { Divider } from '@fluentui/react-future';
+import { Divider } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DividerMinimalPerf = () => <Divider />;

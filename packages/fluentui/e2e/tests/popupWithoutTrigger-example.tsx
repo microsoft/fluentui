@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popup, Button } from '@fluentui/react-future';
+import { Popup, Button } from '@fluentui/react-northstar';
 
 export const selectors = {
   popupContent: Popup.slotClassNames.content,

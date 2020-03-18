@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, Layout } from '@fluentui/react-future';
+import { Image, Layout } from '@fluentui/react-northstar';
 
 const ImageExampleFluent = () => (
   <div>

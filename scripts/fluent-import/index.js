@@ -122,8 +122,8 @@ function fixTsConfigs(outputPath) {
   const mapping = {
     '@fluentui/*': ['packages/fluentui/*/src/index'],
     'docs/*': ['packages/fluentui/docs/*'],
-    'src/*': ['packages/fluentui/react-future/src/*'],
-    'test/*': ['packages/fluentui/react-future/test/*']
+    'src/*': ['packages/fluentui/react-northstar/src/*'],
+    'test/*': ['packages/fluentui/react-northstar/test/*']
   };
 
   for (let file of files) {
@@ -401,8 +401,8 @@ function fixDocs(outputPath) {
     let contents = fs.readFileSync(fullPath, 'utf-8');
 
     if (contents.includes('packages/react/package.json')) {
-      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react-future/package.json`);
-      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react-future/package.json'");
+      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react-northstar/package.json`);
+      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react-northstar/package.json'");
     }
 
     fs.writeFileSync(fullPath, contents);

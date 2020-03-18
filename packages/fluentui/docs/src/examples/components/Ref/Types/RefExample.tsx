@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Grid, Ref, Segment } from '@fluentui/react-future';
+import { Button, Flex, Grid, Ref, Segment } from '@fluentui/react-northstar';
 
 type RefExampleState = {
   isMounted: boolean;

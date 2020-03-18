@@ -13,7 +13,7 @@ import {
   Popup,
   Provider,
   themes
-} from '@fluentui/react-future';
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 
 class App extends React.Component {

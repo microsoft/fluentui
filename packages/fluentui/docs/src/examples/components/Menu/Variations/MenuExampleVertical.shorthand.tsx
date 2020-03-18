@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu } from '@fluentui/react-future';
+import { Menu } from '@fluentui/react-northstar';
 
 const items = [
   {

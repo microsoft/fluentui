@@ -1,4 +1,4 @@
-import { TextArea } from '@fluentui/react-future';
+import { TextArea } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const TextAreaMinimalPerf = () => <TextArea />;

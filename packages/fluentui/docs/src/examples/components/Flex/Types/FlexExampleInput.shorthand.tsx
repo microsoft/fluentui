@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Input, Button, Label } from '@fluentui/react-future';
+import { Flex, Input, Button, Label } from '@fluentui/react-northstar';
 
 const FlexExampleInput = () => (
   <Flex gap="gap.medium" debug>

@@ -1,4 +1,4 @@
-import { Accessibility } from '@fluentui/react-future';
+import { Accessibility } from '@fluentui/react-northstar';
 import * as keyboardKey from 'keyboard-key';
 
 const repliesButtonBehavior: Accessibility = () => ({

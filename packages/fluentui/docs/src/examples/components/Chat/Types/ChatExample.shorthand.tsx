@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react-future';
+import { Avatar, Chat, ChatItemProps, Divider, ShorthandCollection } from '@fluentui/react-northstar';
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',

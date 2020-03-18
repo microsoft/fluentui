@@ -1,4 +1,4 @@
-import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-future';
+import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-northstar';
 import classNames from './classNames';
 
 const threadChatBehavior: Accessibility<ChatBehaviorProps> = props => {

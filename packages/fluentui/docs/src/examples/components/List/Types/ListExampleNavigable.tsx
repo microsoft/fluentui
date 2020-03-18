@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Image } from '@fluentui/react-future';
+import { List, Image } from '@fluentui/react-northstar';
 
 const ListExampleNavigable = () => (
   <List navigable>

@@ -1,4 +1,4 @@
-import { Button, ChatMessage, ChatItem } from '@fluentui/react-future';
+import { Button, ChatMessage, ChatItem } from '@fluentui/react-northstar';
 
 const classNames = {
   threadedMessage: {

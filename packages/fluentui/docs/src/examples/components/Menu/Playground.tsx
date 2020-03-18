@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { Menu } from '@fluentui/react-future';
+import { Menu } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import useAccessibilityKnob from '../../../components/ComponentDoc/useAccessibilityKnob';

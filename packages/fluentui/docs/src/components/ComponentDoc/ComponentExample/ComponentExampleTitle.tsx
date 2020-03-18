@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header, Text } from '@fluentui/react-future';
+import { Header, Text } from '@fluentui/react-northstar';
 
 const titleStyle = {
   margin: 0

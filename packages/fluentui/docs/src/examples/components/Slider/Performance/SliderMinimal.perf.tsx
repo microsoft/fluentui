@@ -1,4 +1,4 @@
-import { Slider } from '@fluentui/react-future';
+import { Slider } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const SliderMinimalPerf = () => <Slider />;

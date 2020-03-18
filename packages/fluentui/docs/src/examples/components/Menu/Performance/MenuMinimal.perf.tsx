@@ -1,4 +1,4 @@
-import { Menu } from '@fluentui/react-future';
+import { Menu } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const MenuMinimalPerf = () => <Menu />;

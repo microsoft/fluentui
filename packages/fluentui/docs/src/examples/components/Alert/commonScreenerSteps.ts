@@ -1,4 +1,4 @@
-import { Alert } from '@fluentui/react-future';
+import { Alert } from '@fluentui/react-northstar';
 
 const selectors = {
   dismissAction: `.${Alert.slotClassNames.dismissAction}`

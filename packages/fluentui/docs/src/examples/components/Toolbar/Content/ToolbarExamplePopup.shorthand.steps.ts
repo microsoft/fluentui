@@ -1,4 +1,4 @@
-import { ToolbarItem } from '@fluentui/react-future';
+import { ToolbarItem } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],

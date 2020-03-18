@@ -1,7 +1,7 @@
 import * as React from 'react';
 import GridImagePicker from './GridImagePicker/GridImagePicker';
 import { imageNames, getItemsData } from './dataMocks';
-import { Button, Popup, dialogBehavior } from '@fluentui/react-future';
+import { Button, Popup, dialogBehavior } from '@fluentui/react-northstar';
 
 const EmojiPicker = () => (
   <Popup

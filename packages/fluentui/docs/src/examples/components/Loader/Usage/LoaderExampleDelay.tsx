@@ -1,4 +1,4 @@
-import { Loader } from '@fluentui/react-future';
+import { Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
 

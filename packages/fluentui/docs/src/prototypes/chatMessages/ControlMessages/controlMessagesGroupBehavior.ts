@@ -1,4 +1,4 @@
-import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-future';
+import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-northstar';
 
 const controlMessagesGroupBehavior: Accessibility<ChatBehaviorProps> = props => {
   const behaviorData = chatBehavior(props);

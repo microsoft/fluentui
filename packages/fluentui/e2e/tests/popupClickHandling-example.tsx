@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Popup } from '@fluentui/react-future';
+import { Button, Popup } from '@fluentui/react-northstar';
 
 export const selectors = {
   triggerButtonId: 'trigger',

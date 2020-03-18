@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Divider, Flex, Header, Label, Portal } from '@fluentui/react-future';
+import { Button, Divider, Flex, Header, Label, Portal } from '@fluentui/react-northstar';
 
 class PortalExamplePortal extends React.Component {
   state = { log: [], logCount: 0 };

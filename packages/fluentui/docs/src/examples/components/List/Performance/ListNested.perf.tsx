@@ -1,4 +1,4 @@
-import { List } from '@fluentui/react-future';
+import { List } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const items = [

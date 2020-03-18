@@ -8,7 +8,7 @@ import {
   Header,
   HeaderProps,
   ShorthandCollection
-} from '@fluentui/react-future';
+} from '@fluentui/react-northstar';
 
 import ColorBox from './ColorBox';
 

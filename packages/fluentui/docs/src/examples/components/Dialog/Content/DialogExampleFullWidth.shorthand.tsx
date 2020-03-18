@@ -1,4 +1,4 @@
-import { Button, Dialog, Input } from '@fluentui/react-future';
+import { Button, Dialog, Input } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DialogExampleFullWidth: React.FC = () => (

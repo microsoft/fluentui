@@ -1,5 +1,5 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { List, Image } from '@fluentui/react-future';
+import { List, Image } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ListExample = () => {

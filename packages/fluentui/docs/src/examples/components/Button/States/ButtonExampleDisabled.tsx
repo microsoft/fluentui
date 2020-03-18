@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Icon } from '@fluentui/react-future';
+import { Button, Flex, Icon } from '@fluentui/react-northstar';
 
 const ButtonExampleDisabled = () => (
   <Flex column gap="gap.smaller">

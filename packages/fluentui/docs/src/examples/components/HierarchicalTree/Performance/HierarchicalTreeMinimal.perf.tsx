@@ -1,4 +1,4 @@
-import { HierarchicalTree } from '@fluentui/react-future';
+import { HierarchicalTree } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const HierarchicalTreeMinimalPerf = () => <HierarchicalTree />;

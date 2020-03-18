@@ -1,4 +1,4 @@
-import { Icon } from '@fluentui/react-future';
+import { Icon } from '@fluentui/react-northstar';
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 

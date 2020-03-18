@@ -1,4 +1,4 @@
-import { Embed } from '@fluentui/react-future';
+import { Embed } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const EmbedMinimalPerf = () => <Embed />;

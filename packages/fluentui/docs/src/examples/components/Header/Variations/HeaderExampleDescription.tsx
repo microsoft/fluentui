@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Header } from '@fluentui/react-future';
+import { Header } from '@fluentui/react-northstar';
 
 const HeaderExampleDescription = () => (
   <Header as="h2">

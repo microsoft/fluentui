@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Input } from '@fluentui/react-future';
+import { Alert, Input } from '@fluentui/react-northstar';
 
 const AlertExampleShorthand = () => (
   <>

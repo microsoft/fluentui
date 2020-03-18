@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon, HierarchicalTree } from '@fluentui/react-future';
+import { Icon, HierarchicalTree } from '@fluentui/react-northstar';
 
 const items = [
   {

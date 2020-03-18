@@ -1,4 +1,4 @@
-import { Segment } from '@fluentui/react-future';
+import { Segment } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const SegmentMinimalPerf = () => <Segment />;

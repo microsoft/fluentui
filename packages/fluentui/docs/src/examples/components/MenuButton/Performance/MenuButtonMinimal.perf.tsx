@@ -1,4 +1,4 @@
-import { MenuButton } from '@fluentui/react-future';
+import { MenuButton } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const MenuButtonMinimalPerf = () => <MenuButton />;

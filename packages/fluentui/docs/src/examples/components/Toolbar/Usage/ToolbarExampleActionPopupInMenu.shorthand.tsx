@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Button, Form } from '@fluentui/react-future';
+import { Toolbar, Button, Form } from '@fluentui/react-northstar';
 
 const CustomPopup = ({ onConfirm }) => {
   return (

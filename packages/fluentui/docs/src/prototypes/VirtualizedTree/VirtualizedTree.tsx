@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItemProps } from '@fluentui/react-future';
+import { Tree, TreeItemProps } from '@fluentui/react-northstar';
 import { CellMeasurer, CellMeasurerCache, List as ReactVirtualizedList } from 'react-virtualized';
 import getItems from './itemsGenerator';
 

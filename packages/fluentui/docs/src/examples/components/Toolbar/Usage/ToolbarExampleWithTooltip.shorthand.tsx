@@ -7,7 +7,7 @@ import {
   ToolbarItemProps,
   ToolbarDividerProps,
   ToolbarMenuItemProps
-} from '@fluentui/react-future';
+} from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
 type IntermediateToolbarItem = (ToolbarItemProps | ToolbarMenuItemProps | ToolbarDividerProps) & {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react-future';
+import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react-northstar';
 
 const colorChanger = {
   keyframe: {

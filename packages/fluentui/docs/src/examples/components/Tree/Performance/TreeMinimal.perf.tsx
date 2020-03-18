@@ -1,4 +1,4 @@
-import { Tree } from '@fluentui/react-future';
+import { Tree } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const TreeMinimalPerf = () => <Tree />;

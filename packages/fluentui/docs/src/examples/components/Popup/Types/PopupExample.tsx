@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Popup } from '@fluentui/react-future';
+import { Button, Popup } from '@fluentui/react-northstar';
 
 const PopupExample = () => (
   <Popup content="Hello from popup!">

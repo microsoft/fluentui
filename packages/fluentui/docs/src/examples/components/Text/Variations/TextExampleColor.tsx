@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Text, ProviderConsumer } from '@fluentui/react-future';
+import { Text, ProviderConsumer } from '@fluentui/react-northstar';
 
 const TextExampleColor = () => (
   <ProviderConsumer

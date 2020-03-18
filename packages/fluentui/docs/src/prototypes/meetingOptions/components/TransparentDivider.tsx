@@ -1,4 +1,4 @@
-import { Divider } from '@fluentui/react-future';
+import { Divider } from '@fluentui/react-northstar';
 
 export default props => {
   return Divider.create(props, {

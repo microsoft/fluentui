@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Provider } from '@fluentui/react-future';
+import { Button, Flex, Provider } from '@fluentui/react-northstar';
 
 const ButtonUsageExampleShorthand = () => (
   <div>

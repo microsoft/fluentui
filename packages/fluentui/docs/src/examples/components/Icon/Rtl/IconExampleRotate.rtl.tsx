@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Icon } from '@fluentui/react-future';
+import { Flex, Icon } from '@fluentui/react-northstar';
 
 const IconExampleRotateRtl = () => (
   <Flex gap="gap.smaller">

@@ -1,4 +1,4 @@
-import { Header } from '@fluentui/react-future';
+import { Header } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const HeaderMinimalPerf = () => <Header />;

@@ -1,4 +1,4 @@
-import { Input, InputProps, Popup } from '@fluentui/react-future';
+import { Input, InputProps, Popup } from '@fluentui/react-northstar';
 import * as React from 'react';
 import ComponentExampleColorPicker from './ComponentExampleColorPicker';
 

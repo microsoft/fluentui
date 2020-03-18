@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Segment, Header, Icon } from '@fluentui/react-future';
+import { Grid, Segment, Header, Icon } from '@fluentui/react-northstar';
 
 const PageNotFound = () => (
   <Grid>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert } from '@fluentui/react-future';
+import { Alert } from '@fluentui/react-northstar';
 
 const AlertExampleDismissActionRtl = () => (
   <Alert
