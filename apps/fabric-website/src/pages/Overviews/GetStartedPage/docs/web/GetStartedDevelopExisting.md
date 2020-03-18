@@ -1,6 +1,6 @@
 Getting started developing with Fluent UI React is simple!
 
-To quickly try out Fluent UI React, you can use our "Hello World" templates on [CodePen](https://aka.ms/fluentuipen) or [CodeSandbox](https://aka.ms/fluentuisandbox).
+To quickly try out Fluent UI React, you can use our "Hello World" templates on [CodePen](https://aka.ms/fluentpen) or [CodeSandbox](https://aka.ms/fluentsandbox).
 
 You can also add Fluent UI React to an existing project or use one of our starter kits to create a new project.
 

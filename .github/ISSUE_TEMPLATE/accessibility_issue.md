@@ -34,7 +34,7 @@ Issues that do not meet these guidelines will be closed.
 <!--
 Providing an isolated reproduction of the issue in a codepen makes it much easier for us to help you. Here are some ways to get started:
 
-  * Go to https://aka.ms/fluentuipen for a starter codepen
+  * Go to https://aka.ms/fluentpen for a starter codepen
   * You can also use the "Export to Codepen" feature for the various components in our documentation site.
   * See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples
 
