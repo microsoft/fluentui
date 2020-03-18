@@ -5,6 +5,7 @@ import chatProtoStyle from '.././chatPane/chatProtoStyle';
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
+import ResponsiveTable from './ResponsiveTable';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -157,6 +158,20 @@ const rowsChannels = [
   }
 ];
 
+const columnsPerson = {
+  items: [
+    { title: 'id', priority: 4, ratio: 1, minWidth: 150 },
+    { title: 'Name', priority: 3, ratio: 1, minWidth: 150 },
+    { title: 'Age', priority: 2, ratio: 3, minWidth: 350 },
+    { title: 'Picture', priority: 0, ratio: 2, minWidth: 100 }
+  ]
+};
+const rowsPerson = [
+  ['1', 'Roman van von der Longername', '30 years', 'None'],
+  ['2', 'Alex', '1 year', 'None'],
+  ['3', 'Ali', '30000000000000 years', 'None']
+];
+
 export default () => (
   <PrototypeSection title="Advanced table">
     <ComponentPrototype title="Table example 1" description="Table with sorting, tags and dropdown menu in a cell">
@@ -168,6 +183,9 @@ export default () => (
     </ComponentPrototype>
     <ComponentPrototype title="Table example 3" description="Table with popover and context menu ">
       <InteractiveTable />
+    </ComponentPrototype>
+    <ComponentPrototype title="Responsive Table" description="Responsive table hiding columns">
+      <ResponsiveTable header={columnsPerson} rows={rowsPerson} label="Persons" />
     </ComponentPrototype>
   </PrototypeSection>
 );
