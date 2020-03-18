@@ -1,1 +1,1 @@
-module.exports = api => require('@fluentui/internal-tooling/babel')(api);
+module.exports = api => require('@uifabric/build/babel')(api);

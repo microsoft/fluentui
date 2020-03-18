@@ -1,7 +1,5 @@
-const commonConfig = require('@fluentui/internal-tooling/jest');
-
 module.exports = {
-  ...commonConfig,
+  ...require('@uifabric/build/jest'),
   name: 'react-docs',
   moduleNameMapper: require('lerna-alias').jest()
 };

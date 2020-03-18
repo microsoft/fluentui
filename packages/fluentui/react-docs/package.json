@@ -6,17 +6,16 @@
   "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
   "bin": "dist/commonjs/index.js",
   "dependencies": {
-    "@babel/core": "^7.7.7",
+    "@babel/core": "^7.8.3",
     "@babel/parser": "^7.6.3",
     "@babel/preset-typescript": "^7.7.7",
     "@babel/runtime": "^7.7.6",
-    "@types/yargs": "^15.0.3",
-    "doctrine": "2.0.0",
+    "doctrine": "^2.0.0",
     "lodash": "^4.17.15",
     "react-docgen-typescript": "^1.16.3"
   },
   "devDependencies": {
-    "@fluentui/internal-tooling": "^0.43.0",
+    "@uifabric/build": "^7.0.0",
     "@types/node": "^10.3.2",
     "lerna-alias": "^3.0.3-0"
   },
