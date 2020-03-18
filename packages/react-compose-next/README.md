@@ -2,7 +2,7 @@
 
 **Composition functionality for in [Fluent UI](https://aka.ms/fluent-ui/)**
 
-This functionality is in the experimental stage and **should never be used in product** as APIs might change before final release.
+This functionality is in the experimental stage and **should never be used in production** as APIs might change before final release.
 
 ### Usage
 
