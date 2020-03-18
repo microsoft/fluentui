@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Icon, SvgIcon, createIcon, SvgIconProps } from '@fluentui/react';
+import { Flex, Icon, SvgIcon, createSvgIcon, SvgIconProps } from '@fluentui/react';
 import cx from 'classnames';
 
 const teamsIconClassNames = {
@@ -89,7 +89,7 @@ const numberListSvg = ({ classes, rtl }) => {
   );
 };
 
-const NumberListIcon = createIcon({ svg: numberListSvg, displayName: 'NumberListIcon' });
+const NumberListIcon = createSvgIcon({ svg: numberListSvg, displayName: 'NumberListIcon' });
 
 const IconExample = () => (
   <Flex gap="gap.smaller">

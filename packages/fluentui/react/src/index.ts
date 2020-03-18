@@ -103,7 +103,7 @@ export * from './components/Icon/Icon';
 export { default as Icon } from './components/Icon/Icon';
 export * from './components/Icon/SvgIcon';
 export { default as SvgIcon } from './components/Icon/SvgIcon';
-export { default as createIcon } from './components/Icon/createIcon';
+export { default as createSvgIcon } from './components/Icon/createSvgIcon';
 
 export * from './components/Image/Image';
 export { default as Image } from './components/Image/Image';

@@ -9,7 +9,7 @@ import { default as SvgIcon, SvgIconProps, SvgIconChildrenFn } from './SvgIcon';
 
 export type SvgIconCreateFnParams = { svg: SvgIconChildrenFn; displayName: string; handledProps?: string[] };
 
-const createIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProps = SvgIcon.handledProps }: SvgIconCreateFnParams) => {
+const createSvgIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProps = SvgIcon.handledProps }: SvgIconCreateFnParams) => {
   const Component: React.FC<TProps> & { handledProps: string[] } = (props: Extendable<SvgIconProps>) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
@@ -65,4 +65,4 @@ const createIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProp
   return Component;
 };
 
-export default createIcon;
+export default createSvgIcon;
