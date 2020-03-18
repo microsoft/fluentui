@@ -1,28 +1,29 @@
 import { AccessibilityAttributes } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import { callable, Extendable } from '@fluentui/styles';
+import { callable } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes, SizeValue } from '../../utils';
+import { SizeValue } from '../../utils';
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
 export type SvgIconXSpacing = 'none' | 'before' | 'after' | 'both';
 
-type SvgIconFuncArg = {
+export type SvgIconFuncArg = {
   classes: { [iconSlot: string]: string };
   rtl: boolean;
-  props: any; // TODO: add proper typings
+  props: SvgIconProps;
 };
 
-type SvgIconChildrenFn = (svgIcon: SvgIconFuncArg) => React.ReactNode;
+export type SvgIconChildrenFn = (svgIcon: SvgIconFuncArg) => React.ReactNode;
 
-export interface SvgIconProps extends UIComponentProps, ChildrenComponentProps<SvgIconChildrenFn> {
+export interface SvgIconProps {
   /** Alternative text. */
   alt?: string;
+
   'aria-label'?: AccessibilityAttributes['aria-label'];
 
   /** SvgIcon can appear with rectangular border. */
@@ -30,6 +31,15 @@ export interface SvgIconProps extends UIComponentProps, ChildrenComponentProps<S
 
   /** SvgIcon can appear as circular. */
   circular?: boolean;
+
+  /** Additional CSS class name(s) to apply.  */
+  className?: string;
+
+  /**
+   *  Content for childrenApi
+   *  @docSiteIgnore
+   */
+  children?: SvgIconChildrenFn;
 
   /** An icon can show it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -47,34 +57,18 @@ export interface SvgIconProps extends UIComponentProps, ChildrenComponentProps<S
   xSpacing?: SvgIconXSpacing;
 }
 
-type SvgIconCreateFnParams = { svg: SvgIconChildrenFn; displayName: string; handledProps: string[] };
+export type SvgIconCreateFnParams = { svg: SvgIconChildrenFn; displayName: string; handledProps: string[] };
 
 const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   className: string;
   handledProps: (keyof SvgIconProps)[];
-  create: (params: SvgIconCreateFnParams) => any; // TODO: fix typings
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
   const { setStart, setEnd } = useTelemetry(SvgIcon.displayName, context.telemetry);
   setStart();
 
-  const {
-    alt,
-    'aria-label': ariaLabel,
-    bordered,
-    circular,
-    className,
-    disabled,
-    design,
-    children,
-    outline,
-    rotate,
-    size,
-    styles,
-    variables,
-    xSpacing
-  } = props;
+  const { alt, 'aria-label': ariaLabel, bordered, circular, className, disabled, children, outline, rotate, size, xSpacing } = props;
 
   const { classes } = useStyles(SvgIcon.displayName, {
     className: SvgIcon.className,
@@ -87,7 +81,7 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
       size,
       xSpacing
     }),
-    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    mapPropsToInlineStyles: () => ({ className }),
     rtl: context.rtl
   });
 
@@ -119,10 +113,9 @@ SvgIcon.defaultProps = {
 };
 
 SvgIcon.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: false
-  }),
+  as: PropTypes.elementType,
   children: PropTypes.func,
+  className: PropTypes.string,
   bordered: PropTypes.bool,
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -132,64 +125,6 @@ SvgIcon.propTypes = {
   xSpacing: PropTypes.oneOf(['none', 'before', 'after', 'both'])
 };
 SvgIcon.handledProps = Object.keys(SvgIcon.propTypes) as any;
-
-SvgIcon.create = ({ svg, displayName, handledProps }: SvgIconCreateFnParams) => {
-  // TODO: add props types for the component
-  const Component: any = (props: Extendable<SvgIconProps>) => {
-    // TODO: fix typings
-    const context: ProviderContextPrepared = React.useContext(ThemeContext);
-
-    const {
-      alt,
-      'aria-label': ariaLabel,
-      bordered,
-      circular,
-      className,
-      disabled,
-      design,
-      outline,
-      rotate = 0,
-      size = 'medium',
-      styles,
-      variables,
-      xSpacing
-    } = props;
-
-    const { classes } = useStyles(SvgIcon.displayName, {
-      className: SvgIcon.className,
-      mapPropsToStyles: () => ({
-        bordered,
-        circular,
-        disabled,
-        outline,
-        rotate,
-        size,
-        xSpacing
-      }),
-      mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-      rtl: context.rtl
-    });
-
-    const unhandledProps = getUnhandledProps(handledProps, props);
-
-    return (
-      <span
-        role="img"
-        aria-hidden={alt || ariaLabel ? undefined : 'true'}
-        aria-label={ariaLabel}
-        className={classes.root}
-        {...unhandledProps}
-      >
-        {callable(svg)({ classes, rtl: context.rtl, props })}
-      </span>
-    );
-  };
-
-  Component.displayName = displayName;
-  Component.handledProps = handledProps;
-
-  return Component;
-};
 
 /**
  * An SvgIcon displays a pictogram with semantic meaning.

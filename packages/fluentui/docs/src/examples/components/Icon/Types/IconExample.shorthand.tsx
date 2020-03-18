@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Icon, SvgIcon } from '@fluentui/react';
+import { Flex, Icon, SvgIcon, createIcon } from '@fluentui/react';
 import cx from 'classnames';
 
 const teamsIconClassNames = {
@@ -30,7 +30,7 @@ const callVideoSvg = ({ classes }) => (
   </svg>
 );
 
-const CallVideoIcon = SvgIcon.create({ svg: callVideoSvg, displayName: 'CallVideoIcon', handledProps: SvgIcon.handledProps });
+const CallVideoIcon = createIcon({ svg: callVideoSvg, displayName: 'CallVideoIcon', handledProps: SvgIcon.handledProps });
 
 const IconExample = () => (
   <Flex gap="gap.smaller">
