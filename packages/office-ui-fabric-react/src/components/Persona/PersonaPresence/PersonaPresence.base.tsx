@@ -33,7 +33,8 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       styles, // Use getStyles from props.
       presence,
       theme,
-      presenceTitle
+      presenceTitle,
+      presenceColors
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
 
@@ -60,7 +61,8 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       theme: theme!,
       presence,
       size: this.props.size,
-      isOutOfOffice
+      isOutOfOffice,
+      presenceColors
     });
 
     if (presence === PersonaPresenceEnum.none) {

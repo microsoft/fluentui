@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "remove all usages of BaseComponent and initializeFocusRects",
-  "packageName": "@uifabric/fabric-website-resources",
-  "email": "xgao@microsoft.com",
-  "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad",
-  "dependentChangeType": "patch",
-  "date": "2020-03-16T17:33:42.630Z"
-}

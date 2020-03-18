@@ -12,7 +12,6 @@ import * as debugEnabled from '../../src/debugEnabled';
 
 const styleParam: ComponentStyleFunctionParam = {
   disableAnimations: false,
-  displayName: 'Test',
   props: {},
   rtl: false,
   theme: emptyTheme,

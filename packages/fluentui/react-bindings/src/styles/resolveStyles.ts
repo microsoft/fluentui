@@ -43,7 +43,7 @@ const resolveStyles = (
   resolvedVariables: ComponentVariablesObject,
   renderStylesInput?: (styles: ICSSInJSStyle) => string
 ): ResolveStylesResult => {
-  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options;
+  const { className: componentClassName, theme, displayNames, props, rtl, disableAnimations, renderer, performance } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
 
@@ -77,9 +77,13 @@ const resolveStyles = (
   const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
   // Merge theme styles with inline overrides if any
-  let mergedStyles: ComponentSlotStylesPrepared = theme.componentStyles[displayName] || {
-    root: () => ({})
-  };
+  let mergedStyles: ComponentSlotStylesPrepared;
+
+  if (displayNames.length === 1) {
+    mergedStyles = theme.componentStyles[displayNames[0]] || { root: () => ({}) };
+  } else {
+    mergedStyles = mergeComponentStyles(...displayNames.map(displayName => theme.componentStyles[displayName]));
+  }
 
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
@@ -90,7 +94,6 @@ const resolveStyles = (
   }
 
   const styleParam: ComponentStyleFunctionParam = {
-    displayName,
     props,
     variables: resolvedVariables,
     theme,
@@ -105,7 +108,7 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName, // does not affect styles, only used by useEnhancedRenderer in docs
+    displayName: displayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
     sanitizeCss: performance.enableSanitizeCssPlugin
   };
 
@@ -127,7 +130,7 @@ const resolveStyles = (
   const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
   const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled
-    ? `${displayName}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
+    ? `${displayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
     : '';
 
   Object.keys(mergedStyles).forEach(slotName => {

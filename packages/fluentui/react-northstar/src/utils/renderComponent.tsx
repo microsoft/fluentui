@@ -67,7 +67,7 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
   const { classes, variables, styles, theme } = getStyles({
     className,
     disableAnimations: context.disableAnimations || false,
-    displayName,
+    displayNames: [displayName],
     props: stateAndProps,
     renderer: context.renderer || { renderRule: () => '' },
     rtl,

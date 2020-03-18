@@ -1,7 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 16 Mar 2020 12:28:27 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2020 12:28:58 GMT and should not be manually modified.
 
+## 7.8.41
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
 ## 7.8.40
 Mon, 16 Mar 2020 12:28:27 GMT
 

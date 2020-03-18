@@ -26,10 +26,10 @@ import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelec
 import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
 import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import ListItem, { ListItemProps } from '../List/ListItem';
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
+import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -699,21 +699,25 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return [
       ...items,
-      loading &&
-        ListItem.create(loadingMessage, {
-          defaultProps: () => ({
-            key: 'loading-message',
-            styles: styles.loadingMessage
+      loading && {
+        children: () =>
+          ListItem.create(loadingMessage, {
+            defaultProps: () => ({
+              key: 'loading-message',
+              styles: styles.loadingMessage
+            })
           })
-        }),
+      },
       !loading &&
-        items.length === 0 &&
-        ListItem.create(noResultsMessage, {
-          defaultProps: () => ({
-            key: 'no-results-message',
-            styles: styles.noResultsMessage
-          })
-        })
+        items.length === 0 && {
+          children: () =>
+            ListItem.create(noResultsMessage, {
+              defaultProps: () => ({
+                key: 'no-results-message',
+                styles: styles.noResultsMessage
+              })
+            })
+        }
     ];
   }
 
