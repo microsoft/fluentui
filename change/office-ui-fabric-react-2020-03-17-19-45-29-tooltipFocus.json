@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "fix(Tooltip): Prevent callout content from gaining focus, which may cause the tooltip to close unexpectedly.",
+  "packageName": "office-ui-fabric-react",
+  "email": "joshjcarrier@gmail.com",
+  "commit": "a440ba759cf55005d08a051c4d7125d32a77cdba",
+  "dependentChangeType": "patch",
+  "date": "2020-03-18T02:45:29.706Z"
+}
