@@ -36,6 +36,9 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   /** The default value of the input. */
   defaultValue?: string | string[];
 
+  /** An Input can be disabled. */
+  disabled?: boolean;
+
   /** An input can take the width of its container. */
   fluid?: boolean;
 
@@ -95,6 +98,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     }),
     clearable: PropTypes.bool,
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    disabled: PropTypes.bool,
     fluid: PropTypes.bool,
     icon: customPropTypes.itemShorthandWithoutJSX,
     iconPosition: PropTypes.oneOf(['start', 'end']),
@@ -136,7 +140,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
   };
 
   renderComponent({ accessibility, ElementType, unhandledProps, styles, variables }: RenderResultConfig<InputProps>) {
-    const { className, input, inputRef, type, wrapper } = this.props;
+    const { className, input, inputRef, type, wrapper, disabled } = this.props;
     const { value = '' } = this.state;
     const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
 
@@ -156,6 +160,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                 defaultProps: () => ({
                   ...htmlInputProps,
                   as: 'input',
+                  disabled,
                   type,
                   value,
                   className: Input.slotClassNames.input,
@@ -185,13 +190,20 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
   handleIconOverrides = predefinedProps => ({
     onClick: (e: React.SyntheticEvent) => {
-      this.handleOnClear(e);
-      this.inputRef.current.focus();
+      if (!this.props.disabled) {
+        this.handleOnClear(e);
+        this.inputRef.current.focus();
+      }
+
       _.invoke(predefinedProps, 'onClick', e, this.props);
     }
   });
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (this.props.disabled) {
+      return;
+    }
+
     const value = _.get(e, 'target.value');
 
     _.invoke(this.props, 'onChange', e, { ...this.props, value });

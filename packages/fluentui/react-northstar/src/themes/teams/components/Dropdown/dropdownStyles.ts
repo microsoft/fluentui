@@ -81,8 +81,17 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
         borderColor: v.openBorderColorHover
       }),
 
+      ...(p.disabled && {
+        backgroundColor: v.disabledBackgroundColorHover,
+        borderColor: v.disabledBorderColorHover
+      }),
+
       [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-        color: v.triggerButtonColorHover
+        color: v.triggerButtonColorHover,
+
+        ...(p.disabled && {
+          color: v.disabledTriggerColorHover
+        })
       }
     },
     ...(p.focused && {
@@ -169,15 +178,18 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     fontWeight: 'bold'
   }),
 
-  toggleIndicator: ({ variables: v }) => ({
+  toggleIndicator: ({ props: p, variables: v }) => ({
     alignItems: 'center',
     display: 'flex',
     justifyContent: 'center',
 
-    backgroundImage: toggleIndicatorUrl(v.color),
+    backgroundImage: toggleIndicatorUrl(p.disabled ? v.disabledColor : v.color),
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
+    ...(p.disabled && {
+      cursor: 'default'
+    }),
     userSelect: 'none',
 
     margin: 0,

@@ -37,9 +37,18 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     ...(p.fluid && { width: '100%' }),
     ...(p.inline && { float: 'left' }),
 
+    // Overrides for "disabled" inputs
+    ...(p.disabled && {
+      color: v.colorDisabled,
+      boxShadow: 'none'
+    }),
+
     '::placeholder': {
       color: v.placeholderColor,
-      opacity: 1 // undo Firefox default opacity
+      opacity: 1, // undo Firefox default opacity
+      ...(p.disabled && {
+        color: v.colorDisabled
+      })
     },
 
     ':focus': {
@@ -55,6 +64,9 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     color: v.iconColor,
     outline: 0,
     position: v.iconPosition as PositionProperty,
+    ...(p.disabled && {
+      color: v.colorDisabled
+    }),
 
     ...(p.iconPosition === 'start' && {
       left: v.iconLeft
@@ -65,7 +77,7 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
 
     ...(p.clearable &&
       p.hasValue && {
-        backgroundImage: clearIndicatorUrl(v.iconColor),
+        backgroundImage: clearIndicatorUrl(p.disabled ? v.colorDisabled : v.iconColor),
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '100%',
