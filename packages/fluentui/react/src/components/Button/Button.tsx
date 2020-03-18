@@ -193,10 +193,6 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
   };
 
   const handleFocus = (e: React.SyntheticEvent) => {
-    if (disabled) {
-      return;
-    }
-
     _.invoke(props, 'onFocus', e, props);
   };
 
