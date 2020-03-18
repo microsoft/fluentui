@@ -1,4 +1,4 @@
-import { compose, RendererRenderRule, StylesContextValue, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import { compose, RendererRenderRule, StylesContextValue, useAutoControlled, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount } from 'enzyme';
@@ -37,34 +37,37 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
 };
 
 type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLParagraphElement>;
+type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
 const BaseComponent: React.FC<BaseComponentProps> = props => {
   const { color } = props;
 
-  const { classes } = useStyles('BaseComponent', {
+  const [open, setOpen] = React.useState(false);
+  const { classes } = useStyles<BaseComponentStylesProps>('BaseComponent', {
     className: 'ui-base',
-    mapPropsToStyles: () => ({ color })
+    mapPropsToStyles: () => ({ color, open })
   });
   const unhandledProps = useUnhandledProps(['className', 'color'], props);
 
-  return <p className={classes.root} {...unhandledProps} />;
+  return <p className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
 };
 
-type ComposedComponentProps = {
-  hidden?: boolean;
-  visible?: boolean;
-};
+type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
+type ComposedComponentStylesProps = { visible: boolean | undefined };
 
-const ComposedComponent = compose<ComposedComponentProps, any, BaseComponentProps, any>(BaseComponent, {
-  className: 'ui-composed',
-  displayName: 'ComposedComponent',
-  mapPropsToStylesProps: (props: any) => ({ visible: props.visible }),
-  handledProps: ['hidden', 'visible']
-});
+const ComposedComponent = compose<ComposedComponentProps, ComposedComponentStylesProps, BaseComponentProps, BaseComponentStylesProps>(
+  BaseComponent,
+  {
+    className: 'ui-composed',
+    displayName: 'ComposedComponent',
+    mapPropsToStylesProps: props => ({ visible: props.open && props.visible }),
+    handledProps: ['hidden', 'visible']
+  }
+);
 
 const MultipleComposedComponent = compose<{}, any, BaseComponentProps & ComposedComponentProps, any>(ComposedComponent, {
   displayName: 'MultipleComposedComponent',
-  mapPropsToStylesProps: (props: any) => ({ hidden: props.hidden, visible: undefined })
+  mapPropsToStylesProps: props => ({ hidden: props.hidden, visible: undefined })
 });
 
 describe('useCompose', () => {
@@ -83,6 +86,9 @@ describe('useCompose', () => {
 
     expect(wrapper.find('p').prop('className')).toContain('ui-composed');
     expect(wrapper.find('p').prop('className')).toContain('color-red');
+    expect(wrapper.find('p').prop('className')).not.toContain('visible-true');
+
+    wrapper.find('p').simulate('click');
     expect(wrapper.find('p').prop('className')).toContain('visible-true');
   });
 
