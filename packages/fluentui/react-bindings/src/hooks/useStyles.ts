@@ -3,9 +3,10 @@ import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings
 import { ThemeContext } from 'react-fela';
 
-import useCompose from '../compose/useCompose';
+import useComposeOptions from '../compose/useComposeOptions';
 import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps, RendererRenderRule, StylesContextValue } from '../styles/types';
 import getStyles from '../styles/getStyles';
+import useReactElement from '../compose/useReactElement';
 
 type UseStylesOptions<StyleProps extends PrimitiveProps> = {
   className?: string;
@@ -47,13 +48,20 @@ const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
 const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, options: UseStylesOptions<StyleProps>): UseStylesResult => {
   const context: StylesContextValue<{ renderRule: RendererRenderRule }> = React.useContext(ThemeContext) || defaultContext;
 
+  const [, componentProps] = useReactElement();
+  const composeOptions = useComposeOptions();
+
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
     mapPropsToStyles = () => ({} as StyleProps),
     mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),
     rtl = false
   } = options;
-  const composeOptions = useCompose();
+  const componentStylesProps = mapPropsToStyles();
+
+  // `composeProps` should include all props including stylesProps as they can contain state
+  const composeProps = { ...componentProps, ...componentStylesProps };
+  const composeStylesProps = composeOptions?.mapPropsToStylesPropsChain?.reduce((acc, fn) => ({ ...acc, ...fn(composeProps) }), {});
 
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
@@ -62,9 +70,9 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
     className: composeOptions?.className || className,
     displayNames: composeOptions?.displayNames || [displayName],
     props: {
-      ...mapPropsToStyles(),
+      ...componentStylesProps,
       ...mapPropsToInlineStyles(),
-      ...composeOptions?.stylesProps
+      ...composeStylesProps
     },
 
     // Context values

@@ -1,8 +1,6 @@
-import * as React from 'react';
-import { ButtonBehaviorProps } from '@fluentui/accessibility';
-import { Button, ButtonProps, Flex, Header, Provider } from '@fluentui/react';
-import { compose } from '@fluentui/react-bindings';
+import { compose, Button, ButtonProps, Flex, Header, Provider } from '@fluentui/react';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
+import * as React from 'react';
 
 /* TODO: fix me */
 type ButtonStylesProps = any;
@@ -20,10 +18,11 @@ type TertiaryButtonProps = {
 
 type TertiaryButtonStylesProps = TertiaryButtonProps;
 
-const ComposedButton = compose<TertiaryButtonProps, ButtonBehaviorProps, TertiaryButtonStylesProps, ButtonProps>(Button, {
+// TODO: fix any
+const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
-  mapPropsToStyles: props => ({ tertiary: props.tertiary }),
+  mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
   handledProps: ['tertiary']
 });
 
@@ -43,10 +42,11 @@ type OverriddenButtonProps = {
 
 type OverriddenButtonStylesProps = Required<OverriddenButtonProps>;
 
-const OverriddenButton = compose<OverriddenButtonProps, ButtonBehaviorProps, OverriddenButtonStylesProps, ButtonProps>(Button, {
+// TODO: fix any
+const OverriddenButton = compose<OverriddenButtonProps, OverriddenButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-overridden-button',
   displayName: 'OverriddenButton',
-  mapPropsToStyles: props => ({
+  mapPropsToStylesProps: props => ({
     fitted: props.fitted
   }),
   handledProps: ['fitted'],

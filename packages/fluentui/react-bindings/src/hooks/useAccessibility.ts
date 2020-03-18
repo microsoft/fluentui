@@ -2,7 +2,6 @@ import { Accessibility, AccessibilityAttributesBySlot } from '@fluentui/accessib
 import * as React from 'react';
 
 import getAccessibility from '../accessibility/getAccessibility';
-import useCompose from '../compose/useCompose';
 import { AccessibilityActionHandlers, KeyboardEventHandler, ReactAccessibilityBehavior } from '../accessibility/types';
 import FocusZone from '../FocusZone/FocusZone';
 import useIsomorphicLayoutEffect from './useIsomorphicLayoutEffect';
@@ -30,17 +29,7 @@ type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps & Part
 const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAccessibilityOptions<Props> = {}) => {
   const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
 
-  const composeOptions = useCompose();
-  const definition = getAccessibility(
-    debugName,
-    behavior,
-    {
-      ...mapPropsToBehavior(),
-      ...composeOptions?.behaviorProps
-    },
-    rtl,
-    actionHandlers
-  );
+  const definition = getAccessibility(debugName, behavior, mapPropsToBehavior(), rtl, actionHandlers);
 
   const latestDefinition = React.useRef<ReactAccessibilityBehavior>();
   const slotHandlers = React.useRef<Record<string, KeyboardEventHandler>>({});

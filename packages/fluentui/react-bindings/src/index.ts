@@ -1,9 +1,8 @@
 export { default as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
-export { default as compose } from './compose/compose';
-export * from './compose/types';
-export { default as useCompose } from './compose/useCompose';
+export { compose } from '@fluentui/react-compose';
+export { default as useComposeOptions } from './compose/useComposeOptions';
 
 export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
