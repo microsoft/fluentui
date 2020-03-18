@@ -11,7 +11,21 @@ const createIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProp
   const Component: React.FC<TProps> & { handledProps: string[] } = (props: Extendable<SvgIconProps>) => {
     const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
-    const { alt, 'aria-label': ariaLabel, bordered, circular, className, disabled, outline, rotate = 0, size = 'medium', xSpacing } = props;
+    const {
+      alt,
+      'aria-label': ariaLabel,
+      bordered,
+      circular,
+      className,
+      design,
+      disabled,
+      outline,
+      rotate = 0,
+      size = 'medium',
+      styles,
+      variables,
+      xSpacing
+    } = props;
 
     const { classes } = useStyles(SvgIcon.displayName, {
       className: SvgIcon.className,
@@ -24,7 +38,7 @@ const createIcon = <TProps extends SvgIconProps>({ svg, displayName, handledProp
         size,
         xSpacing
       }),
-      mapPropsToInlineStyles: () => ({ className }),
+      mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
       rtl: context.rtl
     });
 

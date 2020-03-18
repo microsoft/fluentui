@@ -7,7 +7,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { SizeValue } from '../../utils';
+import { commonPropTypes, SizeValue, UIComponentProps } from '../../utils';
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
 export type SvgIconXSpacing = 'none' | 'before' | 'after' | 'both';
@@ -20,7 +20,7 @@ export type SvgIconFuncArg = {
 
 export type SvgIconChildrenFn = (svgIcon: SvgIconFuncArg) => React.ReactNode;
 
-export interface SvgIconProps {
+export interface SvgIconProps extends UIComponentProps {
   /** Alternative text. */
   alt?: string;
 
@@ -31,9 +31,6 @@ export interface SvgIconProps {
 
   /** SvgIcon can appear as circular. */
   circular?: boolean;
-
-  /** Additional CSS class name(s) to apply.  */
-  className?: string;
 
   /**
    *  Content for childrenApi
@@ -68,7 +65,22 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   const { setStart, setEnd } = useTelemetry(SvgIcon.displayName, context.telemetry);
   setStart();
 
-  const { alt, 'aria-label': ariaLabel, bordered, circular, className, disabled, children, outline, rotate, size, xSpacing } = props;
+  const {
+    alt,
+    'aria-label': ariaLabel,
+    bordered,
+    circular,
+    className,
+    design,
+    disabled,
+    children,
+    outline,
+    rotate,
+    size,
+    styles,
+    variables,
+    xSpacing
+  } = props;
 
   const { classes } = useStyles(SvgIcon.displayName, {
     className: SvgIcon.className,
@@ -81,7 +93,7 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
       size,
       xSpacing
     }),
-    mapPropsToInlineStyles: () => ({ className }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl
   });
 
@@ -113,9 +125,11 @@ SvgIcon.defaultProps = {
 };
 
 SvgIcon.propTypes = {
-  as: PropTypes.elementType,
+  ...commonPropTypes.createCommon({
+    children: false,
+    content: false
+  }),
   children: PropTypes.func,
-  className: PropTypes.string,
   bordered: PropTypes.bool,
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
