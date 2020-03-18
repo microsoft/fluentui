@@ -1,8 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { ImageProps } from '../../../../components/Image/Image';
+import { ImageStylesProps } from '../../../../components/Image/Image';
 import { ImageVariables } from './imageVariables';
-
-export type ImageStylesProps = Pick<ImageProps, 'avatar' | 'circular' | 'fluid'>;
 
 const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables> = {
   root: ({ props, variables }): ICSSInJSStyle => ({

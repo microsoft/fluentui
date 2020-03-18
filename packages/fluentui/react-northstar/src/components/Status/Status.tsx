@@ -27,13 +27,15 @@ export interface StatusProps extends UIComponentProps {
   state?: 'success' | 'info' | 'warning' | 'error' | 'unknown';
 }
 
+export type StatusStylesProps = Pick<StatusProps, 'color' | 'size' | 'state'>;
+
 const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Icon.displayName, context.telemetry);
   setStart();
 
   const { className, color, icon, size, state, design, styles, variables } = props;
-  const { classes, styles: resolvedStyles } = useStyles(Status.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<StatusStylesProps>(Status.displayName, {
     className: Status.className,
     mapPropsToStyles: () => ({
       color,

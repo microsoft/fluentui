@@ -1,0 +1,19 @@
+{
+  "name": "@fluentui/react-compose",
+  "entries": [
+    {
+      "date": "Wed, 18 Mar 2020 12:24:00 GMT",
+      "tag": "@fluentui/react-compose_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "feat(compose): add compose() & scaffold react-compose-next",
+            "author": "olfedias@microsoft.com",
+            "commit": "62509a3ed7d9c3b1686d4a20cb5411a826302c77"
+          }
+        ]
+      }
+    }
+  ]
+}

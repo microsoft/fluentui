@@ -1,19 +1,9 @@
 import { pxToRem } from '../../../../utils';
 import { screenReaderContainerStyles } from '../../../../utils/accessibility/Styles/accessibilityStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { default as ListItem, ListItemProps } from '../../../../components/List/ListItem';
+import { default as ListItem, ListItemStylesProps } from '../../../../components/List/ListItem';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import { ListItemVariables } from './listItemVariables';
-
-export type ListItemStylesProps = Pick<
-  ListItemProps,
-  'debug' | 'important' | 'navigable' | 'selectable' | 'selected' | 'truncateContent' | 'truncateHeader'
-> & {
-  hasContent?: boolean;
-  hasContentMedia?: boolean;
-  hasHeader?: boolean;
-  hasHeaderMedia?: boolean;
-};
 
 const truncateStyle: ICSSInJSStyle = {
   overflow: 'hidden',

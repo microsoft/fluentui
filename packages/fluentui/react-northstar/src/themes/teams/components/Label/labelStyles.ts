@@ -1,14 +1,8 @@
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { LabelProps } from '../../../../components/Label/Label';
+import { LabelStylesProps } from '../../../../components/Label/Label';
 import { LabelVariables } from './labelVariables';
 import { getColorScheme } from '../../colors';
-
-export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePosition' | 'iconPosition'> & {
-  hasImage: boolean;
-  hasIcon: boolean;
-  hasActionableIcon: boolean;
-};
 
 const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {

@@ -69,6 +69,8 @@ export interface ListProps extends UIComponentProps, ChildrenComponentProps {
   wrap?: (children: ReactChildren) => React.ReactNode;
 }
 
+export type ListStylesProps = Pick<ListProps, 'debug' | 'horizontal'> & { isListTag: boolean };
+
 const List: React.FC<WithAsProp<ListProps>> &
   FluentComponentStaticProps<ListProps> & {
     Item: typeof ListItem;
@@ -109,7 +111,7 @@ const List: React.FC<WithAsProp<ListProps>> &
     }),
     rtl: context.rtl
   });
-  const { classes } = useStyles(List.displayName, {
+  const { classes } = useStyles<ListStylesProps>(List.displayName, {
     className: List.className,
     mapPropsToStyles: () => ({ isListTag: as === 'ol' || as === 'ul', debug, horizontal }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),

@@ -1,7 +1,7 @@
 {
-  "name": "@uifabric/azure-themes",
-  "version": "7.0.47",
-  "description": "Azure themes for Office UI Components",
+  "name": "@fluentui/react-compose",
+  "version": "0.2.0",
+  "description": "UI Fabric React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -17,19 +17,26 @@
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
-    "just": "just-scripts",
-    "code-style": "just-scripts code-style",
+    "test": "just-scripts test",
     "clean": "just-scripts clean",
-    "start": "just-scripts dev:storybook"
+    "code-style": "just-scripts code-style",
+    "start-test": "just-scripts jest-watch",
+    "update-api": "just-scripts update-api",
+    "just": "just-scripts"
   },
   "devDependencies": {
+    "@types/react": "16.8.11",
+    "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/tslint-rules": "^7.1.0"
+    "@uifabric/tslint-rules": "^7.1.0",
+    "react": "16.8.6"
   },
   "dependencies": {
-    "@uifabric/merge-styles": "^7.8.7",
     "@uifabric/set-version": "^7.0.6",
-    "office-ui-fabric-react": "^7.105.0",
     "tslib": "^1.10.0"
+  },
+  "peerDependencies": {
+    "@types/react": ">=16.8.0 <17.0.0",
+    "react": ">=16.8.0 <17.0.0"
   }
 }

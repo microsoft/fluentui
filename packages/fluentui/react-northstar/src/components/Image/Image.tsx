@@ -30,6 +30,8 @@ export interface ImageProps extends UIComponentProps, ImageBehaviorProps {
   src?: string;
 }
 
+export type ImageStylesProps = Pick<ImageProps, 'avatar' | 'circular' | 'fluid'>;
+
 const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<ImageProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Image.displayName, context.telemetry);
@@ -45,7 +47,7 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
     }),
     rtl: context.rtl
   });
-  const { classes } = useStyles(Image.displayName, {
+  const { classes } = useStyles<ImageStylesProps>(Image.displayName, {
     className: Image.className,
     mapPropsToStyles: () => ({
       avatar,

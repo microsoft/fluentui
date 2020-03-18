@@ -45,6 +45,11 @@ export interface IconProps extends UIComponentProps, ColorComponentProps {
   xSpacing?: IconXSpacing;
 }
 
+export type IconStylesProps = Pick<
+  IconProps,
+  'bordered' | 'circular' | 'color' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'
+> & { isFontIcon: boolean; isSvgIcon: boolean; name?: IconProps['name'] };
+
 const Icon: React.FC<WithAsProp<IconProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
@@ -82,7 +87,7 @@ const Icon: React.FC<WithAsProp<IconProps>> & FluentComponentStaticProps = props
     }),
     rtl: context.rtl
   });
-  const { classes } = useStyles(Icon.displayName, {
+  const { classes } = useStyles<IconStylesProps>(Icon.displayName, {
     className: Icon.className,
     mapPropsToStyles: () => ({
       bordered,

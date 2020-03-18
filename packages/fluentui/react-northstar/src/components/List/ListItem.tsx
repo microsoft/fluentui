@@ -66,6 +66,16 @@ export interface ListItemProps extends UIComponentProps, ContentComponentProps<S
   onClick?: ComponentEventHandler<ListItemProps>;
 }
 
+export type ListItemStylesProps = Pick<
+  ListItemProps,
+  'debug' | 'important' | 'navigable' | 'selectable' | 'selected' | 'truncateContent' | 'truncateHeader'
+> & {
+  hasContent?: boolean;
+  hasContentMedia?: boolean;
+  hasHeader?: boolean;
+  hasHeaderMedia?: boolean;
+};
+
 const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   FluentComponentStaticProps<ListItemProps> & {
     slotClassNames: ListItemSlotClassNames;
@@ -112,7 +122,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     }),
     rtl: context.rtl
   });
-  const { classes, styles: resolvedStyles } = useStyles(ListItem.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<ListItemStylesProps>(ListItem.displayName, {
     className: ListItem.className,
     mapPropsToStyles: () => ({
       debug,

@@ -53,6 +53,12 @@ export interface LabelProps
   imagePosition?: 'start' | 'end';
 }
 
+export type LabelStylesProps = Pick<LabelProps, 'circular' | 'color' | 'imagePosition' | 'iconPosition'> & {
+  hasImage: boolean;
+  hasIcon: boolean;
+  hasActionableIcon: boolean;
+};
+
 const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Label.displayName, context.telemetry);
@@ -78,7 +84,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     debugName: Label.displayName,
     rtl: context.rtl
   });
-  const { classes, styles: resolvedStyles } = useStyles(Label.displayName, {
+  const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
     className: Label.className,
     mapPropsToStyles: () => ({
       hasActionableIcon: _.has(icon, 'onClick'),
