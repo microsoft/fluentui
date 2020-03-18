@@ -691,6 +691,22 @@ describe('Dropdown', () => {
       );
     });
 
+    it('has onChange called with null value by hitting Escape in search input', () => {
+      const onChange = jest.fn();
+      const { keyDownOnSearchInput } = renderDropdown({ search: true, onChange, defaultValue: items[2], defaultSearchQuery: items[2] });
+
+      keyDownOnSearchInput('Escape');
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          value: null,
+          searchQuery: ''
+        })
+      );
+    });
+
     it('is set by clicking on item', () => {
       const itemSelectedIndex = 2;
       const { triggerButtonNode, clickOnItemAtIndex } = renderDropdown({ defaultOpen: true });
@@ -1024,6 +1040,73 @@ describe('Dropdown', () => {
       changeSearchInput('');
 
       expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('has onSearchQueryChange each time the input is changed', () => {
+      const onSearchQueryChange = jest.fn();
+      const { changeSearchInput } = renderDropdown({ search: true, onSearchQueryChange });
+
+      changeSearchInput('ala');
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: 'ala'
+        })
+      );
+
+      changeSearchInput('alladin');
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(2);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: 'alladin'
+        })
+      );
+    });
+
+    it('has onSearchQueryChange called with empty string by hitting Escape in search input', () => {
+      const onSearchQueryChange = jest.fn();
+      const { keyDownOnSearchInput } = renderDropdown({ search: true, onSearchQueryChange, defaultSearchQuery: 'foo' });
+
+      keyDownOnSearchInput('Escape');
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: '',
+          value: null,
+          open: false
+        })
+      );
+    });
+
+    it('has onChange called with null when changed to empty string and there was item selected', () => {
+      const onChange = jest.fn();
+      const { changeSearchInput, getClearIndicatorWrapper } = renderDropdown({
+        defaultValue: items[0],
+        search: true,
+        clearable: true,
+        onChange,
+        defaultSearchQuery: items[0]
+      });
+
+      changeSearchInput('');
+
+      expect(getClearIndicatorWrapper().length).toEqual(0);
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(
+        null,
+        expect.objectContaining({
+          value: null,
+          searchQuery: '',
+          open: false
+        })
+      );
     });
 
     it('is the string equivalent of selected item in single search', () => {

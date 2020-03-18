@@ -63,6 +63,14 @@ export interface DropdownSlotClassNames {
   triggerButton: string;
 }
 
+export type OnChangeHandlerNames = (
+  | 'onChange'
+  | 'onHighlightedIndexChange'
+  | 'onOpenChange'
+  | 'onActiveSelectedIndexChange'
+  | 'onSearchQueryChange'
+)[];
+
 export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownState>, PositioningProps {
   /** The index of the currently selected item, if the dropdown supports multiple selection. */
   activeSelectedIndex?: number;
@@ -446,7 +454,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           inputValue={search ? searchQuery : null}
           stateReducer={this.handleDownshiftStateChanges}
           itemToString={itemToString}
-          selectedItem={null}
+          // downshift does not work with arrays as selectedItem.
+          selectedItem={multiple || !value.length ? null : value[0]}
           getA11yStatusMessage={getA11yStatusMessage}
           highlightedIndex={highlightedIndex}
           onStateChange={this.handleStateChange}
@@ -808,10 +817,25 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   }
 
   handleSearchQueryChange = (searchQuery: string) => {
-    this.setStateAndInvokeHandler(['onSearchQueryChange', 'onHighlightedIndexChange'], null, {
+    const { value } = this.state;
+    const { multiple } = this.props;
+    // we clear value when in single selection user cleared the query.
+    const shouldValueChange = searchQuery === '' && !multiple && !!value.length;
+    const handlersToBeCalled: OnChangeHandlerNames = [
+      'onSearchQueryChange',
+      'onHighlightedIndexChange',
+      'onOpenChange',
+    ];
+
+    if (shouldValueChange) {
+      handlersToBeCalled.push('onChange');
+    }
+
+    this.setStateAndInvokeHandler(handlersToBeCalled, null, {
       searchQuery,
       highlightedIndex: this.props.highlightFirstItemOnOpen ? 0 : null,
       open: searchQuery === '' ? false : this.state.open,
+      ...(shouldValueChange && { value: [] }),
     });
   };
 
@@ -969,6 +993,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           onKeyDown: e => {
             handleInputKeyDown(e, predefinedProps);
           },
+          onChange: e => {
+            // we prevent the onChange input event to bubble up to our Dropdown handler,
+            // since in Dropdown it gets handled as onSearchQueryChange.
+            e.stopPropagation();
+          },
         }),
       },
       // same story as above for getRootProps.
@@ -1124,7 +1153,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     this.setStateAndInvokeHandler(['onChange'], null, {
       searchQuery: this.getSelectedItemAsString(item),
-      value: multiple ? [...value, item] : [item],
+      value: item === null ? [] : multiple ? [...value, item] : [item],
     });
 
     if (!multiple && items) {
@@ -1276,7 +1305,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * because we want to keep the event handling interface
    */
   setStateAndInvokeHandler = (
-    handlerNames: (keyof DropdownProps)[],
+    handlerNames: OnChangeHandlerNames,
     event: React.SyntheticEvent<HTMLElement>,
     newState: Partial<DropdownState>,
   ) => {
@@ -1309,10 +1338,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * and for multiple selection we return empty string, the values are rendered by renderSelectedItems
    */
   getSelectedItemAsString = (value: ShorthandValue<DropdownItemProps>): string => {
-    const { itemToString, multiple, placeholder } = this.props;
+    const { itemToString, multiple, placeholder, search } = this.props;
 
     if (!value) {
-      return placeholder;
+      return search ? '' : placeholder;
     }
 
     if (multiple) {
