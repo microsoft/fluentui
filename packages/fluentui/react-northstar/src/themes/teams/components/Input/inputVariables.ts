@@ -43,5 +43,5 @@ export default (siteVars): InputVariables => ({
   iconColor: siteVars.colorScheme.default.foreground,
   inputFocusBorderColor: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
   inputFocusBorderRadius: `${pxToRem(3)} ${pxToRem(3)} ${pxToRem(2)} ${pxToRem(2)}`,
-  placeholderColor: siteVars.colorScheme.default.foreground1
+  placeholderColor: siteVars.colorScheme.default.foreground1,
 });

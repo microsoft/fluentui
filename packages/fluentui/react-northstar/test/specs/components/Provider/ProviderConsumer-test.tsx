@@ -10,7 +10,7 @@ const styleParam: ComponentStyleFunctionParam = {
   props: {},
   rtl: false,
   theme: emptyTheme,
-  variables: {}
+  variables: {},
 };
 
 describe('ProviderConsumer', () => {
@@ -36,8 +36,8 @@ describe('ProviderConsumer', () => {
           user: { icon: { content: '\\f1', fontFamily: 'i' } },
           userFunc: { icon: () => ({ content: '\\f1', fontFamily: 'i' }) },
           userSvg: { isSvg: true, icon: <svg /> },
-          userSvgFunc: { isSvg: true, icon: () => <svg /> }
-        }
+          userSvgFunc: { isSvg: true, icon: () => <svg /> },
+        },
       };
 
       mount(
@@ -55,7 +55,9 @@ describe('ProviderConsumer', () => {
               // componentStyles
               expect(preparedTheme).toHaveProperty('componentStyles.Button.root');
               expect(preparedTheme.componentStyles.Button.root).toBeInstanceOf(Function);
-              expect(preparedTheme.componentStyles.Button.root(styleParam)).toMatchObject(inputTheme.componentStyles.Button.root);
+              expect(preparedTheme.componentStyles.Button.root(styleParam)).toMatchObject(
+                inputTheme.componentStyles.Button.root,
+              );
 
               // fontFaces
               expect(preparedTheme).toHaveProperty('fontFaces');
@@ -71,7 +73,7 @@ describe('ProviderConsumer', () => {
               return null;
             }}
           />
-        </Provider>
+        </Provider>,
       );
     });
   });

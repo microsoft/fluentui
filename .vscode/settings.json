@@ -48,7 +48,8 @@
   "tslint.autoFixOnSave": false,
   "tslint.exclude": "**/*.scss.ts",
   "files.associations": {
-    "**/tslint.json": "jsonc"
+    "**/tslint.json": "jsonc",
+    "**/tslint.*.json": "jsonc"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"

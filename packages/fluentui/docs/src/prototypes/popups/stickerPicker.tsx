@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { Button, Popup, Menu, dialogBehavior, tabBehavior, tabListBehavior, MenuItemProps } from '@fluentui/react-northstar';
+import {
+  Button,
+  Popup,
+  Menu,
+  dialogBehavior,
+  tabBehavior,
+  tabListBehavior,
+  MenuItemProps,
+} from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import { arrayOfStickerImagesNames, getItemsData } from './dataMocks';
 import GridImagePicker from './GridImagePicker/GridImagePicker';

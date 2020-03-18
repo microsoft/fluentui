@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { AvatarProps, Avatar, ChatMessageProps, Button, ChatItem, ChatItemProps, Chat } from '@fluentui/react-northstar';
+import {
+  AvatarProps,
+  Avatar,
+  ChatMessageProps,
+  Button,
+  ChatItem,
+  ChatItemProps,
+  Chat,
+} from '@fluentui/react-northstar';
 import repliesButtonBehavior from './repliesButtonBehavior';
 import ScreenReaderHeaderText from './ScreenReaderHeaderText';
 import classNames from './classNames';

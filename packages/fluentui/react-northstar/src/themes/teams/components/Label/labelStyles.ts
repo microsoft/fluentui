@@ -19,10 +19,11 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
       fontSize: pxToRem(14),
       borderRadius: pxToRem(3),
       padding: v.padding,
-      ...(p.hasImage && (p.imagePosition === 'start' ? { paddingLeft: v.startPaddingLeft } : { paddingRight: v.endPaddingRight })),
+      ...(p.hasImage &&
+        (p.imagePosition === 'start' ? { paddingLeft: v.startPaddingLeft } : { paddingRight: v.endPaddingRight })),
       ...(p.circular && {
-        borderRadius: v.circularRadius
-      })
+        borderRadius: v.circularRadius,
+      }),
     };
   },
 
@@ -32,23 +33,23 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
 
     return {
       ...(hasStartElement && {
-        marginLeft: pxToRem(3)
+        marginLeft: pxToRem(3),
       }),
       ...(hasEndElement && {
-        marginRight: pxToRem(3)
-      })
+        marginRight: pxToRem(3),
+      }),
     };
   },
 
   image: ({ variables: v }): ICSSInJSStyle => ({
     height: v.height,
-    width: v.height
+    width: v.height,
   }),
 
   icon: ({ props: p }): ICSSInJSStyle =>
     p.hasActionableIcon && {
-      cursor: 'pointer'
-    }
+      cursor: 'pointer',
+    },
 };
 
 export default labelStyles;

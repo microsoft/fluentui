@@ -72,7 +72,7 @@ const Icon: React.FC<WithAsProp<IconProps>> & FluentComponentStaticProps = props
     size,
     styles,
     variables,
-    xSpacing
+    xSpacing,
   } = props;
 
   const { icons = {} } = context.theme;
@@ -83,9 +83,9 @@ const Icon: React.FC<WithAsProp<IconProps>> & FluentComponentStaticProps = props
     debugName: Icon.displayName,
     mapPropsToBehavior: () => ({
       alt,
-      'aria-label': ariaLabel
+      'aria-label': ariaLabel,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<IconStylesProps>(Icon.displayName, {
     className: Icon.className,
@@ -102,10 +102,10 @@ const Icon: React.FC<WithAsProp<IconProps>> & FluentComponentStaticProps = props
       size,
       xSpacing,
       isFontIcon: !isSvgIcon,
-      isSvgIcon
+      isSvgIcon,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -127,14 +127,14 @@ Icon.defaultProps = {
   as: 'span',
   accessibility: iconBehavior,
   size: 'medium',
-  rotate: 0
+  rotate: 0,
 };
 
 Icon.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
     content: false,
-    color: true
+    color: true,
   }),
   bordered: PropTypes.bool,
   circular: PropTypes.bool,
@@ -143,7 +143,7 @@ Icon.propTypes = {
   outline: PropTypes.bool,
   rotate: PropTypes.number,
   size: customPropTypes.size,
-  xSpacing: PropTypes.oneOf(['none', 'before', 'after', 'both'])
+  xSpacing: PropTypes.oneOf(['none', 'before', 'after', 'both']),
 };
 Icon.handledProps = Object.keys(Icon.propTypes) as any;
 

@@ -7,7 +7,7 @@ import {
   StylesContextPerformanceInput,
   Telemetry,
   unstable_getStyles,
-  useIsomorphicLayoutEffect
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-bindings';
 import {
   mergeSiteVariables,
@@ -16,7 +16,7 @@ import {
   StaticStyleFunction,
   FontFace,
   ThemeInput,
-  SiteVariablesPrepared
+  SiteVariablesPrepared,
 } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -79,7 +79,9 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
       const preparedSiteVariables = mergeSiteVariables(siteVariables);
       renderObject((staticStyle as StaticStyleFunction)(preparedSiteVariables));
     } else {
-      throw new Error(`staticStyles array must contain CSS strings, style objects, or style functions, got: ${typeof staticStyle}`);
+      throw new Error(
+        `staticStyles array must contain CSS strings, style objects, or style functions, got: ${typeof staticStyle}`,
+      );
     }
   });
 };
@@ -115,7 +117,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     performance: props.performance,
     renderer: props.renderer,
     target: props.target,
-    telemetry
+    telemetry,
   };
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -136,7 +138,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
       className,
       design,
       styles,
-      variables
+      variables,
     },
 
     disableAnimations: outgoingContext.disableAnimations,
@@ -144,13 +146,13 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     renderer: outgoingContext.renderer,
     rtl: outgoingContext.rtl,
     theme: outgoingContext.theme,
-    saveDebug: _.noop
+    saveDebug: _.noop,
   });
 
   const element = usePortalBox({
     className: classes.root,
     target: outgoingContext.target,
-    rtl: outgoingContext.rtl
+    rtl: outgoingContext.rtl,
   });
 
   useIsomorphicLayoutEffect(() => {
@@ -175,13 +177,16 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
       : {
           className: classes.root,
           ...rtlProps,
-          ...unhandledProps
+          ...unhandledProps,
         };
 
   // rehydration disabled to avoid leaking styles between renderers
   // https://github.com/rofrischmann/fela/blob/master/docs/api/fela-dom/rehydrate.md
   return (
-    <RendererProvider renderer={outgoingContext.renderer} {...{ rehydrate: false, targetDocument: outgoingContext.target }}>
+    <RendererProvider
+      renderer={outgoingContext.renderer}
+      {...{ rehydrate: false, targetDocument: outgoingContext.target }}
+    >
       <ThemeProvider theme={outgoingContext} overwrite>
         <PortalBoxContext.Provider value={element}>
           <ElementType {...elementProps}>{children}</ElementType>
@@ -195,7 +200,7 @@ Provider.className = 'ui-provider';
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {
-  theme: {}
+  theme: {},
 };
 Provider.propTypes = {
   as: PropTypes.elementType,
@@ -216,12 +221,12 @@ Provider.propTypes = {
           fontVariant: PropTypes.string,
           fontWeight: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
           localAlias: PropTypes.string,
-          unicodeRange: PropTypes.string
-        })
-      })
+          unicodeRange: PropTypes.string,
+        }),
+      }),
     ),
     staticStyles: PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.string, PropTypes.object, PropTypes.func])),
-    animations: PropTypes.object
+    animations: PropTypes.object,
   }),
   renderer: PropTypes.object as PropTypes.Validator<Renderer>,
   rtl: PropTypes.bool,
@@ -231,12 +236,12 @@ Provider.propTypes = {
   performance: PropTypes.shape({
     enableSanitizeCssPlugin: PropTypes.bool,
     enableStylesCaching: PropTypes.bool,
-    enableVariablesCaching: PropTypes.bool
+    enableVariablesCaching: PropTypes.bool,
   }),
   children: PropTypes.node.isRequired,
   overwrite: PropTypes.bool,
   target: PropTypes.object as PropTypes.Validator<Document>,
-  telemetryRef: PropTypes.object as PropTypes.Validator<React.MutableRefObject<Telemetry>>
+  telemetryRef: PropTypes.object as PropTypes.Validator<React.MutableRefObject<Telemetry>>,
 };
 Provider.handledProps = Object.keys(Provider.propTypes) as any;
 

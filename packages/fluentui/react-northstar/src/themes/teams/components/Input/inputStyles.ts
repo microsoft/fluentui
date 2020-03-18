@@ -12,13 +12,13 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     position: 'relative',
     outline: 0,
 
-    ...(p.fluid && { width: '100%' })
+    ...(p.fluid && { width: '100%' }),
   }),
 
   input: ({ props: p, variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.backgroundColor,
     ...(p.inverted && {
-      backgroundColor: v.backgroundColorInverted
+      backgroundColor: v.backgroundColorInverted,
     }),
 
     lineHeight: 'unset',
@@ -40,24 +40,24 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     // Overrides for "disabled" inputs
     ...(p.disabled && {
       color: v.colorDisabled,
-      boxShadow: 'none'
+      boxShadow: 'none',
     }),
 
     '::placeholder': {
       color: v.placeholderColor,
       opacity: 1, // undo Firefox default opacity
       ...(p.disabled && {
-        color: v.colorDisabled
-      })
+        color: v.colorDisabled,
+      }),
     },
 
     ':focus': {
-      borderColor: v.inputFocusBorderColor
+      borderColor: v.inputFocusBorderColor,
     },
     ...(p.clearable && { padding: v.inputPaddingWithIconAtEnd }),
     ...(p.icon && {
-      padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd
-    })
+      padding: p.iconPosition === 'start' ? v.inputPaddingWithIconAtStart : v.inputPaddingWithIconAtEnd,
+    }),
   }),
 
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -65,14 +65,14 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
     outline: 0,
     position: v.iconPosition as PositionProperty,
     ...(p.disabled && {
-      color: v.colorDisabled
+      color: v.colorDisabled,
     }),
 
     ...(p.iconPosition === 'start' && {
-      left: v.iconLeft
+      left: v.iconLeft,
     }),
     ...(p.iconPosition === 'end' && {
-      right: v.iconRight
+      right: v.iconRight,
     }),
 
     ...(p.clearable &&
@@ -81,9 +81,9 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         height: '100%',
-        width: pxToRem(16)
-      })
-  })
+        width: pxToRem(16),
+      }),
+  }),
 };
 
 export default inputStyles;

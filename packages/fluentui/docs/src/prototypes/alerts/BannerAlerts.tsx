@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Provider, RadioGroup, ThemeAnimation, RadioGroupItemProps, Header, Button } from '@fluentui/react-northstar';
+import {
+  Flex,
+  Provider,
+  RadioGroup,
+  ThemeAnimation,
+  RadioGroupItemProps,
+  Header,
+  Button,
+} from '@fluentui/react-northstar';
 
 import AnimatedBannerAlert from './AnimatedBannerAlert';
 import ComposeMessage from '../chatPane/composeMessage';

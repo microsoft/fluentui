@@ -13,7 +13,7 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   commonPropTypes,
-  applyAccessibilityKeyHandlers
+  applyAccessibilityKeyHandlers,
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { WithAsProp, ShorthandValue, ComponentEventHandler, withSafeTypeForAs } from '../../types';
@@ -94,7 +94,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     clearable: PropTypes.bool,
     defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -109,14 +109,14 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     onChange: PropTypes.func,
     type: PropTypes.string,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    wrapper: customPropTypes.wrapperShorthand
+    wrapper: customPropTypes.wrapperShorthand,
   };
 
   static defaultProps = {
     accessibility: inputBehavior,
     type: 'text',
     wrapper: {},
-    iconPosition: 'end'
+    iconPosition: 'end',
   };
 
   static autoControlledProps = ['value'];
@@ -125,7 +125,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     const { value } = state;
 
     return {
-      hasValue: !!value && (value as string).length !== 0
+      hasValue: !!value && (value as string).length !== 0,
     };
   }
 
@@ -136,7 +136,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
         e.nativeEvent && e.nativeEvent.stopPropagation();
         this.handleOnClear(e);
       }
-    }
+    },
   };
 
   renderComponent({ accessibility, ElementType, unhandledProps, styles, variables }: RenderResultConfig<InputProps>) {
@@ -166,25 +166,25 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                   className: Input.slotClassNames.input,
                   styles: styles.input,
                   onChange: this.handleChange,
-                  ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.input, htmlInputProps)
-                })
+                  ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.input, htmlInputProps),
+                }),
               })}
             </Ref>
             {Icon.create(this.computeIcon(), {
               defaultProps: () => ({
                 styles: styles.icon,
-                variables: variables.icon
+                variables: variables.icon,
               }),
-              overrideProps: this.handleIconOverrides
+              overrideProps: this.handleIconOverrides,
             })}
           </>
         ),
         styles: styles.root,
-        ...restProps
+        ...restProps,
       }),
       overrideProps: {
-        as: (wrapper && (wrapper as any).as) || ElementType
-      }
+        as: (wrapper && (wrapper as any).as) || ElementType,
+      },
     });
   }
 
@@ -196,7 +196,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
       }
 
       _.invoke(predefinedProps, 'onClick', e, this.props);
-    }
+    },
   });
 
   handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -231,7 +231,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 }
 
 Input.slotClassNames = {
-  input: `${Input.className}__input`
+  input: `${Input.className}__input`,
 };
 
 /**

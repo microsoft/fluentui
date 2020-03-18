@@ -7,7 +7,13 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import { createShorthandFactory, UIComponentProps, commonPropTypes, SizeValue } from '../../utils';
-import { WithAsProp, ShorthandValue, withSafeTypeForAs, ProviderContextPrepared, FluentComponentStaticProps } from '../../types';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  ProviderContextPrepared,
+  FluentComponentStaticProps,
+} from '../../types';
 import Icon, { IconProps } from '../Icon/Icon';
 
 export interface StatusProps extends UIComponentProps {
@@ -40,19 +46,19 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
     mapPropsToStyles: () => ({
       color,
       size,
-      state
+      state,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const getA11Props = useAccessibility(props.accessibility, {
     debugName: Status.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(Status.handledProps, props);
@@ -62,11 +68,13 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
       getA11Props('icon', {
         size: 'smallest',
         styles: resolvedStyles.icon,
-        xSpacing: 'none'
-      })
+        xSpacing: 'none',
+      }),
   });
 
-  const element = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>{iconElement}</ElementType>;
+  const element = (
+    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>{iconElement}</ElementType>
+  );
   setEnd();
 
   return element;
@@ -77,19 +85,19 @@ Status.displayName = 'Status';
 Status.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
-    content: false
+    content: false,
   }),
   color: PropTypes.string,
   icon: customPropTypes.itemShorthandWithoutJSX,
   size: customPropTypes.size,
-  state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown'])
+  state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };
 Status.handledProps = Object.keys(Status.propTypes) as any;
 Status.defaultProps = {
   accessibility: statusBehavior,
   as: 'span',
   size: 'medium',
-  state: 'unknown'
+  state: 'unknown',
 };
 
 Status.create = createShorthandFactory({ Component: Status, mappedProp: 'state' });

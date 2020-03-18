@@ -493,9 +493,8 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
   private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
-    // tslint:disable-next-line:deprecation
     const {
-      getItemClassNames,
+      getItemClassNames, // tslint:disable-line:deprecation
       itemProps,
       index,
       focusableElementIndex,

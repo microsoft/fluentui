@@ -9,9 +9,9 @@ const listStyles: ComponentSlotStylesPrepared<ListStylesProps> = {
     ...(p.isListTag && {
       listStyle: 'none',
       padding: 0,
-      margin: 0
-    })
-  })
+      margin: 0,
+    }),
+  }),
 };
 
 export default listStyles;

@@ -37,30 +37,41 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
   const { setStart, setEnd } = useTelemetry(Image.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, alt, 'aria-label': ariaLabel, avatar, circular, className, design, fluid, styles, variables } = props;
+  const {
+    accessibility,
+    alt,
+    'aria-label': ariaLabel,
+    avatar,
+    circular,
+    className,
+    design,
+    fluid,
+    styles,
+    variables,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Image.displayName,
     mapPropsToBehavior: () => ({
       alt,
-      'aria-label': ariaLabel
+      'aria-label': ariaLabel,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ImageStylesProps>(Image.displayName, {
     className: Image.className,
     mapPropsToStyles: () => ({
       avatar,
       circular,
-      fluid
+      fluid,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -77,17 +88,17 @@ Image.className = 'ui-image';
 Image.displayName = 'Image';
 Image.defaultProps = {
   as: 'img',
-  accessibility: imageBehavior
+  accessibility: imageBehavior,
 };
 
 Image.propTypes = {
   ...commonPropTypes.createCommon({
     children: false,
-    content: false
+    content: false,
   }),
   avatar: PropTypes.bool,
   circular: PropTypes.bool,
-  fluid: PropTypes.bool
+  fluid: PropTypes.bool,
 };
 
 Image.handledProps = Object.keys(Image.propTypes) as any;

@@ -32,5 +32,5 @@ export default (siteVars): Partial<DropdownVariables> => ({
   // disabled state
   disabledBorderColorHover: siteVars.colors.white,
   disabledTriggerColorHover: siteVars.colors.white,
-  disabledBackgroundColorHover: siteVars.colors.black
+  disabledBackgroundColorHover: siteVars.colors.black,
 });
