@@ -46,7 +46,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     console.log('on paste');
   };
 
-  const _renderSelectedItemsList = () => onRenderSelectedItems(selectedItemsListProps);
+  const _renderSelectedItemsList = (): JSX.Element => {
+    return onRenderSelectedItems(selectedItemsListProps);
+  };
   const _canAddItems = () => true;
   const _renderFloatingPicker = () => onRederFloatingSuggestions(floatingSuggestionProps);
 
