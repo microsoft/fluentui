@@ -65,7 +65,12 @@ const ComposedComponent = compose<ComposedComponentProps, ComposedComponentStyle
   }
 );
 
-const MultipleComposedComponent = compose<{}, any, BaseComponentProps & ComposedComponentProps, any>(ComposedComponent, {
+const MultipleComposedComponent = compose<
+  ComposedComponentProps,
+  ComposedComponentStylesProps,
+  BaseComponentProps & ComposedComponentProps,
+  BaseComponentStylesProps & ComposedComponentStylesProps
+>(ComposedComponent, {
   displayName: 'MultipleComposedComponent',
   mapPropsToStylesProps: props => ({ hidden: props.hidden, visible: undefined })
 });
