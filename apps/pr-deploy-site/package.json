@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/pr-deploy-site",
-  "version": "7.0.39",
+  "version": "7.0.40",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,9 @@
   "dependencies": {
     "@uifabric/charting": "^0.141.5",
     "@uifabric/date-time": "^7.8.42",
-    "@uifabric/experiments": "^7.22.4",
-    "@uifabric/fabric-website": "^7.10.8",
-    "@uifabric/fabric-website-resources": "^7.6.21",
+    "@uifabric/experiments": "^7.22.5",
+    "@uifabric/fabric-website": "^7.10.9",
+    "@uifabric/fabric-website-resources": "^7.6.22",
     "@uifabric/foundation-scenarios": "^0.102.45",
     "office-ui-fabric-react": "^7.105.0",
     "perf-test": "^7.0.0",

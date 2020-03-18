@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/experiments": "^7.22.4",
+    "@uifabric/experiments": "^7.22.5",
     "@uifabric/set-version": "^7.0.6",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",

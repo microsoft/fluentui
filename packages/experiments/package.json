@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "7.22.4",
+  "version": "7.22.5",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/azure-themes": "^7.0.46",
+    "@uifabric/azure-themes": "^7.0.47",
     "@uifabric/example-data": "^7.0.6",
     "@uifabric/file-type-icons": "^7.2.23",
     "@uifabric/fluent-theme": "^7.1.40",
