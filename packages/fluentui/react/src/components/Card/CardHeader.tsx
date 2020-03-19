@@ -71,7 +71,6 @@ CardHeader.propTypes = {
 CardHeader.defaultProps = {
   as: 'div',
   accessibility: cardHeaderBehavior,
-  noMarginAfter: false
 };
 
 CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;
