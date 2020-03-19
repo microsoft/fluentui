@@ -4,11 +4,98 @@
 
 ```ts
 
+// @public (undocumented)
+export const AmpersandKey: 55;
+
+// @public (undocumented)
+export const ArrowDownKey: 40;
+
+// @public (undocumented)
+export const ArrowLeftKey: 37;
+
+// @public (undocumented)
+export const ArrowRightKey: 39;
+
+// @public (undocumented)
+export const ArrowUpKey: 38;
+
+// @public (undocumented)
+export const AtSignKey: 50;
+
+// @public (undocumented)
+export const BackSlashKey: 220;
+
+// @public (undocumented)
+export const CaretKey: 54;
+
+// @public (undocumented)
+export const ColonKey: 186;
+
+// @public (undocumented)
+export const CommaKey: 188;
+
+// @public (undocumented)
+export const DecimalKey: 190;
+
+// @public (undocumented)
+export const Digit0Key: 48;
+
+// @public (undocumented)
+export const Digit1Key: 49;
+
+// @public (undocumented)
+export const Digit2Key: 50;
+
+// @public (undocumented)
+export const Digit3Key: 51;
+
+// @public (undocumented)
+export const Digit4Key: 52;
+
+// @public (undocumented)
+export const Digit5Key: 53;
+
+// @public (undocumented)
+export const Digit6Key: 54;
+
+// @public (undocumented)
+export const Digit7Key: 55;
+
+// @public (undocumented)
+export const Digit8Key: 56;
+
+// @public (undocumented)
+export const Digit9Key: 57;
+
+// @public (undocumented)
+export const DivisionSignKey: 191;
+
+// @public (undocumented)
+export const DoubleQuoteKey: 222;
+
+// @public (undocumented)
+export const EndKey: 35;
+
+// @public (undocumented)
+export const EnterKey: 13;
+
+// @public (undocumented)
+export const EqualsSignKey: 187;
+
+// @public (undocumented)
+export const ExclamationPointKey: 49;
+
 // @public
 export function getCode(eventOrKey: Partial<KeyboardEventLike> | string): number | undefined;
 
 // @public
 export function getKey(eventOrCode: Partial<KeyboardEventLike> | number): string | undefined;
+
+// @public (undocumented)
+export const GraveAccentKey: 192;
+
+// @public (undocumented)
+export const HomeKey: 36;
 
 // @public (undocumented)
 export type KeyboardEventLike = Pick<KeyboardEvent, 'key' | 'keyCode' | 'which' | 'shiftKey'>;
@@ -429,6 +516,72 @@ export interface KeyNames {
     // (undocumented)
     ZoomOut: 251;
 }
+
+// @public (undocumented)
+export const LeftAngleBracketKey: 188;
+
+// @public (undocumented)
+export const LeftCurlyBraceKey: 219;
+
+// @public (undocumented)
+export const LeftParenthesisKey: 57;
+
+// @public (undocumented)
+export const LeftSquareBracketKey: 219;
+
+// @public (undocumented)
+export const MinusSignKey: 189;
+
+// @public (undocumented)
+export const MultiplicationSignKey: 56;
+
+// @public (undocumented)
+export const PageDownKey: 34;
+
+// @public (undocumented)
+export const PageUpKey: 33;
+
+// @public (undocumented)
+export const PercentSignKey: 53;
+
+// @public (undocumented)
+export const PipeKey: 220;
+
+// @public (undocumented)
+export const PlusSignKey: 187;
+
+// @public (undocumented)
+export const PoundSignKey: 51;
+
+// @public (undocumented)
+export const QuestionMarkKey: 191;
+
+// @public (undocumented)
+export const RightAngleBracketKey: 190;
+
+// @public (undocumented)
+export const RightCurlyBraceKey: 221;
+
+// @public (undocumented)
+export const RightParenthesisKey: 48;
+
+// @public (undocumented)
+export const RightSquareBracketKey: 221;
+
+// @public (undocumented)
+export const SemicolonKey: 186;
+
+// @public (undocumented)
+export const SingleQuoteKey: 222;
+
+// @public (undocumented)
+export const SpacebarKey: 32;
+
+// @public (undocumented)
+export const TabKey: 9;
+
+// @public (undocumented)
+export const TildeKey: 192;
 
 
 // (No @packageDocumentation comment for this package)

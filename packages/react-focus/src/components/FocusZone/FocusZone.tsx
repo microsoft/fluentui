@@ -1,5 +1,17 @@
 import * as React from 'react';
-import { getCode, keyboardKey } from '@fluentui/keyboard-key';
+import {
+  ArrowDownKey,
+  ArrowLeftKey,
+  ArrowRightKey,
+  ArrowUpKey,
+  EndKey,
+  EnterKey,
+  HomeKey,
+  PageDownKey,
+  PageUpKey,
+  SpacebarKey,
+  TabKey
+} from '@fluentui/keyboard-key';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone, IFocusZoneProps } from './FocusZone.types';
 import {
   css,
@@ -432,7 +444,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (getCode(ev) === keyboardKey.Tab) {
+    if (ev.keyCode === TabKey) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
@@ -545,48 +557,48 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      switch (getCode(ev)) {
-        case keyboardKey.Spacebar:
+      switch (ev.keyCode) {
+        case SpacebarKey:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
           return;
 
-        case keyboardKey.ArrowLeft:
+        case ArrowLeftKey:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
             break;
           }
           return;
 
-        case keyboardKey.ArrowRight:
+        case ArrowRightKey:
           if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
             break;
           }
           return;
 
-        case keyboardKey.ArrowUp:
+        case ArrowUpKey:
           if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
             break;
           }
           return;
 
-        case keyboardKey.ArrowDown:
+        case ArrowDownKey:
           if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
             break;
           }
           return;
-        case keyboardKey.PageDown:
+        case PageDownKey:
           if (this._moveFocusPaging(true)) {
             break;
           }
           return;
-        case keyboardKey.PageUp:
+        case PageUpKey:
           if (this._moveFocusPaging(false)) {
             break;
           }
           return;
 
-        case keyboardKey.Tab:
+        case TabKey:
           if (
             // tslint:disable-next-line:deprecation
             this.props.allowTabKey ||
@@ -611,7 +623,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case keyboardKey.Home:
+        case HomeKey:
           if (this._isElementInput(ev.target as HTMLElement) && !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)) {
             return false;
           }
@@ -621,7 +633,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case keyboardKey.End:
+        case EndKey:
           if (this._isElementInput(ev.target as HTMLElement) && !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)) {
             return false;
           }
@@ -632,7 +644,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           }
           return;
 
-        case keyboardKey.Enter:
+        case EnterKey:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
           }
