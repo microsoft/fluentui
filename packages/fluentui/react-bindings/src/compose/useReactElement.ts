@@ -15,9 +15,10 @@ type ReactCurrentOwner<T extends React.ElementType, P extends Record<string, any
 
 const useReactElement = <T extends React.ElementType, P extends Record<string, any>>(): [
   ReactFiber<T, P>['type'] | undefined,
-  P | undefined
+  P | undefined,
 ] => {
-  const currentOwner: ReactCurrentOwner<T, P> = (React as any).__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED.ReactCurrentOwner;
+  const currentOwner: ReactCurrentOwner<T, P> = (React as any).__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED
+    .ReactCurrentOwner;
 
   return [currentOwner.current?.type, currentOwner.current?.pendingProps];
 };

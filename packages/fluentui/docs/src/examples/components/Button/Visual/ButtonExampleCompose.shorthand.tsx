@@ -1,9 +1,6 @@
-import { compose, Button, ButtonProps, Flex, Header, Provider } from '@fluentui/react';
+import { compose, Button, ButtonProps, ButtonStylesProps, Flex, Header, Provider } from '@fluentui/react';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
-
-/* TODO: fix me */
-type ButtonStylesProps = any;
 
 //
 // Components
@@ -23,14 +20,14 @@ const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, B
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
-  handledProps: ['tertiary']
+  handledProps: ['tertiary'],
 });
 
 // Adds overrides for a design term
 //
 
 const CompactTertiaryButton = compose(ComposedButton, {
-  displayName: 'CompactTertiaryButton'
+  displayName: 'CompactTertiaryButton',
 });
 
 // Composes custom button
@@ -47,10 +44,10 @@ const OverriddenButton = compose<OverriddenButtonProps, OverriddenButtonStylesPr
   className: 'ui-overridden-button',
   displayName: 'OverriddenButton',
   mapPropsToStylesProps: props => ({
-    fitted: props.fitted
+    fitted: props.fitted,
   }),
   handledProps: ['fitted'],
-  overrideStyles: true
+  overrideStyles: true,
 });
 
 //
@@ -83,16 +80,16 @@ const componentStyles: {
       ...(p.tertiary && {
         background: v.tertiaryBackground,
         borderColor: v.tertiaryBorderColor,
-        color: v.tertiaryColor
-      })
-    })
+        color: v.tertiaryColor,
+      }),
+    }),
   },
   CompactTertiaryButton: {
     root: ({ props: p, variables: v }) => ({
       ...(p.tertiary && {
-        padding: v.tertiaryPadding
-      })
-    })
+        padding: v.tertiaryPadding,
+      }),
+    }),
   },
 
   OverriddenButton: {
@@ -118,25 +115,25 @@ const componentStyles: {
       display: 'inline-block',
       verticalAlign: 'baseline',
 
-      ...(p.fitted && { padding: '.78571429em' })
-    })
-  }
+      ...(p.fitted && { padding: '.78571429em' }),
+    }),
+  },
 };
 
 const componentVariables: ComponentVariablesInput = {
   TertiaryButton: (siteVariables): ComponentVariables['TertiaryButton'] => ({
     tertiaryBackground: siteVariables.colorScheme.default.background3,
     tertiaryBorderColor: siteVariables.colorScheme.default.border2,
-    tertiaryColor: siteVariables.colorScheme.default.foreground3
+    tertiaryColor: siteVariables.colorScheme.default.foreground3,
   }),
   CompactTertiaryButton: (): ComponentVariables['CompactTertiaryButton'] => ({
-    tertiaryPadding: '.5rem'
-  })
+    tertiaryPadding: '.5rem',
+  }),
 };
 
 const customTheme: ThemeInput<ComponentStylesProps> = {
   componentStyles,
-  componentVariables
+  componentVariables,
 };
 
 //

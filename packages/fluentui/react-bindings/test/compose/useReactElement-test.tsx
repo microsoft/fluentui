@@ -29,7 +29,7 @@ describe('useReactElement', () => {
     const wrapper = mount(
       <ByPassComponent>
         <TestComponent value="foo" />
-      </ByPassComponent>
+      </ByPassComponent>,
     );
 
     expect(wrapper.find('div').prop('data-name')).toBe('ByPassComponent');
