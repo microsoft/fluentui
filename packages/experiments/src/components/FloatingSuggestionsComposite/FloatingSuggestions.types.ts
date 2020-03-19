@@ -65,7 +65,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Target element here callout should be mounted
    * Pass the element current value to position the callout
    */
-  targetElement: HTMLInputElement | null;
+  targetElement: HTMLInputElement | undefined | null;
   /**
    * Callout width
    */

@@ -3,9 +3,13 @@ import {
   IFloatingSuggestionItemProps,
   FloatingPeopleSuggestions,
   IFloatingSuggestionItem,
+  IFloatingPeopleSuggestionsProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
+import { UnifiedPeoplePicker } from '@uifabric/experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
+import { ISelectedPeopleListProps } from '../../../SelectedItemsList';
+import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 const _suggestions = [
   {
@@ -85,17 +89,50 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
     });
   };
 
+  const selectionListSelection: Selection = new Selection();
+
+  const floatingPeoplePickerProps = {
+    suggestions: [...peopleSuggestions],
+    isSuggestionsVisible: false,
+    targetElement: null,
+    onSuggestionSelected: _onSuggestionSelected,
+    onRemoveSuggestion: _onSuggestionRemoved,
+    suggestionsHeaderText: 'People suggestions',
+    noResultsFoundText: 'No suggestions',
+    onFloatingSuggestionsDismiss: undefined,
+    showSuggestionRemoveButton: true,
+  } as IFloatingPeopleSuggestionsProps;
+
+  const selectedPeopleListProps = {
+    ref: null,
+    key: 'normal',
+    removeButtonAriaLabel: 'Remove',
+    defaultSelectedItems: [mru[0]],
+    selectedItems: [mru[1]],
+    selection: selectionListSelection,
+    onItemsRemoved: () => {
+      console.log('example onItemsRemoved');
+    },
+  } as ISelectedPeopleListProps<IPersonaProps>;
+
   return (
-    <FloatingPeopleSuggestions
-      suggestions={[...peopleSuggestions]}
-      isSuggestionsVisible={true}
-      targetElement={null}
-      onSuggestionSelected={_onSuggestionSelected}
-      onRemoveSuggestion={_onSuggestionRemoved}
-      suggestionsHeaderText={'People suggestions'}
-      noResultsFoundText={'No suggestions'}
-      onFloatingSuggestionsDismiss={undefined}
-      showSuggestionRemoveButton={true}
-    />
+    <>
+      {/* <FloatingPeopleSuggestions
+        suggestions={[...peopleSuggestions]}
+        isSuggestionsVisible={true}
+        targetElement={null}
+        onSuggestionSelected={_onSuggestionSelected}
+        onRemoveSuggestion={_onSuggestionRemoved}
+        suggestionsHeaderText={'People suggestions'}
+        noResultsFoundText={'No suggestions'}
+        onFloatingSuggestionsDismiss={undefined}
+        showSuggestionRemoveButton={true}
+      /> */}
+      <br />
+      <UnifiedPeoplePicker
+        selectedItemsListProps={selectedPeopleListProps}
+        floatingSuggestionProps={floatingPeoplePickerProps}
+      />
+    </>
   );
 };

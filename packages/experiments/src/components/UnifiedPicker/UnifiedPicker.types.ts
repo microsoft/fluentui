@@ -72,4 +72,9 @@ export interface IUnifiedPickerProps<T> {
    * Header component
    */
   headerComponent?: JSX.Element;
+
+  /**
+   * On paste to input
+   */
+  onPaste?: (pastedValue: string, selectedItemsList: T[]) => void;
 }

@@ -4,6 +4,8 @@ import { classNamesFunction, css, SelectionMode, Selection } from '../../Utiliti
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
+import { useQueryString } from './hooks/useQueryString';
+import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -11,7 +13,18 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const rootRef = React.createRef<HTMLDivElement>();
   const input = React.createRef<Autofill>();
-  const [selection] = React.useState(new Selection());
+  const { queryString, setQueryString } = useQueryString('');
+  const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
+  const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
+  const { focusItemIndex, suggestionItems, isSuggestionsShown, showPicker } = useFloatingSuggestionItems(
+    suggestions,
+    selectedSuggestionIndex,
+    isSuggestionsVisible
+  );
+
+  const _onSelectionChanged = () => {
+    setSelection(selection);
+  };
 
   const {
     className,
@@ -33,16 +46,33 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const _onCopy = () => {
     console.log('copy handler');
   };
-  const _onInputFocus = () => {
+  const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
+    // unselect all selected items
+    if (props.inputProps && props.inputProps.onFocus) {
+      props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
+    }
     console.log('on iput focus');
   };
   const _onInputClick = () => {
+    // unselect all selected items
+    showPicker(true);
     console.log('on input click');
   };
-  const _onInputChange = () => {
-    console.log('on input change');
+  const _onInputChange = (value: string, composing?: boolean) => {
+    if (!composing) {
+      // update query string
+      setQueryString(value);
+      // update floatingpicker suggestions
+    }
+    console.log(`${value} :on input change`);
   };
-  const _onPaste = () => {
+  const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
+    if (props.onPaste) {
+      const inputText = ev.clipboardData.getData('Text');
+      ev.preventDefault();
+      // Pass current selected items
+      props.onPaste(inputText, []);
+    }
     console.log('on paste');
   };
 
@@ -50,7 +80,14 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return onRenderSelectedItems(selectedItemsListProps);
   };
   const _canAddItems = () => true;
-  const _renderFloatingPicker = () => onRederFloatingSuggestions(floatingSuggestionProps);
+  const _renderFloatingPicker = () =>
+    onRederFloatingSuggestions({
+      ...floatingSuggestionProps,
+      targetElement: input.current?.inputElement,
+      isSuggestionsVisible: isSuggestionsShown,
+      suggestions: suggestionItems,
+      selectedSuggestionIndex: focusItemIndex
+    });
 
   return (
     <div
