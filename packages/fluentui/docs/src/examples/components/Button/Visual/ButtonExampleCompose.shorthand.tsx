@@ -1,4 +1,4 @@
-import { compose, Button, ButtonProps, ButtonStylesProps, Flex, Header, Provider } from '@fluentui/react';
+import { compose, Button, ButtonProps, ButtonStylesProps, Flex, Header, Provider } from '@fluentui/react-northstar';
 import { ComponentSlotStylesInput, ComponentVariablesInput, ThemeInput } from '@fluentui/styles';
 import * as React from 'react';
 
