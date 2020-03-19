@@ -27,6 +27,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
+import { BoxProps } from '../Box/Box';
 import { hasSubtree, TreeContext } from './utils';
 
 export interface TreeItemSlotClassNames {
@@ -86,6 +87,18 @@ export interface TreeItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Properties for TreeTitle. */
   title?: ShorthandValue<TreeTitleProps>;
+
+  /** Whether or not the item can be selectable. */
+  selectable?: boolean;
+
+  /** A state of selection indicator. */
+  selected?: boolean;
+
+  /** A selection indicator icon can be customized. */
+  selectionIndicator?: ShorthandValue<BoxProps>;
+
+  /** Whether or not tree item is part of the selectable parent. */
+  selectableParent?: boolean;
 }
 
 export type TreeItemStylesProps = Required<Pick<TreeItemProps, 'level'>>;
@@ -110,6 +123,10 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
     styles,
     variables,
     treeSize,
+    selectionIndicator,
+    selectableParent,
+    selected,
+    selectable,
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
@@ -161,6 +178,9 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
       index,
       hasSubtree: hasSubtreeItem,
       treeSize,
+      selected,
+      selectable,
+      selectableParent,
     }),
     rtl: context.rtl,
   });
@@ -219,6 +239,10 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
                 level,
                 treeSize,
                 index,
+                selected,
+                selectable,
+                selectableParent,
+                selectionIndicator,
               }),
             render: renderItemTitle,
             overrideProps: handleTitleOverrides,
@@ -258,6 +282,10 @@ TreeItem.propTypes = {
   renderItemTitle: PropTypes.func,
   treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand,
+  selectionIndicator: customPropTypes.itemShorthand,
+  selected: PropTypes.bool,
+  selectable: PropTypes.bool,
+  selectableParent: PropTypes.bool,
 };
 TreeItem.defaultProps = {
   accessibility: treeItemBehavior,
