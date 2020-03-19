@@ -25,6 +25,7 @@ import {
 } from '../../types';
 import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import Box, { BoxProps } from '../Box/Box';
+import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
 
 export interface ToolbarMenuRadioGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -66,6 +67,9 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
 
   const { accessibility, activeIndex, className, design, items, styles, variables, wrapper } = props;
 
+  const parentVariables = React.useContext(ToolbarVariablesContext);
+  const mergedVariables = mergeComponentVariables(parentVariables, variables);
+
   const getA11yProps = useAccessibility(accessibility, {
     debugName: ToolbarMenuRadioGroup.displayName,
     rtl: context.rtl
@@ -76,7 +80,7 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
       className,
       design,
       styles,
-      variables
+      variables: mergedVariables
     }),
     rtl: context.rtl
   });
@@ -86,7 +90,6 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
       _.invoke(predefinedProps, 'onClick', e, itemProps);
       _.invoke(props, 'onItemClick', e, itemProps);
     },
-    variables: mergeComponentVariables(variables, predefinedProps.variables),
     wrapper: null
   });
 
@@ -95,17 +98,19 @@ const ToolbarMenuRadioGroup: React.FC<WithAsProp<ToolbarMenuRadioGroupProps>> &
 
   const content = (
     <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })}>
-      {_.map(items, (item, index) =>
-        ToolbarMenuItem.create(item, {
-          defaultProps: () => ({
-            accessibility: toolbarMenuItemRadioBehavior,
-            as: 'li',
-            active: activeIndex === index,
-            index
-          }),
-          overrideProps: handleItemOverrides
-        })
-      )}
+      <ToolbarVariablesProvider value={mergedVariables}>
+        {_.map(items, (item, index) =>
+          ToolbarMenuItem.create(item, {
+            defaultProps: () => ({
+              accessibility: toolbarMenuItemRadioBehavior,
+              as: 'li',
+              active: activeIndex === index,
+              index
+            }),
+            overrideProps: handleItemOverrides
+          })
+        )}
+      </ToolbarVariablesProvider>
     </ElementType>
   );
   const element = Box.create(wrapper, {

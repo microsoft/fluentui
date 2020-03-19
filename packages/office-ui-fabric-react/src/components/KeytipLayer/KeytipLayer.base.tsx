@@ -3,7 +3,7 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { BaseComponent, classNamesFunction, getDocument, arraysEqual, warn, isMac } from '../../Utilities';
+import { classNamesFunction, getDocument, arraysEqual, warn, isMac, EventGroup, Async, initializeComponentRef } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
@@ -37,13 +37,16 @@ const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerSty
  * A layer that holds all keytip items
  * {@docCategory Keytips}
  */
-export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
+export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
     content: ''
   };
+
+  private _events: EventGroup;
+  private _async: Async;
 
   private _keytipTree: KeytipTree;
 
@@ -61,6 +64,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   constructor(props: IKeytipLayerProps, context: any) {
     super(props, context);
 
+    initializeComponentRef(this);
+    this._events = new EventGroup(this);
+    this._async = new Async(this);
+
     const managerKeytips = [...this._keytipManager.getKeytips()];
     this.state = {
       inKeytipMode: false,
@@ -69,11 +76,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       visibleKeytips: this._getVisibleKeytips(managerKeytips)
     };
 
-    this._keytipTree = new KeytipTree();
-    // Add regular and persisted keytips to the tree
-    for (const uniqueKeytip of this._keytipManager.keytips.concat(this._keytipManager.persistedKeytips)) {
-      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
-    }
+    this._buildTree();
 
     this._currentSequence = '';
 
@@ -127,23 +130,8 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
   }
 
   public componentWillUnmount(): void {
-    // Remove window listeners
-    this._events.off(window, 'mouseup', this._onDismiss, true /* useCapture */);
-    this._events.off(window, 'pointerup', this._onDismiss, true /* useCapture */);
-    this._events.off(window, 'resize', this._onDismiss);
-    this._events.off(window, 'keydown', this._onKeyDown, true /* useCapture */);
-    this._events.off(window, 'keypress', this._onKeyPress, true /* useCapture */);
-    this._events.off(window, 'scroll', this._onDismiss, true /* useCapture */);
-
-    // Remove keytip listeners
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_ADDED, this._onKeytipAdded);
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_UPDATED, this._onKeytipUpdated);
-    this._events.off(this._keytipManager, KeytipEvents.KEYTIP_REMOVED, this._onKeytipRemoved);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_ADDED, this._onPersistedKeytipAdded);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_REMOVED, this._onPersistedKeytipRemoved);
-    this._events.off(this._keytipManager, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, this._onPersistedKeytipExecute);
-    this._events.off(this._keytipManager, KeytipEvents.ENTER_KEYTIP_MODE, this._enterKeytipMode);
-    this._events.off(this._keytipManager, KeytipEvents.EXIT_KEYTIP_MODE, this._exitKeytipMode);
+    this._async.dispose();
+    this._events.dispose();
   }
 
   // The below public functions are only public for testing purposes
@@ -285,6 +273,10 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
    */
   private _enterKeytipMode(): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
+      if (this._keytipManager.delayUpdatingKeytipChange) {
+        this._buildTree();
+        this._setKeytips();
+      }
       this._keytipTree.currentKeytip = this._keytipTree.root;
       // Show children of root
       this.showKeytips(this._keytipTree.getChildren());
@@ -294,6 +286,20 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
       if (this.props.onEnterKeytipMode) {
         this.props.onEnterKeytipMode();
       }
+    }
+  }
+
+  private _buildTree(): void {
+    this._keytipTree = new KeytipTree();
+    // Add regular and persisted keytips to the tree
+    for (const id of Object.keys(this._keytipManager.keytips)) {
+      const uniqueKeytip = this._keytipManager.keytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
+    }
+
+    for (const id of Object.keys(this._keytipManager.persistedKeytips)) {
+      const uniqueKeytip = this._keytipManager.persistedKeytips[id];
+      this._keytipTree.addNode(uniqueKeytip.keytip, uniqueKeytip.uniqueID);
     }
   }
 

@@ -33,6 +33,34 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(true);
       });
 
+      it('adds the keytip to the array and raises a keytipAdded event if we delay updating and are not in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.KEYTIP_ADDED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = false;
+        ktpMgr.register(keytipBProps);
+        const keytips = ktpMgr.getKeytips();
+        expect(keytips).toHaveLength(1);
+        expect(arraysEqual(keytips[0].keySequences, keytipSequenceB)).toEqual(true);
+        expect(eventTriggered).toEqual(false);
+      });
+
+      it('adds the keytip to the array and raises a keytipAdded event if we delay updating and are in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.KEYTIP_ADDED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = true;
+        ktpMgr.register(keytipBProps);
+        const keytips = ktpMgr.getKeytips();
+        expect(keytips).toHaveLength(1);
+        expect(arraysEqual(keytips[0].keySequences, keytipSequenceB)).toEqual(true);
+        expect(eventTriggered).toEqual(true);
+      });
+
       it('adds a duplicate keytip because their unique IDs are different', () => {
         const uniqueID1 = ktpMgr.register(keytipBProps);
         const uniqueID2 = ktpMgr.register(keytipBProps);
@@ -54,7 +82,7 @@ describe('KeytipManager', () => {
         expect(keytips[0].onExecute).toBeDefined();
       });
 
-      it('raises a keytipUpdated event', () => {
+      it('does not raise a keytipUpdated event when not in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.KEYTIP_UPDATED, (eventArgs: any) => {
           eventTriggered = true;
@@ -63,14 +91,65 @@ describe('KeytipManager', () => {
         ktpMgr.update(keytipBProps, uniqueID);
         expect(eventTriggered).toEqual(true);
       });
+
+      it('does not raise a keytipUpdated event if we delay updating and are not in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.KEYTIP_UPDATED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = false;
+        const uniqueID = ktpMgr.register(keytipBProps);
+        ktpMgr.update(keytipBProps, uniqueID);
+        expect(eventTriggered).toEqual(false);
+      });
+
+      it('raise a keytipUpdated event if we delay updating and are in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.KEYTIP_UPDATED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = true;
+        const uniqueID = ktpMgr.register(keytipBProps);
+        ktpMgr.update(keytipBProps, uniqueID);
+
+        expect(eventTriggered).toEqual(true);
+      });
     });
 
     describe('unregisterKeytip', () => {
-      it('removes a keytip from the array and raises a keytipRemoved event', () => {
+      it('removes a keytip from the array and raise a keytipRemoved event', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.KEYTIP_REMOVED, (eventArgs: any) => {
           eventTriggered = true;
         });
+        const uniqueID = ktpMgr.register(keytipBProps);
+        ktpMgr.unregister(keytipBProps, uniqueID);
+        expect(ktpMgr.getKeytips()).toHaveLength(0);
+        expect(eventTriggered).toEqual(true);
+      });
+
+      it('removes a keytip from the array and does not raise a keytipRemoved event when delaying updates', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.KEYTIP_REMOVED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = false;
+        const uniqueID = ktpMgr.register(keytipBProps);
+        ktpMgr.unregister(keytipBProps, uniqueID);
+        expect(ktpMgr.getKeytips()).toHaveLength(0);
+        expect(eventTriggered).toEqual(false);
+      });
+
+      it('removes a keytip from the array and raises a keytipRemoved event when delaying updates', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.KEYTIP_REMOVED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = true;
         const uniqueID = ktpMgr.register(keytipBProps);
         ktpMgr.unregister(keytipBProps, uniqueID);
         expect(ktpMgr.getKeytips()).toHaveLength(0);
@@ -85,7 +164,31 @@ describe('KeytipManager', () => {
           eventTriggered = true;
         });
         ktpMgr.register(keytipBProps, true);
-        expect(ktpMgr.persistedKeytips).toHaveLength(1);
+        expect(Object.keys(ktpMgr.persistedKeytips)).toHaveLength(1);
+        expect(eventTriggered).toEqual(true);
+      });
+
+      it('adds the keytip to the array and does not raise persistedKeytipAdded event while delaying updates and not in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = false;
+        ktpMgr.register(keytipBProps, true);
+        expect(Object.keys(ktpMgr.persistedKeytips)).toHaveLength(1);
+        expect(eventTriggered).toEqual(false);
+      });
+
+      it('adds the keytip to the array and raises a persistedKeytipAdded event while delaying updates in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = true;
+        ktpMgr.register(keytipBProps, true);
+        expect(Object.keys(ktpMgr.persistedKeytips)).toHaveLength(1);
         expect(eventTriggered).toEqual(true);
       });
     });
@@ -98,7 +201,33 @@ describe('KeytipManager', () => {
         });
         const uniqueID = ktpMgr.register(keytipBProps, true);
         ktpMgr.unregister(keytipBProps, uniqueID, true);
-        expect(ktpMgr.persistedKeytips).toHaveLength(0);
+        expect(Object.keys(ktpMgr.persistedKeytips)).toHaveLength(0);
+        expect(eventTriggered).toEqual(true);
+      });
+
+      it('removes a keytip to the array and does not raises a persistedKeytipRemoved event while delaying updates and not in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = false;
+        const uniqueID = ktpMgr.register(keytipBProps, true);
+        ktpMgr.unregister(keytipBProps, uniqueID, true);
+        expect(Object.keys(ktpMgr.persistedKeytips)).toHaveLength(0);
+        expect(eventTriggered).toEqual(false);
+      });
+
+      it('removes a keytip to the array and raises a persistedKeytipRemoved event while delaying updates in keytip mode', () => {
+        let eventTriggered = false;
+        events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {
+          eventTriggered = true;
+        });
+        ktpMgr.delayUpdatingKeytipChange = true;
+        ktpMgr.inKeytipMode = true;
+        const uniqueID = ktpMgr.register(keytipBProps, true);
+        ktpMgr.unregister(keytipBProps, uniqueID, true);
+        expect(Object.keys(ktpMgr.persistedKeytips)).toHaveLength(0);
         expect(eventTriggered).toEqual(true);
       });
     });

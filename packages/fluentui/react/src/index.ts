@@ -1,10 +1,9 @@
+import * as themes from './themes';
+
 //
 // Theme
 //
-// work around api-extractor limitation
-import { fontAwesome, teams, teamsDark, teamsHighContrast } from './themes';
-
-export const themes = { fontAwesome, teams, teamsDark, teamsHighContrast };
+export { themes };
 export * from './themes/types';
 export * from './themes/colorUtils';
 
@@ -39,6 +38,8 @@ export * from './components/Button/Button';
 export { default as Button } from './components/Button/Button';
 export * from './components/Button/ButtonGroup';
 export { default as ButtonGroup } from './components/Button/ButtonGroup';
+export * from './components/Button/ButtonContent';
+export { default as ButtonContent } from './components/Button/ButtonContent';
 
 export * from './components/Chat/Chat';
 export { default as Chat } from './components/Chat/Chat';

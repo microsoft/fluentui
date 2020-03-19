@@ -80,7 +80,7 @@ export class AutoScroll {
     dispose(): void;
     }
 
-// @public
+// @public @deprecated
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected readonly _async: Async;
@@ -281,6 +281,11 @@ export function focusAsync(element: HTMLElement | {
 
 // @public
 export function focusFirstChild(rootElement: HTMLElement): boolean;
+
+// @public
+export const FocusRects: React.FunctionComponent<{
+    rootRef?: React.RefObject<HTMLElement>;
+}>;
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -576,7 +581,7 @@ export const imgProperties: string[];
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
-// @public
+// @public @deprecated
 export function initializeFocusRects(window?: Window): void;
 
 // @public
@@ -1133,7 +1138,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
+export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
@@ -1161,6 +1166,9 @@ export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 
 // @public
 export function values<T>(obj: any): T[];

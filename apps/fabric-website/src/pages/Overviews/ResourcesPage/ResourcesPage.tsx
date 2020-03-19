@@ -45,6 +45,15 @@ function _otherSections(): IPageSectionProps[] {
           }
         </Markdown>
       )
+    },
+    {
+      sectionName: 'Microsoft employees',
+      editUrl: baseUrl + 'docs/default/MicrosoftEmployees.md',
+      content: (
+        <Markdown>
+          {require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/MicrosoftEmployees.md') as string}
+        </Markdown>
+      )
     }
   ];
 }

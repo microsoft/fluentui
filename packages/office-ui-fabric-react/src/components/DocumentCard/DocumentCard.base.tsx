@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { BaseComponent, classNamesFunction, KeyCodes, getNativeProps, divProperties } from '../../Utilities';
+import { classNamesFunction, KeyCodes, getNativeProps, divProperties, warnDeprecations, initializeComponentRef } from '../../Utilities';
 import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
+const COMPONENT_NAME = 'DocumentCard';
+
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
+export class DocumentCardBase extends React.Component<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
   };
@@ -19,7 +21,8 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
   constructor(props: IDocumentCardProps) {
     super(props);
 
-    this._warnDeprecations({
+    initializeComponentRef(this);
+    warnDeprecations(COMPONENT_NAME, props, {
       accentColor: undefined
     });
   }

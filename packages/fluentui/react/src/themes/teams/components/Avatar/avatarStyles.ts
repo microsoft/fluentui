@@ -1,9 +1,7 @@
 import { pxToRem } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { AvatarProps } from '../../../../components/Avatar/Avatar';
+import { AvatarStylesProps } from '../../../../components/Avatar/Avatar';
 import { AvatarVariables } from './avatarVariables';
-
-export type AvatarStylesProps = Pick<AvatarProps, 'size'>;
 
 const sizeToPxValue = {
   smallest: 24,
@@ -28,7 +26,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       width: sizeInRem
     };
   },
-  image: ({ variables: v }): ICSSInJSStyle => ({
+  image: ({ props: p, variables: v }): ICSSInJSStyle => ({
     borderColor: v.avatarBorderColor,
     borderStyle: 'solid',
     borderWidth: v.avatarBorderWidth,
@@ -36,19 +34,26 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
     height: '100%',
     objectFit: 'cover',
     verticalAlign: 'top',
-    width: '100%'
+    width: '100%',
+
+    ...(p.square && {
+      borderRadius: v.squareAvatarBorderRadius
+    })
   }),
-  label: ({ props: { size } }): ICSSInJSStyle => {
-    const sizeInRem = pxToRem(sizeToPxValue[size]);
+  label: ({ props: p, variables: v }): ICSSInJSStyle => {
+    const sizeInRem = pxToRem(sizeToPxValue[p.size]);
     return {
       display: 'inline-block',
       width: sizeInRem,
       height: sizeInRem,
       lineHeight: sizeInRem,
-      fontSize: pxToRem(sizeToPxValue[size] / 2.333),
+      fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
       verticalAlign: 'top',
       textAlign: 'center',
-      padding: '0px'
+      padding: '0px',
+      ...(p.square && {
+        borderRadius: v.squareAvatarBorderRadius
+      })
     };
   },
   status: ({ variables: v }): ICSSInJSStyle => ({

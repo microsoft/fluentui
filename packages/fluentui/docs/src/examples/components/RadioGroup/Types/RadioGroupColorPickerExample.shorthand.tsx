@@ -17,11 +17,10 @@ class RadioGroupColorPickerExample extends React.Component {
             value: color,
             name: color,
             'aria-label': color,
-            icon: {
-              name: 'icon-circle',
-              variables: {
-                color
-              }
+            variables: {
+              indicatorBorderColorDefault: color,
+              indicatorBackgroundColorChecked: color,
+              indicatorBorderColorDefaultHover: color
             }
           }))}
           onCheckedValueChange={(e, props) => this.setState({ selectedValue: props.value })}

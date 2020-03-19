@@ -7,15 +7,7 @@ import * as _ from 'lodash';
 import cx from 'classnames';
 import * as keyboardKey from 'keyboard-key';
 
-import {
-  DebounceResultFn,
-  ShorthandRenderFunction,
-  ShorthandValue,
-  ComponentEventHandler,
-  ShorthandCollection,
-  WithAsProp,
-  withSafeTypeForAs
-} from '../../types';
+import { DebounceResultFn, ShorthandRenderFunction, ShorthandValue, ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ComponentSlotStylesInput, ComponentVariablesInput } from '@fluentui/styles';
 import Downshift, {
   DownshiftState,
@@ -34,10 +26,10 @@ import DropdownSelectedItem, { DropdownSelectedItemProps } from './DropdownSelec
 import DropdownSearchInput, { DropdownSearchInputProps } from './DropdownSearchInput';
 import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
-import ListItem, { ListItemProps } from '../List/ListItem';
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
+import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -151,35 +143,35 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
    * @param event - React's original SyntheticEvent.
    * @param data - All props and the new selected value(s).
    */
-  onActiveSelectedIndexChange?: ComponentEventHandler<DropdownProps>;
+  onActiveSelectedIndexChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown's highlighted index change.
    * @param event - React's original SyntheticEvent.
    * @param data - All props and the new selected value(s).
    */
-  onHighlightedIndexChange?: ComponentEventHandler<DropdownProps>;
+  onHighlightedIndexChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown opens or closes.
    * @param event - React's original SyntheticEvent.
    * @param data - All props, with `open` reflecting the new open state.
    */
-  onOpenChange?: ComponentEventHandler<DropdownProps>;
+  onOpenChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown's search query changes.
    * @param event - React's original SyntheticEvent.
    * @param data - All props, with `searchQuery` reflecting its new value.
    */
-  onSearchQueryChange?: ComponentEventHandler<DropdownProps>;
+  onSearchQueryChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /**
    * Called when the dropdown's selected item(s) change.
    * @param event - React's original SyntheticEvent.
    * @param data - All props and the new selected value(s).
    */
-  onChange?: ComponentEventHandler<DropdownProps>;
+  onChange?: (event: React.MouseEvent | React.KeyboardEvent | null, data: DropdownProps) => void;
 
   /** A dropdown's open state can be controlled. */
   open?: boolean;
@@ -707,21 +699,25 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
     return [
       ...items,
-      loading &&
-        ListItem.create(loadingMessage, {
-          defaultProps: () => ({
-            key: 'loading-message',
-            styles: styles.loadingMessage
+      loading && {
+        children: () =>
+          ListItem.create(loadingMessage, {
+            defaultProps: () => ({
+              key: 'loading-message',
+              styles: styles.loadingMessage
+            })
           })
-        }),
+      },
       !loading &&
-        items.length === 0 &&
-        ListItem.create(noResultsMessage, {
-          defaultProps: () => ({
-            key: 'no-results-message',
-            styles: styles.noResultsMessage
-          })
-        })
+        items.length === 0 && {
+          children: () =>
+            ListItem.create(noResultsMessage, {
+              defaultProps: () => ({
+                key: 'no-results-message',
+                styles: styles.noResultsMessage
+              })
+            })
+        }
     ];
   }
 

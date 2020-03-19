@@ -8,7 +8,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceStyles => {
-  const { theme } = props;
+  const { theme, presenceColors } = props;
   const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -17,12 +17,13 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
   const presence = presenceBoolean(props.presence as PersonaPresence);
 
   // Presence colors
-  const presenceColorAvailable = '#6BB700';
-  const presenceColorAway = '#FFAA44';
-  const presenceColorBusy = '#C43148';
-  const presenceColorDnd = '#C50F1F';
-  const presenceColorOffline = '#8A8886';
-  const presenceColorOof = '#B4009E';
+  const presenceColorAvailable = (presenceColors && presenceColors.available) || '#6BB700';
+  const presenceColorAway = (presenceColors && presenceColors.away) || '#FFAA44';
+  const presenceColorBusy = (presenceColors && presenceColors.busy) || '#C43148';
+  const presenceColorDnd = (presenceColors && presenceColors.dnd) || '#C50F1F';
+  const presenceColorOffline = (presenceColors && presenceColors.offline) || '#8A8886';
+  const presenceColorOof = (presenceColors && presenceColors.oof) || '#B4009E';
+  const presenceColorBackground = (presenceColors && presenceColors.background) || semanticColors.bodyBackground;
 
   const isOpenCirclePresence =
     presence.isOffline || (props.isOutOfOffice && (presence.isAvailable || presence.isBusy || presence.isAway || presence.isDoNotDisturb));
@@ -43,7 +44,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         top: 'auto',
         right: '-2px',
         bottom: '-2px',
-        border: `2px solid ${semanticColors.bodyBackground}`,
+        border: `2px solid ${presenceColorBackground}`,
         textAlign: 'center',
         boxSizing: 'content-box',
         backgroundClip: 'content-box',
@@ -138,7 +139,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
 
       (isOpenCirclePresence || presence.isBlocked) && [
         {
-          backgroundColor: semanticColors.bodyBackground,
+          backgroundColor: presenceColorBackground,
 
           selectors: {
             ':before': {
@@ -185,7 +186,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
     presenceIcon: [
       classNames.presenceIcon,
       {
-        color: semanticColors.bodyBackground,
+        color: presenceColorBackground,
         fontSize: '6px', // exception case where we don't have an available theme.fonts variable to match it.
         lineHeight: personaPresenceSize.size12,
         verticalAlign: 'top',

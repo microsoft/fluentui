@@ -72,6 +72,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       onRenderInitials = this._onRenderInitials,
       presence,
       presenceTitle,
+      presenceColors,
       showInitialsUntilImageLoads,
       theme
     } = this.props;
@@ -87,6 +88,7 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
       isOutOfOffice,
       presence,
       presenceTitle,
+      presenceColors,
       size,
       theme
     };

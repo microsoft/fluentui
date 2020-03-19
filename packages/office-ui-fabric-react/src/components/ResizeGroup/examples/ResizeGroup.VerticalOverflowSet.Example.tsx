@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   mergeStyles,
   IContextualMenuItem,
   ResizeGroupDirection,
@@ -59,7 +58,7 @@ const buttonStyles: IButtonStyles = {
 const exampleHeight = '40vh';
 const resizeRootClassName = mergeStyles({ height: exampleHeight });
 
-export class ResizeGroupVerticalOverflowSetExample extends BaseComponent {
+export class ResizeGroupVerticalOverflowSetExample extends React.Component {
   public render(): JSX.Element {
     const dataToRender = generateData(20, false, false);
     return (

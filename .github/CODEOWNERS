@@ -33,7 +33,7 @@ azure-pipelines.*.yml @ecraig12345 @kenotron @JasonGore
 sizeauditor.json @aftab-hassan
 
 #### Fluent UI
-packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @jdhuntington @ecraig12345 @dzearing @jasongore @pompomon @silviuavram @jurokapsiar
+packages/fluentui/ @davezuko @layershifter @levithomason @miroslavstastny @mnajdova @jdhuntington @dzearing @jasongore @pompomon @silviuavram @jurokapsiar
 
 #### Deprecated API Files
 *.api.ts @natalieethell
@@ -106,7 +106,7 @@ packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/HoverCard/   @atneik @Jahnp @Vitalius1
-packages/office-ui-fabric-react/src/components/Icon/ @dzearing
+packages/office-ui-fabric-react/src/components/Icon/ @dzearing @ecraig12345
 packages/office-ui-fabric-react/src/components/Image/ @dzearing
 packages/office-ui-fabric-react/src/components/Label/ @cliffkoh
 packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon @JasonGore

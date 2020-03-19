@@ -5,16 +5,20 @@ import {
   ContextualMenuItemType,
   IContextualMenuListProps,
   IContextualMenuStyleProps,
-  IContextualMenuStyles
+  IContextualMenuStyles,
+  IContextualMenuItemRenderProps
 } from './ContextualMenu.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
-import { divProperties, getNativeProps, shallowCompare } from '../../Utilities';
-
 import {
+  divProperties,
+  getNativeProps,
+  shallowCompare,
+  warnDeprecations,
+  Async,
+  EventGroup,
   assign,
-  BaseComponent,
   classNamesFunction,
   css,
   getDocument,
@@ -29,7 +33,8 @@ import {
   shouldWrapFocus,
   IStyleFunctionOrObject,
   isIOS,
-  isMac
+  isMac,
+  initializeComponentRef
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
@@ -38,7 +43,6 @@ import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
 import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
-
 import { getItemStyles } from './ContextualMenu.classNames';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
@@ -86,8 +90,10 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean {
 
 const NavigationIdleDelay = 250 /* ms */;
 
+const COMPONENT_NAME = 'ContextualMenu';
+
 @withResponsiveMode
-export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
+export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
   // The default ContextualMenu properties have no items and beak, the default submenu direction is right and top.
   public static defaultProps: IContextualMenuProps = {
     items: [],
@@ -97,6 +103,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     beakWidth: 16
   };
 
+  private _async: Async;
+  private _events: EventGroup;
   private _id: string;
   private _host: HTMLElement;
   private _previousActiveElement: HTMLElement | null;
@@ -120,14 +128,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   constructor(props: IContextualMenuProps) {
     super(props);
 
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
+      getMenuClassNames: 'styles'
+    });
+
     this.state = {
       contextualMenuItems: undefined,
       subMenuId: getId('ContextualMenu')
     };
-
-    this._warnDeprecations({
-      getMenuClassNames: 'styles'
-    });
 
     this._id = props.id || getId('ContextualMenu');
     this._isFocusingPreviousElement = false;
@@ -352,7 +364,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
                     items,
                     totalItemCount,
                     hasCheckmarks,
-                    hasIcons
+                    hasIcons,
+                    defaultMenuItemRenderer: this._renderMenuItem
                   },
                   this._onRenderMenuList
                 )}
@@ -439,14 +452,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          const menuItem = this._renderMenuItem(
-            item,
+          const menuItem = this._renderMenuItem({
+            ...item,
             index,
-            indexCorrection,
-            menuListProps.totalItemCount,
-            menuListProps.hasCheckmarks,
-            menuListProps.hasIcons
-          );
+            focusableElementIndex: indexCorrection,
+            totalItemCount: menuListProps.totalItemCount,
+            hasCheckmarks: menuListProps.hasCheckmarks,
+            hasIcons: menuListProps.hasIcons
+          });
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -457,18 +470,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     );
   };
 
-  private _renderMenuItem(
-    item: IContextualMenuItem,
-    index: number,
-    focusableElementIndex: number,
-    totalItemCount: number,
-    hasCheckmarks: boolean,
-    hasIcons: boolean
-  ): React.ReactNode {
+  private _renderMenuItem = (item: IContextualMenuItemRenderProps): React.ReactNode => {
     const renderedItems: React.ReactNode[] = [];
     const iconProps = item.iconProps || { iconName: 'None' };
     // tslint:disable-next-line:deprecation
-    const { getItemClassNames, itemProps } = item;
+    const { getItemClassNames, itemProps, index, focusableElementIndex, totalItemCount, hasCheckmarks, hasIcons } = item;
     const styles = itemProps ? itemProps.styles : undefined;
 
     // We only send a dividerClassName when the item to be rendered is a divider. For all other cases, the default divider style is used.
@@ -553,7 +559,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
 
     return renderedItems;
-  }
+  };
 
   private _renderSectionItem(
     sectionItem: IContextualMenuItem,
@@ -571,7 +577,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     let headerItem;
     let groupProps;
     if (sectionProps.title) {
-      const id = this._id + sectionProps.title;
+      // Since title is a user-facing string, it needs to be stripped of whitespace in order to build a valid element ID
+      const id = this._id + sectionProps.title.replace(/\s/g, '');
       const headerContextualMenuItem: IContextualMenuItem = {
         key: `section-${sectionProps.title}-title`,
         itemType: ContextualMenuItemType.Header,
@@ -593,7 +600,14 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
               {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, sectionProps.items.length, hasCheckmarks, hasIcons)
+                this._renderMenuItem({
+                  ...contextualMenuItem,
+                  index: itemsIndex,
+                  focusableElementIndex: itemsIndex,
+                  totalItemCount: sectionProps.items.length,
+                  hasCheckmarks,
+                  hasIcons
+                })
               )}
               {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '../../Utilities';
+import { KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css, initializeComponentRef } from '../../Utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { Callout } from '../../Callout';
@@ -34,7 +34,7 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   weekNumberFormatString: 'Week number {0}'
 };
 
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
@@ -79,6 +79,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   constructor(props: IDatePickerProps) {
     super(props);
+
+    initializeComponentRef(this);
     this.state = this._getDefaultState();
 
     this._id = props.id || getId('DatePicker');

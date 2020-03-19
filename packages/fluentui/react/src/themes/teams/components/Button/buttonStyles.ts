@@ -21,7 +21,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     const { borderWidth } = siteVariables;
 
     const borderFocusStyles = getBorderFocusStyles({
-      siteVariables,
+      variables: siteVariables,
       borderPadding: borderWidth,
       ...(p.circular && {
         borderPadding: pxToRem(4)
@@ -71,13 +71,12 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           boxShadow: 'none'
         },
 
-        ':focus': {
-          ...borderFocusStyles[':focus']
-        },
-
+        ':focus': borderFocusStyles[':focus'],
         ':focus-visible': {
           ...borderFocusStyles[':focus-visible'],
-          borderColor: v.borderColor,
+          backgroundColor: v.backgroundColorFocus,
+          borderColor: v.borderColorFocus,
+          color: v.colorFocus,
           borderWidth,
 
           ':hover': {
@@ -121,10 +120,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
           boxShadow: 'none',
           ...borderFocusStyles[':focus']
         },
-
-        ':focus-visible': {
-          ...borderFocusStyles[':focus-visible']
-        },
+        ':focus-visible': borderFocusStyles[':focus-visible'],
 
         ...(p.primary && {
           color: v.textPrimaryColor
@@ -145,12 +141,10 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
             boxShadow: 'none'
           },
 
-          ':focus': {
-            ...borderFocusStyles[':focus']
-          },
-
+          ':focus': borderFocusStyles[':focus'],
           ':focus-visible': {
-            ...borderFocusStyles[':focus-visible']
+            ...borderFocusStyles[':focus-visible'],
+            backgroundColor: v.primaryBackgroundColorFocus
           },
 
           ':hover': {
@@ -232,21 +226,6 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       })
     };
   },
-
-  // modifies the text of the button
-  content: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-    fontSize: v.contentFontSize,
-    fontWeight: v.contentFontWeight,
-    lineHeight: v.contentLineHeight,
-
-    ...(p.size === 'small' && {
-      fontSize: v.sizeSmallContentFontSize,
-      lineHeight: v.sizeSmallContentLineHeight
-    })
-  }),
 
   icon: ({ props: p }) => ({
     // when loading, hide the icon
