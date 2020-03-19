@@ -216,6 +216,52 @@ describe('Dropdown', () => {
 
       expect(getItemNodes()).toHaveLength(0);
     });
+
+    it('is "true" when you start typing in the search input', () => {
+      const { getItemNodes, changeSearchInput } = renderDropdown({
+        search: true
+      });
+
+      changeSearchInput('item');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
+
+    it('is "false" when you remove the query from the search input', () => {
+      const { getItemNodes, changeSearchInput } = renderDropdown({
+        search: true,
+        defaultOpen: true,
+        defaultSearchQuery: 'item'
+      });
+
+      changeSearchInput('');
+
+      expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('is "true" when opened by space bar on trigger button', () => {
+      const { getItemNodes, keyDownOnTriggerButton } = renderDropdown({});
+
+      keyDownOnTriggerButton(' ');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
+
+    it('is "true" when opened by arrow down on trigger button', () => {
+      const { getItemNodes, keyDownOnTriggerButton } = renderDropdown({});
+
+      keyDownOnTriggerButton('ArrowDown');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
+
+    it('is "true" when opened by arrow up on trigger button', () => {
+      const { getItemNodes, keyDownOnTriggerButton } = renderDropdown({});
+
+      keyDownOnTriggerButton('ArrowUp');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
   });
 
   describe('highlightedIndex', () => {
@@ -414,10 +460,10 @@ describe('Dropdown', () => {
     });
 
     it('is changed correctly on arrow down navigation', () => {
-      const { keyDownOnTriggerButton, itemsListNode } = renderDropdown();
+      const { keyDownOnItemsList, itemsListNode } = renderDropdown({ defaultOpen: true });
 
       for (let index = 0; index < items.length; index++) {
-        keyDownOnTriggerButton('ArrowDown');
+        keyDownOnItemsList('ArrowDown');
 
         expect(itemsListNode).toHaveAttribute(
           'aria-activedescendant',
@@ -427,10 +473,10 @@ describe('Dropdown', () => {
     });
 
     it('is changed correctly on arrow up navigation', () => {
-      const { keyDownOnTriggerButton, itemsListNode } = renderDropdown();
+      const { keyDownOnItemsList, itemsListNode } = renderDropdown({ defaultOpen: true });
 
       for (let index = items.length - 1; index >= 0; index--) {
-        keyDownOnTriggerButton('ArrowUp');
+        keyDownOnItemsList('ArrowUp');
 
         expect(itemsListNode).toHaveAttribute(
           'aria-activedescendant',
