@@ -20,29 +20,31 @@ export class DialogLargeHeaderExample extends React.Component<{}, IDialogLargeHe
           dialogContentProps={{
             type: DialogType.largeHeader,
             title: 'All emails together',
-            subText: 'Your Inbox has changed. No longer does it include favorites, it is a singular destination for your emails.'
+            subText:
+              'Your Inbox has changed. ' +
+              'No longer does it include favorites, it is a singular destination for your emails.',
           }}
           modalProps={{
             isBlocking: false,
-            styles: { main: { maxWidth: 450 } }
+            styles: { main: { maxWidth: 450 } },
           }}
         >
           <ChoiceGroup
             options={[
               {
                 key: 'A',
-                text: 'Option A'
+                text: 'Option A',
               },
               {
                 key: 'B',
                 text: 'Option B',
-                checked: true
+                checked: true,
               },
               {
                 key: 'C',
                 text: 'Option C',
-                disabled: true
-              }
+                disabled: true,
+              },
             ]}
           />
           <DialogFooter>

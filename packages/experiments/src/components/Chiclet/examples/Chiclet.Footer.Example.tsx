@@ -21,19 +21,19 @@ const footerStyle = mergeStyles({
   justifyContent: 'flex-start',
   height: 36,
   width: '100%',
-  bottom: 0
+  bottom: 0,
 });
 
 const activitiesStyle = mergeStyles({
   paddingLeft: 16,
   paddingBottom: 8,
-  fontWeight: FontWeights.semibold
+  fontWeight: FontWeights.semibold,
 });
 
 const actionsStyle = mergeStyles({
   display: 'flex',
   fontSize: 16,
-  marginLeft: 'auto'
+  marginLeft: 'auto',
 });
 
 const actionStyle = mergeStyles({
@@ -41,14 +41,14 @@ const actionStyle = mergeStyles({
   width: 32,
   height: 36,
   backgroundColor: 'white',
-  color: '#0078d7'
+  color: '#0078d7',
 });
 
 export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   const footerButtonProps: IButtonProps[] = [
     { iconProps: { iconName: 'More' } },
     { iconProps: { iconName: 'Save' } },
-    { iconProps: { iconName: 'Share' } }
+    { iconProps: { iconName: 'Share' } },
   ];
   const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
 
@@ -63,6 +63,7 @@ export const ChicletFooterExample: React.FunctionComponent<{}> = () => {
   );
 };
 
+// tslint:disable-next-line:deprecation
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   activities: string;

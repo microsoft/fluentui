@@ -1,11 +1,11 @@
 import config from '../../../config';
 
-const reactPackageDist = (filePath: string) => config.paths.packageDist('react', 'es', filePath);
+const reactPackageDist = (filePath: string) => config.paths.packageDist('react-northstar', 'es', filePath);
 
 export const cyclesToSkip = [
   [
     reactPackageDist('components/HierarchicalTree/HierarchicalTree.js'),
-    reactPackageDist('components/HierarchicalTree/HierarchicalTreeItem.js')
+    reactPackageDist('components/HierarchicalTree/HierarchicalTreeItem.js'),
   ],
   [reactPackageDist('components/Menu/Menu.js'), reactPackageDist('components/Menu/MenuItem.js')],
   [reactPackageDist('components/Button/Button.js'), reactPackageDist('components/Button/ButtonGroup.js')],
@@ -14,18 +14,18 @@ export const cyclesToSkip = [
     reactPackageDist('components/Toolbar/ToolbarMenu.js'),
     reactPackageDist('components/Toolbar/ToolbarMenuRadioGroup.js'),
     reactPackageDist('components/Toolbar/ToolbarMenuItem.js'),
-    reactPackageDist('components/Toolbar/ToolbarMenu.js')
+    reactPackageDist('components/Toolbar/ToolbarMenu.js'),
   ],
   [
     reactPackageDist('components/Toolbar/ToolbarMenuItem.js'),
     reactPackageDist('components/Toolbar/ToolbarMenu.js'),
     reactPackageDist('components/Toolbar/ToolbarMenuRadioGroup.js'),
-    reactPackageDist('components/Toolbar/ToolbarMenuItem.js')
+    reactPackageDist('components/Toolbar/ToolbarMenuItem.js'),
   ],
   [
     reactPackageDist('components/Toolbar/ToolbarMenuRadioGroup.js'),
     reactPackageDist('components/Toolbar/ToolbarMenuItem.js'),
     reactPackageDist('components/Toolbar/ToolbarMenu.js'),
-    reactPackageDist('components/Toolbar/ToolbarMenuRadioGroup.js')
-  ]
+    reactPackageDist('components/Toolbar/ToolbarMenuRadioGroup.js'),
+  ],
 ];

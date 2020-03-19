@@ -6,7 +6,7 @@ const GlobalClassNames = {
   itemButton: 'ms-FloatingSuggestionsItem-itemButton',
   closeButton: 'ms-FloatingSuggestionsItem-closeButton',
   isSelected: 'ms-FloatingSuggestionsItem-isSelected',
-  displayText: 'ms-FloatingSuggestionsItem-displayText'
+  displayText: 'ms-FloatingSuggestionsItem-displayText',
 };
 
 export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingSuggestionItemStyles => {
@@ -33,13 +33,13 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         overflow: 'hidden',
         selectors: {
           '&:hover': {
-            background: semanticColors.menuItemBackgroundHovered
+            background: semanticColors.menuItemBackgroundHovered,
           },
           '&:hover .ms-FloatingSuggestionsItem-closeButton': {
-            display: 'block'
-          }
-        }
-      }
+            display: 'block',
+          },
+        },
+      },
     ],
     itemButton: [
       classNames.itemButton,
@@ -50,12 +50,12 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         height: '100%',
         selectors: {
           [HighContrastSelector]: {
-            color: 'WindowText'
+            color: 'WindowText',
           },
           '&:hover': {
-            color: semanticColors.menuItemTextHovered
-          }
-        }
+            color: semanticColors.menuItemTextHovered,
+          },
+        },
       },
       isSelected && [
         classNames.isSelected,
@@ -63,16 +63,16 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
           background: semanticColors.menuItemBackgroundPressed,
           selectors: {
             ':hover': {
-              background: semanticColors.menuDivider
+              background: semanticColors.menuDivider,
             },
             [HighContrastSelector]: {
               background: 'Highlight',
               color: 'HighlightText',
-              MsHighContrastAdjust: 'none'
-            }
-          }
-        }
-      ]
+              MsHighContrastAdjust: 'none',
+            },
+          },
+        },
+      ],
     ],
     closeButton: [
       classNames.closeButton,
@@ -85,21 +85,21 @@ export const getStyles = (props: IFloatingSuggestionItemStylesProps): IFloatingS
         selectors: {
           ':hover, :active': {
             background: neutralTertiaryAlt,
-            color: neutralDark
+            color: neutralDark,
           },
           [HighContrastSelector]: {
-            color: 'WindowText'
-          }
-        }
-      }
+            color: 'WindowText',
+          },
+        },
+      },
     ],
     displayText: [
       classNames.displayText,
       {
         padding: '0 12px',
         fontSize: fonts.medium.fontSize,
-        lineHeight: '40px'
-      }
-    ]
+        lineHeight: '40px',
+      },
+    ],
   };
 };

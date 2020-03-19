@@ -16,7 +16,7 @@ export const PersonaCoinView: IPersonaCoinComponent['view'] = props => {
     image: PersonaCoinImage,
     initials: PersonaCoinInitials,
     presence: PersonaPresence,
-    personaCoinSize10: PersonaCoinSize10
+    personaCoinSize10: PersonaCoinSize10,
   });
 
   if (coinSize === 10) {

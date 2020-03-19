@@ -4,14 +4,15 @@ import { Dialog, DialogFooter, DialogType } from 'office-ui-fabric-react/lib/Dia
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
 import { useConstCallback } from '@uifabric/react-hooks';
 
-const explanation = 'If this panel is closed using light dismiss (clicking outside the panel), a confirmation dialog will appear.';
+const explanation =
+  'If this panel is closed using light dismiss (clicking outside the panel), a confirmation dialog will appear.';
 const dialogContentProps = {
   type: DialogType.normal,
-  title: 'Are you sure you want to close the panel?'
+  title: 'Are you sure you want to close the panel?',
 };
 const dialogModalProps = {
   isBlocking: true,
-  styles: { main: { maxWidth: 450 } }
+  styles: { main: { maxWidth: 450 } },
 };
 
 export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
@@ -48,7 +49,12 @@ export const PanelLightDismissCustomExample: React.FunctionComponent = () => {
       >
         <p>{explanation}</p>
       </Panel>
-      <Dialog hidden={!isDialogVisible} onDismiss={hideDialog} dialogContentProps={dialogContentProps} modalProps={dialogModalProps}>
+      <Dialog
+        hidden={!isDialogVisible}
+        onDismiss={hideDialog}
+        dialogContentProps={dialogContentProps}
+        modalProps={dialogModalProps}
+      >
         <DialogFooter>
           <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
           <DefaultButton onClick={hideDialog} text="No" />

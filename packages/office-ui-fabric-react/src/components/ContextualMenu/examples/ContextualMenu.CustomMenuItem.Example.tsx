@@ -3,7 +3,7 @@ import {
   ContextualMenuItemType,
   IContextualMenuProps,
   IContextualMenuItem,
-  IContextualMenuItemProps
+  IContextualMenuItemProps,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
@@ -12,9 +12,9 @@ export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = 
     () => ({
       items: menuItems,
       shouldFocusOnMount: true,
-      contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>
+      contextualMenuItemAs: (props: IContextualMenuItemProps) => <div>Custom rendered {props.item.text}</div>,
     }),
-    [menuItems]
+    [menuItems],
   );
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
@@ -23,27 +23,27 @@ export const ContextualMenuWithCustomMenuItemExample: React.FunctionComponent = 
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider
+    itemType: ContextualMenuItemType.Divider,
   },
   {
     key: 'rename',
-    text: 'Rename'
+    text: 'Rename',
   },
   {
     key: 'edit',
-    text: 'Edit'
+    text: 'Edit',
   },
   {
     key: 'properties',
-    text: 'Properties'
+    text: 'Properties',
   },
   {
     key: 'disabled',
     text: 'Disabled item',
-    disabled: true
-  }
+    disabled: true,
+  },
 ];

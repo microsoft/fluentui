@@ -1,7 +1,13 @@
 // Temporary import file to experiment with next version of foundation.
 import { IComponent } from '@uifabric/foundation/lib/next/IComponent';
 import { IFontWeight, IKeytipProps } from 'office-ui-fabric-react';
-import { IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
+import {
+  IComponentStyles,
+  IHTMLElementSlot,
+  ISlotProp,
+  ISlottableProps,
+  IStyleableComponentProps,
+} from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 
 /**
@@ -15,8 +21,8 @@ export type IActionableComponent = IComponent<
   IActionableSlots
 >;
 
-// These types are redundant with IActionableComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// These types are redundant with IActionableComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 /**
  * {@docCategory Actionable}

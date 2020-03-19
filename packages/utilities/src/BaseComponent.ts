@@ -6,8 +6,6 @@ import { ISettingsMap } from './warn/warn';
 import { warnConditionallyRequiredProps } from './warn/warnConditionallyRequiredProps';
 import { warnMutuallyExclusive } from './warn/warnMutuallyExclusive';
 import { warnDeprecations } from './warn/warnDeprecations';
-import { initializeFocusRects } from './initializeFocusRects';
-import { initializeDir } from './initializeDir';
 import { IRefObject } from './createRef';
 import { IBaseProps } from './BaseComponent.types';
 
@@ -16,6 +14,8 @@ import { IBaseProps } from './BaseComponent.types';
  *
  * @public
  * {@docCategory BaseComponent}
+ *
+ * @deprecated Do not use. We are moving away from class component.
  */
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
   /**
@@ -48,17 +48,14 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
   constructor(props: TProps, context?: any) {
     super(props, context);
 
-    // Ensure basic assumptions about the environment.
-    initializeFocusRects();
-    initializeDir();
-
+    // tslint:disable-next-line:deprecation
     _makeAllSafe(this, BaseComponent.prototype, [
       'componentDidMount',
       'shouldComponentUpdate',
       'getSnapshotBeforeUpdate',
       'render',
       'componentDidUpdate',
-      'componentWillUnmount'
+      'componentWillUnmount',
     ]);
   }
 
@@ -208,11 +205,18 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
    * @param conditionalPropName - The name of the prop that the condition is based on.
    * @param condition - Whether the condition is met.
    */
-  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void {
+  protected _warnConditionallyRequiredProps(
+    requiredProps: string[],
+    conditionalPropName: string,
+    condition: boolean,
+  ): void {
     warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
   }
 
-  private _setComponentRef<TRefInterface>(ref: IRefObject<TRefInterface> | undefined, value: TRefInterface | null): void {
+  private _setComponentRef<TRefInterface>(
+    ref: IRefObject<TRefInterface> | undefined,
+    value: TRefInterface | null,
+  ): void {
     if (!this._skipComponentRefResolution && ref) {
       if (typeof ref === 'function') {
         ref(value);
@@ -231,12 +235,14 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
  * ensures that the BaseComponent's methods are called before the subclass's. This ensures that
  * componentWillUnmount in the base is called and that things in the _disposables array are disposed.
  */
+// tslint:disable-next-line:deprecation
 function _makeAllSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodNames: string[]): void {
   for (let i = 0, len = methodNames.length; i < len; i++) {
     _makeSafe(obj, prototype, methodNames[i]);
   }
 }
 
+// tslint:disable-next-line:deprecation
 function _makeSafe(obj: BaseComponent<{}, {}>, prototype: Object, methodName: string): void {
   // tslint:disable:no-any
   let classMethod = (obj as any)[methodName];

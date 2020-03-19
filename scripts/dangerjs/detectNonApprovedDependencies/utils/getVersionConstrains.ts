@@ -58,7 +58,7 @@ const parsePackageJson = (packageJsonPath: string): Promise<PackageJson> => {
       });
 
       resolve({
-        dependencies: normalizedDependencies
+        dependencies: normalizedDependencies,
       });
     });
   });
@@ -67,7 +67,7 @@ const parsePackageJson = (packageJsonPath: string): Promise<PackageJson> => {
 export const getDependenciesVersionConstraints = async (
   packageJsonPath: string,
   basePath: string,
-  dependencyChain: string[]
+  dependencyChain: string[],
 ): Promise<Constraints> => {
   let detectedConstraints: Constraints = {};
   const dependenciesWithConstraints = (await parsePackageJson(packageJsonPath)).dependencies;
@@ -81,7 +81,9 @@ export const getDependenciesVersionConstraints = async (
     const dependencyPackageJson = findPackageJsonOf(dependencyPackageId, basePath);
 
     if (!dependencyPackageJson) {
-      throw new Error(`Package.json wasn't found for the following dependency: ${dependencyPackageId} in ${packageJsonPath}`);
+      throw new Error(
+        `Package.json wasn't found for the following dependency: ${dependencyPackageId} in ${packageJsonPath}`,
+      );
     }
 
     const newDepChain = [...dependencyChain];
@@ -113,6 +115,10 @@ export const normalizedVersionConstraints = (constraints: Constraints): { [Packa
 };
 
 export default async (packageJsonPath: string) => {
-  const detectedConstraints = await getDependenciesVersionConstraints(packageJsonPath, path.dirname(packageJsonPath), []);
+  const detectedConstraints = await getDependenciesVersionConstraints(
+    packageJsonPath,
+    path.dirname(packageJsonPath),
+    [],
+  );
   return normalizedVersionConstraints(detectedConstraints);
 };

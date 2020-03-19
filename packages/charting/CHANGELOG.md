@@ -1,7 +1,25 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Mar 2020 12:29:37 GMT and should not be manually modified.
 
+## 0.141.6
+Thu, 19 Mar 2020 12:29:37 GMT
+
+### Patches
+
+- fixed accessiblity for the  statcked and multistacked bar chart by adding id for each callout and setting aria-labelledby accordingly (v-sivsar@microsoft.com)
+## 0.141.1
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted (v-satgar@microsoft.com)
+## 0.141.0
+Wed, 11 Mar 2020 12:24:03 GMT
+
+### Minor changes
+
+- Line chart Accessibility with screen reader (v-satgar@microsoft.com)
 ## 0.140.3
 Tue, 25 Feb 2020 12:25:39 GMT
 

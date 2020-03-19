@@ -15,7 +15,7 @@ process.env.PATH = process.env.PATH + path.delimiter + path.resolve(__dirname, '
 
 tsPaths.register({
   baseUrl: config.path_base,
-  paths: compilerOptions.paths
+  paths: compilerOptions.paths,
 });
 
 // load tasks in order of dependency usage

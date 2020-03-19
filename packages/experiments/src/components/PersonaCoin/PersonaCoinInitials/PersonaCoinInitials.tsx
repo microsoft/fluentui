@@ -17,7 +17,9 @@ export interface IPersonaCoinInitialsProps {
 }
 
 export const PersonaCoinInitials: React.FunctionComponent<IPersonaCoinInitialsProps> = props => {
-  const initials = (typeof props.initials === 'string' && props.initials) || getInitials(props.text, getRTL(), props.allowPhoneInitials);
+  const initials =
+    (typeof props.initials === 'string' && props.initials) ||
+    getInitials(props.text, getRTL(), props.allowPhoneInitials);
 
   if (initials) {
     return <Text className={props.className}>{initials}</Text>;

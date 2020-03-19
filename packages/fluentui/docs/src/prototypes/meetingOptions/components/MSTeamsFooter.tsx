@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, Layout } from '@fluentui/react';
+import { Divider, Layout } from '@fluentui/react-northstar';
 
 export default props => {
   return (

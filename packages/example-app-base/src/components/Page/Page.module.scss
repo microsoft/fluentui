@@ -48,7 +48,8 @@ $usageListPadding: 24px;
   position: relative;
   opacity: 0;
   transform: translate3d(0, 48px, 0);
-  transition: transform $ms-motion-duration-3 $ms-motion-timing-decelerate, opacity $ms-motion-duration-3 $ms-motion-timing-decelerate 0.05s;
+  transition: transform $ms-motion-duration-3 $ms-motion-timing-decelerate,
+    opacity $ms-motion-duration-3 $ms-motion-timing-decelerate 0.05s;
 
   &:last-child {
     margin-bottom: 0;

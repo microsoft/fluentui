@@ -1,4 +1,4 @@
-import { Checkbox, Flex } from '@fluentui/react';
+import { Checkbox, Flex } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CheckboxExampleLabel = () => (

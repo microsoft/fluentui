@@ -17,21 +17,25 @@ export const ScrollablePanePageProps: IDocPageProps = {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
       view: <ScrollablePaneDefaultExample />,
-      isScrollable: false
+      isScrollable: false,
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
       view: <ScrollablePaneDetailsListExample />,
-      isScrollable: false
-    }
+      isScrollable: false,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: ['a', 'button']
+  nativePropsElement: ['a', 'button'],
 };

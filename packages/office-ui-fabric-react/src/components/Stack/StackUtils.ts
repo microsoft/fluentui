@@ -23,7 +23,7 @@ const _getValueUnitGap = (gap: string): { value: number; unit: string } => {
 
   return {
     value: numericalValue,
-    unit: unitPart || 'px'
+    unit: unitPart || 'px',
   };
 };
 
@@ -35,18 +35,18 @@ const _getValueUnitGap = (gap: string): { value: number; unit: string } => {
  */
 export const parseGap = (
   gap: IStackProps['gap'],
-  theme: ITheme
+  theme: ITheme,
 ): { rowGap: { value: number; unit: string }; columnGap: { value: number; unit: string } } => {
   if (gap === undefined || gap === '') {
     return {
       rowGap: {
         value: 0,
-        unit: 'px'
+        unit: 'px',
       },
       columnGap: {
         value: 0,
-        unit: 'px'
-      }
+        unit: 'px',
+      },
     };
   }
 
@@ -54,12 +54,12 @@ export const parseGap = (
     return {
       rowGap: {
         value: gap,
-        unit: 'px'
+        unit: 'px',
       },
       columnGap: {
         value: gap,
-        unit: 'px'
-      }
+        unit: 'px',
+      },
     };
   }
 
@@ -70,12 +70,12 @@ export const parseGap = (
     return {
       rowGap: {
         value: 0,
-        unit: 'px'
+        unit: 'px',
       },
       columnGap: {
         value: 0,
-        unit: 'px'
-      }
+        unit: 'px',
+      },
     };
   }
 
@@ -83,7 +83,7 @@ export const parseGap = (
   if (splitGap.length === 2) {
     return {
       rowGap: _getValueUnitGap(_getThemedSpacing(splitGap[0], theme)),
-      columnGap: _getValueUnitGap(_getThemedSpacing(splitGap[1], theme))
+      columnGap: _getValueUnitGap(_getThemedSpacing(splitGap[1], theme)),
     };
   }
 
@@ -92,7 +92,7 @@ export const parseGap = (
 
   return {
     rowGap: calculatedGap,
-    columnGap: calculatedGap
+    columnGap: calculatedGap,
   };
 };
 

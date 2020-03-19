@@ -22,7 +22,7 @@ export const CardCallout = (props: ICardCalloutProps) => {
     className,
     finalHeight,
     content,
-    calloutProps
+    calloutProps,
   } = props;
 
   const mergedCalloutProps: ICalloutProps = {
@@ -36,7 +36,7 @@ export const CardCallout = (props: ICardCalloutProps) => {
     minPagePadding: 24,
     onDismiss: onLeave,
     gapSpace: gapSpace,
-    ...calloutProps
+    ...calloutProps,
   };
 
   return (
@@ -47,7 +47,7 @@ export const CardCallout = (props: ICardCalloutProps) => {
           focusTrapProps={{
             forceFocusInsideTrap: false,
             isClickableOutsideFocusTrap: true,
-            disableFirstFocus: !firstFocus
+            disableFirstFocus: !firstFocus,
           }}
         >
           {content}

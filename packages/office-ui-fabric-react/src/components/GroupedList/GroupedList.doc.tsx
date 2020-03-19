@@ -18,7 +18,7 @@ export const GroupedListPageProps: IDocPageProps = {
     {
       title: 'GroupedList basic example',
       code: GroupedListBasicExampleCode,
-      view: <GroupedListBasicExample />
+      view: <GroupedListBasicExample />,
     },
     {
       title: 'GroupedList example with custom header and footer',
@@ -31,10 +31,12 @@ export const GroupedListPageProps: IDocPageProps = {
       view: <GroupedListCustomCheckboxExample />
     }
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/GroupedList/docs/GroupedListOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

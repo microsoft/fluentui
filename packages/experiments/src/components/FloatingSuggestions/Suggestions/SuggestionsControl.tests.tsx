@@ -19,15 +19,15 @@ describe('Pickers', () => {
             {
               className: 'header-item-wrapper',
               renderItem: () => <div className="header-item-inner" />,
-              shouldShow: () => true
-            }
+              shouldShow: () => true,
+            },
           ]}
           footerItemsProps={[
             {
               className: 'footer-item-wrapper',
               renderItem: () => <div className="footer-item-inner" />,
-              shouldShow: () => true
-            }
+              shouldShow: () => true,
+            },
           ]}
           onCurrentlySelectedSuggestionChosen={doNothing}
           suggestions={[]}
@@ -35,7 +35,7 @@ describe('Pickers', () => {
           onSuggestionClick={doNothing}
           onRenderSuggestion={renderNothing}
         />,
-        root
+        root,
       );
 
       expect(root.querySelector('.header-item-wrapper .header-item-inner')).not.toBe(null);

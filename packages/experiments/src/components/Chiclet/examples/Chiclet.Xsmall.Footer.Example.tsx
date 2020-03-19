@@ -8,7 +8,7 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 const SAMPLE_URL = 'https://contoso.sharepoint.com';
 
 const footerStyle = mergeStyles({
-  display: 'flex'
+  display: 'flex',
 });
 
 const activitiesStyle = mergeStyles({
@@ -18,7 +18,7 @@ const activitiesStyle = mergeStyles({
   width: 190,
   fontSize: 12,
   lineHeight: 1.83,
-  letterSpacing: 'normal'
+  letterSpacing: 'normal',
 });
 
 const attachStyle = mergeStyles({
@@ -28,18 +28,21 @@ const attachStyle = mergeStyles({
   marginTop: '6px',
   marginLeft: '6px',
   backgroundColor: 'white',
-  color: '#0078d7'
+  color: '#0078d7',
 });
 
 const sizeStyle = mergeStyles({
   width: 34,
   alignSelf: 'center',
   lineHeight: 1.83,
-  letterSpacing: 'normal'
+  letterSpacing: 'normal',
 });
 
 export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
-  const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
+  const footerButtonProps: IButtonProps[] = [
+    { iconProps: { iconName: 'More' } },
+    { iconProps: { iconName: 'CloudUpload' } },
+  ];
   const attachIconProp: IIconProps = { iconName: 'Attach' };
   const footer = <FooterComponent buttonProps={footerButtonProps} attachProps={attachIconProp} />;
 
@@ -62,6 +65,7 @@ class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 }
 
+// tslint:disable-next-line:deprecation
 interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProps: IIconProps;

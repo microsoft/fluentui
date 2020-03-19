@@ -5,7 +5,7 @@ export {
   usageIndexContext,
   exampleBestPracticesContext,
   examplePlaygroundContext,
-  exampleSourcesContext
+  exampleSourcesContext,
 } from './exampleContexts';
 export { default as exampleKebabNameToSourceFilename } from './exampleKebabNameToSourceFilename';
 export { default as examplePathToHash } from './examplePathToHash';

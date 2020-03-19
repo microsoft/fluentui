@@ -1,33 +1,33 @@
 import * as React from 'react';
-import { Icon, Tree } from '@fluentui/react';
+import { Icon, Tree } from '@fluentui/react-northstar';
 
 const items = [
   {
-    id: '1',
+    id: 'tree-title-customization-item-1',
     title: 'one',
     items: [
       {
-        id: '2',
+        id: 'tree-title-customization-item-2',
         title: 'one one',
         items: [
           {
-            id: '3',
-            title: 'one one one'
-          }
-        ]
-      }
-    ]
+            id: 'tree-title-customization-item-3',
+            title: 'one one one',
+          },
+        ],
+      },
+    ],
   },
   {
-    id: '4',
+    id: 'tree-title-customization-item-4',
     title: 'two',
     items: [
       {
-        id: '5',
-        title: 'two one'
-      }
-    ]
-  }
+        id: 'tree-title-customization-item-5',
+        title: 'two one',
+      },
+    ],
+  },
 ];
 
 const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
@@ -37,6 +37,8 @@ const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) =
   </Component>
 );
 
-const TreeTitleCustomizationExample = () => <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />;
+const TreeTitleCustomizationExample = () => (
+  <Tree aria-label="Custom title" items={items} renderItemTitle={titleRenderer} />
+);
 
 export default TreeTitleCustomizationExample;

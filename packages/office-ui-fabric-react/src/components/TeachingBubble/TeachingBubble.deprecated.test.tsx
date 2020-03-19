@@ -12,7 +12,7 @@ describe('TeachingBubble', () => {
         secondaryButtonProps={{ children: 'Test Secondary Button', className: 'secondary-className' }}
       >
         Content
-      </TeachingBubbleContent>
+      </TeachingBubbleContent>,
     );
     const treeContent = componentContent.toJSON();
     expect(treeContent).toMatchSnapshot();

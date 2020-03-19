@@ -27,7 +27,7 @@ const VerticalSeparatorStack = (props: { children: JSX.Element[] }) => (
 );
 
 const verticalStyle = mergeStyles({
-  height: '200px'
+  height: '200px',
 });
 
 export class SeparatorBasicExample extends React.Component<{}, {}> {

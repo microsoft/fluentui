@@ -15,7 +15,9 @@ const PortalWindow: React.FunctionComponent<PortalWindowProps> = ({ children, on
     externalWindow.current = window.open('', '', 'width=600,height=400,left=200,top=200');
 
     // Doc site hack, as we set special fontSize
-    externalWindow.current.document.documentElement.style.fontSize = getComputedStyle(document.documentElement).fontSize;
+    externalWindow.current.document.documentElement.style.fontSize = getComputedStyle(
+      document.documentElement,
+    ).fontSize;
     externalWindow.current.document.documentElement.style.height = '100%';
     externalWindow.current.document.documentElement.style.width = '100%';
     externalWindow.current.document.body.style.height = '100%';

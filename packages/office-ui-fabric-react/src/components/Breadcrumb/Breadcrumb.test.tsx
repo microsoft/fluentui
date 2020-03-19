@@ -9,7 +9,7 @@ describe('Breadcrumb', () => {
     { text: 'TestText1', key: 'TestKey1' },
     { text: 'TestText2', key: 'TestKey2' },
     { text: 'TestText3', key: 'TestKey3' },
-    { text: 'TestText4', key: 'TestKey4' }
+    { text: 'TestText4', key: 'TestKey4' },
   ];
 
   let component: renderer.ReactTestRenderer | undefined;
@@ -80,7 +80,9 @@ describe('Breadcrumb', () => {
 
     it('renders  correctly with custom overflow icon', () => {
       const overflowIcon = () => <Icon iconName={'ChevronDown'} />;
-      component = renderer.create(<Breadcrumb items={items} maxDisplayedItems={2} onRenderOverflowIcon={overflowIcon} />);
+      component = renderer.create(
+        <Breadcrumb items={items} maxDisplayedItems={2} onRenderOverflowIcon={overflowIcon} />,
+      );
 
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -91,7 +93,7 @@ describe('Breadcrumb', () => {
     const items2: IBreadcrumbItem[] = [
       { text: 'Test1', key: 'Test1', href: 'http://bing.com', onClick: () => undefined },
       { text: 'Test2', key: 'Test2', onClick: () => undefined },
-      { text: 'Test3', key: 'Test3', as: 'h1' }
+      { text: 'Test3', key: 'Test3', as: 'h1' },
     ];
 
     wrapper = mount(<Breadcrumb items={items2} />);
@@ -117,7 +119,7 @@ describe('Breadcrumb', () => {
 
     const items2: IBreadcrumbItem[] = [
       { text: 'Test1', key: 'Test1', href: 'http://bing.com', onClick: clickCallback },
-      { text: 'Test2', key: 'Test2', onClick: clickCallback }
+      { text: 'Test2', key: 'Test2', onClick: clickCallback },
     ];
 
     wrapper = mount(<Breadcrumb items={items2} />);
@@ -138,7 +140,7 @@ describe('Breadcrumb', () => {
       wrapper
         .find('.ms-Breadcrumb-item')
         .first()
-        .text()
+        .text(),
     ).toEqual('TestText3');
   });
 

@@ -1,6 +1,7 @@
 {
   "extends": [
-    "tslint-react"
+    "tslint-react",
+    "tslint-config-prettier"
   ],
   "linterOptions": {
     "exclude": [
@@ -20,18 +21,13 @@
         "function-regex": "^[_]?[a-z][\\w\\d]+$"
       }
     ],
-    "jsx-curly-spacing": {
-      "when": "always"
-    },
     "jsx-no-bind": true,
     "jsx-boolean-value": [
       "never"
     ],
-    "jsx-equals-spacing": "never",
     "jsx-key": true,
     "jsx-no-lambda": true,
     "jsx-self-close": true,
-    "jsx-wrap-multiline": false,
     "jsx-no-multiline-js": false,
     "jsx-no-string-ref": true,
     "jsx-ban-props": [
@@ -49,35 +45,18 @@
     "max-line-length": [
       true,
       {
-        "limit": 140,
-        "ignore-pattern": "require\\(|https?:\\/\\/"
+        "limit": 120,
+        // resolve conflicts with prettier's formatting or certain lines that can't be split
+        "ignore-pattern": "require(<.*?>)?\\(|https?:\\/\\/|^(import|export) \\{ \\w+( as \\w+)? \\} from|^import \\* as|^\\s+(<path )?d="
       }
     ],
     "no-arg": true,
     "radix": true,
-    "typedef": [
-      true,
-      "call-signature",
-      "parameter",
-      "arrow-parameter",
-      "property-declaration"
-    ],
+    "typedef": [false],
     "prefer-const": true,
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double",
-      "avoid-escape"
-    ],
     "no-inferrable-types": false,
     "no-null-keyword": false,
     "export-name": false,
-    "trailing-comma": [
-      false
-    ],
-    "whitespace": [
-      false
-    ],
     "no-switch-case-fall-through": false,
     "variable-name": [
       true,
@@ -92,13 +71,7 @@
       "check-space"
     ],
     "curly": true,
-    "eofline": false,
     "forin": true,
-    "indent": [
-      true,
-      "spaces",
-      2
-    ],
     "interface-name": [
       true,
       "always-prefix"
@@ -130,7 +103,6 @@
     "missing-optional-annotation": true,
     "no-any": true,
     "no-bitwise": true,
-    "no-consecutive-blank-lines": true,
     "no-console": [
       true,
       "debug",
@@ -150,35 +122,11 @@
     "no-internal-module": true,
     "no-shadowed-variable": true,
     "no-string-literal": true,
-    "no-trailing-whitespace": true,
-    "no-unnecessary-semicolons": true,
     "no-unused-expression": false,
     "no-unused-variable": false, // defer to typescript's no unused local instead
     "no-with-statement": false,
     "no-var-keyword": true,
     "object-literal-sort-keys": false,
-    "one-line": [
-      true,
-      "check-open-brace",
-      "check-catch",
-      "check-else",
-      "check-whitespace"
-    ],
-    "semicolon": [
-      true,
-      "always",
-      "ignore-bound-class-methods"
-    ],
-    "typedef-whitespace": [
-      true,
-      {
-        "call-signature": "nospace",
-        "index-signature": "nospace",
-        "parameter": "nospace",
-        "property-declaration": "nospace",
-        "variable-declaration": "nospace"
-      }
-    ],
     "use-named-parameter": true,
     "ban": [
       true,

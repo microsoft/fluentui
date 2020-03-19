@@ -1,7 +1,19 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Fri, 13 Mar 2020 12:30:22 GMT and should not be manually modified.
 
+## 7.12.18
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Patches
+
+- new blog announcement, support jsx in message bar, move hig link (mgodbolt@microsoft.com)
+## 7.12.17
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- use ms-Fabric--isFocusVisible instead of .is-focusVisible (xgao@microsoft.com)
 ## 7.12.0
 Wed, 12 Feb 2020 12:24:27 GMT
 

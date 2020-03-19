@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Input, Header, Popup } from '@fluentui/react';
+import { Button, Flex, Input, Header, Popup } from '@fluentui/react-northstar';
 
 const PopupFocusTrapExample = () => (
   <Flex gap="gap.smaller">

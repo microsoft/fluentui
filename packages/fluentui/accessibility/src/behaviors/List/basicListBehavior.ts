@@ -12,9 +12,9 @@ import { ListBehaviorProps } from './listBehavior';
 const basicListBehavior: Accessibility<ListBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'list'
-    }
-  }
+      role: 'list',
+    },
+  },
 });
 
 export default basicListBehavior;

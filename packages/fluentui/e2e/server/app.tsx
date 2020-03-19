@@ -4,7 +4,7 @@ import _ from 'lodash';
 import E2EExample from './E2EExample';
 import routes from './routes';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
-import { Provider, themes, Flex, Header, List } from '@fluentui/react';
+import { Provider, themes, Flex, Header, List } from '@fluentui/react-northstar';
 
 const ContentList = () => (
   <>
@@ -13,7 +13,7 @@ const ContentList = () => (
       <List
         items={_.keys(routes).map(testExampleUrl => ({
           key: testExampleUrl,
-          header: { as: Link, to: testExampleUrl, content: _.startCase(testExampleUrl) }
+          header: { as: Link, to: testExampleUrl, content: _.startCase(testExampleUrl) },
         }))}
       />
     </Flex>

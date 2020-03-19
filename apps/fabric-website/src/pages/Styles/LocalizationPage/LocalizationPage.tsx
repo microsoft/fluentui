@@ -14,7 +14,13 @@ const localizedFontsData = require('../../../data/localized-fonts.json');
 
 export const LocalizationPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...LocalizationPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
+  return (
+    <StylesAreaPage
+      {...props}
+      {...LocalizationPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -28,15 +34,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
             </Markdown>
-          )
+          ),
         },
         {
           sectionName: 'Directional Icons',
           content: (
             <>
               <p>
-                With the reading direction set to RTL, Fabric Core uses mixins to add RTL-specific rules which will automatically substitute
-                directional icons. The following pairs of icons will be swapped when viewed on RTL pages:
+                With the reading direction set to RTL, Fabric Core uses mixins to add RTL-specific rules which will
+                automatically substitute directional icons. The following pairs of icons will be swapped when viewed on
+                RTL pages:
               </p>
               <ul className={styles.directionalIcons}>
                 {directionalIconsData.map((pair, pairIndex) => (
@@ -53,7 +60,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Language-optimized fonts',
@@ -67,8 +74,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <p>Fabric supports a variety of language codes, which map to the following font stacks:</p>
               <Table content={localizedFontsData} />
             </>
-          )
-        }
+          ),
+        },
       ];
   }
 }

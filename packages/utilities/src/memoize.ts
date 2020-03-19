@@ -49,7 +49,7 @@ export function resetMemoizations(): void {
 export function memoize<T extends Function>(
   target: any,
   key: string,
-  descriptor: TypedPropertyDescriptor<T>
+  descriptor: TypedPropertyDescriptor<T>,
 ): {
   configurable: boolean;
   get(): T;
@@ -62,7 +62,7 @@ export function memoize<T extends Function>(
     configurable: true,
     get(): T {
       return fn;
-    }
+    },
   };
 }
 
@@ -81,14 +81,14 @@ export function memoize<T extends Function>(
  * @param cb - The function to memoize.
  * @param maxCacheSize - Max results to cache. If the cache exceeds this value, it will reset on the next call.
  * @param ignoreNullOrUndefinedResult - Flag to decide whether to cache callback result if it is undefined/null.
- * If the flag is set to true, the callback result is recomputed every time till the callback result is not undefined/null
- * for the first time and then the non-undefined/null version gets cached.
+ * If the flag is set to true, the callback result is recomputed every time till the callback result is
+ * not undefined/null for the first time, and then the non-undefined/null version gets cached.
  * @returns A memoized version of the function.
  */
 export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(
   cb: T,
   maxCacheSize: number = 100,
-  ignoreNullOrUndefinedResult: boolean = false
+  ignoreNullOrUndefinedResult: boolean = false,
 ): T {
   // Avoid breaking scenarios which don't have weak map.
   if (!_weakMap) {
@@ -103,7 +103,11 @@ export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE
   return function memoizedFunction(...args: any[]): RET_TYPE {
     let currentNode: any = rootNode;
 
-    if (rootNode === undefined || localResetCounter !== _resetCounter || (maxCacheSize > 0 && cacheSize > maxCacheSize)) {
+    if (
+      rootNode === undefined ||
+      localResetCounter !== _resetCounter ||
+      (maxCacheSize > 0 && cacheSize > maxCacheSize)
+    ) {
       rootNode = _createNode();
       cacheSize = 0;
       localResetCounter = _resetCounter;
@@ -192,6 +196,6 @@ function _normalizeArg(val: any): any {
 
 function _createNode(): IMemoizeNode {
   return {
-    map: _weakMap ? new _weakMap() : null
+    map: _weakMap ? new _weakMap() : null,
   };
 }

@@ -11,25 +11,25 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
     root: [
       theme.fonts.medium,
       {
-        position: 'relative'
+        position: 'relative',
       },
       alignContent && {
-        textAlign: alignContent
+        textAlign: alignContent,
       },
       !alignContent && {
-        textAlign: 'center'
+        textAlign: 'center',
       },
       vertical &&
         (alignCenter || !alignContent) && {
-          verticalAlign: 'middle'
+          verticalAlign: 'middle',
         },
       vertical &&
         alignStart && {
-          verticalAlign: 'top'
+          verticalAlign: 'top',
         },
       vertical &&
         alignEnd && {
-          verticalAlign: 'bottom'
+          verticalAlign: 'bottom',
         },
       vertical && {
         padding: '0 4px',
@@ -46,9 +46,9 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
             bottom: '0',
             left: '50%',
             right: '0',
-            zIndex: -1
-          }
-        }
+            zIndex: -1,
+          },
+        },
       },
       !vertical && {
         padding: '4px 0',
@@ -62,11 +62,11 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
             top: '50%',
             bottom: '0',
             left: '0',
-            right: '0'
-          }
-        }
+            right: '0',
+          },
+        },
       },
-      className
+      className,
     ],
     content: [
       {
@@ -74,11 +74,11 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
         display: 'inline-block',
         padding: '0 12px',
         color: theme.semanticColors.bodyText,
-        background: theme.semanticColors.bodyBackground
+        background: theme.semanticColors.bodyBackground,
       },
       vertical && {
-        padding: '12px 0'
-      }
-    ]
+        padding: '12px 0',
+      },
+    ],
   };
 };

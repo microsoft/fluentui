@@ -21,7 +21,7 @@ export class KeytipTree {
       id: KTP_LAYER_ID,
       children: [],
       parent: '',
-      keySequences: []
+      keySequences: [],
     };
     this.nodeMap[this.root.id] = this.root;
   }
@@ -255,8 +255,22 @@ export class KeytipTree {
     return fullSequence[fullSequence.length - 1];
   }
 
-  private _createNode(id: string, parentId: string, children: string[], keytipProps: IKeytipProps, persisted?: boolean): IKeytipTreeNode {
-    const { keySequences, hasDynamicChildren, overflowSetSequence, hasMenu, onExecute, onReturn, disabled } = keytipProps;
+  private _createNode(
+    id: string,
+    parentId: string,
+    children: string[],
+    keytipProps: IKeytipProps,
+    persisted?: boolean,
+  ): IKeytipTreeNode {
+    const {
+      keySequences,
+      hasDynamicChildren,
+      overflowSetSequence,
+      hasMenu,
+      onExecute,
+      onReturn,
+      disabled,
+    } = keytipProps;
     const node = {
       id,
       keySequences,
@@ -268,7 +282,7 @@ export class KeytipTree {
       hasDynamicChildren,
       hasMenu,
       disabled,
-      persisted
+      persisted,
     };
     node.children = Object.keys(this.nodeMap).reduce((array: string[], nodeMapKey: string): string[] => {
       if (this.nodeMap[nodeMapKey].parent === id) {

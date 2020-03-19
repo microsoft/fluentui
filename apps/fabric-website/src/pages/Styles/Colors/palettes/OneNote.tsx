@@ -11,36 +11,36 @@ export const OneNote = () => {
         colors={[
           {
             name: 'OneNote Shade 20',
-            hex: '#4c0f6c'
+            hex: '#4c0f6c',
           },
           {
             name: 'OneNote Shade 10',
-            hex: '#5c1384'
+            hex: '#5c1384',
           },
           {
             name: 'OneNote Primary',
-            hex: '#7719aa'
+            hex: '#7719aa',
           },
           {
             name: 'OneNote Tint 10',
-            hex: '#9953c0'
+            hex: '#9953c0',
           },
           {
             name: 'OneNote Tint 20',
-            hex: '#d0afe2'
+            hex: '#d0afe2',
           },
           {
             name: 'OneNote Tint 30',
-            hex: '#ddc5ec'
+            hex: '#ddc5ec',
           },
           {
             name: 'OneNote Tint 40',
-            hex: '#efdffa'
+            hex: '#efdffa',
           },
           {
             name: 'OneNote Tint 50',
-            hex: '#f5edfd'
-          }
+            hex: '#f5edfd',
+          },
         ]}
       />
     </>

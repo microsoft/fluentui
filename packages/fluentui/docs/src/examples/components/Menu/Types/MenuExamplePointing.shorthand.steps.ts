@@ -1,5 +1,8 @@
 import getScreenerSteps from '../commonScreenerSteps';
 
-const config: ScreenerTestsConfig = { steps: getScreenerSteps() };
+const config: ScreenerTestsConfig = {
+  themes: ['teams', 'teamsDark', 'teamsHighContrast'],
+  steps: getScreenerSteps(),
+};
 
 export default config;

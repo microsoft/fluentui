@@ -1,4 +1,9 @@
-import { IStyleFunctionOrObject, IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  IStyleFunctionOrObject,
+  IStyleFunction,
+  classNamesFunction,
+  styled,
+} from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from '@uifabric/fluent-theme';
 import * as React from 'react';
@@ -24,8 +29,8 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
       ...baseCodeStyle,
       padding: '0 4px',
       border: '1px solid ' + NeutralColors.gray30,
-      borderRadius: 3
-    }
+      borderRadius: 3,
+    },
   };
 };
 

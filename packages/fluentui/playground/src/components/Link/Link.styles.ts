@@ -10,11 +10,11 @@ const styles = (t: IResolvedTokens<ILinkTokens>) => ({
 
     '&:active, &:hover, &:active:hover': {
       color: t.colorHovered,
-      textDecoration: t.textDecorationHovered
+      textDecoration: t.textDecorationHovered,
     },
     '&:focus': {
-      boxShadow: '0 0 0 1px #2b88d8 inset'
-    }
+      boxShadow: '0 0 0 1px #2b88d8 inset',
+    },
   },
 
   rootDisabled: {
@@ -22,9 +22,9 @@ const styles = (t: IResolvedTokens<ILinkTokens>) => ({
     cursor: 'default',
 
     '&:link, &:visited': {
-      pointerEvents: 'none'
-    }
-  }
+      pointerEvents: 'none',
+    },
+  },
 });
 
 export default styles;

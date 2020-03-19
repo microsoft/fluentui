@@ -8,31 +8,32 @@ import {
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
-  DetailsRow
+  DetailsRow,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IDetailsColumnRenderTooltipProps } from 'office-ui-fabric-react/lib/DetailsList';
 
 const classNames = mergeStyleSets({
   wrapper: {
     height: '80vh',
-    position: 'relative'
+    position: 'relative',
   },
   filter: {
     paddingBottom: 20,
-    maxWidth: 300
+    maxWidth: 300,
   },
   header: {
-    margin: 0
+    margin: 0,
   },
   row: {
-    display: 'inline-block'
-  }
+    display: 'inline-block',
+  },
 });
 
 const _footerItem: IScrollablePaneDetailsListExampleItem = {
@@ -42,7 +43,7 @@ const _footerItem: IScrollablePaneDetailsListExampleItem = {
   test3: 'Footer 3',
   test4: 'Footer 4',
   test5: 'Footer 5',
-  test6: 'Footer 6'
+  test6: 'Footer 6',
 };
 
 export interface IScrollablePaneDetailsListExampleItem {
@@ -78,7 +79,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
         test3: _lorem(4),
         test4: _lorem(4),
         test5: _lorem(4),
-        test6: _lorem(4)
+        test6: _lorem(4),
       });
     }
 
@@ -90,12 +91,12 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
         fieldName: 'test' + i,
         minWidth: 100,
         maxWidth: 200,
-        isResizable: true
+        isResizable: true,
       });
     }
 
     this.state = {
-      items: this._allItems
+      items: this._allItems,
     };
   }
 
@@ -134,7 +135,9 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
 
   private _onFilterChange = (ev: React.FormEvent<HTMLElement>, text: string) => {
     this.setState({
-      items: text ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text)) : this._allItems
+      items: text
+        ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text))
+        : this._allItems,
     });
   };
 }
@@ -143,18 +146,30 @@ function _onItemInvoked(item: IScrollablePaneDetailsListExampleItem): void {
   alert('Item invoked: ' + item.test1);
 }
 
-function onRenderDetailsHeader(props: IDetailsHeaderProps, defaultRender?: IRenderFunction<IDetailsHeaderProps>): JSX.Element {
+const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (props, defaultRender) => {
+  if (!props) {
+    return null;
+  }
+
+  const onRenderColumnHeaderTooltip: IRenderFunction<IDetailsColumnRenderTooltipProps> = tooltipHostProps => (
+    <TooltipHost {...tooltipHostProps} />
+  );
+
   return (
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
         ...props,
-        onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => <TooltipHost {...tooltipHostProps} />
+        onRenderColumnHeaderTooltip,
       })}
     </Sticky>
   );
-}
+};
 
-function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRenderFunction<IDetailsFooterProps>): JSX.Element {
+const onRenderDetailsFooter: IRenderFunction<IDetailsFooterProps> = (props, defaultRender) => {
+  if (!props) {
+    return null;
+  }
+
   return (
     <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
       <div className={classNames.row}>
@@ -169,7 +184,7 @@ function onRenderDetailsFooter(props: IDetailsFooterProps, defaultRender?: IRend
       </div>
     </Sticky>
   );
-}
+};
 
 function hasText(item: IScrollablePaneDetailsListExampleItem, text: string): boolean {
   return `${item.test1}|${item.test2}|${item.test3}|${item.test4}|${item.test5}|${item.test6}`.indexOf(text) > -1;

@@ -17,7 +17,7 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
     text: 'Annie Lindqvist',
     secondaryText: 'Software Engineer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
   };
 
   return (

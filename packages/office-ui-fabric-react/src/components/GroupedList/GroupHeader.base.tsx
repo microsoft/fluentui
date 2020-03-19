@@ -18,7 +18,7 @@ export interface IGroupHeaderState {
 
 export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupHeaderProps = {
-    expandButtonProps: { 'aria-label': 'expand collapse group' }
+    expandButtonProps: { 'aria-label': 'expand collapse group' },
   };
 
   private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
@@ -28,7 +28,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     this.state = {
       isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
-      isLoadingVisible: false
+      isLoadingVisible: false,
     };
   }
 
@@ -41,7 +41,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
       this.setState({
         isCollapsed: newCollapsed || false,
-        isLoadingVisible: newLoadingVisible || false
+        isLoadingVisible: newLoadingVisible || false,
       });
     }
   }
@@ -91,7 +91,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       className,
       selected: currentlySelected,
       isCollapsed,
-      compact
+      compact,
     });
 
     if (!group) {
@@ -139,7 +139,10 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >
-            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <Icon
+              className={this._classNames.expandIsCollapsed}
+              iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
+            />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
@@ -159,7 +162,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     this.setState({
       isCollapsed: newCollapsed,
-      isLoadingVisible: newLoadingVisible as boolean
+      isLoadingVisible: newLoadingVisible as boolean,
     });
     if (onToggleCollapse) {
       onToggleCollapse(group!);

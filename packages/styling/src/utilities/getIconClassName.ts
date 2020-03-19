@@ -2,7 +2,7 @@ import { mergeStyles, IStyle } from '@uifabric/merge-styles';
 import { getIcon } from './icons';
 
 const defaultIconStyles: IStyle = {
-  display: 'inline-block'
+  display: 'inline-block',
 };
 
 /**
@@ -19,9 +19,9 @@ export function getIconClassName(name: string): string {
     className = mergeStyles(icon.subset.className, defaultIconStyles, {
       selectors: {
         '::before': {
-          content: `"${icon.code}"`
-        }
-      }
+          content: `"${icon.code}"`,
+        },
+      },
     });
   }
 

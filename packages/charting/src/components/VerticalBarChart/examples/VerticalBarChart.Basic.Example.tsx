@@ -23,7 +23,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       { x: 85, y: 25 },
       { x: 90, y: 43 },
       { x: 96, y: 22 },
-      { x: 100, y: 19 }
+      { x: 100, y: 19 },
     ];
 
     return <VerticalBarChart data={points} chartLabel={'Basic Chart with Numeric Axes'} />;

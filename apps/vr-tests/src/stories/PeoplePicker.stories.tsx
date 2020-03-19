@@ -9,7 +9,7 @@ import {
   ListPeoplePicker,
   NormalPeoplePicker,
   IPersonaProps,
-  PersonaPresence
+  PersonaPresence,
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '@uifabric/example-data';
@@ -22,7 +22,7 @@ const overflowPersona: IPersonaProps & { key: string | number } = {
   secondaryText: 'Designer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
-  presence: PersonaPresence.busy
+  presence: PersonaPresence.busy,
 };
 const people: (IPersonaProps & { key: string | number })[] = [
   {
@@ -33,7 +33,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 2,
@@ -43,7 +43,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 3,
@@ -53,7 +53,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Software Developer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 4,
@@ -63,7 +63,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 5,
@@ -73,7 +73,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 6,
@@ -83,7 +83,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 7,
@@ -93,7 +93,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 8,
@@ -103,7 +103,7 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 9,
@@ -113,8 +113,8 @@ const people: (IPersonaProps & { key: string | number })[] = [
     secondaryText: 'Financial Analyst',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    presence: PersonaPresence.offline
-  }
+    presence: PersonaPresence.offline,
+  },
 ];
 
 const suggestionProps = {
@@ -124,7 +124,7 @@ const suggestionProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const getTextFromItem = (persona: IPersonaProps): string => persona.text as string;
@@ -232,7 +232,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Normal Overflow selected',
@@ -249,7 +249,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('List', () => (
     <Fabric>
@@ -276,7 +276,7 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Compact', () => (
     <Fabric>
@@ -303,5 +303,5 @@ storiesOf('PeoplePicker', module)
         />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );

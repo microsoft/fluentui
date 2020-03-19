@@ -12,7 +12,7 @@ import { Accessibility } from '../../types';
  * Adds attribute 'aria-level=1' based on the property 'level' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const treeTitleBehavior: Accessibility<TreeTitleBehavior> = props => ({
+const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
   attributes: {
     root: {
       ...(!props.hasSubtree && {
@@ -21,22 +21,22 @@ const treeTitleBehavior: Accessibility<TreeTitleBehavior> = props => ({
         role: 'treeitem',
         'aria-setsize': props.treeSize,
         'aria-posinset': props.index,
-        'aria-level': props.level
-      })
-    }
+        'aria-level': props.level,
+      }),
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default treeTitleBehavior;
 
-type TreeTitleBehavior = {
+export type TreeTitleBehaviorProps = {
   /** Indicated if tree title has a subtree */
   hasSubtree?: boolean;
   level?: number;

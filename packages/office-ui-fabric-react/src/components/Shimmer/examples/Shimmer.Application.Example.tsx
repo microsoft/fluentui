@@ -19,7 +19,7 @@ const fileIcons: { name: string }[] = [
   { name: 'vsdx' },
   { name: 'xls' },
   { name: 'xlsx' },
-  { name: 'xsn' }
+  { name: 'xsn' },
 ];
 
 const ITEMS_COUNT = 200;
@@ -44,7 +44,7 @@ export class ShimmerApplicationExample extends React.Component<{}, IShimmerAppli
     this.state = {
       items: [],
       columns: _buildColumns(),
-      isDataLoaded: false
+      isDataLoaded: false,
     };
 
     this._async = new Async(this);
@@ -91,11 +91,11 @@ export class ShimmerApplicationExample extends React.Component<{}, IShimmerAppli
       itemsCopy.splice(
         this._lastIndexWithData,
         randomQuantity,
-        ..._items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity)
+        ..._items.slice(this._lastIndexWithData, this._lastIndexWithData + randomQuantity),
       );
       this._lastIndexWithData += randomQuantity;
       this.setState({
-        items: itemsCopy
+        items: itemsCopy,
       });
     }, INTERVAL_DELAY);
   };
@@ -121,7 +121,7 @@ export class ShimmerApplicationExample extends React.Component<{}, IShimmerAppli
     }
     this.setState({
       isDataLoaded: checked,
-      items: items
+      items: items,
     });
   };
 
@@ -137,7 +137,7 @@ export class ShimmerApplicationExample extends React.Component<{}, IShimmerAppli
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`,
     };
   }
 }

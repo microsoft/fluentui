@@ -18,24 +18,24 @@ const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
       root: {
         role: 'tree',
         'aria-labelledby': props['aria-labelledby'],
-        tabIndex: -1
-      }
+        tabIndex: -1,
+      },
     },
     keyActions: {
       root: {
         expandSiblings: {
-          keyCombinations: [{ keyCode: keyboardKey['*'] }]
-        }
-      }
+          keyCombinations: [{ keyCode: keyboardKey['*'] }],
+        },
+      },
     },
     focusZone: {
       props: {
-        direction: FocusZoneDirection.vertical
-      }
+        direction: FocusZoneDirection.vertical,
+      },
     },
     childBehaviors: {
-      item: treeItemBehavior
-    }
+      item: treeItemBehavior,
+    },
   };
 };
 
