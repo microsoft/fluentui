@@ -62,3 +62,37 @@ export type SvgIconFuncArg = {
 export type SvgIconChildrenFn = (svgIcon: SvgIconFuncArg) => React.ReactNode;
 
 export type SvgIconCreateFnParams = { svg: SvgIconChildrenFn; displayName: string; handledProps?: string[] };
+
+type ValueOf<TFirst, TSecond, TKey extends keyof (TFirst & TSecond)> = TKey extends keyof TFirst
+  ? TFirst[TKey]
+  : TKey extends keyof TSecond
+  ? TSecond[TKey]
+  : {};
+
+type Extended<TFirst, TSecond> = { [K in keyof (TFirst & TSecond)]: ValueOf<TFirst, TSecond, K> };
+
+type HoistedStaticPropsOf<T> = Exclude<keyof T, keyof React.ComponentType | 'prototype'> | 'displayName';
+
+type Intersect<First extends string | number | symbol, Second extends string | number | symbol> = {
+  [K in First]: K extends Second ? K : never;
+}[First];
+
+type PickProps<T, Props extends string | number | symbol> = {
+  [K in Intersect<Props, keyof T>]: T[K];
+};
+
+export const withSafeTypeForSpan = <
+  TComponentType extends React.ComponentType,
+  TProps,
+  TAs extends keyof JSX.IntrinsicElements = 'span'
+>(
+  componentType: TComponentType,
+) => {
+  function overloadedComponentType(x: Extended<TProps, JSX.IntrinsicElements[TAs]>): JSX.Element;
+  function overloadedComponentType(): never {
+    throw new Error('Defines unreachable execution scenario');
+  }
+
+  return (componentType as any) as typeof overloadedComponentType &
+    PickProps<TComponentType, HoistedStaticPropsOf<TComponentType>>;
+};

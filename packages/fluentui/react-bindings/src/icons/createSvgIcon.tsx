@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { Extendable } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
 import { StylesContextValue } from '../styles/types';
 import useStyles from '../hooks/useStyles';
 import getUnhandledProps from '../utils/getUnhandledProps';
-import { SvgIconCreateFnParams, SvgIconProps } from './types';
+import { SvgIconCreateFnParams, SvgIconProps, withSafeTypeForSpan } from './types';
 
 export const SvgIconClassName = 'ui-icon';
 export const SvgIconDisplayName = 'SvgIcon';
@@ -27,20 +28,12 @@ export const SvgIconHandledProps: (keyof SvgIconProps)[] = [
   'xSpacing',
 ];
 
-type ValueOf<TFirst, TSecond, TKey extends keyof (TFirst & TSecond)> = TKey extends keyof TFirst
-  ? TFirst[TKey]
-  : TKey extends keyof TSecond
-  ? TSecond[TKey]
-  : {};
-
-type Extended<TFirst, TSecond> = { [K in keyof (TFirst & TSecond)]: ValueOf<TFirst, TSecond, K> };
-
 const createSvgIcon = <TProps extends SvgIconProps>({
   svg,
   displayName,
   handledProps = SvgIconHandledProps,
 }: SvgIconCreateFnParams) => {
-  function Component(props: Extended<TProps, JSX.IntrinsicElements['span']>): JSX.Element {
+  const Component: React.FC<TProps> & { handledProps: string[] } = (props: Extendable<SvgIconProps>) => {
     const context: StylesContextValue = React.useContext(ThemeContext);
 
     const {
@@ -87,12 +80,12 @@ const createSvgIcon = <TProps extends SvgIconProps>({
         {svg({ classes, rtl: context.rtl, props })}
       </span>
     );
-  }
+  };
 
   Component.displayName = displayName;
   Component.handledProps = handledProps;
 
-  return Component;
+  return withSafeTypeForSpan<typeof Component, TProps>(Component);
 };
 
 export default createSvgIcon;
