@@ -219,7 +219,7 @@ describe('Dropdown', () => {
 
     it('is "true" when you start typing in the search input', () => {
       const { getItemNodes, changeSearchInput } = renderDropdown({
-        search: true
+        search: true,
       });
 
       changeSearchInput('item');
@@ -231,7 +231,7 @@ describe('Dropdown', () => {
       const { getItemNodes, changeSearchInput } = renderDropdown({
         search: true,
         defaultOpen: true,
-        defaultSearchQuery: 'item'
+        defaultSearchQuery: 'item',
       });
 
       changeSearchInput('');
@@ -739,7 +739,12 @@ describe('Dropdown', () => {
 
     it('has onChange called with null value by hitting Escape in search input', () => {
       const onChange = jest.fn();
-      const { keyDownOnSearchInput } = renderDropdown({ search: true, onChange, defaultValue: items[2], defaultSearchQuery: items[2] });
+      const { keyDownOnSearchInput } = renderDropdown({
+        search: true,
+        onChange,
+        defaultValue: items[2],
+        defaultSearchQuery: items[2],
+      });
 
       keyDownOnSearchInput('Escape');
 
@@ -748,8 +753,8 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           value: null,
-          searchQuery: ''
-        })
+          searchQuery: '',
+        }),
       );
     });
 
@@ -1088,7 +1093,7 @@ describe('Dropdown', () => {
       expect(getItemNodes()).toHaveLength(0);
     });
 
-    it('has onSearchQueryChange each time the input is changed', () => {
+    it('has onSearchQueryChange called each time the input is changed', () => {
       const onSearchQueryChange = jest.fn();
       const { changeSearchInput } = renderDropdown({ search: true, onSearchQueryChange });
 
@@ -1098,8 +1103,8 @@ describe('Dropdown', () => {
       expect(onSearchQueryChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
-          searchQuery: 'ala'
-        })
+          searchQuery: 'ala',
+        }),
       );
 
       changeSearchInput('alladin');
@@ -1108,8 +1113,8 @@ describe('Dropdown', () => {
       expect(onSearchQueryChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
-          searchQuery: 'alladin'
-        })
+          searchQuery: 'alladin',
+        }),
       );
     });
 
@@ -1125,8 +1130,8 @@ describe('Dropdown', () => {
         expect.objectContaining({
           searchQuery: '',
           value: null,
-          open: false
-        })
+          open: false,
+        }),
       );
     });
 
@@ -1138,7 +1143,7 @@ describe('Dropdown', () => {
         search: true,
         clearable: true,
         onChange,
-        defaultSearchQuery: items[0]
+        defaultSearchQuery: items[0],
       });
 
       changeSearchInput('');
@@ -1151,8 +1156,8 @@ describe('Dropdown', () => {
         expect.objectContaining({
           value: null,
           searchQuery: '',
-          open: false
-        })
+          open: false,
+        }),
       );
     });
 
