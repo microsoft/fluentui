@@ -5,7 +5,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-const testSvg = ({ classes, rtl, props }) => <svg />;
+const testSvg = () => <svg />;
 
 const createTheme = (styles: jest.Mock): ThemeInput => ({
   componentStyles: {
