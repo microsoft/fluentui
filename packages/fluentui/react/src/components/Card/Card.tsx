@@ -124,7 +124,7 @@ Card.slotClassNames = {
   body: `${Card.className}__body`,
   footer: `${Card.className}__footer`,
   preview: `${Card.className}__preview`,
-  topcontrols: `${Card.className}__topcontrols`
+  topcontrols: `${Card.className}__top-controls`
 };
 
 Card.propTypes = {
