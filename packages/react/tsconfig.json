@@ -18,8 +18,8 @@
     "lib": ["es5", "dom"],
     "types": ["jest", "webpack-env"],
     "paths": {
-      "@uifabric/react/lib/*": ["./src/*"],
-      "@uifabric/react": ["./src"]
+      "@fluentui/react/lib/*": ["./src/*"],
+      "@fluentui/react": ["./src"]
     }
   },
   "include": ["src"]
