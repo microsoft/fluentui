@@ -7,7 +7,7 @@ const CenteredCard = () => (
       <Card.Header>
         <Flex gap="gap.small" column hAlign="center">
           <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />
-          <Text content="Title goes here" weight={'bold'} />
+          <Text content="Title goes here" weight="bold" />
           <Text content="Secondary line" size="small" />
         </Flex>
       </Card.Header>
