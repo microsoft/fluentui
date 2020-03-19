@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.22",
+      "version": "7.12.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 13 Mar 2020 12:30:22 GMT",
       "tag": "@uifabric/example-app-base_v7.12.18",
       "version": "7.12.18",

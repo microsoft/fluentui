@@ -2,6 +2,20 @@
   "name": "@uifabric/mdl2-theme",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/mdl2-theme_v0.1.42",
+      "version": "0.1.42",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "@uifabric/mdl2-theme_v0.1.20",
       "version": "0.1.20",

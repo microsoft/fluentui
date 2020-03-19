@@ -2,6 +2,27 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@fluentui/react-compose_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update `@fluentui/react` references to `@fluentui/react-northstar`",
+            "author": "elcraig@microsoft.com",
+            "commit": "8b2d6bc761706d2d0a19531c77ec702a66e1be02"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "2239ec42a9d6092c5954b0768de1929d87c66854"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Mar 2020 12:24:00 GMT",
       "tag": "@fluentui/react-compose_v0.2.0",
       "version": "0.2.0",
