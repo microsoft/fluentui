@@ -9,7 +9,7 @@ import {
   isDebugEnabled,
   mergeComponentStyles,
   ThemePrepared,
-  withDebugId
+  withDebugId,
 } from '@fluentui/styles';
 import { ComponentSlotClasses, RendererParam, ResolveStylesOptions } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
@@ -41,9 +41,18 @@ const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
 const resolveStyles = (
   options: ResolveStylesOptions,
   resolvedVariables: ComponentVariablesObject,
-  renderStylesInput?: (styles: ICSSInJSStyle) => string
+  renderStylesInput?: (styles: ICSSInJSStyle) => string,
 ): ResolveStylesResult => {
-  const { className: componentClassName, theme, displayName, props, rtl, disableAnimations, renderer, performance } = options;
+  const {
+    className: componentClassName,
+    theme,
+    displayNames,
+    props,
+    rtl,
+    disableAnimations,
+    renderer,
+    performance,
+  } = options;
 
   const { className, design, styles, variables, ...stylesProps } = props;
 
@@ -54,7 +63,7 @@ const resolveStyles = (
   if (process.env.NODE_ENV !== 'production') {
     if (!performance.enableStylesCaching && performance.enableBooleanVariablesCaching) {
       throw new Error(
-        '@fluentui/react: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"'
+        '@fluentui/react-northstar: Please check your "performance" settings on "Provider", to enable "enableBooleanVariablesCaching" you need to enable "enableStylesCaching"',
       );
     }
   }
@@ -63,7 +72,9 @@ const resolveStyles = (
     if (_.isPlainObject(variables)) {
       const hasOnlyBooleanVariables = Object.keys(variables).every(
         variableName =>
-          variables[variableName] === null || typeof variables[variableName] === 'undefined' || typeof variables[variableName] === 'boolean'
+          variables[variableName] === null ||
+          typeof variables[variableName] === 'undefined' ||
+          typeof variables[variableName] === 'boolean',
       );
 
       if (!hasOnlyBooleanVariables) {
@@ -77,25 +88,28 @@ const resolveStyles = (
   const cacheEnabled = performance.enableStylesCaching && noInlineStylesOverrides && noVariableOverrides;
 
   // Merge theme styles with inline overrides if any
-  let mergedStyles: ComponentSlotStylesPrepared = theme.componentStyles[displayName] || {
-    root: () => ({})
-  };
+  let mergedStyles: ComponentSlotStylesPrepared;
+
+  if (displayNames.length === 1) {
+    mergedStyles = theme.componentStyles[displayNames[0]] || { root: () => ({}) };
+  } else {
+    mergedStyles = mergeComponentStyles(...displayNames.map(displayName => theme.componentStyles[displayName]));
+  }
 
   if (!noInlineStylesOverrides) {
     mergedStyles = mergeComponentStyles(
       mergedStyles,
       props.design && withDebugId({ root: props.design }, 'props.design'),
-      props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles')
+      props.styles && withDebugId({ root: props.styles } as ComponentSlotStylesInput, 'props.styles'),
     );
   }
 
   const styleParam: ComponentStyleFunctionParam = {
-    displayName,
     props,
     variables: resolvedVariables,
     theme,
     rtl,
-    disableAnimations
+    disableAnimations,
   };
 
   // Fela plugins rely on `direction` param in `theme` prop instead of RTL
@@ -105,8 +119,8 @@ const resolveStyles = (
   const felaParam: RendererParam = {
     theme: { direction },
     disableAnimations,
-    displayName, // does not affect styles, only used by useEnhancedRenderer in docs
-    sanitizeCss: performance.enableSanitizeCssPlugin
+    displayName: displayNames.join(':'), // does not affect styles, only used by useEnhancedRenderer in docs
+    sanitizeCss: performance.enableSanitizeCssPlugin,
   };
 
   const renderStyles = renderStylesInput || ((style: ICSSInJSStyle) => renderer.renderRule(() => style, felaParam));
@@ -127,7 +141,7 @@ const resolveStyles = (
   const propsCacheKey = cacheEnabled ? JSON.stringify(stylesProps) : '';
   const variablesCacheKey = cacheEnabled && performance.enableBooleanVariablesCaching ? JSON.stringify(variables) : '';
   const componentCacheKey = cacheEnabled
-    ? `${displayName}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
+    ? `${displayNames.join(':')}:${propsCacheKey}:${variablesCacheKey}:${styleParam.rtl}${styleParam.disableAnimations}`
     : '';
 
   Object.keys(mergedStyles).forEach(slotName => {
@@ -143,7 +157,7 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           stylesCache.set(theme, {
             ...stylesCache.get(theme),
-            [slotCacheKey]: val
+            [slotCacheKey]: val,
           });
         }
 
@@ -168,7 +182,7 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           stylesCache.set(theme, {
             ...stylesCache.get(theme),
-            [slotCacheKey]: resolvedStyles[lazyEvaluationKey]
+            [slotCacheKey]: resolvedStyles[lazyEvaluationKey],
           });
         }
 
@@ -178,7 +192,7 @@ const resolveStyles = (
         }
 
         return resolvedStyles[lazyEvaluationKey];
-      }
+      },
     });
 
     Object.defineProperty(classes, slotName, {
@@ -188,7 +202,7 @@ const resolveStyles = (
         if (cacheEnabled && theme) {
           classesCache.set(theme, {
             ...classesCache.get(theme),
-            [slotCacheKey]: val
+            [slotCacheKey]: val,
           });
         }
 
@@ -205,7 +219,9 @@ const resolveStyles = (
         }
 
         if (classes[lazyEvaluationKey]) {
-          return slotName === 'root' ? cx(componentClassName, classes[lazyEvaluationKey], className) : classes[lazyEvaluationKey];
+          return slotName === 'root'
+            ? cx(componentClassName, classes[lazyEvaluationKey], className)
+            : classes[lazyEvaluationKey];
         }
 
         // this resolves the getter magic
@@ -217,20 +233,22 @@ const resolveStyles = (
           if (cacheEnabled && theme) {
             classesCache.set(theme, {
               ...classesCache.get(theme),
-              [slotCacheKey]: classes[lazyEvaluationKey]
+              [slotCacheKey]: classes[lazyEvaluationKey],
             });
           }
         }
 
-        return slotName === 'root' ? cx(componentClassName, classes[lazyEvaluationKey], className) : classes[lazyEvaluationKey];
-      }
+        return slotName === 'root'
+          ? cx(componentClassName, classes[lazyEvaluationKey], className)
+          : classes[lazyEvaluationKey];
+      },
     });
   });
 
   return {
     resolvedStyles,
     resolvedStylesDebug,
-    classes
+    classes,
   };
 };
 

@@ -24,7 +24,7 @@ export {
   IDragDropHelper,
   IDragDropOptions,
   IViewport,
-  IWithViewportProps
+  IWithViewportProps,
 };
 
 /**
@@ -33,8 +33,9 @@ export {
 export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
-   * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can
-   * call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.
+   * still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change,
+   * you can call this to force a re-evaluation. Be aware that this can be an expensive operation and should be
+   * done sparingly.
    */
   forceUpdate: () => void;
 
@@ -45,13 +46,14 @@ export interface IDetailsList extends IList {
    * @param forceIntoFirstElement - If true, focus will be set to the first focusable child element of the item rather
    *  than the item itself.
    * @param measureItem - Optional callback to measure the height of an individual item
-   * @param scrollToMode - Optional setting to determine where in the window the item should be scrolled to when focused.
+   * @param scrollToMode - Optional setting to determine where in the window the item should be scrolled to
+   * when focused.
    */
   focusIndex: (
     index: number,
     forceIntoFirstElement?: boolean,
     measureItem?: (itemIndex: number) => number,
-    scrollToMode?: ScrollToMode
+    scrollToMode?: ScrollToMode,
   ) => void;
 
   /**
@@ -103,7 +105,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Optional grouping instructions. The definition for IGroup can be found under the GroupedList component. */
   groups?: IGroup[];
 
-  /** Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component. */
+  /** Optional override properties to render groups. */
   groupProps?: IDetailsGroupRenderProps;
 
   /** Optional override for the indent width used for group nesting. */
@@ -116,8 +118,8 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   selectionMode?: SelectionMode;
 
   /**
-   * By default, selection is cleared when clicking on an empty (non-focusable) section of the screen. Setting this value to true
-   * overrides that behavior and maintains selection.
+   * By default, selection is cleared when clicking on an empty (non-focusable) section of the screen.
+   * Setting this value to true overrides that behavior and maintains selection.
    * @defaultvalue false
    **/
   selectionPreservedOnEmptyClick?: boolean;
@@ -154,10 +156,15 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
   onDidUpdate?: (detailsList?: DetailsListBase) => void;
 
-  /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
+  /**
+   * Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page.
+   */
   onRowDidMount?: (item?: any, index?: number) => void;
 
-  /** Callback for when a given row has been unmounted. Useful for identifying when a row has been removed from the page. */
+  /**
+   * Callback for when a given row has been unmounted.
+   * Useful for identifying when a row has been removed from the page.
+   */
   onRowWillUnmount?: (item?: any, index?: number) => void;
 
   /** Callback for when the user clicks on the column header. */
@@ -184,7 +191,8 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   onRenderRow?: IRenderFunction<IDetailsRowProps>;
 
   /**
-   * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
+   * If provided, will be the "default" item column renderer method.
+   * This affects cells within the rows, not the rows themselves.
    * If a column definition provides its own onRender method, that will be used instead of this.
    */
   onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
@@ -218,7 +226,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
 
-  /** Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard. */
+  /**
+   * Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it
+   * with the keyboard.
+   */
   onActiveItemChanged?: (item?: any, index?: number, ev?: React.FocusEvent<HTMLElement>) => void;
 
   /** The aria-label attribute to stamp out on the list header */
@@ -232,14 +243,14 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   ariaLabelForSelectionColumn?: string;
 
-  /** Optional callback to get the aria-label string for a given item. */
+  /** Callback to get the aria-label string for a given item. */
   getRowAriaLabel?: (item: any) => string;
 
-  /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
+  /** Callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
   getRowAriaDescribedBy?: (item: any) => string;
 
   /**
-   * Optional callback to get the item key, to be used in the selection and on render.
+   * Callback to get the item key, to be used in the selection and on render.
    * Must be provided if sorting or filtering is enabled.
    */
   getKey?: (item: any, index?: number) => string;
@@ -262,12 +273,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    */
   minimumPixelsForDrag?: number;
 
-  /** Boolean value to indicate if the component should render in compact mode. Set to false by default */
+  /** Whether the component should render in compact mode. Set to false by default */
   compact?: boolean;
 
   /**
-   * Boolean value to enable render page caching. This is an experimental performance optimization
-   * that is off by default.
+   * Whether to enable render page caching. This is an experimental performance optimization that is off by default.
    * @defaultvalue false
    */
   usePageCache?: boolean;
@@ -275,7 +285,8 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
-   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance
+   * for smaller lists.
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps) => boolean;
@@ -548,7 +559,7 @@ export enum ColumnActionsMode {
   /**
    * Renders the column header ias clickable and displays the dropdown cheveron.
    */
-  hasDropdown = 2
+  hasDropdown = 2,
 }
 
 /**
@@ -561,7 +572,7 @@ export enum ConstrainMode {
   /**
    * If specified, constrains the list to the given layout space.
    */
-  horizontalConstrained = 1
+  horizontalConstrained = 1,
 }
 
 /**
@@ -641,7 +652,7 @@ export enum ColumnDragEndLocation {
   /**
    * Drag ended on Header
    */
-  header = 2
+  header = 2,
 }
 
 /**
@@ -657,7 +668,7 @@ export enum DetailsListLayoutMode {
    * Manages which columns are visible, tries to size them according to their min/max rules and drops
    * off columns that can't fit and have isCollapsible set.
    */
-  justified = 1
+  justified = 1,
 }
 
 /**
@@ -677,7 +688,7 @@ export enum CheckboxVisibility {
   /**
    * Hide checkboxes.
    */
-  hidden = 2
+  hidden = 2,
 }
 
 /**

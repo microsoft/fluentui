@@ -7,11 +7,11 @@ import { useConstCallback } from '@uifabric/react-hooks';
 const explanation = 'When this panel is closed, a confirmation dialog will appear.';
 const dialogContentProps = {
   type: DialogType.normal,
-  title: 'Are you sure you want to close the panel?'
+  title: 'Are you sure you want to close the panel?',
 };
 const dialogModalProps = {
   isBlocking: true,
-  styles: { main: { maxWidth: 450 } }
+  styles: { main: { maxWidth: 450 } },
 };
 
 export const PanelConfirmDismissExample: React.FunctionComponent = () => {
@@ -39,10 +39,20 @@ export const PanelConfirmDismissExample: React.FunctionComponent = () => {
       <br />
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
-      <Panel headerText="Panel with custom close behavior" isOpen={isPanelOpen} onDismiss={onDismiss} closeButtonAriaLabel="Close">
+      <Panel
+        headerText="Panel with custom close behavior"
+        isOpen={isPanelOpen}
+        onDismiss={onDismiss}
+        closeButtonAriaLabel="Close"
+      >
         <p>{explanation}</p>
       </Panel>
-      <Dialog hidden={!isDialogVisible} onDismiss={hideDialog} dialogContentProps={dialogContentProps} modalProps={dialogModalProps}>
+      <Dialog
+        hidden={!isDialogVisible}
+        onDismiss={hideDialog}
+        dialogContentProps={dialogContentProps}
+        modalProps={dialogModalProps}
+      >
         <DialogFooter>
           <PrimaryButton onClick={hideDialogAndPanel} text="Yes" />
           <DefaultButton onClick={hideDialog} text="No" />

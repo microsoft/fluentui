@@ -20,5 +20,5 @@ export interface IAppCustomizations {
 
 export const AppCustomizationsContext = React.createContext<IAppCustomizations>({
   exampleCardCustomizations: undefined,
-  hideSchemes: false
+  hideSchemes: false,
 });

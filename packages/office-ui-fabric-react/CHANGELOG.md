@@ -1,7 +1,36 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
+This log was last generated on Tue, 17 Mar 2020 20:48:59 GMT and should not be manually modified.
 
+## 7.105.0
+Tue, 17 Mar 2020 20:48:59 GMT
+
+### Minor changes
+
+- Pass default ContextualMenuItem renderer to onRenderMenuList (owcampbe@microsoft.com)
+- Added support for overriding persona presence colors (andreas.hage@microsoft.com)
+### Patches
+
+- Remove duplicated export (nakanaki@microsoft.com)
+## 7.104.1
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- Ensure ContextualMenu section header generates valid element ID (ermercer@microsoft.com)
+- Adding onClick callback to divider in SplitButtons that stops propagation so that clicking on the divider does not trigger action. (humbertomakotomorimoto@gmail.com)
+## 7.104.0
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Minor changes
+
+- BaseComponent: remove using BaseComponent from oufr package (xgao@microsoft.com)
+## 7.103.0
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Minor changes
+
+- KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips (chiechan@microsoft.com)
 ## 7.102.0
 Thu, 12 Mar 2020 12:35:00 GMT
 

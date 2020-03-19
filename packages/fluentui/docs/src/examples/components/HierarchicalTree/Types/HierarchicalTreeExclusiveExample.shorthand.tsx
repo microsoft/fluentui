@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HierarchicalTree } from '@fluentui/react';
+import { HierarchicalTree } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -12,9 +12,9 @@ const items = [
         items: [
           {
             key: '3',
-            title: 'one one one'
-          }
-        ]
+            title: 'one one one',
+          },
+        ],
       },
       {
         key: '6',
@@ -22,11 +22,11 @@ const items = [
         items: [
           {
             key: '7',
-            title: 'one two one'
-          }
-        ]
-      }
-    ]
+            title: 'one two one',
+          },
+        ],
+      },
+    ],
   },
   {
     key: '4',
@@ -34,10 +34,10 @@ const items = [
     items: [
       {
         key: '5',
-        title: 'two one'
-      }
-    ]
-  }
+        title: 'two one',
+      },
+    ],
+  },
 ];
 
 const TreeExclusiveExample = () => <HierarchicalTree items={items} exclusive />;

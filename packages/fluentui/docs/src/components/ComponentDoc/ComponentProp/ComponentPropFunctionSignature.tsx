@@ -15,17 +15,17 @@ interface ComponentPropFunctionProps extends ComponentPropExtraProps {
 
 const descriptionStyle = {
   flex: '5 5 0',
-  padding: '0.1em 0'
+  padding: '0.1em 0',
 };
 
 const nameStyle = {
   flex: '2 2 0',
-  padding: '0.1em 0'
+  padding: '0.1em 0',
 };
 
 const rowStyle: any = {
   display: 'flex',
-  flexDirection: 'row'
+  flexDirection: 'row',
 };
 
 const getTagType = tag => (tag.type ? (tag.type.type === 'AllLiteral' ? 'any' : tag.type.name) : '');
@@ -71,7 +71,7 @@ const ComponentPropFunctionSignature: React.SFC<ComponentPropFunctionProps> = ({
 
 ComponentPropFunctionSignature.propTypes = {
   name: PropTypes.string,
-  tags: PropTypes.array
+  tags: PropTypes.array,
 };
 
 const arePropsEqual = () => true;

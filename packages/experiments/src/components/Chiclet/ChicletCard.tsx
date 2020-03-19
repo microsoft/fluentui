@@ -8,5 +8,5 @@ export const ChicletCard: React.FunctionComponent<IChicletCardProps> = styled<
   IChicletCardStyleProps,
   IChicletCardStyles
 >(ChicletCardBase, getStyles, undefined, {
-  scope: 'ChicletCard'
+  scope: 'ChicletCard',
 });

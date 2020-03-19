@@ -15,7 +15,7 @@ export const getIconContent = memoizeFunction(
   (iconName?: string): IIconContent | null => {
     const { code, subset }: Pick<IIconRecord, 'code'> & { subset: Partial<IIconSubsetRecord> } = getIcon(iconName) || {
       subset: {},
-      code: undefined
+      code: undefined,
     };
 
     if (!code) {
@@ -25,11 +25,11 @@ export const getIconContent = memoizeFunction(
     return {
       children: code,
       iconClassName: subset.className,
-      fontFamily: subset.fontFace && subset.fontFace.fontFamily
+      fontFamily: subset.fontFace && subset.fontFace.fontFamily,
     };
   },
   undefined,
-  true /*ignoreNullOrUndefinedResult */
+  true /*ignoreNullOrUndefinedResult */,
 );
 
 /**
@@ -47,7 +47,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
     ? {}
     : {
         role: 'presentation',
-        'aria-hidden': true
+        'aria-hidden': true,
       };
 
   return (

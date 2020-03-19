@@ -1,4 +1,4 @@
-import { Provider, themes, pxToRem, createTheme } from '@fluentui/react';
+import { Provider, themes, pxToRem, createTheme } from '@fluentui/react-northstar';
 // @ts-ignore
 import AnchorJS from 'anchor-js';
 import * as PropTypes from 'prop-types';
@@ -11,7 +11,7 @@ import { mergeThemes } from '@fluentui/styles';
 
 const anchors = new AnchorJS({
   class: 'anchor-link',
-  icon: '#'
+  icon: '#',
 });
 
 class DocsLayout extends React.Component<any, any> {
@@ -24,7 +24,7 @@ class DocsLayout extends React.Component<any, any> {
     location: PropTypes.object.isRequired,
     match: PropTypes.object.isRequired,
     render: PropTypes.func,
-    sidebar: PropTypes.bool
+    sidebar: PropTypes.bool,
   };
 
   static handledProps = ['component', 'history', 'location', 'match', 'render', 'sidebar'];
@@ -74,7 +74,7 @@ class DocsLayout extends React.Component<any, any> {
       margin: '0 0 .5rem',
       padding: '0 1.2857rem',
       background: '#201f1f',
-      color: 'white'
+      color: 'white',
     };
 
     const treeItemStyle = {
@@ -85,8 +85,8 @@ class DocsLayout extends React.Component<any, any> {
       color: 'white',
 
       '& .active': {
-        fontWeight: 'bold'
-      }
+        fontWeight: 'bold',
+      },
     };
 
     return (
@@ -106,27 +106,27 @@ class DocsLayout extends React.Component<any, any> {
                     color: '#ffffff80',
 
                     '& .active': {
-                      fontWeight: 'bold'
-                    }
-                  }
+                      fontWeight: 'bold',
+                    },
+                  },
                 },
                 componentStyles: {
                   HierarchicalTreeItem: {
                     root: ({ variables: v, props: p }) => ({
                       ...(!p.items && treeItemStyle),
-                      ...(p.items && treeSectionStyle)
-                    })
+                      ...(p.items && treeSectionStyle),
+                    }),
                   },
                   HierarchicalTreeTitle: {
                     root: {
                       display: 'block',
-                      width: '100%'
-                    }
-                  }
-                }
+                      width: '100%',
+                    },
+                  },
+                },
               },
-              'DocsLayout'
-            )
+              'DocsLayout',
+            ),
           )}
         >
           <Sidebar width={sidebarWidth} treeItemStyle={treeItemStyle} />

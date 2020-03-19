@@ -12,17 +12,17 @@ export const getStyles = memoizeFunction(
           inset: 1,
           highContrastStyle: {
             outlineOffset: '-4px',
-            outlineColor: 'ActiveBorder'
+            outlineColor: 'ActiveBorder',
           },
-          borderColor: 'transparent'
+          borderColor: 'transparent',
         }),
         {
           height: 24,
-          borderColor: theme.palette.neutralTertiaryAlt
-        }
-      ]
+          borderColor: theme.palette.neutralTertiaryAlt,
+        },
+      ],
     };
 
     return concatStyleSets(baseButtonStyles, messageBarButtonStyles, customStyles)!;
-  }
+  },
 );

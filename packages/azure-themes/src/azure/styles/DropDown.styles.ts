@@ -18,17 +18,17 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth
-        }
-      }
+          borderWidth: StyleConstants.borderWidth,
+        },
+      },
     },
     caretDownWrapper: {
       right: 8,
       height: StyleConstants.inputControlHeightInner,
-      lineHeight: StyleConstants.inputControlHeight
+      lineHeight: StyleConstants.inputControlHeight,
     },
     caretDown: {
-      color: semanticColors.inputText
+      color: semanticColors.inputText,
     },
     dropdown: [
       {
@@ -38,43 +38,43 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         selectors: {
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
+            fontStyle: 'italic',
           },
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
-            fontStyle: 'italic'
-          }
-        }
+            fontStyle: 'italic',
+          },
+        },
       },
       disabled && {
         backgroundColor: semanticColors.disabledBackground,
         borderColor: semanticColors.inputBorder,
         borderStyle: 'solid',
-        borderWidth: '1px'
+        borderWidth: '1px',
       },
       !disabled && {
         selectors: {
           ['&:hover .ms-Dropdown-title']: {
             color: semanticColors.inputText,
-            borderColor: semanticColors.inputBorderHovered
+            borderColor: semanticColors.inputBorderHovered,
           },
           ['&:focus .ms-Dropdown-title']: {
             color: semanticColors.inputText,
-            borderColor: semanticColors.focusBorder
+            borderColor: semanticColors.focusBorder,
           },
           ['&:active .ms-Dropdown-title']: {
             color: semanticColors.inputText,
-            borderColor: semanticColors.inputBorder
+            borderColor: semanticColors.inputBorder,
           },
           // CaretDown states are the same for focus, hover, active.
           ['&:hover .ms-Dropdown-caretDown, &:focus .ms-Dropdown-caretDown, &:active .ms-Dropdown-caretDown']: {
-            color: semanticColors.inputText
-          }
-        }
-      }
+            color: semanticColors.inputText,
+          },
+        },
+      },
     ],
     dropdownDivider: {
-      backgroundColor: semanticColors.inputBorder
+      backgroundColor: semanticColors.inputBorder,
     },
     title: [
       {
@@ -85,25 +85,25 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           span: {
             lineHeight: StyleConstants.inputControlHeightInner,
             position: 'absolute',
-            top: '1px'
-          }
-        }
+            top: '1px',
+          },
+        },
       },
       hasError && {
         borderColor: semanticColors.errorBackground,
-        borderWidth: StyleConstants.borderWidthError
+        borderWidth: StyleConstants.borderWidthError,
       },
       isOpen &&
         !hasError && {
-          borderColor: semanticColors.inputBorder
+          borderColor: semanticColors.inputBorder,
         },
       disabled && {
-        color: semanticColors.disabledBodyText
-      }
+        color: semanticColors.disabledBodyText,
+      },
     ],
     dropdownItemsWrapper: {
       backgroundColor: semanticColors.bodyBackground,
-      borderColor: semanticColors.inputBorder
+      borderColor: semanticColors.inputBorder,
     },
     dropdownItem: {
       color: semanticColors.bodyText,
@@ -113,13 +113,13 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         '&:hover, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
           borderColor: 'transparent',
-          color: semanticColors.bodyText
-        }
-      }
+          color: semanticColors.bodyText,
+        },
+      },
     },
     dropdownItemDisabled: {
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size12,
     },
     dropdownItemSelected: {
       fontSize: FontSizes.size12,
@@ -130,16 +130,16 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
         '&:hover, &:focus, &:active, &:hover:focus': {
           backgroundColor: semanticColors.listItemBackgroundChecked,
           borderColor: 'transparent',
-          color: semanticColors.bodyText
-        }
-      }
+          color: semanticColors.bodyText,
+        },
+      },
     },
     dropdownItemHeader: {
-      color: semanticColors.focusBorder
+      color: semanticColors.focusBorder,
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12
-    }
+      fontSize: FontSizes.size12,
+    },
   };
 };

@@ -1,4 +1,4 @@
-import { Provider, ProviderConsumer, Grid, Header } from '@fluentui/react';
+import { Provider, ProviderConsumer, Grid, Header } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -15,13 +15,13 @@ const ColorPalette = () => (
         ColorVariants: colorVariantsStyles,
         Header: {
           root: {
-            fontWeight: 700
-          }
-        }
+            fontWeight: 700,
+          },
+        },
       },
       componentVariables: {
-        ColorBox: colorBoxVariables
-      }
+        ColorBox: colorBoxVariables,
+      },
     }}
   >
     <ProviderConsumer
@@ -29,8 +29,8 @@ const ColorPalette = () => (
         <DocPage title="Color palette">
           <Header as="h2">Introduction</Header>
           <p>
-            This page displays all colors available in Teams' theme. The page is not intended to be used for copy-pasting values directly,
-            but as a reference to the designers about which colors are available.
+            This page displays all colors available in Teams' theme. The page is not intended to be used for
+            copy-pasting values directly, but as a reference to the designers about which colors are available.
           </p>
 
           <Grid columns={2} variables={{ gridGap: '2rem' }}>

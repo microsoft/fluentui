@@ -14,8 +14,13 @@ export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps> = props =
   const classNames = getClassNames(styles!, {
     theme: theme!,
     height,
-    borderStyle
+    borderStyle,
   });
 
-  return <div style={{ width: width, minWidth: typeof width === 'number' ? `${width}px` : 'auto' }} className={classNames.root} />;
+  return (
+    <div
+      style={{ width: width, minWidth: typeof width === 'number' ? `${width}px` : 'auto' }}
+      className={classNames.root}
+    />
+  );
 };

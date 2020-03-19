@@ -41,7 +41,7 @@ storiesOf('Fonts', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Arabic', () => <RepresentativeText style={getStyle('ar')} />)
   .addStory('Chinese (Simplified)', () => <RepresentativeText style={getStyle('zh-Hans')} />)

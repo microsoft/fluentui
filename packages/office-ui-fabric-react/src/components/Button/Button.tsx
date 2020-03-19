@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, warn } from '../../Utilities';
+import { warn } from '../../Utilities';
 import { ButtonType, IButtonProps } from './Button.types';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { ActionButton } from './ActionButton/ActionButton';
@@ -13,18 +13,13 @@ import { PrimaryButton } from './PrimaryButton/PrimaryButton';
  * @deprecated Use the individual *Button components instead.
  * {@docCategory Button}
  */
-export class Button extends BaseComponent<IButtonProps, {}> {
-  /**
-   * Set this BaseComponent._skipComponentRefResolution to true, bypassing resolution of componentRef.
-   */
-  protected _skipComponentRefResolution = true;
-
+export class Button extends React.Component<IButtonProps, {}> {
   constructor(props: IButtonProps) {
     super(props);
 
     warn(
       `The Button component has been deprecated. Use specific variants instead. ` +
-        `(PrimaryButton, DefaultButton, IconButton, ActionButton, etc.)`
+        `(PrimaryButton, DefaultButton, IconButton, ActionButton, etc.)`,
     );
   }
 

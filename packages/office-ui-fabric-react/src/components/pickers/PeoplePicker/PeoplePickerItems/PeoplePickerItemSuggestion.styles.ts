@@ -3,7 +3,7 @@ import { IPeoplePickerItemSuggestionStyles, IPeoplePickerItemSuggestionStyleProp
 import { SuggestionsItemGlobalClassNames as suggested } from '../../Suggestions/SuggestionsItem.styles';
 const GlobalClassNames = {
   root: 'ms-PeoplePicker-personaContent',
-  personaWrapper: 'ms-PeoplePicker-Persona'
+  personaWrapper: 'ms-PeoplePicker-Persona',
 };
 
 export function getStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeoplePickerItemSuggestionStyles {
@@ -15,18 +15,18 @@ export function getStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeople
       [`.${suggested.isSuggested} &`]: {
         selectors: {
           [HighContrastSelector]: {
-            color: 'HighlightText'
-          }
-        }
+            color: 'HighlightText',
+          },
+        },
       },
       [`.${classNames.root}:hover &`]: {
         selectors: {
           [HighContrastSelector]: {
-            color: 'HighlightText'
-          }
-        }
-      }
-    }
+            color: 'HighlightText',
+          },
+        },
+      },
+    },
   };
 
   return {
@@ -34,21 +34,21 @@ export function getStyles(props: IPeoplePickerItemSuggestionStyleProps): IPeople
       classNames.root,
       {
         width: '100%',
-        padding: '4px 12px'
+        padding: '4px 12px',
       },
-      className
+      className,
     ],
     personaWrapper: [
       classNames.personaWrapper,
       {
-        width: 180
-      }
+        width: 180,
+      },
     ],
     subComponentStyles: {
       persona: {
         primaryText: textSelectorsStyles,
-        secondaryText: textSelectorsStyles
-      }
-    }
+        secondaryText: textSelectorsStyles,
+      },
+    },
   };
 }

@@ -2,6 +2,79 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2020 20:48:59 GMT",
+      "tag": "office-ui-fabric-react_v7.105.0",
+      "version": "7.105.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass default ContextualMenuItem renderer to onRenderMenuList",
+            "author": "owcampbe@microsoft.com",
+            "commit": "8e158df51b7a51595af7c16822966eee148b3359"
+          },
+          {
+            "comment": "Added support for overriding persona presence colors",
+            "author": "andreas.hage@microsoft.com",
+            "commit": "1280b6fba26f5f31773c122173dc6fdfa7095f09"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove duplicated export",
+            "author": "nakanaki@microsoft.com",
+            "commit": "d3021b0c647c3a8d0db2d9b74b44109e6db1e013"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "office-ui-fabric-react_v7.104.1",
+      "version": "7.104.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure ContextualMenu section header generates valid element ID",
+            "author": "ermercer@microsoft.com",
+            "commit": "3435b78843d97a1361c8d07c3c9178fdcd29b4c4"
+          },
+          {
+            "comment": "Adding onClick callback to divider in SplitButtons that stops propagation so that clicking on the divider does not trigger action.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "64d2c080fcb69ec5e89acbeace6a1f5c77fa0580"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "office-ui-fabric-react_v7.104.0",
+      "version": "7.104.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BaseComponent: remove using BaseComponent from oufr package",
+            "author": "xgao@microsoft.com",
+            "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "office-ui-fabric-react_v7.103.0",
+      "version": "7.103.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips",
+            "author": "chiechan@microsoft.com",
+            "commit": "4d3eaef425a024ad2b0099a32645801a067c1076"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2020 12:35:00 GMT",
       "tag": "office-ui-fabric-react_v7.102.0",
       "version": "7.102.0",

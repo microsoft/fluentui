@@ -9,7 +9,7 @@ function createEsm(css) {
   const source = [
     `/* tslint:disable */`,
     `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-    `loadStyles(${JSON.stringify(splitStyles(css))});`
+    `loadStyles(${JSON.stringify(splitStyles(css))});`,
   ];
 
   return source.join('\n');

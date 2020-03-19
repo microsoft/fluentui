@@ -16,7 +16,7 @@ export interface IDialogBasicExampleState {
 export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleState> {
   public state: IDialogBasicExampleState = {
     hideDialog: true,
-    isDraggable: false
+    isDraggable: false,
   };
   // Use getId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
@@ -25,7 +25,7 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
   private _dragOptions = {
     moveMenuItemText: 'Move',
     closeMenuItemText: 'Close',
-    menu: ContextualMenu
+    menu: ContextualMenu,
   };
 
   public render() {
@@ -48,14 +48,14 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
             type: DialogType.normal,
             title: 'Missing Subject',
             closeButtonAriaLabel: 'Close',
-            subText: 'Do you want to send this message without a subject?'
+            subText: 'Do you want to send this message without a subject?',
           }}
           modalProps={{
             titleAriaId: this._labelId,
             subtitleAriaId: this._subTextId,
             isBlocking: false,
             styles: { main: { maxWidth: 450 } },
-            dragOptions: isDraggable ? this._dragOptions : undefined
+            dragOptions: isDraggable ? this._dragOptions : undefined,
           }}
         >
           <DialogFooter>

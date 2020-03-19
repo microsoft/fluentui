@@ -54,11 +54,21 @@ export class DatePickerPage extends React.Component<{}, {}> {
           />
         }
         overview={
-          <Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerOverview.md')}</Markdown>
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerOverview.md')}
+          </Markdown>
         }
         bestPractices={<div />}
-        dos={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDos.md')}</Markdown>}
-        donts={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDonts.md')}</Markdown>}
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

@@ -11,7 +11,7 @@ import {
   createGroup,
   createDocumentItems,
   getTileCells,
-  createShimmerGroups
+  createShimmerGroups,
 } from '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers';
 import { ISize } from '@uifabric/experiments/lib/Utilities';
 import { ShimmerElementType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
@@ -56,7 +56,10 @@ export interface ITilesListDocumentExampleProps {
   tileSize: 'large' | 'small';
 }
 
-export class TilesListDocumentExample extends React.Component<ITilesListDocumentExampleProps, ITilesListDocumentExampleState> {
+export class TilesListDocumentExample extends React.Component<
+  ITilesListDocumentExampleProps,
+  ITilesListDocumentExampleState
+> {
   private _selection: Selection;
 
   constructor(props: ITilesListDocumentExampleProps) {
@@ -64,7 +67,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
-      onSelectionChanged: this._onSelectionChange
+      onSelectionChanged: this._onSelectionChange,
     });
 
     this._selection.setItems(ITEMS);
@@ -77,12 +80,15 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
         size: props.tileSize,
-        shimmerMode: true
-      })
+        shimmerMode: true,
+      }),
     };
   }
 
-  public componentDidUpdate(previousProps: ITilesListDocumentExampleProps, prevState: ITilesListDocumentExampleState): void {
+  public componentDidUpdate(
+    previousProps: ITilesListDocumentExampleProps,
+    prevState: ITilesListDocumentExampleState,
+  ): void {
     const { isDataLoaded } = this.state;
     if (this.props.tileSize !== previousProps.tileSize || this.state.isFluentStyling !== prevState.isFluentStyling) {
       if (!isDataLoaded) {
@@ -91,16 +97,16 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
             onRenderCell: this._onRenderShimmerCell,
             onRenderHeader: this._onRenderShimmerHeader,
             size: this.props.tileSize,
-            shimmerMode: true
-          })
+            shimmerMode: true,
+          }),
         });
       } else {
         this.setState({
           cells: getTileCells(GROUPS, {
             onRenderCell: this._onRenderDocumentCell,
             onRenderHeader: this._onRenderHeader,
-            size: this.props.tileSize
-          })
+            size: this.props.tileSize,
+          }),
         });
       }
     }
@@ -154,36 +160,36 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
         onRenderCell: this._onRenderShimmerCell,
         onRenderHeader: this._onRenderShimmerHeader,
         shimmerMode: true,
-        size: tileSize
+        size: tileSize,
       });
     } else {
       cells = getTileCells(GROUPS, {
         onRenderCell: this._onRenderDocumentCell,
         onRenderHeader: this._onRenderHeader,
-        size: tileSize
+        size: tileSize,
       });
     }
 
     this.setState({
       isDataLoaded: !isDataLoaded,
-      cells: cells
+      cells: cells,
     });
   };
 
   private _onToggleIsFluentStyling = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this.setState(
       {
-        isFluentStyling: checked
+        isFluentStyling: checked,
       },
       () => {
         console.log(this.state);
-      }
+      },
     );
   };
 
   private _onSelectionChange = (): void => {
     this.setState({
-      isModalSelection: this._selection.isModal()
+      isModalSelection: this._selection.isModal(),
     });
   };
 
@@ -215,7 +221,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
               display: 'block',
               width: `${imgSize}px`,
               height: `${imgSize}px`,
-              margin: tileSize === 'large' ? '16px' : '7px'
+              margin: tileSize === 'large' ? '16px' : '7px',
             }}
           />
         }
@@ -230,7 +236,15 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
   private _onRenderShimmerCell = (item: IExampleItem, finalSize: ISize): JSX.Element => {
     const { tileSize } = this.props;
 
-    return <ShimmerTile contentSize={finalSize} itemName={true} itemActivity={true} itemThumbnail={true} tileSize={tileSize} />;
+    return (
+      <ShimmerTile
+        contentSize={finalSize}
+        itemName={true}
+        itemActivity={true}
+        itemThumbnail={true}
+        tileSize={tileSize}
+      />
+    );
   };
 
   private _onRenderHeader = (item: IExampleItem): JSX.Element => {
@@ -242,7 +256,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
           padding: `${HEADER_VERTICAL_PADDING}px 0`,
           fontSize: `${HEADER_FONT_SIZE}px`,
           fontWeight: 700,
-          lineHeight: `${HEADER_FONT_SIZE}px`
+          lineHeight: `${HEADER_FONT_SIZE}px`,
         }}
       >
         {item.name}
@@ -255,7 +269,7 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
       <ShimmerElementsGroup
         shimmerElements={[
           { type: ShimmerElementType.line, height: HEADER_FONT_SIZE, width: '100%' }, // gap is given to maintain height
-          { type: ShimmerElementType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, width: 0 }
+          { type: ShimmerElementType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, width: 0 },
         ]}
       />
     );

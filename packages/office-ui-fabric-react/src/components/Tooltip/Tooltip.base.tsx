@@ -17,8 +17,8 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       beakWidth: 16,
       gapSpace: 0,
       setInitialFocus: true,
-      doNotLayer: false
-    }
+      doNotLayer: false,
+    },
   };
 
   private _classNames: IProcessedStyleSet<ITooltipStyles>;
@@ -34,7 +34,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       maxWidth,
       onRenderContent = this._onRenderContent,
       targetElement,
-      theme
+      theme,
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -42,7 +42,7 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
       className: className || (calloutProps && calloutProps.className),
       beakWidth: calloutProps && calloutProps.beakWidth,
       gapSpace: calloutProps && calloutProps.gapSpace,
-      maxWidth: maxWidth!
+      maxWidth: maxWidth!,
     });
 
     return (

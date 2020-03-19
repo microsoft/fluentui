@@ -34,7 +34,7 @@ describe('TooltipHost', () => {
       beakWidth: 0,
       gapSpace: 10,
       setInitialFocus: false,
-      doNotLayer: true
+      doNotLayer: true,
     };
     const content = 'test content';
     const delay = TooltipDelay.zero;
@@ -42,7 +42,7 @@ describe('TooltipHost', () => {
     const directionalHintForRTL = DirectionalHint.topRightEdge;
     const tooltipProps: ITooltipProps = {
       maxWidth: 'test width',
-      delay: TooltipDelay.zero
+      delay: TooltipDelay.zero,
     };
     let onTooltipToggleCalled = false;
 
@@ -60,7 +60,7 @@ describe('TooltipHost', () => {
           return null;
         }}
         tooltipProps={tooltipProps}
-      />
+      />,
     );
 
     component.find('div').simulate('mouseenter');
@@ -86,7 +86,7 @@ describe('TooltipHost', () => {
       beakWidth: 0,
       gapSpace: 10,
       setInitialFocus: false,
-      doNotLayer: true
+      doNotLayer: true,
     };
     const content = 'test content';
     let onTooltipToggleCalled = false;
@@ -102,7 +102,7 @@ describe('TooltipHost', () => {
           onTooltipToggleCalled = true;
           return null;
         }}
-      />
+      />,
     );
 
     // simulate mouse enter to trigger use of calloutProps

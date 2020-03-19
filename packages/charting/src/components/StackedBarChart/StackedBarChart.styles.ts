@@ -13,7 +13,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     benchmarkColor,
     benchmarkRatio,
     targetColor,
-    targetRatio
+    targetRatio,
   } = props;
   return {
     root: [
@@ -22,59 +22,59 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       {
         width: width ? width : '100%',
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
       },
-      className
+      className,
     ],
     chart: {
       width: '100%',
       height: barHeight ? barHeight : 16,
-      marginBottom: '12px'
+      marginBottom: '12px',
     },
     chartTitle: {
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: FontSizes.small
+      fontSize: FontSizes.small,
     },
     legendContainer: {
-      paddingTop: '4px'
+      paddingTop: '4px',
     },
     hoverCardTextStyles: {
       ...theme.fonts.medium,
-      lineHeight: '14px'
+      lineHeight: '14px',
     },
     hoverCardDataStyles: {
       ...theme.fonts.xxLarge,
       color: legendColor === '' ? theme.palette.black : legendColor,
       fontWeight: FontWeights.bold,
-      lineHeight: '31px'
+      lineHeight: '31px',
     },
     hoverCardRoot: {
       paddingLeft: '16px',
       paddingRight: '22px',
       paddingTop: '15px',
-      paddingBottom: '8px'
+      paddingBottom: '8px',
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
       stroke: theme.palette.white,
-      strokeWidth: 2
+      strokeWidth: 2,
     },
     ratioNumerator: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
-      color: theme.palette.black
+      color: theme.palette.black,
     },
     ratioDenominator: {
       fontSize: FontSizes.small,
       color: theme.palette.black,
-      opacity: '0.6'
+      opacity: '0.6',
     },
     benchmarkContainer: {
       position: 'relative',
-      height: '12px'
+      height: '12px',
     },
     benchmark: {
       position: 'absolute',
@@ -85,7 +85,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       borderRight: '4.5px solid transparent',
       borderTop: '7.8px solid',
       borderTopColor: benchmarkColor,
-      marginBottom: '4px'
+      marginBottom: '4px',
     },
     target: {
       position: 'absolute',
@@ -96,7 +96,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       borderRight: '4.5px solid transparent',
       borderTop: '7.8px solid',
       borderTopColor: targetColor,
-      marginBottom: '4px'
-    }
+      marginBottom: '4px',
+    },
   };
 };

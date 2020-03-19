@@ -1,4 +1,4 @@
-import { Provider, ProviderContextPrepared } from '@fluentui/react';
+import { Provider, ProviderContextPrepared } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 // @ts-ignore

@@ -32,7 +32,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     super(props);
     this.state = {
       openIssues: [],
-      closedIssues: []
+      closedIssues: [],
     };
   }
 
@@ -77,10 +77,20 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
         {(openIssues.length > 0 || closedIssues.length > 0) && (
           <Pivot styles={subComponentStyles.pivot}>
             <PivotItem headerText="Open Issues">
-              <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
+              <List
+                items={openIssues}
+                onRenderCell={this._onRenderCell}
+                data-is-scrollable={true}
+                className={classNames.issueList}
+              />
             </PivotItem>
             <PivotItem headerText="Closed Issues">
-              <List items={closedIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
+              <List
+                items={closedIssues}
+                onRenderCell={this._onRenderCell}
+                data-is-scrollable={true}
+                className={classNames.issueList}
+              />
             </PivotItem>
           </Pivot>
         )}
@@ -103,7 +113,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
       return {
         issueTitle: item.title,
         issueNum: item.number,
-        issueCreated: openedOn
+        issueCreated: openedOn,
       };
     });
   }
@@ -133,5 +143,5 @@ export const FeedbackList: React.FunctionComponent<IFeedbackListProps> = styled<
   IFeedbackListStyleProps,
   IFeedbackListStyles
 >(FeedbackListBase, getStyles, undefined, {
-  scope: 'FeedbackList'
+  scope: 'FeedbackList',
 });

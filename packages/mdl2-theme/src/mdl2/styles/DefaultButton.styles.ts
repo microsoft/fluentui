@@ -12,32 +12,32 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
     root: {
       backgroundColor: palette.neutralLighter,
       border: '1px solid transparent',
-      ...getFocusStyle(theme, { inset: 0, borderColor: palette.white })
+      ...getFocusStyle(theme, { inset: 0, borderColor: palette.white }),
     },
     rootHovered: {
       backgroundColor: palette.neutralLight,
       selectors: {
         '.ms-Button--primary': {
-          backgroundColor: palette.themeDarkAlt
-        }
-      }
+          backgroundColor: palette.themeDarkAlt,
+        },
+      },
     },
     rootPressed: {
-      backgroundColor: palette.neutralTertiaryAlt
+      backgroundColor: palette.neutralTertiaryAlt,
     },
     rootExpanded: {
-      backgroundColor: palette.neutralTertiaryAlt
+      backgroundColor: palette.neutralTertiaryAlt,
     },
     rootChecked: {
-      backgroundColor: palette.neutralTertiaryAlt
+      backgroundColor: palette.neutralTertiaryAlt,
     },
     rootDisabled: {
       backgroundColor: palette.neutralLighter,
-      borderColor: 'transparent'
+      borderColor: 'transparent',
     },
     splitButtonMenuButton: {
       backgroundColor: palette.neutralLighter,
-      border: '1px solid transparent'
+      border: '1px solid transparent',
     },
     splitButtonContainer: {
       selectors: {
@@ -45,26 +45,26 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
           backgroundColor: palette.themePrimary,
           selectors: {
             ':hover': {
-              background: palette.themeDarkAlt
-            }
-          }
+              background: palette.themeDarkAlt,
+            },
+          },
         },
         '.ms-Button--primary + .ms-Button': {
           backgroundColor: palette.themePrimary,
           selectors: {
             ':hover': {
-              background: palette.themeDarkAlt
-            }
-          }
+              background: palette.themeDarkAlt,
+            },
+          },
         },
         '.ms-Button.is-disabled': {
-          backgroundColor: palette.neutralLighter
+          backgroundColor: palette.neutralLighter,
         },
         '.ms-Button.is-disabled + .ms-Button.is-disabled': {
           backgroundColor: palette.neutralLighter,
-          border: 'none'
-        }
-      }
-    }
+          border: 'none',
+        },
+      },
+    },
   };
 };

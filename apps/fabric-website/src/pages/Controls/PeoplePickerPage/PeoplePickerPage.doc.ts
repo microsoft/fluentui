@@ -9,11 +9,11 @@ export const PeoplePickerPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     related,
-    componentUrl
+    componentUrl,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PeoplePickerPage/docs/android/PeoplePickerOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

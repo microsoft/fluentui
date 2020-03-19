@@ -25,7 +25,7 @@ function getResolveAlias() {
     '@uifabric/build',
     '@uifabric/tslint-rules',
     '@uifabric/webpack-utils',
-    '@uifabric/jest-serializer-merge-styles'
+    '@uifabric/jest-serializer-merge-styles',
   ];
 
   let cwd = process.cwd();

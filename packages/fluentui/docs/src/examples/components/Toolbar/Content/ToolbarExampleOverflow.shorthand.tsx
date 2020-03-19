@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
 
 const ToolbarExampleOverflow = () => {
   const icons = ['bold', 'italic', 'underline'];
@@ -9,7 +9,7 @@ const ToolbarExampleOverflow = () => {
     key: `b${i}`,
     content: `${icons[i % icons.length]} #${i}`,
     icon: icons[i % icons.length],
-    title: `${icons[i % icons.length]} #${i}`
+    title: `${icons[i % icons.length]} #${i}`,
   }));
 
   const toolbarItems = itemData.map(item => {

@@ -70,7 +70,7 @@ async function getMatchingRecentPullRequest(changelogComment) {
     if (author) {
       // Get this author's recent PRs and look for one or more with a matching commit message and email
       possiblePrs = (await getRecentPrsByAuthor(author)).filter(pr =>
-        pr.commits.some(commit => commit.message === message && commit.authorEmail === authorEmail)
+        pr.commits.some(commit => commit.message === message && commit.authorEmail === authorEmail),
       );
     }
   } catch (ex) {
@@ -110,10 +110,12 @@ async function getRecentPrsByAuthor(author, count = 10) {
       /** @type {GitHubApi.PullsGetResponse[]} */
       const result = (
         await github.search.issuesAndPullRequests({
-          q: ['type:pr', 'is:merged', 'author:' + author, 'user:' + repoDetails.owner, 'repo:' + repoDetails.repo].join('+'),
+          q: ['type:pr', 'is:merged', 'author:' + author, 'user:' + repoDetails.owner, 'repo:' + repoDetails.repo].join(
+            '+',
+          ),
           sort: 'updated',
           order: 'desc',
-          per_page: count
+          per_page: count,
         })
       ).data.items;
 
@@ -138,11 +140,19 @@ let _recentPrs;
  */
 async function loadRecentPullRequests() {
   if (!_recentPrs) {
-    console.log('Loading the 50 most recent PRs to check for a matching commit (this may take awhile but only happens once)...');
+    console.log(
+      'Loading the 50 most recent PRs to check for a matching commit (this may take awhile but only happens once)...',
+    );
 
     try {
       // Get the most recent 50 pull requests
-      const result = await github.pulls.list({ state: 'closed', sort: 'updated', direction: 'desc', per_page: 50, ...repoDetails });
+      const result = await github.pulls.list({
+        state: 'closed',
+        sort: 'updated',
+        direction: 'desc',
+        per_page: 50,
+        ...repoDetails,
+      });
       /** @type {IPullRequest[]} */
       const prs = result.data
         .filter(result => !!result.merged_at) // Remove un-merged PRs
@@ -174,7 +184,7 @@ async function addCommitInfo(prs) {
           commit: commit.sha,
           message: commit.commit.message,
           author: commit.author.login,
-          authorEmail: commit.commit.author.email
+          authorEmail: commit.commit.author.email,
         }));
     } catch (ex) {
       // ignore
@@ -192,7 +202,7 @@ function processPr(pr) {
     number: pr.number,
     url: pr.html_url,
     author: pr.user.login,
-    authorUrl: pr.user.html_url
+    authorUrl: pr.user.html_url,
   };
 }
 

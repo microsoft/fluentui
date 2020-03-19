@@ -1,50 +1,59 @@
 import * as _ from 'lodash';
-import { ComponentSlotStylesPrepared, ComponentVariablesObject, emptyTheme, ICSSInJSStyle } from '@fluentui/styles';
+import {
+  ComponentSlotStylesPrepared,
+  ComponentVariablesObject,
+  emptyTheme,
+  ICSSInJSStyle,
+  ThemePrepared,
+} from '@fluentui/styles';
 import resolveStyles from '../../src/styles/resolveStyles';
 import { ResolveStylesOptions, StylesContextPerformance } from '../../src/styles/types';
 
-const componentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
+const testComponentStyles: ComponentSlotStylesPrepared<{}, { color: string }> = {
   root: ({ variables: v, rtl }): ICSSInJSStyle => ({
     color: v.color,
-    content: `"rtl:${rtl.toString()}"`
-  })
+    content: `"rtl:${rtl.toString()}"`,
+  }),
 };
 
 const resolvedVariables: ComponentVariablesObject = {
-  color: 'red'
+  color: 'red',
 };
 
 const defaultPerformanceOptions: StylesContextPerformance = {
   enableSanitizeCssPlugin: true,
   enableStylesCaching: true,
   enableVariablesCaching: true,
-  enableBooleanVariablesCaching: false
+  enableBooleanVariablesCaching: false,
 };
 
 const resolveStylesOptions = (options?: {
-  displayName?: ResolveStylesOptions['displayName'];
+  displayNames?: ResolveStylesOptions['displayNames'];
+  componentStyles?: Record<string, ComponentSlotStylesPrepared>;
   performance?: Partial<ResolveStylesOptions['performance']>;
   props?: ResolveStylesOptions['props'];
   rtl?: ResolveStylesOptions['rtl'];
 }): ResolveStylesOptions => {
-  const { displayName = 'Test', performance, props = {}, rtl = false } = options || {};
+  const { componentStyles, displayNames = ['Test'], performance, props = {}, rtl = false } = options || {};
 
-  return {
-    theme: {
-      ...emptyTheme,
-      componentStyles: {
-        [displayName]: componentStyles
-      }
+  const theme: ThemePrepared = {
+    ...emptyTheme,
+    componentStyles: {
+      [displayNames[0]]: testComponentStyles,
+      ...componentStyles,
     },
-    displayName,
+  };
+  return {
+    theme,
+    displayNames,
     props,
     rtl,
     disableAnimations: false,
     renderer: {
-      renderRule: () => ''
+      renderRule: () => '',
     },
     performance: { ...defaultPerformanceOptions, ...performance },
-    saveDebug: () => {}
+    saveDebug: () => {},
   };
 };
 
@@ -56,13 +65,13 @@ describe('resolveStyles', () => {
   });
 
   test('caches resolved styles', () => {
-    spyOn(componentStyles, 'root').and.callThrough();
+    spyOn(testComponentStyles, 'root').and.callThrough();
     const { resolvedStyles } = resolveStyles(resolveStylesOptions(), resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject({ color: 'red' });
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
     expect(resolvedStyles.root).toMatchObject({ color: 'red' });
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
   });
 
   test('does not render classes if not fetched', () => {
@@ -92,20 +101,20 @@ describe('resolveStyles', () => {
   });
 
   test('caches resolved styles for no props', () => {
-    spyOn(componentStyles, 'root').and.callThrough();
+    spyOn(testComponentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions();
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
     expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
   });
 
   test('caches classes for no props', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
-    const options = resolveStylesOptions({ displayName: 'Test1' });
+    const options = resolveStylesOptions({ displayNames: ['Test1'] });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
 
@@ -116,25 +125,25 @@ describe('resolveStyles', () => {
   });
 
   test('caches resolved styles for the same props', () => {
-    spyOn(componentStyles, 'root').and.callThrough();
+    spyOn(testComponentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions({
-      displayName: 'Test2',
-      props: { primary: true }
+      displayNames: ['Test2'],
+      props: { primary: true },
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
     expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
   });
 
   test('caches classes for the same props', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
-      displayName: 'Test3',
-      props: { primary: true }
+      displayNames: ['Test3'],
+      props: { primary: true },
     });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
@@ -145,26 +154,46 @@ describe('resolveStyles', () => {
     expect(renderStyles).toHaveBeenCalledTimes(1);
   });
 
-  test('considers props when caching resolved styles', () => {
-    spyOn(componentStyles, 'root').and.callThrough();
+  test('handles multiple displayNames', () => {
     const options = resolveStylesOptions({
-      displayName: 'Test4',
-      props: { primary: true }
+      displayNames: ['Test', 'Other'],
+      componentStyles: {
+        Other: { root: () => ({ background: 'pink' }) },
+      },
+    });
+
+    expect(resolveStyles(options, resolvedVariables)).toHaveProperty(
+      'resolvedStyles.root',
+      expect.objectContaining({
+        color: 'red',
+        background: 'pink',
+      }),
+    );
+  });
+
+  test('considers props when caching resolved styles', () => {
+    spyOn(testComponentStyles, 'root').and.callThrough();
+    const options = resolveStylesOptions({
+      displayNames: ['Test4'],
+      props: { primary: true },
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
-    const { resolvedStyles: secondResolvedStyles } = resolveStyles({ ...options, props: { primary: false } }, resolvedVariables);
+    const { resolvedStyles: secondResolvedStyles } = resolveStyles(
+      { ...options, props: { primary: false } },
+      resolvedVariables,
+    );
 
     expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(1);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
     expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(2);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(2);
   });
 
   test('considers props when caching classes', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
-      displayName: 'Test5',
-      props: { primary: true }
+      displayNames: ['Test5'],
+      props: { primary: true },
     });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
 
@@ -178,22 +207,22 @@ describe('resolveStyles', () => {
   });
 
   test('does not cache styles if caching is disabled', () => {
-    spyOn(componentStyles, 'root').and.callThrough();
+    spyOn(testComponentStyles, 'root').and.callThrough();
     const options = resolveStylesOptions({
-      performance: { enableStylesCaching: false }
+      performance: { enableStylesCaching: false },
     });
     const { resolvedStyles } = resolveStyles(options, resolvedVariables);
     const { resolvedStyles: secondResolvedStyles } = resolveStyles(options, resolvedVariables);
 
     expect(resolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
     expect(secondResolvedStyles.root).toMatchObject(expect.objectContaining({ color: 'red' }));
-    expect(componentStyles.root).toHaveBeenCalledTimes(2);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(2);
   });
 
   test('does not cache classes if caching is disabled', () => {
     const renderStyles = jest.fn().mockReturnValue('a');
     const options = resolveStylesOptions({
-      performance: { enableStylesCaching: false }
+      performance: { enableStylesCaching: false },
     });
     const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
     const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
@@ -205,17 +234,17 @@ describe('resolveStyles', () => {
   });
 
   test('does not cache styles if there are inline overrides', () => {
-    spyOn(componentStyles, 'root').and.callThrough();
+    spyOn(testComponentStyles, 'root').and.callThrough();
     const propsInlineOverrides: ResolveStylesOptions['props'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
-      { variables: { backgroundColor: 'yellow' } }
+      { variables: { backgroundColor: 'yellow' } },
     ];
 
     const propsInlineOverridesResolvedStyles: ICSSInJSStyle[] = [
       { color: 'red', fontSize: '10px' },
       { color: 'red', left: '10px' },
-      { color: 'red' }
+      { color: 'red' },
     ];
 
     const propsInlineOverridesSize = propsInlineOverrides.length;
@@ -223,7 +252,7 @@ describe('resolveStyles', () => {
     _.forEach(propsInlineOverrides, (props, idx) => {
       const options = resolveStylesOptions({
         props,
-        performance: { enableStylesCaching: false }
+        performance: { enableStylesCaching: false },
       });
 
       const { resolvedStyles } = resolveStyles(options, resolvedVariables);
@@ -234,7 +263,7 @@ describe('resolveStyles', () => {
       resolveStyles(options, resolvedVariables);
     });
 
-    expect(componentStyles.root).toHaveBeenCalledTimes(propsInlineOverridesSize * 2);
+    expect(testComponentStyles.root).toHaveBeenCalledTimes(propsInlineOverridesSize * 2);
   });
 
   test('does not cache classes if there are inline overrides', () => {
@@ -242,7 +271,7 @@ describe('resolveStyles', () => {
     const propsInlineOverrides: ResolveStylesOptions['props'][] = [
       { styles: { fontSize: '10px' } },
       { design: { left: '10px' } },
-      { variables: { backgroundColor: 'yellow' } }
+      { variables: { backgroundColor: 'yellow' } },
     ];
 
     const propsInlineOverridesSize = propsInlineOverrides.length;
@@ -250,7 +279,7 @@ describe('resolveStyles', () => {
     _.forEach(propsInlineOverrides, props => {
       const options = resolveStylesOptions({
         props,
-        performance: { enableStylesCaching: false }
+        performance: { enableStylesCaching: false },
       });
       const { classes } = resolveStyles(options, resolvedVariables, renderStyles);
       const { classes: secondClasses } = resolveStyles(options, resolvedVariables, renderStyles);
@@ -285,7 +314,7 @@ describe('resolveStyles', () => {
       const renderStyles = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
-        performance: { enableBooleanVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true },
       });
 
       expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
@@ -297,7 +326,7 @@ describe('resolveStyles', () => {
       const renderStyles = jest.fn().mockReturnValue('a');
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
-        performance: { enableBooleanVariablesCaching: false }
+        performance: { enableBooleanVariablesCaching: false },
       });
 
       expect(resolveStyles(options, resolvedVariables, renderStyles)).toHaveProperty('classes.root', 'a');
@@ -306,47 +335,49 @@ describe('resolveStyles', () => {
     });
 
     test('avoids "styles" computation when enabled', () => {
-      spyOn(componentStyles, 'root').and.callThrough();
+      spyOn(testComponentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: { isFoo: true, isBar: null, isBaz: undefined } },
-        performance: { enableBooleanVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true },
       });
 
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
-      expect(componentStyles.root).toHaveBeenCalledTimes(1);
+      expect(testComponentStyles.root).toHaveBeenCalledTimes(1);
     });
 
     test('requires "enableStylesCaching" to be enabled', () => {
       const options = resolveStylesOptions({
-        performance: { enableStylesCaching: false, enableBooleanVariablesCaching: true }
+        performance: { enableStylesCaching: false, enableBooleanVariablesCaching: true },
       });
 
-      expect(() => resolveStyles(options, resolvedVariables)).toThrowError(/Please check your "performance" settings on "Provider"/);
+      expect(() => resolveStyles(options, resolvedVariables)).toThrowError(
+        /Please check your "performance" settings on "Provider"/,
+      );
     });
 
     test('when enabled only "variables" as plain objects can be cached', () => {
-      spyOn(componentStyles, 'root').and.callThrough();
+      spyOn(testComponentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: () => {} },
-        performance: { enableBooleanVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true },
       });
 
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
-      expect(componentStyles.root).toHaveBeenCalledTimes(2);
+      expect(testComponentStyles.root).toHaveBeenCalledTimes(2);
     });
 
     test('when enabled only "variables" as boolean or nil properties can be cached', () => {
-      spyOn(componentStyles, 'root').and.callThrough();
+      spyOn(testComponentStyles, 'root').and.callThrough();
       const options = resolveStylesOptions({
         props: { variables: { foo: 'bar' } },
-        performance: { enableBooleanVariablesCaching: true }
+        performance: { enableBooleanVariablesCaching: true },
       });
 
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
       expect(resolveStyles(options, resolvedVariables)).toHaveProperty('resolvedStyles.root');
-      expect(componentStyles.root).toHaveBeenCalledTimes(2);
+      expect(testComponentStyles.root).toHaveBeenCalledTimes(2);
     });
   });
 });

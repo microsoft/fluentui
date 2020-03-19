@@ -17,7 +17,7 @@ const getExampleClassNames = memoizeFunction(
         height: 40,
         backgroundColor: theme.semanticColors.bodyStandoutBackground,
         color: theme.semanticColors.bodyText,
-        padding: '0 10px'
+        padding: '0 10px',
       },
       text: {
         display: 'inline-block',
@@ -25,10 +25,10 @@ const getExampleClassNames = memoizeFunction(
         height: exampleHeight,
         lineHeight: exampleHeight,
         verticalAlign: 'top',
-        margin: 'auto'
-      }
+        margin: 'auto',
+      },
     });
-  }
+  },
 );
 
 export class VerticalDividerBasicExample extends React.Component<any, any> {

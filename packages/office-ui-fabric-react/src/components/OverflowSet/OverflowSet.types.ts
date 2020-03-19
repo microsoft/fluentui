@@ -131,7 +131,8 @@ export interface IOverflowSetStyles {
 }
 
 /**
- * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * The props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory OverflowSet}
  */
 export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;

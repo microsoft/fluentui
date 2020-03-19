@@ -2,7 +2,7 @@ import { IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './
 import { getGlobalClassNames } from '../../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-ShimmerElementsGroup-root'
+  root: 'ms-ShimmerElementsGroup-root',
 };
 
 export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerElementsGroupStyles {
@@ -18,8 +18,8 @@ export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerEleme
         display: 'flex',
         alignItems: 'center',
         flexWrap: flexWrap ? 'wrap' : 'nowrap',
-        position: 'relative'
-      }
-    ]
+        position: 'relative',
+      },
+    ],
   };
 }

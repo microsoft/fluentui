@@ -10,8 +10,8 @@ export const getStyles = (props: IMarqueeSelectionStyleProps): IMarqueeSelection
       className,
       {
         position: 'relative',
-        cursor: 'default'
-      }
+        cursor: 'default',
+      },
     ],
     dragMask: [
       {
@@ -24,10 +24,10 @@ export const getStyles = (props: IMarqueeSelectionStyleProps): IMarqueeSelection
         selectors: {
           [HighContrastSelector]: {
             background: 'none',
-            backgroundColor: 'transparent'
-          }
-        }
-      }
+            backgroundColor: 'transparent',
+          },
+        },
+      },
     ],
     box: [
       {
@@ -38,10 +38,10 @@ export const getStyles = (props: IMarqueeSelectionStyleProps): IMarqueeSelection
         zIndex: 10,
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Highlight'
-          }
-        }
-      }
+            borderColor: 'Highlight',
+          },
+        },
+      },
     ],
     boxFill: [
       {
@@ -56,10 +56,10 @@ export const getStyles = (props: IMarqueeSelectionStyleProps): IMarqueeSelection
         selectors: {
           [HighContrastSelector]: {
             background: 'none',
-            backgroundColor: 'transparent'
-          }
-        }
-      }
-    ]
+            backgroundColor: 'transparent',
+          },
+        },
+      },
+    ],
   };
 };

@@ -11,7 +11,13 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
     const { ariaLabel, page, selected, className } = this.props;
 
     return (
-      <DefaultButton key={page} onClick={this.onClick} aria-selected={selected} aria-label={ariaLabel} styles={{ root: className }}>
+      <DefaultButton
+        key={page}
+        onClick={this.onClick}
+        aria-selected={selected}
+        aria-label={ariaLabel}
+        styles={{ root: className }}
+      >
         {page}
       </DefaultButton>
     );

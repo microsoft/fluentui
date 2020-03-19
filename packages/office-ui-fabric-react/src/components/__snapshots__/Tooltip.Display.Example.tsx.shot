@@ -10,7 +10,8 @@ exports[`Component Examples renders Tooltip.Display.Example.tsx correctly 1`] = 
   <code>
     inline
   </code>
-   elements, the positioning of the Tooltip may be off. In these cases, it's recommended to set the TooltipHost's 
+   elements, the positioning of the Tooltip may be off. In these cases, it's recommended to set the TooltipHost's
+   
   <code>
     display
   </code>

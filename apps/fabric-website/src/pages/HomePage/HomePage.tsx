@@ -4,9 +4,8 @@ import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage
 import { getStyles } from './HomePage.styles';
 import { HomePageBase } from './HomePage.base';
 
-export const HomePage: React.FunctionComponent<IHomePageProps> = styled<IHomePageProps, IHomePageStyleProps, IHomePageStyles>(
-  HomePageBase,
-  getStyles,
-  undefined,
-  { scope: 'HomePage' }
-);
+export const HomePage: React.FunctionComponent<IHomePageProps> = styled<
+  IHomePageProps,
+  IHomePageStyleProps,
+  IHomePageStyles
+>(HomePageBase, getStyles, undefined, { scope: 'HomePage' });

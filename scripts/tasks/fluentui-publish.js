@@ -14,7 +14,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
       '--no-git-reset',
       '--registry',
       argv().registry,
-      bumpType
+      bumpType,
     ];
 
     logger.info(`Running this command: yarn ${lernaPublishArgs.join(' ')}`);
@@ -22,7 +22,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
     const result = spawnSync('yarn', lernaPublishArgs, {
       cwd: fluentRoot,
       shell: true,
-      stdio: 'inherit'
+      stdio: 'inherit',
     });
 
     if (result.status) {

@@ -7,7 +7,7 @@ import {
   PrimaryButton,
   getTheme,
   mergeStyleSets,
-  FontWeights
+  FontWeights,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutFocusTrapExampleState {
@@ -23,48 +23,48 @@ const styles = mergeStyleSets({
     textAlign: 'center',
     margin: '0 100px',
     minWidth: 130,
-    height: 32
+    height: 32,
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   header: {
-    padding: '18px 24px 12px'
+    padding: '18px 24px 12px',
   },
   title: [
     theme.fonts.xLarge,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   inner: {
     height: '100%',
-    padding: '0 24px 20px'
+    padding: '0 24px 20px',
   },
   actions: {
     position: 'relative',
     marginTop: 20,
     width: '100%',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
   buttons: {
     display: 'flex',
     justifyContent: 'flex-end',
-    padding: '0 24px 24px'
+    padding: '0 24px 24px',
   },
   subtext: [
     theme.fonts.small,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
-  ]
+      fontWeight: FontWeights.semilight,
+    },
+  ],
 });
 
 export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTrapExampleState> {
   public state: ICalloutFocusTrapExampleState = {
-    isCalloutVisible: false
+    isCalloutVisible: false,
   };
 
   private _menuButtonElement: HTMLElement | null;
@@ -75,7 +75,10 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
     return (
       <>
         <div className={styles.buttonArea} ref={menuButton => (this._menuButtonElement = menuButton)}>
-          <DefaultButton onClick={this._onDismiss} text={isCalloutVisible ? 'Hide FocusTrapCallout' : 'Show FocusTrapCallout'} />
+          <DefaultButton
+            onClick={this._onDismiss}
+            text={isCalloutVisible ? 'Hide FocusTrapCallout' : 'Show FocusTrapCallout'}
+          />
         </div>
         {isCalloutVisible ? (
           <div>
@@ -112,7 +115,7 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
 
   private _onDismiss = () => {
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
+      isCalloutVisible: !this.state.isCalloutVisible,
     });
   };
 }

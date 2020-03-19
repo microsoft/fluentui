@@ -10,9 +10,9 @@ import { TableCellBehaviorProps } from './tableCellBehavior';
 const tableHeaderCellBehavior: Accessibility<TableCellBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'columnheader'
-    }
-  }
+      role: 'columnheader',
+    },
+  },
 });
 
 export default tableHeaderCellBehavior;

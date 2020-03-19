@@ -34,7 +34,7 @@ const editorStyle: React.CSSProperties = {
   border: '1px dashed grey',
   padding: '5px',
   minHeight: '100px',
-  outline: 0
+  outline: 0,
 };
 
 const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) => {
@@ -49,7 +49,7 @@ const stateReducer = (state: MentionsEditorState, action: MentionsEditorAction) 
         shouldUpdate: true,
         open: false,
         searchQuery: '',
-        selectedItem: action.args
+        selectedItem: action.args,
       };
     case 'SET_SEARCH_QUERY':
       return { ...state, searchQuery: action.args };
@@ -67,7 +67,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
     shouldUpdate: false,
     open: false,
     searchQuery: '',
-    selectedItem: ''
+    selectedItem: '',
   });
 
   React.useEffect(() => {
@@ -137,7 +137,7 @@ const MentionsEditor: React.FunctionComponent<MentionsContainerProps & {
           onSearchQueryChange: handleSearchQueryChange,
           onInputKeyDown: handleInputKeyDown,
           onSelectedChange: handleSelectedChange,
-          ...rest
+          ...rest,
         })}
       </PortalAtCursorPosition>
     </>

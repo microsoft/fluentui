@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 
-import { List, ChatMessageProps, Flex, Icon } from '@fluentui/react';
+import { List, ChatMessageProps, Flex, Icon } from '@fluentui/react-northstar';
 import ControlMessage from './ControlMessage';
 import controlMessagesGroupBehavior from './controlMessagesGroupBehavior';
 
@@ -20,7 +20,7 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
     return _.map(items, (item, index) => {
       return {
         content: <ControlMessage message={item} />,
-        key: `control-message-${index}`
+        key: `control-message-${index}`,
       };
     });
   };

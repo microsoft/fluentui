@@ -87,7 +87,8 @@ export interface IColorSliderProps {
 /**
  * {@docCategory ColorPicker}
  */
-export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> &
+  Pick<IColorSliderProps, 'className' | 'isAlpha'>;
 
 /**
  * {@docCategory ColorPicker}

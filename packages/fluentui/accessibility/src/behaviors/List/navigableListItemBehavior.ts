@@ -14,16 +14,16 @@ const navigableListItemBehavior: Accessibility<ListItemBehaviorProps> = props =>
   attributes: {
     root: {
       role: 'menuitem',
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default navigableListItemBehavior;

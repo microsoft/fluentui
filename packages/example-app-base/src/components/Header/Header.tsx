@@ -25,7 +25,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
 
     this._isRTLEnabled = getRTL();
     this.state = {
-      contextMenu: undefined
+      contextMenu: undefined,
     };
   }
 
@@ -57,9 +57,14 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
                   </a>
                 ))
                 .concat([
-                  <button key="headerButton" className={classNames.button} onClick={this._onGearClick} aria-label="Settings">
+                  <button
+                    key="headerButton"
+                    className={classNames.button}
+                    onClick={this._onGearClick}
+                    aria-label="Settings"
+                  >
                     <Icon iconName="Settings" styles={subComponentStyles.icons} />
-                  </button>
+                  </button>,
                 ])}
             </FocusZone>
           </div>
@@ -94,8 +99,8 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
         ? undefined
         : {
             target: ev.currentTarget as HTMLElement,
-            items: this._getOptionMenuItems()
-          }
+            items: this._getOptionMenuItems(),
+          },
     });
   };
 
@@ -105,8 +110,8 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
         key: 'isRTL',
         name: `Render in ${this._isRTLEnabled ? 'LTR' : 'RTL'}`,
         iconProps: { iconName: 'Settings' },
-        onClick: this._onRTLToggled
-      }
+        onClick: this._onRTLToggled,
+      },
     ];
   }
 
@@ -117,7 +122,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
 
   private _onDismiss = () => {
     this.setState({
-      contextMenu: undefined
+      contextMenu: undefined,
     });
   };
 }
@@ -127,6 +132,6 @@ export const Header: React.FunctionComponent<IHeaderProps> = styled<IHeaderProps
   getStyles,
   undefined,
   {
-    scope: 'Header'
-  }
+    scope: 'Header',
+  },
 );
