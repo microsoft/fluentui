@@ -2,7 +2,7 @@ let path = require('path');
 const resources = require('../../scripts/webpack/webpack-resources');
 const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
-const BUNDLE_NAME = 'fluent-ui-react';
+const BUNDLE_NAME = 'fluentui-react';
 const IS_PRODUCTION = process.argv.indexOf('--production') > -1;
 
 let entry = {
