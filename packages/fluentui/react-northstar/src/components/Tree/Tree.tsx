@@ -47,6 +47,9 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Initial activeItemIds value. */
   defaultActiveItemIds?: string[];
 
+  /** Initial selectedItemIds value. */
+  defaultSelectedItemIds?: string[];
+
   /** Only allow one subtree to be expanded at a time. */
   exclusive?: boolean;
 
@@ -121,6 +124,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     activeItemIds: customPropTypes.collectionShorthand,
     selectedItemIds: customPropTypes.collectionShorthand,
     defaultActiveItemIds: customPropTypes.collectionShorthand,
+    defaultSelectedItemIds: customPropTypes.collectionShorthand,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
     items: customPropTypes.collectionShorthand,

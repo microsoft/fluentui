@@ -2,7 +2,7 @@ import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluen
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import Box, { BoxProps } from '../Box/Box';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-// import { createTreeItemManager } from '@fluentui/state';
+import * as customPropTypes from '@fluentui/react-proptypes';
 
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -206,6 +206,7 @@ TreeTitle.propTypes = {
   selected: PropTypes.bool,
   selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
+  selectionIndicator: customPropTypes.shorthandAllowingChildren,
 };
 TreeTitle.defaultProps = {
   as: 'a',
