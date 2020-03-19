@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Flex, Icon, SvgIcon, createSvgIcon, SvgIconProps } from '@fluentui/react';
+import { Flex, Icon, SvgIcon, createSvgIcon, SvgIconProps } from '@fluentui/react-northstar';
 import cx from 'classnames';
 
 const teamsIconClassNames = {
   filled: 'ui-icon__filled',
-  outline: 'ui-icon__outline'
+  outline: 'ui-icon__outline',
 };
 
 const SendIcon: React.FC<SvgIconProps> = props => {
@@ -68,9 +68,18 @@ const numberListSvg = ({ classes, rtl }) => {
           className={cx(teamsIconClassNames.outline, classes.outlinePart)}
           d="M21.109,19c.61,0,1.274.25,1.274.961a.9.9,0,0,1-.781.945v.016a.92.92,0,0,1,.9.906C22.5,22.7,21.734,23,20.984,23a2.023,2.023,0,0,1-.984-.2v-.742a1.625,1.625,0,0,0,.922.281c.344,0,.7-.125.7-.531,0-.594-.828-.54-1.219-.54v-.648c.383,0,1.1.07,1.1-.5,0-.367-.258-.477-.586-.477a1.426,1.426,0,0,0-.766.25v-.7A2.27,2.27,0,0,1,21.109,19Z"
         />
-        <path className={cx(teamsIconClassNames.outline, classes.outlinePart)} d="M18.5,10a.5.5,0,0,1,0,1h-9a.5.5,0,0,1,0-1Z" />
-        <path className={cx(teamsIconClassNames.outline, classes.outlinePart)} d="M18.5,15a.5.5,0,0,1,0,1h-9a.5.5,0,0,1,0-1Z" />
-        <path className={cx(teamsIconClassNames.outline, classes.outlinePart)} d="M18.5,20a.5.5,0,0,1,0,1h-9a.5.5,0,0,1,0-1Z" />
+        <path
+          className={cx(teamsIconClassNames.outline, classes.outlinePart)}
+          d="M18.5,10a.5.5,0,0,1,0,1h-9a.5.5,0,0,1,0-1Z"
+        />
+        <path
+          className={cx(teamsIconClassNames.outline, classes.outlinePart)}
+          d="M18.5,15a.5.5,0,0,1,0,1h-9a.5.5,0,0,1,0-1Z"
+        />
+        <path
+          className={cx(teamsIconClassNames.outline, classes.outlinePart)}
+          d="M18.5,20a.5.5,0,0,1,0,1h-9a.5.5,0,0,1,0-1Z"
+        />
       </g>
     </svg>
   ) : (
