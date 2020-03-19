@@ -23,7 +23,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-label')
+        .getAttribute('aria-label'),
     ).toEqual('offLabel');
   });
 
@@ -35,7 +35,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-label')
+        .getAttribute('aria-label'),
     ).toEqual('onLabel');
   });
 
@@ -47,7 +47,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-labelledby')
+        .getAttribute('aria-labelledby'),
     ).toBeNull();
   });
 
@@ -59,7 +59,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-labelledby')
+        .getAttribute('aria-labelledby'),
     ).toBeNull();
   });
 });

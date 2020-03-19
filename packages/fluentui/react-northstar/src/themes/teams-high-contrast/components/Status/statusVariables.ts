@@ -10,5 +10,5 @@ export default (siteVariables): Partial<StatusVariables> => ({
   errorBackgroundColor: siteVariables.red,
   errorTextColor: siteVariables.colors.black,
   defaultBackgroundColor: siteVariables.colors.white,
-  defaultTextColor: siteVariables.colors.black
+  defaultTextColor: siteVariables.colors.black,
 });

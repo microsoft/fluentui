@@ -1,7 +1,7 @@
 import { ThemeIcons, ThemeIconSpec } from '@fluentui/styles';
 
 const fontIcon = (content: string, fontFamily: string): ThemeIconSpec => ({
-  icon: { content: `'\\${content}'`, fontFamily }
+  icon: { content: `'\\${content}'`, fontFamily },
 });
 
 const normal = (content: string) => fontIcon(content, '"Font Awesome 5 Free"');
@@ -1308,7 +1308,7 @@ const fontAwesomeIcons: ThemeIcons = {
 
   // Outline Aliases
   'heart empty': outline('f004'),
-  'star empty': outline('f089')
+  'star empty': outline('f089'),
 };
 
 export default fontAwesomeIcons;

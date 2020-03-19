@@ -11,12 +11,18 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  applyAccessibilityKeyHandlers
+  applyAccessibilityKeyHandlers,
 } from '../../utils';
 import AccordionTitle, { AccordionTitleProps } from './AccordionTitle';
 import AccordionContent, { AccordionContentProps } from './AccordionContent';
 
-import { ComponentEventHandler, WithAsProp, ShorthandValue, ShorthandRenderFunction, withSafeTypeForAs } from '../../types';
+import {
+  ComponentEventHandler,
+  WithAsProp,
+  ShorthandValue,
+  ShorthandRenderFunction,
+  withSafeTypeForAs,
+} from '../../types';
 import { ContainerFocusHandler } from '../../utils/accessibility/FocusHandling/FocusContainer';
 
 export interface AccordionSlotClassNames {
@@ -92,20 +98,20 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
 
   static slotClassNames: AccordionSlotClassNames = {
     content: `${Accordion.className}__content`,
-    title: `${Accordion.className}__title`
+    title: `${Accordion.className}__title`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     activeIndex: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number])
+      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
     ]),
     defaultActiveIndex: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number])
+      PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.number), PropTypes.number]),
     ]),
     exclusive: PropTypes.bool,
     expanded: PropTypes.bool,
@@ -116,18 +122,18 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       PropTypes.arrayOf(
         PropTypes.shape({
           content: customPropTypes.itemShorthand,
-          title: customPropTypes.itemShorthand
-        })
-      )
+          title: customPropTypes.itemShorthand,
+        }),
+      ),
     ]),
 
     renderPanelTitle: PropTypes.func,
-    renderPanelContent: PropTypes.func
+    renderPanelContent: PropTypes.func,
   };
 
   static defaultProps = {
     accessibility: accordionBehavior,
-    as: 'dl'
+    as: 'dl',
   };
 
   static autoControlledProps = ['activeIndex'];
@@ -156,7 +162,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
     moveLast: e => {
       e.preventDefault();
       this.focusHandler.moveLast();
-    }
+    },
   };
 
   constructor(props, context) {
@@ -189,7 +195,9 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
 
     if (exclusive) return index === activeIndex ? -1 : index;
     // check to see if index is in array, and remove it, if not then add it
-    return _.includes(activeIndex as number[], index) ? _.without(activeIndex as number[], index) : [...(activeIndex as number[]), index];
+    return _.includes(activeIndex as number[], index)
+      ? _.without(activeIndex as number[], index)
+      : [...(activeIndex as number[]), index];
   };
 
   handleTitleOverrides = (predefinedProps: AccordionTitleProps) => ({
@@ -206,7 +214,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
     onFocus: (e: React.SyntheticEvent, titleProps: AccordionTitleProps) => {
       _.invoke(predefinedProps, 'onFocus', e, titleProps);
       this.setState({ focusedIndex: predefinedProps.index });
-    }
+    },
   });
 
   isIndexActive = (index: number): boolean => {
@@ -262,11 +270,11 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
             contentRef,
             canBeCollapsed,
             id: titleId,
-            accordionContentId: contentId
+            accordionContentId: contentId,
           }),
           overrideProps: this.handleTitleOverrides,
-          render: renderPanelTitle
-        })
+          render: renderPanelTitle,
+        }),
       );
       children.push(
         AccordionContent.create(content, {
@@ -274,10 +282,10 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
             className: Accordion.slotClassNames.content,
             active,
             id: contentId,
-            accordionTitleId: titleId
+            accordionTitleId: titleId,
           }),
-          render: renderPanelContent
-        })
+          render: renderPanelContent,
+        }),
       );
     });
 

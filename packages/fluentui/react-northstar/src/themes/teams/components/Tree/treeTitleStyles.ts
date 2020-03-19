@@ -10,8 +10,8 @@ const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTit
     cursor: 'pointer',
     color: v.color,
     position: 'relative',
-    ...getBorderFocusStyles({ variables: siteVariables })
-  })
+    ...getBorderFocusStyles({ variables: siteVariables }),
+  }),
 };
 
 export default treeTitleStyles;

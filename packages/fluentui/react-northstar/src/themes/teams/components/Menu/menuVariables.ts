@@ -12,7 +12,7 @@ export const menuColorAreas = stringLiteralsArray(
   'backgroundHover',
   'backgroundActive',
   'backgroundFocus',
-  'foregroundDisabled'
+  'foregroundDisabled',
 );
 export type MenuColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof menuColorAreas>>;
 
@@ -101,7 +101,7 @@ export default (siteVars: any): MenuVariables => {
           borderActive: siteVars.colorScheme.default.border2,
           backgroundActive: siteVars.colorScheme.default.backgroundActive1,
           backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
-          foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1
+          foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
         },
         brand: {
           foregroundHover: siteVars.colors.white,
@@ -111,10 +111,10 @@ export default (siteVars: any): MenuVariables => {
           backgroundActive: siteVars.colors.brand[500], // it's 600 in the color scheme
           foregroundFocus: siteVars.colors.white,
           backgroundFocus: siteVars.colors.brand[300],
-          foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1
-        }
+          foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
+        },
       }),
-      menuColorAreas
+      menuColorAreas,
     ),
     color: siteVars.colors.grey[500],
     colorActive: siteVars.colors.black,
@@ -189,6 +189,6 @@ export default (siteVars: any): MenuVariables => {
     activePrimaryIndicatorColor: siteVars.colors.grey[750],
     activePrimaryVerticalIndicatorColor: siteVars.colors.white,
     primaryIndicatorColorHover: siteVars.colors.white,
-    indicatorColorHover: siteVars.colors.grey[500]
+    indicatorColorHover: siteVars.colors.grey[500],
   };
 };

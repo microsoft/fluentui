@@ -15,5 +15,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'presence-available'
+  exportedAs: 'presence-available',
 } as TeamsProcessedSvgIconSpec;

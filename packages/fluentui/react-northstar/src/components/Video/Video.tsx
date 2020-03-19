@@ -36,21 +36,21 @@ class Video extends UIComponent<WithAsProp<VideoProps>> {
   static propTypes = {
     ...commonPropTypes.createCommon({
       children: false,
-      content: false
+      content: false,
     }),
     autoPlay: PropTypes.bool,
     controls: PropTypes.bool,
     loop: PropTypes.bool,
     muted: PropTypes.bool,
     poster: PropTypes.string,
-    src: PropTypes.string
+    src: PropTypes.string,
   };
 
   static defaultProps = {
     as: 'video',
     controls: true,
     autoPlay: false,
-    muted: false
+    muted: false,
   };
 
   videoRef = React.createRef<HTMLVideoElement>();

@@ -17,7 +17,7 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
     value: 'test-value1',
     'data-foo': 'something',
     onClick: jest.fn(),
-    disabled: props && props.disabledItem === 0
+    disabled: props && props.disabledItem === 0,
   },
   {
     name: 'test-name',
@@ -25,7 +25,7 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
     label: 'test-label2',
     value: 'test-value2',
     'data-foo': 'something',
-    disabled: props && props.disabledItem === 1
+    disabled: props && props.disabledItem === 1,
   },
   {
     name: 'test-name',
@@ -33,8 +33,8 @@ const getShorthandItems = (props?: { disabledItem?: number }) => [
     label: 'test-label3',
     value: 'test-value3',
     'data-foo': 'something',
-    disabled: props && props.disabledItem === 2
-  }
+    disabled: props && props.disabledItem === 2,
+  },
 ];
 
 describe('RadioGroup', () => {
@@ -42,7 +42,7 @@ describe('RadioGroup', () => {
 
   describe('accessibility', () => {
     handlesAccessibility(RadioGroup, {
-      defaultRootRole: 'radiogroup'
+      defaultRootRole: 'radiogroup',
     });
 
     test('compliance', async () => await htmlIsAccessibilityCompliant(<RadioGroup items={getShorthandItems()} />));
@@ -50,7 +50,7 @@ describe('RadioGroup', () => {
 
   describe('implementsCollectionShorthandProp', () => {
     radioGroupImplementsCollectionShorthandProp('items', RadioGroupItem, {
-      mapsValueToProp: false
+      mapsValueToProp: false,
     });
   });
 
@@ -96,7 +96,9 @@ describe('RadioGroup', () => {
       describe('click event handler', () => {
         it('should set "checked" when item is clicked', () => {
           const onCheckedValueChange = jest.fn();
-          const wrapper = mountWithProvider(<RadioGroup items={getItems()} onCheckedValueChange={onCheckedValueChange} />);
+          const wrapper = mountWithProvider(
+            <RadioGroup items={getItems()} onCheckedValueChange={onCheckedValueChange} />,
+          );
           const radioGroupItems = wrapper.find('RadioGroupItem');
 
           radioGroupItems
@@ -110,7 +112,10 @@ describe('RadioGroup', () => {
           expect(updatedItems.at(0).props().checked).toBe(false);
           expect(updatedItems.at(1).props().checked).toBe(true);
 
-          expect(onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ value: 'test-value2' }));
+          expect(onCheckedValueChange).toHaveBeenCalledWith(
+            expect.anything(),
+            expect.objectContaining({ value: 'test-value2' }),
+          );
         });
       });
     }
@@ -118,7 +123,7 @@ describe('RadioGroup', () => {
     it('should not call checkedValueChanged when index did not change', () => {
       const onCheckedValueChange = jest.fn();
       const wrapper = mountWithProvider(
-        <RadioGroup items={getItems()} onCheckedValueChange={onCheckedValueChange} checkedValue="test-value2" />
+        <RadioGroup items={getItems()} onCheckedValueChange={onCheckedValueChange} checkedValue="test-value2" />,
       );
       const radioGroupItems = wrapper.find('RadioGroupItem');
 
@@ -154,7 +159,7 @@ describe('RadioGroup', () => {
         it(`keyDown test - ${testName}`, () => {
           const onCheckedValueChange = jest.fn();
           const wrapper = mountWithProvider(
-            <RadioGroup items={items} checkedValue={initialValue} onCheckedValueChange={onCheckedValueChange} />
+            <RadioGroup items={items} checkedValue={initialValue} onCheckedValueChange={onCheckedValueChange} />,
           );
 
           wrapper
@@ -162,29 +167,50 @@ describe('RadioGroup', () => {
             .first()
             .simulate('keyDown', { preventDefault() {}, keyCode, which: keyCode });
 
-          expect(onCheckedValueChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ value: expectedValue }));
+          expect(onCheckedValueChange).toHaveBeenCalledWith(
+            expect.anything(),
+            expect.objectContaining({ value: expectedValue }),
+          );
         });
       };
 
       testKeyDown('should check next value when right arrow is pressed', getItems(), 'test-value1', 39, 'test-value2');
-      testKeyDown('should check previous value when left arrow is pressed', getItems(), 'test-value2', 37, 'test-value1');
+      testKeyDown(
+        'should check previous value when left arrow is pressed',
+        getItems(),
+        'test-value2',
+        37,
+        'test-value1',
+      );
       testKeyDown(
         'should check first value when right arrow is pressed and last item was checked',
         getItems(),
         'test-value3',
         39,
-        'test-value1'
+        'test-value1',
       );
       testKeyDown(
         'should check last value when left arrow is pressed and first item was checked',
         getItems(),
         'test-value1',
         37,
-        'test-value3'
+        'test-value3',
       );
 
-      testKeyDown('should skip disabled when right arrow is pressed', getItems({ disabledItem: 1 }), 'test-value1', 39, 'test-value3');
-      testKeyDown('should skip disabled when left arrow is pressed', getItems({ disabledItem: 1 }), 'test-value3', 37, 'test-value1');
+      testKeyDown(
+        'should skip disabled when right arrow is pressed',
+        getItems({ disabledItem: 1 }),
+        'test-value1',
+        39,
+        'test-value3',
+      );
+      testKeyDown(
+        'should skip disabled when left arrow is pressed',
+        getItems({ disabledItem: 1 }),
+        'test-value3',
+        37,
+        'test-value1',
+      );
     });
   };
 

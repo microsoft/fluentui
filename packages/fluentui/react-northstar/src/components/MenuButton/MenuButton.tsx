@@ -11,7 +11,7 @@ import {
   applyAccessibilityKeyHandlers,
   getOrGenerateIdFromShorthand,
   commonPropTypes,
-  StyledComponentProps
+  StyledComponentProps,
 } from '../../utils';
 import { ShorthandValue, ComponentEventHandler, ShorthandCollection } from '../../types';
 
@@ -105,13 +105,13 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
   static create: ShorthandFactory<MenuButtonProps>;
 
   static slotClassNames: MenuButtonSlotClassNames = {
-    menu: `${MenuButton.className}__menu`
+    menu: `${MenuButton.className}__menu`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
       as: true,
-      content: false
+      content: false,
     }),
     align: PropTypes.oneOf(ALIGNMENTS),
     defaultOpen: PropTypes.bool,
@@ -121,7 +121,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
     on: PropTypes.oneOfType([
       PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
       PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
-      PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context']))
+      PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
     ]),
     open: PropTypes.bool,
     onMenuItemClick: PropTypes.func,
@@ -131,14 +131,17 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
     trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.any]),
     tabbableTrigger: PropTypes.bool,
     unstable_pinned: PropTypes.bool,
-    menu: PropTypes.oneOfType([customPropTypes.itemShorthandWithoutJSX, PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX)]),
-    contextMenu: PropTypes.bool
+    menu: PropTypes.oneOfType([
+      customPropTypes.itemShorthandWithoutJSX,
+      PropTypes.arrayOf(customPropTypes.itemShorthandWithoutJSX),
+    ]),
+    contextMenu: PropTypes.bool,
   };
 
   static defaultProps: MenuButtonProps = {
     accessibility: menuButtonBehavior,
     align: 'start',
-    position: 'below'
+    position: 'below',
   };
 
   static autoControlledProps = ['open'];
@@ -146,7 +149,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
   static getAutoControlledStateFromProps(props: MenuButtonProps, state: MenuButtonState): Partial<MenuButtonState> {
     return {
       menuId: getOrGenerateIdFromShorthand('menubutton-menu-', props.menu, state.menuId),
-      triggerId: getOrGenerateIdFromShorthand('menubutton-trigger-', props.trigger, state.triggerId)
+      triggerId: getOrGenerateIdFromShorthand('menubutton-trigger-', props.trigger, state.triggerId),
     };
   }
 
@@ -156,7 +159,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
   actionHandlers = {
     closeMenu: e => this.closeMenu(e),
     openAndFocusFirst: e => this.openAndFocus(e, 'first'),
-    openAndFocusLast: e => this.openAndFocus(e, 'last')
+    openAndFocusLast: e => this.openAndFocus(e, 'last'),
   };
 
   closeMenu(e: React.KeyboardEvent) {
@@ -181,10 +184,16 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
         // do not close if clicked on item with submenu
         this.handleOpenChange(e, false);
       }
-    }
+    },
   });
 
-  renderComponent({ ElementType, classes, unhandledProps, accessibility, styles }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
+  renderComponent({
+    ElementType,
+    classes,
+    unhandledProps,
+    accessibility,
+    styles,
+  }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
     const {
       // MenuButton props:
       contextMenu,
@@ -207,7 +216,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       target,
       trigger,
       unstable_pinned,
-      variables
+      variables,
     } = this.props;
 
     const popupProps = {
@@ -228,15 +237,15 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       target,
       trigger,
       unstable_pinned,
-      variables
+      variables,
     };
 
     const content = Menu.create(menu, {
       defaultProps: () => ({
         ...accessibility.attributes.menu,
-        vertical: true
+        vertical: true,
       }),
-      overrideProps: this.handleMenuOverrides
+      overrideProps: this.handleMenuOverrides,
     });
 
     const overrideProps: PopupProps = {
@@ -247,19 +256,19 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
       },
       content: {
         styles: styles.popupContent,
-        content: content && <Ref innerRef={this.menuRef}>{content}</Ref>
+        content: content && <Ref innerRef={this.menuRef}>{content}</Ref>,
       },
       children: undefined, // force-reset `children` defined for `Popup` as it collides with the `trigger
       ...(contextMenu
         ? {
             on: 'context',
             trapFocus: true,
-            tabbableTrigger: false
+            tabbableTrigger: false,
           }
         : {
             inline: true,
-            autoFocus: true
-          })
+            autoFocus: true,
+          }),
     };
 
     const popup = Popup.create(popupProps, { overrideProps });

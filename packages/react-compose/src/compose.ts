@@ -8,13 +8,13 @@ const defaultComposeOptions: ComposePreparedOptions = {
   mapPropsToStylesPropsChain: [],
 
   handledProps: [],
-  overrideStyles: false
+  overrideStyles: false,
 };
 
 function computeDisplayNames<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
   options: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>,
   inputDisplayName?: string,
-  inputOptions?: ComposePreparedOptions
+  inputOptions?: ComposePreparedOptions,
 ): string[] {
   if (options.overrideStyles) {
     return [options.displayName || inputDisplayName].filter(Boolean) as string[];
@@ -30,7 +30,7 @@ function computeDisplayNames<InputProps, InputStylesProps, ParentProps, ParentSt
 
 function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
   InputComponent: React.FunctionComponent<ParentProps> & { fluentComposeConfig?: ComposePreparedOptions },
-  composeOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {}
+  composeOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps> = {},
 ): ComposedComponent<InputProps, InputStylesProps, ParentProps, ParentStylesProps> {
   const Component = (InputComponent.bind(null) as unknown) as ComposedComponent<
     InputProps,
@@ -52,7 +52,7 @@ function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
       : inputOptions.mapPropsToStylesPropsChain) as ((props: ParentStylesProps & InputProps) => InputStylesProps)[],
 
     handledProps: [...inputOptions.handledProps, ...handledProps],
-    overrideStyles: composeOptions.overrideStyles || false
+    overrideStyles: composeOptions.overrideStyles || false,
   };
 
   return Component;

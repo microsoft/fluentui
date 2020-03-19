@@ -15,7 +15,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
@@ -24,7 +24,10 @@ export interface AccordionTitleSlotClassNames {
   contentWrapper: string;
 }
 
-export interface AccordionTitleProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>>, ChildrenComponentProps {
+export interface AccordionTitleProps
+  extends UIComponentProps,
+    ContentComponentProps<ShorthandValue<BoxProps>>,
+    ChildrenComponentProps {
   /** Id of the content it owns. */
   accordionContentId?: string;
 
@@ -84,7 +87,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     disabled: PropTypes.bool,
     index: PropTypes.number,
     onClick: PropTypes.func,
-    indicator: customPropTypes.shorthandAllowingChildren
+    indicator: customPropTypes.shorthandAllowingChildren,
   };
 
   static defaultProps = {
@@ -92,14 +95,14 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     as: 'dt',
     contentRef: _.noop,
     indicator: {},
-    contentWrapper: {}
+    contentWrapper: {},
   };
 
   actionHandlers = {
     performClick: e => {
       e.preventDefault();
       this.handleClick(e);
-    }
+    },
   };
 
   handleClick = (e: React.SyntheticEvent) => {
@@ -121,7 +124,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
     onClick: (e: React.MouseEvent) => {
       this.handleClick(e);
       _.invoke(predefinedProps, 'onClick', e, this.props);
-    }
+    },
   });
 
   renderComponent({ ElementType, classes, unhandledProps, styles, accessibility }) {
@@ -134,7 +137,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
             className: AccordionTitle.slotClassNames.contentWrapper,
             styles: styles.contentWrapper,
             ...accessibility.attributes.content,
-            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps)
+            ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),
           }),
           overrideProps: predefinedProps => ({
             children: (
@@ -142,19 +145,19 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
                 {Box.create(indicator, {
                   defaultProps: () => ({
                     styles: styles.indicator,
-                    accessibility: indicatorBehavior
-                  })
+                    accessibility: indicatorBehavior,
+                  }),
                 })}
                 {Box.create(content, {
                   defaultProps: () => ({
                     as: 'span',
-                    styles: styles.content
-                  })
+                    styles: styles.content,
+                  }),
                 })}
               </>
             ),
-            ...this.handleWrapperOverrides(predefinedProps)
-          })
+            ...this.handleWrapperOverrides(predefinedProps),
+          }),
         })}
       </Ref>
     );
@@ -176,7 +179,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
 
 AccordionTitle.slotClassNames = {
-  contentWrapper: `${AccordionTitle.className}__content-wrapper`
+  contentWrapper: `${AccordionTitle.className}__content-wrapper`,
 };
 
 /**

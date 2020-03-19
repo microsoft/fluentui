@@ -2,7 +2,7 @@ import { IGroupFooterStyleProps, IGroupFooterStyles } from './GroupFooter.types'
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
-  root: 'ms-groupFooter'
+  root: 'ms-groupFooter',
 };
 
 export const getStyles = (props: IGroupFooterStyleProps): IGroupFooterStyles => {
@@ -15,9 +15,9 @@ export const getStyles = (props: IGroupFooterStyleProps): IGroupFooterStyles => 
       classNames.root,
       {
         position: 'relative',
-        padding: '5px 38px'
+        padding: '5px 38px',
       },
-      className
-    ]
+      className,
+    ],
   };
 };

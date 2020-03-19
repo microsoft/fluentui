@@ -35,5 +35,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'outdent'
+  exportedAs: 'outdent',
 } as TeamsProcessedSvgIconSpec;

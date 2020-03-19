@@ -33,7 +33,10 @@ describe('Tooltip', () => {
         .simulate('mouseEnter');
 
       expect(onOpenChange).toHaveBeenCalledTimes(1);
-      expect(onOpenChange).toHaveBeenCalledWith(expect.objectContaining({ type: 'mouseenter' }), expect.objectContaining({ open: true }));
+      expect(onOpenChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'mouseenter' }),
+        expect.objectContaining({ open: true }),
+      );
     });
 
     // https://github.com/microsoft/fluent-ui-react/pull/619
@@ -45,7 +48,10 @@ describe('Tooltip', () => {
         .simulate('mouseEnter');
 
       expect(onOpenChange).toHaveBeenCalledTimes(1);
-      expect(onOpenChange).toHaveBeenCalledWith(expect.objectContaining({ type: 'mouseenter' }), expect.objectContaining({ open: true }));
+      expect(onOpenChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'mouseenter' }),
+        expect.objectContaining({ open: true }),
+      );
     });
   });
 

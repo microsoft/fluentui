@@ -39,7 +39,7 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
       styles.todoItem,
       this.props.item.isComplete === true ? styles.isCompleted : '',
       'ms-Grid',
-      'ms-slideDownIn20'
+      'ms-slideDownIn20',
     );
 
     return (
@@ -52,7 +52,11 @@ export default class TodoItem extends React.Component<ITodoItemProps, {}> {
       >
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={css(styles.itemTaskRow, 'ms-Grid-row')}>
-            <Checkbox label={this.props.item.title} onChange={this._onCheckboxChange} checked={!!this.props.item.isComplete} />
+            <Checkbox
+              label={this.props.item.title}
+              onChange={this._onCheckboxChange}
+              checked={!!this.props.item.isComplete}
+            />
             <IconButton
               className={styles.deleteButton}
               iconProps={{ iconName: 'X' }}

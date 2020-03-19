@@ -46,18 +46,20 @@ export const mergeBooleanValues = (target, ...sources) => {
   }, target);
 };
 
-const mergeProviderContexts = (...contexts: (ProviderContextInput | ProviderContextPrepared)[]): ProviderContextPrepared => {
+const mergeProviderContexts = (
+  ...contexts: (ProviderContextInput | ProviderContextPrepared)[]
+): ProviderContextPrepared => {
   const emptyContext: ProviderContextPrepared = {
     theme: {
       siteVariables: {
-        fontSizes: {}
+        fontSizes: {},
       },
       componentVariables: {},
       componentStyles: {},
       fontFaces: [],
       staticStyles: [],
       icons: {},
-      animations: {}
+      animations: {},
     },
     rtl: false,
     disableAnimations: false,
@@ -66,39 +68,42 @@ const mergeProviderContexts = (...contexts: (ProviderContextInput | ProviderCont
       enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
       enableStylesCaching: true,
       enableVariablesCaching: true,
-      enableBooleanVariablesCaching: false
+      enableBooleanVariablesCaching: false,
     },
     telemetry: undefined,
-    renderer: undefined
+    renderer: undefined,
   };
 
-  return contexts.reduce<ProviderContextPrepared>((acc: ProviderContextPrepared, next: ProviderContextInput | ProviderContextPrepared) => {
-    if (!next) return acc;
+  return contexts.reduce<ProviderContextPrepared>(
+    (acc: ProviderContextPrepared, next: ProviderContextInput | ProviderContextPrepared) => {
+      if (!next) return acc;
 
-    acc.theme = mergeThemes(acc.theme, next.theme);
+      acc.theme = mergeThemes(acc.theme, next.theme);
 
-    // Latest RTL value wins
-    const mergedRTL = mergeBooleanValues(acc.rtl, next.rtl);
-    if (typeof mergedRTL === 'boolean') {
-      acc.rtl = mergedRTL;
-    }
+      // Latest RTL value wins
+      const mergedRTL = mergeBooleanValues(acc.rtl, next.rtl);
+      if (typeof mergedRTL === 'boolean') {
+        acc.rtl = mergedRTL;
+      }
 
-    // Use provided renderer if it is defined
-    acc.target = next.target || acc.target;
-    acc.renderer = mergeRenderers(acc.renderer, next.renderer, acc.target);
+      // Use provided renderer if it is defined
+      acc.target = next.target || acc.target;
+      acc.renderer = mergeRenderers(acc.renderer, next.renderer, acc.target);
 
-    // Latest disableAnimations value wins
-    const mergedDisableAnimations = mergeBooleanValues(acc.disableAnimations, next.disableAnimations);
-    if (typeof mergedDisableAnimations === 'boolean') {
-      acc.disableAnimations = mergedDisableAnimations;
-    }
+      // Latest disableAnimations value wins
+      const mergedDisableAnimations = mergeBooleanValues(acc.disableAnimations, next.disableAnimations);
+      if (typeof mergedDisableAnimations === 'boolean') {
+        acc.disableAnimations = mergedDisableAnimations;
+      }
 
-    acc.performance = mergePerformanceOptions(acc.performance, next.performance || {});
+      acc.performance = mergePerformanceOptions(acc.performance, next.performance || {});
 
-    acc.telemetry = next.telemetry || acc.telemetry;
+      acc.telemetry = next.telemetry || acc.telemetry;
 
-    return acc;
-  }, emptyContext);
+      return acc;
+    },
+    emptyContext,
+  );
 };
 
 export default mergeProviderContexts;

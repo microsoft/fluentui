@@ -105,6 +105,6 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     headerFontWeight: siteVars.fontWeightBold,
     headerMargin: `0 ${pxToRem(10)} 0 0`,
 
-    iconMargin: `0 ${pxToRem(10)} 0 0`
+    iconMargin: `0 ${pxToRem(10)} 0 0`,
   };
 };

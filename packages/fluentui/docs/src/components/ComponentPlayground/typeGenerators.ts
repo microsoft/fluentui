@@ -9,7 +9,7 @@ import createHookGenerator from './createHookGenerator';
 export const boolean: KnobGenerator<boolean> = ({ propName, propDef }) => ({
   hook: useBooleanKnob,
   name: propName,
-  initialValue: propDef.defaultValue
+  initialValue: propDef.defaultValue,
 });
 
 export const literal: KnobGenerator<string[]> = ({ propName, propDef }) => ({
@@ -17,19 +17,19 @@ export const literal: KnobGenerator<string[]> = ({ propName, propDef }) => ({
   name: propName,
   allowsNone: _.isNil(propDef.defaultValue),
   initialValue: propDef.defaultValue,
-  values: propDef.types.map(type => type.value).filter(Boolean)
+  values: propDef.types.map(type => type.value).filter(Boolean),
 });
 
 export const number: KnobGenerator<number> = ({ propName, propDef }) => ({
   hook: useNumberKnob,
   name: propName,
-  initialValue: propDef.defaultValue
+  initialValue: propDef.defaultValue,
 });
 
 export const string: KnobGenerator<number> = ({ propName, propDef }) => ({
   hook: useStringKnob,
   name: propName,
-  initialValue: propDef.defaultValue
+  initialValue: propDef.defaultValue,
 });
 
 export const ShorthandValue: KnobGenerator<string> = ({ propDef, componentInfo, theme }) => {
@@ -53,7 +53,7 @@ export const ShorthandValue: KnobGenerator<string> = ({ propDef, componentInfo, 
       propDef: shorthandPropDef,
       componentInfo: shorthandComponentInfo,
       theme,
-      propName: propDef.name
+      propName: propDef.name,
     });
   }
 
@@ -62,7 +62,7 @@ export const ShorthandValue: KnobGenerator<string> = ({ propDef, componentInfo, 
       propDef: shorthandPropDef,
       componentInfo: shorthandComponentInfo,
       theme,
-      propName: propDef.name
+      propName: propDef.name,
     });
   }
 

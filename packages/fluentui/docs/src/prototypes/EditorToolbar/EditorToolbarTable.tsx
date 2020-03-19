@@ -20,7 +20,7 @@ const EditorToolbarTable: React.FC<EditorToolbarTableProps> = props => (
           display: 'block',
           height: '20px',
           width: '20px',
-          margin: '3px'
+          margin: '3px',
         }}
       />
     ))}

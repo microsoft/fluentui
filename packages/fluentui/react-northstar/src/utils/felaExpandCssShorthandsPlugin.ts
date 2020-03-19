@@ -17,7 +17,7 @@ const handledCssProps: Partial<Record<keyof CSS.Properties, true>> = {
   borderLeft: true,
   borderRadius: true,
   background: true,
-  outline: true
+  outline: true,
 };
 
 export default () => {

@@ -3,5 +3,5 @@ import { TooltipContentVariables } from '../../../teams/components/Tooltip/toolt
 export default (siteVars): Partial<TooltipContentVariables> => ({
   boxShadow: undefined,
   color: siteVars.colors.black,
-  backgroundColor: siteVars.colors.white
+  backgroundColor: siteVars.colors.white,
 });

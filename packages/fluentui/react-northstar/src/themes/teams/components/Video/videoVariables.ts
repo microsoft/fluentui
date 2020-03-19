@@ -5,5 +5,5 @@ export interface VideoVariables {
 
 export default (): VideoVariables => ({
   width: undefined,
-  height: undefined
+  height: undefined,
 });

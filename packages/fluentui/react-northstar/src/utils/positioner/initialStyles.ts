@@ -7,7 +7,7 @@ const initialStyles: React.CSSProperties = {
   // Fix Popper.js initial positioning display issue
   // https://github.com/mui-org/material-ui/issues/17774
   top: 0,
-  left: '0px /* @noflip */'
+  left: '0px /* @noflip */',
 };
 
 export default initialStyles;

@@ -25,7 +25,7 @@ export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
         setExpanded(!expanded);
       }
     },
-    [disabled, expanded, onSecondaryActionClick]
+    [disabled, expanded, onSecondaryActionClick],
   );
 
   const _onKeyDown = useCallback(
@@ -34,7 +34,7 @@ export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
         setExpanded(!expanded);
       }
     },
-    [disabled, expanded]
+    [disabled, expanded],
   );
 
   const viewProps: ISplitButtonViewProps = {
@@ -42,7 +42,7 @@ export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
     expanded,
     onKeyDown: _onKeyDown,
     onMenuDismiss: _onMenuDismiss,
-    onSecondaryActionClick: _onSecondaryActionClick
+    onSecondaryActionClick: _onSecondaryActionClick,
   };
 
   return viewProps;

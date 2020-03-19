@@ -34,8 +34,8 @@ export function shallowUntilTarget<P, S>(
   TargetComponent: string,
   options: IShallowUntilTarget = {
     maxTries: 10,
-    shallowOptions: {}
-  }
+    shallowOptions: {},
+  },
 ): ShallowWrapper {
   const { maxTries, shallowOptions } = options;
 
@@ -63,6 +63,6 @@ export function shallowUntilTarget<P, S>(
 
   throw new Error(
     `Could not find ${TargetComponent} in React instance: ${componentInstance};
-    gave up after ${maxTries} tries`
+    gave up after ${maxTries} tries`,
   );
 }

@@ -19,18 +19,21 @@ export default () => (
           <br />
           <span>
             Prototype is using fixed row height, for dynamic height please check{' '}
-            <a href="https://github.com/bvaughn/react-virtualized/tree/master/source/CellMeasurer">CellMeasurer component.</a>
+            <a href="https://github.com/bvaughn/react-virtualized/tree/master/source/CellMeasurer">
+              CellMeasurer component.
+            </a>
           </span>
           <br />
           <b>Known issues:</b>
           <br />
           <b>Integration with React-custom-scrollbars. </b>
           <span>
-            React-virtualized has <a href="https://github.com/techniq/mui-downshift/issues/34">an opened feature request</a> to support
+            React-virtualized has{' '}
+            <a href="https://github.com/techniq/mui-downshift/issues/34">an opened feature request</a> to support
             React-custom-scrollbars and there are a couple of ways to add custom scrollbars to List component (see{' '}
             <a href="https://github.com/bvaughn/react-virtualized/issues/143">issue one</a> and{' '}
-            <a href="https://github.com/bvaughn/react-virtualized/issues/692">issue two</a>). Unfortunately, suggested solutions do not seem
-            to work with two lists wrapped with WindowScroller elements.
+            <a href="https://github.com/bvaughn/react-virtualized/issues/692">issue two</a>). Unfortunately, suggested
+            solutions do not seem to work with two lists wrapped with WindowScroller elements.
           </span>
         </>
       }

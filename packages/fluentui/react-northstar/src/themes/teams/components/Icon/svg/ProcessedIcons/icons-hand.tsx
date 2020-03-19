@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'hand'
+  exportedAs: 'hand',
 } as TeamsProcessedSvgIconSpec;

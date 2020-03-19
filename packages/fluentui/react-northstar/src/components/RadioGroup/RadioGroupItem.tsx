@@ -12,7 +12,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import Box, { BoxProps } from '../Box/Box';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
@@ -81,12 +81,12 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
   static className = 'ui-radiogroup__item';
 
   static slotClassNames: RadioGroupItemSlotClassNames = {
-    indicator: `${RadioGroupItem.className}__indicator`
+    indicator: `${RadioGroupItem.className}__indicator`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     checked: PropTypes.bool,
     defaultChecked: PropTypes.bool,
@@ -98,12 +98,12 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
     onChange: PropTypes.func,
     shouldFocus: PropTypes.bool,
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   static defaultProps = {
     accessibility: radioGroupItemBehavior,
-    indicator: {}
+    indicator: {},
   };
 
   static autoControlledProps = ['checked'];
@@ -112,7 +112,7 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
     performClick: e => {
       e.preventDefault();
       this.handleClick(e);
-    }
+    },
   };
 
   handleClick = e => {
@@ -149,13 +149,13 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
           {Box.create(indicator, {
             defaultProps: () => ({
               className: RadioGroupItem.slotClassNames.indicator,
-              styles: styles.indicator
-            })
+              styles: styles.indicator,
+            }),
           })}
           {Box.create(label, {
             defaultProps: () => ({
-              as: 'span'
-            })
+              as: 'span',
+            }),
           })}
         </ElementType>
       </Ref>

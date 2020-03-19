@@ -9,5 +9,5 @@ export default {
       <path d="M19.4 17c1.3 0 1.6 1 1.6 1.4 0 1.2-1.2 1.2-1.1 2.1h-.8c0-1.6 1-1.1 1-2.1 0-.5-.3-.7-.6-.7-.6 0-.6.6-.6.8H18c0-1.3 1.1-1.5 1.4-1.5z" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

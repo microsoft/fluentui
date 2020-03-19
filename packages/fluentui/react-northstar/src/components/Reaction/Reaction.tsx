@@ -10,7 +10,7 @@ import {
   rtlTextContainer,
   createShorthandFactory,
   ContentComponentProps,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
@@ -48,13 +48,13 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: 'shorthand'
+      content: 'shorthand',
     }),
-    icon: customPropTypes.itemShorthandWithoutJSX
+    icon: customPropTypes.itemShorthandWithoutJSX,
   };
 
   static defaultProps = {
-    as: 'span'
+    as: 'span',
   };
 
   static Group = ReactionGroup;
@@ -76,14 +76,14 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
             {Icon.create(icon, {
               defaultProps: () => ({
                 className: Reaction.slotClassNames.icon,
-                styles: styles.icon
-              })
+                styles: styles.icon,
+              }),
             })}
             {Box.create(content, {
               defaultProps: () => ({
                 className: Reaction.slotClassNames.content,
-                styles: styles.content
-              })
+                styles: styles.content,
+              }),
             })}
           </>
         )}
@@ -95,7 +95,7 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
 Reaction.slotClassNames = {
   icon: `${Reaction.className}__icon`,
-  content: `${Reaction.className}__content`
+  content: `${Reaction.className}__content`,
 };
 
 /**

@@ -11,7 +11,7 @@ import {
   mergeStyleSets,
   FontWeights,
   Link,
-  getId
+  getId,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutDirectionalExampleState {
@@ -36,7 +36,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
   { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
   { key: DirectionalHint.rightCenter, text: 'Right Center' },
-  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
 const theme = getTheme();
@@ -47,51 +47,51 @@ const styles = mergeStyleSets({
     textAlign: 'center',
     margin: '0 100px',
     minWidth: 130,
-    height: 32
+    height: 32,
   },
   configArea: {
     minWidth: '300px',
-    display: 'inline-block'
+    display: 'inline-block',
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   calloutExampleButton: {
-    width: '100%'
+    width: '100%',
   },
   header: {
-    padding: '18px 24px 12px'
+    padding: '18px 24px 12px',
   },
   title: [
     theme.fonts.xLarge,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   inner: {
     height: '100%',
-    padding: '0 24px 20px'
+    padding: '0 24px 20px',
   },
   subtext: [
     theme.fonts.small,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   link: [
     theme.fonts.medium,
     {
-      color: theme.palette.neutralPrimary
-    }
+      color: theme.palette.neutralPrimary,
+    },
   ],
   actions: {
     position: 'relative',
     marginTop: 20,
     width: '100%',
-    whiteSpace: 'nowrap'
-  }
+    whiteSpace: 'nowrap',
+  },
 });
 
 export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
@@ -108,7 +108,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     this.state = {
       isCalloutVisible: false,
       isBeakVisible: true,
-      directionalHint: DirectionalHint.bottomLeftEdge
+      directionalHint: DirectionalHint.bottomLeftEdge,
     };
   }
 
@@ -119,9 +119,16 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
     return (
       <>
         <div className={styles.configArea}>
-          <Checkbox styles={{ root: { margin: '10px 0' } }} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
+          <Checkbox
+            styles={{ root: { margin: '10px 0' } }}
+            label="Show beak"
+            checked={isBeakVisible}
+            onChange={this._onShowBeakChange}
+          />
           <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={this._onGapSlider} />
-          {isBeakVisible && <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />}
+          {isBeakVisible && (
+            <Slider max={50} label="Beak Width" min={10} defaultValue={16} onChange={this._onBeakWidthSlider} />
+          )}
           <Dropdown
             label="Directional hint"
             selectedKey={directionalHint!}
@@ -156,7 +163,8 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             </div>
             <div className={styles.inner}>
               <p className={styles.subtext} id={this._descriptionId}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                Message body is optional. If help documentation is available, consider adding a link to learn more at
+                the bottom.
               </p>
               <div className={styles.actions}>
                 <Link className={styles.link} href="http://microsoft.com" target="_blank">
@@ -172,38 +180,38 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
 
   private _onCalloutDismiss = (): void => {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   };
 
   private _onShowMenuClicked = (): void => {
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
+      isCalloutVisible: !this.state.isCalloutVisible,
     });
   };
 
   private _onShowBeakChange = (ev: React.FormEvent<HTMLElement>, isVisible: boolean): void => {
     this.setState({
       isBeakVisible: isVisible,
-      beakWidth: 10
+      beakWidth: 10,
     });
   };
 
   private _onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      directionalHint: option.key as DirectionalHint
+      directionalHint: option.key as DirectionalHint,
     });
   };
 
   private _onGapSlider = (value: number): void => {
     this.setState({
-      gapSpace: value
+      gapSpace: value,
     });
   };
 
   private _onBeakWidthSlider = (value: number): void => {
     this.setState({
-      beakWidth: value
+      beakWidth: value,
     });
   };
 }

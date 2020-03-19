@@ -8,7 +8,7 @@ const TextAreaExampleHeight = () => {
     initialValue: '120px',
     min: '20px',
     max: '300px',
-    step: 10
+    step: 10,
   });
 
   return <TextArea placeholder="Enter message here..." variables={{ height }} />;

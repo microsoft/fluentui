@@ -193,7 +193,7 @@ If your package uses Jest for unit tests, please also create a new `jest.config.
 ```js
 module.exports = {
   ...require('@fluentui/internal-tooling/jest'),
-  name: '__DIRECTORY_NAME__'
+  name: '__DIRECTORY_NAME__',
 };
 ```
 

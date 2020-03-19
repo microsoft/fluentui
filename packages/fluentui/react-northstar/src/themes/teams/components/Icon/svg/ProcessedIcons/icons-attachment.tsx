@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'paperclip'
+  exportedAs: 'paperclip',
 } as TeamsProcessedSvgIconSpec;

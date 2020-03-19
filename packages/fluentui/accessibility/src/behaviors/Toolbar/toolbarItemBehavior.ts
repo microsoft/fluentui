@@ -18,20 +18,25 @@ const toolbarItemBehavior: Accessibility<ToolbarItemBehaviorProps> = props => {
   const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
-    'aria-haspopup': props.hasPopup ? 'dialog' : props.hasMenu ? 'menu' : undefined
+    'aria-haspopup': props.hasPopup ? 'dialog' : props.hasMenu ? 'menu' : undefined,
   };
   behaviorData.keyActions.wrapper = {
     ...behaviorData.keyActions.wrapper,
     performWrapperClick: {
-      keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+      keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
     },
     closeMenuAndFocusTrigger: {
       keyCombinations:
-        props.hasMenu && props.menuOpen ? [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.Tab, shiftKey: true }] : null
+        props.hasMenu && props.menuOpen
+          ? [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.Tab, shiftKey: true }]
+          : null,
     },
     doNotNavigateNextToolbarItem: {
-      keyCombinations: props.hasMenu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null
-    }
+      keyCombinations:
+        props.hasMenu && props.menuOpen
+          ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }]
+          : null,
+    },
   };
   return behaviorData;
 };

@@ -104,7 +104,13 @@
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
       // Use the config file for fabric-website, plus command line options used in start.js
-      "args": ["--nolazy", "--debug", "--config", "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js", "--open"],
+      "args": [
+        "--nolazy",
+        "--debug",
+        "--config",
+        "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js",
+        "--open"
+      ],
       "env": {
         "NODE_ENV": "development"
       }

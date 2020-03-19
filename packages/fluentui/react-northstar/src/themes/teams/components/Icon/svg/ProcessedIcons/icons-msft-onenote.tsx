@@ -10,5 +10,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'onenote, onenote-color'
+  exportedAs: 'onenote, onenote-color',
 } as TeamsProcessedSvgIconSpec;

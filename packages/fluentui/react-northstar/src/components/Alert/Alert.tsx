@@ -10,7 +10,7 @@ import {
   ContentComponentProps,
   commonPropTypes,
   childrenExist,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 import { RenderResultConfig } from '../../utils/renderComponent';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs, ShorthandCollection } from '../../types';
@@ -112,7 +112,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
     dismissAction: `${Alert.className}__dismissAction`,
     icon: `${Alert.className}__icon`,
     header: `${Alert.className}__header`,
-    body: `${Alert.className}__body`
+    body: `${Alert.className}__body`,
   };
 
   static propTypes = {
@@ -132,13 +132,13 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
     success: PropTypes.bool,
     visible: PropTypes.bool,
     warning: PropTypes.bool,
-    body: customPropTypes.itemShorthand
+    body: customPropTypes.itemShorthand,
   };
 
   static defaultProps = {
     accessibility: alertBehavior,
     dismissAction: { icon: 'close' },
-    body: {}
+    body: {},
   };
 
   static autoControlledProps = ['visible'];
@@ -146,7 +146,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
   getInitialAutoControlledState(): AlertState {
     return {
       visible: true,
-      bodyId: _.uniqueId('alert-body-')
+      bodyId: _.uniqueId('alert-body-'),
     };
   }
 
@@ -156,7 +156,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
 
       _.invoke(this.props, 'onVisibleChange', e, { ...this.props, visible: false });
       this.setState({ visible: false });
-    }
+    },
   });
 
   handleFocus = (e: React.SyntheticEvent) => {
@@ -172,15 +172,15 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
           defaultProps: () => ({
             className: Alert.slotClassNames.header,
             styles: styles.header,
-            ...accessibility.attributes.header
-          })
+            ...accessibility.attributes.header,
+          }),
         })}
         {Box.create(content, {
           defaultProps: () => ({
             className: Alert.slotClassNames.content,
             styles: styles.content,
-            ...accessibility.attributes.content
-          })
+            ...accessibility.attributes.content,
+          }),
         })}
       </>
     );
@@ -190,26 +190,26 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
         {Icon.create(icon, {
           defaultProps: () => ({
             className: Alert.slotClassNames.icon,
-            styles: styles.icon
-          })
+            styles: styles.icon,
+          }),
         })}
         {Box.create(body, {
           defaultProps: () => ({
             id: this.state.bodyId,
             className: Alert.slotClassNames.body,
             ...accessibility.attributes.body,
-            styles: styles.body
+            styles: styles.body,
           }),
           overrideProps: {
-            children: bodyContent
-          }
+            children: bodyContent,
+          },
         })}
 
         {ButtonGroup.create(actions, {
           defaultProps: () => ({
             className: Alert.slotClassNames.actions,
-            styles: styles.actions
-          })
+            styles: styles.actions,
+          }),
         })}
         {dismissible &&
           Button.create(dismissAction, {
@@ -218,9 +218,9 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
               text: true,
               className: Alert.slotClassNames.dismissAction,
               styles: styles.dismissAction,
-              ...accessibility.attributes.dismissAction
+              ...accessibility.attributes.dismissAction,
             }),
-            overrideProps: this.handleDismissOverrides
+            overrideProps: this.handleDismissOverrides,
           })}
       </>
     );

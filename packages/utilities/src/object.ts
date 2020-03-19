@@ -78,14 +78,17 @@ if (stylesheet && stylesheet.onReset) {
   stylesheet.onReset(resetIds);
 }
 
-/* Takes an enum and iterates over each value of the enum (as a string), running the callback on each, returning a mapped array.
- * The callback takes as a first parameter the string that represents the name of the entry, and the second parameter is the
- * value of that entry, which is the value you'd normally use when using the enum (usually a number).
- * */
+/**
+ * Takes an enum and iterates over each value of the enum (as a string), running the callback on each,
+ * returning a mapped array.
+ * @param theEnum - Enum to iterate over
+ * @param callback - The first parameter the name of the entry, and the second parameter is the value
+ * of that entry, which is the value you'd normally use when using the enum (usually a number).
+ */
 export function mapEnumByName<T>(
   // tslint:disable-next-line:no-any
   theEnum: any,
-  callback: (name?: string, value?: string | number) => T | undefined
+  callback: (name?: string, value?: string | number) => T | undefined,
 ): (T | undefined)[] | undefined {
   // map<any> to satisfy compiler since it doesn't realize we strip out undefineds in the .filter() call
   return Object.keys(theEnum)

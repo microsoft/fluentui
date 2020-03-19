@@ -15,7 +15,7 @@ import {
   commonPropTypes,
   getKindProp,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 
 import MenuItem, { MenuItemProps } from './MenuItem';
@@ -106,14 +106,14 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
 
   static slotClassNames: MenuSlotClassNames = {
     divider: `${Menu.className}__divider`,
-    item: `${Menu.className}__item`
+    item: `${Menu.className}__item`,
   };
 
   static create: ShorthandFactory<MenuProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     defaultActiveIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
@@ -129,12 +129,12 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
     underlined: PropTypes.bool,
     vertical: PropTypes.bool,
     submenu: PropTypes.bool,
-    indicator: customPropTypes.shorthandAllowingChildren
+    indicator: customPropTypes.shorthandAllowingChildren,
   };
 
   static defaultProps = {
     as: 'ul',
-    accessibility: menuBehavior as Accessibility
+    accessibility: menuBehavior as Accessibility,
   };
 
   static autoControlledProps = ['activeIndex'];
@@ -165,15 +165,30 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
       }
       _.invoke(predefinedProps, 'onActiveChanged', e, props);
     },
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
   handleDividerOverrides = variables => predefinedProps => ({
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
-  renderItems = (styles: ComponentSlotStylesPrepared, variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
-    const { iconOnly, items, pills, pointing, primary, secondary, underlined, vertical, submenu, indicator } = this.props;
+  renderItems = (
+    styles: ComponentSlotStylesPrepared,
+    variables: ComponentVariablesObject,
+    accessibility: ReactAccessibilityBehavior,
+  ) => {
+    const {
+      iconOnly,
+      items,
+      pills,
+      pointing,
+      primary,
+      secondary,
+      underlined,
+      vertical,
+      submenu,
+      indicator,
+    } = this.props;
     const { activeIndex } = this.state;
     const itemsCount = _.filter(items, item => getKindProp(item, 'item') !== 'divider').length;
     let itemPosition = 0;
@@ -194,9 +209,9 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
             vertical,
             styles: styles.divider,
             inSubmenu: submenu,
-            accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.divider : undefined
+            accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.divider : undefined,
           }),
-          overrideProps: overrideDividerProps
+          overrideProps: overrideDividerProps,
         });
       }
 
@@ -218,9 +233,9 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
           active,
           inSubmenu: submenu,
           indicator,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined
+          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
         }),
-        overrideProps: overrideItemProps
+        overrideProps: overrideItemProps,
       });
     });
   };

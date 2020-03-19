@@ -11,7 +11,7 @@ const images = [
   <Image key="helen" fluid src="public/images/avatar/large/helen.jpg" />,
   <Image key="jenny" fluid src="public/images/avatar/large/jenny.jpg" />,
   <Image key="joe" fluid src="public/images/avatar/large/joe.jpg" />,
-  <Image key="justen" fluid src="public/images/avatar/large/justen.jpg" />
+  <Image key="justen" fluid src="public/images/avatar/large/justen.jpg" />,
 ];
 
 const GridExample = () => <Grid>{images}</Grid>;

@@ -18,7 +18,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#521319',
     800: '#4D2327',
     850: '#3D2326',
-    900: '#292424'
+    900: '#292424',
   },
   red: {
     100: '#FCF7F8',
@@ -37,7 +37,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#6E282E',
     800: '#603135',
     850: '#492C2E',
-    900: '#2A2425'
+    900: '#2A2425',
   },
   orangeDark: {
     100: '#FCF7F6',
@@ -56,7 +56,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#6D240F',
     800: '#5E2F21',
     850: '#482A22',
-    900: '#2B2423'
+    900: '#2B2423',
   },
   orange: {
     100: '#FEF9F7',
@@ -75,7 +75,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#823929',
     800: '#6D3C32',
     850: '#51332C',
-    900: '#2D2725'
+    900: '#2D2725',
   },
   orangeLight: {
     100: '#FEFBF7',
@@ -94,7 +94,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#895722',
     800: '#72502D',
     850: '#533F29',
-    900: '#2D2925'
+    900: '#2D2925',
   },
   yellowDark: {
     100: '#FDFBF6',
@@ -113,7 +113,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#7C5811',
     800: '#685022',
     850: '#4E3F22',
-    900: '#2C2924'
+    900: '#2C2924',
   },
   yellow: {
     100: '#FEFCF5',
@@ -132,7 +132,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#805E0B',
     800: '#72581E',
     850: '#544420',
-    900: '#2D2922'
+    900: '#2D2922',
   },
   brown: {
     100: '#FBF9F8',
@@ -151,7 +151,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#56392B',
     800: '#503C33',
     850: '#3F322D',
-    900: '#292625'
+    900: '#292625',
   },
   oliveDark: {
     100: '#F8F9F7',
@@ -170,7 +170,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#334123',
     800: '#38412E',
     850: '#31362A',
-    900: '#272724'
+    900: '#272724',
   },
   olive: {
     100: '#FAFBF8',
@@ -189,7 +189,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#4E6136',
     800: '#4B563A',
     850: '#3C4231',
-    900: '#292926'
+    900: '#292926',
   },
   greenDark: {
     100: '#F5F9F7',
@@ -208,7 +208,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#154229',
     800: '#254232',
     850: '#25362C',
-    900: '#252725'
+    900: '#252725',
   },
   green: {
     100: '#F6FBF9',
@@ -227,7 +227,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#1A5E3C',
     800: '#29553E',
     850: '#274134',
-    900: '#242826'
+    900: '#242826',
   },
   tealDark: {
     100: '#F6F8F9',
@@ -246,7 +246,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#133138',
     800: '#23373C',
     850: '#243033',
-    900: '#252627'
+    900: '#252627',
   },
   teal: {
     100: '#F6F9FA',
@@ -265,7 +265,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#254650',
     800: '#2F454C',
     850: '#2C383C',
-    900: '#262828'
+    900: '#262828',
   },
   tealLight: {
     100: '#F8FCFC',
@@ -284,7 +284,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#33696B',
     800: '#395B5C',
     850: '#314646',
-    900: '#272A2A'
+    900: '#272A2A',
   },
   blueDark: {
     100: '#F5F7FA',
@@ -303,7 +303,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#002152',
     800: '#182D4D',
     850: '#1D293D',
-    900: '#242528'
+    900: '#242528',
   },
   blue: {
     100: '#F6F8FB',
@@ -322,7 +322,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#0F3057',
     800: '#213650',
     850: '#232F3F',
-    900: '#252629'
+    900: '#252629',
   },
   purpleDark: {
     100: '#F7F6FA',
@@ -341,7 +341,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#272154',
     800: '#312D4E',
     850: '#2C293D',
-    900: '#262529'
+    900: '#262529',
   },
   purple: {
     100: '#F9F9FB',
@@ -360,7 +360,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#443B61',
     800: '#443D56',
     850: '#383342',
-    900: '#282729'
+    900: '#282729',
   },
   maroon: {
     100: '#FBF7F9',
@@ -379,7 +379,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#5A1F42',
     800: '#522B42',
     850: '#412836',
-    900: '#2A2527'
+    900: '#2A2527',
   },
   pink: {
     100: '#FDF7F9',
@@ -398,7 +398,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#751E3C',
     800: '#642A3E',
     850: '#4B2834',
-    900: '#2B2426'
+    900: '#2B2426',
   },
   smokeDark: {
     100: '#F6F6F6',
@@ -417,7 +417,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#252525',
     800: '#2B2A2A',
     850: '#282828',
-    900: '#262525'
+    900: '#262525',
   },
   smokeLight: {
     100: '#F9F9F9',
@@ -436,7 +436,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#3D3D3D',
     800: '#353434',
     850: '#2E2D2D',
-    900: '#272626'
+    900: '#272626',
   },
   steelDark: {
     100: '#F8F9F9',
@@ -455,7 +455,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#394245',
     800: '#3D4244',
     850: '#343637',
-    900: '#272727'
+    900: '#272727',
   },
   steelLight: {
     100: '#FBFBFB',
@@ -474,7 +474,7 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#585761',
     800: '#515556',
     850: '#404243',
-    900: '#292828'
+    900: '#292828',
   },
   neon: {
     100: '#FAFEDF',
@@ -493,8 +493,8 @@ export const categoryColors: TeamsCategoryColors = {
     750: '#656C2B',
     800: '#50571E',
     850: '#3C4212',
-    900: '#272B0E'
-  }
+    900: '#272B0E',
+  },
 };
 
 const createCategoryColorScheme = (color: string, customValues = {}) => {
@@ -502,7 +502,7 @@ const createCategoryColorScheme = (color: string, customValues = {}) => {
     foreground: categoryColors[color][750],
     foreground1: categoryColors[color][400],
     background: categoryColors[color][200],
-    ...customValues
+    ...customValues,
   };
 };
 
@@ -549,6 +549,6 @@ export const categoryColorScheme: TeamsCategoryColorSchemeMapping = {
     foreground7: categoryColors.blueDark[400],
     background7: categoryColors.blueDark[200],
     foreground8: categoryColors.maroon[500],
-    background8: categoryColors.maroon[200]
-  }
+    background8: categoryColors.maroon[200],
+  },
 };

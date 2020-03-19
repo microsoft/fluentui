@@ -25,7 +25,7 @@ export type ThemeContextData = {
 export const themeContextDefaults: ThemeContextData = {
   themeName: 'teams',
   themeOptions: getThemeOptions(),
-  changeTheme: () => {}
+  changeTheme: () => {},
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeContextDefaults);

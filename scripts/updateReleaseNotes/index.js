@@ -14,7 +14,9 @@ const { getReleases } = require('./releases');
 const { getMarkdownForEntry } = require('./markdown');
 
 if (!argv.apply) {
-  console.warn('\nNOTE: This is a test run only. To actually update release notes on GitHub, use the "--apply" flag.\n');
+  console.warn(
+    '\nNOTE: This is a test run only. To actually update release notes on GitHub, use the "--apply" flag.\n',
+  );
 }
 
 // Call the primary entry point.
@@ -44,7 +46,9 @@ async function updateReleaseNotes() {
     }
 
     const entryInfo = `${entry.name} ${entry.version}`;
-    console.log('--------------------------------------------------------------------------------------------------------\n');
+    console.log(
+      '--------------------------------------------------------------------------------------------------------\n',
+    );
     console.log(`${hasBeenReleased ? 'Patching' : 'Creating'} release notes for ${entryInfo}...\n`);
     count++;
 
@@ -55,7 +59,7 @@ async function updateReleaseNotes() {
       name: `${entry.name} v${entry.version}`,
       draft: false,
       prerelease: false,
-      body: await getMarkdownForEntry(entry)
+      body: await getMarkdownForEntry(entry),
     };
     if (hasBeenReleased) {
       releaseDetails.release_id = releasesByTag.get(tag).id;

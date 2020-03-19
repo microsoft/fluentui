@@ -42,6 +42,6 @@ export default (siteVars: SiteVariablesPrepared): SliderVariables => {
     activeThumbWidth: pxToRem(14),
 
     trackColor: colorScheme.brand.foregroundActive,
-    disabledTrackColor: colorScheme.default.foregroundDisabled1
+    disabledTrackColor: colorScheme.default.foregroundDisabled1,
   };
 };

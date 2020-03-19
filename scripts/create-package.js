@@ -64,7 +64,7 @@ const steps = [
   { template: 'Version', output: 'src/version.ts' },
   { template: 'AppDefinition', output: 'src/demo/AppDefinition.tsx' },
   { template: 'GettingStartedPage', output: 'src/demo/GettingStartedPage.tsx' },
-  { template: 'Demo', output: 'src/demo/index.tsx' }
+  { template: 'Demo', output: 'src/demo/index.tsx' },
 ];
 
 // Strings
@@ -105,7 +105,7 @@ function performStep(stepIndex) {
       path.join(packagePath, step.output),
       () => performStep(stepIndex + 1),
       errorUnableToOpenTemplate(mustacheTemplateName),
-      errorUnableToWriteFile(step.output)
+      errorUnableToWriteFile(step.output),
     );
   });
 }
@@ -130,7 +130,7 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
     packageName: newPackageName,
     packageNpmName: newPackageNpmName,
     friendlyPackageName: pascalCasePackage,
-    todayDate: today
+    todayDate: today,
   };
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.

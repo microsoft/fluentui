@@ -30,7 +30,7 @@ export enum IconType {
    * Deprecated, use `image`.
    * @deprecated Use `image`.
    */
-  Image = 100001
+  Image = 100001,
 }
 
 /**

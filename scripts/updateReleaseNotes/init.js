@@ -7,9 +7,21 @@ const tokenMsg =
 
 const argv = yargs
   .option('token', { describe: 'GitHub personal access token', type: 'string', required: tokenMsg })
-  .option('apply', { describe: 'Actually apply changes (without this option, do a dry run)', type: 'boolean', default: false })
-  .option('patch', { describe: 'Patch existing release notes for releases less than `age` days old', type: 'boolean', default: false })
-  .option('patch-all', { describe: 'Patch ALL existing release notes (will likely hit rate limits)', type: 'boolean', default: false })
+  .option('apply', {
+    describe: 'Actually apply changes (without this option, do a dry run)',
+    type: 'boolean',
+    default: false,
+  })
+  .option('patch', {
+    describe: 'Patch existing release notes for releases less than `age` days old',
+    type: 'boolean',
+    default: false,
+  })
+  .option('patch-all', {
+    describe: 'Patch ALL existing release notes (will likely hit rate limits)',
+    type: 'boolean',
+    default: false,
+  })
   .option('debug', { describe: 'Use debug mode for the GitHub API', type: 'boolean', default: false })
   // Default to checking the past 5 days in case there were any missed days or other issues
   .option('age', { describe: 'Get tags/releases up to this many days old', type: 'number', default: 5 })
@@ -31,7 +43,7 @@ if (argv.token === 'your token here') {
 
 const repoDetails = {
   owner: argv.owner,
-  repo: argv.repo
+  repo: argv.repo,
 };
 
 // Authenticate with github and set up logging if debug arg is provided

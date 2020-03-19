@@ -7,7 +7,7 @@ export const selectors = {
   dialogOverlay: Dialog.slotClassNames.overlay,
   dialogTrigger: 'dialog-trigger',
   popupContent: 'popup-content',
-  popupTrigger: 'popup-trigger'
+  popupTrigger: 'popup-trigger',
 };
 
 const DialogInPopupExample = () => (

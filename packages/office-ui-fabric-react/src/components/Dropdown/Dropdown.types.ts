@@ -153,7 +153,8 @@ export interface IDropdownOption extends ISelectableOption {
 }
 
 /**
- * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * The props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory Dropdown}
  */
 export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {

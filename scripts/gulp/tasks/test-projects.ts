@@ -67,7 +67,7 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
     '@fluentui/e2e',
     '@fluentui/eslint-plugin',
     '@fluentui/perf',
-    '@fluentui/perf-test'
+    '@fluentui/perf-test',
   ];
   for (const [pkg, pkgPath] of Object.entries(projectPackages)) {
     // Don't pack fabric packages or dev tools
@@ -84,7 +84,7 @@ const packProjectPackages = async (logger: Function): Promise<void> => {
       logger(`✔️ Package "${packageName}" was packed to ${filename}`);
 
       packedPackages[packageName] = filename;
-    })
+    }),
   );
 };
 
@@ -200,7 +200,7 @@ task('test:projects:rollup', async () => {
     'rollup-plugin-node-resolve',
     'rollup-plugin-json',
     'react',
-    'react-dom'
+    'react-dom',
   ].join(' ');
   await sh(`yarn add ${dependencies}`, tmpDirectory);
   logger(`✔️ Dependencies were installed`);
@@ -277,4 +277,7 @@ task('test:projects:typings', async () => {
   logger(`✔️ Example project was successfully built: ${tmpDirectory}`);
 });
 
-task('test:projects', series('test:projects:cra-ts', 'test:projects:nextjs', 'test:projects:rollup', 'test:projects:typings'));
+task(
+  'test:projects',
+  series('test:projects:cra-ts', 'test:projects:nextjs', 'test:projects:rollup', 'test:projects:typings'),
+);

@@ -8,33 +8,34 @@ export const CheckboxStyles = (props: ICheckboxStyleProps): Partial<ICheckboxSty
     checkbox: [
       !disabled &&
         !checked && {
-          borderColor: semanticColors.smallInputBorder
-        }
+          borderColor: semanticColors.smallInputBorder,
+        },
     ],
     checkmark: {
-      color: semanticColors.inputForegroundChecked // using semanticColor to override original behavior on checked/disabled
+      // using semanticColor to override original behavior on checked/disabled
+      color: semanticColors.inputForegroundChecked,
     },
     root: [
       !disabled && [
         !checked && {
           selectors: {
             ':hover .ms-Checkbox-text': { color: palette.neutralPrimary },
-            ':hover .ms-Checkbox-checkmark': { color: palette.neutralSecondary }
-          }
+            ':hover .ms-Checkbox-checkmark': { color: palette.neutralSecondary },
+          },
         },
         checked && {
           selectors: {
             ':hover .ms-Checkbox-checkbox': {
               background: palette.themeDarkAlt,
-              borderColor: palette.themeDarkAlt
+              borderColor: palette.themeDarkAlt,
             },
             ':focus .ms-Checkbox-checkbox': {
               background: palette.themeDarkAlt,
-              borderColor: palette.themeDarkAlt
-            }
-          }
-        }
-      ]
-    ]
+              borderColor: palette.themeDarkAlt,
+            },
+          },
+        },
+      ],
+    ],
   };
 };

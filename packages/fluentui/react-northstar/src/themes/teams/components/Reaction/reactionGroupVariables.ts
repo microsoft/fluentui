@@ -5,5 +5,5 @@ export interface ReactionGroupVariables {
 }
 
 export default (): ReactionGroupVariables => ({
-  reactionSpacing: pxToRem(8)
+  reactionSpacing: pxToRem(8),
 });

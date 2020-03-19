@@ -27,5 +27,5 @@ export default (siteVars): ReactionVariables => ({
   outlineOffsetFocus: pxToRem(-2),
   meReacting: false,
   boxShadowColor: siteVars.colors.white,
-  borderColorFocus: siteVars.colors.grey[750]
+  borderColorFocus: siteVars.colors.grey[750],
 });

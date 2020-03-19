@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'phone-arrow'
+  exportedAs: 'phone-arrow',
 } as TeamsProcessedSvgIconSpec;

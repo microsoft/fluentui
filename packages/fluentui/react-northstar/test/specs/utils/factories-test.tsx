@@ -32,7 +32,7 @@ const getShorthand = ({
   overrideProps,
   generateKey,
   valueOrRenderCallback,
-  render
+  render,
 }: ShorthandConfig) =>
   createShorthand({
     Component,
@@ -43,8 +43,8 @@ const getShorthand = ({
       defaultProps,
       overrideProps,
       generateKey,
-      render
-    }
+      render,
+    },
   });
 
 const isValuePrimitive = (value: ShorthandValue<Props>) =>
@@ -100,7 +100,7 @@ const itDoesNotIncludePropsFromMappedProp = valueOrRenderCallback => {
 const itMergesClassNames = (
   classNameSource: string,
   extraClassName: string,
-  shorthandConfig: { valueOrRenderCallback?: ShorthandValue<Props>; mappedProp?: string }
+  shorthandConfig: { valueOrRenderCallback?: ShorthandValue<Props>; mappedProp?: string },
 ) => {
   test(`merges defaultProps className and ${classNameSource} className`, () => {
     const defaultProps = () => ({ className: 'default' });
@@ -111,7 +111,9 @@ const itMergesClassNames = (
       expectedClassNames += ` ${extraClassName}`;
     }
 
-    expect(shallow(getShorthand({ defaultProps, overrideProps, ...shorthandConfig })).hasClass(expectedClassNames)).toBe(true);
+    expect(
+      shallow(getShorthand({ defaultProps, overrideProps, ...shorthandConfig })).hasClass(expectedClassNames),
+    ).toBe(true);
   });
 };
 
@@ -130,7 +132,7 @@ const itOverridesDefaultProps = (propsSource, defaultProps, expectedProps, short
 const mappedProps = {
   iframe: 'src',
   img: 'src',
-  input: 'type'
+  input: 'type',
 };
 
 const itOverridesDefaultPropsWithFalseyProps = (propsSource, shorthandConfig) => {
@@ -219,11 +221,11 @@ describe('factories', () => {
             valueOrRenderCallback,
             Component: 'div',
             defaultProps: () => ({
-              baz: 'original'
+              baz: 'original',
             }),
             overrideProps: {
-              baz: 'overriden'
-            }
+              baz: 'overriden',
+            },
           });
 
         const shorthandValue = { dataFoo: 'bar' };
@@ -248,7 +250,7 @@ describe('factories', () => {
               render({}, (Component, props) => {
                 expect(Component).toBe('span');
               }),
-            Component: 'span'
+            Component: 'span',
           });
         });
 
@@ -262,7 +264,7 @@ describe('factories', () => {
             valueOrRenderCallback: render =>
               render(shorthandProps, (Component, props) => {
                 expect(props.bar).toBe(shorthandProps.bar);
-              })
+              }),
           });
         });
 
@@ -274,7 +276,7 @@ describe('factories', () => {
 
           const shorthandElement = getShorthand({
             valueOrRenderCallback: render => render({}, (Component, props) => <CustomComponent />),
-            render: (Component, props) => <div>Default</div>
+            render: (Component, props) => <div>Default</div>,
           });
 
           expect(shorthandElement.type).toBe(CustomComponent);
@@ -289,11 +291,11 @@ describe('factories', () => {
         const defaultProps = () => ({
           styles: {
             color: 'override me',
-            ':hover': { color: 'blue' }
-          }
+            ':hover': { color: 'blue' },
+          },
         });
         const props = {
-          styles: { color: 'black' }
+          styles: { color: 'black' },
         };
 
         // render callback is deprecated an throws deprecation warnings
@@ -304,11 +306,11 @@ describe('factories', () => {
             render(props, (Component, props) => {
               expect(callable(props.styles)()).toMatchObject({
                 color: 'black',
-                ':hover': { color: 'blue' }
+                ':hover': { color: 'blue' },
               });
             }),
           Component: 'p',
-          defaultProps
+          defaultProps,
         });
       });
 
@@ -319,9 +321,9 @@ describe('factories', () => {
           styles: {
             color: 'black',
             ':hover': {
-              color: 'blue'
-            }
-          }
+              color: 'blue',
+            },
+          },
         };
         const props = {
           styles: {
@@ -329,9 +331,9 @@ describe('factories', () => {
             color: 'override',
             ':hover': {
               position: 'keep',
-              color: 'override'
-            }
-          }
+              color: 'override',
+            },
+          },
         };
 
         // render callback is deprecated an throws deprecation warnings
@@ -345,12 +347,12 @@ describe('factories', () => {
                 color: 'black',
                 ':hover': {
                   position: 'keep',
-                  color: 'blue'
-                }
+                  color: 'blue',
+                },
               });
             }),
           Component: 'p',
-          overrideProps
+          overrideProps,
         });
       });
 
@@ -360,11 +362,11 @@ describe('factories', () => {
         const defaultProps = () => ({
           styles: () => ({
             color: 'override me',
-            ':hover': { color: 'blue' }
-          })
+            ':hover': { color: 'blue' },
+          }),
         });
         const props = {
-          styles: { color: 'black' }
+          styles: { color: 'black' },
         };
 
         // render callback is deprecated an throws deprecation warnings
@@ -375,11 +377,11 @@ describe('factories', () => {
             render(props, (Component, props) => {
               expect(callable(props.styles)()).toMatchObject({
                 color: 'black',
-                ':hover': { color: 'blue' }
+                ':hover': { color: 'blue' },
               });
             }),
           Component: 'p',
-          defaultProps
+          defaultProps,
         });
       });
 
@@ -390,9 +392,9 @@ describe('factories', () => {
           styles: () => ({
             color: 'black',
             ':hover': {
-              color: 'blue'
-            }
-          })
+              color: 'blue',
+            },
+          }),
         };
         const props = {
           styles: {
@@ -400,9 +402,9 @@ describe('factories', () => {
             color: 'override',
             ':hover': {
               position: 'keep',
-              color: 'override'
-            }
-          }
+              color: 'override',
+            },
+          },
         };
 
         // render callback is deprecated an throws deprecation warnings
@@ -416,12 +418,12 @@ describe('factories', () => {
                 color: 'black',
                 ':hover': {
                   position: 'keep',
-                  color: 'blue'
-                }
+                  color: 'blue',
+                },
               });
             }),
           Component: 'p',
-          overrideProps
+          overrideProps,
         });
       });
     });
@@ -431,7 +433,7 @@ describe('factories', () => {
         const defaultPropsValue = { 'data-some': 'defaults' };
         testCreateShorthand(
           { defaultProps: () => defaultPropsValue, valueOrRenderCallback: 'foo' },
-          { ...defaultPropsValue, children: 'foo' }
+          { ...defaultPropsValue, children: 'foo' },
         );
       });
     });
@@ -515,7 +517,10 @@ describe('factories', () => {
       test('can be an object', () => {
         const overrideProps = { 'data-some': 'overrides' };
 
-        testCreateShorthand({ overrideProps, valueOrRenderCallback: testValue }, { ...overrideProps, children: testValue });
+        testCreateShorthand(
+          { overrideProps, valueOrRenderCallback: testValue },
+          { ...overrideProps, children: testValue },
+        );
       });
 
       test('can be a function that returns defaultProps', () => {
@@ -532,8 +537,8 @@ describe('factories', () => {
           getShorthand({
             defaultProps: () => defaultPropsValue,
             overrideProps,
-            valueOrRenderCallback: <div />
-          })
+            valueOrRenderCallback: <div />,
+          }),
         );
         expect(overrideProps).toHaveBeenCalledWith(defaultPropsValue);
       });
@@ -547,8 +552,8 @@ describe('factories', () => {
           getShorthand({
             defaultProps: () => defaultPropsValue,
             overrideProps,
-            valueOrRenderCallback: userProps
-          })
+            valueOrRenderCallback: userProps,
+          }),
         );
         expect(overrideProps).toHaveBeenCalledWith({ ...defaultPropsValue, ...userProps });
       });
@@ -579,7 +584,7 @@ describe('factories', () => {
       itAppliesDefaultProps(<div />);
       itMergesClassNames('mappedProp', 'mapped', {
         valueOrRenderCallback: <div />,
-        mappedProp: 'className'
+        mappedProp: 'className',
       });
 
       itAppliesProps(
@@ -587,8 +592,8 @@ describe('factories', () => {
         { 'data-prop': <div /> },
         {
           valueOrRenderCallback: <div />,
-          mappedProp: 'data-prop'
-        }
+          mappedProp: 'data-prop',
+        },
       );
       itOverridesDefaultProps(
         'mappedProp',
@@ -596,8 +601,8 @@ describe('factories', () => {
         { some: 'defaults', overridden: <div /> },
         {
           valueOrRenderCallback: <div />,
-          mappedProp: 'overridden'
-        }
+          mappedProp: 'overridden',
+        },
       );
     });
 
@@ -606,7 +611,7 @@ describe('factories', () => {
       itAppliesDefaultProps('foo');
       itMergesClassNames('mappedProp', 'mapped', {
         valueOrRenderCallback: 'foo',
-        mappedProp: 'className'
+        mappedProp: 'className',
       });
 
       itAppliesProps(
@@ -614,8 +619,8 @@ describe('factories', () => {
         { 'data-prop': 'foo' },
         {
           valueOrRenderCallback: 'foo',
-          mappedProp: 'data-prop'
-        }
+          mappedProp: 'data-prop',
+        },
       );
 
       itOverridesDefaultProps(
@@ -624,8 +629,8 @@ describe('factories', () => {
         { some: 'defaults', overridden: 'true' },
         {
           valueOrRenderCallback: 'true',
-          mappedProp: 'overridden'
-        }
+          mappedProp: 'overridden',
+        },
       );
 
       const mappedProp = 'test-mapped-prop';
@@ -639,14 +644,17 @@ describe('factories', () => {
             test(`overrides ${mappedProp} and ${testMsg}`, () => {
               testCreateShorthand(
                 { mappedProp, valueOrRenderCallback: value, defaultProps: () => ({ as }) },
-                { as, [mappedProps[as]]: value }
+                { as, [mappedProps[as]]: value },
               );
             });
           });
 
           describe(`'${as}' as 'as' prop to overrideProps`, () => {
             test(`overrides ${mappedProp} and ${testMsg}`, () => {
-              testCreateShorthand({ mappedProp, valueOrRenderCallback: value, overrideProps: { as } }, { as, [mappedProps[as]]: value });
+              testCreateShorthand(
+                { mappedProp, valueOrRenderCallback: value, overrideProps: { as } },
+                { as, [mappedProps[as]]: value },
+              );
             });
           });
 
@@ -657,9 +665,9 @@ describe('factories', () => {
                   mappedProp,
                   valueOrRenderCallback: value,
                   defaultProps: () => ({ as: 'overriden' }),
-                  overrideProps: { as }
+                  overrideProps: { as },
                 },
-                { as, [mappedProps[as]]: value }
+                { as, [mappedProps[as]]: value },
               );
             });
           });
@@ -675,9 +683,9 @@ describe('factories', () => {
               {
                 mappedProp,
                 valueOrRenderCallback: value,
-                defaultProps: () => ({ as: 'unsupported' })
+                defaultProps: () => ({ as: 'unsupported' }),
               },
-              { as: 'unsupported', [mappedProp]: value }
+              { as: 'unsupported', [mappedProp]: value },
             );
           });
         });
@@ -686,7 +694,7 @@ describe('factories', () => {
           test(testMsg, () => {
             testCreateShorthand(
               { mappedProp, valueOrRenderCallback: value, overrideProps: { as: 'unsupported' } },
-              { as: 'unsupported', [mappedProp]: value }
+              { as: 'unsupported', [mappedProp]: value },
             );
           });
         });
@@ -698,9 +706,9 @@ describe('factories', () => {
                 mappedProp,
                 valueOrRenderCallback: value,
                 defaultProps: () => ({ as: 'div' }),
-                overrideProps: { as: 'unsupported' }
+                overrideProps: { as: 'unsupported' },
               },
-              { as: 'unsupported', [mappedProp]: value }
+              { as: 'unsupported', [mappedProp]: value },
             );
           });
         });
@@ -713,7 +721,7 @@ describe('factories', () => {
           test(testMsg, () => {
             testCreateShorthand(
               { valueOrRenderCallback: value, defaultProps: () => ({ as: 'unsupported' }) },
-              { as: 'unsupported', children: value }
+              { as: 'unsupported', children: value },
             );
           });
         });
@@ -722,7 +730,7 @@ describe('factories', () => {
           test(testMsg, () => {
             testCreateShorthand(
               { valueOrRenderCallback: value, overrideProps: { as: 'unsupported' } },
-              { as: 'unsupported', children: value }
+              { as: 'unsupported', children: value },
             );
           });
         });
@@ -733,9 +741,9 @@ describe('factories', () => {
               {
                 valueOrRenderCallback: value,
                 defaultProps: () => ({ as: 'div' }),
-                overrideProps: { as: 'unsupported' }
+                overrideProps: { as: 'unsupported' },
               },
-              { as: 'unsupported', children: value }
+              { as: 'unsupported', children: value },
             );
           });
         });
@@ -747,7 +755,7 @@ describe('factories', () => {
       itAppliesDefaultProps({});
       itDoesNotIncludePropsFromMappedProp({});
       itMergesClassNames('props object', 'user', {
-        valueOrRenderCallback: { className: 'user' }
+        valueOrRenderCallback: { className: 'user' },
       });
 
       itOverridesDefaultProps(
@@ -755,12 +763,12 @@ describe('factories', () => {
         () => ({ some: 'defaults', overridden: false }),
         { some: 'defaults', overridden: true },
         {
-          valueOrRenderCallback: { overridden: true }
-        }
+          valueOrRenderCallback: { overridden: true },
+        },
       );
 
       itOverridesDefaultPropsWithFalseyProps('props object', {
-        valueOrRenderCallback: { undef: undefined, nil: null, zero: 0, empty: '' }
+        valueOrRenderCallback: { undef: undefined, nil: null, zero: 0, empty: '' },
       });
     });
 
@@ -777,9 +785,9 @@ describe('factories', () => {
               {
                 mappedArrayProp,
                 valueOrRenderCallback: value,
-                defaultProps: () => ({ as: 'unsupported' })
+                defaultProps: () => ({ as: 'unsupported' }),
               },
-              { as: 'unsupported', [mappedArrayProp]: value }
+              { as: 'unsupported', [mappedArrayProp]: value },
             );
           });
         });
@@ -792,10 +800,12 @@ describe('factories', () => {
         const userProps = { style: { bottom: 5 } };
         const overrideProps = { style: { right: 5 } };
 
-        expect(shallow(getShorthand({ defaultProps, overrideProps, valueOrRenderCallback: userProps })).prop('style')).toEqual({
+        expect(
+          shallow(getShorthand({ defaultProps, overrideProps, valueOrRenderCallback: userProps })).prop('style'),
+        ).toEqual({
           left: 5,
           bottom: 5,
-          right: 5
+          right: 5,
         });
       });
 
@@ -805,7 +815,7 @@ describe('factories', () => {
 
         expect(shallow(getShorthand({ defaultProps, valueOrRenderCallback: userProps })).prop('style')).toEqual({
           left: 10,
-          bottom: 10
+          bottom: 10,
         });
       });
 
@@ -815,7 +825,7 @@ describe('factories', () => {
 
         expect(shallow(getShorthand({ overrideProps, valueOrRenderCallback: userProps })).prop('style')).toEqual({
           bottom: 10,
-          right: 10
+          right: 10,
         });
       });
 
@@ -823,9 +833,11 @@ describe('factories', () => {
         const defaultProps = () => ({ style: { left: 10, bottom: 5 } });
         const overrideProps = { style: { bottom: 10 } };
 
-        expect(shallow(getShorthand({ defaultProps, overrideProps, valueOrRenderCallback: 'foo' })).prop('style')).toEqual({
+        expect(
+          shallow(getShorthand({ defaultProps, overrideProps, valueOrRenderCallback: 'foo' })).prop('style'),
+        ).toEqual({
           left: 10,
-          bottom: 10
+          bottom: 10,
         });
       });
     });

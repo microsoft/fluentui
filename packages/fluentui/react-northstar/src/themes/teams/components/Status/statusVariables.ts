@@ -25,5 +25,5 @@ export default siteVariables => ({
   errorBackgroundColor: siteVariables.colors.red[400],
   errorTextColor: siteVariables.colors.white,
   defaultBackgroundColor: siteVariables.colors.grey[350],
-  defaultTextColor: siteVariables.colors.white
+  defaultTextColor: siteVariables.colors.white,
 });

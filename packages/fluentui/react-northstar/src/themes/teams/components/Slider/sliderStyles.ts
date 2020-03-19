@@ -9,7 +9,7 @@ const selectors = {
   MOZ_THUMB: '::-moz-range-thumb',
   MS_FILL_LOWER: '::-ms-fill-lower',
   MS_FILL_UPPER: '::-ms-fill-upper',
-  MS_THUMB: '::-ms-thumb'
+  MS_THUMB: '::-ms-thumb',
 };
 
 const getCommonSlotStyles = (p: SliderStylesProps, v: SliderVariables): ICSSInJSStyle => ({
@@ -18,7 +18,7 @@ const getCommonSlotStyles = (p: SliderStylesProps, v: SliderVariables): ICSSInJS
   position: 'absolute',
   border: 0,
   height: v.railHeight,
-  marginTop: `calc(${v.height} / 2 - ${v.railHeight} / 2)`
+  marginTop: `calc(${v.height} / 2 - ${v.railHeight} / 2)`,
 });
 
 // this selector is used to identify the thumb slot from a previous sibling
@@ -32,7 +32,7 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
 
     ...(p.disabled && { pointerEvents: 'none' }),
     ...(p.vertical && { height: v.length, width: v.height }),
-    ...getFluidStyles(p)
+    ...getFluidStyles(p),
   }),
 
   input: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -41,11 +41,11 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
       width: v.activeThumbWidth,
       background: v.activeThumbColor,
       marginTop: `calc(${v.height} / 2  - ${v.activeThumbHeight} / 2)`,
-      marginLeft: `calc(-${v.activeThumbWidth} / 2)`
+      marginLeft: `calc(-${v.activeThumbWidth} / 2)`,
     };
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderPadding: v.thumbBorderPadding
+      borderPadding: v.thumbBorderPadding,
     });
     const thumbStyles = { border: 0, width: '1px' };
 
@@ -71,14 +71,14 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
 
       ':focus': {
         outline: 0, // TODO: check if this is correct
-        [thumbFromPreviousSiblingSelector]: borderFocusStyles[':focus']
+        [thumbFromPreviousSiblingSelector]: borderFocusStyles[':focus'],
       },
       ':focus-visible': {
         [thumbFromPreviousSiblingSelector]: {
           ...borderFocusStyles[':focus-visible'],
-          ...activeThumbStyles
-        }
-      }
+          ...activeThumbStyles,
+        },
+      },
     };
   },
 
@@ -92,9 +92,9 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
       width: v.length,
       ...(p.vertical && {
         transform: 'rotate(-90deg)',
-        transformOrigin: `${transformOriginValue} ${transformOriginValue}`
+        transformOrigin: `${transformOriginValue} ${transformOriginValue}`,
       }),
-      ...getFluidStyles(p)
+      ...getFluidStyles(p),
     };
   },
 
@@ -103,14 +103,14 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
     background: v.railColor,
 
     ...getCommonSlotStyles(p, v),
-    ...(p.disabled && { background: v.disabledRailColor })
+    ...(p.disabled && { background: v.disabledRailColor }),
   }),
 
   track: ({ props: p, variables: v }) => ({
     background: v.trackColor,
 
     ...getCommonSlotStyles(p, v),
-    ...(p.disabled && { background: v.disabledTrackColor })
+    ...(p.disabled && { background: v.disabledTrackColor }),
   }),
 
   thumb: ({ props: p, variables: v }) => ({
@@ -126,8 +126,8 @@ const sliderStyles: ComponentSlotStylesPrepared<SliderStylesProps, SliderVariabl
     marginTop: `calc(${v.height} / 2  - ${v.thumbHeight} / 2)`,
     marginLeft: `calc(-${v.thumbWidth} / 2)`,
 
-    ...(p.disabled && { background: v.disabledThumbColor })
-  })
+    ...(p.disabled && { background: v.disabledThumbColor }),
+  }),
 };
 
 export default sliderStyles;

@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-dialpad'
+  exportedAs: 'call-dialpad',
 } as TeamsProcessedSvgIconSpec;

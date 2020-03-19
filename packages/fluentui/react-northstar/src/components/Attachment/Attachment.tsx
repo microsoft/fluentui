@@ -4,7 +4,13 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
 import { WithAsProp, ShorthandValue, ComponentEventHandler, withSafeTypeForAs } from '../../types';
-import { UIComponent, createShorthandFactory, commonPropTypes, applyAccessibilityKeyHandlers, ShorthandFactory } from '../../utils';
+import {
+  UIComponent,
+  createShorthandFactory,
+  commonPropTypes,
+  applyAccessibilityKeyHandlers,
+  ShorthandFactory,
+} from '../../utils';
 import Icon, { IconProps } from '../Icon/Icon';
 import Button, { ButtonProps } from '../Button/Button';
 import Text, { TextProps } from '../Text/Text';
@@ -58,18 +64,18 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     action: customPropTypes.itemShorthand,
     actionable: PropTypes.bool,
     description: customPropTypes.itemShorthand,
     header: customPropTypes.itemShorthand,
     icon: customPropTypes.itemShorthandWithoutJSX,
-    progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   static defaultProps = {
-    accessibility: attachmentBehavior as Accessibility
+    accessibility: attachmentBehavior as Accessibility,
   };
 
   renderComponent({ ElementType, classes, unhandledProps, styles, variables, accessibility }) {
@@ -85,16 +91,16 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
       >
         {icon &&
           Icon.create(icon, {
-            defaultProps: () => ({ size: 'larger', styles: styles.icon })
+            defaultProps: () => ({ size: 'larger', styles: styles.icon }),
           })}
         {(header || description) && (
           <div className={classes.content}>
             {Text.create(header, {
-              defaultProps: () => ({ styles: styles.header })
+              defaultProps: () => ({ styles: styles.header }),
             })}
 
             {Text.create(description, {
-              defaultProps: () => ({ styles: styles.description })
+              defaultProps: () => ({ styles: styles.description }),
             })}
           </div>
         )}
@@ -104,8 +110,8 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
               iconOnly: true,
               text: true,
               styles: styles.action,
-              className: Attachment.slotClassNames.action
-            })
+              className: Attachment.slotClassNames.action,
+            }),
           })}
         {!_.isNil(progress) && <div className={classes.progress} />}
       </ElementType>
@@ -113,7 +119,7 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
   }
 
   actionHandlers = {
-    performClick: event => this.performClick(event)
+    performClick: event => this.performClick(event),
   };
 
   performClick = e => {
@@ -137,7 +143,7 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
 Attachment.slotClassNames = {
-  action: `${Attachment.className}__action`
+  action: `${Attachment.className}__action`,
 };
 
 /**

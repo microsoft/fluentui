@@ -17,10 +17,10 @@ describe('TableRow', () => {
     {
       content: 'Roman van von der Longername',
 
-      key: '1-2'
+      key: '1-2',
     },
     { content: 'None', key: '1-3' },
-    { content: '30 years', key: '1-4' }
+    { content: '30 years', key: '1-4' },
   ];
 
   it('renders as `div`', () => {

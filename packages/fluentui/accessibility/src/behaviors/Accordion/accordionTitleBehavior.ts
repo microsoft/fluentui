@@ -21,23 +21,23 @@ const accordionTitleBehavior: Accessibility<AccordionTitleBehaviorProps> = props
     attributes: {
       root: {
         role: isHeading ? undefined : 'heading',
-        'aria-level': isHeading ? undefined : 3
+        'aria-level': isHeading ? undefined : 3,
       },
       content: {
         'aria-expanded': !!props.active,
         'aria-disabled': !!(forcedOpen || props.disabled),
         'aria-controls': props.accordionContentId,
         role: 'button',
-        tabIndex: 0
-      }
+        tabIndex: 0,
+      },
     },
     keyActions: {
       content: {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-        }
-      }
-    }
+          keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        },
+      },
+    },
   };
 };
 

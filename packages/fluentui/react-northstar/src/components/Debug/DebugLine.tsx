@@ -18,12 +18,12 @@ const DebugLine: React.FC<{
       outline: 0,
       ...(actionable && {
         color: 'cornflowerblue',
-        cursor: 'pointer'
+        cursor: 'pointer',
       }),
       ...(active && {
-        background: 'rgba(255, 255, 255, 0.1)'
+        background: 'rgba(255, 255, 255, 0.1)',
       }),
-      ...style
+      ...style,
     }}
     {...rest}
   >

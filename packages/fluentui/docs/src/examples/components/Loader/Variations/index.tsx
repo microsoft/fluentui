@@ -15,7 +15,11 @@ const LoaderTypesExamples = () => (
       description="A label in the loader can have different positions."
       examplePath="components/Loader/Variations/LoaderExampleLabelPosition"
     />
-    <ComponentExample title="Size" description="A size of the loader." examplePath="components/Loader/Variations/LoaderExampleSize" />
+    <ComponentExample
+      title="Size"
+      description="A size of the loader."
+      examplePath="components/Loader/Variations/LoaderExampleSize"
+    />
   </ExampleSection>
 );
 

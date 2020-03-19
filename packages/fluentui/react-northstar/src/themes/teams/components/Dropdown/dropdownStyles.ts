@@ -11,7 +11,7 @@ type DropdownPropsAndState = DropdownProps & DropdownState;
 const transparentColorStyle: ICSSInJSStyle = {
   backgroundColor: 'transparent',
   borderColor: 'transparent',
-  borderBottomColor: 'transparent'
+  borderBottomColor: 'transparent',
 };
 
 const transparentColorStyleObj: ICSSInJSStyle = {
@@ -20,8 +20,8 @@ const transparentColorStyleObj: ICSSInJSStyle = {
   ':active': transparentColorStyle,
   ':focus': {
     ...transparentColorStyle,
-    ':active': transparentColorStyle
-  }
+    ':active': transparentColorStyle,
+  },
 };
 
 const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
@@ -38,7 +38,7 @@ const getWidth = (p: DropdownPropsAndState, v: DropdownVariables): string => {
 
 const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, DropdownVariables> = {
   root: ({ props: p }): ICSSInJSStyle => ({
-    ...(p.inline && { display: 'inline-flex' })
+    ...(p.inline && { display: 'inline-flex' }),
   }),
 
   clearIndicator: ({ variables: v }) => ({
@@ -56,7 +56,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     position: 'absolute',
     right: pxToRem(6),
     height: '100%',
-    width: pxToRem(16)
+    width: pxToRem(16),
   }),
 
   container: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
@@ -78,30 +78,33 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       borderColor: v.borderColorHover,
 
       ...(p.open && {
-        borderColor: v.openBorderColorHover
+        borderColor: v.openBorderColorHover,
       }),
 
       ...(p.disabled && {
         backgroundColor: v.disabledBackgroundColorHover,
-        borderColor: v.disabledBorderColorHover
+        borderColor: v.disabledBorderColorHover,
       }),
 
       [`& .${Dropdown.slotClassNames.triggerButton}`]: {
         color: v.triggerButtonColorHover,
 
         ...(p.disabled && {
-          color: v.disabledTriggerColorHover
-        })
-      }
+          color: v.disabledTriggerColorHover,
+        }),
+      },
     },
     ...(p.focused && {
       ...(p.search && { borderBottomColor: v.borderColorFocus }),
-      ...(!p.search && !p.open && p.isFromKeyboard && getBorderFocusStyles({ variables: siteVariables })[':focus-visible'])
+      ...(!p.search &&
+        !p.open &&
+        p.isFromKeyboard &&
+        getBorderFocusStyles({ variables: siteVariables })[':focus-visible']),
     }),
     ...(p.inline && {
       ...transparentColorStyleObj,
-      alignItems: 'center'
-    })
+      alignItems: 'center',
+    }),
   }),
 
   selectedItems: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -110,7 +113,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     overflowY: 'auto',
     maxHeight: v.selectedItemsMaxHeight,
     width: '100%',
-    ...(p.toggleIndicator && { paddingRight: v.toggleIndicatorSize })
+    ...(p.toggleIndicator && { paddingRight: v.toggleIndicatorSize }),
   }),
 
   triggerButton: ({ props: p, variables: v }): ICSSInJSStyle => {
@@ -125,29 +128,29 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ':focus': {
         color: v.color,
         ':active': {
-          color: v.triggerButtonColorFocusActive
-        }
+          color: v.triggerButtonColorFocusActive,
+        },
       },
       ':focus-visible': {
         color: v.color,
         ...transparentColorStyle,
         ':after': {
-          borderColor: 'transparent'
+          borderColor: 'transparent',
         },
         ':before': {
-          borderColor: 'transparent'
+          borderColor: 'transparent',
         },
-        ':active': transparentColorStyle
+        ':active': transparentColorStyle,
       },
       ':hover': {
         ...transparentColorStyle,
-        color: v.triggerButtonColorHover
+        color: v.triggerButtonColorHover,
       },
       ...(p.inline && {
         paddingLeft: 0,
         paddingRight: 0,
-        width: 'initial'
-      })
+        width: 'initial',
+      }),
     };
   },
 
@@ -165,17 +168,17 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.position === 'below' && { borderRadius: v.belowListBorderRadius }),
     ...(p.open && {
       boxShadow: v.listBoxShadow,
-      padding: v.listPadding
-    })
+      padding: v.listPadding,
+    }),
   }),
 
   loadingMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.listItemBackgroundColor
+    backgroundColor: v.listItemBackgroundColor,
   }),
 
   noResultsMessage: ({ variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.listItemBackgroundColor,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   }),
 
   toggleIndicator: ({ props: p, variables: v }) => ({
@@ -188,7 +191,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     backgroundRepeat: 'no-repeat',
     cursor: 'pointer',
     ...(p.disabled && {
-      cursor: 'default'
+      cursor: 'default',
     }),
     userSelect: 'none',
 
@@ -196,8 +199,8 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     position: 'absolute',
     right: pxToRem(8),
     height: '100%',
-    width: pxToRem(12)
-  })
+    width: pxToRem(12),
+  }),
 };
 
 export default dropdownStyles;

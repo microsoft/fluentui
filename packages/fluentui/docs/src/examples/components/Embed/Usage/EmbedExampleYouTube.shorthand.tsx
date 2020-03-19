@@ -10,7 +10,7 @@ const EmbedExampleYouTube = () => (
         frameBorder: 0,
         allow: ['autoplay'],
         height: '400px',
-        width: '711.11px'
+        width: '711.11px',
       }}
       placeholder="https://raw.githubusercontent.com/bower-media-samples/big-buck-bunny-480p-5s/master/poster.jpg"
       title="Picachu YouTube video"

@@ -27,7 +27,7 @@ function Design<DesignProps>({ config, children }) {
     displayName: Design.displayName,
     disableAnimations: context.disableAnimations,
     theme: { direction: context.rtl ? 'rtl' : 'ltr' },
-    sanitizeCss: context.performance.enableSanitizeCssPlugin
+    sanitizeCss: context.performance.enableSanitizeCssPlugin,
   };
 
   const className = context.renderer.renderRule(getConfig, styleParam);
@@ -40,7 +40,7 @@ Design.displayName = 'Design';
 Design.propTypes = {
   children: PropTypes.func.isRequired,
 
-  config: customPropTypes.design.isRequired
+  config: customPropTypes.design.isRequired,
 };
 
 export default Design;

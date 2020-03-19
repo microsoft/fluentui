@@ -9,7 +9,7 @@ describe('Animation', () => {
     constructorName: 'Animation',
     hasAccessibilityProp: false,
     requiredProps: { children: <div /> },
-    handlesAsProp: false
+    handlesAsProp: false,
   });
 
   test('does not throw if children is not passed', () => {

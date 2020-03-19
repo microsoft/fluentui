@@ -9,7 +9,7 @@ export const selectors = {
   menuTrigger: 'menu-trigger',
   itemButtonId: 'item-button',
   toolbarMenu: ToolbarMenu.className,
-  afterToolbarId: 'after'
+  afterToolbarId: 'after',
 };
 
 export const itemsCount = 20;
@@ -27,7 +27,7 @@ const ToolbarExampleOverflow = () => {
     onClick: i + 1 === itemsCount ? () => buttonAfterToolbarRef.current.focus() : undefined,
     // first half of items are unwrapped, rest are wrapped, expect of the last item
     // don't add submenu on last item, on last item onClick with moving focus is tested
-    ...(i >= itemsCount / 2 && i + 1 < itemsCount && { menu: [] })
+    ...(i >= itemsCount / 2 && i + 1 < itemsCount && { menu: [] }),
   }));
 
   const toolbarItems = itemData.map(item => {
@@ -43,7 +43,7 @@ const ToolbarExampleOverflow = () => {
         overflowOpen={overflowOpen}
         overflowItem={{
           title: 'More',
-          id: selectors.menuTrigger
+          id: selectors.menuTrigger,
         }}
         onOverflowOpenChange={(e, { overflowOpen }) => {
           setOverflowOpen(overflowOpen);

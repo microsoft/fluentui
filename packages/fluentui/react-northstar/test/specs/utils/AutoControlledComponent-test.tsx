@@ -24,7 +24,7 @@ const toDefaultName = prop => `default${prop.slice(0, 1).toUpperCase() + prop.sl
 const makeProps = () => ({
   computer: 'hardware',
   flux: 'capacitor',
-  ion: 'belt'
+  ion: 'belt',
 });
 
 const makeDefaultProps = (props: Props): Props =>
@@ -32,7 +32,8 @@ const makeDefaultProps = (props: Props): Props =>
     res[toDefaultName(key)] = val;
   });
 
-const getAutoControlledInstance = (wrapper: ShallowWrapper = shallow(<TestClass />)) => wrapper.instance() as AutoControlledComponent;
+const getAutoControlledInstance = (wrapper: ShallowWrapper = shallow(<TestClass />)) =>
+  wrapper.instance() as AutoControlledComponent;
 
 describe('extending AutoControlledComponent', () => {
   beforeEach(() => {
@@ -50,13 +51,13 @@ describe('extending AutoControlledComponent', () => {
     TestClass = createTestClass({
       autoControlledProps: ['open'],
       defaultProps: ['defaultOpen'],
-      state: { open: false, value: 'initial' }
+      state: { open: false, value: 'initial' },
     });
     TestClass.getAutoControlledStateFromProps = (props, state) => {
       return {
         openProp: props.open,
         openState: state.open,
-        modifiedValue: `${state.value} + auto`
+        modifiedValue: `${state.value} + auto`,
       };
     };
     const wrapper = shallow(<TestClass open />);
@@ -161,7 +162,9 @@ describe('extending AutoControlledComponent', () => {
       const autoControlledProps = _.keys(props);
 
       TestClass = createTestClass({ autoControlledProps, state: {} });
-      expect(shallow(<TestClass {...props} />).state()).toEqual(expect.objectContaining({ autoControlledProps, ...props }));
+      expect(shallow(<TestClass {...props} />).state()).toEqual(
+        expect.objectContaining({ autoControlledProps, ...props }),
+      );
     });
 
     test('does not include non autoControlledProps', () => {

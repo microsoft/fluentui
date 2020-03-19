@@ -12,8 +12,9 @@ export default () => (
     <Header as="h2" content="Theming techniques" />
 
     <p>
-      A Theme is used to ensure design consistency accross an application. It can define styles that are common accross the application and
-      for particular component types. Fluent UI will provide some parameterizable standard themes or you can create your own.
+      A Theme is used to ensure design consistency accross an application. It can define styles that are common accross
+      the application and for particular component types. Fluent UI will provide some parameterizable standard themes or
+      you can create your own.
     </p>
     <p>
       Startdust theme is constructed around CSS-like style objects (<NavLink to="theming#styles">styles</NavLink>) and{' '}
@@ -31,7 +32,8 @@ export default () => (
         <strong>Theme level styling</strong> - for users who require design consistency accross the application.
       </li>
       <li>
-        <strong>Nesting themes</strong> - for users who require different styling for the different parts of the application.
+        <strong>Nesting themes</strong> - for users who require different styling for the different parts of the
+        application.
       </li>
     </ol>
 
@@ -64,8 +66,8 @@ export default () => (
 
     <Header as="h3" content="Component Level Styling" />
     <p>
-      When you need to tweak styles of specific component's instance, you can change its styles directly or via theme-defined variables.
-      This technique can be used to create component wrappers, like in the examples below.
+      When you need to tweak styles of specific component's instance, you can change its styles directly or via
+      theme-defined variables. This technique can be used to create component wrappers, like in the examples below.
     </p>
 
     <Header as="h4" content="Changing component styles" />
@@ -102,7 +104,7 @@ export default () => (
             color: 'coral',
             backgroundColor: 'charcoal',
             fontSize: '14px',
-            padding: '0 10px'
+            padding: '0 10px',
           }}
         />
       )}
@@ -141,14 +143,14 @@ export default () => (
           icon={{
             name: 'lock',
             variables: {
-              color: 'blue'
-            }
+              color: 'blue',
+            },
           }}
           secondary
           variables={{
             color: 'coral',
             backgroundColor: 'charcoal',
-            paddingLeftRightValue: 30
+            paddingLeftRightValue: 30,
           }}
         />
       )}
@@ -156,23 +158,24 @@ export default () => (
 
     <Header as="h3" content="Theme Level Styling" />
     <p>
-      To achieve pixel perfect output, one might need to obtain more detailed changes applied to the entire suite of styles. The components
-      styling can be changed at different levels of the theme:
+      To achieve pixel perfect output, one might need to obtain more detailed changes applied to the entire suite of
+      styles. The components styling can be changed at different levels of the theme:
     </p>
 
     <ul>
       <li>
-        <code>siteVariables</code> - those define theme-wide styling parameters that could affect styles of all the components. One might
-        want to consider to modify them when more general changes are requested (colors, page container sizes, default fonts that can be
-        inherited),
+        <code>siteVariables</code> - those define theme-wide styling parameters that could affect styles of all the
+        components. One might want to consider to modify them when more general changes are requested (colors, page
+        container sizes, default fonts that can be inherited),
       </li>
       <li>
         <code>componentVariables</code> - define variables that will affect styles of specific component type only,
       </li>
       <li>
-        <code>componentStyles</code> - define CSS properties that will be applied to components of specific type. Those have the same scope
-        as component variables, but serve as a lower level styling abstraction (and, thus, are more specific). Consider to use them when
-        very specific changes are required and not covered by the component variables provided by theme.
+        <code>componentStyles</code> - define CSS properties that will be applied to components of specific type. Those
+        have the same scope as component variables, but serve as a lower level styling abstraction (and, thus, are more
+        specific). Consider to use them when very specific changes are required and not covered by the component
+        variables provided by theme.
       </li>
     </ul>
 
@@ -233,7 +236,7 @@ export default () => (
                 brand04: '#8F5873',
                 gray08: '#A8516E8C',
                 gray06: '#f4c2c2',
-                gray03: '#757575'
+                gray03: '#757575',
               },
               componentVariables: {
                 Button: {
@@ -244,16 +247,16 @@ export default () => (
                   secondaryColor: '#ffffff',
                   secondaryBorderColor: 'transparent',
                   secondaryBackgroundColor: '#6699CC',
-                  secondaryBackgroundColorHover: '#91A3B0'
-                }
+                  secondaryBackgroundColorHover: '#91A3B0',
+                },
               },
               componentStyles: {
                 Button: {
                   icon: {
-                    fontSize: '12px'
-                  }
-                }
-              }
+                    fontSize: '12px',
+                  },
+                },
+              },
             }}
           >
             <div>
@@ -270,8 +273,8 @@ export default () => (
 
     <Header as="h3" content="Nesting Themes" />
     <p>
-      If you have areas of an application that require additional theming, you can achieve that using nested providers and overwrite the
-      needed styles.
+      If you have areas of an application that require additional theming, you can achieve that using nested providers
+      and overwrite the needed styles.
     </p>
     <ExampleSnippet
       value={`
@@ -341,9 +344,9 @@ export default () => (
             theme={{
               componentVariables: {
                 Button: {
-                  primaryBackgroundColor: 'darkred'
-                }
-              }
+                  primaryBackgroundColor: 'darkred',
+                },
+              },
             }}
           >
             <>
@@ -359,9 +362,9 @@ export default () => (
                 theme={{
                   componentStyles: {
                     Button: {
-                      root: { color: 'goldenrod' }
-                    }
-                  }
+                      root: { color: 'goldenrod' },
+                    },
+                  },
                 }}
               >
                 <>

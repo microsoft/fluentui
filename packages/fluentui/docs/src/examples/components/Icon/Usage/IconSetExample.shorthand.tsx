@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid, Divider, Header, Icon, themes } from '@fluentui/react-northstar';
 
 const cellStyles = {
-  margin: '10px 0'
+  margin: '10px 0',
 };
 
 const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = ({ themeName }) => (
@@ -40,7 +40,7 @@ const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = 
 );
 
 IconSetExampleShorthand.defaultProps = {
-  themeName: 'teams'
+  themeName: 'teams',
 };
 
 export default IconSetExampleShorthand;

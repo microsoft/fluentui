@@ -9,7 +9,7 @@ const fields = [
     id: 'first-name-inline-shorthand',
     key: 'first-name',
     required: true,
-    inline: true
+    inline: true,
   },
   {
     label: 'Last name',
@@ -17,24 +17,24 @@ const fields = [
     id: 'last-name-inline-shorthand',
     key: 'last-name',
     required: true,
-    inline: true
+    inline: true,
   },
   {
     label: 'I agree to the Terms and Conditions',
     control: {
-      as: 'input'
+      as: 'input',
     },
     type: 'checkbox',
     id: 'conditions-inline-shorthand',
-    key: 'conditions'
+    key: 'conditions',
   },
   {
     control: {
       as: Button,
-      content: 'Submit'
+      content: 'Submit',
     },
-    key: 'submit'
-  }
+    key: 'submit',
+  },
 ];
 
 const HighlightPopup = ({ onConfirm }) => {
@@ -49,16 +49,16 @@ const ToolbarExampleShorthand = () => {
 
   const [highlightOpen, setHighlightOpen] = useBooleanKnob({
     name: 'highlightOpen',
-    initialValue: false
+    initialValue: false,
   });
   const [fontColorActive, setFontColorActive] = useBooleanKnob({
     name: 'fontColorActive',
-    initialValue: false
+    initialValue: false,
   });
 
   const [moreMenuOpen, setMoreMenuOpen] = useBooleanKnob({
     name: 'moreMenuOpen',
-    initialValue: false
+    initialValue: false,
   });
 
   const [log, setLog] = React.useState<string[]>([]);
@@ -83,7 +83,7 @@ const ToolbarExampleShorthand = () => {
             title: 'Toggle bold',
             onClick: () => {
               setBold(!isBold);
-            }
+            },
           },
           {
             key: 'italic',
@@ -93,7 +93,7 @@ const ToolbarExampleShorthand = () => {
             title: 'Toggle italic',
             onClick: () => {
               setItalic(!isItalic);
-            }
+            },
           },
           {
             key: 'underline',
@@ -103,7 +103,7 @@ const ToolbarExampleShorthand = () => {
             title: 'Toggle underline',
             onClick: () => {
               setUnderline(!isUnderline);
-            }
+            },
           },
           {
             key: 'strike',
@@ -114,7 +114,7 @@ const ToolbarExampleShorthand = () => {
             title: 'Toggle strike',
             onClick: () => {
               setStrike(!isStrike);
-            }
+            },
           },
           { key: 'divider1', kind: 'divider' },
           {
@@ -133,8 +133,8 @@ const ToolbarExampleShorthand = () => {
               onOpenChange: (e, { open }) => {
                 setHighlightOpen(open);
               },
-              open: highlightOpen
-            }
+              open: highlightOpen,
+            },
           },
           {
             key: 'font-color',
@@ -145,14 +145,14 @@ const ToolbarExampleShorthand = () => {
               content: <Input icon="search" placeholder="Search..." />,
               onOpenChange: () => {
                 setFontColorActive(!fontColorActive);
-              }
-            }
+              },
+            },
           },
           { key: 'font-size', icon: { name: 'font-size', outline: true }, title: 'Font size' },
           {
             key: 'remove-format',
             icon: { name: 'remove-format', outline: true },
-            title: 'Remove formatting'
+            title: 'Remove formatting',
           },
           { key: 'divider2', kind: 'divider' },
           {
@@ -170,7 +170,7 @@ const ToolbarExampleShorthand = () => {
                   // deselect other radio items
                   setNumberListActive(false);
                   setToDoListActive(false);
-                }
+                },
               },
               {
                 key: 'number-list',
@@ -183,7 +183,7 @@ const ToolbarExampleShorthand = () => {
                   // deselect other radio items
                   setBulletListActive(false);
                   setToDoListActive(false);
-                }
+                },
               },
               {
                 key: 'to-do-list',
@@ -196,9 +196,9 @@ const ToolbarExampleShorthand = () => {
                   // deselect other radio items
                   setBulletListActive(false);
                   setNumberListActive(false);
-                }
-              }
-            ]
+                },
+              },
+            ],
           },
           { key: 'divider3', kind: 'divider' },
           { key: 'outdent', icon: { name: 'outdent', outline: true }, title: 'Outdent' },
@@ -215,7 +215,7 @@ const ToolbarExampleShorthand = () => {
                 icon: 'quote',
                 onClick: () => {
                   writeLog('... -> Quote');
-                }
+                },
               },
               {
                 content: 'Link',
@@ -223,20 +223,20 @@ const ToolbarExampleShorthand = () => {
                 disabled: true,
                 onClick: () => {
                   writeLog('SHOULD NOT BE CALLED, ITEM IS DISABLED... -> Link');
-                }
+                },
               },
               {
                 content: 'Code snippet',
                 icon: 'code-snippet',
-                onClick: () => writeLog('... -> Code snippet')
-              }
+                onClick: () => writeLog('... -> Code snippet'),
+              },
             ],
             menuOpen: moreMenuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               writeLog(`setting menu to ${menuOpen ? 'open' : 'close'}`);
               setMoreMenuOpen(menuOpen);
-            }
-          }
+            },
+          },
         ]}
       />
       <br />

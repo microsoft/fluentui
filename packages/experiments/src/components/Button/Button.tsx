@@ -11,7 +11,7 @@ export const Button: React.FunctionComponent<IButtonProps> = composed({
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default Button;

@@ -10,7 +10,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   ContentComponentProps,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 import { WithAsProp, withSafeTypeForAs } from '../../types';
 
@@ -35,18 +35,18 @@ class Grid extends UIComponent<WithAsProp<GridProps>> {
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     columns: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent])
+      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
     ]),
-    rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    rows: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
   static defaultProps: WithAsProp<GridProps> = {
-    as: 'div'
+    as: 'div',
   };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }: RenderResultConfig<any>): React.ReactNode {

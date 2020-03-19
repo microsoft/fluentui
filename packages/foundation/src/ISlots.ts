@@ -12,13 +12,17 @@ export interface ISlotCreator<TProps extends ValidProps, TShorthandProp extends 
 /**
  * Slottable version of React.ComponentType.
  */
-export type ISlottableComponentType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ComponentType<TProps> &
-  ISlotCreator<TProps, TShorthandProp>;
+export type ISlottableComponentType<
+  TProps extends ValidProps,
+  TShorthandProp extends ValidShorthand
+> = React.ComponentType<TProps> & ISlotCreator<TProps, TShorthandProp>;
 
 /**
  * Slottable version of React.ReactType.
  */
-export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ElementType<TProps> &
+export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ElementType<
+  TProps
+> &
   ISlotCreator<TProps, TShorthandProp>;
 
 /**
@@ -48,7 +52,7 @@ export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends Valid
   componentProps: TProps & IProcessedSlotProps,
   userProps: ISlotProp<TProps, TShorthandProp>,
   slotOptions: ISlotOptions<TProps> | undefined,
-  defaultStyles: IStyle
+  defaultStyles: IStyle,
 ) => ReturnType<React.FunctionComponent<TProps>>;
 
 /**
@@ -104,7 +108,9 @@ export interface IDefaultSlotProps<TSlots> {
  */
 // TODO: Constrain TProps more clearly (notably also exclude Functions) once this TS PR is merged:
 // https://github.com/Microsoft/TypeScript/pull/29317
-export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
+export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> =
+  | TShorthandProp
+  | TProps;
 
 /**
  * Defines the slot options object for all slot props:
@@ -123,5 +129,5 @@ export interface ISlotOptions<TProps> {
  */
 export type ISlotRender<TProps> = (
   props: React.PropsWithChildren<TProps>,
-  defaultComponent: React.ComponentType<TProps>
+  defaultComponent: React.ComponentType<TProps>,
 ) => ReturnType<React.FunctionComponent<TProps>>;

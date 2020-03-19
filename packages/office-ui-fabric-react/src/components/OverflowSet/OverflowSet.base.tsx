@@ -9,11 +9,17 @@ import {
   elementContains,
   focusFirstChild,
   getNativeProps,
-  warnMutuallyExclusive
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
-import { IOverflowSet, IOverflowSetItemProps, IOverflowSetProps, IOverflowSetStyles, IOverflowSetStyleProps } from './OverflowSet.types';
+import {
+  IOverflowSet,
+  IOverflowSetItemProps,
+  IOverflowSetProps,
+  IOverflowSetStyles,
+  IOverflowSetStyleProps,
+} from './OverflowSet.types';
 
 const getClassNames = classNamesFunction<IOverflowSetStyleProps, IOverflowSetStyles>();
 const COMPONENT_NAME = 'OverflowSet';
@@ -30,7 +36,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 
     initializeComponentRef(this);
     warnMutuallyExclusive(COMPONENT_NAME, props, {
-      doNotContainWithinFocusZone: 'focusZoneProps'
+      doNotContainWithinFocusZone: 'focusZoneProps',
     });
   }
 
@@ -46,7 +52,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
       // tslint:disable-next-line:deprecation
       doNotContainWithinFocusZone,
       role,
-      overflowSide = 'end'
+      overflowSide = 'end',
     } = this.props;
 
     this._classNames = getClassNames(styles, { className, vertical });
@@ -58,7 +64,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
       Tag = 'div';
       uniqueComponentProps = {
         ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
-        ref: this._divContainer
+        ref: this._divContainer,
       };
     } else {
       Tag = FocusZone;
@@ -66,7 +72,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
         ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
-        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal
+        direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal,
       };
     }
 
@@ -180,7 +186,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
 
   private _onRenderOverflowButtonWrapper = (items: any[]): JSX.Element => {
     const wrapperDivProps: React.HTMLProps<HTMLDivElement> = {
-      className: this._classNames.overflowButton
+      className: this._classNames.overflowButton,
     };
 
     const overflowKeytipSequences = this.props.keytipSequences;
@@ -196,7 +202,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
             keySequences: keytip.keySequences,
             disabled: keytip.disabled || !!(overflowItem.disabled || overflowItem.isDisabled),
             hasDynamicChildren: keytip.hasDynamicChildren,
-            hasMenu: keytip.hasMenu
+            hasMenu: keytip.hasMenu,
           };
 
           if (keytip.hasDynamicChildren || this._getSubMenuForItem(overflowItem)) {
@@ -204,7 +210,7 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
             persistedKeytip.onExecute = this._keytipManager.menuExecute.bind(
               this._keytipManager,
               overflowKeytipSequences,
-              overflowItem.keytipProps.keySequences
+              overflowItem.keytipProps.keySequences,
             );
           } else {
             // If the keytip doesn't have a submenu, just execute the original function
@@ -220,8 +226,8 @@ export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> impl
             ...overflowItem,
             keytipProps: {
               ...keytip,
-              overflowSetSequence: overflowKeytipSequences
-            }
+              overflowSetSequence: overflowKeytipSequences,
+            },
           };
           newOverflowItems.push(newOverflowItem);
         } else {

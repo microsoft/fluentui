@@ -7,7 +7,7 @@ import {
   getDocument,
   memoizeFunction,
   getRTL,
-  FocusRects
+  FocusRects,
 } from '../../Utilities';
 import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
@@ -41,7 +41,9 @@ export class FabricBase extends React.Component<IFabricProps> {
 
     // Create the contextual theme if component direction does not match parent direction.
     if (componentDir !== parentDir) {
-      renderedContent = <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>;
+      renderedContent = (
+        <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
+      );
     }
 
     return (
@@ -67,7 +69,7 @@ export class FabricBase extends React.Component<IFabricProps> {
     const classNames = getClassNames(getStyles, {
       theme: theme!,
       applyTheme: applyTheme,
-      className
+      className,
     });
     return classNames;
   }

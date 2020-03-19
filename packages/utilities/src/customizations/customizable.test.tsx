@@ -71,7 +71,7 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <ConcatStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
 
@@ -86,7 +86,7 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <ConcatStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
 
@@ -101,7 +101,7 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <OverrideStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
 
@@ -116,7 +116,7 @@ describe('customizable', () => {
     const wrapper = mount(
       <Customizer>
         <OverrideStyles styles={{ root: componentStyles }} />
-      </Customizer>
+      </Customizer>,
     );
     const component = wrapper.find('OverrideStyles');
 

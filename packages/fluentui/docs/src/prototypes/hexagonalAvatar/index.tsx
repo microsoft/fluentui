@@ -6,7 +6,7 @@ import CustomAvatar from './CustomAvatar';
 const statusProps: Extendable<WithAsProp<StatusProps>> = {
   icon: 'icon-checkmark',
   state: 'success',
-  title: 'Available'
+  title: 'Available',
 };
 
 const HexagonalAvatarPrototype = () => {
@@ -22,7 +22,7 @@ const HexagonalAvatarPrototype = () => {
           </defs>
         </svg>,
         document.body,
-        'bot-hexagon-clip-path'
+        'bot-hexagon-clip-path',
       )}
       <Flex column padding="padding.medium" gap="gap.medium">
         <div>

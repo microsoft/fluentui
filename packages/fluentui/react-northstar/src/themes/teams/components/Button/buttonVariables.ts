@@ -131,5 +131,5 @@ export default (siteVars: any): ButtonVariables => ({
   sizeSmallLoaderBorderSize: pxToRem(2),
   sizeSmallLoaderSize: pxToRem(15),
   sizeSmallLoaderSvgHeight: pxToRem(895),
-  sizeSmallLoaderSvgAnimationHeight: pxToRem(-880)
+  sizeSmallLoaderSvgAnimationHeight: pxToRem(-880),
 });

@@ -22,5 +22,5 @@ export default {
       <circle className={cx(teamsIconClassNames.filled, classes.filledPart)} cx="12.5" cy="22.5" r="1" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

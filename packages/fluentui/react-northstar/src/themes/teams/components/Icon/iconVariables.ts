@@ -48,5 +48,5 @@ export default (siteVars): Partial<IconVariables> => ({
   largerSize: pxToRem(32),
   largestSize: pxToRem(40),
 
-  horizontalSpace: pxToRem(10)
+  horizontalSpace: pxToRem(10),
 });

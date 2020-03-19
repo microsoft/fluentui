@@ -3,7 +3,7 @@ import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/reac
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'check' }
+  status: { color: 'green', icon: 'check' },
 };
 
 const items: ShorthandCollection<ChatItemProps> = [
@@ -20,7 +20,7 @@ const items: ShorthandCollection<ChatItemProps> = [
     ),
     contentPosition: 'end',
     attached: 'top',
-    key: 'message-id-1'
+    key: 'message-id-1',
   },
   {
     gutter: <Avatar {...janeAvatar} />,
@@ -34,7 +34,7 @@ const items: ShorthandCollection<ChatItemProps> = [
       />
     ),
     attached: 'top',
-    key: 'message-id-2'
+    key: 'message-id-2',
   },
   {
     gutter: <Avatar {...janeAvatar} />,
@@ -48,7 +48,7 @@ const items: ShorthandCollection<ChatItemProps> = [
       />
     ),
     attached: true,
-    key: 'message-id-3'
+    key: 'message-id-3',
   },
   {
     gutter: <Avatar {...janeAvatar} />,
@@ -60,12 +60,12 @@ const items: ShorthandCollection<ChatItemProps> = [
         badge={{ icon: 'mention' }}
         variables={siteVars => ({
           hasMention: true,
-          hasMentionColor: siteVars.colors.brand[600]
+          hasMentionColor: siteVars.colors.brand[600],
         })}
       />
     ),
     attached: 'bottom',
-    key: 'message-id-4'
+    key: 'message-id-4',
   },
   {
     message: (
@@ -77,13 +77,13 @@ const items: ShorthandCollection<ChatItemProps> = [
         badge={{ icon: 'redbang' }}
         variables={siteVars => ({
           isImportant: true,
-          isImportantColor: siteVars.colors.yellow[400]
+          isImportantColor: siteVars.colors.yellow[400],
         })}
       />
     ),
     contentPosition: 'end',
-    key: 'message-id-5'
-  }
+    key: 'message-id-5',
+  },
 ];
 
 const ChatExample = () => <Chat items={items} />;

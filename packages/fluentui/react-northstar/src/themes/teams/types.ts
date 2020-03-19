@@ -1,4 +1,11 @@
-import { ColorScheme, ColorSchemeMapping, ColorVariants, StrictColorScheme, StrictColorSchemeMapping, PrimitiveColors } from '../types';
+import {
+  ColorScheme,
+  ColorSchemeMapping,
+  ColorVariants,
+  StrictColorScheme,
+  StrictColorSchemeMapping,
+  PrimitiveColors,
+} from '../types';
 
 import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
@@ -185,6 +192,12 @@ export type TeamsCategoryColorNames = keyof TeamsCategoryColors;
 
 export type TeamsCategoryColorSchemeMapping = ColorSchemeMapping<Partial<ColorScheme>, TeamsCategoryColorNames>;
 
-export type TeamsColorNames = keyof (TeamsContextualColors & TeamsNaturalColors & PrimitiveColors & TeamsTransparentColors);
+export type TeamsColorNames = keyof (TeamsContextualColors &
+  TeamsNaturalColors &
+  PrimitiveColors &
+  TeamsTransparentColors);
 
-export type TeamsSchemeMappingWithAreas<TAreas extends string> = StrictColorSchemeMapping<StrictColorScheme<TAreas>, TeamsColorNames>;
+export type TeamsSchemeMappingWithAreas<TAreas extends string> = StrictColorSchemeMapping<
+  StrictColorScheme<TAreas>,
+  TeamsColorNames
+>;

@@ -20,5 +20,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'canvas-add-page'
+  exportedAs: 'canvas-add-page',
 } as TeamsProcessedSvgIconSpec;

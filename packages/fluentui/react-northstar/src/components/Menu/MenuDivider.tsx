@@ -11,7 +11,7 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { WithAsProp, withSafeTypeForAs } from '../../types';
 
@@ -34,7 +34,7 @@ class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
 
   static defaultProps = {
     as: 'li',
-    accessibility: menuDividerBehavior as Accessibility
+    accessibility: menuDividerBehavior as Accessibility,
   };
 
   static propTypes = {
@@ -42,7 +42,7 @@ class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
     primary: PropTypes.bool,
     secondary: PropTypes.bool,
     vertical: PropTypes.bool,
-    inSubmenu: PropTypes.bool
+    inSubmenu: PropTypes.bool,
   };
 
   renderComponent({ ElementType, classes, unhandledProps, accessibility }) {

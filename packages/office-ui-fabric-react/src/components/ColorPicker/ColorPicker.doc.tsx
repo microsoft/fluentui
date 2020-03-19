@@ -13,13 +13,15 @@ export const ColorPickerPageProps: IDocPageProps = {
     {
       title: 'Default ColorPicker',
       code: ColorPickerBasicExampleCode,
-      view: <ColorPickerBasicExample />
-    }
+      view: <ColorPickerBasicExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ColorPicker/docs/ColorPickerOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

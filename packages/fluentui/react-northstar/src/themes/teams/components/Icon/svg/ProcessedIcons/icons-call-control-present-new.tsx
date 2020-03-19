@@ -9,5 +9,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-control-present-new'
+  exportedAs: 'call-control-present-new',
 } as TeamsProcessedSvgIconSpec;

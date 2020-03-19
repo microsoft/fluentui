@@ -109,5 +109,5 @@ export default (siteVars): DropdownVariables => ({
   listItemHeaderFontSize: siteVars.fontSizes.medium,
   listItemHeaderColor: siteVars.colors.grey[1000],
   listItemContentFontSize: siteVars.fontSizes.small,
-  listItemContentColor: siteVars.colors.grey[450]
+  listItemContentColor: siteVars.colors.grey[450],
 });

@@ -30,6 +30,6 @@ export default (siteVars: any): Partial<AlertVariables> => {
 
     urgentColor: siteVars.colors.black,
     urgentBackgroundColor: siteVars.colors.white,
-    urgentBorderColor: siteVars.colors.white
+    urgentBorderColor: siteVars.colors.white,
   };
 };

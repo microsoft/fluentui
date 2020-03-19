@@ -12,7 +12,7 @@ export const SplitButton: React.FunctionComponent<ISplitButtonProps> = composed(
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default SplitButton;

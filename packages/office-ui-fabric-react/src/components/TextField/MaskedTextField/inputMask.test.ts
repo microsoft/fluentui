@@ -7,7 +7,7 @@ import {
   getRightFormatIndex,
   IMaskValue,
   insertString,
-  parseMask
+  parseMask,
 } from './inputMask';
 
 const inputMask = 'Phone number m\\ask: (999) 999 - 9999';
@@ -22,7 +22,7 @@ const values: IMaskValue[] = [
   { value: undefined, format: /[0-9]/, displayIndex: 31 },
   { value: undefined, format: /[0-9]/, displayIndex: 32 },
   { value: undefined, format: /[0-9]/, displayIndex: 33 },
-  { value: undefined, format: /[0-9]/, displayIndex: 34 }
+  { value: undefined, format: /[0-9]/, displayIndex: 34 },
 ];
 
 function resetValues(charData: IMaskValue[], maxIndex: number = Infinity): void {
@@ -162,7 +162,7 @@ describe('inputMask', () => {
     const maskedValues = [
       { value: '1', format: /[0-9]/, displayIndex: 0 },
       { value: '2', format: /[0-9]/, displayIndex: 1 },
-      { value: '3', format: /[0-9]/, displayIndex: 2 }
+      { value: '3', format: /[0-9]/, displayIndex: 2 },
     ];
 
     const result = insertString(maskedValues, 3, '1');

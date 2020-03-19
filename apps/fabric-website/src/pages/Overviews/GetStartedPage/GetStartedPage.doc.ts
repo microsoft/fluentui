@@ -6,14 +6,14 @@ const componentUrl =
 export const GetStartedPageProps: TFabricPlatformPageProps = {
   web: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedOverview.md') as string,
-    componentUrl: componentUrl + '/web'
+    componentUrl: componentUrl + '/web',
   },
   ios: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/ios/GetStartedOverview.md') as string,
-    componentUrl
+    componentUrl,
   },
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/android/GetStartedOverview.md') as string,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

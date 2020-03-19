@@ -14,7 +14,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import RadioGroupItem, { RadioGroupItemProps } from './RadioGroupItem';
 import { WithAsProp, ComponentEventHandler, withSafeTypeForAs, ShorthandCollection } from '../../types';
@@ -53,25 +53,25 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
   static className = 'ui-radiogroup';
 
   static slotClassNames: RadioGroupSlotClassNames = {
-    item: `${RadioGroup.className}__item`
+    item: `${RadioGroup.className}__item`,
   };
 
   static create: ShorthandFactory<RadioGroupProps>;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     checkedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     defaultCheckedValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     items: customPropTypes.collectionShorthand,
     onCheckedValueChange: PropTypes.func,
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   static defaultProps = {
     as: 'div',
-    accessibility: radioGroupBehavior as Accessibility
+    accessibility: radioGroupBehavior as Accessibility,
   };
 
   static autoControlledProps = ['checkedValue'];
@@ -95,7 +95,7 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
 
   actionHandlers = {
     nextItem: event => this.setCheckedItem(event, 1),
-    prevItem: event => this.setCheckedItem(event, -1)
+    prevItem: event => this.setCheckedItem(event, -1),
   };
 
   getItemProps = (item): RadioGroupItemProps => {
@@ -110,7 +110,7 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
         checkedValue: nextItem.value,
         shouldFocus: true,
         event,
-        props: nextItem
+        props: nextItem,
       });
     }
     event.preventDefault();
@@ -155,7 +155,7 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
       }
       _.invoke(predefinedProps, 'onClick', event, itemProps);
     },
-    shouldFocus: this.state.shouldFocus
+    shouldFocus: this.state.shouldFocus,
   });
 
   renderItems = (vertical: boolean) => {
@@ -167,10 +167,10 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
         defaultProps: () => ({
           className: RadioGroup.slotClassNames.item,
           vertical,
-          ...(index === 0 && isNoneValueSelected && { tabIndex: 0 })
+          ...(index === 0 && isNoneValueSelected && { tabIndex: 0 }),
         }),
-        overrideProps: this.handleItemOverrides
-      })
+        overrideProps: this.handleItemOverrides,
+      }),
     );
   };
 
@@ -178,7 +178,7 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
     checkedValue,
     shouldFocus,
     event,
-    props
+    props,
   }: {
     checkedValue: number | string;
     shouldFocus: boolean;

@@ -17,7 +17,10 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
             <ExampleCard title="Inline WeeklyDayPicker" code={WeeklyDayPickerInlineExampleCode}>
               <WeeklyDayPickerInlineExample />
             </ExampleCard>
-            <ExampleCard title="Inline WeeklyDayPicker with externally controlled date" code={WeeklyDayPickerInlineExampleCode}>
+            <ExampleCard
+              title="Inline WeeklyDayPicker with externally controlled date"
+              code={WeeklyDayPickerInlineExampleCode}
+            >
               <WeeklyDayPickerInlineExample showNavigateButtons={true} />
             </ExampleCard>
             <ExampleCard
@@ -30,7 +33,11 @@ export class WeeklyDayPickerPage extends React.Component<{}, {}> {
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/WeeklyDayPicker.types.ts')]}
+            sources={[
+              require<
+                string
+              >('!raw-loader!@uifabric/date-time/src/components/WeeklyDayPicker/WeeklyDayPicker.types.ts'),
+            ]}
           />
         }
       />

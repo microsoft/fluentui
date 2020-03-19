@@ -2,5 +2,5 @@ import { SegmentVariables } from '../../../teams/components/Segment/segmentVaria
 
 export default (siteVars: any): Partial<SegmentVariables> => ({
   disabledColor: siteVars.colors.black,
-  disabledBackgroundColor: siteVars.accessibleGreen
+  disabledBackgroundColor: siteVars.accessibleGreen,
 });

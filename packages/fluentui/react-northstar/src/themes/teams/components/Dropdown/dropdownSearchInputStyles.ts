@@ -5,7 +5,7 @@ import { DropdownVariables } from './dropdownVariables';
 const dropdownSearchInputStyles: ComponentSlotStylesPrepared<DropdownSearchInputProps, DropdownVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     flexBasis: v.comboboxFlexBasis,
-    flexGrow: 1
+    flexGrow: 1,
   }),
 
   input: ({ props: p }): ICSSInJSStyle => ({
@@ -14,9 +14,9 @@ const dropdownSearchInputStyles: ComponentSlotStylesPrepared<DropdownSearchInput
     borderWidth: 0,
     ...(p.inline && {
       padding: 0,
-      lineHeight: 'initial'
-    })
-  })
+      lineHeight: 'initial',
+    }),
+  }),
 };
 
 export default dropdownSearchInputStyles;

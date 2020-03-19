@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'bell'
+  exportedAs: 'bell',
 } as TeamsProcessedSvgIconSpec;

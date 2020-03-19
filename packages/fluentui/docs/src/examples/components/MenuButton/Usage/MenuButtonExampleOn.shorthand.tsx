@@ -34,7 +34,9 @@ class MenuButtonExampleOn extends React.Component {
             on="context"
           />
         </Flex>
-        {this.state.alert && <Alert warning content="Right, you can still click the button! Right click opens the MenuButton." />}
+        {this.state.alert && (
+          <Alert warning content="Right, you can still click the button! Right click opens the MenuButton." />
+        )}
       </>
     );
   }

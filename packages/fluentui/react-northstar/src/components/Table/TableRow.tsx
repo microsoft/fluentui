@@ -13,7 +13,7 @@ import {
   ShorthandFactory,
   createShorthandFactory,
   applyAccessibilityKeyHandlers,
-  childrenExist
+  childrenExist,
 } from '../../utils';
 import { ShorthandCollection, WithAsProp, withSafeTypeForAs } from '../../types';
 import { Accessibility, tableRowBehavior } from '@fluentui/accessibility';
@@ -42,7 +42,7 @@ export interface TableRowProps extends UIComponentProps {
 }
 
 const handleVariablesOverrides = variables => predefinedProps => ({
-  variables: mergeComponentVariables(variables, predefinedProps.variables)
+  variables: mergeComponentVariables(variables, predefinedProps.variables),
 });
 
 class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
@@ -54,19 +54,19 @@ class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     content: customPropTypes.every([
       customPropTypes.disallow(['children']),
-      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent])
+      PropTypes.oneOfType([PropTypes.arrayOf(customPropTypes.nodeContent), customPropTypes.nodeContent]),
     ]),
     items: customPropTypes.collectionShorthand,
     header: PropTypes.bool,
-    compact: PropTypes.bool
+    compact: PropTypes.bool,
   };
 
   static defaultProps = {
-    accessibility: tableRowBehavior as Accessibility
+    accessibility: tableRowBehavior as Accessibility,
   };
 
   rowRef = React.createRef<HTMLElement>();
@@ -78,7 +78,7 @@ class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
     },
     performClick: e => {
       this.handleClick(e);
-    }
+    },
   };
 
   handleClick = (e: React.SyntheticEvent) => {
@@ -95,18 +95,24 @@ class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
 
     return _.map(items, (item: TableCellProps, index: number) => {
       const cellProps = {
-        accessibility: cellAccessibility as Accessibility
+        accessibility: cellAccessibility as Accessibility,
       };
       const overrideProps = handleVariablesOverrides(variables);
 
       return TableCell.create(item, {
         defaultProps: () => cellProps,
-        overrideProps
+        overrideProps,
       });
     });
   }
 
-  renderComponent({ accessibility, ElementType, classes, variables, unhandledProps }: RenderResultConfig<any>): React.ReactNode {
+  renderComponent({
+    accessibility,
+    ElementType,
+    classes,
+    variables,
+    unhandledProps,
+  }: RenderResultConfig<any>): React.ReactNode {
     const { children } = this.props;
     const hasChildren = childrenExist(children);
 

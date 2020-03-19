@@ -17,7 +17,7 @@ import {
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
   AutoControlledComponent,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import {
   ShorthandRenderFunction,
@@ -25,7 +25,7 @@ import {
   withSafeTypeForAs,
   ShorthandCollection,
   ShorthandValue,
-  ComponentEventHandler
+  ComponentEventHandler,
 } from '../../types';
 import { hasSubtree, removeItemAtIndex, getSiblings, TreeContext, TreeRenderContextValue } from './utils';
 
@@ -96,12 +96,12 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static className = 'ui-tree';
 
   static slotClassNames: TreeSlotClassNames = {
-    item: `${Tree.className}__item`
+    item: `${Tree.className}__item`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     activeItemIds: customPropTypes.collectionShorthand,
     defaultActiveItemIds: customPropTypes.collectionShorthand,
@@ -109,12 +109,12 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     items: customPropTypes.collectionShorthand,
     onActiveItemIdsChange: PropTypes.func,
     renderItemTitle: PropTypes.func,
-    renderedItems: PropTypes.func
+    renderedItems: PropTypes.func,
   };
 
   static defaultProps = {
     as: 'div',
-    accessibility: treeBehavior as Accessibility
+    accessibility: treeBehavior as Accessibility,
   };
 
   static autoControlledProps = ['activeItemIds'];
@@ -143,14 +143,14 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
             return acc;
           },
-          acc
+          acc,
         );
 
       expandedItemsGenerator(items);
     }
 
     return {
-      activeItemIds
+      activeItemIds,
     };
   }
 
@@ -247,7 +247,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     _.invoke(this.props, 'onActiveItemIdsChange', e, { ...this.props, activeItemIds });
 
     this.setState({
-      activeItemIds
+      activeItemIds,
     });
   };
 
@@ -255,7 +255,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     onFocusParent: this.onFocusParent,
     onSiblingsExpand: this.onSiblingsExpand,
     onFocusFirstChild: this.onFocusFirstChild,
-    onTitleClick: this.onTitleClick
+    onTitleClick: this.onTitleClick,
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
@@ -263,7 +263,11 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     if (!items) return null;
 
-    const renderItems = (items: ShorthandCollection<TreeItemProps>, level = 1, parent?: string): React.ReactElement[] => {
+    const renderItems = (
+      items: ShorthandCollection<TreeItemProps>,
+      level = 1,
+      parent?: string,
+    ): React.ReactElement[] => {
       return items.reduce((renderedItems: React.ReactElement[], item: ShorthandValue<TreeItemProps>, index: number) => {
         const itemId = item['id'];
         const isSubtree = hasSubtree(item);
@@ -284,11 +288,15 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
             level,
             index: index + 1, // Used for aria-posinset and it's 1-based.
             contentRef: this.itemsRef.get(itemId),
-            treeSize: items.length
-          })
+            treeSize: items.length,
+          }),
         });
 
-        return [...renderedItems, renderedItem, ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any))];
+        return [
+          ...renderedItems,
+          renderedItem,
+          ...(isSubtreeExpanded ? renderItems(item['items'], level + 1, itemId) : ([] as any)),
+        ];
       }, []);
     };
 
@@ -327,7 +335,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
 Tree.create = createShorthandFactory({
   Component: Tree,
-  mappedArrayProp: 'items'
+  mappedArrayProp: 'items',
 });
 
 /**

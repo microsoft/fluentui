@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'to-do-list'
+  exportedAs: 'to-do-list',
 } as TeamsProcessedSvgIconSpec;

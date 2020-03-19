@@ -1,5 +1,12 @@
 import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStateManager, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import {
+  getElementType,
+  getUnhandledProps,
+  useAccessibility,
+  useStateManager,
+  useStyles,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { createCheckboxManager } from '@fluentui/state';
 import * as _ from 'lodash';
@@ -15,7 +22,7 @@ import {
   ShorthandValue,
   withSafeTypeForAs,
   ProviderContextPrepared,
-  FluentComponentStaticProps
+  FluentComponentStaticProps,
 } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import Text, { TextProps } from '../Text/Text';
@@ -76,25 +83,37 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
   const { setStart, setEnd } = useTelemetry(Checkbox.displayName, context.telemetry);
   setStart();
 
-  const { checked, className, defaultChecked, design, disabled, label, labelPosition, indicator, styles, toggle, variables } = props;
+  const {
+    checked,
+    className,
+    defaultChecked,
+    design,
+    disabled,
+    label,
+    labelPosition,
+    indicator,
+    styles,
+    toggle,
+    variables,
+  } = props;
 
   const { state, actions } = useStateManager(createCheckboxManager, {
     mapPropsToInitialState: () => ({ checked: defaultChecked }),
-    mapPropsToState: () => ({ checked })
+    mapPropsToState: () => ({ checked }),
   });
   const getA11Props = useAccessibility(props.accessibility, {
     debugName: Checkbox.displayName,
     mapPropsToBehavior: () => ({
       checked: state.checked,
-      disabled
+      disabled,
     }),
     actionHandlers: {
       performClick: (e: React.KeyboardEvent) => {
         e.preventDefault();
         handleClick(e);
-      }
+      },
     },
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CheckboxStylesProps>(Checkbox.displayName, {
     className: Checkbox.className,
@@ -102,15 +121,15 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
       checked: state.checked,
       disabled,
       labelPosition,
-      toggle
+      toggle,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -141,8 +160,8 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
     defaultProps: () =>
       getA11Props('label', {
         styles: resolvedStyles.label,
-        className: Checkbox.slotClassNames.label
-      })
+        className: Checkbox.slotClassNames.label,
+      }),
   });
 
   const element = (
@@ -151,7 +170,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
         className: classes.root,
         onClick: handleClick,
         onChange: handleChange,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {labelPosition === 'start' && labelElement}
@@ -159,8 +178,8 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
         defaultProps: () =>
           getA11Props('indicator', {
             className: Checkbox.slotClassNames.indicator,
-            styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox
-          })
+            styles: toggle ? resolvedStyles.toggle : resolvedStyles.checkbox,
+          }),
       })}
       {labelPosition === 'end' && labelElement}
     </ElementType>
@@ -176,11 +195,11 @@ Checkbox.className = 'ui-checkbox';
 Checkbox.defaultProps = {
   accessibility: checkboxBehavior,
   indicator: {},
-  labelPosition: 'end'
+  labelPosition: 'end',
 };
 Checkbox.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false
+    content: false,
   }),
   checked: PropTypes.bool,
   defaultChecked: PropTypes.bool,
@@ -190,18 +209,18 @@ Checkbox.propTypes = {
   labelPosition: PropTypes.oneOf(['start', 'end']),
   onChange: PropTypes.func,
   onClick: PropTypes.func,
-  toggle: PropTypes.bool
+  toggle: PropTypes.bool,
 };
 Checkbox.handledProps = Object.keys(Checkbox.propTypes) as any;
 
 Checkbox.slotClassNames = {
   label: `${Checkbox.className}__label`,
-  indicator: `${Checkbox.className}__indicator`
+  indicator: `${Checkbox.className}__indicator`,
 };
 
 Checkbox.create = createShorthandFactory({
   Component: Checkbox,
-  mappedProp: 'label'
+  mappedProp: 'label',
 });
 
 /**

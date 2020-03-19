@@ -7,11 +7,11 @@ const example = require('!raw-loader!../transpiler/examples/class.txt');
 
 const classNames = mergeStyleSets({
   component: {
-    border: '1px solid lightgray'
+    border: '1px solid lightgray',
   },
   preview: {
-    paddingTop: 20
-  }
+    paddingTop: 20,
+  },
 });
 const width = 800;
 

@@ -7,14 +7,14 @@ export default (siteVars: any): Partial<MenuVariables> => ({
       default: {
         backgroundActive: siteVars.colorScheme.default.backgroundActive1,
         backgroundFocus: siteVars.colorScheme.default.backgroundFocus1,
-        foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1
+        foregroundDisabled: siteVars.colorScheme.default.foregroundDisabled1,
       },
       brand: {
         foregroundActive: siteVars.colors.black,
-        foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1
-      }
+        foregroundDisabled: siteVars.colorScheme.brand.foregroundDisabled1,
+      },
     }),
-    menuColorAreas
+    menuColorAreas,
   ),
   color: siteVars.colors.white,
   colorActive: siteVars.colors.black,
@@ -54,5 +54,5 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   activePrimaryIndicatorColor: siteVars.colors.black,
   activePrimaryVerticalIndicatorColor: siteVars.colors.black,
   indicatorColorHover: siteVars.colors.black,
-  primaryIndicatorColorHover: siteVars.colors.black
+  primaryIndicatorColorHover: siteVars.colors.black,
 });

@@ -7,7 +7,7 @@ describe('RadioGroupItem', () => {
 
   describe('accessibility', () => {
     handlesAccessibility(RadioGroupItem, {
-      defaultRootRole: 'radio'
+      defaultRootRole: 'radio',
     });
   });
 });

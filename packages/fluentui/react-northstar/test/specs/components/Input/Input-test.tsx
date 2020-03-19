@@ -19,7 +19,8 @@ const getInputAttrsObject = (value: string) =>
     return acc;
   }, {});
 
-const getInputDomNode = (inputComp: ReactWrapper): HTMLInputElement => inputComp.find('input').getDOMNode() as HTMLInputElement;
+const getInputDomNode = (inputComp: ReactWrapper): HTMLInputElement =>
+  inputComp.find('input').getDOMNode() as HTMLInputElement;
 
 const setUserInputValue = (inputComp: ReactWrapper, value: string) => {
   inputComp.find('input').simulate('change', { target: { value } });
@@ -31,15 +32,15 @@ describe('Input', () => {
       onChange: 'input',
       onKeyDown: 'input',
       onKeyPress: 'input',
-      onKeyUp: 'input'
+      onKeyUp: 'input',
     },
-    autoControlledProps: ['value']
+    autoControlledProps: ['value'],
   });
 
   implementsShorthandProp(Input)('input', Box, { mapsValueToProp: 'type' });
   implementsShorthandProp(Input)('icon', Icon, {
     mapsValueToProp: 'name',
-    requiredShorthandProps: { name: 'at' }
+    requiredShorthandProps: { name: 'at' },
   });
 
   describe('wrapper', () => {
@@ -70,7 +71,10 @@ describe('Input', () => {
 
       wrapper.find('Icon').simulate('click');
       expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ type: 'click' }), expect.objectContaining({ value: '' }));
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' }),
+        expect.objectContaining({ value: '' }),
+      );
     });
 
     it('calls onChange on Escape key with an `empty` value and stops propagation when has content', () => {
@@ -82,10 +86,13 @@ describe('Input', () => {
         keyCode: keyboardKey.Escape,
         key: 'Escape',
         stopPropagation,
-        nativeEvent: { stopPropagation: nativeEventStopPropagation }
+        nativeEvent: { stopPropagation: nativeEventStopPropagation },
       });
       expect(onChange).toBeCalledTimes(1);
-      expect(onChange).toHaveBeenCalledWith(expect.objectContaining({ type: 'keydown' }), expect.objectContaining({ value: '' }));
+      expect(onChange).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'keydown' }),
+        expect.objectContaining({ value: '' }),
+      );
       expect(stopPropagation).toHaveBeenCalledTimes(1);
       expect(nativeEventStopPropagation).toHaveBeenCalledTimes(1);
     });
@@ -99,7 +106,7 @@ describe('Input', () => {
         keyCode: keyboardKey.Escape,
         key: 'Escape',
         stopPropagation,
-        nativeEvent: { stopPropagation: nativeEventStopPropagation }
+        nativeEvent: { stopPropagation: nativeEventStopPropagation },
       });
       expect(onChange).not.toBeCalled();
       expect(stopPropagation).not.toBeCalled();

@@ -46,6 +46,6 @@ export default (siteVariables): Partial<TeamsTableVariables> => {
     rowBorderFocusColor: siteVariables.colorScheme.default.borderFocus,
     cellBorderColor: 'transparent',
     cellBorderHoverColor: 'transparent',
-    cellBorderFocusColor: siteVariables.colorScheme.default.borderFocus
+    cellBorderFocusColor: siteVariables.colorScheme.default.borderFocus,
   };
 };

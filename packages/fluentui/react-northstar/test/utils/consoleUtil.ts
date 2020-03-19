@@ -33,5 +33,5 @@ afterEach(() => {
 export default {
   enable,
   disable,
-  disableOnce
+  disableOnce,
 };

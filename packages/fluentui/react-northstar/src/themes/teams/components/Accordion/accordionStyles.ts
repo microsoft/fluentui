@@ -7,8 +7,8 @@ const accordionStyles: ComponentSlotStylesPrepared<AccordionProps> = {
     display: 'flex',
     flexDirection: 'column',
     marginBlockEnd: 0,
-    marginBlockStart: 0
-  })
+    marginBlockStart: 0,
+  }),
 };
 
 export default accordionStyles;

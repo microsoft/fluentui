@@ -13,7 +13,7 @@ import {
   ContentComponentProps,
   rtlTextContainer,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
 
@@ -47,19 +47,19 @@ class HierarchicalTreeTitle extends UIComponent<WithAsProp<HierarchicalTreeTitle
     ...commonPropTypes.createCommon(),
     onClick: PropTypes.func,
     open: PropTypes.bool,
-    hasSubtree: PropTypes.bool
+    hasSubtree: PropTypes.bool,
   };
 
   static defaultProps = {
     as: 'a',
-    accessibility: hierarchicalTreeTitleBehavior
+    accessibility: hierarchicalTreeTitleBehavior,
   };
 
   actionHandlers = {
     performClick: e => {
       e.preventDefault();
       this.handleClick(e);
-    }
+    },
   };
 
   handleClick = e => {
@@ -86,7 +86,7 @@ class HierarchicalTreeTitle extends UIComponent<WithAsProp<HierarchicalTreeTitle
 
 HierarchicalTreeTitle.create = createShorthandFactory({
   Component: HierarchicalTreeTitle,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

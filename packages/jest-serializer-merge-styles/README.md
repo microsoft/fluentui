@@ -40,7 +40,7 @@ In your jest.config.js (or appropriate config location) include a `snapshotSeria
 
 ```js
 module.exports = {
-  snapshotSerializers: [path.resolve(__dirname, 'jest-serializer-merge-styles')]
+  snapshotSerializers: [path.resolve(__dirname, 'jest-serializer-merge-styles')],
 };
 ```
 

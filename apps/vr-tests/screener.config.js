@@ -5,7 +5,7 @@ const cp = require('child_process');
 function getCurrentHash() {
   try {
     const buffer = cp.execSync('git rev-list --parents -n 1 HEAD', {
-      stdio: ['pipe', 'pipe', process.stderr]
+      stdio: ['pipe', 'pipe', process.stderr],
     });
 
     if (buffer) {
@@ -39,7 +39,7 @@ const config = {
   alwaysAcceptBaseBranch: true,
   ...(process.env.BUILD_SOURCEBRANCH && process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1
     ? { commit: getCurrentHash() }
-    : null)
+    : null),
 };
 console.log('Screener config: ' + JSON.stringify({ ...config, apiKey: '...' }, null, 2));
 

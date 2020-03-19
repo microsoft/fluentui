@@ -32,5 +32,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'strike'
+  exportedAs: 'strike',
 } as TeamsProcessedSvgIconSpec;

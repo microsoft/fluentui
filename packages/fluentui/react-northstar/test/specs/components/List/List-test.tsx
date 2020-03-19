@@ -11,7 +11,7 @@ const listImplementsCollectionShorthandProp = implementsCollectionShorthandProp(
 
 describe('List', () => {
   isConformant(List, {
-    constructorName: 'List'
+    constructorName: 'List',
   });
   handlesAccessibility(List, { defaultRootRole: 'list' });
   listImplementsCollectionShorthandProp('items', ListItem, { mapsValueToProp: 'content' });
@@ -19,7 +19,7 @@ describe('List', () => {
   const getItems = (onClick?: Function): (ListItemProps & { key: string })[] => [
     { key: 'irving', content: 'Irving', onClick } as any,
     { key: 'skyler', content: 'Skyler' },
-    { key: 'dante', content: 'Dante' }
+    { key: 'dante', content: 'Dante' },
   ];
 
   describe('items', () => {
@@ -56,7 +56,7 @@ describe('List', () => {
         wrapper
           .find('li')
           .at(0)
-          .prop('aria-selected')
+          .prop('aria-selected'),
       ).toBe(true);
     });
 
@@ -67,7 +67,7 @@ describe('List', () => {
         wrapper
           .find('li')
           .at(0)
-          .prop('aria-selected')
+          .prop('aria-selected'),
       ).toBe(true);
 
       wrapper
@@ -79,22 +79,22 @@ describe('List', () => {
         wrapper
           .find('li')
           .at(0)
-          .prop('aria-selected')
+          .prop('aria-selected'),
       ).toBe(false);
       expect(
         wrapper
           .find('li')
           .at(1)
-          .prop('aria-selected')
+          .prop('aria-selected'),
       ).toBe(true);
     });
 
     it('calls onClick handler for item if `selectable`', () => {
       const onClick = jest.fn();
       const onSelectedIndexChange = jest.fn();
-      const listItems = mountWithProvider(<List items={getItems(onClick)} onSelectedIndexChange={onSelectedIndexChange} selectable />).find(
-        'ListItem'
-      );
+      const listItems = mountWithProvider(
+        <List items={getItems(onClick)} onSelectedIndexChange={onSelectedIndexChange} selectable />,
+      ).find('ListItem');
 
       listItems
         .first()
@@ -103,11 +103,14 @@ describe('List', () => {
         .simulate('click');
 
       expect(onClick).toHaveBeenCalled();
-      expect(onClick).toHaveBeenCalledWith(expect.objectContaining({ type: 'click' }), expect.objectContaining({ index: 0 }));
+      expect(onClick).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' }),
+        expect.objectContaining({ index: 0 }),
+      );
       expect(onSelectedIndexChange).toHaveBeenCalled();
       expect(onSelectedIndexChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),
-        expect.objectContaining({ selectedIndex: 0 })
+        expect.objectContaining({ selectedIndex: 0 }),
       );
     });
   });

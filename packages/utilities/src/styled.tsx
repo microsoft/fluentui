@@ -50,7 +50,7 @@ export function styled<
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
   customizable?: ICustomizableProps,
-  pure?: boolean
+  pure?: boolean,
 ): React.FunctionComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
@@ -102,7 +102,8 @@ export function styled<
         // this._customizedStyles = customizedStyles;
 
         // Using styled components as the Component arg will result in nested styling arrays.
-        this._styles = (styleProps: TStyleProps) => concatStyleSetsWithProps(styleProps, baseStyles, customizedStyles, this.props.styles);
+        this._styles = (styleProps: TStyleProps) =>
+          concatStyleSetsWithProps(styleProps, baseStyles, customizedStyles, this.props.styles);
 
         // The __cachedInputs__ array is attached to the function and consumed by the
         // classNamesFunction as a list of keys to include for memoizing classnames.

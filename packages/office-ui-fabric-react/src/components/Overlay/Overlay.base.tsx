@@ -5,7 +5,7 @@ import {
   divProperties,
   enableBodyScroll,
   disableBodyScroll,
-  initializeComponentRef
+  initializeComponentRef,
 } from '../../Utilities';
 import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 
@@ -38,7 +38,7 @@ export class OverlayBase extends React.Component<IOverlayProps, {}> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isDark
+      isDark,
     });
 
     return <div {...divProps} className={classNames.root} />;

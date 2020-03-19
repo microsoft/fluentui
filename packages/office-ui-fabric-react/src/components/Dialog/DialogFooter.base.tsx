@@ -19,7 +19,7 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (
@@ -30,6 +30,8 @@ export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
   }
 
   private _renderChildrenAsActions(): (JSX.Element | null)[] {
-    return React.Children.map(this.props.children, child => (child ? <span className={this._classNames.action}>{child}</span> : null));
+    return React.Children.map(this.props.children, child =>
+      child ? <span className={this._classNames.action}>{child}</span> : null,
+    );
   }
 }

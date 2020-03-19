@@ -14,7 +14,7 @@ export const InjectionMode = {
   /**
    * Appends rules using appendChild.
    */
-  appendChild: 2 as 2
+  appendChild: 2 as 2,
 };
 
 export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
@@ -133,7 +133,7 @@ export class Stylesheet {
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
-      ...config
+      ...config,
     };
   }
 
@@ -143,7 +143,7 @@ export class Stylesheet {
   public setConfig(config?: IStyleSheetConfig): void {
     this._config = {
       ...this._config,
-      ...config
+      ...config,
     };
   }
 
@@ -176,7 +176,7 @@ export class Stylesheet {
     this._keyToClassName[key] = className;
     this._classNameToArgs[className] = {
       args,
-      rules
+      rules,
     };
   }
 
@@ -252,7 +252,9 @@ export class Stylesheet {
    * using InsertionMode.none.
    */
   public getRules(includePreservedRules?: boolean): string {
-    return (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('');
+    return (
+      (includePreservedRules ? this._preservedRules.join('') : '') + this._rules.join('') + this._rulesToInsert.join('')
+    );
   }
 
   /**

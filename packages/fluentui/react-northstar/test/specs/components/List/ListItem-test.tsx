@@ -8,20 +8,24 @@ import ListItem from 'src/components/List/ListItem';
 
 describe('ListItem', () => {
   isConformant(ListItem, {
-    constructorName: 'ListItem'
+    constructorName: 'ListItem',
   });
   handlesAccessibility(ListItem, { defaultRootRole: 'listitem' });
 
   test('handleClick is executed when Enter is pressed for selectable list', () => {
     const onClick = jest.fn();
-    const listItem = mountWithProvider(<ListItem accessibility={selectableListItemBehavior} onClick={onClick} />).find('ListItem');
+    const listItem = mountWithProvider(<ListItem accessibility={selectableListItemBehavior} onClick={onClick} />).find(
+      'ListItem',
+    );
     listItem.simulate('keydown', { keyCode: keyboardKey.Enter });
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
   test('handleClick is executed when Spacebar is pressed for selectable list', () => {
     const onClick = jest.fn();
-    const listItem = mountWithProvider(<ListItem accessibility={selectableListItemBehavior} onClick={onClick} />).find('ListItem');
+    const listItem = mountWithProvider(<ListItem accessibility={selectableListItemBehavior} onClick={onClick} />).find(
+      'ListItem',
+    );
     listItem.simulate('keydown', { keyCode: keyboardKey.Spacebar });
     expect(onClick).toHaveBeenCalledTimes(1);
   });

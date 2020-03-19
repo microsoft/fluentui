@@ -24,16 +24,16 @@ export default {
         [`& .${Embed.slotClassNames.control}`]: {
           borderColor: v.focusBorderColor,
           opacity: 1,
-          ...borderFocusStyles[':focus-visible']
-        }
+          ...borderFocusStyles[':focus-visible'],
+        },
       },
 
       ':hover': {
         [`& .${Embed.slotClassNames.control}`]: {
           opacity: 1,
-          zIndex: v.zIndex
-        }
-      }
+          zIndex: v.zIndex,
+        },
+      },
     };
   },
   control: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -51,7 +51,7 @@ export default {
     backgroundPosition: 'center',
 
     ...(p.active && {
-      backgroundImage: pauseIndicatorUrl(v.controlColor)
+      backgroundImage: pauseIndicatorUrl(v.controlColor),
     }),
 
     opacity: p.active ? 0 : 1,
@@ -61,10 +61,10 @@ export default {
     left: '50%',
     position: 'absolute',
     top: '50%',
-    transform: 'translate(-50%, -50%)'
+    transform: 'translate(-50%, -50%)',
   }),
   iframe: ({ props: p }): ICSSInJSStyle => ({
     display: 'block',
-    ...(!p.iframeLoaded && { display: 'none' })
-  })
+    ...(!p.iframeLoaded && { display: 'none' }),
+  }),
 } as ComponentSlotStylesPrepared<EmbedProps & EmbedState, EmbedVariables>;

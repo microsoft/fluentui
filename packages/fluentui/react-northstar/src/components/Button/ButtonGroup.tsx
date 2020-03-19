@@ -14,7 +14,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   createShorthandFactory,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import Button, { ButtonProps } from './Button';
 
@@ -41,11 +41,11 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
   static propTypes = {
     ...commonPropTypes.createCommon(),
     buttons: customPropTypes.collectionShorthand,
-    circular: PropTypes.bool
+    circular: PropTypes.bool,
   };
 
   static defaultProps = {
-    as: 'div'
+    as: 'div',
   };
 
   renderComponent({ ElementType, classes, accessibility, styles, unhandledProps }): React.ReactNode {
@@ -69,9 +69,9 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
           Button.create(button, {
             defaultProps: () => ({
               circular,
-              styles: this.getStyleForButtonIndex(styles, idx === 0, idx === buttons.length - 1)
-            })
-          })
+              styles: this.getStyleForButtonIndex(styles, idx === 0, idx === buttons.length - 1),
+            }),
+          }),
         )}
       </ElementType>
     );
@@ -95,7 +95,7 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
 ButtonGroup.create = createShorthandFactory({
   Component: ButtonGroup,
   mappedProp: 'content',
-  mappedArrayProp: 'buttons'
+  mappedArrayProp: 'buttons',
 });
 
 /**

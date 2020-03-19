@@ -4,6 +4,6 @@ import TooltipContent from 'src/components/Tooltip/TooltipContent';
 
 describe('TooltipContent', () => {
   isConformant(TooltipContent, {
-    constructorName: 'TooltipContent'
+    constructorName: 'TooltipContent',
   });
 });

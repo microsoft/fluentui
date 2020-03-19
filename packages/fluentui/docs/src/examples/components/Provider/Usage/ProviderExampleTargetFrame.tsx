@@ -16,8 +16,13 @@ const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) =>
 
   return (
     <>
-      <iframe ref={frameRef} style={{ height: 300, width: 600, border: 0, padding: 20 }} title="An example of nested Provider in iframe" />
-      {mounted && ReactDOM.createPortal(children(frameRef.current.contentDocument), frameRef.current.contentDocument.body)}
+      <iframe
+        ref={frameRef}
+        style={{ height: 300, width: 600, border: 0, padding: 20 }}
+        title="An example of nested Provider in iframe"
+      />
+      {mounted &&
+        ReactDOM.createPortal(children(frameRef.current.contentDocument), frameRef.current.contentDocument.body)}
     </>
   );
 };

@@ -4,7 +4,10 @@ import { TeamsProcessedSvgIconSpec } from '../types';
 export default {
   icon: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
-      <path fill="#41a5ee" d="M30.667 2H9.333A1.333 1.333 0 0 0 8 3.333V9l12 3.5L32 9V3.333A1.333 1.333 0 0 0 30.667 2z" />
+      <path
+        fill="#41a5ee"
+        d="M30.667 2H9.333A1.333 1.333 0 0 0 8 3.333V9l12 3.5L32 9V3.333A1.333 1.333 0 0 0 30.667 2z"
+      />
       <path fill="#2b7cd3" d="M32 9H8v7l12 3.5L32 16V9z" />
       <path fill="#185abd" d="M32 16H8v7l12 3.5L32 23v-7z" />
       <path fill="#103f91" d="M32 23H8v5.667A1.333 1.333 0 0 0 9.333 30h21.334A1.333 1.333 0 0 0 32 28.667z" />
@@ -20,5 +23,5 @@ export default {
       <path fill="none" d="M0 0h32v32H0z" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

@@ -10,6 +10,8 @@ import DebugPanel from './DebugPanel';
 import FiberNavigator from './FiberNavigator';
 import DebugRect from './DebugRect';
 
+/* eslint-disable no-console */
+
 type DebugProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
@@ -25,7 +27,7 @@ type DebugState = {
 const INITIAL_STATE: DebugState = {
   fiberNav: null,
   selectedFiberNav: null,
-  isSelecting: false
+  isSelecting: false,
 };
 
 class Debug extends React.Component<DebugProps, DebugState> {
@@ -33,11 +35,11 @@ class Debug extends React.Component<DebugProps, DebugState> {
 
   static defaultProps = {
     // eslint-disable-next-line no-undef
-    mountDocument: isBrowser() ? window.document : null
+    mountDocument: isBrowser() ? window.document : null,
   };
 
   static propTypes = {
-    mountDocument: PropTypes.object.isRequired
+    mountDocument: PropTypes.object.isRequired,
   };
 
   constructor(p, s) {
@@ -53,11 +55,15 @@ class Debug extends React.Component<DebugProps, DebugState> {
 
   debugReactComponent = r => {
     if (!r) {
-      console.error("No React component selected. Please select a Fluent UI component from the React's Component panel.");
+      console.error(
+        "No React component selected. Please select a Fluent UI component from the React's Component panel.",
+      );
       return;
     }
     if (!r._reactInternalFiber) {
-      console.error('React does not provide data for debugging for this component. Try selecting some Fluent UI component.');
+      console.error(
+        'React does not provide data for debugging for this component. Try selecting some Fluent UI component.',
+      );
       return;
     }
     if (!r.fluentUIDebug) {
@@ -116,7 +122,7 @@ class Debug extends React.Component<DebugProps, DebugState> {
 
     this.setState({
       ...(!isSelecting && INITIAL_STATE),
-      isSelecting
+      isSelecting,
     });
   };
 
@@ -142,7 +148,9 @@ class Debug extends React.Component<DebugProps, DebugState> {
       return (
         <>
           <EventListener listener={this.handleKeyDown} target={mountDocument.body} type="keydown" />
-          {isSelecting && <EventListener listener={this.handleMouseMove} target={mountDocument.body} type="mousemove" />}
+          {isSelecting && (
+            <EventListener listener={this.handleMouseMove} target={mountDocument.body} type="mousemove" />
+          )}
           {isSelecting && fiberNav && fiberNav.domNode && (
             <EventListener listener={this.handleDOMNodeClick} target={fiberNav.domNode} type="click" />
           )}

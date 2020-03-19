@@ -6,7 +6,7 @@ const items = [
   { key: 'divider-1', kind: 'divider' as MenuShorthandKinds },
   { key: 'review', content: 'Reviews' },
   { key: 'divider-2', kind: 'divider' as MenuShorthandKinds, content: '...' },
-  { key: 'events', content: 'Upcoming Events' }
+  { key: 'events', content: 'Upcoming Events' },
 ];
 
 const MenuExampleKind = () => <Menu defaultActiveIndex={0} items={items} vertical pointing="start" />;

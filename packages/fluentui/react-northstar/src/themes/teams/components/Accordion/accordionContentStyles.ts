@@ -6,8 +6,8 @@ const accordionContentStyles: ComponentSlotStylesPrepared<AccordionContentProps>
     display: 'none',
     verticalAlign: 'middle',
     ...(props.active && { display: 'block' }),
-    marginInlineStart: 0
-  })
+    marginInlineStart: 0,
+  }),
 };
 
 export default accordionContentStyles;

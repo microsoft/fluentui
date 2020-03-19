@@ -2,6 +2,6 @@ import { HierarchicalTreeTitleVariables } from '../../../teams/components/Hierar
 
 export default (siteVars: any): HierarchicalTreeTitleVariables => {
   return {
-    defaultColor: siteVars.colors.white
+    defaultColor: siteVars.colors.white,
   };
 };

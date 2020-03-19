@@ -14,19 +14,19 @@ const menuDividerStyles: ComponentSlotStylesPrepared<MenuDividerProps, MenuVaria
           display: 'flex',
           justifyContent: 'center',
           flexDirection: 'column',
-          textAlign: 'center'
+          textAlign: 'center',
         }
       : {
           [borderType]: `1px solid ${borderColor}`,
           ...(!p.vertical && {
-            alignSelf: 'stretch'
+            alignSelf: 'stretch',
           }),
           ...(p.vertical &&
             p.inSubmenu && {
-              margin: '8px 0'
-            })
+              margin: '8px 0',
+            }),
         };
-  }
+  },
 };
 
 export default menuDividerStyles;

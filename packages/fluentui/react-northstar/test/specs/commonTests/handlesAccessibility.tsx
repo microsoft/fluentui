@@ -18,9 +18,9 @@ const overriddenRootRole = 'test-mock-role' as AriaRole;
 const TestBehavior: Accessibility = (props: any) => ({
   attributes: {
     root: {
-      role: overriddenRootRole
-    }
-  }
+      role: overriddenRootRole,
+    },
+  },
 });
 
 /**
@@ -37,7 +37,7 @@ export default (
     /** Selector to scope the test to a part */
     partSelector?: string;
     usesWrapperSlot?: boolean;
-  } = {}
+  } = {},
 ) => {
   const { requiredProps = {}, defaultRootRole, partSelector = '', usesWrapperSlot = false } = options;
 
@@ -99,17 +99,17 @@ export default (
         keyActions: {
           root: {
             mockAction: {
-              keyCombinations: [{ keyCode: keyboardKey.Enter }]
-            }
-          }
-        }
+              keyCombinations: [{ keyCode: keyboardKey.Enter }],
+            },
+          },
+        },
       });
 
       const wrapperProps = {
         ...requiredProps,
         accessibility: actionBehavior,
         [EVENT_TARGET_ATTRIBUTE]: true,
-        onKeyDown: eventHandler
+        onKeyDown: eventHandler,
       };
 
       const wrapper = mountWithProvider(<Component {...wrapperProps} />);
@@ -126,7 +126,7 @@ export default (
 
       act(() => {
         getEventTargetComponent(component, 'onKeyDown').simulate('keydown', {
-          keyCode: keyboardKey.Enter
+          keyCode: keyboardKey.Enter,
         });
       });
 

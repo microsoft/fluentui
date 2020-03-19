@@ -15,14 +15,20 @@ import {
   ContentComponentProps,
   commonPropTypes,
   ColorComponentProps,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 
 import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
 
-import { WithAsProp, ShorthandValue, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  WithAsProp,
+  ShorthandValue,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 
 export interface LabelProps
   extends UIComponentProps,
@@ -77,12 +83,12 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     styles,
     variables,
     image,
-    imagePosition
+    imagePosition,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Label.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<LabelStylesProps>(Label.displayName, {
     className: Label.className,
@@ -93,16 +99,16 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
       circular,
       color,
       imagePosition,
-      iconPosition
+      iconPosition,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleIconOverrides = (predefinedProps: IconProps) => ({
     ...(!predefinedProps.xSpacing && {
-      xSpacing: 'none'
-    })
+      xSpacing: 'none',
+    }),
   });
 
   const ElementType = getElementType(props);
@@ -114,7 +120,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
         {...getA11Props('root', {
           className: classes.root,
           ...rtlTextContainer.getAttributes({ forElements: [children] }),
-          ...unhandledProps
+          ...unhandledProps,
         })}
       >
         {children}
@@ -127,19 +133,19 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
 
   const imageElement = Image.create(image, {
     defaultProps: () => ({
-      styles: resolvedStyles.image
-    })
+      styles: resolvedStyles.image,
+    }),
   });
   const iconElement = Icon.create(icon, {
     defaultProps: () => ({
-      styles: resolvedStyles.icon
+      styles: resolvedStyles.icon,
     }),
-    overrideProps: handleIconOverrides
+    overrideProps: handleIconOverrides,
   });
   const contentElement = Box.create(content, {
     defaultProps: () => ({
-      styles: resolvedStyles.content
-    })
+      styles: resolvedStyles.content,
+    }),
   });
 
   const startImage = imagePosition === 'start' && imageElement;
@@ -151,7 +157,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {startImage}
@@ -176,14 +182,14 @@ Label.propTypes = {
   iconPosition: PropTypes.oneOf(['start', 'end']),
   image: customPropTypes.itemShorthandWithoutJSX,
   imagePosition: PropTypes.oneOf(['start', 'end']),
-  fluid: PropTypes.bool
+  fluid: PropTypes.bool,
 };
 Label.handledProps = Object.keys(Label.propTypes) as any;
 
 Label.defaultProps = {
   as: 'span',
   imagePosition: 'start',
-  iconPosition: 'end'
+  iconPosition: 'end',
 };
 
 Label.create = createShorthandFactory({ Component: Label, mappedProp: 'content' });

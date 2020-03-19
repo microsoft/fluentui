@@ -19,7 +19,7 @@ const useAccessibilityKnob = (componentName: string): FluentUI.Accessibility => 
   const [behaviorName] = useSelectKnob({
     name: 'accessibility',
     initialValue: defaultValue,
-    values: behaviorNames
+    values: behaviorNames,
   });
 
   return FluentUI[behaviorName];

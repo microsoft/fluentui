@@ -13,9 +13,15 @@ import {
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
+import {
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  WithAsProp,
+  withSafeTypeForAs,
+} from '../../types';
 
 export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -52,7 +58,19 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, content, design, hasSubtree, level, index, styles, treeSize, variables } = props;
+  const {
+    accessibility,
+    children,
+    className,
+    content,
+    design,
+    hasSubtree,
+    level,
+    index,
+    styles,
+    treeSize,
+    variables,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: TreeTitle.displayName,
@@ -60,15 +78,15 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       performClick: e => {
         e.preventDefault();
         handleClick(e);
-      }
+      },
     },
     mapPropsToBehavior: () => ({
       hasSubtree,
       level,
       index,
-      treeSize
+      treeSize,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
     className: TreeTitle.className,
@@ -76,9 +94,9 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
@@ -94,7 +112,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
         className: classes.root,
         onClick: handleClick,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {childrenExist(children) ? children : content}
@@ -115,17 +133,17 @@ TreeTitle.propTypes = {
   level: PropTypes.number,
   onClick: PropTypes.func,
   expanded: PropTypes.bool,
-  treeSize: PropTypes.number
+  treeSize: PropTypes.number,
 };
 TreeTitle.defaultProps = {
   as: 'a',
-  accessibility: treeTitleBehavior
+  accessibility: treeTitleBehavior,
 };
 TreeTitle.handledProps = Object.keys(TreeTitle.propTypes) as any;
 
 TreeTitle.create = createShorthandFactory({
   Component: TreeTitle,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

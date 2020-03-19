@@ -7,7 +7,7 @@ const mountPortalInner = (props: PortalInnerProps) =>
   mountWithProvider(
     <PortalInner {...props}>
       <p />
-    </PortalInner>
+    </PortalInner>,
   );
 
 describe('PortalInner', () => {

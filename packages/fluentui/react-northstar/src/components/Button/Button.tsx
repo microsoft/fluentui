@@ -12,7 +12,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  SizeValue
+  SizeValue,
 } from '../../utils';
 import Icon, { IconProps } from '../Icon/Icon';
 import Loader, { LoaderProps } from '../Loader/Loader';
@@ -22,7 +22,7 @@ import {
   ShorthandValue,
   withSafeTypeForAs,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 import ButtonGroup from './ButtonGroup';
 import ButtonContent, { ButtonContentProps } from './ButtonContent';
@@ -30,7 +30,10 @@ import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTele
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-export interface ButtonProps extends UIComponentProps, ContentComponentProps<ShorthandValue<ButtonContentProps>>, ChildrenComponentProps {
+export interface ButtonProps
+  extends UIComponentProps,
+    ContentComponentProps<ShorthandValue<ButtonContentProps>>,
+    ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
 
@@ -123,7 +126,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     className,
     styles,
     variables,
-    design
+    design,
   } = props;
 
   const hasChildren = childrenExist(children);
@@ -134,15 +137,15 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       as,
       active,
       disabled,
-      loading
+      loading,
     }),
     actionHandlers: {
       performClick: event => {
         event.preventDefault();
         handleClick(event);
-      }
+      },
     },
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
     className: Button.className,
@@ -156,15 +159,15 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       inverted,
       iconOnly,
       fluid,
-      hasContent: !!content
+      hasContent: !!content,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const unhandledProps = getUnhandledProps(Button.handledProps, props);
@@ -175,8 +178,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       defaultProps: () =>
         getA11Props('icon', {
           styles: resolvedStyles.icon,
-          xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after'
-        })
+          xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after',
+        }),
     });
   };
 
@@ -185,8 +188,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       defaultProps: () =>
         getA11Props('loader', {
           role: undefined,
-          styles: resolvedStyles.loader
-        })
+          styles: resolvedStyles.loader,
+        }),
     });
   };
 
@@ -211,7 +214,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
         disabled,
         className: classes.root,
         onFocus: handleFocus,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {hasChildren ? (
@@ -221,7 +224,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
           {loading && renderLoader()}
           {iconPosition !== 'after' && renderIcon()}
           {ButtonContent.create(content, {
-            defaultProps: () => getA11Props('content', { as: 'span', size, styles: resolvedStyles.content })
+            defaultProps: () => getA11Props('content', { as: 'span', size, styles: resolvedStyles.content }),
           })}
           {iconPosition === 'after' && renderIcon()}
         </>
@@ -237,7 +240,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
 Button.defaultProps = {
   as: 'button',
   accessibility: buttonBehavior,
-  size: 'medium'
+  size: 'medium',
 };
 
 Button.displayName = 'Button';
@@ -245,7 +248,7 @@ Button.className = 'ui-button';
 
 Button.propTypes = {
   ...commonPropTypes.createCommon({
-    content: 'shorthand'
+    content: 'shorthand',
   }),
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
@@ -260,7 +263,7 @@ Button.propTypes = {
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   text: PropTypes.bool,
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-  size: customPropTypes.size
+  size: customPropTypes.size,
 };
 
 Button.handledProps = Object.keys(Button.propTypes) as any;

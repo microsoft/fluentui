@@ -59,7 +59,10 @@ export type PropsOf<T> = T extends React.Component<infer TProps>
 
 export type ShorthandRenderFunction<P> = (Component: React.ReactType, props: P) => React.ReactElement<any>;
 
-export type ShorthandRenderer<P> = (value: ShorthandValue<P>, renderTree?: ShorthandRenderFunction<P>) => React.ReactElement<any>;
+export type ShorthandRenderer<P> = (
+  value: ShorthandValue<P>,
+  renderTree?: ShorthandRenderFunction<P>,
+) => React.ReactElement<any>;
 
 export type ShorthandRenderCallback<P> = (render: ShorthandRenderer<P>) => React.ReactElement<any>;
 
@@ -68,7 +71,9 @@ type ReactNode = React.ReactChild | React.ReactNodeArray | React.ReactPortal | b
 
 export type ShorthandRenderProp<P> = (Component: React.ElementType, props: P) => React.ReactNode;
 
-export type ShorthandValue<P extends Props> = ReactNode | (Props<P> & { children?: P['children'] | ShorthandRenderProp<P> });
+export type ShorthandValue<P extends Props> =
+  | ReactNode
+  | (Props<P> & { children?: P['children'] | ShorthandRenderProp<P> });
 export type ShorthandCollection<P, K = never> = ShorthandValue<P & { kind?: K }>[];
 
 // ========================================================
@@ -108,8 +113,12 @@ type PickProps<T, Props extends string | number | symbol> = {
   [K in Intersect<Props, keyof T>]: T[K];
 };
 
-export const withSafeTypeForAs = <TComponentType extends React.ComponentType, TProps, TAs extends keyof JSX.IntrinsicElements = 'div'>(
-  componentType: TComponentType
+export const withSafeTypeForAs = <
+  TComponentType extends React.ComponentType,
+  TProps,
+  TAs extends keyof JSX.IntrinsicElements = 'div'
+>(
+  componentType: TComponentType,
 ) => {
   /**
    * TODO: introduce overload once TS compiler issue that leads to
@@ -124,7 +133,8 @@ export const withSafeTypeForAs = <TComponentType extends React.ComponentType, TP
     throw new Error('Defines unreachable execution scenario');
   }
 
-  return (componentType as any) as typeof overloadedComponentType & PickProps<TComponentType, HoistedStaticPropsOf<TComponentType>>;
+  return (componentType as any) as typeof overloadedComponentType &
+    PickProps<TComponentType, HoistedStaticPropsOf<TComponentType>>;
 };
 
 export type UNSAFE_TypedComponent<TComponentType, TProps> = React.FunctionComponent<TProps & { [K: string]: any }> &
@@ -132,7 +142,7 @@ export type UNSAFE_TypedComponent<TComponentType, TProps> = React.FunctionCompon
 
 export const UNSAFE_typed = <TComponentType>(componentType: TComponentType) => {
   return {
-    withProps: <TProps>() => (componentType as any) as UNSAFE_TypedComponent<TComponentType, TProps>
+    withProps: <TProps>() => (componentType as any) as UNSAFE_TypedComponent<TComponentType, TProps>,
   };
 };
 

@@ -3,7 +3,7 @@ import {
   getVersionConstrains,
   getRuntimeDependencies,
   getPackageName,
-  FailedConstraintsExplanation
+  FailedConstraintsExplanation,
 } from './utils';
 import config from '../../config';
 import { DangerJS } from '../types';
@@ -28,7 +28,7 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
   dependencyPackageIds.forEach(packageId => {
     const failedPackageVersionConstraints = getFailedPackageVersionConstraints(
       packageId,
-      versionConstraints[getPackageName(packageId)] || []
+      versionConstraints[getPackageName(packageId)] || [],
     );
 
     if (failedPackageVersionConstraints) {
@@ -49,15 +49,17 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
           .map(
             explanation =>
               `${explanation.failedConstraints.join(', ')} | ${
-                explanation.approvedPackages.length ? explanation.approvedPackages.join(', ') : '_there are no any approved packages_'
-              }`
+                explanation.approvedPackages.length
+                  ? explanation.approvedPackages.join(', ')
+                  : '_there are no any approved packages_'
+              }`,
           )
-          .join('\n')
-      ].join('\n')
+          .join('\n'),
+      ].join('\n'),
     );
 
     fail(
-      'Non-approved dependencies were detected. It is necessary to obtain approvals and register them in `approvedPackages` file before merge.'
+      'Non-approved dependencies were detected. It is necessary to obtain approvals and register them in `approvedPackages` file before merge.',
     );
   }
 };

@@ -10,19 +10,19 @@ const SplitButtonExampleToggleButtonShorthand = () => {
       <SplitButton
         menu={[
           { key: 'group', content: 'New group message' },
-          { key: 'channel', content: 'New channel message' }
+          { key: 'channel', content: 'New channel message' },
         ]}
         button={{
           content: 'New conversation',
           'aria-roledescription': 'splitbutton',
-          'aria-describedby': 'instruction-message-icon'
+          'aria-describedby': 'instruction-message-icon',
         }}
         toggleButton={{
           icon: {
             name: 'icon-menu-arrow-down',
-            style: open ? { transform: 'rotate(180deg)' } : null
+            style: open ? { transform: 'rotate(180deg)' } : null,
           },
-          'aria-label': 'more options'
+          'aria-label': 'more options',
         }}
         onOpenChange={(e, { open }) => setOpen(open)}
         onMainButtonClick={() => alert('button was clicked')}

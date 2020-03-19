@@ -4,8 +4,8 @@ import { ToolbarVariables } from './toolbarVariables';
 
 const toolbarMenuRadioGroupStyles: ComponentSlotStylesPrepared<ToolbarMenuRadioGroupStylesProps, ToolbarVariables> = {
   root: (): ICSSInJSStyle => ({
-    padding: 0
-  })
+    padding: 0,
+  }),
 };
 
 export default toolbarMenuRadioGroupStyles;

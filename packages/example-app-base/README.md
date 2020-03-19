@@ -44,7 +44,7 @@ export const editorSupportedPackages: IPackageGroup[] = [
           // If you don't care about that, you could use require() instead.
           // @ts-ignore: import is handled by webpack
           return import('!raw-loader!my-package/dist/my-package.d.ts');
-        }
+        },
       },
       {
         // my-package re-exports my-package-utilities from its root, so it goes under the same global
@@ -52,10 +52,10 @@ export const editorSupportedPackages: IPackageGroup[] = [
         loadTypes: () => {
           // @ts-ignore: import is handled by webpack
           return import('!raw-loader!my-package-utilities/dist/my-package-utilities.d.ts');
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 ];
 ```
 
@@ -84,8 +84,8 @@ const appDefinition: IAppDefinition = {
   // ...
   customizations: {
     scopedSettings: {
-      ExampleCard: exampleCardProps
-    }
-  }
+      ExampleCard: exampleCardProps,
+    },
+  },
 };
 ```

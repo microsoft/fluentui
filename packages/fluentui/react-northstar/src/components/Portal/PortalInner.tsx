@@ -37,11 +37,11 @@ class PortalInner extends React.Component<PortalInnerProps> {
       as: false,
       className: false,
       content: false,
-      styled: false
+      styled: false,
     }),
     mountNode: PropTypes.object,
     onMount: PropTypes.func,
-    onUnmount: PropTypes.func
+    onUnmount: PropTypes.func,
   };
 
   componentDidMount() {

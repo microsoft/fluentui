@@ -8,14 +8,14 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
     const { type, inline, required } = props;
     return {
       ...((!type || (type !== 'radio' && type !== 'checkbox')) && {
-        display: 'block'
+        display: 'block',
       }),
       ...(inline && { marginRight: pxToRem(10), display: 'inline' }),
       ...(required && {
         '::after': {
-          content: '"*"'
-        }
-      })
+          content: '"*"',
+        },
+      }),
     };
   },
   control: ({ props }): ICSSInJSStyle => {
@@ -23,13 +23,13 @@ const formFieldStyles: ComponentSlotStylesPrepared<FormFieldProps> = {
     return {
       ...(type &&
         (type === 'radio' || type === 'checkbox') && {
-          marginRight: pxToRem(10)
-        })
+          marginRight: pxToRem(10),
+        }),
     };
   },
   message: (): ICSSInJSStyle => ({
-    display: 'block'
-  })
+    display: 'block',
+  }),
 };
 
 export default formFieldStyles;

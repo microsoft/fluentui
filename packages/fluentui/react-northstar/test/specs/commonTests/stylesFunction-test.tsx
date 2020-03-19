@@ -21,13 +21,17 @@ type PropsAndState = Props & State;
 
 const testClassName = 'ui-test-component';
 
-const testStylesForComponent = ({ props, state, expected }: { props?: Props; state?: State; expected?: PropsAndState } = {}) => {
+const testStylesForComponent = ({
+  props,
+  state,
+  expected,
+}: { props?: Props; state?: State; expected?: PropsAndState } = {}) => {
   class TestComponent extends UIComponent<Extendable<Props>, State> {
     static className = testClassName;
     static propTypes = {
       propsAttr: PropTypes.any,
       commonAttr: PropTypes.any,
-      styles: PropTypes.any
+      styles: PropTypes.any,
     };
 
     state = state;
@@ -56,12 +60,12 @@ describe('styles function', () => {
 
     testStylesForComponent({
       props: { propsAttr: 'props' },
-      expected: { propsAttr: 'props' }
+      expected: { propsAttr: 'props' },
     });
 
     testStylesForComponent({
       props: { propsAttr: 'props', commonAttr: 'props' },
-      expected: { propsAttr: 'props', commonAttr: 'props' }
+      expected: { propsAttr: 'props', commonAttr: 'props' },
     });
   });
 
@@ -69,19 +73,19 @@ describe('styles function', () => {
     testStylesForComponent({
       props: { propsAttr: 'props' },
       state: { stateAttr: 'state' },
-      expected: { propsAttr: 'props', stateAttr: 'state' }
+      expected: { propsAttr: 'props', stateAttr: 'state' },
     });
 
     testStylesForComponent({
       props: { propsAttr: 'props' },
       state: { commonAttr: 'state', stateAttr: 'state' },
-      expected: { propsAttr: 'props', commonAttr: 'state', stateAttr: 'state' }
+      expected: { propsAttr: 'props', commonAttr: 'state', stateAttr: 'state' },
     });
 
     testStylesForComponent({
       props: { propsAttr: 'props', commonAttr: 'props' },
       state: { stateAttr: 'state' },
-      expected: { propsAttr: 'props', commonAttr: 'props', stateAttr: 'state' }
+      expected: { propsAttr: 'props', commonAttr: 'props', stateAttr: 'state' },
     });
   });
 
@@ -89,25 +93,25 @@ describe('styles function', () => {
     testStylesForComponent({
       props: { commonAttr: 'props' },
       state: { commonAttr: 'state' },
-      expected: { commonAttr: 'props' }
+      expected: { commonAttr: 'props' },
     });
 
     testStylesForComponent({
       props: { propsAttr: 'props', commonAttr: 'props' },
       state: { commonAttr: 'state' },
-      expected: { propsAttr: 'props', commonAttr: 'props' }
+      expected: { propsAttr: 'props', commonAttr: 'props' },
     });
 
     testStylesForComponent({
       props: { commonAttr: 'props' },
       state: { commonAttr: 'state', stateAttr: 'state' },
-      expected: { commonAttr: 'props', stateAttr: 'state' }
+      expected: { commonAttr: 'props', stateAttr: 'state' },
     });
 
     testStylesForComponent({
       props: { propsAttr: 'props', commonAttr: 'props' },
       state: { commonAttr: 'state', stateAttr: 'state' },
-      expected: { propsAttr: 'props', commonAttr: 'props', stateAttr: 'state' }
+      expected: { propsAttr: 'props', commonAttr: 'props', stateAttr: 'state' },
     });
   });
 });

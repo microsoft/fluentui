@@ -1,8 +1,11 @@
 import * as React from 'react';
 
-export type ComposedComponent<InputProps = {}, InputStylesProps = {}, ParentProps = {}, ParentStylesProps = {}> = React.FunctionComponent<
-  InputProps & ParentProps
-> & {
+export type ComposedComponent<
+  InputProps = {},
+  InputStylesProps = {},
+  ParentProps = {},
+  ParentStylesProps = {}
+> = React.FunctionComponent<InputProps & ParentProps> & {
   fluentComposeConfig: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 };
 

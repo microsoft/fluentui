@@ -35,7 +35,7 @@ const useEnhancedRenderRule = (renderer: Renderer): [Renderer['renderRule'], Rea
 
       const resolvedStyles: ComponentSlotStylesPrepared = callable(rule)({
         ...props,
-        variables: mappedVariables
+        variables: mappedVariables,
       });
       const flattenStyles: Record<string, string> = flat(resolvedStyles);
 
@@ -50,7 +50,7 @@ const useEnhancedRenderRule = (renderer: Renderer): [Renderer['renderRule'], Rea
 
       return renderer.renderRule(rule, props);
     },
-    [renderer]
+    [renderer],
   );
 
   return [renderRule, variables];

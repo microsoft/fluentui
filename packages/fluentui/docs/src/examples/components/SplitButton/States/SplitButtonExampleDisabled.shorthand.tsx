@@ -6,11 +6,11 @@ const SplitButtonExampleDisabledShorthand = () => (
     disabled
     menu={[
       { key: 'group', content: 'New group message' },
-      { key: 'channel', content: 'New channel message' }
+      { key: 'channel', content: 'New channel message' },
     ]}
     button={{
       content: 'New conversation',
-      'aria-roledescription': 'splitbutton'
+      'aria-roledescription': 'splitbutton',
     }}
     toggleButton={{ 'aria-label': 'more options' }}
   />

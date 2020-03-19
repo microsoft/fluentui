@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'participant-add'
+  exportedAs: 'participant-add',
 } as TeamsProcessedSvgIconSpec;

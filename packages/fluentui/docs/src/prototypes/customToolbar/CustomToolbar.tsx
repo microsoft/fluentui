@@ -10,7 +10,7 @@ import {
   Status,
   ToolbarItemShorthandKinds,
   SizeValue,
-  ShorthandValue
+  ShorthandValue,
 } from '@fluentui/react-northstar';
 
 const tooltips = {
@@ -25,7 +25,7 @@ const tooltips = {
   chat: 'Show conversation',
   addParticipants: 'Add participants',
   pptNext: 'Navigate forward',
-  pptPrevious: 'Navigate back'
+  pptPrevious: 'Navigate back',
 };
 
 export interface CustomToolbarProps {
@@ -55,7 +55,7 @@ export interface CustomToolbarProps {
 }
 
 type CustomToolbarLayout = (
-  props: CustomToolbarProps
+  props: CustomToolbarProps,
 ) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>;
 
 const commonLayout: CustomToolbarLayout = props =>
@@ -65,7 +65,7 @@ const commonLayout: CustomToolbarLayout = props =>
       kind: 'custom' as ToolbarItemShorthandKinds,
       focusable: true,
       content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
-      variables: { isCtItemPrimary: true, isCtItemIndicator: true }
+      variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
     {
@@ -73,7 +73,7 @@ const commonLayout: CustomToolbarLayout = props =>
       kind: 'custom' as ToolbarItemShorthandKinds,
       focusable: true,
       content: <Text>10:45</Text>,
-      variables: { isCtItemPrimary: true, isCtItemIndicator: true }
+      variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
     { key: 'timer-divider', kind: 'divider' as ToolbarItemShorthandKinds },
@@ -83,11 +83,11 @@ const commonLayout: CustomToolbarLayout = props =>
       active: props.cameraActive,
       icon: {
         name: props.cameraActive ? 'call-video' : 'call-video-off',
-        size: 'large' as SizeValue
+        size: 'large' as SizeValue,
       },
       key: 'camera',
       onClick: () => _.invoke(props, 'onCameraChange', !props.cameraActive),
-      variables: { isCtItemPrimary: true }
+      variables: { isCtItemPrimary: true },
     },
 
     {
@@ -95,11 +95,11 @@ const commonLayout: CustomToolbarLayout = props =>
       active: props.micActive,
       icon: {
         name: props.micActive ? 'mic' : 'mic-off',
-        size: 'large' as SizeValue
+        size: 'large' as SizeValue,
       },
       key: 'mic',
       onClick: () => _.invoke(props, 'onMicChange', !props.micActive),
-      variables: { isCtItemPrimary: true }
+      variables: { isCtItemPrimary: true },
     },
 
     {
@@ -107,11 +107,11 @@ const commonLayout: CustomToolbarLayout = props =>
       active: props.screenShareActive,
       icon: {
         name: props.screenShareActive ? 'call-control-close-tray' : 'call-control-present-new',
-        size: 'large' as SizeValue
+        size: 'large' as SizeValue,
       },
       key: 'screen-share',
       onClick: () => _.invoke(props, 'onScreenShareChange', !props.screenShareActive),
-      variables: { isCtItemPrimary: true }
+      variables: { isCtItemPrimary: true },
     },
 
     {
@@ -119,11 +119,11 @@ const commonLayout: CustomToolbarLayout = props =>
       key: 'more',
       icon: {
         name: 'more',
-        size: 'large' as SizeValue
+        size: 'large' as SizeValue,
       },
       onClick: () => _.invoke(props, 'onMoreClick'),
-      variables: { isCtItemPrimary: true }
-    }
+      variables: { isCtItemPrimary: true },
+    },
   ].filter(Boolean);
 
 const sidebarButtons: CustomToolbarLayout = props => [
@@ -133,11 +133,11 @@ const sidebarButtons: CustomToolbarLayout = props => [
     icon: {
       name: 'chat',
       outline: true,
-      size: 'large' as SizeValue
+      size: 'large' as SizeValue,
     },
     key: 'chat',
     onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
-    variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true }
+    variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true },
   },
   {
     title: tooltips.addParticipants,
@@ -145,12 +145,13 @@ const sidebarButtons: CustomToolbarLayout = props => [
     icon: {
       name: 'participant-add',
       outline: true,
-      size: 'large' as SizeValue
+      size: 'large' as SizeValue,
     },
     key: 'participant-add',
-    onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
-    variables: { isCtItemIconNoFill: true }
-  }
+    onClick: () =>
+      _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
+    variables: { isCtItemIconNoFill: true },
+  },
 ];
 
 const layoutItems: ShorthandValue<ToolbarItemProps> = {
@@ -159,11 +160,11 @@ const layoutItems: ShorthandValue<ToolbarItemProps> = {
     key: 'end-call',
     icon: {
       name: 'call-end',
-      size: 'large'
+      size: 'large',
     },
     onClick: () => _.invoke(props, 'onEndCallClick'),
-    variables: { isCtItemDanger: true }
-  })
+    variables: { isCtItemDanger: true },
+  }),
 };
 
 const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
@@ -176,10 +177,10 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
     {
       key: 'stop-sharing',
       kind: 'custom',
-      content: <Button content="Stop Sharing" />
+      content: <Button content="Stop Sharing" />,
     },
 
-    layoutItems.endCall(props)
+    layoutItems.endCall(props),
   ],
 
   'powerpoint-presenter': props => [
@@ -192,9 +193,9 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
       key: 'stop-sharing',
       icon: {
         name: 'call-control-stop-presenting-new',
-        size: 'large'
+        size: 'large',
       },
-      onClick: () => _.invoke(props, 'onStopSharingClick')
+      onClick: () => _.invoke(props, 'onStopSharingClick'),
     },
 
     {
@@ -204,16 +205,16 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
       icon: {
         name: 'chevron-down',
         rotate: 90,
-        outline: true
+        outline: true,
       },
-      onClick: () => _.invoke(props, 'onPptPrevClick')
+      onClick: () => _.invoke(props, 'onPptPrevClick'),
     },
 
     {
       key: 'ppt-slide-number',
       kind: 'custom',
       fitted: true,
-      content: <Text size="small">{props.pptSlide}</Text>
+      content: <Text size="small">{props.pptSlide}</Text>,
     },
 
     {
@@ -223,13 +224,13 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
       icon: {
         name: 'chevron-down',
         rotate: -90,
-        outline: true
+        outline: true,
       },
-      onClick: () => _.invoke(props, 'onPptNextClick')
+      onClick: () => _.invoke(props, 'onPptNextClick'),
     },
 
-    layoutItems.endCall(props)
-  ]
+    layoutItems.endCall(props),
+  ],
 };
 
 const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {

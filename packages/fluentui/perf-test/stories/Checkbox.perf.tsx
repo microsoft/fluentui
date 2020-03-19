@@ -3,7 +3,7 @@ import { Checkbox as CheckboxFabric } from 'office-ui-fabric-react';
 import { Checkbox as CheckboxFluent } from '@fluentui/react-northstar';
 
 export default {
-  iterations: 1000
+  iterations: 1000,
 };
 
 export const Fabric = () => <CheckboxFabric />;

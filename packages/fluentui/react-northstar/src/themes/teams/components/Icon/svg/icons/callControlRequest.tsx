@@ -20,5 +20,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-control-request'
+  exportedAs: 'call-control-request',
 } as TeamsProcessedSvgIconSpec;

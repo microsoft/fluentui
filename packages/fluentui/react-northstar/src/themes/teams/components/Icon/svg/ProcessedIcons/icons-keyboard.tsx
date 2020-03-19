@@ -19,5 +19,5 @@ export default {
       <circle cx="21.5" cy="16.5" r=".5" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

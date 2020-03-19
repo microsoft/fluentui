@@ -36,6 +36,6 @@ export default (siteVars: any): PopupContentVariables => {
     pointerMargin: pxToRem(10),
     pointerSize: pxToRem(10),
 
-    zIndex: siteVars.zIndexes.overlay
+    zIndex: siteVars.zIndexes.overlay,
   };
 };

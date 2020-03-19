@@ -11,7 +11,7 @@ const REACT_LIFECYCLE_EXCLUSIONS = [
   'getSnapshotBeforeUpdate',
   'UNSAFE_componentWillUpdate',
   'componentDidUpdate',
-  'componentWillUnmount'
+  'componentWillUnmount',
 ];
 
 /**
@@ -28,7 +28,7 @@ export function hoistMethods(
   destination: any,
   // tslint:disable-next-line:no-any
   source: any,
-  exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS
+  exclusions: string[] = REACT_LIFECYCLE_EXCLUSIONS,
 ): string[] {
   let hoisted: string[] = [];
   for (let methodName in source) {

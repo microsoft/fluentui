@@ -6,7 +6,11 @@ const TooltipOpenExample = () => {
   const [open, setOpen] = useBooleanKnob({ name: 'open', initialValue: true });
 
   return (
-    <Tooltip open={open || undefined} onOpenChange={(e, data) => setOpen(data.open)} content="This is a controlled Tooltip">
+    <Tooltip
+      open={open || undefined}
+      onOpenChange={(e, data) => setOpen(data.open)}
+      content="This is a controlled Tooltip"
+    >
       <Button icon="more" />
     </Tooltip>
   );

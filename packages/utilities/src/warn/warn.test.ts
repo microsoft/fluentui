@@ -34,7 +34,9 @@ describe('warnDeprecations', () => {
   it('can warn on a deprecated prop with replacement', () => {
     warnDeprecations('Foo', { foo: 1 }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' was used but has been deprecated. Use 'bar' instead.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' was used but has been deprecated. Use 'bar' instead.`,
+    );
   });
 });
 
@@ -81,25 +83,33 @@ describe('warnMutuallyExclusive', () => {
   it('can warn on mutual exclusive props', () => {
     warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 
   it('can warn if the exclusive props with the key in the map is null', () => {
     warnMutuallyExclusive('Foo', { foo: null, bar: 1 }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 
   it('can warn if the matching key in exclusive map is null', () => {
     warnMutuallyExclusive('Foo', { foo: 1, bar: null }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 
   it('can warn if both of the props are null', () => {
     warnMutuallyExclusive('Foo', { foo: null, bar: null }, { foo: 'bar' });
     expect(warningCallback).toHaveBeenCalledTimes(1);
-    expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+    expect(warningCallback).toHaveBeenLastCalledWith(
+      `Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`,
+    );
   });
 });
 

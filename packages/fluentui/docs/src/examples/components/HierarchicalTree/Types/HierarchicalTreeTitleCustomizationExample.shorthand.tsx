@@ -12,11 +12,11 @@ const items = [
         items: [
           {
             key: '3',
-            title: 'one one one'
-          }
-        ]
-      }
-    ]
+            title: 'one one one',
+          },
+        ],
+      },
+    ],
   },
   {
     key: '4',
@@ -24,10 +24,10 @@ const items = [
     items: [
       {
         key: '5',
-        title: 'two one'
-      }
-    ]
-  }
+        title: 'two one',
+      },
+    ],
+  },
 ];
 
 const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
@@ -37,6 +37,8 @@ const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) =
   </Component>
 );
 
-const TreeTitleCustomizationExample = () => <HierarchicalTree aria-label="Custom Title" items={items} renderItemTitle={titleRenderer} />;
+const TreeTitleCustomizationExample = () => (
+  <HierarchicalTree aria-label="Custom Title" items={items} renderItemTitle={titleRenderer} />
+);
 
 export default TreeTitleCustomizationExample;

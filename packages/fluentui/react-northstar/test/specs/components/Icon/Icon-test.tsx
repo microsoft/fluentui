@@ -12,8 +12,8 @@ describe('Icon', () => {
     handlesAccessibility(Icon, {
       defaultRootRole: 'img',
       requiredProps: {
-        name: 'at'
-      }
+        name: 'at',
+      },
     });
 
     describe('aria-hidden', () => {
@@ -24,21 +24,31 @@ describe('Icon', () => {
               <svg>
                 <p />
               </svg>
-            )
+            ),
           },
           fontIcon: {
-            icon: { fontFamily: 'Icons', content: `'\\f0152'` }
-          }
-        }
+            icon: { fontFamily: 'Icons', content: `'\\f0152'` },
+          },
+        },
       };
 
       test('font-based - set to true by default', () => {
-        const renderedComponent = mountWithProviderAndGetComponent(Icon, <Icon name="fontIcon" />, undefined, themeWithDefinedIcons);
+        const renderedComponent = mountWithProviderAndGetComponent(
+          Icon,
+          <Icon name="fontIcon" />,
+          undefined,
+          themeWithDefinedIcons,
+        );
         expect(getRenderedAttribute(renderedComponent, 'aria-hidden', '')).toBe('true');
       });
 
       test('svg - set to true by default', () => {
-        const renderedComponent = mountWithProviderAndGetComponent(Icon, <Icon name="svgIcon" />, undefined, themeWithDefinedIcons);
+        const renderedComponent = mountWithProviderAndGetComponent(
+          Icon,
+          <Icon name="svgIcon" />,
+          undefined,
+          themeWithDefinedIcons,
+        );
         expect(getRenderedAttribute(renderedComponent, 'aria-hidden', '')).toBe('true');
       });
     });

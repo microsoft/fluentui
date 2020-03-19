@@ -14,7 +14,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
-      value: null
+      value: null,
     };
   }
 
@@ -24,9 +24,9 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
     return (
       <div className="docs-DatePickerExample">
         <p>
-          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control will avoid parsing
-          the formatted strings of dates selected using the UI when text input is allowed. In this example, we are formatting and parsing
-          dates as dd/MM/yy.
+          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the
+          control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In
+          this example, we are formatting and parsing dates as dd/MM/yy.
         </p>
         <DatePicker
           label="Start date"

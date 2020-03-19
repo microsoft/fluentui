@@ -14,7 +14,7 @@ describe('AccordionContent', () => {
       test('takes the value of the titleId prop', () => {
         const renderedComponent = mountWithProviderAndGetComponent(
           AccordionContent,
-          <AccordionContent accordionTitleId={'nice-titleId'} />
+          <AccordionContent accordionTitleId={'nice-titleId'} />,
         );
         expect(getRenderedAttribute(renderedComponent, 'aria-labelledby', '')).toBe('nice-titleId');
       });

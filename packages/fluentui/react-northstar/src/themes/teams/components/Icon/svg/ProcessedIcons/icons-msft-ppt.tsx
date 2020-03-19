@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'powerpoint, powerpoint-color'
+  exportedAs: 'powerpoint, powerpoint-color',
 } as TeamsProcessedSvgIconSpec;

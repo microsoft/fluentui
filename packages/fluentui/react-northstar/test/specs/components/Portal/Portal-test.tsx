@@ -108,9 +108,12 @@ describe('Portal', () => {
       const mountNode = document.createElement('div');
       document.body.appendChild(mountNode);
 
-      const wrapper = mountWithProvider(<Portal content={<p />} trigger={<button id="trigger" />} triggerRef={triggerRef} />, {
-        attachTo: mountNode
-      });
+      const wrapper = mountWithProvider(
+        <Portal content={<p />} trigger={<button id="trigger" />} triggerRef={triggerRef} />,
+        {
+          attachTo: mountNode,
+        },
+      );
 
       const triggerElem = document.querySelector('#trigger');
 

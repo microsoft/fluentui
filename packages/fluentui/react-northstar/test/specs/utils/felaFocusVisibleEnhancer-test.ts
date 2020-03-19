@@ -7,7 +7,7 @@ import felaFocusVisibleEnhancer from 'src/utils/felaFocusVisibleEnhancer';
 describe('felaFocusVisibleEnhancer', () => {
   test('replaces :focus-visible', () => {
     const renderer = createRenderer({
-      enhancers: [felaFocusVisibleEnhancer]
+      enhancers: [felaFocusVisibleEnhancer],
     });
 
     renderer.renderRule(() => ({ borderColor: 'green' }), null);
@@ -19,7 +19,7 @@ describe('felaFocusVisibleEnhancer', () => {
 
   test('replaces :focus-visible', () => {
     const renderer = createRenderer({
-      enhancers: [felaFocusVisibleEnhancer]
+      enhancers: [felaFocusVisibleEnhancer],
     });
     const subscription = jest.fn();
 
@@ -30,8 +30,8 @@ describe('felaFocusVisibleEnhancer', () => {
       expect.objectContaining({
         pseudo: ':focus',
         selector: 'html[data-whatinput="keyboard"] .a:focus',
-        type: RULE_TYPE
-      })
+        type: RULE_TYPE,
+      }),
     );
   });
 });

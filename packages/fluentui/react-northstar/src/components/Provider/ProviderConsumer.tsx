@@ -22,7 +22,7 @@ const ProviderConsumer: React.FunctionComponent<ProviderConsumerProps> = ({ rend
 
 ProviderConsumer.displayName = 'ProviderConsumer';
 ProviderConsumer.propTypes = {
-  render: PropTypes.func.isRequired
+  render: PropTypes.func.isRequired,
 };
 
 export default ProviderConsumer;

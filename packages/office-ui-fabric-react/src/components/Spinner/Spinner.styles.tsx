@@ -4,16 +4,16 @@ import { hiddenContentStyle, keyframes, HighContrastSelector, getGlobalClassName
 const GlobalClassNames = {
   root: 'ms-Spinner',
   circle: 'ms-Spinner-circle',
-  label: 'ms-Spinner-label'
+  label: 'ms-Spinner-label',
 };
 
 const spinAnimation: string = keyframes({
   '0%': {
-    transform: 'rotate(0deg)'
+    transform: 'rotate(0deg)',
   },
   '100%': {
-    transform: 'rotate(360deg)'
-  }
+    transform: 'rotate(360deg)',
+  },
 });
 
 export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
@@ -30,18 +30,18 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
       },
       labelPosition === 'top' && {
-        flexDirection: 'column-reverse'
+        flexDirection: 'column-reverse',
       },
       labelPosition === 'right' && {
-        flexDirection: 'row'
+        flexDirection: 'row',
       },
       labelPosition === 'left' && {
-        flexDirection: 'row-reverse'
+        flexDirection: 'row-reverse',
       },
-      className
+      className,
     ],
     circle: [
       classNames.circle,
@@ -56,38 +56,38 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
         animationTimingFunction: 'cubic-bezier(.53,.21,.29,.67)',
         selectors: {
           [HighContrastSelector]: {
-            borderTopColor: 'Highlight'
-          }
-        }
+            borderTopColor: 'Highlight',
+          },
+        },
       },
       size === SpinnerSize.xSmall && [
         'ms-Spinner--xSmall',
         {
           width: 12,
-          height: 12
-        }
+          height: 12,
+        },
       ],
       size === SpinnerSize.small && [
         'ms-Spinner--small',
         {
           width: 16,
-          height: 16
-        }
+          height: 16,
+        },
       ],
       size === SpinnerSize.medium && [
         'ms-Spinner--medium',
         {
           width: 20,
-          height: 20
-        }
+          height: 20,
+        },
       ],
       size === SpinnerSize.large && [
         'ms-Spinner--large',
         {
           width: 28,
-          height: 28
-        }
-      ]
+          height: 28,
+        },
+      ],
     ],
     label: [
       classNames.label,
@@ -95,18 +95,18 @@ export const getStyles = (props: ISpinnerStyleProps): ISpinnerStyles => {
       {
         color: palette.themePrimary,
         margin: '8px 0 0',
-        textAlign: 'center'
+        textAlign: 'center',
       },
       labelPosition === 'top' && {
-        margin: '0 0 8px'
+        margin: '0 0 8px',
       },
       labelPosition === 'right' && {
-        margin: '0 0 0 8px'
+        margin: '0 0 0 8px',
       },
       labelPosition === 'left' && {
-        margin: '0 8px 0 0'
-      }
+        margin: '0 8px 0 0',
+      },
     ],
-    screenReaderText: hiddenContentStyle
+    screenReaderText: hiddenContentStyle,
   };
 };

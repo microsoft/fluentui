@@ -52,5 +52,5 @@ export const TreeContext = React.createContext<TreeRenderContextValue>({
   onFocusFirstChild: _.noop,
   onFocusParent: _.noop,
   onSiblingsExpand: _.noop,
-  onTitleClick: _.noop
+  onTitleClick: _.noop,
 });

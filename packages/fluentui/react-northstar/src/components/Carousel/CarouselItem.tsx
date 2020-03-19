@@ -11,7 +11,7 @@ import {
   childrenExist,
   createShorthandFactory,
   ContentComponentProps,
-  ChildrenComponentProps
+  ChildrenComponentProps,
 } from '../../utils';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import { WithAsProp, withSafeTypeForAs } from '../../types';
@@ -45,15 +45,15 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
     ...commonPropTypes.createCommon(),
     active: PropTypes.bool,
     navigation: PropTypes.bool,
-    itemPositionText: PropTypes.string
+    itemPositionText: PropTypes.string,
   };
 
   static defaultProps = {
-    accessibility: carouselItemBehavior
+    accessibility: carouselItemBehavior,
   };
 
   static slotClassNames: CarouselItemSlotClassNames = {
-    itemPositionText: `${CarouselItem.className}__itemPositionText`
+    itemPositionText: `${CarouselItem.className}__itemPositionText`,
   };
 
   actionHandlers = {
@@ -62,7 +62,7 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
       if (e.currentTarget !== e.target) {
         e.stopPropagation();
       }
-    }
+    },
   };
 
   renderComponent({ ElementType, classes, styles, accessibility, unhandledProps }) {

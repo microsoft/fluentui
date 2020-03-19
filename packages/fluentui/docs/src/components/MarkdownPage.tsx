@@ -29,7 +29,7 @@ const components = {
     ),
   h1: ({ children }) => <Header as="h1" content={children} />,
   h2: ({ children }) => <Header as="h2" content={children} />,
-  h3: ({ children }) => <Header as="h3" content={children} />
+  h3: ({ children }) => <Header as="h3" content={children} />,
 };
 
 const MarkdownPage: React.FunctionComponent<MarkdownPageProps> = props => {

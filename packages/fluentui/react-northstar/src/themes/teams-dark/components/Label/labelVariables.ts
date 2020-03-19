@@ -7,13 +7,13 @@ export default (siteVars: SiteVariablesPrepared): Partial<LabelVariables> => {
     colorScheme: pickValuesFromColorScheme(
       extendColorScheme(siteVars.colorScheme, {
         brand: {
-          background: siteVars.colorScheme.brand.foreground4
+          background: siteVars.colorScheme.brand.foreground4,
         },
         red: {
-          background: siteVars.colorScheme.red.foreground1
-        }
+          background: siteVars.colorScheme.red.foreground1,
+        },
       }),
-      labelColorAreas
-    )
+      labelColorAreas,
+    ),
   };
 };

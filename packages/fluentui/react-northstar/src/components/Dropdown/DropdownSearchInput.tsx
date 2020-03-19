@@ -3,7 +3,13 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
-import { UIComponent, RenderResultConfig, createShorthandFactory, commonPropTypes, ShorthandFactory } from '../../utils';
+import {
+  UIComponent,
+  RenderResultConfig,
+  createShorthandFactory,
+  commonPropTypes,
+  ShorthandFactory,
+} from '../../utils';
 import { ComponentEventHandler, WithAsProp, withSafeTypeForAs } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import Input from '../Input/Input';
@@ -75,7 +81,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
     ...commonPropTypes.createCommon({
       accessibility: false,
       children: false,
-      content: false
+      content: false,
     }),
     accessibilityInputProps: PropTypes.object,
     accessibilityComboboxProps: PropTypes.object,
@@ -86,7 +92,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
     onInputBlur: PropTypes.func,
     onInputKeyDown: PropTypes.func,
     onKeyUp: PropTypes.func,
-    placeholder: PropTypes.string
+    placeholder: PropTypes.string,
   };
 
   handleFocus = (e: React.SyntheticEvent) => {
@@ -118,7 +124,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
           className: DropdownSearchInput.slotClassNames.wrapper,
           styles: styles.root,
           ...accessibilityComboboxProps,
-          ...unhandledProps.wrapper
+          ...unhandledProps.wrapper,
         }}
         input={{
           type: 'text',
@@ -128,7 +134,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
           onBlur: this.handleInputBlur,
           onKeyDown: this.handleInputKeyDown,
           ...accessibilityInputProps,
-          ...unhandledProps.input
+          ...unhandledProps.input,
         }}
       />
     );
@@ -137,7 +143,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
 
 DropdownSearchInput.slotClassNames = {
   input: `${DropdownSearchInput.className}__input`,
-  wrapper: `${DropdownSearchInput.className}__wrapper`
+  wrapper: `${DropdownSearchInput.className}__wrapper`,
 };
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });

@@ -7,22 +7,22 @@ const commonButtonsStyles = (circular: boolean) => (circular ? { marginRight: px
 const buttonGroupStyles: ComponentSlotStylesPrepared<ButtonGroupProps, any> = {
   root: (): ICSSInJSStyle => ({}),
   middleButton: ({ props: p }) => ({
-    ...commonButtonsStyles(p.circular)
+    ...commonButtonsStyles(p.circular),
   }),
   firstButton: ({ props: p, variables: v }) => ({
     ...commonButtonsStyles(p.circular),
     ...(!p.circular && {
       borderTopLeftRadius: v.borderRadius,
-      borderBottomLeftRadius: v.borderRadius
-    })
+      borderBottomLeftRadius: v.borderRadius,
+    }),
   }),
   lastButton: ({ props: p, variables: v }) => ({
     ...commonButtonsStyles(p.circular),
     ...(!p.circular && {
       borderTopRightRadius: v.borderRadius,
-      borderBottomRightRadius: v.borderRadius
-    })
-  })
+      borderBottomRightRadius: v.borderRadius,
+    }),
+  }),
 };
 
 export default buttonGroupStyles;

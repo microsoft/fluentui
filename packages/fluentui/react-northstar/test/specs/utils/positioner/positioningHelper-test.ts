@@ -42,31 +42,31 @@ describe('positioningHelper', () => {
     testPositioningHelperInRtl({
       position: 'below',
       align: 'start',
-      expectedPlacement: 'bottom-end'
+      expectedPlacement: 'bottom-end',
     });
     testPositioningHelperInRtl({ position: 'below', align: 'center', expectedPlacement: 'bottom' });
     testPositioningHelperInRtl({
       position: 'below',
       align: 'end',
-      expectedPlacement: 'bottom-start'
+      expectedPlacement: 'bottom-start',
     });
     testPositioningHelperInRtl({
       position: 'before',
       align: 'top',
-      expectedPlacement: 'right-start'
+      expectedPlacement: 'right-start',
     });
     testPositioningHelperInRtl({ position: 'before', align: 'center', expectedPlacement: 'right' });
     testPositioningHelperInRtl({
       position: 'before',
       align: 'bottom',
-      expectedPlacement: 'right-end'
+      expectedPlacement: 'right-end',
     });
     testPositioningHelperInRtl({ position: 'after', align: 'top', expectedPlacement: 'left-start' });
     testPositioningHelperInRtl({ position: 'after', align: 'center', expectedPlacement: 'left' });
     testPositioningHelperInRtl({
       position: 'after',
       align: 'bottom',
-      expectedPlacement: 'left-end'
+      expectedPlacement: 'left-end',
     });
   });
 

@@ -12,7 +12,7 @@ const DropdownExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'below',
-    values: positionAndAlignValues
+    values: positionAndAlignValues,
   });
 
   const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];

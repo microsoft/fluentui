@@ -14,8 +14,16 @@ export default {
         className={cx(teamsIconClassNames.filled, classes.filledPart)}
         d="M22.5 22h-1a.5.5 0 0 1 0-1h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 1 1 0v1a1.5 1.5 0 0 1-1.5 1.5zm1-9a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 1 0-1h1a1.5 1.5 0 0 1 1.5 1.5v1a.5.5 0 0 1-.5.5zm-15 0a.5.5 0 0 1-.5-.5v-1A1.5 1.5 0 0 1 9.5 10h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 1-.5.5zm2 9h-1A1.5 1.5 0 0 1 8 20.5v-1a.5.5 0 0 1 1 0v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 1 0 1z"
       />
-      <rect className={cx(teamsIconClassNames.filled, classes.filledPart)} x="10" y="12" width="12" height="8" rx=".5" ry=".5" />
+      <rect
+        className={cx(teamsIconClassNames.filled, classes.filledPart)}
+        x="10"
+        y="12"
+        width="12"
+        height="8"
+        rx=".5"
+        ry=".5"
+      />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

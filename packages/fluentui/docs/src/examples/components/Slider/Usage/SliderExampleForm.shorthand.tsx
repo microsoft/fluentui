@@ -20,22 +20,22 @@ const SliderExampleFormShorthand = () => (
         name: 'firstName',
         id: 'first-name-shorthand',
         key: 'first-name',
-        required: true
+        required: true,
       },
       {
         label: 'Last name',
         name: 'lastName',
         id: 'last-name-shorthand',
         key: 'last-name',
-        required: true
+        required: true,
       },
       {
         label: 'Age',
         control: { as: CustomSlider },
         id: 'age-shorthand',
         key: 'age',
-        required: true
-      }
+        required: true,
+      },
     ]}
   />
 );

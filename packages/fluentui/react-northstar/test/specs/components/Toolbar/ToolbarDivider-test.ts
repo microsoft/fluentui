@@ -4,6 +4,6 @@ import ToolbarDivider from 'src/components/Toolbar/ToolbarDivider';
 
 describe('ToolbarDivider', () => {
   isConformant(ToolbarDivider, {
-    constructorName: 'ToolbarDivider'
+    constructorName: 'ToolbarDivider',
   });
 });

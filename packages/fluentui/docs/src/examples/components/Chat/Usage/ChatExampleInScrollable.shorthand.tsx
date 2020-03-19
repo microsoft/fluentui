@@ -12,7 +12,7 @@ const actionItems = [
   { key: 'star', icon: 'star', title: 'Star' },
   { key: 'edit', icon: 'edit', title: 'Edit' },
   { key: 'lock', icon: 'lock', title: 'Lock' },
-  { key: 'more', icon: 'more', title: 'More actions' }
+  { key: 'more', icon: 'more', title: 'More actions' },
 ];
 
 const ChatExampleInScrollableShorthand = () => {
@@ -23,19 +23,19 @@ const ChatExampleInScrollableShorthand = () => {
     initialValue: '300px',
     min: '200px',
     max: '800px',
-    step: 10
+    step: 10,
   });
   const [width] = useRangeKnob({
     name: 'width',
     initialValue: '500px',
     min: '100px',
     max: '500px',
-    step: 10
+    step: 10,
   });
 
   const actionMenu = {
     iconOnly: true,
-    items: actionItems.slice(0, actionCount - 1)
+    items: actionItems.slice(0, actionCount - 1),
   };
   const items: ShorthandCollection<ChatItemProps> = [
     {
@@ -51,7 +51,7 @@ const ChatExampleInScrollableShorthand = () => {
           unstable_overflow={overflow}
         />
       ),
-      key: 'message-1'
+      key: 'message-1',
     },
     {
       attached: 'bottom',
@@ -66,14 +66,20 @@ const ChatExampleInScrollableShorthand = () => {
           timestamp="Yesterday, 10:15 PM"
           unstable_overflow={overflow}
         />
-      )
+      ),
     },
     {
       gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
       message: (
-        <Chat.Message actionMenu={actionMenu} author="Jane Doe" content="Hi" timestamp="Yesterday, 10:15 PM" unstable_overflow={overflow} />
+        <Chat.Message
+          actionMenu={actionMenu}
+          author="Jane Doe"
+          content="Hi"
+          timestamp="Yesterday, 10:15 PM"
+          unstable_overflow={overflow}
+        />
       ),
-      key: 'message-3'
+      key: 'message-3',
     },
     {
       attached: true,
@@ -86,7 +92,7 @@ const ChatExampleInScrollableShorthand = () => {
           unstable_overflow={overflow}
         />
       ),
-      key: 'message-4'
+      key: 'message-4',
     },
     {
       attached: 'bottom',
@@ -99,7 +105,7 @@ const ChatExampleInScrollableShorthand = () => {
           unstable_overflow={overflow}
         />
       ),
-      key: 'message-5'
+      key: 'message-5',
     },
     {
       attached: 'top',
@@ -114,7 +120,7 @@ const ChatExampleInScrollableShorthand = () => {
           unstable_overflow={overflow}
         />
       ),
-      key: 'message-6'
+      key: 'message-6',
     },
     {
       attached: 'bottom',
@@ -137,7 +143,7 @@ const ChatExampleInScrollableShorthand = () => {
           timestamp="Yesterday, 10:16 PM"
           unstable_overflow={overflow}
         />
-      )
+      ),
     },
     {
       message: (
@@ -149,8 +155,8 @@ const ChatExampleInScrollableShorthand = () => {
           unstable_overflow={overflow}
         />
       ),
-      key: 'message-8'
-    }
+      key: 'message-8',
+    },
   ];
 
   return (

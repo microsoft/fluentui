@@ -20,14 +20,14 @@ export default (siteVars: SiteVariablesPrepared): LabelVariables => {
   const colorScheme = extendColorScheme(siteVars.colorScheme, {
     default: {
       background: 'rgba(0, 0, 0, 0.6)',
-      foreground: 'rgb(232, 232, 232)'
+      foreground: 'rgb(232, 232, 232)',
     },
     brand: {
-      background: siteVars.colorScheme.brand.foreground4
+      background: siteVars.colorScheme.brand.foreground4,
     },
     red: {
-      background: siteVars.colorScheme.red.foreground1
-    }
+      background: siteVars.colorScheme.red.foreground1,
+    },
   });
 
   return {
@@ -36,6 +36,6 @@ export default (siteVars: SiteVariablesPrepared): LabelVariables => {
     padding: `0 ${pxToRem(4)} 0 ${pxToRem(4)}`,
     startPaddingLeft: '0px',
     endPaddingRight: '0px',
-    height: pxToRem(20)
+    height: pxToRem(20),
   };
 };

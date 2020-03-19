@@ -10,7 +10,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
         foregroundActive: 'red',
         menuBackground: 'lightblue',
         menuDividerBorder: 'yellow',
-        menuItemForeground: 'grey'
+        menuItemForeground: 'grey',
       }}
       items={[
         // ToolbarDivider
@@ -28,8 +28,8 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
 
             // ToolbarItem
             { key: 'item', active: true, icon: 'skype' },
-            { key: 'item-variables', active: true, icon: 'skype', variables: { foregroundActive: 'orange' } }
-          ]
+            { key: 'item-variables', active: true, icon: 'skype', variables: { foregroundActive: 'orange' } },
+          ],
         },
 
         // kind="toggle" is just ToolbarItem
@@ -64,11 +64,11 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menu: {
                   items: [
                     { key: 'item', content: 'Item' },
-                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
                   ],
-                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                  styles: { width: '100px' /* decrease width to fit other menus */ },
                 },
-                menuOpen: true
+                menuOpen: true,
               },
               {
                 key: 'item-variables',
@@ -76,21 +76,21 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menu: {
                   items: [
                     { key: 'item', content: 'Item' },
-                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
                   ],
-                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                  styles: { width: '100px' /* decrease width to fit other menus */ },
                 },
                 menuOpen: true,
                 variables: { menuItemForeground: 'orange', menuBackground: 'grey' },
                 styles: {
-                  marginTop: '100px' /* avoid collision with other opened menu */
-                }
-              }
+                  marginTop: '100px' /* avoid collision with other opened menu */,
+                },
+              },
             ],
-            styles: { width: '100px' /* decrease width to fit other menus */ }
+            styles: { width: '100px' /* decrease width to fit other menus */ },
           },
           menuOpen: true,
-          styles: { marginRight: '200px' /* avoid collision with other opened menu */ }
+          styles: { marginRight: '200px' /* avoid collision with other opened menu */ },
         },
         {
           key: 'item-menu-variables',
@@ -110,11 +110,11 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menu: {
                   items: [
                     { key: 'item', content: 'Item' },
-                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
                   ],
-                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                  styles: { width: '100px' /* decrease width to fit other menus */ },
                 },
-                menuOpen: true
+                menuOpen: true,
               },
               {
                 key: 'item-variables',
@@ -122,20 +122,20 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menu: {
                   items: [
                     { key: 'item', content: 'Item' },
-                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } }
+                    { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'gold' } },
                   ],
-                  styles: { width: '100px' /* decrease width to fit other menus */ }
+                  styles: { width: '100px' /* decrease width to fit other menus */ },
                 },
                 menuOpen: true,
                 variables: { menuItemForeground: 'orange', menuBackground: 'grey' },
-                styles: { marginTop: '100px' /* avoid collision with other opened menu */ }
-              }
+                styles: { marginTop: '100px' /* avoid collision with other opened menu */ },
+              },
             ],
-            styles: { width: '100px' /* decrease width to fit other menus */ }
+            styles: { width: '100px' /* decrease width to fit other menus */ },
           },
           menuOpen: true,
-          variables: { menuBackground: 'pink', menuDividerBorder: 'white', menuItemForeground: 'olive' }
-        }
+          variables: { menuBackground: 'pink', menuDividerBorder: 'white', menuItemForeground: 'olive' },
+        },
       ]}
     />
   );

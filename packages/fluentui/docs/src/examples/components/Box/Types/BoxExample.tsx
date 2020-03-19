@@ -8,7 +8,7 @@ const BoxExample = () => (
       color: 'blue',
       textAlign: 'center',
       width: '50px',
-      ':hover': { color: 'red' }
+      ':hover': { color: 'red' },
     }}
   >
     Box

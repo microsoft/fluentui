@@ -96,5 +96,5 @@ export default {
   mouseOver,
   mouseUp,
   resize,
-  scroll
+  scroll,
 };

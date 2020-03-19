@@ -8,6 +8,6 @@ export const BottomSheetPageProps: TFabricPlatformPageProps = {
   android: {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomSheetPage/docs/android/BottomSheetOverview.md') as string,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

@@ -20,4 +20,5 @@ export const assertNodeContains = (parentNode: Element, childSelector: string, i
  * @param selector - A DOM selector for the parent node
  * @param isPresent - Indicating whether to assert is present or is not present
  */
-export const assertBodyContains = (selector: string, isPresent: boolean = true) => assertNodeContains(document.body, selector, isPresent);
+export const assertBodyContains = (selector: string, isPresent: boolean = true) =>
+  assertNodeContains(document.body, selector, isPresent);

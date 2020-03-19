@@ -74,7 +74,7 @@ function _initializeSelection(selectionMode = SelectionMode.multiple): void {
       </div>
 
       <div id="surface3" data-selection-index="3" />
-    </SelectionZone>
+    </SelectionZone>,
   );
 
   _componentElement = ReactDOM.findDOMNode(_selectionZone) as Element;
@@ -192,7 +192,7 @@ describe('SelectionZone', () => {
     expect(_selection.getSelectedCount()).toEqual(4);
 
     _simulateClick(_surface1, {
-      ctrlKey: true
+      ctrlKey: true,
     });
     expect(_selection.getSelectedCount()).toEqual(3);
   });

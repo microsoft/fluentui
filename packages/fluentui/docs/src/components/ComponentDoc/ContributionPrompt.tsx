@@ -26,7 +26,7 @@ const ContributionPrompt: any = ({ children }) => (
 );
 
 ContributionPrompt.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default ContributionPrompt;
