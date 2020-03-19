@@ -1,7 +1,7 @@
 import { Button, Flex, Image, Text, Avatar, Card } from '@fluentui/react';
 import * as React from 'react';
 
-const CenteredCard = () => (
+const CardExampleCentered = () => (
   <Card centered>
     <Card.Header>
       <Flex gap="gap.small" column hAlign="center">
@@ -28,4 +28,4 @@ const CenteredCard = () => (
     </Card.Footer>
   </Card>
 );
-export default CenteredCard;
+export default CardExampleCentered;

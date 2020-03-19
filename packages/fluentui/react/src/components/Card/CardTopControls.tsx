@@ -1,4 +1,4 @@
-import { Accessibility, cardTopControlsBehavior, CardTopControlsBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as React from 'react';
 // @ts-ignore
@@ -10,7 +10,7 @@ export interface CardTopControlsProps extends UIComponentProps, ChildrenComponen
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility<CardTopControlsBehaviorProps>;
+  accessibility?: Accessibility<never>;
 }
 
 export type CardTopControlsStylesProps = never;
@@ -58,10 +58,6 @@ CardTopControls.className = 'ui-card__top-controls';
 
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon()
-};
-
-CardTopControls.defaultProps = {
-  accessibility: cardTopControlsBehavior
 };
 
 CardTopControls.handledProps = Object.keys(CardTopControls.propTypes) as any;

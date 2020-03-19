@@ -1,7 +1,7 @@
 import { Button, Flex, Image, Text, Avatar, Card } from '@fluentui/react';
 import * as React from 'react';
 
-const SimpleCard = () => (
+const CardExampleSimple = () => (
   <Card>
     <Card.Header>
       <Flex gap="gap.small">
@@ -30,4 +30,4 @@ const SimpleCard = () => (
     </Card.Footer>
   </Card>
 );
-export default SimpleCard;
+export default CardExampleSimple;

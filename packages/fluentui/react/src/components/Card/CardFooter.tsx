@@ -1,4 +1,4 @@
-import { Accessibility, cardFooterBehavior, CardFooterBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -11,7 +11,7 @@ export interface CardFooterProps extends UIComponentProps, ChildrenComponentProp
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility<CardFooterBehaviorProps>;
+  accessibility?: Accessibility<never>;
 
   /**
    * A footer can be fitted, without any space above or below it.
@@ -66,10 +66,6 @@ CardFooter.className = 'ui-card__footer';
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),
   fitted: PropTypes.bool
-};
-
-CardFooter.defaultProps = {
-  accessibility: cardFooterBehavior
 };
 
 CardFooter.handledProps = Object.keys(CardFooter.propTypes) as any;

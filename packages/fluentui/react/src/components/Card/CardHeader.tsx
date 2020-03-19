@@ -1,4 +1,4 @@
-import { Accessibility, cardHeaderBehavior, CardHeaderBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -11,7 +11,7 @@ export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProp
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility<CardHeaderBehaviorProps>;
+  accessibility?: Accessibility<never>;
 
   /**
    * A footer can be fitted, without any space above or below it.
@@ -66,10 +66,6 @@ CardHeader.className = 'ui-card__header';
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),
   fitted: PropTypes.bool
-};
-
-CardHeader.defaultProps = {
-  accessibility: cardHeaderBehavior
 };
 
 CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;

@@ -61,8 +61,6 @@ CardColumn.propTypes = {
   ...commonPropTypes.createCommon()
 };
 
-CardColumn.defaultProps = {};
-
 CardColumn.handledProps = Object.keys(CardColumn.propTypes) as any;
 
 CardColumn.create = createShorthandFactory({ Component: CardColumn });

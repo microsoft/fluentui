@@ -1,4 +1,4 @@
-import { Accessibility, cardPreviewBehavior, CardPreviewBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ export interface CardPreviewProps extends UIComponentProps, ChildrenComponentPro
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility<CardPreviewBehaviorProps>;
+  accessibility?: Accessibility<never>;
 
   /**
    *
@@ -80,10 +80,6 @@ CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),
   horizontal: PropTypes.bool,
   fitted: PropTypes.bool
-};
-
-CardPreview.defaultProps = {
-  accessibility: cardPreviewBehavior
 };
 
 CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;

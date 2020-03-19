@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
-import { Accessibility, cardBodyBehavior, CardBodyBehaviorProps } from '@fluentui/accessibility';
+import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps 
   /**
    * Accessibility behavior if overridden by the user.
    * */
-  accessibility?: Accessibility<CardBodyBehaviorProps>;
+  accessibility?: Accessibility<never>;
 
   /**
    * A body can be fitted, without any space above or below it.
@@ -67,10 +67,6 @@ CardBody.className = 'ui-card__body';
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),
   fitted: PropTypes.bool
-};
-
-CardBody.defaultProps = {
-  accessibility: cardBodyBehavior
 };
 
 CardBody.handledProps = Object.keys(CardBody.propTypes) as any;
