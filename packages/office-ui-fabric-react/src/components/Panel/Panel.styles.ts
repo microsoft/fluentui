@@ -314,6 +314,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.header,
       sharedPaddingStyles,
       {
+        flexDirection: 'row',
         flexGrow: 1
       },
       hasCustomNavigation && {
