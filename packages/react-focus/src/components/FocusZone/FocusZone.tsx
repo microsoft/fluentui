@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+  getCode,
   ArrowDownKey,
   ArrowLeftKey,
   ArrowRightKey,
@@ -452,7 +453,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Handle global tab presses so that we can patch tabindexes on the fly.
    */
   private _onKeyDownCapture = (ev: KeyboardEvent): void => {
-    if (ev.keyCode === TabKey) {
+    if (getCode(ev) === TabKey) {
       _outerZones.forEach((zone: FocusZone) => zone._updateTabIndexes());
     }
   };
@@ -573,7 +574,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     } else if (ev.altKey) {
       return;
     } else {
-      switch (ev.keyCode) {
+      switch (getCode(ev)) {
         case SpacebarKey:
           if (this._tryInvokeClickForFocusable(ev.target as HTMLElement)) {
             break;
