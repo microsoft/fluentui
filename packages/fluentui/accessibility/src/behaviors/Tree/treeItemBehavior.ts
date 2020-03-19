@@ -60,15 +60,11 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
       },
       ...(props.selectable && {
         performClick: {
-          keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+          keyCombinations: props.hasSubtree
+            ? [{ keyCode: keyboardKey.Spacebar }, { keyCode: keyboardKey.Enter }]
+            : [{ keyCode: keyboardKey.Spacebar }],
         },
       }),
-      ...(props.selectable &&
-        props.hasSubtree && {
-          performClick: {
-            keyCombinations: [{ keyCode: keyboardKey.Enter }],
-          },
-        }),
     },
   },
   childBehaviors: {
