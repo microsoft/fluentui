@@ -145,6 +145,76 @@ exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
 "
 `;
 
+exports[`felaRenderer prefixes required styles 1`] = `
+".a {
+  background: -webkit-linear-gradient(#e66465, #9198e5);
+  background: -moz-linear-gradient(#e66465, #9198e5);
+  background: linear-gradient(#e66465, #9198e5);
+}
+.b {
+  background-clip: -webkit-text;
+  background-clip: text;
+}
+.c {
+  background-image: -webkit-cross-fade(75% url(\\"foo.png\\"), url(\\"bar.png\\"));
+  background-image: cross-fade(75% url(\\"foo.png\\"), url(\\"bar.png\\"));
+}
+.d {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+.e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.f {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+.g {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+.h {
+  margin-block-end: 20px;
+  -webkit-margin-after: 20px;
+}
+.i {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.j {
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
+  -webkit-transition: width 2s, height 2s, background-color 2s, transform 2s;
+  -moz-transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+.k:hover {
+  background-image: -webkit-image-set(\\"cat.png\\" 1x, \\"cat-2x.png\\" 2x);
+  background-image: image-set(\\"cat.png\\" 1x, \\"cat-2x.png\\" 2x);
+}
+.l:hover {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+.m:hover {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+
+<div className=ui-box a b c d e f g h i j k l m />;
+"
+`;
+
 exports[`felaRenderer styles are expanded to longhand values 1`] = `
 ".a {
   border-top-style: solid;
