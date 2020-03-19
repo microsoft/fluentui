@@ -17,12 +17,18 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
       width,
       padding,
       gridGap,
-      display: 'grid',
+      display: ['grid', '-ms-grid'],
       justifyContent: 'space-evenly',
 
       ...(rows && !columns && { gridAutoFlow: 'column' }),
-      ...(rows && { gridTemplateRows: getCSSTemplateValue(rows) }),
-      ...(columns && { gridTemplateColumns: getCSSTemplateValue(columns) }),
+      ...(rows && {
+        gridTemplateRows: getCSSTemplateValue(rows),
+        msGridRows: getCSSTemplateValue(rows),
+      }),
+      ...(columns && {
+        gridTemplateColumns: getCSSTemplateValue(columns),
+        msGridColumns: getCSSTemplateValue(columns),
+      }),
 
       '& > *': { outlineOffset: '-3px' },
     };

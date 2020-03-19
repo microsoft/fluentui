@@ -13,8 +13,11 @@ export default {
     padding: v.rootPadding,
     position: 'relative',
     width: v.rootWidth,
-    display: 'grid',
+
+    display: ['grid', '-ms-grid'],
     gridTemplateColumns: '1fr auto',
+    msGridColumns: '1fr auto',
+
     boxShadow: v.boxShadow,
     color: v.foregroundColor,
   }),
@@ -22,6 +25,7 @@ export default {
   footer: (): ICSSInJSStyle => ({
     gridColumn: '1 / -1',
     gridRow: 3,
+    msGridRow: 3,
   }),
 
   actions: (): ICSSInJSStyle => ({
@@ -30,8 +34,14 @@ export default {
 
   content: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
     margin: v.contentMargin,
+
     gridColumn: '1 / span 2',
     gridRow: 2,
+
+    msGridColumn: 1,
+    msGridColumnSpan: 2,
+    msGridRow: 2,
+
     justifySelf: 'left',
     width: '100%',
   }),
@@ -39,7 +49,9 @@ export default {
   header: ({ variables: v }: DialogStyleParams): ICSSInJSStyle => ({
     margin: v.headerMargin,
     gridRow: 1,
+    msGridRow: 1,
     gridColumn: 1,
+    msGridColumn: 1,
     justifySelf: 'left',
     fontSize: v.headerFontSize,
     fontWeight: v.headerFontWeight,
@@ -47,7 +59,9 @@ export default {
 
   headerAction: ({ variables: v }: DialogStyleParams) => ({
     gridRow: 1,
+    msGridRow: 1,
     gridColumn: 2,
+    msGridColumn: 2,
     color: v.foregroundColor,
     margin: v.headerActionMargin,
   }),
