@@ -38,7 +38,6 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
         selectors: {
           text: {
             ...theme.fonts.tiny
-            // opacity: 1
           },
           line: {
             opacity: 0.3,
@@ -85,19 +84,20 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       paddingBottom: '8px'
     },
 
-    hoverCardTextStyles: {
-      fontFamily: 'Segoe UI',
-      fontSize: '12px',
-      lineHeight: '14px'
-    },
+    hoverCardTextStyles: [
+      theme.fonts.small,
+      {
+        lineHeight: '14px'
+      }
+    ],
 
-    hoverCardDataStyles: {
-      color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: '28px',
-      fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
-      lineHeight: '31px'
-    },
+    hoverCardDataStyles: [
+      theme.fonts.xxLarge,
+      {
+        lineHeight: '31px',
+        color: legendColor === '' ? theme.palette.black : legendColor
+      }
+    ],
 
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',

@@ -51,9 +51,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
           ...DefaultFontStyles.large
         },
         xAxisText: {
-          transform: 'rotate(45deg)',
-          'alignment-baseline': 'text-after-edge',
-          textAnchor: 'start',
+          // textAnchor: 'start',
           ...textStyle
         }
       };

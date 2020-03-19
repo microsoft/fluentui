@@ -64,7 +64,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     this._adjustProps();
   }
 
-  public render(): JSX.Element {
+  public render(): React.ReactNode {
     const dataset: IDataPoint[] = this._createDataSetLayer();
 
     const isNumeric: boolean = dataset.length > 0 && typeof dataset[0].x === 'number';
