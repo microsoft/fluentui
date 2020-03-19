@@ -4,7 +4,7 @@ import * as React from 'react';
 const SimpleCardOnlyBody = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
     <Card>
-      <Card.Body>
+      <Card.Body fitted>
         <Flex column gap="gap.small">
           <Image src="public/images/wireframe/square-image.png" />
           <Text content="Citizens of distant epochs muse about at the edge of forever hearts of the..." />

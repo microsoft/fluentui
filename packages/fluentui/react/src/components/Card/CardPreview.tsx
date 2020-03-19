@@ -22,19 +22,19 @@ export interface CardPreviewProps extends UIComponentProps, ChildrenComponentPro
   horizontal?: boolean;
 
   /**
-   * Do not add margin after the preview
+   * A preview can be fitted, without any space above or below it.
    */
-  noMarginAfter?: boolean;
+  fitted?: boolean;
 }
 
-export type CardPreviewStylesProps = Pick<CardPreviewProps, 'horizontal' | 'noMarginAfter'>;
+export type CardPreviewStylesProps = Pick<CardPreviewProps, 'horizontal' | 'fitted'>;
 
 const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStaticProps<CardPreviewProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardPreview.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, children, horizontal, noMarginAfter } = props;
+  const { className, design, styles, variables, children, horizontal, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(CardPreview.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -44,12 +44,12 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 
   const { classes } = useStyles<CardPreviewStylesProps>(CardPreview.displayName, {
     className: CardPreview.className,
-    mapPropsToStyles: () => ({ horizontal, noMarginAfter }),
+    mapPropsToStyles: () => ({ horizontal, fitted }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables,
+      variables
     }),
     rtl: context.rtl
   });
@@ -79,14 +79,11 @@ CardPreview.className = 'ui-card__preview';
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),
   horizontal: PropTypes.bool,
-  noMarginAfter: PropTypes.bool
+  fitted: PropTypes.bool
 };
 
 CardPreview.defaultProps = {
-  as: 'div',
-  accessibility: cardPreviewBehavior,
-  horizontal: false,
-  noMarginAfter: false
+  accessibility: cardPreviewBehavior
 };
 
 CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;

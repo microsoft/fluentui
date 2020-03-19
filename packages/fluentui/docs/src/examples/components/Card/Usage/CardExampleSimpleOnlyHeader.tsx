@@ -4,7 +4,7 @@ import * as React from 'react';
 const SimpleCard = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
     <Card>
-      <Card.Header>
+      <Card.Header fitted>
         <Flex gap="gap.small">
           <Flex.Item>
             <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />

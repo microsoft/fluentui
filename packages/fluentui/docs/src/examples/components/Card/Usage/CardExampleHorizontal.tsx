@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const CardExampleHorizontal = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
-    <Card noPadding horizontal>
+    <Card compact horizontal>
       <Card.Preview id="cardMedia" horizontal>
         <Image style={{ height: '100px', width: '100px' }} src="public/images/wireframe/square-image.png" />
       </Card.Preview>

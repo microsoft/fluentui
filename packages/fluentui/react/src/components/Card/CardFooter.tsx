@@ -14,19 +14,19 @@ export interface CardFooterProps extends UIComponentProps, ChildrenComponentProp
   accessibility?: Accessibility<CardFooterBehaviorProps>;
 
   /**
-   * Do not add margin after the footer
+   * A footer can be fitted, without any space above or below it.
    */
-  noMarginAfter?: boolean;
+  fitted?: boolean;
 }
 
-export type CardFooterStylesProps = Pick<CardFooterProps, 'noMarginAfter'>;
+export type CardFooterStylesProps = Pick<CardFooterProps, 'fitted'>;
 
 const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticProps<CardFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, children, noMarginAfter } = props;
+  const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(CardFooter.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -36,12 +36,12 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
 
   const { classes } = useStyles<CardFooterStylesProps>(CardFooter.displayName, {
     className: CardFooter.className,
+    mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables,
-      noMarginAfter
+      variables
     }),
     rtl: context.rtl
   });
@@ -65,13 +65,11 @@ CardFooter.className = 'ui-card__footer';
 
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),
-  noMarginAfter: PropTypes.bool
+  fitted: PropTypes.bool
 };
 
 CardFooter.defaultProps = {
-  as: 'div',
-  accessibility: cardFooterBehavior,
-  noMarginAfter: false
+  accessibility: cardFooterBehavior
 };
 
 CardFooter.handledProps = Object.keys(CardFooter.propTypes) as any;

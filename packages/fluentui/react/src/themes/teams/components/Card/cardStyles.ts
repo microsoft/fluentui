@@ -1,16 +1,16 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsCardVariables } from './cardVariables';
+import { CardVariables } from './cardVariables';
 import { CardStylesProps } from '../../../../components/Card/Card';
 
-const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, TeamsCardVariables> = {
+const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
       ...(p.horizontal && { flexDirection: 'row' }),
-      ...(!p.noPadding && { padding: v.cardPadding }),
-      ...(p.center && { alignItems: 'center' })
+      ...(!p.compact && { padding: v.cardPadding }),
+      ...(p.centered && { alignItems: 'center' })
     };
   }
 };

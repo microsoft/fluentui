@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const CenteredCard = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
-    <Card center>
+    <Card centered>
       <Card.Header>
         <Flex gap="gap.small" column hAlign="center">
           <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />

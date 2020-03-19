@@ -1,13 +1,13 @@
 import { pxToRem } from '../../../../utils';
 
-export interface TeamsCardVariables {
+export interface CardVariables {
   cardPadding: string;
   cardChildMarginBottom: string;
   topControlsTop: string;
   topControlsRight: string;
 }
 
-export default (siteVariables): Partial<TeamsCardVariables> => {
+export default (): Partial<CardVariables> => {
   return {
     cardPadding: pxToRem(10),
     cardChildMarginBottom: pxToRem(10),

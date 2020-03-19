@@ -4,7 +4,7 @@ import * as React from 'react';
 const SimpleCard = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
     <Card>
-      <Card.Footer>
+      <Card.Footer fitted>
         <Flex space="between">
           <Flex.Item>
             <Button content="Action" />

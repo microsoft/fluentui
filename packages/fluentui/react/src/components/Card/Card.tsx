@@ -27,11 +27,8 @@ export interface CardProps extends UIComponentProps, ChildrenComponentProps {
    */
   onClick?: ComponentEventHandler<CardProps>;
 
-  /**
-   * Do not show padding for the card root
-   */
-
-  noPadding?: boolean;
+  /** A card can be compact, without any padding inside. */
+  compact?: boolean;
 
   /**
    * Use card horizontal layout
@@ -40,13 +37,13 @@ export interface CardProps extends UIComponentProps, ChildrenComponentProps {
   horizontal?: boolean;
 
   /**
-   * Center content
+   * Center content in the card
    */
 
-  center?: boolean;
+  centered?: boolean;
 }
 
-export type CardStylesProps = Pick<CardProps, 'noPadding' | 'horizontal' | 'center'>;
+export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered'>;
 
 export interface CardSlotClassNames {
   header: string;
@@ -69,7 +66,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, children, noPadding, horizontal, center } = props;
+  const { className, design, styles, variables, children, compact, horizontal, centered } = props;
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(Card.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -84,14 +81,16 @@ const Card: React.FC<WithAsProp<CardProps>> &
 
   const { classes } = useStyles<CardStylesProps>(Card.displayName, {
     className: Card.className,
+    mapPropsToStyles: () => ({
+      centered,
+      horizontal,
+      compact
+    }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables,
-      noPadding,
-      horizontal,
-      center
+      variables
     }),
     rtl: context.rtl
   });
@@ -129,17 +128,13 @@ Card.slotClassNames = {
 Card.propTypes = {
   ...commonPropTypes.createCommon(),
   onClick: PropTypes.func,
-  noPadding: PropTypes.bool,
+  compact: PropTypes.bool,
   horizontal: PropTypes.bool,
-  center: PropTypes.bool
+  centered: PropTypes.bool
 };
 
 Card.defaultProps = {
-  as: 'div',
-  accessibility: cardBehavior,
-  noPadding: false,
-  horizontal: false,
-  center: false
+  accessibility: cardBehavior
 };
 
 Card.handledProps = Object.keys(Card.propTypes) as any;

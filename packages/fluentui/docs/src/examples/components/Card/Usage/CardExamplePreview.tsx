@@ -3,7 +3,7 @@ import * as React from 'react';
 
 const CardExamplePreview = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
-    <Card noPadding>
+    <Card compact>
       <Card.TopControls>
         <Checkbox aria-label="test checkbox" />
       </Card.TopControls>

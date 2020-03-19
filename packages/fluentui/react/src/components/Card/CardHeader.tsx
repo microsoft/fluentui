@@ -14,19 +14,19 @@ export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProp
   accessibility?: Accessibility<CardHeaderBehaviorProps>;
 
   /**
-   * Do not add margin after the header
+   * A footer can be fitted, without any space above or below it.
    */
-  noMarginAfter?: boolean;
+  fitted?: boolean;
 }
 
-export type CardHeaderStylesProps = Pick<CardHeaderProps, 'noMarginAfter'>;
+export type CardHeaderStylesProps = Pick<CardHeaderProps, 'fitted'>;
 
 const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticProps<CardHeaderProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardHeader.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, children, noMarginAfter } = props;
+  const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(CardHeader.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -36,12 +36,12 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
 
   const { classes } = useStyles<CardHeaderStylesProps>(CardHeader.displayName, {
     className: CardHeader.className,
+    mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables,
-      noMarginAfter
+      variables
     }),
     rtl: context.rtl
   });
@@ -65,11 +65,11 @@ CardHeader.className = 'ui-card__header';
 
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),
-  noMarginAfter: PropTypes.bool
+  fitted: PropTypes.bool
 };
 
 CardHeader.defaultProps = {
-  accessibility: cardHeaderBehavior,
+  accessibility: cardHeaderBehavior
 };
 
 CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;

@@ -1,11 +1,11 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { TeamsCardVariables } from './cardVariables';
+import { CardVariables } from './cardVariables';
 import { CardPreviewStylesProps } from '../../../../components/Card/CardPreview';
 
-const cardPreviewStyles: ComponentSlotStylesPrepared<CardPreviewStylesProps, TeamsCardVariables> = {
-  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+const cardPreviewStyles: ComponentSlotStylesPrepared<CardPreviewStylesProps, CardVariables> = {
+  root: ({ props: p, variables: v }): ICSSInJSStyle => {
     return {
-      ...(!p.noMarginAfter && {
+      ...(!p.fitted && {
         marginBottom: v.cardChildMarginBottom,
         ...(p.horizontal && {
           marginBottom: undefined,

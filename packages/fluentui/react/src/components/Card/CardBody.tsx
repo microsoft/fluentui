@@ -15,19 +15,19 @@ export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps 
   accessibility?: Accessibility<CardBodyBehaviorProps>;
 
   /**
-   * Do not add margin after the body
+   * A body can be fitted, without any space above or below it.
    */
-  noMarginAfter?: boolean;
+  fitted?: boolean;
 }
 
-export type CardBodyStylesProps = Pick<CardBodyProps, 'noMarginAfter'>;
+export type CardBodyStylesProps = Pick<CardBodyProps, 'fitted'>;
 
 const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps<CardBodyProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardBody.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, children, noMarginAfter } = props;
+  const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
   const unhandledProps = getUnhandledProps(CardBody.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -37,12 +37,12 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
 
   const { classes } = useStyles<CardBodyStylesProps>(CardBody.displayName, {
     className: CardBody.className,
+    mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables,
-      noMarginAfter
+      variables
     }),
     rtl: context.rtl
   });
@@ -66,13 +66,11 @@ CardBody.className = 'ui-card__body';
 
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),
-  noMarginAfter: PropTypes.bool
+  fitted: PropTypes.bool
 };
 
 CardBody.defaultProps = {
-  as: 'div',
-  accessibility: cardBodyBehavior,
-  noMarginAfter: false
+  accessibility: cardBodyBehavior
 };
 
 CardBody.handledProps = Object.keys(CardBody.propTypes) as any;
