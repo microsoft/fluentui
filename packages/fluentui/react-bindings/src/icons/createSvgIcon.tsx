@@ -13,6 +13,7 @@ import { SvgIconCreateFnParams, SvgIconProps } from './types';
 export const SvgIconClassName = 'ui-icon';
 export const SvgIconDisplayName = 'SvgIcon';
 
+// keep in sync with SvgIconProps
 export const SvgIconPropTypes = {
   as: PropTypes.elementType,
   className: PropTypes.string,

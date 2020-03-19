@@ -3,7 +3,7 @@ import { AccessibilityAttributes } from '@fluentui/accessibility';
 import { ComponentSlotStyle, ComponentVariablesInput } from '@fluentui/styles';
 import { ComponentDesignProp } from '../styles/types';
 
-// TODO: this is copy from @fluentui/react
+// copy from @fluentui/react
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 export type SvgIconXSpacing = 'none' | 'before' | 'after' | 'both';
