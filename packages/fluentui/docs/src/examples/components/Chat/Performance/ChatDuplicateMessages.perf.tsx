@@ -1,4 +1,4 @@
-import { Avatar, Chat, Provider } from '@fluentui/react';
+import { Avatar, Chat, Provider } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 

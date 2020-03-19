@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, Status } from '@fluentui/react';
+import { List, Status } from '@fluentui/react-northstar';
 
 const items = [
   {

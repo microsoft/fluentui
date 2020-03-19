@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];

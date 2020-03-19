@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import Scrollbars from 'react-custom-scrollbars';
-import { Text, Menu, List, Button, Popup, Dialog, Dropdown } from '@fluentui/react';
+import { Text, Menu, List, Button, Popup, Dialog, Dropdown } from '@fluentui/react-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
 const ScrollbarMenuPrototype = () => {

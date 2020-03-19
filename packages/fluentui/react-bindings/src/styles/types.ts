@@ -91,7 +91,7 @@ export type ResolveStylesOptions = StylesContextValue<{
   renderRule: RendererRenderRule;
 }> & {
   className?: string;
-  displayName: string;
+  displayNames: string[];
   props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
   saveDebug: (debug: DebugData | null) => void;

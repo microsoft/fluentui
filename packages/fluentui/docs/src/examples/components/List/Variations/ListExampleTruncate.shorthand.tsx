@@ -1,5 +1,5 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { List, Image, ButtonGroup } from '@fluentui/react';
+import { List, Image, ButtonGroup } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const actions = (

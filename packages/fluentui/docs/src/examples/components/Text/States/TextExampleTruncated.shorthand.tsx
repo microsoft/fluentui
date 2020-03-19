@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 
 const [notTruncatedText, truncatedText] = [
   'Some long text here to see how it looks when not truncated',

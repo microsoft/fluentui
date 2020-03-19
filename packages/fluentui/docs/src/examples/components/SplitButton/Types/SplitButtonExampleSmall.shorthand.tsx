@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SplitButton } from '@fluentui/react';
+import { SplitButton } from '@fluentui/react-northstar';
 
 const SplitButtonExampleSmallShorthand = () => (
   <>

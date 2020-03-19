@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Grid } from '@fluentui/react';
+import { Grid } from '@fluentui/react-northstar';
 
 type EditorToolbarTableProps = {
   onClick: () => void;

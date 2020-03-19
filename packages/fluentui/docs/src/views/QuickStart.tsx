@@ -1,5 +1,5 @@
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header, Icon } from '@fluentui/react';
+import { Header, Icon } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import DocPage from '../components/DocPage';
@@ -11,7 +11,7 @@ export default () => (
     <p>
       Fluent UI should be installed as a <code>dependency</code> of your app.
     </p>
-    <CodeSnippet mode="bash" value="yarn add @fluentui/react" />
+    <CodeSnippet mode="bash" value="yarn add @fluentui/react-northstar" />
     <Header as="h2">Setup</Header>
     <p>
       Fluent UI components are styled using CSS in JS. This technique requires a style renderer to render JavaScript objects to CSS.{' '}
@@ -28,7 +28,7 @@ export default () => (
       value={`
         import React from 'react'
         import ReactDOM from 'react-dom'
-        import { Provider, themes } from '@fluentui/react'
+        import { Provider, themes } from '@fluentui/react-northstar'
 
         import App from './App'
 
@@ -46,7 +46,7 @@ export default () => (
       label="App.jsx"
       value={`
         import React from 'react'
-        import { Button } from '@fluentui/react'
+        import { Button } from '@fluentui/react-northstar'
 
         export default () => <Button content="Get started" icon="play" iconPosition="after" primary />
       `}

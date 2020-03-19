@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Dropdown, Button } from '@fluentui/react';
+import { Form, Dropdown, Button } from '@fluentui/react-northstar';
 
 const labelId = 'choose-friend-label';
 const fields = [

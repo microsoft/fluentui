@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Carousel, Image } from '@fluentui/react';
+import { Carousel, Image } from '@fluentui/react-northstar';
 
 const carouselItems = [
   {

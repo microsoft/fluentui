@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Input, Slider, Flex } from '@fluentui/react';
+import { Button, Input, Slider, Flex } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
 
 interface SliderAction {

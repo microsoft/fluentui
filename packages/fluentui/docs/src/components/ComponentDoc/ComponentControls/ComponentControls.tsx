@@ -1,5 +1,5 @@
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Menu, menuAsToolbarBehavior, Tooltip } from '@fluentui/react';
+import { Menu, menuAsToolbarBehavior, Tooltip } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';

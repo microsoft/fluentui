@@ -10,7 +10,7 @@ import {
   IconXSpacing,
   ICSSInJSStyle,
   Props
-} from '@fluentui/react';
+} from '@fluentui/react-northstar';
 
 import chatProtoStyle from './chatProtoStyle';
 

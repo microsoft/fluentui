@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Button, Flex, Popup } from '@fluentui/react';
+import { Alert, Button, Flex, Popup } from '@fluentui/react-northstar';
 
 class PopupExampleOn extends React.Component {
   state = { alert: false };

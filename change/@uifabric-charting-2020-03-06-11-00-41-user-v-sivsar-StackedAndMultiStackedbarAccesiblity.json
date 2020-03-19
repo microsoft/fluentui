@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "fixed accessiblity for the  statcked and multistacked bar chart by adding id for each callout and setting aria-labelledby accordingly",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "commit": "fb72078344218bf53179de722e3c724eb65fcf3e",
+  "dependentChangeType": "patch",
+  "date": "2020-03-06T05:30:41.153Z"
+}

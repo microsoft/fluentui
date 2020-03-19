@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { ILegend, Legends } from '../Legends/index';
 import { IChartDataPoint, IChartProps } from './index';
 import { IStackedBarChartProps, IStackedBarChartStyleProps, IStackedBarChartStyles } from './StackedBarChart.types';
@@ -34,6 +34,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     ignoreFixStyle: false
   };
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
+  private _calloutId: string;
 
   public constructor(props: IStackedBarChartProps) {
     super(props);
@@ -50,6 +51,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     this._onLeave = this._onLeave.bind(this);
     this._refCallback = this._refCallback.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
+    this._calloutId = getId('callout');
   }
 
   public render(): JSX.Element {
@@ -140,6 +142,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
                   target={this.state.refSelected}
                   setInitialFocus={true}
                   directionalHint={DirectionalHint.topRightEdge}
+                  id={this._calloutId}
                 >
                   <div className={this._classNames.hoverCardRoot}>
                     <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
@@ -237,6 +240,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           focusable={'true'}
           onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
           onBlur={this._onBarLeave}
+          aria-labelledby={this._calloutId}
           onMouseOver={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseMove={this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={this._onBarLeave}

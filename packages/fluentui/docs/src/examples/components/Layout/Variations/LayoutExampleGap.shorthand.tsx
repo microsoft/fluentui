@@ -1,5 +1,5 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { Layout } from '@fluentui/react';
+import { Layout } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const LayoutExampleGap = () => {

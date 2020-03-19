@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Accordion } from '@fluentui/react';
+import { Accordion } from '@fluentui/react-northstar';
 
 const panels = [
   {

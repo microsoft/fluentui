@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Creating a fork of the keyboard-key library to convert to typescript, produce es6, add typings, and reduce bundle. Hooking up to bundle validation as well.",
-  "packageName": "@fluentui/keyboard-key",
-  "email": "dzearing@microsoft.com",
-  "commit": "d4c7a9dfb5c92bf9512d6f9df1a954f292d8cc76",
-  "dependentChangeType": "patch",
-  "date": "2020-03-12T15:52:30.890Z"
-}

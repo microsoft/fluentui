@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ItemLayout, Icon } from '@fluentui/react';
+import { ItemLayout, Icon } from '@fluentui/react-northstar';
 
 const ItemLayoutExampleRtlShorthand = () => (
   <>

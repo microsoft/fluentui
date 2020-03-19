@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, ICSSInJSStyle, Segment, Text } from '@fluentui/react';
+import { Divider, ICSSInJSStyle, Segment, Text } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import ComponentExampleTitle from './ComponentExample/ComponentExampleTitle';
 import BehaviorDescription from './BehaviorDescription';

@@ -1,7 +1,7 @@
 import * as Accessibility from '@fluentui/accessibility';
 import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as DocsComponent from '@fluentui/docs-components';
-import * as FluentUI from '@fluentui/react';
+import * as FluentUI from '@fluentui/react-northstar';
 import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -10,7 +10,7 @@ import * as Classnames from 'classnames';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
-const projectPackageJson = require('@fluentui/react/package.json');
+const projectPackageJson = require('@fluentui/react-northstar/package.json');
 
 export const babelConfig = {
   plugins: ['proposal-class-properties', 'proposal-object-rest-spread', ['transform-typescript', { isTSX: true }], 'transform-classes'],
@@ -31,7 +31,7 @@ export const imports: Record<string, { version: string; module: any }> = {
     version: docsComponentsPackageJson.version,
     module: DocsComponent
   },
-  '@fluentui/react': {
+  '@fluentui/react-northstar': {
     version: projectPackageJson.version,
     module: FluentUI
   },

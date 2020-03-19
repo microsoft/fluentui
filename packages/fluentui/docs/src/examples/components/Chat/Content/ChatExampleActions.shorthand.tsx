@@ -1,4 +1,4 @@
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react';
+import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const actionMenu = {

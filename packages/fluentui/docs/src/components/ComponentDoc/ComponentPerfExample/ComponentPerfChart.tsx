@@ -1,5 +1,5 @@
 import * as _ from 'lodash';
-import { Box, Flex, RadioGroup, Text, Checkbox } from '@fluentui/react';
+import { Box, Flex, RadioGroup, Text, Checkbox } from '@fluentui/react-northstar';
 import { PerfChart, usePerfData } from '../PerfChart';
 import * as React from 'react';
 import { PerfData, PerfSample } from '../PerfChart/PerfDataContext';

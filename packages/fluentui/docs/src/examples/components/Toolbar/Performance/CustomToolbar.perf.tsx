@@ -22,7 +22,7 @@ import {
   mergeThemes,
   Tooltip,
   tooltipAsLabelBehavior
-} from '@fluentui/react';
+} from '@fluentui/react-northstar';
 
 type CustomStatusVariables = {
   isRecordingIndicator?: boolean;

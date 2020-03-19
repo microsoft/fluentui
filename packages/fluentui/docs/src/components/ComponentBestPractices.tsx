@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Extendable, Box, Flex, Header, Icon, List, ListItemProps, Segment, ShorthandCollection } from '@fluentui/react';
+import { Extendable, Box, Flex, Header, Icon, List, ListItemProps, Segment, ShorthandCollection } from '@fluentui/react-northstar';
 
 export type ComponentBestPracticesProps = Extendable<{
   doList?: ShorthandCollection<ListItemProps>;

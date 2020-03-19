@@ -1,4 +1,4 @@
-import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react';
+import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 

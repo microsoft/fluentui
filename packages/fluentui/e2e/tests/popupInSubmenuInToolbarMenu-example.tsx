@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react';
+import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react-northstar';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',

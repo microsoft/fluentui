@@ -1,4 +1,4 @@
-import { Chat, Provider, Avatar, ChatMessageProps, ShorthandCollection, ReactionProps } from '@fluentui/react';
+import { Chat, Provider, Avatar, ChatMessageProps, ShorthandCollection, ReactionProps } from '@fluentui/react-northstar';
 import * as React from 'react';
 import Popover from './Popover';
 import ReactionPopup from './ReactionPopup';

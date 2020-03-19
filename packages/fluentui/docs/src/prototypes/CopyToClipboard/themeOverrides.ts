@@ -1,4 +1,4 @@
-import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react';
+import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react-northstar';
 
 type ThemeOverrides = ThemeInput & {
   componentStyles: {

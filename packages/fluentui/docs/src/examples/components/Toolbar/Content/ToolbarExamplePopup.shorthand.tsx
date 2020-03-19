@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Toolbar, Input, Button, Form } from '@fluentui/react';
+import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
 
 const HighlightPopup = ({ onConfirm }) => {
   return (

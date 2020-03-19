@@ -1,5 +1,5 @@
 import { CodeSnippet, useKnobValues } from '@fluentui/docs-components';
-import { createComponent, Flex } from '@fluentui/react';
+import { createComponent, Flex } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 

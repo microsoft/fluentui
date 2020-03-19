@@ -1,4 +1,4 @@
-import * as FluentUI from '@fluentui/react';
+import * as FluentUI from '@fluentui/react-northstar';
 
 import { KnobDefinition, KnobGeneratorOptions, KnobGenerator } from '../../types';
 import * as componentGenerators from './componentGenerators';
@@ -40,7 +40,9 @@ const createHookGenerator = (options: KnobGeneratorOptions): null | KnobDefiniti
 
   if (process.env.NODE_ENV !== 'production') {
     if (!Component) {
-      throw new Error(`Cannot find an export for "${componentInfo.displayName}", please check that it is exported from "@fluentui/react"`);
+      throw new Error(
+        `Cannot find an export for "${componentInfo.displayName}", please check that it is exported from "@fluentui/react-northstar"`
+      );
     }
   }
 

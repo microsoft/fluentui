@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu } from '@fluentui/react';
+import { Menu } from '@fluentui/react-northstar';
 
 const items = [
   { key: 'onedrive', icon: 'onedrive' },

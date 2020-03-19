@@ -1,7 +1,7 @@
 import { KnobInspector, KnobProvider } from '@fluentui/docs-components';
-import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react';
+import { Divider, Flex, Header, Provider, RadioGroup, Text, themes } from '@fluentui/react-northstar';
 // @ts-ignore
-import pkg from '@fluentui/react/package.json';
+import pkg from '@fluentui/react-northstar/package.json';
 import * as React from 'react';
 
 import KnobsSnippet from './KnobsSnippet';

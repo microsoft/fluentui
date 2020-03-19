@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import { getComponentGroup, scrollToAnchor } from '../../../utils';
 import ComponentPropsOutline from './ComponentPropsOutline';
-import { Flex, Header } from '@fluentui/react';
+import { Flex, Header } from '@fluentui/react-northstar';
 import ComponentPropCard from './ComponentPropCard';
 
 export default class ComponentProps extends React.Component<any, any> {

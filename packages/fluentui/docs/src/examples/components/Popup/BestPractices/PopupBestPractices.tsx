@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import ComponentBestPractices from '../../../../components/ComponentBestPractices';
 import { code, link } from '../../../../utils/helpers';
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 
 const doList = [
   <Text>Do set {link('trapFocus', '/focus-trap-zone#usage')} if the focus needs to be trapped inside of the Popup.</Text>,

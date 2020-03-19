@@ -1,4 +1,4 @@
-import { Provider, ProviderConsumer, Grid } from '@fluentui/react';
+import { Provider, ProviderConsumer, Grid } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 

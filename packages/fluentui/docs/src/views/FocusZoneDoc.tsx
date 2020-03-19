@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import { CodeSnippet } from '@fluentui/docs-components';
 
 import ComponentPropsTable from '../components/ComponentDoc/ComponentPropsTable';

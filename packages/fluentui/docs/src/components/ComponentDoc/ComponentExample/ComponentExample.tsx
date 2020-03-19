@@ -1,6 +1,6 @@
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
 import { CopyToClipboard, KnobInspector, KnobProvider, LogInspector } from '@fluentui/docs-components';
-import { ComponentVariablesInput, constants, Flex, ICSSInJSStyle, Menu, Provider, Segment, ThemeInput } from '@fluentui/react';
+import { ComponentVariablesInput, constants, Flex, ICSSInJSStyle, Menu, Provider, Segment, ThemeInput } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';

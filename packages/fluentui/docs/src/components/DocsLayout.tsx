@@ -1,4 +1,4 @@
-import { Provider, themes, pxToRem, createTheme } from '@fluentui/react';
+import { Provider, themes, pxToRem, createTheme } from '@fluentui/react-northstar';
 // @ts-ignore
 import AnchorJS from 'anchor-js';
 import * as PropTypes from 'prop-types';

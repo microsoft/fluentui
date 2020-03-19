@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Scrollbars from 'react-custom-scrollbars';
-import { Chat, Divider, Avatar, Props } from '@fluentui/react';
+import { Chat, Divider, Avatar, Props } from '@fluentui/react-northstar';
 
 import { ChatData, ChatItemTypes, generateChatProps } from './services';
 import chatProtoStyle from './chatProtoStyle';

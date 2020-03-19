@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Extendable, Popup } from '@fluentui/react';
+import { Avatar, Extendable, Popup } from '@fluentui/react-northstar';
 import EmployeeCard, { EmployeeCardProps } from './EmployeeCard';
 
 export interface AvatarEmployeeCardState {

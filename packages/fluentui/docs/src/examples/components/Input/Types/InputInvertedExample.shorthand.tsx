@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Input } from '@fluentui/react';
+import { Grid, Input } from '@fluentui/react-northstar';
 
 const InputExample = () => (
   <div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Tooltip, Text } from '@fluentui/react';
+import { Button, Tooltip, Text } from '@fluentui/react-northstar';
 
 const TooltipExampleRtl = () => (
   <Tooltip

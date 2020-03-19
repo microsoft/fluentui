@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Alert } from '@fluentui/react';
+import { Alert } from '@fluentui/react-northstar';
 
 import Types from './Types';
 import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions';

@@ -1,5 +1,5 @@
 import { useLogKnob } from '@fluentui/docs-components';
-import { List, ListItem } from '@fluentui/react';
+import { List, ListItem } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 type MemoItemProps = {

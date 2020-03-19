@@ -1,4 +1,4 @@
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const HeaderSlotsPerf = () => <Header content="Account Settings" description="Manage your account settings and set email preferences." />;

@@ -2,6 +2,20 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Wed, 18 Mar 2020 12:24:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.47",
+      "version": "7.0.47",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Azure theme: Adding storybook `yarn start` workflow for helping to design and debug the Azure themes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "24376ffa07222f4f35d3a5ec17f84f126b06af6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "@uifabric/azure-themes_v7.0.25",
       "version": "7.0.25",

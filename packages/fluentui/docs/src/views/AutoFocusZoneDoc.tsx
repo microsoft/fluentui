@@ -1,6 +1,6 @@
 import { CodeSnippet } from '@fluentui/docs-components';
 import * as React from 'react';
-import { Header } from '@fluentui/react';
+import { Header } from '@fluentui/react-northstar';
 import { Link } from 'react-router-dom';
 import DocPage from '../components/DocPage';
 import { code, link } from '../utils/helpers';

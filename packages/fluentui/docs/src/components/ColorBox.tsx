@@ -1,5 +1,5 @@
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { ComponentSlotStylesInput, ComponentSlotStyle, createComponent, Icon, ICSSInJSStyle } from '@fluentui/react';
+import { ComponentSlotStylesInput, ComponentSlotStyle, createComponent, Icon, ICSSInJSStyle } from '@fluentui/react-northstar';
 import * as Color from 'color';
 import * as _ from 'lodash';
 import * as React from 'react';

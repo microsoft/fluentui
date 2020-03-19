@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, Button, Avatar, Text } from '@fluentui/react';
+import { Divider, Button, Avatar, Text } from '@fluentui/react-northstar';
 
 const DividerVerticalExampleShorthand = () => (
   <div style={{ display: 'flex', justifyContent: 'center', height: '32px', alignItems: 'center' }}>

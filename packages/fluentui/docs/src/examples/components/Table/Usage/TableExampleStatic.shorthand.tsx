@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Table } from '@fluentui/react';
+import { Table } from '@fluentui/react-northstar';
 
 const header = {
   items: ['id', 'Name', 'Picture', 'Age']

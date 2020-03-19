@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, Animation, Button, Icon } from '@fluentui/react';
+import { Provider, Animation, Button, Icon } from '@fluentui/react-northstar';
 import { useLogKnob } from '@fluentui/docs-components';
 
 const AnimationExampleVisible = () => {

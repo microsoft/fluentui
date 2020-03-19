@@ -1,7 +1,7 @@
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Avatar, Header, Input, List, Segment } from '@fluentui/react';
+import { Avatar, Header, Input, List, Segment } from '@fluentui/react-northstar';
 
 // ----------------------------------------
 // Types

@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { SplitButton } from '@fluentui/react';
+import { SplitButton } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const SplitButtonExampleToggleButtonShorthand = () => {

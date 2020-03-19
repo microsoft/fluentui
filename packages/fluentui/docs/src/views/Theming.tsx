@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Icon, Provider, Text, Animation, Header } from '@fluentui/react';
+import { Button, Icon, Provider, Text, Animation, Header } from '@fluentui/react-northstar';
 
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';

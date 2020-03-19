@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, RadioGroup, Input, Text } from '@fluentui/react';
+import { Divider, RadioGroup, Input, Text } from '@fluentui/react-northstar';
 
 class RadioGroupVerticalExample extends React.Component {
   state = { selectedValue: '', inputTabIndex: '-1' };

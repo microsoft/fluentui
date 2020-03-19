@@ -1,6 +1,6 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Icon, Popup } from '@fluentui/react';
+import { Icon, Popup } from '@fluentui/react-northstar';
 
 export default class ComponentPropName extends React.PureComponent<any, any> {
   static propTypes = {

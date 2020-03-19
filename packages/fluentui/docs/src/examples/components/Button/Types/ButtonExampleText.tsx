@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Icon } from '@fluentui/react';
+import { Button, Icon } from '@fluentui/react-northstar';
 
 const ButtonExampleText = () => (
   <div>

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react';
+import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   { icon: 'like', content: '1K', key: 'likes', variables: { meReacting: true }, as: 'button' },

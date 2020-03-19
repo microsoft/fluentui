@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react';
+import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react-northstar';
 import chatProtoStyle from './chatProtoStyle';
 
 import { ChatData } from './services';

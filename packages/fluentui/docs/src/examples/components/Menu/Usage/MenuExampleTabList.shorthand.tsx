@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Menu, tabListBehavior } from '@fluentui/react';
+import { Menu, tabListBehavior } from '@fluentui/react-northstar';
 
 const items = [
   { key: 'editorials', content: 'Editorials' },

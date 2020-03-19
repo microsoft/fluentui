@@ -7,7 +7,7 @@ import {
   ToolbarDividerProps,
   StatusProps,
   pxToRem
-} from '@fluentui/react';
+} from '@fluentui/react-northstar';
 
 export type CustomStatusVariables = {
   isRecordingIndicator?: boolean;

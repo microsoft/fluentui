@@ -1,4 +1,4 @@
-import { Loader } from '@fluentui/react';
+import { Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import useComponentProps from '../useComponentProps';
