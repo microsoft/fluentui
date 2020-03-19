@@ -110,6 +110,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 onBlurCallback={this._onBlur}
                 activeArc={this.state.activeLegend}
                 href={href}
+                calloutId={'callout'}
               />
             </svg>
           </div>
@@ -120,7 +121,8 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             coverTarget={true}
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
-            gapSpace={5}
+            gapSpace={10}
+            id={'callout'}
             onDismiss={this._closeCallout}
             preventDismissOnLostFocus={true}
           >
