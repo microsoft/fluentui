@@ -7,8 +7,8 @@ describe('overflow', () => {
         clientWidth: 10,
         clientHeight: 10,
         scrollWidth: 10,
-        scrollHeight: 10
-      } as HTMLElement)
+        scrollHeight: 10,
+      } as HTMLElement),
     ).toEqual(false);
   });
 
@@ -17,7 +17,7 @@ describe('overflow', () => {
       clientWidth: 10,
       clientHeight: 10,
       scrollWidth: 20,
-      scrollHeight: 10
+      scrollHeight: 10,
     };
 
     expect(hasOverflow(elementWithOverflow as HTMLElement)).toEqual(true);
@@ -29,7 +29,7 @@ describe('overflow', () => {
       clientWidth: 10,
       clientHeight: 10,
       scrollWidth: 10,
-      scrollHeight: 20
+      scrollHeight: 20,
     };
 
     expect(hasOverflow(elementWithOverflow as HTMLElement)).toEqual(true);

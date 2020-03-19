@@ -23,7 +23,7 @@ const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
 
     getRefs,
     isRoot: false,
-    ref: childRef
+    ref: childRef,
   };
 };
 

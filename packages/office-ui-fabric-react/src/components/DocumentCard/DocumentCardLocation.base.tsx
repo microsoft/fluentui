@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IDocumentCardLocationProps, IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
+import {
+  IDocumentCardLocationProps,
+  IDocumentCardLocationStyleProps,
+  IDocumentCardLocationStyles,
+} from './DocumentCardLocation.types';
 
 const getClassNames = classNamesFunction<IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>();
 
@@ -22,7 +26,7 @@ export class DocumentCardLocationBase extends React.Component<IDocumentCardLocat
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

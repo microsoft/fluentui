@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Dropdown, Grid, Alignment, Position } from '@fluentui/react';
+import { Dropdown, Grid, Alignment, Position } from '@fluentui/react-northstar';
 import { useSelectKnob, useBooleanKnob } from '@fluentui/docs-components';
 
 const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];
@@ -12,7 +12,7 @@ const DropdownExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'below',
-    values: positionAndAlignValues
+    values: positionAndAlignValues,
   });
 
   const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];

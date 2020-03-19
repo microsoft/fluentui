@@ -9,18 +9,18 @@ const entryPointName = 'fabric-sitev5';
 module.exports = resources.createServeConfig(
   addMonacoWebpackConfig({
     entry: {
-      [entryPointName]: './src/root.tsx'
+      [entryPointName]: './src/root.tsx',
     },
 
     output: {
-      chunkFilename: `${entryPointName}-[name].js`
+      chunkFilename: `${entryPointName}-[name].js`,
     },
 
     // The website config intentionally doesn't have React as an external because we bundle it
     // to ensure we get a consistent version.
 
     optimization: {
-      removeAvailableModules: false
+      removeAvailableModules: false,
     },
 
     resolve: {
@@ -32,8 +32,8 @@ module.exports = resources.createServeConfig(
         'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
         'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
         'Props.ts.js': 'Props',
-        'Example.tsx.js': 'Example'
-      }
-    }
-  })
+        'Example.tsx.js': 'Example',
+      },
+    },
+  }),
 );

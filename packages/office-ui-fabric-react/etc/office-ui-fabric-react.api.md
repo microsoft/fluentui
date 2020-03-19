@@ -2979,6 +2979,20 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
 }
 
 // @public (undocumented)
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
+    // (undocumented)
+    focusableElementIndex: number;
+    // (undocumented)
+    hasCheckmarks: boolean;
+    // (undocumented)
+    hasIcons: boolean;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    totalItemCount: number;
+}
+
+// @public (undocumented)
 export interface IContextualMenuItemStyleProps {
     checked: boolean;
     className?: string;
@@ -3015,6 +3029,8 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
 
 // @public (undocumented)
 export interface IContextualMenuListProps {
+    // (undocumented)
+    defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
     // (undocumented)
     hasCheckmarks: boolean;
     // (undocumented)
@@ -6077,7 +6093,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -6118,6 +6134,15 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
+    presenceColors?: {
+        available: string;
+        away: string;
+        busy: string;
+        dnd: string;
+        offline: string;
+        oof: string;
+        background: string;
+    };
     presenceTitle?: string;
     // @deprecated
     primaryText?: string;
@@ -7760,21 +7785,13 @@ export interface IThemeRules {
 
 // @public (undocumented)
 export interface IThemeSlotRule {
-    // (undocumented)
     asShade?: Shade;
-    // (undocumented)
     color?: IColor;
-    // (undocumented)
     dependentRules: IThemeSlotRule[];
-    // (undocumented)
     inherits?: IThemeSlotRule;
-    // (undocumented)
     isBackgroundShade?: boolean;
-    // (undocumented)
     isCustomized?: boolean;
-    // (undocumented)
     name: string;
-    // (undocumented)
     value?: string;
 }
 
@@ -9455,18 +9472,12 @@ export const TextView: ITextComponent['view'];
 
 // @public (undocumented)
 export class ThemeGenerator {
-    // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
     static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeAsSass(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeForPowerShell(slotRules: IThemeRules): any;
-    // (undocumented)
     static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
-    // (undocumented)
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }
 

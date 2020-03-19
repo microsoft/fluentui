@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react';
+import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react-northstar';
 
 const colorChanger = {
   keyframe: {
     from: { color: 'red' },
-    to: { color: 'blue' }
+    to: { color: 'blue' },
   },
   duration: '3s',
-  iterationCount: 'infinite'
+  iterationCount: 'infinite',
 };
 
 const AnimationExampleFillMode = () => (

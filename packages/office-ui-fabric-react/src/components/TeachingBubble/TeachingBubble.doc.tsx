@@ -25,42 +25,46 @@ export const TeachingBubblePageProps: IDocPageProps = {
     {
       title: 'TeachingBubble Basic',
       code: TeachingBubbleBasicExampleCode,
-      view: <TeachingBubbleBasicExample />
+      view: <TeachingBubbleBasicExample />,
     },
     {
       title: 'TeachingBubble Wide',
       code: TeachingBubbleWideExampleCode,
-      view: <TeachingBubbleWideExample />
+      view: <TeachingBubbleWideExample />,
     },
     {
       title: 'TeachingBubble Condensed',
       code: TeachingBubbleCondensedExampleCode,
-      view: <TeachingBubbleCondensedExample />
+      view: <TeachingBubbleCondensedExample />,
     },
     {
       title: 'TeachingBubble with Illustration',
       code: TeachingBubbleIllustrationExampleCode,
-      view: <TeachingBubbleIllustrationExample />
+      view: <TeachingBubbleIllustrationExample />,
     },
     {
       title: 'TeachingBubble Wide with Illustration',
       code: TeachingBubbleWideIllustrationExampleCode,
-      view: <TeachingBubbleWideIllustrationExample />
+      view: <TeachingBubbleWideIllustrationExample />,
     },
     {
       title: 'TeachingBubble with small headline',
       code: TeachingBubbleSmallHeadlineExampleCode,
-      view: <TeachingBubbleSmallHeadlineExample />
+      view: <TeachingBubbleSmallHeadlineExample />,
     },
     {
       title: 'TeachingBubble with multi-steps',
       code: TeachingBubbleMultiStepExampleCode,
-      view: <TeachingBubbleMultiStepExample />
-    }
+      view: <TeachingBubbleMultiStepExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDonts.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/docs/TeachingBubbleDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

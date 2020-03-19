@@ -26,7 +26,7 @@ import { MenuItemBehaviorProps } from '../Menu/menuItemBehavior';
 const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
     wrapper: {
-      role: 'presentation'
+      role: 'presentation',
     },
     root: {
       role: 'button',
@@ -36,26 +36,29 @@ const menuItemAsToolbarButtonBehavior: Accessibility<MenuItemBehaviorProps> = pr
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
+    },
   },
 
   keyActions: {
     wrapper: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
       },
       closeMenuAndFocusTrigger: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }]
+        keyCombinations: [{ keyCode: keyboardKey.Escape }],
       },
       openMenu: !props.vertical && {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
       },
       doNotNavigateNextParentItem: {
-        keyCombinations: props.menu && props.menuOpen ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }] : null
-      }
-    }
-  }
+        keyCombinations:
+          props.menu && props.menuOpen
+            ? [{ keyCode: keyboardKey.ArrowLeft }, { keyCode: keyboardKey.ArrowRight }]
+            : null,
+      },
+    },
+  },
 });
 
 export default menuItemAsToolbarButtonBehavior;

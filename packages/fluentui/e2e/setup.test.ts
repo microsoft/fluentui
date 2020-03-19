@@ -12,7 +12,7 @@ let consoleErrors: string[] = [];
 const launchOptions: puppeteer.LaunchOptions = safeLaunchOptions({
   headless: true,
   dumpio: false,
-  slowMo: 10
+  slowMo: 10,
 });
 
 beforeAll(async () => {

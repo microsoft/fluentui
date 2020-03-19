@@ -15,10 +15,11 @@ const SECTION_ORDER = {
   DEFAULT_ORDER: 6,
   Usage: 9,
   Rtl: 10,
-  Performance: 11
+  Performance: 11,
 };
 
-const getSectionOrder = sectionName => _.find(SECTION_ORDER, (val, key) => _.includes(sectionName, key)) || SECTION_ORDER.DEFAULT_ORDER;
+const getSectionOrder = sectionName =>
+  _.find(SECTION_ORDER, (val, key) => _.includes(sectionName, key)) || SECTION_ORDER.DEFAULT_ORDER;
 
 const pluginName = 'gulp-example-menu';
 
@@ -57,9 +58,9 @@ export default () => {
           [sectionName]: {
             sectionName,
             examples,
-            order: getSectionOrder(sectionName)
-          }
-        }
+            order: getSectionOrder(sectionName),
+          },
+        },
       });
 
       cb();
@@ -69,7 +70,7 @@ export default () => {
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack)
+        gutil.colors.gray(err.stack),
       ].join('\n\n');
       this.emit('error', pluginError);
     }
@@ -77,11 +78,14 @@ export default () => {
 
   function endStream(cb) {
     _.forEach(exampleFilesByDisplayName, (contents, displayName) => {
-      const sortedContents = _.sortBy(contents, ['order', 'sectionName']).map(({ sectionName, examples }) => ({ sectionName, examples }));
+      const sortedContents = _.sortBy(contents, ['order', 'sectionName']).map(({ sectionName, examples }) => ({
+        sectionName,
+        examples,
+      }));
 
       const file = new Vinyl({
         path: `./${displayName}.examples.json`,
-        contents: Buffer.from(JSON.stringify(sortedContents, null, 2))
+        contents: Buffer.from(JSON.stringify(sortedContents, null, 2)),
       });
 
       this.push(file);

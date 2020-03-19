@@ -18,7 +18,7 @@ export const baseTokens: IActionableComponent['tokens'] = (props, theme): IActio
 
     color: semanticColors.bodyText,
     colorHovered: semanticColors.buttonTextChecked,
-    colorPressed: semanticColors.buttonTextChecked
+    colorPressed: semanticColors.buttonTextChecked,
   };
 };
 
@@ -36,17 +36,17 @@ export const disabledTokens: IActionableComponent['tokens'] = (props, theme): IA
 
     color: semanticColors.disabledBodyText,
     colorHovered: semanticColors.disabledBodyText,
-    colorPressed: semanticColors.disabledBodyText
+    colorPressed: semanticColors.disabledBodyText,
   };
 };
 
 export const ActionableTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => [
   baseTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
 const GlobalClassNames = {
-  msActionable: 'ms-Actionable'
+  msActionable: 'ms-Actionable',
 };
 
 export const ActionableStyles: IActionableComponent['styles'] = (props, theme, tokens): IActionableStylesReturnType => {
@@ -92,17 +92,17 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
         selectors: {
           '> *': {
             marginLeft: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
-            textOverflow: 'ellipsis'
+            textOverflow: 'ellipsis',
           },
           '> *:not(:first-child)': {
-            marginLeft: `${columnGap.value}${columnGap.unit}`
+            marginLeft: `${columnGap.value}${columnGap.unit}`,
           },
           [HighContrastSelector]: {
             backgroundColor: tokens.highContrastBackgroundColor,
             borderColor: tokens.highContrastBorderColor,
             borderWidth: 1,
             color: tokens.highContrastColor,
-            MsHighContrastAdjust: tokens.msHighContrastAdjust
+            MsHighContrastAdjust: tokens.msHighContrastAdjust,
           },
           ':hover': {
             backgroundColor: tokens.backgroundColorHovered,
@@ -113,9 +113,9 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
               [HighContrastSelector]: {
                 backgroundColor: tokens.highContrastBackgroundColorHovered,
                 borderColor: tokens.highContrastBorderColorHovered,
-                color: tokens.highContrastColorHovered
-              }
-            }
+                color: tokens.highContrastColorHovered,
+              },
+            },
           },
           ':active': {
             backgroundColor: tokens.backgroundColorPressed,
@@ -126,13 +126,13 @@ export const ActionableStyles: IActionableComponent['styles'] = (props, theme, t
               [HighContrastSelector]: {
                 backgroundColor: tokens.highContrastBackgroundColorPressed,
                 borderColor: tokens.highContrastBorderColorPressed,
-                color: tokens.highContrastColorPressed
-              }
-            }
-          }
-        }
+                color: tokens.highContrastColorPressed,
+              },
+            },
+          },
+        },
       },
-      className
-    ]
+      className,
+    ],
   };
 };

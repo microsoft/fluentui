@@ -6,6 +6,8 @@ describe('getUnhandledProps', () => {
   });
 
   test('removes props defined in handledProps', () => {
-    expect(getUnhandledProps(['data-remove-me'], { 'data-remove-me': 'it is handled' })).not.toHaveProperty('data-remove-me');
+    expect(getUnhandledProps(['data-remove-me'], { 'data-remove-me': 'it is handled' })).not.toHaveProperty(
+      'data-remove-me',
+    );
   });
 });

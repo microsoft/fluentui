@@ -8,6 +8,6 @@ export const DetailsListShimmerPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'DetailsList - Shimmer',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

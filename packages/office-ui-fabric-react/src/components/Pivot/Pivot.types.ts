@@ -153,7 +153,7 @@ export enum PivotLinkFormat {
   /**
    * Display Pivot Links as Tabs
    */
-  tabs = 1
+  tabs = 1,
 }
 
 /**
@@ -168,5 +168,5 @@ export enum PivotLinkSize {
   /**
    * Display links using large font size
    */
-  large = 1
+  large = 1,
 }

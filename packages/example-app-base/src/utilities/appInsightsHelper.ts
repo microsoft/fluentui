@@ -60,7 +60,7 @@ export enum EventNames {
   ClickedGoBack = 'ClickedGoBack',
 
   /** The user landed on a page that doesn't exist. */
-  PageNotFound = 'PageNotFound'
+  PageNotFound = 'PageNotFound',
 }
 
 export interface IEventProperties {

@@ -5,8 +5,8 @@
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
       "docs/*": ["packages/fluentui/docs/*"],
-      "src/*": ["packages/fluentui/react/src/*"],
-      "test/*": ["packages/fluentui/react/test/*"]
+      "src/*": ["packages/fluentui/react-northstar/src/*"],
+      "test/*": ["packages/fluentui/react-northstar/test/*"]
     },
     "typeRoots": ["../../../typings", "../../../node_modules/@types"],
     "types": ["node", "webpack-env", "screener-runner"]

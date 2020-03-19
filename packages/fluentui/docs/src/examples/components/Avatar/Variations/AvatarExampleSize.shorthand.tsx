@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Avatar, Grid, SizeValue } from '@fluentui/react';
+import { Avatar, Grid, SizeValue } from '@fluentui/react-northstar';
 
 const statusProps = {
   icon: 'icon-checkmark',
   color: 'green',
-  title: 'Available'
+  title: 'Available',
 };
 
 const AvatarExampleSizeShorthand = () => (

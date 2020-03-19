@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Dropdown, Button } from '@fluentui/react';
+import { Form, Dropdown, Button } from '@fluentui/react-northstar';
 
 const labelId = 'choose-friend-label';
 
@@ -16,7 +16,7 @@ const FormExample = () => (
         items: ['John Doe', 'Dohn Joe', 'John Joe', 'Dohn Doe'],
         'aria-labelledby': labelId,
         search: true,
-        placeholder: 'Choose a friend'
+        placeholder: 'Choose a friend',
       }}
       name="chooseFriend"
     />

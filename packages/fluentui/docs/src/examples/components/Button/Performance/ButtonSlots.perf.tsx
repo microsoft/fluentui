@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ButtonSlotsPerf = () => (
@@ -10,7 +10,7 @@ const ButtonSlotsPerf = () => (
       inline: true,
       label: 'Loading',
       labelPosition: 'end',
-      size: 'smallest'
+      size: 'smallest',
     }}
   />
 );

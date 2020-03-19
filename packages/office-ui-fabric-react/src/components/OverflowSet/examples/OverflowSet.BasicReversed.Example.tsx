@@ -15,30 +15,30 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
           {
             key: 'item3',
             name: 'Link 3',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'item2',
             name: 'Link 2',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'item1',
             name: 'Link 1',
-            onClick: noOp
-          }
+            onClick: noOp,
+          },
         ]}
         overflowItems={[
           {
             key: 'item4',
             name: 'Overflow Link 1',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'item5',
             name: 'Overflow Link 2',
-            onClick: noOp
-          }
+            onClick: noOp,
+          },
         ]}
         onRenderOverflowButton={this._onRenderOverflowButton}
         onRenderItem={this._onRenderItem}
@@ -61,8 +61,8 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
         minWidth: 0,
         padding: '0 4px',
         alignSelf: 'stretch',
-        height: 'auto'
-      }
+        height: 'auto',
+      },
     };
     return (
       <IconButton

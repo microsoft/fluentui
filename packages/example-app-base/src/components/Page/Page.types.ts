@@ -171,6 +171,7 @@ export interface IPageSectionProps<TPlatforms extends string = string>
 export type IPageSectionPropsWithSectionName = IPageSectionProps;
 // export type IPageSectionPropsWithSectionName<TPlatform extends string = string> =
 //   Required<Pick<IPageSectionProps<TPlatform>, 'sectionName'>> & Omit<IPageSectionProps<TPlatform>, 'sectionName'>;
-// export type IPageSectionPropsWithSectionName = Required<Pick<IPageSectionProps, 'sectionName'>> & Omit<IPageSectionProps, 'sectionName'>;
+// export type IPageSectionPropsWithSectionName = Required<Pick<IPageSectionProps, 'sectionName'>> &
+//   Omit<IPageSectionProps, 'sectionName'>;
 
 export type TPlatformPageProps<TPlatforms extends string> = { [platform in TPlatforms]?: IPageProps<TPlatforms> };

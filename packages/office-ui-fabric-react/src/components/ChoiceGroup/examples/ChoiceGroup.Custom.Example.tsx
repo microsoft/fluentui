@@ -9,12 +9,12 @@ export const ChoiceGroupCustomExample: React.FunctionComponent = () => {
 
 const optionRootClass = mergeStyles({ display: 'flex', alignItems: 'baseline' });
 const dropdownStyles: Partial<IDropdownStyles> = {
-  root: { marginBottom: 0, marginLeft: 5 }
+  root: { marginBottom: 0, marginLeft: 5 },
 };
 const dropdownOptions: IDropdownOption[] = [
   { key: 'A', text: '5 seconds' },
   { key: 'B', text: '10 seconds' },
-  { key: 'C', text: '20 seconds' }
+  { key: 'C', text: '20 seconds' },
 ];
 
 const options: IChoiceGroupOption[] = [
@@ -36,9 +36,9 @@ const options: IChoiceGroupOption[] = [
           />
         </div>
       );
-    }
+    },
   },
   { key: 'B', text: 'Option B', styles: { root: { border: '1px solid green' } } },
   { key: 'C', text: 'Option C', disabled: true },
-  { key: 'D', text: 'Option D' }
+  { key: 'D', text: 'Option D' },
 ];

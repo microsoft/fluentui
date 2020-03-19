@@ -4,11 +4,11 @@ import { personaPresenceSize, presenceBoolean, sizeBoolean } from '../PersonaCon
 
 const GlobalClassNames = {
   presence: 'ms-Persona-presence',
-  presenceIcon: 'ms-Persona-presenceIcon'
+  presenceIcon: 'ms-Persona-presenceIcon',
 };
 
 export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceStyles => {
-  const { theme } = props;
+  const { theme, presenceColors } = props;
   const { semanticColors, fonts } = theme;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -17,15 +17,17 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
   const presence = presenceBoolean(props.presence as PersonaPresence);
 
   // Presence colors
-  const presenceColorAvailable = '#6BB700';
-  const presenceColorAway = '#FFAA44';
-  const presenceColorBusy = '#C43148';
-  const presenceColorDnd = '#C50F1F';
-  const presenceColorOffline = '#8A8886';
-  const presenceColorOof = '#B4009E';
+  const presenceColorAvailable = (presenceColors && presenceColors.available) || '#6BB700';
+  const presenceColorAway = (presenceColors && presenceColors.away) || '#FFAA44';
+  const presenceColorBusy = (presenceColors && presenceColors.busy) || '#C43148';
+  const presenceColorDnd = (presenceColors && presenceColors.dnd) || '#C50F1F';
+  const presenceColorOffline = (presenceColors && presenceColors.offline) || '#8A8886';
+  const presenceColorOof = (presenceColors && presenceColors.oof) || '#B4009E';
+  const presenceColorBackground = (presenceColors && presenceColors.background) || semanticColors.bodyBackground;
 
   const isOpenCirclePresence =
-    presence.isOffline || (props.isOutOfOffice && (presence.isAvailable || presence.isBusy || presence.isAway || presence.isDoNotDisturb));
+    presence.isOffline ||
+    (props.isOutOfOffice && (presence.isAvailable || presence.isBusy || presence.isAway || presence.isDoNotDisturb));
 
   const borderSizeForSmallPersonas = '1px';
   const borderSizeForLargePersonas = '2px';
@@ -43,7 +45,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         top: 'auto',
         right: '-2px',
         bottom: '-2px',
-        border: `2px solid ${semanticColors.bodyBackground}`,
+        border: `2px solid ${presenceColorBackground}`,
         textAlign: 'center',
         boxSizing: 'content-box',
         backgroundClip: 'content-box',
@@ -52,9 +54,9 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         selectors: {
           [HighContrastSelector]: {
             borderColor: 'Window',
-            backgroundColor: 'WindowText'
-          }
-        }
+            backgroundColor: 'WindowText',
+          },
+        },
       },
 
       (size.isSize8 || size.isSize10) && {
@@ -66,19 +68,20 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         selectors: {
           [HighContrastSelector]: {
             top: '9px',
-            border: '1px solid WindowText'
-          }
-        }
+            border: '1px solid WindowText',
+          },
+        },
       },
 
-      (size.isSize8 || size.isSize10 || size.isSize24 || size.isSize28 || size.isSize32) && makeSizeStyle(personaPresenceSize.size8),
+      (size.isSize8 || size.isSize10 || size.isSize24 || size.isSize28 || size.isSize32) &&
+        makeSizeStyle(personaPresenceSize.size8),
 
       (size.isSize40 || size.isSize48) && makeSizeStyle(personaPresenceSize.size12),
 
       size.isSize16 && {
         height: personaPresenceSize.size6,
         width: personaPresenceSize.size6,
-        borderWidth: '1.5px'
+        borderWidth: '1.5px',
       },
 
       size.isSize56 && makeSizeStyle(personaPresenceSize.size16),
@@ -93,8 +96,8 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         backgroundColor: presenceColorAvailable,
 
         selectors: {
-          [HighContrastSelector]: backgroundColor('Highlight')
-        }
+          [HighContrastSelector]: backgroundColor('Highlight'),
+        },
       },
 
       presence.isAway && backgroundColor(presenceColorAway),
@@ -113,7 +116,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
                     transform: 'translateY(-50%) rotate(-45deg)',
                     position: 'absolute',
                     top: '50%',
-                    left: 0
+                    left: 0,
                   }
                 : undefined,
 
@@ -122,12 +125,12 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
                 ':after': {
                   width: `calc(100% - 4px)`,
                   left: '2px',
-                  backgroundColor: 'Window'
-                }
-              }
-            }
-          }
-        }
+                  backgroundColor: 'Window',
+                },
+              },
+            },
+          },
+        },
       ],
 
       presence.isBusy && backgroundColor(presenceColorBusy),
@@ -138,7 +141,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
 
       (isOpenCirclePresence || presence.isBlocked) && [
         {
-          backgroundColor: semanticColors.bodyBackground,
+          backgroundColor: presenceColorBackground,
 
           selectors: {
             ':before': {
@@ -150,7 +153,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
               left: 0,
               border: `${borderSize} solid ${presenceColorBusy}`,
               borderRadius: '50%',
-              boxSizing: 'border-box'
+              boxSizing: 'border-box',
             },
             [HighContrastSelector]: {
               backgroundColor: 'WindowText',
@@ -161,12 +164,12 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
                   height: `calc(100% - 2px)`,
                   top: '1px',
                   left: '1px',
-                  borderColor: 'Window'
-                }
-              }
-            }
-          }
-        }
+                  borderColor: 'Window',
+                },
+              },
+            },
+          },
+        },
       ],
 
       isOpenCirclePresence && presence.isAvailable && makeBeforeBorderStyle(borderSize, presenceColorAvailable),
@@ -179,47 +182,50 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
 
       isOpenCirclePresence && presence.isOffline && makeBeforeBorderStyle(borderSize, presenceColorOffline),
 
-      isOpenCirclePresence && presence.isOffline && props.isOutOfOffice && makeBeforeBorderStyle(borderSize, presenceColorOof)
+      isOpenCirclePresence &&
+        presence.isOffline &&
+        props.isOutOfOffice &&
+        makeBeforeBorderStyle(borderSize, presenceColorOof),
     ],
 
     presenceIcon: [
       classNames.presenceIcon,
       {
-        color: semanticColors.bodyBackground,
+        color: presenceColorBackground,
         fontSize: '6px', // exception case where we don't have an available theme.fonts variable to match it.
         lineHeight: personaPresenceSize.size12,
         verticalAlign: 'top',
 
         selectors: {
           [HighContrastSelector]: {
-            color: 'Window'
-          }
-        }
+            color: 'Window',
+          },
+        },
       },
 
       size.isSize56 && {
         fontSize: '8px', // exception case where we don't have an available theme.fonts variable to match it.
-        lineHeight: personaPresenceSize.size16
+        lineHeight: personaPresenceSize.size16,
       },
 
       size.isSize72 && {
         fontSize: fonts.small.fontSize,
-        lineHeight: personaPresenceSize.size20
+        lineHeight: personaPresenceSize.size20,
       },
 
       size.isSize100 && {
         fontSize: fonts.medium.fontSize,
-        lineHeight: personaPresenceSize.size28
+        lineHeight: personaPresenceSize.size28,
       },
 
       size.isSize120 && {
         fontSize: fonts.medium.fontSize,
-        lineHeight: personaPresenceSize.size32
+        lineHeight: personaPresenceSize.size32,
       },
 
       presence.isAway && {
         position: 'relative',
-        left: isOpenCirclePresence ? undefined : '1px'
+        left: isOpenCirclePresence ? undefined : '1px',
       },
 
       isOpenCirclePresence && presence.isAvailable && makeOpenCircleIconStyle(presenceColorAvailable),
@@ -232,15 +238,15 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
 
       isOpenCirclePresence && presence.isOffline && makeOpenCircleIconStyle(presenceColorOffline),
 
-      isOpenCirclePresence && presence.isOffline && props.isOutOfOffice && makeOpenCircleIconStyle(presenceColorOof)
-    ]
+      isOpenCirclePresence && presence.isOffline && props.isOutOfOffice && makeOpenCircleIconStyle(presenceColorOof),
+    ],
   };
 };
 
 function makeOpenCircleIconStyle(color: string): IRawStyle {
   return {
     color,
-    borderColor: color
+    borderColor: color,
   };
 }
 
@@ -248,16 +254,16 @@ function makeBeforeBorderStyle(borderSize: string, color: string): IRawStyle {
   return {
     selectors: {
       ':before': {
-        border: `${borderSize} solid ${color}`
-      }
-    }
+        border: `${borderSize} solid ${color}`,
+      },
+    },
   };
 }
 
 function makeSizeStyle(size: string): IRawStyle {
   return {
     height: size,
-    width: size
+    width: size,
   };
 }
 

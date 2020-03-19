@@ -10,6 +10,13 @@ export class FacepileButton extends React.Component<IButtonProps, {}> {
 
     const customStyles = getStyles(this.props.theme!, className, styles);
 
-    return <BaseButton {...rest} variantClassName="ms-Button--facepile" styles={customStyles} onRenderDescription={nullRender} />;
+    return (
+      <BaseButton
+        {...rest}
+        variantClassName="ms-Button--facepile"
+        styles={customStyles}
+        onRenderDescription={nullRender}
+      />
+    );
   }
 }

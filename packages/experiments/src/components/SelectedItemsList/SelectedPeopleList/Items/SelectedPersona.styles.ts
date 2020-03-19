@@ -19,46 +19,46 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         cursor: 'default',
         userSelect: 'none',
         verticalAlign: 'middle',
-        position: 'relative'
+        position: 'relative',
       },
       {
         selectors: {
           // hover styles
           ':hover': [
             {
-              background: palette.themeLighter
+              background: palette.themeLighter,
             },
             {
               selectors: {
                 [HighContrastSelector]: {
-                  color: 'HighlightText'
-                }
-              }
-            }
+                  color: 'HighlightText',
+                },
+              },
+            },
           ],
           // Add border and background in high contrast
           [HighContrastSelector]: {
             borderColor: 'Highlight',
             background: 'Highlight',
-            '-ms-high-contrast-adjust': 'none'
+            '-ms-high-contrast-adjust': 'none',
             // cast here because '-ms-high-contrast-adjust is not on styles
-          } as IRawStyle
-        }
+          } as IRawStyle,
+        },
       },
       isSelected && {
         background: palette.themePrimary,
         selectors: {
           [HighContrastSelector]: {
-            border: '1px solid WindowText'
-          }
-        }
-      }
+            border: '1px solid WindowText',
+          },
+        },
+      },
     ],
     personaWrapper: [
       {
         position: 'relative',
-        display: 'inherit'
-      }
+        display: 'inherit',
+      },
     ],
     expandButton: [
       {
@@ -71,10 +71,10 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         marginRight: -17,
         selectors: {
           ':hover': {
-            backgroundColor: palette.themeLight
-          }
-        }
-      }
+            backgroundColor: palette.themeLight,
+          },
+        },
+      },
     ],
     removeButton: [
       {
@@ -84,18 +84,18 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         height: 33,
         selectors: {
           ':hover': {
-            backgroundColor: palette.themeLight
-          }
-        }
-      }
+            backgroundColor: palette.themeLight,
+          },
+        },
+      },
     ],
     itemContentWrapper: [
       {
         flex: '0 1 auto',
         minWidth: 0,
         /** Needed for IE 11 to properly truncate long persona names in the picker **/
-        maxWidth: '100%'
-      }
+        maxWidth: '100%',
+      },
     ],
     subComponentStyles: {
       personaStyles: {
@@ -110,37 +110,37 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
           fontSize: FontSizes.medium,
           selectors: {
             [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          }
+              color: 'HighlightText',
+            },
+          },
         },
         details: {
-          padding: '0 8px'
-        }
+          padding: '0 8px',
+        },
       },
       personaCoinStyles: {
         initials: isValid
           ? {}
           : {
-              fontSize: 20
-            }
+              fontSize: 20,
+            },
       },
       actionButtonStyles: {
         root: {
-          color: palette.white
+          color: palette.white,
         },
         icon: {
           color: isSelected ? palette.white : palette.themeDark,
           selectors: {
             ':hover': {
-              backgroundColor: isSelected ? palette.themeDark : undefined
+              backgroundColor: isSelected ? palette.themeDark : undefined,
             },
             [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          }
-        }
-      }
-    }
+              color: 'HighlightText',
+            },
+          },
+        },
+      },
+    },
   };
 };

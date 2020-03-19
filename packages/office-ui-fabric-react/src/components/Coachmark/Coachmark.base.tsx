@@ -12,7 +12,7 @@ import {
   warnDeprecations,
   EventGroup,
   Async,
-  initializeComponentRef
+  initializeComponentRef,
 } from '../../Utilities';
 import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../utilities/positioning';
 
@@ -123,8 +123,8 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     delayBeforeCoachmarkAnimation: 0,
     isPositionForced: true,
     positioningContainerProps: {
-      directionalHint: DirectionalHint.bottomAutoEdge
-    }
+      directionalHint: DirectionalHint.bottomAutoEdge,
+    },
   };
 
   private _async: Async;
@@ -160,7 +160,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       beakWidth: undefined,
       beakHeight: undefined,
       width: undefined,
-      height: undefined
+      height: undefined,
     });
 
     // Set defaults for state
@@ -170,10 +170,10 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       isMeasuring: true,
       entityInnerHostRect: {
         width: 0,
-        height: 0
+        height: 0,
       },
       isMouseInProximity: false,
-      isMeasured: false
+      isMeasured: false,
     };
   }
 
@@ -203,7 +203,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       styles,
       theme,
       className,
-      persistentBeak
+      persistentBeak,
     } = this.props;
 
     const {
@@ -217,7 +217,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       entityInnerHostRect,
       transformOrigin,
       alertText,
-      isMeasured
+      isMeasured,
     } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
@@ -241,7 +241,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       entityHostWidth: `${entityInnerHostRect.width}px`,
       width: `${COACHMARK_WIDTH}px`,
       height: `${COACHMARK_HEIGHT}px`,
-      delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`
+      delayBeforeCoachmarkAnimation: `${delayBeforeCoachmarkAnimation}ms`,
     });
 
     const finalHeight: number = isCollapsed ? COACHMARK_HEIGHT : entityInnerHostRect.height;
@@ -258,7 +258,12 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       >
         <div className={classNames.root}>
           {ariaAlertText && (
-            <div className={classNames.ariaContainer} role="alert" ref={this._ariaAlertContainer} aria-hidden={!isCollapsed}>
+            <div
+              className={classNames.ariaContainer}
+              role="alert"
+              ref={this._ariaAlertContainer}
+              aria-hidden={!isCollapsed}
+            >
               {alertText}
             </div>
           )}
@@ -295,11 +300,15 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
                       <p id={ariaDescribedBy} key={1} className={classNames.ariaContainer}>
                         {ariaDescribedByText}
                       </p>
-                    )
+                    ),
                   ]}
                   <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
                     <div className={classNames.entityInnerHost} ref={this._entityInnerHostElement}>
-                      <div className={classNames.childrenContainer} ref={this._childrenContainer} aria-hidden={isCollapsed}>
+                      <div
+                        className={classNames.childrenContainer}
+                        ref={this._childrenContainer}
+                        aria-hidden={isCollapsed}
+                      >
                         {children}
                       </div>
                     </div>
@@ -326,7 +335,10 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   }
 
   public componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void {
-    if (prevState.targetAlignment !== this.state.targetAlignment || prevState.targetPosition !== this.state.targetPosition) {
+    if (
+      prevState.targetAlignment !== this.state.targetAlignment ||
+      prevState.targetPosition !== this.state.targetPosition
+    ) {
       this._setBeakPosition();
     }
     if (prevProps.preventDismissOnLostFocus !== this.props.preventDismissOnLostFocus) {
@@ -336,14 +348,17 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
 
   public componentDidMount(): void {
     this._async.requestAnimationFrame((): void => {
-      if (this._entityInnerHostElement.current && this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0) {
+      if (
+        this._entityInnerHostElement.current &&
+        this.state.entityInnerHostRect.width + this.state.entityInnerHostRect.width === 0
+      ) {
         this.setState({
           isMeasuring: false,
           entityInnerHostRect: {
             width: this._entityInnerHostElement.current.offsetWidth,
-            height: this._entityInnerHostElement.current.offsetHeight
+            height: this._entityInnerHostElement.current.offsetHeight,
           },
-          isMeasured: true
+          isMeasured: true,
         });
         this._setBeakPosition();
         this.forceUpdate();
@@ -361,7 +376,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
         this._async.setTimeout(() => {
           if (this.props.ariaAlertText && this._ariaAlertContainer.current) {
             this.setState({
-              alertText: this.props.ariaAlertText
+              alertText: this.props.ariaAlertText,
             });
           }
         }, 0);
@@ -409,7 +424,8 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
   private _dismissOnLostFocus(ev: Event) {
     const clickTarget = ev.target as HTMLElement;
     const clickedOutsideCallout =
-      this._translateAnimationContainer.current && !elementContains(this._translateAnimationContainer.current, clickTarget);
+      this._translateAnimationContainer.current &&
+      !elementContains(this._translateAnimationContainer.current, clickTarget);
     const { target } = this.props;
 
     if (clickedOutsideCallout && clickTarget !== target && !elementContains(target as HTMLElement, clickTarget)) {
@@ -439,7 +455,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
     this._async.requestAnimationFrame((): void => {
       this.setState({
         targetAlignment: positionData.alignmentEdge,
-        targetPosition: positionData.targetEdge
+        targetPosition: positionData.targetEdge,
       });
     });
   };
@@ -460,7 +476,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
           bottom: Infinity,
           right: window.innerWidth,
           width: window.innerWidth,
-          height: Infinity
+          height: Infinity,
         };
       } else {
         return {
@@ -469,7 +485,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
           bottom: Infinity,
           right: Infinity,
           width: Infinity,
-          height: Infinity
+          height: Infinity,
         };
       }
     } else {
@@ -558,13 +574,13 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
       beakRight: beakRight,
       beakBottom: beakBottom,
       beakTop: beakTop,
-      transformOrigin: `${transformOriginX} ${transformOriginY}`
+      transformOrigin: `${transformOriginX} ${transformOriginY}`,
     });
   };
 
   private _openCoachmark = (): void => {
     this.setState({
-      isCollapsed: false
+      isCollapsed: false,
     });
 
     if (this.props.onAnimationOpenStart) {
@@ -611,7 +627,7 @@ export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkSt
         timeoutIds.push(
           this._async.setTimeout((): void => {
             this._setTargetElementRect();
-          }, 100)
+          }, 100),
         );
       });
     }, 10);

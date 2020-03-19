@@ -3,7 +3,7 @@ import {
   getVersionConstrains,
   getRuntimeDependencies,
   getPackageName,
-  FailedConstraintsExplanation
+  FailedConstraintsExplanation,
 } from './utils';
 import config from '../../config';
 import { DangerJS } from '../types';
@@ -12,7 +12,7 @@ const { paths } = config;
 
 /**
  * This check uses the following logic:
- * - request runtime dependencies of @fluentui/react package (by crawling the code, starting from index file),
+ * - request runtime dependencies of @fluentui/react-northstar package (by crawling the code, starting from index file),
  * - for each of the runtime dependencies:
  *    - get corresponding set of version restrictions (by analyzing related package.json files),
  *    - get list of approved dependency's versions,
@@ -22,13 +22,13 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
   const { fail, markdown } = dangerJS;
   const allFailedVersionConstraints: FailedConstraintsExplanation[] = [];
 
-  const dependencyPackageIds = getRuntimeDependencies('react');
-  const versionConstraints = await getVersionConstrains(paths.packages('react', 'package.json'));
+  const dependencyPackageIds = getRuntimeDependencies('react-northstar');
+  const versionConstraints = await getVersionConstrains(paths.packages('react-northstar', 'package.json'));
 
   dependencyPackageIds.forEach(packageId => {
     const failedPackageVersionConstraints = getFailedPackageVersionConstraints(
       packageId,
-      versionConstraints[getPackageName(packageId)] || []
+      versionConstraints[getPackageName(packageId)] || [],
     );
 
     if (failedPackageVersionConstraints) {
@@ -49,15 +49,17 @@ const detectNonApprovedDependencies = async (dangerJS: DangerJS) => {
           .map(
             explanation =>
               `${explanation.failedConstraints.join(', ')} | ${
-                explanation.approvedPackages.length ? explanation.approvedPackages.join(', ') : '_there are no any approved packages_'
-              }`
+                explanation.approvedPackages.length
+                  ? explanation.approvedPackages.join(', ')
+                  : '_there are no any approved packages_'
+              }`,
           )
-          .join('\n')
-      ].join('\n')
+          .join('\n'),
+      ].join('\n'),
     );
 
     fail(
-      'Non-approved dependencies were detected. It is necessary to obtain approvals and register them in `approvedPackages` file before merge.'
+      'Non-approved dependencies were detected. It is necessary to obtain approvals and register them in `approvedPackages` file before merge.',
     );
   }
 };

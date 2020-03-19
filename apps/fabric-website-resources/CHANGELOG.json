@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/fabric-website-resources_v7.6.20",
+      "version": "7.6.20",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 07 Mar 2020 01:39:37 GMT",
       "tag": "@uifabric/fabric-website-resources_v7.6.15",
       "version": "7.6.15",

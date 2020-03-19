@@ -13,7 +13,10 @@ export default () => (
     >
       <ChatMessageWithPopover />
     </ComponentPrototype>
-    <ComponentPrototype title="Important and mention messages" description="Important and mention messages support in Teams theme.">
+    <ComponentPrototype
+      title="Important and mention messages"
+      description="Important and mention messages support in Teams theme."
+    >
       <ImportantAndMentionMessages />
     </ComponentPrototype>
     <ComponentPrototype title="Control messages" description="Control messages example">

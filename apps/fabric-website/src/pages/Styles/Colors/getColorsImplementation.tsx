@@ -14,9 +14,11 @@ export function getColorsImplementation(
   baseUrl: string,
   jsColorGroup: string,
   jsColorName: string,
-  scssColorName: string
+  scssColorName: string,
 ): IPageSectionProps<Platforms> {
-  const colorsMarkdown = require<string>('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md')
+  const colorsMarkdown = require<
+    string
+  >('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsImplementation.md')
     .replace(/CommunicationColors\.primary/g, `${jsColorGroup}.${jsColorName}`)
     .replace(/CommunicationColors/g, jsColorGroup)
     .replace(/communicationPrimary/g, scssColorName);
@@ -24,6 +26,6 @@ export function getColorsImplementation(
   return {
     sectionName: 'Implementation',
     editUrl: `${baseUrl}/web/ColorsImplementation.md`,
-    content: <Markdown>{colorsMarkdown}</Markdown>
+    content: <Markdown>{colorsMarkdown}</Markdown>,
   };
 }

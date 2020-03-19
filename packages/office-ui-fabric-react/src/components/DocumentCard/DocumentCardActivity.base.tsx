@@ -4,7 +4,7 @@ import {
   IDocumentCardActivityProps,
   IDocumentCardActivityPerson,
   IDocumentCardActivityStyleProps,
-  IDocumentCardActivityStyles
+  IDocumentCardActivityStyles,
 } from './DocumentCardActivity.types';
 import { IProcessedStyleSet } from '../../Styling';
 import { PersonaSize } from '../../Persona';
@@ -30,7 +30,7 @@ export class DocumentCardActivityBase extends React.Component<IDocumentCardActiv
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      multiplePeople: people.length > 1
+      multiplePeople: people.length > 1,
     });
 
     if (!people || people.length === 0) {

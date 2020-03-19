@@ -14,15 +14,15 @@ initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/asset
 registerIcons({
   icons: {
     'AndroidLogo-platformPicker': AndroidLogo({
-      className: platformPickerStyles.icon
+      className: platformPickerStyles.icon,
     }),
     'AppleLogo-platformPicker': AppleLogo({
-      className: platformPickerStyles.icon
+      className: platformPickerStyles.icon,
     }),
     'WebLogo-platformPicker': WebLogo({
-      className: platformPickerStyles.icon
-    })
-  }
+      className: platformPickerStyles.icon,
+    }),
+  },
 });
 
 const skipToMain = document.getElementById('uhfSkipToMain') as HTMLAnchorElement;

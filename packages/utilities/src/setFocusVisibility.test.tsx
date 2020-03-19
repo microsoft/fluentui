@@ -33,15 +33,15 @@ describe('setFocusVisibility', () => {
                 classNames.push(name);
               }
             }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
   const mockTarget = {
     ownerDocument: {
-      defaultView: mockWindow
-    }
+      defaultView: mockWindow,
+    },
   };
 
   beforeEach(() => {

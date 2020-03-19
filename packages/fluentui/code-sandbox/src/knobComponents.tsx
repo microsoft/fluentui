@@ -1,5 +1,5 @@
 import { CodeSnippet, KnobComponents } from '@fluentui/docs-components';
-import { Button, Checkbox, Label, Segment, Text } from '@fluentui/react';
+import { Button, Checkbox, Label, Segment, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const knobComponents: Partial<KnobComponents> = {
@@ -25,9 +25,11 @@ const knobComponents: Partial<KnobComponents> = {
           Clear
         </Button>
       </div>
-      {props.items.length > 0 && <CodeSnippet fitted formattable={false} label={false} value={props.items.join('\n')} />}
+      {props.items.length > 0 && (
+        <CodeSnippet fitted formattable={false} label={false} value={props.items.join('\n')} />
+      )}
     </Segment>
-  )
+  ),
 };
 
 export default knobComponents;

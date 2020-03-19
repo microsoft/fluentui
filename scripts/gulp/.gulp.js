@@ -1,6 +1,6 @@
 // https://github.com/gulpjs/gulp-cli#configuration
 module.exports = {
   flags: {
-    require: '@uifabric/build/babel/register'
-  }
+    require: '@uifabric/build/babel/register',
+  },
 };

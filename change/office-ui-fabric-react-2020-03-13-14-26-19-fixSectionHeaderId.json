@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Ensure ContextualMenu section header generates valid element ID",
-  "packageName": "office-ui-fabric-react",
-  "email": "ermercer@microsoft.com",
-  "commit": "3435b78843d97a1361c8d07c3c9178fdcd29b4c4",
-  "dependentChangeType": "patch",
-  "date": "2020-03-13T21:26:19.837Z"
-}

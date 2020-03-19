@@ -23,14 +23,14 @@ export const TagItemBase = (props: ITagItemProps) => {
     index,
     onRemoveItem,
     removeButtonAriaLabel,
-    title = typeof props.children === 'string' ? props.children : props.item.name
+    title = typeof props.children === 'string' ? props.children : props.item.name,
   } = props;
 
   const classNames = getClassNames(styles, {
     theme: theme!,
     className,
     selected,
-    disabled
+    disabled,
   });
 
   return (
@@ -55,4 +55,6 @@ export const TagItemBase = (props: ITagItemProps) => {
   );
 };
 
-export const TagItem = styled<ITagItemProps, ITagItemStyleProps, ITagItemStyles>(TagItemBase, getStyles, undefined, { scope: 'TagItem' });
+export const TagItem = styled<ITagItemProps, ITagItemStyleProps, ITagItemStyles>(TagItemBase, getStyles, undefined, {
+  scope: 'TagItem',
+});

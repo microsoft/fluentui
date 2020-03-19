@@ -14,7 +14,7 @@ export interface ITextFieldCustomRenderExampleState {
 
 const stackTokens: IStackTokens = {
   childrenGap: 20,
-  maxWidth: 300
+  maxWidth: 300,
 };
 
 export class TextFieldCustomRenderExample extends React.Component<{}, ITextFieldCustomRenderExampleState> {
@@ -77,7 +77,9 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
             role="alertdialog"
           >
             <Stack tokens={stackTokens} horizontalAlign="start" styles={{ root: { padding: 20 } }}>
-              <span id={this._descriptionId}>The custom label includes an IconButton that displays this Callout on click.</span>
+              <span id={this._descriptionId}>
+                The custom label includes an IconButton that displays this Callout on click.
+              </span>
               <DefaultButton onClick={this._onDismiss}>Close</DefaultButton>
             </Stack>
           </Callout>
@@ -86,7 +88,10 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
     );
   };
 
-  private _onWrapDefaultLabelRenderer = (props: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>): JSX.Element => {
+  private _onWrapDefaultLabelRenderer = (
+    props: ITextFieldProps,
+    defaultRender: IRenderFunction<ITextFieldProps>,
+  ): JSX.Element => {
     return (
       <>
         <Stack horizontal verticalAlign="center" tokens={{ childrenGap: 6 }}>

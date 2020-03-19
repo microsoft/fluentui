@@ -13,7 +13,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       // tslint:disable:no-any
       .value((d: any) => {
         return d.data;
-      })
+      }),
   };
   constructor(props: IPieProps) {
     super(props);

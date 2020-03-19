@@ -15,7 +15,7 @@ import {
   PerExamplePerfMeasures,
   ProfilerMeasure,
   ProfilerMeasureCycle,
-  ReducedMeasures
+  ReducedMeasures,
 } from '../../../packages/fluentui/perf/types';
 import config from '../../config';
 import webpackPlugin from '../plugins/gulp-webpack';
@@ -58,8 +58,8 @@ const reduceMeasures = (measures: ProfilerMeasure[], key: MeasuredValues): Reduc
     max: floor(max),
     values: _.map(measures, measure => ({
       exampleIndex: measure.exampleIndex,
-      value: measure[key]
-    }))
+      value: measure[key],
+    })),
   };
 };
 
@@ -73,13 +73,13 @@ const sumByExample = (measures: ProfilerMeasureCycle[]): PerExamplePerfMeasures 
 
       return result;
     },
-    {}
+    {},
   );
 
   return _.mapValues(perExampleMeasures, (profilerMeasures: ProfilerMeasure[]) => ({
     actualTime: reduceMeasures(profilerMeasures, 'actualTime'),
     renderComponentTime: reduceMeasures(profilerMeasures, 'renderComponentTime'),
-    componentCount: reduceMeasures(profilerMeasures, 'componentCount')
+    componentCount: reduceMeasures(profilerMeasures, 'componentCount'),
   }));
 };
 
@@ -93,7 +93,7 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
     'renderComponent.avg': 'renderComponentTime.avg',
     'renderComponent.median': 'renderComponentTime.median',
     'renderComponent.max': 'renderComponentTime.max',
-    components: 'componentCount.median'
+    components: 'componentCount.median',
   };
 
   const fieldLabels = _.keys(fieldsMapping);
@@ -103,7 +103,7 @@ const createMarkdownTable = (perExamplePerfMeasures: PerExamplePerfMeasures) => 
 
   return markdownTable([
     ['Example', ...fieldLabels],
-    ..._.sortBy(fieldValues, row => -row[fieldLabels.indexOf('median') + 1]) // +1 is for exampleName
+    ..._.sortBy(fieldValues, row => -row[fieldLabels.indexOf('median') + 1]), // +1 is for exampleName
   ]);
 };
 

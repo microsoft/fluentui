@@ -26,7 +26,7 @@ const NO_CUSTOMIZATIONS = { settings: {}, scopedSettings: {}, inCustomizerContex
 let _allSettings = GlobalSettings.getValue<ICustomizations>(CustomizationsGlobalKey, {
   settings: {},
   scopedSettings: {},
-  inCustomizerContext: false
+  inCustomizerContext: false,
 });
 
 let _events: (() => void)[] = [];
@@ -58,7 +58,7 @@ export class Customizations {
   public static getSettings(
     properties: string[],
     scopeName?: string,
-    localSettings: ICustomizations = NO_CUSTOMIZATIONS
+    localSettings: ICustomizations = NO_CUSTOMIZATIONS,
     // tslint:disable-next-line:no-any
   ): any {
     const settings: ISettings = {};

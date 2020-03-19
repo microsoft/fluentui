@@ -7,7 +7,8 @@ import { MessageBarType } from 'office-ui-fabric-react';
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Office UI Fabric',
-  siteLogoSource: 'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftuifabric-logo-rgb_no-padding.svg',
+  siteLogoSource:
+    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftuifabric-logo-rgb_no-padding.svg',
   platforms,
   pages: [
     {
@@ -18,7 +19,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       isUhfLink: true,
       isContentFullBleed: true,
       component: () => <LoadingComponent title="Welcome to UI Fabric" />,
-      getComponent: cb => require.ensure([], require => cb(require<any>('../pages/HomePage/HomePage').HomePage))
+      getComponent: cb => require.ensure([], require => cb(require<any>('../pages/HomePage/HomePage').HomePage)),
     },
     GetStartedPages,
     StylesPages,
@@ -28,15 +29,18 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       title: 'Demo Loading Page',
       url: '#/ms-loading',
       isHiddenFromMainNav: true,
-      component: () => <LoadingComponent title="Demo Loading Page" />
+      component: () => <LoadingComponent title="Demo Loading Page" />,
     },
     {
       title: 'Template Page',
       url: '#/ms-page-template',
       isHiddenFromMainNav: true,
       component: () => <LoadingComponent title="Template Page" />,
-      getComponent: cb => require.ensure([], require => cb(require<any>('../pages/PageTemplates/TemplatePage/TemplatePage').TemplatePage))
-    }
+      getComponent: cb =>
+        require.ensure([], require =>
+          cb(require<any>('../pages/PageTemplates/TemplatePage/TemplatePage').TemplatePage),
+        ),
+    },
   ],
   redirects: [
     { from: '#/customizations/', to: '#/controls/web/customizations/' },
@@ -55,7 +59,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/utilities', to: '#/styles/web' },
     { from: '#/controls/web/fluent-theme', to: '#/styles/web/fabric-7' },
     { from: '#/styles/web/fluent-theme', to: '#/styles/web/fabric-7' },
-    { from: '#/examples', to: '#/controls/web' }
+    { from: '#/examples', to: '#/controls/web' },
   ],
   messageBars: [
     {
@@ -67,7 +71,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       ),
       linkText: 'Learn more',
       linkUrl: 'https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/',
-      sessionStoragePrefix: 'FluentUI'
-    }
-  ]
+      sessionStoragePrefix: 'FluentUI',
+    },
+  ],
 };

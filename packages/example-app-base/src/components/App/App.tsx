@@ -40,7 +40,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
     const onlyExamples = this._showOnlyExamples;
 
-    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples: onlyExamples }));
+    const classNames = (this._classNames = getClassNames(styles, {
+      responsiveMode,
+      theme,
+      showOnlyExamples: onlyExamples,
+    }));
 
     const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
@@ -97,7 +101,9 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
       if (exampleCardCustomizations || typeof hideSchemes === 'boolean') {
         app = (
-          <AppCustomizationsContext.Provider value={{ exampleCardCustomizations, hideSchemes }}>{app}</AppCustomizationsContext.Provider>
+          <AppCustomizationsContext.Provider value={{ exampleCardCustomizations, hideSchemes }}>
+            {app}
+          </AppCustomizationsContext.Provider>
         );
       }
       if (Object.keys(otherCustomizations).length) {
@@ -131,7 +137,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
               classNames.linkFlair,
               link.status === ExampleStatus.started && classNames.linkFlairStarted,
               link.status === ExampleStatus.beta && classNames.linkFlairBeta,
-              link.status === ExampleStatus.release && classNames.linkFlairRelease
+              link.status === ExampleStatus.release && classNames.linkFlairRelease,
             )}
           >
             {ExampleStatus[link.status]}
@@ -142,6 +148,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
   };
 }
 
-export const App: React.FunctionComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(AppBase, getStyles, undefined, {
-  scope: 'App'
-});
+export const App: React.FunctionComponent<IAppProps> = styled<IAppProps, IAppStyleProps, IAppStyles>(
+  AppBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'App',
+  },
+);

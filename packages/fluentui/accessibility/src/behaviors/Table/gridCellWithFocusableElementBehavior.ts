@@ -8,9 +8,9 @@ import { Accessibility } from '../../types';
 const gridCellWithFocusableElementBehavior: Accessibility = props => ({
   attributes: {
     root: {
-      role: 'gridcell'
-    }
-  }
+      role: 'gridcell',
+    },
+  },
 });
 
 export default gridCellWithFocusableElementBehavior;

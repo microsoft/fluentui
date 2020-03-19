@@ -29,39 +29,41 @@ export const FocusTrapZonePageProps: IDocPageProps = {
     {
       title: 'Simple box',
       code: FocusTrapZoneBoxExampleCode,
-      view: <FocusTrapZoneBoxExample />
+      view: <FocusTrapZoneBoxExample />,
     },
     {
       title: 'Simple box with focus on custom focusable element',
       code: FocusTrapZoneBoxCustomElementExampleCode,
-      view: <FocusTrapZoneBoxCustomElementExample />
+      view: <FocusTrapZoneBoxCustomElementExample />,
     },
     {
       title: 'Simple box with clicking outside trap zone enabled',
       code: FocusTrapZoneBoxClickExampleCode,
-      view: <FocusTrapZoneBoxClickExample />
+      view: <FocusTrapZoneBoxClickExample />,
     },
     {
       title: 'Multiple nested FocusTrapZones',
       code: FocusTrapZoneNestedExampleCode,
-      view: <FocusTrapZoneNestedExample />
+      view: <FocusTrapZoneNestedExample />,
     },
     {
       title: 'FocusTrapZone with FocusZones',
       code: FocusTrapZoneFocusZoneExampleCode,
-      view: <FocusTrapZoneFocusZoneExample />
+      view: <FocusTrapZoneFocusZoneExample />,
     },
     {
       title: 'A Dialog nested in a Panel',
       code: FocusTrapZoneDialogInPanelExampleCode,
-      view: <FocusTrapZoneDialogInPanelExample />
-    }
+      view: <FocusTrapZoneDialogInPanelExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
   bestPractices: '',
   dos: '',
   donts: '',
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

@@ -1,5 +1,8 @@
 import * as React from 'react';
-import { IFloatingSuggestionItemProps, FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
+import {
+  IFloatingSuggestionItemProps,
+  FloatingPeopleSuggestions,
+} from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
 
@@ -10,7 +13,7 @@ const _suggestions = [
     displayText: 'Suggestion 1',
     item: mru[0],
     isSelected: true,
-    showRemoveButton: true
+    showRemoveButton: true,
   },
   {
     key: '2',
@@ -18,7 +21,7 @@ const _suggestions = [
     displayText: 'Suggestion 2',
     item: mru[1],
     isSelected: false,
-    showRemoveButton: true
+    showRemoveButton: true,
   },
   {
     key: '3',
@@ -26,7 +29,7 @@ const _suggestions = [
     displayText: 'Suggestion 3',
     item: mru[2],
     isSelected: false,
-    showRemoveButton: true
+    showRemoveButton: true,
   },
   {
     key: '4',
@@ -34,7 +37,7 @@ const _suggestions = [
     displayText: 'Suggestion 4',
     item: mru[3],
     isSelected: false,
-    showRemoveButton: true
+    showRemoveButton: true,
   },
   {
     key: '5',
@@ -42,8 +45,8 @@ const _suggestions = [
     displayText: 'Suggestion 5',
     item: mru[4],
     isSelected: false,
-    showRemoveButton: true
-  }
+    showRemoveButton: true,
+  },
 ] as IFloatingSuggestionItemProps<IPersonaProps>[];
 
 export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
@@ -53,13 +56,16 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
 
   const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([]);
 
-  const _onSuggestionSelected = (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: IFloatingSuggestionItemProps<IPersonaProps>) => {
+  const _onSuggestionSelected = (
+    ev: React.MouseEvent<HTMLElement, MouseEvent>,
+    item: IFloatingSuggestionItemProps<IPersonaProps>,
+  ) => {
     _markSuggestionSelected(item);
   };
 
   const _onSuggestionRemoved = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
-    suggestionToRemove: IFloatingSuggestionItemProps<IPersonaProps>
+    suggestionToRemove: IFloatingSuggestionItemProps<IPersonaProps>,
   ) => {
     setPeopleSuggestions(suggestions => {
       const modifiedSuggestions = suggestions.filter(item => item.id !== suggestionToRemove.id);
@@ -70,7 +76,9 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
   const _markSuggestionSelected = (selectedSuggestion: IFloatingSuggestionItemProps<IPersonaProps>) => {
     setPeopleSuggestions(suggestions => {
       const modifiedSuggestions = suggestions.map(suggestion =>
-        suggestion.id === selectedSuggestion.id ? { ...suggestion, isSelected: true } : { ...suggestion, isSelected: false }
+        suggestion.id === selectedSuggestion.id
+          ? { ...suggestion, isSelected: true }
+          : { ...suggestion, isSelected: false },
       );
       return modifiedSuggestions;
     });

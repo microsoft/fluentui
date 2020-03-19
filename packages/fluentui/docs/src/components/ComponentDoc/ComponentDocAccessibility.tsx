@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Loader, Text, Segment, Header } from '@fluentui/react';
+import { Flex, Loader, Text, Segment, Header } from '@fluentui/react-northstar';
 import { link } from '../../utils/helpers';
 import { BehaviorInfo, ComponentInfo, BehaviorVariantionInfo } from '../../types';
 import { BehaviorCard, exampleStyle, behaviorVariantDisplayName } from './BehaviorCard';
@@ -18,7 +18,10 @@ type ComponentDocAccessibility = {
 export function containsAccessibility(info) {
   const defaulBehaviorName = getDefaultBehaviorName(info);
   return (
-    !!getDescription(info) || !!getBehaviorName(defaulBehaviorName) || (info.behaviors && info.behaviors.length > 0) || !!getAccIssues(info)
+    !!getDescription(info) ||
+    !!getBehaviorName(defaulBehaviorName) ||
+    (info.behaviors && info.behaviors.length > 0) ||
+    !!getAccIssues(info)
   );
 }
 
@@ -62,7 +65,7 @@ function getAccIssues(info) {
 function getAllAvailableBehaviors(
   behaviorName: string,
   defaultBehaviorFileName: string,
-  availableBehaviors: BehaviorInfo[]
+  availableBehaviors: BehaviorInfo[],
 ): BehaviorVariantionInfo[] {
   let behaviorVariantsWithoutDefault = [];
   if (defaultBehaviorFileName && behaviorName) {
@@ -108,7 +111,9 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
               {behaviorName && <li>{link(`Default: ${behaviorName}`, '#default-behavior')} </li>}
               {(info.behaviors || allAvailableBehaviors.length > 0) &&
                 allAvailableBehaviors.map(variant => {
-                  return <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>;
+                  return (
+                    <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>
+                  );
                 })}
             </ul>
           </li>

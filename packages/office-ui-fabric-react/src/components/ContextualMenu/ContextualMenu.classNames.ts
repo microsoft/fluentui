@@ -51,16 +51,16 @@ export const getSplitButtonVerticalDividerClassNames = memoizeFunction(
         right: 28, // width of the splitMenu based on the padding plus icon fontSize
         selectors: {
           [MediumScreenSelector]: {
-            right: 32 // fontSize of the icon increased from 12px to 16px
-          }
-        }
+            right: 32, // fontSize of the icon increased from 12px to 16px
+          },
+        },
       },
       divider: {
         height: 16,
-        width: 1
-      }
+        width: 1,
+      },
     });
-  }
+  },
 );
 
 const GlobalClassNames = {
@@ -78,7 +78,7 @@ const GlobalClassNames = {
   subMenuIcon: 'ms-ContextualMenu-submenuIcon',
   label: 'ms-ContextualMenu-itemText',
   secondaryText: 'ms-ContextualMenu-secondaryText',
-  splitMenu: 'ms-ContextualMenu-splitMenu'
+  splitMenu: 'ms-ContextualMenu-splitMenu',
 };
 
 /**
@@ -104,7 +104,7 @@ export const getItemClassNames = memoizeFunction(
     iconClassName?: string,
     subMenuClassName?: string,
     primaryDisabled?: boolean,
-    className?: string
+    className?: string,
   ): IContextualMenuItemStyles => {
     const styles = getMenuItemStyles(theme);
     const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -126,16 +126,16 @@ export const getItemClassNames = memoizeFunction(
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
                 [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
-              }
-            }
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' },
+              },
+            },
           ],
-        className
+        className,
       ],
       splitPrimary: [
         styles.root,
         {
-          width: `calc(100% - ${CONTEXTUAL_SPLIT_MENU_MINWIDTH})`
+          width: `calc(100% - ${CONTEXTUAL_SPLIT_MENU_MINWIDTH})`,
         },
         checked && ['is-checked', styles.rootChecked],
         (disabled || primaryDisabled) && ['is-disabled', styles.rootDisabled],
@@ -144,13 +144,14 @@ export const getItemClassNames = memoizeFunction(
             {
               selectors: {
                 ':hover': styles.rootHovered,
-                [`:hover ~ .${classNames.splitMenu}`]: styles.rootHovered, // when hovering over the splitPrimary also affect the splitMenu
+                // when hovering over the splitPrimary also affect the splitMenu
+                [`:hover ~ .${classNames.splitMenu}`]: styles.rootHovered,
                 ':active': styles.rootPressed,
                 [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
-              }
-            }
-          ]
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' },
+              },
+            },
+          ],
       ],
       splitMenu: [
         classNames.splitMenu,
@@ -158,7 +159,7 @@ export const getItemClassNames = memoizeFunction(
         {
           flexBasis: '0',
           padding: '0 8px',
-          minWidth: CONTEXTUAL_SPLIT_MENU_MINWIDTH
+          minWidth: CONTEXTUAL_SPLIT_MENU_MINWIDTH,
         },
         expanded && ['is-expanded', styles.rootExpanded],
         disabled && ['is-disabled', styles.rootDisabled],
@@ -169,10 +170,10 @@ export const getItemClassNames = memoizeFunction(
                 ':hover': styles.rootHovered,
                 ':active': styles.rootPressed,
                 [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
-                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
-              }
-            }
-          ]
+                [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' },
+              },
+            },
+          ],
       ],
       anchorLink: styles.anchorLink,
       linkContent: [classNames.linkContent, styles.linkContent],
@@ -180,15 +181,15 @@ export const getItemClassNames = memoizeFunction(
         classNames.linkContentMenu,
         styles.linkContent,
         {
-          justifyContent: 'center'
-        }
+          justifyContent: 'center',
+        },
       ],
       icon: [
         classNames.icon,
         knownIcon && styles.iconColor,
         styles.icon,
         iconClassName,
-        disabled && [classNames.isDisabled, styles.iconDisabled]
+        disabled && [classNames.isDisabled, styles.iconDisabled],
       ],
       iconColor: styles.iconColor,
       checkmarkIcon: [classNames.checkmarkIcon, knownIcon && styles.checkmarkIcon, styles.icon, iconClassName],
@@ -197,7 +198,7 @@ export const getItemClassNames = memoizeFunction(
         styles.subMenuIcon,
         subMenuClassName,
         expanded && { color: theme.palette.neutralPrimary },
-        disabled && [styles.iconDisabled]
+        disabled && [styles.iconDisabled],
       ],
       label: [classNames.label, styles.label],
       secondaryText: [classNames.secondaryText, styles.secondaryText],
@@ -207,13 +208,13 @@ export const getItemClassNames = memoizeFunction(
           !checked && [
             {
               selectors: {
-                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused
-              }
-            }
-          ]
-      ]
+                [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
+              },
+            },
+          ],
+      ],
     });
-  }
+  },
 );
 
 /**
@@ -236,7 +237,7 @@ export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextual
     iconClassName,
     subMenuClassName,
     primaryDisabled,
-    className
+    className,
   } = props;
 
   // tslint:disable-next-line:deprecation
@@ -252,6 +253,6 @@ export const getItemStyles = (props: IContextualMenuItemStyleProps): IContextual
     iconClassName,
     subMenuClassName,
     primaryDisabled,
-    className
+    className,
   );
 };

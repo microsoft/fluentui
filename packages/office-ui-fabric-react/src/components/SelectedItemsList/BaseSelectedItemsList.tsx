@@ -9,7 +9,8 @@ export interface IBaseSelectedItemsListState<T = any> {
   items: T[];
 }
 
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>>
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
+  extends React.Component<P, IBaseSelectedItemsListState<T>>
   implements IBaseSelectedItemsList<T> {
   protected root: HTMLElement;
   protected selection: Selection;
@@ -20,7 +21,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     initializeComponentRef(this);
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
     this.state = {
-      items: items
+      items: items,
     };
 
     // Create a new selection if one is not specified
@@ -35,7 +36,9 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 
   public addItems = (items: T[]): void => {
     // tslint:disable-next-line:no-any
-    const processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected ? (this.props.onItemSelected as any)(items) : items;
+    const processedItems: T[] | PromiseLike<T[]> = this.props.onItemSelected
+      ? (this.props.onItemSelected as any)(items)
+      : items;
 
     const processedItemObjects: T[] = processedItems as T[];
     const processedItemPromiseLikes: PromiseLike<T[]> = processedItems as PromiseLike<T[]>;
@@ -109,7 +112,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
-   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+   * If selectedItems is provided, this will act as a controlled component and will not update its own state.
    */
   public updateItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
@@ -185,8 +188,8 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
         onRemoveItem: () => this.removeItem(item),
         onItemChange: this.onItemChange,
         removeButtonAriaLabel: removeButtonAriaLabel,
-        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy])
-      })
+        onCopyItem: (itemToCopy: T) => this.copyItems([itemToCopy]),
+      }),
     );
   };
 

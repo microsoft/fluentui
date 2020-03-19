@@ -23,5 +23,7 @@ const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props 
 };
 
 export const ControlsAreaPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <ControlsAreaPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <ControlsAreaPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

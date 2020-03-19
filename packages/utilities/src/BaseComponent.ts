@@ -55,7 +55,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
       'getSnapshotBeforeUpdate',
       'render',
       'componentDidUpdate',
-      'componentWillUnmount'
+      'componentWillUnmount',
     ]);
   }
 
@@ -205,11 +205,18 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
    * @param conditionalPropName - The name of the prop that the condition is based on.
    * @param condition - Whether the condition is met.
    */
-  protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void {
+  protected _warnConditionallyRequiredProps(
+    requiredProps: string[],
+    conditionalPropName: string,
+    condition: boolean,
+  ): void {
     warnConditionallyRequiredProps(this.className, this.props, requiredProps, conditionalPropName, condition);
   }
 
-  private _setComponentRef<TRefInterface>(ref: IRefObject<TRefInterface> | undefined, value: TRefInterface | null): void {
+  private _setComponentRef<TRefInterface>(
+    ref: IRefObject<TRefInterface> | undefined,
+    value: TRefInterface | null,
+  ): void {
     if (!this._skipComponentRefResolution && ref) {
       if (typeof ref === 'function') {
         ref(value);

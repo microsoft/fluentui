@@ -11,11 +11,11 @@ describe('SelectedPeopleList', () => {
       pickerRef.current &&
         pickerRef.current.addItems([
           {
-            text: 'Person A'
+            text: 'Person A',
           },
           {
-            text: 'Person B'
-          }
+            text: 'Person B',
+          },
         ]);
     });
 
