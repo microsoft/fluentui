@@ -16,8 +16,8 @@ export interface IUseSelectedItemsResponse<T> {
   selectAll: () => void;
 }
 
-export const useSelectedItems = <T extends {}>(selectedItems: T[], selection: Selection): IUseSelectedItemsResponse<T> => {
-  const [items, setSelectedItems] = React.useState(selectedItems);
+export const useSelectedItems = <T extends {}>(selection: Selection, selectedItems?: T[]): IUseSelectedItemsResponse<T> => {
+  const [items, setSelectedItems] = React.useState(selectedItems || []);
 
   const addItems = (itemsToAdd: T[]): void => {
     const newItems: T[] = items.concat(itemsToAdd);
@@ -97,7 +97,6 @@ export const useSelectedItems = <T extends {}>(selectedItems: T[], selection: Se
     removeSelectedItems: removeSelectedItems,
     getSelectedItems: getSelectedItems,
     hasSelectedItems: hasSelectedItems,
-    unselectAll: unselectAll,
-    selectAll: selectAll
+    unselectAll: unselectAll
   } as IUseSelectedItemsResponse<T>;
 };

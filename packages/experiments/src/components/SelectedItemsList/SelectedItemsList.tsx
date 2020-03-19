@@ -48,6 +48,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const removeItems = React.useCallback(
     (itemsToRemove: TItem[]): void => {
       updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
+      props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
     },
     [items],
   );

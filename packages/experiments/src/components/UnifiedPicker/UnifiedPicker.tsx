@@ -6,13 +6,15 @@ import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps } f
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
+import { useSelectedItems } from './hooks/useSelectedItems';
+import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
   const classNames = getClassNames(getStyles);
 
   const rootRef = React.createRef<HTMLDivElement>();
-  const input = React.createRef<Autofill>();
+  const input = React.useRef<Autofill>(null);
   const { queryString, setQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
@@ -21,6 +23,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectedSuggestionIndex,
     isSuggestionsVisible
   );
+  const { selectedItems, addItems, removeItems } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
 
   const _onSelectionChanged = () => {
     setSelection(selection);
@@ -77,16 +80,42 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _renderSelectedItemsList = (): JSX.Element => {
-    return onRenderSelectedItems(selectedItemsListProps);
+    return onRenderSelectedItems({
+      ...selectedItemsListProps,
+      selectedItems: selectedItems,
+      selection: selection,
+      onItemsRemoved: _onRemoveSelectedItems
+    });
   };
   const _canAddItems = () => true;
+  const _onFloatingSuggestionsDismiss = (ev: React.MouseEvent): void => {
+    if (props.floatingSuggestionProps.onFloatingSuggestionsDismiss) {
+      props.floatingSuggestionProps.onFloatingSuggestionsDismiss();
+    }
+    showPicker(false);
+  };
+  const _onSuggestionSelected = (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => {
+    if (props.floatingSuggestionProps.onSuggestionSelected) {
+      props.floatingSuggestionProps.onSuggestionSelected(ev, item);
+    }
+    addItems([item.item]);
+    showPicker(false);
+  };
+  const _onRemoveSelectedItems = (itemsToRemove: T[]) => {
+    if (props.selectedItemsListProps.onItemsRemoved) {
+      props.selectedItemsListProps.onItemsRemoved(itemsToRemove);
+    }
+    removeItems(itemsToRemove);
+  };
   const _renderFloatingPicker = () =>
     onRederFloatingSuggestions({
       ...floatingSuggestionProps,
       targetElement: input.current?.inputElement,
       isSuggestionsVisible: isSuggestionsShown,
       suggestions: suggestionItems,
-      selectedSuggestionIndex: focusItemIndex
+      selectedSuggestionIndex: focusItemIndex,
+      onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
+      onSuggestionSelected: _onSuggestionSelected
     });
 
   return (
