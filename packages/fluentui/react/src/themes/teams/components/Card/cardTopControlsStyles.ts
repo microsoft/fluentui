@@ -3,7 +3,7 @@ import { TeamsCardVariables } from './cardVariables';
 import { CardTopControlsStylesProps } from '../../../../components/Card/CardTopControls';
 
 const cardTopControlsStyles: ComponentSlotStylesPrepared<CardTopControlsStylesProps, TeamsCardVariables> = {
-  root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
+  root: ({ variables: v }): ICSSInJSStyle => {
     return {
       position: 'absolute',
       top: v.topControlsTop,
