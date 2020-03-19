@@ -167,47 +167,6 @@ export interface KeyNames {
   EraseEof: 249;
   Play: 250;
   ZoomOut: 251;
-  Spacebar: 32;
-  Digit0: 48;
-  Digit1: 49;
-  Digit2: 50;
-  Digit3: 51;
-  Digit4: 52;
-  Digit5: 53;
-  Digit6: 54;
-  Digit7: 55;
-  Digit8: 56;
-  Digit9: 57;
-  Tilde: 192;
-  GraveAccent: 192;
-  ExclamationPoint: 49;
-  AtSign: 50;
-  PoundSign: 51;
-  PercentSign: 53;
-  Caret: 54;
-  Ampersand: 55;
-  PlusSign: 187;
-  MinusSign: 189;
-  EqualsSign: 187;
-  DivisionSign: 191;
-  MultiplicationSign: 56;
-  Comma: 188;
-  Decimal: 190;
-  Colon: 186;
-  Semicolon: 186;
-  Pipe: 220;
-  BackSlash: 220;
-  QuestionMark: 191;
-  SingleQuote: 222;
-  DoubleQuote: 222;
-  LeftCurlyBrace: 219;
-  RightCurlyBrace: 221;
-  LeftParenthesis: 57;
-  RightParenthesis: 48;
-  LeftAngleBracket: 188;
-  RightAngleBracket: 190;
-  LeftSquareBracket: 219;
-  RightSquareBracket: 221;
 }
 
 // tslint:disable-next-line:no-any
