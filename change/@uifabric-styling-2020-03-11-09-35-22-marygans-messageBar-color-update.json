@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "MessageBar: removed transparency in colors, updated color values, and added semantic slots to reflect designs.",
+  "comment": "MessageBar: Updated color values and added semantic slots to reflect designs.",
   "packageName": "@uifabric/styling",
   "email": "marygans@microsoft.com",
   "commit": "cca603f49f4f396a566f6c17011fddb58f0412af",

@@ -113,6 +113,35 @@ export const DarkCustomizations: ICustomizations = {
         }
       }
     },
+    Card: {
+      styles: {
+        root: {
+          background: DarkTheme.palette.neutralLighter
+        }
+      }
+    },
+    callout: {
+      fontSize: DarkTheme.fonts.small,
+      backgroundColor: DarkTheme.palette.red,
+      color: DarkTheme.palette.red,
+      selectors: {
+        '.ms-Callout-main': {
+          fontWeight: 600,
+          backgroundColor: DarkTheme.palette.red
+        },
+        '.ms-DatePicker-table > thead > tr': {
+          borderBottom: `${4} solid ${DarkTheme.palette.red}`
+        },
+        '.ms-DatePicker-day': {
+          border: 'none',
+          selectors: {
+            '.ms-DatePicker-day-button': {
+              fontWeight: 600
+            }
+          }
+        }
+      }
+    },
     DetailsRow: {
       styles: {
         root: {
