@@ -8,7 +8,6 @@ import { Ref } from '@fluentui/react-component-ref';
 
 import TreeItem, { TreeItemProps } from './TreeItem';
 import TreeTitle, { TreeTitleProps } from './TreeTitle';
-import * as keyboardKey from 'keyboard-key';
 import {
   childrenExist,
   commonPropTypes,
@@ -224,7 +223,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     });
   };
 
-  processItemForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+  processItemsForSelection = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     let { selectedItemIds } = this.state;
     const { id, selectableParent, items, expanded } = treeItemProps;
     const treeItemHasSubtree = hasSubtree(treeItemProps);
@@ -264,7 +263,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
   onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
     if (this.props.selectable) {
-      this.processItemForSelection(e, treeItemProps);
+      this.processItemsForSelection(e, treeItemProps);
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
       if (treeItemProps.selectableParent && treeItemProps.expanded && e.target !== e.currentTarget) {
         return;
