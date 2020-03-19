@@ -16,15 +16,11 @@ const CardExamplePreview = () => (
     </Card.Header>
     <Card.Footer>
       <Flex space="between">
-        <Flex.Item>
-          <Button content="View album" text primary />
-        </Flex.Item>
-        <Flex.Item>
-          <Flex vAlign="center">
-            <Text content="2.4k likes" />
-            <Button icon="like" iconOnly text title="More" />
-          </Flex>
-        </Flex.Item>
+        <Button content="View album" text primary />
+        <Flex vAlign="center">
+          <Text content="2.4k likes" />
+          <Button icon="like" iconOnly text title="More" />
+        </Flex>
       </Flex>
     </Card.Footer>
   </Card>

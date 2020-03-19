@@ -1,7 +1,7 @@
 import { Card, Flex, Image, Text } from '@fluentui/react';
 import * as React from 'react';
 
-const SimpleCardOnlyBody = () => (
+const CardExampleBody = () => (
   <Card>
     <Card.Body fitted>
       <Flex column gap="gap.small">
@@ -11,4 +11,4 @@ const SimpleCardOnlyBody = () => (
     </Card.Body>
   </Card>
 );
-export default SimpleCardOnlyBody;
+export default CardExampleBody;

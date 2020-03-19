@@ -18,16 +18,12 @@ const CenteredCard = () => (
     </Card.Body>
     <Card.Footer>
       <Flex space="between">
-        <Flex.Item>
-          <Button content="Action" />
-        </Flex.Item>
-        <Flex.Item>
-          <Flex>
-            <Button icon="star" iconOnly text title="Favourite" />
-            <Button icon="download" iconOnly text title="Download" />
-            <Button icon="more" iconOnly text title="More" />
-          </Flex>
-        </Flex.Item>
+        <Button content="Action" />
+        <Flex>
+          <Button icon="star" iconOnly text title="Favourite" />
+          <Button icon="download" iconOnly text title="Download" />
+          <Button icon="more" iconOnly text title="More" />
+        </Flex>
       </Flex>
     </Card.Footer>
   </Card>

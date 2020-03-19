@@ -15,15 +15,11 @@ const CardExampleHorizontal = () => (
       </Card.Body>
       <Card.Footer fitted>
         <Flex space="between" vAlign="center">
-          <Flex.Item>
-            <Text content="2.4k likes" />
-          </Flex.Item>
-          <Flex.Item>
-            <Flex>
-              <Button icon="download" iconOnly text title="Download" />
-              <Button icon="more" iconOnly text title="More" />
-            </Flex>
-          </Flex.Item>
+          <Text content="2.4k likes" />
+          <Flex>
+            <Button icon="download" iconOnly text title="Download" />
+            <Button icon="more" iconOnly text title="More" />
+          </Flex>
         </Flex>
       </Card.Footer>
     </Card.Column>
