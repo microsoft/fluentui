@@ -34,12 +34,10 @@ const items = [
           {
             id: 'tree-item-121',
             title: 'Lancel',
-            selected: true,
           },
           {
             id: 'tree-item-122',
             title: 'Willem',
-            selected: true,
           },
           {
             id: 'tree-item-123',
@@ -76,6 +74,8 @@ const items = [
   },
 ];
 
-const TreMultiselectExample = () => <Tree selectable aria-label="default" items={items} />;
+const TreMultiselectExample = () => (
+  <Tree defaultSelectedItemIds={['tree-item-122', 'tree-item-123']} selectable aria-label="default" items={items} />
+);
 
 export default TreMultiselectExample;
