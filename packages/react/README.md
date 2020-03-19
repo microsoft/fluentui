@@ -1,17 +1,11 @@
-# @uifabric/react
+# [Fluent UI React](https://dev.microsoft.com/fabric)
 
-**React components for [Office UI Fabric React](https://dev.microsoft.com/fabric)**
+**The React-based front-end framework for building experiences for M365.**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**Fluent UI 7** Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
-To import React components:
+Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
-```js
-import { ComponentName } from '@uifabric/react';
-```
+For information about available controls, see the [Fluent UI website](https://dev.microsoft.com/fabric).
 
-Once the React component graduates to a production release, the component will be available at:
-
-```js
-import { ComponentName } from 'office-ui-fabric-react';
-```
+To get started using or contributing to Fluent UI, see the [full readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/README.md).
