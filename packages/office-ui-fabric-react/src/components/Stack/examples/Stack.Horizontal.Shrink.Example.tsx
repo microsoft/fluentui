@@ -10,8 +10,8 @@ const stackItemStyles: IStackItemStyles = {
     display: 'flex',
     height: 50,
     justifyContent: 'center',
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 };
 const nonShrinkingStackItemStyles: IStackItemStyles = {
   root: {
@@ -22,15 +22,15 @@ const nonShrinkingStackItemStyles: IStackItemStyles = {
     height: 50,
     justifyContent: 'center',
     overflow: 'hidden',
-    width: 500
-  }
+    width: 500,
+  },
 };
 
 // Tokens definition
 const outerStackTokens: IStackTokens = { childrenGap: 5 };
 const innerStackTokens: IStackTokens = {
   childrenGap: 5,
-  padding: 10
+  padding: 10,
 };
 
 export const HorizontalStackShrinkExample: React.FunctionComponent = () => {
@@ -41,8 +41,8 @@ export const HorizontalStackShrinkExample: React.FunctionComponent = () => {
     root: {
       background: DefaultPalette.themeTertiary,
       overflow: 'hidden',
-      width: `${stackWidth}%`
-    }
+      width: `${stackWidth}%`,
+    },
   };
 
   return (

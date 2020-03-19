@@ -6,7 +6,8 @@ import { IContextualMenuItem } from '../../../../ContextualMenu';
 import { ValidationState, IBasePickerSuggestionsProps } from '../../BasePicker.types';
 
 /**
- * Common props in between IPeoplePickerItemSelectedProps, IPeoplePickerItemWithMenuProps and IPeoplePickerItemSuggestionProps.
+ * Common props in between IPeoplePickerItemSelectedProps, IPeoplePickerItemWithMenuProps and
+ * IPeoplePickerItemSuggestionProps.
  * {@docCategory PeoplePicker}
  */
 export interface IPeoplePickerItemSharedProps {
@@ -83,7 +84,8 @@ export interface IPeoplePickerItemSuggestionProps extends IPeoplePickerItemShare
   suggestionsProps?: IBasePickerSuggestionsProps;
 
   /**
-   * Flag that controls whether each suggested PeoplePicker item (Persona) is rendered with or without secondary text for compact look.
+   * Flag that controls whether each suggested PeoplePicker item (Persona) is rendered with or without secondary text
+   * for compact look.
    * @defaultvalue false
    */
   compact?: boolean;

@@ -40,7 +40,7 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
   onRenderCustomPlaceholder?: (
     rowProps: IDetailsRowProps,
     index?: number,
-    defaultRender?: (props: IDetailsRowProps) => React.ReactNode
+    defaultRender?: (props: IDetailsRowProps) => React.ReactNode,
   ) => React.ReactNode;
 
   /**
@@ -62,7 +62,8 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
 }
 
 /**
- * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * Defines props needed to construct styles.
+ * This represents the simplified set of immutable things which control the class names.
  * {@docCategory DetailsList}
  */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;

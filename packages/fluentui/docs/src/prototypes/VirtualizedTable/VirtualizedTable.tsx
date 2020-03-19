@@ -1,4 +1,10 @@
-import { gridCellBehavior, gridHeaderCellBehavior, gridNestedBehavior, gridRowBehavior, Table } from '@fluentui/react';
+import {
+  gridCellBehavior,
+  gridHeaderCellBehavior,
+  gridNestedBehavior,
+  gridRowBehavior,
+  Table,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 import { AutoSizer, List as ReactVirtualizedList, ListRowRenderer, ListProps } from 'react-virtualized';
 import getItems from './itemsGenerator';
@@ -13,7 +19,7 @@ const accessibilityListProperties: Partial<ListProps> = {
   'aria-label': '',
   'aria-readonly': undefined,
   containerRole: 'presentation',
-  role: 'presentation'
+  role: 'presentation',
 };
 
 const rowRenderer: ListRowRenderer = ({ index, style }) => {

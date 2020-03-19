@@ -18,7 +18,7 @@ export const appPadding = {
   leftLarge: appPaddingLeftLg,
   rightLarge: appPaddingRightLg,
   leftSmall: appPaddingLeftSm,
-  rightSmall: appPaddingRightSm
+  rightSmall: appPaddingRightSm,
 };
 
 export const contentPaddingSmall = 16;
@@ -59,5 +59,5 @@ export const mediaQuery = {
   minMobile: `@media only screen and (min-width: ${ScreenWidthMinUhfMobile}px)`,
   maxMobile: `@media only screen and (max-width: ${ScreenWidthMaxUhfMobile}px)`,
   minLarge: `@media only screen and (min-width: ${ScreenWidthMinXLarge}px)`,
-  maxLarge: `@media only screen and (max-width: ${ScreenWidthMaxXLarge}px)`
+  maxLarge: `@media only screen and (max-width: ${ScreenWidthMaxXLarge}px)`,
 };

@@ -2,6 +2,20 @@
   "name": "@uifabric/set-version",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/set-version_v7.0.7",
+      "version": "7.0.7",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "f3befc0bad68483270afcfbdaff4473cd68939cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 07 Feb 2020 12:41:31 GMT",
       "tag": "@uifabric/set-version_v7.0.5",
       "version": "7.0.5",

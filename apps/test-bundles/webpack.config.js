@@ -27,12 +27,12 @@ module.exports = Object.keys(Entries).map(
       true,
       {
         entry: {
-          [entryName]: Entries[entryName]
+          [entryName]: Entries[entryName],
         },
         externals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
-        }
+          'react-dom': 'ReactDOM',
+        },
         // plugins: [
         //   {
         //     apply: compiler => {
@@ -42,8 +42,8 @@ module.exports = Object.keys(Entries).map(
         // ]
       },
       true,
-      true
-    )[0]
+      true,
+    )[0],
 );
 
 /**

@@ -37,9 +37,9 @@ const createInputManager: ManagerFactory<InputState, InputActions> = config =>
   createManager<InputState, InputActions>({
     ...config,
     actions: {
-      change: (value: string) => () => ({ value })
+      change: (value: string) => () => ({ value }),
     },
-    state: { value: '', ...config.state }
+    state: { value: '', ...config.state },
   });
 const manager = createInputManager({ state: { value: 'Hello world!' } });
 ```

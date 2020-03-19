@@ -6,7 +6,7 @@ import {
   DocumentCardLocation,
   DocumentCardPreview,
   DocumentCardTitle,
-  IDocumentCardPreviewProps
+  IDocumentCardPreviewProps,
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '@uifabric/example-data';
@@ -20,75 +20,75 @@ export class DocumentCardCompleteExample extends React.PureComponent {
           name: '2016 Conference Presentation',
           linkProps: {
             href: 'http://bing.com',
-            target: '_blank'
+            target: '_blank',
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
+          height: 196,
         },
         {
           name: 'New Contoso Collaboration for Conference Presentation Draft',
           linkProps: {
             href: 'http://bing.com',
-            target: '_blank'
+            target: '_blank',
           },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
+          height: 196,
         },
         {
           name: 'Spec Sheet for design',
           linkProps: {
             href: 'http://bing.com',
-            target: '_blank'
+            target: '_blank',
           },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
+          height: 196,
         },
         {
           name: 'Contoso Marketing Presentation',
           linkProps: {
             href: 'http://bing.com',
-            target: '_blank'
+            target: '_blank',
           },
           previewImageSrc: TestImages.documentPreview,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
+          height: 196,
         },
         {
           name: 'Notes from Ignite conference',
           linkProps: {
             href: 'http://bing.com',
-            target: '_blank'
+            target: '_blank',
           },
           previewImageSrc: TestImages.documentPreviewTwo,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
+          height: 196,
         },
         {
           name: 'FY17 Cost Projections',
           linkProps: {
             href: 'http://bing.com',
-            target: '_blank'
+            target: '_blank',
           },
           previewImageSrc: TestImages.documentPreviewThree,
           iconSrc: TestImages.iconPpt,
           imageFit: ImageFit.cover,
           width: 318,
-          height: 196
-        }
-      ]
+          height: 196,
+        },
+      ],
     };
 
     return (
@@ -113,18 +113,18 @@ export class DocumentCardCompleteExample extends React.PureComponent {
             {
               iconProps: { iconName: 'Share' },
               onClick: this._onActionClick.bind(this, 'share'),
-              ariaLabel: 'share action'
+              ariaLabel: 'share action',
             },
             {
               iconProps: { iconName: 'Pin' },
               onClick: this._onActionClick.bind(this, 'pin'),
-              ariaLabel: 'pin action'
+              ariaLabel: 'pin action',
             },
             {
               iconProps: { iconName: 'Ringer' },
               onClick: this._onActionClick.bind(this, 'notifications'),
-              ariaLabel: 'notifications action'
-            }
+              ariaLabel: 'notifications action',
+            },
           ]}
           views={432}
         />

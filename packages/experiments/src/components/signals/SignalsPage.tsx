@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-/* tslint:disable:max-line-length */
 import { SignalFieldBasicExample } from './examples/SignalField.Basic.Example';
 const SignalFieldBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/signals/examples/SignalField.Basic.Example.tsx') as string;
 
@@ -25,16 +24,19 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/signals/Signals.Props.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/signals/Signals.Props.ts')]}
+          />
         }
         overview={
           <div>
             <p>
-              A <code>Signal</code> is a combination of an <code>Icon</code> with a color and optional metadata which carries a
-              standardized, semantic meaning.
+              A <code>Signal</code> is a combination of an <code>Icon</code> with a color and optional metadata which
+              carries a standardized, semantic meaning.
             </p>
             <p>
-              A <code>SignalField</code> is a layout component which nicely arranges <code>Signal</code> and text elements for presentation.
+              A <code>SignalField</code> is a layout component which nicely arranges <code>Signal</code> and text
+              elements for presentation.
             </p>
           </div>
         }
@@ -44,7 +46,8 @@ export class SignalsPage extends React.Component<IComponentDemoPageProps, {}> {
             <ul>
               <li>Use them to associate a document with a specific state.</li>
               <li>
-                Assign localized <code>aria-label</code> attributes to the <code>Signal</code> elements which align with their meaning.
+                Assign localized <code>aria-label</code> attributes to the <code>Signal</code> elements which align with
+                their meaning.
               </li>
             </ul>
           </div>

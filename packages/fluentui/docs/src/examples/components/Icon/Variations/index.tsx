@@ -14,7 +14,11 @@ const Variations = () => (
       description="An icon is inheriting color by default, but can have a different color if provided by the user."
       examplePath="components/Icon/Variations/IconExampleColor"
     />
-    <ComponentExample title="Size" description="An icon can vary in size." examplePath="components/Icon/Variations/IconExampleSize" />
+    <ComponentExample
+      title="Size"
+      description="An icon can vary in size."
+      examplePath="components/Icon/Variations/IconExampleSize"
+    />
     <ComponentExample
       title="Bordered"
       description="An icon can be formatted to appear with rectangular border."

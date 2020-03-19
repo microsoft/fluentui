@@ -5,9 +5,9 @@ import { addVariants } from '@uifabric/variants';
 
 export const FluentCustomizations: ICustomizations = {
   settings: {
-    theme: { ...FluentTheme }
+    theme: { ...FluentTheme },
   },
-  scopedSettings: { ...FluentStyles }
+  scopedSettings: { ...FluentStyles },
 };
 
 addVariants(FluentCustomizations.settings.theme);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react';
+import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react-northstar';
 
 export interface LogoProps {
   companyName?: string;
@@ -20,14 +20,14 @@ class MSTeamsLogo extends React.Component<LogoProps, any> {
                   variables: { color: siteVariables.colors.brand[600] },
                   size: 'largest',
                   xSpacing: 'after',
-                  styles: { verticalAlign: 'middle' }
-                })
+                  styles: { verticalAlign: 'middle' },
+                }),
               })}
               <Text
                 styles={{
                   color: siteVariables.colors.white,
                   verticalAlign: 'middle',
-                  lineHeight: '40px'
+                  lineHeight: '40px',
                 }}
               >
                 {companyName}

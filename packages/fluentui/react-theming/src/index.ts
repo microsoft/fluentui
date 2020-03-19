@@ -2,7 +2,15 @@ import preset from 'jss-preset-default';
 import jss from 'jss';
 
 export { IClasses, ISlotProps, ISlottableProps, IStateProps } from './slots.types';
-export { ICastableToString, IColorRamp, IResolvedTokens, ITheme, IToken, ITokenLiteral, ITokenResolver } from './theme.types';
+export {
+  ICastableToString,
+  IColorRamp,
+  IResolvedTokens,
+  ITheme,
+  IToken,
+  ITokenLiteral,
+  ITokenResolver,
+} from './theme.types';
 export { mergeSlotProps } from './utilities/mergeSlotProps';
 export { compose } from './compose';
 

@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { List, Image } from '@fluentui/react';
+import { List, Image } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ListExampleSelectable = () => {

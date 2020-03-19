@@ -13,4 +13,6 @@ export interface RefProps {
 }
 
 /** A checker that matches the React.Ref type. */
-export const refPropType = PropTypes.oneOfType([PropTypes.func, PropTypes.object]) as PropTypes.Requireable<React.Ref<any>>;
+export const refPropType = PropTypes.oneOfType([PropTypes.func, PropTypes.object]) as PropTypes.Requireable<
+  React.Ref<any>
+>;

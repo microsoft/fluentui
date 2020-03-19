@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  IContextualMenuProps,
+  IContextualMenuItem,
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuSectionExample: React.FunctionComponent = () => {
@@ -17,14 +21,14 @@ const menuItems: IContextualMenuItem[] = [
       items: [
         {
           key: 'newItem',
-          text: 'New'
+          text: 'New',
         },
         {
           key: 'deleteItem',
-          text: 'Delete'
-        }
-      ]
-    }
+          text: 'Delete',
+        },
+      ],
+    },
   },
   {
     key: 'section2',
@@ -34,18 +38,18 @@ const menuItems: IContextualMenuItem[] = [
       items: [
         {
           key: 'share',
-          text: 'Share'
+          text: 'Share',
         },
         {
           key: 'print',
-          text: 'Print'
+          text: 'Print',
         },
         {
           key: 'music',
-          text: 'Music'
-        }
-      ]
-    }
+          text: 'Music',
+        },
+      ],
+    },
   },
   {
     key: 'section3',
@@ -57,11 +61,11 @@ const menuItems: IContextualMenuItem[] = [
           key: 'Bing',
           text: 'Go to Bing',
           href: 'http://www.bing.com',
-          target: '_blank'
-        }
-      ]
-    }
-  }
+          target: '_blank',
+        },
+      ],
+    },
+  },
 ];
 
 const menuProps: IContextualMenuProps = { items: menuItems };

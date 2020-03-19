@@ -12,20 +12,20 @@ import { Accessibility } from '../../types';
 const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'radiogroup'
-    }
+      role: 'radiogroup',
+    },
   },
 
   keyActions: {
     root: {
       nextItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
       },
       prevItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
+      },
+    },
+  },
 });
 
 export type ToolbarRadioGroupBehaviorProps = never;

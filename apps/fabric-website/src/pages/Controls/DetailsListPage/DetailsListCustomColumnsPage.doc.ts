@@ -7,6 +7,6 @@ export const DetailsListCustomColumnsPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Custom Item Columns',
-    related
-  }
+    related,
+  },
 };

@@ -1,5 +1,5 @@
 import { useSelectKnob } from '@fluentui/docs-components';
-import * as FluentUI from '@fluentui/react';
+import * as FluentUI from '@fluentui/react-northstar';
 
 import componentInfoContext from '../../utils/componentInfoContext';
 import useComponentProps from './useComponentProps';
@@ -19,7 +19,7 @@ const useAccessibilityKnob = (componentName: string): FluentUI.Accessibility => 
   const [behaviorName] = useSelectKnob({
     name: 'accessibility',
     initialValue: defaultValue,
-    values: behaviorNames
+    values: behaviorNames,
   });
 
   return FluentUI[behaviorName];

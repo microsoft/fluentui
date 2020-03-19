@@ -11,9 +11,9 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
 const imageBehavior: Accessibility<ImageBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true'
-    }
-  }
+      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true',
+    },
+  },
 });
 
 export default imageBehavior;

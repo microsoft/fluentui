@@ -2,7 +2,7 @@ import { getGlobalClassNames } from '../../Styling';
 import { IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 
 const GlobalClassNames = {
-  host: 'ms-HoverCard-host'
+  host: 'ms-HoverCard-host',
 };
 
 export function getStyles(props: IHoverCardStyleProps): IHoverCardStyles {
@@ -11,6 +11,6 @@ export function getStyles(props: IHoverCardStyleProps): IHoverCardStyles {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    host: [classNames.host, className]
+    host: [classNames.host, className],
   };
 }

@@ -3,12 +3,30 @@ import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from '.
 import { getLayerStyles } from './KeytipLayer.styles';
 import { Keytip, IKeytipProps } from '../../Keytip';
 import { Layer } from '../../Layer';
-import { classNamesFunction, getDocument, arraysEqual, warn, isMac, EventGroup, Async, initializeComponentRef } from '../../Utilities';
+import {
+  classNamesFunction,
+  getDocument,
+  arraysEqual,
+  warn,
+  isMac,
+  EventGroup,
+  Async,
+  initializeComponentRef,
+} from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
 import { IKeytipTreeNode } from './IKeytipTreeNode';
-import { ktpTargetFromId, ktpTargetFromSequences, sequencesToID, mergeOverflows } from '../../utilities/keytips/KeytipUtils';
-import { transitionKeysContain, KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
+import {
+  ktpTargetFromId,
+  ktpTargetFromSequences,
+  sequencesToID,
+  mergeOverflows,
+} from '../../utilities/keytips/KeytipUtils';
+import {
+  transitionKeysContain,
+  KeytipTransitionModifier,
+  IKeytipTransitionKey,
+} from '../../utilities/keytips/IKeytipTransitionKey';
 import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
 
 export interface IKeytipLayerState {
@@ -20,7 +38,7 @@ export interface IKeytipLayerState {
 // Default sequence is Alt-Windows (Alt-Meta) in Windows, Option-Control (Alt-Control) in Mac
 const defaultStartSequence: IKeytipTransitionKey = {
   key: isMac() ? 'Control' : 'Meta',
-  modifierKeys: [KeytipTransitionModifier.alt]
+  modifierKeys: [KeytipTransitionModifier.alt],
 };
 
 // Default exit sequence is the same as the start sequence
@@ -28,7 +46,7 @@ const defaultExitSequence: IKeytipTransitionKey = defaultStartSequence;
 
 // Default return sequence is Escape
 const defaultReturnSequence: IKeytipTransitionKey = {
-  key: 'Escape'
+  key: 'Escape',
 };
 
 const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerStyles>();
@@ -42,7 +60,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     keytipStartSequences: [defaultStartSequence],
     keytipExitSequences: [defaultExitSequence],
     keytipReturnSequences: [defaultReturnSequence],
-    content: ''
+    content: '',
   };
 
   private _events: EventGroup;
@@ -73,7 +91,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       inKeytipMode: false,
       // Get the initial set of keytips
       keytips: managerKeytips,
-      visibleKeytips: this._getVisibleKeytips(managerKeytips)
+      visibleKeytips: this._getVisibleKeytips(managerKeytips),
     };
 
     this._buildTree();
@@ -345,7 +363,10 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // Execute the overflow button's onExecute
     const overflowKeytipNode = this._keytipTree.getNode(sequencesToID(overflowButtonSequences));
     if (overflowKeytipNode && overflowKeytipNode.onExecute) {
-      overflowKeytipNode.onExecute(this._getKtpExecuteTarget(overflowKeytipNode), this._getKtpTarget(overflowKeytipNode));
+      overflowKeytipNode.onExecute(
+        this._getKtpExecuteTarget(overflowKeytipNode),
+        this._getKtpTarget(overflowKeytipNode),
+      );
     }
   }
 
@@ -454,9 +475,9 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
-      // Check to make sure that child of currentKeytip is successfully added to currentKeytip's children and update it if not
-      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node in currentKeytip
-      // when that parent is the currentKeytip
+      // Ensure the child of currentKeytip is successfully added to currentKeytip's children and update it if not.
+      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node
+      // in currentKeytip when that parent is the currentKeytip.
       if (
         this._keytipTree.currentKeytip &&
         this._keytipTree.currentKeytip.hasDynamicChildren &&
@@ -544,7 +565,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       if (this._keytipTree.currentKeytip.onExecute) {
         this._keytipTree.currentKeytip.onExecute(
           this._getKtpExecuteTarget(this._keytipTree.currentKeytip),
-          this._getKtpTarget(this._keytipTree.currentKeytip)
+          this._getKtpTarget(this._keytipTree.currentKeytip),
         );
       }
     }
@@ -601,7 +622,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    */
   private _isCurrentKeytipAnAlias(keytipProps: IKeytipProps): boolean {
     const currKtp = this._keytipTree.currentKeytip;
-    if (currKtp && (currKtp.overflowSetSequence || currKtp.persisted) && arraysEqual(keytipProps.keySequences, currKtp.keySequences)) {
+    if (
+      currKtp &&
+      (currKtp.overflowSetSequence || currKtp.persisted) &&
+      arraysEqual(keytipProps.keySequences, currKtp.keySequences)
+    ) {
       return true;
     }
     return false;
@@ -629,11 +654,11 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   };
 
   /**
-   * Returns duplicates among keytip IDs
-   * If the returned array is empty, no duplicates were found
+   * Returns duplicates among keytip IDs.
+   * If the returned array is empty, no duplicates were found.
    *
    * @param keytipIds - Array of keytip IDs to find duplicates for
-   * @returns - Array of duplicates that were found. If multiple duplicates were found it will only be added once to this array
+   * @returns - Array of duplicates that were found. Each duplicate will only be added once to this array.
    */
   private _getDuplicateIds = (keytipIds: string[]): string[] => {
     const seenIds: { [id: string]: number } = {};

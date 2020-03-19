@@ -4,7 +4,7 @@ import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const labelStyles: Partial<IStyleSet<ILabelStyles>> = {
-  root: { marginTop: 10 }
+  root: { marginTop: 10 },
 };
 
 export const PivotBasicExample: React.FunctionComponent = () => {
@@ -14,7 +14,7 @@ export const PivotBasicExample: React.FunctionComponent = () => {
         headerText="My Files"
         headerButtonProps={{
           'data-order': 1,
-          'data-title': 'My Files Title'
+          'data-title': 'My Files Title',
         }}
       >
         <Label styles={labelStyles}>Pivot #1</Label>

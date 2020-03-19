@@ -6,7 +6,7 @@ import { FabricDecorator } from '../utilities';
 import {
   Shimmer,
   ShimmerElementType as ElemType,
-  ShimmerElementsGroup
+  ShimmerElementsGroup,
 } from 'office-ui-fabric-react';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -19,7 +19,7 @@ const wrapperClassName = mergeStyles({
   justifyContent: 'center',
   background: '#0078D4',
   outline: `1px solid #333333`,
-  outlineOffset: '-10px'
+  outlineOffset: '-10px',
 });
 
 storiesOf('Shimmer', module)
@@ -36,7 +36,7 @@ storiesOf('Shimmer', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Basic', () => <Shimmer />)
   .addStory('50% width', () => <Shimmer width="50%" />)
@@ -47,11 +47,11 @@ storiesOf('Shimmer', module)
         shimmerElements={[
           { type: ElemType.circle },
           { type: ElemType.gap, width: '2%' },
-          { type: ElemType.line }
+          { type: ElemType.line },
         ]}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Custom elements', () => (
     <Shimmer
@@ -60,7 +60,7 @@ storiesOf('Shimmer', module)
           <ShimmerElementsGroup
             shimmerElements={[
               { type: ElemType.circle, height: 40 },
-              { type: ElemType.gap, width: 16, height: 40 }
+              { type: ElemType.gap, width: 16, height: 40 },
             ]}
           />
           <ShimmerElementsGroup
@@ -69,7 +69,7 @@ storiesOf('Shimmer', module)
             shimmerElements={[
               { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
               { type: ElemType.line, width: '90%', height: 8 },
-              { type: ElemType.gap, width: '10%', height: 20 }
+              { type: ElemType.gap, width: '10%', height: 20 },
             ]}
           />
         </div>
@@ -83,7 +83,7 @@ storiesOf('Shimmer', module)
         width={300}
         shimmerColors={{
           shimmer: '#71afe5',
-          shimmerWave: '#2b88d8'
+          shimmerWave: '#2b88d8',
         }}
         customElementsGroup={
           <div style={{ display: 'flex' }}>
@@ -91,7 +91,7 @@ storiesOf('Shimmer', module)
               backgroundColor={'#0078D4'}
               shimmerElements={[
                 { type: ElemType.circle, height: 40 },
-                { type: ElemType.gap, width: 16, height: 40 }
+                { type: ElemType.gap, width: 16, height: 40 },
               ]}
             />
             <ShimmerElementsGroup
@@ -101,7 +101,7 @@ storiesOf('Shimmer', module)
               shimmerElements={[
                 { type: ElemType.line, width: '100%', height: 10, verticalAlign: 'bottom' },
                 { type: ElemType.line, width: '90%', height: 8 },
-                { type: ElemType.gap, width: '10%', height: 20 }
+                { type: ElemType.gap, width: '10%', height: 20 },
               ]}
             />
           </div>

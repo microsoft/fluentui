@@ -7,7 +7,7 @@ const items: IBreadcrumbItem[] = [
   { text: 'This is folder 2 with a long name', key: 'f2', onClick: _onBreadcrumbItemClicked },
   { text: 'This is folder 3 long', key: 'f3', onClick: _onBreadcrumbItemClicked },
   { text: 'This is non-clickable folder 4', key: 'f4' },
-  { text: 'This is folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true }
+  { text: 'This is folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true },
 ];
 
 export const BreadcrumbStaticExample: React.FunctionComponent = () => {

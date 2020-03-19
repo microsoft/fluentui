@@ -10,7 +10,7 @@ import {
   primaryCheckedTokens,
   primaryCircularTokens,
   primaryEnabledTokens,
-  ButtonStyles as styles
+  ButtonStyles as styles,
 } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
@@ -22,7 +22,7 @@ export const PrimaryButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   props.circular && circularTokens,
   props.circular && primaryCircularTokens,
   props.checked && primaryCheckedTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
 export const PrimaryButton: React.FunctionComponent<IButtonProps> = composed({
@@ -31,5 +31,5 @@ export const PrimaryButton: React.FunctionComponent<IButtonProps> = composed({
   state,
   styles,
   tokens: PrimaryButtonTokens,
-  view
+  view,
 });

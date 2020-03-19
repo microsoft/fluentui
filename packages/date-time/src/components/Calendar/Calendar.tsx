@@ -7,11 +7,10 @@ import { styles } from './Calendar.styles';
 /**
  * Calendar description
  */
-export const Calendar: React.FunctionComponent<ICalendarProps> = styled<ICalendarProps, ICalendarStyleProps, ICalendarStyles>(
-  CalendarBase,
-  styles,
-  undefined,
-  {
-    scope: 'Calendar'
-  }
-);
+export const Calendar: React.FunctionComponent<ICalendarProps> = styled<
+  ICalendarProps,
+  ICalendarStyleProps,
+  ICalendarStyles
+>(CalendarBase, styles, undefined, {
+  scope: 'Calendar',
+});

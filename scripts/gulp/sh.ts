@@ -8,7 +8,7 @@ const sh = (command: string, cwd?: string, pipeOutputToResult: boolean = false):
       cwd: cwd || process.cwd(),
       env: process.env,
       stdio: pipeOutputToResult ? 'pipe' : [0, 1, 2],
-      shell: true
+      shell: true,
     };
 
     const child = childProcess.spawn(cmd, args, options);

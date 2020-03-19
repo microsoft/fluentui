@@ -2,7 +2,7 @@ import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
 
 const GlobalClassNames = {
-  root: 'ms-DocumentCardStatus'
+  root: 'ms-DocumentCardStatus',
 };
 
 export const getStyles = (props: IDocumentCardStatusStyleProps): IDocumentCardStatusStyles => {
@@ -19,9 +19,9 @@ export const getStyles = (props: IDocumentCardStatusStyleProps): IDocumentCardSt
         margin: '8px 16px',
         color: palette.neutralPrimary,
         backgroundColor: palette.neutralLighter,
-        height: '32px'
+        height: '32px',
       },
-      className
-    ]
+      className,
+    ],
   };
 };

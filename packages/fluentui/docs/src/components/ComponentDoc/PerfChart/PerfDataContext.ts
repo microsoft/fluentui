@@ -32,7 +32,7 @@ export type PerfDataContextValue = {
 const PerfDataContext = React.createContext<PerfDataContextValue>({
   loading: true,
   error: undefined,
-  data: undefined
+  data: undefined,
 });
 
 export default PerfDataContext;

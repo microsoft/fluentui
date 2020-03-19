@@ -6,7 +6,7 @@ import {
   IPersonaPresenceStyleProps,
   IPersonaPresenceStyles,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
 } from '../Persona.types';
 import { sizeBoolean } from '../PersonaConsts';
 
@@ -34,7 +34,7 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       presence,
       theme,
       presenceTitle,
-      presenceColors
+      presenceColors,
     } = this.props;
     const size = sizeBoolean(this.props.size as PersonaSize);
 
@@ -53,8 +53,12 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
         ? coinSize / coinSizeFontScaleFactor + 'px'
         : presenceFontMaxSize + 'px'
       : '';
-    const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth } : undefined;
-    const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
+    const coinSizeWithPresenceIconStyle = coinSize
+      ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth }
+      : undefined;
+    const coinSizeWithPresenceStyle = coinSize
+      ? { width: presenceHeightWidth, height: presenceHeightWidth }
+      : undefined;
 
     // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(styles, {
@@ -62,7 +66,7 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
       presence,
       size: this.props.size,
       isOutOfOffice,
-      presenceColors
+      presenceColors,
     });
 
     if (presence === PersonaPresenceEnum.none) {
@@ -81,7 +85,10 @@ export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, 
   );
 }
 
-function determineIcon(presence: PersonaPresenceEnum | undefined, isOutOfOffice: boolean | undefined): string | undefined {
+function determineIcon(
+  presence: PersonaPresenceEnum | undefined,
+  isOutOfOffice: boolean | undefined,
+): string | undefined {
   if (!presence) {
     return undefined;
   }

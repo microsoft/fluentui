@@ -21,7 +21,7 @@ Ref.displayName = 'Ref';
 if (process.env.NODE_ENV !== 'production') {
   Ref.propTypes = {
     children: PropTypes.element.isRequired,
-    innerRef: refPropType.isRequired
+    innerRef: refPropType.isRequired,
   };
 }
 
