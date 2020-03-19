@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/ChoiceGroupOptions';
+export * from 'office-ui-fabric-react/lib/ChoiceGroupOption';

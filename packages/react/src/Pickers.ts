@@ -1,1 +1,1 @@
-export * from 'office-ui-fabric-react/lib/pickers';
+export * from 'office-ui-fabric-react/lib/Pickers';
