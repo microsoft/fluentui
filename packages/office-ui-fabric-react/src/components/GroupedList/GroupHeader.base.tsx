@@ -7,7 +7,12 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps, IGroupHeaderCheckboxProps } from './GroupHeader.types';
+import {
+  IGroupHeaderStyleProps,
+  IGroupHeaderStyles,
+  IGroupHeaderProps,
+  IGroupHeaderCheckboxProps,
+} from './GroupHeader.types';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
@@ -69,7 +74,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       compact,
       ariaPosInSet,
       ariaSetSize,
-      useFastIcons
+      useFastIcons,
     } = this.props;
 
     const defaultCheckboxRender = useFastIcons ? this._fastDefaultCheckboxRender : this._defaultCheckboxRender;

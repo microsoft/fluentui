@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { GroupHeader, GroupedList, IGroup, IGroupHeaderCheckboxProps, IGroupHeaderProps } from 'office-ui-fabric-react/lib/GroupedList';
+import {
+  GroupHeader,
+  GroupedList,
+  IGroup,
+  IGroupHeaderCheckboxProps,
+  IGroupHeaderProps,
+} from 'office-ui-fabric-react/lib/GroupedList';
 import { IColumn, DetailsRow } from 'office-ui-fabric-react/lib/DetailsList';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Selection, SelectionMode, SelectionZone } from 'office-ui-fabric-react/lib/Selection';
@@ -29,8 +35,8 @@ export class GroupedListCustomCheckboxExample extends React.Component<{}, IGroup
           key: key,
           name: key,
           fieldName: key,
-          minWidth: 300
-        })
+          minWidth: 300,
+        }),
       );
     this._groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
@@ -52,7 +58,7 @@ export class GroupedListCustomCheckboxExample extends React.Component<{}, IGroup
               selectionMode={SelectionMode.multiple}
               groups={this._groups}
               groupProps={{
-                onRenderHeader: this._onRenderHeader
+                onRenderHeader: this._onRenderHeader,
               }}
             />
           </SelectionZone>
