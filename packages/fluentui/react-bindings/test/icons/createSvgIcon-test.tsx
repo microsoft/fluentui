@@ -45,7 +45,6 @@ describe('createSvgIcon', () => {
 
     const styles = jest.fn();
     const wrapper = mount(<TestIcon id="test-id" />, {
-      // @ts-ignore typings are outdated
       wrappingComponent: TestProvider,
       wrappingComponentProps: { theme: createTheme(styles) },
     });
