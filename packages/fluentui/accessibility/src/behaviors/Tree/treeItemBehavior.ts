@@ -58,6 +58,17 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
       expandSiblings: {
         keyCombinations: [{ keyCode: keyboardKey['*'] }],
       },
+      ...(props.selectable && {
+        performClick: {
+          keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+        },
+      }),
+      ...(props.selectable &&
+        props.hasSubtree && {
+          performClick: {
+            keyCombinations: [{ keyCode: keyboardKey.Enter }],
+          },
+        }),
     },
   },
   childBehaviors: {
@@ -72,6 +83,7 @@ export type TreeItemBehaviorProps = {
   index?: number;
   hasSubtree?: boolean;
   treeSize?: number;
+  selectable?: boolean;
 };
 
 /** Checks if current tree item has a subtree and it is expanded */

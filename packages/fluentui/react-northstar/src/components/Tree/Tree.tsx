@@ -230,10 +230,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     const treeItemHasSubtree = hasSubtree(treeItemProps);
     const isExpandedSelectableParent = treeItemHasSubtree && selectableParent && expanded;
 
-    // selection is exectued only with space or click
-    if (e.nativeEvent['keyCode'] === keyboardKey.Enter) {
-      return;
-    }
     // if the parent is not selectable or is collapsed it means treeItem should be expanded, not procced with selection
     if ((treeItemHasSubtree && !selectableParent) || (treeItemHasSubtree && !expanded)) {
       return;
