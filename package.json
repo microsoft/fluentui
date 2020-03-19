@@ -103,8 +103,17 @@
     ]
   },
   "beachball": {
-    "disallowedChangeTypes": [
-      "major"
+    "groups": [
+      {
+        "name": "fluent ui react",
+        "include": [
+          "packages/office-ui-fabric-react",
+          "packages/react"
+        ],
+        "disallowedChangeTypes": [
+          "major"
+        ]
+      }
     ]
   },
   "resolutions": {
