@@ -61,7 +61,6 @@ CardTopControls.propTypes = {
 };
 
 CardTopControls.defaultProps = {
-  as: 'div',
   accessibility: cardTopControlsBehavior
 };
 
