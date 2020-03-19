@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Extendable } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -33,9 +32,7 @@ const createSvgIcon = <TProps extends SvgIconProps>({
   displayName,
   handledProps = SvgIconHandledProps,
 }: SvgIconCreateFnParams) => {
-  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & { handledProps: string[] } = (
-    props: Extendable<SvgIconProps>,
-  ) => {
+  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & { handledProps: string[] } = props => {
     const context: StylesContextValue = React.useContext(ThemeContext);
 
     const {
