@@ -1088,6 +1088,7 @@ describe('Dropdown', () => {
       const onChange = jest.fn();
       const { changeSearchInput, getClearIndicatorWrapper } = renderDropdown({
         defaultValue: items[0],
+        defaultOpen: true,
         search: true,
         clearable: true,
         onChange,

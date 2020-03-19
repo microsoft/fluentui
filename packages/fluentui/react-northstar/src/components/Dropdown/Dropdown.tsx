@@ -441,10 +441,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
         <Downshift
           isOpen={open}
-          // onChange={this.handleSelectedChange}
-          // onInputValueChange={this.handleSearchQueryChange}
           inputValue={search ? searchQuery : null}
-          stateReducer={this.handleDownshiftStateChanges}
+          stateReducer={this.downshiftStateReducer}
           itemToString={itemToString}
           // downshift does not work with arrays as selectedItem.
           selectedItem={multiple || !value.length ? null : value[0]}
@@ -808,7 +806,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     );
   }
 
-  handleDownshiftStateChanges = (
+  downshiftStateReducer = (
     state: DownshiftState<ShorthandValue<DropdownItemProps>>,
     changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
   ) => {
@@ -826,110 +824,132 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     }
   };
 
-  handleIsOpenChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>): Partial<DropdownState> => {
-    const { isOpen: newOpen } = changes;
-    const { open, highlightedIndex } = this.state;
-
-    if (newOpen === undefined || open === newOpen) {
-      return null;
-    }
-
-    const newState = { open: newOpen, highlightedIndex };
-
-    if (newOpen) {
-      const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
-
-      if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
-        newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
-      }
-
-      if (!this.props.search) {
-        this.listRef.current.focus();
-      }
-    } else {
-      newState.highlightedIndex = null;
-    }
-
-    return newState;
-  };
-
-  handleHighlightedIndexChange = (
-    changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
-  ): Partial<DropdownState> => {
-    const { open } = this.state;
-    const { highlightedIndex: newHighlightedIndex, type } = changes;
-
-    if (open && _.isNumber(newHighlightedIndex)) {
-      const itemIsFromKeyboard = type !== Downshift.stateChangeTypes.itemMouseEnter;
-
-      return {
-        itemIsFromKeyboard,
-        highlightedIndex: newHighlightedIndex,
-      };
-    }
-
-    return null;
-  };
-
-  handleSelectedItemChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    const { items, multiple, getA11ySelectionMessage } = this.props;
-    const { value } = this.state;
-    const { selectedItem: item } = changes;
-
-    if (item === undefined || (!multiple && item === value[0])) {
-      return null;
-    }
-
-    const newState = {
-      searchQuery: this.getSelectedItemAsString(item),
-      value: item === null ? [] : multiple ? [...value, item] : [item],
-      ...(!multiple &&
-        items && {
-          highlightedIndex: items.indexOf(item),
-        }),
-    };
-
-    if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-      this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(item));
-    }
-
-    if (multiple) {
-      setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
-    }
-
-    this.tryFocusTriggerButton();
-
-    return newState;
-  };
-
-  handleInputValueChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    const { value, searchQuery } = this.state;
-    const { multiple, highlightFirstItemOnOpen } = this.props;
-    const { inputValue: newSearchQuery, selectedItem } = changes;
-
-    if (newSearchQuery === undefined || newSearchQuery === searchQuery) {
-      return null;
-    }
-
-    // we clear value when in single selection user cleared the query.
-    const shouldValueChange = newSearchQuery === '' && !multiple && !!value.length;
-
-    return {
-      highlightedIndex: highlightFirstItemOnOpen ? 0 : null,
-      ...(!multiple && selectedItem === undefined && { searchQuery: newSearchQuery }),
-      ...((newSearchQuery === '' || selectedItem !== undefined) && { open: false }),
-      ...(shouldValueChange && { value: [] }),
-    };
-  };
-
   handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    const newState = {
-      ...this.handleIsOpenChange(changes),
-      ...this.handleHighlightedIndexChange(changes),
-      ...this.handleSelectedItemChange(changes),
-      ...this.handleInputValueChange(changes),
-    };
+    const { search, multiple, highlightFirstItemOnOpen, items, getA11ySelectionMessage } = this.props;
+    const { value, open } = this.state;
+    const {
+      type,
+      inputValue: newSearchQuery,
+      selectedItem: newValue,
+      isOpen: newOpen,
+      highlightedIndex: newHighlightedIndex,
+    } = changes;
+    const newState = {} as DropdownState;
     const handlers = [];
+
+    switch (type) {
+      case Downshift.stateChangeTypes.changeInput: {
+        const shouldValueChange = newSearchQuery === '' && !multiple && !!value.length;
+        newState.searchQuery = newSearchQuery;
+        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+
+        if (shouldValueChange) {
+          newState.value = [];
+        }
+
+        if (open) {
+          // we clear value when in single selection user cleared the query.
+          const shouldMenuClose = newSearchQuery === '' || newValue !== undefined;
+
+          if (shouldMenuClose) {
+            newState.open = false;
+          }
+        } else {
+          newState.open = true;
+        }
+
+        break;
+      }
+      case Downshift.stateChangeTypes.clickItem:
+      case Downshift.stateChangeTypes.keyDownEnter:
+        const shouldAddHighlightedIndex = !multiple && !!items;
+
+        newState.searchQuery = this.getSelectedItemAsString(newValue);
+        newState.value = multiple ? [...value, newValue] : [newValue];
+        newState.open = false;
+
+        if (shouldAddHighlightedIndex) {
+          newState.highlightedIndex = items.indexOf(newValue);
+        }
+
+        if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+        }
+
+        if (multiple) {
+          setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
+        }
+        this.tryFocusTriggerButton();
+
+        break;
+      case Downshift.stateChangeTypes.keyDownEscape:
+        newState.value = [];
+        newState.searchQuery = '';
+        newState.open = false;
+        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+        break;
+      case Downshift.stateChangeTypes.keyDownArrowDown:
+      case Downshift.stateChangeTypes.keyDownArrowUp:
+        if (newOpen !== undefined) {
+          newState.open = newOpen;
+          newState.highlightedIndex = newHighlightedIndex;
+
+          if (newOpen) {
+            const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+            if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+              newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+            }
+
+            if (!search) {
+              this.listRef.current.focus();
+            }
+          } else {
+            newState.highlightedIndex = null;
+          }
+        }
+      case Downshift.stateChangeTypes['keyDownHome']:
+      case Downshift.stateChangeTypes['keyDownEnd']:
+        if (open && _.isNumber(newHighlightedIndex)) {
+          newState.highlightedIndex = newHighlightedIndex;
+          newState.itemIsFromKeyboard = true;
+        }
+
+        break;
+      case Downshift.stateChangeTypes.clickButton:
+      case Downshift.stateChangeTypes.keyDownSpaceButton:
+        newState.open = newOpen;
+
+        if (newOpen) {
+          const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+          if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+            newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+          }
+
+          if (!search) {
+            this.listRef.current.focus();
+          }
+        } else {
+          newState.highlightedIndex = null;
+        }
+        break;
+      case Downshift.stateChangeTypes.itemMouseEnter:
+        newState.highlightedIndex = newHighlightedIndex;
+        newState.itemIsFromKeyboard = false;
+        break;
+      case Downshift.stateChangeTypes.unknown:
+        if (newValue) {
+          newState.value = [newValue];
+          newState.searchQuery = newSearchQuery;
+          newState.open = false;
+          newState.highlightedIndex = newHighlightedIndex;
+        } else {
+          newState.open = newOpen;
+        }
+      default:
+        break;
+    }
 
     if (newState.searchQuery !== undefined) {
       handlers.push('onSearchQueryChange');
