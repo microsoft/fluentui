@@ -1,4 +1,10 @@
-import { compose, RendererRenderRule, StylesContextValue, useAutoControlled, useStyles, useUnhandledProps } from '@fluentui/react-bindings';
+import {
+  compose,
+  RendererRenderRule,
+  StylesContextValue,
+  useStyles,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, emptyTheme, ThemeInput } from '@fluentui/styles';
 import cx from 'classnames';
 import { mount } from 'enzyme';
@@ -16,21 +22,21 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
         return cx(
           props.color && `color-${props.color}`,
           props.hidden && `hidden-${props.hidden}`,
-          props.visible && `visible-${props.visible}`
+          props.visible && `visible-${props.visible}`,
         );
-      }
+      },
     },
     performance: {
       enableStylesCaching: false,
       enableVariablesCaching: false,
       enableSanitizeCssPlugin: false,
-      enableBooleanVariablesCaching: false
+      enableBooleanVariablesCaching: false,
     },
     theme: {
       ...emptyTheme,
       // Noop to pass all props as styles to `renderRule()`
-      componentStyles: new Proxy({}, { get: (): ComponentSlotStylesPrepared => ({ root: ({ props }) => props }) })
-    }
+      componentStyles: new Proxy({}, { get: (): ComponentSlotStylesPrepared => ({ root: ({ props }) => props }) }),
+    },
   };
 
   return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;
@@ -45,7 +51,7 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
   const [open, setOpen] = React.useState(false);
   const { classes } = useStyles<BaseComponentStylesProps>('BaseComponent', {
     className: 'ui-base',
-    mapPropsToStyles: () => ({ color, open })
+    mapPropsToStyles: () => ({ color, open }),
   });
   const unhandledProps = useUnhandledProps(['className', 'color'], props);
 
@@ -55,15 +61,17 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
 type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
 type ComposedComponentStylesProps = { visible: boolean | undefined };
 
-const ComposedComponent = compose<ComposedComponentProps, ComposedComponentStylesProps, BaseComponentProps, BaseComponentStylesProps>(
-  BaseComponent,
-  {
-    className: 'ui-composed',
-    displayName: 'ComposedComponent',
-    mapPropsToStylesProps: props => ({ visible: props.open && props.visible }),
-    handledProps: ['hidden', 'visible']
-  }
-);
+const ComposedComponent = compose<
+  ComposedComponentProps,
+  ComposedComponentStylesProps,
+  BaseComponentProps,
+  BaseComponentStylesProps
+>(BaseComponent, {
+  className: 'ui-composed',
+  displayName: 'ComposedComponent',
+  mapPropsToStylesProps: props => ({ visible: props.open && props.visible }),
+  handledProps: ['hidden', 'visible'],
+});
 
 const MultipleComposedComponent = compose<
   ComposedComponentProps,
@@ -72,7 +80,7 @@ const MultipleComposedComponent = compose<
   BaseComponentStylesProps & ComposedComponentStylesProps
 >(ComposedComponent, {
   displayName: 'MultipleComposedComponent',
-  mapPropsToStylesProps: props => ({ hidden: props.hidden, visible: undefined })
+  mapPropsToStylesProps: props => ({ hidden: props.hidden, visible: undefined }),
 });
 
 describe('useCompose', () => {
@@ -98,7 +106,9 @@ describe('useCompose', () => {
   });
 
   it('applies props on multiple times composed component', () => {
-    const wrapper = mount(<MultipleComposedComponent hidden color="red" visible />, { wrappingComponent: TestProvider });
+    const wrapper = mount(<MultipleComposedComponent hidden color="red" visible />, {
+      wrappingComponent: TestProvider,
+    });
 
     expect(wrapper.find('p').prop('hidden')).toBeUndefined();
     expect(wrapper.find('p').prop('visible')).toBeUndefined();
