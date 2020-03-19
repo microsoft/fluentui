@@ -7,7 +7,8 @@ const cardHeaderStyles: ComponentSlotStylesPrepared<CardHeaderStylesProps, CardV
     return {
       display: 'flex',
       flexDirection: 'column',
-      ...(!p.fitted && { marginBottom: v.cardChildMarginBottom })
+      margin: v.headerMargin,
+      ...(p.fitted && { margin: 0 })
     };
   }
 };

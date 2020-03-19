@@ -7,7 +7,8 @@ const cardBodyStyles: ComponentSlotStylesPrepared<CardBodyStylesProps, CardVaria
     return {
       display: 'flex',
       flexDirection: 'column',
-      ...(!p.fitted && { marginBottom: v.cardChildMarginBottom })
+      margin: v.bodyMargin,
+      ...(p.fitted && { margin: 0 })
     };
   }
 };
