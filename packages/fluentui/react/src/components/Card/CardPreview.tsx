@@ -44,13 +44,12 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 
   const { classes } = useStyles<CardPreviewStylesProps>(CardPreview.displayName, {
     className: CardPreview.className,
+    mapPropsToStyles: () => ({ horizontal, noMarginAfter }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
       variables,
-      horizontal,
-      noMarginAfter
     }),
     rtl: context.rtl
   });
