@@ -31,8 +31,10 @@ const createSvgIcon = <TProps extends SvgIconProps>({
   svg,
   displayName,
   handledProps = SvgIconHandledProps,
-}: SvgIconCreateFnParams) => {
-  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & { handledProps: string[] } = props => {
+}: SvgIconCreateFnParams<TProps>) => {
+  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & {
+    handledProps: (keyof TProps)[];
+  } = props => {
     const context: StylesContextValue = React.useContext(ThemeContext);
 
     const {

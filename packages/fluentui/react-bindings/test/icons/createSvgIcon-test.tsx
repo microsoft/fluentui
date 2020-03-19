@@ -7,9 +7,9 @@ import { ThemeContext } from 'react-fela';
 
 const testSvg = () => <svg />;
 
-const createTheme = (styles: jest.Mock): ThemeInput => ({
+const createTheme = (): ThemeInput => ({
   componentStyles: {
-    SvgIcon: { root: styles },
+    SvgIcon: { root: jest.fn() },
   },
   componentVariables: {},
 });
@@ -43,10 +43,9 @@ describe('createSvgIcon', () => {
   it('spreads unhandled props on the root element', () => {
     const TestIcon = createSvgIcon<SvgIconProps>({ svg: testSvg, displayName: 'TestIcon' });
 
-    const styles = jest.fn();
     const wrapper = mount(<TestIcon id="test-id" />, {
       wrappingComponent: TestProvider,
-      wrappingComponentProps: { theme: createTheme(styles) },
+      wrappingComponentProps: { theme: createTheme() },
     });
     expect(wrapper.find(`.${SvgIconClassName}`).props().id).toEqual('test-id');
   });
