@@ -6,7 +6,7 @@ import { ThemeContext } from 'react-fela';
 import { StylesContextValue } from '../styles/types';
 import useStyles from '../hooks/useStyles';
 import getUnhandledProps from '../utils/getUnhandledProps';
-import { SvgIconCreateFnParams, SvgIconProps, withSafeTypeForSpan } from './types';
+import { SvgIconCreateFnParams, SvgIconProps } from './types';
 
 export const SvgIconClassName = 'ui-icon';
 export const SvgIconDisplayName = 'SvgIcon';
@@ -33,7 +33,9 @@ const createSvgIcon = <TProps extends SvgIconProps>({
   displayName,
   handledProps = SvgIconHandledProps,
 }: SvgIconCreateFnParams) => {
-  const Component: React.FC<TProps> & { handledProps: string[] } = (props: Extendable<SvgIconProps>) => {
+  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & { handledProps: string[] } = (
+    props: Extendable<SvgIconProps>,
+  ) => {
     const context: StylesContextValue = React.useContext(ThemeContext);
 
     const {
@@ -85,7 +87,7 @@ const createSvgIcon = <TProps extends SvgIconProps>({
   Component.displayName = displayName;
   Component.handledProps = handledProps;
 
-  return withSafeTypeForSpan<typeof Component, TProps>(Component);
+  return Component;
 };
 
 export default createSvgIcon;
