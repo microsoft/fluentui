@@ -78,6 +78,6 @@ CardBody.handledProps = Object.keys(CardBody.propTypes) as any;
 CardBody.create = createShorthandFactory({ Component: CardBody });
 
 /**
- * A Card is used to display data in sematically grouped way
+ * A CardBody is used to display data in Card body
  */
 export default withSafeTypeForAs<typeof CardBody, CardBodyProps, 'div'>(CardBody);

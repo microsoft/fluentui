@@ -77,6 +77,6 @@ CardFooter.handledProps = Object.keys(CardFooter.propTypes) as any;
 CardFooter.create = createShorthandFactory({ Component: CardFooter });
 
 /**
- * A Card is used to display data in sematically grouped way
+ * A CardFooter is used to display data in Card component footer
  */
 export default withSafeTypeForAs<typeof CardFooter, CardFooterProps, 'div'>(CardFooter);

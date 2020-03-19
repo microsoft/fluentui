@@ -14,7 +14,7 @@ const CenteredCard = () => (
       <Card.Body>
         <Flex column gap="gap.small">
           <Image src="public/images/wireframe/square-image.png" />
-          <Text content="Citizens of distant epochs muse about at the edge of forever hearts of the..." />
+          <Text content="Citizens of distant epochs muse about at the edge of forever hearts of the..." align="center" />
         </Flex>
       </Card.Body>
       <Card.Footer>

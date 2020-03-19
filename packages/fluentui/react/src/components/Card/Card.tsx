@@ -12,6 +12,7 @@ import CardBody from './CardBody';
 import CardPreview from './CardPreview';
 import CardFooter from './CardFooter';
 import CardTopControls from './CardTopControls';
+import CardColumn from './CardColumn';
 
 export interface CardProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -60,6 +61,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     Footer: typeof CardFooter;
     Preview: typeof CardPreview;
     TopControls: typeof CardPreview;
+    Column: typeof CardColumn;
     slotClassNames: CardSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -143,6 +145,7 @@ Card.Body = CardBody;
 Card.Footer = CardFooter;
 Card.Preview = CardPreview;
 Card.TopControls = CardTopControls;
+Card.Column = CardColumn;
 
 Card.create = createShorthandFactory({ Component: Card });
 

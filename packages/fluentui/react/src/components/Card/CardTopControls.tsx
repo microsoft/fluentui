@@ -69,6 +69,6 @@ CardTopControls.handledProps = Object.keys(CardTopControls.propTypes) as any;
 CardTopControls.create = createShorthandFactory({ Component: CardTopControls });
 
 /**
- * A Card is used to display data in sematically grouped way
+ * A CardTopControls is used to render control elements in the top of a Card component
  */
 export default withSafeTypeForAs<typeof CardTopControls, CardTopControlsProps, 'div'>(CardTopControls);

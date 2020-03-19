@@ -91,6 +91,6 @@ CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;
 CardPreview.create = createShorthandFactory({ Component: CardPreview });
 
 /**
- * A Card is used to display data in sematically grouped way
+ * A CardPreview is used to display data Card preview
  */
 export default withSafeTypeForAs<typeof CardPreview, CardPreviewProps, 'div'>(CardPreview);

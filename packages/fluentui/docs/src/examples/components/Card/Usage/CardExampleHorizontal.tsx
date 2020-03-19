@@ -4,12 +4,12 @@ import * as React from 'react';
 const CardExampleHorizontal = () => (
   <div style={{ width: '300px', border: '1px solid grey' }}>
     <Card compact horizontal>
-      <Card.Preview id="cardMedia" horizontal>
+      <Card.Preview horizontal>
         <Image style={{ height: '100px', width: '100px' }} src="public/images/wireframe/square-image.png" />
       </Card.Preview>
-      <div>
+      <Card.Column>
         <Card.Header>
-          <Text content="It's a wonderful life" weight={'bold'} />
+          <Text content="It's a wonderful life" weight="bold" />
         </Card.Header>
         <Card.Body>
           <Text content="Citizens of distant epochs muse about..." />
@@ -27,7 +27,7 @@ const CardExampleHorizontal = () => (
             </Flex.Item>
           </Flex>
         </Card.Footer>
-      </div>
+      </Card.Column>
     </Card>
   </div>
 );

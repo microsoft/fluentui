@@ -77,6 +77,6 @@ CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;
 CardHeader.create = createShorthandFactory({ Component: CardHeader });
 
 /**
- * A Card is used to display data in sematically grouped way
+ * A CardHeader is used to display data in Card header
  */
 export default withSafeTypeForAs<typeof CardHeader, CardHeaderProps, 'div'>(CardHeader);
