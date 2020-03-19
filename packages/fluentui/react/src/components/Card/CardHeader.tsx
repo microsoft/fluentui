@@ -69,7 +69,6 @@ CardHeader.propTypes = {
 };
 
 CardHeader.defaultProps = {
-  as: 'div',
   accessibility: cardHeaderBehavior,
 };
 
