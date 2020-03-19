@@ -8,7 +8,7 @@ import { ThemeContext } from 'react-fela';
 import { StylesContextValue } from '../styles/types';
 import useStyles from '../hooks/useStyles';
 import getUnhandledProps from '../utils/getUnhandledProps';
-import { SvgIconCreateFnParams, SvgIconProps } from './types';
+import { SvgIconCreateFnParams, SvgIconProps, SvgIconSizeValue, SvgIconXSpacing } from './types';
 
 export const SvgIconClassName = 'ui-icon';
 export const SvgIconDisplayName = 'SvgIcon';
@@ -27,8 +27,8 @@ export const SvgIconPropTypes = {
   disabled: PropTypes.bool,
   outline: PropTypes.bool,
   rotate: PropTypes.number,
-  size: customPropTypes.size,
-  xSpacing: PropTypes.oneOf(['none', 'before', 'after', 'both'])
+  size: PropTypes.oneOf<SvgIconSizeValue>(['smallest', 'smaller', 'small', 'medium', 'large', 'larger', 'largest']),
+  xSpacing: PropTypes.oneOf<SvgIconXSpacing>(['none', 'before', 'after', 'both'])
 };
 
 export const SvgIconHandledProps = Object.keys(SvgIconPropTypes) as any;

@@ -1,7 +1,7 @@
 import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-bindings';
 
 import { pxToRem, SizeValue } from '../../../../utils';
-import { SvgIconXSpacing, SvgIconProps } from '../../../../components/Icon/SvgIcon';
 import { getStyle as getSvgStyle } from './svg';
 import { IconVariables } from './iconVariables';
 

@@ -4,7 +4,7 @@ import { ComponentSlotStyle, ComponentVariablesInput } from '@fluentui/styles';
 import { ComponentDesignProp } from '../styles/types';
 
 // copy from @fluentui/react
-export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
+export type SvgIconSizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 
 export type SvgIconXSpacing = 'none' | 'before' | 'after' | 'both';
 
@@ -47,7 +47,7 @@ export interface SvgIconProps {
   rotate?: number;
 
   /** Size of the icon. */
-  size?: SizeValue;
+  size?: SvgIconSizeValue;
 
   /** Adds space to the before, after or on both sides of the icon, or removes the default space around the icon ('none' value) */
   xSpacing?: SvgIconXSpacing;
