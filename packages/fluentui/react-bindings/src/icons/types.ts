@@ -9,17 +9,6 @@ export type SvgIconSizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'la
 export type SvgIconXSpacing = 'none' | 'before' | 'after' | 'both';
 
 export interface SvgIconProps {
-  /** Additional CSS class name(s) to apply.  */
-  className?: string;
-
-  design?: ComponentDesignProp;
-
-  /** Additional CSS styles to apply to the component instance.  */
-  styles?: ComponentSlotStyle;
-
-  /** Override for theme site variables to allow modifications of component styling via themes. */
-  variables?: ComponentVariablesInput;
-
   /** Alternative text. */
   alt?: string;
 
@@ -27,6 +16,9 @@ export interface SvgIconProps {
 
   /** SvgIcon can appear with rectangular border. */
   bordered?: boolean;
+
+  /** Additional CSS class name(s) to apply.  */
+  className?: string;
 
   /** SvgIcon can appear as circular. */
   circular?: boolean;
@@ -36,6 +28,8 @@ export interface SvgIconProps {
    *  @docSiteIgnore
    */
   children?: SvgIconChildrenFn;
+
+  design?: ComponentDesignProp;
 
   /** An icon can show it is currently unable to be interacted with. */
   disabled?: boolean;
@@ -48,6 +42,12 @@ export interface SvgIconProps {
 
   /** Size of the icon. */
   size?: SvgIconSizeValue;
+
+  /** Additional CSS styles to apply to the component instance.  */
+  styles?: ComponentSlotStyle;
+
+  /** Override for theme site variables to allow modifications of component styling via themes. */
+  variables?: ComponentVariablesInput;
 
   /** Adds space to the before, after or on both sides of the icon, or removes the default space around the icon ('none' value) */
   xSpacing?: SvgIconXSpacing;

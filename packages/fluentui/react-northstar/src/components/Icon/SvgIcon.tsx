@@ -7,7 +7,6 @@ import {
   SvgIconClassName,
   SvgIconDisplayName,
   SvgIconHandledProps,
-  SvgIconPropTypes,
 } from '@fluentui/react-bindings';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
@@ -78,7 +77,6 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
 
 SvgIcon.className = SvgIconClassName;
 SvgIcon.displayName = SvgIconDisplayName;
-SvgIcon.propTypes = SvgIconPropTypes;
 SvgIcon.handledProps = SvgIconHandledProps;
 SvgIcon.defaultProps = {
   as: 'span',
