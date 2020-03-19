@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { ILegend, Legends } from '../Legends/index';
 import {
@@ -39,6 +39,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   };
 
   private _classNames: IProcessedStyleSet<IMultiStackedBarChartStyles>;
+  private _calloutId: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -54,6 +55,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
+    this._calloutId = getId('callout');
   }
 
   public render(): JSX.Element {
@@ -89,6 +91,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             target={this.state.refSelected}
             setInitialFocus={true}
             directionalHint={DirectionalHint.topRightEdge}
+            id={this._calloutId}
           >
             <div className={this._classNames.hoverCardRoot}>
               <div className={this._classNames.hoverCardTextStyles}>{this.state.selectedLegendTitle}</div>
@@ -147,6 +150,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           focusable={'true'}
           onFocus={this._onBarFocus.bind(this, point.legend!, pointData, color)}
           onBlur={this._onBarLeave}
+          aria-labelledby={this._calloutId}
           onMouseOver={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseMove={point.placeHolder ? undefined : this._onBarHover.bind(this, point.legend!, pointData, color)}
           onMouseLeave={point.placeHolder ? undefined : this._onBarLeave}
