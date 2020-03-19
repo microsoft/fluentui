@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Extendable } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -28,12 +27,20 @@ export const SvgIconHandledProps: (keyof SvgIconProps)[] = [
   'xSpacing',
 ];
 
+type ValueOf<TFirst, TSecond, TKey extends keyof (TFirst & TSecond)> = TKey extends keyof TFirst
+  ? TFirst[TKey]
+  : TKey extends keyof TSecond
+  ? TSecond[TKey]
+  : {};
+
+type Extended<TFirst, TSecond> = { [K in keyof (TFirst & TSecond)]: ValueOf<TFirst, TSecond, K> };
+
 const createSvgIcon = <TProps extends SvgIconProps>({
   svg,
   displayName,
   handledProps = SvgIconHandledProps,
 }: SvgIconCreateFnParams) => {
-  const Component: React.FC<TProps> & { handledProps: string[] } = (props: Extendable<SvgIconProps>) => {
+  function Component(props: Extended<TProps, JSX.IntrinsicElements['span']>): JSX.Element {
     const context: StylesContextValue = React.useContext(ThemeContext);
 
     const {
@@ -80,7 +87,7 @@ const createSvgIcon = <TProps extends SvgIconProps>({
         {svg({ classes, rtl: context.rtl, props })}
       </span>
     );
-  };
+  }
 
   Component.displayName = displayName;
   Component.handledProps = handledProps;
