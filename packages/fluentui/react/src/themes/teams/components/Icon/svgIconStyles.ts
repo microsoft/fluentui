@@ -88,7 +88,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       display: 'block',
       width: iconSizeInRems,
       height: iconSizeInRems,
-      fill: v.color,
+      fill: v.color || 'currentColor',
 
       ...(disabled && {
         fill: v.disabledColor
