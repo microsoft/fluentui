@@ -1,4 +1,4 @@
-import { Dialog } from '@fluentui/react';
+import { Dialog } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DialogMinimalPerf = () => <Dialog />;

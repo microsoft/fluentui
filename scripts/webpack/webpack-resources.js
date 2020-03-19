@@ -12,7 +12,7 @@ console.log(`Webpack version: ${webpackVersion}`);
 const cssRule = {
   test: /\.css$/,
   include: /node_modules/,
-  use: ['style-loader', 'css-loader']
+  use: ['style-loader', 'css-loader'],
 };
 
 let isValidEnv = false;
@@ -32,7 +32,8 @@ function validateEnv() {
 function shouldPrepend(config) {
   const packageJson = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json'), 'utf-8'));
   const excludedProjects = ['perf-test', 'test-bundles'];
-  const exportedAsBundle = config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
+  const exportedAsBundle =
+    config.output && (config.output.libraryTarget === 'umd' || config.output.libraryTarget === 'var');
   const hasReactAsDependency =
     (packageJson.dependencies && Object.keys(packageJson.dependencies).includes('react')) ||
     (packageJson.devDependencies && Object.keys(packageJson.devDependencies).includes('react'));
@@ -85,10 +86,10 @@ module.exports = {
             {
               test: /\.js$/,
               use: 'source-map-loader',
-              enforce: 'pre'
+              enforce: 'pre',
             },
-            cssRule
-          ]
+            cssRule,
+          ],
     };
 
     const devtool = 'cheap-module-source-map';
@@ -102,14 +103,14 @@ module.exports = {
             output: {
               filename: `[name].js`,
               path: path.resolve(process.cwd(), 'dist'),
-              pathinfo: false
+              pathinfo: false,
             },
             module,
             devtool,
-            plugins: getPlugins(packageName, false)
+            plugins: getPlugins(packageName, false),
           },
-          customConfig
-        )
+          customConfig,
+        ),
       );
     }
 
@@ -120,22 +121,22 @@ module.exports = {
             mode: 'production',
             output: {
               filename: `[name].min.js`,
-              path: path.resolve(process.cwd(), 'dist')
+              path: path.resolve(process.cwd(), 'dist'),
             },
 
             module,
             devtool: excludeSourceMaps ? undefined : devtool,
-            plugins: getPlugins(packageName, true)
+            plugins: getPlugins(packageName, true),
           },
-          customConfig
-        )
+          customConfig,
+        ),
       );
     }
 
     for (let config of configs) {
       config.entry = createEntryWithPolyfill(config.entry, config);
       config.resolveLoader = {
-        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')]
+        modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')],
       };
     }
 
@@ -148,17 +149,21 @@ module.exports = {
         devServer: {
           inline: true,
           port: 4322,
-          contentBase: path.resolve(process.cwd(), 'dist')
+          contentBase: path.resolve(process.cwd(), 'dist'),
         },
 
         mode: 'development',
 
         resolve: {
-          extensions: ['.ts', '.tsx', '.js']
+          extensions: ['.ts', '.tsx', '.js'],
         },
 
         resolveLoader: {
-          modules: ['node_modules', path.join(__dirname, '../node_modules'), path.join(__dirname, '../../node_modules')]
+          modules: [
+            'node_modules',
+            path.join(__dirname, '../node_modules'),
+            path.join(__dirname, '../../node_modules'),
+          ],
         },
 
         devtool: 'eval',
@@ -172,10 +177,10 @@ module.exports = {
                 loader: 'ts-loader',
                 options: {
                   experimentalWatchApi: true,
-                  transpileOnly: true
-                }
+                  transpileOnly: true,
+                },
               },
-              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/]
+              exclude: [/node_modules/, /\.scss.ts$/, /\.test.tsx?$/],
             },
             {
               test: /\.scss$/,
@@ -183,7 +188,7 @@ module.exports = {
               exclude: [/node_modules/],
               use: [
                 {
-                  loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+                  loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
                 },
                 {
                   loader: 'css-loader', // translates CSS into CommonJS
@@ -191,23 +196,23 @@ module.exports = {
                     modules: true,
                     importLoaders: 2,
                     localIdentName: '[name]_[local]_[hash:base64:5]',
-                    minimize: false
-                  }
+                    minimize: false,
+                  },
                 },
                 {
                   loader: 'postcss-loader',
                   options: {
                     plugins: function() {
                       return [require('autoprefixer')];
-                    }
-                  }
+                    },
+                  },
                 },
                 {
-                  loader: 'sass-loader'
-                }
-              ]
-            }
-          ]
+                  loader: 'sass-loader',
+                },
+              ],
+            },
+          ],
         },
 
         plugins: [
@@ -215,15 +220,15 @@ module.exports = {
           // new WebpackNotifierPlugin(),
           ...(!process.env.TF_BUILD ? [new ForkTsCheckerWebpackPlugin()] : []),
           ...(process.env.TF_BUILD ? [] : [new webpack.ProgressPlugin()]),
-          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : [])
-        ]
+          ...(!process.env.TF_BUILD && process.env.cached ? [new HardSourceWebpackPlugin()] : []),
+        ],
       },
-      customConfig
+      customConfig,
     );
 
     config.entry = createEntryWithPolyfill(config.entry, config);
     return config;
-  }
+  },
 };
 
 function getPlugins(bundleName, isProduction) {
@@ -241,11 +246,11 @@ function getPlugins(bundleName, isProduction) {
         statsOptions: {
           source: false,
           reasons: false,
-          chunks: false
+          chunks: false,
         },
         statsFilename: bundleName + '.stats.json',
-        logLevel: 'warn'
-      })
+        logLevel: 'warn',
+      }),
     );
   }
 

@@ -19,7 +19,11 @@ const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-m
 export const FileTypeIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
-    <StylesAreaPage {...props} {...FileTypeIconsPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />
+    <StylesAreaPage
+      {...props}
+      {...FileTypeIconsPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
   );
 };
 
@@ -43,14 +47,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use file type icons to indicate to users that they are creating a new file of that type. Make sure that a file of the
-                      type that the icon represents loads when the user selects the icon. For example, do not use a Word .docx icon to open
-                      a .txt file. File type icons should always represent Microsoft Office files.
+                      Use file type icons to indicate to users that they are creating a new file of that type. Make sure
+                      that a file of the type that the icon represents loads when the user selects the icon. For
+                      example, do not use a Word .docx icon to open a .txt file. File type icons should always represent
+                      Microsoft Office files.
                       <br />
                       <br />
-                      If you are looking for icons for command bars, navigation, status indicators, or similar, check out the{' '}
-                      <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking for brand logos, or the
-                      icons of apps themselves, check out the <Link href="#/styles/web/office-brand-icons">Fabric brand icons page</Link>.
+                      If you are looking for icons for command bars, navigation, status indicators, or similar, check
+                      out the <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking
+                      for brand logos, or the icons of apps themselves, check out the{' '}
+                      <Link href="#/styles/web/office-brand-icons">Fabric brand icons page</Link>.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
@@ -81,7 +87,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </>
-          )
+          ),
         },
         {
           sectionName: 'Format and sizes',
@@ -118,7 +124,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
             </div>
-          )
+          ),
         },
         {
           sectionName: 'Implementation',
@@ -129,7 +135,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FileTypeIconsPage/docs/web/FileTypeIconsImplementation.md') as string
               }
             </Markdown>
-          )
+          ),
         },
 
         {
@@ -149,8 +155,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ))}
               </ul>
             </>
-          )
-        }
+          ),
+        },
       ];
 
     default:

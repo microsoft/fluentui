@@ -1802,7 +1802,7 @@ export const enum IconNames {
   TableComputed = 'TableComputed',
   DecreaseIndentLegacy = 'DecreaseIndentLegacy',
   IncreaseIndentLegacy = 'IncreaseIndentLegacy',
-  SizeLegacy = 'SizeLegacy'
+  SizeLegacy = 'SizeLegacy',
 }
 
 // tslint:disable-next-line:deprecation

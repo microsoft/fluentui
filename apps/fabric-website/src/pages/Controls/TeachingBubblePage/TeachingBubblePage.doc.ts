@@ -8,6 +8,6 @@ const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls
 export const TeachingBubblePageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
-  }
+    related,
+  },
 };

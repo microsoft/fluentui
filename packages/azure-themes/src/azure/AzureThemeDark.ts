@@ -66,15 +66,15 @@ const darkExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   statusSuccessIcon: CommonSemanticColors.icons.okay,
   statusWarningBackground: DarkSemanticColors.statusBar.warning,
   statusWarningText: DarkSemanticColors.text.body,
-  statusWarningIcon: CommonSemanticColors.icons.warning
+  statusWarningIcon: CommonSemanticColors.icons.warning,
 };
 
 export const AzureThemeDark: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: StyleConstants.fontFamily,
-      fontSize: FontSizes.size12
-    }
+      fontSize: FontSizes.size12,
+    },
   },
   palette: {
     themePrimary: DarkSemanticColors.controlOutlines.accent,
@@ -85,7 +85,7 @@ export const AzureThemeDark: ITheme = createTheme({
     neutralLighterAlt: DarkSemanticColors.item.hover, // nav highlight
     neutralQuaternaryAlt: DarkSemanticColors.item.select, // expand button on list controls
     neutralSecondary: DarkSemanticColors.text.label, // persona,
-    white: DarkSemanticColors.background // shimmer elements
+    white: DarkSemanticColors.background, // shimmer elements
   },
-  semanticColors: darkExtendedSemanticColors
+  semanticColors: darkExtendedSemanticColors,
 });

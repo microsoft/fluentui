@@ -16,10 +16,17 @@ import {
   getDocument,
   initializeComponentRef,
   Async,
-  EventGroup
+  EventGroup,
 } from '../../../Utilities';
 
-import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
+import {
+  getMaxHeight,
+  positionElement,
+  IPositionedData,
+  IPositionProps,
+  IPosition,
+  RectangleEdge,
+} from '../../../utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
@@ -33,7 +40,7 @@ const SLIDE_ANIMATIONS: { [key: number]: string } = {
   [RectangleEdge.top]: 'slideUpIn20',
   [RectangleEdge.bottom]: 'slideDownIn20',
   [RectangleEdge.left]: 'slideLeftIn20',
-  [RectangleEdge.right]: 'slideRightIn20'
+  [RectangleEdge.right]: 'slideRightIn20',
 };
 
 export interface IPositioningContainerState {
@@ -55,7 +62,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     preventDismissOnScroll: false,
     offsetFromTarget: 0,
     minPagePadding: 8,
-    directionalHint: DirectionalHint.bottomAutoEdge
+    directionalHint: DirectionalHint.bottomAutoEdge,
   };
 
   private _didSetInitialFocus: boolean;
@@ -101,7 +108,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
-      heightOffset: 0
+      heightOffset: 0,
     };
     this._positionAttempts = 0;
   }
@@ -173,12 +180,13 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
             styles.root,
             className,
             directionalClassName,
-            !!positioningContainerWidth && { width: positioningContainerWidth }
+            !!positioningContainerWidth && { width: positioningContainerWidth },
           )}
           // tslint:disable-next-line:jsx-ban-props
           style={positions ? positions.elementPosition : OFF_SCREEN_STYLE}
-          tabIndex={-1} // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
+          // Safari and Firefox on Mac OS requires this to back-stop click events so focus remains in the Callout.
           // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#Clicking_and_focus
+          tabIndex={-1}
           ref={this._contentHost}
         >
           {children}
@@ -219,7 +227,8 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
 
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._positionedHost.current && !elementContains(this._positionedHost.current, target);
+    const clickedOutsideCallout =
+      this._positionedHost.current && !elementContains(this._positionedHost.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -279,24 +288,24 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
       if (document.body.contains(currentProps!.target as Node)) {
         currentProps!.gapSpace = offsetFromTarget;
         const newPositions: IPositionedData = positionElement(currentProps!, hostElement, positioningContainerElement);
-        // Set the new position only when the positions are not exists or one of the new positioningContainer positions are different.
-        // The position should not change if the position is within 2 decimal places.
+        // Set the new position only when the positions are not exists or one of the new positioningContainer positions
+        // are different. The position should not change if the position is within 2 decimal places.
         if (
           (!positions && newPositions) ||
           (positions && newPositions && !this._arePositionsEqual(positions, newPositions) && this._positionAttempts < 5)
         ) {
-          // We should not reposition the positioningContainer more than a few times, if it is then the content is likely resizing
-          // and we should stop trying to reposition to prevent a stack overflow.
+          // We should not reposition the positioningContainer more than a few times, if it is then the content is
+          // likely resizing and we should stop trying to reposition to prevent a stack overflow.
           this._positionAttempts++;
           this.setState(
             {
-              positions: newPositions
+              positions: newPositions,
             },
             () => {
               if (onPositioned) {
                 onPositioned(newPositions);
               }
-            }
+            },
           );
         } else {
           this._positionAttempts = 0;
@@ -306,7 +315,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
         }
       } else if (positions !== undefined) {
         this.setState({
-          positions: undefined
+          positions: undefined,
         });
       }
     }
@@ -323,7 +332,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
           right: this._targetWindow.innerWidth - this.props.minPagePadding!,
           bottom: this._targetWindow.innerHeight - this.props.minPagePadding!,
           width: this._targetWindow.innerWidth - this.props.minPagePadding! * 2,
-          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2
+          height: this._targetWindow.innerHeight - this.props.minPagePadding! * 2,
         };
       }
       this._positioningBounds = currentBounds;
@@ -355,7 +364,6 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
 
   private _comparePositions(oldPositions: IPosition, newPositions: IPosition): boolean {
     for (const key in newPositions) {
-      // This needs to be checked here and below because there is a linting error if for in does not immediately have an if statement
       if (newPositions.hasOwnProperty(key)) {
         const oldPositionEdge = oldPositions[key];
         const newPositionEdge = newPositions[key];
@@ -410,7 +418,7 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
         this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff
+          heightOffset: this.state.heightOffset! + scrollDiff,
         });
 
         if (positioningContainerMainElem.offsetHeight < this.props.finalHeight!) {
@@ -422,7 +430,9 @@ export class PositioningContainer extends React.Component<IPositioningContainerP
     }
   }
 
-  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(
+    props: IPositioningContainerProps = this.props,
+  ): HTMLElement | string | MouseEvent | IPoint | null {
     const { target } = props;
     return target!;
   }

@@ -11,7 +11,7 @@ export class FacepileAddFaceExample extends React.Component<{}, IFacepileAddFace
     super(props);
 
     this.state = {
-      numberOfFaces: 0
+      numberOfFaces: 0,
     };
   }
 
@@ -22,7 +22,7 @@ export class FacepileAddFaceExample extends React.Component<{}, IFacepileAddFace
       maxDisplayablePersonas: 5,
       overflowButtonProps: {
         ariaLabel: 'More users',
-        onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked')
+        onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
       },
       overflowButtonType: OverflowButtonType.descriptive,
       showAddButton: true,
@@ -30,10 +30,10 @@ export class FacepileAddFaceExample extends React.Component<{}, IFacepileAddFace
         ariaLabel: 'Add a new person',
         onClick: (ev: React.MouseEvent<HTMLButtonElement>) =>
           this.setState({
-            numberOfFaces: this.state.numberOfFaces + 1
-          })
+            numberOfFaces: this.state.numberOfFaces + 1,
+          }),
       },
-      ariaDescription: 'To move through the items use left and right arrow keys.'
+      ariaDescription: 'To move through the items use left and right arrow keys.',
     };
 
     return <Facepile {...facepileProps} />;

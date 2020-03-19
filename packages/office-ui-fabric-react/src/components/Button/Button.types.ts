@@ -25,11 +25,13 @@ export interface IButton {
 
   /**
    * If there is a menu associated with this button and it is visible, this will open the menu.
-   * Params are optional overrides to the ones defined in 'menuProps' to apply to just this instance of opening the menu.
+   * Params are optional overrides to the ones defined in `menuProps` to apply to just this instance of
+   * opening the menu.
    *
    * @param shouldFocusOnContainer - override to the ContextualMenu shouldFocusOnContainer prop.
    * BaseButton implementation defaults to 'undefined'.
-   * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation defaults to 'true'.
+   * @param shouldFocusOnMount - override to the ContextualMenu shouldFocusOnMount prop. BaseButton implementation
+   * defaults to `true`.
    */
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
@@ -39,7 +41,9 @@ export interface IButton {
  */
 // tslint:disable:deprecation
 export interface IButtonProps
-  extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement> {
+  extends React.AllHTMLAttributes<
+    HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button | HTMLSpanElement
+  > {
   // tslint:enable:deprecation
   /**
    * Optional callback to access the IButton interface. Use this instead of ref for accessing
@@ -135,7 +139,8 @@ export interface IButtonProps
 
   /**
    * Props for button menu. Providing this will default to showing the menu icon. See menuIconProps for overriding
-   * how the default icon looks. Providing this in addition of onClick and setting the split property to true will render a SplitButton.
+   * how the default icon looks. Providing this in addition of onClick and setting the split property to true will
+   * render a SplitButton.
    */
   menuProps?: IContextualMenuProps;
 
@@ -145,7 +150,8 @@ export interface IButtonProps
   onAfterMenuDismiss?: () => void;
 
   /**
-   * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton. Defaults to false.
+   * If set to true, and if menuProps and onClick are provided, the button will render as a SplitButton.
+   * @defaultvalue false
    */
   split?: boolean;
 
@@ -255,7 +261,7 @@ export interface IButtonProps
     expanded: boolean,
     hasMenu: boolean,
     isSplit: boolean | undefined,
-    allowDisabledFocus: boolean
+    allowDisabledFocus: boolean,
   ) => IButtonClassNames;
 
   /**
@@ -268,12 +274,13 @@ export interface IButtonProps
     disabled: boolean,
     expanded: boolean,
     checked: boolean,
-    allowDisabledFocus: boolean
+    allowDisabledFocus: boolean,
   ) => ISplitButtonClassNames;
 
   /**
    * Provides a custom KeyCode that can be used to open the button menu.
-   * The default KeyCode is the down arrow. A value of null can be provided to disable the key codes for opening the button menu.
+   * The default KeyCode is the down arrow.
+   * A value of null can be provided to disable the key codes for opening the button menu.
    */
   menuTriggerKeyCode?: KeyCodes | null;
 
@@ -329,7 +336,8 @@ export interface IButtonProps
   defaultRender?: any;
 
   /**
-   * Optional props to be applied only to the primary action button of SplitButton and not to the overall SplitButton container
+   * Optional props to be applied only to the primary action button of SplitButton and not to the
+   * overall SplitButton container
    */
   primaryActionButtonProps?: IButtonProps;
 }
@@ -341,7 +349,7 @@ export enum ElementType {
   /** <button> element. */
   button = 0,
   /** <a> element. */
-  anchor = 1
+  anchor = 1,
 }
 
 /**
@@ -354,7 +362,7 @@ export enum ButtonType {
   compound = 3,
   command = 4,
   icon = 5,
-  default = 6
+  default = 6,
 }
 
 /**

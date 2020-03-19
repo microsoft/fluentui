@@ -30,8 +30,8 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomNavigationPage/docs/ios/BottomNavigationImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
     case 'android':
       return [
@@ -44,8 +44,8 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
                 require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/BottomNavigationPage/docs/android/BottomNavigationImplementation.md') as string
               }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

@@ -15,16 +15,16 @@ const toolbarMenuItemRadioBehavior: Accessibility<ToolbarMenuItemRadioBehaviorPr
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       'aria-checked': props.active,
       'aria-disabled': props.disabled,
-      role: 'menuitemradio'
-    }
+      role: 'menuitemradio',
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default toolbarMenuItemRadioBehavior;

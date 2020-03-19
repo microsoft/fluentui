@@ -5,7 +5,7 @@ import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 export const TextFieldPrefixAndSuffixExample: React.FunctionComponent = () => {
   const columnProps: Partial<IStackProps> = {
     tokens: { childrenGap: 15 },
-    styles: { root: { width: 300 } }
+    styles: { root: { width: 300 } },
   };
 
   return (

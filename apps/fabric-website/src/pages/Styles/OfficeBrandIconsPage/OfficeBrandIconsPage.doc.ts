@@ -9,6 +9,6 @@ export const OfficeBrandIconsPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

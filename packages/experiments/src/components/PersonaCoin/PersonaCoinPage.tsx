@@ -25,12 +25,17 @@ export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
       }
       propertiesTables={
         <PropertiesTableSet
-          sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/PersonaCoin/PersonaCoin.types.ts')]}
+          sources={[
+            require<string>('!raw-loader!@uifabric/experiments/src/components/PersonaCoin/PersonaCoin.types.ts'),
+          ]}
         />
       }
       overview={
         <div>
-          <p>The PersonaCoin component is generally used as a building block for other components like Persona/FacePile/VerticalPersona.</p>
+          <p>
+            The PersonaCoin component is generally used as a building block for other components like
+            Persona/FacePile/VerticalPersona.
+          </p>
           <p>In case you need to render just a PersonaCoin you can use this component directly.</p>
         </div>
       }
@@ -48,7 +53,10 @@ export const PersonaCoinPage = (props: IComponentDemoPageProps) => {
       donts={
         <div>
           <ul>
-            <li>Change the colors of the initials or the coin unless you have a well grounded reason. (For consistency across products)</li>
+            <li>
+              Change the colors of the initials or the coin unless you have a well grounded reason. (For consistency
+              across products)
+            </li>
           </ul>
         </div>
       }

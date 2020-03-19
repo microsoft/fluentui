@@ -4,11 +4,11 @@ import { TestImages } from '@uifabric/example-data';
 
 const classNames = mergeStyleSets({
   exampleRoot: {
-    marginTop: '20px'
+    marginTop: '20px',
   },
   nameText: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export const ActivityItemCompactExample: React.FunctionComponent = () => {
@@ -19,10 +19,10 @@ export const ActivityItemCompactExample: React.FunctionComponent = () => {
         <span key={1} className={classNames.nameText}>
           Tahlia Whittle
         </span>,
-        <span key={2}> edited this file</span>
+        <span key={2}> edited this file</span>,
       ],
       activityPersonas: [{ imageUrl: TestImages.personaFemale }],
-      isCompact: true
+      isCompact: true,
     },
     {
       key: 2,
@@ -34,14 +34,14 @@ export const ActivityItemCompactExample: React.FunctionComponent = () => {
         <span key={3} className={classNames.nameText}>
           {' '}
           6 others
-        </span>
+        </span>,
       ],
       activityPersonas: [
         { imageInitials: 'PT', text: 'Robert Larsson' },
         { imageUrl: TestImages.personaMale },
-        { imageInitials: 'EC', text: 'Eduarda Costa' }
+        { imageInitials: 'EC', text: 'Eduarda Costa' },
       ],
-      isCompact: true
+      isCompact: true,
     },
     {
       key: 3,
@@ -49,10 +49,10 @@ export const ActivityItemCompactExample: React.FunctionComponent = () => {
         <span key={1} className={classNames.nameText}>
           Sabrina De Luca
         </span>,
-        <span key={2}> added this file</span>
+        <span key={2}> added this file</span>,
       ],
       activityIcon: <Icon iconName={'Add'} />,
-      isCompact: true
+      isCompact: true,
     },
     {
       key: 4,
@@ -60,11 +60,11 @@ export const ActivityItemCompactExample: React.FunctionComponent = () => {
         <span key={1} className={classNames.nameText}>
           Chuan Rojumanong
         </span>,
-        <span key={2}> shared this file</span>
+        <span key={2}> shared this file</span>,
       ],
       activityIcon: <Icon iconName={'Share'} />,
-      isCompact: true
-    }
+      isCompact: true,
+    },
   ];
 
   return (

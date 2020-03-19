@@ -53,7 +53,7 @@ export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteM
     }
 
     this.setState({
-      isVisible: false
+      isVisible: false,
     });
   };
 }

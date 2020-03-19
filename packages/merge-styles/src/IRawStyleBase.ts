@@ -355,7 +355,8 @@ export interface IRawStyleBase extends IRawFontStyle {
   animation?: ICSSRule | string;
 
   /**
-   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution some time after it is applied.
+   * Defines a length of time to elapse before an animation starts, allowing an animation to begin execution
+   * some time after it is applied.
    */
   animationDelay?: ICSSRule | string;
 
@@ -1125,7 +1126,15 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+  justifyContent?:
+    | ICSSRule
+    | 'flex-start'
+    | 'flex-end'
+    | 'center'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch';
 
   /**
    * Justifies the box (as the alignment subject) within its containing block (as the alignment container)

@@ -14,7 +14,7 @@ const SELECTION_BACKWARD = 'backward';
  */
 export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
-    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
+    enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
 
   private _inputElement = React.createRef<HTMLInputElement>();
@@ -31,7 +31,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
 
     this._value = props.defaultVisibleValue || '';
     this.state = {
-      displayValue: props.defaultVisibleValue || ''
+      displayValue: props.defaultVisibleValue || '',
     };
   }
 
@@ -95,7 +95,12 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    if (this._autoFillEnabled && value && suggestedDisplayValue && this._doesTextStartWith(suggestedDisplayValue, value)) {
+    if (
+      this._autoFillEnabled &&
+      value &&
+      suggestedDisplayValue &&
+      this._doesTextStartWith(suggestedDisplayValue, value)
+    ) {
       let shouldSelectFullRange = false;
 
       if (shouldSelectFullInputValueInComponentDidUpdate) {
@@ -112,7 +117,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
           differenceIndex++;
         }
         if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(differenceIndex, suggestedDisplayValue.length, SELECTION_BACKWARD);
+          this._inputElement.current.setSelectionRange(
+            differenceIndex,
+            suggestedDisplayValue.length,
+            SELECTION_BACKWARD,
+          );
         }
       }
     }
@@ -300,9 +309,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
     this._value = this.props.onInputChange ? this.props.onInputChange(newValue, composing) : newValue;
     this.setState(
       {
-        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue)
+        displayValue: this._getDisplayValue(this._value, this.props.suggestedDisplayValue),
       },
-      () => this._notifyInputChange(this._value, composing)
+      () => this._notifyInputChange(this._value, composing),
     );
   };
 
@@ -315,7 +324,12 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
    */
   private _getDisplayValue(inputValue: string, suggestedDisplayValue?: string): string {
     let displayValue = inputValue;
-    if (suggestedDisplayValue && inputValue && this._doesTextStartWith(suggestedDisplayValue, displayValue) && this._autoFillEnabled) {
+    if (
+      suggestedDisplayValue &&
+      inputValue &&
+      this._doesTextStartWith(suggestedDisplayValue, displayValue) &&
+      this._autoFillEnabled
+    ) {
       displayValue = suggestedDisplayValue;
     }
     return displayValue;

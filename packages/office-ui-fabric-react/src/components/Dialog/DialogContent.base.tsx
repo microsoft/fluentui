@@ -18,7 +18,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
     showCloseButton: false,
     className: '',
     topButtonsProps: [],
-    closeButtonAriaLabel: 'Close'
+    closeButtonAriaLabel: 'Close',
   };
 
   constructor(props: IDialogContentProps) {
@@ -26,7 +26,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
 
     initializeComponentRef(this);
     warnDeprecations(COMPONENT_NAME, props, {
-      titleId: 'titleProps.id'
+      titleId: 'titleProps.id',
     });
   }
 
@@ -45,7 +45,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
       type,
       styles,
       theme,
-      draggableHeaderClassName
+      draggableHeaderClassName,
     } = this.props;
 
     const classNames = getClassNames(styles!, {
@@ -53,7 +53,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
       className,
       isLargeHeader: type === DialogType.largeHeader,
       isClose: type === DialogType.close,
-      draggableHeaderClassName
+      draggableHeaderClassName,
     });
 
     const groupings = this._groupChildren();
@@ -69,7 +69,13 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
     return (
       <div className={classNames.content}>
         <div className={classNames.header}>
-          <div id={titleId} role="heading" aria-level={2} {...titleProps} className={css(classNames.title, titleProps.className)}>
+          <div
+            id={titleId}
+            role="heading"
+            aria-level={2}
+            {...titleProps}
+            className={css(classNames.title, titleProps.className)}
+          >
             {title}
           </div>
           <div className={classNames.topButton}>
@@ -104,7 +110,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
   private _groupChildren(): { footers: any[]; contents: any[] } {
     const groupings: { footers: any[]; contents: any[] } = {
       footers: [],
-      contents: []
+      contents: [],
     };
 
     React.Children.map(this.props.children, child => {

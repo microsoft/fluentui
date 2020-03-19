@@ -12,7 +12,7 @@ export interface IStandardProps {
 
 export const mergeSlotProps = <TUserProps extends IStandardProps>(
   userProps: TUserProps = {} as any,
-  baseSlotProps: TUserProps['slotProps']
+  baseSlotProps: TUserProps['slotProps'],
 ) => {
   const userSlotProps: any = userProps.slotProps || {};
   const { id, className, style, classes = {} } = userProps;
@@ -25,11 +25,11 @@ export const mergeSlotProps = <TUserProps extends IStandardProps>(
       ...(isRoot && {
         id,
         name,
-        style
+        style,
       }),
       ...baseSlotProps[name],
       ...userSlotProps[name],
-      className: cx(isRoot && className, (classes as any)[name], baseSlotProps[name].className)
+      className: cx(isRoot && className, (classes as any)[name], baseSlotProps[name].className),
     };
   }
 

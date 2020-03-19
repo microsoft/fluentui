@@ -9,7 +9,10 @@ export interface ITeachingBubbleWideIllustrationExampleState {
   isTeachingBubbleVisible?: boolean;
 }
 
-export class TeachingBubbleWideIllustrationExample extends React.Component<{}, ITeachingBubbleWideIllustrationExampleState> {
+export class TeachingBubbleWideIllustrationExample extends React.Component<
+  {},
+  ITeachingBubbleWideIllustrationExampleState
+> {
   private _menuButtonElement: HTMLElement;
 
   constructor(props: {}) {
@@ -19,7 +22,7 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -27,16 +30,19 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
     const { isTeachingBubbleVisible } = this.state;
     const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
     const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out'
+      children: 'Try it out',
     };
     const exampleSecondaryButtonProps: IButtonProps = {
       children: 'Maybe later',
-      onClick: this._onDismiss
+      onClick: this._onDismiss,
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span
+          className="ms-TeachingBubbleBasicExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -57,7 +63,8 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
               onDismiss={this._onDismiss}
               headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
         ) : null}
@@ -67,13 +74,13 @@ export class TeachingBubbleWideIllustrationExample extends React.Component<{}, I
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

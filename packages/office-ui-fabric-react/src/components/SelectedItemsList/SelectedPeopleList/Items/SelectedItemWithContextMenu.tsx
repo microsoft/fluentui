@@ -14,7 +14,10 @@ export interface ISelectedItemWithContextMenuProps extends IBaseProps {
   item: IExtendedPersonaProps;
 }
 
-export class SelectedItemWithContextMenu extends React.Component<ISelectedItemWithContextMenuProps, IPeoplePickerItemState> {
+export class SelectedItemWithContextMenu extends React.Component<
+  ISelectedItemWithContextMenuProps,
+  IPeoplePickerItemState
+> {
   protected itemElement: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedItemWithContextMenuProps) {

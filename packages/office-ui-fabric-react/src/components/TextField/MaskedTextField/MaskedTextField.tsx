@@ -13,7 +13,7 @@ import {
   getRightFormatIndex,
   IMaskValue,
   insertString,
-  parseMask
+  parseMask,
 } from './inputMask';
 
 /**
@@ -38,7 +38,7 @@ type InputChangeType = 'default' | 'backspace' | 'delete' | 'textPasted';
 export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     maskChar: DEFAULT_MASK_CHAR,
-    maskFormat: DEFAULT_MASK_FORMAT_CHARS
+    maskFormat: DEFAULT_MASK_FORMAT_CHARS,
   };
 
   private _textField = React.createRef<ITextField>();
@@ -84,7 +84,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     this._moveCursorOnMouseUp = false;
 
     this.state = {
-      displayValue: getMaskDisplay(props.mask, this._maskCharData, props.maskChar)
+      displayValue: getMaskDisplay(props.mask, this._maskCharData, props.maskChar),
     };
   }
 
@@ -95,7 +95,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       newProps.value !== undefined && this.setValue(newProps.value);
 
       this.setState({
-        displayValue: getMaskDisplay(newProps.mask, this._maskCharData, newProps.maskChar)
+        displayValue: getMaskDisplay(newProps.mask, this._maskCharData, newProps.maskChar),
       });
     }
   }
@@ -212,7 +212,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     for (let i = 0; i < this._maskCharData.length; i++) {
       if (!this._maskCharData[i].value) {
         this.setState({
-          maskCursorPosition: this._maskCharData[i].displayIndex
+          maskCursorPosition: this._maskCharData[i].displayIndex,
         });
         break;
       }
@@ -250,7 +250,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       for (let i = 0; i < this._maskCharData.length; i++) {
         if (!this._maskCharData[i].value) {
           this.setState({
-            maskCursorPosition: this._maskCharData[i].displayIndex
+            maskCursorPosition: this._maskCharData[i].displayIndex,
           });
           break;
         }
@@ -264,7 +264,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
       this._changeSelectionData = {
         changeType: 'default',
         selectionStart: textField.selectionStart !== null ? textField.selectionStart : -1,
-        selectionEnd: textField.selectionEnd !== null ? textField.selectionEnd : -1
+        selectionEnd: textField.selectionEnd !== null ? textField.selectionEnd : -1,
       };
     }
     if (!this._changeSelectionData) {
@@ -336,7 +336,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
 
     this.setState({
       displayValue: newValue,
-      maskCursorPosition: cursorPos
+      maskCursorPosition: cursorPos,
     });
 
     // Perform onChange after input has been processed. Return value is expected to be the displayed text
@@ -377,7 +377,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
         this._changeSelectionData = {
           changeType: keyCode === KeyCodes.backspace ? 'backspace' : 'delete',
           selectionStart: selectionStart !== null ? selectionStart : -1,
-          selectionEnd: selectionEnd !== null ? selectionEnd : -1
+          selectionEnd: selectionEnd !== null ? selectionEnd : -1,
         };
       }
     }
@@ -394,7 +394,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     this._changeSelectionData = {
       changeType: 'textPasted',
       selectionStart: selectionStart !== null ? selectionStart : -1,
-      selectionEnd: selectionEnd !== null ? selectionEnd : -1
+      selectionEnd: selectionEnd !== null ? selectionEnd : -1,
     };
   };
 }

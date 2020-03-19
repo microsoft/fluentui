@@ -9,9 +9,16 @@ import {
   classNamesFunction,
   initializeComponentRef,
   EventGroup,
-  Async
+  Async,
 } from '../../Utilities';
-import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
+import {
+  IHoverCardProps,
+  IHoverCardStyles,
+  IHoverCardStyleProps,
+  OpenCardMode,
+  HoverCardType,
+  IHoverCard,
+} from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
 import { PlainCard } from './PlainCard/PlainCard';
@@ -33,7 +40,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
     instantOpenOnClick: false,
     setInitialFocus: false,
     openHotKey: KeyCodes.c as KeyCodes,
-    type: HoverCardType.expanding
+    type: HoverCardType.expanding,
   };
 
   // The wrapping div that gets the hover events
@@ -64,7 +71,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
     this.state = {
       isHoverCardVisible: false,
       mode: ExpandingCardMode.compact,
-      openMode: OpenCardMode.hover
+      openMode: OpenCardMode.hover,
     };
   }
 
@@ -88,17 +95,17 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
         this._async.setTimeout(() => {
           this.setState(
             {
-              mode: ExpandingCardMode.expanded
+              mode: ExpandingCardMode.expanded,
             },
             () => {
               this.props.onCardExpand && this.props.onCardExpand();
-            }
+            },
           );
         }, this.props.expandedCardOpenDelay!);
         this.props.onCardVisible && this.props.onCardVisible();
       } else {
         this.setState({
-          mode: ExpandingCardMode.compact
+          mode: ExpandingCardMode.compact,
         });
         this.props.onCardHide && this.props.onCardHide();
       }
@@ -130,14 +137,14 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
       type,
       plainCardProps,
       trapFocus,
-      setInitialFocus
+      setInitialFocus,
     } = this.props;
     const { isHoverCardVisible, mode, openMode } = this.state;
     const hoverCardId = id || getId('hoverCard');
 
     this._classNames = getClassNames(customStyles, {
       theme: theme!,
-      className
+      className,
     });
 
     // Common props for both card types.
@@ -148,7 +155,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
       targetElement: this._getTargetElement(this.props.target),
       onEnter: this._cardOpen,
-      onLeave: this._childDismissEvent
+      onLeave: this._childDismissEvent,
     };
 
     const finalExpandedCardProps: IExpandingCardProps = { ...expandingCardProps, ...commonCardProps, mode };
@@ -163,7 +170,11 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
       >
         {children}
         {isHoverCardVisible &&
-          (type === HoverCardType.expanding ? <ExpandingCard {...finalExpandedCardProps} /> : <PlainCard {...finalPlainCardProps} />)}
+          (type === HoverCardType.expanding ? (
+            <ExpandingCard {...finalExpandedCardProps} />
+          ) : (
+            <PlainCard {...finalPlainCardProps} />
+          ))}
       </div>
     );
   }
@@ -207,7 +218,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
           return {
             isHoverCardVisible: true,
             mode: ExpandingCardMode.compact,
-            openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover
+            openMode: ev.type === 'keydown' ? OpenCardMode.hotKey : OpenCardMode.hover,
           };
         }
 
@@ -223,7 +234,10 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
    *  true: Event is coming from event listeners set up in componentDidMount.
    *  false: Event is coming from the `onLeave` prop from the HoverCard component.
    */
-  private _cardDismiss = (isNativeEvent: boolean, ev: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
+  private _cardDismiss = (
+    isNativeEvent: boolean,
+    ev: MouseEvent | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>,
+  ) => {
     if (isNativeEvent) {
       // We expect these to be MouseEvents, If not, return.
       if (!(ev instanceof MouseEvent)) {
@@ -242,7 +256,12 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
       }
     } else {
       // If this is a mouseleave event and the component is sticky, do not dismiss.
-      if (this.props.sticky && !(ev instanceof MouseEvent) && ev.nativeEvent instanceof MouseEvent && ev.type === 'mouseleave') {
+      if (
+        this.props.sticky &&
+        !(ev instanceof MouseEvent) &&
+        ev.nativeEvent instanceof MouseEvent &&
+        ev.type === 'mouseleave'
+      ) {
         return;
       }
 
@@ -254,7 +273,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
     this.setState({
       isHoverCardVisible: false,
       mode: ExpandingCardMode.compact,
-      openMode: OpenCardMode.hover
+      openMode: OpenCardMode.hover,
     });
   };
 
@@ -265,7 +284,7 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
       if (!prevState.isHoverCardVisible) {
         return {
           isHoverCardVisible: true,
-          mode: ExpandingCardMode.expanded
+          mode: ExpandingCardMode.expanded,
         };
       }
 
@@ -275,7 +294,9 @@ export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardSt
 
   private _setEventListeners = (): void => {
     const { trapFocus, instantOpenOnClick, eventListenerTarget } = this.props;
-    const target = eventListenerTarget ? this._getTargetElement(eventListenerTarget) : this._getTargetElement(this.props.target);
+    const target = eventListenerTarget
+      ? this._getTargetElement(eventListenerTarget)
+      : this._getTargetElement(this.props.target);
     const nativeEventDismiss = this._nativeDismissEvent;
 
     // target can be undefined if ref isn't available, only assign

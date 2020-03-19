@@ -4,5 +4,8 @@ import { CardPageProps } from '@uifabric/react-cards/lib/components/Card/Card.do
 import { DemoPage } from '../DemoPage';
 
 export const CardPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage jsonDocs={require('@uifabric/api-docs/lib/pages/react-cards/Card.page.json')} {...{ ...CardPageProps, ...props }} />
+  <DemoPage
+    jsonDocs={require('@uifabric/api-docs/lib/pages/react-cards/Card.page.json')}
+    {...{ ...CardPageProps, ...props }}
+  />
 );

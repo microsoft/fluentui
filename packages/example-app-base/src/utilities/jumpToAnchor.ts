@@ -24,7 +24,7 @@ export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DI
       } else {
         window.scrollTo({
           top,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     }

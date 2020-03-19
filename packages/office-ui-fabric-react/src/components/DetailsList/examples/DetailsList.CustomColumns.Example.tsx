@@ -17,7 +17,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     const items = createListItems(500);
     this.state = {
       sortedItems: items,
-      columns: _buildColumns(items)
+      columns: _buildColumns(items),
     };
   }
 
@@ -64,7 +64,7 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
         }
 
         return col;
-      })
+      }),
     });
   };
 
@@ -101,7 +101,10 @@ function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
 
     case 'color':
       return (
-        <span data-selection-disabled={true} className={mergeStyles({ color: fieldContent, height: '100%', display: 'block' })}>
+        <span
+          data-selection-disabled={true}
+          className={mergeStyles({ color: fieldContent, height: '100%', display: 'block' })}
+        >
           {fieldContent}
         </span>
       );

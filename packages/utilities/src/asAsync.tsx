@@ -50,7 +50,7 @@ const _syncModuleCache =
  * This overload accepts a module with a default export for the component.
  */
 export function asAsync<TProps>(
-  options: IAsAsyncOptions<TProps>
+  options: IAsAsyncOptions<TProps>,
 ): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & { asyncPlaceholder?: React.ElementType }>> {
   class Async extends React.Component<
     TProps & {
@@ -60,7 +60,7 @@ export function asAsync<TProps>(
     { Component?: React.ElementType<TProps> }
   > {
     public state = {
-      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined
+      Component: _syncModuleCache ? (_syncModuleCache.get(options.load) as React.ElementType<TProps>) : undefined,
     };
 
     public render(): JSX.Element | null {
@@ -68,7 +68,11 @@ export function asAsync<TProps>(
       // tslint:disable-next-line:no-any
       const { forwardedRef, asyncPlaceholder: Placeholder, ...rest } = this.props as any;
       const { Component } = this.state;
-      return Component ? React.createElement(Component, { ...rest, ref: forwardedRef }) : Placeholder ? <Placeholder /> : null;
+      return Component ? (
+        React.createElement(Component, { ...rest, ref: forwardedRef })
+      ) : Placeholder ? (
+        <Placeholder />
+      ) : null;
     }
 
     public componentDidMount(): void {
@@ -85,9 +89,9 @@ export function asAsync<TProps>(
               // Set state.
               this.setState(
                 {
-                  Component: LoadedComponent
+                  Component: LoadedComponent,
                 },
-                options.onLoad
+                options.onLoad,
               );
             }
           })

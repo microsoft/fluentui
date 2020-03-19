@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Slider, Button } from '@fluentui/react';
+import { Form, Slider, Button } from '@fluentui/react-northstar';
 
 const FormExampleSlider = () => (
   <Form onSubmit={() => alert('Form submitted')}>

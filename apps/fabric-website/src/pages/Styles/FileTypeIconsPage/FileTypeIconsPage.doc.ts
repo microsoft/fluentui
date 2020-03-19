@@ -9,6 +9,6 @@ export const FileTypeIconsPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

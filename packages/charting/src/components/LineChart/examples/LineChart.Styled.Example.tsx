@@ -26,16 +26,16 @@ export class LineChartStyledExample extends React.Component<{}, {}> {
           { x: new Date('2018/01/20'), y: 24 },
           { x: new Date('2018/01/24'), y: 35 },
           { x: new Date('2018/01/26'), y: 35 },
-          { x: new Date('2018/01/29'), y: 38 }
+          { x: new Date('2018/01/29'), y: 38 },
         ],
         legend: 'Week',
-        color: DefaultPalette.blue
-      }
+        color: DefaultPalette.blue,
+      },
     ];
 
     const data: IChartProps = {
       chartTitle: 'Line Chart',
-      lineChartData: points
+      lineChartData: points,
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (

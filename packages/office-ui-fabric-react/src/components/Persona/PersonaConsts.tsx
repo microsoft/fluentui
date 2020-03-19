@@ -49,7 +49,7 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize56: size === PersonaSize.size56,
   isSize72: size === PersonaSize.size72 || size === PersonaSize.large,
   isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge,
-  isSize120: size === PersonaSize.size120
+  isSize120: size === PersonaSize.size120,
 });
 
 export const sizeToPixels: { [key: number]: number } = {
@@ -74,7 +74,7 @@ export const sizeToPixels: { [key: number]: number } = {
   [PersonaSize.size56]: 56,
   [PersonaSize.size72]: 72,
   [PersonaSize.size100]: 100,
-  [PersonaSize.size120]: 120
+  [PersonaSize.size120]: 120,
 };
 
 export const presenceBoolean = (presence: PersonaPresence) => ({
@@ -83,5 +83,5 @@ export const presenceBoolean = (presence: PersonaPresence) => ({
   isBlocked: presence === PersonaPresence.blocked,
   isBusy: presence === PersonaPresence.busy,
   isDoNotDisturb: presence === PersonaPresence.dnd,
-  isOffline: presence === PersonaPresence.offline
+  isOffline: presence === PersonaPresence.offline,
 });

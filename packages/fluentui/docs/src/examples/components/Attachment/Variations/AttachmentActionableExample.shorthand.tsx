@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Attachment } from '@fluentui/react';
+import { Attachment } from '@fluentui/react-northstar';
 
 class AttachmentActionableExampleShorthand extends React.Component {
   handleClick = message => e => {

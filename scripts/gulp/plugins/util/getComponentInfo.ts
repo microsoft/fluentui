@@ -26,7 +26,7 @@ const getAvailableBehaviors = (accessibilityProp: ComponentProp): BehaviorInfo[]
     .map(name => ({
       name,
       displayName: _.upperFirst(name.replace('Behavior', '')),
-      category: _.upperFirst(name.split(/(?=[A-Z])/)[0])
+      category: _.upperFirst(name.split(/(?=[A-Z])/)[0]),
     }));
 };
 
@@ -51,8 +51,8 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
     throw new Error(
       [
         `Found more than one component definition in "${filepath}".`,
-        'This is currently not supported, please ensure your module only defines a single React component.'
-      ].join(' ')
+        'This is currently not supported, please ensure your module only defines a single React component.',
+      ].join(' '),
     );
   }
   const info: docgen.ComponentDoc = components[0];
@@ -69,7 +69,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
 
   const componentFile = Babel.parse(fs.readFileSync(absPath).toString(), {
     configFile: false,
-    presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]]
+    presets: [['@babel/preset-typescript', { allExtensions: true, isTSX: true }]],
   }) as t.File;
   const constructorName = _.get(Component, 'prototype.constructor.name', null);
 
@@ -115,7 +115,9 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
   const docblock = parseDocblock(info.description);
 
   // file and path info
-  const repoPath = absPath.replace(`${process.cwd()}${path.sep}`, '').replace(new RegExp(_.escapeRegExp(path.sep), 'g'), '/');
+  const repoPath = absPath
+    .replace(`${process.cwd()}${path.sep}`, '')
+    .replace(new RegExp(_.escapeRegExp(path.sep), 'g'), '/');
 
   let props: ComponentProp[] = [];
 
@@ -137,7 +139,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
         tags,
         types,
         name: propName,
-        required: propDef.required
+        required: propDef.required,
       });
     }
   });
@@ -150,7 +152,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
       tags: [],
       types: [{ name: 'React.ElementType' }],
       name: 'as',
-      required: false
+      required: false,
     });
   }
 
@@ -177,7 +179,7 @@ const getComponentInfo = (filepath: string, ignoredParentInterfaces: string[]): 
     repoPath,
     subcomponentName,
     subcomponents,
-    type
+    type,
   };
 };
 

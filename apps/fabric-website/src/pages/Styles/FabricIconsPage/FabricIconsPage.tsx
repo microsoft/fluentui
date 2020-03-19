@@ -7,7 +7,8 @@ import { FabricIconsPageProps } from './FabricIconsPage.doc';
 import * as styles from './FabricIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
+const baseUrl =
+  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/FabricIconsPage/docs';
 const fabricCoreIcons = require('office-ui-fabric-core/src/data/icons.json');
 const fabricReactIcons = require('@uifabric/icons/lib/data/AllIconNames.json');
 // en dashes look like regular dashes in a monospace font
@@ -15,7 +16,13 @@ const enDash = '–';
 
 export const FabricIconsPage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...FabricIconsPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
+  return (
+    <StylesAreaPage
+      {...props}
+      {...FabricIconsPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -30,8 +37,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             // prettier-ignore
             { text: enDash + ' Fabric React', url: 'fabric-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fabric Icons tool', url: 'fabric-icons-tool' }
-          ]
+            { text: enDash + ' Fabric Icons tool', url: 'fabric-icons-tool' },
+          ],
         },
 
         {
@@ -45,16 +52,16 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <IconGrid icons={fabricCoreIcons} />
               </PivotItem>
             </Pivot>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming Soon',
-          content: 'Coming Soon'
-        }
+          content: 'Coming Soon',
+        },
       ];
   }
 }

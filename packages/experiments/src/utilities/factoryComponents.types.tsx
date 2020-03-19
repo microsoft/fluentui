@@ -6,7 +6,7 @@ import {
   ILabelProps,
   IListProps,
   IPersonaPresenceProps,
-  PersonaPresence
+  PersonaPresence,
 } from 'office-ui-fabric-react';
 import { ISlotProp } from '../Foundation';
 

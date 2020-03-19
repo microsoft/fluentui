@@ -10,13 +10,13 @@ export const ModalStyles = (props: IModalStyleProps): Partial<IModalStyles> => {
   return {
     root: {
       color: semanticColors.bodyText,
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size12,
     },
     main: {
       borderColor: semanticColors.inputBorder,
       borderStyle: StyleConstants.borderSolid,
       borderWidth: StyleConstants.borderWidth,
-      boxShadow: Depths.depth8
-    }
+      boxShadow: Depths.depth8,
+    },
   };
 };

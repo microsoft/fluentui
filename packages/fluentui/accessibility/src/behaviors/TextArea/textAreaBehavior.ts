@@ -6,9 +6,9 @@ import { Accessibility } from '../../types';
 const textAreaBehavior: Accessibility<TextAreaBehaviorProps> = props => ({
   attributes: {
     root: {
-      'aria-disabled': props.disabled
-    }
-  }
+      'aria-disabled': props.disabled,
+    },
+  },
 });
 
 export default textAreaBehavior;

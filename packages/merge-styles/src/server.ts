@@ -10,12 +10,12 @@ export function renderStatic(onRender: () => string, namespace?: string): { html
 
   stylesheet.setConfig({
     injectionMode: InjectionMode.none,
-    namespace
+    namespace,
   });
   stylesheet.reset();
 
   return {
     html: onRender(),
-    css: stylesheet.getRules(true)
+    css: stylesheet.getRules(true),
   };
 }

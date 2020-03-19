@@ -24,13 +24,13 @@ const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
     role: 'dialog',
     'aria-modal': true,
     'aria-labelledby': defaultAriaLabelledBy || props['aria-labelledby'],
-    'aria-describedby': defaultAriaDescribedBy || props['aria-describedby']
+    'aria-describedby': defaultAriaDescribedBy || props['aria-describedby'],
   };
   behaviorData.attributes.header = {
-    id: defaultAriaLabelledBy
+    id: defaultAriaLabelledBy,
   };
   behaviorData.attributes.content = {
-    id: defaultAriaDescribedBy
+    id: defaultAriaDescribedBy,
   };
 
   return behaviorData;

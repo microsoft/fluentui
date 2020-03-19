@@ -88,6 +88,6 @@ export function hsl2rgb(hsl: IHSL): IRGB {
   return {
     r: Math.round(255 * (r1 + m)),
     g: Math.round(255 * (g1 + m)),
-    b: Math.round(255 * (b1 + m))
+    b: Math.round(255 * (b1 + m)),
   };
 }

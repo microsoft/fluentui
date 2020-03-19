@@ -8,7 +8,11 @@ import navigableListBehavior from './navigableListBehavior';
  * Defines a behavior 'BasicListBehavior' or 'SelectableListBehavior' based on property 'selectable'.
  */
 const ListBehavior: Accessibility<ListBehaviorProps> = props =>
-  props.selectable ? selectableListBehavior(props) : props.navigable ? navigableListBehavior(props) : basicListBehavior(props);
+  props.selectable
+    ? selectableListBehavior(props)
+    : props.navigable
+    ? navigableListBehavior(props)
+    : basicListBehavior(props);
 
 export default ListBehavior;
 

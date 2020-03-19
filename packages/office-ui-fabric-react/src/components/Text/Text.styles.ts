@@ -17,14 +17,14 @@ export const TextStyles: ITextComponent['styles'] = (props: ITextProps, theme: I
         fontWeight: variantObject.fontWeight,
         color: variantObject.color,
         mozOsxFontSmoothing: variantObject.MozOsxFontSmoothing,
-        webkitFontSmoothing: variantObject.WebkitFontSmoothing
+        webkitFontSmoothing: variantObject.WebkitFontSmoothing,
       },
       nowrap && {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
       },
-      className
-    ]
+      className,
+    ],
   } as ITextStyles;
 };

@@ -16,18 +16,24 @@ export const ProgressIndicatorPageProps: IDocPageProps = {
     {
       title: 'Default ProgressIndicator',
       code: ProgressIndicatorBasicExampleCode,
-      view: <ProgressIndicatorBasicExample />
+      view: <ProgressIndicatorBasicExample />,
     },
     {
       title: 'Indeterminate ProgressIndicator',
       code: ProgressIndicatorIndeterminateExampleCode,
-      view: <ProgressIndicatorIndeterminateExample />
-    }
+      view: <ProgressIndicatorIndeterminateExample />,
+    },
   ],
-  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
+  overview: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorOverview.md'),
   bestPractices: '',
-  dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
-  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
+  dos: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDos.md'),
+  donts: require<
+    string
+  >('!raw-loader!office-ui-fabric-react/src/components/ProgressIndicator/docs/ProgressIndicatorDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };
