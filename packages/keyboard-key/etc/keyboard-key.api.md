@@ -202,8 +202,6 @@ export interface KeyNames {
     // (undocumented)
     AltGraph: 225;
     // (undocumented)
-    Ampersand: 55;
-    // (undocumented)
     ArrowDown: 40;
     // (undocumented)
     ArrowLeft: 37;
@@ -212,15 +210,11 @@ export interface KeyNames {
     // (undocumented)
     ArrowUp: 38;
     // (undocumented)
-    AtSign: 50;
-    // (undocumented)
     Attn: 246;
     // (undocumented)
     B: 66;
     // (undocumented)
     b: 66;
-    // (undocumented)
-    BackSlash: 220;
     // (undocumented)
     Backspace: 8;
     // (undocumented)
@@ -232,13 +226,7 @@ export interface KeyNames {
     // (undocumented)
     CapsLock: 20;
     // (undocumented)
-    Caret: 54;
-    // (undocumented)
     Clear: 12;
-    // (undocumented)
-    Colon: 186;
-    // (undocumented)
-    Comma: 188;
     // (undocumented)
     ContextMenu: 93;
     // (undocumented)
@@ -252,33 +240,7 @@ export interface KeyNames {
     // (undocumented)
     d: 68;
     // (undocumented)
-    Decimal: 190;
-    // (undocumented)
     Delete: 46;
-    // (undocumented)
-    Digit0: 48;
-    // (undocumented)
-    Digit1: 49;
-    // (undocumented)
-    Digit2: 50;
-    // (undocumented)
-    Digit3: 51;
-    // (undocumented)
-    Digit4: 52;
-    // (undocumented)
-    Digit5: 53;
-    // (undocumented)
-    Digit6: 54;
-    // (undocumented)
-    Digit7: 55;
-    // (undocumented)
-    Digit8: 56;
-    // (undocumented)
-    Digit9: 57;
-    // (undocumented)
-    DivisionSign: 191;
-    // (undocumented)
-    DoubleQuote: 222;
     // (undocumented)
     E: 69;
     // (undocumented)
@@ -288,13 +250,9 @@ export interface KeyNames {
     // (undocumented)
     Enter: 13;
     // (undocumented)
-    EqualsSign: 187;
-    // (undocumented)
     EraseEof: 249;
     // (undocumented)
     Escape: 27;
-    // (undocumented)
-    ExclamationPoint: 49;
     // (undocumented)
     Execute: 43;
     // (undocumented)
@@ -356,8 +314,6 @@ export interface KeyNames {
     // (undocumented)
     g: 71;
     // (undocumented)
-    GraveAccent: 192;
-    // (undocumented)
     H: 72;
     // (undocumented)
     h: 72;
@@ -384,25 +340,13 @@ export interface KeyNames {
     // (undocumented)
     l: 76;
     // (undocumented)
-    LeftAngleBracket: 188;
-    // (undocumented)
-    LeftCurlyBrace: 219;
-    // (undocumented)
-    LeftParenthesis: 57;
-    // (undocumented)
-    LeftSquareBracket: 219;
-    // (undocumented)
     M: 77;
     // (undocumented)
     m: 77;
     // (undocumented)
     Meta: 224;
     // (undocumented)
-    MinusSign: 189;
-    // (undocumented)
     ModeChange: 31;
-    // (undocumented)
-    MultiplicationSign: 56;
     // (undocumented)
     N: 78;
     // (undocumented)
@@ -428,15 +372,7 @@ export interface KeyNames {
     // (undocumented)
     Pause: 19;
     // (undocumented)
-    PercentSign: 53;
-    // (undocumented)
-    Pipe: 220;
-    // (undocumented)
     Play: 250;
-    // (undocumented)
-    PlusSign: 187;
-    // (undocumented)
-    PoundSign: 51;
     // (undocumented)
     Print: 42;
     // (undocumented)
@@ -446,19 +382,9 @@ export interface KeyNames {
     // (undocumented)
     q: 81;
     // (undocumented)
-    QuestionMark: 191;
-    // (undocumented)
     R: 82;
     // (undocumented)
     r: 82;
-    // (undocumented)
-    RightAngleBracket: 190;
-    // (undocumented)
-    RightCurlyBrace: 221;
-    // (undocumented)
-    RightParenthesis: 48;
-    // (undocumented)
-    RightSquareBracket: 221;
     // (undocumented)
     S: 83;
     // (undocumented)
@@ -468,21 +394,13 @@ export interface KeyNames {
     // (undocumented)
     Select: 41;
     // (undocumented)
-    Semicolon: 186;
-    // (undocumented)
     Shift: 16;
-    // (undocumented)
-    SingleQuote: 222;
-    // (undocumented)
-    Spacebar: 32;
     // (undocumented)
     T: 84;
     // (undocumented)
     t: 84;
     // (undocumented)
     Tab: 9;
-    // (undocumented)
-    Tilde: 192;
     // (undocumented)
     U: 85;
     // (undocumented)
