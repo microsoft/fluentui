@@ -15,7 +15,6 @@ type TertiaryButtonProps = {
 
 type TertiaryButtonStylesProps = TertiaryButtonProps;
 
-// TODO: fix any
 const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
@@ -39,7 +38,6 @@ type OverriddenButtonProps = {
 
 type OverriddenButtonStylesProps = Required<OverriddenButtonProps>;
 
-// TODO: fix any
 const OverriddenButton = compose<OverriddenButtonProps, OverriddenButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-overridden-button',
   displayName: 'OverriddenButton',
