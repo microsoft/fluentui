@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Adding @fluentui/react major release build which aliases office-ui-fabric-react.",
+  "packageName": "@fluentui/react",
+  "email": "dzearing@microsoft.com",
+  "commit": "71eab3818cc325cb1058aae90af2977a4ca5559b",
+  "dependentChangeType": "patch",
+  "date": "2020-03-19T20:29:54.411Z"
+}
