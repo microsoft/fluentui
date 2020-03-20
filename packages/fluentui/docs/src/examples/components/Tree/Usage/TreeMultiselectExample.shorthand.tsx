@@ -9,9 +9,9 @@ const items = [
       {
         id: 'tree-item-11',
         title: 'Tywin',
-        selectionIndicator: { content: 'select all' },
-        styles: { selectionIndicatorMargin: '0 3rem 0 0' },
         selectableParent: true,
+        selectionIndicator: { content: 'select all' },
+
         items: [
           {
             id: 'tree-item-111',
