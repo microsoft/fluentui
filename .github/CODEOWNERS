@@ -58,7 +58,7 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
-packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
+packages/date-time @lorejoh @evlevy
 packages/migration/ @ecraig12345 @kenotron
 
 ### Fabric
@@ -68,8 +68,8 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @OfficeDev/uifabric-calendar @lorejoh
-dateValues/   @OfficeDev/uifabric-calendar @lorejoh
+dateMath/     @lorejoh
+dateValues/   @lorejoh
 
 ## Components
 Accordion/ @JasonGore
@@ -77,7 +77,7 @@ ActivityItem/ @jdhuntington
 Announced/ @natalieethell
 Breadcrumb/ @jdhuntington
 Button/ @khmakoto
-Calendar/ @OfficeDev/uifabric-calendar @lorejoh
+Calendar/ @lorejoh
 Callout/ @joschect
 react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
@@ -89,7 +89,7 @@ ColorPicker/ @ecraig12345
 ComboBox/ @joschect
 CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
-DatePicker/ @OfficeDev/uifabric-calendar @lorejoh
+DatePicker/ @lorejoh
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
 DocumentCard/ @yiminwu
@@ -148,7 +148,7 @@ Tooltip/ @micahgodbolt
 Announced/docs/ @natalieethell
 # Breadcrumb/docs/
 Button/docs/  @khmakoto
-Calendar/docs/   @OfficeDev/uifabric-calendar @lorejoh
+Calendar/docs/   @lorejoh
 Callout/docs/  @joschect
 react-cards/Card/docs/  @khmakoto
 # Check/docs/
@@ -158,7 +158,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @OfficeDev/uifabric-calendar @lorejoh
+DatePicker/docs/   @lorejoh
 DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu

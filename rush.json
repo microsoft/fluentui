@@ -49,7 +49,7 @@
      * It specifies the remote url for the official Git repository.  If this URL is provided,
      * "rush change" will use it to find the right remote to compare against.
      */
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react.git"
+    "url": "https://github.com/microsoft/fluentui.git"
   },
   /**
    * Event hooks are customized script actions that Rush executes when specific events occur
