@@ -13,9 +13,7 @@ export interface CardFooterProps extends UIComponentProps, ChildrenComponentProp
    */
   accessibility?: Accessibility<never>;
 
-  /**
-   * A footer can be fitted, without any space above or below it.
-   */
+  /** A footer can be fitted, without any space above or below it. */
   fitted?: boolean;
 }
 

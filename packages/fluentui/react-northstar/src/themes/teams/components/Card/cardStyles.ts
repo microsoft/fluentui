@@ -9,9 +9,9 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
-      padding: v.cardPadding,
+      padding: v.padding,
       ...(p.horizontal && { flexDirection: 'row' }),
-      ...(p.compact && { padding: 0 }),
+      ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
 
       // TODO: update with latest design spec

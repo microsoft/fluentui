@@ -10,7 +10,7 @@ const cardPreviewStyles: ComponentSlotStylesPrepared<CardPreviewStylesProps, Car
         margin: v.previewMarginHorizontal,
       }),
       ...(p.fitted && {
-        margin: 0,
+        margin: v.fittedPreviewMargin,
       }),
     };
   },
