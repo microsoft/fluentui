@@ -4,6 +4,6 @@
   "packageName": "@fluentui/react",
   "email": "dzearing@microsoft.com",
   "commit": "b00a4fb9a29289adea7cb85463d5fd0b7923c226",
-  "dependentChangeType": "patch",
+  "dependentChangeType": "none",
   "date": "2020-03-20T19:24:02.050Z"
 }
