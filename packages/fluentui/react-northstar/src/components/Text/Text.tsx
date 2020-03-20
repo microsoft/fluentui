@@ -17,7 +17,7 @@ import {
 import { Accessibility } from '@fluentui/accessibility';
 
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -137,7 +137,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
     rtl: context.rtl,
   });
 
-  const unhandledProps = getUnhandledProps(Text.handledProps, props);
+  const unhandledProps = useUnhandledProps(Text.handledProps, props);
   const ElementType = getElementType(props);
 
   const element = (

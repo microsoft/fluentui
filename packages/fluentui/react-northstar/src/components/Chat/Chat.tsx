@@ -1,5 +1,5 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -67,7 +67,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Chat.handledProps, props);
+  const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
   const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
