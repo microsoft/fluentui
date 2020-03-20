@@ -1,0 +1,19 @@
+{
+  "name": "@fluentui/react",
+  "entries": [
+    {
+      "date": "Fri, 20 Mar 2020 12:25:01 GMT",
+      "tag": "@fluentui/react_v7.105.2",
+      "version": "7.105.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding @fluentui/react major release build which aliases office-ui-fabric-react.",
+            "author": "dzearing@microsoft.com",
+            "commit": "71eab3818cc325cb1058aae90af2977a4ca5559b"
+          }
+        ]
+      }
+    }
+  ]
+}
