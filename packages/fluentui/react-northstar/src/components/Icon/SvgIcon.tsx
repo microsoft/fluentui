@@ -7,6 +7,7 @@ import {
   svgIconClassName,
   svgIconDisplayName,
   svgIconHandledProps,
+  SvgIconChildrenFn,
 } from '@fluentui/react-bindings';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
@@ -15,7 +16,7 @@ import { ThemeContext } from 'react-fela';
 
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
-const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
+const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }>> & {
   className: string;
   handledProps: (keyof SvgIconProps)[];
 } = props => {
@@ -77,7 +78,7 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
 
 SvgIcon.className = svgIconClassName;
 SvgIcon.displayName = svgIconDisplayName;
-SvgIcon.handledProps = svgIconHandledProps;
+SvgIcon.handledProps = [...svgIconHandledProps, 'children'];
 SvgIcon.defaultProps = {
   as: 'span',
   size: 'medium',

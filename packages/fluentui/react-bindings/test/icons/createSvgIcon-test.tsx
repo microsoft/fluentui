@@ -1,4 +1,4 @@
-import { createSvgIcon, SvgIconClassName, SvgIconProps } from '@fluentui/react-bindings';
+import { createSvgIcon, svgIconClassName, SvgIconProps } from '@fluentui/react-bindings';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -41,12 +41,35 @@ describe('createSvgIcon', () => {
   });
 
   it('spreads unhandled props on the root element', () => {
-    const TestIcon = createSvgIcon<SvgIconProps>({ svg: testSvg, displayName: 'TestIcon' });
+    const TestIcon = createSvgIcon({ svg: testSvg, displayName: 'TestIcon' });
 
     const wrapper = mount(<TestIcon id="test-id" />, {
       wrappingComponent: TestProvider,
       wrappingComponentProps: { theme: createTheme() },
     });
-    expect(wrapper.find(`.${SvgIconClassName}`).props().id).toEqual('test-id');
+    expect(wrapper.find(`.${svgIconClassName}`).props().id).toEqual('test-id');
+  });
+
+  it('provides all props on the svg function', () => {
+    interface BookProps extends SvgIconProps {
+      foo: boolean;
+    }
+    const svg = jest.fn();
+    const BookIcon = createSvgIcon<BookProps>({
+      svg,
+      displayName: 'BookIcon',
+      handledProps: ['foo'],
+    });
+
+    mount(<BookIcon foo outline />, {
+      wrappingComponent: TestProvider,
+      wrappingComponentProps: { theme: createTheme() },
+    });
+
+    expect(svg).toBeCalledWith(
+      expect.objectContaining({
+        props: { foo: true, outline: true },
+      }),
+    );
   });
 });

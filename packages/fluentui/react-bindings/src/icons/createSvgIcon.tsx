@@ -16,7 +16,6 @@ export const svgIconHandledProps: (keyof SvgIconProps)[] = [
   'bordered',
   'className',
   'circular',
-  'children',
   'design',
   'disabled',
   'outline',

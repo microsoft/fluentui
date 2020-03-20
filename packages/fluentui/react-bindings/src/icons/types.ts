@@ -23,12 +23,6 @@ export interface SvgIconProps {
   /** SvgIcon can appear as circular. */
   circular?: boolean;
 
-  /**
-   *  Content for childrenApi
-   *  @docSiteIgnore
-   */
-  children?: SvgIconChildrenFn;
-
   design?: ComponentDesignProp;
 
   /** An icon can show it is currently unable to be interacted with. */
@@ -53,16 +47,16 @@ export interface SvgIconProps {
   xSpacing?: SvgIconXSpacing;
 }
 
-export type SvgIconFuncArg = {
+export type SvgIconFuncArg<TProps = SvgIconProps> = {
   classes: { [iconSlot: string]: string };
   rtl: boolean;
-  props: SvgIconProps;
+  props: TProps;
 };
 
-export type SvgIconChildrenFn = (svgIcon: SvgIconFuncArg) => React.ReactNode;
+export type SvgIconChildrenFn<TProps = SvgIconProps> = (svgIcon: SvgIconFuncArg<TProps>) => React.ReactNode;
 
 export type SvgIconCreateFnParams<TProps> = {
-  svg: SvgIconChildrenFn;
+  svg: SvgIconChildrenFn<TProps>;
   displayName: string;
   handledProps?: (keyof TProps)[];
 };
