@@ -66,7 +66,7 @@ describe('createSvgIcon', () => {
       wrappingComponentProps: { theme: createTheme() },
     });
 
-    expect((wrapper.find('svg').props() as any)['data-foo']).toEqual('true');
-    expect((wrapper.find('svg').props() as any)['data-outline']).toEqual('true');
+    expect(wrapper.find('svg').prop('data-foo').toEqual('true');
+    expect(wrapper.find('svg').prop('data-outline').toEqual('true');
   });
 });
