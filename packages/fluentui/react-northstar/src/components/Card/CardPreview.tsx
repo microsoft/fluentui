@@ -1,6 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
-import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -48,15 +47,10 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
     rtl: context.rtl,
   });
 
-  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
-    _.invoke(props, 'onClick', e, props);
-  };
-
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        onClick: handleClick,
         ...unhandledProps,
       })}
     >

@@ -3,7 +3,6 @@ import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderCont
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
-import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 

@@ -4,7 +4,6 @@ import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
-import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
