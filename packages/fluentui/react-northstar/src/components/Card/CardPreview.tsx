@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -29,7 +29,7 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 
   const { className, design, styles, variables, children, horizontal, fitted } = props;
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(CardPreview.handledProps, props);
+  const unhandledProps = useUnhandledProps(CardPreview.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardPreview.displayName,
     rtl: context.rtl,

@@ -8,7 +8,7 @@ import {
 } from '../../types';
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
-import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
+import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 // @ts-ignore
@@ -70,7 +70,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
 
   const { className, design, styles, variables, children, compact, horizontal, centered } = props;
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Card.handledProps, props);
+  const unhandledProps = useUnhandledProps(Card.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: Card.displayName,
     actionHandlers: {

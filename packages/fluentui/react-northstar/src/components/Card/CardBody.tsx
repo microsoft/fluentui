@@ -2,7 +2,7 @@ import * as React from 'react';
 import { WithAsProp, withSafeTypeForAs, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
-import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
+import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -26,7 +26,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
 
   const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(CardBody.handledProps, props);
+  const unhandledProps = useUnhandledProps(CardBody.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardBody.displayName,
     rtl: context.rtl,

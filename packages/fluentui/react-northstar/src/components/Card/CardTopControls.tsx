@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -23,7 +23,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
 
   const { className, design, styles, variables, children } = props;
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(CardTopControls.handledProps, props);
+  const unhandledProps = useUnhandledProps(CardTopControls.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardTopControls.displayName,
     rtl: context.rtl,
