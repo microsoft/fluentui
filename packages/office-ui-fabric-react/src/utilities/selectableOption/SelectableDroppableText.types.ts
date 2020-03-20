@@ -5,11 +5,13 @@ import { IPanelProps } from '../../Panel';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 /**
- * TComponent - Component used for reference properties, such as componentRef
- * TListenerElement - Listener element associated with HTML event callbacks. Optional. If not provided, TComponent is assumed.
+ * - `TComponent` - Component used for reference properties, such as `componentRef`.
+ * - `TListenerElement` - Listener element associated with HTML event callbacks. Optional. If not provided,
+ *   `TComponent` is assumed.
  * {@docCategory ISelectableDroppableTextProps}
  */
-export interface ISelectableDroppableTextProps<TComponent, TListenerElement> extends React.HTMLAttributes<TListenerElement> {
+export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
+  extends React.HTMLAttributes<TListenerElement> {
   /**
    * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

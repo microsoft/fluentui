@@ -16,9 +16,9 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
         '.ms-ChoiceFieldLabel': {
           color: semanticColors.bodyText,
           fontSize: FontSizes.size12,
-          verticalAlign: 'middle'
-        }
-      }
+          verticalAlign: 'middle',
+        },
+      },
     },
     field: [
       {
@@ -26,69 +26,69 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The circle
           ':before': [
             {
-              borderColor: extendedSemanticColors.controlOutline
+              borderColor: extendedSemanticColors.controlOutline,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
-              borderColor: extendedSemanticColors.controlOutlineDisabled
+              borderColor: extendedSemanticColors.controlOutlineDisabled,
             },
             (hasIcon || hasImage) &&
               disabled &&
               checked && {
-                opacity: 1
-              }
+                opacity: 1,
+              },
           ],
           // The dot
           ':after': [
             {
-              borderColor: extendedSemanticColors.controlAccent
+              borderColor: extendedSemanticColors.controlAccent,
             },
             checked &&
               disabled && {
-                borderColor: extendedSemanticColors.controlOutlineDisabled
-              }
+                borderColor: extendedSemanticColors.controlOutlineDisabled,
+              },
           ],
           ':hover': [
             (hasIcon || hasImage) && {
-              borderColor: extendedSemanticColors.controlOutlineHovered
+              borderColor: extendedSemanticColors.controlOutlineHovered,
             },
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  color: extendedSemanticColors.controlOutlineHovered
+                  color: extendedSemanticColors.controlOutlineHovered,
                 },
                 ':before': {
-                  borderColor: extendedSemanticColors.controlOutlineHovered
-                }
-              }
-            }
-          ]
-        }
+                  borderColor: extendedSemanticColors.controlOutlineHovered,
+                },
+              },
+            },
+          ],
+        },
       },
       (hasIcon || hasImage) &&
         !disabled && {
           selectors: {
             i: {
               // discrepency: does icon highlight change color when selected?
-              color: checked ? extendedSemanticColors.controlAccent : semanticColors.bodyText
-            }
-          }
+              color: checked ? extendedSemanticColors.controlAccent : semanticColors.bodyText,
+            },
+          },
         },
       (hasIcon || hasImage) && {
         borderWidth: StyleConstants.borderWidth,
-        borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground
+        borderColor: checked ? extendedSemanticColors.controlOutline : semanticColors.bodyBackground,
       },
       disabled && {
         selectors: {
           '.ms-ChoiceFieldLabel': {
-            color: semanticColors.disabledBodyText
-          }
-        }
+            color: semanticColors.disabledBodyText,
+          },
+        },
       },
       checked &&
         disabled && {
-          borderColor: semanticColors.disabledBodyText
-        }
-    ]
+          borderColor: semanticColors.disabledBodyText,
+        },
+    ],
   };
 };

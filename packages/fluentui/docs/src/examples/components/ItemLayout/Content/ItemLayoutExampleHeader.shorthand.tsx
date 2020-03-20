@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ItemLayout } from '@fluentui/react';
+import { ItemLayout } from '@fluentui/react-northstar';
 
 const ItemLayoutExampleHeader = () => <ItemLayout header="Irving Kuhic" />;
 

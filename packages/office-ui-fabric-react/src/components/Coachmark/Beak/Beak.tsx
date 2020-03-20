@@ -71,7 +71,7 @@ export class Beak extends React.Component<IBeakProps, {}> {
       height: `${svgHeight}px`,
       width: `${svgWidth}px`,
       transform: transform,
-      color
+      color,
     });
 
     return (

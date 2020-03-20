@@ -1,10 +1,10 @@
 import { TargetRef } from './types';
 
 export const documentRef: TargetRef = {
-  current: typeof document === 'undefined' ? null : document
+  current: typeof document === 'undefined' ? null : document,
 };
 export const windowRef: TargetRef = {
-  current: typeof window === 'undefined' ? null : window
+  current: typeof window === 'undefined' ? null : window,
 };
 
 export { default as EventListener } from './EventListener';

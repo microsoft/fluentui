@@ -14,9 +14,9 @@ export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps
       color: semanticColors.bodyText,
       selectors: {
         ':hover': {
-          backgroundColor: semanticColors.listItemBackgroundHovered
-        }
-      }
+          backgroundColor: semanticColors.listItemBackgroundHovered,
+        },
+      },
     },
     itemButton: {
       border: 'none',
@@ -26,14 +26,14 @@ export const SuggestionItemStyles = (props: ISuggestionItemProps<ITagPickerProps
       selectors: {
         ':hover': {
           backgroundColor: semanticColors.listItemBackgroundHovered,
-          border: 'none'
+          border: 'none',
         },
         ':active': {
           border: 'none',
           color: semanticColors.bodyText,
-          background: semanticColors.listItemBackgroundChecked
-        }
-      }
-    }
+          background: semanticColors.listItemBackgroundChecked,
+        },
+      },
+    },
   };
 };

@@ -31,7 +31,7 @@ const useCheckboxState = (userProps: ICheckboxProps): ICheckboxState => {
   return {
     onClick: onCheckboxChange,
     isChecked,
-    rootRef
+    rootRef,
   };
 };
 
@@ -43,7 +43,7 @@ export const useCheckbox = (props: ICheckboxProps) => {
 
   const slotProps = mergeSlotProps(props, {
     root: {
-      ref: rootRef
+      ref: rootRef,
     },
     icon: {},
     input: {
@@ -51,12 +51,12 @@ export const useCheckbox = (props: ICheckboxProps) => {
       'aria-checked': isChecked,
       onClick,
       ref: rootRef,
-      role: 'checkbox'
-    }
+      role: 'checkbox',
+    },
   });
 
   return {
     slotProps,
-    state
+    state,
   };
 };

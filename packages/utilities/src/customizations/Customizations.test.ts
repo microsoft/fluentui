@@ -10,11 +10,11 @@ describe('Customizations', () => {
 
     expect(Customizations.getSettings(['a', 'b'])).toEqual({
       a: 'a',
-      b: 'b'
+      b: 'b',
     });
 
     expect(Customizations.getSettings(['a'])).toEqual({
-      a: 'a'
+      a: 'a',
     });
 
     expect(Customizations.getSettings(['z'])).toEqual({});
@@ -25,7 +25,7 @@ describe('Customizations', () => {
 
     expect(Customizations.getSettings(['a', 'b'], 'Foo')).toEqual({
       a: 'a',
-      b: 'b'
+      b: 'b',
     });
 
     expect(Customizations.getSettings(['a'], 'Bar')).toEqual({});

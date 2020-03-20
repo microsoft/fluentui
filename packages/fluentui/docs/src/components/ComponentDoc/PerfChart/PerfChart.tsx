@@ -1,6 +1,15 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { DecorativeAxis, DiscreteColorLegend, FlexibleXYPlot, HorizontalGridLines, LabelSeries, LineSeries, XAxis, YAxis } from 'react-vis';
+import {
+  DecorativeAxis,
+  DiscreteColorLegend,
+  FlexibleXYPlot,
+  HorizontalGridLines,
+  LabelSeries,
+  LineSeries,
+  XAxis,
+  YAxis,
+} from 'react-vis';
 import PerfChartTooltip from './PerfChartTooltip';
 import { PerfData } from './PerfDataContext';
 import { curveBundle } from 'd3-shape';
@@ -50,9 +59,9 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
             }
             return {
               x: sampleToXAxis(sample),
-              y
+              y,
             };
-          })
+          }),
         )}
       />
     ));
@@ -80,7 +89,7 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
         .map(sample => {
           const data = [
             { x: sampleToXAxis(sample), y: 0 },
-            { x: sampleToXAxis(sample), y: 1000 }
+            { x: sampleToXAxis(sample), y: 1000 },
           ];
           return (
             <DecorativeAxis
@@ -88,7 +97,7 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
               style={{
                 ticks: { display: 'none' },
                 text: { display: 'none' },
-                line: { stroke: tagColor }
+                line: { stroke: tagColor },
               }}
               axisStart={data[0]}
               axisEnd={data[1]}
@@ -107,11 +116,11 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
             label: sample.tag,
             style: {
               fontSize: 10,
-              fill: tagColor
+              fill: tagColor,
             },
             labelAnchorX: 'end',
             yOffset: 0,
-            xOffset: 0
+            xOffset: 0,
           }))}
       />
 
@@ -120,13 +129,13 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
           opacity: 0.5,
           stroke: maxColor,
           strokeStyle: 'dashed',
-          curve: curveBundle.beta(0.5)
+          curve: curveBundle.beta(0.5),
         })}
 
       {lineSeries('curve-median', 'actualTime.median', {
         opacity: 0.8,
         stroke: medColor,
-        strokeWidth: '2px'
+        strokeWidth: '2px',
       })}
 
       {withExtremes &&
@@ -134,13 +143,13 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
           opacity: 0.5,
           stroke: minColor,
           strokeStyle: 'dashed',
-          curve: curveBundle.beta(1)
+          curve: curveBundle.beta(1),
         })}
 
       {lineSeries('curve-tpi', 'flamegrill.extended.tpi', {
         opacity: 0.8,
         stroke: tpiColor,
-        strokeWidth: '2px'
+        strokeWidth: '2px',
       })}
 
       <LineSeries
@@ -148,7 +157,7 @@ const PerfChart: React.FC<PerfChartProps> = ({ perfData, withExtremes }) => {
         key="vertical-axis-hack"
         data={perfData.map(sample => ({
           x: sampleToXAxis(sample),
-          y: 0
+          y: 0,
         }))}
         onNearestX={(d: { x: number }) => {
           setNearestX(d.x);

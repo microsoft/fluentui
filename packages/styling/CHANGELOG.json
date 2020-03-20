@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/styling_v7.10.21",
+      "version": "7.10.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Mar 2020 12:27:24 GMT",
       "tag": "@uifabric/styling_v7.10.15",
       "version": "7.10.15",

@@ -17,7 +17,7 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -25,15 +25,18 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
     const { isTeachingBubbleVisible } = this.state;
     const exampleSecondaryButtonProps: IButtonProps = {
       children: 'Previous',
-      onClick: this._onDismiss
+      onClick: this._onDismiss,
     };
     const examplePrimaryButton: IButtonProps = {
-      children: 'Next'
+      children: 'Next',
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleMultiStepExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span
+          className="ms-TeachingBubbleMultiStepExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -49,7 +52,8 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
               footerContent="2 of 3"
               headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
         ) : null}
@@ -59,13 +63,13 @@ export class TeachingBubbleMultiStepExample extends React.Component<{}, ITeachin
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

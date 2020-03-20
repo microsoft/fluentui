@@ -23,7 +23,7 @@ export class DocumentCardLogoBase extends React.Component<IDocumentCardLogoProps
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

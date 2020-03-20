@@ -15,17 +15,17 @@ import menuItemBehavior from './menuItemBehavior';
 const submenuBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'menu'
-    }
+      role: 'menu',
+    },
   },
   focusZone: {
     props: {
       isCircularNavigation: true,
       shouldFocusOnMount: true,
-      direction: FocusZoneDirection.vertical
-    }
+      direction: FocusZoneDirection.vertical,
+    },
   },
-  childBehaviors: { item: menuItemBehavior }
+  childBehaviors: { item: menuItemBehavior },
 });
 
 export default submenuBehavior;

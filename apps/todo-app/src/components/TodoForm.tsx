@@ -50,7 +50,7 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
     initializeComponentRef(this);
     this.state = {
       inputValue: '',
-      errorMessage: ''
+      errorMessage: '',
     };
   }
 
@@ -83,23 +83,26 @@ export default class TodoForm extends React.Component<ITodoFormProps, ITodoFormS
 
     if (!this._getTitleErrorMessage(textField.value || '')) {
       this.setState({
-        inputValue: ''
+        inputValue: '',
       } as ITodoFormState);
 
       this.props.onSubmit(textField.value || '');
     } else {
       this.setState({
-        errorMessage: this._getTitleErrorMessage(this.state.inputValue)
+        errorMessage: this._getTitleErrorMessage(this.state.inputValue),
       } as ITodoFormState);
 
       textField.focus();
     }
   };
 
-  private _onTextFieldChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string | undefined): void => {
+  private _onTextFieldChange = (
+    event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string | undefined,
+  ): void => {
     this.setState({
       inputValue: newValue || '',
-      errorMessage: ''
+      errorMessage: '',
     });
   };
 

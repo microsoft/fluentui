@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Chat, ChatMessageProps, Text, Flex, Attachment, AttachmentProps } from '@fluentui/react';
+import { Chat, ChatMessageProps, Text, Flex, Attachment, AttachmentProps } from '@fluentui/react-northstar';
 import threadedMessageBehavior from './threadedMessageBehavior';
 import ThreadReplies, { ThreadReplyProps } from './ThreadReplies';
 import ThreadReplyEditor from './ThreadReplyEditor';
@@ -32,7 +32,7 @@ class ThreadedMessage extends React.Component<ThreadedMessageProps> {
             header={meeting.header}
             description={meeting.description}
             action={{
-              icon: 'more'
+              icon: 'more',
             }}
           />
         )}
@@ -53,7 +53,11 @@ class ThreadedMessage extends React.Component<ThreadedMessageProps> {
           accessibility={threadedMessageBehavior}
           content={
             <Flex column>
-              <Chat.Message className={classNames.threadedMessage.threadBody} content={this.renderContent()} actionMenu={actionMenu} />
+              <Chat.Message
+                className={classNames.threadedMessage.threadBody}
+                content={this.renderContent()}
+                actionMenu={actionMenu}
+              />
               <ThreadReplies replies={replies} />
               <ThreadReplyEditor />
             </Flex>

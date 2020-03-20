@@ -7,6 +7,6 @@ export const DetailsListAdvancedPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Variable Row Heights',
-    related
-  }
+    related,
+  },
 };

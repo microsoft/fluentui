@@ -1,7 +1,11 @@
 import * as React from 'react';
 
 import { Async, EventGroup, classNamesFunction } from '../../Utilities';
-import { IDocumentCardTitleProps, IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
+import {
+  IDocumentCardTitleProps,
+  IDocumentCardTitleStyleProps,
+  IDocumentCardTitleStyles,
+} from './DocumentCardTitle.types';
 import { IProcessedStyleSet } from '../../Styling';
 import { initializeComponentRef } from '@uifabric/utilities';
 
@@ -46,7 +50,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       truncatedTitleFirstPiece: '',
       truncatedTitleSecondPiece: '',
       previousTitle: props.title,
-      needMeasurement: !!props.shouldTruncate
+      needMeasurement: !!props.shouldTruncate,
     };
   }
 
@@ -57,7 +61,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
         truncatedTitleSecondPiece: undefined,
         clientWidth: undefined,
         previousTitle: this.props.title,
-        needMeasurement: !!this.props.shouldTruncate
+        needMeasurement: !!this.props.shouldTruncate,
       });
     }
 
@@ -89,13 +93,18 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      showAsSecondaryTitle
+      showAsSecondaryTitle,
     });
 
     let documentCardTitle;
     if (needMeasurement) {
       documentCardTitle = (
-        <div className={this._classNames.root} ref={this._measureTitleElement} title={title} style={{ whiteSpace: 'nowrap' }}>
+        <div
+          className={this._classNames.root}
+          ref={this._measureTitleElement}
+          title={title}
+          style={{ whiteSpace: 'nowrap' }}
+        >
           {title}
         </div>
       );
@@ -117,7 +126,8 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
     return documentCardTitle;
   }
 
-  // Truncate logic here way can't handle the case that chars with different widths are mixed very well, let _shrinkTitle take care of that.
+  // Truncate logic here way can't handle the case that chars with different widths are mixed very well.
+  // Let _shrinkTitle take care of that.
   private _truncateTitle = (): void => {
     if (!this.state.needMeasurement) {
       return;
@@ -135,7 +145,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       if (style.width && style.lineHeight && style.height) {
         const { clientWidth, scrollWidth } = element;
         const lines: number = Math.floor(
-          (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10)
+          (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10),
         );
 
         // Use overflow to predict truncated length.
@@ -157,7 +167,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
             truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),
             clientWidth,
-            needMeasurement: false
+            needMeasurement: false,
           });
         }
       }
@@ -181,7 +191,7 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
       ) {
         this.setState({
           truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
+          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1),
         });
       }
     }
@@ -200,9 +210,9 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
               this.setState({
                 truncatedTitleFirstPiece: undefined,
                 truncatedTitleSecondPiece: undefined,
-                needMeasurement: true
+                needMeasurement: true,
               }),
-            250
+            250,
           );
         }
       }

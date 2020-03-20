@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Async, KeyCodes, divProperties, doesElementContainFocus, getDocument, getNativeProps, on, getWindow } from '../../Utilities';
+import {
+  Async,
+  KeyCodes,
+  divProperties,
+  doesElementContainFocus,
+  getDocument,
+  getNativeProps,
+  on,
+  getWindow,
+} from '../../Utilities';
 import { IPopupProps } from './Popup.types';
 
 export interface IPopupState {
@@ -11,7 +20,7 @@ export interface IPopupState {
  */
 export class Popup extends React.Component<IPopupProps, IPopupState> {
   public static defaultProps: IPopupProps = {
-    shouldRestoreFocus: true
+    shouldRestoreFocus: true,
   };
 
   public _root = React.createRef<HTMLDivElement>();
@@ -33,7 +42,10 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
 
   public componentDidMount(): void {
     if (this._root.current) {
-      this._disposables.push(on(this._root.current, 'focus', this._onFocus, true), on(this._root.current, 'blur', this._onBlur, true));
+      this._disposables.push(
+        on(this._root.current, 'focus', this._onFocus, true),
+        on(this._root.current, 'blur', this._onBlur, true),
+      );
       const currentWindow = getWindow(this._root.current);
       if (currentWindow) {
         this._disposables.push(on(currentWindow, 'keydown', this._onKeyDown as any));
@@ -136,7 +148,7 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
     if (this.state.needsVerticalScrollBar !== needsVerticalScrollBar) {
       this.setState({
-        needsVerticalScrollBar: needsVerticalScrollBar
+        needsVerticalScrollBar: needsVerticalScrollBar,
       });
     }
   }

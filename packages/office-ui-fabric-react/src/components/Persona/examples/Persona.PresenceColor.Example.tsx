@@ -11,7 +11,7 @@ const presenceColors = {
   dnd: '#fff',
   offline: '#8A8886',
   oof: '#fff',
-  background: '#000'
+  background: '#000',
 };
 
 const examplePersona: IPersonaSharedProps = {
@@ -21,15 +21,15 @@ const examplePersona: IPersonaSharedProps = {
   secondaryText: 'Software Engineer',
   tertiaryText: 'In a meeting',
   optionalText: 'Available at 4:00pm',
-  presenceColors
+  presenceColors,
 };
 
 const rootClass = mergeStyles({
   selectors: {
     '.ms-Persona': {
-      margin: '0 20px 20px 0'
-    }
-  }
+      margin: '0 20px 20px 0',
+    },
+  },
 });
 
 export const PersonaPresenceColorExample: React.FunctionComponent = () => {

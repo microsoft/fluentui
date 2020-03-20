@@ -9,37 +9,37 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
     title: [
       fonts.xLarge,
       {
-        padding: '20px 36px 20px 28px'
+        padding: '20px 36px 20px 28px',
       },
       isLargeHeader && [
         fonts.xxLarge,
         {
-          padding: '26px 28px 28px'
-        }
-      ]
+          padding: '26px 28px 28px',
+        },
+      ],
     ],
     topButton: {
       padding: '12px 12px 0 0',
       selectors: {
         '.ms-Dialog-button': {
-          color: palette.neutralSecondary
+          color: palette.neutralSecondary,
         },
         '.ms-Dialog-button:hover': {
-          color: palette.neutralDark
-        }
-      }
+          color: palette.neutralDark,
+        },
+      },
     },
     inner: {
-      padding: isMultiline ? '0 20px 20px' : '0 28px 20px'
+      padding: isMultiline ? '0 20px 20px' : '0 28px 20px',
     },
     subText: {
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   };
 };
 
 export const DialogFooterStyles = {
   actions: {
-    margin: '20px 0 0'
-  }
+    margin: '20px 0 0',
+  },
 };

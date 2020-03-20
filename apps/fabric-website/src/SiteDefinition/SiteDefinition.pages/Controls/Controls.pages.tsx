@@ -10,10 +10,11 @@ export const ControlsPages: INavPage = {
   hasPlatformPicker: true,
   isSearchable: true,
   component: () => <LoadingComponent title="Controls" />,
-  getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage)),
+  getComponent: cb =>
+    require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage)),
   platforms: {
     web: controlsPagesWeb,
     ios: controlsPagesIos,
-    android: controlsPagesAndroid
-  }
+    android: controlsPagesAndroid,
+  },
 };

@@ -14,7 +14,7 @@ const calloutContent = (
 
 const defaultProps: ICalloutProps = {
   target: '#target',
-  calloutWidth: 200
+  calloutWidth: 200,
 };
 
 storiesOf('Callout', module)
@@ -25,7 +25,7 @@ storiesOf('Callout', module)
         width: '800px',
         height: '300px',
         display: 'flex',
-        justifyContent: 'center'
+        justifyContent: 'center',
       }}
     >
       <div id="target">Width of callout is 200 unless otherwise noted</div>
@@ -41,13 +41,13 @@ storiesOf('Callout', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () =>
     // prettier-ignore
     <Callout {...defaultProps} >
       {calloutContent}
-    </Callout>
+    </Callout>,
   )
   .addStory('Bottom auto edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.bottomAutoEdge}>
@@ -66,7 +66,7 @@ storiesOf('Callout', module)
         {calloutContent}
       </Callout>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Bottom right edge',
@@ -75,7 +75,7 @@ storiesOf('Callout', module)
         {calloutContent}
       </Callout>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Left bottom edge', () => (
     <Callout {...defaultProps} directionalHint={DirectionalHint.leftBottomEdge}>

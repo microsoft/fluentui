@@ -21,7 +21,7 @@ export type TypedBaseSelectedItemsList = BaseSelectedItemsList<ISimple, IBaseSel
 describe('SelectedItemsList', () => {
   describe('BaseSelectedItemsList', () => {
     const BaseSelectedItemsListWithType = BaseSelectedItemsList as new (
-      props: IBaseSelectedItemsListProps<ISimple>
+      props: IBaseSelectedItemsListProps<ISimple>,
     ) => BaseSelectedItemsList<ISimple, IBaseSelectedItemsListProps<ISimple>>;
 
     it('renders BaseSelectedItemsList correctly', () => {
@@ -43,11 +43,11 @@ describe('SelectedItemsList', () => {
           onRenderItem={basicItemRenderer}
           selectedItems={[
             { key: '1', name: 'a' },
-            { key: '2', name: 'b' }
+            { key: '2', name: 'b' },
           ]}
           onChange={onChange}
         />,
-        root
+        root,
       ) as unknown) as TypedBaseSelectedItemsList;
 
       expect(itemsList.items.length).toEqual(2);
@@ -58,12 +58,12 @@ describe('SelectedItemsList', () => {
       const root = document.createElement('div');
       const itemsList: TypedBaseSelectedItemsList = (ReactDOM.render(
         <BaseSelectedItemsListWithType onRenderItem={basicItemRenderer} />,
-        root
+        root,
       ) as unknown) as TypedBaseSelectedItemsList;
 
       const items: ISimple[] = [
         { key: '1', name: 'a' },
-        { key: '2', name: 'b' }
+        { key: '2', name: 'b' },
       ];
       itemsList.addItems(items);
 

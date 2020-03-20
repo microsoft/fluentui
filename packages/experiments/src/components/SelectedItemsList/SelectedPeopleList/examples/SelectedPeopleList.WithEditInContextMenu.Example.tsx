@@ -13,7 +13,7 @@ import {
   EditableItem,
   DefaultEditingItem,
   EditingItemInnerFloatingPickerProps,
-  copyToClipboard
+  copyToClipboard,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
@@ -23,7 +23,10 @@ export interface IPeopleSelectedItemsListExampleState {
   controlledComponent: boolean;
 }
 
-export class SelectedPeopleListWithEditInContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
+export class SelectedPeopleListWithEditInContextMenuExample extends React.Component<
+  {},
+  IPeopleSelectedItemsListExampleState
+> {
   private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
@@ -43,7 +46,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
           suggestionsStore={this.suggestionsStore}
           onResolveSuggestions={this.model.resolveSuggestions}
         />
-      )
+      ),
     }),
     itemComponent: ItemWithContextMenu({
       menuItems: (item, onTrigger) => [
@@ -52,21 +55,21 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
           text: 'Remove',
           onClick: () => {
             this._selectionList.removeItems([item]);
-          }
+          },
         },
         {
           key: 'copy',
           text: 'Copy',
-          onClick: () => copyToClipboard(this._getCopyItemsText([item]))
+          onClick: () => copyToClipboard(this._getCopyItemsText([item])),
         },
         {
           key: 'edit',
           text: 'Edit',
-          onClick: () => onTrigger && onTrigger()
-        }
+          onClick: () => onTrigger && onTrigger(),
+        },
       ],
-      itemComponent: TriggerOnContextMenu(SelectedPersona)
-    })
+      itemComponent: TriggerOnContextMenu(SelectedPersona),
+    }),
   });
 
   public render(): JSX.Element {

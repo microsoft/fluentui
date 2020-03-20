@@ -6,12 +6,12 @@ import { SliderBase } from './Slider.base';
 
 export default {
   component: 'Slider',
-  title: 'Slider'
+  title: 'Slider',
 };
 
 const defaultColorRamp = {
   values: [],
-  index: -1
+  index: -1,
 };
 
 const fluentLight: ITheme = createTheme({
@@ -27,43 +27,43 @@ const fluentLight: ITheme = createTheme({
     success: defaultColorRamp,
     warning: defaultColorRamp,
     danger: defaultColorRamp,
-    text: defaultColorRamp
+    text: defaultColorRamp,
   },
   components: {},
   icons: {},
   radius: {
     base: 0,
     scale: 0,
-    unit: 'px'
+    unit: 'px',
   },
   fonts: {
     default: '',
     userContent: '',
-    mono: ''
+    mono: '',
   },
   fontSizes: {
     base: 0,
     scale: 0,
-    unit: 'px'
+    unit: 'px',
   },
   animations: {
     fadeIn: {},
-    fadeOut: {}
+    fadeOut: {},
   },
   spacing: {
     base: 0,
     scale: 0,
-    unit: 'px'
+    unit: 'px',
   },
 
   schemes: {
     header: {
       colors: {
         background: 'black',
-        bodyText: 'white'
-      }
-    }
-  }
+        bodyText: 'white',
+      },
+    },
+  },
 });
 
 const teamsLight: ITheme = createTheme(fluentLight, {
@@ -80,10 +80,10 @@ const teamsLight: ITheme = createTheme(fluentLight, {
         thumbSize: '0.7143rem',
         thumbBorderWidth: 0,
         thumbColor: 'rgb(96, 94, 92)',
-        thumbSizePressed: '1rem'
-      } as ISliderTokens
-    }
-  }
+        thumbSizePressed: '1rem',
+      } as ISliderTokens,
+    },
+  },
 });
 
 const Wrapper = (p: React.HTMLAttributes<any>) => <ThemeProvider theme={fluentLight} {...p} />;

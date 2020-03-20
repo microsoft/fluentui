@@ -10,9 +10,9 @@ export const DocumentCardStyles = (props: IDocumentCardStyleProps): Partial<IDoc
       borderColor: semanticColors.controlOutline,
       selectors: {
         '&:hover': {
-          borderColor: semanticColors.controlOutlineHovered
-        }
-      }
-    }
+          borderColor: semanticColors.controlOutlineHovered,
+        },
+      },
+    },
   };
 };

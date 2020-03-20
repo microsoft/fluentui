@@ -12,7 +12,9 @@ export type CopyableItemProps<T> = {
 };
 
 // `extends any` to trick the parser into parsing as a type decl instead of a jsx tag
-export const CopyableItem = <T extends any>(copyableItemProps: CopyableItemProps<T>): CopyableItemWrappedComponent<T> => {
+export const CopyableItem = <T extends any>(
+  copyableItemProps: CopyableItemProps<T>,
+): CopyableItemWrappedComponent<T> => {
   return React.memo((selectedItemProps: ISelectedItemProps<T>) => {
     const onCopy = React.useCallback(
       item => {
@@ -34,7 +36,7 @@ export const CopyableItem = <T extends any>(copyableItemProps: CopyableItemProps
           document.body.removeChild(copyInput);
         }
       },
-      [copyableItemProps.getCopyItemText]
+      [copyableItemProps.getCopyItemText],
     );
 
     const ItemComponent = copyableItemProps.itemComponent;

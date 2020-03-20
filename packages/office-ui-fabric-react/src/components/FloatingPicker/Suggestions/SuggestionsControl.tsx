@@ -6,7 +6,7 @@ import {
   ISuggestionsHeaderFooterItemProps,
   ISuggestionsControlProps,
   ISuggestionsCoreProps,
-  ISuggestionsHeaderFooterProps
+  ISuggestionsHeaderFooterProps,
 } from './Suggestions.types';
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
@@ -18,7 +18,7 @@ const styles: any = stylesImport;
 export enum SuggestionItemType {
   header,
   suggestion,
-  footer
+  footer,
 }
 
 export interface ISuggestionsControlState<T> {
@@ -41,7 +41,7 @@ export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHea
         id={id}
         onClick={onExecute}
         className={css('ms-Suggestions-sectionButton', className, styles.actionButton, {
-          ['is-selected ' + styles.buttonSelected]: isSelected
+          ['is-selected ' + styles.buttonSelected]: isSelected,
         })}
       >
         {renderItem()}
@@ -62,9 +62,9 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
   protected _searchForMoreButton: IButton;
   protected _selectedElement = React.createRef<HTMLDivElement>();
   protected _suggestions = React.createRef<SuggestionsCore<T>>();
-  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> = SuggestionsCore as new (
-    props: ISuggestionsCoreProps<T>
-  ) => SuggestionsCore<T>;
+  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<
+    T
+  > = SuggestionsCore as new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
@@ -73,7 +73,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     this.state = {
       selectedHeaderIndex: -1,
       selectedFooterIndex: -1,
-      suggestions: suggestionsProps.suggestions
+      suggestions: suggestionsProps.suggestions,
     };
   }
 
@@ -171,7 +171,11 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     const { selectedHeaderIndex, selectedFooterIndex } = this.state;
     let isKeyDownHandled = false;
     if (keyCode === KeyCodes.down) {
-      if (selectedHeaderIndex === -1 && !this._suggestions.current?.hasSuggestionSelected() && selectedFooterIndex === -1) {
+      if (
+        selectedHeaderIndex === -1 &&
+        !this._suggestions.current?.hasSuggestionSelected() &&
+        selectedFooterIndex === -1
+      ) {
         this.selectFirstItem();
       } else if (selectedHeaderIndex !== -1) {
         this.selectNextItem(SuggestionItemType.header);
@@ -184,7 +188,11 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
         isKeyDownHandled = true;
       }
     } else if (keyCode === KeyCodes.up) {
-      if (selectedHeaderIndex === -1 && !this._suggestions.current?.hasSuggestionSelected() && selectedFooterIndex === -1) {
+      if (
+        selectedHeaderIndex === -1 &&
+        !this._suggestions.current?.hasSuggestionSelected() &&
+        selectedFooterIndex === -1
+      ) {
         this.selectLastItem();
       } else if (selectedHeaderIndex !== -1) {
         this.selectPreviousItem(SuggestionItemType.header);
@@ -306,7 +314,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // If this is the original item type, use the current index
     const selectionChanged = this._selectNextItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined,
     );
 
     // If the selection did not change, try to select from the next suggestion type group
@@ -332,7 +340,7 @@ export class SuggestionsControl<T> extends React.Component<ISuggestionsControlPr
     // Try to set the selection to the previous selectable item, of the same suggestion item type group
     const selectionChanged = this._selectPreviousItemOfItemType(
       itemType,
-      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined
+      startedItemType === itemType ? this._getCurrentIndexForType(itemType) : undefined,
     );
 
     // If the selection did not change, try to select from the previous suggestion type group

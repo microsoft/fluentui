@@ -7,6 +7,6 @@ export const DetailsListCustomGroupHeadersPageProps: TFabricPlatformPageProps = 
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Custom Group Headers',
-    related
-  }
+    related,
+  },
 };

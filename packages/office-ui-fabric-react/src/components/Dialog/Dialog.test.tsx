@@ -28,7 +28,7 @@ describe('Dialog', () => {
             <span>I am span 2</span>
           </div>
         }
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -43,9 +43,9 @@ describe('Dialog', () => {
         titleProps={{
           className: 'title_class',
           'aria-level': 3,
-          title: 'tooltip'
+          title: 'tooltip',
         }}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -103,15 +103,15 @@ describe('Dialog', () => {
         modalProps={{
           onDismissed: () => {
             /* no-op */
-          }
+          },
         }}
         dialogContentProps={{
           type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext',
-          titleProps: { 'aria-level': 3 }
+          titleProps: { 'aria-level': 3 },
         }}
-      />
+      />,
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
@@ -134,14 +134,14 @@ describe('Dialog', () => {
           onDismissed: () => {
             /* no-op */
           },
-          subtitleAriaId: subTextAriaId
+          subtitleAriaId: subTextAriaId,
         }}
         dialogContentProps={{
           type: DialogType.normal,
           title: 'sample title',
-          subText: 'Sample subtext'
+          subText: 'Sample subtext',
         }}
-      />
+      />,
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
@@ -160,14 +160,14 @@ describe('Dialog', () => {
           onDismissed: () => {
             /* no-op */
           },
-          titleAriaId: titleAriaId
+          titleAriaId: titleAriaId,
         }}
         dialogContentProps={{
           type: DialogType.normal,
           title: 'sample title',
-          subText: 'Sample subtext'
+          subText: 'Sample subtext',
         }}
-      />
+      />,
     );
 
     const dialogHTML = document.querySelector('[role="dialog"]');
@@ -195,9 +195,9 @@ describe('Dialog', () => {
           dialogContentProps={{
             titleId,
             type: DialogType.normal,
-            title: 'sample title'
+            title: 'sample title',
           }}
-        />
+        />,
       );
 
       const dialogTitle = document.getElementById(titleId);
@@ -214,9 +214,9 @@ describe('Dialog', () => {
             titleId,
             type: DialogType.normal,
             title: 'sample title',
-            titleProps: { id: undefined }
+            titleProps: { id: undefined },
           }}
-        />
+        />,
       );
 
       const dialogTitle = document.getElementById(titleId);
@@ -233,9 +233,9 @@ describe('Dialog', () => {
             titleId: `${titleId}_deprecated`,
             type: DialogType.normal,
             title: 'sample title',
-            titleProps: { id: titleId }
+            titleProps: { id: titleId },
           }}
-        />
+        />,
       );
 
       const dialogTitle = document.getElementById(titleId);

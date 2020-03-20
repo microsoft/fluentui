@@ -8,7 +8,7 @@ import {
   IDocumentCardPreviewImage,
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
-  IDocumentCardPreviewStyles
+  IDocumentCardPreviewStyles,
 } from './DocumentCardPreview.types';
 
 const LIST_ITEM_COUNT = 3;
@@ -34,7 +34,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isFileList
+      isFileList,
     });
 
     if (previewImages.length > 1) {
@@ -48,7 +48,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
       // tslint:disable:deprecation
       if (previewImages[0].accentColor) {
         style = {
-          borderBottomColor: previewImages[0].accentColor
+          borderBottomColor: previewImages[0].accentColor,
         };
       }
       // tslint:enable:deprecation
@@ -61,18 +61,32 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
     );
   }
 
-  private _renderPreviewImage(previewImage: IDocumentCardPreviewImage): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
+  private _renderPreviewImage(
+    previewImage: IDocumentCardPreviewImage,
+  ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     const { width, height, imageFit, previewIconProps, previewIconContainerClass } = previewImage;
 
     if (previewIconProps) {
       return (
-        <div className={css(this._classNames.previewIcon, previewIconContainerClass)} style={{ width: width, height: height }}>
+        <div
+          className={css(this._classNames.previewIcon, previewIconContainerClass)}
+          style={{ width: width, height: height }}
+        >
           <Icon {...previewIconProps} />
         </div>
       );
     }
 
-    const image = <Image width={width} height={height} imageFit={imageFit} src={previewImage.previewImageSrc} role="presentation" alt="" />;
+    const image = (
+      <Image
+        width={width}
+        height={height}
+        imageFit={imageFit}
+        src={previewImage.previewImageSrc}
+        role="presentation"
+        alt=""
+      />
+    );
 
     let icon;
     if (previewImage.iconSrc) {
@@ -87,7 +101,9 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
     );
   }
 
-  private _renderPreviewList = (previewImages: IDocumentCardPreviewImage[]): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> => {
+  private _renderPreviewList = (
+    previewImages: IDocumentCardPreviewImage[],
+  ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> => {
     const { getOverflowDocumentCountText } = this.props;
 
     // Determine how many documents we won't be showing
@@ -103,7 +119,14 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
     // Create list items for the documents to be shown
     const fileListItems = previewImages.slice(0, LIST_ITEM_COUNT).map((file, fileIndex) => (
       <li key={fileIndex}>
-        <Image className={this._classNames.fileListIcon} src={file.iconSrc} role="presentation" alt="" width="16px" height="16px" />
+        <Image
+          className={this._classNames.fileListIcon}
+          src={file.iconSrc}
+          role="presentation"
+          alt=""
+          width="16px"
+          height="16px"
+        />
         <Link
           className={this._classNames.fileListLink}
           // tslint:disable-next-line:deprecation

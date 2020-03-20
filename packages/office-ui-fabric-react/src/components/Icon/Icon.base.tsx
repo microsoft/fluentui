@@ -11,22 +11,23 @@ export interface IIconState {
 }
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
-  disableCaching: true
+  disableCaching: true,
 });
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
-      imageLoadError: false
+      imageLoadError: false,
     };
   }
 
   public render() {
     const { className, styles, iconName, imageErrorAs, theme } = this.props;
     const isPlaceholder = typeof iconName === 'string' && iconName.length === 0;
-    // tslint:disable-next-line:deprecation
-    const isImage = !!this.props.imageProps || this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
+    const isImage =
+      // tslint:disable-next-line:deprecation
+      !!this.props.imageProps || this.props.iconType === IconType.image || this.props.iconType === IconType.Image;
     const iconContent = getIconContent(iconName) || {};
     const { iconClassName, children } = iconContent;
 
@@ -35,15 +36,17 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
       className,
       iconClassName,
       isImage,
-      isPlaceholder
+      isPlaceholder,
     });
 
     const RootType = isImage ? 'span' : 'i';
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['aria-label']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
+      'aria-label',
+    ]);
     const { imageLoadError } = this.state;
     const imageProps: IImageProps = {
       ...this.props.imageProps,
-      onLoadingStateChange: this.onImageLoadingStateChange
+      onLoadingStateChange: this.onImageLoadingStateChange,
     };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
@@ -51,10 +54,10 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     const ariaLabel = this.props['aria-label'] || this.props.ariaLabel;
     const containerProps = ariaLabel
       ? {
-          'aria-label': ariaLabel
+          'aria-label': ariaLabel,
         }
       : {
-          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true
+          'aria-hidden': this.props['aria-labelledby'] || imageProps['aria-labelledby'] ? false : true,
         };
 
     return (

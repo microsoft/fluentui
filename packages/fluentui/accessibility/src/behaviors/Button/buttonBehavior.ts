@@ -16,8 +16,8 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
         role: props.as === 'button' ? undefined : 'button',
         tabIndex: props.as === 'button' ? undefined : 0,
         disabled: props.disabled && !props.loading ? (props.as === 'button' ? true : undefined) : undefined,
-        'aria-disabled': props.disabled || props.loading
-      }
+        'aria-disabled': props.disabled || props.loading,
+      },
     },
 
     keyActions: {
@@ -25,11 +25,11 @@ const buttonBehavior: Accessibility<ButtonBehaviorProps> = props => {
         ...(props.as !== 'button' &&
           props.as !== 'a' && {
             performClick: {
-              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-            }
-          })
-      }
-    }
+              keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+            },
+          }),
+      },
+    },
   };
 
   if (process.env.NODE_ENV !== 'production' && props.loading) {

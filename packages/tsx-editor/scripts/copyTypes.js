@@ -42,6 +42,6 @@ module.exports = function copyTypes() {
     // Copy these to a subfolder of dist so we can load them with require.context() even if
     // devServer.writeToDisk=true in the webpack config (the webpack output is also written to dist,
     // so doing require.context() on the root of dist causes an infinite loop in watch mode))
-    dest: path.join(process.cwd(), 'dist/types')
+    dest: path.join(process.cwd(), 'dist/types'),
   });
 };

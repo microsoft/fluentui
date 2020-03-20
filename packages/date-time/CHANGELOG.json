@@ -2,6 +2,20 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/date-time_v7.8.43",
+      "version": "7.8.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Mar 2020 12:28:58 GMT",
       "tag": "@uifabric/date-time_v7.8.41",
       "version": "7.8.41",

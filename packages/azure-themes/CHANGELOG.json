@@ -2,6 +2,34 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.48",
+      "version": "7.0.48",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Mar 2020 12:24:00 GMT",
+      "tag": "@uifabric/azure-themes_v7.0.47",
+      "version": "7.0.47",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Azure theme: Adding storybook `yarn start` workflow for helping to design and debug the Azure themes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "24376ffa07222f4f35d3a5ec17f84f126b06af6f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 11 Feb 2020 18:37:59 GMT",
       "tag": "@uifabric/azure-themes_v7.0.25",
       "version": "7.0.25",

@@ -30,39 +30,39 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
         role: 'treeitem',
         'aria-setsize': props.treeSize,
         'aria-posinset': props.index,
-        'aria-level': props.level
-      })
-    }
+        'aria-level': props.level,
+      }),
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
       },
       ...(isSubtreeExpanded(props) && {
         collapse: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         },
         focusFirstChild: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
-        }
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+        },
       }),
       ...(!isSubtreeExpanded(props) && {
         expand: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
         },
         focusParent: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
-        }
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+        },
       }),
       expandSiblings: {
-        keyCombinations: [{ keyCode: keyboardKey['*'] }]
-      }
-    }
+        keyCombinations: [{ keyCode: keyboardKey['*'] }],
+      },
+    },
   },
   childBehaviors: {
-    title: treeTitleBehavior
-  }
+    title: treeTitleBehavior,
+  },
 });
 
 export type TreeItemBehaviorProps = {

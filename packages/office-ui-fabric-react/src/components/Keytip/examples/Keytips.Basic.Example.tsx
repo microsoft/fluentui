@@ -16,18 +16,25 @@ export class KeytipsBasicExample extends React.Component<{}> {
   private _sampleOptions = [
     { key: 'A', text: 'Option 1' },
     { key: 'B', text: 'Option 2' },
-    { key: 'C', text: 'Option 3' }
+    { key: 'C', text: 'Option 3' },
   ];
 
   /* tslint:disable:jsx-no-lambda */
   public render(): JSX.Element {
     return (
       <div>
-        <p>For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content are shown.</p>
+        <p>
+          For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its
+          content are shown.
+        </p>
         <Pivot>
           <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
             <Stack tokens={stackTokens}>
-              <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={{ root: { maxWidth: 200 } }} />
+              <SpinButton
+                label="Spin Button"
+                keytipProps={keytipMap.SpinButtonKeytip}
+                styles={{ root: { maxWidth: 200 } }}
+              />
               <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
               <span>
                 Go to{' '}

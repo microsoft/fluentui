@@ -23,7 +23,7 @@ describe('ColorSlider', () => {
       right: 100,
       bottom: 18,
       width: 100,
-      height: 18
+      height: 18,
     } as DOMRect);
 
   afterEach(() => {
@@ -45,7 +45,14 @@ describe('ColorSlider', () => {
 
   it('renders alpha slider correctly', () => {
     component = renderer.create(
-      <ColorSlider isAlpha value={30} overlayColor="#ff0000" minValue={0} maxValue={MAX_COLOR_ALPHA} ariaLabel="Alpha" />
+      <ColorSlider
+        isAlpha
+        value={30}
+        overlayColor="#ff0000"
+        minValue={0}
+        maxValue={MAX_COLOR_ALPHA}
+        ariaLabel="Alpha"
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -88,7 +95,9 @@ describe('ColorSlider', () => {
     const onChange = jest.fn((ev: any, newValue?: number) => {
       value = newValue;
     });
-    wrapper = mount(<ColorSlider value={100} maxValue={MAX_COLOR_HUE} onChange={onChange} componentRef={colorSliderRef} />);
+    wrapper = mount(
+      <ColorSlider value={100} maxValue={MAX_COLOR_HUE} onChange={onChange} componentRef={colorSliderRef} />,
+    );
 
     wrapper.simulate('keydown', { which: KeyCodes.left });
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -117,7 +126,9 @@ describe('ColorSlider', () => {
       value = newValue;
       ev.preventDefault();
     });
-    wrapper = mount(<ColorSlider value={100} maxValue={MAX_COLOR_HUE} onChange={onChange} componentRef={colorSliderRef} />);
+    wrapper = mount(
+      <ColorSlider value={100} maxValue={MAX_COLOR_HUE} onChange={onChange} componentRef={colorSliderRef} />,
+    );
 
     wrapper.simulate('keydown', { which: KeyCodes.left });
     expect(onChange).toHaveBeenCalledTimes(1);
@@ -146,7 +157,9 @@ describe('ColorSlider', () => {
 
   it('handles mouse events out of range', () => {
     const onChange = jest.fn();
-    wrapper = mount(<ColorSlider value={0} maxValue={MAX_COLOR_HUE} onChange={onChange} componentRef={colorSliderRef} />);
+    wrapper = mount(
+      <ColorSlider value={0} maxValue={MAX_COLOR_HUE} onChange={onChange} componentRef={colorSliderRef} />,
+    );
     wrapper.getDOMNode().getBoundingClientRect = getBoundingClientRect;
 
     wrapper.simulate('mousedown', { type: 'mousedown', clientX: 100, clientY: 0 });

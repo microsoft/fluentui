@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
+This log was last generated on Thu, 19 Mar 2020 12:29:37 GMT and should not be manually modified.
 
+## 0.141.6
+Thu, 19 Mar 2020 12:29:37 GMT
+
+### Patches
+
+- fixed accessiblity for the  statcked and multistacked bar chart by adding id for each callout and setting aria-labelledby accordingly (v-sivsar@microsoft.com)
 ## 0.141.1
 Thu, 12 Mar 2020 12:35:00 GMT
 

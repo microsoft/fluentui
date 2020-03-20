@@ -5,7 +5,9 @@ interface IRenderFunctionComposer {
   <TProps>(outer: IRenderFunction<TProps>): (inner: IRenderFunction<TProps>) => IRenderFunction<TProps>;
 }
 
-function createComposedRenderFunction<TProps>(outer: IRenderFunction<TProps>): (inner: IRenderFunction<TProps>) => IRenderFunction<TProps> {
+function createComposedRenderFunction<TProps>(
+  outer: IRenderFunction<TProps>,
+): (inner: IRenderFunction<TProps>) => IRenderFunction<TProps> {
   const outerMemoizer = createMemoizer((inner: IRenderFunction<TProps>) => {
     const innerMemoizer = createMemoizer((defaultRender: IRenderFunction<TProps>) => {
       return (innerProps?: TProps) => {
@@ -29,6 +31,9 @@ const memoizer = createMemoizer<IRenderFunctionComposer>(createComposedRenderFun
  * is then passed the original 'default render' prop.
  * @public
  */
-export function composeRenderFunction<TProps>(outer: IRenderFunction<TProps>, inner: IRenderFunction<TProps>): IRenderFunction<TProps> {
+export function composeRenderFunction<TProps>(
+  outer: IRenderFunction<TProps>,
+  inner: IRenderFunction<TProps>,
+): IRenderFunction<TProps> {
   return memoizer(outer)(inner);
 }

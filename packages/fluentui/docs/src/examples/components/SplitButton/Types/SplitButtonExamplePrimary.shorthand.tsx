@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { SplitButton } from '@fluentui/react';
+import { SplitButton } from '@fluentui/react-northstar';
 
 const SplitButtonExamplePrimaryShorthand = () => (
   <>
     <SplitButton
       menu={[
         { key: 'group', content: 'New group message' },
-        { key: 'channel', content: 'New channel message' }
+        { key: 'channel', content: 'New channel message' },
       ]}
       button={{
         content: 'New conversation',
         'aria-roledescription': 'splitbutton',
-        'aria-describedby': 'instruction-message-primary-button'
+        'aria-describedby': 'instruction-message-primary-button',
       }}
       primary
       toggleButton={{ 'aria-label': 'more options' }}

@@ -4,7 +4,7 @@ import {
   ComponentVariablesObject,
   mergeComponentVariables,
   ThemePrepared,
-  withDebugId
+  withDebugId,
 } from '@fluentui/styles';
 
 const variablesCache = new WeakMap<ThemePrepared, Record<string, ComponentVariablesObject>>();
@@ -13,7 +13,7 @@ const resolveVariables = (
   displayNames: string[],
   theme: ThemePrepared,
   variables: ComponentVariablesInput | undefined,
-  enabledVariablesCaching: boolean | undefined
+  enabledVariablesCaching: boolean | undefined,
 ): ComponentVariablesObject => {
   let componentThemeVariables: ComponentVariablesObject;
 
@@ -38,7 +38,7 @@ const resolveVariables = (
 
     if (!variablesThemeCache[handlingDisplayName]) {
       variablesThemeCache[handlingDisplayName] = mergeComponentVariables(
-        ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName])
+        ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
       )(theme.siteVariables);
       variablesCache.set(theme, variablesThemeCache);
     }
@@ -47,16 +47,19 @@ const resolveVariables = (
   } else if (effectiveDisplayNames.length === 1) {
     componentThemeVariables = callable(theme.componentVariables[effectiveDisplayNames[0]])(theme.siteVariables) || {};
   } else {
-    componentThemeVariables = mergeComponentVariables(...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]))(
-      theme.siteVariables
-    );
+    componentThemeVariables = mergeComponentVariables(
+      ...effectiveDisplayNames.map(displayName => theme.componentVariables[displayName]),
+    )(theme.siteVariables);
   }
 
   if (variables === undefined) {
     return componentThemeVariables;
   }
 
-  return mergeComponentVariables(componentThemeVariables, withDebugId(variables, 'props.variables'))(theme.siteVariables);
+  return mergeComponentVariables(
+    componentThemeVariables,
+    withDebugId(variables, 'props.variables'),
+  )(theme.siteVariables);
 };
 
 export default resolveVariables;

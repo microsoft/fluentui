@@ -31,7 +31,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
           'ms-PickerPersona-container',
           styles.personaContainer,
           { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-          { ['is-invalid ' + styles.validationError]: !item.isValid }
+          { ['is-invalid ' + styles.validationError]: !item.isValid },
         )}
         data-is-focusable={true}
         data-is-sub-focuszone={true}
@@ -67,7 +67,9 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     );
   }
 
-  private _onClickIconButton(action: (() => void) | undefined): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
+  private _onClickIconButton(
+    action: (() => void) | undefined,
+  ): (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => void {
     return (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement>): void => {
       ev.stopPropagation();
       ev.preventDefault();

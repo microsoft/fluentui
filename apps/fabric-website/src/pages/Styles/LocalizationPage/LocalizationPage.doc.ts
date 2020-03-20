@@ -9,6 +9,6 @@ export const LocalizationPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     related,
-    componentUrl
-  }
+    componentUrl,
+  },
 };

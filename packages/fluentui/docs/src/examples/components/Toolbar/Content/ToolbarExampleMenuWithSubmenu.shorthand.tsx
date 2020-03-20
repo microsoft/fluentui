@@ -1,6 +1,6 @@
 import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ToolbarExampleMenuWithSubmenuShorthand = () => {
@@ -9,7 +9,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
   const onMenuOpenChange = useLogKnob(
     'onMenuOpenChange',
     (e, { menuOpen }) => setMenuOpen(menuOpen),
-    createCallbackLogFormatter(['menuOpen'])
+    createCallbackLogFormatter(['menuOpen']),
   );
 
   return (
@@ -25,16 +25,16 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
               content: 'Play',
               icon: 'play',
               menu: {
-                items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }]
-              }
+                items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }],
+              },
             },
             { key: 'pause', content: 'Pause', icon: 'pause' },
             { key: 'divider', kind: 'divider' },
-            'Without icon'
+            'Without icon',
           ],
           menuOpen,
-          onMenuOpenChange
-        }
+          onMenuOpenChange,
+        },
       ]}
     />
   );

@@ -9,14 +9,14 @@ const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardSty
 const customPreviewStyling = mergeStyles({
   height: 60,
   width: '100%',
-  objectFit: 'contain'
+  objectFit: 'contain',
 });
 
 const imageStyling = mergeStyles({
   maxWidth: '100%',
   height: '100%',
   overflow: 'hidden',
-  objectFit: 'contain'
+  objectFit: 'contain',
 });
 
 export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {

@@ -11,5 +11,7 @@ export const StylesAreaPageBase: React.FunctionComponent<IStylesPageProps> = pro
 };
 
 export const StylesAreaPage: React.FunctionComponent<IStylesPageProps> = (props: IStylesPageProps) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <StylesAreaPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <StylesAreaPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

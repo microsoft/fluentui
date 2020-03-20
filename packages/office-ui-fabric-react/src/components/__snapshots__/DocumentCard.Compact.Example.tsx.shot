@@ -1391,8 +1391,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
     </div>
   </div>
   <div
-    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference.
-          Sent by Christian Bergqvist a few minutes ago"
+    aria-label="Document Card with email conversation. Conversation about takeaways from annual SharePoint conference. Sent by Christian Bergqvist a few minutes ago"
     className=
         ms-DocumentCard
         ms-DocumentCard--actionable

@@ -66,14 +66,16 @@ export class KeytipManager {
     // Create a unique keytip
     const uniqueKeytip: IUniqueKeytip = this._getUniqueKtp(props);
     // Add to dictionary
-    persisted ? (this.persistedKeytips[uniqueKeytip.uniqueID] = uniqueKeytip) : (this.keytips[uniqueKeytip.uniqueID] = uniqueKeytip);
+    persisted
+      ? (this.persistedKeytips[uniqueKeytip.uniqueID] = uniqueKeytip)
+      : (this.keytips[uniqueKeytip.uniqueID] = uniqueKeytip);
 
     // We only want to add something new if we are currently showing keytip mode
     if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
       const event = persisted ? KeytipEvents.PERSISTED_KEYTIP_ADDED : KeytipEvents.KEYTIP_ADDED;
       EventGroup.raise(this, event, {
         keytip: props,
-        uniqueID: uniqueKeytip.uniqueID
+        uniqueID: uniqueKeytip.uniqueID,
       });
     }
 
@@ -104,7 +106,7 @@ export class KeytipManager {
       if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
         EventGroup.raise(this, KeytipEvents.KEYTIP_UPDATED, {
           keytip: uniqueKeytip.keytip,
-          uniqueID: uniqueKeytip.uniqueID
+          uniqueID: uniqueKeytip.uniqueID,
         });
       }
     }
@@ -126,7 +128,7 @@ export class KeytipManager {
     if (this.inKeytipMode || !this.delayUpdatingKeytipChange) {
       EventGroup.raise(this, event, {
         keytip: keytipToRemove,
-        uniqueID: uniqueID
+        uniqueID: uniqueID,
       });
     }
   }
@@ -168,7 +170,7 @@ export class KeytipManager {
       if (parentKeytip && parentKeytip.overflowSetSequence) {
         return {
           ...keytipProps,
-          overflowSetSequence: parentKeytip.overflowSetSequence
+          overflowSetSequence: parentKeytip.overflowSetSequence,
         };
       }
     }
@@ -184,7 +186,7 @@ export class KeytipManager {
   public menuExecute(overflowButtonSequences: string[], keytipSequences: string[]) {
     EventGroup.raise(this, KeytipEvents.PERSISTED_KEYTIP_EXECUTE, {
       overflowButtonSequences,
-      keytipSequences
+      keytipSequences,
     });
   }
 

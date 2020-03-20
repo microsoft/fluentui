@@ -1,4 +1,4 @@
-import * as FluentUI from '@fluentui/react';
+import * as FluentUI from '@fluentui/react-northstar';
 
 import { KnobDefinition, KnobGeneratorOptions, KnobGenerator } from '../../types';
 import * as componentGenerators from './componentGenerators';
@@ -20,7 +20,7 @@ const propsBlacklist: (string | RegExp)[] = [
   // Any styles props can't be supported in obvious way
   'className',
   'styles',
-  'variables'
+  'variables',
 ];
 
 const isBlacklistedProp = (propName: string): boolean =>
@@ -40,7 +40,9 @@ const createHookGenerator = (options: KnobGeneratorOptions): null | KnobDefiniti
 
   if (process.env.NODE_ENV !== 'production') {
     if (!Component) {
-      throw new Error(`Cannot find an export for "${componentInfo.displayName}", please check that it is exported from "@fluentui/react"`);
+      throw new Error(
+        `Cannot find an export for "${componentInfo.displayName}", please check that it is exported from "@fluentui/react-northstar"`,
+      );
     }
   }
 
@@ -53,7 +55,7 @@ const createHookGenerator = (options: KnobGeneratorOptions): null | KnobDefiniti
   const propGenerator: KnobGenerator<any> = _.get(
     componentGenerators,
     [componentInfo.displayName, propDef.name],
-    propGenerators[propDef.name]
+    propGenerators[propDef.name],
   );
 
   if (propGenerator) {

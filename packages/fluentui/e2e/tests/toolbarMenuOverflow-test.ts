@@ -2,7 +2,8 @@ import { selectors, itemsCount } from './toolbarMenuOverflow-example';
 
 const toolbarItem = (index: number) => `.${selectors.toolbarItem}:nth-child(${index + 1})`;
 const toolbarItemButton = (index: number) => `#${selectors.itemButtonId}-${index}`;
-const toolbarItemWrapped = (index: number) => `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
+const toolbarItemWrapped = (index: number) =>
+  `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
 const toolbar = `.${selectors.toolbar}`;
 const menuTrigger = `#${selectors.menuTrigger}`;
 const toolbarMenu = `.${selectors.toolbarMenu}`;

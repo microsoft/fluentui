@@ -35,5 +35,5 @@ export interface IStickyProps extends React.Props<Sticky> {
 export enum StickyPositionType {
   Both = 0,
   Header = 1,
-  Footer = 2
+  Footer = 2,
 }

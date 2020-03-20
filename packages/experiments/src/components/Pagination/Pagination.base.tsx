@@ -11,7 +11,7 @@ const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyle
 
 const DEFAULT_STRINGS: IPaginationString = {
   of: 'of',
-  divider: '-'
+  divider: '-',
 };
 
 export class PaginationBase extends React.Component<IPaginationProps> {
@@ -23,7 +23,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     nextPageIconProps: { iconName: 'CaretSolidRight' },
     firstPageIconProps: { iconName: 'Previous' },
     lastPageIconProps: { iconName: 'Next' },
-    strings: DEFAULT_STRINGS
+    strings: DEFAULT_STRINGS,
   };
 
   private _classNames: IProcessedStyleSet<IPaginationStyles>;
@@ -51,12 +51,12 @@ export class PaginationBase extends React.Component<IPaginationProps> {
       onRenderVisibleItemLabel = this._renderVisibleItemLabel,
       format,
       styles,
-      theme
+      theme,
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      format: format
+      format: format,
     });
 
     const canPrevious = selectedPageIndex! > 0;
@@ -70,13 +70,18 @@ export class PaginationBase extends React.Component<IPaginationProps> {
       for (let i = 0; i < this.props.pageCount; i++) {
         scaleOptions.push({
           key: `${i}`,
-          text: `${i + 1}`
+          text: `${i + 1}`,
         });
       }
 
       return (
         <div className={this._classNames.root}>
-          <IconButton iconProps={firstPageIconProps} onClick={this.handleFirstPage} disabled={!canFirst} aria-label={firstPageAriaLabel} />
+          <IconButton
+            iconProps={firstPageIconProps}
+            onClick={this.handleFirstPage}
+            disabled={!canFirst}
+            aria-label={firstPageAriaLabel}
+          />
           <IconButton
             iconProps={previousPageIconProps}
             onClick={this.handlePreviousPage}
@@ -89,11 +94,21 @@ export class PaginationBase extends React.Component<IPaginationProps> {
             options={scaleOptions}
             onChange={this.onComboBoxChange}
             styles={{
-              container: this._classNames.comboBox
+              container: this._classNames.comboBox,
             }}
           />
-          <IconButton iconProps={nextPageIconProps} onClick={this.handleNextPage} disabled={!canNext} aria-label={nextPageAriaLabel} />
-          <IconButton iconProps={lastPageIconProps} onClick={this.handleLastPage} disabled={!canLast} aria-label={lastPageAriaLabel} />
+          <IconButton
+            iconProps={nextPageIconProps}
+            onClick={this.handleNextPage}
+            disabled={!canNext}
+            aria-label={nextPageAriaLabel}
+          />
+          <IconButton
+            iconProps={lastPageIconProps}
+            onClick={this.handleLastPage}
+            disabled={!canLast}
+            aria-label={lastPageAriaLabel}
+          />
         </div>
       );
     }
@@ -108,7 +123,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
             aria-label={firstPageAriaLabel}
             styles={{
               icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled
+              rootDisabled: this._classNames.previousNextPageDisabled,
             }}
           />
           <IconButton
@@ -118,7 +133,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
             aria-label={previousPageAriaLabel}
             styles={{
               icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled
+              rootDisabled: this._classNames.previousNextPageDisabled,
             }}
           />
           {this._pageList()}
@@ -129,10 +144,13 @@ export class PaginationBase extends React.Component<IPaginationProps> {
             aria-label={nextPageAriaLabel}
             styles={{
               icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled
+              rootDisabled: this._classNames.previousNextPageDisabled,
             }}
           />
-          <TooltipHost content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`} directionalHint={DirectionalHint.bottomCenter}>
+          <TooltipHost
+            content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`}
+            directionalHint={DirectionalHint.bottomCenter}
+          >
             <IconButton
               iconProps={this.props.lastPageIconProps}
               onClick={this.handleLastPage}
@@ -140,7 +158,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
               aria-label={lastPageAriaLabel}
               styles={{
                 icon: this._classNames.previousNextPage,
-                rootDisabled: this._classNames.previousNextPageDisabled
+                rootDisabled: this._classNames.previousNextPageDisabled,
               }}
             />
           </TooltipHost>
@@ -238,7 +256,9 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     if (props.itemsPerPage && props.totalItemCount) {
       const leftItemIndex = props.selectedPageIndex! * props.itemsPerPage + 1;
       const rightItemsIndex = Math.min((props.selectedPageIndex! + 1) * props.itemsPerPage, props.totalItemCount);
-      const visibleItemLabel = `${leftItemIndex} ${props.strings!.divider} ${rightItemsIndex} ${props.strings!.of} ${props.totalItemCount}`;
+      const visibleItemLabel = `${leftItemIndex} ${props.strings!.divider} ${rightItemsIndex} ${props.strings!.of} ${
+        props.totalItemCount
+      }`;
       return (
         <div className={this._classNames.visibleItemLabel} aria-label={visibleItemLabel}>
           {visibleItemLabel}

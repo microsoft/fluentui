@@ -7,6 +7,6 @@ export const DetailsListCustomFooterPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Custom Footer',
-    related
-  }
+    related,
+  },
 };

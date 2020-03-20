@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IDocumentCardActionsProps, IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
+import {
+  IDocumentCardActionsProps,
+  IDocumentCardActionsStyleProps,
+  IDocumentCardActionsStyles,
+} from './DocumentCardActions.types';
 import { IconButton } from '../../Button';
 import { IProcessedStyleSet } from '../../Styling';
 
@@ -24,7 +28,7 @@ export class DocumentCardActionsBase extends React.Component<IDocumentCardAction
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (

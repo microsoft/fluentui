@@ -8,7 +8,7 @@ const GlobalClassNames = {
   headerWrapper: 'ms-DetailsList-headerWrapper',
   isFixed: 'is-fixed',
   isHorizontalConstrained: 'is-horizontalConstrained',
-  listCell: 'ms-List-cell'
+  listCell: 'ms-List-cell',
 };
 
 export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => {
@@ -27,9 +27,9 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         selectors: {
           [`& .${classNames.listCell}`]: {
             minHeight: 38,
-            wordBreak: 'break-word'
-          }
-        }
+            wordBreak: 'break-word',
+          },
+        },
       },
 
       isFixed && classNames.isFixed,
@@ -39,10 +39,10 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         {
           selectors: {
             [`.${classNames.listCell}`]: {
-              minHeight: 32
-            }
-          }
-        }
+              minHeight: 32,
+            },
+          },
+        },
       ],
 
       isHorizontalConstrained && [
@@ -50,21 +50,21 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         {
           overflowX: 'auto',
           overflowY: 'visible',
-          WebkitOverflowScrolling: 'touch'
-        }
+          WebkitOverflowScrolling: 'touch',
+        },
       ],
 
-      className
+      className,
     ],
 
     focusZone: [
       {
         display: 'inline-block',
         minWidth: '100%',
-        minHeight: 1
-      }
+        minHeight: 1,
+      },
     ],
     headerWrapper: classNames.headerWrapper,
-    contentWrapper: classNames.contentWrapper
+    contentWrapper: classNames.contentWrapper,
   };
 };

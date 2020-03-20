@@ -1,7 +1,7 @@
 import getScreenerSteps from '../commonScreenerSteps';
 
 export const config: ScreenerTestsConfig = {
-  steps: getScreenerSteps()
+  steps: getScreenerSteps(),
 };
 
 export default config;

@@ -10,7 +10,10 @@ const Variations = () => (
       description="A vertical menu displays elements vertically."
       examplePath="components/Menu/Variations/MenuExampleVertical"
     />
-    <ComponentExample title="Vertical &amp; Pointing" examplePath="components/Menu/Variations/MenuExampleVerticalPointing" />
+    <ComponentExample
+      title="Vertical &amp; Pointing"
+      examplePath="components/Menu/Variations/MenuExampleVerticalPointing"
+    />
     <ComponentExample
       title="Fluid"
       description="A vertical menu can be fluid which takes up the full space of its container. A horizontal menu does this by default."
