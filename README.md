@@ -4,7 +4,7 @@ The `office-ui-fabric-react` repo has moved! This should not disrupt any current
 
 We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
 
-# [Fluent UI](https://dev.microsoft.com/fabric)
+# [Fluent UI React](https://dev.microsoft.com/fabric)
 
 **The React-based front-end framework for building experiences for Microsoft 365.**
 
