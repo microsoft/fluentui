@@ -101,6 +101,8 @@ export { default as HeaderDescription } from './components/Header/HeaderDescript
 
 export * from './components/Icon/Icon';
 export { default as Icon } from './components/Icon/Icon';
+export * from './components/Icon/SvgIcon';
+export { default as SvgIcon } from './components/Icon/SvgIcon';
 
 export * from './components/Image/Image';
 export { default as Image } from './components/Image/Image';
@@ -233,6 +235,20 @@ export { default as TableRow } from './components/Table/TableRow';
 export * from './components/Table/TableCell';
 export { default as TableCell } from './components/Table/TableCell';
 
+export * from './components/Card/Card';
+export { default as Card } from './components/Card/Card';
+export * from './components/Card/CardPreview';
+export { default as CardPreview } from './components/Card/CardPreview';
+export * from './components/Card/CardTopControls';
+export { default as CardTopControls } from './components/Card/CardTopControls';
+export * from './components/Card/CardHeader';
+export { default as CardHeader } from './components/Card/CardHeader';
+export * from './components/Card/CardBody';
+export { default as CardBody } from './components/Card/CardBody';
+export * from './components/Card/CardFooter';
+export { default as CardFooter } from './components/Card/CardFooter';
+export * from './components/Card/CardColumn';
+export { default as CardColumn } from './components/Card/CardColumn';
 //
 // Utilities
 //

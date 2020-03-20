@@ -1,6 +1,6 @@
 import { Accessibility, AccessibilityAttributes, IconBehaviorProps, iconBehavior } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { callable } from '@fluentui/styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -109,7 +109,7 @@ const Icon: React.FC<WithAsProp<IconProps>> & FluentComponentStaticProps = props
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Icon.handledProps, props);
+  const unhandledProps = useUnhandledProps(Icon.handledProps, props);
 
   const element = (
     <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>

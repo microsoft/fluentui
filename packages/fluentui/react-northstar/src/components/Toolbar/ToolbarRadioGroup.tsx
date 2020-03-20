@@ -4,7 +4,7 @@ import {
   toolbarRadioGroupItemBehavior,
   ToolbarRadioGroupBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { mergeComponentVariables } from '@fluentui/styles';
@@ -138,7 +138,7 @@ const ToolbarRadioGroup: React.FC<WithAsProp<ToolbarRadioGroupProps>> &
   };
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarRadioGroup.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarRadioGroup.handledProps, props);
 
   const element = (
     <ElementType
