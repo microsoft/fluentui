@@ -16,9 +16,9 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
       // TODO: update with latest design spec
       width: pxToRem(300),
-      border: '1px solid black'
+      border: '1px solid black',
     };
-  }
+  },
 };
 
 export default cardStyles;

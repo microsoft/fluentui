@@ -7,13 +7,13 @@ const cardPreviewStyles: ComponentSlotStylesPrepared<CardPreviewStylesProps, Car
     return {
       margin: v.previewMargin,
       ...(p.horizontal && {
-        margin: v.previewMarginHorizontal
+        margin: v.previewMarginHorizontal,
       }),
       ...(p.fitted && {
-        margin: 0
-      })
+        margin: 0,
+      }),
     };
-  }
+  },
 };
 
 export default cardPreviewStyles;

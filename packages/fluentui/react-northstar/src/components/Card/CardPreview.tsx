@@ -39,7 +39,7 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
   const unhandledProps = getUnhandledProps(CardPreview.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardPreview.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CardPreviewStylesProps>(CardPreview.displayName, {
@@ -49,9 +49,9 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -63,7 +63,7 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
       {...getA11yProps('root', {
         className: classes.root,
         onClick: handleClick,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {children}
@@ -79,7 +79,7 @@ CardPreview.className = 'ui-card__preview';
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),
   horizontal: PropTypes.bool,
-  fitted: PropTypes.bool
+  fitted: PropTypes.bool,
 };
 
 CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;

@@ -1,4 +1,4 @@
-import { Avatar, Card, Flex, Text } from '@fluentui/react';
+import { Avatar, Card, Flex, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CardExampleHeader = () => (

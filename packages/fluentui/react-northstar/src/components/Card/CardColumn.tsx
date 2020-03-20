@@ -26,7 +26,7 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
   const unhandledProps = getUnhandledProps(CardColumn.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardColumn.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CardColumnStylesProps>(CardColumn.displayName, {
@@ -35,16 +35,16 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {children}
@@ -58,7 +58,7 @@ CardColumn.displayName = 'CardColumn';
 CardColumn.className = 'ui-card__column';
 
 CardColumn.propTypes = {
-  ...commonPropTypes.createCommon()
+  ...commonPropTypes.createCommon(),
 };
 
 CardColumn.handledProps = Object.keys(CardColumn.propTypes) as any;

@@ -15,7 +15,8 @@ export interface CardTopControlsProps extends UIComponentProps, ChildrenComponen
 
 export type CardTopControlsStylesProps = never;
 
-const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> & FluentComponentStaticProps<CardTopControlsProps> = props => {
+const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
+  FluentComponentStaticProps<CardTopControlsProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CardTopControls.displayName, context.telemetry);
   setStart();
@@ -25,7 +26,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> & FluentCompon
   const unhandledProps = getUnhandledProps(CardTopControls.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardTopControls.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CardTopControlsStylesProps>(CardTopControls.displayName, {
@@ -34,16 +35,16 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> & FluentCompon
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {children}
@@ -57,7 +58,7 @@ CardTopControls.displayName = 'CardTopControls';
 CardTopControls.className = 'ui-card__top-controls';
 
 CardTopControls.propTypes = {
-  ...commonPropTypes.createCommon()
+  ...commonPropTypes.createCommon(),
 };
 
 CardTopControls.handledProps = Object.keys(CardTopControls.propTypes) as any;

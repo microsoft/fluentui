@@ -20,6 +20,6 @@ export default (): Partial<CardVariables> => {
     footerMargin: `0 0 ${pxToRem(10)} 0`,
     previewMarginHorizontal: `0 ${pxToRem(10)} 0 0`,
     topControlsTop: pxToRem(10),
-    topControlsRight: pxToRem(0)
+    topControlsRight: pxToRem(0),
   };
 };

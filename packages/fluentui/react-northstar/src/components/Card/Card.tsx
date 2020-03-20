@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { WithAsProp, withSafeTypeForAs, ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  WithAsProp,
+  withSafeTypeForAs,
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
@@ -76,9 +82,9 @@ const Card: React.FC<WithAsProp<CardProps>> &
     actionHandlers: {
       performClick: e => {
         handleClick(e);
-      }
+      },
     },
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CardStylesProps>(Card.displayName, {
@@ -86,15 +92,15 @@ const Card: React.FC<WithAsProp<CardProps>> &
     mapPropsToStyles: () => ({
       centered,
       horizontal,
-      compact
+      compact,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -106,7 +112,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       {...getA11yProps('root', {
         className: classes.root,
         onClick: handleClick,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {children}
@@ -124,7 +130,7 @@ Card.slotClassNames = {
   body: `${Card.className}__body`,
   footer: `${Card.className}__footer`,
   preview: `${Card.className}__preview`,
-  topcontrols: `${Card.className}__top-controls`
+  topcontrols: `${Card.className}__top-controls`,
 };
 
 Card.propTypes = {
@@ -132,11 +138,11 @@ Card.propTypes = {
   onClick: PropTypes.func,
   compact: PropTypes.bool,
   horizontal: PropTypes.bool,
-  centered: PropTypes.bool
+  centered: PropTypes.bool,
 };
 
 Card.defaultProps = {
-  accessibility: cardBehavior
+  accessibility: cardBehavior,
 };
 
 Card.handledProps = Object.keys(Card.propTypes) as any;

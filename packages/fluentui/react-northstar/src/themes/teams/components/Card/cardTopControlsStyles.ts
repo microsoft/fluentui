@@ -7,9 +7,9 @@ const cardTopControlsStyles: ComponentSlotStylesPrepared<CardTopControlsStylesPr
     return {
       position: 'absolute',
       top: v.topControlsTop,
-      right: v.topControlsRight
+      right: v.topControlsRight,
     };
-  }
+  },
 };
 
 export default cardTopControlsStyles;

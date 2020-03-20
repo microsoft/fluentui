@@ -7,7 +7,7 @@ import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
 
-export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProps {
+export interface CardFooterProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    * */
@@ -19,38 +19,38 @@ export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProp
   fitted?: boolean;
 }
 
-export type CardHeaderStylesProps = Pick<CardHeaderProps, 'fitted'>;
+export type CardFooterStylesProps = Pick<CardFooterProps, 'fitted'>;
 
-const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticProps<CardHeaderProps> = props => {
+const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticProps<CardFooterProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(CardHeader.displayName, context.telemetry);
+  const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
 
   const { className, design, styles, variables, children, fitted } = props;
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(CardHeader.handledProps, props);
+  const unhandledProps = getUnhandledProps(CardFooter.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
-    debugName: CardHeader.displayName,
-    rtl: context.rtl
+    debugName: CardFooter.displayName,
+    rtl: context.rtl,
   });
 
-  const { classes } = useStyles<CardHeaderStylesProps>(CardHeader.displayName, {
-    className: CardHeader.className,
+  const { classes } = useStyles<CardFooterStylesProps>(CardFooter.displayName, {
+    className: CardFooter.className,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {children}
@@ -60,19 +60,19 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
   return element;
 };
 
-CardHeader.displayName = 'CardHeader';
-CardHeader.className = 'ui-card__header';
+CardFooter.displayName = 'CardFooter';
+CardFooter.className = 'ui-card__footer';
 
-CardHeader.propTypes = {
+CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),
-  fitted: PropTypes.bool
+  fitted: PropTypes.bool,
 };
 
-CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;
+CardFooter.handledProps = Object.keys(CardFooter.propTypes) as any;
 
-CardHeader.create = createShorthandFactory({ Component: CardHeader });
+CardFooter.create = createShorthandFactory({ Component: CardFooter });
 
 /**
- * A CardHeader is used to display data in Card header
+ * A CardFooter is used to display data in Card component footer
  */
-export default withSafeTypeForAs<typeof CardHeader, CardHeaderProps, 'div'>(CardHeader);
+export default withSafeTypeForAs<typeof CardFooter, CardFooterProps, 'div'>(CardFooter);

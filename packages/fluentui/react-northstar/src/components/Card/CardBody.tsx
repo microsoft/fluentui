@@ -32,7 +32,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
   const unhandledProps = getUnhandledProps(CardBody.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: CardBody.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles<CardBodyStylesProps>(CardBody.displayName, {
@@ -42,16 +42,16 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const element = (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {children}
@@ -66,7 +66,7 @@ CardBody.className = 'ui-card__body';
 
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),
-  fitted: PropTypes.bool
+  fitted: PropTypes.bool,
 };
 
 CardBody.handledProps = Object.keys(CardBody.propTypes) as any;

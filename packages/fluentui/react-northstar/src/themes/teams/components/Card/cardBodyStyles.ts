@@ -8,9 +8,9 @@ const cardBodyStyles: ComponentSlotStylesPrepared<CardBodyStylesProps, CardVaria
       display: 'flex',
       flexDirection: 'column',
       margin: v.bodyMargin,
-      ...(p.fitted && { margin: 0 })
+      ...(p.fitted && { margin: 0 }),
     };
-  }
+  },
 };
 
 export default cardBodyStyles;

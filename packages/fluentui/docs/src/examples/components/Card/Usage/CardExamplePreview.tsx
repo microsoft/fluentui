@@ -1,4 +1,4 @@
-import { Button, Flex, Image, Text, Card, Checkbox } from '@fluentui/react';
+import { Button, Flex, Image, Text, Card, Checkbox } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CardExamplePreview = () => (

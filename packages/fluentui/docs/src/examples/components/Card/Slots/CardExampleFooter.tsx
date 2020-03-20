@@ -1,4 +1,4 @@
-import { Button, Card, Flex } from '@fluentui/react';
+import { Button, Card, Flex } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CardExampleFooter = () => (

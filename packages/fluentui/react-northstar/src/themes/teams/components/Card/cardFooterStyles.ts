@@ -8,9 +8,9 @@ const cardFooterStyles: ComponentSlotStylesPrepared<CardFooterStylesProps, CardV
       display: 'flex',
       flexDirection: 'column',
       margin: v.footerMargin,
-      ...(p.fitted && { margin: 0 })
+      ...(p.fitted && { margin: 0 }),
     };
-  }
+  },
 };
 
 export default cardFooterStyles;

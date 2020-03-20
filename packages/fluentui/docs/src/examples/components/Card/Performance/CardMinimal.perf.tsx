@@ -1,4 +1,4 @@
-import { Card } from '@fluentui/react';
+import { Card } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const CardMinimalPerf = () => <Card />;
