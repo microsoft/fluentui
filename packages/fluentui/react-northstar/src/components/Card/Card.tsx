@@ -156,6 +156,6 @@ Card.Column = CardColumn;
 Card.create = createShorthandFactory({ Component: Card });
 
 /**
- * A Card is used to display data in sematically grouped way
+ * A Card is used to display data in sematically grouped way.
  */
 export default withSafeTypeForAs<typeof Card, CardProps, 'div'>(Card);
