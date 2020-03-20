@@ -11,4 +11,5 @@ const CardExampleBody = () => (
     </Card.Body>
   </Card>
 );
+
 export default CardExampleBody;

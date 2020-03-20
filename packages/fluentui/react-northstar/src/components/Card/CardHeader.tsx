@@ -10,12 +10,10 @@ import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComp
 export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * */
+   */
   accessibility?: Accessibility<never>;
 
-  /**
-   * A footer can be fitted, without any space above or below it.
-   */
+  /** A footer can be fitted, without any space above or below it. */
   fitted?: boolean;
 }
 
@@ -73,6 +71,6 @@ CardHeader.handledProps = Object.keys(CardHeader.propTypes) as any;
 CardHeader.create = createShorthandFactory({ Component: CardHeader });
 
 /**
- * A CardHeader is used to display data in Card header
+ * A CardHeader is used to display data in Card header.
  */
 export default withSafeTypeForAs<typeof CardHeader, CardHeaderProps, 'div'>(CardHeader);

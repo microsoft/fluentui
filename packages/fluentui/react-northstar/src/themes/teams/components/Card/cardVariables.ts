@@ -11,7 +11,7 @@ export interface CardVariables {
   topControlsRight: string;
 }
 
-export default (): Partial<CardVariables> => {
+export default (): CardVariables => {
   return {
     cardPadding: pxToRem(10),
     previewMargin: `0 0 ${pxToRem(10)} 0`,

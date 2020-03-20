@@ -25,4 +25,5 @@ const CardExampleHorizontal = () => (
     </Card.Column>
   </Card>
 );
+
 export default CardExampleHorizontal;

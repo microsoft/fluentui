@@ -10,7 +10,7 @@ import { ThemeContext } from 'react-fela';
 export interface CardColumnProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * */
+   */
   accessibility?: Accessibility<never>;
 }
 

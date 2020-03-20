@@ -10,7 +10,7 @@ import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComp
 export interface CardFooterProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * */
+   */
   accessibility?: Accessibility<never>;
 
   /**

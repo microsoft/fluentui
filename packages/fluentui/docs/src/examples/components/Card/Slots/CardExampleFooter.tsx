@@ -15,4 +15,5 @@ const CardExampleFooter = () => (
     </Card.Footer>
   </Card>
 );
+
 export default CardExampleFooter;

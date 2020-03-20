@@ -23,7 +23,7 @@ import CardColumn from './CardColumn';
 export interface CardProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * */
+   */
   accessibility?: Accessibility<CardBehaviorProps>;
 
   /**
@@ -37,16 +37,10 @@ export interface CardProps extends UIComponentProps, ChildrenComponentProps {
   /** A card can be compact, without any padding inside. */
   compact?: boolean;
 
-  /**
-   * Use card horizontal layout
-   */
-
+  /** A card will used horizontal layout. */
   horizontal?: boolean;
 
-  /**
-   * Center content in the card
-   */
-
+  /** Centers content in a card. */
   centered?: boolean;
 }
 
@@ -57,7 +51,7 @@ export interface CardSlotClassNames {
   body: string;
   footer: string;
   preview: string;
-  topcontrols: string;
+  topControls: string;
 }
 
 const Card: React.FC<WithAsProp<CardProps>> &

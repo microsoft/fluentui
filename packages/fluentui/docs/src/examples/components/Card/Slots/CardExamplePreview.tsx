@@ -8,4 +8,5 @@ const CardExamplePreview = () => (
     </Card.Preview>
   </Card>
 );
+
 export default CardExamplePreview;

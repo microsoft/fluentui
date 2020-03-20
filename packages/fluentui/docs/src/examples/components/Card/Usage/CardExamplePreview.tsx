@@ -25,4 +25,5 @@ const CardExamplePreview = () => (
     </Card.Footer>
   </Card>
 );
+
 export default CardExamplePreview;

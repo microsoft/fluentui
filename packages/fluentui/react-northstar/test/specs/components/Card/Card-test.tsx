@@ -10,11 +10,5 @@ describe('Card', () => {
     handlesAccessibility(Card, { defaultRootRole: 'group' });
   });
 
-  it('renders as `div`', () => {
-    const card = mountWithProviderAndGetComponent(Card, <Card />)
-      .find('.ui-card')
-      .hostNodes();
-
-    expect(card.is('div')).toBe(true);
   });
 });

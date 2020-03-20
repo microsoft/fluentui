@@ -28,4 +28,5 @@ const CardExampleCentered = () => (
     </Card.Footer>
   </Card>
 );
+
 export default CardExampleCentered;

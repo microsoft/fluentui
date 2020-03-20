@@ -11,19 +11,13 @@ import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComp
 export interface CardPreviewProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * */
+   */
   accessibility?: Accessibility<never>;
 
-  /**
-   *
-   * If preview is in horizontal card
-   */
-
+  /** If preview is in horizontal card. */
   horizontal?: boolean;
 
-  /**
-   * A preview can be fitted, without any space above or below it.
-   */
+  /** A preview can be fitted, without any space above or below it. */
   fitted?: boolean;
 }
 
@@ -87,6 +81,6 @@ CardPreview.handledProps = Object.keys(CardPreview.propTypes) as any;
 CardPreview.create = createShorthandFactory({ Component: CardPreview });
 
 /**
- * A CardPreview is used to display data Card preview
+ * A CardPreview is used to display data Card preview.
  */
 export default withSafeTypeForAs<typeof CardPreview, CardPreviewProps, 'div'>(CardPreview);

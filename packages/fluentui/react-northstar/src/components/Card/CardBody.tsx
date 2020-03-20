@@ -14,9 +14,7 @@ export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps 
    */
   accessibility?: Accessibility<never>;
 
-  /**
-   * A body can be fitted, without any space above or below it.
-   */
+  /** A body can be fitted, without any space above or below it. */
   fitted?: boolean;
 }
 

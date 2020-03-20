@@ -9,7 +9,7 @@ import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComp
 export interface CardTopControlsProps extends UIComponentProps, ChildrenComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
-   * */
+   */
   accessibility?: Accessibility<never>;
 }
 
@@ -66,6 +66,6 @@ CardTopControls.handledProps = Object.keys(CardTopControls.propTypes) as any;
 CardTopControls.create = createShorthandFactory({ Component: CardTopControls });
 
 /**
- * A CardTopControls is used to render control elements in the top of a Card component
+ * A CardTopControls is used to render control elements in the top of a Card component.
  */
 export default withSafeTypeForAs<typeof CardTopControls, CardTopControlsProps, 'div'>(CardTopControls);

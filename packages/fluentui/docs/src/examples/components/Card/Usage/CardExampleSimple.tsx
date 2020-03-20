@@ -30,4 +30,5 @@ const CardExampleSimple = () => (
     </Card.Footer>
   </Card>
 );
+
 export default CardExampleSimple;
