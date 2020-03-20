@@ -8,12 +8,12 @@ const Variations = () => (
     <ComponentExample
       title="Centered"
       description="Centered card"
-      examplePath="components/Card/Usage/CardExampleCentered"
+      examplePath="components/Card/Variations/CardExampleCentered"
     />
     <ComponentExample
       title="Horizontal"
       description="Horizontal card"
-      examplePath="components/Card/Usage/CardExampleHorizontal"
+      examplePath="components/Card/Variations/CardExampleHorizontal"
     />
   </ExampleSection>
 );

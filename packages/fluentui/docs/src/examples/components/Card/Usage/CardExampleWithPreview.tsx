@@ -1,7 +1,7 @@
 import { Button, Flex, Image, Text, Card, Checkbox } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const CardExamplePreview = () => (
+const CardExampleWithPreview = () => (
   <Card compact>
     <Card.TopControls>
       <Checkbox aria-label="test checkbox" />
@@ -26,4 +26,4 @@ const CardExamplePreview = () => (
   </Card>
 );
 
-export default CardExamplePreview;
+export default CardExampleWithPreview;

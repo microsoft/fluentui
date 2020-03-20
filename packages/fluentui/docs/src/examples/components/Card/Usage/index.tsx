@@ -10,13 +10,11 @@ const Usage = () => (
       description="Simple card with title, body and footer"
       examplePath="components/Card/Usage/CardExampleSimple"
     />
-    <ComponentExample title="Centered" description="Centered card" examplePath="components/Card/Usage/CardExampleCentered" />
     <ComponentExample
       title="With preview and checkbox"
       description="Example of adding Checkbox in TopControls and setting up media preview"
-      examplePath="components/Card/Usage/CardExamplePreview"
+      examplePath="components/Card/Usage/CardExampleWithPreview"
     />
-    <ComponentExample title="Horizontal" description="Horizontal card" examplePath="components/Card/Usage/CardExampleHorizontal" />
   </ExampleSection>
 );
 
