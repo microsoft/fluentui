@@ -56,7 +56,7 @@ describe('createSvgIcon', () => {
     }
 
     const BookIcon = createSvgIcon<BookProps>({
-      svg: ({ props }) => <svg data-foo={props.foo?.toString()} data-outline={props.outline?.toString()} />,
+      svg: ({ props }) => <svg data-foo={props.foo.toString()} data-outline={props.outline?.toString()} />,
       displayName: 'BookIcon',
       handledProps: ['foo'],
     });
