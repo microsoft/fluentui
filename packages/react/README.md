@@ -1,6 +1,6 @@
 # [Fluent UI React](https://dev.microsoft.com/fabric)
 
-**The React-based front-end framework for building experiences for M365.**
+**The React-based front-end framework for building experiences for Microsoft 365.**
 
 **Fluent UI 7** Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
