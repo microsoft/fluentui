@@ -7,10 +7,10 @@ import useStyles from '../hooks/useStyles';
 import getUnhandledProps from '../utils/getUnhandledProps';
 import { SvgIconCreateFnParams, SvgIconProps } from './types';
 
-export const SvgIconClassName = 'ui-icon';
-export const SvgIconDisplayName = 'SvgIcon';
+export const svgIconClassName = 'ui-icon';
+export const svgIconDisplayName = 'SvgIcon';
 
-export const SvgIconHandledProps: (keyof SvgIconProps)[] = [
+export const svgIconHandledProps: (keyof SvgIconProps)[] = [
   'alt',
   'aria-label',
   'bordered',
@@ -30,7 +30,7 @@ export const SvgIconHandledProps: (keyof SvgIconProps)[] = [
 const createSvgIcon = <TProps extends SvgIconProps>({
   svg,
   displayName,
-  handledProps = SvgIconHandledProps,
+  handledProps = [],
 }: SvgIconCreateFnParams<TProps>) => {
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & {
     handledProps: (keyof TProps)[];
@@ -53,8 +53,8 @@ const createSvgIcon = <TProps extends SvgIconProps>({
       xSpacing,
     } = props;
 
-    const { classes } = useStyles(SvgIconDisplayName, {
-      className: SvgIconClassName,
+    const { classes } = useStyles(svgIconDisplayName, {
+      className: svgIconClassName,
       mapPropsToStyles: () => ({
         bordered,
         circular,
@@ -68,7 +68,7 @@ const createSvgIcon = <TProps extends SvgIconProps>({
       rtl: context.rtl,
     });
 
-    const unhandledProps = getUnhandledProps(handledProps, props);
+    const unhandledProps = getUnhandledProps([...svgIconHandledProps, ...handledProps], props);
 
     return (
       <span

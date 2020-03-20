@@ -245,5 +245,5 @@ const circleSvg = ({ classes }) => (
   </svg>
 );
 
-const CircleIcon = createSvgIcon({ svg: circuleSvg, displayName: 'CirculeIcon' });
+const CircleIcon = createSvgIcon({ svg: circuleSvg, displayName: 'CircleIcon' });
 ```

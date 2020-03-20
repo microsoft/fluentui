@@ -4,9 +4,9 @@ import {
   useStyles,
   useTelemetry,
   SvgIconProps,
-  SvgIconClassName,
-  SvgIconDisplayName,
-  SvgIconHandledProps,
+  svgIconClassName,
+  svgIconDisplayName,
+  svgIconHandledProps,
 } from '@fluentui/react-bindings';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
@@ -75,9 +75,9 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps>> & {
   return element;
 };
 
-SvgIcon.className = SvgIconClassName;
-SvgIcon.displayName = SvgIconDisplayName;
-SvgIcon.handledProps = SvgIconHandledProps;
+SvgIcon.className = svgIconClassName;
+SvgIcon.displayName = svgIconDisplayName;
+SvgIcon.handledProps = svgIconHandledProps;
 SvgIcon.defaultProps = {
   as: 'span',
   size: 'medium',
