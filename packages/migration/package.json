@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/migration",
-  "version": "7.0.11",
+  "version": "7.0.12",
   "description": "Migration scripts for UI Fabric",
   "main": "lib/index.js",
   "bin": {

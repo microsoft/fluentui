@@ -2,6 +2,20 @@
   "name": "@fluentui/keyboard-key",
   "entries": [
     {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@fluentui/keyboard-key_v0.1.2",
+      "version": "0.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "elcraig@microsoft.com",
+            "commit": "f3befc0bad68483270afcfbdaff4473cd68939cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 17 Mar 2020 12:28:58 GMT",
       "tag": "@fluentui/keyboard-key_v0.1.1",
       "version": "0.1.1",

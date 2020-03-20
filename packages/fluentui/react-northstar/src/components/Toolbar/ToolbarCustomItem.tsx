@@ -1,5 +1,5 @@
 import { Accessibility, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -81,7 +81,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarCustomItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarCustomItem.handledProps, props);
 
   const handleBlur = (e: React.SyntheticEvent) => {
     if (focusable) {

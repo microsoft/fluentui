@@ -26,7 +26,7 @@ import {
 } from '../../types';
 import ButtonGroup from './ButtonGroup';
 import ButtonContent, { ButtonContentProps } from './ButtonContent';
-import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -170,8 +170,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     rtl: context.rtl,
   });
 
-  const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Button.handledProps, props);
+  const ElementType = getElementType(props);
 
   const renderIcon = () => {
     return Icon.create(icon, {

@@ -162,4 +162,34 @@ describe('felaRenderer', () => {
     );
     expect(snapshot).toMatchSnapshot();
   });
+
+  test('prefixes required styles', () => {
+    const snapshot = createSnapshot(
+      <EmptyThemeProvider>
+        <Box
+          styles={{
+            background: 'linear-gradient(#e66465, #9198e5)',
+            backgroundClip: 'text',
+            backgroundImage: "cross-fade(75% url('foo.png'), url('bar.png'))",
+            cursor: 'zoom-in',
+            display: 'flex',
+            filter: 'blur(5px)',
+            height: 'min-content',
+            marginBlockEnd: '20px',
+            position: 'sticky',
+            transition: 'width 2s, height 2s, background-color 2s, transform 2s',
+
+            ':hover': {
+              backgroundImage: 'image-set("cat.png" 1x, "cat-2x.png" 2x)',
+              display: 'inline-flex',
+              height: 'fit-content',
+            },
+          }}
+        />
+      </EmptyThemeProvider>,
+      {},
+      felaRenderer,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
 });

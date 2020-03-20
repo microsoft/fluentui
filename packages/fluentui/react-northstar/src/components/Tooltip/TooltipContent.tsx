@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import Popper from 'popper.js';
 import * as PropTypes from 'prop-types';
@@ -80,7 +80,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(TooltipContent.handledProps, props);
+  const unhandledProps = useUnhandledProps(TooltipContent.handledProps, props);
 
   const element = (
     <ElementType

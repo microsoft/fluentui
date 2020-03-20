@@ -2,7 +2,7 @@ import { IStyle } from 'fela';
 import * as _ from 'lodash';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   Renderer,
   StylesContextPerformanceInput,
   Telemetry,
@@ -97,7 +97,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Provider.handledProps, props);
+  const unhandledProps = useUnhandledProps(Provider.handledProps, props);
 
   const telemetry = React.useMemo<Telemetry | undefined>(() => {
     if (!telemetryRef) {

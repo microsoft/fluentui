@@ -19,11 +19,16 @@ export { default as useIsomorphicLayoutEffect } from './hooks/useIsomorphicLayou
 export { default as useUnhandledProps } from './hooks/useUnhandledProps';
 export { default as useStateManager } from './hooks/useStateManager';
 export { default as useStyles } from './hooks/useStyles';
+export { default as useUnhandledProps } from './hooks/useUnhandledProps';
 
 export { default as unstable_createAnimationStyles } from './styles/createAnimationStyles';
 export { default as unstable_calculateAnimationTimeout } from './styles/calculateAnimationTimeout';
 export { default as unstable_getStyles } from './styles/getStyles';
 export * from './styles/types';
+
+export { default as createSvgIcon } from './icons/createSvgIcon';
+export * from './icons/createSvgIcon';
+export * from './icons/types';
 
 export { default as useTelemetry } from './telemetry/useTelemetry';
 export * from './telemetry/types';
