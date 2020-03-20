@@ -26,13 +26,9 @@ export const svgIconHandledProps: (keyof SvgIconProps)[] = [
   'xSpacing',
 ];
 
-const createSvgIcon = <TProps extends SvgIconProps>({
-  svg,
-  displayName,
-  handledProps = [],
-}: SvgIconCreateFnParams<TProps>) => {
-  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps> & {
-    handledProps: (keyof TProps)[];
+const createSvgIcon = <TProps,>({ svg, displayName, handledProps = [] }: SvgIconCreateFnParams<TProps>) => {
+  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & SvgIconProps> & {
+    handledProps: (keyof (TProps & SvgIconProps))[];
   } = props => {
     const context: StylesContextValue = React.useContext(ThemeContext);
 
@@ -83,7 +79,7 @@ const createSvgIcon = <TProps extends SvgIconProps>({
   };
 
   Component.displayName = displayName;
-  Component.handledProps = handledProps;
+  Component.handledProps = [...svgIconHandledProps, ...handledProps];
 
   return Component;
 };

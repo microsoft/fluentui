@@ -56,7 +56,7 @@ export type SvgIconFuncArg<TProps = SvgIconProps> = {
 export type SvgIconChildrenFn<TProps = SvgIconProps> = (svgIcon: SvgIconFuncArg<TProps>) => React.ReactNode;
 
 export type SvgIconCreateFnParams<TProps> = {
-  svg: SvgIconChildrenFn<TProps>;
+  svg: SvgIconChildrenFn<TProps & SvgIconProps>;
   displayName: string;
   handledProps?: (keyof TProps)[];
 };

@@ -1,4 +1,4 @@
-import { createSvgIcon, svgIconClassName, SvgIconProps } from '@fluentui/react-bindings';
+import { createSvgIcon, svgIconClassName } from '@fluentui/react-bindings';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
@@ -51,25 +51,22 @@ describe('createSvgIcon', () => {
   });
 
   it('provides all props on the svg function', () => {
-    interface BookProps extends SvgIconProps {
+    interface BookProps {
       foo: boolean;
     }
-    const svg = jest.fn();
+
     const BookIcon = createSvgIcon<BookProps>({
-      svg,
+      svg: ({ props }) => <svg data-foo={props.foo?.toString()} data-outline={props.outline?.toString()} />,
       displayName: 'BookIcon',
       handledProps: ['foo'],
     });
 
-    mount(<BookIcon foo outline />, {
+    const wrapper = mount(<BookIcon foo outline />, {
       wrappingComponent: TestProvider,
       wrappingComponentProps: { theme: createTheme() },
     });
 
-    expect(svg).toBeCalledWith(
-      expect.objectContaining({
-        props: { foo: true, outline: true },
-      }),
-    );
+    expect((wrapper.find('svg').props() as any)['data-foo']).toEqual('true');
+    expect((wrapper.find('svg').props() as any)['data-outline']).toEqual('true');
   });
 });

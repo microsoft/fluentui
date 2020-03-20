@@ -18,7 +18,7 @@ import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../ty
 
 const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }>> & {
   className: string;
-  handledProps: (keyof SvgIconProps)[];
+  handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
 
