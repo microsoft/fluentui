@@ -1,8 +1,8 @@
 pr:
-  - 5.0
+  - office-ui-fabric-react_v5.79.1 
 
 trigger:
-  - 5.0
+  - office-ui-fabric-react_v5.79.1 
 
 variables:
   - group: fabric-variables
