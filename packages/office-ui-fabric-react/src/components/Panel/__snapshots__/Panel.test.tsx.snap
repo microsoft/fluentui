@@ -179,15 +179,14 @@ exports[`Panel renders Panel correctly 1`] = `
                   ms-Panel-navigation
                   {
                     display: flex;
-                    justify-content: flex-end;
+                    justify-content: space-between;
                   }
             >
               <div
                 className=
                     ms-Panel-header
                     {
-                      flex-direction: row;
-                      flex-grow: 1;
+                      align-self: flex-start;
                       padding-left: 24px;
                       padding-right: 24px;
                     }
