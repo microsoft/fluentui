@@ -2,9 +2,18 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CardVariables } from './cardVariables';
 import { CardStylesProps } from '../../../../components/Card/Card';
 import { pxToRem } from '../../../../utils';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
+    const { siteVariables } = theme;
+    const { borderWidth } = siteVariables;
+
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: siteVariables,
+      borderPadding: borderWidth,
+    });
+
     return {
       display: 'flex',
       flexDirection: 'column',
@@ -16,7 +25,10 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
       // TODO: update with latest design spec
       width: pxToRem(300),
-      border: '1px solid black',
+      borderWidth,
+      borderStyle: v.borderStyle,
+      borderColor: v.borderColor,
+      ...borderFocusStyles,
     };
   },
 };
