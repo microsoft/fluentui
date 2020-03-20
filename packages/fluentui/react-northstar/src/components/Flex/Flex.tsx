@@ -1,4 +1,4 @@
-import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -97,7 +97,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Flex.handledProps, props);
+  const unhandledProps = useUnhandledProps(Flex.handledProps, props);
 
   const content = React.Children.map(children, child => {
     const isFlexItemElement: boolean = _.get(child, 'type.__isFlexItem');
