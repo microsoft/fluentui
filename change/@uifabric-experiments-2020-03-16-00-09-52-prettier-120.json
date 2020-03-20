@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Run prettier: 120 line length, trailing commas",
-  "packageName": "@uifabric/experiments",
-  "email": "elcraig@microsoft.com",
-  "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157",
-  "dependentChangeType": "patch",
-  "date": "2020-03-16T07:09:18.016Z"
-}
