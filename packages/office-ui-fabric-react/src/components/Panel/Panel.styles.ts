@@ -318,7 +318,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       hasCustomNavigation && {
         // Ensure that title doesn't shrink if screen is too small
-        flexShrink: 1,
+        flexShrink: 0,
       },
     ],
     headerText: [
