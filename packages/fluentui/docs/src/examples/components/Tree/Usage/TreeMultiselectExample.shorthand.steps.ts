@@ -1,7 +1,6 @@
 import { TreeItem, TreeTitle } from '@fluentui/react-northstar';
 
 const selectors = {
-  treeItem: (itemIndex: number) => `.${TreeItem.className}:nth-of-type(${itemIndex})`,
   treeTitle: (itemIndex: number) => `.${TreeItem.className}:nth-of-type(${itemIndex}) .${TreeTitle.className}`,
   selectionIndicator: (itemIndex: number) =>
     `.${TreeItem.className}:nth-of-type(${itemIndex}) .${TreeTitle.slotClassNames.indicator}`,
