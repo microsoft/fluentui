@@ -55,7 +55,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
 };
 
 CardTopControls.displayName = 'CardTopControls';
-CardTopControls.className = 'ui-card__top-controls';
+CardTopControls.className = 'ui-card__topcontrols';
 
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon(),

@@ -7,11 +7,10 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
-    const { borderWidth } = siteVariables;
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderPadding: borderWidth,
+      borderPadding: v.borderWidth,
     });
 
     return {
@@ -25,7 +24,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
       // TODO: update with latest design spec
       width: pxToRem(300),
-      borderWidth,
+      borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,
       borderColor: v.borderColor,
       ...borderFocusStyles,

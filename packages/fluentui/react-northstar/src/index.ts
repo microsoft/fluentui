@@ -247,6 +247,8 @@ export * from './components/Card/CardBody';
 export { default as CardBody } from './components/Card/CardBody';
 export * from './components/Card/CardFooter';
 export { default as CardFooter } from './components/Card/CardFooter';
+export * from './components/Card/CardColumn';
+export { default as CardColumn } from './components/Card/CardColumn';
 //
 // Utilities
 //

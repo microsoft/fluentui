@@ -3,6 +3,7 @@ import { pxToRem } from '../../../../utils';
 export interface CardVariables {
   borderStyle: string;
   borderColor: string;
+  borderWidth: string;
   padding: string;
   compactPadding: string;
   previewMargin: string;
@@ -22,6 +23,7 @@ export default (siteVars): CardVariables => {
   return {
     borderStyle: 'solid',
     borderColor: siteVars.colors.black,
+    borderWidth: siteVars.borderWidth,
     padding: pxToRem(10),
     compactPadding: pxToRem(0),
     previewMargin: `0 0 ${pxToRem(10)} 0`,
