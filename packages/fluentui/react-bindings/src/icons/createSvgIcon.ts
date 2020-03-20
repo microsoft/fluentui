@@ -11,8 +11,6 @@ export const svgIconClassName = 'ui-icon';
 export const svgIconDisplayName = 'SvgIcon';
 
 export const svgIconHandledProps: (keyof SvgIconProps)[] = [
-  'alt',
-  'aria-label',
   'bordered',
   'className',
   'circular',
