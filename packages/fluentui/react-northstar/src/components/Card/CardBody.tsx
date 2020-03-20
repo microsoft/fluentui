@@ -74,6 +74,6 @@ CardBody.handledProps = Object.keys(CardBody.propTypes) as any;
 CardBody.create = createShorthandFactory({ Component: CardBody });
 
 /**
- * A CardBody is used to display data in Card body
+ * A CardBody is used to display data in Card body.
  */
 export default withSafeTypeForAs<typeof CardBody, CardBodyProps, 'div'>(CardBody);
