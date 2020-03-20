@@ -17,6 +17,12 @@ A set of reusable components and hooks to build component libraries and UI kits.
   - [`useStyles()`](#usestyles)
     - [Usage](#usage-3)
     - [Reference](#reference-1)
+  - [`useUnhandledProps()`](#useunhandledprops)
+    - [Usage](#usage-4)
+    - [Reference](#reference-2)
+- [Icons](#icons)
+  - [`createSvgIcon()`](#createsvgicon)
+    - [Usage](#usage-5)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
