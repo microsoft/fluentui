@@ -1,4 +1,3 @@
-import keyboardKey from 'keyboard-key';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { EventListener } from '@fluentui/react-component-event-listener';
@@ -12,16 +11,16 @@ export type DebugSelectorProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
   onSelect: (fiberNav: FiberNavigator) => void;
+  filter: (fiberNav: FiberNavigator) => FiberNavigator | null;
+  active: boolean;
 };
 
 export type DebugSelectorState = {
   fiberNav: FiberNavigator;
-  isSelecting: boolean;
 };
 
 const INITIAL_STATE: DebugSelectorState = {
-  fiberNav: null,
-  isSelecting: false
+  fiberNav: null
 };
 
 // TODO: This is a copy and trim-down of Debug.tsx
@@ -34,7 +33,9 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
 
   static defaultProps = {
     // eslint-disable-next-line no-undef
-    mountDocument: isBrowser() ? window.document : null
+    mountDocument: isBrowser() ? window.document : null,
+    active: false,
+    filter: fiberNav => fiberNav
   };
 
   static propTypes = {
@@ -49,26 +50,12 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
       return;
     }
 
-    fiberNav = fiberNav.findOwner(fiber => fiber.fluentUIDebug);
+    console.log('DebugSelector:debugDOMNode', { fiberNav });
+
+    fiberNav = this.props.filter(fiberNav);
 
     if (fiberNav !== this.state.fiberNav) {
       this.setState({ fiberNav });
-    }
-  };
-
-  handleKeyDown = e => {
-    const code = keyboardKey.getCode(e);
-
-    switch (code) {
-      case keyboardKey.Escape:
-        this.stopSelecting();
-        break;
-
-      case keyboardKey.c:
-        if (e.altKey && e.shiftKey) {
-          this.startSelecting();
-        }
-        break;
     }
   };
 
@@ -81,36 +68,19 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
     e.stopPropagation();
 
     this.props?.onSelect(this.state.fiberNav);
-    this.setState({ isSelecting: false });
   };
-
-  startSelecting = () => {
-    const isSelecting = !this.state.isSelecting;
-
-    this.setState({
-      ...(!isSelecting && INITIAL_STATE),
-      isSelecting
-    });
-  };
-
-  stopSelecting = () => {
-    this.setState(INITIAL_STATE);
-  };
-
-  close = () => this.setState(INITIAL_STATE);
 
   render() {
-    const { mountDocument } = this.props;
-    const { fiberNav, isSelecting } = this.state;
+    const { active, mountDocument } = this.props;
+    const { fiberNav } = this.state;
 
     return (
       <>
-        <EventListener listener={this.handleKeyDown} target={mountDocument} type="keydown" />
-        {isSelecting && <EventListener listener={this.handleMouseMove} target={mountDocument.body} type="mousemove" />}
-        {isSelecting && fiberNav && fiberNav.domNode && (
+        {active && <EventListener listener={this.handleMouseMove} target={mountDocument.body} type="mousemove" />}
+        {active && fiberNav && fiberNav.domNode && (
           <EventListener listener={this.handleDOMNodeClick} target={fiberNav.domNode} type="click" />
         )}
-        {isSelecting && fiberNav && <DebugRect fiberNav={fiberNav} />}
+        {active && fiberNav && <DebugRect fiberNav={fiberNav} />}
       </>
     );
   }

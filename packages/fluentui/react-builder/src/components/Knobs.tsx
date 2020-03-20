@@ -2,20 +2,10 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Divider, Header, Slider } from '@fluentui/react';
 import { ComponentInfo } from '@fluentui/docs/src/types';
+import { JSONTreeElement } from './types';
 
 const designUnit = 4;
-const sizeRamp = [
-  designUnit * 1,
-  designUnit * 2,
-  designUnit * 3,
-  designUnit * 4,
-  designUnit * 5,
-  designUnit * 6,
-  designUnit * 7,
-  designUnit * 8,
-  designUnit * 9,
-  designUnit * 10
-];
+const sizeRamp = [designUnit * 0, designUnit * 0.5, designUnit * 1, designUnit * 2, designUnit * 4, designUnit * 8, designUnit * 12];
 
 const knobs = [
   { kind: 'divider', label: 'Position' },
@@ -54,17 +44,18 @@ const knobs = [
 const rowStyle = { padding: '0.1rem 0.25rem' };
 
 type DesignKnobProps = {
-  onPropChange: ({ name, value }: { name: string; value: string }) => void;
+  onPropChange: ({ jsonTreeElement, name, value }: { jsonTreeElement: JSONTreeElement; name: string; value: number }) => void;
   info: ComponentInfo;
-  instance: any;
+  jsonTreeElement: JSONTreeElement;
 };
 
-const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, instance }) => {
+const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   return (
     <div>
+      Selected UUID: <code>{jsonTreeElement.uuid}</code>
       <Header as="h4">Active Props</Header>
-      {Object.keys(instance.props).map(name => {
-        const val = instance.props[name];
+      {Object.keys(jsonTreeElement.props).map(name => {
+        const val = jsonTreeElement.props[name];
         const type = typeof val;
 
         if (type === 'undefined') {
@@ -85,30 +76,37 @@ const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, instance }) => {
       {info.props.map(prop => {
         return <div key={prop.name}>{prop.name}</div>;
       })}
-
       <Header as="h4">Design</Header>
-      {_.map(knobs, knob => (
-        <div key={knob.label} style={{ ...rowStyle, marginBottom: '0.5rem' }}>
-          {knob.kind === 'slider' ? (
-            <>
-              <div>{knob.label}</div>
-              <Slider
-                fluid
-                step={1}
-                min={0}
-                max={knob.ramp.length - 1}
-                onChange={(e, data) => {
-                  onPropChange({ name: knob.label, value: data.value });
-                }}
-              />
-            </>
-          ) : knob.kind === 'divider' ? (
-            <Divider content={knob.label} style={{ width: '100%' }} />
-          ) : (
-            <div>UNKNOWN</div>
-          )}
-        </div>
-      ))}
+      {_.map(knobs, knob => {
+        const value = jsonTreeElement.props && jsonTreeElement.props.design && jsonTreeElement.props.design[knob.label];
+
+        return (
+          <div key={knob.label} style={{ ...rowStyle, marginBottom: '0.5rem' }}>
+            {knob.kind === 'slider' ? (
+              <>
+                <code style={{ float: 'right' }}>{JSON.stringify(value, null, 2)}</code>
+                <div>{knob.label}</div>
+                <Slider
+                  fluid
+                  step={1}
+                  min={0}
+                  max={knob.ramp.length - 1}
+                  {...(value && {
+                    value: jsonTreeElement.props.design[knob.label]
+                  })}
+                  onChange={(e, data) => {
+                    onPropChange({ jsonTreeElement: jsonTreeElement, name: knob.label, value: knob.ramp[+data.value] });
+                  }}
+                />
+              </>
+            ) : knob.kind === 'divider' ? (
+              <Divider content={knob.label} style={{ width: '100%' }} />
+            ) : (
+              <div>UNKNOWN</div>
+            )}
+          </div>
+        );
+      })}
     </div>
   );
 };

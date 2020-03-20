@@ -2,26 +2,34 @@ import * as React from 'react';
 
 import * as FUI from '@fluentui/react';
 import { JSONTreeElement } from './components/types';
+import FiberNavigator from '../../react/src/components/Debug/FiberNavigator';
 
-export const EXCLUDED_COMPONENTS = ['Animation', 'Chat', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
+export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const DRAGGING_PROPS = {
   Accordion: {
     panels: [{ title: 'Accordion title', content: 'Accordion content' }]
   } as FUI.AccordionProps,
-  Alert: { info: true, icon: 'info', content: 'Info alert' } as FUI.AlertProps,
+
+  Alert: { warning: true, icon: 'info', content: 'Info alert' } as FUI.AlertProps,
+
   // Animation: { name: 'fade' } as FUI.AnimationProps,
+
   Attachment: {
     icon: 'msftword',
     header: 'A file attachment',
     description: '100kb'
   } as FUI.AttachmentProps,
+
   Avatar: { image: 'https://picsum.photos/100?random' } as FUI.AvatarProps,
+
   Box: { content: 'A Box' } as FUI.BoxProps,
+
   Button: {
     icon: 'call',
     content: 'Button'
   } as FUI.ButtonProps,
+
   Carousel: {
     getItemPositionText: (index: number, size: number) => `${index + 1} of ${size}`,
     items: [
@@ -37,10 +45,30 @@ export const DRAGGING_PROPS = {
       }
     ]
   } as FUI.CarouselProps,
-  // // Chat: { content: 'Chat' } as FUI.ChatProps,
+
+  Chat: {
+    items: [
+      {
+        gutter: <FUI.Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: 'icon-checkmark' }} />,
+        message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
+        attached: 'top',
+        key: 'message-id-4'
+      },
+      {
+        message: <FUI.Chat.Message content="Hello!" author="John Doe" timestamp="Yesterday, 10:15 PM" mine />,
+        contentPosition: 'end',
+        attached: true,
+        key: 'message-id-2'
+      }
+    ]
+  } as FUI.ChatProps,
+
   Checkbox: { label: 'Checkbox' } as FUI.CheckboxProps,
-  // // Debug: { content: 'Debug' } as FUI.DebugProps,
-  // // Design: { config: {} } as FUI.DesignProps,
+
+  // Debug: { content: 'Debug' } as FUI.DebugProps,
+
+  // Design: { config: {} } as FUI.DesignProps,
+
   Dialog: {
     trigger: <button>Open Dialog</button>,
     header: 'Header',
@@ -51,14 +79,20 @@ export const DRAGGING_PROPS = {
       }
     ]
   } as FUI.DialogProps,
+
   Divider: { content: 'Divider' } as FUI.DividerProps,
+
   Dropdown: {
     placeholder: 'Dropdown',
     items: ['Item 1', 'Item 2', 'Item 3']
   } as FUI.DropdownProps,
+
   // Embed: { content: 'Embed' } as FUI.EmbedProps,
+
   Flex: { content: 'Flex' } as FUI.FlexProps,
-  // // FocusZone: { content: 'FocusZone' } as FUI.FocusZoneProps,
+
+  // FocusZone: { content: 'FocusZone' } as FUI.FocusZoneProps,
+
   Form: {
     fields: [
       {
@@ -88,20 +122,30 @@ export const DRAGGING_PROPS = {
       }
     ]
   } as FUI.FormProps,
+
   // Grid: { content: 'Grid' } as FUI.GridProps,
+
   Header: { content: 'Header', description: 'Description' } as FUI.HeaderProps,
+
   // HierarchicalTree: { content: 'HierarchicalTree' } as FUI.HierarchicalTreeProps,
+
   Icon: { name: 'like' } as FUI.IconProps,
+
   Image: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
+
   Input: { placeholder: 'Type...' } as FUI.InputProps,
+
   // ItemLayout: { content: 'ItemLayout' } as FUI.ItemLayoutProps,
+
   Label: { icon: 'mail', content: '23 Messages' } as FUI.LabelProps,
+
   Layout: {
     debug: true,
     start: 'Start content.',
     main: 'Main content.',
     end: 'End content.'
   } as FUI.LayoutProps,
+
   List: {
     items: [
       {
@@ -127,12 +171,15 @@ export const DRAGGING_PROPS = {
       }
     ]
   } as FUI.ListProps,
+
   Loader: {
     label: 'Loading...'
   } as FUI.LoaderProps,
+
   Menu: {
     items: ['Item 1', 'Item 2', 'Item 3']
   } as FUI.MenuProps,
+
   MenuButton: {
     trigger: <FUI.Button>MenuButton</FUI.Button>,
     menu: [
@@ -145,12 +192,16 @@ export const DRAGGING_PROPS = {
       }
     ]
   } as FUI.MenuButtonProps,
+
   Popup: {
     trigger: <button>Show Popup</button>,
     content: 'Hello from popup!'
   } as FUI.PopupProps,
-  // // Portal: { content: 'Portal' } as FUI.PortalProps,
-  // // Provider: { content: 'Provider' } as FUI.ProviderProps,
+
+  // Portal: { content: 'Portal' } as FUI.PortalProps,
+
+  // Provider: { content: 'Provider' } as FUI.ProviderProps,
+
   RadioGroup: {
     items: [
       { name: 'pizza', key: 'Capricciosa', label: 'Capricciosa', value: 'capricciosa' },
@@ -158,16 +209,27 @@ export const DRAGGING_PROPS = {
       { name: 'pizza', key: 'Custom', label: 'Custom', value: 'custom' }
     ]
   } as FUI.RadioGroupProps,
+
   Reaction: { icon: 'like', content: 10 } as FUI.ReactionProps,
+
   Segment: { content: 'Segment' } as FUI.SegmentProps,
+
   Slider: {} as FUI.SliderProps,
+
   // SplitButton: { content: 'SplitButton' } as FUI.SplitButtonProps,
+
   Status: { state: 'success' } as FUI.StatusProps,
+
   // Table: { content: 'Table' } as FUI.TableProps,
+
   Text: { content: 'Text' } as FUI.TextProps,
+
   TextArea: { defaultValue: 'Hello there!' } as FUI.TextAreaProps,
+
   // Toolbar: { content: 'Toolbar' } as FUI.ToolbarProps,
+
   // Tooltip: { content: 'Tooltip' } as FUI.TooltipProps,
+
   Tree: {
     items: [
       {
@@ -211,6 +273,7 @@ export const DRAGGING_PROPS = {
       }
     ]
   } as FUI.TreeProps
+
   // Video: { content: 'Video' } as FUI.VideoProps,
 };
 
@@ -248,26 +311,79 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
 };
 
 export const renderJSONTreeToJSXElement = (tree: any) => {
-  const children = !tree.children
-    ? null
-    : tree.children.map((child, i) => {
-        if (typeof child === 'string') {
-          return child;
-        }
+  console.log('renderJSONTreeToJSXElement');
+  let { children = null } = tree;
 
-        if (typeof child === 'object' && child !== null) {
-          return renderJSONTreeToJSXElement({
-            type: resolveComponent(child.type),
-            props: {
-              ...(child as JSONTreeElement).props,
-              key: (child as JSONTreeElement).uuid || i
-            },
-            children: child.children
-          });
-        }
+  if (Array.isArray(children)) {
+    children = children.map((child, i) => {
+      if (typeof child === 'string') {
+        return child;
+      }
 
-        return null;
-      });
+      if (typeof child === 'object' && child !== null) {
+        return renderJSONTreeToJSXElement({
+          type: resolveComponent(child.type),
+          props: {
+            ...(child as JSONTreeElement).props,
+            key: (child as JSONTreeElement).uuid || i
+          },
+          children: child.children
+        });
+      }
+
+      return null;
+    });
+  }
 
   return React.createElement(tree.type, tree.props, children);
+};
+
+/**
+ * Converts a fiberNav into a JSON Tree element
+ */
+export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeElement => ({
+  uuid: fiberNav.key,
+  type: fiberNav.elementType,
+  displayName: fiberNav.name,
+  props: fiberNav.props
+});
+
+/**
+ * Given a fiberNav, return the corresponding JSON Tree element from the jsonTree.
+ */
+export const fiberNavFindOwnerInJSONTree = (fiberNav: FiberNavigator, jsonTree: JSONTreeElement): FiberNavigator => {
+  // The user should only be able to select react components that are created by the builder.
+  // This way, they can't "reach in" to a component and manipulate its children.
+  // This is analogous to how a developer can only import a component and use its props but not
+  //   edit the components children directly.
+  // We need to traverse the owner fibers and find one that has a uuid that exists in the json tree
+  return fiberNav.findOwner(owner => {
+    return owner.key !== null && owner.key !== undefined && !!jsonTreeFindElement(jsonTree, owner.key);
+  });
+};
+
+export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
+  const newTree = Object.assign({}, cb(tree));
+
+  if (Array.isArray(newTree.children) && newTree.children.length > 0) {
+    newTree.children = newTree.children.map(child => {
+      return jsonTreeMap(child, cb);
+    });
+  }
+
+  return newTree;
+};
+
+export const jsonTreeFindElement = (tree: JSONTreeElement, uuid) => {
+  if (typeof uuid === 'undefined' || uuid === null) {
+    return null;
+  }
+
+  if (tree.uuid === uuid) return tree;
+
+  if (Array.isArray(tree.children)) {
+    return tree.children.find((childTree: JSONTreeElement) => {
+      return jsonTreeFindElement(childTree, uuid);
+    });
+  }
 };

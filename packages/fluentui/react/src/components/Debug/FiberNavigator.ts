@@ -294,6 +294,10 @@ class FiberNavigator {
     return fiberNavigator;
   };
 
+  get key() {
+    return this.__fiber.key;
+  }
+
   get name() {
     return this.isClassComponent || this.isFunctionComponent
       ? this.__fiber.type.displayName || this.__fiber.type.name
