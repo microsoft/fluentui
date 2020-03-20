@@ -17,6 +17,9 @@ A set of reusable components and hooks to build component libraries and UI kits.
   - [`useStyles()`](#usestyles)
     - [Usage](#usage-3)
     - [Reference](#reference-1)
+  - [`useUnhandledProps()`](#useunhandledprops)
+    - [Usage](#usage-4)
+    - [Reference](#reference-2)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -221,3 +224,34 @@ const { classes } = useStyles(
 - `options.className` - optional, a special class name that will be always added to the `root` slot
 - `options.mapPropsToStyles` - optional, a set of props that will be passed style functions, only primitives are allowed
 - `options.rtl` - optional, sets RTL mode
+
+## `useUnhandledProps()`
+
+A React hook that returns an object consisting of props beyond the scope of the component. Useful for getting and spreading unknown props from the user.
+
+### Usage
+
+The example below assumes a component called `<Text>` will be used this way:
+
+```tsx
+type TextComponentProps = React.HTMLAttributes<HTMLSpanElement> * {
+  className?: string;
+};
+
+const Text: React.FunctionComponent<TextComponentProps> = props => {
+  const { className, children } = props;
+  const unhandledProps = useUnhandledProps(['className'], props);
+
+  return <span {...unhandledProps} className={classes.root}>{children}</span>;
+};
+```
+
+### Reference
+
+```tsx
+const unhandledProps = useUnhandledProps(handledProps, props);
+```
+
+- `unhandledProps` - an object with unhandled props by component
+- `handledProps` - an array with names of handled props
+- `props` - an object with all props that are passed to a component
