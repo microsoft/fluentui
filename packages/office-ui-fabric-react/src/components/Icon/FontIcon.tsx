@@ -57,7 +57,7 @@ export const FontIcon: React.FunctionComponent<IFontIconProps> = props => {
       {...nativeProps}
       className={css(MS_ICON, classNames.root, iconClassName, !iconName && classNames.placeholder, className)}
       // Apply the font family this way to ensure it doesn't get overridden by Fabric Core ms-Icon styles
-      // https://github.com/OfficeDev/office-ui-fabric-react/issues/10449
+      // https://github.com/microsoft/fluentui/issues/10449
       style={{ fontFamily, ...style }}
     >
       {children}

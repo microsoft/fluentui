@@ -44,4 +44,4 @@ module.exports = {
 };
 ```
 
-See [Testing](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing) for more detailed usage.
+See [Testing](https://github.com/microsoft/fluentui/wiki/Testing) for more detailed usage.

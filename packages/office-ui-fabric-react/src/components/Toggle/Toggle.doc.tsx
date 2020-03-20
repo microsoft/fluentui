@@ -11,7 +11,7 @@ export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
   componentName: 'Toggle',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
   examples: [
     {
       title: 'Basic Toggles',

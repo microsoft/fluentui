@@ -111,7 +111,7 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
       },
       {
         name: 'GitHub',
-        url: 'https://github.com/OfficeDev/office-ui-fabric-react',
+        url: 'https://github.com/microsoft/fluentui',
       },
     ],
   };
