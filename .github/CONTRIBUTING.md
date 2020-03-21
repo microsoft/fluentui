@@ -1,4 +1,6 @@
-# CONTRIBUTING
+# Contributing to `@fluentui/react-northstar` (and others under `packages/fluentui`)
+
+**NOTE: This document currently only applies to the packages located under `packages/fluentui`, such as `@fluentui/react-northstar`. For other packages, see [this wiki page](https://github.com/microsoft/fluentui/wiki/Contributing) instead!**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -12,10 +14,6 @@
   - [Keyboard handling](#keyboard-handling)
 - [Packages](#packages)
   - [Add a new package](#add-a-new-package)
-    - [Run `lerna create`](#run-lerna-create)
-    - [Update `package.json`](#update-packagejson)
-    - [Create `tsconfig.json`](#create-tsconfigjson)
-    - [Create `jest.config.js`](#create-jestconfigjs)
     - [Run `syncpack format`](#run-syncpack-format)
   - [Add a new dependency](#add-a-new-dependency)
 
@@ -23,40 +21,48 @@
 
 ## Getting started
 
-Make sure you have [Node.js][1] version v8 or later installed.
+Make sure you have [Node.js][1] version 10 or later installed.
 
-You can contribute to Fluent UI by being an official [contributor](setup-local-development.md#contributors) or without permissions, as a [collaborator](setup-local-development.md#collaborators)
+**If you would like to contribute to packages besides the ones under `packages/fluentui`, see [this wiki page](https://github.com/microsoft/fluentui/wiki/Contributing) instead!**
 
 ### Useful Commands
 
 > This list contains the most useful commands. You should run `yarn run` to see all scripts.
 
+From repo root:
+
 ```sh
-yarn start                 // run doc site
+yarn start                 # start doc site: choose `@fluentui/docs` for v0
 
-yarn test                  // test once
-yarn test:watch            // test on file change
+yarn test                  # run all packages' tests once
 
-yarn build                 // build everything, will run `gulp build`
-yarn build:dist            // build dist
-yarn build:docs            // build docs
+yarn build                 # build all packages
+yarn build:fluentui:docs   # build docs
 
-yarn deploy:docs           // deploy gh-pages doc site
+gulp deploy:docs           # deploy gh-pages doc site
 
-yarn lint                  // lint once
-yarn lint:fix              // lint and attempt to fix
+yarn lint                  # lint all packages
 
-yarn prettier              // `prettier --list-different "**/*.{ts,tsx}"`
-yarn prettier:fix          // prettier and attempt to fix
+yarn prettier              # run prettier on changed files
+```
 
-yarn ci                    // lint, prettier and test
+From an individual under `packages/fluentui`, such as `packages/fluentui/react-northstar`:
+
+```sh
+yarn test                  # test once
+yarn test:watch            # test on file change
+
+yarn build                 # build all files in package
+
+yarn lint                  # lint once
+yarn lint:fix              # lint and attempt to fix
 ```
 
 ## Workflow
 
 These guides will walk your through various activities for contributing:
 
-- [Setup Local Development](setup-local-development.md)
+- [Set up Local Development](setup-local-development.md)
 - [Add a feature](add-a-feature.md)
 - [Test a feature](test-a-feature.md)
 - [Document a feature](document-a-feature.md)
@@ -64,7 +70,7 @@ These guides will walk your through various activities for contributing:
 
 ## Accessibility
 
-Fluent UI implements accessibility using accessibility behaviors. The behaviors add attributes to the DOM elements (mainly role and aria-\* properties) as well as handle keyboard interaction and focus. Every accessible component has a default behavior, which can be overridden using the `accessibility` prop. You can choose a behavior from the ones provided by Fluent UI or you can implement a new behavior.
+Fluent UI v0 implements accessibility using accessibility behaviors. The behaviors add attributes to the DOM elements (mainly role and aria-\* properties) as well as handle keyboard interaction and focus. Every accessible component has a default behavior, which can be overridden using the `accessibility` prop. You can choose a behavior from the ones provided by Fluent UI or you can implement a new behavior.
 
 Behaviors apply properties, focus handling and keyboard handlers to the component slots. When developing a component, the properties and keyboard handlers need to be spread to the corresponding slots.
 
@@ -90,13 +96,13 @@ For example, to make an icon-only Button accessible, `aria-label` prop needs to 
 
 An application should always have an element with [focus][7] when in use. The user can change the focused element by:
 
-- pressing TAB/shift+TAB keys to navigate through the components
+- pressing tab/shift+tab keys to navigate through the components
 - pressing arrow keys to navigate through children (for example menu items in menu)
 - using the screen reader with or without virtual cursor
 
-Fluent UI uses Office UI Fabric [FocusZone][8] for basic TAB and arrow key focus handling. To use the focus zone, you can use the `focusZone` configuration in the behavior (for example see [MenuItemBehavior][9]).
+Fluent UI v0 uses the [FocusZone][8] component for basic tab and arrow key focus handling. To use the focus zone, you can use the `focusZone` configuration in the behavior (for example see [MenuItemBehavior][9]).
 
-Focused component needs to be clearly visible. This is handled in Fluent UI by focus indicator functionality. Focus indicator will be displayed only if the application is in keyboard mode. Application switches to keyboard mode when a key relevant to navigation is pressed. It disables keyboard mode on mouse click events.
+Focused component needs to be clearly visible. This is handled in Fluent UI v0 by focus indicator functionality. Focus indicator will be displayed only if the application is in keyboard mode. Application switches to keyboard mode when a key relevant to navigation is pressed. It disables keyboard mode on mouse click events.
 
 To style the focused component, you can use the `isFromKeyboard` utility and prop. See [Button component][10] and [Button style][11] for reference.
 
@@ -110,17 +116,22 @@ We are using [Lerna][14] to manage our packages and [Yarn Workspaces][15] to lin
 
 ### Add a new package
 
+<!--
 #### Run `lerna create`
 
 You should to run `lerna create` command to create a new package
+-->
 
-- we are using `@fluentui` namespace on NPM to publish our packages
-- the directory name should not contain any namespace prefix and can be prefixed with the library name if the
-  implementation is not framework agnostic
+For now, you must copy the structure and boilerplate files of an existing package under `packages/fluentui` when adding a new package. `packages/fluentui/accessibility` is a good basic example.
+
+- choose a name and update the `name` field (keep the `@fluentui` scope)
+  - it can be prefixed with the library name if the implementation is not framework-agnostic.
+- the directory name should match the unscoped part of the package name
 - please provide a meaningful description to a package in the matched field
-- use `https://github.com/microsoft/fluent-ui-react/tree/master/packages/__DIRECTORY_NAME__` as `homepage`
+- use `https://github.com/microsoft/fluentui/tree/master/packages/fluentui/__DIRECTORY_NAME__` as `homepage`
 - our packages are currently published with MIT license, please follow it until you will have specific legal requirements
 
+<!--
 ```sh
 lerna create @fluentui/react-proptypes react-proptypes
 ```
@@ -196,6 +207,7 @@ module.exports = {
   name: '__DIRECTORY_NAME__',
 };
 ```
+-->
 
 #### Run `syncpack format`
 
@@ -208,11 +220,10 @@ yarn syncpack format
 
 ### Add a new dependency
 
-Please always use [`lerna add`][16] to manage all dependencies including internal packages. The command bellow will add
-`@fluentui/react-proptypes` as production dependency to the `@fluentui/react-northstar` package.
+Please always use [`lerna add`][16] to manage all dependencies including internal packages. The command below will add `@fluentui/react-proptypes` as a production dependency to the `@fluentui/react-northstar` package.
 
 ```yarn
-lerna add @fluentui/react-proptypes packages/react
+lerna add @fluentui/react-proptypes packages/fluentui/react-northstar
 ```
 
 [1]: https://nodejs.org/
@@ -223,11 +234,11 @@ lerna add @fluentui/react-proptypes packages/react
 [6]: https://www.w3.org/TR/wai-aria-1.1/#namecalculation
 [7]: https://www.w3.org/TR/wai-aria-1.1/#managingfocus
 [8]: https://developer.microsoft.com/en-us/fabric#/components/focuszone
-[9]: https://github.com/microsoft/fluent-ui-react/blob/master/packages/react/src/utils/accessibility/Behaviors/Menu/MenuBehavior.ts
-[10]: https://github.com/microsoft/fluent-ui-react/blob/master/src/components/Button/Button.tsx
-[11]: https://github.com/microsoft/fluent-ui-react/blob/master/src/themes/teams/components/Button/buttonStyles.ts
-[12]: https://github.com/microsoft/fluent-ui-react/blob/master/packages/react/src/utils/accessibility/Behaviors/Menu/MenuItemBehavior.ts
-[13]: https://github.com/microsoft/fluent-ui-react/blob/master/src/components/Menu/MenuItem.tsx
+[9]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/accessibility/src/behaviors/Menu/MenuBehavior.ts
+[10]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/components/Button/Button.tsx
+[11]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/themes/teams/components/Button/buttonStyles.ts
+[12]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/accessibility/src/behaviors/Menu/MenuItemBehavior.ts
+[13]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/components/Menu/MenuItem.tsx
 [14]: https://lerna.js.org
 [15]: https://yarnpkg.com/en/docs/workspaces
 [16]: https://github.com/lerna/lerna/tree/master/commands/add
