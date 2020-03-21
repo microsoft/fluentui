@@ -9,7 +9,7 @@ export const LabelPageProps: IDocPageProps = {
   title: 'Label',
   componentName: 'Label',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Label',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Label',
   examples: [
     {
       title: 'Label',

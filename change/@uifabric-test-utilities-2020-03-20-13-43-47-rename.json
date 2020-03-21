@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+  "packageName": "@uifabric/test-utilities",
+  "email": "elcraig@microsoft.com",
+  "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee",
+  "dependentChangeType": "patch",
+  "date": "2020-03-20T20:43:46.145Z"
+}

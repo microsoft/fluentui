@@ -98,7 +98,7 @@ import { getFluentPerfRegressions } from './fluentPerfRegressions';
  */
 
 // A high number of iterations are needed to get visualization of lower level calls that are infrequently hit by ticks.
-// Wiki: https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing
+// Wiki: https://github.com/microsoft/fluentui/wiki/Perf-Testing
 const iterationsDefault = 5000;
 
 // TODO:
@@ -115,12 +115,12 @@ const iterationsDefault = 5000;
 //      - Appear in CI but just appear as DLLs locally on Windows
 //      - V8 bug?
 //    - Ways to demonstrate improvement/regression:
-//      - How could perf results of https://github.com/OfficeDev/office-ui-fabric-react/pull/9622 be more succintly seen and summarized?
+//      - How could perf results of https://github.com/microsoft/fluentui/pull/9622 be more succintly seen and summarized?
 //        - Some way of differing parts of the call graph that differ, from the root function (in this case filteredAssign)
-//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9516
-//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9548
-//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9580
-//      - https://github.com/OfficeDev/office-ui-fabric-react/pull/9432
+//      - https://github.com/microsoft/fluentui/pull/9516
+//      - https://github.com/microsoft/fluentui/pull/9548
+//      - https://github.com/microsoft/fluentui/pull/9580
+//      - https://github.com/microsoft/fluentui/pull/9432
 //    - How will pass/fail be determined?
 //      - What role should React measurements play in results?
 //    - Tick Processing
@@ -287,7 +287,7 @@ module.exports = async function getPerfRegressions() {
  * @returns {string}
  */
 function createReport(testResults) {
-  const report = '## [Perf Analysis](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing)\n'
+  const report = '## [Perf Analysis](https://github.com/microsoft/fluentui/wiki/Perf-Testing)\n'
 
     // Show only significant changes by default.
     .concat(createScenarioTable(testResults, false))
@@ -325,10 +325,10 @@ function createScenarioTable(testResults, showAll) {
   <tr>
     <th>Scenario</th>
     <th>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
     </th>
     <th>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
     </th>
     <th>Status</th>
   </tr>`.concat(

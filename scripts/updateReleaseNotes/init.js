@@ -25,8 +25,8 @@ const argv = yargs
   .option('debug', { describe: 'Use debug mode for the GitHub API', type: 'boolean', default: false })
   // Default to checking the past 5 days in case there were any missed days or other issues
   .option('age', { describe: 'Get tags/releases up to this many days old', type: 'number', default: 5 })
-  .option('owner', { describe: 'Owner of the repo to work against', type: 'string', default: 'OfficeDev' })
-  .option('repo', { describe: 'Repo to work against', type: 'string', default: 'office-ui-fabric-react' })
+  .option('owner', { describe: 'Owner of the repo to work against', type: 'string', default: 'microsoft' })
+  .option('repo', { describe: 'Repo to work against', type: 'string', default: 'fluentui' })
   .version(false)
   .help().argv;
 

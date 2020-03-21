@@ -7,9 +7,8 @@ const FluentThemeBasicExampleCode = require('!raw-loader!./examples/FluentTheme.
 
 export class FluentThemePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
-    const mergeStylesUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/wiki/mergeStyles';
-    const loadThemeUrl =
-      'https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/styles/theme.ts#L80';
+    const mergeStylesUrl = 'https://github.com/microsoft/fluentui/wiki/mergeStyles';
+    const loadThemeUrl = 'https://github.com/microsoft/fluentui/blob/master/packages/styling/src/styles/theme.ts#L80';
     return (
       <ComponentPage
         title="Fluent Color Theme"

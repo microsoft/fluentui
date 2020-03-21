@@ -8,7 +8,7 @@ export const SelectionPageProps: IDocPageProps = {
   title: 'Selection',
   componentName: 'SelectionExample',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/utilities/selection',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/utilities/selection',
   examples: [
     {
       title: 'Basic Selection Example',

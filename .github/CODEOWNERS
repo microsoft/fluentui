@@ -50,7 +50,7 @@ Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/charting/ @Raghurk
-packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
+packages/date-time @lorejoh @evlevy
 packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @JasonGore
@@ -81,7 +81,7 @@ packages/office-ui-fabric-react/src/components/ActivityItem/ @jdhuntington
 packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
 packages/office-ui-fabric-react/src/components/Breadcrumb/ @jdhuntington
 packages/office-ui-fabric-react/src/components/Button/ @khmakoto
-packages/office-ui-fabric-react/src/components/Calendar/ @OfficeDev/uifabric-calendar @lorejoh
+packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
 packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
 packages/office-ui-fabric-react/src/components/Check/ @KevinTCoughlin
@@ -93,7 +93,7 @@ packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
 packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
-packages/office-ui-fabric-react/src/components/DatePicker/ @OfficeDev/uifabric-calendar @lorejoh
+packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh
 packages/office-ui-fabric-react/src/components/DetailsList/ @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/Dialog/ @JasonGore
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
@@ -153,7 +153,7 @@ packages/experiments/src/components/Toggle/  @khmakoto @JasonGore
 packages/office-ui-fabric-react/src/components/Announced/docs/ @natalieethell
 # packages/office-ui-fabric-react/src/components/Breadcrumb/docs/
 packages/office-ui-fabric-react/src/components/Button/docs/  @khmakoto
-packages/office-ui-fabric-react/src/components/Calendar/docs/   @OfficeDev/uifabric-calendar @lorejoh
+packages/office-ui-fabric-react/src/components/Calendar/docs/   @lorejoh
 packages/office-ui-fabric-react/src/components/Callout/docs/  @joschect
 packages/office-ui-fabric-react/src/components/react-cards/Card/docs/  @khmakoto
 # packages/office-ui-fabric-react/src/components/Check/docs/
@@ -163,7 +163,7 @@ packages/office-ui-fabric-react/src/components/ChoiceGroup/docs/   @srideshpande
 # packages/office-ui-fabric-react/src/components/ComboBox/docs/
 packages/office-ui-fabric-react/src/components/CommandBar/docs/   @micahgodbolt
 packages/office-ui-fabric-react/src/components/ContextualMenu/docs/  @joschect
-packages/office-ui-fabric-react/src/components/DatePicker/docs/   @OfficeDev/uifabric-calendar @lorejoh
+packages/office-ui-fabric-react/src/components/DatePicker/docs/   @lorejoh
 packages/office-ui-fabric-react/src/components/DetailsList/docs/ @KevinTCoughlin
 # packages/office-ui-fabric-react/src/components/Dialog/docs/
 packages/office-ui-fabric-react/src/components/DocumentCard/docs/ @yiminwu

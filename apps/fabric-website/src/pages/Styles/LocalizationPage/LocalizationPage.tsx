@@ -7,7 +7,7 @@ import * as styles from './LocalizationPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/LocalizationPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/LocalizationPage/docs';
 
 const directionalIconsData = require('../../../data/directional-icons.json');
 const localizedFontsData = require('../../../data/localized-fonts.json');

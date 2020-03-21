@@ -4,7 +4,7 @@
   "description": "A package that transforms api-extractor .api.json files into page.json files",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "main": "lib/index.js",
