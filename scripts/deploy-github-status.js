@@ -2,8 +2,8 @@ let argv = require('yargs').argv;
 let GitHubApi = require('github');
 
 const REPO_DETAILS = {
-  owner: "OfficeDev",
-  repo: "office-ui-fabric-react",
+  owner: "microsoft",
+  repo: "fluentui",
 };
 
 let statusConfig = Object.assign({},
