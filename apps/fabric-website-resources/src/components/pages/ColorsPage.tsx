@@ -119,7 +119,7 @@ export class ColorsPage extends React.Component<{}, IColorsPageState> {
       this._fabricSlotWidget(FabricSlots.white),
     ];
 
-    const stylingUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/styling';
+    const stylingUrl = 'https://github.com/microsoft/fluentui/tree/master/packages/styling';
 
     return (
       <div className="ms-themer">
