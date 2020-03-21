@@ -25,8 +25,9 @@ steps:
       npm run buildfast
     displayName: build ci
 
-  - script: |
-      npm run vrtest
-    displayName: run VR Test
-    env:
-      SCREENER_API_KEY: $(screener.key)
+# disable in this branch
+#  - script: |
+#      npm run vrtest
+#    displayName: run VR Test
+#    env:
+#      SCREENER_API_KEY: $(screener.key)
