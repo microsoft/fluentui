@@ -1,8 +1,10 @@
 import * as React from 'react';
-import { Accordion, Segment } from 'src/index';
-import ComponentExampleTitle from 'docs/src/components/ComponentDoc/ComponentExample/ComponentExampleTitle';
-import ComponentExample from 'docs/src/components/ComponentDoc/ComponentExample';
 import * as _ from 'lodash';
+
+import { Accordion, Segment } from '@fluentui/react-northstar';
+import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
+import ComponentExample from '../ComponentExample';
+import { ComponentBundleSizeChart } from './ComponentBundleSizeChart';
 
 export interface ComponentBundleSizeExampleProps {
   title: React.ReactNode;
@@ -11,12 +13,14 @@ export interface ComponentBundleSizeExampleProps {
 }
 
 const ComponentBundleSizeExample: React.FunctionComponent<ComponentBundleSizeExampleProps> = props => {
-  const { title, description } = props;
+  const { title, description, examplePath } = props;
+  // "components/Divider/Performance/Divider.bsize" -> dividerBSizeTsxJs
+  const perfTestName = `${_.camelCase(_.last(examplePath.split('/')))}TsxJs`;
   return (
     <Segment variables={{ padding: 0 }}>
       <Segment variables={{ boxShadowColor: undefined }}>
         <ComponentExampleTitle title={title} description={description} />
-        <div>no data yet</div>
+        <ComponentBundleSizeChart bundleSizeTestName={perfTestName} />
       </Segment>
       <Accordion
         panels={
@@ -33,7 +37,7 @@ const ComponentBundleSizeExample: React.FunctionComponent<ComponentBundleSizeExa
               },
               content: {
                 key: 'c',
-                content: <ComponentExample {..._.omit(props, 'title', 'description')} resetTheme />, // resetTheme to make sure the bundle size example contains the theme
+                content: <ComponentExample examplePath={examplePath} resetTheme />, // resetTheme to make sure the bundle size example contains the theme
               },
             },
           ] as any[]
