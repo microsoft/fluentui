@@ -2,11 +2,11 @@
   "name": "@fluentui/react-theming",
   "version": "0.47.0",
   "description": "> TODO: description",
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
+  "homepage": "https://github.com/microsoft/fluentui",
   "bugs": {
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react/issues"
+    "url": "https://github.com/microsoft/fluentui/issues"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "repository": "microsoft/fluentui.git",
   "license": "MIT",
   "files": [
     "lib"

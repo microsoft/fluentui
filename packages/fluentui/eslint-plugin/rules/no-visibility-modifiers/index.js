@@ -3,8 +3,7 @@ const isTypeScriptFile = require('../../utils/isTypeScriptFile');
 const { AST_NODE_TYPES, ESLintUtils } = require('@typescript-eslint/experimental-utils');
 
 const createRule = ESLintUtils.RuleCreator(
-  name =>
-    `https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/eslint-plugin/rules/${name}/index.js`,
+  name => `https://github.com/microsoft/fluentui/blob/master/packages/fluentui/eslint-plugin/rules/${name}/index.js`,
 );
 
 module.exports = createRule({

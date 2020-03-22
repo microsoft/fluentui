@@ -21,8 +21,8 @@ const hasAddedLinesAfterVersionInChangelog = async (danger: DangerDSLType): Prom
 };
 
 const getMalformedChangelogEntries = async (danger: DangerDSLType): Promise<string[]> => {
-  // +- description @githubname ([#DDDD](https://github.com/OfficeDev/office-ui-fabric-react/pull/DDDD))
-  const validEntry = /^\+- .*@\S+ \(\[#(\d+)]\(https:\/\/github\.com\/OfficeDev\/office-ui-fabric-react\/pull\/\1\)\)$/;
+  // +- description @githubname ([#DDDD](https://github.com/microsoft/fluentui/pull/DDDD))
+  const validEntry = /^\+- .*@\S+ \(\[#(\d+)]\(https:\/\/github\.com\/microsoft\/fluentui\/pull\/\1\)\)$/;
 
   const addedLines = await getAddedLinesFromChangelog(danger);
 
@@ -60,7 +60,7 @@ export default async ({ danger, fail, warn }: DangerJS) => {
       malformedChangelogEntries.forEach(entry => {
         fail(`Invalid entry format in ${CHANGELOG_FILE}: >${entry}<
 
-The correct format is: \`- description @githubname ([#DDDD](https://github.com/OfficeDev/office-ui-fabric-react/pull/DDDD)\``);
+The correct format is: \`- description @githubname ([#DDDD](https://github.com/microsoft/fluentui/pull/DDDD)\``);
       });
 
       const hasLine = await hasAddedLinesAfterVersionInChangelog(danger);

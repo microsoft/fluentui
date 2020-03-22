@@ -3,7 +3,7 @@
   "description": "A set of reusable framework accessibility behaviours.",
   "version": "0.47.0",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
-  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
     "keyboard-key": "1.0.1",
@@ -17,7 +17,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/accessibility",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/accessibility",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
@@ -25,7 +25,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "repository": "microsoft/fluentui.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",

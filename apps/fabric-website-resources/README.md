@@ -6,4 +6,4 @@ This package contains the demo app that runs when you do `yarn start` from the r
 
 To see a live version of this app, go to https://aka.ms/fabricdemo and choose a version.
 
-See the [readme](https://github.com/OfficeDev/office-ui-fabric-react) for more information about Fabric and instructions for getting started with development, including how to run this app locally.
+See the [readme](https://github.com/microsoft/fluentui) for more information about Fabric and instructions for getting started with development, including how to run this app locally.

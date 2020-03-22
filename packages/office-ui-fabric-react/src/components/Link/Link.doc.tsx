@@ -8,8 +8,7 @@ const LinkBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 export const LinkPageProps: IDocPageProps = {
   title: 'Link',
   componentName: 'Link',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Link',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Link',
   examples: [
     {
       title: 'Link',

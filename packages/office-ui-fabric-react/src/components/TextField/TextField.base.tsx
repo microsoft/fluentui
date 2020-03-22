@@ -483,8 +483,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
     // which have *probably* been fixed now:
-    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/744 (likely fixed)
-    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/824 (confirmed fixed)
+    // - https://github.com/microsoft/fluentui/issues/744 (likely fixed)
+    // - https://github.com/microsoft/fluentui/issues/824 (confirmed fixed)
 
     // TODO (Fabric 8?) - Switch to calling only onChange. This switch is pretty disruptive for
     // tests (ours and maybe consumers' too), so it seemed best to do the switch in a major bump.

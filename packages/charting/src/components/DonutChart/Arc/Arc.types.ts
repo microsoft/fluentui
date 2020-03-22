@@ -51,6 +51,12 @@ export interface IArcProps {
    * Uniq string for chart
    */
   uniqText?: string;
+
+  /**
+   * string for callout id
+   */
+  calloutId?: string;
+
   /**
    * Active Arc for chart
    */

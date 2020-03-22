@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Add support for screen reader when hover on donnut chart",
+  "packageName": "@uifabric/charting",
+  "email": "v-satgar@microsoft.com",
+  "commit": "0a9b9b17cf2af3bbd3af947cc1685f8edcec0afc",
+  "dependentChangeType": "patch",
+  "date": "2020-03-19T13:13:28.108Z"
+}

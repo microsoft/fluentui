@@ -3,7 +3,7 @@ import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 const title = 'Motion';
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/MotionRelated.md') as string;
 const componentUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/MotionPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/MotionPage';
 
 export const MotionPageProps: TFabricPlatformPageProps = {
   web: {
