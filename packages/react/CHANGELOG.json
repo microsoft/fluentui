@@ -2,6 +2,27 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@fluentui/react_v7.105.3",
+      "version": "7.105.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "Minor script changes.",
+            "author": "dzearing@microsoft.com",
+            "commit": "b00a4fb9a29289adea7cb85463d5fd0b7923c226"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Mar 2020 12:25:01 GMT",
       "tag": "@fluentui/react_v7.105.2",
       "version": "7.105.2",
