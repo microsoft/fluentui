@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button, Flex, createSvgIcon } from '@fluentui/react-northstar';
 import cx from 'classnames';
 import { Volume } from 'grommet-icons';
+import { FaVolumeUp } from 'react-icons/fa';
 
 const SoundIcon = createSvgIcon({
   displayName: 'SoundIcon',
@@ -22,25 +23,28 @@ const SoundIcon = createSvgIcon({
 const ButtonExample = () => (
   <Flex column gap="gap.smaller">
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} content="Sound on" />
-      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound on" />
-      <Button iconAsJSX={<SoundIcon />} content="Sound on" />
-      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound on" />
-      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound on" />
+      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound" />
+      <Button iconAsJSX={<SoundIcon />} content="Sound" />
+      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound" />
+      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound" />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} content="Sound" />
+      <Button iconAsJSX={<FaVolumeUp />} content="Sound" />
     </Flex>
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} content="Sound on" primary />
-      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound on" primary />
-      <Button iconAsJSX={<SoundIcon />} content="Sound on" primary />
-      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound on" primary />
-      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound on" primary />
+      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound" primary />
+      <Button iconAsJSX={<SoundIcon />} content="Sound" primary />
+      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound" primary />
+      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound" primary />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} content="Sound" primary />
+      <Button iconAsJSX={<FaVolumeUp />} content="Sound" primary />
     </Flex>
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} iconOnly />
       <Button iconAsBox={{ content: <SoundIcon /> }} iconOnly />
       <Button iconAsJSX={<SoundIcon />} iconOnly />
       <Button iconAsBox={{ content: <Volume color="currentColor" /> }} iconOnly />
-      <Button iconAsJSX={<Volume color="currentColor" />} iconOnly />
+      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound" />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} content="Sound" />
+      <Button iconAsJSX={<FaVolumeUp />} content="Sound" />
     </Flex>
     <Flex gap="gap.smaller">
       <Button icon={{ name: 'volume' }} iconOnly primary />
@@ -48,34 +52,40 @@ const ButtonExample = () => (
       <Button iconAsJSX={<SoundIcon />} iconOnly primary />
       <Button iconAsBox={{ content: <Volume color="currentColor" /> }} iconOnly primary />
       <Button iconAsJSX={<Volume color="currentColor" />} iconOnly primary />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} iconOnly primary />
+      <Button iconAsJSX={<FaVolumeUp />} iconOnly primary />
     </Flex>
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} iconOnly circular />
       <Button iconAsBox={{ content: <SoundIcon /> }} iconOnly circular />
       <Button iconAsJSX={<SoundIcon />} iconOnly circular />
       <Button iconAsBox={{ content: <Volume color="currentColor" /> }} iconOnly circular />
       <Button iconAsJSX={<Volume color="currentColor" />} iconOnly circular />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} iconOnly circular />
+      <Button iconAsJSX={<FaVolumeUp />} iconOnly circular />
     </Flex>
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} iconOnly primary circular />
       <Button iconAsBox={{ content: <SoundIcon /> }} iconOnly primary circular />
       <Button iconAsJSX={<SoundIcon />} iconOnly primary circular />
       <Button iconAsBox={{ content: <Volume color="currentColor" /> }} iconOnly primary circular />
       <Button iconAsJSX={<Volume color="currentColor" />} iconOnly primary circular />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} iconOnly primary circular />
+      <Button iconAsJSX={<FaVolumeUp />} iconOnly primary circular />
     </Flex>
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} content="Sound on" text />
-      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound on" text />
-      <Button iconAsJSX={<SoundIcon />} content="Sound on" text />
-      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound on" text />
-      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound on" text />
+      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound" text />
+      <Button iconAsJSX={<SoundIcon />} content="Sound" text />
+      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound" text />
+      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound" text />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} content="Sound" text />
+      <Button iconAsJSX={<FaVolumeUp />} content="Sound" text />
     </Flex>
     <Flex gap="gap.smaller">
-      <Button icon={{ name: 'volume' }} content="Sound on" primary />
-      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound on" primary text />
-      <Button iconAsJSX={<SoundIcon />} content="Sound on" primary text />
-      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound on" primary text />
-      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound on" primary text />
+      <Button iconAsBox={{ content: <SoundIcon /> }} content="Sound" primary text />
+      <Button iconAsJSX={<SoundIcon />} content="Sound" primary text />
+      <Button iconAsBox={{ content: <Volume color="currentColor" /> }} content="Sound" primary text />
+      <Button iconAsJSX={<Volume color="currentColor" />} content="Sound" primary text />
+      <Button iconAsBox={{ content: <FaVolumeUp /> }} content="Sound" primary text />
+      <Button iconAsJSX={<FaVolumeUp />} content="Sound" primary text />
     </Flex>
   </Flex>
 );

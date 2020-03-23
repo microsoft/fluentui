@@ -8,6 +8,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Classnames from 'classnames';
 import * as GrommetIcons from 'grommet-icons';
+import * as ReactIconsFa from 'react-icons/fa';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
@@ -68,6 +69,10 @@ export const imports: Record<string, { version: string; module: any }> = {
   'grommet-icons': {
     version: docsComponentsPackageJson.dependencies['grommet-icons'],
     module: GrommetIcons,
+  },
+  'react-icons/fa': {
+    version: docsComponentsPackageJson.dependencies['react-icons'],
+    module: ReactIconsFa,
   },
 };
 
