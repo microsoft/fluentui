@@ -1,8 +1,8 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import Popper from 'popper.js';
+import * as PopperJs from '@popperjs/core';
 
 type GetContainerStylesOptions = {
-  placement: Popper.Position;
+  placement: PopperJs.BasePlacement;
   margin: string;
 };
 
@@ -15,7 +15,7 @@ type GetPointerStylesOptions = {
   height: string;
   width: string;
 
-  placement: Popper.Position;
+  placement: PopperJs.BasePlacement;
   rtl: boolean;
   svg?: string;
 };
@@ -24,18 +24,17 @@ export const getContainerStyles = (options: GetContainerStylesOptions): ICSSInJS
   const { placement, margin } = options;
 
   return {
-    // TODO: Popper v2, replace margins with paddings
     ...(placement === 'bottom' && {
-      marginTop: margin,
+      paddingTop: margin,
     }),
     ...(placement === 'top' && {
-      marginBottom: margin,
+      paddingBottom: margin,
     }),
     ...(placement === 'left' && {
-      marginRight: margin,
+      paddingRight: margin,
     }),
     ...(placement === 'right' && {
-      marginLeft: margin,
+      paddingLeft: margin,
     }),
   };
 };
@@ -64,22 +63,17 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
     }),
 
     ...(placement === 'bottom' && {
-      // TODO: use in Popper v2
-      // top: `calc(${height} + (${borderSize} * 2))`,
-      top: `calc((${height} * -1) + (${borderSize} * 2))`,
+      top: `calc(${height} + (${borderSize} * 2))`,
     }),
     ...(placement === 'top' && {
-      // bottom: `calc(${height} + ${borderSize})`,
-      bottom: `calc((${height} * -1) + ${borderSize})`,
+      bottom: `calc(${height} + ${borderSize})`,
     }),
 
     ...(placement === 'left' && {
-      // right: `calc(${height} + ${borderSize})`,
-      right: `calc((${height} * -1) + (${borderSize} * 2))`,
+      right: `calc(${height} + ${borderSize})`,
     }),
     ...(placement === 'right' && {
-      // left: `calc(${height} + ${borderSize})`,
-      left: `calc((${height} * -1) + (${borderSize} * 2))`,
+      left: `calc(${height} + ${borderSize})`,
     }),
 
     '::before': {
@@ -177,9 +171,7 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: gap,
-          // TODO: use in Popper v2
-          // bottom: `calc(${width} + ${borderSize})`,
-          bottom: `calc((${gap} * 2) + ${borderSize})`,
+          bottom: `calc(${width} + ${borderSize})`,
           transform: `rotate(${rtl ? -90 : 90}deg)`,
         }),
         ...(placement === 'top' && {
@@ -187,24 +179,21 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: gap,
-          // bottom: `calc(${gap} - ${borderSize})`,
-          bottom: `calc(${gap} * 2)`,
+          bottom: `calc(${gap} - ${borderSize})`,
           transform: `rotate(${rtl ? 90 : -90}deg)`,
         }),
         ...(placement === 'left' && {
           height: width,
           width: height,
 
-          // left: height,
-          left: borderSize,
+          left: height,
           transform: `rotate(${rtl ? 0 : 180}deg)`,
         }),
         ...(placement === 'right' && {
           height: width,
           width: height,
 
-          // right: height,
-          right: borderSize,
+          right: height,
           transform: `rotate(${rtl ? 180 : 0}deg)`,
         }),
       },

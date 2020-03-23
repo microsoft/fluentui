@@ -1,6 +1,5 @@
-import { Placement } from 'popper.js';
-
-import { Alignment, Position } from './types';
+import * as PopperJs from '@popperjs/core';
+import { Alignment, OffsetFunctionParam, OffsetModifier, Position } from './types';
 
 enum PlacementParts {
   top = 'top',
@@ -58,38 +57,25 @@ export const getPlacement = ({
   align: Alignment;
   position: Position;
   rtl: boolean;
-}): Placement => {
+}): PopperJs.Placement => {
   const alignment: Alignment = shouldAlignToCenter(position, align) ? 'center' : align;
   const computedPosition = getPositionMap(rtl)[position];
   const computedAlignmnent = getAlignmentMap(rtl)[alignment];
   const stringifiedAlignment = computedAlignmnent && `-${computedAlignmnent}`;
 
-  return `${computedPosition}${stringifiedAlignment}` as Placement;
+  return `${computedPosition}${stringifiedAlignment}` as PopperJs.Placement;
 };
 
-//
-// OFFSET VALUES ADJUSTMENT
-//
-
-const flipPlusMinusSigns = (offset: string): string => {
-  return offset
-    .replace(/\-/g, '<plus>')
-    .replace(/^(\s*)(?=\d)/, '<minus>')
-    .replace(/\+/g, '<minus>')
-    .replace(/<plus>/g, '+')
-    .replace(/<minus>/g, '-')
-    .trimLeft()
-    .replace(/^\+/, '');
-};
-
-export const applyRtlToOffset = (offset: string, position: Position): string => {
-  if (position === 'above' || position === 'below') {
-    const [horizontal, vertical] = offset.split(',');
-    return [flipPlusMinusSigns(horizontal), vertical]
-      .join(', ')
-      .replace(/, $/, '')
-      .trim();
+export const applyRtlToOffset = (
+  offset: OffsetModifier['options']['offset'] | undefined,
+): OffsetModifier['options']['offset'] | undefined => {
+  if (typeof offset === 'undefined') {
+    return undefined;
   }
 
-  return offset;
+  if (Array.isArray(offset)) {
+    return offset.map(item => (item ? item * -1 : item)) as [number, number];
+  }
+
+  return (param: OffsetFunctionParam) => offset(param).map(item => (item ? item * -1 : item)) as [number, number];
 };

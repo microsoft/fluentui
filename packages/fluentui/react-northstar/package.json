@@ -15,6 +15,7 @@
     "@fluentui/react-icons-northstar": "^0.47.0",
     "@fluentui/react-proptypes": "^0.47.0",
     "@fluentui/styles": "^0.47.0",
+    "@popperjs/core": "^2.1.1",
     "classnames": "^2.2.6",
     "downshift": "3.2.14",
     "fela": "^10.6.1",
@@ -26,7 +27,6 @@
     "inline-style-expand-shorthand": "^1.2.0",
     "keyboard-key": "1.0.1",
     "lodash": "^4.17.15",
-    "popper.js": "^1.15.0",
     "prop-types": "^15.7.2",
     "react-fela": "^10.6.1",
     "react-transition-group": "^4.3.0"
