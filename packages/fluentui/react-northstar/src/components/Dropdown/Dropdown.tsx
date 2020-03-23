@@ -860,8 +860,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
         break;
       }
-      case Downshift.stateChangeTypes.clickItem:
       case Downshift.stateChangeTypes.keyDownEnter:
+      case Downshift.stateChangeTypes.clickItem:
         const shouldAddHighlightedIndex = !multiple && !!items;
 
         newState.searchQuery = this.getSelectedItemAsString(newValue);
@@ -879,6 +879,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         if (multiple) {
           setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
         }
+
         this.tryFocusTriggerButton();
 
         break;
@@ -948,6 +949,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           newState.searchQuery = multiple ? '' : newSearchQuery;
           newState.open = false;
           newState.highlightedIndex = newHighlightedIndex;
+
+          this.tryFocusTriggerButton();
         } else {
           newState.open = newOpen;
         }
@@ -1121,7 +1124,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       if (!_.isNil(highlightedIndex) && filteredItems.length && !items[highlightedIndex]['disabled']) {
         selectItemAtIndex(highlightedIndex);
 
-        if (multiple && moveFocusOnTab !== undefined && !moveFocusOnTab) {
+        if (multiple && !moveFocusOnTab) {
           e.preventDefault();
         }
       } else {
