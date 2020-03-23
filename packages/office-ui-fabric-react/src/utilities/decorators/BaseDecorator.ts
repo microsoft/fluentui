@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { BaseComponent, hoistMethods, unhoistMethods } from '../../Utilities';
+import { hoistMethods, unhoistMethods } from '../../Utilities';
 
-export class BaseDecorator<TProps, TState> extends BaseComponent<TProps, TState> {
-  // tslint:disable-next-line:typedef
-  protected _skipComponentRefResolution = true;
-
+export class BaseDecorator<TProps, TState> extends React.Component<TProps, TState> {
   protected _composedComponentInstance: React.Component<TProps, TState>;
 
   private _hoisted: string[];

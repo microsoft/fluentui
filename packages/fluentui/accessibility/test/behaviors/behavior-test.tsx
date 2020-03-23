@@ -13,6 +13,7 @@ import {
   embedBehavior,
   iconBehavior,
   imageBehavior,
+  indicatorBehavior,
   inputBehavior,
   loaderBehavior,
   menuBehavior,
@@ -79,7 +80,8 @@ import {
   gridRowNestedBehavior,
   gridCellBehavior,
   gridCellMultipleFocusableBehavior,
-  gridCellWithFocusableElementBehavior
+  gridCellWithFocusableElementBehavior,
+  cardBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';
@@ -98,6 +100,7 @@ testHelper.addBehavior('embedBehavior', embedBehavior);
 testHelper.addBehavior('iconBehavior', iconBehavior);
 testHelper.addBehavior('inputBehavior', inputBehavior);
 testHelper.addBehavior('imageBehavior', imageBehavior);
+testHelper.addBehavior('indicatorBehavior', indicatorBehavior);
 testHelper.addBehavior('loaderBehavior', loaderBehavior);
 testHelper.addBehavior('menuBehavior', menuBehavior);
 testHelper.addBehavior('menuItemBehavior', menuItemBehavior);
@@ -164,5 +167,6 @@ testHelper.addBehavior('gridRowNestedBehavior', gridRowNestedBehavior);
 testHelper.addBehavior('gridCellBehavior', gridCellBehavior);
 testHelper.addBehavior('gridCellMultipleFocusableBehavior', gridCellMultipleFocusableBehavior);
 testHelper.addBehavior('gridCellWithFocusableElementBehavior', gridCellWithFocusableElementBehavior);
+testHelper.addBehavior('cardBehavior', cardBehavior);
 
 testHelper.run(behaviorMenuItems);

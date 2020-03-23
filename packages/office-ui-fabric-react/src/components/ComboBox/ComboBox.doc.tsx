@@ -20,33 +20,34 @@ const ComboBoxCustomStyledExampleCode = require('!raw-loader!office-ui-fabric-re
 export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
   componentName: 'ComboBox',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
   examples: [
     {
       title: 'Basic uncontrolled ComboBox',
       code: ComboBoxBasicExampleCode,
-      view: <ComboBoxBasicExample />
+      view: <ComboBoxBasicExample />,
     },
     {
       title: 'ComboBox with toggleable autoComplete and allowFreeform',
       code: ComboBoxTogglesExampleCode,
-      view: <ComboBoxTogglesExample />
+      view: <ComboBoxTogglesExample />,
     },
     {
       title: 'Controlled ComboBox',
       code: ComboBoxControlledExampleCode,
-      view: <ComboBoxControlledExample />
+      view: <ComboBoxControlledExample />,
     },
     {
       title: 'VirtualizedComboBox',
       code: ComboBoxVirtualizedExampleCode,
-      view: <ComboBoxVirtualizedExample />
+      view: <ComboBoxVirtualizedExample />,
     },
     {
       title: 'ComboBox with custom styling',
       code: ComboBoxCustomStyledExampleCode,
-      view: <ComboBoxCustomStyledExample />
-    }
+      view: <ComboBoxCustomStyledExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxOverview.md'),
   bestPractices: '',
@@ -54,5 +55,5 @@ export const ComboBoxPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ComboBox/docs/ComboBoxDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

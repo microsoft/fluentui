@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   mergeStyles,
   IContextualMenuItem,
   ResizeGroupDirection,
@@ -8,7 +7,7 @@ import {
   ResizeGroup,
   OverflowSet,
   IButtonStyles,
-  DirectionalHint
+  DirectionalHint,
 } from 'office-ui-fabric-react';
 
 export interface IOverflowData {
@@ -26,7 +25,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
-      checked: checked
+      checked: checked,
     };
 
     cacheKey = cacheKey + item.key;
@@ -35,7 +34,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
 
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [] as any[]
+    overflow: [] as any[],
   };
 
   if (cachingEnabled) {
@@ -50,8 +49,8 @@ const buttonStyles: IButtonStyles = {
   root: {
     paddingBottom: 10,
     paddingTop: 10,
-    width: 100
-  }
+    width: 100,
+  },
 };
 
 // Styles for the container of the ResizeGroup
@@ -59,7 +58,7 @@ const buttonStyles: IButtonStyles = {
 const exampleHeight = '40vh';
 const resizeRootClassName = mergeStyles({ height: exampleHeight });
 
-export class ResizeGroupVerticalOverflowSetExample extends BaseComponent {
+export class ResizeGroupVerticalOverflowSetExample extends React.Component {
   public render(): JSX.Element {
     const dataToRender = generateData(20, false, false);
     return (

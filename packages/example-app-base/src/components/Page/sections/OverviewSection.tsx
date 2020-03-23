@@ -16,7 +16,7 @@ export const OverviewSection: React.FunctionComponent<IPageSectionPropsWithSecti
     readableSectionName = sectionName,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const editUrl = componentUrl
     ? getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName!), baseUrl: componentUrl, platform })

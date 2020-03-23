@@ -5,13 +5,13 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 const examplePersona: IPersonaSharedProps = {
   secondaryText: 'Designer',
   tertiaryText: 'In a meeting',
-  optionalText: 'Available at 4:00pm'
+  optionalText: 'Available at 4:00pm',
 };
 
 const personaWithInitials: IPersonaSharedProps = {
   ...examplePersona,
   text: 'Maor Sharett',
-  imageInitials: 'MS'
+  imageInitials: 'MS',
 };
 
 export const PersonaInitialsExample: React.FunctionComponent = () => {

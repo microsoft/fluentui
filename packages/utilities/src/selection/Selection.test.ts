@@ -62,7 +62,7 @@ describe('Selection', () => {
   it('returns false on isAllSelected when no items are selectable', () => {
     const selection = new Selection({
       canSelectItem: () => false,
-      onSelectionChanged
+      onSelectionChanged,
     });
 
     selection.setItems(setA);
@@ -79,7 +79,7 @@ describe('Selection', () => {
   it('resets unselectable count on setting new items', () => {
     let canSelect = false;
     const selection = new Selection({
-      canSelectItem: () => canSelect
+      canSelectItem: () => canSelect,
     });
 
     selection.setItems(setA);
@@ -137,7 +137,7 @@ describe('Selection', () => {
     const items: ICustomItem[] = [{ id: 'a' }, { id: 'b' }];
     const selection = new Selection<ICustomItem>({
       onSelectionChanged: onSelectionChanged,
-      getKey: (item: ICustomItem) => item.id
+      getKey: (item: ICustomItem) => item.id,
     });
     selection.setItems(items);
 

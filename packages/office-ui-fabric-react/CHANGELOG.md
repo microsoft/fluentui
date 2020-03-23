@@ -1,7 +1,97 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 02 Mar 2020 12:25:44 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.105.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.105.1
+Thu, 19 Mar 2020 12:29:37 GMT
+
+### Patches
+
+- Run prettier: 120 line length, trailing commas. And minor documentation updates prompted by line length changes. (elcraig@microsoft.com)
+## 7.105.0
+Tue, 17 Mar 2020 20:48:59 GMT
+
+### Minor changes
+
+- Pass default ContextualMenuItem renderer to onRenderMenuList (owcampbe@microsoft.com)
+- Added support for overriding persona presence colors (andreas.hage@microsoft.com)
+### Patches
+
+- Remove duplicated export (nakanaki@microsoft.com)
+## 7.104.1
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- Ensure ContextualMenu section header generates valid element ID (ermercer@microsoft.com)
+- Adding onClick callback to divider in SplitButtons that stops propagation so that clicking on the divider does not trigger action. (humbertomakotomorimoto@gmail.com)
+## 7.104.0
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Minor changes
+
+- BaseComponent: remove using BaseComponent from oufr package (xgao@microsoft.com)
+## 7.103.0
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Minor changes
+
+- KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips (chiechan@microsoft.com)
+## 7.102.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+- withResponsiveMode: Add initializeResponsiveMode render performance optimization (KevinTCoughlin@users.noreply.github.com)
+## 7.101.0
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Minor changes
+
+- ITag: key can be number, in addition to string. (aneeshak@microsoft.com)
+### Patches
+
+- Fix the legacy items wrapper styles. (lijunle@gmail.com)
+- restore onRenderIcon prop for ContextualMenuSplitButton (kinhln@microsoft.com)
+## 7.100.0
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Minor changes
+
+- Adding isReversed prop to overflowSet so we can visually reverse the components and maintain consistent keyboarding navigation. (matejera@microsoft.com)
+- Export GroupedListSection (owcampbe@microsoft.com)
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
+- withViewport: cleaning up resize observer. (dzearing@microsoft.com)
+## 7.99.0
+Thu, 05 Mar 2020 12:27:53 GMT
+
+### Minor changes
+
+- Suggestions: Deprecating unused searchErrorText prop. (Humberto.Morimoto@microsoft.com)
+## 7.98.4
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Patches
+
+- Remove vertical-align flagged as unused (KevinTCoughlin@users.noreply.github.com)
+- MarqueeSelection: deleting html element references on unmount. (dzearing@microsoft.com)
+## 7.98.3
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Using tslint:disable-next-line instead of tslint:disable without a corresponding tslint:enable afterwards for all non-tests and non-data files. (Humberto.Morimoto@microsoft.com)
+- Link: Make focus work even when Link has block children. (humbertomakotomorimoto@gmail.com)
+- ScrollablePane example: fix strict function type errors (xgao@microsoft.com)
 ## 7.98.2
 Mon, 02 Mar 2020 12:25:44 GMT
 

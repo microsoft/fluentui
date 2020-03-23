@@ -10,9 +10,9 @@ import { Accessibility } from '../../types';
 const statusBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'img'
-    }
-  }
+      role: 'img',
+    },
+  },
 });
 
 export default statusBehavior;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
-import { BaseComponent, getRTL } from '../../Utilities';
+import { getRTL, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { IContextualMenuItemProps } from './ContextualMenuItem.types';
 
@@ -27,7 +27,11 @@ const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextual
     const onClick = (e: React.MouseEvent<HTMLElement>) => onCheckmarkClick(item, e);
 
     return (
-      <Icon iconName={item.canCheck !== false && isItemChecked ? 'CheckMark' : ''} className={classNames.checkmarkIcon} onClick={onClick} />
+      <Icon
+        iconName={item.canCheck !== false && isItemChecked ? 'CheckMark' : ''}
+        className={classNames.checkmarkIcon}
+        onClick={onClick}
+      />
     );
   }
   return null;
@@ -51,12 +55,24 @@ const renderSecondaryText = ({ item, classNames }: IContextualMenuItemProps) => 
 
 const renderSubMenuIcon = ({ item, classNames, theme }: IContextualMenuItemProps) => {
   if (hasSubmenu(item)) {
-    return <Icon iconName={getRTL(theme) ? 'ChevronLeft' : 'ChevronRight'} {...item.submenuIconProps} className={classNames.subMenuIcon} />;
+    return (
+      <Icon
+        iconName={getRTL(theme) ? 'ChevronLeft' : 'ChevronRight'}
+        {...item.submenuIconProps}
+        className={classNames.subMenuIcon}
+      />
+    );
   }
   return null;
 };
 
-export class ContextualMenuItemBase extends BaseComponent<IContextualMenuItemProps, {}> {
+export class ContextualMenuItemBase extends React.Component<IContextualMenuItemProps, {}> {
+  constructor(props: IContextualMenuItemProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
+
   public render() {
     const { item, classNames } = this.props;
 

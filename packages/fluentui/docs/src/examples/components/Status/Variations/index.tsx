@@ -4,8 +4,16 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Variations = () => (
   <ExampleSection title="Variations">
-    <ComponentExample title="Color" description="A status can have colors." examplePath="components/Status/Variations/StatusColorExample" />
-    <ComponentExample title="Icon" description="A status can have an icon." examplePath="components/Status/Variations/StatusIconExample" />
+    <ComponentExample
+      title="Color"
+      description="A status can have colors."
+      examplePath="components/Status/Variations/StatusColorExample"
+    />
+    <ComponentExample
+      title="Icon"
+      description="A status can have an icon."
+      examplePath="components/Status/Variations/StatusIconExample"
+    />
     <ComponentExample
       title="Custom"
       description="A status can be used to show different colors and icons."

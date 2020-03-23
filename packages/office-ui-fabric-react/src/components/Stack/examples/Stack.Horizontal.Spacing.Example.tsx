@@ -5,8 +5,8 @@ import { DefaultPalette, Stack, IStackStyles, IStackTokens } from 'office-ui-fab
 const stackStyles: IStackStyles = {
   root: {
     background: DefaultPalette.themeTertiary,
-    width: 300
-  }
+    width: 300,
+  },
 };
 const itemStyles: React.CSSProperties = {
   alignItems: 'center',
@@ -15,38 +15,38 @@ const itemStyles: React.CSSProperties = {
   display: 'flex',
   height: 50,
   justifyContent: 'center',
-  width: 50
+  width: 50,
 };
 
 // Tokens definition
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const numericalSpacingStackTokens: IStackTokens = {
   childrenGap: 10,
-  padding: 10
+  padding: 10,
 };
 const customSpacingStackTokens: IStackTokens = {
   childrenGap: '10%',
-  padding: 's1 15%'
+  padding: 's1 15%',
 };
 const themedExtraSmallStackTokens: IStackTokens = {
   childrenGap: 's2',
-  padding: 's2'
+  padding: 's2',
 };
 const themedSmallStackTokens: IStackTokens = {
   childrenGap: 's1',
-  padding: 's1'
+  padding: 's1',
 };
 const themedMediumStackTokens: IStackTokens = {
   childrenGap: 'm',
-  padding: 'm'
+  padding: 'm',
 };
 const themedLargeStackTokens: IStackTokens = {
   childrenGap: 'l1',
-  padding: 'l1'
+  padding: 'l1',
 };
 const themedExtraLargeStackTokens: IStackTokens = {
   childrenGap: 'l2',
-  padding: 'l2'
+  padding: 'l2',
 };
 
 export const HorizontalStackSpacingExample: React.FunctionComponent = () => {

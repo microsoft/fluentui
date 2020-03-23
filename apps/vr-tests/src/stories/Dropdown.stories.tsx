@@ -8,7 +8,7 @@ import {
   DropdownMenuItemType,
   IDropdownProps,
   Icon,
-  IDropdownOption
+  IDropdownOption,
 } from 'office-ui-fabric-react';
 
 storiesOf('Dropdown', module)
@@ -43,11 +43,11 @@ storiesOf('Dropdown', module)
           { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
           { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
           { key: 'F', text: 'Option f', disabled: true },
-          { key: 'G', text: 'Option g' }
+          { key: 'G', text: 'Option g' },
         ]}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Disabled option selected', () => (
     <Dropdown
@@ -62,7 +62,7 @@ storiesOf('Dropdown', module)
         { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
         { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
         { key: 'F', text: 'Option f', disabled: true },
-        { key: 'G', text: 'Option g' }
+        { key: 'G', text: 'Option g' },
       ]}
     />
   ))
@@ -79,11 +79,11 @@ storiesOf('Dropdown', module)
           { key: 'Apple', text: 'apple' },
           { key: 'Banana', text: 'banana', disabled: true },
           { key: 'Lemon', text: 'lemon', disabled: true },
-          { key: 'Orange', text: 'orange' }
+          { key: 'Orange', text: 'orange' },
         ]}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Custom Dropdown',
@@ -149,11 +149,11 @@ storiesOf('Dropdown', module)
           { key: 'G', text: 'Option g', data: { icon: 'EmojiNeutral' } },
           { key: 'H', text: 'Option h', data: { icon: 'ChatInviteFriend' } },
           { key: 'I', text: 'Option i', data: { icon: 'SecurityGroup' } },
-          { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } }
+          { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } },
         ]}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Required', () => (
     <Dropdown
@@ -162,7 +162,7 @@ storiesOf('Dropdown', module)
       required={true}
       options={[
         { key: 'A', text: 'Option a' },
-        { key: 'B', text: 'Option b' }
+        { key: 'B', text: 'Option b' },
       ]}
     />
   ))
@@ -172,7 +172,7 @@ storiesOf('Dropdown', module)
       required={true}
       options={[
         { key: 'A', text: 'Option a' },
-        { key: 'B', text: 'Option b' }
+        { key: 'B', text: 'Option b' },
       ]}
     />
   ));
@@ -206,7 +206,7 @@ storiesOf('Dropdown Disabled', module)
         { key: 'divider_2', text: '-', itemType: DropdownMenuItemType.Divider },
         { key: 'Header2', text: 'People', itemType: DropdownMenuItemType.Header },
         { key: 'F', text: 'Option f' },
-        { key: 'G', text: 'Option g' }
+        { key: 'G', text: 'Option g' },
       ]}
     />
   ));

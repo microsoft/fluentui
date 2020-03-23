@@ -5,6 +5,10 @@ import Vinyl from 'vinyl';
 
 import { getComponentInfo } from './util';
 
+import config from '../../config';
+
+const { paths } = config;
+
 const pluginName = 'gulp-react-docgen';
 
 export default (ignoredInterfaces: string[] = []) =>
@@ -23,9 +27,12 @@ export default (ignoredInterfaces: string[] = []) =>
       const infoFilename = file.basename.replace(/\.tsx$/, '.info.json');
       const contents = getComponentInfo(file.path, ignoredInterfaces);
 
+      // Forcing the base & cwd to be paths.base() to make sure this is cached & restored at the right location
       const infoFile = new Vinyl({
+        base: paths.base(),
+        cwd: paths.base(),
         path: `./${infoFilename}`,
-        contents: Buffer.from(JSON.stringify(contents, null, 2))
+        contents: Buffer.from(JSON.stringify(contents, null, 2)),
       });
       // `gulp-cache` relies on this private entry
       infoFile._cachedKey = file._cachedKey;
@@ -37,7 +44,7 @@ export default (ignoredInterfaces: string[] = []) =>
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack)
+        gutil.colors.gray(err.stack),
       ].join('\n\n');
       this.emit('error', pluginError);
     }

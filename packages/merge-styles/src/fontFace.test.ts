@@ -9,7 +9,7 @@ describe('fontFace', () => {
   it('can register a font face', () => {
     fontFace({
       fontFamily: 'Segoe UI',
-      src: 'url("foo")'
+      src: 'url("foo")',
     });
     expect(_stylesheet.getRules()).toEqual('@font-face{font-family:Segoe UI;src:url("foo");}');
   });

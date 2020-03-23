@@ -9,8 +9,8 @@ addDecorator(withInfo());
 addDecorator(withA11y());
 addParameters({
   a11y: {
-    manual: true
-  }
+    manual: true,
+  },
 });
 
 initializeIcons();
@@ -46,8 +46,8 @@ function generateStoriesFromExamples({ key, stories, req }) {
   if (!stories.has(componentName)) {
     stories.set(componentName, {
       default: {
-        title: componentName
-      }
+        title: componentName,
+      },
     });
   }
 

@@ -27,63 +27,64 @@ const PanelHandleDismissTargetExampleCode = require('!raw-loader!office-ui-fabri
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
   componentName: 'Panel',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Panel',
   examples: [
     {
       title: 'Basic',
       code: PanelBasicExampleCode,
-      view: <PanelBasicExample />
+      view: <PanelBasicExample />,
     },
     {
       title: 'Size options',
       code: PanelSizesExampleCode,
-      view: <PanelSizesExample />
+      view: <PanelSizesExample />,
     },
     {
       title: 'Panel - Footer',
       code: PanelFooterExampleCode,
-      view: <PanelFooterExample />
+      view: <PanelFooterExample />,
     },
     {
       title: 'Light dismiss',
       code: PanelLightDismissExampleCode,
-      view: <PanelLightDismissExample />
+      view: <PanelLightDismissExample />,
     },
     {
       title: 'Hidden on dismiss',
       code: PanelHiddenOnDismissExampleCode,
-      view: <PanelHiddenOnDismissExample />
+      view: <PanelHiddenOnDismissExample />,
     },
     {
       title: 'Controlled visibility',
       code: PanelControlledExampleCode,
-      view: <PanelControlledExample />
+      view: <PanelControlledExample />,
     },
     {
       title: 'Confirm dismiss',
       code: PanelConfirmDismissExampleCode,
-      view: <PanelConfirmDismissExample />
+      view: <PanelConfirmDismissExample />,
     },
     {
       title: 'Confirm light dismiss',
       code: PanelLightDismissCustomExampleCode,
-      view: <PanelLightDismissCustomExample />
+      view: <PanelLightDismissCustomExample />,
     },
     {
       title: 'Non-modal',
       code: PanelNonModalExampleCode,
-      view: <PanelNonModalExample />
+      view: <PanelNonModalExample />,
     },
     {
       title: 'Panel - Custom navigation',
       code: PanelNavigationExampleCode,
-      view: <PanelNavigationExample />
+      view: <PanelNavigationExample />,
     },
     {
       title: 'Panel - Detect dismissal method',
       code: PanelHandleDismissTargetExampleCode,
-      view: <PanelHandleDismissTargetExample />
-    }
+      view: <PanelHandleDismissTargetExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
   bestPractices: '',
@@ -91,5 +92,5 @@ export const PanelPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: true
+  allowNativeProps: true,
 };

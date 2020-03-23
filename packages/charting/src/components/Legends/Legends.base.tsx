@@ -7,7 +7,14 @@ import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { ILegend, ILegendsProps, LegendShape, ILegendsStyles, ILegendStyleProps, ILegendOverflowData } from './Legends.types';
+import {
+  ILegend,
+  ILegendsProps,
+  LegendShape,
+  ILegendsStyles,
+  ILegendStyleProps,
+  ILegendOverflowData,
+} from './Legends.types';
 
 const getClassNames = classNamesFunction<ILegendStyleProps, ILegendsStyles>();
 
@@ -40,7 +47,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       selectedState: false,
       hoverState: false,
       isHoverCardVisible: false,
-      selecetedLegendInHoverCard: 'none'
+      selecetedLegendInHoverCard: 'none',
     };
   }
 
@@ -48,7 +55,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     const { theme, className, styles } = this.props;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
     const dataToRender = this._generateData();
     return (
@@ -79,13 +86,13 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOutAction: legend.onMouseOutAction!,
         color: legend.color,
         shape: legend.shape,
-        key: index
+        key: index,
       };
       dataItems.push(legendItem);
     });
     const result: ILegendOverflowData = {
       primary: dataItems,
-      overflow: []
+      overflow: [],
     };
     return result;
   }
@@ -103,14 +110,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         styles={{
           root: {
             justifyContent: this.props.centerLegends ? 'center' : 'unset',
-            flexWrap: 'wrap'
+            flexWrap: 'wrap',
           },
           item: {
-            marginBottom: '16px'
+            marginBottom: '16px',
           },
           overflowButton: {
-            marginBottom: '16px'
-          }
+            marginBottom: '16px',
+          },
         }}
       />
     );
@@ -139,7 +146,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this.setState({
         selectedLegend: 'none',
         selectedState: false,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
       if (legend.action) {
         legend.action();
@@ -148,7 +155,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this.setState({
         selectedState: true,
         selectedLegend: legend.title,
-        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none'
+        selecetedLegendInHoverCard: this.state.isHoverCardVisible ? legend.title : 'none',
       });
       if (legend.action) {
         legend.action();
@@ -181,27 +188,29 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
     });
     const renderOverflowData: IExpandingCardProps = { renderData: legends };
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, overflowText } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
     const plainCardProps = {
       onRenderPlainCard: this._onRenderCompactCard,
       renderData: renderOverflowData,
-      gapSpace: 8
+      gapSpace: 8,
     };
 
+    const overflowString = overflowText ? overflowText : 'more';
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
       const selectedOverflowItem = find(
         legends,
-        (legend: ILegend) => legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend
+        (legend: ILegend) =>
+          legend.title === this.state.selecetedLegendInHoverCard || legend.title === this.state.selectedLegend,
       );
       this.setState(
         {
           isHoverCardVisible: false,
-          selecetedLegendInHoverCard: 'none'
+          selecetedLegendInHoverCard: 'none',
         },
         () => {
           if (selectedOverflowItem) {
@@ -216,7 +225,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
               });
             });
           }
-        }
+        },
       );
     };
     return (
@@ -230,7 +239,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
       >
-        <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
+        <div className={classNames.overflowIndicationTextStyle}>
+          {items.length} {overflowString}
+        </div>
       </HoverCard>
     );
   };
@@ -264,7 +275,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       shape: data.shape,
       action: data.action,
       hoverAction: data.hoverAction,
-      onMouseOutAction: data.onMouseOutAction
+      onMouseOutAction: data.onMouseOutAction,
     };
     const color = this._getColor(legend.title, legend.color);
     const { theme, className, styles } = this.props;
@@ -273,7 +284,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
       colorOnSelectedState: color,
       borderColor: legend.color,
-      overflow: overflow
+      overflow: overflow,
     });
 
     const onClickHandler = () => {

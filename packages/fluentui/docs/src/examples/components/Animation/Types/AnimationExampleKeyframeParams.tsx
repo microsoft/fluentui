@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react';
+import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react-northstar';
 
 const colorChanger: ThemeAnimation<{ fromColor: string; toColor: string }> = {
   keyframe: ({ fromColor, toColor }) => ({
     from: {
-      color: fromColor
+      color: fromColor,
     },
     to: {
-      color: toColor
-    }
+      color: toColor,
+    },
   }),
   keyframeParams: { fromColor: 'red', toColor: 'blue' },
   duration: '5s',
-  iterationCount: 'infinite'
+  iterationCount: 'infinite',
 };
 
 const AnimationExample = () => (

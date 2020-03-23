@@ -17,7 +17,7 @@ const LOREM_IPSUM = (
 const DATA = {
   color: ['red', 'blue', 'green', 'yellow'],
   shape: ['circle', 'square', 'triangle'],
-  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
+  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland'],
 };
 
 /** @deprecated Use the version from `@uifabric/example-data` instead. */
@@ -47,7 +47,7 @@ export function createListItems(count: number, startIndex: number = 0): IExample
       shape: _randWord(DATA.shape),
       location: _randWord(DATA.location),
       width: size,
-      height: size
+      height: size,
     };
   });
 }
@@ -60,7 +60,7 @@ export function createGroups(
   itemsPerGroup: number,
   level: number = 0,
   key: string = '',
-  isCollapsed?: boolean
+  isCollapsed?: boolean,
 ): IGroup[] {
   if (key !== '') {
     key = key + '-';
@@ -75,7 +75,9 @@ export function createGroups(
       level: level,
       isCollapsed: isCollapsed,
       children:
-        groupDepth > 1 ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index) : []
+        groupDepth > 1
+          ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index)
+          : [],
     };
   });
 }

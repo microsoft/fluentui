@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { ItemLayout, Image } from '@fluentui/react';
+import { ItemLayout, Image } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ItemLayoutExampleShorthand = () => {

@@ -19,7 +19,7 @@ module.exports = function getAllPackageInfo() {
       if (packageJson) {
         packageInfo[packageJson.name] = {
           packagePath: path.dirname(packageJsonFile),
-          packageJson
+          packageJson,
         };
       }
     });

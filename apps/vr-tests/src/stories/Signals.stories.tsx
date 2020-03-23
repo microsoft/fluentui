@@ -19,7 +19,7 @@ import {
   RecordSignal,
   ReadOnlySignal,
   FollowedSignal,
-  NotFollowedSignal
+  NotFollowedSignal,
 } from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
@@ -32,7 +32,7 @@ interface ISignalExampleProps {
 }
 
 const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
-  props: ISignalExampleProps
+  props: ISignalExampleProps,
 ): JSX.Element => {
   return (
     <div>

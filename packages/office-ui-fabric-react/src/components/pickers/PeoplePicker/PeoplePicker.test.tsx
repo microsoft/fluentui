@@ -26,13 +26,14 @@ describe('PeoplePicker', () => {
 
   it('renders correctly with preselected items', () => {
     const component = renderer.create(
-      <NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={people.splice(0, 1)} />
+      <NormalPeoplePicker onResolveSuggestions={onResolveSuggestions} defaultSelectedItems={people.splice(0, 1)} />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('can search for, select people and remove them', () => {
+    jest.useFakeTimers();
     const root = document.createElement('div');
     document.body.appendChild(root);
 
@@ -45,6 +46,7 @@ describe('PeoplePicker', () => {
     input.value = 'Valentyna';
 
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -80,7 +82,7 @@ describe('PeoplePicker', () => {
         disabled={true}
         defaultSelectedItems={selectedPeople}
       />,
-      root
+      root,
     );
 
     const currentPicker = picker.current!.items;

@@ -8,7 +8,7 @@ const GlobalClassNames = {
   list: 'ms-ContextualMenu-list',
   header: 'ms-ContextualMenu-header',
   title: 'ms-ContextualMenu-title',
-  isopen: 'is-open'
+  isopen: 'is-open',
 };
 
 export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyles => {
@@ -24,17 +24,17 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       classNames.isopen,
       {
         backgroundColor: semanticColors.menuBackground,
-        minWidth: '180px'
+        minWidth: '180px',
       },
-      className
+      className,
     ],
     container: [
       classNames.container,
       {
         selectors: {
-          ':focus': { outline: 0 }
-        }
-      }
+          ':focus': { outline: 0 },
+        },
+      },
     ],
     list: [
       classNames.list,
@@ -42,8 +42,8 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
       {
         listStyleType: 'none',
         margin: '0',
-        padding: '0'
-      }
+        padding: '0',
+      },
     ],
     header: [
       classNames.header,
@@ -59,8 +59,8 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         cursor: 'default',
         padding: '0px 6px',
         userSelect: 'none',
-        textAlign: 'left'
-      }
+        textAlign: 'left',
+      },
     ],
     title: [
       classNames.title,
@@ -70,16 +70,16 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         paddingLeft: '14px',
         paddingBottom: '5px',
         paddingTop: '5px',
-        backgroundColor: semanticColors.menuItemBackgroundPressed
-      }
+        backgroundColor: semanticColors.menuItemBackgroundPressed,
+      },
     ],
     subComponentStyles: {
       callout: {
         root: {
-          boxShadow: effects.elevation8
-        }
+          boxShadow: effects.elevation8,
+        },
       },
-      menuItem: {}
-    }
+      menuItem: {},
+    },
   };
 };

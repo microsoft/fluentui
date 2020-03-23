@@ -8,13 +8,13 @@ describe('classNamesFunction', () => {
     Stylesheet.getInstance().setConfig({
       onInsertRule: () => {
         /*no-op*/
-      }
+      },
     });
   });
 
   afterEach(() => {
     Stylesheet.getInstance().setConfig({
-      onInsertRule: undefined
+      onInsertRule: undefined,
     });
   });
 
@@ -24,7 +24,7 @@ describe('classNamesFunction', () => {
     const getStyles = (props: { a: number; b: string }) => {
       styleFunctionCalled = true;
       return {
-        root: { width: props.a }
+        root: { width: props.a },
       };
     };
 
@@ -51,7 +51,7 @@ describe('classNamesFunction', () => {
       Stylesheet.getInstance().setConfig({
         onInsertRule: (rule: string) => {
           setRule = rule;
-        }
+        },
       });
     });
 
@@ -61,7 +61,7 @@ describe('classNamesFunction', () => {
     const getClassNames = classNamesFunction<{ theme: {} }, { root: IStyle }>();
     const getStyles = () => {
       return {
-        root: { left: 1 }
+        root: { left: 1 },
       };
     };
 

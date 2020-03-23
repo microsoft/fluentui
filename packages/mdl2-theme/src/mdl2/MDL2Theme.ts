@@ -17,68 +17,68 @@ export const MDL2Theme: ITheme = createTheme({
     neutralLighterAlt: '#f8f8f8',
     // Shared Colors
     red: '#e81123',
-    redDark: '#a80000'
+    redDark: '#a80000',
   },
   semanticColors: {
     buttonBorder: 'transparent',
-    buttonBorderDisabled: 'transparent'
+    buttonBorderDisabled: 'transparent',
   },
   effects: {
     roundedCorner2: '0px',
     elevation4: '0 0 5px 0 rgba(0,0,0,.4)',
     elevation8: '0 0 5px 0 rgba(0,0,0,.4)',
     elevation16: '0 0 5px 0 rgba(0,0,0,.4)',
-    elevation64: '0 0 5px 0 rgba(0,0,0,.4)'
+    elevation64: '0 0 5px 0 rgba(0,0,0,.4)',
   },
   fonts: {
     tiny: {
       fontSize: FontSizes.mini,
-      fontWeight: FontWeights.semibold
+      fontWeight: FontWeights.semibold,
     },
     xSmall: {
-      fontSize: FontSizes.xSmall
+      fontSize: FontSizes.xSmall,
     },
     small: {
-      fontSize: FontSizes.small
+      fontSize: FontSizes.small,
     },
     smallPlus: {
-      fontSize: FontSizes.smallPlus
+      fontSize: FontSizes.smallPlus,
     },
     medium: {
-      fontSize: FontSizes.medium
+      fontSize: FontSizes.medium,
     },
     mediumPlus: {
-      fontSize: FontSizes.mediumPlus
+      fontSize: FontSizes.mediumPlus,
     },
     large: {
       fontSize: FontSizes.large,
-      fontWeight: FontWeights.semilight
+      fontWeight: FontWeights.semilight,
     },
     xLarge: {
       fontSize: FontSizes.xLarge,
-      fontWeight: FontWeights.light
+      fontWeight: FontWeights.light,
     },
     xLargePlus: {
       fontSize: FontSizes.xLargePlus,
-      fontWeight: FontWeights.light
+      fontWeight: FontWeights.light,
     },
     xxLarge: {
       fontSize: FontSizes.xxLarge,
-      fontWeight: FontWeights.light
+      fontWeight: FontWeights.light,
     },
     xxLargePlus: {
       fontSize: FontSizes.xxLargePlus,
-      fontWeight: FontWeights.light
+      fontWeight: FontWeights.light,
     },
     superLarge: {
       fontSize: FontSizes.superLarge,
-      fontWeight: FontWeights.light
+      fontWeight: FontWeights.light,
     },
     mega: {
       fontSize: FontSizes.mega,
-      fontWeight: FontWeights.light
-    }
-  }
+      fontWeight: FontWeights.light,
+    },
+  },
 });
 
 export default MDL2Theme;

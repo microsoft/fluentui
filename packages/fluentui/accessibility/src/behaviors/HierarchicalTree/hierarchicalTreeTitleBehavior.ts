@@ -17,17 +17,17 @@ const hierarchicalTreeTitleBehavior: Accessibility<TreeTitleBehavior> = props =>
       ...(!props.hasSubtree && {
         tabIndex: -1,
         [IS_FOCUSABLE_ATTRIBUTE]: true,
-        role: 'treeitem'
-      })
-    }
+        role: 'treeitem',
+      }),
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default hierarchicalTreeTitleBehavior;

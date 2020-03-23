@@ -8,17 +8,17 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 400,
-              height: 300
+              height: 300,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
-            mode: 'contain'
-          })
+            mode: 'contain',
+          }),
         ).toEqual({
           width: 200,
-          height: 150
+          height: 150,
         });
       });
 
@@ -27,17 +27,17 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 300,
-              height: 400
+              height: 400,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
-            mode: 'contain'
-          })
+            mode: 'contain',
+          }),
         ).toEqual({
           width: 150,
-          height: 200
+          height: 200,
         });
       });
 
@@ -46,17 +46,17 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 100,
-              height: 75
+              height: 75,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
-            mode: 'contain'
-          })
+            mode: 'contain',
+          }),
         ).toEqual({
           width: 100,
-          height: 75
+          height: 75,
         });
       });
 
@@ -65,18 +65,18 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 100,
-              height: 75
+              height: 75,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
             mode: 'contain',
-            maxScale: 2
-          })
+            maxScale: 2,
+          }),
         ).toEqual({
           width: 200,
-          height: 150
+          height: 150,
         });
       });
     });
@@ -87,17 +87,17 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 600,
-              height: 400
+              height: 400,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
-            mode: 'cover'
-          })
+            mode: 'cover',
+          }),
         ).toEqual({
           width: 300,
-          height: 200
+          height: 200,
         });
       });
 
@@ -106,17 +106,17 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 400,
-              height: 600
+              height: 600,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
-            mode: 'cover'
-          })
+            mode: 'cover',
+          }),
         ).toEqual({
           width: 200,
-          height: 300
+          height: 300,
         });
       });
 
@@ -125,17 +125,17 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 100,
-              height: 50
+              height: 50,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
-            mode: 'cover'
-          })
+            mode: 'cover',
+          }),
         ).toEqual({
           width: 100,
-          height: 50
+          height: 50,
         });
       });
 
@@ -144,18 +144,18 @@ describe('math', () => {
           fitContentToBounds({
             contentSize: {
               width: 100,
-              height: 50
+              height: 50,
             },
             boundsSize: {
               width: 200,
-              height: 200
+              height: 200,
             },
             mode: 'cover',
-            maxScale: 4
-          })
+            maxScale: 4,
+          }),
         ).toEqual({
           width: 400,
-          height: 200
+          height: 200,
         });
       });
     });

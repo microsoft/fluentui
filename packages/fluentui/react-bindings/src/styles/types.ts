@@ -72,6 +72,7 @@ export interface StylesContextPerformance {
 export type StylesContextPerformanceInput = Partial<StylesContextPerformance>;
 
 export type StylesContextInputValue<R = Renderer> = {
+  rtl?: boolean;
   disableAnimations?: boolean;
   performance?: StylesContextPerformanceInput;
   renderer?: R;
@@ -79,6 +80,7 @@ export type StylesContextInputValue<R = Renderer> = {
 };
 
 export type StylesContextValue<R = Renderer> = {
+  rtl: boolean;
   disableAnimations: boolean;
   performance: StylesContextPerformance;
   renderer: R;
@@ -91,7 +93,7 @@ export type ResolveStylesOptions = StylesContextValue<{
   renderRule: RendererRenderRule;
 }> & {
   className?: string;
-  displayName: string;
+  displayNames: string[];
   props: PropsWithVarsAndStyles & { design?: ComponentDesignProp };
   rtl: boolean;
   saveDebug: (debug: DebugData | null) => void;

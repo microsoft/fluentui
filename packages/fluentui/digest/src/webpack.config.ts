@@ -23,33 +23,33 @@ export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration
     webpackConfig,
     htmlOverlay({
       // TODO: is require.resolve really needed here? path.join / __dirname instead?
-      template: require.resolve('../assets/index.html')
+      template: require.resolve('../assets/index.html'),
     }),
     {
       // TODO: should entry really be pointing to lib output rather than ts?
       // TODO: reduce to entry: string?
       entry: {
-        digest: require.resolve('../lib/bundle/index.digest.js')
+        digest: require.resolve('../lib/bundle/index.digest.js'),
       },
       mode: 'production',
       output: {
-        filename: '[name].js'
+        filename: '[name].js',
       },
       resolve: {
         alias: {
           // TODO: this needs to work for both digest and consumer
           // TODO: is this still needed? (also in tsconfig.json)
-          stories: path.resolve(__dirname, '.')
-        }
+          stories: path.resolve(__dirname, '.'),
+        },
       },
       optimization: {
-        minimize: false
+        minimize: false,
       },
       plugins: [
         // This plugin was added to ignore warnings wherever types are imported.
-        new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })
-      ]
-    }
+        new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
+      ],
+    },
   );
 
   // This config creates a bundle that can be imported directly by the perf-test script to see all available stories.
@@ -62,29 +62,29 @@ export const defaultConfig = (digestConfig: DigestConfig): webpack.Configuration
       // TODO: If users are passing in require.context args, the entry here should probably
       // be something that just requires.context on those args and returns just story
       // information.
-      stories: require.resolve('../lib/bundle/stories.js')
+      stories: require.resolve('../lib/bundle/stories.js'),
     },
     mode: 'production',
     output: {
       filename: '[name].js',
       library: 'example',
       libraryTarget: 'umd',
-      umdNamedDefine: true
+      umdNamedDefine: true,
     },
     resolve: {
       alias: {
         // TODO: this needs to work for both digest and consumer
         // TODO: is this still needed? (also in tsconfig.json)
-        stories: path.resolve(__dirname, '.')
-      }
+        stories: path.resolve(__dirname, '.'),
+      },
     },
     optimization: {
-      minimize: false
+      minimize: false,
     },
     plugins: [
       // This plugin was added to ignore warnings wherever types are imported.
-      new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] })
-    ]
+      new IgnoreNotFoundExportWebpackPlugin({ include: [/\.tsx?$/] }),
+    ],
   });
 
   return [bundle, stories];

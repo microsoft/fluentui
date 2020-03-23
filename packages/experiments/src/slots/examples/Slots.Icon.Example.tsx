@@ -19,8 +19,8 @@ export class SlotsIconExample extends React.Component<{}, {}> {
                 <b>
                   Icon: <DefaultComponent {...iconProps} />
                 </b>
-              )
-            }
+              ),
+            },
           }}
           content="Icon: Function, Text + Icon"
         />

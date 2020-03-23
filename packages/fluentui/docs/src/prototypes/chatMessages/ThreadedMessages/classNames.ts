@@ -1,4 +1,4 @@
-import { Button, ChatMessage, ChatItem } from '@fluentui/react';
+import { Button, ChatMessage, ChatItem } from '@fluentui/react-northstar';
 
 const classNames = {
   threadedMessage: {
@@ -6,16 +6,16 @@ const classNames = {
     threadBody: `${ChatMessage.className}__thread-body`,
     innerContent: `${ChatMessage.slotClassNames.content}-inner`,
     author: `${ChatMessage.slotClassNames.author}-inner`,
-    timestamp: `${ChatMessage.slotClassNames.timestamp}-inner`
+    timestamp: `${ChatMessage.slotClassNames.timestamp}-inner`,
   },
   threadReplies: {
     trigger: `${Button.className}__reply`,
     message: `${ChatMessage.className}__reply`,
     gutter: `${ChatItem.className}__reply__gutter`,
     chatItem: `${ChatItem.className}__reply`,
-    chatItemMessage: `${ChatItem.slotClassNames.message}-reply`
+    chatItemMessage: `${ChatItem.slotClassNames.message}-reply`,
   },
-  replyEditor: `${ChatMessage.className}__reply-editor`
+  replyEditor: `${ChatMessage.className}__reply-editor`,
 };
 
 export default classNames;

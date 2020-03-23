@@ -10,8 +10,9 @@ export const StylesPages: INavPage = {
   hasPlatformPicker: true,
   isSearchable: true,
   component: () => <LoadingComponent title="Styles" />,
-  getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/StylesPage/StylesPage').StylesPage)),
+  getComponent: cb =>
+    require.ensure([], require => cb(require<any>('../../../pages/Overviews/StylesPage/StylesPage').StylesPage)),
   platforms: {
-    web: stylesPagesWeb
-  }
+    web: stylesPagesWeb,
+  },
 };

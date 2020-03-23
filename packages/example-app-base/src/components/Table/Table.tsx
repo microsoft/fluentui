@@ -22,7 +22,8 @@ export class Table extends React.Component<ITableProps> {
           {rows.map((row: ITableRowProps, rowIndex: number) => (
             <tr key={rowIndex} className={styles.tr}>
               {columns.map((column: ITableColumnProps, columnIndex: number) => {
-                const content = (formatter && formatter(column, row)) || (column.rowProperty && row[column.rowProperty]);
+                const content =
+                  (formatter && formatter(column, row)) || (column.rowProperty && row[column.rowProperty]);
                 return (
                   <td key={`${rowIndex}-${columnIndex}`} className={styles.td} style={this._colStyle(column)}>
                     {content}
@@ -44,7 +45,7 @@ export class Table extends React.Component<ITableProps> {
       maxWidth,
       overflow,
       overflowX,
-      overflowY
+      overflowY,
     };
   };
 }

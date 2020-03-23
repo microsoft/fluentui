@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react';
+import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react-northstar';
 
 const headerStyle: ICSSInJSStyle = {
   marginTop: '1.5em',
   marginBottom: '0.5em',
   color: '#999',
-  textTransform: 'uppercase'
+  textTransform: 'uppercase',
 };
 
 export type ExampleSectionProps = Extendable<{

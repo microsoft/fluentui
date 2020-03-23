@@ -8,7 +8,7 @@ import {
   DefaultButton,
   Checkbox,
   ContextualMenu,
-  IconButton
+  IconButton,
 } from 'office-ui-fabric-react';
 import { FontSizes } from '@uifabric/styling';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
@@ -24,7 +24,7 @@ const contentStyles = mergeStyleSets({
   container: {
     display: 'flex',
     flexFlow: 'column nowrap',
-    alignItems: 'stretch'
+    alignItems: 'stretch',
   },
   header: [
     // tslint:disable-next-line:deprecation
@@ -37,8 +37,8 @@ const contentStyles = mergeStyleSets({
       fontSize: FontSizes.xLarge,
       alignItems: 'center',
       fontWeight: FontWeights.semibold,
-      padding: '12px 12px 14px 24px'
-    }
+      padding: '12px 12px 14px 24px',
+    },
   ],
   body: {
     flex: '4 4 auto',
@@ -46,16 +46,16 @@ const contentStyles = mergeStyleSets({
     overflowY: 'hidden',
     selectors: {
       p: {
-        margin: '14px 0'
+        margin: '14px 0',
       },
       'p:first-child': {
-        marginTop: 0
+        marginTop: 0,
       },
       'p:last-child': {
-        marginBottom: 0
-      }
-    }
-  }
+        marginBottom: 0,
+      },
+    },
+  },
 });
 
 const iconButtonStyles = mergeStyleSets({
@@ -63,17 +63,17 @@ const iconButtonStyles = mergeStyleSets({
     color: theme.palette.neutralPrimary,
     marginLeft: 'auto',
     marginTop: '4px',
-    marginRight: '2px'
+    marginRight: '2px',
   },
   rootHovered: {
-    color: theme.palette.neutralDark
-  }
+    color: theme.palette.neutralDark,
+  },
 });
 
 export class ModalModelessExample extends React.Component<{}, IModalModelessExampleState> {
   public state: IModalModelessExampleState = {
     showModal: false,
-    isDraggable: false
+    isDraggable: false,
   };
   // Use getId() to ensure that the IDs are unique on the page.
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
@@ -82,7 +82,7 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
   private _dragOptions: IDragOptions = {
     moveMenuItemText: 'Move',
     closeMenuItemText: 'Close',
-    menu: ContextualMenu
+    menu: ContextualMenu,
   };
 
   public render(): JSX.Element {
@@ -117,13 +117,14 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
           </div>
           <div id={this._subtitleId} className={contentStyles.body}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in
-              leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor sagittis nunc, ut interdum ipsum
-              vestibulum non. Proin dolor elit, aliquam eget tincidunt non, vestibulum ut turpis. In hac habitasse platea dictumst. In a
-              odio eget enim porttitor maximus. Aliquam nulla nibh, ullamcorper aliquam placerat eu, viverra et dui. Phasellus ex lectus,
-              maximus in mollis ac, luctus vel eros. Vivamus ultrices, turpis sed malesuada gravida, eros ipsum venenatis elit, et volutpat
-              eros dui et ante. Quisque ultricies mi nec leo ultricies mollis. Vivamus egestas volutpat lacinia. Quisque pharetra eleifend
-              efficitur.{' '}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit
+              amet, vulputate in leo. Maecenas vulputate congue sapien eu tincidunt. Etiam eu sem turpis. Fusce tempor
+              sagittis nunc, ut interdum ipsum vestibulum non. Proin dolor elit, aliquam eget tincidunt non, vestibulum
+              ut turpis. In hac habitasse platea dictumst. In a odio eget enim porttitor maximus. Aliquam nulla nibh,
+              ullamcorper aliquam placerat eu, viverra et dui. Phasellus ex lectus, maximus in mollis ac, luctus vel
+              eros. Vivamus ultrices, turpis sed malesuada gravida, eros ipsum venenatis elit, et volutpat eros dui et
+              ante. Quisque ultricies mi nec leo ultricies mollis. Vivamus egestas volutpat lacinia. Quisque pharetra
+              eleifend efficitur.{' '}
             </p>
           </div>
         </Modal>

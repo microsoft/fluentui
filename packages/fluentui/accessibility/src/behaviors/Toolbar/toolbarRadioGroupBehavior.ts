@@ -9,23 +9,25 @@ import { Accessibility } from '../../types';
  *  Triggers 'nextItem' action with 'ArrowDown' on 'root'.
  *  Triggers 'prevItem' action with 'ArrowUp' on 'root'.
  */
-const toolbarRadioGroupBehavior: Accessibility = () => ({
+const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'radiogroup'
-    }
+      role: 'radiogroup',
+    },
   },
 
   keyActions: {
     root: {
       nextItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
       },
       prevItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
+      },
+    },
+  },
 });
+
+export type ToolbarRadioGroupBehaviorProps = never;
 
 export default toolbarRadioGroupBehavior;

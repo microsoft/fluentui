@@ -9,22 +9,22 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
         !disabled && {
           selectors: {
             ':hover': {
-              borderColor: checked ? palette.themeDark : palette.neutralTertiaryAlt
-            }
-          }
+              borderColor: checked ? palette.themeDark : palette.neutralTertiaryAlt,
+            },
+          },
         },
       (hasIcon || hasImage) && {
-        borderWidth: 2
+        borderWidth: 2,
       },
       disabled &&
         !checked && {
           selectors: {
             ':before': {
               backgroundColor: palette.neutralTertiary,
-              borderColor: palette.neutralTertiary
-            }
-          }
-        }
-    ]
+              borderColor: palette.neutralTertiary,
+            },
+          },
+        },
+    ],
   };
 };

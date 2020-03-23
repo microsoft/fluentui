@@ -1,4 +1,4 @@
-import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react';
+import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -31,7 +31,7 @@ const ToolbarExampleMenuItemToggle = () => {
               kind: 'toggle',
               icon: 'bold',
               index: 0,
-              onClick: handleToggleClick
+              onClick: handleToggleClick,
             },
             {
               key: 'italic',
@@ -40,14 +40,14 @@ const ToolbarExampleMenuItemToggle = () => {
               kind: 'toggle',
               icon: 'italic',
               index: 1,
-              onClick: handleToggleClick
+              onClick: handleToggleClick,
             },
             { key: 'divider', kind: 'divider' },
-            'About...'
+            'About...',
           ],
           menuOpen,
-          onMenuOpenChange: (e, { menuOpen }) => setMenuOpen(menuOpen)
-        }
+          onMenuOpenChange: (e, { menuOpen }) => setMenuOpen(menuOpen),
+        },
       ]}
     />
   );

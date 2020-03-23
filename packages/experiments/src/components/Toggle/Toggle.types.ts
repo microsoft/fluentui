@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
+import {
+  IComponent,
+  IComponentStyles,
+  IHTMLElementSlot,
+  IHTMLSlot,
+  ISlottableProps,
+  IStyleableComponentProps,
+} from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
@@ -64,13 +71,15 @@ export interface IToggleProps
   ariaLabel?: string;
 
   /**
-   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.
+   * Initial state of the toggle. If you want the toggle to maintain its own state, use this.
+   * Otherwise use `checked`.
    * @default false
    */
   defaultChecked?: boolean;
 
   /**
-   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to `defaultChecked`.
+   * Checked state of the toggle. If you are maintaining state yourself, use this property.
+   * Otherwise use `defaultChecked`.
    * @default defaultChecked
    */
   checked?: boolean;

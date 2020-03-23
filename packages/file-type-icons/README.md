@@ -41,4 +41,4 @@ In Fabric 7, the new Fluent file type icons will be the default.
 
 ## Notes
 
-See [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) for more details on the UI Fabric project and packages within.
+See [Office UI Fabric React](https://github.com/microsoft/fluentui) for more details on the UI Fabric project and packages within.

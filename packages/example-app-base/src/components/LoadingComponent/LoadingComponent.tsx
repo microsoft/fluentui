@@ -1,29 +1,36 @@
 import * as React from 'react';
-import { Async, css, memoizeFunction, Shimmer, ShimmerElementType as ElementType, mergeStyles } from 'office-ui-fabric-react';
+import {
+  Async,
+  css,
+  memoizeFunction,
+  Shimmer,
+  ShimmerElementType as ElementType,
+  mergeStyles,
+} from 'office-ui-fabric-react';
 import { Page, IPageSectionProps } from '../Page/index';
 import { ILoadingComponentProps } from './LoadingComponent.types';
 
 const rootClass = mergeStyles({
-  minHeight: '100vh'
+  minHeight: '100vh',
 });
 const shimmerSectionClass = mergeStyles({
-  transition: 'transform .3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity .3s cubic-bezier(0.1, 0.9, 0.2, 1) .05s'
+  transition: 'transform .3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity .3s cubic-bezier(0.1, 0.9, 0.2, 1) .05s',
 });
 const pastDelayClass = mergeStyles({
   selectors: {
     [`.${shimmerSectionClass}`]: {
       opacity: 0,
-      transform: 'translateY(40px)'
-    }
-  }
+      transform: 'translateY(40px)',
+    },
+  },
 });
 const pastOffsetClass = mergeStyles({
   selectors: {
     [`.${shimmerSectionClass}`]: {
       opacity: 1,
-      transform: 'translateY(0)'
-    }
-  }
+      transform: 'translateY(0)',
+    },
+  },
 });
 
 // Only show shimmer if it takes more than DELAY_SHIMMER ms to load page component.
@@ -46,7 +53,7 @@ const generateParagraph = (): JSX.Element => {
         width={lineWidth}
         shimmerElements={[{ type: ElementType.line, height: 16 }]}
         style={{ marginBottom: 12 }}
-      />
+      />,
     );
   }
 
@@ -58,7 +65,7 @@ const generateParagraph = (): JSX.Element => {
       width={lastLineWidth}
       shimmerElements={[{ type: ElementType.line, height: 16 }]}
       style={{ marginBottom: 24 }}
-    />
+    />,
   );
 
   return <div>{lines}</div>;
@@ -83,10 +90,14 @@ const shimmerSections = memoizeFunction((): IPageSectionProps[] => {
       className: shimmerSectionClass,
       content: (
         <>
-          <Shimmer width="25%" shimmerElements={[{ type: ElementType.line, height: 28 }]} style={{ marginBottom: 24 }} />
+          <Shimmer
+            width="25%"
+            shimmerElements={[{ type: ElementType.line, height: 28 }]}
+            style={{ marginBottom: 24 }}
+          />
           {generateParagraphs()}
         </>
-      )
+      ),
     });
   }
 
@@ -101,12 +112,12 @@ export interface ILoadingComponentState {
 export class LoadingComponent extends React.PureComponent<ILoadingComponentProps, ILoadingComponentState> {
   public static defaultProps = {
     title: 'Loading Page',
-    shimmer: true
+    shimmer: true,
   };
 
   public readonly state = {
     pastDelay: false,
-    pastOffset: false
+    pastOffset: false,
   };
 
   private readonly _async: Async = new Async();

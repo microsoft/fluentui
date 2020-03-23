@@ -4,6 +4,6 @@ export const getStyles = (props: IThemeSlotsPageStyleProps): IThemeSlotsPageStyl
   const { className } = props;
 
   return {
-    root: [{}, className]
+    root: [{}, className],
   };
 };

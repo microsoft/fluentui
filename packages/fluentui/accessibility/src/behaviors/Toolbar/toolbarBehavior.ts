@@ -13,15 +13,15 @@ import { FocusZoneDirection } from '../../focusZone/types';
 const toolbarBehavior: Accessibility = props => ({
   attributes: {
     root: {
-      role: 'toolbar'
-    }
+      role: 'toolbar',
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.horizontal
-    }
-  }
+      direction: FocusZoneDirection.horizontal,
+    },
+  },
 });
 
 export default toolbarBehavior;

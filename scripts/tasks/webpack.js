@@ -8,7 +8,7 @@ exports.webpack = function() {
   const args = argv();
   return webpackCliTask({
     webpackCliArgs: args.production ? ['--production'] : [],
-    nodeArgs: ['--max-old-space-size=4096']
+    nodeArgs: ['--max-old-space-size=4096'],
   });
 };
 exports.webpackDevServer = async function() {
@@ -44,7 +44,7 @@ exports.webpackDevServerWithCompileResolution = async function() {
     });
 
     const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-      stats: 'minimal'
+      stats: 'minimal',
     });
     server = new webpackDevServer(compiler, devServerOptions);
     const port = webpackConfig.devServer.port;

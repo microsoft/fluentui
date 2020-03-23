@@ -107,7 +107,7 @@ const styles = props => ({
 return <Component styles={styles} ... />;
 ```
 
-> For more information on styling with CSS-in-JS, visit our [Styling wiki article](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
+> For more information on styling with CSS-in-JS, visit our [Styling wiki article](https://github.com/microsoft/fluentui/wiki/Component-Styling)
 
 ### Fabric Core
 

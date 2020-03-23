@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-northstar';
 
 const AvatarExampleNameShorthand = () => (
   <Avatar
@@ -7,7 +7,7 @@ const AvatarExampleNameShorthand = () => (
     status={{
       color: 'green',
       icon: 'icon-checkmark',
-      title: 'Available'
+      title: 'Available',
     }}
   />
 );

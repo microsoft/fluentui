@@ -42,6 +42,7 @@ export * from './hoist';
 export * from './hoistStatics';
 export * from './initializeComponentRef';
 export * from './initializeFocusRects';
+export * from './useFocusRects';
 export * from './initials';
 export * from './keyboard';
 export * from './language';

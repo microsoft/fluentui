@@ -10,10 +10,10 @@ export const BasePickerStyles = (props: IBasePickerStyleProps): Partial<IBasePic
   return {
     text: {
       borderRadius: effects.roundedCorner2,
-      borderColor: palette.neutralSecondaryAlt
+      borderColor: palette.neutralSecondaryAlt,
     },
     input: {
-      borderRadius: effects.roundedCorner2
-    }
+      borderRadius: effects.roundedCorner2,
+    },
   };
 };

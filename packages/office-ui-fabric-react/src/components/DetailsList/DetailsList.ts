@@ -11,5 +11,5 @@ export const DetailsList: React.FunctionComponent<IDetailsListProps> = styled<
   IDetailsListStyleProps,
   IDetailsListStyles
 >(DetailsListBase, getStyles, undefined, {
-  scope: 'DetailsList'
+  scope: 'DetailsList',
 });
