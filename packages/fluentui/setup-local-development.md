@@ -1,15 +1,18 @@
 # Setup for `@fluentui/react-northstar` (and others under `packages/fluentui`)
 
-**Please see [this wiki page](https://github.com/microsoft/fluentui/wiki/Setup) for general setup instructions.**
-
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
-- [Inner loop for `react-northstar` packages](#inner-loop-for-react-northstar-packages)
+- [General setup](#general-setup)
+- [Inner loop for `@fluentui/react-northstar` packages](#inner-loop-for-fluentuireact-northstar-packages)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-## Inner loop for `react-northstar` packages
+## General setup
+
+To contribute to packages **in this folder**, follow most of the [main setup instructions][1], then return to this page when you're ready to build.
+
+## Inner loop for `@fluentui/react-northstar` packages
 
 For most packages under `packages/fluentui`, such as `@fluentui/react-northstar`, the inner loop works as follows.
 
@@ -23,6 +26,4 @@ and choose the `@fluentui/docs` option.
 
 Open [localhost:8080](http://localhost:8080) after the initial build has completed. You can now hack on packages under `packages/fluentui` to make changes and see the doc site update in real-time.
 
-[1]: https://nodejs.org/
-[2]: https://github.com/yarnpkg/yarn/#features
-[3]: https://help.github.com/articles/connecting-to-github-with-ssh/
+[1]: https://github.com/microsoft/fluentui/wiki/Setup

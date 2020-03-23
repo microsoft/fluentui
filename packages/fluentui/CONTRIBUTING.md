@@ -1,6 +1,6 @@
 # Contributing to `@fluentui/react-northstar` (and others under `packages/fluentui`)
 
-**NOTE: This document currently only applies to the packages located under `packages/fluentui`, such as `@fluentui/react-northstar`. For other packages, see [this wiki page](https://github.com/microsoft/fluentui/wiki/Contributing) instead!**
+**NOTE: This document currently only applies to the packages located under `packages/fluentui`, such as `@fluentui/react-northstar`. For other packages, see [this wiki page][17] instead!**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -21,9 +21,9 @@
 
 ## Getting started
 
-Make sure you have [Node.js][1] version 10 or later installed.
+**If you would like to contribute to packages besides the ones under `packages/fluentui`, see [this wiki page][17] instead!**
 
-**If you would like to contribute to packages besides the ones under `packages/fluentui`, see [this wiki page](https://github.com/microsoft/fluentui/wiki/Contributing) instead!**
+To contribute to packages in this folder, follow [these setup instructions](setup-local-development.md).
 
 ### Useful Commands
 
@@ -32,7 +32,7 @@ Make sure you have [Node.js][1] version 10 or later installed.
 From repo root:
 
 ```sh
-yarn start                 # start doc site: choose `@fluentui/docs` for v0
+yarn start                 # start doc site: choose `@fluentui/docs`
 
 yarn test                  # run all packages' tests once
 
@@ -62,7 +62,6 @@ yarn lint:fix              # lint and attempt to fix
 
 These guides will walk your through various activities for contributing:
 
-- [Set up Local Development](setup-local-development.md)
 - [Add a feature](add-a-feature.md)
 - [Test a feature](test-a-feature.md)
 - [Document a feature](document-a-feature.md)
@@ -70,7 +69,7 @@ These guides will walk your through various activities for contributing:
 
 ## Accessibility
 
-Fluent UI v0 implements accessibility using accessibility behaviors. The behaviors add attributes to the DOM elements (mainly role and aria-\* properties) as well as handle keyboard interaction and focus. Every accessible component has a default behavior, which can be overridden using the `accessibility` prop. You can choose a behavior from the ones provided by Fluent UI or you can implement a new behavior.
+`@fluentui/react-northstar` implements accessibility using accessibility behaviors. The behaviors add attributes to the DOM elements (mainly role and aria-\* properties) as well as handle keyboard interaction and focus. Every accessible component has a default behavior, which can be overridden using the `accessibility` prop. You can choose a behavior from the ones provided by Fluent UI or you can implement a new behavior.
 
 Behaviors apply properties, focus handling and keyboard handlers to the component slots. When developing a component, the properties and keyboard handlers need to be spread to the corresponding slots.
 
@@ -100,9 +99,9 @@ An application should always have an element with [focus][7] when in use. The us
 - pressing arrow keys to navigate through children (for example menu items in menu)
 - using the screen reader with or without virtual cursor
 
-Fluent UI v0 uses the [FocusZone][8] component for basic tab and arrow key focus handling. To use the focus zone, you can use the `focusZone` configuration in the behavior (for example see [MenuItemBehavior][9]).
+`@fluentui/react-northstar` uses the [FocusZone][8] component for basic tab and arrow key focus handling. To use the focus zone, you can use the `focusZone` configuration in the behavior (for example see [MenuItemBehavior][9]).
 
-Focused component needs to be clearly visible. This is handled in Fluent UI v0 by focus indicator functionality. Focus indicator will be displayed only if the application is in keyboard mode. Application switches to keyboard mode when a key relevant to navigation is pressed. It disables keyboard mode on mouse click events.
+Focused component needs to be clearly visible. This is handled in `@fluentui/react-northstar` by focus indicator functionality. Focus indicator will be displayed only if the application is in keyboard mode. Application switches to keyboard mode when a key relevant to navigation is pressed. It disables keyboard mode on mouse click events.
 
 To style the focused component, you can use the `isFromKeyboard` utility and prop. See [Button component][10] and [Button style][11] for reference.
 
@@ -116,12 +115,6 @@ We are using [Lerna][14] to manage our packages and [Yarn Workspaces][15] to lin
 
 ### Add a new package
 
-<!--
-#### Run `lerna create`
-
-You should to run `lerna create` command to create a new package
--->
-
 For now, you must copy the structure and boilerplate files of an existing package under `packages/fluentui` when adding a new package. `packages/fluentui/accessibility` is a good basic example.
 
 - choose a name and update the `name` field (keep the `@fluentui` scope)
@@ -131,88 +124,9 @@ For now, you must copy the structure and boilerplate files of an existing packag
 - use `https://github.com/microsoft/fluentui/tree/master/packages/fluentui/__DIRECTORY_NAME__` as `homepage`
 - our packages are currently published with MIT license, please follow it until you will have specific legal requirements
 
-<!--
-```sh
-lerna create @fluentui/react-proptypes react-proptypes
-```
-
-##### Example input
-
-```
-lerna notice cli v3.11.1
-package name: (@fluentui/react-proptypes)
-version: (0.21.1)
-description: Set of custom reusable PropTypes for React components.
-keywords:
-homepage: https://github.com/microsoft/fluent-ui-react/tree/master/packages/react-proptypes
-license: (ISC) MIT
-entry point: (lib/react-proptypes.js)
-git repository: (https://github.com/microsoft/fluent-ui-react.git)
-```
-
-#### Update `package.json`
-
-After a package will be created we need to add necessary changes to a newly created `package.json`.
-These changes are required to setup internal tooling and package publishing.
-
-```diff
--  "directories": {
--    "lib": "lib",
--    "test": "__tests__"
--  },
--  "files": [
--    "lib"
--  ],
-+  "jsnext:main": "dist/es/index.js",
-+  "main": "dist/commonjs/index.js",
-+  "module": "dist/es/index.js",
-+  "types": "dist/es/index.d.ts",
-+  "sideEffects": false,
-+  "files": [
-+    "dist"
-+  ],
-```
-
-```diff
--  "scripts": {
--    "test": "echo \"Error: run tests from root\" && exit 1"
--  },
-+  "scripts": {
-+    "build": "gulp bundle:package:no-umd"
-+  },
-```
-
-You can also use `gulp bundle:package` to bundle your package with UMD.
-
-#### Create `tsconfig.json`
-
-If your package uses TypeScript, please also create a new `tsconfig.json` and place it in `packages/__DIRECTORY_NAME__`. An example config:
-
-```json
-{
-  "extends": "../../build/tsconfig.common",
-  "include": ["src", "test"]
-}
-```
-
-This config will extend a common TS config that is used in all packages. You can add specific options for the package here.
-
-#### Create `jest.config.js`
-
-If your package uses Jest for unit tests, please also create a new `jest.config.js` and place and place it in `packages/__DIRECTORY_NAME__`. An example config:
-
-```js
-module.exports = {
-  ...require('@fluentui/internal-tooling/jest'),
-  name: '__DIRECTORY_NAME__',
-};
-```
--->
-
 #### Run `syncpack format`
 
-Organise a new `package.json` according to a conventional format, where fields appear in a predictable order and
-nested fields are ordered alphabetically.
+Organise a new `package.json` according to a conventional format, where fields appear in a predictable order and nested fields are ordered alphabetically.
 
 ```
 yarn syncpack format
@@ -242,3 +156,4 @@ lerna add @fluentui/react-proptypes packages/fluentui/react-northstar
 [14]: https://lerna.js.org
 [15]: https://yarnpkg.com/en/docs/workspaces
 [16]: https://github.com/lerna/lerna/tree/master/commands/add
+[17]: https://github.com/microsoft/fluentui/wiki/Contributing
