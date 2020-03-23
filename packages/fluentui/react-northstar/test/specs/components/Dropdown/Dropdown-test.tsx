@@ -873,6 +873,76 @@ describe('Dropdown', () => {
       expect(getItemNodes()).toHaveLength(0);
     });
 
+    it('is set correctly in multiple selection by using Tab on highlighted item', () => {
+      const itemSelectedIndex = 3;
+      const {
+        triggerButtonNode,
+        keyDownOnItemsList,
+        getSelectedItemNodeAtIndex,
+        getSelectedItemNodes,
+      } = renderDropdown({
+        defaultOpen: true,
+        defaultHighlightedIndex: itemSelectedIndex,
+        defaultValue: items[4],
+        multiple: true,
+      });
+
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getSelectedItemNodes()).toHaveLength(2);
+      expect(getSelectedItemNodeAtIndex(1)).toHaveTextContent(items[3]);
+      expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[4]);
+    });
+
+    it('is set correctly in multiple selection by using Shift+Tab on highlighted item', () => {
+      const itemSelectedIndex = 2;
+      const {
+        triggerButtonNode,
+        keyDownOnItemsList,
+        getSelectedItemNodeAtIndex,
+        getSelectedItemNodes,
+      } = renderDropdown({
+        defaultOpen: true,
+        defaultHighlightedIndex: itemSelectedIndex,
+        defaultValue: items[4],
+        multiple: true,
+      });
+
+      keyDownOnItemsList('Tab', { shiftKey: true });
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getSelectedItemNodes()).toHaveLength(2);
+      expect(getSelectedItemNodeAtIndex(1)).toHaveTextContent(items[2]);
+      expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[4]);
+    });
+
+    it('is not cleared when hitting Escape if not search', () => {
+      const defaultValue = items[0];
+      const { triggerButtonNode, keyDownOnTriggerButton } = renderDropdown({
+        defaultValue,
+      });
+
+      keyDownOnTriggerButton('Escape');
+
+      expect(triggerButtonNode).toHaveTextContent(defaultValue);
+    });
+
+    it('is not cleared when hitting Escape if search but multiple', () => {
+      const defaultValue = [items[0], items[1]];
+      const { getSelectedItemNodes, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+        defaultValue,
+        search: true,
+        multiple: true,
+        defaultSearchQuery: 'test',
+      });
+
+      keyDownOnSearchInput('Escape');
+
+      expect(searchInputNode).toHaveTextContent('');
+      expect(getSelectedItemNodes()).toHaveLength(2);
+    });
+
     it('is replaced when another item is selected', () => {
       const defaultValue = items[0];
       const itemSelectedIndex = 2;

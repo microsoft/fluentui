@@ -884,11 +884,12 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
-        if (!multiple) {
-          newState.value = [];
-        }
         if (search) {
           newState.searchQuery = '';
+
+          if (!multiple) {
+            newState.value = [];
+          }
         }
         newState.open = false;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
