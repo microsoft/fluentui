@@ -7,7 +7,7 @@ export interface IDropdownControlledExampleState {
 
 export class DropdownControlledExample extends React.Component<{}, IDropdownControlledExampleState> {
   public state: IDropdownControlledExampleState = {
-    selectedItem: undefined
+    selectedItem: undefined,
   };
 
   public render() {
@@ -29,7 +29,7 @@ export class DropdownControlledExample extends React.Component<{}, IDropdownCont
           { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
           { key: 'broccoli', text: 'Broccoli' },
           { key: 'carrot', text: 'Carrot' },
-          { key: 'lettuce', text: 'Lettuce' }
+          { key: 'lettuce', text: 'Lettuce' },
         ]}
         styles={{ dropdown: { width: 300 } }}
       />

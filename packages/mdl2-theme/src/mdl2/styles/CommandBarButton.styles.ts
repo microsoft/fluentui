@@ -11,42 +11,42 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
   return {
     root: {
       backgroundColor: palette.neutralLighter,
-      ...getFocusStyle(theme, { inset: 0 })
+      ...getFocusStyle(theme, { inset: 0 }),
     },
     rootHovered: {
-      backgroundColor: palette.neutralLight
+      backgroundColor: palette.neutralLight,
     },
     rootPressed: {
-      backgroundColor: palette.neutralQuaternaryAlt
+      backgroundColor: palette.neutralQuaternaryAlt,
     },
     rootExpanded: {
-      backgroundColor: palette.neutralQuaternaryAlt
+      backgroundColor: palette.neutralQuaternaryAlt,
     },
     rootChecked: {
-      backgroundColor: palette.neutralQuaternaryAlt
+      backgroundColor: palette.neutralQuaternaryAlt,
     },
     rootCheckedHovered: {
-      backgroundColor: palette.neutralQuaternaryAlt
+      backgroundColor: palette.neutralQuaternaryAlt,
     },
     rootDisabled: {
-      backgroundColor: palette.neutralLighter
+      backgroundColor: palette.neutralLighter,
     },
     splitButtonMenuButton: {
       backgroundColor: palette.neutralLighter,
       selectors: {
         ':hover': {
-          backgroundColor: palette.neutralLight
-        }
-      }
+          backgroundColor: palette.neutralLight,
+        },
+      },
     },
     splitButtonMenuButtonChecked: {
-      backgroundColor: palette.neutralQuaternaryAlt
+      backgroundColor: palette.neutralQuaternaryAlt,
     },
     splitButtonMenuButtonExpanded: {
-      backgroundColor: palette.neutralQuaternaryAlt
+      backgroundColor: palette.neutralQuaternaryAlt,
     },
     splitButtonMenuButtonDisabled: {
-      backgroundColor: palette.neutralLighter
-    }
+      backgroundColor: palette.neutralLighter,
+    },
   };
 };

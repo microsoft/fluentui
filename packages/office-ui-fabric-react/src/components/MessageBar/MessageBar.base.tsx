@@ -6,7 +6,7 @@ import {
   getNativeProps,
   htmlElementProperties,
   css,
-  initializeComponentRef
+  initializeComponentRef,
 } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -24,7 +24,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
     onDismiss: undefined,
-    isMultiline: true
+    isMultiline: true,
   };
 
   private ICON_MAP = {
@@ -35,7 +35,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     // tslint:disable-next-line:deprecation
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
-    [MessageBarType.success]: 'Completed'
+    [MessageBarType.success]: 'Completed',
   };
 
   private _classNames: { [key in keyof IMessageBarStyles]: string };
@@ -47,7 +47,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     this.state = {
       labelId: getId('MessageBar'),
       showContent: false,
-      expandSingleLine: false
+      expandSingleLine: false,
     };
   }
 
@@ -155,10 +155,17 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
   }
 
   private _renderInnerText(): JSX.Element {
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, [
+      'className',
+    ]);
 
     return (
-      <div className={this._classNames.text} id={this.state.labelId} role="status" aria-live={this._getAnnouncementPriority()}>
+      <div
+        className={this._classNames.text}
+        id={this.state.labelId}
+        role="status"
+        aria-live={this._getAnnouncementPriority()}
+      >
         <span className={this._classNames.innerText} {...nativeProps}>
           <DelayedRender>
             <span>{this.props.children}</span>
@@ -172,7 +179,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
     const hasActions = !!this._getActionsDiv() || !!this._getDismissDiv();
     const regionProps = {
       'aria-describedby': this.state.labelId,
-      role: 'region'
+      role: 'region',
     };
 
     return hasActions ? regionProps : {};
@@ -190,7 +197,7 @@ export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBa
       truncated: truncated,
       isMultiline: isMultiline,
       expandSingleLine: expandSingleLine,
-      className
+      className,
     });
   }
 

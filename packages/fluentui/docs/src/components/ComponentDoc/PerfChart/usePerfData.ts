@@ -14,7 +14,7 @@ const usePerfData = (filter?: string) => {
         .filter(entry => _.get(entry, `performance.${filter}`))
         .map(entry => ({
           ...entry,
-          performance: { [filter]: entry.performance[filter] }
+          performance: { [filter]: entry.performance[filter] },
         }))
     : data;
 
@@ -25,7 +25,7 @@ const usePerfData = (filter?: string) => {
   return {
     loading,
     error,
-    data: filteredData
+    data: filteredData,
   };
 };
 

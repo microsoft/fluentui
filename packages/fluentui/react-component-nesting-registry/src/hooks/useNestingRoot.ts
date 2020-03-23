@@ -16,10 +16,10 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
       value: {
         getContextRefs: registry.getContextRefs,
         register: registry.register,
-        unregister: registry.unregister
-      }
+        unregister: registry.unregister,
+      },
     }),
-    []
+    [],
   );
   const getRefs = React.useCallback(() => {
     return registry.getContextRefs(parentRef as any);
@@ -37,7 +37,7 @@ const useNestingRoot = <T extends Node>(): UseNestingHookResult<T> => {
 
     getRefs,
     isRoot: true,
-    ref: parentRef
+    ref: parentRef,
   };
 };
 

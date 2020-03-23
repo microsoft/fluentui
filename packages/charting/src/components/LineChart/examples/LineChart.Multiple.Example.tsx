@@ -29,41 +29,47 @@ export class LineChartMultipleExample extends React.Component<{}, {}> {
         data: [{ x: new Date('2018/01/01'), y: 10 }],
         legend: 'First',
         color: DefaultPalette.blue,
-        onLegendClick: this._onLegendClickHandler
+        onLegendClick: this._onLegendClickHandler,
       },
       {
         data: [{ x: new Date('2018/03/15'), y: 30 }],
         legend: 'Second',
         color: DefaultPalette.green,
-        onLegendClick: this._onLegendClickHandler
+        onLegendClick: this._onLegendClickHandler,
       },
       {
         data: [{ x: new Date('2018/06/01'), y: 45 }],
         legend: 'Third',
         color: DefaultPalette.red,
-        onLegendClick: this._onLegendClickHandler
-      }
+        onLegendClick: this._onLegendClickHandler,
+      },
     ];
 
     const data: IChartProps = {
       chartTitle: 'Line Chart',
-      lineChartData: points
+      lineChartData: points,
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     const timeFormat = '%m/%d';
-    // passing tick values is optional. If you do not pass them the line chart will render them for you based on D3 standard
-    // This is a optional prop for more control
+    // Passing tick values is optional, for more control.
+    // If you do not pass them the line chart will render them for you based on D3's standard.
     const tickValues: Date[] = [
       new Date('01-01-2018'),
       new Date('02-01-2018'),
       new Date('03-01-2018'),
       new Date('04-01-2018'),
       new Date('05-01-2018'),
-      new Date('06-01-2018')
+      new Date('06-01-2018'),
     ];
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} tickFormat={timeFormat} tickValues={tickValues} enabledLegendsWrapLines={true} />
+        <LineChart
+          data={data}
+          strokeWidth={4}
+          tickFormat={timeFormat}
+          tickValues={tickValues}
+          enabledLegendsWrapLines={true}
+        />
       </div>
     );
   }

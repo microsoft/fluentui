@@ -15,7 +15,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
 
     this._shouldShowFirstPivotItem = true;
     this.state = {
-      shouldShowFirstPivotItem: true
+      shouldShowFirstPivotItem: true,
     };
 
     this._handleClick = this._handleClick.bind(this);
@@ -29,7 +29,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
           <Label>Click the button below to show/hide this pivot item.</Label>
           <Label>The selected item will not change when the number of pivot items changes.</Label>
           <Label>If the selected item was removed, the new first item will be selected.</Label>
-        </PivotItem>
+        </PivotItem>,
       );
     }
 
@@ -42,7 +42,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
       </PivotItem>,
       <PivotItem headerText="Biz" itemKey="Biz" key="Biz">
         <Label>Pivot #4</Label>
-      </PivotItem>
+      </PivotItem>,
     );
 
     return (
@@ -64,7 +64,7 @@ export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExamp
   private _handleClick(): void {
     this._shouldShowFirstPivotItem = !this._shouldShowFirstPivotItem;
     this.setState({
-      shouldShowFirstPivotItem: this._shouldShowFirstPivotItem
+      shouldShowFirstPivotItem: this._shouldShowFirstPivotItem,
     });
   }
 }

@@ -21,7 +21,9 @@ export interface ITeachingBubble {
  * TeachingBubble component props.
  * {@docCategory TeachingBubble}
  */
-export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps
+  extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>,
+    IAccessiblePopupProps {
   /**
    * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -79,7 +81,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   secondaryButtonProps?: IButtonProps;
 
   /**
-   * Text that will be rendered in the footer of the TeachingBubble. May be rendered alongside primary and secondary buttons.
+   * Text that will be rendered in the footer of the TeachingBubble.
+   * May be rendered alongside primary and secondary buttons.
    */
   footerContent?: string | JSX.Element;
 
@@ -106,7 +109,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   isWide?: boolean;
 
   /**
-   * A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).
+   * A variation with smaller bold headline and margins to the body.
+   * (`hasCondensedHeadline` takes precedence if it is also set to true.)
    */
   hasSmallHeadline?: boolean;
 

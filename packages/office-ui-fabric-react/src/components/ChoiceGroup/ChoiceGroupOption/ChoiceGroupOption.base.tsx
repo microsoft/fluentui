@@ -1,7 +1,11 @@
 import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
-import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
+import {
+  IChoiceGroupOptionProps,
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles,
+} from './ChoiceGroupOption.types';
 import { classNamesFunction, getNativeProps, inputProperties, css, initializeComponentRef } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { composeRenderFunction } from '@uifabric/utilities';
@@ -46,7 +50,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       disabled,
       imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
       imageSize,
-      focused
+      focused,
     });
 
     const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
@@ -100,7 +104,9 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
 
     const imageSize = props.imageSize ? props.imageSize : { width: 32, height: 32 };
 
-    const onRenderLabel = props.onRenderLabel ? composeRenderFunction(props.onRenderLabel, this._onRenderLabel) : this._onRenderLabel;
+    const onRenderLabel = props.onRenderLabel
+      ? composeRenderFunction(props.onRenderLabel, this._onRenderLabel)
+      : this._onRenderLabel;
 
     const label = onRenderLabel(props);
 

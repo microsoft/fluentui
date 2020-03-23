@@ -14,9 +14,9 @@ const loaderBehavior: Accessibility<LoaderBehaviorProps> = props => {
     attributes: {
       root: {
         role: 'progressbar',
-        'aria-labelledby': getDefaultAriaLabelledBy(props)
-      }
-    }
+        'aria-labelledby': getDefaultAriaLabelledBy(props),
+      },
+    },
   };
 };
 

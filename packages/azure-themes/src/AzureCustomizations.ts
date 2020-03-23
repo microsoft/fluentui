@@ -5,14 +5,14 @@ import { AzureStyleSettings } from './azure/AzureStyleSettings';
 
 export const AzureCustomizationsDark: ICustomizations = {
   settings: {
-    theme: { ...AzureThemeDark }
+    theme: { ...AzureThemeDark },
   },
-  scopedSettings: { ...AzureStyleSettings(AzureThemeDark) }
+  scopedSettings: { ...AzureStyleSettings(AzureThemeDark) },
 };
 
 export const AzureCustomizationsLight: ICustomizations = {
   settings: {
-    theme: { ...AzureThemeLight }
+    theme: { ...AzureThemeLight },
   },
-  scopedSettings: { ...AzureStyleSettings(AzureThemeLight) }
+  scopedSettings: { ...AzureStyleSettings(AzureThemeLight) },
 };

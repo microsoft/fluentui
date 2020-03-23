@@ -18,7 +18,7 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -27,7 +27,10 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span
+          className="ms-TeachingBubbleBasicExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -44,7 +47,8 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
               onDismiss={this._onDismiss}
               headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
         ) : null}
@@ -54,13 +58,13 @@ export class TeachingBubbleWideExample extends React.Component<{}, ITeachingBubb
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

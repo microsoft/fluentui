@@ -127,7 +127,7 @@ export class SuggestionsController<T> {
       return {
         item: suggestion,
         selected: false,
-        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
+        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText,
       } as ISuggestionModel<T>;
     }
   };

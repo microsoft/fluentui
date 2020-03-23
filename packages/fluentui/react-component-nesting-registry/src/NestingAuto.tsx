@@ -19,7 +19,7 @@ const NestingAuto: React.FC<NestingProps> = props => (
 
 NestingAuto.displayName = 'NestingAuto';
 NestingAuto.propTypes = {
-  children: PropTypes.func.isRequired
+  children: PropTypes.func.isRequired,
 };
 
 export default NestingAuto;

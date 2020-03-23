@@ -12,8 +12,8 @@ import {
   Input,
   Popup,
   Provider,
-  themes
-} from '@fluentui/react';
+  themes,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 
 class App extends React.Component {

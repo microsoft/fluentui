@@ -4,12 +4,18 @@ import { SeparatorPageProps } from './SeparatorPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SeparatorPage/';
 
 export const SeparatorPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
   return (
-    <ControlsAreaPage {...props} title="Separator" {...SeparatorPageProps[platform]} otherSections={_otherSections(platform) as any} />
+    <ControlsAreaPage
+      {...props}
+      title="Separator"
+      {...SeparatorPageProps[platform]}
+      otherSections={_otherSections(platform) as any}
+    />
   );
 };
 
@@ -20,8 +26,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/SeparatorImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/ios/SeparatorImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/ios/SeparatorImplementation.md') as string,
+        },
       ];
 
     case 'android':
@@ -29,8 +35,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/SeparatorImplementation.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SeparatorPage/docs/android/SeparatorImplementation.md') as string,
+        },
       ];
   }
 }

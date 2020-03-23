@@ -13,7 +13,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       // tslint:disable:no-any
       .value((d: any) => {
         return d.y;
-      })
+      }),
   };
   private colors: scale.ScaleOrdinal<string | number, any>;
 
@@ -23,7 +23,13 @@ export class Pie extends React.Component<IPieProps, {}> {
 
   public arcGenerator = (d: IArcData, i: number): JSX.Element => {
     return (
-      <LabeledArc key={i} data={d} innerRadius={this.props.innerRadius} outerRadius={this.props.outerRadius} color={`${this.colors(i)}`} />
+      <LabeledArc
+        key={i}
+        data={d}
+        innerRadius={this.props.innerRadius}
+        outerRadius={this.props.outerRadius}
+        color={`${this.colors(i)}`}
+      />
     );
   };
 

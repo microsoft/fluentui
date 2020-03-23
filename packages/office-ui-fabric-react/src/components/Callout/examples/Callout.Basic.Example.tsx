@@ -14,50 +14,50 @@ const styles = mergeStyleSets({
     textAlign: 'center',
     margin: '0 100px',
     minWidth: 130,
-    height: 32
+    height: 32,
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   header: {
-    padding: '18px 24px 12px'
+    padding: '18px 24px 12px',
   },
   title: [
     theme.fonts.xLarge,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   inner: {
     height: '100%',
-    padding: '0 24px 20px'
+    padding: '0 24px 20px',
   },
   actions: {
     position: 'relative',
     marginTop: 20,
     width: '100%',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   },
   subtext: [
     theme.fonts.small,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   link: [
     theme.fonts.medium,
     {
-      color: theme.palette.neutralPrimary
-    }
-  ]
+      color: theme.palette.neutralPrimary,
+    },
+  ],
 });
 
 // Example code
 export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampleState> {
   public state: ICalloutBasicExampleState = {
-    isCalloutVisible: false
+    isCalloutVisible: false,
   };
 
   private _menuButtonElement = React.createRef<HTMLDivElement>();
@@ -92,7 +92,8 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
             </div>
             <div className={styles.inner}>
               <p className={styles.subtext} id={this._descriptionId}>
-                Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                Message body is optional. If help documentation is available, consider adding a link to learn more at
+                the bottom.
               </p>
               <div className={styles.actions}>
                 <Link className={styles.link} href="http://microsoft.com" target="_blank">
@@ -108,13 +109,13 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
 
   private _onShowMenuClicked = (): void => {
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
+      isCalloutVisible: !this.state.isCalloutVisible,
     });
   };
 
   private _onCalloutDismiss = (): void => {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   };
 }

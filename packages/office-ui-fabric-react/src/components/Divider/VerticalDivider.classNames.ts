@@ -12,13 +12,13 @@ export const getDividerClassNames = memoizeFunction(
       wrapper: {
         display: 'inline-flex',
         height: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
       },
       divider: {
         width: 1,
         height: '100%',
-        backgroundColor: theme.palette.neutralTertiaryAlt
-      }
+        backgroundColor: theme.palette.neutralTertiaryAlt,
+      },
     });
-  }
+  },
 );

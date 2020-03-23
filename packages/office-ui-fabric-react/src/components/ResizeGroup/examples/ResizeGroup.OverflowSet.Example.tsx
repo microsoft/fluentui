@@ -9,17 +9,17 @@ import { mergeStyleSets } from 'office-ui-fabric-react';
 
 const styles = mergeStyleSets({
   root: {
-    display: 'block'
+    display: 'block',
   },
   resizeIsShort: {
-    width: '400px'
+    width: '400px',
   },
   settingsGroup: {
-    paddingTop: '20px'
+    paddingTop: '20px',
   },
   itemCountDropdown: {
-    width: '180px'
-  }
+    width: '180px',
+  },
 });
 
 export interface IOverflowData {
@@ -37,7 +37,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
-      checked: checked
+      checked: checked,
     };
 
     cacheKey = cacheKey + item.key;
@@ -46,7 +46,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
 
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [] as any[]
+    overflow: [] as any[],
   };
 
   if (cachingEnabled) {
@@ -76,7 +76,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
       buttonsChecked: false,
       cachingEnabled: false,
       onGrowDataEnabled: false,
-      numberOfItems: 20
+      numberOfItems: 20,
     };
   }
 
@@ -133,7 +133,7 @@ export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGr
                 { key: '50', text: '50' },
                 { key: '75', text: '75' },
                 { key: '100', text: '100' },
-                { key: '200', text: '200' }
+                { key: '200', text: '200' },
               ]}
             />
           </div>

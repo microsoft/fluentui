@@ -5,16 +5,16 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
   web: {
     name: 'Web',
     icon: 'WebLogo-platformPicker',
-    color: '#258ede'
+    color: '#258ede',
   },
   ios: {
     name: 'iOS',
     icon: 'AppleLogo-platformPicker',
-    color: '#cf8fff'
+    color: '#cf8fff',
   },
   android: {
     name: 'Android',
     icon: 'AndroidLogo-platformPicker',
-    color: '#69e56e'
-  }
+    color: '#69e56e',
+  },
 };

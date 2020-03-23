@@ -25,7 +25,7 @@ const normalizeType = (propType: string): string => {
     (propType, normalizer): string => {
       return normalizer(propType);
     },
-    propType
+    propType,
   );
 
   return normalizeShorthandCollection(propType);
@@ -41,7 +41,7 @@ const getTypeFromBabelTree = (componentFile: t.File, componentName: string, prop
 
         typeAnnotation = annotationPath.get('typeAnnotation').node;
       }
-    }
+    },
   };
 
   Babel.traverse(componentFile, {
@@ -49,13 +49,18 @@ const getTypeFromBabelTree = (componentFile: t.File, componentName: string, prop
       if (path.get('id').isIdentifier({ name: `${componentName}Props` })) {
         path.traverse(propertyVisitor);
       }
-    }
+    },
   });
 
   return typeAnnotation;
 };
 
-const parseType = (componentFile: t.File, componentName: string, propName: string, propInfo: PropItem): ComponentPropType[] => {
+const parseType = (
+  componentFile: t.File,
+  componentName: string,
+  propName: string,
+  propInfo: PropItem,
+): ComponentPropType[] => {
   const propType = normalizeType(propInfo.type.name);
 
   let typeAnnotation: t.TSType | undefined;
@@ -63,7 +68,7 @@ const parseType = (componentFile: t.File, componentName: string, propName: strin
   try {
     const result = Babel.parse(`type __ = ${propType}`, {
       configFile: false,
-      presets: [['@babel/preset-typescript', { allExtensions: true }]]
+      presets: [['@babel/preset-typescript', { allExtensions: true }]],
     }) as t.File;
 
     const body = result.program.body;

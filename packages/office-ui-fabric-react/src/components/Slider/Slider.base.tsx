@@ -9,7 +9,7 @@ import {
   initializeComponentRef,
   Async,
   EventGroup,
-  FocusRects
+  FocusRects,
 } from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
@@ -33,7 +33,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     disabled: false,
     vertical: false,
     buttonProps: {},
-    originFromZero: false
+    originFromZero: false,
   };
 
   private _async: Async;
@@ -51,16 +51,17 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     initializeComponentRef(this);
 
     warnMutuallyExclusive(COMPONENT_NAME, this.props, {
-      value: 'defaultValue'
+      value: 'defaultValue',
     });
 
     this._id = getId('Slider');
 
-    const value = props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
+    const value =
+      props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
       value: value,
-      renderedValue: undefined
+      renderedValue: undefined,
     };
   }
 
@@ -83,7 +84,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       valueFormat,
       styles,
       theme,
-      originFromZero
+      originFromZero,
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -99,9 +100,11 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       vertical,
       showTransitions: renderedValue === value,
       showValue,
-      theme: theme!
+      theme: theme!,
     });
-    const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps
+      ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
+      : undefined;
 
     return (
       <div className={classNames.root}>
@@ -130,9 +133,16 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span
+                  className={css(classNames.zeroTick)}
+                  style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                />
               )}
-              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              <span
+                ref={this._thumb}
+                className={classNames.thumb}
+                style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)}
+              />
               {originFromZero ? (
                 <>
                   <span
@@ -189,7 +199,8 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   }
 
   private get renderedValue(): number | undefined {
-    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // Fall back to `value`.
     const { renderedValue = this.value } = this.state;
     return renderedValue;
   }
@@ -205,7 +216,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL(this.props.theme) ? 'right' : 'left';
     return {
-      [direction]: thumbOffsetPercent + '%'
+      [direction]: thumbOffsetPercent + '%',
     };
   }
 
@@ -273,7 +284,9 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
@@ -298,20 +311,20 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     this.setState(
       {
         value: roundedValue,
-        renderedValue
+        renderedValue,
       },
       () => {
         if (valueChanged && this.props.onChange) {
           this.props.onChange(this.state.value as number);
         }
-      }
+      },
     );
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
-      renderedValue: undefined
+      renderedValue: undefined,
     });
 
     if (this.props.onChanged) {

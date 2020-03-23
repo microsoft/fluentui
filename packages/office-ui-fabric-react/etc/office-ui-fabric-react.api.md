@@ -7785,21 +7785,13 @@ export interface IThemeRules {
 
 // @public (undocumented)
 export interface IThemeSlotRule {
-    // (undocumented)
     asShade?: Shade;
-    // (undocumented)
     color?: IColor;
-    // (undocumented)
     dependentRules: IThemeSlotRule[];
-    // (undocumented)
     inherits?: IThemeSlotRule;
-    // (undocumented)
     isBackgroundShade?: boolean;
-    // (undocumented)
     isCustomized?: boolean;
-    // (undocumented)
     name: string;
-    // (undocumented)
     value?: string;
 }
 
@@ -9480,18 +9472,12 @@ export const TextView: ITextComponent['view'];
 
 // @public (undocumented)
 export class ThemeGenerator {
-    // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
     static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeAsSass(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeForPowerShell(slotRules: IThemeRules): any;
-    // (undocumented)
     static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
-    // (undocumented)
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }
 

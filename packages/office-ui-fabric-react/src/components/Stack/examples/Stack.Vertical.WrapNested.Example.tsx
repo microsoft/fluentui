@@ -10,34 +10,34 @@ const textStyles: React.CSSProperties = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  color: DefaultPalette.white
+  color: DefaultPalette.white,
 };
 const firstStackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.neutralTertiary
-  }
+    background: DefaultPalette.neutralTertiary,
+  },
 };
 const firstStackItemStyles: React.CSSProperties = {
   ...textStyles,
-  background: DefaultPalette.themePrimary
+  background: DefaultPalette.themePrimary,
 };
 const secondStackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.neutralSecondary
-  }
+    background: DefaultPalette.neutralSecondary,
+  },
 };
 const secondStackItemStyles: React.CSSProperties = {
   ...textStyles,
-  background: DefaultPalette.themeDark
+  background: DefaultPalette.themeDark,
 };
 const thirdStackStyles: IStackStyles = {
   root: {
-    background: DefaultPalette.neutralPrimary
-  }
+    background: DefaultPalette.neutralPrimary,
+  },
 };
 const thirdStackItemStyles: React.CSSProperties = {
   ...textStyles,
-  background: DefaultPalette.themeDarker
+  background: DefaultPalette.themeDarker,
 };
 
 // Tokens definition
@@ -53,8 +53,8 @@ export const VerticalStackWrapNestedExample: React.FunctionComponent = () => {
   const containerStackStyles: IStackStyles = {
     root: {
       background: DefaultPalette.themeTertiary,
-      height: stackHeight
-    }
+      height: stackHeight,
+    },
   };
 
   return (
@@ -104,16 +104,18 @@ export const VerticalStackWrapNestedExample: React.FunctionComponent = () => {
         <b>Note:</b>
       </span>
       <span>
-        Support for nested wrapping of vertical flex-boxes is scarce across browsers, especially in the way they handle overflows.
+        Support for nested wrapping of vertical flex-boxes is scarce across browsers, especially in the way they handle
+        overflows.
       </span>
       <span>Most browsers don't scale the width of the flex-box when the inner items overflow and wrap around it.</span>
       <span>
-        The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with the switch to
-        Chromium).
+        The one exception to this case being Microsoft Edge that handles it correctly (though this might go soon with
+        the switch to Chromium).
       </span>
       <span>There are ways in which we could have gone around this issue.</span>
       <span>
-        However, we have chosen to adhere to the flex-box spec so that we have the correct implementation if support comes down the line.
+        However, we have chosen to adhere to the flex-box spec so that we have the correct implementation if support
+        comes down the line.
       </span>
     </Stack>
   );

@@ -11,9 +11,9 @@ const itemClass = mergeStyles({
   selectors: {
     '&:hover': {
       textDecoration: 'underline',
-      cursor: 'pointer'
-    }
-  }
+      cursor: 'pointer',
+    },
+  },
 });
 
 export class HoverCardPlainCardExample extends React.Component<{}, {}> {
@@ -26,7 +26,12 @@ export class HoverCardPlainCardExample extends React.Component<{}, {}> {
         <p>
           Hover over the <i>color</i> cell of a row item to see the card.
         </p>
-        <DetailsList setKey="hoverSet" items={this._items} columns={this._columns} onRenderItemColumn={this._onRenderItemColumn} />
+        <DetailsList
+          setKey="hoverSet"
+          items={this._items}
+          columns={this._columns}
+          onRenderItemColumn={this._onRenderItemColumn}
+        />
       </Fabric>
     );
   }
@@ -34,7 +39,7 @@ export class HoverCardPlainCardExample extends React.Component<{}, {}> {
   private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | React.ReactText => {
     const plainCardProps: IPlainCardProps = {
       onRenderPlainCard: this._onRenderPlainCard,
-      renderData: item
+      renderData: item,
     };
 
     if (column.key === 'color') {
@@ -57,6 +62,8 @@ export class HoverCardPlainCardExample extends React.Component<{}, {}> {
   };
 
   private _buildColumns(): IColumn[] {
-    return buildColumns(this._items).filter(column => column.name === 'color' || column.name === 'width' || column.name === 'height');
+    return buildColumns(this._items).filter(
+      column => column.name === 'color' || column.name === 'width' || column.name === 'height',
+    );
   }
 }

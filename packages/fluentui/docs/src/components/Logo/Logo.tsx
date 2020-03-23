@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Image, ImageProps } from '@fluentui/react';
+import { Image, ImageProps } from '@fluentui/react-northstar';
 
 export type LogoProps = ImageProps & {
   flavor?: 'black' | 'white' | 'inverted';

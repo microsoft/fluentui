@@ -4,14 +4,22 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { people, groupOne, groupTwo } from '@uifabric/example-data';
-import { SelectedPeopleList, ISelectedPeopleList, SelectedPersona, ISelectedItemProps } from '@uifabric/experiments/lib/SelectedItemsList';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList,
+  SelectedPersona,
+  ISelectedItemProps,
+} from '@uifabric/experiments/lib/SelectedItemsList';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersonaProps[];
   controlledComponent: boolean;
 }
 
-export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
+export class SelectedPeopleListWithGroupExpandExample extends React.Component<
+  {},
+  IPeopleSelectedItemsListExampleState
+> {
   private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 

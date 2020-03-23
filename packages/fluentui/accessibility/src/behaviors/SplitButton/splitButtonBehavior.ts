@@ -28,17 +28,17 @@ const splitButtonBehavior: Accessibility = props => {
       keyActions: {
         popup: {
           closeAndFocusTrigger: {
-            keyCombinations: [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.ArrowUp, altKey: true }]
-          }
+            keyCombinations: [{ keyCode: keyboardKey.Escape }, { keyCode: keyboardKey.ArrowUp, altKey: true }],
+          },
         },
         root: {
           ...(!props.open && {
             openAndFocusFirst: {
-              keyCombinations: [{ keyCode: keyboardKey.ArrowDown, altKey: true }]
-            }
-          })
-        }
-      }
+              keyCombinations: [{ keyCode: keyboardKey.ArrowDown, altKey: true }],
+            },
+          }),
+        },
+      },
     });
   };
 
@@ -47,12 +47,12 @@ const splitButtonBehavior: Accessibility = props => {
       root: {},
       toggleButton: {
         tabIndex: -1,
-        'aria-haspopup': true
-      }
+        'aria-haspopup': true,
+      },
     },
     childBehaviors: {
-      menuButton: splitButtonMenuButtonBehavior
-    }
+      menuButton: splitButtonMenuButtonBehavior,
+    },
   };
 };
 

@@ -11,14 +11,14 @@ const generateBaseStyle = (backgroundColor: string, textColor: string): IStyle =
         color: textColor,
         selectors: {
           '&:hover': {
-            backgroundColor: backgroundColor
+            backgroundColor: backgroundColor,
           },
           '&:active': {
-            backgroundColor: backgroundColor
-          }
-        }
-      }
-    }
+            backgroundColor: backgroundColor,
+          },
+        },
+      },
+    },
   };
 };
 
@@ -39,7 +39,7 @@ const IconButtonStyles = (props: IMessageBarStyleProps): IStyle => {
     (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) &&
       generateBaseStyle(semanticColors.statusWarningBackground, semanticColors.statusWarningText),
 
-    !messageBarType && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText)
+    !messageBarType && generateBaseStyle(semanticColors.bodyBackground, semanticColors.bodyText),
   ];
 };
 
@@ -51,7 +51,8 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
   return {
     actions: {
       // Buttons utilizes an alpha channel < 1 for their pressed and hover state background colors.
-      // This styling effectively makes the button background the body background and applies hover / active styles to next child down.
+      // This styling effectively makes the button background the body background and applies hover / active styles
+      // to next child down.
       selectors: {
         '.ms-Button': {
           backgroundColor: semanticColors.bodyBackground,
@@ -65,25 +66,25 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
               selectors: {
                 ':hover': {
                   backgroundColor: semanticColors.buttonBackgroundHovered,
-                  color: semanticColors.buttonTextHovered
+                  color: semanticColors.buttonTextHovered,
                 },
                 ':active': {
                   backgroundColor: semanticColors.buttonBackgroundPressed,
-                  color: semanticColors.buttonTextPressed
-                }
-              }
+                  color: semanticColors.buttonTextPressed,
+                },
+              },
             },
             ':hover': {
               backgroundColor: semanticColors.bodyBackground,
-              color: semanticColors.buttonText
+              color: semanticColors.buttonText,
             },
             ':active': {
               backgroundColor: semanticColors.bodyBackground,
-              color: semanticColors.buttonText
-            }
-          }
-        }
-      }
+              color: semanticColors.buttonText,
+            },
+          },
+        },
+      },
     },
     dismissSingleLine: iconButtonStyles,
     dismissal: iconButtonStyles,
@@ -91,24 +92,24 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
     expandSingleLine: iconButtonStyles,
     icon: [
       (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) && {
-        color: semanticColors.statusErrorIcon
+        color: semanticColors.statusErrorIcon,
       },
 
       messageBarType === MessageBarType.info && {
-        color: semanticColors.statusInformationIcon
+        color: semanticColors.statusInformationIcon,
       },
 
       messageBarType === MessageBarType.success && {
-        color: semanticColors.statusSuccessIcon
+        color: semanticColors.statusSuccessIcon,
       },
 
       (messageBarType === MessageBarType.warning || messageBarType === MessageBarType.blocked) && {
-        color: semanticColors.statusWarningIcon
+        color: semanticColors.statusWarningIcon,
       },
 
       !messageBarType && {
-        color: semanticColors.bodyText
-      }
+        color: semanticColors.bodyText,
+      },
     ],
     root: [
       (messageBarType === MessageBarType.error || messageBarType === MessageBarType.severeWarning) &&
@@ -129,13 +130,13 @@ export const MessageBarStyles = (props: IMessageBarStyleProps): Partial<IMessage
         border: `2px solid ${semanticColors.bodyDivider}`,
         selectors: {
           '&:hover': {
-            backgroundColor: semanticColors.bodyBackground
+            backgroundColor: semanticColors.bodyBackground,
           },
           '&:active': {
-            backgroundColor: semanticColors.bodyBackground
-          }
-        }
-      }
-    ]
+            backgroundColor: semanticColors.bodyBackground,
+          },
+        },
+      },
+    ],
   };
 };

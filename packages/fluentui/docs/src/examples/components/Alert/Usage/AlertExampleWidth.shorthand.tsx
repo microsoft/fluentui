@@ -1,5 +1,5 @@
 import { useRangeKnob } from '@fluentui/docs-components';
-import { Alert } from '@fluentui/react';
+import { Alert } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const AlertExampleWidth = () => {
@@ -8,7 +8,7 @@ const AlertExampleWidth = () => {
     min: '350px',
     max: '800px',
     initialValue: '500px',
-    step: '10px'
+    step: '10px',
   });
 
   return (

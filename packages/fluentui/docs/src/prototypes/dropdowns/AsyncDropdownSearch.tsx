@@ -1,5 +1,5 @@
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Dropdown, DropdownProps, Flex, Label, Loader } from '@fluentui/react';
+import { Dropdown, DropdownProps, Flex, Label, Loader } from '@fluentui/react-northstar';
 import * as faker from 'faker';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -26,7 +26,7 @@ interface SearchPageState {
 const createEntry = (): Entry => ({
   image: faker.internet.avatar(),
   header: `${faker.name.firstName()} ${faker.name.lastName()}`,
-  content: faker.commerce.department()
+  content: faker.commerce.department(),
 });
 
 // ----------------------------------------
@@ -37,7 +37,7 @@ class AsyncDropdownSearch extends React.Component<{}, SearchPageState> {
     loading: false,
     searchQuery: '',
     items: [],
-    value: []
+    value: [],
   };
 
   searchTimer: number;
@@ -59,7 +59,7 @@ class AsyncDropdownSearch extends React.Component<{}, SearchPageState> {
     this.searchTimer = window.setTimeout(() => {
       this.setState(prevState => ({
         loading: false,
-        items: [...prevState.items, ..._.times<Entry>(2, createEntry)]
+        items: [...prevState.items, ..._.times<Entry>(2, createEntry)],
       }));
     }, 2000);
   };

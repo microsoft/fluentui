@@ -13,23 +13,23 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('../components/Card/CardPage').CardPage,
           key: 'Card',
           name: 'Card',
-          url: '#/examples/card'
-        }
-      ]
-    }
+          url: '#/examples/card',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric'
+      url: 'https://dev.microsoft.com/fabric',
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
-    }
-  ]
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

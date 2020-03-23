@@ -28,7 +28,7 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
     suggestionsHeaderText,
     onFloatingSuggestionsDismiss,
     targetElement,
-    calloutProps
+    calloutProps,
   } = props;
 
   const hidePicker = (ev: React.MouseEvent): void => {
@@ -36,7 +36,10 @@ export const BaseFloatingSuggestions = <T extends {}>(props: IBaseFloatingSugges
   };
 
   return (
-    <div ref={componentRef} className={css('ms-BasePicker ms-BaseFloatingPicker', classNames.root, props.className ? props.className : '')}>
+    <div
+      ref={componentRef}
+      className={css('ms-BasePicker ms-BaseFloatingPicker', classNames.root, props.className ? props.className : '')}
+    >
       {isSuggestionsVisible ? (
         <Callout
           className={classNames.callout}

@@ -9,8 +9,8 @@ export const BoxStyles = {
   root: {
     background: backgroundColor,
     color: bodyText,
-    fontFamily: defaultFontFamily
-  }
+    fontFamily: defaultFontFamily,
+  },
 };
 
 export default BoxStyles;

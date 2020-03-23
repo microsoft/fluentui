@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popup, Button, Divider, Text, Grid, Ref } from '@fluentui/react';
+import { Popup, Button, Divider, Text, Grid, Ref } from '@fluentui/react-northstar';
 
 const PopupCustomTargetExample: React.FC = () => {
   const [textRef, setTextRef] = React.useState<HTMLSpanElement | null>(null);
@@ -15,7 +15,10 @@ const PopupCustomTargetExample: React.FC = () => {
         <Text>Could you guess what does this text means? :)</Text>
         <Divider />
         <Ref innerRef={setTextRef}>
-          <Text>"To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the souls of York."</Text>
+          <Text>
+            "To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the souls
+            of York."
+          </Text>
         </Ref>
       </div>
     </Grid>

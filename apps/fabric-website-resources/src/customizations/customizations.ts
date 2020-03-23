@@ -1,7 +1,12 @@
 import { IExampleCardCustomizations, IAppCustomizations } from '@uifabric/example-app-base';
 import { MDL2Customizations } from '@uifabric/mdl2-theme';
 import { AzureCustomizationsLight, AzureCustomizationsDark } from '@uifabric/azure-themes';
-import { TeamsCustomizations, WordCustomizations, DefaultCustomizations, DarkCustomizations } from '@uifabric/theme-samples';
+import {
+  TeamsCustomizations,
+  WordCustomizations,
+  DefaultCustomizations,
+  DarkCustomizations,
+} from '@uifabric/theme-samples';
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Default', customizations: DefaultCustomizations },
@@ -10,9 +15,9 @@ const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Teams', customizations: TeamsCustomizations },
   { title: 'Azure', customizations: AzureCustomizationsLight },
   { title: 'Azure Dark', customizations: AzureCustomizationsDark },
-  { title: 'MDL2', customizations: MDL2Customizations }
+  { title: 'MDL2', customizations: MDL2Customizations },
 ];
 
 export const AppCustomizations: IAppCustomizations = {
-  exampleCardCustomizations
+  exampleCardCustomizations,
 };

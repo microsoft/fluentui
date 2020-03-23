@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, AvatarProps } from '@fluentui/react';
+import { Avatar, AvatarProps } from '@fluentui/react-northstar';
 
 const CustomAvatar = (props: AvatarProps & { hexagonal?: boolean }) => {
   const { hexagonal, ...rest } = props;

@@ -5,7 +5,7 @@ import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styli
 const classNames = mergeStyleSets({
   root: {
     marginTop: -20,
-    padding: 40
+    padding: 40,
   },
   banner: {
     padding: '1px 20px',
@@ -14,9 +14,9 @@ const classNames = mergeStyleSets({
     borderBottom: '1px solid ' + DefaultPalette.neutralTertiaryAlt,
     selectors: {
       h1: { marginBottom: 0 },
-      h3: { marginTop: 0, marginBottom: 20 }
-    }
-  }
+      h3: { marginTop: 0, marginBottom: 20 },
+    },
+  },
 });
 
 export const GettingStartedPage: React.FunctionComponent = () => {

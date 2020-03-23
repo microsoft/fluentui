@@ -8,7 +8,7 @@ import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
  */
 export enum ResizeGroupDirection {
   horizontal = 0,
-  vertical = 1
+  vertical = 1,
 }
 
 /**
@@ -55,10 +55,11 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
   direction?: ResizeGroupDirection;
 
   /**
-   * Initial data to be passed to the onRenderData function. When there is no onGrowData provided, this data should represent what should
-   * be passed to the render function when the parent container of the ResizeGroup is at it's maximum supported width. A cacheKey property
-   * may optionally be included as part of the data. Two data objects with the same cacheKey will be assumed to take up the
-   * same width and will prevent measurements. The type of cacheKey is a string.
+   * Initial data to be passed to the `onRenderData` function. When there is no `onGrowData` provided, this data should
+   * represent what should be passed to the render function when the parent container of the ResizeGroup is at its
+   * maximum supported width. A `cacheKey` property may optionally be included as part of the data. Two data objects
+   * with the same `cacheKey` will be assumed to take up the same width and will prevent measurements.
+   * The type of `cacheKey` is a string.
    */
   data: any;
 

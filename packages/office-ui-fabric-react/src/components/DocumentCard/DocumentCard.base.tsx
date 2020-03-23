@@ -1,7 +1,20 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { classNamesFunction, KeyCodes, getNativeProps, divProperties, warnDeprecations, initializeComponentRef } from '../../Utilities';
-import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
+import {
+  classNamesFunction,
+  KeyCodes,
+  getNativeProps,
+  divProperties,
+  warnDeprecations,
+  initializeComponentRef,
+} from '../../Utilities';
+import {
+  DocumentCardType,
+  IDocumentCard,
+  IDocumentCardProps,
+  IDocumentCardStyleProps,
+  IDocumentCardStyles,
+} from './DocumentCard.types';
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
@@ -12,7 +25,7 @@ const COMPONENT_NAME = 'DocumentCard';
  */
 export class DocumentCardBase extends React.Component<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
-    type: DocumentCardType.normal
+    type: DocumentCardType.normal,
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
@@ -23,7 +36,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
 
     initializeComponentRef(this);
     warnDeprecations(COMPONENT_NAME, props, {
-      accentColor: undefined
+      accentColor: undefined,
     });
   }
 
@@ -34,7 +47,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
       'className',
       'onClick',
       'type',
-      'role'
+      'role',
     ]);
     const actionable = onClick || onClickHref ? true : false;
 
@@ -42,14 +55,14 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
       theme: theme!,
       className,
       actionable,
-      compact: type === DocumentCardType.compact ? true : false
+      compact: type === DocumentCardType.compact ? true : false,
     });
 
     // Override the border color if an accent color was provided (compact card only)
     let style;
     if (type === DocumentCardType.compact && accentColor) {
       style = {
-        borderBottomColor: accentColor
+        borderBottomColor: accentColor,
       };
     }
 

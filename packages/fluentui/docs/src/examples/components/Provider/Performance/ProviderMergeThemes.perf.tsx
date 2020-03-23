@@ -1,4 +1,4 @@
-import { mergeThemes, callable, ComponentStyleFunctionParam, themes } from '@fluentui/react';
+import { mergeThemes, callable, ComponentStyleFunctionParam, themes } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -14,7 +14,7 @@ const providerMergeThemesPerf = () => {
       variables: compVariables,
       theme: merged,
       rtl: false,
-      disableAnimations: false
+      disableAnimations: false,
     };
     return _.mapValues(componentStyle, (partStyle, partName) => {
       if (partName === '_debug') {
