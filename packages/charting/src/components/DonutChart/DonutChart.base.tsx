@@ -200,6 +200,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         centerLegends
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
       />
     );
     return legends;
