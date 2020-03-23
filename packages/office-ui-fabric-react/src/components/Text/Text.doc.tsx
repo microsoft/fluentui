@@ -14,8 +14,7 @@ const TextBlockExampleCode = require('!raw-loader!office-ui-fabric-react/src/com
 export const TextPageProps: IDocPageProps = {
   title: 'Text',
   componentName: 'Text',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Text',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Text',
   examples: [
     {
       title: 'Text Ramp Example',

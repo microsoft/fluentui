@@ -306,6 +306,17 @@ export default function isConformant(
         expect(Component.handledProps).toContain(expectedChangeHandler);
       });
     });
+
+    const isClassComponent = !!Component.prototype?.isReactComponent;
+
+    if (!isClassComponent) {
+      test('uses "useUnhandledProps" hook', () => {
+        const wrapper = mount(<Component {...requiredProps} />);
+        const element = getComponent(wrapper);
+
+        expect(element.prop('data-uses-unhanded-props')).toBeTruthy();
+      });
+    }
   });
 
   if (hasAccessibilityProp) {

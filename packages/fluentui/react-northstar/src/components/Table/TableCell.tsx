@@ -12,7 +12,7 @@ import {
   createShorthandFactory,
   UIComponentProps,
 } from '../../utils';
-import { useTelemetry, useStyles, getElementType, getUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
+import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 import Box, { BoxProps } from '../Box/Box';
@@ -58,7 +58,7 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
   const { children, content, truncateContent, className, design, styles, variables } = props;
   const hasChildren = childrenExist(children);
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(TableCell.handledProps, props);
+  const unhandledProps = useUnhandledProps(TableCell.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: TableCell.displayName,
     actionHandlers: {

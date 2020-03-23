@@ -1,7 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 22 Jan 2020 12:36:43 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.8.9
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.8.3
 Wed, 22 Jan 2020 12:36:43 GMT
 

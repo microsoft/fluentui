@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import cx from 'classnames';
 
 import { createShorthandFactory, commonPropTypes } from '../../utils';
@@ -105,7 +105,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(DropdownItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(DropdownItem.handledProps, props);
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);

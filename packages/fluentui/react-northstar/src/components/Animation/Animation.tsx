@@ -1,6 +1,6 @@
 import {
   ComponentAnimationProp,
-  getUnhandledProps,
+  useUnhandledProps,
   unstable_createAnimationStyles as createAnimationStyles,
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
   unstable_getStyles as getStyles,
@@ -231,7 +231,7 @@ const Animation: React.FC<AnimationProps> & {
   const { animationDuration, animationDelay } = animationStyles.root;
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
-  const unhandledProps = getUnhandledProps(Animation.handledProps, props);
+  const unhandledProps = useUnhandledProps(Animation.handledProps, props);
 
   const isChildrenFunction = typeof children === 'function';
   const child = childrenExist(children) && !isChildrenFunction && (React.Children.only(children) as React.ReactElement);

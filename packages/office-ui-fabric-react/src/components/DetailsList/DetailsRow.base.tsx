@@ -236,7 +236,7 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
 
     // Only re-assign rowClassNames when classNames have changed.
     // Otherwise, they will cause DetailsRowFields to unnecessarily
-    // re-render, see https://github.com/OfficeDev/office-ui-fabric-react/pull/8799.
+    // re-render, see https://github.com/microsoft/fluentui/pull/8799.
     // Refactor DetailsRowFields to generate own styles to remove need for this.
     if (!shallowCompare(this._rowClassNames || {}, rowClassNames)) {
       this._rowClassNames = rowClassNames;

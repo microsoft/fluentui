@@ -18,7 +18,7 @@ export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Callout',
   examples: [
     {
       title: 'Default Callout',

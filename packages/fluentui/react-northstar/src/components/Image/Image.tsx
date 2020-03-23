@@ -1,5 +1,5 @@
 import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -75,7 +75,7 @@ const Image: React.FC<WithAsProp<ImageProps>> & FluentComponentStaticProps<Image
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Image.handledProps, props);
+  const unhandledProps = useUnhandledProps(Image.handledProps, props);
 
   const result = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })} />;
 

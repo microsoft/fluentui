@@ -1,5 +1,5 @@
 import { Accessibility, treeTitleBehavior, TreeTitleBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -100,7 +100,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(TreeTitle.handledProps, props);
+  const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
 
   const handleClick = e => {
     _.invoke(props, 'onClick', e, props);
