@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update repo path",
-  "packageName": "@uifabric/pr-deploy-site",
-  "email": "elcraig@microsoft.com",
-  "commit": "e3e0e7ce2554a1ad7f605cf01ff348ac0d2c4310",
-  "date": "2020-03-20T23:55:45.240Z"
-}
