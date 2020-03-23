@@ -42,7 +42,7 @@ export const getClassNames = memoizeFunction(
         required && 'is-required',
         styles.root,
         !allowFreeForm && styles.rootDisallowFreeForm,
-        hasErrorMessage ? styles.rootError : !disabled && focused && styles.rootFocused,
+        hasErrorMessage && !focused ? styles.rootError : !disabled && focused && styles.rootFocused,
         !disabled && {
           selectors: {
             ':hover': hasErrorMessage ? styles.rootError : !isOpen && !focused && styles.rootHovered,
