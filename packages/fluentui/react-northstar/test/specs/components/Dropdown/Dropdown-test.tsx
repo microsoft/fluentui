@@ -14,14 +14,14 @@ jest.useFakeTimers();
 describe('Dropdown', () => {
   isConformant(Dropdown, {
     hasAccessibilityProp: false,
-    autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value']
+    autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
   });
 
   describe('clearable', () => {
     it('value is cleared at Icon click', () => {
       const { triggerButtonNode, clickOnClearIndicator } = renderDropdown({
         clearable: true,
-        defaultValue: items[0]
+        defaultValue: items[0],
       });
 
       clickOnClearIndicator();
@@ -34,7 +34,7 @@ describe('Dropdown', () => {
       const { clickOnClearIndicator } = renderDropdown({
         onChange,
         defaultValue: items[0],
-        clearable: true
+        clearable: true,
       });
 
       clickOnClearIndicator();
@@ -47,8 +47,8 @@ describe('Dropdown', () => {
           highlightedIndex: null,
           open: false,
           searchQuery: undefined,
-          value: null
-        })
+          value: null,
+        }),
       );
     });
   });
@@ -84,7 +84,7 @@ describe('Dropdown', () => {
 
     it('is "false" when closed by trigger button click', () => {
       const { clickOnTriggerButton, getItemNodes } = renderDropdown({
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       clickOnTriggerButton();
@@ -95,7 +95,7 @@ describe('Dropdown', () => {
     it('calls onOpenChange with a value that represents the open state', () => {
       const onOpenChange = jest.fn();
       const { clickOnTriggerButton } = renderDropdown({
-        onOpenChange
+        onOpenChange,
       });
 
       clickOnTriggerButton();
@@ -104,8 +104,8 @@ describe('Dropdown', () => {
       expect(onOpenChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
-          open: true
-        })
+          open: true,
+        }),
       );
 
       clickOnTriggerButton();
@@ -114,8 +114,8 @@ describe('Dropdown', () => {
       expect(onOpenChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
-          open: false
-        })
+          open: false,
+        }),
       );
     });
 
@@ -129,7 +129,7 @@ describe('Dropdown', () => {
 
     it('is "false" when closed by toggle indicator click', () => {
       const { clickOnToggleIndicator, getItemNodes } = renderDropdown({
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       clickOnToggleIndicator();
@@ -140,7 +140,7 @@ describe('Dropdown', () => {
     it('is "false" when closed by hitting Escape in search input', () => {
       const { keyDownOnSearchInput, getItemNodes } = renderDropdown({
         search: true,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnSearchInput('Escape');
@@ -193,7 +193,7 @@ describe('Dropdown', () => {
     it('is "false" when blurred by Tab on search input', () => {
       const { getItemNodes, keyDownOnSearchInput } = renderDropdown({
         defaultOpen: true,
-        search: true
+        search: true,
       });
 
       keyDownOnSearchInput('Tab');
@@ -204,7 +204,7 @@ describe('Dropdown', () => {
     it('is "false" when blurred by Shift+Tab on search input', () => {
       const { getItemNodes, keyDownOnSearchInput } = renderDropdown({
         defaultOpen: true,
-        search: true
+        search: true,
       });
 
       keyDownOnSearchInput('Tab', { shiftKey: true });
@@ -247,51 +247,66 @@ describe('Dropdown', () => {
 
       keyDownOnTriggerButton('ArrowUp');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(items.length - 1)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(items.length - 1)),
+      );
     });
 
     it('has the provided prop value when opened by click', () => {
       const highlightedIndex = 2;
       const { clickOnTriggerButton, itemsListNode } = renderDropdown({
-        highlightedIndex
+        highlightedIndex,
       });
 
       clickOnTriggerButton();
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)),
+      );
     });
 
     it('has the provided prop value when opened by arrow down key', () => {
       const highlightedIndex = 1;
       const { keyDownOnTriggerButton, itemsListNode } = renderDropdown({
-        highlightedIndex
+        highlightedIndex,
       });
 
       keyDownOnTriggerButton('ArrowDown');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)),
+      );
     });
 
     it('has the provided prop value when opened by arrow up key', () => {
       const highlightedIndex = 1;
       const { keyDownOnTriggerButton, itemsListNode } = renderDropdown({
-        highlightedIndex
+        highlightedIndex,
       });
 
       keyDownOnTriggerButton('ArrowUp');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)),
+      );
     });
 
     it('is defaultHighlightedIndex prop value at first opening, then null', () => {
       const defaultHighlightedIndex = 2;
       const { clickOnTriggerButton, itemsListNode } = renderDropdown({
-        defaultHighlightedIndex
+        defaultHighlightedIndex,
       });
 
       clickOnTriggerButton();
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(defaultHighlightedIndex)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(defaultHighlightedIndex)),
+      );
 
       clickOnTriggerButton();
       clickOnTriggerButton();
@@ -301,7 +316,7 @@ describe('Dropdown', () => {
 
     it('is 0 on every open when highlightFirstItemOnOpen prop is provided', () => {
       const { clickOnTriggerButton, itemsListNode } = renderDropdown({
-        highlightFirstItemOnOpen: true
+        highlightFirstItemOnOpen: true,
       });
 
       clickOnTriggerButton();
@@ -317,7 +332,7 @@ describe('Dropdown', () => {
     it('is set to 0 on searchQuery change and when highlightFirstItemOnOpen prop is provided', () => {
       const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
         highlightFirstItemOnOpen: true,
-        search: true
+        search: true,
       });
 
       changeSearchInput('i');
@@ -335,7 +350,7 @@ describe('Dropdown', () => {
 
     it('is null on searchQuery change and when highlightFirstItemOnOpen prop is not provided', () => {
       const { changeSearchInput, keyDownOnSearchInput, searchInputNode } = renderDropdown({
-        search: true
+        search: true,
       });
 
       changeSearchInput('i');
@@ -354,34 +369,43 @@ describe('Dropdown', () => {
     it('is the index of the value previously selected when opened', () => {
       const highlightedIndex = 2;
       const { clickOnTriggerButton, itemsListNode } = renderDropdown({
-        value: items[highlightedIndex]
+        value: items[highlightedIndex],
       });
 
       clickOnTriggerButton();
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(highlightedIndex)),
+      );
     });
 
     it('is the index of the (value previously selected + 1) when opened by arrow down', () => {
       const highlightedIndex = 2;
       const { keyDownOnTriggerButton, itemsListNode } = renderDropdown({
-        value: items[highlightedIndex]
+        value: items[highlightedIndex],
       });
 
       keyDownOnTriggerButton('ArrowDown');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(highlightedIndex + 1)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(highlightedIndex + 1)),
+      );
     });
 
     it('is the index of the (value previously selected - 1) when opened by arrow up', () => {
       const highlightedIndex = 2;
       const { keyDownOnTriggerButton, itemsListNode } = renderDropdown({
-        value: items[highlightedIndex]
+        value: items[highlightedIndex],
       });
 
       keyDownOnTriggerButton('ArrowUp');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(highlightedIndex - 1)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(highlightedIndex - 1)),
+      );
     });
 
     it('is changed correctly on arrow down navigation', () => {
@@ -390,7 +414,10 @@ describe('Dropdown', () => {
       for (let index = 0; index < items.length; index++) {
         keyDownOnTriggerButton('ArrowDown');
 
-        expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(index)));
+        expect(itemsListNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(index)),
+        );
       }
     });
 
@@ -400,7 +427,10 @@ describe('Dropdown', () => {
       for (let index = items.length - 1; index >= 0; index--) {
         keyDownOnTriggerButton('ArrowUp');
 
-        expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(index)));
+        expect(itemsListNode).toHaveAttribute(
+          'aria-activedescendant',
+          expect.stringMatching(getItemIdRegexByIndex(index)),
+        );
       }
     });
 
@@ -415,7 +445,7 @@ describe('Dropdown', () => {
     it('is changed correctly on arrow up and shift navigation', () => {
       const { keyDownOnTriggerButton, itemsListNode } = renderDropdown({
         defaultHighlightedIndex: items.length - 1,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnTriggerButton('ArrowUp', { shiftKey: true });
@@ -426,7 +456,7 @@ describe('Dropdown', () => {
     it('is changed correctly on home key navigation', () => {
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         defaultHighlightedIndex: 2,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('Home');
@@ -437,23 +467,29 @@ describe('Dropdown', () => {
     it('is changed correctly on end key navigation', () => {
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         defaultHighlightedIndex: 2,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('End');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(items.length - 1)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(items.length - 1)),
+      );
     });
 
     it('wraps to start and end on navigation', () => {
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         defaultHighlightedIndex: 0,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('ArrowUp');
 
-      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(items.length - 1)));
+      expect(itemsListNode).toHaveAttribute(
+        'aria-activedescendant',
+        expect.stringMatching(getItemIdRegexByIndex(items.length - 1)),
+      );
 
       keyDownOnItemsList('ArrowDown');
 
@@ -462,7 +498,7 @@ describe('Dropdown', () => {
 
     it('is updated correctly when hovering over items', () => {
       const { mouseOverItemAtIndex, itemsListNode } = renderDropdown({
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       mouseOverItemAtIndex(1);
@@ -476,7 +512,7 @@ describe('Dropdown', () => {
 
     it('is updated correctly when hovering over items and using arrow keys to navigate', () => {
       const { mouseOverItemAtIndex, keyDownOnItemsList, itemsListNode } = renderDropdown({
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       mouseOverItemAtIndex(1);
@@ -494,7 +530,7 @@ describe('Dropdown', () => {
       const items = ['Athos', 'Porthos', 'Aramis', `D'Artagnan`];
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         items,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('P');
@@ -507,7 +543,7 @@ describe('Dropdown', () => {
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         items,
         defaultHighlightedIndex: 1,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('A');
@@ -520,7 +556,7 @@ describe('Dropdown', () => {
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         items,
         defaultHighlightedIndex: 2,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('A');
@@ -532,7 +568,7 @@ describe('Dropdown', () => {
       const items = ['Athos', 'Porthos', 'Aramis', `D'Artagnan`];
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         items,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('A');
@@ -554,7 +590,7 @@ describe('Dropdown', () => {
       const items = ['Albert', 'Alfred', 'Alena', 'Ali'];
       const { keyDownOnItemsList, itemsListNode } = renderDropdown({
         items,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       keyDownOnItemsList('A');
@@ -590,7 +626,7 @@ describe('Dropdown', () => {
       const itemToBeClickedIndex = 1;
       const { triggerButtonNode, clickOnItemAtIndex } = renderDropdown({
         defaultValue,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       expect(triggerButtonNode).toHaveTextContent(defaultValue);
@@ -612,8 +648,8 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           value: items[itemToClickIndex],
-          searchQuery: items[itemToClickIndex]
-        })
+          searchQuery: items[itemToClickIndex],
+        }),
       );
     });
 
@@ -626,7 +662,7 @@ describe('Dropdown', () => {
         open: true,
         defaultValue: [items[defaultSelectedItemIndex]],
         onChange,
-        multiple: true
+        multiple: true,
       });
 
       clickOnItemAtIndex(itemToClickIndex - 1);
@@ -635,8 +671,8 @@ describe('Dropdown', () => {
       expect(onChange).toHaveBeenCalledWith(
         null,
         expect.objectContaining({
-          value: [items[defaultSelectedItemIndex], items[itemToClickIndex]]
-        })
+          value: [items[defaultSelectedItemIndex], items[itemToClickIndex]],
+        }),
       );
 
       keyDownOnSelectedItemAtIndex(0, 'Delete');
@@ -645,8 +681,8 @@ describe('Dropdown', () => {
       expect(onChange).toHaveBeenLastCalledWith(
         null,
         expect.objectContaining({
-          value: [items[itemToClickIndex]]
-        })
+          value: [items[itemToClickIndex]],
+        }),
       );
     });
 
@@ -663,7 +699,7 @@ describe('Dropdown', () => {
       const itemSelectedIndex = 1;
       const { triggerButtonNode, keyDownOnItemsList } = renderDropdown({
         defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex
+        defaultHighlightedIndex: itemSelectedIndex,
       });
 
       keyDownOnItemsList('Enter');
@@ -675,7 +711,7 @@ describe('Dropdown', () => {
       const itemSelectedIndex = 3;
       const { triggerButtonNode, keyDownOnItemsList } = renderDropdown({
         defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex
+        defaultHighlightedIndex: itemSelectedIndex,
       });
 
       keyDownOnItemsList('Tab');
@@ -687,7 +723,7 @@ describe('Dropdown', () => {
       const itemSelectedIndex = 2;
       const { triggerButtonNode, keyDownOnItemsList } = renderDropdown({
         defaultOpen: true,
-        defaultHighlightedIndex: itemSelectedIndex
+        defaultHighlightedIndex: itemSelectedIndex,
       });
 
       keyDownOnItemsList('Tab', { shiftKey: true });
@@ -700,7 +736,7 @@ describe('Dropdown', () => {
       const itemSelectedIndex = 2;
       const { triggerButtonNode, clickOnItemAtIndex } = renderDropdown({
         defaultOpen: true,
-        defaultValue
+        defaultValue,
       });
 
       expect(triggerButtonNode).toHaveTextContent(defaultValue);
@@ -713,7 +749,7 @@ describe('Dropdown', () => {
     it('has an array of items if more items are selected and the multiple prop is supplied', () => {
       const { getSelectedItemNodes, getSelectedItemNodeAtIndex } = renderDropdown({
         multiple: true,
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       expect(getSelectedItemNodes()).toHaveLength(2);
@@ -725,7 +761,7 @@ describe('Dropdown', () => {
       const { getSelectedItemNodes, getSelectedItemNodeAtIndex, keyDownOnSearchInput } = renderDropdown({
         multiple: true,
         search: true,
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       keyDownOnSearchInput('Backspace');
@@ -739,7 +775,7 @@ describe('Dropdown', () => {
         multiple: true,
         search: true,
         defaultSearchQuery: 'bla',
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       searchInputNode.setSelectionRange(1, 2);
@@ -749,11 +785,16 @@ describe('Dropdown', () => {
     });
 
     it('removes last item on backspace when selection range is 0, 0', () => {
-      const { getSelectedItemNodes, getSelectedItemNodeAtIndex, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+      const {
+        getSelectedItemNodes,
+        getSelectedItemNodeAtIndex,
+        keyDownOnSearchInput,
+        searchInputNode,
+      } = renderDropdown({
         multiple: true,
         search: true,
         defaultSearchQuery: 'bla',
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       searchInputNode.setSelectionRange(0, 0);
@@ -768,7 +809,7 @@ describe('Dropdown', () => {
         multiple: true,
         search: true,
         defaultSearchQuery: 'bla',
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       searchInputNode.setSelectionRange(0, 1);
@@ -781,7 +822,7 @@ describe('Dropdown', () => {
       const { getSelectedItemNodes, getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
         search: true,
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       keyDownOnSelectedItemAtIndex(0, 'Delete');
@@ -794,7 +835,7 @@ describe('Dropdown', () => {
       const { getSelectedItemNodes, getSelectedItemNodeAtIndex, wrapper } = renderDropdown({
         multiple: true,
         search: true,
-        defaultValue: [items[0], items[1]]
+        defaultValue: [items[0], items[1]],
       });
 
       findIntrinsicElement(wrapper, `.${DropdownSelectedItem.slotClassNames.icon}`)
@@ -828,7 +869,7 @@ describe('Dropdown', () => {
       const itemToBeClickedIndex = 1;
       const { getA11yMessageContainerNode, clickOnItemAtIndex } = renderDropdown({
         defaultOpen: true,
-        getA11ySelectionMessage: { onAdd: item => `${item} has been added` }
+        getA11ySelectionMessage: { onAdd: item => `${item} has been added` },
       });
 
       clickOnItemAtIndex(itemToBeClickedIndex);
@@ -846,7 +887,7 @@ describe('Dropdown', () => {
         defaultOpen: true,
         multiple: true,
         defaultValue: [items[itemSelectedByDefaultIndex]],
-        getA11ySelectionMessage: { onRemove: item => `${item} has been removed` }
+        getA11ySelectionMessage: { onRemove: item => `${item} has been removed` },
       });
 
       keyDownOnSelectedItemAtIndex(0, 'Delete');
@@ -876,7 +917,7 @@ describe('Dropdown', () => {
       const finalSearchQuery = 'you underestimate my power';
       const { changeSearchInput, searchInputNode } = renderDropdown({
         defaultSearchQuery,
-        search: true
+        search: true,
       });
 
       expect(searchInputNode).toHaveValue(defaultSearchQuery);
@@ -890,7 +931,7 @@ describe('Dropdown', () => {
       const newSearchQueryProp = 'bar';
       const { wrapper, searchInputNode } = renderDropdown({
         searchQuery: 'foo',
-        search: true
+        search: true,
       });
 
       wrapper.setProps({ searchQuery: newSearchQueryProp });
@@ -902,7 +943,7 @@ describe('Dropdown', () => {
       const { getItemNodes, changeSearchInput } = renderDropdown({
         defaultSearchQuery: 'foo',
         defaultOpen: true,
-        search: true
+        search: true,
       });
 
       changeSearchInput('');
@@ -917,7 +958,7 @@ describe('Dropdown', () => {
         search: true,
         defaultOpen: true,
         items: itemsAsObjects,
-        itemToString: (itemObject: { value: string }) => itemObject.value
+        itemToString: (itemObject: { value: string }) => itemObject.value,
       });
 
       clickOnItemAtIndex(itemSelectedIndex);
@@ -928,7 +969,7 @@ describe('Dropdown', () => {
     it('is set to empty by hitting Escape in search input', () => {
       const { keyDownOnSearchInput, searchInputNode } = renderDropdown({
         defaultSearchQuery: 'foo',
-        search: true
+        search: true,
       });
 
       keyDownOnSearchInput('Escape');
@@ -940,7 +981,7 @@ describe('Dropdown', () => {
       const { clickOnItemAtIndex, searchInputNode, getSelectedItemNodes } = renderDropdown({
         search: true,
         multiple: true,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       clickOnItemAtIndex(2);
@@ -954,7 +995,7 @@ describe('Dropdown', () => {
     it('is set on active item click', () => {
       const { getSelectedItemNodeAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
-        value: [items[2]]
+        value: [items[2]],
       });
 
       clickOnSelectedItemAtIndex(0);
@@ -966,7 +1007,7 @@ describe('Dropdown', () => {
       const { getSelectedItemNodeAtIndex, keyDownOnSearchInput } = renderDropdown({
         multiple: true,
         value: [items[0], items[1], items[2]],
-        search: true
+        search: true,
       });
 
       keyDownOnSearchInput('ArrowLeft');
@@ -977,7 +1018,7 @@ describe('Dropdown', () => {
     it('is set as last index on left arrow from the trigger button', () => {
       const { getSelectedItemNodeAtIndex, keyDownOnTriggerButton } = renderDropdown({
         multiple: true,
-        value: [items[0], items[1], items[2]]
+        value: [items[0], items[1], items[2]],
       });
 
       keyDownOnTriggerButton('ArrowLeft');
@@ -988,7 +1029,7 @@ describe('Dropdown', () => {
     it('is updated on arrow navigation after being set by click', () => {
       const { getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
-        value: [items[0], items[1], items[2]]
+        value: [items[0], items[1], items[2]],
       });
 
       clickOnSelectedItemAtIndex(2);
@@ -1000,7 +1041,7 @@ describe('Dropdown', () => {
     it('stays as "0" on left arrow from the first selected item', () => {
       const { getSelectedItemNodeAtIndex, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
-        value: [items[0], items[1], items[2]]
+        value: [items[0], items[1], items[2]],
       });
 
       clickOnSelectedItemAtIndex(0);
@@ -1012,7 +1053,7 @@ describe('Dropdown', () => {
     it('gets unset on right arrow from the last selected item and moves focus to trigger button', () => {
       const { triggerButtonNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
-        value: [items[0], items[1], items[2]]
+        value: [items[0], items[1], items[2]],
       });
 
       clickOnSelectedItemAtIndex(2);
@@ -1024,7 +1065,7 @@ describe('Dropdown', () => {
     it('gets unset on the removal of selected item and moves focus to trigger button', () => {
       const { triggerButtonNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
-        value: [items[0], items[1], items[2]]
+        value: [items[0], items[1], items[2]],
       });
 
       clickOnSelectedItemAtIndex(2);
@@ -1037,7 +1078,7 @@ describe('Dropdown', () => {
       const { searchInputNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
         value: [items[0], items[1], items[2]],
-        search: true
+        search: true,
       });
 
       clickOnSelectedItemAtIndex(2);
@@ -1050,7 +1091,7 @@ describe('Dropdown', () => {
       const { searchInputNode, keyDownOnSelectedItemAtIndex, clickOnSelectedItemAtIndex } = renderDropdown({
         multiple: true,
         value: [items[0], items[1], items[2]],
-        search: true
+        search: true,
       });
 
       clickOnSelectedItemAtIndex(2);
@@ -1116,7 +1157,7 @@ describe('Dropdown', () => {
       const { keyDownOnItemsList } = renderDropdown({
         defaultOpen: true,
         defaultHighlightedIndex: 0,
-        multiple: true
+        multiple: true,
       });
 
       keyDownOnItemsList('Tab', { preventDefault });
@@ -1129,7 +1170,7 @@ describe('Dropdown', () => {
         defaultOpen: true,
         defaultHighlightedIndex: 0,
         multiple: true,
-        search: true
+        search: true,
       });
 
       keyDownOnSearchInput('Tab', { preventDefault });
@@ -1143,7 +1184,7 @@ describe('Dropdown', () => {
         defaultHighlightedIndex: 0,
         multiple: true,
         search: true,
-        moveFocusOnTab: true
+        moveFocusOnTab: true,
       });
 
       keyDownOnSearchInput('Tab', { preventDefault });
@@ -1156,7 +1197,7 @@ describe('Dropdown', () => {
         defaultOpen: true,
         defaultHighlightedIndex: 0,
         multiple: true,
-        moveFocusOnTab: true
+        moveFocusOnTab: true,
       });
 
       keyDownOnItemsList('Tab', { preventDefault });
@@ -1179,7 +1220,7 @@ describe('Dropdown', () => {
     it('does not contain duplicates after an item is selected', () => {
       const { getSelectedItemNodes, getItemNodes, clickOnItemAtIndex } = renderDropdown({
         multiple: true,
-        open: true
+        open: true,
       });
 
       clickOnItemAtIndex(0);
@@ -1197,7 +1238,7 @@ describe('Dropdown', () => {
       const { getSelectedItemNodes, getItemNodes } = renderDropdown({
         multiple: true,
         open: true,
-        value: items[0]
+        value: items[0],
       });
 
       expect(getSelectedItemNodes()).toHaveLength(1);
@@ -1212,7 +1253,7 @@ describe('Dropdown', () => {
         multiple: true,
         open: true,
         value,
-        items
+        items,
       });
 
       expect(getSelectedItemNodes()).toHaveLength(1);
@@ -1234,7 +1275,7 @@ describe('Dropdown', () => {
         open: true,
         value,
         items,
-        itemToValue
+        itemToValue,
       });
 
       expect(getSelectedItemNodes()).toHaveLength(1);
@@ -1256,8 +1297,8 @@ describe('Dropdown', () => {
       expect(onClick).toHaveBeenCalledWith(
         expect.objectContaining(mockedEvent),
         expect.objectContaining({
-          header: 'Venom'
-        })
+          header: 'Venom',
+        }),
       );
       expect(stopPropagation).toBeCalledTimes(1);
     });
@@ -1271,7 +1312,7 @@ describe('Dropdown', () => {
         items,
         multiple: true,
         value: items,
-        defaultOpen: true
+        defaultOpen: true,
       });
 
       clickOnSelectedItemAtIndex(0, mockedEvent);
@@ -1280,8 +1321,8 @@ describe('Dropdown', () => {
       expect(onClick).toHaveBeenCalledWith(
         expect.objectContaining(mockedEvent),
         expect.objectContaining({
-          header: 'Venom'
-        })
+          header: 'Venom',
+        }),
       );
       expect(stopPropagation).toBeCalledTimes(1);
     });
@@ -1300,8 +1341,14 @@ describe('Dropdown', () => {
 
   describe('disabled', () => {
     it('allows no action on the trigger button', () => {
-      const { clickOnTriggerButton, focusTriggerButton, getItemNodes, triggerButtonNode, keyDownOnTriggerButton } = renderDropdown({
-        disabled: true
+      const {
+        clickOnTriggerButton,
+        focusTriggerButton,
+        getItemNodes,
+        triggerButtonNode,
+        keyDownOnTriggerButton,
+      } = renderDropdown({
+        disabled: true,
       });
 
       expect(triggerButtonNode).toHaveAttribute('disabled');
@@ -1320,9 +1367,15 @@ describe('Dropdown', () => {
     });
 
     it('allows no action on the search input', () => {
-      const { keyDownOnSearchInput, clickOnSearchInput, focusSearchInput, getItemNodes, searchInputNode } = renderDropdown({
+      const {
+        keyDownOnSearchInput,
+        clickOnSearchInput,
+        focusSearchInput,
+        getItemNodes,
+        searchInputNode,
+      } = renderDropdown({
         disabled: true,
-        search: true
+        search: true,
       });
 
       expect(searchInputNode).toHaveAttribute('disabled');
@@ -1342,7 +1395,7 @@ describe('Dropdown', () => {
 
     it('allows no action on the toggle indicator', () => {
       const { clickOnToggleIndicator, toggleIndicatorNode, getItemNodes } = renderDropdown({
-        disabled: true
+        disabled: true,
       });
 
       clickOnToggleIndicator();

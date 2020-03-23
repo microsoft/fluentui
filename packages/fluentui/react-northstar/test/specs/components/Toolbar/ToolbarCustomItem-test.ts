@@ -5,6 +5,6 @@ import ToolbarCustomItem from 'src/components/Toolbar/ToolbarCustomItem';
 describe('ToolbarCustomItem', () => {
   isConformant(ToolbarCustomItem, {
     constructorName: 'ToolbarCustomItem',
-    requiredProps: { focusable: true }
+    requiredProps: { focusable: true },
   });
 });

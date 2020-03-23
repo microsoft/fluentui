@@ -12,9 +12,9 @@ const imageStyles: ComponentSlotStylesPrepared<ImageStylesProps, ImageVariables>
     ...(props.circular && { borderRadius: variables.circularRadius }),
     ...(props.avatar && {
       width: (props.fluid && '100%') || variables.avatarSize,
-      borderRadius: variables.avatarRadius
-    })
-  })
+      borderRadius: variables.avatarRadius,
+    }),
+  }),
 };
 
 export default imageStyles;

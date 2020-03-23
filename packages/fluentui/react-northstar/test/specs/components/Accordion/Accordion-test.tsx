@@ -11,18 +11,18 @@ const panels = [
   {
     key: 'one',
     title: 'One',
-    content: '2 3 4'
+    content: '2 3 4',
   },
   {
     key: 'two',
     title: 'Five',
-    content: '6 7 8 9'
+    content: '6 7 8 9',
   },
   {
     key: 'three',
     title: "What's next?",
-    content: '10'
-  }
+    content: '10',
+  },
 ];
 
 const getTitleButtonAtIndex = (wrapper: ReactWrapper, index: number): CommonWrapper => {
@@ -58,7 +58,10 @@ describe('Accordion', () => {
 
     it('is the value of prop defaultActiveIndex is passed', () => {
       const defaultActiveIndex = [1, 2];
-      const accordion = mountWithProviderAndGetComponent(Accordion, <Accordion panels={panels} defaultActiveIndex={defaultActiveIndex} />);
+      const accordion = mountWithProviderAndGetComponent(
+        Accordion,
+        <Accordion panels={panels} defaultActiveIndex={defaultActiveIndex} />,
+      );
       expect(accordion.state('activeIndex')).toEqual(expect.arrayContaining(defaultActiveIndex));
     });
 
@@ -113,13 +116,13 @@ describe('Accordion', () => {
       getTitleButtonAtIndex(wrapper, 1).simulate('click');
       getTitleButtonAtIndex(wrapper, 1).simulate('keydown', {
         keyCode: keyboardKey.ArrowUp,
-        key: 'ArrowUp'
+        key: 'ArrowUp',
       });
       expect(accordion.state('focusedIndex')).toEqual(0);
 
       getTitleButtonAtIndex(wrapper, 0).simulate('keydown', {
         keyCode: keyboardKey.ArrowDown,
-        key: 'ArrowDown'
+        key: 'ArrowDown',
       });
       expect(accordion.state('focusedIndex')).toEqual(1);
     });
@@ -130,13 +133,13 @@ describe('Accordion', () => {
       getTitleButtonAtIndex(wrapper, 0).simulate('click');
       getTitleButtonAtIndex(wrapper, 0).simulate('keydown', {
         keyCode: keyboardKey.ArrowUp,
-        key: 'ArrowUp'
+        key: 'ArrowUp',
       });
       expect(accordion.state('focusedIndex')).toEqual(panels.length - 1);
 
       getTitleButtonAtIndex(wrapper, panels.length - 1).simulate('keydown', {
         keyCode: keyboardKey.ArrowDown,
-        key: 'ArrowDown'
+        key: 'ArrowDown',
       });
       expect(accordion.state('focusedIndex')).toEqual(0);
     });
@@ -147,7 +150,7 @@ describe('Accordion', () => {
       getTitleButtonAtIndex(wrapper, 2).simulate('click');
       getTitleButtonAtIndex(wrapper, 2).simulate('keydown', {
         keyCode: keyboardKey.Home,
-        key: 'Home'
+        key: 'Home',
       });
       expect(accordion.state('focusedIndex')).toEqual(0);
     });
@@ -158,7 +161,7 @@ describe('Accordion', () => {
       getTitleButtonAtIndex(wrapper, 0).simulate('click');
       getTitleButtonAtIndex(wrapper, 0).simulate('keydown', {
         keyCode: keyboardKey.End,
-        key: 'End'
+        key: 'End',
       });
       expect(accordion.state('focusedIndex')).toEqual(panels.length - 1);
     });
@@ -179,8 +182,8 @@ describe('Accordion', () => {
         {
           key: 'one',
           title: 'One',
-          content: '2 3 4'
-        }
+          content: '2 3 4',
+        },
       ];
       const wrapper = mountWithProvider(<Accordion panels={panels} onTitleClick={onTitleClick} />);
       getTitleButtonAtIndex(wrapper, 0).simulate('click');

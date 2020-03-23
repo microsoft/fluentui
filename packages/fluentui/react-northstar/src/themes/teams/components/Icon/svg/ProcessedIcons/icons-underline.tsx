@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'underline'
+  exportedAs: 'underline',
 } as TeamsProcessedSvgIconSpec;

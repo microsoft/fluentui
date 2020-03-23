@@ -25,51 +25,55 @@ import * as keyboardKey from 'keyboard-key';
 const carouselBehavior: Accessibility<CarouselBehaviorProps> = props => ({
   attributes: {
     root: {
-      ...(!props.navigation && { role: 'region', 'aria-roledescription': props.ariaRoleDescription, 'aria-label': props.ariaLabel })
+      ...(!props.navigation && {
+        role: 'region',
+        'aria-roledescription': props.ariaRoleDescription,
+        'aria-label': props.ariaLabel,
+      }),
     },
     itemsContainerWrapper: {
-      'aria-live': props.ariaLiveOn ? 'polite' : 'off'
+      'aria-live': props.ariaLiveOn ? 'polite' : 'off',
     },
     itemsContainer: {
       ...(props.navigation
         ? { role: 'region', 'aria-roledescription': props.ariaRoleDescription, 'aria-label': props.ariaLabel }
-        : { tabIndex: -1, role: 'none' })
+        : { tabIndex: -1, role: 'none' }),
     },
 
     paddleNext: {
       ...(props.navigation && {
         tabIndex: -1,
-        'aria-hidden': 'true'
-      })
+        'aria-hidden': 'true',
+      }),
     },
     paddlePrevious: {
       ...(props.navigation && {
         tabIndex: -1,
-        'aria-hidden': 'true'
-      })
-    }
+        'aria-hidden': 'true',
+      }),
+    },
   },
 
   keyActions: {
     itemsContainer: {
       showNextSlideByKeyboardNavigation: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
       },
       showPreviousSlideByKeyboardNavigation: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
-      }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+      },
     },
     paddleNext: {
       showNextSlideByPaddlePress: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
     },
     paddlePrevious: {
       showPreviousSlideByPaddlePress: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export type CarouselBehaviorProps = {

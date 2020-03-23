@@ -1,13 +1,13 @@
 {
   "name": "@uifabric/example-data",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "description": "Data generators for Office UI Fabric React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {

@@ -14,17 +14,17 @@ const carouselItemBehavior: Accessibility<CarouselItemProps> = props => ({
     root: {
       role: props.navigation ? 'tabpanel' : undefined,
       'aria-hidden': props.active ? 'false' : 'true',
-      tabIndex: props.navigation ? (props.active ? 0 : -1) : undefined
-    }
+      tabIndex: props.navigation ? (props.active ? 0 : -1) : undefined,
+    },
   },
 
   keyActions: {
     root: {
       arrowKeysNavigationStopPropagation: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }, { keyCode: keyboardKey.ArrowLeft }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }, { keyCode: keyboardKey.ArrowLeft }],
+      },
+    },
+  },
 });
 
 export default carouselItemBehavior;

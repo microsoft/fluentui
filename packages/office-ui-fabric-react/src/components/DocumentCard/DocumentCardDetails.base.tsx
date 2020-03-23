@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IDocumentCardDetailsProps, IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles } from './DocumentCardDetails.types';
+import {
+  IDocumentCardDetailsProps,
+  IDocumentCardDetailsStyleProps,
+  IDocumentCardDetailsStyles,
+} from './DocumentCardDetails.types';
 import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>();
@@ -22,7 +26,7 @@ export class DocumentCardDetailsBase extends React.Component<IDocumentCardDetail
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return <div className={this._classNames.root}>{children}</div>;

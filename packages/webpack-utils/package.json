@@ -1,10 +1,10 @@
 {
   "name": "@uifabric/webpack-utils",
-  "version": "7.0.8",
+  "version": "7.0.9",
   "description": "Office UI Fabric utilities for Webpack bundler.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {

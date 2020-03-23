@@ -11,7 +11,7 @@ const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: Si
     return {
       color: v.dangerColor,
       backgroundColor: v.dangerBackgroundColor,
-      borderColor: v.dangerBorderColor
+      borderColor: v.dangerBorderColor,
     };
   }
 
@@ -19,7 +19,7 @@ const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: Si
     return {
       color: v.infoColor,
       backgroundColor: v.infoBackgroundColor,
-      borderColor: v.infoBorderColor
+      borderColor: v.infoBorderColor,
     };
   }
 
@@ -27,7 +27,7 @@ const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: Si
     return {
       color: v.oofColor,
       backgroundColor: v.oofBackgroundColor,
-      borderColor: v.oofBorderColor
+      borderColor: v.oofBorderColor,
     };
   }
 
@@ -35,7 +35,7 @@ const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: Si
     return {
       color: v.urgentColor,
       backgroundColor: v.urgentBackgroundColor,
-      borderColor: v.urgentBorderColor
+      borderColor: v.urgentBorderColor,
     };
   }
 
@@ -43,7 +43,7 @@ const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: Si
     return {
       color: colors.green[600], // $app-green-04
       backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.green[200] // $app-green
+      borderColor: colors.green[200], // $app-green
     };
   }
 
@@ -51,14 +51,14 @@ const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: Si
     return {
       color: siteVars.colors.grey[450],
       backgroundColor: colors.grey[50], // $app-white
-      borderColor: colors.yellow[400] // $app-yellow
+      borderColor: colors.yellow[400], // $app-yellow
     };
   }
 
   return {
     color: v.color,
     backgroundColor: v.backgroundColor,
-    borderColor: v.borderColor
+    borderColor: v.borderColor,
   };
 };
 
@@ -78,11 +78,11 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
     ...getIntentColorsFromProps(p, v, siteVariables),
 
     ...((p.attached === 'top' || p.attached === true) && {
-      borderRadius: `${v.borderRadius} ${v.borderRadius} 0 0`
+      borderRadius: `${v.borderRadius} ${v.borderRadius} 0 0`,
     }),
 
     ...(p.attached === 'bottom' && {
-      borderRadius: `0 0 ${v.borderRadius} ${v.borderRadius}`
+      borderRadius: `0 0 ${v.borderRadius} ${v.borderRadius}`,
     }),
 
     ...(p.fitted && { display: 'inline-flex' }),
@@ -90,30 +90,30 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
     ...(p.dismissible && { padding: v.dismissiblePadding }),
 
     ...(!p.visible && {
-      visibility: 'hidden'
-    })
+      visibility: 'hidden',
+    }),
   }),
 
   actions: ({ variables: v }): ICSSInJSStyle => ({
-    margin: v.actionsMargin
+    margin: v.actionsMargin,
   }),
 
   header: ({ variables: v }): ICSSInJSStyle => ({
     fontWeight: v.headerFontWeight,
-    margin: v.headerMargin
+    margin: v.headerMargin,
   }),
 
   body: (): ICSSInJSStyle => ({
     display: 'flex',
-    flexGrow: 1
+    flexGrow: 1,
   }),
 
   content: (): ICSSInJSStyle => ({
-    flexGrow: 1
+    flexGrow: 1,
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
-    margin: v.iconMargin
+    margin: v.iconMargin,
   }),
 
   dismissAction: ({ variables: v, props: p, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -138,19 +138,19 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
             borderWidth: v.dismissActionHoverBorderWidth,
             focusInnerBorderColor: v.dismissActionHoverInnerBorderColor,
             focusOuterBorderColor: v.dismissActionHoverOuterBorderColor,
-            zIndexes: { foreground: v.dismissActionHoverZIndex }
-          }
-        })[':focus-visible']
+            zIndexes: { foreground: v.dismissActionHoverZIndex },
+          },
+        })[':focus-visible'],
       },
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
         backgroundColor: v.focusBackgroundColor,
         ...iconFilledStyles,
-        ...borderFocusStyles[':focus-visible']
-      }
+        ...borderFocusStyles[':focus-visible'],
+      },
     };
-  }
+  },
 };
 
 export default alertStyles;

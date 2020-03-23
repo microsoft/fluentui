@@ -17,7 +17,7 @@ describe('Menu', () => {
 
   const getItems = () => [
     { key: 'home', content: 'home', onClick: jest.fn(), 'data-foo': 'something' },
-    { key: 'users', content: 'users', 'data-foo': 'something' }
+    { key: 'users', content: 'users', 'data-foo': 'something' },
   ];
 
   const getNestedItems = () => [
@@ -28,9 +28,9 @@ describe('Menu', () => {
       'data-foo': 'something',
       menu: [
         { key: '1', content: 'Alice' },
-        { key: '2', content: 'Bob' }
-      ]
-    }
+        { key: '2', content: 'Bob' },
+      ],
+    },
   ];
 
   describe('items', () => {
@@ -150,14 +150,14 @@ describe('Menu', () => {
           (menu
             .find('MenuItem')
             .first()
-            .prop('variables') as Function)()
+            .prop('variables') as Function)(),
         ).toEqual(expect.objectContaining({ a: 'menu', b: 'overwritten', c: 'item' }));
 
         expect(
           (menu
             .find('MenuDivider')
             .first()
-            .prop('variables') as Function)()
+            .prop('variables') as Function)(),
         ).toEqual(expect.objectContaining({ a: 'menu', b: 'overwrittenInDivider', c: 'divider' }));
       }
 
@@ -170,10 +170,10 @@ describe('Menu', () => {
               {
                 key: 'd1',
                 kind: 'divider',
-                variables: { b: 'overwrittenInDivider', c: 'divider' }
-              }
+                variables: { b: 'overwrittenInDivider', c: 'divider' },
+              },
             ]}
-          />
+          />,
         );
 
         checkMergedVariables(menu);
@@ -188,10 +188,10 @@ describe('Menu', () => {
               {
                 key: 'd1',
                 kind: 'divider',
-                variables: () => ({ b: 'overwrittenInDivider', c: 'divider' })
-              }
+                variables: () => ({ b: 'overwrittenInDivider', c: 'divider' }),
+              },
             ]}
-          />
+          />,
         );
 
         checkMergedVariables(menu);
@@ -200,7 +200,7 @@ describe('Menu', () => {
 
     describe('accessibility', () => {
       handlesAccessibility(Menu, {
-        defaultRootRole: 'menu'
+        defaultRootRole: 'menu',
       });
 
       test('aria-label should be added to the menu', () => {
@@ -222,7 +222,7 @@ describe('Menu', () => {
         items[0]['accessibility'] = tabBehavior;
         const menuItemComponent = mountWithProviderAndGetComponent(
           Menu,
-          <Menu items={items} accessibility={menuBehavior} /> // enforce behavior that has child behavior.
+          <Menu items={items} accessibility={menuBehavior} />, // enforce behavior that has child behavior.
         ).find('MenuItem');
         expect(getRenderedAttribute(menuItemComponent.at(0), 'role', 'a')).toBe('tab');
       });
@@ -236,7 +236,7 @@ describe('Menu', () => {
         test('children role should be menuAsToolbarButton', () => {
           const menuItemComponents = mountWithProviderAndGetComponent(
             Menu,
-            <Menu accessibility={menuAsToolbarBehavior} items={getItems()} />
+            <Menu accessibility={menuAsToolbarBehavior} items={getItems()} />,
           ).find('MenuItem');
           expect(getRenderedAttribute(menuItemComponents.at(0), 'role', 'a')).toBe('button');
           expect(getRenderedAttribute(menuItemComponents.at(1), 'role', 'a')).toBe('button');
@@ -252,7 +252,7 @@ describe('Menu', () => {
         test('children role should be tab', () => {
           const menuItemComponents = mountWithProviderAndGetComponent(
             Menu,
-            <Menu accessibility={tabListBehavior} items={getItems()} />
+            <Menu accessibility={tabListBehavior} items={getItems()} />,
           ).find('MenuItem');
           expect(getRenderedAttribute(menuItemComponents.at(0), 'role', 'a')).toBe('tab');
           expect(getRenderedAttribute(menuItemComponents.at(1), 'role', 'a')).toBe('tab');

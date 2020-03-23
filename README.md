@@ -1,16 +1,15 @@
-:tada: The **Office UI Fabric React** project is evolving to **Fluent UI**. :tada:
+:tada: The **Office UI Fabric React** project has evolved to **Fluent UI**. :tada:
 
-As a result, this repo will be moving to a new location: [https://github.com/microsoft/fluentui](https://github.com/microsoft/fluentui). This move is expected to happen March 20, 2020. This should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location once the repo move is complete.
+The `office-ui-fabric-react` repo has moved! This should not disrupt any current Fabric usage, repo clones, pull requests or issue reporting. Links should redirect to the new location.
 
 We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
 
-# [Office UI Fabric React](https://dev.microsoft.com/fabric)
+# [Fluent UI React](https://dev.microsoft.com/fabric)
 
-**The React-based front-end framework for building experiences for Office and Office 365.**
+**The React-based front-end framework for building experiences for Microsoft 365.**
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react) [![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
 
-**Fabric 7**: Summary, breaking changes, and more details available in [the wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7).
 
 Fabric React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Office Design Language.
 
@@ -22,7 +21,7 @@ Fabric React is a collection of robust React-based components designed to make i
 
 ## For more information...
 
-Please see the [wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
+Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 
 ## Contents
 
@@ -60,7 +59,7 @@ npm start
 
 This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow for customization on its configurations.
 
-If you prefer to use `create-react-app`, [follow these instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric#create-react-app).
+If you prefer to use `create-react-app`, [follow these instructions](https://github.com/microsoft/fluentui/wiki/Getting-Started-with-UI-Fabric#create-react-app).
 
 ### Integrating in your project
 
@@ -93,7 +92,7 @@ Fabric React adheres to [semantic versioning](http://www.semver.org/). However, 
 
 ### Browser support
 
-Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Browser-Support) for more information.
+Fabric React supports all evergreen browsers, with IE 11 as the min-bar version of Internet Explorer. See the [browser support doc](https://github.com/microsoft/fluentui/wiki/Browser-Support) for more information.
 
 ### Right-to-left support
 
@@ -107,23 +106,23 @@ setRTL(true);
 
 ### Server-side rendering
 
-Fabric components can be rendered in a server-side Node environment (or used in tests which run in an SSR-like environment), but it requires customizing how styles and SCSS files are loaded. See the [server-side rendering documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Server-side-rendering-and-browserless-testing) for examples of how to handle this.
+Fabric components can be rendered in a server-side Node environment (or used in tests which run in an SSR-like environment), but it requires customizing how styles and SCSS files are loaded. See the [server-side rendering documentation](https://github.com/microsoft/fluentui/wiki/Server-side-rendering-and-browserless-testing) for examples of how to handle this.
 
 ### Advanced usage
 
-For info about advanced usage including module- vs. path-based imports, using an AMD bundler like RequireJS, and deployment features, see our [advanced documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Advanced-Usage).
+For info about advanced usage including module- vs. path-based imports, using an AMD bundler like RequireJS, and deployment features, see our [advanced documentation](https://github.com/microsoft/fluentui/wiki/Advanced-Usage).
 
 ## Contribute to Fabric React
 
-Please take a look at our [contribution guidelines](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Contributing) for more info. Also read [Contribute bug fixes](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Bug-Fixes) and [Contribute new component](https://github.com/OfficeDev/office-ui-fabric-react/wiki/New-Components).
+Please take a look at our [contribution guidelines](https://github.com/microsoft/fluentui/wiki/Contributing) for more info. Also read [Contribute bug fixes](https://github.com/microsoft/fluentui/wiki/Bug-Fixes) and [Contribute new component](https://github.com/microsoft/fluentui/wiki/New-Components).
 
 ## Building the repo
 
-Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Setup)**
+Before you get started, **make sure you have read the [Git branch setup instructions](https://github.com/microsoft/fluentui/wiki/Setup)**
 
 To view the documentation including examples, contracts, component status, and to add functionality or fix issues locally, you can:
 
-1. `git clone https://github.com/OfficeDev/office-ui-fabric-react.git`
+1. `git clone https://github.com/microsoft/fluentui.git`
 2. `cd office-ui-fabric-react`
 3. `yarn`
 4. `yarn builddemo`
@@ -137,11 +136,11 @@ To build individual packages within the `packages/*` or `apps/*` folders, `cd` t
 
 #### Advanced build commands
 
-There are more advanced build commands listed in the [Build Commands](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Build-Commands) wiki page.
+There are more advanced build commands listed in the [Build Commands](https://github.com/microsoft/fluentui/wiki/Build-Commands) wiki page.
 
 ### Testing
 
-For info about testing, see our [testing documentation](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Testing).
+For info about testing, see our [testing documentation](https://github.com/microsoft/fluentui/wiki/Testing).
 
 ## Licenses
 
@@ -151,7 +150,7 @@ Usage of the fonts and icons referenced in Office UI Fabric is subject to the te
 
 ## Changelog
 
-We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/OfficeDev/office-ui-fabric-react/releases) page.
+We use [GitHub Releases](https://github.com/blog/1547-release-your-software) to manage our releases, including the changelog between every release. View a complete list of additions, fixes, and changes on the [releases](https://github.com/microsoft/fluentui/releases) page.
 
 ---
 

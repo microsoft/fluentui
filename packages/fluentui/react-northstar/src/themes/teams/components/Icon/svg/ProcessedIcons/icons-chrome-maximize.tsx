@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'window-maximize'
+  exportedAs: 'window-maximize',
 } as TeamsProcessedSvgIconSpec;

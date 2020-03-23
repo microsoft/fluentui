@@ -5,7 +5,7 @@ import { Icon as IconFluent } from '@fluentui/react-northstar';
 initializeIcons();
 
 export default {
-  iterations: 5000
+  iterations: 5000,
 };
 
 export const Fabric = () => <IconFabric iconName="cancel" />;

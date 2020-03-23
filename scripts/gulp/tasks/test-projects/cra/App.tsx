@@ -12,7 +12,7 @@ import {
   Input,
   Popup,
   Provider,
-  themes
+  themes,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 

@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'closed-captions'
+  exportedAs: 'closed-captions',
 } as TeamsProcessedSvgIconSpec;

@@ -12,5 +12,5 @@ export default (): FlexItemVariables => ({
 
   'size.small': pxToRem(150),
   'size.medium': pxToRem(200),
-  'size.large': pxToRem(300)
+  'size.large': pxToRem(300),
 });

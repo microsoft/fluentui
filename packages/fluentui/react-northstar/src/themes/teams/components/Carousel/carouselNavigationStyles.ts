@@ -28,18 +28,18 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
         padding: `${pxToRem(8)} 0`,
         ...(iconOnly && {
           display: 'inline-block',
-          width: 'auto'
-        })
+          width: 'auto',
+        }),
       }),
 
       ...(!iconOnly &&
         !vertical && {
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
-          borderRadius: pxToRem(4)
-        })
+          borderRadius: pxToRem(4),
+        }),
     };
-  }
+  },
 };
 
 export default carouselNavigationStyles;

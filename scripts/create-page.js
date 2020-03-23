@@ -8,7 +8,18 @@ const fse = require('fs-extra');
 
 // Template sequences used to define the order of files created.
 const pageSequence = ['Doc', 'Styles', 'Types', 'PageBase', 'Page'];
-const markdownSequence = ['Overview', 'Dos', 'Donts', 'BestPractices', 'Usage', 'Design', 'Contact', 'Custom', 'Markdown', 'Related'];
+const markdownSequence = [
+  'Overview',
+  'Dos',
+  'Donts',
+  'BestPractices',
+  'Usage',
+  'Design',
+  'Contact',
+  'Custom',
+  'Markdown',
+  'Related',
+];
 
 // Paths/File Names
 const rootPath = './apps/fabric-website/src/';
@@ -26,7 +37,7 @@ const outputFiles = {
   Styles: pageNamePrefix + '.styles.ts',
   Types: pageNamePrefix + '.types.ts',
   Page: pageNamePrefix + '.ts',
-  PageBase: pageNamePrefix + '.base.tsx'
+  PageBase: pageNamePrefix + '.base.tsx',
 };
 
 // Markdown file paths
@@ -40,7 +51,7 @@ const markdownFiles = {
   Contact: pageDocsPath + newPageName + 'Contact.md',
   Custom: pageDocsPath + newPageName + 'Custom.md',
   Markdown: pageDocsPath + newPageName + 'Markdown.md',
-  Related: pageDocsPathRoot + newPageName + 'Related.md'
+  Related: pageDocsPathRoot + newPageName + 'Related.md',
 };
 
 // Error strings
@@ -83,7 +94,9 @@ function createFiles() {
       .catch(error => handleError(error, errorUnableToOpenTemplate(mustacheTemplateName)));
   });
 
-  console.log(`'New page '${newPageName}' successfully created in ${newPagePath} directory! Please add your page to the SiteDefinition.'`);
+  console.log(
+    `'New page '${newPageName}' successfully created in ${newPagePath} directory! Please add your page to the SiteDefinition.'`,
+  );
 }
 
 function handleWriteFile(buffer, filePath, step) {

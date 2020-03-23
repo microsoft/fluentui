@@ -7,7 +7,7 @@ export default {
     return {
       display: 'flex',
       flexDirection: 'column',
-      background: v.backgroundColor
+      background: v.backgroundColor,
     };
-  }
+  },
 };

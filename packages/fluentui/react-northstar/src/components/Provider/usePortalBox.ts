@@ -14,7 +14,9 @@ export const PortalBoxContext = React.createContext<HTMLDivElement>(null);
 const usePortalBox = (options: UsePortalBoxOptions): HTMLDivElement => {
   const { className, rtl, target } = options;
 
-  const element: HTMLDivElement | null = React.useMemo(() => (isBrowser() ? target.createElement('div') : null), [target]);
+  const element: HTMLDivElement | null = React.useMemo(() => (isBrowser() ? target.createElement('div') : null), [
+    target,
+  ]);
 
   useIsomorphicLayoutEffect(() => {
     if (element) {

@@ -20,5 +20,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'exclamation-triangle'
+  exportedAs: 'exclamation-triangle',
 } as TeamsProcessedSvgIconSpec;

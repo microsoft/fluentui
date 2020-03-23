@@ -19,7 +19,7 @@ import {
   commonPropTypes,
   isFromKeyboard,
   applyAccessibilityKeyHandlers,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import Icon, { IconProps } from '../Icon/Icon';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
@@ -146,7 +146,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
   static slotClassNames: MenuItemSlotClassNames = {
     submenu: `${MenuItem.className}__submenu`,
     wrapper: `${MenuItem.className}__wrapper`,
-    indicator: `${MenuItem.className}__indicator`
+    indicator: `${MenuItem.className}__indicator`,
   };
 
   static create: ShorthandFactory<MenuItemProps>;
@@ -176,14 +176,14 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     onActiveChanged: PropTypes.func,
     inSubmenu: PropTypes.bool,
     indicator: customPropTypes.shorthandAllowingChildren,
-    onMenuOpenChange: PropTypes.func
+    onMenuOpenChange: PropTypes.func,
   };
 
   static defaultProps = {
     as: 'a',
     accessibility: menuItemBehavior as Accessibility,
     wrapper: { as: 'li' },
-    indicator: {}
+    indicator: {},
   };
 
   static autoControlledProps = ['menuOpen'];
@@ -192,7 +192,19 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
   itemRef = React.createRef<HTMLElement>();
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, rtl }) {
-    const { children, content, icon, wrapper, menu, primary, secondary, active, vertical, indicator, disabled } = this.props;
+    const {
+      children,
+      content,
+      icon,
+      wrapper,
+      menu,
+      primary,
+      secondary,
+      active,
+      vertical,
+      indicator,
+      disabled,
+    } = this.props;
     const { menuOpen } = this.state;
 
     const menuItemInner = childrenExist(children) ? (
@@ -213,11 +225,11 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
           {Icon.create(icon, {
             defaultProps: () => ({
               xSpacing: !!content ? 'after' : 'none',
-              styles: styles.icon
-            })
+              styles: styles.icon,
+            }),
           })}
           {Box.create(content, {
-            defaultProps: () => ({ as: 'span', styles: styles.content })
+            defaultProps: () => ({ as: 'span', styles: styles.content }),
           })}
           {menu &&
             Box.create(indicator, {
@@ -225,8 +237,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
                 as: 'span',
                 className: MenuItem.slotClassNames.indicator,
                 styles: styles.indicator,
-                accessibility: indicatorBehavior
-              })
+                accessibility: indicatorBehavior,
+              }),
             })}
         </ElementType>
       </Ref>
@@ -249,8 +261,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
                   secondary,
                   styles: styles.menu,
                   submenu: true,
-                  indicator
-                })
+                  indicator,
+                }),
               })}
             </Popper>
           </Ref>
@@ -263,7 +275,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
         defaultProps: () => ({
           className: cx(MenuItem.slotClassNames.wrapper, classes.wrapper),
           ...accessibility.attributes.wrapper,
-          ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.wrapper, wrapper)
+          ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.wrapper, wrapper),
         }),
         overrideProps: () => ({
           children: (
@@ -273,8 +285,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
             </>
           ),
           onClick: this.handleClick,
-          onBlur: this.handleWrapperBlur
-        })
+          onBlur: this.handleWrapperBlur,
+        }),
       });
     }
     return menuItemInner;
@@ -295,7 +307,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     doNotNavigateNextParentItem: event => {
       event.stopPropagation();
     },
-    closeAllMenus: event => this.closeAllMenus(event)
+    closeAllMenus: event => this.closeAllMenus(event),
   };
 
   outsideClickHandler = e => {
@@ -410,7 +422,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     onStateChanged && onStateChanged();
     _.invoke(this.props, 'onMenuOpenChange', e, {
       ...this.props,
-      menuOpen: newValue
+      menuOpen: newValue,
     });
   }
 }

@@ -26,5 +26,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'redo'
+  exportedAs: 'redo',
 } as TeamsProcessedSvgIconSpec;

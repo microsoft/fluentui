@@ -21,9 +21,16 @@ export class CalendarPage extends React.Component<{}, {}> {
         exampleCards={
           <div>
             <ExampleCard title="Inline Calendar" code={CalendarInlineExampleCode}>
-              <CalendarInlineExample isMonthPickerVisible={false} dateRangeType={DateRangeType.Day} showGoToToday={true} />
+              <CalendarInlineExample
+                isMonthPickerVisible={false}
+                dateRangeType={DateRangeType.Day}
+                showGoToToday={true}
+              />
             </ExampleCard>
-            <ExampleCard title="Inline Calendar with overlayed month picker when header is clicked" code={CalendarInlineExampleCode}>
+            <ExampleCard
+              title="Inline Calendar with overlayed month picker when header is clicked"
+              code={CalendarInlineExampleCode}
+            >
               <CalendarInlineExample
                 showMonthPickerAsOverlay={true}
                 highlightCurrentMonth={false}
@@ -98,7 +105,10 @@ export class CalendarPage extends React.Component<{}, {}> {
               />
             </ExampleCard>
             <ExampleCard
-              title="Calendar with selectableDays = [Monday, Tuesday, Wednesday, Thursday, Friday] provided, first day of week = Sunday"
+              title={
+                'Calendar with selectableDays = [Monday, Tuesday, Wednesday, Thursday, Friday] provided, ' +
+                'first day of week = Sunday'
+              }
               code={CalendarInlineExampleCode}
             >
               <CalendarInlineExample
@@ -107,11 +117,20 @@ export class CalendarPage extends React.Component<{}, {}> {
                 highlightCurrentMonth={false}
                 highlightSelectedMonth={true}
                 showGoToToday={true}
-                workWeekDays={[DayOfWeek.Monday, DayOfWeek.Tuesday, DayOfWeek.Wednesday, DayOfWeek.Thursday, DayOfWeek.Friday]}
+                workWeekDays={[
+                  DayOfWeek.Monday,
+                  DayOfWeek.Tuesday,
+                  DayOfWeek.Wednesday,
+                  DayOfWeek.Thursday,
+                  DayOfWeek.Friday,
+                ]}
               />
             </ExampleCard>
             <ExampleCard
-              title="Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, first day of week = Monday"
+              title={
+                'Calendar with selectableDays = [Tuesday, Wednesday, Friday, Saturday] provided, ' +
+                'first day of week = Monday'
+              }
               code={CalendarInlineExampleCode}
             >
               <CalendarInlineExample
@@ -124,7 +143,7 @@ export class CalendarPage extends React.Component<{}, {}> {
               />
             </ExampleCard>
             <ExampleCard
-              title="Calendar with multiday view using dateRangeType === DateRangeType.Day and daysToSelectInDayView = 4"
+              title="Calendar with multiday view using dateRangeType = Day and daysToSelectInDayView = 4"
               code={CalendarInlineExampleCode}
             >
               <CalendarInlineExample
@@ -146,7 +165,11 @@ export class CalendarPage extends React.Component<{}, {}> {
                 highlightSelectedMonth={true}
                 showGoToToday={true}
                 calendarDayProps={{
-                  customDayCellRef: (element: HTMLElement, date: Date, classNames: IProcessedStyleSet<ICalendarDayGridStyles>) => {
+                  customDayCellRef: (
+                    element: HTMLElement,
+                    date: Date,
+                    classNames: IProcessedStyleSet<ICalendarDayGridStyles>,
+                  ) => {
                     if (element) {
                       element.title = 'custom title from customDayCellRef: ' + date.toString();
                       if (date.getDay() === 0 || date.getDay() === 6) {
@@ -154,7 +177,7 @@ export class CalendarPage extends React.Component<{}, {}> {
                         (element.children[0] as HTMLButtonElement).disabled = true;
                       }
                     }
-                  }
+                  },
                 }}
               />
             </ExampleCard>
@@ -169,7 +192,10 @@ export class CalendarPage extends React.Component<{}, {}> {
                 buttonString={'Click for Month Picker'}
               />
             </ExampleCard>
-            <ExampleCard title="Calendar with overlayed month picker launched from a button" code={CalendarButtonExampleCode}>
+            <ExampleCard
+              title="Calendar with overlayed month picker launched from a button"
+              code={CalendarButtonExampleCode}
+            >
               <CalendarButtonExample
                 showMonthPickerAsOverlay={true}
                 highlightCurrentMonth={false}
@@ -192,14 +218,26 @@ export class CalendarPage extends React.Component<{}, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/Calendar.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/Calendar.types.ts')]}
+          />
         }
         overview={
-          <Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}</Markdown>
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}
+          </Markdown>
         }
         bestPractices={<div />}
-        dos={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDos.md')}</Markdown>}
-        donts={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDonts.md')}</Markdown>}
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

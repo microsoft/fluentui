@@ -8,6 +8,6 @@ export default (testName, Component) => {
 
   return {
     assertRequired,
-    throwError
+    throwError,
   };
 };

@@ -54,9 +54,9 @@ const Content = () => (
     >
       <Alert warning>
         <p>
-          When <code>custom</code> kind is used it is the responsibility of the consumer to verify accessibility and styling aspects of the
-          component and handle them correctly. This kind of items can't be actionable, but actionable components might be added to the{' '}
-          <code>content</code> slot.
+          When <code>custom</code> kind is used it is the responsibility of the consumer to verify accessibility and
+          styling aspects of the component and handle them correctly. This kind of items can't be actionable, but
+          actionable components might be added to the <code>content</code> slot.
         </p>
       </Alert>
     </ComponentExample>

@@ -20,8 +20,8 @@ class RadioGroupColorPickerExample extends React.Component {
             variables: {
               indicatorBorderColorDefault: color,
               indicatorBackgroundColorChecked: color,
-              indicatorBorderColorDefaultHover: color
-            }
+              indicatorBorderColorDefaultHover: color,
+            },
           }))}
           onCheckedValueChange={(e, props) => this.setState({ selectedValue: props.value })}
         />

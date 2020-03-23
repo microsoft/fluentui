@@ -42,10 +42,10 @@ class RefForwardingExample extends React.Component<{}, RefForwardingExampleState
                 {
                   nodeName: buttonNode.nodeName,
                   nodeType: buttonNode.nodeType,
-                  textContent: buttonNode.textContent
+                  textContent: buttonNode.textContent,
                 },
                 null,
-                2
+                2,
               )}
             </pre>
           </code>

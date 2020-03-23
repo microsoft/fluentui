@@ -7,20 +7,20 @@ import { mountWithProvider } from 'test/utils';
 describe('AccordionTitle', () => {
   isConformant(AccordionTitle, {
     eventTargets: {
-      onClick: `.${AccordionTitle.slotClassNames.contentWrapper}`
-    }
+      onClick: `.${AccordionTitle.slotClassNames.contentWrapper}`,
+    },
   });
 
   describe('accessiblity', () => {
     describe('header', () => {
       handlesAccessibility(AccordionTitle, {
         requiredProps: { as: 'h3' },
-        defaultRootRole: undefined
+        defaultRootRole: undefined,
       });
     });
     describe('div header', () => {
       handlesAccessibility(AccordionTitle, {
-        defaultRootRole: 'heading'
+        defaultRootRole: 'heading',
       });
     });
   });
@@ -51,7 +51,7 @@ describe('AccordionTitle', () => {
       const wrapper = mountWithProvider(<AccordionTitle onClick={onClick} />);
 
       getContent(wrapper).simulate('keydown', {
-        keyCode: keyboardKey.Enter
+        keyCode: keyboardKey.Enter,
       });
       expect(onClick).toHaveBeenCalled();
     });
@@ -61,7 +61,7 @@ describe('AccordionTitle', () => {
       const wrapper = mountWithProvider(<AccordionTitle onClick={onClick} disabled={true} />);
 
       getContent(wrapper).simulate('keydown', {
-        keyCode: keyboardKey.Enter
+        keyCode: keyboardKey.Enter,
       });
       expect(onClick).not.toHaveBeenCalled();
     });

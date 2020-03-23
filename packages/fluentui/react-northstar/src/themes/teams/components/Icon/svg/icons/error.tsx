@@ -12,7 +12,7 @@ export default {
   ),
   styles: {
     redPath: ({ variables: v }) => ({
-      fill: v.redColor
-    })
-  }
+      fill: v.redColor,
+    }),
+  },
 } as TeamsSvgIconSpec;

@@ -14,14 +14,14 @@ const createReferenceFromContextClick = (nativeEvent: MouseEvent): PopperJs.Refe
       bottom,
 
       height: 0,
-      width: 0
+      width: 0,
     };
   }
 
   return {
     getBoundingClientRect,
     clientWidth: 1,
-    clientHeight: 1
+    clientHeight: 1,
   };
 };
 

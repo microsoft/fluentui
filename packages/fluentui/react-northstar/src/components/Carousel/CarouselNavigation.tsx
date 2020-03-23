@@ -14,7 +14,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ShorthandFactory,
-  UIComponent
+  UIComponent,
 } from '../../utils';
 import { withSafeTypeForAs, WithAsProp, ShorthandCollection, ComponentEventHandler } from '../../types';
 import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
@@ -56,7 +56,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     activeIndex: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     iconOnly: PropTypes.bool,
@@ -64,12 +64,12 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
     onItemClick: PropTypes.func,
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   static defaultProps = {
     accessibility: tabListBehavior,
-    as: 'ul'
+    as: 'ul',
   };
 
   handleItemOverrides = variables => predefinedProps => ({
@@ -77,7 +77,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
       _.invoke(this.props, 'onItemClick', e, itemProps);
       _.invoke(predefinedProps, 'onClick', e, itemProps);
     },
-    variables: mergeComponentVariables(variables, predefinedProps.variables)
+    variables: mergeComponentVariables(variables, predefinedProps.variables),
   });
 
   renderItems = (variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
@@ -92,10 +92,10 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
           primary,
           secondary,
           vertical,
-          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined
+          accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
         }),
-        overrideProps: this.handleItemOverrides(variables)
-      })
+        overrideProps: this.handleItemOverrides(variables),
+      }),
     );
   };
 
@@ -116,7 +116,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
 
 CarouselNavigation.create = createShorthandFactory({
   Component: CarouselNavigation,
-  mappedArrayProp: 'items'
+  mappedArrayProp: 'items',
 });
 
 /**

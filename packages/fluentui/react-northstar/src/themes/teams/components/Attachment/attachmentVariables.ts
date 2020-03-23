@@ -56,5 +56,5 @@ export default (siteVariables: any): AttachmentVariables => ({
 
   descriptionFontSize: siteVariables.fontSizes.small,
   descriptionFontWeight: siteVariables.fontWeightRegular,
-  descriptionLineHeight: siteVariables.lineHeightDefault
+  descriptionLineHeight: siteVariables.lineHeightDefault,
 });

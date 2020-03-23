@@ -5,14 +5,14 @@ import { PersonaCoin } from '@uifabric/experiments';
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
-    childrenGap: 16
+    childrenGap: 16,
   },
   personaCoinStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 const PersonaCoinStack = (props: { children: JSX.Element[] | JSX.Element }) => (

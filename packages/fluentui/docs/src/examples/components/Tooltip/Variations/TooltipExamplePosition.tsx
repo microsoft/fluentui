@@ -7,7 +7,7 @@ const TooltipExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'above-start',
-    values: positionAndAlignValues
+    values: positionAndAlignValues,
   });
 
   const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
@@ -15,7 +15,12 @@ const TooltipExamplePosition = () => {
 
   return (
     <Grid columns="1" variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
-      <Tooltip open align={align} position={position} content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}>
+      <Tooltip
+        open
+        align={align}
+        position={position}
+        content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}
+      >
         <Button icon={icons[position]} styles={buttonStyles} />
       </Tooltip>
     </Grid>
@@ -36,14 +41,14 @@ const positionAndAlignValues = [
   'before-bottom',
   'after-top',
   'after-center',
-  'after-bottom'
+  'after-bottom',
 ];
 
 const icons: Record<Position, string> = {
   above: 'arrow circle up',
   below: 'arrow circle down',
   before: 'arrow circle left',
-  after: 'arrow circle right'
+  after: 'arrow circle right',
 };
 
 const paddings: Record<string, React.CSSProperties['padding']> = {
@@ -58,5 +63,5 @@ const paddings: Record<string, React.CSSProperties['padding']> = {
   'before-bottom': '18px 42px 5px 5px',
   'after-top': '5px 5px 18px 42px',
   'after-center': '5px 5px 5px 42px',
-  'after-bottom': '18px 5px 5px 42px'
+  'after-bottom': '18px 5px 5px 42px',
 };

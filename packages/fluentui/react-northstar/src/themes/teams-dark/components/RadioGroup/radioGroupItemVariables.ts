@@ -11,5 +11,5 @@ export default (siteVars: any): Partial<RadioGroupItemVariables> => ({
   indicatorBorderColorDefaultHover: siteVars.colors.white,
   indicatorBorderColorChecked: siteVars.colors.brand[400],
 
-  indicatorBackgroundColorChecked: siteVars.colors.brand[400]
+  indicatorBackgroundColorChecked: siteVars.colors.brand[400],
 });

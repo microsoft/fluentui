@@ -14,11 +14,11 @@ export const getClassNames = memoizeFunction(
           touchAction: 'none',
           selectors: {
             '& *': {
-              userSelect: 'none'
-            }
-          }
-        }
-      )
+              userSelect: 'none',
+            },
+          },
+        },
+      ),
     };
-  }
+  },
 );

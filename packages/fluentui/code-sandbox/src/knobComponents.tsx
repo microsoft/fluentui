@@ -25,9 +25,11 @@ const knobComponents: Partial<KnobComponents> = {
           Clear
         </Button>
       </div>
-      {props.items.length > 0 && <CodeSnippet fitted formattable={false} label={false} value={props.items.join('\n')} />}
+      {props.items.length > 0 && (
+        <CodeSnippet fitted formattable={false} label={false} value={props.items.join('\n')} />
+      )}
     </Segment>
-  )
+  ),
 };
 
 export default knobComponents;

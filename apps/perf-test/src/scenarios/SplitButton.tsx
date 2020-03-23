@@ -10,14 +10,14 @@ const menuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
-  ]
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
 };
 
 const scenario = <DefaultButton split={true} text="I am a button" onClick={alertClicked} menuProps={menuProps} />;

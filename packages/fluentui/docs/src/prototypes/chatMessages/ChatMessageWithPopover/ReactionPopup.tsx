@@ -11,7 +11,7 @@ const getAriaLabel = ({ content: numberOfPersons, icon: emojiType }: ReactionPro
 
 class ReactionPopup extends React.Component<ReactionProps, { open: boolean }> {
   state = {
-    open: false
+    open: false,
   };
 
   handleKeyDownOnMenu = e => {
@@ -37,7 +37,7 @@ class ReactionPopup extends React.Component<ReactionProps, { open: boolean }> {
               variables={{ borderColor: 'transparent' }}
               onKeyDown={this.handleKeyDownOnMenu}
             />
-          )
+          ),
         }}
         inline
         on="hover"

@@ -18,8 +18,8 @@ describe('Table', () => {
       { content: 'id', key: 'id' },
       { content: 'Name', key: 'name' },
       { content: 'Picture', key: 'pic' },
-      { content: 'Age', key: 'action' }
-    ]
+      { content: 'Age', key: 'action' },
+    ],
   };
   const rows = [
     {
@@ -29,11 +29,11 @@ describe('Table', () => {
         {
           content: 'Roman van von der Longername',
 
-          key: '1-2'
+          key: '1-2',
         },
         { content: 'None', key: '1-3' },
-        { content: '30 years', key: '1-4' }
-      ]
+        { content: '30 years', key: '1-4' },
+      ],
     },
     {
       key: 2,
@@ -41,8 +41,8 @@ describe('Table', () => {
         { content: '2', key: '2-1' },
         { content: 'Alex', key: '2-2' },
         { content: 'None', key: '2-3' },
-        { content: '1 year', key: '2-4' }
-      ]
+        { content: '1 year', key: '2-4' },
+      ],
     },
     {
       key: 3,
@@ -50,9 +50,9 @@ describe('Table', () => {
         { content: '3', key: '3-1' },
         { content: 'Ali', key: '3-2' },
         { content: 'None', key: '3-3' },
-        { content: '30000000000000 years', key: '3-4' }
-      ]
-    }
+        { content: '30000000000000 years', key: '3-4' },
+      ],
+    },
   ];
 
   it('renders as `div`', () => {
@@ -154,7 +154,7 @@ describe('Table', () => {
             <Table.Cell content="None" key="1-3" />
             <Table.Cell content="30000000000000 years" key="1-4" />
           </Table.Row>
-        </Table>
+        </Table>,
       )
         .find('.ui-table')
         .hostNodes();

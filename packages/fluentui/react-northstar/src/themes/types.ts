@@ -87,7 +87,10 @@ export type ColorNames = keyof (EmphasisColorsStrict & NaturalColorsStrict);
 /**
  * A type for an extendable set of ColorNames properties of type T
  */
-export type ColorValues<T, Colors extends string | number | symbol = ColorNames> = Extendable<Partial<Record<Colors, T>>, T>;
+export type ColorValues<T, Colors extends string | number | symbol = ColorNames> = Extendable<
+  Partial<Record<Colors, T>>,
+  T
+>;
 
 /**
  * A type for a base colors.
@@ -137,26 +140,26 @@ export type ComponentAreaName =
  */
 export type ColorScheme<T extends string | number | symbol = ComponentAreaName> = Extendable<Record<T, string>, string>;
 
-export type ColorSchemeMapping<Scheme = ColorScheme, Colors extends string | number | symbol = ColorNames> = ColorValues<
-  Extendable<Scheme, string>,
-  Colors
-> & {
+export type ColorSchemeMapping<
+  Scheme = ColorScheme,
+  Colors extends string | number | symbol = ColorNames
+> = ColorValues<Extendable<Scheme, string>, Colors> & {
   default?: Extendable<Scheme, string>;
 };
 
 export type StrictColorScheme<T extends string | number | symbol = ComponentAreaName> = Record<T, string>;
 
-export type StrictColorSchemeMapping<Scheme = StrictColorScheme, Colors extends string | number | symbol = ColorNames> = ColorValues<
-  Scheme,
-  Colors
-> & {
+export type StrictColorSchemeMapping<
+  Scheme = StrictColorScheme,
+  Colors extends string | number | symbol = ColorNames
+> = ColorValues<Scheme, Colors> & {
   default?: Scheme;
 };
 
-export type ColorSchemeMappingOverrides<Scheme = ColorScheme, Colors extends string | number | symbol = ColorNames> = ColorValues<
-  Partial<Extendable<Scheme, string>>,
-  Colors
-> & {
+export type ColorSchemeMappingOverrides<
+  Scheme = ColorScheme,
+  Colors extends string | number | symbol = ColorNames
+> = ColorValues<Partial<Extendable<Scheme, string>>, Colors> & {
   default?: Partial<Extendable<ColorScheme, string>>;
 };
 

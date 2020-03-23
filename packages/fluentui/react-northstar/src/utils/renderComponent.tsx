@@ -7,7 +7,7 @@ import {
   ReactAccessibilityBehavior,
   unstable_getAccessibility as getAccessibility,
   unstable_getStyles as getStyles,
-  useTelemetry
+  useTelemetry,
 } from '@fluentui/react-bindings';
 import {
   emptyTheme,
@@ -15,7 +15,7 @@ import {
   ComponentVariablesObject,
   DebugData,
   PropsWithVarsAndStyles,
-  ThemePrepared
+  ThemePrepared,
 } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -47,7 +47,10 @@ export interface RenderConfig<P> {
   saveDebug: (debug: DebugData | null) => void;
 }
 
-const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: ProviderContextPrepared): React.ReactElement<P> => {
+const renderComponent = <P extends {}>(
+  config: RenderConfig<P>,
+  context?: ProviderContextPrepared,
+): React.ReactElement<P> => {
   const { className, displayName, handledProps, props, state, actionHandlers, render, saveDebug = () => {} } = config;
 
   if (_.isEmpty(context)) {
@@ -63,7 +66,13 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
   const unhandledProps = getUnhandledProps(handledProps, props);
   const stateAndProps = { ...state, ...props };
 
-  const accessibility: ReactAccessibilityBehavior = getAccessibility(displayName, props.accessibility, stateAndProps, rtl, actionHandlers);
+  const accessibility: ReactAccessibilityBehavior = getAccessibility(
+    displayName,
+    props.accessibility,
+    stateAndProps,
+    rtl,
+    actionHandlers,
+  );
   const { classes, variables, styles, theme } = getStyles({
     className,
     disableAnimations: context.disableAnimations || false,
@@ -77,8 +86,8 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
       ...context.performance,
       // we cannot enable caching for class components
       enableStylesCaching: false,
-      enableBooleanVariablesCaching: false
-    }
+      enableBooleanVariablesCaching: false,
+    },
   });
 
   const resolvedConfig: RenderResultConfig<P> = {
@@ -89,7 +98,7 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
     styles,
     accessibility,
     rtl,
-    theme
+    theme,
   };
 
   if (accessibility.focusZone) {
@@ -98,7 +107,7 @@ const renderComponent = <P extends {}>(config: RenderConfig<P>, context?: Provid
     resolvedConfig.ElementType = FocusZone as any;
     resolvedConfig.unhandledProps = {
       ...resolvedConfig.unhandledProps,
-      ...accessibility.focusZone.props
+      ...accessibility.focusZone.props,
     };
     resolvedConfig.unhandledProps.as = originalElementType;
     resolvedConfig.unhandledProps.isRtl = resolvedConfig.rtl;

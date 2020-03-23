@@ -26,70 +26,70 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297
+              y: 297,
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284
+              y: 284,
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282
+              y: 282,
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294
+              y: 294,
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 294
+              y: 294,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300
+              y: 300,
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298
-            }
+              y: 298,
+            },
           ],
-          color: DefaultPalette.blue
+          color: DefaultPalette.blue,
         },
         {
           legend: 'All',
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
-              y: 297
+              y: 297,
             },
             {
               x: new Date('2020-03-04T00:00:00.000Z'),
-              y: 284
+              y: 284,
             },
             {
               x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282
+              y: 282,
             },
             {
               x: new Date('2020-03-06T00:00:00.000Z'),
-              y: 294
+              y: 294,
             },
             {
               x: new Date('2020-03-07T00:00:00.000Z'),
-              y: 294
+              y: 294,
             },
             {
               x: new Date('2020-03-08T00:00:00.000Z'),
-              y: 300
+              y: 300,
             },
             {
               x: new Date('2020-03-09T00:00:00.000Z'),
-              y: 298
-            }
+              y: 298,
+            },
           ],
-          color: DefaultPalette.green
-        }
-      ]
+          color: DefaultPalette.green,
+        },
+      ],
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (

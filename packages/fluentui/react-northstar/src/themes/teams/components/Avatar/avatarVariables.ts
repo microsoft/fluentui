@@ -13,5 +13,5 @@ export default (siteVariables): AvatarVariables => ({
   avatarBorderWidth: '0',
   squareAvatarBorderRadius: pxToRem(3),
   statusBorderColor: siteVariables.bodyBackground,
-  statusBorderWidth: '2px'
+  statusBorderWidth: '2px',
 });

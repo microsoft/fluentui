@@ -24,5 +24,5 @@ export default {
       <path fill="none" d="M0 0h32v32H0z" />
     </svg>
   ),
-  styles: {}
+  styles: {},
 } as TeamsProcessedSvgIconSpec;

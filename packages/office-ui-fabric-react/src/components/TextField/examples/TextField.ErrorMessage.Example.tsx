@@ -14,7 +14,7 @@ export interface ITextFieldErrorMessageExampleState {
 
 export class TextFieldErrorMessageExample extends React.Component<{}, ITextFieldErrorMessageExampleState> {
   public state: ITextFieldErrorMessageExampleState = {
-    showFields: false
+    showFields: false,
   };
 
   public render(): JSX.Element {
@@ -22,7 +22,7 @@ export class TextFieldErrorMessageExample extends React.Component<{}, ITextField
 
     const stackTokens: IStackTokens = {
       childrenGap: 20,
-      maxWidth: 350
+      maxWidth: 350,
     };
 
     return (

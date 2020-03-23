@@ -24,7 +24,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
                 setNumberListActive(false);
                 setToDoListActive(false);
               },
-              'aria-label': 'bullet list'
+              'aria-label': 'bullet list',
             },
             {
               key: 'number-list',
@@ -37,7 +37,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
                 setBulletListActive(false);
                 setToDoListActive(false);
               },
-              'aria-label': 'number list'
+              'aria-label': 'number list',
             },
             {
               key: 'to-do-list',
@@ -50,10 +50,10 @@ const ToolbarExampleRadioGroupShorthand = () => {
                 setBulletListActive(false);
                 setNumberListActive(false);
               },
-              'aria-label': 'to do list'
-            }
-          ]
-        }
+              'aria-label': 'to do list',
+            },
+          ],
+        },
       ]}
     />
   );

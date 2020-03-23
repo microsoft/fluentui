@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'mic-off'
+  exportedAs: 'mic-off',
 } as TeamsProcessedSvgIconSpec;

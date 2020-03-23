@@ -27,7 +27,10 @@ const isValidCssValue = (value: any) => {
       openingBracketsStack.push(currentCharacter);
     } else if (closingBrackets.includes(currentCharacter)) {
       const lastOpeningBracket = openingBracketsStack.pop();
-      if (lastOpeningBracket && openingBrackets.indexOf(lastOpeningBracket) !== closingBrackets.indexOf(currentCharacter)) {
+      if (
+        lastOpeningBracket &&
+        openingBrackets.indexOf(lastOpeningBracket) !== closingBrackets.indexOf(currentCharacter)
+      ) {
         return false;
       }
     }
@@ -39,7 +42,12 @@ const isValidCssValue = (value: any) => {
 export default (config?: { skip?: string[] }) => {
   const cssPropertiesToSkip = [...((config && config.skip) || [])];
 
-  const sanitizeCssStyleObject = (styles: ICSSInJSStyle, type: TRuleType, renderer: Renderer, params: RendererParam) => {
+  const sanitizeCssStyleObject = (
+    styles: ICSSInJSStyle,
+    type: TRuleType,
+    renderer: Renderer,
+    params: RendererParam,
+  ) => {
     if (!params.sanitizeCss) {
       return styles;
     }
@@ -64,7 +72,10 @@ export default (config?: { skip?: string[] }) => {
       if (isValidCssValue(cssPropertyValue)) {
         processedStyles[cssPropertyNameOrIndex] = cssPropertyValue;
       } else if (process.env.NODE_ENV !== 'production') {
-        console.warn(`fela-sanitize-css: An invalid value "${cssPropertyValue}" was passed to property "${cssPropertyNameOrIndex}"`);
+        // eslint-disable-next-line no-console
+        console.warn(
+          `fela-sanitize-css: An invalid value "${cssPropertyValue}" was passed to property "${cssPropertyNameOrIndex}"`,
+        );
       }
     });
 

@@ -15,7 +15,8 @@ const getToggleButton = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${SplitButton.slotClassNames.toggleButton}`);
 const getMainButton = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${MenuButton.className} .${Button.className}`);
-const getMenuItems = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${Menu.slotClassNames.item}`);
+const getMenuItems = (wrapper: ReactWrapper): CommonWrapper =>
+  findIntrinsicElement(wrapper, `.${Menu.slotClassNames.item}`);
 const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${Menu.className}`);
 
 describe('SplitButton', () => {
@@ -98,7 +99,9 @@ describe('SplitButton', () => {
 
   test('onMenuItemClick', () => {
     const onMenuItemClick = jest.fn();
-    const wrapper = mountWithProvider(<SplitButton menu={mockMenu} button="test" onMenuItemClick={onMenuItemClick} defaultOpen />);
+    const wrapper = mountWithProvider(
+      <SplitButton menu={mockMenu} button="test" onMenuItemClick={onMenuItemClick} defaultOpen />,
+    );
 
     getMenuItems(wrapper)
       .at(0)
@@ -108,7 +111,9 @@ describe('SplitButton', () => {
 
   test('onMainButtonClick', () => {
     const onMainButtonClick = jest.fn();
-    const wrapper = mountWithProvider(<SplitButton menu={mockMenu} button="test" onMainButtonClick={onMainButtonClick} />);
+    const wrapper = mountWithProvider(
+      <SplitButton menu={mockMenu} button="test" onMainButtonClick={onMainButtonClick} />,
+    );
 
     getMainButton(wrapper).simulate('click');
     expect(onMainButtonClick).toHaveBeenCalledTimes(1);

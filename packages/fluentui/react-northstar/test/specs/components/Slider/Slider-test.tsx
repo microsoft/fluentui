@@ -8,9 +8,9 @@ describe('Slider', () => {
       onChange: 'input',
       onKeyDown: 'input',
       onKeyPress: 'input',
-      onKeyUp: 'input'
+      onKeyUp: 'input',
     },
-    autoControlledProps: ['value']
+    autoControlledProps: ['value'],
   });
 
   describe('accessibility', () => {

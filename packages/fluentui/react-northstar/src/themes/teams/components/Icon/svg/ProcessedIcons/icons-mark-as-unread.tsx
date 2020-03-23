@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'mark-as-unread'
+  exportedAs: 'mark-as-unread',
 } as TeamsProcessedSvgIconSpec;

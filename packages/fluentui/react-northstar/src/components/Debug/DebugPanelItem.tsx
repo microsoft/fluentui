@@ -38,7 +38,7 @@ const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
           marginBottom: '4px',
           width: '100%',
           border: '1px solid #ccc',
-          background: 'none'
+          background: 'none',
         }}
         placeholder="Filter"
       />
@@ -51,7 +51,7 @@ const DebugPanelItem: React.FC<DebugPanelItemProps> = props => {
             style={{
               position: 'relative',
               marginBottom: '4px',
-              borderTop: idx > 0 ? '1px solid #ddd' : 'none'
+              borderTop: idx > 0 ? '1px solid #ddd' : 'none',
             }}
           >
             {ids && ids[idx] && <div style={{ position: 'absolute', right: 0, color: '#707070' }}>{ids[idx]}</div>}

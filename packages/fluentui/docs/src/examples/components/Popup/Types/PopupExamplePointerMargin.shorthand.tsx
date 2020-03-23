@@ -3,9 +3,27 @@ import { Box, Grid, Popup } from '@fluentui/react-northstar';
 
 const PopupExamplePointerMargin = () => (
   <Grid columns={1} styles={{ margin: '200px', gridGap: '100px' }}>
-    <Popup align="start" content="Sample popup" open pointing trigger={<Box styles={{ border: '2px solid green' }}>X</Box>} />
-    <Popup align="center" content="Sample popup" open pointing trigger={<Box styles={{ border: '2px solid green' }}>X</Box>} />
-    <Popup align="end" content="Sample popup" open pointing trigger={<Box styles={{ border: '2px solid green' }}>X</Box>} />
+    <Popup
+      align="start"
+      content="Sample popup"
+      open
+      pointing
+      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+    />
+    <Popup
+      align="center"
+      content="Sample popup"
+      open
+      pointing
+      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+    />
+    <Popup
+      align="end"
+      content="Sample popup"
+      open
+      pointing
+      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+    />
 
     <Popup
       align="start"

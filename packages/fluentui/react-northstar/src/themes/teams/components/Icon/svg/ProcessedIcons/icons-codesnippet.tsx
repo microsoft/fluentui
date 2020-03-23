@@ -17,5 +17,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'code-snippet'
+  exportedAs: 'code-snippet',
 } as TeamsProcessedSvgIconSpec;

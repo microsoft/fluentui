@@ -30,7 +30,7 @@ const DATA_RECORDS = _.times(100, () => ({
   firstName: faker.name.firstName(),
   lastName: faker.name.lastName(),
   quote: faker.hacker.phrase(),
-  timestamp: faker.date.recent().toLocaleString()
+  timestamp: faker.date.recent().toLocaleString(),
 }));
 
 // Converts a data record to a <ListItem />'s props object
@@ -39,7 +39,7 @@ const dataRecordToListItem = record => ({
   media: <Avatar name={`${record.firstName} ${record.lastName}`} image={record.avatar} />,
   header: `${record.firstName} ${record.lastName}`,
   content: record.quote,
-  endMedia: record.timestamp
+  endMedia: record.timestamp,
 });
 
 // ----------------------------------------

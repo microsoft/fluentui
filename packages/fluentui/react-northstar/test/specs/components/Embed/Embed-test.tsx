@@ -18,7 +18,10 @@ describe('Embed', () => {
       embed.simulate('click');
 
       expect(onClick).toHaveBeenCalledTimes(1);
-      expect(onClick).toHaveBeenCalledWith(expect.objectContaining({ type: 'click' }), expect.objectContaining({ onClick, active: true }));
+      expect(onClick).toHaveBeenCalledWith(
+        expect.objectContaining({ type: 'click' }),
+        expect.objectContaining({ onClick, active: true }),
+      );
     });
   });
 
@@ -32,7 +35,7 @@ describe('Embed', () => {
       expect(onActiveChange).toHaveBeenCalledTimes(1);
       expect(onActiveChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),
-        expect.objectContaining({ onActiveChange, active: true })
+        expect.objectContaining({ onActiveChange, active: true }),
       );
     });
   });

@@ -5,7 +5,7 @@ const GlobalClassNames = {
   root: 'ms-FloatingSuggestionsList',
   suggestionsContainer: 'ms-FloatingSuggestionsList-container',
   title: 'ms-FloatingSuggestionsList-title',
-  noSuggestions: 'ms-FloatingSuggestionsList-noSuggestions'
+  noSuggestions: 'ms-FloatingSuggestionsList-noSuggestions',
 };
 
 export const getStyles = (props: IFloatingSuggestionsListStyleProps): IFloatingSuggestionsListStyle => {
@@ -23,8 +23,8 @@ export const getStyles = (props: IFloatingSuggestionsListStyleProps): IFloatingS
     root: [
       classNames.root,
       {
-        minWidth: '260px'
-      }
+        minWidth: '260px',
+      },
     ],
     suggestionsContainer: [
       classNames.suggestionsContainer,
@@ -32,8 +32,8 @@ export const getStyles = (props: IFloatingSuggestionsListStyleProps): IFloatingS
         overflowX: 'auto',
         overflowY: 'hidden',
         maxHeight: '300px',
-        borderBottom: `1px solid ${neutralLight}`
-      }
+        borderBottom: `1px solid ${neutralLight}`,
+      },
     ],
     title: [
       classNames.title,
@@ -42,8 +42,8 @@ export const getStyles = (props: IFloatingSuggestionsListStyleProps): IFloatingS
         color: themePrimary,
         fontSize: fonts.small.fontSize,
         lineHeight: '40px',
-        borderBottom: `1px solid ${neutralLight}`
-      }
+        borderBottom: `1px solid ${neutralLight}`,
+      },
     ],
     noSuggestions: [
       classNames.noSuggestions,
@@ -51,8 +51,8 @@ export const getStyles = (props: IFloatingSuggestionsListStyleProps): IFloatingS
         textAlign: 'center',
         color: neutralPrimaryAlt,
         fontSize: fonts.small.fontSize,
-        lineHeight: '30px'
-      }
-    ]
+        lineHeight: '30px',
+      },
+    ],
   };
 };

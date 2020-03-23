@@ -21,7 +21,7 @@ const PortalExampleOpen = () => {
             padding: '15px',
             boxShadow: 'rgb(187, 187, 187) 0px 2px 8px',
             border: '1px solid rgba(34,36,38,.15)',
-            borderRadius: '5px'
+            borderRadius: '5px',
           }}
         >
           <Header>This is a controlled portal</Header>

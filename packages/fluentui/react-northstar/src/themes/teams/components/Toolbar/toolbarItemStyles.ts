@@ -10,7 +10,7 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, Too
     const colors = getColorScheme(v.colorScheme);
     const { borderWidth } = siteVariables;
     const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables
+      variables: siteVariables,
     });
 
     return {
@@ -31,13 +31,13 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, Too
       ...(p.active && {
         color: v.foregroundActive || colors.foregroundActive,
         backgroundColor: v.backgroundActive,
-        ...getIconFillOrOutlineStyles({ outline: false })
+        ...getIconFillOrOutlineStyles({ outline: false }),
       }),
 
       ':hover': {
         color: v.foregroundHover || colors.foregroundHover,
         backgroundColor: v.backgroundHover || colors.backgroundHover,
-        ...getIconFillOrOutlineStyles({ outline: false })
+        ...getIconFillOrOutlineStyles({ outline: false }),
       },
 
       ':focus-visible': borderFocusStyles[':focus-visible'],
@@ -48,10 +48,10 @@ const toolbarItemStyles: ComponentSlotStylesPrepared<ToolbarItemStylesProps, Too
         cursor: 'default',
         ':hover': {
           // empty to overwrite all existing hover styles
-        }
-      })
+        },
+      }),
     };
-  }
+  },
 };
 
 export default toolbarItemStyles;

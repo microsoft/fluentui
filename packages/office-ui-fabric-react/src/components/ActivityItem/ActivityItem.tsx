@@ -21,7 +21,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
       onRenderComments = this._onRenderComments,
       onRenderTimeStamp = this._onRenderTimeStamp,
       animateBeaconSignal,
-      isCompact
+      isCompact,
     } = this.props;
 
     const classNames = this._getClassNames(this.props);
@@ -104,7 +104,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
           display: 'inline-block',
           width: '10px',
           minWidth: '10px',
-          overflow: 'visible'
+          overflow: 'visible',
         };
       }
       activityPersonas
@@ -119,7 +119,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
               // tslint:disable-next-line:deprecation
               size={showSize16Personas ? PersonaSize.size16 : PersonaSize.size32}
               style={style}
-            />
+            />,
           );
         });
       personaElement = <div className={classNames.personaContainer}>{personaList}</div>;
@@ -129,10 +129,17 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
 
   private _getClassNames(props: IActivityItemProps): IActivityItemClassNames {
     return getClassNames(
-      getStyles(undefined, props.styles, props.animateBeaconSignal, props.beaconColorOne, props.beaconColorTwo, props.isCompact),
+      getStyles(
+        undefined,
+        props.styles,
+        props.animateBeaconSignal,
+        props.beaconColorOne,
+        props.beaconColorTwo,
+        props.isCompact,
+      ),
       props.className!,
       props.activityPersonas!,
-      props.isCompact!
+      props.isCompact!,
     );
   }
 }

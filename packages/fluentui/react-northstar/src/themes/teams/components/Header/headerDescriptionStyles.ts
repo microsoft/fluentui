@@ -12,9 +12,9 @@ const headerStyles: ComponentSlotStylesPrepared<HeaderDescriptionProps, HeaderDe
       display: 'block',
       color: _.get(colors, 'foreground', v.color),
       fontSize: pxToRem(22),
-      fontWeight: 400
+      fontWeight: 400,
     };
-  }
+  },
 };
 
 export default headerStyles;

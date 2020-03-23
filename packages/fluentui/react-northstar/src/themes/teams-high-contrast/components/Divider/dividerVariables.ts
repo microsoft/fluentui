@@ -2,5 +2,5 @@ import { DividerVariables } from '../../../teams/components/Divider/dividerVaria
 
 export default (siteVars: any): Partial<DividerVariables> => ({
   dividerColor: siteVars.colors.white,
-  textColor: siteVars.colors.white
+  textColor: siteVars.colors.white,
 });

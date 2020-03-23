@@ -13,6 +13,6 @@ export default (siteVars: any): Partial<ChatMessageVariables> => {
     isImportantColor: siteVars.accessibleYellow,
     badgeTextColor: siteVars.colors.black,
     timestampColorMine: siteVars.colors.white,
-    reactionGroupBorderColor: siteVars.colors.white
+    reactionGroupBorderColor: siteVars.colors.white,
   };
 };

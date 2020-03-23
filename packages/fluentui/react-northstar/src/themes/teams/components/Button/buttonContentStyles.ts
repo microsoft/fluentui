@@ -13,9 +13,9 @@ const buttonContentStyles: ComponentSlotStylesPrepared<ButtonContentStylesProps,
 
     ...(p.size === 'small' && {
       fontSize: v.sizeSmallContentFontSize,
-      lineHeight: v.sizeSmallContentLineHeight
-    })
-  })
+      lineHeight: v.sizeSmallContentLineHeight,
+    }),
+  }),
 };
 
 export default buttonContentStyles;

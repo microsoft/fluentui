@@ -24,9 +24,9 @@ const gridStyles: ComponentSlotStylesPrepared<GridProps, GridVariables> = {
       ...(rows && { gridTemplateRows: getCSSTemplateValue(rows) }),
       ...(columns && { gridTemplateColumns: getCSSTemplateValue(columns) }),
 
-      '& > *': { outlineOffset: '-3px' }
+      '& > *': { outlineOffset: '-3px' },
     };
-  }
+  },
 };
 
 export default gridStyles;

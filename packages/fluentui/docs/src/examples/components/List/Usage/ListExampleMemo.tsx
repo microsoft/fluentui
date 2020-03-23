@@ -27,7 +27,7 @@ const ListExampleSelectable = () => {
   const handleRender = useLogKnob(
     'MemoItem:render',
     undefined,
-    (id: string, index: number) => `${new Date().toLocaleTimeString()}: ${id}({ id: ${index} })`
+    (id: string, index: number) => `${new Date().toLocaleTimeString()}: ${id}({ id: ${index} })`,
   );
 
   return (

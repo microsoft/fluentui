@@ -11,7 +11,7 @@ export interface IArcState {
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
-    arc: shape.arc()
+    arc: shape.arc(),
   };
 
   private currentRef = React.createRef<SVGPathElement>();
@@ -30,7 +30,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const getClassNames = classNamesFunction<IArcProps, IArcStyles>();
     const classNames = getClassNames(getStyles, { color, href });
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
-    const opacity: number = this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
+    const opacity: number =
+      this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
     return (
       <g ref={this.currentRef}>
         <path
@@ -45,6 +46,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onBlur={this._onBlur}
           opacity={opacity}
           onClick={this._redirectToUrl.bind(this, href)}
+          aria-labelledby={this.props.calloutId}
         />
       </g>
     );

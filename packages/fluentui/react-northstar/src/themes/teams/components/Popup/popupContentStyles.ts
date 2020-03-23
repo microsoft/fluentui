@@ -19,7 +19,7 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentProps, PopupCo
 
     ...(initialPopperStyles as ICSSInJSStyle),
 
-    ...(p.pointing && getPointerStyles(v.pointerOffset, v.pointerGap, v.pointerMargin, rtl, p.placement).root)
+    ...(p.pointing && getPointerStyles(v.pointerOffset, v.pointerGap, v.pointerMargin, rtl, p.placement).root),
   }),
 
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle => ({
@@ -33,13 +33,13 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentProps, PopupCo
     height: v.pointerSize,
     width: v.pointerSize,
 
-    ...getPointerStyles(v.pointerOffset, v.pointerGap, v.pointerMargin, rtl, p.placement).pointer
+    ...getPointerStyles(v.pointerOffset, v.pointerGap, v.pointerMargin, rtl, p.placement).pointer,
   }),
 
   content: ({ variables: v }): ICSSInJSStyle => ({
     display: 'block',
-    padding: v.padding
-  })
+    padding: v.padding,
+  }),
 };
 
 export default popupContentStyles;

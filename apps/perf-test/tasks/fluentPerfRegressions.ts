@@ -46,12 +46,13 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
         fluentTpi,
         fabricTpi,
         fluentToFabric: Math.round((fluentTpi / fabricTpi) * 100) / 100,
-        fluentFlamegraphFile: _.get(stats, 'processed.output.flamegraphFile')
+        fluentFlamegraphFile: _.get(stats, 'processed.output.flamegraphFile'),
       };
-    }
+    },
   );
 
-  const getStatus: (arg: number) => string = fluentToFabric => (fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄');
+  const getStatus: (arg: number) => string = fluentToFabric =>
+    fluentToFabric > 1 ? '🔧' : fluentToFabric >= 0.7 ? '🎯' : '🦄';
 
   reporter.markdown(
     [
@@ -67,13 +68,13 @@ function fluentFabricComparison(perfCounts: any, reporter: Reporter) {
           value.fabricTpi,
           `${value.fluentToFabric}:1`,
           value.iterations,
-          value.numTicks
-        ].join(' | ')
+          value.numTicks,
+        ].join(' | '),
       ),
       '>🔧 Needs work &nbsp; &nbsp; 🎯 On target &nbsp; &nbsp; 🦄 Amazing',
       '',
-      '</details>'
-    ].join('\n')
+      '</details>',
+    ].join('\n'),
   );
 }
 
@@ -90,13 +91,13 @@ function reportResults(perfCounts: any, reporter: Reporter) {
         flamegraphFile: _.get(stats, 'processed.output.flamegraphFile'),
         baseline: {
           numTicks: baselineTicks,
-          flamegraphFile: _.get(stats, 'processed.baseline.output.flamegraphFile')
+          flamegraphFile: _.get(stats, 'processed.baseline.output.flamegraphFile'),
         },
         isRegression: _.get(stats, 'analysis.regression.isRegression'),
         regressionFile: _.get(stats, 'analysis.regression.regressionFile'),
-        currentToBaseline: Math.round((currentTicks / baselineTicks) * 100) / 100
+        currentToBaseline: Math.round((currentTicks / baselineTicks) * 100) / 100,
       };
-    }
+    },
   );
 
   const regressions = _.sortBy(_.filter(results, 'isRegression'), stats => stats.currentToBaseline * -1);
@@ -115,10 +116,10 @@ function reportResults(perfCounts: any, reporter: Reporter) {
             linkToFlamegraph(value.numTicks, value.flamegraphFile),
             linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
             `${value.currentToBaseline}:1`,
-            linkToFlamegraph('analysis', value.regressionFile)
-          ].join(' | ')
-        )
-      ].join('\n')
+            linkToFlamegraph('analysis', value.regressionFile),
+          ].join(' | '),
+        ),
+      ].join('\n'),
     );
   }
 
@@ -126,7 +127,7 @@ function reportResults(perfCounts: any, reporter: Reporter) {
 
   const noRegressions = _.sortBy(
     _.filter(results, stats => !stats.isRegression),
-    stats => stats.currentToBaseline * -1
+    stats => stats.currentToBaseline * -1,
   );
   reporter.markdown(
     [
@@ -139,12 +140,12 @@ function reportResults(perfCounts: any, reporter: Reporter) {
           value.name,
           linkToFlamegraph(value.numTicks, value.flamegraphFile),
           linkToFlamegraph(value.baseline.numTicks, value.baseline.flamegraphFile),
-          `${value.currentToBaseline}:1`
-        ].join(' | ')
+          `${value.currentToBaseline}:1`,
+        ].join(' | '),
       ),
       '',
-      '</details>'
-    ].join('\n')
+      '</details>',
+    ].join('\n'),
   );
 }
 

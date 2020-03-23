@@ -1,4 +1,11 @@
-import { ColorScheme, ColorSchemeMapping, ColorVariants, StrictColorScheme, StrictColorSchemeMapping, PrimitiveColors } from '../types';
+import {
+  ColorScheme,
+  ColorSchemeMapping,
+  ColorVariants,
+  StrictColorScheme,
+  StrictColorSchemeMapping,
+  PrimitiveColors,
+} from '../types';
 
 import { AccordionContentProps } from '../../components/Accordion/AccordionContent';
 import { AccordionProps } from '../../components/Accordion/Accordion';
@@ -64,6 +71,12 @@ import { TreeTitleStylesProps } from '../../components/Tree/TreeTitle';
 import { TableProps } from '../../components/Table/Table';
 import { TableRowProps } from '../../components/Table/TableRow';
 import { TableCellStylesProps } from '../../components/Table/TableCell';
+import { CardStylesProps } from '../../components/Card/Card';
+import { CardPreviewStylesProps } from '../../components/Card/CardPreview';
+import { CardTopControlsStylesProps } from '../../components/Card/CardTopControls';
+import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
+import { CardBodyStylesProps } from '../../components/Card/CardBody';
+import { CardFooterStylesProps } from '../../components/Card/CardFooter';
 
 export type TeamsThemeStylesProps = {
   Accordion?: AccordionProps;
@@ -130,6 +143,12 @@ export type TeamsThemeStylesProps = {
   Table?: TableProps;
   TableRow?: TableRowProps;
   TableCell?: TableCellStylesProps;
+  Card?: CardStylesProps;
+  CardPreview?: CardPreviewStylesProps;
+  CardTopControls?: CardTopControlsStylesProps;
+  CardHeader?: CardHeaderStylesProps;
+  CardBody?: CardBodyStylesProps;
+  CardFooter?: CardFooterStylesProps;
 };
 
 export type TeamsContextualColors = {
@@ -185,6 +204,12 @@ export type TeamsCategoryColorNames = keyof TeamsCategoryColors;
 
 export type TeamsCategoryColorSchemeMapping = ColorSchemeMapping<Partial<ColorScheme>, TeamsCategoryColorNames>;
 
-export type TeamsColorNames = keyof (TeamsContextualColors & TeamsNaturalColors & PrimitiveColors & TeamsTransparentColors);
+export type TeamsColorNames = keyof (TeamsContextualColors &
+  TeamsNaturalColors &
+  PrimitiveColors &
+  TeamsTransparentColors);
 
-export type TeamsSchemeMappingWithAreas<TAreas extends string> = StrictColorSchemeMapping<StrictColorScheme<TAreas>, TeamsColorNames>;
+export type TeamsSchemeMappingWithAreas<TAreas extends string> = StrictColorSchemeMapping<
+  StrictColorScheme<TAreas>,
+  TeamsColorNames
+>;

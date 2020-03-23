@@ -1,4 +1,8 @@
-import { ComponentSlotClasses, ReactAccessibilityBehavior, AccessibilityActionHandlers } from '@fluentui/react-bindings';
+import {
+  ComponentSlotClasses,
+  ReactAccessibilityBehavior,
+  AccessibilityActionHandlers,
+} from '@fluentui/react-bindings';
 import { ComponentSlotStylesResolved } from '@fluentui/styles';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -26,7 +30,7 @@ const createComponent = <P extends ObjectOf<any> = any>({
   className,
   render,
   defaultProps,
-  actionHandlers
+  actionHandlers,
 }: CreateComponentConfig<P>): CreateComponentReturnType<P> => {
   return createComponentInternal<P>({
     displayName,
@@ -36,7 +40,7 @@ const createComponent = <P extends ObjectOf<any> = any>({
       return render(Object.assign({ config: filteredConfig }, props));
     },
     defaultProps,
-    actionHandlers
+    actionHandlers,
   });
 };
 

@@ -608,5 +608,5 @@ export default {
   processedIcons_analytics,
   processedIcons_addparticipant,
   processedIcons_add,
-  processedIcons_accept
+  processedIcons_accept,
 } as { [iconName: string]: TeamsSvgIconSpec };

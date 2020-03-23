@@ -12,15 +12,15 @@ const HighlightPopup = ({ onConfirm }) => {
           id: 'first-name-inline-shorthand',
           key: 'first-name',
           required: true,
-          inline: true
+          inline: true,
         },
         {
           control: {
             as: Button,
-            content: 'Submit'
+            content: 'Submit',
           },
-          key: 'submit'
-        }
+          key: 'submit',
+        },
       ]}
     />
   );
@@ -49,8 +49,8 @@ const ToolbarExamplePopupShorthand = () => {
             onOpenChange: (e, { open }) => {
               setHighlightOpen(open);
             },
-            open: highlightOpen
-          }
+            open: highlightOpen,
+          },
         },
         {
           key: 'font-color',
@@ -61,9 +61,9 @@ const ToolbarExamplePopupShorthand = () => {
             content: <Input icon="search" placeholder="Search..." />,
             onOpenChange: () => {
               setFontColorActive(!fontColorActive);
-            }
-          }
-        }
+            },
+          },
+        },
       ]}
     />
   );

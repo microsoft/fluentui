@@ -14,7 +14,7 @@ export const EmptyThemeProvider: React.FunctionComponent = ({ children }) => {
     rtl: false,
     theme: emptyTheme,
     telemetry: undefined,
-    performance: {} as any
+    performance: {} as any,
   };
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
@@ -23,11 +23,11 @@ export const EmptyThemeProvider: React.FunctionComponent = ({ children }) => {
 export const mountWithProvider = <C extends React.Component, P = C['props'], S = C['state']>(
   node: React.ReactElement<P>,
   options?: MountRendererProps,
-  theme?: ThemeInput
+  theme?: ThemeInput,
 ) => {
   return mount(node, {
     wrappingComponent: EmptyThemeProvider,
-    ...options
+    ...options,
   });
 };
 
@@ -35,7 +35,7 @@ export const mountWithProviderAndGetComponent = <C extends React.Component, P = 
   Component: ComponentType<P>,
   elementToMount: React.ReactElement<P>,
   options?: MountRendererProps,
-  theme?: ThemeInput
+  theme?: ThemeInput,
 ) => {
   return mountWithProvider(elementToMount, options, theme).find(Component);
 };

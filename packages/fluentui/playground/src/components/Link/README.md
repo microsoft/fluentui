@@ -235,7 +235,9 @@ None.
 ##### Without href
 
 ```html
-<button class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiLink-button MuiTypography-body2 MuiTypography-colorPrimary">
+<button
+  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiLink-button MuiTypography-body2 MuiTypography-colorPrimary"
+>
   Button Link
 </button>
 ```

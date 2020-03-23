@@ -7,7 +7,7 @@ import {
   IDropdownOption,
   getTheme,
   mergeStyleSets,
-  FontWeights
+  FontWeights,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutCoverExampleState {
@@ -29,7 +29,7 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.leftBottomEdge, text: 'Left Bottom Edge' },
   { key: DirectionalHint.rightTopEdge, text: 'Right Top Edge' },
   { key: DirectionalHint.rightCenter, text: 'Right Center' },
-  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' }
+  { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
 const theme = getTheme();
@@ -40,29 +40,29 @@ const styles = mergeStyleSets({
     textAlign: 'center',
     margin: '0 100px',
     minWidth: 130,
-    height: 32
+    height: 32,
   },
   configArea: {
     minWidth: '300px',
-    display: 'inline-block'
+    display: 'inline-block',
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   header: {
-    padding: '18px 24px 12px'
+    padding: '18px 24px 12px',
   },
   title: [
     theme.fonts.xLarge,
     {
       margin: 0,
-      fontWeight: FontWeights.semilight
-    }
+      fontWeight: FontWeights.semilight,
+    },
   ],
   inner: {
     height: '100%',
-    padding: '0 24px 20px'
-  }
+    padding: '0 24px 20px',
+  },
 });
 
 export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampleState> {
@@ -77,7 +77,7 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
 
     this.state = {
       isCalloutVisible: false,
-      directionalHint: DirectionalHint.bottomLeftEdge
+      directionalHint: DirectionalHint.bottomLeftEdge,
     };
   }
 
@@ -127,13 +127,13 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
 
   private _onShowMenuClicked(): void {
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
+      isCalloutVisible: !this.state.isCalloutVisible,
     });
   }
 
   private _onDirectionalChanged(event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void {
     this.setState({
-      directionalHint: option.key as DirectionalHint
+      directionalHint: option.key as DirectionalHint,
     });
   }
 }

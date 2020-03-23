@@ -9,10 +9,10 @@ import Box from 'src/components/Box/Box';
 describe('MenuItem', () => {
   isConformant(MenuItem, {
     eventTargets: {
-      onClick: '.ui-menu__item__wrapper'
+      onClick: '.ui-menu__item__wrapper',
     },
     wrapperComponent: Box,
-    autoControlledProps: ['menuOpen']
+    autoControlledProps: ['menuOpen'],
   });
 
   it('content renders as `li > a`', () => {
@@ -27,7 +27,7 @@ describe('MenuItem', () => {
         .childAt(0)
         .childAt(0)
         .childAt(0)
-        .is('a')
+        .is('a'),
     ).toBe(true);
     expect(menuItem.text()).toBe('Home');
   });
@@ -51,9 +51,9 @@ describe('MenuItem', () => {
       {
         name: 'menuItemAsToolbarButtonBehavior',
         behavior: menuItemAsToolbarButtonBehavior,
-        expectedAnchorRole: 'button'
+        expectedAnchorRole: 'button',
       },
-      { name: 'tabBehavior', behavior: tabBehavior, expectedAnchorRole: 'tab' }
+      { name: 'tabBehavior', behavior: tabBehavior, expectedAnchorRole: 'tab' },
     ];
     behaviors.forEach(accessibility => {
       test(`integration test for ${accessibility.name} behavior`, () => {
@@ -64,7 +64,7 @@ describe('MenuItem', () => {
 
         const menuItemComponent = mountWithProviderAndGetComponent(
           MenuItem,
-          <MenuItem disabled aria-label={ariaLabel} accessibility={accessibility.behavior} />
+          <MenuItem disabled aria-label={ariaLabel} accessibility={accessibility.behavior} />,
         );
         expect(getRenderedAttribute(menuItemComponent, 'role', '')).toBe('presentation');
         expect(getRenderedAttribute(menuItemComponent, 'aria-disabled', '')).toBe(undefined);

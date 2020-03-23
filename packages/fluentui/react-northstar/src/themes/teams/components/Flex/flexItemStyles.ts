@@ -17,9 +17,9 @@ const flexItemStyles: ComponentSlotStylesPrepared<FlexItemStylesProps, FlexItemV
       ...(p.grow && { flexGrow: p.grow }),
       ...(p.grow === true && { flexGrow: 1 }),
 
-      ...(p.push && (p.flexDirection === 'column' ? { marginTop: 'auto' } : { marginLeft: 'auto' }))
+      ...(p.push && (p.flexDirection === 'column' ? { marginTop: 'auto' } : { marginLeft: 'auto' })),
     };
-  }
+  },
 };
 
 export default flexItemStyles;

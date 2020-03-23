@@ -16,26 +16,26 @@ import gridRowBehavior from './gridRowBehavior';
 const gridNestedBehavior: Accessibility = props => ({
   attributes: {
     root: {
-      role: 'grid'
-    }
+      role: 'grid',
+    },
   },
   focusZone: {
     props: {
       shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.ArrowRight,
       direction: FocusZoneDirection.vertical,
-      shouldResetActiveElementWhenTabFromZone: true
-    }
+      shouldResetActiveElementWhenTabFromZone: true,
+    },
   },
   keyActions: {
     root: {
       focus: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }]
-      }
-    }
+        keyCombinations: [{ keyCode: keyboardKey.Escape }],
+      },
+    },
   },
   childBehaviors: {
-    row: gridRowBehavior
-  }
+    row: gridRowBehavior,
+  },
 });
 
 export default gridNestedBehavior;

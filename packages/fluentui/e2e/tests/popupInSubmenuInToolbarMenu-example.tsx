@@ -7,7 +7,7 @@ export const selectors = {
   popupTriggerId: 'popupTrigger',
   popupElementId: 'popupElement',
   submenuTriggerId: 'submenuTrigger',
-  dummyButtonId: 'dummyButton'
+  dummyButtonId: 'dummyButton',
 };
 
 const ToolbarExamplePopupInMenu = () => {
@@ -35,24 +35,24 @@ const ToolbarExamplePopupInMenu = () => {
                       id: selectors.popupTriggerId,
                       key: 'popup',
                       popup: {
-                        content: <Input id={selectors.popupElementId} icon="search" placeholder="Search..." />
-                      }
-                    }
-                  ]
-                }
-              ]
+                        content: <Input id={selectors.popupElementId} icon="search" placeholder="Search..." />,
+                      },
+                    },
+                  ],
+                },
+              ],
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
               setMenuOpen(menuOpen);
-            }
+            },
           },
           {
             id: selectors.dummyButtonId,
             key: 'italic',
             kind: 'toggle' as ToolbarItemShorthandKinds,
-            icon: { name: 'italic', outline: true }
-          }
+            icon: { name: 'italic', outline: true },
+          },
         ]}
       />
     </>

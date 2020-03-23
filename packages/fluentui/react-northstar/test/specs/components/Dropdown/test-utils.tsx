@@ -46,10 +46,10 @@ const renderDropdown = (props: DropdownProps = {}) => {
         'click',
         _.merge(
           {
-            nativeEvent: { stopImmediatePropagation: jest.fn() }
+            nativeEvent: { stopImmediatePropagation: jest.fn() },
           },
-          optional
-        )
+          optional,
+        ),
       );
     },
     clickOnClearIndicator: () => {
@@ -60,15 +60,17 @@ const renderDropdown = (props: DropdownProps = {}) => {
         'click',
         _.merge(
           {
-            nativeEvent: { stopImmediatePropagation: jest.fn() }
+            nativeEvent: { stopImmediatePropagation: jest.fn() },
           },
-          optional
-        )
+          optional,
+        ),
       );
     },
-    keyDownOnSearchInput: (key: string, optional?: Object) => searchInputWrapper.simulate('keydown', { key, ...optional }),
+    keyDownOnSearchInput: (key: string, optional?: Object) =>
+      searchInputWrapper.simulate('keydown', { key, ...optional }),
     keyDownOnItemsList: (key: string, optional?: Object) => itemsListWrapper.simulate('keydown', { key, ...optional }),
-    keyDownOnTriggerButton: (key: string, optional?: Object) => triggerButtonWrapper.simulate('keydown', { key, ...optional }),
+    keyDownOnTriggerButton: (key: string, optional?: Object) =>
+      triggerButtonWrapper.simulate('keydown', { key, ...optional }),
     keyDownOnSelectedItemAtIndex: (index: number, key: string, optional?: Object) => {
       getSelectedItemWrapperAtIndex(index).simulate('keydown', { key, ...optional });
     },
@@ -80,7 +82,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
     },
     focusItemsList: () => {
       itemsListWrapper.simulate('focus');
-    }
+    },
   };
 };
 

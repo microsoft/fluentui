@@ -90,7 +90,7 @@ enum WorkTag {
   DehydratedFragment = 18,
   SuspenseListComponent = 19,
   FundamentalComponent = 20,
-  ScopeComponent = 21
+  ScopeComponent = 21,
 }
 
 type Source = {
@@ -271,7 +271,7 @@ class FiberNavigator {
       value: fiber,
       enumerable: false,
       writable: false,
-      configurable: false
+      configurable: false,
     });
 
     return fiberNavigator;
@@ -288,7 +288,7 @@ class FiberNavigator {
       value: fiber,
       enumerable: false,
       writable: false,
-      configurable: false
+      configurable: false,
     });
 
     return fiberNavigator;

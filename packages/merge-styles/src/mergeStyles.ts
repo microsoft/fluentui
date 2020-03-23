@@ -21,7 +21,7 @@ export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | 
  */
 export function mergeCss(
   args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[],
-  options?: IStyleOptions
+  options?: IStyleOptions,
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
   const { classes, objects } = extractStyleParts(styleArgs);

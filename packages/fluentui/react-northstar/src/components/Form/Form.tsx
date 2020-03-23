@@ -11,7 +11,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { ComponentEventHandler, WithAsProp, ShorthandCollection, withSafeTypeForAs } from '../../types';
 import FormField, { FormFieldProps } from './FormField';
@@ -48,20 +48,20 @@ class Form extends UIComponent<WithAsProp<FormProps>, any> {
   static className = 'ui-form';
 
   static slotClassNames: FormSlotClassNames = {
-    field: `${Form.className}__field`
+    field: `${Form.className}__field`,
   };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
-      content: false
+      content: false,
     }),
     action: PropTypes.string,
     fields: customPropTypes.collectionShorthand,
-    onSubmit: PropTypes.func
+    onSubmit: PropTypes.func,
   };
 
   static defaultProps = {
-    as: 'form'
+    as: 'form',
   };
 
   static Field = FormField;
@@ -93,7 +93,9 @@ class Form extends UIComponent<WithAsProp<FormProps>, any> {
 
   renderFields = () => {
     const { fields } = this.props;
-    return _.map(fields, field => FormField.create(field, { defaultProps: () => ({ className: Form.slotClassNames.field }) }));
+    return _.map(fields, field =>
+      FormField.create(field, { defaultProps: () => ({ className: Form.slotClassNames.field }) }),
+    );
   };
 }
 

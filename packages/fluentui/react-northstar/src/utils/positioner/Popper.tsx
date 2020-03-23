@@ -30,10 +30,14 @@ function useDeepMemo<TKey, TValue>(memoFn: () => TValue, key: TKey): TValue {
 
 // `popper.js` has a UMD build without `.default`, it breaks CJS builds:
 // https://github.com/rollup/rollup/issues/1267#issuecomment-446681320
-const createPopper = (reference: Element | _PopperJS.ReferenceObject, popper: HTMLElement, options?: PopperJS.PopperOptions): PopperJS => {
+const createPopper = (
+  reference: Element | _PopperJS.ReferenceObject,
+  popper: HTMLElement,
+  options?: PopperJS.PopperOptions,
+): PopperJS => {
   const instance = new ((_PopperJS as any).default || _PopperJS)(reference, popper, {
     ...options,
-    eventsEnabled: false
+    eventsEnabled: false,
   });
 
   const originalUpdate = instance.update;
@@ -69,7 +73,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     positioningDependencies = [],
     rtl,
     targetRef,
-    unstable_pinned
+    unstable_pinned,
   } = props;
 
   const proposedPlacement = getPlacement({ align, position, rtl });
@@ -109,7 +113,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
 
         offset && {
           offset: { offset: rtl ? applyRtlToOffset(offset, position) : offset },
-          keepTogether: { enabled: false }
+          keepTogether: { enabled: false },
         },
 
         /**
@@ -120,7 +124,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
          */
         hasScrollableElement && {
           preventOverflow: { escapeWithReference: true },
-          flip: { boundariesElement: 'scrollParent' }
+          flip: { boundariesElement: 'scrollParent' },
         },
 
         userModifiers,
@@ -131,9 +135,9 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
          * the values of `align` and `position` props, regardless of the size of the component, the
          * reference element or the viewport.
          */
-        unstable_pinned && { flip: { enabled: false } }
+        unstable_pinned && { flip: { enabled: false } },
       ),
-    [hasScrollableElement, position, offset, rtl, unstable_pinned, userModifiers]
+    [hasScrollableElement, position, offset, rtl, unstable_pinned, userModifiers],
   );
 
   const scheduleUpdate = React.useCallback(() => {
@@ -158,7 +162,9 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     destroyInstance();
 
     const reference =
-      targetRef && isRefObject(targetRef) ? (targetRef as React.RefObject<Element>).current : (targetRef as _PopperJS.ReferenceObject);
+      targetRef && isRefObject(targetRef)
+        ? (targetRef as React.RefObject<Element>).current
+        : (targetRef as _PopperJS.ReferenceObject);
 
     if (!enabled || !reference || !contentRef.current) {
       return;
@@ -188,11 +194,11 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
         keepTogether: { enabled: hasPointer },
         arrow: {
           enabled: hasPointer,
-          element: pointerTargetRef && pointerTargetRef.current
-        }
+          element: pointerTargetRef && pointerTargetRef.current,
+        },
       },
       onCreate: handleUpdate,
-      onUpdate: handleUpdate
+      onUpdate: handleUpdate,
     };
 
     popperRef.current = createPopper(reference, contentRef.current, options);
@@ -204,7 +210,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     positionFixed,
     proposedPlacement,
     targetRef,
-    unstable_pinned
+    unstable_pinned,
   ]);
 
   useIsomorphicLayoutEffect(() => {
@@ -215,7 +221,9 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
   React.useEffect(scheduleUpdate, [...positioningDependencies, computedPlacement]);
 
   const child =
-    typeof children === 'function' ? children({ placement: computedPlacement, scheduleUpdate }) : (children as React.ReactElement);
+    typeof children === 'function'
+      ? children({ placement: computedPlacement, scheduleUpdate })
+      : (children as React.ReactElement);
 
   return child ? <Ref innerRef={contentRef}>{React.Children.only(child)}</Ref> : null;
 };
@@ -223,7 +231,7 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
 Popper.defaultProps = {
   enabled: true,
   positionFixed: false,
-  positioningDependencies: []
+  positioningDependencies: [],
 };
 
 export default Popper;

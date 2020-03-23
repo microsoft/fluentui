@@ -9,5 +9,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-recording'
+  exportedAs: 'call-recording',
 } as TeamsProcessedSvgIconSpec;

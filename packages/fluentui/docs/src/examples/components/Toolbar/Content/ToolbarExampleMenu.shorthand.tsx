@@ -10,7 +10,7 @@ const ToolbarExampleMenuShorthand = () => {
   const onMenuOpenChange = useLogKnob(
     'onMenuOpenChange',
     (e, { menuOpen }) => setMenuOpen(menuOpen),
-    createCallbackLogFormatter(['menuOpen'])
+    createCallbackLogFormatter(['menuOpen']),
   );
 
   return (
@@ -27,13 +27,13 @@ const ToolbarExampleMenuShorthand = () => {
               { key: 'play', content: 'Play', icon: 'play' },
               { key: 'pause', content: 'Pause', icon: 'pause' },
               { key: 'divider', kind: 'divider' },
-              'Without icon'
+              'Without icon',
             ],
-            onItemClick
+            onItemClick,
           },
           menuOpen,
-          onMenuOpenChange
-        }
+          onMenuOpenChange,
+        },
       ]}
     />
   );

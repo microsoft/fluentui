@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-blocked'
+  exportedAs: 'call-blocked',
 } as TeamsProcessedSvgIconSpec;

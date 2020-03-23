@@ -39,7 +39,7 @@ const SliderExampleActionShorthand = () => {
     mute: false,
     value: min + (max - min) / 2,
     currentValue: min,
-    minValue: min
+    minValue: min,
   });
 
   const handleChange = React.useCallback((e, data) => dispatch({ type: 'change_value', value: data.value }), []);
@@ -48,7 +48,13 @@ const SliderExampleActionShorthand = () => {
 
   return (
     <Flex inline hAlign="center" vAlign="center" gap="gap.smaller" column={vertical}>
-      <Button text iconOnly icon={state.mute ? 'mic-off' : 'mic'} onClick={() => dispatch({ type: 'toggle_mute' })} title="Toggle mute" />
+      <Button
+        text
+        iconOnly
+        icon={state.mute ? 'mic-off' : 'mic'}
+        onClick={() => dispatch({ type: 'toggle_mute' })}
+        title="Toggle mute"
+      />
       <Slider {...commonProps} vertical={vertical} />
       <Input type="number" input={{ styles: { width: '64px' } }} {...commonProps} />
     </Flex>

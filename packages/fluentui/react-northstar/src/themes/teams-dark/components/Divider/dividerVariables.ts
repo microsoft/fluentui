@@ -6,11 +6,11 @@ export default (siteVars: any): Partial<DividerVariables> => ({
     extendColorScheme(siteVars.colorScheme, {
       brand: {
         foreground: siteVars.colors.brand[400],
-        border: siteVars.colors.brand[400]
-      }
+        border: siteVars.colors.brand[400],
+      },
     }),
-    dividerColorAreas
+    dividerColorAreas,
   ),
   textColor: siteVars.colors.grey[250],
-  dividerColor: siteVars.colors.grey[550]
+  dividerColor: siteVars.colors.grey[550],
 });

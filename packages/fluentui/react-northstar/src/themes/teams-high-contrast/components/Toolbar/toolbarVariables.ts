@@ -9,14 +9,14 @@ export default (siteVars: any): Partial<ToolbarVariables> => ({
         foregroundActive: siteVars.accessibleYellow,
 
         menuItemForegroundHover: siteVars.colorScheme.default.foregroundHover,
-        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover
-      }
+        menuItemBackgroundHover: siteVars.colorScheme.default.backgroundHover,
+      },
     }),
-    toolbarColorAreas
+    toolbarColorAreas,
   ),
 
   borderWidth: '0',
   borderRadius: undefined,
 
-  menuBoxShadow: undefined
+  menuBoxShadow: undefined,
 });

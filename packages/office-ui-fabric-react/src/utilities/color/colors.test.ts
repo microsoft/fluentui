@@ -19,7 +19,7 @@ import {
   correctHSV,
   correctHex,
   clamp,
-  IColor
+  IColor,
 } from './colors';
 
 describe('color utilities', () => {
@@ -32,7 +32,7 @@ describe('color utilities', () => {
     v: 100,
     a: 100,
     hex: '0015ff',
-    str: '#0015ff'
+    str: '#0015ff',
   };
   const testColorAlpha: IColor = { ...testColor, a: 50, str: 'rgba(0, 21, 255, 0.5)' };
   const testColorNoAlpha: IColor = { ...testColor, a: undefined };
@@ -247,7 +247,9 @@ describe('color utilities', () => {
     it('works', () => {
       expect(updateH({ h: 15, s: testColor.s, v: testColor.v } as IColor, testColor.h)).toEqual(testColorNoAlpha);
 
-      expect(updateH({ h: 15, s: testColor.s, v: testColor.v, a: testColorAlpha.a } as IColor, testColor.h)).toEqual(testColorAlpha);
+      expect(updateH({ h: 15, s: testColor.s, v: testColor.v, a: testColorAlpha.a } as IColor, testColor.h)).toEqual(
+        testColorAlpha,
+      );
     });
   });
 
@@ -263,7 +265,7 @@ describe('color utilities', () => {
         v: 100,
         a: 100,
         hex: '0015ff',
-        str: '#0015ff'
+        str: '#0015ff',
       };
       expect(updateRGB({ r: 255, g: 21, b: 255 } as IColor, 'r', 0)).toEqual(expected);
       expect(updateRGB({ r: 0, g: 255, b: 255 } as IColor, 'g', 21)).toEqual(expected);

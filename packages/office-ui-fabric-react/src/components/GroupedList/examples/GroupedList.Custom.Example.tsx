@@ -9,7 +9,7 @@ const headerAndFooterStyles: IRawStyle = {
   minWidth: 300,
   minHeight: 40,
   lineHeight: 40,
-  paddingLeft: 16
+  paddingLeft: 16,
 };
 const classNames = mergeStyleSets({
   header: [headerAndFooterStyles, theme.fonts.xLarge],
@@ -25,8 +25,8 @@ const classNames = mergeStyleSets({
     background: 'none',
     backgroundColor: 'transparent',
     border: 'none',
-    paddingLeft: 32
-  }
+    paddingLeft: 32,
+  },
 });
 
 export class GroupedListCustomExample extends React.Component {
@@ -40,7 +40,7 @@ export class GroupedListCustomExample extends React.Component {
         onRenderCell={this._onRenderCell}
         groupProps={{
           onRenderHeader: this._onRenderHeader,
-          onRenderFooter: this._onRenderFooter
+          onRenderFooter: this._onRenderFooter,
         }}
         groups={this._groups}
       />

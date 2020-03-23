@@ -5,7 +5,7 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import cx from 'classnames';
 
 import { createShorthandFactory, commonPropTypes } from '../../utils';
@@ -15,7 +15,7 @@ import {
   WithAsProp,
   withSafeTypeForAs,
   FluentComponentStaticProps,
-  ProviderContextPrepared
+  ProviderContextPrepared,
 } from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
 import Image, { ImageProps } from '../Image/Image';
@@ -88,7 +88,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
     checkable,
     checkableIndicator,
     selected,
-    variables
+    variables,
   } = props;
 
   const { classes, styles: resolvedStyles } = useStyles(DropdownItem.displayName, {
@@ -98,14 +98,14 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
       isFromKeyboard,
       selected,
       hasContent: !!content,
-      hasHeader: !!header
+      hasHeader: !!header,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(DropdownItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(DropdownItem.handledProps, props);
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);
@@ -114,14 +114,14 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   const contentElement = Box.create(content, {
     defaultProps: () => ({
       className: DropdownItem.slotClassNames.content,
-      styles: resolvedStyles.content
-    })
+      styles: resolvedStyles.content,
+    }),
   });
   const headerElement = Box.create(header, {
     defaultProps: () => ({
       className: DropdownItem.slotClassNames.header,
-      styles: resolvedStyles.header
-    })
+      styles: resolvedStyles.header,
+    }),
   });
   const endMediaElement =
     selected && checkable
@@ -129,8 +129,8 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
           defaultProps: () => ({
             className: DropdownItem.slotClassNames.checkableIndicator,
             styles: resolvedStyles.checkableIndicator,
-            accessibility: indicatorBehavior
-          })
+            accessibility: indicatorBehavior,
+          }),
         })
       : null;
   const imageElement = Box.create(
@@ -138,15 +138,15 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
       defaultProps: () => ({
         avatar: true,
         className: DropdownItem.slotClassNames.image,
-        styles: resolvedStyles.image
-      })
+        styles: resolvedStyles.image,
+      }),
     }),
     {
       defaultProps: () => ({
         className: DropdownItem.slotClassNames.image,
-        styles: resolvedStyles.media
-      })
-    }
+        styles: resolvedStyles.media,
+      }),
+    },
   );
 
   const element = (
@@ -172,14 +172,14 @@ DropdownItem.displayName = 'DropdownItem';
 
 DropdownItem.defaultProps = {
   as: 'li',
-  checkableIndicator: {}
+  checkableIndicator: {},
 };
 
 DropdownItem.propTypes = {
   ...commonPropTypes.createCommon({
     accessibility: false,
     children: false,
-    content: false
+    content: false,
   }),
   accessibilityItemProps: PropTypes.object,
   active: PropTypes.bool,
@@ -190,7 +190,7 @@ DropdownItem.propTypes = {
   image: customPropTypes.itemShorthandWithoutJSX,
   onClick: PropTypes.func,
   isFromKeyboard: PropTypes.bool,
-  selected: PropTypes.bool
+  selected: PropTypes.bool,
 };
 DropdownItem.handledProps = Object.keys(DropdownItem.propTypes) as any;
 
@@ -199,7 +199,7 @@ DropdownItem.slotClassNames = {
   content: `${DropdownItem.className}__content`,
   header: `${DropdownItem.className}__header`,
   image: `${DropdownItem.className}__image`,
-  checkableIndicator: `${DropdownItem.className}__checkable-indicator`
+  checkableIndicator: `${DropdownItem.className}__checkable-indicator`,
 };
 
 DropdownItem.create = createShorthandFactory({ Component: DropdownItem, mappedProp: 'header' });

@@ -1,5 +1,11 @@
 import { Accessibility, popupBehavior, PopupBehaviorProps } from '@fluentui/accessibility';
-import { AutoFocusZoneProps, FocusTrapZoneProps, useAccessibility, useAutoControlled, useTelemetry } from '@fluentui/react-bindings';
+import {
+  AutoFocusZoneProps,
+  FocusTrapZoneProps,
+  useAccessibility,
+  useAutoControlled,
+  useTelemetry,
+} from '@fluentui/react-bindings';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
@@ -20,9 +26,14 @@ import {
   commonPropTypes,
   isFromKeyboard,
   doesNodeContainClick,
-  setWhatInputSource
+  setWhatInputSource,
 } from '../../utils';
-import { ComponentEventHandler, FluentComponentStaticProps, ProviderContextPrepared, ShorthandValue } from '../../types';
+import {
+  ComponentEventHandler,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+  ShorthandValue,
+} from '../../types';
 import { ALIGNMENTS, POSITIONS, Popper, PositioningProps, PopperChildrenProps } from '../../utils/positioner';
 import PopupContent, { PopupContentProps } from './PopupContent';
 
@@ -113,7 +124,10 @@ export interface PopupProps
  * A Popup displays a non-modal, often rich content, on top of its target element.
  */
 const Popup: React.FC<PopupProps> &
-  FluentComponentStaticProps<PopupProps> & { slotClassNames: PopupSlotClassNames; Content: typeof PopupContent } = props => {
+  FluentComponentStaticProps<PopupProps> & {
+    slotClassNames: PopupSlotClassNames;
+    Content: typeof PopupContent;
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Popup.displayName, context.telemetry);
   setStart();
@@ -136,13 +150,13 @@ const Popup: React.FC<PopupProps> &
     target,
     trapFocus,
     trigger,
-    unstable_pinned
+    unstable_pinned,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
     initialValue: false,
     defaultValue: props.defaultOpen,
-    value: props.open
+    value: props.open,
   });
   const [isOpenedByRightClick, setIsOpenedByRightClick] = React.useState(false);
 
@@ -175,7 +189,7 @@ const Popup: React.FC<PopupProps> &
       },
       preventScroll: e => {
         e.preventDefault();
-      }
+      },
     },
     mapPropsToBehavior: () => ({
       disabled: false, // definition has this prop, but `Popup` doesn't support it
@@ -183,9 +197,9 @@ const Popup: React.FC<PopupProps> &
       on,
       trapFocus,
       tabbableTrigger,
-      trigger: trigger as any
+      trigger: trigger as any,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const handleDocumentClick = (getRefs: Function) => (e: MouseEvent) => {
@@ -222,7 +236,8 @@ const Popup: React.FC<PopupProps> &
 
   const isOutsidePopupElementAndOutsideTriggerElement = (refs: NodeRef[], e: KeyboardEvent | MouseEvent) => {
     const isOutsidePopup = isOutsidePopupElement(refs, e);
-    const isInsideTrigger = triggerRef.current && doesNodeContainClick(triggerRef.current, e as MouseEvent, context.target);
+    const isInsideTrigger =
+      triggerRef.current && doesNodeContainClick(triggerRef.current, e as MouseEvent, context.target);
 
     return isOutsidePopup && !isInsideTrigger;
   };
@@ -376,9 +391,9 @@ const Popup: React.FC<PopupProps> &
           pointing,
           pointerRef: pointerTargetRef,
           trapFocus,
-          autoFocus
+          autoFocus,
         }),
-      overrideProps: getContentProps
+      overrideProps: getContentProps,
     });
 
     return (
@@ -417,7 +432,7 @@ const Popup: React.FC<PopupProps> &
 
   const trySetOpen = (
     newValue: boolean,
-    event: React.KeyboardEvent | React.MouseEvent | KeyboardEvent | MouseEvent | TouchEvent | WheelEvent
+    event: React.KeyboardEvent | React.MouseEvent | KeyboardEvent | MouseEvent | TouchEvent | WheelEvent,
   ) => {
     const isOpenedByRightClick = newValue && isRightClick(event as React.MouseEvent);
 
@@ -461,7 +476,9 @@ const Popup: React.FC<PopupProps> &
     const activeElement = activeDocument.activeElement;
 
     triggerFocusableRef.current =
-      triggerRef.current && triggerRef.current.contains(activeElement) ? (activeElement as HTMLElement) : triggerRef.current;
+      triggerRef.current && triggerRef.current.contains(activeElement)
+        ? (activeElement as HTMLElement)
+        : triggerRef.current;
   };
 
   const updateContextPosition = (nativeEvent: MouseEvent) => {
@@ -471,11 +488,13 @@ const Popup: React.FC<PopupProps> &
   if (process.env.NODE_ENV !== 'production') {
     React.useEffect(() => {
       if (inline && trapFocus) {
+        // eslint-disable-next-line no-console
         console.warn('Using "trapFocus" in inline popup leads to broken behavior for screen reader users.');
       }
       if (!inline && autoFocus) {
+        // eslint-disable-next-line no-console
         console.warn(
-          'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.'
+          'Beware, "autoFocus" prop will just grab focus at the moment of mount and will not trap it. As user is able to TAB out from popup, better use "inline" prop to keep correct tab order.',
         );
       }
     }, [autoFocus, inline, trapFocus]);
@@ -504,7 +523,9 @@ const Popup: React.FC<PopupProps> &
     />
   );
   const triggerElement = triggerNode && (
-    <Ref innerRef={triggerRef}>{React.cloneElement(triggerNode as React.ReactElement, getA11yProps('trigger', triggerProps))}</Ref>
+    <Ref innerRef={triggerRef}>
+      {React.cloneElement(triggerNode as React.ReactElement, getA11yProps('trigger', triggerProps))}
+    </Ref>
   );
 
   const element = (
@@ -521,13 +542,13 @@ const Popup: React.FC<PopupProps> &
 Popup.className = 'ui-popup';
 Popup.displayName = 'Popup';
 Popup.slotClassNames = {
-  content: `${Popup.className}__content`
+  content: `${Popup.className}__content`,
 };
 
 Popup.propTypes = {
   ...commonPropTypes.createCommon({
     as: false,
-    content: false
+    content: false,
   }),
   align: PropTypes.oneOf(ALIGNMENTS),
   defaultOpen: PropTypes.bool,
@@ -538,7 +559,7 @@ Popup.propTypes = {
   on: PropTypes.oneOfType([
     PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
     PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
-    PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context']))
+    PropTypes.arrayOf(PropTypes.oneOf(['hover', 'focus', 'context'])),
   ]) as any,
   open: PropTypes.bool,
   onOpenChange: PropTypes.func,
@@ -552,7 +573,7 @@ Popup.propTypes = {
   content: customPropTypes.shorthandAllowingChildren,
   contentRef: customPropTypes.ref,
   trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object])
+  autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
 };
 Popup.defaultProps = {
   accessibility: popupBehavior,
@@ -560,7 +581,7 @@ Popup.defaultProps = {
   position: 'above',
   on: 'click',
   mouseLeaveDelay: 500,
-  tabbableTrigger: true
+  tabbableTrigger: true,
 };
 Popup.handledProps = Object.keys(Popup.propTypes) as any;
 

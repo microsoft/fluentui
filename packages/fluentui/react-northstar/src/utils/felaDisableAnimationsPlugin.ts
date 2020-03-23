@@ -7,7 +7,7 @@ const animationProps = [
   'animationIterationCount',
   'animationDirection',
   'animationFillMode',
-  'animationPlayState'
+  'animationPlayState',
 ];
 
 /**
@@ -31,7 +31,7 @@ export default () => {
         if (typeof cssPropertyValue === 'object') {
           return {
             ...acc,
-            [cssPropertyName]: disableAnimations(cssPropertyValue, type, renderer, props)
+            [cssPropertyName]: disableAnimations(cssPropertyValue, type, renderer, props),
           };
         }
 

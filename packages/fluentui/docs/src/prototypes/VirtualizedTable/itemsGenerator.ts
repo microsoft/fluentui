@@ -18,8 +18,8 @@ function getItems(minItems = 20, maxItems = 40) {
         { content: 'id', key: 'id' },
         { content: 'Name', key: 'name' },
         { content: 'Picture', key: 'pic' },
-        { content: 'Age', key: 'action' }
-      ]
+        { content: 'Age', key: 'action' },
+      ],
     };
     const rowsPlain = _.times(getRandomNumber(minItems, maxItems), index => ({
       key: `${index}`,
@@ -28,11 +28,11 @@ function getItems(minItems = 20, maxItems = 40) {
         {
           content: getRandomName(),
           truncateContent: true,
-          key: `${index}-2`
+          key: `${index}-2`,
         },
         { content: 'None', key: `${index}-3` },
-        { content: `${getRandomNumber(10, 1000)} years`, key: `${index}-4` }
-      ]
+        { content: `${getRandomNumber(10, 1000)} years`, key: `${index}-4` },
+      ],
     }));
 
     return { header, rows: rowsPlain };

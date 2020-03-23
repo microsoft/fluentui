@@ -55,7 +55,7 @@ class DebugRect extends React.Component<DebugRectProps> {
           border: '1px solid #6495edcc',
           zIndex: 99999999,
           pointerEvents: 'none',
-          userSelect: 'none'
+          userSelect: 'none',
         }}
       >
         <div
@@ -66,7 +66,7 @@ class DebugRect extends React.Component<DebugRectProps> {
             bottom: '100%',
             left: 0,
             color: '#fff',
-            background: '#6495ed'
+            background: '#6495ed',
           }}
         >
           <span style={{ fontWeight: 'bold' }}>{`<${fiberNav.name} />`}</span>
@@ -80,7 +80,7 @@ class DebugRect extends React.Component<DebugRectProps> {
               margin: '0 0 1px -1px',
               top: '100%',
               left: 0,
-              background: '#6495ed'
+              background: '#6495ed',
             }}
           >
             <strong style={{ fontWeight: 'bold', color: 'hsl(160, 100%, 80%)' }}>

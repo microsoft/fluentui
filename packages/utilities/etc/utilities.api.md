@@ -221,8 +221,12 @@ export class EventGroup {
     // (undocumented)
     static isObserved(target: any, eventName: string): boolean;
     // (undocumented)
-    off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
-    on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+    off(target?: any, // tslint:disable-line:no-any
+    eventName?: string, callback?: (args?: any) => void, // tslint:disable-line:no-any
+    options?: boolean | AddEventListenerOptions): void;
+    on(target: any, // tslint:disable-line:no-any
+    eventName: string, callback: (args?: any) => void, // tslint:disable-line:no-any
+    options?: boolean | AddEventListenerOptions): void;
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
@@ -932,7 +936,7 @@ export const labelProperties: string[];
 // @public
 export const liProperties: string[];
 
-// @public (undocumented)
+// @public
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
 // @public

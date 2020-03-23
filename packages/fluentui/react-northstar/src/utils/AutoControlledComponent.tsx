@@ -43,7 +43,12 @@ const getDefaultPropName = prop => `default${prop[0].toUpperCase() + prop.slice(
  *  @param state - A state object
  *  @param includeDefaults - Whether or not to heed the default props or initial state
  */
-export const getAutoControlledStateValue = (propName: string, props: any, state: any = undefined, includeDefaults: boolean = false) => {
+export const getAutoControlledStateValue = (
+  propName: string,
+  props: any,
+  state: any = undefined,
+  includeDefaults: boolean = false,
+) => {
   // regular props
   const propValue = props[propName];
   if (propValue !== undefined) return propValue;
@@ -82,7 +87,7 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
       if (getDerivedStateFromProps !== AutoControlledComponent.getDerivedStateFromProps) {
         /* eslint-disable-next-line no-console */
         console.error(
-          `Auto controlled ${name} must specify a static getAutoControlledStateFromProps() instead of getDerivedStateFromProps().`
+          `Auto controlled ${name} must specify a static getAutoControlledStateFromProps() instead of getDerivedStateFromProps().`,
         );
       }
 
@@ -125,8 +130,8 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
             'Do not set defaultProps for autoControlledProps. You can set defaults by',
             'setting state in the constructor or using an ES7 property initializer',
             '(https://babeljs.io/blog/2015/06/07/react-on-es6-plus#property-initializers)',
-            `See ${name} props: "${illegalDefaults}".`
-          ].join(' ')
+            `See ${name} props: "${illegalDefaults}".`,
+          ].join(' '),
         );
       }
 
@@ -141,8 +146,8 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
           [
             'Do not add default props to autoControlledProps.',
             'Default props are automatically handled.',
-            `See ${name} autoControlledProps: "${illegalAutoControlled}".`
-          ].join(' ')
+            `See ${name} autoControlledProps: "${illegalAutoControlled}".`,
+          ].join(' '),
         );
       }
     }
@@ -160,7 +165,9 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
         // prevent defaultFoo={} along side foo={}
         if (!_.isUndefined(this.props[defaultPropName]) && !_.isUndefined(this.props[prop])) {
           /* eslint-disable-next-line no-console */
-          console.error(`${name} prop "${prop}" is auto controlled. Specify either ${defaultPropName} or ${prop}, but not both.`);
+          console.error(
+            `${name} prop "${prop}" is auto controlled. Specify either ${defaultPropName} or ${prop}, but not both.`,
+          );
         }
       }
 
@@ -171,7 +178,7 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
       ...state,
       ...initialAutoControlledState,
       autoControlledProps,
-      getAutoControlledStateFromProps
+      getAutoControlledStateFromProps,
     };
   }
 
@@ -183,6 +190,7 @@ export default class AutoControlledComponent<P = {}, S = {}> extends UIComponent
   static getAutoControlledStateFromProps: React.GetDerivedStateFromProps<any, any>;
 }
 
+// eslint-disable-next-line func-names
 AutoControlledComponent.getDerivedStateFromProps = function(props, state) {
   const { autoControlledProps, getAutoControlledStateFromProps } = state;
 
@@ -201,7 +209,7 @@ AutoControlledComponent.getDerivedStateFromProps = function(props, state) {
   if (getAutoControlledStateFromProps) {
     const computedState = getAutoControlledStateFromProps(props, {
       ...state,
-      ...newStateFromProps
+      ...newStateFromProps,
     });
 
     // We should follow the idea of getDerivedStateFromProps() and return only modified state
@@ -211,6 +219,7 @@ AutoControlledComponent.getDerivedStateFromProps = function(props, state) {
   return newStateFromProps;
 };
 
+// eslint-disable-next-line func-names
 AutoControlledComponent.getAutoControlledStateFromProps = function(props, state) {
   return null;
 };

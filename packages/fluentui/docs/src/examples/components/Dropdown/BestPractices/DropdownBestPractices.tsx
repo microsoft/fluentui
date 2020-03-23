@@ -4,7 +4,7 @@ import ComponentBestPractices from '../../../../components/ComponentBestPractice
 
 const doList = [
   'Provide `getA11ySelectionMessage`, `getA11yStatusMessage`, `noResultsMessage` and `loadingMessage` props to visualize dropdown state correctly.',
-  'Provide `aria-label` to `triggerButton` slot for non-searchable variants if the placeholder prop is not used.'
+  'Provide `aria-label` to `triggerButton` slot for non-searchable variants if the placeholder prop is not used.',
 ];
 
 const DropdownBestPractices: React.FunctionComponent<{}> = () => {

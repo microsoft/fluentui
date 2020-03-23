@@ -1,4 +1,4 @@
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 // @ts-ignore
@@ -11,7 +11,7 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  UIComponentProps
+  UIComponentProps,
 } from '../../utils';
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs, FluentComponentStaticProps } from '../../types';
 
@@ -29,7 +29,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Box.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const { classes } = useStyles(Box.displayName, {
@@ -38,12 +38,12 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
-  const unhandledProps = getUnhandledProps(Box.handledProps, props);
+  const unhandledProps = useUnhandledProps(Box.handledProps, props);
   const ElementType = getElementType(props);
 
   const result = (
@@ -51,7 +51,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
       {...getA11Props('root', {
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         className: classes.root,
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {childrenExist(children) ? children : content}

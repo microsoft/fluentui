@@ -15,7 +15,7 @@ By default, this will load the icon fonts from the CDN used by OneDrive, SharePo
 initializeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-For more details about what `initializeIcons` does, check out Fabric's [wiki page about icons](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Using-icons).
+For more details about what `initializeIcons` does, check out Fabric's [wiki page about icons](https://github.com/microsoft/fluentui/wiki/Using-icons).
 
 Once you've initialized the icons, you can use the Icon component in your app like any other Fabric component:
 

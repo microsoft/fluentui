@@ -10,24 +10,24 @@ export type ShorthandTestOptions<TProps = any> = {
 };
 
 export const DefaultShorthandTestOptions: ShorthandTestOptions = {
-  mapsValueToProp: 'content'
+  mapsValueToProp: 'content',
 };
 
 export type ShorthandPropTestsRunner<TComponent> = <TShorthandComponent extends React.ComponentType>(
   shorthandProp: keyof PropsOf<InstanceOf<TComponent>>,
   ShorthandComponent: TShorthandComponent,
-  options?: ShorthandTestOptions<PropsOf<TShorthandComponent>>
+  options?: ShorthandTestOptions<PropsOf<TShorthandComponent>>,
 ) => any;
 
 export type ShorthandPropTestsFactory = <TComponent extends React.ComponentType>(
-  Component: TComponent
+  Component: TComponent,
 ) => ShorthandPropTestsRunner<TComponent>;
 
 export default ((Component: React.ComponentType) => {
   return function implementsShorthandProp(
     shorthandProp: string,
     ShorthandComponent: React.ComponentType,
-    options: ShorthandTestOptions = DefaultShorthandTestOptions
+    options: ShorthandTestOptions = DefaultShorthandTestOptions,
   ) {
     const mapsValueToProp = options.mapsValueToProp as string;
     const { displayName } = ShorthandComponent;
@@ -36,7 +36,9 @@ export default ((Component: React.ComponentType) => {
       Object.keys(matchedProps).every(propName => matchedProps[propName] === props[propName]);
 
     const expectContainsSingleShorthandElement = (wrapper: ReactWrapper, withProps: Props) =>
-      expect(wrapper.find(ShorthandComponent).filterWhere(node => checkPropsMatch(node.props(), withProps)).length).toEqual(1);
+      expect(
+        wrapper.find(ShorthandComponent).filterWhere(node => checkPropsMatch(node.props(), withProps)).length,
+      ).toEqual(1);
 
     const expectShorthandPropsAreHandled = (withProps: Props | string) => {
       const props = { ...options.requiredProps, [shorthandProp]: withProps };
@@ -60,7 +62,7 @@ export default ((Component: React.ComponentType) => {
         expectShorthandPropsAreHandled({
           ...options.requiredShorthandProps,
           foo: 'foo value',
-          bar: 'bar value'
+          bar: 'bar value',
         });
       });
     });

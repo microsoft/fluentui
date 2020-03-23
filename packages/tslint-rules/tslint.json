@@ -42,6 +42,14 @@
     "triple-equals": [
       true
     ],
+    "max-line-length": [
+      true,
+      {
+        "limit": 120,
+        // resolve conflicts with prettier's formatting or certain lines that can't be split
+        "ignore-pattern": "require(<.*?>)?\\(|https?:\\/\\/|^(import|export) \\{ \\w+( as \\w+)? \\} from|^import \\* as|^\\s+(<path )?d="
+      }
+    ],
     "no-arg": true,
     "radix": true,
     "typedef": [false],

@@ -1,5 +1,5 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -13,9 +13,15 @@ import {
   commonPropTypes,
   createShorthandFactory,
   rtlTextContainer,
-  UIComponentProps
+  UIComponentProps,
 } from '../../utils';
-import { WithAsProp, withSafeTypeForAs, ShorthandCollection, FluentComponentStaticProps, ProviderContextPrepared } from '../../types';
+import {
+  WithAsProp,
+  withSafeTypeForAs,
+  ShorthandCollection,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import ChatItem, { ChatItemProps } from './ChatItem';
 import ChatMessage from './ChatMessage';
 
@@ -47,7 +53,7 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Chat.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<ChatStylesProps>(Chat.displayName, {
     className: Chat.className,
@@ -55,30 +61,30 @@ const Chat: React.FC<WithAsProp<ChatProps>> &
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Chat.handledProps, props);
+  const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
   const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {childrenExist(children)
         ? children
         : _.map(items, item =>
             ChatItem.create(item, {
-              defaultProps: () => ({ className: Chat.slotClassNames.item })
-            })
+              defaultProps: () => ({ className: Chat.slotClassNames.item }),
+            }),
           )}
-    </ElementType>
+    </ElementType>,
   );
   setEnd();
 
@@ -89,18 +95,18 @@ Chat.className = 'ui-chat';
 Chat.displayName = 'Chat';
 
 Chat.slotClassNames = {
-  item: `${Chat.className}__item`
+  item: `${Chat.className}__item`,
 };
 
 Chat.defaultProps = {
   accessibility: chatBehavior,
-  as: 'ul'
+  as: 'ul',
 };
 Chat.propTypes = {
   ...commonPropTypes.createCommon({
-    content: false
+    content: false,
   }),
-  items: PropTypes.arrayOf(customPropTypes.itemShorthand)
+  items: PropTypes.arrayOf(customPropTypes.itemShorthand),
 };
 Chat.handledProps = Object.keys(Chat.propTypes) as any;
 

@@ -12,7 +12,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   createShorthandFactory,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 import Reaction, { ReactionProps } from './Reaction';
@@ -36,7 +36,7 @@ class ReactionGroup extends UIComponent<WithAsProp<ReactionGroupProps>> {
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
-    items: customPropTypes.collectionShorthand
+    items: customPropTypes.collectionShorthand,
   };
 
   renderComponent({ ElementType, classes, accessibility, styles, unhandledProps }): React.ReactNode {
@@ -59,9 +59,9 @@ class ReactionGroup extends UIComponent<WithAsProp<ReactionGroupProps>> {
         {_.map(items, reaction =>
           Reaction.create(reaction, {
             defaultProps: () => ({
-              styles: styles.reaction
-            })
-          })
+              styles: styles.reaction,
+            }),
+          }),
         )}
       </ElementType>
     );
@@ -71,7 +71,7 @@ class ReactionGroup extends UIComponent<WithAsProp<ReactionGroupProps>> {
 ReactionGroup.create = createShorthandFactory({
   Component: ReactionGroup,
   mappedProp: 'content',
-  mappedArrayProp: 'items'
+  mappedArrayProp: 'items',
 });
 
 /**

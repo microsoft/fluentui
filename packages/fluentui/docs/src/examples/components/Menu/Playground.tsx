@@ -19,9 +19,9 @@ const MenuPlayground: React.FunctionComponent = () => {
         {
           key: 'messages',
           content: 'Messages',
-          menu: ['Drafts', 'Archive']
+          menu: ['Drafts', 'Archive'],
         },
-        'Logout'
+        'Logout',
       ]}
       pointing={pointing}
       primary={primary}

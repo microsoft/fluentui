@@ -4,7 +4,7 @@ import ComponentBestPractices from '../../../../components/ComponentBestPractice
 
 const doList = [
   'Use react-aria-live or similar component to announce the loading state.',
-  'If loader is only the element in the screen or region, consider making it focusable by setting `tabIndex` prop to the `Loader`. In most of these cases value of `tabIndex` should be 0.'
+  'If loader is only the element in the screen or region, consider making it focusable by setting `tabIndex` prop to the `Loader`. In most of these cases value of `tabIndex` should be 0.',
 ];
 
 const LoaderBestPractices: React.FunctionComponent<{}> = () => {

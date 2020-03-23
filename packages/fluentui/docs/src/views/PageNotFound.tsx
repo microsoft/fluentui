@@ -21,7 +21,7 @@ const PageNotFound = () => (
             align: 'center',
             quality: 'high',
             pluginspage: 'http://www.macromedia.com/go/getflashplayer',
-            type: 'application/x-shockwave-flash'
+            type: 'application/x-shockwave-flash',
           }}
           style={{ zoom: '1.13' }}
         />
@@ -37,7 +37,7 @@ const PageNotFound = () => (
             align: 'center',
             quality: 'high',
             pluginspage: 'http://www.macromedia.com/go/getflashplayer',
-            type: 'application/x-shockwave-flash'
+            type: 'application/x-shockwave-flash',
           }}
         />
       </Segment>

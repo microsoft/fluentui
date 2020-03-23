@@ -8,8 +8,8 @@ export default mergeThemes(
   createTheme(
     {
       siteVariables,
-      componentVariables
+      componentVariables,
     },
-    'teams-dark'
-  )
+    'teams-dark',
+  ),
 );

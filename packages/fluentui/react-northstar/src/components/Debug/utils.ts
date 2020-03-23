@@ -3,14 +3,18 @@ import * as _ from 'lodash';
 /**
  * Check whether source includes target ignoring case.
  */
-export const includes = (source: string, target: string): boolean => _.toLower(source).indexOf(_.toLower(target)) !== -1;
+export const includes = (source: string, target: string): boolean =>
+  _.toLower(source).indexOf(_.toLower(target)) !== -1;
 
 /**
  * Checks whether the key or the value of data[key] contains the search string.
  */
 export const find = (data: object, key: string, search: string): boolean => {
   const value = data[key];
-  return search !== '' && (includes(key, search) || (typeof value !== 'object' && !_.isNil(value) && includes(value, search)));
+  return (
+    search !== '' &&
+    (includes(key, search) || (typeof value !== 'object' && !_.isNil(value) && includes(value, search)))
+  );
 };
 
 /**

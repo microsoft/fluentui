@@ -7,9 +7,9 @@ const AccordionPanelCustomTitleExample = () => {
       title: <Layout key="title" start={<Label icon="error" iconPosition="start" circular content="Warnings" />} />,
       content: {
         key: 'warnings',
-        content: 'Here is a list of warnings discovered.'
-      }
-    }
+        content: 'Here is a list of warnings discovered.',
+      },
+    },
   ];
 
   return <Accordion defaultActiveIndex={[0]} panels={panels} />;

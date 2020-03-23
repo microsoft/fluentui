@@ -12,7 +12,7 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
     const colors = getColorScheme(v.colorScheme);
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderRadius: 0
+      borderRadius: 0,
     });
 
     return {
@@ -30,18 +30,18 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
       cursor: 'pointer',
 
       ':focus': {
-        outline: 0
+        outline: 0,
       },
 
       ':hover': {
         color: v.menuItemForegroundHover || colors.menuItemForegroundHover,
         backgroundColor: v.menuItemBackgroundHover || colors.menuItemBackgroundHover,
         [`& .${ToolbarMenuItem.slotClassNames.submenuIndicator}`]: {
-          backgroundImage: submenuIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover)
+          backgroundImage: submenuIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
         },
         [`& .${ToolbarMenuItem.slotClassNames.activeIndicator}`]: {
-          backgroundImage: activeIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover)
-        }
+          backgroundImage: activeIndicatorUrl(v.menuItemForegroundHover || colors.menuItemForegroundHover),
+        },
       },
 
       ':focus-visible': borderFocusStyles[':focus-visible'],
@@ -51,15 +51,15 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
         color: v.menuItemForegroundDisabled || colors.foregroundDisabled1,
         backgroundColor: v.menuItemBackgroundDisabled,
         [`& .${ToolbarMenuItem.slotClassNames.submenuIndicator}`]: {
-          backgroundImage: submenuIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1)
+          backgroundImage: submenuIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
         },
         [`& .${ToolbarMenuItem.slotClassNames.activeIndicator}`]: {
-          backgroundImage: activeIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1)
+          backgroundImage: activeIndicatorUrl(v.menuItemForegroundDisabled || colors.foregroundDisabled1),
         },
         ':hover': {
           // empty to overwrite all existing hover styles
-        }
-      })
+        },
+      }),
     };
   },
 
@@ -72,7 +72,7 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
       width: pxToRem(24),
       height: '100%',
       position: 'absolute',
-      right: pxToRem(7)
+      right: pxToRem(7),
     };
   },
 
@@ -83,18 +83,18 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
       ...(rtl && {
-        transform: `scaleX(-1)`
+        transform: `scaleX(-1)`,
       }),
       width: pxToRem(16),
       height: '100%',
       position: 'absolute',
-      right: pxToRem(7)
+      right: pxToRem(7),
     };
   },
 
   wrapper: () => ({
-    display: 'block'
-  })
+    display: 'block',
+  }),
 };
 
 export default toolbarMenuItemStyles;

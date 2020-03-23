@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import Popper from 'popper.js';
 import * as PropTypes from 'prop-types';
@@ -14,7 +14,7 @@ import {
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
-  rtlTextContainer
+  rtlTextContainer,
 } from '../../utils';
 
 import { PopperChildrenProps } from '../../utils/positioner';
@@ -39,47 +39,62 @@ export interface TooltipContentProps extends UIComponentProps, ChildrenComponent
   pointerRef?: React.Ref<HTMLDivElement>;
 }
 
-const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> & FluentComponentStaticProps<TooltipContentProps> = props => {
+const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
+  FluentComponentStaticProps<TooltipContentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, children, className, content, design, open, placement, pointing, pointerRef, styles, variables } = props;
+  const {
+    accessibility,
+    children,
+    className,
+    content,
+    design,
+    open,
+    placement,
+    pointing,
+    pointerRef,
+    styles,
+    variables,
+  } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: TooltipContent.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles(TooltipContent.displayName, {
     className: TooltipContent.className,
     mapPropsToStyles: () => ({
       open,
       placement,
-      pointing
+      pointing,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(TooltipContent.handledProps, props);
+  const unhandledProps = useUnhandledProps(TooltipContent.handledProps, props);
 
   const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {open && pointing && <div className={classes.pointer} ref={pointerRef} />}
 
-      <div {...getA11Props('content', { className: classes.content })}>{childrenExist(children) ? children : content}</div>
+      <div {...getA11Props('content', { className: classes.content })}>
+        {childrenExist(children) ? children : content}
+      </div>
     </ElementType>
   );
   setEnd();
@@ -107,10 +122,10 @@ TooltipContent.propTypes = {
     'bottom-start',
     'left-end',
     'left',
-    'left-start'
+    'left-start',
   ]),
   pointing: PropTypes.bool,
-  pointerRef: customPropTypes.ref
+  pointerRef: customPropTypes.ref,
 };
 TooltipContent.handledProps = Object.keys(TooltipContent.propTypes) as any;
 

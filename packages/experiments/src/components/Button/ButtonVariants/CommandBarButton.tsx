@@ -33,7 +33,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     iconColorPressed: palette.themeDark,
     minHeight: 0,
     minWidth: 40,
-    textWeight: 'normal'
+    textWeight: 'normal',
   };
 };
 
@@ -56,13 +56,13 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     highContrastIconColorPressed: 'GrayText',
     iconColor: semanticColors.disabledBodySubtext,
     iconColorHovered: semanticColors.disabledBodySubtext,
-    iconColorPressed: semanticColors.disabledBodySubtext
+    iconColorPressed: semanticColors.disabledBodySubtext,
   };
 };
 
 const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
 export const CommandBarButton: React.FunctionComponent<IButtonProps> = composed({
@@ -71,5 +71,5 @@ export const CommandBarButton: React.FunctionComponent<IButtonProps> = composed(
   state,
   styles,
   tokens: CommandBarButtonTokens,
-  view
+  view,
 });

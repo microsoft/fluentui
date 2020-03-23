@@ -109,5 +109,5 @@ export default (siteVars: any): CheckboxVariables => ({
   disabledBackgroundChecked: _.get(siteVars, 'colorScheme.default.backgroundDisabled', defaultValue),
   disabledBorderColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled1', defaultValue),
   disabledCheckedIndicatorColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled', defaultValue),
-  disabledToggleIndicatorColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled', defaultValue)
+  disabledToggleIndicatorColor: _.get(siteVars, 'colorScheme.default.foregroundDisabled', defaultValue),
 });

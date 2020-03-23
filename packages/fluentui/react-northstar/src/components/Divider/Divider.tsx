@@ -12,12 +12,16 @@ import {
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 
 import { WithAsProp, withSafeTypeForAs } from '../../types';
 
-export interface DividerProps extends UIComponentProps, ChildrenComponentProps, ColorComponentProps, ContentComponentProps {
+export interface DividerProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ColorComponentProps,
+    ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -48,11 +52,11 @@ class Divider extends UIComponent<WithAsProp<DividerProps>, any> {
     fitted: PropTypes.bool,
     size: PropTypes.number,
     important: PropTypes.bool,
-    vertical: PropTypes.bool
+    vertical: PropTypes.bool,
   };
 
   static defaultProps = {
-    size: 0
+    size: 0,
   };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }) {

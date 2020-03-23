@@ -16,7 +16,7 @@ import {
   AutoControlledComponent,
   doesNodeContainClick,
   applyAccessibilityKeyHandlers,
-  getOrGenerateIdFromShorthand
+  getOrGenerateIdFromShorthand,
 } from '../../utils';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Button, { ButtonProps } from '../Button/Button';
@@ -115,7 +115,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
   static propTypes = {
     ...commonPropTypes.createCommon({
       children: false,
-      content: 'shorthand'
+      content: 'shorthand',
     }),
     actions: customPropTypes.itemShorthand,
     backdrop: PropTypes.bool,
@@ -131,7 +131,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     open: PropTypes.bool,
     overlay: customPropTypes.itemShorthand,
     trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    trigger: PropTypes.any
+    trigger: PropTypes.any,
   };
 
   static defaultProps = {
@@ -141,7 +141,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     closeOnOutsideClick: true,
     overlay: {},
     footer: {},
-    trapFocus: true
+    trapFocus: true,
   };
 
   static autoControlledProps = ['open'];
@@ -154,7 +154,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
 
       _.invoke(this.triggerRef, 'current.focus');
     },
-    close: e => this.handleDialogCancel(e)
+    close: e => this.handleDialogCancel(e),
   };
   contentRef = React.createRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
   overlayRef = React.createRef<HTMLElement>() as React.MutableRefObject<HTMLElement>;
@@ -162,14 +162,14 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
 
   getInitialAutoControlledState(): DialogState {
     return {
-      open: false
+      open: false,
     };
   }
 
   static getAutoControlledStateFromProps(props: DialogProps, state: DialogState): Partial<DialogState> {
     return {
       contentId: getOrGenerateIdFromShorthand('dialog-content-', props.content, state.contentId),
-      headerId: getOrGenerateIdFromShorthand('dialog-header-', props.header, state.headerId)
+      headerId: getOrGenerateIdFromShorthand('dialog-header-', props.header, state.headerId),
     };
   }
 
@@ -192,14 +192,14 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onClick', e, buttonProps);
       this.handleDialogCancel(e);
-    }
+    },
   });
 
   handleConfirmButtonOverrides = (predefinedProps: ButtonProps) => ({
     onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
       _.invoke(predefinedProps, 'onClick', e, buttonProps);
       this.handleDialogConfirm(e);
-    }
+    },
   });
 
   handleOverlayClick = (e: MouseEvent) => {
@@ -239,25 +239,25 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
       overlay,
       trapFocus,
       trigger,
-      footer
+      footer,
     } = this.props;
     const { open } = this.state;
 
     const cancelElement = Button.create(cancelButton, {
-      overrideProps: this.handleCancelButtonOverrides
+      overrideProps: this.handleCancelButtonOverrides,
     });
     const confirmElement = Button.create(confirmButton, {
       defaultProps: () => ({
-        primary: true
+        primary: true,
       }),
-      overrideProps: this.handleConfirmButtonOverrides
+      overrideProps: this.handleConfirmButtonOverrides,
     });
 
     const dialogActions =
       (cancelElement || confirmElement) &&
       ButtonGroup.create(actions, {
         defaultProps: () => ({
-          styles: styles.actions
+          styles: styles.actions,
         }),
         overrideProps: {
           content: (
@@ -265,8 +265,8 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               {cancelElement}
               {confirmElement}
             </Flex>
-          )
-        }
+          ),
+        },
       });
 
     const dialogContent = (
@@ -282,8 +282,8 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               as: 'h2',
               className: Dialog.slotClassNames.header,
               styles: styles.header,
-              ...accessibility.attributes.header
-            })
+              ...accessibility.attributes.header,
+            }),
           })}
           {Button.create(headerAction, {
             defaultProps: () => ({
@@ -291,24 +291,24 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               styles: styles.headerAction,
               text: true,
               iconOnly: true,
-              ...accessibility.attributes.headerAction
-            })
+              ...accessibility.attributes.headerAction,
+            }),
           })}
 
           {Box.create(content, {
             defaultProps: () => ({
               styles: styles.content,
               className: Dialog.slotClassNames.content,
-              ...accessibility.attributes.content
-            })
+              ...accessibility.attributes.content,
+            }),
           })}
 
           {DialogFooter.create(footer, {
             overrideProps: {
               content: dialogActions,
               className: Dialog.slotClassNames.footer,
-              styles: styles.footer
-            }
+              styles: styles.footer,
+            },
           })}
         </ElementType>
       </Ref>
@@ -316,7 +316,7 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
 
     const triggerAccessibility: TriggerAccessibility = {
       attributes: accessibility.attributes.trigger,
-      keyHandlers: accessibility.keyHandlers.trigger
+      keyHandlers: accessibility.keyHandlers.trigger,
     };
 
     return (
@@ -340,16 +340,21 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
                 {Box.create(overlay, {
                   defaultProps: () => ({
                     className: Dialog.slotClassNames.overlay,
-                    styles: styles.overlay
+                    styles: styles.overlay,
                   }),
-                  overrideProps: { content: dialogContent }
+                  overrideProps: { content: dialogContent },
                 })}
               </Ref>
 
               {closeOnOutsideClick && (
                 <EventListener listener={this.handleOverlayClick} target={this.context.target} type="click" capture />
               )}
-              <EventListener listener={this.handleDocumentKeydown(getRefs)} target={this.context.target} type="keydown" capture />
+              <EventListener
+                listener={this.handleDocumentKeydown(getRefs)}
+                target={this.context.target}
+                type="keydown"
+                capture
+              />
             </>
           )}
         </Unstable_NestingAuto>
@@ -363,7 +368,7 @@ Dialog.slotClassNames = {
   headerAction: `${Dialog.className}__headerAction`,
   content: `${Dialog.className}__content`,
   overlay: `${Dialog.className}__overlay`,
-  footer: `${Dialog.className}__footer`
+  footer: `${Dialog.className}__footer`,
 };
 
 /**

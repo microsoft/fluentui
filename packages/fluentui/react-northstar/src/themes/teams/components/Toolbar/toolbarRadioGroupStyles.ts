@@ -5,8 +5,8 @@ import { ToolbarVariables } from './toolbarVariables';
 const toolbarRadioGroupStyles: ComponentSlotStylesPrepared<ToolbarRadioGroupStylesProps, ToolbarVariables> = {
   root: (): ICSSInJSStyle => ({
     display: 'flex',
-    whiteSpace: 'nowrap'
-  })
+    whiteSpace: 'nowrap',
+  }),
 };
 
 export default toolbarRadioGroupStyles;

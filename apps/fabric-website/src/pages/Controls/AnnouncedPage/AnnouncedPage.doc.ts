@@ -7,6 +7,6 @@ export const AnnouncedPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'Announced',
-    related
-  }
+    related,
+  },
 };

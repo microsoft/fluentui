@@ -2,7 +2,7 @@ import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getContextOrFalse = memoizeFunction(
   (): CanvasRenderingContext2D | false => document.createElement('canvas').getContext('2d') || false,
-  1
+  1,
 );
 
 export function isSingleLineText(lineLength: number, text: string, textStyle: string): boolean {

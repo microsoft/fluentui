@@ -6,11 +6,11 @@ const AlertExampleDismissActionRtl = () => (
     actions={[
       {
         content: 'مرحبا',
-        primary: true
+        primary: true,
       },
       {
-        content: 'عالم'
-      }
+        content: 'عالم',
+      },
     ]}
     icon="exclamation-triangle"
     content="مرحبا العالم"

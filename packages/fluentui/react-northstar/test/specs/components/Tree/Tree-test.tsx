@@ -15,7 +15,7 @@ const items = [
     items: [
       {
         id: '11',
-        title: '11'
+        title: '11',
       },
       {
         id: '12',
@@ -23,11 +23,11 @@ const items = [
         items: [
           {
             id: '121',
-            title: '121'
-          }
-        ]
-      }
-    ]
+            title: '121',
+          },
+        ],
+      },
+    ],
   },
   {
     id: '2',
@@ -39,20 +39,20 @@ const items = [
         items: [
           {
             id: '211',
-            title: '211'
-          }
-        ]
+            title: '211',
+          },
+        ],
       },
       {
         id: '22',
-        title: '22'
-      }
-    ]
+        title: '22',
+      },
+    ],
   },
   {
     id: '3',
-    title: '3'
-  }
+    title: '3',
+  },
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>

@@ -8,7 +8,7 @@ import {
   elementContains,
   warnDeprecations,
   Async,
-  EventGroup
+  EventGroup,
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
@@ -25,7 +25,7 @@ import { initializeComponentRef } from '@uifabric/utilities';
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
 const DefaultLayerProps: ILayerProps = {
-  eventBubblingEnabled: false
+  eventBubblingEnabled: false,
 };
 
 export interface IDialogState {
@@ -51,7 +51,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     isDarkOverlay: true,
     isBlocking: false,
     className: '',
-    containerClassName: ''
+    containerClassName: '',
   };
 
   private _onModalCloseTimer: number;
@@ -72,7 +72,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     initializeComponentRef(this);
 
     warnDeprecations(COMPONENT_NAME, props, {
-      onLayerDidMount: 'layerProps.onLayerDidMount'
+      onLayerDidMount: 'layerProps.onLayerDidMount',
     });
 
     this.state = {
@@ -81,7 +81,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       isVisible: props.isOpen,
       hasBeenOpened: props.isOpen,
       x: 0,
-      y: 0
+      y: 0,
     };
 
     this._lastSetX = 0;
@@ -100,7 +100,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       if (!this.state.isOpen) {
         // First Open
         this.setState({
-          isOpen: true
+          isOpen: true,
         });
         // Add a keyUp handler for all key up events when the dialog is open
         if (newProps.dragOptions) {
@@ -111,7 +111,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         // Reopen during closing
         this.setState({
           hasBeenOpened: true,
-          isVisible: true
+          isVisible: true,
         });
 
         if (newProps.topOffsetFixed) {
@@ -120,7 +120,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
           if (dialogMain.length > 0) {
             modalRectangle = dialogMain[0].getBoundingClientRect();
             this.setState({
-              modalRectangleTop: modalRectangle.top
+              modalRectangleTop: modalRectangle.top,
             });
           }
         }
@@ -131,7 +131,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
     if (!newProps.isOpen && this.state.isOpen) {
       this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, parseFloat(animationDuration) * 1000);
       this.setState({
-        isVisible: false
+        isVisible: false,
       });
     }
   }
@@ -147,7 +147,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
   public componentDidUpdate(prevProps: IModalProps, prevState: IDialogState) {
     if (!prevProps.isOpen && !prevState.isVisible) {
       this.setState({
-        isVisible: true
+        isVisible: true,
       });
     }
   }
@@ -181,7 +181,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       // tslint:disable-next-line:deprecation
       onLayerDidMount,
       isModeless,
-      dragOptions
+      dragOptions,
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -203,7 +203,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       topOffsetFixed,
       isModeless,
       layerClassName,
-      isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector
+      isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector,
     });
 
     const mergedLayerProps = {
@@ -211,7 +211,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       ...this.props.layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
       insertFirst: isModeless,
-      className: classNames.layer
+      className: classNames.layer,
     };
     const modalContent = (
       <FocusTrapZone
@@ -239,7 +239,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
             <dragOptions.menu
               items={[
                 { key: 'move', text: dragOptions.moveMenuItemText, onClick: this._onEnterKeyboardMoveMode },
-                { key: 'close', text: dragOptions.closeMenuItemText, onClick: this._onModalClose }
+                { key: 'close', text: dragOptions.closeMenuItemText, onClick: this._onModalClose },
               ]}
               onDismiss={this._onModalContextMenuClose}
               alignTargetEdge={true}
@@ -331,7 +331,7 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
       isInKeyboardMoveMode: false,
       isOpen: false,
       x: 0,
-      y: 0
+      y: 0,
     });
 
     if (this.props.dragOptions && this._hasRegisteredKeyUp) {
@@ -408,25 +408,25 @@ export class ModalBase extends React.Component<IModalProps, IDialogState> implem
         }
         case KeyCodes.up: {
           this.setState({
-            y: this.state.y - delta
+            y: this.state.y - delta,
           });
           break;
         }
         case KeyCodes.down: {
           this.setState({
-            y: this.state.y + delta
+            y: this.state.y + delta,
           });
           break;
         }
         case KeyCodes.left: {
           this.setState({
-            x: this.state.x - delta
+            x: this.state.x - delta,
           });
           break;
         }
         case KeyCodes.right: {
           this.setState({
-            x: this.state.x + delta
+            x: this.state.x + delta,
           });
           break;
         }

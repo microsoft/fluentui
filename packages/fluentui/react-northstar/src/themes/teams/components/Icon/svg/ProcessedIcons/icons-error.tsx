@@ -12,8 +12,8 @@ export default {
   ),
   styles: {
     redPath: ({ variables: v }) => ({
-      fill: v.redColor
-    })
+      fill: v.redColor,
+    }),
   },
-  exportedAs: 'error'
+  exportedAs: 'error',
 } as TeamsProcessedSvgIconSpec;

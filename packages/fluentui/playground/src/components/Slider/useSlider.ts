@@ -13,21 +13,23 @@ function _getDragValues(
   max: number,
   step: number,
   snapToStep: boolean,
-  vertical: boolean
+  vertical: boolean,
 ) {
   const range = max - min;
   const percentage = Math.min(
     1,
     Math.max(
       0,
-      vertical ? 1 - (ev.clientY - containerRect.top) / containerRect.height : (ev.clientX - containerRect.left) / containerRect.width
-    )
+      vertical
+        ? 1 - (ev.clientY - containerRect.top) / containerRect.height
+        : (ev.clientX - containerRect.left) / containerRect.width,
+    ),
   );
   const value = Math.round(min + (percentage * range) / step) * step;
 
   return {
     percentage: snapToStep ? (100 * value) / (max - min) : 100 * percentage,
-    value
+    value,
   };
 }
 
@@ -60,7 +62,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
     value: controlledValue,
     snapToStep = false,
     onChange,
-    defaultValue
+    defaultValue,
   } = userProps;
   const [focused, setFocused] = React.useState(false);
   const [dragging, setDragging] = React.useState(false);
@@ -68,7 +70,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
   const [dragState, setDragState] = React.useState<{
     rootRect: DOMRect | null;
   }>({
-    rootRect: null
+    rootRect: null,
   });
   const rootRef = React.useRef<HTMLElement>(null);
   const thumbRef = React.useRef<HTMLElement>(null);
@@ -83,7 +85,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
       setValue(val);
       return val;
     },
-    [onChange, setValue]
+    [onChange, setValue],
   );
 
   const onMouseMove = React.useCallback(
@@ -99,7 +101,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
         ev.stopPropagation();
       }
     },
-    [dragState, min, max, step, snapToStep, _updateValue, vertical]
+    [dragState, min, max, step, snapToStep, _updateValue, vertical],
   );
 
   const onMouseDown = React.useCallback(
@@ -114,7 +116,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
 
       _updateValue(ev, drag.value);
     },
-    [_updateValue, max, min, snapToStep, step, setDragging, setDragState, rootRef, vertical]
+    [_updateValue, max, min, snapToStep, step, setDragging, setDragState, rootRef, vertical],
   );
 
   const onMouseUp = React.useCallback(
@@ -124,7 +126,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
       ev.preventDefault();
       ev.stopPropagation();
     },
-    [setDragging]
+    [setDragging],
   );
 
   const onFocus = () => setFocused(true);
@@ -176,7 +178,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
     onFocus,
     onBlur,
     percentage,
-    focused
+    focused,
   };
 };
 
@@ -191,17 +193,17 @@ export const useSlider = (props: ISliderProps) => {
       ref: rootRef,
       onMouseDown,
       onKeyDown,
-      className: cx(focused && rootFocused, disabled && rootDisabled, vertical && rootVertical)
+      className: cx(focused && rootFocused, disabled && rootDisabled, vertical && rootVertical),
     },
     rail: {},
     track: {
       style: vertical
         ? {
-            height: `${percentage}%`
+            height: `${percentage}%`,
           }
         : {
-            width: `${percentage}%`
-          }
+            width: `${percentage}%`,
+          },
     },
     thumb: {
       ref: thumbRef,
@@ -215,16 +217,16 @@ export const useSlider = (props: ISliderProps) => {
       onBlur,
       style: vertical
         ? {
-            bottom: `${percentage}%`
+            bottom: `${percentage}%`,
           }
         : {
-            left: `${percentage}%`
-          }
-    }
+            left: `${percentage}%`,
+          },
+    },
   });
 
   return {
     state,
-    slotProps
+    slotProps,
   };
 };

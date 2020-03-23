@@ -8,5 +8,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'call-end'
+  exportedAs: 'call-end',
 } as TeamsProcessedSvgIconSpec;

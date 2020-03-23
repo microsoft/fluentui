@@ -24,5 +24,5 @@ export default (siteVars: any): DividerVariables => ({
   textFontSize: siteVars.fontSizeSmall,
   textLineHeight: siteVars.lineHeightSmall,
   importantFontWeight: siteVars.fontWeightBold,
-  dividerPadding: pxToRem(4)
+  dividerPadding: pxToRem(4),
 });

@@ -18,7 +18,7 @@ const ChatExampleWithThreadedMessages = () => {
           replies={replies}
         />
       ),
-      key: 'thread-message-id-1'
+      key: 'thread-message-id-1',
     },
     {
       gutter: <Avatar {...janeAvatar} />,
@@ -28,13 +28,13 @@ const ChatExampleWithThreadedMessages = () => {
           author="Jane Doe"
           meeting={{
             header: 'Team Standup',
-            description: 'Occurs every work day (Mon-Fri) @10:30 AM'
+            description: 'Occurs every work day (Mon-Fri) @10:30 AM',
           }}
           timestamp="Yesterday, 15:15 PM"
         />
       ),
-      key: 'thread-message-id-2'
-    }
+      key: 'thread-message-id-2',
+    },
   ];
 
   return (

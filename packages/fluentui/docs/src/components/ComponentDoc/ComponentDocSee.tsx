@@ -19,14 +19,19 @@ const ComponentDocSee: any = ({ displayName }) => {
         <Header color="grey" content={items.length > 0 ? 'See:' : ' '} />
       </List.Item>
       {_.map(items, info => (
-        <List.Item as={Link} content={info.displayName} key={info.docblock.description} to={getComponentPathname(info)} />
+        <List.Item
+          as={Link}
+          content={info.displayName}
+          key={info.docblock.description}
+          to={getComponentPathname(info)}
+        />
       ))}
     </List>
   );
 };
 
 ComponentDocSee.propTypes = {
-  displayName: PropTypes.string.isRequired
+  displayName: PropTypes.string.isRequired,
 };
 
 export default ComponentDocSee;

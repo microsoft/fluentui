@@ -6,12 +6,12 @@ import { mountWithProviderAndGetComponent } from 'test/utils';
 
 describe('Image', () => {
   isConformant(Image, {
-    constructorName: 'Image'
+    constructorName: 'Image',
   });
 
   describe('accessibility', () => {
     handlesAccessibility(Image, {
-      defaultRootRole: undefined
+      defaultRootRole: undefined,
     });
 
     describe('aria-hidden', () => {

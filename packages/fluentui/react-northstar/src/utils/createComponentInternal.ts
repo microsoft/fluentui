@@ -32,11 +32,11 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
   handledProps = [],
   propTypes,
   actionHandlers,
-  render
+  render,
 }: CreateComponentConfig<P>): CreateComponentReturnType<P> => {
   const mergedDefaultProps = {
     as: 'div',
-    ...(defaultProps as any)
+    ...(defaultProps as any),
   };
 
   const FluentComponent: CreateComponentReturnType<P> = (props): React.ReactElement<P> => {
@@ -55,9 +55,9 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
         state: {},
         actionHandlers,
         render: config => render(config, props),
-        saveDebug: fluentUIDebug => (ref.current = { fluentUIDebug })
+        saveDebug: fluentUIDebug => (ref.current = { fluentUIDebug }),
       },
-      context
+      context,
     );
   };
 
@@ -65,7 +65,7 @@ const createComponentInternal = <P extends ObjectOf<any> = any>({
 
   FluentComponent.create = createShorthandFactory({
     Component: mergedDefaultProps.as,
-    mappedProp: shorthandPropName
+    mappedProp: shorthandPropName,
   });
 
   FluentComponent.displayName = displayName;

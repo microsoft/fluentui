@@ -9,7 +9,7 @@ import {
   TextField,
   ISpinButtonProps,
   ISpinButtonStyles,
-  ITextFieldStyles
+  ITextFieldStyles,
 } from 'office-ui-fabric-react';
 import { Position } from 'office-ui-fabric-react/lib/utilities/positioning';
 
@@ -18,11 +18,11 @@ const props: ISpinButtonProps = {
   label: 'Basic SpinButton:',
   min: 0,
   max: 0,
-  step: 1
+  step: 1,
 };
 const styles: Partial<ISpinButtonStyles> = { root: { width: 300 } };
 const textFieldStyles: Partial<ITextFieldStyles> = {
-  root: { width: 250, display: 'inline-block' }
+  root: { width: 250, display: 'inline-block' },
 };
 const iconProps = { iconName: 'IncreaseIndentLegacy' };
 
@@ -63,7 +63,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 // The stories for label placement are separate since they don't need to include hover/click states
@@ -81,7 +81,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Label at end with icon',
@@ -90,7 +90,7 @@ storiesOf('SpinButton', module)
         <SpinButton {...props} styles={styles} labelPosition={Position.end} iconProps={iconProps} />
       </Fabric>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Label on top', () => (
     <Fabric>

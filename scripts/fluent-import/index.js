@@ -53,7 +53,7 @@ function importGithubMD(root) {
     '.github/setup-local-development.md',
     '.github/add-a-feature.md',
     '.github/document-a-feature.md',
-    '.github/test-a-feature.md'
+    '.github/test-a-feature.md',
   ];
   for (let mdFile of mdFiles) {
     if (mdFile.endsWith('.md')) {
@@ -123,7 +123,7 @@ function fixTsConfigs(outputPath) {
     '@fluentui/*': ['packages/fluentui/*/src/index'],
     'docs/*': ['packages/fluentui/docs/*'],
     'src/*': ['packages/fluentui/react-northstar/src/*'],
-    'test/*': ['packages/fluentui/react-northstar/test/*']
+    'test/*': ['packages/fluentui/react-northstar/test/*'],
   };
 
   for (let file of files) {
@@ -204,7 +204,7 @@ function fixEslint(outputPath) {
   let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
   eslintPkgJson.dependencies = {
     '@typescript-eslint/eslint-plugin': '2.8.0',
-    '@typescript-eslint/experimental-utils': '2.8.0'
+    '@typescript-eslint/experimental-utils': '2.8.0',
   };
   fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
@@ -228,7 +228,7 @@ function fixTslint(outputPath) {
   let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
   eslintPkgJson.dependencies = {
     '@typescript-eslint/eslint-plugin': '2.8.0',
-    '@typescript-eslint/experimental-utils': '2.8.0'
+    '@typescript-eslint/experimental-utils': '2.8.0',
   };
   fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
@@ -252,7 +252,7 @@ function fixTypings(outputPath) {
   const files = glob.sync('**/package.json', { cwd: outputPath });
 
   const devDependencies = {
-    '@types/react': '16.8.11'
+    '@types/react': '16.8.11',
   };
 
   for (let file of files) {
@@ -301,7 +301,7 @@ function fixPlayground(outputPath) {
     '@types/jest-environment-puppeteer': '^4.3.1',
     '@types/expect-puppeteer': '^4.4.0',
     enzyme: '~3.10.0',
-    'enzyme-adapter-react-16': '^1.15.0'
+    'enzyme-adapter-react-16': '^1.15.0',
   };
 
   const fullPath = path.join(outputPath, 'playground', 'package.json');
@@ -359,7 +359,7 @@ function fixDeps(outputPath) {
       react: '16.8.6',
       'react-dom': '16.8.6',
       typescript: '3.7.2',
-      webpack: '4.35.0'
+      webpack: '4.35.0',
     };
 
     Object.keys(devDeps).forEach(devDep => {
@@ -402,7 +402,10 @@ function fixDocs(outputPath) {
 
     if (contents.includes('packages/react/package.json')) {
       console.log(`fixing ${fullPath} to fix docs import of @fluentui/react-northstar/package.json`);
-      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react-northstar/package.json'");
+      contents = contents.replace(
+        /'[\.\/]+packages\/react\/package\.json'/,
+        "'@fluentui/react-northstar/package.json'",
+      );
     }
 
     fs.writeFileSync(fullPath, contents);
@@ -412,7 +415,7 @@ function fixDocs(outputPath) {
   const docsPackageJson = fs.readJsonSync(docsPackageJsonFile);
   docsPackageJson.scripts = {
     build: 'gulp build:docs',
-    start: 'gulp docs'
+    start: 'gulp docs',
   };
   fs.writeJsonSync(docsPackageJsonFile, docsPackageJson, { spaces: 2 });
 }
@@ -461,7 +464,7 @@ function runPrettierOnImportedFiles(outputPath, root) {
     '--config',
     path.join(root, 'prettier.config.js'),
     '--write',
-    'packages/fluentui/e2e/global.d.ts'
+    'packages/fluentui/e2e/global.d.ts',
   ]);
   spawnSync(
     'node',
@@ -471,16 +474,16 @@ function runPrettierOnImportedFiles(outputPath, root) {
       path.join(root, 'prettier.config.js'),
       '--write',
       'packages/fluentui/e2e/global.d.ts',
-      '--ignore-path'
+      '--ignore-path',
     ],
-    { stdio: 'inherit' }
+    { stdio: 'inherit' },
   );
 }
 
 function importFluent() {
   // TODO: remove this script at some point after convergence settles.
   console.error(
-    'With the archival of fluentui repo, this script is now obsolete and should not be executed. It will overwrite all files in packages/fluentui!'
+    'With the archival of fluentui repo, this script is now obsolete and should not be executed. It will overwrite all files in packages/fluentui!',
   );
   return;
 

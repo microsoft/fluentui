@@ -106,7 +106,7 @@ export const htmlInputAttrs: HtmlInputAttrs[] = [
   'required',
   'step',
   'type',
-  'value'
+  'value',
 ];
 
 export type HtmlInputProps = HtmlInputAttrs | HtmlInputEvents;
@@ -152,7 +152,7 @@ export const htmlInputEvents: HtmlInputEvents[] = [
   'onTouchCancel',
   'onTouchEnd',
   'onTouchMove',
-  'onTouchStart'
+  'onTouchStart',
 ];
 
 export const htmlInputProps: HtmlInputProps[] = [...htmlInputAttrs, ...htmlInputEvents];
@@ -172,7 +172,7 @@ export interface PartitionHTMLPropsOptions {
  */
 export const partitionHTMLProps = (
   props: { [key: string]: any },
-  options: PartitionHTMLPropsOptions = {}
+  options: PartitionHTMLPropsOptions = {},
 ): [{ [key: string]: any }, { [key: string]: any }] => {
   const { htmlProps = htmlInputProps, includeAria = true } = options;
   const inputProps = {};

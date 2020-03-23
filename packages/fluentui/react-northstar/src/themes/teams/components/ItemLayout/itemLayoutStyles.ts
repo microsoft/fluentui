@@ -8,9 +8,9 @@ const itemLayoutStyles = {
       ...(debugLayout && debugRoot()),
       gridTemplateRows: `minmax(${variables.height}, max-content)`,
       paddingLeft: variables.paddingLeft,
-      paddingRight: variables.paddingRight
+      paddingRight: variables.paddingRight,
     };
-  }
+  },
 };
 
 export default itemLayoutStyles;

@@ -11,12 +11,16 @@ import {
   commonPropTypes,
   ColorComponentProps,
   rtlTextContainer,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 
 import { WithAsProp, withSafeTypeForAs } from '../../types';
 
-export interface HeaderDescriptionProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps, ColorComponentProps {
+export interface HeaderDescriptionProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps,
+    ColorComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -31,11 +35,11 @@ class HeaderDescription extends UIComponent<WithAsProp<HeaderDescriptionProps>, 
   static displayName = 'HeaderDescription';
 
   static propTypes = {
-    ...commonPropTypes.createCommon({ color: true })
+    ...commonPropTypes.createCommon({ color: true }),
   };
 
   static defaultProps = {
-    as: 'p'
+    as: 'p',
   };
 
   renderComponent({ accessibility, ElementType, classes, unhandledProps }) {
@@ -55,7 +59,7 @@ class HeaderDescription extends UIComponent<WithAsProp<HeaderDescriptionProps>, 
 
 HeaderDescription.create = createShorthandFactory({
   Component: HeaderDescription,
-  mappedProp: 'content'
+  mappedProp: 'content',
 });
 
 /**

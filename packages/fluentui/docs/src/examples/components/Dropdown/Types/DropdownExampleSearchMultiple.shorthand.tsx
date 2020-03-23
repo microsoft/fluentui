@@ -10,7 +10,7 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle'
+  'Selina Kyle',
 ];
 
 const DropdownExampleSearchMultiple = () => (
@@ -26,7 +26,7 @@ const DropdownExampleSearchMultiple = () => (
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item} has been selected.`,
-  onRemove: item => `${item} has been removed.`
+  onRemove: item => `${item} has been removed.`,
 };
 
 export default DropdownExampleSearchMultiple;

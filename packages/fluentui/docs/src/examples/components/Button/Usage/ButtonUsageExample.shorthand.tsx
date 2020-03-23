@@ -17,9 +17,9 @@ const ButtonUsageExampleShorthand = () => (
             backgroundColorFocus: siteVars.colorScheme.default.background,
             backgroundColorDisabled: siteVars.colorScheme.brand.backgroundDisabled,
             borderColor: siteVars.colorScheme.brandBorder2,
-            borderColorHover: siteVars.colorScheme.brandBorderHover
-          })
-        }
+            borderColorHover: siteVars.colorScheme.brandBorderHover,
+          }),
+        },
       }}
     >
       <Flex gap="gap.smaller">

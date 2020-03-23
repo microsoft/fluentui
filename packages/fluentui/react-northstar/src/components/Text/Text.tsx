@@ -12,16 +12,20 @@ import {
   ColorComponentProps,
   rtlTextContainer,
   SizeValue,
-  AlignValue
+  AlignValue,
 } from '../../utils';
 import { Accessibility } from '@fluentui/accessibility';
 
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-export interface TextProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps, ColorComponentProps {
+export interface TextProps
+  extends UIComponentProps,
+    ContentComponentProps,
+    ChildrenComponentProps,
+    ColorComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -101,12 +105,12 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
     truncated,
     temporary,
     variables,
-    weight
+    weight,
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: Text.displayName,
-    rtl: context.rtl
+    rtl: context.rtl,
   });
   const { classes } = useStyles<TextStylesProps>(Text.displayName, {
     className: Text.className,
@@ -122,18 +126,18 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
       temporary,
       align,
       weight,
-      size
+      size,
     }),
     mapPropsToInlineStyles: () => ({
       className,
       design,
       styles,
-      variables
+      variables,
     }),
-    rtl: context.rtl
+    rtl: context.rtl,
   });
 
-  const unhandledProps = getUnhandledProps(Text.handledProps, props);
+  const unhandledProps = useUnhandledProps(Text.handledProps, props);
   const ElementType = getElementType(props);
 
   const element = (
@@ -141,7 +145,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        ...unhandledProps
+        ...unhandledProps,
       })}
     >
       {childrenExist(children) ? children : content}
@@ -157,7 +161,7 @@ Text.className = 'ui-text';
 Text.displayName = 'Text';
 
 Text.defaultProps = {
-  as: 'span'
+  as: 'span',
 };
 Text.propTypes = {
   ...commonPropTypes.createCommon({ color: true }),
@@ -171,7 +175,7 @@ Text.propTypes = {
   temporary: PropTypes.bool,
   align: customPropTypes.align,
   timestamp: PropTypes.bool,
-  truncated: PropTypes.bool
+  truncated: PropTypes.bool,
 };
 Text.handledProps = Object.keys(Text.propTypes) as any;
 

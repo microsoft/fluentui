@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'redbang'
+  exportedAs: 'redbang',
 } as TeamsProcessedSvgIconSpec;

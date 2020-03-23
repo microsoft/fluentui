@@ -8,23 +8,23 @@ const fields = [
     id: 'email-inline-shorthand',
     key: 'email',
     required: true,
-    inline: true
+    inline: true,
   },
   {
     control: {
       as: Checkbox,
-      label: 'Subscribe to newsletter'
+      label: 'Subscribe to newsletter',
     },
     key: 'newsletter',
-    id: 'newsletter-inline-shorthand'
+    id: 'newsletter-inline-shorthand',
   },
   {
     control: {
       as: Button,
-      content: 'Submit'
+      content: 'Submit',
     },
-    key: 'submit'
-  }
+    key: 'submit',
+  },
 ];
 
 const FormExampleCheckbox = () => (

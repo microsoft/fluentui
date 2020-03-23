@@ -10,7 +10,7 @@ const EmojiPicker = () => (
     trigger={<Button icon="smile" aria-label="Choose an emoji." />}
     content={{
       content: <GridImagePicker items={getItemsData(imageNames, 'emoji of')} />,
-      'aria-label': 'Choose an emoji. Press Enter key to insert emoji.'
+      'aria-label': 'Choose an emoji. Press Enter key to insert emoji.',
     }}
   />
 );

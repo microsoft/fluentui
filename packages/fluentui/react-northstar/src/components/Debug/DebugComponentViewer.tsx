@@ -17,7 +17,7 @@ const style: React.CSSProperties = {
   overflowY: 'auto',
   color: '#CCC',
   fontFamily: 'monospace',
-  fontWeight: 'bold'
+  fontWeight: 'bold',
 };
 
 const DebugComponentViewer: React.FC<DebugComponentViewerProps> = props => {
@@ -49,7 +49,7 @@ const DebugComponentViewer: React.FC<DebugComponentViewerProps> = props => {
             onFiberChanged(ownerNav);
           },
           onMouseEnter: e => onFiberSelected(ownerNav),
-          onMouseLeave: e => onFiberSelected(null)
+          onMouseLeave: e => onFiberSelected(null),
         })}
       >
         {ownerNav.jsxString}

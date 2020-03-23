@@ -14,7 +14,7 @@ import {
   ColorComponentProps,
   rtlTextContainer,
   AlignValue,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import HeaderDescription, { HeaderDescriptionProps } from './HeaderDescription';
 
@@ -24,7 +24,11 @@ export interface HeaderSlotClassNames {
   description: string;
 }
 
-export interface HeaderProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps, ColorComponentProps {
+export interface HeaderProps
+  extends UIComponentProps,
+    ChildrenComponentProps,
+    ContentComponentProps,
+    ColorComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -43,7 +47,7 @@ class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
   static className = 'ui-header';
 
   static slotClassNames: HeaderSlotClassNames = {
-    description: `${Header.className}__description`
+    description: `${Header.className}__description`,
   };
 
   static create: ShorthandFactory<HeaderProps>;
@@ -52,11 +56,11 @@ class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
     ...commonPropTypes.createCommon({ color: true }),
     description: customPropTypes.itemShorthand,
     align: customPropTypes.align,
-    rtlAttributes: PropTypes.func
+    rtlAttributes: PropTypes.func,
   };
 
   static defaultProps = {
-    as: 'h1'
+    as: 'h1',
   };
 
   static Description = HeaderDescription;
@@ -71,7 +75,7 @@ class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
       <ElementType
         {...rtlTextContainer.getAttributes({
           forElements: [children, content],
-          condition: !description
+          condition: !description,
         })}
         {...accessibility.attributes.root}
         {...unhandledProps}
@@ -83,9 +87,9 @@ class Header extends UIComponent<WithAsProp<HeaderProps>, any> {
             defaultProps: () => ({
               className: Header.slotClassNames.description,
               variables: {
-                ...(v.descriptionColor && { color: v.descriptionColor })
-              }
-            })
+                ...(v.descriptionColor && { color: v.descriptionColor }),
+              },
+            }),
           })}
       </ElementType>
     );

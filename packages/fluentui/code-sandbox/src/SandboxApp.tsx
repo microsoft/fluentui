@@ -11,18 +11,18 @@ const items = [
   {
     key: 'light',
     label: 'Teams Light',
-    value: 'teams'
+    value: 'teams',
   },
   {
     key: 'dark',
     label: 'Teams Dark',
-    value: 'teamsDark'
+    value: 'teamsDark',
   },
   {
     key: 'hc',
     label: 'Teams High Contrast',
-    value: 'teamsHighContrast'
-  }
+    value: 'teamsHighContrast',
+  },
 ];
 
 const SandboxApp: React.FunctionComponent = props => {
@@ -43,7 +43,7 @@ const SandboxApp: React.FunctionComponent = props => {
               our docs
             </Text>{' '}
             and{' '}
-            <Text as="a" href="https://github.com/OfficeDev/office-ui-fabric-react">
+            <Text as="a" href="https://github.com/microsoft/fluentui">
               GitHub
             </Text>
             .
@@ -51,7 +51,11 @@ const SandboxApp: React.FunctionComponent = props => {
 
           <Flex>
             Select theme:
-            <RadioGroup onCheckedValueChange={(e, data) => setTheme(data.value as string)} checkedValue={theme} items={items} />
+            <RadioGroup
+              onCheckedValueChange={(e, data) => setTheme(data.value as string)}
+              checkedValue={theme}
+              items={items}
+            />
           </Flex>
           <Divider />
           <KnobInspector>

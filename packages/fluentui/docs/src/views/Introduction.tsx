@@ -16,14 +16,14 @@ const Introduction = () => (
           marginTop: '24px',
           marginBottom: '0px',
           fontSize: '2rem',
-          textAlign: 'center'
+          textAlign: 'center',
         }}
       >
         {_.capitalize(pkg.name)}
         <Header.Description
           styles={{
             margin: 0,
-            fontSize: '1.14285714rem'
+            fontSize: '1.14285714rem',
           }}
         >
           {pkg.description}
@@ -31,10 +31,13 @@ const Introduction = () => (
       </Header>
     </Flex>
     <p>
-      Fluent UI provides extensible vanilla JavaScript solutions to component state, styling, and accessibility. These powerful features are
-      exposed behind simple APIs based on natural language.
+      Fluent UI provides extensible vanilla JavaScript solutions to component state, styling, and accessibility. These
+      powerful features are exposed behind simple APIs based on natural language.
     </p>
-    <p>Fluent UI React is being built as an exemplar of the Fluent UI design language, component specifications, and utilities.</p>
+    <p>
+      Fluent UI React is being built as an exemplar of the Fluent UI design language, component specifications, and
+      utilities.
+    </p>
 
     <h3>Learn</h3>
     <p>

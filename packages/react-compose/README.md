@@ -21,7 +21,7 @@ const PrimaryButton = compose(Button, {
   mapPropsToStylesProps: props => ({ compact: props.compact }),
 
   handledProps: ['compact'],
-  overrideStyles: true
+  overrideStyles: true,
 });
 ```
 

@@ -19,7 +19,7 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables>
       ...(p.color && { borderColor: colors.foreground }),
       ...(p.inverted && {
         color: v.backgroundColor,
-        backgroundColor: p.color ? colors.foreground : v.color
+        backgroundColor: p.color ? colors.foreground : v.color,
       }),
       ...(p.disabled && {
         boxShadow: 'none',
@@ -28,11 +28,11 @@ const segmentStyles: ComponentSlotStylesPrepared<SegmentProps, SegmentVariables>
         backgroundColor: v.disabledBackgroundColor,
         ...(p.inverted && {
           color: v.disabledBackgroundColor,
-          backgroundColor: v.disabledColor
-        })
-      })
+          backgroundColor: v.disabledColor,
+        }),
+      }),
     };
-  }
+  },
 };
 
 export default segmentStyles;

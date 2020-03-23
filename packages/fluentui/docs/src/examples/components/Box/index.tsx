@@ -20,12 +20,13 @@ const BoxExamples = () => (
         </li>
         <li>In other cases consider to style existing components via theming features.</li>
         <li>
-          You also can <Link to="/integrate-custom-components">create your own custom component</Link> for custom behaviors.
+          You also can <Link to="/integrate-custom-components">create your own custom component</Link> for custom
+          behaviors.
         </li>
       </ul>
       <p>
-        Remember that <code>styles</code> prop applied directly to an element most probably will break theme switching scenarios - thus,
-        prefer to use <code>variables</code> instead of <code>styles</code> for overrides.
+        Remember that <code>styles</code> prop applied directly to an element most probably will break theme switching
+        scenarios - thus, prefer to use <code>variables</code> instead of <code>styles</code> for overrides.
       </p>
     </Alert>
 

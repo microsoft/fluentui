@@ -29,7 +29,7 @@ const LinkTokens = {
 
   // Disabled Link tokens
   // root
-  colorDisabled: '#a19f9d'
+  colorDisabled: '#a19f9d',
 };
 
 export default LinkTokens;

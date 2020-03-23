@@ -19,5 +19,5 @@ export default {
     </svg>
   ),
   styles: {},
-  exportedAs: 'read-aloud'
+  exportedAs: 'read-aloud',
 } as TeamsProcessedSvgIconSpec;

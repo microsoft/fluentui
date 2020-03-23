@@ -20,9 +20,9 @@ const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesProps, Too
       borderWidth: v.menuBorderWidth,
       borderRadius: v.menuBorderRadius,
       width: v.menuWidth,
-      zIndex: v.overlayZIndex
+      zIndex: v.overlayZIndex,
     };
-  }
+  },
 };
 
 export default toolbarMenuStyles;

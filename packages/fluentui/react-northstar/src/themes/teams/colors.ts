@@ -5,7 +5,7 @@ import {
   ComponentAreaName,
   ColorScheme,
   StrictColorSchemeMapping,
-  StrictColorScheme
+  StrictColorScheme,
 } from '../types';
 import { TeamsColorNames, TeamsContextualColors, TeamsNaturalColors, TeamsTransparentColors } from './types';
 
@@ -22,8 +22,8 @@ export const contextualColors: TeamsContextualColors = {
     700: '#585A96', // light05
     800: '#464775', // light04, dark14
     900: '#33344A', // siteVariables.brand02, dark theme brand16, same as 900 prev
-    1000: '#373644'
-  }
+    1000: '#373644',
+  },
 };
 
 export const naturalColors: TeamsNaturalColors = {
@@ -48,7 +48,7 @@ export const naturalColors: TeamsNaturalColors = {
     800: '#201F1F', // app black darktheme, in call title bar, in call audio only pip
     850: '#1B1A1A', // in call background behind presented doc, old $app-density-message-border-darktheme
     900: '#11100F', // dark theme borders
-    1000: '#000000' // black
+    1000: '#000000', // black
   },
   orange: {
     50: '#F9ECEA', // darkOrange[50]
@@ -60,7 +60,7 @@ export const naturalColors: TeamsNaturalColors = {
     600: '#A33D2A', // app orange02
     700: '#833122', // app orange01 darkOrange[900]
     800: '#664134', // app orange14 dark
-    900: '#51332C' // app orange16 dark
+    900: '#51332C', // app orange16 dark
   },
   pink: {
     50: '#FCF2FA', // app orchid opacity, oof message, oof banner bg
@@ -72,7 +72,7 @@ export const naturalColors: TeamsNaturalColors = {
     600: '#943670', // old $app-orchid, use for oof banner text
     700: undefined, //
     800: '#3E2D3B', // old @app orchid opacity, oof message bg, oof banner bg
-    900: '#1F191D' // new oof banner border dark theme
+    900: '#1F191D', // new oof banner border dark theme
   },
   red: {
     50: '#FCF4F6', // app red 10
@@ -84,7 +84,7 @@ export const naturalColors: TeamsNaturalColors = {
     600: '#8E192E', // app red 02
     700: '#4F222B', // old app red 10 dark
     800: '#3E1F25', // new error banner bg
-    900: '#1E040A' // app red08 dark
+    900: '#1E040A', // app red08 dark
   },
   green: {
     50: undefined,
@@ -96,7 +96,7 @@ export const naturalColors: TeamsNaturalColors = {
     600: '#237B4B', // old $app-green-04, siteVariables.green04, green[900]
     700: undefined,
     800: undefined,
-    900: undefined
+    900: undefined,
   },
   yellow: {
     50: undefined,
@@ -108,18 +108,18 @@ export const naturalColors: TeamsNaturalColors = {
     600: '#FFAA44', // new away presence
     700: undefined,
     800: undefined,
-    900: undefined
-  }
+    900: undefined,
+  },
 };
 
 const contextualAndNaturalColors: TeamsContextualColors & TeamsNaturalColors = {
   ...contextualColors,
-  ...naturalColors
+  ...naturalColors,
 };
 
 export const primitiveColors: PrimitiveColors = {
   black: '#000',
-  white: '#fff'
+  white: '#fff',
 };
 
 export const transparentColors: TeamsTransparentColors = {
@@ -132,7 +132,7 @@ export const transparentColors: TeamsTransparentColors = {
     600: 'rgba(255,255,255,0.3)',
     700: 'rgba(255,255,255,0.2)',
     800: 'rgba(255,255,255,0.1)',
-    900: 'rgba(255,255,255,0.05)'
+    900: 'rgba(255,255,255,0.05)',
   },
   ruby: {
     100: undefined,
@@ -143,7 +143,7 @@ export const transparentColors: TeamsTransparentColors = {
     600: 'rgba(167,32,55,0.9)',
     700: 'rgba(142,25,46,0.9)',
     800: undefined,
-    900: undefined
+    900: undefined,
   },
   onyx: {
     100: 'rgba(59,58,57,0.9)',
@@ -154,7 +154,7 @@ export const transparentColors: TeamsTransparentColors = {
     600: undefined,
     700: 'rgba(0,0,0,0.5)',
     800: 'rgba(27,26,26,0.9)',
-    900: 'rgba(0,0,0,0.8)'
+    900: 'rgba(0,0,0,0.8)',
   },
   amethyst: {
     100: undefined,
@@ -165,14 +165,14 @@ export const transparentColors: TeamsTransparentColors = {
     600: 'rgba(70,71,117,0.4)',
     700: 'rgba(98,100,167,0.15)',
     800: undefined,
-    900: undefined
-  }
+    900: undefined,
+  },
 };
 
 export const colors: ColorPalette<TeamsTransparentColors> = {
   ...contextualAndNaturalColors,
   ...primitiveColors,
-  ...transparentColors
+  ...transparentColors,
 };
 
 export const createColorScheme = (customValues = {}) => {
@@ -206,7 +206,7 @@ export const createColorScheme = (customValues = {}) => {
     backgroundDisabled: undefined,
     borderDisabled: undefined,
     shadowDisabled: undefined,
-    ...customValues
+    ...customValues,
   };
 };
 
@@ -277,7 +277,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundDisabled1: colors.grey[150],
     backgroundDisabled: colors.grey[150],
 
-    borderDisabled: colors.grey[150]
+    borderDisabled: colors.grey[150],
   }),
   brand: createColorScheme({
     foreground: colors.brand[600],
@@ -345,7 +345,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundDisabled: colors.grey[150],
     backgroundDisabled1: colors.grey[150],
 
-    borderDisabled: colors.grey[150]
+    borderDisabled: colors.grey[150],
   }),
   black: {
     foreground: colors.black,
@@ -376,7 +376,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foregroundDisabled: colors.white,
     backgroundDisabled: colors.black,
     borderDisabled: colors.black,
-    shadowDisabled: colors.black
+    shadowDisabled: colors.black,
   },
   white: {
     foreground: colors.white,
@@ -407,25 +407,25 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foregroundDisabled: colors.black,
     backgroundDisabled: colors.white,
     borderDisabled: colors.white,
-    shadowDisabled: colors.white
+    shadowDisabled: colors.white,
   },
   green: createColorScheme({
     foreground: colors.green[600],
     foreground1: colors.white,
     foreground2: colors.green[400],
-    background: colors.green[300]
+    background: colors.green[300],
   }),
   orange: createColorScheme({
     foreground: colors.orange[400],
     foreground1: colors.orange[300],
     background: colors.orange[400],
-    border: colors.orange[200]
+    border: colors.orange[200],
   }),
   pink: createColorScheme({
     foreground: colors.pink[600],
     foreground1: colors.pink[500],
     background: colors.pink[50],
-    border: colors.pink[100]
+    border: colors.pink[100],
   }),
   red: createColorScheme({
     foreground: colors.red[400],
@@ -442,7 +442,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundHover1: colors.red[400],
 
     foregroundPressed: colors.white,
-    backgroundPressed: colors.ruby[700]
+    backgroundPressed: colors.ruby[700],
   }),
   yellow: createColorScheme({
     foreground: colors.yellow[300],
@@ -450,7 +450,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     foreground2: colors.white,
     background: colors.yellow[600],
     background1: colors.yellow[100],
-    background2: colors.yellow[500]
+    background2: colors.yellow[500],
   }),
   silver: createColorScheme({
     foreground: colors.white,
@@ -464,7 +464,7 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     backgroundPressed: colors.silver[700],
     borderPressed: colors.silver[600],
     foregroundDisabled: colors.silver[600],
-    backgroundDisabled: colors.silver[900]
+    backgroundDisabled: colors.silver[900],
   }),
   onyx: createColorScheme({
     background: colors.onyx[500],
@@ -472,19 +472,30 @@ export const colorScheme: ColorSchemeMapping<ColorScheme, TeamsColorNames> = {
     background2: colors.onyx[500],
     border: colors.onyx[800],
     border1: 'transparent',
-    border2: colors.onyx[300]
+    border2: colors.onyx[300],
   }),
   amethyst: createColorScheme({
     background: colors.amethyst[600],
     backgroundHover: colors.amethyst[700],
     backgroundHover1: colors.amethyst[500],
-    backgroundActive: colors.amethyst[700]
-  })
+    backgroundActive: colors.amethyst[700],
+  }),
 };
 
 colorScheme.grey = colorScheme.default;
 
-export const availableColors = ['default', 'black', 'white', 'brand', 'grey', 'red', 'yellow', 'green', 'pink', 'orange'];
+export const availableColors = [
+  'default',
+  'black',
+  'white',
+  'brand',
+  'grey',
+  'red',
+  'yellow',
+  'green',
+  'pink',
+  'orange',
+];
 
 export const isValidColor = (color: string): boolean => {
   return color && availableColors.indexOf(color) >= 0;
@@ -497,7 +508,7 @@ export const getColorSchemeKey = (color: string, primary?: boolean): string => {
 export const getColorScheme = <T extends ComponentAreaName | string>(
   colorScheme: StrictColorSchemeMapping<StrictColorScheme<T>, TeamsColorNames>,
   color?: string,
-  primary?: boolean
+  primary?: boolean,
 ): StrictColorScheme<T> => {
   return colorScheme[getColorSchemeKey(color, primary)];
 };

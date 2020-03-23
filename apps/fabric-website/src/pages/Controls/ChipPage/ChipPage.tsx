@@ -4,11 +4,17 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ChipPageProps } from './ChipPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ChipPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ChipPage/';
 
 export const ChipPage: React.FunctionComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return <ControlsAreaPage {...props} {...ChipPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
+  return (
+    <ControlsAreaPage
+      {...props}
+      {...ChipPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
@@ -20,10 +26,12 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           editUrl: baseUrl + 'docs/ios/ChipImplementation.md',
           content: (
             <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string}
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/ios/ChipImplementation.md') as string
+              }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
 
     case 'android':
@@ -33,10 +41,12 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           editUrl: baseUrl + 'docs/android/ChipImplementation.md',
           content: (
             <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string}
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ChipPage/docs/android/ChipImplementation.md') as string
+              }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

@@ -21,7 +21,7 @@ export const ScrollToMode = {
   /**
    * Attempts to scroll the list so the desired item is in the exact center of the viewport.
    */
-  center: 3 as 3
+  center: 3 as 3,
 };
 
 /**
@@ -83,7 +83,8 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * Method to call when trying to render an item.
    * @param item - The data associated with the cell that is being rendered.
    * @param index - The index of the cell being rendered.
-   * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
+   * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells
+   * are complex.
    */
   onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
 
@@ -163,7 +164,8 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
-   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
+   * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for
+   * smaller lists.
    * The default implementation will virtualize when this callback is not provided.
    */
   onShouldVirtualize?: (props: IListProps<T>) => boolean;
@@ -186,7 +188,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
   version?: {};
 
   /**
-   * Boolean value to disable scroll state updates. This will cause the isScrolling argument in onRenderCell to always be undefined.
+   * Whether to disable scroll state updates. This causes the isScrolling arg in onRenderCell to always be undefined.
    * This is a performance optimization to let List skip a render cycle by not updating its scrolling state.
    */
   ignoreScrollingState?: boolean;
@@ -211,7 +213,9 @@ export interface IPage<T = any> {
 /**
  * {@docCategory List}
  */
-export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
+export interface IPageProps<T = any>
+  extends React.HTMLAttributes<HTMLDivElement>,
+    React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */

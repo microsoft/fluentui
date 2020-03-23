@@ -4,7 +4,7 @@ const props = {
   autoFocus: false,
   className: 'foo',
   placeholder: 'baz',
-  required: true
+  required: true,
 };
 
 describe('partitionHTMLProps', () => {
@@ -18,14 +18,14 @@ describe('partitionHTMLProps', () => {
     expect(htmlProps).toEqual({
       autoFocus: false,
       placeholder: 'baz',
-      required: true
+      required: true,
     });
     expect(restProps).toEqual({ className: 'foo' });
   });
 
   test('should split props by own definition', () => {
     const [htmlProps, restProps] = partitionHTMLProps(props, {
-      htmlProps: ['placeholder', 'required']
+      htmlProps: ['placeholder', 'required'],
     });
 
     expect(htmlProps).toEqual({ placeholder: 'baz', required: true });
@@ -38,13 +38,13 @@ describe('partitionHTMLProps', () => {
         'aria-atomic': false,
         'aria-busy': true,
         className: 'foo',
-        role: 'bar'
+        role: 'bar',
       });
 
       expect(htmlProps).toEqual({
         'aria-atomic': false,
         'aria-busy': true,
-        role: 'bar'
+        role: 'bar',
       });
       expect(restProps).toEqual({ className: 'foo' });
     });
@@ -55,9 +55,9 @@ describe('partitionHTMLProps', () => {
           'aria-atomic': false,
           'aria-busy': true,
           className: 'foo',
-          role: 'bar'
+          role: 'bar',
         },
-        { includeAria: false }
+        { includeAria: false },
       );
 
       expect(htmlProps).toEqual({});
@@ -65,7 +65,7 @@ describe('partitionHTMLProps', () => {
         'aria-atomic': false,
         'aria-busy': true,
         className: 'foo',
-        role: 'bar'
+        role: 'bar',
       });
     });
   });

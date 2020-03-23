@@ -26,13 +26,13 @@ export default {
         backgroundColor: v.verticalBackgroundColor,
         padding: `${pxToRem(8)} 0`,
         ...(submenu && {
-          boxShadow: v.verticalBoxShadow
+          boxShadow: v.verticalBoxShadow,
         }),
         ...(!fluid && !submenu && { width: 'fit-content' }),
         ...(iconOnly && {
           display: 'inline-block',
-          width: 'auto'
-        })
+          width: 'auto',
+        }),
       }),
       ...(!pills &&
         !iconOnly &&
@@ -40,20 +40,22 @@ export default {
         !underlined && {
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
-          borderRadius: pxToRem(4)
+          borderRadius: pxToRem(4),
         }),
       ...(underlined && {
-        borderBottom: `${v.underlinedBottomBorderWidth} solid ${v.underlinedBorderColor}`
-      })
+        borderBottom: `${v.underlinedBottomBorderWidth} solid ${v.underlinedBorderColor}`,
+      }),
     };
   },
   divider: ({ props: { pointing, vertical, pills } }) => ({
     ...(pointing &&
       vertical && {
-        marginBottom: verticalPointingBottomMargin
+        marginBottom: verticalPointingBottomMargin,
       }),
     ...(pills && {
-      ...(vertical ? { margin: `0 0 ${verticalPillsBottomMargin} 0` } : { margin: `0 ${horizontalPillsRightMargin} 0 0` })
-    })
-  })
+      ...(vertical
+        ? { margin: `0 0 ${verticalPillsBottomMargin} 0` }
+        : { margin: `0 ${horizontalPillsRightMargin} 0 0` }),
+    }),
+  }),
 } as ComponentSlotStylesPrepared<MenuPropsAndState, MenuVariables>;

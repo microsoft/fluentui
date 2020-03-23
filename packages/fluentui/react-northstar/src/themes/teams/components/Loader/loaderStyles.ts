@@ -9,7 +9,7 @@ const rootFlexDirections: ObjectOf<FlexDirectionProperty> = {
   above: 'column-reverse',
   below: 'column',
   start: 'row-reverse',
-  end: 'row'
+  end: 'row',
 };
 
 const loaderStyles: ComponentSlotStylesPrepared<LoaderProps, LoaderVariables> = {
@@ -17,19 +17,22 @@ const loaderStyles: ComponentSlotStylesPrepared<LoaderProps, LoaderVariables> = 
     alignItems: 'center',
     display: p.inline ? 'inline-flex' : 'flex',
     justifyContent: 'center',
-    flexDirection: rootFlexDirections[p.labelPosition]
+    flexDirection: rootFlexDirections[p.labelPosition],
   }),
-  indicator: ({ props: p, variables: v }: ComponentStyleFunctionParam<LoaderProps, LoaderVariables>): ICSSInJSStyle => ({
+  indicator: ({
+    props: p,
+    variables: v,
+  }: ComponentStyleFunctionParam<LoaderProps, LoaderVariables>): ICSSInJSStyle => ({
     height: v.containerHeights[p.size],
     width: v.containerWidths[p.size],
-    overflow: 'hidden'
+    overflow: 'hidden',
   }),
   svg: ({ props: p, theme: t, variables: v }: ComponentStyleFunctionParam<LoaderProps, LoaderVariables>) => {
     const outerAnimation: ICSSInJSStyle = {
       animationName: {
         to: {
-          opacity: 1
-        }
+          opacity: 1,
+        },
       },
       animationDelay: '1.5s',
       animationDirection: 'normal',
@@ -40,13 +43,13 @@ const loaderStyles: ComponentSlotStylesPrepared<LoaderProps, LoaderVariables> = 
       animationTimingFunction: 'ease-out',
       display: 'block',
       overflow: 'hidden',
-      position: 'relative'
+      position: 'relative',
     };
     const svgAnimation: ICSSInJSStyle = {
       animationName: {
         to: {
-          transform: `translate3d(0, ${v.svgTranslatePosition[p.size]}, 0)`
-        }
+          transform: `translate3d(0, ${v.svgTranslatePosition[p.size]}, 0)`,
+        },
       },
       animationDelay: '0s',
       animationDirection: 'normal',
@@ -54,7 +57,7 @@ const loaderStyles: ComponentSlotStylesPrepared<LoaderProps, LoaderVariables> = 
       animationFillMode: 'both',
       animationPlayState: 'running',
       animationTimingFunction: 'steps(60, end)',
-      animationIterationCount: 'infinite'
+      animationIterationCount: 'infinite',
     };
 
     return {
@@ -69,13 +72,13 @@ const loaderStyles: ComponentSlotStylesPrepared<LoaderProps, LoaderVariables> = 
         overflow: 'hidden',
 
         height: v.svgHeights[p.size],
-        width: v.svgWidths[p.size]
-      }
+        width: v.svgWidths[p.size],
+      },
     };
   },
   label: () => ({
-    margin: pxToRem(10)
-  })
+    margin: pxToRem(10),
+  }),
 };
 
 export default loaderStyles;

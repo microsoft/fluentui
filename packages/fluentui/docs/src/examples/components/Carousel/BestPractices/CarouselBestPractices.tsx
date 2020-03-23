@@ -17,7 +17,7 @@ const doList = [
       <li> provide label to `navigation` slot and to navigation item using `aria-label` attribute</li>
       <li> add `aria-controls` attribute to navigation item referencing to `carouselItem` id </li>
     </ul>
-  </Box>
+  </Box>,
 ];
 
 const CarouselBestPractices: React.FunctionComponent<{}> = () => {

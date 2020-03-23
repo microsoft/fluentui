@@ -5,9 +5,21 @@ import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
 
 import keyboardKey from 'keyboard-key';
-import { ComponentEventHandler, ShorthandValue, WithAsProp, ComponentKeyboardEventHandler, withSafeTypeForAs } from '../../types';
+import {
+  ComponentEventHandler,
+  ShorthandValue,
+  WithAsProp,
+  ComponentKeyboardEventHandler,
+  withSafeTypeForAs,
+} from '../../types';
 import { UIComponentProps } from '../../utils/commonPropInterfaces';
-import { createShorthandFactory, UIComponent, RenderResultConfig, commonPropTypes, ShorthandFactory } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponent,
+  RenderResultConfig,
+  commonPropTypes,
+  ShorthandFactory,
+} from '../../utils';
 import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Label from '../Label/Label';
@@ -68,7 +80,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
   static propTypes = {
     ...commonPropTypes.createCommon({
       accessibility: false,
-      children: false
+      children: false,
     }),
     active: PropTypes.bool,
     header: customPropTypes.itemShorthand,
@@ -76,11 +88,11 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
     image: customPropTypes.itemShorthandWithoutJSX,
     onClick: PropTypes.func,
     onKeyDown: PropTypes.func,
-    onRemove: PropTypes.func
+    onRemove: PropTypes.func,
   };
 
   static defaultProps = {
-    icon: 'close'
+    icon: 'close',
   };
 
   componentDidUpdate(prevProps: DropdownSelectedItemProps) {
@@ -110,7 +122,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
         _.invoke(this.props, 'onRemove', e, this.props);
       }
       _.invoke(predefinedProps, 'onKeyDown', e, iconProps);
-    }
+    },
   });
 
   renderComponent({ unhandledProps, classes, styles }: RenderResultConfig<DropdownSelectedItemProps>) {
@@ -120,8 +132,8 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
       defaultProps: () => ({
         as: 'span',
         className: DropdownSelectedItem.slotClassNames.header,
-        styles: styles.header
-      })
+        styles: styles.header,
+      }),
     });
     const iconProps = _.isNil(icon)
       ? icon
@@ -132,10 +144,10 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
               defaultProps: () => ({
                 'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
                 className: DropdownSelectedItem.slotClassNames.icon,
-                styles: styles.icon
+                styles: styles.icon,
               }),
-              overrideProps: this.handleIconOverrides(props)
-            })
+              overrideProps: this.handleIconOverrides(props),
+            }),
         };
     const imageProps = _.isNil(image)
       ? image
@@ -145,10 +157,10 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
               defaultProps: () => ({
                 avatar: true,
                 className: DropdownSelectedItem.slotClassNames.image,
-                styles: styles.image
+                styles: styles.image,
               }),
-              overrideProps: props
-            })
+              overrideProps: props,
+            }),
         };
 
     return (
@@ -173,12 +185,12 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
 DropdownSelectedItem.slotClassNames = {
   header: `${DropdownSelectedItem.className}__header`,
   icon: `${DropdownSelectedItem.className}__icon`,
-  image: `${DropdownSelectedItem.className}__image`
+  image: `${DropdownSelectedItem.className}__image`,
 };
 
 DropdownSelectedItem.create = createShorthandFactory({
   Component: DropdownSelectedItem,
-  mappedProp: 'header'
+  mappedProp: 'header',
 });
 
 /**

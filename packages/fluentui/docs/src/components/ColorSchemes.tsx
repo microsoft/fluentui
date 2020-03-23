@@ -7,7 +7,7 @@ import {
   Grid,
   Header,
   HeaderProps,
-  ShorthandCollection
+  ShorthandCollection,
 } from '@fluentui/react-northstar';
 
 import ColorBox from './ColorBox';
@@ -22,8 +22,8 @@ export const colorVariantsStyles: ComponentSlotStylesInput<ColorVariantsProps> =
   root: {
     border: '1px solid transparent',
     borderRadius: '.25rem',
-    overflow: 'hidden'
-  }
+    overflow: 'hidden',
+  },
 };
 
 const ColorSchemes = createComponent<ColorVariantsProps>({
@@ -45,7 +45,7 @@ const ColorSchemes = createComponent<ColorVariantsProps>({
       />,
       ..._.map(colorSchemes, (colorScheme, i) => (
         <ColorBox key={`${token}${i}`} size="small" value={colorScheme[token]} copyToClipboardIcon={false} />
-      ))
+      )),
     ]);
 
     const columns = `auto ${_.times(themes.length, () => '180px').join(' ')}`;
@@ -57,7 +57,7 @@ const ColorSchemes = createComponent<ColorVariantsProps>({
         </Grid>
       </div>
     );
-  }
+  },
 });
 
 export default ColorSchemes;

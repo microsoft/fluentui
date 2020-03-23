@@ -39,6 +39,7 @@ export { default as HeaderDescription } from './components/Header/headerDescript
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
 
 export { default as Icon } from './components/Icon/iconVariables';
+export { default as SvgIcon } from './components/Icon/iconVariables';
 
 export { default as Image } from './components/Image/imageVariables';
 
@@ -102,3 +103,10 @@ export { default as CarouselNavigationItem } from './components/Carousel/carouse
 export { default as Table } from './components/Table/tableVariables';
 export { default as TableRow } from './components/Table/tableRowVariables';
 export { default as TableCell } from './components/Table/tableCellVariables';
+
+export { default as Card } from './components/Card/cardVariables';
+export { default as CardHeader } from './components/Card/cardHeaderVariables';
+export { default as CardBody } from './components/Card/cardBodyVariables';
+export { default as CardFooter } from './components/Card/cardFooterVariables';
+export { default as CardPreview } from './components/Card/cardPreviewVariables';
+export { default as CardTopControls } from './components/Card/cardTopControlsVariables';

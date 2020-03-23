@@ -10,7 +10,7 @@ import {
   applyAccessibilityKeyHandlers,
   commonPropTypes,
   AutoControlledComponent,
-  ShorthandFactory
+  ShorthandFactory,
 } from '../../utils';
 import Image from '../Image/Image';
 import Video, { VideoProps } from '../Video/Video';
@@ -75,7 +75,7 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
   static propTypes = {
     ...commonPropTypes.createCommon({
       children: false,
-      content: false
+      content: false,
     }),
     active: PropTypes.bool,
     defaultActive: PropTypes.bool,
@@ -84,23 +84,23 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
     onActiveChange: PropTypes.func,
     onClick: PropTypes.func,
     placeholder: PropTypes.string,
-    video: customPropTypes.every([customPropTypes.disallow(['iframe']), customPropTypes.itemShorthand])
+    video: customPropTypes.every([customPropTypes.disallow(['iframe']), customPropTypes.itemShorthand]),
   };
 
   static defaultProps = {
     as: 'span',
     accessibility: embedBehavior as Accessibility,
-    control: {}
+    control: {},
   };
 
   static autoControlledProps = ['active'];
 
   static slotClassNames: EmbedSlotClassNames = {
-    control: `${Embed.className}__control`
+    control: `${Embed.className}__control`,
   };
 
   actionHandlers = {
-    performClick: event => this.handleClick(event)
+    performClick: event => this.handleClick(event),
   };
 
   frameRef = React.createRef<HTMLFrameElement>();
@@ -130,7 +130,7 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
 
       this.setState({ iframeLoaded: true });
       this.frameRef.current.contentWindow.focus();
-    }
+    },
   });
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, variables }) {
@@ -166,18 +166,18 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
                 styles: styles.video,
                 variables: {
                   width: variables.width,
-                  height: variables.height
-                }
-              })
+                  height: variables.height,
+                },
+              }),
             })}
             {iframe && (
               <Ref innerRef={this.frameRef}>
                 {Box.create(iframe, {
                   defaultProps: () => ({
                     as: 'iframe',
-                    styles: styles.iframe
+                    styles: styles.iframe,
                   }),
-                  overrideProps: this.handleFrameOverrides
+                  overrideProps: this.handleFrameOverrides,
                 })}
               </Ref>
             )}
@@ -189,8 +189,8 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
           Box.create(control, {
             defaultProps: () => ({
               className: Embed.slotClassNames.control,
-              styles: styles.control
-            })
+              styles: styles.control,
+            }),
           })}
       </ElementType>
     );

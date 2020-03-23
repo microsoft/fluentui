@@ -32,7 +32,7 @@ export default (ignoredInterfaces: string[] = []) =>
         base: paths.base(),
         cwd: paths.base(),
         path: `./${infoFilename}`,
-        contents: Buffer.from(JSON.stringify(contents, null, 2))
+        contents: Buffer.from(JSON.stringify(contents, null, 2)),
       });
       // `gulp-cache` relies on this private entry
       infoFile._cachedKey = file._cachedKey;
@@ -44,7 +44,7 @@ export default (ignoredInterfaces: string[] = []) =>
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack)
+        gutil.colors.gray(err.stack),
       ].join('\n\n');
       this.emit('error', pluginError);
     }

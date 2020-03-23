@@ -14,7 +14,7 @@ describe('felaRenderer', () => {
         <Box styles={{ color: 'red' }} />
       </EmptyThemeProvider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -25,7 +25,7 @@ describe('felaRenderer', () => {
         <Box styles={{ color: ['red', 'blue'] as any }} />
       </EmptyThemeProvider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -34,23 +34,23 @@ describe('felaRenderer', () => {
     const colorChanger = {
       keyframe: ({ fromColor, toColor }) => ({
         from: {
-          color: fromColor
+          color: fromColor,
         },
         to: {
-          color: toColor
-        }
+          color: toColor,
+        },
       }),
       keyframeParams: {
         fromColor: 'red',
-        toColor: 'blue'
+        toColor: 'blue',
       },
-      duration: '5s'
+      duration: '5s',
     };
 
     const snapshot = createSnapshot(
       <Provider
         theme={{
-          animations: { colorChanger }
+          animations: { colorChanger },
         }}
       >
         <Animation name="colorChanger">
@@ -58,7 +58,7 @@ describe('felaRenderer', () => {
         </Animation>
       </Provider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -74,13 +74,13 @@ describe('felaRenderer', () => {
         });
         return obj;
       },
-      keyframeParams: { steps }
+      keyframeParams: { steps },
     };
 
     const snapshot = createSnapshot(
       <Provider
         theme={{
-          animations: { colorChanger }
+          animations: { colorChanger },
         }}
       >
         <Animation name="colorChanger">
@@ -88,7 +88,7 @@ describe('felaRenderer', () => {
         </Animation>
       </Provider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -97,21 +97,21 @@ describe('felaRenderer', () => {
     const spinner = {
       keyframe: {
         from: {
-          transform: 'rotate(0deg)'
+          transform: 'rotate(0deg)',
         },
         to: {
-          transform: 'rotate(360deg)'
-        }
+          transform: 'rotate(360deg)',
+        },
       },
       duration: '5s',
-      iterationCount: 'infinite'
+      iterationCount: 'infinite',
     };
 
     const snapshot = createSnapshot(
       <Provider
         disableAnimations
         theme={{
-          animations: { spinner }
+          animations: { spinner },
         }}
       >
         <Animation name="spinner">
@@ -119,7 +119,7 @@ describe('felaRenderer', () => {
         </Animation>
       </Provider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -130,7 +130,7 @@ describe('felaRenderer', () => {
         <Text content="Hello" styles={{ marginLeft: '10px' }} />
       </Provider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -141,7 +141,7 @@ describe('felaRenderer', () => {
         <Text content="Hello" styles={{ marginLeft: '10px /* @noflip */' }} />
       </Provider>,
       {},
-      felaRenderer
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });
@@ -153,12 +153,42 @@ describe('felaRenderer', () => {
           styles={{
             borderStyle: 'solid',
             // spaces in color value are important
-            borderColor: 'rgba(51,204, 51, 1) rgba(51,0,204, 1)'
+            borderColor: 'rgba(51,204, 51, 1) rgba(51,0,204, 1)',
           }}
         />
       </EmptyThemeProvider>,
       {},
-      felaRenderer
+      felaRenderer,
+    );
+    expect(snapshot).toMatchSnapshot();
+  });
+
+  test('prefixes required styles', () => {
+    const snapshot = createSnapshot(
+      <EmptyThemeProvider>
+        <Box
+          styles={{
+            background: 'linear-gradient(#e66465, #9198e5)',
+            backgroundClip: 'text',
+            backgroundImage: "cross-fade(75% url('foo.png'), url('bar.png'))",
+            cursor: 'zoom-in',
+            display: 'flex',
+            filter: 'blur(5px)',
+            height: 'min-content',
+            marginBlockEnd: '20px',
+            position: 'sticky',
+            transition: 'width 2s, height 2s, background-color 2s, transform 2s',
+
+            ':hover': {
+              backgroundImage: 'image-set("cat.png" 1x, "cat-2x.png" 2x)',
+              display: 'inline-flex',
+              height: 'fit-content',
+            },
+          }}
+        />
+      </EmptyThemeProvider>,
+      {},
+      felaRenderer,
     );
     expect(snapshot).toMatchSnapshot();
   });

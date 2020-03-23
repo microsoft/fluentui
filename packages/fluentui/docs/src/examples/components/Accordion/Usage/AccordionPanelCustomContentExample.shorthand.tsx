@@ -10,8 +10,8 @@ const AccordionPanelCustomContentExample = () => {
           <Button primary>Add pet</Button>
           <Button>Remove pet</Button>
         </Flex>
-      )
-    }
+      ),
+    },
   ];
 
   return <Accordion defaultActiveIndex={[0]} panels={panels} />;

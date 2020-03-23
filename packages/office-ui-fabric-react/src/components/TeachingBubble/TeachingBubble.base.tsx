@@ -5,7 +5,7 @@ import {
   ITeachingBubbleProps,
   ITeachingBubbleStyleProps,
   ITeachingBubbleStyles,
-  ITeachingBubbleSubComponentStyles
+  ITeachingBubbleSubComponentStyles,
 } from './TeachingBubble.types';
 import { Callout, ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -28,8 +28,8 @@ export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, IT
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter
-    }
+      directionalHint: DirectionalHint.rightCenter,
+    },
   };
 
   public rootElement = React.createRef<HTMLDivElement>();
@@ -47,7 +47,7 @@ export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, IT
       gapSpace: 0,
       setInitialFocus: true,
       doNotLayer: false,
-      directionalHint: DirectionalHint.rightCenter
+      directionalHint: DirectionalHint.rightCenter,
     };
   }
 
@@ -69,14 +69,14 @@ export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, IT
       isWide,
       styles,
       theme,
-      target
+      target,
     } = this.props;
     const calloutProps = { ...this._defaultCalloutProps, ...setCalloutProps };
     const stylesProps: ITeachingBubbleStyleProps = {
       theme: theme!,
       isWide,
       calloutProps: { ...calloutProps, theme: calloutProps.theme! },
-      hasCloseButton
+      hasCloseButton,
     };
 
     const classNames = getClassNames(styles, stylesProps);

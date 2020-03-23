@@ -22,7 +22,7 @@ module.exports.createInternalFlightConfigTask = function() {
       version: process.env.BUILD_BUILDNUMBER || '0',
       baseCDNUrl: argv().baseCDNUrl,
       buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
-      createdDate: today
+      createdDate: today,
     };
 
     logger.info('config data:');
@@ -50,7 +50,7 @@ module.exports.createPublicFlightConfigTask = function() {
       version: process.env.BUILD_BUILDNUMBER || '0',
       baseCDNUrl: argv().baseCDNUrl,
       buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
-      createdDate: today
+      createdDate: today,
     };
 
     logger.info('config data:');

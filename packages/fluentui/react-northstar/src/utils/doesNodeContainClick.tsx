@@ -13,7 +13,7 @@ const doesNodeContainClick = (
   node: HTMLElement,
   e: MouseEvent,
   // eslint-disable-next-line no-undef
-  target: Document = document
+  target: Document = document,
 ): boolean => {
   if (_.some([e, node], _.isNil)) return false;
 

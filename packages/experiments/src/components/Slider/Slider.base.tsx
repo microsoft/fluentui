@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { initializeComponentRef, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, warnMutuallyExclusive } from '../../Utilities';
+import {
+  initializeComponentRef,
+  KeyCodes,
+  css,
+  getId,
+  getRTL,
+  getRTLSafeKeyCode,
+  warnMutuallyExclusive,
+} from '../../Utilities';
 import { ISliderProps, ISlider, ISliderStyleProps, ISliderStyles, ISliderMarks } from './Slider.types';
 import { classNamesFunction, getNativeProps, divProperties } from '../../Utilities';
 import { Label } from 'office-ui-fabric-react/lib/Label';
@@ -26,7 +34,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     disabled: false,
     vertical: false,
     buttonProps: {},
-    originFromZero: false
+    originFromZero: false,
   };
 
   private _sliderLine = React.createRef<HTMLDivElement>();
@@ -46,16 +54,17 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     this._events = new EventGroup(this);
     initializeComponentRef(this);
     warnMutuallyExclusive(COMPONENT_NAME, props, {
-      value: 'defaultValue'
+      value: 'defaultValue',
     });
 
     this._id = getId('Slider');
 
-    const value = props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
+    const value =
+      props.value !== undefined ? props.value : props.defaultValue !== undefined ? props.defaultValue : props.min;
 
     this.state = {
       value: value,
-      renderedValue: undefined
+      renderedValue: undefined,
     };
   }
 
@@ -79,7 +88,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       theme,
       originFromZero,
       marks,
-      showThumbTooltip
+      showThumbTooltip,
     } = this.props;
     const value = this.value;
     const renderedValue = this.renderedValue;
@@ -95,9 +104,11 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
       vertical,
       showTransitions: renderedValue === value,
       showValue,
-      theme: theme!
+      theme: theme!,
     });
-    const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps
+      ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties)
+      : undefined;
     const thumbButton = (
       <span
         ref={this._thumb}
@@ -134,7 +145,10 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
           >
             <div ref={this._sliderLine} className={classNames.line}>
               {originFromZero && (
-                <span className={classNames.zeroTick} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+                <span
+                  className={classNames.zeroTick}
+                  style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)}
+                />
               )}
               {marks && this._addTickmarks(classNames.regularTick)}
               {Array.isArray(marks) ? (
@@ -158,7 +172,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
                     gapSpace: 5,
                     beakWidth: 8,
                     target: `#${this._buttonId}`,
-                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter
+                    directionalHint: vertical ? DirectionalHint.leftCenter : DirectionalHint.topCenter,
                   }}
                 >
                   {thumbButton}
@@ -229,7 +243,8 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     return null;
   }
   private get renderedValue(): number | undefined {
-    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`.
+    // Fall back to `value`.
     const { renderedValue = this.value } = this.state;
     return renderedValue;
   }
@@ -243,7 +258,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
   private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
     return {
-      [direction]: thumbOffsetPercent + '%'
+      [direction]: thumbOffsetPercent + '%',
     };
   }
 
@@ -311,7 +326,9 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
         break;
       case 'touchstart':
       case 'touchmove':
-        currentPosition = !vertical ? (event as TouchEvent).touches[0].clientX : (event as TouchEvent).touches[0].clientY;
+        currentPosition = !vertical
+          ? (event as TouchEvent).touches[0].clientX
+          : (event as TouchEvent).touches[0].clientY;
         break;
     }
     return currentPosition;
@@ -364,7 +381,7 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
             this._getStyleUsingOffsetPercent(vertical, i)
           }
           key={i}
-        />
+        />,
       );
     }
     return ticks;
@@ -391,20 +408,20 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
     this.setState(
       {
         value: roundedValue,
-        renderedValue
+        renderedValue,
       },
       () => {
         if (valueChanged && this.props.onChange) {
           this.props.onChange(this.state.value as number);
         }
-      }
+      },
     );
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
     // Disable renderedValue override.
     this.setState({
-      renderedValue: undefined
+      renderedValue: undefined,
     });
 
     if (this.props.onChanged) {

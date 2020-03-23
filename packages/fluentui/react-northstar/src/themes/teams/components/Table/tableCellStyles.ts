@@ -6,7 +6,7 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTableVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables
+      variables: siteVariables,
     });
 
     return {
@@ -22,7 +22,7 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
       ...borderFocusStyles,
       padding: v.cellPadding,
       position: 'relative',
-      height: '100%'
+      height: '100%',
     };
   },
   content: ({ props: p }): ICSSInJSStyle => {
@@ -32,10 +32,10 @@ const tableCellStyles: ComponentSlotStylesPrepared<TableCellStylesProps, TeamsTa
         display: 'block',
         overflow: 'hidden',
         textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap'
-      })
+        whiteSpace: 'nowrap',
+      }),
     };
-  }
+  },
 };
 
 export default tableCellStyles;

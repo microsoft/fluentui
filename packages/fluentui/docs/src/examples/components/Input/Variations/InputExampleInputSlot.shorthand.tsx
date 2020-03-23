@@ -19,7 +19,7 @@ const InputExampleInputSlot = () => (
         role: 'checkbox',
 
         // will set custom styles for input DOM element
-        styles: inputStyles
+        styles: inputStyles,
       }}
     />
   </Grid>

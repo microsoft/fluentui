@@ -9,7 +9,9 @@ import { SvgIconSpecWithStyles } from '../../../../../../src/themes/teams/compon
 describe('Teams Theme Icon', () => {
   function testIcon(icon, props?) {
     const SvgIcon: any = (icon as SvgIconSpecWithStyles).icon;
-    const component = shallow(<SvgIcon classes={{ outlinePart: 'TEST-OUTLINE', filledPart: 'TEST-FILLED' }} {...props} />);
+    const component = shallow(
+      <SvgIcon classes={{ outlinePart: 'TEST-OUTLINE', filledPart: 'TEST-FILLED' }} {...props} />,
+    );
 
     const outlineByDynamicClass = component.find('.TEST-OUTLINE');
     const outlineByStaticClass = component.find(`.${teamsIconClassNames.outline}`);

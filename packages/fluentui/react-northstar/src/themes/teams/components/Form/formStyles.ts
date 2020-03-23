@@ -10,8 +10,8 @@ const formStyles: ComponentSlotStylesPrepared<FormProps, any> = {
     gridTemplateColumns: '1fr',
     justifyContent: 'space-evenly',
     gridGap: pxToRem(20),
-    justifyItems: 'start'
-  })
+    justifyItems: 'start',
+  }),
 };
 
 export default formStyles;

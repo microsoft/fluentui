@@ -14,7 +14,8 @@ export default () => (
     <CodeSnippet mode="bash" value="yarn add @fluentui/react-northstar" />
     <Header as="h2">Setup</Header>
     <p>
-      Fluent UI components are styled using CSS in JS. This technique requires a style renderer to render JavaScript objects to CSS.{' '}
+      Fluent UI components are styled using CSS in JS. This technique requires a style renderer to render JavaScript
+      objects to CSS.{' '}
       <a href="https://reactjs.org/docs/context.html" target="_blank" rel="noopener nofollow">
         React Context <Icon name="open-outside" size="small" />
       </a>{' '}

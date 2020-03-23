@@ -5,7 +5,7 @@ const inheritFont = { fontFamily: 'inherit' };
 
 const GlobalClassNames = {
   root: 'ms-Fabric',
-  bodyThemed: 'ms-Fabric-bodyThemed'
+  bodyThemed: 'ms-Fabric-bodyThemed',
 };
 
 export interface IFabricClassNames {
@@ -25,20 +25,20 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
         selectors: {
           '& button': inheritFont,
           '& input': inheritFont,
-          '& textarea': inheritFont
-        }
+          '& textarea': inheritFont,
+        },
       },
       // apply theme to only if applyTheme is true
       applyTheme && {
         color: theme.semanticColors.bodyText,
-        backgroundColor: theme.semanticColors.bodyBackground
+        backgroundColor: theme.semanticColors.bodyBackground,
       },
-      className
+      className,
     ],
     bodyThemed: [
       {
-        backgroundColor: theme.semanticColors.bodyBackground
-      }
-    ]
+        backgroundColor: theme.semanticColors.bodyBackground,
+      },
+    ],
   };
 };

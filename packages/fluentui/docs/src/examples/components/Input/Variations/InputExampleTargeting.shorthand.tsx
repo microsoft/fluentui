@@ -6,7 +6,7 @@ const propsForInput = { placeholder: 'Search...', id: 'inputId', role: 'checkbox
 const propsTargettingWrapper = {
   placeholder: 'Wrapper placeholder...',
   id: 'wrapperId',
-  role: 'presentation'
+  role: 'presentation',
 };
 
 // This object contains properties that will be applied to the wrapper
@@ -14,7 +14,7 @@ const propsForWrapper = { dir: 'ltr', tabIndex: -1, styles: { padding: '5px', ba
 const propsTargettingInput = {
   dir: 'rtl',
   tabIndex: 0,
-  styles: { color: 'blue', background: 'yellow' }
+  styles: { color: 'blue', background: 'yellow' },
 };
 
 const InputExampleTargeting = () => (

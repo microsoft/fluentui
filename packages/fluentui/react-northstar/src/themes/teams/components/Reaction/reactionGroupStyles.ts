@@ -6,9 +6,9 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionGroupVa
   root: () => ({}),
   reaction: ({ variables: v }) => ({
     ':not(:last-child)': {
-      marginRight: v.reactionSpacing
-    }
-  })
+      marginRight: v.reactionSpacing,
+    },
+  }),
 };
 
 export default reactionStyles;

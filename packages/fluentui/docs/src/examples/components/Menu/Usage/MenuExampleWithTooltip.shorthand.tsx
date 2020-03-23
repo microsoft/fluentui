@@ -15,20 +15,20 @@ const items = [
     key: 'editorials',
     content: 'Editorials',
     tooltip: 'Click for opening Editorials',
-    children: itemRenderer
+    children: itemRenderer,
   },
   {
     key: 'review',
     content: 'Reviews',
     tooltip: 'Click for opening Reviews',
-    children: itemRenderer
+    children: itemRenderer,
   },
   {
     key: 'events',
     content: 'Upcoming Events',
     tooltip: 'Click for opening Upcoming Events',
-    children: itemRenderer
-  }
+    children: itemRenderer,
+  },
 ];
 
 const MenuExampleWithTooltip = () => <Menu defaultActiveIndex={0} items={items} />;

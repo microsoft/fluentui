@@ -20,22 +20,22 @@ const AnimationExampleVisible = () => {
           fadeEnterSlow: {
             keyframe: {
               '0%': { opacity: 0 },
-              '100%': { opacity: 1 }
+              '100%': { opacity: 1 },
             },
             duration: '500ms',
             timingFunction: 'cubic-bezier(0.33,0.00,0.67,1.00)',
-            fillMode: 'forwards'
+            fillMode: 'forwards',
           },
           fadeExitSlow: {
             keyframe: {
               '0%': { opacity: 1 },
-              '100%': { opacity: 0 }
+              '100%': { opacity: 0 },
             },
             duration: '500ms',
             timingFunction: 'cubic-bezier(0.33,0.00,0.67,1.00)',
-            fillMode: 'forwards'
-          }
-        }
+            fillMode: 'forwards',
+          },
+        },
       }}
     >
       <Button onClick={() => setVisible(!visible)}>{visible ? 'Hide' : 'Show'}</Button>&emsp;

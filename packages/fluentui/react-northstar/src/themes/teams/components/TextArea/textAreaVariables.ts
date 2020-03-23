@@ -37,5 +37,5 @@ export default (siteVars): TextAreaVariables => ({
 
   borderColorFocus: `transparent transparent ${siteVars.colorScheme.brand.borderFocus1} transparent`,
 
-  height: 'auto'
+  height: 'auto',
 });

@@ -2,5 +2,5 @@ import { ListItemVariables } from '../../../teams/components/List/listItemVariab
 
 export default (siteVars: any): Partial<ListItemVariables> => ({
   selectableFocusHoverBackgroundColor: siteVars.colors.grey[500],
-  selectedBackgroundColor: siteVars.colors.grey[500]
+  selectedBackgroundColor: siteVars.colors.grey[500],
 });

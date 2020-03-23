@@ -15,7 +15,7 @@ const items = [
     items: [
       {
         key: '11',
-        title: '11'
+        title: '11',
       },
       {
         key: '12',
@@ -23,11 +23,11 @@ const items = [
         items: [
           {
             key: '121',
-            title: '121'
-          }
-        ]
-      }
-    ]
+            title: '121',
+          },
+        ],
+      },
+    ],
   },
   {
     key: '2',
@@ -39,20 +39,20 @@ const items = [
         items: [
           {
             key: '211',
-            title: '211'
-          }
-        ]
+            title: '211',
+          },
+        ],
       },
       {
         key: '22',
-        title: '22'
-      }
-    ]
+        title: '22',
+      },
+    ],
   },
   {
     key: '3',
-    title: '3'
-  }
+    title: '3',
+  },
 ];
 
 const getTitles = (wrapper: ReactWrapper): CommonWrapper =>
@@ -71,7 +71,7 @@ const checkOpenTitles = (wrapper: ReactWrapper, expected: string[]): void => {
 
 describe('HierarchialTree', () => {
   isConformant(HierarchicalTree, {
-    autoControlledProps: ['activeIndex']
+    autoControlledProps: ['activeIndex'],
   });
 
   describe('activeIndex', () => {

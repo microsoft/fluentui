@@ -20,18 +20,18 @@ const items3 = [
   {
     key: 'irving',
     content: <ActiveBarItem name="Irving Kuhic" />,
-    children: itemRenderer
+    children: itemRenderer,
   },
   {
     key: 'skyler',
     content: <ActiveBarItem name="Skyler Parks" />,
-    children: itemRenderer
+    children: itemRenderer,
   },
   {
     key: 'dante',
     content: <ActiveBarItem name="Dante Schneider" />,
-    children: itemRenderer
-  }
+    children: itemRenderer,
+  },
 ];
 
 const ParticipantsList = () => (

@@ -12,15 +12,15 @@ const CustomPopup = ({ onConfirm }) => {
           id: 'first-name-inline-shorthand',
           key: 'first-name',
           required: true,
-          inline: true
+          inline: true,
         },
         {
           control: {
             as: Button,
-            content: 'Submit'
+            content: 'Submit',
           },
-          key: 'submit'
-        }
+          key: 'submit',
+        },
       ]}
     />
   );
@@ -45,14 +45,14 @@ const ToolbarExampleActionPopupInMenu = () => {
                     setMenuOpen(false);
                   }}
                 />
-              )
-            }
+              ),
+            },
           ],
           menuOpen,
           onMenuOpenChange: (e, { menuOpen }) => {
             setMenuOpen(menuOpen);
-          }
-        }
+          },
+        },
       ]}
     />
   );

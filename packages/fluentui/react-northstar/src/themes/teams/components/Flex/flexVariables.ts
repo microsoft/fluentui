@@ -14,5 +14,5 @@ export default (): FlexVariables => ({
   'gap.large': pxToRem(30),
 
   // PADDING VALUES
-  'padding.medium': pxToRem(10)
+  'padding.medium': pxToRem(10),
 });

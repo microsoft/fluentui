@@ -146,8 +146,8 @@ const config: ScreenerTestsConfig = {
       builder
         .click(`.${Dropdown.slotClassNames.triggerButton}`)
         .hover(`.${Dropdown.slotClassNames.itemsList} li:nth-child(2)`)
-        .snapshot('Highlights an item')
-  ]
+        .snapshot('Highlights an item'),
+  ],
 };
 
 export default config;
@@ -260,7 +260,7 @@ Performance tests will measure performance, set a baseline for performance and h
 ```tsx
 // If this file is named ButtonBasic.perf.tsx, it will be picked up as kind of 'ButtonBasic' with story names of 'Blank' and 'WithText'.
 export default {
-  iterations: 5000
+  iterations: 5000,
 };
 
 export const Blank = () => <Button />;

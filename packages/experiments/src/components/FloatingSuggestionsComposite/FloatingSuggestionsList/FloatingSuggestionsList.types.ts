@@ -1,6 +1,6 @@
 import {
   IFloatingSuggestionOnRenderItemProps,
-  IFloatingSuggestionItemProps
+  IFloatingSuggestionItemProps,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction } from '@uifabric/utilities';
 import { IStyle } from '@uifabric/styling';

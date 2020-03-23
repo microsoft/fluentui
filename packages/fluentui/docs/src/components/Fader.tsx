@@ -21,9 +21,9 @@ export const faderStyles: ComponentSlotStylesInput<FaderProps> = {
       pointerEvents: 'none',
       backgroundImage: 'linear-gradient(to bottom, rgba(255,255,255, 0), rgba(255,255,255, 1) 90%)',
       width: '100%',
-      height: '4em'
-    }
-  }
+      height: '4em',
+    },
+  },
 };
 
 const Fader = createComponent<FaderProps>({
@@ -35,7 +35,7 @@ const Fader = createComponent<FaderProps>({
         <Button as={Link} content="See more" text href={''} to={url} />
       </Flex>
     );
-  }
+  },
 });
 
 export default Fader;

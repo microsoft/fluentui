@@ -18,10 +18,10 @@ export default {
   ),
   styles: {
     brownPath: () => ({
-      fill: '#ddaf52'
+      fill: '#ddaf52',
     }),
     otherBrownPath: () => ({
-      fill: '#efd084'
-    })
-  }
+      fill: '#efd084',
+    }),
+  },
 } as TeamsProcessedSvgIconSpec;

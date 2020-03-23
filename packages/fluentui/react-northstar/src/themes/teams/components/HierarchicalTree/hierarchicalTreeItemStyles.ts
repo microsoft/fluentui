@@ -11,10 +11,10 @@ const hierarchicalTreeItemStyles = {
     ':focus-visible': {
       [`> .${HierarchicalTreeTitle.className}`]: {
         position: 'relative',
-        ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible']
-      }
-    }
-  })
+        ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
+      },
+    },
+  }),
 };
 
 export default hierarchicalTreeItemStyles;

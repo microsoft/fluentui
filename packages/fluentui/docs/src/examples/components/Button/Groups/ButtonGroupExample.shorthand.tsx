@@ -6,7 +6,7 @@ const ButtonGroupExampleShorthand = () => (
     buttons={[
       { key: 'emoji', icon: 'emoji', iconOnly: true, title: 'Emoji' },
       { key: 'translation', icon: 'translation', iconOnly: true, title: 'Translation' },
-      { key: 'play', icon: 'play', iconOnly: true, title: 'Play' }
+      { key: 'play', icon: 'play', iconOnly: true, title: 'Play' },
     ]}
   />
 );

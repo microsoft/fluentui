@@ -6,12 +6,12 @@ import * as React from 'react';
 
 describe('ToolbarRadioGroup', () => {
   isConformant(ToolbarRadioGroup, {
-    constructorName: 'ToolbarRadioGroup'
+    constructorName: 'ToolbarRadioGroup',
   });
 
   describe('accessibility', () => {
     handlesAccessibility(ToolbarRadioGroup, {
-      defaultRootRole: 'radiogroup'
+      defaultRootRole: 'radiogroup',
     });
   });
 
@@ -23,18 +23,18 @@ describe('ToolbarRadioGroup', () => {
       {
         key: 'test-key1',
         tabIndex: props && props.focusedItem === 0 ? 0 : -1,
-        disabled: props && props.disabledItem === 0
+        disabled: props && props.disabledItem === 0,
       },
       {
         key: 'test-key2',
         tabIndex: props && props.focusedItem === 1 ? 0 : -1,
-        disabled: props && props.disabledItem === 1
+        disabled: props && props.disabledItem === 1,
       },
       {
         key: 'test-key3',
         tabIndex: props && props.focusedItem === 2 ? 0 : -1,
-        disabled: props && props.disabledItem === 2
-      }
+        disabled: props && props.disabledItem === 2,
+      },
     ];
 
     const testKeyDown = (testName, items, keyCode, expectedFocusedIndex) => {
@@ -58,8 +58,13 @@ describe('ToolbarRadioGroup', () => {
       'should move focus to first item when the focused item is the last one',
       getShorthandItems({ focusedItem: 2 }),
       arrowDown,
-      0
+      0,
     );
-    testKeyDown('should move focus to last item when the focused item is the first one', getShorthandItems({ focusedItem: 0 }), arrowUp, 2);
+    testKeyDown(
+      'should move focus to last item when the focused item is the first one',
+      getShorthandItems({ focusedItem: 0 }),
+      arrowUp,
+      2,
+    );
   });
 });
