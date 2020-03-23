@@ -12,103 +12,103 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
       theme.fonts.medium,
       className,
       {
-        width: chartWidth
-      }
+        width: chartWidth,
+      },
     ],
 
     chartLabel: [
       {
         textAlign: 'center',
-        ...theme.fonts.mediumPlus
-      }
+        ...theme.fonts.mediumPlus,
+      },
     ],
 
     chart: [
       {
         width: chartWidth,
-        height: chartHeight
-      }
+        height: chartHeight,
+      },
     ],
 
     xAxis: [
       {
-        transform: `translate(${chartMargin.left}px, ${height - chartMargin.bottom}px)`
+        transform: `translate(${chartMargin.left}px, ${height - chartMargin.bottom}px)`,
       },
       {
         selectors: {
           text: {
-            ...theme.fonts.tiny
+            ...theme.fonts.tiny,
           },
           line: {
             opacity: 0.3,
-            width: '1px'
+            width: '1px',
           },
           path: {
-            display: 'none'
-          }
-        }
-      }
+            display: 'none',
+          },
+        },
+      },
     ],
 
     yAxis: [
       {
-        transform: `translate(${chartMargin.left}px, 0px)`
+        transform: `translate(${chartMargin.left}px, 0px)`,
       },
       {
         selectors: {
           text: {
             ...theme.fonts.medium,
-            opacity: 1
+            opacity: 1,
           },
           line: {
             opacity: 0.2,
-            width: '1px'
+            width: '1px',
           },
           path: {
-            display: 'none'
-          }
-        }
-      }
+            display: 'none',
+          },
+        },
+      },
     ],
 
     bars: [
       {
-        transform: `translate(${chartMargin.left}px, 0px)`
-      }
+        transform: `translate(${chartMargin.left}px, 0px)`,
+      },
     ],
 
     hoverCardRoot: {
       paddingLeft: '16px',
       paddingRight: '22px',
       paddingTop: '15px',
-      paddingBottom: '8px'
+      paddingBottom: '8px',
     },
 
     hoverCardTextStyles: [
       theme.fonts.small,
       {
-        lineHeight: '14px'
-      }
+        lineHeight: '14px',
+      },
     ],
 
     hoverCardDataStyles: [
       theme.fonts.xxLarge,
       {
         lineHeight: '31px',
-        color: legendColor === '' ? theme.palette.black : legendColor
-      }
+        color: legendColor === '' ? theme.palette.black : legendColor,
+      },
     ],
 
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
-      cursor: href ? 'pointer' : 'default'
+      cursor: href ? 'pointer' : 'default',
     },
 
     legendContainer: {
       marginTop: '8px',
-      marginLeft: '35px'
+      marginLeft: '35px',
     },
 
-    xAxisText: []
+    xAxisText: [],
   };
 };

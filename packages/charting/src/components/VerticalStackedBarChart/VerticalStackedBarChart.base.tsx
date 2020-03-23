@@ -7,13 +7,13 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
 import { IVSChartDataPoint, IDataPoint, IVerticalStackedChartProps } from '@uifabric/charting';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ILegend, Legends } from '../Legends/index';
 
 import {
   IVerticalStackedBarChartProps,
   IVerticalStackedBarChartStyleProps,
-  IVerticalStackedBarChartStyles
+  IVerticalStackedBarChartStyles,
 } from './VerticalStackedBarChart.types';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -37,7 +37,10 @@ export interface IVerticalStackedBarChartState {
   color: string;
 }
 
-export class VerticalStackedBarChartBase extends React.Component<IVerticalStackedBarChartProps, IVerticalStackedBarChartState> {
+export class VerticalStackedBarChartBase extends React.Component<
+  IVerticalStackedBarChartProps,
+  IVerticalStackedBarChartState
+> {
   private _points: IVerticalStackedChartProps[];
   private _width: number;
   private _height: number;
@@ -56,7 +59,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       selectedLegendTitle: '',
       refSelected: null,
       dataForHoverCard: 0,
-      color: ''
+      color: '',
     };
     this._onLegendLeave = this._onLegendLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -69,7 +72,9 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
 
     const isNumeric: boolean = dataset.length > 0 && typeof dataset[0].x === 'number';
 
-    const xAxis: numericAxis | stringAxis = isNumeric ? this._createNumericXAxis(dataset) : this._createStringXAxis(dataset);
+    const xAxis: numericAxis | stringAxis = isNumeric
+      ? this._createNumericXAxis(dataset)
+      : this._createStringXAxis(dataset);
     const yAxis: numericAxis = this._createYAxis(dataset);
     const legends: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     const bars: JSX.Element[] = this._getBars(this._points, dataset, isNumeric);
@@ -81,7 +86,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       width: this._width,
       height: this._height,
       className,
-      legendColor: this.state.color
+      legendColor: this.state.color,
     });
     return (
       <div className={this._classNames.root}>
@@ -135,7 +140,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       });
       const singleBarDataPoint: IDataPoint = {
         x: singlePointData.xAxisPoint,
-        y: total
+        y: total,
       };
       dataset.push(singleBarDataPoint);
     });
@@ -189,17 +194,17 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       if (this.state.selectedLegendTitle === customMessage) {
         this.setState({
           isLegendSelected: false,
-          selectedLegendTitle: customMessage
+          selectedLegendTitle: customMessage,
         });
       } else {
         this.setState({
-          selectedLegendTitle: customMessage
+          selectedLegendTitle: customMessage,
         });
       }
     } else {
       this.setState({
         isLegendSelected: true,
-        selectedLegendTitle: customMessage
+        selectedLegendTitle: customMessage,
       });
     }
   }
@@ -208,7 +213,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     if (this.state.isLegendSelected === false) {
       this.setState({
         isLegendHovered: true,
-        selectedLegendTitle: customMessage
+        selectedLegendTitle: customMessage,
       });
     }
   }
@@ -218,7 +223,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
       this.setState({
         isLegendHovered: false,
         selectedLegendTitle: '',
-        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected
+        isLegendSelected: !!isLegendFocused ? false : this.state.isLegendSelected,
       });
     }
   }
@@ -246,7 +251,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
           },
           onMouseOutAction: (isLegendSelected?: boolean) => {
             this._onLegendLeave(isLegendSelected);
-          }
+          },
         };
 
         actions.push(legend);
@@ -266,21 +271,32 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     this._refArray[index] = { legendText: legendTitle, refElement: element };
   }
 
-  private _onBarHover(customMessage: string, pointData: number, color: string, mouseEvent: React.MouseEvent<SVGPathElement>): void {
+  private _onBarHover(
+    customMessage: string,
+    pointData: number,
+    color: string,
+    mouseEvent: React.MouseEvent<SVGPathElement>,
+  ): void {
     mouseEvent.persist();
-    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)) {
+    if (
+      this.state.isLegendSelected === false ||
+      (this.state.isLegendSelected && this.state.selectedLegendTitle === customMessage)
+    ) {
       this.setState({
         refSelected: mouseEvent,
         isCalloutVisible: true,
         selectedLegendTitle: customMessage,
         dataForHoverCard: pointData,
-        color: color
+        color: color,
       });
     }
   }
 
   private _onBarFocus(legendText: string, pointData: number, color: string, refArrayIndexNumber: number): void {
-    if (this.state.isLegendSelected === false || (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)) {
+    if (
+      this.state.isLegendSelected === false ||
+      (this.state.isLegendSelected && this.state.selectedLegendTitle === legendText)
+    ) {
       this._refArray.map((obj: IRefArrayData, index: number) => {
         if (obj.legendText === legendText && refArrayIndexNumber === index) {
           this.setState({
@@ -288,7 +304,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
             isCalloutVisible: true,
             selectedLegendTitle: legendText,
             dataForHoverCard: pointData,
-            color: color
+            color: color,
           });
         }
       });
@@ -297,7 +313,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
 
   private _onBarLeave = (): void => {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   };
 
@@ -311,7 +327,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     yBarScale: numericScale,
     indexNumber: number,
     href: string,
-    isNumeric: boolean
+    isNumeric: boolean,
   ): JSX.Element => {
     let startingPointOfY = 0;
     const bar = singleChartData.chartData.map((point: IVSChartDataPoint, index: number) => {
@@ -332,7 +348,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
         className: className,
         shouldHighlight: shouldHighlight,
         href: href,
-        legendColor: this.state.color
+        legendColor: this.state.color,
       });
       let xPoint;
       if (isNumeric) {
@@ -371,7 +387,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     singleChartData: IVerticalStackedChartProps,
     dataset: IDataPoint[],
     indexNumber: number,
-    href: string
+    href: string,
   ): JSX.Element => {
     const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
     const xMax = d3Max(dataset, (point: IDataPoint) => point.x as number)!;
@@ -390,7 +406,7 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     singleChartData: IVerticalStackedChartProps,
     dataset: IDataPoint[],
     indexNumber: number,
-    href: string
+    href: string,
   ): JSX.Element => {
     const yMax = d3Max(dataset, (point: IDataPoint) => point.y)!;
 
@@ -405,7 +421,11 @@ export class VerticalStackedBarChartBase extends React.Component<IVerticalStacke
     return this.createBar(singleChartData, xBarScale, yBarScale, indexNumber, href, false);
   };
 
-  private _getBars = (_points: IVerticalStackedChartProps[], dataset: IDataPoint[], isNumeric: boolean): JSX.Element[] => {
+  private _getBars = (
+    _points: IVerticalStackedChartProps[],
+    dataset: IDataPoint[],
+    isNumeric: boolean,
+  ): JSX.Element[] => {
     const bars: JSX.Element[] = [];
     _points.map((singleChartData: IVerticalStackedChartProps, index: number) => {
       const singleChartBar = isNumeric

@@ -2,7 +2,7 @@ import { styled } from '../../Utilities';
 import {
   IVerticalStackedBarChartProps,
   IVerticalStackedBarChartStyleProps,
-  IVerticalStackedBarChartStyles
+  IVerticalStackedBarChartStyles,
 } from './VerticalStackedBarChart.types';
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 import { getStyles } from './VerticalStackedBarChart.styles';

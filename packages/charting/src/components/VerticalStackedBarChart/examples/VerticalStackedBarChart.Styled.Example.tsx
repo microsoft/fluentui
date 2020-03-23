@@ -8,19 +8,19 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
     const firstChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 40, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight }
+      { legend: 'Metadata3', data: 15, color: DefaultPalette.blueLight },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 30, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight }
+      { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
       { legend: 'Metadata1', data: 10, color: DefaultPalette.accent },
       { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight }
+      { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
     ];
 
     const data: IVerticalStackedChartProps[] = [
@@ -32,33 +32,38 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, {}
       { chartData: firstChartPoints, xAxisPoint: 'June' },
       { chartData: secondChartPoints, xAxisPoint: 'July' },
       { chartData: thirdChartPoints, xAxisPoint: 'August' },
-      { chartData: firstChartPoints, xAxisPoint: 'September' }
+      { chartData: firstChartPoints, xAxisPoint: 'September' },
     ];
 
     const textStyle = {
       fill: DefaultPalette.black,
       fontSize: '10px',
-      lineHeight: '14px'
+      lineHeight: '14px',
     };
 
     const customStyles = () => {
       return {
         chart: {
-          paddingBottom: '45px'
+          paddingBottom: '45px',
         },
         chartLabel: {
           color: DefaultPalette.blueMid,
-          ...DefaultFontStyles.large
+          ...DefaultFontStyles.large,
         },
         xAxisText: {
-          // textAnchor: 'start',
-          ...textStyle
-        }
+          ...textStyle,
+        },
       };
     };
 
     return (
-      <VerticalStackedBarChart data={data} yAxisTickCount={10} href={'www.google.com'} styles={customStyles} chartLabel="Card title" />
+      <VerticalStackedBarChart
+        data={data}
+        yAxisTickCount={10}
+        href={'www.google.com'}
+        styles={customStyles}
+        chartLabel="Card title"
+      />
     );
   }
 }
