@@ -188,7 +188,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
     });
     const renderOverflowData: IExpandingCardProps = { renderData: legends };
-    const { theme, className, styles } = this.props;
+    const { theme, className, styles, overflowText } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -199,6 +199,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       gapSpace: 8,
     };
 
+    const overflowString = overflowText ? overflowText : 'more';
     // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
     const onHoverCardHideHandler = () => {
       const selectedOverflowItem = find(
@@ -238,7 +239,9 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onCardVisible={this._hoverCardVisible}
         styles={classNames.subComponentStyles.hoverCardStyles}
       >
-        <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
+        <div className={classNames.overflowIndicationTextStyle}>
+          {items.length} {overflowString}
+        </div>
       </HoverCard>
     );
   };
