@@ -3,6 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as _ from 'lodash';
+import cx from 'classnames';
 
 import {
   childrenExist,
@@ -29,6 +30,7 @@ import ButtonContent, { ButtonContentProps } from './ButtonContent';
 import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import Box, { BoxProps } from '../Box/Box';
 
 export interface ButtonProps
   extends UIComponentProps,
@@ -48,6 +50,12 @@ export interface ButtonProps
 
   /** A button can have an icon. */
   icon?: ShorthandValue<IconProps>;
+
+  /** A button can have an icon. */
+  iconAsBox?: ShorthandValue<BoxProps>;
+
+  /** A button can have an icon. */
+  iconAsJSX?: JSX.Element;
 
   /** A button can contain only an icon. */
   iconOnly?: boolean;
@@ -93,9 +101,11 @@ export interface ButtonProps
 
 export type ButtonStylesProps = Pick<
   ButtonProps,
-  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid'
+  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid' | 'iconPosition'
 > & {
   hasContent?: boolean;
+  hasIconAsJSX?: boolean;
+  hasIconAsBox?: boolean;
 };
 
 const Button: React.FC<WithAsProp<ButtonProps>> &
@@ -112,6 +122,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     children,
     content,
     icon,
+    iconAsJSX,
+    iconAsBox,
     loader,
     disabled,
     iconPosition,
@@ -160,6 +172,8 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       iconOnly,
       fluid,
       hasContent: !!content,
+      hasIconAsJSX: !!iconAsJSX,
+      hasIconAsBox: !!iconAsBox,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -174,11 +188,23 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
   const ElementType = getElementType(props);
 
   const renderIcon = () => {
-    return Icon.create(icon, {
+    if (icon) {
+      return Icon.create(icon, {
+        defaultProps: () =>
+          getA11Props('icon', {
+            styles: resolvedStyles.icon,
+            xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after',
+          }),
+      });
+    }
+    if (iconAsJSX) {
+      return React.cloneElement(iconAsJSX, { className: cx(iconAsJSX.props.className || '', 'ui-button__icon') });
+    }
+
+    return Box.create(iconAsBox, {
       defaultProps: () =>
         getA11Props('icon', {
-          styles: resolvedStyles.icon,
-          xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after',
+          styles: resolvedStyles.iconAsBox,
         }),
     });
   };

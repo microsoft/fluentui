@@ -36,6 +36,18 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       verticalAlign: 'middle',
       cursor: 'pointer',
 
+      ...(p.hasIconAsJSX && {
+        '& .ui-button__icon': {
+          height: pxToRem(16),
+          ...(p.hasContent && {
+            margin: `0 ${pxToRem(10)} 0 0`,
+            ...(p.iconPosition === 'after' && {
+              margin: `0 0 0 ${pxToRem(10)} `,
+            }),
+          }),
+        },
+      }),
+
       ...(p.size === 'small' && {
         padding: v.sizeSmallPadding,
         height: v.sizeSmallHeight,
@@ -251,6 +263,22 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
 
     ...(p.hasContent && {
       marginRight: pxToRem(4),
+    }),
+  }),
+  iconAsBox: ({ props: p }) => ({
+    ...(p.hasIconAsBox && {
+      lineHeight: pxToRem(12),
+      height: pxToRem(16),
+      // grommet-icons required
+      '& svg': {
+        height: pxToRem(16),
+      },
+      ...(p.hasContent && {
+        margin: `0 ${pxToRem(10)} 0 0`,
+        ...(p.iconPosition === 'after' && {
+          margin: `0 0 0 ${pxToRem(10)} `,
+        }),
+      }),
     }),
   }),
 };

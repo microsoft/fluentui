@@ -7,6 +7,7 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as Classnames from 'classnames';
+import * as GrommetIcons from 'grommet-icons';
 
 const accessibilityPackageJson = require('@fluentui/accessibility/package.json');
 const docsComponentsPackageJson = require('@fluentui/docs-components/package.json');
@@ -63,6 +64,10 @@ export const imports: Record<string, { version: string; module: any }> = {
   prettier: {
     version: docsComponentsPackageJson.peerDependencies['prettier'],
     module: null, // no need to use it in our examples
+  },
+  'grommet-icons': {
+    version: docsComponentsPackageJson.dependencies['grommet-icons'],
+    module: GrommetIcons,
   },
 };
 
