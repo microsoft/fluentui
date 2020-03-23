@@ -17,7 +17,7 @@ export const KeytipsPageProps: IDocPageProps = {
   title: 'Keytips',
   componentName: 'Keytips',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Keytips',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Keytips',
   examples: [
     {
       title: 'Keytips on Buttons',

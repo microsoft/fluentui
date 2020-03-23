@@ -1,7 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 18 Mar 2020 12:24:00 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.0.49
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.0.47
 Wed, 18 Mar 2020 12:24:00 GMT
 

@@ -9,11 +9,11 @@ We’ve updated Fabric to include a new set of Web Fluent design styles, which i
 
 ### Upgrading to Fabric 7
 
-Along with a visual refresh, Fabric 7 updates the minimum required version of React to 16.8.1 and TypeScript to 3.3. It also includes a number of behavior improvements and removes old deprecated props. For a full rundown of these changes, and upgrade instructions, see the [release notes](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fabric-7) on our wiki.
+Along with a visual refresh, Fabric 7 updates the minimum required version of React to 16.8.1 and TypeScript to 3.3. It also includes a number of behavior improvements and removes old deprecated props. For a full rundown of these changes, and upgrade instructions, see the [release notes](https://github.com/microsoft/fluentui/wiki/Fabric-7) on our wiki.
 
 ### Can I preview the Fluent styles using Fabric 6?
 
-If you want to preview the Fluent styles and how they will affect your existing Fabric 6 site, follow the [Fluent customization steps](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Fluent-theme-in-Fabric-6) outlined in our wiki.
+If you want to preview the Fluent styles and how they will affect your existing Fabric 6 site, follow the [Fluent customization steps](https://github.com/microsoft/fluentui/wiki/Fluent-theme-in-Fabric-6) outlined in our wiki.
 
 ### Fluent for Fabric Core (CSS styles)
 

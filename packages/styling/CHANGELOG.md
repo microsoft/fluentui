@@ -1,7 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 03 Mar 2020 12:27:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.10.22
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.10.15
 Tue, 03 Mar 2020 12:27:24 GMT
 

@@ -15,7 +15,7 @@ export const ResizeGroupPageProps: IDocPageProps = {
   title: 'ResizeGroup',
   componentName: 'ResizeGroup',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ResizeGroup',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ResizeGroup',
   examples: [
     {
       title: 'Use ResizeGroup to move commands into an overflow menu',

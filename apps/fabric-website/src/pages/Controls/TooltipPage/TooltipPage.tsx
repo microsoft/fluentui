@@ -4,8 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { TooltipPageProps } from './TooltipPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/TooltipPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/TooltipPage/';
 
 export const TooltipPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (

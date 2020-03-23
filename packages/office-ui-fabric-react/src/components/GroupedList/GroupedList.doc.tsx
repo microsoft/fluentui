@@ -11,7 +11,7 @@ export const GroupedListPageProps: IDocPageProps = {
   title: 'GroupedList',
   componentName: 'GroupedList',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/GroupedList',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/GroupedList',
   examples: [
     {
       title: 'GroupedList basic example',
