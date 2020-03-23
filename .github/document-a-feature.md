@@ -63,7 +63,7 @@ Label.propTypes = {
   corner: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(Label._meta.props.corner)]),
 
   /** Add an icon by icon className or pass an <Icon /> */
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 ```
 

@@ -10,7 +10,7 @@ export class PivotItem extends React.Component<IPivotItemProps, {}> {
 
     initializeComponentRef(this);
     warnDeprecations(COMPONENT_NAME, props, {
-      linkText: 'headerText'
+      linkText: 'headerText',
     });
   }
 

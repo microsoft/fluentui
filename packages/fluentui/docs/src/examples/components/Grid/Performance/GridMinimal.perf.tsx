@@ -1,4 +1,4 @@
-import { Grid } from '@fluentui/react';
+import { Grid } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const GridMinimalPerf = () => <Grid />;

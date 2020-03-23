@@ -7,5 +7,5 @@ import { PersonaCoinView } from './PersonaCoin.view';
 export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps> = createComponent(PersonaCoinView, {
   displayName: 'PersonaCoin',
   styles: PersonaCoinStyles,
-  state: usePersonaCoinState
+  state: usePersonaCoinState,
 });

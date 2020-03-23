@@ -1,4 +1,4 @@
-import { Table } from '@fluentui/react';
+import { Table } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const TableMinimalPerf = () => <Table />;

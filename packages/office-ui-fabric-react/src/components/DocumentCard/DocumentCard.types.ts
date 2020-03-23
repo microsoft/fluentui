@@ -42,7 +42,8 @@ export interface IDocumentCardProps extends IBaseProps<IDocumentCard>, React.HTM
   /**
    * Aria role assigned to the documentCard (Eg. button, link).
    * Use this to override the default assignment.
-   * @defaultvalue When `onClick` is provided, default role will be 'button'. When `onClickHref` is provided, default role will be 'link'.
+   * @defaultvalue When `onClick` is provided, default role will be 'button'.
+   * When `onClickHref` is provided, default role will be 'link'.
    */
   role?: string;
 
@@ -87,7 +88,7 @@ export enum DocumentCardType {
   /**
    * Compact layout. Displays the preview beside the details, rather than above.
    */
-  compact = 1
+  compact = 1,
 }
 
 /**

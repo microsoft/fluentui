@@ -20,7 +20,7 @@ export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     const content: JSX.Element = (

@@ -6,12 +6,12 @@ const styles = mergeStyleSets({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    margin: '28px 0 52px 0'
+    margin: '28px 0 52px 0',
   },
   item: {
     minWidth: '50%',
-    marginBottom: 20
-  }
+    marginBottom: 20,
+  },
 });
 
 export const AnimationDetailGrid: React.FunctionComponent<IAnimationDetailGridProps> = props => {

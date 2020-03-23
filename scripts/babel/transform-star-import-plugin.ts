@@ -8,9 +8,12 @@ import { BabelPlugin } from './types';
 const createDefaultImportDeclaration = (
   t: typeof T,
   declaration: T.ImportDeclaration,
-  specifier: T.ImportNamespaceSpecifier
+  specifier: T.ImportNamespaceSpecifier,
 ): T.ImportDeclaration =>
-  t.importDeclaration([t.importDefaultSpecifier(t.identifier(specifier.local.name))], t.stringLiteral(declaration.source.value));
+  t.importDeclaration(
+    [t.importDefaultSpecifier(t.identifier(specifier.local.name))],
+    t.stringLiteral(declaration.source.value),
+  );
 
 /**
  * A plugin for Babel that performs AST transform:
@@ -26,8 +29,8 @@ const starImportToDefaultPlugin: BabelPlugin = ({ types: t }) => ({
       if (specifiers.length === 1 && t.isImportNamespaceSpecifier(specifier)) {
         path.replaceWith(createDefaultImportDeclaration(t, path.node, specifier));
       }
-    }
-  }
+    },
+  },
 });
 
 export default starImportToDefaultPlugin;

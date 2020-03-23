@@ -1,6 +1,11 @@
 import * as React from 'react';
 import { classNamesFunction, KeyCodes, Async, initializeComponentRef } from '../../Utilities';
-import { ExpandingCardMode, IExpandingCardProps, IExpandingCardStyles, IExpandingCardStyleProps } from './ExpandingCard.types';
+import {
+  ExpandingCardMode,
+  IExpandingCardProps,
+  IExpandingCardStyles,
+  IExpandingCardStyleProps,
+} from './ExpandingCard.types';
 import { CardCallout } from './CardCallout/CardCallout';
 
 const getClassNames = classNamesFunction<IExpandingCardStyleProps, IExpandingCardStyles>();
@@ -14,7 +19,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
   public static defaultProps = {
     compactCardHeight: 156,
     expandedCardHeight: 384,
-    directionalHintFixed: true
+    directionalHintFixed: true,
   };
 
   private _classNames: { [key in keyof IExpandingCardStyles]: string };
@@ -29,7 +34,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
 
     this.state = {
       firstFrameRendered: false,
-      needsScroll: false
+      needsScroll: false,
     };
   }
 
@@ -53,7 +58,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
       className,
       expandedCardHeight,
       needsScroll: needsScroll,
-      expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered
+      expandedCardFirstFrameRendered: mode === ExpandingCardMode.expanded && firstFrameRendered,
     });
 
     const content: JSX.Element = (
@@ -63,7 +68,9 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
       </div>
     );
 
-    return <CardCallout {...this.props} content={content} finalHeight={finalHeight} className={this._classNames.root} />;
+    return (
+      <CardCallout {...this.props} content={content} finalHeight={finalHeight} className={this._classNames.root} />
+    );
   }
 
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
@@ -77,12 +84,12 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
   };
 
   private _onRenderExpandedCard = (): JSX.Element => {
-    // firstFrameRendered helps in initially setting height of expanded card to 1px, even if
-    // mode prop is set to ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
+    // firstFrameRendered helps in initially setting height of expanded card to 1px, even if mode prop is set to
+    // ExpandingCardMode.expanded on first render. This is to make sure transition animation takes place.
     !this.state.firstFrameRendered &&
       this._async.requestAnimationFrame(() => {
         this.setState({
-          firstFrameRendered: true
+          firstFrameRendered: true,
         });
       });
 
@@ -100,7 +107,7 @@ export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExp
     this._async.requestAnimationFrame(() => {
       if (this._expandedElem.current && this._expandedElem.current.scrollHeight >= expandedCardHeight!) {
         this.setState({
-          needsScroll: true
+          needsScroll: true,
         });
       }
     });

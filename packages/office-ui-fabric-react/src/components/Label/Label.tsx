@@ -9,6 +9,6 @@ export const Label: React.FunctionComponent<ILabelProps> = styled<ILabelProps, I
   getStyles,
   undefined,
   {
-    scope: 'Label'
-  }
+    scope: 'Label',
+  },
 );

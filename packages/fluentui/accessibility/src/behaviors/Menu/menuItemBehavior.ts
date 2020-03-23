@@ -28,7 +28,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
 const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
   attributes: {
     wrapper: {
-      role: 'presentation'
+      role: 'presentation',
     },
     root: {
       role: 'menuitem',
@@ -39,34 +39,34 @@ const menuItemBehavior: Accessibility<MenuItemBehaviorProps> = props => ({
       'aria-labelledby': props['aria-labelledby'],
       'aria-describedby': props['aria-describedby'],
       'aria-disabled': props.disabled,
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
+    },
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
     },
     wrapper: {
       closeAllMenus: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
       },
       closeAllMenusAndFocusNextParentItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
       },
       closeMenuAndFocusTrigger: {
-        keyCombinations: [{ keyCode: keyboardKey.Escape }]
+        keyCombinations: [{ keyCode: keyboardKey.Escape }],
       },
       closeMenu: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
       },
       openMenu: {
-        keyCombinations: [{ keyCode: props.vertical ? keyboardKey.ArrowRight : keyboardKey.ArrowDown }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: props.vertical ? keyboardKey.ArrowRight : keyboardKey.ArrowDown }],
+      },
+    },
+  },
 });
 
 export default menuItemBehavior;

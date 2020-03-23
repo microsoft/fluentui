@@ -3,12 +3,12 @@ import { merge } from '@uifabric/utilities';
 
 const defaultTheme: IPartialTheme = {
   colors: {
-    background: 'white'
+    background: 'white',
   },
   fonts: {
-    default: `"Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif`
+    default: `"Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif`,
   },
-  components: {}
+  components: {},
 };
 
 interface IBaseTheme extends Omit<ITheme, 'schemes'> {
@@ -27,7 +27,7 @@ export function createTheme(baseTheme: IBaseTheme, ...themes: IPartialTheme[]): 
     merge(finalTheme, rest);
 
     finalTheme.schemes = {
-      default: finalTheme
+      default: finalTheme,
     };
 
     for (const schemeName in schemes) {

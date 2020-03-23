@@ -12,14 +12,14 @@ const menuProps: IContextualMenuProps = {
     {
       key: 'emailMessage',
       text: 'Email message',
-      iconProps: { iconName: 'Mail' }
+      iconProps: { iconName: 'Mail' },
     },
     {
       key: 'calendarEvent',
       text: 'Calendar event',
-      iconProps: { iconName: 'Calendar' }
-    }
-  ]
+      iconProps: { iconName: 'Calendar' },
+    },
+  ],
 };
 const addIcon: IIconProps = { iconName: 'Add' };
 const mailIcon: IIconProps = { iconName: 'Mail' };

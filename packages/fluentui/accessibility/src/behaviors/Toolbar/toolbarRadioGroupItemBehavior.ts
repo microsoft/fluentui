@@ -14,10 +14,10 @@ const toolbarRadioGroupItemBehavior: Accessibility<ToolbarRadioGroupItemBehavior
       root: {
         role: 'radio',
         'aria-checked': props.active,
-        'aria-disabled': props.disabled
-      }
+        'aria-disabled': props.disabled,
+      },
     },
-    keyActions: buttonBehavior(props).keyActions
+    keyActions: buttonBehavior(props).keyActions,
   };
 
   if (process.env.NODE_ENV !== 'production') {

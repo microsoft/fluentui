@@ -20,7 +20,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
     this._async = new Async(this);
 
     this.state = {
-      percentComplete: 0
+      percentComplete: 0,
     };
     this._startProgressDemo = this._startProgressDemo.bind(this);
   }
@@ -36,13 +36,15 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
   public render(): JSX.Element {
     const { percentComplete } = this.state;
 
-    return <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />;
+    return (
+      <ProgressIndicator label="Example title" description="Example description" percentComplete={percentComplete} />
+    );
   }
 
   private _startProgressDemo(): void {
     // reset the demo
     this.setState({
-      percentComplete: 0
+      percentComplete: 0,
     });
 
     // update progress
@@ -56,7 +58,7 @@ export class ProgressIndicatorBasicExample extends React.Component<{}, IProgress
         this._async.setTimeout(this._startProgressDemo, RESTART_WAIT_TIME);
       }
       this.setState({
-        percentComplete: percentComplete
+        percentComplete: percentComplete,
       });
     }, INTERVAL_DELAY);
   }

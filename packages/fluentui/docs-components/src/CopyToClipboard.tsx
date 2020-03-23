@@ -32,7 +32,7 @@ const CopyToClipboard: React.FunctionComponent<CopyToClipboardProps> = props => 
 CopyToClipboard.propTypes = {
   children: PropTypes.func.isRequired,
   timeout: PropTypes.number,
-  value: PropTypes.string.isRequired
+  value: PropTypes.string.isRequired,
 };
 
 export default CopyToClipboard;

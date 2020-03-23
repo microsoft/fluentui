@@ -14,7 +14,7 @@ export const Icon: React.FunctionComponent<IIconProps> = styled<IIconProps, IIco
   getStyles,
   undefined,
   {
-    scope: 'Icon'
+    scope: 'Icon',
   },
-  true
+  true,
 );

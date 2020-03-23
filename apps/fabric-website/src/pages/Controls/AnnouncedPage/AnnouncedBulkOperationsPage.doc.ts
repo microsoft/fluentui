@@ -8,6 +8,6 @@ export const AnnouncedBulkOperationsPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'Announced - Bulk Operations',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

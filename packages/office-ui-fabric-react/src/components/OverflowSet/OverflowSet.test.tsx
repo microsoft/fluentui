@@ -17,7 +17,7 @@ function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeyti
     Object.keys(keytipManager.keytips).map(key => keytipManager.keytips[key]),
     (uniqueKeytip: IUniqueKeytip) => {
       return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
-    }
+    },
   );
   return ktp ? ktp.keytip : undefined;
 }
@@ -27,7 +27,7 @@ function getPersistedKeytip(keytipManager: KeytipManager, keySequences: string[]
     Object.keys(keytipManager.persistedKeytips).map(key => keytipManager.persistedKeytips[key]),
     (uniqueKeytip: IUniqueKeytip) => {
       return arraysEqual(uniqueKeytip.keytip.keySequences, keySequences);
-    }
+    },
   );
   return ktp ? ktp.keytip : undefined;
 }
@@ -37,7 +37,9 @@ describe('OverflowSet', () => {
     test('basicSnapshot', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
-      const component = renderer.create(<OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />);
+      const component = renderer.create(
+        <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
+      );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
@@ -46,7 +48,7 @@ describe('OverflowSet', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
       const component = renderer.create(
-        <OverflowSet className="foobar" onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />
+        <OverflowSet className="foobar" onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -56,7 +58,12 @@ describe('OverflowSet', () => {
       const onRenderItem = sinon.spy();
       const onRenderOverflowButton = sinon.spy();
       const component = renderer.create(
-        <OverflowSet className="foobar" vertical={true} onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} />
+        <OverflowSet
+          className="foobar"
+          vertical={true}
+          onRenderItem={onRenderItem}
+          onRenderOverflowButton={onRenderOverflowButton}
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -74,7 +81,9 @@ describe('OverflowSet', () => {
   it('does not render overflow when overflow items is an empty array', () => {
     const onRenderItem = sinon.spy();
     const onRenderOverflowButton = sinon.spy();
-    shallow(<OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />);
+    shallow(
+      <OverflowSet onRenderItem={onRenderItem} onRenderOverflowButton={onRenderOverflowButton} overflowItems={[]} />,
+    );
 
     expect(onRenderOverflowButton.called).toEqual(false);
   });
@@ -111,32 +120,32 @@ describe('OverflowSet', () => {
         overflowItemKeytip1: {
           content: 'A',
           keySequences: ['a'],
-          onExecute: jest.fn()
+          onExecute: jest.fn(),
         },
         overflowItemKeytip2: {
           content: 'B',
           keySequences: ['b'],
-          onExecute: jest.fn()
+          onExecute: jest.fn(),
         },
         overflowItemKeytip3: {
           content: 'C',
           keySequences: ['c'],
-          onExecute: jest.fn()
+          onExecute: jest.fn(),
         },
         overflowItemKeytip4: {
           content: 'D',
           keySequences: ['d'],
-          onExecute: jest.fn()
+          onExecute: jest.fn(),
         },
         overflowItemKeytip5: {
           content: 'E',
           keySequences: ['d', 'e'],
-          onExecute: jest.fn()
+          onExecute: jest.fn(),
         },
         overflowItemKeytip6: {
           content: 'F',
           keySequences: ['d', 'f'],
-          onExecute: jest.fn()
+          onExecute: jest.fn(),
         },
         overflowButtonKeytip: {
           // Overflow button
@@ -145,34 +154,34 @@ describe('OverflowSet', () => {
           onExecute: (el: HTMLElement) => {
             // Find the overflow button and manually click it to open the overflow menu
             overflowSet.find(ktpTargetFromId('ktp-x')).simulate('click');
-          }
-        }
+          },
+        },
       };
 
       items = [
         {
           key: 'item1',
           name: 'Item 1',
-          keytipProps: overflowKeytips.overflowItemKeytip1
+          keytipProps: overflowKeytips.overflowItemKeytip1,
         },
         {
           key: 'item2',
           name: 'Item 2',
-          keytipProps: overflowKeytips.overflowItemKeytip2
-        }
+          keytipProps: overflowKeytips.overflowItemKeytip2,
+        },
       ];
 
       overflowItems = [
         {
           key: 'item3',
           name: 'Item 3',
-          keytipProps: overflowKeytips.overflowItemKeytip3
+          keytipProps: overflowKeytips.overflowItemKeytip3,
         },
         {
           key: 'item4',
           name: 'Item 4',
-          keytipProps: overflowKeytips.overflowItemKeytip4
-        }
+          keytipProps: overflowKeytips.overflowItemKeytip4,
+        },
       ];
     });
 
@@ -207,7 +216,7 @@ describe('OverflowSet', () => {
             items={items}
             overflowItems={overflowItems}
             keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
-          />
+          />,
         );
         // Persisted keytips will have the original key sequence of the items in the overflow
         // Regular keytips
@@ -228,13 +237,13 @@ describe('OverflowSet', () => {
             items={items}
             overflowItems={overflowItems}
             keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
-          />
+          />,
         );
 
         // Add the first overflow item to 'items'
         overflowSet.setProps({
           items: items.concat(overflowItems.slice(0, 1)),
-          overflowItems: overflowItems.slice(1, 2)
+          overflowItems: overflowItems.slice(1, 2),
         });
 
         // Regular keytips
@@ -247,7 +256,7 @@ describe('OverflowSet', () => {
         expect(getKeytip(keytipManager, overflowKeytips.overflowButtonKeytip.keySequences)).toBeDefined();
       });
 
-      it('triggering the overflow button keytip should register the menu item keytips with their modified sequence', () => {
+      it('registers menu item keytips with modified sequents when overflow button is triggered', () => {
         jest.useFakeTimers();
 
         // enable keytip mode to update the KeytipTree
@@ -263,7 +272,7 @@ describe('OverflowSet', () => {
               keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
             />
             <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-          </div>
+          </div>,
         );
 
         // Set current keytip at root, like we've entered keytip mode
@@ -304,7 +313,7 @@ describe('OverflowSet', () => {
               keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
             />
             <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-          </div>
+          </div>,
         );
 
         // Set current keytip at root, like we've entered keytip mode
@@ -316,10 +325,14 @@ describe('OverflowSet', () => {
 
         // item3
         const item3Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip3.keySequences);
-        expect(arraysEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+        expect(
+          arraysEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences),
+        ).toEqual(true);
         // item4
         const item4Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip4.keySequences);
-        expect(arraysEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+        expect(
+          arraysEqual(item4Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences),
+        ).toEqual(true);
       });
 
       it("correctly picks up a disabled keytip and doesn't call it", () => {
@@ -328,13 +341,13 @@ describe('OverflowSet', () => {
             key: 'item3',
             name: 'Item 3',
             disabled: true,
-            keytipProps: overflowKeytips.overflowItemKeytip3
+            keytipProps: overflowKeytips.overflowItemKeytip3,
           },
           {
             key: 'item4',
             name: 'Item 4',
-            keytipProps: overflowKeytips.overflowItemKeytip4
-          }
+            keytipProps: overflowKeytips.overflowItemKeytip4,
+          },
         ];
         overflowSet = mount(
           <div>
@@ -346,7 +359,7 @@ describe('OverflowSet', () => {
               keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
             />
             <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-          </div>
+          </div>,
         );
 
         // Set current keytip at root, like we've entered keytip mode
@@ -378,21 +391,21 @@ describe('OverflowSet', () => {
                 ...overflowKeytips.overflowItemKeytip4,
                 onExecute: (el: HTMLElement) => {
                   el.click();
-                }
+                },
               },
               subMenuProps: {
                 items: [
                   {
                     key: 'item5',
-                    name: 'Item 5'
+                    name: 'Item 5',
                   },
                   {
                     key: 'item6',
-                    name: 'Item 6'
-                  }
-                ]
-              }
-            }
+                    name: 'Item 6',
+                  },
+                ],
+              },
+            },
           ];
 
           overflowSet = mount(
@@ -405,7 +418,7 @@ describe('OverflowSet', () => {
                 keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
               />
               <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-            </div>
+            </div>,
           );
 
           // Set current keytip at root, like we've entered keytip mode
@@ -431,14 +444,14 @@ describe('OverflowSet', () => {
                 ...overflowKeytips.overflowItemKeytip4,
                 onExecute: (el: HTMLElement) => {
                   el.click();
-                }
+                },
               },
               subMenuProps: {
                 items: [
                   {
                     key: 'item5',
                     name: 'Item 5',
-                    keytipProps: overflowKeytips.overflowItemKeytip5
+                    keytipProps: overflowKeytips.overflowItemKeytip5,
                   },
                   {
                     key: 'item6',
@@ -451,15 +464,15 @@ describe('OverflowSet', () => {
                           name: 'Item 7',
                           keytipProps: {
                             content: 'X',
-                            keySequences: ['d', 'f', 'x']
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
+                            keySequences: ['d', 'f', 'x'],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
           ];
 
           overflowSet = mount(
@@ -472,7 +485,7 @@ describe('OverflowSet', () => {
                 keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
               />
               <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-            </div>
+            </div>,
           );
 
           // Set current keytip at root, like we've entered keytip mode
@@ -495,7 +508,9 @@ describe('OverflowSet', () => {
           const submenuKeytips = layerRef.current!.state.visibleKeytips;
           submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
             expect(submenuKeytip.visible).toEqual(true);
-            expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+            expect(
+              arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences),
+            ).toEqual(true);
           });
         });
 
@@ -512,14 +527,14 @@ describe('OverflowSet', () => {
                 onExecute: (el: HTMLElement) => {
                   el.click();
                 },
-                hasMenu: true
+                hasMenu: true,
               },
               subMenuProps: {
                 items: [
                   {
                     key: 'item5',
                     name: 'Item 5',
-                    keytipProps: overflowKeytips.overflowItemKeytip5
+                    keytipProps: overflowKeytips.overflowItemKeytip5,
                   },
                   {
                     key: 'item6',
@@ -532,15 +547,15 @@ describe('OverflowSet', () => {
                           name: 'Item 7',
                           keytipProps: {
                             content: 'X',
-                            keySequences: ['d', 'f', 'x']
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
+                            keySequences: ['d', 'f', 'x'],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
           ];
 
           const delayedOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
@@ -559,7 +574,7 @@ describe('OverflowSet', () => {
                       // Find the overflow button and manually click it to open the overflow menu
                       overflowSet.find(ktpTargetFromId('ktp-x')).simulate('click');
                     }, 2000);
-                  }
+                  },
                 }}
               />
             );
@@ -575,7 +590,7 @@ describe('OverflowSet', () => {
                 keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
               />
               <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-            </div>
+            </div>,
           );
 
           // Set current keytip at root, like we've entered keytip mode
@@ -589,7 +604,9 @@ describe('OverflowSet', () => {
           const submenuKeytips = layerRef.current!.state.visibleKeytips;
           submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
             expect(submenuKeytip.visible).toEqual(true);
-            expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+            expect(
+              arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences),
+            ).toEqual(true);
           });
         });
       });
@@ -607,14 +624,14 @@ describe('OverflowSet', () => {
                 ...overflowKeytips.overflowItemKeytip4,
                 onExecute: (el: HTMLElement) => {
                   el.click();
-                }
+                },
               },
               customSubMenu: {
                 items: [
                   {
                     key: 'item5',
                     name: 'Item 5',
-                    keytipProps: overflowKeytips.overflowItemKeytip5
+                    keytipProps: overflowKeytips.overflowItemKeytip5,
                   },
                   {
                     key: 'item6',
@@ -627,15 +644,15 @@ describe('OverflowSet', () => {
                           name: 'Item 7',
                           keytipProps: {
                             content: 'X',
-                            keySequences: ['d', 'f', 'x']
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
+                            keySequences: ['d', 'f', 'x'],
+                          },
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
           ];
 
           const itemSubMenuProvider = (item: IOverflowSetItemProps) => {
@@ -656,7 +673,7 @@ describe('OverflowSet', () => {
                 itemSubMenuProvider={itemSubMenuProvider}
               />
               <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
-            </div>
+            </div>,
           );
 
           // Set current keytip at root, like we've entered keytip mode
@@ -670,7 +687,9 @@ describe('OverflowSet', () => {
           const submenuKeytips = layerRef.current!.state.visibleKeytips;
           submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
             expect(submenuKeytip.visible).toEqual(true);
-            expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+            expect(
+              arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences),
+            ).toEqual(true);
           });
         });
       });

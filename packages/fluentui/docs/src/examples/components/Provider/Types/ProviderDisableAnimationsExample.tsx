@@ -1,17 +1,17 @@
 import * as React from 'react';
-import { Animation, Icon, Provider } from '@fluentui/react';
+import { Animation, Icon, Provider } from '@fluentui/react-northstar';
 
 const spinner = {
   keyframe: {
     from: {
-      transform: 'rotate(0deg)'
+      transform: 'rotate(0deg)',
     },
     to: {
-      transform: 'rotate(360deg)'
-    }
+      transform: 'rotate(360deg)',
+    },
   },
   duration: '5s',
-  iterationCount: 'infinite'
+  iterationCount: 'infinite',
 };
 
 const AnimatedIcon = () => (

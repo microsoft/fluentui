@@ -10,23 +10,23 @@ const ButtonTheme = {
       styles: {
         root: {
           fontSize: 24,
-          color: 'purple'
-        }
-      }
+          color: 'purple',
+        },
+      },
     },
     Text: {
       styles: {
         root: {
-          color: 'purple'
-        }
-      }
-    }
-  }
+          color: 'purple',
+        },
+      },
+    },
+  },
 };
 
 const getButtonStyles: IButtonComponent['styles'] = {
   icon: ButtonTheme.scopedSettings.Icon.styles.root,
-  content: ButtonTheme.scopedSettings.Text.styles.root
+  content: ButtonTheme.scopedSettings.Text.styles.root,
 };
 
 // tslint:disable:jsx-no-lambda
@@ -40,8 +40,15 @@ export class SlotsStyledExample extends React.Component<{}, {}> {
             icon={{ iconName: 'share', style: ButtonTheme.scopedSettings.Icon.styles.root }}
             content="Icon as IIconProps with style"
           />
-          <Button icon="share" content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }} />
-          <Button icon={{ iconName: 'share', style: { color: 'red' } }} styles={getButtonStyles} content="Button styles prop" />
+          <Button
+            icon="share"
+            content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }}
+          />
+          <Button
+            icon={{ iconName: 'share', style: { color: 'red' } }}
+            styles={getButtonStyles}
+            content="Button styles prop"
+          />
           <Customizer {...ButtonTheme}>
             <Button icon="share" content="Button scopedSettings" />
           </Customizer>

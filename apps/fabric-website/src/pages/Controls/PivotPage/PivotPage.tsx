@@ -4,7 +4,7 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { PivotPageProps } from './PivotPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/PivotPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/PivotPage/';
 
 export const PivotPage: React.FunctionComponent<IControlsPageProps> = props => {
   return (
@@ -25,10 +25,12 @@ function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | 
           editUrl: baseUrl + 'docs/ios/PivotImplementation.md',
           content: (
             <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PivotPage/docs/ios/PivotImplementation.md') as string}
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/PivotPage/docs/ios/PivotImplementation.md') as string
+              }
             </Markdown>
-          )
-        }
+          ),
+        },
       ];
   }
 }

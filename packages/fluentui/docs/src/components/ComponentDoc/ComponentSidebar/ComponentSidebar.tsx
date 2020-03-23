@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Menu, Segment } from '@fluentui/react';
+import { Menu, Segment } from '@fluentui/react-northstar';
 
 import ComponentSidebarSection from './ComponentSidebarSection';
 
@@ -8,7 +8,7 @@ const sidebarStyle = {
   paddingBottom: '0.1em',
   paddingTop: '0.1em',
   border: 0,
-  background: 'none'
+  background: 'none',
 };
 
 type ComponentSidebarProps = {
@@ -50,7 +50,7 @@ class ComponentSidebar extends React.Component<ComponentSidebarProps, any> {
           sectionName={sectionName}
           onItemClick={onItemClick}
         />
-      )
+      ),
     }));
 
     // TODO: use a Sticky component instead of position:fixed, when available

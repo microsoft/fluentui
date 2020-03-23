@@ -44,7 +44,7 @@ const CodeSnippetLabel: React.FunctionComponent<CopySnippetLabelProps> = props =
           position: 'absolute',
           right: '0.8rem',
           top: '0.8rem',
-          zIndex: 100
+          zIndex: 100,
         }}
         title={copyable ? 'Copy' : undefined}
       >

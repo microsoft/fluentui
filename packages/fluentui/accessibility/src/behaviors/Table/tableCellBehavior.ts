@@ -8,9 +8,9 @@ import { Accessibility } from '../../types';
 const tableCellBehavior: Accessibility<TableCellBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'cell'
-    }
-  }
+      role: 'cell',
+    },
+  },
 });
 
 export default tableCellBehavior;

@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { KeyCodes, css, getId, classNamesFunction, initializeComponentRef } from '@uifabric/utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { addMonths, compareDatePart, getMonthStart, getMonthEnd } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import {
+  addMonths,
+  compareDatePart,
+  getMonthStart,
+  getMonthEnd,
+} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { CalendarDayGrid } from '../../CalendarDayGrid/CalendarDayGrid';
@@ -19,7 +24,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<ICalendarDayProps>,
-    prevState: Readonly<ICalendarDayState>
+    prevState: Readonly<ICalendarDayState>,
   ): Partial<ICalendarDayState> | null {
     const { dateTimeFormatter, strings } = nextProps;
 
@@ -27,26 +32,28 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
     const nextDate = nextProps.navigatedDate;
     if (!previousDate) {
       return {
-        previousNavigatedDate: nextProps.navigatedDate
+        previousNavigatedDate: nextProps.navigatedDate,
       };
     }
 
-    if (dateTimeFormatter.formatMonthYear(previousDate, strings) !== dateTimeFormatter.formatMonthYear(nextDate, strings)) {
+    if (
+      dateTimeFormatter.formatMonthYear(previousDate, strings) !== dateTimeFormatter.formatMonthYear(nextDate, strings)
+    ) {
       if (previousDate < nextDate) {
         return {
           animateBackwards: false,
-          previousNavigatedDate: nextProps.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate,
         };
       } else if (previousDate > nextDate) {
         return {
           animateBackwards: true,
-          previousNavigatedDate: nextProps.navigatedDate
+          previousNavigatedDate: nextProps.navigatedDate,
         };
       }
     }
 
     return {
-      previousNavigatedDate: nextProps.navigatedDate
+      previousNavigatedDate: nextProps.navigatedDate,
     };
   }
 
@@ -77,7 +84,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
       onNavigateDate,
       showWeekNumbers,
       dateRangeType,
-      animationDirection
+      animationDirection,
     } = this.props;
     const dayPickerId = getId();
     const monthAndYearId = getId();
@@ -88,14 +95,15 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
       headerIsClickable: !!onHeaderSelect,
       showWeekNumbers: showWeekNumbers,
       animateBackwards: this.state.animateBackwards,
-      animationDirection: animationDirection
+      animationDirection: animationDirection,
     });
 
     return (
       <div className={classNames.root} id={dayPickerId}>
         <div className={classNames.header}>
           <button
-            aria-live="polite" // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            // if this component rerenders when text changes, aria-live will not be announced, so make key consistent
+            aria-live="polite"
             aria-atomic="true"
             id={monthAndYearId}
             className={classNames.monthAndYear}
@@ -134,7 +142,10 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
     }
   }
 
-  private renderMonthNavigationButtons = (classNames: IProcessedStyleSet<ICalendarDayStyles>, dayPickerId: string): JSX.Element => {
+  private renderMonthNavigationButtons = (
+    classNames: IProcessedStyleSet<ICalendarDayStyles>,
+    dayPickerId: string,
+  ): JSX.Element => {
     const { minDate, maxDate, navigatedDate, allFocusable, strings, navigationIcons, showCloseButton } = this.props;
     const leftNavigationIcon = navigationIcons.leftNavigation;
     const rightNavigationIcon = navigationIcons.rightNavigation;
@@ -148,7 +159,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
       <div className={classNames.monthComponents}>
         <button
           className={css(classNames.headerIconButton, {
-            [classNames.disabledStyle]: !prevMonthInBounds
+            [classNames.disabledStyle]: !prevMonthInBounds,
           })}
           disabled={!allFocusable && !prevMonthInBounds}
           aria-disabled={!prevMonthInBounds}
@@ -166,7 +177,7 @@ export class CalendarDayBase extends React.Component<ICalendarDayProps, ICalenda
         </button>
         <button
           className={css(classNames.headerIconButton, {
-            [classNames.disabledStyle]: !nextMonthInBounds
+            [classNames.disabledStyle]: !nextMonthInBounds,
           })}
           disabled={!allFocusable && !nextMonthInBounds}
           aria-disabled={!nextMonthInBounds}

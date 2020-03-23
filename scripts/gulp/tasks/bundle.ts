@@ -21,21 +21,24 @@ task('bundle:package:clean', () =>
     `${paths.packageDist(packageName)}/es/*`,
     `${paths.packageDist(packageName)}/commonjs/*`,
     `${paths.packageDist(packageName)}/umd/*`,
-    `${paths.packageDist(packageName)}/dts`
-  ])
+    `${paths.packageDist(packageName)}/dts`,
+  ]),
 );
 
 // ----------------------------------------
 // Build
 // ----------------------------------------
-const componentsSrc = [paths.packageSrc(packageName, '**/*.{ts,tsx}'), `!${paths.packageSrc(packageName, '**/umd.ts')}`];
+const componentsSrc = [
+  paths.packageSrc(packageName, '**/*.{ts,tsx}'),
+  `!${paths.packageSrc(packageName, '**/umd.ts')}`,
+];
 
 task('bundle:package:commonjs', () =>
   src(componentsSrc)
     .pipe(sourcemaps.init())
     .pipe(babel())
     .pipe(sourcemaps.write('.'))
-    .pipe(dest(paths.packageDist(packageName, 'commonjs')))
+    .pipe(dest(paths.packageDist(packageName, 'commonjs'))),
 );
 
 task('bundle:package:es', () =>
@@ -43,7 +46,7 @@ task('bundle:package:es', () =>
     .pipe(sourcemaps.init())
     .pipe(babel({ caller: { useESModules: true } } as any))
     .pipe(sourcemaps.write('.'))
-    .pipe(dest(paths.packageDist(packageName, 'es')))
+    .pipe(dest(paths.packageDist(packageName, 'es'))),
 );
 
 task('bundle:package:types:tsc', () => {
@@ -86,6 +89,6 @@ task('bundle:package:umd', cb => {
 
 task(
   'bundle:package:no-umd',
-  series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types'))
+  series('bundle:package:clean', parallel('bundle:package:commonjs', 'bundle:package:es', 'bundle:package:types')),
 );
 task('bundle:package', series('bundle:package:no-umd', 'bundle:package:umd'));

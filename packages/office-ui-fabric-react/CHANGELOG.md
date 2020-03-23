@@ -1,7 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 17 Mar 2020 20:48:59 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.105.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.105.1
+Thu, 19 Mar 2020 12:29:37 GMT
+
+### Patches
+
+- Run prettier: 120 line length, trailing commas. And minor documentation updates prompted by line length changes. (elcraig@microsoft.com)
 ## 7.105.0
 Tue, 17 Mar 2020 20:48:59 GMT
 

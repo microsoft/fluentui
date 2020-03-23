@@ -9,7 +9,7 @@ export interface ISuggestionItemDefaultStyles {
 
 const GlobalClassNames = {
   root: 'ms-FloatingPeopleSuggestions-SuggestionItemDefault-persona',
-  callout: 'ms-FloatingPeopleSuggestions-SuggestionItemDefault-personaContent'
+  callout: 'ms-FloatingPeopleSuggestions-SuggestionItemDefault-personaContent',
 };
 
 export const getStyles = (props: ISuggestionItemDefaultStylesProps): ISuggestionItemDefaultStyles => {
@@ -29,10 +29,10 @@ export const getStyles = (props: ISuggestionItemDefaultStylesProps): ISuggestion
         width: '100%',
         selectors: {
           ['.ms-Persona-detail']: {
-            minHeight: '40px'
-          }
-        }
-      }
+            minHeight: '40px',
+          },
+        },
+      },
     ],
     personaContent: [
       classNames.callout,
@@ -41,8 +41,8 @@ export const getStyles = (props: ISuggestionItemDefaultStylesProps): ISuggestion
         width: '100%',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '7px 12px'
-      }
-    ]
+        padding: '7px 12px',
+      },
+    ],
   };
 };

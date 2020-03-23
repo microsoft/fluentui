@@ -9,8 +9,8 @@ const chatProtoStyle: Record<string, React.CSSProperties> = {
     overflow: 'hidden',
     padding: '0px',
     width: '1px',
-    position: 'absolute'
-  }
+    position: 'absolute',
+  },
 };
 
 export default chatProtoStyle;

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import GridImagePicker from './GridImagePicker/GridImagePicker';
 import { imageNames, getItemsData } from './dataMocks';
-import { Button, Popup, dialogBehavior } from '@fluentui/react';
+import { Button, Popup, dialogBehavior } from '@fluentui/react-northstar';
 
 const EmojiPicker = () => (
   <Popup
@@ -10,7 +10,7 @@ const EmojiPicker = () => (
     trigger={<Button icon="smile" aria-label="Choose an emoji." />}
     content={{
       content: <GridImagePicker items={getItemsData(imageNames, 'emoji of')} />,
-      'aria-label': 'Choose an emoji. Press Enter key to insert emoji.'
+      'aria-label': 'Choose an emoji. Press Enter key to insert emoji.',
     }}
   />
 );

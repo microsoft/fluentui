@@ -1,11 +1,23 @@
 import * as React from 'react';
 
-import { initializeComponentRef, KeyCodes, classNamesFunction, IStyleFunctionOrObject, css, styled } from '../../../Utilities';
+import {
+  initializeComponentRef,
+  KeyCodes,
+  classNamesFunction,
+  IStyleFunctionOrObject,
+  css,
+  styled,
+} from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 import { CommandButton, IButton } from '../../../Button';
 import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { Announced } from '../../../Announced';
-import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import {
+  ISuggestionsProps,
+  SuggestionActionType,
+  ISuggestionsStyleProps,
+  ISuggestionsStyles,
+} from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
 import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
@@ -23,7 +35,7 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
   SuggestionsItem,
   suggestionsItemStyles,
   undefined,
-  { scope: 'SuggestionItem' }
+  { scope: 'SuggestionItem' },
 );
 
 /**
@@ -42,7 +54,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     initializeComponentRef(this);
 
     this.state = {
-      selectedActionType: SuggestionActionType.none
+      selectedActionType: SuggestionActionType.none,
     };
   }
 
@@ -84,7 +96,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       suggestionsClassName,
       theme,
       styles,
-      suggestionsListId
+      suggestionsListId,
     } = this.props;
 
     // TODO
@@ -104,20 +116,26 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           className,
           suggestionsClassName,
           forceResolveButtonSelected: this.state.selectedActionType === SuggestionActionType.forceResolve,
-          searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore
+          searchForMoreButtonSelected: this.state.selectedActionType === SuggestionActionType.searchMore,
         })
       : {
           root: css('ms-Suggestions', className, legacyStyles.root),
           title: css('ms-Suggestions-title', legacyStyles.suggestionsTitle),
           searchForMoreButton: css('ms-SearchMore-button', legacyStyles.actionButton, {
-            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.searchMore
+            ['is-selected ' + legacyStyles.buttonSelected]:
+              this.state.selectedActionType === SuggestionActionType.searchMore,
           }),
           forceResolveButton: css('ms-forceResolve-button', legacyStyles.actionButton, {
-            ['is-selected ' + legacyStyles.buttonSelected]: this.state.selectedActionType === SuggestionActionType.forceResolve
+            ['is-selected ' + legacyStyles.buttonSelected]:
+              this.state.selectedActionType === SuggestionActionType.forceResolve,
           }),
           suggestionsAvailable: css('ms-Suggestions-suggestionsAvailable', legacyStyles.suggestionsAvailable),
-          suggestionsContainer: css('ms-Suggestions-container', legacyStyles.suggestionsContainer, suggestionsClassName),
-          noSuggestions: css('ms-Suggestions-none', legacyStyles.suggestionsNone)
+          suggestionsContainer: css(
+            'ms-Suggestions-container',
+            legacyStyles.suggestionsContainer,
+            suggestionsClassName,
+          ),
+          noSuggestions: css('ms-Suggestions-none', legacyStyles.suggestionsNone),
         };
 
     const spinnerStyles = this._classNames.subComponentStyles
@@ -164,7 +182,11 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
           </CommandButton>
         )}
         {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
-        {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : this._renderSuggestions()}
+        {hasNoSuggestions
+          ? onRenderNoResultFound
+            ? onRenderNoResultFound(undefined, noResults)
+            : noResults()
+          : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={this._searchForMoreButton}
@@ -322,7 +344,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       resultsMaximumNumber,
       showRemoveButtons,
       suggestionsContainerAriaLabel,
-      suggestionsListId
+      suggestionsListId,
     } = this.props;
 
     let { suggestions } = this.props;

@@ -7,7 +7,7 @@ import {
   IComboBoxProps,
   mergeStyles,
   PrimaryButton,
-  SelectableOptionMenuItemType
+  SelectableOptionMenuItemType,
 } from 'office-ui-fabric-react/lib/index';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
@@ -23,14 +23,14 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'G', text: 'Option G' },
   { key: 'H', text: 'Option H' },
   { key: 'I', text: 'Option I' },
-  { key: 'J', text: 'Option J' }
+  { key: 'J', text: 'Option J' },
 ];
 
 const wrapperClassName = mergeStyles({
   selectors: {
     '& > *': { marginBottom: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' }
-  }
+    '& .ms-ComboBox': { maxWidth: '300px' },
+  },
 });
 
 interface IComboBoxBasicExampleState {
@@ -44,7 +44,7 @@ export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExam
   constructor(props: {}) {
     super(props);
     this.state = {
-      dynamicErrorValue: ''
+      dynamicErrorValue: '',
     };
   }
 

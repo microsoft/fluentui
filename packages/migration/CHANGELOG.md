@@ -1,7 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.0.13
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.0.10
 Wed, 19 Feb 2020 12:21:05 GMT
 

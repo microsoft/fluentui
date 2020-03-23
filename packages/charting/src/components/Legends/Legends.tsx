@@ -5,5 +5,5 @@ import { getStyles } from './Legends.styles';
 
 export const Legends: React.FunctionComponent<ILegendsProps> = styled<ILegendsProps, ILegendStyleProps, ILegendsStyles>(
   LegendsBase,
-  getStyles
+  getStyles,
 );

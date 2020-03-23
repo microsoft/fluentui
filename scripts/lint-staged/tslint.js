@@ -64,8 +64,12 @@ function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
       continue;
     }
 
-    spawnSync(process.execPath, [tslintPath, '--config', tslintConfig, '-t', 'stylish', '-r', rulesPath, ...filteredFiles], {
-      stdio: 'inherit'
-    });
+    spawnSync(
+      process.execPath,
+      [tslintPath, '--config', tslintConfig, '-t', 'stylish', '-r', rulesPath, ...filteredFiles],
+      {
+        stdio: 'inherit',
+      },
+    );
   }
 }

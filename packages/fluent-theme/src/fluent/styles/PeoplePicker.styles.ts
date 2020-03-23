@@ -1,6 +1,11 @@
-import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from 'office-ui-fabric-react/lib/Pickers';
+import {
+  IPeoplePickerItemSelectedStyleProps,
+  IPeoplePickerItemSelectedStyles,
+} from 'office-ui-fabric-react/lib/Pickers';
 
-export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProps): Partial<IPeoplePickerItemSelectedStyles> => {
+export const PeoplePickerItemStyles = (
+  props: IPeoplePickerItemSelectedStyleProps,
+): Partial<IPeoplePickerItemSelectedStyles> => {
   const { selected, theme } = props;
   const { palette } = theme;
 
@@ -11,16 +16,16 @@ export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProp
         selectors: {
           ':active': {
             color: palette.white,
-            backgroundColor: palette.themeDark
-          }
-        }
+            backgroundColor: palette.themeDark,
+          },
+        },
       },
       !selected && {
-        color: palette.neutralPrimary
+        color: palette.neutralPrimary,
       },
       selected && {
-        color: palette.white
-      }
-    ]
+        color: palette.white,
+      },
+    ],
   };
 };

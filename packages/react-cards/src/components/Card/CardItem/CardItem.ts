@@ -7,7 +7,7 @@ import { CardItemView } from './CardItem.view';
 export const CardItem: React.FunctionComponent<ICardItemProps> = createComponent(CardItemView, {
   displayName: 'CardItem',
   styles,
-  tokens
+  tokens,
 });
 
 export default CardItem;

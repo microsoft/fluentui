@@ -32,7 +32,7 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
 
     initializeComponentRef(this);
     this.state = {
-      isCollapsed: false
+      isCollapsed: false,
     };
   }
 
@@ -51,24 +51,42 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
   }
 
   public render(): JSX.Element {
-    const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } = this.props;
+    const {
+      theme,
+      styles,
+      collapseButtonStyles,
+      className,
+      collapseButtonAriaLabel,
+      footerItems,
+      id,
+      items,
+    } = this.props;
 
     this._theme = theme!;
     this._colors = this.props.colors !== undefined ? this.props.colors : SidebarColors.Light;
     this._buttonStyles = getButtonColoredStyles(theme!, this._colors, this.props.buttonStyles);
 
-    this._classNames = getSidebarClassNames(getSidebarStyles(theme!, this._colors, styles), className, this.state.isCollapsed);
+    this._classNames = getSidebarClassNames(
+      getSidebarStyles(theme!, this._colors, styles),
+      className,
+      this.state.isCollapsed,
+    );
 
     const ButtonAs = this._getButtonAs();
 
     return (
-      <div className={this._classNames.root} role="menu" aria-orientation={'vertical'} aria-expanded={!this.state.isCollapsed}>
+      <div
+        className={this._classNames.root}
+        role="menu"
+        aria-orientation={'vertical'}
+        aria-expanded={!this.state.isCollapsed}
+      >
         <ScrollablePane
           className={this._classNames.content}
           styles={{
             contentContainer: {
-              overflowX: 'hidden'
-            }
+              overflowX: 'hidden',
+            },
           }}
         >
           {this.props.collapsible && (
@@ -87,7 +105,11 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
           </FocusZone>
         </ScrollablePane>
         {footerItems && (
-          <FocusZone direction={FocusZoneDirection.vertical} className={this._classNames.footer} key={`baSidebarFooter${id}`}>
+          <FocusZone
+            direction={FocusZoneDirection.vertical}
+            className={this._classNames.footer}
+            key={`baSidebarFooter${id}`}
+          >
             {footerItems.map((item: ISidebarItemProps) => this._renderItemInSidebar(item))}
           </FocusZone>
         )}
@@ -266,14 +288,14 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
           root: {
             borderBottomWidth: '1px',
             borderBottomStyle: 'solid',
-            borderBottomColor: this._theme.semanticColors.bodyDivider
+            borderBottomColor: this._theme.semanticColors.bodyDivider,
           },
           icon: {
             width: '0',
-            marginRight: '0'
-          }
+            marginRight: '0',
+          },
         }),
-        onRender: this._renderSidebarButtonMenuItem
+        onRender: this._renderSidebarButtonMenuItem,
       });
     }
 
@@ -293,10 +315,10 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
             calloutProps: {
               styles: {
                 root: {
-                  borderWidth: '0'
-                }
-              }
-            }
+                  borderWidth: '0',
+                },
+              },
+            },
           }}
           menuTriggerKeyCode={KeyCodes.right}
           className={this._getClassNames('ba-SidebarContextualMenuButton', item)}

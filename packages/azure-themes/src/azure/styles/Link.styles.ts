@@ -9,10 +9,10 @@ export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {
         color: semanticColors.link,
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            textDecoration: 'underline'
-          }
-        }
-      }
-    ]
+            textDecoration: 'underline',
+          },
+        },
+      },
+    ],
   };
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Props } from '@fluentui/react';
+import { Flex, Props } from '@fluentui/react-northstar';
 import { ChatData } from './services';
 
 import ChatPaneHeader from './chatPaneHeader';
@@ -13,7 +13,7 @@ const ChatPaneLayout: React.FunctionComponent<Props<{ chat: ChatData }>> = ({ ch
     styles={{
       backgroundColor: '#f3f2f1',
       width: '50%',
-      position: 'absolute'
+      position: 'absolute',
     }}
   >
     <ChatPaneHeader chat={chat} />

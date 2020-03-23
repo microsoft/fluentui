@@ -17,11 +17,11 @@ describe('KeytipManager', () => {
     const keytipSequenceB: string[] = ['b'];
     const keytipBProps: IKeytipProps = {
       keySequences: keytipSequenceB,
-      content: 'B'
+      content: 'B',
     };
 
     describe('registerKeytip', () => {
-      it('adds the keytip to the array and raises a keytipAdded event', () => {
+      it('adds the keytip and raises a keytipAdded event', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
@@ -33,7 +33,7 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(true);
       });
 
-      it('adds the keytip to the array and raises a keytipAdded event if we delay updating and are not in keytip mode', () => {
+      it('adds the keytip and raises a keytipAdded event if we delay updating and are not in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
@@ -47,7 +47,7 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(false);
       });
 
-      it('adds the keytip to the array and raises a keytipAdded event if we delay updating and are in keytip mode', () => {
+      it('adds the keytip and raises a keytipAdded event if we delay updating and are in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
@@ -158,7 +158,7 @@ describe('KeytipManager', () => {
     });
 
     describe('registerPersistedKeytip', () => {
-      it('adds the keytip to the array and raises a persistedKeytipAdded event', () => {
+      it('adds the keytip and raises a persistedKeytipAdded event', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
@@ -168,7 +168,8 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(true);
       });
 
-      it('adds the keytip to the array and does not raise persistedKeytipAdded event while delaying updates and not in keytip mode', () => {
+      // tslint:disable-next-line:max-line-length
+      it('adds the keytip and does not raise persistedKeytipAdded event while delaying updates and not in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
@@ -180,7 +181,7 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(false);
       });
 
-      it('adds the keytip to the array and raises a persistedKeytipAdded event while delaying updates in keytip mode', () => {
+      it('adds the keytip and raises a persistedKeytipAdded event while delaying updates in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_ADDED, (eventArgs: any) => {
           eventTriggered = true;
@@ -194,7 +195,7 @@ describe('KeytipManager', () => {
     });
 
     describe('unregisterPersistedKeytip', () => {
-      it('removes a keytip to the array and raises a persistedKeytipRemoved event', () => {
+      it('removes a keytip and raises a persistedKeytipRemoved event', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {
           eventTriggered = true;
@@ -205,7 +206,8 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(true);
       });
 
-      it('removes a keytip to the array and does not raises a persistedKeytipRemoved event while delaying updates and not in keytip mode', () => {
+      // tslint:disable-next-line:max-line-length
+      it('removes a keytip and does not raise persistedKeytipRemoved event while delaying updates and not in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {
           eventTriggered = true;
@@ -218,7 +220,7 @@ describe('KeytipManager', () => {
         expect(eventTriggered).toEqual(false);
       });
 
-      it('removes a keytip to the array and raises a persistedKeytipRemoved event while delaying updates in keytip mode', () => {
+      it('removes a keytip and raises a persistedKeytipRemoved event while delaying updates in keytip mode', () => {
         let eventTriggered = false;
         events.on(ktpMgr, KeytipEvents.PERSISTED_KEYTIP_REMOVED, (eventArgs: any) => {
           eventTriggered = true;
@@ -237,7 +239,7 @@ describe('KeytipManager', () => {
         // Keytip that is a child of B
         let keytipCProps: IKeytipProps = {
           keySequences: ['b', 'c'],
-          content: 'C'
+          content: 'C',
         };
         // Add overflowSetSequence to B
         keytipBProps.overflowSetSequence = ['x'];

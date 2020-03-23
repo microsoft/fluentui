@@ -13,7 +13,7 @@ export default class RefFindNode extends React.Component<RefProps> {
     process.env.NODE_ENV !== 'production'
       ? {
           children: PropTypes.element.isRequired,
-          innerRef: refPropType.isRequired
+          innerRef: refPropType.isRequired,
         }
       : {};
 

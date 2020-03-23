@@ -22,7 +22,7 @@ export interface IScrollContainerContext {
 }
 
 export const ScrollContainerContextTypes = {
-  scrollContainer: PropTypes.object.isRequired
+  scrollContainer: PropTypes.object.isRequired,
 };
 
 export class ScrollContainer extends React.Component<IScrollContainerProps> implements IScrollContainer {
@@ -46,7 +46,7 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
 
   public getChildContext(): IScrollContainerContext {
     return {
-      scrollContainer: this
+      scrollContainer: this,
     };
   }
 
@@ -72,7 +72,11 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
     const { children, className } = this.props;
 
     return (
-      <div className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)} data-is-scrollable={true} ref={this._resolveRoot}>
+      <div
+        className={css('ms-ScrollContainer', ScrollContainerStyles.root, className)}
+        data-is-scrollable={true}
+        ref={this._resolveRoot}
+      >
         {children as JSX.Element}
       </div>
     );
@@ -122,8 +126,8 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
         this._onIntersection as IntersectionObserverCallback,
         {
           root: this._root,
-          threshold
-        } as IntersectionObserverInit
+          threshold,
+        } as IntersectionObserverInit,
       );
 
       // If there were attempts to observe elements before the observer was ready, add them now
@@ -141,7 +145,7 @@ export class ScrollContainer extends React.Component<IScrollContainerProps> impl
       // No intersection observer, rely on scroll event. Note: not all browsers support options, but since
       // we don't need capture, we can pass it and have it ignored if not supported
       this._root.addEventListener('scroll', this._onScroll, {
-        passive: true
+        passive: true,
         // tslint:disable-next-line:no-any
       } as any);
     }
