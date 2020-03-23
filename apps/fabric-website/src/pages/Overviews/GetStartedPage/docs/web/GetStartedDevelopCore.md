@@ -1,4 +1,4 @@
-[Fabric Core](https://github.com/OfficeDev/office-ui-fabric-core) is a collection of CSS classes and Sass mixins that give you access to colors, animations, fonts, icons and grid.
+[Fabric Core](https://github.com/OfficeDev/office-ui-fabric-core) is a collection of CSS classes and Sass mixins that give you access to the colors, animations, fonts, icons and grid of the Fluent Design Language.
 
 ### Who should use Fabric Core
 

@@ -35,7 +35,7 @@ Providing an isolated reproduction of the bug in a codepen makes it much easier 
   * You can also use the "Export to Codepen" feature for the various components in our documentation site.
   * See http://codepen.io/dzearing/pens/public/?grid_type=list for a variety of examples
 
-Alternatively, you can also use https://aka.ms/fluentuidemo to get permanent repro links if the repro occurs with an example.
+Alternatively, you can also use https://aka.ms/fluentdemo to get permanent repro links if the repro occurs with an example.
 (A permanent link is preferable to "use the website" as the website can change.)
 -->
 
