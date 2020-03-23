@@ -76,6 +76,11 @@ storiesOf('Panel', module)
       headerText="No navigation"
       hasCloseButton={false}
     />
+  ))
+  .addStory('With close button and no header', () => (
+    <Panel>
+      <p>Content goes here.</p>
+    </Panel>
   ));
 
 storiesOf('Panel', module)
