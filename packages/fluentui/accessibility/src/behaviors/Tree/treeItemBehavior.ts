@@ -5,6 +5,8 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import treeTitleBehavior from './treeTitleBehavior';
 
 /**
+ * @description
+ * Triggers 'performClick' action with 'Spacebar' on 'root', when tree item is selectable and has no subtree. 'Enter' or 'Spacebar' works otherwise.
  * @specification
  * Adds attribute 'aria-expanded=true' based on the property 'expanded' if the component has 'hasSubtree' property.
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is true. Does not set the attribute otherwise.

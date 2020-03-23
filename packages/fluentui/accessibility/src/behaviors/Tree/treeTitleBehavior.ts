@@ -4,7 +4,10 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import { Accessibility } from '../../types';
 
 /**
- * @specification
+ * @description
+ *  Adds attribute 'aria-selected=true' based on the properties 'selectable' & 'selected' if the component has 'hasSubtree' property false or undefined. Does not set anything if true.
+ *  Triggers 'performClick' action with 'Spacebar' on 'root', when tree title is selectable.
+ *  @specification
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is false or undefined. Does not set the attribute if true.
  * Adds attribute 'role=treeitem' to 'root' slot if 'hasSubtree' property is false or undefined. Does not set the attribute if true.
  * Adds attribute 'aria-setsize=3' based on the property 'treeSize' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
@@ -22,7 +25,7 @@ const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
         'aria-setsize': props.treeSize,
         'aria-posinset': props.index,
         'aria-level': props.level,
-        'aria-selected': props.selectable ? props.selected : null,
+        'aria-selected': props.selectable ? props.selected : undefined,
       }),
     },
   },

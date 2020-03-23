@@ -193,8 +193,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     }
 
     return {
-      activeItemIds: activeItemIds,
-      selectedItemIds: selectedItemIds,
+      activeItemIds,
+      selectedItemIds,
     };
   }
 
@@ -219,7 +219,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     _.invoke(this.props, 'onSelectedItemIdsChange', e, { ...this.props, selectedItemIds });
 
     this.setState({
-      selectedItemIds: selectedItemIds,
+      selectedItemIds,
     });
   };
 

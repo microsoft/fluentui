@@ -124,7 +124,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   const { classes, styles: resolvedStyles } = useStyles<TreeTitleStylesProps>(TreeTitle.displayName, {
     className: TreeTitle.className,
     mapPropsToStyles: () => ({
-      selected: selected,
+      selected,
       selectableParent: props.selectableParent,
       disabled,
     }),
