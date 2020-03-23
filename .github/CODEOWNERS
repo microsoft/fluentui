@@ -56,7 +56,7 @@ packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 packages/foundation/ @JasonGore
 # packages/icons/
 # packages/jest-serializer-merge-styles/
-packages/lists/ @dzearing @KevinTCoughlin @aditima
+packages/lists/ @dzearing @aditima
 packages/merge-styles/ @dzearing
 packages/migration/ @ecraig12345 @kenotron
 packages/monaco-editor/ @ecraig12345
@@ -83,8 +83,8 @@ packages/office-ui-fabric-react/src/components/Breadcrumb/ @jdhuntington
 packages/office-ui-fabric-react/src/components/Button/ @khmakoto
 packages/office-ui-fabric-react/src/components/Calendar/ @lorejoh
 packages/office-ui-fabric-react/src/components/Callout/ @joschect
-packages/office-ui-fabric-react/src/components/react-cards/Card/  @khmakoto
-packages/office-ui-fabric-react/src/components/Check/ @dzearing
+packages/office-ui-fabric-react/src/components/react-cards/Card/ @khmakoto
+packages/office-ui-fabric-react/src/components/Check/ @dzearing @xugao
 packages/office-ui-fabric-react/src/components/Checkbox/ @cliffkoh
 packages/office-ui-fabric-react/src/components/ChoiceGroup/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Coachmark/ @leddie24
@@ -111,7 +111,7 @@ packages/office-ui-fabric-react/src/components/Image/ @dzearing
 packages/office-ui-fabric-react/src/components/Label/ @cliffkoh
 packages/office-ui-fabric-react/src/components/Layer/  @ThomasMichon @JasonGore
 packages/office-ui-fabric-react/src/components/Link/ @khmakoto
-packages/office-ui-fabric-react/src/components/List/
+packages/office-ui-fabric-react/src/components/List/ @dzearing
 packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
 packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Modal/ @JasonGore
@@ -179,7 +179,7 @@ packages/office-ui-fabric-react/src/components/HoverCard/docs/   @atneik @Jahnp 
 # packages/office-ui-fabric-react/src/components/Label/docs/
 packages/office-ui-fabric-react/src/components/Layer/docs/  @ThomasMichon
 packages/office-ui-fabric-react/src/components/Link/docs/  @khmakoto
-packages/office-ui-fabric-react/src/components/List/docs/
+packages/office-ui-fabric-react/src/components/List/docs/ @dzearing
 # packages/office-ui-fabric-react/src/components/MarqueeSelection/docs/
 # packages/office-ui-fabric-react/src/components/MessageBar/docs/
 # packages/office-ui-fabric-react/src/components/Modal/docs/
@@ -202,7 +202,7 @@ packages/office-ui-fabric-react/src/components/Shimmer/docs/ @Vitalius1 @atneik
 # packages/office-ui-fabric-react/src/components/Spinner/docs/
 packages/office-ui-fabric-react/src/components/Stack/docs/  @khmakoto
 # packages/office-ui-fabric-react/src/components/SwatchColorPicker/docs/
-packages/office-ui-fabric-react/src/components/TeachingBubble/docs/   @micahgodbolt
+packages/office-ui-fabric-react/src/components/TeachingBubble/docs/ @micahgodbolt
 packages/office-ui-fabric-react/src/components/Text/docs/ @natalieethell
 # packages/office-ui-fabric-react/src/components/TextField/docs/
 # packages/office-ui-fabric-react/src/components/Theme/docs/
