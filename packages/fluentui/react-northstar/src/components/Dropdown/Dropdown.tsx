@@ -883,8 +883,12 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
         break;
       case Downshift.stateChangeTypes.keyDownEscape:
-        newState.value = [];
-        newState.searchQuery = '';
+        if (!multiple) {
+          newState.value = [];
+        }
+        if (search) {
+          newState.searchQuery = '';
+        }
         newState.open = false;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
         break;
@@ -940,8 +944,8 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         break;
       case Downshift.stateChangeTypes.unknown:
         if (newValue) {
-          newState.value = [newValue];
-          newState.searchQuery = newSearchQuery;
+          newState.value = multiple ? [...value, newValue] : [newValue];
+          newState.searchQuery = multiple ? '' : newSearchQuery;
           newState.open = false;
           newState.highlightedIndex = newHighlightedIndex;
         } else {
@@ -1110,14 +1114,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     selectItemAtIndex: (highlightedIndex: number) => void,
     toggleMenu: () => void,
   ): void => {
-    if (this.state.open) {
-      if (
-        !_.isNil(highlightedIndex) &&
-        this.state.filteredItems.length &&
-        !this.props.items[highlightedIndex]['disabled']
-      ) {
+    const { open, filteredItems } = this.state;
+    const { moveFocusOnTab, multiple, items } = this.props;
+
+    if (open) {
+      if (!_.isNil(highlightedIndex) && filteredItems.length && !items[highlightedIndex]['disabled']) {
         selectItemAtIndex(highlightedIndex);
-        if (!this.props.moveFocusOnTab && this.props.multiple) {
+
+        if (multiple && moveFocusOnTab !== undefined && !moveFocusOnTab) {
           e.preventDefault();
         }
       } else {
