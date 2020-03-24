@@ -105,7 +105,7 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
     ref: null,
     key: 'normal',
     removeButtonAriaLabel: 'Remove',
-    selectedItems: [mru[1]],
+    selectedItems: [],
     selection: selectionListSelection,
     onItemsRemoved: () => {
       console.log('example onItemsRemoved');

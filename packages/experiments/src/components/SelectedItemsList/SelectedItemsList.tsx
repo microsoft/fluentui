@@ -1,29 +1,6 @@
 import * as React from 'react';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
-import { copyToClipboard } from './utils/copyToClipboard';
-
-const useSelectedIndeces = (inputSelection: Selection | undefined): [Selection, number[]] => {
-  const selection: Selection = React.useMemo(
-    () =>
-      inputSelection
-        ? inputSelection
-        : new Selection({
-            onSelectionChanged: () => {
-              // selectedIndeces depends on selection, which has to be initialized
-              // with the setSelectedIndeces callback. Capture it in a closure.
-              //
-              // tslint:disable-next-line:no-use-before-declare
-              setSelectedIndeces(selection.getSelectedIndices());
-            },
-          }),
-    [inputSelection],
-  );
-
-  const [selectedIndices, setSelectedIndeces] = React.useState(selection.getSelectedIndices());
-  return [selection, selectedIndices];
-};
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
@@ -31,19 +8,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
 ) => {
   const [items, updateItems] = React.useState(props.selectedItems || []);
   const renderedItems = React.useMemo(() => items, [items]);
-
-  // Selection which initializes at the beginning of the component and
-  // only updates if seleciton becomes set in props (e.g. compoennt transitions from
-  // being controlled to uncontrolled)
-  const [selection, selectedIndices] = useSelectedIndeces(props.selection);
-  const itemsInSelection = React.useMemo(
-    () => selectedIndices.filter(i => i > 0 && i < items.length).map(i => items[i]),
-    [items, selectedIndices],
-  );
-
-  React.useEffect(() => {
-    selection.setItems(items);
-  });
 
   React.useEffect(() => {
     updateItems(props.selectedItems || []);
@@ -67,13 +31,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     [updateItems, items],
   );
 
-  const copyItemsInSelection = React.useCallback((): void => {
-    if (props.getItemCopyText && selectedIndices.length > 0) {
-      const copyText = props.getItemCopyText(itemsInSelection);
-      copyToClipboard(copyText);
-    }
-  }, [itemsInSelection, selectedIndices]);
-
   const onRemoveItemCallbacks = React.useMemo(
     () =>
       // create callbacks ahead of time with memo.
@@ -90,11 +47,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
           item={item}
           index={index}
           key={item.key !== undefined ? item.key : index}
-          selected={selectedIndices.indexOf(index) !== -1}
+          selected={false}
           removeButtonAriaLabel={props.removeButtonAriaLabel}
           onRemoveItem={onRemoveItemCallbacks[index]}
           onItemChange={replaceItem}
-          onCopyItem={copyItemsInSelection}
         />
       ))}
     </>

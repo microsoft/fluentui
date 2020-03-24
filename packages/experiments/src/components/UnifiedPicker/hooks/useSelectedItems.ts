@@ -22,12 +22,14 @@ export const useSelectedItems = <T extends {}>(selection: Selection, selectedIte
   const addItems = (itemsToAdd: T[]): void => {
     const newItems: T[] = items.concat(itemsToAdd);
     setSelectedItems(newItems);
+    selection.setItems(newItems);
   };
 
   const removeItemAt = (index: number): void => {
     const currentItems: T[] = [...items];
     const updatedItems: T[] = currentItems.slice(0, index).concat(currentItems.slice(index + 1));
     setSelectedItems(updatedItems);
+    selection.setItems(updatedItems);
   };
 
   const removeItem = (item: T): void => {
@@ -46,6 +48,7 @@ export const useSelectedItems = <T extends {}>(selection: Selection, selectedIte
         .concat(itemsToReplaceWith)
         .concat(currentItems.slice(index + 1));
       setSelectedItems(updatedItems);
+      selection.setItems(updatedItems);
     }
   };
 
@@ -54,6 +57,7 @@ export const useSelectedItems = <T extends {}>(selection: Selection, selectedIte
     const updatedItems: T[] = currentitems.filter(item => itemsToRemove.indexOf(item) === -1);
 
     setSelectedItems(updatedItems);
+    selection.setItems(updatedItems);
   };
 
   const removeSelectedItems = (): void => {
