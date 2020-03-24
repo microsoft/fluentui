@@ -9,8 +9,9 @@ const config: ScreenerTestsConfig = {
 
     builder =>
       builder
+        .wait(1000) // wait till overflow will be executed
         .click(`.${Checkbox.className}`)
-        .wait(500) // wait till overflow will be executed
+        .wait(1000) // wait till overflow will be executed
         .executeScript("document.querySelector('iframe').contentDocument.querySelector('#overflow-item').click()")
         .snapshot('RTL: Overflow item is properly positioned'),
   ],
