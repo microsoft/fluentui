@@ -197,7 +197,8 @@ const Slider: React.FC<WithAsProp<SliderProps>> & FluentComponentStaticProps & {
         ...htmlInputProps,
         as: 'input',
         className: Slider.slotClassNames.input,
-        fluid,
+        // TODO: passing fluid is a bug here, correct? not a valid DOM attr warning in React
+        // fluid,
         min: numericMin,
         max: numericMax,
         step,

@@ -76,11 +76,33 @@ class Designer extends React.Component<any, DesignerState> {
           uuid: getUUID(),
           type: 'Segment',
           children: [
-            'Hello there!',
             {
               uuid: getUUID(),
               type: 'Button',
               props: { content: 'click me' }
+            },
+            {
+              uuid: getUUID(),
+              type: 'Segment',
+              children: [
+                {
+                  uuid: getUUID(),
+                  type: 'Button',
+                  props: { content: 'click me' }
+                },
+                {
+                  uuid: getUUID(),
+                  type: 'Segment',
+                  children: [
+                    'Hello there!',
+                    {
+                      uuid: getUUID(),
+                      type: 'Button',
+                      props: { content: 'click me' }
+                    }
+                  ]
+                }
+              ]
             }
           ]
         }
@@ -144,16 +166,19 @@ class Designer extends React.Component<any, DesignerState> {
         on: selectedJSONTreeElement
       });
 
-      // TODO: it sucks we have to rely on referential mutation of the jsonTree to update it.
-      //       example, here we can't simply drop 'draggingElement' on 'selectedJSONTreeElement'.
-      //       otherwise, it won't get updated in state because it isn't a reference to the jsonTree element.
-      //       we first must get a reference to the element with the same uuid, then mutated that reference. womp.
-      const droppedOn = jsonTreeFindElement(jsonTree, selectedJSONTreeElement.uuid);
-      resolveDrop(draggingElement, droppedOn);
+      if (selectedJSONTreeElement) {
+        // TODO: it sucks we have to rely on referential mutation of the jsonTree to update it.
+        //       example, here we can't simply drop 'draggingElement' on 'selectedJSONTreeElement'.
+        //       otherwise, it won't get updated in state because it isn't a reference to the jsonTree element.
+        //       we first must get a reference to the element with the same uuid, then mutated that reference. womp.
+        const droppedOn = jsonTreeFindElement(jsonTree, selectedJSONTreeElement.uuid);
+        console.log({ droppedOn });
+        resolveDrop(draggingElement, droppedOn);
+      }
 
       return {
         draggingElement: null,
-        jsonTree // mutated tree needs written back to state :/
+        jsonTree
       };
     });
   };
@@ -302,7 +327,6 @@ class Designer extends React.Component<any, DesignerState> {
                   transition: 'margin 0.2s'
                 }}
               >
-                {console.log(isSelecting)}
                 <Canvas
                   {...(draggingElement && {
                     onMouseMove: this.handleDrag,
@@ -338,7 +362,7 @@ class Designer extends React.Component<any, DesignerState> {
 
           {selectedComponentInfo && mode !== 'use' && (
             <div style={{ width: '20rem', padding: '1rem', overflow: 'auto' }}>
-              <Description componentInfo={selectedComponentInfo} />
+              <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
               <Anatomy componentInfo={selectedComponentInfo} />
               {selectedJSONTreeElement && (
                 <Knobs onPropChange={this.handlePropChange} info={selectedComponentInfo} jsonTreeElement={selectedJSONTreeElement} />

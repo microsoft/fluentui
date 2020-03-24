@@ -7,6 +7,12 @@ import FiberNavigator from '../../react/src/components/Debug/FiberNavigator';
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
 export const DRAGGING_PROPS = {
+  // HTML ELEMENTS
+  div: { children: 'I am a <div>' },
+  span: { children: 'I am a <span>' },
+  p: { children: 'I am a <p>' },
+
+  // FLUENT v0 COMPONENTS
   Accordion: {
     panels: [{ title: 'Accordion title', content: 'Accordion content' }]
   } as FUI.AccordionProps,
@@ -292,6 +298,11 @@ export const resolveDraggingProps = displayName => {
  */
 export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) => {
   console.log('config:resolveDrop', JSON.parse(JSON.stringify({ source, target })));
+
+  if (!source || !target) {
+    return;
+  }
+
   // TODO: prevent invalid drops, prob before they happen (ie isValidDrop() )
 
   // TODO: This is where we'd handle special drop logic and json tree updates
@@ -389,6 +400,8 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   return newTree;
 };
 
+// TODO: FIX ME, this always returns the root of the tree, despite a uuid that is deeply nested.
+//      YOu should expect to be able to drop into the children of any component after fixing
 export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string) => {
   if (typeof uuid === 'undefined' || uuid === null) {
     return null;

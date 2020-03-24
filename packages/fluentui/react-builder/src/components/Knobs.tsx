@@ -52,7 +52,6 @@ type DesignKnobProps = {
 const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement }) => {
   return (
     <div>
-      Selected UUID: <code>{jsonTreeElement.uuid}</code>
       <Header as="h4">Active Props</Header>
       {Object.keys(jsonTreeElement.props).map(name => {
         const val = jsonTreeElement.props[name];
