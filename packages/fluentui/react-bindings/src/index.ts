@@ -25,6 +25,7 @@ export * from './styles/types';
 export { default as createSvgIcon } from './icons/createSvgIcon';
 export * from './icons/createSvgIcon';
 export * from './icons/types';
+export { default as createImgIcon } from './icons/createImgIcon';
 
 export { default as useTelemetry } from './telemetry/useTelemetry';
 export * from './telemetry/types';

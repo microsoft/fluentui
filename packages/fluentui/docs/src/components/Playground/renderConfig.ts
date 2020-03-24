@@ -2,6 +2,7 @@ import * as Accessibility from '@fluentui/accessibility';
 import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as DocsComponent from '@fluentui/docs-components';
 import * as FluentUI from '@fluentui/react-northstar';
+import * as FluentUIBindings from '@fluentui/react-bindings';
 import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -63,6 +64,10 @@ export const imports: Record<string, { version: string; module: any }> = {
   prettier: {
     version: docsComponentsPackageJson.peerDependencies['prettier'],
     module: null, // no need to use it in our examples
+  },
+  '@fluentui/react-bindings': {
+    version: projectPackageJson.version,
+    module: FluentUIBindings,
   },
 };
 

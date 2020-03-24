@@ -60,3 +60,13 @@ export type SvgIconCreateFnParams<TProps> = {
   displayName: string;
   handledProps?: (keyof TProps)[];
 };
+
+export type ImgIconProps = { size?: number; sizeModifier?: '1.5x' | '2x' | '3x' | '4x' };
+
+export type ImgIconCreateFnParams = {
+  name: string;
+  displayName: string;
+  type?: 'svg' | 'png';
+  baseUrl?: string;
+  refreshUrl?: string;
+};
