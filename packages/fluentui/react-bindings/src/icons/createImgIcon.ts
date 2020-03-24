@@ -8,7 +8,7 @@ const createImgIcon = ({
   baseUrl = 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types',
   refreshUrl = '?v6',
 }: ImgIconCreateFnParams) => {
-  const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & ImgIconProps> = props => {
+  const Component: React.FC<React.HTMLAttributes<HTMLImageElement> & ImgIconProps> = props => {
     const { size = 16, sizeModifier, ...rest } = props;
     let height = size;
     let width = size;
