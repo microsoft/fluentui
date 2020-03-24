@@ -29,8 +29,8 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
-  const renderedItems = React.useMemo(() => props.selectedItems || items, [items, props.selectedItems]);
+  const [items, updateItems] = React.useState(props.selectedItems || []);
+  const renderedItems = React.useMemo(() => items, [items]);
 
   // Selection which initializes at the beginning of the component and
   // only updates if seleciton becomes set in props (e.g. compoennt transitions from
@@ -45,13 +45,14 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     selection.setItems(items);
   });
 
-  const removeItems = React.useCallback(
-    (itemsToRemove: TItem[]): void => {
-      updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
-      props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
-    },
-    [items],
-  );
+  React.useEffect(() => {
+    updateItems(props.selectedItems || []);
+  }, [props.selectedItems]);
+
+  const removeItems = (itemsToRemove: TItem[]): void => {
+    updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
+    props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
+  };
 
   const replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
@@ -72,32 +73,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       copyToClipboard(copyText);
     }
   }, [itemsInSelection, selectedIndices]);
-
-  // Callbacks only used in the imperitive handle
-
-  const addItems = React.useCallback(
-    (newItems: TItem[]) => {
-      updateItems(items.concat(newItems));
-    },
-    [items],
-  );
-
-  const unselectAll = React.useCallback(() => {
-    selection.setAllSelected(false);
-  }, [items]);
-
-  // For usage as a controlled component with a ref
-  React.useImperativeHandle(
-    ref,
-    (): ISelectedItemsList<TItem> => ({
-      items,
-      itemsInSelection,
-      addItems,
-      unselectAll,
-      removeItems,
-    }),
-    [items, addItems],
-  );
 
   const onRemoveItemCallbacks = React.useMemo(
     () =>

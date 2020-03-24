@@ -55,7 +55,9 @@ const _suggestions = [
 ] as IFloatingSuggestionItem<IPersonaProps>[];
 
 export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
-  const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([..._suggestions]);
+  const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
+    ..._suggestions,
+  ]);
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -103,7 +105,6 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
     ref: null,
     key: 'normal',
     removeButtonAriaLabel: 'Remove',
-    defaultSelectedItems: [mru[0]],
     selectedItems: [mru[1]],
     selection: selectionListSelection,
     onItemsRemoved: () => {
