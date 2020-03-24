@@ -65,7 +65,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
     React.useContext(ThemeContext) || defaultContext;
 
-  const [, componentProps] = useCurrentReactElement();
+  const { elementProps } = useCurrentReactElement();
   const composeOptions = useComposeOptions();
 
   const {
@@ -77,7 +77,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   const componentStylesProps = mapPropsToStyles();
 
   // `composeProps` should include all props including stylesProps as they can contain state
-  const composeProps = { ...componentProps, ...componentStylesProps };
+  const composeProps = { ...elementProps, ...componentStylesProps };
   const composeStylesProps = composeOptions?.mapPropsToStylesPropsChain?.reduce(
     (acc, fn) => ({ ...acc, ...fn(composeProps) }),
     {},
