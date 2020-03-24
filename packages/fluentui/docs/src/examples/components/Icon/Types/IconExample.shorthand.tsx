@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Flex, Text } from '@fluentui/react-northstar';
-import { createImgIcon } from '@fluentui/react-bindings';
+import { createImgIcon, ImgIconContext } from '@fluentui/react-bindings';
 
 const AccdbIcon = createImgIcon({
   name: 'accdb',
@@ -10,50 +10,57 @@ const AccdbIcon = createImgIcon({
 const AccdbPngIcon = createImgIcon({
   name: 'accdb',
   displayName: 'AccdbIcon',
-  urlConfig: {
-    type: 'png',
-  },
+  type: 'png',
 });
 
 const IconExample = () => (
-  <Flex column>
-    <Text content={'SVG icons'} />
-    <Flex gap="gap.smaller">
-      <AccdbIcon />
-      <AccdbIcon size={20} />
-      <AccdbIcon size={24} />
-      <AccdbIcon size={32} />
-      <AccdbIcon size={40} />
-      <AccdbIcon size={48} />
-      <AccdbIcon size={64} />
-      <AccdbIcon size={96} />
+  <ImgIconContext.Provider
+    value={{
+      urlConfig: {
+        baseUrl: 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types',
+        refreshUrl: '?v6',
+      },
+    }}
+  >
+    <Flex column>
+      <Text content={'SVG icons'} />
+      <Flex gap="gap.smaller">
+        <AccdbIcon />
+        <AccdbIcon size={20} />
+        <AccdbIcon size={24} />
+        <AccdbIcon size={32} />
+        <AccdbIcon size={40} />
+        <AccdbIcon size={48} />
+        <AccdbIcon size={64} />
+        <AccdbIcon size={96} />
+      </Flex>
+      <Text content={'PNG icons'} />
+      <Flex gap="gap.smaller">
+        <AccdbPngIcon />
+        <AccdbPngIcon size={20} />
+        <AccdbPngIcon size={24} />
+        <AccdbPngIcon size={32} />
+        <AccdbPngIcon size={40} />
+        <AccdbPngIcon size={48} />
+        <AccdbPngIcon size={64} />
+        <AccdbPngIcon size={96} />
+      </Flex>
+      <Text content={'Size modifiers for size 24 svg'} />
+      <Flex gap="gap.smaller">
+        <AccdbIcon size={24} sizeModifier="1.5x" />
+        <AccdbIcon size={24} sizeModifier="2x" />
+        <AccdbIcon size={24} sizeModifier="3x" />
+        <AccdbIcon size={24} sizeModifier="4x" />
+      </Flex>
+      <Text content={'Size modifiers for size 24 png'} />
+      <Flex gap="gap.smaller">
+        <AccdbPngIcon size={24} sizeModifier="1.5x" />
+        <AccdbPngIcon size={24} sizeModifier="2x" />
+        <AccdbPngIcon size={24} sizeModifier="3x" />
+        <AccdbPngIcon size={24} sizeModifier="4x" />
+      </Flex>
     </Flex>
-    <Text content={'PNG icons'} />
-    <Flex gap="gap.smaller">
-      <AccdbPngIcon />
-      <AccdbPngIcon size={20} />
-      <AccdbPngIcon size={24} />
-      <AccdbPngIcon size={32} />
-      <AccdbPngIcon size={40} />
-      <AccdbPngIcon size={48} />
-      <AccdbPngIcon size={64} />
-      <AccdbPngIcon size={96} />
-    </Flex>
-    <Text content={'Size modifiers for size 24 svg'} />
-    <Flex gap="gap.smaller">
-      <AccdbIcon size={24} sizeModifier="1.5x" />
-      <AccdbIcon size={24} sizeModifier="2x" />
-      <AccdbIcon size={24} sizeModifier="3x" />
-      <AccdbIcon size={24} sizeModifier="4x" />
-    </Flex>
-    <Text content={'Size modifiers for size 24 png'} />
-    <Flex gap="gap.smaller">
-      <AccdbPngIcon size={24} sizeModifier="1.5x" />
-      <AccdbPngIcon size={24} sizeModifier="2x" />
-      <AccdbPngIcon size={24} sizeModifier="3x" />
-      <AccdbPngIcon size={24} sizeModifier="4x" />
-    </Flex>
-  </Flex>
+  </ImgIconContext.Provider>
 );
 
 export default IconExample;

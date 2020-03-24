@@ -1,9 +1,14 @@
 import * as React from 'react';
-import { ImgIconCreateFnParams, ImgIconProps, ImgUrlConfig } from './types';
+import { ImgIconCreateFnParams, ImgIconProps } from './types';
+import { ImgIconContext } from './imgIconContext';
 
-const defaultUrlResolver = (urlConfig: ImgUrlConfig, name: string, props: ImgIconProps) => {
-  const { type, baseUrl, refreshUrl } = urlConfig;
-  const { size = 16, sizeModifier } = props;
+const defaultUrlResolver = (
+  urlConfig: { [key: string]: any } | undefined,
+  name: string,
+  props: { [key: string]: any },
+) => {
+  const { baseUrl, refreshUrl } = urlConfig || {};
+  const { size = 16, sizeModifier, type } = props || {};
 
   let svgUrl = `${baseUrl}/${size}${
     sizeModifier && type === 'png' ? `_${sizeModifier}` : ''
@@ -19,8 +24,9 @@ const defaultUrlResolver = (urlConfig: ImgUrlConfig, name: string, props: ImgIco
   return svgUrl;
 };
 
-const createImgIcon = ({ name, displayName, urlConfig, urlResolver = defaultUrlResolver }: ImgIconCreateFnParams) => {
+const createImgIcon = ({ name, displayName, type = 'svg' }: ImgIconCreateFnParams) => {
   const Component: React.FC<React.HTMLAttributes<HTMLImageElement> & ImgIconProps> = props => {
+    const imgContextValue = React.useContext(ImgIconContext);
     const { size = 16, sizeModifier, ...rest } = props;
     let height = size;
     let width = size;
@@ -31,13 +37,9 @@ const createImgIcon = ({ name, displayName, urlConfig, urlResolver = defaultUrlR
       width = size * +multiplier;
     }
 
-    const {
-      type = 'svg',
-      baseUrl = 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types', // TODO: read from context
-      refreshUrl = '?v6', // TODO: read from context
-    } = urlConfig || {};
+    const urlResolver = imgContextValue?.urlResolver || defaultUrlResolver;
 
-    const svgUrl = urlResolver({ type, baseUrl, refreshUrl }, name, props);
+    const svgUrl = urlResolver(imgContextValue?.urlConfig, name, { ...props, type });
 
     return React.createElement('img', { src: svgUrl, height, width, ...rest });
   };
