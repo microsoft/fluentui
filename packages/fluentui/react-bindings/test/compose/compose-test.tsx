@@ -43,7 +43,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
   return <ThemeContext.Provider value={value}>{props.children}</ThemeContext.Provider>;
 };
 
-type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLParagraphElement>;
+type BaseComponentProps = { color?: string } & React.HTMLAttributes<HTMLButtonElement>;
 type BaseComponentStylesProps = { color: string | undefined; open: boolean };
 
 const BaseComponent: React.FC<BaseComponentProps> = props => {
@@ -56,7 +56,7 @@ const BaseComponent: React.FC<BaseComponentProps> = props => {
   });
   const unhandledProps = useUnhandledProps(['className', 'color'], props);
 
-  return <p className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
+  return <button className={classes.root} onClick={() => setOpen(!open)} {...unhandledProps} />;
 };
 
 type ComposedComponentProps = { hidden?: boolean; visible?: boolean };
@@ -88,22 +88,22 @@ describe('useCompose', () => {
   it('applies props on base component', () => {
     const wrapper = mount(<BaseComponent color="red" />, { wrappingComponent: TestProvider });
 
-    expect(wrapper.find('p').prop('className')).toContain('ui-base');
-    expect(wrapper.find('p').prop('className')).toContain('color-red');
+    expect(wrapper.find('button').prop('className')).toContain('ui-base');
+    expect(wrapper.find('button').prop('className')).toContain('color-red');
   });
 
   it('applies props on composed component', () => {
     const wrapper = mount(<ComposedComponent hidden color="red" visible />, { wrappingComponent: TestProvider });
 
-    expect(wrapper.find('p').prop('hidden')).toBeUndefined();
-    expect(wrapper.find('p').prop('visible')).toBeUndefined();
+    expect(wrapper.find('button').prop('hidden')).toBeUndefined();
+    expect(wrapper.find('button').prop('visible')).toBeUndefined();
 
-    expect(wrapper.find('p').prop('className')).toContain('ui-composed');
-    expect(wrapper.find('p').prop('className')).toContain('color-red');
-    expect(wrapper.find('p').prop('className')).not.toContain('visible-true');
+    expect(wrapper.find('button').prop('className')).toContain('ui-composed');
+    expect(wrapper.find('button').prop('className')).toContain('color-red');
+    expect(wrapper.find('button').prop('className')).not.toContain('visible-true');
 
-    wrapper.find('p').simulate('click');
-    expect(wrapper.find('p').prop('className')).toContain('visible-true');
+    wrapper.find('button').simulate('click');
+    expect(wrapper.find('button').prop('className')).toContain('visible-true');
   });
 
   it('applies props on multiple times composed component', () => {
@@ -111,12 +111,12 @@ describe('useCompose', () => {
       wrappingComponent: TestProvider,
     });
 
-    expect(wrapper.find('p').prop('hidden')).toBeUndefined();
-    expect(wrapper.find('p').prop('visible')).toBeUndefined();
+    expect(wrapper.find('button').prop('hidden')).toBeUndefined();
+    expect(wrapper.find('button').prop('visible')).toBeUndefined();
 
-    expect(wrapper.find('p').prop('className')).toContain('ui-composed');
-    expect(wrapper.find('p').prop('className')).toContain('color-red');
-    expect(wrapper.find('p').prop('className')).toContain('hidden-true');
-    expect(wrapper.find('p').prop('className')).not.toContain('visible-true');
+    expect(wrapper.find('button').prop('className')).toContain('ui-composed');
+    expect(wrapper.find('button').prop('className')).toContain('color-red');
+    expect(wrapper.find('button').prop('className')).toContain('hidden-true');
+    expect(wrapper.find('button').prop('className')).not.toContain('visible-true');
   });
 });
