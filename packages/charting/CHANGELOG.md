@@ -1,7 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Tue, 24 Mar 2020 12:26:03 GMT and should not be manually modified.
 
+## 0.143.0
+Tue, 24 Mar 2020 12:26:03 GMT
+
+### Minor changes
+
+- expose prop for overflow items text in legends (v-satgar@microsoft.com)
 ## 0.142.0
 Mon, 23 Mar 2020 12:28:29 GMT
 
