@@ -87,15 +87,19 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       }),
 
       [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-        color: v.triggerButtonColorHover,
-
         ...(p.disabled && {
           color: v.disabledTriggerColorHover,
         }),
       },
     },
+    ':active': {
+      backgroundColor: v.backgroundColor,
+    },
     ...(p.focused && {
-      ...(p.search && { borderBottomColor: v.borderColorFocus }),
+      backgroundColor: v.backgroundColorHover,
+      ...(p.search && {
+        borderBottomColor: v.borderColorFocus,
+      }),
       ...(!p.search &&
         !p.open &&
         p.isFromKeyboard &&
@@ -104,6 +108,18 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ...(p.inline && {
       ...transparentColorStyleObj,
       alignItems: 'center',
+    }),
+    ...(p.inverted && {
+      backgroundColor: v.backgroundColorInverted,
+      ':hover': {
+        backgroundColor: v.backgroundColorHoverInverted,
+      },
+      ':active': {
+        backgroundColor: v.backgroundColorHoverInverted,
+      },
+      ':focus': {
+        backgroundColor: v.backgroundColorHoverInverted,
+      },
     }),
   }),
 
@@ -120,6 +136,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     return {
       overflow: 'hidden',
       boxShadow: 'none',
+      ...transparentColorStyleObj,
       margin: '0',
       justifyContent: 'left',
       padding: v.comboboxPaddingButton,
@@ -127,24 +144,29 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ...transparentColorStyleObj,
       ':focus': {
         color: v.color,
-        ':active': {
-          color: v.triggerButtonColorFocusActive,
-        },
+        ...transparentColorStyleObj,
       },
       ':focus-visible': {
         color: v.color,
         ...transparentColorStyle,
         ':after': {
           borderColor: 'transparent',
+          borderRightWidth: 0,
         },
         ':before': {
           borderColor: 'transparent',
+          borderRightWidth: 0,
         },
-        ':active': transparentColorStyle,
+      },
+      ':active': {
+        color: v.color, // required for HC theme
+        ...transparentColorStyle,
+        animationName: 'unset',
+        animationDuration: 'unset',
       },
       ':hover': {
         ...transparentColorStyle,
-        color: v.triggerButtonColorHover,
+        color: v.color, // required for HC theme
       },
       ...(p.inline && {
         paddingLeft: 0,

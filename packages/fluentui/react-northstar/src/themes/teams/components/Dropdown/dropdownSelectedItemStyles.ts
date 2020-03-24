@@ -1,29 +1,53 @@
-import { DropdownSelectedItemProps } from '../../../../components/Dropdown/DropdownSelectedItem';
+import {
+  default as DropDownSelectedItem,
+  DropdownSelectedItemProps,
+} from '../../../../components/Dropdown/DropdownSelectedItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { DropdownVariables } from './dropdownVariables';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import { pxToRem } from '../../../../utils';
 
 const dropdownSelectedItemStyles: ComponentSlotStylesPrepared<DropdownSelectedItemProps, DropdownVariables> = {
-  root: ({ variables: v }): ICSSInJSStyle => ({
-    margin: '.4rem 0 0 .4rem',
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
+    cursor: 'pointer',
+    margin: '.25rem 0 0 .4rem',
     color: v.selectedItemColor,
+    position: 'relative',
+    border: v.selectedItemBorder,
+    height: pxToRem(24),
+    overflow: 'visible',
+    outline: 0,
+    fontWeight: siteVariables.fontWeightSemibold,
     ...(v.selectedItemBackgroundColor && {
       backgroundColor: v.selectedItemBackgroundColor,
     }),
     ':focus': {
       color: v.selectedItemColorFocus,
-      backgroundColor: v.selectedItemBackgroundColorFocus,
-      outline: '0',
     },
     ':hover': {
-      color: v.selectedItemColorFocus,
-      backgroundColor: v.selectedItemBackgroundColorFocus,
+      color: v.selectedItemColorHover,
+      backgroundColor: v.selectedItemBackgroundColorHover,
+      [`& .${DropDownSelectedItem.slotClassNames.icon}`]: {
+        color: v.selectedItemIconColorHover,
+      },
+    },
+    ':focus-visible': {
+      '::before': {
+        content: '""',
+        position: 'absolute',
+        left: '-2px',
+        top: '-2px',
+        bottom: '-2px',
+        right: '-2px',
+        border: `${pxToRem(1)} solid ${siteVariables.focusOuterBorderColor}`,
+      },
     },
   }),
   icon: ({ variables: v }) => ({
+    color: v.selectedItemIconColor,
     ...getIconFillOrOutlineStyles({ outline: true }),
     ':hover': {
-      color: v.selectedItemColorFocus,
+      color: v.selectedItemIconColorHover,
       ...getIconFillOrOutlineStyles({ outline: false }),
     },
   }),
