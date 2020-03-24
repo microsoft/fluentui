@@ -9,6 +9,6 @@ Fluent UI React is the official [open-source](https://github.com/microsoft/fluen
 
 Fabric Core is an [open-source](https://github.com/OfficeDev/office-ui-fabric-core) collection of CSS classes and Sass mixins that give you access to colors, animations, fonts, icons and grid. [Get started with Fabric Core](#fabric-core)
 
-<h3 class="for-designers">For Designers</h3>
+<h3 id="for-designers">For Designers</h3>
 
 Fluent UI also provides resources to help you [use our design language in your site](#use-our-design-language-in-your-site).
