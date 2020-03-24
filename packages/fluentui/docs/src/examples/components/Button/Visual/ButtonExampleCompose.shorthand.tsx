@@ -15,7 +15,7 @@ type TertiaryButtonProps = {
 
 type TertiaryButtonStylesProps = TertiaryButtonProps;
 
-const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
+const TertiaryButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
