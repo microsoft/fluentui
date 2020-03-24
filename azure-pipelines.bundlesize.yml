@@ -56,4 +56,4 @@ jobs:
         inputs:
           connectedServiceName: lowimpact
           sourceVersionMessage: '$(Build.SourceVersionMessage)'
-          sourceRepositoryUrl: 'https://github.com/OfficeDev/office-ui-fabric-react'
+          sourceRepositoryUrl: 'https://github.com/microsoft/fluentui'

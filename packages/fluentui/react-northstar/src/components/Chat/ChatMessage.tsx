@@ -5,7 +5,7 @@ import {
   menuAsToolbarBehavior,
   ChatMessageBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -274,7 +274,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   const rootClasses = childrenPropExists ? cx(classes.root, classes.content) : classes.root;
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ChatMessage.handledProps, props);
+  const unhandledProps = useUnhandledProps(ChatMessage.handledProps, props);
 
   const badgeElement = Label.create(badge, {
     defaultProps: () => ({

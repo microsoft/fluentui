@@ -1,7 +1,7 @@
 import { Accessibility, sliderBehavior, SliderBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
   useStateManager,
   useStyles,
@@ -198,7 +198,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Slider.handledProps, props);
+  const unhandledProps = useUnhandledProps(Slider.handledProps, props);
   const [htmlInputProps, restProps] = partitionHTMLProps(unhandledProps);
   const type = 'range';
 

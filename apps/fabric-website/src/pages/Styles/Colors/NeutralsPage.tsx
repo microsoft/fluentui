@@ -5,8 +5,7 @@ import { ColorsNeutralsPageProps } from './NeutralsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 const neutralColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-neutral.json');
 
 export const ColorsNeutralsPage: React.FunctionComponent<IStylesPageProps> = props => {

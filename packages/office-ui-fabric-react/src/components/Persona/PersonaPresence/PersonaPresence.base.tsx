@@ -19,7 +19,7 @@ const getClassNames = classNamesFunction<IPersonaPresenceStyleProps, IPersonaPre
 
 /**
  * PersonaPresence with no default styles.
- * [Use the `getStyles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `getStyles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
 export class PersonaPresenceBase extends React.Component<IPersonaPresenceProps, {}> {
   constructor(props: IPersonaPresenceProps) {

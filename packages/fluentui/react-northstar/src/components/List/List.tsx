@@ -1,7 +1,7 @@
 import { Accessibility, listBehavior, ListBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
   useAutoControlled,
   useStyles,
@@ -129,7 +129,7 @@ const List: React.FC<WithAsProp<ListProps>> &
   latestProps.current = props;
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(List.handledProps, props);
+  const unhandledProps = useUnhandledProps(List.handledProps, props);
 
   const hasContent = childrenExist(children) || (items && items.length > 0);
   const onItemClick = React.useCallback(

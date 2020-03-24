@@ -102,3 +102,5 @@ export { default as gridRowNestedBehavior } from './Table/gridRowNestedBehavior'
 export { default as gridCellBehavior } from './Table/gridCellBehavior';
 export { default as gridCellMultipleFocusableBehavior } from './Table/gridCellMultipleFocusableBehavior';
 export { default as gridCellWithFocusableElementBehavior } from './Table/gridCellWithFocusableElementBehavior';
+export { default as cardBehavior } from './Card/cardBehavior';
+export * from './Card/cardBehavior';
