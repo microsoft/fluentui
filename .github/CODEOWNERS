@@ -76,7 +76,6 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ## Components
-# packages/office-ui-fabric-react/src/components/Accordion/
 packages/office-ui-fabric-react/src/components/ActivityItem/ @jdhuntington
 packages/office-ui-fabric-react/src/components/Announced/ @natalieethell
 packages/office-ui-fabric-react/src/components/Breadcrumb/ @jdhuntington
