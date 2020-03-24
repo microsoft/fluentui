@@ -743,7 +743,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                 key: (item as any).header,
               }),
           }),
-          overrideProps: this.handleItemOverrides(item, index, getItemProps, selected),
+          overrideProps: this.handleItemOverrides(item, index, getItemProps, selected, !!item['disabled']),
           render: renderItem,
         });
       },
@@ -862,11 +862,13 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     index: number,
     getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
     selected: boolean,
+    disabled: boolean,
   ) => (predefinedProps: DropdownItemProps) => ({
     accessibilityItemProps: {
       ...getItemProps({
         item,
         index,
+        disabled,
         onClick: e => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
