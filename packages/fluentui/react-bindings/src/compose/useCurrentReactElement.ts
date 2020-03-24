@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ElementType } from 'office-ui-fabric-react/src';
 
 // https://github.com/facebook/react/blob/bdc5cc4635f13e5ca43883a9f9587fc9a868c528/packages/react-reconciler/src/ReactFiber.js#L129
 type ReactFiber<T extends React.ElementType, P extends Record<string, any>> = {
