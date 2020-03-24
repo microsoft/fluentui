@@ -19,6 +19,7 @@ export type PerfSample = {
       };
     }
   >;
+  bundleSize: Record<string, { size: number }>;
 };
 
 export type PerfData = PerfSample[];

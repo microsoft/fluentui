@@ -17,7 +17,7 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      git config user.name "UI Fabric Build"
+      git config user.name "Fluent UI Build"
       git config user.email "fluentui-internal@service.microsoft.com"
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes

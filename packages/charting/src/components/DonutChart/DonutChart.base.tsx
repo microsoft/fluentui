@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IDonutChartProps, IDonutChartStyleProps, IDonutChartStyles } from './DonutChart.types';
 import { Pie } from './Pie/Pie';
 import { ILegend, Legends } from '../Legends/index';
@@ -32,6 +32,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
   private _uniqText: string;
   // tslint:disable:no-any
   private _currentHoverElement: any;
+  private _calloutId: string;
 
   public static getDerivedStateFromProps(
     nextProps: Readonly<IDonutChartProps>,
@@ -59,6 +60,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     this._hoverCallback = this._hoverCallback.bind(this);
     this._focusCallback = this._focusCallback.bind(this);
     this._hoverLeave = this._hoverLeave.bind(this);
+    this._calloutId = getId('callout');
     this._uniqText =
       '_Pie_' +
       Math.random()
@@ -110,7 +112,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 onBlurCallback={this._onBlur}
                 activeArc={this.state.activeLegend}
                 href={href}
-                calloutId={'callout'}
+                calloutId={this._calloutId}
               />
             </svg>
           </div>
@@ -122,7 +124,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
             isBeakVisible={false}
             directionalHint={DirectionalHint.bottomRightEdge}
             gapSpace={10}
-            id={'callout'}
+            id={this._calloutId}
             onDismiss={this._closeCallout}
             preventDismissOnLostFocus={true}
           >
@@ -200,6 +202,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         centerLegends
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
       />
     );
     return legends;
