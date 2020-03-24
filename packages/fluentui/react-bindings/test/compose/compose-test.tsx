@@ -32,6 +32,7 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
       enableSanitizeCssPlugin: false,
       enableBooleanVariablesCaching: false,
     },
+    rtl: false,
     theme: {
       ...emptyTheme,
       // Noop to pass all props as styles to `renderRule()`

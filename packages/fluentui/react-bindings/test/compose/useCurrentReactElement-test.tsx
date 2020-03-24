@@ -6,13 +6,13 @@ import useCurrentReactElement from '../../src/compose/useCurrentReactElement';
 type TestComponentProps = { value: string };
 
 const TestComponent: React.FC<TestComponentProps> = () => {
-  const [ElementType, props] = useCurrentReactElement<React.FunctionComponent, TestComponentProps>();
+  const { ElementType, elementProps } = useCurrentReactElement<React.FunctionComponent, TestComponentProps>();
 
-  return <p data-name={ElementType?.name} data-value={props?.value} />;
+  return <p data-name={ElementType?.name} data-value={elementProps?.value} />;
 };
 
 const ByPassComponent: React.FC = props => {
-  const [ElementType] = useCurrentReactElement<React.FunctionComponent, TestComponentProps>();
+  const { ElementType } = useCurrentReactElement<React.FunctionComponent, TestComponentProps>();
 
   return <div data-name={ElementType?.name}>{props.children}</div>;
 };
