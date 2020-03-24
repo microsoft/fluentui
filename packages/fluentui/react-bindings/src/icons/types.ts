@@ -62,7 +62,9 @@ export type SvgIconCreateFnParams<TProps> = {
 };
 
 export type ImgIconProps = { size?: number; sizeModifier?: '1.5x' | '2x' | '3x' | '4x' };
-// export type ImgUrlConfig = { baseUrl?: string; refreshUrl?: string; type?: 'svg' | 'png' };
+export type ImgUrlConfig = { baseUrl?: string; queryString?: string };
+export type ImgUrlResolverProps = ImgIconProps & { name: string; type?: 'svg' | 'png' };
+
 export type ImgIconCreateFnParams = {
   name: string;
   displayName: string;
@@ -70,6 +72,6 @@ export type ImgIconCreateFnParams = {
 };
 
 export type ImgIconContextValue = {
-  urlConfig: { [key: string]: any };
-  urlResolver?: (urlConfig: { [key: string]: any } | undefined, name: string, props: { [key: string]: any }) => string;
+  urlConfig: ImgUrlConfig;
+  urlResolver: (urlConfig: ImgUrlConfig | undefined, props: ImgUrlResolverProps) => string;
 };

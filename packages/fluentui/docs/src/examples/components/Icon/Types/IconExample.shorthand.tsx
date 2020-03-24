@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Flex, Text } from '@fluentui/react-northstar';
-import { createImgIcon, ImgIconContext } from '@fluentui/react-bindings';
+import { createImgIcon, ImgIconContext, ImgUrlConfig, ImgUrlResolverProps } from '@fluentui/react-bindings';
 
 const AccdbIcon = createImgIcon({
   name: 'accdb',
@@ -13,13 +13,32 @@ const AccdbPngIcon = createImgIcon({
   type: 'png',
 });
 
+const urlResolver = (urlConfig: ImgUrlConfig | undefined, props: ImgUrlResolverProps) => {
+  const { baseUrl, queryString } = urlConfig || {};
+  const { size = 16, sizeModifier, type, name } = props || {};
+
+  let svgUrl = `${baseUrl}/${size}${
+    sizeModifier && type === 'png' ? `_${sizeModifier}` : ''
+  }/${name}.${type}?${queryString}`;
+
+  // SVGs scale well, so you can generally use the default image.
+  // 1.5x is a special case where both SVGs and PNGs need a different image.
+  // Remove if statements when missing image files for 20_1.5x are provided.
+  if (size === 20 && sizeModifier === '1.5x') {
+    svgUrl = `${baseUrl}/${size}_${sizeModifier}/${name}.${type}?${queryString}`;
+  }
+
+  return svgUrl;
+};
+
 const IconExample = () => (
   <ImgIconContext.Provider
     value={{
       urlConfig: {
         baseUrl: 'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types',
-        refreshUrl: '?v6',
+        queryString: 'v6',
       },
+      urlResolver,
     }}
   >
     <Flex column>
