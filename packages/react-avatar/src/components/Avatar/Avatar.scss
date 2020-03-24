@@ -1,0 +1,8 @@
+/* to be moved */
+$fillVar: --fill;
+$textVar: --text;
+
+.root {
+  background: var($fillVar, red);
+  color: var($textVar, green);
+}
