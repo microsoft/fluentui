@@ -87,7 +87,6 @@ packages/office-ui-fabric-react/src/components/Check/ @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/Checkbox/ @cliffkoh
 packages/office-ui-fabric-react/src/components/ChoiceGroup/ @ecraig12345
 packages/office-ui-fabric-react/src/components/Coachmark/ @leddie24
-# packages/office-ui-fabric-react/src/components/CollapsibleSection/
 packages/office-ui-fabric-react/src/components/ColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/ComboBox/ @joschect
 packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @joschect
