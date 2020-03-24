@@ -39,7 +39,14 @@ const IconExample = () => (
       <AccdbPngIcon size={64} />
       <AccdbPngIcon size={96} />
     </Flex>
-    <Text content={'Size modifiers for size 24'} />
+    <Text content={'Size modifiers for size 24 svg'} />
+    <Flex gap="gap.smaller">
+      <AccdbIcon size={24} sizeModifier="1.5x" />
+      <AccdbIcon size={24} sizeModifier="2x" />
+      <AccdbIcon size={24} sizeModifier="3x" />
+      <AccdbIcon size={24} sizeModifier="4x" />
+    </Flex>
+    <Text content={'Size modifiers for size 24 png'} />
     <Flex gap="gap.smaller">
       <AccdbPngIcon size={24} sizeModifier="1.5x" />
       <AccdbPngIcon size={24} sizeModifier="2x" />
