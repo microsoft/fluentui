@@ -291,6 +291,7 @@ export const resolveDraggingProps = displayName => {
  * Should mutate the drop target json element as a result of the drop.
  */
 export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) => {
+  console.log('config:resolveDrop', JSON.parse(JSON.stringify({ source, target })));
   // TODO: prevent invalid drops, prob before they happen (ie isValidDrop() )
 
   // TODO: This is where we'd handle special drop logic and json tree updates
@@ -308,10 +309,14 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
   }
 
   target.children = [...target.children, source];
+
+  console.log('config:resolveDrop RESULT', JSON.parse(JSON.stringify({ source, target })));
 };
 
+// TODO: From here down probably does not belong in client config.
+//       It is internal implementation details.
+
 export const renderJSONTreeToJSXElement = (tree: any) => {
-  console.log('renderJSONTreeToJSXElement');
   let { children = null } = tree;
 
   if (Array.isArray(children)) {
@@ -341,12 +346,18 @@ export const renderJSONTreeToJSXElement = (tree: any) => {
 /**
  * Converts a fiberNav into a JSON Tree element
  */
-export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeElement => ({
-  uuid: fiberNav.key,
-  type: fiberNav.elementType,
-  displayName: fiberNav.name,
-  props: fiberNav.props
-});
+export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeElement => {
+  if (!fiberNav) {
+    return null;
+  }
+
+  return {
+    uuid: fiberNav.key,
+    type: fiberNav.elementType,
+    displayName: fiberNav.name,
+    props: fiberNav.props
+  };
+};
 
 /**
  * Given a fiberNav, return the corresponding JSON Tree element from the jsonTree.
@@ -357,8 +368,12 @@ export const fiberNavFindOwnerInJSONTree = (fiberNav: FiberNavigator, jsonTree: 
   // This is analogous to how a developer can only import a component and use its props but not
   //   edit the components children directly.
   // We need to traverse the owner fibers and find one that has a uuid that exists in the json tree
+  if (jsonTreeFindElement(jsonTree, fiberNav.key)) {
+    return fiberNav;
+  }
+
   return fiberNav.findOwner(owner => {
-    return owner.key !== null && owner.key !== undefined && !!jsonTreeFindElement(jsonTree, owner.key);
+    return !!jsonTreeFindElement(jsonTree, owner.key);
   });
 };
 
@@ -374,7 +389,7 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   return newTree;
 };
 
-export const jsonTreeFindElement = (tree: JSONTreeElement, uuid) => {
+export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string) => {
   if (typeof uuid === 'undefined' || uuid === null) {
     return null;
   }

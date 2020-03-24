@@ -10,9 +10,9 @@ import DebugRect from './DebugRect';
 export type DebugSelectorProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
-  onSelect: (fiberNav: FiberNavigator) => void;
-  filter: (fiberNav: FiberNavigator) => FiberNavigator | null;
-  active: boolean;
+  onSelect?: (fiberNav: FiberNavigator) => void;
+  filter?: (fiberNav: FiberNavigator) => FiberNavigator | null;
+  active?: boolean;
 };
 
 export type DebugSelectorState = {
@@ -49,8 +49,6 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
       console.error('No fiber for dom node', domNode);
       return;
     }
-
-    console.log('DebugSelector:debugDOMNode', { fiberNav });
 
     fiberNav = this.props.filter(fiberNav);
 
