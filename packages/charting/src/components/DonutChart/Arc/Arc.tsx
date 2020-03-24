@@ -46,6 +46,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
           onBlur={this._onBlur}
           opacity={opacity}
           onClick={this._redirectToUrl.bind(this, href)}
+          aria-labelledby={this.props.calloutId}
         />
       </g>
     );

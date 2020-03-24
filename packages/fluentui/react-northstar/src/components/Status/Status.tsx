@@ -1,5 +1,5 @@
 import { Accessibility, statusBehavior } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -61,7 +61,7 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
     rtl: context.rtl,
   });
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Status.handledProps, props);
+  const unhandledProps = useUnhandledProps(Status.handledProps, props);
 
   const iconElement = Icon.create(icon, {
     defaultProps: () =>

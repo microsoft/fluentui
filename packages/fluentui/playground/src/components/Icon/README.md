@@ -469,11 +469,11 @@ render () {
 
 Fabric uses global registration for its icons which needs a call to an initialization function to be used. Below are wiki and code references into this process:
 
-- [Wiki page](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Using-icons)
+- [Wiki page](https://github.com/microsoft/fluentui/wiki/Using-icons)
 - [Icon font generation tool](https://uifabricicons.azurewebsites.net)
-- [Main `initializeIcons` function](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/icons/src/index.ts)
-- [Icon registration utilities](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/styling/src/utilities/icons.ts)
-- [Icon component](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Icon)
+- [Main `initializeIcons` function](https://github.com/microsoft/fluentui/blob/master/packages/icons/src/index.ts)
+- [Icon registration utilities](https://github.com/microsoft/fluentui/blob/master/packages/styling/src/utilities/icons.ts)
+- [Icon component](https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Icon)
 
 #### Fluent UI
 
@@ -490,10 +490,10 @@ type FontIconSpec = ObjectOrFunc<{
 
 Below are wiki and code references into this process:
 
-- [SVG icon processing](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-northstar/src/themes/teams/components/Icon/svg/ProcessedIcons/process-icons.sh#L36)
+- [SVG icon processing](https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/themes/teams/components/Icon/svg/ProcessedIcons/process-icons.sh#L36)
 - [Instructions on adding new SVG Icon](https://github.com/microsoft/fluent-ui-react/pull/585)
-- [Font vs SVG icon rendering](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/fluentui/react-northstar/src/themes/teams/components/Icon/iconStyles.ts)
-- [Icon styles as part of theme component styles](https://github.com/OfficeDev/office-ui-fabric-react/blob/15ad5f0b98156117d738f46ae4f5490c86027bce/packages/fluentui/react-northstar/src/themes/teams/componentStyles.ts#L47)
+- [Font vs SVG icon rendering](https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/themes/teams/components/Icon/iconStyles.ts)
+- [Icon styles as part of theme component styles](https://github.com/microsoft/fluentui/blob/15ad5f0b98156117d738f46ae4f5490c86027bce/packages/fluentui/react-northstar/src/themes/teams/componentStyles.ts#L47)
 
 > - TODO: Decide on recommended thing to do. Leaning towards Fluent UI approach but worried about perf implications regarding icon definitions.
 > - TODO: Discuss how to handle font loading if we put icons in the theme.

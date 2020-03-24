@@ -40,7 +40,7 @@ const sourceBranch = process.env.BUILD_SOURCEBRANCH;
 
 // https://github.com/screener-io/screener-runner
 module.exports = {
-  projectRepo: 'OfficeDev/office-ui-fabric-react/fluentui',
+  projectRepo: 'microsoft/fluentui/fluentui',
 
   apiKey: process.env.SCREENER_API_KEY,
 

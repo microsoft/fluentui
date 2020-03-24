@@ -60,7 +60,7 @@ describe('ContextualMenu', () => {
 
   // By default, do not set aria-label with value set to item text only.
   // This is to ensure that screen-readers read both primary and (optional) secondary text,
-  // unless aria-label set explicitly. See https://github.com/OfficeDev/office-ui-fabric-react/pull/6670.
+  // unless aria-label set explicitly. See https://github.com/microsoft/fluentui/pull/6670.
   it('by default aria-label is undefined per ContextualMenuItem', () => {
     const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: '7:00 PM' }];
 

@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -112,7 +112,7 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Label.handledProps, props);
+  const unhandledProps = useUnhandledProps(Label.handledProps, props);
 
   if (childrenExist(children)) {
     const element = (

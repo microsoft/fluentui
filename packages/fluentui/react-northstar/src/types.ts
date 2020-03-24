@@ -151,13 +151,11 @@ export const UNSAFE_typed = <TComponentType>(componentType: TComponentType) => {
 // ========================================================
 
 export interface ProviderContextInput extends StylesContextInputValue {
-  rtl?: boolean;
   target?: Document;
   telemetry?: Telemetry;
 }
 
 export interface ProviderContextPrepared extends StylesContextValue {
-  rtl: boolean;
   // `target` can be undefined for SSR
   target: Document | undefined;
   telemetry: Telemetry | undefined;

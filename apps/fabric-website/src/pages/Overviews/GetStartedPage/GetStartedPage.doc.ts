@@ -1,7 +1,7 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 
 const componentUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/GetStartedPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Overviews/GetStartedPage';
 
 export const GetStartedPageProps: TFabricPlatformPageProps = {
   web: {

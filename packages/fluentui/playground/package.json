@@ -2,13 +2,13 @@
   "name": "@fluentui/playground",
   "version": "0.47.0",
   "description": "> TODO: description",
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
+  "homepage": "https://github.com/microsoft/fluentui",
   "bugs": {
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react/issues"
+    "url": "https://github.com/microsoft/fluentui/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:OfficeDev/office-ui-fabric-react.git"
+    "url": "git@github.com:microsoft/fluentui.git"
   },
   "license": "MIT",
   "files": [

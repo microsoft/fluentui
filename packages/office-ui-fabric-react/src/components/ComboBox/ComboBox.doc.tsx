@@ -21,7 +21,7 @@ export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
   componentName: 'ComboBox',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
   examples: [
     {
       title: 'Basic uncontrolled ComboBox',

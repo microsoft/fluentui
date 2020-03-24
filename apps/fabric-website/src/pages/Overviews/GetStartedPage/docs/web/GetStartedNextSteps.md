@@ -8,7 +8,7 @@ For more detailed tutorials about developing and testing Fabric React apps, see 
 
 ### Fabric React wiki
 
-The [Fabric React wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki) has information about advanced usage, building and contributing to Fabric React, and more.
+The [Fabric React wiki](https://github.com/microsoft/fluentui/wiki) has information about advanced usage, building and contributing to Fabric React, and more.
 
 ### Styling and theming
 
@@ -18,6 +18,6 @@ For an overview of styling and theming approaches in Fabric, see [this page](htt
 
 <ul class="md-list--flex">
   <li class="mdut--full">[Theme designer](https://aka.ms/themedesigner)</li>
-  <li class="mdut--full">[Customizing CSS-in-JS styled components](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)</li>
-  <li class="mdut--full">[Theming deep dive](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Theming)</li>
+  <li class="mdut--full">[Customizing CSS-in-JS styled components](https://github.com/microsoft/fluentui/wiki/Component-Styling)</li>
+  <li class="mdut--full">[Theming deep dive](https://github.com/microsoft/fluentui/wiki/Theming)</li>
 </ul>

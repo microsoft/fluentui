@@ -5,7 +5,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "scripts": {
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
@@ -60,7 +60,7 @@
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.20.2",
+    "beachball": "^1.20.4",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5",
     "cross-env": "^5.1.4",
@@ -102,8 +102,17 @@
     ]
   },
   "beachball": {
-    "disallowedChangeTypes": [
-      "major"
+    "groups": [
+      {
+        "name": "fluent ui react",
+        "include": [
+          "packages/office-ui-fabric-react",
+          "packages/react"
+        ],
+        "disallowedChangeTypes": [
+          "major"
+        ]
+      }
     ]
   },
   "resolutions": {

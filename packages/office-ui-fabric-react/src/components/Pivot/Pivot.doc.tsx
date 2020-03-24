@@ -27,7 +27,7 @@ export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
   componentName: 'Pivot',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
   examples: [
     {
       title: 'Default Pivot',

@@ -1,7 +1,7 @@
 import { Accessibility, checkboxBehavior, CheckboxBehaviorProps } from '@fluentui/accessibility';
 import {
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
   useStateManager,
   useStyles,
@@ -133,7 +133,7 @@ const Checkbox: React.FC<WithAsProp<CheckboxProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Checkbox.handledProps, props);
+  const unhandledProps = useUnhandledProps(Checkbox.handledProps, props);
 
   const handleChange = (e: React.ChangeEvent) => {
     if (!disabled) {

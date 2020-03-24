@@ -3,7 +3,7 @@ import { ShimmerPageProps as ExternalProps } from 'office-ui-fabric-react/lib/co
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ShimmerPage/docs/ShimmerRelated.md') as string;
 const componentUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ShimmerPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ShimmerPage';
 
 export const ShimmerPageProps: TFabricPlatformPageProps = {
   web: {

@@ -1,4 +1,4 @@
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 // @ts-ignore
@@ -43,7 +43,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
     rtl: context.rtl,
   });
 
-  const unhandledProps = getUnhandledProps(Box.handledProps, props);
+  const unhandledProps = useUnhandledProps(Box.handledProps, props);
   const ElementType = getElementType(props);
 
   const result = (

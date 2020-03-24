@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -84,7 +84,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(Avatar.handledProps, props);
+  const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
 
   const result = (
     <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
