@@ -4,7 +4,7 @@ import {
   toolbarMenuItemCheckboxBehavior,
   ToolbarMenuBehaviorProps,
 } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import { mergeComponentVariables } from '@fluentui/styles';
 import * as _ from 'lodash';
@@ -143,7 +143,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   };
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarMenu.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarMenu.handledProps, props);
 
   const element = getA11yProps.unstable_wrapWithFocusZone(
     <ElementType

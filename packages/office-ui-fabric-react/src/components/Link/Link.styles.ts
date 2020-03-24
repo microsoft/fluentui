@@ -36,7 +36,7 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         selectors: {
           '.ms-Fabric--isFocusVisible &:focus': {
             // Can't use getFocusStyle because it doesn't support wrapping links
-            // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
+            // https://github.com/microsoft/fluentui/issues/4883#issuecomment-406743543
             // Using box-shadow and outline allows the focus rect to wrap links that span multiple lines
             // and helps the focus rect avoid getting clipped.
             boxShadow: `0 0 0 1px ${focusBorderColor} inset`,

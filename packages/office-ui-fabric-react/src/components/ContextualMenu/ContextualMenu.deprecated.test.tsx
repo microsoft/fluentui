@@ -254,7 +254,7 @@ describe('ContextualMenu', () => {
 describe('getItemClassNames', () => {
   // This test exists to validate that getItemClassNames signature has not changed
   // to avoid breaking internal partners relying on this private API.
-  // See: https://github.com/OfficeDev/office-ui-fabric-react/pull/6738
+  // See: https://github.com/microsoft/fluentui/pull/6738
   it('accepts an argument list of style props values', () => {
     const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
     const isDisabled = false;

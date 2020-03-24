@@ -323,7 +323,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
 
 function _isPivotItem(item: React.ReactNode): item is PivotItem {
   // In theory, we should be able to just check item.type === PivotItem.
-  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.
   return (
     !!item &&

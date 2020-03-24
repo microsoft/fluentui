@@ -5,8 +5,7 @@ import { ColorsSharedPageProps } from './SharedPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getColorsImplementation } from './getColorsImplementation';
 
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 const sharedColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/colors-shared.json');
 
 export const ColorsSharedPage: React.FunctionComponent<IStylesPageProps> = props => {

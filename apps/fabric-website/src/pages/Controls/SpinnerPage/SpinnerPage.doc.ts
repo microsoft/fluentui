@@ -3,7 +3,7 @@ import { SpinnerPageProps as ExternalProps } from 'office-ui-fabric-react/lib/co
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/SpinnerPage/docs/SpinnerRelated.md') as string;
 const componentUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/SpinnerPage';
 
 export const SpinnerPageProps: TFabricPlatformPageProps = {
   web: {

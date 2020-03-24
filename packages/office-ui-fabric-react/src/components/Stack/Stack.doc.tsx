@@ -74,7 +74,7 @@ export const StackPageProps: IDocPageProps = {
   title: 'Stack',
   componentName: 'Stack',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Stack',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Stack',
   examples: [
     {
       title: 'Basic Vertical Stack',

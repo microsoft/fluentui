@@ -1,5 +1,5 @@
 import { Accessibility, listItemBehavior, ListItemBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { useContextSelectors } from '@fluentui/react-context-selector';
 import cx from 'classnames';
 import * as _ from 'lodash';
@@ -155,7 +155,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ListItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ListItem.handledProps, props);
 
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     _.invoke(props, 'onClick', e, props);

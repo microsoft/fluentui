@@ -18,7 +18,7 @@ import {
   useStyles,
   useAutoControlled,
   getElementType,
-  getUnhandledProps,
+  useUnhandledProps,
   useAccessibility,
 } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
@@ -164,7 +164,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   const mergedVariables = mergeComponentVariables(parentVariables, variables);
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarMenuItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarMenuItem.handledProps, props);
 
   const getA11yProps = useAccessibility(props.accessibility, {
     debugName: ToolbarMenuItem.displayName,
