@@ -1,8 +1,8 @@
 import { ComposedComponent, ComposePreparedOptions } from '@fluentui/react-compose';
-import useReactElement from './useReactElement';
+import useCurrentReactElement from './useCurrentReactElement';
 
 function useComposeOptions(): ComposePreparedOptions | undefined {
-  const [ElementType] = useReactElement<ComposedComponent, Record<string, any>>();
+  const [ElementType] = useCurrentReactElement<ComposedComponent, Record<string, any>>();
 
   return ElementType?.fluentComposeConfig;
 }

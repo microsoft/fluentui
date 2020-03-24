@@ -10,7 +10,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 
 import useComposeOptions from '../compose/useComposeOptions';
-import useReactElement from '../compose/useReactElement';
+import useCurrentReactElement from '../compose/useCurrentReactElement';
 import {
   ComponentDesignProp,
   ComponentSlotClasses,
@@ -65,7 +65,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
     React.useContext(ThemeContext) || defaultContext;
 
-  const [, componentProps] = useReactElement();
+  const [, componentProps] = useCurrentReactElement();
   const composeOptions = useComposeOptions();
 
   const {

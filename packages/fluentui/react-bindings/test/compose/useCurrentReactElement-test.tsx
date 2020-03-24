@@ -1,23 +1,23 @@
 import { mount } from 'enzyme';
 import * as React from 'react';
 
-import useReactElement from '../../src/compose/useReactElement';
+import useCurrentReactElement from '../../src/compose/useCurrentReactElement';
 
 type TestComponentProps = { value: string };
 
 const TestComponent: React.FC<TestComponentProps> = () => {
-  const [ElementType, props] = useReactElement<React.FunctionComponent, TestComponentProps>();
+  const [ElementType, props] = useCurrentReactElement<React.FunctionComponent, TestComponentProps>();
 
   return <p data-name={ElementType?.name} data-value={props?.value} />;
 };
 
 const ByPassComponent: React.FC = props => {
-  const [ElementType] = useReactElement<React.FunctionComponent, TestComponentProps>();
+  const [ElementType] = useCurrentReactElement<React.FunctionComponent, TestComponentProps>();
 
   return <div data-name={ElementType?.name}>{props.children}</div>;
 };
 
-describe('useReactElement', () => {
+describe('useCurrentReactElement', () => {
   it('returns ElementType & props', () => {
     const wrapper = mount(<TestComponent value="foo" />);
 

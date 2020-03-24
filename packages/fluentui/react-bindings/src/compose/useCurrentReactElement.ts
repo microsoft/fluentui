@@ -13,7 +13,7 @@ type ReactCurrentOwner<T extends React.ElementType, P extends Record<string, any
   current: null | ReactFiber<T, P>;
 };
 
-const useReactElement = <T extends React.ElementType, P extends Record<string, any>>(): [
+const useCurrentReactElement = <T extends React.ElementType, P extends Record<string, any>>(): [
   ReactFiber<T, P>['type'] | undefined,
   P | undefined,
 ] => {
@@ -23,4 +23,4 @@ const useReactElement = <T extends React.ElementType, P extends Record<string, a
   return [currentOwner.current?.type, currentOwner.current?.pendingProps];
 };
 
-export default useReactElement;
+export default useCurrentReactElement;
