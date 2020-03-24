@@ -119,6 +119,7 @@ const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
   <FrameRenderer frameBorder="0" width="400px" height="400px" scrolling="no" style={{ border: '2px  dotted green' }}>
     {externalDocument => (
       <Provider
+        rtl
         styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
         target={externalDocument}
         theme={themes.teams}
