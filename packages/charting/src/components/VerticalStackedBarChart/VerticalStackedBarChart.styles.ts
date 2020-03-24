@@ -32,7 +32,7 @@ export const getStyles = (props: IVerticalStackedBarChartStyleProps): IVerticalS
 
     xAxis: [
       {
-        transform: `translate(${chartMargin.left}px, ${height - chartMargin.bottom}px)`,
+        transform: `translate(${chartMargin.left}px, ${height - chartMargin.bottom + 10}px)`,
       },
       {
         selectors: {
