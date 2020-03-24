@@ -25,7 +25,7 @@ const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, B
 // Adds overrides for a design term
 //
 
-const CompactTertiaryButton = compose(ComposedButton, {
+const CompactTertiaryButton = compose(TertiaryButton, {
   displayName: 'CompactTertiaryButton',
 });
 
