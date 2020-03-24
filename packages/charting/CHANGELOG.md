@@ -1,7 +1,16 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 19 Mar 2020 12:29:37 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 0.142.0
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Minor changes
+
+- Add support for screen reader when hover on donnut chart (v-satgar@microsoft.com)
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 0.141.6
 Thu, 19 Mar 2020 12:29:37 GMT
 
