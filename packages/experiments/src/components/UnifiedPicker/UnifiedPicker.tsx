@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
-import { classNamesFunction, css, SelectionMode, Selection } from '../../Utilities';
+import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
 import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
@@ -23,7 +23,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectedSuggestionIndex,
     isSuggestionsVisible
   );
-  const { selectedItems, addItems, removeItems } = useSelectedItems(selection, props.selectedItemsListProps.selectedItems);
+  const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems } = useSelectedItems(
+    selection,
+    props.selectedItemsListProps.selectedItems
+  );
 
   const _onSelectionChanged = () => {
     setSelection(selection);
@@ -43,8 +46,29 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const activeDescendant = '';
   const isExpanded = true;
 
-  const _onBackspace = () => {
-    console.log('Backspace keyDown handler');
+  const _onBackspace = (ev: React.KeyboardEvent<HTMLDivElement>) => {
+    if (ev.which !== KeyCodes.backspace) {
+      return;
+    }
+
+    if (selectedItems.length) {
+      if (
+        input &&
+        input.current &&
+        !input.current.isValueSelected &&
+        input.current.inputElement === document.activeElement &&
+        (input.current as Autofill).cursorLocation === 0
+      ) {
+        showPicker(false);
+        ev.preventDefault();
+        removeItemAt(selectedItems.length - 1);
+      } else if (selection.getSelectedCount() > 0) {
+        showPicker(false);
+        ev.preventDefault();
+        removeSelectedItems();
+        input.current?.focus();
+      }
+    }
   };
   const _onCopy = () => {
     console.log('copy handler');
