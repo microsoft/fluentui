@@ -143,7 +143,7 @@ const ButtonExample = () => (
     <Header as="h3" content="A tertiary button" description="Adds a custom design term" />
     <Flex>
       <ComposedButton content="Click here" />
-      <ComposedButton content="Click here" tertiary />
+      <TertiaryButton content="Click here" tertiary />
     </Flex>
 
     <Header as="h3" content="A tertiary button" description="Provides overrides for a design term" />
