@@ -14,25 +14,25 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
         display: 'flex',
         backgroundColor: semanticColors.bodyBackground,
         padding: '0 14px 0 24px',
-        height: COMMAND_BAR_HEIGHT
+        height: COMMAND_BAR_HEIGHT,
       },
-      className
+      className,
     ],
     primarySet: [
       'ms-CommandBar-primaryCommand',
       {
         flexGrow: '1',
         display: 'flex',
-        alignItems: 'stretch'
-      }
+        alignItems: 'stretch',
+      },
     ],
     secondarySet: [
       'ms-CommandBar-secondaryCommand',
       {
         flexShrink: '0',
         display: 'flex',
-        alignItems: 'stretch'
-      }
-    ]
+        alignItems: 'stretch',
+      },
+    ],
   };
 };

@@ -20,7 +20,7 @@ const _testTags: ITag[] = [
   'rose',
   'violet',
   'white',
-  'yellow'
+  'yellow',
 ].map(item => ({ key: item, name: item }));
 
 export interface IAnnouncedSearchResultsExampleState {
@@ -40,7 +40,7 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
     this.state = {
       seconds: 0,
       numberOfSuggestions: 0,
-      emptyInput: true
+      emptyInput: true,
     };
   }
 
@@ -50,7 +50,8 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
     return (
       <Stack tokens={stackTokens}>
         <Text>
-          Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
+          Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the
+          search suggestions.
         </Text>
         {this._renderAnnounced()}
         <TagPicker
@@ -58,10 +59,11 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Tags',
-            noResultsFoundText: 'No Color Tags Found' // this alert handles the case when there are no suggestions available
+            // this alert handles the case when there are no suggestions available
+            noResultsFoundText: 'No Color Tags Found',
           }}
           inputProps={{
-            'aria-label': 'Tag Picker'
+            'aria-label': 'Tag Picker',
           }}
         />
       </Stack>
@@ -84,7 +86,11 @@ export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnounce
     if (!emptyInput) {
       return (
         <Announced
-          message={numberOfSuggestions === 1 ? `${numberOfSuggestions} Color Tag Found` : `${numberOfSuggestions} Color Tags Found`}
+          message={
+            numberOfSuggestions === 1
+              ? `${numberOfSuggestions} Color Tag Found`
+              : `${numberOfSuggestions} Color Tags Found`
+          }
         />
       );
     }

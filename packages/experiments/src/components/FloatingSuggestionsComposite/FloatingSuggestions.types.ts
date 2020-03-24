@@ -2,7 +2,7 @@ import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IStyle } from '@uifabric/styling';
 import {
   IFloatingSuggestionItemProps,
-  IFloatingSuggestionOnRenderItemProps
+  IFloatingSuggestionOnRenderItemProps,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
 import { IRenderFunction, IRefObject } from '@uifabric/utilities';
 

@@ -11,6 +11,6 @@ export const Slider: React.FunctionComponent<ISliderProps> = styled<ISliderProps
   getStyles,
   undefined,
   {
-    scope: 'Slider'
-  }
+    scope: 'Slider',
+  },
 );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree } from '@fluentui/react';
+import { Tree } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -12,9 +12,9 @@ const items = [
         items: [
           {
             id: 'tree-item-exclusive-3',
-            title: 'one one one'
-          }
-        ]
+            title: 'one one one',
+          },
+        ],
       },
       {
         id: 'tree-item-exclusive-6',
@@ -22,11 +22,11 @@ const items = [
         items: [
           {
             id: 'tree-item-exclusive-7',
-            title: 'one two one'
-          }
-        ]
-      }
-    ]
+            title: 'one two one',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'tree-item-exclusive-4',
@@ -34,10 +34,10 @@ const items = [
     items: [
       {
         id: 'tree-item-exclusive-5',
-        title: 'two one'
-      }
-    ]
-  }
+        title: 'two one',
+      },
+    ],
+  },
 ];
 
 const TreeExclusiveExample = () => <Tree aria-label="exclusive" items={items} exclusive />;

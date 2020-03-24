@@ -1,52 +1,52 @@
 import * as React from 'react';
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const inputItems = [
   {
     header: 'Bruce Wayne',
     image: 'public/images/avatar/small/matt.jpg',
-    content: 'Software Engineer'
+    content: 'Software Engineer',
   },
   {
     header: 'Natasha Romanoff',
     image: 'public/images/avatar/small/jenny.jpg',
-    content: 'UX Designer 2'
+    content: 'UX Designer 2',
   },
   {
     header: 'Steven Strange',
     image: 'public/images/avatar/small/joe.jpg',
-    content: 'Principal Software Engineering Manager'
+    content: 'Principal Software Engineering Manager',
   },
   {
     header: 'Alfred Pennyworth',
     image: 'public/images/avatar/small/justen.jpg',
-    content: 'Technology Consultant'
+    content: 'Technology Consultant',
   },
   {
     header: `Scarlett O'Hara`,
     image: 'public/images/avatar/small/laura.jpg',
-    content: 'Software Engineer 2'
+    content: 'Software Engineer 2',
   },
   {
     header: 'Imperator Furiosa',
     image: 'public/images/avatar/small/veronika.jpg',
-    content: 'Boss'
+    content: 'Boss',
   },
   {
     header: 'Bruce Banner',
     image: 'public/images/avatar/small/chris.jpg',
-    content: 'Senior Computer Scientist'
+    content: 'Senior Computer Scientist',
   },
   {
     header: 'Peter Parker',
     image: 'public/images/avatar/small/daniel.jpg',
-    content: 'Partner Software Engineer'
+    content: 'Partner Software Engineer',
   },
   {
     header: 'Selina Kyle',
     image: 'public/images/avatar/small/ade.jpg',
-    content: 'Graphic Designer'
-  }
+    content: 'Graphic Designer',
+  },
 ];
 
 const DropdownExampleSearchMultipleImageAndContent = () => (
@@ -62,7 +62,7 @@ const DropdownExampleSearchMultipleImageAndContent = () => (
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item.header} has been selected.`,
-  onRemove: item => `${item.header} has been removed.`
+  onRemove: item => `${item.header} has been removed.`,
 };
 
 export default DropdownExampleSearchMultipleImageAndContent;

@@ -3,7 +3,7 @@ import { appPaddingSm } from '../../styles/constants';
 import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
 
 export const sideRailClassNames = {
-  isActive: 'SideRail-isActive'
+  isActive: 'SideRail-isActive',
 };
 
 export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = props => {
@@ -14,20 +14,20 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       marginBottom: appPaddingSm,
       selectors: {
         '&:last-child': {
-          marginBottom: 0
-        }
-      }
+          marginBottom: 0,
+        },
+      },
     },
     sectionTitle: {
       fontSize: theme.fonts.mediumPlus.fontSize,
       fontWeight: FontWeights.semibold,
       color: theme.palette.neutralSecondary,
       marginTop: 0,
-      paddingLeft: 8
+      paddingLeft: 8,
     },
     links: {
       margin: 0,
-      padding: 0
+      padding: 0,
     },
     linkWrapper: {
       display: 'flex',
@@ -39,12 +39,12 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
             flex: '1',
             padding: '4px 8px',
             selectors: {
-              '&:hover': { background: theme.palette.neutralLight }
-            }
+              '&:hover': { background: theme.palette.neutralLight },
+            },
           },
-          getFocusOutlineStyle(theme, 1)
-        ]
-      }
+          getFocusOutlineStyle(theme, 1),
+        ],
+      },
     },
     markdownList: {
       selectors: {
@@ -53,15 +53,15 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
             fontSize: theme.fonts.medium.fontSize,
             padding: '4px 8px',
             selectors: {
-              '&:hover': { background: theme.palette.neutralLight }
-            }
+              '&:hover': { background: theme.palette.neutralLight },
+            },
           },
-          getFocusOutlineStyle(theme, 1)
-        ]
-      }
+          getFocusOutlineStyle(theme, 1),
+        ],
+      },
     },
     jumpLinkWrapper: {
-      position: 'relative'
+      position: 'relative',
     },
     jumpLink: {
       color: theme.palette.neutralPrimary,
@@ -69,19 +69,19 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       paddingLeft: 6, // 8px - 2px border
       selectors: {
         '&:focus': {
-          color: theme.palette.neutralPrimary
-        }
-      }
+          color: theme.palette.neutralPrimary,
+        },
+      },
     },
     jumpLinkActive: {
-      borderLeftColor: theme!.palette.themePrimary
+      borderLeftColor: theme!.palette.themePrimary,
     },
     jumpLinkSection: {
       selectors: {
         '@media screen and (max-width: 1360px)': {
-          display: 'none'
-        }
-      }
-    }
+          display: 'none',
+        },
+      },
+    },
   };
 };

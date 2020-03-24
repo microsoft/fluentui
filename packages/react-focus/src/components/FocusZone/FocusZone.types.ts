@@ -25,8 +25,8 @@ export interface IFocusZone {
   focusElement(childElement?: HTMLElement): boolean;
 
   /**
-   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather than a center based on
-   * the last horizontal motion.
+   * Forces horizontal alignment in the context of vertical arrowing to use specific point as the reference, rather
+   * than a center based on the last horizontal motion.
    * @param point - the new reference point.
    */
   setFocusAlignment(point: IPoint): void;
@@ -175,7 +175,7 @@ export const FocusZoneTabbableElements = {
   all: 1 as 1,
 
   /** Tabbing is allowed only on input elements */
-  inputOnly: 2 as 2
+  inputOnly: 2 as 2,
 };
 
 /**
@@ -200,5 +200,5 @@ export enum FocusZoneDirection {
    * React to all arrows. Navigate next item in DOM on right/down arrow keys and previous - left/up arrow keys.
    * Right and Left arrow keys are swapped in RTL mode.
    */
-  domOrder = 3
+  domOrder = 3,
 }

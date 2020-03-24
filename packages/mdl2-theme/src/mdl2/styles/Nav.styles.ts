@@ -8,41 +8,41 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
     link: [
       {
         height: navHeight,
-        lineHeight: `${navHeight}px`
+        lineHeight: `${navHeight}px`,
       },
       !isDisabled && {
         selectors: {
           '.ms-Nav-compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt
-          }
-        }
+            backgroundColor: palette.neutralLighterAlt,
+          },
+        },
       },
       isSelected && {
-        backgroundColor: palette.neutralLighter
-      }
+        backgroundColor: palette.neutralLighter,
+      },
     ],
     chevronButton: [
       {
         lineHeight: `${navHeight}px`,
         selectors: {
           '&:hover': {
-            backgroundColor: palette.neutralLighterAlt
+            backgroundColor: palette.neutralLighterAlt,
           },
           '$compositeLink:hover &': {
-            backgroundColor: palette.neutralLighterAlt
-          }
-        }
+            backgroundColor: palette.neutralLighterAlt,
+          },
+        },
       },
       isGroup && {
-        height: navHeight
+        height: navHeight,
       },
       isLink && {
-        height: navHeight - 2
-      }
+        height: navHeight - 2,
+      },
     ],
     chevronIcon: {
       height: navHeight,
-      lineHeight: `${navHeight}px`
-    }
+      lineHeight: `${navHeight}px`,
+    },
   };
 };

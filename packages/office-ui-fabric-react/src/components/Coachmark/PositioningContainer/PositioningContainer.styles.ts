@@ -30,24 +30,24 @@ export const getClassNames = memoizeFunction(
           border: '1px solid ${}',
           selectors: {
             [HighContrastSelector]: {
-              border: '1px solid WindowText'
-            }
-          }
+              border: '1px solid WindowText',
+            },
+          },
         },
-        focusClear()
+        focusClear(),
       ],
       container: {
-        position: 'relative'
+        position: 'relative',
       },
       main: {
         backgroundColor: '#ffffff',
         overflowX: 'hidden',
         overflowY: 'hidden',
-        position: 'relative'
+        position: 'relative',
       },
       overFlowYHidden: {
-        overflowY: 'hidden'
-      }
+        overflowY: 'hidden',
+      },
     });
-  }
+  },
 );

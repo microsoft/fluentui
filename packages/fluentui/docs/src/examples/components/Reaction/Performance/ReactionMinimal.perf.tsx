@@ -1,4 +1,4 @@
-import { Reaction } from '@fluentui/react';
+import { Reaction } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ReactionMinimalPerf = () => <Reaction />;

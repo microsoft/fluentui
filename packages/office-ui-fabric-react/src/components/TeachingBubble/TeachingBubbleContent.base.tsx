@@ -16,8 +16,8 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
     imageProps: {
       imageFit: ImageFit.cover,
       width: 364,
-      height: 130
-    }
+      height: 130,
+    },
   };
 
   public rootElement = React.createRef<HTMLDivElement>();
@@ -65,7 +65,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       theme,
       ariaDescribedBy,
       ariaLabelledBy,
-      footerContent: customFooterContent
+      footerContent: customFooterContent,
     } = this.props;
 
     let imageContent;
@@ -82,7 +82,7 @@ export class TeachingBubbleContentBase extends React.Component<ITeachingBubblePr
       hasHeadline: !!headline,
       isWide,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
-      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined
+      secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined,
     });
 
     if (illustrationImage && illustrationImage.src) {

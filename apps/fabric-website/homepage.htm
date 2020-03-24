@@ -45,7 +45,11 @@
         t.cookie = i.cookie;
       } catch (e) {}
       (t.queue = []), (t.version = 2);
-      for (var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance']; r.length; )
+      for (
+        var r = ['Event', 'PageView', 'Exception', 'Trace', 'DependencyData', 'Metric', 'PageViewPerformance'];
+        r.length;
+
+      )
         n('track' + r.pop());
       n('startTrackPage'), n('stopTrackPage');
       var s = 'Track' + r[0];
@@ -61,7 +65,7 @@
           Information: 1,
           Warning: 2,
           Error: 3,
-          Critical: 4
+          Critical: 4,
         }),
         !(
           !0 === e.disableExceptionTracking ||
@@ -81,7 +85,7 @@
                 url: n,
                 lineNumber: i,
                 columnNumber: a,
-                error: s
+                error: s,
               }),
             c
           );
@@ -90,9 +94,10 @@
       }
       return t;
     })({
-      instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f'
+      instrumentationKey: '8a822908-f374-4206-900d-07ef9d2d4e9f',
     });
-  (window.appInsights = appInsights), appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
+  (window.appInsights = appInsights),
+    appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView({});
 </script>
 
 <div id="main">
@@ -127,7 +132,9 @@
     var fabricVersions = [5, 6, 7];
 
     var fabricVersion = Number(
-      getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersions[fabricVersions.length - 1]
+      getParameterByName('fabricVer') ||
+        window.sessionStorage.getItem('fabricVer') ||
+        fabricVersions[fabricVersions.length - 1]
     );
 
     if (fabricVersions.indexOf(fabricVersion) > -1) {
@@ -135,7 +142,9 @@
     }
 
     var prefixVer =
-      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
+      fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0]
+        ? 'v' + fabricVersion + '-'
+        : '';
 
     var configPrefix = 'fabric-website-' + prefixVer + (isProduction ? 'prod' : 'df');
 
@@ -199,7 +208,7 @@
     window.MonacoConfig = {
       baseUrl: appPath,
       useMinified: !isDev,
-      crossDomain: true
+      crossDomain: true,
     };
   }
 

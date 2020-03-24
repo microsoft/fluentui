@@ -31,89 +31,99 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
  * To use the removal / expansion, bind isValid / canExpand /  getExpandedItems
  * when passing the onRenderItem to your SelectedItemsList
  */
-const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPersonaProps>(props: ISelectedPersonaProps<TPersona>) => {
-  const {
-    item,
-    onRemoveItem,
-    onItemChange,
-    removeButtonAriaLabel,
-    index,
-    selected,
-    isValid,
-    canExpand,
-    getExpandedItems,
-    styles,
-    theme
-  } = props;
-  const itemId = getId();
+const SelectedPersonaInner = React.memo(
+  <TPersona extends IPersonaProps = IPersonaProps>(props: ISelectedPersonaProps<TPersona>) => {
+    const {
+      item,
+      onRemoveItem,
+      onItemChange,
+      removeButtonAriaLabel,
+      index,
+      selected,
+      isValid,
+      canExpand,
+      getExpandedItems,
+      styles,
+      theme,
+    } = props;
+    const itemId = getId();
 
-  const onExpandClicked = React.useCallback(
-    ev => {
-      ev.stopPropagation();
-      ev.preventDefault();
-      if (onItemChange && getExpandedItems) {
-        onItemChange(getExpandedItems(item), index);
-      }
-    },
-    [onItemChange, getExpandedItems, item, index]
-  );
+    const onExpandClicked = React.useCallback(
+      ev => {
+        ev.stopPropagation();
+        ev.preventDefault();
+        if (onItemChange && getExpandedItems) {
+          onItemChange(getExpandedItems(item), index);
+        }
+      },
+      [onItemChange, getExpandedItems, item, index],
+    );
 
-  const onRemoveClicked = React.useCallback(
-    ev => {
-      ev.stopPropagation();
-      ev.preventDefault();
-      onRemoveItem && onRemoveItem();
-    },
-    [onRemoveItem]
-  );
+    const onRemoveClicked = React.useCallback(
+      ev => {
+        ev.stopPropagation();
+        ev.preventDefault();
+        onRemoveItem && onRemoveItem();
+      },
+      [onRemoveItem],
+    );
 
-  const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
-    () =>
-      getClassNames(styles, {
-        isSelected: selected || false,
-        isValid: isValid ? isValid(item) : true,
-        theme: theme!
-      }),
-    [selected, isValid, theme]
-  );
+    const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
+      () =>
+        getClassNames(styles, {
+          isSelected: selected || false,
+          isValid: isValid ? isValid(item) : true,
+          theme: theme!,
+        }),
+      [selected, isValid, theme],
+    );
 
-  const coinProps = {};
+    const coinProps = {};
 
-  return (
-    <div
-      onContextMenu={props.onContextMenu}
-      onClick={props.onClick}
-      className={css('ms-PickerPersona-container', classNames.personaContainer)}
-      data-is-focusable={true}
-      data-is-sub-focuszone={true}
-      data-selection-index={index}
-      role={'listitem'}
-      aria-labelledby={'selectedItemPersona-' + itemId}
-    >
-      <div hidden={!canExpand || !canExpand(item) || !getExpandedItems}>
-        <IconButton
-          onClick={onExpandClicked}
-          iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
-          className={css('ms-PickerItem-removeButton', classNames.expandButton)}
-          styles={classNames.subComponentStyles.actionButtonStyles()}
-          ariaLabel={removeButtonAriaLabel}
-        />
-      </div>
-      <div className={css(classNames.personaWrapper)}>
-        <div className={css('ms-PickerItem-content', classNames.itemContentWrapper)} id={'selectedItemPersona-' + itemId}>
-          <Persona {...item} size={PersonaSize.size32} styles={classNames.subComponentStyles.personaStyles} coinProps={coinProps} />
+    return (
+      <div
+        onContextMenu={props.onContextMenu}
+        onClick={props.onClick}
+        className={css('ms-PickerPersona-container', classNames.personaContainer)}
+        data-is-focusable={true}
+        data-is-sub-focuszone={true}
+        data-selection-index={index}
+        role={'listitem'}
+        aria-labelledby={'selectedItemPersona-' + itemId}
+      >
+        <div hidden={!canExpand || !canExpand(item) || !getExpandedItems}>
+          <IconButton
+            onClick={onExpandClicked}
+            iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
+            className={css('ms-PickerItem-removeButton', classNames.expandButton)}
+            styles={classNames.subComponentStyles.actionButtonStyles()}
+            ariaLabel={removeButtonAriaLabel}
+          />
         </div>
-        <IconButton
-          onClick={onRemoveClicked}
-          iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
-          className={css('ms-PickerItem-removeButton', classNames.removeButton)}
-          styles={classNames.subComponentStyles.actionButtonStyles()}
-          ariaLabel={removeButtonAriaLabel}
-        />
+        <div className={css(classNames.personaWrapper)}>
+          <div
+            className={css('ms-PickerItem-content', classNames.itemContentWrapper)}
+            id={'selectedItemPersona-' + itemId}
+          >
+            <Persona
+              {...item}
+              size={PersonaSize.size32}
+              styles={classNames.subComponentStyles.personaStyles}
+              coinProps={coinProps}
+            />
+          </div>
+          <IconButton
+            onClick={onRemoveClicked}
+            iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
+            className={css('ms-PickerItem-removeButton', classNames.removeButton)}
+            styles={classNames.subComponentStyles.actionButtonStyles()}
+            ariaLabel={removeButtonAriaLabel}
+          />
+        </div>
       </div>
-    </div>
-  );
-});
+    );
+  },
+);
 
 // export casting back to typeof inner to preserve generics.
 export const SelectedPersona = styled<ISelectedPersonaProps<any>, ISelectedPersonaStyleProps, ISelectedPersonaStyles>(
@@ -121,6 +131,6 @@ export const SelectedPersona = styled<ISelectedPersonaProps<any>, ISelectedPerso
   getStyles,
   undefined,
   {
-    scope: 'SelectedPersona'
-  }
+    scope: 'SelectedPersona',
+  },
 ) as typeof SelectedPersonaInner;

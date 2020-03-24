@@ -8,7 +8,7 @@ import {
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
-  DetailsRow
+  DetailsRow,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
@@ -22,18 +22,18 @@ import { IDetailsColumnRenderTooltipProps } from 'office-ui-fabric-react/lib/Det
 const classNames = mergeStyleSets({
   wrapper: {
     height: '80vh',
-    position: 'relative'
+    position: 'relative',
   },
   filter: {
     paddingBottom: 20,
-    maxWidth: 300
+    maxWidth: 300,
   },
   header: {
-    margin: 0
+    margin: 0,
   },
   row: {
-    display: 'inline-block'
-  }
+    display: 'inline-block',
+  },
 });
 
 const _footerItem: IScrollablePaneDetailsListExampleItem = {
@@ -43,7 +43,7 @@ const _footerItem: IScrollablePaneDetailsListExampleItem = {
   test3: 'Footer 3',
   test4: 'Footer 4',
   test5: 'Footer 5',
-  test6: 'Footer 6'
+  test6: 'Footer 6',
 };
 
 export interface IScrollablePaneDetailsListExampleItem {
@@ -79,7 +79,7 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
         test3: _lorem(4),
         test4: _lorem(4),
         test5: _lorem(4),
-        test6: _lorem(4)
+        test6: _lorem(4),
       });
     }
 
@@ -91,12 +91,12 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
         fieldName: 'test' + i,
         minWidth: 100,
         maxWidth: 200,
-        isResizable: true
+        isResizable: true,
       });
     }
 
     this.state = {
-      items: this._allItems
+      items: this._allItems,
     };
   }
 
@@ -135,7 +135,9 @@ export class ScrollablePaneDetailsListExample extends React.Component<{}, IScrol
 
   private _onFilterChange = (ev: React.FormEvent<HTMLElement>, text: string) => {
     this.setState({
-      items: text ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text)) : this._allItems
+      items: text
+        ? this._allItems.filter((item: IScrollablePaneDetailsListExampleItem) => hasText(item, text))
+        : this._allItems,
     });
   };
 }
@@ -157,7 +159,7 @@ const onRenderDetailsHeader: IRenderFunction<IDetailsHeaderProps> = (props, defa
     <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
       {defaultRender!({
         ...props,
-        onRenderColumnHeaderTooltip
+        onRenderColumnHeaderTooltip,
       })}
     </Sticky>
   );

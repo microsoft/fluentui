@@ -43,10 +43,15 @@ export class Table extends React.Component<ITableProps, ITableState> {
 
   public render(): JSX.Element {
     let { content } = this.props;
-    return this.state.currentBreakpoint === 'mobile' && this.props.responsive ? this._renderMobile(content) : this._renderDesktop(content);
+    return this.state.currentBreakpoint === 'mobile' && this.props.responsive
+      ? this._renderMobile(content)
+      : this._renderDesktop(content);
   }
 
-  /** Render Table cell.  Cell content is either cell's value property, or cell's html property (if value is an empty string) */
+  /**
+   * Render Table cell.  Cell content is either cell's value property, or cell's html property
+   * (if value is an empty string).
+   */
   private _renderCell(cell: ITableCell, index: number): JSX.Element {
     return cell.value.length ? (
       <td className={cell.className} key={index}>
@@ -107,7 +112,7 @@ export class Table extends React.Component<ITableProps, ITableState> {
 
     if (this.state.currentBreakpoint !== currBreakpoint) {
       this.setState({
-        currentBreakpoint: currBreakpoint
+        currentBreakpoint: currBreakpoint,
       });
     }
   };

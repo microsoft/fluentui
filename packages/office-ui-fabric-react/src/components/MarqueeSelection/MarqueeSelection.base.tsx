@@ -10,7 +10,7 @@ import {
   findScrollableParent,
   getDistanceBetweenPoints,
   getRTL,
-  initializeComponentRef
+  initializeComponentRef,
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
@@ -37,7 +37,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   public static defaultProps = {
     rootTagName: 'div',
     rootProps: {},
-    isEnabled: true
+    isEnabled: true,
   };
 
   private _async: Async;
@@ -65,7 +65,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     this._events = new EventGroup(this);
 
     this.state = {
-      dragRect: undefined
+      dragRect: undefined,
     };
   }
 
@@ -98,7 +98,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     return (
@@ -154,7 +154,12 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
       return;
     }
 
-    if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
+    if (
+      !this._isTouch &&
+      isEnabled &&
+      !this._isDragStartInSelection(ev) &&
+      (!onShouldStartSelection || onShouldStartSelection(ev))
+    ) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
@@ -195,7 +200,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
       left: this._rootRect.left + (this._scrollLeft - this._scrollableSurface.scrollLeft),
       top: this._rootRect.top + (this._scrollTop - this._scrollableSurface.scrollTop),
       width: this._rootRect.width,
-      height: this._rootRect.height
+      height: this._rootRect.height,
     };
   }
 
@@ -242,18 +247,18 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
         const constrainedPoint = this.props.isDraggingConstrainedToRoot
           ? {
               x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
-              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top))
+              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top)),
             }
           : {
               x: this._lastMouseEvent!.clientX - rootRect.left,
-              y: this._lastMouseEvent!.clientY - rootRect.top
+              y: this._lastMouseEvent!.clientY - rootRect.top,
             };
 
         const dragRect = {
           left: Math.min(this._dragOrigin.x, constrainedPoint.x),
           top: Math.min(this._dragOrigin.y, constrainedPoint.y),
           width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
-          height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
+          height: Math.abs(constrainedPoint.y - this._dragOrigin.y),
         };
 
         this._evaluateSelection(dragRect, rootRect);
@@ -273,11 +278,12 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
       this._autoScroll.dispose();
     }
 
-    this._autoScroll = this._dragOrigin = this._lastMouseEvent = this._selectedIndicies = this._itemRectCache = undefined;
+    this._autoScroll = this._dragOrigin = this._lastMouseEvent = undefined;
+    this._selectedIndicies = this._itemRectCache = undefined;
 
     if (this.state.dragRect) {
       this.setState({
-        dragRect: undefined
+        dragRect: undefined,
       });
 
       ev.preventDefault();
@@ -286,7 +292,9 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
   }
 
   private _isPointInRectangle(rectangle: IRectangle, point: IPoint): boolean {
-    return rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x;
+    return (
+      rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x
+    );
   }
 
   /**
@@ -358,7 +366,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
           width: itemRect.width,
           height: itemRect.height,
           right: itemRect.left - rootRect.left + itemRect.width,
-          bottom: itemRect.top - rootRect.top + itemRect.height
+          bottom: itemRect.top - rootRect.top + itemRect.height,
         };
 
         if (itemRect.width > 0 && itemRect.height > 0) {

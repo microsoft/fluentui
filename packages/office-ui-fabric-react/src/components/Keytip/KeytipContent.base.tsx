@@ -14,7 +14,7 @@ export class KeytipContentBase extends React.Component<IKeytipProps, {}> {
     const classNames = getClassNames(styles!, {
       theme: theme!,
       disabled,
-      visible
+      visible,
     });
 
     return (

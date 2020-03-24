@@ -1,7 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 12 Mar 2020 12:35:00 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.22.7
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.22.3
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
 ## 7.22.0
 Thu, 12 Mar 2020 12:35:00 GMT
 

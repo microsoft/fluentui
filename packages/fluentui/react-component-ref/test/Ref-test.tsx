@@ -19,7 +19,7 @@ describe('Ref', () => {
       const wrapper = shallow(
         <Ref innerRef={innerRef}>
           <CompositeClass />
-        </Ref>
+        </Ref>,
       );
 
       expect(wrapper.is(RefFindNode)).toBe(true);
@@ -30,7 +30,7 @@ describe('Ref', () => {
       const wrapper = shallow(
         <Ref innerRef={innerRef}>
           <ForwardedRef />
-        </Ref>
+        </Ref>,
       );
 
       expect(wrapper.is(RefForward)).toBe(true);

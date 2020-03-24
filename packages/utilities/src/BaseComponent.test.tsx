@@ -18,7 +18,7 @@ describe('BaseComponent', () => {
     }
 
     let component = ReactTestUtils.renderIntoDocument(
-      <Foo />
+      <Foo />,
       // tslint:disable-next-line:no-any
     ) as any;
 

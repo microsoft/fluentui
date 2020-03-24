@@ -15,7 +15,7 @@ storiesOf('ActivityItem', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -27,7 +27,7 @@ storiesOf('ActivityItem', module)
         timeStamp="timeStamp text"
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Personas',
@@ -37,14 +37,14 @@ storiesOf('ActivityItem', module)
           { imageInitials: 'AB' },
           { imageInitials: 'CD' },
           { imageInitials: 'EF' },
-          { imageInitials: 'GH' }
+          { imageInitials: 'GH' },
         ]}
         activityDescription={<span>description text</span>}
         comments={<span>comment text</span>}
         timeStamp="timeStamp text"
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Compact', () => (
     <ActivityItem

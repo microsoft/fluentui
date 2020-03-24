@@ -8,8 +8,8 @@ const iconStyles: IIconStyles = {
   root: {
     fontSize: '24px',
     height: '24px',
-    width: '24px'
-  }
+    width: '24px',
+  },
 };
 
 const stackTokens: IStackTokens = { childrenGap: 12 };

@@ -11,7 +11,7 @@ export const MenuButton: React.FunctionComponent<IMenuButtonProps> = composed({
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default MenuButton;

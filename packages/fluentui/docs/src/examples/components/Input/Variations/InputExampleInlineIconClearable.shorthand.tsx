@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Input } from '@fluentui/react';
+import { Input } from '@fluentui/react-northstar';
 
 const InputExampleInline = () => (
   <div>

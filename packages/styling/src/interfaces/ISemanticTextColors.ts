@@ -42,7 +42,8 @@ export interface ISemanticTextColors {
   linkHovered: string;
 
   /**
-   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field, disabled button text.
+   * The default color for disabled text on top of disabledBackground; e.g. text in a disabled text field or
+   * disabled button text.
    */
   disabledText: string;
 

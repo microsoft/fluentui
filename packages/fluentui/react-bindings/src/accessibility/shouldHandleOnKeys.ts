@@ -18,7 +18,7 @@ const shouldHandleOnKeys = (event: React.KeyboardEvent, keysCombinations: KeyCom
       isKeyModifiersMatch(event.altKey, keysCombination.altKey) &&
       isKeyModifiersMatch(event.shiftKey, keysCombination.shiftKey) &&
       isKeyModifiersMatch(event.metaKey, keysCombination.metaKey) &&
-      isKeyModifiersMatch(event.ctrlKey, keysCombination.ctrlKey)
+      isKeyModifiersMatch(event.ctrlKey, keysCombination.ctrlKey),
   );
 
 export default shouldHandleOnKeys;

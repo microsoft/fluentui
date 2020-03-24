@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import Scrollbars from 'react-custom-scrollbars';
-import { Text, Menu, List, Button, Popup, Dialog, Dropdown } from '@fluentui/react';
+import { Text, Menu, List, Button, Popup, Dialog, Dropdown } from '@fluentui/react-northstar';
 import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
 const ScrollbarMenuPrototype = () => {
@@ -12,14 +12,14 @@ const ScrollbarMenuPrototype = () => {
       menu: {
         as: Scrollbars,
         items: _.times(50, (i: number) => `Menu Item No. ${i}`),
-        style: { height: '20rem' }
-      }
+        style: { height: '20rem' },
+      },
     },
     {
       key: 'without-scrollbar',
       content: 'Submenu without scrollbar',
-      menu: _.times(5, (i: number) => `Menu Item No. ${i}`)
-    }
+      menu: _.times(5, (i: number) => `Menu Item No. ${i}`),
+    },
   ];
 
   return <Menu items={items} />;
@@ -35,7 +35,7 @@ const ScrollbarPopupPrototype = () => {
         // NOTE: because scrollbars uses an abs positioned container to fake scroll
         //       the consumer must specify a width/height value to show the scrollable area
         styles: { width: '20rem' },
-        content: <Scrollbars style={{ height: '20rem' }}>{lines}</Scrollbars>
+        content: <Scrollbars style={{ height: '20rem' }}>{lines}</Scrollbars>,
       }}
     />
   );
@@ -51,7 +51,7 @@ const ScrollbarDialogPrototype = () => {
       cancelButton="Close"
       content={{
         styles: { width: '100%' },
-        content: <Scrollbars style={{ height: '20rem' }}>{lines}</Scrollbars>
+        content: <Scrollbars style={{ height: '20rem' }}>{lines}</Scrollbars>,
       }}
     />
   );
@@ -61,7 +61,7 @@ const ScrollbarListPrototype = () => {
   const items = _.times(50, (i: number) => ({
     header: `Header ${i}`,
     content: `Content ${i}`,
-    key: `item-${i}`
+    key: `item-${i}`,
   }));
 
   return (
@@ -75,13 +75,20 @@ const ScrollbarDropdownPrototype = () => {
   const items = _.range(50).map((i: number) => ({
     header: `Header ${i}`,
     content: `Content ${i}`,
-    key: `item-${i}`
+    key: `item-${i}`,
   }));
 
   return (
     <div>
-      <Dropdown items={items} list={{ wrap: children => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }} />
-      <Dropdown search items={items} list={{ wrap: children => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }} />
+      <Dropdown
+        items={items}
+        list={{ wrap: children => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }}
+      />
+      <Dropdown
+        search
+        items={items}
+        list={{ wrap: children => <Scrollbars style={{ height: '20rem' }}>{children}</Scrollbars> }}
+      />
     </div>
   );
 };
@@ -90,8 +97,8 @@ const CustomScrollbarPrototypes: React.FC = () => {
   return (
     <PrototypeSection title="Custom Scrollbar">
       <Text>
-        Note: Fluent UI does not provide custom scrollbars. It is possible to integrate Fluent UI components with any custom scrollbars
-        framework.
+        Note: Fluent UI does not provide custom scrollbars. It is possible to integrate Fluent UI components with any
+        custom scrollbars framework.
       </Text>
       <ComponentPrototype title="Menu" description="Scrollbar can be integrated in Menu">
         <ScrollbarMenuPrototype />

@@ -12,9 +12,9 @@ const gridCellBehavior: Accessibility = props => ({
   attributes: {
     root: {
       role: 'gridcell',
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
-  }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
+  },
 });
 
 export default gridCellBehavior;

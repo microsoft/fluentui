@@ -1,7 +1,19 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 16 Mar 2020 12:28:27 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.15.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.15.0
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Minor changes
+
+- deprecate BaseComonent, remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
 ## 7.14.1
 Mon, 16 Mar 2020 12:28:27 GMT
 

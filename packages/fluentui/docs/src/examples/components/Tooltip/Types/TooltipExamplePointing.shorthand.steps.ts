@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   steps: [
@@ -8,8 +8,8 @@ const config: ScreenerTestsConfig = {
         .keys('body', keys.tab)
         .snapshot('Has outline on keyboard')
         .click(`.${Button.className}`)
-        .snapshot('No outline after click')
-  ]
+        .snapshot('No outline after click'),
+  ],
 };
 
 export default config;

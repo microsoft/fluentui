@@ -17,7 +17,7 @@ const PHOTOS: IPhoto[] = createArray(250, (index: number) => {
     key: index,
     url: `http://placehold.it/${randomWidth}x100`,
     width: randomWidth,
-    height: 100
+    height: 100,
   };
 });
 
@@ -29,7 +29,7 @@ const styles = mergeStyleSets({
     margin: 0,
     padding: 10,
     overflow: 'hidden',
-    userSelect: 'none'
+    userSelect: 'none',
   },
 
   photoCell: {
@@ -44,10 +44,10 @@ const styles = mergeStyleSets({
     selectors: {
       '&.is-selected': {
         background: theme.palette.themeLighter,
-        border: '1px solid ' + theme.palette.themePrimary
-      }
-    }
-  }
+        border: '1px solid ' + theme.palette.themePrimary,
+      },
+    },
+  },
 });
 
 export interface IMarqueeSelectionBasicExampleState {
@@ -62,7 +62,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     super(props);
 
     this.state = {
-      isMarqueeEnabled: true
+      isMarqueeEnabled: true,
     };
 
     this._selection = new Selection({
@@ -70,7 +70,7 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
         if (this._isMounted) {
           this.forceUpdate();
         }
-      }
+      },
     });
 
     this._selection.setItems(PHOTOS);
@@ -83,7 +83,12 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
   public render(): JSX.Element {
     return (
       <MarqueeSelection selection={this._selection} isEnabled={this.state.isMarqueeEnabled}>
-        <Checkbox styles={{ root: { margin: '10px 0' } }} label="Is marquee enabled" defaultChecked={true} onChange={this._onChange} />
+        <Checkbox
+          styles={{ root: { margin: '10px 0' } }}
+          label="Is marquee enabled"
+          defaultChecked={true}
+          onChange={this._onChange}
+        />
         <p>Drag a rectangle around the items below to select them:</p>
         <ul className={styles.photoList}>
           {PHOTOS.map((photo, index) => (
@@ -109,7 +114,10 @@ export class MarqueeSelectionBasicExample extends React.Component<{}, IMarqueeSe
     };
   }
 
-  private _onChange = (ev: React.FormEvent<HTMLElement | HTMLInputElement>, isMarqueeEnabled: boolean | undefined): void => {
+  private _onChange = (
+    ev: React.FormEvent<HTMLElement | HTMLInputElement>,
+    isMarqueeEnabled: boolean | undefined,
+  ): void => {
     this.setState({ isMarqueeEnabled: isMarqueeEnabled! });
   };
 }

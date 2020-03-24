@@ -12,9 +12,9 @@ const indicatorBehavior: Accessibility<IndicatorBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'img',
-      'aria-hidden': 'true'
-    }
-  }
+      'aria-hidden': 'true',
+    },
+  },
 });
 
 export type IndicatorBehaviorProps = never;

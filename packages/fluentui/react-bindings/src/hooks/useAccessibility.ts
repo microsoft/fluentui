@@ -15,7 +15,7 @@ type UseAccessibilityOptions<Props> = {
 
 type UseAccessibilityResult = (<SlotProps extends Record<string, any> & UserProps>(
   slotName: string,
-  slotProps: SlotProps
+  slotProps: SlotProps,
 ) => MergedProps<SlotProps>) & {
   unstable_wrapWithFocusZone: (children: React.ReactElement) => React.ReactElement;
 };
@@ -24,7 +24,9 @@ type UserProps = {
   onKeyDown?: KeyboardEventHandler;
 };
 
-type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps & Partial<AccessibilityAttributesBySlot> & UserProps;
+type MergedProps<SlotProps extends Record<string, any> = any> = SlotProps &
+  Partial<AccessibilityAttributesBySlot> &
+  UserProps;
 
 const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAccessibilityOptions<Props> = {}) => {
   const { actionHandlers, debugName = 'Undefined', mapPropsToBehavior = () => ({}), rtl = false } = options;
@@ -61,7 +63,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
     const finalProps: MergedProps = {
       ...definition.attributes[slotName],
       ...userProps,
-      onKeyDown: slotHandlers.current[slotName]
+      onKeyDown: slotHandlers.current[slotName],
     };
 
     return finalProps;
@@ -80,7 +82,7 @@ const useAccessibility = <Props>(behavior: Accessibility<Props>, options: UseAcc
         ...definition.focusZone.props,
         ...child.props,
         as: child.type,
-        isRtl: rtl
+        isRtl: rtl,
       });
     }
 

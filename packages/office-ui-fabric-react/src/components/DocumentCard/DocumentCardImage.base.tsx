@@ -3,7 +3,11 @@ import { Icon } from '../../Icon';
 import { Image } from '../../Image';
 import { IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IDocumentCardImageProps, IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
+import {
+  IDocumentCardImageProps,
+  IDocumentCardImageStyleProps,
+  IDocumentCardImageStyles,
+} from './DocumentCardImage.types';
 
 export interface IDocumentCardImageState {
   readonly imageHasLoaded: boolean;
@@ -32,7 +36,15 @@ export class DocumentCardImageBase extends React.Component<IDocumentCardImagePro
     return (
       <div className={this._classNames.root}>
         {imageSrc && (
-          <Image width={width} height={height} imageFit={imageFit} src={imageSrc} role="presentation" alt="" onLoad={this._onImageLoad} />
+          <Image
+            width={width}
+            height={height}
+            imageFit={imageFit}
+            src={imageSrc}
+            role="presentation"
+            alt=""
+            onLoad={this._onImageLoad}
+          />
         )}
         {this.state.imageHasLoaded ? this._renderCornerIcon() : this._renderCenterIcon()}
       </div>

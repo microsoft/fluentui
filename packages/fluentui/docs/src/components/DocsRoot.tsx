@@ -13,9 +13,9 @@ class DocsRoot extends React.Component<any, any> {
     match: PropTypes.shape({
       params: PropTypes.shape({
         name: PropTypes.string.isRequired,
-        tab: PropTypes.string.isRequired
-      })
-    })
+        tab: PropTypes.string.isRequired,
+      }),
+    }),
   };
 
   state = {};

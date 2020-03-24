@@ -21,11 +21,11 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
     target: 'web',
     mode: 'development',
     entry: {
-      app: paths.packageSrc(packageName, 'index')
+      app: paths.packageSrc(packageName, 'index'),
     },
     output: {
       path: path.dirname(outputFilePath),
-      filename: path.basename(outputFilePath)
+      filename: path.basename(outputFilePath),
     },
     module: {
       noParse: [/anchor-js/],
@@ -33,15 +33,15 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
         {
           test: /\.(js|ts|tsx)$/,
           loader: 'babel-loader',
-          exclude: /node_modules/
-        }
-      ]
+          exclude: /node_modules/,
+        },
+      ],
     },
     plugins: [
       new LicenseWebpackPlugin({
         stats: {
           warnings: true,
-          errors: true
+          errors: true,
         },
         renderLicenses: modules => {
           modules.forEach(module => {
@@ -54,17 +54,17 @@ export const prepareWebpackConfig = (options: WebpackOptions) => {
           });
 
           return null;
-        }
-      })
+        },
+      }),
     ],
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.json'],
       alias: {
         ...lernaAliases(),
-        src: paths.packageSrc('react'),
-        docs: paths.base('docs')
-      }
-    }
+        src: paths.packageSrc('react-northstar'),
+        docs: paths.base('docs'),
+      },
+    },
   };
 };
 

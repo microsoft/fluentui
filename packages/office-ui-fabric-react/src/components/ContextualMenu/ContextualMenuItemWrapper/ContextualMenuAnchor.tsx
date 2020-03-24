@@ -13,7 +13,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
   private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
     return {
       ...keytipProps,
-      hasMenu: true
+      hasMenu: true,
     };
   });
 
@@ -31,7 +31,7 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
       onItemClick,
       openSubMenu,
       dismissSubMenu,
-      dismissMenu
+      dismissMenu,
     } = this.props;
 
     let anchorRel = item.rel;
@@ -52,7 +52,11 @@ export class ContextualMenuAnchor extends ContextualMenuItemWrapper {
 
     return (
       <div>
-        <KeytipData keytipProps={item.keytipProps} ariaDescribedBy={nativeProps['aria-describedby']} disabled={disabled}>
+        <KeytipData
+          keytipProps={item.keytipProps}
+          ariaDescribedBy={nativeProps['aria-describedby']}
+          disabled={disabled}
+        >
           {(keytipAttributes: IKeytipDataProps): JSX.Element => (
             <a
               {...nativeProps}

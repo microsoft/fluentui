@@ -8,7 +8,7 @@ import {
   DetailsListLayoutMode,
   ColumnActionsMode,
   Selection,
-  SelectionMode
+  SelectionMode,
 } from 'office-ui-fabric-react';
 import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader';
 
@@ -25,7 +25,7 @@ const columns: IColumn[] = [
     minWidth: 100,
     maxWidth: 200,
     calculatedWidth: 100,
-    isResizable: true
+    isResizable: true,
   },
   {
     key: 'b',
@@ -38,7 +38,7 @@ const columns: IColumn[] = [
     isSorted: true,
     sortAscendingAriaLabel: 'Sorted up.',
     sortDescendingAriaLabel: 'Sorted down.',
-    ariaLabel: 'Click to sort.'
+    ariaLabel: 'Click to sort.',
   },
   {
     key: 'c',
@@ -54,7 +54,7 @@ const columns: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
+    ariaLabel: 'Click to sort, filter, or group.',
   },
   {
     key: 'd',
@@ -70,7 +70,7 @@ const columns: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
+    ariaLabel: 'Click to sort, filter, or group.',
   },
   {
     key: 'e',
@@ -86,7 +86,7 @@ const columns: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
+    ariaLabel: 'Click to sort, filter, or group.',
   },
   {
     key: 'f',
@@ -102,15 +102,15 @@ const columns: IColumn[] = [
     filterAriaLabel: 'Filtered.',
     isGrouped: true,
     groupAriaLabel: 'Grouped.',
-    ariaLabel: 'Click to sort, filter, or group.'
-  }
+    ariaLabel: 'Click to sort, filter, or group.',
+  },
 ];
 
 _selection.setItems(_items);
 
 const _columnReorderProps = {
   frozenColumnCountFromStart: 1,
-  frozenColumnCountFromEnd: 1
+  frozenColumnCountFromEnd: 1,
 };
 
 storiesOf('DetailsHeader', module)

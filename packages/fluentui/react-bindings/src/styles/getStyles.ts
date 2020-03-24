@@ -22,18 +22,17 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
   // - conditionally add sources for evaluating debug information to component
 
   const resolvedVariables = resolveVariables(
-    options.displayName,
+    options.displayNames,
     options.theme,
     options.props.variables,
-    options.performance.enableVariablesCaching
+    options.performance.enableVariablesCaching,
   );
-
   const { classes, resolvedStyles, resolvedStylesDebug } = resolveStyles(options, resolvedVariables);
 
   // conditionally add sources for evaluating debug information to component
   if (process.env.NODE_ENV !== 'production' && isDebugEnabled) {
     options.saveDebug({
-      componentName: options.displayName,
+      componentName: options.displayNames.join(':'),
       componentVariables: _.filter(resolvedVariables._debug, variables => !_.isEmpty(variables.resolved)),
       componentStyles: resolvedStylesDebug,
       siteVariables: _.filter(options.theme.siteVariables._debug, siteVars => {
@@ -47,7 +46,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
         }
 
         return true;
-      })
+      }),
     });
   }
 
@@ -55,7 +54,7 @@ const getStyles = (options: ResolveStylesOptions): GetStylesResult => {
     classes,
     variables: resolvedVariables,
     styles: resolvedStyles,
-    theme: options.theme
+    theme: options.theme,
   };
 };
 

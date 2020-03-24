@@ -1,4 +1,4 @@
-import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react';
+import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -16,18 +16,18 @@ const gridStyles = {
   listStyle: 'none',
   padding: '0',
   margin: '0',
-  gridRowGap: '10px'
+  gridRowGap: '10px',
 };
 
 const inputStyles = {
-  marginBottom: '10px'
+  marginBottom: '10px',
 };
 
 class GridImagePicker extends React.Component<GridPickerProps> {
   static defaultProps = {
     gridColumns: 5,
     inputIcon: 'search',
-    inputPlaceholder: 'Search...'
+    inputPlaceholder: 'Search...',
   };
 
   inputNode: HTMLElement;
@@ -42,8 +42,20 @@ class GridImagePicker extends React.Component<GridPickerProps> {
 
     return (
       <>
-        <Input styles={inputStyles} fluid icon={inputIcon} placeholder={inputPlaceholder} inputRef={this.setInputNode} />
-        <Grid as="ul" accessibility={gridBehavior} columns={gridColumns} style={gridStyles} content={this.renderGridItems()} />
+        <Input
+          styles={inputStyles}
+          fluid
+          icon={inputIcon}
+          placeholder={inputPlaceholder}
+          inputRef={this.setInputNode}
+        />
+        <Grid
+          as="ul"
+          accessibility={gridBehavior}
+          columns={gridColumns}
+          style={gridStyles}
+          content={this.renderGridItems()}
+        />
       </>
     );
   }

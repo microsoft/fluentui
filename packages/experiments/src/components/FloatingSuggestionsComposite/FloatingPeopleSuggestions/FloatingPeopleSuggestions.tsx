@@ -10,7 +10,7 @@ export const FloatingPeopleSuggestions = (props: IFloatingPeopleSuggestionsProps
     (suggestionItemprops: IFloatingSuggestionOnRenderItemProps<IPersonaProps>): JSX.Element => {
       return SuggestionItemNormal({ ...suggestionItemprops.item });
     },
-    []
+    [],
   );
 
   return (

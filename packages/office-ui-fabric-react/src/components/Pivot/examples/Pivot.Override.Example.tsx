@@ -8,7 +8,7 @@ export class PivotOverrideExample extends React.Component<any, any> {
     super(props);
 
     this.state = {
-      selectedKey: 0
+      selectedKey: 0,
     };
 
     this._handleClick = this._handleClick.bind(this);

@@ -21,7 +21,7 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
           horizontalAlign="start"
           tokens={{ childrenGap: 10 }}
           styles={{
-            root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
+            root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 },
           }}
         >
           <Toggle
@@ -32,7 +32,7 @@ class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
             offText="Off"
             styles={{
               // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
-              root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 }
+              root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 },
             }}
           />
           <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />

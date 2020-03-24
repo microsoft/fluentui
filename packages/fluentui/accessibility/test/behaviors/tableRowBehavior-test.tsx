@@ -3,7 +3,7 @@ import { tableRowBehavior } from '@fluentui/accessibility';
 describe('tableRowBehavior.ts', () => {
   test('use tableHeaderCellBehavior if table row has header prop defined', () => {
     const props = {
-      header: true
+      header: true,
     };
     const expectedResult = tableRowBehavior(props);
     expect(expectedResult.childBehaviors.cell.name).toEqual('tableHeaderCellBehavior');

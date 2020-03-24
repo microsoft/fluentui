@@ -12,7 +12,7 @@ const eventArg = (keyCodeValue: number): any => ({
   altKey: false,
   ctrlKey: false,
   metaKey: false,
-  shiftKey: false
+  shiftKey: false,
 });
 
 describe('getKeyDownHandlers', () => {
@@ -20,16 +20,16 @@ describe('getKeyDownHandlers', () => {
     actionsDefinition = {
       [partElementName]: {
         testAction: {
-          keyCombinations: [{ keyCode: testKeyCode }]
-        }
-      }
+          keyCombinations: [{ keyCode: testKeyCode }],
+        },
+      },
     };
   });
 
   describe('should attach onKeyDown handler', () => {
     test('when there are common actions and actions definition', () => {
       const actions = {
-        testAction: () => {}
+        testAction: () => {},
       };
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
@@ -40,15 +40,15 @@ describe('getKeyDownHandlers', () => {
     test('for few component elements', () => {
       const actions = {
         testAction: () => {},
-        someOtherTestAction: () => {}
+        someOtherTestAction: () => {},
       };
 
       const anotherPartName = 'root';
 
       actionsDefinition[anotherPartName] = {
         someOtherTestAction: {
-          keyCombinations: [{ keyCode: testKeyCode }]
-        }
+          keyCombinations: [{ keyCode: testKeyCode }],
+        },
       };
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
@@ -61,14 +61,14 @@ describe('getKeyDownHandlers', () => {
     test('when there is 1 common action and few others that are not common', () => {
       const actions = {
         uncommonAction: () => {},
-        testAction: () => {}
+        testAction: () => {},
       };
 
       actionsDefinition[partElementName].doSomething = {
-        keyCombinations: [{ keyCode: testKeyCode }]
+        keyCombinations: [{ keyCode: testKeyCode }],
       };
       actionsDefinition[partElementName].doSomethingElse = {
-        keyCombinations: [{ keyCode: testKeyCode }]
+        keyCombinations: [{ keyCode: testKeyCode }],
       };
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
@@ -80,14 +80,14 @@ describe('getKeyDownHandlers', () => {
       const actions = {
         testAction: jest.fn(),
         otherAction: jest.fn(),
-        anotherTestAction: jest.fn()
+        anotherTestAction: jest.fn(),
       };
 
       actionsDefinition[partElementName].otherAction = {
-        keyCombinations: [{ keyCode: testKeyCode }]
+        keyCombinations: [{ keyCode: testKeyCode }],
       };
       actionsDefinition[partElementName].anotherTestAction = {
-        keyCombinations: [{ keyCode: 21 }]
+        keyCombinations: [{ keyCode: 21 }],
       };
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
@@ -105,19 +105,19 @@ describe('getKeyDownHandlers', () => {
         testAction: jest.fn(),
         actionFalse: jest.fn(),
         actionNull: jest.fn(),
-        actionEmpty: jest.fn()
+        actionEmpty: jest.fn(),
       };
 
       actionsDefinition[partElementName].actionFalse = {
         // @ts-ignore
-        keyCombinations: false
+        keyCombinations: false,
       };
       actionsDefinition[partElementName].actionNull = {
         // @ts-ignore
-        keyCombinations: null
+        keyCombinations: null,
       };
       actionsDefinition[partElementName].actionEmpty = {
-        keyCombinations: []
+        keyCombinations: [],
       };
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);
@@ -135,14 +135,14 @@ describe('getKeyDownHandlers', () => {
       test('swap Right key to Left key', () => {
         const actions = {
           actionOnLeftArrow: jest.fn(),
-          actionOnRightArrow: jest.fn()
+          actionOnRightArrow: jest.fn(),
         };
 
         actionsDefinition[partElementName].actionOnLeftArrow = {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         };
         actionsDefinition[partElementName].actionOnRightArrow = {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
         };
         const keyHandlers = getKeyDownHandlers(actions, actionsDefinition, /** isRtlEnabled */ true);
 
@@ -155,14 +155,14 @@ describe('getKeyDownHandlers', () => {
       test('swap Left key to Right key', () => {
         const actions = {
           actionOnLeftArrow: jest.fn(),
-          actionOnRightArrow: jest.fn()
+          actionOnRightArrow: jest.fn(),
         };
 
         actionsDefinition[partElementName].actionOnLeftArrow = {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         };
         actionsDefinition[partElementName].actionOnRightArrow = {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
         };
         const keyHandlers = getKeyDownHandlers(actions, actionsDefinition, /** isRtlEnabled */ true);
 
@@ -177,23 +177,23 @@ describe('getKeyDownHandlers', () => {
           actionOnRightArrow: jest.fn(),
           actionFalse: jest.fn(),
           actionNull: jest.fn(),
-          actionEmpty: jest.fn()
+          actionEmpty: jest.fn(),
         };
 
         actionsDefinition[partElementName].actionOnRightArrow = {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
         };
 
         actionsDefinition[partElementName].actionFalse = {
           // @ts-ignore
-          keyCombinations: false
+          keyCombinations: false,
         };
         actionsDefinition[partElementName].actionNull = {
           // @ts-ignore
-          keyCombinations: null
+          keyCombinations: null,
         };
         actionsDefinition[partElementName].actionEmpty = {
-          keyCombinations: []
+          keyCombinations: [],
         };
 
         const keyHandlers = getKeyDownHandlers(actions, actionsDefinition, true);
@@ -238,21 +238,21 @@ describe('getKeyDownHandlers', () => {
         testAction: () => {},
         actionFalse: () => {},
         actionNull: () => {},
-        actionEmpty: () => {}
+        actionEmpty: () => {},
       };
 
       actionsDefinition.anotherPart = {
         actionFalse: {
           // @ts-ignore
-          keyCombinations: false
+          keyCombinations: false,
         },
         actionNull: {
           // @ts-ignore
-          keyCombinations: null
+          keyCombinations: null,
         },
         actionEmpty: {
-          keyCombinations: []
-        }
+          keyCombinations: [],
+        },
       };
 
       const keyHandlers = getKeyDownHandlers(actions, actionsDefinition);

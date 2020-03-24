@@ -4,7 +4,7 @@ module.exports = {
   plugins: ['@typescript-eslint', 'jest', 'import', 'react-hooks', '@fluentui'],
   env: {
     browser: true,
-    'jest/globals': true
+    'jest/globals': true,
   },
   rules: {
     // False positive on arg types:
@@ -97,39 +97,39 @@ module.exports = {
     'no-useless-escape': 'off',
     'no-use-before-define': 'off',
     'operator-assignment': 'off',
-    'prefer-destructuring': 'off'
+    'prefer-destructuring': 'off',
   },
   overrides: [
     {
       files: '**/jest.config.js',
       rules: {
-        'global-require': 'off'
-      }
+        'global-require': 'off',
+      },
     },
     {
       files: '**/test/**/*.{ts,tsx}',
       rules: {
-        'import/no-extraneous-dependencies': 'off'
-      }
+        'import/no-extraneous-dependencies': 'off',
+      },
     },
     {
       files: '**/*.tsx',
       rules: {
-        '@fluentui/no-visibility-modifiers': 'error'
-      }
+        '@fluentui/no-visibility-modifiers': 'error',
+      },
     },
     {
       files: '**/*.{ts,tsx}',
       rules: {
-        'no-dupe-class-members': 'off'
-      }
-    }
+        'no-dupe-class-members': 'off',
+      },
+    },
   ],
   settings: {
     'import/resolver': {
       node: {
-        extensions: ['.js', '.jsx', '.ts', '.tsx']
-      }
-    }
-  }
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
+  },
 };

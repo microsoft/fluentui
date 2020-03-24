@@ -19,7 +19,7 @@ describe('useContextSelector', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: 1 }}>
         <TestComponent index={1} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     expect(wrapper.find('div').prop('data-active')).toBe(true);
@@ -30,7 +30,7 @@ describe('useContextSelector', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: 0 }}>
         <TestComponent index={1} onUpdate={onUpdate} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     expect(wrapper.find('div').prop('data-active')).toBe(false);
@@ -61,7 +61,7 @@ describe('useContextSelector', () => {
     const wrapper = mount(
       <TestContext.Provider value={{ index: 0 }}>
         <MemoComponent index={1} onUpdate={onUpdate} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     wrapper.setProps({ value: { index: 1 } });
@@ -77,11 +77,11 @@ describe('useContextSelector', () => {
       <TestContext.Provider value={{ index: 0 }}>
         <MemoComponent index={1} />
         <MemoComponent index={2} key="2" onUpdate={onUpdate} />
-      </TestContext.Provider>
+      </TestContext.Provider>,
     );
 
     wrapper.setProps({
-      children: [null, <MemoComponent index={2} key={2} onUpdate={onUpdate} />]
+      children: [null, <MemoComponent index={2} key={2} onUpdate={onUpdate} />],
     });
     expect(onUpdate).toBeCalledTimes(1);
   });

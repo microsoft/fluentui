@@ -1,12 +1,12 @@
 {
   "name": "@fluentui/react-theming",
-  "version": "0.46.0",
+  "version": "0.47.0",
   "description": "> TODO: description",
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react",
+  "homepage": "https://github.com/microsoft/fluentui",
   "bugs": {
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react/issues"
+    "url": "https://github.com/microsoft/fluentui/issues"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "repository": "microsoft/fluentui.git",
   "license": "MIT",
   "files": [
     "lib"
@@ -30,8 +30,8 @@
   "dependencies": {
     "@types/classnames": "^2.2.9",
     "@types/jss": "^9.5.8",
-    "@uifabric/merge-styles": "^7.8.7",
-    "@uifabric/utilities": "^7.14.1",
+    "@uifabric/merge-styles": "^7.8.9",
+    "@uifabric/utilities": "^7.15.2",
     "classnames": "^2.2.6",
     "jss": "^10.0.0",
     "jss-preset-default": "^10.0.0"

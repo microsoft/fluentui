@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet, IExampleCardStyles } from '@uifabric/example-app-base';
+import {
+  ExampleCard,
+  ComponentPage,
+  IComponentDemoPageProps,
+  PropertiesTableSet,
+  IExampleCardStyles,
+} from '@uifabric/example-app-base';
 import { SidebarBasicExample } from './examples/Sidebar.Basic.Example';
 import { SidebarCollapsibleExample } from './examples/Sidebar.Collapsed.Example';
 
@@ -9,8 +15,8 @@ const SidebarCollpasibleExampleCode = require('!raw-loader!@uifabric/experiments
 const exampleStyles: Partial<IExampleCardStyles> = {
   example: {
     height: 500,
-    paddingBottom: 0
-  }
+    paddingBottom: 0,
+  },
 };
 
 export class SidebarPage extends React.PureComponent<IComponentDemoPageProps> {
@@ -34,20 +40,23 @@ export class SidebarPage extends React.PureComponent<IComponentDemoPageProps> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Sidebar/Sidebar.types.tsx')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Sidebar/Sidebar.types.tsx')]}
+          />
         }
         overview={
           <div>
             <p>Sidebar navigation component. If the sidebar is collapsible, the collapse button is shown on the top.</p>
             <p>
-              The sidebar uses a list of items to render the vertical navigation. Items are rendered as Sidebar buttons by default. If an
-              item has a buttonAs or onRender property, these properties will be used to render the item instead. If not, but a
-              defaultButton property is specified on the sidebar, the default button will be used for button rendering. Items should have an
-              icon and a label if they are used in a collapsible sidebar.
+              The sidebar uses a list of items to render the vertical navigation. Items are rendered as Sidebar buttons
+              by default. If an item has a buttonAs or onRender property, these properties will be used to render the
+              item instead. If not, but a defaultButton property is specified on the sidebar, the default button will be
+              used for button rendering. Items should have an icon and a label if they are used in a collapsible
+              sidebar.
             </p>
             <p>
-              Custom styling for the sidebar is done by passing in a ISidebarStyles object. And example of this can be seen in the basic
-              example below.
+              Custom styling for the sidebar is done by passing in a ISidebarStyles object. And example of this can be
+              seen in the basic example below.
             </p>
           </div>
         }

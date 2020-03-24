@@ -14,7 +14,7 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
-      value: null
+      value: null,
     };
   }
 
@@ -24,8 +24,8 @@ export class DatePickerInputExample extends React.Component<{}, IDatePickerInput
     return (
       <div className="docs-DatePickerExample">
         <p>
-          Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker, click the TextField
-          again will dismiss the DatePicker and allow text input.
+          Text input allowed by default when use keyboard navigation. Mouse click the TextField will popup DatePicker,
+          click the TextField again will dismiss the DatePicker and allow text input.
         </p>
         <DatePicker
           label="Start date"

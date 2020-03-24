@@ -17,7 +17,7 @@ interface ILayerContentExampleState {
 
 class LayerContentExample extends React.Component<{}, ILayerContentExampleState> {
   public state = {
-    time: new Date().toLocaleTimeString()
+    time: new Date().toLocaleTimeString(),
   };
 
   private _async = new Async(this);
@@ -25,7 +25,7 @@ class LayerContentExample extends React.Component<{}, ILayerContentExampleState>
   public componentDidMount() {
     this._async.setInterval(() => {
       this.setState({
-        time: new Date().toLocaleTimeString()
+        time: new Date().toLocaleTimeString(),
       });
     }, 1000);
   }
@@ -54,7 +54,7 @@ interface ILayerBasicExampleState {
 
 export class LayerBasicExample extends React.Component<{}, ILayerBasicExampleState> {
   public state = {
-    showLayer: false
+    showLayer: false,
   };
 
   public render() {
@@ -62,11 +62,16 @@ export class LayerBasicExample extends React.Component<{}, ILayerBasicExampleSta
     return (
       <LayerBasicExampleContext.Provider
         value={{
-          message: 'Hello world.'
+          message: 'Hello world.',
         }}
       >
         <div>
-          <Toggle label="Wrap the content box below in a Layer" inlineLabel checked={showLayer} onChange={this._onChange} />
+          <Toggle
+            label="Wrap the content box below in a Layer"
+            inlineLabel
+            checked={showLayer}
+            onChange={this._onChange}
+          />
 
           {showLayer ? (
             <Layer>

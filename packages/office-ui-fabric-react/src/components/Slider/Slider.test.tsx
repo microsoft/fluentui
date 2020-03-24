@@ -44,13 +44,13 @@ describe('Slider', () => {
         right: 100,
         bottom: 40,
         width: 100,
-        height: 40
+        height: 40,
       } as DOMRect);
 
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 100,
-      clientY: 0
+      clientY: 0,
     });
 
     // Default max is 10.
@@ -59,7 +59,7 @@ describe('Slider', () => {
     sliderThumb.simulate('mousedown', {
       type: 'mousedown',
       clientX: 0,
-      clientY: 0
+      clientY: 0,
     });
 
     // Default min is 0.
