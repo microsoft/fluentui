@@ -8,6 +8,8 @@ import {
   ToolbarMenuItemProps,
   ToolbarMenuItemShorthandKinds,
   themes,
+  Checkbox,
+  Divider,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -115,18 +117,34 @@ const EditorToolbar: React.FC = () => {
   );
 };
 
-const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
-  <FrameRenderer frameBorder="0" width="400px" height="400px" scrolling="no" style={{ border: '2px  dotted green' }}>
-    {externalDocument => (
-      <Provider
-        styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
-        target={externalDocument}
-        theme={themes.teams}
+const ToolbarExampleOverflowPositioningShorthand: React.FC = () => {
+  const [rtl, setRtl] = React.useState<boolean>(false);
+
+  return (
+    <>
+      <FrameRenderer
+        frameBorder="0"
+        width="400px"
+        height="400px"
+        scrolling="no"
+        style={{ border: '2px  dotted green' }}
       >
-        <EditorToolbar />
-      </Provider>
-    )}
-  </FrameRenderer>
-);
+        {externalDocument => (
+          <Provider
+            rtl={rtl}
+            styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
+            target={externalDocument}
+            theme={themes.teams}
+          >
+            <EditorToolbar />
+          </Provider>
+        )}
+      </FrameRenderer>
+
+      <Divider />
+      <Checkbox checked={rtl} label="RTL" onChange={(e, data) => setRtl(data.checked)} />
+    </>
+  );
+};
 
 export default ToolbarExampleOverflowPositioningShorthand;
