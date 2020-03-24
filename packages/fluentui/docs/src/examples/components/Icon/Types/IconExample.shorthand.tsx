@@ -34,7 +34,7 @@ const IconExample = () => (
         <AccdbIcon size={64} />
         <AccdbIcon size={96} />
       </Flex>
-      <Text content={'PNG icons'} />
+      <Text content="PNG icons" />
       <Flex gap="gap.smaller">
         <AccdbPngIcon />
         <AccdbPngIcon size={20} />
