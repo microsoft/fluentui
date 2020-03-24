@@ -15,7 +15,7 @@ type TertiaryButtonProps = {
 
 type TertiaryButtonStylesProps = TertiaryButtonProps;
 
-const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
+const TertiaryButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, ButtonProps, {}>(Button, {
   className: 'ui-tertiary-button',
   displayName: 'TertiaryButton',
   mapPropsToStylesProps: props => ({ tertiary: props.tertiary }),
@@ -25,7 +25,7 @@ const ComposedButton = compose<TertiaryButtonProps, TertiaryButtonStylesProps, B
 // Adds overrides for a design term
 //
 
-const CompactTertiaryButton = compose(ComposedButton, {
+const CompactTertiaryButton = compose(TertiaryButton, {
   displayName: 'CompactTertiaryButton',
 });
 
@@ -143,7 +143,7 @@ const ButtonExample = () => (
     <Header as="h3" content="A tertiary button" description="Adds a custom design term" />
     <Flex>
       <ComposedButton content="Click here" />
-      <ComposedButton content="Click here" tertiary />
+      <TertiaryButton content="Click here" tertiary />
     </Flex>
 
     <Header as="h3" content="A tertiary button" description="Provides overrides for a design term" />
