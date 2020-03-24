@@ -1,14 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import {
-  DecorativeAxis,
-  FlexibleXYPlot,
-  HorizontalGridLines,
-  LabelSeries,
-  LineSeries,
-  XAxis,
-  // YAxis,
-} from 'react-vis';
+import { DecorativeAxis, FlexibleXYPlot, HorizontalGridLines, LabelSeries, LineSeries, XAxis } from 'react-vis';
 import BundleSizeChartTooltip from './BundleSizeChartTooltip';
 import { PerfData } from './PerfDataContext';
 
@@ -36,8 +28,6 @@ const BundleSizeChart: React.FC<BundleSizeChartProps> = ({ perfData }) => {
     }, [] as string[])
     .sort();
 
-  // @ts-ignore
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [nearestX, setNearestX] = React.useState<number>();
 
   const sizeColor = '#555555';
@@ -69,7 +59,6 @@ const BundleSizeChart: React.FC<BundleSizeChartProps> = ({ perfData }) => {
         setNearestX(undefined);
       }}
     >
-      {/* <YAxis title="B" /> */}
       <XAxis tickFormat={formatXAxis} tickLabelAngle={-30} />
 
       <HorizontalGridLines />

@@ -10,7 +10,7 @@ enum FILTER_BY {
   MONTH = 'month',
 }
 
-const ComponentChart = ({ chartData, Chart }) => {
+const ComponentChart = ({ chartData, withExtremesFilter = true, Chart }) => {
   const { loading, error, data } = chartData;
 
   const [filterBy, setFilterBy] = React.useState(FILTER_BY.CI_BUILD);
@@ -98,11 +98,13 @@ const ComponentChart = ({ chartData, Chart }) => {
             ]}
           />
         )}
-        <Checkbox
-          label="Show extremes"
-          defaultChecked={withExtremes}
-          onChange={(e, { checked }) => setWithExtremes(checked)}
-        />
+        {withExtremesFilter && (
+          <Checkbox
+            label="Show extremes"
+            defaultChecked={withExtremes}
+            onChange={(e, { checked }) => setWithExtremes(checked)}
+          />
+        )}
       </Flex>
 
       <Box
