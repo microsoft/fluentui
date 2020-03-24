@@ -1,3 +1,4 @@
+// @ts-check
 const webpack = require('webpack');
 const path = require('path');
 const fs = require('fs');
@@ -6,6 +7,7 @@ const merge = require('../tasks/merge');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 
+// @ts-ignore
 const webpackVersion = require('webpack/package.json').version;
 console.log(`Webpack version: ${webpackVersion}`);
 
@@ -70,11 +72,11 @@ module.exports = {
   webpack,
 
   /**
-   * @param packageName {string} - name of the package
-   * @param isProduction {boolean} - whether it's a production build
-   * @param customConfig {Partial<webpack.Configuration>} - partial custom webpack config, merged into each full config object
-   * @param [onlyProduction] {boolean} - whether to only generate the production config
-   * @param [excludeSourceMaps] {boolean} - whether to skip generating source maps
+   * @param {string} packageName - name of the package
+   * @param {boolean} isProduction - whether it's a production build
+   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object
+   * @param {boolean} [onlyProduction] - whether to only generate the production config
+   * @param {boolean} [excludeSourceMaps] - whether to skip generating source maps
    * @returns {webpack.Configuration[]} array of configs
    */
   createConfig(packageName, isProduction, customConfig, onlyProduction, excludeSourceMaps) {
@@ -143,6 +145,10 @@ module.exports = {
     return configs;
   },
 
+  /**
+   * @param {Partial<webpack.Configuration>} customConfig - partial custom webpack config, merged into each full config object
+   * @returns {webpack.Configuration}
+   */
   createServeConfig(customConfig) {
     const config = merge(
       {
