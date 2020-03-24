@@ -26,6 +26,7 @@
     "@types/webpack-env": "1.15.1",
     "@uifabric/tslint-rules": "^7.1.1",
     "@uifabric/build": "^7.0.0",
+    "@bundle-analyzer/webpack-plugin": "^0.5.1",
     "parallel-webpack": "^2.4.0"
   },
   "dependencies": {

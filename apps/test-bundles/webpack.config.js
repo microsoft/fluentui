@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const resources = require('../../scripts/webpack/webpack-resources');
+const BundleAnalyzerPlugin = require('@bundle-analyzer/webpack-plugin');
 
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
@@ -33,6 +34,10 @@ module.exports = Object.keys(Entries).map(
           react: 'React',
           'react-dom': 'ReactDOM',
         },
+        plugins: [
+          // do not check in to real version!
+          new BundleAnalyzerPlugin({ token: 'a66fcfe88d5563063c95418479e9b19d68143cca' }),
+        ],
         // plugins: [
         //   {
         //     apply: compiler => {
