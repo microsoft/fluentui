@@ -5,10 +5,7 @@ const config: ScreenerTestsConfig = {
     builder =>
       builder
         .executeScript("document.querySelector('iframe').contentDocument.querySelector('#overflow-item').click()")
-        .snapshot('Overflow item is properly positioned'),
-
-    builder =>
-      builder
+        .snapshot('Overflow item is properly positioned')
         .click(`${Checkbox.className}`)
         .executeScript("document.querySelector('iframe').contentDocument.querySelector('#overflow-item').click()")
         .snapshot('RTL: Overflow item is properly positioned'),
