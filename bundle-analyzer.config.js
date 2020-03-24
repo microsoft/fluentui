@@ -10,6 +10,7 @@ module.exports = {
   ],
 }
 /*
+both uncompressed and gzip
     {
       "test": "*.js",
       "maxSize": "250 kB",
@@ -18,6 +19,6 @@ module.exports = {
     {
       "test": "*.js",
       "maxSize": "10 kB",
-      "compression": "none"
+      "compression": "gzip"
     }
   */
