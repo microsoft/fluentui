@@ -39,6 +39,7 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       ...(p.hasIconAsJSX && {
         '& .ui-button__icon': {
           height: pxToRem(16),
+          width: pxToRem(16),
           ...(p.hasContent && {
             margin: `0 ${pxToRem(10)} 0 0`,
             ...(p.iconPosition === 'after' && {
@@ -272,6 +273,10 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       // grommet-icons required
       '& svg': {
         height: pxToRem(16),
+      },
+      '& img': {
+        height: pxToRem(16),
+        width: pxToRem(16),
       },
       ...(p.hasContent && {
         margin: `0 ${pxToRem(10)} 0 0`,
