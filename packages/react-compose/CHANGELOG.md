@@ -1,7 +1,13 @@
 # Change Log - @fluentui/react-compose
 
-This log was last generated on Thu, 19 Mar 2020 12:29:37 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 0.2.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 0.2.1
 Thu, 19 Mar 2020 12:29:37 GMT
 

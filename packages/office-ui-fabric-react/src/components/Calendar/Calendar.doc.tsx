@@ -14,7 +14,7 @@ export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
   componentName: 'Calendar',
   componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
   examples: [
     {
       title: 'Inline Calendar',

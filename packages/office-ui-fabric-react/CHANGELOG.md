@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 19 Mar 2020 12:29:37 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.105.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.105.1
 Thu, 19 Mar 2020 12:29:37 GMT
 

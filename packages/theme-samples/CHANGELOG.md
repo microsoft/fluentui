@@ -1,7 +1,13 @@
 # Change Log - @uifabric/theme-samples
 
-This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
 
+## 7.0.43
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.0.10
 Tue, 28 Jan 2020 12:43:24 GMT
 

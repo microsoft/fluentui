@@ -4,7 +4,7 @@ import { TPlatformPageProps } from '@uifabric/example-app-base/lib/index2';
 
 const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ButtonRelated.md') as string;
 const componentUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage';
 
 export const ButtonPageProps = (disabled: boolean, checked: boolean): TPlatformPageProps<Platforms> => {
   const externalProps = ExternalProps({ areButtonsDisabled: disabled, areButtonsChecked: checked });
