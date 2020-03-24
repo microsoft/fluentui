@@ -3,10 +3,11 @@ import * as React from 'react';
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
 import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
-import { isConformant } from 'test/specs/commonTests';
+import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
+import List from 'src/components/List/List';
 
 jest.dontMock('keyboard-key');
 jest.useFakeTimers();
@@ -15,6 +16,10 @@ describe('Dropdown', () => {
   isConformant(Dropdown, {
     hasAccessibilityProp: false,
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
+  });
+  implementsShorthandProp(Dropdown)('list', List, {
+    implementsPopper: true,
+    requiredProps: { open: true },
   });
 
   describe('clearable', () => {

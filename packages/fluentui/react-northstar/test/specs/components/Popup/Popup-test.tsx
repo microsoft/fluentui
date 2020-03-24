@@ -6,8 +6,13 @@ import Popup, { PopupEvents } from 'src/components/Popup/Popup';
 import { domEvent, EmptyThemeProvider, mountWithProvider } from '../../../utils';
 import * as keyboardKey from 'keyboard-key';
 import { ReactWrapper } from 'enzyme';
+import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Popup', () => {
+  implementsPopperProps(Popup, {
+    requiredProps: { open: true },
+  });
+
   const triggerId = 'triggerElement';
   const contentId = 'contentId';
 
