@@ -5,6 +5,8 @@ import {
   ITheme,
   IPeoplePickerItemSelectedStyleProps,
   IPeoplePickerItemSelectedStyles,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles,
 } from 'office-ui-fabric-react';
 import { addVariants } from '@uifabric/variants';
 
@@ -41,7 +43,6 @@ const DarkTheme: ITheme = createTheme({
     buttonText: DarkDefaultPalette.black,
     buttonTextPressed: DarkDefaultPalette.neutralDark,
     buttonTextHovered: DarkDefaultPalette.neutralPrimary,
-    bodySubtext: DarkDefaultPalette.white,
     disabledBackground: DarkDefaultPalette.neutralQuaternaryAlt,
     inputBackgroundChecked: DarkDefaultPalette.themePrimary,
     menuBackground: DarkDefaultPalette.neutralLighter,
@@ -55,40 +56,81 @@ const DarkTheme: ITheme = createTheme({
   },
 });
 
+export const PersonaCoinStyles = (props: IPersonaCoinStyleProps): Partial<IPersonaCoinStyles> => {
+  return {
+    initials: {
+      color: props.showUnknownPersonaCoin ? DarkTheme.palette.redDark : DarkTheme.palette.black,
+    },
+  };
+};
+
 export const PeoplePickerItemStyles = (
   props: IPeoplePickerItemSelectedStyleProps,
 ): Partial<IPeoplePickerItemSelectedStyles> => {
-  const { selected, theme } = props;
-  const { palette } = theme;
+  const { selected } = props;
 
   return {
-    root: {
-      background: DarkTheme.palette.neutralQuaternaryAlt,
-      selectors: {
-        ':hover': {
-          background: DarkTheme.palette.neutralQuaternary,
-        },
-      },
-    },
-    removeButton: [
+    root: [
       {
-        background: 'transparent',
+        background: DarkTheme.palette.neutralQuaternaryAlt,
         selectors: {
-          ':active': {
-            color: palette.white,
-            backgroundColor: palette.themeDark,
+          ':hover': {
+            background: DarkTheme.palette.neutralQuaternary,
           },
         },
       },
-      !selected && {
-        color: palette.neutralPrimary,
-      },
       selected && {
-        color: palette.white,
+        backgroundColor: DarkTheme.palette.themeSecondary,
+        selectors: {
+          ':hover': {
+            background: DarkTheme.palette.themeSecondary,
+          },
+        },
       },
     ],
+    removeButton: [
+      {
+        background: DarkTheme.palette.neutralQuaternaryAlt,
+        color: DarkTheme.palette.neutralDark,
+        selectors: {
+          ':hover': {
+            background: DarkTheme.palette.neutralQuaternary,
+            color: DarkTheme.palette.black,
+          },
+        },
+      },
+      selected && {
+        background: DarkTheme.palette.themeSecondary,
+        selectors: {
+          ':hover': {
+            background: DarkTheme.palette.themeDark,
+          },
+          ':active': {
+            color: DarkTheme.palette.black,
+          },
+        },
+      },
+    ],
+    subComponentStyles: {
+      persona: {
+        primaryText: [
+          {
+            color: DarkTheme.palette.neutralPrimary,
+          },
+          selected && {
+            color: DarkTheme.palette.black,
+            selectors: {
+              ':hover': {
+                color: DarkTheme.palette.black,
+              },
+            },
+          },
+        ],
+      },
+    },
   };
 };
+
 export const DarkCustomizations: ICustomizations = {
   settings: {
     theme: DarkTheme,
@@ -142,26 +184,6 @@ export const DarkCustomizations: ICustomizations = {
         },
       },
     },
-    Persona: {
-      styles: {
-        intials: {
-          color: DarkTheme.palette.black,
-        },
-      },
-    },
-    PersonaCoin: {
-      color: DarkTheme.palette.black,
-      styles: {
-        intials: {
-          color: DarkTheme.palette.black,
-        },
-        initials: {
-          'ms-Persona-initials': {
-            color: DarkTheme.palette.black,
-          },
-        },
-      },
-    },
     Panel: {
       styles: {
         main: {
@@ -178,24 +200,10 @@ export const DarkCustomizations: ICustomizations = {
       },
     },
     PeoplePickerItem: {
-      styles: {
-        PeoplePickerItemStyles,
-      },
+      styles: PeoplePickerItemStyles,
     },
-    SelectedPersona: {
-      styles: {
-        main: {
-          backgroundColor: DarkTheme.palette.neutralLighter,
-        },
-        closeButton: {
-          color: DarkTheme.palette.neutralSecondary,
-          selectors: {
-            ':hover': {
-              color: DarkTheme.palette.neutralPrimary,
-            },
-          },
-        },
-      },
+    PersonaCoin: {
+      styles: PersonaCoinStyles,
     },
     SpinButton: {
       styles: {
