@@ -62,11 +62,10 @@ export type SvgIconCreateFnParams<TProps> = {
 };
 
 export type ImgIconProps = { size?: number; sizeModifier?: '1.5x' | '2x' | '3x' | '4x' };
-
-export type ImgIconCreateFnParams = {
+export type ImgUrlConfig = { baseUrl?: string; refreshUrl?: string; type?: 'svg' | 'png' };
+export type ImgIconCreateFnParams<TProps = ImgIconProps, TConfig = ImgUrlConfig> = {
   name: string;
   displayName: string;
-  type?: 'svg' | 'png';
-  baseUrl?: string;
-  refreshUrl?: string;
+  urlConfig?: TConfig;
+  urlResolver?: (urlConfig: TConfig, name: string, props: TProps) => string;
 };

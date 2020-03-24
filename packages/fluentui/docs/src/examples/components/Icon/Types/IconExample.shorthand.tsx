@@ -10,7 +10,9 @@ const AccdbIcon = createImgIcon({
 const AccdbPngIcon = createImgIcon({
   name: 'accdb',
   displayName: 'AccdbIcon',
-  type: 'png',
+  urlConfig: {
+    type: 'png',
+  },
 });
 
 const IconExample = () => (
