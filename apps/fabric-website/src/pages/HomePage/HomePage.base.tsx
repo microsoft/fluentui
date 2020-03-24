@@ -190,7 +190,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   },
                 }}
               >
-                Fabric React {reactPackageData.version}
+                Fluent UI React {reactPackageData.version}
               </ActionButton>
             </Stack>
             <ul className={classNames.cardList}>
@@ -281,9 +281,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.usageSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fabric?</h2>
+            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fluent UI?</h2>
             <p>
-              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fabric.
+              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fluent
+              UI.
             </p>
           </div>
           <div className={this._classNames.oneFourth} />
