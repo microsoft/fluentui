@@ -55,7 +55,7 @@ const OverriddenButton = compose<OverriddenButtonProps, OverriddenButtonStylesPr
 type ComponentStylesProps = {
   CompactTertiaryButton: ButtonStylesProps & TertiaryButtonProps;
   TertiaryButton: ButtonStylesProps & TertiaryButtonProps;
-  OverriddenButton: OverriddenButtonProps;
+  OverriddenButton: ButtonStylesProps & OverriddenButtonProps;
 };
 
 type ComponentVariables = {
@@ -114,6 +114,10 @@ const componentStyles: {
       verticalAlign: 'baseline',
 
       ...(p.fitted && { padding: '.78571429em' }),
+      ...(p.primary && {
+        backgroundColor: '#2185d0',
+        color: '#fff',
+      }),
     }),
   },
 };
@@ -156,6 +160,8 @@ const ButtonExample = () => (
     <Flex>
       <OverriddenButton content="Overridden" />
       <OverriddenButton content="With `fitted`" fitted />
+      <OverriddenButton content="With `primary`" primary />
+      <OverriddenButton content="With `fitted` & `primary`" fitted primary />
     </Flex>
   </Provider>
 );
