@@ -4,8 +4,8 @@ const config: ScreenerTestsConfig = {
       builder
         .click('#above')
         .snapshot('Sets positions to above')
-        .click('#below')
-        .snapshot('Sets positions to below'),
+        .click('#before')
+        .snapshot('Sets positions to before'),
   ],
 };
 
