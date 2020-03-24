@@ -1,7 +1,7 @@
 Fluent UI for the web is available in two flavors: Fluent UI React and Fabric Core.
 
 <!-- manually creating h3 to avoid duplicate auto-generated IDs -->
-<h3 class="fluent-ui-react-overview">Fluent UI React</h3>
+<h3 id="fluent-ui-react-overview">Fluent UI React</h3>
 
 Fluent UI React is the official [open-source](https://github.com/microsoft/fluentui) React front-end framework designed to build experiences that fit seamlessly into a broad range of Microsoft products. It provides robust, up-to-date, accessible components which are highly customizable using CSS-in-JS. [Get started with Fluent UI React](#fluent-ui-react)
 
