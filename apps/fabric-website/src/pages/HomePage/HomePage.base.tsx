@@ -126,7 +126,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created UI Fabric, a collection of UX frameworks you can use to build Fluent experiences
+              Together, we’ve created Fluent UI, a collection of UX frameworks you can use to build Fluent experiences
               that fit seamlessly into a broad range of Microsoft products.
             </p>
             <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>

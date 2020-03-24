@@ -6,19 +6,19 @@ import { platforms } from './SiteDefinition.platforms';
 import { MessageBarType } from 'office-ui-fabric-react';
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
-  siteTitle: 'Office UI Fabric',
+  siteTitle: 'Fluent UI',
   siteLogoSource:
     'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftuifabric-logo-rgb_no-padding.svg',
   platforms,
   pages: [
     {
-      title: 'Fabric',
+      title: 'Fluent UI',
       url: '#/',
       className: 'fabricPage',
       isHomePage: true,
       isUhfLink: true,
       isContentFullBleed: true,
-      component: () => <LoadingComponent title="Welcome to UI Fabric" />,
+      component: () => <LoadingComponent title="Welcome to Fluent UI" />,
       getComponent: cb => require.ensure([], require => cb(require<any>('../pages/HomePage/HomePage').HomePage)),
     },
     GetStartedPages,
