@@ -30,6 +30,11 @@ storiesOf('Panel', module)
     { rtl: true },
   )
   .addStory(
+    'Close button w/ no header',
+    () => <Panel {...defaultProps} hasCloseButton type={PanelType.smallFixedNear} />,
+    { rtl: true },
+  )
+  .addStory(
     'Small fixed right w/ close button',
     () => (
       <Panel
