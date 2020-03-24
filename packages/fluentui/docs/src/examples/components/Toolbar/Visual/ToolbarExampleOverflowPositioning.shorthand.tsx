@@ -116,7 +116,13 @@ const EditorToolbar: React.FC = () => {
 };
 
 const ToolbarExampleOverflowPositioningShorthand: React.FC = () => (
-  <FrameRenderer frameBorder="0" width="400px" height="400px" scrolling="no" style={{ border: '2px  dotted green' }}>
+  <FrameRenderer
+    frameBorder="0"
+    width="400px"
+    height="400px"
+    scrolling="no"
+    style={{ border: '2px  dotted green', boxSizing: 'content-box' }}
+  >
     {externalDocument => (
       <Provider
         styles={{ overflow: 'hidden', height: 'inherit', width: 'inherit' }}
