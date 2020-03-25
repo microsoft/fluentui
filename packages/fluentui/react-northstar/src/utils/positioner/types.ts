@@ -12,6 +12,10 @@ export interface PositioningProps {
    */
   align?: Alignment;
 
+  flipBoundary?: PopperJS.Modifiers['flip']['boundariesElement'];
+
+  overflowBoundary?: PopperJS.Modifiers['preventOverflow']['boundariesElement'];
+
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
    * and align is also vertical ('top' | 'bottom') or if both position and align are horizontal ('before' | 'after'
