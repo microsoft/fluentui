@@ -1,7 +1,13 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.105.4
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Update docs: Fabric to Fluent (micahgodbolt@gmail.com)
 ## 7.105.3
 Mon, 23 Mar 2020 12:28:29 GMT
 
