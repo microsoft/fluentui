@@ -55,6 +55,9 @@ export interface ButtonProps
   /** An icon button can format its Icon to appear before or after its content */
   iconPosition?: 'before' | 'after';
 
+  /** A button that inherits its background and has a subtle appearance */
+  inverted?: boolean;
+
   /** Shorthand to customize a button's loader. */
   loader?: ShorthandValue<LoaderProps>;
 
@@ -83,9 +86,6 @@ export interface ButtonProps
 
   /** A button can emphasize that it represents an alternative action. */
   secondary?: boolean;
-
-  /** A button that inherits its background and has a subtle appearance */
-  inverted?: boolean;
 
   /** A button can be sized. */
   size?: SizeValue;
@@ -256,6 +256,7 @@ Button.propTypes = {
   icon: customPropTypes.itemShorthandWithoutJSX,
   iconOnly: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['before', 'after']),
+  inverted: PropTypes.bool,
   loader: customPropTypes.itemShorthandWithoutJSX,
   loading: PropTypes.bool,
   onClick: PropTypes.func,

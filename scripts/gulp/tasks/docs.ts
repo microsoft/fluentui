@@ -42,14 +42,17 @@ const handleWatchUnlink = (group: any, filePath: string) => {
 task('clean:cache', () => cache.clearAll());
 
 task('clean:docs', () =>
-  del([
-    paths.packages('ability-attributes/src/schema.ts'),
-    paths.docsSrc('componentMenu.json'),
-    paths.docsSrc('behaviorMenu.json'),
-    paths.docsDist(),
-    paths.docsSrc('exampleMenus'),
-    paths.docsSrc('exampleSources'),
-  ]),
+  del(
+    [
+      paths.packages('ability-attributes/src/schema.ts'),
+      paths.docsSrc('componentMenu.json'),
+      paths.docsSrc('behaviorMenu.json'),
+      paths.docsDist(),
+      paths.docsSrc('exampleMenus'),
+      paths.docsSrc('exampleSources'),
+    ],
+    { force: true },
+  ),
 );
 
 // ----------------------------------------
