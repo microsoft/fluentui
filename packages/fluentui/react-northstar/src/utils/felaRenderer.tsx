@@ -10,6 +10,7 @@ import felaDisableAnimationsPlugin from './felaDisableAnimationsPlugin';
 import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
 import felaFocusVisibleEnhancer from './felaFocusVisibleEnhancer';
 import felaInvokeKeyframesPlugin from './felaInvokeKeyframesPlugin';
+import felaRuleCacheEnhancer from './felaRuleCacheEnhancer';
 import felaSanitizeCss from './felaSanitizeCssPlugin';
 
 let felaDevMode = false;
@@ -52,7 +53,7 @@ const filterClassName = (className: string): boolean =>
 const rendererConfig = {
   devMode: felaDevMode,
   filterClassName,
-  enhancers: [felaFocusVisibleEnhancer],
+  enhancers: [felaFocusVisibleEnhancer, felaRuleCacheEnhancer],
   plugins: [
     felaDisableAnimationsPlugin(),
 
