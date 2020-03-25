@@ -3,7 +3,6 @@ import { pxToRem } from '../../../../utils';
 
 export default (siteVars): Partial<DropdownVariables> => ({
   borderColor: siteVars.colorScheme.default.border,
-  borderColorFocus: siteVars.colors.white,
   borderColorHover: siteVars.colorScheme.default.borderHover,
   borderWidth: pxToRem(1),
   listBorderColor: siteVars.colors.white,

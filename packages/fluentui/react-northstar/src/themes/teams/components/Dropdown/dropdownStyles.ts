@@ -134,7 +134,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     overflowY: 'auto',
     maxHeight: v.selectedItemsMaxHeight,
     width: '100%',
-    ...(p.toggleIndicator && { paddingRight: v.toggleIndicatorSize }),
+    ...(p.toggleIndicator && { paddingRight: v.toggleIndicatorPadding }),
   }),
 
   triggerButton: ({ props: p, variables: v }): ICSSInJSStyle => {
