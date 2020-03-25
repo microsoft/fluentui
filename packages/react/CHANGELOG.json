@@ -2,6 +2,20 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/react_v7.105.4",
+      "version": "7.105.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update docs: Fabric to Fluent",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "44ae97a55b2d7bfdab1044f3f5e5b579fc42cac0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Mar 2020 12:28:29 GMT",
       "tag": "@fluentui/react_v7.105.3",
       "version": "7.105.3",

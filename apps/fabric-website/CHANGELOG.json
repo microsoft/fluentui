@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.12",
+      "version": "7.10.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating docs for fluent transition",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e9fcc1a8ea263a19b8a2940e08f3fbf68d7367d7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Mar 2020 12:28:29 GMT",
       "tag": "@uifabric/fabric-website_v7.10.11",
       "version": "7.10.11",

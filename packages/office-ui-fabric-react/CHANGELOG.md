@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.105.3
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+- Adding Text example for weights. (dzearing@microsoft.com)
 ## 7.105.2
 Mon, 23 Mar 2020 12:28:29 GMT
 
