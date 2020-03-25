@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Changing references of Fabric to Fluent",
+  "packageName": "@uifabric/foundation-scenarios",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60",
+  "dependentChangeType": "patch",
+  "date": "2020-03-20T20:10:26.471Z"
+}

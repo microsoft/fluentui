@@ -1,0 +1,9 @@
+{
+  "type": "major",
+  "comment": "Vertical stacked bar chart added to charting package",
+  "packageName": "@uifabric/charting",
+  "email": "v-jasha@microsoft.com",
+  "commit": "a231cb8de5291e0e6a0ec718d89485044231e68e",
+  "dependentChangeType": "patch",
+  "date": "2020-03-16T06:59:29.308Z"
+}

@@ -107,9 +107,9 @@ export const stylesPagesWeb: INavPage[] = [
     // Alternatively, we may wish to maintain a local copy of this page anyway.
     pages: [
       {
-        title: 'Fabric Icons',
+        title: 'Fluent UI Icons',
         url: '#/styles/web/icons',
-        component: () => <LoadingComponent title="Fabric Icons" />,
+        component: () => <LoadingComponent title="Fluent UI Icons" />,
         getComponent: cb =>
           require.ensure([], require =>
             cb(require<any>('../../../pages/Styles/FabricIconsPage/FabricIconsPage').FabricIconsPage),
@@ -174,9 +174,9 @@ export const stylesPagesWeb: INavPage[] = [
       ),
   },
   {
-    title: 'Fabric 7 Updates',
+    title: 'Fluent UI 7 Updates',
     url: '#/styles/web/fabric-7',
-    component: () => <LoadingComponent title="Fabric 7 Updates" />,
+    component: () => <LoadingComponent title="Fluent UI 7 Updates" />,
     getComponent: cb =>
       require.ensure([], require => cb(require<any>('../../../pages/Styles/Fabric7Page/Fabric7Page').Fabric7Page)),
   },
