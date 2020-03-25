@@ -13,6 +13,6 @@ export default (siteVars): Partial<DropdownVariables> => ({
   selectedItemBorder: `${pxToRem(1)} solid ${siteVars.colors.white}`,
   // disabled state
   disabledBorderColorHover: siteVars.colors.white,
-  disabledTriggerColorHover: siteVars.colors.white,
+  disabledTriggerColorHover: siteVars.colors.black,
   disabledBackgroundColorHover: siteVars.colors.black,
 });
