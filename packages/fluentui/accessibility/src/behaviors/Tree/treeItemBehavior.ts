@@ -5,6 +5,8 @@ import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 import treeTitleBehavior from './treeTitleBehavior';
 
 /**
+ * @description
+ * Triggers 'performClick' action with 'Spacebar' on 'root', when tree item is selectable and has no subtree. 'Enter' or 'Spacebar' works otherwise.
  * @specification
  * Adds attribute 'aria-expanded=true' based on the property 'expanded' if the component has 'hasSubtree' property.
  * Adds attribute 'tabIndex=-1' to 'root' slot if 'hasSubtree' property is true. Does not set the attribute otherwise.
@@ -58,6 +60,13 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
       expandSiblings: {
         keyCombinations: [{ keyCode: keyboardKey['*'] }],
       },
+      ...(props.selectable && {
+        performClick: {
+          keyCombinations: props.hasSubtree
+            ? [{ keyCode: keyboardKey.Spacebar }, { keyCode: keyboardKey.Enter }]
+            : [{ keyCode: keyboardKey.Spacebar }],
+        },
+      }),
     },
   },
   childBehaviors: {
@@ -72,6 +81,7 @@ export type TreeItemBehaviorProps = {
   index?: number;
   hasSubtree?: boolean;
   treeSize?: number;
+  selectable?: boolean;
 };
 
 /** Checks if current tree item has a subtree and it is expanded */
