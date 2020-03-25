@@ -1,11 +1,15 @@
 # @fluentui/react-focus
 
-**React Focus components for [Fluent UI](https://fluent.microsoft.com/)**
+**Components that deal with focus management for [Fluent UI](https://fluent.microsoft.com/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+This package contains the different components that deal with focus management to be leveraged when building applications using Fluent UI.
 
-To import ReactFocus components:
+At the moment the list of these components include:
+
+- `FocusZone`
+
+To import a component from the `@fluentui/react-focus` package:
 
 ```js
-import { FocusZone } from '@fluentui/react-focus';
+import { ComponentName } from '@fluentui/react-focus';
 ```
