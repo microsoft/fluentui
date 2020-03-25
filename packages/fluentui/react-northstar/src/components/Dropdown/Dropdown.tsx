@@ -867,7 +867,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       ...getItemProps({
         item,
         index,
-        disabled: !!item['disabled'],
+        disabled: item['disabled'],
         onClick: e => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
