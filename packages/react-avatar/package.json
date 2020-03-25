@@ -50,7 +50,13 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.8",
-    "tslib": "^1.10.0"
+    "tslib": "^1.10.0",
+    "@fluentui/react-northstar": "^0.47.0",
+    "@fluentui/accessibility": "^0.47.0",
+    "@fluentui/react-bindings": "^0.47.0",
+    "@fluentui/react-proptypes": "^0.47.0",
+    "prop-types": "^15.7.2",
+    "react-fela": "^10.6.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
