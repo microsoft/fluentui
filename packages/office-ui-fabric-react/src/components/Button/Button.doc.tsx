@@ -70,9 +70,9 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       view: <ButtonIconExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />,
     },
     {
-      title: 'Icon with Tooltip Button',
+      title: 'Icon Button with Tooltip Button',
       code: ButtonIconWithTooltipExampleCode,
-      view: <ButtonIconWithTooltipExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
+      view: <ButtonIconWithTooltipExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />,
     },
     {
       title: 'Contextual Menu Button',

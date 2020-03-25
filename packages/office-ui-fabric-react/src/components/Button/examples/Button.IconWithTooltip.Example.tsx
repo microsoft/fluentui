@@ -28,7 +28,7 @@ export const ButtonIconWithTooltipExample: React.FunctionComponent<IButtonExampl
   return (
     <div>
       <TooltipHost
-        content="This is the tooltip content"
+        content="Emoji"
         // This id is used on the tooltip itself, not the host
         // (so an element with this id only exists when the tooltip is shown)
         id={tooltipId}
@@ -38,8 +38,8 @@ export const ButtonIconWithTooltipExample: React.FunctionComponent<IButtonExampl
         <IconButton iconProps={emojiIcon} title="Emoji" ariaLabel="Emoji" disabled={disabled} checked={checked} />
       </TooltipHost>
       <p>
-        For now, we advise you to take this approach of wrapping IconButton with a Tooltip. We'll address providing this behavior out of the
-        box in next version of this component in Fluent.
+        For now, we advise you to take this approach of wrapping IconButton with a Tooltip. We'll address providing this
+        behavior out of the box in next version of this component in Fluent.
       </p>
     </div>
   );
