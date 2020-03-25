@@ -9,7 +9,7 @@ const calloutProps = { gapSpace: 0 };
 
 // Important for correct positioning--see below
 const inlineBlockStyle: Partial<ITooltipHostStyles> = {
-  root: { display: 'inline-block' }
+  root: { display: 'inline-block' },
 };
 
 export const TooltipDisplayExample: React.FunctionComponent = () => {
@@ -20,9 +20,9 @@ export const TooltipDisplayExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      In some cases when a TooltipHost is wrapping <code>inline-block</code> or <code>inline</code> elements, the positioning of the Tooltip
-      may be off. In these cases, it's recommended to set the TooltipHost's <code>display</code> property to <code>inline-block</code>, as
-      in the following example.
+      In some cases when a TooltipHost is wrapping <code>inline-block</code> or <code>inline</code> elements, the
+      positioning of the Tooltip may be off. In these cases, it's recommended to set the TooltipHost's{' '}
+      <code>display</code> property to <code>inline-block</code>, as in the following example.
       <br />
       <br />
       <TooltipHost content="Incorrect positioning" id={tooltip1Id} calloutProps={calloutProps}>

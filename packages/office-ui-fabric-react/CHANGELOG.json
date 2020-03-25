@@ -2,6 +2,171 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "office-ui-fabric-react_v7.105.3",
+      "version": "7.105.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          },
+          {
+            "comment": "Adding Text example for weights.",
+            "author": "dzearing@microsoft.com",
+            "commit": "0f70497d902084c12ba135c9ee1d2751267f7a4e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "office-ui-fabric-react_v7.105.2",
+      "version": "7.105.2",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "office-ui-fabric-react_v7.105.1",
+      "version": "7.105.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas. And minor documentation updates prompted by line length changes.",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 20:48:59 GMT",
+      "tag": "office-ui-fabric-react_v7.105.0",
+      "version": "7.105.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Pass default ContextualMenuItem renderer to onRenderMenuList",
+            "author": "owcampbe@microsoft.com",
+            "commit": "8e158df51b7a51595af7c16822966eee148b3359"
+          },
+          {
+            "comment": "Added support for overriding persona presence colors",
+            "author": "andreas.hage@microsoft.com",
+            "commit": "1280b6fba26f5f31773c122173dc6fdfa7095f09"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove duplicated export",
+            "author": "nakanaki@microsoft.com",
+            "commit": "d3021b0c647c3a8d0db2d9b74b44109e6db1e013"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "office-ui-fabric-react_v7.104.1",
+      "version": "7.104.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Ensure ContextualMenu section header generates valid element ID",
+            "author": "ermercer@microsoft.com",
+            "commit": "3435b78843d97a1361c8d07c3c9178fdcd29b4c4"
+          },
+          {
+            "comment": "Adding onClick callback to divider in SplitButtons that stops propagation so that clicking on the divider does not trigger action.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "64d2c080fcb69ec5e89acbeace6a1f5c77fa0580"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "office-ui-fabric-react_v7.104.0",
+      "version": "7.104.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BaseComponent: remove using BaseComponent from oufr package",
+            "author": "xgao@microsoft.com",
+            "commit": "131e068b5fa9f9fe838ecdaf7b1a1bf691ac8b36"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "office-ui-fabric-react_v7.103.0",
+      "version": "7.103.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "KeytipManager: Add new options for adjusting how keytip data is sent to the manager to optimize rendering times for components which use keytips",
+            "author": "chiechan@microsoft.com",
+            "commit": "4d3eaef425a024ad2b0099a32645801a067c1076"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "office-ui-fabric-react_v7.102.0",
+      "version": "7.102.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "convert initializeFocusRects to hook",
+            "author": "xgao@microsoft.com",
+            "commit": "b0ce989570bbf0394bb14913017150357ebccee2"
+          },
+          {
+            "comment": "withResponsiveMode: Add initializeResponsiveMode render performance optimization",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "e6454e02c8a936bbdace936fb4065d2654f52a68"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Mar 2020 12:25:14 GMT",
+      "tag": "office-ui-fabric-react_v7.101.0",
+      "version": "7.101.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ITag: key can be number, in addition to string.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "93886728575eb30677efac4e593c71f30eaed14e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fix the legacy items wrapper styles.",
+            "author": "lijunle@gmail.com",
+            "commit": "2e985195c35027e9e6aa31e788168ec191d96903"
+          },
+          {
+            "comment": "restore onRenderIcon prop for ContextualMenuSplitButton",
+            "author": "kinhln@microsoft.com",
+            "commit": "a0e64f183eb1f65310e7e635145a71ce3238ddd8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 07 Mar 2020 01:39:37 GMT",
       "tag": "office-ui-fabric-react_v7.100.0",
       "version": "7.100.0",

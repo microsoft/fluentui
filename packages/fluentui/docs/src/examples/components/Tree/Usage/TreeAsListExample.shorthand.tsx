@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, treeAsListBehavior } from '@fluentui/react';
+import { Tree, treeAsListBehavior } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -12,17 +12,17 @@ const items = [
         items: [
           {
             id: 'tree-as-list-item-111',
-            title: 'Jaime'
+            title: 'Jaime',
           },
           {
             id: 'tree-as-list-item-112',
-            title: 'Cersei'
+            title: 'Cersei',
           },
           {
             id: 'tree-as-list-item-113',
-            title: 'Tyrion'
-          }
-        ]
+            title: 'Tyrion',
+          },
+        ],
       },
       {
         id: 'tree-as-list-item-12',
@@ -30,19 +30,19 @@ const items = [
         items: [
           {
             id: 'tree-as-list-item-121',
-            title: 'Lancel'
+            title: 'Lancel',
           },
           {
             id: 'tree-as-list-item-122',
-            title: 'Willem'
+            title: 'Willem',
           },
           {
             id: 'tree-as-list-item-123',
-            title: 'Martyn'
-          }
-        ]
-      }
-    ]
+            title: 'Martyn',
+          },
+        ],
+      },
+    ],
   },
   {
     id: 'tree-as-list-item-2',
@@ -54,20 +54,20 @@ const items = [
         items: [
           {
             id: 'tree-as-list-item-211',
-            title: 'Rhaegar'
+            title: 'Rhaegar',
           },
           {
             id: 'tree-as-list-item-212',
-            title: 'Viserys'
+            title: 'Viserys',
           },
           {
             id: 'tree-as-list-item-213',
-            title: 'Daenerys'
-          }
-        ]
-      }
-    ]
-  }
+            title: 'Daenerys',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const TreeAsListExampleShorthand = () => (

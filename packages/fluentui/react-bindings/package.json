@@ -1,14 +1,14 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.46.0",
+  "version": "0.47.0",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
-  "bugs": "https://github.com/OfficeDev/office-ui-fabric-react/issues",
+  "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.7.6",
-    "@fluentui/accessibility": "^0.46.0",
-    "@fluentui/state": "^0.46.0",
-    "@fluentui/styles": "^0.46.0",
+    "@fluentui/accessibility": "^0.47.0",
+    "@fluentui/state": "^0.47.0",
+    "@fluentui/styles": "^0.47.0",
     "classnames": "^2.2.6",
     "fela": "^10.6.1",
     "lodash": "^4.17.15"
@@ -22,7 +22,7 @@
   "files": [
     "dist"
   ],
-  "homepage": "https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/fluentui/react-bindings",
+  "homepage": "https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-bindings",
   "jsnext:main": "dist/es/index.js",
   "license": "MIT",
   "main": "dist/commonjs/index.js",
@@ -34,7 +34,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "repository": "OfficeDev/office-ui-fabric-react.git",
+  "repository": "microsoft/fluentui.git",
   "scripts": {
     "build": "gulp bundle:package:no-umd",
     "clean": "gulp bundle:package:clean",

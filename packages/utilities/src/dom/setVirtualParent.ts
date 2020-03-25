@@ -10,7 +10,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void 
   let virtualParent = <IVirtualElement>parent;
   if (!virtualChild._virtual) {
     virtualChild._virtual = {
-      children: []
+      children: [],
     };
   }
   let oldParent = virtualChild._virtual.parent;
@@ -25,7 +25,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void 
   if (virtualParent) {
     if (!virtualParent._virtual) {
       virtualParent._virtual = {
-        children: []
+        children: [],
       };
     }
     virtualParent._virtual.children.push(virtualChild);

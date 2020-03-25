@@ -3,7 +3,7 @@ import { ButtonBase } from './Button.base';
 
 export default {
   component: 'Button',
-  title: 'Base Button'
+  title: 'Base Button',
 };
 
 const _onClick = () => {

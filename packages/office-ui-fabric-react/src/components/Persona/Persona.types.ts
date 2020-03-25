@@ -88,6 +88,17 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
    */
   initialsColor?: PersonaInitialsColor | string;
 
+  /** The colors to be used for the presence-icon and it's background */
+  presenceColors?: {
+    available: string;
+    away: string;
+    busy: string;
+    dnd: string;
+    offline: string;
+    oof: string;
+    background: string;
+  };
+
   /**
    * Presence of the person to display - will not display presence if undefined.
    * @defaultvalue PersonaPresence.none
@@ -111,12 +122,13 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   secondaryText?: string;
 
   /**
-   * Tertiary text to display, usually the status of the user. The tertiary text will only be shown when using Size72 or Size100.
+   * Tertiary text to display, usually the status of the user.
+   * The tertiary text will only be shown when using size72 or size100.
    */
   tertiaryText?: string;
 
   /**
-   * Optional text to display, usually a custom message set. The optional text will only be shown when using Size100.
+   * Optional text to display, usually a custom message set. The optional text will only be shown when using size100.
    */
   optionalText?: string;
 
@@ -338,7 +350,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
  * {@docCategory Persona}
  */
 export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> &
-  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> &
+  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> &
   Pick<IPersonaProps, 'className'>;
 
 /**
@@ -457,7 +469,7 @@ export enum PersonaSize {
   /**
    * Renders a 120px `PersonaCoin`.
    */
-  size120 = 18
+  size120 = 18,
 }
 
 /**
@@ -470,7 +482,7 @@ export enum PersonaPresence {
   away = 3,
   dnd = 4,
   blocked = 5,
-  busy = 6
+  busy = 6,
 }
 
 /**
@@ -489,13 +501,13 @@ export enum PersonaInitialsColor {
   magenta = 9,
   purple = 10,
   /**
-   * `black` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   * Black can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
    * @deprecated will be removed in a future major release.
    */
   black = 11,
   orange = 12,
   /**
-   * `red` is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * Red often has a special meaning, so it is considered a reserved color and can only be set with overrides.
    * @deprecated will be removed in a future major release.
    */
   red = 13,
@@ -512,9 +524,9 @@ export enum PersonaInitialsColor {
   warmGray = 20,
   coolGray = 21,
   /**
-   * `gray` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   * Gray can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
    */
   gray = 22,
   cyan = 23,
-  rust = 24
+  rust = 24,
 }

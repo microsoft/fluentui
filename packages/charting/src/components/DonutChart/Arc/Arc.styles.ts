@@ -8,7 +8,7 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       fill: color,
       cursor: href ? 'pointer' : 'default',
       stroke: DefaultPalette.white,
-      strokeWidth: 2
-    }
+      strokeWidth: 2,
+    },
   };
 };

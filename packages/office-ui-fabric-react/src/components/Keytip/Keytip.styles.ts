@@ -8,20 +8,20 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
   return {
     container: [
       {
-        backgroundColor: theme.palette.neutralDark
+        backgroundColor: theme.palette.neutralDark,
       },
       disabled && {
         opacity: 0.5,
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText',
-            opacity: 1
-          }
-        }
+            opacity: 1,
+          },
+        },
       },
       !visible && {
-        visibility: 'hidden'
-      }
+        visibility: 'hidden',
+      },
     ],
     root: [
       theme.fonts.medium,
@@ -34,12 +34,12 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
         minWidth: '11px',
         lineHeight: '17px',
         height: '17px',
-        display: 'inline-block'
+        display: 'inline-block',
       },
       disabled && {
-        color: theme.palette.neutralTertiaryAlt
-      }
-    ]
+        color: theme.palette.neutralTertiaryAlt,
+      },
+    ],
   };
 };
 
@@ -49,28 +49,30 @@ export const getCalloutStyles = (props: ICalloutContentStyleProps): ICalloutCont
     root: [
       {
         border: 'none',
-        boxShadow: 'none'
-      }
+        boxShadow: 'none',
+      },
     ],
     beak: [],
     beakCurtain: [],
     calloutMain: [
       {
-        backgroundColor: 'transparent'
-      }
-    ]
+        backgroundColor: 'transparent',
+      },
+    ],
   };
 };
 
-export const getCalloutOffsetStyles = (offset: IPoint): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
+export const getCalloutOffsetStyles = (
+  offset: IPoint,
+): IStyleFunction<ICalloutContentStyleProps, ICalloutContentStyles> => {
   return (props: ICalloutContentStyleProps): ICalloutContentStyles => {
     return mergeStyleSets(getCalloutStyles(props), {
       root: [
         {
           marginLeft: offset.x,
-          marginTop: offset.y
-        }
-      ]
+          marginTop: offset.y,
+        },
+      ],
     });
   };
 };

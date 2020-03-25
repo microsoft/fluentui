@@ -9,7 +9,7 @@ export const VerticalPersonaView: IVerticalPersonaComponent['view'] = props => {
     root: 'div',
     primaryText: PersonaText,
     secondaryText: PersonaText,
-    coin: PersonaCoin
+    coin: PersonaCoin,
   });
 
   return (

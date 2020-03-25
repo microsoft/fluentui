@@ -464,6 +464,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: WindowText;
                         }
+                    onClick={[Function]}
                   />
                 </span>
               </div>
@@ -867,6 +868,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         @media screen and (-ms-high-contrast: active){& {
                           background-color: GrayText;
                         }
+                    onClick={[Function]}
                   />
                 </span>
               </div>

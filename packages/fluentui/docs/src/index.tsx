@@ -10,5 +10,5 @@ ReactDOM.render(
   <AppContainer>
     <App />
   </AppContainer>,
-  mountNode
+  mountNode,
 );

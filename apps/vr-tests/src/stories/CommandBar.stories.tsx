@@ -15,55 +15,55 @@ const items: ICommandBarItemProps[] = [
         {
           key: 'emailMessage',
           text: 'Email message',
-          iconProps: { iconName: 'Mail' }
+          iconProps: { iconName: 'Mail' },
         },
         {
           key: 'calendarEvent',
           text: 'Calendar event',
-          iconProps: { iconName: 'Calendar' }
-        }
-      ]
-    }
+          iconProps: { iconName: 'Calendar' },
+        },
+      ],
+    },
   },
   {
     key: 'upload',
     text: 'Upload',
-    iconProps: { iconName: 'Upload' }
+    iconProps: { iconName: 'Upload' },
   },
   {
     key: 'share',
     text: 'Share',
-    iconProps: { iconName: 'Share' }
+    iconProps: { iconName: 'Share' },
   },
   {
     key: 'download',
     text: 'Download',
-    iconProps: { iconName: 'Download' }
+    iconProps: { iconName: 'Download' },
   },
   {
     key: 'disabled',
     text: 'Disabled...',
     iconProps: { iconName: 'Cancel' },
-    disabled: true
-  }
+    disabled: true,
+  },
 ];
 
 const farItems: ICommandBarItemProps[] = [
   {
     key: 'sort',
     text: 'Sort',
-    iconProps: { iconName: 'SortLines' }
+    iconProps: { iconName: 'SortLines' },
   },
   {
     key: 'tile',
     text: 'Grid view',
-    iconProps: { iconName: 'Tiles' }
+    iconProps: { iconName: 'Tiles' },
   },
   {
     key: 'info',
     text: 'Info',
-    iconProps: { iconName: 'Info' }
-  }
+    iconProps: { iconName: 'Info' },
+  },
 ];
 
 storiesOf('CommandBar', module)

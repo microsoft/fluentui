@@ -11,11 +11,11 @@ const theme = {
     spinner: {
       keyframe: {
         from: {
-          transform: 'rotate(0deg)'
+          transform: 'rotate(0deg)',
         },
         to: {
-          transform: 'rotate(360deg)'
-        }
+          transform: 'rotate(360deg)',
+        },
       },
       duration: '5s',
       iterationCount: 'infinite',
@@ -23,9 +23,9 @@ const theme = {
       playState: 'running',
       timingFunction: 'ease',
       direction: 'reverse',
-      delay: '2s'
-    }
-  }
+      delay: '2s',
+    },
+  },
 };
 
 describe('createAnimationStyles', () => {
@@ -34,12 +34,12 @@ describe('createAnimationStyles', () => {
       animationName: {
         keyframe: {
           from: {
-            transform: 'rotate(0deg)'
+            transform: 'rotate(0deg)',
           },
           to: {
-            transform: 'rotate(360deg)'
-          }
-        }
+            transform: 'rotate(360deg)',
+          },
+        },
       },
       animationDuration: '5s',
       animationIterationCount: 'infinite',
@@ -47,7 +47,7 @@ describe('createAnimationStyles', () => {
       animationPlayState: 'running',
       animationTimingFunction: 'ease',
       animationDirection: 'reverse',
-      animationDelay: '2s'
+      animationDelay: '2s',
     });
   });
 
@@ -56,12 +56,12 @@ describe('createAnimationStyles', () => {
       animationName: {
         keyframe: {
           from: {
-            transform: 'rotate(0deg)'
+            transform: 'rotate(0deg)',
           },
           to: {
-            transform: 'rotate(360deg)'
-          }
-        }
+            transform: 'rotate(360deg)',
+          },
+        },
       },
       animationDuration: '1s',
       animationIterationCount: 'infinite',
@@ -69,7 +69,7 @@ describe('createAnimationStyles', () => {
       animationPlayState: 'running',
       animationTimingFunction: 'ease',
       animationDirection: 'reverse',
-      animationDelay: '3s'
+      animationDelay: '3s',
     });
   });
 });

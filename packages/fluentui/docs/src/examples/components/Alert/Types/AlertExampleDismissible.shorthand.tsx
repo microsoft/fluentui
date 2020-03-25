@@ -1,5 +1,5 @@
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { Alert } from '@fluentui/react';
+import { Alert } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const AlertExampleDismissible = () => {

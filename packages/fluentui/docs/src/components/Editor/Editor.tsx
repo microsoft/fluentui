@@ -37,7 +37,7 @@ const semanticUIReactCompleter = {
       });
     });
     callback(null, completions);
-  }
+  },
 };
 
 languageTools.addCompleter(semanticUIReactCompleter);
@@ -61,7 +61,7 @@ class Editor extends React.PureComponent<EditorProps> {
     value: PropTypes.string.isRequired,
     mode: PropTypes.oneOf(['html', 'json', 'jsx', 'sh']),
     active: PropTypes.bool,
-    showCursor: PropTypes.bool
+    showCursor: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -81,7 +81,7 @@ class Editor extends React.PureComponent<EditorProps> {
     readOnly: false,
     highlightActiveLine: true,
     highlightGutterLine: true,
-    showCursor: true
+    showCursor: true,
   };
 
   componentDidMount() {

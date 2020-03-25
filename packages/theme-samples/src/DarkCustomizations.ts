@@ -4,7 +4,7 @@ import {
   IPalette,
   ITheme,
   IPeoplePickerItemSelectedStyleProps,
-  IPeoplePickerItemSelectedStyles
+  IPeoplePickerItemSelectedStyles,
 } from 'office-ui-fabric-react';
 import { addVariants } from '@uifabric/variants';
 
@@ -32,7 +32,7 @@ const DarkDefaultPalette: Partial<IPalette> = {
   neutralLighter: '#252423',
   neutralLighterAlt: '#201f1e',
   white: '#1b1a19',
-  redDark: '#F1707B'
+  redDark: '#F1707B',
 };
 
 const DarkTheme: ITheme = createTheme({
@@ -51,11 +51,13 @@ const DarkTheme: ITheme = createTheme({
     menuIcon: DarkDefaultPalette.themeDarkAlt,
     menuHeader: DarkDefaultPalette.black,
     menuItemText: DarkDefaultPalette.neutralPrimary,
-    menuItemTextHovered: DarkDefaultPalette.neutralDark
-  }
+    menuItemTextHovered: DarkDefaultPalette.neutralDark,
+  },
 });
 
-export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProps): Partial<IPeoplePickerItemSelectedStyles> => {
+export const PeoplePickerItemStyles = (
+  props: IPeoplePickerItemSelectedStyleProps,
+): Partial<IPeoplePickerItemSelectedStyles> => {
   const { selected, theme } = props;
   const { palette } = theme;
 
@@ -64,9 +66,9 @@ export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProp
       background: DarkTheme.palette.neutralQuaternaryAlt,
       selectors: {
         ':hover': {
-          background: DarkTheme.palette.neutralQuaternary
-        }
-      }
+          background: DarkTheme.palette.neutralQuaternary,
+        },
+      },
     },
     removeButton: [
       {
@@ -74,22 +76,22 @@ export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProp
         selectors: {
           ':active': {
             color: palette.white,
-            backgroundColor: palette.themeDark
-          }
-        }
+            backgroundColor: palette.themeDark,
+          },
+        },
       },
       !selected && {
-        color: palette.neutralPrimary
+        color: palette.neutralPrimary,
       },
       selected && {
-        color: palette.white
-      }
-    ]
+        color: palette.white,
+      },
+    ],
   };
 };
 export const DarkCustomizations: ICustomizations = {
   settings: {
-    theme: DarkTheme
+    theme: DarkTheme,
   },
   scopedSettings: {
     DetailsList: {
@@ -97,28 +99,28 @@ export const DarkCustomizations: ICustomizations = {
         headerWrapper: {
           selectors: {
             '.ms-DetailsHeader': {
-              borderColor: DarkTheme.palette.neutralQuaternary
-            }
-          }
-        }
-      }
+              borderColor: DarkTheme.palette.neutralQuaternary,
+            },
+          },
+        },
+      },
     },
     DetailsRow: {
       styles: {
         root: {
-          borderColor: DarkTheme.palette.neutralQuaternaryAlt
-        }
-      }
+          borderColor: DarkTheme.palette.neutralQuaternaryAlt,
+        },
+      },
     },
     VerticalDivider: {
       styles: {
         divider: {
-          backgroundColor: DarkTheme.palette.neutralQuaternaryAlt
+          backgroundColor: DarkTheme.palette.neutralQuaternaryAlt,
         },
         wrapper: {
-          Backgroundcolor: DarkTheme.palette.green
-        }
-      }
+          Backgroundcolor: DarkTheme.palette.green,
+        },
+      },
     },
     DocumentCard: {
       styles: {
@@ -126,84 +128,84 @@ export const DarkCustomizations: ICustomizations = {
           border: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
           selectors: {
             '.ms-DocumentCardPreview': {
-              borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`
-            }
-          }
-        }
-      }
+              borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
+            },
+          },
+        },
+      },
     },
     DocumentCardPreview: {
       styles: {
         root: {
           borderBottom: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
-          borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`
-        }
-      }
+          borderRight: `1px solid ${DarkTheme.palette.neutralQuaternaryAlt}`,
+        },
+      },
     },
     Persona: {
       styles: {
         intials: {
-          color: DarkTheme.palette.black
-        }
-      }
+          color: DarkTheme.palette.black,
+        },
+      },
     },
     PersonaCoin: {
       color: DarkTheme.palette.black,
       styles: {
         intials: {
-          color: DarkTheme.palette.black
+          color: DarkTheme.palette.black,
         },
         initials: {
           'ms-Persona-initials': {
-            color: DarkTheme.palette.black
-          }
-        }
-      }
+            color: DarkTheme.palette.black,
+          },
+        },
+      },
     },
     Panel: {
       styles: {
         main: {
-          backgroundColor: DarkTheme.palette.neutralLighter
+          backgroundColor: DarkTheme.palette.neutralLighter,
         },
         closeButton: {
           color: DarkTheme.palette.neutralSecondary,
           selectors: {
             ':hover': {
-              color: DarkTheme.palette.neutralPrimary
-            }
-          }
-        }
-      }
+              color: DarkTheme.palette.neutralPrimary,
+            },
+          },
+        },
+      },
     },
     PeoplePickerItem: {
       styles: {
-        PeoplePickerItemStyles
-      }
+        PeoplePickerItemStyles,
+      },
     },
     SelectedPersona: {
       styles: {
         main: {
-          backgroundColor: DarkTheme.palette.neutralLighter
+          backgroundColor: DarkTheme.palette.neutralLighter,
         },
         closeButton: {
           color: DarkTheme.palette.neutralSecondary,
           selectors: {
             ':hover': {
-              color: DarkTheme.palette.neutralPrimary
-            }
-          }
-        }
-      }
+              color: DarkTheme.palette.neutralPrimary,
+            },
+          },
+        },
+      },
     },
     SpinButton: {
       styles: {
         inputTextSelected: {
           color: DarkTheme.palette.black,
-          background: DarkTheme.palette.themePrimary
-        }
-      }
-    }
-  }
+          background: DarkTheme.palette.themePrimary,
+        },
+      },
+    },
+  },
 };
 
 addVariants(DarkCustomizations.settings.theme);

@@ -9,7 +9,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
   public static defaultProps: Partial<IPieChartProps> = {
     data: [],
     width: 600,
-    height: 350
+    height: 350,
   };
   private _classNames: IProcessedStyleSet<IPieChartStyles>;
 
@@ -21,7 +21,7 @@ export class PieChartBase extends React.Component<IPieChartProps, {}> {
       theme: theme!,
       width: width!,
       height: height!,
-      className
+      className,
     });
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;

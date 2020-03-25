@@ -51,6 +51,7 @@ export { default as toolbarRadioGroupBehavior } from './Toolbar/toolbarRadioGrou
 export { default as toolbarRadioGroupItemBehavior } from './Toolbar/toolbarRadioGroupItemBehavior';
 export { default as radioGroupBehavior } from './Radio/radioGroupBehavior';
 export { default as radioGroupItemBehavior } from './Radio/radioGroupItemBehavior';
+export * from './Popup/popupBehavior';
 export { default as popupBehavior } from './Popup/popupBehavior';
 export { default as chatBehavior } from './Chat/chatBehavior';
 export * from './Chat/chatBehavior';
@@ -101,3 +102,5 @@ export { default as gridRowNestedBehavior } from './Table/gridRowNestedBehavior'
 export { default as gridCellBehavior } from './Table/gridCellBehavior';
 export { default as gridCellMultipleFocusableBehavior } from './Table/gridCellMultipleFocusableBehavior';
 export { default as gridCellWithFocusableElementBehavior } from './Table/gridCellWithFocusableElementBehavior';
+export { default as cardBehavior } from './Card/cardBehavior';
+export * from './Card/cardBehavior';

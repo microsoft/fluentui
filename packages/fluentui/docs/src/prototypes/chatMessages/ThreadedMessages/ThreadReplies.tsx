@@ -1,6 +1,14 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { AvatarProps, Avatar, ChatMessageProps, Button, ChatItem, ChatItemProps, Chat } from '@fluentui/react';
+import {
+  AvatarProps,
+  Avatar,
+  ChatMessageProps,
+  Button,
+  ChatItem,
+  ChatItemProps,
+  Chat,
+} from '@fluentui/react-northstar';
 import repliesButtonBehavior from './repliesButtonBehavior';
 import ScreenReaderHeaderText from './ScreenReaderHeaderText';
 import classNames from './classNames';
@@ -29,7 +37,9 @@ const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
     const moreRepliesLeft = remainReplies > 0;
     const buttonText = expanded
       ? 'Collapse all'
-      : `${repliesCount} replies from ${authorName1} and ${authorName2}${moreRepliesLeft ? `, and ${remainReplies} others` : ''}`;
+      : `${repliesCount} replies from ${authorName1} and ${authorName2}${
+          moreRepliesLeft ? `, and ${remainReplies} others` : ''
+        }`;
 
     return (
       <Button
@@ -52,23 +62,27 @@ const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
         author: reply.author,
         timestamp: reply.timestamp,
         actionMenu: reply.actionMenu,
-        className: classNames.threadReplies.message
+        className: classNames.threadReplies.message,
       };
       const chatItemProps: ChatItemProps = {
         gutter: {
           content: <Avatar {...reply.avatar} />,
-          className: classNames.threadReplies.gutter
+          className: classNames.threadReplies.gutter,
         },
         message: {
           content: (
             <>
-              <ScreenReaderHeaderText level="5" text={messageProps.content.toString()} author={messageProps.author.toString()} />
+              <ScreenReaderHeaderText
+                level="5"
+                text={messageProps.content.toString()}
+                author={messageProps.author.toString()}
+              />
               <Chat.Message {...messageProps} />
             </>
           ),
-          className: classNames.threadReplies.chatItemMessage
+          className: classNames.threadReplies.chatItemMessage,
         },
-        className: classNames.threadReplies.chatItem
+        className: classNames.threadReplies.chatItem,
       };
       // Don't use indexes for generating unique keys for items! Was only done for prototype purpose
       // https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318

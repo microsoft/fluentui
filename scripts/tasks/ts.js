@@ -6,7 +6,11 @@ const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 
 function getExtraTscParams(args) {
-  return { pretty: true, target: 'es5', ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }) };
+  return {
+    pretty: true,
+    target: 'es5',
+    ...(args.production && { inlineSources: true, sourceRoot: path.relative(libPath, srcPath) }),
+  };
 }
 
 module.exports.ts = {
@@ -25,5 +29,5 @@ module.exports.ts = {
   commonjsOnly: () => {
     const extraOptions = getExtraTscParams(argv());
     return tscTask({ ...extraOptions, outDir: 'lib', module: 'commonjs' });
-  }
+  },
 };

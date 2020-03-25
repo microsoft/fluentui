@@ -106,7 +106,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
  */
 export enum RatingSize {
   Small = 0,
-  Large = 1
+  Large = 1,
 }
 
 /**

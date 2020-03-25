@@ -13,7 +13,7 @@ export const HIDDEN_FROM_ACC_TREE = 'data-is-hidden-from-acc-tree';
 export function getFirstFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean
+  includeElementsInFocusZones?: boolean,
 ): HTMLElement | null {
   return getNextElement(
     rootElement,
@@ -21,7 +21,7 @@ export function getFirstFocusable(
     true /* checkNode */,
     false /* suppressParentTraversal */,
     false /* suppressChildTraversal */,
-    includeElementsInFocusZones
+    includeElementsInFocusZones,
   );
 }
 
@@ -33,7 +33,7 @@ export function getFirstFocusable(
 export function getLastFocusable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
-  includeElementsInFocusZones?: boolean
+  includeElementsInFocusZones?: boolean,
 ): HTMLElement | null {
   return getPreviousElement(
     rootElement,
@@ -41,7 +41,7 @@ export function getLastFocusable(
     true /* checkNode */,
     false /* suppressParentTraversal */,
     true /* traverseChildren */,
-    includeElementsInFocusZones
+    includeElementsInFocusZones,
   );
 }
 
@@ -58,7 +58,7 @@ export function getFirstTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean,
-  checkNode?: boolean
+  checkNode?: boolean,
 ): HTMLElement | null {
   return getNextElement(
     rootElement,
@@ -67,7 +67,7 @@ export function getFirstTabbable(
     false /* suppressParentTraversal */,
     false /* suppressChildTraversal */,
     includeElementsInFocusZones,
-    true /* tabbable */
+    true /* tabbable */,
   );
 }
 
@@ -84,7 +84,7 @@ export function getLastTabbable(
   rootElement: HTMLElement,
   currentElement: HTMLElement,
   includeElementsInFocusZones?: boolean,
-  checkNode?: boolean
+  checkNode?: boolean,
 ): HTMLElement | null {
   return getPreviousElement(
     rootElement,
@@ -93,7 +93,7 @@ export function getLastTabbable(
     false /* suppressParentTraversal */,
     true /* traverseChildren */,
     includeElementsInFocusZones,
-    true /* tabbable */
+    true /* tabbable */,
   );
 }
 
@@ -110,7 +110,7 @@ export function getPreviousElement(
   suppressParentTraversal?: boolean,
   traverseChildren?: boolean,
   includeElementsInFocusZones?: boolean,
-  tabbable?: boolean
+  tabbable?: boolean,
 ): HTMLElement | null {
   if (!currentElement || currentElement === rootElement) {
     return null;
@@ -131,7 +131,7 @@ export function getPreviousElement(
       true,
       true,
       includeElementsInFocusZones,
-      tabbable
+      tabbable,
     );
 
     if (childMatch) {
@@ -146,7 +146,7 @@ export function getPreviousElement(
         true,
         true,
         includeElementsInFocusZones,
-        tabbable
+        tabbable,
       );
       if (childMatchSiblingMatch) {
         return childMatchSiblingMatch;
@@ -166,7 +166,7 @@ export function getPreviousElement(
           true,
           true,
           includeElementsInFocusZones,
-          tabbable
+          tabbable,
         );
 
         if (childMatchParentMatch) {
@@ -191,7 +191,7 @@ export function getPreviousElement(
     true,
     true,
     includeElementsInFocusZones,
-    tabbable
+    tabbable,
   );
 
   if (siblingMatch) {
@@ -200,7 +200,15 @@ export function getPreviousElement(
 
   // Check its parent.
   if (!suppressParentTraversal) {
-    return getPreviousElement(rootElement, currentElement.parentElement, true, false, false, includeElementsInFocusZones, tabbable);
+    return getPreviousElement(
+      rootElement,
+      currentElement.parentElement,
+      true,
+      false,
+      false,
+      includeElementsInFocusZones,
+      tabbable,
+    );
   }
 
   return null;
@@ -219,7 +227,7 @@ export function getNextElement(
   suppressParentTraversal?: boolean,
   suppressChildTraversal?: boolean,
   includeElementsInFocusZones?: boolean,
-  tabbable?: boolean
+  tabbable?: boolean,
 ): HTMLElement | null {
   if (!currentElement || (currentElement === rootElement && suppressChildTraversal)) {
     return null;
@@ -245,7 +253,7 @@ export function getNextElement(
       true,
       false,
       includeElementsInFocusZones,
-      tabbable
+      tabbable,
     );
 
     if (childMatch) {
@@ -265,7 +273,7 @@ export function getNextElement(
     true,
     false,
     includeElementsInFocusZones,
-    tabbable
+    tabbable,
   );
 
   if (siblingMatch) {
@@ -273,7 +281,15 @@ export function getNextElement(
   }
 
   if (!suppressParentTraversal) {
-    return getNextElement(rootElement, currentElement.parentElement, false, false, true, includeElementsInFocusZones, tabbable);
+    return getNextElement(
+      rootElement,
+      currentElement.parentElement,
+      false,
+      false,
+      true,
+      includeElementsInFocusZones,
+      tabbable,
+    );
   }
 
   return null;

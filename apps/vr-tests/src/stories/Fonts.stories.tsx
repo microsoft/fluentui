@@ -27,6 +27,8 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
   </div>
 );
 
+const Weights = [300, 400, 600, 700];
+
 function getStyle(lang: string) {
   return createFontStyles(lang).medium as React.CSSProperties;
 }
@@ -41,8 +43,17 @@ storiesOf('Fonts', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
+  .addStory('Weights', () => (
+    <div style={getStyle('en')}>
+      {Weights.map(weight => (
+        <p key={weight} style={{ fontWeight: weight }}>
+          Weight {weight}: Testing fontweight
+        </p>
+      ))}
+    </div>
+  ))
   .addStory('Arabic', () => <RepresentativeText style={getStyle('ar')} />)
   .addStory('Chinese (Simplified)', () => <RepresentativeText style={getStyle('zh-Hans')} />)
   .addStory('Chinese (Traditional)', () => <RepresentativeText style={getStyle('zh-Hant')} />)

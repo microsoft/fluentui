@@ -20,10 +20,7 @@ export class FloatingSuggestionPage extends React.Component<IComponentDemoPagePr
         propertiesTables={
           <PropertiesTableSet
             sources={[
-              require<
-                string
-                // tslint:disable-next-line:max-line-length
-              >('!raw-loader!@uifabric/experiments/src/components/FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types.ts')
+              require('!raw-loader!@uifabric/experiments/src/components/FloatingSuggestionsComposite/FloatingPeopleSuggestions/FloatingPeopleSuggestions.types.ts') as string,
             ]}
           />
         }

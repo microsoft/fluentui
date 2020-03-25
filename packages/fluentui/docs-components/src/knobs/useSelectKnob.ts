@@ -10,7 +10,7 @@ const useSelectKnob = <T extends string>(options: UseSelectKnobOptions<T>) => {
     initialValue: '' as T,
     type: 'select',
     ...options,
-    values: options.allowsNone ? ['none' as T, ...options.values] : options.values
+    values: options.allowsNone ? ['none' as T, ...options.values] : options.values,
   });
 
   return [value === 'none' ? undefined : value, setValue] as [T, (newValue: T) => void];

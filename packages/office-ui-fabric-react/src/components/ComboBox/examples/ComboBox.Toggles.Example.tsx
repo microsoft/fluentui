@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { ComboBox, Fabric, IComboBoxOption, mergeStyles, SelectableOptionMenuItemType, Toggle } from 'office-ui-fabric-react/lib/index';
+import {
+  ComboBox,
+  Fabric,
+  IComboBoxOption,
+  mergeStyles,
+  SelectableOptionMenuItemType,
+  Toggle,
+} from 'office-ui-fabric-react/lib/index';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -14,15 +21,15 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'G', text: 'Option G' },
   { key: 'H', text: 'Option H' },
   { key: 'I', text: 'Option I' },
-  { key: 'J', text: 'Option J' }
+  { key: 'J', text: 'Option J' },
 ];
 
 const wrapperClassName = mergeStyles({
   display: 'flex',
   selectors: {
     '& > *': { marginRight: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' }
-  }
+    '& .ms-ComboBox': { maxWidth: '300px' },
+  },
 });
 
 export interface IComboBoxTogglesExampleState {
@@ -34,7 +41,7 @@ export interface IComboBoxTogglesExampleState {
 export class ComboBoxTogglesExample extends React.Component<{}, IComboBoxTogglesExampleState> {
   public state: IComboBoxTogglesExampleState = {
     autoComplete: false,
-    allowFreeform: true
+    allowFreeform: true,
   };
 
   public render(): JSX.Element {

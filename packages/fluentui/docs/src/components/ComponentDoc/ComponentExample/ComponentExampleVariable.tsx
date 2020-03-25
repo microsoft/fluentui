@@ -1,4 +1,4 @@
-import { Input, InputProps, Popup } from '@fluentui/react';
+import { Input, InputProps, Popup } from '@fluentui/react-northstar';
 import * as React from 'react';
 import ComponentExampleColorPicker from './ComponentExampleColorPicker';
 
@@ -17,13 +17,13 @@ const ComponentExampleVariable: React.FunctionComponent<ComponentExampleVariable
     (e, data: InputProps) => {
       onChange(componentName, variableName, data.value as string);
     },
-    [componentName, onChange, variableName]
+    [componentName, onChange, variableName],
   );
   const handleColorChange = React.useCallback(
     (colorValue: string) => {
       onChange(componentName, variableName, colorValue);
     },
-    [componentName, onChange, variableName]
+    [componentName, onChange, variableName],
   );
 
   return (
@@ -44,7 +44,7 @@ const ComponentExampleVariable: React.FunctionComponent<ComponentExampleVariable
                   marginRight: '0.5rem',
                   verticalAlign: 'middle',
                   background: variableValue,
-                  boxShadow: '0 0 0 1px black, 0 0 0 2px white'
+                  boxShadow: '0 0 0 1px black, 0 0 0 2px white',
                 }}
               />
               {variableName}

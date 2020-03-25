@@ -21,7 +21,7 @@ const GlobalClassNames = {
   cellName: 'ms-DetailsHeader-cellName',
   filterChevron: 'ms-DetailsHeader-filterChevron',
   gripperBarVerticalStyle: 'ms-DetailsColumn-gripperBar',
-  nearIcon: 'ms-DetailsColumn-nearIcon'
+  nearIcon: 'ms-DetailsColumn-nearIcon',
 };
 
 export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
@@ -36,7 +36,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     isIconOnly,
     cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
     transitionDurationDrag,
-    transitionDurationDrop
+    transitionDurationDrop,
   } = props;
 
   const { semanticColors, palette, fonts } = theme;
@@ -47,21 +47,21 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
     headerForegroundColor: semanticColors.bodyText,
     headerBackgroundColor: semanticColors.bodyBackground,
     dropdownChevronForegroundColor: palette.neutralTertiary,
-    resizerColor: palette.neutralTertiaryAlt
+    resizerColor: palette.neutralTertiaryAlt,
   };
 
   const nearIconStyle: IStyle = {
     color: colors.iconForegroundColor,
     opacity: 1,
-    paddingLeft: 8
+    paddingLeft: 8,
   };
 
   const borderWhileDragging: IStyle = {
-    outline: `1px solid ${palette.themePrimary}`
+    outline: `1px solid ${palette.themePrimary}`,
   };
 
   const borderAfterDragOrDrop: IStyle = {
-    outlineColor: 'transparent'
+    outlineColor: 'transparent',
   };
 
   return {
@@ -74,32 +74,32 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
           selectors: {
             ':hover': {
               color: semanticColors.bodyText,
-              background: semanticColors.listHeaderBackgroundHovered
+              background: semanticColors.listHeaderBackgroundHovered,
             },
             ':active': {
-              background: semanticColors.listHeaderBackgroundPressed
-            }
-          }
-        }
+              background: semanticColors.listHeaderBackgroundPressed,
+            },
+          },
+        },
       ],
       isEmpty && [
         classNames.isEmpty,
         {
-          textOverflow: 'clip'
-        }
+          textOverflow: 'clip',
+        },
       ],
       isIconVisible && classNames.isIconVisible,
       isPadded && {
-        paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding
+        paddingRight: cellStyleProps.cellExtraRightPadding + cellStyleProps.cellRightPadding,
       },
       {
         selectors: {
           ':hover i[data-icon-name="GripperBarVertical"]': {
-            display: 'block'
-          }
-        }
+            display: 'block',
+          },
+        },
       },
-      headerClassName
+      headerClassName,
     ],
 
     gripperBarVerticalStyle: {
@@ -107,7 +107,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       position: 'absolute',
       textAlign: 'left',
       color: palette.neutralTertiary,
-      left: 1
+      left: 1,
     },
 
     nearIcon: [classNames.nearIcon, nearIconStyle],
@@ -117,16 +117,16 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       {
         paddingLeft: 4,
         position: 'relative',
-        top: 1
-      }
+        top: 1,
+      },
     ],
 
     iconClassName: [
       {
         color: colors.iconForegroundColor,
-        opacity: 1
+        opacity: 1,
       },
-      iconClassName
+      iconClassName,
     ],
 
     filterChevron: [
@@ -135,8 +135,8 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         color: colors.dropdownChevronForegroundColor,
         paddingLeft: 6,
         verticalAlign: 'middle',
-        fontSize: fonts.small.fontSize
-      }
+        fontSize: fonts.small.fontSize,
+      },
     ],
 
     cellTitle: [
@@ -154,10 +154,10 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
           ? {
               alignContent: 'flex-end',
               maxHeight: '100%',
-              flexWrap: 'wrap-reverse'
+              flexWrap: 'wrap-reverse',
             }
-          : {})
-      }
+          : {}),
+      },
     ],
 
     cellName: [
@@ -167,15 +167,15 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         fontWeight: FontWeights.semibold,
-        fontSize: fonts.medium.fontSize
+        fontSize: fonts.medium.fontSize,
       },
       isIconOnly && {
         selectors: {
           [`.${classNames.nearIcon}`]: {
-            paddingLeft: 0
-          }
-        }
-      }
+            paddingLeft: 0,
+          },
+        },
+      },
     ],
 
     cellTooltip: {
@@ -184,7 +184,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       top: 0,
       left: 0,
       bottom: 0,
-      right: 0
+      right: 0,
     },
 
     accessibleLabel: hiddenContentStyle,
@@ -195,6 +195,6 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     borderAfterDropping: borderWhileDragging,
 
-    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }]
+    noBorderAfterDropping: [borderAfterDragOrDrop, { transition: `outline  ${transitionDurationDrop}ms ease` }],
   };
 };

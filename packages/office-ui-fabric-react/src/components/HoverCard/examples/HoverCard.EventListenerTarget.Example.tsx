@@ -10,12 +10,12 @@ const classNames = mergeStyleSets({
     height: 200,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
   textField: {
-    paddingRight: 200
-  }
+    paddingRight: 200,
+  },
 });
 
 interface IHoverCardExampleState {
@@ -26,19 +26,19 @@ interface IHoverCardExampleState {
 export class HoverCardEventListenerTargetExample extends React.Component<{}, IHoverCardExampleState> {
   public state = {
     target: null,
-    eventListenerTarget: null
+    eventListenerTarget: null,
   };
 
   public render() {
     const plainCardProps: IPlainCardProps = {
       onRenderPlainCard: this._onRenderPlainCard,
-      directionalHint: DirectionalHint.rightTopEdge
+      directionalHint: DirectionalHint.rightTopEdge,
     };
     return (
       <Fabric>
         <p>
-          Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch the card only when
-          hovering over the text field, hovering over the icon doesn't trigger card open.
+          Using the target to tag hover card on the right side of Emoji icon, and using eventListenerTarget to launch
+          the card only when hovering over the text field, hovering over the icon doesn't trigger card open.
         </p>
         <span ref={this._setTarget}>
           <span ref={this._setEventListenerTarget} className={classNames.textField}>
@@ -62,13 +62,13 @@ export class HoverCardEventListenerTargetExample extends React.Component<{}, IHo
 
   private _setTarget = (element: HTMLElement | null): void => {
     this.setState({
-      target: element
+      target: element,
     });
   };
 
   private _setEventListenerTarget = (element: HTMLElement | null): void => {
     this.setState({
-      eventListenerTarget: element
+      eventListenerTarget: element,
     });
   };
 }

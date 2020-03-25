@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Image } from '@fluentui/react';
+import { Grid, Image } from '@fluentui/react-northstar';
 
 const images = [
   <Image key="ade" fluid src="public/images/avatar/large/ade.jpg" />,
@@ -24,7 +24,7 @@ const images = [
   <Image key="steve" fluid src="public/images/avatar/large/steve.jpg" />,
   <Image key="stevie" fluid src="public/images/avatar/large/stevie.jpg" />,
   <Image key="tom" fluid src="public/images/avatar/large/tom.jpg" />,
-  <Image key="veronika" fluid src="public/images/avatar/large/veronika.jpg" />
+  <Image key="veronika" fluid src="public/images/avatar/large/veronika.jpg" />,
 ];
 
 const GridExample = () => (

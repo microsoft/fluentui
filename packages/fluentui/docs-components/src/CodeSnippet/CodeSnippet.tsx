@@ -31,7 +31,7 @@ const CodeSnippet: React.FunctionComponent<CodeSnippetProps> = props => {
       style={{
         fontSize: '12px',
         position: 'relative',
-        ...props.style
+        ...props.style,
       }}
     >
       <CodeSnippetLabel {...props} value={code} />
@@ -48,7 +48,7 @@ const CodeSnippet: React.FunctionComponent<CodeSnippetProps> = props => {
 CodeSnippet.defaultProps = {
   copyable: true,
   formattable: true,
-  mode: 'jsx'
+  mode: 'jsx',
 };
 
 CodeSnippet.propTypes = {
@@ -59,7 +59,7 @@ CodeSnippet.propTypes = {
   label: PropTypes.oneOfType([PropTypes.node, PropTypes.bool]),
   mode: PropTypes.oneOf(['bash', 'json', 'js', 'jsx', 'html'] as CodeSnippetMode[]),
   style: PropTypes.object,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.object]).isRequired
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string), PropTypes.object]).isRequired,
 };
 
 export default React.memo(CodeSnippet);

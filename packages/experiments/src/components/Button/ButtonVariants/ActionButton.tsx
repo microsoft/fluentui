@@ -12,7 +12,7 @@ import {
   IButtonStylesReturnType,
   IButtonTokenReturnType,
   IButtonTokens,
-  IButtonViewProps
+  IButtonViewProps,
 } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
 
@@ -48,7 +48,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     iconColorPressed: palette.black,
     iconSize: 16,
     minWidth: 100,
-    textWeight: FontWeights.regular
+    textWeight: FontWeights.regular,
   };
 };
 
@@ -68,31 +68,31 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
     highContrastIconColorPressed: 'GrayText',
     iconColor: semanticColors.buttonTextDisabled,
     iconColorHovered: semanticColors.buttonTextDisabled,
-    iconColorPressed: semanticColors.buttonTextDisabled
+    iconColorPressed: semanticColors.buttonTextDisabled,
   };
 };
 
 const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
 const ActionButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
-  const regularStyles = (ButtonStyles as IStylesFunction<IButtonViewProps, IButtonTokens, IComponentStyles<IButtonSlots>>)(
-    props,
-    theme,
-    tokens
-  );
+  const regularStyles = (ButtonStyles as IStylesFunction<
+    IButtonViewProps,
+    IButtonTokens,
+    IComponentStyles<IButtonSlots>
+  >)(props, theme, tokens);
 
   return {
     root: [
       regularStyles.root,
       {
-        justifyContent: 'flex-start'
-      }
+        justifyContent: 'flex-start',
+      },
     ],
     content: regularStyles.content,
-    icon: regularStyles.icon
+    icon: regularStyles.icon,
   };
 };
 
@@ -102,5 +102,5 @@ export const ActionButton: React.FunctionComponent<IButtonProps> = composed({
   state,
   styles: ActionButtonStyles,
   tokens: ActionButtonTokens,
-  view
+  view,
 });

@@ -16,7 +16,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
     defaultValue: props.defaultValue,
     value: props.value,
 
-    initialValue: props.initialValue
+    initialValue: props.initialValue,
   });
 
   return (

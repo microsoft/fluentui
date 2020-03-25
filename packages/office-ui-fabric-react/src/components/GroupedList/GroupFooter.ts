@@ -10,5 +10,5 @@ export const GroupFooter: React.FunctionComponent<IGroupFooterProps> = styled<
   IGroupFooterStyleProps,
   IGroupFooterStyles
 >(GroupFooterBase, getStyles, undefined, {
-  scope: 'GroupFooter'
+  scope: 'GroupFooter',
 });

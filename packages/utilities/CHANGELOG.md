@@ -1,7 +1,43 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.15.3
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.15.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.15.0
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Minor changes
+
+- deprecate BaseComonent, remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
+## 7.14.1
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Patches
+
+- BaseComponent: remove initializeDir (xgao@microsoft.com)
+## 7.14.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+## 7.13.2
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Patches
+
+- Skips unnecessary equality check in shallowCompare to increase performance (chce@netcompany.com)
 ## 7.13.1
 Sat, 07 Mar 2020 01:39:37 GMT
 

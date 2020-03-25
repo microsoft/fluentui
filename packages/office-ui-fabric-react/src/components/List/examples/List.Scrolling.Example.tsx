@@ -19,13 +19,13 @@ const styles = mergeStyleSets({
       '.ms-List-cell:nth-child(odd)': {
         height: 50,
         lineHeight: 50,
-        background: theme.palette.neutralLighter
+        background: theme.palette.neutralLighter,
       },
       '.ms-List-cell:nth-child(even)': {
         height: 25,
-        lineHeight: 25
-      }
-    }
+        lineHeight: 25,
+      },
+    },
   },
   itemContent: [
     theme.fonts.medium,
@@ -34,9 +34,9 @@ const styles = mergeStyleSets({
       position: 'relative',
       display: 'block',
       borderLeft: '3px solid ' + theme.palette.themePrimary,
-      paddingLeft: 27
-    }
-  ]
+      paddingLeft: 27,
+    },
+  ],
 });
 
 export interface IListScrollingExampleProps {
@@ -64,7 +64,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this.state = {
       selectedIndex: 0,
       scrollToMode: ScrollToMode.auto,
-      showItemIndexInView: false
+      showItemIndexInView: false,
     };
   }
 
@@ -86,7 +86,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
             { key: 'auto', text: 'Auto' },
             { key: 'top', text: 'Top' },
             { key: 'bottom', text: 'Bottom' },
-            { key: 'center', text: 'Center' }
+            { key: 'center', text: 'Center' },
           ]}
           onChange={this._onDropdownChange}
         />
@@ -102,7 +102,12 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           />
         </div>
         <div className={styles.container} data-is-scrollable={true}>
-          <List ref={this._resolveList} items={this._items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
+          <List
+            ref={this._resolveList}
+            items={this._items}
+            getPageHeight={this._getPageHeight}
+            onRenderCell={this._onRenderCell}
+          />
         </div>
       </FocusZone>
     );
@@ -111,7 +116,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
   public componentWillUnmount() {
     if (this.state.showItemIndexInView) {
       const itemIndexInView = this._list!.getStartItemIndexInView(
-        idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */
+        idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight) /* measureItem */,
       );
       alert('unmounting, getting first item index that was in view: ' + itemIndexInView);
     }
@@ -172,11 +177,15 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this.setState(
       {
         selectedIndex: updatedSelectedIndex,
-        scrollToMode: scrollToMode
+        scrollToMode: scrollToMode,
       },
       () => {
-        this._list.scrollToIndex(updatedSelectedIndex, idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight), scrollToMode);
-      }
+        this._list.scrollToIndex(
+          updatedSelectedIndex,
+          idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
+          scrollToMode,
+        );
+      },
     );
   };
 
@@ -186,7 +195,7 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
 
   private _onShowItemIndexInViewChanged = (event: React.FormEvent<HTMLInputElement>, checked: boolean): void => {
     this.setState({
-      showItemIndexInView: checked
+      showItemIndexInView: checked,
     });
   };
 }
