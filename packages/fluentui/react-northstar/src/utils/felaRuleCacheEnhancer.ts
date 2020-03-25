@@ -75,7 +75,9 @@ const felaRuleCacheEnhancer = (renderer: Renderer): IRenderer => {
     const classNames: string[] = [];
     for (const property in style) {
       const className = getClassNameForProperty(property, style[property], props);
-      classNames.push(className);
+      if (className) {
+        classNames.push(className);
+      }
     }
     return classNames.join(' ');
   }
