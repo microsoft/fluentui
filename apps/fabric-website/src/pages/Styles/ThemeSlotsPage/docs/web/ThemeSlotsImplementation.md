@@ -1,6 +1,6 @@
 ### CSS-in-JS
 
-Fabric's recommended styling approach uses CSS-in-JS and revolves around the `styles` prop, which is provided by most Fabric components and allows strongly-typed customizations to individual areas of a component.
+Fluent UI's recommended styling approach uses CSS-in-JS and revolves around the `styles` prop, which is provided by most Fluent UI components and allows strongly-typed customizations to individual areas of a component.
 
 #### `styles` prop
 
