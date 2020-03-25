@@ -1,4 +1,4 @@
-### Fabric React (JavaScript variables)
+### Fluent UI React (JavaScript variables)
 
 ```tsx
 import { FontSizes } from '@uifabric/fluent-theme/lib/fluent/FluentType';

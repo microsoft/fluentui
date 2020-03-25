@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "update Fabric to Fluent strings",
+  "packageName": "@uifabric/monaco-editor",
+  "email": "micahgodbolt@gmail.com",
+  "commit": "44ae97a55b2d7bfdab1044f3f5e5b579fc42cac0",
+  "dependentChangeType": "patch",
+  "date": "2020-03-23T17:32:49.584Z"
+}

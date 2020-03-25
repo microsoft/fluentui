@@ -1,20 +1,20 @@
-Now you're ready to [explore Fabric controls](#/controls/web) and use them in your app!
+Now you're ready to [explore Fluent UI controls](#/controls/web) and use them in your app!
 
-To learn more about Fabric React, check out the links below.
+To learn more about Fluent UI React, check out the links below.
 
 ### Tutorials
 
-For more detailed tutorials about developing and testing Fabric React apps, see the day 2 and bonus sections of this [frontend bootcamp material](https://microsoft.github.io/frontend-bootcamp/).
+For more detailed tutorials about developing and testing Fluent UI React apps, see the day 2 and bonus sections of this [frontend bootcamp material](https://microsoft.github.io/frontend-bootcamp/).
 
-### Fabric React wiki
+### Fluent UI React wiki
 
-The [Fabric React wiki](https://github.com/microsoft/fluentui/wiki) has information about advanced usage, building and contributing to Fabric React, and more.
+The [Fluent UI React wiki](https://github.com/microsoft/fluentui/wiki) has information about advanced usage, building and contributing to Fluent UI React, and more.
 
 ### Styling and theming
 
-Fabric React components are highly customizable using CSS-in-JS. We also support customization of colors and more throughout the entire app using themes.
+Fluent UI React components are highly customizable using CSS-in-JS. We also support customization of colors and more throughout the entire app using themes.
 
-For an overview of styling and theming approaches in Fabric, see [this page](https://github.com/Microsoft/frontend-bootcamp/tree/master/step2-03/demo). Then check out the links below for more details:
+For an overview of styling and theming approaches in Fluent UI, see [this page](https://github.com/Microsoft/frontend-bootcamp/tree/master/step2-03/demo). Then check out the links below for more details:
 
 <ul class="md-list--flex">
   <li class="mdut--full">[Theme designer](https://aka.ms/themedesigner)</li>

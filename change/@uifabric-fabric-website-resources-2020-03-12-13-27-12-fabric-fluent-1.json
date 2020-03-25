@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Updating docs for Fluent transition",
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "e9fcc1a8ea263a19b8a2940e08f3fbf68d7367d7",
+  "dependentChangeType": "patch",
+  "date": "2020-03-12T20:27:05.235Z"
+}
