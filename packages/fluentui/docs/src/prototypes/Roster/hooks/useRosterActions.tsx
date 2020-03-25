@@ -1,69 +1,31 @@
 import * as React from 'react';
-import { RosterData } from '../interface/roster.interface';
 import { IActionsContext } from '../actionsContext';
 
-export const useRosterActions = (
-  rosterData: RosterData,
-  setRosterData: React.Dispatch<React.SetStateAction<RosterData>>,
-) => {
+export const useRosterActions = (rosterData, setRosterData: React.Dispatch<React.SetStateAction<any>>) => {
   return React.useMemo<IActionsContext>(
     () => ({
-      promote: id => {
+      togglePromote: (id, type) => {
         setRosterData(_rosterData => {
-          const toBePromoted = _rosterData.attendees.get(id);
-          if (!toBePromoted) {
-            return _rosterData;
-          }
-          // An attempt at immer-like immutability.
-          const newData = { ..._rosterData };
-          newData.attendees = new Map(_rosterData.attendees);
-          newData.presenters = new Map(_rosterData.presenters);
-          newData.attendees.delete(id);
-          newData.presenters.set(id, { ...toBePromoted });
+          const newData = [..._rosterData];
+          const inverseMap = {
+            attendees: 'presenters',
+            presenters: 'attendees',
+          };
+          const groupToRemoveIdx = newData.findIndex(group => group.id === type);
+          const groupToAddIdx = newData.findIndex(group => group.id === inverseMap[type]);
+          const toBePromoted = newData[groupToRemoveIdx].items.find(item => item.title.userId === id);
+          toBePromoted.title.type = inverseMap[type];
+          newData[groupToAddIdx].items.push(toBePromoted);
+          newData[groupToRemoveIdx].items = newData[groupToRemoveIdx].items.filter(item => item.title.userId !== id);
           return newData;
         });
       },
-      demote: id => {
+      toggleMute: (id, type) => {
         setRosterData(_rosterData => {
-          const toBeDemoted = _rosterData.presenters.get(id);
-          if (!toBeDemoted) {
-            return _rosterData;
-          }
-          const newData = { ..._rosterData };
-          newData.attendees = new Map(_rosterData.attendees);
-          newData.presenters = new Map(_rosterData.presenters);
-          newData.presenters.delete(id);
-          newData.attendees.set(id, { ...toBeDemoted });
-          return newData;
-        });
-      },
-      mute: id => {
-        setRosterData(_rosterData => {
-          const newData = { ...rosterData };
-          if (newData.presenters.has(id)) {
-            newData.presenters = new Map(rosterData.presenters);
-            const toBeMuted = newData.presenters.get(id);
-            newData.presenters.set(id, { ...toBeMuted, isMuted: true });
-          } else if (newData.attendees.has(id)) {
-            newData.attendees = new Map(rosterData.attendees);
-            const toBeMuted = newData.attendees.get(id);
-            newData.attendees.set(id, { ...toBeMuted, isMuted: true });
-          }
-          return newData;
-        });
-      },
-      unmute: id => {
-        setRosterData(_rosterData => {
-          const newData = { ...rosterData };
-          if (newData.presenters.has(id)) {
-            newData.presenters = new Map(rosterData.presenters);
-            const toBeMuted = newData.presenters.get(id);
-            newData.presenters.set(id, { ...toBeMuted, isMuted: false });
-          } else if (newData.attendees.has(id)) {
-            newData.attendees = new Map(rosterData.attendees);
-            const toBeMuted = newData.attendees.get(id);
-            newData.attendees.set(id, { ...toBeMuted, isMuted: false });
-          }
+          const newData = [..._rosterData];
+          // We can change it to work with normalized data to avoid this .find chain
+          const item = newData.find(group => group.id === type).items.find(item => item.title.userId === id);
+          item.title.isMuted = !item.title.isMuted;
           return newData;
         });
       },

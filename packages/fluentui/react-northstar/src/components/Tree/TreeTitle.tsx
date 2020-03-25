@@ -101,7 +101,6 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> & FluentComponentStaticPro
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeTitle.handledProps, props);
-
   const handleClick = e => {
     _.invoke(props, 'onClick', e, props);
   };

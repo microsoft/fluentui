@@ -37,15 +37,3 @@ export interface RosterItemData {
 }
 
 export type RosterSectionType = 'presenters' | 'attendees' | 'suggestions';
-
-export interface IRosterItemProps {
-  userId: string;
-  displayName: string;
-  visuals: RosterVisuals;
-  type: RosterSectionType;
-  isMuted: boolean;
-}
-
-export interface IRosterItemInternalProps extends IRosterItemProps {
-  action: React.ReactNode;
-}

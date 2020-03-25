@@ -16,7 +16,7 @@ import { rosterMenuPopupStyles } from '../styles/styles';
 export const withRosterActions: (
   C: React.ComponentType<IRosterItemInternalProps>,
 ) => React.ComponentType<IRosterItemProps> = Component => props => {
-  const { promote, demote, mute, unmute } = useActions();
+  const { toggleMute, togglePromote } = useActions();
 
   const [isOpen, setOpen] = React.useState(false);
   const [isContextOpen, setContextOpen] = React.useState(false);
@@ -29,42 +29,29 @@ export const withRosterActions: (
   };
 
   const items: ShorthandCollection<MenuItemProps, MenuShorthandKinds> = [];
-
-  if (props.type === 'attendees') {
-    items.push({
-      key: 'promote',
-      content: <Text content="Promote" />,
-      icon: {
-        name: 'presenter',
-        outline: true,
-        xSpacing: 'after',
-      } as IconProps,
-      onClick: () => promote(userId),
-    });
-  } else if (type === 'presenters') {
-    items.push({
-      key: 'demote',
-      content: <Text content="Demote" />,
-      icon: {
-        name: 'no-presenter',
-        outline: true,
-        xSpacing: 'after',
-      } as IconProps,
-      onClick: () => demote(userId),
-    });
-  }
-
   if (type !== 'suggestions') {
-    items.push({
-      key: 'mute',
-      content: <Text content={isMuted ? 'Unmute' : 'Mute'} />,
-      icon: {
-        name: isMuted ? 'mic' : 'mic-off',
-        outline: true,
-        xSpacing: 'after',
-      } as IconProps,
-      onClick: () => (isMuted ? unmute(userId) : mute(userId)),
-    });
+    items.push(
+      {
+        key: 'mute',
+        content: <Text content={isMuted ? 'Unmute' : 'Mute'} />,
+        icon: {
+          name: isMuted ? 'mic' : 'mic-off',
+          outline: true,
+          xSpacing: 'after',
+        } as IconProps,
+        onClick: () => toggleMute(userId, type),
+      },
+      {
+        key: type === 'presenters' ? 'promote' : 'demote',
+        content: <Text content={type === 'presenters' ? 'Promote' : 'Demote'} />,
+        icon: {
+          name: 'presenter',
+          outline: true,
+          xSpacing: 'after',
+        } as IconProps,
+        onClick: () => togglePromote(userId, type),
+      },
+    );
   }
 
   if (!items.length) {

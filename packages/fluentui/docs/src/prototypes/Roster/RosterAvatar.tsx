@@ -10,6 +10,7 @@ export const RosterAvatar: React.FunctionComponent<{ visuals: RosterVisuals; isA
 }) => {
   const shouldRenderAvatar = useDelayedState({ delayMs: 500 + Math.floor(Math.random() * 2000) });
   const shouldRenderPresence = useDelayedState({ delayMs: 500 + Math.floor(Math.random() * 2000) });
+
   return (
     <Avatar
       image={shouldRenderAvatar ? getAvatar(visuals) : undefined}

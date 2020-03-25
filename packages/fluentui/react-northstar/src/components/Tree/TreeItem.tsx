@@ -113,6 +113,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
   } = props;
 
   const hasSubtreeItem = hasSubtree(props);
+
   const { onFocusParent, onSiblingsExpand, onFocusFirstChild, onTitleClick } = React.useContext(TreeContext);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -198,7 +199,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
-
   const element = (
     <ElementType
       {...getA11Props('root', {

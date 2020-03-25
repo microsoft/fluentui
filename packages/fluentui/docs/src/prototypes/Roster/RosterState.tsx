@@ -7,7 +7,7 @@ export const RosterState: React.FunctionComponent<{ action: React.ReactNode; isM
 }) => {
   return (
     <Flex vAlign="center">
-      <Flex>{isMuted ? <Icon outline name={'mic-off'} xSpacing="both" /> : null}</Flex>
+      <Flex>{isMuted ? <Icon outline name="mic-off" xSpacing="both" /> : null}</Flex>
       {action}
     </Flex>
   );
