@@ -52,6 +52,7 @@ import EditorToolbarPrototype from './prototypes/EditorToolbar';
 import HexagonalAvatarPrototype from './prototypes/hexagonalAvatar';
 import TablePrototype from './prototypes/table';
 import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
+import RosterPrototype from './prototypes/Roster';
 
 const Routes = () => (
   <BrowserRouter basename={__BASENAME__}>
@@ -88,6 +89,7 @@ const Routes = () => (
           <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
           <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
           <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
+          <Route exact path="/prototype-roster" component={RosterPrototype} />
           <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
           <Route exact path="/faq" component={FAQ} />
           <Route exact path="/accessibility" component={Accessibility} />
