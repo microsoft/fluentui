@@ -77,10 +77,8 @@ storiesOf('Panel', module)
       hasCloseButton={false}
     />
   ))
-  .addStory('With close button and no header', () => (
-    <Panel>
-      <p>Content goes here.</p>
-    </Panel>
+  .addStory('With no header, close button', () => (
+    <Panel {...defaultProps} type={PanelType.smallFixedFar} hasCloseButton={true} />
   ));
 
 storiesOf('Panel', module)
