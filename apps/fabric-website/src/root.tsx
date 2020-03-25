@@ -9,7 +9,7 @@ import { AndroidLogo, AppleLogo, WebLogo } from './utilities/index';
 
 // TODO: handle redirects
 
-initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types-fluent/');
+initializeFileTypeIcons('https://static2.sharepointonline.com/files/fabric/assets/item-types/');
 
 registerIcons({
   icons: {

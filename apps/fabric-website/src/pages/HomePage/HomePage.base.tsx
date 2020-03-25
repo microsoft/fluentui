@@ -32,8 +32,7 @@ registerIcons({
   },
 });
 
-const fabricUsageIconBaseUrl =
-  'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
+const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/';
 
 /**
  * List of App/Brand icon names that use UI Fabric.
