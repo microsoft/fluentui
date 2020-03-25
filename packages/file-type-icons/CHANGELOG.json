@@ -2,6 +2,20 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:19:53 GMT",
+      "tag": "@uifabric/file-type-icons_v6.9.0",
+      "version": "6.9.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updated all the usage of filetype icons that is utilizing the \"brand-icons\" folder (which is not recommended, fileicons should be pulled from the item-types folder set)",
+            "author": "caperez@microsoft.com",
+            "commit": "2de78f8df3e966432fcc39d3209573536801bc4e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Dec 2019 12:21:54 GMT",
       "tag": "@uifabric/file-type-icons_v6.8.1",
       "version": "6.8.1",

@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:19:53 GMT",
+      "tag": "office-ui-fabric-react_v6.213.0",
+      "version": "6.213.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "updated all the usage of filetype icons that is utilizing the \"brand-icons\" folder (which is not recommended, fileicons should be pulled from the item-types folder set)",
+            "author": "caperez@microsoft.com",
+            "commit": "2de78f8df3e966432fcc39d3209573536801bc4e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Mar 2020 12:18:32 GMT",
       "tag": "office-ui-fabric-react_v6.212.0",
       "version": "6.212.0",
