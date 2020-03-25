@@ -98,12 +98,12 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     ':focus-within': {
       // when dropdown's selected items are focused
       // keep the focus border style
-      borderBottomColor: v.borderColorFocus,
+      borderBottomColor: 'red',
     },
     ...(p.focused && {
       backgroundColor: v.backgroundColor,
       ...(p.search && {
-        borderBottomColor: v.borderColorFocus,
+        borderBottomColor: 'red',
       }),
       ...(!p.search &&
         !p.open &&
