@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import * as FUI from '@fluentui/react-northstar';
+import { FiberNavigator } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './components/types';
-import FiberNavigator from '../../react/src/components/Debug/FiberNavigator';
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 

@@ -83,6 +83,9 @@ export { default as DropdownSearchInput } from './components/Dropdown/DropdownSe
 export * from './components/Embed/Embed';
 export { default as Embed } from './components/Embed/Embed';
 
+export * from './components/Debug/FiberNavigator';
+export { default as FiberNavigator } from './components/Debug/FiberNavigator';
+
 export * from './components/Flex/Flex';
 export { default as Flex } from './components/Flex/Flex';
 export * from './components/Flex/FlexItem';

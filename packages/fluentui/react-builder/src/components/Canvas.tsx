@@ -1,11 +1,10 @@
 import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
-import { DebugSelector, Provider, themes } from '@fluentui/react-northstar';
+import { DebugSelector, FiberNavigator, Provider, themes } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindOwnerInJSONTree, fiberNavToJSONTreeElement, renderJSONTreeToJSXElement } from '../config';
-import FiberNavigator from '../../../react/src/components/Debug/FiberNavigator';
 
 const Canvas = ({
   style,

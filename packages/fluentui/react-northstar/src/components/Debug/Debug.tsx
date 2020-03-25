@@ -10,6 +10,8 @@ import DebugPanel from './DebugPanel';
 import FiberNavigator from './FiberNavigator';
 import DebugRect from './DebugRect';
 
+/* eslint-disable no-console */
+
 export type DebugProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
