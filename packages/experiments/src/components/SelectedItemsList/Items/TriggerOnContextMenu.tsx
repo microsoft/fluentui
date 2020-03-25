@@ -11,7 +11,7 @@ export const TriggerOnContextMenu = <T extends any>(ItemComponent: React.Compone
         e.stopPropagation();
         props.onTrigger && props.onTrigger();
       },
-      [props.onTrigger]
+      [props.onTrigger],
     );
     return <ItemComponent {...props} onContextMenu={trigger} />;
   };

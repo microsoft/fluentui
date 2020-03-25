@@ -21,17 +21,17 @@ const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
         role: 'treeitem',
         'aria-setsize': props.treeSize,
         'aria-posinset': props.index,
-        'aria-level': props.level
-      })
-    }
+        'aria-level': props.level,
+      }),
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default treeTitleBehavior;

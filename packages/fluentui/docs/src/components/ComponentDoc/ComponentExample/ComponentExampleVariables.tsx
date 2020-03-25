@@ -1,4 +1,11 @@
-import { callable, Grid, Header, Segment, ProviderContextPrepared, ThemeComponentVariablesPrepared } from '@fluentui/react';
+import {
+  callable,
+  Grid,
+  Header,
+  Segment,
+  ProviderContextPrepared,
+  ThemeComponentVariablesPrepared,
+} from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 // @ts-ignore
@@ -33,7 +40,7 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
     mergeThemeVariables(theme.componentVariables, overriddenVariables),
     (componentVariables, componentName) => {
       return usedVariables[componentName];
-    }
+    },
   );
   const filteredVariables = _.omitBy(
     _.mapValues(componentVariables, (variables, componentName) =>
@@ -50,10 +57,10 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
 
           return acc;
         },
-        {}
-      )
+        {},
+      ),
     ),
-    _.isEmpty
+    _.isEmpty,
   );
 
   return (
@@ -67,7 +74,10 @@ const ComponentExampleVariables: React.FunctionComponent<ComponentExampleVariabl
       {/* /> */}
 
       {_.map(filteredVariables, (componentVariables, componentName) => {
-        const groupedVariables: Record<string, string[]> = _.groupBy(Object.keys(componentVariables).sort(), getGroupName);
+        const groupedVariables: Record<string, string[]> = _.groupBy(
+          Object.keys(componentVariables).sort(),
+          getGroupName,
+        );
 
         return (
           <Segment key={componentName}>

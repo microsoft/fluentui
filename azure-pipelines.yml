@@ -44,14 +44,14 @@ jobs:
       - script: |
           az --version
           az extension add -n azure-devops
-          echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
-          az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
+          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
+          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Set up Azure CLI with DevOps
 
       - script: |
-          az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
+          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Trigger Perf-Test and Screener jobs

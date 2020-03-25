@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, EventGroup, KeyCodes, getWindow, warnDeprecations } from '../../../Utilities';
+import {
+  classNamesFunction,
+  initializeComponentRef,
+  EventGroup,
+  KeyCodes,
+  getWindow,
+  warnDeprecations,
+} from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 import { clamp } from '../../../utilities/color/clamp';
 
@@ -16,7 +23,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   public static defaultProps: Partial<IColorSliderProps> = {
     minValue: 0,
     maxValue: 100,
-    value: 0
+    value: 0,
   };
 
   private _events: EventGroup;
@@ -30,11 +37,11 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     warnDeprecations('ColorSlider', props, {
       thumbColor: 'styles.sliderThumb',
-      overlayStyle: 'overlayColor'
+      overlayStyle: 'overlayColor',
     });
 
     this.state = {
-      currentValue: props.value || 0
+      currentValue: props.value || 0,
     };
   }
 
@@ -63,7 +70,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isAlpha
+      isAlpha,
     });
 
     const currentPercentage = (100 * (currentValue! - minValue!)) / (maxValue! - minValue!);
@@ -89,7 +96,9 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
             className={classNames.sliderOverlay}
             // this isn't included in getStyles because it may change frequently
             style={
-              overlayColor !== undefined ? { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` } : overlayStyle
+              overlayColor !== undefined
+                ? { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }
+                : overlayStyle
             }
           />
         )}
@@ -170,7 +179,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     if (!ev.defaultPrevented) {
       this.setState({
-        currentValue: newValue
+        currentValue: newValue,
       });
       ev.preventDefault();
     }

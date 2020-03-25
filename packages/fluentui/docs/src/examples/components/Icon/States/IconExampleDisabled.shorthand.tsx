@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Icon } from '@fluentui/react';
+import { Icon } from '@fluentui/react-northstar';
 
 const IconExampleDisabled = () => (
   <div>

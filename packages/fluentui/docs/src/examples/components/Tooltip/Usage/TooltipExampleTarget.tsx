@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Divider, Grid, Ref, Text, Tooltip } from '@fluentui/react';
+import { Button, Divider, Grid, Ref, Text, Tooltip } from '@fluentui/react-northstar';
 
 const TooltipExampleTarget = () => {
   const [target, setTarget] = React.useState<HTMLElement>(null);
@@ -14,7 +14,10 @@ const TooltipExampleTarget = () => {
         <Text>Could you guess what does this text means? :)</Text>
         <Divider />
         <Ref innerRef={setTarget}>
-          <Text>"To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the souls of York."</Text>
+          <Text>
+            "To the lascivious looking-glass I, that love's majesty to strut before a want love's majesto, to the souls
+            of York."
+          </Text>
         </Ref>
       </div>
     </Grid>

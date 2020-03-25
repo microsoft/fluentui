@@ -1,7 +1,25 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 06 Feb 2020 12:37:34 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.0.50
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.0.49
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.0.47
+Wed, 18 Mar 2020 12:24:00 GMT
+
+### Patches
+
+- Azure theme: Adding storybook `yarn start` workflow for helping to design and debug the Azure themes. (dzearing@microsoft.com)
 ## 7.0.21
 Thu, 06 Feb 2020 12:37:34 GMT
 

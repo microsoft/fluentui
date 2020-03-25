@@ -1,7 +1,19 @@
 # Change Log - @uifabric/tslint-rules
 
-This log was last generated on Sat, 07 Mar 2020 01:39:37 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.1.2
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.1.1
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.1.0
 Sat, 07 Mar 2020 01:39:37 GMT
 

@@ -1,4 +1,4 @@
-import { Button, Popup } from '@fluentui/react';
+import { Button, Popup } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const PopupExamplePointerOffset = () => (

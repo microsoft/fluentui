@@ -12,6 +12,6 @@ exports.clean = cleanTask(
     'lib-commonjs',
     'lib-es2015', // Keep this in clean for actually cleaning up legacy content.
     'coverage',
-    'src/**/*.scss.ts'
-  ].map(p => path.join(process.cwd(), p))
+    'src/**/*.scss.ts',
+  ].map(p => path.join(process.cwd(), p)),
 );

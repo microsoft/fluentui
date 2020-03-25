@@ -70,7 +70,7 @@ export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize {
 
   return {
     width: contentSize.width * finalScale,
-    height: contentSize.height * finalScale
+    height: contentSize.height * finalScale,
   };
 }
 

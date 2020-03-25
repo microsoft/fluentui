@@ -7,7 +7,7 @@ import {
   ApiTypeAlias,
   ApiDeclaredItem,
   HeritageType,
-  ApiItem
+  ApiItem,
 } from '@microsoft/api-extractor-model';
 import { ITableJson, ITableRowJson } from './types';
 import { renderDocNodeWithoutInlineTag, getTokenHyperlinks, renderNodes } from './rendering';
@@ -40,16 +40,17 @@ function createBasicTableJson(
   collectedData: ICollectedData,
   apiItem: ApiDeclaredItem,
   kind: ITableJson['kind'],
-  extendsTypes?: HeritageType | readonly HeritageType[]
+  extendsTypes?: HeritageType | readonly HeritageType[],
 ): ITableJson {
   const { tsdocComment } = apiItem;
   const tableJson: ITableJson = {
     kind,
     name: apiItem.displayName,
-    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined
+    description: (tsdocComment && renderDocNodeWithoutInlineTag(tsdocComment.summarySection)) || undefined,
   };
 
-  const extendsArr: HeritageType[] | undefined = !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];
+  const extendsArr: HeritageType[] | undefined =
+    !extendsTypes || Array.isArray(extendsTypes) ? extendsTypes : [extendsTypes];
   if (extendsArr && extendsArr.length) {
     tableJson.extendsTokens = [];
     for (const extendsType of extendsArr) {
@@ -57,7 +58,9 @@ function createBasicTableJson(
         // if there are multiple extends types, we should separate them with a comma
         tableJson.extendsTokens.push({ text: ', ' });
       }
-      tableJson.extendsTokens.push(...getTokenHyperlinks(collectedData, extendsType.excerpt.tokens, extendsType.excerpt.tokenRange));
+      tableJson.extendsTokens.push(
+        ...getTokenHyperlinks(collectedData, extendsType.excerpt.tokens, extendsType.excerpt.tokenRange),
+      );
     }
   }
 
@@ -102,7 +105,12 @@ function createClassPageJson(collectedData: ICollectedData, classItem: ApiClass)
 function createTypeAliasPageJson(collectedData: ICollectedData, typeAliasItem: ApiTypeAlias): ITableJson {
   const tableJson = createBasicTableJson(collectedData, typeAliasItem, 'typeAlias');
 
-  tableJson.extendsTokens = getTokenHyperlinks(collectedData, typeAliasItem.excerptTokens, typeAliasItem.excerpt.tokenRange, true);
+  tableJson.extendsTokens = getTokenHyperlinks(
+    collectedData,
+    typeAliasItem.excerptTokens,
+    typeAliasItem.excerpt.tokenRange,
+    true,
+  );
 
   return tableJson;
 }

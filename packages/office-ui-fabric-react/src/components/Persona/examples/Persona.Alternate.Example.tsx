@@ -11,13 +11,23 @@ export const PersonaAlternateExample: React.FunctionComponent = () => {
     secondaryText: 'Designer',
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
-    showSecondaryText: true
+    showSecondaryText: true,
   };
 
   return (
     <Stack tokens={{ childrenGap: 10 }}>
-      <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} imageAlt="Annie Ried, status is unknown" />
-      <Persona {...examplePersona} size={PersonaSize.size32} presence={PersonaPresence.none} imageAlt="Annie Ried, status is unknown" />
+      <Persona
+        {...examplePersona}
+        size={PersonaSize.size24}
+        presence={PersonaPresence.none}
+        imageAlt="Annie Ried, status is unknown"
+      />
+      <Persona
+        {...examplePersona}
+        size={PersonaSize.size32}
+        presence={PersonaPresence.none}
+        imageAlt="Annie Ried, status is unknown"
+      />
       <Persona
         {...examplePersona}
         size={PersonaSize.size32}

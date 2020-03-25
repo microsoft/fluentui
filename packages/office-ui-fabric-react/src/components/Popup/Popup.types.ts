@@ -37,7 +37,8 @@ export interface IPopupProps extends React.HTMLAttributes<Popup> {
   className?: string;
 
   /**
-   * If true, the unmounting of this component will cause focus to be restored to the element that had focus when first mounted.
+   * If true, when this component is unmounted, focus will be restored to the element that had focus when the component
+   * first mounted.
    * @defaultvalue true
    */
   shouldRestoreFocus?: boolean;

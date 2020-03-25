@@ -15,7 +15,7 @@ describe('PopupBehavior.ts', () => {
   test('adds tabIndex attribute with value passed as prop', () => {
     const expectedResult = popupBehavior({
       trigger: <div tabIndex={-1} />,
-      tabbableTrigger: true
+      tabbableTrigger: true,
     });
     expect(expectedResult.attributes.trigger.tabIndex).toEqual(-1);
   });

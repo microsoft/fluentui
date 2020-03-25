@@ -2,7 +2,7 @@ import {
   IExpandingCardStyleProps,
   IExpandingCardStyles,
   IPlainCardStyleProps,
-  IPlainCardStyles
+  IPlainCardStyles,
 } from 'office-ui-fabric-react/lib/HoverCard';
 import * as StyleConstants from '../Constants';
 
@@ -16,10 +16,10 @@ export const ExpandingCardStyles = (props: IExpandingCardStyleProps): Partial<IE
         '.ms-Callout-main': {
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth
-        }
-      }
-    }
+          borderWidth: StyleConstants.borderWidth,
+        },
+      },
+    },
   };
 };
 
@@ -33,9 +33,9 @@ export const PlainCardStyles = (props: IPlainCardStyleProps): Partial<IPlainCard
         '.ms-Callout-main': {
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth
-        }
-      }
-    }
+          borderWidth: StyleConstants.borderWidth,
+        },
+      },
+    },
   };
 };

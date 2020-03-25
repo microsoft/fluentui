@@ -22,12 +22,12 @@ module.exports = api => {
         exclude: [
           // https://github.com/microsoft/fluent-ui-react/pull/1895
           'proposal-object-rest-spread',
-          'transform-async-to-generator'
-        ]
-      }
+          'transform-async-to-generator',
+        ],
+      },
     ],
     '@babel/preset-react',
-    ['@babel/preset-typescript', { allowNamespaces: true }]
+    ['@babel/preset-typescript', { allowNamespaces: true }],
   ];
   const plugins = [
     '@babel/plugin-proposal-class-properties',
@@ -37,7 +37,7 @@ module.exports = api => {
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-runtime', { useESModules }],
 
-    isDistBundle && 'lodash'
+    isDistBundle && 'lodash',
   ].filter(Boolean);
 
   return {
@@ -46,7 +46,7 @@ module.exports = api => {
     // Options to facilitate debugging in editor (set DEBUG environment var)
     ...(process.env.DEBUG && {
       sourceMaps: 'inline',
-      retainLines: true
-    })
+      retainLines: true,
+    }),
   };
 };

@@ -1,8 +1,13 @@
 import { selectors, itemsCount } from './toolbarMenuOverflow-example';
 
 const toolbarItem = (index: number) => `.${selectors.toolbarItem}:nth-child(${index + 1})`;
-const toolbarItemWrapped = (index: number) => `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
+const toolbarItemButton = (index: number) => `#${selectors.itemButtonId}-${index}`;
+const toolbarItemWrapped = (index: number) =>
+  `.${selectors.toolbarItemWrapper}:nth-child(${index + 1}) .${selectors.toolbarItem}`;
 const toolbar = `.${selectors.toolbar}`;
+const menuTrigger = `#${selectors.menuTrigger}`;
+const toolbarMenu = `.${selectors.toolbarMenu}`;
+const buttonAfterToolbarId = `#${selectors.afterToolbarId}`;
 
 describe('Toolbar menu overflow', () => {
   let itemWidth;
@@ -53,5 +58,25 @@ describe('Toolbar menu overflow', () => {
 
     // check that the focus was applied to first item as fall-back.
     expect(await e2e.isFocused(toolbarItem(itemToReceiveFocusIndex))).toBe(true);
+  });
+
+  it('moves focus to particular element, after click on menu item', async () => {
+    await e2e.resizeViewport({ width: itemWidth * (itemsCount / 2) });
+    await e2e.wait(500);
+
+    // wait menu trigger button exists and then opens menu
+    expect(await e2e.exists(menuTrigger)).toBe(true);
+    await e2e.clickOn(menuTrigger);
+
+    // verify menu was opened and last item exists
+    expect(await e2e.exists(toolbarMenu)).toBe(true);
+    expect(await e2e.exists(toolbarItemButton(itemsCount - 1))).toBe(true);
+
+    // click on the last item in overflow menu where action in 'onClick' is defined
+    await e2e.clickOn(toolbarItemButton(itemsCount - 1));
+
+    // verify focus was moved to button and menu was closed
+    expect(await e2e.isFocused(buttonAfterToolbarId)).toBe(true);
+    expect(await e2e.exists(toolbarMenu)).toBe(false);
   });
 });

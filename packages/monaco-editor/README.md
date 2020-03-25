@@ -56,7 +56,7 @@ Somewhere in a root file for your project (the Fabric projects do this in `index
 ```js
 window.MonacoConfig = {
   baseUrl: '.',
-  useMinified: false
+  useMinified: false,
 };
 ```
 

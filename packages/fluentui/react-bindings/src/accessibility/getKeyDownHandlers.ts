@@ -8,7 +8,7 @@ import { AccessibilityActionHandlers, AccessibilityKeyHandlers } from './types';
 
 const rtlKeyMap = {
   [keyboardKey.ArrowRight]: keyboardKey.ArrowLeft,
-  [keyboardKey.ArrowLeft]: keyboardKey.ArrowRight
+  [keyboardKey.ArrowLeft]: keyboardKey.ArrowRight,
 };
 
 /**
@@ -21,7 +21,7 @@ const rtlKeyMap = {
 const getKeyDownHandlers = (
   componentActionHandlers: AccessibilityActionHandlers,
   behaviorActions: KeyActions,
-  isRtlEnabled?: boolean
+  isRtlEnabled?: boolean,
 ): AccessibilityKeyHandlers => {
   const slotKeyHandlers: AccessibilityKeyHandlers = {};
 
@@ -36,7 +36,8 @@ const getKeyDownHandlers = (
     const handledActions = Object.keys(behaviorSlotActions).filter(actionName => {
       const slotAction = behaviorSlotActions[actionName];
 
-      const actionHasKeyCombinations = Array.isArray(slotAction.keyCombinations) && slotAction.keyCombinations.length > 0;
+      const actionHasKeyCombinations =
+        Array.isArray(slotAction.keyCombinations) && slotAction.keyCombinations.length > 0;
       const actionHandledByComponent = componentHandlerNames.indexOf(actionName) !== -1;
 
       return actionHasKeyCombinations && actionHandledByComponent;
@@ -64,7 +65,7 @@ const getKeyDownHandlers = (
               }
             }
           });
-        }
+        },
       };
     }
   });

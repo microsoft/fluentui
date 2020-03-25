@@ -23,7 +23,7 @@ export class RatingBasicExample extends React.Component<
       smallStarRating: 3,
       tenStarRating: undefined,
       themedStarRating: undefined,
-      customIconStarRating: 2.5
+      customIconStarRating: 2.5,
     };
 
     this._customTheme = createTheme(getTheme());

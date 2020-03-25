@@ -10,7 +10,7 @@ export const ModalStyles = (props: IModalProps): Partial<IModalStyles> => {
   return {
     main: {
       boxShadow: effects.elevation64,
-      borderRadius: effects.roundedCorner2
-    }
+      borderRadius: effects.roundedCorner2,
+    },
   };
 };

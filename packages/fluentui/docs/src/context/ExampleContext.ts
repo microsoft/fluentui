@@ -8,7 +8,7 @@ export type ExampleContextValue = {
 
 const ExampleContext = React.createContext<ExampleContextValue>({
   activeAnchorName: '',
-  onExamplePassed: _.noop
+  onExamplePassed: _.noop,
 });
 
 export default ExampleContext;

@@ -22,10 +22,12 @@ module.exports.startStorybookTask = function startStorybookTask(options) {
     await storybook({
       mode: 'dev',
       staticDir: [path.join(process.cwd(), 'static')],
-      configDir: fs.existsSync(localConfigDir) ? localConfigDir : path.resolve(__dirname, '../../packages/examples/.storybook'),
+      configDir: fs.existsSync(localConfigDir)
+        ? localConfigDir
+        : path.resolve(__dirname, '../../packages/examples/.storybook'),
       port: port || 3000,
       quiet,
-      ci
+      ci,
     });
   };
 };
@@ -46,7 +48,7 @@ module.exports.buildStorybookTask = function buildStorybookTask(options) {
       outputDir: path.join(process.cwd(), 'dist-storybook'),
       quiet,
       port: port || 3000,
-      ci
+      ci,
     });
   };
 };

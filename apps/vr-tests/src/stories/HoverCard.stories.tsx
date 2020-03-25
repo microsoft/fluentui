@@ -17,7 +17,7 @@ const onRenderCardContent = (item: any) => {
 const expandingCardProps = {
   onRenderCompactCard: onRenderCardContent,
   onRenderExpandedCard: onRenderCardContent,
-  renderData: { test: 'Hello World!' }
+  renderData: { test: 'Hello World!' },
 };
 
 storiesOf('HoverCard', module)
@@ -32,7 +32,7 @@ storiesOf('HoverCard', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory(
     'Root',
@@ -45,5 +45,5 @@ storiesOf('HoverCard', module)
         Hover over me
       </HoverCard>
     ),
-    { rtl: true }
+    { rtl: true },
   );

@@ -6,9 +6,9 @@ import { Platforms } from '../../../interfaces/Platforms';
 import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
 const toggleStyles: Partial<IToggleStyles> = {
-  root: { margin: '10px 0' }
+  root: { margin: '10px 0' },
 };
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
 
 export class ButtonPage extends React.Component<
   IControlsPageProps,
@@ -21,7 +21,7 @@ export class ButtonPage extends React.Component<
     super(props);
     this.state = {
       areButtonsDisabled: false,
-      areButtonsChecked: false
+      areButtonsChecked: false,
     };
   }
 
@@ -29,8 +29,20 @@ export class ButtonPage extends React.Component<
     const { areButtonsDisabled, areButtonsChecked } = this.state;
     return (
       <>
-        <Toggle styles={toggleStyles} label="Disable buttons" inlineLabel checked={areButtonsDisabled} onChange={this._onDisabledChanged} />
-        <Toggle styles={toggleStyles} label="Mark as checked" inlineLabel checked={areButtonsChecked} onChange={this._onToggledChanged} />
+        <Toggle
+          styles={toggleStyles}
+          label="Disable buttons"
+          inlineLabel
+          checked={areButtonsDisabled}
+          onChange={this._onDisabledChanged}
+        />
+        <Toggle
+          styles={toggleStyles}
+          label="Mark as checked"
+          inlineLabel
+          checked={areButtonsChecked}
+          onChange={this._onToggledChanged}
+        />
       </>
     );
   }
@@ -56,8 +68,8 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/ios/ButtonImplementation.md',
-            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string
-          }
+            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
+          },
         ];
 
       case 'android':
@@ -65,21 +77,21 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/android/ButtonImplementation.md',
-            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string
-          }
+            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
+          },
         ];
     }
   }
 
   private _onDisabledChanged = (ev: React.MouseEvent<HTMLElement>, disabled: boolean): void => {
     this.setState({
-      areButtonsDisabled: disabled
+      areButtonsDisabled: disabled,
     });
   };
 
   private _onToggledChanged = (ev: React.MouseEvent<HTMLElement>, toggled: boolean): void => {
     this.setState({
-      areButtonsChecked: toggled
+      areButtonsChecked: toggled,
     });
   };
 }

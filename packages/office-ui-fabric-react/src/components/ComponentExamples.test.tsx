@@ -47,7 +47,7 @@ expect.extend({
       // We have to grab global state's _updateSnapshot setting to make sure jest configuration is honored
       snapshotState = new jestSnapshot.SnapshotState(absoluteSnapshotFile, {
         snapshotPath: absoluteSnapshotFile,
-        updateSnapshot: globalSnapshotState._updateSnapshot
+        updateSnapshot: globalSnapshotState._updateSnapshot,
       });
       // and save it to the map for tracking
       snapshotsStateMap.set(absoluteSnapshotFile, snapshotState!);
@@ -57,7 +57,7 @@ expect.extend({
     const patchedToMatchSnapshot = jestSnapshot.toMatchSnapshot.bind(newThis);
 
     return patchedToMatchSnapshot(received);
-  }
+  },
 });
 
 const excludedExampleFiles: string[] = [
@@ -71,7 +71,7 @@ const excludedExampleFiles: string[] = [
   'ExampleHelper.tsx', // Helper file with no actual component
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
-  'HoverCard.InstantDismiss.Example.tsx', // https://github.com/OfficeDev/office-ui-fabric-react/issues/6681
+  'HoverCard.InstantDismiss.Example.tsx', // https://github.com/microsoft/fluentui/issues/6681
   'List.Basic.Example.tsx',
   'List.Ghosting.Example.tsx',
   'List.Grid.Example.tsx',
@@ -80,11 +80,11 @@ const excludedExampleFiles: string[] = [
   'Picker.CustomResult.Example.tsx',
   'ScrollablePane.Default.Example.tsx',
   'ScrollablePane.DetailsList.Example.tsx',
-  'SelectedPeopleList.Basic.Example.tsx'
+  'SelectedPeopleList.Basic.Example.tsx',
 ];
 const excludedExampleFileRegexes: RegExp[] = [
   // Snapshots of these examples are worthless since the component isn't open by default
-  /^Panel\./
+  /^Panel\./,
 ];
 
 declare const global: any;
@@ -196,7 +196,7 @@ describe('Component Examples', () => {
       if (exampleExportNames.length > 1 || typeof ComponentUnderTest !== 'function') {
         throw new Error(
           'Examples should export exactly one React component, and nothing else.\n' +
-            `Found: ${exampleExportNames.map(exp => `${exp} (${typeof exampleModule[exp]})`).join(', ')}`
+            `Found: ${exampleExportNames.map(exp => `${exp} (${typeof exampleModule[exp]})`).join(', ')}`,
         );
       }
 
@@ -210,8 +210,8 @@ describe('Component Examples', () => {
           chalk.red(
             `Failure rendering ${exampleExportNames[0]} (from ${examplePath}) as a React component.\n` +
               'Example files must export exactly one React component, and nothing else.\n' +
-              '(This error may also occur if an exception is thrown while rendering the example component.)'
-          )
+              '(This error may also occur if an exception is thrown while rendering the example component.)',
+          ),
         );
         throw e;
       }

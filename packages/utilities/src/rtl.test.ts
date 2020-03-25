@@ -71,7 +71,7 @@ describe('getRTL', () => {
     jest.spyOn(DOM, 'getDocument').mockImplementation(() => {
       return {
         documentElement: document.documentElement,
-        body: null
+        body: null,
       };
     });
 

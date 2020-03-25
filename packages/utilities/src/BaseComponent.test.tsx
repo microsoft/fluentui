@@ -7,6 +7,7 @@ import { BaseComponent } from './BaseComponent';
 
 describe('BaseComponent', () => {
   it('can resolve refs', () => {
+    // tslint:disable-next-line:deprecation
     class Foo extends BaseComponent<{}, {}> {
       public root: HTMLElement;
 
@@ -17,7 +18,7 @@ describe('BaseComponent', () => {
     }
 
     let component = ReactTestUtils.renderIntoDocument(
-      <Foo />
+      <Foo />,
       // tslint:disable-next-line:no-any
     ) as any;
 

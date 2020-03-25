@@ -3,7 +3,7 @@ import { classNamesFunction, css } from '../../../Utilities';
 import {
   IFloatingSuggestionsListStyleProps,
   IFloatingSuggestionsListStyle,
-  IFloatingSuggestionsListProps
+  IFloatingSuggestionsListProps,
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
@@ -47,7 +47,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
       removeItemAriaLabel,
       showSuggestionRemoveButton,
       suggestionsContainerAriaLabel,
-      onSuggestionRemove
+      onSuggestionRemove,
     } = props;
 
     return (
@@ -81,7 +81,11 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
   return (
     <div className={css(classNames.root, className ? className : '')} ari-label={ariaLabel}>
       {renderHeader()}
-      {hasNoSuggestions ? (onRenderNoResultFound ? onRenderNoResultFound(undefined, noResults) : noResults()) : renderSuggestions()}
+      {hasNoSuggestions
+        ? onRenderNoResultFound
+          ? onRenderNoResultFound(undefined, noResults)
+          : noResults()
+        : renderSuggestions()}
       {renderFooter()}
     </div>
   );

@@ -10,7 +10,7 @@ const scenarioNames = {
   SplitButtonNew: 'SplitButton (experiments)',
   StackWithIntrinsicChildren: 'Stack with Intrinsic children',
   StackWithTextChildren: 'Stack with Text children',
-  ToggleNew: 'Toggle (experiments)'
+  ToggleNew: 'Toggle (experiments)',
 };
 
 module.exports = scenarioNames;

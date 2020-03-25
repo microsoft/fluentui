@@ -9,9 +9,9 @@ import { Accessibility } from '../../types';
 const toolbarMenuRadioGroupBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'group'
-    }
-  }
+      role: 'group',
+    },
+  },
 });
 
 export type ToolbarMenuRadioGroupBehaviorProps = never;

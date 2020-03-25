@@ -14,40 +14,40 @@ export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonSt
     selectors: {
       ':hover': {
         backgroundColor: palette.neutralLighter,
-        color: palette.neutralSecondary
+        color: palette.neutralSecondary,
       },
       ':active': {
         backgroundColor: palette.neutralLight,
-        color: palette.neutralSecondary
+        color: palette.neutralSecondary,
       },
       '.ms-Button-icon': {
-        fontSize: 8 // following the redlines even though we don't have this size in our type ramp.
-      }
-    }
+        fontSize: 8, // following the redlines even though we don't have this size in our type ramp.
+      },
+    },
   };
 
   return {
     spinButtonWrapper: {
       borderRadius: effects.roundedCorner2,
-      borderColor: palette.neutralSecondaryAlt
+      borderColor: palette.neutralSecondaryAlt,
     },
     input: {
       padding: '0 8px',
       width: `calc(100% - ${SPIN_BUTTON_WIDTH}px)`, // -23px because buttons width changed
-      borderRadius: `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
+      borderRadius: `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`,
     },
     arrowButtonsContainer: {
       selectors: {
         // No direct style section available so need to target a global className
         '.ms-DownButton': {
           ...buttonStyles,
-          borderRadius: `0 0 ${effects.roundedCorner2} 0`
+          borderRadius: `0 0 ${effects.roundedCorner2} 0`,
         },
         '.ms-UpButton': {
           ...buttonStyles,
-          borderRadius: `0 ${effects.roundedCorner2} 0 0`
-        }
-      }
-    }
+          borderRadius: `0 ${effects.roundedCorner2} 0 0`,
+        },
+      },
+    },
   };
 };

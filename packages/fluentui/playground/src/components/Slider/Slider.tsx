@@ -26,5 +26,5 @@ none of this! They have css. The site can apply style overrides and tokens.
 export const Slider = compose(SliderBase, {
   name: 'Slider',
   styles,
-  tokens
+  tokens,
 });

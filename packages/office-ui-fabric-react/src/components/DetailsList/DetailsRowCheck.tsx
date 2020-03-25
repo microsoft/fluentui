@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps, IDetailsCheckboxProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
+import {
+  IDetailsRowCheckProps,
+  IDetailsCheckboxProps,
+  IDetailsRowCheckStyleProps,
+  IDetailsRowCheckStyles,
+} from './DetailsRowCheck.types';
 import { css, styled, classNamesFunction } from '../../Utilities';
 import { Check } from '../../Check';
 import { getStyles } from './DetailsRowCheck.styles';
@@ -38,12 +43,12 @@ const DetailsRowCheckBase: React.FunctionComponent<IDetailsRowCheckProps> = prop
     className,
     isHeader,
     isVisible,
-    compact
+    compact,
   });
 
   const detailsCheckboxProps: IDetailsCheckboxProps = {
     checked: selected,
-    theme
+    theme,
   };
 
   return canSelect ? (
@@ -81,5 +86,5 @@ export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckSty
   getStyles,
   undefined,
   { scope: 'DetailsRowCheck' },
-  true
+  true,
 );

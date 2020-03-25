@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert, Button, Flex, MenuButton } from '@fluentui/react';
+import { Alert, Button, Flex, MenuButton } from '@fluentui/react-northstar';
 
 class MenuButtonExampleOn extends React.Component {
   state = { alert: false };
@@ -34,7 +34,9 @@ class MenuButtonExampleOn extends React.Component {
             on="context"
           />
         </Flex>
-        {this.state.alert && <Alert warning content="Right, you can still click the button! Right click opens the MenuButton." />}
+        {this.state.alert && (
+          <Alert warning content="Right, you can still click the button! Right click opens the MenuButton." />
+        )}
       </>
     );
   }
