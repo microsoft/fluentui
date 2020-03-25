@@ -93,13 +93,13 @@ packages/office-ui-fabric-react/src/components/CommandBar/ @micahgodbolt @josche
 packages/office-ui-fabric-react/src/components/ContextualMenu/ @joschect
 packages/office-ui-fabric-react/src/components/DatePicker/ @lorejoh
 packages/office-ui-fabric-react/src/components/DetailsList/ @KevinTCoughlin
-# packages/office-ui-fabric-react/src/components/Dialog/
+packages/office-ui-fabric-react/src/components/Dialog/ @joschect
 packages/office-ui-fabric-react/src/components/DocumentCard/ @yiminwu
 packages/office-ui-fabric-react/src/components/Dropdown/ @joschect
 packages/office-ui-fabric-react/src/components/Fabric/ @dzearing
 packages/office-ui-fabric-react/src/components/Facepile/ @markionium @mtennoe
 packages/office-ui-fabric-react/src/components/FolderCover/ @ThomasMichon @bigbadcapers
-# packages/office-ui-fabric-react/src/components/FocusTrapZone/
+packages/office-ui-fabric-react/src/components/FocusTrapZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/FocusZone/ @khmakoto
 packages/react-focus/src/components/FocusZone/ @khmakoto
 packages/office-ui-fabric-react/src/components/GroupedList/  @aditima @KevinTCoughlin
@@ -112,7 +112,7 @@ packages/office-ui-fabric-react/src/components/Link/ @khmakoto
 packages/office-ui-fabric-react/src/components/List/ @KevinTCoughlin
 packages/office-ui-fabric-react/src/components/MarqueeSelection/ @dzearing
 packages/office-ui-fabric-react/src/components/MessageBar/ @ecraig12345
-# packages/office-ui-fabric-react/src/components/Modal/
+packages/office-ui-fabric-react/src/components/Modal/ @joschect
 packages/office-ui-fabric-react/src/components/Nav/ @jdhuntington
 packages/office-ui-fabric-react/src/components/OverflowSet/ @micahgodbolt
 packages/office-ui-fabric-react/src/components/Overlay/ @aneeshack4
@@ -123,7 +123,7 @@ packages/office-ui-fabric-react/src/components/PersonaCoin/ @mtennoe @markionium
 packages/office-ui-fabric-react/src/components/Persona/PersonaConsts.tsx @mtennoe
 packages/office-ui-fabric-react/src/components/pickers/  @joschect
 packages/office-ui-fabric-react/src/components/Pivot/ @jdhuntington
-# packages/office-ui-fabric-react/src/components/Popup/
+packages/office-ui-fabric-react/src/components/Popup/ @joschect
 packages/office-ui-fabric-react/src/components/ProgressIndicator/ @aneeshack4
 packages/office-ui-fabric-react/src/components/Rating/ @jdhuntington
 packages/office-ui-fabric-react/src/components/ResizeGroup/ @micahgodbolt
@@ -139,7 +139,7 @@ packages/office-ui-fabric-react/src/components/SwatchColorPicker/ @ecraig12345
 packages/office-ui-fabric-react/src/components/TeachingBubble/ @micahgodbolt
 packages/office-ui-fabric-react/src/components/Text/ @natalieethell
 packages/office-ui-fabric-react/src/components/TextField/ @ecraig12345
-# packages/office-ui-fabric-react/src/components/Theme/
+packages/office-ui-fabric-react/src/components/Theme/ @dzearing
 packages/office-ui-fabric-react/src/components/Tile/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/TileList/ @ThomasMichon
 packages/office-ui-fabric-react/src/components/Toggle/  @phkuo
