@@ -5,9 +5,9 @@ import {
   DirectionalHint,
   Dropdown,
   IDropdownOption,
-  getTheme,
   mergeStyleSets,
   FontWeights,
+  Text,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutCoverExampleState {
@@ -32,7 +32,6 @@ const DIRECTION_OPTIONS = [
   { key: DirectionalHint.rightBottomEdge, text: 'Right Bottom Edge' },
 ];
 
-const theme = getTheme();
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -53,7 +52,6 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -110,7 +108,9 @@ export class CalloutCoverExample extends React.Component<{}, ICalloutCoverExampl
             setInitialFocus={true}
           >
             <div className={styles.header}>
-              <p className={styles.title}>I'm covering the target!</p>
+              <Text variant={'xLarge'} className={styles.title}>
+                I'm covering the target!
+              </Text>
             </div>
             <div className={styles.inner}>
               <DefaultButton onClick={this._onShowMenuClicked} text="Click to dismiss" />

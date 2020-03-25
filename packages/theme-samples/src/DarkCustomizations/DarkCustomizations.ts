@@ -3,11 +3,10 @@ import {
   ICustomizations,
   IPalette,
   ITheme,
-  IPeoplePickerItemSelectedStyleProps,
-  IPeoplePickerItemSelectedStyles,
   IPersonaCoinStyleProps,
   IPersonaCoinStyles,
 } from 'office-ui-fabric-react';
+import { DatePickerStyles, PeoplePickerItemStyles } from './styles';
 import { addVariants } from '@uifabric/variants';
 
 const DarkDefaultPalette: Partial<IPalette> = {
@@ -37,7 +36,7 @@ const DarkDefaultPalette: Partial<IPalette> = {
   redDark: '#F1707B',
 };
 
-const DarkTheme: ITheme = createTheme({
+export const DarkTheme: ITheme = createTheme({
   palette: DarkDefaultPalette,
   semanticColors: {
     buttonText: DarkDefaultPalette.black,
@@ -64,78 +63,21 @@ export const PersonaCoinStyles = (props: IPersonaCoinStyleProps): Partial<IPerso
   };
 };
 
-export const PeoplePickerItemStyles = (
-  props: IPeoplePickerItemSelectedStyleProps,
-): Partial<IPeoplePickerItemSelectedStyles> => {
-  const { selected } = props;
-
-  return {
-    root: [
-      {
-        background: DarkTheme.palette.neutralQuaternaryAlt,
-        selectors: {
-          ':hover': {
-            background: DarkTheme.palette.neutralQuaternary,
-          },
-        },
-      },
-      selected && {
-        backgroundColor: DarkTheme.palette.themeSecondary,
-        selectors: {
-          ':hover': {
-            background: DarkTheme.palette.themeSecondary,
-          },
-        },
-      },
-    ],
-    removeButton: [
-      {
-        background: DarkTheme.palette.neutralQuaternaryAlt,
-        color: DarkTheme.palette.neutralDark,
-        selectors: {
-          ':hover': {
-            background: DarkTheme.palette.neutralQuaternary,
-            color: DarkTheme.palette.black,
-          },
-        },
-      },
-      selected && {
-        background: DarkTheme.palette.themeSecondary,
-        selectors: {
-          ':hover': {
-            background: DarkTheme.palette.themeDark,
-          },
-          ':active': {
-            color: DarkTheme.palette.black,
-          },
-        },
-      },
-    ],
-    subComponentStyles: {
-      persona: {
-        primaryText: [
-          {
-            color: DarkTheme.palette.neutralPrimary,
-          },
-          selected && {
-            color: DarkTheme.palette.black,
-            selectors: {
-              ':hover': {
-                color: DarkTheme.palette.black,
-              },
-            },
-          },
-        ],
-      },
-    },
-  };
-};
-
 export const DarkCustomizations: ICustomizations = {
   settings: {
     theme: DarkTheme,
   },
   scopedSettings: {
+    Card: {
+      styles: {
+        root: {
+          background: DarkTheme.palette.neutralLighter,
+        },
+      },
+    },
+    DatePicker: {
+      styles: DatePickerStyles,
+    },
     DetailsList: {
       styles: {
         headerWrapper: {

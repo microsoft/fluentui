@@ -5,9 +5,9 @@ import {
   Stack,
   FocusZone,
   PrimaryButton,
-  getTheme,
   mergeStyleSets,
   FontWeights,
+  Text,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutFocusTrapExampleState {
@@ -15,7 +15,6 @@ export interface ICalloutFocusTrapExampleState {
 }
 
 // Themed styles for the example.
-const theme = getTheme();
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -32,7 +31,6 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -54,7 +52,6 @@ const styles = mergeStyleSets({
     padding: '0 24px 24px',
   },
   subtext: [
-    theme.fonts.small,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -91,13 +88,15 @@ export class CalloutFocusTrapExample extends React.Component<{}, ICalloutFocusTr
               setInitialFocus={true}
             >
               <div className={styles.header}>
-                <p className={styles.title}>Callout title here</p>
+                <Text variant="xLarge" className={styles.title}>
+                  Callout title here
+                </Text>
               </div>
               <div className={styles.inner}>
                 <div>
-                  <p className={styles.subtext}>
+                  <Text variant="small" className={styles.subtext}>
                     Content is wrapped in a FocusTrapZone so that user cannot accidently tab out of this callout.
-                  </p>
+                  </Text>
                 </div>
               </div>
               <FocusZone>

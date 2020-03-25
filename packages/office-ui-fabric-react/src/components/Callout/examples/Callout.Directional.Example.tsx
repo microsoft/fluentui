@@ -12,6 +12,7 @@ import {
   FontWeights,
   Link,
   getId,
+  Text,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutDirectionalExampleState {
@@ -63,7 +64,6 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px',
   },
   title: [
-    theme.fonts.xLarge,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -74,7 +74,6 @@ const styles = mergeStyleSets({
     padding: '0 24px 20px',
   },
   subtext: [
-    theme.fonts.small,
     {
       margin: 0,
       fontWeight: FontWeights.semilight,
@@ -157,15 +156,15 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
             setInitialFocus={true}
           >
             <div className={styles.header}>
-              <p className={styles.title} id={this._labelId}>
+              <Text variant="xLarge" className={styles.title} id={this._labelId}>
                 All of your favorite people
-              </p>
+              </Text>
             </div>
             <div className={styles.inner}>
-              <p className={styles.subtext} id={this._descriptionId}>
+              <Text variant="small" className={styles.subtext} id={this._descriptionId}>
                 Message body is optional. If help documentation is available, consider adding a link to learn more at
                 the bottom.
-              </p>
+              </Text>
               <div className={styles.actions}>
                 <Link className={styles.link} href="http://microsoft.com" target="_blank">
                   Go to Microsoft

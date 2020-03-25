@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { DefaultButton, Callout, Link, getTheme, FontWeights, mergeStyleSets, getId } from 'office-ui-fabric-react';
+import {
+  DefaultButton,
+  Callout,
+  Link,
+  getTheme,
+  FontWeights,
+  mergeStyleSets,
+  getId,
+  Text,
+} from 'office-ui-fabric-react';
 
 export interface ICalloutBasicExampleState {
   isCalloutVisible?: boolean;
@@ -86,15 +95,15 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
             setInitialFocus={true}
           >
             <div className={styles.header}>
-              <p className={styles.title} id={this._labelId}>
+              <Text variant={'large'} className={styles.title} id={this._labelId}>
                 All of your favorite people
-              </p>
+              </Text>
             </div>
             <div className={styles.inner}>
-              <p className={styles.subtext} id={this._descriptionId}>
+              <Text variant={'small'} className={styles.subtext} id={this._descriptionId}>
                 Message body is optional. If help documentation is available, consider adding a link to learn more at
                 the bottom.
-              </p>
+              </Text>
               <div className={styles.actions}>
                 <Link className={styles.link} href="http://microsoft.com" target="_blank">
                   Go to microsoft
