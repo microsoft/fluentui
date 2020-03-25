@@ -75,7 +75,7 @@ export interface ISemanticTextColors {
   warningText: string;
 
   /**
-   * The default color of text on a severeWarning background.
+   * The default color of text on a severeWarningBackground.
    */
   severeWarningText: string;
 
