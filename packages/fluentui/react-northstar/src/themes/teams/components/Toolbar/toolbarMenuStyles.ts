@@ -1,6 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getColorScheme } from '../../colors';
 import { ToolbarMenuStylesProps } from '../../../../components/Toolbar/ToolbarMenu';
+import initialPopperStyles from '../../../../utils/positioner/initialStyles';
 import { ToolbarVariables } from './toolbarVariables';
 
 const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesProps, ToolbarVariables> = {
@@ -8,6 +9,8 @@ const toolbarMenuStyles: ComponentSlotStylesPrepared<ToolbarMenuStylesProps, Too
     const colors = getColorScheme(v.colorScheme);
 
     return {
+      ...(initialPopperStyles as ICSSInJSStyle),
+
       display: 'flex',
       flexDirection: 'column',
       listStyleType: 'none',

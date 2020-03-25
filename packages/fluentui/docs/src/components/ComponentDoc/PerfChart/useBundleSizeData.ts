@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import PerfDataContext from './PerfDataContext';
 
-const usePerfData = (filter?: string) => {
+const useBundleSizeData = (filter?: string) => {
   const { loading, error, data = [] } = React.useContext(PerfDataContext);
 
   if (loading || error) {
@@ -11,11 +11,11 @@ const usePerfData = (filter?: string) => {
 
   const filteredData = filter
     ? data
-        .filter(entry => _.get(entry, `performance.${filter}`))
+        .filter(entry => _.get(entry, `bundleSize.${filter}`))
         .map(entry => ({
           ...entry,
-          performance: { [filter]: entry.performance[filter] },
-          bundleSize: undefined,
+          bundleSize: { [filter]: entry.bundleSize[filter] },
+          performance: undefined,
         }))
     : data;
 
@@ -30,4 +30,4 @@ const usePerfData = (filter?: string) => {
   };
 };
 
-export default usePerfData;
+export default useBundleSizeData;
