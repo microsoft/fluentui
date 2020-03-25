@@ -72,21 +72,21 @@ export default ((Component: React.ComponentType) => {
 
     if (options.implementsPopper) {
       describe('implements all positioning props for Popper', () => {
-        Object.keys(positioningProps).forEach((positioningProp: keyof PositioningProps) => {
+        Object.entries(positioningProps).forEach(([positioningProp, positioningValue]) => {
           test(`"${positioningProp}" is passed to a Popper component`, () => {
             const wrapper = mount(
               React.createElement(Component, {
                 ...options.requiredProps,
                 [shorthandProp]: {
                   ...options.requiredShorthandProps,
-                  popper: { [positioningProp]: positioningProps[positioningProp] },
+                  popper: { [positioningProp]: positioningValue },
                 },
               }),
             );
             // Popper will be a parent of shorthand
             const popper = wrapper.find(ShorthandComponent).closest(Popper);
 
-            expect(popper.prop(positioningProp)).toBe(positioningProps[positioningProp]);
+            expect(popper.prop(positioningProp)).toBe(positioningValue);
           });
         });
       });

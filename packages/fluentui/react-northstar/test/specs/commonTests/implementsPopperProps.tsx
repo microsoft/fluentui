@@ -17,17 +17,17 @@ export const positioningProps: Required<PositioningProps> = {
 
 function implementsPopperProps<P>(Component: React.ComponentType<P>, options: ImplementsPopperPropsOptions<P> = {}) {
   describe('implements all positioning props for Popper', () => {
-    Object.keys(positioningProps).forEach((positioningProp: keyof PositioningProps) => {
+    Object.entries(positioningProps).forEach(([positioningProp, positioningValue]) => {
       test(`"${positioningProp}" is passed to a Popper component`, () => {
         const wrapper = mount(
           React.createElement(Component, {
             ...(options.requiredProps as P),
-            [positioningProp]: positioningProps[positioningProp],
+            [positioningProp]: positioningValue,
           }),
         );
         const popper = wrapper.find(Popper);
 
-        expect(popper.prop(positioningProp)).toBe(positioningProps[positioningProp]);
+        expect(popper.prop(positioningProp)).toBe(positioningValue);
       });
     });
   });
