@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Frame, { FrameContextConsumer } from 'react-frame-component';
 
-import { DebugSelector, Provider, themes } from '@fluentui/react';
+import { DebugSelector, Provider, themes } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindOwnerInJSONTree, fiberNavToJSONTreeElement, renderJSONTreeToJSXElement } from '../config';
@@ -13,7 +13,7 @@ const Canvas = ({
   jsonTree,
   onMouseMove,
   onMouseUp,
-  onSelectComponent
+  onSelectComponent,
 }: {
   style?: React.CSSProperties;
   jsonTree: JSONTreeElement;
@@ -27,7 +27,7 @@ const Canvas = ({
       `frame-${Math.random()
         .toString(36)
         .slice(2)}`,
-    []
+    [],
   );
 
   const handleMouseMove = React.useCallback(
@@ -37,10 +37,10 @@ const Canvas = ({
 
       onMouseMove({
         clientX: $iframe.offsetLeft + e.clientX,
-        clientY: $iframe.offsetTop + e.clientY
+        clientY: $iframe.offsetTop + e.clientY,
       });
     },
-    [onMouseMove]
+    [onMouseMove],
   );
 
   const handleMouseUp = React.useCallback(
@@ -52,7 +52,7 @@ const Canvas = ({
 
       onMouseUp();
     },
-    [onMouseUp]
+    [onMouseUp],
   );
 
   const handleSelectComponent = React.useCallback(
@@ -61,7 +61,7 @@ const Canvas = ({
 
       onSelectComponent(fiberNavToJSONTreeElement(fiberNav));
     },
-    [onSelectComponent]
+    [onSelectComponent],
   );
 
   return (

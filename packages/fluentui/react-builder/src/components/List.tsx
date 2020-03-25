@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Menu, MenuItemProps } from '@fluentui/react';
+import { Box, Menu, MenuItemProps } from '@fluentui/react-northstar';
 import { ComponentInfo } from '@fluentui/docs/src/types';
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
 import { DRAGGING_PROPS, EXCLUDED_COMPONENTS, resolveComponent, resolveDraggingProps } from '../config';
@@ -9,7 +9,7 @@ export type ListDisplayModes = 'Display Name' | 'Rendered';
 
 const List = ({
   onDragStart,
-  style
+  style,
 }: {
   onDragStart?: (componentInfo: ComponentInfo, e: MouseEvent) => any;
   style?: React.CSSProperties;
@@ -20,7 +20,7 @@ const List = ({
     componentInfo => e => {
       if (onDragStart) onDragStart(componentInfo, e);
     },
-    []
+    [],
   );
 
   const [supportedComponents, unsupportedComponents] = _.partition(componentInfoContext.parents, ({ displayName }) => {
@@ -32,7 +32,7 @@ const List = ({
       style={{
         ...style,
         boxShadow: '1px 0px 3px rgba(0, 0, 0, 0.2)',
-        userSelect: 'none'
+        userSelect: 'none',
       }}
     >
       <Menu
@@ -42,12 +42,12 @@ const List = ({
         items={[
           {
             key: 'Display Name',
-            content: 'Display Name'
+            content: 'Display Name',
           },
           {
             key: 'rendered',
-            content: 'Rendered'
-          }
+            content: 'Rendered',
+          },
         ]}
         defaultActiveIndex={0}
         onItemClick={(e, props: MenuItemProps & { content: ListDisplayModes }) => {
@@ -64,10 +64,10 @@ const List = ({
             cursor: 'pointer',
             ':hover': {
               background: '#ddd',
-              borderLeft: '2px solid #000'
+              borderLeft: '2px solid #000',
             },
             borderLeft: '2px solid transparent',
-            marginLeft: '2px'
+            marginLeft: '2px',
           }}
         >
           {displayMode === 'Rendered' && (
@@ -88,7 +88,7 @@ const List = ({
           styles={{
             padding: '0.2em 0.5em',
             background: '#eee',
-            color: '#888'
+            color: '#888',
           }}
         >
           {info.displayName}
@@ -99,7 +99,7 @@ const List = ({
 };
 
 List.defaultProps = {
-  displayMode: 'rendered'
+  displayMode: 'rendered',
 };
 
 export default List;

@@ -1,11 +1,19 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Divider, Header, Slider } from '@fluentui/react';
+import { Divider, Header, Slider } from '@fluentui/react-northstar';
 import { ComponentInfo } from '@fluentui/docs/src/types';
 import { JSONTreeElement } from './types';
 
 const designUnit = 4;
-const sizeRamp = [designUnit * 0, designUnit * 0.5, designUnit * 1, designUnit * 2, designUnit * 4, designUnit * 8, designUnit * 12];
+const sizeRamp = [
+  designUnit * 0,
+  designUnit * 0.5,
+  designUnit * 1,
+  designUnit * 2,
+  designUnit * 4,
+  designUnit * 8,
+  designUnit * 12,
+];
 
 const knobs = [
   { kind: 'divider', label: 'Position' },
@@ -38,13 +46,21 @@ const knobs = [
   { kind: 'slider', label: 'minHeight', ramp: sizeRamp },
 
   { kind: 'slider', label: 'maxWidth', ramp: sizeRamp },
-  { kind: 'slider', label: 'maxHeight', ramp: sizeRamp }
+  { kind: 'slider', label: 'maxHeight', ramp: sizeRamp },
 ];
 
 const rowStyle = { padding: '0.1rem 0.25rem' };
 
 type DesignKnobProps = {
-  onPropChange: ({ jsonTreeElement, name, value }: { jsonTreeElement: JSONTreeElement; name: string; value: number }) => void;
+  onPropChange: ({
+    jsonTreeElement,
+    name,
+    value,
+  }: {
+    jsonTreeElement: JSONTreeElement;
+    name: string;
+    value: number;
+  }) => void;
   info: ComponentInfo;
   jsonTreeElement: JSONTreeElement;
 };
@@ -61,7 +77,8 @@ const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement 
           return null;
         }
 
-        const printed = type === 'function' ? 'Function' : type === 'object' && type !== null ? '{}' : JSON.stringify(val, null, 2);
+        const printed =
+          type === 'function' ? 'Function' : type === 'object' && type !== null ? '{}' : JSON.stringify(val, null, 2);
 
         return (
           <div key={name}>
@@ -91,7 +108,7 @@ const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement 
                   min={0}
                   max={knob.ramp.length - 1}
                   {...(value && {
-                    value: jsonTreeElement.props.design[knob.label]
+                    value: jsonTreeElement.props.design[knob.label],
                   })}
                   onChange={(e, data) => {
                     onPropChange({ jsonTreeElement: jsonTreeElement, name: knob.label, value: knob.ramp[+data.value] });

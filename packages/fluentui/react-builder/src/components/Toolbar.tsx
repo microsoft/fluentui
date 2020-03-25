@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Checkbox } from '@fluentui/react';
+import { Button, Checkbox } from '@fluentui/react-northstar';
 import Logo from '@fluentui/docs/src/components/Logo/Logo';
 import { DesignerMode } from './types';
 
@@ -11,7 +11,7 @@ const Toolbar = ({
   onShowJSONTreeChange,
   mode,
   showCode,
-  showJSONTree
+  showJSONTree,
 }: {
   style?: React.CSSProperties;
   onReset: () => void;
@@ -28,7 +28,7 @@ const Toolbar = ({
       padding: '0 1rem',
       alignItems: 'center',
       boxShadow: '0 1px 3px rgba(0, 0, 0, 0.25)',
-      ...style
+      ...style,
     }}
   >
     <Logo styles={{ height: '1.5rem', marginRight: '0.25rem' }} />
@@ -37,13 +37,28 @@ const Toolbar = ({
       <div style={{ fontSize: '11px', lineHeight: 1, opacity: 0.625, textAlign: 'right' }}>builder</div>
     </div>
     &emsp;
-    <Checkbox label="Preview" toggle checked={mode === 'use'} onChange={(e, data) => onModeChange(data.checked ? 'use' : 'build')} />
+    <Checkbox
+      label="Preview"
+      toggle
+      checked={mode === 'use'}
+      onChange={(e, data) => onModeChange(data.checked ? 'use' : 'build')}
+    />
     {mode === 'build' && (
       <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
         &emsp;
-        <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
+        <Checkbox
+          label="Show Code"
+          toggle
+          checked={!!showCode}
+          onChange={(e, data) => onShowCodeChange(data.checked)}
+        />
         &emsp;
-        <Checkbox label="Show JSON" toggle checked={!!showJSONTree} onChange={(e, data) => onShowJSONTreeChange(data.checked)} />
+        <Checkbox
+          label="Show JSON"
+          toggle
+          checked={!!showJSONTree}
+          onChange={(e, data) => onShowJSONTreeChange(data.checked)}
+        />
         &emsp;
         <div>
           <code>
