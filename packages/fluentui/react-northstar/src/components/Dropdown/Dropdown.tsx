@@ -956,7 +956,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       newState.searchQuery !== undefined && 'onSearchQueryChange',
     ].filter(Boolean) as (keyof DropdownProps)[];
 
-    console.log(type, newState);
     this.setStateAndInvokeHandler(handlers, null, newState);
   };
 
