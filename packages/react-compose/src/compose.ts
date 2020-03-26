@@ -7,25 +7,22 @@ const defaultComposeOptions: ComposePreparedOptions = {
 
   mapPropsToStylesPropsChain: [],
 
-  handledProps: [],
+  handledProps: [] as never[],
   overrideStyles: false,
 };
 
 function computeDisplayNames<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
-  options: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>,
-  inputDisplayName?: string,
-  inputOptions?: ComposePreparedOptions,
+  inputOptions: ComposePreparedOptions,
+  composeOptions: ComposeOptions<InputProps, InputStylesProps, ParentStylesProps>,
 ): string[] {
-  if (options.overrideStyles) {
-    return [options.displayName || inputDisplayName].filter(Boolean) as string[];
+  if (composeOptions.overrideStyles) {
+    return [composeOptions.displayName].filter(Boolean) as string[];
   }
 
   // To support styles composition we need to properly pick up display names
-  if (inputOptions) {
-    return options.displayName ? inputOptions.displayNames.concat(options.displayName) : inputOptions.displayNames;
-  }
-
-  return [inputDisplayName, options.displayName].filter(Boolean) as string[];
+  return composeOptions.displayName
+    ? inputOptions.displayNames.concat(composeOptions.displayName)
+    : inputOptions.displayNames;
 }
 
 function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
@@ -39,13 +36,16 @@ function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
     ParentStylesProps
   >;
 
-  const inputOptions: ComposePreparedOptions = InputComponent.fluentComposeConfig || defaultComposeOptions;
+  const inputOptions: ComposePreparedOptions = InputComponent.fluentComposeConfig || {
+    ...defaultComposeOptions,
+    ...(InputComponent.displayName && { displayNames: [InputComponent.displayName] }),
+  };
   const { handledProps = [], mapPropsToStylesProps } = composeOptions;
 
   Component.displayName = composeOptions.displayName || InputComponent.displayName;
   Component.fluentComposeConfig = {
     className: composeOptions.className || inputOptions.className,
-    displayNames: computeDisplayNames(composeOptions, InputComponent.displayName, inputOptions),
+    displayNames: computeDisplayNames(inputOptions, composeOptions),
 
     mapPropsToStylesPropsChain: (mapPropsToStylesProps
       ? [...inputOptions.mapPropsToStylesPropsChain, mapPropsToStylesProps]
