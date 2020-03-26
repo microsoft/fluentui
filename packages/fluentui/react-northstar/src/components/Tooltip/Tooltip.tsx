@@ -24,7 +24,7 @@ import {
   ALIGNMENTS,
   POSITIONS,
   Popper,
-  BasicPositioningProps,
+  PositioningProps,
   PopperChildrenProps,
   Alignment,
   Position,
@@ -40,7 +40,7 @@ export interface TooltipProps
   extends StyledComponentProps<TooltipProps>,
     ChildrenComponentProps<React.ReactElement>,
     ContentComponentProps<ShorthandValue<TooltipContentProps>>,
-    BasicPositioningProps {
+    PositioningProps {
   /**
    * Accessibility behavior if overridden by the user.
    * @default tooltipBehavior
@@ -69,16 +69,6 @@ export interface TooltipProps
    * @param data - All props and proposed value.
    */
   onOpenChange?: (e: React.MouseEvent | React.FocusEvent | React.KeyboardEvent, data: TooltipProps) => void;
-
-  /**
-   * Offset value to apply to rendered component. Accepts the following units:
-   * - px or unit-less, interpreted as pixels
-   * - %, percentage relative to the length of the trigger element
-   * - %p, percentage relative to the length of the component element
-   * - vw, CSS viewport width unit
-   * - vh, CSS viewport height unit
-   */
-  offset?: string;
 
   /** A tooltip can show a pointer to trigger. */
   pointing?: boolean;
@@ -118,8 +108,10 @@ const Tooltip: React.FC<TooltipProps> &
     offset,
     pointing,
     position,
+    positionFixed,
     target,
     trigger,
+    unstable_pinned,
   } = props;
 
   const [open, setOpen] = useAutoControlled({
@@ -242,10 +234,12 @@ const Tooltip: React.FC<TooltipProps> &
           align={align}
           offset={offset}
           position={position}
+          positionFixed={positionFixed}
           enabled={open}
           rtl={context.rtl}
           targetRef={target || triggerRef}
           children={renderPopperChildren}
+          unstable_pinned={unstable_pinned}
         />
       </PortalInner>
     </>
@@ -284,9 +278,11 @@ Tooltip.propTypes = {
   onOpenChange: PropTypes.func,
   pointing: PropTypes.bool,
   position: PropTypes.oneOf<Position>(POSITIONS),
+  positionFixed: PropTypes.bool,
   target: customPropTypes.domNode,
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
+  unstable_pinned: PropTypes.bool,
 };
 Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 

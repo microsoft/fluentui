@@ -1,10 +1,16 @@
 import { Accessibility, menuItemAsToolbarButtonBehavior, tabBehavior } from '@fluentui/accessibility';
 import * as React from 'react';
 
-import { isConformant, handlesAccessibility, getRenderedAttribute } from 'test/specs/commonTests';
+import {
+  isConformant,
+  handlesAccessibility,
+  getRenderedAttribute,
+  implementsShorthandProp,
+} from 'test/specs/commonTests';
 import { mountWithProviderAndGetComponent } from 'test/utils';
 import MenuItem from 'src/components/Menu/MenuItem';
 import Box from 'src/components/Box/Box';
+import Menu from 'src/components/Menu/Menu';
 
 describe('MenuItem', () => {
   isConformant(MenuItem, {
@@ -13,6 +19,10 @@ describe('MenuItem', () => {
     },
     wrapperComponent: Box,
     autoControlledProps: ['menuOpen'],
+  });
+  implementsShorthandProp(MenuItem)('menu', Menu, {
+    implementsPopper: true,
+    requiredProps: { active: true, menuOpen: true },
   });
 
   it('content renders as `li > a`', () => {
