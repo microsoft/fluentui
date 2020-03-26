@@ -41,7 +41,14 @@ import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
-import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
+import {
+  ALIGNMENTS,
+  POSITIONS,
+  Popper,
+  PositioningProps,
+  PopperShorthandProps,
+  getPopperPropsFromShorthand,
+} from '../../utils/positioner';
 import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
@@ -137,7 +144,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
   /** A slot for dropdown list. */
-  list?: ShorthandValue<ListProps>;
+  list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
 
   /** A dropdown can show that it is currently loading data. */
   loading?: boolean;
@@ -434,12 +441,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       <ElementType className={classes.root} onChange={this.handleChange} {...unhandledProps}>
         <Downshift
           isOpen={open}
-          onChange={this.handleSelectedChange}
-          onInputValueChange={this.handleSearchQueryChange}
           inputValue={search ? searchQuery : null}
-          stateReducer={this.handleDownshiftStateChanges}
+          stateReducer={this.downshiftStateReducer}
           itemToString={itemToString}
-          selectedItem={null}
+          // downshift does not work with arrays as selectedItem.
+          selectedItem={multiple || !value.length ? null : value[0]}
           getA11yStatusMessage={getA11yStatusMessage}
           highlightedIndex={highlightedIndex}
           onStateChange={this.handleStateChange}
@@ -689,6 +695,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           targetRef={this.containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
+          {...getPopperPropsFromShorthand(list)}
         >
           {List.create(list, {
             defaultProps: () => ({
@@ -799,15 +806,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     );
   }
 
-  handleSearchQueryChange = (searchQuery: string) => {
-    this.setStateAndInvokeHandler(['onSearchQueryChange', 'onHighlightedIndexChange'], null, {
-      searchQuery,
-      highlightedIndex: this.props.highlightFirstItemOnOpen ? 0 : null,
-      open: searchQuery === '' ? false : this.state.open,
-    });
-  };
-
-  handleDownshiftStateChanges = (
+  downshiftStateReducer = (
     state: DownshiftState<ShorthandValue<DropdownItemProps>>,
     changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>,
   ) => {
@@ -826,31 +825,138 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   };
 
   handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
-    if (changes.isOpen !== undefined && changes.isOpen !== this.state.open) {
-      const newState = { open: changes.isOpen, highlightedIndex: this.state.highlightedIndex };
+    const { search, multiple, highlightFirstItemOnOpen, items, getA11ySelectionMessage } = this.props;
+    const { value, open } = this.state;
+    const { type } = changes;
+    const newState = {} as DropdownState;
 
-      if (changes.isOpen) {
-        const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
-        if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
-          newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+    switch (type) {
+      case Downshift.stateChangeTypes.changeInput: {
+        const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
+        newState.searchQuery = changes.inputValue;
+        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+
+        if (shouldValueChange) {
+          newState.value = [];
         }
-        if (!this.props.search) {
-          this.listRef.current.focus();
+
+        if (open) {
+          // we clear value when in single selection user cleared the query.
+          const shouldMenuClose = changes.inputValue === '' || changes.selectedItem !== undefined;
+
+          if (shouldMenuClose) {
+            newState.open = false;
+          }
+        } else {
+          newState.open = true;
         }
-      } else {
-        newState.highlightedIndex = null;
+
+        break;
       }
+      case Downshift.stateChangeTypes.keyDownEnter:
+      case Downshift.stateChangeTypes.clickItem:
+        const shouldAddHighlightedIndex = !multiple && items && items.length > 0;
 
-      this.setStateAndInvokeHandler(['onOpenChange'], null, newState);
+        newState.searchQuery = this.getSelectedItemAsString(changes.selectedItem);
+        newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+        newState.open = false;
+        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(changes.selectedItem) : null;
+
+        if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
+          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(changes.selectedItem));
+        }
+
+        if (multiple) {
+          setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
+        }
+
+        this.tryFocusTriggerButton();
+
+        break;
+      case Downshift.stateChangeTypes.keyDownEscape:
+        if (search) {
+          newState.searchQuery = '';
+
+          if (!multiple) {
+            newState.value = [];
+          }
+        }
+        newState.open = false;
+        newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
+        break;
+      case Downshift.stateChangeTypes.keyDownArrowDown:
+      case Downshift.stateChangeTypes.keyDownArrowUp:
+        if (changes.isOpen !== undefined) {
+          newState.open = changes.isOpen;
+          newState.highlightedIndex = changes.highlightedIndex;
+
+          if (changes.isOpen) {
+            const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+            if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+              newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+            }
+
+            if (!search) {
+              this.listRef.current.focus();
+            }
+          } else {
+            newState.highlightedIndex = null;
+          }
+        }
+      case Downshift.stateChangeTypes['keyDownHome']:
+      case Downshift.stateChangeTypes['keyDownEnd']:
+        if (open && _.isNumber(changes.highlightedIndex)) {
+          newState.highlightedIndex = changes.highlightedIndex;
+          newState.itemIsFromKeyboard = true;
+        }
+
+        break;
+      case Downshift.stateChangeTypes.clickButton:
+      case Downshift.stateChangeTypes.keyDownSpaceButton:
+        newState.open = changes.isOpen;
+
+        if (changes.isOpen) {
+          const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
+
+          if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
+            newState.highlightedIndex = highlightedIndexOnArrowKeyOpen;
+          }
+
+          if (!search) {
+            this.listRef.current.focus();
+          }
+        } else {
+          newState.highlightedIndex = null;
+        }
+        break;
+      case Downshift.stateChangeTypes.itemMouseEnter:
+        newState.highlightedIndex = changes.highlightedIndex;
+        newState.itemIsFromKeyboard = false;
+        break;
+      case Downshift.stateChangeTypes.unknown:
+        if (changes.selectedItem) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+          newState.searchQuery = multiple ? '' : changes.inputValue;
+          newState.open = false;
+          newState.highlightedIndex = changes.highlightedIndex;
+
+          this.tryFocusTriggerButton();
+        } else {
+          newState.open = changes.isOpen;
+        }
+      default:
+        break;
     }
 
-    if (this.state.open && _.isNumber(changes.highlightedIndex)) {
-      const itemIsFromKeyboard = changes.type !== Downshift.stateChangeTypes.itemMouseEnter;
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
-        itemIsFromKeyboard,
-        highlightedIndex: changes.highlightedIndex,
-      });
-    }
+    const handlers: (keyof DropdownProps)[] = [
+      newState.value !== undefined && 'onChange',
+      newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
+      newState.open !== undefined && 'onOpenChange',
+      newState.searchQuery !== undefined && 'onSearchQueryChange',
+    ].filter(Boolean) as (keyof DropdownProps)[];
+
+    this.setStateAndInvokeHandler(handlers, null, newState);
   };
 
   isSelectedItemActive = (index: number): boolean => {
@@ -961,6 +1067,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           onKeyDown: e => {
             handleInputKeyDown(e, predefinedProps);
           },
+          onChange: e => {
+            // we prevent the onChange input event to bubble up to our Dropdown handler,
+            // since in Dropdown it gets handled as onSearchQueryChange.
+            e.stopPropagation();
+          },
         }),
       },
       // same story as above for getRootProps.
@@ -991,14 +1102,14 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     selectItemAtIndex: (highlightedIndex: number) => void,
     toggleMenu: () => void,
   ): void => {
-    if (this.state.open) {
-      if (
-        !_.isNil(highlightedIndex) &&
-        this.state.filteredItems.length &&
-        !this.props.items[highlightedIndex]['disabled']
-      ) {
+    const { open, filteredItems } = this.state;
+    const { moveFocusOnTab, multiple, items } = this.props;
+
+    if (open) {
+      if (!_.isNil(highlightedIndex) && filteredItems.length && !items[highlightedIndex]['disabled']) {
         selectItemAtIndex(highlightedIndex);
-        if (!this.props.moveFocusOnTab && this.props.multiple) {
+
+        if (multiple && !moveFocusOnTab) {
           e.preventDefault();
         }
       } else {
@@ -1108,32 +1219,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         accessibilityInputPropsKeyDown(e);
         return;
     }
-  };
-
-  handleSelectedChange = (item: ShorthandValue<DropdownItemProps>) => {
-    const { items, multiple, getA11ySelectionMessage } = this.props;
-    const { value } = this.state;
-
-    this.setStateAndInvokeHandler(['onChange'], null, {
-      searchQuery: this.getSelectedItemAsString(item),
-      value: multiple ? [...value, item] : [item],
-    });
-
-    if (!multiple && items) {
-      this.setStateAndInvokeHandler(['onHighlightedIndexChange'], null, {
-        highlightedIndex: items.indexOf(item),
-      });
-    }
-
-    if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-      this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(item));
-    }
-
-    if (multiple) {
-      setTimeout(() => (this.selectedItemsRef.current.scrollTop = this.selectedItemsRef.current.scrollHeight), 0);
-    }
-
-    this.tryFocusTriggerButton();
   };
 
   handleSelectedItemKeyDown(
@@ -1301,10 +1386,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
    * and for multiple selection we return empty string, the values are rendered by renderSelectedItems
    */
   getSelectedItemAsString = (value: ShorthandValue<DropdownItemProps>): string => {
-    const { itemToString, multiple, placeholder } = this.props;
+    const { itemToString, multiple, placeholder, search } = this.props;
 
     if (!value) {
-      return placeholder;
+      return search ? '' : placeholder;
     }
 
     if (multiple) {
