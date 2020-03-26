@@ -42,6 +42,8 @@ export interface SplitButtonVariables {
   toggleButtonColorDisabled: string;
   toggleButtonBackgroundColorDisabled: string;
   toggleButtonBorderColorDisabled: string;
+
+  toggleButtonIndicatorSize: string;
 }
 
 export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
@@ -86,5 +88,7 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
     toggleButtonColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
     toggleButtonBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
     toggleButtonBorderColorDisabled: 'transparent',
+
+    toggleButtonIndicatorSize: pxToRem(16),
   };
 };

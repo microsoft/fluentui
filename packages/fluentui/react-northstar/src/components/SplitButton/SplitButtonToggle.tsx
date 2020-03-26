@@ -11,12 +11,12 @@ import {
   ChildrenComponentProps,
   commonPropTypes,
   rtlTextContainer,
+  ContentComponentProps,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
+
 import {
   ComponentEventHandler,
   WithAsProp,
-  ShorthandValue,
   withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
@@ -25,15 +25,12 @@ import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandled
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-export interface SplitButtonToggleProps extends UIComponentProps, ChildrenComponentProps {
+export interface SplitButtonToggleProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
 
   /** A button can show that it cannot be interacted with. */
   disabled?: boolean;
-
-  /** A button can have an icon. */
-  icon?: ShorthandValue<IconProps>;
 
   /**
    * Called after a user clicks the button.
@@ -49,6 +46,9 @@ export interface SplitButtonToggleProps extends UIComponentProps, ChildrenCompon
    */
   onFocus?: ComponentEventHandler<SplitButtonToggleProps>;
 
+  /** Defines whether menu is displayed. */
+  open?: boolean;
+
   /** A button can emphasize that it represents the primary action. */
   primary?: boolean;
 
@@ -56,7 +56,7 @@ export interface SplitButtonToggleProps extends UIComponentProps, ChildrenCompon
   secondary?: boolean;
 }
 
-export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled'>;
+export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'open'>;
 
 const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
@@ -70,13 +70,14 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     active,
     as,
     children,
-    icon,
+    content,
     disabled,
     primary,
     className,
     styles,
     variables,
     design,
+    open,
   } = props;
 
   const hasChildren = childrenExist(children);
@@ -96,11 +97,12 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     },
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles<SplitButtonToggleStylesProps>(SplitButtonToggle.displayName, {
+  const { classes } = useStyles<SplitButtonToggleStylesProps>(SplitButtonToggle.displayName, {
     className: SplitButtonToggle.className,
     mapPropsToStyles: () => ({
       primary,
       disabled,
+      open,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -113,15 +115,6 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
 
   const unhandledProps = useUnhandledProps(SplitButtonToggle.handledProps, props);
   const ElementType = getElementType(props);
-
-  const renderIcon = () => {
-    return Icon.create(icon, {
-      defaultProps: () =>
-        getA11Props('icon', {
-          styles: resolvedStyles.icon,
-        }),
-    });
-  };
 
   const handleClick = (e: React.SyntheticEvent) => {
     if (disabled) {
@@ -147,7 +140,7 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
         ...unhandledProps,
       })}
     >
-      {hasChildren ? children : renderIcon()}
+      {hasChildren ? children : content}
     </ElementType>
   );
 
@@ -165,11 +158,8 @@ SplitButtonToggle.displayName = 'SplitButtonToggle';
 SplitButtonToggle.className = 'ui-splitbutton__toggleButton'; // TODO get this from the SplitButton
 
 SplitButtonToggle.propTypes = {
-  ...commonPropTypes.createCommon({
-    content: false,
-  }),
+  ...commonPropTypes.createCommon({}),
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),

@@ -203,9 +203,9 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
             styles: styles.toggleButton,
             className: SplitButton.slotClassNames.toggleButton,
             disabled,
-            icon: 'icon-menu-arrow-down', // TODO: fix me
             primary,
             secondary,
+            open: this.state.open,
             ...accessibility.attributes.toggleButton,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({

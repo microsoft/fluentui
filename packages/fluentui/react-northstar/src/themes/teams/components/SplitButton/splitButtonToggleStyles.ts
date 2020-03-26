@@ -4,6 +4,20 @@ import { SplitButtonToggleStylesProps } from '../../../../components/SplitButton
 import { SplitButtonVariables } from './splitButtonVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from 'src/themes/teams/getIconFillOrOutlineStyles';
+import toggleIndicatorUrl from './toggleIndicatorUrl';
+
+const getIndicatorStyles = (color: string, outline: boolean, open: boolean, size: string): ICSSInJSStyle => {
+  return {
+    content: '""',
+    width: size,
+    height: size,
+    backgroundImage: toggleIndicatorUrl(color, outline),
+    backgroundRepeat: 'no-repeat',
+    ...(open && {
+      transform: 'rotate(180deg)',
+    }),
+  };
+};
 
 const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStylesProps, SplitButtonVariables> = {
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
@@ -29,13 +43,26 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
       cursor: 'pointer',
 
       outline: 0,
+      padding: 0,
       borderWidth,
       borderStyle: 'solid',
       borderColor: v.toggleButtonBorderColor,
       boxShadow: v.toggleButtonBoxShadow,
 
+      ':before': {
+        ...getIndicatorStyles(
+          p.disabled ? v.toggleButtonColorDisabled : p.primary ? v.toggleButtonPrimaryColor : v.toggleButtonColor,
+          true,
+          p.open,
+          v.toggleButtonIndicatorSize,
+        ),
+      },
+
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
+        ':before': {
+          ...getIndicatorStyles(v.toggleButtonColorHover, false, p.open, v.toggleButtonIndicatorSize),
+        },
         color: v.toggleButtonColorHover,
         background: v.toggleButtonBackgroundColorHover,
       },
@@ -50,7 +77,6 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
 
       ':focus': borderFocusStyles[':focus'],
       ':focus-visible': {
-        ...borderFocusStyles[':focus-visible'],
         backgroundColor: v.toggleButtonBackgroundColorFocus,
         borderColor: v.toggleButtonBorderColorFocus,
         color: v.toggleButtonColorFocus,
@@ -76,7 +102,6 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
 
         ':focus': borderFocusStyles[':focus'],
         ':focus-visible': {
-          ...borderFocusStyles[':focus-visible'],
           backgroundColor: v.toggleButtonPrimaryBackgroundColorFocus,
         },
       }),
