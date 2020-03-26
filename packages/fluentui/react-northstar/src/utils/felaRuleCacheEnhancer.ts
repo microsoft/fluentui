@@ -1,7 +1,7 @@
 import { IRenderer, TRule, TRuleProps, IStyle } from 'fela';
 
 type Renderer = IRenderer & {
-  _renderStyle: (style: IStyle, props: any) => void;
+  _renderStyle: (style: IStyle, props: any) => string;
 };
 
 /**
@@ -28,21 +28,35 @@ type Renderer = IRenderer & {
  *                            No  -> Process -> Classes -> Cache -> Return Classes
  *
  * TODO: can we share anything with fela's internal cache?
+ * TODO: possible to share ltr/rtl caches?
  * TODO: hook into .clear() to clear our cache as well?
  * TODO: cache expiry? Retain MRU? Ignore (like fela)?
  */
+interface Cache {
+  [key: string]: string;
+}
+
 const felaRuleCacheEnhancer = (renderer: Renderer): IRenderer => {
-  let cache = {};
+  let _cache = {
+    ltr: {} as Cache,
+    rtl: {} as Cache,
+  };
 
   /**
    * Gets the className for an individual `property: value` pair in a style
    * object.  Returns the cached className if it's already been calculated;
    * otherwise, calculates the className as usual and then stores it in cache.
    */
-  function getClassNameForProperty<T>(property: string, value: any, props: T) {
+  function getClassNameForProperty<T>(property: string, value: any, props: T, cache: Cache) {
     // TODO: would be nice to not have to upcast prop, value into an object
     // just to re-enter fela lifecycle.
     const style = { [property]: value };
+
+    // Skip animations since these may change based on `disableAnimations`
+    // TODO: could theoretically cache these seperately.
+    if (property.indexOf('animation') !== -1) {
+      return renderer._renderStyle(style, props);
+    }
 
     // Skipping complex styles (e.g. pseudo selectors) for now. Implementing this
     // would theoretically provide further improvements if the cache can be
@@ -72,9 +86,19 @@ const felaRuleCacheEnhancer = (renderer: Renderer): IRenderer => {
    */
   function renderRule<T = TRuleProps>(rule: TRule<T>, props: any = {}): string {
     const style = rule(props, renderer);
+
+    // Find the cache for this configuration of props.
+    let cache: Cache;
+    if (props && props.theme && props.theme.direction === 'rtl') {
+      cache = _cache.rtl;
+    } else {
+      cache = _cache.ltr;
+    }
+
+    // TODO: evaluate perf of array vs. string concatenation.
     const classNames: string[] = [];
     for (const property in style) {
-      const className = getClassNameForProperty(property, style[property], props);
+      const className = getClassNameForProperty(property, style[property], props, cache);
       if (className) {
         classNames.push(className);
       }
