@@ -16,6 +16,7 @@ import {
   ShorthandFactory,
   SizeValue,
 } from '../../utils';
+import SplitButtonToggle, { SplitButtonToggleProps } from './SplitButtonToggle';
 import Button, { ButtonProps } from '../Button/Button';
 import MenuButton, { MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
@@ -81,7 +82,7 @@ export interface SplitButtonProps extends UIComponentProps, ChildrenComponentPro
   size?: SizeValue;
 
   /** Shorthand for the toggle button. */
-  toggleButton?: ShorthandValue<ButtonProps>;
+  toggleButton?: ShorthandValue<SplitButtonToggleProps>;
 }
 
 export interface SplitButtonState {
@@ -195,13 +196,12 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
             overrideProps: this.handleMenuButtonOverrides,
           },
         )}
-        {Button.create(toggleButton, {
+        {SplitButtonToggle.create(toggleButton, {
           defaultProps: () => ({
             styles: styles.toggleButton,
             className: SplitButton.slotClassNames.toggleButton,
             disabled,
-            icon: 'icon-menu-arrow-down',
-            iconOnly: true,
+            icon: 'icon-menu-arrow-down', // TODO: fix me
             primary,
             secondary,
             ...accessibility.attributes.toggleButton,
@@ -222,6 +222,8 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     );
   }
 }
+
+SplitButton.Toggle = SplitButtonToggle;
 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
