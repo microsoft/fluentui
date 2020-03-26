@@ -4,6 +4,7 @@
     "module": "esnext",
     "paths": {
       "@fluentui/*": ["packages/fluentui/*/src/index"],
+      "@fluentui/react-compose": ["packages/react-compose/src/index"],
       "docs/*": ["packages/fluentui/docs/*"],
       "src/*": ["packages/fluentui/react-northstar/src/*"],
       "test/*": ["packages/fluentui/react-northstar/test/*"]
