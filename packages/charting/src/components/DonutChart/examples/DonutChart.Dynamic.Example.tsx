@@ -45,7 +45,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     };
     return (
       <div>
-        <DonutChart data={data} innerRadius={40} />
+        <DonutChart data={data} innerRadius={55} />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>

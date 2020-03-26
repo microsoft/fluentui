@@ -61,6 +61,11 @@ export interface IPieProps {
    * internal prop for href
    */
   href?: string;
+
+  /**
+   * props for inside donut value
+   */
+  insideDonutValue?: string | number;
 }
 
 export interface IPieStyles {
