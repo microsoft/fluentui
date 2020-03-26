@@ -3,7 +3,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { SplitButtonToggleStylesProps } from '../../../../components/SplitButton/SplitButtonToggle';
 import { SplitButtonVariables } from './splitButtonVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from 'src/themes/teams/getIconFillOrOutlineStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import toggleIndicatorUrl from './toggleIndicatorUrl';
 
 const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
