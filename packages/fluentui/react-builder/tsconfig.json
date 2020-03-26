@@ -2,6 +2,7 @@
   "extends": "../../../scripts/typescript/tsconfig.fluentui",
   "compilerOptions": {
     "module": "esnext",
+    "outDir": "dist/dts",
     "types": ["node", "webpack-env"]
   },
   "include": ["src"],
