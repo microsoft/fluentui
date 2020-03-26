@@ -22,6 +22,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Fix positioning for `ToolbarMenu` in `overflowItem` @layershifter ([#12390](https://github.com/microsoft/fluentui/pull/12390))
 - Add `inverted` prop to propTypes check in `Button` @silviuavram ([#12414](https://github.com/microsoft/fluentui/pull/12414))
 - Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
+- Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
 
 ### Features
 - Add `createSvgIcon` factory in `@fluentui/react-bindings` and `SvgIcon` component in `@fluentui/react-northstar` @mnajdova ([#12319](https://github.com/OfficeDev/office-ui-fabric-react/pull/12319))
