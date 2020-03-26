@@ -149,7 +149,12 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
       {hasChildren
         ? children
         : Box.create(content, {
-            defaultProps: () => getA11Props('content', { as: 'span', styles: resolvedStyles.content }),
+            defaultProps: () =>
+              getA11Props('content', {
+                as: 'span',
+                className: CarouselPaddle.slotClassNames.content,
+                styles: resolvedStyles.content,
+              }),
           })}
     </ElementType>
   );

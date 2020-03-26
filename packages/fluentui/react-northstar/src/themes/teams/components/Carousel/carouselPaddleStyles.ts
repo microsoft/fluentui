@@ -4,13 +4,13 @@ import CarouselPaddle, { CarouselPaddleStylesProps } from '../../../../component
 import { CarouselVariables } from './carouselVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-// import paddleIndicatorUrl from './paddleIndicatorUrl';
+import paddleIndicatorUrl from './paddleIndicatorUrl';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
     width: size,
     height: size,
-    // backgroundImage: paddleIndicatorUrl(color, next),
+    backgroundImage: paddleIndicatorUrl(color, next),
     backgroundRepeat: 'no-repeat',
   };
 };
@@ -48,7 +48,7 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         [`& .${CarouselPaddle.slotClassNames.content}`]: {
-          ...getIndicatorStyles(v.paddleColorHover, false, v.paddleIndicatorSize),
+          ...getIndicatorStyles(v.paddleColorHover, p.next, v.paddleIndicatorSize),
         },
         color: v.paddleColorHover,
         background: v.paddleBackgroundColorHover,
@@ -89,8 +89,11 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       }),
     };
   },
-  content: ({ props: p, variables: v }) => ({
+  content: ({ props: p, variables: v, rtl }) => ({
     ...getIndicatorStyles(p.disabled ? v.paddleColorDisabled : v.paddleColor, p.next, v.paddleIndicatorSize),
+    ...(rtl && {
+      transform: 'scaleX(-1)',
+    }),
   }),
 };
 
