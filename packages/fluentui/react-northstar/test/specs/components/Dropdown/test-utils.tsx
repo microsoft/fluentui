@@ -17,6 +17,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
   const getSelectedItemsWrapper = () => findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.selectedItem}`);
   const getSelectedItemWrapperAtIndex = index => getSelectedItemsWrapper().at(index);
   const getItemWrapperAtIndex = index => getItemsWrapper().at(index);
+  const getClearIndicatorWrapper = () => findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.clearIndicator}`);
 
   return {
     wrapper,
@@ -30,6 +31,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
     getItemNodeAtIndex: index => getItemWrapperAtIndex(index).getDOMNode(),
     getSelectedItemNodes: () => getSelectedItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
     getSelectedItemNodeAtIndex: index => getSelectedItemWrapperAtIndex(index).getDOMNode(),
+    getClearIndicatorWrapper,
     mouseOverItemAtIndex: index => getItemWrapperAtIndex(index).simulate('mousemove'),
     changeSearchInput: value => {
       searchInputWrapper.simulate('change', { target: { value } });
@@ -55,7 +57,7 @@ const renderDropdown = (props: DropdownProps = {}) => {
       );
     },
     clickOnClearIndicator: () => {
-      findIntrinsicElement(wrapper, `.${Dropdown.slotClassNames.clearIndicator}`).simulate('click');
+      getClearIndicatorWrapper().simulate('click');
     },
     clickOnSelectedItemAtIndex: (index: number, optional = {}) => {
       getSelectedItemWrapperAtIndex(index).simulate(
