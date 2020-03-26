@@ -827,20 +827,13 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   handleStateChange = (changes: StateChangeOptions<ShorthandValue<DropdownItemProps>>) => {
     const { search, multiple, highlightFirstItemOnOpen, items, getA11ySelectionMessage } = this.props;
     const { value, open } = this.state;
-    const {
-      type,
-      inputValue: newSearchQuery,
-      selectedItem: newValue,
-      isOpen: newOpen,
-      highlightedIndex: newHighlightedIndex,
-    } = changes;
+    const { type } = changes;
     const newState = {} as DropdownState;
-    const handlers = [];
 
     switch (type) {
       case Downshift.stateChangeTypes.changeInput: {
-        const shouldValueChange = newSearchQuery === '' && !multiple && !!value.length;
-        newState.searchQuery = newSearchQuery;
+        const shouldValueChange = changes.inputValue === '' && !multiple && value.length > 0;
+        newState.searchQuery = changes.inputValue;
         newState.highlightedIndex = highlightFirstItemOnOpen ? 0 : null;
 
         if (shouldValueChange) {
@@ -849,7 +842,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
         if (open) {
           // we clear value when in single selection user cleared the query.
-          const shouldMenuClose = newSearchQuery === '' || newValue !== undefined;
+          const shouldMenuClose = changes.inputValue === '' || changes.selectedItem !== undefined;
 
           if (shouldMenuClose) {
             newState.open = false;
@@ -862,18 +855,18 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       }
       case Downshift.stateChangeTypes.keyDownEnter:
       case Downshift.stateChangeTypes.clickItem:
-        const shouldAddHighlightedIndex = !multiple && !!items;
+        const shouldAddHighlightedIndex = !multiple && items && items.length > 0;
 
-        newState.searchQuery = this.getSelectedItemAsString(newValue);
-        newState.value = multiple ? [...value, newValue] : [newValue];
+        newState.searchQuery = this.getSelectedItemAsString(changes.selectedItem);
+        newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
         newState.open = false;
 
         if (shouldAddHighlightedIndex) {
-          newState.highlightedIndex = items.indexOf(newValue);
+          newState.highlightedIndex = items.indexOf(changes.selectedItem);
         }
 
         if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
-          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(newValue));
+          this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(changes.selectedItem));
         }
 
         if (multiple) {
@@ -896,11 +889,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         break;
       case Downshift.stateChangeTypes.keyDownArrowDown:
       case Downshift.stateChangeTypes.keyDownArrowUp:
-        if (newOpen !== undefined) {
-          newState.open = newOpen;
-          newState.highlightedIndex = newHighlightedIndex;
+        if (changes.isOpen !== undefined) {
+          newState.open = changes.isOpen;
+          newState.highlightedIndex = changes.highlightedIndex;
 
-          if (newOpen) {
+          if (changes.isOpen) {
             const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
 
             if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
@@ -916,17 +909,17 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         }
       case Downshift.stateChangeTypes['keyDownHome']:
       case Downshift.stateChangeTypes['keyDownEnd']:
-        if (open && _.isNumber(newHighlightedIndex)) {
-          newState.highlightedIndex = newHighlightedIndex;
+        if (open && _.isNumber(changes.highlightedIndex)) {
+          newState.highlightedIndex = changes.highlightedIndex;
           newState.itemIsFromKeyboard = true;
         }
 
         break;
       case Downshift.stateChangeTypes.clickButton:
       case Downshift.stateChangeTypes.keyDownSpaceButton:
-        newState.open = newOpen;
+        newState.open = changes.isOpen;
 
-        if (newOpen) {
+        if (changes.isOpen) {
           const highlightedIndexOnArrowKeyOpen = this.getHighlightedIndexOnArrowKeyOpen(changes);
 
           if (_.isNumber(highlightedIndexOnArrowKeyOpen)) {
@@ -941,36 +934,30 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         }
         break;
       case Downshift.stateChangeTypes.itemMouseEnter:
-        newState.highlightedIndex = newHighlightedIndex;
+        newState.highlightedIndex = changes.highlightedIndex;
         newState.itemIsFromKeyboard = false;
         break;
       case Downshift.stateChangeTypes.unknown:
-        if (newValue) {
-          newState.value = multiple ? [...value, newValue] : [newValue];
-          newState.searchQuery = multiple ? '' : newSearchQuery;
+        if (changes.selectedItem) {
+          newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
+          newState.searchQuery = multiple ? '' : changes.inputValue;
           newState.open = false;
-          newState.highlightedIndex = newHighlightedIndex;
+          newState.highlightedIndex = changes.highlightedIndex;
 
           this.tryFocusTriggerButton();
         } else {
-          newState.open = newOpen;
+          newState.open = changes.isOpen;
         }
       default:
         break;
     }
 
-    if (newState.searchQuery !== undefined) {
-      handlers.push('onSearchQueryChange');
-    }
-    if (newState.value !== undefined) {
-      handlers.push('onChange');
-    }
-    if (newState.highlightedIndex !== undefined) {
-      handlers.push('onHighlightedIndexChange');
-    }
-    if (newState.open !== undefined) {
-      handlers.push('onOpenChange');
-    }
+    const handlers: (keyof DropdownProps)[] = [
+      newState.value !== undefined && 'onChange',
+      newState.highlightedIndex !== undefined && 'onHighlightedIndexChange',
+      newState.open !== undefined && 'onOpenChange',
+      newState.searchQuery !== undefined && 'onSearchQueryChange',
+    ].filter(Boolean) as (keyof DropdownProps)[];
 
     this.setStateAndInvokeHandler(handlers, null, newState);
   };
