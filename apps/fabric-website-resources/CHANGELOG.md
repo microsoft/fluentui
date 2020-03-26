@@ -1,7 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.6.25
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Updating docs for Fluent transition (mgodbolt@microsoft.com)
 ## 7.6.24
 Mon, 23 Mar 2020 12:28:29 GMT
 

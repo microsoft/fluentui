@@ -867,6 +867,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       ...getItemProps({
         item,
         index,
+        disabled: item['disabled'],
         onClick: e => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
@@ -991,7 +992,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     toggleMenu: () => void,
   ): void => {
     if (this.state.open) {
-      if (!_.isNil(highlightedIndex) && this.state.filteredItems.length) {
+      if (
+        !_.isNil(highlightedIndex) &&
+        this.state.filteredItems.length &&
+        !this.props.items[highlightedIndex]['disabled']
+      ) {
         selectItemAtIndex(highlightedIndex);
         if (!this.props.moveFocusOnTab && this.props.multiple) {
           e.preventDefault();
