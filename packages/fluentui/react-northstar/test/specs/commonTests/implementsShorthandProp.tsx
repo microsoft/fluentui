@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
 import { mountWithProvider as mount, mountWithProvider } from 'test/utils';
 import { Props, PropsOf, InstanceOf } from 'src/types';
-import { Popper, PositioningProps } from 'src/utils/positioner';
+import { Popper } from 'src/utils/positioner';
 import { positioningProps } from 'test/specs/commonTests/implementsPopperProps';
 
 export type ShorthandTestOptions<TProps = any> = {
