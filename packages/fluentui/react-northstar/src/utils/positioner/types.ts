@@ -12,8 +12,10 @@ export interface PositioningProps {
    */
   align?: Alignment;
 
+  /** The element which will define the boundaries of the popper position for the flip behavior. */
   flipBoundary?: PopperJS.Modifiers['flip']['boundariesElement'];
 
+  /** The element which will define the boundaries of the popper position for the overflow behavior. */
   overflowBoundary?: PopperJS.Modifiers['preventOverflow']['boundariesElement'];
 
   /**
