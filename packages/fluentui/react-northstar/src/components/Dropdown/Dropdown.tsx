@@ -860,10 +860,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         newState.searchQuery = this.getSelectedItemAsString(changes.selectedItem);
         newState.value = multiple ? [...value, changes.selectedItem] : [changes.selectedItem];
         newState.open = false;
-
-        if (shouldAddHighlightedIndex) {
-          newState.highlightedIndex = items.indexOf(changes.selectedItem);
-        }
+        newState.highlightedIndex = shouldAddHighlightedIndex ? items.indexOf(changes.selectedItem) : null;
 
         if (getA11ySelectionMessage && getA11ySelectionMessage.onAdd) {
           this.setA11ySelectionMessage(getA11ySelectionMessage.onAdd(changes.selectedItem));
@@ -959,6 +956,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       newState.searchQuery !== undefined && 'onSearchQueryChange',
     ].filter(Boolean) as (keyof DropdownProps)[];
 
+    console.log(type, newState);
     this.setStateAndInvokeHandler(handlers, null, newState);
   };
 
