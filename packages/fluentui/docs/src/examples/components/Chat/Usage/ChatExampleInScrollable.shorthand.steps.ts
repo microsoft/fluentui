@@ -27,9 +27,8 @@ const config: ScreenerTestsConfig = {
         .snapshot('Hovers first message in scrolled view: actions are hidden'),
     builder =>
       builder
-        .executeScript(`document.querySelector("${selectors.chat}").parentNode.scrollTop = 10`)
-        .click(selectors.item(1))
-        .click(selectors.moreAction(1))
+        .click(selectors.item(2))
+        .click(selectors.moreAction(2))
         .snapshot('Clicks first message in scrolled view and opens a menu'),
   ],
 };
