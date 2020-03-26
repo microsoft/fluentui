@@ -73,7 +73,7 @@ export default (siteVars): DropdownVariables => ({
   borderWidth: '0px',
   openBorderColorHover: undefined,
   containerBorderRadius: `${cornerRadius}`,
-  disabledColor: siteVars.colors.grey[250],
+  disabledColor: siteVars.colorScheme.default.foregroundDisabled,
   openAboveContainerBorderRadius: `0 0 ${cornerRadius} ${cornerRadius}`,
   openBelowContainerBorderRadius: `${cornerRadius} ${cornerRadius} 0 0`,
   searchBorderBottomWidth: pxToRem(2),
@@ -118,7 +118,7 @@ export default (siteVars): DropdownVariables => ({
   // disabled state
   disabledBorderColorHover: 'transparent',
   disabledTriggerColorHover: siteVars.colorScheme.brand.foregroundDisabled,
-  disabledBackgroundColorHover: siteVars.colors.grey[100],
+  disabledBackgroundColorHover: siteVars.colorScheme.brand.backgroundDisabled,
 
   // these should only apply when there is content in the image/media slot:
   listItemHeaderFontSize: siteVars.fontSizes.medium,

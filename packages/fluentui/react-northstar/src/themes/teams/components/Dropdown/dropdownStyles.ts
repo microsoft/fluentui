@@ -80,17 +80,6 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ...(p.open && {
         borderColor: v.openBorderColorHover,
       }),
-
-      ...(p.disabled && {
-        backgroundColor: v.disabledBackgroundColorHover,
-        borderColor: v.disabledBorderColorHover,
-      }),
-
-      [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-        ...(p.disabled && {
-          color: v.disabledTriggerColorHover,
-        }),
-      },
     },
     ':active': {
       backgroundColor: v.backgroundColor,
@@ -126,6 +115,26 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
         backgroundColor: v.backgroundColorHoverInverted,
       },
     }),
+
+    ...(p.disabled && {
+      backgroundColor: siteVariables.colorScheme.default.backgroundDisabled,
+      borderColor: siteVariables.colorScheme.default.borderDisabled,
+      userSelect: 'none',
+
+      ':hover': {
+        backgroundColor: siteVariables.colorScheme.default.backgroundDisabled,
+      },
+
+      ':active': {
+        backgroundColor: siteVariables.colorScheme.default.backgroundDisabled,
+      },
+    }),
+
+    [`& .${Dropdown.slotClassNames.triggerButton}`]: {
+      ...(p.disabled && {
+        color: siteVariables.colorScheme.default.foregroundDisabled,
+      }),
+    },
   }),
 
   selectedItems: ({ props: p, variables: v }): ICSSInJSStyle => ({
