@@ -27,7 +27,7 @@ const argv = yargs
   // Default to checking the past 5 days in case there were any missed days or other issues
   .option('age', { describe: 'Get tags/releases up to this many days old', type: 'number', default: 5 })
   .option('owner', { describe: 'Owner of the repo to work against', type: 'string', default: owner })
-  .option('repo', { describe: 'Repo to work against', type: 'string', default: owner })
+  .option('repo', { describe: 'Repo to work against', type: 'string', default: repo })
   .version(false)
   .help().argv;
 
