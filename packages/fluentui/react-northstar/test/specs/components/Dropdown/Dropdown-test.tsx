@@ -658,6 +658,31 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
     });
+
+    it('does not open with highlightedIndex after selecting item in multiple mode', () => {
+      const itemSelectedIndex = 2;
+      const { clickOnItemAtIndex, clickOnTriggerButton, itemsListNode } = renderDropdown({
+        defaultOpen: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemSelectedIndex);
+      clickOnTriggerButton();
+
+      expect(itemsListNode).not.toHaveAttribute('aria-activedescendant');
+    });
+
+    it('opens with highlightedIndex after selecting item in non-multiple mode', () => {
+      const itemSelectedIndex = 2;
+      const { clickOnItemAtIndex, clickOnTriggerButton, itemsListNode } = renderDropdown({
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(itemSelectedIndex);
+      clickOnTriggerButton();
+
+      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
+    });
   });
 
   describe('value', () => {
