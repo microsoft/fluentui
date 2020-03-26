@@ -29,6 +29,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `useUnhandledProps()` hook @layershifter ([#12371](https://github.com/OfficeDev/office-ui-fabric-react/pull/12371))
 - Adding base layout and API for `Card` component @pompomon ([#12349](https://github.com/OfficeDev/office-ui-fabric-react/pull/12349))
 - Add `disabled` support form `DropdownItem` @silviuavram ([#12407](https://github.com/microsoft/fluentui/pull/12407))
+- Add a shorthand to specify Popper props for `ChatMessage`, `Dropdown`, `MenuItem`, `ToolbarItem`, `ToolbarMenuItem` @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
