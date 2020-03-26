@@ -3,10 +3,11 @@ import * as React from 'react';
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
 import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
-import { isConformant } from 'test/specs/commonTests';
+import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
+import List from 'src/components/List/List';
 
 jest.dontMock('keyboard-key');
 jest.useFakeTimers();
@@ -15,6 +16,10 @@ describe('Dropdown', () => {
   isConformant(Dropdown, {
     hasAccessibilityProp: false,
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
+  });
+  implementsShorthandProp(Dropdown)('list', List, {
+    implementsPopper: true,
+    requiredProps: { open: true },
   });
 
   describe('clearable', () => {
@@ -729,6 +734,76 @@ describe('Dropdown', () => {
       keyDownOnItemsList('Tab', { shiftKey: true });
 
       expect(triggerButtonNode).toHaveTextContent(items[itemSelectedIndex]);
+    });
+
+    it('is not set by clicking on disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, clickOnItemAtIndex, getItemNodes } = renderDropdown({
+        items: inputItems,
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(1);
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(2);
+    });
+
+    // ToDo: investigate why 'Enter' still selects disabled item, manually it does not.
+    it.skip('is not set by using Enter on highlighted disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        items: inputItems,
+        defaultOpen: true,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(2);
+    });
+
+    it('is not set by using Spacebar on highlighted disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        defaultOpen: true,
+        items: inputItems,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList(' ');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(2);
+    });
+
+    it('is not set by using Tab on highlighted selected item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        defaultOpen: true,
+        items: inputItems,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('is not set by using Shift+Tab on highlighted disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        defaultOpen: true,
+        items: inputItems,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList('Tab', { shiftKey: true });
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(0);
     });
 
     it('is replaced when another item is selected', () => {

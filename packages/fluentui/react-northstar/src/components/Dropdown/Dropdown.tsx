@@ -41,7 +41,14 @@ import Button, { ButtonProps } from '../Button/Button';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import Box, { BoxProps } from '../Box/Box';
 import Portal from '../Portal/Portal';
-import { ALIGNMENTS, POSITIONS, Popper, PositioningProps } from '../../utils/positioner';
+import {
+  ALIGNMENTS,
+  POSITIONS,
+  Popper,
+  PositioningProps,
+  PopperShorthandProps,
+  getPopperPropsFromShorthand,
+} from '../../utils/positioner';
 import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
@@ -137,7 +144,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
   /** A slot for dropdown list. */
-  list?: ShorthandValue<ListProps>;
+  list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
 
   /** A dropdown can show that it is currently loading data. */
   loading?: boolean;
@@ -689,6 +696,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
           targetRef={this.containerRef}
           unstable_pinned={unstable_pinned}
           positioningDependencies={[items.length]}
+          {...getPopperPropsFromShorthand(list)}
         >
           {List.create(list, {
             defaultProps: () => ({
@@ -867,6 +875,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       ...getItemProps({
         item,
         index,
+        disabled: item['disabled'],
         onClick: e => {
           e.stopPropagation();
           e.nativeEvent.stopImmediatePropagation();
@@ -991,7 +1000,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     toggleMenu: () => void,
   ): void => {
     if (this.state.open) {
-      if (!_.isNil(highlightedIndex) && this.state.filteredItems.length) {
+      if (
+        !_.isNil(highlightedIndex) &&
+        this.state.filteredItems.length &&
+        !this.props.items[highlightedIndex]['disabled']
+      ) {
         selectItemAtIndex(highlightedIndex);
         if (!this.props.moveFocusOnTab && this.props.multiple) {
           e.preventDefault();

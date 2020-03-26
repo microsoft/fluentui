@@ -1,4 +1,6 @@
-# Document a feature
+# Document a feature for `@fluentui/react-northstar` (and others under `packages/fluentui`)
+
+**NOTE: This document currently only applies to the packages located under `packages/fluentui`, such as `@fluentui/react-northstar`.**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -10,7 +12,7 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-When creating a component, a special directory is created under the `docs/src/examples` location. Here you can develop different usage examples for your component that will appear in the [doc site][1].
+When creating a component in `@fluentui/react-northstar`, a special directory should be created under `packages/fluentui/docs/src/examples`. Here you can develop different usage examples for your component that will appear in the [doc site][1].
 
 Our docs are generated from doc block comments, `propTypes`, and hand written examples.
 
@@ -69,7 +71,7 @@ Label.propTypes = {
 
 ## Examples
 
-Usage examples for a component live in `docs/src/examples`. The examples follow the doc site examples (e.g. [button][1]).
+Usage examples for a component live in `packages/fluentui/docs/src/examples`. The examples follow the doc site examples (e.g. [button][1]).
 
 Adding documentation for new components is a bit tedious. The best way to do this (for now) is to copy an existing
 component's and update it.

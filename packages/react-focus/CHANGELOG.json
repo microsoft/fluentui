@@ -2,6 +2,20 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/react-focus_v7.1.10",
+      "version": "7.1.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 19 Mar 2020 12:29:37 GMT",
       "tag": "@fluentui/react-focus_v7.1.8",
       "version": "7.1.8",

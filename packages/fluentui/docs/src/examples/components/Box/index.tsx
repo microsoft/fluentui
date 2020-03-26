@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Alert } from '@fluentui/react-northstar';
 
 import Types from './Types';
+import Performance from './Performance';
 import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions';
 
 const BoxExamples = () => (
@@ -31,6 +32,7 @@ const BoxExamples = () => (
     </Alert>
 
     <Types />
+    <Performance />
   </>
 );
 

@@ -1,3 +1,4 @@
+export { default as implementsCollectionShorthandProp } from './implementsCollectionShorthandProp';
 export { default as implementsShorthandProp } from './implementsShorthandProp';
 export { default as implementsWrapperProp } from './implementsWrapperProp';
 

@@ -1,7 +1,16 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 24 Mar 2020 12:26:03 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 1.0.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Major
+
+- Vertical stacked bar chart added to charting package (v-jasha@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
 ## 0.143.0
 Tue, 24 Mar 2020 12:26:03 GMT
 

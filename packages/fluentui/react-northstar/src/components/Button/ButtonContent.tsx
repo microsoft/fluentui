@@ -24,7 +24,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   const { size, content, children, className, styles, variables, design } = props;
 
   const { classes } = useStyles<ButtonContentStylesProps>(ButtonContent.displayName, {
-    className,
+    className: ButtonContent.className,
     mapPropsToStyles: () => ({ size }),
     mapPropsToInlineStyles: () => ({
       className,

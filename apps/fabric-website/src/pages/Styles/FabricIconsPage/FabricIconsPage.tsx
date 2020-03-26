@@ -35,9 +35,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsUsage.md') as string,
           jumpLinks: [
             // prettier-ignore
-            { text: enDash + ' Fabric React', url: 'fabric-react' },
+            { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fabric Icons tool', url: 'fabric-icons-tool' },
+            { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-icons-tool' },
           ],
         },
 
@@ -45,7 +45,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Available icons',
           content: (
             <Pivot>
-              <PivotItem headerText="Fabric React" className={styles.iconGrid}>
+              <PivotItem headerText="Fluent UI React" className={styles.iconGrid}>
                 <IconGrid icons={fabricReactIcons} useFabricIcons={true} />
               </PivotItem>
               <PivotItem headerText="Fabric Core" className={styles.iconGrid}>

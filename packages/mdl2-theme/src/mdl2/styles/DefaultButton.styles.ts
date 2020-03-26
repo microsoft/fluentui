@@ -1,5 +1,6 @@
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
 export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;
@@ -12,7 +13,7 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
     root: {
       backgroundColor: palette.neutralLighter,
       border: '1px solid transparent',
-      ...getFocusStyle(theme, { inset: 0, borderColor: palette.white }),
+      ...getFocusStyle(theme, { inset: -1, borderColor: palette.white }),
     },
     rootHovered: {
       backgroundColor: palette.neutralLight,
@@ -63,6 +64,16 @@ export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles>
         '.ms-Button.is-disabled + .ms-Button.is-disabled': {
           backgroundColor: palette.neutralLighter,
           border: 'none',
+        },
+        [`.${IsFocusVisibleClassName} &:focus`]: {
+          selectors: {
+            ':after': {
+              left: 1,
+              right: 1,
+              bottom: 1,
+              top: 1,
+            },
+          },
         },
       },
     },
