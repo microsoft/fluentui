@@ -110,6 +110,7 @@
     "just-scripts": "0.35.0",
     "lerna-alias": "^3.0.3-0",
     "license-webpack-plugin": "^2.1.1",
+    "lodash": "^4.17.15",
     "markdown-table": "^2.0.0",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
