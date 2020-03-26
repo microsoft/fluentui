@@ -174,7 +174,9 @@ CarouselPaddle.displayName = 'CarouselPaddle';
 CarouselPaddle.className = 'ui-carousel__paddle';
 
 CarouselPaddle.propTypes = {
-  ...commonPropTypes.createCommon({}),
+  ...commonPropTypes.createCommon({
+    content: 'shorthand',
+  }),
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
