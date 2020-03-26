@@ -112,7 +112,7 @@ export default (siteVars): DropdownVariables => ({
 
   selectedItemsMaxHeight: pxToRem(82),
   toggleIndicatorSize: pxToRem(32),
-  toggleIndicatorPadding: pxToRem(16),
+  toggleIndicatorPadding: pxToRem(26),
   triggerButtonColorFocusActive: undefined,
   triggerButtonColorHover: siteVars.bodyColor,
   width: pxToRem(356),
