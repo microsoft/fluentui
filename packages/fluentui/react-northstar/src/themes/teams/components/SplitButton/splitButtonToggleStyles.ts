@@ -13,9 +13,10 @@ const getIndicatorStyles = (color: string, outline: boolean, open: boolean, size
     height: size,
     backgroundImage: toggleIndicatorUrl(color, outline),
     backgroundRepeat: 'no-repeat',
-    ...(open && {
-      transform: 'rotate(180deg)',
-    }),
+    // TODO: check if we want to add this by default
+    // ...(open && {
+    //   transform: 'rotate(180deg)',
+    // }),
   };
 };
 
