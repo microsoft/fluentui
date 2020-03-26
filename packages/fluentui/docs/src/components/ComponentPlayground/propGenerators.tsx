@@ -5,6 +5,7 @@ import * as faker from 'faker';
 import * as React from 'react';
 
 import { KnobGenerator } from '../../types';
+import { literal } from './typeGenerators';
 
 export const content: KnobGenerator<string> = ({ propName }) => ({
   hook: useStringKnob,
@@ -23,11 +24,17 @@ export const color: KnobGenerator<string> = ({ propName, propDef, componentInfo,
   }),
 });
 
-export const size: KnobGenerator<string> = ({ propName, propDef, componentInfo }) => {
-  if (propDef.types.length > 1 || propDef.types[0].name !== 'SizeValue') {
-    throw new Error(
-      `A "${componentInfo.displayName}" for "size" prop defines type different than "SizeValue" it is not supported`,
-    );
+export const size: KnobGenerator<string> = ({ propName, propDef, componentInfo, theme }) => {
+  if (propDef.types.length > 1) {
+    if (propDef.types.every(type => type.name === 'literal')) {
+      return literal({ componentInfo, propDef, propName, theme });
+    }
+
+    if (propDef.types[0].name !== 'SizeValue') {
+      throw new Error(
+        `A "${componentInfo.displayName}" for "size" prop defines type different than "SizeValue" or literal values, it is not supported`,
+      );
+    }
   }
 
   return {
