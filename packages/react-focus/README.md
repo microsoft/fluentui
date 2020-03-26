@@ -1,10 +1,10 @@
 # @fluentui/react-focus
 
-**Components that deal with focus management for [Fluent UI](https://fluent.microsoft.com/)**
+**Focus management components for [Fluent UI React](https://dev.microsoft.com/fabric)**
 
-This package contains the different components that deal with focus management to be leveraged when building applications using Fluent UI.
+This package contains various components that deal with focus management to be leveraged when building applications using Fluent UI.
 
-At the moment the list of these components include:
+At the moment, these components include:
 
 - `FocusZone`
 
