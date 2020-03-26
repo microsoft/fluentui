@@ -102,7 +102,7 @@ export default (siteVars): DropdownVariables => ({
   overlayZIndex: siteVars.zIndexes.overlay,
   // disabled state
   disabledBorderColorHover: 'transparent',
-  disabledTriggerColorHover: siteVars.bodyColor,
+  disabledTriggerColorHover: siteVars.colorScheme.brand.foregroundDisabled,
   disabledBackgroundColorHover: siteVars.colors.grey[100],
 
   // these should only apply when there is content in the image/media slot:

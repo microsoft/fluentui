@@ -731,6 +731,76 @@ describe('Dropdown', () => {
       expect(triggerButtonNode).toHaveTextContent(items[itemSelectedIndex]);
     });
 
+    it('is not set by clicking on disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, clickOnItemAtIndex, getItemNodes } = renderDropdown({
+        items: inputItems,
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(1);
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(2);
+    });
+
+    // ToDo: investigate why 'Enter' still selects disabled item, manually it does not.
+    it.skip('is not set by using Enter on highlighted disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        items: inputItems,
+        defaultOpen: true,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList('Enter');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(2);
+    });
+
+    it('is not set by using Spacebar on highlighted disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        defaultOpen: true,
+        items: inputItems,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList(' ');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(2);
+    });
+
+    it('is not set by using Tab on highlighted selected item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        defaultOpen: true,
+        items: inputItems,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('is not set by using Shift+Tab on highlighted disabled item', () => {
+      const inputItems = [{ header: 'item1' }, { header: 'item2', disabled: true }];
+      const { triggerButtonNode, keyDownOnItemsList, getItemNodes } = renderDropdown({
+        defaultOpen: true,
+        items: inputItems,
+        defaultHighlightedIndex: 1,
+      });
+
+      keyDownOnItemsList('Tab', { shiftKey: true });
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getItemNodes()).toHaveLength(0);
+    });
+
     it('is replaced when another item is selected', () => {
       const defaultValue = items[0];
       const itemSelectedIndex = 2;
