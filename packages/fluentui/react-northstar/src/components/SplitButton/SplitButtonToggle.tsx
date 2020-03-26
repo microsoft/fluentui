@@ -46,9 +46,6 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
    */
   onFocus?: ComponentEventHandler<SplitButtonToggleProps>;
 
-  /** Defines whether menu is displayed. */
-  open?: boolean;
-
   /** A button can emphasize that it represents the primary action. */
   primary?: boolean;
 
@@ -56,7 +53,7 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
   secondary?: boolean;
 }
 
-export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'open'>;
+export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled'>;
 
 const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
@@ -77,7 +74,6 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     styles,
     variables,
     design,
-    open,
   } = props;
 
   const hasChildren = childrenExist(children);
@@ -102,7 +98,6 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     mapPropsToStyles: () => ({
       primary,
       disabled,
-      open,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -171,7 +166,7 @@ SplitButtonToggle.handledProps = Object.keys(SplitButtonToggle.propTypes) as any
 SplitButtonToggle.create = createShorthandFactory({ Component: SplitButtonToggle, mappedProp: 'children' });
 
 /**
- * A Button enables users to take an action, such as submitting a form, opening a dialog, etc.
+ * A SplitToggleButton allows users to customize the toggle button inside the SplitButton.
  *
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.

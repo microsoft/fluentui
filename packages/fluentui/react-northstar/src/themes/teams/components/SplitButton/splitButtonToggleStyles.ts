@@ -6,17 +6,13 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from 'src/themes/teams/getIconFillOrOutlineStyles';
 import toggleIndicatorUrl from './toggleIndicatorUrl';
 
-const getIndicatorStyles = (color: string, outline: boolean, open: boolean, size: string): ICSSInJSStyle => {
+const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
   return {
     content: '""',
     width: size,
     height: size,
     backgroundImage: toggleIndicatorUrl(color, outline),
     backgroundRepeat: 'no-repeat',
-    // TODO: check if we want to add this by default
-    // ...(open && {
-    //   transform: 'rotate(180deg)',
-    // }),
   };
 };
 
@@ -54,7 +50,6 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         ...getIndicatorStyles(
           p.disabled ? v.toggleButtonColorDisabled : p.primary ? v.toggleButtonPrimaryColor : v.toggleButtonColor,
           true,
-          p.open,
           v.toggleButtonIndicatorSize,
         ),
       },
@@ -62,7 +57,7 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         ':before': {
-          ...getIndicatorStyles(v.toggleButtonColorHover, false, p.open, v.toggleButtonIndicatorSize),
+          ...getIndicatorStyles(v.toggleButtonColorHover, false, v.toggleButtonIndicatorSize),
         },
         color: v.toggleButtonColorHover,
         background: v.toggleButtonBackgroundColorHover,

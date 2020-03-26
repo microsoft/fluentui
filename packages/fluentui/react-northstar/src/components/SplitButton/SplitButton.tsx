@@ -205,7 +205,6 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
             disabled,
             primary,
             secondary,
-            open: this.state.open,
             ...accessibility.attributes.toggleButton,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
