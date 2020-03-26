@@ -27,6 +27,31 @@ type Renderer = IRenderer & {
  *                            Yes -> Return Classes
  *                            No  -> Process -> Classes -> Cache -> Return Classes
  *
+ * TODO: We should seperate fela plugins into two categories:
+ *
+ * 1. Contextual (relies on theme RTL, disableAnimations, etc.)
+ * 2. Normal (no reliance on environment).
+ *
+ * With this approach, we can always run contextual plugins before
+ * checking the cache. This would reduce coupling between the cache
+ * and other fela plugins, since it would then just have to check
+ * simple key: value pairs.
+ *
+ * Fela would need to be updated ("enhanced") in some way to support
+ * this plugin split.
+ *
+ * After V2:
+ * Rule -> Style -> Contextual Plugins -> Iterate Properties -> Return Classes
+ *                                            |
+ *                                      Property Cached?
+ *                                               Yes -> Return Classes
+ *                                               No  -> Process -> Classes -> Cache -> Return Classes
+ *
+ * Further, if we can make the context stable (i.e., not include `displayName`
+ * for each component) then we can _also_ cache by context. e.g.:
+ *
+ * const cache = new WeakMap<Context, Cache>
+ *
  * TODO: can we share anything with fela's internal cache?
  * TODO: possible to share ltr/rtl caches?
  * TODO: hook into .clear() to clear our cache as well?
