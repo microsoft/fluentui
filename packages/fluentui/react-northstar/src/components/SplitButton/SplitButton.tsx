@@ -95,6 +95,8 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
 
   static displayName = 'SplitButton';
 
+  static Toggle = SplitButtonToggle;
+
   static className = 'ui-splitbutton';
 
   static slotClassNames: SplitButtonSlotClassNames = {
@@ -222,8 +224,6 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     );
   }
 }
-
-SplitButton.Toggle = SplitButtonToggle;
 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
