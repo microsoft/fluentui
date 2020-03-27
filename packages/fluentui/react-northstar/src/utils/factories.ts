@@ -183,13 +183,6 @@ export function createShorthand<P>({
     (props as any).styles = mergeStyles(defaultProps.styles, usersProps.styles, overrideProps.styles);
   }
 
-  //
-  // Handle `as` prop
-  //
-  if (typeof Component === 'string' && props.as) {
-    Component = props.as;
-  }
-
   // ----------------------------------------
   // Get key
   // ----------------------------------------
