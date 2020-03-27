@@ -153,7 +153,7 @@ export default (siteVars: any): MenuVariables => {
     verticalItemBorderWidth: pxToRem(2),
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
-    verticalBackgroundColorFocus: siteVars.colors.grey[150],
+    verticalBackgroundColorFocus: undefined,
 
     activeUnderlinedColor: undefined,
     activeUnderlinedPrimaryColor: siteVars.colors.brand[600],

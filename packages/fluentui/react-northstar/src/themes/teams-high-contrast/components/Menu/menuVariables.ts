@@ -18,7 +18,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   ),
   color: siteVars.colors.white,
   colorActive: siteVars.colors.black,
-  colorFocus: siteVars.colors.black,
+  colorFocus: siteVars.colors.white,
   backgroundColorFocus: siteVars.accessibleCyan,
   backgroundColorActive: siteVars.accessibleCyan,
   primaryBorderColor: siteVars.colors.white,
@@ -28,7 +28,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   pointingIndicatorBackgroundColor: 'transparent',
 
   verticalBackgroundColor: siteVars.colors.black,
-  verticalBackgroundColorFocus: siteVars.accessibleCyan,
+  verticalBackgroundColorFocus: undefined,
   iconOnlyColorActive: siteVars.colors.black,
   iconOnlyColorFocus: 'transparent',
   iconOnlyColorHover: siteVars.colors.black,
@@ -55,4 +55,7 @@ export default (siteVars: any): Partial<MenuVariables> => ({
   activePrimaryVerticalIndicatorColor: siteVars.colors.black,
   indicatorColorHover: siteVars.colors.black,
   primaryIndicatorColorHover: siteVars.colors.black,
+
+  borderColorFocus: siteVars.colors.black,
+  outlineColorFocus: siteVars.accessibleCyan,
 });
