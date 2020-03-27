@@ -375,7 +375,7 @@ export default {
   'window-minimize': windowMinimize,
   'window-restore': windowRestore,
 
-  // Office utils
+  // Office icons
   excel: filesExcel,
   'excel-color': filesExcelBrand,
   onedrive: oneDrive,

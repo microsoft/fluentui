@@ -26,11 +26,11 @@ for svg in $(ls *.html); do
 
   # REPLACE SVG CLASS WTIH CLASSNAME & REPLACE OTHER CLASSES NOT USED WITH ''
   sed -i -E 's/(<svg.*)class=\"([^"]*)\"/\1className={classes.svg}/' $TsxFileName
-  sed -i -E 's/\s*utils-default-fill\s*//g' $TsxFileName
+  sed -i -E 's/\s*icons-default-fill\s*//g' $TsxFileName
 
   # REPLACE FILLED/UNFILLED CLASSES
-  sed -i 's/class=\"utils-unfilled\"/className={cx(teamsIconClassNames.outline, classes.outlinePart)}/g' $TsxFileName
-  sed -i 's/class=\"utils-filled\"/className={cx(teamsIconClassNames.filled, classes.filledPart)}/g' $TsxFileName
+  sed -i 's/class=\"icons-unfilled\"/className={cx(teamsIconClassNames.outline, classes.outlinePart)}/g' $TsxFileName
+  sed -i 's/class=\"icons-filled\"/className={cx(teamsIconClassNames.filled, classes.filledPart)}/g' $TsxFileName
   echo "Replace unfilled/filled classes with tsx appropriate className"
 
   # REPLACE DEFAULT FILL CLASS WTIH ''

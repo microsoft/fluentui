@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-icons';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, setWarningCallback } from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';

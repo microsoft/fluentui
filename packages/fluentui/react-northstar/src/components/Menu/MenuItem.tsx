@@ -49,7 +49,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   /** Name or shorthand for Menu Item Icon */
   icon?: ShorthandValue<IconProps>;
 
-  /** A menu may have just utils. */
+  /** A menu may have just icons. */
   iconOnly?: boolean;
 
   /** MenuItem index inside Menu. */

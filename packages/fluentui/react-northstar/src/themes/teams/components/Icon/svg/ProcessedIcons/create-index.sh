@@ -5,7 +5,7 @@ export template="import { TeamsSvgIconSpec } from '../types'\n\n// IMPORTS\n\nex
 FileName="index-new.ts"
 echo -e "${template}" > $FileName;
 
-for utils in $(ls *.tsx); do
+for icons in $(ls *.tsx); do
   echo "Icon is: $icons"
 
   # GET ICON PATH & NAME

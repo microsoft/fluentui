@@ -46,7 +46,7 @@ export interface MenuProps extends UIComponentProps, ChildrenComponentProps {
   /** A vertical menu may take the size of its container. */
   fluid?: boolean;
 
-  /** A menu may have just utils. */
+  /** A menu may have just icons. */
   iconOnly?: boolean;
 
   /** Shorthand array of props for Menu. */

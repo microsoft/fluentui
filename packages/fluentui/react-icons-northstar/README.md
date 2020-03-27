@@ -6,23 +6,9 @@ A set of reusable components and hooks to build component libraries and UI kits.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 - [Installation](#installation)
-- [Hooks](#hooks)
-  - [`useAccesibility()`](#useaccesibility)
-    - [Usage](#usage)
-  - [`useAutoControlled()`](#useautocontrolled)
-    - [Usage](#usage-1)
-  - [`useStateManager()`](#usestatemanager)
-    - [Usage](#usage-2)
-    - [Reference](#reference)
-  - [`useStyles()`](#usestyles)
-    - [Usage](#usage-3)
-    - [Reference](#reference-1)
-  - [`useUnhandledProps()`](#useunhandledprops)
-    - [Usage](#usage-4)
-    - [Reference](#reference-2)
 - [Icons](#icons)
   - [`createSvgIcon()`](#createsvgicon)
-    - [Usage](#usage-5)
+    - [Usage](#usage)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 

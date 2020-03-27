@@ -23,7 +23,7 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   /** Index of the currently active item. */
   activeIndex?: number | string;
 
-  /** A navigation may have just utils. */
+  /** A navigation may have just icons. */
   iconOnly?: boolean;
 
   /** Shorthand array of props for Navigation. */
