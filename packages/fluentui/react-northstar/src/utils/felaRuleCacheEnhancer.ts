@@ -1,4 +1,7 @@
 import { IRenderer, TRule, TRuleProps, IStyle } from 'fela';
+import felaExpandCssShorthandsPlugin from './felaExpandCssShorthandsPlugin';
+
+const expandShorthand = felaExpandCssShorthandsPlugin();
 
 type Renderer = IRenderer & {
   _renderStyle: (style: IStyle, props: any) => string;
@@ -62,7 +65,7 @@ interface Cache {
 }
 
 const felaRuleCacheEnhancer = (renderer: Renderer): IRenderer => {
-  let _cache = {
+  const _cache = {
     ltr: {} as Cache,
     rtl: {} as Cache,
   };
@@ -111,7 +114,7 @@ const felaRuleCacheEnhancer = (renderer: Renderer): IRenderer => {
    *    exact type used by fela's type definitions.
    */
   function renderRule<T = TRuleProps>(rule: TRule<T>, props: any = {}): string {
-    const style = rule(props, renderer);
+    const style = expandShorthand(rule(props, renderer));
 
     // Find the cache for this configuration of props.
     let cache: Cache;
