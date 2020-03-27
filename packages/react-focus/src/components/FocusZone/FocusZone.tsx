@@ -628,8 +628,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.home:
           if (
-            this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false)
+            this._isContentEditableElement(ev.target as HTMLElement) ||
+            (this._isElementInput(ev.target as HTMLElement) &&
+              !this._shouldInputLoseFocus(ev.target as HTMLInputElement, false))
           ) {
             return false;
           }
@@ -645,8 +646,9 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
         case KeyCodes.end:
           if (
-            this._isElementInput(ev.target as HTMLElement) &&
-            !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true)
+            this._isContentEditableElement(ev.target as HTMLElement) ||
+            (this._isElementInput(ev.target as HTMLElement) &&
+              !this._shouldInputLoseFocus(ev.target as HTMLInputElement, true))
           ) {
             return false;
           }
@@ -1207,6 +1209,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
 
       this._updateTabIndexes(child);
     }
+  }
+
+  private _isContentEditableElement(element: HTMLElement): boolean {
+    return element && element.getAttribute('contenteditable') === 'true';
   }
 
   private _isElementInput(element: HTMLElement): boolean {
