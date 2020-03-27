@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PopperJS, { Boundary } from 'popper.js';
+import PopperJS from 'popper.js';
 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
