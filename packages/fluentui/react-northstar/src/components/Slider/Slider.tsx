@@ -24,6 +24,7 @@ import {
   UIComponentProps,
   setWhatInputSource,
   createShorthandFactory,
+  createPrimitiveShorthand,
 } from '../../utils';
 import {
   ComponentEventHandler,
@@ -35,7 +36,6 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
-import Box, { BoxProps } from '../Box/Box';
 
 const processInputValues = (
   p: Pick<SliderProps, 'min' | 'max'> & { value: string },
@@ -83,7 +83,7 @@ export interface SliderProps
   getA11yValueMessageOnChange?: (props: SliderProps) => string;
 
   /** Shorthand for the input component. */
-  input?: ShorthandValue<BoxProps>;
+  input?: ShorthandValue<React.InputHTMLAttributes<HTMLInputElement>>;
 
   /** Ref for input DOM node. */
   inputRef?: React.Ref<HTMLElement>;
@@ -204,21 +204,19 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
 
   // we need 2 wrappers around the slider rail, track, input and thumb slots to achieve correct component sizes
 
-  const inputElement = Box.create(input || type, {
+  const inputElement = createPrimitiveShorthand('input', input || type, {
     defaultProps: () =>
       getA11Props('input', {
         ...htmlInputProps,
-        as: 'input',
-        className: Slider.slotClassNames.input,
-        fluid,
+        className: cx(Slider.slotClassNames.input, classes.input),
         min: numericMin,
         max: numericMax,
         step,
-        styles: resolvedStyles.input,
         type,
         value: numericValue,
-        vertical,
       }),
+    generateKey: false,
+    mappedProp: 'type',
     overrideProps: handleInputOverrides,
   });
 

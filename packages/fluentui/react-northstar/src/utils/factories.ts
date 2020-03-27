@@ -138,6 +138,19 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
     });
 }
 
+export function createPrimitiveShorthand<C extends keyof JSX.IntrinsicElements, P extends JSX.IntrinsicElements[C]>(
+  Component: C,
+  value: ShorthandValue<P>,
+  options?: CreateShorthandOptions<P> & { mappedProp?: string },
+) {
+  return createShorthandFromValue({
+    Component,
+    value,
+    mappedProp: options.mappedProp,
+    options,
+  });
+}
+
 // ============================================================
 // Private Utils
 // ============================================================
@@ -240,6 +253,13 @@ function createShorthandFromValue<P>({
   // Merge styles
   if (defaultProps.styles || overrideProps.styles || usersProps.styles) {
     (props as any).styles = mergeStyles(defaultProps.styles, usersProps.styles, overrideProps.styles);
+  }
+
+  //
+  // Handle `as` prop
+  //
+  if (typeof Component === 'string' && props.as) {
+    Component = props.as;
   }
 
   // ----------------------------------------

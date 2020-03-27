@@ -8,7 +8,6 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import Box, { BoxProps } from '../Box/Box';
 import {
   ShorthandValue,
   WithAsProp,
@@ -17,7 +16,13 @@ import {
   ProviderContextPrepared,
   FluentComponentStaticProps,
 } from '../../types';
-import { createShorthandFactory, UIComponentProps, commonPropTypes, ContentComponentProps } from '../../utils';
+import {
+  createShorthandFactory,
+  UIComponentProps,
+  commonPropTypes,
+  ContentComponentProps,
+  createPrimitiveShorthand,
+} from '../../utils';
 import { ListContext, ListContextSubscribedValue } from './listContext';
 
 export interface ListItemSlotClassNames {
@@ -32,19 +37,21 @@ export interface ListItemSlotClassNames {
   endMedia: string;
 }
 
-export interface ListItemProps extends UIComponentProps, ContentComponentProps<ShorthandValue<BoxProps>> {
+export interface ListItemProps
+  extends UIComponentProps,
+    ContentComponentProps<ShorthandValue<React.HTMLAttributes<HTMLDivElement>>> {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<ListItemBehaviorProps>;
-  contentMedia?: ShorthandValue<BoxProps>;
+  contentMedia?: ShorthandValue<React.HTMLAttributes<HTMLDivElement>>;
   /** Toggle debug mode. */
   debug?: boolean;
-  header?: ShorthandValue<BoxProps>;
-  endMedia?: ShorthandValue<BoxProps>;
-  headerMedia?: ShorthandValue<BoxProps>;
+  header?: ShorthandValue<React.HTMLAttributes<HTMLDivElement>>;
+  endMedia?: ShorthandValue<React.HTMLAttributes<HTMLDivElement>>;
+  headerMedia?: ShorthandValue<React.HTMLAttributes<HTMLDivElement>>;
 
   /** A list item can appear more important and draw the user's attention. */
   important?: boolean;
-  media?: ShorthandValue<BoxProps>;
+  media?: ShorthandValue<React.HTMLAttributes<HTMLDivElement>>;
 
   index?: number;
   /** A list item can indicate that it can be selected. */
@@ -134,7 +141,7 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     }),
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles<ListItemStylesProps>(ListItem.displayName, {
+  const { classes } = useStyles<ListItemStylesProps>(ListItem.displayName, {
     className: ListItem.className,
     mapPropsToStyles: () => ({
       debug,
@@ -162,41 +169,41 @@ const ListItem: React.FC<WithAsProp<ListItemProps> & { index: number }> &
     parentProps.onItemClick(e, props.index);
   };
 
-  const contentElement = Box.create(content, {
+  const contentElement = createPrimitiveShorthand('div', content, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.content,
-      styles: resolvedStyles.content,
+      className: cx(ListItem.slotClassNames.content, classes.content),
     }),
+    generateKey: false,
   });
-  const contentMediaElement = Box.create(contentMedia, {
+  const contentMediaElement = createPrimitiveShorthand('div', contentMedia, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.contentMedia,
-      styles: resolvedStyles.contentMedia,
+      className: cx(ListItem.slotClassNames.contentMedia, classes.contentMedia),
     }),
+    generateKey: false,
   });
-  const headerElement = Box.create(header, {
+  const headerElement = createPrimitiveShorthand('div', header, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.header,
-      styles: resolvedStyles.header,
+      className: cx(ListItem.slotClassNames.header, classes.header),
     }),
+    generateKey: false,
   });
-  const headerMediaElement = Box.create(headerMedia, {
+  const headerMediaElement = createPrimitiveShorthand('div', headerMedia, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.headerMedia,
-      styles: resolvedStyles.headerMedia,
+      className: cx(ListItem.slotClassNames.headerMedia, classes.headerMedia),
     }),
+    generateKey: false,
   });
-  const endMediaElement = Box.create(endMedia, {
+  const endMediaElement = createPrimitiveShorthand('div', endMedia, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.endMedia,
-      styles: resolvedStyles.endMedia,
+      className: cx(ListItem.slotClassNames.endMedia, classes.endMedia),
     }),
+    generateKey: false,
   });
-  const mediaElement = Box.create(media, {
+  const mediaElement = createPrimitiveShorthand('div', media, {
     defaultProps: () => ({
-      className: ListItem.slotClassNames.media,
-      styles: resolvedStyles.media,
+      className: cx(ListItem.slotClassNames.media, classes.media),
     }),
+    generateKey: false,
   });
 
   const element = (
