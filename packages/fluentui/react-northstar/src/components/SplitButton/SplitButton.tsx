@@ -162,7 +162,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     styles,
     unhandledProps,
   }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
-    const { button, disabled, menu, primary, secondary, toggleButton } = this.props;
+    const { button, disabled, menu, primary, secondary, toggleButton, size } = this.props;
     const trigger = Button.create(button, {
       defaultProps: () => ({
         styles: styles.menuButton,
@@ -191,10 +191,10 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
         )}
         {SplitButtonToggle.create(toggleButton, {
           defaultProps: () => ({
-            styles: styles.toggleButton,
             disabled,
             primary,
             secondary,
+            size,
             ...accessibility.attributes.toggleButton,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({

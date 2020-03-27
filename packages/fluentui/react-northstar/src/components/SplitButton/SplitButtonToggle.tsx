@@ -12,6 +12,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
   ContentComponentProps,
+  SizeValue,
 } from '../../utils';
 
 import {
@@ -29,7 +30,7 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
 
-  /** A button can show that it cannot be interacted with. */
+  /** A split button toggle can show that it cannot be interacted with. */
   disabled?: boolean;
 
   /**
@@ -39,21 +40,17 @@ export interface SplitButtonToggleProps extends UIComponentProps, ContentCompone
    */
   onClick?: ComponentEventHandler<SplitButtonToggleProps>;
 
-  /**
-   * Called after a user focuses the button.
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props.
-   */
-  onFocus?: ComponentEventHandler<SplitButtonToggleProps>;
-
-  /** A button can emphasize that it represents the primary action. */
+  /** A split button toggle can emphasize that it represents the primary action. */
   primary?: boolean;
 
-  /** A button can emphasize that it represents an alternative action. */
+  /** A split button toggle can emphasize that it represents an alternative action. */
   secondary?: boolean;
+
+  /** A split button toggle can be sized */
+  size?: SizeValue;
 }
 
-export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled'>;
+export type SplitButtonToggleStylesProps = Pick<SplitButtonToggleProps, 'primary' | 'disabled' | 'size'>;
 
 const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
   FluentComponentStaticProps<SplitButtonToggleProps> = props => {
@@ -61,20 +58,7 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
   const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
   setStart();
 
-  const {
-    accessibility,
-    // @ts-ignore
-    active,
-    as,
-    children,
-    content,
-    disabled,
-    primary,
-    className,
-    styles,
-    variables,
-    design,
-  } = props;
+  const { accessibility, as, children, content, disabled, primary, className, size, styles, variables, design } = props;
 
   const hasChildren = childrenExist(children);
 
@@ -82,7 +66,6 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     debugName: SplitButtonToggle.displayName,
     mapPropsToBehavior: () => ({
       as,
-      active,
       disabled,
     }),
     actionHandlers: {
@@ -98,6 +81,7 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     mapPropsToStyles: () => ({
       primary,
       disabled,
+      size,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -120,10 +104,6 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
     _.invoke(props, 'onClick', e, props);
   };
 
-  const handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(props, 'onFocus', e, props);
-  };
-
   const result = (
     <ElementType
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -131,7 +111,6 @@ const SplitButtonToggle: React.FC<WithAsProp<SplitButtonToggleProps>> &
         onClick: handleClick,
         disabled,
         className: classes.root,
-        onFocus: handleFocus,
         ...unhandledProps,
       })}
     >
@@ -156,14 +135,14 @@ SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),
   disabled: PropTypes.bool,
   onClick: PropTypes.func,
-  onFocus: PropTypes.func,
   primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
+  size: customPropTypes.size,
 };
 
 SplitButtonToggle.handledProps = Object.keys(SplitButtonToggle.propTypes) as any;
 
-SplitButtonToggle.create = createShorthandFactory({ Component: SplitButtonToggle, mappedProp: 'children' });
+SplitButtonToggle.create = createShorthandFactory({ Component: SplitButtonToggle, mappedProp: 'content' });
 
 /**
  * A SplitToggleButton allows users to customize the toggle button inside the SplitButton.

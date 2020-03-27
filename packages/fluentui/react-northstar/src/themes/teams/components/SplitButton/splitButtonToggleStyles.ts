@@ -1,4 +1,3 @@
-import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { SplitButtonToggleStylesProps } from '../../../../components/SplitButton/SplitButtonToggle';
 import { SplitButtonVariables } from './splitButtonVariables';
@@ -46,6 +45,11 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
       borderColor: v.toggleButtonBorderColor,
       boxShadow: v.toggleButtonBoxShadow,
 
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
+
+      ...getIconFillOrOutlineStyles({ outline: true }),
+
       ':before': {
         ...getIndicatorStyles(
           p.disabled ? v.toggleButtonColorDisabled : p.primary ? v.toggleButtonPrimaryColor : v.toggleButtonColor,
@@ -64,7 +68,6 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
       },
 
       ':active': {
-        ...createAnimationStyles('scaleDownSoft', theme),
         color: v.toggleButtonColorActive,
         backgroundColor: v.toggleButtonBackgroundColorActive,
         borderColor: v.toggleButtonBorderColorActive,
@@ -83,15 +86,15 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         },
       },
 
-      // Overrides for "primary" buttons
+      // Overrides for "primary" split button
       ...(p.primary && {
         color: v.toggleButtonPrimaryColor,
         backgroundColor: v.toggleButtonPrimaryBackgroundColor,
         borderColor: v.toggleButtonPrimaryBorderColor,
         boxShadow: v.toggleButtonPrimaryBoxShadow,
+        borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
 
         ':active': {
-          ...createAnimationStyles('scaleDownSoft', theme),
           backgroundColor: v.toggleButtonPrimaryBackgroundColorActive,
           boxShadow: 'none',
         },
@@ -102,7 +105,7 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         },
       }),
 
-      // Overrides for "disabled" buttons
+      // Overrides for "disabled" split button
       ...(p.disabled && {
         cursor: 'default',
         color: v.toggleButtonColorDisabled,
@@ -114,6 +117,15 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
 
         backgroundColor: v.toggleButtonBackgroundColorDisabled,
         borderColor: v.toggleButtonBorderColorDisabled,
+
+        borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
+      }),
+
+      ...(p.size === 'small' && {
+        height: v.smallDimension,
+        width: v.smallDimension,
+        minWidth: v.smallMinWidth,
+        boxShadow: v.smallBoxShadow,
       }),
     };
   },
