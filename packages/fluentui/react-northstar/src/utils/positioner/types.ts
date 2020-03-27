@@ -12,6 +12,12 @@ export interface PositioningProps {
    */
   align?: Alignment;
 
+  /** The element which will define the boundaries of the popper position for the flip behavior. */
+  flipBoundary?: PopperJS.Boundary | Element;
+
+  /** The element which will define the boundaries of the popper position for the overflow behavior. */
+  overflowBoundary?: PopperJS.Boundary | Element;
+
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
    * and align is also vertical ('top' | 'bottom') or if both position and align are horizontal ('before' | 'after'
