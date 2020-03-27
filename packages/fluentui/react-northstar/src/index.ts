@@ -229,6 +229,8 @@ export * from './components/Carousel/CarouselNavigation';
 export { default as CarouselNavigation } from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export { default as CarouselNavigationItem } from './components/Carousel/CarouselNavigationItem';
+export * from './components/Carousel/CarouselPaddle';
+export { default as CarouselPaddle } from './components/Carousel/CarouselPaddle';
 
 export * from './components/Table/Table';
 export { default as Table } from './components/Table/Table';
