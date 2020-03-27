@@ -1,4 +1,4 @@
-import { createSvgIcon, svgIconClassName } from '@fluentui/react-bindings';
+import { createSvgIcon, svgIconClassName } from '@fluentui/react-icons-northstar';
 import { ThemeInput } from '@fluentui/styles';
 import { mount } from 'enzyme';
 import * as React from 'react';
