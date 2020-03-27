@@ -5,7 +5,7 @@ import { CarouselVariables } from './carouselVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import paddleIndicatorUrl from './paddleIndicatorUrl';
-import { pxToRem } from 'src/utils';
+import { pxToRem } from '../../../../utils';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
