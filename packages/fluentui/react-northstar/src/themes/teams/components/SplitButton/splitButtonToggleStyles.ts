@@ -21,7 +21,13 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
     const { borderWidth } = siteVariables;
 
     const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables,
+      variables: {
+        borderRadius: v.focusBorderRadius,
+        borderWidth: v.focusBorderWidth,
+        focusInnerBorderColor: v.focusInnerBorderColor,
+        focusOuterBorderColor: v.focusOuterBorderColor,
+        zIndexes: { foreground: v.focusBorderZIndex },
+      },
       borderPadding: borderWidth,
     });
 

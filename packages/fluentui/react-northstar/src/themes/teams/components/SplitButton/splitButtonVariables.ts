@@ -41,9 +41,14 @@ export interface SplitButtonVariables {
 
   toggleButtonColorDisabled: string;
   toggleButtonBackgroundColorDisabled: string;
-  toggleButtonBorderColorDisabled: string;
 
   toggleButtonIndicatorSize: string;
+
+  focusBorderRadius: string;
+  focusBorderWidth: string;
+  focusInnerBorderColor: string;
+  focusOuterBorderColor: string;
+  focusBorderZIndex: string;
 }
 
 export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
@@ -89,5 +94,11 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
     toggleButtonBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
 
     toggleButtonIndicatorSize: pxToRem(16),
+
+    focusBorderRadius: siteVars.borderRadius,
+    focusBorderWidth: siteVars.borderWidth,
+    focusInnerBorderColor: siteVars.focusInnerBorderColor,
+    focusOuterBorderColor: siteVars.focusOuterBorderColor,
+    focusBorderZIndex: siteVars.zIndexes.foreground,
   };
 };

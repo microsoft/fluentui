@@ -35,7 +35,13 @@ const splitButtonStyles = {
 
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables,
+      variables: {
+        borderRadius: v.focusBorderRadius,
+        borderWidth: v.focusBorderWidth,
+        focusInnerBorderColor: v.focusInnerBorderColor,
+        focusOuterBorderColor: v.focusOuterBorderColor,
+        zIndexes: { foreground: v.focusBorderZIndex },
+      },
     });
 
     return {
