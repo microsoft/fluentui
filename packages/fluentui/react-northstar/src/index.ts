@@ -210,6 +210,8 @@ export { default as ReactionGroup } from './components/Reaction/ReactionGroup';
 
 export * from './components/SplitButton/SplitButton';
 export { default as SplitButton } from './components/SplitButton/SplitButton';
+export * from './components/SplitButton/SplitButtonToggle';
+export { default as SplitButtonToggle } from './components/SplitButton/SplitButtonToggle';
 
 export * from './components/Video/Video';
 export { default as Video } from './components/Video/Video';
