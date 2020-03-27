@@ -86,6 +86,29 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
   });
 };
 
+// Cache for which documents have registered which stylesheets.
+const docStyleMap = new WeakMap<Document, Map<string, boolean>>();
+
+const registerStyles = (stylesheet: string, target: Document) => {
+  let styleMap = docStyleMap.get(target);
+
+  if (!styleMap) {
+    styleMap = new Map();
+    docStyleMap.set(target, styleMap);
+  }
+
+  if (!styleMap.has(stylesheet)) {
+    const styleElement = target.createElement('style');
+
+    styleElement.setAttribute('data-funkytown', 'true');
+
+    styleElement.textContent = stylesheet;
+    target.head.appendChild(styleElement);
+
+    styleMap.set(stylesheet, true);
+  }
+};
+
 /**
  * The Provider passes the CSS-in-JS renderer, theme styles and other settings to Fluent UI components.
  */
@@ -118,6 +141,8 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     renderer: props.renderer,
     target: props.target,
     telemetry,
+    // TODO: test RTL, fix it
+    registerStyles,
   };
 
   const consumedContext: ProviderContextPrepared = React.useContext(ThemeContext);

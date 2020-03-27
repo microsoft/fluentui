@@ -1,8 +1,106 @@
-/* to be moved */
-$fillVar: --fill;
-$textVar: --text;
+// Hardcoded values used more than once.
+$sizeSmallest: 24px;
+$sizeSmaller: 24px;
+$sizeSmall: 24px;
+$sizeMedium: 32px;
+$sizeLarge: 36px;
+$sizeLarger: 42px;
+$sizeLargest: 48px;
 
+// Default variable values
+:root {
+  --avatarBorderColor: transparent;
+  --avatarBorderWidth: 0;
+  --squareAvatarBorderRadius: 3px;
+  --statusBorderColor: var(--bodyBackground);
+  --statusBorderWidth: 2px;
+}
+
+// Root slot
 .root {
-  background: var($fillVar, red);
-  color: var($textVar, green);
+  position: relative;
+  background-color: inherit;
+  display: inline-block;
+  vertical-align: middle;
+  width: $sizeMedium;
+  height: $sizeMedium;
+}
+
+// Image slot
+.image {
+  border-style: solid;
+  border-color: var(--avatarBorderColor);
+  border-width: var(--avatarBorderWidth);
+  height: 100%;
+  object-fit: cover;
+  vertical-align: top;
+  width: 100%;
+}
+
+// Label slot
+.label {
+  display: inline-block;
+  // width: sizeInRem,
+  // height: sizeInRem,
+  // lineHeight: sizeInRem,
+  // fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
+  vertical-align: top;
+  text-align: center;
+  padding: 0px;
+}
+
+// Status slot
+.status {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  box-shadow: 0 0 0 var(--statusBorderWidth) var(--statusBorderColor);
+}
+
+// Root modifier when props.size == smallest
+.sizeSmallest {
+  width: $sizeSmallest;
+  height: $sizeSmallest;
+}
+
+// Root modifier when props.size == smaller
+.sizeSmaller {
+  width: $sizeSmaller;
+  height: $sizeSmaller;
+}
+
+// Root modifier when props.size == small
+.sizeSmall {
+  width: $sizeSmall;
+  height: $sizeSmall;
+}
+
+// Root modifier when props.size == large
+.sizeLarge {
+  width: $sizeLarge;
+  height: $sizeLarge;
+}
+
+// Root modifier when props.size == larger
+// larger-abc123
+.sizeLarger {
+  width: $sizeLarger;
+  height: $sizeLarger;
+}
+
+// Root modifier when props.size == largest
+.sizeLargest {
+  width: $sizeLargest;
+  height: $sizeLargest;
+}
+
+// Modifiers
+.square {
+  .image {
+    border-radius: var(--squareAvatarBorderRadius);
+  }
+
+  .label {
+    border-radius: var(--squareAvatarBorderRadius);
+  }
 }

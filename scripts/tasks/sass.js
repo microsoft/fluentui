@@ -1,5 +1,4 @@
 // @ts-check
-
 const path = require('path');
 const { sassTask } = require('just-scripts');
 const postcssModules = require('postcss-modules');
@@ -11,20 +10,24 @@ const modules = postcssModules({
 const _fileNameToClassMap = {};
 
 function createTypeScriptModule(fileName, css) {
-  const { splitStyles } = require('@microsoft/load-themed-styles');
+  // const { splitStyles } = require('@microsoft/load-themed-styles');
 
   // Create a source file.
-  const source = [
-    `/* tslint:disable */`,
-    `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
-    `loadStyles(${JSON.stringify(splitStyles(css))});`,
-  ];
-
+  // const source = [
+  //   `/* tslint:disable */`,
+  //   `import { loadStyles } from \'@microsoft/load-themed-styles\';`,
+  //   `loadStyles(${JSON.stringify(splitStyles(css))});`,
+  // ];
   const map = _fileNameToClassMap[fileName];
 
-  for (let prop in map) {
-    source.push(`export const ${prop} = "${map[prop]}";`);
-  }
+  const source = [
+    `export const stylesheet = ${JSON.stringify(css)};`,
+    `export const classes = ${JSON.stringify(map, null, 2)};`,
+  ];
+
+  // for (let prop in map) {
+  //   source.push(`export const ${prop} = "${map[prop]}";`);
+  // }
 
   return source.join('\n');
 }
