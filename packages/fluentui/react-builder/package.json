@@ -5,12 +5,13 @@
   "author": "Levi Thomason <me@levithomason.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
-    "@fluentui/react-northstar": "^0.47.0",
-    "@fluentui/react-component-event-listener": "^0.47.0",
     "@babel/runtime": "^7.7.6",
+    "@fluentui/react-component-event-listener": "^0.47.0",
+    "@fluentui/react-northstar": "^0.47.0",
     "react-frame-component": "^4.1.1"
   },
   "devDependencies": {
+    "@types/react-frame-component": "^4.1.1",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0"
   },

@@ -64,7 +64,15 @@ const Canvas = ({
   );
 
   return (
-    <Frame title="Designer Canvas" frameBorder="0" width="100%" height="100%" style={style} id={id}>
+    <Frame
+      title="Designer Canvas"
+      frameBorder="0"
+      width="100%"
+      height="100%"
+      initialContent='<!DOCTYPE html><html><head><style>html {font-size: 14px;}</style></head><body><div class="frame-root"></div></body></html>'
+      style={style}
+      id={id}
+    >
       <FrameContextConsumer>
         {({ document, window }) => (
           <>
