@@ -1,14 +1,11 @@
+import { getElementType, getUnhandledProps, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import {
-  getElementType,
-  getUnhandledProps,
-  useStyles,
-  useTelemetry,
   SvgIconProps,
   svgIconClassName,
   svgIconDisplayName,
   svgIconHandledProps,
   SvgIconChildrenFn,
-} from '@fluentui/react-bindings';
+} from '@fluentui/react-icons-northstar';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore

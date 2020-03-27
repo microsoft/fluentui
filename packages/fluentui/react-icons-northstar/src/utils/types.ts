@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AccessibilityAttributes } from '@fluentui/accessibility';
 import { ComponentSlotStyle, ComponentVariablesInput } from '@fluentui/styles';
-import { ComponentDesignProp } from '../styles/types';
+import { ComponentDesignProp } from '@fluentui/react-bindings';
 
 // copy from @fluentui/react
 export type SvgIconSizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
