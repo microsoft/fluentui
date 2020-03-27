@@ -37,12 +37,12 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             // prettier-ignore
             { text: enDash + ' Fluent UI React', url: 'fluent-ui-react' },
             { text: enDash + ' Fabric Core', url: 'fabric-core' },
-            { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-icons-tool' },
+            { text: enDash + ' Fluent UI Icons tool', url: 'fluent-ui-utils-tool' },
           ],
         },
 
         {
-          sectionName: 'Available icons',
+          sectionName: 'Available utils',
           content: (
             <Pivot>
               <PivotItem headerText="Fluent UI React" className={styles.iconGrid}>

@@ -121,11 +121,11 @@ export type ThemeIconSpec = {
   icon: FontIconSpec | SvgIconSpec;
 };
 
-// Some components have hard coded icon names, such as the arrow icons for a submenu or dropdown chevron.
+// Some components have hard coded icon names, such as the arrow utils for a submenu or dropdown chevron.
 // Different themes use different icon names.
 // Components which have hard dependencies on icon names use these `icon-*`.
-// A theme can map its icon names to these `icon-*` name in order to teach components to use their icons.
-// This allow theme switching to work with different icons.
+// A theme can map its icon names to these `icon-*` name in order to teach components to use their utils.
+// This allow theme switching to work with different utils.
 export type RequiredIconNames =
   | 'icon-checkmark'
   | 'icon-circle'

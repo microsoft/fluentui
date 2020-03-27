@@ -192,7 +192,7 @@ export interface IDetailsRowBaseProps
   };
 
   /**
-   * Whether to use fast icon and check components. The icons can't be targeted by customization
+   * Whether to use fast icon and check components. The utils can't be targeted by customization
    * but are still customizable via class names.
    * @defaultvalue true
    */

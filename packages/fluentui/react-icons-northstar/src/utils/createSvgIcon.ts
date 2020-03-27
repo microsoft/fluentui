@@ -2,9 +2,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { StylesContextValue } from '../styles/types';
-import useStyles from '../hooks/useStyles';
-import getUnhandledProps from '../utils/getUnhandledProps';
+import { StylesContextValue, useStyles, getUnhandledProps } from '@fluentui/react-bindings';
 import { SvgIconCreateFnParams, SvgIconProps } from './types';
 
 export const svgIconClassName = 'ui-icon';

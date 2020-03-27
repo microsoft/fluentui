@@ -5,7 +5,7 @@ const styles: any = stylesImport;
 
 export interface IIconGridProps {
   /**
-   * An array of icons.
+   * An array of utils.
    */
   icons: { name: string }[];
 
@@ -17,7 +17,7 @@ export interface IIconGridProps {
 
 export interface IIconGridState {
   /**
-   * The text we are filtering the icons by.
+   * The text we are filtering the utils by.
    */
   searchQuery: string;
 }

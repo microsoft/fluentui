@@ -17,9 +17,9 @@ for (const iconName of fakeIconList) {
   fakeIconSubSet.icons[iconName] = iconName;
 }
 
-describe('icons tests', () => {
+describe('utils tests', () => {
   it('icon register, get, and unregister test', () => {
-    // Register all icons
+    // Register all utils
     registerIcons(fakeIconSubSet);
     for (const iconName of fakeIconList) {
       const icon = getIcon(iconName);

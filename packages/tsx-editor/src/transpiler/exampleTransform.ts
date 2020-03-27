@@ -90,7 +90,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
   let finalComponent = component;
   if (identifiersByGlobal.Fabric) {
     // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed),
-    // and initialize icons in case the example uses them.
+    // and initialize utils in case the example uses them.
     finalComponent = component + 'Wrapper';
 
     // If eval-ing the code, the component can't use JSX format
@@ -104,7 +104,7 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
     }
 
     if (identifiersByGlobal.Fabric.indexOf('initializeIcons') === -1) {
-      lines.unshift('// Initialize icons in case this example uses them', 'initializeIcons();', '');
+      lines.unshift('// Initialize utils in case this example uses them', 'initializeIcons();', '');
       identifiersByGlobal.Fabric.push('initializeIcons');
     }
   }

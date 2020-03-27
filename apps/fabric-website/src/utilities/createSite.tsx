@@ -4,7 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as es6Promise from 'es6-promise';
 import { Fabric, setBaseUrl } from 'office-ui-fabric-react';
-import { initializeIcons } from '@uifabric/icons/lib/index';
+import { initializeIcons } from '@uifabric/utils/lib/index';
 import {
   INavPage,
   ISiteDefinition,

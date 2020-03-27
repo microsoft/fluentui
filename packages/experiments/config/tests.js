@@ -1,7 +1,7 @@
 /** Jest test setup file. */
 
 const { setIconOptions } = require('office-ui-fabric-react/lib/Styling');
-const { initializeIcons } = require('@uifabric/icons');
+const { initializeIcons } = require('@uifabric/utils');
 const { configure } = require('enzyme');
 const Adapter = require('enzyme-adapter-react-16');
 

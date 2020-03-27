@@ -1,5 +1,5 @@
 import { registerIcons, on, KeyCodes } from 'office-ui-fabric-react';
-import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
+import { initializeFileTypeIcons } from '@uifabric/file-type-utils';
 import { createSite } from './utilities/createSite';
 import * as platformPickerStyles from '@uifabric/example-app-base/lib/components/PlatformPicker/PlatformPicker.module.scss';
 import { SiteDefinition } from './SiteDefinition/index';

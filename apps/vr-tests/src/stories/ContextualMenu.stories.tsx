@@ -300,7 +300,7 @@ storiesOf('ContextualMenu', module)
     </Screener>
   ))
   .addStory('Root', () => <ContextualMenu items={items} />)
-  .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
+  .addStory('With utils', () => <ContextualMenu items={itemsWithIcons} />)
   .addStory('With secondaryText', () => <ContextualMenu items={itemsWithSecondaryText} />, {
     rtl: true,
   })

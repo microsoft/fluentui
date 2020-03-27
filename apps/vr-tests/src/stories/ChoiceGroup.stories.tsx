@@ -56,7 +56,7 @@ storiesOf('ChoiceGroup', module)
     />,
   )
   .addStory(
-    'With icons',
+    'With utils',
     () => (
       <ChoiceGroup
         label="Pick one icon"

@@ -63,7 +63,7 @@ export interface ICalendarYearProps extends IBaseProps<ICalendarYear> {
   onSelectYear?: (year: number) => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Customize navigation utils using ICalendarIconStrings
    */
   navigationIcons?: ICalendarIconStrings;
 

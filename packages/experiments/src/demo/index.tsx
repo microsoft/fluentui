@@ -1,7 +1,7 @@
 import { createDemoApp } from '@uifabric/example-app-base';
 import { AppDefinition } from './AppDefinition';
 import { GettingStartedPage } from './GettingStartedPage';
-import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
+import { initializeFileTypeIcons } from '@uifabric/file-type-utils';
 import { initializeFolderCovers } from '../components/FolderCover/initializeFolderCovers';
 
 initializeFileTypeIcons();

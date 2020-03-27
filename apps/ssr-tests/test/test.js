@@ -20,7 +20,7 @@ library.setRTL(false);
 let responsiveLib = require('office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode');
 responsiveLib.setResponsiveMode(responsiveLib.ResponsiveMode.large);
 
-// Initialize icons.
+// Initialize utils.
 const { initializeIcons } = require('office-ui-fabric-react/lib/Icons');
 initializeIcons('dist/');
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@uifabric/utils';
 
 import TodoApp from './TodoApp';
 

@@ -144,7 +144,7 @@ describe('ContextualMenu', () => {
     expect(checkmarkIconEl.classList.contains('checkmarkIconFoo')).toBeTruthy();
   });
 
-  it('applies getItemClassNames for menu items with icons', () => {
+  it('applies getItemClassNames for menu items with utils', () => {
     const items: IContextualMenuItem[] = [
       {
         key: 'Later Today',

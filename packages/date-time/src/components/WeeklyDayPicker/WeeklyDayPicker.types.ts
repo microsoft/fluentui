@@ -41,7 +41,7 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
   strings: IWeeklyDayPickerStrings;
 
   /**
-   * Customize navigation icons. Only uses previous and next icons
+   * Customize navigation utils. Only uses previous and next utils
    */
   navigationIcons?: ICalendarIconStrings;
 

@@ -48,7 +48,7 @@ export interface IMicroFeedbackSlots {
   root?: IStackSlot;
 
   /**
-   * Defines the stack container for the Like/Dislike pair of icons.
+   * Defines the stack container for the Like/Dislike pair of utils.
    */
   iconContainer?: IStackSlot;
 

@@ -30,7 +30,7 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   /** Indicator for the Carousel Navigation Item. */
   indicator?: ShorthandValue<BoxProps>;
 
-  /** A Carousel Navigation may have just icons. */
+  /** A Carousel Navigation may have just utils. */
   iconOnly?: boolean;
 
   /** CarouselNavigationIntem index inside CarouselNavigation. */

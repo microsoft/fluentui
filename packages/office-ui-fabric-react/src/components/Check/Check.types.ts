@@ -37,7 +37,7 @@ export interface ICheckProps {
   className?: string;
 
   /**
-   * Whether to use fast icon components. The icons can't be targeted by customization but are
+   * Whether to use fast icon components. The utils can't be targeted by customization but are
    * still customizable via class names.
    * @defaultvalue true
    */

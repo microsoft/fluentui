@@ -1,5 +1,5 @@
 // @ts-check
-import { initializeIcons } from '@uifabric/icons';
+import { initializeIcons } from '@uifabric/utils';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';

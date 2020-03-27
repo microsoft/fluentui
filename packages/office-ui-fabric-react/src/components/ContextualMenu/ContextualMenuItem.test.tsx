@@ -93,7 +93,7 @@ describe('ContextMenuItemChildren', () => {
     });
   });
 
-  describe('when it has icons', () => {
+  describe('when it has utils', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
       // tslint:disable-next-line:deprecation

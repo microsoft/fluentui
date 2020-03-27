@@ -335,7 +335,7 @@ const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
 
       acc.componentStyles = mergeThemeStyles(acc.componentStyles, withDebugId(next.componentStyles, nextDebugId));
 
-      // Merge icons set, last one wins in case of collisions
+      // Merge utils set, last one wins in case of collisions
       acc.icons = mergeIcons(acc.icons, next.icons);
 
       acc.fontFaces = mergeFontFaces(...acc.fontFaces, ...(next.fontFaces || []));

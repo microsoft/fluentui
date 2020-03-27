@@ -58,7 +58,7 @@ export interface ICalendarDayProps extends IBaseProps<ICalendarDay>, ICalendarDa
   onDismiss?: () => void;
 
   /**
-   * Customize navigation icons using ICalendarIconStrings
+   * Customize navigation utils using ICalendarIconStrings
    */
   navigationIcons: ICalendarIconStrings;
 

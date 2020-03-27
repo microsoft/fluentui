@@ -8,7 +8,7 @@ import * as IconNames from '../../../../packages/icons/src/IconNames';
 
 import { TestImages } from '@uifabric/example-data';
 
-// Rendering allIcons tests that the icon package can initialize all icons from the cdn
+// Rendering allIcons tests that the icon package can initialize all utils from the cdn
 const allIcons: JSX.Element[] = [];
 // tslint:disable-next-line
 for (let iconName in (IconNames as any)['IconNames']) {

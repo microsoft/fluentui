@@ -108,7 +108,7 @@ export const stylesPagesWeb: INavPage[] = [
     pages: [
       {
         title: 'Fluent UI Icons',
-        url: '#/styles/web/icons',
+        url: '#/styles/web/utils',
         component: () => <LoadingComponent title="Fluent UI Icons" />,
         getComponent: cb =>
           require.ensure([], require =>
@@ -117,13 +117,13 @@ export const stylesPagesWeb: INavPage[] = [
       },
       // {
       //   title: 'Office Icons',
-      //   url: '#/styles/web/office-icons',
+      //   url: '#/styles/web/office-utils',
       //   component: () => <LoadingComponent title="Office Icons" />
       //   getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/IconsPage/IconsPage').IconsPage))
       // },
       {
         title: 'Office Brand Icons',
-        url: '#/styles/web/office-brand-icons',
+        url: '#/styles/web/office-brand-utils',
         component: () => <LoadingComponent title="Office Brand Icons" />,
         getComponent: cb =>
           require.ensure([], require =>
@@ -132,7 +132,7 @@ export const stylesPagesWeb: INavPage[] = [
       },
       {
         title: 'File Type Icons',
-        url: '#/styles/web/file-type-icons',
+        url: '#/styles/web/file-type-utils',
         component: () => <LoadingComponent title="File Type Icons" />,
         getComponent: cb =>
           require.ensure([], require =>

@@ -23,7 +23,7 @@ export type IHeaderStyleProps = Pick<IHeaderProps, 'theme' | 'isLargeDown'>;
 export interface IHeaderStyles {
   root: IStyle;
   title: IStyle;
-  /** Styles for each header button. To style the icons, use `subComponentStyles.icons`. */
+  /** Styles for each header button. To style the utils, use `subComponentStyles.utils`. */
   button: IStyle;
   /** Styles for the container of the right-side buttons (settings + `sideLinks`) */
   buttons: IStyle;
@@ -33,6 +33,6 @@ export interface IHeaderStyles {
 export interface IHeaderSubComponentStyles {
   // TODO: remove any after TS 3 upgrade
   // tslint:disable:no-any
-  /** Styles for the hamburger and settings icons */
+  /** Styles for the hamburger and settings utils */
   icons: IStyleFunctionOrObject<IIconStyleProps, any>;
 }
