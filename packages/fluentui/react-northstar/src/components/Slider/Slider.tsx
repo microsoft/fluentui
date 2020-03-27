@@ -185,17 +185,19 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
     rtl: context.rtl,
   });
 
-  const handleInputOverrides = () => ({
-    onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = _.get(e, 'target.value');
-      _.invoke(props, 'onChange', e, { ...props, value });
-      actions.change(value);
-    },
-    onMouseDown: (e: React.MouseEvent<HTMLInputElement>) => {
-      setWhatInputSource(context.target, 'mouse');
-      _.invoke(props, 'onMouseDown', e, props);
-    },
-  });
+  const handleInputOverrides = (): BoxProps =>
+    ({
+      onChange: (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = _.get(e, 'target.value');
+        _.invoke(props, 'onChange', e, { ...props, value });
+        actions.change(value);
+      },
+      onMouseDown: (e: React.MouseEvent<HTMLInputElement>) => {
+        setWhatInputSource(context.target, 'mouse');
+        _.invoke(props, 'onMouseDown', e, props);
+      },
+      /* TODO fix me */
+    } as unknown);
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Slider.handledProps, props);

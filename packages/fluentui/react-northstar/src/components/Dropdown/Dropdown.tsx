@@ -500,12 +500,13 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                           styles: styles.clearIndicator,
                           accessibility: indicatorBehavior,
                         }),
-                        overrideProps: (predefinedProps: BoxProps) => ({
-                          onClick: (e: React.SyntheticEvent<HTMLElement>) => {
-                            _.invoke(predefinedProps, 'onClick', e);
-                            this.handleClear(e);
-                          },
-                        }),
+                        overrideProps: (predefinedProps: BoxProps): BoxProps =>
+                          ({
+                            onClick: (e: React.SyntheticEvent<HTMLElement>) => {
+                              _.invoke(predefinedProps, 'onClick', e);
+                              this.handleClear(e);
+                            },
+                          } as unknown),
                       })
                     : Box.create(toggleIndicator, {
                         defaultProps: () => ({
@@ -513,15 +514,16 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
                           styles: styles.toggleIndicator,
                           accessibility: indicatorBehavior,
                         }),
-                        overrideProps: (predefinedProps: BoxProps) => ({
-                          onClick: e => {
-                            if (!disabled) {
-                              getToggleButtonProps({ disabled }).onClick(e);
-                            }
+                        overrideProps: (predefinedProps: BoxProps): BoxProps =>
+                          ({
+                            onClick: e => {
+                              if (!disabled) {
+                                getToggleButtonProps({ disabled }).onClick(e);
+                              }
 
-                            _.invoke(predefinedProps, 'onClick', e);
-                          },
-                        }),
+                              _.invoke(predefinedProps, 'onClick', e);
+                            },
+                          } as unknown),
                       })}
                   {this.renderItemsList(
                     styles,
@@ -707,16 +709,17 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               'aria-hidden': !open,
             }),
 
-            overrideProps: (predefinedProps: ListProps) => ({
-              onFocus: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
-                this.handleTriggerButtonOrListFocus();
-                _.invoke(predefinedProps, 'onClick', e, listProps);
-              },
-              onBlur: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
-                this.handleListBlur(e);
-                _.invoke(predefinedProps, 'onBlur', e, listProps);
-              },
-            }),
+            overrideProps: (predefinedProps: ListProps): ListProps =>
+              ({
+                onFocus: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
+                  this.handleTriggerButtonOrListFocus();
+                  _.invoke(predefinedProps, 'onClick', e, listProps);
+                },
+                onBlur: (e: React.SyntheticEvent<HTMLElement>, listProps: ListProps) => {
+                  this.handleListBlur(e);
+                  _.invoke(predefinedProps, 'onBlur', e, listProps);
+                },
+              } as unknown),
           })}
         </Popper>
       </Ref>

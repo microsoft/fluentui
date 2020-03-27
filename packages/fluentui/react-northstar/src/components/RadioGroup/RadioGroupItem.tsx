@@ -153,9 +153,10 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
             }),
           })}
           {Box.create(label, {
-            defaultProps: () => ({
-              as: 'span',
-            }),
+            defaultProps: () =>
+              ({
+                as: 'span',
+              } as BoxProps),
           })}
         </ElementType>
       </Ref>

@@ -89,7 +89,7 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
 
   static defaultProps = {
     as: 'span',
-    accessibility: embedBehavior as Accessibility,
+    accessibility: embedBehavior,
     control: {},
   };
 
@@ -124,14 +124,16 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
     _.invoke(this.props, 'onClick', e, { ...this.props, active: newActive });
   };
 
-  handleFrameOverrides = predefinedProps => ({
-    onLoad: (e: React.SyntheticEvent) => {
-      _.invoke(predefinedProps, 'onLoad', e);
+  handleFrameOverrides = (predefinedProps: BoxProps): BoxProps =>
+    ({
+      onLoad: (e: React.SyntheticEvent<HTMLIFrameElement>) => {
+        _.invoke(predefinedProps, 'onLoad', e);
 
-      this.setState({ iframeLoaded: true });
-      this.frameRef.current.contentWindow.focus();
-    },
-  });
+        this.setState({ iframeLoaded: true });
+        this.frameRef.current.contentWindow.focus();
+      },
+      /* TODO fix me */
+    } as unknown);
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps, styles, variables }) {
     const { control, iframe, placeholder, video } = this.props;

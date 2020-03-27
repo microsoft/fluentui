@@ -1,25 +1,27 @@
+import { mergeStyles } from '@fluentui/styles';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as React from 'react';
+
 import {
   ShorthandValue,
-  Props,
   PropsOf,
   ShorthandRenderCallback,
   ShorthandRenderFunction,
   ShorthandRenderer,
+  ShorthandRenderProp,
 } from '../types';
-import { mergeStyles } from '@fluentui/styles';
+import { UIComponentProps } from '../utils/commonPropInterfaces';
 
 type HTMLTag = 'iframe' | 'img' | 'input';
 type ShorthandProp = 'children' | 'src' | 'type';
 
 interface CreateShorthandOptions<P> {
   /** Default props object */
-  defaultProps?: () => Partial<Props<P>>;
+  defaultProps?: () => Partial<P>;
 
   /** Override props object or function (called with regular props) */
-  overrideProps?: Partial<Props<P>> | ((props: P) => Partial<Props<P>>);
+  overrideProps?: Partial<P> | ((props: P) => Partial<P>);
 
   /** Whether or not automatic key generation is allowed */
   generateKey?: boolean;
@@ -54,7 +56,7 @@ export function createShorthand<P>({
   mappedArrayProp?: string;
   valueOrRenderCallback?: ShorthandValue<P> | ShorthandRenderCallback<P>;
   options?: CreateShorthandOptions<P>;
-}): React.ReactElement<Props> | null | undefined {
+}): React.ReactElement<P> | null | undefined {
   const valIsRenderFunction =
     typeof valueOrRenderCallback === 'function' && !React.isValidElement(valueOrRenderCallback);
   if (valIsRenderFunction) {
@@ -84,7 +86,7 @@ export function createShorthand<P>({
     Component,
     mappedProp,
     mappedArrayProp,
-    value: valueOrRenderCallback as ShorthandValue<Props>,
+    value: valueOrRenderCallback as ShorthandValue<P>,
     options,
   });
 }
@@ -142,7 +144,14 @@ export function createShorthandFactory<P>({ Component, mappedProp, mappedArrayPr
 // Private Utils
 // ============================================================
 
-function createShorthandFromValue<P>({
+function createShorthandFromValue<
+  P extends UIComponentProps & {
+    as?: React.ElementType;
+    children?: P['children'] | ShorthandRenderProp<P>;
+    key?: React.Key;
+    style?: React.CSSProperties;
+  }
+>({
   Component,
   mappedProp,
   mappedArrayProp,
@@ -199,47 +208,46 @@ function createShorthandFromValue<P>({
   // ----------------------------------------
   // Build up props
   // ----------------------------------------
-  const defaultProps = options.defaultProps ? options.defaultProps() : ({} as Props<P>);
+  const defaultProps: Partial<P> = options.defaultProps ? options.defaultProps() : ({} as P);
 
   // User's props
-  const usersProps =
-    (valIsReactElement && ({} as Props<P>)) || (valIsPropsObject && (value as Props<P>)) || ({} as Props<P>);
+  const usersProps: P = (valIsReactElement && ({} as P)) || (valIsPropsObject && (value as P)) || ({} as P);
 
   // Override props
-  const overrideProps: Props<P> =
+  const overrideProps: P =
     typeof options.overrideProps === 'function'
-      ? (options.overrideProps({ ...defaultProps, ...usersProps }) as Props<P>)
-      : (options.overrideProps as Props<P>) || ({} as Props<P>);
+      ? (options.overrideProps({ ...defaultProps, ...usersProps }) as P)
+      : (options.overrideProps as P) || ({} as P);
 
   // Merge props
-  const props: Props<P> = { ...defaultProps, ...usersProps, ...overrideProps };
+  const props: P = { ...defaultProps, ...usersProps, ...overrideProps };
 
-  const mappedHTMLProps = mappedProps[overrideProps.as || defaultProps.as];
+  const mappedHTMLProps = mappedProps[(overrideProps.as as HTMLTag) || (defaultProps.as as HTMLTag)];
 
   // Map prop for primitive value
   if (valIsPrimitive || valIsReactElement) {
-    (props as any)[mappedHTMLProps || mappedProp || 'children'] = value;
+    props[mappedHTMLProps || mappedProp || 'children'] = value;
   }
 
   // Map prop for array value
   if (valIsArray) {
-    (props as any)[mappedHTMLProps || mappedArrayProp || 'children'] = value;
+    props[mappedHTMLProps || mappedArrayProp || 'children'] = value;
   }
 
   // Merge className
   if (defaultProps.className || overrideProps.className || usersProps.className) {
     const mergedClassesNames = cx(defaultProps.className, overrideProps.className, usersProps.className);
-    (props as any).className = _.uniq(mergedClassesNames.split(' ')).join(' ');
+    props.className = _.uniq(mergedClassesNames.split(' ')).join(' ');
   }
 
   // Merge style
   if (defaultProps.style || overrideProps.style || usersProps.style) {
-    (props as any).style = { ...defaultProps.style, ...usersProps.style, ...overrideProps.style };
+    props.style = { ...defaultProps.style, ...usersProps.style, ...overrideProps.style };
   }
 
   // Merge styles
   if (defaultProps.styles || overrideProps.styles || usersProps.styles) {
-    (props as any).styles = mergeStyles(defaultProps.styles, usersProps.styles, overrideProps.styles);
+    props.styles = mergeStyles(defaultProps.styles, usersProps.styles, overrideProps.styles);
   }
 
   // ----------------------------------------
@@ -268,6 +276,7 @@ function createShorthandFromValue<P>({
   }
 
   // Remove the kind prop from the props object
+  // @ts-ignore
   delete props.kind;
 
   // ----------------------------------------

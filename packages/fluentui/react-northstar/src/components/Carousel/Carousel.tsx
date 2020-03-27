@@ -250,22 +250,23 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     }
   }
 
-  overrideItemProps = predefinedProps => ({
-    onFocus: (e, itemProps) => {
-      this.setState({
-        shouldFocusContainer: e.currentTarget === e.target,
-        isFromKeyboard: isFromKeyboard(),
-      });
-      _.invoke(predefinedProps, 'onFocus', e, itemProps);
-    },
-    onBlur: (e, itemProps) => {
-      this.setState({
-        shouldFocusContainer: e.currentTarget.contains(e.relatedTarget),
-        isFromKeyboard: false,
-      });
-      _.invoke(predefinedProps, 'onBlur', e, itemProps);
-    },
-  });
+  overrideItemProps = (predefinedProps: CarouselItemProps): CarouselItemProps =>
+    ({
+      onFocus: (e, itemProps: CarouselItemProps) => {
+        this.setState({
+          shouldFocusContainer: e.currentTarget === e.target,
+          isFromKeyboard: isFromKeyboard(),
+        });
+        _.invoke(predefinedProps, 'onFocus', e, itemProps);
+      },
+      onBlur: (e, itemProps: CarouselItemProps) => {
+        this.setState({
+          shouldFocusContainer: e.currentTarget.contains(e.relatedTarget),
+          isFromKeyboard: false,
+        });
+        _.invoke(predefinedProps, 'onBlur', e, itemProps);
+      },
+    } as unknown);
 
   renderContent = (accessibility, classes, unhandledProps) => {
     const { getItemPositionText, items, circular } = this.props;

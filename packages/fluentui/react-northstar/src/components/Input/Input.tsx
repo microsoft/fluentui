@@ -184,7 +184,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
       }),
       overrideProps: {
         as: (wrapper && (wrapper as any).as) || ElementType,
-      },
+      } as unknown,
     });
   }
 
