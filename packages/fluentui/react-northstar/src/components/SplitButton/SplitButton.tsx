@@ -23,11 +23,6 @@ import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
 
-export interface SplitButtonSlotClassNames {
-  toggleButton: string;
-  size?: SizeValue;
-}
-
 export interface SplitButtonProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
@@ -98,10 +93,6 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
   static Toggle = SplitButtonToggle;
 
   static className = 'ui-splitbutton';
-
-  static slotClassNames: SplitButtonSlotClassNames = {
-    toggleButton: `${SplitButton.className}__toggleButton`,
-  };
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -201,7 +192,6 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
         {SplitButtonToggle.create(toggleButton, {
           defaultProps: () => ({
             styles: styles.toggleButton,
-            className: SplitButton.slotClassNames.toggleButton,
             disabled,
             primary,
             secondary,

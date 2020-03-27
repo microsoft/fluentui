@@ -150,7 +150,7 @@ SplitButtonToggle.defaultProps = {
 };
 
 SplitButtonToggle.displayName = 'SplitButtonToggle';
-SplitButtonToggle.className = 'ui-splitbutton__toggleButton'; // TODO get this from the SplitButton
+SplitButtonToggle.className = 'ui-splitbutton__toggle';
 
 SplitButtonToggle.propTypes = {
   ...commonPropTypes.createCommon({}),
