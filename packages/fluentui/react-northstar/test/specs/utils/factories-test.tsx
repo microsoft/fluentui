@@ -711,7 +711,7 @@ describe('factories', () => {
             testCreateShorthand(
               {
                 mappedArrayProp,
-                value: value,
+                value,
                 defaultProps: () => ({ as: 'unsupported' }),
               },
               { as: 'unsupported', [mappedArrayProp]: value },
