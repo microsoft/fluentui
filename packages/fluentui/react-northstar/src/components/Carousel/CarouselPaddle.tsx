@@ -1,4 +1,4 @@
-import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
+import { Accessibility, buttonBehavior, ButtonBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -32,7 +32,7 @@ export interface CarouselPaddleProps
     ContentComponentProps<ShorthandValue<BoxProps>>,
     ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<ButtonBehaviorProps>;
 
   /** A paddle can show that it cannot be interacted with. */
   disabled?: boolean;
@@ -72,8 +72,6 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
 
   const {
     accessibility,
-    // @ts-ignore
-    active,
     as,
     children,
     content,
@@ -92,7 +90,6 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     debugName: CarouselPaddle.displayName,
     mapPropsToBehavior: () => ({
       as,
-      active,
       disabled,
     }),
     actionHandlers: {
@@ -186,7 +183,7 @@ CarouselPaddle.propTypes = {
 
 CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
-CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'children' });
+CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
 
 CarouselPaddle.slotClassNames = {
   content: `${CarouselPaddle.className}__content`,

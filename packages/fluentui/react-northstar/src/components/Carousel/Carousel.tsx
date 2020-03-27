@@ -155,8 +155,8 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static defaultProps = {
     accessibility: carouselBehavior as Accessibility,
-    paddlePrevious: { previous: true },
-    paddleNext: { next: true },
+    paddlePrevious: {},
+    paddleNext: {},
   };
 
   static Item = CarouselItem;
