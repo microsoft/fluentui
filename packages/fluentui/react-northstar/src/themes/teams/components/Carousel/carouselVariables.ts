@@ -33,6 +33,11 @@ export interface CarouselVariables {
   paddleBorderColorDisabled: string;
 
   paddleIndicatorSize: string;
+
+  focusBorderRadius: string;
+  focusBorderWidth: string;
+  focusInnerBorderColor: string;
+  focusBorderZIndex: string;
 }
 
 export default (siteVars): CarouselVariables => ({
@@ -68,4 +73,9 @@ export default (siteVars): CarouselVariables => ({
   paddleBorderColorDisabled: 'transparent',
 
   paddleIndicatorSize: pxToRem(16),
+
+  focusBorderRadius: siteVars.borderRadius,
+  focusBorderWidth: siteVars.borderWidth,
+  focusInnerBorderColor: siteVars.focusInnerBorderColor,
+  focusBorderZIndex: siteVars.zIndexes.foreground,
 });
