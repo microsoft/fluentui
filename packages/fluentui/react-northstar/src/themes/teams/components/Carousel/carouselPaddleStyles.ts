@@ -5,6 +5,7 @@ import { CarouselVariables } from './carouselVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import paddleIndicatorUrl from './paddleIndicatorUrl';
+import { pxToRem } from 'src/utils';
 
 const getIndicatorStyles = (color: string, next: boolean, size: string): ICSSInJSStyle => {
   return {
@@ -44,6 +45,21 @@ const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleStylesProp
       borderStyle: 'solid',
       borderColor: v.paddleBorderColor,
       boxShadow: v.paddleBoxShadow,
+
+      ...(p.next && {
+        height: pxToRem(v.paddleNextSize),
+        top: pxToRem(-v.height / 2 - v.paddleNextSize / 2),
+        left: pxToRem(v.width - 2 * v.paddleNextSize),
+      }),
+
+      ...(p.previous && {
+        height: pxToRem(v.paddlePreviousSize),
+        top: pxToRem(-v.height / 2 - v.paddlePreviousSize / 2),
+      }),
+
+      ...(p.hidden && {
+        visibility: 'hidden',
+      }),
 
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),

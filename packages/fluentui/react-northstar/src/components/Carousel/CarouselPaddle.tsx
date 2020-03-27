@@ -37,19 +37,15 @@ export interface CarouselPaddleProps
   /** A paddle can show that it cannot be interacted with. */
   disabled?: boolean;
 
+  /** Indicates whether the paddle should be hidden. */
+  hidden?: boolean;
+
   /**
-   * Called after a user clicks the button.
+   * Called after a user clicks the paddle.
    * @param event - React's original SyntheticEvent.
    * @param data - All props.
    */
   onClick?: ComponentEventHandler<CarouselPaddleProps>;
-
-  /**
-   * Called after a user focuses the button.
-   * @param event - React's original SyntheticEvent.
-   * @param data - All props.
-   */
-  onFocus?: ComponentEventHandler<CarouselPaddleProps>;
 
   /** A paddle can indicate that it slides to the next item. */
   next?: boolean;
@@ -62,7 +58,7 @@ export type CarouselPaddleSlotClassNames = {
   content: string;
 };
 
-export type CarouselPaddleStylesProps = Pick<CarouselPaddleProps, 'disabled' | 'next' | 'previous'>;
+export type CarouselPaddleStylesProps = Pick<CarouselPaddleProps, 'disabled' | 'next' | 'previous' | 'hidden'>;
 
 const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
   FluentComponentStaticProps<CarouselPaddleProps> & { slotClassNames: CarouselPaddleSlotClassNames } = props => {
@@ -74,14 +70,15 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     accessibility,
     as,
     children,
+    className,
     content,
     disabled,
-    className,
+    design,
+    hidden,
     next,
     previous,
     styles,
     variables,
-    design,
   } = props;
 
   const hasChildren = childrenExist(children);
@@ -104,6 +101,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     className: CarouselPaddle.className,
     mapPropsToStyles: () => ({
       disabled,
+      hidden,
       next,
       previous,
     }),
@@ -128,10 +126,6 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     _.invoke(props, 'onClick', e, props);
   };
 
-  const handleFocus = (e: React.SyntheticEvent) => {
-    _.invoke(props, 'onFocus', e, props);
-  };
-
   const result = (
     <ElementType
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -139,7 +133,6 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
         onClick: handleClick,
         disabled,
         className: classes.root,
-        onFocus: handleFocus,
         ...unhandledProps,
       })}
     >
@@ -175,8 +168,8 @@ CarouselPaddle.propTypes = {
     content: 'shorthand',
   }),
   disabled: PropTypes.bool,
+  hidden: PropTypes.bool,
   onClick: PropTypes.func,
-  onFocus: PropTypes.func,
   next: customPropTypes.every([customPropTypes.disallow(['previous']), PropTypes.bool]),
   previous: customPropTypes.every([customPropTypes.disallow(['next']), PropTypes.bool]),
 };

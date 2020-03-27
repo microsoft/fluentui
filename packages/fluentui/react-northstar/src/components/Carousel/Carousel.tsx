@@ -381,8 +381,9 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     },
   });
 
-  renderPaddles = (accessibility, styles) => {
-    const { paddlePrevious, paddleNext } = this.props;
+  renderPaddles = accessibility => {
+    const { paddlePrevious, paddleNext, items, circular } = this.props;
+    const { activeIndex } = this.state;
 
     return (
       <>
@@ -391,7 +392,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
             defaultProps: () => ({
               className: Carousel.slotClassNames.paddlePrevious,
               previous: true,
-              styles: styles.paddlePrevious,
+              hidden: items !== undefined && !circular && activeIndex === 0,
               ...accessibility.attributes.paddlePrevious,
               ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddlePrevious, paddlePrevious),
             }),
@@ -404,7 +405,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
             defaultProps: () => ({
               className: Carousel.slotClassNames.paddleNext,
               next: true,
-              styles: styles.paddleNext,
+              hidden: items !== undefined && !circular && activeIndex === items.length - 1,
               ...accessibility.attributes.paddleNext,
               ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddleNext, paddleNext),
             }),
@@ -451,7 +452,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     );
   };
 
-  renderComponent({ ElementType, classes, styles, accessibility, unhandledProps }) {
+  renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
     const { children } = this.props;
     return (
       <ElementType
@@ -465,7 +466,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
         ) : (
           <>
             {this.renderContent(accessibility, classes, unhandledProps)}
-            {this.renderPaddles(accessibility, styles)}
+            {this.renderPaddles(accessibility)}
             {this.renderNavigation()}
           </>
         )}
