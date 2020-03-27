@@ -1,4 +1,4 @@
-import { Accessibility, buttonBehavior } from '@fluentui/accessibility';
+import { Accessibility, buttonBehavior, ButtonBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -28,7 +28,7 @@ import { ThemeContext } from 'react-fela';
 
 export interface SplitButtonToggleProps extends UIComponentProps, ContentComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<ButtonBehaviorProps>;
 
   /** A split button toggle can show that it cannot be interacted with. */
   disabled?: boolean;
