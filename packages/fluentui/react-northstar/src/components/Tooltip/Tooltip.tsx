@@ -103,9 +103,11 @@ const Tooltip: React.FC<TooltipProps> &
     align,
     children,
     content,
+    flipBoundary,
     mountNode,
     mouseLeaveDelay,
     offset,
+    overflowBoundary,
     pointing,
     position,
     positionFixed,
@@ -230,9 +232,11 @@ const Tooltip: React.FC<TooltipProps> &
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
-          pointerTargetRef={pointerTargetRef}
           align={align}
+          flipBoundary={flipBoundary}
           offset={offset}
+          overflowBoundary={overflowBoundary}
+          pointerTargetRef={pointerTargetRef}
           position={position}
           positionFixed={positionFixed}
           enabled={open}
@@ -283,6 +287,14 @@ Tooltip.propTypes = {
   trigger: customPropTypes.every([customPropTypes.disallow(['children']), PropTypes.element]),
   content: customPropTypes.shorthandAllowingChildren,
   unstable_pinned: PropTypes.bool,
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<Element>,
+    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<Element>,
+    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+  ]),
 };
 Tooltip.handledProps = Object.keys(Tooltip.propTypes) as any;
 

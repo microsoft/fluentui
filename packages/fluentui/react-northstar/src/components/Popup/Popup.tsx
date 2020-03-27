@@ -139,10 +139,12 @@ const Popup: React.FC<PopupProps> &
     inline,
     children,
     contentRef,
+    flipBoundary,
     on,
     mountNode,
     mouseLeaveDelay,
     offset,
+    overflowBoundary,
     pointing,
     position,
     positionFixed,
@@ -515,9 +517,11 @@ const Popup: React.FC<PopupProps> &
     <Popper
       pointerTargetRef={pointerTargetRef}
       align={align}
+      flipBoundary={flipBoundary}
       position={position}
       positionFixed={positionFixed}
       offset={offset}
+      overflowBoundary={overflowBoundary}
       rtl={context.rtl}
       unstable_pinned={unstable_pinned}
       targetRef={rightClickReferenceObject.current || target || triggerRef}
@@ -558,6 +562,14 @@ Popup.propTypes = {
   mountNode: customPropTypes.domNode,
   mouseLeaveDelay: PropTypes.number,
   offset: PropTypes.string,
+  flipBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<Element>,
+    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+  ]),
+  overflowBoundary: PropTypes.oneOfType([
+    PropTypes.object as PropTypes.Requireable<Element>,
+    PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+  ]),
   on: PropTypes.oneOfType([
     PropTypes.oneOf(['hover', 'click', 'focus', 'context']),
     PropTypes.arrayOf(PropTypes.oneOf(['click', 'focus', 'context'])),
