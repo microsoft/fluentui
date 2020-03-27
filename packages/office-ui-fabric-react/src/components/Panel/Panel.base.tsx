@@ -385,7 +385,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           <div
             id={headerTextId}
             role="heading"
-            aria-level={2}
+            aria-level={1}
             {...headerTextProps}
             className={css(this._classNames.headerText, headerTextProps.className)}
           >
