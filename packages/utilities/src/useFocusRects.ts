@@ -44,7 +44,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
 
   React.useEffect(() => {
     if (!win || win.FabricConfig?.disableFocusRects === true) {
-      return;
+      return undefined;
     }
 
     let count = setMountCounters(win, 1);
