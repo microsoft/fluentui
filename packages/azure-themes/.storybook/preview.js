@@ -1,4 +1,4 @@
-import { initializeIcons } from '@uifabric/utils';
+import { initializeIcons } from '@uifabric/icons';
 import generateStoriesFromExamples from '@uifabric/build/storybook/generateStoriesFromExamples';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';

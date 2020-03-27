@@ -316,7 +316,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     );
   };
 
-  /** Renders list of app/brand utils that use Fabric. */
+  /** Renders list of app/brand icons that use Fabric. */
   private _renderUsageIconList = (): JSX.Element[] => {
     return fabricUsageIcons.map((icon, iconIndex) => (
       <li key={icon.title + iconIndex} className={this._classNames.usageIconListItem}>

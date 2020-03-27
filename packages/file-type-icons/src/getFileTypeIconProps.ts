@@ -19,13 +19,13 @@ export type ImageFileType = 'svg' | 'png';
 export interface IFileTypeIconOptions {
   /**
    * The file extension, such as .pptx, for which you need an icon.
-   * For file type utils that are not associated with a file
+   * For file type icons that are not associated with a file
    * extension, such as folder, use the type property.
    */
   extension?: string;
   /**
    * The type of file type icon you need. Use this property for
-   * file type utils that are not associated with a file extension,
+   * file type icons that are not associated with a file extension,
    * such as folder.
    */
   type?: FileIconTypeInput;
@@ -124,7 +124,7 @@ function _getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFile
   } else if (imageFileType === 'png') {
     // To look good, PNGs should use a different image for higher device pixel ratios
     if (1 < devicePixelRatio && devicePixelRatio <= 1.5) {
-      // Currently missing 1.5x utils for size 20, snap to 2x for now
+      // Currently missing 1.5x icons for size 20, snap to 2x for now
       devicePixelRatioSuffix = size === 20 ? '_2x' : '_1.5x';
     } else if (1.5 < devicePixelRatio && devicePixelRatio <= 2) {
       devicePixelRatioSuffix = '_2x';

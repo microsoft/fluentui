@@ -60,7 +60,7 @@ export interface ICalendarMonthProps extends IBaseProps<ICalendarMonth> {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 
   /**
-   * Customize navigation utils using ICalendarIconStrings
+   * Customize navigation icons using ICalendarIconStrings
    */
   navigationIcons?: ICalendarIconStrings;
 

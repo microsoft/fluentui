@@ -2,7 +2,7 @@
 const scenarioNames = {
   BaseButtonNew: 'BaseButton (experiments)',
   DefaultButtonNew: 'DefaultButton (experiments)',
-  DetailsRowFast: 'DetailsRow (fast utils)',
+  DetailsRowFast: 'DetailsRow (fast icons)',
   DetailsRowNoStyles: 'DetailsRow without styles',
   DocumentCardTitle: 'DocumentCardTitle with truncation',
   MenuButtonNew: 'MenuButton (experiments)',

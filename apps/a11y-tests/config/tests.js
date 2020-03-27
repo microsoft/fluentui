@@ -2,8 +2,8 @@
 const path = require('path');
 const mkdirp = require('mkdirp');
 
-// Initialize utils
-const { initializeIcons } = require('@uifabric/utils');
+// Initialize icons
+const { initializeIcons } = require('@uifabric/icons');
 initializeIcons();
 
 // Create `dist/reports` folder to save SARIF reports

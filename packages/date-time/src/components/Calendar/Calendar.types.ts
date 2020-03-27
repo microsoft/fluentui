@@ -121,7 +121,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   strings?: ICalendarStrings;
 
   /**
-   * Customize navigation utils using ICalendarIconStrings
+   * Customize navigation icons using ICalendarIconStrings
    */
   navigationIcons?: ICalendarIconStrings;
 

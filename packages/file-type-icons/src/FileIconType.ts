@@ -1,5 +1,5 @@
 /**
- * Enumerates special file type utils that do not map to any file extensions.
+ * Enumerates special file type icons that do not map to any file extensions.
  * For example, the 'pptx' icon maps to the extensions 'ppt', 'pptm', 'pptx',
  * but the 'folder' icon does not map to any extensions and should be obtained
  * via this enum.

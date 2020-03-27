@@ -7,7 +7,7 @@ import { jumpToAnchor } from './jumpToAnchor';
 
 setBaseUrl('./dist/');
 
-// Initialize all utils.
+// Initialize all icons.
 initializeIcons();
 
 mergeStyles({
