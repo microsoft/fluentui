@@ -190,7 +190,7 @@
     })();
   }
 
-  function loadAppScripts(appPath) {
+  function loadAppScripts() {
     var scripts = [appPath + entryPointFilename + (isDev ? '.js' : '.min.js')];
 
     if (!window.React) {

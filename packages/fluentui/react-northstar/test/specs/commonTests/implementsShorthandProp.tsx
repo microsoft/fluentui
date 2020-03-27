@@ -1,10 +1,13 @@
 import * as React from 'react';
 import { ReactWrapper } from 'enzyme';
-import { mountWithProvider } from 'test/utils';
+import { mountWithProvider as mount, mountWithProvider } from 'test/utils';
 import { Props, PropsOf, InstanceOf } from 'src/types';
+import { Popper } from 'src/utils/positioner';
+import { positioningProps } from 'test/specs/commonTests/implementsPopperProps';
 
 export type ShorthandTestOptions<TProps = any> = {
-  mapsValueToProp: keyof (TProps & React.HTMLProps<HTMLElement>) | false;
+  mapsValueToProp?: keyof (TProps & React.HTMLProps<HTMLElement>) | false;
+  implementsPopper?: boolean;
   requiredProps?: Props;
   requiredShorthandProps?: Props;
 };
@@ -66,5 +69,27 @@ export default ((Component: React.ComponentType) => {
         });
       });
     });
+
+    if (options.implementsPopper) {
+      describe('implements all positioning props for Popper', () => {
+        Object.entries(positioningProps).forEach(([positioningProp, positioningValue]) => {
+          test(`"${positioningProp}" is passed to a Popper component`, () => {
+            const wrapper = mount(
+              React.createElement(Component, {
+                ...options.requiredProps,
+                [shorthandProp]: {
+                  ...options.requiredShorthandProps,
+                  popper: { [positioningProp]: positioningValue },
+                },
+              }),
+            );
+            // Popper will be a parent of shorthand
+            const popper = wrapper.find(ShorthandComponent).closest(Popper);
+
+            expect(popper.prop(positioningProp)).toBe(positioningValue);
+          });
+        });
+      });
+    }
   };
 }) as ShorthandPropTestsFactory;

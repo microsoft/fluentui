@@ -85,6 +85,7 @@ export { default as ReactionGroup } from './components/Reaction/reactionGroupSty
 export { default as Status } from './components/Status/statusStyles';
 
 export { default as SplitButton } from './components/SplitButton/splitButtonStyles';
+export { default as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
 
 export { default as Text } from './components/Text/textStyles';
 

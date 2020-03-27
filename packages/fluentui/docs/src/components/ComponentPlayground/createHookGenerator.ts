@@ -19,6 +19,7 @@ const propsBlacklist: (string | RegExp)[] = [
 
   // Any styles props can't be supported in obvious way
   'className',
+  'design',
   'styles',
   'variables',
 ];
