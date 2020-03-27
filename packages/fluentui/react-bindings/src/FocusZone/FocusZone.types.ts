@@ -132,6 +132,13 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;
 
   /**
+   * Determines whether to check for data-no-horizontal-wrap or data-no-vertical-wrap attributes
+   * when determining how to move focus
+   * @defaultvalue false
+   */
+  checkForNoWrap?: boolean;
+
+  /**
    * If true, focus event propagation will be stopped.
    */
   stopFocusPropagation?: boolean;
