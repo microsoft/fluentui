@@ -12,7 +12,13 @@ import Knobs from './Knobs';
 import List from './List';
 import Toolbar from './Toolbar';
 
-import { jsonTreeFindElement, renderJSONTreeToJSXElement, resolveComponent, resolveDraggingProps, resolveDrop } from '../config';
+import {
+  jsonTreeFindElement,
+  renderJSONTreeToJSXElement,
+  resolveComponent,
+  resolveDraggingProps,
+  resolveDrop,
+} from '../config';
 import { DesignerMode, JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { CodeSnippet } from '@fluentui/docs-components';
@@ -56,7 +62,7 @@ class Designer extends React.Component<any, DesignerState> {
       selectedComponentInfo: null,
       selectedJSONTreeElement: null,
       showCode: false,
-      showJSONTree: false
+      showJSONTree: false,
     };
   }
 
@@ -68,8 +74,8 @@ class Designer extends React.Component<any, DesignerState> {
         style: {
           padding: '3rem',
           background: 'red',
-          border: '2px dotted gray'
-        }
+          border: '2px dotted gray',
+        },
       },
       children: [
         {
@@ -79,16 +85,17 @@ class Designer extends React.Component<any, DesignerState> {
             {
               uuid: getUUID(),
               type: 'Button',
-              props: { content: 'click me' }
+              props: { content: 'click me' },
             },
             {
               uuid: getUUID(),
-              type: 'Segment',
+              type: 'div',
               children: [
+                'This is div',
                 {
                   uuid: getUUID(),
                   type: 'Button',
-                  props: { content: 'click me' }
+                  props: { content: 'click me' },
                 },
                 {
                   uuid: getUUID(),
@@ -98,15 +105,15 @@ class Designer extends React.Component<any, DesignerState> {
                     {
                       uuid: getUUID(),
                       type: 'Button',
-                      props: { content: 'click me' }
-                    }
-                  ]
-                }
-              ]
-            }
-          ]
-        }
-      ]
+                      props: { content: 'click me' },
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+      ],
     };
   };
 
@@ -120,7 +127,7 @@ class Designer extends React.Component<any, DesignerState> {
 
       this.setState({
         jsonTree: this.getDefaultJSONTree(),
-        selectedComponentInfo: null
+        selectedComponentInfo: null,
       });
     }
   };
@@ -140,9 +147,9 @@ class Designer extends React.Component<any, DesignerState> {
         uuid: getUUID(),
         type: info.displayName,
         displayName: info.displayName,
-        props: resolveDraggingProps(info.displayName)
+        props: resolveDraggingProps(info.displayName),
       },
-      draggingPosition: { x: e.clientX, y: e.clientY }
+      draggingPosition: { x: e.clientX, y: e.clientY },
     });
   };
 
@@ -150,7 +157,7 @@ class Designer extends React.Component<any, DesignerState> {
     this.stopSelecting();
     this.setState({
       draggingElement: null,
-      draggingPosition: null
+      draggingPosition: null,
     });
   };
 
@@ -163,7 +170,7 @@ class Designer extends React.Component<any, DesignerState> {
     this.setState(({ draggingElement, selectedJSONTreeElement, jsonTree }) => {
       console.log('Designer:handleCanvasMouseUp', {
         drop: draggingElement,
-        on: selectedJSONTreeElement
+        on: selectedJSONTreeElement,
       });
 
       if (selectedJSONTreeElement) {
@@ -178,7 +185,7 @@ class Designer extends React.Component<any, DesignerState> {
 
       return {
         draggingElement: null,
-        jsonTree
+        jsonTree,
       };
     });
   };
@@ -194,7 +201,7 @@ class Designer extends React.Component<any, DesignerState> {
 
     this.setState({
       selectedJSONTreeElement: jsonTreeElement,
-      selectedComponentInfo: componentInfoContext.byDisplayName[jsonTreeElement.displayName]
+      selectedComponentInfo: componentInfoContext.byDisplayName[jsonTreeElement.displayName],
     });
   };
 
@@ -210,7 +217,7 @@ class Designer extends React.Component<any, DesignerState> {
 
       element.props.design = {
         ...element.props.design,
-        [name]: value + 'px'
+        [name]: `${value}px`,
       } as ComponentDesignProp;
 
       console.log(jsonTreeElement.uuid === element.uuid, element);
@@ -253,7 +260,7 @@ class Designer extends React.Component<any, DesignerState> {
       selectedComponentInfo,
       selectedJSONTreeElement,
       showCode,
-      showJSONTree
+      showJSONTree,
     } = this.state;
 
     return (
@@ -264,7 +271,7 @@ class Designer extends React.Component<any, DesignerState> {
           background: '#fff',
           width: '100vw',
           height: '100vh',
-          overflow: 'hidden'
+          overflow: 'hidden',
         }}
       >
         <EventListener type="keydown" listener={this.handleKeyDown} target={document} />
@@ -279,10 +286,10 @@ class Designer extends React.Component<any, DesignerState> {
                 position: 'fixed',
                 ...(draggingPosition && {
                   left: draggingPosition.x,
-                  top: draggingPosition.y
+                  top: draggingPosition.y,
                 }),
                 pointerEvents: 'none',
-                zIndex: 999999
+                zIndex: 999999,
               }}
             >
               {React.createElement(resolveComponent(draggingElement.type), draggingElement.props)}
@@ -309,7 +316,7 @@ class Designer extends React.Component<any, DesignerState> {
               display: 'flex',
               flexDirection: 'column',
               flex: 1,
-              overflow: 'auto'
+              overflow: 'auto',
             }}
           >
             <div
@@ -317,20 +324,20 @@ class Designer extends React.Component<any, DesignerState> {
                 display: 'flex',
                 flexDirection: 'column',
                 flex: 1,
-                minHeight: `calc(100vh - ${HEADER_HEIGHT}`
+                minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
               }}
             >
               <BrowserWindow
                 style={{
                   flex: 1,
                   margin: mode === 'build' ? '2rem' : '1rem',
-                  transition: 'margin 0.2s'
+                  transition: 'margin 0.2s',
                 }}
               >
                 <Canvas
                   {...(draggingElement && {
                     onMouseMove: this.handleDrag,
-                    onMouseUp: this.handleCanvasMouseUp
+                    onMouseUp: this.handleCanvasMouseUp,
                   })}
                   isSelecting={!!isSelecting || !!draggingElement}
                   onSelectComponent={this.handleSelectComponent}
@@ -365,7 +372,11 @@ class Designer extends React.Component<any, DesignerState> {
               <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
               <Anatomy componentInfo={selectedComponentInfo} />
               {selectedJSONTreeElement && (
-                <Knobs onPropChange={this.handlePropChange} info={selectedComponentInfo} jsonTreeElement={selectedJSONTreeElement} />
+                <Knobs
+                  onPropChange={this.handlePropChange}
+                  info={selectedComponentInfo}
+                  jsonTreeElement={selectedJSONTreeElement}
+                />
               )}
             </div>
           )}

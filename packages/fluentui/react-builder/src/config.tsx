@@ -1,8 +1,9 @@
 import * as React from 'react';
 
 import * as FUI from '@fluentui/react-northstar';
-import { FiberNavigator } from '@fluentui/react-northstar';
 import { JSONTreeElement } from './components/types';
+
+type FiberNavigator = FUI.FiberNavigator;
 
 export const EXCLUDED_COMPONENTS = ['Animation', 'Debug', 'Design', 'FocusZone', 'Portal', 'Provider', 'Ref'];
 
@@ -402,18 +403,21 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   return newTree;
 };
 
-// TODO: FIX ME, this always returns the root of the tree, despite a uuid that is deeply nested.
-//      YOu should expect to be able to drop into the children of any component after fixing
-export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string) => {
+export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string): JSONTreeElement | null => {
   if (typeof uuid === 'undefined' || uuid === null) {
     return null;
   }
 
   if (tree.uuid === uuid) return tree;
 
+  let ret = null;
   if (Array.isArray(tree.children)) {
-    return tree.children.find((childTree: JSONTreeElement) => {
-      return jsonTreeFindElement(childTree, uuid);
-    });
+    for (let i = 0; i < tree.children.length && ret === null; ++i) {
+      const e = tree.children[i];
+      if (typeof e !== 'string') {
+        ret = jsonTreeFindElement(e, uuid);
+      }
+    }
   }
+  return ret;
 };

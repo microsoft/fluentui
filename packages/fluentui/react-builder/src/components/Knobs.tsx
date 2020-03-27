@@ -111,7 +111,7 @@ const Knobs: React.FC<DesignKnobProps> = ({ onPropChange, info, jsonTreeElement 
                     value: jsonTreeElement.props.design[knob.label],
                   })}
                   onChange={(e, data) => {
-                    onPropChange({ jsonTreeElement: jsonTreeElement, name: knob.label, value: knob.ramp[+data.value] });
+                    onPropChange({ jsonTreeElement, name: knob.label, value: knob.ramp[+data.value] });
                   }}
                 />
               </>
