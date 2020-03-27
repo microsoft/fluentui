@@ -1,5 +1,5 @@
 import * as React from 'react';
-import PopperJS from 'popper.js';
+import PopperJS, { Boundary } from 'popper.js';
 
 export type Position = 'above' | 'below' | 'before' | 'after';
 export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
@@ -13,10 +13,10 @@ export interface PositioningProps {
   align?: Alignment;
 
   /** The element which will define the boundaries of the popper position for the flip behavior. */
-  flipBoundary?: PopperJS.Modifiers['flip']['boundariesElement'];
+  flipBoundary?: PopperJS.Boundary | Element;
 
   /** The element which will define the boundaries of the popper position for the overflow behavior. */
-  overflowBoundary?: PopperJS.Modifiers['preventOverflow']['boundariesElement'];
+  overflowBoundary?: PopperJS.Boundary | Element;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
