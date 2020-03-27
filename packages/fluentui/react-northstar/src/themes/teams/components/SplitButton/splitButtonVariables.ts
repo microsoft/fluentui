@@ -87,7 +87,6 @@ export default (siteVars: SiteVariablesPrepared): SplitButtonVariables => {
 
     toggleButtonColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
     toggleButtonBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
-    toggleButtonBorderColorDisabled: 'transparent',
 
     toggleButtonIndicatorSize: pxToRem(16),
   };

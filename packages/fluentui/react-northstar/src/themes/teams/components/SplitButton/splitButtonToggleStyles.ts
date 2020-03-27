@@ -116,9 +116,9 @@ const splitButtonToggleStyles: ComponentSlotStylesPrepared<SplitButtonToggleStyl
         },
 
         backgroundColor: v.toggleButtonBackgroundColorDisabled,
-        borderColor: v.toggleButtonBorderColorDisabled,
 
         borderWidth: `0 0 0 ${siteVariables.borderWidth}`,
+        borderColor: v.borderColorDisabled,
       }),
 
       ...(p.size === 'small' && {
