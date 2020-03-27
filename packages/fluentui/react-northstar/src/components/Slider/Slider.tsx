@@ -169,7 +169,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
       vertical,
     }),
   });
-  const { classes, styles: resolvedStyles } = useStyles<SliderStylesProps>(Slider.displayName, {
+  const { classes } = useStyles<SliderStylesProps>(Slider.displayName, {
     className: Slider.className,
     mapPropsToStyles: () => ({
       fluid,
