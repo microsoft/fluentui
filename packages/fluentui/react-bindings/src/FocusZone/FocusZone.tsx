@@ -1086,6 +1086,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       const selectionEnd = element.selectionEnd;
       const isRangeSelected = selectionStart !== selectionEnd;
       const inputValue = element.value;
+      const isReadonly = element.readOnly;
 
       // We shouldn't lose focus in the following cases:
       // 1. There is range selected.
@@ -1096,8 +1097,8 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       // callback shouldInputLoseFocusOnArrowKey
       if (
         isRangeSelected ||
-        (selectionStart! > 0 && !isForward) ||
-        (selectionStart !== inputValue.length && isForward) ||
+        (selectionStart! > 0 && !isForward && !isReadonly) ||
+        (selectionStart !== inputValue.length && isForward && !isReadonly) ||
         (!!this.props.handleTabKey &&
           !(this.props.shouldInputLoseFocusOnArrowKey && this.props.shouldInputLoseFocusOnArrowKey(element)))
       ) {
