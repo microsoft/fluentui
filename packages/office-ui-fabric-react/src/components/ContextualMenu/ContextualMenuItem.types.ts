@@ -68,7 +68,7 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   index: number;
 
   /**
-   * If this item has utils
+   * If this item has icons
    */
   hasIcons: boolean | undefined;
 
@@ -135,7 +135,7 @@ export interface IContextualMenuItemStyleProps {
   isAnchorLink: boolean;
 
   /**
-   * Indicates if the icon used is of the known set of utils.
+   * Indicates if the icon used is of the known set of icons.
    */
   knownIcon: boolean;
 
@@ -200,12 +200,12 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
   icon: IStyle;
 
   /**
-   * Default icon color style for known utils.
+   * Default icon color style for known icons.
    */
   iconColor: IStyle;
 
   /**
-   * Default style for checkmark utils.
+   * Default style for checkmark icons.
    */
   checkmarkIcon: IStyle;
 

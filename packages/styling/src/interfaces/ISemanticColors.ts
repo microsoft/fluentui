@@ -140,7 +140,7 @@ export interface ISemanticColors extends ISemanticTextColors {
   variantBorderHovered: string;
 
   /**
-   * Background color for default/empty state graphical elements; eg default utils, empty section that
+   * Background color for default/empty state graphical elements; eg default icons, empty section that
    * needs user to fill in content, placeholder graphics, empty seats, etc.
    */
   defaultStateBackground: string;
@@ -315,7 +315,7 @@ export interface ISemanticColors extends ISemanticTextColors {
   menuDivider: string;
 
   /**
-   * The default colors of utils in menus.
+   * The default colors of icons in menus.
    */
   menuIcon: string;
 

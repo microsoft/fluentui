@@ -118,7 +118,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   highlightSelectedMonth?: boolean;
 
   /**
-   * Customize navigation utils using ICalendarIconStrings
+   * Customize navigation icons using ICalendarIconStrings
    */
   navigationIcons?: ICalendarIconStrings;
 

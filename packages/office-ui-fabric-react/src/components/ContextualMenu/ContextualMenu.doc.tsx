@@ -56,12 +56,12 @@ export const ContextualMenuPageProps: IDocPageProps = {
       view: <ContextualMenuPersistedExample />,
     },
     {
-      title: 'ContextualMenu with utils',
+      title: 'ContextualMenu with icons',
       code: ContextualMenuIconExampleCode,
       view: <ContextualMenuIconExample />,
     },
     {
-      title: 'ContextualMenu with utils and secondary text',
+      title: 'ContextualMenu with icons and secondary text',
       code: ContextualMenuIconSecondaryTextExampleCode,
       view: <ContextualMenuIconSecondaryTextExample />,
     },

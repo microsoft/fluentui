@@ -571,12 +571,12 @@ export interface IMenuItemStyles extends IButtonStyles {
   anchorLink: IStyle;
 
   /**
-   * Default icon color style for known utils.
+   * Default icon color style for known icons.
    */
   iconColor: IStyle;
 
   /**
-   * Default style for checkmark utils.
+   * Default style for checkmark icons.
    */
   checkmarkIcon: IStyle;
 

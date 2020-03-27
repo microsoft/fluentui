@@ -22,7 +22,7 @@ export interface IIconRecord {
 
 export interface IIconOptions {
   /**
-   * By default, registering the same set of utils will generate a console warning per duplicate icon
+   * By default, registering the same set of icons will generate a console warning per duplicate icon
    * registered, because this scenario can create unexpected consequences.
    *
    * Some scenarios include:
@@ -31,7 +31,7 @@ export interface IIconOptions {
    * Icon set was previously registered but a different version was provided.
    * Icons in a previous registered set overlap with a new set.
    *
-   * To simply ignore previously registered utils, you can specify to disable warnings. This means
+   * To simply ignore previously registered icons, you can specify to disable warnings. This means
    * that if an icon which was previous registered is registered again, it will be silently ignored.
    * However, consider whether the problems listed above will cause issues.
    **/
@@ -83,7 +83,7 @@ if (stylesheet && stylesheet.onReset) {
 const normalizeIconName = (name: string): string => name.toLowerCase();
 
 /**
- * Registers a given subset of utils.
+ * Registers a given subset of icons.
  *
  * @param iconSubset - the icon subset definition.
  */
@@ -116,9 +116,9 @@ export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOp
 }
 
 /**
- * Unregisters utils by name.
+ * Unregisters icons by name.
  *
- * @param iconNames - List of utils to unregister.
+ * @param iconNames - List of icons to unregister.
  */
 export function unregisterIcons(iconNames: string[]): void {
   const options = _iconSettings.__options;

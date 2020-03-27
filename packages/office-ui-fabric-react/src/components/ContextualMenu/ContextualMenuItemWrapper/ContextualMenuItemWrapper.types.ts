@@ -43,7 +43,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
   hasCheckmarks?: boolean;
 
   /**
-   * Whether or not the item for the wrapper uses utils.
+   * Whether or not the item for the wrapper uses icons.
    */
   hasIcons?: boolean;
 

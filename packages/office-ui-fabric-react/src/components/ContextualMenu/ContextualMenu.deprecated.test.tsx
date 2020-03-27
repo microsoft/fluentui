@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactTestUtils from 'react-dom/test-utils';
+import * as ReactTestUtils from 'react-dom/test-icons';
 import { KeyCodes, setWarningCallback } from '../../Utilities';
 import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
@@ -144,7 +144,7 @@ describe('ContextualMenu', () => {
     expect(checkmarkIconEl.classList.contains('checkmarkIconFoo')).toBeTruthy();
   });
 
-  it('applies getItemClassNames for menu items with utils', () => {
+  it('applies getItemClassNames for menu items with icons', () => {
     const items: IContextualMenuItem[] = [
       {
         key: 'Later Today',

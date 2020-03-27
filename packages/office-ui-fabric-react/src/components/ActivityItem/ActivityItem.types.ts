@@ -146,7 +146,7 @@ export interface IActivityItemStyles {
   isCompactRoot?: IStyle;
 
   /**
-   * Styles applied to personas and utils in the compact variant.
+   * Styles applied to personas and icons in the compact variant.
    */
   isCompactIcon?: IStyle;
 

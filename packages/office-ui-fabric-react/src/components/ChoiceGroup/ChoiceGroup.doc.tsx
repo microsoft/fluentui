@@ -37,7 +37,7 @@ export const ChoiceGroupPageProps: IDocPageProps = {
       view: <ChoiceGroupImageExample />,
     },
     {
-      title: 'ChoiceGroup with utils',
+      title: 'ChoiceGroup with icons',
       code: ChoiceGroupIconExampleCode,
       view: <ChoiceGroupIconExample />,
     },

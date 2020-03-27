@@ -1,10 +1,10 @@
 /** Jest test setup file. */
 
 const { configure } = require('enzyme');
-const { initializeIcons } = require('@uifabric/utils');
+const { initializeIcons } = require('@uifabric/icons');
 const Adapter = require('enzyme-adapter-react-16');
 
-// Initialize utils.
+// Initialize icons.
 initializeIcons('');
 
 global.requestAnimationFrame = callback => {
