@@ -3,8 +3,6 @@ import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
-export { IsFocusVisibleClassName } from './setFocusVisibility';
-
 /**
  * Counter for mounted component that uses focus rectangle.
  * We want to cleanup the listners before last component that uses focus rectangle unmounts.
@@ -46,7 +44,7 @@ export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void {
 
   React.useEffect(() => {
     if (!win || win.FabricConfig?.disableFocusRects === true) {
-      return;
+      return undefined;
     }
 
     let count = setMountCounters(win, 1);
