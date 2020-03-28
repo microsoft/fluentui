@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IRosterItemInternalProps, IRosterItemProps } from '../interface/roster.interface';
 import { useActions } from '../actionsContext';
 import {
   ShorthandCollection,
@@ -12,6 +11,7 @@ import {
   Button,
 } from '@fluentui/react-northstar';
 import { rosterMenuPopupStyles } from '../styles/styles';
+import { IRosterItemInternalProps, IRosterItemProps } from '../RosterItemCustom';
 
 export const withRosterActions: (
   C: React.ComponentType<IRosterItemInternalProps>,
@@ -42,8 +42,8 @@ export const withRosterActions: (
         onClick: () => toggleMute(userId, type),
       },
       {
-        key: type === 'presenters' ? 'promote' : 'demote',
-        content: <Text content={type === 'presenters' ? 'Promote' : 'Demote'} />,
+        key: type === 'presenters' ? 'demote' : 'promote',
+        content: <Text content={type === 'presenters' ? 'Demote' : 'Promote'} />,
         icon: {
           name: 'presenter',
           outline: true,
@@ -95,6 +95,7 @@ export const withRosterActions: (
           <Component {...props} action={actionButton} />
         </div>
       }
+      tabbableTrigger={false}
       content={{ content: menu, variables: rosterMenuPopupStyles }}
     />
   );

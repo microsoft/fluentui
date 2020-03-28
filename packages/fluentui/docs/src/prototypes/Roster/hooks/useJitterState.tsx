@@ -26,7 +26,7 @@ export const useJitterState = ({
         clearTimeout(timeoutHandle.current);
         setFlag(false);
       }
-      return;
+      return () => clearTimeout(timeoutHandle.current);
     }
     timeoutHandle.current = setTimeout(jitter, 0);
     return () => clearTimeout(timeoutHandle.current);
