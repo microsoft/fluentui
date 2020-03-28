@@ -10,12 +10,6 @@ const Error = createSvgIcon({
       />
     </svg>
   ),
-  // TODO: add this in the svgIconStyles
-  // styles: {
-  //   redPath: ({ variables: v }) => ({
-  //     fill: v.redColor,
-  //   }),
-  // },
   displayName: 'Error',
 });
 

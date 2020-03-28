@@ -102,6 +102,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       ...getSvgStyle('svg'),
     };
   },
+
   svgFlippingInRtl: config => {
     const { props, rtl } = config;
     return {
@@ -111,6 +112,10 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       }),
     };
   },
+
+  redPath: ({ variables: v }) => ({
+    fill: v.redColor,
+  }),
 
   g: getSvgStyle('g'),
 
