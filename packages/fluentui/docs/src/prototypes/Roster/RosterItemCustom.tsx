@@ -17,6 +17,8 @@ export interface IRosterItemProps {
   isMuted: boolean;
   message: string;
   selectable: boolean;
+  selected: boolean;
+  toggleSelect: () => void;
 }
 
 export interface IRosterItemInternalProps extends IRosterItemProps {
@@ -33,6 +35,8 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
   selectable,
   message,
   userId,
+  selected,
+  toggleSelect,
 
   ...props
 }) => {
@@ -51,7 +55,9 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
       truncateHeader
       truncateContent
       selectable
+      selected={selected}
       {...props}
+      onClick={toggleSelect}
     />
   );
 };

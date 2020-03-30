@@ -13,6 +13,7 @@ const initialRosterData = [
         key: `0`,
         title: {
           userId: `0`,
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Justin Bieber',
@@ -26,6 +27,7 @@ const initialRosterData = [
         key: '1',
         title: {
           userId: '1',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Jenny from the Block',
@@ -39,6 +41,7 @@ const initialRosterData = [
         key: '2',
         title: {
           userId: '2',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Lena Headey',
@@ -52,6 +55,7 @@ const initialRosterData = [
         key: '3',
         title: {
           userId: '3',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Lindsay Lohan',
@@ -65,6 +69,7 @@ const initialRosterData = [
         key: '4',
         title: {
           userId: '4',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Mark Ruffalo',
@@ -78,6 +83,7 @@ const initialRosterData = [
         key: '5',
         title: {
           userId: '5',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Matt Smith',
@@ -91,6 +97,7 @@ const initialRosterData = [
         key: '6',
         title: {
           userId: '6',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Matthew McConaughey',
@@ -104,6 +111,7 @@ const initialRosterData = [
         key: '7',
         title: {
           userId: '7',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Molly Rankin',
@@ -117,6 +125,7 @@ const initialRosterData = [
         key: '8',
         title: {
           userId: '8',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Nan Nanny',
@@ -130,6 +139,7 @@ const initialRosterData = [
         key: '9',
         title: {
           userId: '9',
+          selected: false,
           type: 'presenters',
           selectable: true,
           displayName: 'Nom Tasty',
@@ -150,6 +160,7 @@ const initialRosterData = [
         key: '12',
         title: {
           userId: '12',
+          selected: false,
           type: 'attendees',
           selectable: true,
           displayName: 'Joe Hill',
@@ -163,6 +174,7 @@ const initialRosterData = [
         key: '22',
         title: {
           userId: '22',
+          selected: false,
           type: 'attendees',
           selectable: true,
           displayName: 'Laura Marling',
@@ -176,6 +188,7 @@ const initialRosterData = [
         key: '31',
         title: {
           userId: '31',
+          selected: false,
           type: 'attendees',
           selectable: true,
           displayName: 'Tom Bombadil',
@@ -189,6 +202,7 @@ const initialRosterData = [
         key: '42',
         title: {
           userId: '42',
+          selected: false,
           type: 'attendees',
           selectable: true,
           displayName: 'Veronica Rothe',
@@ -202,6 +216,7 @@ const initialRosterData = [
         key: '51',
         title: {
           userId: '51',
+          selected: false,
           type: 'attendees',
           selectable: true,
           displayName: 'Zoe Deschanel',
@@ -223,6 +238,7 @@ const initialRosterData = [
         key: `50`,
         title: {
           userId: `50`,
+          selected: false,
           type: 'suggestions',
           selectable: true,
           displayName: 'Justin Bieber',
@@ -236,6 +252,7 @@ const initialRosterData = [
         key: '112',
         title: {
           userId: '112',
+          selected: false,
           type: 'suggestions',
           selectable: true,
           displayName: 'Jenny from the Block',
@@ -249,6 +266,7 @@ const initialRosterData = [
         key: '222',
         title: {
           userId: '222',
+          selected: false,
           type: 'suggestions',
           selectable: true,
           displayName: 'Lena Headey',
@@ -262,6 +280,7 @@ const initialRosterData = [
         key: '333',
         title: {
           userId: '333',
+          selected: false,
           type: 'suggestions',
           selectable: true,
           displayName: 'Lindsay Lohan',
@@ -275,6 +294,7 @@ const initialRosterData = [
         key: '44',
         title: {
           userId: '44',
+          selected: false,
           type: 'suggestions',
           selectable: true,
           displayName: 'Mark Ruffalo',
@@ -288,6 +308,7 @@ const initialRosterData = [
         key: '522',
         title: {
           userId: '522',
+          selected: false,
           type: 'suggestions',
           selectable: true,
           displayName: 'Matt Smith',
