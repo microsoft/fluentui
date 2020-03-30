@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 
-import { Provider, Telemetry, themes } from '@fluentui/react-northstar';
+import { Provider, Telemetry, themes, createRenderer } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';
@@ -14,9 +14,7 @@ const Profiler = (React as any).unstable_Profiler;
 const mountNode = document.querySelector('#root');
 const performanceExamplesContext = require.context('docs/src/examples/', true, /.perf.tsx$/);
 
-// Heads up!
-// We want to randomize examples to avoid any notable issues with always first example
-const performanceExampleNames: string[] = _.shuffle(performanceExamplesContext.keys());
+const performanceExampleNames: string[] = performanceExamplesContext.keys();
 
 const asyncRender = (element: React.ReactElement<any>, container: Element) =>
   new Promise(resolve => {
@@ -35,7 +33,7 @@ const renderCycle = async (
   const telemetryRef: React.Ref<Telemetry> = React.createRef();
 
   await asyncRender(
-    <Provider theme={themes.teams} telemetryRef={telemetryRef}>
+    <Provider theme={themes.teams} renderer={createRenderer()} telemetryRef={telemetryRef}>
       <Profiler
         id={exampleName}
         onRender={(id: string, phase: string, actualTime: number, startTime: number, commitTime: number) => {
