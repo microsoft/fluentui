@@ -71,6 +71,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Expose `contentWrapper` shorthand from `AccordionTitle` @silviuavram ([#12265](https://github.com/OfficeDev/office-ui-fabric-react/pull/12265))
 - Add `disabled` versions for `Dropdown` and `Input` @silviuavram ([#12250](https://github.com/OfficeDev/office-ui-fabric-react/pull/12250))
 
+### Performance
+- Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/OfficeDev/office-ui-fabric-react/pull/12289))
+
 ### Documentation
 - Adding context menu for table row to example and prototype @kolaps33 ([#12253](https://github.com/OfficeDev/office-ui-fabric-react/pull/12253))
 

@@ -40,9 +40,11 @@ export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
   content?: string;
 }
 
-export interface ICSSInJSStyle extends CSSProperties {
+export type ICSSInJSStyle = Omit<CSSProperties, 'display'> & {
   // TODO Questionable: how else would users target their own children?
   [key: string]: any;
+
+  display?: CSSProperties['display'] | CSSProperties['display'][];
 
   // missing React.CSSProperties
   speak?: CSS.Globals | 'none' | 'normal' | 'spell-out';
@@ -65,7 +67,7 @@ export interface ICSSInJSStyle extends CSSProperties {
   // we could expand these ourselves so that "font-smoothing" works, but which values?
   '-webkit-font-smoothing'?: CSS.Globals | 'auto' | 'none' | 'antialiased' | 'subpixel-antialiased';
   '-moz-osx-font-smoothing'?: CSS.Globals | 'auto' | 'grayscale';
-}
+};
 
 export interface ThemeAnimation<KP = {}> {
   keyframe: ((kp: KP) => object) | object | string;
