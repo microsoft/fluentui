@@ -11,7 +11,7 @@ export const ContextualMenuBasicExample: React.FunctionComponent = () => {
   return (
     <div>
       This example directly uses ContextualMenu to show how it can be attached to arbitrary elements. The remaining
-      examples use ContextualMenu through Fabric Button components.
+      examples use ContextualMenu through Fluent UI Button components.
       <p>
         <b>
           <a ref={linkRef} onClick={onShowContextualMenu}>
