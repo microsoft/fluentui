@@ -47,7 +47,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
           item={item}
           index={index}
           key={item.key !== undefined ? item.key : index}
-          selected={false}
+          selected={props.focusedItemIndices?.includes(index)}
           removeButtonAriaLabel={props.removeButtonAriaLabel}
           onRemoveItem={onRemoveItemCallbacks[index]}
           onItemChange={replaceItem}

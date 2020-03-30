@@ -17,19 +17,25 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   const input = React.useRef<Autofill>(null);
   const { queryString, setQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
+  const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
-  const { focusItemIndex, suggestionItems, isSuggestionsShown, showPicker } = useFloatingSuggestionItems(
-    suggestions,
-    selectedSuggestionIndex,
-    isSuggestionsVisible
-  );
-  const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems } = useSelectedItems(
+  const {
+    focusItemIndex,
+    suggestionItems,
+    isSuggestionsShown,
+    showPicker,
+    selectPreviousSuggestion,
+    selectNextSuggestion
+  } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
+  const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems, unselectAll } = useSelectedItems(
     selection,
     props.selectedItemsListProps.selectedItems
   );
 
   const _onSelectionChanged = () => {
+    console.log('selected index:' + selection.getSelectedIndices());
     setSelection(selection);
+    setFocusedItemIndices(selection.getSelectedIndices());
   };
 
   const {
@@ -70,18 +76,53 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       }
     }
   };
+
+  const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLInputElement>) => {
+    console.log('on input keyDown');
+    if (isSuggestionsShown) {
+      const keyCode = ev.which;
+      switch (keyCode) {
+        case KeyCodes.escape:
+          showPicker(false);
+          ev.preventDefault();
+          ev.stopPropagation();
+          break;
+        case KeyCodes.tab:
+          console.log('tabbed so stabbed here');
+          break;
+        case KeyCodes.enter:
+          if (!ev.shiftKey && !ev.ctrlKey) {
+            ev.preventDefault();
+            ev.stopPropagation();
+            // Get the focused element and add it to selectedItemsList
+          }
+          break;
+        case KeyCodes.up:
+          ev.preventDefault();
+          ev.stopPropagation();
+          selectPreviousSuggestion();
+          break;
+        case KeyCodes.down:
+          ev.preventDefault();
+          ev.stopPropagation();
+          selectNextSuggestion();
+          break;
+      }
+    }
+  };
+
   const _onCopy = () => {
     console.log('copy handler');
   };
   const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
-    // unselect all selected items
+    unselectAll();
     if (props.inputProps && props.inputProps.onFocus) {
       props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
     console.log('on iput focus');
   };
   const _onInputClick = () => {
-    // unselect all selected items
+    unselectAll();
     showPicker(true);
     console.log('on input click');
   };
@@ -98,7 +139,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       const inputText = ev.clipboardData.getData('Text');
       ev.preventDefault();
       // Pass current selected items
-      props.onPaste(inputText, []);
+      props.onPaste(inputText, selectedItems);
     }
     console.log('on paste');
   };
@@ -107,7 +148,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     return onRenderSelectedItems({
       ...selectedItemsListProps,
       selectedItems: selectedItems,
-      selection: selection,
+      focusedItemIndices: focusedItemIndices,
       onItemsRemoved: _onRemoveSelectedItems
     });
   };
@@ -169,6 +210,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
                 role="combobox"
                 disabled={false}
                 onPaste={_onPaste}
+                onKeyDown={_onInputKeyDown}
               />
             )}
           </div>
