@@ -23,5 +23,10 @@ export const ButtonPageProps = (disabled: boolean, checked: boolean): TPlatformP
       related,
       componentUrl,
     },
+    mac: {
+      overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/mac/ButtonOverview.md') as string,
+      related,
+      componentUrl,
+    },
   };
 };

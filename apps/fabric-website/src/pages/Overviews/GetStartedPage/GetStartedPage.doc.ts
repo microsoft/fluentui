@@ -16,4 +16,8 @@ export const GetStartedPageProps: TFabricPlatformPageProps = {
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/android/GetStartedOverview.md') as string,
     componentUrl,
   },
+  mac: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/mac/GetStartedOverview.md') as string,
+    componentUrl,
+  },
 };

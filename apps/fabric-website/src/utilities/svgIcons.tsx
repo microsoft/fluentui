@@ -42,6 +42,12 @@ export const AndroidLogo = (props?: ISVGIconProps) => {
   );
 };
 
+export const MacLogo = (props?: ISVGIconProps) => {
+  props = props || {};
+  const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
+  return <div style={{ fontSize: 8, lineHeight: '8px', marginTop: -2 }}>Mac Logo</div>;
+};
+
 export const AppleLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;

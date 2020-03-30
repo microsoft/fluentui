@@ -17,4 +17,9 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
     icon: 'AndroidLogo-platformPicker',
     color: '#69e56e',
   },
+  mac: {
+    name: 'Mac',
+    icon: 'MacLogo-platformPicker',
+    color: '#69e56e',
+  },
 };

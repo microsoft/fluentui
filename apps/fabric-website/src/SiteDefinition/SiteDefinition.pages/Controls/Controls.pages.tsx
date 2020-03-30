@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
-import { controlsPagesWeb, controlsPagesIos, controlsPagesAndroid } from './index';
+import { controlsPagesWeb, controlsPagesIos, controlsPagesAndroid, controlsPagesMac } from './index';
 
 export const ControlsPages: INavPage = {
   title: 'Controls',
@@ -16,5 +16,6 @@ export const ControlsPages: INavPage = {
     web: controlsPagesWeb,
     ios: controlsPagesIos,
     android: controlsPagesAndroid,
+    mac: controlsPagesMac,
   },
 };

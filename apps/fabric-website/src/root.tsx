@@ -5,7 +5,7 @@ import * as platformPickerStyles from '@uifabric/example-app-base/lib/components
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { AndroidLogo, AppleLogo, WebLogo } from './utilities/index';
+import { AndroidLogo, AppleLogo, WebLogo, MacLogo } from './utilities/index';
 
 // TODO: handle redirects
 
@@ -20,6 +20,9 @@ registerIcons({
       className: platformPickerStyles.icon,
     }),
     'WebLogo-platformPicker': WebLogo({
+      className: platformPickerStyles.icon,
+    }),
+    'MacLogo-platformPicker': MacLogo({
       className: platformPickerStyles.icon,
     }),
   },
