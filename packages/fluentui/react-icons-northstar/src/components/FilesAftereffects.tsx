@@ -1,7 +1,7 @@
 import * as React from 'react';
 import createSvgIcon from '../utils/createSvgIcon';
 
-const FilesAftereffect = createSvgIcon({
+const FilesAftereffects = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <g>
@@ -9,7 +9,7 @@ const FilesAftereffect = createSvgIcon({
       </g>
     </svg>
   ),
-  displayName: 'FilesAftereffect',
+  displayName: 'FilesAftereffects',
 });
 
-export default FilesAftereffect;
+export default FilesAftereffects;
