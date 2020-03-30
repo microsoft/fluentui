@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website-resources",
-  "version": "7.6.25",
+  "version": "7.6.26",
   "description": "Office UI Fabric React local demo app",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
