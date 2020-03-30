@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Adding new website content",
+  "packageName": "@uifabric/fabric-website",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "a05f4005c0767477b53c1dc44f469410f228ef8e",
+  "dependentChangeType": "patch",
+  "date": "2020-03-30T23:56:13.355Z"
+}
