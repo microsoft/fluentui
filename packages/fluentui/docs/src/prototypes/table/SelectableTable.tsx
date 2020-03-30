@@ -61,7 +61,11 @@ const SelectableTable = () => {
         </Table.Row>
         {rows.map((row, index) => {
           return (
-            <Table.Row key={`selectableTable${index}`} accessibility={gridRowBehavior}>
+            <Table.Row
+              key={`selectableTable${index}`}
+              accessibility={gridRowBehavior}
+              aria-selected={selectedRows[index]}
+            >
               <Table.Cell
                 accessibility={gridCellWithFocusableElementBehavior}
                 key={`selectableTable${index}-0`}
