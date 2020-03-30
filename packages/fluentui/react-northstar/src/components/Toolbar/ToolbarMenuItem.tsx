@@ -48,7 +48,6 @@ import {
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import Box, { BoxProps } from '../Box/Box';
-import Icon, { IconProps } from '../Icon/Icon';
 import Popup, { PopupProps } from '../Popup/Popup';
 import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -69,7 +68,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** ToolbarMenuItem index inside ToolbarMenu. */
   index?: number;
@@ -324,8 +323,10 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
         children
       ) : (
         <>
-          {Icon.create(icon, {
-            defaultProps: () => ({ xSpacing: !!content ? 'after' : 'none' }),
+          {Box.create(icon, {
+            defaultProps: () => ({
+              /* xSpacing: !!content ? 'after' : 'none' */
+            }),
           })}
           {content}
           {active &&

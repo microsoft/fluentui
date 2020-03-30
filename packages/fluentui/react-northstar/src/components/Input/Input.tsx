@@ -17,7 +17,6 @@ import {
 } from '../../utils';
 import { SupportedIntrinsicInputProps } from '../../utils/htmlPropsUtils';
 import { WithAsProp, ShorthandValue, ComponentEventHandler, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 
 export interface InputSlotClassNames {
@@ -43,7 +42,7 @@ export interface InputProps extends UIComponentProps, ChildrenComponentProps, Su
   fluid?: boolean;
 
   /** Optional Icon to display inside the Input. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** An Input with icon can format the icon to appear at the start or at the end of the input field. */
   iconPosition?: 'start' | 'end';
@@ -170,10 +169,9 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
                 }),
               })}
             </Ref>
-            {Icon.create(this.computeIcon(), {
+            {Box.create(this.computeIcon(), {
               defaultProps: () => ({
                 styles: styles.icon,
-                variables: variables.icon,
               }),
               overrideProps: this.handleIconOverrides,
             })}
@@ -218,12 +216,12 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     }
   };
 
-  computeIcon = (): ShorthandValue<IconProps> => {
+  computeIcon = (): ShorthandValue<BoxProps> => {
     const { clearable, icon } = this.props;
     const { value } = this.state;
 
     if (clearable && (value as string).length !== 0) {
-      return { name: '' };
+      return {};
     }
 
     return icon || null;

@@ -21,7 +21,6 @@ import {
   applyAccessibilityKeyHandlers,
   ShorthandFactory,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import Box, { BoxProps } from '../Box/Box';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, ShorthandCollection, withSafeTypeForAs } from '../../types';
@@ -47,7 +46,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   disabled?: boolean;
 
   /** Name or shorthand for Menu Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** A menu may have just icons. */
   iconOnly?: boolean;
@@ -224,9 +223,9 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
           {...(!wrapper && { onClick: this.handleClick })}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
         >
-          {Icon.create(icon, {
+          {Box.create(icon, {
             defaultProps: () => ({
-              xSpacing: !!content ? 'after' : 'none',
+              // xSpacing: !!content ? 'after' : 'none',
               styles: styles.icon,
             }),
           })}

@@ -227,6 +227,13 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
       opacity: 0,
       width: 0,
     }),
+
+    ...(p.hasContent && {
+      margin: `0 ${pxToRem(10)} 0 0`,
+      ...(p.iconPosition === 'after' && {
+        margin: `0 0 0 ${pxToRem(10)}`,
+      }),
+    }),
   }),
 
   loader: ({ props: p, variables: v }): ICSSInJSStyle => ({
