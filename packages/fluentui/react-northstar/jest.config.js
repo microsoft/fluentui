@@ -12,4 +12,5 @@ module.exports = {
     'test/(.*)$': `<rootDir>/test/$1`,
   },
   setupFilesAfterEnv: [...commonConfig.setupFilesAfterEnv, './test/setup.ts'],
+  watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
 };
