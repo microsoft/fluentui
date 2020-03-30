@@ -1,7 +1,14 @@
 # Change Log - @fluentui/react-focus
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
 
+## 7.1.12
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Fix repository URL (elcraig@microsoft.com)
+- react-focus: Updating README to reflect package purpose. (humbertomakotomorimoto@gmail.com)
 ## 7.1.10
 Wed, 25 Mar 2020 12:30:04 GMT
 

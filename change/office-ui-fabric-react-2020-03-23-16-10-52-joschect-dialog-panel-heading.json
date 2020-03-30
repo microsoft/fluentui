@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Dialog/Panel: Change heading from 2 to 1",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "5ed2c63ac9647b56f2b39d1d0b78d12845593450",
-  "dependentChangeType": "patch",
-  "date": "2020-03-23T23:10:52.427Z"
-}

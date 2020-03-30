@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing '_rtl not defined' error thrown when building @fluentui/docs.",
-  "packageName": "@uifabric/merge-styles",
-  "email": "humbertomakotomorimoto@gmail.com",
-  "commit": "31e6dc834a76c6afb4c555b155b67247e290dbcb",
-  "dependentChangeType": "patch",
-  "date": "2020-03-06T00:11:45.525Z"
-}

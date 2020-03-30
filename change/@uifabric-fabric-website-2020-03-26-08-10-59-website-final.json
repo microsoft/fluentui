@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "More Fabric=>Fluent fixes",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "682fe93832bc0cab071e8e29ceab1c97b6dc5585",
-  "dependentChangeType": "patch",
-  "date": "2020-03-26T15:10:59.618Z"
-}

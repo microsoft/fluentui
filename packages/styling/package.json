@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/styling",
-  "version": "7.11.0",
+  "version": "7.11.1",
   "description": "Styling helpers for Office UI Fabric.",
   "repository": {
     "type": "git",
@@ -33,9 +33,9 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/merge-styles": "^7.8.10",
+    "@uifabric/merge-styles": "^7.8.11",
     "@uifabric/set-version": "^7.0.9",
-    "@uifabric/utilities": "^7.15.3",
+    "@uifabric/utilities": "^7.15.4",
     "tslib": "^1.10.0"
   }
 }

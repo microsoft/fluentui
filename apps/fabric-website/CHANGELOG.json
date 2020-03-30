@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.14",
+      "version": "7.10.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "More Fabric=>Fluent fixes",
+            "author": "elcraig@microsoft.com",
+            "commit": "682fe93832bc0cab071e8e29ceab1c97b6dc5585"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/fabric-website_v7.10.12",
       "version": "7.10.12",
