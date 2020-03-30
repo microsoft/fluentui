@@ -1,4 +1,9 @@
-import { FocusZoneDirection, FocusZoneTabbableElements, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import {
+  FocusZoneDirection,
+  FocusZoneTabbableElements,
+  IS_ENTER_DISABLED_ATTRIBUTE,
+  IS_FOCUSABLE_ATTRIBUTE,
+} from '@fluentui/accessibility';
 import * as React from 'react';
 import cx from 'classnames';
 import * as _ from 'lodash';
@@ -7,7 +12,7 @@ import * as keyboardKey from 'keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
-import { elementContains, getDocument, getParent, getWindow } from '@uifabric/utilities';
+import { elementContains, getDocument, getParent, getWindow, raiseClick } from '@uifabric/utilities';
 
 import getElementType from '../utils/getElementType';
 import getUnhandledProps from '../utils/getUnhandledProps';
@@ -676,9 +681,36 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
   /**
    * Walk up the dom try to find a focusable element.
-   * TODO
    */
-  tryInvokeClickForFocusable(): boolean {
+  tryInvokeClickForFocusable(targetElement: HTMLElement): boolean {
+    let target = targetElement;
+
+    if (target === this._root.current) {
+      return false;
+    }
+
+    do {
+      if (
+        target.tagName === 'BUTTON' ||
+        target.tagName === 'A' ||
+        target.tagName === 'INPUT' ||
+        target.tagName === 'TEXTAREA'
+      ) {
+        return false;
+      }
+
+      if (
+        this.isImmediateDescendantOfZone(target) &&
+        target.getAttribute(IS_FOCUSABLE_ATTRIBUTE) === 'true' &&
+        target.getAttribute(IS_ENTER_DISABLED_ATTRIBUTE) !== 'true'
+      ) {
+        raiseClick(target);
+        return true;
+      }
+
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
+    } while (target !== this._root.current);
+
     return false;
   }
 
