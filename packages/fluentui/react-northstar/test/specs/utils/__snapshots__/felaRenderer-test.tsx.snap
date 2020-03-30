@@ -196,10 +196,7 @@ exports[`felaRenderer prefixes required styles 1`] = `
 }
 
 
-<div
-  className=ui-box a b c d e f g h i
-  data-uses-unhanded-props=true
-/>;
+<div className=ui-box a b c d e f g h i data-uses-unhanded-props=true />;
 "
 `;
 
