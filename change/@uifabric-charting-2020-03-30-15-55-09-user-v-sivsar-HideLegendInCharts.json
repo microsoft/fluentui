@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "adding new prop hideLegend in donut chart and line chart which decides to show or hide legends",
+  "packageName": "@uifabric/charting",
+  "email": "v-sivsar@microsoft.com",
+  "commit": "7b1bf879ccb63d8ac192eaf9eae92e7c5d9530a4",
+  "dependentChangeType": "patch",
+  "date": "2020-03-30T10:25:09.765Z"
+}
