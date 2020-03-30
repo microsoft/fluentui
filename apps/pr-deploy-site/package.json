@@ -3,6 +3,7 @@
   "version": "7.0.44",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
+  "private": true,
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",
