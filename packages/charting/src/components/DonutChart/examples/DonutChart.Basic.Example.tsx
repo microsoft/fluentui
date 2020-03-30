@@ -26,6 +26,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
         innerRadius={30}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
+        hideLegend={true}
       />
     );
   }

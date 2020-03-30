@@ -40,7 +40,7 @@ export class LineChartStyledExample extends React.Component<{}, {}> {
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} />
+        <LineChart data={data} strokeWidth={4} hideLegend={true} />
       </div>
     );
   }
