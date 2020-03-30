@@ -1,4 +1,4 @@
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Accessibility } from '@fluentui/accessibility';
 import * as React from 'react';
 // @ts-ignore
@@ -20,6 +20,8 @@ export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentPr
   accessibility?: Accessibility<never>;
 }
 
+export type BoxStylesProps = never;
+
 const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Box.displayName, context.telemetry);
@@ -32,7 +34,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
     rtl: context.rtl,
   });
 
-  const { classes } = useStyles(Box.displayName, {
+  const { classes } = useStyles<BoxStylesProps>(Box.displayName, {
     className: Box.className,
     mapPropsToInlineStyles: () => ({
       className,
@@ -43,7 +45,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
     rtl: context.rtl,
   });
 
-  const unhandledProps = getUnhandledProps(Box.handledProps, props);
+  const unhandledProps = useUnhandledProps(Box.handledProps, props);
   const ElementType = getElementType(props);
 
   const result = (

@@ -1,7 +1,19 @@
 # Change Log - @uifabric/pr-deploy-site
 
-This log was last generated on Tue, 28 Jan 2020 12:43:24 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.0.44
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- update Fabric to Fluent strings (micahgodbolt@gmail.com)
+## 7.0.42
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.0.7
 Tue, 28 Jan 2020 12:43:24 GMT
 

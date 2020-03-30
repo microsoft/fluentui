@@ -81,6 +81,7 @@ import {
   gridCellBehavior,
   gridCellMultipleFocusableBehavior,
   gridCellWithFocusableElementBehavior,
+  cardBehavior,
 } from '@fluentui/accessibility';
 import { TestHelper } from './testHelper';
 import definitions from './testDefinitions';
@@ -166,5 +167,6 @@ testHelper.addBehavior('gridRowNestedBehavior', gridRowNestedBehavior);
 testHelper.addBehavior('gridCellBehavior', gridCellBehavior);
 testHelper.addBehavior('gridCellMultipleFocusableBehavior', gridCellMultipleFocusableBehavior);
 testHelper.addBehavior('gridCellWithFocusableElementBehavior', gridCellWithFocusableElementBehavior);
+testHelper.addBehavior('cardBehavior', cardBehavior);
 
 testHelper.run(behaviorMenuItems);

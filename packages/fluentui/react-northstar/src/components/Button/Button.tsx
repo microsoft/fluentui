@@ -26,7 +26,7 @@ import {
 } from '../../types';
 import ButtonGroup from './ButtonGroup';
 import ButtonContent, { ButtonContentProps } from './ButtonContent';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
@@ -54,6 +54,9 @@ export interface ButtonProps
 
   /** An icon button can format its Icon to appear before or after its content */
   iconPosition?: 'before' | 'after';
+
+  /** A button that inherits its background and has a subtle appearance */
+  inverted?: boolean;
 
   /** Shorthand to customize a button's loader. */
   loader?: ShorthandValue<LoaderProps>;
@@ -83,9 +86,6 @@ export interface ButtonProps
 
   /** A button can emphasize that it represents an alternative action. */
   secondary?: boolean;
-
-  /** A button that inherits its background and has a subtle appearance */
-  inverted?: boolean;
 
   /** A button can be sized. */
   size?: SizeValue;
@@ -170,7 +170,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     rtl: context.rtl,
   });
 
-  const unhandledProps = getUnhandledProps(Button.handledProps, props);
+  const unhandledProps = useUnhandledProps(Button.handledProps, props);
   const ElementType = getElementType(props);
 
   const renderIcon = () => {
@@ -256,6 +256,7 @@ Button.propTypes = {
   icon: customPropTypes.itemShorthandWithoutJSX,
   iconOnly: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['before', 'after']),
+  inverted: PropTypes.bool,
   loader: customPropTypes.itemShorthandWithoutJSX,
   loading: PropTypes.bool,
   onClick: PropTypes.func,

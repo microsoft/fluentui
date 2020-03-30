@@ -6,7 +6,7 @@ export const exampleIndexContext = require.context('../examples/', true, /index.
 /**
  * The Webpack Context for doc examples.
  */
-export const examplesContext = require.context('../examples/', true, /(\w+Example(\w|\.)*|\w+.perf)\.tsx$/);
+export const examplesContext = require.context('../examples/', true, /(\w+Example(\w|\.)*|\w+.perf|\w+.bsize)\.tsx$/);
 
 /**
  * The Webpack Context for doc site usage groups.

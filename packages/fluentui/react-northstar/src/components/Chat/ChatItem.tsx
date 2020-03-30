@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -116,7 +116,7 @@ const ChatItem: React.FC<WithAsProp<ChatItemProps>> &
   };
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ChatItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ChatItem.handledProps, props);
 
   const element = (
     <ElementType

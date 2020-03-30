@@ -1,5 +1,5 @@
 import { Accessibility } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { mergeComponentVariables } from '@fluentui/styles';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -49,7 +49,7 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarDivider.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarDivider.handledProps, props);
 
   const element = <ElementType {...getA11yProps('root', { ...unhandledProps, className: classes.root })} />;
   setEnd();

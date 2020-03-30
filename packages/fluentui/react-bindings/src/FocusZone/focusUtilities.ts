@@ -1,9 +1,12 @@
 import { IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
+import { getParent, getWindow } from '@uifabric/utilities';
 
 export const IS_VISIBLE_ATTRIBUTE = 'data-is-visible';
 export const FOCUSZONE_ID_ATTRIBUTE = 'data-focuszone-id';
 export const FOCUSZONE_SUB_ATTRIBUTE = 'data-is-sub-focuszone';
 export const HIDDEN_FROM_ACC_TREE = 'data-is-hidden-from-acc-tree';
+
+export { getDocument, getParent, getWindow } from '@uifabric/utilities';
 
 /**
  * Gets the first focusable element.
@@ -413,36 +416,6 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
 }
 
 /**
- * Helper to get the window object.
- *
- * @public
- */
-export function getWindow(rootElement?: Element | null): Window | undefined {
-  return (
-    // eslint-disable-next-line no-undef
-    (rootElement && rootElement.ownerDocument && rootElement.ownerDocument.defaultView) || window
-  );
-}
-
-/**
- * Helper to get the document object.
- *
- * @public
- */
-export function getDocument(rootElement?: Element | null): Document | undefined {
-  // eslint-disable-next-line no-undef
-  return (rootElement && rootElement.ownerDocument) || document;
-}
-
-/**
- * Returns parent element of passed child element if exists
- * @param child - element to find parent for
- */
-export function getParent(child: HTMLElement): HTMLElement | null {
-  return child && child.parentElement;
-}
-
-/**
  * Finds the closest focusable element via an index path from a parent. See
  * `getElementIndexPath` for getting an index path from an element to a child.
  */
@@ -477,7 +450,7 @@ export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLEle
   let currentElement: HTMLElement = toElement;
 
   while (currentElement && fromElement && currentElement !== fromElement) {
-    const parent = getParent(currentElement);
+    const parent = getParent(currentElement, false);
 
     if (parent === null) {
       return [];

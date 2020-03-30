@@ -101,6 +101,8 @@ export { default as HeaderDescription } from './components/Header/HeaderDescript
 
 export * from './components/Icon/Icon';
 export { default as Icon } from './components/Icon/Icon';
+export * from './components/Icon/SvgIcon';
+export { default as SvgIcon } from './components/Icon/SvgIcon';
 
 export * from './components/Image/Image';
 export { default as Image } from './components/Image/Image';
@@ -208,6 +210,8 @@ export { default as ReactionGroup } from './components/Reaction/ReactionGroup';
 
 export * from './components/SplitButton/SplitButton';
 export { default as SplitButton } from './components/SplitButton/SplitButton';
+export * from './components/SplitButton/SplitButtonToggle';
+export { default as SplitButtonToggle } from './components/SplitButton/SplitButtonToggle';
 
 export * from './components/Video/Video';
 export { default as Video } from './components/Video/Video';
@@ -225,6 +229,8 @@ export * from './components/Carousel/CarouselNavigation';
 export { default as CarouselNavigation } from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export { default as CarouselNavigationItem } from './components/Carousel/CarouselNavigationItem';
+export * from './components/Carousel/CarouselPaddle';
+export { default as CarouselPaddle } from './components/Carousel/CarouselPaddle';
 
 export * from './components/Table/Table';
 export { default as Table } from './components/Table/Table';
@@ -233,6 +239,20 @@ export { default as TableRow } from './components/Table/TableRow';
 export * from './components/Table/TableCell';
 export { default as TableCell } from './components/Table/TableCell';
 
+export * from './components/Card/Card';
+export { default as Card } from './components/Card/Card';
+export * from './components/Card/CardPreview';
+export { default as CardPreview } from './components/Card/CardPreview';
+export * from './components/Card/CardTopControls';
+export { default as CardTopControls } from './components/Card/CardTopControls';
+export * from './components/Card/CardHeader';
+export { default as CardHeader } from './components/Card/CardHeader';
+export * from './components/Card/CardBody';
+export { default as CardBody } from './components/Card/CardBody';
+export * from './components/Card/CardFooter';
+export { default as CardFooter } from './components/Card/CardFooter';
+export * from './components/Card/CardColumn';
+export { default as CardColumn } from './components/Card/CardColumn';
 //
 // Utilities
 //

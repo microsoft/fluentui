@@ -8,8 +8,7 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 const toggleStyles: Partial<IToggleStyles> = {
   root: { margin: '10px 0' },
 };
-const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
 
 export class ButtonPage extends React.Component<
   IControlsPageProps,

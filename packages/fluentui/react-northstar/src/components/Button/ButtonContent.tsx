@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useStyles, useTelemetry, getElementType, getUnhandledProps } from '@fluentui/react-bindings';
+import { useStyles, useTelemetry, getElementType, useUnhandledProps } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
@@ -24,7 +24,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   const { size, content, children, className, styles, variables, design } = props;
 
   const { classes } = useStyles<ButtonContentStylesProps>(ButtonContent.displayName, {
-    className,
+    className: ButtonContent.className,
     mapPropsToStyles: () => ({ size }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -36,7 +36,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ButtonContent.handledProps, props);
+  const unhandledProps = useUnhandledProps(ButtonContent.handledProps, props);
 
   const result = (
     <ElementType

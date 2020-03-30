@@ -24,7 +24,7 @@ describe('TooltipHost', () => {
     const tooltip = component.find('TooltipHostBase');
 
     expect(tooltip.prop('delay')).toEqual(TooltipDelay.medium);
-    // TODO: should be tested or doc updated. https://github.com/OfficeDev/office-ui-fabric-react/issues/4708
+    // TODO: should be tested or doc updated. https://github.com/microsoft/fluentui/issues/4708
     // expect(component.prop('directionalHint')).toEqual(DirectionalHint.topCenter);
   });
 
@@ -47,7 +47,7 @@ describe('TooltipHost', () => {
     let onTooltipToggleCalled = false;
 
     // TODO: Remove assign. Temporarily used to create new object due to issue:
-    //        https://github.com/OfficeDev/office-ui-fabric-react/issues/4715
+    //        https://github.com/microsoft/fluentui/issues/4715
     const component = mount(
       <TooltipHost
         calloutProps={assign({}, calloutProps)}

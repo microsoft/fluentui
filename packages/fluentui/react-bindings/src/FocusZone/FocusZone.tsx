@@ -7,6 +7,8 @@ import * as keyboardKey from 'keyboard-key';
 import * as ReactDOM from 'react-dom';
 import * as PropTypes from 'prop-types';
 
+import { elementContains, getDocument, getParent, getWindow } from '@uifabric/utilities';
+
 import getElementType from '../utils/getElementType';
 import getUnhandledProps from '../utils/getUnhandledProps';
 import { FocusZoneProps, IFocusZone } from './FocusZone.types';
@@ -16,11 +18,8 @@ import {
   isElementFocusZone,
   isElementFocusSubZone,
   isElementTabbable,
-  getWindow,
-  getDocument,
   getElementIndexPath,
   getFocusableByIndexPath,
-  getParent,
   FOCUSZONE_ID_ATTRIBUTE,
 } from './focusUtilities';
 
@@ -38,6 +37,8 @@ interface Point {
   top: number;
 }
 const ALLOWED_INPUT_TYPES = ['text', 'number', 'password', 'email', 'tel', 'url', 'search'];
+
+const ALLOW_VIRTUAL_ELEMENTS = false;
 
 export default class FocusZone extends React.Component<FocusZoneProps> implements IFocusZone {
   static propTypes = {
@@ -128,7 +129,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // @ts-ignore
     this.windowElement = getWindow(this._root.current);
-    let parentElement = getParent(this._root.current);
+    let parentElement = getParent(this._root.current, ALLOW_VIRTUAL_ELEMENTS);
     const doc = getDocument(this._root.current);
 
     // @ts-ignore
@@ -137,7 +138,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         this._isInnerZone = true;
         break;
       }
-      parentElement = getParent(parentElement);
+      parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
     if (!this._isInnerZone) {
@@ -257,7 +258,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       if (
         !forceIntoFirstElement &&
         this._activeElement &&
-        this._root.current.contains(this._activeElement) &&
+        elementContains(this._root.current, this._activeElement, ALLOW_VIRTUAL_ELEMENTS) &&
         isElementTabbable(this._activeElement)
       ) {
         this._activeElement.focus();
@@ -331,7 +332,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     // Only update the index path if we are not parked on the root.
     if (focusedElement !== this._root.current) {
-      const shouldRestoreFocus = this._root.current.contains(focusedElement);
+      const shouldRestoreFocus = elementContains(this._root.current, focusedElement, ALLOW_VIRTUAL_ELEMENTS);
 
       this._lastIndexPath = shouldRestoreFocus
         ? getElementIndexPath(this._root.current as HTMLElement, doc.activeElement as HTMLElement)
@@ -387,7 +388,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
           newActiveElement = parentElement;
           break;
         }
-        parentElement = getParent(parentElement) as HTMLElement;
+        parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
       }
     }
 
@@ -451,7 +452,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
     while (target && target !== this._root.current) {
       path.push(target);
-      target = getParent(target) as HTMLElement;
+      target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
     }
 
     while (path.length) {
@@ -975,7 +976,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
 
   getOwnerZone(element?: HTMLElement): HTMLElement | null {
     const doc = getDocument(this._root.current);
-    let parentElement = getParent(element as HTMLElement);
+    let parentElement = getParent(element as HTMLElement, ALLOW_VIRTUAL_ELEMENTS);
 
     // @ts-ignore
     while (parentElement && parentElement !== this._root.current && parentElement !== doc.body) {
@@ -983,7 +984,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
         return parentElement;
       }
 
-      parentElement = getParent(parentElement);
+      parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
     return this._root.current;
@@ -1000,7 +1001,7 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
     if (!element && this._root.current) {
       this._defaultFocusElement = null;
       element = this._root.current;
-      if (this._activeElement && !element.contains(this._activeElement)) {
+      if (this._activeElement && !elementContains(element, this._activeElement, ALLOW_VIRTUAL_ELEMENTS)) {
         this._activeElement = null;
       }
     }

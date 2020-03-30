@@ -1,5 +1,5 @@
 import { Accessibility, toolbarItemBehavior, ToolbarItemBehaviorProps } from '@fluentui/accessibility';
-import { getElementType, getUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
+import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { GetRefs, NodeRef, Unstable_NestingAuto } from '@fluentui/react-component-nesting-registry';
@@ -31,7 +31,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import { Popper } from '../../utils/positioner';
+import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import Icon, { IconProps } from '../Icon/Icon';
@@ -58,7 +58,9 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
    * Shorthand for the submenu.
    * If submenu is specified, the item is wrapped to group the item and the menu elements together.
    */
-  menu?: ShorthandValue<ToolbarMenuProps> | ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>;
+  menu?:
+    | ShorthandValue<ToolbarMenuProps & { popper?: PopperShorthandProps }>
+    | ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>;
 
   /** Indicates if the menu inside the item is open. */
   menuOpen?: boolean;
@@ -244,7 +246,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   });
 
   const ElementType = getElementType(props);
-  const unhandledProps = getUnhandledProps(ToolbarItem.handledProps, props);
+  const unhandledProps = useUnhandledProps(ToolbarItem.handledProps, props);
 
   const itemElement = (
     <ElementType
@@ -280,6 +282,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
                 },
               }}
               targetRef={itemRef}
+              {...getPopperPropsFromShorthand(menu)}
             >
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {

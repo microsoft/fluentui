@@ -17,6 +17,12 @@ A set of reusable components and hooks to build component libraries and UI kits.
   - [`useStyles()`](#usestyles)
     - [Usage](#usage-3)
     - [Reference](#reference-1)
+  - [`useUnhandledProps()`](#useunhandledprops)
+    - [Usage](#usage-4)
+    - [Reference](#reference-2)
+- [Icons](#icons)
+  - [`createSvgIcon()`](#createsvgicon)
+    - [Usage](#usage-5)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -221,3 +227,57 @@ const { classes } = useStyles(
 - `options.className` - optional, a special class name that will be always added to the `root` slot
 - `options.mapPropsToStyles` - optional, a set of props that will be passed style functions, only primitives are allowed
 - `options.rtl` - optional, sets RTL mode
+
+## `useUnhandledProps()`
+
+A React hook that returns an object consisting of props beyond the scope of the component. Useful for getting and spreading unknown props from the user.
+
+### Usage
+
+The example below assumes a component called `<Text>` will be used this way:
+
+```tsx
+type TextComponentProps = React.HTMLAttributes<HTMLSpanElement> * {
+  className?: string;
+};
+
+const Text: React.FunctionComponent<TextComponentProps> = props => {
+  const { className, children } = props;
+  const unhandledProps = useUnhandledProps(['className'], props);
+
+  return <span {...unhandledProps} className={classes.root}>{children}</span>;
+};
+```
+
+### Reference
+
+```tsx
+const unhandledProps = useUnhandledProps(handledProps, props);
+```
+
+- `unhandledProps` - an object with unhandled props by component
+- `handledProps` - an array with names of handled props
+- `props` - an object with all props that are passed to a component
+
+# Icons
+
+## `createSvgIcon()`
+
+A factory for creating svg icons.
+
+#### Usage
+
+The example below assumes an icon component called `<CircleIcon>` will be created in this way:
+
+```tsx
+const circleSvg = ({ classes }) => (
+  <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
+    <g>
+      <path d="M16,8c-4.418,0-8,3.582-8,8s3.582,8,8,8s8-3.582,8-8S20.418,8,16,8z M16,22.85c-3.783,0-6.85-3.067-6.85-6.85S12.217,9.15,16,9.15s6.85,3.067,6.85,6.85S19.783,22.85,16,22.85z" />
+      <circle className={classes.filledPart} cx="16" cy="16" r="8" />
+    </g>
+  </svg>
+);
+
+const CircleIcon = createSvgIcon({ svg: circleSvg, displayName: 'CircleIcon' });
+```

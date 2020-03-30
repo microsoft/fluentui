@@ -66,7 +66,6 @@ describe('useStyles', () => {
     it('passes props mapped via "mapPropsToStyles" to styles functions', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
-        // @ts-ignore typings are outdated
         wrappingComponent: TestProvider,
         wrappingComponentProps: { theme: createTheme(styles) },
       });

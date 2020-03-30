@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IconGrid } from '../../../components/IconGrid/IconGrid';
-import { Image, Icon, Link } from 'office-ui-fabric-react';
+import { Icon, Link } from 'office-ui-fabric-react';
 import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
@@ -9,7 +8,7 @@ import { Platforms } from '../../../interfaces/Platforms';
 import * as styles from './FileTypeIconsPage.module.scss';
 
 const baseUrl =
-  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/FileTypeIconsPage/docs';
 const fabricCDN = 'https://static2.sharepointonline.com/files/fabric/assets';
 
 const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
@@ -54,9 +53,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       <br />
                       <br />
                       If you are looking for icons for command bars, navigation, status indicators, or similar, check
-                      out the <Link href="#/styles/web/icons">Fabric icons page</Link>. Alternatively, if you're looking
-                      for brand logos, or the icons of apps themselves, check out the{' '}
-                      <Link href="#/styles/web/office-brand-icons">Fabric brand icons page</Link>.
+                      out the <Link href="#/styles/web/icons">Fluent UI icons page</Link>. Alternatively, if you're
+                      looking for brand logos, or the icons of apps themselves, check out the{' '}
+                      <Link href="#/styles/web/office-brand-icons">Fluent UI brand icons page</Link>.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">

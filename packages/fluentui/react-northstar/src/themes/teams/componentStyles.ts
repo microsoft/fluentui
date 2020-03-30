@@ -46,6 +46,7 @@ export { default as HierarchicalTreeItem } from './components/HierarchicalTree/h
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
 
 export { default as Icon } from './components/Icon/iconStyles';
+export { default as SvgIcon } from './components/Icon/svgIconStyles';
 
 export { default as Image } from './components/Image/imageStyles';
 
@@ -84,6 +85,7 @@ export { default as ReactionGroup } from './components/Reaction/reactionGroupSty
 export { default as Status } from './components/Status/statusStyles';
 
 export { default as SplitButton } from './components/SplitButton/splitButtonStyles';
+export { default as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
 
 export { default as Text } from './components/Text/textStyles';
 
@@ -111,7 +113,15 @@ export { default as Carousel } from './components/Carousel/carouselStyles';
 export { default as CarouselItem } from './components/Carousel/carouselItemStyles';
 export { default as CarouselNavigation } from './components/Carousel/carouselNavigationStyles';
 export { default as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemStyles';
+export { default as CarouselPaddle } from './components/Carousel/carouselPaddleStyles';
 
 export { default as Table } from './components/Table/tableStyles';
 export { default as TableRow } from './components/Table/tableRowStyles';
 export { default as TableCell } from './components/Table/tableCellStyles';
+
+export { default as Card } from './components/Card/cardStyles';
+export { default as CardHeader } from './components/Card/cardHeaderStyles';
+export { default as CardBody } from './components/Card/cardBodyStyles';
+export { default as CardFooter } from './components/Card/cardFooterStyles';
+export { default as CardPreview } from './components/Card/cardPreviewStyles';
+export { default as CardTopControls } from './components/Card/cardTopControlsStyles';

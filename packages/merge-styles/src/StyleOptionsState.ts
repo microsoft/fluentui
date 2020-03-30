@@ -22,7 +22,11 @@ export function getRTL(): boolean {
   return _rtl;
 }
 
-let _rtl = getRTL();
+// This has been split into 2 lines because it was working in Fabric due to the code being transpiled to es5, so this
+// was converted to var while not working in Fluent that uses babel to transpile the code to be es6-like. Splitting the
+// logic into two lines, however, allows it to work in both scenarios.
+let _rtl: boolean;
+_rtl = getRTL();
 
 export function getStyleOptions(): IStyleOptions {
   return {

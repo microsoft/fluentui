@@ -1,19 +1,6 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui/react-northstar';
 import * as React from 'react';
-
-const actionItems = [
-  { key: 'add', icon: 'add', title: 'Add' },
-  { key: 'ban', icon: 'ban', title: 'Ban' },
-  { key: 'bookmark', icon: 'bookmark', title: 'Bookmark' },
-  { key: 'broadcast', icon: 'broadcast', title: 'Broadcast' },
-  { key: 'calendar', icon: 'calendar', title: 'Calendar' },
-  { key: 'like', icon: 'like', title: 'Like' },
-  { key: 'star', icon: 'star', title: 'Star' },
-  { key: 'edit', icon: 'edit', title: 'Edit' },
-  { key: 'lock', icon: 'lock', title: 'Lock' },
-  { key: 'more', icon: 'more', title: 'More actions' },
-];
 
 const ChatExampleInScrollableShorthand = () => {
   const [actionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
@@ -33,11 +20,44 @@ const ChatExampleInScrollableShorthand = () => {
     step: 10,
   });
 
-  const actionMenu = {
+  const actionItems = [
+    { key: 'add', icon: 'add', title: 'Add' },
+    { key: 'ban', icon: 'ban', title: 'Ban' },
+    { key: 'bookmark', icon: 'bookmark', title: 'Bookmark' },
+    { key: 'broadcast', icon: 'broadcast', title: 'Broadcast' },
+    { key: 'calendar', icon: 'calendar', title: 'Calendar' },
+    { key: 'like', icon: 'like', title: 'Like' },
+    { key: 'star', icon: 'star', title: 'Star' },
+    { key: 'edit', icon: 'edit', title: 'Edit' },
+    { key: 'lock', icon: 'lock', title: 'Lock' },
+    {
+      key: 'more',
+      icon: 'more',
+      title: 'More actions',
+      children: (Component, props) => (
+        <MenuButton
+          menu={[
+            { key: 'reply', content: 'Reply', icon: 'reply' },
+            { key: 'edit', content: 'Edit', icon: 'edit' },
+            { key: 'save', content: 'Save message', icon: 'bookmark' },
+            { key: 'delete', content: 'Delete', icon: 'icon-close' },
+          ]}
+          position="above"
+          trigger={<Component {...props} />}
+          {...(overflow && {
+            flipBoundary: 'window',
+            overflowBoundary: 'window',
+          })}
+        />
+      ),
+    },
+  ];
+  const actionMenu: ChatMessageProps['actionMenu'] = {
     iconOnly: true,
-    items: actionItems.slice(0, actionCount - 1),
+    items: actionItems.slice(-actionCount),
   };
-  const items: ShorthandCollection<ChatItemProps> = [
+
+  const items: ChatProps['items'] = [
     {
       attached: 'top',
       contentPosition: 'end',
@@ -160,7 +180,7 @@ const ChatExampleInScrollableShorthand = () => {
   ];
 
   return (
-    <div style={{ height, width, overflow: 'scroll', margin: 75, marginLeft: 0 }}>
+    <div style={{ height, width, overflow: 'scroll', margin: 150, marginLeft: 0 }}>
       <Chat items={items} styles={{ minHeight: '100%' }} />
     </div>
   );
