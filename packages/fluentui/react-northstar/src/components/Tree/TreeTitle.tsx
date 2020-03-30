@@ -8,6 +8,7 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { TreeContext } from './utils/index';
 
 import {
   childrenExist,
@@ -72,6 +73,8 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** Whether or not tree title is selectable. */
   selectable?: boolean;
+
+  selectIndicator?: React.ReactNode;
 }
 
 export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' | 'selectableParent'>;
@@ -79,6 +82,7 @@ export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { defaultSelectIndicatorPosition } = React.useContext(TreeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 
@@ -143,40 +147,50 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     _.invoke(props, 'onClick', e, props);
   };
 
+  const selectIndicator = Box.create(selectionIndicator, {
+    defaultProps: () => ({
+      as: 'span',
+      ...getA11Props('indicator', {
+        className: TreeTitle.slotClassNames.indicator,
+        styles:
+          hasSubtree && selectableParent && expanded
+            ? resolvedStyles.customSelectionIndicator
+            : resolvedStyles.selectionIndicator,
+      }),
+    }),
+  });
+
+  const rootA11yProps = {
+    className: classes.root,
+    onClick: handleClick,
+    selected,
+    ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+    ...unhandledProps,
+  };
+  // debugger;
+
   const element = (
     <ElementType
-      {...getA11Props('root', {
-        className: classes.root,
-        onClick: handleClick,
-        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-        ...unhandledProps,
-      })}
+      {...getA11Props(
+        'root',
+        !defaultSelectIndicatorPosition && !hasSubtree ? { ...rootA11yProps, selectIndicator } : rootA11yProps,
+      )}
     >
       {childrenExist(children) ? children : content}
-      {// if tree item has subtree but it is not selectable explicitly, do not redner any selection indicator
-
-      selectable &&
-        hasSubtree &&
-        selectableParent &&
-        expanded &&
-        Box.create(selectionIndicator, {
-          defaultProps: () => ({
-            as: 'span',
-            ...getA11Props('indicator', {
-              className: TreeTitle.slotClassNames.indicator,
-              styles: resolvedStyles.customSelectionIndicator,
-            }),
-          }),
-        })}
-
+      {console.log(hasSubtree, selectableParent, expanded)}
       {selectable &&
-        !hasSubtree &&
+        defaultSelectIndicatorPosition &&
         Box.create(selectionIndicator, {
           defaultProps: () => ({
             as: 'span',
             ...getA11Props('indicator', {
               className: TreeTitle.slotClassNames.indicator,
-              styles: resolvedStyles.selectionIndicator,
+              styles:
+                hasSubtree && selectableParent
+                  ? resolvedStyles.customSelectionIndicator
+                  : !hasSubtree
+                  ? resolvedStyles.selectionIndicator
+                  : {},
             }),
           }),
         })}
@@ -202,9 +216,11 @@ TreeTitle.propTypes = {
   onClick: PropTypes.func,
   expanded: PropTypes.bool,
   selected: PropTypes.bool,
+  selectable: PropTypes.bool,
   selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
+  selectIndicator: customPropTypes.itemShorthand,
 };
 TreeTitle.defaultProps = {
   as: 'a',

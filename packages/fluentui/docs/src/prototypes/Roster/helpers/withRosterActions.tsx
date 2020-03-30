@@ -71,7 +71,11 @@ export const withRosterActions: (
         <Button
           iconOnly
           text
-          onClick={() => (isOpen ? setOpen(false) : setOpen(true))}
+          onClick={e => {
+            e.preventDefault();
+            e.stopPropagation();
+            isOpen ? setOpen(false) : setOpen(true);
+          }}
           variables={{
             isCallingSidePanelIconOnlyButton: true,
             isCallingRosterPopupButton: true,

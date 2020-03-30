@@ -49,6 +49,9 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Initial selectedItemIds value. */
   defaultSelectedItemIds?: string[];
 
+  /** Defines if the checkbox should be placed in the right or passed down */
+  defaultSelectIndicatorPosition?: boolean;
+
   /** Only allow one subtree to be expanded at a time. */
   exclusive?: boolean;
 
@@ -126,6 +129,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     defaultSelectedItemIds: customPropTypes.collectionShorthand,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
+    defaultSelectIndicatorPosition: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
     onActiveItemIdsChange: PropTypes.func,
     onSelectedItemIdsChange: PropTypes.func,
@@ -163,9 +167,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         };
 
         iterateItems(items);
-        // console log only before PR is merge to master, for testing purposes :)
-        console.log('All items with seleted property:');
-        console.log(selectedItemIds);
       }
     }
 
@@ -262,6 +263,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+    // debugger;
     if (this.props.selectable) {
       this.processItemsForSelection(e, treeItemProps);
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
@@ -354,6 +356,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     onSiblingsExpand: this.onSiblingsExpand,
     onFocusFirstChild: this.onFocusFirstChild,
     onTitleClick: this.onTitleClick,
+    defaultSelectIndicatorPosition: true,
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
@@ -405,10 +408,10 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   }
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children, renderedItems } = this.props;
+    const { children, renderedItems, defaultSelectIndicatorPosition = true } = this.props;
 
     return (
-      <TreeContext.Provider value={this.contextValue}>
+      <TreeContext.Provider value={{ ...this.contextValue, defaultSelectIndicatorPosition }}>
         <Ref innerRef={this.treeRef}>
           <ElementType
             className={classes.root}

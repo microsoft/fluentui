@@ -233,7 +233,6 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
             defaultProps: () =>
               getA11Props('title', {
                 className: TreeItem.slotClassNames.title,
-                expanded,
                 hasSubtree: hasSubtreeItem,
                 as: hasSubtreeItem ? 'span' : 'a',
                 level,

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { List } from '@fluentui/react-northstar';
-import { RosterAvatar } from './RosterAvatar';
+// import { RosterAvatar } from './RosterAvatar';
 import { useJitterState } from './hooks/useJitterState';
 import { RosterUserName } from './RosterUsername';
 import { RosterState } from './RosterState';
@@ -18,6 +18,7 @@ export interface IRosterItemProps {
   message: string;
   selectable: boolean;
   selected: boolean;
+  selectIndicator: any;
   toggleSelect: () => void;
 }
 
@@ -37,7 +38,7 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
   userId,
   selected,
   toggleSelect,
-
+  selectIndicator,
   ...props
 }) => {
   const isActive = useJitterState({
@@ -45,9 +46,10 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
     to: 2000,
     enabled: (type === 'presenters' || type === 'attendees') && !isMuted,
   });
+
   return (
     <List.Item
-      media={<RosterAvatar isActive={isActive} visuals={visuals} />}
+      media={selectIndicator}
       header={<RosterUserName isActive={isActive} displayName={displayName} />}
       endMedia={<RosterState action={action} isMuted={isMuted} />}
       content={<RosterMessage message={message} />}
@@ -57,7 +59,6 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
       selectable
       selected={selected}
       {...props}
-      onClick={toggleSelect}
     />
   );
 };

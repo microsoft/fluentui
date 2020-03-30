@@ -5,17 +5,14 @@ const initialRosterData = [
   {
     id: 'presenters',
     title: 'Presenters',
-    open: false,
-    as: RosterSectionTitle,
+    children: RosterSectionTitle,
     items: [
       {
         id: `0`,
         key: `0`,
         title: {
           userId: `0`,
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Justin Bieber',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'justen.jpg',
@@ -27,9 +24,7 @@ const initialRosterData = [
         key: '1',
         title: {
           userId: '1',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Jenny from the Block',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'jenny.jpg',
@@ -41,9 +36,7 @@ const initialRosterData = [
         key: '2',
         title: {
           userId: '2',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Lena Headey',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'lena.png',
@@ -55,9 +48,7 @@ const initialRosterData = [
         key: '3',
         title: {
           userId: '3',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Lindsay Lohan',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'lindsay.png',
@@ -69,9 +60,7 @@ const initialRosterData = [
         key: '4',
         title: {
           userId: '4',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Mark Ruffalo',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'mark.png',
@@ -83,9 +72,7 @@ const initialRosterData = [
         key: '5',
         title: {
           userId: '5',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Matt Smith',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'matt.jpg',
@@ -97,9 +84,7 @@ const initialRosterData = [
         key: '6',
         title: {
           userId: '6',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Matthew McConaughey',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'matthew.png',
@@ -111,9 +96,7 @@ const initialRosterData = [
         key: '7',
         title: {
           userId: '7',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Molly Rankin',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'molly.png',
@@ -125,9 +108,7 @@ const initialRosterData = [
         key: '8',
         title: {
           userId: '8',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Nan Nanny',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'nan.jpg',
@@ -139,9 +120,7 @@ const initialRosterData = [
         key: '9',
         title: {
           userId: '9',
-          selected: false,
           type: 'presenters',
-          selectable: true,
           displayName: 'Nom Tasty',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'nom.jpg',
@@ -153,16 +132,14 @@ const initialRosterData = [
   {
     id: 'attendees',
     title: 'Attendees',
-    as: RosterSectionTitle,
+    children: RosterSectionTitle,
     items: [
       {
         id: '12',
         key: '12',
         title: {
           userId: '12',
-          selected: false,
           type: 'attendees',
-          selectable: true,
           displayName: 'Joe Hill',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'joe.jpg',
@@ -174,9 +151,7 @@ const initialRosterData = [
         key: '22',
         title: {
           userId: '22',
-          selected: false,
           type: 'attendees',
-          selectable: true,
           displayName: 'Laura Marling',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'laura.jpg',
@@ -188,9 +163,7 @@ const initialRosterData = [
         key: '31',
         title: {
           userId: '31',
-          selected: false,
           type: 'attendees',
-          selectable: true,
           displayName: 'Tom Bombadil',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'tom.jpg',
@@ -202,9 +175,7 @@ const initialRosterData = [
         key: '42',
         title: {
           userId: '42',
-          selected: false,
           type: 'attendees',
-          selectable: true,
           displayName: 'Veronica Rothe',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'veronika.jpg',
@@ -216,9 +187,7 @@ const initialRosterData = [
         key: '51',
         title: {
           userId: '51',
-          selected: false,
           type: 'attendees',
-          selectable: true,
           displayName: 'Zoe Deschanel',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'zoe.jpg',
@@ -231,16 +200,14 @@ const initialRosterData = [
     id: 'suggestions',
     label: 'Suggestions',
     title: 'Suggestions',
-    as: RosterSectionTitle,
+    children: RosterSectionTitle,
     items: [
       {
         id: `50`,
         key: `50`,
         title: {
           userId: `50`,
-          selected: false,
           type: 'suggestions',
-          selectable: true,
           displayName: 'Justin Bieber',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'justen.jpg',
@@ -252,9 +219,7 @@ const initialRosterData = [
         key: '112',
         title: {
           userId: '112',
-          selected: false,
           type: 'suggestions',
-          selectable: true,
           displayName: 'Jenny from the Block',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'jenny.jpg',
@@ -266,9 +231,7 @@ const initialRosterData = [
         key: '222',
         title: {
           userId: '222',
-          selected: false,
           type: 'suggestions',
-          selectable: true,
           displayName: 'Lena Headey',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'lena.png',
@@ -280,9 +243,7 @@ const initialRosterData = [
         key: '333',
         title: {
           userId: '333',
-          selected: false,
           type: 'suggestions',
-          selectable: true,
           displayName: 'Lindsay Lohan',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'lindsay.png',
@@ -294,9 +255,7 @@ const initialRosterData = [
         key: '44',
         title: {
           userId: '44',
-          selected: false,
           type: 'suggestions',
-          selectable: true,
           displayName: 'Mark Ruffalo',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'mark.png',
@@ -308,9 +267,7 @@ const initialRosterData = [
         key: '522',
         title: {
           userId: '522',
-          selected: false,
           type: 'suggestions',
-          selectable: true,
           displayName: 'Matt Smith',
           message: 'Program the sensor to the SAS alarm through the haptic SQL card!',
           visuals: 'matt.jpg',
