@@ -17,12 +17,15 @@ const packageName = config.package;
 // ----------------------------------------
 
 task('bundle:package:clean', () =>
-  del([
-    `${paths.packageDist(packageName)}/es/*`,
-    `${paths.packageDist(packageName)}/commonjs/*`,
-    `${paths.packageDist(packageName)}/umd/*`,
-    `${paths.packageDist(packageName)}/dts`,
-  ]),
+  del(
+    [
+      `${paths.packageDist(packageName)}/es/*`,
+      `${paths.packageDist(packageName)}/commonjs/*`,
+      `${paths.packageDist(packageName)}/umd/*`,
+      `${paths.packageDist(packageName)}/dts`,
+    ],
+    { force: true },
+  ),
 );
 
 // ----------------------------------------

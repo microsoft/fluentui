@@ -64,6 +64,11 @@ export interface IMultiStackedBarChartProps {
   legendsOverflowProps?: Partial<IOverflowSetProps>;
 
   /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;

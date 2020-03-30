@@ -2,8 +2,6 @@ import { getWindow } from './dom/getWindow';
 import { isDirectionalKeyCode } from './keyboard';
 import { setFocusVisibility } from './setFocusVisibility';
 
-export { IsFocusVisibleClassName } from './setFocusVisibility';
-
 type AppWindow =
   | (Window & { __hasInitializeFocusRects__: boolean; FabricConfig?: { disableFocusRects?: boolean } })
   | undefined;

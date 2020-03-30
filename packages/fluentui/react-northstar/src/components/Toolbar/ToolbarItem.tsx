@@ -31,7 +31,7 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import { Popper } from '../../utils/positioner';
+import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
 import Icon, { IconProps } from '../Icon/Icon';
@@ -58,7 +58,9 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
    * Shorthand for the submenu.
    * If submenu is specified, the item is wrapped to group the item and the menu elements together.
    */
-  menu?: ShorthandValue<ToolbarMenuProps> | ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>;
+  menu?:
+    | ShorthandValue<ToolbarMenuProps & { popper?: PopperShorthandProps }>
+    | ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>;
 
   /** Indicates if the menu inside the item is open. */
   menuOpen?: boolean;
@@ -280,6 +282,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
                 },
               }}
               targetRef={itemRef}
+              {...getPopperPropsFromShorthand(menu)}
             >
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {

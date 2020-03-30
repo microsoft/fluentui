@@ -5,7 +5,7 @@ import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale
 import { select as d3Select } from 'd3-selection';
 import * as d3TimeFormat from 'd3-time-format';
 import { ILegend, Legends } from '../Legends/index';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   ILineChartProps,
@@ -53,6 +53,7 @@ export class LineChartBase extends React.Component<
   private _uniqLineText: string;
   private chartContainer: HTMLDivElement;
   private legendContainer: HTMLDivElement;
+  private _calloutId: string;
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
@@ -75,6 +76,7 @@ export class LineChartBase extends React.Component<
     };
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     this._calloutPoints = this.CalloutData(this._points) ? this.CalloutData(this._points) : [];
+    this._calloutId = getId('callout');
     this._uniqLineText =
       '_line_' +
       Math.random()
@@ -162,7 +164,7 @@ export class LineChartBase extends React.Component<
             isBeakVisible={false}
             gapSpace={10}
             directionalHint={DirectionalHint.topAutoEdge}
-            id={'callout'}
+            id={this._calloutId}
           >
             <div className={this._classNames.calloutContentRoot} role={'presentation'}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
@@ -283,6 +285,7 @@ export class LineChartBase extends React.Component<
         enabledWrapLines={this.props.enabledLegendsWrapLines}
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
       />
     );
     return legends;
@@ -418,7 +421,7 @@ export class LineChartBase extends React.Component<
               data-is-focusable={i === 0 ? true : false}
               onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
               onBlur={this._handleMouseOut}
-              aria-labelledby={'callout'}
+              aria-labelledby={this._calloutId}
             />,
           );
         } else {

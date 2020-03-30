@@ -62,7 +62,7 @@ export function createShorthand<P>({
       // eslint-disable-next-line no-console
       console.warn(
         [
-          '@microsoft/fluent-ui-react:',
+          '@fluentui/react-northstar:',
           'The usage of render callback is deprecated and will be removed soon. Please use render props for shorthands instead.',
           'See: https://microsoft.github.io/fluent-ui-react/shorthand-props',
         ].join(' '),
