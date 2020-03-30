@@ -73,8 +73,6 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
 
   /** Whether or not tree title is selectable. */
   selectable?: boolean;
-
-  selectIndicator?: React.ReactNode;
 }
 
 export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' | 'selectableParent'>;
@@ -155,7 +153,12 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
         styles:
           hasSubtree && selectableParent && expanded
             ? resolvedStyles.customSelectionIndicator
-            : resolvedStyles.selectionIndicator,
+            : !hasSubtree
+            ? resolvedStyles.selectionIndicator
+            : {
+                // How to avoid this?
+                display: 'none',
+              },
       }),
     }),
   });
@@ -167,7 +170,6 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
     ...unhandledProps,
   };
-  // debugger;
 
   const element = (
     <ElementType
@@ -178,22 +180,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     >
       {childrenExist(children) ? children : content}
 
-      {selectable &&
-        defaultSelectIndicatorPosition &&
-        Box.create(selectionIndicator, {
-          defaultProps: () => ({
-            as: 'span',
-            ...getA11Props('indicator', {
-              className: TreeTitle.slotClassNames.indicator,
-              styles:
-                hasSubtree && selectableParent
-                  ? resolvedStyles.customSelectionIndicator
-                  : !hasSubtree
-                  ? resolvedStyles.selectionIndicator
-                  : {},
-            }),
-          }),
-        })}
+      {selectIndicator}
     </ElementType>
   );
   setEnd();
@@ -220,7 +207,6 @@ TreeTitle.propTypes = {
   selectableParent: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
-  selectIndicator: customPropTypes.itemShorthand,
 };
 TreeTitle.defaultProps = {
   as: 'a',

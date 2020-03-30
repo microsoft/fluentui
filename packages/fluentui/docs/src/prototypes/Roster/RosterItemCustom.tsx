@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { List } from '@fluentui/react-northstar';
-// import { RosterAvatar } from './RosterAvatar';
+import { RosterAvatar } from './RosterAvatar';
 import { useJitterState } from './hooks/useJitterState';
 import { RosterUserName } from './RosterUsername';
 import { RosterState } from './RosterState';
@@ -46,10 +46,9 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
     to: 2000,
     enabled: (type === 'presenters' || type === 'attendees') && !isMuted,
   });
-
   return (
     <List.Item
-      media={selectIndicator}
+      media={<RosterAvatar isActive={isActive} visuals={visuals} />}
       header={<RosterUserName isActive={isActive} displayName={displayName} />}
       endMedia={<RosterState action={action} isMuted={isMuted} />}
       content={<RosterMessage message={message} />}

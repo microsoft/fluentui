@@ -237,6 +237,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
                 as: hasSubtreeItem ? 'span' : 'a',
                 level,
                 treeSize,
+                expanded,
                 index,
                 selected,
                 selectable,
