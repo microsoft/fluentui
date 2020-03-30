@@ -53,7 +53,7 @@ const CURRENT_VERSION = '7';
 const VERSIONS = ['7', '6', '5'];
 const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
   key: version,
-  text: 'Fabric ' + version,
+  text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
   checked: version === CURRENT_VERSION,
 }));
 

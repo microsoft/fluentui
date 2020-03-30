@@ -16,16 +16,12 @@ import {
   ShorthandFactory,
   SizeValue,
 } from '../../utils';
+import SplitButtonToggle, { SplitButtonToggleProps } from './SplitButtonToggle';
 import Button, { ButtonProps } from '../Button/Button';
 import MenuButton, { MenuButtonProps } from '../MenuButton/MenuButton';
 import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
-
-export interface SplitButtonSlotClassNames {
-  toggleButton: string;
-  size?: SizeValue;
-}
 
 export interface SplitButtonProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /**
@@ -81,7 +77,7 @@ export interface SplitButtonProps extends UIComponentProps, ChildrenComponentPro
   size?: SizeValue;
 
   /** Shorthand for the toggle button. */
-  toggleButton?: ShorthandValue<ButtonProps>;
+  toggleButton?: ShorthandValue<SplitButtonToggleProps>;
 }
 
 export interface SplitButtonState {
@@ -94,11 +90,9 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
 
   static displayName = 'SplitButton';
 
-  static className = 'ui-splitbutton';
+  static Toggle = SplitButtonToggle;
 
-  static slotClassNames: SplitButtonSlotClassNames = {
-    toggleButton: `${SplitButton.className}__toggleButton`,
-  };
+  static className = 'ui-splitbutton';
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -168,7 +162,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     styles,
     unhandledProps,
   }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
-    const { button, disabled, menu, primary, secondary, toggleButton } = this.props;
+    const { button, disabled, menu, primary, secondary, toggleButton, size } = this.props;
     const trigger = Button.create(button, {
       defaultProps: () => ({
         styles: styles.menuButton,
@@ -195,15 +189,12 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
             overrideProps: this.handleMenuButtonOverrides,
           },
         )}
-        {Button.create(toggleButton, {
+        {SplitButtonToggle.create(toggleButton, {
           defaultProps: () => ({
-            styles: styles.toggleButton,
-            className: SplitButton.slotClassNames.toggleButton,
             disabled,
-            icon: 'icon-menu-arrow-down',
-            iconOnly: true,
             primary,
             secondary,
+            size,
             ...accessibility.attributes.toggleButton,
           }),
           overrideProps: (predefinedProps: ButtonProps) => ({
