@@ -1,7 +1,7 @@
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const ToolbarExampleMenuWithSubmenuShorthand = () => {
+const ToolbarExampleVariables = () => {
   return (
     <Toolbar
       variables={{
@@ -59,7 +59,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
 
               // ToolbarMenuItem with menu
               {
-                key: 'item',
+                key: 'item-menu',
                 content: 'Item',
                 menu: {
                   items: [
@@ -71,7 +71,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menuOpen: true,
               },
               {
-                key: 'item-variables',
+                key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
                   items: [
@@ -105,7 +105,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
               { key: 'item-variables', content: 'Item', variables: { menuItemForeground: 'orange' } },
               // ToolbarMenuItem with menu
               {
-                key: 'item',
+                key: 'item-menu',
                 content: 'Item',
                 menu: {
                   items: [
@@ -117,7 +117,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 menuOpen: true,
               },
               {
-                key: 'item-variables',
+                key: 'item-menu-variables',
                 content: 'Item',
                 menu: {
                   items: [
@@ -141,4 +141,4 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
   );
 };
 
-export default ToolbarExampleMenuWithSubmenuShorthand;
+export default ToolbarExampleVariables;
