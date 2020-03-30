@@ -32,6 +32,10 @@ const renderCycle = async (
   let profilerMeasure: ProfilerMeasure;
   const telemetryRef: React.Ref<Telemetry> = React.createRef();
 
+  if ((window as any).CLEAR_RESOLVE_STYLES_CACHE) {
+    console.log('---- render cycle ---- ');
+    (window as any).CLEAR_RESOLVE_STYLES_CACHE();
+  }
   await asyncRender(
     <Provider theme={themes.teams} renderer={createRenderer()} telemetryRef={telemetryRef}>
       <Profiler

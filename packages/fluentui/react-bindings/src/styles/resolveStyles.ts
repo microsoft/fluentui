@@ -21,10 +21,16 @@ export type ResolveStylesResult = {
 };
 
 // this weak map is used as cache for the classes
-const classesCache = new WeakMap<ThemePrepared, Record<string, string>>();
+let classesCache = new WeakMap<ThemePrepared, Record<string, string>>();
 
 // this weak map is used as cache for the styles
-const stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
+let stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
+
+(window as any).CLEAR_RESOLVE_STYLES_CACHE = () => {
+  console.log('clear cache!');
+  classesCache = new WeakMap<ThemePrepared, Record<string, string>>();
+  stylesCache = new WeakMap<ThemePrepared, Record<string, ICSSInJSStyle>>();
+};
 
 /**
  * Both resolvedStyles and classes are objects of getters with lazy evaluation
