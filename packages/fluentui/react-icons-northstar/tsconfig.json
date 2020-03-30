@@ -12,7 +12,13 @@
   "include": ["src", "test"],
   "references": [
     {
-      "icons": "../icons"
+      "path": "../accessibility"
+    },
+    {
+      "path": "../react-bindings"
+    },
+    {
+      "path": "../styles"
     }
   ]
 }
