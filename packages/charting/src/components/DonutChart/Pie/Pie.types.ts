@@ -65,7 +65,7 @@ export interface IPieProps {
   /**
    * props for inside donut value
    */
-  insideDonutValue?: string | number;
+  valueInsideDonut?: string | number;
 }
 
 export interface IPieStyles {

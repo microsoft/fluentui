@@ -37,7 +37,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         activeArc={this.props.activeArc}
         href={href}
         calloutId={this.props.calloutId}
-        insideDonutValue={this.props.insideDonutValue}
+        valueInsideDonut={this.props.valueInsideDonut}
       />
     );
   };

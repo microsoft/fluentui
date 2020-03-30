@@ -65,7 +65,7 @@ export interface IDonutChartProps {
   /**
    * props for inside donut value
    */
-  insideDonutValue?: string | number;
+  valueInsideDonut?: string | number;
 
   /**
    * focus zone props in hover card for legends

@@ -26,7 +26,7 @@ export class DonutChartBasicExample extends React.Component<IDonutChartProps, {}
         legendsOverflowText={'overflow Items'}
         height={220}
         width={176}
-        insideDonutValue={39000}
+        valueInsideDonut={39000}
       />
     );
   }
