@@ -177,7 +177,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
       )}
     >
       {childrenExist(children) ? children : content}
-      {console.log(hasSubtree, selectableParent, expanded)}
+
       {selectable &&
         defaultSelectIndicatorPosition &&
         Box.create(selectionIndicator, {
