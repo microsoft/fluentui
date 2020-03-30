@@ -237,6 +237,8 @@ export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): 
 
     return registration as IRegistration;
   }
+
+  return undefined;
 }
 
 export function applyRegistration(registration: IRegistration): void {

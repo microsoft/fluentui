@@ -2,6 +2,9 @@
 
 This is a list of changes made to this Stardust copy of FocusZone in comparison with the original [Fabric FocusZone @ 0f567e05952c6b50c691df2fb72d100b5e525d9e](https://github.com/OfficeDev/office-ui-fabric-react/blob/0f567e05952c6b50c691df2fb72d100b5e525d9e/packages/office-ui-fabric-react/src/components/FocusZone/FocusZone.tsx).
 
+### Converge `FocusZone` with v7's version
+- chore(FocusZone): Using the same DOM utilities in v0 that we use in v7. ([#12192](https://github.com/OfficeDev/office-ui-fabric-react/pull/12192))
+
 ### Fixes
 - fix(Accessibility): When parking focus needs to be detected, IE11 returns `null` for `activeElement`, causing focus to not be restored. We now check for `null` to ensure the feature works correctly in this environment.
 - fix(Accessibility): Always handle provided onKeyDown event be propagated in inner zone ([#2140](https://github.com/microsoft/fluent-ui-react/pull/2140/files))

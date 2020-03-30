@@ -27,11 +27,11 @@ import {
   ShorthandValue,
   ComponentEventHandler,
 } from '../../types';
-import Button, { ButtonProps } from '../Button/Button';
 import CarouselItem, { CarouselItemProps } from './CarouselItem';
 import Text from '../Text/Text';
 import CarouselNavigation, { CarouselNavigationProps } from './CarouselNavigation';
 import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
+import CarouselPaddle, { CarouselPaddleProps } from './CarouselPaddle';
 
 export interface CarouselSlotClassNames {
   itemsContainer: string;
@@ -96,7 +96,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   onActiveIndexChange?: ComponentEventHandler<CarouselProps>;
 
   /** Shorthand for the paddle that navigates to the next item. */
-  paddleNext?: ShorthandValue<ButtonProps>;
+  paddleNext?: ShorthandValue<CarouselPaddleProps>;
 
   /**
    * A Carousel can position its paddels inside the content, outside or inline
@@ -105,7 +105,7 @@ export interface CarouselProps extends UIComponentProps, ChildrenComponentProps 
   paddlesPosition?: 'inside' | 'outside' | 'inline';
 
   /** Shorthand for the paddle that navigates to the previous item. */
-  paddlePrevious?: ShorthandValue<ButtonProps>;
+  paddlePrevious?: ShorthandValue<CarouselPaddleProps>;
 }
 
 export interface CarouselState {
@@ -162,6 +162,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
   static Item = CarouselItem;
   static Navigation = CarouselNavigation;
   static NavigationItem = CarouselNavigationItem;
+  static Paddle = CarouselPaddle;
 
   static getAutoControlledStateFromProps(props: CarouselProps, state: CarouselState) {
     const { items } = props;
@@ -356,9 +357,9 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     this.setActiveIndex(e, this.state.activeIndex + 1, focusItem);
   };
 
-  handlePaddleOverrides = (predefinedProps: ButtonProps, paddleName: string) => ({
-    onClick: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
-      _.invoke(predefinedProps, 'onClick', e, buttonProps);
+  handlePaddleOverrides = (predefinedProps: CarouselPaddleProps, paddleName: string) => ({
+    onClick: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
+      _.invoke(predefinedProps, 'onClick', e, paddleProps);
       if (paddleName === 'paddleNext') {
         this.showNextSlide(e, false);
         this.handleNextPaddleFocus();
@@ -367,49 +368,49 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
         this.handlePreviousPaddleFocus();
       }
     },
-    onBlur: (e: React.FocusEvent, buttonProps: ButtonProps) => {
+    onBlur: (e: React.FocusEvent, paddleProps: CarouselPaddleProps) => {
       if (e.relatedTarget !== this.paddleNextRef.current) {
         this.setState({ ariaLiveOn: false });
       }
     },
-    onFocus: (e: React.SyntheticEvent, buttonProps: ButtonProps) => {
-      _.invoke(predefinedProps, 'onFocus', e, buttonProps);
+    onFocus: (e: React.SyntheticEvent, paddleProps: CarouselPaddleProps) => {
+      _.invoke(predefinedProps, 'onFocus', e, paddleProps);
       this.setState({
         ariaLiveOn: true,
       });
     },
   });
 
-  renderPaddles = (accessibility, styles) => {
-    const { paddlePrevious, paddleNext } = this.props;
+  renderPaddles = accessibility => {
+    const { paddlePrevious, paddleNext, items, circular } = this.props;
+    const { activeIndex } = this.state;
 
     return (
       <>
         <Ref innerRef={this.paddlePreviousRef}>
-          {Button.create(paddlePrevious, {
+          {CarouselPaddle.create(paddlePrevious, {
             defaultProps: () => ({
               className: Carousel.slotClassNames.paddlePrevious,
-              iconOnly: true,
-              icon: 'icon-chevron-start',
-              styles: styles.paddlePrevious,
+              previous: true,
+              hidden: items !== undefined && !circular && activeIndex === 0,
               ...accessibility.attributes.paddlePrevious,
               ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddlePrevious, paddlePrevious),
             }),
-            overrideProps: (predefinedProps: ButtonProps) =>
+            overrideProps: (predefinedProps: CarouselPaddleProps) =>
               this.handlePaddleOverrides(predefinedProps, 'paddlePrevious'),
           })}
         </Ref>
         <Ref innerRef={this.paddleNextRef}>
-          {Button.create(paddleNext, {
+          {CarouselPaddle.create(paddleNext, {
             defaultProps: () => ({
               className: Carousel.slotClassNames.paddleNext,
-              iconOnly: true,
-              icon: 'icon-chevron-end',
-              styles: styles.paddleNext,
+              next: true,
+              hidden: items !== undefined && !circular && activeIndex === items.length - 1,
               ...accessibility.attributes.paddleNext,
               ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.paddleNext, paddleNext),
             }),
-            overrideProps: (predefinedProps: ButtonProps) => this.handlePaddleOverrides(predefinedProps, 'paddleNext'),
+            overrideProps: (predefinedProps: CarouselPaddleProps) =>
+              this.handlePaddleOverrides(predefinedProps, 'paddleNext'),
           })}
         </Ref>
       </>
@@ -451,7 +452,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     );
   };
 
-  renderComponent({ ElementType, classes, styles, accessibility, unhandledProps }) {
+  renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
     const { children } = this.props;
     return (
       <ElementType
@@ -465,7 +466,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
         ) : (
           <>
             {this.renderContent(accessibility, classes, unhandledProps)}
-            {this.renderPaddles(accessibility, styles)}
+            {this.renderPaddles(accessibility)}
             {this.renderNavigation()}
           </>
         )}
