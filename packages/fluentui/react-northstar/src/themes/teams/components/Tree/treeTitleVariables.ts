@@ -6,7 +6,6 @@ export interface TreeTitleVariables {
   indicatorColor: string;
 
   padding: string;
-  gap: string;
   selectionIndicatorMargin: string;
   borderColor: string;
   borderStyle: string;
@@ -31,12 +30,11 @@ export default (siteVars: any): TreeTitleVariables => {
     color: siteVars.colorScheme.default.foreground,
     padding: `${pxToRem(1)} 0`,
 
-    borderColor: _.get(siteVars, 'colorScheme.default.foreground1', defaultValue),
+    borderColor: siteVars.colorScheme.default.foreground1,
     borderStyle: 'solid',
     borderRadius: pxToRem(3),
     borderWidth: pxToRem(1),
     indicatorColor: 'transparent',
-    gap: pxToRem(12),
     selectionIndicatorMargin: `0 0 0 0`,
     background: 'transparent',
 
