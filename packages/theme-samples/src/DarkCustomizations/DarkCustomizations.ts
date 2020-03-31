@@ -96,6 +96,13 @@ export const DarkCustomizations: ICustomizations = {
         },
       },
     },
+    Modal: {
+      styles: {
+        main: {
+          backgroundColor: DarkTheme.palette.neutralLighter,
+        },
+      },
+    },
     VerticalDivider: {
       styles: {
         divider: {
