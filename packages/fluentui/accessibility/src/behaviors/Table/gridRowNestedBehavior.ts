@@ -8,6 +8,7 @@ import gridCellBehavior from './gridCellBehavior';
  * @specification
  * Adds role='row'.
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
+ * Adds attribute 'aria-selected=true' based on the property 'selected'. Based on this screen readers will recognize the selected state of the item.
  * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
  * Provides arrow key navigation in horizontal direction.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
@@ -19,6 +20,7 @@ const gridRowNestedBehavior: Accessibility = props => ({
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
       role: 'row',
+      'aria-selected': props.selected,
     },
   },
   focusZone: {

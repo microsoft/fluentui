@@ -4,7 +4,7 @@ import {
   gridCellBehavior,
   gridRowBehavior,
 } from '@fluentui/accessibility';
-import { Table, Checkbox, Box } from '@fluentui/react-northstar';
+import { Table, Checkbox, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 interface SelectableTableAction {
@@ -76,7 +76,7 @@ const SelectableTable = () => {
             <Table.Row
               key={`selectableTable${index}`}
               accessibility={gridRowBehavior}
-              aria-selected={state.selectedRows[index]}
+              selected={state.selectedRows[index]}
             >
               <Table.Cell
                 accessibility={gridCellWithFocusableElementBehavior}
@@ -98,7 +98,7 @@ const SelectableTable = () => {
           );
         })}
       </Table>
-      <Box content={`Selected rows: ${state.selectedRows.filter(Boolean).length}`} />
+      <Text content={`Selected rows: ${state.selectedRows.filter(Boolean).length}`} />
     </>
   );
 };
