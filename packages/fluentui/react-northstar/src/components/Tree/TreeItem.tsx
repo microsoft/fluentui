@@ -225,6 +225,7 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
+        onClick: handleTitleClick,
       })}
     >
       {childrenExist(children)
