@@ -33,6 +33,7 @@ const ToolbarExampleActionPopupInMenu = () => {
       aria-label="Popup with an action in menu"
       items={[
         {
+          key: 'more',
           icon: 'more',
           active: menuOpen,
           title: 'More',
