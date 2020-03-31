@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "office-ui-fabric-react_v7.105.5",
+      "version": "7.105.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dialog/Panel: Change heading from 2 to 1",
+            "author": "joschect@microsoft.com",
+            "commit": "5ed2c63ac9647b56f2b39d1d0b78d12845593450"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "office-ui-fabric-react_v7.105.3",
       "version": "7.105.3",
