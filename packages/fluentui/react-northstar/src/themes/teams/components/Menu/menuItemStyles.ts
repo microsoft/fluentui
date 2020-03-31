@@ -34,8 +34,13 @@ const getFocusedStyles = ({
 
   return {
     ...(!vertical && {
-      color: primary ? colors.foregroundFocus : v.colorActive || colors.foregroundActive,
-      background: primary ? colors.backgroundFocus : v.backgroundColorFocus || colors.backgroundFocus,
+      color: v.colorActive || colors.foregroundActive,
+      background: v.backgroundColorFocus || colors.backgroundFocus,
+      
+      ...(primary && {
+       color: colors.foregroundFocus,
+       background: colors.backgroundFocus,
+      }),
     }),
 
     ...(vertical && {
