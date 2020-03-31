@@ -84,6 +84,16 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
     flex: '0 0 auto',
+    height: pxToRem(32),
+    width: pxToRem(32),
+    [`& .${Icon.className}`]: {
+      height: '100%',
+      width: '100%',
+      '& svg': {
+        height: '100%',
+        width: '100%',
+      },
+    },
     marginRight: v.iconSpace,
   }),
 
