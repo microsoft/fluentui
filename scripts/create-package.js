@@ -56,6 +56,9 @@ const steps = [
   { template: 'PackageJson', output: 'package.json' },
   { template: 'TsConfig', output: 'tsconfig.json' },
   { template: 'TsLint', output: 'tslint.json' },
+  { template: 'StorybookMain', output: '.storybook/main.js' },
+  { template: 'StorybookManager', output: '.storybook/manager.js' },
+  { template: 'StorybookPreview', output: '.storybook/preview.js' },
   { template: 'Tests', output: 'config/tests.js' },
   { template: 'IndexTs', output: 'src/index.ts' },
   { template: 'Version', output: 'src/version.ts' },
@@ -171,9 +174,9 @@ function makePackage(error) {
     return;
   }
 
+  fs.mkdirSync(`${packagePath}/.storybook`);
   fs.mkdirSync(`${packagePath}/config`);
   fs.mkdirSync(`${packagePath}/src`);
-  fs.mkdirSync(`${packagePath}/src/demo`);
   fs.mkdirSync(`${packagePath}/src/components`);
 
   performStep(0);
