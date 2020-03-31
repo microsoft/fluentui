@@ -229,7 +229,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
   }
 
   public componentDidMount(): void {
-    if (this._comboBoxWrapper.current) {
+    if (this._comboBoxWrapper.current && !this.props.disabled) {
       // hook up resolving the options if needed on focus
       this._events.on(this._comboBoxWrapper.current, 'focus', this._onResolveOptions, true);
       if ('onpointerdown' in this._comboBoxWrapper.current) {
