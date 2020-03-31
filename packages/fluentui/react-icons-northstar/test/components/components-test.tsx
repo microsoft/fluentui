@@ -14,7 +14,7 @@ describe('Icon components', () => {
     });
 
     test(`${file} is a valid component`, () => {
-      expect(React.isValidElement(<IconComponent />)).toEqual(true);
+      expect(ReactIs.isValidElementType(IconComponent)).toEqual(true);
     });
 
     test(`${file} matches displayName`, () => {
