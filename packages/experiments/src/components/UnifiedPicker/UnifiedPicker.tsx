@@ -80,7 +80,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
   };
 
-  const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLInputElement>) => {
+  const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
     console.log('on input keyDown');
     if (isSuggestionsShown) {
       const keyCode = ev.which;
@@ -89,9 +89,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           showPicker(false);
           ev.preventDefault();
           ev.stopPropagation();
-          break;
-        case KeyCodes.tab:
-          console.log('tabbed so stabbed here');
           break;
         case KeyCodes.enter:
           if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
@@ -190,7 +187,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       suggestions: suggestionItems,
       selectedSuggestionIndex: focusItemIndex,
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
-      onSuggestionSelected: _onSuggestionSelected
+      onSuggestionSelected: _onSuggestionSelected,
+      onKeyDown: _onInputKeyDown
     });
 
   return (

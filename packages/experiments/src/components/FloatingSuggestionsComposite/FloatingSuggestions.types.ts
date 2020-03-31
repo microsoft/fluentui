@@ -117,6 +117,10 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * There should be no logic to handle this in Suggestion component as the focus is never on this component
    */
   selectedSuggestionIndex?: number;
+  /**
+   * Arrow key callback
+   */
+  onKeyDown?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
