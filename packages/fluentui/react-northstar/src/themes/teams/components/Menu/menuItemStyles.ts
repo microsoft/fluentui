@@ -33,14 +33,12 @@ const getFocusedStyles = ({
   if (active && !underlined && !vertical) return {};
 
   return {
-    ...(!vertical && {
-      color: v.colorActive || colors.foregroundActive,
-      background: v.backgroundColorFocus || colors.backgroundFocus,
-      
-      ...(primary && {
-       color: colors.foregroundFocus,
-       background: colors.backgroundFocus,
-      }),
+    color: v.colorActive || colors.foregroundActive,
+    background: v.backgroundColorFocus || colors.backgroundFocus,
+
+    ...(primary && {
+      color: colors.foregroundFocus,
+      background: colors.backgroundFocus,
     }),
 
     ...(vertical && {
@@ -54,8 +52,9 @@ const getFocusedStyles = ({
 
       ...(active && {
         color: v.colorActive,
-        ...(primary && { color: colors.foregroundFocus }),
         background: v.backgroundColorActive || colors.backgroundActive,
+
+        ...(primary && { color: colors.foregroundFocus }),
       }),
     }),
   };
