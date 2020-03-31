@@ -11,7 +11,7 @@ describe('Icon components', () => {
     const IconComponent = (icons as any)[componentName];
 
     test(`${componentName} has 'Icon' suffix in the name`, () => {
-      expect(componentName.substr(-4, 4)).toEqual('Icon');
+      expect(componentName.endsWith('Icon')).toBeTruthy();
     });
 
     test(`${file} is exported in package`, () => {

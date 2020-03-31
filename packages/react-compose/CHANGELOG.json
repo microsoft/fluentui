@@ -2,6 +2,20 @@
   "name": "@fluentui/react-compose",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@fluentui/react-compose_v0.2.4",
+      "version": "0.2.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix options merging in compose()",
+            "author": "olfedias@microsoft.com",
+            "commit": "5577b5e41ab354d9e92ee593d930c1d593d1195f"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@fluentui/react-compose_v0.2.3",
       "version": "0.2.3",

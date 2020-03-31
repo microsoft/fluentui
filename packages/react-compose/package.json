@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-compose",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "UI Fabric React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
