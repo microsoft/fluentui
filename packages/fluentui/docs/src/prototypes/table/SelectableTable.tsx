@@ -23,7 +23,7 @@ const SelectableTableStateReducer = (state: SelectableTableState, action: Select
     case 'TOGGLE_ITEM': {
       const selectedRows = state.selectedRows.slice(0);
       selectedRows[action.itemIndex] = action.checked;
-      return { ...state, allRowsSelected: selectedRows.filter(item => !item).length === 0, selectedRows };
+      return { allRowsSelected: selectedRows.filter(item => !item).length === 0, selectedRows };
     }
     case 'TOGGLE_ALL': {
       const selectedRows = state.selectedRows.slice(0);
