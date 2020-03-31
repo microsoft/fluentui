@@ -59,9 +59,9 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
         <g id="Fluent-A" transform="translate(-399.000000, -974.000000)" stroke="#000000" stroke-width="2">
           <g id="Get-Started---Windows" transform="translate(384.000000, 960.000000)">
             <g id="icon_windows_black" transform="translate(16.000000, 16.000000)">
-              <polygon id="Stroke-1" stroke-linecap="square" points="0 8 64 0 64 64 0 56"></polygon>
-              <path d="M28,4 L28,60" id="Stroke-3"></path>
-              <path d="M0,32 L64,32" id="Stroke-4"></path>
+              <polygon id="Stroke-1" stroke-linecap="square" points="0 8 64 0 64 64 0 56" />
+              <path d="M28,4 L28,60" id="Stroke-3" />
+              <path d="M0,32 L64,32" id="Stroke-4" />
             </g>
           </g>
         </g>
