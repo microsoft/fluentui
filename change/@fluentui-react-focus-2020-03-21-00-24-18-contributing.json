@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix repository URL",
-  "packageName": "@fluentui/react-focus",
-  "email": "elcraig@microsoft.com",
-  "commit": "3b176fb14a33703416889336d7a7d3cb691bb874",
-  "dependentChangeType": "patch",
-  "date": "2020-03-21T07:24:18.224Z"
-}

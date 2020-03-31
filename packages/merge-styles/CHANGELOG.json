@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/merge-styles_v7.8.11",
+      "version": "7.8.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing '_rtl not defined' error thrown when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "31e6dc834a76c6afb4c555b155b67247e290dbcb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/merge-styles_v7.8.10",
       "version": "7.8.10",

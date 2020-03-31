@@ -1,7 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
 
+## 7.105.5
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Dialog/Panel: Change heading from 2 to 1 (joschect@microsoft.com)
 ## 7.105.3
 Wed, 25 Mar 2020 12:30:04 GMT
 
