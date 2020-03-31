@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react-northstar';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExamplePopupInMenu = () => {
   const [menu1Open, setMenu1Open] = React.useState(false);
@@ -18,7 +19,7 @@ const ToolbarExamplePopupInMenu = () => {
             {
               key: 'popup',
               content: 'Open Popup',
-              popup: <Input icon="search" placeholder="Search..." />,
+              popup: <Input icon={<SearchIcon />} placeholder="Search..." />,
             },
           ],
           menuOpen: menu1Open,
@@ -41,7 +42,7 @@ const ToolbarExamplePopupInMenu = () => {
             {
               key: 'popup',
               content: 'Open Popup',
-              popup: <Input icon="search" placeholder="Search..." />,
+              popup: <Input icon={<SearchIcon />} placeholder="Search..." />,
             },
             { key: 'about', content: 'About...' },
           ],
