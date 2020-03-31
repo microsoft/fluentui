@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Popup, Segment } from '@fluentui/react-northstar';
-import { More } from '@fluentui/react-icons-northstar';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 class AsyncDataLoader extends React.Component<any, any> {
   state = {
@@ -23,7 +23,7 @@ class AsyncDataLoader extends React.Component<any, any> {
 
 const PopupExampleAsync = () => (
   <Popup
-    trigger={<Button icon={<More />} content="Click me!" />}
+    trigger={<Button icon={<MoreIcon />} content="Click me!" />}
     renderContent={updatePosition => <AsyncDataLoader onLoaded={updatePosition} />}
   />
 );

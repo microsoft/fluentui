@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button, Divider, Grid, Ref, Text, Tooltip } from '@fluentui/react-northstar';
-import { Qna } from '@fluentui/react-icons-northstar';
+import { QnaIcon } from '@fluentui/react-icons-northstar';
 
 const TooltipExampleTarget = () => {
   const [target, setTarget] = React.useState<HTMLElement>(null);
@@ -10,7 +10,7 @@ const TooltipExampleTarget = () => {
       {/* CUSTOM DOM ELEMENT is used as target for Tooltip */}
       <Tooltip
         target={target}
-        trigger={<Button icon={<Qna />} circular styles={{ cursor: 'pointer' }} />}
+        trigger={<Button icon={<QnaIcon />} circular styles={{ cursor: 'pointer' }} />}
         content="well, yes, I am just a garbish text ¯\_(ツ)_/¯"
         position="below"
       />

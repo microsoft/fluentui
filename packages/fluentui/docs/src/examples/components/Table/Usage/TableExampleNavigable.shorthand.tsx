@@ -5,7 +5,7 @@ import {
   gridCellMultipleFocusableBehavior,
 } from '@fluentui/accessibility';
 import * as React from 'react';
-import { More } from '@fluentui/react-icons-northstar';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -24,7 +24,7 @@ const header = {
 };
 
 const moreOptionCell = {
-  content: <Button tabIndex={-1} icon={<More />} circular text iconOnly title="More options" />,
+  content: <Button tabIndex={-1} icon={<MoreIcon />} circular text iconOnly title="More options" />,
   truncateContent: true,
   accessibility: gridCellWithFocusableElementBehavior,
   onClick: e => {

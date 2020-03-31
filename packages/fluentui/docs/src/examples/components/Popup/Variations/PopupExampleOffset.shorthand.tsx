@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Button, Grid, Popup } from '@fluentui/react-northstar';
-import { ArrowUp } from '@fluentui/react-icons-northstar';
+import { ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const renderButton = () => (
   <Button
     icon={
-      <ArrowUp
+      <ArrowUpIcon
         {...{
           circular: true,
           bordered: true,
