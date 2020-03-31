@@ -17,7 +17,7 @@ import {
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
-import { AndroidLogo, AppleLogo, WebLogo } from '../../utilities/index';
+import { AndroidLogo, AppleLogo, WebLogo, WindowsLogo, MacLogo } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
 import { monoFont } from './HomePage.styles';
 const reactPackageData = require<any>('office-ui-fabric-react/package.json');
@@ -29,6 +29,8 @@ registerIcons({
     'AndroidLogo-homePage': AndroidLogo({ iconColor: 'black', iconSize: 64 }),
     'AppleLogo-homePage': AppleLogo({ iconColor: 'black', iconSize: 64 }),
     'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 }),
+    'WindowsLogo-homePage': WindowsLogo({ iconColor: 'black', iconSize: 64 }),
+    'MacLogo-homePage': MacLogo({ iconColor: 'black', iconSize: 64 }),
   },
 });
 
@@ -217,6 +219,26 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/android', 'Get started')}</li>
+            </ul>
+          </div>
+          <div className={classNames.card} style={{ background: platforms.windows.color }}>
+            <Icon iconName="WindowsLogo-homePage" className={classNames.cardIcon} />
+            <MarkdownHeader as="h3" className={classNames.cardTitle}>
+              Windows
+            </MarkdownHeader>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/windows', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/windows', 'Get started')}</li>
+            </ul>
+          </div>
+          <div className={classNames.card} style={{ background: platforms.mac.color }}>
+            <Icon iconName="MacLogo-homePage" className={classNames.cardIcon} />
+            <MarkdownHeader as="h3" className={classNames.cardTitle}>
+              macOS
+            </MarkdownHeader>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/mac', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/mac', 'Get started')}</li>
             </ul>
           </div>
         </div>

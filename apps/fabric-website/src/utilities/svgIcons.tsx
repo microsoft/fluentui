@@ -46,7 +46,13 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
-    <svg width="16px" height="17px" viewBox="0 0 66 68" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      className={css(className)}
+      style={{ stroke: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      fill="none"
+      viewBox="0 0 66 68"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <title>icon_windows_black</title>
       <desc>Created with Sketch.</desc>
       <g id="Build" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
