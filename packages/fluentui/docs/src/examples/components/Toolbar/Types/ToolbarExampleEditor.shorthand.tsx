@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 const fields = [
   {
@@ -142,7 +143,7 @@ const ToolbarExampleShorthand = () => {
             active: fontColorActive,
             title: 'Font color',
             popup: {
-              content: <Input icon="search" placeholder="Search..." />,
+              content: <Input icon={<SearchIcon />} placeholder="Search..." />,
               onOpenChange: () => {
                 setFontColorActive(!fontColorActive);
               },

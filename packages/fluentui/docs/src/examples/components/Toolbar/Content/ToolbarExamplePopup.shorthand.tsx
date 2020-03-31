@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 const HighlightPopup = ({ onConfirm }) => {
   return (
@@ -58,7 +59,7 @@ const ToolbarExamplePopupShorthand = () => {
           active: fontColorActive,
           title: 'Font color',
           popup: {
-            content: <Input icon="search" placeholder="Search..." />,
+            content: <Input icon={<SearchIcon />} placeholder="Search..." />,
             onOpenChange: () => {
               setFontColorActive(!fontColorActive);
             },
