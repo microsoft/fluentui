@@ -3,7 +3,7 @@ import cx from 'classnames';
 import createSvgIcon from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const BellMuteIcon = createSvgIcon({
+const BellSlashIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path
@@ -16,7 +16,7 @@ const BellMuteIcon = createSvgIcon({
       />
     </svg>
   ),
-  displayName: 'BellMuteIcon',
+  displayName: 'BellSlashIcon',
 });
 
-export default BellMuteIcon;
+export default BellSlashIcon;

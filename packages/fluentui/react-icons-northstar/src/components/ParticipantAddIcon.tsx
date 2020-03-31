@@ -3,7 +3,7 @@ import cx from 'classnames';
 import createSvgIcon from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
-const AddParticipantIcon = createSvgIcon({
+const ParticipantAddIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <path
@@ -16,7 +16,7 @@ const AddParticipantIcon = createSvgIcon({
       />
     </svg>
   ),
-  displayName: 'AddParticipantIcon',
+  displayName: 'ParticipantAddIcon',
 });
 
-export default AddParticipantIcon;
+export default ParticipantAddIcon;

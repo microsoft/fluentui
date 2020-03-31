@@ -7,7 +7,6 @@ export * from './utils/iconClassNames';
 // Icon components
 export { default as AcceptIcon } from './components/AcceptIcon';
 export { default as AddIcon } from './components/AddIcon';
-export { default as AddParticipantIcon } from './components/AddParticipantIcon';
 export { default as ArrowUpIcon } from './components/ArrowUpIcon';
 export { default as ArrowDownIcon } from './components/ArrowDownIcon';
 export { default as ArrowLeftIcon } from './components/ArrowLeftIcon';
@@ -15,7 +14,8 @@ export { default as ArrowRightIcon } from './components/ArrowRightIcon';
 export { default as AudioOffIcon } from './components/AudioOffIcon';
 export { default as BanIcon } from './components/BanIcon';
 export { default as BellIcon } from './components/BellIcon';
-export { default as BellMuteIcon } from './components/BellMuteIcon';
+export { default as BellSlashIcon } from './components/BellSlashIcon';
+export { default as BellSnoozeIcon } from './components/BellSnoozeIcon';
 export { default as BoldIcon } from './components/BoldIcon';
 export { default as BookmarkIcon } from './components/BookmarkIcon';
 export { default as BroadcastIcon } from './components/BroadcastIcon';
@@ -25,7 +25,6 @@ export { default as BulletsIcon } from './components/BulletsIcon';
 export { default as CalendarIcon } from './components/CalendarIcon';
 export { default as CallIcon } from './components/CallIcon';
 export { default as CallBlockedIcon } from './components/CallBlockedIcon';
-export { default as CallParkingIcon } from './components/CallParkingIcon';
 export { default as CallControlCloseTrayIcon } from './components/CallControlCloseTrayIcon';
 export { default as CallControlReleaseIcon } from './components/CallControlReleaseIcon';
 export { default as CallControlRequestIcon } from './components/CallControlRequestIcon';
@@ -40,6 +39,7 @@ export { default as CallVideoIcon } from './components/CallVideoIcon';
 export { default as CallVideoOffIcon } from './components/CallVideoOffIcon';
 export { default as CanvasAddPageIcon } from './components/CanvasAddPageIcon';
 export { default as CallMissedLineIcon } from './components/CallMissedLineIcon';
+export { default as CallParkingIcon } from './components/CallParkingIcon';
 export { default as ScreencastIcon } from './components/ScreencastIcon';
 export { default as ChatIcon } from './components/ChatIcon';
 export { default as ChevronDownIcon } from './components/ChevronDownIcon';
@@ -67,28 +67,28 @@ export { default as EyeSlashIcon } from './components/EyeSlashIcon';
 export { default as FilesAftereffectsIcon } from './components/FilesAftereffectsIcon';
 export { default as FilesCodeIcon } from './components/FilesCodeIcon';
 export { default as FilesEmptyIcon } from './components/FilesEmptyIcon';
-export { default as FilesExcelIcon } from './components/FilesExcelIcon';
-export { default as FilesExcelBrandIcon } from './components/FilesExcelBrandIcon';
+export { default as ExcelIcon } from './components/ExcelIcon';
+export { default as ExcelColorIcon } from './components/ExcelColorIcon';
 export { default as FilesFlashIcon } from './components/FilesFlashIcon';
 export { default as FilesGifIcon } from './components/FilesGifIcon';
 export { default as FilesIllustratorIcon } from './components/FilesIllustratorIcon';
 export { default as FilesImageIcon } from './components/FilesImageIcon';
 export { default as FilesIndesignIcon } from './components/FilesIndesignIcon';
-export { default as FilesOneNoteIcon } from './components/FilesOneNoteIcon';
-export { default as FilesOneNoteBrandIcon } from './components/FilesOneNoteBrandIcon';
+export { default as OneNoteIcon } from './components/OneNoteIcon';
+export { default as OneNoteColorIcon } from './components/OneNoteColorIcon';
 export { default as FilesPdfIcon } from './components/FilesPdfIcon';
 export { default as FilesPhotoshopIcon } from './components/FilesPhotoshopIcon';
-export { default as FilesPowerPointIcon } from './components/FilesPowerPointIcon';
-export { default as FilesPowerPointBrandIcon } from './components/FilesPowerPointBrandIcon';
+export { default as PowerPointIcon } from './components/PowerPointIcon';
+export { default as PowerPointColorIcon } from './components/PowerPointColorIcon';
 export { default as FilesSketchIcon } from './components/FilesSketchIcon';
 export { default as FilesSoundIcon } from './components/FilesSoundIcon';
 export { default as FilesTxtIcon } from './components/FilesTxtIcon';
 export { default as FilesUploadIcon } from './components/FilesUploadIcon';
 export { default as FilesVideoIcon } from './components/FilesVideoIcon';
-export { default as FilesVisioIcon } from './components/FilesVisioIcon';
-export { default as FilesVisioBrandIcon } from './components/FilesVisioBrandIcon';
-export { default as FilesWordIcon } from './components/FilesWordIcon';
-export { default as FilesWordBrandIcon } from './components/FilesWordBrandIcon';
+export { default as VisioIcon } from './components/VisioIcon';
+export { default as VisioColorIcon } from './components/VisioColorIcon';
+export { default as WordIcon } from './components/WordIcon';
+export { default as WordColorIcon } from './components/WordColorIcon';
 export { default as FilesZipIcon } from './components/FilesZipIcon';
 export { default as FlagIcon } from './components/FlagIcon';
 export { default as FontColorIcon } from './components/FontColorIcon';
@@ -130,6 +130,7 @@ export { default as PanoramaIcon } from './components/PanoramaIcon';
 export { default as PauseIcon } from './components/PauseIcon';
 export { default as PauseThickIcon } from './components/PauseThickIcon';
 export { default as PaperclipIcon } from './components/PaperclipIcon';
+export { default as ParticipantAddIcon } from './components/ParticipantAddIcon';
 export { default as ParticipantRemoveIcon } from './components/ParticipantRemoveIcon';
 export { default as PhoneClockIcon } from './components/PhoneClockIcon';
 export { default as PhoneArrowIcon } from './components/PhoneArrowIcon';
@@ -160,7 +161,6 @@ export { default as ShareAltIcon } from './components/ShareAltIcon';
 export { default as ShareLocationIcon } from './components/ShareLocationIcon';
 export { default as ShareToIcon } from './components/ShareToIcon';
 export { default as SkypeLogoIcon } from './components/SkypeLogoIcon';
-export { default as SnoozeIcon } from './components/SnoozeIcon';
 export { default as SpeakerMuteIcon } from './components/SpeakerMuteIcon';
 export { default as SpotlightIcon } from './components/SpotlightIcon';
 export { default as StarIcon } from './components/StarIcon';
@@ -199,201 +199,10 @@ export { default as WindowMinimizeIcon } from './components/WindowMinimizeIcon';
 export { default as WindowRestoreIcon } from './components/WindowRestoreIcon';
 export { default as YammerIcon } from './components/YammerIcon';
 
-// Mapping reference
-// export default {
-//   'icon-circle': iconCircle,
-//   accept,
-//   add,
-//   'arrow-up': arrowUp,
-//   'arrow-down': arrowDown,
-//   'arrow-left': arrowLeft,
-//   'arrow-right': arrowRight,
-//   'audio-off': audioOff,
-//   ban,
-//   bell,
-//   'bell-slash': bellMute,
-//   'bell-snooze': snooze,
-//   bold,
-//   bookmark,
-//   broadcast,
-//   'broadcast-view-fullscreen': broadcastViewFullscreen,
-//   'broadcast-view-left': broadcastViewLeft,
-//   bullets,
-//   calendar,
-//   call,
-//   'call-blocked': callBlocked,
-//   'call-dialpad': callDialpad,
-//   'call-end': callEnd,
-//   'call-parking': callParking,
-//   'call-video': callVideo,
-//   'call-video-off': callVideoOff,
-//   'call-control-release': callControlRelease,
-//   'call-control-request': callControlRequest,
-//   'call-control-close-tray': callControlCloseTray,
-//   'call-control-present-new': callControlPresentNew,
-//   'call-control-stop-presenting-new': callControlStopPresentingNew,
-//   'call-control-share': callControlShare,
-//   'call-missed-line': callMissedLine,
-//   'call-pstn': callPstn,
-//   'call-recording': callRecording,
-//   screencast,
-//   'canvas-add-page': canvasAddPage,
-//   chat,
-//   'chevron-down': chevronDown,
-//   'icon-chevron-start': chevronStart,
-//   'icon-chevron-end': chevronEnd,
-//   'chevron-down-medium': chevronDownMedium,
+//   'icon-circle': iconCircle, -> CircleIcon
 //   'chevron-right-medium': chevronRightMedium,
-//   'clipboard-copied-to': clipboardCopiedTo,
-//   close,
-//   'closed-captions': closedCaptions,
-//   'code-snippet': codeSnippet,
-//   collapse,
-//   companion,
-//   'files-aftereffects': filesAftereffects,
-//   'files-code': filesCode,
-//   'files-empty': filesEmpty,
-//   'files-flash': filesFlash,
-//   'files-gif': filesGif,
-//   'files-illustrator': filesIllustrator,
-//   'files-image': filesImage,
-//   'files-indesign': filesIndesign,
-//   'files-pdf': filesPdf,
-//   'files-photoshop': filesPhotoshop,
-//   'files-sketch': filesSketch,
-//   'files-sound': filesSound,
-//   'files-txt': filesTxt,
-//   'files-upload': filesUpload,
-//   'files-video': filesVideo,
-//   'files-zip': filesZip,
-//   flag,
-//   download,
-//   edit,
-//   email,
-//   emoji,
-//   error,
-//   'exclamation-circle': exclamationCircle,
-//   'exclamation-triangle': exclamationTriangle,
-//   expand,
-//   eye,
-//   'eye-friendlier': eyeFriendlier,
-//   'eye-slash': eyeSlash,
-//   format,
-//   'font-color': fontColor,
-//   'font-size': fontSize,
-//   gallery,
-//   giphy,
-//   highlight,
-//   'horizontal-rule': horizontalRule,
-//   'image-unavailable': imageUnavailable,
-//   indent,
-//   info,
-//   italic,
-//   leave,
-//   like,
-//   lightning,
-//   link,
-//   lock,
-//   'mark-as-unread': markAsUnread,
-//   'meeting-new': meetingNew,
-//   mention,
-//   menu,
-//   'merge-calls': mergeCalls,
-//   'message-seen': messageSeen,
-//   mic,
-//   'no-presenter': noPresenter,
-//   notes,
-//   'speaker-mute': speakerMute,
-//   hand,
-//   'mic-off': micOff,
-//   more,
-//   'user-phone': userPhone,
-//   'notifications-muted': notificationsMuted,
-//   'number-list': numberList,
-//   'open-outside': openOutside,
-//   outdent,
-//   paperclip,
-//   'participant-add': addParticipant,
-//   'participant-remove': participantRemove,
-//   panorama,
-//   pause,
-//   'pause-thick': pauseThick,
-//   'phone-clock': phoneClock,
-//   'phone-arrow': phoneArrow,
-//   play,
-//   plugs,
-//   poll,
-//   'presence-available': presenceAvailable,
-//   'presence-stroke': presenceStroke,
-//   presenter,
-//   qna,
-//   'question-circle': questionCircle,
-//   quote,
-//   'raise-hand': raiseHand,
-//   'raise-hand-colored': raiseHandColored,
-//   'raise-hand-disabled': raiseHandDisabled,
-//   'read-aloud': readAloud,
-//   redbang,
-//   redo,
-//   'remove-format': removeFormat,
-//   reply,
-//   retry,
-//   robot,
-//   search,
-//   send,
-//   settings,
-//   'settings-audio': settingsAudio,
-//   'share-alt': shareAlt,
-//   'share-location': shareLocation,
-//   'share-to': shareTo,
-//   spotlight,
-//   star,
-//   sticker,
-//   strike,
-//   survey,
-//   'survey-20px': survey20px,
-//   sync,
-//   tabs,
-//   table,
-//   'table-add': tableAdd,
-//   'table-delete': tableDelete,
-//   tag,
-//   teams,
-//   thumbtack,
-//   'thumbtack-slash': thumbtackSlash,
-//   'to-do-list': toDoList,
-//   translation,
-//   'trash-can': trashCan,
-//   'triangle-down': triangleDown,
-//   'triangle-right': triangleRight,
-//   'triangle-up': triangleUp,
-//   'team-create': teamCreate,
-//   underline,
-//   undo,
-//   urgent,
-//   'user-blur': userBlur,
-//   'user-friends': userFriends,
-//   'video-camera-emphasis': videoCameraEmphasis,
-//   volume,
-//   'volume-down': volumeDown,
-//   'volume-up': volumeUp,
-//   'window-maximize': windowMaximize,
-//   'window-minimize': windowMinimize,
-//   'window-restore': windowRestore,
-//
-//   // Office icons
-//   excel: filesExcel,
-//   'excel-color': filesExcelBrand,
-//   onedrive: oneDrive,
-//   onenote: filesOneNote,
-//   'onenote-color': filesOneNoteBrand,
-//   powerpoint: filesPowerPoint,
-//   'powerpoint-color': filesPowerPointBrand,
-//   'skype-logo': skypeLogo,
-//   'microsoft-stream': microsoftStream,
-//   word: filesWord,
-//   'word-color': filesWordBrand,
-//   yammer,
-//   visio: filesVisio,
-//   'visio-color': filesVisioBrand,
-// };
+//   'triangle-right': triangleRight, -> TriangleEndIcon
+//   onenote: filesOneNote, -> OneNoteIcon
+//   'onenote-color': filesOneNoteBrand, -> OneNoteColorIcon
+//   powerpoint: filesPowerPoint, -> PowerPointIcon
+//   'powerpoint-color': filesPowerPointBrand, -> PowerPointColorIcon

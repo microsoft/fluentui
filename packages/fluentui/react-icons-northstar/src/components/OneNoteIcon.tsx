@@ -1,7 +1,7 @@
 import * as React from 'react';
 import createSvgIcon from '../utils/createSvgIcon';
 
-const FilesOneNoteIcon = createSvgIcon({
+const OneNoteIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
@@ -30,7 +30,7 @@ const FilesOneNoteIcon = createSvgIcon({
       <path fill="none" d="M0 0h32v32H0z" />
     </svg>
   ),
-  displayName: 'FilesOneNoteIcon',
+  displayName: 'OneNoteIcon',
 });
 
-export default FilesOneNoteIcon;
+export default OneNoteIcon;

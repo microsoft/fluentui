@@ -1,7 +1,7 @@
 import * as React from 'react';
 import createSvgIcon from '../utils/createSvgIcon';
 
-const FilesPowerPointBrandIcon = createSvgIcon({
+const PowerPointColorIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
@@ -32,7 +32,7 @@ const FilesPowerPointBrandIcon = createSvgIcon({
       />
     </svg>
   ),
-  displayName: 'FilesPowerPointBrandIcon',
+  displayName: 'PowerPointColorIcon',
 });
 
-export default FilesPowerPointBrandIcon;
+export default PowerPointColorIcon;

@@ -10,6 +10,10 @@ describe('Icon components', () => {
     const componentName = path.basename(file, '.tsx');
     const IconComponent = (icons as any)[componentName];
 
+    test(`${componentName} has 'Icon' suffix in the name`, () => {
+      expect(componentName.substr(-4, 4)).toEqual('Icon');
+    });
+
     test(`${file} is exported in package`, () => {
       expect(IconComponent).toBeDefined();
     });

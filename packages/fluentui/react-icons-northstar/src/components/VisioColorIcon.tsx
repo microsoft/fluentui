@@ -1,7 +1,7 @@
 import * as React from 'react';
 import createSvgIcon from '../utils/createSvgIcon';
 
-const FilesVisioBrandIcon = createSvgIcon({
+const VisioColorIcon = createSvgIcon({
   svg: ({ classes }) => (
     <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
       <path
@@ -29,7 +29,7 @@ const FilesVisioBrandIcon = createSvgIcon({
       />
     </svg>
   ),
-  displayName: 'FilesVisioBrandIcon',
+  displayName: 'VisioColorIcon',
 });
 
-export default FilesVisioBrandIcon;
+export default VisioColorIcon;
