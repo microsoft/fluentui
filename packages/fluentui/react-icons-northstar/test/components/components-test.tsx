@@ -1,6 +1,7 @@
 import * as icons from '@fluentui/react-icons-northstar';
 import * as fs from 'fs';
-import * as React from 'react';
+import * as path from 'path';
+import * as ReactIs from 'react-is';
 
 const iconsDir = path.resolve(__dirname, 'src', 'components');
 
