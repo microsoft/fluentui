@@ -10,15 +10,15 @@ const classNames = mergeStyleSets({
     height: 200,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   target: {
     fontWeight: '600',
     display: 'inline-block',
     border: '1px dashed #605e5c',
     padding: 5,
-    borderRadius: 2
-  }
+    borderRadius: 2,
+  },
 });
 
 export class HoverCardInstantDismissExample extends React.Component<{}, {}> {
@@ -26,14 +26,14 @@ export class HoverCardInstantDismissExample extends React.Component<{}, {}> {
 
   public render() {
     const plainCardProps: IPlainCardProps = {
-      onRenderPlainCard: this._onRenderPlainCard
+      onRenderPlainCard: this._onRenderPlainCard,
     };
 
     return (
       <Fabric>
         <p>
-          In cases where an instant dismiss of the card is needed, public method <i>dismiss()</i> can be used through its{' '}
-          <i>componentRef</i> prop.
+          In cases where an instant dismiss of the card is needed, public method <i>dismiss()</i> can be used through
+          its <i>componentRef</i> prop.
         </p>
         <HoverCard
           cardDismissDelay={2000}

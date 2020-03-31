@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Ref, Segment } from '@fluentui/react';
+import { Grid, Ref, Segment } from '@fluentui/react-northstar';
 
 type RefForwardingExampleState = {
   isMounted: boolean;
@@ -42,10 +42,10 @@ class RefForwardingExample extends React.Component<{}, RefForwardingExampleState
                 {
                   nodeName: buttonNode.nodeName,
                   nodeType: buttonNode.nodeType,
-                  textContent: buttonNode.textContent
+                  textContent: buttonNode.textContent,
                 },
                 null,
-                2
+                2,
               )}
             </pre>
           </code>

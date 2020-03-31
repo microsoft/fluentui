@@ -24,7 +24,7 @@ export type IComponentStyles<TSlots> = { [key in keyof TSlots]?: IStyle };
 export type IStylesFunction<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = (
   props: TViewProps,
   theme: ITheme,
-  tokens: TTokens
+  tokens: TTokens,
 ) => TStyleSet;
 
 /**
@@ -85,7 +85,9 @@ export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<
 /**
  * Defines the contract for view components.
  */
-export type IViewComponent<TViewProps> = (props: React.PropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
+export type IViewComponent<TViewProps> = (
+  props: React.PropsWithChildren<TViewProps>,
+) => ReturnType<React.FunctionComponent>;
 
 /**
  * Component options used by foundation to tie elements together.
@@ -93,8 +95,8 @@ export type IViewComponent<TViewProps> = (props: React.PropsWithChildren<TViewPr
  * * TComponentProps: A styleable props interface for the created component.
  * * TTokens: The type for tokens props.
  * * TStyleSet: The type for styles properties.
- * * TViewProps: The props specific to the view, including processed properties outputted by optional state component. If state
- * component is not provided, TComponentProps is the same as TViewProps.
+ * * TViewProps: The props specific to the view, including processed properties outputted by optional state component.
+ * If state component is not provided, TComponentProps is the same as TViewProps.
  * * TStatics: Static type for statics applied to created component object.
  */
 export interface IComponentOptions<
@@ -105,7 +107,8 @@ export interface IComponentOptions<
   TStatics = {}
 > {
   /**
-   * Display name to identify component in React hierarchy. This parameter is required for targeted component styling via theming.
+   * Display name to identify component in React hierarchy. This parameter is required for targeted component styling
+   * via theming.
    */
   displayName?: string;
   /**

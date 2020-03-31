@@ -10,7 +10,7 @@ export enum ExampleStatus {
   placeholder = 0,
   started = 1,
   beta = 2,
-  release = 3
+  release = 3,
 }
 
 export interface IAppLink extends INavLink {

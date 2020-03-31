@@ -16,7 +16,9 @@ describe('FocusZone', () => {
   });
 
   it('renders FocusZone correctly with ariaDescribedby and ariaLabelledby', () => {
-    const component = renderer.create(<FocusZone ariaDescribedBy="customDescribedBy" ariaLabelledBy="customLabelledBy" />);
+    const component = renderer.create(
+      <FocusZone ariaDescribedBy="customDescribedBy" ariaLabelledBy="customLabelledBy" />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

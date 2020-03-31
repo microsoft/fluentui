@@ -1,20 +1,26 @@
 import * as React from 'react';
 
-import { classNamesFunction, BaseComponent, KeyCodes } from '../../../Utilities';
+import { classNamesFunction, initializeComponentRef, KeyCodes } from '../../../Utilities';
 import { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 import { CardCallout } from '../CardCallout/CardCallout';
 
 const getClassNames = classNamesFunction<IPlainCardStyleProps, IPlainCardStyles>();
 
-export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
+export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
   private _classNames: { [key in keyof IPlainCardStyles]: string };
+
+  constructor(props: IPlainCardProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element {
     const { styles, theme, className } = this.props;
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     const content: JSX.Element = (

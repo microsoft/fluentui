@@ -1,7 +1,31 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.8.45
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.8.44
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.8.41
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
+## 7.8.40
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Patches
+
+- CalendarDayGrid: navigatedDate should have defaultValue of today (aneeshak@microsoft.com)
 ## 7.8.28
 Tue, 25 Feb 2020 12:25:39 GMT
 

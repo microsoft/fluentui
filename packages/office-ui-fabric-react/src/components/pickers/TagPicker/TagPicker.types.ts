@@ -54,7 +54,8 @@ export interface ITagItemProps extends IPickerItemProps<ITag> {
  * The props needed to construct TagItem styles.
  * {@docCategory TagPicker}
  */
-export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> & Pick<ITagItemProps, 'className' | 'selected' | 'disabled'> & {};
+export type ITagItemStyleProps = Required<Pick<ITagItemProps, 'theme'>> &
+  Pick<ITagItemProps, 'className' | 'selected' | 'disabled'> & {};
 
 /**
  * Represents the stylable areas of the TagItem.

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Flex, Button } from '@fluentui/react';
+import { Flex, Button } from '@fluentui/react-northstar';
 
 const FlexExampleNavMenu = () => (
   <Flex gap="gap.small" debug>

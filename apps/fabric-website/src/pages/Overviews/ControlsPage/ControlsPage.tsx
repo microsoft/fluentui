@@ -46,8 +46,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   ) : null;
                 })}
               </ul>
-            )
-          }
+            ),
+          },
       );
 
     sections.push(_otherControlsRequestSections(platform));
@@ -59,22 +59,24 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
   switch (platform) {
     case 'web':
       return {
-        sectionName: 'Need a control Fabric React doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string
+        sectionName: 'Need a control Fluent UI React doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
       };
     case 'ios':
       return {
-        sectionName: 'Need a control Fabric iOS doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string
+        sectionName: 'Need a control Fluent UI iOS doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
       };
     case 'android':
       return {
-        sectionName: 'Need a control Fabric Android doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string
+        sectionName: 'Need a control Fluent UI Android doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
   }
 }
 
 export const ControlsPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <ControlsPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <ControlsPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

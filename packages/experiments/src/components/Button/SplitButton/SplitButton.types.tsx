@@ -9,7 +9,7 @@ import {
   IMenuButtonSlot,
   IMenuButtonSlots,
   IMenuButtonTokens,
-  IMenuButtonViewProps
+  IMenuButtonViewProps,
 } from '../MenuButton/MenuButton.types';
 
 /**
@@ -115,7 +115,9 @@ export interface ISplitButtonProps
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>, ISplitButtonProps {}
+export interface ISplitButtonViewProps
+  extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>,
+    ISplitButtonProps {}
 
 /**
  * {@docCategory Button}

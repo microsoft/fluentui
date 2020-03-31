@@ -1,4 +1,4 @@
-Representing people in a consistent manner across different user interfaces helps with effortless communication. Using Fabric Persona controls ensure an accurate and consistent experience across apps.
+Representing people in a consistent manner across different user interfaces helps with effortless communication. Using Fluent UI Persona controls ensures an accurate and consistent experience across apps.
 
 Persona controls display the profile picture and online status of the user. When a user does not have a profile picture, the user's initials sit on top of a background color. In the event that both of these options are unavailable, a generic person icon is shown.
 

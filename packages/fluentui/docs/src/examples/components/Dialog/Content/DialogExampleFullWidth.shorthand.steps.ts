@@ -2,7 +2,7 @@ import getScreenerSteps from '../commonScreenerSteps';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams'],
-  steps: getScreenerSteps()
+  steps: getScreenerSteps(),
 };
 
 export default config;

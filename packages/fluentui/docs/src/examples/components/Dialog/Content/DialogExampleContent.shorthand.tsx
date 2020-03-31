@@ -1,4 +1,4 @@
-import { Button, Dialog } from '@fluentui/react';
+import { Button, Dialog } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const DialogExampleContent: React.FC = () => (

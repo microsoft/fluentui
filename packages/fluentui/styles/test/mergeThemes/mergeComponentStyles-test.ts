@@ -5,11 +5,10 @@ import { mergeComponentStyles__PROD, mergeComponentStyles__DEV } from '../../src
 
 const styleParam: ComponentStyleFunctionParam = {
   disableAnimations: false,
-  displayName: 'Test',
   props: {},
   rtl: false,
   theme: emptyTheme,
-  variables: {}
+  variables: {},
 };
 
 describe('mergeComponentStyles', () => {
@@ -21,13 +20,13 @@ describe('mergeComponentStyles', () => {
 
   afterEach(() => {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: () => originalDebugEnabled
+      get: () => originalDebugEnabled,
     });
   });
 
   function mockIsDebugEnabled(enabled: boolean) {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: jest.fn(() => enabled)
+      get: jest.fn(() => enabled),
     });
   }
 
@@ -108,17 +107,17 @@ describe('mergeComponentStyles', () => {
           display: 'inline-block',
           color: 'green',
           '::before': {
-            content: 'before content'
-          }
-        }
+            content: 'before content',
+          },
+        },
       };
       const source = {
         root: {
           color: 'blue',
           '::before': {
-            color: 'red'
-          }
-        }
+            color: 'red',
+          },
+        },
       };
       const merged = mergeComponentStyles(target, source);
       expect(merged.root()).toMatchObject({
@@ -126,8 +125,8 @@ describe('mergeComponentStyles', () => {
         color: 'blue',
         '::before': {
           content: 'before content',
-          color: 'red'
-        }
+          color: 'red',
+        },
       });
     });
 
@@ -139,13 +138,13 @@ describe('mergeComponentStyles', () => {
 
       const styleParam: ComponentStyleFunctionParam = {
         variables: { iconSize: 'large' },
-        props: { primary: true }
+        props: { primary: true },
       } as any;
 
       expect(merged.root(styleParam)).toMatchObject({
         source: true,
         target: true,
-        ...styleParam
+        ...styleParam,
       });
     });
   }
@@ -198,19 +197,19 @@ describe('mergeComponentStyles', () => {
         const target = { root: { a: 'tA', b: 'tB' } };
         const source = {
           root: ({ variables }) => ({ a: 'sA', c: { deep: variables.varC } }),
-          icon: { d: 'sD' }
+          icon: { d: 'sD' },
         };
 
         const merged = mergeComponentStyles__DEV(target, source);
 
         const resolvedRoot = merged.root({ variables: { varC: 'vC' } } as any);
         expect(resolvedRoot).toMatchObject({
-          _debug: [{ styles: { a: 'tA', b: 'tB' } }, { styles: { a: 'sA', c: { deep: 'vC' } } }]
+          _debug: [{ styles: { a: 'tA', b: 'tB' } }, { styles: { a: 'sA', c: { deep: 'vC' } } }],
         });
 
         const resolvedIcon = merged.icon(styleParam);
         expect(resolvedIcon).toMatchObject({
-          _debug: [{ styles: { d: 'sD' } }]
+          _debug: [{ styles: { d: 'sD' } }],
         });
       });
 
@@ -221,7 +220,7 @@ describe('mergeComponentStyles', () => {
         const merged = mergeComponentStyles__DEV(target, source);
         const resolvedRoot = merged.root(styleParam);
         expect(resolvedRoot).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source' }],
         });
       });
 
@@ -229,44 +228,44 @@ describe('mergeComponentStyles', () => {
         const target = withDebugId(
           {
             root: {
-              a: 'tA'
-            }
+              a: 'tA',
+            },
           },
-          'target'
+          'target',
         );
         const source1 = withDebugId(
           {
             root: {
-              a: 'tB'
-            }
+              a: 'tB',
+            },
           },
-          'source1'
+          'source1',
         );
         const source2 = withDebugId(
           {
             root: {
-              a: 'tC'
-            }
+              a: 'tC',
+            },
           },
-          'source2'
+          'source2',
         );
 
         const merged1 = mergeComponentStyles__DEV(target, source1, source2);
         const resolvedRoot1 = merged1.root(styleParam);
         expect(resolvedRoot1).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
         });
 
         const merged2 = mergeComponentStyles__DEV(mergeComponentStyles__DEV(target, source1), source2);
         const resolvedRoot2 = merged2.root(styleParam);
         expect(resolvedRoot2).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
         });
 
         const merged3 = mergeComponentStyles__DEV(target, mergeComponentStyles__DEV(source1, source2));
         const resolvedRoot3 = merged3.root(styleParam);
         expect(resolvedRoot3).toMatchObject({
-          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }]
+          _debug: [{ debugId: 'target' }, { debugId: 'source1' }, { debugId: 'source2' }],
         });
       });
     });

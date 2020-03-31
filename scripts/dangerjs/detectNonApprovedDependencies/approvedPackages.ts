@@ -87,7 +87,7 @@ export default [
   'rtl-css-js@1.11.0',
   'scheduler@0.13.3',
   'scheduler@0.13.6',
-  'webpack@4.25.1'
+  'webpack@4.25.1',
 ];
 
 export const isIgnored = (packageId: string): boolean => {

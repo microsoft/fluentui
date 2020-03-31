@@ -2,6 +2,90 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.14",
+      "version": "7.10.14",
+      "comments": {
+        "patch": [
+          {
+            "comment": "More Fabric=>Fluent fixes",
+            "author": "elcraig@microsoft.com",
+            "commit": "682fe93832bc0cab071e8e29ceab1c97b6dc5585"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.12",
+      "version": "7.10.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating docs for fluent transition",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "e9fcc1a8ea263a19b8a2940e08f3fbf68d7367d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.11",
+      "version": "7.10.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.10",
+      "version": "7.10.10",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.5",
+      "version": "7.10.5",
+      "comments": {
+        "patch": [
+          {
+            "comment": "new blog announcement, support jsx in message bar, move hig link",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "59f0c66f540deefe7a108a4be8e2760d16e2dc56"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.4",
+      "version": "7.10.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use ms-Fabric--isFocusVisible instead of .is-focusVisible",
+            "author": "xgao@microsoft.com",
+            "commit": "56ef8bc2f930978aaa63be962726cff5a6ce5b87"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 07 Mar 2020 01:39:37 GMT",
       "tag": "@uifabric/fabric-website_v7.10.2",
       "version": "7.10.2",

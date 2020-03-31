@@ -1,4 +1,4 @@
-import { ShorthandValue, Tooltip, TooltipProps } from '@fluentui/react';
+import { ShorthandValue, Tooltip, TooltipProps } from '@fluentui/react-northstar';
 import * as copyToClipboard from 'copy-to-clipboard';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -40,7 +40,7 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
       copyToClipboard(value);
       _.invoke(trigger.props, 'onClick', e, ...args);
     },
-    [value]
+    [value],
   );
 
   const renderedTrigger = React.cloneElement(trigger, { onClick: handleTriggerClick });
@@ -56,15 +56,15 @@ const CopyToClipboard: React.FC<CopyToClipboardProps> = props => {
   return Tooltip.create(tooltip, {
     overrideProps: {
       trigger: renderedTrigger,
-      children: undefined // force-reset `children` defined for `Tooltip` as it collides with the `trigger
-    }
+      children: undefined, // force-reset `children` defined for `Tooltip` as it collides with the `trigger
+    },
   });
 };
 
 CopyToClipboard.defaultProps = {
   notification: 'Copied to clipboard',
   tooltip: 'Click to copy',
-  timeout: 4000
+  timeout: 4000,
 };
 
 export default CopyToClipboard;

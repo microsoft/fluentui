@@ -6,7 +6,7 @@ import { ISiteDefinition } from './SiteDefinition.types';
  */
 export function getPageFirstPlatform<TPlatforms extends string = string>(
   pageTitle: string,
-  siteDefinition: ISiteDefinition<TPlatforms>
+  siteDefinition: ISiteDefinition<TPlatforms>,
 ): TPlatforms {
   const page = siteDefinition.pages.filter(pg => pg.title === pageTitle)[0];
   if (page && page.platforms) {

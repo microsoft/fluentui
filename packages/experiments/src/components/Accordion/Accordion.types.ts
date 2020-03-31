@@ -14,7 +14,9 @@ export interface IAccordionSlots {
   root?: IHTMLSlot;
 }
 
-export interface IAccordionProps extends IAccordionSlots, IStyleableComponentProps<IAccordionProps, IAccordionTokens, IAccordionStyles> {
+export interface IAccordionProps
+  extends IAccordionSlots,
+    IStyleableComponentProps<IAccordionProps, IAccordionTokens, IAccordionStyles> {
   collapseItems?: boolean;
 }
 

@@ -12,11 +12,11 @@ const webpackUMDConfig = (packageName: string): webpack.Configuration => {
     mode: 'production',
     devtool: false,
     entry: {
-      [pkg.name]: paths.packageSrc(packageName, 'umd.ts')
+      [pkg.name]: paths.packageSrc(packageName, 'umd.ts'),
     },
     externals: {
       react: 'React',
-      'react-dom': 'ReactDOM'
+      'react-dom': 'ReactDOM',
     },
     output: {
       filename: `fluent-ui-${packageName}.min.js`,
@@ -24,16 +24,16 @@ const webpackUMDConfig = (packageName: string): webpack.Configuration => {
       library: 'FluentUI',
       path: paths.packageDist(packageName, 'umd'),
       publicPath: '/',
-      pathinfo: true
+      pathinfo: true,
     },
     resolve: webpackConfig.resolve,
     module: {
       noParse: webpackConfig.module.noParse,
-      rules: webpackConfig.module.rules
+      rules: webpackConfig.module.rules,
     },
     performance: {
-      hints: false // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
-    }
+      hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
+    },
   };
 };
 

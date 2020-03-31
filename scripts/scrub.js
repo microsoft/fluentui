@@ -95,7 +95,9 @@ async function run() {
     .trim();
 
   if (!process.argv.includes('-y')) {
-    console.log('WARNING: This command will PERMANENTLY DELETE all untracked files (such as build output and node_modules).');
+    console.log(
+      'WARNING: This command will PERMANENTLY DELETE all untracked files (such as build output and node_modules).',
+    );
     if (gitStatus) {
       console.log('It will also revert uncommitted changes to the following files:');
       const lines = gitStatus.split(/\r?\n/g).map(line => '  ' + line);

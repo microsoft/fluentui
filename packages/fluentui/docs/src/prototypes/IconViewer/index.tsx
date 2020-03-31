@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react';
-import themeWithProcessedIcons from '@fluentui/react/src/themes/teams/withProcessedIcons';
-import { TeamsProcessedSvgIconSpec } from '@fluentui/react/src/themes/teams/components/Icon/svg/types';
+import { Provider, Grid, Divider, Header, Icon, Menu, Segment } from '@fluentui/react-northstar';
+import themeWithProcessedIcons from '@fluentui/react-northstar/src/themes/teams/withProcessedIcons';
+import { TeamsProcessedSvgIconSpec } from '@fluentui/react-northstar/src/themes/teams/components/Icon/svg/types';
 
 const cellStyles = {
-  margin: '10px 0'
+  margin: '10px 0',
 };
 
 const processedIconsNamePrefix = 'processedIcons_';
@@ -35,11 +35,11 @@ class IconViewerExample extends React.Component<any, {}> {
   readonly iconFilters = {
     All: () => true,
     Exported: (icon: TeamsProcessedSvgIconSpec) => icon.exportedAs,
-    'Not Exported': (icon: TeamsProcessedSvgIconSpec) => !icon.exportedAs
+    'Not Exported': (icon: TeamsProcessedSvgIconSpec) => !icon.exportedAs,
   };
 
   state = {
-    filter: 'All'
+    filter: 'All',
   };
 
   applyCurrentFilter(icon) {
@@ -56,7 +56,7 @@ class IconViewerExample extends React.Component<any, {}> {
           description={{
             content:
               'These icons have been pulled directly from the Angular app and are ready to be added to the Teams theme in Fluent UI as needed.',
-            styles: { fontSize: '16px' }
+            styles: { fontSize: '16px' },
           }}
         />
 

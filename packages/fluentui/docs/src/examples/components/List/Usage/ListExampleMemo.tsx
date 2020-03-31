@@ -1,5 +1,5 @@
 import { useLogKnob } from '@fluentui/docs-components';
-import { List, ListItem } from '@fluentui/react';
+import { List, ListItem } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 type MemoItemProps = {
@@ -27,7 +27,7 @@ const ListExampleSelectable = () => {
   const handleRender = useLogKnob(
     'MemoItem:render',
     undefined,
-    (id: string, index: number) => `${new Date().toLocaleTimeString()}: ${id}({ id: ${index} })`
+    (id: string, index: number) => `${new Date().toLocaleTimeString()}: ${id}({ id: ${index} })`,
   );
 
   return (

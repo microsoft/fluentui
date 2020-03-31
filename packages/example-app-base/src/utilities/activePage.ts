@@ -21,7 +21,10 @@ export function isPageActive(componentUrl: string): boolean {
   return removeAnchorLink(location.href) === target;
 }
 
-export function hasActiveChild<TPlatforms extends string = string>(page: INavPage<TPlatforms>, platform?: TPlatforms): boolean {
+export function hasActiveChild<TPlatforms extends string = string>(
+  page: INavPage<TPlatforms>,
+  platform?: TPlatforms,
+): boolean {
   if (!page) {
     return false;
   }

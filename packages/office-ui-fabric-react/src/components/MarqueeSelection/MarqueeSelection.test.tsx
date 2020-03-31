@@ -36,7 +36,7 @@ describe('MarqueeSelection', () => {
         <div className={'itemToSelect'} data-selection-index="0">
           0
         </div>
-      </MarqueeSelection>
+      </MarqueeSelection>,
     );
 
     const element = component.getDOMNode();
@@ -48,7 +48,7 @@ describe('MarqueeSelection', () => {
         bottom: 90,
         right: 90,
         width: 80,
-        height: 80
+        height: 80,
       } as DOMRect;
     };
 

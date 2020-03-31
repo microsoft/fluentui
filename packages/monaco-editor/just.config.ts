@@ -17,8 +17,8 @@ task('clean', cleanTask({ paths: ['esm', 'lib', 'lib-commonjs'] }));
 task(
   'copy',
   copyInstructionsTask({
-    copyInstructions: copyInstructions.copyFilesInDirectory(monacoSrcPath, monacoDestPath)
-  })
+    copyInstructions: copyInstructions.copyFilesInDirectory(monacoSrcPath, monacoDestPath),
+  }),
 );
 task('transform-css', transformCssTask);
 task('transform-dts', transformDtsTask);

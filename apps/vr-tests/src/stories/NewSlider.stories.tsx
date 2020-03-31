@@ -8,7 +8,7 @@ const marks = [
   { value: 0, label: '0' },
   { value: 40, label: '40' },
   { value: 60, label: '60' },
-  { value: 100, label: '100' }
+  { value: 100, label: '100' },
 ];
 
 // tslint:disable:jsx-ban-props

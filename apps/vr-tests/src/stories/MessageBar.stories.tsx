@@ -21,13 +21,13 @@ storiesOf('MessageBar', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => <MessageBar>Info/default message bar. {link}</MessageBar>, { rtl: true })
   .addStory(
     'Root dismiss',
     () => <MessageBar onDismiss={noop}>Info/default message bar. {link}</MessageBar>,
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Root dismiss single line', () => (
     <MessageBar onDismiss={noop} isMultiline={false}>
@@ -48,7 +48,7 @@ storiesOf('MessageBar', module)
         mauris. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Root actions',
@@ -64,7 +64,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Root actions single line',
@@ -81,7 +81,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Root dismiss and action',
@@ -98,7 +98,7 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Root dismiss and action single line',
@@ -116,29 +116,29 @@ storiesOf('MessageBar', module)
         Info/default message bar. {link}
       </MessageBar>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Root multiline',
     () => <MessageBar isMultiline>Info/default message bar. {longText}</MessageBar>,
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Root overflow',
     () => <MessageBar isMultiline={false}>Info/default message bar. {longText} </MessageBar>,
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Error', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.error}>
       Error message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   )
   .addStory('Blocked', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.blocked}>
       Blocked message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   )
   .addStory('Severe Warning', () => (
     <MessageBar messageBarType={MessageBarType.severeWarning}>
@@ -149,11 +149,11 @@ storiesOf('MessageBar', module)
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.success}>
       Success message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   )
   .addStory('Warning', () =>
     // prettier-ignore
     <MessageBar messageBarType={MessageBarType.warning}>
       Warning message bar. {link}
-    </MessageBar>
+    </MessageBar>,
   );

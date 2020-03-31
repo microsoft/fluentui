@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { classNamesFunction, initializeComponentRef } from '../../Utilities';
 import {
   IDocumentCardActivityProps,
   IDocumentCardActivityPerson,
   IDocumentCardActivityStyleProps,
-  IDocumentCardActivityStyles
+  IDocumentCardActivityStyles,
 } from './DocumentCardActivity.types';
 import { IProcessedStyleSet } from '../../Styling';
 import { PersonaSize } from '../../Persona';
@@ -15,8 +15,14 @@ const getClassNames = classNamesFunction<IDocumentCardActivityStyleProps, IDocum
 /**
  * {@docCategory DocumentCard}
  */
-export class DocumentCardActivityBase extends BaseComponent<IDocumentCardActivityProps, any> {
+export class DocumentCardActivityBase extends React.Component<IDocumentCardActivityProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardActivityStyles>;
+
+  constructor(props: IDocumentCardActivityProps) {
+    super(props);
+
+    initializeComponentRef(this);
+  }
 
   public render(): JSX.Element | null {
     const { activity, people, styles, theme, className } = this.props;
@@ -24,7 +30,7 @@ export class DocumentCardActivityBase extends BaseComponent<IDocumentCardActivit
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      multiplePeople: people.length > 1
+      multiplePeople: people.length > 1,
     });
 
     if (!people || people.length === 0) {
