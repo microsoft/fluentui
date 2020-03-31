@@ -18,8 +18,13 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
     color: '#69e56e',
   },
   mac: {
-    name: 'Mac',
+    name: 'macOS',
     icon: 'MacLogo-platformPicker',
     color: '#69e56e',
+  },
+  windows: {
+    name: 'Windows',
+    icon: 'WinLogo-platformPicker',
+    color: '#4fe5ff',
   },
 };

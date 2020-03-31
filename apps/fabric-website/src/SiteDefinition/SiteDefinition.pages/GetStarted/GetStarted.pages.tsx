@@ -60,5 +60,17 @@ export const GetStartedPages: INavPage = {
           ),
       },
     ],
+    windows: [
+      {
+        title: 'Get started',
+        url: '#/get-started/windows',
+        isHiddenFromMainNav: true,
+        component: () => <LoadingComponent title="Get started" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Overviews/GetStartedPage/GetStartedPage').GetStartedPage),
+          ),
+      },
+    ],
   },
 };

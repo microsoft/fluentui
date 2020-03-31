@@ -1,4 +1,4 @@
 - [Web Button](#/controls/web/button)
 - [iOS Button](#/controls/ios/button)
 - [Android Button](#/controls/android/button)
-- [Mac Button](#/controls/mac/button)
+- [macOS Button](#/controls/mac/button)

@@ -1,1 +1,1 @@
-Mac Button implementation
+macOS Button implementation
