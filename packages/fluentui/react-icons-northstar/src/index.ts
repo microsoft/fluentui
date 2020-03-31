@@ -198,11 +198,3 @@ export { default as WindowMaximizeIcon } from './components/WindowMaximizeIcon';
 export { default as WindowMinimizeIcon } from './components/WindowMinimizeIcon';
 export { default as WindowRestoreIcon } from './components/WindowRestoreIcon';
 export { default as YammerIcon } from './components/YammerIcon';
-
-//   'icon-circle': iconCircle, -> CircleIcon
-//   'chevron-right-medium': chevronRightMedium,
-//   'triangle-right': triangleRight, -> TriangleEndIcon
-//   onenote: filesOneNote, -> OneNoteIcon
-//   'onenote-color': filesOneNoteBrand, -> OneNoteColorIcon
-//   powerpoint: filesPowerPoint, -> PowerPointIcon
-//   'powerpoint-color': filesPowerPointBrand, -> PowerPointColorIcon
