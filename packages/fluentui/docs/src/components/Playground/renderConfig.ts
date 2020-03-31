@@ -37,7 +37,7 @@ export const imports: Record<string, { version: string; module: any }> = {
     version: docsComponentsPackageJson.version,
     module: DocsComponent,
   },
-  '@fluentui/react-icons-northsta': {
+  '@fluentui/react-icons-northstar': {
     version: projectPackageJson.version,
     module: FluentUIIcons,
   },
