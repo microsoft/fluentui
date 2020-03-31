@@ -660,13 +660,13 @@ describe('FocusZone', () => {
   });
 
   it('skips subzone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean =>
       keyboardKey.getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button id="a">a</button>
           <div id="b" data-is-sub-focuszone={true} {...isFocusableProperty}>
             <button id="bsub">bsub</button>
@@ -744,13 +744,13 @@ describe('FocusZone', () => {
   });
 
   it('skips child focusZone elements until manually entered', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean =>
       keyboardKey.getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button id="a">a</button>
           <FocusZone direction={FocusZoneDirection.horizontal} id="b" {...isFocusableProperty}>
             <button id="bsub">bsub</button>
@@ -1205,13 +1205,13 @@ describe('FocusZone', () => {
   });
 
   it('should force focus to first focusable element when FocusZone container receives focus and shouldFocusInnerElementWhenReceivedFocus is set to "true"', () => {
-    const isInnerZoneKeystroke = (e: React.KeyboardEvent<HTMLElement>): boolean =>
+    const shouldEnterInnerZone = (e: React.KeyboardEvent<HTMLElement>): boolean =>
       keyboardKey.getCode(e) === keyboardKey.Enter;
     const isFocusableProperty = { [IS_FOCUSABLE_ATTRIBUTE]: true };
 
     const component = ReactTestUtils.renderIntoDocument<{}, React.Component>(
       <div {...{ onFocusCapture: onFocus }}>
-        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={isInnerZoneKeystroke}>
+        <FocusZone direction={FocusZoneDirection.horizontal} shouldEnterInnerZone={shouldEnterInnerZone}>
           <button id="a">a</button>
           <FocusZone
             direction={FocusZoneDirection.horizontal}

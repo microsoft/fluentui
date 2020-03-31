@@ -488,7 +488,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
               componentRef={this._focusZone}
               className={classNames.focusZone}
               direction={FocusZoneDirection.vertical}
-              isInnerZoneKeystroke={this.isRightArrow}
+              shouldEnterInnerZone={this.isRightArrow}
               onActiveElementChanged={this._onActiveRowChanged}
               onBlur={this._onBlur}
             >

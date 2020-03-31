@@ -285,7 +285,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
         <FocusZone
           componentRef={this.focusZone}
           direction={FocusZoneDirection.bidirectional}
-          isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+          shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
           role={'combobox'}
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
@@ -859,7 +859,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     }
   }
 
-  protected _isFocusZoneInnerKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
+  protected _shouldFocusZoneEnterInnerZone = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     // If suggestions are shown const up/down keys control them, otherwise allow them through to control the focusZone.
     if (this.state.suggestionsVisible) {
       switch (ev.which) {
@@ -1056,7 +1056,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             className="ms-BasePicker-selectedItems" // just a className hook without any styles applied to it.
             isCircularNavigation={true}
             direction={FocusZoneDirection.bidirectional}
-            isInnerZoneKeystroke={this._isFocusZoneInnerKeystroke}
+            shouldEnterInnerZone={this._shouldFocusZoneEnterInnerZone}
             id={this._ariaMap.selectedItems}
             role={'list'}
           >
