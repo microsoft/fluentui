@@ -305,8 +305,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     // (undocumented)
     protected input: React.RefObject<IAutofill>;
     // (undocumented)
-    protected _isFocusZoneInnerKeystroke: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
-    // (undocumented)
     readonly items: T[];
     // (undocumented)
     protected onBackspace(ev: React.KeyboardEvent<HTMLElement>): void;
@@ -357,6 +355,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Componen
     protected root: React.RefObject<HTMLDivElement>;
     // (undocumented)
     protected selection: Selection;
+    // (undocumented)
+    protected _shouldFocusZoneEnterInnerZone: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // @deprecated (undocumented)
