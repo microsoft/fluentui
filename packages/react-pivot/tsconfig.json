@@ -1,0 +1,39 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "outDir": "dist",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "noUnusedLocals": true,
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "preserveConstEnums": true,
+    "lib": ["es5", "dom"],
+    "types": ["jest", "webpack-env"],
+    "paths": {
+      "@fluentui/react-pivot/lib/*": ["./src/*"],
+      "@fluentui/react-pivot": ["./src"],
+      "office-ui-fabric-react": ["../office-ui-fabric-react/src/index"]
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "asIs",
+          "customMatcher": "\\.scss$",
+          "dotenvOptions": {},
+          "postCssOptions": {},
+          "rendererOptions": {}
+        }
+      }
+    ]
+  },
+  "include": ["src"]
+}
