@@ -91,7 +91,7 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
       >
         {icon &&
           Box.create(icon, {
-            defaultProps: () => ({ /* size: 'larger', */ styles: styles.icon }),
+            defaultProps: () => ({ styles: styles.icon }),
           })}
         {(header || description) && (
           <div className={classes.content}>

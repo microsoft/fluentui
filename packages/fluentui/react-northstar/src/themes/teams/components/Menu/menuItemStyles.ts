@@ -407,6 +407,9 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
   },
 
   icon: ({ props: p }): ICSSInJSStyle => ({
+    ...(!!p.content && {
+      marginRight: pxToRem(10),
+    }),
     ...(!p.iconOnly && {
       // reduce margins so text has the dominant influence on the vertical height
       marginTop: 0,
