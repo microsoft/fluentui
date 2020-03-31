@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 31 Mar 2020 12:27:26 GMT",
+      "tag": "office-ui-fabric-react_v7.105.6",
+      "version": "7.105.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Fixes following issues with Groups: 1) Add draggable attribute if required 2) Call onDragEnter and onDragLeave with right parameters 3) Use the css class returned by onDragEnter",
+            "author": "sachinma@microsoft.com",
+            "commit": "42dd53369d3872de58f56f13f508b3134bb77659"
+          },
+          {
+            "comment": "update website banner and remove reference to fabric in context menu docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f584afe2afbb834ac83c5a9b9f384cfac9c27b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2020 19:10:08 GMT",
       "tag": "office-ui-fabric-react_v7.105.5",
       "version": "7.105.5",
