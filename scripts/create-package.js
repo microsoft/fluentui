@@ -9,7 +9,7 @@ const path = require('path');
 
 // The package name can be given as a named or positional argument
 const newPackageName = /** @type {string} */ (argv.name || argv._[0]);
-const newPackageNpmName = '@uifabric/' + newPackageName;
+const newPackageNpmName = '@fluentui/' + newPackageName;
 
 if (!newPackageName) {
   console.error('Please specify a name for the new package.');
@@ -59,12 +59,8 @@ const steps = [
   { template: 'WebpackConfig', output: 'webpack.config.js' },
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
   { template: 'Tests', output: 'config/tests.js' },
-  { template: 'PreCopy', output: 'config/pre-copy.json' },
   { template: 'IndexTs', output: 'src/index.ts' },
   { template: 'Version', output: 'src/version.ts' },
-  { template: 'AppDefinition', output: 'src/demo/AppDefinition.tsx' },
-  { template: 'GettingStartedPage', output: 'src/demo/GettingStartedPage.tsx' },
-  { template: 'Demo', output: 'src/demo/index.tsx' },
 ];
 
 // Strings
