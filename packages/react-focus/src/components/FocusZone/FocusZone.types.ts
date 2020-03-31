@@ -92,7 +92,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
 
   /**
-   * Callback function that will be executed on keypresses to determine if the user intends to navigate into\
+   * Callback function that will be executed on keypresses to determine if the user intends to navigate into
    * the inner (nested) zone. Returning true will ask the first inner zone to set focus.
    */
   shouldEnterInnerZone?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
