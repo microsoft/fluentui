@@ -3,7 +3,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as ReactIs from 'react-is';
 
-const iconsDir = path.resolve(__dirname, 'src', 'components');
+const iconsDir = 'src/components';
 
 describe('Icon components', () => {
   fs.readdirSync(iconsDir).forEach(file => {
