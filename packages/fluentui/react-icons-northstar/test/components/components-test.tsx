@@ -6,7 +6,7 @@ const iconsDir = 'src/components';
 
 describe('Icon components', () => {
   fs.readdirSync(iconsDir).forEach(file => {
-    const componentName = file.split('.')[0];
+    const componentName = path.basename(file, '.tsx');
     const IconComponent = (icons as any)[componentName];
 
     test(`${file} is exported in package`, () => {
