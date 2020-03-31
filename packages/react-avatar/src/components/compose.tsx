@@ -15,15 +15,20 @@ export function compose<TProps>(Component: FunctionComponent<any>, options: Comp
     // tslint:disable-next-line: no-any
     const { registerStyles, target } = context as any;
 
-    if (stylesheet && registerStyles) {
+    if (stylesheet && target && registerStyles) {
       registerStyles(stylesheet, target);
     }
 
-    return Component({ ...props, classes });
+    return typeof Component === 'function' ? Component({ ...props, classes }) : <Component {...stuff} />;
   };
 
   ComposedComponent.displayName = Component.displayName;
+
+  // :( :( :(
   ComposedComponent.defaultProps = Component.defaultProps;
+
+  // tslint:disable-next-line:no-any
+  ComposedComponent.create = (Component as any).create;
 
   return ComposedComponent;
 }

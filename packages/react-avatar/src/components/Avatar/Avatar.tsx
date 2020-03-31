@@ -1,8 +1,8 @@
 import { AvatarBase } from './Avatar.base';
-import { compose } from './compose';
-import { stylesheet, classes } from './Avatar.scss.ts';
+import { compose } from '../compose';
+import * as classes from './Avatar.scss';
 
 export const Avatar = compose(AvatarBase, {
-  stylesheet,
-  classes,
+  classes: classes.locals,
+  // stylesheet: classes.toString(),
 });

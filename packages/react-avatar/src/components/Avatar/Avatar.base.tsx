@@ -16,14 +16,14 @@ import {
   ProviderContextPrepared,
   ShorthandValue,
   SizeValue,
-  Status,
-  StatusProps,
   UIComponentProps,
   WithAsProp,
   commonPropTypes,
   createShorthandFactory,
   withSafeTypeForAs,
 } from '@fluentui/react-northstar';
+
+import { Status, StatusProps } from '../Status/Status';
 
 export interface AvatarProps extends UIComponentProps {
   /**
@@ -82,6 +82,7 @@ export const AvatarBase: React.FC<WithAsProp<AvatarProps>> & FluentComponentStat
     debugName: AvatarBase.displayName,
     rtl: context.rtl,
   });
+
   const { classes: finalClasses, styles: resolvedStyles } = useStyles(AvatarBase.displayName, {
     className: AvatarBase.className,
     mapPropsToStyles: () => ({ size, square }),
@@ -101,6 +102,7 @@ export const AvatarBase: React.FC<WithAsProp<AvatarProps>> & FluentComponentStat
     <ElementType
       {...getA11Props('root', {
         className: cx(
+          className,
           classes.root,
           size === 'smallest' && classes.sizeSmallest,
           size === 'smaller' && classes.sizeSmaller,
@@ -116,18 +118,18 @@ export const AvatarBase: React.FC<WithAsProp<AvatarProps>> & FluentComponentStat
       {Image.create(image, {
         defaultProps: () =>
           getA11Props('image', {
-            className: finalClasses.image,
+            className: classes.image,
             fluid: true,
             avatar: !square,
             title: name,
-            styles: resolvedStyles.image,
+            // styles: resolvedStyles.image,
           }),
       })}
       {!image &&
         Label.create(label || {}, {
           defaultProps: () =>
             getA11Props('label', {
-              className: finalClasses.label,
+              className: classes.label,
               content: getInitials && getInitials(name!),
               circular: !square,
               title: name,
@@ -137,9 +139,9 @@ export const AvatarBase: React.FC<WithAsProp<AvatarProps>> & FluentComponentStat
       {Status.create(status, {
         defaultProps: () =>
           getA11Props('status', {
-            className: finalClasses.status,
+            className: classes.status,
             size,
-            styles: resolvedStyles.status,
+            // styles: resolvedStyles.status,
           }),
       })}
     </ElementType>
@@ -192,6 +194,7 @@ AvatarBase.propTypes = {
   getInitials: PropTypes.func,
   classes: PropTypes.object,
 };
+
 AvatarBase.handledProps = Object.keys(AvatarBase.propTypes) as any;
 
 AvatarBase.create = createShorthandFactory({ Component: AvatarBase, mappedProp: 'name' });
@@ -199,4 +202,4 @@ AvatarBase.create = createShorthandFactory({ Component: AvatarBase, mappedProp: 
 /**
  * An Avatar is a graphical representation of a user.
  */
-export default withSafeTypeForAs<typeof AvatarBase, AvatarProps>(AvatarBase);
+//export default withSafeTypeForAs<typeof AvatarBase, AvatarProps>(AvatarBase);

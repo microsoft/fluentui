@@ -19,7 +19,8 @@
     "types": ["jest", "webpack-env"],
     "paths": {
       "@uifabric/react-avatar/lib/*": ["./src/*"],
-      "@uifabric/react-avatar": ["./src"]
+      "@uifabric/react-avatar": ["./src"],
+      "@fluentui/react-northstar": ["../fluentui/react-northstar/src"]
     }
   },
   "include": ["src"]

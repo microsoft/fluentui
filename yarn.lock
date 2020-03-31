@@ -4299,6 +4299,31 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
+"@uifabric/merge-styles@^7.8.11":
+  version "7.8.11"
+  resolved "https://registry.yarnpkg.com/@uifabric/merge-styles/-/merge-styles-7.8.11.tgz#450913c69b7c18ffeadb6a6dedc6a71468d3604d"
+  integrity sha512-U1gYewj/j6ZGBSXD84Ekp+En4N5hH79TsK9hWJq2wKJKK3h0MKmY50WyFKWIL2/kS+wM7zIR6irK0xY+mfjB2g==
+  dependencies:
+    "@uifabric/set-version" "^7.0.9"
+    tslib "^1.10.0"
+
+"@uifabric/set-version@^7.0.9":
+  version "7.0.9"
+  resolved "https://registry.yarnpkg.com/@uifabric/set-version/-/set-version-7.0.9.tgz#3e3eca1cdb7c0b35a316640672816685e1170a69"
+  integrity sha512-YJL6WLBlFKDJcLSw1ihqW5PTFi2XMoluEvwGd2qtzp2IVbHvdbk7uIdWuTALo3dFNNqWPN8shSNUdHVATE/1jQ==
+  dependencies:
+    tslib "^1.10.0"
+
+"@uifabric/utilities@^7.15.4":
+  version "7.15.4"
+  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.15.4.tgz#aeddc4ec87aa16c8a5fb656134c17db9ae9e583b"
+  integrity sha512-KqJoE1ogjDegHpP0Jr37kyMjI83flm+s485Hs0cPcB+g4NK1JTtAuhFNrIAqqDg6mAjm4IbOCRHYwUvVU/Pl1g==
+  dependencies:
+    "@uifabric/merge-styles" "^7.8.11"
+    "@uifabric/set-version" "^7.0.9"
+    prop-types "^15.7.2"
+    tslib "^1.10.0"
+
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.8.5.tgz#51b1c5fe6576a34953bf4b253df9f0d490d9e359"

@@ -1,11 +1,20 @@
 import * as React from 'react';
 import { Avatar } from './Avatar';
-import { Provider, themes, Header, Avatar as FUIAvatar, Flex } from '@fluentui/react-northstar';
+import { Status } from '../Status/Status';
+import {
+  Provider,
+  themes,
+  Header,
+  Text,
+  Avatar as FUIAvatar,
+  Status as FUIStatus,
+  Flex,
+} from '@fluentui/react-northstar';
 
 export const BasicAvatar = () => (
   <Provider theme={themes.teams}>
-    <Header>Existing Avatar</Header>
-    <Flex column fluid gap="gap.small">
+    <Header>Avatar (fela)</Header>
+    <Flex column gap="gap.small">
       <Flex gap="gap.small">
         <FUIAvatar size="smallest" name="John Doe" status="success" image="http://www.fillmurray.com/200/200" />
         <FUIAvatar size="smaller" name="John Doe" status="success" image="http://www.fillmurray.com/200/200" />
@@ -23,7 +32,7 @@ export const BasicAvatar = () => (
         <FUIAvatar square size="largest" name="Lorem Ipsum" status="warning" />
       </Flex>
 
-      <Header>CSS Based Avatar</Header>
+      <Header>Avatar (css)</Header>
       <Flex gap="gap.small">
         <Avatar size="smallest" name="John Doe" status="success" image="http://www.fillmurray.com/200/200" />
         <Avatar size="smaller" name="John Doe" status="success" image="http://www.fillmurray.com/200/200" />
@@ -39,6 +48,28 @@ export const BasicAvatar = () => (
         <Avatar square size="large" name="Jane Doe" status="error" />
         <Avatar square size="larger" name="Lorem Ipsum" status="warning" />
         <Avatar square size="largest" name="Lorem Ipsum" status="warning" />
+      </Flex>
+
+      <Header>Status (fela)</Header>
+      <Flex gap="gap.small">
+        <FUIStatus size="smallest" state="error" />
+        <FUIStatus size="smaller" state="info" />
+        <FUIStatus size="small" state="success" />
+        <FUIStatus />
+        <FUIStatus size="large" state="warning" />
+        <FUIStatus size="larger" />
+        <FUIStatus size="largest" />
+      </Flex>
+
+      <Header>Status (css)</Header>
+      <Flex gap="gap.small">
+        <Status size="smallest" state="error" />
+        <Status size="smaller" state="info" />
+        <Status size="small" state="success" />
+        <Status />
+        <Status size="large" state="warning" />
+        <Status size="larger" />
+        <Status size="largest" />
       </Flex>
     </Flex>
   </Provider>

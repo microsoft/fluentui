@@ -20,7 +20,9 @@ $sizeLargest: 48px;
 .root {
   position: relative;
   background-color: inherit;
-  display: inline-block;
+  display: inline-flex;
+  justify-content: stretch;
+  align-items: stretch;
   vertical-align: middle;
   width: $sizeMedium;
   height: $sizeMedium;

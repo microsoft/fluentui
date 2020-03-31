@@ -56,7 +56,8 @@
     "@fluentui/react-bindings": "^0.47.0",
     "@fluentui/react-proptypes": "^0.47.0",
     "prop-types": "^15.7.2",
-    "react-fela": "^10.6.1"
+    "react-fela": "^10.6.1",
+    "@uifabric/utilities": "^7.15.4"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",

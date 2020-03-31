@@ -1,0 +1,82 @@
+$sizeSmallest: 8px;
+$sizeSmaller: 8px;
+$sizeSmall: 8px;
+$sizeMedium: 10px;
+$sizeLarge: 12px;
+$sizeLarger: 14px;
+$sizeLargest: 16px;
+
+:root {
+  --borderColor: transparent;
+  --borderWidth: 2px;
+  --defaultBackgroundColor: var(--siteVariables-colors-grey-350, grey);
+  --defaultTextColor: var(--siteVariables-colors-white, white);
+  --errorBackgroundColor: var(--siteVariables-colors-red-400, red);
+  --errorTextColor: var(--siteVariables-colors-white, white);
+  --infoBackgroundColor: var(--siteVariables-colors-brand500, blue);
+  --infoTextColor: var(--siteVariables-colors-white, white);
+  --successBackgroundColor: var(--siteVariables-colors-green200, green);
+  --successTextColor: var(--siteVariables-colors-white, white);
+  --warningBackgroundColor: var(--siteVariables-colors-yellow-400, yellow);
+  --warningTextColor: var(--siteVariables-colors-white, white);
+}
+
+.root {
+  display: inline-flex;
+  align-items: stretch;
+  justify-content: stretch;
+  vertical-align: middle;
+  border-radius: 9999px;
+  border-color: var(--borderColor);
+  border-width: var(--borderWidth);
+  border-style: solid;
+  background-color: var(--backgroundColor, var(--defaultBackgroundColor));
+  color: var(--defaultTextColor);
+  width: $sizeMedium;
+  height: $sizeMedium;
+}
+
+.stateSuccess {
+  background-color: var(--successBackgroundColor);
+  color: var(--successTextColor);
+}
+
+.stateInfo {
+  background-color: var(--infoBackgroundColor);
+  color: var(--infoTextColor);
+}
+
+.stateWarning {
+  background-color: var(--warningBackgroundColor);
+  color: var(--warningTextColor);
+}
+
+.stateError {
+  background-color: var(--errorBackgroundColor);
+  color: var(--errorTextColor);
+}
+
+.sizeSmallest {
+  width: $sizeSmallest;
+  height: $sizeSmallest;
+}
+.sizeSmaller {
+  width: $sizeSmaller;
+  height: $sizeSmaller;
+}
+.sizeSmall {
+  width: $sizeSmall;
+  height: $sizeSmall;
+}
+.sizeLarge {
+  width: $sizeLarge;
+  height: $sizeLarge;
+}
+.sizeLarger {
+  width: $sizeLarger;
+  height: $sizeLarger;
+}
+.sizeLargest {
+  width: $sizeLargest;
+  height: $sizeLargest;
+}
