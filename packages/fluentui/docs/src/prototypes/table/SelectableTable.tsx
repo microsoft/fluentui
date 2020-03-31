@@ -18,18 +18,15 @@ interface SelectableTableState {
   selectedRows: boolean[];
 }
 
-const SelectableTableStateReducer = (state: SelectableTableState, action: SelectableTableAction) => {
+const selectableTableStateReducer: React.Reducer<SelectableTableState, SelectableTableAction> = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_ITEM': {
       const selectedRows = state.selectedRows.slice(0);
       selectedRows[action.itemIndex] = action.checked;
-      return { allRowsSelected: selectedRows.filter(item => !item).length === 0, selectedRows };
+      return { allRowsSelected: selectedRows.filter(Boolean).length === 0, selectedRows };
     }
     case 'TOGGLE_ALL': {
-      const selectedRows = state.selectedRows.slice(0);
-      selectedRows.forEach((item, index) => {
-        selectedRows[index] = action.checked;
-      });
+      const selectedRows = state.selectedRows.map(() => action.checked);
       return { allRowsSelected: action.checked, selectedRows };
     }
     default:
@@ -43,24 +40,21 @@ const SelectableTable = () => {
     ['Test name 2', 'Commander', 'Office'],
     ['Test name 3', 'Other', 'Field'],
   ];
-
-  const rowsLength = rows.length;
-  const initialState: SelectableTableState = {
-    allRowsSelected: false,
-    selectedRows: Array(rowsLength).fill(false),
-  };
-
-  const [state, dispatch] = React.useReducer(SelectableTableStateReducer, initialState);
-
-  const header = [
+  const headers = [
     { title: 'Name', key: 'name', name: 'name' },
     { title: 'Title', key: 'title', name: 'title' },
     { title: 'Location', key: 'location', name: 'location' },
   ];
 
+  const initialState: SelectableTableState = {
+    allRowsSelected: false,
+    selectedRows: Array(rows.length).fill(false),
+  };
+  const [state, dispatch] = React.useReducer(selectableTableStateReducer, initialState);
+
   return (
     <>
-      <Table aria-label={'Selectable table'} accessibility={gridNestedBehavior}>
+      <Table aria-label="Selectable table" accessibility={gridNestedBehavior}>
         <Table.Row header key="header" accessibility={gridRowBehavior}>
           <Table.Cell
             accessibility={gridCellWithFocusableElementBehavior}
@@ -72,8 +66,8 @@ const SelectableTable = () => {
                 onClick={(event, props) => dispatch({ type: 'TOGGLE_ALL', checked: props.checked })}
               ></Checkbox>
             }
-          ></Table.Cell>
-          {header.map((item, index) => (
+          />
+          {headers.map((item, index) => (
             <Table.Cell content={item.title} id={item.key} accessibility={gridCellBehavior} key={`header-${index}`} />
           ))}
         </Table.Row>
@@ -104,7 +98,7 @@ const SelectableTable = () => {
           );
         })}
       </Table>
-      <Box content={`Selected rows: ${state.selectedRows.filter(item => item === true).length}`} />
+      <Box content={`Selected rows: ${state.selectedRows.filter(Boolean).length}`} />
     </>
   );
 };
