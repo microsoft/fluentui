@@ -20,4 +20,16 @@ export const TextPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
+  mac: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/mac/TextOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/mac/TextUsage.md') as string,
+    related,
+    componentUrl,
+  },
+  windows: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/windows/TextOverview.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/TextPage/docs/windows/TextUsage.md') as string,
+    related,
+    componentUrl,
+  },
 };

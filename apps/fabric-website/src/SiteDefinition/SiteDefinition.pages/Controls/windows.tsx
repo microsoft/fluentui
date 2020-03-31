@@ -25,4 +25,17 @@ export const controlsPagesWindows: INavPage[] = [
       },
     ],
   },
+  {
+    title: 'Utilities',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Text',
+        url: '#/controls/windows/text',
+        component: () => <LoadingComponent title="Text" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
+      },
+    ],
+  },
 ];

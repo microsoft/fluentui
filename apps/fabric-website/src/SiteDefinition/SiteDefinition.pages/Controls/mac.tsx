@@ -25,4 +25,17 @@ export const controlsPagesMac: INavPage[] = [
       },
     ],
   },
+  {
+    title: 'Utilities',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Text',
+        url: '#/controls/mac/text',
+        component: () => <LoadingComponent title="Text" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage)),
+      },
+    ],
+  },
 ];
