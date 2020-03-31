@@ -222,7 +222,7 @@ export default () => (
         <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
       </ResponsiveTableContainer>
     </ComponentPrototype>
-    <ComponentPrototype title="Selectable table" description="Table which rows can be selected ">
+    <ComponentPrototype title="Selectable table" description="Table with rows that can be selected">
       <SelectableTable />
     </ComponentPrototype>
   </PrototypeSection>

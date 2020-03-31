@@ -36,7 +36,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add a shorthand to specify Popper props for `ChatMessage`, `Dropdown`, `MenuItem`, `ToolbarItem`, `ToolbarMenuItem` @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
 - Allow to specify `overflowBoundary` & `flipBoundary` props in Popper shorthands @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
 - Add `@fluentui/react-icons-northstar` package that contains all Teams theme icons and moved `createSvgIcon` to this package @mnajdova ([#12453](https://github.com/microsoft/fluentui/pull/12453))
-- Adding selectable table prototype and `selected` property to TableRow component @pompomon ([#12475](https://github.com/microsoft/fluentui/pull/12475))
+- Add `selected` property to TableRow component and selectable table prototype @pompomon ([#12475](https://github.com/microsoft/fluentui/pull/12475))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
