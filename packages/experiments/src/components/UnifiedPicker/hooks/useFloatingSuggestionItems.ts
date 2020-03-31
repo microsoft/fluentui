@@ -24,6 +24,7 @@ export const useFloatingSuggestionItems = <T extends {}>(
   const [isSuggestionsShown, setIsSuggestionsShown] = React.useState(isSuggestionsVisible || false);
 
   const showPicker = (show: boolean) => {
+    setFocusItemIndex(-1);
     setIsSuggestionsShown(show);
   };
 

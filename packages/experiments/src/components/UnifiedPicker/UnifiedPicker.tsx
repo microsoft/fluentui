@@ -2,12 +2,13 @@ import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
-import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps } from 'office-ui-fabric-react';
+import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps, MarqueeSelection } from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
 import { useSelectedItems } from './hooks/useSelectedItems';
 import { IFloatingSuggestionItemProps } from '../../FloatingSuggestionsComposite';
+import { copyToClipboard } from '../SelectedItemsList';
 
 export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.Element => {
   const getClassNames = classNamesFunction<IUnifiedPickerStyleProps, IUnifiedPickerStyles>();
@@ -34,6 +35,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onSelectionChanged = () => {
     console.log('selected index:' + selection.getSelectedIndices());
+    showPicker(false);
     setSelection(selection);
     setFocusedItemIndices(selection.getSelectedIndices());
   };
@@ -59,6 +61,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
     if (selectedItems.length) {
       if (
+        focusedItemIndices.length === 0 &&
         input &&
         input.current &&
         !input.current.isValueSelected &&
@@ -68,7 +71,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
         showPicker(false);
         ev.preventDefault();
         removeItemAt(selectedItems.length - 1);
-      } else if (selection.getSelectedCount() > 0) {
+      } else if (focusedItemIndices.length > 0) {
         showPicker(false);
         ev.preventDefault();
         removeSelectedItems();
@@ -91,10 +94,12 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
           console.log('tabbed so stabbed here');
           break;
         case KeyCodes.enter:
-          if (!ev.shiftKey && !ev.ctrlKey) {
+          if (!ev.shiftKey && !ev.ctrlKey && focusItemIndex >= 0) {
             ev.preventDefault();
             ev.stopPropagation();
             // Get the focused element and add it to selectedItemsList
+            showPicker(false);
+            _onSuggestionSelected(ev, suggestionItems[focusItemIndex]);
           }
           break;
         case KeyCodes.up:
@@ -113,6 +118,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const _onCopy = () => {
     console.log('copy handler');
+    if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
+      const copyItems = selection.getSelection() as T[];
+      const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
+      copyToClipboard(copyString);
+    }
   };
   const _onInputFocus = (ev: React.FocusEvent<HTMLInputElement | Autofill>): void => {
     unselectAll();
@@ -159,7 +169,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     }
     showPicker(false);
   };
-  const _onSuggestionSelected = (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => {
+  const _onSuggestionSelected = (ev: any, item: IFloatingSuggestionItemProps<T>) => {
     if (props.floatingSuggestionProps.onSuggestionSelected) {
       props.floatingSuggestionProps.onSuggestionSelected(ev, item);
     }
@@ -191,30 +201,32 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       onCopy={_onCopy}
     >
       <FocusZone direction={FocusZoneDirection.bidirectional} {...focusZoneProps}>
-        <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
-          <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
-            {headerComponent}
-            {_renderSelectedItemsList()}
-            {_canAddItems() && (
-              <Autofill
-                {...(inputProps as IInputProps)}
-                className={css('ms-BasePicker-input', classNames.pickerInput)}
-                ref={input}
-                onFocus={_onInputFocus}
-                onClick={_onInputClick}
-                onInputValueChange={_onInputChange}
-                aria-activedescendant={activeDescendant}
-                aria-owns={isExpanded ? 'suggestion-list' : undefined}
-                aria-expanded={isExpanded}
-                aria-haspopup="true"
-                role="combobox"
-                disabled={false}
-                onPaste={_onPaste}
-                onKeyDown={_onInputKeyDown}
-              />
-            )}
-          </div>
-        </SelectionZone>
+        <MarqueeSelection selection={selection} isEnabled={true}>
+          <SelectionZone selection={selection} selectionMode={SelectionMode.multiple}>
+            <div className={css('ms-BasePicker-text', classNames.pickerText)} role={'list'}>
+              {headerComponent}
+              {_renderSelectedItemsList()}
+              {_canAddItems() && (
+                <Autofill
+                  {...(inputProps as IInputProps)}
+                  className={css('ms-BasePicker-input', classNames.pickerInput)}
+                  ref={input}
+                  onFocus={_onInputFocus}
+                  onClick={_onInputClick}
+                  onInputValueChange={_onInputChange}
+                  aria-activedescendant={activeDescendant}
+                  aria-owns={isExpanded ? 'suggestion-list' : undefined}
+                  aria-expanded={isExpanded}
+                  aria-haspopup="true"
+                  role="combobox"
+                  disabled={false}
+                  onPaste={_onPaste}
+                  onKeyDown={_onInputKeyDown}
+                />
+              )}
+            </div>
+          </SelectionZone>
+        </MarqueeSelection>
       </FocusZone>
       {_renderFloatingPicker()}
     </div>

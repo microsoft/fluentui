@@ -7,6 +7,7 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
+import { item } from '../../VirtualizedList/VirtualizedList.scss';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
@@ -49,6 +50,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
       suggestionsContainerAriaLabel,
       onSuggestionRemove,
       onItemClick,
+      selectedSuggestionIndex,
     } = props;
 
     return (
@@ -63,7 +65,7 @@ export const FloatingSuggestionsList = <T extends {}>(props: IFloatingSuggestion
             <FloatingSuggestionsItemMemo
               item={suggestionItem.item}
               onClick={onItemClick}
-              isSelected={suggestionItem.isSelected}
+              isSelected={index === selectedSuggestionIndex}
               onRemoveItem={onSuggestionRemove}
               onRenderSuggestion={onRenderItem}
               className={suggestionsItemClassName}
