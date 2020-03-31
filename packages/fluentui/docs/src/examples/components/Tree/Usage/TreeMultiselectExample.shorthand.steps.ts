@@ -12,6 +12,7 @@ const config: ScreenerTestsConfig = {
     (builder, keys) =>
       builder
         .click(selectors.treeTitle(1))
+        .snapshot('first expanded, not custom checkbox visible')
         .click(selectors.treeTitle(2))
         .click(selectors.treeTitle(6))
         .click(selectors.treeTitle(10))
