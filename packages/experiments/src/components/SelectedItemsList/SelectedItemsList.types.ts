@@ -51,7 +51,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * The selection
    */
-  selection?: Selection;
+  focusedItemIndices?: number[];
   /**
    * Gets the copy text that will be set in the item.
    */

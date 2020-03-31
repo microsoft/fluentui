@@ -120,7 +120,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
   /**
    * Arrow key callback
    */
-  onKeyDown?: (ev?: React.KeyboardEvent<HTMLElement>) => void;
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
