@@ -72,7 +72,7 @@ export class DialogContentBase extends React.Component<IDialogContentProps, {}> 
           <div
             id={titleId}
             role="heading"
-            aria-level={2}
+            aria-level={1}
             {...titleProps}
             className={css(classNames.title, titleProps.className)}
           >

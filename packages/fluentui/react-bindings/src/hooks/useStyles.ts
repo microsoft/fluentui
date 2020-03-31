@@ -9,6 +9,8 @@ import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings
 import { ThemeContext } from 'react-fela';
 
+import useComposeOptions from '../compose/useComposeOptions';
+import useCurrentReactElement from '../compose/useCurrentReactElement';
 import {
   ComponentDesignProp,
   ComponentSlotClasses,
@@ -63,22 +65,34 @@ const useStyles = <StyleProps extends PrimitiveProps>(
   const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
     React.useContext(ThemeContext) || defaultContext;
 
+  const { elementProps } = useCurrentReactElement();
+  const composeOptions = useComposeOptions();
+
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
     mapPropsToStyles = () => ({} as StyleProps),
     mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),
     rtl = false,
   } = options;
+  const componentStylesProps = mapPropsToStyles();
+
+  // `composeProps` should include all props including stylesProps as they can contain state
+  const composeProps = { ...elementProps, ...componentStylesProps };
+  const composeStylesProps = composeOptions?.mapPropsToStylesPropsChain?.reduce(
+    (acc, fn) => ({ ...acc, ...fn(composeProps) }),
+    {},
+  );
 
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
-    className,
-    displayNames: [displayName],
+    className: composeOptions?.className || className,
+    displayNames: composeOptions?.displayNames || [displayName],
     props: {
-      ...mapPropsToStyles(),
+      ...componentStylesProps,
       ...mapPropsToInlineStyles(),
+      ...composeStylesProps,
     },
 
     // Context values
