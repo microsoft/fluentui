@@ -80,7 +80,7 @@ export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { defaultSelectIndicatorPosition } = React.useContext(TreeContext);
+  const { defaultSelectIndicatorPosition, customSelectIndicator } = React.useContext(TreeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 
@@ -145,23 +145,32 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     _.invoke(props, 'onClick', e, props);
   };
 
-  const selectIndicator = Box.create(selectionIndicator, {
-    defaultProps: () => ({
-      as: 'span',
-      ...getA11Props('indicator', {
-        className: TreeTitle.slotClassNames.indicator,
-        styles:
-          hasSubtree && selectableParent && expanded
-            ? resolvedStyles.customSelectionIndicator
-            : !hasSubtree
-            ? resolvedStyles.selectionIndicator
-            : {
-                // How to avoid this?
-                display: 'none',
-              },
+  const selectIndicator = Box.create(
+    customSelectIndicator
+      ? {
+          selectGroup: selectableParent && expanded && selectable,
+          selectItem: !hasSubtree && selectable,
+          selected,
+        }
+      : selectionIndicator,
+    {
+      defaultProps: () => ({
+        as: customSelectIndicator || 'span',
+        ...getA11Props('indicator', {
+          className: TreeTitle.slotClassNames.indicator,
+          styles:
+            (hasSubtree && selectableParent && expanded) || customSelectIndicator
+              ? resolvedStyles.customSelectionIndicator
+              : !hasSubtree
+              ? resolvedStyles.selectionIndicator
+              : {
+                  // How to avoid this?
+                  display: 'none',
+                },
+        }),
       }),
-    }),
-  });
+    },
+  );
 
   const rootA11yProps = {
     className: classes.root,

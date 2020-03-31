@@ -4,6 +4,7 @@ import { ActionsContext } from './actionsContext';
 import initialRosterData from './data/initialRosterData';
 import { useRosterActions } from './hooks/useRosterActions';
 import { rosterStyles, rosterTreeStyles } from './styles/styles';
+import RosterCheckbox from './RosterCheckbox';
 
 export const Roster: React.FunctionComponent<{}> = () => {
   const [rosterData, setRosterData] = React.useState(initialRosterData);
@@ -18,7 +19,6 @@ export const Roster: React.FunctionComponent<{}> = () => {
           title: 'Tywin',
           selectableParent: true,
           selectionIndicator: { content: 'select all' },
-
           items: [
             {
               id: 'tree-item-111',
@@ -84,6 +84,9 @@ export const Roster: React.FunctionComponent<{}> = () => {
     <>
       <Flex styles={rosterStyles}>
         <Tree items={items} styles={rosterTreeStyles} selectable />
+      </Flex>
+      <Flex styles={rosterStyles}>
+        <Tree items={items} styles={rosterTreeStyles} selectable customSelectIndicator={RosterCheckbox} />
       </Flex>
       <Flex styles={rosterStyles}>
         <ActionsContext.Provider value={actions}>

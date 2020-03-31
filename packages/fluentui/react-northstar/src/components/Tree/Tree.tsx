@@ -33,6 +33,12 @@ export interface TreeSlotClassNames {
   item: string;
 }
 
+export type CustomSelectIndicatorProps = {
+  selectGroup: boolean;
+  selectItem: boolean;
+  selected: boolean;
+} & Record<string, unknown>;
+
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -92,6 +98,9 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Whether or not tree items are selectable. */
   selectable?: boolean;
+
+  /** Allows user to pass a custom component to replace the current checkbox */
+  customSelectIndicator?: (props: CustomSelectIndicatorProps) => JSX.Element;
 }
 
 export interface TreeItemForRenderProps {
@@ -127,6 +136,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     selectedItemIds: customPropTypes.collectionShorthand,
     defaultActiveItemIds: customPropTypes.collectionShorthand,
     defaultSelectedItemIds: customPropTypes.collectionShorthand,
+    customSelectIndicator: PropTypes.any,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
     defaultSelectIndicatorPosition: PropTypes.bool,
@@ -140,6 +150,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static defaultProps = {
     as: 'div',
     accessibility: treeBehavior as Accessibility,
+    defaultSelectIndicatorPosition: true,
+    customSelectIndicator: undefined,
   };
 
   static autoControlledProps = ['activeItemIds', 'selectedItemIds'];
@@ -263,7 +275,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-    // debugger;
     if (this.props.selectable) {
       this.processItemsForSelection(e, treeItemProps);
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
@@ -356,7 +367,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     onSiblingsExpand: this.onSiblingsExpand,
     onFocusFirstChild: this.onFocusFirstChild,
     onTitleClick: this.onTitleClick,
-    defaultSelectIndicatorPosition: true,
+    defaultSelectIndicatorPosition: this.props.defaultSelectIndicatorPosition,
+    customSelectIndicator: this.props.customSelectIndicator,
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
