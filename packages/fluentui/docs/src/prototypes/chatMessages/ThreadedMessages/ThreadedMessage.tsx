@@ -6,6 +6,7 @@ import ThreadReplyEditor from './ThreadReplyEditor';
 import ScreenReaderHeaderText from './ScreenReaderHeaderText';
 import { actionMenu } from './mockData';
 import classNames from './classNames';
+import { CalendarIcon } from '@fluentui/react-icons-northstar';
 
 interface ThreadedMessageProps extends ChatMessageProps {
   subject?: string;
@@ -28,7 +29,7 @@ class ThreadedMessage extends React.Component<ThreadedMessageProps> {
         {meeting && (
           <Attachment
             actionable
-            icon="calendar"
+            icon={<CalendarIcon />}
             header={meeting.header}
             description={meeting.description}
             action={{
