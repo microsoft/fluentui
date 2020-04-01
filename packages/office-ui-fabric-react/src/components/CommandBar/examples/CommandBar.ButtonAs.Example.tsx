@@ -93,7 +93,12 @@ const _items: ICommandBarItemProps[] = [
       ],
     },
   },
-  { key: 'upload', text: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric' },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+  },
   { key: 'share', text: 'Share', iconProps: { iconName: 'Share' }, onClick: () => console.log('Share') },
   { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') },
 ];

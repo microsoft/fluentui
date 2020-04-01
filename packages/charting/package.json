@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/charting",
   "version": "1.1.4",
-  "description": "Experimental React charting components for building experiences for Office 365.",
+  "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
