@@ -88,7 +88,7 @@ const SelectableTable = () => {
                 title="Select all"
                 checked={state.allRowsSelected}
                 onClick={(event, props) => dispatch({ type: 'TOGGLE_ALL', checked: props.checked })}
-              ></Checkbox>
+              />
             }
           />
           {headers.map(item => (
