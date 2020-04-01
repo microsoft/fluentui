@@ -148,9 +148,10 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   const selectIndicator = Box.create(
     customSelectIndicator
       ? {
-          selectGroup: selectableParent && expanded && selectable,
-          selectItem: !hasSubtree && selectable,
           selected,
+          selectable: selectable && !hasSubtree,
+          selectableParent,
+          expanded,
         }
       : selectionIndicator,
     {

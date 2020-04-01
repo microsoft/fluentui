@@ -34,9 +34,10 @@ export interface TreeSlotClassNames {
 }
 
 export type CustomSelectIndicatorProps = {
-  selectGroup: boolean;
-  selectItem: boolean;
+  selectableParent: boolean;
+  selectable: boolean;
   selected: boolean;
+  expanded: boolean;
 } & Record<string, unknown>;
 
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
@@ -274,6 +275,9 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
+    if (!treeItemProps) {
+      return;
+    }
     if (this.props.selectable) {
       this.processItemsForSelection(e, treeItemProps);
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
