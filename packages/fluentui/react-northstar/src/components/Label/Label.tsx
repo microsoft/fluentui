@@ -137,7 +137,6 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
   const contentElement = Box.create(content, {
     defaultProps: () => ({
       styles: resolvedStyles.content,
-      // xSpacing: 'none',
     }),
   });
 
