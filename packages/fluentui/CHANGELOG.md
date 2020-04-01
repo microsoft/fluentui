@@ -27,6 +27,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `inverted` prop to propTypes check in `Button` @silviuavram ([#12414](https://github.com/microsoft/fluentui/pull/12414))
 - Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
 - Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
+- Fix colors for keyboard navigation in vertical Menu component in Teams theme high contrast mode @TanelVari ([#12462](https://github.com/microsoft/fluentui/pull/12462))
 
 ### Features
 - Add `createSvgIcon` factory in `@fluentui/react-bindings` and `SvgIcon` component in `@fluentui/react-northstar` @mnajdova ([#12319](https://github.com/OfficeDev/office-ui-fabric-react/pull/12319))
