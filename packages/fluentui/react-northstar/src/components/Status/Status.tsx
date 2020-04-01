@@ -67,8 +67,7 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
     defaultProps: () =>
       getA11Props('icon', {
         styles: resolvedStyles.icon,
-        // size: 'smallest',
-        // xSpacing: 'none',
+        as: 'span',
       }),
   });
 
