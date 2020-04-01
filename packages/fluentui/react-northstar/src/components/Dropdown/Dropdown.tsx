@@ -257,7 +257,6 @@ export interface DropdownState {
   value: ShorthandCollection<DropdownItemProps>;
   itemIsFromKeyboard: boolean;
   isFromKeyboard: boolean;
-  inverted: boolean;
 }
 
 class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, DropdownState> {
@@ -381,7 +380,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       value: [],
       itemIsFromKeyboard: false,
       isFromKeyboard: false,
-      inverted: false,
     };
   }
 
