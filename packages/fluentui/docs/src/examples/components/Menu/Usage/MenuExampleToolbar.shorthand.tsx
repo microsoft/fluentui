@@ -9,6 +9,8 @@ import {
   VideoCameraEmphasisIcon,
   SettingsIcon,
   MoreIcon,
+  BookmarkIcon,
+  TranslationIcon,
 } from '@fluentui/react-icons-northstar';
 
 const items: ShorthandCollection<MenuItemProps> = [
@@ -106,10 +108,7 @@ const items: ShorthandCollection<MenuItemProps> = [
         {
           key: '5',
           content: 'item1',
-          icon: {
-            name: 'bookmark',
-            outline: true,
-          },
+          icon: <BookmarkIcon outline />,
         },
         {
           key: 'divider',
@@ -127,10 +126,7 @@ const items: ShorthandCollection<MenuItemProps> = [
           key: '7',
           content: 'item3',
           disabled: true,
-          icon: {
-            name: 'translation',
-            outline: true,
-          },
+          icon: <TranslationIcon outline />,
         },
         {
           key: 'divider2',

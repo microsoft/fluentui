@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as React from 'react';
 import { Chat, Menu, Popup, Icon, Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 /**
  * This example shows how to create custom Chat Messages.
@@ -126,7 +127,7 @@ const gutterContent = (
             render={statusData =>
               renderStatus({
                 color: statusData === 'available' ? 'green' : undefined,
-                icon: statusData === 'available' ? 'check' : undefined,
+                icon: statusData === 'available' ? <AcceptIcon /> : undefined,
               })
             }
           />

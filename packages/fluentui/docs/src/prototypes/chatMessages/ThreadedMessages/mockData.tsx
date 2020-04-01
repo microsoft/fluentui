@@ -1,6 +1,15 @@
 import * as React from 'react';
 import { ThreadReplyProps } from './ThreadReplies';
-import { AcceptIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import { Icon } from '@fluentui/react-northstar';
+import {
+  AcceptIcon,
+  BoldIcon,
+  CalendarIcon,
+  ItalicIcon,
+  LikeIcon,
+  MoreIcon,
+  UnderlineIcon,
+} from '@fluentui/react-icons-northstar';
 
 export const actionMenu = {
   iconOnly: true,
@@ -64,44 +73,26 @@ export const replies: ThreadReplyProps[] = [
 export const toolbarItems = [
   {
     key: 'bold',
-    icon: {
-      name: 'bold',
-      outline: true,
-    },
+    icon: <BoldIcon outline />,
   },
   {
     key: 'italic',
-    icon: {
-      name: 'italic',
-      outline: true,
-    },
+    icon: <ItalicIcon outline />,
   },
   {
     key: 'underline',
-    icon: {
-      name: 'underline',
-      outline: true,
-    },
+    icon: <UnderlineIcon outline />,
   },
   {
     key: 'smile',
-    icon: {
-      name: 'smile',
-      outline: true,
-    },
+    icon: <Icon name="smile" outline />,
   },
   {
     key: 'picture',
-    icon: {
-      name: 'picture',
-      outline: true,
-    },
+    icon: <Icon name="picture" outline />,
   },
   {
     key: 'calendar',
-    icon: {
-      name: 'calendar',
-      outline: true,
-    },
+    icon: <CalendarIcon outline />,
   },
 ];
