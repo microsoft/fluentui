@@ -44,9 +44,9 @@ const DropdownExampleSearch = () => {
         setOpen(open);
       }}
       items={externalSearch ? [externalSearchItem] : inputItems}
-      placeholder="Start typing a name"
+      placeholder="Start typing ..."
       onChange={(e, { value }) => {
-        if (value === 'search externally') {
+        if (value === externalSearchItem) {
           setLoading(true);
           setInputItems([]);
           setOpen(true);
@@ -62,7 +62,7 @@ const DropdownExampleSearch = () => {
       }}
       onSearchQueryChange={(e, { searchQuery }) => {
         setExternalSearch(inputItems.filter(item => item.startsWith(searchQuery)).length === 0);
-        searchQuery !== 'search externally' && setSearchQuery(searchQuery);
+        searchQuery !== externalSearchItem && setSearchQuery(searchQuery);
       }}
       noResultsMessage="We couldn't find any matches."
       itemsListFooterMessage={
@@ -72,7 +72,7 @@ const DropdownExampleSearch = () => {
         externalSearch ? 'no results, but you can search externally' : `${resultCount} results available`
       }
       getA11ySelectionMessage={{
-        onAdd: item => (item === 'search externally' ? 'loading external restults' : `${item} has been selected.`),
+        onAdd: item => (item === externalSearchItem ? 'loading external results' : `${item} has been selected.`),
       }}
     />
   );
