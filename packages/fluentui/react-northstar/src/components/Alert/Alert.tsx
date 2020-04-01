@@ -3,6 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 import {
   AutoControlledComponent,
@@ -136,7 +137,8 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
 
   static defaultProps = {
     accessibility: alertBehavior,
-    dismissAction: { icon: 'close' },
+    // TODO: fix me
+    dismissAction: { icon: <CloseIcon /> },
     body: {},
   };
 

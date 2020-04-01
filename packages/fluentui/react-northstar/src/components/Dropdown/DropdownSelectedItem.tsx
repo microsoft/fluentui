@@ -3,6 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 import keyboardKey from 'keyboard-key';
 import {
@@ -91,7 +92,8 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
   };
 
   static defaultProps = {
-    icon: 'close',
+    // TODO: fix me
+    icon: <CloseIcon />,
   };
 
   componentDidUpdate(prevProps: DropdownSelectedItemProps) {
