@@ -1712,4 +1712,70 @@ describe('Dropdown', () => {
       expect(toggleIndicatorNode).not.toHaveFocus();
     });
   });
+
+  describe('footer messages', () => {
+    it('shows loadingMessage when status is loading', () => {
+      const loadingMessage = 'loading results';
+      const { getItemNodeAtIndex } = renderDropdown({
+        open: true,
+        loadingMessage,
+        loading: true,
+      });
+
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(loadingMessage);
+    });
+
+    it('shows noResultsMessage when status is no results', () => {
+      const noResultsMessage = 'oups we found nothing';
+      const { getItemNodeAtIndex } = renderDropdown({
+        open: true,
+        noResultsMessage,
+        items: [],
+      });
+
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(noResultsMessage);
+    });
+
+    it('shows itemsListFooterMessage when status is custom', () => {
+      const itemsListFooterMessage = 'just some status';
+      const { getItemNodeAtIndex } = renderDropdown({
+        open: true,
+        itemsListFooterMessage,
+      });
+
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(itemsListFooterMessage);
+    });
+
+    it('can juggle between messages depending on the status', () => {
+      const itemsListFooterMessage = 'just some status';
+      const noResultsMessage = 'oups we found nothing';
+      const loadingMessage = 'loading results';
+      const { getItemNodeAtIndex, getItemNodes, rerender } = renderDropdown({
+        open: true,
+        noResultsMessage,
+        loadingMessage,
+      });
+
+      // no footer message show initially.
+      expect(getItemNodes()).toHaveLength(items.length);
+
+      rerender({ itemsListFooterMessage });
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(itemsListFooterMessage);
+
+      rerender({ loading: true });
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(loadingMessage);
+
+      rerender({ items: [] });
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(loadingMessage);
+
+      rerender({ loading: false });
+      expect(getItemNodeAtIndex(0)).toHaveTextContent(noResultsMessage);
+
+      rerender({ items: ['one item'] });
+      expect(getItemNodeAtIndex(1)).toHaveTextContent(itemsListFooterMessage);
+
+      rerender({ itemsListFooterMessage: undefined });
+      expect(getItemNodes()).toHaveLength(1);
+    });
+  });
 });
