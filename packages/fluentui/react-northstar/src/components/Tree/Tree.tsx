@@ -151,7 +151,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     as: 'div',
     accessibility: treeBehavior as Accessibility,
     defaultSelectIndicatorPosition: true,
-    customSelectIndicator: undefined,
   };
 
   static autoControlledProps = ['activeItemIds', 'selectedItemIds'];

@@ -219,13 +219,13 @@ const TreeItem: React.FC<WithAsProp<TreeItemProps>> &
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(TreeItem.handledProps, props);
+  // Pass onClick event to element type so it will trigger selection clicking not only in the title or checkbox
   const element = (
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
-        onClick: handleTitleClick,
       })}
     >
       {childrenExist(children)
