@@ -739,7 +739,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
   ) {
     const { renderItem, checkable, checkableIndicator } = this.props;
     const { filteredItems, value } = this.state;
-    const footerItem = this.renderFooterItem(styles);
+    const footerItem = this.renderItemsListFooter(styles);
 
     const items = _.map(filteredItems, (item, index) => ({
       children: () => {
@@ -772,7 +772,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     return items;
   }
 
-  renderFooterItem(styles: ComponentSlotStylesInput) {
+  renderItemsListFooter(styles: ComponentSlotStylesInput) {
     const { loading, loadingMessage, noResultsMessage, items, itemsListFooterMessage } = this.props;
 
     if (loading) {
