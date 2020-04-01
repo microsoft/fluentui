@@ -1,6 +1,6 @@
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { CallVideoIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import { CallVideoIcon, MoreIcon, SkypeLogoIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleVariables = () => {
   return (
@@ -29,7 +29,7 @@ const ToolbarExampleVariables = () => {
 
             // ToolbarItem
             { key: 'item', active: true, icon: 'skype' },
-            { key: 'item-variables', active: true, icon: 'skype', variables: { foregroundActive: 'orange' } },
+            { key: 'item-variables', active: true, icon: <SkypeLogoIcon />, variables: { foregroundActive: 'orange' } },
           ],
         },
 

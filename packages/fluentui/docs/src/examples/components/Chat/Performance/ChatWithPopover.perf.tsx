@@ -2,7 +2,14 @@ import { Accessibility, Avatar, Chat, Menu, Provider, menuAsToolbarBehavior } fr
 import * as _ from 'lodash';
 import cx from 'classnames';
 import * as React from 'react';
-import { EmojiIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import {
+  DownloadIcon,
+  EmojiIcon,
+  LikeIcon,
+  LinkIcon,
+  MoreIcon,
+  TranslationIcon,
+} from '@fluentui/react-icons-northstar';
 
 const avatars = {
   ade:
@@ -82,9 +89,9 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: 'download', content: 'Save this message' },
-                { key: 'linkify', icon: 'link', content: 'Copy link' },
-                { key: 'translate', icon: 'translate', content: 'Translate' },
+                { key: 'bookmark', icon: <DownloadIcon />, content: 'Save this message' },
+                { key: 'linkify', icon: <LinkIcon />, content: 'Copy link' },
+                { key: 'translate', icon: <TranslationIcon />, content: 'Translate' },
               ],
             },
           },

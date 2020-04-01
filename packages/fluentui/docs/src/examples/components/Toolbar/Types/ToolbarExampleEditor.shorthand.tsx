@@ -17,6 +17,8 @@ import {
   ToDoListIcon,
   NumberListIcon,
   BulletsIcon,
+  QuoteIcon,
+  LinkIcon,
 } from '@fluentui/react-icons-northstar';
 
 const fields = [
@@ -241,14 +243,14 @@ const ToolbarExampleEditorShorthand = () => {
             menu: [
               {
                 content: 'Quote',
-                icon: 'quote',
+                icon: <QuoteIcon />,
                 onClick: () => {
                   writeLog('... -> Quote');
                 },
               },
               {
                 content: 'Link',
-                icon: 'link',
+                icon: <LinkIcon />,
                 disabled: true,
                 onClick: () => {
                   writeLog('SHOULD NOT BE CALLED, ITEM IS DISABLED... -> Link');

@@ -1,7 +1,7 @@
 import { Toolbar, ToolbarMenuItemProps } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
-import { MoreIcon } from '@fluentui/react-icons-northstar';
+import { BoldIcon, ItalicIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuItemToggle = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -30,7 +30,7 @@ const ToolbarExampleMenuItemToggle = () => {
               active: _.includes(activeIndexes, 0),
               content: 'Bold',
               kind: 'toggle',
-              icon: 'bold',
+              icon: <BoldIcon />,
               index: 0,
               onClick: handleToggleClick,
             },
@@ -39,7 +39,7 @@ const ToolbarExampleMenuItemToggle = () => {
               active: _.includes(activeIndexes, 1),
               content: 'Italic',
               kind: 'toggle',
-              icon: 'italic',
+              icon: <ItalicIcon />,
               index: 1,
               onClick: handleToggleClick,
             },

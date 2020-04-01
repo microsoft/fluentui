@@ -22,7 +22,16 @@ import * as React from 'react';
 
 import { EditorToolbarAction, EditorToolbarState, FontFormatting } from './editorToolbarReducer';
 import EditorToolbarTable from './EditorToolbarTable';
-import { TrashCanIcon } from '@fluentui/react-icons-northstar';
+import {
+  BoldIcon,
+  BulletsIcon,
+  HighlightIcon,
+  ItalicIcon,
+  LinkIcon,
+  TableIcon,
+  TrashCanIcon,
+  UnderlineIcon,
+} from '@fluentui/react-icons-northstar';
 
 type EditorToolbarProps = EditorToolbarState & {
   dispatch: React.Dispatch<EditorToolbarAction>;
@@ -72,7 +81,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'bold',
-        icon: 'bold',
+        icon: <BoldIcon />,
         active: props.bold,
         onClick: () => props.dispatch({ type: 'BOLD', value: !props.bold }),
       },
@@ -80,7 +89,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'italic',
-        icon: 'italic',
+        icon: <ItalicIcon />,
         active: props.italic,
         onClick: () => props.dispatch({ type: 'ITALIC', value: !props.italic }),
       },
@@ -88,7 +97,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'underline',
-        icon: 'underline',
+        icon: <UnderlineIcon />,
         active: props.underline,
         onClick: () => props.dispatch({ type: 'UNDERLINE', value: !props.underline }),
       },
@@ -96,7 +105,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
 
     { toolbarItem: { key: 'divider-1', kind: 'divider' } },
 
-    { toolbarItem: { key: 'highlight', icon: 'highlight', active: props.fontHighlight } },
+    { toolbarItem: { key: 'highlight', icon: <HighlightIcon />, active: props.fontHighlight } },
     { toolbarItem: { key: 'font-color', icon: 'font-color', active: props.fontColor } },
     { toolbarItem: { key: 'font-size', icon: 'font-size', active: props.fontSize } },
 
@@ -132,7 +141,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
           },
           open: props.fontFormattingOpen,
         },
-        icon: 'question',
+        icon: <Icon name="question" />,
         content: props.fontFormatting,
       },
     },
@@ -144,10 +153,10 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     { toolbarItem: { key: 'divider-2', kind: 'divider' } },
 
     {
-      toolbarItem: { key: 'bullets', icon: 'bullets', active: props.itemList },
+      toolbarItem: { key: 'bullets', icon: <BulletsIcon />, active: props.itemList },
       overflowItem: {
         key: 'bullets',
-        icon: 'bullets',
+        icon: <BulletsIcon />,
         active: props.itemList,
         content: 'Bulleted list',
       },
@@ -167,7 +176,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'link',
-        icon: 'link',
+        icon: <LinkIcon />,
         active: props.link,
         children: (Component, props) => (
           <Ref innerRef={linkItemRef}>
@@ -178,7 +187,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       },
       overflowItem: {
         key: 'link',
-        icon: 'link',
+        icon: <LinkIcon />,
         content: 'Insert link',
         onClick: () => props.dispatch({ type: 'LINK', value: true }),
       },
@@ -199,7 +208,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'table',
-        icon: 'table',
+        icon: <TableIcon />,
         content: 'Insert table',
         active: props.table,
 

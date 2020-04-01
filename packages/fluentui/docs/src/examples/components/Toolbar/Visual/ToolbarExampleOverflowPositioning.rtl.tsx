@@ -12,7 +12,7 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { TrashCanIcon } from '@fluentui/react-icons-northstar';
+import { BulletsIcon, LinkIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
 
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
@@ -67,7 +67,7 @@ const EditorToolbar: React.FC = () => {
 
     {
       toolbarItem: { key: 'bullets', icon: 'bullets' },
-      overflowItem: { key: 'bullets', icon: 'bullets', content: 'Bulleted list' },
+      overflowItem: { key: 'bullets', icon: <BulletsIcon />, content: 'Bulleted list' },
     },
     {
       toolbarItem: { key: 'number-list', icon: 'number-list' },
@@ -78,7 +78,7 @@ const EditorToolbar: React.FC = () => {
 
     {
       toolbarItem: { key: 'link', icon: 'link' },
-      overflowItem: { key: 'link', icon: 'link', content: 'Insert link' },
+      overflowItem: { key: 'link', icon: <LinkIcon />, content: 'Insert link' },
     },
     {
       toolbarItem: { key: 'code', icon: 'code-snippet' },

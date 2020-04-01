@@ -9,6 +9,7 @@ import {
   OutdentIcon,
   IndentIcon,
   MoreIcon,
+  LinkIcon,
 } from '@fluentui/react-icons-northstar';
 
 const stateReducer: React.Reducer<
@@ -82,7 +83,7 @@ const ToolbarExampleShorthand = () => {
           title: 'More',
           menu: [
             { key: 'quote', content: 'Quote', icon: 'quote' },
-            { key: 'link', content: 'Link', icon: 'link', disabled: true },
+            { key: 'link', content: 'Link', icon: <LinkIcon />, disabled: true },
             { key: 'code', content: 'Code snippet', icon: 'code-snippet' },
           ],
           menuOpen: state.more,

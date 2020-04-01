@@ -1,6 +1,18 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
 import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui/react-northstar';
 import * as React from 'react';
+import {
+  AddIcon,
+  BanIcon,
+  BookmarkIcon,
+  BroadcastIcon,
+  CalendarIcon,
+  EditIcon,
+  LikeIcon,
+  LockIcon,
+  MoreIcon,
+  StarIcon,
+} from '@fluentui/react-icons-northstar';
 
 const ChatExampleInScrollableShorthand = () => {
   const [actionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
@@ -21,18 +33,18 @@ const ChatExampleInScrollableShorthand = () => {
   });
 
   const actionItems = [
-    { key: 'add', icon: 'add', title: 'Add' },
-    { key: 'ban', icon: 'ban', title: 'Ban' },
-    { key: 'bookmark', icon: 'bookmark', title: 'Bookmark' },
-    { key: 'broadcast', icon: 'broadcast', title: 'Broadcast' },
-    { key: 'calendar', icon: 'calendar', title: 'Calendar' },
-    { key: 'like', icon: 'like', title: 'Like' },
-    { key: 'star', icon: 'star', title: 'Star' },
-    { key: 'edit', icon: 'edit', title: 'Edit' },
-    { key: 'lock', icon: 'lock', title: 'Lock' },
+    { key: 'add', icon: <AddIcon />, title: 'Add' },
+    { key: 'ban', icon: <BanIcon />, title: 'Ban' },
+    { key: 'bookmark', icon: <BookmarkIcon />, title: 'Bookmark' },
+    { key: 'broadcast', icon: <BroadcastIcon />, title: 'Broadcast' },
+    { key: 'calendar', icon: <CalendarIcon />, title: 'Calendar' },
+    { key: 'like', icon: <LikeIcon />, title: 'Like' },
+    { key: 'star', icon: <StarIcon />, title: 'Star' },
+    { key: 'edit', icon: <EditIcon />, title: 'Edit' },
+    { key: 'lock', icon: <LockIcon />, title: 'Lock' },
     {
       key: 'more',
-      icon: 'more',
+      icon: <MoreIcon />,
       title: 'More actions',
       children: (Component, props) => (
         <MenuButton

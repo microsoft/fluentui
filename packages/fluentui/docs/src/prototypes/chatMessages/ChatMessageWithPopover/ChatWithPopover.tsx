@@ -10,6 +10,7 @@ import * as React from 'react';
 import Popover from './Popover';
 import ReactionPopup from './ReactionPopup';
 import { Ref } from '@fluentui/react-component-ref';
+import { EmojiIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   {
@@ -20,7 +21,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
     children: (Component, props) => <ReactionPopup {...props} />,
   },
   {
-    icon: 'emoji',
+    icon: <EmojiIcon />,
     content: 2,
     key: 'smiles',
     children: (Component, props) => <ReactionPopup {...props} />,

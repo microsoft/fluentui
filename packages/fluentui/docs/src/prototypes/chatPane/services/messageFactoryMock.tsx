@@ -40,9 +40,9 @@ type ChatItem = {
 type StatusPropsExtendable = Extendable<StatusProps>;
 
 const statusMap: Map<UserStatus, StatusPropsExtendable> = new Map([
-  ['Available', { color: 'green', icon: 'check', title: 'Available' }],
-  ['DoNotDisturb', { color: 'red', icon: 'minus', title: 'Do not disturb' }],
-  ['Away', { color: 'yellow', icon: 'clock', title: 'Away' }],
+  ['Available', { color: 'green', icon: <Icon name="check" />, title: 'Available' }],
+  ['DoNotDisturb', { color: 'red', icon: <Icon name="minus" />, title: 'Do not disturb' }],
+  ['Away', { color: 'yellow', icon: <Icon name="clock" />, title: 'Away' }],
   ['Offline', { color: 'grey', title: 'Offline' }],
 ] as [UserStatus, StatusPropsExtendable][]);
 

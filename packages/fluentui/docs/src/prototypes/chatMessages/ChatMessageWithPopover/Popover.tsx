@@ -1,4 +1,5 @@
 import { Accessibility, Menu, Icon, menuAsToolbarBehavior } from '@fluentui/react-northstar';
+import { TranslateIcon } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import cx from 'classnames';
 
@@ -91,9 +92,9 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: 'folder', content: 'Save this message' },
-                { key: 'linkify', icon: 'linkify', content: 'Copy link' },
-                { key: 'translate', icon: 'translate', content: 'Translate' },
+                { key: 'bookmark', icon: <Icon name="folder" />, content: 'Save this message' },
+                { key: 'linkify', icon: <Icon name="linkify" />, content: 'Copy link' },
+                { key: 'translate', icon: <TranslateIcon />, content: 'Translate' },
               ],
             },
           },

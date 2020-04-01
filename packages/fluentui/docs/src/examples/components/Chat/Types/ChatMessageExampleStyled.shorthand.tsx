@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
-  { key: 'up', icon: 'like', content: '1K' },
-  { key: 'smile', icon: 'emoji', content: 5 },
+  { key: 'up', icon: <LikeIcon />, content: '1K' },
+  { key: 'smile', icon: <EmojiIcon />, content: 5 },
 ];
 
 const janeAvatar: AvatarProps = {

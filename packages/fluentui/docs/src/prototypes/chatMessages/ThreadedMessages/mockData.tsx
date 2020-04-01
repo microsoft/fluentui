@@ -1,17 +1,18 @@
 import * as React from 'react';
 import { ThreadReplyProps } from './ThreadReplies';
+import { AcceptIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 export const actionMenu = {
   iconOnly: true,
   items: [
     {
       key: 'like',
-      icon: 'like',
+      icon: <LikeIcon />,
       title: 'Like',
     },
     {
       key: 'more',
-      icon: 'more',
+      icon: <MoreIcon />,
       title: 'More actions',
     },
   ],
@@ -21,7 +22,7 @@ export const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: {
     color: 'green',
-    icon: 'check',
+    icon: <AcceptIcon />,
   },
 };
 
