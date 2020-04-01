@@ -1,7 +1,16 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.11.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Minor changes
+
+- Adding bold font weight definition (dzearing@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
 ## 7.10.22
 Mon, 23 Mar 2020 12:28:29 GMT
 

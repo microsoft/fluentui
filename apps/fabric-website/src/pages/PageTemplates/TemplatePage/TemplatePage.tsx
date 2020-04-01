@@ -96,7 +96,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
             </div>
           ),
 
-          // Optionally wrap the section with a className. Use the `css` utility from Fabric to concatenate
+          // Optionally wrap the section with a className. Use the `css` utility from Fluent UI to concatenate
           // classNames that may be falsey.
           className: css(styles.customSection, 'customGlobalClassName', platform === 'web' && 'falseyGlobalClassName'),
         },

@@ -1,10 +1,22 @@
 import { gridCellMultipleFocusableBehavior, gridCellWithFocusableElementBehavior } from '@fluentui/accessibility';
-import { Avatar, Button, Checkbox, Dropdown, Flex, Icon, Menu, MenuButton, Text } from '@fluentui/react-northstar';
+import {
+  Avatar,
+  Button,
+  Checkbox,
+  Dropdown,
+  Flex,
+  Icon,
+  Menu,
+  MenuButton,
+  Text,
+  Table,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 import chatProtoStyle from '.././chatPane/chatProtoStyle';
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
+import ResponsiveTableContainer from './ResponsiveTableContainer';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -157,6 +169,30 @@ const rowsChannels = [
   },
 ];
 
+const columnsPerson = {
+  items: ['id', 'Name', 'Age', 'Picture'],
+};
+
+const rowsPerson = [
+  ['1', 'Roman van', '30 years', 'None'],
+  ['2', 'Alex', '1 year', 'None'],
+  ['3', 'Ali', '30000000000000 years', 'None'],
+];
+
+const responsiveColumnsConfig = [
+  { priority: 4, minWidth: 200 },
+  { priority: 3, minWidth: 360 },
+  { priority: 2, minWidth: 300 },
+  { priority: 1, minWidth: 200 },
+];
+
+const responsiveColumnsConfigPriorityOrder = [
+  { priority: 3, minWidth: 200 },
+  { priority: 2, minWidth: 360 },
+  { priority: 1, minWidth: 300 },
+  { priority: 4, minWidth: 200 },
+];
+
 export default () => (
   <PrototypeSection title="Advanced table">
     <ComponentPrototype title="Table example 1" description="Table with sorting, tags and dropdown menu in a cell">
@@ -168,6 +204,22 @@ export default () => (
     </ComponentPrototype>
     <ComponentPrototype title="Table example 3" description="Table with popover and context menu ">
       <InteractiveTable />
+    </ComponentPrototype>
+    <ComponentPrototype
+      title="Responsive Table"
+      description="Responsive table hiding columns based in the priority passed to the Resposive Container as columns configurarion. The container can also receive a Breakpoint input with an array of number representing the breakpoints"
+    >
+      <ResponsiveTableContainer columns={responsiveColumnsConfig}>
+        <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
+      </ResponsiveTableContainer>
+    </ComponentPrototype>
+    <ComponentPrototype
+      title="Responsive Table"
+      description="Responsive table hiding middle columns keeping the first and the last"
+    >
+      <ResponsiveTableContainer columns={responsiveColumnsConfigPriorityOrder}>
+        <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
+      </ResponsiveTableContainer>
     </ComponentPrototype>
   </PrototypeSection>
 );

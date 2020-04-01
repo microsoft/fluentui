@@ -17,7 +17,7 @@ async function getMarkdownForEntry(entry) {
     (await getChangeComments('Minor changes', entry.comments.minor)) +
     (await getChangeComments('Patches', entry.comments.patch));
 
-  return (comments || '*Changes not tracked*') + EOL + EOL;
+  return (comments || '*No change notes provided*') + EOL + EOL;
 }
 
 /**

@@ -47,6 +47,7 @@ function _registerFontFaceSet(
     FontWeights.semibold,
     localFontName && localFontName + ' SemiBold',
   );
+  _registerFontFace(fontFamily, urlBase + '-bold', FontWeights.bold, localFontName && localFontName + ' Bold');
 }
 
 export function registerDefaultFontFaces(baseUrl: string): void {

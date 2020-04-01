@@ -41,7 +41,7 @@ const HighlightPopup = ({ onConfirm }) => {
   return <Form onSubmit={onConfirm} fields={fields} />;
 };
 
-const ToolbarExampleShorthand = () => {
+const ToolbarExampleEditorShorthand = () => {
   const [isBold, setBold] = useBooleanKnob({ name: 'bold', initialValue: true });
   const [isItalic, setItalic] = useBooleanKnob({ name: 'isItalic', initialValue: false });
   const [isUnderline, setUnderline] = useBooleanKnob({ name: 'isUnderline', initialValue: false });
@@ -250,4 +250,4 @@ const ToolbarExampleShorthand = () => {
   );
 };
 
-export default ToolbarExampleShorthand;
+export default ToolbarExampleEditorShorthand;

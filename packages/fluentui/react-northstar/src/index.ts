@@ -210,6 +210,8 @@ export { default as ReactionGroup } from './components/Reaction/ReactionGroup';
 
 export * from './components/SplitButton/SplitButton';
 export { default as SplitButton } from './components/SplitButton/SplitButton';
+export * from './components/SplitButton/SplitButtonToggle';
+export { default as SplitButtonToggle } from './components/SplitButton/SplitButtonToggle';
 
 export * from './components/Video/Video';
 export { default as Video } from './components/Video/Video';
@@ -227,6 +229,8 @@ export * from './components/Carousel/CarouselNavigation';
 export { default as CarouselNavigation } from './components/Carousel/CarouselNavigation';
 export * from './components/Carousel/CarouselNavigationItem';
 export { default as CarouselNavigationItem } from './components/Carousel/CarouselNavigationItem';
+export * from './components/Carousel/CarouselPaddle';
+export { default as CarouselPaddle } from './components/Carousel/CarouselPaddle';
 
 export * from './components/Table/Table';
 export { default as Table } from './components/Table/Table';

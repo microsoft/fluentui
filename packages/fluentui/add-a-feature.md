@@ -1,4 +1,6 @@
-# Add a feature
+# Add a feature for `@fluentui/react-northstar` (and others under `packages/fluentui`)
+
+**NOTE: Please see [this wiki page](https://github.com/microsoft/fluentui/wiki/Contributing) for the current feature proposal process. This page is kept for reference until the guidance can be merged.**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -43,11 +45,11 @@ You can create a new component `MyComponent` by following the example of an exis
 
 The corresponding component directory trees should be created in correct places:
 
-- the component under `/packages/{package}/src/components/MyComponent`,
-  - the docs under `/docs/src/examples/components/MyComponent`,
-- the tests under `/packages/{package}/test/specs/components/MyComponent`
+- the component under `packages/fluentui/{package}/src/components/MyComponent`,
+  - the docs under `packages/fluentui/docs/src/examples/components/MyComponent`,
+- the tests under `packages/fluentui/{package}/test/specs/components/MyComponent`
 
-`{package}` is likely going to stand for `react` if you are contributing a component to the main package.
+`{package}` is likely going to stand for `react-northstar` if you are contributing a component to the main package.
 
 You can customize the styles of your component by adding necessary variables and styles as part of your theme.
 E.g. for update on the `teams` theme: `/src/themes/`
@@ -56,7 +58,7 @@ E.g. for update on the `teams` theme: `/src/themes/`
 
 Generally if you're updating a component, push a small change so that your PR could be reviewed quickly.
 
-Stateless components should be written as an arrow `function`:
+Stateless components should be written as an arrow function:
 
 ```tsx
 const Button: React.FunctionalComponent = props => {
@@ -74,7 +76,7 @@ class Dropdown extends AutoControlledComponent {
 }
 ```
 
-You can now iterate on the component in `/src` and your doc site example will hot reload your changes. Use this workflow to iterate on the prototype for your proposed feature.
+You can now iterate on the component code and your doc site example will hot reload your changes. Use this workflow to iterate on the prototype for your proposed feature.
 
 ### Display Name and Class Name
 
@@ -171,7 +173,7 @@ Add a [performance test](test-a-feature.md#performance-tests) to set a baseline 
 
 Create a new documentation example that demonstrates usage of the new feature.
 
-1. Create a new example in `/docs/src/examples/components` under the appropriate component.
+1. Create a new example in `packages/fluentui/docs/src/examples/components` under the appropriate component.
 1. Add your example to the `index.ts` in respective directory.
 1. Running `yarn start` should now show your example in the doc site.
 
@@ -190,9 +192,9 @@ After iterating on the feature with the maintainers, you will add full test cove
 - [Test a component](test-a-feature.md)
 - [Writing documentation](document-a-feature.md)
 
-[1]: https://github.com/microsoft/fluent-ui-react/issues
+[1]: https://github.com/microsoft/fluentui/issues
 [2]: https://github.com/microsoft/fluent-ui-react/pull/73
-[3]: https://github.com/microsoft/fluent-ui-react/blob/master/packages/react/src/utils/AutoControlledComponent.tsx
+[3]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/react-northstar/src/utils/AutoControlledComponent.tsx
 [4]: https://facebook.github.io/react/docs/forms.html#controlled-components
 [5]: https://facebook.github.io/react/docs/forms.html#uncontrolled-components
 [6]: https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit

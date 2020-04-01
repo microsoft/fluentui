@@ -39,6 +39,7 @@ export interface ComponentExampleProps
   description?: React.ReactNode;
   examplePath: string;
   toolbarAriaLabel?: string;
+  resetTheme?: boolean;
 }
 
 interface ComponentExampleState {
@@ -421,6 +422,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       title,
       wasCodeChanged,
       toolbarAriaLabel,
+      resetTheme,
     } = this.props;
     const {
       anchorName,
@@ -487,6 +489,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                   enableSanitizeCssPlugin: true /* Force always for website to avoid issues with live editor */,
                 }}
                 theme={newTheme}
+                overwrite={resetTheme}
                 rtl={showRtl}
               >
                 <VariableResolver onResolve={this.handleVariableResolve}>

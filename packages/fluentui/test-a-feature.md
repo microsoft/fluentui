@@ -1,4 +1,6 @@
-# Test a feature
+# Test a feature for `@fluentui/react-northstar` (and others under `packages/fluentui`)
+
+**NOTE: This document currently only applies to the packages located under `packages/fluentui`, such as `@fluentui/react-northstar`.**
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
@@ -11,8 +13,8 @@
   - [Running tests](#running-tests)
 - [Screener Tests](#screener-tests)
   - [Tests with Steps API](#tests-with-steps-api)
-    - [Example for a test file:](#example-for-a-test-file)
-    - [Important mentions:](#important-mentions)
+    - [Example for a test file](#example-for-a-test-file)
+    - [Important mentions](#important-mentions)
   - [Run Screener tests](#run-screener-tests)
     - [Local run command](#local-run-command)
 - [Behavior Tests](#behavior-tests)
@@ -29,19 +31,20 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-In order to make sure you wrote a component `MyComponent` in the right way, you need to write proper tests under the corresponding test directory`test/specs/components/MyComponent`.
+In `@fluentui/react-northstar` (and related packages under `packages/fluentui`), in order to make sure you wrote a component `MyComponent` in the right way, you need to write proper tests under the corresponding test directory `<package>/test/specs/components/MyComponent`.
 
-You can run tests during development with `yarn test:watch` to re-run tests live on each file change or at the end of development by running `yarn test`.
+You can run tests during development with `yarn test:watch` (from the package directory) to re-run tests live on each file change or at the end of development by running `yarn test`.
 
 ## Coverage
 
-All PRs must meet or exceed test coverage limits before they can be merged.
+All PRs to packages related to `@fluentui/react-northstar` must meet or exceed test coverage limits before they can be merged.
 
-Every time tests run, `/coverage` information is updated. Open `coverage/lcov-report/index.html` to inspect test coverage. This interactive report will reveal areas lacking test coverage. You can then write tests for these areas and increase coverage.
+Every time tests run, `<package>/coverage` information is updated. Open `<package>/coverage/lcov-report/index.html` to inspect test coverage. This interactive report will reveal areas lacking test coverage. You can then write tests for these areas and increase coverage.
 
 ## Common Tests
 
-There are many common things to test for. Because of this, we have [`test/specs/commonTests`][1].
+There are many common things to test for. Because of this, we have [`packages/fluentui/react-northstar/test/specs/commonTests`][1].
+
 These tests are typically imported into individual component tests.
 
 ### Usage
@@ -49,9 +52,9 @@ These tests are typically imported into individual component tests.
 Every common test receives your component as its first argument.
 
 ```tsx
-import { isConformant } from 'test/specs/commonTests';
+import { isConformant } from '../../../specs/commonTests';
 
-import Divider from 'src/components/Divider/Divider';
+import Divider from '../../../../src/components/Divider/Divider';
 
 describe('Divider', () => {
   isConformant(Divider);
@@ -66,7 +69,7 @@ isConformant asserts Component conforms to guidelines that are applicable to all
 
 - Component is exported or private
 - Component name and filename are correct
-- Component info file exists at `docs/src/componentInfo/${constructorName}.info.json`
+- Component info file exists at `packages/fluentui/docs/src/componentInfo/${constructorName}.info.json`
 - Events are properly handled
 - Extra props are correctly spread
 - Base classNames are applied
@@ -74,7 +77,8 @@ isConformant asserts Component conforms to guidelines that are applicable to all
 
 ### Writing tests
 
-Create your test file in `test/specs` directory. The **specs** directory mirrors the **src** directory. The first test should always be `isConformant()`
+Create your test file in `packages/fluentui/react-northstar/test/specs` directory. The **specs** directory mirrors the **src** directory. The first test should always be `isConformant()`
+
 For every source file, there needs to be a test file and they should named as `<Component>-test.tsx`.
 
 There should be one describe block for each prop of your component.
@@ -82,9 +86,9 @@ There should be one describe block for each prop of your component.
 Example for `Button` component:
 
 ```tsx
-import { isConformant } from 'test/specs/commonTests'
+import { isConformant } from '../../../specs/commonTests'
 
-import Button from 'src/components/Button'
+import Button from '../../../../src/components/Button'
 
 describe('Button', () => {
   isConformant(Button)
@@ -109,6 +113,8 @@ describe('Button', () => {
 
 ### Running tests
 
+From within the package directory:
+
 ```bash
 # Run tests with:
 yarn test
@@ -116,8 +122,6 @@ yarn test
 # Run tests in watch mode with:
 yarn test:watch
 ```
-
-[1]: https://github.com/microsoft/fluent-ui-react/tree/master/test/specs/commonTests
 
 ## Screener Tests
 
@@ -133,7 +137,7 @@ This default test only checks the rendering for the component in its initial sta
   - `steps`: an array of callbacks that accept a `builder` (step builder) parameter, as all of them will be chained in `screener.config.js`. The `builder` parameter is actually the `Steps` object from screener, instantiated in `screener.config.js`.
   - `themes`: an array of strings representing the theme applied to the component when taking the screenshot; by default, all screenshots are taken for `Teams` theme.
 
-#### Example for a test file:
+#### Example for a test file
 
 ```tsx
 import { Dropdown } from '@fluentui/react-northstar';
@@ -153,7 +157,7 @@ const config: ScreenerTestsConfig = {
 export default config;
 ```
 
-#### Important mentions:
+#### Important mentions
 
 - by convention, each test is written as a different callback and added to the steps array.
 - an actual assertion is performed by taking a `.snapshot(<Your test name here>)`, as the assertion is performed by comparing the screenshot with the one taken on the previous run and considered correct.
@@ -169,8 +173,10 @@ When ran locally, not all the tests may be needed to run, only the ones added/ed
 
 #### Local run command
 
+From the repo root:
+
 ```bash
-yarn test:visual
+yarn test:fluentui:visual
 ```
 
 ## Behavior Tests
@@ -201,7 +207,7 @@ yarn jest --watch behavior-test
 
 #### I am not sure if my line under `@specification` was process correctly
 
-Go into `docs\src\behaviorMenu.json` file and verify if you can find your line. If not then:
+Go into `packages/fluentui/docs/src/behaviorMenu.json` file and verify if you can find your line. If not then:
 
 - run command `gulp build:docs:component-menu-behaviors`, this will build the file again
 - verify formatting of the file (if some tag is not missing, etc...) and run command again
@@ -254,7 +260,7 @@ Performance tests will measure performance, set a baseline for performance and h
 
 ### Adding a Perf Test
 
-- To add a perf test, simply add a file with `.perf.` in its naming. (As of writing, `.perf.` files in `docs/src` and `packages/perf-test` are automatically consumed.)
+- To add a perf test, simply add a file with `.perf.` in its naming. (As of writing, `.perf.` files in `packages/fluentui/docs/src` and `packages/fluentui/perf-test` are automatically consumed.)
 - Formatting follows [Storybook CSF convention](https://storybook.js.org/docs/formats/component-story-format/) with special support for `iterations` metadata which tells the performance testing package how many iterations of your component to render:
 
 ```tsx
@@ -277,12 +283,14 @@ Run test and watch:
 yarn perf:test
 ```
 
-After running `perf:test`, results can be viewed in the `packages/perf-test/dist` folder with the main entry file being `packages/perf-test/dist/perfCounts.html`.
+After running `perf:test`, results can be viewed in the `packages/fluentui/perf-test/dist` folder with the main entry file being `packages/fluentui/perf-test/dist/perfCounts.html`.
 
-There are more detailed commands as well (these must be run from `packages/perf-test` directory):
+There are more detailed commands as well (these must be run from `packages/fluentui/perf-test` directory):
 
 | Command                      | Description                                                             |
 | ---------------------------- | ----------------------------------------------------------------------- |
 | `yarn just perf-test:bundle` | Recreates story bundle. Required if perf stories are added or modified. |
 | `yarn just perf-test:run`    | Runs flamegrill against story bundle and generates results.             |
 | `yarn just perf-test`        | Executes both `:bundle` and `:run`.                                     |
+
+[1]: https://github.com/microsoft/fluentui/tree/master/packages/fluentui/react-northstar/test/specs/commonTests

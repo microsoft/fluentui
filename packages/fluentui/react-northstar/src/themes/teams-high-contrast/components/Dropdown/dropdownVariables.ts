@@ -31,6 +31,6 @@ export default (siteVars): Partial<DropdownVariables> => ({
   triggerButtonColorHover: siteVars.colors.white,
   // disabled state
   disabledBorderColorHover: siteVars.colors.white,
-  disabledTriggerColorHover: siteVars.colors.white,
+  disabledTriggerColorHover: siteVars.colors.black,
   disabledBackgroundColorHover: siteVars.colors.black,
 });

@@ -42,14 +42,17 @@ const handleWatchUnlink = (group: any, filePath: string) => {
 task('clean:cache', () => cache.clearAll());
 
 task('clean:docs', () =>
-  del([
-    paths.packages('ability-attributes/src/schema.ts'),
-    paths.docsSrc('componentMenu.json'),
-    paths.docsSrc('behaviorMenu.json'),
-    paths.docsDist(),
-    paths.docsSrc('exampleMenus'),
-    paths.docsSrc('exampleSources'),
-  ]),
+  del(
+    [
+      paths.packages('ability-attributes/src/schema.ts'),
+      paths.docsSrc('componentMenu.json'),
+      paths.docsSrc('behaviorMenu.json'),
+      paths.docsDist(),
+      paths.docsSrc('exampleMenus'),
+      paths.docsSrc('exampleSources'),
+    ],
+    { force: true },
+  ),
 );
 
 // ----------------------------------------
@@ -64,14 +67,7 @@ const componentsSrc = [
 const behaviorSrc = [`${paths.posix.packageSrc('accessibility')}/behaviors/*/[a-z]*Behavior.ts`];
 const examplesIndexSrc = `${paths.posix.docsSrc()}/examples/*/*/*/index.tsx`;
 const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).tsx`;
-const markdownSrc = [
-  '.github/CONTRIBUTING.md',
-  '.github/setup-local-development.md',
-  '.github/add-a-feature.md',
-  '.github/document-a-feature.md',
-  '.github/test-a-feature.md',
-  'specifications/*.md',
-];
+const markdownSrc = ['packages/fluentui/!(CHANGELOG).md', 'specifications/*.md'];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>

@@ -2,6 +2,34 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/utilities_v7.15.4",
+      "version": "7.15.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "524cd85eadff8b8a370811031f7ad4c22f151cfd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/utilities_v7.15.3",
+      "version": "7.15.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Mar 2020 12:28:29 GMT",
       "tag": "@uifabric/utilities_v7.15.2",
       "version": "7.15.2",

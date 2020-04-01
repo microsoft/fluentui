@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "expose prop for overflow items text in legends",
-  "packageName": "@uifabric/charting",
-  "email": "v-satgar@microsoft.com",
-  "commit": "f5951ed478cea07cbdd9aa14ad0c24e46eaa9db4",
-  "dependentChangeType": "patch",
-  "date": "2020-03-23T06:02:32.467Z"
-}

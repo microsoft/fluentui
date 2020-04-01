@@ -1,7 +1,19 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
 
+## 7.10.14
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- More Fabric=>Fluent fixes (elcraig@microsoft.com)
+## 7.10.12
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Updating docs for fluent transition (mgodbolt@microsoft.com)
 ## 7.10.11
 Mon, 23 Mar 2020 12:28:29 GMT
 

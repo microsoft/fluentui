@@ -2,15 +2,22 @@ import { useSelectKnob, useStringKnob } from '@fluentui/docs-components';
 import {
   AvatarProps,
   BoxProps,
+  CardProps,
   DialogProps,
   DividerProps,
   EmbedProps,
   IconProps,
   ImageProps,
   VideoProps,
+  Avatar as _Avatar,
+  CardBody as _CardBody,
+  CardHeader as _CardHeader,
+  Flex as _Flex,
+  Text as _Text,
 } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as faker from 'faker';
+import * as React from 'react';
 
 import { KnobComponentGenerators } from '../../types';
 import { number } from '../ComponentPlayground/typeGenerators';
@@ -26,6 +33,34 @@ export const Avatar: KnobComponentGenerators<AvatarProps> = {
 export const Box: KnobComponentGenerators<BoxProps> = {
   // TODO: fix support for boxes
   children: () => null,
+};
+
+export const Card: KnobComponentGenerators<CardProps> = {
+  children: () => {
+    const name = `${faker.name.firstName()} ${faker.name.lastName()}`;
+    const jobTitle = faker.name.jobTitle();
+    const content = faker.lorem.paragraph();
+
+    return {
+      name: null,
+      hook: () => [
+        [
+          <_CardHeader key="header">
+            <_Flex gap="gap.small">
+              <_Avatar image="public/images/avatar/small/matt.jpg" label={jobTitle} name={name} status="unknown" />
+              <_Flex column>
+                <_Text content={name} weight="bold" />
+                <_Text content={jobTitle} size="small" />
+              </_Flex>
+            </_Flex>
+          </_CardHeader>,
+          <_CardBody key="body">{content}</_CardBody>,
+        ],
+      ],
+    };
+  },
+  // disable horizontal as it requires different layout
+  horizontal: () => null,
 };
 
 export const Dialog: KnobComponentGenerators<DialogProps> = {

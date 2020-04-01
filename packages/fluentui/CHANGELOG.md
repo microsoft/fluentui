@@ -17,10 +17,30 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### BREAKING CHANGES
+- removed `SplitButton.slotClassNames` and introduced new `SplitButtonToggle` component @mnajdova ([#12432](https://github.com/microsoft/fluentui/pull/12432))
+- replaced `paddleNext` and `paddlePrevious` to be `ShorthandValue<CarouselPaddleProps>` instead of `ShorthandValue<ButtonProps>` @mnajdova ([#12434](https://github.com/microsoft/fluentui/pull/12434))
+
+### Fixes
+- Fix default focused input outline in Safari @sheff146 ([#12279](https://github.com/microsoft/fluentui/pull/12279))
+- Fix positioning for `ToolbarMenu` in `overflowItem` @layershifter ([#12390](https://github.com/microsoft/fluentui/pull/12390))
+- Add `inverted` prop to propTypes check in `Button` @silviuavram ([#12414](https://github.com/microsoft/fluentui/pull/12414))
+- Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
+- Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
+
 ### Features
 - Add `createSvgIcon` factory in `@fluentui/react-bindings` and `SvgIcon` component in `@fluentui/react-northstar` @mnajdova ([#12319](https://github.com/OfficeDev/office-ui-fabric-react/pull/12319))
 - Add `useUnhandledProps()` hook @layershifter ([#12371](https://github.com/OfficeDev/office-ui-fabric-react/pull/12371))
 - Adding base layout and API for `Card` component @pompomon ([#12349](https://github.com/OfficeDev/office-ui-fabric-react/pull/12349))
+- Add `disabled` support form `DropdownItem` @silviuavram ([#12407](https://github.com/microsoft/fluentui/pull/12407))
+- Add a shorthand to specify Popper props for `ChatMessage`, `Dropdown`, `MenuItem`, `ToolbarItem`, `ToolbarMenuItem` @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
+- Allow to specify `overflowBoundary` & `flipBoundary` props in Popper shorthands @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
+
+### Documentation
+- Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
+- Fix crash on `Loader` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
+- Improve playground on `Card` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
+- Add an example for Children API for `Toolbar` @layershifter ([#12473](https://github.com/microsoft/fluentui/pull/12473))
 
 <!--------------------------------[ v0.47.0 ]------------------------------- -->
 ## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)
