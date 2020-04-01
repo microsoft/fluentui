@@ -41,7 +41,7 @@ export interface TableRowProps extends UIComponentProps {
   compact?: boolean;
 
   /**
-   * Is row selected
+   * Whether a row is currently selected or not.
    */
   selected?: boolean;
 }
