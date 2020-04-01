@@ -14,6 +14,11 @@ const Usage = () => (
       description="You can customize rendered elements with render callbacks."
       examplePath="components/Dropdown/Usage/DropdownExampleRender"
     />
+    <ComponentExample
+      title="Custom list footer"
+      description="You can add a custom message in the list footer."
+      examplePath="components/Dropdown/Usage/DropdownItemsListFooterExample"
+    />
   </ExampleSection>
 );
 

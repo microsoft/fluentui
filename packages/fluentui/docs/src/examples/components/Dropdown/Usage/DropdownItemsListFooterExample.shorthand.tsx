@@ -1,0 +1,80 @@
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react-northstar';
+
+const generateItems = (searchQuery = 'default'): string[] => {
+  const items = [];
+
+  for (let i = 0; i < 10; i++) {
+    items.push(`${searchQuery}-item-${i}`);
+  }
+
+  return items;
+};
+
+const DropdownExampleSearch = () => {
+  const [inputItems, setInputItems] = React.useState(generateItems());
+  const [loading, setLoading] = React.useState(false);
+  const [value, setValue] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const [externalSearch, setExternalSearch] = React.useState(false);
+  const externalSearchItem = 'search externally';
+
+  return (
+    <Dropdown
+      search={(filteredItemsByValue: string[], searchQuery: string) => {
+        const result = filteredItemsByValue.filter(
+          item => item.toLowerCase().indexOf(searchQuery.toLowerCase()) !== -1,
+        );
+        if (result.length === 0) {
+          return [externalSearchItem];
+        }
+        return result;
+      }}
+      loading={loading}
+      value={value}
+      highlightFirstItemOnOpen={true}
+      open={open}
+      loadingMessage="Loading..."
+      searchQuery={searchQuery}
+      onOpenChange={(e, { open, value }) => {
+        if (value && value === externalSearchItem) {
+          return;
+        }
+        setOpen(open);
+      }}
+      items={externalSearch ? [externalSearchItem] : inputItems}
+      placeholder="Start typing a name"
+      onChange={(e, { value }) => {
+        if (value === 'search externally') {
+          setLoading(true);
+          setInputItems([]);
+          setOpen(true);
+          setValue(null);
+          setTimeout(() => {
+            setInputItems(generateItems(searchQuery));
+            setLoading(false);
+            setExternalSearch(false);
+          }, 2000);
+        } else {
+          setValue(value);
+        }
+      }}
+      onSearchQueryChange={(e, { searchQuery }) => {
+        setExternalSearch(inputItems.filter(item => item.startsWith(searchQuery)).length === 0);
+        searchQuery !== 'search externally' && setSearchQuery(searchQuery);
+      }}
+      noResultsMessage="We couldn't find any matches."
+      itemsListFooterMessage={
+        externalSearch ? "We couldn't find any matches, but you can search externally!" : undefined
+      }
+      getA11yStatusMessage={({ resultCount }) =>
+        externalSearch ? 'no results, but you can search externally' : `${resultCount} results available`
+      }
+      getA11ySelectionMessage={{
+        onAdd: item => (item === 'search externally' ? 'loading external restults' : `${item} has been selected.`),
+      }}
+    />
+  );
+};
+export default DropdownExampleSearch;
