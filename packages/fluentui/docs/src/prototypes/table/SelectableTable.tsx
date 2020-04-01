@@ -6,6 +6,7 @@ import {
 } from '@fluentui/accessibility';
 import { Table, Checkbox, Text } from '@fluentui/react-northstar';
 import * as React from 'react';
+import * as _ from 'lodash';
 
 interface SelectableTableAction {
   type: 'TOGGLE_ITEM' | 'TOGGLE_ALL';
@@ -14,21 +15,16 @@ interface SelectableTableAction {
 }
 
 interface SelectableTableState {
-  allRowsSelected: boolean;
-  selectedRows: {};
+  rows: Record<string, boolean>;
 }
 
 const selectableTableStateReducer: React.Reducer<SelectableTableState, SelectableTableAction> = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_ITEM': {
-      const selectedRows = { ...state.selectedRows };
-      selectedRows[action.itemKey] = action.checked;
-      return { allRowsSelected: !Object.keys(selectedRows).some(x => selectedRows[x] === false), selectedRows };
+      return { rows: { ...state.rows, [action.itemKey]: action.checked } };
     }
     case 'TOGGLE_ALL': {
-      const selectedRows = { ...state.selectedRows };
-      Object.keys(selectedRows).forEach(key => (selectedRows[key] = action.checked));
-      return { allRowsSelected: action.checked, selectedRows };
+      return { rows: _.mapValues(state.rows, () => action.checked) };
     }
     default:
       throw new Error(`Action ${action.type} is not supported`);
@@ -69,10 +65,9 @@ const SelectableTable = () => {
   ];
 
   const initialState: SelectableTableState = {
-    allRowsSelected: false,
-    selectedRows: rows.reduce((selectedRows, row) => {
-      selectedRows[row.key] = false;
-      return selectedRows;
+    rows: rows.reduce((rows, row) => {
+      rows[row.key] = false;
+      return rows;
     }, {}),
   };
   const [state, dispatch] = React.useReducer(selectableTableStateReducer, initialState);
@@ -86,7 +81,7 @@ const SelectableTable = () => {
             content={
               <Checkbox
                 title="Select all"
-                checked={state.allRowsSelected}
+                checked={_.every(state.rows)}
                 onClick={(event, props) => dispatch({ type: 'TOGGLE_ALL', checked: props.checked })}
               />
             }
@@ -97,13 +92,13 @@ const SelectableTable = () => {
         </Table.Row>
         {rows.map(row => {
           return (
-            <Table.Row accessibility={gridRowBehavior} selected={state.selectedRows[row.key]} key={row.key}>
+            <Table.Row accessibility={gridRowBehavior} selected={state.rows[row.key]} key={row.key}>
               <Table.Cell
                 accessibility={gridCellWithFocusableElementBehavior}
                 content={
                   <Checkbox
                     title="Select me"
-                    checked={state.selectedRows[row.key]}
+                    checked={state.rows[row.key]}
                     onClick={(event, props) =>
                       dispatch({ type: 'TOGGLE_ITEM', checked: props.checked, itemKey: row.key })
                     }
@@ -117,9 +112,7 @@ const SelectableTable = () => {
           );
         })}
       </Table>
-      <Text
-        content={`Selected rows: ${Object.keys(state.selectedRows).filter(x => Boolean(state.selectedRows[x])).length}`}
-      />
+      <Text content={`Selected rows: ${_.filter(state.rows).length}`} />
     </>
   );
 };
