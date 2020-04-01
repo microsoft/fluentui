@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "5.8.7",
+      "tag": "@uifabric/fabric-website_v5.8.7",
+      "date": "Wed, 01 Apr 2020 22:48:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3cc732cc7d390319783c47fb6831ac3ba836b890",
+            "comment": "Have the website bundle React"
+          }
+        ]
+      }
+    },
+    {
       "version": "5.8.6",
       "tag": "@uifabric/fabric-website_v5.8.6",
       "date": "Tue, 30 Jul 2019 11:14:55 GMT",
