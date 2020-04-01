@@ -38,7 +38,6 @@
     "@types/simulant": "^0.2.0",
     "@uifabric/build": "^7.0.0",
     "faker": "^4.1.0",
-    "jest-watch-typeahead": "^0.4.2",
     "lerna-alias": "^3.0.3-0",
     "qs": "^6.8.0",
     "simulant": "^0.2.2"
