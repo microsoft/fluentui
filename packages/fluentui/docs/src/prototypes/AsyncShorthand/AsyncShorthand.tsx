@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Chat, Menu, Popup, Avatar } from '@fluentui/react-northstar';
+import { Chat, Menu, Popup, Icon, Avatar } from '@fluentui/react-northstar';
 
 /**
  * This example shows how to create custom Chat Messages.
@@ -50,7 +50,9 @@ class CustomChatMessage extends React.Component {
         trigger={
           <AsyncData
             data={3}
-            render={data => <MenuItem {...props} icon="thumbs up" content={data} onClick={this.togglePopup} />}
+            render={data => (
+              <MenuItem {...props} icon={<Icon name="thumbs up" />} content={data} onClick={this.togglePopup} />
+            )}
           />
         }
       />
@@ -88,9 +90,21 @@ class CustomChatMessage extends React.Component {
               iconOnly
               className="actions"
               items={[
-                { key: 'a', icon: 'thumbs up', children: this.renderMenuItem },
-                { key: 'b', icon: 'user', children: this.renderMenuItem },
-                { key: 'c', icon: 'ellipsis horizontal', children: this.renderMenuItem },
+                {
+                  icon: <Icon name="thumbs up" />,
+                  key: 'a',
+                  children: this.renderMenuItem,
+                },
+                {
+                  icon: <Icon name="user" />,
+                  key: 'b',
+                  children: this.renderMenuItem,
+                },
+                {
+                  icon: <Icon name="ellipsis horizontal" />,
+                  key: 'c',
+                  children: this.renderMenuItem,
+                },
               ]}
             />
           </div>

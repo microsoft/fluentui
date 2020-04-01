@@ -2,6 +2,7 @@ import {
   Attachment,
   Extendable,
   Popup,
+  Icon,
   Menu,
   AvatarProps,
   ChatMessageProps,
@@ -13,6 +14,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
+import { DownloadIcon } from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
@@ -94,20 +96,20 @@ function createMessageContentWithAttachments(content: string, messageId: string)
       items={[
         {
           key: 'download',
+          icon: <DownloadIcon />,
           content: 'Download',
-          icon: 'download',
           onClick: menuClickHandler('Download'),
         },
         {
           key: 'linkify',
+          icon: <Icon name="linkify" />,
           content: 'Get link',
-          icon: 'linkify',
           onClick: menuClickHandler('Get link'),
         },
         {
           key: 'tab',
+          icon: <Icon name="folder open" />,
           content: 'Make this a tab',
-          icon: 'folder open',
           onClick: menuClickHandler('Make tab'),
         },
       ]}
@@ -143,7 +145,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         {_.map(['MeetingNotes.pptx', 'Document.docx'], (fileName, index) => (
           <Attachment
             key={`attachment-${index}`}
-            icon="file word outline"
+            icon={<Icon name="file word outline" />}
             aria-label={`File attachment ${fileName}. Press tab for more options Press Enter to open the file`}
             header={fileName}
             action={action}
