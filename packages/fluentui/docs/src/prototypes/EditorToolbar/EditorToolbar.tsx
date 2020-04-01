@@ -25,9 +25,13 @@ import EditorToolbarTable from './EditorToolbarTable';
 import {
   BoldIcon,
   BulletsIcon,
+  CodeSnippetIcon,
+  FontColorIcon,
+  FontSizeIcon,
   HighlightIcon,
   ItalicIcon,
   LinkIcon,
+  RemoveFormatIcon,
   TableIcon,
   TrashCanIcon,
   UnderlineIcon,
@@ -106,8 +110,8 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     { toolbarItem: { key: 'divider-1', kind: 'divider' } },
 
     { toolbarItem: { key: 'highlight', icon: <HighlightIcon />, active: props.fontHighlight } },
-    { toolbarItem: { key: 'font-color', icon: 'font-color', active: props.fontColor } },
-    { toolbarItem: { key: 'font-size', icon: 'font-size', active: props.fontSize } },
+    { toolbarItem: { key: 'font-color', icon: <FontColorIcon />, active: props.fontColor } },
+    { toolbarItem: { key: 'font-size', icon: <FontSizeIcon />, active: props.fontSize } },
 
     {
       toolbarItem: {
@@ -147,8 +151,8 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     },
 
     {
-      toolbarItem: { key: 'remove-format', icon: 'remove-format' },
-      overflowItem: { key: 'remove-format', icon: 'remove-format', content: 'Clear formatting' },
+      toolbarItem: { key: 'remove-format', icon: <RemoveFormatIcon /> },
+      overflowItem: { key: 'remove-format', icon: <RemoveFormatIcon />, content: 'Clear formatting' },
     },
     { toolbarItem: { key: 'divider-2', kind: 'divider' } },
 
@@ -195,12 +199,12 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'code',
-        icon: 'code-snippet',
+        icon: <CodeSnippetIcon />,
         active: props.code,
       },
       overflowItem: {
         key: 'code',
-        icon: 'code-snippet',
+        icon: <CodeSnippetIcon />,
         content: 'Code snippet',
         active: props.code,
       },

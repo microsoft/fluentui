@@ -9,7 +9,7 @@ import {
   ToolbarMenuItemProps,
 } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { BoldIcon, ItalicIcon, MoreIcon, QuoteIcon } from '@fluentui/react-icons-northstar';
+import { BoldIcon, CodeSnippetIcon, ItalicIcon, MoreIcon, QuoteIcon } from '@fluentui/react-icons-northstar';
 
 type IntermediateToolbarItem = (ToolbarItemProps | ToolbarMenuItemProps | ToolbarDividerProps) & {
   key: string;
@@ -58,7 +58,7 @@ const ToolbarExampleShorthand = () => {
         {
           key: 'code-snippet',
           content: 'Code snippet',
-          icon: 'code-snippet',
+          icon: <CodeSnippetIcon />,
         },
       ],
       menuOpen: moreMenuOpen,

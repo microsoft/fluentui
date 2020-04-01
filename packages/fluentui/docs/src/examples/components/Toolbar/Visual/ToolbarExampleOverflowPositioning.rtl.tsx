@@ -12,7 +12,15 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BulletsIcon, LinkIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
+import {
+  BulletsIcon,
+  CodeSnippetIcon,
+  FontColorIcon,
+  FontSizeIcon,
+  LinkIcon,
+  RemoveFormatIcon,
+  TrashCanIcon,
+} from '@fluentui/react-icons-northstar';
 
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
@@ -56,12 +64,12 @@ const EditorToolbar: React.FC = () => {
     { toolbarItem: { key: 'divider-1', kind: 'divider' } },
 
     { toolbarItem: { key: 'highlight', icon: 'highlight' } },
-    { toolbarItem: { key: 'font-color', icon: 'font-color' } },
-    { toolbarItem: { key: 'font-size', icon: 'font-size' } },
+    { toolbarItem: { key: 'font-color', icon: <FontColorIcon /> } },
+    { toolbarItem: { key: 'font-size', icon: <FontSizeIcon /> } },
 
     {
-      toolbarItem: { key: 'remove-format', icon: 'remove-format' },
-      overflowItem: { key: 'remove-format', icon: 'remove-format', content: 'Clear formatting' },
+      toolbarItem: { key: 'remove-format', icon: <RemoveFormatIcon /> },
+      overflowItem: { key: 'remove-format', icon: <RemoveFormatIcon />, content: 'Clear formatting' },
     },
     { toolbarItem: { key: 'divider-2', kind: 'divider' } },
 
@@ -81,8 +89,8 @@ const EditorToolbar: React.FC = () => {
       overflowItem: { key: 'link', icon: <LinkIcon />, content: 'Insert link' },
     },
     {
-      toolbarItem: { key: 'code', icon: 'code-snippet' },
-      overflowItem: { key: 'code', icon: 'code-snippet', content: 'Code snippet' },
+      toolbarItem: { key: 'code', icon: <CodeSnippetIcon /> },
+      overflowItem: { key: 'code', icon: <CodeSnippetIcon />, content: 'Code snippet' },
     },
   ];
 

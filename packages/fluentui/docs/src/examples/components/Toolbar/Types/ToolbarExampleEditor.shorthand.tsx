@@ -19,6 +19,7 @@ import {
   BulletsIcon,
   QuoteIcon,
   LinkIcon,
+  CodeSnippetIcon,
 } from '@fluentui/react-icons-northstar';
 
 const fields = [
@@ -258,7 +259,7 @@ const ToolbarExampleEditorShorthand = () => {
               },
               {
                 content: 'Code snippet',
-                icon: 'code-snippet',
+                icon: <CodeSnippetIcon />,
                 onClick: () => writeLog('... -> Code snippet'),
               },
             ],
