@@ -5,7 +5,12 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
   web: {
     name: 'Web',
     icon: 'WebLogo-platformPicker',
-    color: '#258ede',
+    color: '#28A8EA',
+  },
+  windows: {
+    name: 'Windows',
+    icon: 'WinLogo-platformPicker',
+    color: '#4fe5ff',
   },
   ios: {
     name: 'iOS',
@@ -20,11 +25,6 @@ export const platforms: { [x in Platforms]?: IPlatform } = {
   mac: {
     name: 'macOS',
     icon: 'MacLogo-platformPicker',
-    color: '#69e56e',
-  },
-  windows: {
-    name: 'Windows',
-    icon: 'WinLogo-platformPicker',
-    color: '#4fe5ff',
+    color: '#cf8fff',
   },
 };

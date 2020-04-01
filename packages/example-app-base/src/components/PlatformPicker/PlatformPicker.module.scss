@@ -1,7 +1,6 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
-$platform-button-margin: 4px;
 $icon-size: 16px;
 
 .platformPicker {
@@ -10,14 +9,14 @@ $icon-size: 16px;
 
 .platformPickerList {
   padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  margin: -$platform-button-margin;
+  grid-gap: 4px 8px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  -ms-grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
 }
 
 .platformItem {
-  margin: $platform-button-margin;
-  width: calc(#{percentage(1/3)} - #{$platform-button-margin * 2});
+  display: block;
 }
 
 .button {
@@ -97,16 +96,5 @@ $icon-size: 16px;
         }
       }
     }
-  }
-}
-
-@media only screen and (max-width: $uhf-screen-max-lg) {
-  .platformPickerList {
-    margin: -$platform-button-margin -$platform-button-margin/2;
-  }
-
-  .platformItem {
-    margin: $platform-button-margin $platform-button-margin/2;
-    width: calc(#{percentage(1/3)} - #{$platform-button-margin});
   }
 }

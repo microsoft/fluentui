@@ -73,7 +73,30 @@ export const WindowsLogo = (props?: ISVGIconProps) => {
 export const MacLogo = (props?: ISVGIconProps) => {
   props = props || {};
   const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
-  return <div style={{ fontSize: 8, lineHeight: '8px' }}>macOS Logo</div>;
+  return (
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M8.5 13C7.75 10.75 7.75 9.25 7.75 7H6.25C6.25 6.25 6.25 4 7.75 1"
+        stroke="black"
+        stroke-width="0.5"
+        stroke-miterlimit="10"
+      />
+      <path d="M4 4V5.5" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+      <path d="M10 4V5.5" stroke="black" stroke-width="0.5" stroke-miterlimit="10" />
+      <path
+        d="M10.75 8.5C10 9.25 8.5 10 7 10C5.5 10 4 9.25 3.25 8.5"
+        stroke="black"
+        stroke-width="0.5"
+        stroke-miterlimit="10"
+      />
+      <path
+        d="M10 13H4C2.34167 13 1 11.6583 1 10V4C1 2.34167 2.34167 1 4 1H10C11.6583 1 13 2.34167 13 4V10C13 11.6583 11.6583 13 10 13Z"
+        stroke="black"
+        stroke-width="0.5"
+        stroke-linecap="square"
+      />
+    </svg>
+  );
 };
 
 export const AppleLogo = (props?: ISVGIconProps) => {
