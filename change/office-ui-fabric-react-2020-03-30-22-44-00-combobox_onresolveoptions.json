@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: onResolveOptions and onPointerDown callbacks should not hit when disabled.",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "bc8ee996913310eed2606c61ec663b76eae470bd",
-  "dependentChangeType": "patch",
-  "date": "2020-03-31T03:44:00.958Z"
-}

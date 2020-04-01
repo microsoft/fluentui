@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Panel: closeButton should stick to the right even if header is removed",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "c8accefc9846526b5da100bf99199c20b91aa18e",
-  "dependentChangeType": "patch",
-  "date": "2020-03-06T04:14:47.521Z"
-}
