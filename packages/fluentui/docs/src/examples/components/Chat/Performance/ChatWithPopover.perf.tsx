@@ -2,6 +2,7 @@ import { Accessibility, Avatar, Chat, Menu, Provider, menuAsToolbarBehavior } fr
 import * as _ from 'lodash';
 import cx from 'classnames';
 import * as React from 'react';
+import { EmojiIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const avatars = {
   ade:
@@ -51,31 +52,31 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         className={cx(this.props.className, this.state.focused ? 'focused' : '')}
         items={[
           {
+            icon: <EmojiIcon />,
             key: 'smile',
-            icon: 'emoji',
             className: 'smile-emoji',
             'aria-label': 'smile one',
           },
           {
+            icon: <EmojiIcon />,
             key: 'smile2',
-            icon: 'emoji',
             className: 'smile-emoji',
             'aria-label': 'smile two',
           },
           {
+            icon: <EmojiIcon />,
             key: 'smile3',
-            icon: 'emoji',
             className: 'smile-emoji',
             'aria-label': 'smile three',
           },
           {
+            icon: <LikeIcon />,
             key: 'a',
-            icon: 'like',
             'aria-label': 'thumbs up',
           },
           {
+            icon: <MoreIcon />,
             key: 'c',
-            icon: 'more',
             'aria-label': 'more options',
             indicator: false,
             menu: {

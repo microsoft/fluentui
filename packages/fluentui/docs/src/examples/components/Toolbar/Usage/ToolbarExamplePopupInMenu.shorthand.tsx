@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Toolbar, ToolbarItemShorthandKinds, Input } from '@fluentui/react-northstar';
-import { SearchIcon } from '@fluentui/react-icons-northstar';
+import { MoreIcon, ItalicIcon, SearchIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExamplePopupInMenu = () => {
   const [menu1Open, setMenu1Open] = React.useState(false);
@@ -11,8 +11,8 @@ const ToolbarExamplePopupInMenu = () => {
       aria-label="Popup in menu"
       items={[
         {
+          icon: <MoreIcon />,
           key: 'menu1',
-          icon: 'more',
           active: menu1Open,
           title: 'More',
           menu: [
@@ -28,14 +28,14 @@ const ToolbarExamplePopupInMenu = () => {
           },
         },
         {
+          icon: <ItalicIcon {...{ outline: true }} />,
           key: 'italic',
           kind: 'toggle' as ToolbarItemShorthandKinds,
-          icon: { name: 'italic', outline: true },
           title: 'Italic',
         },
         {
+          icon: <MoreIcon />,
           key: 'menu2',
-          icon: 'more',
           active: menu2Open,
           title: 'More',
           menu: [

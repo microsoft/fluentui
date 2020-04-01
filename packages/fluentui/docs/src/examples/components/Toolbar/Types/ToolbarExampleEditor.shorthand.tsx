@@ -1,7 +1,20 @@
 import * as React from 'react';
 import { Toolbar, Input, Button, Form } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
-import { SearchIcon } from '@fluentui/react-icons-northstar';
+import {
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  StrikeIcon,
+  HighlightIcon,
+  FontColorIcon,
+  FontSizeIcon,
+  RemoveFormatIcon,
+  OutdentIcon,
+  IndentIcon,
+  MoreIcon,
+  SearchIcon,
+} from '@fluentui/react-icons-northstar';
 
 const fields = [
   {
@@ -77,41 +90,41 @@ const ToolbarExampleEditorShorthand = () => {
         aria-label="Text editor"
         items={[
           {
+            icon: <BoldIcon {...{ outline: true }} />,
             key: 'bold',
             kind: 'toggle',
             active: isBold,
-            icon: { name: 'bold', outline: true },
             title: 'Toggle bold',
             onClick: () => {
               setBold(!isBold);
             },
           },
           {
+            icon: <ItalicIcon {...{ outline: true }} />,
             key: 'italic',
             kind: 'toggle',
             active: isItalic,
-            icon: { name: 'italic', outline: true },
             title: 'Toggle italic',
             onClick: () => {
               setItalic(!isItalic);
             },
           },
           {
+            icon: <UnderlineIcon {...{ outline: true }} />,
             key: 'underline',
             kind: 'toggle',
             active: isUnderline,
-            icon: { name: 'underline', outline: true },
             title: 'Toggle underline',
             onClick: () => {
               setUnderline(!isUnderline);
             },
           },
           {
+            icon: <StrikeIcon {...{ outline: true }} />,
             key: 'strike',
             kind: 'toggle',
             active: isStrike,
             disabled: true,
-            icon: { name: 'strike', outline: true },
             title: 'Toggle strike',
             onClick: () => {
               setStrike(!isStrike);
@@ -119,8 +132,8 @@ const ToolbarExampleEditorShorthand = () => {
           },
           { key: 'divider1', kind: 'divider' },
           {
+            icon: <HighlightIcon {...{ outline: true }} />,
             key: 'highlight',
-            icon: { name: 'highlight', outline: true },
             active: highlightOpen,
             title: 'Highlight',
             popup: {
@@ -138,8 +151,8 @@ const ToolbarExampleEditorShorthand = () => {
             },
           },
           {
+            icon: <FontColorIcon {...{ outline: true }} />,
             key: 'font-color',
-            icon: { name: 'font-color', outline: true },
             active: fontColorActive,
             title: 'Font color',
             popup: {
@@ -149,10 +162,14 @@ const ToolbarExampleEditorShorthand = () => {
               },
             },
           },
-          { key: 'font-size', icon: { name: 'font-size', outline: true }, title: 'Font size' },
           {
+            icon: <FontSizeIcon {...{ outline: true }} />,
+            key: 'font-size',
+            title: 'Font size',
+          },
+          {
+            icon: <RemoveFormatIcon {...{ outline: true }} />,
             key: 'remove-format',
-            icon: { name: 'remove-format', outline: true },
             title: 'Remove formatting',
           },
           { key: 'divider2', kind: 'divider' },
@@ -202,12 +219,20 @@ const ToolbarExampleEditorShorthand = () => {
             ],
           },
           { key: 'divider3', kind: 'divider' },
-          { key: 'outdent', icon: { name: 'outdent', outline: true }, title: 'Outdent' },
-          { key: 'indent', icon: { name: 'indent', outline: true }, title: 'Indent' },
+          {
+            icon: <OutdentIcon {...{ outline: true }} />,
+            key: 'outdent',
+            title: 'Outdent',
+          },
+          {
+            icon: <IndentIcon {...{ outline: true }} />,
+            key: 'indent',
+            title: 'Indent',
+          },
           { key: 'divider4', kind: 'divider' },
           {
+            icon: <MoreIcon {...{ outline: true }} />,
             key: 'more',
-            icon: { name: 'more', outline: true },
             active: moreMenuOpen,
             title: 'More',
             menu: [

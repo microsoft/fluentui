@@ -12,6 +12,7 @@ import {
 import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { TrashCanIcon } from '@fluentui/react-icons-northstar';
 
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
 type OverflowItem = ShorthandValue<ToolbarMenuItemProps & { kind?: ToolbarMenuItemShorthandKinds }>;
@@ -34,7 +35,7 @@ const FrameRenderer: React.FC<React.IframeHTMLAttributes<HTMLIFrameElement> & {
   }, [node]);
 
   return (
-    <iframe {...rest} ref={setNode}>
+    <iframe {...rest} ref={setNode} title="iframe">
       {node && ReactDOM.createPortal(children(node.contentDocument), node.contentDocument.body)}
     </iframe>
   );
@@ -110,7 +111,14 @@ const EditorToolbar: React.FC = () => {
           return combinedItems.slice(actualIndex).map(item => item.overflowItem || item.toolbarItem);
         }}
       />
-      <Toolbar items={[{ key: 'trash', icon: { name: 'trash-can', outline: true } }]} />
+      <Toolbar
+        items={[
+          {
+            icon: <TrashCanIcon {...{ outline: true }} />,
+            key: 'trash',
+          },
+        ]}
+      />
     </Flex>
   );
 };

@@ -1,70 +1,104 @@
 import * as React from 'react';
 import { Menu, menuAsToolbarBehavior, MenuItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import {
+  FormatIcon,
+  PaperclipIcon,
+  EmojiIcon,
+  GiphyIcon,
+  StickerIcon,
+  VideoCameraEmphasisIcon,
+  SettingsIcon,
+  MoreIcon,
+} from '@fluentui/react-icons-northstar';
 
 const items: ShorthandCollection<MenuItemProps> = [
   {
+    icon: (
+      <FormatIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'format',
-    icon: {
-      name: 'format',
-      outline: true,
-    },
     'aria-label': 'Format Tool',
   },
   {
+    icon: (
+      <PaperclipIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'paperclip',
-    icon: {
-      name: 'paperclip',
-      outline: true,
-    },
     'aria-label': 'Paperclip Tool',
   },
   {
+    icon: (
+      <EmojiIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'emoji',
-    icon: {
-      name: 'emoji',
-      outline: true,
-    },
     disabled: true,
     'aria-label': 'Emoji Tool',
   },
   {
+    icon: (
+      <GiphyIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'giphy',
-    icon: {
-      name: 'giphy',
-      outline: true,
-    },
     'aria-label': 'Giphy tool',
   },
   {
+    icon: (
+      <StickerIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'sticker',
-    icon: {
-      name: 'sticker',
-      outline: true,
-    },
     'aria-label': 'Sticker Tool',
   },
   {
+    icon: (
+      <VideoCameraEmphasisIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'meetup',
-    icon: {
-      name: 'video-camera-emphasis',
-      outline: true,
-    },
     'aria-label': 'Meetup Tool',
   },
   {
+    icon: (
+      <SettingsIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'settings',
-    icon: {
-      name: 'settings',
-      outline: true,
-    },
     'aria-label': 'Settings',
   },
   {
+    icon: (
+      <MoreIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'menuButton2',
-    icon: {
-      name: 'more',
-      outline: true,
-    },
     'aria-label': 'More options',
     indicator: false,
     menu: {

@@ -1,5 +1,6 @@
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { CallVideoIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleVariables = () => {
   return (
@@ -40,13 +41,23 @@ const ToolbarExampleVariables = () => {
         { kind: 'custom', key: 'custom-variables', content: 'Custom', variables: { background: 'pink' } },
 
         // ToolbarItem
-        { key: 'item', active: true, icon: 'camera' },
-        { key: 'item-variables', active: true, icon: 'camera', variables: { foregroundActive: 'green' } },
+        {
+          // switched to svg icon
+          icon: <CallVideoIcon />,
+          key: 'item',
+          active: true,
+        },
+        {
+          icon: <CallVideoIcon />,
+          key: 'item-variables',
+          active: true,
+          variables: { foregroundActive: 'green' },
+        },
 
         // ToolbarItem with menu
         {
+          icon: <MoreIcon />,
           key: 'item-menu',
-          icon: 'more',
           menu: {
             items: [
               // ToolbarMenuDivider
@@ -93,8 +104,8 @@ const ToolbarExampleVariables = () => {
           styles: { marginRight: '200px' /* avoid collision with other opened menu */ },
         },
         {
+          icon: <MoreIcon />,
           key: 'item-menu-variables',
-          icon: 'more',
           menu: {
             items: [
               { kind: 'divider', key: 'divider' },
