@@ -50,7 +50,7 @@ export const ChicletXsmallFooterExample: React.FunctionComponent<{}> = () => {
     <Chiclet
       url={SAMPLE_URL}
       title="Quarterly Results.docx"
-      image="https://static2.sharepointonline.com/files/fabric/assets/item-types/24/docx.svg"
+      image="https://static2.sharepointonline.com/files/fabric/assets/item-types/48/docx.svg"
       itemType="docx"
       size={ChicletSize.xSmall}
       footer={footer}

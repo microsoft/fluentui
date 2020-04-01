@@ -110,12 +110,12 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'go',
       'groovy',
       'gvy',
-      'Hcp',
       'h',
       'h++',
       'haml',
       'handlebars',
       'hbs',
+      'hcp',
       'hh',
       'hpp',
       'hrl',
@@ -512,7 +512,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
   xlsx: {
-    extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx'],
+    extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],
   },
   xltx: {
     extensions: ['xlt', 'xltm', 'xltx'],
