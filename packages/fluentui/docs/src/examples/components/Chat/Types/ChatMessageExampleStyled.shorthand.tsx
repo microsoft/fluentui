@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
-import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
+import { EmojiIcon, LikeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   { key: 'up', icon: <LikeIcon />, content: '1K' },
@@ -9,7 +9,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
 
 const janeAvatar: AvatarProps = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const content = (

@@ -9,6 +9,7 @@ import {
   LinkIcon,
   MoreIcon,
   TranslationIcon,
+  AcceptIcon,
 } from '@fluentui/react-icons-northstar';
 
 const avatars = {
@@ -18,7 +19,7 @@ const avatars = {
 
 const janeAvatar = {
   image: `data:image/jpeg;base64,${avatars.ade}`,
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 export interface PopoverProps {
