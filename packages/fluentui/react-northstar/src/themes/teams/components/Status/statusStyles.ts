@@ -36,13 +36,13 @@ const getTextColor = (state: string, variables: StatusVariables) => {
 };
 
 const sizeToPxValue: Record<SizeValue, number> = {
-  smallest: 8,
-  smaller: 8,
-  small: 8,
+  smallest: 6,
+  smaller: 10,
+  small: 10,
   medium: 10,
-  large: 12,
-  larger: 14,
-  largest: 16,
+  large: 10,
+  larger: 16,
+  largest: 0,
 };
 
 export const getSizeStyles = (sizeInPx: number, variables: StatusVariables) => {
