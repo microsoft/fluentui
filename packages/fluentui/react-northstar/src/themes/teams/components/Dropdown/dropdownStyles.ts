@@ -217,6 +217,10 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     fontWeight: 'bold',
   }),
 
+  itemsListFooterMessage: ({ variables: v }): ICSSInJSStyle => ({
+    backgroundColor: v.listItemBackgroundColor,
+  }),
+
   toggleIndicator: ({ props: p, variables: v }) => ({
     alignItems: 'center',
     display: 'flex',

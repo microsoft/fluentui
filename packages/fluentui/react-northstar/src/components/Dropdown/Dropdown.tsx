@@ -146,6 +146,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** Used when comparing two items in multiple selection. Default comparison is by the header prop. */
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
+  /** A message to be displayed in the list footer. */
+  itemsListFooterMessage?: ShorthandValue<ListItemProps>;
+
   /** A slot for dropdown list. */
   list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
 
@@ -303,6 +306,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     items: customPropTypes.collectionShorthand,
     itemToString: PropTypes.func,
     itemToValue: PropTypes.func,
+    itemsListFooterMessage: customPropTypes.itemShorthand,
     list: customPropTypes.itemShorthand,
     loading: PropTypes.bool,
     loadingMessage: customPropTypes.itemShorthand,
@@ -733,8 +737,9 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
     highlightedIndex: number,
   ) {
-    const { loading, loadingMessage, noResultsMessage, renderItem, checkable, checkableIndicator } = this.props;
+    const { renderItem, checkable, checkableIndicator } = this.props;
     const { filteredItems, value } = this.state;
+    const footerItem = this.renderFooterItem(styles);
 
     const items = _.map(filteredItems, (item, index) => ({
       children: () => {
@@ -760,9 +765,18 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       },
     }));
 
-    return [
-      ...items,
-      loading && {
+    if (footerItem) {
+      items.push(footerItem);
+    }
+
+    return items;
+  }
+
+  renderFooterItem(styles: ComponentSlotStylesInput) {
+    const { loading, loadingMessage, noResultsMessage, items, itemsListFooterMessage } = this.props;
+
+    if (loading) {
+      return {
         children: () =>
           ListItem.create(loadingMessage, {
             defaultProps: () => ({
@@ -770,18 +784,34 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
               styles: styles.loadingMessage,
             }),
           }),
-      },
-      !loading &&
-        items.length === 0 && {
-          children: () =>
-            ListItem.create(noResultsMessage, {
-              defaultProps: () => ({
-                key: 'no-results-message',
-                styles: styles.noResultsMessage,
-              }),
+      };
+    }
+
+    if (items.length === 0) {
+      return {
+        children: () =>
+          ListItem.create(noResultsMessage, {
+            defaultProps: () => ({
+              key: 'no-results-message',
+              styles: styles.noResultsMessage,
             }),
-        },
-    ];
+          }),
+      };
+    }
+
+    if (itemsListFooterMessage) {
+      return {
+        children: () =>
+          ListItem.create(itemsListFooterMessage, {
+            defaultProps: () => ({
+              key: 'items-list-footer-message',
+              styles: styles.itemsListFooterMessage,
+            }),
+          }),
+      };
+    }
+
+    return null;
   }
 
   renderSelectedItems(variables, rtl: boolean) {
