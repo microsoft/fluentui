@@ -225,8 +225,8 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
         >
           {Box.create(icon, {
             defaultProps: () => ({
-              // xSpacing: !!content ? 'after' : 'none',
               styles: styles.icon,
+              as: 'span',
             }),
           })}
           {Box.create(content, {
