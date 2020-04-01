@@ -49,7 +49,6 @@ import {
   PopperShorthandProps,
   getPopperPropsFromShorthand,
 } from '../../utils/positioner';
-import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -147,7 +146,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
   /** A message to be displayed in the list footer. */
-  itemsListFooterMessage?: ShorthandValue<ListItemProps>;
+  itemsListFooterMessage?: ShorthandValue<DropdownItemProps>;
 
   /** A slot for dropdown list. */
   list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
@@ -156,7 +155,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   loading?: boolean;
 
   /** A message to be displayed in the list when the dropdown is loading. */
-  loadingMessage?: ShorthandValue<ListItemProps>;
+  loadingMessage?: ShorthandValue<DropdownItemProps>;
 
   /** When selecting an element with Tab, focus stays on the dropdown by default. If true, the focus will jump to next/previous element in DOM. Only available to multiple selection dropdowns. */
   moveFocusOnTab?: boolean;
@@ -165,7 +164,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   multiple?: boolean;
 
   /** A message to be displayed in the list when the dropdown has no items. */
-  noResultsMessage?: ShorthandValue<ListItemProps>;
+  noResultsMessage?: ShorthandValue<DropdownItemProps>;
 
   /**
    * Called when the dropdown's selected items index change.
@@ -778,7 +777,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     if (loading) {
       return {
         children: () =>
-          ListItem.create(loadingMessage, {
+          DropdownItem.create(loadingMessage, {
             defaultProps: () => ({
               key: 'loading-message',
               styles: styles.loadingMessage,
@@ -787,10 +786,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       };
     }
 
-    if (items.length === 0) {
+    if (items && items.length === 0) {
       return {
         children: () =>
-          ListItem.create(noResultsMessage, {
+          DropdownItem.create(noResultsMessage, {
             defaultProps: () => ({
               key: 'no-results-message',
               styles: styles.noResultsMessage,
@@ -802,7 +801,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     if (itemsListFooterMessage) {
       return {
         children: () =>
-          ListItem.create(itemsListFooterMessage, {
+          DropdownItem.create(itemsListFooterMessage, {
             defaultProps: () => ({
               key: 'items-list-footer-message',
               styles: styles.itemsListFooterMessage,
