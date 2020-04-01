@@ -1,7 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 31 Mar 2020 12:27:26 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2020 12:29:21 GMT and should not be manually modified.
 
+## 7.105.7
+Wed, 01 Apr 2020 12:29:21 GMT
+
+### Patches
+
+- Panel: closeButton should stick to the right even if header is removed (aneeshak@microsoft.com)
+- Combobox: Update docs to make onPendingValueChanged more clear (joschect@microsoft.com)
+- ComboBox: onResolveOptions and onPointerDown callbacks should not hit when disabled. (aneeshak@microsoft.com)
 ## 7.105.6
 Tue, 31 Mar 2020 12:27:26 GMT
 
