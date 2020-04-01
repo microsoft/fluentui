@@ -7,7 +7,7 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
+import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -20,11 +20,14 @@ import CardFooter from './CardFooter';
 import CardTopControls from './CardTopControls';
 import CardColumn from './CardColumn';
 
-export interface CardProps extends UIComponentProps, ChildrenComponentProps {
+export interface CardProps extends UIComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<CardBehaviorProps>;
+
+  /** A primary content. */
+  children?: React.ReactNode;
 
   /**
    * Called on click.

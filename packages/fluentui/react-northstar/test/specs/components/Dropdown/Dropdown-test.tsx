@@ -3,10 +3,11 @@ import * as React from 'react';
 import { renderDropdown, items, getItemIdRegexByIndex } from './test-utils';
 import Dropdown from 'src/components/Dropdown/Dropdown';
 import DropdownSelectedItem from 'src/components/Dropdown/DropdownSelectedItem';
-import { isConformant } from 'test/specs/commonTests';
+import { implementsShorthandProp, isConformant } from 'test/specs/commonTests';
 import { findIntrinsicElement } from 'test/utils';
 import { DropdownItemProps } from 'src/components/Dropdown/DropdownItem';
 import { ShorthandValue } from 'src/types';
+import List from 'src/components/List/List';
 
 jest.dontMock('keyboard-key');
 jest.useFakeTimers();
@@ -15,6 +16,10 @@ describe('Dropdown', () => {
   isConformant(Dropdown, {
     hasAccessibilityProp: false,
     autoControlledProps: ['highlightedIndex', 'open', 'searchQuery', 'activeSelectedIndex', 'value'],
+  });
+  implementsShorthandProp(Dropdown)('list', List, {
+    implementsPopper: true,
+    requiredProps: { open: true },
   });
 
   describe('clearable', () => {
@@ -210,6 +215,52 @@ describe('Dropdown', () => {
       keyDownOnSearchInput('Tab', { shiftKey: true });
 
       expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('is "true" when you start typing in the search input', () => {
+      const { getItemNodes, changeSearchInput } = renderDropdown({
+        search: true,
+      });
+
+      changeSearchInput('item');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
+
+    it('is "false" when you remove the query from the search input', () => {
+      const { getItemNodes, changeSearchInput } = renderDropdown({
+        search: true,
+        defaultOpen: true,
+        defaultSearchQuery: 'item',
+      });
+
+      changeSearchInput('');
+
+      expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('is "true" when opened by space bar on trigger button', () => {
+      const { getItemNodes, keyDownOnTriggerButton } = renderDropdown({});
+
+      keyDownOnTriggerButton(' ');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
+
+    it('is "true" when opened by arrow down on trigger button', () => {
+      const { getItemNodes, keyDownOnTriggerButton } = renderDropdown({});
+
+      keyDownOnTriggerButton('ArrowDown');
+
+      expect(getItemNodes()).toHaveLength(items.length);
+    });
+
+    it('is "true" when opened by arrow up on trigger button', () => {
+      const { getItemNodes, keyDownOnTriggerButton } = renderDropdown({});
+
+      keyDownOnTriggerButton('ArrowUp');
+
+      expect(getItemNodes()).toHaveLength(items.length);
     });
   });
 
@@ -409,10 +460,10 @@ describe('Dropdown', () => {
     });
 
     it('is changed correctly on arrow down navigation', () => {
-      const { keyDownOnTriggerButton, itemsListNode } = renderDropdown();
+      const { keyDownOnItemsList, itemsListNode } = renderDropdown({ defaultOpen: true });
 
       for (let index = 0; index < items.length; index++) {
-        keyDownOnTriggerButton('ArrowDown');
+        keyDownOnItemsList('ArrowDown');
 
         expect(itemsListNode).toHaveAttribute(
           'aria-activedescendant',
@@ -422,10 +473,10 @@ describe('Dropdown', () => {
     });
 
     it('is changed correctly on arrow up navigation', () => {
-      const { keyDownOnTriggerButton, itemsListNode } = renderDropdown();
+      const { keyDownOnItemsList, itemsListNode } = renderDropdown({ defaultOpen: true });
 
       for (let index = items.length - 1; index >= 0; index--) {
-        keyDownOnTriggerButton('ArrowUp');
+        keyDownOnItemsList('ArrowUp');
 
         expect(itemsListNode).toHaveAttribute(
           'aria-activedescendant',
@@ -607,6 +658,31 @@ describe('Dropdown', () => {
 
       expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
     });
+
+    it('does not open with highlightedIndex after selecting item in multiple mode', () => {
+      const itemSelectedIndex = 2;
+      const { clickOnItemAtIndex, clickOnTriggerButton, itemsListNode } = renderDropdown({
+        defaultOpen: true,
+        multiple: true,
+      });
+
+      clickOnItemAtIndex(itemSelectedIndex);
+      clickOnTriggerButton();
+
+      expect(itemsListNode).not.toHaveAttribute('aria-activedescendant');
+    });
+
+    it('opens with highlightedIndex after selecting item in non-multiple mode', () => {
+      const itemSelectedIndex = 2;
+      const { clickOnItemAtIndex, clickOnTriggerButton, itemsListNode } = renderDropdown({
+        defaultOpen: true,
+      });
+
+      clickOnItemAtIndex(itemSelectedIndex);
+      clickOnTriggerButton();
+
+      expect(itemsListNode).toHaveAttribute('aria-activedescendant', expect.stringMatching(getItemIdRegexByIndex(2)));
+    });
   });
 
   describe('value', () => {
@@ -682,6 +758,27 @@ describe('Dropdown', () => {
         null,
         expect.objectContaining({
           value: [items[itemToClickIndex]],
+        }),
+      );
+    });
+
+    it('has onChange called with null value by hitting Escape in search input', () => {
+      const onChange = jest.fn();
+      const { keyDownOnSearchInput } = renderDropdown({
+        search: true,
+        onChange,
+        defaultValue: items[2],
+        defaultSearchQuery: items[2],
+      });
+
+      keyDownOnSearchInput('Escape');
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          value: null,
+          searchQuery: '',
         }),
       );
     });
@@ -799,6 +896,76 @@ describe('Dropdown', () => {
 
       expect(triggerButtonNode).toHaveTextContent('');
       expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('is set correctly in multiple selection by using Tab on highlighted item', () => {
+      const itemSelectedIndex = 3;
+      const {
+        triggerButtonNode,
+        keyDownOnItemsList,
+        getSelectedItemNodeAtIndex,
+        getSelectedItemNodes,
+      } = renderDropdown({
+        defaultOpen: true,
+        defaultHighlightedIndex: itemSelectedIndex,
+        defaultValue: items[4],
+        multiple: true,
+      });
+
+      keyDownOnItemsList('Tab');
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getSelectedItemNodes()).toHaveLength(2);
+      expect(getSelectedItemNodeAtIndex(1)).toHaveTextContent(items[3]);
+      expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[4]);
+    });
+
+    it('is set correctly in multiple selection by using Shift+Tab on highlighted item', () => {
+      const itemSelectedIndex = 2;
+      const {
+        triggerButtonNode,
+        keyDownOnItemsList,
+        getSelectedItemNodeAtIndex,
+        getSelectedItemNodes,
+      } = renderDropdown({
+        defaultOpen: true,
+        defaultHighlightedIndex: itemSelectedIndex,
+        defaultValue: items[4],
+        multiple: true,
+      });
+
+      keyDownOnItemsList('Tab', { shiftKey: true });
+
+      expect(triggerButtonNode).toHaveTextContent('');
+      expect(getSelectedItemNodes()).toHaveLength(2);
+      expect(getSelectedItemNodeAtIndex(1)).toHaveTextContent(items[2]);
+      expect(getSelectedItemNodeAtIndex(0)).toHaveTextContent(items[4]);
+    });
+
+    it('is not cleared when hitting Escape if not search', () => {
+      const defaultValue = items[0];
+      const { triggerButtonNode, keyDownOnTriggerButton } = renderDropdown({
+        defaultValue,
+      });
+
+      keyDownOnTriggerButton('Escape');
+
+      expect(triggerButtonNode).toHaveTextContent(defaultValue);
+    });
+
+    it('is not cleared when hitting Escape if search but multiple', () => {
+      const defaultValue = [items[0], items[1]];
+      const { getSelectedItemNodes, keyDownOnSearchInput, searchInputNode } = renderDropdown({
+        defaultValue,
+        search: true,
+        multiple: true,
+        defaultSearchQuery: 'test',
+      });
+
+      keyDownOnSearchInput('Escape');
+
+      expect(searchInputNode).toHaveTextContent('');
+      expect(getSelectedItemNodes()).toHaveLength(2);
     });
 
     it('is replaced when another item is selected', () => {
@@ -1019,6 +1186,74 @@ describe('Dropdown', () => {
       changeSearchInput('');
 
       expect(getItemNodes()).toHaveLength(0);
+    });
+
+    it('has onSearchQueryChange called each time the input is changed', () => {
+      const onSearchQueryChange = jest.fn();
+      const { changeSearchInput } = renderDropdown({ search: true, onSearchQueryChange });
+
+      changeSearchInput('ala');
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: 'ala',
+        }),
+      );
+
+      changeSearchInput('alladin');
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(2);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: 'alladin',
+        }),
+      );
+    });
+
+    it('has onSearchQueryChange called with empty string by hitting Escape in search input', () => {
+      const onSearchQueryChange = jest.fn();
+      const { keyDownOnSearchInput } = renderDropdown({ search: true, onSearchQueryChange, defaultSearchQuery: 'foo' });
+
+      keyDownOnSearchInput('Escape');
+
+      expect(onSearchQueryChange).toHaveBeenCalledTimes(1);
+      expect(onSearchQueryChange).toHaveBeenLastCalledWith(
+        null,
+        expect.objectContaining({
+          searchQuery: '',
+          value: null,
+          open: false,
+        }),
+      );
+    });
+
+    it('has onChange called with null when changed to empty string and there was item selected', () => {
+      const onChange = jest.fn();
+      const { changeSearchInput, getClearIndicatorWrapper } = renderDropdown({
+        defaultValue: items[0],
+        defaultOpen: true,
+        search: true,
+        clearable: true,
+        onChange,
+        defaultSearchQuery: items[0],
+      });
+
+      changeSearchInput('');
+
+      expect(getClearIndicatorWrapper().length).toEqual(0);
+
+      expect(onChange).toHaveBeenCalledTimes(1);
+      expect(onChange).toHaveBeenCalledWith(
+        null,
+        expect.objectContaining({
+          value: null,
+          searchQuery: '',
+          open: false,
+        }),
+      );
     });
 
     it('is the string equivalent of selected item in single search', () => {

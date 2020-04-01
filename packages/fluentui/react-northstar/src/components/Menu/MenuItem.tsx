@@ -25,7 +25,7 @@ import Icon, { IconProps } from '../Icon/Icon';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import Box, { BoxProps } from '../Box/Box';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, ShorthandCollection, withSafeTypeForAs } from '../../types';
-import { Popper } from '../../utils/positioner';
+import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 
 export interface MenuItemSlotClassNames {
   wrapper: string;
@@ -108,7 +108,9 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   wrapper?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the submenu. */
-  menu?: ShorthandValue<MenuProps> | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
+  menu?:
+    | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
+    | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
   /** Indicates if the menu inside the item is open. */
   menuOpen?: boolean;
@@ -251,6 +253,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
               align={vertical ? 'top' : rtl ? 'end' : 'start'}
               position={vertical ? (rtl ? 'before' : 'after') : 'below'}
               targetRef={this.itemRef}
+              {...getPopperPropsFromShorthand(menu)}
             >
               {Menu.create(menu, {
                 defaultProps: () => ({

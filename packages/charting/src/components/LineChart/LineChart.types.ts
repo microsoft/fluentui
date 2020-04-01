@@ -52,6 +52,16 @@ export interface ILineChartProps {
   tickValues?: number[] | Date[];
 
   /**
+   * minimum  data value point in y-axis
+   */
+  yMinValue?: number;
+
+  /**
+   * maximum data value point in y-axis
+   */
+  yMaxValue?: number;
+
+  /**
    * the format in for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
    * Please look at https://www.npmjs.com/package/d3-time-format for all the formats supported
    */

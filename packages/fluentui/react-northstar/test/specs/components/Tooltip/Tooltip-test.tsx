@@ -4,8 +4,13 @@ import Tooltip from 'src/components/Tooltip/Tooltip';
 import Button from 'src/components/Button/Button';
 
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
+import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
 describe('Tooltip', () => {
+  implementsPopperProps(Tooltip, {
+    requiredProps: { open: true },
+  });
+
   describe('content', () => {
     it('uses "id" if "content" with "id" is passed', () => {
       const contentId = 'element-id';

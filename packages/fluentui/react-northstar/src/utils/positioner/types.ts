@@ -6,11 +6,17 @@ export type Alignment = 'top' | 'bottom' | 'start' | 'end' | 'center';
 
 export type PopperChildrenFn = (props: PopperChildrenProps) => React.ReactElement;
 
-export interface BasicPositioningProps {
+export interface PositioningProps {
   /**
    * Alignment for the component.
    */
   align?: Alignment;
+
+  /** The element which will define the boundaries of the popper position for the flip behavior. */
+  flipBoundary?: PopperJS.Boundary | Element;
+
+  /** The element which will define the boundaries of the popper position for the overflow behavior. */
+  overflowBoundary?: PopperJS.Boundary | Element;
 
   /**
    * Position for the component. Position has higher priority than align. If position is vertical ('above' | 'below')
@@ -18,9 +24,13 @@ export interface BasicPositioningProps {
    * and 'start' | 'end' respectively), then provided value for 'align' will be ignored and 'center' will be used instead.
    */
   position?: Position;
-}
 
-export interface PositioningProps extends BasicPositioningProps {
+  /**
+   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
+   * @default false
+   */
+  positionFixed?: boolean;
+
   /**
    * Offset value to apply to rendered component. Accepts the following units:
    * - px or unit-less, interpreted as pixels
@@ -67,12 +77,6 @@ export interface PopperProps extends PositioningProps {
   positioningDependencies?: React.DependencyList;
 
   /**
-   * Enables the Popper box to position itself in 'fixed' mode (default value is position: 'absolute')
-   * @default false
-   */
-  positionFixed?: boolean;
-
-  /**
    * Ref object containing the target node (the element that we're using as reference for Popper box).
    */
   targetRef: React.RefObject<Element> | PopperJS.ReferenceObject;
@@ -94,3 +98,5 @@ export interface PopperChildrenProps {
    */
   scheduleUpdate(): void;
 }
+
+export type PopperShorthandProps = PositioningProps;

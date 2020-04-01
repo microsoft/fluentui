@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@uifabric/utilities_v7.15.4",
+      "version": "7.15.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing errors when building @fluentui/docs.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "524cd85eadff8b8a370811031f7ad4c22f151cfd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/utilities_v7.15.3",
       "version": "7.15.3",

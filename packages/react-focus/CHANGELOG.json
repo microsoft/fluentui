@@ -2,6 +2,25 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Mon, 30 Mar 2020 19:10:08 GMT",
+      "tag": "@fluentui/react-focus_v7.1.12",
+      "version": "7.1.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix repository URL",
+            "author": "elcraig@microsoft.com",
+            "commit": "3b176fb14a33703416889336d7a7d3cb691bb874"
+          },
+          {
+            "comment": "react-focus: Updating README to reflect package purpose.",
+            "author": "humbertomakotomorimoto@gmail.com",
+            "commit": "7e78b42ae69784b2d0f0039700e89f61c18305b2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@fluentui/react-focus_v7.1.10",
       "version": "7.1.10",

@@ -19,7 +19,7 @@ exports[`Dialog renders Dialog correctly 1`] = `
         }
   >
     <div
-      aria-level={2}
+      aria-level={1}
       className=
           ms-Dialog-title
           {
@@ -127,7 +127,7 @@ exports[`Dialog renders Dialog with a jsx title 1`] = `
         }
   >
     <div
-      aria-level={2}
+      aria-level={1}
       className=
           ms-Dialog-title
           {

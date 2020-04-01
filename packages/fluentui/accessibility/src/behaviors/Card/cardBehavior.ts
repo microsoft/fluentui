@@ -8,9 +8,9 @@ import { Accessibility } from '../../types';
 const cardBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
     root: {
-      role: 'group'
-    }
-  }
+      role: 'group',
+    },
+  },
 });
 
 export default cardBehavior;
