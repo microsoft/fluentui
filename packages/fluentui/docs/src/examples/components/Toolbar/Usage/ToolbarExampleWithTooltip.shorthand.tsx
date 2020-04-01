@@ -9,6 +9,7 @@ import {
   ToolbarMenuItemProps,
 } from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
+import { BoldIcon, ItalicIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 type IntermediateToolbarItem = (ToolbarItemProps | ToolbarMenuItemProps | ToolbarDividerProps) & {
   key: string;
@@ -31,7 +32,7 @@ const ToolbarExampleShorthand = () => {
       kind: 'toggle' as ToolbarItemShorthandKinds,
       active: isBold,
       tooltip: 'Bold',
-      icon: { name: 'bold', outline: true },
+      icon: <BoldIcon {...{ outline: true }} />,
       onClick: () => setBold(!isBold),
     },
     {
@@ -39,13 +40,13 @@ const ToolbarExampleShorthand = () => {
       kind: 'toggle' as ToolbarItemShorthandKinds,
       active: isItalic,
       tooltip: 'Italic',
-      icon: { name: 'italic', outline: true },
+      icon: <ItalicIcon {...{ outline: true }} />,
       onClick: () => setItalic(!isItalic),
     },
     { key: 'divider1', kind: 'divider' as ToolbarItemShorthandKinds },
     {
       key: 'more',
-      icon: { name: 'more', outline: true },
+      icon: <MoreIcon {...{ outline: true }} />,
       active: moreMenuOpen,
       tooltip: 'More options',
       menu: [

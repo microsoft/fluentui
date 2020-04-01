@@ -22,6 +22,7 @@ import * as React from 'react';
 
 import { EditorToolbarAction, EditorToolbarState, FontFormatting } from './editorToolbarReducer';
 import EditorToolbarTable from './EditorToolbarTable';
+import { TrashCanIcon } from '@fluentui/react-icons-northstar';
 
 type EditorToolbarProps = EditorToolbarState & {
   dispatch: React.Dispatch<EditorToolbarAction>;
@@ -313,7 +314,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
             }}
           />
         </Ref>
-        <Toolbar items={[{ key: 'trash', icon: { name: 'trash-can', outline: true } }]} />
+        <Toolbar items={[{ key: 'trash', icon: <TrashCanIcon {...{ outline: true }} /> }]} />
       </Flex>
     </>
   );

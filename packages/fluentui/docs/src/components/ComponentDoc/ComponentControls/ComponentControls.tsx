@@ -1,5 +1,5 @@
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Menu, menuAsToolbarBehavior, Tooltip } from '@fluentui/react-northstar';
+import { Menu, menuAsToolbarBehavior, Tooltip, Icon } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -69,7 +69,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             aria-label={toolbarAriaLabel || null}
             items={[
               {
-                icon: { name: 'code', style: { width: '20px', height: '20px' } },
+                icon: <Icon name={'code'} {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowCode,
                 active: showCode,
                 children: (Component, props) => (
@@ -78,7 +78,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: { name: 'paint brush', style: { width: '20px', height: '20px' } },
+                icon: <Icon {...{ name: 'paint brush', style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowVariables,
                 active: showVariables,
                 children: (Component, props) => (
@@ -91,7 +91,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 kind: 'divider',
               },
               {
-                icon: { name: 'adjust', style: { width: '20px', height: '20px' } },
+                icon: <Icon name={'adjust'} {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowTransparent,
                 active: showTransparent,
                 children: (Component, props) => (
@@ -99,7 +99,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 ),
               },
               {
-                icon: { name: 'align right', style: { width: '20px', height: '20px' } },
+                icon: <Icon {...{ name: 'align right', style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowRtl,
                 active: showRtl,
                 children: (Component, props) => (
@@ -108,7 +108,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: { name: 'external alternate', style: { width: '20px', height: '20px' } },
+                icon: <Icon {...{ name: 'external alternate', style: { width: '20px', height: '20px' } }} />,
                 children: (Component, props) => (
                   <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
                 ),
@@ -129,13 +129,13 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
               {
                 onClick: onCodeSandboxClick,
-                icon: { name: codeSandboxIcon, style: { width: '20px', height: '20px' } },
+                icon: <Icon {...{ name: codeSandboxIcon, style: { width: '20px', height: '20px' } }} />,
                 children: (Component, props) => (
                   <Tooltip content={codeSandboxTooltip} key="show-codesandbox" trigger={<Component {...props} />} />
                 ),
               },
               {
-                icon: { name: 'linkify', style: { width: '20px', height: '20px' } },
+                icon: <Icon name={'linkify'} {...{ style: { width: '20px', height: '20px' } }} />,
                 children: (Component, props) => (
                   <CopyToClipboard key="copy-link" value={anchorName}>
                     {(active, onClick) => (

@@ -14,6 +14,9 @@ import {
   IndentIcon,
   MoreIcon,
   SearchIcon,
+  ToDoListIcon,
+  NumberListIcon,
+  BulletsIcon,
 } from '@fluentui/react-icons-northstar';
 
 const fields = [
@@ -179,7 +182,7 @@ const ToolbarExampleEditorShorthand = () => {
             items: [
               {
                 key: 'bullets',
-                icon: { name: 'bullets', outline: true },
+                icon: <BulletsIcon {...{ outline: true }} />,
                 active: bulletListActive,
                 title: 'Bullets',
                 onClick: () => {
@@ -192,7 +195,7 @@ const ToolbarExampleEditorShorthand = () => {
               },
               {
                 key: 'number-list',
-                icon: { name: 'number-list', outline: true },
+                icon: <NumberListIcon {...{ outline: true }} />,
                 active: numberListActive,
                 title: 'Number list',
                 onClick: () => {
@@ -205,7 +208,7 @@ const ToolbarExampleEditorShorthand = () => {
               },
               {
                 key: 'to-do-list',
-                icon: { name: 'to-do-list', outline: true },
+                icon: <ToDoListIcon {...{ outline: true }} />,
                 active: toDoListActive,
                 title: 'ToDo list',
                 onClick: () => {
