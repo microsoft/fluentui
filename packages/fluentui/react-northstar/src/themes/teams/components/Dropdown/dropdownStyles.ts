@@ -104,15 +104,15 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       alignItems: 'center',
     }),
     ...(p.inverted && {
-      backgroundColor: v.backgroundColorInverted,
+      backgroundColor: v.invertedBackgroundColor,
       ':hover': {
-        backgroundColor: v.backgroundColorHoverInverted,
+        backgroundColor: v.invertedBackgroundColorHover,
       },
       ':active': {
-        backgroundColor: v.backgroundColorHoverInverted,
+        backgroundColor: v.invertedBackgroundColorHover,
       },
       ':focus': {
-        backgroundColor: v.backgroundColorHoverInverted,
+        backgroundColor: v.invertedBackgroundColorHover,
       },
     }),
 
