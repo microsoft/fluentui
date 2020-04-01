@@ -2,7 +2,7 @@ import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { MoreIcon } from '@fluentui/react-icons-northstar';
+import { MoreIcon, PauseIcon, PlayIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuShorthand = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -25,8 +25,8 @@ const ToolbarExampleMenuShorthand = () => {
           title: 'More',
           menu: {
             items: [
-              { key: 'play', content: 'Play', icon: 'play' },
-              { key: 'pause', content: 'Pause', icon: 'pause' },
+              { key: 'play', content: 'Play', icon: <PlayIcon /> },
+              { key: 'pause', content: 'Pause', icon: <PauseIcon /> },
               { key: 'divider', kind: 'divider' },
               'Without icon',
             ],

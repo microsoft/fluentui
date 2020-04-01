@@ -1,6 +1,6 @@
 import { Toolbar, toggleButtonBehavior } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { CodeSnippetIcon, LinkIcon } from '@fluentui/react-icons-northstar';
+import { CodeSnippetIcon, LinkIcon, QuoteIcon } from '@fluentui/react-icons-northstar';
 
 const stateReducer: React.Reducer<
   { bold: boolean; italic: boolean; underline: boolean; more: boolean },
@@ -53,7 +53,7 @@ const ToolbarExample = () => {
         active={state.more}
         title="More"
         menu={[
-          { key: 'quote', content: 'Quote', icon: 'quote' },
+          { key: 'quote', content: 'Quote', icon: <QuoteIcon /> },
           { key: 'link', content: 'Link', icon: <LinkIcon />, disabled: true },
           { key: 'code', content: 'Code snippet', icon: <CodeSnippetIcon /> },
         ]}

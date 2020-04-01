@@ -2,6 +2,7 @@ import {
   Chat,
   Provider,
   Avatar,
+  Icon,
   ChatMessageProps,
   ShorthandCollection,
   ReactionProps,
@@ -10,11 +11,11 @@ import * as React from 'react';
 import Popover from './Popover';
 import ReactionPopup from './ReactionPopup';
 import { Ref } from '@fluentui/react-component-ref';
-import { EmojiIcon } from '@fluentui/react-icons-northstar';
+import { AcceptIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   {
-    icon: 'thumbs up',
+    icon: <Icon name="thumbs up" />,
     content: '1K',
     key: 'likes',
     variables: { meReacting: true },
@@ -30,7 +31,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'check' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const ChatWithPopover = () => {

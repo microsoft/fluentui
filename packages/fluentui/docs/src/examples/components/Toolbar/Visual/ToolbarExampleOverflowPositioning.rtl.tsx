@@ -13,13 +13,18 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
+  BoldIcon,
   BulletsIcon,
   CodeSnippetIcon,
   FontColorIcon,
   FontSizeIcon,
+  HighlightIcon,
+  ItalicIcon,
   LinkIcon,
+  NumberListIcon,
   RemoveFormatIcon,
   TrashCanIcon,
+  UnderlineIcon,
 } from '@fluentui/react-icons-northstar';
 
 type ToolbarItem = ShorthandValue<ToolbarItemProps & { kind?: ToolbarItemShorthandKinds }>;
@@ -57,13 +62,13 @@ const EditorToolbar: React.FC = () => {
     toolbarItem: ToolbarItem;
     overflowItem?: OverflowItem;
   }[] = [
-    { toolbarItem: { key: 'bold', icon: 'bold' } },
-    { toolbarItem: { key: 'italic', icon: 'italic' } },
-    { toolbarItem: { key: 'underline', icon: 'underline' } },
+    { toolbarItem: { key: 'bold', icon: <BoldIcon /> } },
+    { toolbarItem: { key: 'italic', icon: <ItalicIcon /> } },
+    { toolbarItem: { key: 'underline', icon: <UnderlineIcon /> } },
 
     { toolbarItem: { key: 'divider-1', kind: 'divider' } },
 
-    { toolbarItem: { key: 'highlight', icon: 'highlight' } },
+    { toolbarItem: { key: 'highlight', icon: <HighlightIcon /> } },
     { toolbarItem: { key: 'font-color', icon: <FontColorIcon /> } },
     { toolbarItem: { key: 'font-size', icon: <FontSizeIcon /> } },
 
@@ -74,18 +79,18 @@ const EditorToolbar: React.FC = () => {
     { toolbarItem: { key: 'divider-2', kind: 'divider' } },
 
     {
-      toolbarItem: { key: 'bullets', icon: 'bullets' },
+      toolbarItem: { key: 'bullets', icon: <BulletsIcon /> },
       overflowItem: { key: 'bullets', icon: <BulletsIcon />, content: 'Bulleted list' },
     },
     {
-      toolbarItem: { key: 'number-list', icon: 'number-list' },
-      overflowItem: { key: 'number-list', icon: 'number-list', content: 'Number list' },
+      toolbarItem: { key: 'number-list', icon: <NumberListIcon /> },
+      overflowItem: { key: 'number-list', icon: <NumberListIcon />, content: 'Number list' },
     },
 
     { toolbarItem: { key: 'divider-3', kind: 'divider' } },
 
     {
-      toolbarItem: { key: 'link', icon: 'link' },
+      toolbarItem: { key: 'link', icon: <LinkIcon /> },
       overflowItem: { key: 'link', icon: <LinkIcon />, content: 'Insert link' },
     },
     {

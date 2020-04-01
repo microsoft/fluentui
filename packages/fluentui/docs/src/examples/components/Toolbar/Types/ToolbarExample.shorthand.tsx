@@ -11,6 +11,7 @@ import {
   MoreIcon,
   LinkIcon,
   CodeSnippetIcon,
+  QuoteIcon,
 } from '@fluentui/react-icons-northstar';
 
 const stateReducer: React.Reducer<
@@ -83,7 +84,7 @@ const ToolbarExampleShorthand = () => {
           active: state.more,
           title: 'More',
           menu: [
-            { key: 'quote', content: 'Quote', icon: 'quote' },
+            { key: 'quote', content: 'Quote', icon: <QuoteIcon /> },
             { key: 'link', content: 'Link', icon: <LinkIcon />, disabled: true },
             { key: 'code', content: 'Code snippet', icon: <CodeSnippetIcon /> },
           ],

@@ -128,7 +128,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
     'aria-label': 'More attachment options',
     iconOnly: true,
     circular: true,
-    icon: 'ellipsis horizontal',
+    icon: <Icon name="ellipsis horizontal" />,
     onClick: e => e.stopPropagation(),
     onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, keyboardKey.Spacebar]),
     children: (Component, props) => (

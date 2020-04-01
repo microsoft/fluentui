@@ -2,7 +2,7 @@ import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { MoreIcon, PlayIcon } from '@fluentui/react-icons-northstar';
+import { MoreIcon, PauseIcon, PlayIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuWithSubmenuShorthand = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -29,7 +29,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
                 items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }],
               },
             },
-            { key: 'pause', content: 'Pause', icon: 'pause' },
+            { key: 'pause', content: 'Pause', icon: <PauseIcon /> },
             { key: 'divider', kind: 'divider' },
             'Without icon',
           ],

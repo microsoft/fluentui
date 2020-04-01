@@ -1,5 +1,5 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui/react-northstar';
+import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton, Icon } from '@fluentui/react-northstar';
 import * as React from 'react';
 import {
   AddIcon,
@@ -7,6 +7,7 @@ import {
   BookmarkIcon,
   BroadcastIcon,
   CalendarIcon,
+  CloseIcon,
   EditIcon,
   LikeIcon,
   LockIcon,
@@ -49,10 +50,10 @@ const ChatExampleInScrollableShorthand = () => {
       children: (Component, props) => (
         <MenuButton
           menu={[
-            { key: 'reply', content: 'Reply', icon: 'reply' },
-            { key: 'edit', content: 'Edit', icon: 'edit' },
-            { key: 'save', content: 'Save message', icon: 'bookmark' },
-            { key: 'delete', content: 'Delete', icon: 'icon-close' },
+            { key: 'reply', content: 'Reply', icon: <Icon name="replay" /> },
+            { key: 'edit', content: 'Edit', icon: <EditIcon /> },
+            { key: 'save', content: 'Save message', icon: <BookmarkIcon /> },
+            { key: 'delete', content: 'Delete', icon: <CloseIcon /> },
           ]}
           position="above"
           trigger={<Component {...props} />}

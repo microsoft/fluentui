@@ -28,7 +28,7 @@ const ToolbarExampleVariables = () => {
             { kind: 'divider', key: 'divider-variables', variables: { dividerBorder: 'orange' } },
 
             // ToolbarItem
-            { key: 'item', active: true, icon: 'skype' },
+            { key: 'item', active: true, icon: <SkypeLogoIcon /> },
             { key: 'item-variables', active: true, icon: <SkypeLogoIcon />, variables: { foregroundActive: 'orange' } },
           ],
         },

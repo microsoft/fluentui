@@ -31,6 +31,7 @@ import {
   HighlightIcon,
   ItalicIcon,
   LinkIcon,
+  NumberListIcon,
   RemoveFormatIcon,
   TableIcon,
   TrashCanIcon,
@@ -166,10 +167,10 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       },
     },
     {
-      toolbarItem: { key: 'number-list', icon: 'number-list', active: props.numberList },
+      toolbarItem: { key: 'number-list', icon: <NumberListIcon />, active: props.numberList },
       overflowItem: {
         key: 'number-list',
-        icon: 'number-list',
+        icon: <NumberListIcon />,
         active: props.numberList,
         content: 'Number list',
       },

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
-import { EmojiIcon, LikeIcon, AcceptIcon } from '@fluentui/react-icons-northstar';
+import { EmojiIcon, LikeIcon, AcceptIcon, MentionIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   { key: 'up', icon: <LikeIcon />, content: '1K' },
@@ -102,7 +102,7 @@ const ChatMessageExampleStyled = () => (
                 author="John Doe"
                 timestamp="Yesterday, 10:15 PM"
                 mine
-                badge={{ icon: 'mention' }}
+                badge={{ icon: <MentionIcon /> }}
                 badgePosition="start"
                 reactionGroup={reactions}
               />
@@ -119,7 +119,7 @@ const ChatMessageExampleStyled = () => (
               content={{ content }}
               author="Jane Doe"
               timestamp="Yesterday, 10:15 PM"
-              badge={{ icon: 'exclamation-circle' }}
+              badge={{ icon: <ExclamationCircleIcon /> }}
               reactionGroup={reactions}
             />
           ),
