@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Combobox: Update docs to make onPendingValueChanged more clear",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "1e177923563e1a76b3cba370fa6d3076ee97611c",
+  "dependentChangeType": "patch",
+  "date": "2020-03-27T22:36:07.769Z"
+}
