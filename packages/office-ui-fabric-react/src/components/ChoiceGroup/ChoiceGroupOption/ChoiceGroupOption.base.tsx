@@ -12,10 +12,16 @@ import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
+const LARGE_IMAGE_SIZE = 71;
+
 /**
  * {@docCategory ChoiceGroup}
  */
-export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, any> {
+export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, {}> {
+  public static defaultProps: Partial<IChoiceGroupOptionProps> = {
+    imageSize: { width: 32, height: 32 },
+  };
+
   private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;
 
   constructor(props: IChoiceGroupOptionProps) {
@@ -31,7 +37,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       theme,
       iconProps,
       imageSrc,
-      imageSize = { width: 32, height: 32 },
+      imageSize,
       disabled,
       // tslint:disable-next-line:deprecation
       checked,
@@ -48,7 +54,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       hasImage: !!imageSrc,
       checked,
       disabled,
-      imageIsLarge: !!imageSrc && (imageSize.width > 71 || imageSize.height > 71),
+      imageIsLarge: !!imageSrc && (imageSize!.width > LARGE_IMAGE_SIZE || imageSize!.height > LARGE_IMAGE_SIZE),
       imageSize,
       focused,
     });
