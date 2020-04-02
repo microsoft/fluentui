@@ -63,7 +63,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
                   ev => this._onInternalLinkClick(ev, '#/')
                 }
               >
-                UI Fabric Home
+                Fluent UI Home
               </Link>
             </li>
             {this._getAreaLink()}

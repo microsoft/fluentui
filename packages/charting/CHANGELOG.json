@@ -2,6 +2,27 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/charting_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Vertical stacked bar chart added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "a231cb8de5291e0e6a0ec718d89485044231e68e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 24 Mar 2020 12:26:03 GMT",
       "tag": "@uifabric/charting_v0.143.0",
       "version": "0.143.0",

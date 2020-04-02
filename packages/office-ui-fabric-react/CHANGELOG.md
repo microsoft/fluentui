@@ -1,7 +1,35 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Apr 2020 12:29:21 GMT and should not be manually modified.
 
+## 7.105.7
+Wed, 01 Apr 2020 12:29:21 GMT
+
+### Patches
+
+- Panel: closeButton should stick to the right even if header is removed (aneeshak@microsoft.com)
+- Combobox: Update docs to make onPendingValueChanged more clear (joschect@microsoft.com)
+- ComboBox: onResolveOptions and onPointerDown callbacks should not hit when disabled. (aneeshak@microsoft.com)
+## 7.105.6
+Tue, 31 Mar 2020 12:27:26 GMT
+
+### Patches
+
+- DetailsList: Fixes following issues with Groups: 1) Add draggable attribute if required 2) Call onDragEnter and onDragLeave with right parameters 3) Use the css class returned by onDragEnter (sachinma@microsoft.com)
+- update website banner and remove reference to fabric in context menu docs (mgodbolt@microsoft.com)
+## 7.105.5
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Dialog/Panel: Change heading from 2 to 1 (joschect@microsoft.com)
+## 7.105.3
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+- Adding Text example for weights. (dzearing@microsoft.com)
 ## 7.105.2
 Mon, 23 Mar 2020 12:28:29 GMT
 

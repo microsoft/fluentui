@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix focus styles for buttons in MDL2 package",
-  "packageName": "@uifabric/mdl2-theme",
-  "email": "vibraga@microsoft.com",
-  "commit": "fe1633f3cd756c9314a13adb26b88df0f21cede4",
-  "dependentChangeType": "patch",
-  "date": "2020-03-24T04:15:12.967Z"
-}

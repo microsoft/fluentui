@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding bold font weight definition",
-  "packageName": "@uifabric/styling",
-  "email": "dzearing@microsoft.com",
-  "commit": "0f70497d902084c12ba135c9ee1d2751267f7a4e",
-  "dependentChangeType": "patch",
-  "date": "2020-03-24T03:16:34.709Z"
-}

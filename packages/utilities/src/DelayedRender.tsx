@@ -49,7 +49,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 
   public componentDidMount(): void {
     let { delay } = this.props;
-    this._timeoutId = setTimeout(() => {
+    this._timeoutId = window.setTimeout(() => {
       this.setState({
         isRendered: true,
       });

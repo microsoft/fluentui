@@ -85,6 +85,7 @@ export { default as ReactionGroup } from './components/Reaction/reactionGroupSty
 export { default as Status } from './components/Status/statusStyles';
 
 export { default as SplitButton } from './components/SplitButton/splitButtonStyles';
+export { default as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
 
 export { default as Text } from './components/Text/textStyles';
 
@@ -112,6 +113,7 @@ export { default as Carousel } from './components/Carousel/carouselStyles';
 export { default as CarouselItem } from './components/Carousel/carouselItemStyles';
 export { default as CarouselNavigation } from './components/Carousel/carouselNavigationStyles';
 export { default as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemStyles';
+export { default as CarouselPaddle } from './components/Carousel/carouselPaddleStyles';
 
 export { default as Table } from './components/Table/tableStyles';
 export { default as TableRow } from './components/Table/tableRowStyles';

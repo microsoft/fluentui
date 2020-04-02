@@ -45,6 +45,9 @@ export interface DropdownItemProps extends UIComponentProps<DropdownItemProps> {
   /** A slot for a checkable indicator. */
   checkableIndicator?: ShorthandValue<BoxProps>;
 
+  /** A dropdown item can show that it cannot be interacted with. */
+  disabled?: boolean;
+
   /** Item's header. */
   header?: ShorthandValue<BoxProps>;
 
@@ -186,6 +189,7 @@ DropdownItem.propTypes = {
   content: customPropTypes.itemShorthand,
   checkable: PropTypes.bool,
   checkableIndicator: customPropTypes.shorthandAllowingChildren,
+  disabled: PropTypes.bool,
   header: customPropTypes.itemShorthand,
   image: customPropTypes.itemShorthandWithoutJSX,
   onClick: PropTypes.func,

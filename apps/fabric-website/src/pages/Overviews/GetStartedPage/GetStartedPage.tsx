@@ -29,19 +29,19 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
     case 'web':
       return [
         {
-          sectionName: 'Fabric React',
+          sectionName: 'Fluent UI React',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopExisting.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopExisting.md') as string,
           jumpLinks: [{ text: enDash + ' Add to existing project', url: 'add-to-existing-project' }],
         },
         {
-          sectionName: 'Start a new Fabric React project',
+          sectionName: 'Start a new Fluent UI React project',
           jumpLinkName: enDash + ' Start a new project',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopSimple.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopSimple.md') as string,
         },
         {
-          sectionName: 'Next steps with Fabric React',
+          sectionName: 'Next steps with Fluent UI React',
           jumpLinkName: enDash + ' Next steps',
           editUrl: baseUrl + 'docs/web/GetStartedNextSteps.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedNextSteps.md') as string,
