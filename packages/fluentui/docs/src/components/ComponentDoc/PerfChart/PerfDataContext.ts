@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 export type PerfSample = {
+  _id: number; // primary key, equals to build
   build: number;
   tag?: string;
   ts: string;
