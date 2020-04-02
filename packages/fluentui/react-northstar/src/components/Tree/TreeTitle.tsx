@@ -214,7 +214,6 @@ TreeTitle.propTypes = {
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
   selectableParent: PropTypes.bool,
-  selectable: PropTypes.bool,
   treeSize: PropTypes.number,
   selectionIndicator: customPropTypes.shorthandAllowingChildren,
 };
