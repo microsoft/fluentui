@@ -48,6 +48,8 @@ import closedCaptions from './closedCaptions';
 import codeSnippet from './codeSnippet';
 import collapse from './collapse';
 import companion from './companion';
+import contactGroupCall from './contactGroupCall';
+import customerHub from './customerHub';
 import download from './download';
 import edit from './edit';
 import email from './email';
@@ -118,6 +120,8 @@ import noPresenter from './noPresenter';
 import notes from './notes';
 import notificationsMuted from './notificationsMuted';
 import numberList from './numberList';
+import ocrOff from './ocrOff';
+import ocrOn from './ocrOn';
 import oneDrive from './oneDrive';
 import outdent from './outdent';
 import openOutside from './openOutside';
@@ -244,6 +248,8 @@ export default {
   'code-snippet': codeSnippet,
   collapse,
   companion,
+  'contact-group-call': contactGroupCall,
+  customerHub: customerHub,
   'files-aftereffects': filesAftereffects,
   'files-code': filesCode,
   'files-empty': filesEmpty,
@@ -304,6 +310,8 @@ export default {
   'user-phone': userPhone,
   'notifications-muted': notificationsMuted,
   'number-list': numberList,
+  'ocr-off': ocrOff,
+  'ocr-on': ocrOn,
   'open-outside': openOutside,
   outdent,
   paperclip,
