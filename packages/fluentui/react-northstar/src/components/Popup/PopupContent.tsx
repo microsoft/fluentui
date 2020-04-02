@@ -90,6 +90,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
     className,
     content,
     design,
+    placement,
     pointing,
     pointerRef,
     styles,
