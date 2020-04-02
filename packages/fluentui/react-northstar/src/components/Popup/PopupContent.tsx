@@ -75,7 +75,7 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
-export type PopupContentStylesProps = Pick<PopupContentProps, 'placement' | 'pointing'>;
+export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'placement' | 'pointing'>>;
 
 const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
   FluentComponentStaticProps<PopupContentProps> & { slotClassNames: PopupContentSlotClassNames } = props => {
