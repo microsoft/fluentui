@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { Tree, CustomSelectIndicatorProps, Flex } from '@fluentui/react-northstar';
 
-function RosterCheckbox({ selected, selectable, selectableParent, expanded, ...props }: CustomSelectIndicatorProps) {
+const customCheckbox = ({ selected, selectable, selectableParent, expanded, ...props }: CustomSelectIndicatorProps) => {
   return (
     <>
       <Flex {...props}>{selectableParent && expanded && 'custom select all'}</Flex>
       {selectable && <input data-is-focusable={false} type="checkbox" readOnly checked={selected} {...props} />}
     </>
   );
-}
+};
 
 const items = [
   {
@@ -87,7 +87,7 @@ const TreMultiselectExample = () => (
     selectable
     aria-label="default"
     items={items}
-    customSelectIndicator={RosterCheckbox}
+    customSelectIndicator={customCheckbox}
   />
 );
 
