@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Button: Add an example of an IconButton that has a Tooltip.",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "79cf676bb31f2852692481c434885ea4883e6f78",
-  "dependentChangeType": "patch",
-  "date": "2020-03-17T22:21:14.170Z"
-}

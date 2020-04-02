@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Pivot: fixing comment typo.",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "commit": "fd64b77b579586a84c56209f7c34979ca286bfc2",
-  "dependentChangeType": "patch",
-  "date": "2020-04-01T19:22:09.957Z"
-}
