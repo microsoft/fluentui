@@ -249,7 +249,7 @@ export default {
   collapse,
   companion,
   'contact-group-call': contactGroupCall,
-  customerHub: customerHub,
+  'customer-hub': customerHub,
   'files-aftereffects': filesAftereffects,
   'files-code': filesCode,
   'files-empty': filesEmpty,
