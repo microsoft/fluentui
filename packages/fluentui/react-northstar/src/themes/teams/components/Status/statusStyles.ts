@@ -2,7 +2,6 @@ import { pxToRem, SizeValue } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { StatusStylesProps } from '../../../../components/Status/Status';
 import { StatusVariables } from './statusVariables';
-import Icon from 'src/components/Icon/Icon';
 
 const getBackgroundColor = (state: string, variables: StatusVariables) => {
   switch (state) {
@@ -81,7 +80,7 @@ const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, StatusVariabl
     width: pxToRem(7),
     height: pxToRem(7),
     color: getTextColor(state, variables),
-    [`& .${Icon.className}`]: {
+    '& > :first-child': {
       height: '100%',
       width: '100%',
       '& svg': {
