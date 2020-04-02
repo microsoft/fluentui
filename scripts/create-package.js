@@ -47,8 +47,6 @@ const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath
 const steps = [
   { template: 'NpmIgnore', output: '.npmignore' },
   { template: 'Npmrc', output: '.npmrc' },
-  { template: 'ChangelogJson', output: 'CHANGELOG.json' },
-  { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
   { template: 'License', output: 'LICENSE' },
   { template: 'Readme', output: 'README.md' },
   { template: 'JustConfig', output: 'just.config.ts' },
