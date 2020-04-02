@@ -33,6 +33,12 @@ export interface TreeSlotClassNames {
   item: string;
 }
 
+export type CustomSelectIndicatorProps = {
+  selectGroup: boolean;
+  selectItem: boolean;
+  selected: boolean;
+} & Record<string, unknown>;
+
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -48,6 +54,9 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Initial selectedItemIds value. */
   defaultSelectedItemIds?: string[];
+
+  /** Defines if the checkbox should be placed in the right or passed down */
+  defaultSelectIndicatorPosition?: boolean;
 
   /** Only allow one subtree to be expanded at a time. */
   exclusive?: boolean;
@@ -89,6 +98,9 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Whether or not tree items are selectable. */
   selectable?: boolean;
+
+  /** Allows user to pass a custom component to replace the current checkbox */
+  customSelectIndicator?: (props: CustomSelectIndicatorProps) => JSX.Element;
 }
 
 export interface TreeItemForRenderProps {
@@ -124,8 +136,10 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     selectedItemIds: customPropTypes.collectionShorthand,
     defaultActiveItemIds: customPropTypes.collectionShorthand,
     defaultSelectedItemIds: customPropTypes.collectionShorthand,
+    customSelectIndicator: PropTypes.any,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
+    defaultSelectIndicatorPosition: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
     onActiveItemIdsChange: PropTypes.func,
     onSelectedItemIdsChange: PropTypes.func,
@@ -136,6 +150,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static defaultProps = {
     as: 'div',
     accessibility: treeBehavior as Accessibility,
+    defaultSelectIndicatorPosition: true,
   };
 
   static autoControlledProps = ['activeItemIds', 'selectedItemIds'];
@@ -163,9 +178,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
         };
 
         iterateItems(items);
-        // console log only before PR is merge to master, for testing purposes :)
-        console.log('All items with seleted property:');
-        console.log(selectedItemIds);
       }
     }
 
@@ -354,6 +366,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     onSiblingsExpand: this.onSiblingsExpand,
     onFocusFirstChild: this.onFocusFirstChild,
     onTitleClick: this.onTitleClick,
+    defaultSelectIndicatorPosition: this.props.defaultSelectIndicatorPosition,
+    customSelectIndicator: this.props.customSelectIndicator,
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {
@@ -405,10 +419,10 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   }
 
   renderComponent({ ElementType, classes, accessibility, unhandledProps }) {
-    const { children, renderedItems } = this.props;
+    const { children, renderedItems, defaultSelectIndicatorPosition = true } = this.props;
 
     return (
-      <TreeContext.Provider value={this.contextValue}>
+      <TreeContext.Provider value={{ ...this.contextValue, defaultSelectIndicatorPosition }}>
         <Ref innerRef={this.treeRef}>
           <ElementType
             className={classes.root}
