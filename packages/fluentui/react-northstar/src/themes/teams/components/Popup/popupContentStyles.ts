@@ -1,10 +1,10 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { PopupContentProps } from '../../../../components/Popup/PopupContent';
+import { PopupContentStylesProps } from '../../../../components/Popup/PopupContent';
 import { PopupContentVariables } from './popupContentVariables';
 import getPointerStyles from '../../getPointerStyles';
 import initialPopperStyles from '../../../../utils/positioner/initialStyles';
 
-const popupContentStyles: ComponentSlotStylesPrepared<PopupContentProps, PopupContentVariables> = {
+const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, PopupContentVariables> = {
   root: ({ props: p, variables: v, rtl }): ICSSInJSStyle => ({
     border: `${v.borderSize} solid ${v.borderColor}`,
     borderRadius: v.borderRadius,
