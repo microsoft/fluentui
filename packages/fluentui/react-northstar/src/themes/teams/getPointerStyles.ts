@@ -24,17 +24,18 @@ export const getContainerStyles = (options: GetContainerStylesOptions): ICSSInJS
   const { placement, margin } = options;
 
   return {
+    // TODO: Popper v2, replace margins with paddings
     ...(placement === 'bottom' && {
-      paddingTop: margin,
+      marginTop: margin,
     }),
     ...(placement === 'top' && {
-      paddingBottom: margin,
+      marginBottom: margin,
     }),
     ...(placement === 'left' && {
-      paddingRight: margin,
+      marginRight: margin,
     }),
     ...(placement === 'right' && {
-      paddingLeft: margin,
+      marginLeft: margin,
     }),
   };
 };
@@ -63,17 +64,22 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
     }),
 
     ...(placement === 'bottom' && {
-      top: `calc(${height} + (${borderSize} * 2))`,
+      // TODO: use in Popper v2
+      // top: `calc(${height} + (${borderSize} * 2))`,
+      top: `calc((${height} * -1) + (${borderSize} * 2))`,
     }),
     ...(placement === 'top' && {
-      bottom: `calc(${height} + ${borderSize})`,
+      // bottom: `calc(${height} + ${borderSize})`,
+      bottom: `calc((${height} * -1) + ${borderSize})`,
     }),
 
     ...(placement === 'left' && {
-      right: `calc(${height} + ${borderSize})`,
+      // right: `calc(${height} + ${borderSize})`,
+      right: `calc((${height} * -1) + (${borderSize} * 2))`,
     }),
     ...(placement === 'right' && {
-      left: `calc(${height} + ${borderSize})`,
+      // left: `calc(${height} + ${borderSize})`,
+      left: `calc((${height} * -1) + (${borderSize} * 2))`,
     }),
 
     '::before': {
@@ -171,7 +177,9 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: gap,
-          bottom: `calc(${width} + ${borderSize})`,
+          // TODO: use in Popper v2
+          // bottom: `calc(${width} + ${borderSize})`,
+          bottom: `calc((${gap} * 2) + ${borderSize})`,
           transform: `rotate(${rtl ? -90 : 90}deg)`,
         }),
         ...(placement === 'top' && {
@@ -179,21 +187,24 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
           width: height,
 
           left: gap,
-          bottom: `calc(${gap} - ${borderSize})`,
+          // bottom: `calc(${gap} - ${borderSize})`,
+          bottom: `calc(${gap} * 2)`,
           transform: `rotate(${rtl ? 90 : -90}deg)`,
         }),
         ...(placement === 'left' && {
           height: width,
           width: height,
 
-          left: height,
+          // left: height,
+          left: borderSize,
           transform: `rotate(${rtl ? 0 : 180}deg)`,
         }),
         ...(placement === 'right' && {
           height: width,
           width: height,
 
-          right: height,
+          // right: height,
+          right: borderSize,
           transform: `rotate(${rtl ? 180 : 0}deg)`,
         }),
       },

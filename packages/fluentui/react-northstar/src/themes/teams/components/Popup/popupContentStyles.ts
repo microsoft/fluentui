@@ -9,10 +9,11 @@ const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesProps, P
     display: 'block',
     zIndex: v.zIndex,
 
-    ...getContainerStyles({
-      placement: p.basePlacement,
-      margin: v.pointerMargin,
-    }),
+    ...(p.pointing &&
+      getContainerStyles({
+        placement: p.basePlacement,
+        margin: v.pointerMargin,
+      })),
   }),
 
   pointer: ({ props: p, variables: v, rtl }): ICSSInJSStyle =>
