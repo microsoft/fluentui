@@ -85,7 +85,7 @@ export const getPointerStyles = (options: GetPointerStylesOptions): ICSSInJSStyl
     '::before': {
       content: '" "',
       display: 'block',
-      height: height,
+      height,
       position: 'relative',
       transformOrigin: 'center top',
 
