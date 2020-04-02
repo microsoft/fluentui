@@ -19,6 +19,7 @@ const LARGE_IMAGE_SIZE = 71;
  */
 export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, {}> {
   public static defaultProps: Partial<IChoiceGroupOptionProps> = {
+    // This ensures default imageSize value doesn't mutate. Mutation can cause style re-calcuation.
     imageSize: { width: 32, height: 32 },
   };
 
@@ -55,7 +56,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       checked,
       disabled,
       imageIsLarge: !!imageSrc && (imageSize!.width > LARGE_IMAGE_SIZE || imageSize!.height > LARGE_IMAGE_SIZE),
-      imageSize, // avoid unnecessary mutation for better style caching
+      imageSize,
       focused,
     });
 
