@@ -147,7 +147,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     const { items, selectable } = nextProps;
     let { activeItemIds, selectedItemIds } = nextProps;
 
-    if (selectable) {
+    if (selectable && items && !selectedItemIds) {
       if (!selectedItemIds && items) {
         selectedItemIds = prevState.selectedItemIds;
 
@@ -229,8 +229,8 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     const treeItemHasSubtree = hasSubtree(treeItemProps);
     const isExpandedSelectableParent = treeItemHasSubtree && selectableParent && expanded;
 
-    // if the parent is not selectable or is collapsed it means treeItem should be expanded, not procced with selection
-    if ((treeItemHasSubtree && !selectableParent) || (treeItemHasSubtree && !expanded)) {
+    // parent must be selectable and expanded in order to procced with selection, otherwise return
+    if (treeItemHasSubtree && !(selectableParent && expanded)) {
       return;
     }
 
