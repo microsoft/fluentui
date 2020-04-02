@@ -120,6 +120,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
       treeSize,
       selected,
       selectable,
+      selectableParent,
     }),
     rtl: context.rtl,
   });
