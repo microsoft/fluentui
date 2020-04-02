@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "ChoiceGroup: fix bad cache key for getClassNames",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "5a23152f3833f500d07e2a6c75080837ac76643e",
+  "dependentChangeType": "patch",
+  "date": "2020-04-02T03:34:11.680Z"
+}
