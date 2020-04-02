@@ -39,7 +39,7 @@ export const ButtonIconWithTooltipExample: React.FunctionComponent<IButtonExampl
       </TooltipHost>
       <p>
         For now, we advise you to take this approach of wrapping IconButton with a Tooltip. We'll address providing this
-        behavior out of the box in a future major version.
+        behavior out of the box in next version of this component in Fluent.
       </p>
     </div>
   );
