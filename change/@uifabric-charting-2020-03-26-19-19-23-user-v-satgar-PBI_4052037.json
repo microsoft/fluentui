@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "DonutChart: Add prop to allow string inside Donut.",
+  "packageName": "@uifabric/charting",
+  "email": "v-satgar@microsoft.com",
+  "commit": "d33c765ff319e4aff2ffe788e618663974b92b84",
+  "dependentChangeType": "patch",
+  "date": "2020-03-26T13:49:23.598Z"
+}

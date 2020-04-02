@@ -277,7 +277,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
-   * Handle the onKeyPress eventon the PivotLinks
+   * Handle the onKeyPress event on the PivotLinks
    */
   private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {

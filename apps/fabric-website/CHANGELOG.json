@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "date": "Tue, 31 Mar 2020 12:27:26 GMT",
+      "tag": "@uifabric/fabric-website_v7.10.15",
+      "version": "7.10.15",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update website banner and remove reference to fabric in context menu docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f584afe2afbb834ac83c5a9b9f384cfac9c27b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2020 19:10:08 GMT",
       "tag": "@uifabric/fabric-website_v7.10.14",
       "version": "7.10.14",

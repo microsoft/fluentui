@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "update website banner and remove reference to fabric in context menu docs",
-  "packageName": "office-ui-fabric-react",
-  "email": "mgodbolt@microsoft.com",
-  "commit": "f584afe2afbb834ac83c5a9b9f384cfac9c27b5d",
-  "dependentChangeType": "patch",
-  "date": "2020-03-30T20:55:53.554Z"
-}
