@@ -105,6 +105,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
     className: PopupContent.className,
     mapPropsToStyles: () => ({
       pointing,
+      placement,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,
