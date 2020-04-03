@@ -113,7 +113,7 @@ export const TableCell: ComponentWithAs<'div', TableCellProps> & FluentComponent
           {hasChildren
             ? children
             : Box.create(content, {
-                defaultProps: () => ({ className: tableCellSlotClassNames.content, styles: resolvedStyles.content }),
+                defaultProps: () => ({ styles: resolvedStyles.content }),
               })}
         </ElementType>,
       )}
