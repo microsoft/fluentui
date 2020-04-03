@@ -9,7 +9,7 @@ import {
 
 import Alert from 'src/components/Alert/Alert';
 import Box from 'src/components/Box/Box';
-import Button from 'src/components/Button/Button';
+import AlertDismissAction from 'src/components/Alert/AlertDismissAction';
 
 const alertImplementsShorthandProp = implementsShorthandProp(Alert);
 
@@ -27,7 +27,7 @@ describe('Alert', () => {
     requiredProps: { content: 'test', warning: true },
   });
 
-  alertImplementsShorthandProp('dismissAction', Button, {
+  alertImplementsShorthandProp('dismissAction', AlertDismissAction, {
     mapsValueToProp: 'content',
     requiredProps: { dismissible: true },
   });
