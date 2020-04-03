@@ -220,12 +220,12 @@ const buttonStyles: ComponentSlotStylesPrepared<ButtonStylesProps, ButtonVariabl
     };
   },
 
-  icon: ({ props: p }) => ({
+  icon: ({ props: p, variables: v }) => ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: pxToRem(16),
-    height: pxToRem(16),
+    width: v.iconSize,
+    height: v.iconSize,
 
     // when loading, hide the icon
     ...(p.loading && {
