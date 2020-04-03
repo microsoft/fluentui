@@ -93,9 +93,6 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
 
   const hasChildren = childrenExist(children);
   const hasContent = !!content && !_.isEmpty(content);
-  console.log(content);
-  console.log(hasContent);
-  console.log(hasChildren);
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: AlertDismissAction.displayName,
@@ -199,7 +196,7 @@ AlertDismissAction.slotClassNames = {
 };
 
 /**
- * A AlertDismissAction allows users to customize the paddles inside the Carousel component.
+ * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.
  *
  * @accessibility
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
