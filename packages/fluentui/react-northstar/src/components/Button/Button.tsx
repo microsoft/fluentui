@@ -179,7 +179,6 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       defaultProps: () =>
         getA11Props('icon', {
           styles: resolvedStyles.icon,
-          // xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after',
         }),
     });
   };
