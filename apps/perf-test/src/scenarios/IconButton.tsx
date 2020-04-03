@@ -1,11 +1,5 @@
 import * as React from 'react';
-import { IconButton, IIconProps, IContextualMenuProps, Stack, Link } from 'office-ui-fabric-react';
-
-export interface IButtonExampleProps {
-  // These are set based on the toggles shown above the examples (not needed in real code)
-  disabled?: boolean;
-  checked?: boolean;
-}
+import { IconButton, IIconProps, IContextualMenuProps } from 'office-ui-fabric-react';
 
 const emojiIcon: IIconProps = { iconName: 'Emoji2' };
 
