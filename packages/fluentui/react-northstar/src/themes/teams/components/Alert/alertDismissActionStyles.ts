@@ -37,6 +37,9 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       height: v.dismissActionSize,
       minWidth: v.dismissActionSize,
       color: v.dismissActionColor || 'currentColor',
+      outline: 0,
+      padding: 0,
+      border: 0,
       backgroundColor: v.dismissActionBackgroundColor,
       borderRadius: v.borderRadius,
       display: 'inline-flex',
@@ -45,13 +48,6 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       position: 'relative',
       verticalAlign: 'middle',
       cursor: 'pointer',
-
-      outline: 0,
-      padding: 0,
-      border: 0,
-      borderWidth,
-      borderStyle: 'solid',
-      borderColor: v.dismissActionBorderColor,
 
       ...getIconFillOrOutlineStyles({ outline: true }),
 
@@ -62,6 +58,8 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       }),
 
       ':hover': {
+        backgroundColor: v.hoverBackgroundColor,
+        color: 'currentColor',
         ...getIconFillOrOutlineStyles({ outline: false }),
 
         ...(!p.hasContent && {
@@ -69,9 +67,6 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
             ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
           },
         }),
-
-        backgroundColor: v.hoverBackgroundColor,
-        color: 'currentColor',
 
         ...getBorderFocusStyles({
           variables: {
