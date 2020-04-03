@@ -14,7 +14,8 @@ export interface PopupContentVariables {
   pointerMargin: string;
   pointerGap: string;
   pointerOffset: string;
-  pointerSize: string;
+  pointerHeight: string;
+  pointerWidth: string;
 
   zIndex: number;
 }
@@ -34,7 +35,8 @@ export default (siteVars: any): PopupContentVariables => {
     pointerOffset: pxToRem(5),
     pointerGap: pxToRem(5),
     pointerMargin: pxToRem(10),
-    pointerSize: pxToRem(10),
+    pointerHeight: pxToRem(5),
+    pointerWidth: pxToRem(10),
 
     zIndex: siteVars.zIndexes.overlay,
   };

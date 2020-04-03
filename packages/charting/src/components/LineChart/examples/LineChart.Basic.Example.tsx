@@ -94,7 +94,7 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} legendsOverflowText={'Overflow Items'} />
+        <LineChart data={data} legendsOverflowText={'Overflow Items'} yMinValue={282} yMaxValue={301} />
       </div>
     );
   }

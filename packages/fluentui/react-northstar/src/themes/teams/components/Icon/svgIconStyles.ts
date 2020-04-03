@@ -1,5 +1,5 @@
 import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-bindings';
+import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-icons-northstar';
 
 import { pxToRem, SizeValue } from '../../../../utils';
 import { getStyle as getSvgStyle } from './svg';
@@ -102,6 +102,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       ...getSvgStyle('svg'),
     };
   },
+
   svgFlippingInRtl: config => {
     const { props, rtl } = config;
     return {
@@ -111,6 +112,10 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       }),
     };
   },
+
+  redPath: ({ variables: v }) => ({
+    fill: v.redColor,
+  }),
 
   g: getSvgStyle('g'),
 

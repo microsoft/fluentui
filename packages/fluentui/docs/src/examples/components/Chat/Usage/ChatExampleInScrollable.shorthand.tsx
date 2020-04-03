@@ -3,7 +3,7 @@ import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui
 import * as React from 'react';
 
 const ChatExampleInScrollableShorthand = () => {
-  const [actionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
+  const [actionCount, setActionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
   const [overflow] = useBooleanKnob({ name: 'overflow', initialValue: true });
   const [height] = useRangeKnob({
     name: 'height',
@@ -31,11 +31,11 @@ const ChatExampleInScrollableShorthand = () => {
     { key: 'edit', icon: 'edit', title: 'Edit' },
     { key: 'lock', icon: 'lock', title: 'Lock' },
     {
-      key: 'more',
       icon: 'more',
       title: 'More actions',
       children: (Component, props) => (
         <MenuButton
+          key="more"
           menu={[
             { key: 'reply', content: 'Reply', icon: 'reply' },
             { key: 'edit', content: 'Edit', icon: 'edit' },
@@ -180,9 +180,15 @@ const ChatExampleInScrollableShorthand = () => {
   ];
 
   return (
-    <div style={{ height, width, overflow: 'scroll', margin: 150, marginLeft: 0 }}>
-      <Chat items={items} styles={{ minHeight: '100%' }} />
-    </div>
+    <>
+      <div style={{ height, width, overflow: 'scroll', margin: 150, marginBottom: 0, marginLeft: 50 }}>
+        <Chat items={items} styles={{ minHeight: '100%' }} />
+      </div>
+
+      <button id="actions-to-max" onClick={() => setActionCount(actionItems.length)}>
+        Set action count to max
+      </button>
+    </>
   );
 };
 
