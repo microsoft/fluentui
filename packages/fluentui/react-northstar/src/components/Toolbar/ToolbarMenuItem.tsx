@@ -117,7 +117,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   wrapper?: ShorthandValue<BoxProps>;
 }
 
-export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'>;
+export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
 
 export interface ToolbarMenuItemSlotClassNames {
   activeIndicator: string;
@@ -198,6 +198,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     className: ToolbarMenuItem.className,
     mapPropsToStyles: () => ({
       disabled,
+      hasContent: !!content,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -325,7 +326,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
         <>
           {Box.create(icon, {
             defaultProps: () => ({
-              /* xSpacing: !!content ? 'after' : 'none' */
+              styles: resolvedStyles.icon,
             }),
           })}
           {content}
