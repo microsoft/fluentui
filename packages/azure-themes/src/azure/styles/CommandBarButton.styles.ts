@@ -10,14 +10,21 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
     icon: {
       color: semanticColors.focusBorder,
     },
+    iconChecked: {
+      color: '#0078D4 !important', //semanticColors.focusBorder
+    },
     menuIcon: {
       color: semanticColors.bodyText,
     },
+    menuIconDisabled: {
+      color: semanticColors.disabledIconColor,
+    },
     root: {
       ...getFocusStyle(theme, { inset: 2 }),
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
+      height: '36px',
     },
     rootExpanded: {
       backgroundColor: semanticColors.menuItemBackgroundHovered,
@@ -35,17 +42,23 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
     },
+    rootCheckedPressed: {
+      backgroundColor: semanticColors.menuItemBackgroundPressed,
+      color: semanticColors.bodyText,
+    },
+    rootCheckedHovered: {
+      backgroundColor: semanticColors.menuItemBackgroundHovered,
+    },
+    rootExpandedHovered: {},
     rootDisabled: {
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.disabledBodyText,
     },
+    iconDisabled: {
+      color: semanticColors.disabledIconColor,
+    },
     splitButtonMenuButton: {
       backgroundColor: semanticColors.bodyBackground,
-      selectors: {
-        ':hover': {
-          backgroundColor: semanticColors.menuItemBackgroundHovered,
-        },
-      },
     },
     splitButtonMenuButtonChecked: {
       backgroundColor: semanticColors.bodyBackground,

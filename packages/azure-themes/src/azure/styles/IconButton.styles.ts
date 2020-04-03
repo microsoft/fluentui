@@ -8,27 +8,27 @@ export const IconButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   return {
     root: {
       backgroundColor: StyleConstants.transparent,
-      color: semanticColors.buttonText,
+      color: semanticColors.iconButtonColor,
     },
     rootDisabled: {
       backgroundColor: StyleConstants.transparent,
-      color: semanticColors.buttonTextDisabled,
+      color: semanticColors.iconButtonDisabledColor,
     },
     rootHovered: {
-      backgroundColor: StyleConstants.transparent,
-      color: semanticColors.buttonTextHovered,
+      backgroundColor: StyleConstants.buttonBackgroundHoveredDefault,
+      color: semanticColors.iconHoveredColor,
     },
     rootPressed: {
-      backgroundColor: StyleConstants.transparent,
-      color: semanticColors.buttonTextPressed,
+      backgroundColor: StyleConstants.buttonBackgroundPressed,
+      color: semanticColors.iconPressedColor,
     },
     rootChecked: {
-      backgroundColor: StyleConstants.transparent,
-      color: semanticColors.buttonTextPressed,
+      backgroundColor: StyleConstants.buttonBackgroundHoveredDefault,
+      color: semanticColors.iconHoveredColor,
     },
     rootCheckedHovered: {
-      backgroundColor: StyleConstants.transparent,
-      color: semanticColors.buttonTextHovered,
+      backgroundColor: StyleConstants.buttonBackgroundPressed,
+      color: semanticColors.iconPressedColor,
     },
   };
 };

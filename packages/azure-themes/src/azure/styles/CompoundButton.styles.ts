@@ -14,13 +14,15 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.buttonBackground,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+      color: semanticColors.buttonText,
       selectors: {
         ...labelTextColor(semanticColors.buttonText),
         '&.ms-Button--compoundPrimary': {
           backgroundColor: semanticColors.primaryButtonBackground,
+          color: semanticColors.buttonText,
           border: `0px`,
           selectors: {
             ...labelTextColor(semanticColors.primaryButtonText),
@@ -30,11 +32,11 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     },
     rootHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
       selectors: {
         '&.ms-Button--compound:hover': {
+          backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextHovered),
+            ...labelTextColor(semanticColors.textHovered),
           },
         },
         '&.ms-Button--compoundPrimary:hover': {
@@ -48,17 +50,16 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       },
     },
     rootPressed: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       selectors: {
         '&.ms-Button--compound:active': {
+          backgroundColor: semanticColors.buttonBackgroundPressed,
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextPressed),
+            ...labelTextColor(semanticColors.buttonText),
           },
         },
         '&.ms-Button--compoundPrimary:active': {
           backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-          color: semanticColors.primaryButtonTextPressed,
+          color: '#000000', //semanticColors.primaryButtonTextPressed,
           border: '0px',
           selectors: {
             ...labelTextColor(semanticColors.primaryButtonTextPressed),
@@ -91,6 +92,14 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
             ...labelTextColor(semanticColors.primaryButtonTextPressed),
           },
         },
+        '&.ms-Button--compound.is-checked': {
+          borderColor: semanticColors.buttonBorderColor,
+          backgroundColor: semanticColors.buttonBackgroundPressed,
+          color: semanticColors.buttonText,
+          selectors: {
+            ...labelTextColor(semanticColors.buttonText),
+          },
+        },
       },
     },
     rootCheckedHovered: {
@@ -105,6 +114,13 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
             ...labelTextColor(semanticColors.primaryButtonTextHovered),
           },
         },
+        '&.ms-Button--compound.is-checked:hover': {
+          backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+          selectors: {
+            //...labelTextColor(semanticColors.primaryButtonTextHovered)
+          },
+        },
       },
     },
     rootCheckedPressed: {
@@ -117,6 +133,14 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           border: `0px`,
           selectors: {
             ...labelTextColor(semanticColors.primaryButtonTextPressed),
+          },
+        },
+        '&.ms-Button--compound.is-checked:active': {
+          borderColor: semanticColors.buttonBorderColor,
+          backgroundColor: semanticColors.buttonBackgroundPressed,
+          color: semanticColors.buttonText,
+          selectors: {
+            //...labelTextColor(semanticColors.primaryButtonTextPressed)
           },
         },
       },

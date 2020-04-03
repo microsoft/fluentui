@@ -32,11 +32,21 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
         return {
           root: [
             {
-              fontSize: FontSizes.size12,
+              fontSize: FontSizes.size13,
+              backgroundColor: semanticColors.contextMenuBackground,
+              selectors: {
+                ':hover': {
+                  backgroundColor: semanticColors.menuItemBackgroundHovered,
+                },
+                ':active': {
+                  backgroundColor: semanticColors.menuItemBackgroundHovered,
+                  border: '1px solid #605E5C',
+                },
+              },
             },
           ],
           splitPrimary: {
-            fontSize: FontSizes.size12,
+            fontSize: FontSizes.size13,
           },
           divider: {
             backgroundColor: semanticColors.inputBorder,
@@ -49,6 +59,9 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
               '.is-expanded': {
                 backgroundColor: semanticColors.menuItemBackgroundHovered,
                 color: semanticColors.inputText,
+              },
+              ':hover': {
+                backgroundColor: '#F3F2F1',
               },
             },
           },

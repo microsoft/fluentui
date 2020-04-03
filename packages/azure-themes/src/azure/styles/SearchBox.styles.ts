@@ -1,4 +1,5 @@
 import { ISearchBoxStyleProps, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+import * as StyleConstants from '../Constants';
 
 export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBoxStyles> => {
   const { theme, hasFocus } = props;
@@ -6,8 +7,19 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
 
   return {
     root: [
+      {
+        border: `${StyleConstants.borderWidth} solid ${semanticColors.textFieldBorder} !important`,
+        selectors: {
+          '&:hover': {
+            border: `${StyleConstants.borderWidth} solid ${semanticColors.textFieldBorderHover} !important`,
+          },
+          '::after': {
+            borderColor: semanticColors.textFieldBorderActiveFocus,
+          },
+        },
+      },
       hasFocus && {
-        borderColor: semanticColors.focusBorder,
+        border: `${StyleConstants.borderWidth} solid ${semanticColors.textFieldBorderActiveFocus} !important`,
       },
       !hasFocus && {
         borderColor: semanticColors.inputBorder,

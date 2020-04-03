@@ -11,6 +11,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
   const { semanticColors } = theme;
   return {
     callout: {
+      //dropdown items container
       border: 'none',
       boxShadow: Depths.depth8,
       selectors: {
@@ -32,17 +33,19 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     dropdown: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: FontSizes.size13,
         height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
         selectors: {
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
             fontStyle: 'italic',
+            borderColor: semanticColors.dropdownBorder,
           },
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
             fontStyle: 'italic',
+            borderColor: semanticColors.dropdownBorderHover,
           },
         },
       },
@@ -106,8 +109,8 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       borderColor: semanticColors.inputBorder,
     },
     dropdownItem: {
-      color: semanticColors.bodyText,
-      fontSize: FontSizes.size12,
+      color: semanticColors.listText,
+      fontSize: '13px',
       selectors: {
         // active: Mouse down on the item, then drag outside.
         '&:hover, &:active, &:hover:focus': {
@@ -118,11 +121,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       },
     },
     dropdownItemDisabled: {
+      //backgroundColor: '#ffffff',
       color: semanticColors.disabledBodyText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     dropdownItemSelected: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.listItemBackgroundChecked,
       color: semanticColors.bodyText,
       fontWeight: 'bold',
@@ -139,7 +143,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
   };
 };

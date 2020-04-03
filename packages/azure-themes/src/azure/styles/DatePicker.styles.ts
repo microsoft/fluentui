@@ -11,33 +11,33 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   const { semanticColors } = theme;
   const TextHoverStyle = () => {
     return {
-      color: semanticColors.bodyText,
-      backgroundColor: StyleConstants.transparent,
+      color: 'black',
+      backgroundColor: '#f3f2f1',
+      //cursor: 'pointer'
     };
   };
   const TodayAndSelectedDayStyle = () => {
     return {
       '.ms-DatePicker-day-button.ms-DatePicker-day--today': {
         backgroundColor: semanticColors.bodyBackground,
-        color: semanticColors.bodyText,
+        backgroundColor: '#0078D4', //semanticColors.bodyBackground,
+        color: '#ffffff', //semanticColors.bodyText
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:active': {
         backgroundColor: StyleConstants.transparent,
         color: semanticColors.bodyText,
       },
       '.ms-DatePicker-day-button.ms-DatePicker-day--today:hover': {
-        color: semanticColors.bodyText,
+        color: '#ffffff', //semanticColors.bodyText,
       },
       '.ms-DatePicker-day--highlighted': {
-        backgroundColor: StyleConstants.transparent,
-        color: semanticColors.bodyText,
+        backgroundColor: '#edebe9 !important',
       },
       '.ms-DatePicker-day--highlighted > .ms-DatePicker-day-button': {
-        backgroundColor: semanticColors.listItemBackgroundChecked,
-        color: semanticColors.bodyText,
+        color: '#000000',
       },
       '.ms-DatePicker-day--highlighted > .ms-DatePicker-day--today': {
-        color: semanticColors.bodyText,
+        color: '#ffffff !important',
       },
     };
   };
@@ -48,8 +48,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         color: semanticColors.bodyText,
       },
       '.ms-DatePicker-day--highlighted > .ms-DatePicker-day-button:hover': {
-        backgroundColor: semanticColors.listItemBackgroundChecked,
-        color: semanticColors.bodyText,
+        color: '#000000', //semanticColors.bodyText,
       },
       '.ms-DatePicker-day--infocus:hover': {
         ...TextHoverStyle(),
@@ -92,12 +91,11 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   };
   return {
     callout: {
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText,
       selectors: {
         '.ms-Callout-main': {
-          fontWeight: StyleConstants.fontWeightBold,
           backgroundColor: semanticColors.bodyBackground,
         },
         '.ms-DatePicker-table > thead > tr': {
@@ -107,7 +105,7 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
           border: 'none',
           selectors: {
             '.ms-DatePicker-day-button': {
-              fontWeight: StyleConstants.fontWeightBold,
+              //fontWeight: StyleConstants.fontWeightBold,
             },
           },
         },
@@ -115,8 +113,14 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         '.ms-DatePicker-currentDecade': { color: semanticColors.bodyText },
         '.ms-DatePicker-day--outfocus': { color: semanticColors.bodyText },
         '.ms-DatePicker-monthAndYear': { color: semanticColors.bodyText },
-        '.ms-DatePicker-weekday': { color: semanticColors.bodyText, fontWeight: StyleConstants.fontWeightBold },
-        '.ms-DatePicker-monthOption': { color: semanticColors.bodyText, fontWeight: StyleConstants.fontWeightBold },
+        '.ms-DatePicker-weekday': {
+          color: semanticColors.bodyText,
+          // fontWeight: StyleConstants.fontWeightBold
+        },
+        '.ms-DatePicker-monthOption': {
+          color: semanticColors.bodyText,
+          // fontWeight: StyleConstants.fontWeightBold
+        },
         '.ms-DatePicker-currentYear': { color: semanticColors.bodyText },
         '.ms-DatePicker-prevMonth': { color: semanticColors.bodyText },
         '.ms-DatePicker-nextMonth': { color: semanticColors.bodyText },
@@ -126,7 +130,10 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
         '.ms-DatePicker-nextDecade': { color: semanticColors.bodyText },
         '.ms-DatePicker-goToday': { color: semanticColors.bodyText },
         '.ms-DatePicker-goToday[disabled]': { display: 'none' },
-        '.ms-DatePicker-yearOption': { color: semanticColors.bodyText, fontWeight: StyleConstants.fontWeightBold },
+        '.ms-DatePicker-yearOption': {
+          color: semanticColors.bodyText,
+          // fontWeight: StyleConstants.fontWeightBold
+        },
         '.ms-DatePicker-yearOption--disabled': { color: semanticColors.bodyText },
         '.ms-DatePicker-monthOption--disabled': { color: semanticColors.bodyText },
         '.ms-DatePicker-day--disabled': { color: semanticColors.bodyText },
@@ -143,7 +150,10 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     icon: [
       {
         color: semanticColors.bodyText,
-        top: '2px',
+        bottom: '0px',
+        top: '0px',
+        height: '19px',
+        padding: '3px 5px 0 5px',
       },
       disabled && {
         color: semanticColors.disabledBodyText,
@@ -151,8 +161,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
     ],
     root: [
       {
-        fontSize: FontSizes.size12,
-        fontWeight: StyleConstants.fontWeightBold,
+        fontSize: FontSizes.size13,
+        //fontWeight: StyleConstants.fontWeightBold,
       },
       disabled && {
         border: `${StyleConstants.borderWidth} solid ${semanticColors.disabledBodyText}`,

@@ -10,11 +10,12 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
   return {
     root: {
       height: StyleConstants.inputControlHeight,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
       selectors: {
         '.ms-Button': {
           backgroundColor: semanticColors.bodyBackground,
           color: semanticColors.inputText,
+          marginTop: '3px',
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.bodyBackground,
@@ -30,6 +31,7 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     input: {
       height: StyleConstants.inputControlHeightInner,
+      marginTop: '2px',
       selectors: {
         '::placeholder': {
           fontStyle: 'italic',
@@ -80,18 +82,18 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12,
+      fontSize: FontSizes.size13,
     },
     optionsContainer: {
       verticalAlign: 'middle',
       selectors: {
         '.ms-ComboBox-header': {
           color: semanticColors.focusBorder,
-          fontSize: FontSizes.size12,
+          fontSize: FontSizes.size13,
         },
         '.ms-ComboBox-option': {
           color: semanticColors.bodyText,
-          fontSize: FontSizes.size12,
+          fontSize: FontSizes.size13,
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.menuItemBackgroundHovered,

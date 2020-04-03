@@ -14,11 +14,11 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   };
   return {
     root: {
-      fontSize: FontSizes.size12,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+      fontSize: FontSizes.size13,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
       backgroundColor: semanticColors.buttonBackground,
       color: semanticColors.buttonText,
-      ...iconColor(semanticColors.buttonText),
+      ...iconColor(semanticColors.iconButtonColor),
     },
     rootDisabled: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextDisabled}`,
@@ -27,48 +27,50 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       ...iconColor(semanticColors.buttonTextDisabled),
     },
     rootHovered: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
+      color: semanticColors.buttonText,
+      fill: semanticColors.buttonText,
+      backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
       selectors: {
         ':hover': {
-          ...iconColor(semanticColors.buttonTextHovered),
+          ...iconColor(semanticColors.iconHoveredColor),
         },
       },
     },
     rootPressed: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      borderColor: semanticColors.buttonBorderColor,
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonTextPressed,
+      color: semanticColors.buttonText,
       selectors: {
         ':active': {
-          ...iconColor(semanticColors.buttonTextPressed),
+          ...iconColor(semanticColors.iconPressedColor),
         },
       },
     },
     rootChecked: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonTextPressed,
-      ...iconColor(semanticColors.buttonTextPressed),
+      color: semanticColors.buttonText,
+      ...iconColor(semanticColors.iconPressedColor),
     },
     rootCheckedHovered: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
+      color: semanticColors.buttonText,
+      fill: semanticColors.buttonText,
+      backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
       selectors: {
         ':hover': {
-          ...iconColor(semanticColors.buttonTextHovered),
+          ...iconColor(semanticColors.iconHoveredColor),
         },
       },
     },
     rootCheckedPressed: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      borderColor: semanticColors.buttonBorderColor,
       backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonTextPressed,
+      color: semanticColors.buttonText,
       selectors: {
         ':active': {
-          ...iconColor(semanticColors.buttonTextPressed),
+          ...iconColor(semanticColors.iconPressedColor),
         },
       },
     },

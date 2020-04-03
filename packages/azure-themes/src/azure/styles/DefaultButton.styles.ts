@@ -8,8 +8,19 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
 
   return {
     root: {
-      fontSize: FontSizes.size12,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+      fontSize: FontSizes.size13,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+      color: semanticColors.buttonText,
+      padding: '0 16px',
+      height: '24px',
+      selectors: {
+        // standard button
+        '&.ms-Button--default.ms-Button--hasMenu.is-expanded': {
+          borderColor: semanticColors.buttonBorderColor,
+          backgroundColor: semanticColors.buttonBackgroundPressed,
+          color: semanticColors.buttonText,
+        },
+      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.buttonBackgroundDisabled,
@@ -17,35 +28,50 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `0px`,
     },
     rootHovered: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+      color: semanticColors.buttonText,
+      fill: semanticColors.buttonText,
+      backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
     },
     rootPressed: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      borderColor: semanticColors.buttonBorderColor,
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      color: semanticColors.buttonText,
+    },
+    rootFocused: {
+      borderColor: semanticColors.buttonBorderColor,
+      color: semanticColors.buttonText,
     },
     rootChecked: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      color: semanticColors.buttonText,
     },
     rootCheckedHovered: {
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
+      color: semanticColors.buttonText,
+      fill: semanticColors.buttonText,
+      backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
     },
     rootCheckedPressed: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
-      color: semanticColors.buttonTextPressed,
+      borderColor: semanticColors.buttonBorderColor,
+      backgroundColor: semanticColors.buttonBackgroundPressed,
+      color: semanticColors.buttonText,
     },
     splitButtonContainer: {
       selectors: {
         // standard button
         '.ms-Button--default': {
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
-          borderRight: 'none',
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+          borderRight: '0 !important',
         },
         // standard button dropdown
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackground,
           color: semanticColors.buttonText,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
-          borderLeft: 'none',
+          height: '24px',
+          //border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
+          borderLeft: '0',
           selectors: {
             '.ms-Button-menuIcon': {
               color: semanticColors.buttonText,
@@ -67,6 +93,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           backgroundColor: semanticColors.primaryButtonBackground,
           color: semanticColors.primaryButtonText,
           border: 'none',
+          height: '24px',
           selectors: {
             '.ms-Button-menuIcon': {
               color: semanticColors.primaryButtonText,
@@ -93,14 +120,18 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       },
     },
     splitButtonContainerHovered: {
+      // color: semanticColors.buttonText,
+      // fill: semanticColors.buttonText,
+      // backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+      // border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`
       selectors: {
-        // primary button hover
+        //primary button hover
         '.ms-Button--primary:not(.is-disabled)': {
           backgroundColor: semanticColors.primaryButtonBackgroundHovered,
           color: semanticColors.primaryButtonTextHovered,
           border: 'none',
         },
-        // primary button dropdown hover
+        //primary button dropdown hover
         '.ms-Button--primary + .ms-Button': {
           backgroundColor: semanticColors.primaryButtonBackgroundHovered,
           border: 'none',
@@ -120,17 +151,17 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
             },
           },
         },
-        // secondary button hover
+        //secondary button hover
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
-          borderRight: 'none',
-          color: semanticColors.buttonTextHovered,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+          borderRight: '0 !important',
+          color: semanticColors.buttonText,
         },
-        // secondary button dropdown hover
+        //secondary button dropdown hover
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
           borderLeft: 'none',
           selectors: {
             ':hover': {
@@ -138,7 +169,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
               color: semanticColors.buttonTextHovered,
               selectors: {
                 '.ms-Button-menuIcon': {
-                  color: semanticColors.buttonTextHovered,
+                  //color: semanticColors.buttonTextHovered,
                 },
               },
             },
@@ -190,18 +221,18 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // secondary button checked
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
           borderRight: 'none',
-          color: semanticColors.buttonTextPressed,
+          color: semanticColors.buttonText,
         },
         // secondary button dropdown checked
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
-          color: semanticColors.buttonTextPressed,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+          color: semanticColors.buttonText,
           selectors: {
             '.ms-Button-menuIcon': {
-              color: semanticColors.buttonTextPressed,
+              color: semanticColors.buttonText,
             },
           },
         },
@@ -211,7 +242,10 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         },
         // standard button divider
         '.ms-Button--default + .ms-Button + span': {
-          backgroundColor: semanticColors.buttonTextPressed,
+          backgroundColor: semanticColors.buttonText,
+          width: '1px !important',
+          height: '11px',
+          top: '7px',
         },
         // primary function disabled, secondary enabled - divider
         '.ms-Button--primary.is-disabled + .ms-Button + span': {
@@ -239,20 +273,20 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         },
         // secondary button checked hovered
         '.ms-Button--default:not(.is-disabled)': {
-          backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
-          borderRight: 'none',
-          color: semanticColors.buttonTextHovered,
+          color: semanticColors.buttonText,
+          fill: semanticColors.buttonText,
+          backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
         },
         // secondary button dropdown checked hovered
         '.ms-Button--default + .ms-Button': {
-          backgroundColor: semanticColors.buttonBackgroundHovered,
-          color: semanticColors.buttonTextHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
-          borderLeft: 'none',
+          color: semanticColors.buttonText,
+          fill: semanticColors.buttonText,
+          backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
+          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
           selectors: {
             '.ms-Button-menuIcon': {
-              color: semanticColors.buttonTextHovered,
+              color: semanticColors.buttonText,
             },
           },
         },
@@ -262,7 +296,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         },
         // standard button divider
         '.ms-Button--default + .ms-Button + span': {
-          backgroundColor: semanticColors.buttonTextHovered,
+          backgroundColor: semanticColors.buttonText,
         },
         // primary function disabled, secondary enabled - divider
         '.ms-Button--primary.is-disabled + .ms-Button + span': {
