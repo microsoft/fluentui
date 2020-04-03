@@ -5,6 +5,16 @@
 ```ts
 
 // @public
+export interface IUseBooleanCallbacks {
+    setFalse: () => void;
+    setTrue: () => void;
+    toggle: () => void;
+}
+
+// @public
+export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks];
+
+// @public
 export function useConst<T>(initialValue: T | (() => T)): T;
 
 // @public
