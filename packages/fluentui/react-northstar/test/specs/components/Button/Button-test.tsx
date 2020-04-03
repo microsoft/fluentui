@@ -11,7 +11,7 @@ import { mountWithProvider, mountWithProviderAndGetComponent } from 'test/utils'
 import { toggleButtonBehavior } from '@fluentui/accessibility';
 
 import Button from 'src/components/Button/Button';
-import Icon from 'src/components/Icon/Icon';
+import Box from 'src/components/Box/Box';
 
 const buttonImplementsShorthandProp = implementsShorthandProp(Button);
 
@@ -19,10 +19,7 @@ describe('Button', () => {
   isConformant(Button, {
     constructorName: 'Button',
   });
-  buttonImplementsShorthandProp('icon', Icon, {
-    mapsValueToProp: 'name',
-    requiredShorthandProps: { name: 'at' },
-  });
+  buttonImplementsShorthandProp('icon', Box);
 
   describe('accessibility', () => {
     describe('button', () => {

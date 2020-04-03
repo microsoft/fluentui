@@ -21,6 +21,7 @@ import Box, { BoxProps } from '../Box/Box';
 
 export interface InputSlotClassNames {
   input: string;
+  icon: string;
 }
 
 export interface InputProps extends UIComponentProps, ChildrenComponentProps, SupportedIntrinsicInputProps {
@@ -171,6 +172,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
             </Ref>
             {Box.create(this.computeIcon(), {
               defaultProps: () => ({
+                className: Input.slotClassNames.icon,
                 styles: styles.icon,
               }),
               overrideProps: this.handleIconOverrides,
@@ -230,6 +232,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 
 Input.slotClassNames = {
   input: `${Input.className}__input`,
+  icon: `${Input.className}__icon`,
 };
 
 /**
