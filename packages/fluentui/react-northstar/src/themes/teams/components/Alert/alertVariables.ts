@@ -61,6 +61,8 @@ export interface AlertVariables {
   dismissActionBackgroundColorHover: string;
   dismissActionBorderColorHover: string;
 
+  dismissActionContentFontWeight: FontWeightProperty;
+
   dismissActionColorActive: string;
   dismissActionBackgroundColorActive: string;
   dismissActionBorderColorActive: string;
@@ -142,6 +144,8 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     dismissActionColorHover: siteVars.colorScheme.brand.foregroundHover,
     dismissActionBackgroundColorHover: siteVars.colorScheme.default.backgroundHover2,
     dismissActionBorderColorHover: siteVars.colorScheme.default.borderHover,
+
+    dismissActionContentFontWeight: siteVars.fontWeightSemibold,
 
     dismissActionColorActive: siteVars.colorScheme.default.foregroundPressed,
     dismissActionBackgroundColorActive: siteVars.colorScheme.default.backgroundPressed,

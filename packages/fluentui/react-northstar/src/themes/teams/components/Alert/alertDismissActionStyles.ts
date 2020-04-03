@@ -54,15 +54,21 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       borderColor: v.dismissActionBorderColor,
 
       ...getIconFillOrOutlineStyles({ outline: true }),
-      [`& .${AlertDismissAction.slotClassNames.content}`]: {
-        ...getIndicatorStyles(dismissActionIndicatorColor, true, v.dismissActionIndicatorSize),
-      },
+
+      ...(!p.hasContent && {
+        [`& .${AlertDismissAction.slotClassNames.content}`]: {
+          ...getIndicatorStyles(dismissActionIndicatorColor, true, v.dismissActionIndicatorSize),
+        },
+      }),
 
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
-        [`& .${AlertDismissAction.slotClassNames.content}`]: {
-          ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
-        },
+
+        ...(!p.hasContent && {
+          [`& .${AlertDismissAction.slotClassNames.content}`]: {
+            ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
+          },
+        }),
 
         backgroundColor: v.hoverBackgroundColor,
         color: 'currentColor',
@@ -94,9 +100,12 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
         borderWidth,
         ...borderFocusStyles[':focus-visible'],
         ...getIconFillOrOutlineStyles({ outline: false }),
-        [`& .${AlertDismissAction.slotClassNames.content}`]: {
-          ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
-        },
+
+        ...(!p.hasContent && {
+          [`& .${AlertDismissAction.slotClassNames.content}`]: {
+            ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
+          },
+        }),
 
         ':hover': {
           borderColor: v.dismissActionBorderColorHover,
@@ -118,13 +127,13 @@ const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionSt
       }),
     };
   },
-  content: ({ props: p, variables: v, rtl, theme }) => {
+  content: ({ props: p, variables: v, theme }) => {
     const { siteVariables } = theme;
     const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v, siteVariables);
     return {
-      ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
-      ...(rtl && {
-        transform: 'scaleX(-1)',
+      fontWeight: v.dismissActionContentFontWeight,
+      ...(!p.hasContent && {
+        ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
       }),
     };
   },

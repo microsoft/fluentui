@@ -63,7 +63,9 @@ export type AlertDismissActionSlotClassNames = {
 export type AlertDismissActionStylesProps = Pick<
   AlertDismissActionProps,
   'disabled' | 'danger' | 'warning' | 'info' | 'success'
->;
+> & {
+  hasContent?: boolean;
+};
 
 const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
   FluentComponentStaticProps<AlertDismissActionProps> & {
@@ -73,9 +75,27 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();
 
-  const { accessibility, as, children, className, content, disabled, design, styles, variables } = props;
+  const {
+    accessibility,
+    as,
+    children,
+    className,
+    content,
+    disabled,
+    design,
+    styles,
+    variables,
+    danger,
+    warning,
+    info,
+    success,
+  } = props;
 
   const hasChildren = childrenExist(children);
+  const hasContent = !!content && !_.isEmpty(content);
+  console.log(content);
+  console.log(hasContent);
+  console.log(hasChildren);
 
   const getA11Props = useAccessibility(accessibility, {
     debugName: AlertDismissAction.displayName,
@@ -95,6 +115,11 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
     className: AlertDismissAction.className,
     mapPropsToStyles: () => ({
       disabled,
+      danger,
+      warning,
+      info,
+      success,
+      hasContent: hasContent || hasChildren,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -159,6 +184,9 @@ AlertDismissAction.propTypes = {
     content: 'shorthand',
   }),
   disabled: PropTypes.bool,
+  danger: PropTypes.bool,
+  warning: PropTypes.bool,
+  info: PropTypes.bool,
   onClick: PropTypes.func,
 };
 
