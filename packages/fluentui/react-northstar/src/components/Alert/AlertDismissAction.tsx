@@ -174,7 +174,7 @@ AlertDismissAction.defaultProps = {
 };
 
 AlertDismissAction.displayName = 'AlertDismissAction';
-AlertDismissAction.className = 'ui-alert__dismissAction';
+AlertDismissAction.className = 'ui-alert__dismissaction';
 
 AlertDismissAction.propTypes = {
   ...commonPropTypes.createCommon({
