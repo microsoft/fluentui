@@ -11,6 +11,8 @@ import {
   MoreIcon,
   BookmarkIcon,
   TranslationIcon,
+  TrashCanIcon,
+  MarkAsUnreadIcon,
 } from '@fluentui/react-icons-northstar';
 
 const items: ShorthandCollection<MenuItemProps> = [
@@ -117,10 +119,7 @@ const items: ShorthandCollection<MenuItemProps> = [
         {
           key: '6',
           content: 'item2',
-          icon: {
-            name: 'mark-as-unread',
-            outline: true,
-          },
+          icon: <MarkAsUnreadIcon outline />,
         },
         {
           key: '7',
@@ -135,10 +134,7 @@ const items: ShorthandCollection<MenuItemProps> = [
         {
           key: '8',
           content: 'item3',
-          icon: {
-            name: 'trash-can',
-            outline: true,
-          },
+          icon: <TrashCanIcon outline />,
         },
       ],
     },

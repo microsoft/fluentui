@@ -1,5 +1,5 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
-import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton, Icon } from '@fluentui/react-northstar';
+import { Avatar, Chat, ChatMessageProps, ChatProps, MenuButton } from '@fluentui/react-northstar';
 import * as React from 'react';
 import {
   AddIcon,
@@ -13,6 +13,7 @@ import {
   LockIcon,
   MoreIcon,
   StarIcon,
+  ReplyIcon,
 } from '@fluentui/react-icons-northstar';
 
 const ChatExampleInScrollableShorthand = () => {
@@ -50,7 +51,7 @@ const ChatExampleInScrollableShorthand = () => {
       children: (Component, props) => (
         <MenuButton
           menu={[
-            { key: 'reply', content: 'Reply', icon: <Icon name="replay" /> },
+            { key: 'reply', content: 'Reply', icon: <ReplyIcon /> },
             { key: 'edit', content: 'Edit', icon: <EditIcon /> },
             { key: 'save', content: 'Save message', icon: <BookmarkIcon /> },
             { key: 'delete', content: 'Delete', icon: <CloseIcon /> },
