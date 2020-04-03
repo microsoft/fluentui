@@ -1,10 +1,14 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle, SiteVariablesPrepared } from '@fluentui/styles';
 import { AlertProps } from '../../../../components/Alert/Alert';
 import { AlertVariables } from './alertVariables';
-import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
-const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: SiteVariablesPrepared): ICSSInJSStyle => {
+type AlertTypeProps = Pick<AlertProps, 'danger' | 'warning' | 'info' | 'success'>;
+
+export const getIntentColorsFromProps = (
+  p: AlertTypeProps,
+  v: AlertVariables,
+  siteVars: SiteVariablesPrepared,
+): ICSSInJSStyle => {
   const { colors } = siteVars;
 
   if (p.danger) {
@@ -115,42 +119,6 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
   icon: ({ variables: v }): ICSSInJSStyle => ({
     margin: v.iconMargin,
   }),
-
-  dismissAction: ({ variables: v, props: p, theme: { siteVariables } }): ICSSInJSStyle => {
-    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
-    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
-    return {
-      height: v.dismissActionSize,
-      minWidth: v.dismissActionSize,
-      color: v.dismissActionColor || 'currentColor',
-      border: 0,
-      borderRadius: v.borderRadius,
-      ...getIconFillOrOutlineStyles({ outline: true }),
-
-      ':hover': {
-        backgroundColor: v.hoverBackgroundColor,
-        color: 'currentColor',
-        ...iconFilledStyles,
-        // TODO: consider creating dedicated method for border styles on hover
-        ...getBorderFocusStyles({
-          variables: {
-            borderRadius: v.dismissActionHoverBorderRadius,
-            borderWidth: v.dismissActionHoverBorderWidth,
-            focusInnerBorderColor: v.dismissActionHoverInnerBorderColor,
-            focusOuterBorderColor: v.dismissActionHoverOuterBorderColor,
-            zIndexes: { foreground: v.dismissActionHoverZIndex },
-          },
-        })[':focus-visible'],
-      },
-
-      ':focus': borderFocusStyles[':focus'],
-      ':focus-visible': {
-        backgroundColor: v.focusBackgroundColor,
-        ...iconFilledStyles,
-        ...borderFocusStyles[':focus-visible'],
-      },
-    };
-  },
 };
 
 export default alertStyles;

@@ -4,6 +4,7 @@ export { default as AccordionTitle } from './components/Accordion/accordionTitle
 export { default as Attachment } from './components/Attachment/attachmentVariables';
 
 export { default as Alert } from './components/Alert/alertVariables';
+export { default as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 
 export { default as Avatar } from './components/Avatar/avatarVariables';
 
