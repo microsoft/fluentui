@@ -111,7 +111,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     selectedItems: [],
     selection: selectionListSelection,
     onItemsRemoved: () => {
-      console.log('example onItemsRemoved');
+      // TODO: maintain local state
     },
     getItemCopyText: _getItemsCopyText
   } as ISelectedPeopleListProps<IPersonaProps>;

@@ -34,7 +34,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   );
 
   const _onSelectionChanged = () => {
-    console.log('selected index:' + selection.getSelectedIndices());
     showPicker(false);
     setSelection(selection);
     setFocusedItemIndices(selection.getSelectedIndices());
@@ -81,7 +80,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onInputKeyDown = (ev: React.KeyboardEvent<Autofill | HTMLElement>) => {
-    console.log('on input keyDown');
     if (isSuggestionsShown) {
       const keyCode = ev.which;
       switch (keyCode) {
@@ -114,7 +112,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
   };
 
   const _onCopy = () => {
-    console.log('copy handler');
     if (focusedItemIndices.length > 0 && props.selectedItemsListProps?.getItemCopyText) {
       const copyItems = selection.getSelection() as T[];
       const copyString = props.selectedItemsListProps.getItemCopyText(copyItems);
@@ -126,12 +123,10 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (props.inputProps && props.inputProps.onFocus) {
       props.inputProps.onFocus(ev as React.FocusEvent<HTMLInputElement>);
     }
-    console.log('on iput focus');
   };
   const _onInputClick = () => {
     unselectAll();
     showPicker(true);
-    console.log('on input click');
   };
   const _onInputChange = (value: string, composing?: boolean) => {
     if (!composing) {
@@ -139,7 +134,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       setQueryString(value);
       // update floatingpicker suggestions
     }
-    console.log(`${value} :on input change`);
   };
   const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
     if (props.onPaste) {
@@ -148,7 +142,6 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       // Pass current selected items
       props.onPaste(inputText, selectedItems);
     }
-    console.log('on paste');
   };
 
   const _renderSelectedItemsList = (): JSX.Element => {
