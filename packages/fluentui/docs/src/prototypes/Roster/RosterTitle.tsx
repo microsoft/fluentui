@@ -4,7 +4,7 @@ import { rosterTitleIconStyles } from './styles/styles';
 
 export const RosterSectionTitle: (Component, props) => React.ReactNode = (
   Component,
-  { expanded, selectIndicator, key, ...restProps },
+  { expanded, key, ...restProps },
 ) => {
   return (
     <Flex key={key}>

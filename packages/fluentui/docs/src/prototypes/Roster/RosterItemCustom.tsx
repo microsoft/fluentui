@@ -9,7 +9,6 @@ import { withRosterActions } from './helpers/withRosterActions';
 import { RosterSectionType, RosterVisuals } from './interface/roster.interface';
 
 export interface IRosterItemProps {
-  id: string;
   userId: string;
   displayName: string;
   visuals: RosterVisuals;
@@ -32,7 +31,6 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
   displayName,
   action,
   type,
-  id,
   selectable,
   message,
   userId,
@@ -62,4 +60,43 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
   );
 };
 
-export default withRosterActions(RosterItemCustom);
+const RosterItemWithActions = withRosterActions(RosterItemCustom);
+
+export default function(
+  Component,
+  {
+    isMuted,
+    visuals,
+    displayName,
+    action,
+    type,
+    selectable,
+    message,
+    userId,
+    selected,
+    toggleSelect,
+    selectIndicator,
+    ...restProps
+  },
+) {
+  // selectIndicator will be always undefined since we are using children prop. It should be moved up to TreeItem or find a better solution
+  return (
+    <Component {...restProps}>
+      <RosterItemWithActions
+        {...{
+          isMuted,
+          visuals,
+          displayName,
+          action,
+          type,
+          selectable,
+          message,
+          userId,
+          selected,
+          toggleSelect,
+          selectIndicator,
+        }}
+      />
+    </Component>
+  );
+}
