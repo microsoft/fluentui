@@ -1,0 +1,133 @@
+import { unstable_createAnimationStyles as createAnimationStyles } from '@fluentui/react-bindings';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import AlertDismissAction, { AlertDismissActionStylesProps } from '../../../../components/Alert/AlertDismissAction';
+import { AlertVariables } from './alertVariables';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import dismissIndicatorUrl from './dismissIndicatorUrl';
+import { getIntentColorsFromProps } from './alertStyles';
+
+const getIndicatorStyles = (color: string, outline: boolean, size: string): ICSSInJSStyle => {
+  return {
+    width: size,
+    height: size,
+    backgroundImage: dismissIndicatorUrl(color, outline),
+    backgroundRepeat: 'no-repeat',
+  };
+};
+
+const alertDismissActionStyles: ComponentSlotStylesPrepared<AlertDismissActionStylesProps, AlertVariables> = {
+  root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
+    const { siteVariables } = theme;
+    const { borderWidth } = siteVariables;
+    const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v, siteVariables);
+
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: {
+        borderRadius: v.focusBorderRadius,
+        borderWidth: v.focusBorderWidth,
+        focusInnerBorderColor: v.focusInnerBorderColor,
+        focusOuterBorderColor: v.focusOuterBorderColor,
+        zIndexes: { foreground: v.focusBorderZIndex },
+      },
+      borderPadding: borderWidth,
+    });
+
+    return {
+      height: v.dismissActionSize,
+      minWidth: v.dismissActionSize,
+      color: v.dismissActionColor || 'currentColor',
+      backgroundColor: v.dismissActionBackgroundColor,
+      borderRadius: v.borderRadius,
+      display: 'inline-flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      position: 'relative',
+      verticalAlign: 'middle',
+      cursor: 'pointer',
+
+      outline: 0,
+      padding: 0,
+      border: 0,
+      borderWidth,
+      borderStyle: 'solid',
+      borderColor: v.dismissActionBorderColor,
+
+      ...getIconFillOrOutlineStyles({ outline: true }),
+      [`& .${AlertDismissAction.slotClassNames.content}`]: {
+        ...getIndicatorStyles(dismissActionIndicatorColor, true, v.dismissActionIndicatorSize),
+      },
+
+      ':hover': {
+        ...getIconFillOrOutlineStyles({ outline: false }),
+        [`& .${AlertDismissAction.slotClassNames.content}`]: {
+          ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
+        },
+
+        backgroundColor: v.hoverBackgroundColor,
+        color: 'currentColor',
+
+        ...getBorderFocusStyles({
+          variables: {
+            borderRadius: v.dismissActionHoverBorderRadius,
+            borderWidth: v.dismissActionHoverBorderWidth,
+            focusInnerBorderColor: v.dismissActionHoverInnerBorderColor,
+            focusOuterBorderColor: v.dismissActionHoverOuterBorderColor,
+            zIndexes: { foreground: v.dismissActionHoverZIndex },
+          },
+        })[':focus-visible'],
+      },
+
+      ':active': {
+        ...createAnimationStyles('scaleDownSoft', theme),
+        color: v.dismissActionColorActive,
+        backgroundColor: v.dismissActionBackgroundColorActive,
+        borderColor: v.dismissActionBorderColorActive,
+        boxShadow: 'none',
+      },
+
+      ':focus': borderFocusStyles[':focus'],
+      ':focus-visible': {
+        backgroundColor: v.focusBackgroundColor,
+        borderColor: v.dismissActionBorderColorFocus,
+        color: v.dismissActionColorFocus,
+        borderWidth,
+        ...borderFocusStyles[':focus-visible'],
+        ...getIconFillOrOutlineStyles({ outline: false }),
+        [`& .${AlertDismissAction.slotClassNames.content}`]: {
+          ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
+        },
+
+        ':hover': {
+          borderColor: v.dismissActionBorderColorHover,
+        },
+      },
+
+      // Overrides for "disabled" buttons
+      ...(p.disabled && {
+        cursor: 'default',
+        color: v.dismissActionColorDisabled,
+        boxShadow: 'none',
+        pointerEvents: 'none',
+        ':hover': {
+          color: v.dismissActionColorDisabled,
+        },
+
+        backgroundColor: v.dismissActionBackgroundColorDisabled,
+        borderColor: v.dismissActionBorderColorDisabled,
+      }),
+    };
+  },
+  content: ({ props: p, variables: v, rtl, theme }) => {
+    const { siteVariables } = theme;
+    const { color: dismissActionIndicatorColor } = getIntentColorsFromProps(p, v, siteVariables);
+    return {
+      ...getIndicatorStyles(dismissActionIndicatorColor, false, v.dismissActionIndicatorSize),
+      ...(rtl && {
+        transform: 'scaleX(-1)',
+      }),
+    };
+  },
+};
+
+export default alertDismissActionStyles;

@@ -4,7 +4,13 @@ import { AlertVariables } from './alertVariables';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 
-const getIntentColorsFromProps = (p: AlertProps, v: AlertVariables, siteVars: SiteVariablesPrepared): ICSSInJSStyle => {
+type AlertTypeProps = Pick<AlertProps, 'danger' | 'warning' | 'info' | 'success'>;
+
+export const getIntentColorsFromProps = (
+  p: AlertTypeProps,
+  v: AlertVariables,
+  siteVars: SiteVariablesPrepared,
+): ICSSInJSStyle => {
   const { colors } = siteVars;
 
   if (p.danger) {

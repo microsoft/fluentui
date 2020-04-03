@@ -15,16 +15,16 @@ import {
 import { RenderResultConfig } from '../../utils/renderComponent';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs, ShorthandCollection } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
-import Button, { ButtonProps } from '../Button/Button';
+import { ButtonProps } from '../Button/Button';
 import Icon, { IconProps } from '../Icon/Icon';
 import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
+import AlertDismissAction, { AlertDismissActionProps } from './AlertDismissAction';
 
 export interface AlertSlotClassNames {
   content: string;
   actions: string;
-  dismissAction: string;
   icon: string;
   header: string;
   body: string;
@@ -65,7 +65,7 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
    * A button shorthand for the dismiss action slot. To use this slot the alert should be
    * dismissible.
    */
-  dismissAction?: ShorthandValue<ButtonProps>;
+  dismissAction?: ShorthandValue<AlertDismissActionProps>;
 
   /** An alert may be formatted to display information. */
   info?: boolean;
@@ -109,7 +109,6 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
   static slotClassNames: AlertSlotClassNames = {
     content: `${Alert.className}__content`,
     actions: `${Alert.className}__actions`,
-    dismissAction: `${Alert.className}__dismissAction`,
     icon: `${Alert.className}__icon`,
     header: `${Alert.className}__header`,
     body: `${Alert.className}__body`,
@@ -137,9 +136,11 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
 
   static defaultProps = {
     accessibility: alertBehavior,
-    dismissAction: { icon: 'close' },
+    dismissAction: {},
     body: {},
   };
+
+  static DismissAction = AlertDismissAction;
 
   static autoControlledProps = ['visible'];
 
@@ -164,7 +165,20 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
   };
 
   renderContent = ({ styles, accessibility }: RenderResultConfig<AlertProps>) => {
-    const { actions, dismissible, dismissAction, content, icon, header, body } = this.props;
+    const {
+      actions,
+      dismissible,
+      dismissAction,
+      content,
+      icon,
+      header,
+      body,
+      danger,
+      warning,
+      info,
+      success,
+      variables,
+    } = this.props;
 
     const bodyContent = (
       <>
@@ -212,12 +226,13 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
           }),
         })}
         {dismissible &&
-          Button.create(dismissAction, {
+          AlertDismissAction.create(dismissAction, {
             defaultProps: () => ({
-              iconOnly: true,
-              text: true,
-              className: Alert.slotClassNames.dismissAction,
-              styles: styles.dismissAction,
+              danger,
+              warning,
+              info,
+              success,
+              variables,
               ...accessibility.attributes.dismissAction,
             }),
             overrideProps: this.handleDismissOverrides,

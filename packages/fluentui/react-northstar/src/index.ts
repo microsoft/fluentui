@@ -24,6 +24,8 @@ export { default as AccordionContent } from './components/Accordion/AccordionCon
 
 export * from './components/Alert/Alert';
 export { default as Alert } from './components/Alert/Alert';
+export * from './components/Alert/AlertDismissAction';
+export { default as AlertDismissAction } from './components/Alert/AlertDismissAction';
 
 export * from './components/Attachment/Attachment';
 export { default as Attachment } from './components/Attachment/Attachment';
