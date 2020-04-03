@@ -3,7 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const flamegrill = require('flamegrill');
-const scenarioIterationOverwrites = require('../src/scenarioIterations');
+const scenarioIterations = require('../src/scenarioIterations');
 const scenarioNames = require('../src/scenarioNames');
 const { argv } = require('@uifabric/build').just;
 
@@ -232,7 +232,7 @@ module.exports = async function getPerfRegressions() {
     if (!scenariosAvailable.includes(scenarioName)) {
       throw new Error(`Invalid scenario: ${scenarioName}.`);
     }
-    const iterations = iterationsArg || scenarioIterationOverwrites[scenarioName] || iterationsDefault;
+    const iterations = iterationsArg || scenarioIterations[scenarioName] || iterationsDefault;
     // These lines can be used to check for consistency.
     // Array.from({ length: 20 }, (entry, index) => {
     scenarios[scenarioName] = {
