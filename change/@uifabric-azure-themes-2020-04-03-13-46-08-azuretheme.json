@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Azure-theme component style updates per Azure portal design team",
+  "packageName": "@uifabric/azure-themes",
+  "email": "jagaheri@microsoft.com",
+  "commit": "82db1c042e9038736add438a780eac3fd9fce9f1",
+  "dependentChangeType": "patch",
+  "date": "2020-04-03T20:46:08.004Z"
+}
