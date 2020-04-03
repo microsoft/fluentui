@@ -46,6 +46,8 @@ module.exports = {
         },
 
         testURL: 'http://localhost',
+
+        watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
       },
       customConfig,
     ),
