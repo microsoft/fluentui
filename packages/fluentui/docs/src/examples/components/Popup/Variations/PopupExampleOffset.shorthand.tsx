@@ -6,7 +6,7 @@ const PopupExampleOffset = () => (
     <Popup
       align="start"
       position="above"
-      offset={({ popper }) => [-popper.width, 0]}
+      offset="-100%p"
       trigger={
         <Button
           icon={{
