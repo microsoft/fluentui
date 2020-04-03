@@ -415,12 +415,12 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
     };
   },
 
-  icon: ({ props: p }): ICSSInJSStyle => ({
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: pxToRem(16),
-    height: pxToRem(16),
+    width: v.iconSize,
+    height: v.iconSize,
 
     '& > :first-child': {
       height: '100%',
