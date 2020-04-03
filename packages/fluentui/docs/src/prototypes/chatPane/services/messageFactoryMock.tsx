@@ -14,7 +14,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
-import { DownloadIcon } from '@fluentui/react-icons-northstar';
+import { AcceptIcon, DownloadIcon } from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
