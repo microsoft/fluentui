@@ -3,6 +3,7 @@ export { default as AccordionContent } from './components/Accordion/accordionCon
 export { default as AccordionTitle } from './components/Accordion/accordionTitleStyles';
 
 export { default as Alert } from './components/Alert/alertStyles';
+export { default as AlertDismissAction } from './components/Alert/alertDismissActionStyles';
 
 export { default as Attachment } from './components/Attachment/attachmentStyles';
 

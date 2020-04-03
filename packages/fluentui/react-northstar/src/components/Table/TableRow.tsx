@@ -39,6 +39,11 @@ export interface TableRowProps extends UIComponentProps {
    * Render table in compact mode
    */
   compact?: boolean;
+
+  /**
+   * Whether a row is currently selected or not.
+   */
+  selected?: boolean;
 }
 
 const handleVariablesOverrides = variables => predefinedProps => ({
@@ -63,6 +68,7 @@ class TableRow extends UIComponent<WithAsProp<TableRowProps>> {
     items: customPropTypes.collectionShorthand,
     header: PropTypes.bool,
     compact: PropTypes.bool,
+    selected: PropTypes.bool,
   };
 
   static defaultProps = {

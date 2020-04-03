@@ -1,7 +1,14 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Apr 2020 12:30:40 GMT and should not be manually modified.
 
+## 1.1.0
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Minor changes
+
+- DonutChart: Add prop to allow string inside Donut. (v-satgar@microsoft.com)
+- providing Ymin and Ymax as props to the user (v-sivsar@microsoft.com)
 ## 1.0.0
 Wed, 25 Mar 2020 12:30:04 GMT
 

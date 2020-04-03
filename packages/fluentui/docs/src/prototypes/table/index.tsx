@@ -17,6 +17,7 @@ import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
 import ResponsiveTableContainer from './ResponsiveTableContainer';
+import SelectableTable from './SelectableTable';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -220,6 +221,9 @@ export default () => (
       <ResponsiveTableContainer columns={responsiveColumnsConfigPriorityOrder}>
         <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
       </ResponsiveTableContainer>
+    </ComponentPrototype>
+    <ComponentPrototype title="Selectable table" description="Table with rows that can be selected">
+      <SelectableTable />
     </ComponentPrototype>
   </PrototypeSection>
 );

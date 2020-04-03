@@ -29,11 +29,11 @@
     "parallel-webpack": "^2.4.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.22.9",
+    "@uifabric/experiments": "^7.22.13",
     "@fluentui/keyboard-key": "^0.1.4",
     "@uifabric/set-version": "^7.0.9",
     "@uifabric/styling": "^7.11.1",
-    "office-ui-fabric-react": "^7.105.5",
+    "office-ui-fabric-react": "^7.105.9",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",

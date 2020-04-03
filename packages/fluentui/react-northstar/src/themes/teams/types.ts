@@ -44,7 +44,7 @@ import { ListItemStylesProps } from '../../components/List/ListItem';
 import { LoaderProps } from '../../components/Loader/Loader';
 import { MenuItemProps } from '../../components/Menu/MenuItem';
 import { MenuProps } from '../../components/Menu/Menu';
-import { PopupContentProps } from '../../components/Popup/PopupContent';
+import { PopupContentStylesProps } from '../../components/Popup/PopupContent';
 import { PortalProps } from '../../components/Portal/Portal';
 import { RadioGroupItemProps } from '../../components/RadioGroup/RadioGroupItem';
 import { RadioGroupProps } from '../../components/RadioGroup/RadioGroup';
@@ -63,7 +63,7 @@ import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/Toolb
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
-import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
+import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
@@ -119,7 +119,7 @@ export type TeamsThemeStylesProps = {
   Menu: MenuProps;
   MenuItem: MenuItemProps;
   Portal: PortalProps;
-  PopupContent: PopupContentProps;
+  PopupContent: PopupContentStylesProps;
   RadioGroup: RadioGroupProps;
   RadioGroupItem: RadioGroupItemProps;
   Reaction: ReactionProps;
@@ -136,7 +136,7 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
-  TooltipContent: TooltipContentProps;
+  TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;

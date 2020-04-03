@@ -2,6 +2,92 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Fri, 03 Apr 2020 12:27:13 GMT",
+      "tag": "office-ui-fabric-react_v7.105.9",
+      "version": "7.105.9",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ChoiceGroup: fix bad cache key for getClassNames",
+            "author": "xgao@microsoft.com",
+            "commit": "5a23152f3833f500d07e2a6c75080837ac76643e"
+          },
+          {
+            "comment": "Update Layer and Modal examples to use functional components",
+            "author": "elcraig@microsoft.com",
+            "commit": "0c1876284c8d6ce80e9c22fee6a188ef43c27d93"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "office-ui-fabric-react_v7.105.8",
+      "version": "7.105.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: borderColor should be applied properly in the case of error",
+            "author": "aneeshak@microsoft.com",
+            "commit": "cdf6c864ab4d067bfabc995491dd31771495dd22"
+          },
+          {
+            "comment": "Button: Add an example of an IconButton that has a Tooltip.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "79cf676bb31f2852692481c434885ea4883e6f78"
+          },
+          {
+            "comment": "Pivot: fixing comment typo.",
+            "author": "czearing@outlook.com",
+            "commit": "fd64b77b579586a84c56209f7c34979ca286bfc2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Apr 2020 12:29:21 GMT",
+      "tag": "office-ui-fabric-react_v7.105.7",
+      "version": "7.105.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: closeButton should stick to the right even if header is removed",
+            "author": "aneeshak@microsoft.com",
+            "commit": "c8accefc9846526b5da100bf99199c20b91aa18e"
+          },
+          {
+            "comment": "Combobox: Update docs to make onPendingValueChanged more clear",
+            "author": "joschect@microsoft.com",
+            "commit": "1e177923563e1a76b3cba370fa6d3076ee97611c"
+          },
+          {
+            "comment": "ComboBox: onResolveOptions and onPointerDown callbacks should not hit when disabled.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "bc8ee996913310eed2606c61ec663b76eae470bd"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Mar 2020 12:27:26 GMT",
+      "tag": "office-ui-fabric-react_v7.105.6",
+      "version": "7.105.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList: Fixes following issues with Groups: 1) Add draggable attribute if required 2) Call onDragEnter and onDragLeave with right parameters 3) Use the css class returned by onDragEnter",
+            "author": "sachinma@microsoft.com",
+            "commit": "42dd53369d3872de58f56f13f508b3134bb77659"
+          },
+          {
+            "comment": "update website banner and remove reference to fabric in context menu docs",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "f584afe2afbb834ac83c5a9b9f384cfac9c27b5d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2020 19:10:08 GMT",
       "tag": "office-ui-fabric-react_v7.105.5",
       "version": "7.105.5",
