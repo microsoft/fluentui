@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Update homepage.htm mirror to always use bundled React",
-  "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com",
-  "commit": "b6b1b12b9430225883ec86c93258abb440da5b49",
-  "dependentChangeType": "none",
-  "date": "2020-04-01T22:23:08.560Z"
-}

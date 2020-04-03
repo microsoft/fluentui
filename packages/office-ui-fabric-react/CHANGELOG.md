@@ -1,7 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 Apr 2020 12:29:21 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Apr 2020 12:27:13 GMT and should not be manually modified.
 
+## 7.105.9
+Fri, 03 Apr 2020 12:27:13 GMT
+
+### Patches
+
+- ChoiceGroup: fix bad cache key for getClassNames (xgao@microsoft.com)
+- Update Layer and Modal examples to use functional components (elcraig@microsoft.com)
+## 7.105.8
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- ComboBox: borderColor should be applied properly in the case of error (aneeshak@microsoft.com)
+- Button: Add an example of an IconButton that has a Tooltip. (aneeshak@microsoft.com)
+- Pivot: fixing comment typo. (czearing@outlook.com)
 ## 7.105.7
 Wed, 01 Apr 2020 12:29:21 GMT
 

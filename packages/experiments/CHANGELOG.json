@@ -2,6 +2,20 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/experiments_v7.22.12",
+      "version": "7.22.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding build tool dependency for type safety of scss modules.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ada208a94fa8033afa8049b7997636b96b5e7193"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/experiments_v7.22.8",
       "version": "7.22.8",

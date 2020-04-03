@@ -52,6 +52,36 @@ export interface AlertVariables {
   headerMargin: string;
 
   iconMargin: string;
+
+  dismissActionBackgroundColor: string;
+  dismissActionBorderRadius: string;
+  dismissActionBorderColor: string;
+
+  dismissActionColorHover: string;
+  dismissActionBackgroundColorHover: string;
+  dismissActionBorderColorHover: string;
+
+  dismissActionContentFontWeight: FontWeightProperty;
+
+  dismissActionColorActive: string;
+  dismissActionBackgroundColorActive: string;
+  dismissActionBorderColorActive: string;
+
+  dismissActionBackgroundColorFocus: string;
+  dismissActionBorderColorFocus: string;
+  dismissActionColorFocus: string;
+
+  dismissActionColorDisabled: string;
+  dismissActionBackgroundColorDisabled: string;
+  dismissActionBorderColorDisabled: string;
+
+  dismissActionIndicatorSize: string;
+
+  focusBorderRadius: string;
+  focusBorderWidth: string;
+  focusInnerBorderColor: string;
+  focusOuterBorderColor: string;
+  focusBorderZIndex: string;
 }
 
 export default (siteVars: SiteVariablesPrepared): AlertVariables => {
@@ -106,5 +136,35 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     headerMargin: `0 ${pxToRem(10)} 0 0`,
 
     iconMargin: `0 ${pxToRem(10)} 0 0`,
+
+    dismissActionBackgroundColor: 'transparent',
+    dismissActionBorderRadius: siteVars.borderRadius,
+    dismissActionBorderColor: 'transparent',
+
+    dismissActionColorHover: siteVars.colorScheme.brand.foregroundHover,
+    dismissActionBackgroundColorHover: siteVars.colorScheme.default.backgroundHover2,
+    dismissActionBorderColorHover: siteVars.colorScheme.default.borderHover,
+
+    dismissActionContentFontWeight: siteVars.fontWeightSemibold,
+
+    dismissActionColorActive: siteVars.colorScheme.default.foregroundPressed,
+    dismissActionBackgroundColorActive: siteVars.colorScheme.default.backgroundPressed,
+    dismissActionBorderColorActive: siteVars.colorScheme.default.borderPressed,
+
+    dismissActionBackgroundColorFocus: undefined,
+    dismissActionBorderColorFocus: undefined,
+    dismissActionColorFocus: undefined,
+
+    dismissActionColorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
+    dismissActionBackgroundColorDisabled: siteVars.colorScheme.default.backgroundDisabled,
+    dismissActionBorderColorDisabled: 'transparent',
+
+    dismissActionIndicatorSize: pxToRem(16),
+
+    focusBorderRadius: siteVars.borderRadius,
+    focusBorderWidth: siteVars.borderWidth,
+    focusInnerBorderColor: siteVars.focusInnerBorderColor,
+    focusOuterBorderColor: siteVars.focusOuterBorderColor,
+    focusBorderZIndex: siteVars.zIndexes.foreground,
   };
 };
