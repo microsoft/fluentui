@@ -26,7 +26,7 @@ export class LineChartStyledExample extends React.Component<{}, {}> {
           { x: new Date('2018/01/20'), y: 24 },
           { x: new Date('2018/01/24'), y: 35 },
           { x: new Date('2018/01/26'), y: 35 },
-          { x: new Date('2018/01/29'), y: 38 },
+          { x: new Date('2018/01/29'), y: 90 },
         ],
         legend: 'Week',
         color: DefaultPalette.blue,
@@ -40,7 +40,7 @@ export class LineChartStyledExample extends React.Component<{}, {}> {
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} strokeWidth={4} />
+        <LineChart data={data} strokeWidth={4} yMaxValue={90} />
       </div>
     );
   }

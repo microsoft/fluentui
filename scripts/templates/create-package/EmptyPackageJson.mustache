@@ -1,7 +1,7 @@
 {
   "name": "{{{packageNpmName}}}",
   "version": "0.1.0",
-  "description": "Experimental React components for building experiences for Office 365.",
+  "description": "React components for building web experiences.",
   "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,10 +18,13 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
-    "start": "just-scripts dev",
+    "just": "just-scripts",
+    "lint": "just-scripts lint",
+    "start": "just-scripts dev:storybook",
     "start-test": "just-scripts jest-watch",
-    "update-snapshots": "just-scripts jest -u",
-    "just": "just-scripts"
+    "test": "just-scripts test",
+    "update-api": "just-scripts update-api",
+    "update-snapshots": "just-scripts jest -u"
   },
   "devDependencies": {
     "@types/enzyme": "{{{typesEnzyme}}}",
@@ -33,8 +36,6 @@
     "@types/react-test-renderer": "{{{typesReactTestRenderer}}}",
     "@types/webpack-env": "{{{typesWebpackEnv}}}",
     "@uifabric/build": "{{{uifabricBuild}}}",
-    "@uifabric/example-app-base": "{{{uifabricExampleAppBase}}}",
-    "@uifabric/jest-serializer-merge-styles": "{{{uifabricJestSerializerMergeStyles}}}",
     "@uifabric/tslint-rules": "{{{uifabricTslintRules}}}",
     "enzyme": "{{{enzyme}}}",
     "enzyme-adapter-react-16": "{{{enzymeAdapterReact16}}}",
@@ -42,12 +43,12 @@
     "react": "{{{react}}}",
     "react-app-polyfill": "{{{reactAppPolyfill}}}",
     "react-dom": "{{{reactDom}}}",
-    "react-test-renderer": "{{{reactTestRenderer}}}"
+    "react-test-renderer": "{{{reactTestRenderer}}}",
+    "typescript-plugin-css-modules": "{{{typescriptPluginCssModules}}}"
+
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "{{{microsoftLoadThemedStyles}}}",
     "@uifabric/set-version": "{{{uifabricSetVersion}}}",
-    "office-ui-fabric-react": "{{{officeUiFabricReact}}}",
     "tslib": "{{{tslib}}}"
   },
   "peerDependencies": {

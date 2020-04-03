@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Update Layer and Modal examples to use functional components",
+  "packageName": "office-ui-fabric-react",
+  "email": "elcraig@microsoft.com",
+  "commit": "0c1876284c8d6ce80e9c22fee6a188ef43c27d93",
+  "dependentChangeType": "patch",
+  "date": "2020-04-02T17:31:26.518Z"
+}

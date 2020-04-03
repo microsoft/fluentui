@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "office-ui-fabric-react_v7.105.8",
+      "version": "7.105.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: borderColor should be applied properly in the case of error",
+            "author": "aneeshak@microsoft.com",
+            "commit": "cdf6c864ab4d067bfabc995491dd31771495dd22"
+          },
+          {
+            "comment": "Button: Add an example of an IconButton that has a Tooltip.",
+            "author": "aneeshak@microsoft.com",
+            "commit": "79cf676bb31f2852692481c434885ea4883e6f78"
+          },
+          {
+            "comment": "Pivot: fixing comment typo.",
+            "author": "czearing@outlook.com",
+            "commit": "fd64b77b579586a84c56209f7c34979ca286bfc2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Apr 2020 12:29:21 GMT",
       "tag": "office-ui-fabric-react_v7.105.7",
       "version": "7.105.7",

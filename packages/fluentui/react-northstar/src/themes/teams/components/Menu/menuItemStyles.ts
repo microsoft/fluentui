@@ -29,21 +29,34 @@ const getFocusedStyles = ({
   colors: StrictColorScheme<ItemType<typeof menuColorAreas>>;
 }): ICSSInJSStyle => {
   const { primary, underlined, active, vertical } = props;
+
   if (active && !underlined && !vertical) return {};
+
   return {
-    color: v.colorActive,
+    color: v.colorActive || colors.foregroundActive,
     background: v.backgroundColorFocus || colors.backgroundFocus,
 
     ...(primary && {
       color: colors.foregroundFocus,
+      background: colors.backgroundFocus,
     }),
-    ...(vertical &&
-      !primary && {
-        border: `solid 1px ${v.borderColorFocus}`,
-        outline: `solid 1px ${v.outlineColorFocus}`,
-        margin: pxToRem(1),
-        background: v.verticalBackgroundColorFocus || colors.backgroundFocus,
+
+    ...(vertical && {
+      border: `solid 1px ${v.borderColorFocus}`,
+      outline: `solid 1px ${v.outlineColorFocus}`,
+      margin: pxToRem(1),
+      background: v.verticalBackgroundColorFocus,
+      color: v.colorFocus || colors.foregroundFocus,
+
+      ...(primary && { color: v.color }),
+
+      ...(active && {
+        color: v.colorActive,
+        background: v.backgroundColorActive || colors.backgroundActive,
+
+        ...(primary && { color: colors.foregroundFocus }),
       }),
+    }),
   };
 };
 
@@ -336,7 +349,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
 
       // focus styles
       ...(isFromKeyboard && {
-        color: v.colorFocus,
+        color: 'inherit',
 
         ...(iconOnly && {
           borderRadius: '50%',
@@ -347,17 +360,13 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
         ...(primary
           ? {
               ...(iconOnly && {
-                color: 'inherit',
                 borderColor: v.borderColorActive || colors.borderActive,
               }),
-
-              ...(underlined && { color: 'inherit' }),
 
               ...(underlined && active && underlinedItem(colors.foregroundActive)),
             }
           : {
               ...(underlined && { fontWeight: 700 }),
-
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
       }),
