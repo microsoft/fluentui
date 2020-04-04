@@ -48,6 +48,7 @@ To create a simple React app  [install node.js](https://nodejs.org), then run:
 ```sh
 npx create-react-app my-app
 cd my-app
+npm install @fluentui/react
 npm start
 ```
 
