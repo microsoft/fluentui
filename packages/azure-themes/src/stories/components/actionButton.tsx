@@ -13,7 +13,7 @@ export const ButtonActionExample: React.FunctionComponent<IButtonExampleProps> =
   const { disabled, checked } = props;
 
   return (
-    <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={false}>
+    <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={checked}>
       Create account
     </ActionButton>
   );

@@ -19,7 +19,6 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
   const TodayAndSelectedDayStyle = () => {
     return {
       '.ms-DatePicker-day-button.ms-DatePicker-day--today': {
-        backgroundColor: semanticColors.bodyBackground,
         backgroundColor: '#0078D4', //semanticColors.bodyBackground,
         color: '#ffffff', //semanticColors.bodyText
       },

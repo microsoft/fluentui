@@ -1,10 +1,12 @@
 import { ITheme } from 'office-ui-fabric-react';
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { FontSizes } from '../AzureType';
 
 export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     icon: {
@@ -17,7 +19,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       color: semanticColors.bodyText,
     },
     menuIconDisabled: {
-      color: semanticColors.disabledIconColor,
+      color: extendedSemanticColors.disabledIconColor,
     },
     root: {
       ...getFocusStyle(theme, { inset: 2 }),
@@ -55,7 +57,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       color: semanticColors.disabledBodyText,
     },
     iconDisabled: {
-      color: semanticColors.disabledIconColor,
+      color: extendedSemanticColors.disabledIconColor,
     },
     splitButtonMenuButton: {
       backgroundColor: semanticColors.bodyBackground,

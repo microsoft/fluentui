@@ -4,6 +4,7 @@ import {
   IContextualMenuItemStyleProps,
   IContextualMenuItemStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { Depths } from '../AzureDepths';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
@@ -11,6 +12,7 @@ import * as StyleConstants from '../Constants';
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     subComponentStyles: {
@@ -33,7 +35,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           root: [
             {
               fontSize: FontSizes.size13,
-              backgroundColor: semanticColors.contextMenuBackground,
+              backgroundColor: extendedSemanticColors.contextMenuBackground,
               selectors: {
                 ':hover': {
                   backgroundColor: semanticColors.menuItemBackgroundHovered,

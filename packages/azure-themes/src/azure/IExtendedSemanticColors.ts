@@ -2,6 +2,35 @@ import { ISemanticColors } from 'office-ui-fabric-react';
 
 export interface IExtendedSemanticColors extends ISemanticColors {
   labelText: string;
+  buttonText: string;
+  buttonBackgroundHoveredDefault: string;
+  buttonBorderColor: string;
+  buttonBorderHovered: string;
+  checkboxBorder: string;
+  checkboxBorderHover: string;
+  checkboxBorderChecked: string;
+  checkmarkColorHover: string;
+  checkboxBorder2: string;
+  checkboxBorderDisabled: string;
+  checkboxCheckedDisabled: string;
+  checkboxCheckedMarkDisabled: string;
+  checkboxIndeterminateBackground: string;
+  checkMarkFill: string;
+  controlGroupBorder: string;
+  checkBoxselectedBorderHover: string;
+  groupChoiceFill: string;
+  contextMenuBackground: string;
+  disabledToggleBackground: string;
+  disabledIconColor: string;
+  dropdownBorder: string;
+  textFieldBorder: string;
+  textFieldBorderHover: string;
+  dropdownBorderHover: string;
+  iconButtonColor: string;
+  iconButtonDisabledColor: string;
+  iconHoveredColor: string;
+  iconPressedColor: string;
+  calText: string;
   controlOutline: string;
   controlOutlineDisabled: string;
   controlOutlineHovered: string;
@@ -18,4 +47,10 @@ export interface IExtendedSemanticColors extends ISemanticColors {
   statusWarningBackground: string;
   statusWarningText: string;
   statusWarningIcon: string;
+  textFieldBorderActiveFocus: string;
+  textHovered: string;
+  thumbDisabled: string;
+  thumbEnabledChecked: string;
+  thumbNotCheck: string;
+  thumbDisabledNotChecked: string;
 }

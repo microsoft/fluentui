@@ -7,7 +7,7 @@ import {
   Stack,
   Fabric,
   CompoundButton,
-  ActionButton,
+  // ActionButton,
   Checkbox,
   SearchBox,
   Link,
@@ -36,7 +36,7 @@ const Example = () => (
     <DefaultButton text="DefaultButton" />
     <PrimaryButton text="PrimaryButton" />
     <CompoundButton primary text="CompoundButton" />
-    <CompoundButton secondary secondaryText="secondary text." text="CompoundButton" />
+    <CompoundButton secondaryText="secondary text." text="CompoundButton" />
     <ButtonIconExample checked={false} />
     <ButtonCommandBarExample />
     <ButtonIconWithTooltipExample />
@@ -55,7 +55,7 @@ const Example = () => (
       defaultIndeterminate
       defaultChecked={true}
     />
-    <Link>Hello I am a link</Link>
+    <Link>Hello I am a link, hover underline</Link>
     <ComboBoxBasicExample />
     <DropdownBasicExample />
     <SearchBox />
@@ -71,7 +71,7 @@ const Example = () => (
 
     <p style={{ color: 'red' }}>Checked components are not supported in the portal, listed below</p>
     <CompoundButton checked={true} primary text="CompoundButton" />
-    <CompoundButton checked={true} secondary secondaryText="This is the secondary text." text="CompoundButton" />
+    <CompoundButton checked={true} secondaryText="This is the secondary text." text="CompoundButton" />
     <DefaultButton checked={true} disabled text="Default disabled" />
     <PrimaryButton checked={true} disabled text="Primary disabled" />
     <ButtonIconExample checked={true} />

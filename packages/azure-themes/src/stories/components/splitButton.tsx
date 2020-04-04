@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, IContextualMenuProps, Stack, IStackTokens } from 'office-ui-fabric-react';
+import { DefaultButton, IContextualMenuProps, Stack } from 'office-ui-fabric-react'; //IStackTokens
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -22,7 +22,7 @@ const menuProps: IContextualMenuProps = {
   ],
 };
 // Example formatting
-const stackTokens: IStackTokens = { childrenGap: 40 };
+// const stackTokens: IStackTokens = { childrenGap: 40 };
 
 export const ButtonSplitExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const { disabled, checked } = props;

@@ -1,6 +1,7 @@
 import { IDropdownStyleProps, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { FontSizes } from '../AzureType';
 import { Depths } from '../AzureDepths';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import * as StyleConstants from '../Constants';
 
 export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownStyles> => {
@@ -9,6 +10,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     return {};
   }
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
   return {
     callout: {
       //dropdown items container
@@ -40,12 +42,12 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           ['.ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
             fontStyle: 'italic',
-            borderColor: semanticColors.dropdownBorder,
+            borderColor: extendedSemanticColors.dropdownBorder,
           },
           ['&:hover .ms-Dropdown-titleIsPlaceHolder']: {
             color: semanticColors.inputPlaceholderText,
             fontStyle: 'italic',
-            borderColor: semanticColors.dropdownBorderHover,
+            borderColor: extendedSemanticColors.dropdownBorderHover,
           },
         },
       },

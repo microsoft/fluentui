@@ -78,6 +78,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   textFieldBorder: '#8A8886',
   textFieldBorderHover: '#323130',
   textFieldBorderActiveFocus: '#0078D4',
+  textHovered: '#323130',
   thumbDisabled: '#F3F2F1',
   thumbNotCheck: '#605E5C',
   thumbDisabledNotChecked: '#C8C6C4',

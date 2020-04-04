@@ -1,22 +1,24 @@
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import * as StyleConstants from '../Constants';
+import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { FontSizes } from '../AzureType';
 
 export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const { semanticColors } = theme;
+  const extendedSemanticColors = semanticColors as IExtendedSemanticColors;
 
   return {
     root: {
       fontSize: FontSizes.size13,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
       color: semanticColors.buttonText,
       padding: '0 16px',
       height: '24px',
       selectors: {
         // standard button
         '&.ms-Button--default.ms-Button--hasMenu.is-expanded': {
-          borderColor: semanticColors.buttonBorderColor,
+          borderColor: extendedSemanticColors.buttonBorderColor,
           backgroundColor: semanticColors.buttonBackgroundPressed,
           color: semanticColors.buttonText,
         },
@@ -30,31 +32,31 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
     rootHovered: {
       color: semanticColors.buttonText,
       fill: semanticColors.buttonText,
-      backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+      backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
     },
     rootPressed: {
-      borderColor: semanticColors.buttonBorderColor,
+      borderColor: extendedSemanticColors.buttonBorderColor,
       backgroundColor: semanticColors.buttonBackgroundPressed,
       color: semanticColors.buttonText,
     },
     rootFocused: {
-      borderColor: semanticColors.buttonBorderColor,
+      borderColor: extendedSemanticColors.buttonBorderColor,
       color: semanticColors.buttonText,
     },
     rootChecked: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
       color: semanticColors.buttonText,
     },
     rootCheckedHovered: {
       color: semanticColors.buttonText,
       fill: semanticColors.buttonText,
-      backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+      backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
     },
     rootCheckedPressed: {
-      borderColor: semanticColors.buttonBorderColor,
+      borderColor: extendedSemanticColors.buttonBorderColor,
       backgroundColor: semanticColors.buttonBackgroundPressed,
       color: semanticColors.buttonText,
     },
@@ -62,7 +64,7 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       selectors: {
         // standard button
         '.ms-Button--default': {
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
           borderRight: '0 !important',
         },
         // standard button dropdown
@@ -154,14 +156,14 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         //secondary button hover
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
           borderRight: '0 !important',
           color: semanticColors.buttonText,
         },
         //secondary button dropdown hover
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundHovered,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
           borderLeft: 'none',
           selectors: {
             ':hover': {
@@ -221,14 +223,14 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         // secondary button checked
         '.ms-Button--default:not(.is-disabled)': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
           borderRight: 'none',
           color: semanticColors.buttonText,
         },
         // secondary button dropdown checked
         '.ms-Button--default + .ms-Button': {
           backgroundColor: semanticColors.buttonBackgroundPressed,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderColor}`,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderColor}`,
           color: semanticColors.buttonText,
           selectors: {
             '.ms-Button-menuIcon': {
@@ -275,15 +277,15 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '.ms-Button--default:not(.is-disabled)': {
           color: semanticColors.buttonText,
           fill: semanticColors.buttonText,
-          backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+          backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
         },
         // secondary button dropdown checked hovered
         '.ms-Button--default + .ms-Button': {
           color: semanticColors.buttonText,
           fill: semanticColors.buttonText,
-          backgroundColor: semanticColors.buttonBackgroundHoveredDefault,
-          border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonBorderHovered}`,
+          backgroundColor: extendedSemanticColors.buttonBackgroundHoveredDefault,
+          border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.buttonBorderHovered}`,
           selectors: {
             '.ms-Button-menuIcon': {
               color: semanticColors.buttonText,

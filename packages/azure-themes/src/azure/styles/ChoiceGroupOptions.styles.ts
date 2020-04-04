@@ -2,7 +2,7 @@ import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-u
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
-import { Light } from '../../stories/Themes/Themes';
+// import { Light } from '../../stories/Themes/Themes';
 
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
   const { checked, disabled, theme, hasIcon, hasImage } = props;
@@ -31,7 +31,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
             },
             checked && {
               backgroundColor: 'transparent',
-              borderColor: semanticColors.groupChoiceFill,
+              borderColor: extendedSemanticColors.groupChoiceFill,
             },
             disabled && {
               backgroundColor: semanticColors.bodyBackground,
@@ -63,7 +63,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                   //color: extendedSemanticColors.controlOutlineHovered
                 },
                 ':before': {
-                  borderColor: semanticColors.controlGroupBorder,
+                  borderColor: extendedSemanticColors.controlGroupBorder,
                 },
               },
             },
@@ -75,7 +75,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                     //color: extendedSemanticColors.controlOutlineHovered
                   },
                   ':before': {
-                    borderColor: semanticColors.checkBoxselectedBorderHover,
+                    borderColor: extendedSemanticColors.checkBoxselectedBorderHover,
                   },
                 },
               },
