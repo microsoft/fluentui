@@ -9,15 +9,15 @@ $sizeLargest: 16px;
 :root {
   --borderColor: transparent;
   --borderWidth: 2px;
-  --defaultBackgroundColor: var(--siteVariables-colors-grey-350, grey);
+  --defaultBackgroundColor: var(--siteVariables-colors-grey-350, rgb(151, 149, 147));
   --defaultTextColor: var(--siteVariables-colors-white, white);
-  --errorBackgroundColor: var(--siteVariables-colors-red-400, red);
+  --errorBackgroundColor: var(--siteVariables-colors-red-400, rgb(196, 49, 75));
   --errorTextColor: var(--siteVariables-colors-white, white);
-  --infoBackgroundColor: var(--siteVariables-colors-brand500, blue);
+  --infoBackgroundColor: var(--siteVariables-colors-brand500, rgb(151, 149, 147));
   --infoTextColor: var(--siteVariables-colors-white, white);
-  --successBackgroundColor: var(--siteVariables-colors-green200, green);
+  --successBackgroundColor: var(--siteVariables-colors-green200, rgb(146, 195, 83));
   --successTextColor: var(--siteVariables-colors-white, white);
-  --warningBackgroundColor: var(--siteVariables-colors-yellow-400, yellow);
+  --warningBackgroundColor: var(--siteVariables-colors-yellow-400, rgb(248, 210, 42));
   --warningTextColor: var(--siteVariables-colors-white, white);
 }
 
@@ -36,47 +36,47 @@ $sizeLargest: 16px;
   height: $sizeMedium;
 }
 
-.stateSuccess {
+._state_success {
   background-color: var(--successBackgroundColor);
   color: var(--successTextColor);
 }
 
-.stateInfo {
+._state_info {
   background-color: var(--infoBackgroundColor);
   color: var(--infoTextColor);
 }
 
-.stateWarning {
+._state_warning {
   background-color: var(--warningBackgroundColor);
   color: var(--warningTextColor);
 }
 
-.stateError {
+._state_error {
   background-color: var(--errorBackgroundColor);
   color: var(--errorTextColor);
 }
 
-.sizeSmallest {
+._size_smallest {
   width: $sizeSmallest;
   height: $sizeSmallest;
 }
-.sizeSmaller {
+._size_smaller {
   width: $sizeSmaller;
   height: $sizeSmaller;
 }
-.sizeSmall {
+._size_small {
   width: $sizeSmall;
   height: $sizeSmall;
 }
-.sizeLarge {
+._size_large {
   width: $sizeLarge;
   height: $sizeLarge;
 }
-.sizeLarger {
+._size_larger {
   width: $sizeLarger;
   height: $sizeLarger;
 }
-.sizeLargest {
+._size_largest {
   width: $sizeLargest;
   height: $sizeLargest;
 }

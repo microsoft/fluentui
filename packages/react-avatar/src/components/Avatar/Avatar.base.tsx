@@ -6,6 +6,7 @@ import * as PropTypes from 'prop-types';
 import cx from 'classnames';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { createSlot } from '../temp/createSlot';
 
 import {
   FluentComponentStaticProps,
@@ -25,37 +26,11 @@ import {
 
 import { Status, StatusProps } from '../Status/Status';
 
-export interface AvatarProps extends UIComponentProps {
-  /**
-   * Accessibility behavior if overridden by the user.
-   */
-  accessibility?: Accessibility<never>;
-
-  /** Shorthand for the image. */
-  image?: ShorthandValue<ImageProps>;
-
-  /** Shorthand for the label. */
-  label?: ShorthandValue<LabelProps>;
-
-  /** The name used for displaying the initials of the avatar if the image is not provided. */
-  name?: string;
-
-  /** The avatar can have a square shape. */
-  square?: boolean;
-
-  /** Size multiplier. */
-  size?: SizeValue;
-
-  /** Shorthand for the status of the user. */
-  status?: ShorthandValue<StatusProps>;
-
-  /** Custom method for generating the initials from the name property, which is shown if no image is provided. */
-  getInitials?: (name: string) => string;
-
-  classes?: { [key: string]: string };
-}
+export interface AvatarProps extends UIComponentProps {}
 
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
+
+const renderStatus = createSlot('status');
 
 export const AvatarBase: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -136,14 +111,7 @@ export const AvatarBase: React.FC<WithAsProp<AvatarProps>> & FluentComponentStat
               styles: resolvedStyles.label,
             }),
         })}
-      {Status.create(status, {
-        defaultProps: () =>
-          getA11Props('status', {
-            className: classes.status,
-            size,
-            // styles: resolvedStyles.status,
-          }),
-      })}
+      {renderStatus(props, classes, {})}
     </ElementType>
   );
 

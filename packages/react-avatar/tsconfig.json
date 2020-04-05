@@ -21,7 +21,15 @@
       "@uifabric/react-avatar/lib/*": ["./src/*"],
       "@uifabric/react-avatar": ["./src"],
       "@fluentui/react-northstar": ["../fluentui/react-northstar/src"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "customMatcher": "\\.scss$"
+        }
+      }
+    ]
   },
   "include": ["src"]
 }

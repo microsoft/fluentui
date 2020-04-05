@@ -42,7 +42,6 @@ module.exports = ({ config }) => {
           importLoaders: 2,
           localIdentName: '[name]_[local]--[hash:base64:5]',
           minimize: false,
-          esModule: true,
         },
       },
       {
