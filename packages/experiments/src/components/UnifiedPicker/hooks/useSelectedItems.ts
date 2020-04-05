@@ -13,10 +13,12 @@ export interface IUseSelectedItemsResponse<T> {
   getSelectedItems: () => T[];
   hasSelectedItems: () => boolean;
   unselectAll: () => void;
-  selectAll: () => void;
 }
 
-export const useSelectedItems = <T extends {}>(selection: Selection, selectedItems?: T[]): IUseSelectedItemsResponse<T> => {
+export const useSelectedItems = <T extends {}>(
+  selection: Selection,
+  selectedItems?: T[],
+): IUseSelectedItemsResponse<T> => {
   const [items, setSelectedItems] = React.useState(selectedItems || []);
 
   const addItems = (itemsToAdd: T[]): void => {
@@ -86,10 +88,6 @@ export const useSelectedItems = <T extends {}>(selection: Selection, selectedIte
     }
   };
 
-  const selectAll = (): void => {
-    selection.setAllSelected(true);
-  };
-
   return {
     selectedItems: items,
     setSelectedItems: setSelectedItems,
@@ -101,6 +99,6 @@ export const useSelectedItems = <T extends {}>(selection: Selection, selectedIte
     removeSelectedItems: removeSelectedItems,
     getSelectedItems: getSelectedItems,
     hasSelectedItems: hasSelectedItems,
-    unselectAll: unselectAll
+    unselectAll: unselectAll,
   } as IUseSelectedItemsResponse<T>;
 };

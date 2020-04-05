@@ -2,7 +2,14 @@ import * as React from 'react';
 import { getStyles } from './UnifiedPicker.styles';
 import { classNamesFunction, css, SelectionMode, Selection, KeyCodes } from '../../Utilities';
 import { IUnifiedPickerStyleProps, IUnifiedPickerStyles } from './UnifiedPicker.styles';
-import { FocusZoneDirection, FocusZone, SelectionZone, Autofill, IInputProps, MarqueeSelection } from 'office-ui-fabric-react';
+import {
+  FocusZoneDirection,
+  FocusZone,
+  SelectionZone,
+  Autofill,
+  IInputProps,
+  MarqueeSelection,
+} from 'office-ui-fabric-react';
 import { IUnifiedPickerProps } from './UnifiedPicker.types';
 import { useQueryString } from './hooks/useQueryString';
 import { useFloatingSuggestionItems } from './hooks/useFloatingSuggestionItems';
@@ -16,7 +23,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
 
   const rootRef = React.createRef<HTMLDivElement>();
   const input = React.useRef<Autofill>(null);
-  const { queryString, setQueryString } = useQueryString('');
+  const { setQueryString } = useQueryString('');
   const [selection, setSelection] = React.useState(new Selection({ onSelectionChanged: () => _onSelectionChanged() }));
   const [focusedItemIndices, setFocusedItemIndices] = React.useState(selection.getSelectedIndices() || []);
   const { suggestions, selectedSuggestionIndex, isSuggestionsVisible } = props.floatingSuggestionProps;
@@ -26,11 +33,11 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     isSuggestionsShown,
     showPicker,
     selectPreviousSuggestion,
-    selectNextSuggestion
+    selectNextSuggestion,
   } = useFloatingSuggestionItems(suggestions, selectedSuggestionIndex, isSuggestionsVisible);
   const { selectedItems, addItems, removeItems, removeItemAt, removeSelectedItems, unselectAll } = useSelectedItems(
     selection,
-    props.selectedItemsListProps.selectedItems
+    props.selectedItemsListProps.selectedItems,
   );
 
   const _onSelectionChanged = () => {
@@ -47,7 +54,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     selectedItemsListProps,
     onRederFloatingSuggestions,
     floatingSuggestionProps,
-    headerComponent
+    headerComponent,
   } = props;
 
   const activeDescendant = '';
@@ -149,7 +156,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       ...selectedItemsListProps,
       selectedItems: selectedItems,
       focusedItemIndices: focusedItemIndices,
-      onItemsRemoved: _onRemoveSelectedItems
+      onItemsRemoved: _onRemoveSelectedItems,
     });
   };
   const _canAddItems = () => true;
@@ -181,7 +188,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       selectedSuggestionIndex: focusItemIndex,
       onFloatingSuggestionsDismiss: _onFloatingSuggestionsDismiss,
       onSuggestionSelected: _onSuggestionSelected,
-      onKeyDown: _onInputKeyDown
+      onKeyDown: _onInputKeyDown,
     });
 
   return (

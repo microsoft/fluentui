@@ -7,7 +7,6 @@ import {
 } from './FloatingSuggestionsList.types';
 import { FloatingSuggestionsItemMemo } from '../FloatingSuggestionsItem/FloatingSuggestionsItem';
 import { getStyles } from './FloatingSuggestionsList.styles';
-import { item } from '../../VirtualizedList/VirtualizedList.scss';
 
 const getClassNames = classNamesFunction<IFloatingSuggestionsListStyleProps, IFloatingSuggestionsListStyle>();
 
