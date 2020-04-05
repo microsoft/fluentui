@@ -11,8 +11,8 @@ export const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
-  iconOne: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/one.svg',
-  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.svg',
+  iconOne: baseProductionCdnUrl + 'icon-one.png',
+  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.png',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
   personaMale: baseProductionCdnUrl + 'persona-male.png',
 };
