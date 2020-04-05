@@ -49,7 +49,7 @@ const TestImages = {
   documentPreview: baseProductionCdnUrl + 'document-preview.png',
   documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
   documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
-  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
+  iconPpt: 'https://static2.sharepointonline.com/files/fabric/assets/item-types/32/pptx.svg',
   personaFemale: baseProductionCdnUrl + 'persona-female.png',
 };
 
