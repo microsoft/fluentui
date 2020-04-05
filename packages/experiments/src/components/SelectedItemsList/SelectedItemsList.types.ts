@@ -58,7 +58,7 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
   /**
    * Function that specifies how the selected item will appear.
    */
-  onRenderItem: React.ComponentType<ISelectedItemProps<T>>;
+  onRenderItem?: React.ComponentType<ISelectedItemProps<T>>;
   /**
    * Initial items that have already been selected and should appear in the people picker.
    */

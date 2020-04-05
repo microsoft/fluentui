@@ -42,17 +42,18 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {renderedItems.map((item: TItem, index: number) => (
-        <SelectedItem
-          item={item}
-          index={index}
-          key={item.key !== undefined ? item.key : index}
-          selected={props.focusedItemIndices?.includes(index)}
-          removeButtonAriaLabel={props.removeButtonAriaLabel}
-          onRemoveItem={onRemoveItemCallbacks[index]}
-          onItemChange={replaceItem}
-        />
-      ))}
+      {SelectedItem &&
+        renderedItems.map((item: TItem, index: number) => (
+          <SelectedItem
+            item={item}
+            index={index}
+            key={item.key !== undefined ? item.key : index}
+            selected={props.focusedItemIndices?.includes(index)}
+            removeButtonAriaLabel={props.removeButtonAriaLabel}
+            onRemoveItem={onRemoveItemCallbacks[index]}
+            onItemChange={replaceItem}
+          />
+        ))}
     </>
   );
 };
