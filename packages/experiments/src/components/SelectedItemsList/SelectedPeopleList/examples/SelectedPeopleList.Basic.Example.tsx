@@ -2,7 +2,6 @@ import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersona } from 'office-ui-fabric-react/lib/Persona';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { people } from '@uifabric/example-data';
 import { SelectedPeopleList } from '@uifabric/experiments/lib/SelectedItemsList';
 
@@ -13,7 +12,6 @@ export interface IPeopleSelectedItemsListExampleState {
 export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
   private index: number;
   private addMultipleKey = 50;
-  private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   constructor(props: {}) {
     super(props);
@@ -40,7 +38,6 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           selectedItems={[...this.state.currentSelectedItems]}
-          selection={this.selection}
           onItemsRemoved={this._onItemsRemoved}
         />
       </div>
@@ -70,8 +67,4 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
       this.setState({ currentSelectedItems: [...currentSelectedItemsCopy] });
     });
   };
-
-  private _onSelectionChange(): void {
-    this.forceUpdate();
-  }
 }
