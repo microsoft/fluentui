@@ -146,7 +146,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 ),
               },
               {
-                icon: <LinkIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <LinkIcon style={{ width: '20px', height: '20px' }} />,
                 children: (Component, props) => (
                   <CopyToClipboard key="copy-link" value={anchorName}>
                     {(active, onClick) => (
