@@ -217,7 +217,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     fontWeight: 'bold',
   }),
 
-  itemsListFooterMessage: ({ variables: v }): ICSSInJSStyle => ({
+  footerMessage: ({ variables: v }): ICSSInJSStyle => ({
     backgroundColor: v.listItemBackgroundColor,
   }),
 

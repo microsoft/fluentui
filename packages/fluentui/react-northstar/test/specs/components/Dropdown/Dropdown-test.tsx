@@ -1736,18 +1736,18 @@ describe('Dropdown', () => {
       expect(getItemNodeAtIndex(0)).toHaveTextContent(noResultsMessage);
     });
 
-    it('shows itemsListFooterMessage when status is custom', () => {
-      const itemsListFooterMessage = 'just some status';
+    it('shows footerMessage when status is custom', () => {
+      const footerMessage = 'just some status';
       const { getItemNodeAtIndex } = renderDropdown({
         open: true,
-        itemsListFooterMessage,
+        footerMessage,
       });
 
-      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(itemsListFooterMessage);
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(footerMessage);
     });
 
     it('can juggle between messages depending on the status', () => {
-      const itemsListFooterMessage = 'just some status';
+      const footerMessage = 'just some status';
       const noResultsMessage = 'oups we found nothing';
       const loadingMessage = 'loading results';
       const { getItemNodeAtIndex, getItemNodes, rerender } = renderDropdown({
@@ -1759,8 +1759,8 @@ describe('Dropdown', () => {
       // no footer message show initially.
       expect(getItemNodes()).toHaveLength(items.length);
 
-      rerender({ itemsListFooterMessage });
-      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(itemsListFooterMessage);
+      rerender({ footerMessage });
+      expect(getItemNodeAtIndex(items.length)).toHaveTextContent(footerMessage);
 
       rerender({ loading: true });
       expect(getItemNodeAtIndex(items.length)).toHaveTextContent(loadingMessage);
@@ -1772,9 +1772,9 @@ describe('Dropdown', () => {
       expect(getItemNodeAtIndex(0)).toHaveTextContent(noResultsMessage);
 
       rerender({ items: ['one item'] });
-      expect(getItemNodeAtIndex(1)).toHaveTextContent(itemsListFooterMessage);
+      expect(getItemNodeAtIndex(1)).toHaveTextContent(footerMessage);
 
-      rerender({ itemsListFooterMessage: undefined });
+      rerender({ footerMessage: undefined });
       expect(getItemNodes()).toHaveLength(1);
     });
   });
