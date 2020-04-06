@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Simplifying some of the examples for VerticalDivider and SearchBox.",
-  "packageName": "@uifabric/react-hooks",
-  "email": "czearing@outlook.com",
-  "commit": "f32e30cc0c95c2e4e26d26b49c1aa63908f0be6e",
-  "dependentChangeType": "patch",
-  "date": "2020-04-06T20:24:31.067Z"
-}
