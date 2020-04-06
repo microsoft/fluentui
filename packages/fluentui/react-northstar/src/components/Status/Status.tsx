@@ -87,7 +87,7 @@ Status.propTypes = {
     content: false,
   }),
   color: PropTypes.string,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   size: customPropTypes.size,
   state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };

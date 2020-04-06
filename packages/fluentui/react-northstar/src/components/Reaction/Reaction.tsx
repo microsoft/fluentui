@@ -49,7 +49,7 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
     ...commonPropTypes.createCommon({
       content: 'shorthand',
     }),
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
   };
 
   static defaultProps = {

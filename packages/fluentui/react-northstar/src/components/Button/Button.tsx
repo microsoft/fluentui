@@ -253,7 +253,7 @@ Button.propTypes = {
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   iconOnly: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['before', 'after']),
   inverted: PropTypes.bool,

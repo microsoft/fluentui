@@ -170,7 +170,7 @@ Label.className = 'ui-label';
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
   circular: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   image: customPropTypes.itemShorthandWithoutJSX,
   imagePosition: PropTypes.oneOf(['start', 'end']),

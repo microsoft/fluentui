@@ -365,7 +365,7 @@ ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   menu: PropTypes.oneOfType([
     customPropTypes.shorthandAllowingChildren,
     PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren),
