@@ -1,0 +1,4 @@
+- Always display the date picker with edge padding. You can either use the built-in `hasEdgePadding` property, or keep it `false` and apply padding in your own view hierarchy.
+- Choose a contrasting background / selection color combination to help readability.
+- Use the built-in text field if you need text input.
+- Verify that keyboard navigation works properly in your scenario.

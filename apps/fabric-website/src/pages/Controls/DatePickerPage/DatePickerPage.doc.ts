@@ -24,4 +24,14 @@ export const DatePickerPageProps: TFabricPlatformPageProps = {
     related,
     componentUrl,
   },
+  mac: {
+    title: 'Date Picker',
+    fileNamePrefix: 'DatePicker',
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerOverview.md') as string,
+    dos: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerDos.md') as string,
+    donts: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerDonts.md') as string,
+    usage: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DatePickerPage/docs/mac/DatePickerUsage.md') as string,
+    related,
+    componentUrl,
+  },
 };

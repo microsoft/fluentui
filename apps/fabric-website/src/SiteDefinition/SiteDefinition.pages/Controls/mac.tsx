@@ -26,6 +26,21 @@ export const controlsPagesMac: INavPage[] = [
     ],
   },
   {
+    title: 'Pickers',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Date Picker',
+        url: '#/controls/mac/date-picker',
+        component: () => <LoadingComponent title="Date Picker" />,
+        getComponent: cb =>
+          require.ensure([], require =>
+            cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage),
+          ),
+      },
+    ],
+  },
+  {
     title: 'Utilities',
     isCategory: true,
     pages: [

@@ -1,0 +1,1 @@
+The DatePicker component enables a user to quickly pick a date and time. It uses the provided `Calendar` instance as a data source. If no calendar is provided, it uses `Calendar.current`, which is the system calendar.
