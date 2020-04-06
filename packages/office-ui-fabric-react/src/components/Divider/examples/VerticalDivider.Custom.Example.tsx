@@ -31,25 +31,25 @@ const getExampleClassNames = memoizeFunction(
   },
 );
 
+const VerticalDividerStyles = {
+  wrapper: {
+    height: 40,
+    backgroundColor: '#F4F4F4',
+    padding: 0,
+  },
+  divider: {
+    height: 28,
+    backgroundColor: 'pink',
+  },
+};
+
 export const VerticalDividerCustomExample = () => {
   const exampleClassNames = getExampleClassNames();
 
   return (
     <div className={exampleClassNames.wrapper}>
       <p className={exampleClassNames.text}> Some text before the divider. </p>
-      <VerticalDivider
-        styles={{
-          wrapper: {
-            height: 40,
-            backgroundColor: '#F4F4F4',
-            padding: 0,
-          },
-          divider: {
-            height: 28,
-            backgroundColor: 'pink',
-          },
-        }}
-      />
+      <VerticalDivider styles={VerticalDividerStyles} />
       <p className={exampleClassNames.text}>Some text after the divider. </p>
     </div>
   );
