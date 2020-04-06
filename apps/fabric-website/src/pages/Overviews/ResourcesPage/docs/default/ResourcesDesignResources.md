@@ -3,12 +3,15 @@
 These design toolkits provide styles, controls and layout templates that enable you to create beautiful and coherent Microsoft experiences.
 
 <ul class="md-list--flex">
-  <li class="mdut--half">[Microsoft Web Fluent (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
-  <li class="mdut--half">[Microsoft Web Fluent (Figma)](https://aka.ms/FluentToolkits/Web/Figma)</li>
-  <li class="mdut--half">[Microsoft iOS Fluent (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
-  <li class="mdut--half">[Microsoft iOS Fluent (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
-  <li class="mdut--half">[Microsoft Android Fluent (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
-  <li class="mdut--half">[Microsoft Android Fluent (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
+  <li class="mdut--half">[Download Web toolkit (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
+  <li class="mdut--half">[Download Web toolkit (Figma)](https://aka.ms/FluentToolkits/Web/Figma)</li>
+  <li class="mdut--half">[Download Windows toolkit (Figma)](https://aka.ms/figmatoolkit)</li>
+  <li class="mdut--half">[Download iOS toolkit (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
+  <li class="mdut--half">[Download iOS toolkit (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
+  <li class="mdut--half">[Download Android toolkit (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
+  <li class="mdut--half">[Download Android toolkit (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
+  <li class="mdut--half">macOS toolkit (coming soon)</li>
+
 </ul>
 
 <!-- headings get auto-generated IDs usually, and this page has two "SharePoint Framework" headings -->

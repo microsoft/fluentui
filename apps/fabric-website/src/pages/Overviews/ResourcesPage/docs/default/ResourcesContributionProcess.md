@@ -8,6 +8,10 @@ Reference these step-by-step processes for contributing to Fluent UI.
   <li class="mdut--full">[View current GitHub issues for all Fluent UI React controls](https://github.com/microsoft/fluentui/issues)</li>
 </ul>
 
+### Fluent UI React Native
+
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-react-native)
+
 ### Fluent UI iOS
 
 [Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-ios/issues)
@@ -15,3 +19,7 @@ Reference these step-by-step processes for contributing to Fluent UI.
 ### Fluent UI Android
 
 [Give feedback on a control by filing an issue on GitHub](https://github.com/OfficeDev/ui-fabric-android/issues)
+
+### Fluent UI macOS
+
+[Give feedback on a control by filing an issue on GitHub](https://github.com/microsoft/fluentui-apple)
