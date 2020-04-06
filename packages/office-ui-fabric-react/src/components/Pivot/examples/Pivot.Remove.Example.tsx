@@ -7,6 +7,24 @@ export interface IPivotOnChangeExampleState {
   shouldShowFirstPivotItem: boolean;
 }
 
+export const PivotRemoveExample = () => {
+  const [shouldShowFirstPivotItem, setShouldShowFirstPivotItem] = React.useState(true);
+  let pivotArray: React.ReactElement<IPivotItemProps>[] = [];
+  return (
+    <div>
+      <Pivot aria-label="Remove Pivot Example" linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
+        {pivotArray}
+      </Pivot>
+      <div>
+        <DefaultButton
+          aria-live="polite"
+          onClick={this._handleClick}
+          text={`${this.state.shouldShowFirstPivotItem ? 'Hide' : 'Show'} First Pivot Item`}
+        />
+      </div>
+    </div>
+  );
+};
 export class PivotRemoveExample extends React.Component<any, IPivotOnChangeExampleState> {
   private _shouldShowFirstPivotItem: boolean;
 
