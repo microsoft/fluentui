@@ -24,7 +24,7 @@ describe('ProviderConsumer', () => {
 
   describe('render', () => {
     test('is a callback that receives the prepared theme', () => {
-      expect.assertions(13);
+      expect.assertions(11);
 
       const inputTheme: ThemeInput = {
         siteVariables: { a: 'b' },
