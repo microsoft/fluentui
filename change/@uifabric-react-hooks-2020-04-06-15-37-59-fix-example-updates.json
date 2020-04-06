@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Deleting extra change file.",
+  "comment": "Simplifying some of the examples for VerticalDivider and SearchBox.",
   "packageName": "@uifabric/react-hooks",
   "email": "czearing@outlook.com",
   "commit": "98b0a66dc03088debe67e9469fc775b6000414e0",
