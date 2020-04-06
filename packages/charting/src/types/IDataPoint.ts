@@ -70,6 +70,16 @@ export interface ILineChartDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  /**
+   * Callout data for x axis
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface ILineChartPoints {
