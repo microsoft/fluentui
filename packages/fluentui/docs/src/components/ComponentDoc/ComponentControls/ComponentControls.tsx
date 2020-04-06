@@ -110,7 +110,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 ),
               },
               {
-                icon: <IndentIcon rotate={180} {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <IndentIcon rotate={180} style={{ width: '20px', height: '20px' }} />,
                 onClick: onShowRtl,
                 active: showRtl,
                 children: (Component, props) => (
