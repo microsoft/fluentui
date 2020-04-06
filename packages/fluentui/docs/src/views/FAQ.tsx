@@ -148,16 +148,6 @@ export default () => (
       }
     />
 
-    <Category content="Teams Specific" />
-    <Question content="How to add Icons to Fluent UI" />
-    <Answer
-      content={
-        <p>
-          Generally Teams should be using SVG icons only. If you need FontAwesome or other icons, process for adding
-          them is described in {link('Issue 585', 'https://github.com/microsoft/fluent-ui-react/pull/585')}
-        </p>
-      }
-    />
     <Question content="How can I reset or replace existing fonts?" />
     <Answer
       content={

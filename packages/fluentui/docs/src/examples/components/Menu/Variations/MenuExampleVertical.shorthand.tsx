@@ -1,29 +1,29 @@
 import * as React from 'react';
 import { Menu } from '@fluentui/react-northstar';
+import { BookmarkIcon, WordIcon, CalendarIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
+    icon: (
+      <BookmarkIcon
+        {...{
+          outline: true,
+        }}
+      />
+    ),
     key: 'editorials',
     content: 'Editorials',
-    icon: {
-      name: 'bookmark',
-      outline: true,
-    },
   },
   {
+    icon: <WordIcon {...{}} />,
     key: 'review',
     content: 'Reviews',
-    icon: {
-      name: 'word',
-    },
   },
   { key: 'events', content: 'Upcoming Events' },
   {
+    icon: <CalendarIcon {...{}} />,
     key: 'moreevents',
     content: 'View full calendar with content so long that it wraps',
-    icon: {
-      name: 'calendar',
-    },
     menu: {
       items: [
         {
