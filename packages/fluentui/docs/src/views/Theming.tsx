@@ -102,7 +102,7 @@ export default () => (
           <CalendarIcon circular />
           <CalendarIcon circular />
 
-          <Provider theme={{ componentVariables: { Icon: { color: 'cornflowerblue' } } }}>
+          <Provider theme={{ componentVariables: { SvgIcon: { color: 'cornflowerblue' } } }}>
             <span>
               <CalendarIcon circular />
               <CalendarIcon circular />

@@ -3,7 +3,7 @@ import { Avatar, Button, Divider, Segment, Text, Flex } from '@fluentui/react-no
 import chatProtoStyle from './chatProtoStyle';
 
 import { ChatData } from './services';
-import { TeamCreateIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import { TeamCreateIcon, MoreIcon, CallVideoIcon, CallIcon } from '@fluentui/react-icons-northstar';
 
 export interface ChatPaneHeaderProps {
   chat?: ChatData;
@@ -71,12 +71,9 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
       <div style={{ display: 'inline-flex' }}>
         <Button.Group
           circular
-          buttons={['call-video', 'call'].map((name, index) => ({
-            key: `${index}-${name}`,
-            icon: {
-              name,
-              variables: siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' }),
-            },
+          buttons={[CallVideoIcon, CallIcon].map((Icon, index) => ({
+            key: index,
+            icon: <Icon variables={siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' })} />,
             primary: true,
           }))}
           styles={{ marginRight: '20px' }}
