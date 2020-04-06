@@ -46,10 +46,25 @@ const labelStyles: ComponentSlotStylesPrepared<LabelStylesProps, LabelVariables>
     width: v.height,
   }),
 
-  icon: ({ props: p }): ICSSInJSStyle =>
-    p.hasActionableIcon && {
-      cursor: 'pointer',
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: v.iconSize,
+    height: v.iconSize,
+
+    '& > :first-child': {
+      height: '100%',
+      width: '100%',
+      '& svg': {
+        height: '100%',
+        width: '100%',
+      },
     },
+    ...(p.hasActionableIcon && {
+      cursor: 'pointer',
+    }),
+  }),
 };
 
 export default labelStyles;
