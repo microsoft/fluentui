@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
 import { Tooltip } from '@fluentui/react-northstar';
-// TODO: find replacement
 import { LinkIcon } from '@fluentui/react-icons-northstar';
 
 export default class ComponentControlsCopyLink extends React.Component<any, any> {

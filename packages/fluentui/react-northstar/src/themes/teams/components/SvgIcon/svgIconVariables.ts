@@ -30,7 +30,7 @@ export interface SvgIconVariables {
   sizeModifier?: IconSizeModifier;
 }
 
-export default (siteVars): Partial<SvgIconVariables> => ({
+export default (siteVars): SvgIconVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, iconColorAreas),
   color: undefined,
   borderColor: undefined,
