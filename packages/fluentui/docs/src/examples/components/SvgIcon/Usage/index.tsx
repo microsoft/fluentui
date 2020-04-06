@@ -5,9 +5,9 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 const Usage = () => (
   <ExampleSection title="Usage">
     <ComponentExample
-      title="Theme Icons"
-      description="You can access all icon names available in the current theme."
-      examplePath="components/Icon/Usage/IconSetExample"
+      title="All icons"
+      description="This is collection of all icons available."
+      examplePath="components/SvgIcon/Usage/SvgIconSetExample"
     />
   </ExampleSection>
 );

@@ -7,32 +7,32 @@ const Variations = () => (
     <ComponentExample
       title="Space"
       description="An icon can have space before, after or on both sides. 'none' value removes the default space around the icon."
-      examplePath="components/Icon/Variations/IconExampleSpace"
+      examplePath="components/SvgIcon/Variations/SvgIconExampleSpace"
     />
     <ComponentExample
       title="Color"
-      description="An icon is inheriting color by default, but can have a different color if provided by the user."
-      examplePath="components/Icon/Variations/IconExampleColor"
+      description="An icon is inheriting color by default."
+      examplePath="components/SvgIcon/Variations/SvgIconExampleColor"
     />
     <ComponentExample
       title="Size"
       description="An icon can vary in size."
-      examplePath="components/Icon/Variations/IconExampleSize"
+      examplePath="components/SvgIcon/Variations/SvgIconExampleSize"
     />
     <ComponentExample
       title="Bordered"
       description="An icon can be formatted to appear with rectangular border."
-      examplePath="components/Icon/Variations/IconExampleBordered"
+      examplePath="components/SvgIcon/Variations/SvgIconExampleBordered"
     />
     <ComponentExample
       title="Circular"
       description="An icon can be formatted to appear circular."
-      examplePath="components/Icon/Variations/IconExampleCircular"
+      examplePath="components/SvgIcon/Variations/SvgIconExampleCircular"
     />
     <ComponentExample
       title="Rotate"
       description="An icon can be rotated by specified degrees."
-      examplePath="components/Icon/Variations/IconExampleRotate"
+      examplePath="components/SvgIcon/Variations/SvgIconExampleRotate"
     />
   </ExampleSection>
 );

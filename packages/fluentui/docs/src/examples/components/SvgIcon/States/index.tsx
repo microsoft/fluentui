@@ -7,7 +7,7 @@ const States = () => (
     <ComponentExample
       title="Disabled"
       description="An icon can show it is currently unable to be interacted with."
-      examplePath="components/Icon/States/IconExampleDisabled"
+      examplePath="components/SvgIcon/States/SvgIconExampleDisabled"
     />
   </ExampleSection>
 );
