@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Flex, Grid, Text } from '@fluentui/react-northstar';
 import { CalendarIcon, CallIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
-const IconExampleColor = () => (
+const SvgIconExampleColor = () => (
   <Grid
     columns="repeat(4, auto)"
     styles={{
@@ -37,4 +37,4 @@ const IconExampleColor = () => (
   </Grid>
 );
 
-export default IconExampleColor;
+export default SvgIconExampleColor;

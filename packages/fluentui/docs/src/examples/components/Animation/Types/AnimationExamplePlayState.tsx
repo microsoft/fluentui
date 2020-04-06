@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Button, Animation, Provider } from '@fluentui/react-northstar';
 import { PauseIcon, PlayIcon, MentionIcon } from '@fluentui/react-icons-northstar';
+
 const spinner = {
   keyframe: {
     from: {
