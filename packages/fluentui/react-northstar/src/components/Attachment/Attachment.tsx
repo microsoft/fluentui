@@ -11,7 +11,7 @@ import {
   applyAccessibilityKeyHandlers,
   ShorthandFactory,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
 import Button, { ButtonProps } from '../Button/Button';
 import Text, { TextProps } from '../Text/Text';
 import { UIComponentProps, ChildrenComponentProps } from '../../utils/commonPropInterfaces';
@@ -36,7 +36,7 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
   header?: ShorthandValue<TextProps>;
 
   /** Shorthand for the icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** Value indicating percent complete. */
   progress?: string | number;
@@ -70,7 +70,7 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
     actionable: PropTypes.bool,
     description: customPropTypes.itemShorthand,
     header: customPropTypes.itemShorthand,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
@@ -90,8 +90,8 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
       >
         {icon &&
-          Icon.create(icon, {
-            defaultProps: () => ({ size: 'larger', styles: styles.icon }),
+          Box.create(icon, {
+            defaultProps: () => ({ styles: styles.icon }),
           })}
         {(header || description) && (
           <div className={classes.content}>

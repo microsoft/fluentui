@@ -3,12 +3,13 @@ import { Chat, ChatItemProps, ShorthandCollection, Avatar, Divider, Provider } f
 import GroupControlMessages from './GroupControlMessages';
 import ControlMessage from './ControlMessage';
 import { groupControlMessageItems, mainControlMessage } from './mockData';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: {
     color: 'green',
-    icon: 'check',
+    icon: <AcceptIcon />,
   },
 };
 

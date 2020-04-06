@@ -21,6 +21,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -564,7 +565,7 @@ class Sidebar extends React.Component<any, any> {
             inverted
             fluid
             clearable
-            icon="search"
+            icon={<SearchIcon />}
             placeholder="Search"
             iconPosition="end"
             role="search"

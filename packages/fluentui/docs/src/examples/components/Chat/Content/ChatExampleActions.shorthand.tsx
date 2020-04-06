@@ -1,11 +1,12 @@
 import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const actionMenu = {
   iconOnly: true,
   items: [
-    { key: 'like', icon: 'like', title: 'Like' },
-    { key: 'more', icon: 'more', title: 'More actions' },
+    { key: 'like', icon: <LikeIcon />, title: 'Like' },
+    { key: 'more', icon: <MoreIcon />, title: 'More actions' },
   ],
 };
 

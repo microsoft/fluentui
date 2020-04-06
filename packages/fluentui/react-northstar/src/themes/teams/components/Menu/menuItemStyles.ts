@@ -415,7 +415,25 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
     };
   },
 
-  icon: ({ props: p }): ICSSInJSStyle => ({
+  icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: v.iconSize,
+    height: v.iconSize,
+
+    '& > :first-child': {
+      height: '100%',
+      width: '100%',
+      '& svg': {
+        height: '100%',
+        width: '100%',
+      },
+    },
+
+    ...(!!p.content && {
+      marginRight: pxToRem(10),
+    }),
     ...(!p.iconOnly && {
       // reduce margins so text has the dominant influence on the vertical height
       marginTop: 0,

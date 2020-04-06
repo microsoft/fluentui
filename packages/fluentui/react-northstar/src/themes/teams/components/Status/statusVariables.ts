@@ -1,6 +1,9 @@
+import { pxToRem } from '../../../../utils';
+
 export interface StatusVariables {
   borderColor: string;
   borderWidth: number;
+  iconSize: string;
   successBackgroundColor: string;
   successTextColor: string;
   infoBackgroundColor: string;
@@ -16,6 +19,7 @@ export interface StatusVariables {
 export default siteVariables => ({
   borderColor: undefined,
   borderWidth: 2,
+  iconSize: pxToRem(7),
   successBackgroundColor: siteVariables.colors.green[200],
   successTextColor: siteVariables.colors.white,
   infoBackgroundColor: siteVariables.colors.brand[500],

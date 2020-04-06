@@ -1,5 +1,6 @@
 import { Button, Flex, Image, Text, Card } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleHorizontal = () => (
   <Card compact horizontal>
@@ -17,8 +18,8 @@ const CardExampleHorizontal = () => (
         <Flex space="between" vAlign="center">
           <Text content="2.4k likes" />
           <Flex>
-            <Button icon="download" iconOnly text title="Download" />
-            <Button icon="more" iconOnly text title="More" />
+            <Button icon={<DownloadIcon />} iconOnly text title="Download" />
+            <Button icon={<MoreIcon />} iconOnly text title="More" />
           </Flex>
         </Flex>
       </Card.Footer>

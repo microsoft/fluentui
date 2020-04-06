@@ -31,6 +31,8 @@ export interface ButtonVariables {
   borderColorFocus: string;
   backgroundColorFocus: string;
 
+  iconSize: string;
+
   primaryColor: string;
   primaryColorHover: string;
   primaryBackgroundColor: string;
@@ -85,6 +87,7 @@ export default (siteVars: any): ButtonVariables => ({
   colorActive: siteVars.colorScheme.default.foregroundPressed,
   colorDisabled: siteVars.colorScheme.brand.foregroundDisabled,
   colorFocus: undefined,
+  iconSize: pxToRem(16),
   backgroundColor: siteVars.colorScheme.default.background,
   backgroundColorActive: siteVars.colorScheme.default.backgroundPressed,
   backgroundColorHover: siteVars.colorScheme.default.backgroundHover1,
