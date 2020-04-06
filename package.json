@@ -101,20 +101,6 @@
       "packages/fluentui/*"
     ]
   },
-  "beachball": {
-    "groups": [
-      {
-        "name": "fluent ui react",
-        "include": [
-          "packages/office-ui-fabric-react",
-          "packages/react"
-        ],
-        "disallowedChangeTypes": [
-          "major"
-        ]
-      }
-    ]
-  },
   "resolutions": {
     "webpack": "^4.35.0",
     "autoprefixer": "7.2.6",
