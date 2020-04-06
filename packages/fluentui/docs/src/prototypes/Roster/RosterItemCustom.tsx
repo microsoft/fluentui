@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List } from '@fluentui/react-northstar';
+import { List, Checkbox } from '@fluentui/react-northstar';
 // import { RosterAvatar } from './RosterAvatar';
 import { useJitterState } from './hooks/useJitterState';
 import { RosterUserName } from './RosterUsername';
@@ -7,6 +7,7 @@ import { RosterState } from './RosterState';
 import { RosterMessage } from './RosterMessage';
 import { withRosterActions } from './helpers/withRosterActions';
 import { RosterSectionType, RosterVisuals } from './interface/roster.interface';
+import withCustomComponent from './helpers/withCustomComponent';
 
 export interface IRosterItemProps {
   userId: string;
@@ -18,7 +19,7 @@ export interface IRosterItemProps {
   selectable: boolean;
   selected: boolean;
   selectIndicator: any;
-  toggleSelect: () => void;
+  id: string;
 }
 
 export interface IRosterItemInternalProps extends IRosterItemProps {
@@ -35,8 +36,6 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
   message,
   userId,
   selected,
-  toggleSelect,
-  selectIndicator,
   ...props
 }) => {
   const isActive = useJitterState({
@@ -44,9 +43,10 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
     to: 2000,
     enabled: (type === 'presenters' || type === 'attendees') && !isMuted,
   });
+
   return (
     <List.Item
-      media={selectIndicator}
+      media={<Checkbox aria-label={displayName} checked={selected} />}
       header={<RosterUserName isActive={isActive} displayName={displayName} />}
       endMedia={<RosterState action={action} isMuted={isMuted} />}
       content={<RosterMessage message={message} />}
@@ -62,41 +62,14 @@ const RosterItemCustom: React.FunctionComponent<IRosterItemInternalProps> = ({
 
 const RosterItemWithActions = withRosterActions(RosterItemCustom);
 
-export default function(
-  Component,
-  {
-    isMuted,
-    visuals,
-    displayName,
-    action,
-    type,
-    selectable,
-    message,
-    userId,
-    selected,
-    toggleSelect,
-    selectIndicator,
-    ...restProps
-  },
-) {
-  // selectIndicator will be always undefined since we are using children prop. It should be moved up to TreeItem or find a better solution
-  return (
-    <Component {...restProps}>
-      <RosterItemWithActions
-        {...{
-          isMuted,
-          visuals,
-          displayName,
-          action,
-          type,
-          selectable,
-          message,
-          userId,
-          selected,
-          toggleSelect,
-          selectIndicator,
-        }}
-      />
-    </Component>
-  );
-}
+export default withCustomComponent(RosterItemWithActions, [
+  'isMuted',
+  'visuals',
+  'displayName',
+  'action',
+  'type',
+  'selectable',
+  'message',
+  'userId',
+  'selected',
+]);

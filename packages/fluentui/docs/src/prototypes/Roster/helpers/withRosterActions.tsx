@@ -16,7 +16,7 @@ import { IRosterItemInternalProps, IRosterItemProps } from '../RosterItemCustom'
 export const withRosterActions: (
   C: React.ComponentType<IRosterItemInternalProps>,
 ) => React.ComponentType<IRosterItemProps> = Component => props => {
-  const { toggleMute, togglePromote, toggleSelect } = useActions();
+  const { toggleMute, togglePromote } = useActions();
 
   const [isOpen, setOpen] = React.useState(false);
   const [isContextOpen, setContextOpen] = React.useState(false);
@@ -96,13 +96,7 @@ export const withRosterActions: (
       onOpenChange={(_, { open }) => setContextOpen(open)}
       trigger={
         <div>
-          <Component
-            {...props}
-            action={actionButton}
-            toggleSelect={() => {
-              toggleSelect(userId, type);
-            }}
-          />
+          <Component {...props} action={actionButton} />
         </div>
       }
       tabbableTrigger={false}

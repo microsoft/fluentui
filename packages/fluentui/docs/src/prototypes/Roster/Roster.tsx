@@ -90,7 +90,7 @@ export const Roster: React.FunctionComponent<{}> = () => {
       </Flex>
       <Flex styles={rosterStyles}>
         <ActionsContext.Provider value={actions}>
-          <Tree items={rosterData} styles={rosterTreeStyles} selectable defaultSelectIndicatorPosition={false} />
+          <Tree items={rosterData} styles={rosterTreeStyles} selectable />
         </ActionsContext.Provider>
       </Flex>
     </>

@@ -29,15 +29,6 @@ export const useRosterActions = (rosterData, setRosterData: React.Dispatch<React
           return newData;
         });
       },
-      toggleSelect: (id: string, type: string) => {
-        setRosterData(_rosterData => {
-          const newData = [..._rosterData];
-          // We can change it to work with normalized data to avoid this .find chain
-          const item = newData.find(group => group.id === type).items.find(item => item.title.userId === id);
-          item.title.selected = !item.title.selected;
-          return newData;
-        });
-      },
     }),
     [rosterData, setRosterData],
   );
