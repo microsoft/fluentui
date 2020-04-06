@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react-northstar';
 import { useSelectKnob } from '@fluentui/docs-components';
-import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '../../../../../../react-icons-northstar/src';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const TooltipExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
