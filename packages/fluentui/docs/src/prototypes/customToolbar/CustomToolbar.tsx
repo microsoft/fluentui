@@ -9,9 +9,21 @@ import {
   ShorthandCollection,
   Status,
   ToolbarItemShorthandKinds,
-  SizeValue,
   ShorthandValue,
 } from '@fluentui/react-northstar';
+import {
+  CallControlCloseTrayIcon,
+  CallControlPresentNewIcon,
+  CallEndIcon,
+  CallVideoIcon,
+  CallVideoOffIcon,
+  ChatIcon,
+  ChevronDownIcon,
+  MicIcon,
+  MicOffIcon,
+  MoreIcon,
+  ParticipantAddIcon,
+} from '@fluentui/react-icons-northstar';
 
 const tooltips = {
   videoOn: 'Turn camera off',
@@ -81,10 +93,7 @@ const commonLayout: CustomToolbarLayout = props =>
     {
       title: props.cameraActive ? tooltips.videoOn : tooltips.videoOff,
       active: props.cameraActive,
-      icon: {
-        name: props.cameraActive ? 'call-video' : 'call-video-off',
-        size: 'large' as SizeValue,
-      },
+      icon: props.cameraActive ? <CallVideoIcon size="large" /> : <CallVideoOffIcon size="large" />,
       key: 'camera',
       onClick: () => _.invoke(props, 'onCameraChange', !props.cameraActive),
       variables: { isCtItemPrimary: true },
@@ -93,10 +102,7 @@ const commonLayout: CustomToolbarLayout = props =>
     {
       title: props.micActive ? tooltips.micOn : tooltips.micOff,
       active: props.micActive,
-      icon: {
-        name: props.micActive ? 'mic' : 'mic-off',
-        size: 'large' as SizeValue,
-      },
+      icon: props.micActive ? <MicIcon size="large" /> : <MicOffIcon size="large" />,
       key: 'mic',
       onClick: () => _.invoke(props, 'onMicChange', !props.micActive),
       variables: { isCtItemPrimary: true },
@@ -105,10 +111,11 @@ const commonLayout: CustomToolbarLayout = props =>
     {
       title: props.screenShareActive ? tooltips.shareStop : tooltips.share,
       active: props.screenShareActive,
-      icon: {
-        name: props.screenShareActive ? 'call-control-close-tray' : 'call-control-present-new',
-        size: 'large' as SizeValue,
-      },
+      icon: props.screenShareActive ? (
+        <CallControlCloseTrayIcon size="large" />
+      ) : (
+        <CallControlPresentNewIcon size="large" />
+      ),
       key: 'screen-share',
       onClick: () => _.invoke(props, 'onScreenShareChange', !props.screenShareActive),
       variables: { isCtItemPrimary: true },
@@ -117,10 +124,7 @@ const commonLayout: CustomToolbarLayout = props =>
     {
       title: tooltips.moreActions,
       key: 'more',
-      icon: {
-        name: 'more',
-        size: 'large' as SizeValue,
-      },
+      icon: <MoreIcon size="large" />,
       onClick: () => _.invoke(props, 'onMoreClick'),
       variables: { isCtItemPrimary: true },
     },
@@ -130,11 +134,7 @@ const sidebarButtons: CustomToolbarLayout = props => [
   {
     title: tooltips.chat,
     active: props.sidebarSelected === 'chat',
-    icon: {
-      name: 'chat',
-      outline: true,
-      size: 'large' as SizeValue,
-    },
+    icon: <ChatIcon outline size="large" />,
     key: 'chat',
     onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
     variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true },
@@ -142,11 +142,7 @@ const sidebarButtons: CustomToolbarLayout = props => [
   {
     title: tooltips.addParticipants,
     active: props.sidebarSelected === 'participant-add',
-    icon: {
-      name: 'participant-add',
-      outline: true,
-      size: 'large' as SizeValue,
-    },
+    icon: <ParticipantAddIcon outline size="large" />,
     key: 'participant-add',
     onClick: () =>
       _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
@@ -158,10 +154,7 @@ const layoutItems: ShorthandValue<ToolbarItemProps> = {
   endCall: props => ({
     title: tooltips.endCall,
     key: 'end-call',
-    icon: {
-      name: 'call-end',
-      size: 'large',
-    },
+    icon: <CallEndIcon size="large" />,
     onClick: () => _.invoke(props, 'onEndCallClick'),
     variables: { isCtItemDanger: true },
   }),
@@ -191,10 +184,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
     {
       title: tooltips.shareStop,
       key: 'stop-sharing',
-      icon: {
-        name: 'call-control-stop-presenting-new',
-        size: 'large',
-      },
+      icon: <CallControlPresentNewIcon size="large" />,
       onClick: () => _.invoke(props, 'onStopSharingClick'),
     },
 
@@ -202,11 +192,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
       'aria-label': `${props.pptSlide} ${tooltips.pptPrevious}`,
       title: tooltips.pptPrevious,
       key: 'ppt-prev',
-      icon: {
-        name: 'chevron-down',
-        rotate: 90,
-        outline: true,
-      },
+      icon: <ChevronDownIcon rotate={90} outline />,
       onClick: () => _.invoke(props, 'onPptPrevClick'),
     },
 
@@ -221,11 +207,7 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
       'aria-label': `${props.pptSlide} ${tooltips.pptNext}`,
       title: tooltips.pptNext,
       key: 'ppt-next',
-      icon: {
-        name: 'chevron-down',
-        rotate: -90,
-        outline: true,
-      },
+      icon: <ChevronDownIcon rotate={-90} outline />,
       onClick: () => _.invoke(props, 'onPptNextClick'),
     },
 

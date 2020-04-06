@@ -6,7 +6,7 @@ import {
   Button,
   Divider,
   Header,
-  Icon,
+  CalendarIcon,
   Image,
   imageBehavior,
   Input,
@@ -23,7 +23,7 @@ class App extends React.Component {
         <div>
           <Accordion panels={[{ title: 'Title', content: 'Content' }]} />
           <Animation name="spinner">
-            <Icon name="umbrella" circular bordered />
+            <CalendarIcon circular bordered />
           </Animation>
           <Attachment header="Document.docx" />
           <Avatar image="//placehold.it" />

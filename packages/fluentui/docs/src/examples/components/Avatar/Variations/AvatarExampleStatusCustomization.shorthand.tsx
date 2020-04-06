@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { Avatar, Grid, Text } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const defaultAvatar = (
   <Avatar
     image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
     status={{
       color: 'green',
-      icon: 'icon-checkmark',
+      icon: <AcceptIcon />,
       title: 'Available',
     }}
   />
@@ -23,7 +24,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         title: 'Available',
       }}
       variables={{ statusBorderColor: 'orange' }}
@@ -35,7 +36,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       size="larger"
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         title: 'Available',
       }}
     />
@@ -45,7 +46,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       image={{ src: 'public/images/avatar/small/matt.jpg', alt: 'Profile picture of Matt' }}
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         title: 'Available',
         size: 'larger',
       }}
@@ -57,7 +58,7 @@ const AvatarExampleStatusCustomizationShorthand = () => (
       size="larger"
       status={{
         color: 'green',
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         title: 'Available',
         size: 'medium',
       }}

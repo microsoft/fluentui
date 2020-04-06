@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react-northstar';
+import { Avatar, Button, Divider, Segment, Text, Flex } from '@fluentui/react-northstar';
 import chatProtoStyle from './chatProtoStyle';
 
 import { ChatData } from './services';
+import { TeamCreateIcon, MoreIcon, CallVideoIcon, CallIcon } from '@fluentui/react-icons-northstar';
 
 export interface ChatPaneHeaderProps {
   chat?: ChatData;
@@ -23,11 +24,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
     return (
       <Segment
         content={
-          <Icon
-            name="team-create"
-            styles={{ margin: 'auto 8px' }}
-            variables={siteVars => ({ color: siteVars.colors.white })}
-          />
+          <TeamCreateIcon styles={{ margin: 'auto 8px' }} variables={siteVars => ({ color: siteVars.colors.white })} />
         }
         styles={({ variables: v }) => ({
           backgroundColor: v.backgroundColor,
@@ -74,30 +71,28 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
       <div style={{ display: 'inline-flex' }}>
         <Button.Group
           circular
-          buttons={['call-video', 'call'].map((name, index) => ({
-            key: `${index}-${name}`,
-            icon: {
-              name,
-              variables: siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' }),
-            },
+          buttons={[CallVideoIcon, CallIcon].map((Icon, index) => ({
+            key: index,
+            icon: <Icon variables={siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' })} />,
             primary: true,
           }))}
           styles={{ marginRight: '20px' }}
         />
-        {['team-create', 'more'].map((name, index) => (
-          <Icon
-            key={`${index}-${name}`}
-            name={name}
-            outline
-            tabIndex={0}
-            styles={{
-              fontWeight: 100,
-              margin: 'auto',
-              ...(!index && { margin: 'auto 1.6rem auto auto' }),
-            }}
-            variables={siteVars => ({ color: siteVars.colors.grey[350] })}
-          />
-        ))}
+        {[TeamCreateIcon, MoreIcon].map((IconComponent, index) => {
+          return (
+            <IconComponent
+              key={`${index}-${name}`}
+              outline
+              tabIndex={0}
+              styles={{
+                fontWeight: 100,
+                margin: 'auto',
+                ...(!index && { margin: 'auto 1.6rem auto auto' }),
+              }}
+              variables={siteVars => ({ color: siteVars.colors.grey[350] })}
+            />
+          );
+        })}
       </div>
     );
   }

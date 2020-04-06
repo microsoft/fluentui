@@ -33,7 +33,6 @@ import { FormProps } from '../../components/Form/Form';
 import { GridProps } from '../../components/Grid/Grid';
 import { HeaderDescriptionProps } from '../../components/Header/HeaderDescription';
 import { HeaderProps } from '../../components/Header/Header';
-import { IconStylesProps } from '../../components/Icon/Icon';
 import { ImageStylesProps } from '../../components/Image/Image';
 import { InputProps } from '../../components/Input/Input';
 import { ItemLayoutProps } from '../../components/ItemLayout/ItemLayout';
@@ -63,7 +62,7 @@ import { ToolbarMenuRadioGroupStylesProps } from '../../components/Toolbar/Toolb
 import { ToolbarMenuStylesProps } from '../../components/Toolbar/ToolbarMenu';
 import { ToolbarProps } from '../../components/Toolbar/Toolbar';
 import { ToolbarRadioGroupProps } from '../../components/Toolbar/ToolbarRadioGroup';
-import { TooltipContentProps } from '../../components/Tooltip/TooltipContent';
+import { TooltipContentStylesProps } from '../../components/Tooltip/TooltipContent';
 import { HierarchicalTreeItemProps } from '../../components/HierarchicalTree/HierarchicalTreeItem';
 import { HierarchicalTreeProps } from '../../components/HierarchicalTree/HierarchicalTree';
 import { HierarchicalTreeTitleProps } from '../../components/HierarchicalTree/HierarchicalTreeTitle';
@@ -79,6 +78,7 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
@@ -107,7 +107,7 @@ export type TeamsThemeStylesProps = {
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;
-  Icon: IconStylesProps;
+  SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;
   Input: InputProps;
   ItemLayout: ItemLayoutProps;
@@ -136,7 +136,7 @@ export type TeamsThemeStylesProps = {
   ToolbarMenuItem: ToolbarMenuItemStylesProps;
   ToolbarMenuDivider: ToolbarMenuDividerStylesProps;
   ToolbarMenuRadioGroup: ToolbarMenuRadioGroupStylesProps;
-  TooltipContent: TooltipContentProps;
+  TooltipContent: TooltipContentStylesProps;
   Text: TextStylesProps;
   TreeItem: TreeItemStylesProps;
   TreeTitle: TreeTitleStylesProps;

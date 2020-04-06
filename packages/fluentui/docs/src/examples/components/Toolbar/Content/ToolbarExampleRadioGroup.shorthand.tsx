@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Toolbar } from '@fluentui/react-northstar';
+import { BulletsIcon, NumberListIcon, ToDoListIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleRadioGroupShorthand = () => {
   const [bulletListActive, setBulletListActive] = React.useState(false);
@@ -15,7 +16,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
           items: [
             {
               key: 'bullets',
-              icon: { name: 'bullets', outline: true },
+              icon: <BulletsIcon {...{ outline: true }} />,
               active: bulletListActive,
               onClick: () => {
                 setBulletListActive(!bulletListActive);
@@ -28,7 +29,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
             },
             {
               key: 'number-list',
-              icon: { name: 'number-list', outline: true },
+              icon: <NumberListIcon {...{ outline: true }} />,
               active: numberListActive,
               onClick: () => {
                 setNumberListActive(!numberListActive);
@@ -41,7 +42,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
             },
             {
               key: 'to-do-list',
-              icon: { name: 'to-do-list', outline: true },
+              icon: <ToDoListIcon {...{ outline: true }} />,
               active: toDoListActive,
               onClick: () => {
                 setToDoListActive(!toDoListActive);

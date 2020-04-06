@@ -104,6 +104,7 @@
     "jest-cli": "~24.9.0",
     "jest-environment-jsdom": "~24.9.0",
     "jest-react-fela": "^10.6.1",
+    "jest-watch-typeahead": "^0.4.2",
     "jju": "^1.4.0",
     "json-loader": "^0.5.7",
     "json-stable-stringify-without-jsonify": "^1.0.1",

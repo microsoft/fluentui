@@ -1,5 +1,6 @@
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuRadioGroup = () => {
   const [activeIndex, setActiveIndex] = React.useState(0);
@@ -10,9 +11,9 @@ const ToolbarExampleMenuRadioGroup = () => {
       aria-label="Toolbar can contain a radio group in a menu"
       items={[
         {
+          icon: <MoreIcon />,
           key: 'more',
           active: menuOpen,
-          icon: 'more',
           title: 'More',
           menu: [
             {
