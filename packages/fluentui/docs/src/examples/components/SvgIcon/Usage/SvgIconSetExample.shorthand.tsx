@@ -1,30 +1,33 @@
-import * as React from 'react';
 import { Grid, Divider, Header, SvgIconProps } from '@fluentui/react-northstar';
-import * as icons from '@fluentui/react-icons-northstar';
+import * as exports from '@fluentui/react-icons-northstar';
+import * as React from 'react';
+
+const icons = Object.keys(exports).reduce((acc: React.FC<SvgIconProps>[], exportName) => {
+  if (!!exports[exportName].displayName) {
+    acc.push(exports[exportName]);
+  }
+
+  return acc;
+}, []);
 
 const cellStyles = {
   margin: '10px 0',
 };
 
-const SvgIconSetExampleShorthand: React.FunctionComponent = () => (
+const SvgIconSetExampleShorthand = () => (
   <>
     <div>
       <Divider>
         <Header as="h3" content="Regular" />
       </Divider>
       <Grid columns={4} styles={{ textAlign: 'center' }}>
-        {Object.values(icons)
-          .filter(icon => !!(icon as any).displayName)
-          .map(icon => {
-            const IconComponent = (icon as unknown) as React.FC<SvgIconProps>;
-            return (
-              <div key={IconComponent.displayName} style={cellStyles}>
-                <IconComponent />
-                <br />
-                <code>{IconComponent.displayName}</code>
-              </div>
-            );
-          })}
+        {icons.map(Icon => (
+          <div key={Icon.displayName} style={cellStyles}>
+            <Icon />
+            <br />
+            <code>{Icon.displayName}</code>
+          </div>
+        ))}
       </Grid>
     </div>
 
@@ -33,18 +36,13 @@ const SvgIconSetExampleShorthand: React.FunctionComponent = () => (
         <Header as="h3" content="Outline" />
       </Divider>
       <Grid columns={4} styles={{ textAlign: 'center' }}>
-        {Object.values(icons)
-          .filter(icon => !!(icon as any).displayName)
-          .map(icon => {
-            const IconComponent = (icon as unknown) as React.FC<SvgIconProps>;
-            return (
-              <div key={`${IconComponent.displayName} - outline`} style={cellStyles}>
-                <IconComponent outline />
-                <br />
-                <code>{IconComponent.displayName}</code>
-              </div>
-            );
-          })}
+        {icons.map(Icon => (
+          <div key={`${Icon.displayName} - outline`} style={cellStyles}>
+            <Icon outline />
+            <br />
+            <code>{Icon.displayName}</code>
+          </div>
+        ))}
       </Grid>
     </div>
   </>

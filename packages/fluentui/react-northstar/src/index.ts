@@ -103,8 +103,8 @@ export { default as HeaderDescription } from './components/Header/HeaderDescript
 
 export * from './components/Icon/Icon';
 export { default as Icon } from './components/Icon/Icon';
-export * from './components/Icon/SvgIcon';
-export { default as SvgIcon } from './components/Icon/SvgIcon';
+export * from './components/SvgIcon/SvgIcon';
+export { default as SvgIcon } from './components/SvgIcon/SvgIcon';
 
 export * from './components/Image/Image';
 export { default as Image } from './components/Image/Image';
