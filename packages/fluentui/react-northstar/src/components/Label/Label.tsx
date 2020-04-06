@@ -18,7 +18,6 @@ import {
   rtlTextContainer,
 } from '../../utils';
 
-import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Box, { BoxProps } from '../Box/Box';
 
@@ -47,7 +46,7 @@ export interface LabelProps
   fluid?: boolean;
 
   /** A Label can have an icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** A Label can position its Icon at the start or end of the layout. */
   iconPosition?: 'start' | 'end';
@@ -105,12 +104,6 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
     rtl: context.rtl,
   });
 
-  const handleIconOverrides = (predefinedProps: IconProps) => ({
-    ...(!predefinedProps.xSpacing && {
-      xSpacing: 'none',
-    }),
-  });
-
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Label.handledProps, props);
 
@@ -136,11 +129,10 @@ const Label: React.FC<WithAsProp<LabelProps>> & FluentComponentStaticProps = pro
       styles: resolvedStyles.image,
     }),
   });
-  const iconElement = Icon.create(icon, {
+  const iconElement = Box.create(icon, {
     defaultProps: () => ({
       styles: resolvedStyles.icon,
     }),
-    overrideProps: handleIconOverrides,
   });
   const contentElement = Box.create(content, {
     defaultProps: () => ({
@@ -178,7 +170,7 @@ Label.className = 'ui-label';
 Label.propTypes = {
   ...commonPropTypes.createCommon({ color: true, content: 'shorthand' }),
   circular: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   iconPosition: PropTypes.oneOf(['start', 'end']),
   image: customPropTypes.itemShorthandWithoutJSX,
   imagePosition: PropTypes.oneOf(['start', 'end']),

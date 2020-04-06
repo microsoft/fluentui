@@ -1,4 +1,5 @@
-import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react-northstar';
+import { Grid, Input, gridBehavior, BoxProps, ShorthandValue } from '@fluentui/react-northstar';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 
@@ -7,7 +8,7 @@ import GridImagePickerItem, { GridPickerItemProps } from './GridImagePickerItem'
 export interface GridPickerProps {
   items: GridPickerItemProps[];
   gridColumns?: string | number;
-  inputIcon?: ShorthandValue<IconProps>;
+  inputIcon?: ShorthandValue<BoxProps>;
   inputPlaceholder?: string;
 }
 
@@ -26,7 +27,7 @@ const inputStyles = {
 class GridImagePicker extends React.Component<GridPickerProps> {
   static defaultProps = {
     gridColumns: 5,
-    inputIcon: 'search',
+    inputIcon: <SearchIcon />,
     inputPlaceholder: 'Search...',
   };
 

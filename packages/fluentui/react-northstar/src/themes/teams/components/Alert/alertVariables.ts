@@ -52,6 +52,7 @@ export interface AlertVariables {
   headerMargin: string;
 
   iconMargin: string;
+  iconSize: string;
 
   dismissActionBackgroundColor: string;
   dismissActionBorderRadius: string;
@@ -136,6 +137,7 @@ export default (siteVars: SiteVariablesPrepared): AlertVariables => {
     headerMargin: `0 ${pxToRem(10)} 0 0`,
 
     iconMargin: `0 ${pxToRem(10)} 0 0`,
+    iconSize: pxToRem(16),
 
     dismissActionBackgroundColor: 'transparent',
     dismissActionBorderRadius: siteVars.borderRadius,

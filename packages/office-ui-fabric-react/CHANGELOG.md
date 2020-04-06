@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 03 Apr 2020 12:27:13 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Apr 2020 12:27:21 GMT and should not be manually modified.
 
+## 7.105.10
+Mon, 06 Apr 2020 12:27:21 GMT
+
+### Patches
+
+- Updated search box and divider examples to functional components (czearing@outlook.com)
+- Updating Image and Persona examples to use function components. (czearing@outlook.com)
 ## 7.105.9
 Fri, 03 Apr 2020 12:27:13 GMT
 

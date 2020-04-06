@@ -16,7 +16,6 @@ import { RenderResultConfig } from '../../utils/renderComponent';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, withSafeTypeForAs, ShorthandCollection } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
 import { ButtonProps } from '../Button/Button';
-import Icon, { IconProps } from '../Icon/Icon';
 import Text, { TextProps } from '../Text/Text';
 
 import ButtonGroup, { ButtonGroupProps } from '../Button/ButtonGroup';
@@ -41,7 +40,7 @@ export interface AlertProps extends UIComponentProps, ContentComponentProps<Shor
   actions?: ShorthandValue<ButtonGroupProps> | ShorthandCollection<ButtonProps>;
 
   /** An alert may contain an icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** An alert may contain a header. */
   header?: ShorthandValue<TextProps>;
@@ -117,7 +116,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
     actions: PropTypes.oneOfType([customPropTypes.itemShorthand, customPropTypes.collectionShorthand]),
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     header: customPropTypes.itemShorthand,
     attached: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['top', 'bottom'])]),
     fitted: PropTypes.bool,
@@ -201,7 +200,7 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
 
     return (
       <>
-        {Icon.create(icon, {
+        {Box.create(icon, {
           defaultProps: () => ({
             className: Alert.slotClassNames.icon,
             styles: styles.icon,

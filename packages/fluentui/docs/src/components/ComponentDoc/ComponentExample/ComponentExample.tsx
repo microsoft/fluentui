@@ -5,6 +5,7 @@ import {
   constants,
   Flex,
   ICSSInJSStyle,
+  Image,
   Menu,
   Provider,
   Segment,
@@ -26,6 +27,8 @@ import ComponentExampleTitle from './ComponentExampleTitle';
 import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
 import VariableResolver from '../../VariableResolver/VariableResolver';
 import ComponentExampleVariables from './ComponentExampleVariables';
+// TODO: find replacement
+import { ReplyIcon, AcceptIcon, EditIcon } from '@fluentui/react-icons-northstar';
 
 const ERROR_COLOR = '#D34';
 
@@ -315,7 +318,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
     const menuItems = [
       {
-        icon: canCodeBeFormatted ? 'magic' : 'check', // (error && 'bug') || (canCodeBeFormatted ? 'magic' : 'check')
+        icon: canCodeBeFormatted ? <EditIcon /> : <AcceptIcon />,
         // active: !!error,
         content: 'Prettier',
         key: 'prettier',
@@ -323,8 +326,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         disabled: !canCodeBeFormatted,
       },
       {
-        icon: 'refresh',
         content: 'Reset',
+        icon: <ReplyIcon />,
         key: 'reset',
         onClick: this.resetSourceCode,
         disabled: !wasCodeChanged,
@@ -341,7 +344,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: 'github',
+        icon: <Image src="public/images/github.png" width="16px" height="16px" />,
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',

@@ -1,6 +1,7 @@
 import { Avatar, Chat, Provider } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const avatars = {
   ade:
@@ -9,7 +10,7 @@ const avatars = {
 
 const janeAvatar = {
   image: `data:image/jpeg;base64,${avatars.ade}`,
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const ChatDuplicateMessagesPerf = () => {

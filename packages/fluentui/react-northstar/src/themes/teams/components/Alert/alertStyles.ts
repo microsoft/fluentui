@@ -117,6 +117,21 @@ const alertStyles: ComponentSlotStylesPrepared<AlertProps, AlertVariables> = {
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: v.iconSize,
+    height: v.iconSize,
+
+    '& > :first-child': {
+      height: '100%',
+      width: '100%',
+      '& svg': {
+        height: '100%',
+        width: '100%',
+      },
+    },
+
     margin: v.iconMargin,
   }),
 };
