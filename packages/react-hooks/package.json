@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-hooks",
-  "version": "7.0.25",
+  "version": "7.1.0",
   "description": "UI Fabric React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

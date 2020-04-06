@@ -7,10 +7,10 @@ import {
   menuAsToolbarBehavior,
   MenuItemProps,
   ShorthandCollection,
-  IconXSpacing,
   ICSSInJSStyle,
   Props,
 } from '@fluentui/react-northstar';
+import { EditIcon, EmojiIcon, FilesImageIcon, MoreIcon, SendIcon, CalendarIcon } from '@fluentui/react-icons-northstar';
 
 import chatProtoStyle from './chatProtoStyle';
 
@@ -77,21 +77,16 @@ const getInputWrapperStyles = ({ attached }: ComposeMessageProps): ICSSInJSStyle
 
 const getMenuItems = (): ShorthandCollection<MenuItemProps> => {
   const items: ShorthandCollection<MenuItemProps> = [
-    'compose',
-    'attach',
-    'smile',
-    'picture',
-    'smile outline',
-    'calendar alternate',
-    'ellipsis horizontal',
-    'send',
-  ].map((name, index) => ({
-    key: `${index}-${name}`,
-    icon: {
-      name,
-      xSpacing: 'both' as IconXSpacing,
-      variables: siteVars => ({ color: siteVars.colors.grey[500] }),
-    },
+    EditIcon,
+    EmojiIcon,
+    FilesImageIcon,
+    EmojiIcon,
+    CalendarIcon,
+    MoreIcon,
+    SendIcon,
+  ].map((Icon, index) => ({
+    key: index,
+    icon: <Icon xSpacing="both" variables={siteVars => ({ color: siteVars.colors.grey[500] })} />,
     'aria-label': `${name} tool`,
   }));
 

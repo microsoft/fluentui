@@ -22,6 +22,7 @@ export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/
 export { default as Status } from './components/Status/statusVariables';
 export { default as Reaction } from './components/Reaction/reactionVariables';
 export { default as Alert } from './components/Alert/alertVariables';
+export { default as AlertDismissAction } from './components/Alert/alertDismissActionVariables';
 export { default as Provider } from './components/Provider/providerVariables';
 export { default as Dropdown } from './components/Dropdown/dropdownVariables';
 export { default as Label } from './components/Label/labelVariables';

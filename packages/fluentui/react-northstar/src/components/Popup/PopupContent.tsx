@@ -1,25 +1,41 @@
-import { FocusTrapZone, FocusTrapZoneProps, AutoFocusZoneProps, AutoFocusZone } from '@fluentui/react-bindings';
-import cx from 'classnames';
-import * as React from 'react';
-import * as PropTypes from 'prop-types';
-import * as _ from 'lodash';
+import { Accessibility } from '@fluentui/accessibility';
+import {
+  AutoFocusZone,
+  AutoFocusZoneProps,
+  FocusTrapZone,
+  FocusTrapZoneProps,
+  getElementType,
+  useAccessibility,
+  useStyles,
+  useTelemetry,
+  useUnhandledProps,
+} from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import cx from 'classnames';
+import * as _ from 'lodash';
+import Popper from 'popper.js';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 
+import {
+  WithAsProp,
+  ComponentEventHandler,
+  withSafeTypeForAs,
+  FluentComponentStaticProps,
+  ProviderContextPrepared,
+} from '../../types';
 import {
   childrenExist,
   createShorthandFactory,
-  UIComponent,
-  RenderResultConfig,
   UIComponentProps,
   ChildrenComponentProps,
   ContentComponentProps,
   commonPropTypes,
   rtlTextContainer,
-  ShorthandFactory,
 } from '../../utils';
-import { Accessibility } from '@fluentui/accessibility';
-import { PopperChildrenProps } from '../../utils/positioner';
-import { WithAsProp, ComponentEventHandler, withSafeTypeForAs } from '../../types';
+import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
 
 export interface PopupContentSlotClassNames {
   content: string;
@@ -27,7 +43,7 @@ export interface PopupContentSlotClassNames {
 
 export interface PopupContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Accessibility behavior if overridden by the user. */
-  accessibility?: Accessibility;
+  accessibility?: Accessibility<never>;
 
   /**
    * Called after user's mouse enter.
@@ -59,82 +75,127 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
-class PopupContent extends UIComponent<WithAsProp<PopupContentProps>> {
-  static create: ShorthandFactory<PopupContentProps>;
+export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
+  basePlacement: Popper.Position;
+};
 
-  static displayName = 'PopupContent';
-  static className = 'ui-popup__content';
-  static slotClassNames: PopupContentSlotClassNames;
+const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
+  FluentComponentStaticProps<PopupContentProps> & { slotClassNames: PopupContentSlotClassNames } = props => {
+  const context: ProviderContextPrepared = React.useContext(ThemeContext);
+  const { setStart, setEnd } = useTelemetry(PopupContent.displayName, context.telemetry);
+  setStart();
 
-  static propTypes = {
-    ...commonPropTypes.createCommon(),
-    placement: PropTypes.string,
-    pointing: PropTypes.bool,
-    onMouseEnter: PropTypes.func,
-    onMouseLeave: PropTypes.func,
-    pointerRef: customPropTypes.ref,
-    trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-    autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
-  };
-
-  handleMouseEnter = e => {
-    _.invoke(this.props, 'onMouseEnter', e, this.props);
-  };
-
-  handleMouseLeave = e => {
-    _.invoke(this.props, 'onMouseLeave', e, this.props);
-  };
-
-  renderComponent({
+  const {
     accessibility,
-    ElementType,
-    classes,
-    unhandledProps,
+    autoFocus,
+    children,
+    className,
+    content,
+    design,
+    placement,
+    pointing,
+    pointerRef,
     styles,
-  }: RenderResultConfig<PopupContentProps>): React.ReactNode {
-    const { children, content, pointing, pointerRef, trapFocus, autoFocus } = this.props;
+    trapFocus,
+    variables,
+  } = props;
 
-    const popupContentProps: PopupContentProps = {
-      className: classes.root,
-      ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-      ...accessibility.attributes.root,
-      ...unhandledProps,
-      onMouseEnter: this.handleMouseEnter,
-      onMouseLeave: this.handleMouseLeave,
+  const getA11yProps = useAccessibility(accessibility, {
+    debugName: PopupContent.displayName,
+    rtl: context.rtl,
+  });
+  const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
+    className: PopupContent.className,
+    mapPropsToStyles: () => ({
+      basePlacement: getBasePlacement(placement, context.rtl),
+      pointing,
+    }),
+    mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
+    rtl: context.rtl,
+  });
+
+  const ElementType = getElementType(props);
+  const unhandledProps = useUnhandledProps(PopupContent.handledProps, props);
+
+  const handleMouseEnter = e => {
+    _.invoke(props, 'onMouseEnter', e, props);
+  };
+
+  const handleMouseLeave = e => {
+    _.invoke(props, 'onMouseLeave', e, props);
+  };
+
+  const popupContentProps: PopupContentProps = getA11yProps('root', {
+    className: classes.root,
+    ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+    ...unhandledProps,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+  });
+  const popupContent = (
+    <>
+      {pointing && <div className={classes.pointer} ref={pointerRef} />}
+      <div className={cx(PopupContent.slotClassNames.content, classes.content)}>
+        {childrenExist(children) ? children : content}
+      </div>
+    </>
+  );
+
+  let element: React.ReactElement;
+
+  if (trapFocus) {
+    const focusTrapZoneProps = {
+      ...popupContentProps,
+      ...((_.keys(trapFocus).length && trapFocus) as FocusTrapZoneProps),
+      as: ElementType,
     };
-
-    const popupContent = (
-      <>
-        {pointing && <div className={classes.pointer} ref={pointerRef} />}
-        <div className={cx(PopupContent.slotClassNames.content, classes.content)}>
-          {childrenExist(children) ? children : content}
-        </div>
-      </>
-    );
-
-    if (trapFocus) {
-      const focusTrapZoneProps = {
-        ...popupContentProps,
-        ...((_.keys(trapFocus).length && trapFocus) as FocusTrapZoneProps),
-        as: ElementType,
-      };
-
-      return <FocusTrapZone {...focusTrapZoneProps}>{popupContent}</FocusTrapZone>;
-    }
-
-    if (autoFocus) {
-      const autoFocusZoneProps = {
-        ...popupContentProps,
-        ...((_.keys(autoFocus).length && autoFocus) as AutoFocusZoneProps),
-        as: ElementType,
-      };
-
-      return <AutoFocusZone {...autoFocusZoneProps}>{popupContent}</AutoFocusZone>;
-    }
-
-    return <ElementType {...popupContentProps}>{popupContent}</ElementType>;
+    element = <FocusTrapZone {...focusTrapZoneProps}>{popupContent}</FocusTrapZone>;
+  } else if (autoFocus) {
+    const autoFocusZoneProps = {
+      ...popupContentProps,
+      ...((_.keys(autoFocus).length && autoFocus) as AutoFocusZoneProps),
+      as: ElementType,
+    };
+    element = <AutoFocusZone {...autoFocusZoneProps}>{popupContent}</AutoFocusZone>;
+  } else {
+    element = <ElementType {...popupContentProps}>{popupContent}</ElementType>;
   }
-}
+
+  setEnd();
+
+  return element;
+};
+
+PopupContent.displayName = 'PopupContent';
+PopupContent.className = 'ui-popup__content';
+
+PopupContent.propTypes = {
+  ...commonPropTypes.createCommon(),
+  placement: PropTypes.oneOf<Popper.Placement>([
+    'auto-start',
+    'auto',
+    'auto-end',
+    'top-start',
+    'top',
+    'top-end',
+    'right-start',
+    'right',
+    'right-end',
+    'bottom-end',
+    'bottom',
+    'bottom-start',
+    'left-end',
+    'left',
+    'left-start',
+  ]),
+  pointing: PropTypes.bool,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
+  pointerRef: customPropTypes.ref,
+  trapFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  autoFocus: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+};
+PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
 PopupContent.slotClassNames = {
   content: `${PopupContent.className}__content`,

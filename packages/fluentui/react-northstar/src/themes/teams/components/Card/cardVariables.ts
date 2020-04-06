@@ -4,6 +4,7 @@ export interface CardVariables {
   borderStyle: string;
   borderColor: string;
   borderWidth: string;
+  borderRadius: string;
   padding: string;
   compactPadding: string;
   previewMargin: string;
@@ -24,6 +25,7 @@ export default (siteVars): CardVariables => {
     borderStyle: 'solid',
     borderColor: siteVars.colors.black,
     borderWidth: siteVars.borderWidth,
+    borderRadius: pxToRem(4),
     padding: pxToRem(10),
     compactPadding: pxToRem(0),
     previewMargin: `0 0 ${pxToRem(10)} 0`,

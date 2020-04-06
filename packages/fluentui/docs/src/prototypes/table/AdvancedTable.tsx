@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Table, Flex, Text, Icon } from '@fluentui/react-northstar';
+import { Table, Flex, Text } from '@fluentui/react-northstar';
 import { gridNestedBehavior } from '@fluentui/accessibility';
+import { ArrowUpIcon, ArrowDownIcon } from '@fluentui/react-icons-northstar';
 
 type TableCellComparator<T> = (cell1: T, cell2: T) => number;
 
@@ -48,7 +49,7 @@ const AdvancedTable = (props: AdvancedTableProps) => {
     content: (
       <Flex gap="gap.small">
         <Text content={title} />
-        {order !== 0 ? <Icon name={order === 1 ? 'arrow-up' : 'arrow-down'} /> : ''}
+        {order !== 0 ? order === 1 ? <ArrowUpIcon /> : <ArrowDownIcon /> : ''}
       </Flex>
     ),
     key: title,

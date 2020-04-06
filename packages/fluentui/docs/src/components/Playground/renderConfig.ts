@@ -3,6 +3,7 @@ import * as CodeSandbox from '@fluentui/code-sandbox';
 import * as Bindings from '@fluentui/react-bindings';
 import * as DocsComponent from '@fluentui/docs-components';
 import * as FluentUI from '@fluentui/react-northstar';
+import * as FluentUIIcons from '@fluentui/react-icons-northstar';
 import * as ReactFela from 'react-fela';
 import * as _ from 'lodash';
 import * as React from 'react';
@@ -35,6 +36,10 @@ export const imports: Record<string, { version: string; module: any }> = {
   '@fluentui/docs-components': {
     version: docsComponentsPackageJson.version,
     module: DocsComponent,
+  },
+  '@fluentui/react-icons-northstar': {
+    version: projectPackageJson.version,
+    module: FluentUIIcons,
   },
   '@fluentui/react-northstar': {
     version: projectPackageJson.version,
