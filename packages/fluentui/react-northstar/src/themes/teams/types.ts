@@ -107,7 +107,7 @@ export type TeamsThemeStylesProps = {
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;
-  Icon: SvgIconStylesProps;
+  SvgIcon: SvgIconStylesProps;
   Image: ImageStylesProps;
   Input: InputProps;
   ItemLayout: ItemLayoutProps;
