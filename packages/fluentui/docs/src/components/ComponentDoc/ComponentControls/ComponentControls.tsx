@@ -102,7 +102,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 kind: 'divider',
               },
               {
-                icon: <CircleIcon outline {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <CircleIcon outline style={{ width: '20px', height: '20px' }} />,
                 onClick: onShowTransparent,
                 active: showTransparent,
                 children: (Component, props) => (
