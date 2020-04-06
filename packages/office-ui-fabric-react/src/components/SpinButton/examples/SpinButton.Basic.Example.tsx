@@ -1,9 +1,12 @@
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+
+const StackTokens: Partial<IStackTokens> = { childrenGap: 20 };
+const StackStyles = { root: { width: 400 } };
 
 export const SpinButtonBasicExample = () => (
-  <Stack tokens={{ childrenGap: 10 }} styles={{ root: { width: 400 } }}>
+  <Stack tokens={StackTokens} styles={StackStyles}>
     <SpinButton
       defaultValue="0"
       label={'Basic SpinButton:'}
@@ -11,9 +14,6 @@ export const SpinButtonBasicExample = () => (
       max={100}
       step={1}
       iconProps={{ iconName: 'IncreaseIndentLegacy' }}
-      // tslint:disable:jsx-no-lambda
-      onFocus={() => console.log('onFocus called')}
-      onBlur={() => console.log('onBlur called')}
       incrementButtonAriaLabel={'Increase value by 1'}
       decrementButtonAriaLabel={'Decrease value by 1'}
     />
@@ -23,8 +23,6 @@ export const SpinButtonBasicExample = () => (
       min={0}
       max={10}
       step={0.1}
-      onFocus={() => console.log('onFocus called')}
-      onBlur={() => console.log('onBlur called')}
       incrementButtonAriaLabel={'Increase value by 0.1'}
       decrementButtonAriaLabel={'Decrease value by 0.1'}
     />

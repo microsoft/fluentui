@@ -47,8 +47,6 @@ export const SpinButtonStatefulExample = () => {
             return String(+value - 2) + suffix;
           }
         }}
-        onFocus={() => console.log('onFocus called')}
-        onBlur={() => console.log('onBlur called')}
         incrementButtonAriaLabel={'Increase value by 2'}
         decrementButtonAriaLabel={'Decrease value by 2'}
       />
