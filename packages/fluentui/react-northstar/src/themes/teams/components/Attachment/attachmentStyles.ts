@@ -2,7 +2,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { AttachmentProps } from '../../../../components/Attachment/Attachment';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
-import Icon from '../../../../components/Icon/Icon';
+import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import Button from '../../../../components/Button/Button';
@@ -44,7 +44,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
             color: v.siblingsFocusColor,
           },
 
-          [`& .${Icon.className}`]: {
+          [`& .${SvgIcon.className}`]: {
             color: v.siblingsFocusColor,
           },
         },
@@ -57,7 +57,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
             color: v.siblingsHoverColor,
           },
 
-          [`& .${Icon.className}`]: {
+          [`& .${SvgIcon.className}`]: {
             color: v.siblingsHoverColor,
           },
         },
@@ -84,6 +84,16 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
     flex: '0 0 auto',
+    height: v.iconSize,
+    width: v.iconSize,
+    [`& .${SvgIcon.className}`]: {
+      height: '100%',
+      width: '100%',
+      '& svg': {
+        height: '100%',
+        width: '100%',
+      },
+    },
     marginRight: v.iconSpace,
   }),
 
@@ -95,7 +105,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
     });
 
     return {
-      [`& .${Icon.className}`]: {
+      [`& .${SvgIcon.className}`]: {
         color: v.textColor, // this breaks the color change on hover
       },
 

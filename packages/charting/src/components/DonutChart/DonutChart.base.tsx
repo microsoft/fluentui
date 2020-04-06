@@ -81,7 +81,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
     const { data, href } = this.props;
     const { _width, _height } = this.state;
 
-    const { theme, className, styles, innerRadius } = this.props;
+    const { theme, className, styles, innerRadius, valueInsideDonut } = this.props;
     const { palette } = theme!;
     this._classNames = getClassNames(styles!, {
       theme: theme!,
@@ -113,6 +113,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
                 activeArc={this.state.activeLegend}
                 href={href}
                 calloutId={this._calloutId}
+                valueInsideDonut={valueInsideDonut}
               />
             </svg>
           </div>

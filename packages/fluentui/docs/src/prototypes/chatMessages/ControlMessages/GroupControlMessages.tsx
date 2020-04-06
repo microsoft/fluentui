@@ -2,9 +2,10 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 
-import { List, ChatMessageProps, Flex, Icon } from '@fluentui/react-northstar';
+import { List, ChatMessageProps, Flex } from '@fluentui/react-northstar';
 import ControlMessage from './ControlMessage';
 import controlMessagesGroupBehavior from './controlMessagesGroupBehavior';
+import { TriangleDownIcon, ParticipantAddIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 
 type GroupControlMessagesProps = {
   items: ChatMessageProps[];
@@ -38,8 +39,12 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
         }
       }}
     >
-      <Icon name={expanded ? 'icon-arrow-down' : 'icon-arrow-end'} onClick={() => setExpanded(!expanded)} />
-      <Icon name="participant-add" />
+      {expanded ? (
+        <TriangleDownIcon onClick={() => setExpanded(!expanded)} />
+      ) : (
+        <TriangleEndIcon onClick={() => setExpanded(!expanded)} />
+      )}
+      <ParticipantAddIcon />
       {expanded ? (
         <List accessibility={controlMessagesGroupBehavior} items={renderItems()} aria-label={'control messages'} />
       ) : (

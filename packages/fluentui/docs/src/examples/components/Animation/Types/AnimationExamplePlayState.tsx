@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Icon, Button, Animation, Provider } from '@fluentui/react-northstar';
+import { Button, Animation, Provider } from '@fluentui/react-northstar';
+import { PauseIcon, PlayIcon, MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
@@ -30,7 +31,7 @@ class AnimationExamplePlayState extends React.Component {
       <Provider theme={{ animations: { spinner } }}>
         <div>
           <Button
-            icon={this.state.playState === 'running' ? 'pause' : 'play'}
+            icon={this.state.playState === 'running' ? <PauseIcon /> : <PlayIcon />}
             content={this.state.playState === 'running' ? 'Pause' : 'Start'}
             onClick={this.changePlayState}
             primary
@@ -38,7 +39,7 @@ class AnimationExamplePlayState extends React.Component {
           <br />
           <br />
           <Animation name="spinner" playState={this.state.playState}>
-            <Icon name="mention" circular bordered />
+            <MentionIcon circular bordered />
           </Animation>
         </div>
       </Provider>

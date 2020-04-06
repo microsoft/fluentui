@@ -7,6 +7,7 @@ Helpful hooks not provided by React itself.
 - [useConst](#useconst) - Initialize and return a value that's always constant
 - [useConstCallback](#useconstcallback) - Like `useConst` but for functions
 - [useId](#useid) - Get a globally unique ID
+- [useBoolean](#useboolean) - Return a boolean value and callbacks for setting it to true or false, or toggling
 
 ## useConst
 
@@ -75,5 +76,36 @@ const TextField = ({ labelText, defaultValue }) => {
       <input id={id} type="text" defaultValue={defaultValue} />
     </div>
   );
+};
+```
+
+## useBoolean
+
+`function useBoolean(initialState: boolean): [boolean, IUseBooleanCallbacks]`
+
+Hook to store a boolean state value and generate callbacks for setting the value to true or false, or toggling the value.
+
+The hook returns a tuple containing the current value and an object with callbacks for updating the value.
+
+### `IUseBooleanCallbacks` properties
+
+- `setTrue: () => void`: Set the value to true. Always has the same identity.
+- `setFalse: () => void`: Set the value to false. Always has the same identity.
+- `toggle: () => void`: Toggle the value. If the value is currently true, this will be the `setFalse` callback. If it's currently false, this will be the `setTrue` callback.
+
+### Example
+
+```jsx
+import { useBoolean } from '@uifabric/react-hooks';
+
+const MyComponent = () => {
+  const [value, { setTrue: showDialog, setFalse: hideDialog, toggle: toggleDialogVisible }] = useBoolean(false);
+  // ^^^ Instead of:
+  // const [isDialogVisible, setIsDialogVisible] = React.useState(false);
+  // const showDialog = useConstCallback(() => setIsDialogVisible(true));
+  // const hideDialog = useConstCallback(() => setIsDialogVisible(false));
+  // const toggleDialogVisible = isDialogVisible ? setFalse : setTrue;
+
+  // ... code that shows a dialog when a button is clicked ...
 };
 ```

@@ -1,9 +1,10 @@
 import { CodeSnippet } from '@fluentui/docs-components';
-import { Header, Icon } from '@fluentui/react-northstar';
+import { Header } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import DocPage from '../components/DocPage';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
+import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
 
 export default () => (
   <DocPage title="Quick Start">
@@ -17,7 +18,7 @@ export default () => (
       Fluent UI components are styled using CSS in JS. This technique requires a style renderer to render JavaScript
       objects to CSS.{' '}
       <a href="https://reactjs.org/docs/context.html" target="_blank" rel="noopener nofollow">
-        React Context <Icon name="open-outside" size="small" />
+        React Context <OpenOutsideIcon size="small" />
       </a>{' '}
       is used to provide the style renderer and theme to components.
     </p>

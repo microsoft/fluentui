@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
@@ -314,9 +314,9 @@ export class LineChartBase extends React.Component<
     }
   }
 
-  private _prepareDatapoints(maxVal: number, splitInto: number): number[] {
-    const val = Math.ceil(maxVal / splitInto);
-    const dataPointsArray: number[] = [0, val];
+  private _prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
+    const val = Math.ceil((maxVal - minVal) / splitInto);
+    const dataPointsArray: number[] = [minVal, minVal + val];
     while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
     }
@@ -357,12 +357,18 @@ export class LineChartBase extends React.Component<
   };
 
   private _createYAxis = () => {
+    const { yMaxValue = 0, yMinValue = 0 } = this.props;
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
     })!;
-    const domainValues = this._prepareDatapoints(yMax, 4);
+    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
+    })!;
+    const finalYmax = yMax > yMaxValue ? yMax : yMaxValue;
+    const finalYmin = yMin < yMinValue ? 0 : yMinValue;
+    const domainValues = this._prepareDatapoints(finalYmax, finalYmin, 4);
     const yAxisScale = d3ScaleLinear()
-      .domain([0, domainValues[domainValues.length - 1]])
+      .domain([finalYmin, domainValues[domainValues.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
     this._yAxisScale = yAxisScale;
     const yAxis = d3AxisLeft(yAxisScale)

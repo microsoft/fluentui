@@ -5,7 +5,6 @@ import * as keyboardKey from 'keyboard-key';
 
 import Attachment from 'src/components/Attachment/Attachment';
 import Text from 'src/components/Text/Text';
-import Icon from 'src/components/Icon/Icon';
 import Button from 'src/components/Button/Button';
 import { ReactWrapper } from 'enzyme';
 
@@ -28,10 +27,6 @@ describe('Attachment', () => {
   isConformant(Attachment);
   attachmentImplementsShorthandProp('header', Text);
   attachmentImplementsShorthandProp('description', Text);
-  attachmentImplementsShorthandProp('icon', Icon, {
-    mapsValueToProp: 'name',
-    requiredShorthandProps: { name: 'at' },
-  });
   attachmentImplementsShorthandProp('action', Button);
 
   describe('accessibility', () => {

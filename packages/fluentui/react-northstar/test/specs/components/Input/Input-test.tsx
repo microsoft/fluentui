@@ -7,7 +7,6 @@ import { mountWithProvider as mount } from 'test/utils';
 import { isConformant, implementsShorthandProp, implementsWrapperProp } from 'test/specs/commonTests';
 
 import Input from 'src/components/Input/Input';
-import Icon from 'src/components/Icon/Icon';
 import Box from 'src/components/Box/Box';
 
 const testValue = 'test value';
@@ -38,10 +37,6 @@ describe('Input', () => {
   });
 
   implementsShorthandProp(Input)('input', Box, { mapsValueToProp: 'type' });
-  implementsShorthandProp(Input)('icon', Icon, {
-    mapsValueToProp: 'name',
-    requiredShorthandProps: { name: 'at' },
-  });
 
   describe('wrapper', () => {
     implementsShorthandProp(Input)('wrapper', Box, { mapsValueToProp: 'children' });
@@ -65,11 +60,14 @@ describe('Input', () => {
   });
 
   describe('clearable', () => {
-    it('calls onChange on Icon click with an `empty` value', () => {
+    it('calls onChange on Clearable icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
 
-      wrapper.find('Icon').simulate('click');
+      wrapper
+        .find(`.${Input.slotClassNames.icon}`)
+        .first()
+        .simulate('click');
       expect(onChange).toBeCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),
@@ -115,16 +113,18 @@ describe('Input', () => {
   });
 
   describe('icon', () => {
+    const SearchIcon = () => <span />;
+
     it('creates the Icon component when the icon shorthand is provided', () => {
-      const inputComp = mount(<Input icon={{ name: 'search' }} />);
-      expect(inputComp.find('Icon[name="search"]').length).toBeGreaterThan(0);
+      const inputComp = mount(<Input icon={<SearchIcon />} />);
+      expect(inputComp.find('SearchIcon').length).toBeGreaterThan(0);
     });
 
     it('creates an empty Icon component when the clearable prop is provided and the input has content, removes the icon and value when the icon is clicked', () => {
       const inputComp = mount(<Input clearable />);
       const domNode = getInputDomNode(inputComp);
       setUserInputValue(inputComp, testValue); // user types into the input
-      const iconComp = inputComp.find('Icon[name=""]');
+      const iconComp = inputComp.find(`Box[className~="${Input.slotClassNames.icon}"]`);
 
       expect(domNode.value).toEqual(testValue); // input value is the one typed by the user
       expect(iconComp.length).toBeGreaterThan(0); // the 'x' icon appears
@@ -132,7 +132,7 @@ describe('Input', () => {
       iconComp.simulate('click'); // user clicks on 'x' icon
 
       expect(domNode.value).toEqual(''); // input value gets cleared
-      expect(inputComp.find('Icon[name=""]').length).toEqual(0); // the 'x' icon disappears
+      expect(inputComp.find(`Box[className~="${Input.slotClassNames.icon}"]`).length).toEqual(0); // the 'x' icon disappears
     });
   });
 
