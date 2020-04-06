@@ -2,9 +2,10 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
-import { Accordion, Segment } from '@fluentui/react-northstar';
+import { Accordion, Flex, Segment, Menu } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
 import { ComponentPerfChart } from './ComponentPerfChart';
+import { ComponentResourcesChart } from './ComponentResourcesChart';
 
 export interface ComponentPerfExampleProps {
   title: React.ReactNode;
@@ -14,7 +15,15 @@ export interface ComponentPerfExampleProps {
 
 const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
   const { title, description, examplePath } = props;
-  // FIXME: find a better way
+
+  const [currentChart, setCurrentChart] = React.useState<'perf' | 'resources'>('perf');
+  const onShowPerfChart = React.useCallback(() => {
+    setCurrentChart('perf');
+  }, []);
+  const onShowResourcesChart = React.useCallback(() => {
+    setCurrentChart('resources');
+  }, []);
+
   // "components/Divider/Performance/Divider.perf" -> dividerPerfTsx
   const perfTestName = `${_.camelCase(_.last(examplePath.split('/')))}Tsx`;
 
@@ -22,8 +31,29 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
     <>
       <Segment variables={{ padding: 0 }}>
         <Segment variables={{ boxShadowColor: undefined }}>
-          <ComponentExampleTitle title={title} description={description} />
-          <ComponentPerfChart perfTestName={perfTestName} />
+          <Flex space="between" style={{ padding: '10px 20px' }}>
+            <ComponentExampleTitle title={title} description={description} />
+            <Menu
+              primary
+              items={[
+                {
+                  content: 'Performance',
+                  active: currentChart === 'perf',
+                  onClick: onShowPerfChart,
+                },
+                {
+                  content: 'Resources',
+                  active: currentChart === 'resources',
+                  onClick: onShowResourcesChart,
+                },
+              ]}
+            />
+          </Flex>
+          {currentChart === 'perf' ? (
+            <ComponentPerfChart perfTestName={perfTestName} />
+          ) : (
+            <ComponentResourcesChart perfTestName={perfTestName} />
+          )}
         </Segment>
         <Accordion
           panels={
