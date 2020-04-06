@@ -1,4 +1,4 @@
-import { useSelectKnob, useStringKnob } from '@fluentui/docs-components';
+import { useStringKnob } from '@fluentui/docs-components';
 import {
   AvatarProps,
   BoxProps,
@@ -17,7 +17,6 @@ import {
 import * as _ from 'lodash';
 import * as faker from 'faker';
 import * as React from 'react';
-import * as icons from '@fluentui/react-icons-northstar';
 
 import { KnobComponentGenerators } from '../../types';
 import { number } from '../ComponentPlayground/typeGenerators';
@@ -83,21 +82,6 @@ export const Embed: KnobComponentGenerators<EmbedProps> = {
     hook: () => [{ width: '480px' }],
     name: 'variables',
   }),
-};
-
-export const Icon: KnobComponentGenerators<BoxProps> = {
-  content: ({ propName }) => {
-    const values = Object.values(icons)
-      .filter(icon => !!(icon as any).displayName)
-      .slice(0, 10);
-
-    return {
-      name: propName,
-      hook: useSelectKnob,
-      initialValue: values[0],
-      values,
-    };
-  },
 };
 
 export const Image: KnobComponentGenerators<ImageProps> = {
