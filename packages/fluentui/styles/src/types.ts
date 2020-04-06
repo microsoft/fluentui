@@ -100,27 +100,6 @@ export interface FontFace {
 
 export type FontFaces = FontFace[];
 
-// ========================================================
-// Icons
-// ========================================================
-
-type SvgIconFuncArg = {
-  classes: { [iconSlot: string]: string };
-  rtl: boolean;
-  props: any; // TODO IconProps
-};
-
-export type SvgIconSpec = ObjectOrFunc<any /* TODO React.ReactNode */, SvgIconFuncArg>;
-export type FontIconSpec = {
-  content: string;
-  fontFamily: string;
-};
-
-export type ThemeIconSpec = {
-  isSvg?: boolean;
-  icon: FontIconSpec | SvgIconSpec;
-};
-
 // Some components have hard coded icon names, such as the arrow icons for a submenu or dropdown chevron.
 // Different themes use different icon names.
 // Components which have hard dependencies on icon names use these `icon-*`.
@@ -252,7 +231,6 @@ export interface ThemeInput<ThemeStylesProps extends Record<string, any> = any> 
   componentStyles?: ThemeComponentStylesInput<ThemeStylesProps>;
   fontFaces?: FontFaces;
   staticStyles?: StaticStyles;
-  icons?: ThemeIcons;
   animations?: { [key: string]: ThemeAnimation };
 }
 
@@ -272,7 +250,6 @@ export interface ThemePrepared<ThemeStylesProps extends Record<string, any> = an
   componentStyles: {
     [key in keyof ThemeComponentStylesPrepared<ThemeStylesProps>]: ComponentSlotStylesPrepared;
   };
-  icons: ThemeIcons;
   fontFaces: FontFaces;
   staticStyles: StaticStyles;
   animations: Record<string, ThemeAnimation>;
