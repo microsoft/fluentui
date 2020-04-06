@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Button, Grid, Popup, Alignment, Position } from '@fluentui/react-northstar';
+import { Button, Grid, Popup, Alignment, Position, Icon } from '@fluentui/react-northstar';
 import { useBooleanKnob, useSelectKnob } from '@fluentui/docs-components';
 
 const PopupExamplePosition = () => {
@@ -25,7 +25,7 @@ const PopupExamplePosition = () => {
         unstable_pinned={unstable_pinned}
         trigger={
           <Button
-            icon={{ name: iconNames[position], circular: true, bordered: true }}
+            icon={<Icon {...{ name: iconNames[position], circular: true, bordered: true }} />}
             styles={buttonStyles}
             title="Show popup"
           />

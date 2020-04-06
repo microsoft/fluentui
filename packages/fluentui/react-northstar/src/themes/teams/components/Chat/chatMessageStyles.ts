@@ -158,6 +158,9 @@ const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, Cha
       zIndex: v.zIndex,
       [sidePosition]: 0,
       transform: p.badgePosition === 'start' ? 'translateX(-50%)' : 'translateX(50%)',
+      '& > :first-child': {
+        display: 'inline-flex',
+      },
     };
   },
   reactionGroup: ({ props: p, variables: v }) => ({

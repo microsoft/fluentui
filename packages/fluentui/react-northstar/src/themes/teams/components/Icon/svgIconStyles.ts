@@ -61,7 +61,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
     }),
     display: 'inline-block',
 
-    ...((p.bordered || v.borderColor) && getBorderedStyles(v.borderColor)),
+    ...((p.bordered || v.borderColor) && getBorderedStyles(v.borderColor || v.color || 'currentColor')),
 
     backgroundColor: v.backgroundColor,
   }),

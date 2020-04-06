@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react-northstar';
+import { Button, Grid, Tooltip, Alignment, Position, Icon } from '@fluentui/react-northstar';
 import { useSelectKnob } from '@fluentui/docs-components';
 
 const TooltipExamplePosition = () => {
@@ -21,7 +21,7 @@ const TooltipExamplePosition = () => {
         position={position}
         content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}
       >
-        <Button icon={icons[position]} styles={buttonStyles} />
+        <Button icon={<Icon name={icons[position]} />} styles={buttonStyles} />
       </Tooltip>
     </Grid>
   );

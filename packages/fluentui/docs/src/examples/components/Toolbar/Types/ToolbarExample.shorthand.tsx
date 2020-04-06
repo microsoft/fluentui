@@ -1,5 +1,18 @@
 import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
+import {
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  FontSizeIcon,
+  RemoveFormatIcon,
+  OutdentIcon,
+  IndentIcon,
+  MoreIcon,
+  LinkIcon,
+  CodeSnippetIcon,
+  QuoteIcon,
+} from '@fluentui/react-icons-northstar';
 
 const stateReducer: React.Reducer<
   { bold: boolean; italic: boolean; underline: boolean; more: boolean },
@@ -19,49 +32,61 @@ const ToolbarExampleShorthand = () => {
       aria-label="Text editor"
       items={[
         {
+          icon: <BoldIcon {...{ outline: true }} />,
           key: 'bold',
           kind: 'toggle',
           active: state.bold,
-          icon: { name: 'bold', outline: true },
           title: 'Toggle bold',
           onClick: () => dispatch('bold'),
         },
         {
+          icon: <ItalicIcon {...{ outline: true }} />,
           key: 'italic',
           kind: 'toggle',
           active: state.italic,
-          icon: { name: 'italic', outline: true },
           title: 'Toggle italic',
           onClick: () => dispatch('italic'),
         },
         {
+          icon: <UnderlineIcon {...{ outline: true }} />,
           key: 'underline',
           kind: 'toggle',
           active: state.underline,
-          icon: { name: 'underline', outline: true },
           title: 'Toggle underline',
           onClick: () => dispatch('underline'),
         },
         { key: 'divider-1', kind: 'divider' },
-        { key: 'font-size', icon: { name: 'font-size', outline: true }, title: 'Font size' },
         {
+          icon: <FontSizeIcon {...{ outline: true }} />,
+          key: 'font-size',
+          title: 'Font size',
+        },
+        {
+          icon: <RemoveFormatIcon {...{ outline: true }} />,
           key: 'remove-format',
-          icon: { name: 'remove-format', outline: true },
           title: 'Remove formatting',
         },
         { key: 'divider-2', kind: 'divider' },
-        { key: 'outdent', icon: { name: 'outdent', outline: true }, title: 'Outdent' },
-        { key: 'indent', icon: { name: 'indent', outline: true }, title: 'Indent' },
+        {
+          icon: <OutdentIcon {...{ outline: true }} />,
+          key: 'outdent',
+          title: 'Outdent',
+        },
+        {
+          icon: <IndentIcon {...{ outline: true }} />,
+          key: 'indent',
+          title: 'Indent',
+        },
         { key: 'divider-3', kind: 'divider' },
         {
+          icon: <MoreIcon {...{ outline: true }} />,
           key: 'more',
-          icon: { name: 'more', outline: true },
           active: state.more,
           title: 'More',
           menu: [
-            { key: 'quote', content: 'Quote', icon: 'quote' },
-            { key: 'link', content: 'Link', icon: 'link', disabled: true },
-            { key: 'code', content: 'Code snippet', icon: 'code-snippet' },
+            { key: 'quote', content: 'Quote', icon: <QuoteIcon /> },
+            { key: 'link', content: 'Link', icon: <LinkIcon />, disabled: true },
+            { key: 'code', content: 'Code snippet', icon: <CodeSnippetIcon /> },
           ],
           menuOpen: state.more,
           onMenuOpenChange: () => dispatch('more'),
