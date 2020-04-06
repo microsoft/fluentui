@@ -86,11 +86,8 @@ steps:
     condition: ne(variables.buildReason, 'PullRequest')
     displayName: Performance Tests (master only)
 
-  # TODO: re-enable with proper tag filtering as needed
-  # - script: |
-  #     yarn stats:save --tag=`git tag --points-at HEAD`
   - script: |
-      yarn stats:save
+      yarn stats:save --tag=`git tag --points-at HEAD | grep -o 'northstar_v.*'`
     condition: ne(variables.buildReason, 'PullRequest')
     displayName: Save Statistics to DB (master only)
     env:
