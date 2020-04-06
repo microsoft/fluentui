@@ -2,7 +2,6 @@ import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/
 import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-icons-northstar';
 
 import { pxToRem, SizeValue } from '../../../../utils';
-import { getStyle as getSvgStyle } from './svg';
 import { IconVariables } from './iconVariables';
 
 export type SvgIconStylesProps = Pick<
@@ -98,8 +97,6 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
       }),
 
       transform: `rotate(${rotate}deg)`,
-
-      ...getSvgStyle('svg'),
     };
   },
 
@@ -116,12 +113,6 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariabl
   redPath: ({ variables: v }) => ({
     fill: v.redColor,
   }),
-
-  g: getSvgStyle('g'),
-
-  path: getSvgStyle('path'),
-
-  secondaryPath: getSvgStyle('secondaryPath'),
 };
 
 export default svgIconStyles;

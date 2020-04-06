@@ -2,7 +2,6 @@ import {
   Attachment,
   Extendable,
   Popup,
-  Icon,
   Menu,
   AvatarProps,
   ChatMessageProps,
@@ -16,7 +15,7 @@ import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
 import { AcceptIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 // TODO: find replacements
-import { CheckIcon, MinusIcon, ClockIcon, LinkifyIcon } from '@fluentui/react-icons-northstar';
+import { MinusIcon, ClockIcon, LinkifyIcon, FolderOpenIcon } from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
@@ -110,7 +109,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         },
         {
           key: 'tab',
-          icon: <Icon name="folder open" />,
+          icon: <FolderOpenIcon />,
           content: 'Make this a tab',
           onClick: menuClickHandler('Make tab'),
         },

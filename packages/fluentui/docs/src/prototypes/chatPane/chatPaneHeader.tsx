@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react-northstar';
+import { Avatar, Button, Divider, Segment, Text, Flex } from '@fluentui/react-northstar';
 import chatProtoStyle from './chatProtoStyle';
 
 import { ChatData } from './services';
-import { TeamCreateIcon } from '@fluentui/react-icons-northstar';
+import { TeamCreateIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 export interface ChatPaneHeaderProps {
   chat?: ChatData;
@@ -81,20 +81,22 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
           }))}
           styles={{ marginRight: '20px' }}
         />
-        {['team-create', 'more'].map((name, index) => (
-          <Icon
-            key={`${index}-${name}`}
-            name={name}
-            outline
-            tabIndex={0}
-            styles={{
-              fontWeight: 100,
-              margin: 'auto',
-              ...(!index && { margin: 'auto 1.6rem auto auto' }),
-            }}
-            variables={siteVars => ({ color: siteVars.colors.grey[350] })}
-          />
-        ))}
+        {[TeamCreateIcon, MoreIcon].map((IconComponent, index) => {
+          return (
+            <IconComponent
+              key={`${index}-${name}`}
+              name={name}
+              outline
+              tabIndex={0}
+              styles={{
+                fontWeight: 100,
+                margin: 'auto',
+                ...(!index && { margin: 'auto 1.6rem auto auto' }),
+              }}
+              variables={siteVars => ({ color: siteVars.colors.grey[350] })}
+            />
+          );
+        })}
       </div>
     );
   }

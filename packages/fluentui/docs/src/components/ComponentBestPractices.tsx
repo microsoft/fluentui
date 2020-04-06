@@ -5,7 +5,6 @@ import {
   Box,
   Flex,
   Header,
-  Icon,
   List,
   ListItemProps,
   Segment,

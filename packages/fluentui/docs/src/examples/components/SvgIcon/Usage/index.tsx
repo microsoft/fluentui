@@ -2,14 +2,14 @@ import * as React from 'react';
 import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
 import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
-const States = () => (
-  <ExampleSection title="States">
+const Usage = () => (
+  <ExampleSection title="Usage">
     <ComponentExample
-      title="Disabled"
-      description="An icon can show it is currently unable to be interacted with."
-      examplePath="components/Icon/States/IconExampleDisabled"
+      title="Theme Icons"
+      description="You can access all icon names available in the current theme."
+      examplePath="components/SvgIcon/Usage/IconSetExample"
     />
   </ExampleSection>
 );
 
-export default States;
+export default Usage;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { tabListBehavior, Header, Icon, Dropdown, Text, Grid, Menu } from '@fluentui/react-northstar';
+import { tabListBehavior, Header, Dropdown, Text, Grid, Menu } from '@fluentui/react-northstar';
 
 import { getFormattedHash } from '../../utils';
 // import ComponentDocLinks from './ComponentDocLinks'

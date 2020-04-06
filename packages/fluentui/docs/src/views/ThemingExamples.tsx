@@ -43,7 +43,7 @@ export default () => (
     <ExampleSnippet
       value={`
         import React from 'react'
-        import { Button, Icon, Label, Provider, themes } from '@fluentui/react-northstar'
+        import { Button, Label, Provider, themes } from '@fluentui/react-northstar'
         import { AddIcon, EmailIcon, EmojiIcon, CloseIcon } from '@fluentui/react-icons-northstar'
 
         export default () =>
@@ -181,7 +181,7 @@ export default () => (
     <ExampleSnippet
       value={`
         import React from 'react'
-        import { Button, Icon, Label, Provider } from '@fluentui/react-northstar'
+        import { Button, Label, Provider } from '@fluentui/react-northstar'
         import { AddIcon, EmailIcon, EmojiIcon, CloseIcon } from '@fluentui/react-icons-northstar'
 
         const theme = {

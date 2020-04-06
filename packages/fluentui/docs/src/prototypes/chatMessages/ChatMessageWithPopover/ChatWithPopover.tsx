@@ -2,7 +2,6 @@ import {
   Chat,
   Provider,
   Avatar,
-  Icon,
   ChatMessageProps,
   ShorthandCollection,
   ReactionProps,
@@ -11,7 +10,7 @@ import * as React from 'react';
 import Popover from './Popover';
 import ReactionPopup from './ReactionPopup';
 import { Ref } from '@fluentui/react-component-ref';
-import { AcceptIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
+import { AcceptIcon, EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   {

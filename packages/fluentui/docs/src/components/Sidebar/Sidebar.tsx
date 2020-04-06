@@ -6,7 +6,6 @@ import {
   HierarchicalTreeItemProps,
   HierarchicalTreeProps,
   HierarchicalTreeTitleProps,
-  Icon,
   ICSSInJSStyle,
   Input,
   Segment,

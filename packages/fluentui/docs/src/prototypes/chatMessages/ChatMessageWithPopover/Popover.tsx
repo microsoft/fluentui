@@ -1,4 +1,4 @@
-import { Accessibility, Menu, Icon, menuAsToolbarBehavior } from '@fluentui/react-northstar';
+import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react-northstar';
 import { TranslationIcon } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import cx from 'classnames';

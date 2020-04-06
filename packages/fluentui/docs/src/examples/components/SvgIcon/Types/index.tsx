@@ -4,7 +4,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample title="Default" description="A default Icon." examplePath="components/Icon/Types/IconExample" />
+    <ComponentExample
+      title="Default"
+      description="A default Icon."
+      examplePath="components/SvgIcon/Types/IconExample"
+    />
   </ExampleSection>
 );
 

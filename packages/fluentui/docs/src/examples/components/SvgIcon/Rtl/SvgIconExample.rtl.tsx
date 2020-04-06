@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Flex } from '@fluentui/react-northstar';
 import { CallVideoIcon, CircleIcon, RedoIcon, SendIcon } from '@fluentui/react-icons-northstar';
 
-const IconExampleRtl = () => (
+const SvgIconExampleRtl = () => (
   <Flex gap="gap.smaller">
     <CallVideoIcon />
     <CircleIcon />
@@ -11,4 +11,4 @@ const IconExampleRtl = () => (
   </Flex>
 );
 
-export default IconExampleRtl;
+export default SvgIconExampleRtl;

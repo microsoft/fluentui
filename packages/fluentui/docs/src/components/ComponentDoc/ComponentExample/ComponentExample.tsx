@@ -6,7 +6,6 @@ import {
   Flex,
   ICSSInJSStyle,
   Menu,
-  Icon,
   Provider,
   Segment,
   ThemeInput,
