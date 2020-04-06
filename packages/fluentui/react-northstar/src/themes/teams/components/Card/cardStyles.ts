@@ -18,6 +18,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
+      overflow: 'hidden',
       padding: v.padding,
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
