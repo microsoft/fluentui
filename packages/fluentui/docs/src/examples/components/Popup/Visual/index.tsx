@@ -5,8 +5,8 @@ import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSecti
 
 const Visual = () => (
   <NonPublicSection title="Visual tests">
-    <ComponentExample examplePath="components/Popup/Types/PopupExamplePointerOffset" />
-    <ComponentExample examplePath="components/Popup/Types/PopupExamplePointerMargin" />
+    <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerOffset" />
+    <ComponentExample examplePath="components/Popup/Visual/PopupExamplePointerMargin" />
   </NonPublicSection>
 );
 
