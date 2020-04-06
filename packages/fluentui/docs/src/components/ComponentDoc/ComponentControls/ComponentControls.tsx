@@ -80,7 +80,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             aria-label={toolbarAriaLabel || null}
             items={[
               {
-                icon: <FilesCodeIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <FilesCodeIcon style={{ width: '20px', height: '20px' }} />,
                 onClick: onShowCode,
                 active: showCode,
                 children: (Component, props) => (
