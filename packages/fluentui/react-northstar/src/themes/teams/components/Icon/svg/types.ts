@@ -1,5 +1,5 @@
 import { ObjectOf } from '../../../../../types';
-import { IconProps } from '../../../../../components/Icon/Icon';
+import { SvgIconProps } from '../../../../../components/Icon/Icon';
 import { ComponentSlotStyleFunction, SvgIconSpec } from '@fluentui/styles';
 
 export type SvgIconSpecWithStyles = {

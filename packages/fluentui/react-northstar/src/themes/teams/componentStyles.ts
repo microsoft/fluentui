@@ -46,7 +46,6 @@ export { default as HierarchicalTree } from './components/HierarchicalTree/hiera
 export { default as HierarchicalTreeItem } from './components/HierarchicalTree/hierarchicalTreeItemStyles';
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
 
-export { default as Icon } from './components/Icon/iconStyles';
 export { default as SvgIcon } from './components/Icon/svgIconStyles';
 
 export { default as Image } from './components/Image/imageStyles';

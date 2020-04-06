@@ -39,7 +39,6 @@ export { default as HeaderDescription } from './components/Header/headerDescript
 
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
 
-export { default as Icon } from './components/Icon/iconVariables';
 export { default as SvgIcon } from './components/Icon/iconVariables';
 
 export { default as Image } from './components/Image/imageVariables';
