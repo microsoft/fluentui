@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Mon, 06 Apr 2020 12:27:21 GMT",
+      "tag": "office-ui-fabric-react_v7.105.10",
+      "version": "7.105.10",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updated search box and divider examples to functional components",
+            "author": "czearing@outlook.com",
+            "commit": "dc750cf04a51eecd5e96b20b86dfdfc9096e3fa2"
+          },
+          {
+            "comment": "Updating Image and Persona examples to use function components.",
+            "author": "czearing@outlook.com",
+            "commit": "d0fad4b7c2de53c05911bc99435f3fd23fca5699"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Apr 2020 12:27:13 GMT",
       "tag": "office-ui-fabric-react_v7.105.9",
       "version": "7.105.9",

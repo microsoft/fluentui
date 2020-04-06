@@ -63,6 +63,9 @@ const inputStyles: ComponentSlotStylesPrepared<InputProps & InputState, InputVar
   icon: ({ props: p, variables: v }): ICSSInJSStyle => ({
     color: v.iconColor,
     outline: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     position: v.iconPosition as PositionProperty,
     ...(p.disabled && {
       color: v.colorDisabled,

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating Image and Persona examples to use function components.",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "commit": "d0fad4b7c2de53c05911bc99435f3fd23fca5699",
-  "dependentChangeType": "patch",
-  "date": "2020-04-03T01:49:03.312Z"
-}

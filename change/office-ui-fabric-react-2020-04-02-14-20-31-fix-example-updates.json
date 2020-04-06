@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updated search box and divider examples to functional components",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "commit": "dc750cf04a51eecd5e96b20b86dfdfc9096e3fa2",
-  "dependentChangeType": "patch",
-  "date": "2020-04-02T21:20:31.897Z"
-}

@@ -1,9 +1,10 @@
 import { Button } from '@fluentui/react-northstar';
+import { PlayIcon } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 
 const ButtonSlotsPerf = () => (
   <Button
-    icon="play"
+    icon={<PlayIcon />}
     content="Click here"
     loader={{
       delay: 200,
