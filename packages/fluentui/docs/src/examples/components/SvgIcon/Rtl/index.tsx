@@ -5,8 +5,8 @@ import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSecti
 
 const Rtl = () => (
   <NonPublicSection title="Rtl">
-    <ComponentExample examplePath="components/SvgIcon/Rtl/IconExample.rtl" />
-    <ComponentExample examplePath="components/SvgIcon/Rtl/IconExampleRotate.rtl" />
+    <ComponentExample examplePath="components/SvgIcon/Rtl/SvgIconExample.rtl" />
+    <ComponentExample examplePath="components/SvgIcon/Rtl/SvgIconExampleRotate.rtl" />
   </NonPublicSection>
 );
 

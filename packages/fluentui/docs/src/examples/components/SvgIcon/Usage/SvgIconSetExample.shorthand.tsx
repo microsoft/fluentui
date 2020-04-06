@@ -6,14 +6,14 @@ const cellStyles = {
   margin: '10px 0',
 };
 
-const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = ({ themeName }) => (
+const SvgIconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = ({ themeName }) => (
   <>
     <div>
       <Divider>
         <Header as="h3" content="Regular" />
       </Divider>
       <Grid columns={4} styles={{ textAlign: 'center' }}>
-        {Object.keys(icons)
+        {Object.values(icons)
           .filter(icon => !!(icon as any).displayName)
           .map(icon => {
             const IconComponent = (icon as unknown) as React.FC<SvgIconProps>;
@@ -21,7 +21,7 @@ const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = 
               <div key={IconComponent.displayName} style={cellStyles}>
                 <IconComponent />
                 <br />
-                <code>{IconComponent.displayName} outline</code>
+                <code>{IconComponent.displayName}</code>
               </div>
             );
           })}
@@ -33,7 +33,7 @@ const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = 
         <Header as="h3" content="Outline" />
       </Divider>
       <Grid columns={4} styles={{ textAlign: 'center' }}>
-        {Object.keys(icons)
+        {Object.values(icons)
           .filter(icon => !!(icon as any).displayName)
           .map(icon => {
             const IconComponent = (icon as unknown) as React.FC<SvgIconProps>;
@@ -41,7 +41,7 @@ const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = 
               <div key={`${IconComponent.displayName} - outline`} style={cellStyles}>
                 <IconComponent outline />
                 <br />
-                <code>{IconComponent.displayName} outline</code>
+                <code>{IconComponent.displayName}</code>
               </div>
             );
           })}
@@ -50,8 +50,8 @@ const IconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = 
   </>
 );
 
-IconSetExampleShorthand.defaultProps = {
+SvgIconSetExampleShorthand.defaultProps = {
   themeName: 'teams',
 };
 
-export default IconSetExampleShorthand;
+export default SvgIconSetExampleShorthand;

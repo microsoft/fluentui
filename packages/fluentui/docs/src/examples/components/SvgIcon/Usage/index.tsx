@@ -7,7 +7,7 @@ const Usage = () => (
     <ComponentExample
       title="Theme Icons"
       description="You can access all icon names available in the current theme."
-      examplePath="components/SvgIcon/Usage/IconSetExample"
+      examplePath="components/SvgIcon/Usage/SvgIconSetExample"
     />
   </ExampleSection>
 );

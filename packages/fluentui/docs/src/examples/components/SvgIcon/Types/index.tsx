@@ -7,7 +7,7 @@ const Types = () => (
     <ComponentExample
       title="Default"
       description="A default Icon."
-      examplePath="components/SvgIcon/Types/IconExample"
+      examplePath="components/SvgIcon/Types/SvgIconExample"
     />
   </ExampleSection>
 );
