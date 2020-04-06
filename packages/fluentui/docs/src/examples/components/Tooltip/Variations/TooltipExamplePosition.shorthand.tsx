@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { Button, Grid, Tooltip, Alignment, Position, Icon } from '@fluentui/react-northstar';
 import { useSelectKnob } from '@fluentui/docs-components';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const TooltipExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
@@ -19,7 +20,7 @@ const TooltipExamplePosition = () => {
         open
         align={align}
         position={position}
-        trigger={<Button icon={<Icon name={icons[position]} />} styles={buttonStyles} />}
+        trigger={<Button icon={icons[position]} styles={buttonStyles} />}
         content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}
       />
     </Grid>
@@ -43,11 +44,11 @@ const positionAndAlignValues = [
   'after-bottom',
 ];
 
-const icons: Record<Position, string> = {
-  above: 'arrow circle up',
-  below: 'arrow circle down',
-  before: 'arrow circle left',
-  after: 'arrow circle right',
+const icons: Record<Position, React.ReactNode> = {
+  above: <ArrowUpIcon />,
+  below: <ArrowDownIcon />,
+  before: <ArrowLeftIcon />,
+  after: <ArrowRightIcon />,
 };
 
 const paddings: Record<string, React.CSSProperties['padding']> = {
