@@ -119,7 +119,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: <OpenOutsideIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <OpenOutsideIcon style={{ width: '20px', height: '20px' }} />,
                 children: (Component, props) => (
                   <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
                 ),
