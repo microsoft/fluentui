@@ -89,7 +89,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: <FilesImageIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <FilesImageIcon style={{ width: '20px', height: '20px' }} />,
                 onClick: onShowVariables,
                 active: showVariables,
                 children: (Component, props) => (
