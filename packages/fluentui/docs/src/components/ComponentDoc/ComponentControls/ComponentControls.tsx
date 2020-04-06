@@ -9,14 +9,15 @@ import ComponentControlsCodeSandbox, {
   CodeSandboxState,
 } from './ComponentControlsCodeSandbox/ComponentControlsCodeSandbox';
 import {
+  EditIcon,
   FilesCodeIcon,
-  FilesImageIcon,
   CircleIcon,
   LinkIcon,
   OpenOutsideIcon,
   AcceptIcon,
   IndentIcon,
 } from '@fluentui/react-icons-northstar';
+import CodeSnippetIcon from './CodeSnippetIcon';
 
 type ComponentControlsProps = {
   exampleCode: string;
@@ -80,7 +81,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             aria-label={toolbarAriaLabel || null}
             items={[
               {
-                icon: <FilesCodeIcon style={{ width: '20px', height: '20px' }} />,
+                icon: <CodeSnippetIcon style={{ width: '20px', height: '20px' }} />,
                 onClick: onShowCode,
                 active: showCode,
                 children: (Component, props) => (
@@ -89,7 +90,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: <FilesImageIcon style={{ width: '20px', height: '20px' }} />,
+                icon: <EditIcon style={{ width: '20px', height: '20px' }} />,
                 onClick: onShowVariables,
                 active: showVariables,
                 children: (Component, props) => (
