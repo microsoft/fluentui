@@ -380,11 +380,6 @@ class Sidebar extends React.Component<any, any> {
         public: true,
       },
       {
-        key: 'iconviewer',
-        title: { content: 'Processed Icons', as: NavLink, to: '/icon-viewer' },
-        public: false,
-      },
-      {
         key: 'virtualized-tree',
         title: { content: 'VirtualizedTree', as: NavLink, to: '/virtualized-tree' },
         public: true,
