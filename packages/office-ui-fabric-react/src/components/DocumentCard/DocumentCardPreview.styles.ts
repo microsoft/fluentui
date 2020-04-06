@@ -5,7 +5,7 @@ import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './Do
 export const DocumentCardPreviewGlobalClassNames = {
   root: 'ms-DocumentCardPreview',
   icon: 'ms-DocumentCardPreview-icon',
-  iconContainer: 'ms-DocumentCardPreview-iconContainer'
+  iconContainer: 'ms-DocumentCardPreview-iconContainer',
 };
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
@@ -22,9 +22,9 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         backgroundColor: isFileList ? palette.white : palette.neutralLighterAlt,
         borderBottom: `1px solid ${palette.neutralLight}`,
         overflow: `hidden`,
-        position: 'relative'
+        position: 'relative',
       },
-      className
+      className,
     ],
     previewIcon: [
       classNames.iconContainer,
@@ -32,16 +32,16 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100%'
-      }
+        height: '100%',
+      },
     ],
     icon: [
       classNames.icon,
       {
         left: '10px',
         bottom: '10px',
-        position: 'absolute'
-      }
+        position: 'absolute',
+      },
     ],
     fileList: {
       padding: '16px 16px 0 16px',
@@ -52,20 +52,20 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
           height: '16px',
           lineHeight: '16px',
           marginBottom: '8px',
-          overflow: 'hidden'
-        }
-      }
+          overflow: 'hidden',
+        },
+      },
     },
     fileListIcon: {
       display: 'inline-block',
-      marginRight: '8px'
+      marginRight: '8px',
     },
     fileListLink: [
       getFocusStyle(theme, {
         highContrastStyle: {
           border: '1px solid WindowText',
-          outline: 'none'
-        }
+          outline: 'none',
+        },
       }),
       {
         boxSizing: 'border-box',
@@ -78,21 +78,21 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         width: 'calc(100% - 24px)',
         selectors: {
           ':hover': {
-            color: palette.themePrimary
+            color: palette.themePrimary,
           },
           [`.${IsFocusVisibleClassName} &:focus`]: {
             selectors: {
               [HighContrastSelector]: {
-                outline: 'none'
-              }
-            }
-          }
-        }
-      }
+                outline: 'none',
+              },
+            },
+          },
+        },
+      },
     ],
     fileListOverflowText: {
       padding: '0px 16px 8px 16px',
-      display: 'block'
-    }
+      display: 'block',
+    },
   };
 };

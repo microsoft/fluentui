@@ -1,27 +1,27 @@
-import * as React from 'react'
-import { Box, Header, ICSSInJSStyle, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Box, Header, ICSSInJSStyle, Segment } from '@fluentui/react-northstar';
 
 interface PrototypeSectionProps {
-  title?: React.ReactNode
-  styles?: ICSSInJSStyle
+  title?: React.ReactNode;
+  styles?: ICSSInJSStyle;
 }
 
 interface ComponentPrototypeProps extends PrototypeSectionProps {
-  description?: React.ReactNode
+  description?: React.ReactNode;
 }
 
 export const PrototypeSection: React.FunctionComponent<ComponentPrototypeProps> = props => {
-  const { title, children, styles, ...rest } = props
+  const { title, children, styles, ...rest } = props;
   return (
     <Box styles={{ margin: '20px', ...styles }} {...rest}>
       {title && <Header as="h1">{title}</Header>}
       {children}
     </Box>
-  )
-}
+  );
+};
 
 export const ComponentPrototype: React.FunctionComponent<ComponentPrototypeProps> = props => {
-  const { description, title: header, children, styles, ...rest } = props
+  const { description, title: header, children, styles, ...rest } = props;
   return (
     <Box styles={{ marginTop: '20px', ...styles }} {...rest}>
       {(header || description) && (
@@ -32,5 +32,5 @@ export const ComponentPrototype: React.FunctionComponent<ComponentPrototypeProps
       )}
       <Segment>{children}</Segment>
     </Box>
-  )
-}
+  );
+};

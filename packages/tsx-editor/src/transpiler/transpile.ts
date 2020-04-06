@@ -7,9 +7,9 @@ import { _getErrorMessages } from './transpileHelpers';
 import { IMonacoTextModel, IBasicPackageGroup, ITransformedCode, ITransformedExample } from '../interfaces/index';
 
 const win = getWindow() as
-  | Window & {
+  | (Window & {
       transpileLogging?: boolean;
-    }
+    })
   | undefined;
 
 /**
@@ -64,7 +64,10 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
  */
 // This is intentionally not an async function, because debugging within transpiled async functions
 // is next to impossible.
-export function transpileAndEval(model: IMonacoTextModel, supportedPackages: IBasicPackageGroup[]): Promise<ITransformedExample> {
+export function transpileAndEval(
+  model: IMonacoTextModel,
+  supportedPackages: IBasicPackageGroup[],
+): Promise<ITransformedExample> {
   const exampleTs = model.getValue();
   return transpile(model)
     .then(
@@ -78,24 +81,24 @@ export function transpileAndEval(model: IMonacoTextModel, supportedPackages: IBa
           tsCode: exampleTs,
           jsCode: transpileOutput.output,
           returnFunction: true,
-          supportedPackages
+          supportedPackages,
         });
         if (transformedExample.output) {
           return {
             ...transformedExample,
             // Pass in the right React in case there's a different global one on the page...
-            component: eval(transformedExample.output)(React)
+            component: eval(transformedExample.output)(React),
           };
         } else {
           return { error: transformedExample.error || 'Unknown error transforming example' };
         }
-      }
+      },
     )
     .catch(
       (err: string | Error): ITransformedExample => {
         // Log the error to the console so people can see the full stack/etc if they want
         console.error(err);
         return { error: typeof err === 'string' ? err : err.message };
-      }
+      },
     );
 }

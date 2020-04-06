@@ -47,10 +47,7 @@ describe('compose', () => {
 
     it('sets direct render on the resulting component for recomposition when nested', () => {
       const baseComponentInstance = baseComponent();
-      const composed: any = compose(
-        compose(compose(compose(baseComponentInstance, {}), {}), {}),
-        {},
-      );
+      const composed: any = compose(compose(compose(compose(baseComponentInstance, {}), {}), {}), {});
       expect(composed.__directRender).toEqual(baseComponentInstance);
     });
 
@@ -120,11 +117,7 @@ describe('compose', () => {
       expect(compose.resolveSlots('', [{ styles: { foo: 'bar' } }], makeBlankTheme())).toEqual({});
     });
     it('overwrites slots that are defined "later"', () => {
-      const opts = [
-        { slots: { foo: 'bar' } },
-        { slots: { foo: 'baz', button: 'button' } },
-        { slots: { x: 'y' } },
-      ];
+      const opts = [{ slots: { foo: 'bar' } }, { slots: { foo: 'baz', button: 'button' } }, { slots: { x: 'y' } }];
       expect(compose.resolveSlots('', opts, makeBlankTheme())).toEqual({
         foo: 'baz',
         button: 'button',

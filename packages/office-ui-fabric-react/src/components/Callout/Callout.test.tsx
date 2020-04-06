@@ -37,7 +37,7 @@ describe('Callout', () => {
           <Callout target="#target" directionalHint={DirectionalHint.topLeftEdge}>
             <div>Content</div>
           </Callout>
-        </div>
+        </div>,
       );
     } catch (e) {
       threwException = true;
@@ -57,7 +57,7 @@ describe('Callout', () => {
           <Callout target={eventTarget} directionalHint={DirectionalHint.topLeftEdge}>
             <div>Content</div>
           </Callout>
-        </div>
+        </div>,
       );
     } catch (e) {
       threwException = true;
@@ -76,7 +76,7 @@ describe('Callout', () => {
           <Callout target={targetElement} directionalHint={DirectionalHint.topLeftEdge}>
             <div>Content</div>
           </Callout>
-        </div>
+        </div>,
       );
     } catch (e) {
       threwException = true;
@@ -93,7 +93,7 @@ describe('Callout', () => {
           <Callout directionalHint={DirectionalHint.topLeftEdge}>
             <div>Content</div>
           </Callout>
-        </div>
+        </div>,
       );
     } catch (e) {
       threwException = true;
@@ -127,7 +127,7 @@ describe('Callout', () => {
             <div>Content</div>
           </Callout>
         </div>,
-        root
+        root,
       );
     } catch (e) {
       threwException = true;

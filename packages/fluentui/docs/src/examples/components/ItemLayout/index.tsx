@@ -1,10 +1,10 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react/'
+import * as React from 'react';
+import { Alert } from '@fluentui/react-northstar';
 
-import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions'
-import Types from './Types'
-import Content from './Content'
-import Rtl from './Rtl'
+import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions';
+import Types from './Types';
+import Content from './Content';
+import Rtl from './Rtl';
 
 const ItemLayoutExamples = () => (
   <div>
@@ -15,6 +15,6 @@ const ItemLayoutExamples = () => (
     <Content />
     <Rtl />
   </div>
-)
+);
 
-export default ItemLayoutExamples
+export default ItemLayoutExamples;

@@ -1,7 +1,8 @@
-import * as React from 'react'
-import EmployeeCard from './EmployeeCard'
-import { Divider, Header } from '@fluentui/react'
-import AvatarEmployeeCard from './AvatarEmployeeCard'
+import * as React from 'react';
+import EmployeeCard from './EmployeeCard';
+import { Divider, Header } from '@fluentui/react-northstar';
+import AvatarEmployeeCard from './AvatarEmployeeCard';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 class EmployeeCardPrototype extends React.Component<any, { popupOpen: boolean }> {
   render() {
@@ -15,9 +16,9 @@ class EmployeeCardPrototype extends React.Component<any, { popupOpen: boolean }>
       email: 'John.Doe@company.com',
       avatar: {
         label: { variables: { backgroundColor: '#00b5ad', color: 'white' } },
-        status: { color: 'green', icon: 'check', title: 'Available' },
+        status: { color: 'green', icon: <AcceptIcon />, title: 'Available' },
       },
-    }
+    };
     return (
       <div style={{ margin: '20px' }}>
         <Header
@@ -37,8 +38,8 @@ class EmployeeCardPrototype extends React.Component<any, { popupOpen: boolean }>
         />
         <AvatarEmployeeCard {...employee} />
       </div>
-    )
+    );
   }
 }
 
-export default EmployeeCardPrototype
+export default EmployeeCardPrototype;

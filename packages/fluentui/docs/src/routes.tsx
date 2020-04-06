@@ -41,7 +41,6 @@ import SearchPagePrototype from './prototypes/SearchPage';
 import MentionsPrototype from './prototypes/mentions';
 import DropdownsPrototype from './prototypes/dropdowns';
 import PopupsPrototype from './prototypes/popups';
-import IconViewerPrototype from './prototypes/IconViewer';
 import AlertsPrototype from './prototypes/alerts';
 import NestedPopupsAndDialogsPrototype from './prototypes/NestedPopupsAndDialogs';
 import VirtualizedTreePrototype from './prototypes/VirtualizedTree';
@@ -51,6 +50,7 @@ import CustomScrollbarPrototype from './prototypes/customScrollbar';
 import EditorToolbarPrototype from './prototypes/EditorToolbar';
 import HexagonalAvatarPrototype from './prototypes/hexagonalAvatar';
 import TablePrototype from './prototypes/table';
+import VirtualizedTablePrototype from './prototypes/VirtualizedTable';
 
 const Routes = () => (
   <BrowserRouter basename={__BASENAME__}>
@@ -60,7 +60,11 @@ const Routes = () => (
         <Switch>
           <Route exact path="/" component={Introduction} />
           <Route exact path="/components/:name/:tab" component={DocsRoot} sidebar />
-          <Route exact path="/components/:name" render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />} />
+          <Route
+            exact
+            path="/components/:name"
+            render={routeProps => <Redirect to={`${routeProps.location.pathname}/definition`} />}
+          />
           <Route exact path="/behaviors/:name" component={DocsBehaviorRoot} sidebar />
           <Route exact path="/quick-start" component={QuickStart} />
           <Route exact path="/prototype-chat-pane" component={ChatPanePrototype} />
@@ -75,13 +79,13 @@ const Routes = () => (
           <Route exact path="/prototype-mentions" component={MentionsPrototype} />
           <Route exact path="/prototype-dropdowns" component={DropdownsPrototype} />
           <Route exact path="/prototype-popups" component={PopupsPrototype} />
-          <Route exact path="/icon-viewer" component={IconViewerPrototype} />
           <Route exact path="/prototype-alerts" component={AlertsPrototype} />
           <Route exact path="/prototype-editor-toolbar" component={EditorToolbarPrototype} />
           <Route exact path="/prototype-hexagonal-avatar" component={HexagonalAvatarPrototype} />
           <Route exact path="/prototype-table" component={TablePrototype} />
           <Route exact path="/prototype-nested-popups-and-dialogs" component={NestedPopupsAndDialogsPrototype} />
           <Route exact path="/virtualized-tree" component={VirtualizedTreePrototype} />
+          <Route exact path="/virtualized-table" component={VirtualizedTablePrototype} />
           <Route exact path="/prototype-copy-to-clipboard" component={CopyToClipboardPrototype} />
           <Route exact path="/faq" component={FAQ} />
           <Route exact path="/accessibility" component={Accessibility} />

@@ -186,14 +186,7 @@ General considerations:
 
   <div class="track"></div>
 
-  <div
-    class="thumb"
-    tabindex="0"
-    role="slider"
-    aria-valuenow="0"
-    aria-valuemin="0"
-    aria-valuemax="10"
-  ></div>
+  <div class="thumb" tabindex="0" role="slider" aria-valuenow="0" aria-valuemin="0" aria-valuemax="10"></div>
   <input name="{name}" type="hidden" value="0" />
 </div>
 ```
@@ -222,10 +215,7 @@ General considerations:
   <div class="ms-Slider-line">
     <span class="ms-Slider-thumb" style="left: 0%;"></span>
     <span class="ms-Slider-active activeSection-243" style="width: 0%;"></span>
-    <span
-      class="ms-Slider-inactive inactiveSection-244"
-      style="width: 100%;"
-    ></span>
+    <span class="ms-Slider-inactive inactiveSection-244" style="width: 100%;"></span>
   </div>
 </div>
 ```

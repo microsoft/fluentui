@@ -6,7 +6,7 @@ import { mergeStyles } from '@uifabric/merge-styles';
 import { Stack } from './Stack';
 
 const sampleClass = mergeStyles({
-  background: 'red'
+  background: 'red',
 });
 
 describe('Stack', () => {
@@ -31,7 +31,7 @@ describe('Stack', () => {
       <Stack>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -42,7 +42,7 @@ describe('Stack', () => {
       <Stack reversed>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -53,7 +53,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -64,7 +64,7 @@ describe('Stack', () => {
       <Stack horizontal reversed>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -75,7 +75,7 @@ describe('Stack', () => {
       <Stack horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -86,7 +86,7 @@ describe('Stack', () => {
       <Stack horizontal horizontalAlign="start" verticalAlign="end">
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -97,7 +97,7 @@ describe('Stack', () => {
       <Stack verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -108,7 +108,7 @@ describe('Stack', () => {
       <Stack horizontal verticalFill>
         <div>Item 1</div>
         <div>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -120,7 +120,7 @@ describe('Stack', () => {
         <Stack grow={5}>Item 1</Stack>
         <Stack grow={2}>Item 2</Stack>
         <Stack grow>Item 3</Stack>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -138,7 +138,7 @@ describe('Stack', () => {
         <Stack horizontal grow>
           Item 3
         </Stack>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -149,7 +149,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -160,7 +160,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -171,7 +171,7 @@ describe('Stack', () => {
       <Stack tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -182,7 +182,7 @@ describe('Stack', () => {
       <Stack horizontal tokens={{ childrenGap: 10 }}>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -193,7 +193,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -204,7 +204,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -215,7 +215,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item disableShrink>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -226,7 +226,7 @@ describe('Stack', () => {
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item disableShrink>Item 2</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -241,7 +241,7 @@ describe('Stack', () => {
         <Stack.Item align="start">Start</Stack.Item>
         <Stack.Item align="center">Center</Stack.Item>
         <Stack.Item align="end">End</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -256,7 +256,7 @@ describe('Stack', () => {
         <Stack.Item align="start">Start</Stack.Item>
         <Stack.Item align="center">Center</Stack.Item>
         <Stack.Item align="end">End</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -268,7 +268,7 @@ describe('Stack', () => {
         <Stack.Item>1</Stack.Item>
         <Stack.Item>2</Stack.Item>
         <Stack.Item>3</Stack.Item>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -279,7 +279,7 @@ describe('Stack', () => {
       <Stack>
         <Stack.Item className={sampleClass}>Item 1</Stack.Item>
         <div className={sampleClass}>Item 2</div>
-      </Stack>
+      </Stack>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

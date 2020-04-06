@@ -1,7 +1,79 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 17 Feb 2020 17:06:50 GMT and should not be manually modified.
+This log was last generated on Mon, 30 Mar 2020 19:10:08 GMT and should not be manually modified.
 
+## 7.15.4
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- Fixing errors when building @fluentui/docs. (humbertomakotomorimoto@gmail.com)
+## 7.15.3
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.15.2
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.15.0
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Minor changes
+
+- deprecate BaseComonent, remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
+## 7.14.1
+Mon, 16 Mar 2020 12:28:27 GMT
+
+### Patches
+
+- BaseComponent: remove initializeDir (xgao@microsoft.com)
+## 7.14.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+## 7.13.2
+Tue, 10 Mar 2020 12:25:14 GMT
+
+### Patches
+
+- Skips unnecessary equality check in shallowCompare to increase performance (chce@netcompany.com)
+## 7.13.1
+Sat, 07 Mar 2020 01:39:37 GMT
+
+### Patches
+
+- Cleanup: Removing 'use strict' directive in ts files since modules are emitted with a 'use strict' prologue. (humbertomakotomorimoto@gmail.com)
+## 7.13.0
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Minor changes
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
+## 7.12.4
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Patches
+
+- styled: do not create new styles function if styles prop is not changed (xgao@microsoft.com)
+## 7.12.3
+Thu, 20 Feb 2020 12:20:16 GMT
+
+### Patches
+
+- fix memory leak caused by closure in scroll util (xgao@microsoft.com)
+## 7.12.2
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
 ## 7.12.1
 Mon, 17 Feb 2020 17:06:50 GMT
 

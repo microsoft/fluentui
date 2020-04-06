@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { ChatMessageProps } from '@fluentui/react'
+import * as React from 'react';
+import { ChatMessageProps } from '@fluentui/react-northstar';
 
 export const groupControlMessageItems: ChatMessageProps[] = [
   {
@@ -23,7 +23,7 @@ export const groupControlMessageItems: ChatMessageProps[] = [
       </div>
     ),
   },
-]
+];
 
 export const mainControlMessage: ChatMessageProps = {
   content: (
@@ -31,4 +31,4 @@ export const mainControlMessage: ChatMessageProps = {
       <a href="/">John Doe</a> has added <a href="/">Jane Doe1</a> and 2 other to the team
     </div>
   ),
-}
+};

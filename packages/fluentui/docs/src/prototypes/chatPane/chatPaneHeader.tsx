@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react'
-import chatProtoStyle from './chatProtoStyle'
+import * as React from 'react';
+import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react-northstar';
+import chatProtoStyle from './chatProtoStyle';
 
-import { ChatData } from './services'
+import { ChatData } from './services';
 
 export interface ChatPaneHeaderProps {
-  chat?: ChatData
+  chat?: ChatData;
 }
 
 class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
@@ -16,7 +16,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         {this.renderMainArea()}
         <Divider size={2} styles={{ padding: '0 32px' }} />
       </Flex>
-    )
+    );
   }
 
   renderBanner(): React.ReactElement {
@@ -38,11 +38,11 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         })}
         variables={siteVars => ({ backgroundColor: siteVars.colors.brand[600] })}
       />
-    )
+    );
   }
 
   renderMainArea(): React.ReactElement {
-    const { chat } = this.props
+    const { chat } = this.props;
 
     return (
       <Flex
@@ -53,12 +53,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         styles={{ height: '64px', padding: '0 32px' }}
       >
         <Avatar name={chat.title} />
-        <div
-          id="heading"
-          role="heading"
-          aria-level={2}
-          aria-labelledby="chat-header-reader-text chat-header-title"
-        >
+        <div id="heading" role="heading" aria-level={2} aria-labelledby="chat-header-reader-text chat-header-title">
           <div id="chat-header-reader-text" style={chatProtoStyle.screenReaderContainerStyles}>
             Chat header
           </div>
@@ -71,7 +66,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
         </div>
         <Flex.Item push>{this.renderHeaderButtons()}</Flex.Item>
       </Flex>
-    )
+    );
   }
 
   renderHeaderButtons(): React.ReactElement {
@@ -104,8 +99,8 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
           />
         ))}
       </div>
-    )
+    );
   }
 }
 
-export default ChatPaneHeader
+export default ChatPaneHeader;

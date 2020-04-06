@@ -1,10 +1,10 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import { Button, Dialog } from '@fluentui/react'
-import * as React from 'react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import { Button, Dialog } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const DialogExampleBackdrop = () => {
-  const [backdrop] = useBooleanKnob({ name: 'backdrop', initialValue: true })
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [backdrop] = useBooleanKnob({ name: 'backdrop', initialValue: true });
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
 
   return (
     <Dialog
@@ -21,7 +21,7 @@ const DialogExampleBackdrop = () => {
       onOpen={() => setOpen(true)}
       trigger={<Button content="Open a dialog" />}
     />
-  )
-}
+  );
+};
 
-export default DialogExampleBackdrop
+export default DialogExampleBackdrop;

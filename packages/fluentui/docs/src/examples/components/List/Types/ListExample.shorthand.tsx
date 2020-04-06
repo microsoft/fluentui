@@ -1,6 +1,6 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import { List, Image } from '@fluentui/react'
-import * as React from 'react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import { List, Image } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const items = [
   {
@@ -24,12 +24,12 @@ const items = [
     headerMedia: '5:22:40 PM',
     content: 'The GB pixel is down, navigate the virtual interface!',
   },
-]
+];
 
 const ListExampleSelectable = () => {
-  const [debug] = useBooleanKnob({ name: 'debug' })
+  const [debug] = useBooleanKnob({ name: 'debug' });
 
-  return <List debug={debug} items={items} />
-}
+  return <List debug={debug} items={items} />;
+};
 
-export default ListExampleSelectable
+export default ListExampleSelectable;

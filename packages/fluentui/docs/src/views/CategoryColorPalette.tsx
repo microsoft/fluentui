@@ -1,10 +1,10 @@
-import { Provider, ProviderConsumer, Grid } from '@fluentui/react'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { Provider, ProviderConsumer, Grid } from '@fluentui/react-northstar';
+import * as _ from 'lodash';
+import * as React from 'react';
 
-import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox'
-import { colorVariantsStyles } from '../components/ColorVariants'
-import DocPage from '../components/DocPage/DocPage'
+import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
+import { colorVariantsStyles } from '../components/ColorVariants';
+import DocPage from '../components/DocPage/DocPage';
 
 const ColorPalette = () => (
   <Provider
@@ -27,8 +27,8 @@ const ColorPalette = () => (
       render={({ siteVariables: { categoryColors } }) => (
         <DocPage title="Category color palette">
           <p>
-            This page displays all category colors in the Teams theme. These colors are used for
-            features like calendar, announcement posts, and text formatting.
+            This page displays all category colors in the Teams theme. These colors are used for features like calendar,
+            announcement posts, and text formatting.
           </p>
 
           <Grid columns={2} variables={{ gridGap: '2rem' }}>
@@ -38,9 +38,7 @@ const ColorPalette = () => (
                   name={colorName}
                   size="normal"
                   value={
-                    categoryColors[colorName][600] ||
-                    categoryColors[colorName][500] ||
-                    categoryColors[colorName][400]
+                    categoryColors[colorName][600] || categoryColors[colorName][500] || categoryColors[colorName][400]
                   }
                   copyToClipboardIcon={false}
                 />
@@ -54,6 +52,6 @@ const ColorPalette = () => (
       )}
     />
   </Provider>
-)
+);
 
-export default ColorPalette
+export default ColorPalette;

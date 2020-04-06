@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { SplitButton } from '@fluentui/react'
+import * as React from 'react';
+import { SplitButton } from '@fluentui/react-northstar';
 
 const SplitButtonExamplePrimaryShorthand = () => (
   <>
@@ -21,6 +21,6 @@ const SplitButtonExamplePrimaryShorthand = () => (
       to open menu, press Alt + Arrow Down
     </span>
   </>
-)
+);
 
-export default SplitButtonExamplePrimaryShorthand
+export default SplitButtonExamplePrimaryShorthand;

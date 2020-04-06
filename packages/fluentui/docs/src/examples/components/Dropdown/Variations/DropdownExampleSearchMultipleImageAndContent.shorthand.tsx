@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const inputItems = [
   {
@@ -47,7 +47,7 @@ const inputItems = [
     image: 'public/images/avatar/small/ade.jpg',
     content: 'Graphic Designer',
   },
-]
+];
 
 const DropdownExampleSearchMultipleImageAndContent = () => (
   <Dropdown
@@ -58,11 +58,11 @@ const DropdownExampleSearchMultipleImageAndContent = () => (
     getA11ySelectionMessage={getA11ySelectionMessage}
     noResultsMessage="We couldn't find any matches."
   />
-)
+);
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item.header} has been selected.`,
   onRemove: item => `${item.header} has been removed.`,
-}
+};
 
-export default DropdownExampleSearchMultipleImageAndContent
+export default DropdownExampleSearchMultipleImageAndContent;

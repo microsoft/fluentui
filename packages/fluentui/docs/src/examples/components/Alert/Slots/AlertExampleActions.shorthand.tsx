@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react-northstar';
 
 const AlertExampleDismissAction = () => (
   <Alert
@@ -7,6 +7,6 @@ const AlertExampleDismissAction = () => (
     content="Get all the best inventions in your e-mail every day. Sign up now!"
     dismissible
   />
-)
+);
 
-export default AlertExampleDismissAction
+export default AlertExampleDismissAction;

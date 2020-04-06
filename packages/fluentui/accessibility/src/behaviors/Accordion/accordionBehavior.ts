@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -31,6 +31,6 @@ const accordionBehavior: Accessibility = () => ({
       },
     },
   },
-})
+});
 
-export default accordionBehavior
+export default accordionBehavior;

@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Usage = () => (
   <ExampleSection title="Usage">
@@ -19,6 +19,6 @@ const Usage = () => (
       examplePath="components/Provider/Usage/ProviderExampleTargetFrame"
     />
   </ExampleSection>
-)
+);
 
-export default Usage
+export default Usage;

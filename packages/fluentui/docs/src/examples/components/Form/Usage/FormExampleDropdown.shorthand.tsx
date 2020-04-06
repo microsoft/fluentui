@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Form, Dropdown, Button } from '@fluentui/react'
+import * as React from 'react';
+import { Form, Dropdown, Button } from '@fluentui/react-northstar';
 
-const labelId = 'choose-friend-label'
+const labelId = 'choose-friend-label';
 const fields = [
   {
     label: { content: `Your best friend's name is:`, id: labelId },
@@ -21,15 +21,15 @@ const fields = [
     },
   },
   { control: { as: Button, content: 'Submit' }, key: 'submit' },
-]
+];
 
 const FormExample = () => (
   <Form
     onSubmit={() => {
-      alert('Form submitted')
+      alert('Form submitted');
     }}
     fields={fields}
   />
-)
+);
 
-export default FormExample
+export default FormExample;

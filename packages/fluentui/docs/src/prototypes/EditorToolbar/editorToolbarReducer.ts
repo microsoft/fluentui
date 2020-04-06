@@ -6,28 +6,28 @@ export enum FontFormatting {
 }
 
 export type EditorToolbarState = {
-  bold: boolean
-  italic: boolean
-  underline: boolean
+  bold: boolean;
+  italic: boolean;
+  underline: boolean;
   //
-  fontHighlight: boolean
-  fontColor: boolean
-  fontSize: boolean
-  fontFormatting: FontFormatting
-  fontFormattingOpen: boolean
+  fontHighlight: boolean;
+  fontColor: boolean;
+  fontSize: boolean;
+  fontFormatting: FontFormatting;
+  fontFormattingOpen: boolean;
   //
-  itemList: boolean
-  numberList: boolean
+  itemList: boolean;
+  numberList: boolean;
   //
-  quote: boolean
-  link: boolean
-  code: boolean
-  table: boolean
+  quote: boolean;
+  link: boolean;
+  code: boolean;
+  table: boolean;
   //
-  important: boolean
+  important: boolean;
   //
-  more: boolean
-}
+  more: boolean;
+};
 
 export type EditorToolbarAction =
   | { type: 'BOLD'; value: boolean }
@@ -40,7 +40,7 @@ export type EditorToolbarAction =
   | { type: 'LINK'; value: boolean }
   | { type: 'TABLE'; value: boolean }
   //
-  | { type: 'MORE'; value: boolean }
+  | { type: 'MORE'; value: boolean };
 
 export const initialState: EditorToolbarState = {
   bold: false,
@@ -64,33 +64,30 @@ export const initialState: EditorToolbarState = {
   important: false,
   //
   more: false,
-}
+};
 
-export function editorToolbarReducer(
-  state: EditorToolbarState,
-  action: EditorToolbarAction,
-): EditorToolbarState {
+export function editorToolbarReducer(state: EditorToolbarState, action: EditorToolbarAction): EditorToolbarState {
   switch (action.type) {
     case 'BOLD':
-      return { ...state, bold: action.value }
+      return { ...state, bold: action.value };
     case 'ITALIC':
-      return { ...state, italic: action.value }
+      return { ...state, italic: action.value };
     case 'UNDERLINE':
-      return { ...state, underline: action.value }
+      return { ...state, underline: action.value };
     //
     case 'FONT_FORMATTING':
-      return { ...state, fontFormatting: action.value }
+      return { ...state, fontFormatting: action.value };
     case 'FONT_FORMATTING_OPEN':
-      return { ...state, fontFormattingOpen: action.value }
+      return { ...state, fontFormattingOpen: action.value };
     //
     case 'LINK':
-      return { ...state, link: action.value }
+      return { ...state, link: action.value };
     case 'TABLE':
-      return { ...state, table: action.value }
+      return { ...state, table: action.value };
     //
     case 'MORE':
-      return { ...state, more: action.value }
+      return { ...state, more: action.value };
   }
 
-  return state
+  return state;
 }

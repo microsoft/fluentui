@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { Accessibility, AccessibilityAttributes } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import treeItemBehavior from './treeItemBehavior'
+import { Accessibility, AccessibilityAttributes } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import treeItemBehavior from './treeItemBehavior';
 
 /**
  * @specification
@@ -36,9 +36,9 @@ const treeBehavior: Accessibility<TreeBehaviorProps> = props => {
     childBehaviors: {
       item: treeItemBehavior,
     },
-  }
-}
+  };
+};
 
-type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>
+type TreeBehaviorProps = Pick<AccessibilityAttributes, 'aria-labelledby'>;
 
-export default treeBehavior
+export default treeBehavior;

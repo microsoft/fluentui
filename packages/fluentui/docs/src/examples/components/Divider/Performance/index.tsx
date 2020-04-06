@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentPerfExample from '../../../../components/ComponentDoc/ComponentPerfExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentPerfExample from '../../../../components/ComponentDoc/ComponentPerfExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Performance = () => (
   <ExampleSection title="Performance">
@@ -11,6 +11,6 @@ const Performance = () => (
       examplePath="components/Divider/Performance/DividerMinimal.perf"
     />
   </ExampleSection>
-)
+);
 
-export default Performance
+export default Performance;

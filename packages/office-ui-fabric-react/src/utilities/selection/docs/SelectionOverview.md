@@ -2,7 +2,7 @@ Selection is a store that maintains the selection state of items in an efficient
 It exposes methods for accessing the selection state given an item index.
 If the items change, it can resolve the selection if items move in the array.
 
-SelectionZone is a React component that acts as a mediator between the Selection object and elements. By providing it the Selection instance and rendering content within it, you can have it manage clicking/focus/keyboarding from the DOM and translate into selection updates. You just need to provide the right data-selection-* attributes on elements within each row/tile to give SelectionZone a hint what the intent is.
+SelectionZone is a React component that acts as a mediator between the Selection object and elements. By providing it the Selection instance and rendering content within it, you can have it manage clicking/focus/keyboarding from the DOM and translate into selection updates. You just need to provide the right data-selection-\* attributes on elements within each row/tile to give SelectionZone a hint what the intent is.
 
 SelectionZone also takes in an onItemInvoked callback for when items are invoked. Invoking occurs when a user double clicks a row, presses enter while focused on it, or clicks within an element marked by the data-selection-invoke attribute.
 

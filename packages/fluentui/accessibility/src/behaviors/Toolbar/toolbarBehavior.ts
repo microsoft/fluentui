@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
 
 /**
  * @description
@@ -22,6 +22,6 @@ const toolbarBehavior: Accessibility = props => ({
       direction: FocusZoneDirection.horizontal,
     },
   },
-})
+});
 
-export default toolbarBehavior
+export default toolbarBehavior;

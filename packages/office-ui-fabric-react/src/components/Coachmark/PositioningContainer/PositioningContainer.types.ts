@@ -3,12 +3,12 @@ import { IRefObject, IBaseProps, IPoint, IRectangle } from '../../../Utilities';
 import { IPositionedData } from '../../../utilities/positioning';
 
 /**
- * {@docCategory PositioningContainer}
+ * {@docCategory Coachmark}
  */
 export interface IPositioningContainer {}
 
 /**
- * {@docCategory PositioningContainer}
+ * {@docCategory Coachmark}
  */
 export interface IPositioningContainerProps extends IBaseProps<IPositioningContainer> {
   /**
@@ -170,6 +170,6 @@ export interface IPositioningContainerProps extends IBaseProps<IPositioningConta
 
 /**
  * @deprecated Use `IPositioningContainerProps`
- * {@docCategory PositioningContainer}
+ * {@docCategory Coachmark}
  */
 export type IPositioningContainerTypes = IPositioningContainerProps;

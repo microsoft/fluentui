@@ -19,8 +19,8 @@ module.exports = function generateStoriesFromExamples({ key, stories, req }) {
     if (!stories.has(componentName)) {
       stories.set(componentName, {
         default: {
-          title: componentName
-        }
+          title: componentName,
+        },
       });
     }
 
@@ -34,12 +34,13 @@ module.exports = function generateStoriesFromExamples({ key, stories, req }) {
 
     for (let moduleExport of Object.keys(componentModule)) {
       const component = componentModule[moduleExport];
+      const subStoryName = moduleExport ? moduleExport : storyName;
 
       if (typeof component === 'function') {
         if (!isFunctionalComponent(component)) {
-          story[storyName] = () => React.createElement(component);
+          story[subStoryName] = () => React.createElement(component);
         } else {
-          story[storyName] = component;
+          story[subStoryName] = component;
         }
       }
     }

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Grid, Segment, Header, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Segment, Header, Icon } from '@fluentui/react-northstar';
 
 const PageNotFound = () => (
   <Grid>
@@ -43,6 +43,6 @@ const PageNotFound = () => (
       </Segment>
     </div>
   </Grid>
-)
+);
 
-export default PageNotFound
+export default PageNotFound;

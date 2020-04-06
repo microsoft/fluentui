@@ -11,7 +11,7 @@ const SAMPLE_URL = 'https://contoso.sharepoint.com';
 const chevronStyle = mergeStyles({
   fontSize: 8,
   paddingLeft: 3,
-  paddingRight: 3
+  paddingRight: 3,
 });
 
 const descriptionStyle = mergeStyles({
@@ -22,7 +22,7 @@ const descriptionStyle = mergeStyles({
   color: '#797671',
   maxWidth: '100%',
   whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis'
+  textOverflow: 'ellipsis',
 });
 
 export class ChicletBreadcrumbExample extends React.Component {
@@ -38,7 +38,7 @@ export class ChicletBreadcrumbExample extends React.Component {
           { text: 'Files', key: 'Files' },
           { text: 'OneDrive Design', key: 'OneDrive Design' },
           { text: 'Emails', key: 'Emails' },
-          { text: 'Campaigns', key: 'Campaigns' }
+          { text: 'Campaigns', key: 'Campaigns' },
         ]}
         className={descriptionStyle}
         onRenderItem={this._onRenderItem}

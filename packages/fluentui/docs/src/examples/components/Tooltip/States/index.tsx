@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const States = () => (
   <ExampleSection title="States">
@@ -11,6 +11,6 @@ const States = () => (
       examplePath="components/Tooltip/States/TooltipOpenControlledExample"
     />
   </ExampleSection>
-)
+);
 
-export default States
+export default States;

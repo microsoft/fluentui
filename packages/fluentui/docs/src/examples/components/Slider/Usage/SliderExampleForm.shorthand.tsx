@@ -1,15 +1,15 @@
-import * as React from 'react'
-import { Slider, SliderProps, Flex, Form, Label } from '@fluentui/react'
+import * as React from 'react';
+import { Slider, SliderProps, Flex, Form, Label } from '@fluentui/react-northstar';
 
 const CustomSlider: React.FunctionComponent<SliderProps> = props => {
-  const [value, setValue] = React.useState<string>('35')
+  const [value, setValue] = React.useState<string>('35');
   return (
     <Flex inline hAlign="center" vAlign="center" gap="gap.smaller">
       <Slider min="18" value={value} onChange={(e, data) => setValue(data.value)} {...props} />
       <Label content={value} />
     </Flex>
-  )
-}
+  );
+};
 
 const SliderExampleFormShorthand = () => (
   <Form
@@ -38,6 +38,6 @@ const SliderExampleFormShorthand = () => (
       },
     ]}
   />
-)
+);
 
-export default SliderExampleFormShorthand
+export default SliderExampleFormShorthand;

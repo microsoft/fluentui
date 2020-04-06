@@ -35,7 +35,7 @@ export class PaginationComboBoxExample extends React.Component<{}, IPaginationBa
 
   private onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

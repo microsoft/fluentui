@@ -6,19 +6,19 @@ const PACKAGE_NAME = 'theming-designer';
 module.exports = resources.createServeConfig({
   entry: './src/index.tsx',
   output: {
-    filename: 'theming-designer.js'
+    filename: 'theming-designer.js',
   },
 
   externals: {
     react: 'React',
-    'react-dom': 'ReactDOM'
+    'react-dom': 'ReactDOM',
   },
 
   resolve: {
     alias: {
       'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src')
-    }
-  }
+      'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+    },
+  },
 });

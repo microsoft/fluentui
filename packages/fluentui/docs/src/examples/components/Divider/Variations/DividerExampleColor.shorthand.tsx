@@ -1,6 +1,6 @@
-import * as _ from 'lodash'
-import * as React from 'react'
-import { Divider, ProviderConsumer } from '@fluentui/react'
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Divider, ProviderConsumer } from '@fluentui/react-northstar';
 
 const DividerExampleColor = () => (
   <ProviderConsumer
@@ -10,6 +10,6 @@ const DividerExampleColor = () => (
       ))
     }
   />
-)
+);
 
-export default DividerExampleColor
+export default DividerExampleColor;

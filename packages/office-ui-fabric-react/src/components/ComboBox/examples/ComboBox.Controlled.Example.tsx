@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, IComboBox, SelectableOptionMenuItemType, Fabric, mergeStyles } from 'office-ui-fabric-react/lib/index';
+import {
+  ComboBox,
+  IComboBoxOption,
+  IComboBox,
+  SelectableOptionMenuItemType,
+  Fabric,
+  mergeStyles,
+} from 'office-ui-fabric-react/lib/index';
 
 const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
@@ -14,14 +21,14 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'G', text: 'Option G' },
   { key: 'H', text: 'Option H' },
   { key: 'I', text: 'Option I' },
-  { key: 'J', text: 'Option J' }
+  { key: 'J', text: 'Option J' },
 ];
 
 const wrapperClassName = mergeStyles({
   selectors: {
     '& > *': { marginBottom: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' }
-  }
+    '& .ms-ComboBox': { maxWidth: '300px' },
+  },
 });
 
 export interface IComboBoxControlledExampleState {
@@ -56,7 +63,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
       optionsMulti: [],
       // This is the text of the option which will be initially selected after the options are resolved
       initialDisplayValue: 'Option C',
-      initialDisplayValueMulti: 'Option C, Option D'
+      initialDisplayValueMulti: 'Option C, Option D',
     };
   }
 
@@ -101,7 +108,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     this.setState({
       options: options,
       selectedOptionKey: 'C',
-      initialDisplayValue: undefined
+      initialDisplayValue: undefined,
     });
 
     return options;
@@ -117,18 +124,23 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
     this.setState({
       optionsMulti: options,
       selectedOptionKeys: ['C', 'D'],
-      initialDisplayValueMulti: undefined
+      initialDisplayValueMulti: undefined,
     });
 
     return options;
   };
 
-  private _onChange = (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
+  private _onChange = (
+    event: React.FormEvent<IComboBox>,
+    option?: IComboBoxOption,
+    index?: number,
+    value?: string,
+  ): void => {
     console.log('_onChanged() is called: option = ' + JSON.stringify(option));
     if (option) {
       // User chose an existing option
       this.setState({
-        selectedOptionKey: option.key
+        selectedOptionKey: option.key,
       });
     } else if (value !== undefined) {
       // User typed a new option
@@ -136,18 +148,23 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
 
       this.setState({
         options: [...this.state.options, newOption],
-        selectedOptionKey: newOption.key
+        selectedOptionKey: newOption.key,
       });
     }
   };
 
-  private _onChangeMulti = (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => {
+  private _onChangeMulti = (
+    event: React.FormEvent<IComboBox>,
+    option?: IComboBoxOption,
+    index?: number,
+    value?: string,
+  ) => {
     console.log('_onChangeMulti() is called: option = ' + JSON.stringify(option));
     const currentSelectedKeys = this.state.selectedOptionKeys || [];
     if (option) {
       // User selected/de-selected an existing option
       this.setState({
-        selectedOptionKeys: this._updateSelectedOptionKeys(currentSelectedKeys, option)
+        selectedOptionKeys: this._updateSelectedOptionKeys(currentSelectedKeys, option),
       });
     } else if (value !== undefined) {
       // User typed a freeform option
@@ -155,7 +172,7 @@ export class ComboBoxControlledExample extends React.Component<{}, IComboBoxCont
       const updatedSelectedKeys: string[] = [...currentSelectedKeys, newOption.key as string];
       this.setState({
         optionsMulti: [...this.state.optionsMulti, newOption],
-        selectedOptionKeys: updatedSelectedKeys
+        selectedOptionKeys: updatedSelectedKeys,
       });
     }
   };

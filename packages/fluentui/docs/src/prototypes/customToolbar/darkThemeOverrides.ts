@@ -7,54 +7,87 @@ import {
   ToolbarDividerProps,
   StatusProps,
   pxToRem,
-} from '@fluentui/react'
+} from '@fluentui/react-northstar';
 
 export type CustomStatusVariables = {
-  isRecordingIndicator?: boolean
+  isRecordingIndicator?: boolean;
 
-  recordingIndicatorBorderColor?: string
-  recordingIndicatorBorderStyle?: string
-  recordingIndicatorBorderWidth?: string
-}
+  recordingIndicatorBorderColor?: string;
+  recordingIndicatorBorderStyle?: string;
+  recordingIndicatorBorderWidth?: string;
+};
 
 export type CustomToolbarVariables = {
-  isCt?: boolean
+  isCt?: boolean;
 
-  isCtItemDanger?: boolean
-  isCtItemPrimary?: boolean
-  isCtItemIconNoFill?: boolean
-  isCtItemIndicator?: boolean
-  isCtItemWithNotification?: boolean
+  isCtItemDanger?: boolean;
+  isCtItemPrimary?: boolean;
+  isCtItemIconNoFill?: boolean;
+  isCtItemIndicator?: boolean;
+  isCtItemWithNotification?: boolean;
 
-  ctBorderRadius: string
-  ctBorderStyle: string
-  ctBorderWidth: string
-  ctHeight: string
+  ctBorderRadius: string;
+  ctBorderStyle: string;
+  ctBorderWidth: string;
+  ctHeight: string;
 
-  ctItemBackground: string
-  ctItemBackgroundHover: string
-  ctItemBorderColorFocus: string
-  ctItemColor: string
-  ctItemColorFocus: string
-  ctItemColorHover: string
+  ctItemBackground: string;
+  ctItemBackgroundHover: string;
+  ctItemBorderColorFocus: string;
+  ctItemColor: string;
+  ctItemColorFocus: string;
+  ctItemColorHover: string;
 
-  ctItemActiveColor: string
-  ctItemActiveBackground: string
-  ctItemActiveBackgroundOverlay: string
+  ctItemActiveColor: string;
+  ctItemActiveBackground: string;
+  ctItemActiveBackgroundOverlay: string;
 
-  ctItemDangerBackground: string
-  ctItemDangerColorHover: string
-  ctItemDangerBackgroundHover: string
+  ctItemDangerBackground: string;
+  ctItemDangerColorHover: string;
+  ctItemDangerBackgroundHover: string;
 
-  ctItemIndicatorPadding: string
+  ctItemIndicatorPadding: string;
 
-  ctItemNotificationBackgroundColor: string
-  ctItemNotificationSize: string
+  ctItemNotificationBackgroundColor: string;
+  ctItemNotificationSize: string;
 
-  ctItemPrimaryBackground: string
-  ctItemPrimaryBackgroundHover: string
-  ctItemPrimaryColorHover: string
-}
+  ctItemPrimaryBackground: string;
+  ctItemPrimaryBackgroundHover: string;
+  ctItemPrimaryColorHover: string;
+};
+
+const toolbarVariables = (siteVars): CustomToolbarVariables => ({
+  ctBorderRadius: '4px',
+  ctBorderStyle: 'solid',
+  ctBorderWidth: '2px',
+  ctHeight: '4rem',
+
+  ctItemBackground: siteVars.colorScheme.default.background1,
+  ctItemBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
+  ctItemBorderColorFocus: siteVars.colorScheme.default.borderFocus,
+  ctItemColor: siteVars.colorScheme.default.foreground,
+  ctItemColorFocus: siteVars.colorScheme.default.foregroundFocus,
+  ctItemColorHover: siteVars.colorScheme.default.foregroundHover,
+
+  ctItemActiveBackground: siteVars.colorScheme.default.backgroundActive1,
+  // FIXME: use variables for colors!
+  ctItemActiveBackgroundOverlay:
+    'linear-gradient(90deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(135deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 70%),linear-gradient(180deg,rgba(60,62,93,.6) 70%,rgba(60,62,93,0) 94%),linear-gradient(225deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 73%),linear-gradient(270deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(0deg,rgba(98,100,167,.75) 6%,rgba(98,100,167,0) 70%)',
+  ctItemActiveColor: siteVars.colorScheme.default.foregroundActive1,
+
+  ctItemDangerBackground: siteVars.colorScheme.red.background2,
+  ctItemDangerBackgroundHover: siteVars.colorScheme.red.backgroundHover,
+  ctItemDangerColorHover: siteVars.colorScheme.red.foregroundHover,
+
+  ctItemIndicatorPadding: pxToRem(8),
+
+  ctItemNotificationBackgroundColor: siteVars.colors.red[400],
+  ctItemNotificationSize: pxToRem(8),
+
+  ctItemPrimaryBackground: siteVars.colorScheme.default.background3,
+  ctItemPrimaryBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
+  ctItemPrimaryColorHover: siteVars.colorScheme.brand.foregroundHover1,
+});
 
 export const darkThemeOverrides: ThemeInput = {
   componentVariables: {
@@ -64,45 +97,15 @@ export const darkThemeOverrides: ThemeInput = {
       recordingIndicatorBorderWidth: '2px',
     }),
 
-    Toolbar: (siteVars): CustomToolbarVariables => ({
-      ctBorderRadius: '4px',
-      ctBorderStyle: 'solid',
-      ctBorderWidth: '2px',
-      ctHeight: '4rem',
-
-      ctItemBackground: siteVars.colorScheme.default.background1,
-      ctItemBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
-      ctItemBorderColorFocus: siteVars.colorScheme.default.borderFocus,
-      ctItemColor: siteVars.colorScheme.default.foreground,
-      ctItemColorFocus: siteVars.colorScheme.default.foregroundFocus,
-      ctItemColorHover: siteVars.colorScheme.default.foregroundHover,
-
-      ctItemActiveBackground: siteVars.colorScheme.default.backgroundActive1,
-      // FIXME: use variables for colors!
-      ctItemActiveBackgroundOverlay:
-        'linear-gradient(90deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(135deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 70%),linear-gradient(180deg,rgba(60,62,93,.6) 70%,rgba(60,62,93,0) 94%),linear-gradient(225deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 73%),linear-gradient(270deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(0deg,rgba(98,100,167,.75) 6%,rgba(98,100,167,0) 70%)',
-      ctItemActiveColor: siteVars.colorScheme.default.foregroundActive1,
-
-      ctItemDangerBackground: siteVars.colorScheme.red.background2,
-      ctItemDangerBackgroundHover: siteVars.colorScheme.red.backgroundHover,
-      ctItemDangerColorHover: siteVars.colorScheme.red.foregroundHover,
-
-      ctItemIndicatorPadding: pxToRem(8),
-
-      ctItemNotificationBackgroundColor: siteVars.colors.red[400],
-      ctItemNotificationSize: pxToRem(8),
-
-      ctItemPrimaryBackground: siteVars.colorScheme.default.background3,
-      ctItemPrimaryBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
-      ctItemPrimaryColorHover: siteVars.colorScheme.brand.foregroundHover1,
-    }),
+    Toolbar: toolbarVariables,
+    ToolbarCustomItem: toolbarVariables,
+    ToolbarDivider: toolbarVariables,
+    ToolbarItem: toolbarVariables,
   },
 
   componentStyles: {
     Status: {
-      root: ({
-        variables: v,
-      }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
+      root: ({ variables: v }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
         ...(v.isRecordingIndicator && {
           boxSizing: 'content-box',
           borderColor: v.recordingIndicatorBorderColor,
@@ -112,9 +115,7 @@ export const darkThemeOverrides: ThemeInput = {
       }),
     },
     Toolbar: {
-      root: ({
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
+      root: ({ variables: v }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           borderRadius: v.ctBorderRadius,
           height: v.ctHeight,
@@ -147,10 +148,7 @@ export const darkThemeOverrides: ThemeInput = {
     },
 
     ToolbarItem: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarItemProps, CustomToolbarVariables>) => {
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarItemProps, CustomToolbarVariables>) => {
         return {
           ...(v.isCt && {
             alignItems: 'center',
@@ -255,19 +253,16 @@ export const darkThemeOverrides: ThemeInput = {
               display: 'block',
             },
           }),
-        }
+        };
       },
     },
 
     ToolbarDivider: {
-      root: ({
-        props: p,
-        variables: v,
-      }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
+      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           margin: 0,
         }),
       }),
     },
   },
-}
+};

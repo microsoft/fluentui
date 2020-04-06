@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -14,12 +14,12 @@ const accordionContentBehavior: Accessibility<AccordionContentBehaviorProps> = p
         'aria-labelledby': props.accordionTitleId,
       },
     },
-  }
-}
+  };
+};
 
-export default accordionContentBehavior
+export default accordionContentBehavior;
 
 type AccordionContentBehaviorProps = {
   /** id of the accordion title element. */
-  accordionTitleId?: string
-}
+  accordionTitleId?: string;
+};

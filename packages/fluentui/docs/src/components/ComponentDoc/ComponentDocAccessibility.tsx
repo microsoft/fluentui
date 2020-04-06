@@ -1,67 +1,65 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Flex, Loader, Text, Segment, Header } from '@fluentui/react'
-import { link } from '../../utils/helpers'
-import { BehaviorInfo, ComponentInfo, BehaviorVariantionInfo } from '../../types'
-import { BehaviorCard, exampleStyle, behaviorVariantDisplayName } from './BehaviorCard'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Flex, Loader, Text, Segment, Header } from '@fluentui/react-northstar';
+import { link } from '../../utils/helpers';
+import { BehaviorInfo, ComponentInfo, BehaviorVariantionInfo } from '../../types';
+import { BehaviorCard, exampleStyle, behaviorVariantDisplayName } from './BehaviorCard';
 
-const InlineMarkdown = React.lazy(() => import('./InlineMarkdown'))
+const InlineMarkdown = React.lazy(() => import('./InlineMarkdown'));
 
-const behaviorMenu = require('../../behaviorMenu')
+const behaviorMenu = require('../../behaviorMenu');
 
-const knownIsusesId = 'known-issues'
+const knownIsusesId = 'known-issues';
 
 type ComponentDocAccessibility = {
-  info: ComponentInfo
-}
+  info: ComponentInfo;
+};
 
 export function containsAccessibility(info) {
-  const defaulBehaviorName = getDefaultBehaviorName(info)
+  const defaulBehaviorName = getDefaultBehaviorName(info);
   return (
     !!getDescription(info) ||
     !!getBehaviorName(defaulBehaviorName) ||
     (info.behaviors && info.behaviors.length > 0) ||
     !!getAccIssues(info)
-  )
+  );
 }
 
 function getDescription(info) {
-  return _.get(_.find(info.docblock.tags, { title: 'accessibility' }), 'description')
+  return _.get(_.find(info.docblock.tags, { title: 'accessibility' }), 'description');
 }
 
 function getDefaultBehaviorName(info) {
-  const defaultValue = _.get(_.find(info.props, { name: 'accessibility' }), 'defaultValue')
-  return defaultValue && defaultValue.split('.').pop()
+  const defaultValue = _.get(_.find(info.props, { name: 'accessibility' }), 'defaultValue');
+  return defaultValue && defaultValue.split('.').pop();
 }
 
 function getBehaviorName(defaulBehaviorName) {
-  const filename = defaulBehaviorName && `${_.camelCase(defaulBehaviorName)}.ts`
+  const filename = defaulBehaviorName && `${_.camelCase(defaulBehaviorName)}.ts`;
   for (const category of behaviorMenu) {
-    const behavior = category.variations.find(variation => variation.name === filename)
+    const behavior = category.variations.find(variation => variation.name === filename);
     if (behavior) {
-      return category.displayName
+      return category.displayName;
     }
   }
 }
 
-function getAvailableVariantsFromJson(
-  availableBehaviors: BehaviorInfo[],
-): BehaviorVariantionInfo[] {
-  const availableBehaviorsFromJson = []
+function getAvailableVariantsFromJson(availableBehaviors: BehaviorInfo[]): BehaviorVariantionInfo[] {
+  const availableBehaviorsFromJson = [];
   availableBehaviors.forEach(availableBehavior => {
-    const fileName = `${availableBehavior.name}.ts`
+    const fileName = `${availableBehavior.name}.ts`;
     behaviorMenu.forEach(category => {
-      const result = category.variations.find(variation => variation.name === fileName)
+      const result = category.variations.find(variation => variation.name === fileName);
       if (result) {
-        availableBehaviorsFromJson.push(result)
+        availableBehaviorsFromJson.push(result);
       }
-    })
-  })
-  return availableBehaviorsFromJson
+    });
+  });
+  return availableBehaviorsFromJson;
 }
 
 function getAccIssues(info) {
-  return _.get(_.find(info.docblock.tags, { title: 'accessibilityIssues' }), 'description')
+  return _.get(_.find(info.docblock.tags, { title: 'accessibilityIssues' }), 'description');
 }
 
 function getAllAvailableBehaviors(
@@ -69,34 +67,30 @@ function getAllAvailableBehaviors(
   defaultBehaviorFileName: string,
   availableBehaviors: BehaviorInfo[],
 ): BehaviorVariantionInfo[] {
-  let behaviorVariantsWithoutDefault = []
+  let behaviorVariantsWithoutDefault = [];
   if (defaultBehaviorFileName && behaviorName) {
     behaviorVariantsWithoutDefault = behaviorMenu
       .find(behavior => behavior.displayName === behaviorName)
-      .variations.filter(behavior => behavior.name !== defaultBehaviorFileName)
+      .variations.filter(behavior => behavior.name !== defaultBehaviorFileName);
   }
 
-  let otherAvailableVariants = []
+  let otherAvailableVariants = [];
   if (availableBehaviors) {
-    otherAvailableVariants = getAvailableVariantsFromJson(availableBehaviors)
+    otherAvailableVariants = getAvailableVariantsFromJson(availableBehaviors);
   }
-  return _.union(behaviorVariantsWithoutDefault, otherAvailableVariants)
+  return _.union(behaviorVariantsWithoutDefault, otherAvailableVariants);
 }
 
 export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({ info }) => {
-  const defaultBehaviorName = getDefaultBehaviorName(info)
-  const defaultBehaviorFileName = `${_.camelCase(defaultBehaviorName)}.ts`
-  const description = getDescription(info)
-  const behaviorName = getBehaviorName(defaultBehaviorName)
-  const accIssues = getAccIssues(info)
-  const allAvailableBehaviors = getAllAvailableBehaviors(
-    behaviorName,
-    defaultBehaviorFileName,
-    info.behaviors,
-  )
+  const defaultBehaviorName = getDefaultBehaviorName(info);
+  const defaultBehaviorFileName = `${_.camelCase(defaultBehaviorName)}.ts`;
+  const description = getDescription(info);
+  const behaviorName = getBehaviorName(defaultBehaviorName);
+  const accIssues = getAccIssues(info);
+  const allAvailableBehaviors = getAllAvailableBehaviors(behaviorName, defaultBehaviorFileName, info.behaviors);
 
   if (!behaviorName && !description && info.behaviors && info.behaviors.length === 0) {
-    return null
+    return null;
   }
 
   const accessibilityDetails = (
@@ -118,13 +112,8 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
               {(info.behaviors || allAvailableBehaviors.length > 0) &&
                 allAvailableBehaviors.map(variant => {
                   return (
-                    <li>
-                      {link(
-                        `${behaviorVariantDisplayName(variant.name)}`,
-                        `#${_.kebabCase(variant.name)}`,
-                      )}
-                    </li>
-                  )
+                    <li>{link(`${behaviorVariantDisplayName(variant.name)}`, `#${_.kebabCase(variant.name)}`)}</li>
+                  );
                 })}
             </ul>
           </li>
@@ -149,7 +138,7 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
           <Text>
             <Header content="Available behaviors" id="available-behaviors" as="h2" />
             {allAvailableBehaviors.map(variation => {
-              return <BehaviorCard variation={variation} />
+              return <BehaviorCard variation={variation} />;
             })}
           </Text>
         </>
@@ -166,11 +155,11 @@ export const ComponentDocAccessibility: React.FC<ComponentDocAccessibility> = ({
         </>
       )}
     </>
-  )
+  );
 
   return (
     <Flex column>
       <React.Suspense fallback={<Loader />}>{accessibilityDetails}</React.Suspense>
     </Flex>
-  )
-}
+  );
+};

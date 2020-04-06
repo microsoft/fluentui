@@ -5,7 +5,20 @@ import { Calendar, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 const DayPickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -17,7 +30,7 @@ const DayPickerStrings = {
   nextYearAriaLabel: 'Next year',
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
+  closeButtonAriaLabel: 'Close',
 };
 
 export interface ICalendarButtonExampleState {
@@ -41,7 +54,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     isDayPickerVisible: true,
     isMonthPickerVisible: true,
     showGoToToday: true,
-    buttonString: 'Click for Calendar'
+    buttonString: 'Click for Calendar',
   };
 
   private _calendarButtonElement: HTMLElement;
@@ -51,7 +64,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
 
     this.state = {
       showCalendar: false,
-      selectedDate: null
+      selectedDate: null,
     };
 
     this._onClick = this._onClick.bind(this);

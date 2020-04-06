@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Divider } from '@fluentui/react'
+import * as React from 'react';
+import { Divider } from '@fluentui/react-northstar';
 
 const DividerExampleFittedShorthand = () => (
   <>
@@ -7,6 +7,6 @@ const DividerExampleFittedShorthand = () => (
     <Divider fitted />
     There is no space between this text and the divider.
   </>
-)
+);
 
-export default DividerExampleFittedShorthand
+export default DividerExampleFittedShorthand;

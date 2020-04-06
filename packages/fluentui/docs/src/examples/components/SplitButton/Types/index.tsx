@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const SplitButton = () => (
   <ExampleSection title="Split Button">
@@ -20,6 +20,6 @@ const SplitButton = () => (
       examplePath="components/SplitButton/Types/SplitButtonExampleSmall"
     />
   </ExampleSection>
-)
+);
 
-export default SplitButton
+export default SplitButton;

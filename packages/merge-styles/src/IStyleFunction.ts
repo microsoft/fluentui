@@ -4,7 +4,9 @@ import { IStyleSet } from './IStyleSet';
  * A style function takes in styleprops and returns a partial styleset.
  * {@docCategory IStyleFunction}
  */
-export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => Partial<TStyleSet>;
+export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (
+  props: TStylesProps,
+) => Partial<TStyleSet>;
 
 /**
  * Represents either a style function that takes in style props and returns a partial styleset,

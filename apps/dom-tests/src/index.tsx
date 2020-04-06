@@ -17,7 +17,7 @@ function _onLoad(): void {
     <Fabric>
       <Router>{_getRoutes()}</Router>
     </Fabric>,
-    rootElement
+    rootElement,
   );
 }
 
@@ -28,9 +28,9 @@ function _getRoutes(): JSX.Element[] {
         return {
           component: require(`./pages/${page}`).default,
           key: page,
-          path: `#/${page}`
+          path: `#/${page}`,
         };
-      }
+      },
     )
     .map((page: IRouteProps) => <Route key={page.key} {...page} />);
 }

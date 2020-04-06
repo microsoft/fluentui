@@ -1,43 +1,43 @@
-import * as React from 'react'
-import { Tree } from '@fluentui/react'
+import * as React from 'react';
+import { Tree } from '@fluentui/react-northstar';
 
 const items = [
   {
-    id: '1',
+    id: 'tree-initially-open-item-1',
     title: 'House Lannister',
     items: [
       {
-        id: '11',
+        id: 'tree-initially-open-item-11',
         title: 'Tywin',
         items: [
           {
-            id: '111',
+            id: 'tree-initially-open-item-111',
             title: 'Jaime',
           },
           {
-            id: '112',
+            id: 'tree-initially-open-item-112',
             title: 'Cersei',
           },
           {
-            id: '113',
+            id: 'tree-initially-open-item-113',
             title: 'Tyrion',
           },
         ],
       },
       {
-        id: '12',
+        id: 'tree-initially-open-item-12',
         title: 'Kevan',
         items: [
           {
-            id: '121',
+            id: 'tree-initially-open-item-121',
             title: 'Lancel',
           },
           {
-            id: '122',
+            id: 'tree-initially-open-item-122',
             title: 'Willem',
           },
           {
-            id: '123',
+            id: 'tree-initially-open-item-123',
             title: 'Martyn',
           },
         ],
@@ -45,33 +45,37 @@ const items = [
     ],
   },
   {
-    id: '2',
+    id: 'tree-initially-open-item-2',
     title: 'House Targaryen',
     items: [
       {
-        id: '21',
+        id: 'tree-initially-open-item-21',
         title: 'Aerys',
         items: [
           {
-            id: '211',
+            id: 'tree-initially-open-item-211',
             title: 'Rhaegar',
           },
           {
-            id: '212',
+            id: 'tree-initially-open-item-212',
             title: 'Viserys',
           },
           {
-            id: '213',
+            id: 'tree-initially-open-item-213',
             title: 'Daenerys',
           },
         ],
       },
     ],
   },
-]
+];
 
 const TreeInitiallyOpenExampleShorthand = () => (
-  <Tree items={items} aria-label="Initially open" defaultActiveItemIds={['1', '12', '2']} />
-)
+  <Tree
+    items={items}
+    aria-label="Initially open"
+    defaultActiveItemIds={['tree-initially-open-item-1', 'tree-initially-open-item-12', 'tree-initially-open-item-2']}
+  />
+);
 
-export default TreeInitiallyOpenExampleShorthand
+export default TreeInitiallyOpenExampleShorthand;

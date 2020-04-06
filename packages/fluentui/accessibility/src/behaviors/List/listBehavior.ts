@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import selectableListBehavior from './selectableListBehavior'
-import basicListBehavior from './basicListBehavior'
-import navigableListBehavior from './navigableListBehavior'
+import { Accessibility } from '../../types';
+import selectableListBehavior from './selectableListBehavior';
+import basicListBehavior from './basicListBehavior';
+import navigableListBehavior from './navigableListBehavior';
 
 /**
  * @description
@@ -12,17 +12,17 @@ const ListBehavior: Accessibility<ListBehaviorProps> = props =>
     ? selectableListBehavior(props)
     : props.navigable
     ? navigableListBehavior(props)
-    : basicListBehavior(props)
+    : basicListBehavior(props);
 
-export default ListBehavior
+export default ListBehavior;
 
 export type ListBehaviorProps = {
   /** Indicates if a list is a selectable list. */
-  selectable?: boolean
+  selectable?: boolean;
 
   /** Indicates if a list is a navigable list. */
-  navigable?: boolean
+  navigable?: boolean;
 
   /** Indicates if the list is horizontal. */
-  horizontal?: boolean
-}
+  horizontal?: boolean;
+};

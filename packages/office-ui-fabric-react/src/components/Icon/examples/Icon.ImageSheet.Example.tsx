@@ -7,35 +7,35 @@ import { TestImages } from '@uifabric/example-data';
 const classNames = mergeStyleSets({
   image: {
     display: 'inline-block',
-    position: 'relative'
+    position: 'relative',
   },
   one: {
     width: 48,
     height: 44,
-    marginLeft: 27
+    marginLeft: 27,
   },
   oneImage: {
     left: -6,
-    top: -4
+    top: -4,
   },
   check: {
     width: 35,
     height: 43,
-    marginLeft: 55
+    marginLeft: 55,
   },
   checkImage: {
     left: -60,
-    top: -5
+    top: -5,
   },
   lock: {
     width: 35,
     height: 42,
-    marginLeft: 65
+    marginLeft: 65,
   },
   lockImage: {
     width: -109,
-    top: -5
-  }
+    top: -5,
+  },
 });
 
 export const IconImageSheetExample: React.FunctionComponent = () => {
@@ -47,21 +47,21 @@ export const IconImageSheetExample: React.FunctionComponent = () => {
         className={classNames.one}
         imageProps={{
           src: TestImages.iconOne,
-          className: css(classNames.image, classNames.oneImage)
+          className: css(classNames.image, classNames.oneImage),
         }}
       />
       <ImageIcon
         className={classNames.check}
         imageProps={{
           src: TestImages.iconOne,
-          className: css(classNames.image, classNames.checkImage)
+          className: css(classNames.image, classNames.checkImage),
         }}
       />
       <ImageIcon
         className={classNames.lock}
         imageProps={{
           src: TestImages.iconOne,
-          className: css(classNames.image, classNames.lockImage)
+          className: css(classNames.image, classNames.lockImage),
         }}
       />
     </div>

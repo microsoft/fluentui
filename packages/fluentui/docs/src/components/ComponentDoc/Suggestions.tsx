@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 export const LayoutSuggestions = () => (
   <>
@@ -7,4 +7,4 @@ export const LayoutSuggestions = () => (
     <Link to="/components/grid">&nbsp;Grid&nbsp;</Link> components (and general{' '}
     <Link to="/layout">&nbsp;Layout guide</Link>).
   </>
-)
+);

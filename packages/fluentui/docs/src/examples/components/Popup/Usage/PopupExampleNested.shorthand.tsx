@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Popup } from '@fluentui/react-northstar';
 
 const PopupExampleNested = () => (
   <Popup
@@ -20,6 +20,6 @@ const PopupExampleNested = () => (
     }
     trigger={<Button content="Open first" />}
   />
-)
+);
 
-export default PopupExampleNested
+export default PopupExampleNested;

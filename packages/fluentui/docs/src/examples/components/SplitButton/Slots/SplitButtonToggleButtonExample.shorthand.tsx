@@ -1,9 +1,9 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import { SplitButton } from '@fluentui/react'
-import * as React from 'react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import { SplitButton } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const SplitButtonExampleToggleButtonShorthand = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
 
   return (
     <>
@@ -18,10 +18,7 @@ const SplitButtonExampleToggleButtonShorthand = () => {
           'aria-describedby': 'instruction-message-icon',
         }}
         toggleButton={{
-          icon: {
-            name: 'icon-menu-arrow-down',
-            style: open ? { transform: 'rotate(180deg)' } : null,
-          },
+          styles: open ? { transform: 'rotate(180deg)' } : null,
           'aria-label': 'more options',
         }}
         onOpenChange={(e, { open }) => setOpen(open)}
@@ -31,7 +28,7 @@ const SplitButtonExampleToggleButtonShorthand = () => {
         to open menu, press Alt + Arrow Down
       </span>
     </>
-  )
-}
+  );
+};
 
-export default SplitButtonExampleToggleButtonShorthand
+export default SplitButtonExampleToggleButtonShorthand;

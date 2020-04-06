@@ -7,8 +7,6 @@ exports[`Panel renders Panel correctly 1`] = `
   <div
     className=
         ms-Fabric
-        is-focusHidden
-        ms-Fabric--isFocusHidden
         ms-Layer-content
         {
           -moz-osx-font-smoothing: grayscale;
@@ -187,8 +185,8 @@ exports[`Panel renders Panel correctly 1`] = `
                 className=
                     ms-Panel-header
                     {
-                      flex-shrink: 1;
-                      margin-right: auto;
+                      align-self: flex-start;
+                      flex-grow: 1;
                       padding-left: 24px;
                       padding-right: 24px;
                     }
@@ -207,10 +205,6 @@ exports[`Panel renders Panel correctly 1`] = `
                         font-weight: 600;
                         hyphens: auto;
                         line-height: 27px;
-                        margin-bottom: 0px;
-                        margin-left: 0px;
-                        margin-right: 0px;
-                        margin-top: 0px;
                         overflow-wrap: break-word;
                         word-break: break-word;
                         word-wrap: break-word;
@@ -251,7 +245,6 @@ exports[`Panel renders Panel correctly 1`] = `
                       text-align: center;
                       text-decoration: none;
                       user-select: none;
-                      vertical-align: top;
                       width: 32px;
                     }
                     &::-moz-focus-inner {
@@ -341,7 +334,6 @@ exports[`Panel renders Panel correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           text-align: center;
-                          vertical-align: middle;
                         }
                     data-icon-name="Cancel"
                     role="presentation"
@@ -379,7 +371,6 @@ exports[`Panel renders Panel correctly 1`] = `
                 className=
                     ms-Panel-content
                     {
-                      margin-bottom: 0px;
                       padding-bottom: 20px;
                       padding-left: 24px;
                       padding-right: 24px;

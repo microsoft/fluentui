@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Slider } from '@fluentui/react'
+import * as React from 'react';
+import { Slider } from '@fluentui/react-northstar';
 
-const SliderExampleDisabledShorthand = () => <Slider disabled />
+const SliderExampleDisabledShorthand = () => <Slider disabled />;
 
-export default SliderExampleDisabledShorthand
+export default SliderExampleDisabledShorthand;

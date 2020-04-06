@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Alert, Input } from '@fluentui/react'
+import * as React from 'react';
+import { Alert, Input } from '@fluentui/react-northstar';
 
 const AlertExampleShorthand = () => (
   <>
@@ -9,6 +9,6 @@ const AlertExampleShorthand = () => (
     <Input fluid placeholder="Surname..." />
     <Alert attached="bottom">This is a bottom attached alert</Alert>
   </>
-)
+);
 
-export default AlertExampleShorthand
+export default AlertExampleShorthand;

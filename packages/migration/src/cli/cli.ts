@@ -7,7 +7,7 @@ interface IParsedCommand {
 const defaultParsedCommand = {
   writeResults: false,
   help: false,
-  version: ''
+  version: '',
 };
 
 export class CliParser {
@@ -19,12 +19,12 @@ export class CliParser {
       return {
         ...defaultParsedCommand,
         writeResults: true,
-        version: args[1]
+        version: args[1],
       };
     }
     return {
       ...defaultParsedCommand,
-      version: args[0]
+      version: args[0],
     };
   }
 }
@@ -36,7 +36,7 @@ export function displayHelp() {
     '',
     'Options:',
     '  -h --help   Display this message',
-    '  -w --write  Write changes directly to files'
+    '  -w --write  Write changes directly to files',
   ];
   console.error(output.join('\n'));
 }

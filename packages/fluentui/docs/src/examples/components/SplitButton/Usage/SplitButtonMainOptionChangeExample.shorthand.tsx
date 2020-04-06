@@ -1,16 +1,16 @@
-import { useNumberKnob } from '@fluentui/docs-components'
-import { SplitButton } from '@fluentui/react'
-import * as React from 'react'
+import { useNumberKnob } from '@fluentui/docs-components';
+import { SplitButton } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const items = [
   { key: 'group', content: 'New group message' },
   { key: 'channel', content: 'New channel message' },
   { key: 'conversation', content: 'New conversation' },
-]
+];
 
 const SplitButtonExampleMenuShorthand = () => {
-  const [activeIndex, setActiveIndex] = useNumberKnob({ name: 'activeIndex' })
-  const activeItem = items[activeIndex]
+  const [activeIndex, setActiveIndex] = useNumberKnob({ name: 'activeIndex' });
+  const activeItem = items[activeIndex];
 
   return (
     <SplitButton
@@ -21,7 +21,7 @@ const SplitButtonExampleMenuShorthand = () => {
       }}
       onMenuItemClick={(e, { index }) => setActiveIndex(index)}
     />
-  )
-}
+  );
+};
 
-export default SplitButtonExampleMenuShorthand
+export default SplitButtonExampleMenuShorthand;

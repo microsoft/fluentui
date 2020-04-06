@@ -3,15 +3,15 @@ import {
   AccessibilityAttributes,
   AccessibilityAttributesBySlot,
   AccessibilityDefinition,
-} from '@fluentui/accessibility'
+} from '@fluentui/accessibility';
 
-import getKeyDownHandlers from './getKeyDownHandlers'
-import { AccessibilityActionHandlers, ReactAccessibilityBehavior } from './types'
+import getKeyDownHandlers from './getKeyDownHandlers';
+import { AccessibilityActionHandlers, ReactAccessibilityBehavior } from './types';
 
 const emptyBehavior: ReactAccessibilityBehavior = {
   attributes: {},
   keyHandlers: {},
-}
+};
 
 const getAccessibility = <Props extends Record<string, any>>(
   displayName: string,
@@ -21,14 +21,14 @@ const getAccessibility = <Props extends Record<string, any>>(
   actionHandlers?: AccessibilityActionHandlers,
 ): ReactAccessibilityBehavior => {
   if (behavior === null || behavior === undefined) {
-    return emptyBehavior
+    return emptyBehavior;
   }
 
-  const definition: AccessibilityDefinition = behavior(behaviorProps)
+  const definition: AccessibilityDefinition = behavior(behaviorProps);
   const keyHandlers =
     actionHandlers && definition.keyActions
       ? getKeyDownHandlers(actionHandlers, definition.keyActions, isRtlEnabled)
-      : {}
+      : {};
 
   if (process.env.NODE_ENV !== 'production') {
     // For the non-production builds we enable the runtime accessibility attributes validator.
@@ -36,18 +36,14 @@ const getAccessibility = <Props extends Record<string, any>>(
     // schema is located in @stardust-ui/ability-attributes package.
     if (definition.attributes) {
       Object.keys(definition.attributes).forEach(slotName => {
-        const validatorName = `${displayName}${slotName === 'root' ? '' : `__${slotName}`}`
+        const validatorName = `${displayName}${slotName === 'root' ? '' : `__${slotName}`}`;
 
         if (!(definition.attributes as AccessibilityAttributesBySlot)[slotName]) {
-          ;(definition.attributes as AccessibilityAttributesBySlot)[
-            slotName
-          ] = {} as AccessibilityAttributes
+          (definition.attributes as AccessibilityAttributesBySlot)[slotName] = {} as AccessibilityAttributes;
         }
 
-        ;(definition.attributes as AccessibilityAttributesBySlot)[slotName][
-          'data-aa-class'
-        ] = validatorName
-      })
+        (definition.attributes as AccessibilityAttributesBySlot)[slotName]['data-aa-class'] = validatorName;
+      });
     }
   }
 
@@ -55,7 +51,7 @@ const getAccessibility = <Props extends Record<string, any>>(
     ...emptyBehavior,
     ...definition,
     keyHandlers,
-  }
-}
+  };
+};
 
-export default getAccessibility
+export default getAccessibility;

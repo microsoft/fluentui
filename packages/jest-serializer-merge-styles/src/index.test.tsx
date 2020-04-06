@@ -31,9 +31,9 @@ describe('print', () => {
       background: 'red',
       selectors: {
         ':hover': {
-          background: 'green'
-        }
-      }
+          background: 'green',
+        },
+      },
     });
 
     expect(print(classNames, () => '', indent)).toEqual(
@@ -46,22 +46,22 @@ describe('print', () => {
         indent('}'),
         indent('&:hover {'),
         indent('  background: green;'),
-        indent('}')
-      ].join('\n')
+        indent('}'),
+      ].join('\n'),
     );
   });
 
   it('can expand animation class names', () => {
     const fadeInClassName = keyframes({
       from: { opacity: 0 },
-      to: { opacity: 1 }
+      to: { opacity: 1 },
     });
     const leftInClassName = keyframes({
       from: { left: -100 },
-      to: { left: 0 }
+      to: { left: 0 },
     });
     const className = mergeStyles({
-      animationName: `${fadeInClassName},${leftInClassName}`
+      animationName: `${fadeInClassName},${leftInClassName}`,
     });
 
     expect(print(className, () => '', indent)).toEqual(
@@ -69,20 +69,25 @@ describe('print', () => {
         '',
         '',
         indent('{'),
-        indent('  ' + 'animation-name: ' + 'keyframes from{opacity:0;}to{opacity:1;} ' + 'keyframes from{left:-100px;}to{left:0px;};'),
-        indent('}')
-      ].join('\n')
+        indent(
+          '  ' +
+            'animation-name: ' +
+            'keyframes from{opacity:0;}to{opacity:1;} ' +
+            'keyframes from{left:-100px;}to{left:0px;};',
+        ),
+        indent('}'),
+      ].join('\n'),
     );
   });
 
   it('can be used in snapshots', () => {
     const fadeInAnimationName = keyframes({
       from: { opacity: 0, color: 'red' },
-      to: { opacity: 1, color: 'green' }
+      to: { opacity: 1, color: 'green' },
     });
     const fadeInClassName = mergeStyles({
       animationName: fadeInAnimationName,
-      animationDelay: '500ms'
+      animationDelay: '500ms',
     });
 
     expect(renderer.create(<div className={fadeInClassName} />).toJSON()).toMatchSnapshot();

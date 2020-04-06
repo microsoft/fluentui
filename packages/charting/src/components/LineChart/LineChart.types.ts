@@ -1,5 +1,7 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IChartProps } from '../../types/IDataPoint';
 
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
@@ -50,6 +52,16 @@ export interface ILineChartProps {
   tickValues?: number[] | Date[];
 
   /**
+   * minimum  data value point in y-axis
+   */
+  yMinValue?: number;
+
+  /**
+   * maximum data value point in y-axis
+   */
+  yMaxValue?: number;
+
+  /**
    * the format in for the data on x-axis. For date object this can be specified to your requirement. Eg: '%m/%d', '%d'
    * Please look at https://www.npmjs.com/package/d3-time-format for all the formats supported
    */
@@ -64,6 +76,21 @@ export interface ILineChartProps {
    * Enable the legends to wrap lines if there is not enough space to show all legends on a single line
    */
   enabledLegendsWrapLines?: boolean;
+
+  /**
+   * overflow props for the legends
+   */
+  legendsOverflowProps?: Partial<IOverflowSetProps>;
+
+  /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * focus zone props in hover card for legends
+   */
+  focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
 }
 
 export interface ILineChartStyleProps {

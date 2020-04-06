@@ -1,10 +1,10 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import _ from 'lodash'
-import E2EExample from './E2EExample'
-import routes from './routes'
-import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
-import { Provider, themes, Flex, Header, List } from '@fluentui/react'
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import _ from 'lodash';
+import E2EExample from './E2EExample';
+import routes from './routes';
+import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
+import { Provider, themes, Flex, Header, List } from '@fluentui/react-northstar';
 
 const ContentList = () => (
   <>
@@ -18,7 +18,7 @@ const ContentList = () => (
       />
     </Flex>
   </>
-)
+);
 
 const App = () => (
   <BrowserRouter>
@@ -29,6 +29,6 @@ const App = () => (
       </Switch>
     </Provider>
   </BrowserRouter>
-)
+);
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App />, document.getElementById('root'));

@@ -12,15 +12,15 @@ const list = {
     { key: 'item2', name: 'Item 2', iconProps: { iconName: 'Upload' }, checked: false },
     { key: 'item3', name: 'Item 3', iconProps: { iconName: 'Add' }, checked: false },
     { key: 'item4', name: 'Item 4', iconProps: { iconName: 'Share' }, checked: false },
-    { key: 'item5', name: 'Item 5', iconProps: { iconName: 'Upload' }, checked: false }
+    { key: 'item5', name: 'Item 5', iconProps: { iconName: 'Upload' }, checked: false },
   ],
   overflow: [
     { key: 'item6', name: 'Item 6', iconProps: { iconName: 'Add' }, checked: false },
     { key: 'item7', name: 'Item 7', iconProps: { iconName: 'Share' }, checked: false },
     { key: 'item8', name: 'Item 8', iconProps: { iconName: 'Upload' }, checked: false },
     { key: 'item9', name: 'Item 9', iconProps: { iconName: 'Add' }, checked: false },
-    { key: 'item10', name: 'Item 10', iconProps: { iconName: 'Share' }, checked: false }
-  ]
+    { key: 'item10', name: 'Item 10', iconProps: { iconName: 'Share' }, checked: false },
+  ],
 };
 
 const noop = () => null;
@@ -68,5 +68,5 @@ storiesOf('ResizeGroup', module)
         }}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   );

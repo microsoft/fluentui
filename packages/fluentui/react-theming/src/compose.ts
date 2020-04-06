@@ -19,9 +19,7 @@ export interface Composeable {
 }
 
 /** Defines a helper type for components using forwardRef. */
-export type ForwardRefComponent<TProps, TElement> = React.FunctionComponent<
-  TProps & React.RefAttributes<TElement>
->;
+export type ForwardRefComponent<TProps, TElement> = React.FunctionComponent<TProps & React.RefAttributes<TElement>>;
 
 interface ComposedFunctionComponent<TProps> extends React.FunctionComponent<TProps> {
   __optionsSet?: ComposeOptions[];
@@ -79,11 +77,7 @@ export const _composeFactory = (useThemeHook: any = useTheme) => {
     return Component as React.FunctionComponent<TProps>;
   };
 
-  const resolveSlots = (
-    name: string | undefined,
-    optionsSet: Options,
-    theme: any,
-  ): SlotsAssignment => {
+  const resolveSlots = (name: string | undefined, optionsSet: Options, theme: any): SlotsAssignment => {
     const result = {};
     if (optionsSet && optionsSet.length > 0) {
       optionsSet.forEach(os => {

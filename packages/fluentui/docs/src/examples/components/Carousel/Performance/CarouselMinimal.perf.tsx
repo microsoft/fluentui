@@ -1,9 +1,9 @@
-import { Carousel } from '@fluentui/react'
-import * as React from 'react'
+import { Carousel } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const CarouselMinimalPerf = () => <Carousel />
+const CarouselMinimalPerf = () => <Carousel />;
 
-CarouselMinimalPerf.iterations = 500
-CarouselMinimalPerf.filename = 'CarouselMinimal.perf.tsx'
+CarouselMinimalPerf.iterations = 500;
+CarouselMinimalPerf.filename = 'CarouselMinimal.perf.tsx';
 
-export default CarouselMinimalPerf
+export default CarouselMinimalPerf;

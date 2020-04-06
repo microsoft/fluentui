@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
 const [notTruncatedText, truncatedText] = [
   'Some long text here to see how it looks when not truncated',
@@ -8,7 +8,7 @@ const [notTruncatedText, truncatedText] = [
   Array(5)
     .fill(text)
     .join('. '),
-)
+);
 
 const TextExampleTruncatedShorthand = () => (
   <div style={{ overflow: 'hidden', textOverflow: 'ellipsis' }}>
@@ -17,6 +17,6 @@ const TextExampleTruncatedShorthand = () => (
     <br />
     <Text truncated content={truncatedText} />
   </div>
-)
+);
 
-export default TextExampleTruncatedShorthand
+export default TextExampleTruncatedShorthand;

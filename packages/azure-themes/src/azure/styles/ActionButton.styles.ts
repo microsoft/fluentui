@@ -8,8 +8,8 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const iconColor = (color: string) => {
     return {
       selectors: {
-        '.ms-Button-icon': { color }
-      }
+        '.ms-Button-icon': { color },
+      },
     };
   };
   return {
@@ -18,13 +18,13 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonText}`,
       backgroundColor: semanticColors.buttonBackground,
       color: semanticColors.buttonText,
-      ...iconColor(semanticColors.buttonText)
+      ...iconColor(semanticColors.buttonText),
     },
     rootDisabled: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextDisabled}`,
       backgroundColor: semanticColors.buttonBackgroundDisabled,
       color: semanticColors.buttonTextDisabled,
-      ...iconColor(semanticColors.buttonTextDisabled)
+      ...iconColor(semanticColors.buttonTextDisabled),
     },
     rootHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
@@ -32,9 +32,9 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextHovered,
       selectors: {
         ':hover': {
-          ...iconColor(semanticColors.buttonTextHovered)
-        }
-      }
+          ...iconColor(semanticColors.buttonTextHovered),
+        },
+      },
     },
     rootPressed: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
@@ -42,15 +42,15 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextPressed,
       selectors: {
         ':active': {
-          ...iconColor(semanticColors.buttonTextPressed)
-        }
-      }
+          ...iconColor(semanticColors.buttonTextPressed),
+        },
+      },
     },
     rootChecked: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
       color: semanticColors.buttonTextPressed,
-      ...iconColor(semanticColors.buttonTextPressed)
+      ...iconColor(semanticColors.buttonTextPressed),
     },
     rootCheckedHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextHovered}`,
@@ -58,9 +58,9 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextHovered,
       selectors: {
         ':hover': {
-          ...iconColor(semanticColors.buttonTextHovered)
-        }
-      }
+          ...iconColor(semanticColors.buttonTextHovered),
+        },
+      },
     },
     rootCheckedPressed: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,
@@ -68,9 +68,9 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       color: semanticColors.buttonTextPressed,
       selectors: {
         ':active': {
-          ...iconColor(semanticColors.buttonTextPressed)
-        }
-      }
-    }
+          ...iconColor(semanticColors.buttonTextPressed),
+        },
+      },
+    },
   };
 };

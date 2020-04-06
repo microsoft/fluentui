@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Grid, Text, Provider } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
@@ -12,7 +13,7 @@ const spinner = {
   },
   duration: '5s',
   iterationCount: 'infinite',
-}
+};
 
 const AnimationExampleDirection = () => (
   <Provider theme={{ animations: { spinner } }}>
@@ -23,26 +24,26 @@ const AnimationExampleDirection = () => (
       <Text content="Alternate reverse" />
       <div>
         <Animation name="spinner">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" direction="reverse">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" direction="alternate">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" direction="alternate-reverse">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
     </Grid>
   </Provider>
-)
+);
 
-export default AnimationExampleDirection
+export default AnimationExampleDirection;

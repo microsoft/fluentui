@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as _ from 'lodash'
+import * as React from 'react';
+import * as _ from 'lodash';
 import {
   AvatarProps,
   Avatar,
@@ -8,38 +8,38 @@ import {
   ChatItem,
   ChatItemProps,
   Chat,
-} from '@fluentui/react'
-import repliesButtonBehavior from './repliesButtonBehavior'
-import ScreenReaderHeaderText from './ScreenReaderHeaderText'
-import classNames from './classNames'
+} from '@fluentui/react-northstar';
+import repliesButtonBehavior from './repliesButtonBehavior';
+import ScreenReaderHeaderText from './ScreenReaderHeaderText';
+import classNames from './classNames';
 
 export type ThreadReplyProps = ChatMessageProps & {
-  avatar?: AvatarProps
-}
+  avatar?: AvatarProps;
+};
 
 type ThreadRepliesProps = {
-  replies?: ThreadReplyProps[]
-}
+  replies?: ThreadReplyProps[];
+};
 
 const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
-  const [expanded, setExpanded] = React.useState(false)
-  const { replies = [] } = props
-  const repliesCount = replies.length
+  const [expanded, setExpanded] = React.useState(false);
+  const { replies = [] } = props;
+  const repliesCount = replies.length;
 
   const renderTriggerButton = () => {
     if (repliesCount === 0 || repliesCount === 1) {
-      return null
+      return null;
     }
 
-    const authorName1 = replies[0].author
-    const authorName2 = replies[1].author
-    const remainReplies = repliesCount - 2
-    const moreRepliesLeft = remainReplies > 0
+    const authorName1 = replies[0].author;
+    const authorName2 = replies[1].author;
+    const remainReplies = repliesCount - 2;
+    const moreRepliesLeft = remainReplies > 0;
     const buttonText = expanded
       ? 'Collapse all'
       : `${repliesCount} replies from ${authorName1} and ${authorName2}${
           moreRepliesLeft ? `, and ${remainReplies} others` : ''
-        }`
+        }`;
 
     return (
       <Button
@@ -52,8 +52,8 @@ const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
         <ScreenReaderHeaderText level="5" text={buttonText} />
         <div aria-hidden="true">{buttonText}</div>
       </Button>
-    )
-  }
+    );
+  };
 
   const renderReplies = () => {
     return _.map(replies, (reply, index) => {
@@ -63,7 +63,7 @@ const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
         timestamp: reply.timestamp,
         actionMenu: reply.actionMenu,
         className: classNames.threadReplies.message,
-      }
+      };
       const chatItemProps: ChatItemProps = {
         gutter: {
           content: <Avatar {...reply.avatar} />,
@@ -83,19 +83,19 @@ const ThreadReplies: React.FC<ThreadRepliesProps> = props => {
           className: classNames.threadReplies.chatItemMessage,
         },
         className: classNames.threadReplies.chatItem,
-      }
+      };
       // Don't use indexes for generating unique keys for items! Was only done for prototype purpose
       // https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318
-      return <ChatItem as="div" {...chatItemProps} key={`reply-message-id-!!${index}!!`} />
-    })
-  }
+      return <ChatItem as="div" {...chatItemProps} key={`reply-message-id-!!${index}!!`} />;
+    });
+  };
 
   return (
     <>
       {renderTriggerButton()}
       {expanded && renderReplies()}
     </>
-  )
-}
+  );
+};
 
-export default ThreadReplies
+export default ThreadReplies;

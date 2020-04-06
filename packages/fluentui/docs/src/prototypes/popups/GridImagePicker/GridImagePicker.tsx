@@ -1,14 +1,14 @@
-import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react'
-import * as React from 'react'
-import * as _ from 'lodash'
+import { Grid, Input, gridBehavior, IconProps, ShorthandValue } from '@fluentui/react-northstar';
+import * as React from 'react';
+import * as _ from 'lodash';
 
-import GridImagePickerItem, { GridPickerItemProps } from './GridImagePickerItem'
+import GridImagePickerItem, { GridPickerItemProps } from './GridImagePickerItem';
 
 export interface GridPickerProps {
-  items: GridPickerItemProps[]
-  gridColumns?: string | number
-  inputIcon?: ShorthandValue<IconProps>
-  inputPlaceholder?: string
+  items: GridPickerItemProps[];
+  gridColumns?: string | number;
+  inputIcon?: ShorthandValue<IconProps>;
+  inputPlaceholder?: string;
 }
 
 const gridStyles = {
@@ -17,28 +17,28 @@ const gridStyles = {
   padding: '0',
   margin: '0',
   gridRowGap: '10px',
-}
+};
 
 const inputStyles = {
   marginBottom: '10px',
-}
+};
 
 class GridImagePicker extends React.Component<GridPickerProps> {
   static defaultProps = {
     gridColumns: 5,
     inputIcon: 'search',
     inputPlaceholder: 'Search...',
-  }
+  };
 
-  inputNode: HTMLElement
-  setInputNode = (node: HTMLElement) => (this.inputNode = node)
+  inputNode: HTMLElement;
+  setInputNode = (node: HTMLElement) => (this.inputNode = node);
 
   focusInput() {
-    this.inputNode && this.inputNode.focus()
+    this.inputNode && this.inputNode.focus();
   }
 
   render() {
-    const { gridColumns, inputIcon, inputPlaceholder } = this.props
+    const { gridColumns, inputIcon, inputPlaceholder } = this.props;
 
     return (
       <>
@@ -57,12 +57,12 @@ class GridImagePicker extends React.Component<GridPickerProps> {
           content={this.renderGridItems()}
         />
       </>
-    )
+    );
   }
 
   renderGridItems() {
-    return _.map(this.props.items, item => <GridImagePickerItem {...item} />)
+    return _.map(this.props.items, item => <GridImagePickerItem {...item} />);
   }
 }
 
-export default GridImagePicker
+export default GridImagePicker;

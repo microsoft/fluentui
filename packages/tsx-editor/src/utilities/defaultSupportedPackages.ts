@@ -7,17 +7,17 @@ const fabricGroup: IPackageGroup = {
   // commonjs modules due to the way import is transpiled for commonjs
   // https://github.com/webpack/webpack/issues/5703#issuecomment-357512412
   loadGlobal: cb => require.ensure([], require => cb(require('office-ui-fabric-react'))),
-  packages: []
+  packages: [],
 };
 const hooksGroup: IPackageGroup = {
   globalName: 'FabricReactHooks',
   loadGlobal: cb => require.ensure([], require => cb(require('@uifabric/react-hooks'))),
-  packages: []
+  packages: [],
 };
 const exampleDataGroup: IPackageGroup = {
   globalName: 'FabricExampleData',
   loadGlobal: cb => require.ensure([], require => cb(require('@uifabric/example-data'))),
-  packages: []
+  packages: [],
 };
 // tslint:enable:no-any
 
@@ -40,13 +40,19 @@ if (typesContext) {
         ? unscopedName
         : `${unscopedName === 'react-focus' ? '@fluentui' : '@uifabric'}/${unscopedName}`;
     const packageGroup =
-      packageName === '@uifabric/example-data' ? exampleDataGroup : packageName === '@uifabric/react-hooks' ? hooksGroup : fabricGroup;
+      packageName === '@uifabric/example-data'
+        ? exampleDataGroup
+        : packageName === '@uifabric/react-hooks'
+        ? hooksGroup
+        : fabricGroup;
     packageGroup.packages.push({
       packageName,
       loadTypes: () =>
         // raw-loader 0.x exports a single string, and later versions export a default.
         // The package.json specifies 0.x, but handle either just in case.
-        typesContext!(dtsPath).then((result: string | { default: string }) => (typeof result === 'string' ? result : result.default))
+        typesContext!(dtsPath).then((result: string | { default: string }) =>
+          typeof result === 'string' ? result : result.default,
+        ),
     });
   });
 } else {
@@ -59,7 +65,7 @@ if (typesContext) {
     { packageName: '@uifabric/merge-styles', loadTypes },
     { packageName: '@fluentui/react-focus', loadTypes },
     { packageName: '@uifabric/styling', loadTypes },
-    { packageName: '@uifabric/utilities', loadTypes }
+    { packageName: '@uifabric/utilities', loadTypes },
   );
   hooksGroup.packages.push({ packageName: '@uifabric/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@uifabric/example-data', loadTypes });

@@ -12,7 +12,7 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 
@@ -32,32 +32,32 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
           options={[
             {
               text: 'Sunday',
-              key: DayOfWeek.Sunday
+              key: DayOfWeek.Sunday,
             },
             {
               text: 'Monday',
-              key: DayOfWeek.Monday
+              key: DayOfWeek.Monday,
             },
             {
               text: 'Tuesday',
-              key: DayOfWeek.Tuesday
+              key: DayOfWeek.Tuesday,
             },
             {
               text: 'Wednesday',
-              key: DayOfWeek.Wednesday
+              key: DayOfWeek.Wednesday,
             },
             {
               text: 'Thursday',
-              key: DayOfWeek.Thursday
+              key: DayOfWeek.Thursday,
             },
             {
               text: 'Friday',
-              key: DayOfWeek.Friday
+              key: DayOfWeek.Friday,
             },
             {
               text: 'Saturday',
-              key: DayOfWeek.Saturday
-            }
+              key: DayOfWeek.Saturday,
+            },
           ]}
           selectedKey={firstDayOfWeek}
           onChange={this._onDropdownChange}
@@ -68,7 +68,7 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
 
   private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      firstDayOfWeek: option.key as number
+      firstDayOfWeek: option.key as number,
     });
   };
 }

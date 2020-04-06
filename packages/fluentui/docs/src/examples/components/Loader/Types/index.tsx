@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const LoaderTypesExamples = () => (
   <ExampleSection title="Types">
@@ -16,6 +16,6 @@ const LoaderTypesExamples = () => (
       examplePath="components/Loader/Types/LoaderExampleLabel"
     />
   </ExampleSection>
-)
+);
 
-export default LoaderTypesExamples
+export default LoaderTypesExamples;

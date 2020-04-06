@@ -1,26 +1,14 @@
-import * as React from 'react'
-import { Form, Button } from '@fluentui/react'
+import * as React from 'react';
+import { Form, Button } from '@fluentui/react-northstar';
 
 const FormExample = () => (
   <Form
     onSubmit={() => {
-      alert('Form submitted')
+      alert('Form submitted');
     }}
   >
-    <Form.Field
-      label="First name"
-      name="firstName"
-      id="first-name-inline"
-      inline={true}
-      required={true}
-    />
-    <Form.Field
-      label="Last name"
-      name="lastName"
-      id="last-name-inline"
-      inline={true}
-      required={true}
-    />
+    <Form.Field label="First name" name="firstName" id="first-name-inline" inline={true} required={true} />
+    <Form.Field label="Last name" name="lastName" id="last-name-inline" inline={true} required={true} />
     <Form.Field
       label="I agree to the Terms and Conditions"
       control={{ as: 'input' }}
@@ -29,6 +17,6 @@ const FormExample = () => (
     />
     <Form.Field control={{ as: Button, content: 'Submit' }} />
   </Form>
-)
+);
 
-export default FormExample
+export default FormExample;

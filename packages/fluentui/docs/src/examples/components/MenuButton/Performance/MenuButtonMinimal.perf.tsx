@@ -1,9 +1,9 @@
-import { MenuButton } from '@fluentui/react'
-import * as React from 'react'
+import { MenuButton } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const MenuButtonMinimalPerf = () => <MenuButton />
+const MenuButtonMinimalPerf = () => <MenuButton />;
 
-MenuButtonMinimalPerf.iterations = 5000
-MenuButtonMinimalPerf.filename = 'MenuButtonMinimal.perf.tsx'
+MenuButtonMinimalPerf.iterations = 5000;
+MenuButtonMinimalPerf.filename = 'MenuButtonMinimal.perf.tsx';
 
-export default MenuButtonMinimalPerf
+export default MenuButtonMinimalPerf;

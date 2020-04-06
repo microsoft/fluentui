@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @specification
@@ -12,7 +12,7 @@ import { Accessibility } from '../../types'
  * Adds attribute 'aria-level=1' based on the property 'level' if the component has 'hasSubtree' property false or undefined. Does not set anything if true..
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  */
-const treeTitleBehavior: Accessibility<TreeTitleBehavior> = props => ({
+const treeTitleBehavior: Accessibility<TreeTitleBehaviorProps> = props => ({
   attributes: {
     root: {
       ...(!props.hasSubtree && {
@@ -32,14 +32,14 @@ const treeTitleBehavior: Accessibility<TreeTitleBehavior> = props => ({
       },
     },
   },
-})
+});
 
-export default treeTitleBehavior
+export default treeTitleBehavior;
 
-type TreeTitleBehavior = {
+export type TreeTitleBehaviorProps = {
   /** Indicated if tree title has a subtree */
-  hasSubtree?: boolean
-  level?: number
-  treeSize?: number
-  index?: number
-}
+  hasSubtree?: boolean;
+  level?: number;
+  treeSize?: number;
+  index?: number;
+};

@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const RefTypesExamples = () => (
   <ExampleSection title="Types">
@@ -9,8 +9,8 @@ const RefTypesExamples = () => (
       title="Ref"
       description={
         <span>
-          A component exposes the <code>innerRef</code> prop that always returns the DOM node of
-          both functional and class component children.
+          A component exposes the <code>innerRef</code> prop that always returns the DOM node of both functional and
+          class component children.
         </span>
       }
       examplePath="components/Ref/Types/RefExample"
@@ -25,6 +25,6 @@ const RefTypesExamples = () => (
       examplePath="components/Ref/Types/RefForwardingExample"
     />
   </ExampleSection>
-)
+);
 
-export default RefTypesExamples
+export default RefTypesExamples;

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Flex, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex, Provider } from '@fluentui/react-northstar';
 
 const ButtonUsageExampleShorthand = () => (
   <div>
@@ -28,6 +28,6 @@ const ButtonUsageExampleShorthand = () => (
       </Flex>
     </Provider>
   </div>
-)
+);
 
-export default ButtonUsageExampleShorthand
+export default ButtonUsageExampleShorthand;

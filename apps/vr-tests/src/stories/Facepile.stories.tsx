@@ -8,7 +8,7 @@ import {
   PersonaInitialsColor,
   PersonaSize,
   OverflowButtonType,
-  IFacepileProps
+  IFacepileProps,
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '@uifabric/example-data';
@@ -17,39 +17,39 @@ const facepilePersonas = [
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Annie Lindqvist',
-    data: '50%'
+    data: '50%',
   },
   {
     imageUrl: TestImages.personaFemale,
     personaName: 'Aaron Reid',
-    data: '$1,000'
+    data: '$1,000',
   },
   {
     personaName: 'Alex Lundberg',
-    data: '75%'
+    data: '75%',
   },
   {
     personaName: 'Roko Kolar',
-    data: '4 hrs'
+    data: '4 hrs',
   },
   {
     imageInitials: 'CB',
     personaName: 'Christian Bergqvist',
     initialsColor: PersonaInitialsColor.green,
-    data: '25%'
+    data: '25%',
   },
   {
     imageUrl: TestImages.personaFemale,
     imageInitials: 'VL',
     personaName: 'Valentina Lovric',
     initialsColor: PersonaInitialsColor.lightBlue,
-    data: 'Emp1234'
-  }
+    data: 'Emp1234',
+  },
 ];
 
 const facepileProps: IFacepileProps = {
   personas: facepilePersonas,
-  ariaDescription: 'To move through the items use left and right arrow keys.'
+  ariaDescription: 'To move through the items use left and right arrow keys.',
 };
 
 storiesOf('Facepile', module)
@@ -62,7 +62,7 @@ storiesOf('Facepile', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => <Facepile {...facepileProps} />, { rtl: true })
   .addStory('Extra extra small', () => (
@@ -74,7 +74,7 @@ storiesOf('Facepile', module)
       maxDisplayablePersonas={3}
       overflowButtonType={OverflowButtonType.downArrow}
       overflowButtonProps={{
-        ariaLabel: 'More users'
+        ariaLabel: 'More users',
       }}
     />
   ))
@@ -87,24 +87,24 @@ storiesOf('Facepile', module)
       maxDisplayablePersonas={3}
       overflowButtonProps={{
         styles: {
-          root: { background: 'yellow' }
-        }
+          root: { background: 'yellow' },
+        },
       }}
       addButtonProps={{
         styles: {
-          root: { boxShadow: '0px 0px 5px 5px gray' }
-        }
+          root: { boxShadow: '0px 0px 5px 5px gray' },
+        },
       }}
       styles={{
         descriptiveOverflowButton: {
           background: 'red', // overridden by overflowButtonProps
           boxShadow: '0px 0px 5px 5px gray', // not overridden
-          marginLeft: 8 // not overridden
+          marginLeft: 8, // not overridden
         },
         addButton: {
           boxShadow: '0px 0px 5px 5px red', // overridden by addButtonProps
-          marginRight: 8 // not overridden
-        }
+          marginRight: 8, // not overridden
+        },
       }}
     />
   ));

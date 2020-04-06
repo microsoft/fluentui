@@ -1,7 +1,7 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
-import { Segment } from '@fluentui/react'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
+import { Segment } from '@fluentui/react-northstar';
 
 const Types = () => (
   <ExampleSection title="Types">
@@ -55,6 +55,6 @@ const Types = () => (
       </Segment>
     </ComponentExample>
   </ExampleSection>
-)
+);
 
-export default Types
+export default Types;

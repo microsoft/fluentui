@@ -6,26 +6,26 @@ const menuProps: ISplitButtonProps['menu'] = {
   items: [
     {
       key: 'a',
-      name: 'Item a'
+      name: 'Item a',
     },
     {
       key: 'b',
-      name: 'Item b'
-    }
-  ]
+      name: 'Item b',
+    },
+  ],
 };
 
 const tokens = {
   sectionStack: {
-    childrenGap: 32
+    childrenGap: 32,
   },
   headingStack: {
     childrenGap: 16,
-    padding: 8
+    padding: 8,
   },
   buttonStack: {
-    childrenGap: 12
-  }
+    childrenGap: 12,
+  },
 };
 
 const alertClicked = (): void => {
@@ -48,9 +48,28 @@ export class SplitButtonExample extends React.Component<{}, {}> {
             <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
                 <SplitButton icon="Add" content="Default split button" menu={menuProps} onClick={alertClicked} />
-                <SplitButton disabled icon="Add" content="Disabled split button" menu={menuProps} onClick={alertClicked} />
-                <SplitButton primary icon="Add" content="Primary split button" menu={menuProps} onClick={alertClicked} />
-                <SplitButton disabled primary icon="Add" content="Disabled primary split button" menu={menuProps} onClick={alertClicked} />
+                <SplitButton
+                  disabled
+                  icon="Add"
+                  content="Disabled split button"
+                  menu={menuProps}
+                  onClick={alertClicked}
+                />
+                <SplitButton
+                  primary
+                  icon="Add"
+                  content="Primary split button"
+                  menu={menuProps}
+                  onClick={alertClicked}
+                />
+                <SplitButton
+                  disabled
+                  primary
+                  icon="Add"
+                  content="Disabled primary split button"
+                  menu={menuProps}
+                  onClick={alertClicked}
+                />
               </ButtonStack>
               <ButtonStack>
                 <SplitButton

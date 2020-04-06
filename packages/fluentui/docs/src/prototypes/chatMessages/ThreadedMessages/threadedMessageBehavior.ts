@@ -1,15 +1,20 @@
-import { chatMessageBehavior, Accessibility, FocusZoneTabbableElements } from '@fluentui/react'
-import * as keyboardKey from 'keyboard-key'
+import {
+  chatMessageBehavior,
+  Accessibility,
+  FocusZoneTabbableElements,
+  ChatMessageBehaviorProps,
+} from '@fluentui/react-northstar';
+import * as keyboardKey from 'keyboard-key';
 
-const threadedMessageBehavior: Accessibility = props => {
-  const behaviorData = chatMessageBehavior(props)
+const threadedMessageBehavior: Accessibility<ChatMessageBehaviorProps> = props => {
+  const behaviorData = chatMessageBehavior(props);
 
   behaviorData.focusZone.props = {
     ...behaviorData.focusZone.props,
     handleTabKey: FocusZoneTabbableElements.none,
     shouldEnterInnerZone: event => keyboardKey.getCode(event) === keyboardKey.Enter,
     isCircularNavigation: false,
-  }
+  };
 
   behaviorData.keyActions = {
     root: {
@@ -17,9 +22,9 @@ const threadedMessageBehavior: Accessibility = props => {
         keyCombinations: [{ keyCode: keyboardKey.Escape }],
       },
     },
-  }
+  };
 
-  return behaviorData
-}
+  return behaviorData;
+};
 
-export default threadedMessageBehavior
+export default threadedMessageBehavior;

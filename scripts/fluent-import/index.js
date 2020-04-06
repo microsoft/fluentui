@@ -1,12 +1,13 @@
+// @ts-check
 const fs = require('fs-extra');
 const path = require('path');
 const os = require('os');
 const findGitRoot = require('../monorepo/findGitRoot');
+const { runPrettierForFolder, runPrettier } = require('../prettier/prettier-helpers');
 const { spawnSync } = require('child_process');
 const glob = require('glob');
 
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'fluent-import'));
-console.log(`using temp dir: ${tmp}`);
 
 function git(args, options) {
   args = args || [];
@@ -52,7 +53,7 @@ function importGithubMD(root) {
     '.github/setup-local-development.md',
     '.github/add-a-feature.md',
     '.github/document-a-feature.md',
-    '.github/test-a-feature.md'
+    '.github/test-a-feature.md',
   ];
   for (let mdFile of mdFiles) {
     if (mdFile.endsWith('.md')) {
@@ -72,7 +73,10 @@ function rewriteImports(outputPath) {
   for (let file of files) {
     const fullPath = path.join(outputPath, file);
     const content = fs.readFileSync(fullPath, 'utf-8');
-    if (content.includes('@fluentui/internal-tooling')) {
+    if (content.includes('@fluentui/internal-tooling/puppeteer.config')) {
+      console.log(`patching up ${fullPath}`);
+      fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build/puppeteer'));
+    } else if (content.includes('@fluentui/internal-tooling')) {
       console.log(`patching up ${fullPath}`);
       fs.writeFileSync(fullPath, content.replace('@fluentui/internal-tooling', '@uifabric/build'));
     }
@@ -118,8 +122,8 @@ function fixTsConfigs(outputPath) {
   const mapping = {
     '@fluentui/*': ['packages/fluentui/*/src/index'],
     'docs/*': ['packages/fluentui/docs/*'],
-    'src/*': ['packages/fluentui/react/src/*'],
-    'test/*': ['packages/fluentui/react/test/*']
+    'src/*': ['packages/fluentui/react-northstar/src/*'],
+    'test/*': ['packages/fluentui/react-northstar/test/*'],
   };
 
   for (let file of files) {
@@ -128,7 +132,7 @@ function fixTsConfigs(outputPath) {
     const tsconfig = fs.readJSONSync(fullPath);
 
     if (tsconfig.compilerOptions && tsconfig.compilerOptions.paths) {
-      for (let [source, paths] of Object.entries(tsconfig.compilerOptions.paths)) {
+      for (let source of Object.keys(tsconfig.compilerOptions.paths)) {
         if (Object.keys(mapping).includes(source)) {
           tsconfig.compilerOptions.paths[source] = mapping[source];
         }
@@ -189,7 +193,7 @@ function fixEslint(outputPath) {
   for (let file of files) {
     console.log(`fixing ${file}`);
     const fullPath = path.join(outputPath, file);
-    const content = fs.readJSONSync(fullPath, 'utf-8');
+    const content = fs.readJSONSync(fullPath);
 
     // TODO (fui repo merge): create a @uifabric/eslint-config package to host this per: https://eslint.org/docs/developer-guide/shareable-configs
     content.extends = ['../../../scripts/eslint/index'];
@@ -200,7 +204,31 @@ function fixEslint(outputPath) {
   let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
   eslintPkgJson.dependencies = {
     '@typescript-eslint/eslint-plugin': '2.8.0',
-    '@typescript-eslint/experimental-utils': '2.8.0'
+    '@typescript-eslint/experimental-utils': '2.8.0',
+  };
+  fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
+}
+
+function fixTslint(outputPath) {
+  const files = glob.sync('**/tslint.json', { cwd: outputPath });
+
+  for (let file of files) {
+    console.log(`fixing ${file}`);
+    const fullPath = path.join(outputPath, file);
+    const content = fs.readJSONSync(fullPath);
+
+    // TODO (fui repo merge): create a shared package for configs
+    if (content && content.extends) {
+      content.extends = ['../../../scripts/tslint.fluentui.json'];
+    }
+    fs.writeJSONSync(fullPath, content, { spaces: 2 });
+  }
+
+  const eslintPkgJsonFile = path.join(outputPath, 'eslint-plugin/package.json');
+  let eslintPkgJson = fs.readJsonSync(eslintPkgJsonFile);
+  eslintPkgJson.dependencies = {
+    '@typescript-eslint/eslint-plugin': '2.8.0',
+    '@typescript-eslint/experimental-utils': '2.8.0',
   };
   fs.writeJsonSync(eslintPkgJsonFile, eslintPkgJson, { spaces: 2 });
 }
@@ -224,7 +252,7 @@ function fixTypings(outputPath) {
   const files = glob.sync('**/package.json', { cwd: outputPath });
 
   const devDependencies = {
-    '@types/react': '16.8.11'
+    '@types/react': '16.8.11',
   };
 
   for (let file of files) {
@@ -269,10 +297,11 @@ function fixKeyboardKeys(outputPath) {
 
 function fixPlayground(outputPath) {
   const devDeps = {
+    '@types/jest': '~24.9.0', // align with Fabric for syncpack
     '@types/jest-environment-puppeteer': '^4.3.1',
     '@types/expect-puppeteer': '^4.4.0',
     enzyme: '~3.10.0',
-    'enzyme-adapter-react-16': '^1.15.0'
+    'enzyme-adapter-react-16': '^1.15.0',
   };
 
   const fullPath = path.join(outputPath, 'playground', 'package.json');
@@ -282,7 +311,23 @@ function fixPlayground(outputPath) {
   fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
 }
 
-function fixReactDep(outputPath) {
+function fixReactDeps(outputPath) {
+  const file = path.join(outputPath, 'react/package.json');
+  const contents = fs.readJsonSync(file);
+  contents.devDependencies['@testing-library/jest-dom'] = '^5.1.1';
+
+  const keys = Object.keys(contents.devDependencies);
+  const sortedKeys = keys.sort();
+  const devDependencies = sortedKeys.reduce((deps, key) => {
+    return { ...deps, [key]: contents.devDependencies[key] };
+  }, {});
+
+  contents.devDependencies = devDependencies;
+
+  fs.writeJsonSync(file, contents, { spaces: 2 });
+}
+
+function fixDeps(outputPath) {
   const files = glob.sync('**/package.json', { cwd: outputPath });
 
   for (let file of files) {
@@ -299,13 +344,33 @@ function fixReactDep(outputPath) {
       pkgJson.devDependencies['react-dom'] = '16.8.6';
     }
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies.react) {
-      pkgJson.devDependencies.react = '16.8.6';
-    }
+    const devDeps = {
+      // align with Fabric for syncpack
+      '@types/enzyme': '3.10.3',
+      '@types/enzyme-adapter-react-16': '1.0.3',
+      '@types/puppeteer': '1.12.3',
+      '@types/react': '16.8.11',
+      '@types/react-dom': '16.8.4',
+      '@types/webpack': '4.4.0',
+      '@types/webpack-env': '1.15.1',
+      flamegrill: '0.1.3',
+      'just-scripts': '0.35.0',
+      'fork-ts-checker-webpack-plugin': '1.3.3',
+      react: '16.8.6',
+      'react-dom': '16.8.6',
+      typescript: '3.7.2',
+      webpack: '4.35.0',
+    };
 
-    if (pkgJson.devDependencies && pkgJson.devDependencies['react-dom']) {
-      pkgJson.devDependencies['react-dom'] = '16.8.6';
-    }
+    Object.keys(devDeps).forEach(devDep => {
+      if (pkgJson.devDependencies && pkgJson.devDependencies[devDep]) {
+        pkgJson.devDependencies[devDep] = devDeps[devDep];
+      }
+
+      if (pkgJson.dependencies && pkgJson.dependencies[devDep]) {
+        pkgJson.dependencies[devDep] = devDeps[devDep];
+      }
+    });
 
     fs.writeJSONSync(fullPath, pkgJson, { spaces: 2 });
   }
@@ -336,8 +401,11 @@ function fixDocs(outputPath) {
     let contents = fs.readFileSync(fullPath, 'utf-8');
 
     if (contents.includes('packages/react/package.json')) {
-      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react/package.json`);
-      contents = contents.replace(/'[\.\/]+packages\/react\/package\.json'/, "'@fluentui/react/package.json'");
+      console.log(`fixing ${fullPath} to fix docs import of @fluentui/react-northstar/package.json`);
+      contents = contents.replace(
+        /'[\.\/]+packages\/react\/package\.json'/,
+        "'@fluentui/react-northstar/package.json'",
+      );
     }
 
     fs.writeFileSync(fullPath, contents);
@@ -346,7 +414,8 @@ function fixDocs(outputPath) {
   const docsPackageJsonFile = path.join(outputPath, 'docs/package.json');
   const docsPackageJson = fs.readJsonSync(docsPackageJsonFile);
   docsPackageJson.scripts = {
-    start: 'gulp docs'
+    build: 'gulp build:docs',
+    start: 'gulp docs',
   };
   fs.writeJsonSync(docsPackageJsonFile, docsPackageJson, { spaces: 2 });
 }
@@ -381,7 +450,44 @@ function fixInternalPackageDeps(outputPath) {
   }
 }
 
+function importChangeLogMD(outputPath) {
+  fs.copyFileSync(path.join(tmp, 'CHANGELOG.md'), path.join(outputPath, 'CHANGELOG.md'));
+}
+
+function runPrettierOnImportedFiles(outputPath, root) {
+  runPrettierForFolder(outputPath);
+  runPrettierForFolder(path.join(root, '.github'));
+
+  console.log('running prettier on ' + path.join(outputPath, 'e2e/global.d.ts'));
+  console.log('node', [
+    path.join(root, 'node_modules/prettier/bin-prettier.js'),
+    '--config',
+    path.join(root, 'prettier.config.js'),
+    '--write',
+    'packages/fluentui/e2e/global.d.ts',
+  ]);
+  spawnSync(
+    'node',
+    [
+      path.join(root, 'node_modules/prettier/bin-prettier.js'),
+      '--config',
+      path.join(root, 'prettier.config.js'),
+      '--write',
+      'packages/fluentui/e2e/global.d.ts',
+      '--ignore-path',
+    ],
+    { stdio: 'inherit' },
+  );
+}
+
 function importFluent() {
+  // TODO: remove this script at some point after convergence settles.
+  console.error(
+    'With the archival of fluentui repo, this script is now obsolete and should not be executed. It will overwrite all files in packages/fluentui!',
+  );
+  return;
+
+  console.log(`using temp dir: ${tmp}`);
   console.log('cloning FUI');
   git(['clone', '--depth=1', 'https://github.com/microsoft/fluent-ui-react.git', '.']);
 
@@ -395,6 +501,7 @@ function importFluent() {
   importFuiPackages(outputPath);
   importFuiTopLevelPackages(outputPath);
   importGithubMD(root);
+  importChangeLogMD(outputPath);
 
   updateMonorepoConfigs(root);
 
@@ -404,14 +511,17 @@ function importFluent() {
   fixTsConfigs(outputPath);
   fixGulp(outputPath);
   fixEslint(outputPath);
+  fixTslint(outputPath);
   fixTypings(outputPath);
   fixPrivatePackageFlag(outputPath);
   fixPlayground(outputPath);
   fixKeyboardKeys(outputPath);
-  fixReactDep(outputPath);
+  fixDeps(outputPath);
+  fixReactDeps(outputPath);
   fixJestMapping(outputPath);
   fixDocs(outputPath);
   fixInternalPackageDeps(outputPath);
+  runPrettierOnImportedFiles(outputPath, root);
 
   console.log('removing tmp');
   fs.removeSync(tmp);

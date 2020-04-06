@@ -1,4 +1,4 @@
-import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react'
+import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -10,6 +10,6 @@ const config: ScreenerTestsConfig = {
         .click(`.${ToolbarMenuItem.className}:nth-child(1)`)
         .snapshot('Shows popup'),
   ],
-}
+};
 
-export default config
+export default config;

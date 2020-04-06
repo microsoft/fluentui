@@ -1,6 +1,7 @@
-import { useRangeKnob } from '@fluentui/docs-components'
-import { Alert } from '@fluentui/react'
-import * as React from 'react'
+import { useRangeKnob } from '@fluentui/docs-components';
+import { Alert } from '@fluentui/react-northstar';
+import * as React from 'react';
+import { ScreencastIcon } from '@fluentui/react-icons-northstar';
 
 const AlertExampleWidth = () => {
   const [width] = useRangeKnob({
@@ -9,7 +10,7 @@ const AlertExampleWidth = () => {
     max: '800px',
     initialValue: '500px',
     step: '10px',
-  })
+  });
 
   return (
     <div style={{ width }}>
@@ -17,10 +18,10 @@ const AlertExampleWidth = () => {
         actions={[{ content: 'Join and add the room', primary: true }]}
         header="There is a conference room close to you."
         dismissible
-        icon="screencast"
+        icon={<ScreencastIcon />}
       />
     </div>
-  )
-}
+  );
+};
 
-export default AlertExampleWidth
+export default AlertExampleWidth;

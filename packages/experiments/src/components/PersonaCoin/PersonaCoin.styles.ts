@@ -4,13 +4,21 @@ import { getPersonaInitialsColor } from 'office-ui-fabric-react/lib/Persona';
 
 export const DEFAULT_PERSONA_COIN_SIZE = 48;
 
-export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme, tokens): IPersonaCoinStylesReturnType => {
+export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (
+  props,
+  theme,
+  tokens,
+): IPersonaCoinStylesReturnType => {
   const personaProps: IPersonaProps = {
     text: props.text,
-    initialsColor: props.initialsColor
+    initialsColor: props.initialsColor,
   };
 
-  const { size = DEFAULT_PERSONA_COIN_SIZE, coinColor = getPersonaInitialsColor(personaProps), initialsColor = 'white' } = props;
+  const {
+    size = DEFAULT_PERSONA_COIN_SIZE,
+    coinColor = getPersonaInitialsColor(personaProps),
+    initialsColor = 'white',
+  } = props;
 
   return {
     root: {
@@ -22,10 +30,10 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme,
       borderRadius: '50%',
       display: 'flex',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     initials: {
-      fontSize: `${size / 2.5}px`
+      fontSize: `${size / 2.5}px`,
     },
     image: {
       position: 'absolute',
@@ -34,13 +42,13 @@ export const PersonaCoinStyles: IPersonaCoinComponent['styles'] = (props, theme,
       width: size,
       height: size,
       borderRadius: '50%',
-      overflow: 'hidden'
+      overflow: 'hidden',
     },
     presence: {
       position: 'absolute',
       right: `${getPresenceOffsetForCoinSize(size)}px`,
-      bottom: `${getPresenceOffsetForCoinSize(size)}px`
-    }
+      bottom: `${getPresenceOffsetForCoinSize(size)}px`,
+    },
   };
 };
 

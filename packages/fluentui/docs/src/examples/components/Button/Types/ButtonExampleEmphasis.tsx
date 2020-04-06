@@ -1,11 +1,15 @@
-import * as React from 'react'
-import { Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Flex } from '@fluentui/react-northstar';
 
 const ButtonExampleEmphasis = () => (
   <Flex gap="gap.smaller">
-    <Button primary>Primary</Button>
-    <Button secondary>Secondary</Button>
+    <Button primary>
+      <Button.Content>Primary</Button.Content>
+    </Button>
+    <Button secondary>
+      <Button.Content>Secondary</Button.Content>
+    </Button>
   </Flex>
-)
+);
 
-export default ButtonExampleEmphasis
+export default ButtonExampleEmphasis;

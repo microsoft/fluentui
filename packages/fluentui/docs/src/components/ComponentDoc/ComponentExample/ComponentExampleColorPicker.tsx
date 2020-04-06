@@ -1,24 +1,24 @@
-import { ProviderContextPrepared, ColorVariants } from '@fluentui/react'
-import * as Color from 'color'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { ProviderContextPrepared, ColorVariants } from '@fluentui/react-northstar';
+import * as Color from 'color';
+import * as _ from 'lodash';
+import * as React from 'react';
 // @ts-ignore
-import { ThemeContext } from 'react-fela'
+import { ThemeContext } from 'react-fela';
 
 type ComponentExampleColorPickerProps = {
-  onChange: (colorValue: string) => void
-  variableValue: string
-}
+  onChange: (colorValue: string) => void;
+  variableValue: string;
+};
 
 const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColorPickerProps> = props => {
-  const { onChange, variableValue } = props
-  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext)
+  const { onChange, variableValue } = props;
+  const { theme } = React.useContext<ProviderContextPrepared>(ThemeContext);
 
   const handleClick = (colorValue: string) => () => {
-    onChange(colorValue)
-  }
+    onChange(colorValue);
+  };
   // Some colors are strings only, i.e. black and white
-  const filteredColors = _.pickBy(theme.siteVariables.colors, _.isPlainObject)
+  const filteredColors = _.pickBy(theme.siteVariables.colors, _.isPlainObject);
 
   return (
     <div
@@ -35,13 +35,11 @@ const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColor
     >
       {_.map(filteredColors, (colorShades: ColorVariants, colorName: string) => (
         <div style={{ display: 'flex' }}>
-          <strong style={{ display: 'block', width: '12ch', background: '#fff' }}>
-            {_.startCase(colorName)}
-          </strong>
+          <strong style={{ display: 'block', width: '12ch', background: '#fff' }}>{_.startCase(colorName)}</strong>
 
           {_.map(_.pickBy(colorShades), (shadeValue, shadeName) => {
-            const isActive = variableValue === shadeValue
-            const contrastColor = Color(shadeValue).isDark() ? '#fff' : '#000'
+            const isActive = variableValue === shadeValue;
+            const contrastColor = Color(shadeValue).isDark() ? '#fff' : '#000';
 
             return (
               <div
@@ -62,12 +60,12 @@ const ComponentExampleColorPicker: React.FunctionComponent<ComponentExampleColor
               >
                 {isActive ? '✓' : shadeName}
               </div>
-            )
+            );
           })}
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default ComponentExampleColorPicker
+export default ComponentExampleColorPicker;

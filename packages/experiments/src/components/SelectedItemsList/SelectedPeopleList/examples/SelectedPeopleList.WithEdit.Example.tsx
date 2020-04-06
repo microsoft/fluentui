@@ -11,7 +11,7 @@ import {
   TriggerOnContextMenu,
   EditableItem,
   DefaultEditingItem,
-  EditingItemInnerFloatingPickerProps
+  EditingItemInnerFloatingPickerProps,
 } from '@uifabric/experiments/lib/SelectedItemsList';
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@uifabric/experiments/lib/FloatingSuggestions';
@@ -42,8 +42,8 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
           suggestionsStore={this.suggestionsStore}
           onResolveSuggestions={this.model.resolveSuggestions}
         />
-      )
-    })
+      ),
+    }),
   });
 
   public render(): JSX.Element {

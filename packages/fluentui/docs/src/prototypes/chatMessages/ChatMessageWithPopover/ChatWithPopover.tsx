@@ -2,35 +2,37 @@ import {
   Chat,
   Provider,
   Avatar,
+  Icon,
   ChatMessageProps,
   ShorthandCollection,
   ReactionProps,
-} from '@fluentui/react'
-import * as React from 'react'
-import Popover from './Popover'
-import ReactionPopup from './ReactionPopup'
-import { Ref } from '@fluentui/react-component-ref'
+} from '@fluentui/react-northstar';
+import * as React from 'react';
+import Popover from './Popover';
+import ReactionPopup from './ReactionPopup';
+import { Ref } from '@fluentui/react-component-ref';
+import { AcceptIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   {
-    icon: 'thumbs up',
+    icon: <Icon name="thumbs up" />,
     content: '1K',
     key: 'likes',
     variables: { meReacting: true },
     children: (Component, props) => <ReactionPopup {...props} />,
   },
   {
-    icon: 'emoji',
+    icon: <EmojiIcon />,
     content: 2,
     key: 'smiles',
     children: (Component, props) => <ReactionPopup {...props} />,
   },
-]
+];
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'check' },
-}
+  status: { color: 'green', icon: <AcceptIcon /> },
+};
 
 const ChatWithPopover = () => {
   return (
@@ -121,15 +123,15 @@ const ChatWithPopover = () => {
         ]}
       />
     </Provider>
-  )
-}
+  );
+};
 
 const TeamsChatMessage: React.FC<ChatMessageProps> = (props: ChatMessageProps) => {
-  const [showActionMenu, setShowActionMenu] = React.useState(false)
-  const [forceShowActionMenu, setForceShowActionMenu] = React.useState(false)
-  const [chatMessageElement, setChatMessageElement] = React.useState<HTMLElement>(null)
+  const [showActionMenu, setShowActionMenu] = React.useState(false);
+  const [forceShowActionMenu, setForceShowActionMenu] = React.useState(false);
+  const [chatMessageElement, setChatMessageElement] = React.useState<HTMLElement>(null);
 
-  const handleBlur = e => !e.currentTarget.contains(e.relatedTarget) && setShowActionMenu(false)
+  const handleBlur = e => !e.currentTarget.contains(e.relatedTarget) && setShowActionMenu(false);
 
   return (
     <Ref innerRef={setChatMessageElement}>
@@ -152,7 +154,7 @@ const TeamsChatMessage: React.FC<ChatMessageProps> = (props: ChatMessageProps) =
         variables={{ showActionMenu }}
       />
     </Ref>
-  )
-}
+  );
+};
 
-export default ChatWithPopover
+export default ChatWithPopover;

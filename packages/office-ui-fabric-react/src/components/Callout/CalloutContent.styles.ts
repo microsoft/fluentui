@@ -4,7 +4,7 @@ import { ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.type
 function getBeakStyle(beakWidth?: number): IRawStyle {
   return {
     height: beakWidth,
-    width: beakWidth
+    width: beakWidth,
   };
 }
 
@@ -13,7 +13,7 @@ const GlobalClassNames = {
   root: 'ms-Callout',
   beak: 'ms-Callout-beak',
   beakCurtain: 'ms-Callout-beakCurtain',
-  calloutMain: 'ms-Callout-main'
+  calloutMain: 'ms-Callout-main',
 };
 
 export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyles => {
@@ -27,8 +27,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
     container: [
       classNames.container,
       {
-        position: 'relative'
-      }
+        position: 'relative',
+      },
     ],
     root: [
       classNames.root,
@@ -42,14 +42,14 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
           [HighContrastSelector]: {
             borderWidth: 1,
             borderStyle: 'solid',
-            borderColor: 'WindowText'
-          }
-        }
+            borderColor: 'WindowText',
+          },
+        },
       },
       focusClear(),
       className,
       !!calloutWidth && { width: calloutWidth },
-      !!calloutMaxWidth && { maxWidth: calloutMaxWidth }
+      !!calloutMaxWidth && { maxWidth: calloutMaxWidth },
     ],
     beak: [
       classNames.beak,
@@ -59,12 +59,12 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         boxShadow: 'inherit',
         border: 'inherit',
         boxSizing: 'border-box',
-        transform: 'rotate(45deg)'
+        transform: 'rotate(45deg)',
       },
       getBeakStyle(beakWidth),
       backgroundColor && {
-        backgroundColor: backgroundColor
-      }
+        backgroundColor: backgroundColor,
+      },
     ],
     beakCurtain: [
       classNames.beakCurtain,
@@ -75,8 +75,8 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         bottom: 0,
         left: 0,
         backgroundColor: semanticColors.menuBackground,
-        borderRadius: effects.roundedCorner2
-      }
+        borderRadius: effects.roundedCorner2,
+      },
     ],
     calloutMain: [
       classNames.calloutMain,
@@ -85,14 +85,14 @@ export const getStyles = (props: ICalloutContentStyleProps): ICalloutContentStyl
         overflowX: 'hidden',
         overflowY: 'auto',
         position: 'relative',
-        borderRadius: effects.roundedCorner2
+        borderRadius: effects.roundedCorner2,
       },
       overflowYHidden && {
-        overflowY: 'hidden'
+        overflowY: 'hidden',
       },
       backgroundColor && {
-        backgroundColor: backgroundColor
-      }
-    ]
+        backgroundColor: backgroundColor,
+      },
+    ],
   };
 };

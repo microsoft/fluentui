@@ -1,7 +1,7 @@
-import * as _ from 'lodash'
-import * as React from 'react'
-import { Crosshair } from 'react-vis'
-import { PerfSample } from './PerfDataContext'
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Crosshair } from 'react-vis';
+import { PerfSample } from './PerfDataContext';
 
 const PerfChartTooltip = ({ x, data, ...rest }: { x: number; data: PerfSample }) => {
   return (
@@ -35,7 +35,7 @@ const PerfChartTooltip = ({ x, data, ...rest }: { x: number; data: PerfSample })
         </table>
       </div>
     </Crosshair>
-  )
-}
+  );
+};
 
-export default PerfChartTooltip
+export default PerfChartTooltip;

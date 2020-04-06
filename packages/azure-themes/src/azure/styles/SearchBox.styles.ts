@@ -7,16 +7,16 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
   return {
     root: [
       hasFocus && {
-        borderColor: semanticColors.focusBorder
+        borderColor: semanticColors.focusBorder,
       },
       !hasFocus && {
         borderColor: semanticColors.inputBorder,
         selectors: {
           '&:hover': {
-            borderColor: semanticColors.inputBorderHovered
-          }
-        }
-      }
+            borderColor: semanticColors.inputBorderHovered,
+          },
+        },
+      },
     ],
     clearButton: {
       selectors: {
@@ -24,20 +24,20 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
           color: semanticColors.inputText,
           selectors: {
             ':hover': {
-              color: semanticColors.inputText
+              color: semanticColors.inputText,
             },
             ':active': {
-              color: semanticColors.inputText
-            }
-          }
-        }
-      }
+              color: semanticColors.inputText,
+            },
+          },
+        },
+      },
     },
     field: {
-      color: semanticColors.inputText
+      color: semanticColors.inputText,
     },
     icon: {
-      color: semanticColors.focusBorder
-    }
+      color: semanticColors.focusBorder,
+    },
   };
 };

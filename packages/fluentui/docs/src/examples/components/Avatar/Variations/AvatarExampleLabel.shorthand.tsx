@@ -1,8 +1,6 @@
-import * as React from 'react'
-import { Avatar } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar } from '@fluentui/react-northstar';
 
-const AvatarExampleLabelShorthand = () => (
-  <Avatar name="John Doe" label={{ variables: { backgroundColor: 'pink' } }} />
-)
+const AvatarExampleLabelShorthand = () => <Avatar name="John Doe" label={{ variables: { backgroundColor: 'pink' } }} />;
 
-export default AvatarExampleLabelShorthand
+export default AvatarExampleLabelShorthand;

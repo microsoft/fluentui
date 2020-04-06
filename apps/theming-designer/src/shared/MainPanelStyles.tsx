@@ -6,5 +6,5 @@ export const MainPanelInnerContent = mergeStyles({
   marginRight: 'auto',
   marginLeft: 'auto',
   padding: '32px',
-  width: MainPanelWidth
+  width: MainPanelWidth,
 });

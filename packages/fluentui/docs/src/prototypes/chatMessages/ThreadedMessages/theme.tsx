@@ -1,5 +1,5 @@
-import { ThemeInput, ChatItem, Input, Icon, Button, pxToRem } from '@fluentui/react'
-import classNames from './classNames'
+import { ThemeInput, ChatItem, Input, Icon, Button, pxToRem } from '@fluentui/react-northstar';
+import classNames from './classNames';
 
 const customizedTheme: ThemeInput = {
   componentStyles: {
@@ -127,6 +127,6 @@ const customizedTheme: ThemeInput = {
       }),
     },
   },
-}
+};
 
-export default customizedTheme
+export default customizedTheme;

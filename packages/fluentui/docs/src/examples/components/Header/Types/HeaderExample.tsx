@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Header } from '@fluentui/react'
+import * as React from 'react';
+import { Header } from '@fluentui/react-northstar';
 
 const HeaderExample = () => (
   <div>
@@ -10,6 +10,6 @@ const HeaderExample = () => (
     <Header as="h5">Fifth Header</Header>
     <Header as="h6">Sixth Header</Header>
   </div>
-)
+);
 
-export default HeaderExample
+export default HeaderExample;

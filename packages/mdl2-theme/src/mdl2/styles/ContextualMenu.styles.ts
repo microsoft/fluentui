@@ -9,9 +9,9 @@ const iconStyles = {
   selectors: {
     [MinimumScreenSelector]: {
       fontSize: 18,
-      width: 18
-    }
-  }
+      width: 18,
+    },
+  },
 };
 
 export const ContextualMenuStyles = {
@@ -19,26 +19,26 @@ export const ContextualMenuStyles = {
     menuItem: {
       root: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
       },
       splitPrimary: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
       },
       splitMenu: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
         lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-        width: CONTEXTUAL_MENU_ITEM_HEIGHT // to match the numbers from the default styles
+        width: CONTEXTUAL_MENU_ITEM_HEIGHT, // to match the numbers from the default styles
       },
       icon: { ...iconStyles },
       checkmarkIcon: { ...iconStyles },
       splitContainer: {
-        height: CONTEXTUAL_MENU_ITEM_HEIGHT
+        height: CONTEXTUAL_MENU_ITEM_HEIGHT,
       },
       subMenuIcon: {
         height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
-      }
-    }
-  }
+        lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
+      },
+    },
+  },
 };

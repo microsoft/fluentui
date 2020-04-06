@@ -50,7 +50,7 @@ describe('memoizeFunction', () => {
     let _timesCalled = 0;
     let combine = memoizeFunction(
       // tslint:disable-next-line:no-any
-      (obj1: any, obj2: any) => (obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled
+      (obj1: any, obj2: any) => (obj1 ? obj1.val : '') + (obj2 ? obj2.val : '') + ++_timesCalled,
     );
     let objA = { val: 'a' };
     let objB = { val: 'b' };

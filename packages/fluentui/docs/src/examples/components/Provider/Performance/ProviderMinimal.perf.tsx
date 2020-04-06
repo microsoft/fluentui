@@ -1,9 +1,9 @@
-import { Provider } from '@fluentui/react'
-import * as React from 'react'
+import { Provider } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const ProviderMinimalPerf = () => <Provider />
+const ProviderMinimalPerf = () => <Provider />;
 
-ProviderMinimalPerf.iterations = 100
-ProviderMinimalPerf.filename = 'ProviderMinimal.perf.tsx'
+ProviderMinimalPerf.iterations = 100;
+ProviderMinimalPerf.filename = 'ProviderMinimal.perf.tsx';
 
-export default ProviderMinimalPerf
+export default ProviderMinimalPerf;

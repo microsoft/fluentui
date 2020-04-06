@@ -10,7 +10,7 @@ import {
   IExampleItem,
   createGroup,
   createMediaItems,
-  getTileCells
+  getTileCells,
 } from '@uifabric/experiments/lib/components/TilesList/examples/ExampleHelpers';
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
 import { lorem } from '@uifabric/example-data';
@@ -57,7 +57,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
 
     this._selection = new Selection({
       getKey: (item: IExampleItem) => item.key,
-      onSelectionChanged: this._onSelectionChange
+      onSelectionChanged: this._onSelectionChange,
     });
 
     this._selection.setItems(ITEMS);
@@ -67,8 +67,8 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
       nameplateOnlyOnHover: false,
       cells: getTileCells(GROUPS, {
         onRenderCell: this._onRenderMediaCell,
-        onRenderHeader: this._onRenderHeader
-      })
+        onRenderHeader: this._onRenderHeader,
+      }),
     };
   }
 
@@ -108,14 +108,14 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
       nameplateOnlyOnHover: checked,
       cells: getTileCells(GROUPS, {
         onRenderCell: this._onRenderMediaCell,
-        onRenderHeader: this._onRenderHeader
-      })
+        onRenderHeader: this._onRenderHeader,
+      }),
     });
   };
 
   private _onSelectionChange = (): void => {
     this.setState({
-      isModalSelection: this._selection.isModal()
+      isModalSelection: this._selection.isModal(),
     });
   };
 
@@ -174,7 +174,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
           className={TilesListExampleStyles.tileImage}
           src={`//placehold.it/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`}
         />
-      )
+      ),
     });
   };
 

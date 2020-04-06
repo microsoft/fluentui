@@ -1,30 +1,45 @@
 import { ILegendsStyles, ILegendStyleProps } from './Legends.types';
-import { HighContrastSelector } from 'office-ui-fabric-react/lib/Styling';
+import { HighContrastSelector, getFocusStyle, IGetFocusStylesOptions } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
   const { className, theme } = props;
   const { palette, fonts } = theme!;
+  const options: IGetFocusStylesOptions = {
+    inset: undefined,
+    position: undefined,
+    highContrastStyle: {
+      outlineColor: theme!.semanticColors.focusBorder,
+    },
+    borderColor: 'transparent',
+    outlineColor: undefined,
+  };
   return {
     root: [
       {
         whiteSpace: 'nowrap',
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
       },
-      className
+      className,
     ],
-    legend: {
-      display: 'flex',
-      alignItems: 'center',
-      cursor: 'pointer',
-      margin: props.overflow ? '16px 0px 16px 16px' : ''
-    },
+    legend: [
+      getFocusStyle(theme!, options),
+      {
+        display: 'flex',
+        alignItems: 'center',
+        cursor: 'pointer',
+        margin: props.overflow ? '16px 5px 16px 16px' : '',
+        border: 'none',
+        padding: '0px',
+        background: 'none',
+      },
+    ],
     rect: {
       selectors: {
         [HighContrastSelector]: {
           backgroundColor: props.colorOnSelectedState,
-          opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
-        }
+          opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
+        },
       },
       width: '12px',
       height: '12px',
@@ -32,7 +47,7 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       marginRight: '8px',
       border: '1px solid',
       borderColor: props.borderColor ? props.borderColor : palette.black,
-      opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
     },
     triangle: {
       width: '0',
@@ -41,14 +56,14 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       borderRight: '6px solid transparent',
       borderTop: '10.4px solid',
       borderTopColor: props.colorOnSelectedState,
-      marginRight: '8px'
+      marginRight: '8px',
     },
     text: {
       ...fonts.small,
       lineHeight: '16px',
       marginRight: '16px',
       color: palette.black,
-      opacity: props.colorOnSelectedState === palette.white ? '0.6' : ''
+      opacity: props.colorOnSelectedState === palette.white ? '0.6' : '',
     },
     hoverChange: {
       width: '12px',
@@ -56,13 +71,18 @@ export const getStyles = (props: ILegendStyleProps): ILegendsStyles => {
       backgroundColor: 'white',
       marginRight: '8px',
       border: '1px solid',
-      borderColor: props.borderColor ? props.borderColor : palette.black
+      borderColor: props.borderColor ? props.borderColor : palette.black,
     },
     overflowIndicationTextStyle: {
       cursor: 'pointer',
       color: palette.themePrimary,
       ...fonts.small,
-      lineHeight: '14px'
-    }
+      lineHeight: '14px',
+    },
+    subComponentStyles: {
+      hoverCardStyles: {
+        host: [getFocusStyle(theme!, options)],
+      },
+    },
   };
 };

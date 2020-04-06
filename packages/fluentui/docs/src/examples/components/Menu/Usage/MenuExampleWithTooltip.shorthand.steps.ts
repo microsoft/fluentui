@@ -1,9 +1,9 @@
-import { Menu } from '@fluentui/react'
+import { Menu } from '@fluentui/react-northstar';
 
 const selectors = {
   menu: `.${Menu.className}`,
   item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`,
-}
+};
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -16,6 +16,6 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.item(1), keys.rightArrow)
         .snapshot('Navigates to next item (shows tooltip)'),
   ],
-}
+};
 
-export default config
+export default config;

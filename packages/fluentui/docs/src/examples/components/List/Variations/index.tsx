@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
-import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
+import NonPublicSection from '../../../../components/ComponentDoc/NonPublicSection';
 
 const Variations = () => (
   <>
@@ -22,6 +22,6 @@ const Variations = () => (
       <ComponentExample examplePath="components/List/Variations/ListExampleFixedTruncate" />
     </NonPublicSection>
   </>
-)
+);
 
-export default Variations
+export default Variations;

@@ -8,7 +8,7 @@ const VERTICAL_PADDING = 4;
 const GlobalClassNames = {
   root: 'ms-DocumentCardActions',
   action: 'ms-DocumentCardActions-action',
-  views: 'ms-DocumentCardActions-views'
+  views: 'ms-DocumentCardActions-views',
 };
 
 export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardActionsStyles => {
@@ -23,9 +23,9 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
       {
         height: `${ACTION_SIZE}px`,
         padding: `${VERTICAL_PADDING}px ${HORIZONTAL_PADDING}px`,
-        position: 'relative'
+        position: 'relative',
       },
-      className
+      className,
     ],
     action: [
       classNames.action,
@@ -39,26 +39,26 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
           '.ms-Button': {
             fontSize: fonts.mediumPlus.fontSize,
             height: ACTION_SIZE,
-            width: ACTION_SIZE
+            width: ACTION_SIZE,
           },
           '.ms-Button:hover .ms-Button-icon': {
             color: theme.semanticColors.buttonText,
-            cursor: 'pointer'
-          }
-        }
-      }
+            cursor: 'pointer',
+          },
+        },
+      },
     ],
     views: [
       classNames.views,
       {
         textAlign: 'right',
-        lineHeight: ACTION_SIZE
-      }
+        lineHeight: ACTION_SIZE,
+      },
     ],
     viewsIcon: {
       marginRight: '8px',
       fontSize: fonts.medium.fontSize,
-      verticalAlign: 'top'
-    }
+      verticalAlign: 'top',
+    },
   };
 };

@@ -1,20 +1,20 @@
-import * as React from 'react'
-import { Button, Header, Portal } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Header, Portal } from '@fluentui/react-northstar';
 
 class PortalExampleFocusTrapped extends React.Component {
-  state = { open: false }
+  state = { open: false };
 
   openPortal = () => {
-    this.setState({ open: true })
-  }
+    this.setState({ open: true });
+  };
 
   closePortal = () => {
-    this.setState({ open: false })
-  }
+    this.setState({ open: false });
+  };
 
   render() {
-    const { open } = this.state
-    const btnContent = open ? 'Close Portal' : 'Open Portal'
+    const { open } = this.state;
+    const btnContent = open ? 'Close Portal' : 'Open Portal';
 
     return (
       <div>
@@ -60,9 +60,7 @@ class PortalExampleFocusTrapped extends React.Component {
               }}
             >
               <Header>This is a portal with focus trap!</Header>
-              <p tabIndex={0}>
-                Portal doesn't close on outside click. See passed focus trap props.
-              </p>
+              <p tabIndex={0}>Portal doesn't close on outside click. See passed focus trap props.</p>
               <p tabIndex={0}>To close, simply click the close button</p>
               <Button content="Do nothing" />
               <Button content="Close popup" onClick={this.closePortal} />
@@ -70,8 +68,8 @@ class PortalExampleFocusTrapped extends React.Component {
           }
         />
       </div>
-    )
+    );
   }
 }
 
-export default PortalExampleFocusTrapped
+export default PortalExampleFocusTrapped;

@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import buttonBehavior, { ButtonBehaviorProps } from './buttonBehavior'
+import { Accessibility } from '../../types';
+import buttonBehavior, { ButtonBehaviorProps } from './buttonBehavior';
 
 /**
  * @specification
@@ -11,18 +11,18 @@ import buttonBehavior, { ButtonBehaviorProps } from './buttonBehavior'
  */
 
 const toggleButtonBehavior: Accessibility<ToggleButtonBehaviorProps> = props => {
-  const behaviorData = buttonBehavior(props)
+  const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
     'aria-pressed': !!props['active'],
-  }
+  };
 
-  return behaviorData
-}
+  return behaviorData;
+};
 
-export default toggleButtonBehavior
+export default toggleButtonBehavior;
 
 type ToggleButtonBehaviorProps = ButtonBehaviorProps & {
   /** Indicates if a button is in pressed state. */
-  active: boolean
-}
+  active: boolean;
+};

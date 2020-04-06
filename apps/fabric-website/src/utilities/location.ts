@@ -8,4 +8,5 @@ export const hasUHF: boolean =
 /**
  * Determines if the site is running locally.
  */
-export const isLocal: boolean = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
+export const isLocal: boolean =
+  window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;

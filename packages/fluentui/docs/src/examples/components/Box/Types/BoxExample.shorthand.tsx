@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Box } from '@fluentui/react'
+import * as React from 'react';
+import { Box } from '@fluentui/react-northstar';
 
 const BoxShorthandExample = () => (
   <Box
@@ -12,6 +12,6 @@ const BoxShorthandExample = () => (
       ':hover': { color: 'red' },
     }}
   />
-)
+);
 
-export default BoxShorthandExample
+export default BoxShorthandExample;

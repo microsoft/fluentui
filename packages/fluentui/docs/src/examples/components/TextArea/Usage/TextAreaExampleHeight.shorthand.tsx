@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { useRangeKnob } from '@fluentui/docs-components'
-import { TextArea } from '@fluentui/react'
+import * as React from 'react';
+import { useRangeKnob } from '@fluentui/docs-components';
+import { TextArea } from '@fluentui/react-northstar';
 
 const TextAreaExampleHeight = () => {
   const [height] = useRangeKnob({
@@ -9,9 +9,9 @@ const TextAreaExampleHeight = () => {
     min: '20px',
     max: '300px',
     step: 10,
-  })
+  });
 
-  return <TextArea placeholder="Enter message here..." variables={{ height }} />
-}
+  return <TextArea placeholder="Enter message here..." variables={{ height }} />;
+};
 
-export default TextAreaExampleHeight
+export default TextAreaExampleHeight;

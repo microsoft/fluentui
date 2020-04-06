@@ -76,7 +76,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -165,7 +164,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Like"
             role="presentation"
@@ -208,7 +206,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -297,7 +294,6 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Dislike"
             role="presentation"
@@ -392,7 +388,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -481,7 +476,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Like"
             role="presentation"
@@ -524,7 +518,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -613,7 +606,6 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Dislike"
             role="presentation"

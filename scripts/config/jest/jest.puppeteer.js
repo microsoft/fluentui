@@ -8,17 +8,17 @@ module.exports = {
   testEnvironment: 'jest-environment-puppeteer',
   setupFilesAfterEnv: ['expect-puppeteer'],
   transform: {
-    ...tsjPreset.transform
+    ...tsjPreset.transform,
   },
   testRegex: '(/__tests__/.*|\\.(scenarios|e2e|perf))\\.(ts|tsx)$',
   globals: {
     'ts-jest': {
       isolatedModules: true,
       tsConfig: resolveCwd('tsconfig.json'),
-      packageJson: resolveCwd('package.json')
-    }
+      packageJson: resolveCwd('package.json'),
+    },
   },
   ...(process.env.JEST_E2E_PROFILE && {
-    reporters: [path.join(__dirname, './flamegrillReporter.js')]
-  })
+    reporters: [path.join(__dirname, './flamegrillReporter.js')],
+  }),
 };

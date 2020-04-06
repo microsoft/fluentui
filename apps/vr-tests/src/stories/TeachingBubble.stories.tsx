@@ -34,7 +34,7 @@ storiesOf('TeachingBubble', module)
         </TeachingBubble>
       );
     },
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('SmallHeadline', () => {
     return (
@@ -42,7 +42,7 @@ storiesOf('TeachingBubble', module)
         hasSmallHeadline={true}
         hasCloseButton={true}
         primaryButtonProps={{
-          children: 'Got it'
+          children: 'Got it',
         }}
         headline="Discover what’s trending around you"
       >

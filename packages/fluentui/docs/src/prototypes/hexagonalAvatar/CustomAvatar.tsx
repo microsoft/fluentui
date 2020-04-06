@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { Avatar, AvatarProps } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, AvatarProps } from '@fluentui/react-northstar';
 
 const CustomAvatar = (props: AvatarProps & { hexagonal?: boolean }) => {
-  const { hexagonal, ...rest } = props
+  const { hexagonal, ...rest } = props;
 
   if (hexagonal) {
     return (
@@ -10,7 +10,7 @@ const CustomAvatar = (props: AvatarProps & { hexagonal?: boolean }) => {
         {...rest}
         image={render =>
           render(rest.image, (Component, props) => {
-            const { src, ...restImageProps } = props
+            const { src, ...restImageProps } = props;
             return (
               <svg
                 viewBox="0 0 34 34"
@@ -20,12 +20,7 @@ const CustomAvatar = (props: AvatarProps & { hexagonal?: boolean }) => {
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
               >
-                <rect
-                  fill="transparent"
-                  clipPath="url(#bot-hexagon-clip-path)"
-                  width="34px"
-                  height="34px"
-                />
+                <rect fill="transparent" clipPath="url(#bot-hexagon-clip-path)" width="34px" height="34px" />
                 <Component
                   as="image"
                   clipPath="url(#bot-hexagon-clip-path)"
@@ -35,13 +30,13 @@ const CustomAvatar = (props: AvatarProps & { hexagonal?: boolean }) => {
                   {...restImageProps}
                 />
               </svg>
-            )
+            );
           })
         }
       />
-    )
+    );
   }
-  return <Avatar {...rest} />
-}
+  return <Avatar {...rest} />;
+};
 
-export default CustomAvatar
+export default CustomAvatar;

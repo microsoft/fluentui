@@ -96,9 +96,9 @@ var webpackConfig = {
       config: './tslint.json',
       project: './tsconfig.json',
       format: 'stylish',
-      rulesDirectory: './node_modules/tslint-microsoft-contrib'
-    })
-  ]
+      rulesDirectory: './node_modules/tslint-microsoft-contrib',
+    }),
+  ],
 };
 ```
 
@@ -118,12 +118,12 @@ var webpackConfig = {
               emitErrors: true,
               tsConfigFile: 'tsconfig.json',
               configFile: './tslint.json',
-              rulesDirectory: './node_modules/tslint-microsoft-contrib'
-            }
-          }
-        ]
-      }
-    ]
-  }
+              rulesDirectory: './node_modules/tslint-microsoft-contrib',
+            },
+          },
+        ],
+      },
+    ],
+  },
 };
 ```

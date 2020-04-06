@@ -89,7 +89,7 @@ export interface IGridCellProps<T> {
     disabled: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined
+    isSplit: boolean | undefined,
   ) => IButtonClassNames;
 
   /**

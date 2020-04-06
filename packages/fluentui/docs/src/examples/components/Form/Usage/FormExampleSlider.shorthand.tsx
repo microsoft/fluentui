@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Form, Slider, Button } from '@fluentui/react'
+import * as React from 'react';
+import { Form, Slider, Button } from '@fluentui/react-northstar';
 
 const FormExampleFormExampleSliderShorthand = () => (
   <Form
@@ -9,6 +9,6 @@ const FormExampleFormExampleSliderShorthand = () => (
       { control: { as: Button, content: 'Submit' }, key: 'submit' },
     ]}
   />
-)
+);
 
-export default FormExampleFormExampleSliderShorthand
+export default FormExampleFormExampleSliderShorthand;

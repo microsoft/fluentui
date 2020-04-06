@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { HierarchicalTree, HierarchicalTreeItem, HierarchicalTreeTitle } from '@fluentui/react'
+import * as React from 'react';
+import { HierarchicalTree, HierarchicalTreeItem, HierarchicalTreeTitle } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -68,14 +68,14 @@ const items = [
       },
     ],
   },
-]
+];
 
 export const selectors = {
   treeClass: HierarchicalTree.className,
   treeItemClass: HierarchicalTreeItem.className,
   treeTitleClass: HierarchicalTreeTitle.className,
-}
+};
 
-const TreeExample = () => <HierarchicalTree items={items} />
+const TreeExample = () => <HierarchicalTree items={items} />;
 
-export default TreeExample
+export default TreeExample;

@@ -27,7 +27,7 @@ const GlobalClassNames = {
   secondaryText: 'ms-Persona-secondaryText',
   tertiaryText: 'ms-Persona-tertiaryText',
   optionalText: 'ms-Persona-optionalText',
-  textContent: 'ms-Persona-textContent'
+  textContent: 'ms-Persona-textContent',
 };
 
 export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
@@ -45,7 +45,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const sharedTextStyles: IStyle = {
     color: semanticColors.bodySubtext,
     fontWeight: FontWeights.regular,
-    fontSize: fonts.small.fontSize
+    fontSize: fonts.small.fontSize,
   };
 
   return {
@@ -63,17 +63,17 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
 
         selectors: {
           '.contextualHost': {
-            display: 'none'
-          }
-        }
+            display: 'none',
+          },
+        },
       },
 
       size.isSize8 && [
         classNames.size8,
         {
           height: personaSize.size8,
-          minWidth: personaSize.size8
-        }
+          minWidth: personaSize.size8,
+        },
       ],
 
       // TODO: Deprecated size and needs to be removed in a future major release.
@@ -81,8 +81,8 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         classNames.size10,
         {
           height: personaSize.size10,
-          minWidth: personaSize.size10
-        }
+          minWidth: personaSize.size10,
+        },
       ],
 
       // TODO: Deprecated size and needs to be removed in a future major release.
@@ -90,21 +90,21 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         classNames.size16,
         {
           height: personaSize.size16,
-          minWidth: personaSize.size16
-        }
+          minWidth: personaSize.size16,
+        },
       ],
 
       size.isSize24 && [
         classNames.size24,
         {
           height: personaSize.size24,
-          minWidth: personaSize.size24
-        }
+          minWidth: personaSize.size24,
+        },
       ],
 
       size.isSize24 &&
         showSecondaryText && {
-          height: '36px'
+          height: '36px',
         },
 
       // TODO: Deprecated size and needs to be removed in a future major release.
@@ -112,29 +112,29 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         classNames.size28,
         {
           height: personaSize.size28,
-          minWidth: personaSize.size28
-        }
+          minWidth: personaSize.size28,
+        },
       ],
 
       size.isSize28 &&
         showSecondaryText && {
-          height: '32px'
+          height: '32px',
         },
 
       size.isSize32 && [
         classNames.size32,
         {
           height: personaSize.size32,
-          minWidth: personaSize.size32
-        }
+          minWidth: personaSize.size32,
+        },
       ],
 
       size.isSize40 && [
         classNames.size40,
         {
           height: personaSize.size40,
-          minWidth: personaSize.size40
-        }
+          minWidth: personaSize.size40,
+        },
       ],
 
       size.isSize48 && classNames.size48,
@@ -143,32 +143,32 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         classNames.size56,
         {
           height: personaSize.size56,
-          minWidth: personaSize.size56
-        }
+          minWidth: personaSize.size56,
+        },
       ],
 
       size.isSize72 && [
         classNames.size72,
         {
           height: personaSize.size72,
-          minWidth: personaSize.size72
-        }
+          minWidth: personaSize.size72,
+        },
       ],
 
       size.isSize100 && [
         classNames.size100,
         {
           height: personaSize.size100,
-          minWidth: personaSize.size100
-        }
+          minWidth: personaSize.size100,
+        },
       ],
 
       size.isSize120 && [
         classNames.size120,
         {
           height: personaSize.size120,
-          minWidth: personaSize.size120
-        }
+          minWidth: personaSize.size120,
+        },
       ],
 
       /**
@@ -180,7 +180,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       presence.isBusy && classNames.busy,
       presence.isDoNotDisturb && classNames.doNotDisturb,
       presence.isOffline && classNames.offline,
-      className
+      className,
     ],
 
     details: [
@@ -192,20 +192,20 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         textAlign: 'left',
         display: 'flex',
         flexDirection: 'column',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
       },
 
       (size.isSize8 || size.isSize10) && {
-        paddingLeft: 17 // increased padding because we don't render a coin at this size
+        paddingLeft: 17, // increased padding because we don't render a coin at this size
       },
 
       (size.isSize24 || size.isSize28 || size.isSize32) && {
-        padding: '0 8px'
+        padding: '0 8px',
       },
 
       (size.isSize40 || size.isSize48) && {
-        padding: '0 12px'
-      }
+        padding: '0 12px',
+      },
     ],
 
     primaryText: [
@@ -217,39 +217,39 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         fontSize: fonts.medium.fontSize,
         selectors: {
           ':hover': {
-            color: semanticColors.inputTextHovered
-          }
-        }
+            color: semanticColors.inputTextHovered,
+          },
+        },
       },
 
       showSecondaryText && {
         height: showSecondaryTextDefaultHeight,
         lineHeight: showSecondaryTextDefaultHeight,
-        overflowX: 'hidden'
+        overflowX: 'hidden',
       },
 
       (size.isSize8 || size.isSize10) && {
         fontSize: fonts.small.fontSize,
-        lineHeight: personaSize.size8
+        lineHeight: personaSize.size8,
       },
 
       size.isSize16 && {
-        lineHeight: personaSize.size28
+        lineHeight: personaSize.size28,
       },
 
       (size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40 || size.isSize48) &&
         showSecondaryText && {
-          height: 18
+          height: 18,
         },
 
       (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
-        fontSize: fonts.xLarge.fontSize
+        fontSize: fonts.xLarge.fontSize,
       },
 
       (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
-          height: 22
-        }
+          height: 22,
+        },
     ],
 
     secondaryText: [
@@ -258,29 +258,29 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
 
       (size.isSize8 || size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && {
-        display: 'none'
+        display: 'none',
       },
 
       showSecondaryText && {
         display: 'block',
         height: showSecondaryTextDefaultHeight,
         lineHeight: showSecondaryTextDefaultHeight,
-        overflowX: 'hidden'
+        overflowX: 'hidden',
       },
 
       size.isSize24 &&
         showSecondaryText && {
-          height: 18
+          height: 18,
         },
 
       (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) && {
-        fontSize: fonts.medium.fontSize
+        fontSize: fonts.medium.fontSize,
       },
 
       (size.isSize56 || size.isSize72 || size.isSize100 || size.isSize120) &&
         showSecondaryText && {
-          height: 18
-        }
+          height: 18,
+        },
     ],
 
     tertiaryText: [
@@ -289,12 +289,12 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
       {
         display: 'none',
-        fontSize: fonts.medium.fontSize
+        fontSize: fonts.medium.fontSize,
       },
 
       (size.isSize72 || size.isSize100 || size.isSize120) && {
-        display: 'block'
-      }
+        display: 'block',
+      },
     ],
 
     optionalText: [
@@ -303,14 +303,14 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
       {
         display: 'none',
-        fontSize: fonts.medium.fontSize
+        fontSize: fonts.medium.fontSize,
       },
 
       (size.isSize100 || size.isSize120) && {
-        display: 'block'
-      }
+        display: 'block',
+      },
     ],
 
-    textContent: [classNames.textContent, noWrap]
+    textContent: [classNames.textContent, noWrap],
   };
 };

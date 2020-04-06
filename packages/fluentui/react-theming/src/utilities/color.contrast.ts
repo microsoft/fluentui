@@ -130,10 +130,7 @@ function getContrastingLuminanceRange(color: IRGB, desiredRatio: number): ISugge
 function contrastAdjust(color: IRGB, suggestedRelLuminance: ISuggestionRange): IRGB {
   // it is possible that the current color meets the suggested relative luminance
   let currRelLuminance: number = relativeLuminance(color.r, color.g, color.b);
-  if (
-    currRelLuminance >= suggestedRelLuminance.min &&
-    currRelLuminance <= suggestedRelLuminance.max
-  ) {
+  if (currRelLuminance >= suggestedRelLuminance.min && currRelLuminance <= suggestedRelLuminance.max) {
     return { r: color.r, g: color.g, b: color.b }; // make a copy to be safe
   }
 

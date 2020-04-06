@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react-northstar';
 
 const inputItems = [
   'Bruce Wayne',
@@ -11,7 +11,7 @@ const inputItems = [
   'Bruce Banner',
   'Peter Parker',
   'Selina Kyle',
-]
+];
 
 const DropdownExample = () => (
   <Dropdown
@@ -20,6 +20,6 @@ const DropdownExample = () => (
     checkable
     getA11ySelectionMessage={{ onAdd: item => `${item} has been selected.` }}
   />
-)
+);
 
-export default DropdownExample
+export default DropdownExample;

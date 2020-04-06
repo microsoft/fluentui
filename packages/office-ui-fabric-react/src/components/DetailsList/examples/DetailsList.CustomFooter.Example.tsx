@@ -7,7 +7,7 @@ import {
   DetailsRow,
   SelectionMode,
   DetailsRowCheck,
-  IDetailsRowBaseProps
+  IDetailsRowBaseProps,
 } from 'office-ui-fabric-react/lib/DetailsList';
 
 export interface IDetailsListCustomFooterExampleItem {
@@ -28,13 +28,13 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
       this._items.push({
         key: i,
         name: 'Item ' + i,
-        value: i
+        value: i,
       });
     }
 
     this._columns = [
       { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
     ];
   }
 

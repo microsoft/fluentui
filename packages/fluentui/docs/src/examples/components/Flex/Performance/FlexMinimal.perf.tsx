@@ -1,9 +1,9 @@
-import { Flex } from '@fluentui/react'
-import * as React from 'react'
+import { Flex } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const FlexMinimalPerf = () => <Flex />
+const FlexMinimalPerf = () => <Flex />;
 
-FlexMinimalPerf.iterations = 5000
-FlexMinimalPerf.filename = 'FlexMinimal.perf.tsx'
+FlexMinimalPerf.iterations = 5000;
+FlexMinimalPerf.filename = 'FlexMinimal.perf.tsx';
 
-export default FlexMinimalPerf
+export default FlexMinimalPerf;

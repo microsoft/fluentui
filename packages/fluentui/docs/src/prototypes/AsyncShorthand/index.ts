@@ -1,1 +1,1 @@
-export { default } from './AsyncShorthand'
+export { default } from './AsyncShorthand';

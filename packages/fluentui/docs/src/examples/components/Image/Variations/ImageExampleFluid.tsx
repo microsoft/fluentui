@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Image, Layout } from '@fluentui/react'
+import * as React from 'react';
+import { Image, Layout } from '@fluentui/react-northstar';
 
 const ImageExampleFluent = () => (
   <div>
@@ -19,6 +19,6 @@ const ImageExampleFluent = () => (
       renderMainArea={() => <Image fluid src="public/images/wireframe/square-image.png" />}
     />
   </div>
-)
+);
 
-export default ImageExampleFluent
+export default ImageExampleFluent;

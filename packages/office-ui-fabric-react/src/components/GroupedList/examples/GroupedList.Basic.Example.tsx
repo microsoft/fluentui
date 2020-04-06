@@ -31,8 +31,8 @@ export class GroupedListBasicExample extends React.Component<{}, IGroupedListExa
           key: key,
           name: key,
           fieldName: key,
-          minWidth: 300
-        })
+          minWidth: 300,
+        }),
       );
     this._groups = createGroups(groupCount, groupDepth, 0, groupCount);
 
@@ -40,7 +40,7 @@ export class GroupedListBasicExample extends React.Component<{}, IGroupedListExa
     this._selection.setItems(this._items);
 
     this.state = {
-      isCompactMode: false
+      isCompactMode: false,
     };
   }
 

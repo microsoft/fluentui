@@ -95,7 +95,9 @@ async function run() {
     .trim();
 
   if (!process.argv.includes('-y')) {
-    console.log('WARNING: This command will PERMANENTLY DELETE all untracked files (such as build output and node_modules).');
+    console.log(
+      'WARNING: This command will PERMANENTLY DELETE all untracked files (such as build output and node_modules).',
+    );
     if (gitStatus) {
       console.log('It will also revert uncommitted changes to the following files:');
       const lines = gitStatus.split(/\r?\n/g).map(line => '  ' + line);
@@ -109,6 +111,18 @@ async function run() {
     if (answer.toLowerCase()[0] !== 'y') {
       return;
     }
+  }
+
+  // do these before deleting node_nodules
+  console.log('\nClearing Jest cache...');
+  await spawn('npx', ['jest', '--clearCache']);
+  try {
+    console.log('\nAttempting to clear gulp-cache...');
+    const cache = require('gulp-cache');
+    cache.clearAll();
+    console.log('...success!');
+  } catch (err) {
+    console.log('Clearing gulp-cache failed, likely due it not being installed.');
   }
 
   const failedPaths = [];

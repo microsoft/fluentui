@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Recipes from './Recipes.mdx'
-import Rtl from './Rtl'
-import Types from './Types'
+import Recipes from './Recipes.mdx';
+import Rtl from './Rtl';
+import Types from './Types';
 
 const FlexExamples = () => (
   <>
@@ -10,6 +10,6 @@ const FlexExamples = () => (
     <Types />
     <Rtl />
   </>
-)
+);
 
-export default FlexExamples
+export default FlexExamples;

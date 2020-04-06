@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import tooltipAsDescriptionBehavior, { TooltipBehaviorProps } from './tooltipAsDescriptionBehavior'
+import { Accessibility } from '../../types';
+import tooltipAsDescriptionBehavior, { TooltipBehaviorProps } from './tooltipAsDescriptionBehavior';
 
 /**
  * @specification
@@ -9,8 +9,8 @@ import tooltipAsDescriptionBehavior, { TooltipBehaviorProps } from './tooltipAsD
  * Triggers 'close' action with 'Escape' on 'trigger'.
  */
 const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
-  const behaviorData = tooltipAsDescriptionBehavior(props)
-  const defaultAriaLabeledBy = getDefaultAriaLabelledBy(props)
+  const behaviorData = tooltipAsDescriptionBehavior(props);
+  const defaultAriaLabeledBy = getDefaultAriaLabelledBy(props);
 
   behaviorData.attributes = {
     trigger: {
@@ -20,12 +20,12 @@ const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
       ...behaviorData.attributes.tooltip,
       id: defaultAriaLabeledBy,
     },
-  }
+  };
 
-  return behaviorData
-}
+  return behaviorData;
+};
 
-export default tooltipAsLabelBehavior
+export default tooltipAsLabelBehavior;
 
 /**
  * Returns the element id of the tooltip, it is used when user does not provide aria-label or
@@ -33,7 +33,7 @@ export default tooltipAsLabelBehavior
  */
 const getDefaultAriaLabelledBy = (props: TooltipBehaviorProps) => {
   if (props['aria-label'] || props['aria-labelledby']) {
-    return undefined
+    return undefined;
   }
-  return props.contentId
-}
+  return props.contentId;
+};

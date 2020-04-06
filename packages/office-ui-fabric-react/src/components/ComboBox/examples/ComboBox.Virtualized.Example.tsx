@@ -10,7 +10,7 @@ export class ComboBoxVirtualizedExample extends React.Component<{}, {}> {
     for (let i = 0; i < 1000; i++) {
       this._options.push({
         key: `${i}`,
-        text: `Option ${i}`
+        text: `Option ${i}`,
       });
     }
     this._options.push({ key: '1000', text: 'Very Very Very Very long option' });

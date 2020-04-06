@@ -1,17 +1,17 @@
-import * as React from 'react'
-import { Ref, ChatMessageProps, Chat, Icon } from '@fluentui/react'
+import * as React from 'react';
+import { Ref, ChatMessageProps, Chat, Icon } from '@fluentui/react-northstar';
 
 interface ControlMessageProps {
-  focused?: boolean
-  icon?: boolean
-  message: ChatMessageProps
+  focused?: boolean;
+  icon?: boolean;
+  message: ChatMessageProps;
 }
 class ControlMessage extends React.Component<ControlMessageProps> {
-  messageRef = React.createRef<HTMLElement>()
+  messageRef = React.createRef<HTMLElement>();
 
   componentDidMount() {
     if (this.props.focused && this.messageRef) {
-      this.messageRef.current.focus()
+      this.messageRef.current.focus();
     }
   }
 
@@ -23,8 +23,8 @@ class ControlMessage extends React.Component<ControlMessageProps> {
           <Chat.Message {...this.props.message} className="ui-chat__message_control" />
         </Ref>
       </>
-    )
+    );
   }
 }
 
-export default ControlMessage
+export default ControlMessage;

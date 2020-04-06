@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Header } from '@fluentui/react'
+import * as React from 'react';
+import { Header } from '@fluentui/react-northstar';
 
 const HeadersExampleShorthand = () => (
   <div>
@@ -10,6 +10,6 @@ const HeadersExampleShorthand = () => (
     <Header as="h5" content="Fifth Header" />
     <Header as="h6" content="Sixth Header" />
   </div>
-)
+);
 
-export default HeadersExampleShorthand
+export default HeadersExampleShorthand;

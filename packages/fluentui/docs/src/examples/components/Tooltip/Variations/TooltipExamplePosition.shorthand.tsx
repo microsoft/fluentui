@@ -1,17 +1,18 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react'
-import { useSelectKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Button, Grid, Tooltip, Alignment, Position } from '@fluentui/react-northstar';
+import { useSelectKnob } from '@fluentui/docs-components';
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon } from '@fluentui/react-icons-northstar';
 
 const TooltipExamplePosition = () => {
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'above-start',
     values: positionAndAlignValues,
-  })
+  });
 
-  const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment]
-  const buttonStyles = { padding: paddings[positionAndAlign], height: '38px', minWidth: '64px' }
+  const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
+  const buttonStyles = { padding: paddings[positionAndAlign], height: '38px', minWidth: '64px' };
 
   return (
     <Grid columns="1" variables={{ padding: '100px 0' }} styles={{ justifyItems: 'center' }}>
@@ -23,10 +24,10 @@ const TooltipExamplePosition = () => {
         content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}
       />
     </Grid>
-  )
-}
+  );
+};
 
-export default TooltipExamplePosition
+export default TooltipExamplePosition;
 
 const positionAndAlignValues = [
   'above-start',
@@ -41,14 +42,14 @@ const positionAndAlignValues = [
   'after-top',
   'after-center',
   'after-bottom',
-]
+];
 
-const icons: Record<Position, string> = {
-  above: 'arrow circle up',
-  below: 'arrow circle down',
-  before: 'arrow circle left',
-  after: 'arrow circle right',
-}
+const icons: Record<Position, React.ReactNode> = {
+  above: <ArrowUpIcon circular bordered />,
+  below: <ArrowDownIcon circular bordered />,
+  before: <ArrowLeftIcon circular bordered />,
+  after: <ArrowRightIcon circular bordered />,
+};
 
 const paddings: Record<string, React.CSSProperties['padding']> = {
   'above-start': '5px 42px 18px 5px',
@@ -63,4 +64,4 @@ const paddings: Record<string, React.CSSProperties['padding']> = {
   'after-top': '5px 5px 18px 42px',
   'after-center': '5px 5px 5px 42px',
   'after-bottom': '18px 5px 5px 42px',
-}
+};

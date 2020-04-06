@@ -1,10 +1,10 @@
-import { Dropdown, Button } from '@fluentui/react'
+import { Dropdown, Button } from '@fluentui/react-northstar';
 
 const selectors = {
   toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,
   item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
   popupTrigger: `.${Button.className}`,
-}
+};
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -18,6 +18,6 @@ const config: ScreenerTestsConfig = {
         .click(selectors.item(2))
         .snapshot('Item should be selected.'),
   ],
-}
+};
 
-export default config
+export default config;

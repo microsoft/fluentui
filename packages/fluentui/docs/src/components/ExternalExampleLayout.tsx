@@ -1,46 +1,43 @@
-import { Provider, themes } from '@fluentui/react'
-import * as _ from 'lodash'
-import * as React from 'react'
-import { match } from 'react-router-dom'
-import SourceRender from 'react-source-render'
-import { KnobProvider } from '@fluentui/docs-components'
+import { Provider, themes } from '@fluentui/react-northstar';
+import * as _ from 'lodash';
+import * as React from 'react';
+import { match } from 'react-router-dom';
+import SourceRender from 'react-source-render';
+import { KnobProvider } from '@fluentui/docs-components';
 
-import { ExampleSource } from '../types'
-import { exampleSourcesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils'
-import PageNotFound from '../views/PageNotFound'
-import { babelConfig, importResolver } from './Playground/renderConfig'
+import { ExampleSource } from '../types';
+import { exampleSourcesContext, exampleKebabNameToSourceFilename, parseExamplePath } from '../utils';
+import PageNotFound from '../views/PageNotFound';
+import { babelConfig, importResolver } from './Playground/renderConfig';
 
-const examplePaths = exampleSourcesContext.keys()
+const examplePaths = exampleSourcesContext.keys();
 
 type ExternalExampleLayoutProps = {
   match: match<{
-    exampleName: string
-    rtl: string
-  }>
-}
+    exampleName: string;
+    rtl: string;
+  }>;
+};
 
 const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
-  const { exampleName, rtl } = props.match.params
+  const { exampleName, rtl } = props.match.params;
 
-  const [error, setError] = React.useState<Error | null>(null)
-  const [renderId, setRenderId] = React.useState<number>(0)
-  const [themeName, setThemeName] = React.useState<string>()
+  const [error, setError] = React.useState<Error | null>(null);
+  const [renderId, setRenderId] = React.useState<number>(0);
+  const [themeName, setThemeName] = React.useState<string>();
 
   React.useLayoutEffect(() => {
-    window.resetExternalLayout = () => setRenderId(prevNumber => prevNumber + 1)
-    window.switchTheme = setThemeName
-  }, [])
+    window.resetExternalLayout = () => setRenderId(prevNumber => prevNumber + 1);
+    window.switchTheme = setThemeName;
+  }, []);
 
-  const exampleFilename = exampleKebabNameToSourceFilename(exampleName)
-  const examplePath = _.find(
-    examplePaths,
-    path => exampleFilename === parseExamplePath(path).exampleName,
-  )
+  const exampleFilename = exampleKebabNameToSourceFilename(exampleName);
+  const examplePath = _.find(examplePaths, path => exampleFilename === parseExamplePath(path).exampleName);
 
-  if (!examplePath) return <PageNotFound />
+  if (!examplePath) return <PageNotFound />;
 
-  const exampleSource: ExampleSource = exampleSourcesContext(examplePath)
-  const theme = (themeName && themes[themeName]) || {}
+  const exampleSource: ExampleSource = exampleSourcesContext(examplePath);
+  const theme = (themeName && themes[themeName]) || {};
 
   return (
     <Provider key={renderId} theme={theme} rtl={rtl === 'true'}>
@@ -56,7 +53,7 @@ const ExternalExampleLayout: React.FC<ExternalExampleLayoutProps> = props => {
         {error && <div style={{ fontSize: '5rem', color: 'red' }}>{error.toString()}</div>}
       </KnobProvider>
     </Provider>
-  )
-}
+  );
+};
 
-export default ExternalExampleLayout
+export default ExternalExampleLayout;

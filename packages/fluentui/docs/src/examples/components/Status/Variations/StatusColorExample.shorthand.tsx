@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Status } from '@fluentui/react'
+import * as React from 'react';
+import { Status } from '@fluentui/react-northstar';
 
 const StatusColorExampleShorthand = () => (
   <div>
@@ -15,6 +15,6 @@ const StatusColorExampleShorthand = () => (
     &emsp;
     <Status color="violet" title="violet" />
   </div>
-)
+);
 
-export default StatusColorExampleShorthand
+export default StatusColorExampleShorthand;

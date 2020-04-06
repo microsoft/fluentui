@@ -29,7 +29,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
     super(props);
 
     this.state = {
-      searchQuery: ''
+      searchQuery: '',
     };
 
     this._iconRefs = {};
@@ -45,7 +45,12 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
     return (
       <div>
-        <SearchBox placeholder="Search icons" value={searchQuery} onChange={this._onSearchQueryChanged} className={styles.searchBox} />
+        <SearchBox
+          placeholder="Search icons"
+          value={searchQuery}
+          onChange={this._onSearchQueryChanged}
+          className={styles.searchBox}
+        />
         <ul className={styles.grid}>{icons.map(this._renderIcon)}</ul>
       </div>
     );
@@ -80,7 +85,7 @@ export class IconGrid extends React.Component<IIconGridProps, IIconGridState> {
 
   private _onSearchQueryChanged = (ev, newValue: string): void => {
     this.setState({
-      searchQuery: newValue
+      searchQuery: newValue,
     });
   };
 }

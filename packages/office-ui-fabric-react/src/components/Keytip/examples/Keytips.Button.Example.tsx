@@ -16,7 +16,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
     super(props);
 
     this.state = {
-      btnDisabled: false
+      btnDisabled: false,
     };
   }
 
@@ -24,7 +24,9 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
   public render() {
     return (
       <div>
-        <p>When multiple Keytips start with the same character, typing that character will filter the visible keytips.</p>
+        <p>
+          When multiple Keytips start with the same character, typing that character will filter the visible keytips.
+        </p>
         <Stack horizontal tokens={stackTokens}>
           <DefaultButton
             keytipProps={keytipMap.Button}
@@ -53,14 +55,14 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
                 {
                   key: 'buttonMenuItem1',
                   text: 'Menu Item 1',
-                  keytipProps: keytipMap.ButtonMenuItem1
+                  keytipProps: keytipMap.ButtonMenuItem1,
                 },
                 {
                   key: 'buttonMenuItem2',
                   text: 'Menu Item 2',
-                  keytipProps: keytipMap.ButtonMenuItem2
-                }
-              ]
+                  keytipProps: keytipMap.ButtonMenuItem2,
+                },
+              ],
             }}
           />
           <DefaultButton
@@ -76,20 +78,22 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
                 {
                   key: 'splitButtonMenuButton1',
                   text: 'Split Button Menu Item 1',
-                  keytipProps: keytipMap.SplitButtonMenuItem1
+                  keytipProps: keytipMap.SplitButtonMenuItem1,
                 },
                 {
                   key: 'splitButtonMenuButton2',
                   text: 'Split Button Menu Item 2',
-                  keytipProps: keytipMap.SplitButtonMenuItem2
-                }
-              ]
+                  keytipProps: keytipMap.SplitButtonMenuItem2,
+                },
+              ],
             }}
           />
           <DefaultButton text="I do not have a keytip" />
         </Stack>
 
-        <p>The 'offset' prop can be used to position the keytip a set distance from the top-left corner of the element.</p>
+        <p>
+          The 'offset' prop can be used to position the keytip a set distance from the top-left corner of the element.
+        </p>
         <DefaultButton
           styles={marginBottom}
           keytipProps={keytipMap.ButtonOffset}
@@ -100,7 +104,12 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
         />
 
         <p>When a Keytip's corresponding component is disabled, the keytip still appears but cannot be triggered.</p>
-        <Toggle onText={'Enabled'} offText={'Disabled'} defaultChecked={!this.state.btnDisabled} onChange={this._toggleDisabled} />
+        <Toggle
+          onText={'Enabled'}
+          offText={'Disabled'}
+          defaultChecked={!this.state.btnDisabled}
+          onChange={this._toggleDisabled}
+        />
         <DefaultButton
           keytipProps={keytipMap.DisabledButton}
           disabled={this.state.btnDisabled}

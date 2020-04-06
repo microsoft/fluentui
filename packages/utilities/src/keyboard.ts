@@ -9,7 +9,7 @@ const DirectionalKeyCodes: { [key: number]: number } = {
   [KeyCodes.end]: 1,
   [KeyCodes.tab]: 1,
   [KeyCodes.pageUp]: 1,
-  [KeyCodes.pageDown]: 1
+  [KeyCodes.pageDown]: 1,
 };
 
 /**

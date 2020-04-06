@@ -42,14 +42,17 @@ const handleWatchUnlink = (group: any, filePath: string) => {
 task('clean:cache', () => cache.clearAll());
 
 task('clean:docs', () =>
-  del([
-    paths.packages('ability-attributes/src/schema.ts'),
-    paths.docsSrc('componentMenu.json'),
-    paths.docsSrc('behaviorMenu.json'),
-    paths.docsDist(),
-    paths.docsSrc('exampleMenus'),
-    paths.docsSrc('exampleSources')
-  ])
+  del(
+    [
+      paths.packages('ability-attributes/src/schema.ts'),
+      paths.docsSrc('componentMenu.json'),
+      paths.docsSrc('behaviorMenu.json'),
+      paths.docsDist(),
+      paths.docsSrc('exampleMenus'),
+      paths.docsSrc('exampleSources'),
+    ],
+    { force: true },
+  ),
 );
 
 // ----------------------------------------
@@ -57,57 +60,50 @@ task('clean:docs', () =>
 // ----------------------------------------
 
 const componentsSrc = [
-  `${paths.posix.packageSrc('react')}/components/*/[A-Z]*.tsx`,
+  `${paths.posix.packageSrc('react-northstar')}/components/*/[A-Z]*.tsx`,
   `${paths.posix.packageSrc('react-bindings')}/FocusZone/[A-Z]!(*.types).tsx`,
-  `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`
+  `${paths.posix.packageSrc('react-component-ref')}/[A-Z]*.tsx`,
 ];
 const behaviorSrc = [`${paths.posix.packageSrc('accessibility')}/behaviors/*/[a-z]*Behavior.ts`];
 const examplesIndexSrc = `${paths.posix.docsSrc()}/examples/*/*/*/index.tsx`;
 const examplesSrc = `${paths.posix.docsSrc()}/examples/*/*/*/!(*index|.knobs).tsx`;
-const markdownSrc = [
-  '.github/CONTRIBUTING.md',
-  '.github/setup-local-development.md',
-  '.github/add-a-feature.md',
-  '.github/document-a-feature.md',
-  '.github/test-a-feature.md',
-  'specifications/*.md'
-];
+const markdownSrc = ['packages/fluentui/!(CHANGELOG).md', 'specifications/*.md'];
 const schemaSrc = `${paths.posix.packages('ability-attributes')}/schema.json`;
 
 task('build:docs:component-info', () =>
-  src(componentsSrc, { since: lastRun('build:docs:component-info') })
+  src(componentsSrc, { since: lastRun('build:docs:component-info'), cwd: paths.base(), cwdbase: true })
     .pipe(cache(gulpReactDocgen(['DOMAttributes', 'HTMLAttributes']), { name: 'componentInfo-1' }))
-    .pipe(dest(paths.docsSrc('componentInfo')))
+    .pipe(dest(paths.docsSrc('componentInfo'), { cwd: paths.base() })),
 );
 
 task('build:docs:component-menu', () =>
   src(componentsSrc, { since: lastRun('build:docs:component-menu') })
     .pipe(gulpComponentMenu())
-    .pipe(dest(paths.docsSrc()))
+    .pipe(dest(paths.docsSrc())),
 );
 
 task('build:docs:component-menu-behaviors', () =>
   src(behaviorSrc, { since: lastRun('build:docs:component-menu-behaviors') })
     .pipe(remember('component-menu-behaviors'))
     .pipe(gulpComponentMenuBehaviors())
-    .pipe(dest(paths.docsSrc()))
+    .pipe(dest(paths.docsSrc())),
 );
 
 task('build:docs:example-menu', () =>
   src(examplesIndexSrc, { since: lastRun('build:docs:example-menu') })
     .pipe(remember('example-menu')) // FIXME: with watch this unnecessarily processes index files for all examples
     .pipe(gulpExampleMenu())
-    .pipe(dest(paths.docsSrc('exampleMenus')))
+    .pipe(dest(paths.docsSrc('exampleMenus'))),
 );
 
 task('build:docs:example-sources', () =>
-  src(examplesSrc, { since: lastRun('build:docs:example-sources') })
+  src(examplesSrc, { since: lastRun('build:docs:example-sources'), cwd: paths.base(), cwdbase: true })
     .pipe(
       cache(gulpExampleSource(), {
-        name: 'exampleSources'
-      })
+        name: 'exampleSources',
+      }),
     )
-    .pipe(dest(paths.docsSrc('exampleSources')))
+    .pipe(dest(paths.docsSrc('exampleSources'), { cwd: paths.base() })),
 );
 
 task(
@@ -116,8 +112,8 @@ task(
     series('build:docs:component-info', 'build:docs:component-menu'),
     'build:docs:component-menu-behaviors',
     'build:docs:example-menu',
-    'build:docs:example-sources'
-  )
+    'build:docs:example-sources',
+  ),
 );
 
 task('build:docs:html', () => src(paths.docsSrc('404.html')).pipe(dest(paths.docsDist())));
@@ -127,9 +123,9 @@ task('build:docs:images', () => src(`${paths.docsSrc()}/**/*.{png,jpg,gif}`).pip
 task('build:docs:toc', () =>
   src(markdownSrc, { since: lastRun('build:docs:toc') }).pipe(
     cache(gulpDoctoc(), {
-      name: 'md-docs'
-    })
-  )
+      name: 'md-docs',
+    }),
+  ),
 );
 
 task('build:docs:schema', () =>
@@ -138,8 +134,8 @@ task('build:docs:schema', () =>
       sh('npm run schema', paths.packages('ability-attributes'))
         .then(() => done(null, file))
         .catch(done);
-    })
-  )
+    }),
+  ),
 );
 
 task('build:docs:webpack', cb => {
@@ -148,7 +144,11 @@ task('build:docs:webpack', cb => {
 
 task(
   'build:docs:assets',
-  parallel('build:docs:toc', 'build:docs:schema', series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')))
+  parallel(
+    'build:docs:toc',
+    'build:docs:schema',
+    series('clean:docs', parallel('build:docs:json', 'build:docs:html', 'build:docs:images')),
+  ),
 );
 
 task('build:docs', series('build:docs:assets', 'build:docs:webpack'));
@@ -186,10 +186,10 @@ task('serve:docs:hot', async () => {
           quiet: false,
           noInfo: true, // must be quite for hot middleware to show overlay
           lazy: false,
-          stats: config.compiler_stats
-        } as WebpackDevMiddleware.Options)
+          stats: config.compiler_stats,
+        } as WebpackDevMiddleware.Options),
       )
-      .use(WebpackHotMiddleware(compiler))
+      .use(WebpackHotMiddleware(compiler)),
   );
 });
 

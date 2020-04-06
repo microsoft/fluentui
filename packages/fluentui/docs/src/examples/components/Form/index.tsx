@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Usage from './Usage'
+import Rtl from './Rtl';
+import Types from './Types';
+import Usage from './Usage';
 
 const FormExamples = () => (
   <div>
@@ -10,6 +10,6 @@ const FormExamples = () => (
     <Rtl />
     <Usage />
   </div>
-)
+);
 
-export default FormExamples
+export default FormExamples;

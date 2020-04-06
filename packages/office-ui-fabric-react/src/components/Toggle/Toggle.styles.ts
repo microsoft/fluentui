@@ -33,13 +33,13 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       disabled && 'is-disabled',
       theme.fonts.medium,
       {
-        marginBottom: '8px'
+        marginBottom: '8px',
       },
       inlineLabel && {
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
       },
-      className
+      className,
     ],
 
     label: [
@@ -48,28 +48,28 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         color: textDisabledColor,
         selectors: {
           [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
+            color: 'GrayText',
+          },
+        },
       },
       inlineLabel &&
         !onOffMissing && {
-          marginRight: 16
+          marginRight: 16,
         },
       onOffMissing &&
         inlineLabel && {
           order: 1,
-          marginLeft: 16
+          marginLeft: 16,
         },
-      inlineLabel && { wordBreak: 'break-all' }
+      inlineLabel && { wordBreak: 'break-all' },
     ],
 
     container: [
       'ms-Toggle-innerContainer',
       {
         display: 'inline-flex',
-        position: 'relative'
-      }
+        position: 'relative',
+      },
     ],
 
     pill: [
@@ -87,33 +87,33 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 3px'
+        padding: '0 3px',
       },
       !disabled && [
         !checked && {
           selectors: {
             ':hover': [
               {
-                borderColor: pillBorderHoveredColor
-              }
+                borderColor: pillBorderHoveredColor,
+              },
             ],
             ':hover .ms-Toggle-thumb': [
               {
                 backgroundColor: thumbUncheckedHoveredBackground,
                 selectors: {
                   [HighContrastSelector]: {
-                    borderColor: 'Highlight'
-                  }
-                }
-              }
-            ]
-          }
+                    borderColor: 'Highlight',
+                  },
+                },
+              },
+            ],
+          },
         },
         checked && [
           {
             background: pillCheckedBackground,
             borderColor: 'transparent',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
           },
           {
             selectors: {
@@ -123,46 +123,46 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
                   borderColor: 'transparent',
                   selectors: {
                     [HighContrastSelector]: {
-                      backgroundColor: 'Highlight'
-                    }
-                  }
-                }
+                      backgroundColor: 'Highlight',
+                    },
+                  },
+                },
               ],
               [HighContrastSelector]: {
-                backgroundColor: 'WindowText'
-              }
-            }
-          }
-        ]
+                backgroundColor: 'WindowText',
+              },
+            },
+          },
+        ],
       ],
       disabled && [
         {
-          cursor: 'default'
+          cursor: 'default',
         },
         !checked && [
           {
-            borderColor: pillBorderDisabledColor
-          }
+            borderColor: pillBorderDisabledColor,
+          },
         ],
         checked && [
           {
             backgroundColor: pillCheckedDisabledBackground,
             borderColor: 'transparent',
-            justifyContent: 'flex-end'
-          }
-        ]
+            justifyContent: 'flex-end',
+          },
+        ],
       ],
       !disabled && {
         selectors: {
           '&:hover': {
             selectors: {
               [HighContrastSelector]: {
-                borderColor: 'Highlight'
-              }
-            }
-          }
-        }
-      }
+                borderColor: 'Highlight',
+              },
+            },
+          },
+        },
+      },
     ],
 
     thumb: [
@@ -178,7 +178,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         borderColor: 'transparent',
         borderWidth: '.28em',
         borderStyle: 'solid',
-        boxSizing: 'border-box'
+        boxSizing: 'border-box',
       },
       !disabled &&
         checked && [
@@ -187,23 +187,23 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             selectors: {
               [HighContrastSelector]: {
                 backgroundColor: 'Window',
-                borderColor: 'Window'
-              }
-            }
-          }
+                borderColor: 'Window',
+              },
+            },
+          },
         ],
       disabled && [
         !checked && [
           {
-            backgroundColor: thumbDisabledBackground
-          }
+            backgroundColor: thumbDisabledBackground,
+          },
         ],
         checked && [
           {
-            backgroundColor: thumbCheckedDisabledBackground
-          }
-        ]
-      ]
+            backgroundColor: thumbCheckedDisabledBackground,
+          },
+        ],
+      ],
     ],
 
     text: [
@@ -215,9 +215,9 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             padding: '0',
             margin: '0 8px',
             userSelect: 'none',
-            fontWeight: FontWeights.regular
-          }
-        }
+            fontWeight: FontWeights.regular,
+          },
+        },
       },
       disabled && {
         selectors: {
@@ -225,12 +225,12 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             color: textDisabledColor,
             selectors: {
               [HighContrastSelector]: {
-                color: 'GrayText'
-              }
-            }
-          }
-        }
-      }
-    ]
+                color: 'GrayText',
+              },
+            },
+          },
+        },
+      },
+    ],
   };
 };

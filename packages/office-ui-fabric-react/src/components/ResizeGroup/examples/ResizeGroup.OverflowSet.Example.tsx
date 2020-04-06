@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -10,17 +9,17 @@ import { mergeStyleSets } from 'office-ui-fabric-react';
 
 const styles = mergeStyleSets({
   root: {
-    display: 'block'
+    display: 'block',
   },
   resizeIsShort: {
-    width: '400px'
+    width: '400px',
   },
   settingsGroup: {
-    paddingTop: '20px'
+    paddingTop: '20px',
   },
   itemCountDropdown: {
-    width: '180px'
-  }
+    width: '180px',
+  },
 });
 
 export interface IOverflowData {
@@ -38,7 +37,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
       key: `item${index}`,
       name: `Item ${index}`,
       icon: icons[index % icons.length],
-      checked: checked
+      checked: checked,
     };
 
     cacheKey = cacheKey + item.key;
@@ -47,7 +46,7 @@ function generateData(count: number, cachingEnabled: boolean, checked: boolean):
 
   let result: IOverflowData = {
     primary: dataItems,
-    overflow: [] as any[]
+    overflow: [] as any[],
   };
 
   if (cachingEnabled) {
@@ -69,7 +68,7 @@ function computeCacheKey(primaryControls: IContextualMenuItem[]): string {
   return primaryControls.reduce((acc, current) => acc + current.key, '');
 }
 
-export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGroupOverflowSetExampleState> {
+export class ResizeGroupOverflowSetExample extends React.Component<{}, IResizeGroupOverflowSetExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -77,7 +76,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
       buttonsChecked: false,
       cachingEnabled: false,
       onGrowDataEnabled: false,
-      numberOfItems: 20
+      numberOfItems: 20,
     };
   }
 
@@ -134,7 +133,7 @@ export class ResizeGroupOverflowSetExample extends BaseComponent<{}, IResizeGrou
                 { key: '50', text: '50' },
                 { key: '75', text: '75' },
                 { key: '100', text: '100' },
-                { key: '200', text: '200' }
+                { key: '200', text: '200' },
               ]}
             />
           </div>

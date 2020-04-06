@@ -30,7 +30,8 @@ export interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
   keytipStartSequences?: IKeytipTransitionKey[];
 
   /**
-   * List of key sequences that execute the return functionality in keytips (going back to the previous level of keytips)
+   * List of key sequences that execute the return functionality in keytips
+   * (going back to the previous level of keytips)
    */
   keytipReturnSequences?: IKeytipTransitionKey[];
 

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { RadioGroup } from '@fluentui/react'
+import * as React from 'react';
+import { RadioGroup } from '@fluentui/react-northstar';
 
 const RadioGroupExampleRtl = () => (
   <RadioGroup
@@ -10,6 +10,6 @@ const RadioGroupExampleRtl = () => (
       { key: '3', label: 'الأربعاء', value: '3' },
     ]}
   />
-)
+);
 
-export default RadioGroupExampleRtl
+export default RadioGroupExampleRtl;

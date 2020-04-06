@@ -14,7 +14,9 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
   });
 
   const onChange = useConstCallback((ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
-    const filteredItems = menuItems.filter(item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1);
+    const filteredItems = menuItems.filter(
+      item => item.text && item.text.toLowerCase().indexOf(newValue.toLowerCase()) !== -1,
+    );
 
     if (!filteredItems || !filteredItems.length) {
       filteredItems.push({
@@ -24,7 +26,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
             <Icon iconName="SearchIssue" title="No actions found" />
             <span>No actions found</span>
           </div>
-        )
+        ),
       });
     }
 
@@ -47,7 +49,7 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
           {defaultRender(menuListProps)}
         </div>
       );
-    }
+    },
   );
 
   const menuProps = React.useMemo(
@@ -55,9 +57,9 @@ export const ContextualMenuWithCustomMenuListExample: React.FunctionComponent = 
       onRenderMenuList: renderMenuList,
       title: 'Actions',
       shouldFocusOnMount: true,
-      items
+      items,
     }),
-    [items]
+    [items],
   );
 
   return <DefaultButton text="Click for ContextualMenu" menuProps={menuProps} />;
@@ -69,43 +71,43 @@ const filteredItemsStyle: React.CSSProperties = {
   height: '100px',
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center'
+  justifyContent: 'center',
 };
 const searchBoxStyles: ISearchBoxStyles = {
-  root: { margin: '8px' }
+  root: { margin: '8px' },
 };
 
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
     text: 'New',
-    onClick: () => console.log('New clicked')
+    onClick: () => console.log('New clicked'),
   },
   {
     key: 'rename',
     text: 'Rename',
-    onClick: () => console.log('Rename clicked')
+    onClick: () => console.log('Rename clicked'),
   },
   {
     key: 'edit',
     text: 'Edit',
-    onClick: () => console.log('Edit clicked')
+    onClick: () => console.log('Edit clicked'),
   },
   {
     key: 'properties',
     text: 'Properties',
-    onClick: () => console.log('Properties clicked')
+    onClick: () => console.log('Properties clicked'),
   },
   {
     key: 'linkNoTarget',
     text: 'Link same window',
-    href: 'http://bing.com'
+    href: 'http://bing.com',
   },
   {
     key: 'linkWithTarget',
     text: 'Link new window',
     href: 'http://bing.com',
-    target: '_blank'
+    target: '_blank',
   },
   {
     key: 'linkWithOnClick',
@@ -115,12 +117,12 @@ const menuItems: IContextualMenuItem[] = [
       alert('Link clicked');
       ev.preventDefault();
     },
-    target: '_blank'
+    target: '_blank',
   },
   {
     key: 'disabled',
     text: 'Disabled item',
     disabled: true,
-    onClick: () => console.error('Disabled item should not be clickable.')
-  }
+    onClick: () => console.error('Disabled item should not be clickable.'),
+  },
 ];

@@ -1,9 +1,9 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import { ItemLayout, Image } from '@fluentui/react'
-import * as React from 'react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import { ItemLayout, Image } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const ItemLayoutExampleShorthand = () => {
-  const [debug] = useBooleanKnob({ name: 'debug', initialValue: true })
+  const [debug] = useBooleanKnob({ name: 'debug', initialValue: true });
 
   return (
     <ItemLayout
@@ -15,7 +15,7 @@ const ItemLayoutExampleShorthand = () => {
       endMedia={<span>&hellip;</span>}
       debug={debug}
     />
-  )
-}
+  );
+};
 
-export default ItemLayoutExampleShorthand
+export default ItemLayoutExampleShorthand;

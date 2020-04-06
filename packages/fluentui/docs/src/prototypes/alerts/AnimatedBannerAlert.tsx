@@ -1,23 +1,23 @@
-import * as React from 'react'
-import { Alert, Animation, AlertProps } from '@fluentui/react'
+import * as React from 'react';
+import { Alert, Animation, AlertProps } from '@fluentui/react-northstar';
 
 interface AnimatedBannerAlertProps extends AlertProps {
-  open?: boolean
+  open?: boolean;
 }
 
 /**
  * Needs to have 'slideDown' animation defined in parent Provider
  */
 const AnimatedBannerAlert: React.FunctionComponent<AnimatedBannerAlertProps> = props => {
-  const { open, ...rest } = props
+  const { open, ...rest } = props;
 
-  if (open === undefined) return <Alert {...rest} />
+  if (open === undefined) return <Alert {...rest} />;
 
   return (
     <Animation name={open ? '' : 'slideDown'}>
       <Alert {...rest} />
     </Animation>
-  )
-}
+  );
+};
 
-export default AnimatedBannerAlert
+export default AnimatedBannerAlert;

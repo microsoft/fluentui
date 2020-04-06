@@ -7,7 +7,7 @@ import { getWarningNote } from '../../util/getMessages';
 const onChangedPropsByComponent: { [component: string]: string } = {
   ColorPicker: 'onColorChanged',
   ColorRectangle: 'onSVChanged',
-  ColorSlider: 'onChanged'
+  ColorSlider: 'onChanged',
 };
 
 export default migration(
@@ -31,7 +31,7 @@ export default migration(
             if (propName === onChangedPropsByComponent[tagName]) {
               opts.warn(
                 `${prefix} - ${tagName} ${propName} is removed; please use onChange instead ` +
-                  `(NOTE: DOM event is now passed as first argument)`
+                  `(NOTE: DOM event is now passed as first argument)`,
               );
             }
           }
@@ -40,5 +40,5 @@ export default migration(
 
       return undefined;
     }).files;
-  }
+  },
 );

@@ -14,7 +14,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
     [DefaultPalette.blueLight, DefaultPalette.blue, DefaultPalette.blueDark],
     [DefaultPalette.orangeLighter, DefaultPalette.orangeLight, DefaultPalette.orange],
     [DefaultPalette.greenLight, DefaultPalette.green, DefaultPalette.greenDark],
-    [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark]
+    [DefaultPalette.magentaLight, DefaultPalette.magenta, DefaultPalette.magentaDark],
   ];
   private _colorIndex = 0;
 
@@ -37,9 +37,9 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
         { x: 85, y: 25 },
         { x: 90, y: 43 },
         { x: 96, y: 22 },
-        { x: 100, y: 19 }
+        { x: 100, y: 19 },
       ],
-      colors: this._colors[0]
+      colors: this._colors[0],
     };
 
     this._changeData = this._changeData.bind(this);
@@ -49,7 +49,11 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
   public render(): JSX.Element {
     return (
       <div>
-        <VerticalBarChart data={this.state.dynamicData} colors={this.state.colors} chartLabel={'Chart with Dynamic Data'} />
+        <VerticalBarChart
+          data={this.state.dynamicData}
+          colors={this.state.colors}
+          chartLabel={'Chart with Dynamic Data'}
+        />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
       </div>
@@ -74,8 +78,8 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
         { x: 85, y: this._randomY() },
         { x: 90, y: this._randomY() },
         { x: 96, y: this._randomY() },
-        { x: 100, y: this._randomY() }
-      ]
+        { x: 100, y: this._randomY() },
+      ],
     });
   }
 

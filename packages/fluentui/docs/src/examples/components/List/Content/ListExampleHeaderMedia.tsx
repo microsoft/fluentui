@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List } from '@fluentui/react';
+import { List } from '@fluentui/react-northstar';
 
 const ListExample = () => (
   <List>

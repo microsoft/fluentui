@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Divider } from '@fluentui/react'
+import * as React from 'react';
+import { Divider } from '@fluentui/react-northstar';
 
-const DividerExampleContent = () => <Divider>Some text</Divider>
+const DividerExampleContent = () => <Divider>Some text</Divider>;
 
-export default DividerExampleContent
+export default DividerExampleContent;

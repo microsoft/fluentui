@@ -1,25 +1,25 @@
-import { Loader } from '@fluentui/react'
-import * as React from 'react'
+import { Loader } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-import useComponentProps from '../useComponentProps'
-import ComponentPropsRow from './ComponentPropsRow'
+import useComponentProps from '../useComponentProps';
+import ComponentPropsRow from './ComponentPropsRow';
 
 const tableStyles: React.CSSProperties = {
   textAlign: 'left',
   borderCollapse: 'collapse',
   width: '100%',
-}
+};
 
 type ComponentPropsTable = {
-  componentName: string
-}
+  componentName: string;
+};
 
 /**
  * Displays a table of a Component's PropTypes.
  * TODO: use Flex or a Table component, when it will be available
  */
 const ComponentPropsTable: React.FunctionComponent<ComponentPropsTable> = props => {
-  const componentProps = useComponentProps(props.componentName)
+  const componentProps = useComponentProps(props.componentName);
 
   return (
     <React.Suspense fallback={<Loader />}>
@@ -40,7 +40,7 @@ const ComponentPropsTable: React.FunctionComponent<ComponentPropsTable> = props 
         </tbody>
       </table>
     </React.Suspense>
-  )
-}
+  );
+};
 
-export default ComponentPropsTable
+export default ComponentPropsTable;

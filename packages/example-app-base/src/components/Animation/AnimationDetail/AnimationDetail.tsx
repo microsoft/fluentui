@@ -6,22 +6,22 @@ import { AnimationExample } from '../index';
 
 const styles = mergeStyleSets({
   root: {
-    display: 'flex'
+    display: 'flex',
   },
   exampleWrapper: {
-    marginRight: 12
+    marginRight: 12,
   },
   detailsWrapper: {
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    padding: 4
+    padding: 4,
   },
   detailTitle: {
     fontSize: '14px',
     fontWeight: FontWeights.semibold,
-    marginBottom: 4
-  }
+    marginBottom: 4,
+  },
 });
 
 export const AnimationDetail: React.FunctionComponent<IAnimationDetailProps> = props => {

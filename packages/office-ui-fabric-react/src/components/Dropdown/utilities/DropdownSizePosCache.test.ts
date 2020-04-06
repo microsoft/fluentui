@@ -8,7 +8,7 @@ const pureOptions: IDropdownOption[] = [
   { key: 'D', text: 'Option d' },
   { key: 'E', text: 'Option e' },
   { key: 'F', text: 'Option f' },
-  { key: 'G', text: 'Option g' }
+  { key: 'G', text: 'Option g' },
 ];
 
 const mixedOptions: IDropdownOption[] = [
@@ -24,7 +24,7 @@ const mixedOptions: IDropdownOption[] = [
   { key: 'G', text: 'Option g' },
   { key: 'H', text: 'Option h' },
   { key: 'I', text: 'Option i' },
-  { key: 'J', text: 'Option j' }
+  { key: 'J', text: 'Option j' },
 ];
 
 describe('DropdownSizePosCache', () => {

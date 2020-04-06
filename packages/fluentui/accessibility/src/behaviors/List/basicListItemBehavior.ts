@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import { ListItemBehaviorProps } from './listItemBehavior'
+import { Accessibility } from '../../types';
+import { ListItemBehaviorProps } from './listItemBehavior';
 
 /**
  * @description
@@ -15,6 +15,6 @@ const basicListItemBehavior: Accessibility<ListItemBehaviorProps> = props => ({
       role: 'listitem',
     },
   },
-})
+});
 
-export default basicListItemBehavior
+export default basicListItemBehavior;

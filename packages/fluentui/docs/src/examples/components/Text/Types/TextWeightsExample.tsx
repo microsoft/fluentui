@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
 const TextWeightsExample = () => (
   <div>
@@ -13,5 +13,5 @@ const TextWeightsExample = () => (
     <br />
     <Text weight="bold">This text is bold.</Text>
   </div>
-)
-export default TextWeightsExample
+);
+export default TextWeightsExample;

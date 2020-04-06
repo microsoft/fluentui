@@ -1,22 +1,22 @@
-import fs from 'fs'
-import path from 'path'
-import fetch from 'node-fetch'
-import _ from 'lodash'
-import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill'
+import fs from 'fs';
+import path from 'path';
+import fetch from 'node-fetch';
+import _ from 'lodash';
+import flamegrill, { CookResult, CookResults, ScenarioConfig, Scenarios } from 'flamegrill';
 
-import { generateUrl } from '@fluentui/digest'
+import { generateUrl } from '@fluentui/digest';
 
 type ExtendedCookResult = CookResult & {
   extended: {
-    kind: string
-    story: string
-    iterations: number
-    tpi?: number
-    fabricTpi?: number
-    filename?: number
-  }
-}
-type ExtendedCookResults = Record<string, ExtendedCookResult>
+    kind: string;
+    story: string;
+    iterations: number;
+    tpi?: number;
+    fabricTpi?: number;
+    filename?: number;
+  };
+};
+type ExtendedCookResults = Record<string, ExtendedCookResult>;
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 // TODO:
@@ -28,131 +28,108 @@ type ExtendedCookResults = Record<string, ExtendedCookResult>
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+// TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
 // const urlForDeployPath = process.env.BUILD_SOURCEBRANCH
 //   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test`
 //   : `file://${path.resolve(__dirname, '../dist/')}`;
-const urlForDeployPath = `file://${path.resolve(__dirname, '../dist/')}`
+const urlForDeployPath = `file://${path.resolve(__dirname, '../dist/')}`;
 
 // const urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
 //   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/index.html`
 //   : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/index.html';
 
-const urlForDeploy = `${urlForDeployPath}/index.html`
-const defaultIterations = 1
+const urlForDeploy = `${urlForDeployPath}/index.html`;
+const defaultIterations = 1;
 
-const outDir = path.join(__dirname, '../dist')
-const tempDir = path.join(__dirname, '../logfiles')
+const outDir = path.join(__dirname, '../dist');
+const tempDir = path.join(__dirname, '../logfiles');
 
-console.log(`__dirname: ${__dirname}`)
-
-const GITHUB_REPO_ID = '141743704'
-async function getMasterBuild(): Promise<number> {
-  const url = 'https://fluent-ui-react-stats.azurewebsites.net/api/GetLatestBuild'
-
-  const response = await fetch(url)
-  const data = await response.json()
-  return data[0].build
-}
+console.log(`__dirname: ${__dirname}`);
 
 export default async function getPerfRegressions(baselineOnly: boolean = false) {
-  let urlForMaster
+  let urlForMaster;
 
   if (!baselineOnly) {
-    const masterBuild = await getMasterBuild()
-    urlForMaster = `https://${masterBuild}-${GITHUB_REPO_ID}-gh.circle-artifacts.com/0/artifacts/perf/index.html`
-    console.log('Master URL', urlForMaster)
+    urlForMaster = process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
+      ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/${process.env.SYSTEM_PULLREQUEST_TARGETBRANCH}/perf-test/fluentui/index.html`
+      : 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/fluentui/index.html';
   }
 
   // TODO: support iteration/kind/story via commandline as in other perf-test script
   // TODO: can do this now that we have story information
   // TODO: align flamegrill terminology with CSF (story vs. scenario)
-  const scenarios: Scenarios = {}
-  const scenarioList: string[] = []
+  const scenarios: Scenarios = {};
+  const scenarioList: string[] = [];
 
   // TODO: can this get typing somehow? can't be imported since file is only available after build
-  const test = require('../dist/stories.js')
-  const { stories } = test.default
+  const test = require('../dist/stories.js');
+  const { stories } = test.default;
 
-  console.log('stories:')
-  console.dir(stories, { depth: null })
+  console.log('stories:');
+  console.dir(stories, { depth: null });
 
   Object.keys(stories).forEach(kindKey => {
     Object.keys(stories[kindKey])
       .filter(storyKey => typeof stories[kindKey][storyKey] === 'function')
       .forEach(storyKey => {
-        const scenarioName = `${kindKey}.${storyKey}`
-        scenarioList.push(scenarioName)
+        const scenarioName = `${kindKey}.${storyKey}`;
+        scenarioList.push(scenarioName);
         scenarios[scenarioName] = {
-          scenario: generateUrl(
-            urlForDeploy,
-            kindKey,
-            storyKey,
-            getIterations(stories, kindKey, storyKey),
-          ),
+          scenario: generateUrl(urlForDeploy, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
           ...(!baselineOnly &&
             storyKey !== 'Fabric' && {
               // Optimization: skip baseline comparision for Fabric
-              baseline: generateUrl(
-                urlForMaster,
-                kindKey,
-                storyKey,
-                getIterations(stories, kindKey, storyKey),
-              ),
+              baseline: generateUrl(urlForMaster, kindKey, storyKey, getIterations(stories, kindKey, storyKey)),
             }),
-        }
-      })
-  })
+        };
+      });
+  });
 
-  console.log(`\nRunning scenarios: ${scenarioList}\n`)
+  console.log(`\nRunning scenarios: ${scenarioList}\n`);
 
   if (!fs.existsSync(tempDir)) {
-    console.log(`Making temp directory ${tempDir}...`)
-    fs.mkdirSync(tempDir)
+    console.log(`Making temp directory ${tempDir}...`);
+    fs.mkdirSync(tempDir);
   }
 
-  const tempContents = fs.readdirSync(tempDir)
+  const tempContents = fs.readdirSync(tempDir);
 
   if (tempContents.length > 0) {
-    console.log(`Unexpected files already present in ${tempDir}`)
+    console.log(`Unexpected files already present in ${tempDir}`);
     tempContents.forEach(logFile => {
-      const logFilePath = path.join(tempDir, logFile)
-      console.log(`Deleting ${logFilePath}`)
-      fs.unlinkSync(logFilePath)
-    })
+      const logFilePath = path.join(tempDir, logFile);
+      console.log(`Deleting ${logFilePath}`);
+      fs.unlinkSync(logFilePath);
+    });
   }
 
-  const scenarioConfig: ScenarioConfig = { outDir, tempDir }
-  const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig)
+  const scenarioConfig: ScenarioConfig = { outDir, tempDir };
+  const scenarioResults = await flamegrill.cook(scenarios, scenarioConfig);
 
-  const extendedCookResults = extendCookResults(stories, scenarioResults)
-  fs.writeFileSync(
-    path.join(outDir, 'perfCounts.json'),
-    JSON.stringify(extendedCookResults, null, 2),
-  )
+  const extendedCookResults = extendCookResults(stories, scenarioResults);
+  fs.writeFileSync(path.join(outDir, 'perfCounts.json'), JSON.stringify(extendedCookResults, null, 2));
 
-  const comment = createReport(stories, extendedCookResults)
+  const comment = createReport(stories, extendedCookResults);
 
   // TODO: determine status according to perf numbers
-  const status = 'success'
+  const status = 'success';
 
-  console.log(`Perf evaluation status: ${status}`)
+  console.log(`Perf evaluation status: ${status}`);
 
   // Write results to file
-  fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment)
+  fs.writeFileSync(path.join(outDir, 'perfCounts.html'), comment);
 
-  console.log(
-    `##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`,
-  )
-  console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`)
+  console.log(`##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.html`);
+  console.log(`##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 }
 
 function extendCookResults(stories, testResults: CookResults): ExtendedCookResults {
   return _.mapValues(testResults, (testResult, resultKey) => {
-    const kind = getKindKey(resultKey)
-    const story = getStoryKey(resultKey)
-    const iterations = getIterations(stories, kind, story)
-    const tpi = getTpiResult(testResults, stories, kind, story) // || 'n/a'
-    const fabricTpi = getTpiResult(testResults, stories, kind, 'Fabric') // || ''
+    const kind = getKindKey(resultKey);
+    const story = getStoryKey(resultKey);
+    const iterations = getIterations(stories, kind, story);
+    const tpi = getTpiResult(testResults, stories, kind, story); // || 'n/a'
+    const fabricTpi = getTpiResult(testResults, stories, kind, 'Fabric'); // || ''
 
     return {
       ...testResult,
@@ -164,8 +141,8 @@ function extendCookResults(stories, testResults: CookResults): ExtendedCookResul
         fabricTpi,
         filename: stories[kind][story].filename,
       },
-    }
-  })
+    };
+  });
 }
 
 /**
@@ -178,6 +155,7 @@ function createReport(stories, testResults: ExtendedCookResults): string {
   const report = ''
 
     // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+    // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
     // // Show only significant changes by default.
     // .concat(createScenarioTable(testResults, false))
 
@@ -186,9 +164,9 @@ function createReport(stories, testResults: ExtendedCookResults): string {
     // .concat(createScenarioTable(testResults, true))
     // .concat('</p></details>');
 
-    .concat(createScenarioTable(stories, testResults, true))
+    .concat(createScenarioTable(stories, testResults, true));
 
-  return report
+  return report;
 }
 
 /**
@@ -208,22 +186,23 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
           testResults[key].analysis.regression.isRegression),
     )
     .filter(testResultKey => getStoryKey(testResultKey) !== 'Fabric')
-    .sort()
+    .sort();
 
   if (resultsToDisplay.length === 0) {
-    return '<p>No significant results to display.</p>'
+    return '<p>No significant results to display.</p>';
   }
 
   // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+  // TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
   // const result = `
   // <table>
   // <tr>
   //   <th>Scenario</th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">Master Ticks</a>
   //   </th>
   //   <th>
-  //     <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+  //     <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
   //   </th>
   //   <th>Status</th>
   // </tr>`.concat(
@@ -252,26 +231,26 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
     <th>TPI</th>
     <th>Iterations</th>
     <th>
-      <a href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
+      <a href="https://github.com/microsoft/fluentui/wiki/Perf-Testing#why-are-results-listed-in-ticks-instead-of-time-units">PR Ticks</a>
     </th>
   </tr>`.concat(
     resultsToDisplay
       .map(resultKey => {
-        const testResult = testResults[resultKey]
+        const testResult = testResults[resultKey];
         const tpi = testResult.extended.tpi
           ? linkifyResult(
               testResult,
               testResult.extended.tpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
               false,
             )
-          : 'n/a'
+          : 'n/a';
         const fabricTpi = testResult.extended.fabricTpi
           ? linkifyResult(
               testResult,
               testResult.extended.fabricTpi.toLocaleString('en', { maximumSignificantDigits: 2 }),
               false,
             )
-          : ''
+          : '';
 
         return `<tr>
             <td>${testResult.extended.kind}</td>
@@ -280,68 +259,65 @@ function createScenarioTable(stories, testResults: ExtendedCookResults, showAll:
             <td>${tpi}</td>
             <td>${testResult.extended.iterations}</td>
             <td>${getTicksResult(testResult, false)}</td>
-           </tr>`
+           </tr>`;
       })
       .join('\n')
       .concat(`</table>`),
-  )
+  );
 
-  return result
+  return result;
 }
 
 function getKindKey(resultKey: string): string {
-  const [kind] = resultKey.split('.')
-  return kind
+  const [kind] = resultKey.split('.');
+  return kind;
 }
 
 function getStoryKey(resultKey: string): string {
-  const [, story] = resultKey.split('.')
-  return story
+  const [, story] = resultKey.split('.');
+  return story;
 }
 
 function getTpiResult(testResults, stories, kind, story): number | undefined {
-  let tpi = undefined
+  let tpi = undefined;
   if (stories[kind][story]) {
-    const resultKey = `${kind}.${story}`
-    const testResult = testResults[resultKey]
-    const ticks = getTicks(testResult)
-    const iterations = getIterations(stories, kind, story)
-    tpi = ticks && iterations && Math.round((ticks / iterations) * 100) / 100
+    const resultKey = `${kind}.${story}`;
+    const testResult = testResults[resultKey];
+    const ticks = getTicks(testResult);
+    const iterations = getIterations(stories, kind, story);
+    tpi = ticks && iterations && Math.round((ticks / iterations) * 100) / 100;
   }
-  return tpi
+  return tpi;
 }
 
 function getIterations(stories, kind, story): number {
   // Give highest priority to most localized definition of iterations. Story => kind => default.
   return (
-    stories[kind][story].iterations ||
-    (stories[kind].default && stories[kind].default.iterations) ||
-    defaultIterations
-  )
+    stories[kind][story].iterations || (stories[kind].default && stories[kind].default.iterations) || defaultIterations
+  );
 }
 
 function getTicks(testResult: CookResult): number | undefined {
-  return testResult.analysis && testResult.analysis.numTicks
+  return testResult.analysis && testResult.analysis.numTicks;
 }
 
 function linkifyResult(testResult, resultContent, getBaseline) {
-  let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile
-  let errorFile = testResult.processed.error && testResult.processed.error.errorFile
+  let flamegraphFile = testResult.processed.output && testResult.processed.output.flamegraphFile;
+  let errorFile = testResult.processed.error && testResult.processed.error.errorFile;
 
   if (getBaseline) {
-    const processedBaseline = testResult.processed.baseline
-    flamegraphFile =
-      processedBaseline && processedBaseline.output && processedBaseline.output.flamegraphFile
-    errorFile = processedBaseline && processedBaseline.error && processedBaseline.error.errorFile
+    const processedBaseline = testResult.processed.baseline;
+    flamegraphFile = processedBaseline && processedBaseline.output && processedBaseline.output.flamegraphFile;
+    errorFile = processedBaseline && processedBaseline.error && processedBaseline.error.errorFile;
   }
 
   const cell = errorFile
     ? `<a href="${path.basename(errorFile)}">err</a>`
     : flamegraphFile
     ? `<a href="${path.basename(flamegraphFile)}">${resultContent}</a>`
-    : `n/a`
+    : `n/a`;
 
-  return cell
+  return cell;
 }
 
 /**
@@ -352,14 +328,13 @@ function linkifyResult(testResult, resultContent, getBaseline) {
  * @returns {string}
  */
 function getTicksResult(testResult: CookResult, getBaseline: boolean): string {
-  let numTicks = testResult.analysis && testResult.analysis.numTicks
+  let numTicks = testResult.analysis && testResult.analysis.numTicks;
 
   if (getBaseline) {
-    numTicks =
-      testResult.analysis && testResult.analysis.baseline && testResult.analysis.baseline.numTicks
+    numTicks = testResult.analysis && testResult.analysis.baseline && testResult.analysis.baseline.numTicks;
   }
 
-  return linkifyResult(testResult, numTicks, getBaseline)
+  return linkifyResult(testResult, numTicks, getBaseline);
 }
 
 /**
@@ -369,6 +344,7 @@ function getTicksResult(testResult: CookResult, getBaseline: boolean): string {
  * @returns {string}
  */
 // TODO: We can't do CI, measure baseline or do regression analysis until master & PR files are deployed and publicly accessible.
+// TODO: Fluent reporting is outside of this script so this code will probably be moved entirely on perf-test consolidation.
 // function getRegression(testResult: CookResult): string {
 //   const cell = testResult.analysis && testResult.analysis.regression && testResult.analysis.regression.isRegression
 //     ? testResult.analysis.regression.regressionFile

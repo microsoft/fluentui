@@ -1,41 +1,39 @@
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
 
-import { exampleIndexContext, exampleSourcesContext } from '../../utils'
-import { List, Segment } from '@fluentui/react'
-import { componentAPIs } from './ComponentSourceManager'
+import { exampleIndexContext, exampleSourcesContext } from '../../utils';
+import { List, Segment } from '@fluentui/react-northstar';
+import { componentAPIs } from './ComponentSourceManager';
 
-import ContributionPrompt from './ContributionPrompt'
+import ContributionPrompt from './ContributionPrompt';
 
 interface ComponentExamplesProps {
-  displayName: string
+  displayName: string;
 }
 
 function getExamplesElement(displayName: string) {
   // rule #1
-  const indexPath = _.find(exampleIndexContext.keys(), path =>
-    new RegExp(`\/${displayName}\/index\.tsx$`).test(path),
-  )
+  const indexPath = _.find(exampleIndexContext.keys(), path => new RegExp(`\/${displayName}\/index\.tsx$`).test(path));
   if (!indexPath) {
-    return null
+    return null;
   }
 
-  const ExamplesElement = React.createElement(exampleIndexContext(indexPath).default) as any
+  const ExamplesElement = React.createElement(exampleIndexContext(indexPath).default) as any;
   if (!ExamplesElement) {
-    return null
+    return null;
   }
 
-  return ExamplesElement
+  return ExamplesElement;
 }
 
 export class ComponentExamples extends React.Component<ComponentExamplesProps, any> {
   static propTypes = {
     displayName: PropTypes.string.isRequired,
-  }
+  };
 
   render() {
-    return this.renderExamples() || this.renderMissingExamples()
+    return this.renderExamples() || this.renderMissingExamples();
   }
 
   /**
@@ -47,33 +45,33 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
    *              ./docs/src/examples/components/{...}/{...}MyComponent{...}Example{...}.shorthand.tsx
    */
   renderExamples = (): JSX.Element | null => {
-    const { displayName } = this.props
+    const { displayName } = this.props;
 
-    const ExamplesElement = getExamplesElement(displayName)
+    const ExamplesElement = getExamplesElement(displayName);
     if (!ExamplesElement) {
-      return null
+      return null;
     }
 
     // rules #3 and #4
-    const missingPaths = this.getMissingExamplePaths(displayName, exampleSourcesContext.keys())
+    const missingPaths = this.getMissingExamplePaths(displayName, exampleSourcesContext.keys());
     return missingPaths && missingPaths.length ? (
       <div>
         {this.renderMissingShorthandExamples(missingPaths)} {ExamplesElement}
       </div>
     ) : (
       ExamplesElement
-    )
-  }
+    );
+  };
 
   renderMissingExamples = () => {
-    const { displayName } = this.props
+    const { displayName } = this.props;
 
     return this.renderElementWrappedInGrid(
       <ContributionPrompt>
         Looks like we're missing <code title={displayName}>{`<${displayName} />`}</code> examples.
       </ContributionPrompt>,
-    )
-  }
+    );
+  };
 
   renderMissingShorthandExamples = (missingPaths: string[]) => {
     return this.renderElementWrappedInGrid(
@@ -81,29 +79,29 @@ export class ComponentExamples extends React.Component<ComponentExamplesProps, a
         <div>Looks like we're missing examples at following paths:</div>
         <List items={missingPaths} />
       </ContributionPrompt>,
-    )
-  }
+    );
+  };
 
-  renderElementWrappedInGrid = (Element: JSX.Element) => <Segment content={Element} />
+  renderElementWrappedInGrid = (Element: JSX.Element) => <Segment content={Element} />;
 
   getMissingExamplePaths(displayName: string, allPaths: string[]): string[] {
-    const examplesPattern = `\./${displayName}/[\\w/]+Example`
+    const examplesPattern = `\./${displayName}/[\\w/]+Example`;
     const [normalExtension, shorthandExtension] = [
       componentAPIs.children.fileSuffix,
       componentAPIs.shorthand.fileSuffix,
-    ].map(pattern => `${pattern}.source.json`)
+    ].map(pattern => `${pattern}.source.json`);
 
     const [normalRegExp, shorthandRegExp] = [normalExtension, shorthandExtension].map(
       extension => new RegExp(`${examplesPattern}${extension}$`),
-    )
+    );
 
     const expectedShorthandExamples = allPaths
       .filter(path => normalRegExp.test(path))
-      .map(path => path.replace(normalExtension, shorthandExtension))
-    const actualShorthandExamples = allPaths.filter(path => shorthandRegExp.test(path))
+      .map(path => path.replace(normalExtension, shorthandExtension));
+    const actualShorthandExamples = allPaths.filter(path => shorthandRegExp.test(path));
 
     return _.difference(expectedShorthandExamples, actualShorthandExamples).map(exampleFile =>
       exampleFile.replace(/\.source\.json$/, '.tsx'),
-    )
+    );
   }
 }

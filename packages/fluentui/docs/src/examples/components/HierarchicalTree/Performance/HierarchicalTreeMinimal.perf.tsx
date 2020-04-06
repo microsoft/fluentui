@@ -1,9 +1,9 @@
-import { HierarchicalTree } from '@fluentui/react'
-import * as React from 'react'
+import { HierarchicalTree } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const HierarchicalTreeMinimalPerf = () => <HierarchicalTree />
+const HierarchicalTreeMinimalPerf = () => <HierarchicalTree />;
 
-HierarchicalTreeMinimalPerf.iterations = 5000
-HierarchicalTreeMinimalPerf.filename = 'HierarchicalTreeMinimal.perf.tsx'
+HierarchicalTreeMinimalPerf.iterations = 5000;
+HierarchicalTreeMinimalPerf.filename = 'HierarchicalTreeMinimal.perf.tsx';
 
-export default HierarchicalTreeMinimalPerf
+export default HierarchicalTreeMinimalPerf;

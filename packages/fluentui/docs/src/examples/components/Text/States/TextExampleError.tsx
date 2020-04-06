@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
-const TextExampleError = () => <Text error>There has been an error.</Text>
+const TextExampleError = () => <Text error>There has been an error.</Text>;
 
-export default TextExampleError
+export default TextExampleError;

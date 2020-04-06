@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Text, ProviderConsumer } from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Text, ProviderConsumer } from '@fluentui/react-northstar';
 
 const TextExampleColor = () => (
   <ProviderConsumer
@@ -13,6 +13,6 @@ const TextExampleColor = () => (
       ))
     }
   />
-)
+);
 
-export default TextExampleColor
+export default TextExampleColor;

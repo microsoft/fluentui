@@ -1,11 +1,11 @@
-import { Menu } from '@fluentui/react'
-import getScreenerSteps from '../commonScreenerSteps'
+import { Menu } from '@fluentui/react-northstar';
+import getScreenerSteps from '../commonScreenerSteps';
 
 const selectors = {
   menu: `.${Menu.className}`,
   item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`,
   lastItem: `.${Menu.className} li:last-child a`,
-}
+};
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -18,6 +18,6 @@ const config: ScreenerTestsConfig = {
         .keys(selectors.lastItem, keys.downArrow)
         .snapshot('Focuses on the first element in the submenu'),
   ],
-}
+};
 
-export default config
+export default config;

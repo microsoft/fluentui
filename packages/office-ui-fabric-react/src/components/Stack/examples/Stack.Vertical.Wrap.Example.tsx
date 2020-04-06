@@ -11,7 +11,7 @@ const itemStyles: React.CSSProperties = {
   height: 50,
   display: 'flex',
   justifyContent: 'center',
-  width: 50
+  width: 50,
 };
 
 // Tokens definition
@@ -25,8 +25,8 @@ export const VerticalStackWrapExample: React.FunctionComponent = () => {
   const stackStyles: IStackStyles = {
     root: {
       background: DefaultPalette.themeTertiary,
-      height: stackHeight
-    }
+      height: stackHeight,
+    },
   };
 
   return (

@@ -22,6 +22,6 @@ export function updateH(color: IColor, h: number): IColor {
     r: r,
     s: color.s,
     str: _rgbaOrHexString(r, g, b, color.a, hex),
-    v: color.v
+    v: color.v,
   };
 }

@@ -1,8 +1,8 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import treeTitleBehavior from './treeTitleBehavior'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import treeTitleBehavior from './treeTitleBehavior';
 
 /**
  * @specification
@@ -63,21 +63,21 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
   childBehaviors: {
     title: treeTitleBehavior,
   },
-})
+});
 
 export type TreeItemBehaviorProps = {
   /** If item is a subtree, it indicates if it's expanded. */
-  expanded?: boolean
-  level?: number
-  index?: number
-  hasSubtree?: boolean
-  treeSize?: number
-}
+  expanded?: boolean;
+  level?: number;
+  index?: number;
+  hasSubtree?: boolean;
+  treeSize?: number;
+};
 
 /** Checks if current tree item has a subtree and it is expanded */
 const isSubtreeExpanded = (props: TreeItemBehaviorProps): boolean => {
-  const { hasSubtree, expanded } = props
-  return !!(hasSubtree && expanded)
-}
+  const { hasSubtree, expanded } = props;
+  return !!(hasSubtree && expanded);
+};
 
-export default treeItemBehavior
+export default treeItemBehavior;

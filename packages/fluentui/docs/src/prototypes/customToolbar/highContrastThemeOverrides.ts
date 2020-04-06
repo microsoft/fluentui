@@ -1,5 +1,5 @@
-import { ThemeInput } from '@fluentui/react'
-import { CustomToolbarVariables } from './darkThemeOverrides'
+import { ThemeInput } from '@fluentui/react-northstar';
+import { CustomToolbarVariables } from './darkThemeOverrides';
 
 export const highContrastThemeOverrides: ThemeInput = {
   componentVariables: {
@@ -7,4 +7,4 @@ export const highContrastThemeOverrides: ThemeInput = {
       ctItemActiveBackgroundOverlay: undefined,
     }),
   },
-}
+};

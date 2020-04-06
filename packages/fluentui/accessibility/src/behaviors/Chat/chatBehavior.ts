@@ -1,10 +1,10 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
 
-const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone'
+const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone';
 
 /**
  * @description
@@ -16,7 +16,7 @@ const CHAT_FOCUSZONE_ATTRIBUTE = 'chat-focuszone'
  * Focused active element of the component is reset when TAB from the component.
  * Focus can be moved inside a child component with embeded inner FocusZone by pressing a specified key.
  */
-const ChatBehavior: Accessibility = () => ({
+const ChatBehavior: Accessibility<ChatBehaviorProps> = () => ({
   attributes: {
     root: {},
   },
@@ -29,18 +29,18 @@ const ChatBehavior: Accessibility = () => ({
       [CHAT_FOCUSZONE_ATTRIBUTE]: '', // allows querying the default active element
     },
   },
-})
+});
 
 const getLastTabbableElement = (root: HTMLElement): HTMLElement => {
-  const lastVisibleMessage = root.querySelector('[data-last-visible="true"]') as HTMLElement
-  if (lastVisibleMessage) return lastVisibleMessage
+  const lastVisibleMessage = root.querySelector('[data-last-visible="true"]') as HTMLElement;
+  if (lastVisibleMessage) return lastVisibleMessage;
 
   const chatItemsElements = root.querySelectorAll(
     `[${CHAT_FOCUSZONE_ATTRIBUTE}] .ui-chat__message[${IS_FOCUSABLE_ATTRIBUTE}="true"]`,
-  )
-  return chatItemsElements.length > 0
-    ? (chatItemsElements[chatItemsElements.length - 1] as HTMLElement)
-    : null
-}
+  );
+  return chatItemsElements.length > 0 ? (chatItemsElements[chatItemsElements.length - 1] as HTMLElement) : null;
+};
 
-export default ChatBehavior
+export type ChatBehaviorProps = never;
+
+export default ChatBehavior;

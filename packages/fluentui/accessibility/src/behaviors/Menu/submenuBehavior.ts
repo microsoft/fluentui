@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import menuItemBehavior from './menuItemBehavior'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import menuItemBehavior from './menuItemBehavior';
 
 /**
  * @description
@@ -26,6 +26,6 @@ const submenuBehavior: Accessibility = () => ({
     },
   },
   childBehaviors: { item: menuItemBehavior },
-})
+});
 
-export default submenuBehavior
+export default submenuBehavior;

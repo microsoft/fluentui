@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
 
 /**
  * @description
@@ -15,6 +15,6 @@ const gridBehavior: Accessibility = () => ({
       direction: FocusZoneDirection.bidirectional,
     },
   },
-})
+});
 
-export default gridBehavior
+export default gridBehavior;

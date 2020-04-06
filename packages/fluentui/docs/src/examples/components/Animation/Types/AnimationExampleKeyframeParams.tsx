@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { Animation, Flex, Icon, Provider, ThemeAnimation } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Flex, Provider, ThemeAnimation } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const colorChanger: ThemeAnimation<{ fromColor: string; toColor: string }> = {
   keyframe: ({ fromColor, toColor }) => ({
@@ -13,22 +14,22 @@ const colorChanger: ThemeAnimation<{ fromColor: string; toColor: string }> = {
   keyframeParams: { fromColor: 'red', toColor: 'blue' },
   duration: '5s',
   iterationCount: 'infinite',
-}
+};
 
 const AnimationExample = () => (
   <Provider theme={{ animations: { colorChanger } }}>
     <Flex gap="gap.smaller">
       <Animation name="colorChanger">
-        <Icon name="mention" circular bordered />
+        <MentionIcon circular bordered />
       </Animation>
       <Animation name="colorChanger" keyframeParams={{ fromColor: 'green', toColor: 'yellow' }}>
-        <Icon name="mention" circular bordered />
+        <MentionIcon circular bordered />
       </Animation>
       <Animation name="colorChanger" keyframeParams={{ toColor: 'black' }}>
-        <Icon name="mention" circular bordered />
+        <MentionIcon circular bordered />
       </Animation>
     </Flex>
   </Provider>
-)
+);
 
-export default AnimationExample
+export default AnimationExample;

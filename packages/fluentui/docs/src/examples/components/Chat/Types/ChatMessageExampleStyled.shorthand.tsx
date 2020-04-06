@@ -1,22 +1,16 @@
-import * as React from 'react'
-import {
-  Avatar,
-  AvatarProps,
-  Chat,
-  Provider,
-  ReactionProps,
-  ShorthandCollection,
-} from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, AvatarProps, Chat, Provider, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { EmojiIcon, LikeIcon, AcceptIcon, MentionIcon, ExclamationCircleIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
-  { key: 'up', icon: 'like', content: '1K' },
-  { key: 'smile', icon: 'emoji', content: 5 },
-]
+  { key: 'up', icon: <LikeIcon />, content: '1K' },
+  { key: 'smile', icon: <EmojiIcon />, content: 5 },
+];
 
 const janeAvatar: AvatarProps = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'icon-checkmark' },
-}
+  status: { color: 'green', icon: <AcceptIcon /> },
+};
 
 const content = (
   <div>
@@ -27,7 +21,7 @@ const content = (
     <br />
     <a href="#">www.goodFood3.com</a>
   </div>
-)
+);
 
 const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
   position: 'relative',
@@ -47,7 +41,7 @@ const slotLabelStyles: any = (label, beforeStyles?, slotStyles?) => ({
     lineHeight: '9px',
     ...beforeStyles,
   },
-})
+});
 
 const ChatMessageExampleStyled = () => (
   <Provider
@@ -108,7 +102,7 @@ const ChatMessageExampleStyled = () => (
                 author="John Doe"
                 timestamp="Yesterday, 10:15 PM"
                 mine
-                badge={{ icon: 'mention' }}
+                badge={{ icon: <MentionIcon /> }}
                 badgePosition="start"
                 reactionGroup={reactions}
               />
@@ -125,7 +119,7 @@ const ChatMessageExampleStyled = () => (
               content={{ content }}
               author="Jane Doe"
               timestamp="Yesterday, 10:15 PM"
-              badge={{ icon: 'exclamation-circle' }}
+              badge={{ icon: <ExclamationCircleIcon /> }}
               reactionGroup={reactions}
             />
           ),
@@ -133,6 +127,6 @@ const ChatMessageExampleStyled = () => (
       ]}
     />
   </Provider>
-)
+);
 
-export default ChatMessageExampleStyled
+export default ChatMessageExampleStyled;

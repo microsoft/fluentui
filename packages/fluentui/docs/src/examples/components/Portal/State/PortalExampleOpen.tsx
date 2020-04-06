@@ -1,11 +1,11 @@
-import { createCallbackLogFormatter } from '@fluentui/code-sandbox'
-import { useBooleanKnob, useLogKnob } from '@fluentui/docs-components'
-import { Button, Header, Portal } from '@fluentui/react'
-import * as React from 'react'
+import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
+import { useBooleanKnob, useLogKnob } from '@fluentui/docs-components';
+import { Button, Header, Portal } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const PortalExampleOpen = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
-  const onClick = useLogKnob('onClick()', () => setOpen(!open), createCallbackLogFormatter([]))
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
+  const onClick = useLogKnob('onClick()', () => setOpen(!open), createCallbackLogFormatter([]));
 
   return (
     <>
@@ -30,7 +30,7 @@ const PortalExampleOpen = () => {
         </div>
       </Portal>
     </>
-  )
-}
+  );
+};
 
-export default PortalExampleOpen
+export default PortalExampleOpen;

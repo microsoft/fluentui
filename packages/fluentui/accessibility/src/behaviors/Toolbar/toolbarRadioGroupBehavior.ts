@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -9,7 +9,7 @@ import { Accessibility } from '../../types'
  *  Triggers 'nextItem' action with 'ArrowDown' on 'root'.
  *  Triggers 'prevItem' action with 'ArrowUp' on 'root'.
  */
-const toolbarRadioGroupBehavior: Accessibility = () => ({
+const toolbarRadioGroupBehavior: Accessibility<ToolbarRadioGroupBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'radiogroup',
@@ -26,6 +26,8 @@ const toolbarRadioGroupBehavior: Accessibility = () => ({
       },
     },
   },
-})
+});
 
-export default toolbarRadioGroupBehavior
+export type ToolbarRadioGroupBehaviorProps = never;
+
+export default toolbarRadioGroupBehavior;

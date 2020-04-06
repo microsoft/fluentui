@@ -7,13 +7,13 @@ import { concatStyleSets } from '@uifabric/merge-styles';
 export function customizable(
   scope: string,
   fields: string[],
-  concatStyles?: boolean
+  concatStyles?: boolean,
   // tslint:disable-next-line:no-any
 ): <P>(ComposedComponent: React.ComponentType<P>) => any {
   // tslint:disable-next-line:no-shadowed-variable
   return function customizableFactory<P>(
     // tslint:disable-next-line:no-any
-    ComposedComponent: React.ComponentType<P>
+    ComposedComponent: React.ComponentType<P>,
     // tslint:disable-next-line:no-any
   ): any {
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {

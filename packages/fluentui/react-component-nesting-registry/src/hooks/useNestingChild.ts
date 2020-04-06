@@ -1,21 +1,21 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import NestingContext from '../NestingContext'
-import { NestingContextValue } from '../types'
-import { UseNestingHookResult } from './types'
+import NestingContext from '../NestingContext';
+import { NestingContextValue } from '../types';
+import { UseNestingHookResult } from './types';
 
 const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
-  const nestingContext = React.useContext(NestingContext) as NestingContextValue
-  const childRef = React.useRef(null)
+  const nestingContext = React.useContext(NestingContext) as NestingContextValue;
+  const childRef = React.useRef(null);
 
   const getRefs = React.useCallback(() => {
-    return nestingContext.getContextRefs(childRef as any)
-  }, [])
+    return nestingContext.getContextRefs(childRef as any);
+  }, []);
 
   React.useEffect(() => {
-    nestingContext.register(childRef as any)
-    return () => nestingContext.unregister(childRef as any)
-  }, [])
+    nestingContext.register(childRef as any);
+    return () => nestingContext.unregister(childRef as any);
+  }, []);
 
   return {
     NestedComponent: React.Fragment,
@@ -24,7 +24,7 @@ const useNestingChild = <T extends Node>(): UseNestingHookResult<T> => {
     getRefs,
     isRoot: false,
     ref: childRef,
-  }
-}
+  };
+};
 
-export default useNestingChild
+export default useNestingChild;

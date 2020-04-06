@@ -4,7 +4,7 @@ import {
   DayOfWeek,
   ICalendarFormatDateCallbacks,
   ICalendarIconStrings,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from '../CalendarDayGrid/CalendarDayGrid.types';
@@ -53,7 +53,8 @@ export interface IWeeklyDayPickerProps extends IBaseProps<IWeeklyDayPicker> {
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date) => void;
 

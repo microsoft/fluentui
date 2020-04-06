@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const DialogVariationsExamples = () => (
   <ExampleSection title="Variations">
@@ -11,6 +11,6 @@ const DialogVariationsExamples = () => (
       examplePath="components/Dialog/Variations/DialogExampleBackdrop"
     />
   </ExampleSection>
-)
+);
 
-export default DialogVariationsExamples
+export default DialogVariationsExamples;

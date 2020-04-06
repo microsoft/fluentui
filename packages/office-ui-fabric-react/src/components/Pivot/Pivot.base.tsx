@@ -1,5 +1,13 @@
 import * as React from 'react';
-import { warnDeprecations, KeyCodes, getId, getNativeProps, divProperties, classNamesFunction, warn } from '../../Utilities';
+import {
+  warnDeprecations,
+  KeyCodes,
+  getId,
+  getNativeProps,
+  divProperties,
+  classNamesFunction,
+  warn,
+} from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -48,13 +56,14 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     if (process.env.NODE_ENV !== 'production') {
       warnDeprecations(PivotName, props, {
         initialSelectedKey: 'defaultSelectedKey',
-        initialSelectedIndex: 'defaultSelectedIndex'
+        initialSelectedIndex: 'defaultSelectedIndex',
       });
     }
 
     this._pivotId = getId(PivotName);
     const links: IPivotItemProps[] = this._getPivotLinks(props).links;
 
+    // tslint:disable-next-line:deprecation
     const { defaultSelectedKey = props.initialSelectedKey, defaultSelectedIndex = props.initialSelectedIndex } = props;
 
     let selectedKey: string | undefined;
@@ -68,7 +77,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     }
 
     this.state = {
-      selectedKey
+      selectedKey,
     };
   }
 
@@ -134,7 +143,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   private _renderPivotLink = (
     linkCollection: PivotLinkCollection,
     link: IPivotItemProps,
-    selectedKey: string | null | undefined
+    selectedKey: string | null | undefined,
   ): JSX.Element => {
     const { itemKey, headerButtonProps } = link;
     const tabId = linkCollection.keyToTabIdMapping[itemKey!];
@@ -216,7 +225,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const result: PivotLinkCollection = {
       links: [],
       keyToIndexMapping: {},
-      keyToTabIdMapping: {}
+      keyToTabIdMapping: {},
     };
 
     React.Children.map(React.Children.toArray(props.children), (child: React.ReactChild, index: number) => {
@@ -229,7 +238,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
           // Use linkText (deprecated) if headerText is not provided
           headerText: linkText,
           ...pivotItemProps,
-          itemKey: itemKey
+          itemKey: itemKey,
         });
         result.keyToIndexMapping[itemKey] = index;
         result.keyToTabIdMapping[itemKey] = this._getTabId(itemKey, index);
@@ -268,7 +277,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
   }
 
   /**
-   * Handle the onKeyPress eventon the PivotLinks
+   * Handle the onKeyPress event on the PivotLinks
    */
   private _onKeyPress(itemKey: string, ev: React.KeyboardEvent<HTMLElement>): void {
     if (ev.which === KeyCodes.enter) {
@@ -282,7 +291,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
    */
   private _updateSelectedItem(itemKey: string, ev?: React.MouseEvent<HTMLElement>): void {
     this.setState({
-      selectedKey: itemKey
+      selectedKey: itemKey,
     });
 
     const linkCollection = this._getPivotLinks(this.props);
@@ -307,14 +316,14 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     return getClassNames(props.styles!, {
       theme: theme!,
       rootIsLarge,
-      rootIsTabs
+      rootIsTabs,
     });
   }
 }
 
 function _isPivotItem(item: React.ReactNode): item is PivotItem {
   // In theory, we should be able to just check item.type === PivotItem.
-  // However, under certain unclear circumstances (see https://github.com/OfficeDev/office-ui-fabric-react/issues/10785),
+  // However, under certain unclear circumstances (see https://github.com/microsoft/fluentui/issues/10785),
   // the object identity is different despite the function implementation being the same.
   return (
     !!item &&

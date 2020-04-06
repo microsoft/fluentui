@@ -1,9 +1,9 @@
-import { Portal } from '@fluentui/react'
-import * as React from 'react'
+import { Portal } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const PortalMinimalPerf = () => <Portal />
+const PortalMinimalPerf = () => <Portal />;
 
-PortalMinimalPerf.iterations = 5000
-PortalMinimalPerf.filename = 'PortalMinimal.perf.tsx'
+PortalMinimalPerf.iterations = 5000;
+PortalMinimalPerf.filename = 'PortalMinimal.perf.tsx';
 
-export default PortalMinimalPerf
+export default PortalMinimalPerf;

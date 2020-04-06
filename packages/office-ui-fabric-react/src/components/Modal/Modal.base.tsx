@@ -1,12 +1,14 @@
 import * as React from 'react';
 import {
-  BaseComponent,
   classNamesFunction,
   getId,
   allowScrollOnElement,
   allowOverscrollOnElement,
   KeyCodes,
-  elementContains
+  elementContains,
+  warnDeprecations,
+  Async,
+  EventGroup,
 } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
 import { animationDuration } from './Modal.styles';
@@ -18,11 +20,12 @@ import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/w
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
 import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
+import { initializeComponentRef } from '@uifabric/utilities';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
 const DefaultLayerProps: ILayerProps = {
-  eventBubblingEnabled: false
+  eventBubblingEnabled: false,
 };
 
 export interface IDialogState {
@@ -39,15 +42,16 @@ export interface IDialogState {
 }
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
+const COMPONENT_NAME = 'Modal';
 
 @withResponsiveMode
-export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
+export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
   public static defaultProps: IModalProps = {
     isOpen: false,
     isDarkOverlay: true,
     isBlocking: false,
     className: '',
-    containerClassName: ''
+    containerClassName: '',
   };
 
   private _onModalCloseTimer: number;
@@ -57,24 +61,31 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   private _lastSetY: number;
   private _allowTouchBodyScroll: boolean;
   private _hasRegisteredKeyUp: boolean;
+  private _async: Async;
+  private _events: EventGroup;
 
   constructor(props: IModalProps) {
     super(props);
+
+    this._async = new Async(this);
+    this._events = new EventGroup(this);
+    initializeComponentRef(this);
+
+    warnDeprecations(COMPONENT_NAME, props, {
+      onLayerDidMount: 'layerProps.onLayerDidMount',
+    });
+
     this.state = {
       id: getId('Modal'),
       isOpen: props.isOpen,
       isVisible: props.isOpen,
       hasBeenOpened: props.isOpen,
       x: 0,
-      y: 0
+      y: 0,
     };
 
     this._lastSetX = 0;
     this._lastSetY = 0;
-
-    this._warnDeprecations({
-      onLayerDidMount: 'layerProps.onLayerDidMount'
-    });
 
     const { allowTouchBodyScroll = false } = this.props;
     this._allowTouchBodyScroll = allowTouchBodyScroll;
@@ -89,7 +100,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       if (!this.state.isOpen) {
         // First Open
         this.setState({
-          isOpen: true
+          isOpen: true,
         });
         // Add a keyUp handler for all key up events when the dialog is open
         if (newProps.dragOptions) {
@@ -100,7 +111,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         // Reopen during closing
         this.setState({
           hasBeenOpened: true,
-          isVisible: true
+          isVisible: true,
         });
 
         if (newProps.topOffsetFixed) {
@@ -109,7 +120,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           if (dialogMain.length > 0) {
             modalRectangle = dialogMain[0].getBoundingClientRect();
             this.setState({
-              modalRectangleTop: modalRectangle.top
+              modalRectangleTop: modalRectangle.top,
             });
           }
         }
@@ -120,7 +131,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     if (!newProps.isOpen && this.state.isOpen) {
       this._onModalCloseTimer = this._async.setTimeout(this._onModalClose, parseFloat(animationDuration) * 1000);
       this.setState({
-        isVisible: false
+        isVisible: false,
       });
     }
   }
@@ -136,9 +147,14 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
   public componentDidUpdate(prevProps: IModalProps, prevState: IDialogState) {
     if (!prevProps.isOpen && !prevState.isVisible) {
       this.setState({
-        isVisible: true
+        isVisible: true,
       });
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
+    this._events.dispose();
   }
 
   public render(): JSX.Element | null {
@@ -162,9 +178,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       subtitleAriaId,
       theme,
       topOffsetFixed,
+      // tslint:disable-next-line:deprecation
       onLayerDidMount,
       isModeless,
-      dragOptions
+      dragOptions,
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -186,7 +203,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       topOffsetFixed,
       isModeless,
       layerClassName,
-      isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector
+      isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector,
     });
 
     const mergedLayerProps = {
@@ -194,7 +211,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       ...this.props.layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
       insertFirst: isModeless,
-      className: classNames.layer
+      className: classNames.layer,
     };
     const modalContent = (
       <FocusTrapZone
@@ -222,7 +239,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             <dragOptions.menu
               items={[
                 { key: 'move', text: dragOptions.moveMenuItemText, onClick: this._onEnterKeyboardMoveMode },
-                { key: 'close', text: dragOptions.closeMenuItemText, onClick: this._onModalClose }
+                { key: 'close', text: dragOptions.closeMenuItemText, onClick: this._onModalClose },
               ]}
               onDismiss={this._onModalContextMenuClose}
               alignTargetEdge={true}
@@ -314,7 +331,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isInKeyboardMoveMode: false,
       isOpen: false,
       x: 0,
-      y: 0
+      y: 0,
     });
 
     if (this.props.dragOptions && this._hasRegisteredKeyUp) {
@@ -391,25 +408,25 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         }
         case KeyCodes.up: {
           this.setState({
-            y: this.state.y - delta
+            y: this.state.y - delta,
           });
           break;
         }
         case KeyCodes.down: {
           this.setState({
-            y: this.state.y + delta
+            y: this.state.y + delta,
           });
           break;
         }
         case KeyCodes.left: {
           this.setState({
-            x: this.state.x - delta
+            x: this.state.x - delta,
           });
           break;
         }
         case KeyCodes.right: {
           this.setState({
-            x: this.state.x + delta
+            x: this.state.x + delta,
           });
           break;
         }

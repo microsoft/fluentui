@@ -1,16 +1,16 @@
-import * as React from 'react'
-import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Extendable, Header, ICSSInJSStyle } from '@fluentui/react-northstar';
 
 const headerStyle: ICSSInJSStyle = {
   marginTop: '1.5em',
   marginBottom: '0.5em',
   color: '#999',
   textTransform: 'uppercase',
-}
+};
 
 export type ExampleSectionProps = Extendable<{
-  title: string
-}>
+  title: string;
+}>;
 
 // minmax = prevent example overflow - https://stackoverflow.com/a/43312314
 const ExampleSection: React.FC<ExampleSectionProps> = ({ title, children }) => (
@@ -22,6 +22,6 @@ const ExampleSection: React.FC<ExampleSectionProps> = ({ title, children }) => (
       {children}
     </Grid>
   </>
-)
+);
 
-export default ExampleSection
+export default ExampleSection;

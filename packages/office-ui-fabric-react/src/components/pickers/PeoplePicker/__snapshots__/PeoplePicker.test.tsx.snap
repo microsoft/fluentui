@@ -522,7 +522,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 24px;
                   }
                   &::-moz-focus-inner {
@@ -607,7 +606,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         margin-top: 0;
                         speak: none;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Cancel"
                 >

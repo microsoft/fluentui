@@ -14,14 +14,14 @@ storiesOf('Breadcrumb', module)
       steps={new Screener.Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')"
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
         .executeScript("document.getElementsByClassName('ms-Breadcrumb-overflowButton')[0].focus()")
         .snapshot('overflowButtonFocus', { cropTo: '.testWrapper' })
         .executeScript("document.getElementsByClassName('ms-Breadcrumb-itemLink')[0].focus()")
         .snapshot('itemLinkFocus', { cropTo: '.testWrapper' })
         .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')"
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
         .hover('.ms-Breadcrumb-overflowButton')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -48,12 +48,12 @@ storiesOf('Breadcrumb', module)
           { text: 'This is link 2', key: 'l2', href: '#/examples/breadcrumb' },
           { text: 'This is link 3 with a long name', key: 'l3', href: '#/examples/breadcrumb' },
           { text: 'This is link 4', key: 'l4', href: '#/examples/breadcrumb' },
-          { text: 'This is link 5', key: 'l5', href: '#/examples/breadcrumb', isCurrentItem: true }
+          { text: 'This is link 5', key: 'l5', href: '#/examples/breadcrumb', isCurrentItem: true },
         ]}
         maxDisplayedItems={3}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory(
     'Button',
@@ -65,12 +65,12 @@ storiesOf('Breadcrumb', module)
           { text: 'This is folder 2', key: 'l2', onClick: noOp },
           { text: 'This is folder 3', key: 'l3', onClick: noOp },
           { text: 'This is folder 4', key: 'l4', onClick: noOp },
-          { text: 'This is folder 5', key: 'l5', onClick: noOp, isCurrentItem: true }
+          { text: 'This is folder 5', key: 'l5', onClick: noOp, isCurrentItem: true },
         ]}
         maxDisplayedItems={3}
       />
     ),
-    { rtl: true }
+    { rtl: true },
   );
 
 // Stories for hovering over actionable and non-actionable items
@@ -105,7 +105,7 @@ storiesOf('Breadcrumb', module)
         // displayed
         { text: 'Folder 3', key: 'l3', onClick: noOp },
         { text: 'Folder 4 no action', key: 'l4' },
-        { text: 'Folder 5', key: 'l5', onClick: noOp, isCurrentItem: true }
+        { text: 'Folder 5', key: 'l5', onClick: noOp, isCurrentItem: true },
       ]}
       maxDisplayedItems={3}
     />

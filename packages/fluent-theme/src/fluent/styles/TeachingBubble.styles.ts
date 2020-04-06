@@ -14,33 +14,33 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     headline: {
       fontSize: headlineSize,
-      fontWeight: FontWeights.semibold
+      fontWeight: FontWeights.semibold,
     },
     footer: {
       selectors: {
         '.ms-Button:not(:first-child)': {
-          marginLeft: '16px'
-        }
-      }
+          marginLeft: '16px',
+        },
+      },
     },
     closeButton: {
       backgroundColor: 'transparent',
       selectors: {
         '&:hover': {
-          color: palette.black
+          color: palette.black,
         },
         '&:active': {
           background: palette.themeDarkAlt,
-          color: palette.black
-        }
-      }
+          color: palette.black,
+        },
+      },
     },
     subComponentStyles: {
       callout: {
         root: {
-          boxShadow: effects.elevation16
-        }
-      }
-    }
+          boxShadow: effects.elevation16,
+        },
+      },
+    },
   };
 };

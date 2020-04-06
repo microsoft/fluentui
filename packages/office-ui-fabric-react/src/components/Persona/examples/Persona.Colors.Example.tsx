@@ -7,9 +7,9 @@ const sharedPersonaProps: IPersonaProps = {
   styles: {
     root: {
       width: 300,
-      margin: 5
-    }
-  }
+      margin: 5,
+    },
+  },
 };
 
 export const PersonaColorsExample: React.FunctionComponent = () => {

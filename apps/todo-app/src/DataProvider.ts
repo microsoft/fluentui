@@ -49,23 +49,23 @@ export default class DataProvider implements IDataProvider {
       {
         id: '61b59681-2a82-4a51-b221-8c35e333ae89',
         title: 'Finish Sample Todo web part before dev kitchen',
-        isComplete: false
+        isComplete: false,
       },
       {
         id: '94a844ae-0c6a-4820-8042-dbc386bdf930',
         title: 'Finish All the work in Todo web part before dev kitchen',
-        isComplete: false
+        isComplete: false,
       },
       {
         id: '5fa55618-90f9-4b5f-b12d-60c9fb1fc7f0',
         title: 'SharePoint API investigation for Todo web part',
-        isComplete: true
+        isComplete: true,
       },
       {
         id: '2ae54c74-1395-4a49-8dd2-4857efdd0e5e',
         title: 'Bug fixing of Pivot Control',
-        isComplete: true
-      }
+        isComplete: true,
+      },
     ];
     this._isLoading = false;
 
@@ -85,7 +85,7 @@ export default class DataProvider implements IDataProvider {
       const newItem: ITodoItem = {
         id: this._generateGuid(),
         title: title,
-        isComplete: false
+        isComplete: false,
       };
 
       setTimeout(() => {
@@ -114,7 +114,7 @@ export default class DataProvider implements IDataProvider {
   public toggleComplete(item: ITodoItem): Promise<ITodoItem[]> {
     // Create a new Item in which the PercentComplete value has been changed.
     const newItem: ITodoItem = (update as any)(item, {
-      isComplete: { $set: item.isComplete === true ? false : true }
+      isComplete: { $set: item.isComplete === true ? false : true },
     });
 
     return new Promise<ITodoItem[]>((resolve, reject) => {

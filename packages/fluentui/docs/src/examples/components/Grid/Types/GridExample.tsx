@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Grid, Image } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Image } from '@fluentui/react-northstar';
 
 const images = [
   <Image key="ade" fluid src="public/images/avatar/large/ade.jpg" />,
@@ -12,8 +12,8 @@ const images = [
   <Image key="jenny" fluid src="public/images/avatar/large/jenny.jpg" />,
   <Image key="joe" fluid src="public/images/avatar/large/joe.jpg" />,
   <Image key="justen" fluid src="public/images/avatar/large/justen.jpg" />,
-]
+];
 
-const GridExample = () => <Grid>{images}</Grid>
+const GridExample = () => <Grid>{images}</Grid>;
 
-export default GridExample
+export default GridExample;

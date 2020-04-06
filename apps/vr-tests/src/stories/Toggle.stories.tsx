@@ -8,7 +8,7 @@ import { IToggleProps, Toggle } from 'office-ui-fabric-react';
 const baseProps: IToggleProps = {
   label: 'Toggle label',
   onText: 'On',
-  offText: 'Off'
+  offText: 'Off',
 };
 
 storiesOf('Toggle', module)

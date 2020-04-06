@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react/'
+import * as React from 'react';
+import { Alert } from '@fluentui/react-northstar';
 
-import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions'
-import Types from './Types'
-import Variations from './Variations'
+import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions';
+import Types from './Types';
+import Variations from './Variations';
 
 const LayoutExamples = () => (
   <div>
@@ -13,6 +13,6 @@ const LayoutExamples = () => (
     <Types />
     <Variations />
   </div>
-)
+);
 
-export default LayoutExamples
+export default LayoutExamples;

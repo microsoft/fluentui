@@ -16,11 +16,11 @@ export const getStyles = memoizeFunction(
     const defaultButtonStyles: IButtonStyles = {
       root: {
         minWidth: DEFAULT_BUTTON_MIN_WIDTH,
-        height: DEFAULT_BUTTON_HEIGHT
+        height: DEFAULT_BUTTON_HEIGHT,
       },
       label: {
-        fontWeight: FontWeights.semibold
-      }
+        fontWeight: FontWeights.semibold,
+      },
     };
 
     return concatStyleSets(
@@ -28,7 +28,7 @@ export const getStyles = memoizeFunction(
       defaultButtonStyles,
       primary ? primaryStyles(theme) : standardStyles(theme),
       splitButtonStyles,
-      customStyles
+      customStyles,
     )!;
-  }
+  },
 );

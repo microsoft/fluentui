@@ -7,7 +7,7 @@ const GlobalClassNames: { [key in keyof IPlatformBarStyles]: string } = {
   inner: 'ms-PlatformBarInner',
   platformGrid: 'ms-PlatformBarGrid',
   platformButton: 'ms-PlatformBarButton',
-  platformIcon: 'ms-PlatformBarIcon'
+  platformIcon: 'ms-PlatformBarIcon',
 };
 
 export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => {
@@ -22,9 +22,9 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
     root: [
       classNames.root,
       {
-        background: '#50E3C2'
+        background: '#50E3C2',
       },
-      className
+      className,
     ],
 
     inner: [
@@ -33,8 +33,8 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
         display: 'flex',
         justifyContent: 'flex-end',
         margin: '0 auto',
-        maxWidth: innerWidth
-      }
+        maxWidth: innerWidth,
+      },
     ],
 
     platformGrid: [
@@ -43,8 +43,8 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
         display: 'inline-flex',
         justifyContent: 'flex-end',
         flex: '1 0 auto',
-        margin: 0
-      }
+        margin: 0,
+      },
     ],
 
     platformButton: [
@@ -62,10 +62,10 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
 
         selectors: {
           '&:hover, &:active, &:active:hover': {
-            background: platformShade ? platformShade.str : palette.themeLight
-          }
-        }
-      }
+            background: platformShade ? platformShade.str : palette.themeLight,
+          },
+        },
+      },
     ],
 
     platformIcon: [
@@ -77,13 +77,13 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
         selectors: {
           svg: {
             width: 32,
-            height: 32
+            height: 32,
           },
           path: {
-            stroke: palette.black
-          }
-        }
-      }
-    ]
+            stroke: palette.black,
+          },
+        },
+      },
+    ],
   };
 };

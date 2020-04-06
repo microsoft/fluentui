@@ -1,11 +1,11 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import { Dropdown } from '@fluentui/react'
-import * as React from 'react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import { Dropdown } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth']
+const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange', 'Alfred Pennyworth'];
 
 const DropdownExampleLoading = () => {
-  const [loading] = useBooleanKnob({ name: 'loading', initialValue: true })
+  const [loading] = useBooleanKnob({ name: 'loading', initialValue: true });
 
   return (
     <Dropdown
@@ -16,7 +16,7 @@ const DropdownExampleLoading = () => {
       items={inputItems}
       placeholder="Start typing a name"
     />
-  )
-}
+  );
+};
 
-export default DropdownExampleLoading
+export default DropdownExampleLoading;

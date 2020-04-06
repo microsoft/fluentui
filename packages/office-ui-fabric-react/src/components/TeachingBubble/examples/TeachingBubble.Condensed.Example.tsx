@@ -14,7 +14,7 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -40,7 +40,8 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
               closeButtonAriaLabel="Close"
               headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
         ) : null}
@@ -50,13 +51,13 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

@@ -1,16 +1,16 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import { Button, Flex, Divider } from '@fluentui/react'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Flex, Divider, Icon } from '@fluentui/react-northstar';
 
 export type PageDescriptor = {
-  name: string
-  url: string
-}
+  name: string;
+  url: string;
+};
 
 type GuidesNavigationFooterProps = {
-  previous?: PageDescriptor
-  next?: PageDescriptor
-}
+  previous?: PageDescriptor;
+  next?: PageDescriptor;
+};
 
 const GuidesNavigationFooter: React.FC<GuidesNavigationFooterProps> = ({ previous, next }) => (
   <>
@@ -22,7 +22,7 @@ const GuidesNavigationFooter: React.FC<GuidesNavigationFooterProps> = ({ previou
         <Button
           as={Link}
           content={previous.name}
-          icon="arrow left"
+          icon={<Icon name="arrow left" />}
           iconPosition="before"
           primary
           to={previous.url}
@@ -32,7 +32,7 @@ const GuidesNavigationFooter: React.FC<GuidesNavigationFooterProps> = ({ previou
         <Button
           as={Link}
           content={next.name}
-          icon="arrow right"
+          icon={<Icon name="arrow right" />}
           iconPosition="after"
           primary
           to={next.url}
@@ -40,6 +40,6 @@ const GuidesNavigationFooter: React.FC<GuidesNavigationFooterProps> = ({ previou
       )}
     </Flex>
   </>
-)
+);
 
-export default GuidesNavigationFooter
+export default GuidesNavigationFooter;

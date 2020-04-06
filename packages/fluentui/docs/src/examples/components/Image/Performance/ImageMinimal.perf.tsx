@@ -1,9 +1,9 @@
-import { Image } from '@fluentui/react'
-import * as React from 'react'
+import { Image } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const ImageMinimalPerf = () => <Image />
+const ImageMinimalPerf = () => <Image />;
 
-ImageMinimalPerf.iterations = 5000
-ImageMinimalPerf.filename = 'ImageMinimal.perf.tsx'
+ImageMinimalPerf.iterations = 5000;
+ImageMinimalPerf.filename = 'ImageMinimal.perf.tsx';
 
-export default ImageMinimalPerf
+export default ImageMinimalPerf;

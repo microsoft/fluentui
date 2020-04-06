@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Variations = () => (
   <ExampleSection title="Variations">
@@ -49,7 +49,12 @@ const Variations = () => (
       description="An Avatar can have different sizes."
       examplePath="components/Avatar/Variations/AvatarExampleSize"
     />
+    <ComponentExample
+      title="Square"
+      description="An Avatar can have a square shape."
+      examplePath="components/Avatar/Variations/AvatarExampleSquare"
+    />
   </ExampleSection>
-)
+);
 
-export default Variations
+export default Variations;

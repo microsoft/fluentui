@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Table } from '@fluentui/react'
+import * as React from 'react';
+import { Table } from '@fluentui/react-northstar';
 
 const header = {
   key: 'header',
@@ -9,7 +9,7 @@ const header = {
     { content: 'Picture', key: 'pic' },
     { content: 'Age', key: 'action' },
   ],
-}
+};
 const rowsPlain = [
   {
     key: 1,
@@ -42,15 +42,10 @@ const rowsPlain = [
       { content: '30000000000000 years', truncateContent: true, key: '3-4' },
     ],
   },
-]
+];
 
 const StaticTable = () => (
-  <Table
-    variables={{ cellContentOverflow: 'none' }}
-    header={header}
-    rows={rowsPlain}
-    aria-label="Static table"
-  />
-)
+  <Table variables={{ cellContentOverflow: 'none' }} header={header} rows={rowsPlain} aria-label="Static table" />
+);
 
-export default StaticTable
+export default StaticTable;

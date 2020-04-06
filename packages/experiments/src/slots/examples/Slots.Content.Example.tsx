@@ -25,8 +25,8 @@ export class SlotsContentExample extends React.Component<{}, {}> {
                 <b>
                   Wrapper Content Text: <DefaultComponent {...contentProps}>TextType</DefaultComponent>
                 </b>
-              )
-            }
+              ),
+            },
           }}
         >
           <p>Content: Function, Text + ContentType</p>

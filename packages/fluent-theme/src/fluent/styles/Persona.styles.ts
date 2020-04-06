@@ -9,17 +9,17 @@ export const PersonaStyles = (props: IPersonaStyleProps): Partial<IPersonaStyles
     primaryText: [
       size.isSize100 && {
         fontSize: FontSizes.size20,
-        fontWeight: FontWeights.regular
+        fontWeight: FontWeights.regular,
       },
       size.isSize72 && {
-        fontSize: FontSizes.size20
+        fontSize: FontSizes.size20,
       },
       size.isSize48 && {
-        fontSize: FontSizes.size16
-      }
+        fontSize: FontSizes.size16,
+      },
     ],
     tertiaryText: {
-      fontSize: FontSizes.size14
-    }
+      fontSize: FontSizes.size14,
+    },
   };
 };

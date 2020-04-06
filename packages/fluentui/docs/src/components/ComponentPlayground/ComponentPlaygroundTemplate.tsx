@@ -1,26 +1,22 @@
-import { KnobInspector, unstable_KnobContext } from '@fluentui/docs-components'
-import { Grid, Header, Segment } from '@fluentui/react'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { KnobInspector, unstable_KnobContext } from '@fluentui/docs-components';
+import { Grid, Header, Segment } from '@fluentui/react-northstar';
+import * as _ from 'lodash';
+import * as React from 'react';
 
-import ComponentPlaygroundSnippet from './ComponentPlaygroundSnippet'
+import ComponentPlaygroundSnippet from './ComponentPlaygroundSnippet';
 
 type ComponentPlaygroundTemplateProps = {
-  element?: React.ReactElement
-  component?: React.FunctionComponent
-  fluid?: boolean
-}
+  element?: React.ReactElement;
+  component?: React.FunctionComponent;
+  fluid?: boolean;
+};
 
 const NoopKnobProvider: React.FunctionComponent = props => {
-  const knobContext = React.useContext(unstable_KnobContext)
-  const noopContext = { ...knobContext, registerKnob: _.noop, unregisterKnob: _.noop }
+  const knobContext = React.useContext(unstable_KnobContext);
+  const noopContext = { ...knobContext, registerKnob: _.noop, unregisterKnob: _.noop };
 
-  return (
-    <unstable_KnobContext.Provider value={noopContext}>
-      {props.children}
-    </unstable_KnobContext.Provider>
-  )
-}
+  return <unstable_KnobContext.Provider value={noopContext}>{props.children}</unstable_KnobContext.Provider>;
+};
 
 const ComponentPlaygroundTemplate: React.FunctionComponent<ComponentPlaygroundTemplateProps> = props => (
   <Grid columns="1fr 300px" rows="1fr auto" styles={{ gridColumnGap: '1rem' }}>
@@ -49,13 +45,9 @@ const ComponentPlaygroundTemplate: React.FunctionComponent<ComponentPlaygroundTe
         been already registered.
       */}
     <NoopKnobProvider>
-      <ComponentPlaygroundSnippet
-        element={props.element}
-        component={props.component}
-        style={{ gridRow: 2 }}
-      />
+      <ComponentPlaygroundSnippet element={props.element} component={props.component} style={{ gridRow: 2 }} />
     </NoopKnobProvider>
   </Grid>
-)
+);
 
-export default ComponentPlaygroundTemplate
+export default ComponentPlaygroundTemplate;

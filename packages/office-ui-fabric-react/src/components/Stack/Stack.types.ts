@@ -1,20 +1,35 @@
 import * as React from 'react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
+import {
+  IComponentStyles,
+  IHTMLSlot,
+  ISlotProp,
+  IComponent,
+  IStyleableComponentProps,
+  ISlottableProps,
+} from '../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
  * properties can take.
  * {@docCategory Stack}
  */
-export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
+export type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'space-between'
+  | 'space-around'
+  | 'space-evenly'
+  | 'baseline'
+  | 'stretch';
 
 /**
  * {@docCategory Stack}
  */
 export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
-// The following two types are redundant with IStackComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
+// The following two types are redundant with IStackComponent but are needed until TS function return widening issue
+// is resolved: https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 
 /**
@@ -58,7 +73,7 @@ export interface IStackProps
   /**
    * Defines how to render the Stack.
    */
-  as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
+  as?: React.ElementType<React.HTMLAttributes<HTMLElement>>;
 
   /**
    * Defines whether to render Stack children horizontally.

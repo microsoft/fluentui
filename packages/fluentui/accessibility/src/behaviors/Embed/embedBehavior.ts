@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -26,13 +26,13 @@ const embedBehavior: Accessibility<EmbedBehaviorProps> = props => ({
       },
     },
   },
-})
+});
 
-export default embedBehavior
+export default embedBehavior;
 
 type EmbedBehaviorProps = {
   /** Corresponds to HTML title attribute. */
-  title?: string
+  title?: string;
   /** Alternative text. */
-  alt?: string
-}
+  alt?: string;
+};

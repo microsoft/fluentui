@@ -1,4 +1,4 @@
-import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react'
+import { ToolbarItem, ToolbarMenuItem } from '@fluentui/react-northstar';
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -10,6 +10,6 @@ const config: ScreenerTestsConfig = {
         .keys(`.${ToolbarMenuItem.className}:nth-child(1)`, keys.rightArrow)
         .snapshot('Opens submenu'),
   ],
-}
+};
 
-export default config
+export default config;

@@ -1,15 +1,15 @@
-import * as React from 'react'
-import { Alert, Button, MenuButton } from '@fluentui/react'
+import * as React from 'react';
+import { Alert, Button, MenuButton } from '@fluentui/react-northstar';
 
-const items = ['1', '2', '3', { content: 'submenu', menu: { items: ['4', '5'] } }]
+const items = ['1', '2', '3', { content: 'submenu', menu: { items: ['4', '5'] } }];
 
 class MenuButtonOnElement extends React.Component {
-  state = { alert: false }
+  state = { alert: false };
 
   showAlert = () => {
-    this.setState({ alert: true })
-    setTimeout(() => this.setState({ alert: false }), 2000)
-  }
+    this.setState({ alert: true });
+    setTimeout(() => this.setState({ alert: false }), 2000);
+  };
 
   render() {
     return (
@@ -25,8 +25,8 @@ class MenuButtonOnElement extends React.Component {
         />
         {this.state.alert && <Alert warning content="Click!" />}
       </>
-    )
+    );
   }
 }
 
-export default MenuButtonOnElement
+export default MenuButtonOnElement;

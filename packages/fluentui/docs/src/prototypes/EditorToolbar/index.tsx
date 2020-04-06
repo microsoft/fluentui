@@ -1,29 +1,29 @@
-import { KnobsSnippet } from '@fluentui/code-sandbox'
-import { CodeSnippet, KnobInspector, KnobProvider, useBooleanKnob } from '@fluentui/docs-components'
-import * as React from 'react'
+import { KnobsSnippet } from '@fluentui/code-sandbox';
+import { CodeSnippet, KnobInspector, KnobProvider, useBooleanKnob } from '@fluentui/docs-components';
+import * as React from 'react';
 
-import { ComponentPrototype, PrototypeSection } from '../Prototypes'
-import EditorToolbar from './EditorToolbar'
-import { editorToolbarReducer, initialState } from './editorToolbarReducer'
-import { Button, Divider, Provider, themes } from '@fluentui/react'
-import PortalWindow from './PortalWindow'
+import { ComponentPrototype, PrototypeSection } from '../Prototypes';
+import EditorToolbar from './EditorToolbar';
+import { editorToolbarReducer, initialState } from './editorToolbarReducer';
+import { Button, Divider, Provider, themes } from '@fluentui/react-northstar';
+import PortalWindow from './PortalWindow';
 
 const EditorToolbarPrototype = () => {
-  const [state, dispatch] = React.useReducer(editorToolbarReducer, initialState)
+  const [state, dispatch] = React.useReducer(editorToolbarReducer, initialState);
 
   return (
     <>
       <EditorToolbar {...state} dispatch={dispatch} />
       <CodeSnippet mode="json" value={state} />
     </>
-  )
-}
+  );
+};
 
 const EditorToolbarInWindowPrototype = () => {
-  const [state, dispatch] = React.useReducer(editorToolbarReducer, initialState)
+  const [state, dispatch] = React.useReducer(editorToolbarReducer, initialState);
 
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
-  const [rtl] = useBooleanKnob({ name: 'rtl' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
+  const [rtl] = useBooleanKnob({ name: 'rtl' });
 
   return (
     <>
@@ -46,16 +46,15 @@ const EditorToolbarInWindowPrototype = () => {
         </PortalWindow>
       )}
     </>
-  )
-}
+  );
+};
 
 const EditorToolbarPrototypes: React.FC = () => (
   <PrototypeSection title="Editor Toolbar">
     <ComponentPrototype
       description={
         <>
-          A prototype that features the <code>overflow</code> prop of <code>Toolbar</code>{' '}
-          component.
+          A prototype that features the <code>overflow</code> prop of <code>Toolbar</code> component.
         </>
       }
     >
@@ -79,6 +78,6 @@ const EditorToolbarPrototypes: React.FC = () => (
       </KnobProvider>
     </ComponentPrototype>
   </PrototypeSection>
-)
+);
 
-export default EditorToolbarPrototypes
+export default EditorToolbarPrototypes;

@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Item from './Item'
+import Rtl from './Rtl';
+import Types from './Types';
+import Item from './Item';
 
 const RadioGroupExamples = () => (
   <>
@@ -10,6 +10,6 @@ const RadioGroupExamples = () => (
     <Item />
     <Rtl />
   </>
-)
+);
 
-export default RadioGroupExamples
+export default RadioGroupExamples;

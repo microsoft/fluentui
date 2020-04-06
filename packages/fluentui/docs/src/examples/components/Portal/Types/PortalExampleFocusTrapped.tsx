@@ -1,20 +1,20 @@
-import * as React from 'react'
-import { Button, Header, Portal } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Header, Portal } from '@fluentui/react-northstar';
 
 class PortalExamplePortal extends React.Component {
-  state = { open: false }
+  state = { open: false };
 
   openPortal = () => {
-    this.setState({ open: true })
-  }
+    this.setState({ open: true });
+  };
 
   closePortal = () => {
-    this.setState({ open: false })
-  }
+    this.setState({ open: false });
+  };
 
   render() {
-    const { open } = this.state
-    const btnContent = open ? 'Close Portal' : 'Open Portal'
+    const { open } = this.state;
+    const btnContent = open ? 'Close Portal' : 'Open Portal';
 
     return (
       <div>
@@ -67,8 +67,8 @@ class PortalExamplePortal extends React.Component {
           </div>
         </Portal>
       </div>
-    )
+    );
   }
 }
 
-export default PortalExamplePortal
+export default PortalExamplePortal;

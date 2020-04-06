@@ -1,13 +1,13 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Types from './Types'
-import State from './State'
+import Types from './Types';
+import State from './State';
 
 const PortalExamples = () => (
   <>
     <Types />
     <State />
   </>
-)
+);
 
-export default PortalExamples
+export default PortalExamples;

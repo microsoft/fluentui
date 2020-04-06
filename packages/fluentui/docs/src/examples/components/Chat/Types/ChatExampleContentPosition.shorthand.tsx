@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, Chat, ChatItemProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const [janeAvatar, johnAvatar] = [
-  'public/images/avatar/small/ade.jpg',
-  'public/images/avatar/small/joe.jpg',
-].map(src => ({
-  image: src,
-  status: { color: 'green', icon: 'icon-checkmark' },
-}))
+const [janeAvatar, johnAvatar] = ['public/images/avatar/small/ade.jpg', 'public/images/avatar/small/joe.jpg'].map(
+  src => ({
+    image: src,
+    status: { color: 'green', icon: <AcceptIcon /> },
+  }),
+);
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
@@ -22,8 +22,8 @@ const items: ShorthandCollection<ChatItemProps> = [
     message: <Chat.Message content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" mine />,
     key: 'message-id-2',
   },
-]
+];
 
-const ChatExampleContentPosition = () => <Chat items={items} />
+const ChatExampleContentPosition = () => <Chat items={items} />;
 
-export default ChatExampleContentPosition
+export default ChatExampleContentPosition;

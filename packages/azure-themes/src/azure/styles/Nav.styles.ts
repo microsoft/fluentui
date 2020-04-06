@@ -7,19 +7,19 @@ export const NavStyles = (props: INavStyleProps): Partial<INavStyles> => {
 
   return {
     compositeLink: {
-      border: borderNone
+      border: borderNone,
     },
     link: {
       border: borderNone,
       color: semanticColors.bodyText,
       selectors: {
         '&:hover': {
-          border: borderNone
+          border: borderNone,
         },
         '&:active': {
-          border: borderNone
-        }
-      }
-    }
+          border: borderNone,
+        },
+      },
+    },
   };
 };

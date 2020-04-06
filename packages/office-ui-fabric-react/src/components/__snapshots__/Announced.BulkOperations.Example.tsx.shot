@@ -1645,11 +1645,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -2287,11 +2289,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -2929,11 +2933,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -3571,11 +3577,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -4213,11 +4221,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -4855,11 +4865,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -5497,11 +5509,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -6139,11 +6153,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -6781,11 +6797,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;
@@ -7423,11 +7441,13 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                                       padding-right: 0px;
                                       padding-top: 0px;
                                       text-align: left;
+                                      text-decoration: none;
                                       text-overflow: inherit;
                                       user-select: text;
                                     }
                                     .ms-Fabric--isFocusVisible &:focus {
                                       box-shadow: 0 0 0 1px #605e5c inset;
+                                      outline: 1px auto #605e5c;
                                     }
                                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                                       outline: 1px solid WindowText;

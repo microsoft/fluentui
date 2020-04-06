@@ -4,7 +4,20 @@ import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities
 import { Calendar, DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/Calendar';
 
 const DayPickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -16,7 +29,7 @@ const DayPickerStrings = {
   nextYearAriaLabel: 'Next year',
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
-  closeButtonAriaLabel: 'Close'
+  closeButtonAriaLabel: 'Close',
 };
 
 export interface ICalendarInlineExampleState {
@@ -49,7 +62,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
     this.state = {
       selectedDate: null,
-      selectedDateRange: null
+      selectedDateRange: null,
     };
 
     this._onDismiss = this._onDismiss.bind(this);
@@ -60,11 +73,11 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
   public render(): JSX.Element {
     const divStyle: React.CSSProperties = {
-      height: 'auto'
+      height: 'auto',
     };
 
     const buttonStyle: React.CSSProperties = {
-      margin: '17px 10px 0 0'
+      margin: '17px 10px 0 0',
     };
 
     let dateRangeString: string | null = null;
@@ -78,7 +91,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       <div style={divStyle}>
         {
           <div>
-            Selected date(s): <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
+            Selected date(s):{' '}
+            <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
           </div>
         }
         <div>
@@ -100,7 +114,9 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             Disabled date(s):
             <span>
               {' '}
-              {this.props.restrictedDates.length > 0 ? this.props.restrictedDates.map(d => d.toLocaleDateString()).join(', ') : 'Not set'}
+              {this.props.restrictedDates.length > 0
+                ? this.props.restrictedDates.map(d => d.toLocaleDateString()).join(', ')
+                : 'Not set'}
             </span>
           </div>
         )}
@@ -157,7 +173,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const newSelectedDate = addDays(subtractFrom, -daysToSubtract);
 
       return {
-        selectedDate: newSelectedDate
+        selectedDate: newSelectedDate,
       };
     });
   }
@@ -169,7 +185,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const newSelectedDate = addDays(dateRangeArray.pop()!, 1);
 
       return {
-        selectedDate: newSelectedDate
+        selectedDate: newSelectedDate,
       };
     });
   }
@@ -178,7 +194,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this.setState((prevState: ICalendarInlineExampleState) => {
       return {
         selectedDate: date,
-        selectedDateRange: dateRangeArray
+        selectedDateRange: dateRangeArray,
       };
     });
   }

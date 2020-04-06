@@ -16,8 +16,8 @@ if (fs.existsSync(configPath)) {
   const compiler = webpack(webpackConfig);
   const devServerOptions = Object.assign({}, webpackConfig.devServer, {
     stats: {
-      colors: true
-    }
+      colors: true,
+    },
   });
   const server = new WebpackDevServer(compiler, devServerOptions);
 
@@ -29,7 +29,7 @@ if (fs.existsSync(configPath)) {
   <script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>
   <script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
   <script type="text/javascript" src="${url}/office-ui-fabric-react.js"></script>
-`
+`,
     );
   });
 }

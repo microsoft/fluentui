@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 /**
  * @specification
  * Adds attribute 'aria-disabled=true' based on the property 'disabled'.
@@ -9,10 +9,10 @@ const textAreaBehavior: Accessibility<TextAreaBehaviorProps> = props => ({
       'aria-disabled': props.disabled,
     },
   },
-})
+});
 
-export default textAreaBehavior
+export default textAreaBehavior;
 
 type TextAreaBehaviorProps = {
-  disabled?: boolean
-}
+  disabled?: boolean;
+};

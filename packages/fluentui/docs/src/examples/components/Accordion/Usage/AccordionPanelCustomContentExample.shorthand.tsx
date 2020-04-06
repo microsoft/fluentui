@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Accordion, Button, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Accordion, Button, Flex } from '@fluentui/react-northstar';
 
 const AccordionPanelCustomContentExample = () => {
   const panels = [
@@ -12,9 +12,9 @@ const AccordionPanelCustomContentExample = () => {
         </Flex>
       ),
     },
-  ]
+  ];
 
-  return <Accordion defaultActiveIndex={[0]} panels={panels} />
-}
+  return <Accordion defaultActiveIndex={[0]} panels={panels} />;
+};
 
-export default AccordionPanelCustomContentExample
+export default AccordionPanelCustomContentExample;

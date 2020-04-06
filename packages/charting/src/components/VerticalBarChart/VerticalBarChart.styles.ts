@@ -15,48 +15,48 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
       'ms-VerticalBarChart',
       className,
       {
-        width: chartWidth + 2 * chartPadding
-      }
+        width: chartWidth + 2 * chartPadding,
+      },
     ],
     chart: [
       {
         padding: chartPadding,
         width: chartWidth,
         height: chartHeight,
-        boxSizing: 'content-box'
-      }
+        boxSizing: 'content-box',
+      },
     ],
     chartLabel: [
       {
         textAlign: 'center',
-        ...theme.fonts.mediumPlus
-      }
+        ...theme.fonts.mediumPlus,
+      },
     ],
     xAxis: [
       {
-        transform: `translate(${xOffset}px, ${height}px)`
-      }
+        transform: `translate(${xOffset}px, ${height}px)`,
+      },
     ],
     xAxisTicks: [],
     yAxis: [
       {
-        transform: `translate(${yOffset}px, 0px)`
-      }
+        transform: `translate(${yOffset}px, 0px)`,
+      },
     ],
     yAxisTicks: [
       {
-        transform: 'scaleX(-1)'
-      }
+        transform: 'scaleX(-1)',
+      },
     ],
     yAxisDomain: [
       {
-        transform: 'scaleX(-1)'
-      }
+        transform: 'scaleX(-1)',
+      },
     ],
     bars: [
       {
-        transform: `translate(${xOffset}px, 0px)`
-      }
-    ]
+        transform: `translate(${xOffset}px, 0px)`,
+      },
+    ],
   };
 };

@@ -23,7 +23,7 @@ const colorMap: { [key: string]: string } = {
   '#2b91af': '#008080', // class name
   '#36acaa': '#09885a', // number
   '#ff0000': '#ee0000', // attrs, various (not from monaco)
-  '#393a34': '#000000' // operators, function names
+  '#393a34': '#000000', // operators, function names
 };
 const codeStyle: IRawStyle = {
   fontFamily: CODE_FONT_FAMILY,
@@ -31,7 +31,7 @@ const codeStyle: IRawStyle = {
   color: 'black',
   lineHeight: '1.6',
   border: 'none',
-  margin: 0
+  margin: 0,
 };
 for (const key of Object.keys(style)) {
   // No extra background colors or italics
@@ -45,14 +45,14 @@ for (const key of Object.keys(style)) {
   } else if (key.indexOf('code[') === 0) {
     style[key] = {
       ...style[key],
-      ...codeStyle
+      ...codeStyle,
     };
   } else if (key.indexOf('pre[') === 0) {
     style[key] = {
       ...style[key],
       ...codeStyle,
       padding: '6px 20px',
-      background: 'white'
+      background: 'white',
     };
   } else {
     // correct text colors (convert to lowercase due to inconsistent casing)
@@ -64,7 +64,7 @@ for (const key of Object.keys(style)) {
 }
 
 const rootClass = mergeStyles({
-  maxHeight: 400
+  maxHeight: 400,
 });
 
 export interface ITypeScriptSnippetProps {

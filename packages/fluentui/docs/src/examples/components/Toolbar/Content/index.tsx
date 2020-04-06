@@ -1,9 +1,9 @@
-import { Alert } from '@fluentui/react'
-import * as React from 'react'
-import { Link } from 'react-router-dom'
+import { Alert } from '@fluentui/react-northstar';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Content = () => (
   <ExampleSection title="Content">
@@ -12,8 +12,7 @@ const Content = () => (
       toolbarAriaLabel="Example Toolbar can contain a popup"
       description={
         <>
-          Toolbar item can open a popup. See <Link to="/components/popup">Popup</Link> component for
-          more details.
+          Toolbar item can open a popup. See <Link to="/components/popup">Popup</Link> component for more details.
         </>
       }
       examplePath="components/Toolbar/Content/ToolbarExamplePopup"
@@ -55,10 +54,9 @@ const Content = () => (
     >
       <Alert warning>
         <p>
-          When <code>custom</code> kind is used it is the responsibility of the consumer to verify
-          accessibility and styling aspects of the component and handle them correctly. This kind of
-          items can't be actionable, but actionable components might be added to the{' '}
-          <code>content</code> slot.
+          When <code>custom</code> kind is used it is the responsibility of the consumer to verify accessibility and
+          styling aspects of the component and handle them correctly. This kind of items can't be actionable, but
+          actionable components might be added to the <code>content</code> slot.
         </p>
       </Alert>
     </ComponentExample>
@@ -69,6 +67,6 @@ const Content = () => (
       examplePath="components/Toolbar/Content/ToolbarExampleOverflow"
     />
   </ExampleSection>
-)
+);
 
-export default Content
+export default Content;

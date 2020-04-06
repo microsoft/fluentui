@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Animation, Grid, Text, Provider } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
@@ -12,7 +13,7 @@ const spinner = {
   },
   duration: '5s',
   iterationCount: 'infinite',
-}
+};
 
 const AnimationExampleIterationCount = () => (
   <Provider theme={{ animations: { spinner } }}>
@@ -23,26 +24,26 @@ const AnimationExampleIterationCount = () => (
       <Text content="Infinite" />
       <div>
         <Animation name="spinner" iterationCount="1">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" iterationCount="2">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" iterationCount="5">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" iterationCount="infinite">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
     </Grid>
   </Provider>
-)
+);
 
-export default AnimationExampleIterationCount
+export default AnimationExampleIterationCount;

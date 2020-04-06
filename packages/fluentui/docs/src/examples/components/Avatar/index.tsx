@@ -1,9 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Variations from './Variations'
-import Usage from './Usage'
+import Rtl from './Rtl';
+import Types from './Types';
+import Variations from './Variations';
+import Usage from './Usage';
+import Performance from './Performance';
 
 const AvatarExamples = () => (
   <>
@@ -11,7 +12,8 @@ const AvatarExamples = () => (
     <Variations />
     <Rtl />
     <Usage />
+    <Performance />
   </>
-)
+);
 
-export default AvatarExamples
+export default AvatarExamples;

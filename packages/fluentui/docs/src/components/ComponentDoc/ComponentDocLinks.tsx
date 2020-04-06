@@ -1,15 +1,15 @@
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import { Flex, Icon, constants } from '@fluentui/react'
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { Flex, Icon, constants } from '@fluentui/react-northstar';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {
     repoPath: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
-  }
+  };
 
   render() {
-    const { repoPath } = this.props
+    const { repoPath } = this.props;
     return (
       <Flex
         styles={{
@@ -38,6 +38,6 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
           </code>
         </>
       </Flex>
-    )
+    );
   }
 }

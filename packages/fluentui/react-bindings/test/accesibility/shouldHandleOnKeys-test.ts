@@ -1,4 +1,4 @@
-import shouldHandleOnKeys from '../../src/accessibility/shouldHandleOnKeys'
+import shouldHandleOnKeys from '../../src/accessibility/shouldHandleOnKeys';
 
 const getEventArg = (
   keyCode: number,
@@ -13,8 +13,8 @@ const getEventArg = (
     ctrlKey,
     metaKey,
     shiftKey,
-  }
-}
+  };
+};
 
 describe('shouldHandleOnKeys', () => {
   test('should return `true`', () => {
@@ -25,7 +25,7 @@ describe('shouldHandleOnKeys', () => {
       { keyCode: 32, shiftKey: true, metaKey: true },
       { keyCode: 39, ctrlKey: true },
       { keyCode: 42, altKey: true, ctrlKey: true, shiftKey: true, metaKey: true },
-    ]
+    ];
     const events = [
       ...keyCombinations,
       { keyCode: 27, altKey: true },
@@ -38,12 +38,12 @@ describe('shouldHandleOnKeys', () => {
         keyCombination.metaKey,
         keyCombination.shiftKey,
       ),
-    )
+    );
 
     events.forEach(event => {
-      expect(shouldHandleOnKeys(event, keyCombinations)).toBe(true)
-    })
-  })
+      expect(shouldHandleOnKeys(event, keyCombinations)).toBe(true);
+    });
+  });
 
   test('should return `false`', () => {
     // keys mapping defined for actions
@@ -53,7 +53,7 @@ describe('shouldHandleOnKeys', () => {
       { keyCode: 32, altKey: true },
       { keyCode: 39, shiftKey: true, metaKey: true },
       { keyCode: 41, shiftKey: false },
-    ]
+    ];
     // other keys mapping, that will be passed as keydown event
     const events = [
       { keyCode: 27, ctrlKey: false },
@@ -68,10 +68,10 @@ describe('shouldHandleOnKeys', () => {
         keyCombination.metaKey,
         keyCombination.shiftKey,
       ),
-    )
+    );
 
     events.forEach(event => {
-      expect(shouldHandleOnKeys(event, keyCombinations)).toBe(false)
-    })
-  })
-})
+      expect(shouldHandleOnKeys(event, keyCombinations)).toBe(false);
+    });
+  });
+});

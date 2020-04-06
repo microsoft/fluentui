@@ -14,5 +14,5 @@ export {
   fontFace,
   keyframes,
   mergeStyleSets,
-  mergeStyles
+  mergeStyles,
 } from '@uifabric/merge-styles';

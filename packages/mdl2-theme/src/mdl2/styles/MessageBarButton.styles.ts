@@ -12,13 +12,13 @@ export const MessageBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       backgroundColor: palette.neutralQuaternaryAlt,
       height: 32,
       width: 'auto',
-      minWidth: 84
+      minWidth: 84,
     },
     rootHovered: {
-      backgroundColor: palette.neutralTertiaryAlt
+      backgroundColor: palette.neutralTertiaryAlt,
     },
     rootPressed: {
-      backgroundColor: palette.neutralTertiary
-    }
+      backgroundColor: palette.neutralTertiary,
+    },
   };
 };

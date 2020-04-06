@@ -8,7 +8,7 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Overrides the root element type, defaults to `div`.
    */
-  as?: React.ReactType;
+  as?: React.ElementType;
 
   /**
    * Injected by the `styled` HOC wrapper.
@@ -39,7 +39,6 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export interface IFabricStyleProps extends IFabricProps {
   theme: ITheme;
-  isFocusVisible: boolean;
 }
 
 export interface IFabricStyles {

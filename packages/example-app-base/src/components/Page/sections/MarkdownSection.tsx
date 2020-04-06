@@ -17,15 +17,25 @@ export const MarkdownSection: React.FunctionComponent<IPageSectionProps> = props
     readableSectionName = sectionName,
     style,
     id,
-    title = 'Page'
+    title = 'Page',
   } = props;
   const editUrl =
     props.editUrl ||
     (componentUrl &&
-      getEditUrl({ name: fileNamePrefix || title, section: pascalize(sectionName || 'Markdown'), baseUrl: componentUrl, platform }));
+      getEditUrl({
+        name: fileNamePrefix || title,
+        section: pascalize(sectionName || 'Markdown'),
+        baseUrl: componentUrl,
+        platform,
+      }));
 
   const editSection = editUrl && (
-    <EditSection className={styles.edit} title={sectionName} section={readableSectionName || 'Markdown'} url={editUrl} />
+    <EditSection
+      className={styles.edit}
+      title={sectionName}
+      section={readableSectionName || 'Markdown'}
+      url={editUrl}
+    />
   );
 
   return (

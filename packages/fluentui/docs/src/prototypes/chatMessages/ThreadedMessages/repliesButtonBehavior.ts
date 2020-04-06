@@ -1,5 +1,5 @@
-import { Accessibility } from '@fluentui/react'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '@fluentui/react-northstar';
+import * as keyboardKey from 'keyboard-key';
 
 const repliesButtonBehavior: Accessibility = () => ({
   keyActions: {
@@ -9,5 +9,5 @@ const repliesButtonBehavior: Accessibility = () => ({
       },
     },
   },
-})
-export default repliesButtonBehavior
+});
+export default repliesButtonBehavior;

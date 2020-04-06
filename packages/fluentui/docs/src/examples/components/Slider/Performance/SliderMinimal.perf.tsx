@@ -1,9 +1,9 @@
-import { Slider } from '@fluentui/react'
-import * as React from 'react'
+import { Slider } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const SliderMinimalPerf = () => <Slider />
+const SliderMinimalPerf = () => <Slider />;
 
-SliderMinimalPerf.iterations = 1000
-SliderMinimalPerf.filename = 'SliderMinimal.perf.tsx'
+SliderMinimalPerf.iterations = 1000;
+SliderMinimalPerf.filename = 'SliderMinimal.perf.tsx';
 
-export default SliderMinimalPerf
+export default SliderMinimalPerf;

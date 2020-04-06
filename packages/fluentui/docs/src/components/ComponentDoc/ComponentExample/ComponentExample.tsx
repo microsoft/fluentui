@@ -1,6 +1,16 @@
 import { knobComponents, KnobsSnippet } from '@fluentui/code-sandbox';
 import { CopyToClipboard, KnobInspector, KnobProvider, LogInspector } from '@fluentui/docs-components';
-import { ComponentVariablesInput, constants, Flex, ICSSInJSStyle, Menu, Provider, Segment, ThemeInput } from '@fluentui/react';
+import {
+  ComponentVariablesInput,
+  constants,
+  Flex,
+  ICSSInJSStyle,
+  Menu,
+  Icon,
+  Provider,
+  Segment,
+  ThemeInput,
+} from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
@@ -20,13 +30,17 @@ import ComponentExampleVariables from './ComponentExampleVariables';
 
 const ERROR_COLOR = '#D34';
 
-export interface ComponentExampleProps extends RouteComponentProps<any, any>, ComponentSourceManagerRenderProps, ExampleContextValue {
+export interface ComponentExampleProps
+  extends RouteComponentProps<any, any>,
+    ComponentSourceManagerRenderProps,
+    ExampleContextValue {
   error: Error | null;
   onError: (error: Error | null) => void;
   title: React.ReactNode;
   description?: React.ReactNode;
   examplePath: string;
   toolbarAriaLabel?: string;
+  resetTheme?: boolean;
 }
 
 interface ComponentExampleState {
@@ -43,7 +57,7 @@ interface ComponentExampleState {
 
 const childrenStyle: ICSSInJSStyle = {
   paddingTop: 0,
-  paddingBottom: '10px'
+  paddingBottom: '10px',
 };
 
 /**
@@ -57,7 +71,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     showCode: false,
     showRtl: false,
     showVariables: false,
-    showTransparent: false
+    showTransparent: false,
   });
 
   static getAnchorName = props => examplePathToHash(props.examplePath);
@@ -75,7 +89,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       decoder: (raw, parse) => {
         const result = parse(raw);
         return result === 'false' ? false : result === 'true' ? true : result;
-      }
+      },
     });
   };
 
@@ -84,7 +98,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       showCode: state.showCode,
       showRtl: state.showRtl,
       showTransparent: state.showTransparent,
-      showVariables: state.showVariables
+      showVariables: state.showVariables,
     };
 
     const prevQueryState = ComponentExample.getStateFromURL(props);
@@ -110,7 +124,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       anchorName,
       isActive,
       isActiveHash,
-      prevHash: nextHash
+      prevHash: nextHash,
     };
 
     // deactivate examples when switching from one to the next
@@ -121,7 +135,11 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     return nextState;
   }
 
-  componentDidUpdate(prevProps: Readonly<ComponentExampleProps>, prevState: Readonly<ComponentExampleState>, snapshot?: any): void {
+  componentDidUpdate(
+    prevProps: Readonly<ComponentExampleProps>,
+    prevState: Readonly<ComponentExampleState>,
+    snapshot?: any,
+  ): void {
     if (this.state.isActiveHash) {
       ComponentExample.setStateToURL(this.props, this.state);
     }
@@ -139,7 +157,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       showTransparent: false,
       showVariables: false,
       ...(isActiveHash && ComponentExample.getStateFromURL(props)),
-      ...(/\.rtl$/.test(props.examplePath) && { showRtl: true })
+      ...(/\.rtl$/.test(props.examplePath) && { showRtl: true }),
     };
   }
 
@@ -225,7 +243,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
     borderColorActive: siteVars.colors.white,
     colorActive: siteVars.colors.white,
     primaryBorderColor: siteVars.colors.white,
-    color: siteVars.colors.white
+    color: siteVars.colors.white,
   });
 
   renderAPIsMenu = (): JSX.Element => {
@@ -240,7 +258,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       ),
       disabled: !supported,
       key: type,
-      onClick: this.handleCodeApiChange(type)
+      onClick: this.handleCodeApiChange(type),
     }));
 
     return <Menu underlined items={menuItems} variables={this.exampleMenuVariables} styles={{ borderBottom: 0 }} />;
@@ -253,21 +271,28 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         active: currentCodeLanguage === 'js',
         content: 'JavaScript',
         key: 'js',
-        onClick: this.handleCodeLanguageChange('js')
+        onClick: this.handleCodeLanguageChange('js'),
       },
       {
         active: currentCodeLanguage === 'ts',
         content: 'TypeScript',
         key: 'ts',
-        onClick: this.handleCodeLanguageChange('ts')
-      }
+        onClick: this.handleCodeLanguageChange('ts'),
+      },
     ];
 
     return <Menu underlined items={menuItems} variables={this.exampleMenuVariables} styles={{ borderBottom: 0 }} />;
   };
 
   renderCodeEditorMenu = (): JSX.Element => {
-    const { canCodeBeFormatted, currentCode, currentCodeLanguage, currentCodePath, handleCodeFormat, wasCodeChanged } = this.props;
+    const {
+      canCodeBeFormatted,
+      currentCode,
+      currentCodeLanguage,
+      currentCodePath,
+      handleCodeFormat,
+      wasCodeChanged,
+    } = this.props;
 
     const codeEditorStyle: ICSSInJSStyle = {
       position: 'relative',
@@ -276,7 +301,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       border: '0',
       paddingTop: '.5rem',
       float: 'right',
-      borderBottom: 0
+      borderBottom: 0,
     };
 
     // get component name from file path:
@@ -286,7 +311,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
 
     const ghEditHref = [
       `${constants.repoURL}/edit/master/docs/src/examples/${currentCodePath}.tsx`,
-      `?message=docs(${filename}): your description`
+      `?message=docs(${filename}): your description`,
     ].join('');
 
     const menuItems = [
@@ -296,36 +321,47 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         content: 'Prettier',
         key: 'prettier',
         onClick: handleCodeFormat,
-        disabled: !canCodeBeFormatted
+        disabled: !canCodeBeFormatted,
       },
       {
-        icon: 'refresh',
         content: 'Reset',
+        icon: <Icon name="refresh" />,
         key: 'reset',
         onClick: this.resetSourceCode,
-        disabled: !wasCodeChanged
+        disabled: !wasCodeChanged,
       },
       {
         content: 'Copy',
         children: (Component, props) => (
           <CopyToClipboard key="copy" value={currentCode}>
-            {(active, onClick) => <Component {...props} active={active} icon={active ? 'check' : 'copy'} onClick={onClick} />}
+            {(active, onClick) => (
+              <Component {...props} active={active} icon={active ? 'check' : 'copy'} onClick={onClick} />
+            )}
           </CopyToClipboard>
-        )
+        ),
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: 'github',
+        icon: <Icon name="github" />,
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',
         target: '_blank',
         title: currentCodeLanguage !== 'ts' ? 'You can edit source only in TypeScript' : undefined,
-        key: 'withtslanguage'
-      }
+        key: 'withtslanguage',
+      },
     ];
 
-    return <Menu primary underlined activeIndex={-1} styles={codeEditorStyle} variables={this.exampleMenuVariables} items={menuItems} />;
+    return (
+      <Menu
+        primary
+        underlined
+        activeIndex={-1}
+        styles={codeEditorStyle}
+        variables={this.exampleMenuVariables}
+        items={menuItems}
+      />
+    );
   };
 
   renderSourceCode = () => {
@@ -339,7 +375,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
           style={
             {
               borderLeft: `${lineCount > 9 ? 41 : 34}px solid ${EDITOR_GUTTER_COLOR}`,
-              paddingBottom: '2.6rem'
+              paddingBottom: '2.6rem',
             } as React.CSSProperties
           }
         >
@@ -362,15 +398,15 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         ...state.componentVariables,
         [componentName]: {
           ...state.componentVariables[componentName],
-          [variableName]: variableValue
-        }
-      }
+          [variableName]: variableValue,
+        },
+      },
     }));
   };
 
   handleVariableResolve = variables => {
-    // Remove ProviderBox to hide it in variables
-    delete variables['ProviderBox'];
+    // Remove Provider to hide it in variables
+    delete variables['Provider'];
     this.setState({ usedVariables: variables });
   };
 
@@ -386,23 +422,32 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       onError,
       title,
       wasCodeChanged,
-      toolbarAriaLabel
+      toolbarAriaLabel,
+      resetTheme,
     } = this.props;
-    const { anchorName, componentVariables, usedVariables, showCode, showRtl, showTransparent, showVariables } = this.state;
+    const {
+      anchorName,
+      componentVariables,
+      usedVariables,
+      showCode,
+      showRtl,
+      showTransparent,
+      showVariables,
+    } = this.state;
 
     const newTheme: ThemeInput = {
       componentVariables: {
         ...componentVariables,
-        Provider: { background: showTransparent ? 'initial' : undefined }
-      }
+        Provider: { background: showTransparent ? 'initial' : undefined },
+      },
     };
     const exampleStyles = {
       padding: '2rem',
       ...(showTransparent && {
         backgroundImage:
           'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
-        backgroundRepeat: 'repeat'
-      })
+        backgroundRepeat: 'repeat',
+      }),
     };
 
     return (
@@ -440,10 +485,23 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
             {children && <Segment styles={childrenStyle}>{children}</Segment>}
 
             <Segment className={`rendered-example ${this.getKebabExamplePath()}`} styles={exampleStyles}>
-              <Provider theme={newTheme} rtl={showRtl}>
+              <Provider
+                performance={{
+                  enableSanitizeCssPlugin: true /* Force always for website to avoid issues with live editor */,
+                }}
+                theme={newTheme}
+                overwrite={resetTheme}
+                rtl={showRtl}
+              >
                 <VariableResolver onResolve={this.handleVariableResolve}>
                   {showCode || wasCodeChanged ? (
-                    <SourceRender babelConfig={babelConfig} hot onRender={onError} source={currentCode} resolver={importResolver} />
+                    <SourceRender
+                      babelConfig={babelConfig}
+                      hot
+                      onRender={onError}
+                      source={currentCode}
+                      resolver={importResolver}
+                    />
                   ) : (
                     React.createElement(defaultExport)
                   )}
@@ -468,7 +526,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
                       background: ERROR_COLOR,
                       whiteSpace: 'pre-wrap',
                       // above code editor text :/
-                      zIndex: 4
+                      zIndex: 4,
                     }}
                   >
                     {error.toString()}

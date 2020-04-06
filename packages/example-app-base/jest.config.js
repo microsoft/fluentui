@@ -6,8 +6,8 @@ const config = createConfig({
 
   moduleNameMapper: {
     // These mappings allow Jest to run snapshot tests against Example files.
-    'office-ui-fabric-react/lib/(.*)$': '<rootDir>/../office-ui-fabric-react/src/$1'
-  }
+    'office-ui-fabric-react/lib/(.*)$': '<rootDir>/../office-ui-fabric-react/src/$1',
+  },
 });
 
 module.exports = config;

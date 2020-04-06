@@ -11,7 +11,7 @@ const StackItemView: IStackItemComponent['view'] = props => {
   }
 
   const Slots = getSlots<IStackItemProps, IStackItemSlots>(props, {
-    root: 'div'
+    root: 'div',
   });
 
   return <Slots.root>{children}</Slots.root>;
@@ -19,7 +19,7 @@ const StackItemView: IStackItemComponent['view'] = props => {
 
 export const StackItem: React.FunctionComponent<IStackItemProps> = createComponent(StackItemView, {
   displayName: 'StackItem',
-  styles
+  styles,
 });
 
 export default StackItem;

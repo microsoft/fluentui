@@ -10,5 +10,5 @@ export const GroupHeader: React.FunctionComponent<IGroupHeaderProps> = styled<
   IGroupHeaderStyleProps,
   IGroupHeaderStyles
 >(GroupHeaderBase, getStyles, undefined, {
-  scope: 'GroupHeader'
+  scope: 'GroupHeader',
 });

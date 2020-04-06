@@ -1,6 +1,6 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import tabBehavior from './tabBehavior'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import tabBehavior from './tabBehavior';
 
 /**
  * @description
@@ -26,6 +26,6 @@ const tabListBehavior: Accessibility = () => ({
   childBehaviors: {
     item: tabBehavior,
   },
-})
+});
 
-export default tabListBehavior
+export default tabListBehavior;

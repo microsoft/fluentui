@@ -47,16 +47,18 @@ const createContext = <Value>(defaultValue: Value, options: CreateContextOptions
         if (strict) {
           /* istanbul ignore next */
           throw new Error(
-            process.env.NODE_ENV === 'production' ? '' : `Please use <Provider /> component from "@fluentui/react-context-selector"`
+            process.env.NODE_ENV === 'production'
+              ? ''
+              : `Please use <Provider /> component from "@fluentui/react-context-selector"`,
           );
         }
 
         /* istanbul ignore next */
         return () => () => {};
       },
-      value: defaultValue
+      value: defaultValue,
     },
-    calculateChangedBits
+    calculateChangedBits,
   );
   context.Provider = createProvider<Value>(context.Provider) as any;
 

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Embed, Flex, Text } from '@fluentui/react'
+import * as React from 'react';
+import { Embed, Flex, Text } from '@fluentui/react-northstar';
 
 const EmbedExampleVideo = () => (
   <Flex column>
@@ -11,6 +11,6 @@ const EmbedExampleVideo = () => (
     />
     <Text>(c) copyright 2008, Blender Foundation / www.bigbuckbunny.org</Text>
   </Flex>
-)
+);
 
-export default EmbedExampleVideo
+export default EmbedExampleVideo;

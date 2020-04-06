@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Header } from '@fluentui/react'
+import * as React from 'react';
+import { Header } from '@fluentui/react-northstar';
 
 const HeaderExampleDescriptionCustomizationShorthand = () => (
   <Header
@@ -7,6 +7,6 @@ const HeaderExampleDescriptionCustomizationShorthand = () => (
     content="Account Settings"
     description={{ content: 'Manage your account settings and set email preferences', as: 'span' }}
   />
-)
+);
 
-export default HeaderExampleDescriptionCustomizationShorthand
+export default HeaderExampleDescriptionCustomizationShorthand;

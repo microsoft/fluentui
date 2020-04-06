@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Table, tableHeaderCellBehavior } from '@fluentui/react'
+import * as React from 'react';
+import { Table, tableHeaderCellBehavior } from '@fluentui/react-northstar';
 
 const StaticTable = () => (
   <Table aria-label="table">
@@ -28,5 +28,5 @@ const StaticTable = () => (
       <Table.Cell content="30000000000000 years" key="1-4" />
     </Table.Row>
   </Table>
-)
-export default StaticTable
+);
+export default StaticTable;

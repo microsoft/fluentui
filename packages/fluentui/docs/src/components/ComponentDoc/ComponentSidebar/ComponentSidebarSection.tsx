@@ -1,9 +1,9 @@
-import * as _ from 'lodash'
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import { Icon, HierarchicalTree } from '@fluentui/react'
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import { Icon, HierarchicalTree } from '@fluentui/react-northstar';
 
-import { examplePathToHash } from '../../../utils'
+import { examplePathToHash } from '../../../utils';
 
 export default class ComponentSidebarSection extends React.PureComponent<any, any> {
   static propTypes = {
@@ -17,48 +17,48 @@ export default class ComponentSidebarSection extends React.PureComponent<any, an
     sectionName: PropTypes.string,
     onItemClick: PropTypes.func,
     onTitleClick: PropTypes.func,
-  }
+  };
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       isActiveByProps: this.isActiveAccordion(),
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
-    const isActiveByProps = this.isActiveAccordion(nextProps)
-    const didCloseByProps = this.state.isActiveByProps && !isActiveByProps
+    const isActiveByProps = this.isActiveAccordion(nextProps);
+    const didCloseByProps = this.state.isActiveByProps && !isActiveByProps;
 
     // We allow the user to open accordions, but we close them when we scroll passed them
     this.setState(prevState => ({
       isActiveByProps,
       isActiveByUser: didCloseByProps ? false : prevState.isActiveByUser,
-    }))
+    }));
   }
 
   handleItemClick = examplePath => e => {
-    _.invoke(this.props, 'onItemClick', e, { examplePath })
-  }
+    _.invoke(this.props, 'onItemClick', e, { examplePath });
+  };
 
   handleTitleClick = () => {
-    this.setState(prevState => ({ isActiveByUser: !prevState.isActiveByUser }))
-  }
+    this.setState(prevState => ({ isActiveByUser: !prevState.isActiveByUser }));
+  };
 
   isActiveAccordion = (props = this.props) =>
     (props.examples || []).findIndex(item => {
-      const exampleHash = examplePathToHash(item.examplePath)
-      return exampleHash === props.activePath
-    }) !== -1
+      const exampleHash = examplePathToHash(item.examplePath);
+      return exampleHash === props.activePath;
+    }) !== -1;
 
   render() {
-    const { activePath, examples, sectionName } = this.props
-    const { isActiveByProps, isActiveByUser } = this.state
+    const { activePath, examples, sectionName } = this.props;
+    const { isActiveByProps, isActiveByUser } = this.state;
 
-    const active = isActiveByUser || isActiveByProps
+    const active = isActiveByUser || isActiveByProps;
 
     if (process.env.NODE_ENV !== 'development' && sectionName === 'Performance') {
-      return null
+      return null;
     }
 
     const items = [
@@ -76,7 +76,7 @@ export default class ComponentSidebarSection extends React.PureComponent<any, an
           },
         })),
       },
-    ]
+    ];
 
     const treeStyles = {
       display: 'flex',
@@ -87,7 +87,7 @@ export default class ComponentSidebarSection extends React.PureComponent<any, an
         color: '#252424',
         outline: 'none',
       },
-    }
+    };
 
     const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
       <Component
@@ -101,8 +101,8 @@ export default class ComponentSidebarSection extends React.PureComponent<any, an
         <span>{content}</span>
         {hasSubtree && <Icon name="arrow-down" />}
       </Component>
-    )
+    );
 
-    return <HierarchicalTree items={items} renderItemTitle={titleRenderer} />
+    return <HierarchicalTree items={items} renderItemTitle={titleRenderer} />;
   }
 }

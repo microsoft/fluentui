@@ -10,37 +10,39 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           // The circle
           ':before': [
             {
-              borderColor: palette.neutralPrimary
+              borderColor: palette.neutralPrimary,
             },
             disabled && {
-              backgroundColor: semanticColors.bodyBackground, // using semanticColor to override unnecessary ternary check at source styles
-              borderColor: palette.neutralTertiaryAlt
+              // using semanticColor to override unnecessary ternary check at source styles
+              backgroundColor: semanticColors.bodyBackground,
+              borderColor: palette.neutralTertiaryAlt,
             },
             checked &&
               !disabled && {
-                borderColor: semanticColors.inputBackgroundChecked // re-assign the semanticColor after changing it above
+                // re-assign the semanticColor after changing it above
+                borderColor: semanticColors.inputBackgroundChecked,
               },
             (hasIcon || hasImage) &&
               disabled &&
               checked && {
-                opacity: 1
-              }
+                opacity: 1,
+              },
           ],
           // The dot
           ':after': [
             checked &&
               disabled && {
-                borderColor: palette.neutralTertiaryAlt
-              }
+                borderColor: palette.neutralTertiaryAlt,
+              },
           ],
           ':hover': [
             !disabled && {
               selectors: {
                 '.ms-ChoiceFieldLabel': {
-                  color: palette.neutralDark
+                  color: palette.neutralDark,
                 },
                 ':before': {
-                  borderColor: checked ? palette.themeDark : palette.neutralPrimary
+                  borderColor: checked ? palette.themeDark : palette.neutralPrimary,
                 },
                 ':after': [
                   !hasIcon &&
@@ -52,50 +54,50 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
                       top: 5,
                       width: 10,
                       height: 10,
-                      backgroundColor: palette.neutralSecondary
+                      backgroundColor: palette.neutralSecondary,
                     },
                   checked && {
-                    borderColor: palette.themeDark
-                  }
-                ]
-              }
-            }
-          ]
-        }
+                    borderColor: palette.themeDark,
+                  },
+                ],
+              },
+            },
+          ],
+        },
       },
       (hasIcon || hasImage) &&
         !disabled && {
           selectors: {
             ':hover': {
-              borderColor: checked ? palette.themeDark : palette.neutralPrimary
-            }
-          }
+              borderColor: checked ? palette.themeDark : palette.neutralPrimary,
+            },
+          },
         },
       (hasIcon || hasImage) && {
-        borderWidth: 1
+        borderWidth: 1,
       },
       disabled && {
         selectors: {
           '.ms-ChoiceFieldLabel': {
-            color: palette.neutralTertiary
-          }
-        }
+            color: palette.neutralTertiary,
+          },
+        },
       },
       checked &&
         disabled && {
-          borderColor: palette.neutralLighter
-        }
+          borderColor: palette.neutralLighter,
+        },
     ],
     choiceFieldWrapper: {
       selectors: {
         '&.is-inFocus': {
           selectors: {
             ':after': {
-              borderColor: palette.neutralSecondary
-            }
-          }
-        }
-      }
-    }
+              borderColor: palette.neutralSecondary,
+            },
+          },
+        },
+      },
+    },
   };
 };

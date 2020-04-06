@@ -1,5 +1,5 @@
-import { Button, Dialog } from '@fluentui/react'
-import * as React from 'react'
+import { Button, Dialog } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const DialogExampleContent: React.FC = () => (
   <Dialog
@@ -9,6 +9,6 @@ const DialogExampleContent: React.FC = () => (
     header="Action confirmation"
     trigger={<Button content="Open a dialog" />}
   />
-)
+);
 
-export default DialogExampleContent
+export default DialogExampleContent;

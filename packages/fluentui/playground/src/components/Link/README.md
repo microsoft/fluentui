@@ -35,6 +35,7 @@ The following section documents links to different UI libraries implementations 
 - [Fabric Link docs](https://developer.microsoft.com/en-us/fabric#/controls/web/link)
 
 - FastDNA Link (Hypertext)
+
   - [Docs](https://github.com/microsoft/fast-dna/tree/master/packages/fast-components-react-base/src/hypertext)
   - [Example](https://explore.fast.design/components/hypertext)
 
@@ -48,24 +49,24 @@ The following section documents the properties that will become part of the new 
 
 ### Recommended component props
 
-| Name              | Type                       | Default value | Required? | Description                                                                            |
+| Name              |            Type            | Default value | Required? | Description                                                                            |
 | ----------------- | :------------------------: | :-----------: | :-------: | -------------------------------------------------------------------------------------- |
-| `ariaDescribedBy` | `string`                   |               | No        | Identifies the element (or elements) that describes the object.                        |
-| `ariaHidden`      | `boolean`                  | `false`       | No        | Indicates whether the element is exposed to an accessibility API.                      |
-| `ariaLabel`       | `string`                   |               | No        | Defines a string value that labels the current element.                                |
-| `ariaLabelledBy`  | `string`                   |               | No        | Identifies the element (or elements) that labels the current element.                  |
-| `className`       | `string`                   |               | No        | Defines an additional classname to provide on the root of the `Link`.                  |
-| `componentRef`    | `IRefObject<ILink>`        |               | No        | Defines an optional reference to access the imperative interface of the `Link`.        |
-| `disabled`        | `boolean`                  | `false`       | No        | Defines whether the `Link` is in an enabled or disabled state.                         |
-| `href`            | `string`                   |               | Yes       | Defines an href that serves as the navigation destination when clicking on the `Link`. |
-| `onClick`         | `(ev: MouseEvent) => void` |               | No        | Defines a callback that handles the processing of click events on the `Link`.          |
-| `role`            | `string`                   |               | No        | Defines the accessibility role of the `Link`.                                          |
+| `ariaDescribedBy` |          `string`          |               |    No     | Identifies the element (or elements) that describes the object.                        |
+| `ariaHidden`      |         `boolean`          |    `false`    |    No     | Indicates whether the element is exposed to an accessibility API.                      |
+| `ariaLabel`       |          `string`          |               |    No     | Defines a string value that labels the current element.                                |
+| `ariaLabelledBy`  |          `string`          |               |    No     | Identifies the element (or elements) that labels the current element.                  |
+| `className`       |          `string`          |               |    No     | Defines an additional classname to provide on the root of the `Link`.                  |
+| `componentRef`    |    `IRefObject<ILink>`     |               |    No     | Defines an optional reference to access the imperative interface of the `Link`.        |
+| `disabled`        |         `boolean`          |    `false`    |    No     | Defines whether the `Link` is in an enabled or disabled state.                         |
+| `href`            |          `string`          |               |    Yes    | Defines an href that serves as the navigation destination when clicking on the `Link`. |
+| `onClick`         | `(ev: MouseEvent) => void` |               |    No     | Defines a callback that handles the processing of click events on the `Link`.          |
+| `role`            |          `string`          |               |    No     | Defines the accessibility role of the `Link`.                                          |
 
 Props no outlined above are not handled and should be spread in the `root` slot of the component.
 
 ### Recommended interface props
 
-| Name    | Type         | Default value | Description               |
+| Name    |     Type     | Default value | Description               |
 | ------- | :----------: | ------------- | ------------------------- |
 | `focus` | `() => void` |               | Sets focus on the `Link`. |
 
@@ -79,20 +80,20 @@ https://developer.microsoft.com/en-us/fabric#/controls/web/link
 
 #### ILink interface
 
-| Name    | Type         | Notes |
+| Name    |     Type     | Notes |
 | ------- | :----------: | ----- |
 | `focus` | `() => void` |       |
 
 #### ILinkProps interface
 
-| Name           | Type                                                         | Notes                                                  |
+| Name           |                             Type                             | Notes                                                  |
 | -------------- | :----------------------------------------------------------: | ------------------------------------------------------ |
 | `as`           | `string \| React.ComponentClass \| React.StatelessComponent` | Remove `as` prop in new component.                     |
-| `componentRef` | `IRefObject<ILink>`                                          |                                                        |
-| `disabled`     | `boolean`                                                    |                                                        |
-| `keytipProps`  | `IKeytipProps`                                               | Should be removed until we add `Keytips` in Fluent UI. |
-| `styles`       | `IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>`       | Should be deprecated in favor of recomposition.        |
-| `theme`        | `ITheme`                                                     | Should not show up in the public props contract.       |
+| `componentRef` |                     `IRefObject<ILink>`                      |                                                        |
+| `disabled`     |                          `boolean`                           |                                                        |
+| `keytipProps`  |                        `IKeytipProps`                        | Should be removed until we add `Keytips` in Fluent UI. |
+| `styles`       |    `IStyleFunctionOrObject<ILinkStyleProps, ILinkStyles>`    | Should be deprecated in favor of recomposition.        |
+| `theme`        |                           `ITheme`                           | Should not show up in the public props contract.       |
 
 ### Fluent UI Link props
 
@@ -104,18 +105,18 @@ Fluent UI does not currently have a `Link` component implementation.
 
 | Name    | Action to take/taken | Property transitioned? | Breaking change? | Codemod/Shim created? |
 | ------- | -------------------- | :--------------------: | :--------------: | :-------------------: |
-| `focus` | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
+| `focus` | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
 
 #### ILinkProps interface
 
 | Name           | Action to take/taken | Property transitioned? | Breaking change? | Codemod/Shim created? |
 | -------------- | -------------------- | :--------------------: | :--------------: | :-------------------: |
-| `as`           | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| `componentRef` | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| `disabled`     | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| `keytipProps`  | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| `styles`       | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
-| `theme`        | TBD                  | &#x274C;               | &#x274C;         | &#x274C;              |
+| `as`           | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `componentRef` | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `disabled`     | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `keytipProps`  | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `styles`       | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
+| `theme`        | TBD                  |        &#x274C;        |     &#x274C;     |       &#x274C;        |
 
 ### Conversion process from Fluent UI to Fluent UI Link
 
@@ -234,7 +235,9 @@ None.
 ##### Without href
 
 ```html
-<button class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiLink-button MuiTypography-body2 MuiTypography-colorPrimary">
+<button
+  class="MuiTypography-root MuiLink-root MuiLink-underlineHover MuiLink-button MuiTypography-body2 MuiTypography-colorPrimary"
+>
   Button Link
 </button>
 ```
@@ -250,7 +253,7 @@ After looking at all the component libraries above and taking into consideration
 #### For default links
 
 ```html
-<a class="root" href={href}>
+<a class="root" href="{href}">
   {children}
 </a>
 ```
@@ -260,7 +263,7 @@ After looking at all the component libraries above and taking into consideration
 If the link is recomposed to use another tag that is not `a` for its `root` slot, then `role="link"` should be added to the root. An example using `button` can be read below:
 
 ```html
-<button class="root" href={href} role="link">
+<button class="root" href="{href}" role="link">
   {children}
 </button>
 ```
@@ -269,9 +272,9 @@ If the link is recomposed to use another tag that is not `a` for its `root` slot
 
 From the recommended DOM above we can indicate which slots are going to be required:
 
-| Name        | Considerations |
-| ----------- | -------------- |
-| `root`      |                |
+| Name   | Considerations |
+| ------ | -------------- |
+| `root` |                |
 
 ### Considerations that need discussion
 

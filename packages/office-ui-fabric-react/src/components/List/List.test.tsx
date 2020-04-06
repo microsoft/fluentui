@@ -15,7 +15,7 @@ function mockData(count: number = 0): IMockItem[] {
     item = {
       key: i,
       name: 'Item ' + i,
-      value: i
+      value: i,
     };
 
     data.push(item);
@@ -131,7 +131,11 @@ describe('List', () => {
       const onRenderCellMock = jest.fn();
       const wrapper = mount(<List items={mockData(100)} />);
 
-      wrapper.setProps({ items: mockData(100), onRenderCell: onRenderCellMock, onPagesUpdated: (pages: IPage[]) => done() });
+      wrapper.setProps({
+        items: mockData(100),
+        onRenderCell: onRenderCellMock,
+        onPagesUpdated: (pages: IPage[]) => done(),
+      });
 
       expect(onRenderCellMock).toHaveBeenCalledTimes(10);
     });

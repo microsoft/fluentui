@@ -2,17 +2,19 @@ import {
   Attachment,
   Extendable,
   Popup,
+  Icon,
   Menu,
   AvatarProps,
   ChatMessageProps,
   DividerProps,
   StatusProps,
   ShorthandValue,
-} from '@fluentui/react'
-import * as React from 'react'
-import * as _ from 'lodash'
-import * as keyboardKey from 'keyboard-key'
-import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.'
+} from '@fluentui/react-northstar';
+import * as React from 'react';
+import * as _ from 'lodash';
+import * as keyboardKey from 'keyboard-key';
+import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
+import { AcceptIcon, DownloadIcon } from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
@@ -20,32 +22,32 @@ export enum ChatItemTypes {
 }
 
 interface ChatItemType {
-  itemType: ChatItemTypes
+  itemType: ChatItemTypes;
 }
 
 interface ChatMessage extends ChatMessageProps, ChatItemType {
-  tabIndex: number
-  'aria-labelledby': string
-  text: string
+  tabIndex: number;
+  'aria-labelledby': string;
+  text: string;
 }
 interface Divider extends DividerProps, ChatItemType {}
 
 type ChatItem = {
-  message?: ChatMessage | Divider
-  gutter?: AvatarProps
-  mine?: boolean
-}
-type StatusPropsExtendable = Extendable<StatusProps>
+  message?: ChatMessage | Divider;
+  gutter?: AvatarProps;
+  mine?: boolean;
+};
+type StatusPropsExtendable = Extendable<StatusProps>;
 
 const statusMap: Map<UserStatus, StatusPropsExtendable> = new Map([
-  ['Available', { color: 'green', icon: 'check', title: 'Available' }],
-  ['DoNotDisturb', { color: 'red', icon: 'minus', title: 'Do not disturb' }],
-  ['Away', { color: 'yellow', icon: 'clock', title: 'Away' }],
+  ['Available', { color: 'green', icon: <AcceptIcon />, title: 'Available' }],
+  ['DoNotDisturb', { color: 'red', icon: <Icon name="minus" />, title: 'Do not disturb' }],
+  ['Away', { color: 'yellow', icon: <Icon name="clock" />, title: 'Away' }],
   ['Offline', { color: 'grey', title: 'Offline' }],
-] as [UserStatus, StatusPropsExtendable][])
+] as [UserStatus, StatusPropsExtendable][]);
 
 function generateChatMsgProps(message: MessageData, fromUser: UserData): ChatItem {
-  const { content, mine } = message
+  const { content, mine } = message;
   const messageProps: ChatMessage = {
     // aria-labelledby will need to by generated based on the needs. Currently just hardcoded.
     'aria-labelledby': `sender-${message.id} timestamp-${message.id} content-${message.id}`,
@@ -66,75 +68,73 @@ function generateChatMsgProps(message: MessageData, fromUser: UserData): ChatIte
     },
     itemType: ChatItemTypes.message,
     text: content,
-  }
+  };
 
   return {
     mine,
     message: messageProps,
     gutter: !message.mine && { image: fromUser.avatar, status: statusMap.get(fromUser.status) },
-  }
+  };
 }
 
 function createMessageContent(message: MessageData): ShorthandValue<ChatMessageProps> {
-  const messageId = `content-${message.id}`
+  const messageId = `content-${message.id}`;
   return {
     id: message.withAttachment ? undefined : messageId,
-    content: message.withAttachment
-      ? createMessageContentWithAttachments(message.content, messageId)
-      : message.content,
-  }
+    content: message.withAttachment ? createMessageContentWithAttachments(message.content, messageId) : message.content,
+  };
 }
 
 function createMessageContentWithAttachments(content: string, messageId: string): JSX.Element {
   const menuClickHandler = message => e => {
-    alert(`${message} clicked`)
-    e.stopPropagation()
-  }
+    alert(`${message} clicked`);
+    e.stopPropagation();
+  };
 
   const contextMenu = (
     <Menu
       items={[
         {
           key: 'download',
+          icon: <DownloadIcon />,
           content: 'Download',
-          icon: 'download',
           onClick: menuClickHandler('Download'),
         },
         {
           key: 'linkify',
+          icon: <Icon name="linkify" />,
           content: 'Get link',
-          icon: 'linkify',
           onClick: menuClickHandler('Get link'),
         },
         {
           key: 'tab',
+          icon: <Icon name="folder open" />,
           content: 'Make this a tab',
-          icon: 'folder open',
           onClick: menuClickHandler('Make tab'),
         },
       ]}
       vertical
       pills
     />
-  )
+  );
 
   const stopPropagationOnKeys = (keys: number[]) => (e: React.KeyboardEvent<any>) => {
     if (keys.indexOf(keyboardKey.getCode(e)) > -1) {
-      e.stopPropagation()
+      e.stopPropagation();
     }
-  }
+  };
 
   const action = {
     'aria-label': 'More attachment options',
     iconOnly: true,
     circular: true,
-    icon: 'ellipsis horizontal',
+    icon: <Icon name="ellipsis horizontal" />,
     onClick: e => e.stopPropagation(),
     onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, keyboardKey.Spacebar]),
     children: (Component, props) => (
       <Popup content={{ content: contextMenu }} trapFocus trigger={<Component {...props} />} />
     ),
-  }
+  };
 
   return (
     <>
@@ -145,7 +145,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         {_.map(['MeetingNotes.pptx', 'Document.docx'], (fileName, index) => (
           <Attachment
             key={`attachment-${index}`}
-            icon="file word outline"
+            icon={<Icon name="file word outline" />}
             aria-label={`File attachment ${fileName}. Press tab for more options Press Enter to open the file`}
             header={fileName}
             action={action}
@@ -158,49 +158,49 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         ))}
       </div>
     </>
-  )
+  );
 }
 
 function generateDividerProps(props: DividerProps): ChatItem {
-  const { content, important, color = 'secondary' } = props
-  const dividerProps: Divider = { itemType: ChatItemTypes.divider, content, important, color }
+  const { content, important, color = 'secondary' } = props;
+  const dividerProps: Divider = { itemType: ChatItemTypes.divider, content, important, color };
 
-  return { message: dividerProps }
+  return { message: dividerProps };
 }
 
 export function generateChatProps(chat: ChatData): ChatItem[] {
   if (!chat || !chat.members || !chat.messages) {
-    return []
+    return [];
   }
 
-  const { messages, members } = chat
-  const chatProps: ChatItem[] = []
+  const { messages, members } = chat;
+  const chatProps: ChatItem[] = [];
 
   // First date divider
-  chatProps.push(generateDividerProps({ content: getFriendlyDateString(messages[0].date) }))
+  chatProps.push(generateDividerProps({ content: getFriendlyDateString(messages[0].date) }));
 
   for (let i = 0; i < messages.length - 1; i++) {
-    const [msg1, msg2] = [messages[i], messages[i + 1]]
-    chatProps.push(generateChatMsgProps(msg1, members.get(msg1.from)))
+    const [msg1, msg2] = [messages[i], messages[i + 1]];
+    chatProps.push(generateChatMsgProps(msg1, members.get(msg1.from)));
 
     if (!areSameDay(msg1.date, msg2.date)) {
       // Generating divider when date changes
-      chatProps.push(generateDividerProps({ content: getFriendlyDateString(msg2.date) }))
+      chatProps.push(generateDividerProps({ content: getFriendlyDateString(msg2.date) }));
     }
   }
 
-  const lastMsg = messages[messages.length - 1]
-  chatProps.push(generateChatMsgProps(lastMsg, members.get(lastMsg.from)))
+  const lastMsg = messages[messages.length - 1];
+  chatProps.push(generateChatMsgProps(lastMsg, members.get(lastMsg.from)));
 
   // Last read divider
-  const myLastMsgIndex = _.findLastIndex(chatProps, item => item.mine)
+  const myLastMsgIndex = _.findLastIndex(chatProps, item => item.mine);
   if (myLastMsgIndex < chatProps.length - 1) {
     chatProps.splice(
       myLastMsgIndex + 1,
       0,
       generateDividerProps({ content: 'Last read', color: 'brand', important: true }),
-    )
+    );
   }
 
-  return chatProps
+  return chatProps;
 }

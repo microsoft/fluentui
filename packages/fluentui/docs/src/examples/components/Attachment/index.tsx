@@ -1,10 +1,10 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Performance from './Performance'
-import Rtl from './Rtl'
-import Types from './Types'
-import Slots from './Slots'
-import Variations from './Variations'
+import Performance from './Performance';
+import Rtl from './Rtl';
+import Types from './Types';
+import Slots from './Slots';
+import Variations from './Variations';
 
 const AttachmentExamples = () => (
   <>
@@ -14,6 +14,6 @@ const AttachmentExamples = () => (
     <Rtl />
     <Performance />
   </>
-)
+);
 
-export default AttachmentExamples
+export default AttachmentExamples;

@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import menuItemBehavior from './menuItemBehavior'
-import menuDividerBehavior from './menuDividerBehavior'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import menuItemBehavior from './menuItemBehavior';
+import menuDividerBehavior from './menuDividerBehavior';
 
 /**
  * @description
@@ -31,11 +31,11 @@ const menuBehavior: Accessibility<MenuBehaviorProps> = props => ({
     item: menuItemBehavior,
     divider: menuDividerBehavior,
   },
-})
+});
 
-export default menuBehavior
+export default menuBehavior;
 
 type MenuBehaviorProps = {
   /** Indicates if menu has its items displayed vertically. */
-  vertical?: boolean
-}
+  vertical?: boolean;
+};

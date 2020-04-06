@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { List, Image } from '@fluentui/react'
+import * as React from 'react';
+import { List, Image } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -23,8 +23,8 @@ const items = [
     headerMedia: '5:22:40 PM',
     content: 'The GB pixel is down, navigate the virtual interface!',
   },
-]
+];
 
-const ListExampleNavigable = () => <List navigable items={items} />
+const ListExampleNavigable = () => <List navigable items={items} />;
 
-export default ListExampleNavigable
+export default ListExampleNavigable;

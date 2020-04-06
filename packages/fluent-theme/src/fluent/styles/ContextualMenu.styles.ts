@@ -2,7 +2,7 @@ import {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
-  IContextualMenuItemStyles
+  IContextualMenuItemStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 import { MinimumScreenSelector } from './styleConstants';
@@ -20,9 +20,9 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
     selectors: {
       [MinimumScreenSelector]: {
         fontSize: FontSizes.size20,
-        width: FontSizes.size20
-      }
-    }
+        width: FontSizes.size20,
+      },
+    },
   };
 
   return {
@@ -33,10 +33,10 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           borderRadius: effects.roundedCorner2,
           boxShadow: effects.elevation8,
           selectors: {
-            ['.ms-Callout-main']: { borderRadius: effects.roundedCorner2 }
-          }
+            ['.ms-Callout-main']: { borderRadius: effects.roundedCorner2 },
+          },
         },
-        beakCurtain: { borderRadius: effects.roundedCorner2 }
+        beakCurtain: { borderRadius: effects.roundedCorner2 },
       },
       menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
         const { disabled, expanded, primaryDisabled, checked } = itemStyleProps;
@@ -45,7 +45,7 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
           root: [
             {
               height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-              lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+              lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
             },
             !disabled &&
               !expanded && {
@@ -54,34 +54,36 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
                     color: palette.neutralDark,
                     selectors: {
                       '.ms-ContextualMenu-icon': {
-                        color: palette.themeDarkAlt
+                        color: palette.themeDarkAlt,
                       },
                       '.ms-ContextualMenu-submenuIcon': {
-                        color: palette.neutralPrimary
-                      }
-                    }
+                        color: palette.neutralPrimary,
+                      },
+                    },
                   },
                   ':active': {
                     selectors: {
                       '.ms-ContextualMenu-icon': {
-                        color: palette.themeDark
+                        color: palette.themeDark,
                       },
                       '.ms-ContextualMenu-submenuIcon': {
-                        color: palette.neutralPrimary
-                      }
-                    }
+                        color: palette.neutralPrimary,
+                      },
+                    },
                   },
-                  [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: { backgroundColor: palette.white }
-                }
+                  [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: {
+                    backgroundColor: palette.white,
+                  },
+                },
               },
             disabled && {
-              color: palette.neutralTertiary
-            }
+              color: palette.neutralTertiary,
+            },
           ],
           splitPrimary: [
             {
               height: CONTEXTUAL_MENU_ITEM_HEIGHT,
-              lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT
+              lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
             },
             !(disabled || primaryDisabled) &&
               !checked && {
@@ -90,49 +92,51 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
                     color: palette.neutralDark,
                     selectors: {
                       '.ms-ContextualMenu-icon': {
-                        color: palette.themeDarkAlt
-                      }
-                    }
+                        color: palette.themeDarkAlt,
+                      },
+                    },
                   },
                   ':active': {
                     selectors: {
                       '.ms-ContextualMenu-icon': {
-                        color: palette.themeDark
-                      }
-                    }
-                  }
-                }
+                        color: palette.themeDark,
+                      },
+                    },
+                  },
+                },
               },
             (disabled || primaryDisabled) && {
               color: palette.neutralTertiary,
               selectors: {
                 '.ms-ContextualMenu-icon': {
-                  color: palette.neutralTertiary
-                }
-              }
+                  color: palette.neutralTertiary,
+                },
+              },
             },
             checked && {
               selectors: {
                 '.ms-ContextualMenu-checkmarkIcon': {
-                  color: palette.neutralPrimary
-                }
-              }
-            }
+                  color: palette.neutralPrimary,
+                },
+              },
+            },
           ],
           splitMenu: [
             {
               height: CONTEXTUAL_MENU_ITEM_HEIGHT,
               lineHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-              width: CONTEXTUAL_MENU_ITEM_HEIGHT // to match the numbers from the default styles
-            }
+              width: CONTEXTUAL_MENU_ITEM_HEIGHT, // to match the numbers from the default styles
+            },
           ],
           icon: [{ ...iconStyles }, disabled && { color: palette.neutralTertiary }],
           checkmarkIcon: [{ ...iconStyles }],
           splitContainer: {
             height: CONTEXTUAL_MENU_ITEM_HEIGHT,
             selectors: {
-              [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: { backgroundColor: palette.white }
-            }
+              [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: {
+                backgroundColor: palette.white,
+              },
+            },
           },
           subMenuIcon: [
             {
@@ -142,19 +146,19 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<
               fontSize: FontSizes.size12,
               selectors: {
                 ':hover': {
-                  color: palette.neutralPrimary
+                  color: palette.neutralPrimary,
                 },
                 ':active': {
-                  color: palette.neutralPrimary
+                  color: palette.neutralPrimary,
                 },
-                [MinimumScreenSelector]: { fontSize: FontSizes.size16 }
-              }
+                [MinimumScreenSelector]: { fontSize: FontSizes.size16 },
+              },
             },
             expanded && { color: palette.neutralPrimary },
-            disabled && { color: palette.neutralTertiary }
-          ]
+            disabled && { color: palette.neutralTertiary },
+          ],
         };
-      }
-    }
+      },
+    },
   };
 };

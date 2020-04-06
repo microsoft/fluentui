@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Dropdown, Header } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown, Header } from '@fluentui/react-northstar';
 
 const inputItems = [
   'Bruce Wayne',
@@ -11,14 +11,13 @@ const inputItems = [
   'Bruce Banner',
   'Peter Parker',
   'Selina Kyle',
-]
+];
 
 const DropdownExampleInline = () => (
   <>
     <Header as="h3">Inline:</Header>
     <div>
-      Some text inline with the{' '}
-      <Dropdown inline items={inputItems} placeholder="Select your hero" /> and more text.
+      Some text inline with the <Dropdown inline items={inputItems} placeholder="Select your hero" /> and more text.
     </div>
     <Header as="h3">Inline Search:</Header>
     <span>
@@ -33,6 +32,6 @@ const DropdownExampleInline = () => (
       and more text.
     </span>
   </>
-)
+);
 
-export default DropdownExampleInline
+export default DropdownExampleInline;

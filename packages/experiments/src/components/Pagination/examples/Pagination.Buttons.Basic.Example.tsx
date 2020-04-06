@@ -32,7 +32,7 @@ export class PaginationButtonsBasicExample extends React.Component<{}, IPaginati
 
   private onPageChange = (index: number): void => {
     this.setState({
-      selectedPageIndex: index
+      selectedPageIndex: index,
     });
   };
 }

@@ -9,7 +9,7 @@ const getClassNames = classNamesFunction<{}, IAnnouncedStyles>();
  */
 export class AnnouncedBase extends React.Component<IAnnouncedProps> {
   public static defaultProps: Partial<IAnnouncedProps> = {
-    'aria-live': 'polite'
+    'aria-live': 'polite',
   };
 
   public render(): JSX.Element {

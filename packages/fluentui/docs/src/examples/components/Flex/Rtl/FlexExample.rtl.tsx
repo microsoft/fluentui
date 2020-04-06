@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Image, Text, Header } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Image, Text, Header } from '@fluentui/react-northstar';
 
 const FlexExampleMediaCard = () => (
   <Flex gap="gap.medium" padding="padding.medium" debug>
@@ -24,6 +24,6 @@ const FlexExampleMediaCard = () => (
       </Flex>
     </Flex.Item>
   </Flex>
-)
+);
 
-export default FlexExampleMediaCard
+export default FlexExampleMediaCard;

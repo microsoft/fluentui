@@ -1,4 +1,4 @@
-import { Accessibility } from '../../types'
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -13,6 +13,6 @@ const statusBehavior: Accessibility = () => ({
       role: 'img',
     },
   },
-})
+});
 
-export default statusBehavior
+export default statusBehavior;

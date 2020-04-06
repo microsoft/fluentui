@@ -8,5 +8,5 @@ export const Toggle: React.FunctionComponent<IToggleProps> = createComponent(Tog
   displayName: 'Toggle',
   state,
   styles,
-  tokens
+  tokens,
 });

@@ -12,15 +12,19 @@ module.exports = ({ config }) => {
         options: {
           transpileOnly: true,
           experimentalWatchApi: true,
-          configFile: 'tsconfig.json'
-        }
-      }
-    ]
+          configFile: 'tsconfig.json',
+        },
+      },
+    ],
   });
 
   config.resolveLoader = {
     ...config.resolveLoader,
-    modules: ['node_modules', path.join(__dirname, '../../node_modules'), path.join(__dirname, '../../../node_modules')]
+    modules: [
+      'node_modules',
+      path.join(__dirname, '../../node_modules'),
+      path.join(__dirname, '../../../node_modules'),
+    ],
   };
 
   config.module.rules.push({
@@ -29,7 +33,7 @@ module.exports = ({ config }) => {
     exclude: [/node_modules/],
     use: [
       {
-        loader: '@microsoft/loader-load-themed-styles' // creates style nodes from JS strings
+        loader: '@microsoft/loader-load-themed-styles', // creates style nodes from JS strings
       },
       {
         loader: 'css-loader', // translates CSS into CommonJS
@@ -37,36 +41,36 @@ module.exports = ({ config }) => {
           modules: true,
           importLoaders: 2,
           localIdentName: '[name]_[local]_[hash:base64:5]',
-          minimize: false
-        }
+          minimize: false,
+        },
       },
       {
         loader: 'postcss-loader',
         options: {
           plugins: function() {
             return [require('autoprefixer')];
-          }
-        }
+          },
+        },
       },
       {
-        loader: 'sass-loader'
-      }
-    ]
+        loader: 'sass-loader',
+      },
+    ],
   });
 
   config.module.rules.push({
     test: /\.(gif|jpg|jpeg|png|svg)$/,
-    loader: 'file-loader?name=[name].[ext]'
+    loader: 'file-loader?name=[name].[ext]',
   });
 
   config.module.rules.push({
     test: /\.(woff|woff2|ttf)$/,
-    loader: 'file-loader?name=[name].[ext]'
+    loader: 'file-loader?name=[name].[ext]',
   });
 
   config.module.rules.push({
     test: /\.md$/,
-    loader: 'raw-loader'
+    loader: 'raw-loader',
   });
 
   config.resolve.extensions.push('.ts', '.tsx');

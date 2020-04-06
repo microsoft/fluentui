@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Dialog, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Dialog, Popup } from '@fluentui/react-northstar';
 
 export const selectors = {
   dialogCancel: 'dialog-cancel',
@@ -8,7 +8,7 @@ export const selectors = {
   dialogTrigger: 'dialog-trigger',
   popupContent: 'popup-content',
   popupTrigger: 'popup-trigger',
-}
+};
 
 const DialogInPopupExample = () => (
   <Popup
@@ -24,6 +24,6 @@ const DialogInPopupExample = () => (
     }
     trigger={<Button id={selectors.popupTrigger} content="Open a popup" />}
   />
-)
+);
 
-export default DialogInPopupExample
+export default DialogInPopupExample;

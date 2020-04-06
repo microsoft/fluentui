@@ -1,22 +1,22 @@
-import * as faker from 'faker'
-import * as _ from 'lodash'
-import * as React from 'react'
-import { Avatar, Header, Input, List, Segment } from '@fluentui/react'
+import * as faker from 'faker';
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Avatar, Header, Input, List, Segment } from '@fluentui/react-northstar';
 
 // ----------------------------------------
 // Types
 // ----------------------------------------
 interface DataRecord {
-  avatar: string
-  firstName: string
-  lastName: string
-  timestamp: string
+  avatar: string;
+  firstName: string;
+  lastName: string;
+  timestamp: string;
 }
 
 interface SearchPageState {
-  loading: boolean
-  query: string
-  results: DataRecord[]
+  loading: boolean;
+  query: string;
+  results: DataRecord[];
 }
 
 // ----------------------------------------
@@ -31,7 +31,7 @@ const DATA_RECORDS = _.times(100, () => ({
   lastName: faker.name.lastName(),
   quote: faker.hacker.phrase(),
   timestamp: faker.date.recent().toLocaleString(),
-}))
+}));
 
 // Converts a data record to a <ListItem />'s props object
 const dataRecordToListItem = record => ({
@@ -40,38 +40,38 @@ const dataRecordToListItem = record => ({
   header: `${record.firstName} ${record.lastName}`,
   content: record.quote,
   endMedia: record.timestamp,
-})
+});
 
 // ----------------------------------------
 // Prototype Search Page View
 // ----------------------------------------
 class SearchPage extends React.Component<SearchPageState, any> {
-  state = { loading: false, query: '', results: [] }
-  searchTimer: any
+  state = { loading: false, query: '', results: [] };
+  searchTimer: any;
 
   handleSearchChange = e => {
-    const query = e.target.value
-    this.setState({ query })
-    if (query) this.filterResults(query)
-  }
+    const query = e.target.value;
+    this.setState({ query });
+    if (query) this.filterResults(query);
+  };
 
   filterResults = _.debounce(query => {
-    clearTimeout(this.searchTimer)
+    clearTimeout(this.searchTimer);
 
-    const regExp = new RegExp(_.escapeRegExp(query), 'gi')
+    const regExp = new RegExp(_.escapeRegExp(query), 'gi');
 
-    this.setState({ loading: true })
+    this.setState({ loading: true });
 
     // mock async search query, such as against an API
     this.searchTimer = setTimeout(() => {
-      const results = DATA_RECORDS.filter(record => _.some(record, value => regExp.test(value)))
+      const results = DATA_RECORDS.filter(record => _.some(record, value => regExp.test(value)));
 
-      this.setState({ loading: false, results })
-    }, 500)
-  }, 500)
+      this.setState({ loading: false, results });
+    }, 500);
+  }, 500);
 
   render() {
-    const { loading, results, query } = this.state
+    const { loading, results, query } = this.state;
 
     return (
       <Segment>
@@ -101,8 +101,8 @@ class SearchPage extends React.Component<SearchPageState, any> {
           </div>
         )}
       </Segment>
-    )
+    );
   }
 }
 
-export default SearchPage
+export default SearchPage;

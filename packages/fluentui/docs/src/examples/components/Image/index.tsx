@@ -1,8 +1,8 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Variations from './Variations'
+import Rtl from './Rtl';
+import Types from './Types';
+import Variations from './Variations';
 
 const ImageExamples = () => (
   <>
@@ -10,6 +10,6 @@ const ImageExamples = () => (
     <Variations />
     <Rtl />
   </>
-)
+);
 
-export default ImageExamples
+export default ImageExamples;

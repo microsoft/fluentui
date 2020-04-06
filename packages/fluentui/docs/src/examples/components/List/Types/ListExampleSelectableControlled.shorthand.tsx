@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { List, Image } from '@fluentui/react'
+import * as React from 'react';
+import { List, Image } from '@fluentui/react-northstar';
 
 class SelectableListControlledExample extends React.Component<any, any> {
-  state = { selectedIndex: -1 }
+  state = { selectedIndex: -1 };
 
   items = [
     {
@@ -26,7 +26,7 @@ class SelectableListControlledExample extends React.Component<any, any> {
       headerMedia: '5:22:40 PM',
       content: 'The GB pixel is down, navigate the virtual interface!',
     },
-  ]
+  ];
 
   render() {
     return (
@@ -34,15 +34,13 @@ class SelectableListControlledExample extends React.Component<any, any> {
         selectable
         selectedIndex={this.state.selectedIndex}
         onSelectedIndexChange={(e, newProps) => {
-          alert(
-            `List is requested to change its selectedIndex state to "${newProps.selectedIndex}"`,
-          )
-          this.setState({ selectedIndex: newProps.selectedIndex })
+          alert(`List is requested to change its selectedIndex state to "${newProps.selectedIndex}"`);
+          this.setState({ selectedIndex: newProps.selectedIndex });
         }}
         items={this.items}
       />
-    )
+    );
   }
 }
 
-export default SelectableListControlledExample
+export default SelectableListControlledExample;

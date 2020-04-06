@@ -13,7 +13,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       // tslint:disable:no-any
       .value((d: any) => {
         return d.data;
-      })
+      }),
   };
   constructor(props: IPieProps) {
     super(props);
@@ -29,11 +29,15 @@ export class Pie extends React.Component<IPieProps, {}> {
         innerRadius={this.props.innerRadius}
         outerRadius={this.props.outerRadius}
         color={color!}
+        onFocusCallback={this._focusCallback}
         hoverOnCallback={this._hoverCallback}
+        onBlurCallback={this.props.onBlurCallback}
         hoverLeaveCallback={this.props.hoverLeaveCallback}
         uniqText={this.props.uniqText}
         activeArc={this.props.activeArc}
         href={href}
+        calloutId={this.props.calloutId}
+        valueInsideDonut={this.props.valueInsideDonut}
       />
     );
   };
@@ -46,6 +50,11 @@ export class Pie extends React.Component<IPieProps, {}> {
 
     return <g transform={translate}>{piechart.map((d: IArcData, i: number) => this.arcGenerator(d, i, href))}</g>;
   }
+
+  private _focusCallback = (data: IChartDataPoint, e: SVGPathElement): void => {
+    this.props.onFocusCallback!(data, e);
+  };
+
   private _hoverCallback(data: IChartDataPoint, e: React.MouseEvent<SVGPathElement>): void {
     this.props.hoverOnCallback!(data, e);
   }

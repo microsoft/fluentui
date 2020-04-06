@@ -6,17 +6,17 @@ export class StackedBarChartBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
       { legend: 'first', data: 1, color: DefaultPalette.blue },
-      { legend: 'second', color: DefaultPalette.green }
+      { legend: 'second', color: DefaultPalette.green },
     ];
 
     const data0: IChartProps = {
       chartTitle: 'Stacked Bar chart example',
-      chartData: points
+      chartData: points,
     };
 
     const data1: IChartProps = {
       chartTitle: 'Stacked Bar chart example with ignore fix style',
-      chartData: points
+      chartData: points,
     };
 
     return (

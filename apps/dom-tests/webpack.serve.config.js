@@ -6,7 +6,7 @@ const PACKAGE_NAME = 'dom-tests';
 module.exports = resources.createServeConfig({
   entry: './src/index.tsx',
   output: {
-    filename: 'dom-tests.js'
+    filename: 'dom-tests.js',
   },
-  mode: 'development'
+  mode: 'development',
 });

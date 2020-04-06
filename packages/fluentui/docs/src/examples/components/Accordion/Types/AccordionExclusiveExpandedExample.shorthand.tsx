@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Accordion } from '@fluentui/react'
+import * as React from 'react';
+import { Accordion } from '@fluentui/react-northstar';
 
 const panels = [
   {
@@ -17,8 +17,8 @@ const panels = [
     title: 'Or this one',
     content: 'So many choices...',
   },
-]
+];
 
-const AccordionExclusiveExpandedExample = () => <Accordion panels={panels} exclusive expanded />
+const AccordionExclusiveExpandedExample = () => <Accordion panels={panels} exclusive expanded />;
 
-export default AccordionExclusiveExpandedExample
+export default AccordionExclusiveExpandedExample;

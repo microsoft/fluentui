@@ -1,20 +1,20 @@
-import { CodeSnippet, useKnobValues } from '@fluentui/docs-components'
-import { createComponent, Flex } from '@fluentui/react'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { CodeSnippet, useKnobValues } from '@fluentui/docs-components';
+import { createComponent, Flex } from '@fluentui/react-northstar';
+import * as _ from 'lodash';
+import * as React from 'react';
 
 const knobsSnippetStyles = {
   background: 'whitesmoke',
   color: '#777',
   lineHeight: '1.5',
   padding: `5px 10px`,
-}
+};
 
 const KnobsSnippet = createComponent({
   displayName: 'KnobsSnippet',
   render: ({ children, config }) => {
-    const knobs = useKnobValues()
-    const values = _.fromPairs(knobs.map(knob => [knob.name, knob.value]))
+    const knobs = useKnobValues();
+    const values = _.fromPairs(knobs.map(knob => [knob.name, knob.value]));
 
     return (
       <Flex>
@@ -32,12 +32,12 @@ const KnobsSnippet = createComponent({
           )}
         </Flex.Item>
       </Flex>
-    )
+    );
   },
-})
+});
 
 KnobsSnippet.defaultProps = {
   styles: knobsSnippetStyles,
-}
+};
 
-export default KnobsSnippet
+export default KnobsSnippet;

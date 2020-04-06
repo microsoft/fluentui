@@ -35,14 +35,19 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             sectionName: category.title,
             content: (
               <ul className={PageStyles.uListFlex}>
-                {category.pages.map(page => (
-                  <li key={page.url} className={css(PageStyles.uThird)}>
-                    <Link href={page.url}>{page.title}</Link>
-                  </li>
-                ))}
+                {category.pages.map(page => {
+                  // If a page has sub-pages, it's considered a category and doesn't have its own URL.
+                  // Get the URL from the first sub-page instead.
+                  const url = page.url || (page.pages && page.pages[0] && page.pages[0].url);
+                  return url ? (
+                    <li key={url} className={css(PageStyles.uThird)}>
+                      <Link href={url}>{page.title}</Link>
+                    </li>
+                  ) : null;
+                })}
               </ul>
-            )
-          }
+            ),
+          },
       );
 
     sections.push(_otherControlsRequestSections(platform));
@@ -54,22 +59,24 @@ function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<P
   switch (platform) {
     case 'web':
       return {
-        sectionName: 'Need a control Fabric React doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string
+        sectionName: 'Need a control Fluent UI React doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
       };
     case 'ios':
       return {
-        sectionName: 'Need a control Fabric iOS doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string
+        sectionName: 'Need a control Fluent UI iOS doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
       };
     case 'android':
       return {
-        sectionName: 'Need a control Fabric Android doesn’t have?',
-        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string
+        sectionName: 'Need a control Fluent UI Android doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
   }
 }
 
 export const ControlsPage: React.FunctionComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <ControlsPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <ControlsPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

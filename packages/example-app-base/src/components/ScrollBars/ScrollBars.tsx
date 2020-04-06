@@ -8,12 +8,12 @@ const styles = mergeStyleSets({
   thumb: { background: NeutralColors.gray60 },
   trackVertical: {
     right: 5,
-    height: '100%'
+    height: '100%',
   },
   trackHorizontal: {
     bottom: 5,
-    height: '100%'
-  }
+    height: '100%',
+  },
 });
 
 export interface IScrollBarsState {
@@ -23,14 +23,14 @@ export interface IScrollBarsState {
 export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsState> {
   public static defaultProps = {
     autoHide: true,
-    size: 6
+    size: 6,
   };
 
   public constructor(props: IScrollBarsProps) {
     super(props);
 
     this.state = {
-      scrollViewHovered: false
+      scrollViewHovered: false,
     };
   }
 
@@ -73,14 +73,14 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
 
   private _renderScrollThumb = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const thumbStyle = {
-      borderRadius: this.props.size
+      borderRadius: this.props.size,
     };
     return <div {...props} style={{ ...(props.style || {}), ...thumbStyle }} className={styles.thumb} />;
   };
 
   private _renderScrollTrackVertical = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const trackStyle = {
-      width: this.props.size
+      width: this.props.size,
     };
     return (
       <div
@@ -93,7 +93,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
 
   private _renderScrollTrackHorizontal = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const trackStyle = {
-      height: this.props.size
+      height: this.props.size,
     };
     return (
       <div

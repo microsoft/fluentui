@@ -22,18 +22,30 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
         <Toggle defaultChecked={true} onText="No Label" offText="No Label" onChange={this._onChange} />
         <Toggle defaultChecked={true} label="No Text" onChange={this._onChange} />
         <Toggle defaultChecked={true} label="Enabled and checked" onText="On" offText="Off" onChange={this._onChange} />
-        <Toggle defaultChecked={false} label="Enabled and unchecked" onText="On" offText="Off" onChange={this._onChange} />
+        <Toggle
+          defaultChecked={false}
+          label="Enabled and unchecked"
+          onText="On"
+          offText="Off"
+          onChange={this._onChange}
+        />
         <Toggle defaultChecked={true} disabled={true} label="Disabled and checked" onText="On" offText="Off" />
         <Toggle defaultChecked={false} disabled={true} label="Disabled and unchecked" onText="On" offText="Off" />
-        <Toggle defaultChecked={false} label="Text prop overrides" onText="Shouldn't see me" offText="Shouldn't see me" text="Override" />
+        <Toggle
+          defaultChecked={false}
+          label="Text prop overrides"
+          onText="Shouldn't see me"
+          offText="Shouldn't see me"
+          text="Override"
+        />
         <Toggle
           defaultChecked={true}
           label="Custom On/Off render functions"
           onChange={this._onCustomRenderChange}
           slots={{
             text: {
-              render: props => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>
-            }
+              render: props => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>,
+            },
           }}
         />
         <Toggle checked={checked} label="Controlled by Toggle above" onText="Checked" offText="Unchecked" />

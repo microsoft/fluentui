@@ -1,9 +1,9 @@
-import { Input } from '@fluentui/react'
-import * as React from 'react'
+import { Input } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const InputMinimalPerf = () => <Input />
+const InputMinimalPerf = () => <Input />;
 
-InputMinimalPerf.iterations = 1000
-InputMinimalPerf.filename = 'InputMinimal.perf.tsx'
+InputMinimalPerf.iterations = 1000;
+InputMinimalPerf.filename = 'InputMinimal.perf.tsx';
 
-export default InputMinimalPerf
+export default InputMinimalPerf;

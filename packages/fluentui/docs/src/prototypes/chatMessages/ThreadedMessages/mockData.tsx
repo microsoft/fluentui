@@ -1,29 +1,39 @@
-import * as React from 'react'
-import { ThreadReplyProps } from './ThreadReplies'
+import * as React from 'react';
+import { ThreadReplyProps } from './ThreadReplies';
+import { Icon } from '@fluentui/react-northstar';
+import {
+  AcceptIcon,
+  BoldIcon,
+  CalendarIcon,
+  ItalicIcon,
+  LikeIcon,
+  MoreIcon,
+  UnderlineIcon,
+} from '@fluentui/react-icons-northstar';
 
 export const actionMenu = {
   iconOnly: true,
   items: [
     {
       key: 'like',
-      icon: 'like',
+      icon: <LikeIcon />,
       title: 'Like',
     },
     {
       key: 'more',
-      icon: 'more',
+      icon: <MoreIcon />,
       title: 'More actions',
     },
   ],
-}
+};
 
 export const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: {
     color: 'green',
-    icon: 'check',
+    icon: <AcceptIcon />,
   },
-}
+};
 
 export const replies: ThreadReplyProps[] = [
   {
@@ -58,49 +68,31 @@ export const replies: ThreadReplyProps[] = [
     timestamp: 'Yesterday, 10:15 PM',
     actionMenu,
   },
-]
+];
 
 export const toolbarItems = [
   {
     key: 'bold',
-    icon: {
-      name: 'bold',
-      outline: true,
-    },
+    icon: <BoldIcon outline />,
   },
   {
     key: 'italic',
-    icon: {
-      name: 'italic',
-      outline: true,
-    },
+    icon: <ItalicIcon outline />,
   },
   {
     key: 'underline',
-    icon: {
-      name: 'underline',
-      outline: true,
-    },
+    icon: <UnderlineIcon outline />,
   },
   {
     key: 'smile',
-    icon: {
-      name: 'smile',
-      outline: true,
-    },
+    icon: <Icon name="smile" outline />,
   },
   {
     key: 'picture',
-    icon: {
-      name: 'picture',
-      outline: true,
-    },
+    icon: <Icon name="picture" outline />,
   },
   {
     key: 'calendar',
-    icon: {
-      name: 'calendar',
-      outline: true,
-    },
+    icon: <CalendarIcon outline />,
   },
-]
+];

@@ -12,7 +12,7 @@ import {
   ImageFit,
   DocumentCardDetails,
   Fabric,
-  IDocumentCardPreviewProps
+  IDocumentCardPreviewProps,
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '@uifabric/example-data';
@@ -22,15 +22,15 @@ const previewProps: IDocumentCardPreviewProps = {
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
       imageFit: ImageFit.cover,
       width: 318,
-      height: 196
-    }
-  ]
+      height: 196,
+    },
+  ],
 };
 
 const previewPropsCompact: IDocumentCardPreviewProps = {
@@ -39,40 +39,40 @@ const previewPropsCompact: IDocumentCardPreviewProps = {
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
-      width: 144
+      width: 144,
     },
     {
       name: 'New Contoso Collaboration for Conference Presentation Draft',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreviewTwo,
       iconSrc: TestImages.iconPpt,
-      width: 144
+      width: 144,
     },
     {
       name: 'Spec Sheet for design',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreviewThree,
       iconSrc: TestImages.iconPpt,
-      width: 144
+      width: 144,
     },
     {
       name: 'Contoso Marketing Presentation',
       linkProps: {
-        href: 'http://bing.com'
+        href: 'http://bing.com',
       },
       previewImageSrc: TestImages.documentPreview,
       iconSrc: TestImages.iconPpt,
-      width: 144
-    }
-  ]
+      width: 144,
+    },
+  ],
 };
 
 const docActivity = (
@@ -94,7 +94,7 @@ storiesOf('DocumentCard', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   // Commenting out this story as it has some racing issues with the truncation logic and causes the test to fail on unrelated PRs
   // .addStory('Root', () => (
@@ -141,7 +141,7 @@ storiesOf('DocumentCard', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Compact with preview list', () => (
     <Fabric>

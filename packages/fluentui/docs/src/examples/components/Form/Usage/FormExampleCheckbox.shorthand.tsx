@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Form, Button, Checkbox } from '@fluentui/react'
+import * as React from 'react';
+import { Form, Button, Checkbox } from '@fluentui/react-northstar';
 
 const fields = [
   {
@@ -25,15 +25,15 @@ const fields = [
     },
     key: 'submit',
   },
-]
+];
 
 const FormExampleCheckbox = () => (
   <Form
     onSubmit={() => {
-      alert('Form submitted')
+      alert('Form submitted');
     }}
     fields={fields}
   />
-)
+);
 
-export default FormExampleCheckbox
+export default FormExampleCheckbox;

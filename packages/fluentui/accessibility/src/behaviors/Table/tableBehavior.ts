@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import tableRowBehavior from './tableRowBehavior'
+import { Accessibility } from '../../types';
+import tableRowBehavior from './tableRowBehavior';
 
 /**
  * @description
@@ -17,6 +17,6 @@ const tableBehavior: Accessibility = props => ({
   childBehaviors: {
     row: tableRowBehavior,
   },
-})
+});
 
-export default tableBehavior
+export default tableBehavior;

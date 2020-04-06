@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Toolbar } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar } from '@fluentui/react-northstar';
 
 export const selectors = {
   toolbarMenuId: 'toolbarMenu',
@@ -8,12 +8,12 @@ export const selectors = {
   playId: 'play',
   playVideoId: 'playVideo',
   hdId: 'hd',
-}
+};
 
 const ToolbarExampleMenuWithSubmenuShorthand = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
-  const onMenuOpenChange = (e, { menuOpen }) => setMenuOpen(menuOpen)
+  const onMenuOpenChange = (e, { menuOpen }) => setMenuOpen(menuOpen);
 
   return (
     <Toolbar
@@ -54,7 +54,7 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
         },
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExampleMenuWithSubmenuShorthand
+export default ToolbarExampleMenuWithSubmenuShorthand;

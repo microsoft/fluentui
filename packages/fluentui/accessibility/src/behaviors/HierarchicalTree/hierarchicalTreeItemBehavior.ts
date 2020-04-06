@@ -1,7 +1,7 @@
-import * as keyboardKey from 'keyboard-key'
+import * as keyboardKey from 'keyboard-key';
 
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
-import { Accessibility } from '../../types'
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -52,19 +52,19 @@ const hierarchicalTreeItemBehavior: Accessibility<TreeItemBehaviorProps> = props
       }),
     },
   },
-})
+});
 
 export type TreeItemBehaviorProps = {
   /** If item is a subtree, it contains items. */
-  items?: object[]
+  items?: object[];
   /** If item is a subtree, it indicates if it's open. */
-  open?: boolean
-}
+  open?: boolean;
+};
 
 /** Checks if current tree item has a subtree and it is opened */
 const isSubtreeOpen = (props: TreeItemBehaviorProps): boolean => {
-  const { items, open } = props
-  return !!(items && items.length && open)
-}
+  const { items, open } = props;
+  return !!(items && items.length && open);
+};
 
-export default hierarchicalTreeItemBehavior
+export default hierarchicalTreeItemBehavior;

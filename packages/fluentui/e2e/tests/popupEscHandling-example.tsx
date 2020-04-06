@@ -1,13 +1,13 @@
-import * as React from 'react'
-import { Button, Dropdown, Popup } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Dropdown, Popup } from '@fluentui/react-northstar';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange']
+const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];
 
 export const selectors = {
   popupTriggerId: 'trigger',
   popupContentClass: Popup.slotClassNames.content,
   dropdownTriggerClass: Dropdown.slotClassNames.triggerButton,
-}
+};
 
 const PopupEscHandlingExample = () => (
   <Popup
@@ -26,6 +26,6 @@ const PopupEscHandlingExample = () => (
       </>
     }
   />
-)
+);
 
-export default PopupEscHandlingExample
+export default PopupEscHandlingExample;

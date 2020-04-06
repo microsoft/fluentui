@@ -8,10 +8,10 @@ export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {
       !isDisabled && {
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            textDecoration: 'none'
-          }
-        }
-      }
-    ]
+            textDecoration: 'none',
+          },
+        },
+      },
+    ],
   };
 };

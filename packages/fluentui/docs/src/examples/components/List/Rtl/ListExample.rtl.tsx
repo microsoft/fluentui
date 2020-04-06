@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { List, Image } from '@fluentui/react'
+import * as React from 'react';
+import { List, Image } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -23,8 +23,8 @@ const items = [
     headerMedia: '5:22:40 PM',
     content: 'بكسل GB لأسفل ، وتصفح الواجهة الافتراضية!',
   },
-]
+];
 
-const ListExampleRtl = () => <List items={items} />
+const ListExampleRtl = () => <List items={items} />;
 
-export default ListExampleRtl
+export default ListExampleRtl;

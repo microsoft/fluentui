@@ -9,7 +9,7 @@ const prettierRulesConfig = path.join(repoRoot, 'prettier.config.js');
 const prettierIgnorePath = path.join(repoRoot, '.prettierignore');
 const prettierBin = require.resolve('prettier/bin-prettier.js');
 
-const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'html', 'md'];
+const prettierExtensions = ['ts', 'tsx', 'js', 'jsx', 'json', 'scss', 'css', 'html', 'htm', 'md', 'yml'];
 
 /**
  * Run prettier for a given set of files.
@@ -29,7 +29,7 @@ function runPrettier(files, runAsync, logErrorsOnly) {
     `"${prettierIgnorePath}"`,
     ...(logErrorsOnly ? ['--loglevel', 'warn'] : []),
     '--write',
-    ...files
+    ...files,
   ].join(' ');
 
   if (runAsync) {
@@ -40,21 +40,23 @@ function runPrettier(files, runAsync, logErrorsOnly) {
 }
 
 /**
- * Runs prettier on all ts/tsx/json/js files in a project.
+ * Runs prettier on all relevant files in a folder.
  *
- * @param {string} projectPath Path to the project root for which to run prettier
- * @returns {Promise<void>}
+ * @param {string} folderPath Path to the folder for which to run prettier
+ * @param {boolean} [runAsync] Whether to run the command synchronously or asynchronously
+ * @param {boolean} [nonRecursive] If true, don't add a multi-folder glob to the path
+ * @returns A promise if run asynchronously, or nothing if run synchronously
  */
-function runPrettierForProject(projectPath) {
-  if (!path.isAbsolute(projectPath)) {
-    projectPath = path.join(repoRoot, projectPath);
+function runPrettierForFolder(folderPath, runAsync, nonRecursive) {
+  if (!path.isAbsolute(folderPath)) {
+    folderPath = path.join(repoRoot, folderPath);
   }
 
-  const sourcePath = path.join(projectPath, '**', `*.{${prettierExtensions.join(',')}}`);
+  const sourcePath = `"${path.join(folderPath, nonRecursive ? '' : '**', `*.{${prettierExtensions.join(',')}}`)}"`;
 
   console.log(`Running prettier for ${sourcePath}`);
 
-  return runPrettier([sourcePath], true, true);
+  return runPrettier([sourcePath], runAsync, true);
 }
 
-module.exports = { runPrettierForProject, runPrettier, prettierExtensions };
+module.exports = { runPrettierForFolder, runPrettier, prettierExtensions };

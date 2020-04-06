@@ -3,7 +3,7 @@ import {
   ContextualMenuItemType,
   DirectionalHint,
   IContextualMenuProps,
-  IContextualMenuItem
+  IContextualMenuItem,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton, IconButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
@@ -16,7 +16,7 @@ export const ContextualMenuCustomizationExample: React.FunctionComponent = () =>
 function renderCharmMenuItem(item: IContextualMenuItem, dismissMenu: () => void): JSX.Element {
   return (
     <IconButton
-      iconProps={{ iconName: item.name }}
+      iconProps={{ iconName: item.text }}
       className="ms-ContextualMenu-customizationExample-icon ms-ContextualMenu-link"
       data-is-focusable={true}
       onClick={dismissMenu}
@@ -56,15 +56,15 @@ interface ICategoryList {
 const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
-    text: 'New'
+    text: 'New',
   },
   {
     key: 'upload',
-    text: 'Upload'
+    text: 'Upload',
   },
   {
     key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider
+    itemType: ContextualMenuItemType.Divider,
   },
   {
     key: 'charm',
@@ -75,94 +75,94 @@ const menuItems: IContextualMenuItem[] = [
       items: [
         {
           key: 'none',
-          text: 'None'
+          text: 'None',
         },
         {
           key: 'bulb',
           text: 'Lightbulb',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'run',
           text: 'Running',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'plane',
           text: 'Airplane',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'page',
           text: 'Page',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'cake',
           text: 'Cake',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'soccer',
           text: 'Soccer',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'home',
           text: 'Home',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'emoji',
           text: 'Emoji2',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'work',
           text: 'Work',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'coffee',
           text: 'Coffee',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'people',
           text: 'People',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'stopwatch',
           text: 'Stopwatch',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'music',
           text: 'MusicInCollectionFill',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
+          className: 'ms-ContextualMenu-customizationExample-item',
         },
         {
           key: 'lock',
           text: 'Lock',
           onRender: renderCharmMenuItem,
-          className: 'ms-ContextualMenu-customizationExample-item'
-        }
-      ]
-    }
+          className: 'ms-ContextualMenu-customizationExample-item',
+        },
+      ],
+    },
   },
   {
     key: 'categories',
@@ -175,51 +175,51 @@ const menuItems: IContextualMenuItem[] = [
           categoryList: [
             {
               name: 'Personal',
-              color: 'yellow'
+              color: 'yellow',
             },
             {
               name: 'Work',
-              color: 'green'
+              color: 'green',
             },
             {
               name: 'Birthday',
-              color: 'blue'
+              color: 'blue',
             },
             {
               name: 'Spam',
-              color: 'grey'
+              color: 'grey',
             },
             {
               name: 'Urgent',
-              color: 'red'
+              color: 'red',
             },
             {
               name: 'Hobbies',
-              color: 'black'
-            }
+              color: 'black',
+            },
           ],
-          onRender: renderCategoriesList
+          onRender: renderCategoriesList,
         },
         {
           key: 'divider_1',
-          itemType: ContextualMenuItemType.Divider
+          itemType: ContextualMenuItemType.Divider,
         },
         {
           key: 'clear',
-          text: 'Clear categories'
+          text: 'Clear categories',
         },
         {
           key: 'manage',
-          text: 'Manage categories'
-        }
-      ]
-    }
-  }
+          text: 'Manage categories',
+        },
+      ],
+    },
+  },
 ];
 
 const menuProps: IContextualMenuProps = {
   shouldFocusOnMount: true,
   directionalHint: DirectionalHint.bottomLeftEdge,
   className: 'ms-ContextualMenu-customizationExample',
-  items: menuItems
+  items: menuItems,
 };

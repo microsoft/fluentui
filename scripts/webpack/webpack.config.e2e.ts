@@ -12,12 +12,12 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   mode: 'development',
   entry: {
-    app: paths.e2eSrc('app')
+    app: paths.e2eSrc('app'),
   },
   output: {
     filename: `[name].js`,
     path: paths.e2eDist(),
-    pathinfo: true
+    pathinfo: true,
   },
   devtool: config.compiler_devtool as webpack.Options.Devtool,
   node: {
@@ -25,7 +25,7 @@ const webpackConfig: webpack.Configuration = {
     module: 'empty',
     child_process: 'empty',
     net: 'empty',
-    readline: 'empty'
+    readline: 'empty',
   },
   module: {
     noParse: [/anchor-js/],
@@ -35,27 +35,27 @@ const webpackConfig: webpack.Configuration = {
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
-        }
-      }
-    ]
+          cacheDirectory: true,
+        },
+      },
+    ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin({ tsconfig: paths.e2e('tsconfig.json') }),
     new CopyWebpackPlugin([
       {
         from: paths.e2eSrc('index.html'),
-        to: paths.e2eDist()
-      }
-    ])
+        to: paths.e2eDist(),
+      },
+    ]),
   ],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
-    alias: lernaAliases()
+    alias: lernaAliases(),
   },
   performance: {
-    hints: false // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
-  }
+    hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
+  },
 };
 
 export default webpackConfig;

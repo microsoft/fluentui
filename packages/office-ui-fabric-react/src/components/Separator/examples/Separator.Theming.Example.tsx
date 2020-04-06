@@ -8,9 +8,9 @@ const theme: ITheme = createTheme({
   fonts: {
     medium: {
       fontFamily: 'Monaco, Menlo, Consolas',
-      fontSize: '30px'
-    }
-  }
+      fontSize: '30px',
+    },
+  },
 });
 
 const stackTokens: IStackTokens = { childrenGap: 12 };

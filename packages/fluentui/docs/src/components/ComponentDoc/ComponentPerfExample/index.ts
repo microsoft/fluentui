@@ -1,1 +1,1 @@
-export { default } from './ComponentPerfExample'
+export { default } from './ComponentPerfExample';

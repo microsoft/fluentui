@@ -1,4 +1,4 @@
-export * from './componentAPIs'
+export * from './componentAPIs';
 
-export { default } from './ComponentSourceManager'
-export * from './ComponentSourceManager'
+export { default } from './ComponentSourceManager';
+export * from './ComponentSourceManager';

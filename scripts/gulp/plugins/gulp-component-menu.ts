@@ -46,7 +46,7 @@ export default () => {
       if (componentInfo.isParent) {
         result.push({
           displayName: componentInfo.displayName,
-          type: componentInfo.type
+          type: componentInfo.type,
         });
       }
       cb();
@@ -56,7 +56,7 @@ export default () => {
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack)
+        gutil.colors.gray(err.stack),
       ].join('\n\n');
       this.emit('error', pluginError);
     }
@@ -65,7 +65,7 @@ export default () => {
   function endStream(cb) {
     const file = new Vinyl({
       path: './componentMenu.json',
-      contents: Buffer.from(JSON.stringify(_.sortBy(result, 'displayName'), null, 2))
+      contents: Buffer.from(JSON.stringify(_.sortBy(result, 'displayName'), null, 2)),
     });
 
     this.push(file);

@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { RadioGroup } from '@fluentui/react'
+import * as React from 'react';
+import { RadioGroup } from '@fluentui/react-northstar';
 
 const handleChange = () => {
-  alert('The radio checked value was changed!')
-}
+  alert('The radio checked value was changed!');
+};
 
 const RadioGroupItemExample = () => (
   <RadioGroup
@@ -12,6 +12,6 @@ const RadioGroupItemExample = () => (
       { key: '2', label: 'Another option', value: '2', checkedChanged: handleChange },
     ]}
   />
-)
+);
 
-export default RadioGroupItemExample
+export default RadioGroupItemExample;

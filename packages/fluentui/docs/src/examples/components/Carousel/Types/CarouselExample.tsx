@@ -1,12 +1,12 @@
-import * as React from 'react'
-import { Carousel, Image } from '@fluentui/react'
+import * as React from 'react';
+import { Carousel, Image } from '@fluentui/react-northstar';
 
 const imageAltTags = {
   ade: 'Portrait of Ade',
   elliot: 'Portrait of Elliot',
   kristy: 'Portrait of Kristy',
   nan: 'Portrait of Nan',
-}
+};
 const carouselItems = [
   {
     key: 'ade',
@@ -32,11 +32,12 @@ const carouselItems = [
     content: <Image src="public/images/avatar/large/nan.jpg" fluid alt={imageAltTags.nan} />,
     'aria-label': imageAltTags.nan,
   },
-]
+];
 
 const CarouselExample = () => (
   <Carousel
     ariaRoleDescription="carousel"
+    ariaLabel="Portrait collection"
     navigation={{
       'aria-label': 'people portraits',
       items: carouselItems.map((item, index) => ({
@@ -48,6 +49,6 @@ const CarouselExample = () => (
     items={carouselItems}
     getItemPositionText={(index: number, size: number) => `${index + 1} of ${size}`}
   />
-)
+);
 
-export default CarouselExample
+export default CarouselExample;

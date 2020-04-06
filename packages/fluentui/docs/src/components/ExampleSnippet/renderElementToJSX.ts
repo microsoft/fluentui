@@ -1,5 +1,5 @@
-import * as React from 'react'
-import reactElementToJSXString from 'react-element-to-jsx-string'
+import * as React from 'react';
+import reactElementToJSXString from 'react-element-to-jsx-string';
 
 const getDisplayName = (element: React.ReactElement<any>): string =>
   // @ts-ignore
@@ -7,18 +7,18 @@ const getDisplayName = (element: React.ReactElement<any>): string =>
   // @ts-ignore // function name
   element.type.name ||
   // function without a name, you should provide one
-  (typeof element.type === 'function' ? 'NoDisplayName' : element.type)
+  (typeof element.type === 'function' ? 'NoDisplayName' : element.type);
 
 const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: boolean = false) => {
-  let renderHasFunction
+  let renderHasFunction;
 
   const jsxMarkup = reactElementToJSXString(element, {
     displayName: (element: React.ReactElement<any>): string => {
-      const displayName = getDisplayName(element)
+      const displayName = getDisplayName(element);
 
       // Components created by MDX have following signature:
       // <MDXCreateElement gap="gap.small" mdxType="Flex" originalType>
-      return displayName === 'MDXCreateElement' ? element.props.mdxType : displayName
+      return displayName === 'MDXCreateElement' ? element.props.mdxType : displayName;
     },
     showDefaultProps: false,
     showFunctions: true,
@@ -32,7 +32,7 @@ const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: bo
       'onChange',
     ],
     functionValue: () => (renderHasFunction = true),
-  })
+  });
 
   if (process.env.NODE_ENV !== 'production') {
     if (renderHasFunction && triggerErrorOnRenderFn) {
@@ -46,11 +46,11 @@ const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: bo
           '\n\n',
           jsxMarkup,
         ].join(''),
-      )
+      );
     }
   }
 
-  return jsxMarkup
-}
+  return jsxMarkup;
+};
 
-export default renderElementToJSX
+export default renderElementToJSX;

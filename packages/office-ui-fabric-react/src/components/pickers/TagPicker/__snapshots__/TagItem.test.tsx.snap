@@ -105,7 +105,6 @@ exports[`TagItem accepts title override 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 30px;
         }
         &::-moz-focus-inner {
@@ -190,7 +189,6 @@ exports[`TagItem accepts title override 1`] = `
               margin-top: 0;
               speak: none;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="Cancel"
       >
@@ -331,7 +329,6 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 30px;
         }
         &::-moz-focus-inner {
@@ -416,7 +413,6 @@ exports[`TagItem defaults title to item name for non string children 1`] = `
               margin-top: 0;
               speak: none;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="Cancel"
       >
@@ -532,7 +528,6 @@ exports[`TagItem renders correctly 1`] = `
           text-align: center;
           text-decoration: none;
           user-select: none;
-          vertical-align: top;
           width: 30px;
         }
         &::-moz-focus-inner {
@@ -617,7 +612,6 @@ exports[`TagItem renders correctly 1`] = `
               margin-top: 0;
               speak: none;
               text-align: center;
-              vertical-align: middle;
             }
         data-icon-name="Cancel"
       >

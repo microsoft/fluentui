@@ -25,19 +25,20 @@ describe('initializeFocusRects', () => {
                 classNames.push(name);
               }
             }
-          }
-        }
-      }
-    }
+          },
+        },
+      },
+    },
   };
   const mockTarget = {
     ownerDocument: {
-      defaultView: mockWindow
-    }
+      defaultView: mockWindow,
+    },
   };
 
   beforeEach(() => {
     classNames = [];
+    // tslint:disable-next-line:deprecation
     initializeFocusRects(mockWindow as Window);
   });
 

@@ -14,5 +14,5 @@ export default migration(
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       return moveImports(node, modder, fromPackage, toPackage, legacyExports);
     }).files;
-  }
+  },
 );

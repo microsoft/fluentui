@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
 import { List, IPageProps, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { css, IRenderFunction, IRectangle, initializeFocusRects } from 'office-ui-fabric-react/lib/Utilities';
+import { css, IRenderFunction, IRectangle, FocusRects } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
 import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
@@ -88,17 +88,15 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     this.listRef = React.createRef();
 
     this.state = {
-      cells: this._getCells(props.items)
+      cells: this._getCells(props.items),
     };
-
-    initializeFocusRects();
   }
 
   // tslint:disable-next-line function-name
   public UNSAFE_componentWillReceiveProps(nextProps: ITilesListProps<TItem>): void {
     if (nextProps.items !== this.props.items) {
       this.setState({
-        cells: this._getCells(nextProps.items)
+        cells: this._getCells(nextProps.items),
       });
     }
   }
@@ -113,7 +111,16 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   public render(): JSX.Element {
     const { cells } = this.state;
 
-    const { className, onActiveElementChanged, items, cellsPerPage, ref, role, focusZoneComponentRef, ...divProps } = this.props;
+    const {
+      className,
+      onActiveElementChanged,
+      items,
+      cellsPerPage,
+      ref,
+      role,
+      focusZoneComponentRef,
+      ...divProps
+    } = this.props;
 
     return (
       <FocusZone
@@ -125,6 +132,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         direction={FocusZoneDirection.bidirectional}
         onActiveElementChanged={this.props.onActiveElementChanged}
       >
+        <FocusRects />
         <List
           items={cells}
           role={role ? 'presentation' : undefined}
@@ -152,7 +160,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             }
             return 0;
           },
-          mode
+          mode,
         );
       } else {
         // otherwise, we do not implement the measure item callback,
@@ -185,10 +193,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         style={
           item.grid.mode === TilesGridMode.fillHorizontal
             ? {
-                height: `${item.grid.minRowHeight}px`
+                height: `${item.grid.minRowHeight}px`,
               }
             : {
-                paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`
+                paddingTop: `${(100 * itemHeightOverWidth).toFixed(2)}%`,
               }
         }
       >
@@ -269,7 +277,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
-              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight
+              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight,
             };
           } else if (
             (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal) &&
@@ -280,7 +288,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
             finalSize = {
               width: finalSize.width * finalScaleFactor,
-              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight
+              height: grid.mode === TilesGridMode.fill ? finalSize.height * finalScaleFactor : grid.minRowHeight,
             };
           }
         }
@@ -291,11 +299,11 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
               key={`${grid.key}-item-${cell.key}${keyOffset ? '-' + keyOffset : ''}`}
               data-item-index={index}
               className={css('ms-List-cell', this._onGetCellClassName(), {
-                [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow
+                [`ms-TilesList-cell--firstInRow ${TilesListStyles.cellFirstInRow}`]: !!cellAsFirstRow,
               })}
               // tslint:disable-next-line:jsx-ban-props
               style={{
-                ...this._onGetCellStyle(cell, currentRow)
+                ...this._onGetCellStyle(cell, currentRow),
               }}
             >
               {this._onRenderCell(cell, finalSize)}
@@ -332,21 +340,23 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           key={grid.key}
           className={css('ms-TilesList-grid', {
             [`${TilesListStyles.grid}`]: grid.mode !== TilesGridMode.none,
-            [`${TilesListStyles.shimmeredList}`]: isPlaceholder
+            [`${TilesListStyles.shimmeredList}`]: isPlaceholder,
           })}
           // tslint:disable-next-line:jsx-ban-props
           style={{
             width: `${width}px`,
             margin: `${-margin}px`,
             marginTop: isOpenStart ? '0' : `${grid.marginTop - margin}px`,
-            marginBottom: isOpenEnd ? '0' : `${grid.marginBottom - margin}px`
+            marginBottom: isOpenEnd ? '0' : `${grid.marginBottom - margin}px`,
           }}
         >
           {renderedCells}
         </div>
       );
 
-      grids.push(isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} width={shimmerWrapperWidth} /> : finalGrid);
+      grids.push(
+        isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} width={shimmerWrapperWidth} /> : finalGrid,
+      );
     }
 
     return (
@@ -364,7 +374,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
    */
   private _getPageSpecification = (
     startIndex: number,
-    bounds: IRectangle
+    bounds: IRectangle,
   ): {
     itemCount: number;
     data: IPageData<TItem>;
@@ -378,7 +388,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     if (!this._pageSpecificationCache) {
       this._pageSpecificationCache = {
         width: bounds.width,
-        byIndex: {}
+        byIndex: {},
       };
     }
 
@@ -421,7 +431,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       widths[i] = boundsWidth;
 
       let currentRow: IRowData = (startCells[i] = {
-        scaleFactor: 1
+        scaleFactor: 1,
       });
 
       if (grid.mode === TilesGridMode.none) {
@@ -430,7 +440,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         isAtGridEnd = true;
         cellSizes[i] = {
           width: bounds.width,
-          height: 0
+          height: 0,
         };
         i++;
         continue;
@@ -461,7 +471,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           // Assign the expected base size of the cell.
           // Scaling will be handled at render time.
           width: aspectRatio * grid.minRowHeight,
-          height: grid.minRowHeight
+          height: grid.minRowHeight,
         };
 
         if (rowWidth > boundsWidth) {
@@ -469,7 +479,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           rowStart = i;
           // Add a marker for a new row, with the default scale factor.
           currentRow = startCells[i] = {
-            scaleFactor: 1
+            scaleFactor: 1,
           };
 
           rowCount++;
@@ -519,7 +529,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
       if (
         !isAtGridEnd &&
-        currentRow.scaleFactor > (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
+        currentRow.scaleFactor >
+          (grid.mode === TilesGridMode.fill || grid.mode === TilesGridMode.fillHorizontal ? grid.maxScaleFactor : 1)
       ) {
         // If the last computed row is not the end of the grid, and the content cannot scale to fit the width,
         // declare these cells as 'extra' and let them be pushed into the next page.
@@ -544,8 +555,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         pageWidths: widths,
         rows: startCells,
         extraCells: extraCells,
-        cellSizes: cellSizes
-      }
+        cellSizes: cellSizes,
+      },
     };
 
     pageSpecificationCache.byIndex[startIndex] = pageSpecification;
@@ -568,7 +579,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   private _onGetCellStyle = (item: ITileCell<TItem>, currentRow?: IRowData): React.CSSProperties => {
     const {
       grid: { mode: gridMode, maxScaleFactor },
-      grid
+      grid,
     } = item;
 
     if (gridMode === TilesGridMode.none) {
@@ -598,7 +609,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
       maxWidth: `${maxWidth}px`,
       margin: !item.isPlaceholder ? `${margin}px` : 0,
       borderStyle: item.isPlaceholder ? 'solid' : 'none',
-      borderWidth: item.isPlaceholder ? `${margin}px` : 0
+      borderWidth: item.isPlaceholder ? `${margin}px` : 0,
     };
   };
 
@@ -619,7 +630,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           marginBottom = 0,
           marginTop = 0,
           minAspectRatio = MIN_ASPECT_RATIO,
-          maxAspectRatio = MAX_ASPECT_RATIO
+          maxAspectRatio = MAX_ASPECT_RATIO,
         } = item;
 
         const grid: ITileGrid = {
@@ -631,7 +642,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           marginTop: item.isPlaceholder ? 0 : marginTop,
           marginBottom: item.isPlaceholder ? 0 : marginBottom,
           isPlaceholder: item.isPlaceholder,
-          maxRowCount: item.maxRowCount
+          maxRowCount: item.maxRowCount,
         };
 
         for (const gridItem of item.items) {
@@ -639,7 +650,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
           const aspectRatio = Math.min(
             maxAspectRatio,
-            Math.max(minAspectRatio, (desiredSize && desiredSize.width / desiredSize.height) || 1)
+            Math.max(minAspectRatio, (desiredSize && desiredSize.width / desiredSize.height) || 1),
           );
 
           cells.push({
@@ -649,7 +660,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             grid: grid,
             key: gridItem.key,
             isPlaceholder: gridItem.isPlaceholder,
-            desiredHeight: desiredSize ? desiredSize.height : undefined
+            desiredHeight: desiredSize ? desiredSize.height : undefined,
           });
         }
       } else {
@@ -666,10 +677,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             maxScaleFactor: 1,
             marginBottom: 0,
             marginTop: 0,
-            isPlaceholder: item.isPlaceholder
+            isPlaceholder: item.isPlaceholder,
           },
           key: `header-${item.key}`,
-          isPlaceholder: item.isPlaceholder
+          isPlaceholder: item.isPlaceholder,
         });
       }
     }
@@ -678,6 +689,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 }
 
-function isGridSegment<TItem>(item: ITilesGridSegment<TItem> | ITilesGridItem<TItem>): item is ITilesGridSegment<TItem> {
+function isGridSegment<TItem>(
+  item: ITilesGridSegment<TItem> | ITilesGridItem<TItem>,
+): item is ITilesGridSegment<TItem> {
   return !!(item as ITilesGridSegment<TItem>).items;
 }

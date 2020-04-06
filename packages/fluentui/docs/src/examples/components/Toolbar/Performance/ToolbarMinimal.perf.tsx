@@ -1,9 +1,9 @@
-import { Toolbar } from '@fluentui/react'
-import * as React from 'react'
+import { Toolbar } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const ToolbarMinimalPerf = () => <Toolbar />
+const ToolbarMinimalPerf = () => <Toolbar />;
 
-ToolbarMinimalPerf.iterations = 5000
-ToolbarMinimalPerf.filename = 'ToolbarMinimal.perf.tsx'
+ToolbarMinimalPerf.iterations = 5000;
+ToolbarMinimalPerf.filename = 'ToolbarMinimal.perf.tsx';
 
-export default ToolbarMinimalPerf
+export default ToolbarMinimalPerf;

@@ -1,11 +1,11 @@
-import * as React from 'react'
-import DocumentTitle from 'react-document-title'
-import { Header } from '@fluentui/react'
+import * as React from 'react';
+import DocumentTitle from 'react-document-title';
+import { Header } from '@fluentui/react-northstar';
 
 interface DocPageProps {
-  title: string
-  description?: string
-  children: React.ReactNode
+  title: string;
+  description?: string;
+  children: React.ReactNode;
 }
 
 const DocPage = ({ title, description, children }: DocPageProps) => (
@@ -15,6 +15,6 @@ const DocPage = ({ title, description, children }: DocPageProps) => (
       {children}
     </div>
   </DocumentTitle>
-)
+);
 
-export default DocPage
+export default DocPage;

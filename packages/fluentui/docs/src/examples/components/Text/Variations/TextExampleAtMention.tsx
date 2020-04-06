@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
 const TextExampleAtMention = () => (
   <div>
@@ -7,6 +7,6 @@ const TextExampleAtMention = () => (
     <br />
     <Text atMention="me">@me</Text>
   </div>
-)
+);
 
-export default TextExampleAtMention
+export default TextExampleAtMention;

@@ -1,9 +1,9 @@
-import { Status } from '@fluentui/react'
-import * as React from 'react'
+import { Status } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const StatusMinimalPerf = () => <Status />
+const StatusMinimalPerf = () => <Status />;
 
-StatusMinimalPerf.iterations = 5000
-StatusMinimalPerf.filename = 'StatusMinimal.perf.tsx'
+StatusMinimalPerf.iterations = 10000;
+StatusMinimalPerf.filename = 'StatusMinimal.perf.tsx';
 
-export default StatusMinimalPerf
+export default StatusMinimalPerf;

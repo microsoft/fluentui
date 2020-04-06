@@ -1,10 +1,11 @@
-import * as React from 'react'
-import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar, Chat, ChatItemProps, ReactionProps, ShorthandCollection } from '@fluentui/react-northstar';
+import { EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
-  { icon: 'like', content: '1K', key: 'likes', variables: { meReacting: true }, as: 'button' },
-  { icon: 'emoji', content: 2, key: 'smiles', as: 'button' },
-]
+  { icon: <LikeIcon />, content: '1K', key: 'likes', variables: { meReacting: true }, as: 'button' },
+  { icon: <EmojiIcon />, content: 2, key: 'smiles', as: 'button' },
+];
 
 const items: ShorthandCollection<ChatItemProps> = [
   {
@@ -40,18 +41,11 @@ const items: ShorthandCollection<ChatItemProps> = [
   },
   {
     gutter: <Avatar image="public/images/avatar/small/ade.jpg" />,
-    message: (
-      <Chat.Message
-        reactionGroup={reactions}
-        content="Hi"
-        author="Jane Doe"
-        timestamp="Yesterday, 10:15 PM"
-      />
-    ),
+    message: <Chat.Message reactionGroup={reactions} content="Hi" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
     key: 'message-3',
   },
-]
+];
 
-const MessageReactionsWithPopup = () => <Chat items={items} />
+const MessageReactionsWithPopup = () => <Chat items={items} />;
 
-export default MessageReactionsWithPopup
+export default MessageReactionsWithPopup;

@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react-northstar';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 const inputItems = [
   { header: 'Louis Vuitton' },
@@ -13,11 +14,8 @@ const inputItems = [
   { header: 'Marion Cotillard' },
 ].map(item => ({
   ...item,
-  icon: {
-    name: 'close',
-    'aria-label': `Éliminer ${item.header} de la sélection.`,
-  },
-}))
+  icon: <CloseIcon aria-label={`Éliminer ${item.header} de la sélection.`} />,
+}));
 
 const DropdownExampleSearchMultipleFrenchLanguage = () => (
   <Dropdown
@@ -29,32 +27,26 @@ const DropdownExampleSearchMultipleFrenchLanguage = () => (
     getA11ySelectionMessage={getA11ySelectionMessage}
     noResultsMessage="N'avons trouvé aucun résultat."
   />
-)
+);
 
-const getA11yStatusMessage = ({
-  isOpen,
-  itemToString,
-  previousResultCount,
-  resultCount,
-  selectedItem,
-}) => {
+const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resultCount, selectedItem }) => {
   if (!isOpen) {
-    return selectedItem ? itemToString(selectedItem) : ''
+    return selectedItem ? itemToString(selectedItem) : '';
   }
   if (!resultCount) {
-    return `Aucun résultat trouvé.`
+    return `Aucun résultat trouvé.`;
   }
   if (resultCount !== previousResultCount) {
     return `${resultCount} résultat${
       resultCount === 1 ? ' est disponible' : 's sont disponibles'
-    }, touches fléchées ascendante et descendante pour naviguer. Appuyez sur la touche Entrée pour sélectionner. Appuyez sur les touches fléchées gauche et droite pour parcourir les options sélectionnées.`
+    }, touches fléchées ascendante et descendante pour naviguer. Appuyez sur la touche Entrée pour sélectionner. Appuyez sur les touches fléchées gauche et droite pour parcourir les options sélectionnées.`;
   }
-  return ''
-}
+  return '';
+};
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item.header} a été choisi.`,
   onRemove: item => `${item.header} a été éliminé.`,
-}
+};
 
-export default DropdownExampleSearchMultipleFrenchLanguage
+export default DropdownExampleSearchMultipleFrenchLanguage;

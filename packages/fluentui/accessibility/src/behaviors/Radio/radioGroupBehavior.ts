@@ -1,5 +1,5 @@
-import * as keyboardKey from 'keyboard-key'
-import { Accessibility } from '../../types'
+import * as keyboardKey from 'keyboard-key';
+import { Accessibility } from '../../types';
 
 /**
  * @description
@@ -26,6 +26,6 @@ const radioGroupBehavior: Accessibility = () => ({
       },
     },
   },
-})
+});
 
-export default radioGroupBehavior
+export default radioGroupBehavior;

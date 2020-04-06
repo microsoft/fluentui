@@ -19,7 +19,7 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
   const { classes } = useStyles('Test', {
     className: 'ui-test',
     mapPropsToStyles: () => ({ color }),
-    mapPropsToInlineStyles: () => ({ className, styles, variables })
+    mapPropsToInlineStyles: () => ({ className, styles, variables }),
   });
 
   return <div className={classes.root} />;
@@ -27,9 +27,9 @@ const TestComponent: React.FunctionComponent<TestComponentProps> = props => {
 
 const createTheme = (styles: jest.Mock): ThemeInput => ({
   componentStyles: {
-    Test: { root: styles }
+    Test: { root: styles },
   },
-  componentVariables: {}
+  componentVariables: {},
 });
 
 const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
@@ -38,7 +38,8 @@ const TestProvider: React.FC<{ theme: ThemeInput }> = props => {
   return (
     <ThemeContext.Provider
       value={{
-        theme
+        performance: {},
+        theme,
       }}
     >
       {children}
@@ -62,34 +63,17 @@ describe('useStyles', () => {
   });
 
   describe('styles', () => {
-    it('passes "displayName" to styles functions', () => {
-      const styles = jest.fn();
-      mount(<TestComponent />, {
-        // @ts-ignore typings are outdated
-        wrappingComponent: TestProvider,
-        wrappingComponentProps: { theme: createTheme(styles) }
-      });
-
-      expect(styles).toBeCalledWith(
-        expect.objectContaining({
-          displayName: 'Test'
-        })
-      );
-    });
-
     it('passes props mapped via "mapPropsToStyles" to styles functions', () => {
       const styles = jest.fn();
       mount(<TestComponent color="green" />, {
-        // @ts-ignore typings are outdated
         wrappingComponent: TestProvider,
-        wrappingComponentProps: { theme: createTheme(styles) }
+        wrappingComponentProps: { theme: createTheme(styles) },
       });
 
       expect(styles).toBeCalledWith(
         expect.objectContaining({
-          displayName: 'Test',
-          props: { color: 'green' }
-        })
+          props: { color: 'green' },
+        }),
       );
     });
   });

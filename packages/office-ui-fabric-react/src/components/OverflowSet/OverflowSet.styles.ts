@@ -4,7 +4,7 @@ import { IStyle } from '../../Styling';
 
 const overflowItemStyle: IStyle = {
   flexShrink: 0,
-  display: 'inherit'
+  display: 'inherit',
 };
 
 export const getStyles: IStyleFunction<IOverflowSetStyleProps, IOverflowSetStyles> = props => {
@@ -15,12 +15,12 @@ export const getStyles: IStyleFunction<IOverflowSetStyleProps, IOverflowSetStyle
       {
         position: 'relative',
         display: 'flex',
-        flexWrap: 'nowrap'
+        flexWrap: 'nowrap',
       },
       vertical && { flexDirection: 'column' },
-      className
+      className,
     ],
     item: ['ms-OverflowSet-item', overflowItemStyle],
-    overflowButton: ['ms-OverflowSet-overflowButton', overflowItemStyle]
+    overflowButton: ['ms-OverflowSet-overflowButton', overflowItemStyle],
   };
 };

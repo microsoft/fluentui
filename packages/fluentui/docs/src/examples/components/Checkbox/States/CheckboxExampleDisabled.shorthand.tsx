@@ -1,5 +1,5 @@
-import { Checkbox } from '@fluentui/react'
-import * as React from 'react'
+import { Checkbox } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const CheckboxExampleDisabled = () => (
   <>
@@ -9,6 +9,6 @@ const CheckboxExampleDisabled = () => (
     <Checkbox toggle disabled label="Disabled" />
     <Checkbox toggle disabled checked label="Disabled & Checked" />
   </>
-)
+);
 
-export default CheckboxExampleDisabled
+export default CheckboxExampleDisabled;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeThemes, Provider, themes } from '@fluentui/react';
+import { mergeThemes, Provider, themes } from '@fluentui/react-northstar';
 
 const ProviderExampleShorthand = () => (
   <Provider
@@ -8,20 +8,20 @@ const ProviderExampleShorthand = () => (
     styles={{ borderBottom: '3px solid blue' }}
     theme={mergeThemes(themes.teamsDark, {
       siteVariables: {
-        bodyBackground: 'salmon'
+        bodyBackground: 'salmon',
       },
       componentVariables: {
         Provider: {
-          color: 'yellow'
-        }
+          color: 'yellow',
+        },
       },
       componentStyles: {
         Provider: {
           root: {
-            borderTop: '3px solid green'
-          }
-        }
-      }
+            borderTop: '3px solid green',
+          },
+        },
+      },
     })}
   >
     <p>with custom overrides</p>

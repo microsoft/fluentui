@@ -13,22 +13,22 @@ export const getStyles = (props: IPieChartStyleProps): IPieChartStyles => {
       'ms-PieChart',
       className,
       {
-        width: chartWidth + 2 * chartPadding
-      }
+        width: chartWidth + 2 * chartPadding,
+      },
     ],
     chart: [
       {
         padding: chartPadding,
         width: chartWidth,
         height: chartHeight,
-        boxSizing: 'content-box'
-      }
+        boxSizing: 'content-box',
+      },
     ],
     chartTitle: [
       {
         textAlign: 'center',
-        ...theme.fonts.mediumPlus
-      }
-    ]
+        ...theme.fonts.mediumPlus,
+      },
+    ],
   };
 };

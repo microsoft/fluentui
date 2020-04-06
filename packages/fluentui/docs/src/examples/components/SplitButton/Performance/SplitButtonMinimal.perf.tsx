@@ -1,9 +1,9 @@
-import { SplitButton } from '@fluentui/react'
-import * as React from 'react'
+import { SplitButton } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const SplitButtonMinimalPerf = () => <SplitButton />
+const SplitButtonMinimalPerf = () => <SplitButton />;
 
-SplitButtonMinimalPerf.iterations = 5000
-SplitButtonMinimalPerf.filename = 'SplitButtonMinimal.perf.tsx'
+SplitButtonMinimalPerf.iterations = 5000;
+SplitButtonMinimalPerf.filename = 'SplitButtonMinimal.perf.tsx';
 
-export default SplitButtonMinimalPerf
+export default SplitButtonMinimalPerf;

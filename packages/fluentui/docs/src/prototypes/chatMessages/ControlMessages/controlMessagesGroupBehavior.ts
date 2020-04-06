@@ -1,20 +1,20 @@
-import { chatBehavior, Accessibility } from '@fluentui/react'
+import { chatBehavior, Accessibility, ChatBehaviorProps } from '@fluentui/react-northstar';
 
-const controlMessagesGroupBehavior: Accessibility<any> = props => {
-  const behaviorData = chatBehavior(props)
+const controlMessagesGroupBehavior: Accessibility<ChatBehaviorProps> = props => {
+  const behaviorData = chatBehavior(props);
 
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
     'data-is-focusable': true,
-  }
+  };
 
   behaviorData.focusZone.props = {
     ...behaviorData.focusZone.props,
     shouldFocusOnMount: true,
     shouldFocusInnerElementWhenReceivedFocus: true,
     defaultTabbableElement: undefined,
-  }
-  return behaviorData
-}
+  };
+  return behaviorData;
+};
 
-export default controlMessagesGroupBehavior
+export default controlMessagesGroupBehavior;

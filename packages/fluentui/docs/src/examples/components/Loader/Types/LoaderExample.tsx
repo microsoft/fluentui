@@ -1,6 +1,6 @@
-import { Loader } from '@fluentui/react'
-import * as React from 'react'
+import { Loader } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const LoaderExample: React.FC = () => <Loader />
+const LoaderExample: React.FC = () => <Loader />;
 
-export default LoaderExample
+export default LoaderExample;

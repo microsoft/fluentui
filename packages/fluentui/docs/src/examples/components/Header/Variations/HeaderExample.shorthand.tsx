@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Header } from '@fluentui/react'
+import * as React from 'react';
+import { Header } from '@fluentui/react-northstar';
 
-const HeaderExampleAlign = () => <Header as="h1" align="end" content="Header aligned to end" />
+const HeaderExampleAlign = () => <Header as="h1" align="end" content="Header aligned to end" />;
 
-export default HeaderExampleAlign
+export default HeaderExampleAlign;

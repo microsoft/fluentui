@@ -10,7 +10,11 @@ const supportedApiItems = [ApiItemKind.Interface, ApiItemKind.Enum, ApiItemKind.
  * Given `apiModel` with API package info already loaded into it, generate page data for each
  * `docCategory` tag (page name) and the APIs within it.
  */
-export function generatePageJson(apiModel: ApiModel, pageGroups: PageGroups = {}, fallbackGroup?: string): Map<string, IPageJson> {
+export function generatePageJson(
+  apiModel: ApiModel,
+  pageGroups: PageGroups = {},
+  fallbackGroup?: string,
+): Map<string, IPageJson> {
   const collectedData = initPageData(apiModel, pageGroups, fallbackGroup);
 
   const result = new Map<string, IPageJson>();
@@ -20,7 +24,7 @@ export function generatePageJson(apiModel: ApiModel, pageGroups: PageGroups = {}
         .map((apiItem: ApiItem) => createTableJson(collectedData, apiItem))
         .filter((table: ITableJson | undefined) => !!table) as ITableJson[],
       name: pageName,
-      group: pageData.group
+      group: pageData.group,
     });
   }
 
@@ -62,7 +66,7 @@ function initPageDataForItem(
   collectedData: ICollectedData,
   apiItem: ApiItem,
   groupsByPage: { [pageName: string]: string },
-  fallbackGroup?: string
+  fallbackGroup?: string,
 ): void {
   if (supportedApiItems.includes(apiItem.kind) && apiItem instanceof ApiDocumentedItem && apiItem.tsdocComment) {
     const docCategoryTag = findInlineTagByName('@docCategory', apiItem.tsdocComment);
@@ -75,7 +79,7 @@ function initPageDataForItem(
         pageData = {
           name: pageName,
           apiItems: [],
-          group: groupsByPage[pageName] || fallbackGroup
+          group: groupsByPage[pageName] || fallbackGroup,
         };
         collectedData.pagesByName.set(pageName, pageData);
       }

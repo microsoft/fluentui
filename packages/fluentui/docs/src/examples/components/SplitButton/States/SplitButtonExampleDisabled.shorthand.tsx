@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { SplitButton } from '@fluentui/react'
+import * as React from 'react';
+import { SplitButton } from '@fluentui/react-northstar';
 
 const SplitButtonExampleDisabledShorthand = () => (
   <SplitButton
@@ -14,6 +14,6 @@ const SplitButtonExampleDisabledShorthand = () => (
     }}
     toggleButton={{ 'aria-label': 'more options' }}
   />
-)
+);
 
-export default SplitButtonExampleDisabledShorthand
+export default SplitButtonExampleDisabledShorthand;

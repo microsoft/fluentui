@@ -1,23 +1,23 @@
-import { CodeSnippet } from '@fluentui/docs-components'
-import { Dropdown, DropdownProps, Flex, Label, Loader } from '@fluentui/react'
-import * as faker from 'faker'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { CodeSnippet } from '@fluentui/docs-components';
+import { Dropdown, DropdownProps, Flex, Label, Loader } from '@fluentui/react-northstar';
+import * as faker from 'faker';
+import * as _ from 'lodash';
+import * as React from 'react';
 
 // ----------------------------------------
 // Types
 // ----------------------------------------
 type Entry = {
-  header: string
-  image: string
-  content: string
-}
+  header: string;
+  image: string;
+  content: string;
+};
 
 interface SearchPageState {
-  loading: boolean
-  items: Entry[]
-  searchQuery: string
-  value: Entry[]
+  loading: boolean;
+  items: Entry[];
+  searchQuery: string;
+  value: Entry[];
 }
 
 // ----------------------------------------
@@ -27,7 +27,7 @@ const createEntry = (): Entry => ({
   image: faker.internet.avatar(),
   header: `${faker.name.firstName()} ${faker.name.lastName()}`,
   content: faker.commerce.department(),
-})
+});
 
 // ----------------------------------------
 // Prototype Search Page View
@@ -38,34 +38,34 @@ class AsyncDropdownSearch extends React.Component<{}, SearchPageState> {
     searchQuery: '',
     items: [],
     value: [],
-  }
+  };
 
-  searchTimer: number
+  searchTimer: number;
 
-  handleSelectedChange = (e: React.SyntheticEvent, { searchQuery, value }: DropdownProps) => {
-    this.setState({ value: value as Entry[], searchQuery })
-  }
+  handleChange = (e: React.SyntheticEvent, { searchQuery, value }: DropdownProps) => {
+    this.setState({ value: value as Entry[], searchQuery });
+  };
 
   handleSearchQueryChange = (e: React.SyntheticEvent, { searchQuery }: DropdownProps) => {
-    this.setState({ searchQuery })
-    this.fetchItems()
-  }
+    this.setState({ searchQuery });
+    this.fetchItems();
+  };
 
   fetchItems = () => {
-    clearTimeout(this.searchTimer)
-    if (this.state.items.length > 10) return
+    clearTimeout(this.searchTimer);
+    if (this.state.items.length > 10) return;
 
-    this.setState({ loading: true })
+    this.setState({ loading: true });
     this.searchTimer = window.setTimeout(() => {
       this.setState(prevState => ({
         loading: false,
         items: [...prevState.items, ..._.times<Entry>(2, createEntry)],
-      }))
-    }, 2000)
-  }
+      }));
+    }, 2000);
+  };
 
   render() {
-    const { items, loading, searchQuery, value } = this.state
+    const { items, loading, searchQuery, value } = this.state;
 
     return (
       <Flex gap="gap.medium">
@@ -77,7 +77,7 @@ class AsyncDropdownSearch extends React.Component<{}, SearchPageState> {
             loadingMessage={<Loader label="Loading..." labelPosition="end" />}
             multiple
             onSearchQueryChange={this.handleSearchQueryChange}
-            onSelectedChange={this.handleSelectedChange}
+            onChange={this.handleChange}
             placeholder="Try to enter something..."
             search
             searchQuery={searchQuery}
@@ -93,8 +93,8 @@ class AsyncDropdownSearch extends React.Component<{}, SearchPageState> {
           </div>
         </Flex.Item>
       </Flex>
-    )
+    );
   }
 }
 
-export default AsyncDropdownSearch
+export default AsyncDropdownSearch;

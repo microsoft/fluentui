@@ -1,15 +1,15 @@
-import * as React from 'react'
-import { Menu, Tooltip } from '@fluentui/react'
+import * as React from 'react';
+import { Menu, Tooltip } from '@fluentui/react-northstar';
 
 const itemRenderer = (MenuItem, props) => {
-  const { tooltip = '', ...rest } = props
+  const { tooltip = '', ...rest } = props;
 
   return (
     <Tooltip content={tooltip}>
       <MenuItem {...rest} />
     </Tooltip>
-  )
-}
+  );
+};
 const items = [
   {
     key: 'editorials',
@@ -29,8 +29,8 @@ const items = [
     tooltip: 'Click for opening Upcoming Events',
     children: itemRenderer,
   },
-]
+];
 
-const MenuExampleWithTooltip = () => <Menu defaultActiveIndex={0} items={items} />
+const MenuExampleWithTooltip = () => <Menu defaultActiveIndex={0} items={items} />;
 
-export default MenuExampleWithTooltip
+export default MenuExampleWithTooltip;

@@ -68,8 +68,8 @@ export interface IKeytipProps {
   offset?: IPoint;
 
   /**
-   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on keytip activation)
-   * Common cases are a Pivot or Modal
+   * Whether or not this keytip will have children keytips that are dynamically created (DOM is generated on
+   * keytip activation). Common cases are a Pivot or Modal.
    */
   hasDynamicChildren?: boolean;
 

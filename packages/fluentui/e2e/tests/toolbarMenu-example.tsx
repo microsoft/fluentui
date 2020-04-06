@@ -1,15 +1,17 @@
-import * as React from 'react'
-import { Toolbar, Button, ToolbarMenu } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar, Button, ToolbarMenu, Ref } from '@fluentui/react-northstar';
 
 export const selectors = {
   beforeToolbarId: 'before',
   afterToolbarId: 'after',
   triggerButtonId: 'trigger',
+  menuItemButtonId: 'menu-button',
   toolbarMenu: ToolbarMenu.className,
-}
+};
 
 const ToolbarExampleMenuShorthand = () => {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = React.useState(false);
+  const buttonAfterToolbarRef = React.createRef<HTMLButtonElement>();
 
   return (
     <>
@@ -27,7 +29,13 @@ const ToolbarExampleMenuShorthand = () => {
             id: selectors.triggerButtonId,
             menu: {
               items: [
-                { key: 'play', content: 'Play', icon: 'play' },
+                {
+                  key: 'play',
+                  id: `${selectors.menuItemButtonId}-0`,
+                  content: 'Play',
+                  icon: 'play',
+                  onClick: () => buttonAfterToolbarRef.current.focus(),
+                },
                 { key: 'pause', content: 'Pause', icon: 'pause' },
                 { key: 'divider', kind: 'divider' },
                 'Without icon',
@@ -35,7 +43,7 @@ const ToolbarExampleMenuShorthand = () => {
             },
             menuOpen,
             onMenuOpenChange: (e, { menuOpen }) => {
-              setMenuOpen(menuOpen)
+              setMenuOpen(menuOpen);
             },
           },
           {
@@ -44,9 +52,11 @@ const ToolbarExampleMenuShorthand = () => {
           },
         ]}
       />
-      <Button id={selectors.afterToolbarId}>After</Button>
+      <Ref innerRef={buttonAfterToolbarRef}>
+        <Button id={selectors.afterToolbarId}>After</Button>
+      </Ref>
     </>
-  )
-}
+  );
+};
 
-export default ToolbarExampleMenuShorthand
+export default ToolbarExampleMenuShorthand;

@@ -6,14 +6,14 @@
 const parseExamplePath = (
   examplePath: string,
 ): {
-  type: string
-  displayName: string
-  section: string
-  exampleName: string
+  type: string;
+  displayName: string;
+  section: string;
+  exampleName: string;
 } => {
-  const [type, displayName, section, exampleName] = examplePath.split('/').slice(-4)
+  const [type, displayName, section, exampleName] = examplePath.split('/').slice(-4);
 
-  return { displayName, section, exampleName, type: type.replace(/s$/, '') }
-}
+  return { displayName, section, exampleName, type: type.replace(/s$/, '') };
+};
 
-export default parseExamplePath
+export default parseExamplePath;

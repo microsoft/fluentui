@@ -1,23 +1,17 @@
-import * as React from 'react'
-import {
-  Chat,
-  ChatItemProps,
-  ShorthandCollection,
-  Avatar,
-  Divider,
-  Provider,
-} from '@fluentui/react'
-import GroupControlMessages from './GroupControlMessages'
-import ControlMessage from './ControlMessage'
-import { groupControlMessageItems, mainControlMessage } from './mockData'
+import * as React from 'react';
+import { Chat, ChatItemProps, ShorthandCollection, Avatar, Divider, Provider } from '@fluentui/react-northstar';
+import GroupControlMessages from './GroupControlMessages';
+import ControlMessage from './ControlMessage';
+import { groupControlMessageItems, mainControlMessage } from './mockData';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
   status: {
     color: 'green',
-    icon: 'check',
+    icon: <AcceptIcon />,
   },
-}
+};
 
 const ChatExampleWithControlMessages = () => {
   const items: ShorthandCollection<ChatItemProps> = [
@@ -40,21 +34,13 @@ const ChatExampleWithControlMessages = () => {
     },
     {
       // Adding Grouped control messages
-      message: (
-        <GroupControlMessages items={groupControlMessageItems} mainMessage={mainControlMessage} />
-      ),
+      message: <GroupControlMessages items={groupControlMessageItems} mainMessage={mainControlMessage} />,
       className: 'ui-chat__item_control_group',
       key: 'message-id-7',
     },
     {
       gutter: <Avatar {...janeAvatar} />,
-      message: (
-        <Chat.Message
-          content="Sure! Let's try it."
-          author="Jane Doe"
-          timestamp="Yesterday, 10:15 PM"
-        />
-      ),
+      message: <Chat.Message content="Sure! Let's try it." author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
       key: 'message-id-8',
     },
     {
@@ -62,13 +48,11 @@ const ChatExampleWithControlMessages = () => {
       key: 'message-id-9',
     },
     {
-      message: (
-        <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />
-      ),
+      message: <Chat.Message content="Ok, let's go." author="John Doe" timestamp="Today, 11:15 PM" mine />,
       contentPosition: 'end',
       key: 'message-id-10',
     },
-  ]
+  ];
   return (
     <Provider
       theme={{
@@ -105,7 +89,7 @@ const ChatExampleWithControlMessages = () => {
     >
       <Chat items={items} />
     </Provider>
-  )
-}
+  );
+};
 
-export default ChatExampleWithControlMessages
+export default ChatExampleWithControlMessages;

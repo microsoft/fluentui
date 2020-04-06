@@ -24,7 +24,7 @@ function onResolveSuggestions(text: string): ISimple[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter(tag => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map(item => ({ key: item, name: item }));
@@ -53,8 +53,13 @@ describe('BasePicker', () => {
   afterEach(() => {
     ReactDOM.unmountComponentAtNode(root);
   });
-  const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<ISimple, IBasePickerProps<ISimple>>;
-  const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => <div key={props.item.name}>{basicRenderer(props)}</div>;
+  const BasePickerWithType = BasePicker as new (props: IBasePickerProps<ISimple>) => BasePicker<
+    ISimple,
+    IBasePickerProps<ISimple>
+  >;
+  const onRenderItem = (props: IPickerItemProps<ISimple>): JSX.Element => (
+    <div key={props.item.name}>{basicRenderer(props)}</div>
+  );
 
   it('renders correctly', () => {
     const component = renderer.create(
@@ -62,7 +67,7 @@ describe('BasePicker', () => {
         onResolveSuggestions={onResolveSuggestions}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -74,18 +79,19 @@ describe('BasePicker', () => {
         inputProps={{
           placeholder: 'Bitte einen Benutzer angeben...',
           id: 'pckSelectedUser',
-          className: 'testclass '
+          className: 'testclass ',
         }}
         onResolveSuggestions={onResolveSuggestions}
         onRenderItem={onRenderItem}
         onRenderSuggestionsItem={basicSuggestionRenderer}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('can provide custom renderers', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -97,13 +103,14 @@ describe('BasePicker', () => {
         onRenderSuggestionsItem={basicSuggestionRenderer}
         componentRef={picker}
       />,
-      root
+      root,
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -118,6 +125,7 @@ describe('BasePicker', () => {
   });
 
   it('can select generic items.', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -128,7 +136,7 @@ describe('BasePicker', () => {
     const createGenericItem = (str: string): ISimple => {
       return {
         key: str,
-        name: str
+        name: str,
       };
     };
 
@@ -141,13 +149,14 @@ describe('BasePicker', () => {
         createGenericItem={createGenericItem}
         onValidateInput={onValidateInput}
       />,
-      root
+      root,
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -162,6 +171,7 @@ describe('BasePicker', () => {
   });
 
   it('has force suggestions button', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -172,7 +182,7 @@ describe('BasePicker', () => {
     const createGenericItem = (str: string): ISimple => {
       return {
         key: str,
-        name: str
+        name: str,
       };
     };
 
@@ -188,16 +198,17 @@ describe('BasePicker', () => {
         onValidateInput={onValidateInput}
         pickerSuggestionsProps={{
           showForceResolve: showForceSuggestionsText,
-          forceResolveText: 'Force'
+          forceResolveText: 'Force',
         }}
       />,
-      root
+      root,
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
     input.value = 'asdff';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestions = document.querySelector('.ms-Suggestions') as HTMLInputElement;
     expect(suggestions).toBeDefined();
@@ -211,7 +222,8 @@ describe('BasePicker', () => {
     expect(currentPicker![0].name).toEqual('asdff');
   });
 
-  it('can will not render input when items reach itemLimit', () => {
+  it('will not render input when items reach itemLimit', () => {
+    jest.useFakeTimers();
     document.body.appendChild(root);
 
     const picker = React.createRef<IBasePicker<ISimple>>();
@@ -224,13 +236,14 @@ describe('BasePicker', () => {
         itemLimit={1}
         componentRef={picker}
       />,
-      root
+      root,
     );
 
     let input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
     input.focus();
     input.value = 'bl';
     ReactTestUtils.Simulate.input(input);
+    jest.runAllTimers();
 
     const suggestionOptions = document.querySelectorAll('.ms-Suggestions-itemButton');
     ReactTestUtils.Simulate.click(suggestionOptions[0]);
@@ -252,7 +265,7 @@ describe('BasePicker', () => {
         onRenderSuggestionsItem={basicSuggestionRenderer}
         itemLimit={0}
       />,
-      root
+      root,
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
@@ -268,7 +281,7 @@ describe('BasePicker', () => {
       <BasePickerWithType
         selectedItems={[
           { key: '1', name: 'blue' },
-          { key: '2', name: 'black' }
+          { key: '2', name: 'black' },
         ]}
         onResolveSuggestions={onResolveSuggestions}
         onRenderItem={onRenderItem}
@@ -276,7 +289,7 @@ describe('BasePicker', () => {
         itemLimit={0}
         componentRef={picker}
       />,
-      root
+      root,
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;
@@ -300,7 +313,7 @@ describe('BasePicker', () => {
         onRenderSuggestionsItem={basicSuggestionRenderer}
         componentRef={picker}
       />,
-      root
+      root,
     );
 
     const input = document.querySelector('.ms-BasePicker-input') as HTMLInputElement;

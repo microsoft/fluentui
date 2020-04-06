@@ -1,9 +1,9 @@
-import * as React from 'react'
-import CodeSandboxer from 'react-codesandboxer'
+import * as React from 'react';
+import CodeSandboxer from 'react-codesandboxer';
 
-import { ComponentSourceManagerLanguage } from '../../ComponentSourceManager'
-import { appTemplate } from './indexTemplates'
-import createPackageJson from './createPackageJson'
+import { ComponentSourceManagerLanguage } from '../../ComponentSourceManager';
+import { appTemplate } from './indexTemplates';
+import createPackageJson from './createPackageJson';
 
 export enum CodeSandboxState {
   Default = 'DEFAULT',
@@ -12,21 +12,18 @@ export enum CodeSandboxState {
 }
 
 type ComponentControlsCodeSandboxProps = {
-  children: (
-    state: CodeSandboxState,
-    onClick?: (e: React.SyntheticEvent) => void,
-  ) => React.ReactNode
-  exampleCode: string
-  exampleLanguage: ComponentSourceManagerLanguage
-  exampleName: string
-}
+  children: (state: CodeSandboxState, onClick?: (e: React.SyntheticEvent) => void) => React.ReactNode;
+  exampleCode: string;
+  exampleLanguage: ComponentSourceManagerLanguage;
+  exampleName: string;
+};
 
 type ComponentControlsCodeSandboxState = {
-  exampleCode: string
-  examplePath: string
-  state: CodeSandboxState
-  sandboxUrl: string
-}
+  exampleCode: string;
+  examplePath: string;
+  state: CodeSandboxState;
+  sandboxUrl: string;
+};
 
 class ComponentControlsCodeSandbox extends React.Component<
   ComponentControlsCodeSandboxProps,
@@ -37,53 +34,53 @@ class ComponentControlsCodeSandbox extends React.Component<
     examplePath: '',
     sandboxUrl: '',
     state: CodeSandboxState.Default,
-  }
-  codeSandboxerRef = React.createRef<{ deployToCSB: Function }>()
+  };
+  codeSandboxerRef = React.createRef<{ deployToCSB: Function }>();
 
   static getDerivedStateFromProps(
     props: ComponentControlsCodeSandboxProps,
     state: ComponentControlsCodeSandboxState,
   ): Partial<ComponentControlsCodeSandboxState> {
-    const shouldKeepState = props.exampleCode === state.exampleCode
+    const shouldKeepState = props.exampleCode === state.exampleCode;
 
     return {
       exampleCode: props.exampleCode,
       examplePath: props.exampleLanguage === 'ts' ? '/example.tsx' : '/example.js',
       sandboxUrl: shouldKeepState ? state.sandboxUrl : '',
       state: shouldKeepState ? state.state : CodeSandboxState.Default,
-    }
+    };
   }
 
   handleDeploy = (embedUrl: string, sandboxId: string) => {
-    const { examplePath } = this.state
-    const sandboxUrl = `https://codesandbox.io/s/${sandboxId}?module=${examplePath}`
+    const { examplePath } = this.state;
+    const sandboxUrl = `https://codesandbox.io/s/${sandboxId}?module=${examplePath}`;
 
-    this.setState({ sandboxUrl, state: CodeSandboxState.Success })
-  }
+    this.setState({ sandboxUrl, state: CodeSandboxState.Success });
+  };
 
   handleClick = (e: React.SyntheticEvent) => {
-    const { sandboxUrl, state } = this.state
+    const { sandboxUrl, state } = this.state;
 
-    e.preventDefault()
+    e.preventDefault();
 
     if (state === CodeSandboxState.Default) {
-      this.codeSandboxerRef.current.deployToCSB(e)
-      this.setState({ state: CodeSandboxState.Loading })
+      this.codeSandboxerRef.current.deployToCSB(e);
+      this.setState({ state: CodeSandboxState.Loading });
 
-      return
+      return;
     }
 
     if (state === CodeSandboxState.Success) {
-      window.open(sandboxUrl)
+      window.open(sandboxUrl);
     }
-  }
+  };
 
   render() {
-    const { children, exampleLanguage, exampleCode, exampleName } = this.props
-    const { examplePath, state } = this.state
+    const { children, exampleLanguage, exampleCode, exampleName } = this.props;
+    const { examplePath, state } = this.state;
 
-    const main = exampleLanguage === 'ts' ? 'index.tsx' : 'index.js'
-    const template = exampleLanguage === 'ts' ? 'create-react-app-typescript' : 'create-react-app'
+    const main = exampleLanguage === 'ts' ? 'index.tsx' : 'index.js';
+    const template = exampleLanguage === 'ts' ? 'create-react-app-typescript' : 'create-react-app';
 
     return (
       <>
@@ -105,8 +102,8 @@ class ComponentControlsCodeSandbox extends React.Component<
         </CodeSandboxer>
         {children(state, this.handleClick)}
       </>
-    )
+    );
   }
 }
 
-export default ComponentControlsCodeSandbox
+export default ComponentControlsCodeSandbox;

@@ -135,7 +135,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -524,7 +523,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -907,7 +905,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1296,7 +1293,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -1698,7 +1694,6 @@ exports[`Component Examples renders PeoplePicker.Controlled.Example.tsx correctl
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
             }
             &::-moz-focus-inner {
               border: 0;

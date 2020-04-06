@@ -1,5 +1,5 @@
-import * as _ from 'lodash'
-import parseExamplePath from './parseExamplePath'
+import * as _ from 'lodash';
+import parseExamplePath from './parseExamplePath';
 
 /**
  * Creates a short hash path from an example filename.
@@ -8,14 +8,14 @@ import parseExamplePath from './parseExamplePath'
  * shorten to new structure ${section} -          -${exampleName without "component-example"}
  */
 const examplePathToHash = (examplePath: string) => {
-  const { displayName, section, exampleName } = parseExamplePath(examplePath)
+  const { displayName, section, exampleName } = parseExamplePath(examplePath);
 
   // ButtonExample => Button
   // ButtonExampleButton => Button
   // ButtonExampleActive => Active
-  const shortExampleName = exampleName.replace(`${displayName}Example`, '').replace('.tsx', '')
+  const shortExampleName = exampleName.replace(`${displayName}Example`, '').replace('.tsx', '');
 
-  return _.kebabCase(`${section}-${shortExampleName || displayName}`)
-}
+  return _.kebabCase(`${section}-${shortExampleName || displayName}`);
+};
 
-export default examplePathToHash
+export default examplePathToHash;

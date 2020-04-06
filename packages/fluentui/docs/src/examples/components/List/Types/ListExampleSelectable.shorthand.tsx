@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { List, Image } from '@fluentui/react'
+import * as React from 'react';
+import { List, Image } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -23,8 +23,8 @@ const items = [
     headerMedia: '5:22:40 PM',
     content: 'The GB pixel is down, navigate the virtual interface!',
   },
-]
+];
 
-const ListExampleSelectable = () => <List selectable defaultSelectedIndex={0} items={items} />
+const ListExampleSelectable = () => <List selectable defaultSelectedIndex={0} items={items} />;
 
-export default ListExampleSelectable
+export default ListExampleSelectable;

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Status } from '@fluentui/react'
+import * as React from 'react';
+import { Status } from '@fluentui/react-northstar';
 
 const StatusTypeExampleShorthand = () => (
   <div>
@@ -13,6 +13,6 @@ const StatusTypeExampleShorthand = () => (
     <br />
     <Status state="unknown" title="unknown" /> <code>state="unknown"</code>
   </div>
-)
+);
 
-export default StatusTypeExampleShorthand
+export default StatusTypeExampleShorthand;

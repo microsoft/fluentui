@@ -49,7 +49,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     [k in keyof Pick<
       IDetailsRowStyles,
       'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
-    >]: string
+    >]: string;
   };
 
   /**

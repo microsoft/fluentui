@@ -9,7 +9,7 @@ export const MicroFeedback: React.FunctionComponent<IMicroFeedbackProps> = creat
   displayName: 'MicroFeedback',
   state,
   styles,
-  tokens
+  tokens,
 });
 
 export default MicroFeedback;

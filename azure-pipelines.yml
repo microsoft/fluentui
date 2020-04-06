@@ -14,6 +14,8 @@ jobs:
     steps:
       - template: azure-pipelines.tools.yml
 
+      - template: azure-pipelines.cache.yml
+
       - script: |
           yarn
         displayName: yarn
@@ -42,14 +44,14 @@ jobs:
       - script: |
           az --version
           az extension add -n azure-devops
-          echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
-          az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
+          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
+          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Set up Azure CLI with DevOps
 
       - script: |
-          az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Trigger Perf-Test and Screener jobs
@@ -62,9 +64,12 @@ jobs:
 
   - job: Validate
     dependsOn: Build
+    pool: 'Self Host Ubuntu'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -91,11 +96,57 @@ jobs:
           Contents: '**/*'
         condition: always()
 
-  - job: Deploy
+  - job: ValidateFluent
     dependsOn: Build
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.artifacts.yml
+        parameters:
+          artifact: Build-PR-$(Build.BuildNumber)
+          buildId: $(Build.BuildId)
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          if [ $BUILD_REASON == "PullRequest" ]; then
+            yarn danger ci
+          else
+            echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
+          fi
+        displayName: danger
+        env:
+          DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
+
+      - script: |
+          yarn test:fluentui:e2e
+        displayName: E2E Tests
+
+      - script: |
+          yarn test:fluentui:projects
+        displayName: Project Tests
+
+      - script: |
+          yarn test:fluentui:circulars
+        displayName: Circular Dependencies Tests
+
+      - script: |
+          yarn check-for-changed-files
+        displayName: check for changed files
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
+  - job: Deploy
+    dependsOn: Build
+    steps:
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -123,13 +174,40 @@ jobs:
           Contents: '**/*'
         condition: always()
 
+  - job: ScreenerFluent
+    steps:
+      - script: |
+          yarn
+        displayName: yarn
+
+      - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
   - job: Screener
     dependsOn: Build
+    # keeping this at microsoft hosted because this doesn't require builds
     pool:
       vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -151,35 +229,3 @@ jobs:
           SourceFolder: $(Build.SourcesDirectory)
           Contents: '**/*'
         condition: always()
-
-  # - job: Danger
-  #   dependsOn: Build
-  #   steps:
-  #     # No need for checkout since we're using build artifacts.
-  #     - checkout: none
-
-  #     - template: azure-pipelines.artifacts.yml
-  #       parameters:
-  #         artifact: Build-PR-$(Build.BuildNumber)
-  #         buildId: $(Build.BuildId)
-
-  #     - template: azure-pipelines.tools.yml
-
-  #     - script: |
-  #         yarn perf:test
-  #       workingDirectory: packages/fluentui/perf-test
-  #       displayName: Perf Test
-
-  #     - script: |
-  #         if [ $BUILD_REASON == "PullRequest" ] && [ ! -z $DANGER_GITHUB_API_TOKEN ]; then
-  #           yarn danger ci
-  #         elif [ $BUILD_REASON != "PullRequest" ]; then
-  #           echo "Skipping Danger JS because BUILD_REASON ${BUILD_REASON} != PullRequest"
-  #         else
-  #           echo "Skipping Danger JS because API token wasn't found"
-  #         fi
-
-  #     - script: |
-  #         yarn danger ci
-  #       env:
-  #         DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)

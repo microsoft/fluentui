@@ -16,7 +16,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
     this._onShow = this._onShow.bind(this);
 
     this.state = {
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     };
   }
 
@@ -24,12 +24,15 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
     const { isTeachingBubbleVisible } = this.state;
     const examplePrimaryButton: IButtonProps = {
       children: 'Try it out',
-      onClick: this._onDismiss
+      onClick: this._onDismiss,
     };
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span
+          className="ms-TeachingBubbleBasicExample-buttonArea"
+          ref={menuButton => (this._menuButtonElement = menuButton!)}
+        >
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
@@ -46,7 +49,8 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
               primaryButtonProps={examplePrimaryButton}
               headline="Discover what’s trending around you"
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
+              magni harum non?
             </TeachingBubble>
           </div>
         ) : null}
@@ -56,13 +60,13 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: false
+      isTeachingBubbleVisible: false,
     });
   }
 
   private _onShow(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: true
+      isTeachingBubbleVisible: true,
     });
   }
 }

@@ -3,7 +3,7 @@ import { normalize, FontSizes, getFocusStyle, getGlobalClassNames } from '@uifab
 import { IsFocusVisibleClassName } from '@uifabric/utilities';
 
 const GlobalClassNames = {
-  root: 'ms-WeeklyDayPicker-root'
+  root: 'ms-WeeklyDayPicker-root',
 };
 
 export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyles => {
@@ -22,16 +22,16 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         boxSizing: 'content-box',
         display: 'flex',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
       },
-      className
+      className,
     ],
     dayButton: {
-      borderRadius: '100%'
+      borderRadius: '100%',
     },
     dayIsToday: {},
     dayCell: {
-      borderRadius: '100%!important'
+      borderRadius: '100%!important',
     },
     daySelected: {},
     navigationIconButton: [
@@ -49,34 +49,35 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         backgroundColor: palette.neutralLighter,
         fontSize: FontSizes.small,
         selectors: {
-          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, .${IsFocusVisibleClassName} &:focus`]: {
+          [`.${classNames.root}:hover &, .${IsFocusVisibleClassName} .${classNames.root}:focus &, ` +
+          `.${IsFocusVisibleClassName} &:focus`]: {
             height: 53,
             minHeight: 12,
-            overflow: 'initial'
+            overflow: 'initial',
           },
           [`.${IsFocusVisibleClassName} .${classNames.root}:focus-within &`]: {
             // edge does not recognize focus-within, so separate it out
             height: 53,
             minHeight: 12,
-            overflow: 'initial'
+            overflow: 'initial',
           },
           '&:hover': {
             cursor: 'pointer',
-            backgroundColor: palette.neutralLight
+            backgroundColor: palette.neutralLight,
           },
           '&:active': {
-            backgroundColor: palette.neutralTertiary
-          }
-        }
-      }
+            backgroundColor: palette.neutralTertiary,
+          },
+        },
+      },
     ],
     disabledStyle: {
       selectors: {
         '&, &:disabled, & button': {
           color: palette.neutralTertiaryAlt,
-          pointerEvents: 'none'
-        }
-      }
-    }
+          pointerEvents: 'none',
+        },
+      },
+    },
   };
 };

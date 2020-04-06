@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Content = () => (
   <ExampleSection title="Content">
@@ -16,6 +16,6 @@ const Content = () => (
       examplePath="components/Chat/Content/ChatExampleReactionGroup"
     />
   </ExampleSection>
-)
+);
 
-export default Content
+export default Content;

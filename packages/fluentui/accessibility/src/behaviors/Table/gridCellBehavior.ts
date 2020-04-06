@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes'
+import { Accessibility } from '../../types';
+import { IS_FOCUSABLE_ATTRIBUTE } from '../../attributes';
 
 /**
  * @description
@@ -15,6 +15,6 @@ const gridCellBehavior: Accessibility = props => ({
       [IS_FOCUSABLE_ATTRIBUTE]: true,
     },
   },
-})
+});
 
-export default gridCellBehavior
+export default gridCellBehavior;

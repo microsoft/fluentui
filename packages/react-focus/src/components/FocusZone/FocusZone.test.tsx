@@ -27,7 +27,7 @@ describe('FocusZone', () => {
     element: HTMLElement,
     {
       clientRect,
-      isVisible = true
+      isVisible = true,
     }: {
       clientRect: {
         top: number;
@@ -36,7 +36,7 @@ describe('FocusZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }
+    },
   ): void {
     element.getBoundingClientRect = () => ({
       x: clientRect.left,
@@ -47,7 +47,7 @@ describe('FocusZone', () => {
       right: clientRect.right,
       width: clientRect.right - clientRect.left,
       height: clientRect.bottom - clientRect.top,
-      toJSON: () => clientRect
+      toJSON: () => clientRect,
     });
 
     element.setAttribute('data-is-visible', String(isVisible));
@@ -66,7 +66,9 @@ describe('FocusZone', () => {
   });
 
   it('renders FocusZone correctly with aria-describedby and aria-labelledby', () => {
-    const component = renderer.create(<FocusZone aria-describedby="customDescribedBy" aria-labelledby="customLabelledBy" />);
+    const component = renderer.create(
+      <FocusZone aria-describedby="customDescribedBy" aria-labelledby="customLabelledBy" />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -79,7 +81,7 @@ describe('FocusZone', () => {
           <button className="b">b</button>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!!.firstChild as Element;
@@ -94,8 +96,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 30,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     setupElement(buttonB, {
@@ -103,8 +105,8 @@ describe('FocusZone', () => {
         top: 30,
         bottom: 60,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     setupElement(buttonC, {
@@ -112,8 +114,8 @@ describe('FocusZone', () => {
         top: 60,
         bottom: 90,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     // Focus the first button.
@@ -184,7 +186,7 @@ describe('FocusZone', () => {
           button c
         </button>
       </FocusZone>,
-      host
+      host,
     );
 
     const buttonB = host.querySelector('#b') as HTMLElement;
@@ -201,7 +203,7 @@ describe('FocusZone', () => {
           button c
         </button>
       </FocusZone>,
-      host
+      host,
     );
 
     expect(document.activeElement).toBe(host.querySelector('#c'));
@@ -223,7 +225,7 @@ describe('FocusZone', () => {
           button c
         </button>
       </FocusZone>,
-      host
+      host,
     );
 
     const buttonC = host.querySelector('#c') as HTMLElement;
@@ -240,7 +242,7 @@ describe('FocusZone', () => {
           button b
         </button>
       </FocusZone>,
-      host
+      host,
     );
 
     expect(document.activeElement).toBe(host.querySelector('#b'));
@@ -258,7 +260,7 @@ describe('FocusZone', () => {
           <button>ok</button>
         </FocusZone>
       </FocusZone>,
-      host
+      host,
     );
 
     expect(FocusZone.getOuterZones()).toEqual(activeZones + 1);
@@ -278,7 +280,7 @@ describe('FocusZone', () => {
         <button key="b" id="b" data-is-visible="true">
           button b
         </button>
-      </FocusZone>
+      </FocusZone>,
     );
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!!.firstChild as Element;
     const buttonA = focusZone.querySelector('#a') as HTMLElement;
@@ -313,7 +315,7 @@ describe('FocusZone', () => {
             </button>
           </FocusZone>
         </div>,
-        host
+        host,
       );
       buttonA = host.querySelector('#a') as HTMLElement;
       buttonA.focus();
@@ -324,7 +326,7 @@ describe('FocusZone', () => {
           <button key="z" id="z" data-is-visible="true" />
           <FocusZone id="fz" />
         </div>,
-        host
+        host,
       );
     });
 
@@ -342,7 +344,7 @@ describe('FocusZone', () => {
             </button>
           </FocusZone>
         </div>,
-        host
+        host,
       );
       expect(document.activeElement).toBe(host.querySelector('#a'));
     });
@@ -366,7 +368,7 @@ describe('FocusZone', () => {
             </button>
           </FocusZone>
         </div>,
-        host
+        host,
       );
       expect(document.activeElement).toBe(host.querySelector('#z'));
     });
@@ -379,7 +381,7 @@ describe('FocusZone', () => {
           <button className="a">a</button>
           <button className="b">b</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!!.firstChild as Element;
@@ -393,8 +395,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 30,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     setupElement(buttonB, {
@@ -402,8 +404,8 @@ describe('FocusZone', () => {
         top: 30,
         bottom: 60,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     // Focus the first button.
@@ -423,7 +425,7 @@ describe('FocusZone', () => {
           <button className="b">b</button>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -437,8 +439,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 100,
         left: 0,
-        right: 30
-      }
+        right: 30,
+      },
     });
 
     setupElement(buttonB, {
@@ -446,8 +448,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 100,
         left: 30,
-        right: 60
-      }
+        right: 60,
+      },
     });
 
     setupElement(buttonC, {
@@ -455,8 +457,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 100,
         left: 60,
-        right: 90
-      }
+        right: 90,
+      },
     });
 
     // Focus the first button.
@@ -522,7 +524,7 @@ describe('FocusZone', () => {
           <button className="d">d</button>
           <button className="e">e</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -545,8 +547,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 30
-      }
+        right: 30,
+      },
     });
 
     setupElement(buttonB, {
@@ -554,8 +556,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -563,8 +565,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     // hidden button should be ignored.
@@ -573,9 +575,9 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 2,
-        right: 40
+        right: 40,
       },
-      isVisible: false
+      isVisible: false,
     });
 
     setupElement(buttonD, {
@@ -583,8 +585,8 @@ describe('FocusZone', () => {
         top: 40,
         bottom: 60,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonE, {
@@ -592,8 +594,8 @@ describe('FocusZone', () => {
         top: 40,
         bottom: 60,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // Focus the first button.
@@ -637,7 +639,7 @@ describe('FocusZone', () => {
           <button className="d">d</button>
           <button className="e">e</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -660,8 +662,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 30,
-        right: 0
-      }
+        right: 0,
+      },
     });
 
     setupElement(buttonB, {
@@ -669,8 +671,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 60,
-        right: 30
-      }
+        right: 30,
+      },
     });
 
     setupElement(buttonC, {
@@ -678,8 +680,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 20,
-        right: 0
-      }
+        right: 0,
+      },
     });
 
     // hidden button should be ignored.
@@ -688,9 +690,9 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 30,
-        right: 20
+        right: 20,
       },
-      isVisible: false
+      isVisible: false,
     });
 
     setupElement(buttonD, {
@@ -698,8 +700,8 @@ describe('FocusZone', () => {
         top: 40,
         bottom: 60,
         left: 25,
-        right: 0
-      }
+        right: 0,
+      },
     });
 
     setupElement(buttonE, {
@@ -707,8 +709,8 @@ describe('FocusZone', () => {
         top: 40,
         bottom: 60,
         left: 40,
-        right: 25
-      }
+        right: 25,
+      },
     });
 
     // Focus the first button.
@@ -751,7 +753,7 @@ describe('FocusZone', () => {
           <button className="c">c</button>
           <button className="d">d</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -771,8 +773,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 30
-      }
+        right: 30,
+      },
     });
 
     setupElement(buttonB, {
@@ -780,8 +782,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -789,8 +791,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonD, {
@@ -798,8 +800,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // Focus the first button.
@@ -822,7 +824,7 @@ describe('FocusZone', () => {
           <button className="c">c</button>
           <button className="d">d</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -839,8 +841,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -848,8 +850,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -857,8 +859,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonD, {
@@ -866,8 +868,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // Focus the first button.
@@ -928,7 +930,7 @@ describe('FocusZone', () => {
           <button className="c">c</button>
           <button className="d">d</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -945,8 +947,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -954,8 +956,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -963,8 +965,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonD, {
@@ -972,8 +974,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // Focus the first button.
@@ -1046,7 +1048,7 @@ describe('FocusZone', () => {
           <button className="c">c</button>
           <button className="d">d</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1063,8 +1065,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -1072,8 +1074,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -1081,8 +1083,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonD, {
@@ -1090,8 +1092,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // Focus the first button.
@@ -1131,7 +1133,7 @@ describe('FocusZone', () => {
           <button className="c">c</button>
           <button className="d">d</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1148,8 +1150,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -1157,8 +1159,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -1166,8 +1168,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonD, {
@@ -1175,8 +1177,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // Focus the first button.
@@ -1240,7 +1242,7 @@ describe('FocusZone', () => {
           <button className="b">b</button>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1254,8 +1256,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 30,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     setupElement(buttonB, {
@@ -1263,8 +1265,8 @@ describe('FocusZone', () => {
         top: 30,
         bottom: 60,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     setupElement(buttonC, {
@@ -1272,8 +1274,8 @@ describe('FocusZone', () => {
         top: 60,
         bottom: 90,
         left: 0,
-        right: 100
-      }
+        right: 100,
+      },
     });
 
     // Pressing down/right arrow keys moves focus to the next focusable item.
@@ -1340,7 +1342,7 @@ describe('FocusZone', () => {
           </button>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1360,8 +1362,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -1369,8 +1371,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -1378,8 +1380,8 @@ describe('FocusZone', () => {
         top: 20,
         bottom: 40,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     // Focus the first button.
@@ -1407,7 +1409,7 @@ describe('FocusZone', () => {
           </div>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1423,8 +1425,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(divB, {
@@ -1432,8 +1434,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonB, {
@@ -1441,8 +1443,8 @@ describe('FocusZone', () => {
         top: 5,
         bottom: 15,
         left: 25,
-        right: 35
-      }
+        right: 35,
+      },
     });
 
     setupElement(buttonC, {
@@ -1450,8 +1452,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 40,
-        right: 60
-      }
+        right: 60,
+      },
     });
 
     // Focus the first button.
@@ -1489,7 +1491,7 @@ describe('FocusZone', () => {
           </FocusZone>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1505,8 +1507,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(divB, {
@@ -1514,8 +1516,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonB, {
@@ -1523,8 +1525,8 @@ describe('FocusZone', () => {
         top: 5,
         bottom: 15,
         left: 25,
-        right: 35
-      }
+        right: 35,
+      },
     });
 
     setupElement(buttonC, {
@@ -1532,8 +1534,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 40,
-        right: 60
-      }
+        right: 60,
+      },
     });
 
     // Focus the first button.
@@ -1588,7 +1590,7 @@ describe('FocusZone', () => {
             b
           </button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const rootNode = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element;
@@ -1599,8 +1601,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -1608,8 +1610,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // ButtonA should be focussed.
@@ -1637,7 +1639,7 @@ describe('FocusZone', () => {
           <input readOnly defaultValue="foo" className="b" />
           <input className="c" />
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1651,8 +1653,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(inputB, {
@@ -1660,8 +1662,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(inputC, {
@@ -1669,8 +1671,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 40,
-        right: 60
-      }
+        right: 60,
+      },
     });
 
     ReactTestUtils.Simulate.focus(inputB);
@@ -1712,7 +1714,7 @@ describe('FocusZone', () => {
             b
           </button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZoneElement = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1729,8 +1731,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -1738,8 +1740,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // ButtonA should be focussed.
@@ -1774,7 +1776,7 @@ describe('FocusZone', () => {
           <button className="b">b</button>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1788,8 +1790,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -1797,8 +1799,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -1806,8 +1808,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 40,
-        right: 60
-      }
+        right: 60,
+      },
     });
 
     // ButtonA should be focussed.
@@ -1854,7 +1856,7 @@ describe('FocusZone', () => {
         <FocusZone>
           <button className="a">a</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1866,8 +1868,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     // ButtonA should be focussed.
@@ -1875,7 +1877,7 @@ describe('FocusZone', () => {
     expect(lastFocusedElement).toBe(buttonA);
     expect(buttonA.tabIndex).toBe(0);
 
-    // Pressing tab when our focus zone doesn't allow tabbing will allow us to propagate our tab to our key down event handler
+    // Pressing tab when our focus zone doesn't allow tabbing should propagate our tab to our key down event handler
     ReactTestUtils.Simulate.keyDown(focusZone, { which: KeyCodes.tab });
     expect(tabDownListener.mock.calls.length).toBe(1);
     const onKeyDownEvent = tabDownListener.mock.calls[0][0];
@@ -1890,7 +1892,7 @@ describe('FocusZone', () => {
           <input type="text" className="a" />
           <button className="b">b</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1903,8 +1905,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonB, {
@@ -1912,8 +1914,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // InputA should be focused.
@@ -1951,13 +1953,13 @@ describe('FocusZone', () => {
             isCircularNavigation: false,
             shouldInputLoseFocusOnArrowKey: element => {
               return true;
-            }
+            },
           }}
         >
           <input type="text" className="a" />
           <button className="b">b</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -1970,8 +1972,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonB, {
@@ -1979,8 +1981,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     // InputA should be focused.
@@ -2001,7 +2003,7 @@ describe('FocusZone', () => {
         <FocusZone className="innerFocusZone" onKeyDown={keyDownHandler} data-is-focusable={true}>
           Inner Focus Zone
         </FocusZone>
-      </FocusZone>
+      </FocusZone>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element;
@@ -2020,7 +2022,7 @@ describe('FocusZone', () => {
           <button id="b">b</button>
           {ReactDOM.createPortal(<div id="externalElement" tabIndex={0} />, window.document.body)}
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const parent = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)! as Element;
@@ -2032,8 +2034,8 @@ describe('FocusZone', () => {
         top: 100,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonA, {
@@ -2041,8 +2043,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     ReactTestUtils.Simulate.focus(buttonA);
@@ -2053,7 +2055,7 @@ describe('FocusZone', () => {
     expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
   });
 
-  it('Handles focus moving to different targets correctly in focus zone following DOM order diretion and allowing tabbing', () => {
+  it('Handles focus moving to different targets in focus zone following DOM order and allowing tabbing', () => {
     const tabDownListener = jest.fn();
     const component = ReactTestUtils.renderIntoDocument(
       <div {...{ onFocusCapture: _onFocus, onKeyDown: tabDownListener }}>
@@ -2062,7 +2064,7 @@ describe('FocusZone', () => {
           <button className="b">b</button>
           <button className="c">c</button>
         </FocusZone>
-      </div>
+      </div>,
     );
 
     const focusZone = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance)!.firstChild as Element;
@@ -2076,8 +2078,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 0,
-        right: 20
-      }
+        right: 20,
+      },
     });
 
     setupElement(buttonB, {
@@ -2085,8 +2087,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 20,
-        right: 40
-      }
+        right: 40,
+      },
     });
 
     setupElement(buttonC, {
@@ -2094,8 +2096,8 @@ describe('FocusZone', () => {
         top: 0,
         bottom: 20,
         left: 40,
-        right: 60
-      }
+        right: 60,
+      },
     });
 
     // ButtonA should be focussed.

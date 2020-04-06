@@ -1,11 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Performance from './Performance'
-import Rtl from './Rtl'
-import Types from './Types'
-import Variations from './Variations'
-import State from './State'
-import Usage from './Usage'
+import Performance from './Performance';
+import Rtl from './Rtl';
+import Types from './Types';
+import Variations from './Variations';
+import State from './State';
+import Usage from './Usage';
 
 const DropdownExamples = () => (
   <>
@@ -16,6 +16,6 @@ const DropdownExamples = () => (
     <Performance />
     <Usage />
   </>
-)
+);
 
-export default DropdownExamples
+export default DropdownExamples;

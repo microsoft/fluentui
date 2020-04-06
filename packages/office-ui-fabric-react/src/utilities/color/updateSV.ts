@@ -22,6 +22,6 @@ export function updateSV(color: IColor, s: number, v: number): IColor {
     r: r,
     s: s,
     str: _rgbaOrHexString(r, g, b, color.a, hex),
-    v: v
+    v: v,
   };
 }

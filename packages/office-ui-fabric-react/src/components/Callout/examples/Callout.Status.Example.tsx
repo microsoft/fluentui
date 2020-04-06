@@ -14,10 +14,10 @@ const styles = mergeStyleSets({
     textAlign: 'center',
     margin: '0 100px',
     minWidth: 130,
-    height: 32
+    height: 32,
   },
   callout: {
-    maxWidth: 300
+    maxWidth: 300,
   },
 
   subtext: [
@@ -26,15 +26,15 @@ const styles = mergeStyleSets({
       margin: 0,
       height: '100%',
       padding: '24px 20px',
-      fontWeight: FontWeights.semilight
-    }
-  ]
+      fontWeight: FontWeights.semilight,
+    },
+  ],
 });
 
 // Example code
 export class StatusCalloutExample extends React.Component<{}, IStatusCalloutExampleState> {
   public state: IStatusCalloutExampleState = {
-    isCalloutVisible: false
+    isCalloutVisible: false,
   };
 
   private _menuButtonElement = React.createRef<HTMLDivElement>();
@@ -45,7 +45,10 @@ export class StatusCalloutExample extends React.Component<{}, IStatusCalloutExam
     return (
       <>
         <div className={styles.buttonArea} ref={this._menuButtonElement}>
-          <DefaultButton onClick={this._onShowMenuClicked} text={isCalloutVisible ? 'Hide StatusCallout' : 'Show StatusCallout'} />
+          <DefaultButton
+            onClick={this._onShowMenuClicked}
+            text={isCalloutVisible ? 'Hide StatusCallout' : 'Show StatusCallout'}
+          />
         </div>
         {this.state.isCalloutVisible && (
           <Callout
@@ -58,7 +61,8 @@ export class StatusCalloutExample extends React.Component<{}, IStatusCalloutExam
             <DelayedRender>
               <>
                 <p className={styles.subtext}>
-                  This message is treated as an aria-live assertive status message, and will be read by a screen reader regardless of focus.
+                  This message is treated as an aria-live assertive status message, and will be read by a screen reader
+                  regardless of focus.
                 </p>
               </>
             </DelayedRender>
@@ -70,13 +74,13 @@ export class StatusCalloutExample extends React.Component<{}, IStatusCalloutExam
 
   private _onShowMenuClicked = (): void => {
     this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible
+      isCalloutVisible: !this.state.isCalloutVisible,
     });
   };
 
   private _onCalloutDismiss = (): void => {
     this.setState({
-      isCalloutVisible: false
+      isCalloutVisible: false,
     });
   };
 }

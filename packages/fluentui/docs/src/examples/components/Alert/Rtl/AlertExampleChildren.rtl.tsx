@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react-northstar';
 
-const AlertExampleChildrenRtl = () => <Alert>مرحبا العالم</Alert>
+const AlertExampleChildrenRtl = () => <Alert>مرحبا العالم</Alert>;
 
-export default AlertExampleChildrenRtl
+export default AlertExampleChildrenRtl;

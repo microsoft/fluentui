@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { classNamesFunction, IClassNames, getRTL } from '../../Utilities';
+import { IProcessedStyleSet } from '../../Styling';
+import { classNamesFunction, getRTL } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/index';
 import { Check } from '../../Check';
 import { Icon } from '../../Icon';
@@ -17,17 +18,17 @@ export interface IGroupHeaderState {
 
 export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHeaderState> {
   public static defaultProps: IGroupHeaderProps = {
-    expandButtonProps: { 'aria-label': 'expand collapse group' }
+    expandButtonProps: { 'aria-label': 'expand collapse group' },
   };
 
-  private _classNames: IClassNames<IGroupHeaderStyles>;
+  private _classNames: IProcessedStyleSet<IGroupHeaderStyles>;
 
   constructor(props: IGroupHeaderProps) {
     super(props);
 
     this.state = {
       isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
-      isLoadingVisible: false
+      isLoadingVisible: false,
     };
   }
 
@@ -40,7 +41,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
       this.setState({
         isCollapsed: newCollapsed || false,
-        isLoadingVisible: newLoadingVisible || false
+        isLoadingVisible: newLoadingVisible || false,
       });
     }
   }
@@ -52,6 +53,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       viewport,
       selectionMode,
       loadingText,
+      // tslint:disable-next-line:deprecation
       isSelected = false,
       selected = false,
       indentWidth,
@@ -65,14 +67,14 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       groupedListId,
       compact,
       ariaPosInSet,
-      ariaSetSize
+      ariaSetSize,
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
 
     const canSelectGroup = selectionMode === SelectionMode.multiple;
     const isSelectionCheckVisible = canSelectGroup && (isCollapsedGroupSelectVisible || !(group && group.isCollapsed));
-    const currentlySelected = isSelected || selected;
+    const currentlySelected = selected || isSelected;
 
     const isRTL = getRTL(theme);
 
@@ -81,7 +83,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       className,
       selected: currentlySelected,
       isCollapsed,
-      compact
+      compact,
     });
 
     if (!group) {
@@ -129,7 +131,10 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
             aria-controls={group && !group.isCollapsed ? groupedListId : undefined}
             {...expandButtonProps}
           >
-            <Icon className={this._classNames.expandIsCollapsed} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
+            <Icon
+              className={this._classNames.expandIsCollapsed}
+              iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'}
+            />
           </button>
 
           {onRenderTitle(this.props, this._onRenderTitle)}
@@ -149,7 +154,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
     this.setState({
       isCollapsed: newCollapsed,
-      isLoadingVisible: newLoadingVisible as boolean
+      isLoadingVisible: newLoadingVisible as boolean,
     });
     if (onToggleCollapse) {
       onToggleCollapse(group!);

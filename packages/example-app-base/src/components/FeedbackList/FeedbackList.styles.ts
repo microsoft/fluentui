@@ -8,33 +8,33 @@ const globalClassNames = {
   issueList: 'FeedbackList-issueList',
   button: 'FeedbackList-button',
   listElement: 'FeedbackList-listElement',
-  timeStamp: 'FeedbackList-timeStamp'
+  timeStamp: 'FeedbackList-timeStamp',
 };
 
 export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListStyles> = props => {
   const { theme = getTheme() } = props;
   const pivotStyles: Partial<IPivotStyles> = {
-    root: [{ paddingTop: 20 }, globalClassNames.pivot]
+    root: [{ paddingTop: 20 }, globalClassNames.pivot],
   };
   return {
     issueList: [
       {
         maxHeight: 400,
-        overflowY: 'auto'
+        overflowY: 'auto',
       },
-      globalClassNames.issueList
+      globalClassNames.issueList,
     ],
     button: [
       {
         marginBottom: 10,
-        // Temporary workaround for https://github.com/OfficeDev/office-ui-fabric-react/issues/6782.
+        // Temporary workaround for https://github.com/microsoft/fluentui/issues/6782.
         selectors: {
           '&a:link, &a:hover, &a:focus, &a:visited': {
-            color: theme.palette.white + ' !important'
-          }
-        }
+            color: theme.palette.white + ' !important',
+          },
+        },
       },
-      globalClassNames.button
+      globalClassNames.button,
     ],
     itemCell: [
       getFocusStyle(theme, { inset: -1 }),
@@ -45,28 +45,28 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
         borderBottom: `1px solid ${theme.semanticColors.bodyDivider}`,
         display: 'flex',
         selectors: {
-          '&:hover': { background: theme.palette.neutralLight }
-        }
-      }
+          '&:hover': { background: theme.palette.neutralLight },
+        },
+      },
     ],
     itemName: [
       theme.fonts.mediumPlus,
       {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
-      }
+        textOverflow: 'ellipsis',
+      },
     ],
     itemLabel: [
       {
         fontSize: theme.fonts.small.fontSize,
-        fontWeight: FontWeights.bold
+        fontWeight: FontWeights.bold,
       },
-      globalClassNames.listElement
+      globalClassNames.listElement,
     ],
     timeStamp: [{ fontSize: theme.fonts.small.fontSize }, globalClassNames.timeStamp],
     subComponentStyles: {
-      pivot: pivotStyles
-    }
+      pivot: pivotStyles,
+    },
   };
 };

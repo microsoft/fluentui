@@ -12,7 +12,7 @@ export class RatingButtonControlledExample extends React.Component<
     super(props);
 
     this.state = {
-      rating: 0
+      rating: 0,
     };
   }
 

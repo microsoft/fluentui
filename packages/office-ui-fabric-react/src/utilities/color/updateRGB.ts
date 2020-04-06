@@ -11,6 +11,6 @@ export function updateRGB(color: IColor, component: keyof IRGB, value: number): 
     g: color.g,
     b: color.b,
     a: color.a,
-    [component]: value
+    [component]: value,
   });
 }

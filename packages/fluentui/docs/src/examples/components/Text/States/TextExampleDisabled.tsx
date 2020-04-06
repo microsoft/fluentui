@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
-const TextExampleDisabled = () => <Text disabled>This feature has been disabled.</Text>
+const TextExampleDisabled = () => <Text disabled>This feature has been disabled.</Text>;
 
-export default TextExampleDisabled
+export default TextExampleDisabled;

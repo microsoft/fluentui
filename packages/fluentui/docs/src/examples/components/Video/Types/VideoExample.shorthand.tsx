@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Video, Text, Flex } from '@fluentui/react'
+import * as React from 'react';
+import { Video, Text, Flex } from '@fluentui/react-northstar';
 
 const VideoExample = () => (
   <Flex column>
@@ -9,6 +9,6 @@ const VideoExample = () => (
     />
     <Text>(c) copyright 2008, Blender Foundation / www.bigbuckbunny.org</Text>
   </Flex>
-)
+);
 
-export default VideoExample
+export default VideoExample;

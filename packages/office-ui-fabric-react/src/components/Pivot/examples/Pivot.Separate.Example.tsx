@@ -14,7 +14,7 @@ export class PivotSeparateExample extends React.Component<any, any> {
             float: 'left',
             width: 100,
             height: this.state.selectedKey === 'squareRed' ? 100 : 200,
-            background: this.state.selectedKey === 'rectangleGreen' ? 'green' : 'red'
+            background: this.state.selectedKey === 'rectangleGreen' ? 'green' : 'red',
           }}
         />
         <Pivot
@@ -34,7 +34,7 @@ export class PivotSeparateExample extends React.Component<any, any> {
 
   private _handleLinkClick = (item: PivotItem): void => {
     this.setState({
-      selectedKey: item.props.itemKey
+      selectedKey: item.props.itemKey,
     });
   };
 

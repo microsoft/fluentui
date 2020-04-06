@@ -15,21 +15,21 @@ export interface IFacepileBasicExampleState {
 
 const styles = mergeStyleSets({
   container: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   control: {
-    paddingTop: 20
+    paddingTop: 20,
   },
   slider: {
-    margin: '10px 0'
+    margin: '10px 0',
   },
   checkbox: {
-    paddingTop: 15
+    paddingTop: 15,
   },
   dropdown: {
     paddingTop: 0,
-    margin: '10px 0'
-  }
+    margin: '10px 0',
+  },
 });
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
@@ -39,7 +39,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
     this.state = {
       numberOfFaces: 3,
       imagesFadeIn: true,
-      personaSize: PersonaSize.size32
+      personaSize: PersonaSize.size32,
     };
   }
 
@@ -57,11 +57,11 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       getPersonaProps: (persona: IFacepilePersona) => {
         return {
           imageShouldFadeIn: this.state.imagesFadeIn,
-          presence: this._personaPresence(persona.personaName!)
+          presence: this._personaPresence(persona.personaName!),
         };
       },
       ariaDescription: 'To move through the items use left and right arrow keys.',
-      ariaLabel: 'Example list of Facepile personas'
+      ariaLabel: 'Example list of Facepile personas',
     };
 
     return (
@@ -83,11 +83,11 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
             selectedKey={this.state.personaSize}
             className={styles.dropdown}
             options={[
-              { key: PersonaSize.size16, text: PersonaSize[PersonaSize.size16] },
+              { key: PersonaSize.size8, text: PersonaSize[PersonaSize.size8] },
               { key: PersonaSize.size24, text: PersonaSize[PersonaSize.size24] },
-              { key: PersonaSize.size28, text: PersonaSize[PersonaSize.size28] },
               { key: PersonaSize.size32, text: PersonaSize[PersonaSize.size32] },
-              { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] }
+              { key: PersonaSize.size40, text: PersonaSize[PersonaSize.size40] },
+              { key: PersonaSize.size48, text: PersonaSize[PersonaSize.size48] },
             ]}
             onChange={this._onChangePersonaSize}
           />
@@ -108,7 +108,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
         prevState.imagesFadeIn = checked!;
         return prevState;
-      }
+      },
     );
   };
 
@@ -117,7 +117,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
         prevState.numberOfFaces = value;
         return prevState;
-      }
+      },
     );
   };
 
@@ -126,7 +126,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       (prevState: IFacepileBasicExampleState): IFacepileBasicExampleState => {
         prevState.personaSize = value.key as PersonaSize;
         return prevState;
-      }
+      },
     );
   };
 
@@ -136,7 +136,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
       PersonaPresence.busy,
       PersonaPresence.online,
       PersonaPresence.offline,
-      PersonaPresence.offline
+      PersonaPresence.offline,
     ];
 
     return presences[personaName.charCodeAt(1) % 5];

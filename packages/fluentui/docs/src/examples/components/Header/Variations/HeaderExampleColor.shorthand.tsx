@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Header, ProviderConsumer } from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Header, ProviderConsumer } from '@fluentui/react-northstar';
 
 const HeaderExampleColor = () => (
   <ProviderConsumer
@@ -16,6 +16,6 @@ const HeaderExampleColor = () => (
       ))
     }
   />
-)
+);
 
-export default HeaderExampleColor
+export default HeaderExampleColor;

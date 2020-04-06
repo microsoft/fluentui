@@ -1,9 +1,9 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import States from './States'
-import Types from './Types'
-import Variations from './Variations'
+import Rtl from './Rtl';
+import States from './States';
+import Types from './Types';
+import Variations from './Variations';
 
 const TextExamples = () => (
   <>
@@ -12,6 +12,6 @@ const TextExamples = () => (
     <Variations />
     <Rtl />
   </>
-)
+);
 
-export default TextExamples
+export default TextExamples;

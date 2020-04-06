@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Segment } from '@fluentui/react-northstar';
 
 const SegmentExampleInvertedShorthand = () => (
   <div>
@@ -9,6 +9,6 @@ const SegmentExampleInvertedShorthand = () => (
       Colored inverted segment.
     </Segment>
   </div>
-)
+);
 
-export default SegmentExampleInvertedShorthand
+export default SegmentExampleInvertedShorthand;

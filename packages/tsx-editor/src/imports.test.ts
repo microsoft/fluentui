@@ -15,7 +15,7 @@ describe('monaco imports', () => {
       return;
     }
     throw new Error(
-      "Importing Monaco no longer causes Jest to error! This probably means you're upgrading Jest to a version which (finally) has ES module support. You will need to find another way to check for problematic Monaco imports."
+      "Importing Monaco no longer causes Jest to error! This probably means you're upgrading Jest to a version which (finally) has ES module support. You will need to find another way to check for problematic Monaco imports.",
     );
   });
 

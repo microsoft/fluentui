@@ -1,3 +1,3 @@
-const config: ScreenerTestsConfig = { themes: ['teams', 'teamsDark', 'teamsHighContrast'] }
+const config: ScreenerTestsConfig = { themes: ['teams', 'teamsDark', 'teamsHighContrast'] };
 
-export default config
+export default config;

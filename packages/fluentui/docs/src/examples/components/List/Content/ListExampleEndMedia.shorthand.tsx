@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { List } from '@fluentui/react'
+import * as React from 'react';
+import { List } from '@fluentui/react-northstar';
 
-const ellipsis = <span>&hellip;</span>
+const ellipsis = <span>&hellip;</span>;
 
 const items = [
   {
@@ -19,8 +19,8 @@ const items = [
     endMedia: ellipsis,
     content: 'The GB pixel is down, navigate the virtual interface!',
   },
-]
+];
 
-const ListExample = () => <List items={items} selectable />
+const ListExample = () => <List items={items} selectable />;
 
-export default ListExample
+export default ListExample;

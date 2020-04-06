@@ -133,6 +133,7 @@ exports[`Component Examples renders FloatingPeoplePicker.Basic.Example.tsx corre
               display: none;
             }
         id="SearchBox0"
+        onBlur={[Function]}
         onChange={[Function]}
         onInput={[Function]}
         onKeyDown={[Function]}

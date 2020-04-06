@@ -1,4 +1,4 @@
-import { Button, ChatMessage, ChatItem } from '@fluentui/react'
+import { Button, ChatMessage, ChatItem } from '@fluentui/react-northstar';
 
 const classNames = {
   threadedMessage: {
@@ -16,6 +16,6 @@ const classNames = {
     chatItemMessage: `${ChatItem.slotClassNames.message}-reply`,
   },
   replyEditor: `${ChatMessage.className}__reply-editor`,
-}
+};
 
-export default classNames
+export default classNames;

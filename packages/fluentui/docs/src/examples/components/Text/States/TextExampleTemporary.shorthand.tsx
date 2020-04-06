@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
-const TextExampleTemporaryShorthand = () => <Text temporary content="Lorem ipsum dolor" />
+const TextExampleTemporaryShorthand = () => <Text temporary content="Lorem ipsum dolor" />;
 
-export default TextExampleTemporaryShorthand
+export default TextExampleTemporaryShorthand;

@@ -5,7 +5,7 @@ import {
   IExtendedPersonaProps,
   SelectedPeopleList,
   ISelectedPeopleItemProps,
-  ExtendedSelectedItem
+  ExtendedSelectedItem,
 } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
@@ -23,7 +23,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, ISelecte
     super(props);
 
     this.state = {
-      nextPersonIndex: 0
+      nextPersonIndex: 0,
     };
     this._selection = new Selection({ onSelectionChanged: () => this.forceUpdate() });
   }

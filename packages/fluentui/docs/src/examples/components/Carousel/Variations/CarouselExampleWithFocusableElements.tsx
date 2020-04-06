@@ -1,30 +1,30 @@
-import * as React from 'react'
-import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react'
+import * as React from 'react';
+import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-northstar';
 
 const imageAltTags = {
   ade: 'Portrait of Ade',
   elliot: 'Portrait of Elliot',
   kristy: 'Portrait of Kristy',
   nan: 'Portrait of Nan',
-}
+};
 
 const tabAriaLabel = {
   ade: 'Ade',
   elliot: 'Elliot',
   kristy: 'Kristy',
   nan: 'Nan',
-}
+};
 
 const carouselTextContent = (
   <Text>
     <Header as="h3"> Card </Header>
-    text or any other text 1 , text or any other text 2, text or any other text 3 text or any other
-    text 4, text or any other text 5, text or any other text 6
+    text or any other text 1 , text or any other text 2, text or any other text 3 text or any other text 4, text or any
+    other text 5, text or any other text 6
   </Text>
-)
+);
 
-const buttonStyles = { margin: '40px 0px 10px 10px' }
-const imageStyles = { maxWidth: '70px', maxHeight: '70px', margin: '15px 0px 0px 5px' }
+const buttonStyles = { margin: '40px 0px 0px 10px' };
+const imageStyles = { maxWidth: '70px', maxHeight: '70px', margin: '15px 0px 0px 5px' };
 
 const carouselToolbarContent = (
   <Toolbar
@@ -51,7 +51,7 @@ const carouselToolbarContent = (
       },
     ]}
   />
-)
+);
 
 const carouselItems = [
   {
@@ -60,12 +60,7 @@ const carouselItems = [
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image
-            styles={imageStyles}
-            src="public/images/avatar/large/ade.jpg"
-            fluid
-            alt={imageAltTags.ade}
-          />
+          <Image styles={imageStyles} src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />
           {carouselTextContent}
         </Flex>
         <Button content="Open" styles={buttonStyles} />
@@ -79,12 +74,7 @@ const carouselItems = [
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image
-            styles={imageStyles}
-            src="public/images/avatar/large/elliot.jpg"
-            fluid
-            alt={imageAltTags.elliot}
-          />
+          <Image styles={imageStyles} src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />
           {carouselTextContent}
         </Flex>
         {carouselToolbarContent}
@@ -98,12 +88,7 @@ const carouselItems = [
     content: (
       <div>
         <Flex gap="gap.medium">
-          <Image
-            styles={imageStyles}
-            src="public/images/avatar/large/kristy.png"
-            fluid
-            alt={imageAltTags.kristy}
-          />
+          <Image styles={imageStyles} src="public/images/avatar/large/kristy.png" fluid alt={imageAltTags.kristy} />
           {carouselTextContent}
         </Flex>
         <Flex gap="gap.medium" styles={buttonStyles}>
@@ -114,7 +99,7 @@ const carouselItems = [
     ),
     'aria-label': 'Kristy card',
   },
-]
+];
 
 const CarouselExample = () => (
   <Carousel
@@ -130,6 +115,6 @@ const CarouselExample = () => (
     items={carouselItems}
     getItemPositionText={(index: number, size: number) => `${index + 1} of ${size}`}
   />
-)
+);
 
-export default CarouselExample
+export default CarouselExample;

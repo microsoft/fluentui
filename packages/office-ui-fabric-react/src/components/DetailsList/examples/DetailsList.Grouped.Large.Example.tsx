@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { DetailsHeader, DetailsList, IColumn, IDetailsHeaderProps, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsHeader,
+  DetailsList,
+  IColumn,
+  IDetailsHeaderProps,
+  IGroup,
+} from 'office-ui-fabric-react/lib/DetailsList';
 
 interface IDetailsListGroupedLargeExampleItem {
   key: string;
@@ -20,7 +26,7 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
       this._items.push({
         key: i.toString(),
         name: 'Item ' + i,
-        value: i.toString()
+        value: i.toString(),
       });
     }
 
@@ -31,13 +37,13 @@ export class DetailsListGroupedLargeExample extends React.Component<{}, {}> {
         name: i.toString(),
         startIndex: i * 100,
         count: 100,
-        level: 0
+        level: 0,
       });
     }
 
     this._columns = [
       { key: 'name', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'value', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+      { key: 'value', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
     ];
   }
 

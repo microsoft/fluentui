@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Link } from 'react-router-dom'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import { Link } from 'react-router-dom';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Usage = () => (
   <ExampleSection title="Usage">
@@ -36,6 +36,6 @@ const Usage = () => (
       examplePath="components/Menu/Usage/MenuExampleWithTooltip"
     />
   </ExampleSection>
-)
+);
 
-export default Usage
+export default Usage;

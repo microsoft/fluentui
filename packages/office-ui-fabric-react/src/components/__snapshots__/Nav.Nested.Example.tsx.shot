@@ -196,7 +196,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }
@@ -430,7 +429,6 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       text-decoration: none;
                       text-overflow: ellipsis;
                       user-select: none;
-                      vertical-align: top;
                       white-space: nowrap;
                       width: 100%;
                     }

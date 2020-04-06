@@ -1,9 +1,10 @@
-import { Button } from '@fluentui/react'
-import * as React from 'react'
+import { Button } from '@fluentui/react-northstar';
+import { PlayIcon } from '@fluentui/react-icons-northstar';
+import * as React from 'react';
 
 const ButtonSlotsPerf = () => (
   <Button
-    icon="play"
+    icon={<PlayIcon />}
     content="Click here"
     loader={{
       delay: 200,
@@ -13,9 +14,9 @@ const ButtonSlotsPerf = () => (
       size: 'smallest',
     }}
   />
-)
+);
 
-ButtonSlotsPerf.iterations = 1000
-ButtonSlotsPerf.filename = 'ButtonSlots.perf.tsx'
+ButtonSlotsPerf.iterations = 1000;
+ButtonSlotsPerf.filename = 'ButtonSlots.perf.tsx';
 
-export default ButtonSlotsPerf
+export default ButtonSlotsPerf;

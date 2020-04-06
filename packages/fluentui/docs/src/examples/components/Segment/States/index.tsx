@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const States = () => (
   <ExampleSection title="States">
@@ -10,6 +10,6 @@ const States = () => (
       examplePath="components/Segment/States/SegmentExampleDisabled"
     />
   </ExampleSection>
-)
+);
 
-export default States
+export default States;

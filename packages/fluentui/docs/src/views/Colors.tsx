@@ -1,4 +1,4 @@
-import { CodeSnippet } from '@fluentui/docs-components'
+import { CodeSnippet } from '@fluentui/docs-components';
 import {
   Provider,
   ProviderConsumer,
@@ -9,19 +9,19 @@ import {
   Alert,
   mergeThemes,
   themes,
-} from '@fluentui/react'
-import * as _ from 'lodash'
-import * as React from 'react'
-import { Link } from 'react-router-dom'
+} from '@fluentui/react-northstar';
+import * as _ from 'lodash';
+import * as React from 'react';
+import { Link } from 'react-router-dom';
 
-import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox'
-import Fader, { faderStyles } from '../components/Fader'
-import ColorVariants, { colorVariantsStyles } from '../components/ColorVariants'
-import DocPage from '../components/DocPage/DocPage'
-import ExampleSnippet from '../components/ExampleSnippet'
-import ColorSchemes from '../components/ColorSchemes'
-import GuidesNavigationFooter from '../components/GuidesNavigationFooter'
-import { link, code } from '../utils/helpers'
+import ColorBox, { colorBoxStyles, colorBoxVariables } from '../components/ColorBox';
+import Fader, { faderStyles } from '../components/Fader';
+import ColorVariants, { colorVariantsStyles } from '../components/ColorVariants';
+import DocPage from '../components/DocPage/DocPage';
+import ExampleSnippet from '../components/ExampleSnippet';
+import ColorSchemes from '../components/ColorSchemes';
+import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
+import { link, code } from '../utils/helpers';
 
 const theme = {
   componentVariables: {
@@ -38,7 +38,7 @@ const theme = {
       }),
     },
   },
-}
+};
 
 const Colors = () => (
   <Provider
@@ -66,20 +66,14 @@ const Colors = () => (
     }}
   >
     <ProviderConsumer
-      render={({
-        siteVariables: { colors, contextualColors, naturalColors, transparentColors },
-      }) => (
+      render={({ siteVariables: { colors, contextualColors, naturalColors, transparentColors } }) => (
         <DocPage title="Colors">
           <Header as="h2">Introduction</Header>
           <p>
-            The organizing of the colors for an application has many requirements and constraints.
-            In Fluent UI, the colors mechanisms are completely based on the{' '}
-            <code>siteVariables</code>.
+            The organizing of the colors for an application has many requirements and constraints. In Fluent UI, the
+            colors mechanisms are completely based on the <code>siteVariables</code>.
           </p>
-          <p>
-            We have two concepts in order for colors to work transparently when the theme switching
-            is in play:
-          </p>
+          <p>We have two concepts in order for colors to work transparently when the theme switching is in play:</p>
           <ul>
             <li>
               <Text weight="bold" color="primary">
@@ -91,13 +85,12 @@ const Colors = () => (
               <Text weight="bold" color="primary">
                 {link('Color scheme', '#color-scheme')}
               </Text>{' '}
-              - design tokens for all colors used in the application that should be appropriately
-              mapped in all themes.
+              - design tokens for all colors used in the application that should be appropriately mapped in all themes.
             </li>
           </ul>
           <Alert info>
-            Everything that follows it's our recommendation and not a requirement. You can make own
-            decision on the structure you want to use in your theme.
+            Everything that follows it's our recommendation and not a requirement. You can make own decision on the
+            structure you want to use in your theme.
           </Alert>
           <Header as="h2" content="Color palette" />
           <p>
@@ -110,41 +103,35 @@ const Colors = () => (
 
           <Header as="h3">Primitive colors</Header>
           <p>
-            This part of the palette contains colors that, semantically, cannot have any tints. This
-            group is represented by two colors, {code('black')} and {code('white')} - as there is
-            nothing blacker than black and nothing whiter than white.
+            This part of the palette contains colors that, semantically, cannot have any tints. This group is
+            represented by two colors, {code('black')} and {code('white')} - as there is nothing blacker than black and
+            nothing whiter than white.
           </p>
 
           <Grid columns={2} variables={{ gridGap: '.5rem', padding: '.75rem' }}>
             {_.map(['black', 'white'], color => (
               <div key={color}>
-                <ColorBox
-                  name={color}
-                  rounded
-                  size="small"
-                  value={colors[color]}
-                  copyToClipboardIcon={false}
-                />
+                <ColorBox name={color} rounded size="small" value={colors[color]} copyToClipboardIcon={false} />
               </div>
             ))}
           </Grid>
 
           <Header as="h3">Natural colors</Header>
           <p>
-            This part of palette includes colors from those that are the most commonly used among
-            popular frameworks ({code('blue')}, {code('green')}, {code('grey')},{code('orange')},{' '}
-            {code('pink')}, {code('purple')}, {code('teal')}, {code('red')}, {code('yellow')}). Each
-            color includes at least ten gradients, this allows us to satisfy most common needs.
+            This part of palette includes colors from those that are the most commonly used among popular frameworks (
+            {code('blue')}, {code('green')}, {code('grey')},{code('orange')}, {code('pink')}, {code('purple')},{' '}
+            {code('teal')}, {code('red')}, {code('yellow')}). Each color includes at least ten gradients, this allows us
+            to satisfy most common needs.
           </p>
           <p>
-            This decision is experienced from Material UI and allows to define more variants than by
-            using semantical naming ({code('lightest')}, {code('lighter')}, etc.). However, there is
-            no requirement for client to define all the gradient values for each color - it is just
-            enough to define those that are actually used in the app.
+            This decision is experienced from Material UI and allows to define more variants than by using semantical
+            naming ({code('lightest')}, {code('lighter')}, etc.). However, there is no requirement for client to define
+            all the gradient values for each color - it is just enough to define those that are actually used in the
+            app.
           </p>
           <p>
-            Below there is an example of base tints of Teams' natural colors provided. Full list of
-            all gradient values for them can be found on{' '}
+            Below there is an example of base tints of Teams' natural colors provided. Full list of all gradient values
+            for them can be found on{' '}
             <Text color="brand" weight="bold">
               {link('Teams color palette page', '/color-palette')}
             </Text>
@@ -153,62 +140,41 @@ const Colors = () => (
           <Grid columns={2} variables={{ gridGap: '.5rem', padding: '.75rem' }}>
             {_.map(naturalColors, (variants, color) => (
               <div key={color}>
-                <ColorBox
-                  name={color}
-                  rounded
-                  size="small"
-                  value={colors[color][600]}
-                  copyToClipboardIcon={false}
-                />
+                <ColorBox name={color} rounded size="small" value={colors[color][600]} copyToClipboardIcon={false} />
               </div>
             ))}
           </Grid>
 
           <Header as="h3">Contextual colors</Header>
           <p>
-            This part of the palette may include {code('brand')} color as well as {code('danger')},{' '}
-            {code('success')}, {code('info')} colors, etc.
+            This part of the palette may include {code('brand')} color as well as {code('danger')}, {code('success')},{' '}
+            {code('info')} colors, etc.
           </p>
 
           <Grid columns={2} variables={{ gridGap: '.5rem', padding: '.75rem' }}>
             {_.map(contextualColors, (variants, color) => (
               <div key={color}>
-                <ColorBox
-                  name={color}
-                  rounded
-                  size="small"
-                  value={colors[color][600]}
-                  copyToClipboardIcon={false}
-                />
+                <ColorBox name={color} rounded size="small" value={colors[color][600]} copyToClipboardIcon={false} />
               </div>
             ))}
           </Grid>
 
           <Header as="h3">All colors</Header>
           <p>
-            If the theme requires more colors, they can be added to color palette as needed. These
-            are all colors available in the Teams' theme color palette.
+            If the theme requires more colors, they can be added to color palette as needed. These are all colors
+            available in the Teams' theme color palette.
           </p>
           <Grid columns={2} variables={{ gridGap: '.5rem', padding: '.75rem' }}>
             {_.map(['black', 'white'], color => (
               <div key={color}>
-                <ColorBox
-                  name={color}
-                  size="small"
-                  rounded
-                  value={colors[color]}
-                  copyToClipboardIcon={false}
-                />
+                <ColorBox name={color} size="small" rounded value={colors[color]} copyToClipboardIcon={false} />
               </div>
             ))}
-            {_.map(
-              { ...contextualColors, ...naturalColors, ...transparentColors },
-              (variants, color) => (
-                <div key={color}>
-                  <ColorVariants name={color} headerOnly size="small" />
-                </div>
-              ),
-            )}
+            {_.map({ ...contextualColors, ...naturalColors, ...transparentColors }, (variants, color) => (
+              <div key={color}>
+                <ColorVariants name={color} headerOnly size="small" />
+              </div>
+            ))}
           </Grid>
           <p>
             To see all colors variants in the palette, follow this{' '}
@@ -217,21 +183,20 @@ const Colors = () => (
 
           <Header as="h2" content="Color scheme" />
           <p>
-            Each our theme defines <b>color scheme</b>, which will define the design tokens usages
-            of the different colors from the palette. The color scheme is a prop of{' '}
-            {code('siteVariables')} via {code('colorScheme')} that contains all schemas for the
-            colors available in the palette.
+            Each our theme defines <b>color scheme</b>, which will define the design tokens usages of the different
+            colors from the palette. The color scheme is a prop of {code('siteVariables')} via {code('colorScheme')}{' '}
+            that contains all schemas for the colors available in the palette.
           </p>
           <p>
-            The color tokens defined in the color scheme are mapped to actual values for all themes
-            used in the application. This means that, if the developers use some token from the
-            schema, it will be mapped to the correct color value provided by the current theme.
+            The color tokens defined in the color scheme are mapped to actual values for all themes used in the
+            application. This means that, if the developers use some token from the schema, it will be mapped to the
+            correct color value provided by the current theme.
           </p>
 
           <ExampleSnippet
             value={`
 import React from "react";
-import { Box, Provider, mergeThemes, themes } from "@fluentui/react";
+import { Box, Provider, mergeThemes, themes } from "@fluentui/react-northstar";
 
 const theme = {
   componentVariables: {
@@ -281,9 +246,8 @@ export default ColorSchemeExample;
           />
 
           <p>
-            You can add multiple color schemes per theme like {code('inverted')} or for specific
-            parts of the application that look different. Your design team can provide you different
-            names for the design tokens:
+            You can add multiple color schemes per theme like {code('inverted')} or for specific parts of the
+            application that look different. Your design team can provide you different names for the design tokens:
           </p>
           <CodeSnippet
             mode="js"
@@ -299,9 +263,8 @@ export const colorScheme = {
           />
 
           <p>
-            You can see use color schemes defined for Teams' themes as reference to create own,
-            below is definition for <code>brand</code> color in in Teams light, high contrast and
-            dark themes.
+            You can see use color schemes defined for Teams' themes as reference to create own, below is definition for{' '}
+            <code>brand</code> color in in Teams light, high contrast and dark themes.
           </p>
 
           <Fader url={'color-schemes'}>
@@ -337,6 +300,6 @@ export const colorScheme = {
       )}
     />
   </Provider>
-)
+);
 
-export default Colors
+export default Colors;

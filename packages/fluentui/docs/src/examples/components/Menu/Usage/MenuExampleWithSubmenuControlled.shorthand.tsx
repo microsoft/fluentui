@@ -1,12 +1,12 @@
-import * as React from 'react'
-import { Menu, Header } from '@fluentui/react'
+import * as React from 'react';
+import { Menu, Header } from '@fluentui/react-northstar';
 
 class MenuWithSubmenuControlledExample extends React.Component {
-  state = { menuOpen: false }
+  state = { menuOpen: false };
 
   handleMenuOpenChange = (e, { menuOpen }) => {
-    this.setState({ menuOpen })
-  }
+    this.setState({ menuOpen });
+  };
 
   render() {
     return (
@@ -31,8 +31,8 @@ class MenuWithSubmenuControlledExample extends React.Component {
           ]}
         />
       </>
-    )
+    );
   }
 }
 
-export default MenuWithSubmenuControlledExample
+export default MenuWithSubmenuControlledExample;

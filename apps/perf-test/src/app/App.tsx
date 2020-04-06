@@ -54,7 +54,11 @@ export const App = () => {
               setIterations(Number(value));
             }}
           />
-          <PrimaryButton text={itemsVisible ? 'Reset' : 'Run test'} onClick={() => setItemsVisible(!itemsVisible)} className="runTest" />
+          <PrimaryButton
+            text={itemsVisible ? 'Reset' : 'Run test'}
+            onClick={() => setItemsVisible(!itemsVisible)}
+            className="runTest"
+          />
         </Stack>
         {timingsVisible && <MeasurerTimings />}
       </Stack>

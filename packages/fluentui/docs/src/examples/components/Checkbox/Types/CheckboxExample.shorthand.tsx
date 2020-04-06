@@ -1,5 +1,5 @@
-import { Checkbox } from '@fluentui/react'
-import * as React from 'react'
+import { Checkbox } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const CheckboxExample = () => (
   <>
@@ -13,6 +13,6 @@ const CheckboxExample = () => (
       }
     />
   </>
-)
+);
 
-export default CheckboxExample
+export default CheckboxExample;

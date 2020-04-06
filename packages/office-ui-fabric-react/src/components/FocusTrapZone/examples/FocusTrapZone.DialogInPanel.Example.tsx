@@ -13,7 +13,7 @@ export interface IFocusTrapZoneDialogInPanelExampleState {
 export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
   public state: IFocusTrapZoneDialogInPanelExampleState = {
     hideDialog: true,
-    showPanel: false
+    showPanel: false,
   };
 
   public render() {
@@ -35,13 +35,13 @@ export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocu
             dialogContentProps={{
               type: DialogType.normal,
               title: 'This dialog also makes use of FocusTrapZone. Focus should be trapped in the dialog.',
-              subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'."
+              subText: "Focus will move back to the panel if you press 'OK' or 'Cancel'.",
             }}
             modalProps={{
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
               isBlocking: false,
-              styles: { main: { maxWidth: 450 } }
+              styles: { main: { maxWidth: 450 } },
             }}
           >
             <DialogFooter>

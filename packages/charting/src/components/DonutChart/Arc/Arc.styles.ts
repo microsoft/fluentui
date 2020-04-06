@@ -1,5 +1,5 @@
 import { IArcProps, IArcStyles } from './Arc.types';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, FontSizes } from 'office-ui-fabric-react/lib/Styling';
 
 export const getStyles = (props: IArcProps): IArcStyles => {
   const { color, href } = props;
@@ -8,7 +8,10 @@ export const getStyles = (props: IArcProps): IArcStyles => {
       fill: color,
       cursor: href ? 'pointer' : 'default',
       stroke: DefaultPalette.white,
-      strokeWidth: 2
-    }
+      strokeWidth: 2,
+    },
+    insideDonutString: {
+      fontSize: FontSizes.large,
+    },
   };
 };

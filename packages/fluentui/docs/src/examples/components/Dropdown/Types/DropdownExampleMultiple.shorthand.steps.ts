@@ -1,11 +1,11 @@
-import { Dropdown, DropdownSelectedItem } from '@fluentui/react'
+import { Dropdown, DropdownSelectedItem } from '@fluentui/react-northstar';
 
 const selectors = {
   triggerButton: `.${Dropdown.slotClassNames.triggerButton}`,
   item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
   removeItemIcon: (itemIndex: number) =>
     `.${Dropdown.slotClassNames.selectedItems} span:nth-child(${itemIndex}) .${DropdownSelectedItem.slotClassNames.icon}`,
-}
+};
 
 const config: ScreenerTestsConfig = {
   steps: [
@@ -23,6 +23,6 @@ const config: ScreenerTestsConfig = {
         .click(selectors.triggerButton)
         .snapshot('Opened dropdown with no items selected'),
   ],
-}
+};
 
-export default config
+export default config;

@@ -21,7 +21,7 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
 
     this._onProviderChange = this._onProviderChange.bind(this);
     this.state = {
-      items: this.props.dataProvider.items
+      items: this.props.dataProvider.items,
     };
   }
 
@@ -75,7 +75,7 @@ export default class Todo extends React.Component<ITodoProps, ITodoState> {
 
   private _onProviderChange(): void {
     this.setState({
-      items: this.props.dataProvider.items
+      items: this.props.dataProvider.items,
     });
   }
 }

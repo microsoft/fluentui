@@ -1,5 +1,5 @@
-import { Accessibility, AccessibilityAttributes } from '../../types'
-import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior'
+import { Accessibility, AccessibilityAttributes } from '../../types';
+import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior';
 
 /**
  * @description
@@ -14,10 +14,10 @@ import popupBehavior, { PopupBehaviorProps } from '../Popup/popupBehavior'
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'popup' slot.
  */
 const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
-  const behaviorData = popupBehavior(props)
+  const behaviorData = popupBehavior(props);
 
-  const defaultAriaLabelledBy = getDefaultAriaLabelledBy(props)
-  const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props)
+  const defaultAriaLabelledBy = getDefaultAriaLabelledBy(props);
+  const defaultAriaDescribedBy = getDefaultAriaDescribedBy(props);
 
   behaviorData.attributes.popup = {
     ...behaviorData.attributes.popup,
@@ -25,16 +25,16 @@ const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
     'aria-modal': true,
     'aria-labelledby': defaultAriaLabelledBy || props['aria-labelledby'],
     'aria-describedby': defaultAriaDescribedBy || props['aria-describedby'],
-  }
+  };
   behaviorData.attributes.header = {
     id: defaultAriaLabelledBy,
-  }
+  };
   behaviorData.attributes.content = {
     id: defaultAriaDescribedBy,
-  }
+  };
 
-  return behaviorData
-}
+  return behaviorData;
+};
 
 /**
  * Returns the element id of the header, it is used when user does not provide aria-label or
@@ -42,10 +42,10 @@ const dialogBehavior: Accessibility<DialogBehaviorProps> = props => {
  */
 const getDefaultAriaLabelledBy = (props: DialogBehaviorProps) => {
   if (props['aria-label'] || props['aria-labelledby']) {
-    return undefined
+    return undefined;
   }
-  return props.headerId
-}
+  return props.headerId;
+};
 
 /**
  * Returns the element id of the content, it is used when user does not provide aria-describedby
@@ -53,15 +53,15 @@ const getDefaultAriaLabelledBy = (props: DialogBehaviorProps) => {
  */
 const getDefaultAriaDescribedBy = (props: DialogBehaviorProps) => {
   if (props['aria-describedby']) {
-    return undefined
+    return undefined;
   }
-  return props.contentId
-}
+  return props.contentId;
+};
 
-export default dialogBehavior
+export default dialogBehavior;
 
 type DialogBehaviorProps = {
-  headerId?: string
-  contentId?: string
+  headerId?: string;
+  contentId?: string;
 } & PopupBehaviorProps &
-  Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>
+  Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;

@@ -1,18 +1,24 @@
 {
   "name": "@fluentui/e2e",
-  "version": "0.44.0",
+  "version": "0.47.0",
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "@uifabric/build": "^7.0.0",
-    "@fluentui/react": "^0.44.0",
-    "@types/puppeteer": "^1.11.1",
+    "@fluentui/react-northstar": "^0.47.0",
+    "@types/puppeteer": "1.12.3",
+    "@types/react": "16.8.11",
     "@types/react-router-dom": "^4.3.4",
+    "@uifabric/build": "^7.0.0",
     "puppeteer": "^1.13.0",
-    "react-router-dom": "^5.0.1",
-    "@types/react": "16.8.11"
+    "react-router-dom": "^5.0.1"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "scripts": {
+    "lint": "yarn lint:eslint && yarn lint:old",
+    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
+    "lint:old": "tslint -t stylish -p ."
   }
 }

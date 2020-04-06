@@ -1,82 +1,82 @@
-import * as CSS from 'csstype'
+import * as CSS from 'csstype';
 
 // ========================================================
 // Debug
 // ========================================================
 
 export type DebugData = {
-  componentName: string
-  siteVariables: Object[]
-  componentVariables: Object[]
-  componentStyles: Record<string, Object[]>
-}
+  componentName: string;
+  siteVariables: Object[];
+  componentVariables: Object[];
+  componentStyles: Record<string, Object[]>;
+};
 
 // ========================================================
 // Utility types
 // ========================================================
 
 export type Extendable<T, V = any> = T & {
-  [key: string]: V
-}
+  [key: string]: V;
+};
 
-export type ObjectOrFunc<TResult, TArg = {}> = ((arg: TArg) => TResult) | TResult
+export type ObjectOrFunc<TResult, TArg = {}> = ((arg: TArg) => TResult) | TResult;
 
 // ========================================================
 // CSS in JS
 // ========================================================
 
-type AnimationKeyFrame = Record<'from' | 'to' | string, ICSSInJSStyle>
+type AnimationKeyFrame = Record<'from' | 'to' | string, ICSSInJSStyle>;
 
 export interface AnimationName<P = Record<string, any>> {
-  keyframe?: AnimationKeyFrame | ((params: P) => AnimationKeyFrame)
-  params?: P
+  keyframe?: AnimationKeyFrame | ((params: P) => AnimationKeyFrame);
+  params?: P;
 }
 
 type CSSProperties = Omit<CSS.Properties<string | number>, 'animationName'> & {
-  animationName?: AnimationName | AnimationKeyFrame | string | 'none'
-}
+  animationName?: AnimationName | AnimationKeyFrame | string | 'none';
+};
 
 export interface ICSSPseudoElementStyle extends ICSSInJSStyle {
-  content?: string
+  content?: string;
 }
 
 export interface ICSSInJSStyle extends CSSProperties {
   // TODO Questionable: how else would users target their own children?
-  [key: string]: any
+  [key: string]: any;
 
   // missing React.CSSProperties
-  speak?: CSS.Globals | 'none' | 'normal' | 'spell-out'
+  speak?: CSS.Globals | 'none' | 'normal' | 'spell-out';
 
   // CSS in JS Properties
-  '::before'?: ICSSPseudoElementStyle
-  '::after'?: ICSSPseudoElementStyle
+  '::before'?: ICSSPseudoElementStyle;
+  '::after'?: ICSSPseudoElementStyle;
 
-  ':hover'?: ICSSInJSStyle
-  ':active'?: ICSSInJSStyle
-  ':focus'?: ICSSInJSStyle
-  ':visited'?: ICSSInJSStyle
+  ':hover'?: ICSSInJSStyle;
+  ':active'?: ICSSInJSStyle;
+  ':focus'?: ICSSInJSStyle;
+  ':visited'?: ICSSInJSStyle;
 
   // TODO Questionable: avoid order specific styles
-  ':first-child'?: ICSSInJSStyle
-  ':last-child'?: ICSSInJSStyle
-  ':nth-child(n+2)'?: ICSSInJSStyle
+  ':first-child'?: ICSSInJSStyle;
+  ':last-child'?: ICSSInJSStyle;
+  ':nth-child(n+2)'?: ICSSInJSStyle;
 
   // TODO Questionable: unsupported by autoprefixer, one-off vendors
   // we could expand these ourselves so that "font-smoothing" works, but which values?
-  '-webkit-font-smoothing'?: CSS.Globals | 'auto' | 'none' | 'antialiased' | 'subpixel-antialiased'
-  '-moz-osx-font-smoothing'?: CSS.Globals | 'auto' | 'grayscale'
+  '-webkit-font-smoothing'?: CSS.Globals | 'auto' | 'none' | 'antialiased' | 'subpixel-antialiased';
+  '-moz-osx-font-smoothing'?: CSS.Globals | 'auto' | 'grayscale';
 }
 
 export interface ThemeAnimation<KP = {}> {
-  keyframe: ((kp: KP) => object) | object | string
-  delay?: string
-  direction?: string
-  duration?: string
-  fillMode?: string
-  iterationCount?: string
-  playState?: string
-  timingFunction?: string
-  keyframeParams?: KP
+  keyframe: ((kp: KP) => object) | object | string;
+  delay?: string;
+  direction?: string;
+  duration?: string;
+  fillMode?: string;
+  iterationCount?: string;
+  playState?: string;
+  timingFunction?: string;
+  keyframeParams?: KP;
 }
 
 // ========================================================
@@ -84,42 +84,42 @@ export interface ThemeAnimation<KP = {}> {
 // ========================================================
 
 export interface FontFaceProps {
-  fontStretch?: string
-  fontStyle?: string
-  fontVariant?: string
-  fontWeight?: number
-  localAlias?: string | string[]
-  unicodeRange?: string
+  fontStretch?: string;
+  fontStyle?: string;
+  fontVariant?: string;
+  fontWeight?: number;
+  localAlias?: string | string[];
+  unicodeRange?: string;
 }
 
 export interface FontFace {
-  name: string
-  paths: string[]
-  props: FontFaceProps
+  name: string;
+  paths: string[];
+  props: FontFaceProps;
 }
 
-export type FontFaces = FontFace[]
+export type FontFaces = FontFace[];
 
 // ========================================================
 // Icons
 // ========================================================
 
 type SvgIconFuncArg = {
-  classes: { [iconSlot: string]: string }
-  rtl: boolean
-  props: any // TODO IconProps
-}
+  classes: { [iconSlot: string]: string };
+  rtl: boolean;
+  props: any; // TODO IconProps
+};
 
-export type SvgIconSpec = ObjectOrFunc<any /* TODO React.ReactNode */, SvgIconFuncArg>
+export type SvgIconSpec = ObjectOrFunc<any /* TODO React.ReactNode */, SvgIconFuncArg>;
 export type FontIconSpec = {
-  content: string
-  fontFamily: string
-}
+  content: string;
+  fontFamily: string;
+};
 
 export type ThemeIconSpec = {
-  isSvg?: boolean
-  icon: FontIconSpec | SvgIconSpec
-}
+  isSvg?: boolean;
+  icon: FontIconSpec | SvgIconSpec;
+};
 
 // Some components have hard coded icon names, such as the arrow icons for a submenu or dropdown chevron.
 // Different themes use different icon names.
@@ -136,11 +136,11 @@ export type RequiredIconNames =
   | 'icon-pause'
   | 'icon-play'
   | 'icon-chevron-start'
-  | 'icon-chevron-end'
+  | 'icon-chevron-end';
 
 export type ThemeIcons = Partial<Record<RequiredIconNames, ThemeIconSpec>> & {
-  [iconName: string]: ThemeIconSpec
-}
+  [iconName: string]: ThemeIconSpec;
+};
 
 // ========================================================
 // Site Variables
@@ -149,34 +149,30 @@ export type ThemeIcons = Partial<Record<RequiredIconNames, ThemeIconSpec>> & {
 export interface SiteVariablesInput extends Record<string, any> {}
 
 export interface SiteVariablesPrepared extends SiteVariablesInput {
-  fontSizes: Record<string, string>
+  fontSizes: Record<string, string>;
 }
 
 // ========================================================
 // Component Variables
 // ========================================================
 
-export type ComponentVariablesObject = any
+export type ComponentVariablesObject = any;
 
 // TODO: Make this generic
-export type ComponentVariablesInput = ComponentVariablesObject | ComponentVariablesPrepared
+export type ComponentVariablesInput = ComponentVariablesObject | ComponentVariablesPrepared;
 
-export type ComponentVariablesPrepared = (
-  siteVariables?: SiteVariablesPrepared,
-) => ComponentVariablesObject
+export type ComponentVariablesPrepared = (siteVariables?: SiteVariablesPrepared) => ComponentVariablesObject;
 
 // ========================================================
 // Component Style Props
 // ========================================================
 
-export type ComponentSlotStyle<TProps = {}, TVars = {}> =
-  | ComponentSlotStyleFunction<TProps, TVars>
-  | ICSSInJSStyle
+export type ComponentSlotStyle<TProps = {}, TVars = {}> = ComponentSlotStyleFunction<TProps, TVars> | ICSSInJSStyle;
 
 export type PropsWithVarsAndStyles = Extendable<{
-  variables?: ComponentVariablesInput
-  styles?: ComponentSlotStyle
-}>
+  variables?: ComponentVariablesInput;
+  styles?: ComponentSlotStyle;
+}>;
 
 // ========================================================
 // Component Styles
@@ -194,17 +190,16 @@ export interface ComponentStyleFunctionParam<
   TProps extends PropsWithVarsAndStyles = PropsWithVarsAndStyles,
   TVars extends ComponentVariablesObject = ComponentVariablesObject
 > {
-  displayName: string
-  props: TProps
-  variables: TVars
-  theme: ThemePrepared
-  rtl: boolean
-  disableAnimations: boolean
+  props: TProps;
+  variables: TVars;
+  theme: ThemePrepared;
+  rtl: boolean;
+  disableAnimations: boolean;
 }
 
 export type ComponentSlotStyleFunction<TProps = {}, TVars = {}> = (
   styleParam: ComponentStyleFunctionParam<TProps, TVars>,
-) => ICSSInJSStyle
+) => ICSSInJSStyle;
 
 export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
   extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
@@ -213,52 +208,52 @@ export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
 // Static Styles
 // ========================================================
 
-export type StaticStyleObject = Record<string, ICSSInJSStyle>
+export type StaticStyleObject = Record<string, ICSSInJSStyle>;
 
-export type StaticStyleRenderable = string | StaticStyleObject
+export type StaticStyleRenderable = string | StaticStyleObject;
 
-export type StaticStyleFunction = (siteVariables?: SiteVariablesPrepared) => StaticStyleObject
+export type StaticStyleFunction = (siteVariables?: SiteVariablesPrepared) => StaticStyleObject;
 
-export type StaticStyle = StaticStyleRenderable | StaticStyleFunction
+export type StaticStyle = StaticStyleRenderable | StaticStyleFunction;
 
-export type StaticStyles = StaticStyle[]
+export type StaticStyles = StaticStyle[];
 
 // ========================================================
 // TODO: Theme typings that have no sense
 // ========================================================
 
 export type ThemeComponentVariablesInput<ThemeStylesProps = any> = {
-  [K in keyof ThemeStylesProps]?: ComponentVariablesInput
+  [K in keyof ThemeStylesProps]?: ComponentVariablesInput;
 } &
-  Record<string, any>
+  Record<string, any>;
 
 export type ThemeComponentVariablesPrepared<ThemeStylesProps = any> = {
-  [K in keyof ThemeStylesProps]?: ComponentVariablesPrepared
+  [K in keyof ThemeStylesProps]?: ComponentVariablesPrepared;
 } &
-  Record<string, any>
+  Record<string, any>;
 
 export type ThemeComponentStylesInput<ThemeStylesProps = any> = {
-  [K in keyof ThemeStylesProps]?: ComponentSlotStylesInput<ThemeStylesProps[K]>
+  [K in keyof ThemeStylesProps]?: ComponentSlotStylesInput<ThemeStylesProps[K]>;
 } &
-  Record<string, ComponentSlotStylesInput | undefined>
+  Record<string, ComponentSlotStylesInput | undefined>;
 
 export type ThemeComponentStylesPrepared<ThemeStylesProps = any> = {
-  [K in keyof ThemeStylesProps]?: ComponentSlotStylesPrepared<ThemeStylesProps[K]>
+  [K in keyof ThemeStylesProps]?: ComponentSlotStylesPrepared<ThemeStylesProps[K]>;
 } &
-  Record<string, ComponentSlotStylesPrepared | undefined>
+  Record<string, ComponentSlotStylesPrepared | undefined>;
 
 // ========================================================
 // Theme
 // ========================================================
 
 export interface ThemeInput<ThemeStylesProps extends Record<string, any> = any> {
-  siteVariables?: SiteVariablesInput
-  componentVariables?: ThemeComponentVariablesInput<ThemeStylesProps>
-  componentStyles?: ThemeComponentStylesInput<ThemeStylesProps>
-  fontFaces?: FontFaces
-  staticStyles?: StaticStyles
-  icons?: ThemeIcons
-  animations?: { [key: string]: ThemeAnimation }
+  siteVariables?: SiteVariablesInput;
+  componentVariables?: ThemeComponentVariablesInput<ThemeStylesProps>;
+  componentStyles?: ThemeComponentStylesInput<ThemeStylesProps>;
+  fontFaces?: FontFaces;
+  staticStyles?: StaticStyles;
+  icons?: ThemeIcons;
+  animations?: { [key: string]: ThemeAnimation };
 }
 
 // Component variables and styles must be resolved by the component after
@@ -270,15 +265,15 @@ export interface ThemeInput<ThemeStylesProps extends Record<string, any> = any> 
 // As a theme cascades down the tree and is merged with the previous theme on
 // context, the resulting theme takes this shape.
 export interface ThemePrepared<ThemeStylesProps extends Record<string, any> = any> {
-  siteVariables: SiteVariablesPrepared
+  siteVariables: SiteVariablesPrepared;
   componentVariables: {
-    [key in keyof ThemeComponentVariablesPrepared<ThemeStylesProps>]: ComponentVariablesPrepared
-  }
+    [key in keyof ThemeComponentVariablesPrepared<ThemeStylesProps>]: ComponentVariablesPrepared;
+  };
   componentStyles: {
-    [key in keyof ThemeComponentStylesPrepared<ThemeStylesProps>]: ComponentSlotStylesPrepared
-  }
-  icons: ThemeIcons
-  fontFaces: FontFaces
-  staticStyles: StaticStyles
-  animations: Record<string, ThemeAnimation>
+    [key in keyof ThemeComponentStylesPrepared<ThemeStylesProps>]: ComponentSlotStylesPrepared;
+  };
+  icons: ThemeIcons;
+  fontFaces: FontFaces;
+  staticStyles: StaticStyles;
+  animations: Record<string, ThemeAnimation>;
 }

@@ -24,11 +24,11 @@ export const KnobContext = React.createContext<KnobContextValue>({
 
   registerKnob: noop,
   setKnobValue: noop,
-  unregisterKnob: noop
+  unregisterKnob: noop,
 });
 
 export const LogContextFunctions = React.createContext<LogContextFunctionsValue>({
   appendLog: noop,
-  clearLog: noop
+  clearLog: noop,
 });
 export const LogContextItems = React.createContext<LogContextItemsValue>([]);

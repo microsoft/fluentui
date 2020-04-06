@@ -1,14 +1,10 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Content = () => (
   <ExampleSection title="Content">
-    <ComponentExample
-      title="Label"
-      description="A label."
-      examplePath="components/Label/Content/LabelExample"
-    />
+    <ComponentExample title="Label" description="A label." examplePath="components/Label/Content/LabelExample" />
     <ComponentExample
       title="Image"
       description="A label can contain image."
@@ -35,6 +31,6 @@ const Content = () => (
       examplePath="components/Label/Content/LabelExampleContentCustomization"
     />
   </ExampleSection>
-)
+);
 
-export default Content
+export default Content;

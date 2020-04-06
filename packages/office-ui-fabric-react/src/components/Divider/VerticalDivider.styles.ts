@@ -2,8 +2,9 @@ import { IVerticalDividerPropsStyles, IVerticalDividerStyles } from './VerticalD
 import { IStyleFunction } from '../../Utilities';
 
 export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles> = (
-  props: IVerticalDividerPropsStyles
+  props: IVerticalDividerPropsStyles,
 ): IVerticalDividerStyles => {
+  // tslint:disable-next-line:deprecation
   const { theme, getClassNames, className } = props;
 
   if (!theme) {
@@ -14,7 +15,7 @@ export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDiv
     const names = getClassNames(theme);
     return {
       wrapper: [names.wrapper],
-      divider: [names.divider]
+      divider: [names.divider],
     };
   }
 
@@ -23,16 +24,16 @@ export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDiv
       {
         display: 'inline-flex',
         height: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
       },
-      className
+      className,
     ],
     divider: [
       {
         width: 1,
         height: '100%',
-        backgroundColor: theme.palette.neutralTertiaryAlt
-      }
-    ]
+        backgroundColor: theme.palette.neutralTertiaryAlt,
+      },
+    ],
   };
 };

@@ -17,34 +17,34 @@ export class OverflowSetVerticalExample extends React.PureComponent {
             icon: 'Add',
             name: 'Link 1',
             ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'item2',
             icon: 'Upload',
             name: 'Link 2',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'item3',
             icon: 'Share',
             name: 'Link 3',
-            onClick: noOp
-          }
+            onClick: noOp,
+          },
         ]}
         overflowItems={[
           {
             key: 'item4',
             icon: 'Mail',
             name: 'Overflow Link 1',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'item5',
             icon: 'Calendar',
             name: 'Overflow Link 2',
-            onClick: noOp
-          }
+            onClick: noOp,
+          },
         ]}
         onRenderOverflowButton={this._onRenderOverflowButton}
         onRenderItem={this._onRenderItem}

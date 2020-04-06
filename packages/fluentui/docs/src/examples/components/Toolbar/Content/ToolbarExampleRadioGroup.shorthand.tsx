@@ -1,10 +1,11 @@
-import * as React from 'react'
-import { Toolbar } from '@fluentui/react'
+import * as React from 'react';
+import { Toolbar } from '@fluentui/react-northstar';
+import { BulletsIcon, NumberListIcon, ToDoListIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleRadioGroupShorthand = () => {
-  const [bulletListActive, setBulletListActive] = React.useState(false)
-  const [numberListActive, setNumberListActive] = React.useState(false)
-  const [toDoListActive, setToDoListActive] = React.useState(false)
+  const [bulletListActive, setBulletListActive] = React.useState(false);
+  const [numberListActive, setNumberListActive] = React.useState(false);
+  const [toDoListActive, setToDoListActive] = React.useState(false);
   return (
     <Toolbar
       aria-label="Toolbar can contain a radio group"
@@ -15,40 +16,40 @@ const ToolbarExampleRadioGroupShorthand = () => {
           items: [
             {
               key: 'bullets',
-              icon: { name: 'bullets', outline: true },
+              icon: <BulletsIcon {...{ outline: true }} />,
               active: bulletListActive,
               onClick: () => {
-                setBulletListActive(!bulletListActive)
+                setBulletListActive(!bulletListActive);
 
                 // deselect other radio items
-                setNumberListActive(false)
-                setToDoListActive(false)
+                setNumberListActive(false);
+                setToDoListActive(false);
               },
               'aria-label': 'bullet list',
             },
             {
               key: 'number-list',
-              icon: { name: 'number-list', outline: true },
+              icon: <NumberListIcon {...{ outline: true }} />,
               active: numberListActive,
               onClick: () => {
-                setNumberListActive(!numberListActive)
+                setNumberListActive(!numberListActive);
 
                 // deselect other radio items
-                setBulletListActive(false)
-                setToDoListActive(false)
+                setBulletListActive(false);
+                setToDoListActive(false);
               },
               'aria-label': 'number list',
             },
             {
               key: 'to-do-list',
-              icon: { name: 'to-do-list', outline: true },
+              icon: <ToDoListIcon {...{ outline: true }} />,
               active: toDoListActive,
               onClick: () => {
-                setToDoListActive(!toDoListActive)
+                setToDoListActive(!toDoListActive);
 
                 // deselect other radio items
-                setBulletListActive(false)
-                setNumberListActive(false)
+                setBulletListActive(false);
+                setNumberListActive(false);
               },
               'aria-label': 'to do list',
             },
@@ -56,7 +57,7 @@ const ToolbarExampleRadioGroupShorthand = () => {
         },
       ]}
     />
-  )
-}
+  );
+};
 
-export default ToolbarExampleRadioGroupShorthand
+export default ToolbarExampleRadioGroupShorthand;

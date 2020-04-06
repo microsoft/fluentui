@@ -15,27 +15,27 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
   return {
     headline: {
       fontSize: headlineSize,
-      fontWeight: headlineWeight
+      fontWeight: headlineWeight,
     },
     footer: {
       selectors: {
         '.ms-Button:not(:first-child)': {
-          marginLeft: 20
-        }
-      }
+          marginLeft: 20,
+        },
+      },
     },
     closeButton: {
       backgroundColor: 'transparent',
       selectors: {
         '&:hover': {
           backgroundColor: palette.themePrimary,
-          color: palette.black
+          color: palette.black,
         },
         '&:active': {
           background: palette.themeDarkAlt,
-          color: palette.black
-        }
-      }
-    }
+          color: palette.black,
+        },
+      },
+    },
   };
 };

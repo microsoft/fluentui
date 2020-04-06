@@ -151,6 +151,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           }
       disabled={true}
       id="SearchBox0"
+      onBlur={[Function]}
       onChange={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}
@@ -290,6 +291,7 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           }
       disabled={true}
       id="SearchBox1"
+      onBlur={[Function]}
       onChange={[Function]}
       onInput={[Function]}
       onKeyDown={[Function]}

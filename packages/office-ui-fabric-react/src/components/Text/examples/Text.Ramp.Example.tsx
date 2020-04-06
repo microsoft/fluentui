@@ -6,7 +6,7 @@ import {
   DetailsListLayoutMode,
   SelectionMode,
   DetailsRow,
-  IDetailsRowProps
+  IDetailsRowProps,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import * as React from 'react';
 
@@ -26,7 +26,7 @@ const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'large' },
   { name: 'xLarge' },
   { name: 'xxLarge' },
-  { name: 'mega' }
+  { name: 'mega' },
 ];
 
 export interface ITextRampExampleItem {
@@ -56,17 +56,17 @@ export class TextRampExample extends React.Component<{}, ITextRampExampleState> 
           <Text key={setting.name + 'text' + index} variant={setting.name} nowrap block>
             {TestText}
           </Text>
-        )
-      })
+        ),
+      }),
     );
 
     this._columns = [
       { key: 'column1', name: 'Variant', fieldName: 'variant', minWidth: 100, maxWidth: 150, isResizable: true },
-      { key: 'column2', name: 'Example', fieldName: 'example', minWidth: 200, maxWidth: 1600, isResizable: true }
+      { key: 'column2', name: 'Example', fieldName: 'example', minWidth: 200, maxWidth: 1600, isResizable: true },
     ];
 
     this.state = {
-      items: this._allItems
+      items: this._allItems,
     };
   }
 

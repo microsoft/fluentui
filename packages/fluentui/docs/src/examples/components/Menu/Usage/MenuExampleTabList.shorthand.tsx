@@ -1,11 +1,11 @@
-import * as React from 'react'
-import { Menu, tabListBehavior } from '@fluentui/react'
+import * as React from 'react';
+import { Menu, tabListBehavior } from '@fluentui/react-northstar';
 
 const items = [
   { key: 'editorials', content: 'Editorials' },
   { key: 'review', content: 'Reviews' },
   { key: 'events', content: 'Upcoming Events' },
-]
+];
 
 class MenuExampleTabShorthand extends React.Component {
   render() {
@@ -18,8 +18,8 @@ class MenuExampleTabShorthand extends React.Component {
         accessibility={tabListBehavior}
         aria-label="Today's events"
       />
-    )
+    );
   }
 }
 
-export default MenuExampleTabShorthand
+export default MenuExampleTabShorthand;

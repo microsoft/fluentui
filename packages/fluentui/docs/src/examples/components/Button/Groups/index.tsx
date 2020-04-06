@@ -1,6 +1,6 @@
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Groups = () => (
   <ExampleSection title="Groups">
@@ -15,6 +15,6 @@ const Groups = () => (
       examplePath="components/Button/Groups/ButtonGroupCircularExample"
     />
   </ExampleSection>
-)
+);
 
-export default Groups
+export default Groups;

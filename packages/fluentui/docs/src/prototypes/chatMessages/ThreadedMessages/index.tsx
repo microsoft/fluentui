@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { Chat, ChatItemProps, ShorthandCollection, Avatar, Provider } from '@fluentui/react'
-import ThreadedMessage from './ThreadedMessage'
-import threadChatBehavior from './threadChatBehavior'
-import { janeAvatar, replies } from './mockData'
-import customizedTheme from './theme'
+import * as React from 'react';
+import { Chat, ChatItemProps, ShorthandCollection, Avatar, Provider } from '@fluentui/react-northstar';
+import ThreadedMessage from './ThreadedMessage';
+import threadChatBehavior from './threadChatBehavior';
+import { janeAvatar, replies } from './mockData';
+import customizedTheme from './theme';
 
 const ChatExampleWithThreadedMessages = () => {
   const items: ShorthandCollection<ChatItemProps> = [
@@ -35,12 +35,12 @@ const ChatExampleWithThreadedMessages = () => {
       ),
       key: 'thread-message-id-2',
     },
-  ]
+  ];
 
   return (
     <Provider theme={customizedTheme}>
       <Chat accessibility={threadChatBehavior} items={items} />
     </Provider>
-  )
-}
-export default ChatExampleWithThreadedMessages
+  );
+};
+export default ChatExampleWithThreadedMessages;

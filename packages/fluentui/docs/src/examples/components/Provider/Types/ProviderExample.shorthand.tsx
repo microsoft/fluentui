@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Provider } from '@fluentui/react'
+import * as React from 'react';
+import { Provider } from '@fluentui/react-northstar';
 
-const customTheme = { siteVariables: { brand: 'cornflowerblue' } }
+const customTheme = { siteVariables: { brand: 'cornflowerblue' } };
 
 const ProviderExampleShorthand = () => (
   <Provider theme={customTheme}>
@@ -10,11 +10,9 @@ const ProviderExampleShorthand = () => (
         Use the <code>Provider.Consumer</code> to access the <code>theme</code>:
       </p>
 
-      <Provider.Consumer
-        render={theme => <code>theme.siteVariables.brand = {theme.siteVariables.brand}</code>}
-      />
+      <Provider.Consumer render={theme => <code>theme.siteVariables.brand = {theme.siteVariables.brand}</code>} />
     </div>
   </Provider>
-)
+);
 
-export default ProviderExampleShorthand
+export default ProviderExampleShorthand;

@@ -1,8 +1,8 @@
-import React from 'react'
-import { List, Avatar, Flex, Text, MenuButton, Icon } from '@fluentui/react'
-import { PrototypeSection, ComponentPrototype } from '../Prototypes'
+import React from 'react';
+import { List, Avatar, Flex, Text, MenuButton, Icon } from '@fluentui/react-northstar';
+import { PrototypeSection, ComponentPrototype } from '../Prototypes';
 
-const menu = ['Open', 'Remove from list']
+const menu = ['Open', 'Remove from list'];
 
 const ActiveBarItem = props => (
   <Flex column hAlign="center" padding="padding.medium">
@@ -12,11 +12,9 @@ const ActiveBarItem = props => (
       <MenuButton trigger={<Icon name="more" />} menu={menu} />
     </Flex>
   </Flex>
-)
+);
 
-const itemRenderer = (Component, props) => (
-  <MenuButton contextMenu trigger={<Component {...props} />} menu={menu} />
-)
+const itemRenderer = (Component, props) => <MenuButton contextMenu trigger={<Component {...props} />} menu={menu} />;
 
 const items3 = [
   {
@@ -34,13 +32,13 @@ const items3 = [
     content: <ActiveBarItem name="Dante Schneider" />,
     children: itemRenderer,
   },
-]
+];
 
 const ParticipantsList = () => (
   <>
     <List navigable items={items3} horizontal />
   </>
-)
+);
 
 const ParticipantsListPrototype: React.FC = () => {
   return (
@@ -52,7 +50,7 @@ const ParticipantsListPrototype: React.FC = () => {
         <ParticipantsList />
       </ComponentPrototype>
     </PrototypeSection>
-  )
-}
+  );
+};
 
-export default ParticipantsListPrototype
+export default ParticipantsListPrototype;

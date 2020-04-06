@@ -12,5 +12,5 @@ export const PersonaCoin: React.FunctionComponent<IPersonaCoinProps> = styled<
   IPersonaCoinStyleProps,
   IPersonaCoinStyles
 >(PersonaCoinBase, getStyles, undefined, {
-  scope: 'PersonaCoin'
+  scope: 'PersonaCoin',
 });

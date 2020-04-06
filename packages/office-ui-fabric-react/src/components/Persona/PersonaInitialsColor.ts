@@ -1,11 +1,10 @@
 import { PersonaInitialsColor, IPersonaProps } from './Persona.types';
 
 /**
- * Following colors are considered reserved colors and can only be set with overrides, so they are excluded from this set:
- * - `gray` and `black` are colors that can result in offensive persona coins with some initials combinations,
- *   so it can only be set with overrides.
- * - `red` is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides.
- * - `transparent` is not intended to be used with typical initials due to accessibility issues,
+ * Following colors are considered reserved and can only be set with overrides, so they are excluded from this set:
+ * - `gray` and `black` can result in offensive persona coins with some initials combinations
+ * - `red` often has a special meaning
+ * - `transparent` is not intended to be used with typical initials due to accessibility issues;
  *   its primary use is for Facepile overflow buttons.
  */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
@@ -28,7 +27,7 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.warmGray,
   PersonaInitialsColor.cyan,
   PersonaInitialsColor.rust,
-  PersonaInitialsColor.coolGray
+  PersonaInitialsColor.coolGray,
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
@@ -77,6 +76,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#5C2E91';
     case PersonaInitialsColor.orange:
       return '#CA5010';
+    // tslint:disable-next-line:deprecation
     case PersonaInitialsColor.red:
       return '#EE1111';
     case PersonaInitialsColor.lightRed:
@@ -99,6 +99,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#8E562E';
     case PersonaInitialsColor.coolGray:
       return '#69797E';
+    // tslint:disable-next-line:deprecation
     case PersonaInitialsColor.black:
       return '#1D1D1D';
     case PersonaInitialsColor.gray:
@@ -118,6 +119,7 @@ export function initialsColorPropToColorCode(props: IPersonaProps): string {
  * @returns Hex color string prefixed with #
  */
 export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string {
+  // tslint:disable-next-line:deprecation
   const { primaryText, text } = props;
   let { initialsColor } = props;
   let initialsColorCode: string;

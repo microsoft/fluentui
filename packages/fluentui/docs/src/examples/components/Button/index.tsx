@@ -1,12 +1,13 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Types from './Types'
-import Variations from './Variations'
-import States from './States'
-import Groups from './Groups'
-import Rtl from './Rtl'
-import Performance from './Performance'
-import Usage from './Usage'
+import Types from './Types';
+import Variations from './Variations';
+import States from './States';
+import Groups from './Groups';
+import Rtl from './Rtl';
+import Performance from './Performance';
+import Visual from './Visual';
+import Usage from './Usage';
 
 const ButtonExamples = () => (
   <>
@@ -15,9 +16,10 @@ const ButtonExamples = () => (
     <Variations />
     <Groups />
     <Rtl />
-    <Performance />
     <Usage />
+    <Visual />
+    <Performance />
   </>
-)
+);
 
-export default ButtonExamples
+export default ButtonExamples;

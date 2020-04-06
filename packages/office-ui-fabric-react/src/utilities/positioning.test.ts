@@ -21,7 +21,7 @@ function positionCalloutTest(testValues: ITestValues, alignment: DirectionalHint
     target,
     bounds,
     __positioningTestPackage._getPositionData(alignment),
-    gap
+    gap,
   );
 
   const beak = __positioningTestPackage._positionBeak(beakWidth, { ...result, targetRectangle: target });
@@ -45,7 +45,7 @@ function validateNoBeakTest(testValues: ITestValues, alignment: DirectionalHint,
     target,
     bounds,
     __positioningTestPackage._getPositionData(alignment),
-    beakWidth
+    beakWidth,
   );
 
   expect(result.elementRectangle).toEqual(validate.callout);
@@ -57,22 +57,22 @@ describe('Callout Positioning', () => {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 0
+      beakWidth: 0,
     };
 
     const validateNoBeakBottomLeft: ITestValidation = {
       callout: new Rectangle(400, 700, 800, 1100),
-      beak: null
+      beak: null,
     };
 
     const validateNoBeakLeft: ITestValidation = {
       callout: new Rectangle(100, 400, 400, 700),
-      beak: null
+      beak: null,
     };
 
     const validateNoBeakTop: ITestValidation = {
       callout: new Rectangle(400, 700, 100, 400),
-      beak: null
+      beak: null,
     };
 
     validateNoBeakTest(noBeakTestCase, DirectionalHint.bottomLeftEdge, validateNoBeakBottomLeft);
@@ -87,7 +87,7 @@ describe('Callout Positioning', () => {
       callout: new Rectangle(0, 300, 0, 300),
       target: new Rectangle(400, 800, 400, 800),
       bounds: new Rectangle(0, 1600, 0, 1600),
-      beakWidth: 16
+      beakWidth: 16,
     };
 
     const validateBottomLeft: ITestValidation = {
@@ -95,9 +95,9 @@ describe('Callout Positioning', () => {
         400,
         700,
         800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
       ),
-      beak: new Rectangle(192, 208, -8, 8)
+      beak: new Rectangle(192, 208, -8, 8),
     };
 
     const validateBottomCenter: ITestValidation = {
@@ -105,9 +105,9 @@ describe('Callout Positioning', () => {
         450,
         750,
         800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
       ),
-      beak: new Rectangle(142, 158, -8, 8)
+      beak: new Rectangle(142, 158, -8, 8),
     };
 
     const validateBottomRight: ITestValidation = {
@@ -115,9 +115,9 @@ describe('Callout Positioning', () => {
         500,
         800,
         800 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
-        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8)
+        1100 + __positioningTestPackage._calculateActualBeakWidthInPixels(8),
       ),
-      beak: new Rectangle(92, 108, -8, 8)
+      beak: new Rectangle(92, 108, -8, 8),
     };
 
     positionCalloutTest(basicTestCase, DirectionalHint.bottomLeftEdge, validateBottomLeft);
@@ -132,17 +132,17 @@ describe('Callout Positioning', () => {
       callout: new Rectangle(0, 200, 0, 200),
       target: new Rectangle(150, 160, 150, 160),
       bounds: new Rectangle(8, 300, 8, 300),
-      beakWidth: 0
+      beakWidth: 0,
     };
 
     const validateBottomLeft: ITestValidation = {
       callout: new Rectangle(8, 208, 100, 300),
-      beak: null
+      beak: null,
     };
 
     const validateTopRight: ITestValidation = {
       callout: new Rectangle(8, 208, 8, 208),
-      beak: null
+      beak: null,
     };
 
     validateNoBeakTest(basicTestCase, DirectionalHint.bottomLeftEdge, validateBottomLeft);
@@ -207,16 +207,16 @@ describe('Callout Positioning', () => {
           left: 0,
           right: 0,
           width: 0,
-          height: 0
+          height: 0,
         };
-      }
+      },
     };
     // create a dummy beak
     const beakPos = new Rectangle(8, -8, 8, -8);
     const pos: IElementPosition = {
       elementRectangle: new Rectangle(400, 500, 400, 500),
       targetEdge: RectangleEdge.top,
-      alignmentEdge: RectangleEdge.left
+      alignmentEdge: RectangleEdge.left,
     };
     const bounds = new Rectangle(0, 500, 0, 500);
 

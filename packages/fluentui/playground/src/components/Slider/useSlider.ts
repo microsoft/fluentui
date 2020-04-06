@@ -185,19 +185,7 @@ const useSliderState = (userProps: ISliderProps): ISliderState => {
 export const useSlider = (props: ISliderProps) => {
   const { classes = {}, disabled, vertical } = props;
   const state = useSliderState(props);
-  const {
-    min,
-    max,
-    value,
-    rootRef,
-    thumbRef,
-    onMouseDown,
-    onKeyDown,
-    onFocus,
-    onBlur,
-    percentage,
-    focused,
-  } = state;
+  const { min, max, value, rootRef, thumbRef, onMouseDown, onKeyDown, onFocus, onBlur, percentage, focused } = state;
   const { rootFocused, rootDisabled, rootVertical } = classes;
 
   const slotProps = mergeSlotProps(props, {

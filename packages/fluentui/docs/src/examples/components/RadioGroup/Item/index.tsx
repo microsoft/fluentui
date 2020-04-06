@@ -1,7 +1,7 @@
-import { Segment } from '@fluentui/react'
-import * as React from 'react'
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import { Segment } from '@fluentui/react-northstar';
+import * as React from 'react';
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const States = () => (
   <ExampleSection title="Item">
@@ -25,6 +25,6 @@ const States = () => (
       examplePath="components/RadioGroup/Item/RadioGroupItemExampleDisabled"
     />
   </ExampleSection>
-)
+);
 
-export default States
+export default States;

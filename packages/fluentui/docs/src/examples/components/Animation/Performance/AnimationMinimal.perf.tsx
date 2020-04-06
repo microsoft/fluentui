@@ -1,13 +1,13 @@
-import { Animation } from '@fluentui/react'
-import * as React from 'react'
+import { Animation } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const AnimationMinimalPerf = () => (
   <Animation>
     <div />
   </Animation>
-)
+);
 
-AnimationMinimalPerf.iterations = 5000
-AnimationMinimalPerf.filename = 'AnimationMinimal.perf.tsx'
+AnimationMinimalPerf.iterations = 5000;
+AnimationMinimalPerf.filename = 'AnimationMinimal.perf.tsx';
 
-export default AnimationMinimalPerf
+export default AnimationMinimalPerf;

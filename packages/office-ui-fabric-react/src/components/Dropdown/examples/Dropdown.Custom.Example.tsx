@@ -17,7 +17,7 @@ const exampleOptions: IDropdownOption[] = [
   { key: 'G', text: 'Option g', data: { icon: 'EmojiNeutral' } },
   { key: 'H', text: 'Option h', data: { icon: 'ChatInviteFriend' } },
   { key: 'I', text: 'Option i', data: { icon: 'SecurityGroup' } },
-  { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } }
+  { key: 'J', text: 'Option j', data: { icon: 'AddGroup' } },
 ];
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
@@ -54,7 +54,12 @@ export class DropdownCustomExample extends React.PureComponent {
     return (
       <div>
         {option.data && option.data.icon && (
-          <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+          <Icon
+            style={{ marginRight: '8px' }}
+            iconName={option.data.icon}
+            aria-hidden="true"
+            title={option.data.icon}
+          />
         )}
         <span>{option.text}</span>
       </div>
@@ -67,7 +72,12 @@ export class DropdownCustomExample extends React.PureComponent {
     return (
       <div>
         {option.data && option.data.icon && (
-          <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+          <Icon
+            style={{ marginRight: '8px' }}
+            iconName={option.data.icon}
+            aria-hidden="true"
+            title={option.data.icon}
+          />
         )}
         <span>{option.text}</span>
       </div>
@@ -91,7 +101,12 @@ export class DropdownCustomExample extends React.PureComponent {
     return (
       <Stack horizontal verticalAlign="center">
         <span style={{ fontWeight: 600 }}>{props.label}</span>
-        <IconButton iconProps={{ iconName: 'Info' }} title="Info" ariaLabel="Info" styles={{ root: { marginBottom: -3 } }} />
+        <IconButton
+          iconProps={{ iconName: 'Info' }}
+          title="Info"
+          ariaLabel="Info"
+          styles={{ root: { marginBottom: -3 } }}
+        />
       </Stack>
     );
   };

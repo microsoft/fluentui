@@ -42,7 +42,7 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
     verticalAlignment,
     horizontalAlignment,
     hideEmptyChildren,
-    emptyChildren
+    emptyChildren,
   } = props;
 
   // Styles definition
@@ -52,12 +52,12 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
         background: DefaultPalette.themeTertiary,
         height: autoHeight ? 'auto' : stackHeight,
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
       },
       preventOverflow && {
-        overflow: 'hidden' as 'hidden'
-      }
-    ]
+        overflow: 'hidden' as 'hidden',
+      },
+    ],
   };
   const stackItemStyles: IStackItemStyles = {
     root: {
@@ -68,14 +68,14 @@ const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOpti
       display: 'flex',
       height: 50,
       justifyContent: 'center',
-      width: 50
-    }
+      width: 50,
+    },
   };
 
   // Tokens definition
   const exampleStackTokens: IStackTokens = {
     childrenGap: childrenGap + ' ' + 0,
-    padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+    padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`,
   };
 
   return (
@@ -135,7 +135,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleO
     verticalAlignment: 'start',
     horizontalAlignment: 'start',
     hideEmptyChildren: false,
-    emptyChildren: []
+    emptyChildren: [],
   };
   private _verticalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Top' },
@@ -143,12 +143,12 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleO
     { key: 'end', text: 'Bottom' },
     { key: 'space-around', text: 'Space around' },
     { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' }
+    { key: 'space-evenly', text: 'Space evenly' },
   ];
   private _horizontalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Left' },
     { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Right' }
+    { key: 'end', text: 'Right' },
   ];
 
   public render(): JSX.Element {
@@ -169,9 +169,21 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleO
                 onChange={this._onNumItemsChange}
               />
               <Stack horizontal>
-                <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={{ root: { marginRight: 10 } }} />
-                <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} styles={{ root: { marginRight: 10 } }} />
-                <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} styles={{ root: { marginRight: 10 } }} />
+                <Checkbox
+                  label="Shadow around items"
+                  onChange={this._onBoxShadowChange}
+                  styles={{ root: { marginRight: 10 } }}
+                />
+                <Checkbox
+                  label="Prevent item overflow"
+                  onChange={this._onPreventOverflowChange}
+                  styles={{ root: { marginRight: 10 } }}
+                />
+                <Checkbox
+                  label="Shrink items"
+                  onChange={this._onShrinkItemsChange}
+                  styles={{ root: { marginRight: 10 } }}
+                />
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} />
               </Stack>
             </Stack>
@@ -188,7 +200,11 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleO
                 onChange={this._onStackHeightChange}
                 disabled={autoHeight}
               />
-              <Checkbox label="Automatic height (based on items)" defaultChecked={true} onChange={this._onAutoHeightChange} />
+              <Checkbox
+                label="Automatic height (based on items)"
+                defaultChecked={true}
+                onChange={this._onAutoHeightChange}
+              />
             </Stack>
           </Stack.Item>
         </Stack>

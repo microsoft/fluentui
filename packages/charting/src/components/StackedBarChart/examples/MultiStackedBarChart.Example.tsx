@@ -8,19 +8,19 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
     { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },
     { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
     { legend: 'Credit card numbers', data: 87, color: DefaultPalette.blueLight },
-    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black },
   ];
   const firstChartPoints1: IChartDataPoint[] = [
     { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
     { legend: 'Passport numbers (USA)', data: 56, color: DefaultPalette.green },
     { legend: 'Social security numbers', data: 35, color: DefaultPalette.yellow },
     { legend: 'Credit card numbers', data: 92, color: DefaultPalette.blueLight },
-    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black }
+    { legend: 'Tax identification numbers (USA)', data: 87, color: DefaultPalette.black },
   ];
 
   const secondChartPoints: IChartDataPoint[] = [
     { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
-    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green }
+    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green },
   ];
 
   const hideRatio: boolean[] = [true, false];
@@ -30,16 +30,16 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
   const data: IChartProps[] = [
     {
       chartTitle: 'Monitored',
-      chartData: firstChartPoints
+      chartData: firstChartPoints,
     },
     {
       chartTitle: 'Monitored Second Chart',
-      chartData: firstChartPoints1
+      chartData: firstChartPoints1,
     },
     {
       chartTitle: 'Unmonitored',
-      chartData: secondChartPoints
-    }
+      chartData: secondChartPoints,
+    },
   ];
 
   return (
@@ -49,6 +49,9 @@ export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
       hideRatio={hideRatio}
       width={600}
       href={'https://developer.microsoft.com/en-us/'}
+      focusZonePropsForLegendsInHoverCard={{ 'aria-label': 'legends Container' }}
+      legendsOverflowProps={{ focusZoneProps: { 'aria-label': 'legends Container' } }}
+      legendsOverflowText={'OverFlow Items'}
     />
   );
 };

@@ -1,8 +1,8 @@
-import * as React from 'react'
-import { Dropdown } from '@fluentui/react'
+import * as React from 'react';
+import { Dropdown } from '@fluentui/react-northstar';
 
-const inputItems = ['ا يجلبه إلينا الأس', 'الإنسان ', 'الحكيم عليه', 'أن يمسك']
+const inputItems = ['ا يجلبه إلينا الأس', 'الإنسان ', 'الحكيم عليه', 'أن يمسك'];
 
-const DropdownExampleRtl = () => <Dropdown items={inputItems} placeholder="اختر بطلك" />
+const DropdownExampleRtl = () => <Dropdown items={inputItems} placeholder="اختر بطلك" />;
 
-export default DropdownExampleRtl
+export default DropdownExampleRtl;

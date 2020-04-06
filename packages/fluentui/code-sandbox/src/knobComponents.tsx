@@ -1,6 +1,6 @@
-import { CodeSnippet, KnobComponents } from '@fluentui/docs-components'
-import { Button, Checkbox, Label, Segment, Text } from '@fluentui/react'
-import * as React from 'react'
+import { CodeSnippet, KnobComponents } from '@fluentui/docs-components';
+import { Button, Checkbox, Label, Segment, Text } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const knobComponents: Partial<KnobComponents> = {
   KnobBoolean: props => (
@@ -8,7 +8,7 @@ const knobComponents: Partial<KnobComponents> = {
       checked={props.value}
       title="Toggle"
       onChange={(e, data) => {
-        props.setValue(data.checked)
+        props.setValue(data.checked);
       }}
     />
   ),
@@ -30,6 +30,6 @@ const knobComponents: Partial<KnobComponents> = {
       )}
     </Segment>
   ),
-}
+};
 
-export default knobComponents
+export default knobComponents;

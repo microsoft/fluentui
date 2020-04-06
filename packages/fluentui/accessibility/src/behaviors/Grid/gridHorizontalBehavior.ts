@@ -1,5 +1,5 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
 
 /**
  * @description
@@ -16,6 +16,6 @@ const gridHorizontalBehavior: Accessibility = () => ({
       direction: FocusZoneDirection.bidirectionalDomOrder,
     },
   },
-})
+});
 
-export default gridHorizontalBehavior
+export default gridHorizontalBehavior;

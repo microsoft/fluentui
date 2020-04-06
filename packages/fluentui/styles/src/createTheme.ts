@@ -1,8 +1,8 @@
-import { ThemeInput, ThemePrepared } from './types'
-import withDebugId from './withDebugId'
+import { ThemeInput, ThemePrepared } from './types';
+import withDebugId from './withDebugId';
 
 const createTheme = <T = ThemeInput | ThemePrepared>(themeInput: T, debugId): T => {
-  return withDebugId(themeInput, debugId)
-}
+  return withDebugId(themeInput, debugId);
+};
 
-export default createTheme
+export default createTheme;

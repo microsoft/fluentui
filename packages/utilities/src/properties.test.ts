@@ -5,9 +5,9 @@ describe('getNativeProps', () => {
   it('can pass through data tags', () => {
     let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
       {
-        'data-automation-id': 1
+        'data-automation-id': 1,
       },
-      divProperties
+      divProperties,
     );
     // tslint:disable-next-line:no-any
     expect((result as any)['data-automation-id']).toEqual(1);
@@ -16,9 +16,9 @@ describe('getNativeProps', () => {
   it('can pass through aria tags', () => {
     let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
       {
-        'aria-label': 1
+        'aria-label': 1,
       },
-      divProperties
+      divProperties,
     );
     // tslint:disable-next-line:no-any
     expect((result as any)['aria-label']).toEqual(1);
@@ -33,9 +33,9 @@ describe('getNativeProps', () => {
         },
         onClickCapture: () => {
           /* no-op */
-        }
+        },
       },
-      divProperties
+      divProperties,
     );
 
     expect(result.className).toEqual('foo');
@@ -49,9 +49,9 @@ describe('getNativeProps', () => {
     let result = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(
       {
         foobar: 1,
-        className: 'hi'
+        className: 'hi',
       },
-      divProperties
+      divProperties,
     );
 
     expect(result.className).toEqual('hi');

@@ -44,7 +44,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
   private _getKtpProps(): IKeytipProps {
     return {
       disabled: this.props.disabled,
-      ...this.props.keytipProps!
+      ...this.props.keytipProps!,
     };
   }
 
@@ -69,7 +69,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
       return {
         'aria-describedby': mergeAriaAttributeValues(describedByPrepend, ariaDescribedBy),
         'data-ktp-target': ktpId,
-        'data-ktp-execute-target': ktpId
+        'data-ktp-execute-target': ktpId,
       };
     }
     return undefined;

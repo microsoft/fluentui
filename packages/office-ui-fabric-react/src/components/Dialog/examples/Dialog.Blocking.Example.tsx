@@ -24,7 +24,7 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'G', text: 'Option G' },
   { key: 'H', text: 'Option H' },
   { key: 'I', text: 'Option I' },
-  { key: 'J', text: 'Option J' }
+  { key: 'J', text: 'Option J' },
 ];
 
 export class DialogBlockingExample extends React.Component<{}, IDialogBlockingExampleState> {
@@ -33,7 +33,7 @@ export class DialogBlockingExample extends React.Component<{}, IDialogBlockingEx
   private _dragOptions = {
     moveMenuItemText: 'Move',
     closeMenuItemText: 'Close',
-    menu: ContextualMenu
+    menu: ContextualMenu,
   };
 
   public render() {
@@ -48,12 +48,12 @@ export class DialogBlockingExample extends React.Component<{}, IDialogBlockingEx
           dialogContentProps={{
             type: DialogType.normal,
             title: 'Missing Subject',
-            subText: 'Do you want to send this message without a subject?'
+            subText: 'Do you want to send this message without a subject?',
           }}
           modalProps={{
             isBlocking: true,
             styles: { main: { maxWidth: 450 } },
-            dragOptions: isDraggable ? this._dragOptions : undefined
+            dragOptions: isDraggable ? this._dragOptions : undefined,
           }}
         >
           <SpinButton

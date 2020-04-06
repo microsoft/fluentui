@@ -19,7 +19,7 @@ export const configureCircularDependencyCheckPlugin = (onDetected: ProcessDetect
     failOnError: true,
     allowAsyncCycles: true,
     cwd: config.paths.base(),
-    onDetected
+    onDetected,
   });
 };
 
@@ -35,8 +35,8 @@ export const buildWebpackConfig = ({ entryFilePath, outputFilePath, plugins = []
     entry: `${entryFilePath}`,
     output: {
       path: path.dirname(outputFilePath),
-      filename: path.basename(outputFilePath)
+      filename: path.basename(outputFilePath),
     },
-    plugins
+    plugins,
   };
 };

@@ -10,7 +10,7 @@ const indent = 15;
 const lineClass = mergeStyles({
   marginLeft: indent,
   paddingLeft: indent,
-  textIndent: `-${indent}px`
+  textIndent: `-${indent}px`,
 });
 const indentedLineClass = mergeStyles(lineClass, { marginLeft: indent * 2 });
 

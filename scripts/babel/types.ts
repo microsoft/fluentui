@@ -13,7 +13,7 @@ type BabelPluginVisitor<T> =
     };
 
 export type BabelPlugin = (
-  options: BabelPluginArguments
+  options: BabelPluginArguments,
 ) => {
   visitor: {
     // This type is extendable, feel to add own visitor types.

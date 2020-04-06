@@ -1,9 +1,9 @@
-import { Header } from '@fluentui/react'
-import * as React from 'react'
+import { Header } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const HeaderMinimalPerf = () => <Header />
+const HeaderMinimalPerf = () => <Header />;
 
-HeaderMinimalPerf.iterations = 5000
-HeaderMinimalPerf.filename = 'HeaderMinimal.perf.tsx'
+HeaderMinimalPerf.iterations = 5000;
+HeaderMinimalPerf.filename = 'HeaderMinimal.perf.tsx';
 
-export default HeaderMinimalPerf
+export default HeaderMinimalPerf;

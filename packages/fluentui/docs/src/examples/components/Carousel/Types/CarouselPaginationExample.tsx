@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Carousel, Image } from '@fluentui/react'
+import * as React from 'react';
+import { Carousel, Image } from '@fluentui/react-northstar';
 
 const carouselItems = [
   {
@@ -18,16 +18,17 @@ const carouselItems = [
     key: 'nan',
     content: <Image src="public/images/avatar/large/nan.jpg" fluid alt={'Portrait of Nan'} />,
   },
-]
+];
 
 const CarouselExample = () => (
   <Carousel
     ariaRoleDescription="carousel"
+    ariaLabel="Portrait collection"
     items={carouselItems}
     paddleNext={{ 'aria-label': 'go to next slide' }}
     paddlePrevious={{ 'aria-label': 'go to previous slide' }}
     getItemPositionText={(index: number, size: number) => `${index + 1} of ${size}`}
   />
-)
+);
 
-export default CarouselExample
+export default CarouselExample;

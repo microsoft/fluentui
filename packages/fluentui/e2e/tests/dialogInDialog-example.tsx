@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Dialog } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Dialog } from '@fluentui/react-northstar';
 
 export const selectors = {
   outerClose: 'outer-close',
@@ -11,7 +11,7 @@ export const selectors = {
   innerHeader: 'inner-header',
   innerTrigger: 'inner-trigger',
   innerOverlay: 'inner-overlay',
-}
+};
 
 const DialogInPopupExample = () => (
   <Dialog
@@ -28,6 +28,6 @@ const DialogInPopupExample = () => (
     overlay={{ id: selectors.outerOverlay }}
     trigger={<Button id={selectors.outerTrigger} content="Open a dialog" />}
   />
-)
+);
 
-export default DialogInPopupExample
+export default DialogInPopupExample;

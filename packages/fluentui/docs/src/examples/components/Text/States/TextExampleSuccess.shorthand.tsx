@@ -1,8 +1,6 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
-const TextExampleSuccessShorthand = () => (
-  <Text success content="Your action has completed successfully." />
-)
+const TextExampleSuccessShorthand = () => <Text success content="Your action has completed successfully." />;
 
-export default TextExampleSuccessShorthand
+export default TextExampleSuccessShorthand;

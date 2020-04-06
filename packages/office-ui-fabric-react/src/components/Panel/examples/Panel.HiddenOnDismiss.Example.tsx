@@ -16,8 +16,8 @@ export const PanelHiddenOnDismissExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      When dismissed, this panel will be hidden instead of destroyed. This is useful for cases in which the panel contains state which must
-      be preserved across times that the panel is opened. <br />
+      When dismissed, this panel will be hidden instead of destroyed. This is useful for cases in which the panel
+      contains state which must be preserved across times that the panel is opened. <br />
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />
       <Panel

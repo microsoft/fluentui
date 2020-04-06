@@ -1,18 +1,18 @@
-import { Attachment, Button, Provider, themes } from '@fluentui/react'
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import { Attachment, Button, Provider, themes } from '@fluentui/react-northstar';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
 type PortalFrameProps = {
-  children: (externalDocument: Document) => React.ReactElement
-}
+  children: (externalDocument: Document) => React.ReactElement;
+};
 
 const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) => {
-  const frameRef = React.useRef<HTMLIFrameElement>(null)
-  const [mounted, setMounted] = React.useState<boolean>(false)
+  const frameRef = React.useRef<HTMLIFrameElement>(null);
+  const [mounted, setMounted] = React.useState<boolean>(false);
 
   React.useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   return (
     <>
@@ -22,13 +22,10 @@ const PortalFrame: React.FunctionComponent<PortalFrameProps> = ({ children }) =>
         title="An example of nested Provider in iframe"
       />
       {mounted &&
-        ReactDOM.createPortal(
-          children(frameRef.current.contentDocument),
-          frameRef.current.contentDocument.body,
-        )}
+        ReactDOM.createPortal(children(frameRef.current.contentDocument), frameRef.current.contentDocument.body)}
     </>
-  )
-}
+  );
+};
 
 const ProviderExampleTargetFrame = () => (
   <PortalFrame>
@@ -39,6 +36,6 @@ const ProviderExampleTargetFrame = () => (
       </Provider>
     )}
   </PortalFrame>
-)
+);
 
-export default ProviderExampleTargetFrame
+export default ProviderExampleTargetFrame;

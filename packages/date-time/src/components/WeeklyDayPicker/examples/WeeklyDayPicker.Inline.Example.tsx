@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { WeeklyDayPicker, IWeeklyDayPickerProps, DayOfWeek, addDays, defaultDayPickerStrings } from '@uifabric/date-time';
+import {
+  WeeklyDayPicker,
+  IWeeklyDayPickerProps,
+  DayOfWeek,
+  addDays,
+  defaultDayPickerStrings,
+} from '@uifabric/date-time';
 
 import * as styles from './WeeklyDayPicker.Example.scss';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
@@ -12,12 +18,15 @@ export interface IWeeklyDayPickerInlineExampleProps extends Omit<IWeeklyDayPicke
   showNavigateButtons?: boolean;
 }
 
-export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPickerInlineExampleProps, IWeeklyDayPickerInlineExampleState> {
+export class WeeklyDayPickerInlineExample extends React.Component<
+  IWeeklyDayPickerInlineExampleProps,
+  IWeeklyDayPickerInlineExampleState
+> {
   public constructor(props: IWeeklyDayPickerInlineExampleProps) {
     super(props);
 
     this.state = {
-      selectedDate: new Date()
+      selectedDate: new Date(),
     };
 
     this._onSelectDate = this._onSelectDate.bind(this);
@@ -28,7 +37,8 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
       <div className={styles.wrapper}>
         {
           <div>
-            Selected date(s): <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
+            Selected date(s):{' '}
+            <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
           </div>
         }
         {(this.props.minDate || this.props.maxDate) && (
@@ -74,7 +84,7 @@ export class WeeklyDayPickerInlineExample extends React.Component<IWeeklyDayPick
   private _onSelectDate(date: Date): void {
     this.setState((prevState: IWeeklyDayPickerInlineExampleState) => {
       return {
-        selectedDate: date
+        selectedDate: date,
       };
     });
   }

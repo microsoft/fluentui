@@ -1,66 +1,53 @@
-import * as React from 'react'
-import { Avatar, Extendable, Popup } from '@fluentui/react'
-import EmployeeCard, { EmployeeCardProps } from './EmployeeCard'
+import * as React from 'react';
+import { Avatar, Extendable, Popup } from '@fluentui/react-northstar';
+import EmployeeCard, { EmployeeCardProps } from './EmployeeCard';
 
 export interface AvatarEmployeeCardState {
-  popupOpen: boolean
+  popupOpen: boolean;
 }
 
-class AvatarEmployeeCard extends React.Component<
-  Extendable<EmployeeCardProps>,
-  AvatarEmployeeCardState
-> {
-  state = { popupOpen: false }
-  isPopupClosing = false
+class AvatarEmployeeCard extends React.Component<Extendable<EmployeeCardProps>, AvatarEmployeeCardState> {
+  state = { popupOpen: false };
+  isPopupClosing = false;
 
   setPopupOpen(newOpen) {
     if (!newOpen) {
-      this.schedulePopupClose()
+      this.schedulePopupClose();
     } else {
-      this.isPopupClosing = false
-      this.setState({ popupOpen: true })
+      this.isPopupClosing = false;
+      this.setState({ popupOpen: true });
     }
   }
 
   schedulePopupClose = () => {
-    this.isPopupClosing = true
+    this.isPopupClosing = true;
     setTimeout(() => {
       if (this.isPopupClosing) {
-        this.setState({ popupOpen: false })
+        this.setState({ popupOpen: false });
       }
 
-      this.isPopupClosing = false
-    }, 500)
-  }
+      this.isPopupClosing = false;
+    }, 500);
+  };
 
   render() {
-    const {
-      firstName,
-      lastName,
-      email,
-      location,
-      position,
-      status,
-      team,
-      phone,
-      avatar,
-    } = this.props
+    const { firstName, lastName, email, location, position, status, team, phone, avatar } = this.props;
     return (
       <Popup
         open={this.state.popupOpen}
         position="after"
         align="top"
         onOpenChange={(e, newProps) => {
-          this.setState({ popupOpen: newProps.open })
+          this.setState({ popupOpen: newProps.open });
         }}
         trigger={Avatar.create(avatar, {
           defaultProps: () => ({
             name: `${firstName} ${lastName}`,
             onMouseEnter: () => {
-              this.setPopupOpen(true)
+              this.setPopupOpen(true);
             },
             onMouseLeave: () => {
-              this.setPopupOpen(false)
+              this.setPopupOpen(false);
             },
           }),
         })}
@@ -78,17 +65,17 @@ class AvatarEmployeeCard extends React.Component<
               avatar={avatar}
               phone={phone}
               onMouseEnter={() => {
-                this.setPopupOpen(true)
+                this.setPopupOpen(true);
               }}
               onMouseLeave={() => {
-                this.setPopupOpen(false)
+                this.setPopupOpen(false);
               }}
             />
           ),
         }}
       />
-    )
+    );
   }
 }
 
-export default AvatarEmployeeCard
+export default AvatarEmployeeCard;

@@ -1,8 +1,6 @@
-import * as React from 'react'
-import * as ReactMarkdown from 'react-markdown'
+import * as React from 'react';
+import * as ReactMarkdown from 'react-markdown';
 
-const InlineMarkdown: React.FunctionComponent<{ value: string }> = ({ value }) => (
-  <ReactMarkdown source={value} />
-)
+const InlineMarkdown: React.FunctionComponent<{ value: string }> = ({ value }) => <ReactMarkdown source={value} />;
 
-export default InlineMarkdown
+export default InlineMarkdown;

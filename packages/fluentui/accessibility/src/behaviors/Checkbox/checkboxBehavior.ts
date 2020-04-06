@@ -17,16 +17,16 @@ const checkboxBehavior: Accessibility<CheckboxBehaviorProps> = props => ({
       'aria-disabled': props.disabled,
       role: 'checkbox',
       tabIndex: 0,
-      [IS_FOCUSABLE_ATTRIBUTE]: true
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: true,
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default checkboxBehavior;

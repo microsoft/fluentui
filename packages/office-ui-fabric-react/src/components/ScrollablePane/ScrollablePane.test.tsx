@@ -5,7 +5,7 @@ import { ScrollablePane } from './ScrollablePane';
 describe('ScrollablePane', () => {
   it('renders correctly', () => {
     const component = renderer.create(<ScrollablePane />, {
-      createNodeMock: element => ({})
+      createNodeMock: element => ({}),
     });
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

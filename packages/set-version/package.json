@@ -1,13 +1,13 @@
 {
   "name": "@uifabric/set-version",
-  "version": "7.0.5",
+  "version": "7.0.9",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@types/jest": "~24.9.0",
-    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/tslint-rules": "^7.1.2",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {

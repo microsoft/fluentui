@@ -1,15 +1,15 @@
-import * as React from 'react'
-import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react'
+import * as React from 'react';
+import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react-northstar';
 
 export interface LogoProps {
-  companyName?: string
-  icon?: ShorthandValue<IconProps>
-  style?: React.CSSProperties
+  companyName?: string;
+  icon?: ShorthandValue<IconProps>;
+  style?: React.CSSProperties;
 }
 
 class MSTeamsLogo extends React.Component<LogoProps, any> {
   render() {
-    const { companyName, icon, style } = this.props
+    const { companyName, icon, style } = this.props;
     return (
       <Provider.Consumer
         render={({ siteVariables }) => {
@@ -33,11 +33,11 @@ class MSTeamsLogo extends React.Component<LogoProps, any> {
                 {companyName}
               </Text>
             </div>
-          )
+          );
         }}
       />
-    )
+    );
   }
 }
 
-export default MSTeamsLogo
+export default MSTeamsLogo;

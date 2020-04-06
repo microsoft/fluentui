@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Image } from '@fluentui/react'
+import * as React from 'react';
+import { Image } from '@fluentui/react-northstar';
 
 const ImageExampleAvatar = () => (
   <div>
@@ -7,6 +7,6 @@ const ImageExampleAvatar = () => (
     <Image avatar src="public/images/avatar/small/chris.jpg" />
     <Image avatar src="public/images/avatar/small/joe.jpg" />
   </div>
-)
+);
 
-export default ImageExampleAvatar
+export default ImageExampleAvatar;

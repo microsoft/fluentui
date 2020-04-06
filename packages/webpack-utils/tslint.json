@@ -3,7 +3,6 @@
   "rules": {
     "deprecation": false,
     "no-function-expression": false,
-    "no-any": false,
-    "no-inferrable-types": false
+    "no-any": false
   }
 }

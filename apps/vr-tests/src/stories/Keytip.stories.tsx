@@ -21,7 +21,7 @@ storiesOf('Keytip', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Root', () => <Keytip content={'A'} keySequences={['a']} visible={true} />)
   .addStory('Disabled', () => (

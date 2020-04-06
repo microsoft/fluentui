@@ -4,7 +4,6 @@
 
 ```ts
 
-import { BaseComponent } from '@uifabric/utilities';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
@@ -36,10 +35,12 @@ export const Calendar: React.FunctionComponent<ICalendarProps>;
 export const DatePicker: React.FunctionComponent<IDatePickerProps>;
 
 // @public (undocumented)
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
     constructor(props: IDatePickerProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IDatePickerProps;
     // (undocumented)
@@ -92,7 +93,7 @@ export interface ICalendarDayGridStyles {
 
 // Warning: (ae-forgotten-export) The symbol "ICalendarDay" needs to be exported by the entry point index.d.ts
 // Warning: (ae-forgotten-export) The symbol "ICalendarDayGridProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendarDayGridProps {
     allFocusable?: boolean;
@@ -133,7 +134,7 @@ export interface ICalendarIconStrings {
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalendarMonth" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
     allFocusable?: boolean;
@@ -368,7 +369,7 @@ export interface IWeeklyDayPickerStrings extends ICalendarStrings {
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalendarDayGridStyleProps" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
     className?: string;

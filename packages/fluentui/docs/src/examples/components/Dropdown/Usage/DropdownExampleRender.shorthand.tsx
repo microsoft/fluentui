@@ -1,5 +1,5 @@
-import { Dropdown } from '@fluentui/react'
-import * as React from 'react'
+import { Dropdown } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const inputItems = [
   'Bruce Wayne',
@@ -11,7 +11,7 @@ const inputItems = [
   'Bruce Banner',
   'Peter Parker',
   'Selina Kyle',
-]
+];
 
 const DropdownExampleRender: React.FC = () => (
   <Dropdown
@@ -19,13 +19,11 @@ const DropdownExampleRender: React.FC = () => (
     search
     items={inputItems}
     placeholder="Start typing a name"
-    renderItem={(Item: typeof Dropdown.Item, props) => (
-      <Item {...props} header={`${props.header} (active)`} />
-    )}
+    renderItem={(Item: typeof Dropdown.Item, props) => <Item {...props} header={`${props.header} (active)`} />}
     renderSelectedItem={(SelectedItem: typeof Dropdown.SelectedItem, props) => (
       <SelectedItem {...props} header={`${props.header} (selected)`} />
     )}
   />
-)
+);
 
-export default DropdownExampleRender
+export default DropdownExampleRender;

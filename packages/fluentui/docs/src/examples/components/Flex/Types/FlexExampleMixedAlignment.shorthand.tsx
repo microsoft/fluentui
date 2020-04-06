@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Segment } from '@fluentui/react-northstar';
 
 const FlexExampleMixedAlignment = () => (
   <Flex gap="gap.small" hAlign="center" vAlign="center" debug>
@@ -19,6 +19,6 @@ const FlexExampleMixedAlignment = () => (
       <Segment content="This cell should be bottom-aligned." />
     </Flex.Item>
   </Flex>
-)
+);
 
-export default FlexExampleMixedAlignment
+export default FlexExampleMixedAlignment;

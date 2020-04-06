@@ -1,13 +1,13 @@
-import values from 'object.values'
-import * as React from 'react'
+import values from 'object.values';
+import * as React from 'react';
 
-import { KnobContext } from './KnobContexts'
-import { KnobDefinition } from './types'
+import { KnobContext } from './KnobContexts';
+import { KnobDefinition } from './types';
 
 const useKnobValues = (): KnobDefinition[] => {
-  const knobsContext = React.useContext(KnobContext)
+  const knobsContext = React.useContext(KnobContext);
 
-  return values(knobsContext.knobs)
-}
+  return values(knobsContext.knobs);
+};
 
-export default useKnobValues
+export default useKnobValues;

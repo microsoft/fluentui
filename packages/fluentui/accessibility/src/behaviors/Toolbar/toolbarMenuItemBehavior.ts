@@ -1,5 +1,5 @@
-import { Accessibility, AccessibilityAttributes } from '../../types'
-import menuItemBehavior from '../Menu/menuItemBehavior'
+import { Accessibility, AccessibilityAttributes } from '../../types';
+import menuItemBehavior from '../Menu/menuItemBehavior';
 
 /**
  * @description
@@ -23,16 +23,16 @@ import menuItemBehavior from '../Menu/menuItemBehavior'
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper'.
  */
 const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
-  return menuItemBehavior({ ...props, vertical: true })
-}
+  return menuItemBehavior({ ...props, vertical: true });
+};
 
-export default toolbarMenuItemBehavior
+export default toolbarMenuItemBehavior;
 
 export type ToolbarMenuItemBehaviorProps = {
-  /** Indicated if menu item has submenu. */
-  menu?: boolean | object
+  /** Indicated if menu item has submenu. TODO: fix types for all behaviours */
+  menu?: any;
   /** Defines if submenu is opened. */
-  menuOpen?: boolean
+  menuOpen?: boolean;
   /** If a menu item can is currently unable to be interacted with. */
-  disabled?: boolean
-} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>
+  disabled?: boolean;
+} & Pick<AccessibilityAttributes, 'aria-label' | 'aria-labelledby' | 'aria-describedby'>;

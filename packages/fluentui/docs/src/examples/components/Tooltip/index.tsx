@@ -1,10 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Rtl from './Rtl'
-import Types from './Types'
-import Variations from './Variations'
-import States from './States'
-import Usage from './Usage'
+import Rtl from './Rtl';
+import Types from './Types';
+import Variations from './Variations';
+import States from './States';
+import Usage from './Usage';
+import Visual from './Visual';
 
 const TooltipExamples = () => (
   <>
@@ -13,7 +14,8 @@ const TooltipExamples = () => (
     <States />
     <Rtl />
     <Usage />
+    <Visual />
   </>
-)
+);
 
-export default TooltipExamples
+export default TooltipExamples;

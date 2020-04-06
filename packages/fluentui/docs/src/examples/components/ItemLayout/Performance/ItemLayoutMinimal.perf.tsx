@@ -1,9 +1,9 @@
-import { ItemLayout } from '@fluentui/react'
-import * as React from 'react'
+import { ItemLayout } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const ItemLayoutMinimalPerf = () => <ItemLayout />
+const ItemLayoutMinimalPerf = () => <ItemLayout />;
 
-ItemLayoutMinimalPerf.iterations = 5000
-ItemLayoutMinimalPerf.filename = 'ItemLayoutMinimal.perf.tsx'
+ItemLayoutMinimalPerf.iterations = 5000;
+ItemLayoutMinimalPerf.filename = 'ItemLayoutMinimal.perf.tsx';
 
-export default ItemLayoutMinimalPerf
+export default ItemLayoutMinimalPerf;

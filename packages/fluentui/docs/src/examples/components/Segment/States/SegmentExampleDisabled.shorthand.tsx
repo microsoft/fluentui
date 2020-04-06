@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Segment } from '@fluentui/react-northstar';
 
-const SegmentExampleDisabledShorthand = () => <Segment disabled content="Disabled segment." />
+const SegmentExampleDisabledShorthand = () => <Segment disabled content="Disabled segment." />;
 
-export default SegmentExampleDisabledShorthand
+export default SegmentExampleDisabledShorthand;

@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const DialogUsageExamples = () => (
   <ExampleSection title="Usage">
@@ -11,6 +11,6 @@ const DialogUsageExamples = () => (
       examplePath="components/Dialog/Usage/DialogExampleCallbacks"
     />
   </ExampleSection>
-)
+);
 
-export default DialogUsageExamples
+export default DialogUsageExamples;

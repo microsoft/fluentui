@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { Icon, Menu, MenuShorthandKinds } from '@fluentui/react'
+import * as React from 'react';
+import { Menu, MenuShorthandKinds } from '@fluentui/react-northstar';
+import { TriangleEndIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   { key: 'editorials', content: 'Editorials' },
@@ -12,11 +13,11 @@ const items = [
   {
     key: 'divider-2',
     kind: 'divider' as MenuShorthandKinds,
-    content: <Icon name="triangle-right" />,
+    content: <TriangleEndIcon />,
   },
   { key: 'events', content: 'Upcoming Events' },
-]
+];
 
-const MenuExampleKind = () => <Menu defaultActiveIndex={0} items={items} underlined />
+const MenuExampleKind = () => <Menu defaultActiveIndex={0} items={items} underlined />;
 
-export default MenuExampleKind
+export default MenuExampleKind;

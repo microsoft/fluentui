@@ -1,21 +1,21 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Dropdown, Grid, Alignment, Position } from '@fluentui/react'
-import { useSelectKnob, useBooleanKnob } from '@fluentui/docs-components'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Dropdown, Grid, Alignment, Position } from '@fluentui/react-northstar';
+import { useSelectKnob, useBooleanKnob } from '@fluentui/docs-components';
 
-const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange']
+const inputItems = ['Bruce Wayne', 'Natasha Romanoff', 'Steven Strange'];
 
 const DropdownExamplePosition = () => {
-  const [open] = useBooleanKnob({ name: 'open', initialValue: true })
-  const [unstable_pinned] = useBooleanKnob({ name: 'unstable_pinned', initialValue: false })
+  const [open] = useBooleanKnob({ name: 'open', initialValue: true });
+  const [unstable_pinned] = useBooleanKnob({ name: 'unstable_pinned', initialValue: false });
 
   const [positionAndAlign] = useSelectKnob({
     name: 'position-align',
     initialValue: 'below',
     values: positionAndAlignValues,
-  })
+  });
 
-  const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment]
+  const [position, align] = _.split(positionAndAlign, '-') as [Position, Alignment];
 
   return (
     <Grid columns="1" variables={{ padding: '140px 0' }} styles={{ justifyItems: 'center' }}>
@@ -28,16 +28,9 @@ const DropdownExamplePosition = () => {
         unstable_pinned={unstable_pinned}
       />
     </Grid>
-  )
-}
+  );
+};
 
-export default DropdownExamplePosition
+export default DropdownExamplePosition;
 
-const positionAndAlignValues = [
-  'above',
-  'below',
-  'before-top',
-  'before-bottom',
-  'after-top',
-  'after-bottom',
-]
+const positionAndAlignValues = ['above', 'below', 'before-top', 'before-bottom', 'after-top', 'after-bottom'];

@@ -1,18 +1,18 @@
-import * as React from 'react'
-import { hot } from 'react-hot-loader/root'
-import { Provider, Debug, themes } from '@fluentui/react'
+import * as React from 'react';
+import { hot } from 'react-hot-loader/root';
+import { Provider, Debug, themes } from '@fluentui/react-northstar';
 
-import { mergeThemes } from '@fluentui/styles'
-import { ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext'
-import Routes from './routes'
-import { PerfDataProvider } from './components/ComponentDoc/PerfChart'
+import { mergeThemes } from '@fluentui/styles';
+import { ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
+import Routes from './routes';
+import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 
 // Experimental dev-time accessibility attributes integrity validation.
-import { setup } from '@fluentui/ability-attributes'
+import { setup } from '@fluentui/ability-attributes';
 
 // Temporarily disabling the validation for Screener.
 if (process.env.NODE_ENV !== 'production' && !process.env.SCREENER) {
-  setup()
+  setup();
 }
 
 class App extends React.Component<any, ThemeContextData> {
@@ -21,10 +21,10 @@ class App extends React.Component<any, ThemeContextData> {
   state: ThemeContextData = {
     ...themeContextDefaults,
     changeTheme: (e, { value: item }) => this.setState({ themeName: item.value }),
-  }
+  };
 
   render() {
-    const { themeName } = this.state
+    const { themeName } = this.state;
     return (
       <ThemeContext.Provider value={this.state}>
         <Provider
@@ -47,8 +47,8 @@ class App extends React.Component<any, ThemeContextData> {
           </PerfDataProvider>
         </Provider>
       </ThemeContext.Provider>
-    )
+    );
   }
 }
 
-export default hot(App)
+export default hot(App);

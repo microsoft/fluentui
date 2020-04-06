@@ -1,9 +1,23 @@
-import { ComponentSlotStyle, ComponentSlotStylesResolved, ComponentVariablesInput, DebugData, emptyTheme } from '@fluentui/styles';
+import {
+  ComponentSlotStyle,
+  ComponentSlotStylesResolved,
+  ComponentVariablesInput,
+  DebugData,
+  emptyTheme,
+} from '@fluentui/styles';
 import * as React from 'react';
 // @ts-ignore We have this export in package, but it is not present in typings
 import { ThemeContext } from 'react-fela';
 
-import { ComponentDesignProp, ComponentSlotClasses, PrimitiveProps, RendererRenderRule, StylesContextValue } from '../styles/types';
+import useComposeOptions from '../compose/useComposeOptions';
+import useCurrentReactElement from '../compose/useCurrentReactElement';
+import {
+  ComponentDesignProp,
+  ComponentSlotClasses,
+  PrimitiveProps,
+  RendererRenderRule,
+  StylesContextValue,
+} from '../styles/types';
 import getStyles from '../styles/getStyles';
 
 type UseStylesOptions<StyleProps extends PrimitiveProps> = {
@@ -32,36 +46,53 @@ type InlineStyleProps<StyleProps> = {
 };
 
 const defaultContext: StylesContextValue<{ renderRule: RendererRenderRule }> = {
+  rtl: false,
   disableAnimations: false,
   performance: {
+    enableSanitizeCssPlugin: process.env.NODE_ENV !== 'production',
     enableStylesCaching: true,
-    enableVariablesCaching: true
+    enableVariablesCaching: true,
+    enableBooleanVariablesCaching: false,
   },
   renderer: { renderRule: () => '' },
-  theme: emptyTheme
+  theme: emptyTheme,
 };
 
-const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, options: UseStylesOptions<StyleProps>): UseStylesResult => {
-  const context: StylesContextValue<{ renderRule: RendererRenderRule }> = React.useContext(ThemeContext) || defaultContext;
+const useStyles = <StyleProps extends PrimitiveProps>(
+  displayName: string,
+  options: UseStylesOptions<StyleProps>,
+): UseStylesResult => {
+  const context: StylesContextValue<{ renderRule: RendererRenderRule }> =
+    React.useContext(ThemeContext) || defaultContext;
 
-  const { enableStylesCaching = true, enableVariablesCaching = true } = context.performance || {};
+  const { elementProps } = useCurrentReactElement();
+  const composeOptions = useComposeOptions();
 
   const {
     className = process.env.NODE_ENV === 'production' ? '' : 'no-classname-🙉',
     mapPropsToStyles = () => ({} as StyleProps),
     mapPropsToInlineStyles = () => ({} as InlineStyleProps<StyleProps>),
-    rtl = false
+    rtl = false,
   } = options;
+  const componentStylesProps = mapPropsToStyles();
+
+  // `composeProps` should include all props including stylesProps as they can contain state
+  const composeProps = { ...elementProps, ...componentStylesProps };
+  const composeStylesProps = composeOptions?.mapPropsToStylesPropsChain?.reduce(
+    (acc, fn) => ({ ...acc, ...fn(composeProps) }),
+    {},
+  );
 
   // Stores debug information for component.
   const debug = React.useRef<{ fluentUIDebug: DebugData | null }>({ fluentUIDebug: null });
   const { classes, styles: resolvedStyles } = getStyles({
     // Input values
-    className,
-    displayName,
+    className: composeOptions?.className || className,
+    displayNames: composeOptions?.displayNames || [displayName],
     props: {
-      ...mapPropsToStyles(),
-      ...mapPropsToInlineStyles()
+      ...componentStylesProps,
+      ...mapPropsToInlineStyles(),
+      ...composeStylesProps,
     },
 
     // Context values
@@ -70,10 +101,7 @@ const useStyles = <StyleProps extends PrimitiveProps>(displayName: string, optio
     rtl,
     saveDebug: fluentUIDebug => (debug.current = { fluentUIDebug }),
     theme: context.theme,
-    performance: {
-      enableStylesCaching,
-      enableVariablesCaching
-    }
+    performance: context.performance,
   });
 
   return { classes, styles: resolvedStyles };

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Input } from '@fluentui/react'
+import * as React from 'react';
+import { Input } from '@fluentui/react-northstar';
 
-const InputExampleClearable = () => <Input clearable placeholder="Search..." />
+const InputExampleClearable = () => <Input clearable placeholder="Search..." />;
 
-export default InputExampleClearable
+export default InputExampleClearable;

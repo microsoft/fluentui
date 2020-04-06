@@ -6,7 +6,7 @@ import {
   ContextualMenuItemType,
   IContextualMenuProps,
   IContextualMenuItem,
-  IContextualMenuItemProps
+  IContextualMenuItemProps,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import * as stylesImport from './ContextualMenuExample.scss';
@@ -31,14 +31,14 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
             <Icon iconName={'WordLogo16'} className={styles.logoIcon} />
           </span>
         );
-      }
+      },
     },
     {
       key: 'newItem',
       iconProps: {
-        iconName: 'Add'
+        iconName: 'Add',
       },
-      text: 'New'
+      text: 'New',
     },
     {
       key: 'upload',
@@ -46,42 +46,42 @@ export const ContextualMenuIconExample: React.FunctionComponent = () => {
       iconProps: {
         iconName: 'Upload',
         style: {
-          color: 'salmon'
-        }
+          color: 'salmon',
+        },
       },
       text: 'Upload (Click for popup)',
-      title: 'Upload a file'
+      title: 'Upload a file',
     },
     {
       key: 'divider_1',
-      itemType: ContextualMenuItemType.Divider
+      itemType: ContextualMenuItemType.Divider,
     },
     {
       key: 'share',
       iconProps: {
-        iconName: 'Share'
+        iconName: 'Share',
       },
-      text: 'Share'
+      text: 'Share',
     },
     {
       key: 'print',
       iconProps: {
-        iconName: 'Print'
+        iconName: 'Print',
       },
-      text: 'Print'
+      text: 'Print',
     },
     {
       key: 'music',
       iconProps: {
-        iconName: 'MusicInCollectionFill'
+        iconName: 'MusicInCollectionFill',
       },
-      text: 'Music'
-    }
+      text: 'Music',
+    },
   ]);
 
   const menuProps: IContextualMenuProps = useConst({
     shouldFocusOnMount: true,
-    items: menuItems
+    items: menuItems,
   });
 
   return (

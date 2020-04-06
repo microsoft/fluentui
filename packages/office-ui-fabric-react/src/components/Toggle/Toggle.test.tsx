@@ -12,7 +12,7 @@ describe('Toggle', () => {
       component
         .find('.ms-Toggle-label')
         .first()
-        .text()
+        .text(),
     ).toEqual('Label');
   });
 
@@ -54,7 +54,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-label')
+        .getAttribute('aria-label'),
     ).toEqual('AriaLabel');
   });
 
@@ -71,7 +71,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('false');
 
     component
@@ -86,7 +86,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('true');
   });
 
@@ -98,7 +98,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('false');
 
     component
@@ -112,7 +112,7 @@ describe('Toggle', () => {
         .find('button')
         .first()
         .getDOMNode()
-        .getAttribute('aria-checked')
+        .getAttribute('aria-checked'),
     ).toEqual('false');
   });
 
@@ -140,7 +140,7 @@ describe('Toggle', () => {
           componentRef={ref => (component = ref)}
           label="Label"
         />
-      </form>
+      </form>,
     );
     const button: any = wrapper.find('button');
     // simulate to change toggle state
@@ -158,7 +158,7 @@ describe('Toggle', () => {
           .find('button')
           .first()
           .getDOMNode()
-          .getAttribute('aria-labelledby')
+          .getAttribute('aria-labelledby'),
       ).toBeNull();
     });
 
@@ -170,7 +170,7 @@ describe('Toggle', () => {
           .find('button')
           .first()
           .getDOMNode()
-          .getAttribute('aria-labelledby')
+          .getAttribute('aria-labelledby'),
       ).toBe('ToggleId-label');
     });
 
@@ -182,7 +182,7 @@ describe('Toggle', () => {
           .find('button')
           .first()
           .getDOMNode()
-          .getAttribute('aria-labelledby')
+          .getAttribute('aria-labelledby'),
       ).toBe('ToggleId-stateText');
     });
 
@@ -194,7 +194,7 @@ describe('Toggle', () => {
           .find('button')
           .first()
           .getDOMNode()
-          .getAttribute('aria-labelledby')
+          .getAttribute('aria-labelledby'),
       ).toBe('ToggleId-stateText');
     });
   });

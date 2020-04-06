@@ -26,7 +26,7 @@ describe('CardView', () => {
           <CardItem>This is some content 1</CardItem>
           <CardItem>This is some content 2</CardItem>
           <CardItem>This is some content 3</CardItem>
-        </CardView>
+        </CardView>,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -39,7 +39,7 @@ describe('CardView', () => {
           <CardItem>This is some content 1</CardItem>
           <CardItem>This is some content 2</CardItem>
           <CardItem>This is some content 3</CardItem>
-        </CardView>
+        </CardView>,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -50,7 +50,7 @@ describe('CardView', () => {
       .create(
         <CardView onClick={alertClicked}>
           <CardItem>This is some content 1</CardItem>
-        </CardView>
+        </CardView>,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();
@@ -61,7 +61,7 @@ describe('CardView', () => {
       .create(
         <CardView horizontal onClick={alertClicked}>
           <CardItem>This is some content 1</CardItem>
-        </CardView>
+        </CardView>,
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

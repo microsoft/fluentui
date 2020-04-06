@@ -4,7 +4,7 @@ import {
   IDetailsRowStyles,
   IDetailsRowCheckStyleProps,
   IDetailsRowCheckStyles,
-  IDetailsHeaderStyles
+  IDetailsHeaderStyles,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
@@ -14,7 +14,7 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
 
   return {
     circle: [!checked && { color: palette.neutralTertiaryAlt }],
-    check: [!checked && { color: palette.neutralTertiaryAlt }]
+    check: [!checked && { color: palette.neutralTertiaryAlt }],
   };
 };
 
@@ -24,25 +24,25 @@ export const DetailsRowCheckStyles = (props: IDetailsRowCheckStyleProps): Partia
 
   return {
     check: {
-      height: height
-    }
+      height: height,
+    },
   };
 };
 
 export const DetailsHeaderStyles: Partial<IDetailsHeaderStyles> = {
   root: {
     height: 32,
-    lineHeight: '32px'
+    lineHeight: '32px',
   },
   check: {
-    height: 32
+    height: 32,
   },
   cellIsCheck: {
-    height: 32
+    height: 32,
   },
   cellIsGroupExpander: {
-    height: 32
-  }
+    height: 32,
+  },
 };
 
 export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetailsRowStyles> => {
@@ -51,8 +51,8 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
   return {
     isRowHeader: [
       isSelected && {
-        fontWeight: FontWeights.regular
-      }
-    ]
+        fontWeight: FontWeights.regular,
+      },
+    ],
   };
 };

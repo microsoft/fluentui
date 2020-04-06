@@ -3,14 +3,11 @@
  */
 
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
 import { getSidebarButtonStyles } from './SidebarButton.styles';
 
-export class SidebarButton extends BaseComponent<IButtonProps, {}> {
-  public render(): JSX.Element {
-    const { styles, theme } = this.props;
+export const SidebarButton: React.FunctionComponent<IButtonProps> = props => {
+  const { styles, theme } = props;
 
-    return <DefaultButton {...this.props} styles={getSidebarButtonStyles(theme!, styles)} />;
-  }
-}
+  return <DefaultButton {...props} styles={getSidebarButtonStyles(theme!, styles)} />;
+};

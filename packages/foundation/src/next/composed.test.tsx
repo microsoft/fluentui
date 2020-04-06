@@ -33,12 +33,12 @@ describe('composed', () => {
   it("recomposes a component's slots correctly", () => {
     const baseSlots: ISlotDefinition<Required<ITestSlots>> = {
       root: 'div',
-      content: 'span'
+      content: 'span',
     };
     const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent',
       slots: baseSlots,
-      view: TestView
+      view: TestView,
     };
 
     const TestComponent = composed(options);
@@ -47,20 +47,26 @@ describe('composed', () => {
     expect(TestComponent.__options).toEqual(options);
 
     const recompositionSlots: ISlotDefinition<ITestSlots> = {
-      content: 'a'
+      content: 'a',
     };
-    const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const recompositionOptions: IRecompositionComponentOptions<
+      ITestProps,
+      ITestTokens,
+      ITestStyles,
+      ITestViewProps,
+      ITestSlots
+    > = {
       displayName: 'TestComponent2',
-      slots: recompositionSlots
+      slots: recompositionSlots,
     };
 
     const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent2',
       slots: props => ({
         ...resolveSlots(baseSlots, props),
-        ...resolveSlots(recompositionSlots, props)
+        ...resolveSlots(recompositionSlots, props),
       }),
-      view: TestView
+      view: TestView,
     };
 
     const TestComponent2 = composed(TestComponent, recompositionOptions);
@@ -78,12 +84,12 @@ describe('composed', () => {
   it("recomposes a component's view correctly", () => {
     const baseSlots: ISlotDefinition<Required<ITestSlots>> = {
       root: 'div',
-      content: 'span'
+      content: 'span',
     };
     const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent',
       slots: baseSlots,
-      view: TestView
+      view: TestView,
     };
 
     const TestComponent = composed(options);
@@ -101,17 +107,23 @@ describe('composed', () => {
       );
     };
 
-    const recompositionOptions: IRecompositionComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
+    const recompositionOptions: IRecompositionComponentOptions<
+      ITestProps,
+      ITestTokens,
+      ITestStyles,
+      ITestViewProps,
+      ITestSlots
+    > = {
       displayName: 'TestComponent2',
-      view: TestView2
+      view: TestView2,
     };
 
     const recomposedOptions: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent2',
       slots: props => ({
-        ...resolveSlots(baseSlots, props)
+        ...resolveSlots(baseSlots, props),
       }),
-      view: TestView2
+      view: TestView2,
     };
 
     const TestComponent2 = composed(TestComponent, recompositionOptions);
@@ -127,13 +139,13 @@ describe('composed', () => {
   it(`resolves tokens without a runtime error`, () => {
     const baseSlots: ISlotDefinition<Required<ITestSlots>> = {
       root: 'div',
-      content: 'span'
+      content: 'span',
     };
     const options: IComponentOptions<ITestProps, ITestTokens, ITestStyles, ITestViewProps, ITestSlots> = {
       displayName: 'TestComponent',
       slots: baseSlots,
       tokens: { testToken: 1 },
-      view: TestView
+      view: TestView,
     };
 
     const TestComponent = composed(options);

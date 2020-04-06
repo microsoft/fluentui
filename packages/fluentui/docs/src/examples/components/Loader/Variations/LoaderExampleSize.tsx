@@ -1,5 +1,5 @@
-import { Grid, Loader } from '@fluentui/react'
-import * as React from 'react'
+import { Grid, Loader } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const LoaderExampleSize: React.FC = () => (
   <Grid columns="4" variables={{ gridGap: '20px' }}>
@@ -13,6 +13,6 @@ const LoaderExampleSize: React.FC = () => (
     <Loader size="larger" label="larger" labelPosition="below" />
     <Loader size="largest" label="largest" labelPosition="below" />
   </Grid>
-)
+);
 
-export default LoaderExampleSize
+export default LoaderExampleSize;

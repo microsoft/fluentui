@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Segment } from '@fluentui/react-northstar';
 
 const FlexExampleItemsAlignment = () => (
   <Flex column gap="gap.large" hAlign="center" vAlign="center" debug>
@@ -44,6 +44,6 @@ const FlexExampleItemsAlignment = () => (
       </Flex>
     ))}
   </Flex>
-)
+);
 
-export default FlexExampleItemsAlignment
+export default FlexExampleItemsAlignment;

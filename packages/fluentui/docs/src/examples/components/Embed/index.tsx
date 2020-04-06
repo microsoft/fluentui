@@ -1,13 +1,13 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Slots from './Slots'
-import Usage from './Usage'
+import Slots from './Slots';
+import Usage from './Usage';
 
 const EmbedExamples = () => (
   <>
     <Slots />
     <Usage />
   </>
-)
+);
 
-export default EmbedExamples
+export default EmbedExamples;

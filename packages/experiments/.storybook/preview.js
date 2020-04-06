@@ -8,8 +8,8 @@ addDecorator(withInfo());
 addDecorator(withA11y());
 addParameters({
   a11y: {
-    manual: true
-  }
+    manual: true,
+  },
 });
 
 initializeIcons();

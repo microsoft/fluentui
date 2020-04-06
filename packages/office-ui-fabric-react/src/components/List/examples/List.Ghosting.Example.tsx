@@ -25,7 +25,7 @@ const { palette, semanticColors, fonts } = theme;
 const classNames: IListGhostingExampleClassObject = mergeStyleSets({
   container: {
     overflow: 'auto',
-    maxHeight: 500
+    maxHeight: 500,
   },
   itemCell: [
     getFocusStyle(theme, { inset: -1 }),
@@ -36,38 +36,38 @@ const classNames: IListGhostingExampleClassObject = mergeStyleSets({
       borderBottom: `1px solid ${semanticColors.bodyDivider}`,
       display: 'flex',
       selectors: {
-        '&:hover': { background: palette.neutralLight }
-      }
-    }
+        '&:hover': { background: palette.neutralLight },
+      },
+    },
   ],
   itemImage: {
-    flexShrink: 0
+    flexShrink: 0,
   },
   itemContent: {
     marginLeft: 10,
     overflow: 'hidden',
-    flexGrow: 1
+    flexGrow: 1,
   },
   itemName: [
     fonts.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
-      textOverflow: 'ellipsis'
-    }
+      textOverflow: 'ellipsis',
+    },
   ],
   itemIndex: {
     fontSize: fonts.small.fontSize,
     color: palette.neutralTertiary,
-    marginBottom: 10
+    marginBottom: 10,
   },
   chevron: {
     alignSelf: 'center',
     marginLeft: 10,
     color: palette.neutralTertiary,
     fontSize: fonts.large.fontSize,
-    flexShrink: 0
-  }
+    flexShrink: 0,
+  },
 });
 
 export class ListGhostingExample extends React.Component<IListGhostingExampleProps> {

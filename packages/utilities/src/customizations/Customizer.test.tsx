@@ -38,7 +38,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>customName</div>');
-      }
+      },
     );
   });
 
@@ -51,7 +51,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>globalName</div>');
-      }
+      },
     );
   });
 
@@ -64,14 +64,14 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>customName</div>');
-      }
+      },
     );
   });
 
   it('can scope settings to specific components', () => {
     const scopedSettings = {
       Foo: { field: 'scopedToFoo' },
-      Bar: { field: 'scopedToBar' }
+      Bar: { field: 'scopedToBar' },
     };
 
     safeMount(
@@ -83,7 +83,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
-      }
+      },
     );
   });
 
@@ -96,7 +96,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>fieldfield2</div>');
-      }
+      },
     );
   });
 
@@ -111,7 +111,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
-      }
+      },
     );
   });
 
@@ -131,7 +131,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>fieldfield2field3</div>');
-      }
+      },
     );
   });
 
@@ -152,7 +152,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div><div>scopedToFoo</div><div>scopedToBar</div></div>');
-      }
+      },
     );
   });
 
@@ -165,7 +165,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field2</div>');
-      }
+      },
     );
   });
 
@@ -183,7 +183,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field2</div>');
-      }
+      },
     );
   });
 
@@ -201,7 +201,7 @@ describe('Customizer', () => {
       </Customizer>,
       wrapper => {
         expect(wrapper.html()).toEqual('<div>field1field2</div>');
-      }
+      },
     );
   });
 
@@ -226,7 +226,7 @@ describe('Customizer', () => {
         // afterwards it should have updated
         expect(wrapper.html()).toEqual('<div>notGlobalName</div>');
 
-        // verify it doesn't update during suppressUpdates(), and it works through errors, and it can suppress final update
+        // verify it doesn't update during suppressUpdates(), works through errors, and can suppress final update
         Customizations.applyBatchedUpdates(() => {
           Customizations.applySettings({ field: 'notUpdated' });
           // it should not update inside
@@ -239,7 +239,7 @@ describe('Customizer', () => {
         // verify it updates after suppressUpdates()
         Customizations.applySettings({ field2: 'lastGlobalName' });
         expect(wrapper.html()).toEqual('<div>notUpdatedlastGlobalName</div>');
-      }
+      },
     );
   });
 });

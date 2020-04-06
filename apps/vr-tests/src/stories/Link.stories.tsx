@@ -12,12 +12,12 @@ storiesOf('Link', module)
       steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')"
+          "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
         )
         .executeScript("document.getElementsByClassName('ms-Link')[0].focus()")
         .snapshot('focus', { cropTo: '.testWrapper' })
         .executeScript(
-          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')"
+          "document.getElementsByClassName('testWrapper')[0].classList.remove('ms-Fabric--isFocusVisible')",
         )
         .hover('.ms-Link')
         .snapshot('hover', { cropTo: '.testWrapper' })
@@ -36,7 +36,7 @@ storiesOf('Link', module)
         I'm a link
       </Link>
     ),
-    { rtl: true }
+    { rtl: true },
   )
   .addStory('Disabled', () => (
     <Link href="#" disabled styles={{ root: { fontSize: '14px' } }}>

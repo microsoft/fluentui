@@ -5,10 +5,20 @@ const resources = require('../../scripts/webpack/webpack-resources');
 // Files which should not be considered top-level entries.
 const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'];
 
+// Helper to resolve the path to an entry name for a given package.
+const resolvePath = (packageName, entryFileName = 'index.js') =>
+  path.join(path.dirname(require.resolve(packageName)).replace('lib-commonjs', 'lib'), entryFileName);
+
+// Create entries for all top level fabric imports.
 const Entries = _buildEntries('office-ui-fabric-react');
 
-let experimentalButtonPath = path.join(path.dirname(require.resolve('@uifabric/experiments')).replace('lib-commonjs', 'lib'), 'Button.js');
-Entries['experiments-Button'] = experimentalButtonPath;
+// Add entry for keyboard-key package.
+Entries['keyboard-key'] = resolvePath('@fluentui/keyboard-key');
+
+// Note: The experimental button bundle evaluation seems to be slowing down PRs
+// significantly. Commenting out for now.
+
+// Entries['experiments-Button'] = resolvePath('@uifabric/experiments', 'Button.js');
 
 module.exports = Object.keys(Entries).map(
   entryName =>
@@ -17,12 +27,12 @@ module.exports = Object.keys(Entries).map(
       true,
       {
         entry: {
-          [entryName]: Entries[entryName]
+          [entryName]: Entries[entryName],
         },
         externals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
-        }
+          'react-dom': 'ReactDOM',
+        },
         // plugins: [
         //   {
         //     apply: compiler => {
@@ -32,8 +42,8 @@ module.exports = Object.keys(Entries).map(
         // ]
       },
       true,
-      true
-    )[0]
+      true,
+    )[0],
 );
 
 /**

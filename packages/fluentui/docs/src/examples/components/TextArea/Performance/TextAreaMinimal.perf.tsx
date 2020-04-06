@@ -1,9 +1,9 @@
-import { TextArea } from '@fluentui/react'
-import * as React from 'react'
+import { TextArea } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const TextAreaMinimalPerf = () => <TextArea />
+const TextAreaMinimalPerf = () => <TextArea />;
 
-TextAreaMinimalPerf.iterations = 5000
-TextAreaMinimalPerf.filename = 'TextAreaMinimal.perf.tsx'
+TextAreaMinimalPerf.iterations = 5000;
+TextAreaMinimalPerf.filename = 'TextAreaMinimal.perf.tsx';
 
-export default TextAreaMinimalPerf
+export default TextAreaMinimalPerf;

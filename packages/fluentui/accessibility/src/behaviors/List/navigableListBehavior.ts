@@ -1,6 +1,6 @@
-import { FocusZoneDirection } from '../../focusZone/types'
-import { Accessibility } from '../../types'
-import { ListBehaviorProps } from './listBehavior'
+import { FocusZoneDirection } from '../../focusZone/types';
+import { Accessibility } from '../../types';
+import { ListBehaviorProps } from './listBehavior';
 
 /**
  * @specification
@@ -19,6 +19,6 @@ const navigableListBehavior: Accessibility<ListBehaviorProps> = props => ({
       direction: FocusZoneDirection.bidirectionalDomOrder,
     },
   },
-})
+});
 
-export default navigableListBehavior
+export default navigableListBehavior;

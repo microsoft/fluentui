@@ -13,28 +13,28 @@ const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/
 export const CardPageProps: IDocPageProps = {
   title: 'Card',
   componentName: 'Card',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/react-cards/src/components/Card',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-cards/src/components/Card',
   examples: [
     {
       title: 'Vertical Card',
       code: CardVerticalExampleCode,
-      view: <CardVerticalExample />
+      view: <CardVerticalExample />,
     },
     {
       title: 'Horizontal Card',
       code: CardHorizontalExampleCode,
-      view: <CardHorizontalExample />
+      view: <CardHorizontalExample />,
     },
     {
       title: 'Configure Properties',
       code: CardConfigureExampleCode,
-      view: <CardConfigureExample />
-    }
+      view: <CardConfigureExample />,
+    },
   ],
   overview: require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDos.md'),
   donts: require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

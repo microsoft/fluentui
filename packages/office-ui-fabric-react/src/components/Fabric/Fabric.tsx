@@ -9,6 +9,6 @@ export const Fabric: React.FunctionComponent<IFabricProps> = styled<IFabricProps
   getStyles,
   undefined,
   {
-    scope: 'Fabric'
-  }
+    scope: 'Fabric',
+  },
 );

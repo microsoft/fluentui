@@ -15,7 +15,7 @@ import {
   IButtonStylesReturnType,
   IButtonTokenReturnType,
   IButtonTokens,
-  IButtonViewProps
+  IButtonViewProps,
 } from '../Button.types';
 import { ButtonSlots, ButtonView } from '../Button.view';
 
@@ -51,7 +51,7 @@ const baseTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
     minHeight: 72,
     secondaryColor: palette.neutralSecondary,
     secondaryColorHovered: palette.neutralDark,
-    secondaryColorPressed: 'inherit'
+    secondaryColorPressed: 'inherit',
   };
 };
 
@@ -64,7 +64,7 @@ const primaryTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
     iconColorPressed: semanticColors.primaryButtonTextPressed,
     secondaryColor: semanticColors.primaryButtonText,
     secondaryColorHovered: semanticColors.primaryButtonTextHovered,
-    secondaryColorPressed: semanticColors.primaryButtonTextPressed
+    secondaryColorPressed: semanticColors.primaryButtonTextPressed,
   };
 };
 
@@ -77,7 +77,7 @@ const disabledTokens: ICompoundButtonComponent['tokens'] = (props, theme) => {
     iconColorPressed: semanticColors.buttonTextDisabled,
     secondaryColor: semanticColors.buttonTextDisabled,
     secondaryColorHovered: semanticColors.buttonTextDisabled,
-    secondaryColorPressed: semanticColors.buttonTextDisabled
+    secondaryColorPressed: semanticColors.buttonTextDisabled,
   };
 };
 
@@ -90,11 +90,11 @@ const CompoundButtonTokens: ICompoundButtonComponent['tokens'] = (props, theme):
 const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
 
-  const regularStyles = (ButtonStyles as IStylesFunction<IButtonViewProps, IButtonTokens, IComponentStyles<IButtonSlots>>)(
-    props,
-    theme,
-    tokens
-  );
+  const regularStyles = (ButtonStyles as IStylesFunction<
+    IButtonViewProps,
+    IButtonTokens,
+    IComponentStyles<IButtonSlots>
+  >)(props, theme, tokens);
 
   return {
     root: [
@@ -109,35 +109,35 @@ const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, 
           '> *': {
             marginLeft: 0,
             marginTop: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
-            textOverflow: 'ellipsis'
+            textOverflow: 'ellipsis',
           },
           '> *:not(:first-child)': {
             marginLeft: 0,
-            marginTop: `${columnGap.value}${columnGap.unit}`
+            marginTop: `${columnGap.value}${columnGap.unit}`,
           },
           ':hover': {
             color: tokens.secondaryColorHovered,
 
             selectors: {
               [HighContrastSelector]: {
-                color: tokens.highContrastColorHovered
-              }
-            }
+                color: tokens.highContrastColorHovered,
+              },
+            },
           },
           ':active': {
             color: tokens.secondaryColorPressed,
 
             selectors: {
               [HighContrastSelector]: {
-                color: tokens.highContrastColorPressed
-              }
-            }
+                color: tokens.highContrastColorPressed,
+              },
+            },
           },
           [HighContrastSelector]: {
-            color: tokens.highContrastColor
-          }
-        }
-      }
+            color: tokens.highContrastColor,
+          },
+        },
+      },
     ],
     content: [
       regularStyles.content,
@@ -149,33 +149,33 @@ const CompoundButtonStyles: ICompoundButtonComponent['styles'] = (props, theme, 
 
             selectors: {
               [HighContrastSelector]: {
-                color: tokens.highContrastColorHovered
-              }
-            }
+                color: tokens.highContrastColorHovered,
+              },
+            },
           },
           ':active': {
             color: tokens.colorPressed,
 
             selectors: {
               [HighContrastSelector]: {
-                color: tokens.highContrastColorPressed
-              }
-            }
+                color: tokens.highContrastColorPressed,
+              },
+            },
           },
           [HighContrastSelector]: {
-            color: tokens.highContrastColor
-          }
-        }
-      }
+            color: tokens.highContrastColor,
+          },
+        },
+      },
     ],
-    icon: regularStyles.icon
+    icon: regularStyles.icon,
   };
 };
 
 const secondaryTextStyles: ITextStyles = {
   root: {
-    height: 12
-  }
+    height: 12,
+  },
 };
 
 const CompoundButtonView: ICompoundButtonComponent['view'] = (props, slots) => {
@@ -189,7 +189,7 @@ const CompoundButtonView: ICompoundButtonComponent['view'] = (props, slots) => {
 
   const compoundButtonProps = {
     ...rest,
-    children: [secondaryTextChild, children]
+    children: [secondaryTextChild, children],
   };
 
   return ButtonView(compoundButtonProps, slots);
@@ -201,5 +201,5 @@ export const CompoundButton: React.FunctionComponent<ICompoundButtonProps> = com
   state,
   styles: CompoundButtonStyles,
   tokens: CompoundButtonTokens,
-  view: CompoundButtonView
+  view: CompoundButtonView,
 });

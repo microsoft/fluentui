@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Label, Provider } from '@fluentui/react'
-import * as _ from 'lodash'
+import * as React from 'react';
+import { Label, Provider } from '@fluentui/react-northstar';
+import * as _ from 'lodash';
 
 const LabelExampleColor = () => (
   <Provider.Consumer
@@ -12,6 +12,6 @@ const LabelExampleColor = () => (
       ))
     }
   />
-)
+);
 
-export default LabelExampleColor
+export default LabelExampleColor;

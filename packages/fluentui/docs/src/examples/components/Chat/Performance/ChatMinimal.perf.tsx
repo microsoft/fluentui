@@ -1,9 +1,9 @@
-import { Chat } from '@fluentui/react'
-import * as React from 'react'
+import { Chat } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const ChatMinimalPerf = () => <Chat />
+const ChatMinimalPerf = () => <Chat />;
 
-ChatMinimalPerf.iterations = 5000
-ChatMinimalPerf.filename = 'ChatMinimal.perf.tsx'
+ChatMinimalPerf.iterations = 5000;
+ChatMinimalPerf.filename = 'ChatMinimal.perf.tsx';
 
-export default ChatMinimalPerf
+export default ChatMinimalPerf;

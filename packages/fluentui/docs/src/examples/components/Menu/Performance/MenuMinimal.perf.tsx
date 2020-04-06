@@ -1,9 +1,9 @@
-import { Menu } from '@fluentui/react'
-import * as React from 'react'
+import { Menu } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const MenuMinimalPerf = () => <Menu />
+const MenuMinimalPerf = () => <Menu />;
 
-MenuMinimalPerf.iterations = 5000
-MenuMinimalPerf.filename = 'MenuMinimal.perf.tsx'
+MenuMinimalPerf.iterations = 5000;
+MenuMinimalPerf.filename = 'MenuMinimal.perf.tsx';
 
-export default MenuMinimalPerf
+export default MenuMinimalPerf;

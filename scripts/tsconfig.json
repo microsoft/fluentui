@@ -3,6 +3,8 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "noImplicitAny": false,
+    "allowJs": true,
     "typeRoots": ["../typings", "../node_modules/@types"],
     "types": ["node", "webpack-env", "screener-runner"]
   }

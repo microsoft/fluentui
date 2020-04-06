@@ -2,7 +2,7 @@ import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
 
 const GlobalClassNames = {
-  root: 'ms-DocumentCardDetails'
+  root: 'ms-DocumentCardDetails',
 };
 
 export const getStyles = (props: IDocumentCardStatusStyleProps): IDocumentCardStatusStyles => {
@@ -18,9 +18,9 @@ export const getStyles = (props: IDocumentCardStatusStyleProps): IDocumentCardSt
         flexDirection: 'column',
         flex: 1,
         justifyContent: 'space-between',
-        overflow: 'hidden'
+        overflow: 'hidden',
       },
-      className
-    ]
+      className,
+    ],
   };
 };

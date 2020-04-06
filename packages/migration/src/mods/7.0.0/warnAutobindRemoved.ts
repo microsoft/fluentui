@@ -30,14 +30,13 @@ export default migration(
           const sourceFileName = sourceFile.fileName;
           const lineAndCharacter = sourceFile.getLineAndCharacterOfPosition(node.getStart());
           opts.warn(
-            `${sourceFileName}:${lineAndCharacter.line}:${
-              lineAndCharacter.character
-            } - autobind decorator (@autobind) no longer available; consider using lambdas instead.`
+            `${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ` +
+              `autobind decorator (@autobind) no longer available; consider using lambdas instead.`,
           );
         }
       }
 
       return undefined;
     }).files;
-  }
+  },
 );

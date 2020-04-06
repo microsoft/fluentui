@@ -1,64 +1,64 @@
-import * as React from 'react'
+import * as React from 'react';
 
 export interface FocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
   /** @docSiteIgnore */
-  as?: React.ReactType
+  as?: React.ReactType;
 
   /**
    * Additional CSS class name(s) to apply.
    */
-  className?: string
+  className?: string;
 
   /**
    * Disables the FocusTrapZone's focus trapping behavior when set.
    */
-  disabled?: boolean
+  disabled?: boolean;
 
   /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone. By default, the target which triggered the FocusTrapZone will get focus.
    */
-  elementToFocusOnDismiss?: HTMLElement
+  elementToFocusOnDismiss?: HTMLElement;
 
   /**
    * Sets the aria-labelledby attribute.
    */
-  ariaLabelledBy?: string
+  ariaLabelledBy?: string;
 
   /** Indicates if this Trap Zone will allow clicks outside the FocusTrapZone. */
-  isClickableOutsideFocusTrap?: boolean
+  isClickableOutsideFocusTrap?: boolean;
 
   /**
    * Indicates if the previously focused element outside FocusTrapZone should be focused on outside click.
    * Note: trigger will be focused when exiting FTZ using keyboard.
    * If isClickableOutsideFocusTrap === 'false', focusTriggerOnOutsideClick will not be taken into account.
    */
-  focusTriggerOnOutsideClick?: boolean
+  focusTriggerOnOutsideClick?: boolean;
 
   /**
    * Indicates if this Trap Zone will ignore keeping track of HTMLElement that activated the Zone.
    */
-  ignoreExternalFocusing?: boolean
+  ignoreExternalFocusing?: boolean;
 
   /**
    * Indicates whether focus trap zone should force focus inside the trap zone when focus event occurs outside the zone.
    * @defaultvalue true
    */
-  forceFocusInsideTrapOnOutsideFocus?: boolean
+  forceFocusInsideTrapOnOutsideFocus?: boolean;
 
   /**
    * Indicates whether focus trap zone should force focus inside the trap zone on component update.
    */
-  forceFocusInsideTrapOnComponentUpdate?: boolean
+  forceFocusInsideTrapOnComponentUpdate?: boolean;
 
   /**
    * Indicates the selector for first focusable item.  Only applies if focusPreviouslyFocusedInnerElement == false.
    */
-  firstFocusableSelector?: string | (() => string)
+  firstFocusableSelector?: string | (() => string);
 
   /**
    * Do not put focus onto first element when render focus trap zone
    */
-  disableFirstFocus?: boolean
+  disableFirstFocus?: boolean;
 
   /**
    * Specifies the algorithm used to determine which descendant element to focus when focus() is called.
@@ -66,5 +66,5 @@ export interface FocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement>
    * If true, the element that was focused when the Trap Zone last had a focused descendant is chosen.
    * If it has never had a focused descendant before, behavior falls back to the first focused descendant.
    */
-  focusPreviouslyFocusedInnerElement?: boolean
+  focusPreviouslyFocusedInnerElement?: boolean;
 }

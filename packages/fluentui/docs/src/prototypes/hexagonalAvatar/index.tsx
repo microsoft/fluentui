@@ -1,13 +1,14 @@
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-import { Flex, StatusProps, WithAsProp, Extendable, Text } from '@fluentui/react'
-import CustomAvatar from './CustomAvatar'
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
+import { Flex, StatusProps, WithAsProp, Extendable, Text } from '@fluentui/react-northstar';
+import CustomAvatar from './CustomAvatar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const statusProps: Extendable<WithAsProp<StatusProps>> = {
-  icon: 'icon-checkmark',
+  icon: <AcceptIcon />,
   state: 'success',
   title: 'Available',
-}
+};
 
 const HexagonalAvatarPrototype = () => {
   return (
@@ -28,11 +29,7 @@ const HexagonalAvatarPrototype = () => {
         <div>
           <Text content="Hexagonal Avatar" />
           &emsp;
-          <CustomAvatar
-            hexagonal
-            image="public/images/avatar/small/matt.jpg"
-            status={statusProps}
-          />
+          <CustomAvatar hexagonal image="public/images/avatar/small/matt.jpg" status={statusProps} />
         </div>
         <div>
           <Text content="Regular Avatar" />
@@ -41,7 +38,7 @@ const HexagonalAvatarPrototype = () => {
         </div>
       </Flex>
     </div>
-  )
-}
+  );
+};
 
-export default HexagonalAvatarPrototype
+export default HexagonalAvatarPrototype;

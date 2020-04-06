@@ -1,7 +1,7 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import ComponentExample from '../../../../components/ComponentDoc/ComponentExample'
-import ExampleSection from '../../../../components/ComponentDoc/ExampleSection'
+import ComponentExample from '../../../../components/ComponentDoc/ComponentExample';
+import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const State = () => (
   <ExampleSection title="State">
@@ -11,6 +11,6 @@ const State = () => (
       examplePath="components/MenuButton/State/MenuButtonExampleOpen"
     />
   </ExampleSection>
-)
+);
 
-export default State
+export default State;

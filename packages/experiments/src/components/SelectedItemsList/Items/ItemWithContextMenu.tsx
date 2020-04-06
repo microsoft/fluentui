@@ -11,7 +11,9 @@ export type ItemWithContextMenuProps<T> = {
 };
 
 // `extends any` to trick the parser into parsing as a type decl instead of a jsx tag
-export const ItemWithContextMenu = <T extends any>(itemWithContextMenuProps: ItemWithContextMenuProps<T>): ItemCanDispatchTrigger<T> => {
+export const ItemWithContextMenu = <T extends any>(
+  itemWithContextMenuProps: ItemWithContextMenuProps<T>,
+): ItemCanDispatchTrigger<T> => {
   return React.memo(selectedItemProps => {
     const [isContextMenuOpen, setIsContextMenuOpen] = React.useState(false);
     const openContextMenu = React.useCallback(() => {
@@ -22,13 +24,12 @@ export const ItemWithContextMenu = <T extends any>(itemWithContextMenuProps: Ite
         e.preventDefault();
         setIsContextMenuOpen(false);
       },
-      [setIsContextMenuOpen]
+      [setIsContextMenuOpen],
     );
-    const menuItems = React.useMemo(() => itemWithContextMenuProps.menuItems(selectedItemProps.item, selectedItemProps.onTrigger), [
-      selectedItemProps.item,
-      selectedItemProps.onTrigger,
-      itemWithContextMenuProps.menuItems
-    ]);
+    const menuItems = React.useMemo(
+      () => itemWithContextMenuProps.menuItems(selectedItemProps.item, selectedItemProps.onTrigger),
+      [selectedItemProps.item, selectedItemProps.onTrigger, itemWithContextMenuProps.menuItems],
+    );
 
     const containerRef = React.useRef<HTMLElement>(null);
     const ItemComponent = itemWithContextMenuProps.itemComponent;

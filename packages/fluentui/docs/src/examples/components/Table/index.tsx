@@ -1,11 +1,11 @@
-import * as React from 'react'
+import * as React from 'react';
 
-import Usage from './Usage'
+import Usage from './Usage';
 
 const TableExamples = () => (
   <>
     <Usage />
   </>
-)
+);
 
-export default TableExamples
+export default TableExamples;

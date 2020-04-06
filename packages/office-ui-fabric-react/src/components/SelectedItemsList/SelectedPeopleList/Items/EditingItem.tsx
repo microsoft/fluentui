@@ -1,7 +1,12 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
-import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, classNamesFunction } from '../../../../Utilities';
+import {
+  KeyCodes,
+  getId,
+  getNativeProps,
+  inputProperties,
+  classNamesFunction,
+  initializeComponentRef,
+} from '../../../../Utilities';
 import { FloatingPeoplePicker } from '../../../../FloatingPicker';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { IPeoplePickerItemState } from './ExtendedSelectedItem';
@@ -9,12 +14,14 @@ import { IEditingSelectedPeopleItemProps } from './EditingItem.types';
 import { getStyles } from './EditingItem.styles';
 import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
 
-export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
+export class EditingItem extends React.Component<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
   private _editingFloatingPicker = React.createRef<FloatingPeoplePicker>();
 
   constructor(props: IEditingSelectedPeopleItemProps) {
     super(props);
+
+    initializeComponentRef(this);
     this.state = { contextualMenuVisible: false };
   }
 
@@ -84,7 +91,10 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
     if (this._editingFloatingPicker.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
-      if (target.className.indexOf('ms-Suggestions-itemButton') === -1 && target.className.indexOf('ms-Suggestions-sectionButton') === -1) {
+      if (
+        target.className.indexOf('ms-Suggestions-itemButton') === -1 &&
+        target.className.indexOf('ms-Suggestions-sectionButton') === -1
+      ) {
         this._editingFloatingPicker.current.forceResolveSuggestion();
       }
     }

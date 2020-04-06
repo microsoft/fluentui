@@ -31,7 +31,7 @@ export const getClassNames = memoizeFunction(
     required: boolean,
     focused: boolean,
     allowFreeForm: boolean,
-    hasErrorMessage: boolean
+    hasErrorMessage: boolean,
   ): IComboBoxClassNames => {
     return {
       container: mergeStyles('ms-ComboBox-container', className, styles.container),
@@ -42,15 +42,15 @@ export const getClassNames = memoizeFunction(
         required && 'is-required',
         styles.root,
         !allowFreeForm && styles.rootDisallowFreeForm,
-        hasErrorMessage ? styles.rootError : !disabled && focused && styles.rootFocused,
+        hasErrorMessage && !focused ? styles.rootError : !disabled && focused && styles.rootFocused,
         !disabled && {
           selectors: {
             ':hover': hasErrorMessage ? styles.rootError : !isOpen && !focused && styles.rootHovered,
             ':active': hasErrorMessage ? styles.rootError : styles.rootPressed,
-            ':focus': hasErrorMessage ? styles.rootError : styles.rootFocused
-          }
+            ':focus': hasErrorMessage ? styles.rootError : styles.rootFocused,
+          },
         },
-        disabled && ['is-disabled', styles.rootDisabled]
+        disabled && ['is-disabled', styles.rootDisabled],
       ),
       input: mergeStyles('ms-ComboBox-Input', styles.input, disabled && styles.inputDisabled),
       errorMessage: mergeStyles(styles.errorMessage),
@@ -59,9 +59,9 @@ export const getClassNames = memoizeFunction(
       optionsContainer: mergeStyles('ms-ComboBox-optionsContainer', styles.optionsContainer),
       header: mergeStyles('ms-ComboBox-header', styles.header),
       divider: mergeStyles('ms-ComboBox-divider', styles.divider),
-      screenReaderText: mergeStyles(styles.screenReaderText)
+      screenReaderText: mergeStyles(styles.screenReaderText),
     };
-  }
+  },
 );
 
 export const getComboBoxOptionClassNames = memoizeFunction(
@@ -72,10 +72,10 @@ export const getComboBoxOptionClassNames = memoizeFunction(
         selectors: {
           ':hover': styles.rootHovered,
           ':focus': styles.rootFocused,
-          ':active': styles.rootPressed
-        }
+          ':active': styles.rootPressed,
+        },
       }),
-      optionTextWrapper: mergeStyles(styles.optionTextWrapper)
+      optionTextWrapper: mergeStyles(styles.optionTextWrapper),
     };
-  }
+  },
 );

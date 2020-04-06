@@ -1,9 +1,9 @@
-import { Tree } from '@fluentui/react'
-import * as React from 'react'
+import { Tree } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const TreeMinimalPerf = () => <Tree />
+const TreeMinimalPerf = () => <Tree />;
 
-TreeMinimalPerf.iterations = 5000
-TreeMinimalPerf.filename = 'TreeMinimal.perf.tsx'
+TreeMinimalPerf.iterations = 5000;
+TreeMinimalPerf.filename = 'TreeMinimal.perf.tsx';
 
-export default TreeMinimalPerf
+export default TreeMinimalPerf;

@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Box } from '@fluentui/react'
+import * as React from 'react';
+import { Box } from '@fluentui/react-northstar';
 
 const BoxExample = () => (
   <Box
@@ -13,6 +13,6 @@ const BoxExample = () => (
   >
     Box
   </Box>
-)
+);
 
-export default BoxExample
+export default BoxExample;

@@ -43,7 +43,7 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
         sendFeedback(updatedVote);
       }
     },
-    [sendFeedback, vote]
+    [sendFeedback, vote],
   );
 
   const onLikeVote = useCallback((): void => {
@@ -76,7 +76,7 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
     onThanksShow,
     onLikeVote,
     onDislikeVote,
-    isThanksVisible
+    isThanksVisible,
   };
   return viewProps;
 };

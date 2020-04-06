@@ -22,12 +22,12 @@ describe('CommandBar', () => {
           <CommandBar
             items={[
               { key: '1', text: 'asdf' },
-              { key: '2', text: 'asdf' }
+              { key: '2', text: 'asdf' },
             ]}
             className={'TestClassName'}
-          />
+          />,
         )
-        .toJSON()
+        .toJSON(),
     ).toMatchSnapshot();
   });
 
@@ -38,12 +38,12 @@ describe('CommandBar', () => {
           <CommandBar
             items={[
               { key: '1', text: 'asdf' },
-              { key: '2', text: 'asdf' }
+              { key: '2', text: 'asdf' },
             ]}
             farItems={[]}
-          />
+          />,
         )
-        .toJSON()
+        .toJSON(),
     ).toMatchSnapshot();
   });
 
@@ -60,13 +60,13 @@ describe('CommandBar', () => {
                 {
                   text: 'SubmenuText 1',
                   key: 'SubmenuKey1',
-                  className: 'SubMenuClass'
-                }
-              ]
-            }
-          }
+                  className: 'SubMenuClass',
+                },
+              ],
+            },
+          },
         ]}
-      />
+      />,
     );
 
     const menuItem = commandBar.find('.MenuItem button');
@@ -86,11 +86,11 @@ describe('CommandBar', () => {
       key: 'TestKey1',
       className: 'MenuItem',
       data: {
-        foo: 'bar'
+        foo: 'bar',
       },
       onClick: (ev, item) => {
         testValue = item;
-      }
+      },
     };
 
     const commandBar = mount(<CommandBar items={[itemData]} />);
@@ -114,13 +114,13 @@ describe('CommandBar', () => {
                 {
                   text: 'SubmenuText 1',
                   key: 'SubmenuKey1',
-                  className: 'SubMenuClass'
-                }
-              ]
-            }
-          }
+                  className: 'SubMenuClass',
+                },
+              ],
+            },
+          },
         ]}
-      />
+      />,
     );
 
     const menuItem = commandBar.find('button');
@@ -135,9 +135,9 @@ describe('CommandBar', () => {
       items: commandBar.props().items.concat([
         {
           name: 'Test Key 2',
-          key: 'TestKey2'
-        }
-      ])
+          key: 'TestKey2',
+        },
+      ]),
     });
 
     // Make sure the menu is still open after the re-render
@@ -156,13 +156,13 @@ describe('CommandBar', () => {
                 {
                   text: 'SubmenuText 1',
                   key: 'SubmenuKey1',
-                  className: 'SubMenuClass'
-                }
-              ]
-            }
-          }
+                  className: 'SubMenuClass',
+                },
+              ],
+            },
+          },
         ]}
-      />
+      />,
     );
 
     const menuItem = commandBar.find('button');
@@ -174,7 +174,7 @@ describe('CommandBar', () => {
 
     // Update the props, and re-render
     commandBar.setProps({
-      items: []
+      items: [],
     });
 
     // Make sure the menu is still open after the re-render
@@ -185,15 +185,15 @@ describe('CommandBar', () => {
     const items = [
       {
         name: 'Text1',
-        key: 'Key1'
-      }
+        key: 'Key1',
+      },
     ];
 
     const overFlowItems = [
       {
         name: 'Text2',
-        key: 'Key2'
-      }
+        key: 'Key2',
+      },
     ];
 
     const commandBar = mount(
@@ -201,12 +201,12 @@ describe('CommandBar', () => {
         overflowButtonProps={{
           menuProps: {
             items: [{ name: 'Text3', key: 'Key3' }],
-            className: 'customMenuClass'
-          }
+            className: 'customMenuClass',
+          },
         }}
         overflowItems={overFlowItems}
         items={items}
-      />
+      />,
     );
 
     const overflowMenuButton = commandBar.find('.ms-CommandBar-overflowButton');
@@ -231,11 +231,11 @@ describe('CommandBar', () => {
             {
               name: 'SubmenuText 1',
               key: 'SubmenuKey1',
-              className: 'SubMenuClass'
-            }
-          ]
-        }
-      }
+              className: 'SubMenuClass',
+            },
+          ],
+        },
+      },
     ];
 
     const commandBar = mount(<CommandBar items={items} />);
@@ -252,7 +252,7 @@ describe('CommandBar', () => {
 
     // Re-render
     commandBar.setProps({
-      items: items
+      items: items,
     });
 
     // Make sure the menu is still open after the re-render

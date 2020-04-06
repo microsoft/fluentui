@@ -11,7 +11,8 @@ export const PanelControlledExample: React.FunctionComponent = () => {
 
   return (
     <div>
-      This panel can only be closed by clicking a button inside the panel content. (Don't use this behavior unless absolutely necessary.)
+      This panel can only be closed by clicking a button inside the panel content. (Don't use this behavior unless
+      absolutely necessary.)
       <br />
       <br />
       <DefaultButton text="Open panel" onClick={openPanel} />

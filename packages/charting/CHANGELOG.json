@@ -2,6 +2,172 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/charting_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DonutChart: Add prop to allow string inside Donut.",
+            "author": "v-satgar@microsoft.com",
+            "commit": "d33c765ff319e4aff2ffe788e618663974b92b84"
+          },
+          {
+            "comment": "providing Ymin and Ymax as props to the user",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3c6820fba99b1ec60e4de4a4465015675c91552b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/charting_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Vertical stacked bar chart added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "a231cb8de5291e0e6a0ec718d89485044231e68e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Mar 2020 12:26:03 GMT",
+      "tag": "@uifabric/charting_v0.143.0",
+      "version": "0.143.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "expose prop for overflow items text in legends",
+            "author": "v-satgar@microsoft.com",
+            "commit": "f5951ed478cea07cbdd9aa14ad0c24e46eaa9db4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/charting_v0.142.0",
+      "version": "0.142.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add support for screen reader when hover on donnut chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "0a9b9b17cf2af3bbd3af947cc1685f8edcec0afc"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/charting_v0.141.6",
+      "version": "0.141.6",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed accessiblity for the  statcked and multistacked bar chart by adding id for each callout and setting aria-labelledby accordingly",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "fb72078344218bf53179de722e3c724eb65fcf3e"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/charting_v0.141.1",
+      "version": "0.141.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issues stacked bar chart hover issue,line chart dot and line chart y axis disorted",
+            "author": "v-satgar@microsoft.com",
+            "commit": "988c73430e51994f3703b3953b2516f5544ec4a7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Mar 2020 12:24:03 GMT",
+      "tag": "@uifabric/charting_v0.141.0",
+      "version": "0.141.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Line chart Accessibility with screen reader",
+            "author": "v-satgar@microsoft.com",
+            "commit": "403f5effff2c0cdf28cff73328f629208a1bb418"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Feb 2020 12:25:39 GMT",
+      "tag": "@uifabric/charting_v0.140.3",
+      "version": "0.140.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable keyboard accessibility for Donut chart",
+            "author": "v-satgar@microsoft.com",
+            "commit": "bb05aa2eb9e36d2a5f2bbba01a2e396f9e60a0a2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Feb 2020 12:20:16 GMT",
+      "tag": "@uifabric/charting_v0.140.0",
+      "version": "0.140.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding aria-* attributes to the legends, and we can also access legends in the hover card by clicking up/down arrow",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "8ee54b6c69ccf5e88d6794bc41d0597b139da4d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Feb 2020 12:21:05 GMT",
+      "tag": "@uifabric/charting_v0.139.21",
+      "version": "0.139.21",
+      "comments": {
+        "none": [
+          {
+            "comment": "Add syncpack and synchronize dependencies. Refresh fluent import.",
+            "author": "jagore@microsoft.com",
+            "commit": "fb51dde1a365f7aad0cffbe23f01254ba1f31ebf"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@uifabric/charting_v0.139.20",
       "version": "0.139.20",

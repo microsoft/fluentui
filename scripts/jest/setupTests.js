@@ -10,10 +10,10 @@ const Adapter = require('enzyme-adapter-react-16');
 
 enzyme.configure({
   adapter: new Adapter(),
-  disableLifecycleMethods: true
+  disableLifecycleMethods: true,
 });
 
-if (process.env.CI) {
+if (process.env.TF_BUILD) {
   jest.spyOn(console, 'log');
   jest.spyOn(console, 'info');
   jest.spyOn(console, 'warn');

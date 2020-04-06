@@ -1,7 +1,8 @@
-import * as React from 'react'
-import { Avatar } from '@fluentui/react'
+import * as React from 'react';
+import { Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
-const status = { color: 'green', icon: 'icon-checkmark', title: 'Available' }
+const status = { color: 'green', icon: <AcceptIcon />, title: 'Available' };
 
 const AvatarExampleExcludedInitialsShorthand = () => (
   <div>
@@ -13,6 +14,6 @@ const AvatarExampleExcludedInitialsShorthand = () => (
     &emsp;
     <Avatar name="John A B Doe" status={status} />
   </div>
-)
+);
 
-export default AvatarExampleExcludedInitialsShorthand
+export default AvatarExampleExcludedInitialsShorthand;

@@ -14,7 +14,7 @@ export function warnConditionallyRequiredProps<P>(
   props: P,
   requiredProps: string[],
   conditionalPropName: string,
-  condition: boolean
+  condition: boolean,
 ): void {
   if (condition === true && process.env.NODE_ENV !== 'production') {
     for (const requiredPropName of requiredProps) {

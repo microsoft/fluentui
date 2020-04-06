@@ -15,7 +15,7 @@ process.env.PATH = process.env.PATH + path.delimiter + path.resolve(__dirname, '
 
 tsPaths.register({
   baseUrl: config.path_base,
-  paths: compilerOptions.paths
+  paths: compilerOptions.paths,
 });
 
 // load tasks in order of dependency usage
@@ -31,4 +31,4 @@ require('./scripts/gulp/tasks/test-circulars');
 require('./scripts/gulp/tasks/test-dependencies');
 
 // global tasks
-task('build', parallel('bundle:all-packages', 'build:docs'));
+task('build', parallel('build:docs'));

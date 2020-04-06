@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Grid, Input } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Input } from '@fluentui/react-northstar';
 
 const InputExample = () => (
   <div>
@@ -20,6 +20,6 @@ const InputExample = () => (
       <Input placeholder="Default input..." />
     </Grid>
   </div>
-)
+);
 
-export default InputExample
+export default InputExample;

@@ -3,7 +3,7 @@ import {
   IDetailsRowStyleProps,
   IDetailsRowStyles,
   IDetailsListStyleProps,
-  IDetailsListStyles
+  IDetailsListStyles,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { FontSizes } from '../AzureType';
@@ -23,21 +23,21 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
         backgroundColor: semanticColors.listBackground,
         borderColor: semanticColors.controlOutline,
         borderWidth: StyleConstants.borderWidth,
-        borderStyle: StyleConstants.borderSolid
-      }
+        borderStyle: StyleConstants.borderSolid,
+      },
     ],
     check: [
       {
         left: 2.5,
-        top: 1.5
+        top: 1.5,
       },
       checked && {
-        color: semanticColors.inputText
+        color: semanticColors.inputText,
       },
       !checked && {
-        color: semanticColors.listBackground
-      }
-    ]
+        color: semanticColors.listBackground,
+      },
+    ],
   };
 };
 
@@ -47,7 +47,7 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
 
   return {
     root: {
-      borderTop: StyleConstants.borderNone
+      borderTop: StyleConstants.borderNone,
     },
     headerWrapper: {
       selectors: {
@@ -62,17 +62,17 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
               borderRightStyle: StyleConstants.borderSolid,
               borderRightColor: semanticColors.listBackground,
               fontSize: FontSizes.size10,
-              fontWeight: 700
+              fontWeight: 700,
             },
             ':hover .ms-DetailsHeader-cellTitle': {
               borderRightWidth: StyleConstants.borderWidth,
               borderRightStyle: StyleConstants.borderSolid,
-              borderRightColor: semanticColors.variantBorder
-            }
-          }
-        }
-      }
-    }
+              borderRightColor: semanticColors.variantBorder,
+            },
+          },
+        },
+      },
+    },
   };
 };
 
@@ -85,7 +85,7 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
       {
         borderColor: semanticColors.variantBorder,
         color: semanticColors.listText,
-        fontSize: FontSizes.size12
+        fontSize: FontSizes.size12,
       },
       !isSelected && [
         {
@@ -93,38 +93,38 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
           color: semanticColors.listText,
           selectors: {
             ':hover': {
-              backgroundColor: semanticColors.listItemBackgroundHovered
+              backgroundColor: semanticColors.listItemBackgroundHovered,
             },
             ':focus': {
-              backgroundColor: semanticColors.listItemBackgroundHovered
+              backgroundColor: semanticColors.listItemBackgroundHovered,
             },
             ':focus:hover': {
-              backgroundColor: semanticColors.listItemBackgroundHovered
-            }
-          }
-        }
+              backgroundColor: semanticColors.listItemBackgroundHovered,
+            },
+          },
+        },
       ],
       isSelected && [
         {
           background: semanticColors.listItemBackgroundChecked,
           selectors: {
             ':hover': {
-              background: semanticColors.listItemBackgroundHovered
+              background: semanticColors.listItemBackgroundHovered,
             },
             ':focus': {
-              background: semanticColors.listItemBackgroundChecked
+              background: semanticColors.listItemBackgroundChecked,
             },
             ':focus:hover': {
-              background: semanticColors.listItemBackgroundHovered
-            }
-          }
-        }
-      ]
+              background: semanticColors.listItemBackgroundHovered,
+            },
+          },
+        },
+      ],
     ],
     cell: [
       {
-        color: semanticColors.listText
-      }
-    ]
+        color: semanticColors.listText,
+      },
+    ],
   };
 };

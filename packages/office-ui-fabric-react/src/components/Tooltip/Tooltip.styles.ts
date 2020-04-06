@@ -26,11 +26,11 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
             left: tooltipGapSpace,
             right: tooltipGapSpace,
             top: tooltipGapSpace,
-            zIndex: 0
-          }
-        }
+            zIndex: 0,
+          },
+        },
       },
-      className
+      className,
     ],
     content: [
       'ms-Tooltip-content',
@@ -41,8 +41,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         color: semanticColors.menuItemText,
         wordWrap: 'break-word',
         overflowWrap: 'break-word',
-        overflow: 'hidden'
-      }
+        overflow: 'hidden',
+      },
     ],
     subText: [
       'ms-Tooltip-subtext',
@@ -51,8 +51,8 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         fontSize: 'inherit',
         fontWeight: 'inherit',
         color: 'inherit',
-        margin: 0
-      }
-    ]
+        margin: 0,
+      },
+    ],
   };
 };

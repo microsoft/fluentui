@@ -1,9 +1,9 @@
-import { Label } from '@fluentui/react'
-import * as React from 'react'
+import { Label } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const LabelMinimalPerf = () => <Label />
+const LabelMinimalPerf = () => <Label />;
 
-LabelMinimalPerf.iterations = 5000
-LabelMinimalPerf.filename = 'LabelMinimal.perf.tsx'
+LabelMinimalPerf.iterations = 5000;
+LabelMinimalPerf.filename = 'LabelMinimal.perf.tsx';
 
-export default LabelMinimalPerf
+export default LabelMinimalPerf;

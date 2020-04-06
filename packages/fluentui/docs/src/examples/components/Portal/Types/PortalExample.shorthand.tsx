@@ -1,19 +1,19 @@
-import * as React from 'react'
-import { Button, Divider, Flex, Header, Label, Portal } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Divider, Flex, Header, Label, Portal } from '@fluentui/react-northstar';
 
 class PortalExamplePortal extends React.Component {
-  state = { log: [], logCount: 0 }
+  state = { log: [], logCount: 0 };
 
   handleClick = () =>
     this.setState({
       log: [`${new Date().toLocaleTimeString()}: handleClick`, ...this.state.log].slice(0, 20),
       logCount: this.state.logCount + 1,
-    })
+    });
 
-  clearLog = () => this.setState({ log: [], logCount: 0 })
+  clearLog = () => this.setState({ log: [], logCount: 0 });
 
   render() {
-    const { log, logCount } = this.state
+    const { log, logCount } = this.state;
 
     return (
       <div>
@@ -55,8 +55,8 @@ class PortalExamplePortal extends React.Component {
           </pre>
         </div>
       </div>
-    )
+    );
   }
 }
 
-export default PortalExamplePortal
+export default PortalExamplePortal;

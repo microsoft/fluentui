@@ -46,7 +46,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
@@ -151,7 +152,8 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   showSixWeeksByDefault?: boolean;
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek. If dateRangeType is not WorkWeek this property does nothing.
+   * The days that are selectable when dateRangeType is WorkWeek.
+   * If dateRangeType is not WorkWeek this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
@@ -242,13 +244,15 @@ export interface ICalendarStrings {
   nextYearRangeAriaLabel?: string;
 
   /**
-   * Aria-label format string for the header button in the month picker. Should have 1 string param e.g. "`{0}`, select to change the year".
-   * This aria-label will only be applied if the year picker is enabled, otherwise the label will default to the header string e.g. "2019"
+   * Aria-label format string for the header button in the month picker. Should have 1 string param, e.g. "`{0}`,
+   * select to change the year". This aria-label will only be applied if the year picker is enabled; otherwise
+   * the label will default to the header string, e.g. "2019".
    */
   monthPickerHeaderAriaLabel?: string;
 
   /**
-   * Aria-label format string for the header button in the year picker. Should have 1 string param e.g. "`{0}`, select to change the month"
+   * Aria-label format string for the header button in the year picker.
+   * Should have 1 string param, e.g. "`{0}`, select to change the month"
    */
   yearPickerHeaderAriaLabel?: string;
 
@@ -258,17 +262,17 @@ export interface ICalendarStrings {
   closeButtonAriaLabel?: string;
 
   /**
-   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number `{0}`"
+   * Aria-label format string for the week number header. Should have 1 string param, e.g. "week number `{0}`"
    */
   weekNumberFormatString?: string;
 
   /**
-   * Aria-label format string for the currently selected date. Should have 1 string param e.g. "Selected date `{0}`"
+   * Aria-label format string for the currently selected date. Should have 1 string param, e.g. "Selected date `{0}`"
    */
   selectedDateFormatString?: string;
 
   /**
-   * Aria-label format string for today's date. Should have 1 string param e.g. "Today's date `{0}`"
+   * Aria-label format string for today's date. Should have 1 string param, e.g. "Today's date `{0}`"
    */
   todayDateFormatString?: string;
 }
@@ -387,5 +391,5 @@ export enum AnimationDirection {
   /**
    * Grid will transition out and in vertically
    */
-  Vertical
+  Vertical,
 }

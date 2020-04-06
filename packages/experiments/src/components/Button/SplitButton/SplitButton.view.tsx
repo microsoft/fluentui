@@ -17,7 +17,7 @@ export const SplitButtonSlots: ISplitButtonComponent['slots'] = props => ({
   menu: ContextualMenu,
   menuIcon: FontIcon,
   splitDividerContainer: 'span',
-  splitDivider: 'span'
+  splitDivider: 'span',
 });
 
 export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => {
@@ -49,7 +49,12 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
 
   const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
 
-  const { contentPadding, contentPaddingFocused, secondaryPadding, ...splitButtonTokens } = tokens as ISplitButtonTokens;
+  const {
+    contentPadding,
+    contentPaddingFocused,
+    secondaryPadding,
+    ...splitButtonTokens
+  } = tokens as ISplitButtonTokens;
   const {
     backgroundColor,
     backgroundColorHovered,
@@ -77,7 +82,9 @@ export const SplitButtonView: ISplitButtonComponent['view'] = (props, slots) => 
     iconColorPressed,
     ...nonColoredButtonTokens
   } = splitButtonTokens;
-  const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens } : tokens;
+  const buttonTokens = primaryActionDisabled
+    ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens }
+    : tokens;
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (

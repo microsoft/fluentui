@@ -1,9 +1,9 @@
-import { List } from '@fluentui/react'
-import * as React from 'react'
+import { List } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const ListMinimalPerf = () => <List />
+const ListMinimalPerf = () => <List />;
 
-ListMinimalPerf.iterations = 5000
-ListMinimalPerf.filename = 'ListMinimal.perf.tsx'
+ListMinimalPerf.iterations = 5000;
+ListMinimalPerf.filename = 'ListMinimal.perf.tsx';
 
-export default ListMinimalPerf
+export default ListMinimalPerf;

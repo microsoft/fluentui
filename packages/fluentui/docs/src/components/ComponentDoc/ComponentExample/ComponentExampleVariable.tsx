@@ -1,30 +1,30 @@
-import { Input, InputProps, Popup } from '@fluentui/react'
-import * as React from 'react'
-import ComponentExampleColorPicker from './ComponentExampleColorPicker'
+import { Input, InputProps, Popup } from '@fluentui/react-northstar';
+import * as React from 'react';
+import ComponentExampleColorPicker from './ComponentExampleColorPicker';
 
 export type ComponentExampleVariableProps = {
-  componentName: string
-  onChange: (componentName: string, variableName: string, variableValue: string) => void
-  variableName: string
-  variableType: 'color' | 'string'
-  variableValue: string
-}
+  componentName: string;
+  onChange: (componentName: string, variableName: string, variableValue: string) => void;
+  variableName: string;
+  variableType: 'color' | 'string';
+  variableValue: string;
+};
 
 const ComponentExampleVariable: React.FunctionComponent<ComponentExampleVariableProps> = props => {
-  const { componentName, onChange, variableName, variableType, variableValue } = props
+  const { componentName, onChange, variableName, variableType, variableValue } = props;
 
   const handleInputChange = React.useCallback(
     (e, data: InputProps) => {
-      onChange(componentName, variableName, data.value as string)
+      onChange(componentName, variableName, data.value as string);
     },
     [componentName, onChange, variableName],
-  )
+  );
   const handleColorChange = React.useCallback(
     (colorValue: string) => {
-      onChange(componentName, variableName, colorValue)
+      onChange(componentName, variableName, colorValue);
     },
     [componentName, onChange, variableName],
-  )
+  );
 
   return (
     <div style={{ padding: '0.25rem' }}>
@@ -52,16 +52,11 @@ const ComponentExampleVariable: React.FunctionComponent<ComponentExampleVariable
           }
           align="start"
           position="below"
-          content={
-            <ComponentExampleColorPicker
-              onChange={handleColorChange}
-              variableValue={variableValue}
-            />
-          }
+          content={<ComponentExampleColorPicker onChange={handleColorChange} variableValue={variableValue} />}
         />
       )}
     </div>
-  )
-}
+  );
+};
 
-export default React.memo(ComponentExampleVariable)
+export default React.memo(ComponentExampleVariable);

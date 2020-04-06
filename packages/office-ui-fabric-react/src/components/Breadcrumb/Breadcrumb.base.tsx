@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { initializeComponentRef, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import {
+  initializeComponentRef,
+  getRTL,
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties,
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -15,7 +21,7 @@ import {
   IDividerAsProps,
   IBreadcrumbData,
   IBreadcrumbStyleProps,
-  IBreadcrumbStyles
+  IBreadcrumbStyles,
 } from './Breadcrumb.types';
 
 /** @deprecated Use IBreadcrumbData */
@@ -33,12 +39,12 @@ const nonActionableItemProps: Partial<IContextualMenuItemProps> = {
       root: {
         selectors: {
           '&.is-disabled': {
-            color: theme.semanticColors.bodyText
-          }
-        }
-      }
+            color: theme.semanticColors.bodyText,
+          },
+        },
+      },
     };
-  }
+  },
 };
 
 /**
@@ -48,7 +54,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
     maxDisplayedItems: 999,
-    overflowIndex: 0
+    overflowIndex: 0,
   };
 
   private _classNames: IProcessedStyleSet<IBreadcrumbStyles>;
@@ -73,18 +79,26 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   public render(): JSX.Element {
     this._validateProps(this.props);
 
-    const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
+    const {
+      onReduceData = this._onReduceData,
+      overflowIndex,
+      maxDisplayedItems,
+      items,
+      className,
+      theme,
+      styles,
+    } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
     const breadcrumbData: IBreadcrumbData = {
       props: this.props,
       renderedItems,
-      renderedOverflowItems
+      renderedOverflowItems,
     };
 
     this._classNames = getClassNames(styles, {
       className,
-      theme: theme!
+      theme: theme!,
     });
 
     return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
@@ -108,11 +122,11 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
   private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
     const {
       ariaLabel,
-      dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,
+      dividerAs: DividerType = Icon as React.ElementType<IDividerAsProps>,
       onRenderItem = this._onRenderItem,
       overflowAriaLabel,
       overflowIndex,
-      onRenderOverflowIcon
+      onRenderOverflowIcon,
     } = data.props;
     const { renderedOverflowItems, renderedItems } = data;
 
@@ -125,9 +139,9 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
           onClick: item.onClick ? this._onBreadcrumbClicked.bind(this, item) : null,
           href: item.href,
           disabled: !isActionable,
-          itemProps: isActionable ? undefined : nonActionableItemProps
+          itemProps: isActionable ? undefined : nonActionableItemProps,
         };
-      }
+      },
     );
 
     // Find index of last rendered item so the divider icon
@@ -165,7 +179,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
             onRenderMenuIcon={onRenderMenuIcon}
             menuProps={{
               items: contextualItems,
-              directionalHint: DirectionalHint.bottomLeftEdge
+              directionalHint: DirectionalHint.bottomLeftEdge,
             }}
           />
           {overflowIndex !== lastItemIndex + 1 && (
@@ -175,15 +189,21 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
               item={renderedOverflowItems[renderedOverflowItems.length - 1]}
             />
           )}
-        </li>
+        </li>,
       );
     }
 
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
+      'className',
+    ]);
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
-        <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal} {...this.props.focusZoneProps}>
+        <FocusZone
+          componentRef={this._focusZone}
+          direction={FocusZoneDirection.horizontal}
+          {...this.props.focusZoneProps}
+        >
           <ol className={this._classNames.list}>{itemElements}</ol>
         </FocusZone>
       </div>

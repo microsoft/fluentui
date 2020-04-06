@@ -1,12 +1,12 @@
-import * as PropTypes from 'prop-types'
-import * as React from 'react'
-import * as ReactDOM from 'react-dom'
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 
-import handleRef from './handleRef'
-import { RefProps, refPropType } from './types'
+import handleRef from './handleRef';
+import { RefProps, refPropType } from './types';
 
 export default class RefFindNode extends React.Component<RefProps> {
-  static displayName = 'RefFindNode'
+  static displayName = 'RefFindNode';
 
   // TODO: use Babel plugin for this
   static propTypes =
@@ -15,38 +15,38 @@ export default class RefFindNode extends React.Component<RefProps> {
           children: PropTypes.element.isRequired,
           innerRef: refPropType.isRequired,
         }
-      : {}
+      : {};
 
-  prevNode: Node | null = null
+  prevNode: Node | null = null;
 
   componentDidMount() {
-    this.prevNode = ReactDOM.findDOMNode(this)
+    this.prevNode = ReactDOM.findDOMNode(this);
 
-    handleRef(this.props.innerRef, this.prevNode)
+    handleRef(this.props.innerRef, this.prevNode);
   }
 
   componentDidUpdate(prevProps: RefProps) {
-    const currentNode = ReactDOM.findDOMNode(this)
+    const currentNode = ReactDOM.findDOMNode(this);
 
     if (this.prevNode !== currentNode) {
-      this.prevNode = currentNode
-      handleRef(this.props.innerRef, currentNode)
+      this.prevNode = currentNode;
+      handleRef(this.props.innerRef, currentNode);
     }
 
     if (prevProps.innerRef !== this.props.innerRef) {
-      handleRef(this.props.innerRef, currentNode)
+      handleRef(this.props.innerRef, currentNode);
     }
   }
 
   componentWillUnmount() {
-    handleRef(this.props.innerRef, null)
+    handleRef(this.props.innerRef, null);
 
-    delete this.prevNode
+    delete this.prevNode;
   }
 
   render() {
-    const { children } = this.props
+    const { children } = this.props;
 
-    return children
+    return children;
   }
 }

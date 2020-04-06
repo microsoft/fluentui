@@ -1,9 +1,9 @@
-import { Box } from '@fluentui/react'
-import * as React from 'react'
+import { Box } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const BoxMinimalPerf = () => <Box />
+const BoxMinimalPerf = () => <Box />;
 
-BoxMinimalPerf.iterations = 5000
-BoxMinimalPerf.filename = 'BoxMinimal.perf.tsx'
+BoxMinimalPerf.iterations = 5000;
+BoxMinimalPerf.filename = 'BoxMinimal.perf.tsx';
 
-export default BoxMinimalPerf
+export default BoxMinimalPerf;

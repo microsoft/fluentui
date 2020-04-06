@@ -1,6 +1,12 @@
 import * as React from 'react';
 import { classNamesFunction, initializeComponentRef } from '../../Utilities';
-import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker, IColorPickerStrings } from './ColorPicker.types';
+import {
+  IColorPickerProps,
+  IColorPickerStyleProps,
+  IColorPickerStyles,
+  IColorPicker,
+  IColorPickerStrings,
+} from './ColorPicker.types';
 import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
@@ -14,7 +20,7 @@ import {
   MIN_HEX_LENGTH,
   MIN_RGBA_LENGTH,
   HEX_REGEX,
-  RGBA_REGEX
+  RGBA_REGEX,
 } from '../../utilities/color/consts';
 import { IColor, IRGB } from '../../utilities/color/interfaces';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
@@ -54,8 +60,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       hueAriaLabel: 'Hue',
       svAriaLabel: ColorRectangleBase.defaultProps.ariaLabel!,
       svAriaValueFormat: ColorRectangleBase.defaultProps.ariaValueFormat!,
-      svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!
-    }
+      svAriaDescription: ColorRectangleBase.defaultProps.ariaDescription!,
+    },
   };
 
   private _textChangeHandlers: {
@@ -75,7 +81,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     initializeComponentRef(this);
 
     this.state = {
-      color: _getColorFromProps(props) || getColorFromString('#ffffff')!
+      color: _getColorFromProps(props) || getColorFromString('#ffffff')!,
     };
 
     this._textChangeHandlers = {} as any;
@@ -87,16 +93,18 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     const defaultStrings = ColorPickerBase.defaultProps.strings as Required<IColorPickerStrings>;
 
     this._textLabels = {
+      // tslint:disable:deprecation
       r: props.redLabel || strings.red || defaultStrings.red,
       g: props.greenLabel || strings.green || defaultStrings.green,
       b: props.blueLabel || strings.blue || defaultStrings.blue,
       a: props.alphaLabel || strings.alpha || defaultStrings.alpha,
-      hex: props.hexLabel || strings.hex || defaultStrings.hex
+      hex: props.hexLabel || strings.hex || defaultStrings.hex,
+      // tslint:enable:deprecation
     };
 
     this._strings = {
       ...defaultStrings,
-      ...strings
+      ...strings,
     };
   }
 
@@ -123,7 +131,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className
+      className,
     });
 
     const colorStr = color.str || '';
@@ -151,6 +159,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
             <div className={classNames.flexSlider}>
               <ColorSlider
                 className="is-hue"
+                // tslint:disable-next-line:deprecation
                 ariaLabel={strings.hue || strings.hueAriaLabel}
                 minValue={0}
                 maxValue={MAX_COLOR_HUE}
@@ -175,7 +184,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
                 <div
                   className={classNames.colorSquare + ' is-preview'}
                   style={{
-                    backgroundColor: color.str
+                    backgroundColor: color.str,
                   }}
                 />
               </div>
@@ -293,7 +302,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
         : getColorFromRGBA({
             ...color,
             // Overwrite whichever key is being updated with the new value
-            [component]: Number(newValue)
+            [component]: Number(newValue),
           });
       this._updateColor(event, newColor);
     }
@@ -318,8 +327,8 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
         newColor = getColorFromRGBA(
           correctRGB({
             ...color,
-            [component]: Number(value)
-          } as IRGB)
+            [component]: Number(value),
+          } as IRGB),
         );
       }
 

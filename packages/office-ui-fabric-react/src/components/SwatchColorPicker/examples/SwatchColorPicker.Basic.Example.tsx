@@ -13,7 +13,7 @@ const colorCellsExample1 = [
   { id: 'b', label: 'cyan', color: '#038387' },
   { id: 'c', label: 'blueMagenta', color: '#8764b8' },
   { id: 'd', label: 'magenta', color: '#881798' },
-  { id: 'e', label: 'white', color: '#ffffff' }
+  { id: 'e', label: 'white', color: '#ffffff' },
 ];
 const colorCellsExample2 = [
   { id: 'a', label: 'red', color: '#a4262c' },
@@ -27,7 +27,7 @@ const colorCellsExample2 = [
   { id: 'i', label: 'magentaPink', color: '#9b0062' },
   { id: 'j', label: 'black', color: '#000000' },
   { id: 'k', label: 'gray', color: '#7a7574' },
-  { id: 'l', label: 'gray20', color: '#69797e' }
+  { id: 'l', label: 'gray20', color: '#69797e' },
 ];
 
 export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSwatchColorPickerExampleState> {
@@ -38,16 +38,26 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
       color: undefined,
       previewColor: undefined,
       color2: undefined,
-      previewColor2: undefined
+      previewColor2: undefined,
     };
   }
   public render(): JSX.Element {
     return (
       <div>
         <div>Simple circle swatch color picker:</div>
-        <SwatchColorPicker columnCount={5} selectedId={this.state.color} cellShape={'circle'} colorCells={colorCellsExample1} />
+        <SwatchColorPicker
+          columnCount={5}
+          selectedId={this.state.color}
+          cellShape={'circle'}
+          colorCells={colorCellsExample1}
+        />
         <div>Simple square swatch color picker with default size of 20px:</div>
-        <SwatchColorPicker columnCount={5} selectedId={this.state.color} cellShape={'square'} colorCells={colorCellsExample1} />
+        <SwatchColorPicker
+          columnCount={5}
+          selectedId={this.state.color}
+          cellShape={'square'}
+          colorCells={colorCellsExample1}
+        />
         <div>Simple square swatch color picker with custom size of 35px:</div>
         <SwatchColorPicker
           columnCount={5}
@@ -57,11 +67,14 @@ export class SwatchColorPickerBasicExample extends React.Component<any, IBasicSw
           cellShape={'square'}
           colorCells={colorCellsExample1}
         />
-        <div>Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview color:</div>
+        <div>
+          Simple swatch color picker with multiple rows and larger cells that updates its icon color and shows a preview
+          color:
+        </div>
         <div
           style={{
             color: this.state.previewColor ? this.state.previewColor : this.state.color ? this.state.color : undefined,
-            fontSize: '24px'
+            fontSize: '24px',
           }}
         >
           Sample Text

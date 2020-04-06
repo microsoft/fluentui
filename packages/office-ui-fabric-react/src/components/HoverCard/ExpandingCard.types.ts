@@ -11,7 +11,8 @@ export interface IExpandingCard {}
  * ExpandingCard component props.
  * {@docCategory HoverCard}
  */
-export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
+export interface IExpandingCardProps
+  extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
   /**
    * Height of compact card
    * @defaultvalue 156
@@ -53,7 +54,7 @@ export enum ExpandingCardMode {
   /**
    * To have both top compact and bottom expanded card
    */
-  expanded = 1
+  expanded = 1,
 }
 
 /**

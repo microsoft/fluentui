@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { List } from '@fluentui/react'
+import * as React from 'react';
+import { List } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -17,8 +17,8 @@ const items = [
     content: 'The GB pixel is down, navigate the virtual interface!',
     contentMedia: '5:22:40 PM',
   },
-]
+];
 
-const ListExample = () => <List items={items} />
+const ListExample = () => <List items={items} />;
 
-export default ListExample
+export default ListExample;

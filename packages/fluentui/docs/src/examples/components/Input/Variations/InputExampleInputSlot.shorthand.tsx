@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Grid, Input, Text } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, Input, Text } from '@fluentui/react-northstar';
 
-const inputStyles = { color: 'blue', background: 'yellow' }
+const inputStyles = { color: 'blue', background: 'yellow' };
 const InputExampleInputSlot = () => (
   <Grid columns="1fr 2fr" styles={{ justifyItems: 'start', alignItems: 'center', gap: '10px' }}>
     <Text content="Input default:" />
@@ -23,6 +23,6 @@ const InputExampleInputSlot = () => (
       }}
     />
   </Grid>
-)
+);
 
-export default InputExampleInputSlot
+export default InputExampleInputSlot;

@@ -10,19 +10,19 @@ const classNames = mergeStyleSets({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    height: '100%'
+    height: '100%',
   },
   expandedCard: {
-    padding: '16px 24px'
+    padding: '16px 24px',
   },
   item: {
     selectors: {
       '&:hover': {
         textDecoration: 'underline',
-        cursor: 'pointer'
-      }
-    }
-  }
+        cursor: 'pointer',
+      },
+    },
+  },
 });
 
 export class HoverCardBasicExample extends React.Component<{}, {}> {
@@ -35,8 +35,15 @@ export class HoverCardBasicExample extends React.Component<{}, {}> {
         <p>
           Hover over the <i>location</i> cell of a row item to see the card or use the keyboard to navigate to it.
         </p>
-        <p>When using the keyboard to tab to it, the card will open but navigation inside of it will not be available.</p>
-        <DetailsList setKey="hoverSet" items={this._items} columns={this._columns} onRenderItemColumn={this._onRenderItemColumn} />
+        <p>
+          When using the keyboard to tab to it, the card will open but navigation inside of it will not be available.
+        </p>
+        <DetailsList
+          setKey="hoverSet"
+          items={this._items}
+          columns={this._columns}
+          onRenderItemColumn={this._onRenderItemColumn}
+        />
       </Fabric>
     );
   }
@@ -45,7 +52,7 @@ export class HoverCardBasicExample extends React.Component<{}, {}> {
     const expandingCardProps: IExpandingCardProps = {
       onRenderCompactCard: this._onRenderCompactCard,
       onRenderExpandedCard: this._onRenderExpandedCard,
-      renderData: item
+      renderData: item,
     };
 
     if (column.key === 'location') {

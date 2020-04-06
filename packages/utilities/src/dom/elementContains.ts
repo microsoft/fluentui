@@ -6,7 +6,11 @@ import { getParent } from './getParent';
  *
  * @public
  */
-export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents: boolean = true): boolean {
+export function elementContains(
+  parent: HTMLElement | null,
+  child: HTMLElement | null,
+  allowVirtualParents: boolean = true,
+): boolean {
   let isContained = false;
   if (parent && child) {
     if (allowVirtualParents) {

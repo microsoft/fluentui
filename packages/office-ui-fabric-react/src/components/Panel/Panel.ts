@@ -12,6 +12,6 @@ export const Panel: React.FunctionComponent<IPanelProps> = styled<IPanelProps, I
   getStyles,
   undefined,
   {
-    scope: 'Panel'
-  }
+    scope: 'Panel',
+  },
 );

@@ -1,10 +1,10 @@
-import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react'
+import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react-northstar';
 
 type ThemeOverrides = ThemeInput & {
   componentStyles: {
-    Notification: ComponentSlotStylesInput
-  }
-}
+    Notification: ComponentSlotStylesInput;
+  };
+};
 
 const themeOverrides: ThemeOverrides = {
   componentStyles: {
@@ -36,6 +36,6 @@ const themeOverrides: ThemeOverrides = {
       }),
     },
   },
-}
+};
 
-export default themeOverrides
+export default themeOverrides;

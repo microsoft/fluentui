@@ -1,14 +1,14 @@
-import { KnobProvider } from '@fluentui/docs-components'
-import * as _ from 'lodash'
-import * as React from 'react'
+import { KnobProvider } from '@fluentui/docs-components';
+import * as _ from 'lodash';
+import * as React from 'react';
 
-import { examplePlaygroundContext } from '../../utils'
-import ComponentPlaygroundTemplate from './ComponentPlaygroundTemplate'
-import usePlaygroundComponent from './usePlaygroundComponent'
+import { examplePlaygroundContext } from '../../utils';
+import ComponentPlaygroundTemplate from './ComponentPlaygroundTemplate';
+import usePlaygroundComponent from './usePlaygroundComponent';
 
 type ComponentPlaygroundProps = {
-  componentName: string
-}
+  componentName: string;
+};
 
 const unsupportedComponents = [
   'Accordion',
@@ -32,25 +32,25 @@ const unsupportedComponents = [
   'Table',
   'Toolbar',
   'Ref',
-]
+];
 
 const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = props => {
   if (unsupportedComponents.indexOf(props.componentName) !== -1) {
-    return null
+    return null;
   }
 
-  const playgroundPaths = examplePlaygroundContext.keys()
+  const playgroundPaths = examplePlaygroundContext.keys();
   const playgroundPath = _.find(playgroundPaths, playgroundPath =>
     _.includes(playgroundPath, `/${props.componentName}/`),
-  )
+  );
 
   if (playgroundPath) {
-    const component: React.FC = examplePlaygroundContext(playgroundPath).default
+    const component: React.FC = examplePlaygroundContext(playgroundPath).default;
 
-    return <ComponentPlaygroundTemplate component={component} />
+    return <ComponentPlaygroundTemplate component={component} />;
   }
 
-  const [element, unsupportedProps] = usePlaygroundComponent(props.componentName)
+  const [element, unsupportedProps] = usePlaygroundComponent(props.componentName);
 
   return (
     /* TODO: remove "fluid" prop after Divider's refactor */
@@ -69,12 +69,12 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
         </div>
       )}
     </ComponentPlaygroundTemplate>
-  )
-}
+  );
+};
 
 export default props => (
   /* KnobProvider should be defined outside otherwise hooks will not properly register */
   <KnobProvider>
     <ComponentPlayground {...props} />
   </KnobProvider>
-)
+);

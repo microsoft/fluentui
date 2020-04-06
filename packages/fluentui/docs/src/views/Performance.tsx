@@ -1,29 +1,23 @@
-import * as React from 'react'
-import DocPage from '../components/DocPage/DocPage'
-import GuidesNavigationFooter from '../components/GuidesNavigationFooter'
-import { link, code } from '../utils/helpers'
-import ExampleSnippet from '../components/ExampleSnippet'
+import * as React from 'react';
+import DocPage from '../components/DocPage/DocPage';
+import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
+import { link, code } from '../utils/helpers';
+import ExampleSnippet from '../components/ExampleSnippet';
 
 export default () => (
   <DocPage title="Performance">
     <p>
-      In general, to make your application that is using Fluent UI performant, it is important to
-      follow all{' '}
-      {link(
-        'React performance best practices',
-        'https://reactjs.org/docs/optimizing-performance.html',
-      )}
-      .
+      In general, to make your application that is using Fluent UI performant, it is important to follow all{' '}
+      {link('React performance best practices', 'https://reactjs.org/docs/optimizing-performance.html')}.
     </p>
     <p>
-      To avoid unnecessary re-rendering of components that use{' '}
-      {link('Shorthand API', '/shorthand-prop')}, always gather the required data before rendering
-      of the component, potentially by{' '}
+      To avoid unnecessary re-rendering of components that use {link('Shorthand API', '/shorthand-prop')}, always gather
+      the required data before rendering of the component, potentially by{' '}
       {link('lifting the state up', 'https://reactjs.org/docs/lifting-state-up.html')}.
     </p>
     <p>
-      For container components, especially if rendering of the items might be an expensive
-      operation, memoization (for example {code('React.memo')}) of items can be used:
+      For container components, especially if rendering of the items might be an expensive operation, memoization (for
+      example {code('React.memo')}) of items can be used:
       <ExampleSnippet
         value={`
         const MenuItem = React.memo(Menu.Item, (prevProps, nextProps) => {
@@ -56,8 +50,6 @@ export default () => (
       />
     </p>
 
-    <GuidesNavigationFooter
-      previous={{ name: 'Integrate custom components', url: 'integrate-custom-components' }}
-    />
+    <GuidesNavigationFooter previous={{ name: 'Integrate custom components', url: 'integrate-custom-components' }} />
   </DocPage>
-)
+);

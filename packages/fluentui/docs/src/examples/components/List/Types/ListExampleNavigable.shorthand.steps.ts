@@ -1,10 +1,9 @@
-import { List } from '@fluentui/react'
+import { List } from '@fluentui/react-northstar';
 
 const selectors = {
   list: `.${List.className}`,
-  item: (itemIndex: number) =>
-    `.${List.className} .${List.Item.className}:nth-of-type(${itemIndex})`,
-}
+  item: (itemIndex: number) => `.${List.className} .${List.Item.className}:nth-of-type(${itemIndex})`,
+};
 
 const config: ScreenerTestsConfig = {
   themes: ['teams', 'teamsDark', 'teamsHighContrast'],
@@ -21,6 +20,6 @@ const config: ScreenerTestsConfig = {
         .snapshot('Focuses last item using keyboard'),
     (builder, keys) => builder.keys('body', keys.tab).snapshot('Focuses item'),
   ],
-}
+};
 
-export default config
+export default config;

@@ -1,6 +1,7 @@
-import { useBooleanKnob } from '@fluentui/docs-components'
-import * as React from 'react'
-import { Button, Dropdown, Popup, Flex } from '@fluentui/react'
+import { useBooleanKnob } from '@fluentui/docs-components';
+import * as React from 'react';
+import { Button, Dropdown, Popup, Flex } from '@fluentui/react-northstar';
+import { UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
 const inputItems = [
   {
@@ -48,19 +49,19 @@ const inputItems = [
     image: 'public/images/avatar/small/ade.jpg',
     content: 'Graphic Designer',
   },
-]
+];
 
 const getA11ySelectionMessage = {
   onAdd: item => `${item} has been selected.`,
   onRemove: item => `${item} has been removed.`,
-}
+};
 
 const PopupControlledExample = () => {
-  const [open, setOpen] = useBooleanKnob({ name: 'open' })
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
 
   const closePopup = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   const popupContent = (
     <>
@@ -80,20 +81,20 @@ const PopupControlledExample = () => {
         <Button primary content="Add" />
       </Flex>
     </>
-  )
+  );
 
   return (
     <Popup
       open={open}
       onOpenChange={(e, { open }) => setOpen(open)}
-      trigger={<Button icon="user-friends" content="People Picker" aria-label="Choose a person." />}
+      trigger={<Button icon={<UserFriendsIcon />} content="People Picker" aria-label="Choose a person." />}
       content={{
         content: popupContent,
         'aria-label': 'People picker',
       }}
       trapFocus
     />
-  )
-}
+  );
+};
 
-export default PopupControlledExample
+export default PopupControlledExample;

@@ -2,6 +2,6 @@ import { IAccordionComponent, IAccordionStylesReturnType } from './Accordion.typ
 
 export const styles: IAccordionComponent['styles'] = (props): IAccordionStylesReturnType => {
   return {
-    root: [props.className]
+    root: [props.className],
   };
 };

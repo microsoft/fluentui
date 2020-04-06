@@ -15,13 +15,13 @@ describe('CalloutContentBase', () => {
     document.body.appendChild(targetElement2);
     const props = {
       target: targetElement1,
-      hidden: true
+      hidden: true,
     };
 
     const callout = mount(
       <CalloutContentBase {...props}>
         <div>Content</div>
-      </CalloutContentBase>
+      </CalloutContentBase>,
     );
 
     expect(renderMock).toHaveBeenCalled();
@@ -40,7 +40,7 @@ describe('CalloutContentBase', () => {
 
     callout.setProps({
       target: targetElement2,
-      hidden: true
+      hidden: true,
     });
 
     // Updating content should trigger a render update.
@@ -48,7 +48,7 @@ describe('CalloutContentBase', () => {
     callout.setProps({
       target: targetElement1,
       hidden: true,
-      shouldUpdateWhenHidden: true
+      shouldUpdateWhenHidden: true,
     });
     expect(renderMock).toHaveBeenCalled();
     renderMock.mockClear();
@@ -64,13 +64,13 @@ describe('CalloutContentBase', () => {
       bounds: new Rectangle(0, 0, 0, 0),
       onLayerMounted: () => {
         return;
-      }
+      },
     };
 
     const callout = mount(
       <CalloutContentBase {...props}>
         <div>Content</div>
-      </CalloutContentBase>
+      </CalloutContentBase>,
     );
 
     expect(renderMock).toHaveBeenCalled();
@@ -92,13 +92,13 @@ describe('CalloutContentBase', () => {
       bounds: new Rectangle(0, 0, 0, 0),
       onLayerMounted: () => {
         return;
-      }
+      },
     };
 
     const callout = mount(
       <CalloutContentBase {...props}>
         <div>Content</div>
-      </CalloutContentBase>
+      </CalloutContentBase>,
     );
 
     expect(renderMock).toHaveBeenCalled();

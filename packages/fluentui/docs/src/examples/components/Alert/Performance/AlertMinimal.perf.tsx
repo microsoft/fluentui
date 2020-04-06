@@ -1,9 +1,9 @@
-import { Alert } from '@fluentui/react'
-import * as React from 'react'
+import { Alert } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const AlertMinimalPerf = () => <Alert />
+const AlertMinimalPerf = () => <Alert />;
 
-AlertMinimalPerf.iterations = 1000
-AlertMinimalPerf.filename = 'AlertMinimal.perf.tsx'
+AlertMinimalPerf.iterations = 1000;
+AlertMinimalPerf.filename = 'AlertMinimal.perf.tsx';
 
-export default AlertMinimalPerf
+export default AlertMinimalPerf;

@@ -2,7 +2,7 @@ import { ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './Swatch
 import { getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
-  focusedContainer: 'ms-swatchColorPickerBodyContainer'
+  focusedContainer: 'ms-swatchColorPickerBodyContainer',
 };
 
 export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPickerStyles => {
@@ -13,19 +13,19 @@ export const getStyles = (props: ISwatchColorPickerStyleProps): ISwatchColorPick
   return {
     root: {
       margin: '8px 0',
-      borderCollapse: 'collapse'
+      borderCollapse: 'collapse',
     },
     tableCell: {
-      padding: cellMargin! / 2
+      padding: cellMargin! / 2,
     },
     focusedContainer: [
       classNames.focusedContainer,
       {
         clear: 'both',
         display: 'block',
-        minWidth: '180px'
+        minWidth: '180px',
       },
-      className
-    ]
+      className,
+    ],
   };
 };

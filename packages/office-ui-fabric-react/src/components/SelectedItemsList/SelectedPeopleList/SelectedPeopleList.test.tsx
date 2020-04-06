@@ -16,13 +16,13 @@ describe('SelectedPeopleList', () => {
         {
           key: 'person-A',
           text: 'Person A',
-          isValid: true
+          isValid: true,
         },
         {
           key: 'person-B',
           text: 'Person B',
-          isValid: true
-        }
+          isValid: true,
+        },
       ]);
 
       const result = picker.render();
@@ -39,13 +39,13 @@ describe('SelectedPeopleList', () => {
         {
           key: 'person-A',
           text: 'Person A',
-          isValid: true
+          isValid: true,
         },
         {
           key: 'person-B',
           text: 'Person B',
-          isValid: true
-        }
+          isValid: true,
+        },
       ]);
 
       const result = picker.render();
@@ -62,7 +62,10 @@ describe('SelectedPeopleList', () => {
       // so we can't render it with `renderer` and expect the internal state of the EditingItem to be
       // initialized
       const root = document.createElement('div');
-      ReactDOM.render(<SelectedPeopleList ref={ref} editMenuItemText="REMOVE" getEditingItemText={getEditingItemText} />, root);
+      ReactDOM.render(
+        <SelectedPeopleList ref={ref} editMenuItemText="REMOVE" getEditingItemText={getEditingItemText} />,
+        root,
+      );
       expect(ref.current).not.toBeNull();
       const picker = ref.current;
       if (picker === null) {
@@ -73,13 +76,13 @@ describe('SelectedPeopleList', () => {
           key: 'person-A',
           text: 'Person A',
           isValid: true,
-          isEditing: true
+          isEditing: true,
         },
         {
           key: 'person-B',
           text: 'Person B',
-          isValid: true
-        }
+          isValid: true,
+        },
       ]);
 
       const result = picker.render();

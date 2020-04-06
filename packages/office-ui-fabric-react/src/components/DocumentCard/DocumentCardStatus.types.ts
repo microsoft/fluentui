@@ -11,6 +11,7 @@ export interface IDocumentCardStatus {}
 /**
  * {@docCategory DocumentCard}
  */
+// tslint:disable-next-line:deprecation
 export interface IDocumentCardStatusProps extends React.Props<DocumentCardStatusBase> {
   /**
    * Gets the component ref.

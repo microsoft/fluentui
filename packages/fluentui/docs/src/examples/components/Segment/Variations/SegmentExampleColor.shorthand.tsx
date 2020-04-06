@@ -1,6 +1,6 @@
-import * as React from 'react'
-import * as _ from 'lodash'
-import { Segment, ProviderConsumer } from '@fluentui/react'
+import * as React from 'react';
+import * as _ from 'lodash';
+import { Segment, ProviderConsumer } from '@fluentui/react-northstar';
 
 const SegmentExampleColor = () => (
   <ProviderConsumer
@@ -10,6 +10,6 @@ const SegmentExampleColor = () => (
       ))
     }
   />
-)
+);
 
-export default SegmentExampleColor
+export default SegmentExampleColor;

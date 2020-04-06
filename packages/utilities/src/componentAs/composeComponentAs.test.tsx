@@ -11,13 +11,17 @@ const Base: React.ComponentType<IExampleProps> = (props: IExampleProps): JSX.Ele
   return <div data-value={props.value} />;
 };
 
-const DecoratorA: React.ComponentType<IComponentAsProps<IExampleProps>> = (props: IComponentAsProps<IExampleProps>): JSX.Element | null => {
+const DecoratorA: React.ComponentType<IComponentAsProps<IExampleProps>> = (
+  props: IComponentAsProps<IExampleProps>,
+): JSX.Element | null => {
   const { defaultRender: DefaultRender, ...exampleProps } = props;
 
   return <div data-a="a">{DefaultRender ? <DefaultRender {...exampleProps} /> : null}</div>;
 };
 
-const DecoratorB: React.ComponentType<IComponentAsProps<IExampleProps>> = (props: IComponentAsProps<IExampleProps>): JSX.Element | null => {
+const DecoratorB: React.ComponentType<IComponentAsProps<IExampleProps>> = (
+  props: IComponentAsProps<IExampleProps>,
+): JSX.Element | null => {
   const { defaultRender: DefaultRender, ...exampleProps } = props;
 
   return <div data-b="b">{DefaultRender ? <DefaultRender {...exampleProps} /> : null}</div>;

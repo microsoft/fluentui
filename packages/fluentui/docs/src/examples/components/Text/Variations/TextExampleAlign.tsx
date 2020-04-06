@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Text } from '@fluentui/react'
+import * as React from 'react';
+import { Text } from '@fluentui/react-northstar';
 
-const HeaderExampleAlign = () => <Text align="end">Text aligned to end</Text>
+const HeaderExampleAlign = () => <Text align="end">Text aligned to end</Text>;
 
-export default HeaderExampleAlign
+export default HeaderExampleAlign;

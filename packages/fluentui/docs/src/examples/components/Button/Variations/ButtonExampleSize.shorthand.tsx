@@ -1,5 +1,5 @@
-import { Button, Divider, Flex } from '@fluentui/react'
-import * as React from 'react'
+import { Button, Divider, Flex } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const ButtonExampleSizeShorthand: React.FC = () => (
   <>
@@ -19,6 +19,6 @@ const ButtonExampleSizeShorthand: React.FC = () => (
       <Button size="largest" content="Largest" />
     </Flex>
   </>
-)
+);
 
-export default ButtonExampleSizeShorthand
+export default ButtonExampleSizeShorthand;

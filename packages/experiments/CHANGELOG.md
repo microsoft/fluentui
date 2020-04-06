@@ -1,7 +1,70 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Apr 2020 12:30:40 GMT and should not be manually modified.
 
+## 7.22.12
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- Adding build tool dependency for type safety of scss modules. (dzearing@microsoft.com)
+## 7.22.8
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.22.7
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.22.3
+Tue, 17 Mar 2020 12:28:58 GMT
+
+### Patches
+
+- remove all usages of BaseComponent and initializeFocusRects (xgao@microsoft.com)
+## 7.22.0
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Minor changes
+
+- convert initializeFocusRects to hook (xgao@microsoft.com)
+## 7.21.4
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Patches
+
+- Update snapshots (KevinTCoughlin@users.noreply.github.com)
+## 7.21.3
+Tue, 03 Mar 2020 12:27:24 GMT
+
+### Patches
+
+- Turning on tslint 'deprecation' rule. (Humberto.Morimoto@microsoft.com)
+## 7.21.0
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Minor changes
+
+- Updated Tile (in experiments) to pass some link-specific props (e.g. 'target', 'download') to its internal link so that users of Tile can customize the link behavior. The Tile link now also defaults to <span> (instead of <button>) when no href or onClick is passed. Updated Tile.Media.Example to include a linking demo showing the new functionality. (Graham.Langston@microsoft.com)
+## 7.20.0
+Fri, 21 Feb 2020 12:20:14 GMT
+
+### Minor changes
+
+- add signal for item scheduled (amshan@microsoft.com)
+### Patches
+
+- update ItemScheduledSignal icon (amshan@microsoft.com)
+## 7.19.3
+Wed, 19 Feb 2020 12:21:05 GMT
+
+### Patches
+
+- Add syncpack and synchronize dependencies. Refresh fluent import. (jagore@microsoft.com)
 ## 7.19.0
 Wed, 12 Feb 2020 12:24:27 GMT
 

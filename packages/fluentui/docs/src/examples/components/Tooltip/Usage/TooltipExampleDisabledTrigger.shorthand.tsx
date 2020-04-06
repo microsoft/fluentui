@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Button, Tooltip } from '@fluentui/react'
+import * as React from 'react';
+import { Button, Tooltip } from '@fluentui/react-northstar';
 
 const TooltipExampleDisabledTrigger = () => {
   return (
@@ -11,7 +11,7 @@ const TooltipExampleDisabledTrigger = () => {
       }
       content="This tooltip is set on the div wrapping the disabled button"
     />
-  )
-}
+  );
+};
 
-export default TooltipExampleDisabledTrigger
+export default TooltipExampleDisabledTrigger;

@@ -1,6 +1,6 @@
-import * as React from 'react'
-import { Alert } from '@fluentui/react'
+import * as React from 'react';
+import { Alert } from '@fluentui/react-northstar';
 
-const AlertExampleSuccess = () => <Alert success content="This is a success alert" />
+const AlertExampleSuccess = () => <Alert success content="This is a success alert" />;
 
-export default AlertExampleSuccess
+export default AlertExampleSuccess;

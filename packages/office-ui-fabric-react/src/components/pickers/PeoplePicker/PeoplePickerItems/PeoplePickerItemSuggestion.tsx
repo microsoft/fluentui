@@ -5,7 +5,7 @@ import { Persona, PersonaSize, IPersonaStyleProps, IPersonaStyles } from '../../
 import {
   IPeoplePickerItemSuggestionProps,
   IPeoplePickerItemSuggestionStyleProps,
-  IPeoplePickerItemSuggestionStyles
+  IPeoplePickerItemSuggestionStyles,
 } from './PeoplePickerItem.types';
 import { getStyles } from './PeoplePickerItemSuggestion.styles';
 
@@ -16,7 +16,7 @@ export const PeoplePickerItemSuggestionBase = (props: IPeoplePickerItemSuggestio
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: (suggestionsProps && suggestionsProps.suggestionsItemClassName) || className
+    className: (suggestionsProps && suggestionsProps.suggestionsItemClassName) || className,
   });
 
   const personaStyles =

@@ -8,20 +8,20 @@ import {
   IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize,
-  IPersonaCoinProps
+  IPersonaCoinProps,
 } from './Persona.types';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
 
 /**
  * Persona with no default styles.
- * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Styling)
  */
 export class PersonaBase extends React.Component<IPersonaProps, {}> {
   public static defaultProps: IPersonaProps = {
     size: PersonaSize.size48,
     presence: PersonaPresenceEnum.none,
-    imageAlt: ''
+    imageAlt: '',
   };
 
   constructor(props: IPersonaProps) {
@@ -45,7 +45,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       onRenderPrimaryText = _onRenderPrimaryText,
       onRenderSecondaryText = _onRenderSecondaryText,
       onRenderTertiaryText = _onRenderTertiaryText,
-      onRenderPersonaCoin = this._onRenderPersonaCoin
+      onRenderPersonaCoin = this._onRenderPersonaCoin,
     } = this.props;
     const size = this.props.size as PersonaSize;
 
@@ -65,13 +65,15 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       initialsColor,
       isOutOfOffice,
       onPhotoLoadingStateChange,
+      // tslint:disable-next-line:deprecation
       onRenderCoin,
       onRenderInitials,
       presence,
       presenceTitle,
+      presenceColors,
       showInitialsUntilImageLoads,
       showSecondaryText,
-      theme
+      theme,
     } = this.props;
 
     const personaCoinProps: IPersonaCoinProps = {
@@ -93,7 +95,8 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       size,
       text: this._getText(),
       isOutOfOffice,
-      ...coinProps
+      presenceColors,
+      ...coinProps,
     };
 
     const classNames = getClassNames(styles, {
@@ -101,7 +104,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       className,
       showSecondaryText,
       presence,
-      size
+      size,
     });
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
@@ -116,9 +119,20 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
     );
 
     return (
-      <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
+      <div
+        {...divProps}
+        className={classNames.root}
+        style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}
+      >
         {onRenderPersonaCoin(personaCoinProps, this._onRenderPersonaCoin)}
-        {(!hidePersonaDetails || size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny) && personaDetails}
+        {// tslint:disable:deprecation
+        (!hidePersonaDetails ||
+          size === PersonaSize.size8 ||
+          size === PersonaSize.size10 ||
+          size === PersonaSize.tiny) &&
+          personaDetails
+        // tslint:enable:deprecation
+        }
       </div>
     );
   }
@@ -133,7 +147,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
   private _renderElement(
     classNames: string,
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
-    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
+    defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined,
   ): JSX.Element {
     return (
       <div dir="auto" className={classNames}>
@@ -146,6 +160,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
    * Deprecation helper for getting text.
    */
   private _getText(): string {
+    // tslint:disable-next-line:deprecation
     return this.props.text || this.props.primaryText || '';
   }
 
@@ -160,7 +175,11 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       ? (): JSX.Element => {
           // default onRender behaviour
           return (
-            <TooltipHost content={text} overflowMode={TooltipOverflowMode.Parent} directionalHint={DirectionalHint.topLeftEdge}>
+            <TooltipHost
+              content={text}
+              overflowMode={TooltipOverflowMode.Parent}
+              directionalHint={DirectionalHint.topLeftEdge}
+            >
               {text}
             </TooltipHost>
           );

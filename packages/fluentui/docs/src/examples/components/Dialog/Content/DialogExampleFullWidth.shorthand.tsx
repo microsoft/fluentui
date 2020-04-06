@@ -1,5 +1,5 @@
-import { Button, Dialog, Input } from '@fluentui/react'
-import * as React from 'react'
+import { Button, Dialog, Input } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const DialogExampleFullWidth: React.FC = () => (
   <Dialog
@@ -9,6 +9,6 @@ const DialogExampleFullWidth: React.FC = () => (
     header="Full width content"
     trigger={<Button content="Open a dialog" />}
   />
-)
+);
 
-export default DialogExampleFullWidth
+export default DialogExampleFullWidth;

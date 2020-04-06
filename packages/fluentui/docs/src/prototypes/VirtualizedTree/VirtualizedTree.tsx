@@ -1,59 +1,53 @@
-import * as React from 'react'
-import { Tree, TreeItemProps } from '@fluentui/react'
-import { CellMeasurer, CellMeasurerCache, List as ReactVirtualizedList } from 'react-virtualized'
-import getItems from './itemsGenerator'
+import * as React from 'react';
+import { Tree, TreeItemProps } from '@fluentui/react-northstar';
+import { CellMeasurer, CellMeasurerCache, List as ReactVirtualizedList } from 'react-virtualized';
+import getItems from './itemsGenerator';
 
 interface TreeVirtualizerProps {
-  renderedItems: React.ReactElement[]
+  renderedItems: React.ReactElement[];
 }
 
 function TreeVirtualizer(props: TreeVirtualizerProps) {
   const cache = new CellMeasurerCache({
     defaultHeight: 20,
     fixedWidth: true,
-  })
-  const [scrollToIndex, setScrollToIndex] = React.useState()
+  });
+  const [scrollToIndex, setScrollToIndex] = React.useState();
 
-  const handleFocusParent = (
-    e: React.SyntheticEvent,
-    treeItemProps: TreeItemProps,
-    index: number,
-  ) => {
-    const { renderedItems } = props
-    const { parent } = treeItemProps
-
-    renderedItems[index].props.onFocusParent(e, treeItemProps)
+  const handleFocusParent = (e: React.SyntheticEvent, treeItemProps: TreeItemProps, index: number) => {
+    const { renderedItems } = props;
+    const { parent } = treeItemProps;
 
     if (!parent) {
-      return
+      return;
     }
 
     const indexOfParent = renderedItems.findIndex(
-      (renderedItem: React.ReactElement) => renderedItem.props['id'] === parent['id'],
-    )
+      (renderedItem: React.ReactElement) => renderedItem.props['id'] === parent,
+    );
 
     // If parent already visible, then it should be focused by Tree.
     if (renderedItems[indexOfParent].props['contentRef'].current) {
-      return
+      return;
     }
 
-    setScrollToIndex(indexOfParent)
-  }
+    setScrollToIndex(indexOfParent);
+  };
 
   const rowRenderer = ({ index, isScrolling, key, parent, style }) => {
-    const { renderedItems } = props
+    const { renderedItems } = props;
 
     return (
       <CellMeasurer cache={cache} columnIndex={0} key={key} parent={parent} rowIndex={index}>
         {React.cloneElement(renderedItems[index], {
           style,
           onFocusParent: (e, treeItemProps: TreeItemProps) => {
-            handleFocusParent(e, treeItemProps, index)
+            handleFocusParent(e, treeItemProps, index);
           },
         })}
       </CellMeasurer>
-    )
-  }
+    );
+  };
 
   return (
     <ReactVirtualizedList
@@ -67,23 +61,20 @@ function TreeVirtualizer(props: TreeVirtualizerProps) {
       scrollToIndex={scrollToIndex}
       onRowsRendered={() => {
         if (scrollToIndex !== undefined) {
-          props.renderedItems[scrollToIndex].props.contentRef.current.focus()
+          props.renderedItems[scrollToIndex].props.contentRef.current.focus();
           // Once scrolling is complete we remove the index to avoid scrolling to the same
           // item at every render.
-          setScrollToIndex(undefined)
+          setScrollToIndex(undefined);
         }
       }}
     />
-  )
+  );
 }
 
-const items = getItems()
+const items = getItems();
 
 const VirtualizedTreePrototype = () => (
-  <Tree
-    items={items}
-    renderedItems={renderedItems => <TreeVirtualizer renderedItems={renderedItems} />}
-  />
-)
+  <Tree items={items} renderedItems={renderedItems => <TreeVirtualizer renderedItems={renderedItems} />} />
+);
 
-export default VirtualizedTreePrototype
+export default VirtualizedTreePrototype;

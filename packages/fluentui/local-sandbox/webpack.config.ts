@@ -10,10 +10,10 @@ const webpackConfig: webpack.Configuration = {
   target: 'web',
   mode: 'development',
   entry: {
-    app: './src/index.tsx'
+    app: './src/index.tsx',
   },
   output: {
-    filename: `[name].js`
+    filename: `[name].js`,
   },
   devtool: 'source-map',
   module: {
@@ -21,35 +21,35 @@ const webpackConfig: webpack.Configuration = {
       {
         test: /\.js$/,
         use: ['source-map-loader'],
-        enforce: 'pre'
+        enforce: 'pre',
       },
       {
         test: /\.(ts|tsx)$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
         options: {
-          cacheDirectory: true
-        }
-      }
-    ]
+          cacheDirectory: true,
+        },
+      },
+    ],
   },
   plugins: [
     new ForkTsCheckerWebpackPlugin(),
     new CopyWebpackPlugin([
       {
-        from: 'public/index.html'
-      }
+        from: 'public/index.html',
+      },
     ]),
     new BundleAnalyzerPlugin({
       analyzerMode: 'static',
-      openAnalyzer: false
-    })
+      openAnalyzer: false,
+    }),
   ],
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.json']
+    extensions: ['.ts', '.tsx', '.js', '.json'],
   },
   performance: {
-    hints: false // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
+    hints: false, // to (temporarily) disable "WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds the recommended limit")
   },
   optimization: {
     minimizer: [
@@ -62,12 +62,12 @@ const webpackConfig: webpack.Configuration = {
           mangle: false,
           output: {
             beautify: true,
-            comments: true
-          }
-        }
-      })
-    ]
-  }
+            comments: true,
+          },
+        },
+      }),
+    ],
+  },
 };
 
 module.exports = webpackConfig;

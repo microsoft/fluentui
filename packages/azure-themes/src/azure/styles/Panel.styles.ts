@@ -10,28 +10,28 @@ export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
       backgroundColor: semanticColors.bodyBackground,
       selectors: {
         '&.ms-Panel-main': {
-          border: 'none'
-        }
-      }
+          border: 'none',
+        },
+      },
     },
     closeButton: {
       color: semanticColors.bodyText,
       selectors: {
         '&:hover': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: BaseColors.WHITE
+          color: BaseColors.WHITE,
         },
         '&:active': {
           backgroundColor: BaseColors.RED_E00B1C, // always this color regardless of theme.
-          color: BaseColors.WHITE
-        }
-      }
+          color: BaseColors.WHITE,
+        },
+      },
     },
     content: {
-      color: semanticColors.bodyText
+      color: semanticColors.bodyText,
     },
     headerText: {
-      color: semanticColors.bodyText
-    }
+      color: semanticColors.bodyText,
+    },
   };
 };

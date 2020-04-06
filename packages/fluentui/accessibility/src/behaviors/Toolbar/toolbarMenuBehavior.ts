@@ -1,7 +1,7 @@
-import { Accessibility } from '../../types'
-import { FocusZoneDirection } from '../../focusZone/types'
-import toolbarMenuItemBehavior from './toolbarMenuItemBehavior'
-import * as keyboardKey from 'keyboard-key'
+import { Accessibility } from '../../types';
+import { FocusZoneDirection } from '../../focusZone/types';
+import toolbarMenuItemBehavior from './toolbarMenuItemBehavior';
+import * as keyboardKey from 'keyboard-key';
 
 /**
  * @description
@@ -13,7 +13,7 @@ import * as keyboardKey from 'keyboard-key'
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-const toolbarMenuBehavior: Accessibility = () => ({
+const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
   attributes: {
     root: {
       role: 'menu',
@@ -35,6 +35,8 @@ const toolbarMenuBehavior: Accessibility = () => ({
     },
   },
   childBehaviors: { item: toolbarMenuItemBehavior },
-})
+});
 
-export default toolbarMenuBehavior
+export type ToolbarMenuBehaviorProps = never;
+
+export default toolbarMenuBehavior;

@@ -16,32 +16,32 @@ const _cachedItems = createListItems(5000);
 export const ListPageProps: IDocPageProps = {
   title: 'List',
   componentName: 'ListExample',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/List',
+  componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/List',
   examples: [
     {
       title: 'List of 5000 grid items',
       code: ListGridExampleCode,
-      view: <ListGridExample items={_cachedItems} />
+      view: <ListGridExample items={_cachedItems} />,
     },
     {
       title: 'List of 5000 variable height items',
       code: ListBasicExampleCode,
-      view: <ListBasicExample items={_cachedItems} />
+      view: <ListBasicExample items={_cachedItems} />,
     },
     {
       title: 'Scrolling items into view',
       code: ListScrollingExampleCode,
-      view: <ListScrollingExample items={_cachedItems} />
+      view: <ListScrollingExample items={_cachedItems} />,
     },
     {
       title: 'Rendering ghost items while the list is scrolling',
       code: ListGhostingExampleCode,
-      view: <ListGhostingExample items={_cachedItems} />
-    }
+      view: <ListGhostingExample items={_cachedItems} />,
+    },
   ],
 
   allowNativeProps: true,
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true
+  isFeedbackVisible: true,
 };

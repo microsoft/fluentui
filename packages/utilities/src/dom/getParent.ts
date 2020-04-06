@@ -7,5 +7,8 @@ import { getVirtualParent } from './getVirtualParent';
  * @public
  */
 export function getParent(child: HTMLElement, allowVirtualParents: boolean = true): HTMLElement | null {
-  return child && ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)));
+  return (
+    child &&
+    ((allowVirtualParents && getVirtualParent(child)) || (child.parentNode && (child.parentNode as HTMLElement)))
+  );
 }

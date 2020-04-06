@@ -1,26 +1,26 @@
-import componentInfoContext from './componentInfoContext'
-import { ComponentInfo } from '../types'
+import componentInfoContext from './componentInfoContext';
+import { ComponentInfo } from '../types';
 
 /**
  * Returns a component's info.json file and subcomponent info.json files grouped by displayName.
  */
 const getComponentGroup = (displayName: string): { [key: string]: ComponentInfo } => {
-  const info = componentInfoContext.byDisplayName[displayName]
+  const info = componentInfoContext.byDisplayName[displayName];
 
   const group = {
     [info.displayName]: info,
-  }
+  };
 
-  if (!info.subcomponents) return group
+  if (!info.subcomponents) return group;
 
   // add subcomponents
   info.subcomponents.forEach(subcomponent => {
-    const subInfo = componentInfoContext.byDisplayName[subcomponent]
+    const subInfo = componentInfoContext.byDisplayName[subcomponent];
 
-    group[subInfo.displayName] = subInfo
-  })
+    group[subInfo.displayName] = subInfo;
+  });
 
-  return group
-}
+  return group;
+};
 
-export default getComponentGroup
+export default getComponentGroup;

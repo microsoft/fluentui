@@ -1,6 +1,21 @@
 import * as React from 'react';
-import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
-import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '@uifabric/utilities';
+import {
+  IDatePicker,
+  IDatePickerProps,
+  IDatePickerStrings,
+  IDatePickerStyleProps,
+  IDatePickerStyles,
+} from './DatePicker.types';
+import {
+  KeyCodes,
+  classNamesFunction,
+  getId,
+  getNativeProps,
+  divProperties,
+  css,
+  initializeComponentRef,
+  Async,
+} from '@uifabric/utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
 import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
@@ -19,7 +34,20 @@ export interface IDatePickerState {
 }
 
 const DEFAULT_STRINGS: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
@@ -31,10 +59,10 @@ const DEFAULT_STRINGS: IDatePickerStrings = {
   prevYearRangeAriaLabel: 'Previous year range',
   nextYearRangeAriaLabel: 'Next year range',
   closeButtonAriaLabel: 'Close date picker',
-  weekNumberFormatString: 'Week number {0}'
+  weekNumberFormatString: 'Week number {0}',
 };
 
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
   public static defaultProps: IDatePickerProps = {
     allowTextInput: false,
     formatDate: (date: Date) => {
@@ -68,7 +96,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     dateTimeFormatter: undefined,
     showCloseButton: false,
     underlined: false,
-    allFocusable: false
+    allFocusable: false,
   };
 
   private _calendar = React.createRef<ICalendar>();
@@ -77,8 +105,14 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   private _preventFocusOpeningPicker: boolean;
   private _id: string;
 
+  private _async: Async;
+
   constructor(props: IDatePickerProps) {
     super(props);
+
+    this._async = new Async(this);
+    initializeComponentRef(this);
+
     this.state = this._getDefaultState();
 
     this._id = props.id || getId('DatePicker');
@@ -104,14 +138,16 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
     if (!errorMessage && value) {
-      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
+      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate)
+        ? strings!.isOutOfBoundsErrorMessage || ' '
+        : undefined;
     }
 
     this._id = nextProps.id || this._id;
 
     // Set error message
     this.setState({
-      errorMessage: errorMessage
+      errorMessage: errorMessage,
     });
 
     // Issue# 1274: Check if the date value changed from old value, i.e., if indeed a new date is being
@@ -122,7 +158,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!compareDates(oldValue!, value!) || this.props.formatDate !== formatDate) {
       this.setState({
         selectedDate: value || undefined,
-        formattedDate: formatDate && value ? formatDate(value) : ''
+        formattedDate: formatDate && value ? formatDate(value) : '',
       });
     }
   }
@@ -139,6 +175,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         this.props.onAfterMenuDismiss();
       }
     }
+  }
+
+  public componentWillUnmount(): void {
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -166,7 +206,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       underlined,
       allFocusable,
       calendarAs: CalendarType = Calendar,
-      tabIndex
+      tabIndex,
     } = this.props;
     const { isDatePickerShown, formattedDate, selectedDate } = this.state;
 
@@ -175,7 +215,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       className,
       disabled,
       label: !!label,
-      isDatePickerShown
+      isDatePickerShown,
     });
 
     const calloutId = getId('DatePicker-Callout');
@@ -208,7 +248,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
               iconName: 'Calendar',
               ...iconProps,
               className: css(classNames.icon, iconProps && iconProps.className),
-              onClick: this._onIconClick
+              onClick: this._onIconClick,
             }}
             onKeyDown={this._onTextFieldKeyDown}
             onFocus={this._onTextFieldFocus}
@@ -281,7 +321,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     this.setState({
       selectedDate: date,
-      formattedDate: formatDate && date ? formatDate(date) : ''
+      formattedDate: formatDate && date ? formatDate(date) : '',
     });
 
     if (onSelectDate) {
@@ -322,7 +362,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this._validateTextInput();
   };
 
-  private _onTextFieldChanged = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void => {
+  private _onTextFieldChanged = (
+    ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>,
+    newValue: string,
+  ): void => {
     const { allowTextInput, textField } = this.props;
 
     if (allowTextInput) {
@@ -334,7 +377,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
       this.setState({
         errorMessage: isRequired && !newValue ? strings!.isRequiredErrorMessage || ' ' : undefined,
-        formattedDate: newValue
+        formattedDate: newValue,
       });
     }
 
@@ -392,7 +435,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({
-        isDatePickerShown: true
+        isDatePickerShown: true,
       });
     }
   }
@@ -401,12 +444,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (this.state.isDatePickerShown) {
       this.setState(
         {
-          isDatePickerShown: false
+          isDatePickerShown: false,
         },
         () => {
           // setState is async, so we must call validate in a callback
           this._validateTextInput();
-        }
+        },
       );
     }
   };
@@ -426,7 +469,16 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _validateTextInput = (): void => {
-    const { isRequired, allowTextInput, strings, parseDateFromString, onSelectDate, formatDate, minDate, maxDate } = this.props;
+    const {
+      isRequired,
+      allowTextInput,
+      strings,
+      parseDateFromString,
+      onSelectDate,
+      formatDate,
+      minDate,
+      maxDate,
+    } = this.props;
     const inputValue = this.state.formattedDate;
 
     // Do validation only if DatePicker's popup is dismissed
@@ -442,7 +494,10 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
-          date = this.state.selectedDate;
+          this.setState({
+            errorMessage: '',
+          });
+          return;
         } else {
           date = parseDateFromString!(inputValue);
         }
@@ -453,30 +508,30 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           if (formatDate) {
             date = this.state.selectedDate;
             this.setState({
-              formattedDate: formatDate(date!).toString()
+              formattedDate: formatDate(date!).toString(),
             });
           }
 
           this.setState({
-            errorMessage: strings!.invalidInputErrorMessage || ' '
+            errorMessage: strings!.invalidInputErrorMessage || ' ',
           });
         } else {
           // Check against optional date boundaries
           if (this._isDateOutOfBounds(date, minDate, maxDate)) {
             this.setState({
-              errorMessage: strings!.isOutOfBoundsErrorMessage || ' '
+              errorMessage: strings!.isOutOfBoundsErrorMessage || ' ',
             });
           } else {
             this.setState({
               selectedDate: date,
-              errorMessage: ''
+              errorMessage: '',
             });
 
-            // When formatting is available. If formatted date is valid, but is different from input, update with formatted date
-            // This occurs when an invalid date is entered twice
+            // When formatting is available. If formatted date is valid, but is different from input, update with
+            // formatted date. This occurs when an invalid date is entered twice.
             if (formatDate && formatDate(date) !== inputValue) {
               this.setState({
-                formattedDate: formatDate(date).toString()
+                formattedDate: formatDate(date).toString(),
               });
             }
           }
@@ -484,7 +539,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       } else {
         // Only show error for empty inputValue if it is a required field
         this.setState({
-          errorMessage: isRequired ? strings!.isRequiredErrorMessage || ' ' : ''
+          errorMessage: isRequired ? strings!.isRequiredErrorMessage || ' ' : '',
         });
       }
 
@@ -497,12 +552,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     } else if (isRequired && !inputValue) {
       // Check when DatePicker is a required field but has NO input value
       this.setState({
-        errorMessage: strings!.isRequiredErrorMessage || ' '
+        errorMessage: strings!.isRequiredErrorMessage || ' ',
       });
     } else {
       // Cleanup the error message
       this.setState({
-        errorMessage: ''
+        errorMessage: '',
       });
     }
   };
@@ -512,7 +567,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       selectedDate: props.value || undefined,
       formattedDate: props.formatDate && props.value ? props.formatDate(props.value) : '',
       isDatePickerShown: false,
-      errorMessage: undefined
+      errorMessage: undefined,
     };
   }
 

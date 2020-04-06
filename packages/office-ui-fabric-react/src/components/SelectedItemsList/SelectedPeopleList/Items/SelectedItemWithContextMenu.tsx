@@ -1,7 +1,5 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
-import { BaseComponent, IBaseProps } from '../../../../Utilities';
+import { initializeComponentRef, IBaseProps } from '../../../../Utilities';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
 import { ContextualMenu, DirectionalHint, IContextualMenuItem } from '../../../../ContextualMenu';
 
@@ -16,11 +14,16 @@ export interface ISelectedItemWithContextMenuProps extends IBaseProps {
   item: IExtendedPersonaProps;
 }
 
-export class SelectedItemWithContextMenu extends BaseComponent<ISelectedItemWithContextMenuProps, IPeoplePickerItemState> {
+export class SelectedItemWithContextMenu extends React.Component<
+  ISelectedItemWithContextMenuProps,
+  IPeoplePickerItemState
+> {
   protected itemElement: React.RefObject<HTMLDivElement> = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedItemWithContextMenuProps) {
     super(props);
+
+    initializeComponentRef(this);
     this.state = { contextualMenuVisible: false };
   }
 

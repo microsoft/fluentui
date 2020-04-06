@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Grid, TextArea } from '@fluentui/react'
+import * as React from 'react';
+import { Grid, TextArea } from '@fluentui/react-northstar';
 
 const TextAreaExampleInverted = () => (
   <div>
@@ -20,6 +20,6 @@ const TextAreaExampleInverted = () => (
       <TextArea placeholder="Default text area..." />
     </Grid>
   </div>
-)
+);
 
-export default TextAreaExampleInverted
+export default TextAreaExampleInverted;

@@ -1,9 +1,9 @@
-import { Checkbox } from '@fluentui/react'
-import * as React from 'react'
+import { Checkbox } from '@fluentui/react-northstar';
+import * as React from 'react';
 
-const CheckboxMinimalPerf = () => <Checkbox />
+const CheckboxMinimalPerf = () => <Checkbox />;
 
-CheckboxMinimalPerf.iterations = 5000
-CheckboxMinimalPerf.filename = 'CheckboxMinimal.perf.tsx'
+CheckboxMinimalPerf.iterations = 5000;
+CheckboxMinimalPerf.filename = 'CheckboxMinimal.perf.tsx';
 
-export default CheckboxMinimalPerf
+export default CheckboxMinimalPerf;

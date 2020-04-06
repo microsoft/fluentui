@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Form, Button } from '@fluentui/react'
+import * as React from 'react';
+import { Form, Button } from '@fluentui/react-northstar';
 
 const fields = [
   {
@@ -24,15 +24,15 @@ const fields = [
     key: 'conditions',
   },
   { control: { as: Button, content: 'Submit' }, key: 'submit' },
-]
+];
 
 const FormExample = () => (
   <Form
     onSubmit={() => {
-      alert('Form submitted')
+      alert('Form submitted');
     }}
     fields={fields}
   />
-)
+);
 
-export default FormExample
+export default FormExample;

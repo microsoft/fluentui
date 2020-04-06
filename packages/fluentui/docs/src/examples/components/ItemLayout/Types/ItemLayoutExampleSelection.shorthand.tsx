@@ -1,5 +1,5 @@
-import { ItemLayout, Image } from '@fluentui/react'
-import * as React from 'react'
+import { ItemLayout, Image } from '@fluentui/react-northstar';
+import * as React from 'react';
 
 const ItemLayoutExampleSelectionShorthand = () => {
   return (
@@ -9,7 +9,7 @@ const ItemLayoutExampleSelectionShorthand = () => {
       headerMedia="7:26:56 AM"
       content="Program the sensor to the SAS alarm through the haptic SQL card!"
     />
-  )
-}
+  );
+};
 
-export default ItemLayoutExampleSelectionShorthand
+export default ItemLayoutExampleSelectionShorthand;

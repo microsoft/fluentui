@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Flex, Segment } from '@fluentui/react'
+import * as React from 'react';
+import { Flex, Segment } from '@fluentui/react-northstar';
 
 const FlexExampleColumns = () => (
   <>
@@ -37,6 +37,6 @@ const FlexExampleColumns = () => (
       </Flex.Item>
     </Flex>
   </>
-)
+);
 
-export default FlexExampleColumns
+export default FlexExampleColumns;

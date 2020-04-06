@@ -1,7 +1,7 @@
-import * as React from 'react'
-import { Layout, Grid, Button, Text, Icon, Input, Header } from '@fluentui/react'
-import { middleColumnStyles } from '../styles'
-import TransparentDivider from './TransparentDivider'
+import * as React from 'react';
+import { Layout, Grid, Button, Text, Icon, Input, Header } from '@fluentui/react-northstar';
+import { middleColumnStyles } from '../styles';
+import TransparentDivider from './TransparentDivider';
 
 export default () => {
   return (
@@ -18,16 +18,12 @@ export default () => {
         <Header as="h3" content="Meeting Options" />
         <TransparentDivider />
         <Grid columns="1fr 1fr">
-          <Text
-            content="Who can byppass the lobby?"
-            weight="semibold"
-            style={{ lineHeight: '40px' }}
-          />
+          <Text content="Who can byppass the lobby?" weight="semibold" style={{ lineHeight: '40px' }} />
           <Input placeholder="People in my organization" fluid />
         </Grid>
         <TransparentDivider size={10} />
         <Button content="Save" styles={{ float: 'right', margin: '0px' }} primary />
       </div>
     </div>
-  )
-}
+  );
+};

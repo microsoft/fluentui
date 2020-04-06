@@ -1,1 +1,1 @@
-export { default } from './ComponentControlsCodeSandbox'
+export { default } from './ComponentControlsCodeSandbox';

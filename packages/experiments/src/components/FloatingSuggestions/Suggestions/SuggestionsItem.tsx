@@ -8,7 +8,9 @@ import { getStyles } from './SuggestionsItem.styles';
 
 const getClassNames = classNamesFunction<ISuggestionsItemStyleProps, ISuggestionsItemStyles>();
 
-export const SuggestionsItemInner: <TSuggestion>(props: ISuggestionItemProps<TSuggestion>) => React.ReactElement = props => {
+export const SuggestionsItemInner: <TSuggestion>(
+  props: ISuggestionItemProps<TSuggestion>,
+) => React.ReactElement = props => {
   const {
     suggestionModel,
     onRenderSuggestion: RenderSuggestion,
@@ -18,7 +20,7 @@ export const SuggestionsItemInner: <TSuggestion>(props: ISuggestionItemProps<TSu
     isSelectedOverride,
     removeButtonAriaLabel,
     styles,
-    theme
+    theme,
   } = props;
 
   const classNames: Partial<IProcessedStyleSet<ISuggestionsItemStyles>> = styles
@@ -26,11 +28,11 @@ export const SuggestionsItemInner: <TSuggestion>(props: ISuggestionItemProps<TSu
       getClassNames(styles || getStyles, {
         theme: theme!,
         className,
-        suggested: suggestionModel.selected || isSelectedOverride
+        suggested: suggestionModel.selected || isSelectedOverride,
       })
     : {
         itemButton: css('ms-Suggestions-itemButton'),
-        closeButton: css('ms-Suggestions-closeButton')
+        closeButton: css('ms-Suggestions-closeButton'),
       };
 
   return (
@@ -53,6 +55,6 @@ export const SuggestionsItemInner: <TSuggestion>(props: ISuggestionItemProps<TSu
 
 export const SuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
   SuggestionsItemInner,
-  getStyles
+  getStyles,
 );
 export type SuggestionsItem<T> = React.ComponentType<ISuggestionItemProps<T>>;

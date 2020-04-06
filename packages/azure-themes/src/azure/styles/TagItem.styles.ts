@@ -15,14 +15,14 @@ export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles
       backgroundColor: semanticColors.listItemBackgroundChecked,
       selectors: {
         ':hover': {
-          backgroundColor: semanticColors.listItemBackgroundCheckedHovered
-        }
-      }
+          backgroundColor: semanticColors.listItemBackgroundCheckedHovered,
+        },
+      },
     },
     text: [
       selected && {
-        color: semanticColors.bodyText
-      }
+        color: semanticColors.bodyText,
+      },
     ],
     close: {
       color: semanticColors.bodyText,
@@ -30,17 +30,17 @@ export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles
       backgroundColor: 'transparent',
       selectors: {
         '&.is-disabled': {
-          backgroundColor: transparent
+          backgroundColor: transparent,
         },
         ':active': {
           backgroundColor: semanticColors.listHeaderBackgroundPressed,
-          color: extendedSemanticColors.controlOutlineHovered
+          color: extendedSemanticColors.controlOutlineHovered,
         },
         ':hover': {
           backgroundColor: semanticColors.listItemBackgroundCheckedHovered,
-          color: semanticColors.bodyText
-        }
-      }
-    }
+          color: semanticColors.bodyText,
+        },
+      },
+    },
   };
 };

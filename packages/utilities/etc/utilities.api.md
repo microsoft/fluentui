@@ -34,7 +34,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: React.ReactType;
+    asyncPlaceholder?: React.ElementType;
 }>>;
 
 // @public
@@ -80,7 +80,7 @@ export class AutoScroll {
     dispose(): void;
     }
 
-// @public
+// @public @deprecated
 export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected readonly _async: Async;
@@ -221,8 +221,12 @@ export class EventGroup {
     // (undocumented)
     static isObserved(target: any, eventName: string): boolean;
     // (undocumented)
-    off(target?: any, eventName?: string, callback?: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
-    on(target: any, eventName: string, callback: (args?: any) => void, options?: boolean | AddEventListenerOptions): void;
+    off(target?: any, // tslint:disable-line:no-any
+    eventName?: string, callback?: (args?: any) => void, // tslint:disable-line:no-any
+    options?: boolean | AddEventListenerOptions): void;
+    on(target: any, // tslint:disable-line:no-any
+    eventName: string, callback: (args?: any) => void, // tslint:disable-line:no-any
+    options?: boolean | AddEventListenerOptions): void;
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
@@ -281,6 +285,11 @@ export function focusAsync(element: HTMLElement | {
 
 // @public
 export function focusFirstChild(rootElement: HTMLElement): boolean;
+
+// @public
+export const FocusRects: React.FunctionComponent<{
+    rootRef?: React.RefObject<HTMLElement>;
+}>;
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -393,7 +402,7 @@ export const htmlElementProperties: string[];
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
-    load: () => Promise<React.ReactType<TProps>>;
+    load: () => Promise<React.ElementType<TProps>>;
     onError?: (error: Error) => void;
     onLoad?: () => void;
 }
@@ -576,7 +585,7 @@ export const imgProperties: string[];
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
-// @public
+// @public @deprecated
 export function initializeFocusRects(window?: Window): void;
 
 // @public
@@ -927,7 +936,7 @@ export const labelProperties: string[];
 // @public
 export const liProperties: string[];
 
-// @public (undocumented)
+// @public
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
 // @public
@@ -1133,7 +1142,7 @@ export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
+export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
@@ -1161,6 +1170,9 @@ export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
 
 // @public
 export function values<T>(obj: any): T[];

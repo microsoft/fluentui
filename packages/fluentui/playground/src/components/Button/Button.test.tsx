@@ -16,9 +16,7 @@ describe('ButtonBase', () => {
       </div>,
     );
 
-    const buttons = wrapper.getDOMNode().querySelectorAll('button') as NodeListOf<
-      HTMLButtonElement
-    >;
+    const buttons = wrapper.getDOMNode().querySelectorAll('button') as NodeListOf<HTMLButtonElement>;
     expect(buttons.length).toEqual(3);
 
     button1.current!.focus();

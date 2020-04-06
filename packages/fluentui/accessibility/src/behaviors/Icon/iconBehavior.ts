@@ -13,9 +13,9 @@ const iconBehavior: Accessibility<IconBehaviorProps> = props => ({
   attributes: {
     root: {
       role: 'img',
-      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true'
-    }
-  }
+      'aria-hidden': props.alt || props['aria-label'] ? undefined : 'true',
+    },
+  },
 });
 
 export default iconBehavior;

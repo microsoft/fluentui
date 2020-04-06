@@ -1,5 +1,5 @@
-import * as React from 'react'
-import { Accordion } from '@fluentui/react'
+import * as React from 'react';
+import { Accordion } from '@fluentui/react-northstar';
 
 const panels = [
   {
@@ -12,8 +12,8 @@ const panels = [
     title: 'مرحبا المريخ',
     content: 'مرحبا المريخ',
   },
-]
+];
 
-const AccordionExampleRtl = () => <Accordion defaultActiveIndex={[0]} panels={panels} />
+const AccordionExampleRtl = () => <Accordion defaultActiveIndex={[0]} panels={panels} />;
 
-export default AccordionExampleRtl
+export default AccordionExampleRtl;

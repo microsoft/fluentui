@@ -4,27 +4,29 @@ describe('merge', () => {
   it('can merge', () => {
     expect(merge<{ a: number; b: number }>({}, { a: 1, b: 0 }, { b: 2 })).toEqual({
       a: 1,
-      b: 2
+      b: 2,
     });
   });
 
   it('can handle falsey', () => {
-    expect(merge<{ a: string; b: string | undefined }>({}, null, undefined, false, { a: '1' }, { b: '2' }, { b: undefined })).toEqual({
+    expect(
+      merge<{ a: string; b: string | undefined }>({}, null, undefined, false, { a: '1' }, { b: '2' }, { b: undefined }),
+    ).toEqual({
       a: '1',
-      b: undefined
+      b: undefined,
     });
   });
 
   it('can merge deeply', () => {
     expect(merge<{ a: { c: number }; b: number }>({}, { b: 0 }, { a: { c: 1 } }, { a: { c: 2 } })).toEqual({
       a: { c: 2 },
-      b: 0
+      b: 0,
     });
   });
 
   it('can handle cycles', () => {
     const obj: { foo: Object | undefined } = {
-      foo: undefined
+      foo: undefined,
     };
 
     obj.foo = obj;
@@ -36,9 +38,9 @@ describe('merge', () => {
     const obj: { foo: { bar: { baz: Object | undefined } } } = {
       foo: {
         bar: {
-          baz: undefined
-        }
-      }
+          baz: undefined,
+        },
+      },
     };
 
     obj.foo.bar.baz = obj;

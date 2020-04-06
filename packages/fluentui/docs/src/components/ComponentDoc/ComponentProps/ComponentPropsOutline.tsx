@@ -1,10 +1,10 @@
-import * as _ from 'lodash'
-import * as React from 'react'
-import { link } from '../../../utils/helpers'
+import * as _ from 'lodash';
+import * as React from 'react';
+import { link } from '../../../utils/helpers';
 
 const ComponentPropsOutline: any = (props: ComponentPropsOutlineProps) => {
-  const { displayNames } = props
-  if (displayNames.length < 2) return null
+  const { displayNames } = props;
+  if (displayNames.length < 2) return null;
 
   return (
     <ul>
@@ -12,11 +12,11 @@ const ComponentPropsOutline: any = (props: ComponentPropsOutlineProps) => {
         <li key={item}>{link(item, `#${_.kebabCase(item)}`)}</li>
       ))}
     </ul>
-  )
-}
+  );
+};
 
 export interface ComponentPropsOutlineProps {
-  displayNames: string[]
+  displayNames: string[];
 }
 
-export default ComponentPropsOutline
+export default ComponentPropsOutline;
