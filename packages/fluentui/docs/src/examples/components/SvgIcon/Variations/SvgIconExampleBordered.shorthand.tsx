@@ -9,7 +9,7 @@ import {
   TranslationIcon,
 } from '@fluentui/react-icons-northstar';
 
-const IconExampleBordered = () => (
+const SvgconExampleBordered = () => (
   <Flex gap="gap.smaller">
     <SkypeLogoIcon bordered />
     <EmojiIcon bordered />
@@ -20,4 +20,4 @@ const IconExampleBordered = () => (
   </Flex>
 );
 
-export default IconExampleBordered;
+export default SvgconExampleBordered;

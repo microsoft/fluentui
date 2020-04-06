@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Label } from '@fluentui/react-northstar';
 import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
-const IconExampleSpace = () => (
+const SvgIconExampleSpace = () => (
   <div>
     <p>
       <Label>Default</Label>
@@ -32,4 +32,4 @@ const IconExampleSpace = () => (
   </div>
 );
 
-export default IconExampleSpace;
+export default SvgIconExampleSpace;

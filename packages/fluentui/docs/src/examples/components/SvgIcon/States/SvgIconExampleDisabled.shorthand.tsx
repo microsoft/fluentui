@@ -1,10 +1,6 @@
 import * as React from 'react';
 import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
-const IconExampleDisabled = () => (
-  <div>
-    <CallVideoIcon disabled />
-  </div>
-);
+const SvgIconExampleDisabled = () => <CallVideoIcon disabled />;
 
-export default IconExampleDisabled;
+export default SvgIconExampleDisabled;

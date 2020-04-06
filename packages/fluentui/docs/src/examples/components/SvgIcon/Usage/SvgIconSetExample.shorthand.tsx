@@ -6,7 +6,7 @@ const cellStyles = {
   margin: '10px 0',
 };
 
-const SvgIconSetExampleShorthand: React.FunctionComponent<{ themeName: string }> = ({ themeName }) => (
+const SvgIconSetExampleShorthand: React.FunctionComponent = () => (
   <>
     <div>
       <Divider>
@@ -49,9 +49,5 @@ const SvgIconSetExampleShorthand: React.FunctionComponent<{ themeName: string }>
     </div>
   </>
 );
-
-SvgIconSetExampleShorthand.defaultProps = {
-  themeName: 'teams',
-};
 
 export default SvgIconSetExampleShorthand;

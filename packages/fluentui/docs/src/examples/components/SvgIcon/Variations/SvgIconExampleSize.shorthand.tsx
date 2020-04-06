@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid } from '@fluentui/react-northstar';
 import { EmojiIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
-const IconExampleSize = () => (
+const SvgIconExampleSize = () => (
   <Grid rows={2} styles={{ textAlign: 'center' }}>
     <EmojiIcon size="smallest" />
     <CallVideoIcon size="smallest" />
@@ -27,4 +27,4 @@ const IconExampleSize = () => (
   </Grid>
 );
 
-export default IconExampleSize;
+export default SvgIconExampleSize;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Flex } from '@fluentui/react-northstar';
 import { CallVideoIcon, SkypeLogoIcon, EmojiIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
-const IconExampleRotate = () => (
+const SvgIconExampleRotate = () => (
   <Flex gap="gap.smaller">
     <CallVideoIcon rotate={45} />
     <SkypeLogoIcon rotate={45} />
@@ -11,4 +11,4 @@ const IconExampleRotate = () => (
   </Flex>
 );
 
-export default IconExampleRotate;
+export default SvgIconExampleRotate;
