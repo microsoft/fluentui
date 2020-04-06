@@ -17,8 +17,8 @@ class MSTeamsLogo extends React.Component<LogoProps, any> {
             <div style={style}>
               {Box.create(icon, {
                 defaultProps: () => ({
-                  variables: { color: siteVariables.colors.brand[600] },
-                  styles: { verticalAlign: 'middle' },
+                  as: 'span',
+                  styles: { verticalAlign: 'middle', color: siteVariables.colors.white },
                 }),
               })}
               <Text

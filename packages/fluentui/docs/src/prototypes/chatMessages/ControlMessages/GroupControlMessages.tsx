@@ -5,7 +5,7 @@ import * as keyboardKey from 'keyboard-key';
 import { List, ChatMessageProps, Flex } from '@fluentui/react-northstar';
 import ControlMessage from './ControlMessage';
 import controlMessagesGroupBehavior from './controlMessagesGroupBehavior';
-import { ArrowDownIcon, ParticipantAddIcon, ArrowRightIcon } from '@fluentui/react-icons-northstar';
+import { TriangleDownIcon, ParticipantAddIcon, TriangleEndIcon } from '@fluentui/react-icons-northstar';
 
 type GroupControlMessagesProps = {
   items: ChatMessageProps[];
@@ -40,9 +40,9 @@ const GroupControlMessages = (props: GroupControlMessagesProps) => {
       }}
     >
       {expanded ? (
-        <ArrowDownIcon onClick={() => setExpanded(!expanded)} />
+        <TriangleDownIcon onClick={() => setExpanded(!expanded)} />
       ) : (
-        <ArrowRightIcon onClick={() => setExpanded(!expanded)} />
+        <TriangleEndIcon onClick={() => setExpanded(!expanded)} />
       )}
       <ParticipantAddIcon />
       {expanded ? (
