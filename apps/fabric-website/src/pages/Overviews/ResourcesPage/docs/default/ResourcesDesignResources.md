@@ -11,6 +11,7 @@ These design toolkits provide styles, controls and layout templates that enable 
   <li class="mdut--half">[Download Android toolkit (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
   <li class="mdut--half">[Download Android toolkit (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
   <li class="mdut--half">macOS toolkit (coming soon)</li>
+  <li class="mdut--half">[Download Figma plug-in](https://www.figma.com/community/plugin/794492287931420611/Fluent-Theme-Designer)</li>
 
 </ul>
 

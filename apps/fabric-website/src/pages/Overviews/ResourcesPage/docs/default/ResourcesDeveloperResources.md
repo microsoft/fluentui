@@ -7,7 +7,7 @@
   <li class="mdut--full">[Fluent UI React tutorial](https://github.com/microsoft/fluentui/wiki/Getting-Started-with-UI-Fabric)</li>
 </ul>
 
-#### Get started with React Native and learn how to build your first projects
+#### Get started with React Native and learn how to build your first projects.
 
 <ul class="md-list--flex">
 
