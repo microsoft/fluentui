@@ -37,7 +37,6 @@ describe('Input', () => {
   });
 
   implementsShorthandProp(Input)('input', Box, { mapsValueToProp: 'type' });
-  implementsShorthandProp(Input)('icon', Box);
 
   describe('wrapper', () => {
     implementsShorthandProp(Input)('wrapper', Box, { mapsValueToProp: 'children' });
@@ -61,11 +60,14 @@ describe('Input', () => {
   });
 
   describe('clearable', () => {
-    it('calls onChange on Icon click with an `empty` value', () => {
+    it('calls onChange on Clearable icon click with an `empty` value', () => {
       const onChange = jest.fn();
       const wrapper = mount(<Input clearable defaultValue={faker.lorem.word()} onChange={onChange} />);
 
-      wrapper.find('Icon').simulate('click');
+      wrapper
+        .find(`.${Input.slotClassNames.icon}`)
+        .first()
+        .simulate('click');
       expect(onChange).toBeCalledTimes(1);
       expect(onChange).toHaveBeenCalledWith(
         expect.objectContaining({ type: 'click' }),

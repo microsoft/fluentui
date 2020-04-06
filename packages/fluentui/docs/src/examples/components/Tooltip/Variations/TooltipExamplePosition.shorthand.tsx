@@ -20,7 +20,7 @@ const TooltipExamplePosition = () => {
         open
         align={align}
         position={position}
-        trigger={<Button icon={icons[position]} styles={buttonStyles} />}
+        trigger={<Button icon={<Icon name={icons[position]} />} styles={buttonStyles} />}
         content={`The tooltip is rendered ${position} the trigger, aligned to the ${align}.`}
       />
     </Grid>
