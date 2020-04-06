@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import { Tooltip } from '@fluentui/react-northstar';
 // TODO: find replacement
-import { LinkifyIcon } from '@fluentui/react-icons-northstar';
+import { LinkIcon } from '@fluentui/react-icons-northstar';
 
 export default class ComponentControlsCopyLink extends React.Component<any, any> {
   mounted: boolean;
@@ -25,9 +25,7 @@ export default class ComponentControlsCopyLink extends React.Component<any, any>
   render() {
     const { active } = this.state;
 
-    return (
-      <Tooltip trigger={<LinkifyIcon onClick={this.handleClick} />} content={active ? 'Copied!' : this.btnLabel} />
-    );
+    return <Tooltip trigger={<LinkIcon onClick={this.handleClick} />} content={active ? 'Copied!' : this.btnLabel} />;
   }
 
   handleClick = e => {

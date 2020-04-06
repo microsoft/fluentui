@@ -11,6 +11,7 @@ import {
   Segment,
   Text,
   ShorthandValue,
+  Image,
 } from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
@@ -20,9 +21,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
-import { SearchIcon } from '@fluentui/react-icons-northstar';
-// TODO: find replacement
-import { GithubIcon } from '@fluentui/react-icons-northstar';
+import { SearchIcon, TriangleDownIcon, TriangleUpIcon, FilesTxtIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -486,7 +485,7 @@ class Sidebar extends React.Component<any, any> {
     const titleRenderer = (Component, { content, open, hasSubtree, ...restProps }) => (
       <Component open={open} hasSubtree={hasSubtree} {...restProps}>
         <span>{content}</span>
-        {hasSubtree && this.state.query === '' && <Icon name={open ? 'icon-arrow-up' : 'icon-arrow-down'} />}
+        {hasSubtree && this.state.query === '' && (open ? <TriangleUpIcon /> : <TriangleDownIcon />)}
       </Component>
     );
 
@@ -552,13 +551,13 @@ class Sidebar extends React.Component<any, any> {
           <a href={constants.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               GitHub
-              <GithubIcon styles={{ float: 'right' }} />
+              <Image src="public/images/github.png" width="20px" height="20px" styles={{ float: 'right' }} />
             </Box>
           </a>
           <a href={changeLogUrl} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               CHANGELOG
-              <Icon name="file alternate outline" styles={{ float: 'right' }} />
+              <FilesTxtIcon styles={{ float: 'right' }} />
             </Box>
           </a>
           <Input

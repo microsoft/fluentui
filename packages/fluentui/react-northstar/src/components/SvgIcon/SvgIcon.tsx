@@ -13,6 +13,11 @@ import { ThemeContext } from 'react-fela';
 
 import { ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
+export type SvgIconStylesProps = Pick<
+  SvgIconProps,
+  'bordered' | 'circular' | 'disabled' | 'outline' | 'rotate' | 'size' | 'xSpacing'
+>;
+
 const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }>> & {
   className: string;
   handledProps: (keyof (SvgIconProps & { children: SvgIconChildrenFn<SvgIconProps> }))[];

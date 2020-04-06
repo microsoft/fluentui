@@ -2,7 +2,7 @@ import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/
 import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-icons-northstar';
 
 import { pxToRem, SizeValue } from '../../../../utils';
-import { IconVariables } from './iconVariables';
+import { SvgIconVariables } from './svgIconVariables';
 
 export type SvgIconStylesProps = Pick<
   SvgIconProps,
@@ -21,7 +21,7 @@ const getBorderedStyles = (boxShadowColor: string): ICSSInJSStyle => {
   };
 };
 
-const getIconSize = (size: SizeValue, v: IconVariables): string => {
+const getIconSize = (size: SizeValue, v: SvgIconVariables): string => {
   const modifiedSizes = {
     large: {
       x: 24,
@@ -47,7 +47,7 @@ const getXSpacingStyles = (xSpacing: SvgIconXSpacing, horizontalSpace: string): 
   }
 };
 
-const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, IconVariables> = {
+const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
     speak: 'none',
     verticalAlign: 'middle',

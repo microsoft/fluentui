@@ -85,7 +85,6 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
           return (
             <IconComponent
               key={`${index}-${name}`}
-              name={name}
               outline
               tabIndex={0}
               styles={{

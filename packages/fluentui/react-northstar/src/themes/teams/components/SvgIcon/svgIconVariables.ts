@@ -7,7 +7,7 @@ export type IconSizeModifier = 'x' | 'xx';
 export const iconColorAreas = stringLiteralsArray('foreground');
 export type IconColorSchemeMapping = TeamsSchemeMappingWithAreas<ItemType<typeof iconColorAreas>>;
 
-export interface IconVariables {
+export interface SvgIconVariables {
   color: string;
   borderColor: string;
   backgroundColor: string;
@@ -30,7 +30,7 @@ export interface IconVariables {
   sizeModifier?: IconSizeModifier;
 }
 
-export default (siteVars): Partial<IconVariables> => ({
+export default (siteVars): Partial<SvgIconVariables> => ({
   colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, iconColorAreas),
   color: undefined,
   borderColor: undefined,

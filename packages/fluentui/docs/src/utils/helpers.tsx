@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 // TODO: find replacement
-import { ExternalIcon } from '@fluentui/react-icons-northstar';
+import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
 
 export const code = value => <code>{value}</code>;
 
@@ -12,7 +12,7 @@ export const link = (content: string, href: string) => {
   if (isAnchor || isExternal) {
     return (
       <a href={`${isAnchor ? location.pathname : ''}${href}`} {...(isExternal && { target: 'blank' })}>
-        {content} {isExternal ? <ExternalIcon size="small" /> : ''}
+        {content} {isExternal ? <OpenOutsideIcon size="small" /> : ''}
       </a>
     );
   }

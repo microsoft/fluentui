@@ -1,9 +1,14 @@
 import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react-northstar';
-import { TranslationIcon } from '@fluentui/react-icons-northstar';
+import {
+  BookmarkIcon,
+  TranslationIcon,
+  EmojiIcon,
+  LinkIcon,
+  LikeIcon,
+  MoreIcon,
+} from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import cx from 'classnames';
-// TODO: find replacements
-import { SmileIcon, FolderIcon, LinkifyIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 export interface PopoverProps {
   className?: string;
@@ -56,7 +61,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         className={cx(this.props.className, this.state.focused ? 'focused' : '')}
         items={[
           {
-            icon: <SmileIcon />,
+            icon: <EmojiIcon />,
             key: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile one',
@@ -64,14 +69,14 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           },
           {
             key: 'smile2',
-            icon: <SmileIcon />,
+            icon: <EmojiIcon />,
             className: 'smile-emoji',
             'aria-label': 'smile two',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile3',
-            icon: <SmileIcon />,
+            icon: <EmojiIcon />,
             className: 'smile-emoji',
             'aria-label': 'smile three',
             onClick: this.handleActionableItemClick,
@@ -94,8 +99,8 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: <FolderIcon />, content: 'Save this message' },
-                { key: 'linkify', icon: <LinkifyIcon />, content: 'Copy link' },
+                { key: 'bookmark', icon: <BookmarkIcon />, content: 'Save this message' },
+                { key: 'linkify', icon: <LinkIcon />, content: 'Copy link' },
                 { key: 'translate', icon: <TranslationIcon />, content: 'Translate' },
               ],
             },

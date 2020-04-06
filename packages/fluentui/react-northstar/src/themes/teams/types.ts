@@ -78,6 +78,7 @@ import { CardTopControlsStylesProps } from '../../components/Card/CardTopControl
 import { CardHeaderStylesProps } from '../../components/Card/CardHeader';
 import { CardBodyStylesProps } from '../../components/Card/CardBody';
 import { CardFooterStylesProps } from '../../components/Card/CardFooter';
+import { SvgIconStylesProps } from '../../components/SvgIcon/SvgIcon';
 
 export type TeamsThemeStylesProps = {
   Accordion: AccordionProps;
@@ -106,7 +107,7 @@ export type TeamsThemeStylesProps = {
   Grid: GridProps;
   Header: HeaderProps;
   HeaderDescription: HeaderDescriptionProps;
-  Icon: IconStylesProps;
+  Icon: SvgIconStylesProps;
   Image: ImageStylesProps;
   Input: InputProps;
   ItemLayout: ItemLayoutProps;

@@ -13,9 +13,15 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
-import { AcceptIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
-// TODO: find replacements
-import { MinusIcon, ClockIcon, LinkifyIcon, FolderOpenIcon } from '@fluentui/react-icons-northstar';
+import {
+  AcceptIcon,
+  DownloadIcon,
+  MoreIcon,
+  TabsIcon,
+  WordIcon,
+  PhoneClockIcon,
+  LinkIcon,
+} from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
@@ -42,8 +48,8 @@ type StatusPropsExtendable = Extendable<StatusProps>;
 
 const statusMap: Map<UserStatus, StatusPropsExtendable> = new Map([
   ['Available', { color: 'green', icon: <AcceptIcon />, title: 'Available' }],
-  ['DoNotDisturb', { color: 'red', icon: <MinusIcon />, title: 'Do not disturb' }],
-  ['Away', { color: 'yellow', icon: <ClockIcon />, title: 'Away' }],
+  ['DoNotDisturb', { color: 'red', title: 'Do not disturb' }],
+  ['Away', { color: 'yellow', icon: <PhoneClockIcon />, title: 'Away' }],
   ['Offline', { color: 'grey', title: 'Offline' }],
 ] as [UserStatus, StatusPropsExtendable][]);
 
@@ -103,13 +109,13 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         },
         {
           key: 'linkify',
-          icon: <LinkifyIcon />,
+          icon: <LinkIcon />,
           content: 'Get link',
           onClick: menuClickHandler('Get link'),
         },
         {
           key: 'tab',
-          icon: <FolderOpenIcon />,
+          icon: <TabsIcon />,
           content: 'Make this a tab',
           onClick: menuClickHandler('Make tab'),
         },

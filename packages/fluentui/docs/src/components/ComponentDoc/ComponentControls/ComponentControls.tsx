@@ -1,5 +1,5 @@
 import { CopyToClipboard } from '@fluentui/docs-components';
-import { Menu, menuAsToolbarBehavior, Tooltip, Icon } from '@fluentui/react-northstar';
+import { Menu, menuAsToolbarBehavior, Tooltip, Loader } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
@@ -8,8 +8,15 @@ import { ComponentSourceManagerLanguage } from '../ComponentSourceManager';
 import ComponentControlsCodeSandbox, {
   CodeSandboxState,
 } from './ComponentControlsCodeSandbox/ComponentControlsCodeSandbox';
-// TODO: find replacements
-import { CodeIcon, AdjustIcon, LinkifyIcon } from '@fluentui/react-icons-northstar';
+import {
+  FilesCodeIcon,
+  FilesImageIcon,
+  CircleIcon,
+  LinkIcon,
+  OpenOutsideIcon,
+  AcceptIcon,
+  IndentIcon,
+} from '@fluentui/react-icons-northstar';
 
 type ComponentControlsProps = {
   exampleCode: string;
@@ -57,11 +64,13 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             ? 'Exporting...'
             : 'Click to open';
         const codeSandboxIcon =
-          state === CodeSandboxState.Default
-            ? 'connectdevelop'
-            : state === CodeSandboxState.Loading
-            ? 'spinner'
-            : 'checkmark';
+          state === CodeSandboxState.Default ? (
+            <FilesCodeIcon style={{ width: '20px', height: '20px' }} />
+          ) : state === CodeSandboxState.Loading ? (
+            <Loader size="small" style={{ width: '20px', height: '20px' }} />
+          ) : (
+            <AcceptIcon style={{ width: '20px', height: '20px' }} />
+          );
 
         return (
           <Menu
@@ -71,7 +80,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             aria-label={toolbarAriaLabel || null}
             items={[
               {
-                icon: <CodeIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <FilesCodeIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowCode,
                 active: showCode,
                 children: (Component, props) => (
@@ -80,7 +89,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: <Icon {...{ name: 'paint brush', style: { width: '20px', height: '20px' } }} />,
+                icon: <FilesImageIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowVariables,
                 active: showVariables,
                 children: (Component, props) => (
@@ -93,7 +102,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 kind: 'divider',
               },
               {
-                icon: <AdjustIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <CircleIcon outline {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowTransparent,
                 active: showTransparent,
                 children: (Component, props) => (
@@ -101,7 +110,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 ),
               },
               {
-                icon: <Icon {...{ name: 'align right', style: { width: '20px', height: '20px' } }} />,
+                icon: <IndentIcon rotate={180} {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowRtl,
                 active: showRtl,
                 children: (Component, props) => (
@@ -110,7 +119,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
 
               {
-                icon: <Icon {...{ name: 'external alternate', style: { width: '20px', height: '20px' } }} />,
+                icon: <OpenOutsideIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 children: (Component, props) => (
                   <Tooltip content="Popout" key="maximize" trigger={<Component {...props} />} />
                 ),
@@ -131,13 +140,13 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
               },
               {
                 onClick: onCodeSandboxClick,
-                icon: <Icon {...{ name: codeSandboxIcon, style: { width: '20px', height: '20px' } }} />,
+                icon: codeSandboxIcon,
                 children: (Component, props) => (
                   <Tooltip content={codeSandboxTooltip} key="show-codesandbox" trigger={<Component {...props} />} />
                 ),
               },
               {
-                icon: <LinkifyIcon {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <LinkIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 children: (Component, props) => (
                   <CopyToClipboard key="copy-link" value={anchorName}>
                     {(active, onClick) => (

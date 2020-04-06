@@ -6,7 +6,6 @@ import {
   DialogProps,
   DividerProps,
   EmbedProps,
-  IconProps,
   ImageProps,
   VideoProps,
   Avatar as _Avatar,
@@ -18,6 +17,7 @@ import {
 import * as _ from 'lodash';
 import * as faker from 'faker';
 import * as React from 'react';
+import * as icons from '@fluentui/react-icons-northstar';
 
 import { KnobComponentGenerators } from '../../types';
 import { number } from '../ComponentPlayground/typeGenerators';
@@ -85,22 +85,16 @@ export const Embed: KnobComponentGenerators<EmbedProps> = {
   }),
 };
 
-export const Icon: KnobComponentGenerators<IconProps> = {
-  name: ({ componentInfo, propDef, propName, theme }) => {
-    // TODO: fix this...
-    const values = Object.keys(theme.icons).slice(0, 10);
-
-    // This generator can be used for shorthands via recursion.
-    // Due wrong type definitions on `Icon` the `name` prop there is neither required, nor does not
-    // have default value.
-    // TODO: remove this hack once we will clarify types for Icon component
-    const isIconComponent = propName === 'name';
+export const Icon: KnobComponentGenerators<BoxProps> = {
+  content: ({ propName }) => {
+    const values = Object.values(icons)
+      .filter(icon => !!(icon as any).displayName)
+      .slice(0, 10);
 
     return {
-      hook: useSelectKnob,
       name: propName,
-      allowsNone: _.isNil(propDef.defaultValue) && !isIconComponent,
-      initialValue: isIconComponent ? values[0] : propDef.defaultValue,
+      hook: useSelectKnob,
+      initialValue: values[0],
       values,
     };
   },

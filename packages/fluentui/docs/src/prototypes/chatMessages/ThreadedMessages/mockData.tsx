@@ -8,9 +8,9 @@ import {
   LikeIcon,
   MoreIcon,
   UnderlineIcon,
+  EmojiIcon,
+  FilesImageIcon,
 } from '@fluentui/react-icons-northstar';
-// TODO: find replacements
-import { SmileIcon, PictureIcon } from '@fluentui/react-icons-northstar';
 
 export const actionMenu = {
   iconOnly: true,
@@ -86,11 +86,11 @@ export const toolbarItems = [
   },
   {
     key: 'smile',
-    icon: <SmileIcon outline />,
+    icon: <EmojiIcon outline />,
   },
   {
     key: 'picture',
-    icon: <PictureIcon outline />,
+    icon: <FilesImageIcon outline />,
   },
   {
     key: 'calendar',

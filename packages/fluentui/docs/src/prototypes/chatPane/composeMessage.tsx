@@ -7,7 +7,7 @@ import {
   menuAsToolbarBehavior,
   MenuItemProps,
   ShorthandCollection,
-  IconXSpacing,
+  SvgIconXSpacing,
   ICSSInJSStyle,
   Props,
 } from '@fluentui/react-northstar';
@@ -89,7 +89,7 @@ const getMenuItems = (): ShorthandCollection<MenuItemProps> => {
     key: `${index}-${name}`,
     icon: {
       name,
-      xSpacing: 'both' as IconXSpacing,
+      xSpacing: 'both' as SvgIconXSpacing,
       variables: siteVars => ({ color: siteVars.colors.grey[500] }),
     },
     'aria-label': `${name} tool`,
