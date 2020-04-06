@@ -14,7 +14,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
-import { DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
+import { AcceptIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 // TODO: find replacements
 import { CheckIcon, MinusIcon, ClockIcon, LinkifyIcon } from '@fluentui/react-icons-northstar';
 
@@ -42,7 +42,7 @@ type ChatItem = {
 type StatusPropsExtendable = Extendable<StatusProps>;
 
 const statusMap: Map<UserStatus, StatusPropsExtendable> = new Map([
-  ['Available', { color: 'green', icon: <CheckIcon />, title: 'Available' }],
+  ['Available', { color: 'green', icon: <AcceptIcon />, title: 'Available' }],
   ['DoNotDisturb', { color: 'red', icon: <MinusIcon />, title: 'Do not disturb' }],
   ['Away', { color: 'yellow', icon: <ClockIcon />, title: 'Away' }],
   ['Offline', { color: 'grey', title: 'Offline' }],

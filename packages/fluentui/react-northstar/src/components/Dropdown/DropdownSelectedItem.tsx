@@ -84,7 +84,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
     }),
     active: PropTypes.bool,
     header: customPropTypes.itemShorthand,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     image: customPropTypes.itemShorthandWithoutJSX,
     onClick: PropTypes.func,
     onKeyDown: PropTypes.func,

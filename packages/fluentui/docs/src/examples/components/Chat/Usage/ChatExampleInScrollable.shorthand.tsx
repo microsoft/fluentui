@@ -17,7 +17,7 @@ import {
 } from '@fluentui/react-icons-northstar';
 
 const ChatExampleInScrollableShorthand = () => {
-  const [actionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
+  const [actionCount, setActionCount] = useRangeKnob({ name: 'actionCount', initialValue: 7, min: 1, max: 10 });
   const [overflow] = useBooleanKnob({ name: 'overflow', initialValue: true });
   const [height] = useRangeKnob({
     name: 'height',
@@ -50,6 +50,7 @@ const ChatExampleInScrollableShorthand = () => {
       title: 'More actions',
       children: (Component, props) => (
         <MenuButton
+          key="more"
           menu={[
             { key: 'reply', content: 'Reply', icon: <ReplyIcon /> },
             { key: 'edit', content: 'Edit', icon: <EditIcon /> },
@@ -194,9 +195,15 @@ const ChatExampleInScrollableShorthand = () => {
   ];
 
   return (
-    <div style={{ height, width, overflow: 'scroll', margin: 150, marginLeft: 0 }}>
-      <Chat items={items} styles={{ minHeight: '100%' }} />
-    </div>
+    <>
+      <div style={{ height, width, overflow: 'scroll', margin: 150, marginBottom: 0, marginLeft: 50 }}>
+        <Chat items={items} styles={{ minHeight: '100%' }} />
+      </div>
+
+      <button id="actions-to-max" onClick={() => setActionCount(actionItems.length)}>
+        Set action count to max
+      </button>
+    </>
   );
 };
 

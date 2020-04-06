@@ -70,7 +70,7 @@ class Attachment extends UIComponent<WithAsProp<AttachmentProps>> {
     actionable: PropTypes.bool,
     description: customPropTypes.itemShorthand,
     header: customPropTypes.itemShorthand,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   };
 
