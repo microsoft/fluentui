@@ -80,7 +80,7 @@ export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { defaultSelectIndicatorPosition, customSelectIndicator } = React.useContext(TreeContext);
+  const { customSelectIndicator } = React.useContext(TreeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 
@@ -174,20 +174,15 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     },
   );
 
-  const rootA11yProps = {
-    className: classes.root,
-    onClick: handleClick,
-    selected,
-    ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
-    ...unhandledProps,
-  };
-
   const element = (
     <ElementType
-      {...getA11Props(
-        'root',
-        !defaultSelectIndicatorPosition && !hasSubtree ? { ...rootA11yProps, selectIndicator } : rootA11yProps,
-      )}
+      {...getA11Props('root', {
+        className: classes.root,
+        onClick: handleClick,
+        selected,
+        ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
+        ...unhandledProps,
+      })}
     >
       {childrenExist(children) ? children : content}
 
