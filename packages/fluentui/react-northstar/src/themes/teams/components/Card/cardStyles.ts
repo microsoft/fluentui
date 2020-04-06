@@ -10,13 +10,15 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
 
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
-      borderPadding: v.borderWidth,
+      borderWidth: v.borderWidth,
+      borderRadius: v.borderRadius,
     });
 
     return {
       display: 'flex',
       flexDirection: 'column',
       position: 'relative',
+      overflow: 'hidden',
       padding: v.padding,
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
@@ -27,6 +29,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       borderWidth: v.borderWidth,
       borderStyle: v.borderStyle,
       borderColor: v.borderColor,
+      borderRadius: v.borderRadius,
       ...borderFocusStyles,
     };
   },

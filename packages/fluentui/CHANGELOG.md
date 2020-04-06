@@ -46,6 +46,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `@fluentui/react-icons-northstar` package that contains all Teams theme icons and moved `createSvgIcon` to this package @mnajdova ([#12453](https://github.com/microsoft/fluentui/pull/12453))
 - Add `selected` property to TableRow component and selectable table prototype @pompomon ([#12475](https://github.com/microsoft/fluentui/pull/12475))
 - Add `AlertDismissAction` component for the dismissAction slot in the `Alert` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
+- Add `borderRadius` variables to `Card` component @pompomon ([#12552](https://github.com/microsoft/fluentui/pull/12552))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
