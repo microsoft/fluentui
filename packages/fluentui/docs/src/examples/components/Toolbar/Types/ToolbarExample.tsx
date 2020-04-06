@@ -1,5 +1,18 @@
 import { Toolbar, toggleButtonBehavior } from '@fluentui/react-northstar';
 import * as React from 'react';
+import {
+  CodeSnippetIcon,
+  LinkIcon,
+  QuoteIcon,
+  BoldIcon,
+  ItalicIcon,
+  UnderlineIcon,
+  FontSizeIcon,
+  RemoveFormatIcon,
+  OutdentIcon,
+  IndentIcon,
+  MoreIcon,
+} from '@fluentui/react-icons-northstar';
 
 const stateReducer: React.Reducer<
   { bold: boolean; italic: boolean; underline: boolean; more: boolean },
@@ -19,42 +32,42 @@ const ToolbarExample = () => {
       <Toolbar.Item
         accessibility={toggleButtonBehavior}
         active={state.bold}
-        icon={{ name: 'bold', outline: true }}
+        icon={<BoldIcon {...{ outline: true }} />}
         title="Toggle bold"
         onClick={() => dispatch('bold')}
       />
       <Toolbar.Item
         accessibility={toggleButtonBehavior}
         active={state.italic}
-        icon={{ name: 'italic', outline: true }}
+        icon={<ItalicIcon {...{ outline: true }} />}
         title="Toggle italic"
         onClick={() => dispatch('italic')}
       />
       <Toolbar.Item
         accessibility={toggleButtonBehavior}
         active={state.underline}
-        icon={{ name: 'underline', outline: true }}
+        icon={<UnderlineIcon {...{ outline: true }} />}
         title="Toggle underline"
         onClick={() => dispatch('underline')}
       />
       <Toolbar.Divider />
 
-      <Toolbar.Item icon={{ name: 'font-size', outline: true }} title="Font size" />
-      <Toolbar.Item icon={{ name: 'remove-format', outline: true }} title="Remove formatting" />
+      <Toolbar.Item icon={<FontSizeIcon {...{ outline: true }} />} title="Font size" />
+      <Toolbar.Item icon={<RemoveFormatIcon {...{ outline: true }} />} title="Remove formatting" />
       <Toolbar.Divider />
 
-      <Toolbar.Item icon={{ name: 'outdent', outline: true }} title="Outdent" />
-      <Toolbar.Item icon={{ name: 'indent', outline: true }} title="Indent" />
+      <Toolbar.Item icon={<OutdentIcon {...{ outline: true }} />} title="Outdent" />
+      <Toolbar.Item icon={<IndentIcon {...{ outline: true }} />} title="Indent" />
       <Toolbar.Divider />
 
       <Toolbar.Item
-        icon={{ name: 'more', outline: true }}
+        icon={<MoreIcon {...{ outline: true }} />}
         active={state.more}
         title="More"
         menu={[
-          { key: 'quote', content: 'Quote', icon: 'quote' },
-          { key: 'link', content: 'Link', icon: 'link', disabled: true },
-          { key: 'code', content: 'Code snippet', icon: 'code-snippet' },
+          { key: 'quote', content: 'Quote', icon: <QuoteIcon /> },
+          { key: 'link', content: 'Link', icon: <LinkIcon />, disabled: true },
+          { key: 'code', content: 'Code snippet', icon: <CodeSnippetIcon /> },
         ]}
         menuOpen={state.more}
         onMenuOpenChange={() => dispatch('more')}

@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "ComboBox: borderColor should be applied properly in the case of error",
-  "packageName": "office-ui-fabric-react",
-  "email": "aneeshak@microsoft.com",
-  "commit": "cdf6c864ab4d067bfabc995491dd31771495dd22",
-  "dependentChangeType": "patch",
-  "date": "2020-03-02T23:52:21.376Z"
-}

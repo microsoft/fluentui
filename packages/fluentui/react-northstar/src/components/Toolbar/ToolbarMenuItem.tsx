@@ -48,7 +48,6 @@ import {
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import Box, { BoxProps } from '../Box/Box';
-import Icon, { IconProps } from '../Icon/Icon';
 import Popup, { PopupProps } from '../Popup/Popup';
 import ToolbarMenu, { ToolbarMenuProps, ToolbarMenuItemShorthandKinds } from './ToolbarMenu';
 import { ToolbarVariablesContext, ToolbarVariablesProvider } from './toolbarVariablesContext';
@@ -69,7 +68,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** ToolbarMenuItem index inside ToolbarMenu. */
   index?: number;
@@ -118,7 +117,7 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   wrapper?: ShorthandValue<BoxProps>;
 }
 
-export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'>;
+export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
 
 export interface ToolbarMenuItemSlotClassNames {
   activeIndicator: string;
@@ -199,6 +198,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
     className: ToolbarMenuItem.className,
     mapPropsToStyles: () => ({
       disabled,
+      hasContent: !!content,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -324,8 +324,10 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
         children
       ) : (
         <>
-          {Icon.create(icon, {
-            defaultProps: () => ({ xSpacing: !!content ? 'after' : 'none' }),
+          {Box.create(icon, {
+            defaultProps: () => ({
+              styles: resolvedStyles.icon,
+            }),
           })}
           {content}
           {active &&
@@ -450,7 +452,7 @@ ToolbarMenuItem.propTypes = {
   activeIndicator: customPropTypes.shorthandAllowingChildren,
   defaultMenuOpen: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthand,
+  icon: customPropTypes.shorthandAllowingChildren,
   index: PropTypes.number,
   submenuIndicator: customPropTypes.shorthandAllowingChildren,
   inSubmenu: PropTypes.bool,

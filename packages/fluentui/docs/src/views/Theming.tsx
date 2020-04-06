@@ -5,6 +5,7 @@ import { Button, Icon, Provider, Text, Animation, Header } from '@fluentui/react
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
+import { CalendarIcon } from '@fluentui/react-icons-northstar';
 
 export default () => (
   <DocPage title="Theming">
@@ -139,7 +140,9 @@ export default () => (
       of the slot.
     </p>
     <ExampleSnippet
-      render={() => <Button icon={{ name: 'calendar', styles: { boxShadow: '0 0 0 2px red' } }} content="Profile" />}
+      render={() => (
+        <Button icon={<CalendarIcon {...{ styles: { boxShadow: '0 0 0 2px red' } }} />} content="Profile" />
+      )}
     />
 
     <p>
@@ -153,8 +156,8 @@ export default () => (
     <ExampleSnippet
       render={() => (
         <>
-          <Button icon="calendar" content="Profile" />
-          <Button icon="calendar" content="Profile" />
+          <Button icon={<CalendarIcon />} content="Profile" />
+          <Button icon={<CalendarIcon />} content="Profile" />
 
           <Provider
             theme={{
@@ -168,8 +171,8 @@ export default () => (
             }}
           >
             <span>
-              <Button icon="calendar" content="Profile" />
-              <Button icon="calendar" content="Profile" />
+              <Button icon={<CalendarIcon />} content="Profile" />
+              <Button icon={<CalendarIcon />} content="Profile" />
             </span>
           </Provider>
         </>

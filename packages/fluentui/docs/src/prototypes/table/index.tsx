@@ -17,6 +17,7 @@ import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
 import ResponsiveTableContainer from './ResponsiveTableContainer';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 import SelectableTable from './SelectableTable';
 
 function handleRowClick(index) {
@@ -109,7 +110,7 @@ const rowsMembers = [
 
 const menuButton = (
   <MenuButton
-    trigger={<Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />}
+    trigger={<Button tabIndex={-1} icon={<MoreIcon />} circular text iconOnly title="More options" />}
     menu={[
       '1',
       '2',

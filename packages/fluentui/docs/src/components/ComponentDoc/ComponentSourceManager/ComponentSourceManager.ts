@@ -81,6 +81,10 @@ export default class ComponentSourceManager extends React.Component<
     const { examplePath } = props;
     const { componentAPIs, currentCodeAPI, currentCodeLanguage, currentCode: storedCode, formattedCode } = state;
 
+    if (!componentAPIs[currentCodeAPI]) {
+      throw new Error(`Cannot find sources for ${examplePath}`);
+    }
+
     const sourceCodes = componentAPIs[currentCodeAPI].sourceCode;
     const originalCode = sourceCodes[currentCodeLanguage];
 

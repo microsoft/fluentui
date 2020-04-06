@@ -34,7 +34,6 @@ import {
 import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 import Popup, { PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
@@ -52,7 +51,7 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /**
    * Shorthand for the submenu.
@@ -259,7 +258,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
         onClick: handleClick,
       })}
     >
-      {childrenExist(children) ? children : Icon.create(icon)}
+      {childrenExist(children) ? children : Box.create(icon)}
     </ElementType>
   );
 
@@ -366,7 +365,7 @@ ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   menu: PropTypes.oneOfType([
     customPropTypes.shorthandAllowingChildren,
     PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren),

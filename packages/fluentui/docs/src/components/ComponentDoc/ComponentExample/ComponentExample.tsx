@@ -6,6 +6,7 @@ import {
   Flex,
   ICSSInJSStyle,
   Menu,
+  Icon,
   Provider,
   Segment,
   ThemeInput,
@@ -323,8 +324,8 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
         disabled: !canCodeBeFormatted,
       },
       {
-        icon: 'refresh',
         content: 'Reset',
+        icon: <Icon name="refresh" />,
         key: 'reset',
         onClick: this.resetSourceCode,
         disabled: !wasCodeChanged,
@@ -341,7 +342,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: 'github',
+        icon: <Icon name="github" />,
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',
