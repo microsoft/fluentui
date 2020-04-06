@@ -34,6 +34,7 @@ import TooltipContent, { TooltipContentProps } from './TooltipContent';
 
 export interface TooltipSlotClassNames {
   content: string;
+  trigger: string;
 }
 
 export interface TooltipProps
@@ -145,6 +146,7 @@ const Tooltip: React.FC<TooltipProps> &
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       contentId: contentId.current,
+      triggerAriaLabel: trigger && trigger.props['aria-label'],
       open,
     }),
   });
@@ -228,7 +230,12 @@ const Tooltip: React.FC<TooltipProps> &
   const element = (
     <>
       {triggerElement && (
-        <Ref innerRef={triggerRef}>{React.cloneElement(triggerElement, getA11Props('trigger', triggerProps))}</Ref>
+        <Ref innerRef={triggerRef}>
+          {React.cloneElement(triggerElement, {
+            className: Tooltip.slotClassNames.trigger,
+            ...getA11Props('trigger', triggerProps),
+          })}
+        </Ref>
       )}
       <PortalInner mountNode={mountNode}>
         <Popper
@@ -258,6 +265,7 @@ Tooltip.displayName = 'Tooltip';
 
 Tooltip.slotClassNames = {
   content: `${Tooltip.className}__content`,
+  trigger: `${Tooltip.className}__trigger`,
 };
 
 Tooltip.defaultProps = {
