@@ -13,7 +13,7 @@ export class Pie extends React.Component<IPieProps, {}> {
       // tslint:disable:no-any
       .value((d: any) => {
         return d.data;
-      })
+      }),
   };
   constructor(props: IPieProps) {
     super(props);
@@ -36,6 +36,8 @@ export class Pie extends React.Component<IPieProps, {}> {
         uniqText={this.props.uniqText}
         activeArc={this.props.activeArc}
         href={href}
+        calloutId={this.props.calloutId}
+        valueInsideDonut={this.props.valueInsideDonut}
       />
     );
   };

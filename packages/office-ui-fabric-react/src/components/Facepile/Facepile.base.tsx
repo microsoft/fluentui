@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { BaseComponent, buttonProperties, classNamesFunction, getId, getNativeProps } from '../../Utilities';
-import { IFacepileProps, IFacepilePersona, IFacepileStyleProps, IFacepileStyles, OverflowButtonType } from './Facepile.types';
+import { buttonProperties, classNamesFunction, getId, getNativeProps, initializeComponentRef } from '../../Utilities';
+import {
+  IFacepileProps,
+  IFacepilePersona,
+  IFacepileStyleProps,
+  IFacepileStyles,
+  OverflowButtonType,
+} from './Facepile.types';
 import { FacepileButton } from './FacepileButton';
 import { Icon } from '../../Icon';
 import { Persona, IPersonaStyles } from '../../Persona';
@@ -11,32 +17,40 @@ const getClassNames = classNamesFunction<IFacepileStyleProps, IFacepileStyles>()
 
 /**
  * FacePile with no default styles.
- * [Use the `styles` API to add your own styles.](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Component-Styling)
+ * [Use the `styles` API to add your own styles.](https://github.com/microsoft/fluentui/wiki/Component-Styling)
  */
-export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
+export class FacepileBase extends React.Component<IFacepileProps, {}> {
   public static defaultProps: IFacepileProps = {
     maxDisplayablePersonas: 5,
     personas: [],
     overflowPersonas: [],
-    personaSize: PersonaSize.size32
+    personaSize: PersonaSize.size32,
   };
 
   private _ariaDescriptionId: string;
 
   private _classNames = getClassNames(this.props.styles, {
     theme: this.props.theme!,
-    className: this.props.className
+    className: this.props.className,
   });
 
   constructor(props: IFacepileProps) {
     super(props);
 
+    initializeComponentRef(this);
     this._ariaDescriptionId = getId();
   }
 
   public render(): JSX.Element {
     let { overflowButtonProps } = this.props;
-    const { chevronButtonProps, maxDisplayablePersonas, personas, overflowPersonas, showAddButton, ariaLabel } = this.props;
+    const {
+      chevronButtonProps, // tslint:disable-line:deprecation
+      maxDisplayablePersonas,
+      personas,
+      overflowPersonas,
+      showAddButton,
+      ariaLabel,
+    } = this.props;
 
     const { _classNames } = this;
 
@@ -51,7 +65,8 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
     const hasOverflowPersonas = overflowPersonas && overflowPersonas.length > 0;
     const personasPrimary: IFacepilePersona[] = hasOverflowPersonas ? personas : personas.slice(0, numPersonasToShow);
-    const personasOverflow: IFacepilePersona[] = (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
+    const personasOverflow: IFacepilePersona[] =
+      (hasOverflowPersonas ? overflowPersonas : personas.slice(numPersonasToShow)) || [];
 
     return (
       <div className={_classNames.root}>
@@ -103,8 +118,8 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     const { getPersonaProps, personaSize } = this.props;
     const personaStyles: Partial<IPersonaStyles> = {
       details: {
-        flex: '1 0 auto'
-      }
+        flex: '1 0 auto',
+      },
     };
 
     return (
@@ -136,7 +151,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   };
 
-  private _getElementWithOnClickEvent(personaControl: JSX.Element | null, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithOnClickEvent(
+    personaControl: JSX.Element | null,
+    persona: IFacepilePersona,
+    index: number,
+  ): JSX.Element {
     const { keytipProps } = persona;
     return (
       <FacepileButton
@@ -150,7 +169,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _getElementWithoutOnClickEvent(personaControl: JSX.Element | null, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithoutOnClickEvent(
+    personaControl: JSX.Element | null,
+    persona: IFacepilePersona,
+    index: number,
+  ): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, index)}>
         {personaControl}
@@ -160,7 +183,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
   private _getElementProps(
     persona: IFacepilePersona,
-    index: number
+    index: number,
   ): { key: React.Key; ['data-is-focusable']: boolean } & React.HTMLAttributes<HTMLDivElement> {
     const { _classNames } = this;
 
@@ -170,7 +193,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
       className: _classNames.itemButton,
       title: persona.personaName,
       onMouseMove: this._onPersonaMouseMove.bind(this, persona),
-      onMouseOut: this._onPersonaMouseOut.bind(this, persona)
+      onMouseOut: this._onPersonaMouseOut.bind(this, persona),
     };
   }
 

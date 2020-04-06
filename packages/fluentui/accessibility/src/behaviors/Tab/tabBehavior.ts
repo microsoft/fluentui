@@ -20,7 +20,7 @@ import { Accessibility, AccessibilityAttributes } from '../../types';
 const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
   attributes: {
     wrapper: {
-      role: 'presentation'
+      role: 'presentation',
     },
     root: {
       role: 'tab',
@@ -31,17 +31,17 @@ const tabBehavior: Accessibility<TabBehaviorProps> = props => ({
       'aria-describedby': props['aria-describedby'],
       'aria-controls': props['aria-controls'],
       'aria-disabled': props['disabled'],
-      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled
-    }
+      [IS_FOCUSABLE_ATTRIBUTE]: !props.disabled,
+    },
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default tabBehavior;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box } from '@fluentui/react';
+import { Box } from '@fluentui/react-northstar';
 
 const BoxShorthandExample = () => (
   <Box
@@ -9,7 +9,7 @@ const BoxShorthandExample = () => (
       color: 'blue',
       textAlign: 'center',
       width: '50px',
-      ':hover': { color: 'red' }
+      ':hover': { color: 'red' },
     }}
   />
 );

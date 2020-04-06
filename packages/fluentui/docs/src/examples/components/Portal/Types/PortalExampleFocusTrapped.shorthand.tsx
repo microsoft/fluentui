@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Header, Portal } from '@fluentui/react';
+import { Button, Header, Portal } from '@fluentui/react-northstar';
 
 class PortalExampleFocusTrapped extends React.Component {
   state = { open: false };
@@ -42,7 +42,7 @@ class PortalExampleFocusTrapped extends React.Component {
             disableFirstFocus: false,
             // Indicates an element to focus after Portal has opened.
             // 'null' by default. The first focusable element of Portal will be focused.
-            firstFocusableSelector: null
+            firstFocusableSelector: null,
           }}
           open={open}
           content={
@@ -56,7 +56,7 @@ class PortalExampleFocusTrapped extends React.Component {
                 padding: '15px',
                 boxShadow: 'rgb(187, 187, 187) 0px 2px 8px',
                 border: '1px solid rgba(34,36,38,.15)',
-                borderRadius: '5px'
+                borderRadius: '5px',
               }}
             >
               <Header>This is a portal with focus trap!</Header>

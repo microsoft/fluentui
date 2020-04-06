@@ -18,16 +18,16 @@ const selectableListBehavior: Accessibility<ListBehaviorProps> = props => ({
       role: 'listbox',
       tabIndex: -1,
       ...(props.horizontal && {
-        'aria-orientation': 'horizontal'
-      })
-    }
+        'aria-orientation': 'horizontal',
+      }),
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
-  }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
+  },
 });
 
 export default selectableListBehavior;

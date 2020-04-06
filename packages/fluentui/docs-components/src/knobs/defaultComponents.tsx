@@ -9,7 +9,7 @@ const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
       display: 'flex',
       flexDirection: 'row',
       justifyContent: 'space-between',
-      padding: '3px 0'
+      padding: '3px 0',
     }}
   >
     {props.children}
@@ -97,7 +97,7 @@ const LogInspector: React.FunctionComponent<LogInspectorProps> = props => (
             minWidth: '1.75rem',
             minHeight: '1.75rem',
             display: 'inline-block',
-            textAlign: 'center'
+            textAlign: 'center',
           }}
         >
           {props.items.length}
@@ -115,7 +115,7 @@ const LogInspector: React.FunctionComponent<LogInspectorProps> = props => (
           flexDirection: 'column',
           fontFamily: 'monospace',
           fontSize: '0.9rem',
-          padding: 5
+          padding: 5,
         }}
       >
         {props.items.map((line, index) => (
@@ -137,7 +137,7 @@ const defaultComponents: KnobComponents = {
   KnobSelect,
   KnobString,
 
-  LogInspector
+  LogInspector,
 };
 
 export default defaultComponents;

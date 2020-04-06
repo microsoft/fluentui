@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { ContextualMenuItemType, IContextualMenuProps, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  ContextualMenuItemType,
+  IContextualMenuProps,
+  IContextualMenuItem,
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
 export const ContextualMenuDefaultExample: React.FunctionComponent = () => {
@@ -10,37 +14,37 @@ const menuItems: IContextualMenuItem[] = [
   {
     key: 'newItem',
     text: 'New',
-    onClick: () => console.log('New clicked')
+    onClick: () => console.log('New clicked'),
   },
   {
     key: 'divider_1',
-    itemType: ContextualMenuItemType.Divider
+    itemType: ContextualMenuItemType.Divider,
   },
   {
     key: 'rename',
     text: 'Rename',
-    onClick: () => console.log('Rename clicked')
+    onClick: () => console.log('Rename clicked'),
   },
   {
     key: 'edit',
     text: 'Edit',
-    onClick: () => console.log('Edit clicked')
+    onClick: () => console.log('Edit clicked'),
   },
   {
     key: 'properties',
     text: 'Properties',
-    onClick: () => console.log('Properties clicked')
+    onClick: () => console.log('Properties clicked'),
   },
   {
     key: 'linkNoTarget',
     text: 'Link same window',
-    href: 'http://bing.com'
+    href: 'http://bing.com',
   },
   {
     key: 'linkWithTarget',
     text: 'Link new window',
     href: 'http://bing.com',
-    target: '_blank'
+    target: '_blank',
   },
   {
     key: 'linkWithOnClick',
@@ -50,17 +54,17 @@ const menuItems: IContextualMenuItem[] = [
       alert('Link clicked');
       ev.preventDefault();
     },
-    target: '_blank'
+    target: '_blank',
   },
   {
     key: 'disabled',
     text: 'Disabled item',
     disabled: true,
-    onClick: () => console.error('Disabled item should not be clickable.')
-  }
+    onClick: () => console.error('Disabled item should not be clickable.'),
+  },
 ];
 
 const menuProps: IContextualMenuProps = {
   shouldFocusOnMount: true,
-  items: menuItems
+  items: menuItems,
 };

@@ -23,7 +23,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
     isDayPickerVisible: true,
     isMonthPickerVisible: true,
     showGoToToday: true,
-    buttonString: 'Click for Calendar'
+    buttonString: 'Click for Calendar',
   };
 
   private _calendarButtonElement: HTMLElement;
@@ -33,7 +33,7 @@ export class CalendarButtonExample extends React.Component<ICalendarButtonExampl
 
     this.state = {
       showCalendar: false,
-      selectedDate: null
+      selectedDate: null,
     };
 
     this._onClick = this._onClick.bind(this);

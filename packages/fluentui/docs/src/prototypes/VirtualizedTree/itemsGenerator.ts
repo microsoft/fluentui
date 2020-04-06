@@ -11,7 +11,7 @@ function getItems(minItems = 20, maxItems = 40, maxLevel = 1) {
       const item = {
         id: `${parent}${parent ? '-' : ''}${index}`,
         title: `Tree-Item-${parent}${parent ? '-' : ''}${index}`,
-        ...(level < maxLevel && { items: generateLevel(level + 1, `${parent}${index}`) })
+        ...(level < maxLevel && { items: generateLevel(level + 1, `${parent}${index}`) }),
       };
       result.push(item);
     });

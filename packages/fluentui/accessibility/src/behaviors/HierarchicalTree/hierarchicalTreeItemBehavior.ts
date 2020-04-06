@@ -25,33 +25,33 @@ const hierarchicalTreeItemBehavior: Accessibility<TreeItemBehaviorProps> = props
           'aria-expanded': props.open,
           tabIndex: -1,
           [IS_FOCUSABLE_ATTRIBUTE]: true,
-          role: 'treeitem'
-        })
-    }
+          role: 'treeitem',
+        }),
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
       },
       ...(isSubtreeOpen(props) && {
         receiveFocus: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         },
         collapse: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }]
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
         },
         focusSubtree: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
-        }
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+        },
       }),
       ...(!isSubtreeOpen(props) && {
         expand: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }]
-        }
-      })
-    }
-  }
+          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+        },
+      }),
+    },
+  },
 });
 
 export type TreeItemBehaviorProps = {

@@ -12,20 +12,20 @@ import { Accessibility } from '../../types';
 const radioGroupBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'radiogroup'
-    }
+      role: 'radiogroup',
+    },
   },
 
   keyActions: {
     root: {
       nextItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }, { keyCode: keyboardKey.ArrowRight }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }, { keyCode: keyboardKey.ArrowRight }],
       },
       prevItem: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }, { keyCode: keyboardKey.ArrowLeft }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }, { keyCode: keyboardKey.ArrowLeft }],
+      },
+    },
+  },
 });
 
 export default radioGroupBehavior;

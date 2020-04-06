@@ -22,7 +22,7 @@ const itemStyles: React.CSSProperties = {
   display: 'flex',
   height: 50,
   justifyContent: 'center',
-  width: 50
+  width: 50,
 };
 
 const VerticalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleOptions> = props => {
@@ -33,14 +33,20 @@ const VerticalStackWrapAdvancedExampleContent: React.FunctionComponent<IExampleO
     root: {
       background: DefaultPalette.themeTertiary,
       overflow,
-      width: `${stackWidth}%`
-    }
+      width: `${stackWidth}%`,
+    },
   };
   const containerStyles: React.CSSProperties = { height: containerHeight };
 
   return (
     <div style={containerStyles}>
-      <Stack wrap horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} styles={stackStyles} tokens={wrapStackTokens}>
+      <Stack
+        wrap
+        horizontalAlign={horizontalAlignment}
+        verticalAlign={verticalAlignment}
+        styles={stackStyles}
+        tokens={wrapStackTokens}
+      >
         <span style={itemStyles}>1</span>
         <span style={itemStyles}>2</span>
         <span style={itemStyles}>3</span>
@@ -61,12 +67,12 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
     containerHeight: 420,
     horizontalAlignment: 'start',
     verticalAlignment: 'start',
-    overflow: 'visible'
+    overflow: 'visible',
   };
   private _horizontalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Left' },
     { key: 'center', text: 'Center' },
-    { key: 'end', text: 'Right' }
+    { key: 'end', text: 'Right' },
   ];
   private _verticalAlignmentOptions: IDropdownOption[] = [
     { key: 'start', text: 'Top' },
@@ -74,12 +80,12 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
     { key: 'end', text: 'Bottom' },
     { key: 'space-around', text: 'Space around' },
     { key: 'space-between', text: 'Space between' },
-    { key: 'space-evenly', text: 'Space evenly' }
+    { key: 'space-evenly', text: 'Space evenly' },
   ];
   private _overflowOptions: IDropdownOption[] = [
     { key: 'visible', text: 'Visible' },
     { key: 'auto', text: 'Auto' },
-    { key: 'hidden', text: 'Hidden' }
+    { key: 'hidden', text: 'Hidden' },
   ];
 
   public render(): JSX.Element {
@@ -89,7 +95,15 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
       <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
-            <Slider label="Stack height:" min={1} max={420} step={1} defaultValue={420} showValue={true} onChange={this._onHeightChange} />
+            <Slider
+              label="Stack height:"
+              min={1}
+              max={420}
+              step={1}
+              defaultValue={420}
+              showValue={true}
+              onChange={this._onHeightChange}
+            />
           </Stack.Item>
           <Stack.Item grow>
             <Slider

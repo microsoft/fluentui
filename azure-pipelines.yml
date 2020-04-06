@@ -14,6 +14,8 @@ jobs:
     steps:
       - template: azure-pipelines.tools.yml
 
+      - template: azure-pipelines.cache.yml
+
       - script: |
           yarn
         displayName: yarn
@@ -42,14 +44,14 @@ jobs:
       - script: |
           az --version
           az extension add -n azure-devops
-          echo $(buildQueuePat) | az devops login --organization https://uifabric.visualstudio.com
-          az devops configure --defaults organization=https://uifabric.visualstudio.com project="fabricpublic" --use-git-aliases true
+          echo $(buildQueuePat) | az devops login --organization https://dev.azure.com/uifabric
+          az devops configure --defaults organization=https://dev.azure.com/uifabric project="fabricpublic" --use-git-aliases true
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Set up Azure CLI with DevOps
 
       - script: |
-          az pipelines build queue --verbose --org https://uifabric.visualstudio.com -p fabricpublic --definition-name "office-ui-fabric-react - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId)
+          az pipelines build queue --verbose --org https://dev.azure.com/uifabric -p fabricpublic --definition-name "Fluent UI React - Perf-Test" --branch $(Build.SourceBranch) --variables artifact=Build-PR-$(Build.BuildNumber) buildId=$(Build.BuildId) buildReason=$(Build.Reason)
         env:
           AZURE_DEVOPS_EXT_PAT: $(buildQueuePat)
         displayName: Trigger Perf-Test and Screener jobs
@@ -62,9 +64,12 @@ jobs:
 
   - job: Validate
     dependsOn: Build
+    pool: 'Self Host Ubuntu'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -96,6 +101,8 @@ jobs:
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
+
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -139,8 +146,7 @@ jobs:
   - job: Deploy
     dependsOn: Build
     steps:
-      # No need for checkout since we're using build artifacts.
-      - checkout: none
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -168,17 +174,40 @@ jobs:
           Contents: '**/*'
         condition: always()
 
+  - job: ScreenerFluent
+    steps:
+      - script: |
+          yarn
+        displayName: yarn
+
+      - template: azure-pipelines.cache.yml
+
+      - template: azure-pipelines.tools.yml
+
+      - script: |
+          git config --global user.email "fabrictactical@microsoft.com"
+          git config --global user.name "Fabric Tactical"
+          yarn test:fluentui:visual
+        displayName: run FUI VR Test
+        env:
+          SCREENER_API_KEY: $(screener.key)
+
+      - task: DeleteFiles@1
+        inputs:
+          SourceFolder: $(Build.SourcesDirectory)
+          Contents: '**/*'
+        condition: always()
+
   - job: Screener
     dependsOn: Build
+    # keeping this at microsoft hosted because this doesn't require builds
+    pool:
+      vmImage: 'Ubuntu 18.04'
     steps:
       # No need for checkout since we're using build artifacts.
       - checkout: none
 
-      - task: DeleteFiles@1
-        inputs:
-          SourceFolder: /tmp/gulp-cache
-          Contents: '**/*'
-        condition: always()
+      - template: azure-pipelines.cache.yml
 
       - template: azure-pipelines.artifacts.yml
         parameters:
@@ -192,14 +221,6 @@ jobs:
           git config --global user.name "Fabric Tactical"
           yarn vrtest -- --debug
         displayName: run VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
-
-      - script: |
-          git config --global user.email "fabrictactical@microsoft.com"
-          git config --global user.name "Fabric Tactical"
-          yarn test:fluentui:visual
-        displayName: run FUI VR Test
         env:
           SCREENER_API_KEY: $(screener.key)
 

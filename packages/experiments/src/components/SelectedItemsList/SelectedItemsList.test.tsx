@@ -36,10 +36,10 @@ describe('SelectedItemsList', () => {
           onRenderItem={basicItemRenderer}
           selectedItems={[
             { key: '1', name: 'a' },
-            { key: '2', name: 'b' }
+            { key: '2', name: 'b' },
           ]}
           onChange={onChange}
-        />
+        />,
       );
 
       if (!listRef.current) {
@@ -59,7 +59,7 @@ describe('SelectedItemsList', () => {
 
       const items: ISimple[] = [
         { key: '1', name: 'a' },
-        { key: '2', name: 'b' }
+        { key: '2', name: 'b' },
       ];
       if (!listRef.current) {
         throw new Error('listRef was not initialized');

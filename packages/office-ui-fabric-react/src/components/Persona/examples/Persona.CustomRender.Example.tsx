@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { IPersonaProps, IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import {
+  IPersonaProps,
+  IPersonaSharedProps,
+  Persona,
+  PersonaSize,
+  PersonaPresence,
+} from 'office-ui-fabric-react/lib/Persona';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
@@ -11,7 +17,7 @@ export const PersonaCustomRenderExample: React.FunctionComponent = () => {
     text: 'Annie Lindqvist',
     secondaryText: 'Software Engineer',
     tertiaryText: 'In a meeting',
-    optionalText: 'Available at 4:00pm'
+    optionalText: 'Available at 4:00pm',
   };
 
   return (

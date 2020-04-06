@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { classNamesFunction, IStyleFunctionOrObject, styled, IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import {
+  classNamesFunction,
+  IStyleFunctionOrObject,
+  styled,
+  IStyleFunction,
+} from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { FontSizes } from '@uifabric/fluent-theme';
 
@@ -45,33 +50,33 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
 
         selectors: {
           '&:first-child': {
-            marginTop: 0
-          }
-        }
+            marginTop: 0,
+          },
+        },
       },
 
       props.as === 'h1' && [
         {
           fontSize: FontSizes.size32,
-          marginBottom: '28px'
-        }
+          marginBottom: '28px',
+        },
       ],
 
       props.as === 'h2' && [
         {
           fontSize: FontSizes.size24,
-          marginBottom: '20px'
-        }
+          marginBottom: '20px',
+        },
       ],
 
       props.as === 'h3' && [
         {
           fontSize: FontSizes.size20,
-          marginBottom: '8px'
-        }
+          marginBottom: '8px',
+        },
       ],
-      className
-    ]
+      className,
+    ],
   };
 };
 

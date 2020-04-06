@@ -4,20 +4,20 @@ import * as React from 'react';
 
 import { getComponentGroup, scrollToAnchor } from '../../../utils';
 import ComponentPropsOutline from './ComponentPropsOutline';
-import { Flex, Header } from '@fluentui/react';
+import { Flex, Header } from '@fluentui/react-northstar';
 import ComponentPropCard from './ComponentPropCard';
 
 export default class ComponentProps extends React.Component<any, any> {
   static propTypes = {
     displayName: PropTypes.string.isRequired,
-    props: PropTypes.arrayOf(PropTypes.object).isRequired
+    props: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
   componentWillMount() {
     const { displayName } = this.props;
 
     this.setState({
-      componentGroup: getComponentGroup(displayName)
+      componentGroup: getComponentGroup(displayName),
     });
     scrollToAnchor();
   }
@@ -26,7 +26,7 @@ export default class ComponentProps extends React.Component<any, any> {
     const { displayName } = nextProps;
 
     this.setState({
-      componentGroup: getComponentGroup(displayName)
+      componentGroup: getComponentGroup(displayName),
     });
     scrollToAnchor();
   }

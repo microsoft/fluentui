@@ -1,12 +1,14 @@
 parameters:
   artifact: ''
   buildId: ''
+  buildReason: ''
 
 # Download and extract build artifacts
 steps:
   - script: |
       echo "Artifact Name: ${{ parameters.artifact }}"
       echo "Build ID / Run ID: ${{ parameters.buildId }}"
+      echo "Build Reason: ${{ parameters.buildReason }}"
     displayName: echo some variables
 
   - task: DownloadPipelineArtifact@2

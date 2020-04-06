@@ -10,12 +10,12 @@ const alertWarningBehavior: Accessibility<AlertProps> = props => ({
   attributes: {
     body: {
       role: 'alert',
-      'aria-live': 'polite'
+      'aria-live': 'polite',
     },
     dismissAction: {
-      'aria-describedby': props.bodyId
-    }
-  }
+      'aria-describedby': props.bodyId,
+    },
+  },
 });
 
 export default alertWarningBehavior;

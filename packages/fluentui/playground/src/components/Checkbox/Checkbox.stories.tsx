@@ -3,7 +3,7 @@ import { CheckboxBase } from './Checkbox.base';
 
 export default {
   component: 'Checkbox',
-  title: 'Base Checkbox'
+  title: 'Base Checkbox',
 };
 
 const _onChange = () => {

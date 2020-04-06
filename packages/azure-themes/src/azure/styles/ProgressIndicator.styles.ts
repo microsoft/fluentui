@@ -6,11 +6,11 @@ export const ProgressIndicatorStyles = (props: IProgressIndicatorStyleProps): Pa
 
   return {
     progressBar: {
-      height: '4px'
+      height: '4px',
     },
     progressTrack: {
       backgroundColor: semanticColors.variantBorder,
-      height: '4px'
-    }
+      height: '4px',
+    },
   };
 };

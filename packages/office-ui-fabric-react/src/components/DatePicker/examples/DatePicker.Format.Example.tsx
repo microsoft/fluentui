@@ -4,7 +4,20 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -21,7 +34,7 @@ const DayPickerStrings: IDatePickerStrings = {
 
   isRequiredErrorMessage: 'Start date is required.',
 
-  invalidInputErrorMessage: 'Invalid date format.'
+  invalidInputErrorMessage: 'Invalid date format.',
 };
 
 export interface IDatePickerFormatExampleState {
@@ -32,8 +45,8 @@ export interface IDatePickerFormatExampleState {
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
 export class DatePickerFormatExample extends React.Component<{}, IDatePickerFormatExampleState> {
@@ -42,7 +55,7 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
 
     this.state = {
       firstDayOfWeek: DayOfWeek.Sunday,
-      value: null
+      value: null,
     };
   }
 
@@ -52,9 +65,9 @@ export class DatePickerFormatExample extends React.Component<{}, IDatePickerForm
     return (
       <div className="docs-DatePickerExample">
         <p>
-          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the control will avoid parsing
-          the formatted strings of dates selected using the UI when text input is allowed. In this example, we are formatting and parsing
-          dates as dd/MM/yy.
+          Applications can customize how dates are formatted and parsed. Formatted dates can be ambiguous, so the
+          control will avoid parsing the formatted strings of dates selected using the UI when text input is allowed. In
+          this example, we are formatting and parsing dates as dd/MM/yy.
         </p>
         <DatePicker
           className={controlClass.control}

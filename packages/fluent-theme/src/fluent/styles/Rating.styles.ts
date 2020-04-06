@@ -12,14 +12,14 @@ export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> =
             // This is part 1 of highlighting all stars up to the one the user is hovering over
             '&:hover': {
               selectors: {
-                '.ms-RatingStar-back': { color: palette.neutralPrimary }
-              }
-            }
-          }
-        }
+                '.ms-RatingStar-back': { color: palette.neutralPrimary },
+              },
+            },
+          },
+        },
     ],
     ratingStarFront: {
-      color: palette.neutralPrimary
-    }
+      color: palette.neutralPrimary,
+    },
   };
 };

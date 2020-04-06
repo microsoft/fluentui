@@ -16,7 +16,8 @@ export function setVersion(packageName: string, packageVersion: string): void {
     // tslint:disable-next-line:no-any
     const packages = ((_win as any).__packages__ = (_win as any).__packages__ || {});
 
-    // We allow either the global packages or local packages caches to invalidate so testing can just clear the global to set this state
+    // We allow either the global packages or local packages caches to invalidate so testing can
+    // just clear the global to set this state
     if (!packages[packageName] || !packagesCache[packageName]) {
       packagesCache[packageName] = packageVersion;
       const versions = (packages[packageName] = packages[packageName] || []);

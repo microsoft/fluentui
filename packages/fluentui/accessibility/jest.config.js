@@ -1,5 +1,5 @@
 module.exports = {
   ...require('@uifabric/build/jest'),
   name: 'accessibility',
-  moduleNameMapper: require('lerna-alias').jest()
+  moduleNameMapper: require('lerna-alias').jest(),
 };

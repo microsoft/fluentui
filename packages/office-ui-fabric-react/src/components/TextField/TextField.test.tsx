@@ -51,7 +51,9 @@ describe('TextField snapshots', () => {
   it('renders correctly', () => {
     const className = 'testClassName';
     const inputClassName = 'testInputClassName';
-    const component = renderer.create(<TextField label="Label" className={className} inputClassName={inputClassName} />);
+    const component = renderer.create(
+      <TextField label="Label" className={className} inputClassName={inputClassName} />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -76,7 +78,13 @@ describe('TextField snapshots', () => {
 
   it('renders multiline correctly with props affecting styling', () => {
     const component = renderer.create(
-      <TextField label="Label" errorMessage="test message" underlined={true} prefix="test prefix" suffix="test suffix" />
+      <TextField
+        label="Label"
+        errorMessage="test message"
+        underlined={true}
+        prefix="test prefix"
+        suffix="test suffix"
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -84,7 +92,13 @@ describe('TextField snapshots', () => {
 
   it('renders multiline correctly with errorMessage', () => {
     const component = renderer.create(
-      <TextField label="Label" errorMessage="test message" underlined={true} prefix="test prefix" suffix="test suffix" />
+      <TextField
+        label="Label"
+        errorMessage="test message"
+        underlined={true}
+        prefix="test prefix"
+        suffix="test suffix"
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -95,12 +109,19 @@ describe('TextField snapshots', () => {
       root: 'root-testClassName',
       subComponentStyles: {
         label: {
-          root: 'label-testClassName'
-        }
-      }
+          root: 'label-testClassName',
+        },
+      },
     };
     const component = renderer.create(
-      <TextField label="Label" errorMessage="test message" underlined={true} prefix="test prefix" suffix="test suffix" styles={styles} />
+      <TextField
+        label="Label"
+        errorMessage="test message"
+        underlined={true}
+        prefix="test prefix"
+        suffix="test suffix"
+        styles={styles}
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -422,7 +443,13 @@ describe('TextField with error message', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
     wrapper = mount(
-      <TextField validateOnFocusIn value="initial value" onChange={noOp} onGetErrorMessage={validator} validateOnLoad={false} />
+      <TextField
+        validateOnFocusIn
+        value="initial value"
+        onChange={noOp}
+        onGetErrorMessage={validator}
+        validateOnLoad={false}
+      />,
     );
     jest.runAllTimers();
     expect(validator).toHaveBeenCalledTimes(0);
@@ -439,7 +466,13 @@ describe('TextField with error message', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
     wrapper = mount(
-      <TextField validateOnFocusOut value="initial value" onChange={noOp} onGetErrorMessage={validator} validateOnLoad={false} />
+      <TextField
+        validateOnFocusOut
+        value="initial value"
+        onChange={noOp}
+        onGetErrorMessage={validator}
+        validateOnLoad={false}
+      />,
     );
     jest.runAllTimers();
     expect(validator).toHaveBeenCalledTimes(0);
@@ -492,7 +525,9 @@ describe('TextField with error message', () => {
   it('should trigger validation on both blur and focus', () => {
     const validator = jest.fn((value: string) => (value.length > 3 ? errorMessage : ''));
 
-    wrapper = mount(<TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusOut validateOnFocusIn />);
+    wrapper = mount(
+      <TextField defaultValue="initial value" onGetErrorMessage={validator} validateOnFocusOut validateOnFocusIn />,
+    );
 
     const input = wrapper.find('input');
     input.simulate('input', mockEvent('value before focus'));
@@ -729,7 +764,9 @@ describe('TextField', () => {
       expect(selectedText!.toString()).toEqual(initialValue);
     };
 
-    ReactTestUtils.renderIntoDocument(<TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />);
+    ReactTestUtils.renderIntoDocument(
+      <TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />,
+    );
 
     textField!.setSelectionRange(0, initialValue.length);
   });

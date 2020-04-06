@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ILineChartPoints, ILineChartProps, LineChart } from '@uifabric/charting';
+import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -18,33 +18,83 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
   }
 
   private _basicExample(): JSX.Element {
-    const points: ILineChartPoints[] = [
-      {
-        data: [
-          { x: 0, y: 10 },
-          { x: 5, y: 18 },
-          { x: 10, y: 24 },
-          { x: 15, y: 25 },
-          { x: 20, y: 15 },
-          { x: 25, y: 30 },
-          { x: 30, y: 18 },
-          { x: 35, y: 32 },
-          { x: 40, y: 29 },
-          { x: 45, y: 43 },
-          { x: 50, y: 46 }
-        ],
-        legend: 'First',
-        color: DefaultPalette.blue
-      }
-    ];
     const data: IChartProps = {
       chartTitle: 'Line Chart',
-      lineChartData: points
+      lineChartData: [
+        {
+          legend: 'From_Legacy_to_O365',
+          data: [
+            {
+              x: new Date('2020-03-03T00:00:00.000Z'),
+              y: 297,
+            },
+            {
+              x: new Date('2020-03-04T00:00:00.000Z'),
+              y: 284,
+            },
+            {
+              x: new Date('2020-03-05T00:00:00.000Z'),
+              y: 282,
+            },
+            {
+              x: new Date('2020-03-06T00:00:00.000Z'),
+              y: 294,
+            },
+            {
+              x: new Date('2020-03-07T00:00:00.000Z'),
+              y: 294,
+            },
+            {
+              x: new Date('2020-03-08T00:00:00.000Z'),
+              y: 300,
+            },
+            {
+              x: new Date('2020-03-09T00:00:00.000Z'),
+              y: 298,
+            },
+          ],
+          color: DefaultPalette.blue,
+        },
+        {
+          legend: 'All',
+          data: [
+            {
+              x: new Date('2020-03-03T00:00:00.000Z'),
+              y: 297,
+            },
+            {
+              x: new Date('2020-03-04T00:00:00.000Z'),
+              y: 284,
+            },
+            {
+              x: new Date('2020-03-05T00:00:00.000Z'),
+              y: 282,
+            },
+            {
+              x: new Date('2020-03-06T00:00:00.000Z'),
+              y: 294,
+            },
+            {
+              x: new Date('2020-03-07T00:00:00.000Z'),
+              y: 294,
+            },
+            {
+              x: new Date('2020-03-08T00:00:00.000Z'),
+              y: 300,
+            },
+            {
+              x: new Date('2020-03-09T00:00:00.000Z'),
+              y: 298,
+            },
+          ],
+          color: DefaultPalette.green,
+        },
+      ],
     };
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} />
+        <LineChart data={data} legendsOverflowText={'Overflow Items'} yMinValue={282} yMaxValue={301} />
       </div>
     );
   }

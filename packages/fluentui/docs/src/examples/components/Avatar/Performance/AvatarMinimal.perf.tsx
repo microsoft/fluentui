@@ -1,4 +1,4 @@
-import { Avatar } from '@fluentui/react';
+import { Avatar } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const AvatarMinimalPerf = () => <Avatar />;

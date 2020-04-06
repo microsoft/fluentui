@@ -7,6 +7,6 @@ export const DetailsListAnimationPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Animation',
-    related
-  }
+    related,
+  },
 };

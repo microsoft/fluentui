@@ -9,6 +9,6 @@ export const Modal: React.FunctionComponent<IModalProps> = styled<IModalProps, I
   getStyles,
   undefined,
   {
-    scope: 'Modal'
-  }
+    scope: 'Modal',
+  },
 );

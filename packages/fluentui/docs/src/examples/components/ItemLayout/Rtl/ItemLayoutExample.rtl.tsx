@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { ItemLayout, Icon } from '@fluentui/react';
+import { ItemLayout } from '@fluentui/react-northstar';
+import { MentionIcon, ErrorIcon } from '@fluentui/react-icons-northstar';
 
 const ItemLayoutExampleRtlShorthand = () => (
   <>
     <ItemLayout
       content="Welcome"
-      contentMedia={<Icon name="mention" />}
+      contentMedia={<MentionIcon />}
       header="Alice"
       headerMedia="Yesterday"
-      media={<Icon name="error" />}
+      media={<ErrorIcon />}
     />
     <ItemLayout
       content="Welcome"
-      contentMedia={<Icon name="mention" />}
+      contentMedia={<MentionIcon />}
       header="הויפט זייט"
       headerMedia="Yesterday"
-      media={<Icon name="error" />}
+      media={<ErrorIcon />}
     />
   </>
 );

@@ -16,7 +16,7 @@ const useLinkState = (userProps: IStateProps<ILinkProps>): ILinkState => {
   React.useImperativeHandle(componentRef, () => ({
     focus: () => {
       rootRef.current && rootRef.current.focus();
-    }
+    },
   }));
 
   const onKeyDown = (ev: KeyboardEvent) => {
@@ -28,7 +28,7 @@ const useLinkState = (userProps: IStateProps<ILinkProps>): ILinkState => {
 
   return {
     onKeyDown,
-    rootRef
+    rootRef,
   };
 };
 
@@ -48,12 +48,12 @@ export const useLink = (props: IStateProps<ILinkProps>) => {
       ref: rootRef,
       role: 'link',
       tabIndex: 0,
-      type: 'link'
-    }
+      type: 'link',
+    },
   });
 
   return {
     slotProps,
-    state
+    state,
   };
 };

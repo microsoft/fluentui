@@ -31,7 +31,7 @@ enum PersonaPresence {
   away = 3,
   dnd = 4,
   blocked = 5,
-  busy = 6
+  busy = 6,
 }
 
 /** Sample people and groups @internal */
@@ -45,7 +45,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 2,
@@ -56,7 +56,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 3,
@@ -67,7 +67,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 4,
@@ -78,7 +78,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 5,
@@ -89,7 +89,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 6,
@@ -100,7 +100,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 7,
@@ -111,7 +111,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 8,
@@ -122,7 +122,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 9,
@@ -133,7 +133,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 10,
@@ -144,7 +144,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 11,
@@ -155,7 +155,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.none
+    presence: PersonaPresence.none,
   },
   {
     key: 12,
@@ -166,7 +166,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 13,
@@ -177,7 +177,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 14,
@@ -188,7 +188,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 15,
@@ -199,7 +199,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 16,
@@ -210,7 +210,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 17,
@@ -221,7 +221,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 18,
@@ -232,7 +232,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 19,
@@ -243,7 +243,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 20,
@@ -254,7 +254,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 21,
@@ -265,7 +265,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 22,
@@ -276,7 +276,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 23,
@@ -287,7 +287,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 24,
@@ -298,7 +298,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 25,
@@ -309,7 +309,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 3:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 26,
@@ -320,7 +320,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 3:00pm',
     isValid: true,
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 27,
@@ -331,7 +331,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 28,
@@ -342,7 +342,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 29,
@@ -353,7 +353,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 30,
@@ -364,7 +364,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 31,
@@ -375,7 +375,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.blocked
+    presence: PersonaPresence.blocked,
   },
   {
     key: 32,
@@ -386,7 +386,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 33,
@@ -397,7 +397,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.away
+    presence: PersonaPresence.away,
   },
   {
     key: 34,
@@ -408,7 +408,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 35,
@@ -419,7 +419,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 36,
@@ -430,7 +430,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.busy
+    presence: PersonaPresence.busy,
   },
   {
     key: 37,
@@ -441,7 +441,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.offline
+    presence: PersonaPresence.offline,
   },
   {
     key: 38,
@@ -452,7 +452,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 39,
@@ -463,7 +463,7 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.dnd
+    presence: PersonaPresence.dnd,
   },
   {
     key: 40,
@@ -474,22 +474,22 @@ export const people: (IExampleExtendedPersonaProps & { key: string | number })[]
     tertiaryText: 'In a meeting',
     optionalText: 'Available at 4:00pm',
     isValid: true,
-    presence: PersonaPresence.online
+    presence: PersonaPresence.online,
   },
   {
     key: 41,
     imageInitials: 'GO',
     text: 'Group One',
     canExpand: true,
-    isValid: true
+    isValid: true,
   },
   {
     key: 42,
     imageInitials: 'GT',
     text: 'Group Two',
     canExpand: true,
-    isValid: true
-  }
+    isValid: true,
+  },
 ];
 
 /** @internal */

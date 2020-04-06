@@ -12,7 +12,7 @@ export default class RefForward extends React.Component<RefProps> {
     process.env.NODE_ENV !== 'production'
       ? {
           children: PropTypes.element.isRequired,
-          innerRef: refPropType.isRequired
+          innerRef: refPropType.isRequired,
         }
       : {};
 
@@ -27,7 +27,7 @@ export default class RefForward extends React.Component<RefProps> {
     const { children } = this.props;
 
     return React.cloneElement(children, {
-      ref: this.handleRefOverride
+      ref: this.handleRefOverride,
     });
   }
 }

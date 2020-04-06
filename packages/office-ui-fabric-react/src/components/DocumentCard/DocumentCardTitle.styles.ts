@@ -2,7 +2,7 @@ import { getGlobalClassNames } from '../../Styling';
 import { IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
 
 export const DocumentCardTitleGlobalClassNames = {
-  root: 'ms-DocumentCardTitle'
+  root: 'ms-DocumentCardTitle',
 };
 
 export const getStyles = (props: IDocumentCardTitleStyleProps): IDocumentCardTitleStyles => {
@@ -22,9 +22,9 @@ export const getStyles = (props: IDocumentCardTitleStyleProps): IDocumentCardTit
         wordWrap: 'break-word',
         height: showAsSecondaryTitle ? '45px' : '38px',
         lineHeight: showAsSecondaryTitle ? '18px' : '21px',
-        color: showAsSecondaryTitle ? palette.neutralSecondary : palette.neutralPrimary
+        color: showAsSecondaryTitle ? palette.neutralSecondary : palette.neutralPrimary,
       },
-      className
-    ]
+      className,
+    ],
   };
 };

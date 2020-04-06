@@ -5,14 +5,14 @@ import { withSlots, getSlots } from '../../Foundation';
 import {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleProps,
-  ICollapsibleSectionTitleSlots
+  ICollapsibleSectionTitleSlots,
 } from './CollapsibleSectionTitle.types';
 
 export const CollapsibleSectionTitleView: ICollapsibleSectionTitleComponent['view'] = props => {
   const Slots = getSlots<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleSlots>(props, {
     root: 'button',
     chevron: Icon,
-    text: Text
+    text: Text,
   });
 
   const buttonProps = getNativeProps<React.HTMLAttributes<HTMLButtonElement>>(props, buttonProperties);

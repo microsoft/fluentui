@@ -1,6 +1,6 @@
 const {
   preset,
-  just: { task, series }
+  just: { task, series },
 } = require('@uifabric/build');
 const generateJsonTask = require('./tasks/generateJsonTask');
 

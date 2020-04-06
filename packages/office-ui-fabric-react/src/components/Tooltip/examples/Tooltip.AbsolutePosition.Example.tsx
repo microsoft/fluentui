@@ -5,7 +5,7 @@ import { useId, useConst } from '@uifabric/react-hooks';
 
 const rootStyles = { minHeight: 50 };
 const buttonStyles: Partial<IButtonStyles> = {
-  root: { position: 'absolute', left: 200 }
+  root: { position: 'absolute', left: 200 },
 };
 
 export const TooltipAbsolutePositionExample: React.FunctionComponent = () => {
@@ -18,7 +18,7 @@ export const TooltipAbsolutePositionExample: React.FunctionComponent = () => {
     gapSpace: 0,
     // If the tooltip should point to an absolutely-positioned element,
     // you must manually specify the callout target.
-    target: `#${buttonId}`
+    target: `#${buttonId}`,
   });
 
   return (

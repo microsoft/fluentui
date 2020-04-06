@@ -8,7 +8,7 @@ import createPackageJson from './createPackageJson';
 export enum CodeSandboxState {
   Default = 'DEFAULT',
   Loading = 'LOADING',
-  Success = 'SUCCESS'
+  Success = 'SUCCESS',
 }
 
 type ComponentControlsCodeSandboxProps = {
@@ -25,18 +25,21 @@ type ComponentControlsCodeSandboxState = {
   sandboxUrl: string;
 };
 
-class ComponentControlsCodeSandbox extends React.Component<ComponentControlsCodeSandboxProps, ComponentControlsCodeSandboxState> {
+class ComponentControlsCodeSandbox extends React.Component<
+  ComponentControlsCodeSandboxProps,
+  ComponentControlsCodeSandboxState
+> {
   state = {
     exampleCode: '',
     examplePath: '',
     sandboxUrl: '',
-    state: CodeSandboxState.Default
+    state: CodeSandboxState.Default,
   };
   codeSandboxerRef = React.createRef<{ deployToCSB: Function }>();
 
   static getDerivedStateFromProps(
     props: ComponentControlsCodeSandboxProps,
-    state: ComponentControlsCodeSandboxState
+    state: ComponentControlsCodeSandboxState,
   ): Partial<ComponentControlsCodeSandboxState> {
     const shouldKeepState = props.exampleCode === state.exampleCode;
 
@@ -44,7 +47,7 @@ class ComponentControlsCodeSandbox extends React.Component<ComponentControlsCode
       exampleCode: props.exampleCode,
       examplePath: props.exampleLanguage === 'ts' ? '/example.tsx' : '/example.js',
       sandboxUrl: shouldKeepState ? state.sandboxUrl : '',
-      state: shouldKeepState ? state.state : CodeSandboxState.Default
+      state: shouldKeepState ? state.state : CodeSandboxState.Default,
     };
   }
 
@@ -88,7 +91,7 @@ class ComponentControlsCodeSandbox extends React.Component<ComponentControlsCode
           name={exampleName}
           providedFiles={{
             [main]: { content: appTemplate },
-            'package.json': createPackageJson(main, exampleLanguage)
+            'package.json': createPackageJson(main, exampleLanguage),
           }}
           skipRedirect
           ref={this.codeSandboxerRef}

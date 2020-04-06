@@ -1,17 +1,18 @@
-package.json
+# generated or imported files
 package-deps.json
-shrinkwrap.yml
 CHANGELOG.*
 fabric-icons-*
 version.ts
 dndSim.js
-packages/tslint-rules/tslint.json
-
-*.d.ts
+monaco-typescript.d.ts
 *.api.md
 *.scss.ts
 _*.scss
 
+# messes up formatting
+packages/tslint-rules/tslint.json
+
+# folders of generated files
 lib
 lib-amd
 lib-esm
@@ -20,3 +21,6 @@ dist
 node_modules
 common/changes
 common/scripts
+coverage
+etc
+change

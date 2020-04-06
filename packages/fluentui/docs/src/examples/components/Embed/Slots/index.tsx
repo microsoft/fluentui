@@ -5,7 +5,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Slots = () => (
   <ExampleSection title="Slots">
-    <ComponentExample title="Video" description="A basic embedded video." examplePath="components/Embed/Slots/EmbedExampleVideo" />
+    <ComponentExample
+      title="Video"
+      description="A basic embedded video."
+      examplePath="components/Embed/Slots/EmbedExampleVideo"
+    />
   </ExampleSection>
 );
 

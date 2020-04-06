@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef, classNamesFunction, initializeFocusRects } from '../../Utilities';
-import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
+import { initializeComponentRef, classNamesFunction, FocusRects } from '../../Utilities';
+import {
+  IGroupedList,
+  IGroupedListProps,
+  IGroup,
+  IGroupedListStyleProps,
+  IGroupedListStyles,
+} from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';
 import { SelectionMode } from '../../utilities/selection/index';
@@ -24,7 +30,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     selectionMode: SelectionMode.multiple,
     isHeaderVisible: true,
     groupProps: {},
-    compact: false
+    compact: false,
   };
 
   public refs: {
@@ -41,13 +47,12 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     super(props);
 
     initializeComponentRef(this);
-    initializeFocusRects();
 
     this._isSomeGroupExpanded = this._computeIsSomeGroupExpanded(props.groups);
 
     this.state = {
       lastWidth: 0,
-      groups: props.groups
+      groups: props.groups,
     };
   }
 
@@ -94,13 +99,19 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
-      compact: compact
+      compact: compact,
     });
 
     const { version } = listProps;
 
     return (
-      <div className={this._classNames.root} data-automationid="GroupedList" data-is-scrollable="false" role="presentation">
+      <div
+        className={this._classNames.root}
+        data-automationid="GroupedList"
+        data-is-scrollable="false"
+        role="presentation"
+      >
+        <FocusRects />
         {!groups ? (
           this._renderGroup(undefined, 0)
         ) : (
@@ -164,14 +175,14 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       viewport,
       onShouldVirtualize,
       groups,
-      compact
+      compact,
     } = this.props;
 
     // override group header/footer props as needed
     const dividerProps = {
       onToggleSelectGroup: this._onToggleSelectGroup,
       onToggleCollapse: this._onToggleCollapse,
-      onToggleSummarize: this._onToggleSummarize
+      onToggleSummarize: this._onToggleSummarize,
     };
 
     const headerProps: IGroupHeaderProps = { ...groupProps!.headerProps, ...dividerProps };
@@ -225,7 +236,8 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
 
   private _getGroupItemLimit = (group: IGroup): number => {
     const { groupProps } = this.props;
-    const getGroupItemLimit = groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getDefaultGroupItemLimit;
+    const getGroupItemLimit =
+      groupProps && groupProps.getGroupItemLimit ? groupProps.getGroupItemLimit : this._getDefaultGroupItemLimit;
 
     return getGroupItemLimit(group);
   };
@@ -324,19 +336,22 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   };
 
   private _getPageSpecification = (
-    itemIndex: number
+    itemIndex: number,
   ): {
     key?: string;
   } => {
     const groups = this.state.groups;
     const pageGroup = groups && groups[itemIndex];
     return {
-      key: pageGroup && pageGroup.key
+      key: pageGroup && pageGroup.key,
     };
   };
 
   private _computeIsSomeGroupExpanded(groups: IGroup[] | undefined): boolean {
-    return !!(groups && groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed)));
+    return !!(
+      groups &&
+      groups.some(group => (group.children ? this._computeIsSomeGroupExpanded(group.children) : !group.isCollapsed))
+    );
   }
 
   private _updateIsSomeGroupExpanded(): void {

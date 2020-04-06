@@ -11,23 +11,23 @@ export const AppDefinition: IAppDefinition = {
         {
           component: require<any>('./pages/StaticListPage').StaticListPage,
           name: 'StaticList',
-          url: '#/StaticList'
-        }
-      ]
-    }
+          url: '#/StaticList',
+        },
+      ],
+    },
   ],
   headerLinks: [
     {
       name: 'Getting started',
-      url: '#/'
+      url: '#/',
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric'
+      url: 'https://dev.microsoft.com/fabric',
     },
     {
       name: 'GitHub',
-      url: 'https://github.com/OfficeDev/office-ui-fabric-react'
-    }
-  ]
+      url: 'https://github.com/microsoft/fluentui',
+    },
+  ],
 };

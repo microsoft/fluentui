@@ -113,7 +113,7 @@ export enum FocusZoneTabbableElements {
   all = 1,
 
   /** Tabbing is allowed only on input elements */
-  inputOnly = 2
+  inputOnly = 2,
 }
 
 export enum FocusZoneDirection {
@@ -127,5 +127,5 @@ export enum FocusZoneDirection {
   bidirectional = 2,
 
   /** React to all arrows. Navigate next item on right/down arrow keys and previous - left/up arrow keys. Vice versa in RTL mode. */
-  bidirectionalDomOrder = 3
+  bidirectionalDomOrder = 3,
 }

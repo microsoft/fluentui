@@ -19,7 +19,9 @@ export class LayoutGroupPage extends React.Component<IComponentDemoPageProps, {}
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/LayoutGroup.types.ts')]}
+            sources={[
+              require<string>('!raw-loader!@uifabric/experiments/src/components/LayoutGroup/LayoutGroup.types.ts'),
+            ]}
           />
         }
         overview={<div />}

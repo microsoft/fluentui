@@ -73,8 +73,8 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
   /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a
-   * controlled component.
+   * The items that the base picker should currently display as selected. If this is provided then the picker will
+   * act as a controlled component.
    */
   selectedItems?: T[];
 

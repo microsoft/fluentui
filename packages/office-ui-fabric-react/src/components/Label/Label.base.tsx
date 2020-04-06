@@ -4,7 +4,7 @@ import { classNamesFunction } from '../../Utilities';
 import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
 const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
-  disableCaching: true
+  disableCaching: true,
 });
 
 export class LabelBase extends React.Component<ILabelProps, {}> {
@@ -14,7 +14,7 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
       className,
       disabled,
       required,
-      theme: theme!
+      theme: theme!,
     });
     return (
       <RootType {...getNativeProps(this.props, divProperties)} className={classNames.root}>

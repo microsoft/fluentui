@@ -8,7 +8,14 @@ export { hiddenContentStyle } from './hiddenContentStyle';
 export { PulsingBeaconAnimationStyles } from './PulsingBeaconAnimationStyles';
 export { getGlobalClassNames, GlobalClassNames } from './getGlobalClassNames';
 export * from './scheme';
-export { ThemeSettingName, getTheme, loadTheme, createTheme, registerOnThemeChangeCallback, removeOnThemeChangeCallback } from './theme';
+export {
+  ThemeSettingName,
+  getTheme,
+  loadTheme,
+  createTheme,
+  registerOnThemeChangeCallback,
+  removeOnThemeChangeCallback,
+} from './theme';
 export * from './CommonStyles';
 export * from './GeneralStyles';
 export * from './getFadedOverflowStyle';

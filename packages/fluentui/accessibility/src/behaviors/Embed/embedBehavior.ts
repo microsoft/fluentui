@@ -16,16 +16,16 @@ const embedBehavior: Accessibility<EmbedBehaviorProps> = props => ({
     root: {
       'aria-hidden': props.alt || props.title ? undefined : true,
       role: 'presentation',
-      tabIndex: 0
-    }
+      tabIndex: 0,
+    },
   },
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default embedBehavior;

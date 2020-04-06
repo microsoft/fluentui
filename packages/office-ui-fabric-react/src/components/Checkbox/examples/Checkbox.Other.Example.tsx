@@ -6,7 +6,7 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 // Optional extra props to pass through to the input element
 const inputProps: ICheckboxProps['inputProps'] = {
   onFocus: () => console.log('Checkbox is focused'),
-  onBlur: () => console.log('Checkbox is blurred')
+  onBlur: () => console.log('Checkbox is blurred'),
 };
 // Used to add spacing between example checkboxes
 const stackTokens = { childrenGap: 10 };

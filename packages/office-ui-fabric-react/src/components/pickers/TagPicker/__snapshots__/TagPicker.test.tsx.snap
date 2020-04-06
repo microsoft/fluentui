@@ -167,7 +167,6 @@ exports[`TagPicker renders correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 30px;
                   }
                   &::-moz-focus-inner {
@@ -252,7 +251,6 @@ exports[`TagPicker renders correctly 1`] = `
                         margin-top: 0;
                         speak: none;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Cancel"
                 >
@@ -479,7 +477,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                     text-align: center;
                     text-decoration: none;
                     user-select: none;
-                    vertical-align: top;
                     width: 30px;
                   }
                   &::-moz-focus-inner {
@@ -564,7 +561,6 @@ exports[`TagPicker renders picker with selected item correctly 1`] = `
                         margin-top: 0;
                         speak: none;
                         text-align: center;
-                        vertical-align: middle;
                       }
                   data-icon-name="Cancel"
                 >

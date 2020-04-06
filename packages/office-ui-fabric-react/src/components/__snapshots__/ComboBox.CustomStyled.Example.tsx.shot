@@ -4,8 +4,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
 <div
   className=
       ms-Fabric
-      is-focusHidden
-      ms-Fabric--isFocusHidden
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -296,7 +294,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -403,7 +400,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"
@@ -689,7 +685,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -796,7 +791,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="ChevronDown"
             role="presentation"

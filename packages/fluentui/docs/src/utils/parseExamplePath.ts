@@ -4,7 +4,7 @@
  * @param examplePath - A component example's file path.
  */
 const parseExamplePath = (
-  examplePath: string
+  examplePath: string,
 ): {
   type: string;
   displayName: string;

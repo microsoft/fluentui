@@ -7,13 +7,13 @@ export const DetailsListDragDropPage: React.FunctionComponent<IControlsPageProps
   const className = mergeStyles({
     selectors: {
       '.ExampleCard .ms-Icon.ms-DetailsHeader-dropHintCaretStyle': {
-        display: 'none'
+        display: 'none',
       },
 
       '.ExampleCard .ms-DetailsHeader-cell .ms-Icon': {
-        display: 'none'
-      }
-    }
+        display: 'none',
+      },
+    },
   });
   return (
     <div className={className}>

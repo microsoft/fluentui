@@ -1,11 +1,17 @@
 import * as React from 'react';
-import { ComboBox, IComboBoxOption, SelectableOptionMenuItemType, Fabric, mergeStyles } from 'office-ui-fabric-react/lib/index';
+import {
+  ComboBox,
+  IComboBoxOption,
+  SelectableOptionMenuItemType,
+  Fabric,
+  mergeStyles,
+} from 'office-ui-fabric-react/lib/index';
 
 const wrapperClassName = mergeStyles({
   selectors: {
     '& > *': { marginBottom: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' }
-  }
+    '& .ms-ComboBox': { maxWidth: '300px' },
+  },
 });
 
 export class ComboBoxCustomStyledExample extends React.Component<any, any> {
@@ -16,7 +22,7 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
     ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
     ['Times New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif',
     ['Comic Sans MS']: '"Comic Sans MS", "Comic Sans MS_MSFontService", fantasy',
-    ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif'
+    ['Calibri']: 'Calibri, Calibri_MSFontService, sans-serif',
   };
 
   constructor(props: any) {
@@ -31,9 +37,9 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
       styles: {
         optionText: {
           // This will cause the options to render with the given font
-          fontFamily: this._fontMapping[fontName]
-        }
-      }
+          fontFamily: this._fontMapping[fontName],
+        },
+      },
     }));
 
     // Options for second example
@@ -43,7 +49,7 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
       ...fonts.map((fontName: string) => ({ key: fontName, text: fontName })),
       { key: 'divider', text: '-', itemType: SelectableOptionMenuItemType.Divider },
       // User-added font options will be listed under this heading
-      { key: 'header2', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header }
+      { key: 'header2', text: 'Other Options', itemType: SelectableOptionMenuItemType.Header },
     ];
   }
 
@@ -56,41 +62,43 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
           options={this._optionsWithCustomStyling}
           styles={{
             container: {
-              maxWidth: '300px'
+              maxWidth: '300px',
             },
             // Light purple input background
             root: {
-              backgroundColor: '#b4a0ff'
+              backgroundColor: '#b4a0ff',
             },
             input: {
-              backgroundColor: '#b4a0ff'
-            }
+              backgroundColor: '#b4a0ff',
+            },
           }}
           caretDownButtonStyles={{
             // Purple caret button with white text on hover or press
             rootHovered: {
               color: 'white',
-              backgroundColor: '#5c2d91'
+              backgroundColor: '#5c2d91',
             },
             rootChecked: {
               color: 'white',
-              backgroundColor: '#5c2d91'
+              backgroundColor: '#5c2d91',
             },
             rootCheckedHovered: {
               color: 'white',
-              backgroundColor: '#32145a'
-            }
+              backgroundColor: '#32145a',
+            },
           }}
           comboBoxOptionStyles={{
             optionText: {
-              fontFamily: 'initial' // this should be overriden by custom styles for each option
-            }
+              fontFamily: 'initial', // this should be overriden by custom styles for each option
+            },
           }}
         />
 
         <ComboBox
           defaultSelectedKey="Calibri"
-          label="ComboBox with custom option rendering (type the name of a font and the option will render in that font)"
+          label={
+            'ComboBox with custom option rendering (type the name of a font and the option will render in that font)'
+          }
           allowFreeform={true}
           autoComplete="on"
           options={this._optionsForCustomRender}
@@ -104,7 +112,10 @@ export class ComboBoxCustomStyledExample extends React.Component<any, any> {
    * Render function for non-header/divider options in the second example.
    */
   private _onRenderOption = (item: IComboBoxOption): JSX.Element => {
-    if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
+    if (
+      item.itemType === SelectableOptionMenuItemType.Header ||
+      item.itemType === SelectableOptionMenuItemType.Divider
+    ) {
       return <span>{item.text}</span>;
     }
 

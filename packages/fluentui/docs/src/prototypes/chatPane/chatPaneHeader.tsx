@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react';
+import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/react-northstar';
 import chatProtoStyle from './chatProtoStyle';
 
 import { ChatData } from './services';
@@ -22,13 +22,19 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
   renderBanner(): React.ReactElement {
     return (
       <Segment
-        content={<Icon name="team-create" styles={{ margin: 'auto 8px' }} variables={siteVars => ({ color: siteVars.colors.white })} />}
+        content={
+          <Icon
+            name="team-create"
+            styles={{ margin: 'auto 8px' }}
+            variables={siteVars => ({ color: siteVars.colors.white })}
+          />
+        }
         styles={({ variables: v }) => ({
           backgroundColor: v.backgroundColor,
           borderRadius: 0,
           display: 'flex',
           height: '40px',
-          padding: 0
+          padding: 0,
         })}
         variables={siteVars => ({ backgroundColor: siteVars.colors.brand[600] })}
       />
@@ -39,13 +45,24 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
     const { chat } = this.props;
 
     return (
-      <Flex role="region" aria-labelledby="heading" hAlign="stretch" vAlign="center" styles={{ height: '64px', padding: '0 32px' }}>
+      <Flex
+        role="region"
+        aria-labelledby="heading"
+        hAlign="stretch"
+        vAlign="center"
+        styles={{ height: '64px', padding: '0 32px' }}
+      >
         <Avatar name={chat.title} />
         <div id="heading" role="heading" aria-level={2} aria-labelledby="chat-header-reader-text chat-header-title">
           <div id="chat-header-reader-text" style={chatProtoStyle.screenReaderContainerStyles}>
             Chat header
           </div>
-          <Text id="chat-header-title" size="large" content={chat.title} styles={{ marginLeft: '12px', fontWeight: 600 }} />
+          <Text
+            id="chat-header-title"
+            size="large"
+            content={chat.title}
+            styles={{ marginLeft: '12px', fontWeight: 600 }}
+          />
         </div>
         <Flex.Item push>{this.renderHeaderButtons()}</Flex.Item>
       </Flex>
@@ -61,9 +78,9 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
             key: `${index}-${name}`,
             icon: {
               name,
-              variables: siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' })
+              variables: siteVars => ({ color: siteVars.colors.white, margin: 'auto 8px' }),
             },
-            primary: true
+            primary: true,
           }))}
           styles={{ marginRight: '20px' }}
         />
@@ -76,7 +93,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
             styles={{
               fontWeight: 100,
               margin: 'auto',
-              ...(!index && { margin: 'auto 1.6rem auto auto' })
+              ...(!index && { margin: 'auto 1.6rem auto auto' }),
             }}
             variables={siteVars => ({ color: siteVars.colors.grey[350] })}
           />

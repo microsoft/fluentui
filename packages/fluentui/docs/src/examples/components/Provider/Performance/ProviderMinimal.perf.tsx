@@ -1,4 +1,4 @@
-import { Provider } from '@fluentui/react';
+import { Provider } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ProviderMinimalPerf = () => <Provider />;

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Form, Dropdown, Button } from '@fluentui/react';
+import { Form, Dropdown, Button } from '@fluentui/react-northstar';
 
 const labelId = 'choose-friend-label';
 const fields = [
@@ -15,12 +15,12 @@ const fields = [
       search: true,
       placeholder: 'Choose a friend',
       searchInput: {
-        id: 'choose-friend-shorthand' // id needs to end up on the search input.
+        id: 'choose-friend-shorthand', // id needs to end up on the search input.
       },
-      id: undefined // not on the main wrapper element.
-    }
+      id: undefined, // not on the main wrapper element.
+    },
   },
-  { control: { as: Button, content: 'Submit' }, key: 'submit' }
+  { control: { as: Button, content: 'Submit' }, key: 'submit' },
 ];
 
 const FormExample = () => (

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Grid, Input, Text } from '@fluentui/react';
+import { Grid, Input, Text } from '@fluentui/react-northstar';
 
 const inputStyles = { color: 'blue', background: 'yellow' };
 const InputExampleInputSlot = () => (
@@ -19,7 +19,7 @@ const InputExampleInputSlot = () => (
         role: 'checkbox',
 
         // will set custom styles for input DOM element
-        styles: inputStyles
+        styles: inputStyles,
       }}
     />
   </Grid>

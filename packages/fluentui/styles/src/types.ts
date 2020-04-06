@@ -178,9 +178,11 @@ export type PropsWithVarsAndStyles = Extendable<{
 // Component Styles
 // ========================================================
 
-export interface ComponentSlotStylesInput<TProps = {}, TVars = {}> extends Record<string, ComponentSlotStyle<TProps, TVars>> {}
+export interface ComponentSlotStylesInput<TProps = {}, TVars = {}>
+  extends Record<string, ComponentSlotStyle<TProps, TVars>> {}
 
-export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}> extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
+export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
+  extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
 
 export interface ComponentSlotStylesResolved extends Record<string, ICSSInJSStyle> {}
 
@@ -188,7 +190,6 @@ export interface ComponentStyleFunctionParam<
   TProps extends PropsWithVarsAndStyles = PropsWithVarsAndStyles,
   TVars extends ComponentVariablesObject = ComponentVariablesObject
 > {
-  displayName: string;
   props: TProps;
   variables: TVars;
   theme: ThemePrepared;
@@ -196,9 +197,12 @@ export interface ComponentStyleFunctionParam<
   disableAnimations: boolean;
 }
 
-export type ComponentSlotStyleFunction<TProps = {}, TVars = {}> = (styleParam: ComponentStyleFunctionParam<TProps, TVars>) => ICSSInJSStyle;
+export type ComponentSlotStyleFunction<TProps = {}, TVars = {}> = (
+  styleParam: ComponentStyleFunctionParam<TProps, TVars>,
+) => ICSSInJSStyle;
 
-export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}> extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
+export interface ComponentSlotStylesPrepared<TProps = {}, TVars = {}>
+  extends Record<string, ComponentSlotStyleFunction<TProps, TVars>> {}
 
 // ========================================================
 // Static Styles

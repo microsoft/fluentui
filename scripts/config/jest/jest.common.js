@@ -4,18 +4,18 @@ const path = require('path');
 
 module.exports = {
   transform: {
-    ...tsjPreset.transform
+    ...tsjPreset.transform,
   },
   moduleNameMapper: {
-    ...require('lerna-alias').jest()
+    ...require('lerna-alias').jest(),
   },
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
   globals: {
     'ts-jest': {
       isolatedModules: true,
       tsConfig: resolveCwd('tsconfig.json'),
-      packageJson: resolveCwd('package.json')
-    }
+      packageJson: resolveCwd('package.json'),
+    },
   },
-  setupFilesAfterEnv: [path.join(__dirname, 'jestSetup.common.js')]
+  setupFilesAfterEnv: [path.join(__dirname, 'jestSetup.common.js')],
 };

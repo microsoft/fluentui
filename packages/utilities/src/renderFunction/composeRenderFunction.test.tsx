@@ -11,7 +11,10 @@ const renderBase = (props: IExampleProps): JSX.Element | null => {
   return <div data-value={props.value} />;
 };
 
-const renderDecoratorA = (props?: IExampleProps, defaultRender?: IRenderFunction<IExampleProps>): JSX.Element | null => {
+const renderDecoratorA = (
+  props?: IExampleProps,
+  defaultRender?: IRenderFunction<IExampleProps>,
+): JSX.Element | null => {
   if (!props) {
     return null;
   }
@@ -19,7 +22,10 @@ const renderDecoratorA = (props?: IExampleProps, defaultRender?: IRenderFunction
   return <div data-a="a">{defaultRender ? defaultRender(props) : null}</div>;
 };
 
-const renderDecoratorB = (props?: IExampleProps, defaultRender?: IRenderFunction<IExampleProps>): JSX.Element | null => {
+const renderDecoratorB = (
+  props?: IExampleProps,
+  defaultRender?: IRenderFunction<IExampleProps>,
+): JSX.Element | null => {
   if (!props) {
     return null;
   }
@@ -37,7 +43,10 @@ describe('composeComponentAs', () => {
   });
 
   it('passes Base to DecoratorB through DecoratorA', () => {
-    const renderDecoratorAAndBWithBase = composeRenderFunction(renderDecoratorA, composeRenderFunction(renderDecoratorB, renderBase));
+    const renderDecoratorAAndBWithBase = composeRenderFunction(
+      renderDecoratorA,
+      composeRenderFunction(renderDecoratorB, renderBase),
+    );
 
     const component = renderer.create(<>{renderDecoratorAAndBWithBase({ value: 'test' })}</>);
 

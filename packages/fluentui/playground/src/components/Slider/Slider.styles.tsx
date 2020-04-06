@@ -12,8 +12,8 @@ const styles = (t: IResolvedTokens<ISliderTokens>) => ({
 
     '&$rootVertical': {
       width: t.size,
-      height: '100%'
-    }
+      height: '100%',
+    },
   },
 
   rail: {
@@ -34,20 +34,20 @@ const styles = (t: IResolvedTokens<ISliderTokens>) => ({
       bottom: 0,
       transform: 'translateX(-50%)',
       width: t.railSize,
-      height: '100%'
+      height: '100%',
     },
 
     '$root:hover &, $rootFocused &': {
-      backgroundColor: t.railColorHovered
+      backgroundColor: t.railColorHovered,
     },
 
     '$root:active &': {
-      backgroundColor: t.railColorPressed
+      backgroundColor: t.railColorPressed,
     },
 
     '$root$rootDisabled &': {
-      backgroundColor: t.railColorDisabled
-    }
+      backgroundColor: t.railColorDisabled,
+    },
   },
 
   track: {
@@ -64,20 +64,20 @@ const styles = (t: IResolvedTokens<ISliderTokens>) => ({
       top: 'auto',
       bottom: 0,
       transform: 'translateX(-50%)',
-      width: t.trackSize
+      width: t.trackSize,
     },
 
     '$root:hover &, $rootFocused &': {
-      backgroundColor: t.trackColorHovered
+      backgroundColor: t.trackColorHovered,
     },
 
     '$root:active &': {
-      backgroundColor: t.trackColorPressed
+      backgroundColor: t.trackColorPressed,
     },
 
     '$root$rootDisabled &': {
-      backgroundColor: t.trackColorDisabled
-    }
+      backgroundColor: t.trackColorDisabled,
+    },
   },
 
   thumb: {
@@ -89,7 +89,7 @@ const styles = (t: IResolvedTokens<ISliderTokens>) => ({
     outline: 'none',
 
     '$rootVertical &': {
-      transform: 'translateY(50%)'
+      transform: 'translateY(50%)',
     },
 
     '&:after': {
@@ -104,23 +104,23 @@ const styles = (t: IResolvedTokens<ISliderTokens>) => ({
       backgroundColor: t.thumbColor,
       borderWidth: t.thumbBorderWidth,
       borderStyle: 'solid',
-      borderColor: t.thumbBorderColor
+      borderColor: t.thumbBorderColor,
     },
 
     '&:focus': {
       borderRadius: 2,
-      border: '1px solid black'
+      border: '1px solid black',
     },
 
     '$root:active &:after': {
       width: t.thumbSizePressed,
-      height: t.thumbSizePressed
+      height: t.thumbSizePressed,
     },
 
     '$rootDisabled &:after': {
-      borderColor: t.thumbBorderColorDisabled
-    }
-  }
+      borderColor: t.thumbBorderColorDisabled,
+    },
+  },
 });
 
 export default styles;

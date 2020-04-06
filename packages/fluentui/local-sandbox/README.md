@@ -7,7 +7,7 @@ Production build without hot reload. Primary purpose of this application is to m
 ## Usage
 
 ```
-yarn build:dependencies
+yarn build:withdependencies
 yarn build:production
 yarn serve
 ```

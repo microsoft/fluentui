@@ -52,7 +52,7 @@ exports[`Component Examples renders Image.CenterContain.Example.tsx correctly 1`
     }
   >
     <img
-      alt="Example implementation of the property image fit using the centerContain value on an image smaller than the frame."
+      alt="Example of the image fit value \\"centerContain\\" on an image smaller than the frame."
       className=
           ms-Image-image
           ms-Image-image--centerContain
@@ -121,7 +121,7 @@ exports[`Component Examples renders Image.CenterContain.Example.tsx correctly 1`
     }
   >
     <img
-      alt="Example implementation of the property image fit using the centerContain value on an image wider than the frame."
+      alt="Example of the image fit value \\"centerContain\\" on an image wider than the frame."
       className=
           ms-Image-image
           ms-Image-image--centerContain
@@ -190,7 +190,7 @@ exports[`Component Examples renders Image.CenterContain.Example.tsx correctly 1`
     }
   >
     <img
-      alt="Example implementation of the property image fit using the centerContain value on an image taller than the frame."
+      alt="Example of the image fit value \\"centerContain\\" on an image taller than the frame."
       className=
           ms-Image-image
           ms-Image-image--centerContain
@@ -259,7 +259,7 @@ exports[`Component Examples renders Image.CenterContain.Example.tsx correctly 1`
     }
   >
     <img
-      alt="Example implementation of the property image fit using the centerContain value on an image taller and wider than the frame."
+      alt="Example of the image fit value \\"centerContain\\" on an image taller and wider than the frame."
       className=
           ms-Image-image
           ms-Image-image--centerContain
@@ -301,7 +301,7 @@ exports[`Component Examples renders Image.CenterContain.Example.tsx correctly 1`
     }
   >
     <img
-      alt="Example implementation of the property image fit using the centerContain value on an image taller and wider than the frame."
+      alt="Example of the image fit value \\"centerContain\\" on an image taller and wider than the frame."
       className=
           ms-Image-image
           ms-Image-image--centerContain

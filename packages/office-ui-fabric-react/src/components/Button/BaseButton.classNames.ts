@@ -23,7 +23,7 @@ export const ButtonGlobalClassNames = {
   msButtonDescription: 'ms-Button-description',
   msButtonScreenReaderText: 'ms-Button-screenReaderText',
   msButtonFlexContainer: 'ms-Button-flexContainer',
-  msButtonTextContainer: 'ms-Button-textContainer'
+  msButtonTextContainer: 'ms-Button-textContainer',
 };
 
 export const getBaseButtonClassNames = memoizeFunction(
@@ -38,7 +38,7 @@ export const getBaseButtonClassNames = memoizeFunction(
     hasMenu: boolean,
     checked: boolean,
     expanded: boolean,
-    isSplit: boolean | undefined
+    isSplit: boolean | undefined,
   ): IButtonClassNames => {
     const classNames = getGlobalClassNames(ButtonGlobalClassNames, theme || {});
 
@@ -57,9 +57,9 @@ export const getBaseButtonClassNames = memoizeFunction(
               [`:hover .${classNames.msButtonIcon}`]: styles.iconExpandedHovered,
               // menuIcon falls back to rootExpandedHovered to support original behavior
               [`:hover .${classNames.msButtonMenuIcon}`]: styles.menuIconExpandedHovered || styles.rootExpandedHovered,
-              ':hover': styles.rootExpandedHovered
-            }
-          }
+              ':hover': styles.rootExpandedHovered,
+            },
+          },
         ],
         hasMenu && [ButtonGlobalClassNames.msButtonHasMenu, styles.rootHasMenu],
         disabled && ['is-disabled', styles.rootDisabled],
@@ -76,18 +76,18 @@ export const getBaseButtonClassNames = memoizeFunction(
               ':active': styles.rootPressed,
               [`:active .${classNames.msButtonIcon}`]: styles.iconPressed,
               [`:active .${classNames.msButtonDescription}`]: styles.descriptionPressed,
-              [`:active .${classNames.msButtonMenuIcon}`]: styles.menuIconPressed
-            }
+              [`:active .${classNames.msButtonMenuIcon}`]: styles.menuIconPressed,
+            },
           },
         disabled && checked && [styles.rootCheckedDisabled],
         !disabled &&
           checked && {
             selectors: {
               ':hover': styles.rootCheckedHovered,
-              ':active': styles.rootCheckedPressed
-            }
+              ':active': styles.rootCheckedPressed,
+            },
           },
-        className
+        className,
       ],
       flexContainer: [classNames.msButtonFlexContainer, styles.flexContainer],
       textContainer: [classNames.msButtonTextContainer, styles.textContainer],
@@ -97,7 +97,7 @@ export const getBaseButtonClassNames = memoizeFunction(
         styles.icon,
         isExpanded && styles.iconExpanded,
         checked && styles.iconChecked,
-        disabled && styles.iconDisabled
+        disabled && styles.iconDisabled,
       ],
       label: [classNames.msButtonLabel, styles.label, checked && styles.labelChecked, disabled && styles.labelDisabled],
       menuIcon: [
@@ -111,18 +111,18 @@ export const getBaseButtonClassNames = memoizeFunction(
           !checked && {
             selectors: {
               ':hover': styles.menuIconHovered,
-              ':active': styles.menuIconPressed
-            }
+              ':active': styles.menuIconPressed,
+            },
           },
-        isExpanded && ['is-expanded', styles.menuIconExpanded]
+        isExpanded && ['is-expanded', styles.menuIconExpanded],
       ],
       description: [
         classNames.msButtonDescription,
         styles.description,
         checked && styles.descriptionChecked,
-        disabled && styles.descriptionDisabled
+        disabled && styles.descriptionDisabled,
       ],
-      screenReaderText: [classNames.msButtonScreenReaderText, styles.screenReaderText]
+      screenReaderText: [classNames.msButtonScreenReaderText, styles.screenReaderText],
     });
-  }
+  },
 );

@@ -58,5 +58,5 @@ export interface ISelectableOption {
 export enum SelectableOptionMenuItemType {
   Normal = 0,
   Divider = 1,
-  Header = 2
+  Header = 2,
 }

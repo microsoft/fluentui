@@ -14,18 +14,18 @@ import tabBehavior from './tabBehavior';
 const tabListBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'tablist'
-    }
+      role: 'tablist',
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
   },
   childBehaviors: {
-    item: tabBehavior
-  }
+    item: tabBehavior,
+  },
 });
 
 export default tabListBehavior;

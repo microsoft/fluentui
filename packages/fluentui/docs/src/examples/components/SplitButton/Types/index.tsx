@@ -14,7 +14,11 @@ const SplitButton = () => (
       description="A SplitButton can be formatted to show primary level of emphasis."
       examplePath="components/SplitButton/Types/SplitButtonExamplePrimary"
     />
-    <ComponentExample title="Small" description="small splitbutton" examplePath="components/SplitButton/Types/SplitButtonExampleSmall" />
+    <ComponentExample
+      title="Small"
+      description="small splitbutton"
+      examplePath="components/SplitButton/Types/SplitButtonExampleSmall"
+    />
   </ExampleSection>
 );
 

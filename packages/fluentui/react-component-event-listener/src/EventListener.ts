@@ -18,13 +18,13 @@ EventListener.propTypes =
         listener: PropTypes.func.isRequired,
         target: PropTypes.object as PropTypes.Validator<Target>,
         targetRef: PropTypes.shape({
-          current: PropTypes.object
+          current: PropTypes.object,
         }) as PropTypes.Validator<TargetRef>,
-        type: PropTypes.string.isRequired as PropTypes.Validator<EventTypes>
+        type: PropTypes.string.isRequired as PropTypes.Validator<EventTypes>,
       }
     : {};
 EventListener.defaultProps = {
-  capture: false
+  capture: false,
 };
 
 export default EventListener;

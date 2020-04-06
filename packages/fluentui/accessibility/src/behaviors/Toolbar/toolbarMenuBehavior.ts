@@ -13,28 +13,30 @@ import * as keyboardKey from 'keyboard-key';
  * Keyboard navigation is circular.
  * Component will get focus when mounted.
  */
-const toolbarMenuBehavior: Accessibility = () => ({
+const toolbarMenuBehavior: Accessibility<ToolbarMenuBehaviorProps> = () => ({
   attributes: {
     root: {
-      role: 'menu'
-    }
+      role: 'menu',
+    },
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-      }
-    }
+        keyCombinations: [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+      },
+    },
   },
   focusZone: {
     props: {
       isCircularNavigation: true,
       shouldFocusOnMount: true,
-      direction: FocusZoneDirection.vertical
-    }
+      direction: FocusZoneDirection.vertical,
+    },
   },
-  childBehaviors: { item: toolbarMenuItemBehavior }
+  childBehaviors: { item: toolbarMenuItemBehavior },
 });
+
+export type ToolbarMenuBehaviorProps = never;
 
 export default toolbarMenuBehavior;

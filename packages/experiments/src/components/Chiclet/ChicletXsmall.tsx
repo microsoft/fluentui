@@ -9,5 +9,5 @@ export const ChicletXsmall: React.FunctionComponent<IChicletCardProps> = styled<
   IChicletCardStyleProps,
   IChicletCardStyles
 >(ChicletXsmallBase, getStyles, undefined, {
-  scope: 'ChicletXsmall'
+  scope: 'ChicletXsmall',
 });

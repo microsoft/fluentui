@@ -6,9 +6,10 @@ import {
   tooltipAsLabelBehavior,
   ToolbarItemProps,
   ToolbarDividerProps,
-  ToolbarMenuItemProps
-} from '@fluentui/react';
+  ToolbarMenuItemProps,
+} from '@fluentui/react-northstar';
 import { useBooleanKnob } from '@fluentui/docs-components';
+import { BoldIcon, CodeSnippetIcon, ItalicIcon, MoreIcon, QuoteIcon } from '@fluentui/react-icons-northstar';
 
 type IntermediateToolbarItem = (ToolbarItemProps | ToolbarMenuItemProps | ToolbarDividerProps) & {
   key: string;
@@ -22,7 +23,7 @@ const ToolbarExampleShorthand = () => {
 
   const [moreMenuOpen, setMoreMenuOpen] = useBooleanKnob({
     name: 'moreMenuOpen',
-    initialValue: false
+    initialValue: false,
   });
 
   const intermediateItems: IntermediateToolbarItem[] = [
@@ -31,38 +32,38 @@ const ToolbarExampleShorthand = () => {
       kind: 'toggle' as ToolbarItemShorthandKinds,
       active: isBold,
       tooltip: 'Bold',
-      icon: { name: 'bold', outline: true },
-      onClick: () => setBold(!isBold)
+      icon: <BoldIcon {...{ outline: true }} />,
+      onClick: () => setBold(!isBold),
     },
     {
       key: 'italic',
       kind: 'toggle' as ToolbarItemShorthandKinds,
       active: isItalic,
       tooltip: 'Italic',
-      icon: { name: 'italic', outline: true },
-      onClick: () => setItalic(!isItalic)
+      icon: <ItalicIcon {...{ outline: true }} />,
+      onClick: () => setItalic(!isItalic),
     },
     { key: 'divider1', kind: 'divider' as ToolbarItemShorthandKinds },
     {
       key: 'more',
-      icon: { name: 'more', outline: true },
+      icon: <MoreIcon {...{ outline: true }} />,
       active: moreMenuOpen,
       tooltip: 'More options',
       menu: [
         {
           key: 'quote',
           content: 'Quote',
-          icon: 'quote'
+          icon: <QuoteIcon />,
         },
         {
           key: 'code-snippet',
           content: 'Code snippet',
-          icon: 'code-snippet'
-        }
+          icon: <CodeSnippetIcon />,
+        },
       ],
       menuOpen: moreMenuOpen,
-      onMenuOpenChange: (e, { menuOpen }) => setMoreMenuOpen(menuOpen)
-    }
+      onMenuOpenChange: (e, { menuOpen }) => setMoreMenuOpen(menuOpen),
+    },
   ];
 
   return (
@@ -75,9 +76,16 @@ const ToolbarExampleShorthand = () => {
           ? (ToolbarItem, props: IntermediateToolbarItem) => {
               const { tooltip, key, ...rest } = props;
               // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
-              return <Tooltip key={key} trigger={<ToolbarItem {...rest} />} accessibility={tooltipAsLabelBehavior} content={tooltip} />;
+              return (
+                <Tooltip
+                  key={key}
+                  trigger={<ToolbarItem {...rest} />}
+                  accessibility={tooltipAsLabelBehavior}
+                  content={tooltip}
+                />
+              );
             }
-          : undefined
+          : undefined,
       }))}
     />
   );

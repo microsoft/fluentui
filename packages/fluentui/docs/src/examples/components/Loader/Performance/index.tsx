@@ -5,7 +5,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Performance = () => (
   <ExampleSection title="Performance">
-    <ComponentPerfExample title="Default" description="A default test." examplePath="components/Loader/Performance/LoaderMinimal.perf" />
+    <ComponentPerfExample
+      title="Default"
+      description="A default test."
+      examplePath="components/Loader/Performance/LoaderMinimal.perf"
+    />
   </ExampleSection>
 );
 

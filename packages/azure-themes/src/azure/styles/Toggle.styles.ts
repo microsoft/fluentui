@@ -12,48 +12,48 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     container: {},
     pill: [
       {
-        backgroundColor: semanticColors.bodyBackground
+        backgroundColor: semanticColors.bodyBackground,
       },
       checked && {
-        backgroundColor: extendedSemanticColors.controlAccent
+        backgroundColor: extendedSemanticColors.controlAccent,
       },
       disabled && {
-        backgroundColor: extendedSemanticColors.controlOutlineDisabled
+        backgroundColor: extendedSemanticColors.controlOutlineDisabled,
       },
       !checked &&
         disabled && {
-          backgroundColor: semanticColors.disabledBackground
-        }
+          backgroundColor: semanticColors.disabledBackground,
+        },
     ],
     // toggle circle
     thumb: [
       {
-        backgroundColor: extendedSemanticColors.controlOutlineHovered
+        backgroundColor: extendedSemanticColors.controlOutlineHovered,
       },
       disabled && {
-        backgroundColor: semanticColors.disabledBodyText
+        backgroundColor: semanticColors.disabledBodyText,
       },
       checked &&
         !disabled && {
-          backgroundColor: BaseColors.WHITE
-        }
+          backgroundColor: BaseColors.WHITE,
+        },
     ],
     root: [
       {
         fontSize: FontSizes.size12,
         selectors: {
           '.ms-Toggle-stateText': {
-            color: semanticColors.bodyText
-          }
-        }
+            color: semanticColors.bodyText,
+          },
+        },
       },
       disabled && {
         selectors: {
           '.ms-Toggle-stateText': {
-            color: semanticColors.disabledBodyText
-          }
-        }
-      }
-    ]
+            color: semanticColors.disabledBodyText,
+          },
+        },
+      },
+    ],
   };
 };

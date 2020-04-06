@@ -19,11 +19,11 @@ repoDeps.forEach(dep => {
     // otherwise copy the contents not the dist directory itself
     if (dep.packageJson.name.includes('@uifabric')) {
       instructions = instructions.concat(
-        copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+        copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath))),
       );
     } else {
       instructions = instructions.concat(
-        copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+        copyInstructions.copyFilesInDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath))),
       );
     }
   }
@@ -33,7 +33,7 @@ repoDeps.forEach(dep => {
   if (fs.existsSync(distStorybookPath)) {
     let sourcePath = distStorybookPath;
     instructions = instructions.concat(
-      copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath)))
+      copyInstructions.copyFilesToDestinationDirectory(sourcePath, path.join('dist', path.basename(dep.packagePath))),
     );
   }
 });
@@ -43,6 +43,9 @@ preset();
 task(
   'bundle',
   copyInstructionsTask({
-    copyInstructions: [...copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist'), ...instructions]
-  })
+    copyInstructions: [
+      ...copyInstructions.copyFilesToDestinationDirectory(['index.html', 'chiclet-test.html'], 'dist'),
+      ...instructions,
+    ],
+  }),
 );

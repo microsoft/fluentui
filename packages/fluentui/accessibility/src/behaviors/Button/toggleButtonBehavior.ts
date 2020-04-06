@@ -14,7 +14,7 @@ const toggleButtonBehavior: Accessibility<ToggleButtonBehaviorProps> = props => 
   const behaviorData = buttonBehavior(props);
   behaviorData.attributes.root = {
     ...behaviorData.attributes.root,
-    'aria-pressed': !!props['active']
+    'aria-pressed': !!props['active'],
   };
 
   return behaviorData;

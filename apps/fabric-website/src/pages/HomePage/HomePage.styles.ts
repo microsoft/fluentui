@@ -33,12 +33,13 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   linkDark: 'ms-HomePage-linkDark',
   linkIcon: 'ms-HomePage-linkIcon',
   linkText: 'ms-HomePage-linkText',
-  illustration: 'ms-HomePage-illustration'
+  illustration: 'ms-HomePage-illustration',
 };
 
 export const monoFont =
-  '"Segoe UI Mono",Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono",' +
-  '"Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace';
+  '"Segoe UI Mono",Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter",' +
+  '"DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,' +
+  'monospace';
 
 const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link';
 
@@ -58,20 +59,20 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       transform: 'translate3d(0, 48px, 0)',
       transition:
         `transform ${MotionDurations.duration3} ${MotionTimings.decelerate},` +
-        `opacity ${MotionDurations.duration3} ${MotionTimings.decelerate} .05s`
+        `opacity ${MotionDurations.duration3} ${MotionTimings.decelerate} .05s`,
     },
     isMountedOffset && {
       opacity: 1,
-      transform: 'translate3d(0, 0, 0)'
-    }
+      transform: 'translate3d(0, 0, 0)',
+    },
   ];
 
   const sectionStyles: IStyle = [
     {
       display: 'flex',
-      justifyContent: 'center'
+      justifyContent: 'center',
     },
-    ...sectionAnimation
+    ...sectionAnimation,
   ];
 
   const sectionTitleSize = FontSizes.size32;
@@ -84,10 +85,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
       selectors: {
         [mediaQuery.maxMobile]: {
-          marginBottom: '1em'
-        }
-      }
-    }
+          marginBottom: '1em',
+        },
+      },
+    },
   ];
 
   const columnStyles: IStyle = [
@@ -101,12 +102,12 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
           selectors: {
             '&:first-child': {
-              marginTop: 0
-            }
-          }
-        }
-      }
-    }
+              marginTop: 0,
+            },
+          },
+        },
+      },
+    },
   ];
 
   return {
@@ -122,13 +123,13 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
             selectors: {
               '&:last-child': {
-                marginBottom: 0
-              }
-            }
-          }
-        }
+                marginBottom: 0,
+              },
+            },
+          },
+        },
       },
-      className
+      className,
     ],
 
     sectionContent: [
@@ -142,10 +143,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           p: {
-            color: isInverted ? palette.black : palette.white
-          }
-        }
-      }
+            color: isInverted ? palette.black : palette.white,
+          },
+        },
+      },
     ],
 
     heroSection: [
@@ -154,8 +155,8 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         transitionDelay: '0.1s',
         paddingTop: 132,
-        paddingBottom: 132
-      }
+        paddingBottom: 132,
+      },
     ],
 
     heroTitle: [
@@ -164,8 +165,8 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         fontSize: FontSizes.size68, // @TODO: Mock uses 64
         color: '#cf8fff', // @TODO: Fluent color palette?
         lineHeight: '1.1',
-        margin: 0
-      }
+        margin: 0,
+      },
     ],
 
     platformCardsSection: [
@@ -181,23 +182,23 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
             height: '100%',
             position: 'absolute',
             top: 0,
-            zIndex: 1
+            zIndex: 1,
           },
 
           '&:before': {
             left: 0,
             // background: beforeColor // Adjust saturation
-            background: beforeAlt
+            background: beforeAlt,
           },
 
           '&:after': {
             right: 0,
             // background: afterColor // Adjust saturation
-            background: afterAlt
-          }
-        }
+            background: afterAlt,
+          },
+        },
       },
-      ...sectionAnimation
+      ...sectionAnimation,
     ],
 
     platformsSection: [
@@ -211,36 +212,36 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           [mediaQuery.maxLarge]: {
-            paddingTop: appPadding.medium
+            paddingTop: appPadding.medium,
           },
           [mediaQuery.maxMobile]: {
-            paddingTop: appPadding.large
-          }
-        }
-      }
+            paddingTop: appPadding.large,
+          },
+        },
+      },
     ],
 
     platformsTitle: [
       classNames.platformsTitle,
       ...sectionTitleStyles,
       {
-        color: palette.black
-      }
+        color: palette.black,
+      },
     ],
 
     resourcesSection: [
       classNames.resourcesSection,
       ...sectionStyles,
       {
-        transitionDelay: '0.3s'
-      }
+        transitionDelay: '0.3s',
+      },
     ],
 
     resourcesTitle: [
       ...sectionTitleStyles,
       {
-        color: '#4A90E2'
-      }
+        color: '#4A90E2',
+      },
     ],
 
     usageSection: [
@@ -248,16 +249,16 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionStyles,
       {
         paddingBottom: 132,
-        transitionDelay: '0.4s'
-      }
+        transitionDelay: '0.4s',
+      },
     ],
 
     usageTitle: [
       classNames.usageTitle,
       ...sectionTitleStyles,
       {
-        color: palette.white
-      }
+        color: palette.white,
+      },
     ],
 
     usageIconList: [
@@ -266,32 +267,32 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         display: 'inline-flex',
         flexWrap: 'wrap',
         margin: '0 -8px 24px',
-        padding: 0
-      }
+        padding: 0,
+      },
     ],
 
     usageIconListItem: [
       classNames.usageIconListItem,
       {
         margin: '0 8px 24px',
-        minWidth: 'calc(25% - 16px)'
-      }
+        minWidth: 'calc(25% - 16px)',
+      },
     ],
 
     usageIcon: [
       classNames.usageIcon,
       {
         width: 52,
-        height: 52
-      }
+        height: 52,
+      },
     ],
 
     oneHalf: [
       classNames.oneHalf,
       {
-        flex: '0 0 50%'
+        flex: '0 0 50%',
       },
-      ...columnStyles
+      ...columnStyles,
     ],
 
     oneFourth: [
@@ -301,11 +302,11 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           [mediaQuery.maxLarge]: {
-            flex: '0 0 50%'
-          }
-        }
+            flex: '0 0 50%',
+          },
+        },
       },
-      ...columnStyles
+      ...columnStyles,
     ],
 
     inner: [
@@ -317,8 +318,8 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         maxWidth: CONTENT_WIDTH,
         margin: '0 auto',
         zIndex: 2,
-        position: 'relative'
-      }
+        position: 'relative',
+      },
     ],
 
     card: [
@@ -330,10 +331,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           [mediaQuery.maxLarge]: {
-            flex: '1 0 25%'
-          }
-        }
-      }
+            flex: '1 0 25%',
+          },
+        },
+      },
     ],
 
     cardTitle: [
@@ -341,24 +342,24 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionTitleStyles,
       {
         color: palette.black,
-        marginBottom: '1em'
-      }
+        marginBottom: '1em',
+      },
     ],
 
     versionSwitcher: [
       classNames.versionSwitcher,
       {
         marginBottom: sectionTitleSize,
-        height: '1em'
-      }
+        height: '1em',
+      },
     ],
 
     cardList: [
       classNames.cardList,
       {
         margin: '0 0 -12px 0',
-        padding: '0'
-      }
+        padding: '0',
+      },
     ],
 
     cardListItem: [
@@ -369,8 +370,8 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         alignItems: 'center',
         flexWrap: 'wrap',
         lineHeight: '1.6',
-        marginBottom: 12
-      }
+        marginBottom: 12,
+      },
     ],
 
     cardIcon: [
@@ -382,10 +383,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           [mediaQuery.maxMobile]: {
-            marginBottom: '.25em'
-          }
-        }
-      }
+            marginBottom: '.25em',
+          },
+        },
+      },
     ],
 
     link: [
@@ -401,16 +402,16 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
           // (due to UHF styles, we have to use a specific color rather than 'inherit')
           [allLinkStatesSelector]: {
             textDecoration: 'none',
-            color: theme.palette.white
+            color: theme.palette.white,
           },
 
           [`&:not(.is-disabled):hover .${classNames.linkText}, ` +
           `&:not(.is-disabled):active .${classNames.linkText}, ` +
           `&:not(.is-disabled):active:hover .${classNames.linkText}`]: {
-            borderColor: 'inherit'
-          }
-        }
-      }
+            borderColor: 'inherit',
+          },
+        },
+      },
     ],
 
     linkDark: [
@@ -419,25 +420,25 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         color: theme.palette.black,
         selectors: {
           [allLinkStatesSelector]: {
-            color: theme.palette.black
-          }
-        }
-      }
+            color: theme.palette.black,
+          },
+        },
+      },
     ],
 
     linkIcon: [
       classNames.linkIcon,
       {
-        marginRight: 16
-      }
+        marginRight: 16,
+      },
     ],
 
     linkText: [
       classNames.linkText,
       {
         borderBottom: '1px solid transparent',
-        transition: `border-color ${MotionDurations.duration2} ${MotionTimings.decelerate}`
-      }
+        transition: `border-color ${MotionDurations.duration2} ${MotionTimings.decelerate}`,
+      },
     ],
 
     illustration: [
@@ -445,10 +446,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         selectors: {
           img: {
-            maxWidth: '100%'
-          }
-        }
-      }
-    ]
+            maxWidth: '100%',
+          },
+        },
+      },
+    ],
   };
 };

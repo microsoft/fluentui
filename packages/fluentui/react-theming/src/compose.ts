@@ -38,7 +38,7 @@ interface ComposedFunctionComponent<TProps> extends React.FunctionComponent<TPro
 export const _composeFactory = (useThemeHook: any = useTheme) => {
   const composeInstance = <TProps extends Composeable = {}>(
     baseComponent: ComposedFunctionComponent<TProps>,
-    options: ComposeOptions = {}
+    options: ComposeOptions = {},
   ) => {
     const classNamesCache = new WeakMap();
     const optionsSet = _mergeOptions(options, baseComponent.__optionsSet);
@@ -51,13 +51,15 @@ export const _composeFactory = (useThemeHook: any = useTheme) => {
       const slots = resolveSlots(componentName, optionsSet, theme);
 
       if (!theme) {
-        throw new Error('No theme specified. Plese provide a ThemeProvider. See aka.ms/react-theming for more details.');
+        throw new Error(
+          'No theme specified. Plese provide a ThemeProvider. See aka.ms/react-theming for more details.',
+        );
       }
 
       return renderFn({
         ...props,
         classes: _getClasses(componentName, theme, classNamesCache, optionsSet),
-        slots
+        slots,
       });
     };
 
@@ -122,14 +124,19 @@ const _mergeOptions = (options: ComposeOptions, baseOptions?: Options): Options 
   return optionsSet;
 };
 
-const _getClasses = (name: string | undefined, theme: ITheme, classNamesCache: WeakMap<any, any>, optionsSet: any[]) => {
+const _getClasses = (
+  name: string | undefined,
+  theme: ITheme,
+  classNamesCache: WeakMap<any, any>,
+  optionsSet: any[],
+) => {
   let classes = classNamesCache.get(theme);
 
   if (!classes) {
     const tokens = resolveTokens(
       name,
       theme,
-      optionsSet.map(o => o.tokens || {})
+      optionsSet.map(o => o.tokens || {}),
     );
     let styles: any = {};
 
@@ -145,7 +152,7 @@ const _getClasses = (name: string | undefined, theme: ITheme, classNamesCache: W
 
     // Create a stylesheet for this permutation.
     const sheet = jss.createStyleSheet(styles, {
-      classNamePrefix: `${name}-`
+      classNamePrefix: `${name}-`,
     });
     sheet.update(theme);
     sheet.attach();

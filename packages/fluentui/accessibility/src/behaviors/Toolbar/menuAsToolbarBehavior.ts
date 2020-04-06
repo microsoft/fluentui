@@ -14,18 +14,18 @@ import menuItemAsToolbarButtonBehavior from './menuItemAsToolbarButtonBehavior';
 const menuAsToolbarBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'toolbar'
-    }
+      role: 'toolbar',
+    },
   },
   focusZone: {
     props: {
       shouldFocusInnerElementWhenReceivedFocus: true,
-      direction: FocusZoneDirection.bidirectionalDomOrder
-    }
+      direction: FocusZoneDirection.bidirectionalDomOrder,
+    },
   },
   childBehaviors: {
-    item: menuItemAsToolbarButtonBehavior
-  }
+    item: menuItemAsToolbarButtonBehavior,
+  },
 });
 
 export default menuAsToolbarBehavior;

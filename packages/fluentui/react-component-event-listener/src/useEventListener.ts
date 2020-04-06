@@ -2,8 +2,10 @@ import * as React from 'react';
 
 import { EventHandler, EventListenerOptions, EventTypes, Target } from './types';
 
-const isActionSupported = (element: Target | null | undefined, method: 'addEventListener' | 'removeEventListener'): element is Target =>
-  element ? !!element[method] : false;
+const isActionSupported = (
+  element: Target | null | undefined,
+  method: 'addEventListener' | 'removeEventListener',
+): element is Target => (element ? !!element[method] : false);
 
 const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>): void => {
   const { capture, listener, type, target, targetRef } = options;
@@ -34,7 +36,7 @@ const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>
       element.addEventListener(type, eventHandler, capture);
     } else if (process.env.NODE_ENV !== 'production') {
       throw new Error(
-        '@fluentui/react-component-event-listener: Passed `element` is not valid or does not support `addEventListener()` method.'
+        '@fluentui/react-component-event-listener: Passed `element` is not valid or does not support `addEventListener()` method.',
       );
     }
 
@@ -43,7 +45,7 @@ const useEventListener = <T extends EventTypes>(options: EventListenerOptions<T>
         element.removeEventListener(type, eventHandler, capture);
       } else if (process.env.NODE_ENV !== 'production') {
         throw new Error(
-          '@fluentui/react-component-event-listener: Passed `element` is not valid or does not support `removeEventListener()` method.'
+          '@fluentui/react-component-event-listener: Passed `element` is not valid or does not support `removeEventListener()` method.',
         );
       }
     };

@@ -6,7 +6,8 @@ import { getSubTitle } from '../../../utilities/index';
 
 export interface IGetStartedPageProps extends IPageProps<Platforms> {}
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/GetStartedPage/';
+const baseUrl =
+  'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Overviews/GetStartedPage/';
 // en dashes look like regular dashes in a monospace font
 const enDash = '–';
 
@@ -28,34 +29,34 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
     case 'web':
       return [
         {
-          sectionName: 'Fabric React',
+          sectionName: 'Fluent UI React',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopExisting.md',
           content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopExisting.md') as string,
-          jumpLinks: [{ text: enDash + ' Add to existing project', url: 'add-to-existing-project' }]
+          jumpLinks: [{ text: enDash + ' Add to existing project', url: 'add-to-existing-project' }],
         },
         {
-          sectionName: 'Start a new Fabric React project',
+          sectionName: 'Start a new Fluent UI React project',
           jumpLinkName: enDash + ' Start a new project',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopSimple.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopSimple.md') as string
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopSimple.md') as string,
         },
         {
-          sectionName: 'Next steps with Fabric React',
+          sectionName: 'Next steps with Fluent UI React',
           jumpLinkName: enDash + ' Next steps',
           editUrl: baseUrl + 'docs/web/GetStartedNextSteps.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedNextSteps.md') as string
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedNextSteps.md') as string,
         },
         {
           sectionName: 'Fabric Core',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopCore.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCore.md') as string
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCore.md') as string,
         },
         {
           sectionName: 'Use our design language in your site',
           jumpLinkName: 'Design language',
           editUrl: baseUrl + 'docs/web/GetStartedDesign.md',
-          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDesign.md') as string
-        }
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDesign.md') as string,
+        },
       ];
 
     default:
@@ -64,5 +65,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
 }
 
 export const GetStartedPage: React.FunctionComponent<IGetStartedPageProps> = (props: IGetStartedPageProps) => (
-  <PlatformContext.Consumer>{(platform: Platforms) => <GetStartedPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+  <PlatformContext.Consumer>
+    {(platform: Platforms) => <GetStartedPageBase platform={platform} {...props} />}
+  </PlatformContext.Consumer>
 );

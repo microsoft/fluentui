@@ -13,13 +13,13 @@ describe('mergeThemeVariables', () => {
 
   afterEach(() => {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: () => originalDebugEnabled
+      get: () => originalDebugEnabled,
     });
   });
 
   function mockIsDebugEnabled(enabled: boolean) {
     Object.defineProperty(debugEnabled, 'isEnabled', {
-      get: jest.fn(() => enabled)
+      get: jest.fn(() => enabled),
     });
   }
 
@@ -48,9 +48,9 @@ describe('mergeThemeVariables', () => {
       const target = { Button: { a: 'a', b: 'b', c: 'c', d: 'd', e: 'e' } };
       const source1 = withDebugId(
         {
-          Button: siteVariables => ({ b: siteVariables.colors.colorForB })
+          Button: siteVariables => ({ b: siteVariables.colors.colorForB }),
         },
-        's1'
+        's1',
       );
       const source2 = { Button: { c: 'cS2' } };
       const source3 = { Button: { d: 'dS3' } };
@@ -59,13 +59,13 @@ describe('mergeThemeVariables', () => {
         fontSizes: {},
         colors: {
           colorForB: 'b_color',
-          colorForC: 'c_color'
-        }
+          colorForC: 'c_color',
+        },
       };
       const merged = mergeThemeVariables(target, mergeThemeVariables(source1, source2), source3);
       const resolved = _.mapValues(merged, cv => cv(siteVariables));
       expect(resolved).toMatchObject({
-        Button: { a: 'a', b: 'b_color', c: 'cS2', d: 'dS3', e: 'e' }
+        Button: { a: 'a', b: 'b_color', c: 'cS2', d: 'dS3', e: 'e' },
       });
     });
   }

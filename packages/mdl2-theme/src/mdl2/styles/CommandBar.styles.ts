@@ -8,8 +8,8 @@ export const CommandBarStyles = (props: ICommandBarStyleProps): Partial<ICommand
       {
         height: 40,
         padding: '0 16px',
-        backgroundColor: theme.palette.neutralLighter
-      }
-    ]
+        backgroundColor: theme.palette.neutralLighter,
+      },
+    ],
   };
 };

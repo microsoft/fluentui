@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash';
 
 import ComponentExampleTitle from '../ComponentExample/ComponentExampleTitle';
-import { Accordion, Segment } from '@fluentui/react';
+import { Accordion, Segment } from '@fluentui/react-northstar';
 import ComponentExample from '../ComponentExample';
 import { ComponentPerfChart } from './ComponentPerfChart';
 
@@ -34,15 +34,15 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                   content: 'Show example',
                   styles: ({ theme }) => {
                     return {
-                      fontSize: theme.siteVariables.fontSizes.smaller
+                      fontSize: theme.siteVariables.fontSizes.smaller,
                     };
-                  }
+                  },
                 },
                 content: {
                   key: 'c',
-                  content: <ComponentExample {..._.omit(props, 'title', 'description')} /> // FIXME: defer rendering until opened
-                }
-              }
+                  content: <ComponentExample {..._.omit(props, 'title', 'description')} />, // FIXME: defer rendering until opened
+                },
+              },
             ] as any[]
           }
         />

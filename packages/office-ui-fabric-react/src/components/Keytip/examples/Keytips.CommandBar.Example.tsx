@@ -14,7 +14,7 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
     super(props);
     this.state = {
       showModal: false,
-      showMessageBar: false
+      showMessageBar: false,
     };
   }
 
@@ -28,27 +28,27 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
               key: 'commandBarItem1',
               text: 'New',
               iconProps: {
-                iconName: 'Add'
+                iconName: 'Add',
               },
               onClick: this._showModal,
-              keytipProps: keytipMap.CommandButton1Keytip
+              keytipProps: keytipMap.CommandButton1Keytip,
             },
             {
               key: 'commandBarItem2',
               text: 'Upload',
               iconProps: {
-                iconName: 'Upload'
+                iconName: 'Upload',
               },
               onClick: this._showMessageBar,
-              keytipProps: keytipMap.CommandButton2Keytip
-            }
+              keytipProps: keytipMap.CommandButton2Keytip,
+            },
           ]}
           farItems={[
             {
               key: 'farItem1',
               text: 'Options',
               iconProps: {
-                iconName: 'SortLines'
+                iconName: 'SortLines',
               },
               keytipProps: keytipMap.CommandButton3Keytip,
               subMenuProps: {
@@ -57,18 +57,18 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
                     key: 'emailMessage',
                     text: 'Send Email',
                     iconProps: {
-                      iconName: 'Mail'
+                      iconName: 'Mail',
                     },
                     keytipProps: keytipMap.SubmenuKeytip1,
                     onClick: () => {
                       console.log('test1');
-                    }
+                    },
                   },
                   {
                     key: 'calendarEvent',
                     text: 'Make Calendar Event',
                     iconProps: {
-                      iconName: 'Calendar'
+                      iconName: 'Calendar',
                     },
                     keytipProps: keytipMap.SubmenuKeytip2,
                     onClick: () => {
@@ -82,17 +82,17 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
                           keytipProps: keytipMap.SubmenuKeytip3,
                           onClick: () => {
                             console.log('test3');
-                          }
+                          },
                         },
                         {
                           key: 'testButton2',
                           text: 'Go to Bing',
                           keytipProps: keytipMap.SubmenuKeytip4,
                           href: 'http://www.bing.com',
-                          target: '_blank'
-                        }
-                      ]
-                    }
+                          target: '_blank',
+                        },
+                      ],
+                    },
                   },
                   {
                     key: 'splitButtonTest',
@@ -103,21 +103,23 @@ export class KeytipsCommandBarExample extends React.Component<{}, IKeytipsComman
                       items: [
                         {
                           key: 'splitButtonSubMenu1',
-                          text: 'Submenu Item w/o Keytip'
+                          text: 'Submenu Item w/o Keytip',
                         },
                         {
                           key: 'splitButtonSubMenu2',
-                          text: 'Submenu Item w/o Keytip'
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
+                          text: 'Submenu Item w/o Keytip',
+                        },
+                      ],
+                    },
+                  },
+                ],
+              },
+            },
           ]}
         />
-        {this.state.showMessageBar && <MessageBar messageBarType={MessageBarType.success}>Success Uploading</MessageBar>}
+        {this.state.showMessageBar && (
+          <MessageBar messageBarType={MessageBarType.success}>Success Uploading</MessageBar>
+        )}
         <Modal isOpen={this.state.showModal} onDismiss={this._hideModal} isBlocking={false}>
           <h3>New Modal</h3>
         </Modal>

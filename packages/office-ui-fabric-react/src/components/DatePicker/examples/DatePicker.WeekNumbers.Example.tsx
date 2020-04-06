@@ -4,7 +4,20 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -17,7 +30,7 @@ const DayPickerStrings: IDatePickerStrings = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  closeButtonAriaLabel: 'Close date picker',
 };
 
 export interface IDatePickerBasicExampleState {
@@ -27,8 +40,8 @@ export interface IDatePickerBasicExampleState {
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
 export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePickerBasicExampleState> {
@@ -36,7 +49,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Monday
+      firstDayOfWeek: DayOfWeek.Monday,
     };
   }
 
@@ -61,32 +74,32 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
           options={[
             {
               text: 'Sunday',
-              key: DayOfWeek[DayOfWeek.Sunday]
+              key: DayOfWeek[DayOfWeek.Sunday],
             },
             {
               text: 'Monday',
-              key: DayOfWeek[DayOfWeek.Monday]
+              key: DayOfWeek[DayOfWeek.Monday],
             },
             {
               text: 'Tuesday',
-              key: DayOfWeek[DayOfWeek.Tuesday]
+              key: DayOfWeek[DayOfWeek.Tuesday],
             },
             {
               text: 'Wednesday',
-              key: DayOfWeek[DayOfWeek.Wednesday]
+              key: DayOfWeek[DayOfWeek.Wednesday],
             },
             {
               text: 'Thursday',
-              key: DayOfWeek[DayOfWeek.Thursday]
+              key: DayOfWeek[DayOfWeek.Thursday],
             },
             {
               text: 'Friday',
-              key: DayOfWeek[DayOfWeek.Friday]
+              key: DayOfWeek[DayOfWeek.Friday],
             },
             {
               text: 'Saturday',
-              key: DayOfWeek[DayOfWeek.Saturday]
-            }
+              key: DayOfWeek[DayOfWeek.Saturday],
+            },
           ]}
           selectedKey={DayOfWeek[firstDayOfWeek!]}
           onChange={this._onDropdownChange}
@@ -97,7 +110,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
 
   private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      firstDayOfWeek: (DayOfWeek as any)[option.key]
+      firstDayOfWeek: (DayOfWeek as any)[option.key],
     });
   };
 }

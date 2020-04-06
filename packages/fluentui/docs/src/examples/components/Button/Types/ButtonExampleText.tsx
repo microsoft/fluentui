@@ -1,33 +1,34 @@
 import * as React from 'react';
-import { Button, Text, Icon } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
+import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const ButtonExampleText = () => (
   <div>
     <Button text>
-      <Text content="A text button" />
+      <Button.Content content="A text button" />
     </Button>
     <br />
     <br />
     <Button text>
-      <Icon name="call-video" />
-      <Text content="A text button with an icon" />
+      <CallVideoIcon />
+      <Button.Content content="A text button with an icon" />
     </Button>
     <br />
     <br />
     <Button text iconOnly title="Video Call">
-      <Icon name="call-video" />
+      <CallVideoIcon />
     </Button>
     <br />
     <br />
     <Button text disabled>
-      <Icon name="call-video" />
-      <Text content="A disabled text button with an icon" />
+      <CallVideoIcon />
+      <Button.Content content="A disabled text button with an icon" />
     </Button>
     <br />
     <br />
     <Button text primary>
-      <Icon name="call-video" />
-      <Text content="A primary text button with an icon" />
+      <CallVideoIcon />
+      <Button.Content content="A primary text button with an icon" />
     </Button>
   </div>
 );

@@ -6,7 +6,7 @@ const GlobalClassNames = {
   callout: 'ms-DatePicker-callout',
   withLabel: 'ms-DatePicker-event--with-label',
   withoutLabel: 'ms-DatePicker-event--without-label',
-  disabled: 'msDatePickerDisabled '
+  disabled: 'msDatePickerDisabled ',
 };
 
 export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
@@ -21,7 +21,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
     pointerEvents: 'none',
     position: 'absolute',
     right: '4px',
-    padding: '5px'
+    padding: '5px',
   };
 
   return {
@@ -31,24 +31,24 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         position: 'relative',
         selectors: {
           '& input[readonly]': {
-            cursor: 'pointer'
+            cursor: 'pointer',
           },
           input: {
             selectors: {
               '::-ms-clear': {
-                display: 'none'
-              }
-            }
-          }
-        }
+                display: 'none',
+              },
+            },
+          },
+        },
       },
       disabled && {
         selectors: {
           '& input[readonly]': {
-            cursor: 'default'
-          }
-        }
-      }
+            cursor: 'default',
+          },
+        },
+      },
     ],
     callout: [classNames.callout],
     icon: [
@@ -59,13 +59,13 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
         classNames.disabled,
         {
           pointerEvents: 'initial',
-          cursor: 'pointer'
-        }
+          cursor: 'pointer',
+        },
       ],
       disabled && {
         color: semanticColors.disabledText,
-        cursor: 'default'
-      }
-    ]
+        cursor: 'default',
+      },
+    ],
   };
 };

@@ -11,7 +11,7 @@ export interface IDialogTopOffsetFixedExampleState {
 export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopOffsetFixedExampleState> {
   public state: IDialogTopOffsetFixedExampleState = {
     hideDialog: true,
-    optionSelected: 'A'
+    optionSelected: 'A',
   };
 
   public render() {
@@ -26,7 +26,7 @@ export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopO
           onDismiss={this._closeDialog}
           modalProps={{
             isBlocking: true,
-            topOffsetFixed: true
+            topOffsetFixed: true,
           }}
         >
           <ChoiceGroup
@@ -36,20 +36,20 @@ export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopO
                 key: 'A',
                 iconProps: { iconName: 'CalendarDay' },
                 text: 'Day',
-                checked: optionSelected === 'A'
+                checked: optionSelected === 'A',
               },
               {
                 key: 'B',
                 iconProps: { iconName: 'CalendarWeek' },
                 text: 'Week',
-                checked: optionSelected === 'B'
+                checked: optionSelected === 'B',
               },
               {
                 key: 'C',
                 iconProps: { iconName: 'Calendar' },
                 text: 'Month',
-                checked: optionSelected === 'C'
-              }
+                checked: optionSelected === 'C',
+              },
             ]}
             onChange={this._onChange}
             required={true}
@@ -59,10 +59,11 @@ export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopO
               <h1>Description</h1>
               <div>
                 {' '}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.{' '}
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.{' '}
               </div>
             </div>
           )}
@@ -71,8 +72,9 @@ export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopO
               <h1>Description</h1>
               <div>
                 {' '}
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.{' '}
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat.{' '}
               </div>
             </div>
           )}

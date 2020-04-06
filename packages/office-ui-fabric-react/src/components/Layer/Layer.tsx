@@ -10,6 +10,6 @@ export const Layer: React.FunctionComponent<ILayerProps> = styled<ILayerProps, I
   undefined,
   {
     scope: 'Layer',
-    fields: ['hostId', 'theme', 'styles']
-  }
+    fields: ['hostId', 'theme', 'styles'],
+  },
 );

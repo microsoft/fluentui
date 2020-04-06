@@ -9,5 +9,5 @@ export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps> = s
   IVerticalDividerPropsStyles,
   IVerticalDividerStyles
 >(VerticalDividerBase, getStyles, undefined, {
-  scope: 'VerticalDivider'
+  scope: 'VerticalDivider',
 });

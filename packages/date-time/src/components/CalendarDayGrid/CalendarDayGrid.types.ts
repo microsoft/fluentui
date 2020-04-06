@@ -5,7 +5,7 @@ import {
   FirstWeekOfYear,
   DateRangeType,
   ICalendarFormatDateCallbacks,
-  AnimationDirection
+  AnimationDirection,
 } from '../Calendar/Calendar.types';
 import { IStyle, ITheme, IProcessedStyleSet } from '@uifabric/styling';
 
@@ -53,7 +53,8 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   /**
    * Callback issued when a date is selected
    * @param date - The date the user selected
-   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set for the component.
+   * @param selectedDateRangeArray - The resultant list of dates that are selected based on the date range type set
+   * for the component.
    */
   onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
 
@@ -113,7 +114,8 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   dateTimeFormatter: ICalendarFormatDateCallbacks;
 
   /**
-   * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the specific day.
+   * Ref callback for individual days. Allows for customization of the styling, properties, or listeners of the
+   * specific day.
    */
   customDayCellRef?: (element: HTMLElement, date: Date, classNames: IProcessedStyleSet<ICalendarDayGridStyles>) => void;
 
@@ -140,7 +142,8 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
   restrictedDates?: Date[];
 
   /**
-   * The days that are selectable when dateRangeType is WorkWeek. If dateRangeType is not WorkWeek this property does nothing.
+   * The days that are selectable when `dateRangeType` is WorkWeek.
+   * If `dateRangeType` is not WorkWeek this property does nothing.
    * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];

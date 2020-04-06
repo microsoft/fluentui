@@ -7,7 +7,17 @@ import { inputProperties, getNativeProps } from '../../Utilities';
 import { IToggleComponent, IToggleProps, IToggleSlots } from './Toggle.types';
 
 export const ToggleView: IToggleComponent['view'] = props => {
-  const { as: RootType = 'div', label, ariaLabel, checked, disabled, onChange, keytipProps, onClick, toggleButtonRef } = props;
+  const {
+    as: RootType = 'div',
+    label,
+    ariaLabel,
+    checked,
+    disabled,
+    onChange,
+    keytipProps,
+    onClick,
+    toggleButtonRef,
+  } = props;
   const toggleNativeProps = getNativeProps(props, inputProperties, ['defaultChecked']);
 
   const Slots = getSlots<IToggleProps, IToggleSlots>(props, {
@@ -16,7 +26,7 @@ export const ToggleView: IToggleComponent['view'] = props => {
     container: 'div',
     pill: 'button',
     thumb: 'div',
-    text: Label
+    text: Label,
   });
 
   // TODO: need to fix this._id usage. should _id come from state?
@@ -27,7 +37,11 @@ export const ToggleView: IToggleComponent['view'] = props => {
     <Slots.root>
       <Slots.label htmlFor={id}>{label}</Slots.label>
       <Slots.container>
-        <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
+        <KeytipData
+          keytipProps={keytipProps}
+          ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']}
+          disabled={disabled}
+        >
           {(keytipAttributes: any): JSX.Element => (
             <Slots.pill
               {...toggleNativeProps}

@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`felaRenderer CSS fallback values are rendered 1`] = `
+".a {
+  color: red;
+  color: blue;
+}
+
+
+<div className=ui-box a data-uses-unhanded-props=true />;
+"
+`;
+
+exports[`felaRenderer animations are not applied if animations are disabled 1`] = `
+"
+
+<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
+  <div className=ui-box ui-animation data-uses-unhanded-props=true />
+</div>;
+"
+`;
+
+exports[`felaRenderer array returned by keyframe results in CSS fallback values 1`] = `
+"@-webkit-keyframes k1 {
+  0% {
+    color: blue;
+    color: red;
+    color: yellow;
+  }
+  100% {
+    color: blue;
+    color: red;
+    color: yellow;
+  }
+}
+@-moz-keyframes k1 {
+  0% {
+    color: blue;
+    color: red;
+    color: yellow;
+  }
+  100% {
+    color: blue;
+    color: red;
+    color: yellow;
+  }
+}
+@keyframes k1 {
+  0% {
+    color: blue;
+    color: red;
+    color: yellow;
+  }
+  100% {
+    color: blue;
+    color: red;
+    color: yellow;
+  }
+}
+.a {
+  animation-name: k1;
+}
+
+
+<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
+  <div className=ui-box ui-animation a data-uses-unhanded-props=true />
+</div>;
+"
+`;
+
+exports[`felaRenderer basic styles are rendered 1`] = `
+".a {
+  color: red;
+}
+
+
+<div className=ui-box a data-uses-unhanded-props=true />;
+"
+`;
+
+exports[`felaRenderer keyframe colors are rendered 1`] = `
+"@-webkit-keyframes k1 {
+  from {
+    color: red;
+  }
+  to {
+    color: blue;
+  }
+}
+@-moz-keyframes k1 {
+  from {
+    color: red;
+  }
+  to {
+    color: blue;
+  }
+}
+@keyframes k1 {
+  from {
+    color: red;
+  }
+  to {
+    color: blue;
+  }
+}
+.a {
+  animation-name: k1;
+}
+.b {
+  animation-duration: 5s;
+}
+
+
+<div className=ui-provider dir=ltr data-uses-unhanded-props=true>
+  <div className=ui-box ui-animation a b data-uses-unhanded-props=true />
+</div>;
+"
+`;
+
+exports[`felaRenderer marginLeft is rendered into marginLeft due to RTL with \`noFlip\` 1`] = `
+".a {
+  margin-left: 10px; /* @noflip */
+}
+
+
+<div className=ui-provider dir=rtl data-uses-unhanded-props=true>
+  <span className=ui-text a dir=auto data-uses-unhanded-props=true>
+    Hello
+  </span>
+</div>;
+"
+`;
+
+exports[`felaRenderer marginLeft is rendered into marginRight due to RTL 1`] = `
+".a {
+  margin-right: 10px;
+}
+
+
+<div className=ui-provider dir=rtl data-uses-unhanded-props=true>
+  <span className=ui-text a dir=auto data-uses-unhanded-props=true>
+    Hello
+  </span>
+</div>;
+"
+`;
+
+exports[`felaRenderer prefixes required styles 1`] = `
+".a {
+  background: -webkit-linear-gradient(#e66465, #9198e5);
+  background: -moz-linear-gradient(#e66465, #9198e5);
+  background: linear-gradient(#e66465, #9198e5);
+}
+.b {
+  background-clip: -webkit-text;
+  background-clip: text;
+}
+.c {
+  background-image: -webkit-cross-fade(75% url(\\"foo.png\\"), url(\\"bar.png\\"));
+  background-image: cross-fade(75% url(\\"foo.png\\"), url(\\"bar.png\\"));
+}
+.d {
+  cursor: -webkit-zoom-in;
+  cursor: -moz-zoom-in;
+  cursor: zoom-in;
+}
+.e {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+.f {
+  -webkit-filter: blur(5px);
+  filter: blur(5px);
+}
+.g {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+}
+.h {
+  margin-block-end: 20px;
+  -webkit-margin-after: 20px;
+}
+.i {
+  position: -webkit-sticky;
+  position: sticky;
+}
+.j {
+  transition: width 2s, height 2s, background-color 2s, transform 2s;
+  -webkit-transition: width 2s, height 2s, background-color 2s, transform 2s;
+  -moz-transition: width 2s, height 2s, background-color 2s, transform 2s;
+}
+.k:hover {
+  background-image: -webkit-image-set(\\"cat.png\\" 1x, \\"cat-2x.png\\" 2x);
+  background-image: image-set(\\"cat.png\\" 1x, \\"cat-2x.png\\" 2x);
+}
+.l:hover {
+  display: -webkit-inline-box;
+  display: -moz-inline-box;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+.m:hover {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+
+<div
+  className=ui-box a b c d e f g h i j k l m
+  data-uses-unhanded-props=true
+/>;
+"
+`;
+
+exports[`felaRenderer styles are expanded to longhand values 1`] = `
+".a {
+  border-top-style: solid;
+}
+.b {
+  border-right-style: solid;
+}
+.c {
+  border-bottom-style: solid;
+}
+.d {
+  border-left-style: solid;
+}
+.e {
+  border-top-color: rgba(51, 204, 51, 1);
+}
+.f {
+  border-right-color: rgba(51, 0, 204, 1);
+}
+.g {
+  border-bottom-color: rgba(51, 204, 51, 1);
+}
+.h {
+  border-left-color: rgba(51, 0, 204, 1);
+}
+
+
+<div className=ui-box a b c d e f g h data-uses-unhanded-props=true />;
+"
+`;

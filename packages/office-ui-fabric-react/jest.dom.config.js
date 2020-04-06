@@ -6,7 +6,7 @@ const config = createConfig({
 
   testRegex: '(/__tests__/.*|\\.(test|spec))\\.dom\\.(ts|tsx)$',
 
-  preset: 'jest-puppeteer'
+  preset: 'jest-puppeteer',
 });
 
 module.exports = config;

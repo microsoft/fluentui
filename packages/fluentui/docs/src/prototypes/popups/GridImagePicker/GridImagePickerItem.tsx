@@ -1,4 +1,4 @@
-import { Image, Button } from '@fluentui/react';
+import { Image, Button } from '@fluentui/react-northstar';
 
 import * as React from 'react';
 
@@ -12,7 +12,7 @@ const imageButtonStyles = {
   minWidth: '56px',
   height: '56px',
   padding: '0',
-  background: '#fff'
+  background: '#fff',
 };
 
 class GridImagePickerItem extends React.Component<GridPickerItemProps> {

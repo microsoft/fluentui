@@ -6,6 +6,6 @@ const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls
 export const SpinButtonPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
-    related
-  }
+    related,
+  },
 };

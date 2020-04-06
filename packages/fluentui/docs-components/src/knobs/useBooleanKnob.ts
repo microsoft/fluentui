@@ -7,7 +7,7 @@ const useBooleanKnob = (options: UseBooleanKnobOptions) =>
   useKnob<boolean>({
     initialValue: false,
     type: 'boolean',
-    ...options
+    ...options,
   });
 
 export default useBooleanKnob;

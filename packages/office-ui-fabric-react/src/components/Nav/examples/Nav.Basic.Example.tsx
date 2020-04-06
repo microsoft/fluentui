@@ -6,7 +6,6 @@ export const NavBasicExample: React.FunctionComponent = () => {
     <Nav
       onLinkClick={_onLinkClick}
       selectedKey="key3"
-      selectedAriaLabel="Selected"
       ariaLabel="Nav basic example"
       styles={{
         root: {
@@ -14,8 +13,8 @@ export const NavBasicExample: React.FunctionComponent = () => {
           height: 350,
           boxSizing: 'border-box',
           border: '1px solid #eee',
-          overflowY: 'auto'
-        }
+          overflowY: 'auto',
+        },
       }}
       groups={[
         {
@@ -30,52 +29,52 @@ export const NavBasicExample: React.FunctionComponent = () => {
                   name: 'Activity',
                   url: 'http://msn.com',
                   key: 'key1',
-                  target: '_blank'
+                  target: '_blank',
                 },
                 {
                   name: 'MSN',
                   url: 'http://msn.com',
                   disabled: true,
                   key: 'key2',
-                  target: '_blank'
-                }
+                  target: '_blank',
+                },
               ],
-              isExpanded: true
+              isExpanded: true,
             },
             {
               name: 'Documents',
               url: 'http://example.com',
               key: 'key3',
               isExpanded: true,
-              target: '_blank'
+              target: '_blank',
             },
             {
               name: 'Pages',
               url: 'http://msn.com',
               key: 'key4',
-              target: '_blank'
+              target: '_blank',
             },
             {
               name: 'Notebook',
               url: 'http://msn.com',
               key: 'key5',
-              disabled: true
+              disabled: true,
             },
             {
               name: 'Communication and Media',
               url: 'http://msn.com',
               key: 'key6',
-              target: '_blank'
+              target: '_blank',
             },
             {
               name: 'News',
               url: 'http://cnn.com',
               icon: 'News',
               key: 'key7',
-              target: '_blank'
-            }
-          ]
-        }
+              target: '_blank',
+            },
+          ],
+        },
       ]}
     />
   );

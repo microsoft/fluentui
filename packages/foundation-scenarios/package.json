@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation-scenarios",
-  "version": "0.102.31",
+  "version": "0.102.54",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -30,8 +30,8 @@
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
-    "@uifabric/example-app-base": "^7.12.7",
-    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/example-app-base": "^7.12.30",
+    "@uifabric/tslint-rules": "^7.1.2",
     "es6-weak-map": "^2.0.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
@@ -39,8 +39,8 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@uifabric/set-version": "^7.0.5",
-    "office-ui-fabric-react": "^7.97.0",
+    "@uifabric/set-version": "^7.0.9",
+    "office-ui-fabric-react": "^7.105.10",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

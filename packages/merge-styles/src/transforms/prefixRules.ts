@@ -1,7 +1,7 @@
 import { getVendorSettings } from '../getVendorSettings';
 
 const autoPrefixNames: { [key: string]: number } = {
-  'user-select': 1
+  'user-select': 1,
 };
 
 export function prefixRules(rulePairs: (string | number)[], index: number): void {

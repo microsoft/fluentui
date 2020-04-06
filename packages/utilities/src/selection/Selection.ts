@@ -16,7 +16,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
  * Selection options with required `getKey` property.
  * {@docCategory Selection}
  */
-export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> & Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
+export type ISelectionOptionsWithRequiredGetKey<TItem> = ISelectionOptions<TItem> &
+  Required<Pick<ISelectionOptions<TItem>, 'getKey'>>;
 
 /**
  * {@docCategory Selection}
@@ -226,7 +227,9 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   }
 
   public getSelectedCount(): number {
-    return this._isAllSelected ? this._items.length - this._exemptedCount - this._unselectableCount : this._exemptedCount;
+    return this._isAllSelected
+      ? this._items.length - this._exemptedCount - this._unselectableCount
+      : this._exemptedCount;
   }
 
   public getSelectedIndices(): number[] {

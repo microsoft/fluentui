@@ -9,6 +9,6 @@ export function updateA(color: IColor, a: number): IColor {
   return {
     ...color,
     a: a,
-    str: _rgbaOrHexString(color.r, color.g, color.b, a, color.hex)
+    str: _rgbaOrHexString(color.r, color.g, color.b, a, color.hex),
   };
 }

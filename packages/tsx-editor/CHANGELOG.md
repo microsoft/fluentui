@@ -1,7 +1,19 @@
 # Change Log - @uifabric/tsx-editor
 
-This log was last generated on Wed, 19 Feb 2020 12:21:05 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 0.11.41
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 0.11.40
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 0.11.20
 Wed, 19 Feb 2020 12:21:05 GMT
 
@@ -180,7 +192,3 @@ Fri, 02 Aug 2019 12:33:29 GMT
 ### Patches
 
 - Publish tsx-editor (elcraig@microsoft.com)
-
-# Change Log - @uifabric/tsx-editor
-
-This log was last generated on Wed, 19 Jun 2019 21:12:36 GMT and should not be manually modified.

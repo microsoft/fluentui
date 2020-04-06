@@ -6,7 +6,7 @@ import { componentAPIs, ComponentAPIs } from './componentAPIs';
 
 const getExampleModule = (
   examplePath: string,
-  componentAPI: keyof ComponentAPIs
+  componentAPI: keyof ComponentAPIs,
 ):
   | {
       defaultExport: React.ElementType;
@@ -23,7 +23,7 @@ const getExampleModule = (
     return {
       defaultExport: examplesContext(modulePath).default,
       namedExports: examplesContext(modulePath),
-      source: exampleSourcesContext(sourcePath)
+      source: exampleSourcesContext(sourcePath),
     };
   } catch (e) {
     return null;

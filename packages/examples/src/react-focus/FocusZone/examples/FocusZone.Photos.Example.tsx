@@ -12,7 +12,7 @@ const classNames = mergeStyleSets({
     border: '1px solid ' + theme.palette.neutralTertiary,
     padding: 10,
     lineHeight: 0,
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   photoCell: {
     position: 'relative',
@@ -21,7 +21,7 @@ const classNames = mergeStyleSets({
     boxSizing: 'border-box',
     selectors: {
       '&:focus': {
-        outline: 'none'
+        outline: 'none',
       },
       '&:focus:after': {
         content: '""',
@@ -31,10 +31,10 @@ const classNames = mergeStyleSets({
         top: 4,
         bottom: 4,
         border: '1px solid ' + theme.palette.white,
-        outline: '2px solid ' + theme.palette.themePrimary
-      }
-    }
-  }
+        outline: '2px solid ' + theme.palette.themePrimary,
+      },
+    },
+  },
 });
 
 const MAX_COUNT = 20;
@@ -60,7 +60,12 @@ export const FocusZonePhotosExample: React.FunctionComponent = () => {
           aria-label="Photo"
           data-is-focusable={true}
         >
-          <Image src={item.url} width={item.width} height={item.height} alt={`${item.width} by ${item.height} placeholder image`} />
+          <Image
+            src={item.url}
+            width={item.width}
+            height={item.height}
+            alt={`${item.width} by ${item.height} placeholder image`}
+          />
         </li>
       ))}
     </FocusZone>
@@ -77,7 +82,7 @@ function _getItems(): IPhoto[] {
       id: getId('photo'),
       url: `http://placehold.it/${randomWidth}x100`,
       width: randomWidth,
-      height: 100
+      height: 100,
     });
   }
 

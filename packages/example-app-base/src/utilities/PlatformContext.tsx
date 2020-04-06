@@ -11,7 +11,9 @@ export function withPlatform<
   TProps extends IWithPlatformProps<TPlatforms> = IWithPlatformProps<TPlatforms>
 >(Component: React.ComponentType<TProps>): React.FunctionComponent<TProps> {
   const ComponentWithPlatform: React.FunctionComponent<TProps> = (props: TProps) => (
-    <PlatformContext.Consumer>{(platform: string) => <Component {...props} platform={platform} />}</PlatformContext.Consumer>
+    <PlatformContext.Consumer>
+      {(platform: string) => <Component {...props} platform={platform} />}
+    </PlatformContext.Consumer>
   );
   // tslint:disable no-any
   ComponentWithPlatform.displayName = (Component.displayName || (Component as any).name) + 'WithPlatform';

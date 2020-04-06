@@ -13,9 +13,9 @@ initializeIcons();
 mergeStyles({
   selectors: {
     ':global(html), :global(body)': {
-      WebkitTapHighlightColor: 'transparent'
-    }
-  }
+      WebkitTapHighlightColor: 'transparent',
+    },
+  },
 });
 
 export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage: React.FunctionComponent) {
@@ -32,12 +32,14 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
       <Fabric>
         <Router onNewRouteLoaded={_scrollAnchorLink}>{_getRoutes()}</Router>
       </Fabric>,
-      rootElement
+      rootElement,
     );
   }
 
   function _getRoutes(): JSX.Element[] {
-    const routes = appDefinition.testPages.map((page: IAppLink) => <Route key={page.key} path={page.url} component={page.component} />);
+    const routes = appDefinition.testPages.map((page: IAppLink) => (
+      <Route key={page.key} path={page.url} component={page.component} />
+    ));
     const appRoutes: JSX.Element[] = [];
 
     appDefinition.examplePages.forEach((group: IAppLinkGroup) => {
@@ -52,7 +54,7 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     routes.push(
       <Route key="app" component={App}>
         {appRoutes}
-      </Route>
+      </Route>,
     );
 
     return routes;
@@ -62,7 +64,9 @@ export function createDemoApp(appDefinition: IAppDefinition, gettingStartedPage:
     const routes: JSX.Element[] = [];
     for (const link of links) {
       if (link.component || link.getComponent) {
-        routes.push(<Route key={link.key} path={link.url} component={link.component} getComponent={link.getComponent} />);
+        routes.push(
+          <Route key={link.key} path={link.url} component={link.component} getComponent={link.getComponent} />,
+        );
         if (link.links) {
           routes.push(..._getRoutesFromLinks(link.links));
         }

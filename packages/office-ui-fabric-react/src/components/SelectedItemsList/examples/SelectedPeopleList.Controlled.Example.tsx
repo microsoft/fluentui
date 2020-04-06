@@ -5,7 +5,7 @@ import {
   IExtendedPersonaProps,
   SelectedPeopleList,
   ISelectedPeopleItemProps,
-  ExtendedSelectedItem
+  ExtendedSelectedItem,
 } from 'office-ui-fabric-react/lib/SelectedItemsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
@@ -16,7 +16,10 @@ export interface ISelectedPeopleListControlledExampleState {
   nextPersonIndex: number;
 }
 
-export class SelectedPeopleListControlledExample extends React.Component<{}, ISelectedPeopleListControlledExampleState> {
+export class SelectedPeopleListControlledExample extends React.Component<
+  {},
+  ISelectedPeopleListControlledExampleState
+> {
   private _selectionList = React.createRef<SelectedPeopleList>();
   private _selection: Selection;
 
@@ -25,7 +28,7 @@ export class SelectedPeopleListControlledExample extends React.Component<{}, ISe
 
     this.state = {
       currentSelectedItems: [people[40]],
-      nextPersonIndex: 0
+      nextPersonIndex: 0,
     };
     this._selection = new Selection({ onSelectionChanged: () => this.forceUpdate() });
   }
@@ -66,7 +69,7 @@ export class SelectedPeopleListControlledExample extends React.Component<{}, ISe
     const { nextPersonIndex, currentSelectedItems } = this.state;
     this.setState({
       currentSelectedItems: [...currentSelectedItems, people[nextPersonIndex]],
-      nextPersonIndex: nextPersonIndex + 1
+      nextPersonIndex: nextPersonIndex + 1,
     });
   };
 
@@ -86,7 +89,7 @@ export class SelectedPeopleListControlledExample extends React.Component<{}, ISe
       currentSelectedItems: currentSelectedItems
         .slice(0, indexToExpand)
         .concat(expandedItem)
-        .concat(currentSelectedItems.slice(indexToExpand + 1))
+        .concat(currentSelectedItems.slice(indexToExpand + 1)),
     });
   };
 

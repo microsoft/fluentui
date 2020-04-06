@@ -7,7 +7,6 @@ import {
   ShorthandCollection,
   Status,
   ToolbarItemShorthandKinds,
-  SizeValue,
   ShorthandValue,
   ComponentStyleFunctionParam,
   ThemeInput,
@@ -21,8 +20,22 @@ import {
   themes,
   mergeThemes,
   Tooltip,
-  tooltipAsLabelBehavior
-} from '@fluentui/react';
+  tooltipAsLabelBehavior,
+} from '@fluentui/react-northstar';
+import {
+  CallControlCloseTrayIcon,
+  CallControlPresentNewIcon,
+  CallControlStopPresentingNewIcon,
+  CallEndIcon,
+  CallVideoIcon,
+  CallVideoOffIcon,
+  ChatIcon,
+  ChevronDownIcon,
+  MicIcon,
+  MicOffIcon,
+  MoreIcon,
+  ParticipantAddIcon,
+} from '@fluentui/react-icons-northstar';
 
 type CustomStatusVariables = {
   isRecordingIndicator?: boolean;
@@ -71,48 +84,52 @@ type CustomToolbarVariables = {
   ctItemPrimaryColorHover: string;
 };
 
+const toolbarVariables = (siteVars): CustomToolbarVariables => ({
+  ctBorderRadius: '4px',
+  ctBorderStyle: 'solid',
+  ctBorderWidth: '2px',
+  ctHeight: '4rem',
+
+  ctItemBackground: siteVars.colorScheme.default.background1,
+  ctItemBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
+  ctItemBorderColorFocus: siteVars.colorScheme.default.borderFocus,
+  ctItemColor: siteVars.colorScheme.default.foreground,
+  ctItemColorFocus: siteVars.colorScheme.default.foregroundFocus,
+  ctItemColorHover: siteVars.colorScheme.default.foregroundHover,
+
+  ctItemActiveBackground: siteVars.colorScheme.default.backgroundActive1,
+  // FIXME: use variables for colors!
+  ctItemActiveBackgroundOverlay:
+    'linear-gradient(90deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(135deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 70%),linear-gradient(180deg,rgba(60,62,93,.6) 70%,rgba(60,62,93,0) 94%),linear-gradient(225deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 73%),linear-gradient(270deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(0deg,rgba(98,100,167,.75) 6%,rgba(98,100,167,0) 70%)',
+  ctItemActiveColor: siteVars.colorScheme.default.foregroundActive1,
+
+  ctItemDangerBackground: siteVars.colorScheme.red.background2,
+  ctItemDangerBackgroundHover: siteVars.colorScheme.red.backgroundHover,
+  ctItemDangerColorHover: siteVars.colorScheme.red.foregroundHover,
+
+  ctItemIndicatorPadding: pxToRem(8),
+
+  ctItemNotificationBackgroundColor: siteVars.colors.red[400],
+  ctItemNotificationSize: pxToRem(8),
+
+  ctItemPrimaryBackground: siteVars.colorScheme.default.background3,
+  ctItemPrimaryBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
+  ctItemPrimaryColorHover: siteVars.colorScheme.brand.foregroundHover1,
+});
+
 const darkThemeOverrides: ThemeInput = {
   componentVariables: {
     Status: (siteVars): CustomStatusVariables => ({
       recordingIndicatorBorderColor: siteVars.colors.white,
       recordingIndicatorBorderStyle: 'solid',
-      recordingIndicatorBorderWidth: '2px'
+      recordingIndicatorBorderWidth: '2px',
     }),
 
-    Toolbar: (siteVars): CustomToolbarVariables => ({
-      ctBorderRadius: '4px',
-      ctBorderStyle: 'solid',
-      ctBorderWidth: '2px',
-      ctHeight: '4rem',
-
-      ctItemBackground: siteVars.colorScheme.default.background1,
-      ctItemBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
-      ctItemBorderColorFocus: siteVars.colorScheme.default.borderFocus,
-      ctItemColor: siteVars.colorScheme.default.foreground,
-      ctItemColorFocus: siteVars.colorScheme.default.foregroundFocus,
-      ctItemColorHover: siteVars.colorScheme.default.foregroundHover,
-
-      ctItemActiveBackground: siteVars.colorScheme.default.backgroundActive1,
-      // FIXME: use variables for colors!
-      ctItemActiveBackgroundOverlay:
-        'linear-gradient(90deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(135deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 70%),linear-gradient(180deg,rgba(60,62,93,.6) 70%,rgba(60,62,93,0) 94%),linear-gradient(225deg,rgba(60,62,93,.6) 33%,rgba(60,62,93,0) 73%),linear-gradient(270deg,rgba(60,62,93,.6),rgba(60,62,93,0) 33%),linear-gradient(0deg,rgba(98,100,167,.75) 6%,rgba(98,100,167,0) 70%)',
-      ctItemActiveColor: siteVars.colorScheme.default.foregroundActive1,
-
-      ctItemDangerBackground: siteVars.colorScheme.red.background2,
-      ctItemDangerBackgroundHover: siteVars.colorScheme.red.backgroundHover,
-      ctItemDangerColorHover: siteVars.colorScheme.red.foregroundHover,
-
-      ctItemIndicatorPadding: pxToRem(8),
-
-      ctItemNotificationBackgroundColor: siteVars.colors.red[400],
-      ctItemNotificationSize: pxToRem(8),
-
-      ctItemPrimaryBackground: siteVars.colorScheme.default.background3,
-      ctItemPrimaryBackgroundHover: siteVars.colorScheme.brand.backgroundHover1,
-      ctItemPrimaryColorHover: siteVars.colorScheme.brand.foregroundHover1
-    })
+    Toolbar: toolbarVariables,
+    ToolbarCustomItem: toolbarVariables,
+    ToolbarDivider: toolbarVariables,
+    ToolbarItem: toolbarVariables,
   },
-
   componentStyles: {
     Status: {
       root: ({ variables: v }: ComponentStyleFunctionParam<StatusProps, CustomStatusVariables>) => ({
@@ -120,22 +137,25 @@ const darkThemeOverrides: ThemeInput = {
           boxSizing: 'content-box',
           borderColor: v.recordingIndicatorBorderColor,
           borderStyle: v.recordingIndicatorBorderStyle,
-          borderWidth: v.recordingIndicatorBorderWidth
-        })
-      })
+          borderWidth: v.recordingIndicatorBorderWidth,
+        }),
+      }),
     },
     Toolbar: {
       root: ({ variables: v }: ComponentStyleFunctionParam<ToolbarProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           borderRadius: v.ctBorderRadius,
           height: v.ctHeight,
-          overflow: 'hidden'
-        })
-      })
+          overflow: 'hidden',
+        }),
+      }),
     },
 
     ToolbarCustomItem: {
-      root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarCustomItemProps, CustomToolbarVariables>) => ({
+      root: ({
+        props: p,
+        variables: v,
+      }: ComponentStyleFunctionParam<ToolbarCustomItemProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
           background: v.ctItemBackground,
           borderStyle: v.ctBorderStyle,
@@ -148,10 +168,10 @@ const darkThemeOverrides: ThemeInput = {
           ':focus-visible': {
             background: v.ctItemBackgroundHover,
             borderColor: v.ctItemBorderColorFocus,
-            color: v.ctItemColorFocus
-          }
-        })
-      })
+            color: v.ctItemColorFocus,
+          },
+        }),
+      }),
     },
 
     ToolbarItem: {
@@ -189,17 +209,17 @@ const darkThemeOverrides: ThemeInput = {
                   ':focus-visible': {
                     borderStyle: v.ctBorderStyle,
                     borderWidth: v.ctBorderWidth,
-                    borderColor: v.ctItemBorderColorFocus
-                  }
-                }
+                    borderColor: v.ctItemBorderColorFocus,
+                  },
+                },
               }),
 
             ...(v.isCtItemDanger && {
-              background: v.ctItemDangerBackground
+              background: v.ctItemDangerBackground,
             }),
 
             ...(v.isCtItemPrimary && {
-              background: v.ctItemPrimaryBackground
+              background: v.ctItemPrimaryBackground,
             }),
 
             ':hover': {
@@ -208,13 +228,13 @@ const darkThemeOverrides: ThemeInput = {
 
               ...(v.isCtItemDanger && {
                 color: v.ctItemDangerColorHover,
-                background: v.ctItemDangerBackgroundHover
+                background: v.ctItemDangerBackgroundHover,
               }),
 
               ...(v.isCtItemPrimary && {
                 color: v.ctItemPrimaryColorHover,
-                background: v.ctItemPrimaryBackgroundHover
-              })
+                background: v.ctItemPrimaryBackgroundHover,
+              }),
             },
 
             ...(v.isCtItemWithNotification && {
@@ -225,8 +245,8 @@ const darkThemeOverrides: ThemeInput = {
                 height: v.ctItemNotificationSize,
                 borderRadius: '50%',
                 background: v.ctItemNotificationBackgroundColor,
-                transform: 'translateX(100%) translateY(-100%)'
-              }
+                transform: 'translateX(100%) translateY(-100%)',
+              },
             }),
 
             ':focus-visible': {
@@ -236,42 +256,42 @@ const darkThemeOverrides: ThemeInput = {
 
               ...(v.isCtItemDanger && {
                 color: v.ctItemDangerColorHover,
-                background: v.ctItemDangerBackgroundHover
+                background: v.ctItemDangerBackgroundHover,
               }),
 
               ...(v.isCtItemPrimary && {
                 color: v.ctItemPrimaryColorHover,
-                background: v.ctItemPrimaryBackgroundHover
-              })
-            }
+                background: v.ctItemPrimaryBackgroundHover,
+              }),
+            },
           }),
 
           ...(v.isCtItemIconNoFill && {
             '& .ui-icon__filled': {
-              display: 'none'
+              display: 'none',
             },
             '& .ui-icon__outline': {
-              display: 'block'
+              display: 'block',
             },
             '&:hover .ui-icon__filled': {
-              display: 'none'
+              display: 'none',
             },
             '&:hover .ui-icon__outline': {
-              display: 'block'
-            }
-          })
+              display: 'block',
+            },
+          }),
         };
-      }
+      },
     },
 
     ToolbarDivider: {
       root: ({ props: p, variables: v }: ComponentStyleFunctionParam<ToolbarDividerProps, CustomToolbarVariables>) => ({
         ...(v.isCt && {
-          margin: 0
-        })
-      })
-    }
-  }
+          margin: 0,
+        }),
+      }),
+    },
+  },
 };
 
 const tooltips = {
@@ -286,7 +306,7 @@ const tooltips = {
   chat: 'Show conversation',
   addParticipants: 'Add participants',
   pptNext: 'Navigate forward',
-  pptPrevious: 'Navigate back'
+  pptPrevious: 'Navigate back',
 };
 
 interface CustomToolbarProps {
@@ -316,7 +336,7 @@ interface CustomToolbarProps {
 }
 
 type CustomToolbarLayout = (
-  props: CustomToolbarProps
+  props: CustomToolbarProps,
 ) => ShorthandCollection<ToolbarItemProps | ToolbarCustomItemProps, ToolbarItemShorthandKinds>;
 
 const commonLayout: CustomToolbarLayout = props =>
@@ -326,7 +346,7 @@ const commonLayout: CustomToolbarLayout = props =>
       kind: 'custom' as ToolbarItemShorthandKinds,
       focusable: true,
       content: <Status state="error" title="Recording" variables={{ isRecordingIndicator: true }} />,
-      variables: { isCtItemPrimary: true, isCtItemIndicator: true }
+      variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
     {
@@ -334,7 +354,7 @@ const commonLayout: CustomToolbarLayout = props =>
       kind: 'custom' as ToolbarItemShorthandKinds,
       focusable: true,
       content: <Text>10:45</Text>,
-      variables: { isCtItemPrimary: true, isCtItemIndicator: true }
+      variables: { isCtItemPrimary: true, isCtItemIndicator: true },
     },
 
     { key: 'timer-divider', kind: 'divider' as ToolbarItemShorthandKinds },
@@ -342,89 +362,71 @@ const commonLayout: CustomToolbarLayout = props =>
     {
       tooltip: props.cameraActive ? tooltips.videoOn : tooltips.videoOff,
       active: props.cameraActive,
-      icon: {
-        name: props.cameraActive ? 'call-video' : 'call-video-off',
-        size: 'large' as SizeValue
-      },
+      icon: props.cameraActive ? <CallVideoIcon size="large" /> : <CallVideoOffIcon size="large" />,
       key: 'camera',
       onClick: () => _.invoke(props, 'onCameraChange', !props.cameraActive),
-      variables: { isCtItemPrimary: true }
+      variables: { isCtItemPrimary: true },
     },
 
     {
       tooltip: props.micActive ? tooltips.micOn : tooltips.micOff,
       active: props.micActive,
-      icon: {
-        name: props.micActive ? 'mic' : 'mic-off',
-        size: 'large' as SizeValue
-      },
+      icon: props.micActive ? <MicIcon size="large" /> : <MicOffIcon size="large" />,
       key: 'mic',
       onClick: () => _.invoke(props, 'onMicChange', !props.micActive),
-      variables: { isCtItemPrimary: true }
+      variables: { isCtItemPrimary: true },
     },
 
     {
       tooltip: props.screenShareActive ? tooltips.shareStop : tooltips.share,
       active: props.screenShareActive,
-      icon: {
-        name: props.screenShareActive ? 'call-control-close-tray' : 'call-control-present-new',
-        size: 'large' as SizeValue
-      },
+      icon: props.screenShareActive ? (
+        <CallControlCloseTrayIcon size="large" />
+      ) : (
+        <CallControlPresentNewIcon size="large" />
+      ),
       key: 'screen-share',
       onClick: () => _.invoke(props, 'onScreenShareChange', !props.screenShareActive),
-      variables: { isCtItemPrimary: true }
+      variables: { isCtItemPrimary: true },
     },
 
     {
       tooltip: tooltips.moreActions,
       key: 'more',
-      icon: {
-        name: 'more',
-        size: 'large' as SizeValue
-      },
+      icon: <MoreIcon size="large" />,
       onClick: () => _.invoke(props, 'onMoreClick'),
-      variables: { isCtItemPrimary: true }
-    }
+      variables: { isCtItemPrimary: true },
+    },
   ].filter(Boolean);
 
 const sidebarButtons: CustomToolbarLayout = props => [
   {
     tooltip: tooltips.chat,
     active: props.sidebarSelected === 'chat',
-    icon: {
-      name: 'chat',
-      outline: true,
-      size: 'large' as SizeValue
-    },
+    icon: <ChatIcon outline size="large" />,
     key: 'chat',
     onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'chat' ? false : 'chat'),
-    variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true }
+    variables: { isCtItemWithNotification: props.chatHasNotification, isCtItemIconNoFill: true },
   },
   {
     tooltip: tooltips.addParticipants,
     active: props.sidebarSelected === 'participant-add',
-    icon: {
-      name: 'participant-add',
-      outline: true,
-      size: 'large' as SizeValue
-    },
+    icon: <ParticipantAddIcon outline size="large" />,
     key: 'participant-add',
-    onClick: () => _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
-    variables: { isCtItemIconNoFill: true }
-  }
+    onClick: () =>
+      _.invoke(props, 'onSidebarChange', props.sidebarSelected === 'participant-add' ? false : 'participant-add'),
+    variables: { isCtItemIconNoFill: true },
+  },
 ];
 
 const layoutItems: ShorthandValue<ToolbarItemProps> = {
   endCall: props => ({
     tooltip: tooltips.endCall,
     key: 'end-call',
-    icon: {
-      name: 'call-end',
-      size: 'large'
-    },
+    icon: <CallEndIcon size="large" />,
     onClick: () => _.invoke(props, 'onEndCallClick'),
-    variables: { isCtItemDanger: true }
-  })
+    variables: { isCtItemDanger: true },
+  }),
 };
 
 const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
@@ -437,10 +439,10 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
     {
       key: 'stop-sharing',
       kind: 'custom',
-      content: <Button content="Stop Sharing" />
+      content: <Button content="Stop Sharing" />,
     },
 
-    layoutItems.endCall(props)
+    layoutItems.endCall(props),
   ],
 
   'powerpoint-presenter': props => [
@@ -451,46 +453,35 @@ const layouts: Record<CustomToolbarProps['layout'], CustomToolbarLayout> = {
     {
       tooltip: tooltips.shareStop,
       key: 'stop-sharing',
-      icon: {
-        name: 'call-control-stop-presenting-new',
-        size: 'large'
-      },
-      onClick: () => _.invoke(props, 'onStopSharingClick')
+      icon: <CallControlStopPresentingNewIcon size="large" />,
+      onClick: () => _.invoke(props, 'onStopSharingClick'),
     },
 
     {
       'aria-label': `${props.pptSlide} ${tooltips.pptPrevious}`,
       tooltip: tooltips.pptPrevious,
       key: 'ppt-prev',
-      icon: {
-        name: 'chevron-down',
-        rotate: 90,
-        outline: true
-      },
-      onClick: () => _.invoke(props, 'onPptPrevClick')
+      icon: <ChevronDownIcon rotate={90} outline />,
+      onClick: () => _.invoke(props, 'onPptPrevClick'),
     },
 
     {
       key: 'ppt-slide-number',
       kind: 'custom',
       fitted: true,
-      content: <Text size="small">{props.pptSlide}</Text>
+      content: <Text size="small">{props.pptSlide}</Text>,
     },
 
     {
       'aria-label': `${props.pptSlide} ${tooltips.pptNext}`,
       tooltip: tooltips.pptNext,
       key: 'ppt-next',
-      icon: {
-        name: 'chevron-down',
-        rotate: -90,
-        outline: true
-      },
-      onClick: () => _.invoke(props, 'onPptNextClick')
+      icon: <ChevronDownIcon rotate={-90} outline />,
+      onClick: () => _.invoke(props, 'onPptNextClick'),
     },
 
-    layoutItems.endCall(props)
-  ]
+    layoutItems.endCall(props),
+  ],
 };
 
 const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
@@ -502,9 +493,16 @@ const CustomToolbar: React.FunctionComponent<CustomToolbarProps> = props => {
       ? (ToolbarItem, props) => {
           const { tooltip, key, ...rest } = props; // Adding tooltipAsLabelBehavior as the ToolbarItems contains only icon
 
-          return <Tooltip key={key} trigger={<ToolbarItem {...rest} />} accessibility={tooltipAsLabelBehavior} content={tooltip} />;
+          return (
+            <Tooltip
+              key={key}
+              trigger={<ToolbarItem {...rest} />}
+              accessibility={tooltipAsLabelBehavior}
+              content={tooltip}
+            />
+          );
         }
-      : null
+      : null,
   }));
 
   return <Toolbar variables={{ isCt: true }} items={items} />;

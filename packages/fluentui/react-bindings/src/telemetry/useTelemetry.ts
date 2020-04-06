@@ -22,7 +22,7 @@ const useTelemetry = (displayName: string, telemetry: Telemetry | undefined): Us
           count: 1,
           msTotal: duration,
           msMin: duration,
-          msMax: duration
+          msMax: duration,
         };
       }
     }

@@ -8,7 +8,7 @@ export const baseCodeStyle: IRawStyle = {
   fontFamily: codeFontFamily,
   fontSize: FontSizes.size14,
   background: NeutralColors.gray20,
-  color: NeutralColors.gray160
+  color: NeutralColors.gray160,
 };
 
 export const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = props => {
@@ -23,11 +23,11 @@ export const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyle
         selectors: {
           code: {
             fontFamily: codeFontFamily,
-            lineHeight: '1.6'
-          }
-        }
+            lineHeight: '1.6',
+          },
+        },
       },
-      props.className
-    ]
+      props.className,
+    ],
   };
 };

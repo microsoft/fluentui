@@ -16,19 +16,19 @@ const hierarchicalTreeBehavior: Accessibility<TreeBehaviorProps> = props => {
       root: {
         ...subtreeBehaviorData.attributes.root,
         role: 'tree',
-        'aria-labelledby': props['aria-labelledby']
-      }
+        'aria-labelledby': props['aria-labelledby'],
+      },
     },
     keyActions: {
       root: {
-        ...subtreeBehaviorData.keyActions.root
-      }
+        ...subtreeBehaviorData.keyActions.root,
+      },
     },
     focusZone: {
       props: {
-        direction: FocusZoneDirection.vertical
-      }
-    }
+        direction: FocusZoneDirection.vertical,
+      },
+    },
   };
 };
 

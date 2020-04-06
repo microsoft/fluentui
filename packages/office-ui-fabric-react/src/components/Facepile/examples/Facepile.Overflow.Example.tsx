@@ -7,18 +7,18 @@ import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const styles = mergeStyleSets({
   container: {
-    maxWidth: 300
+    maxWidth: 300,
   },
   control: {
-    paddingTop: 20
+    paddingTop: 20,
   },
   slider: {
-    margin: '10px 0'
+    margin: '10px 0',
   },
   dropdown: {
     paddingTop: 0,
-    margin: '10px 0'
-  }
+    margin: '10px 0',
+  },
 });
 
 const facepileProps: IFacepileProps = {
@@ -27,10 +27,10 @@ const facepileProps: IFacepileProps = {
   overflowButtonType: OverflowButtonType.downArrow,
   overflowButtonProps: {
     ariaLabel: 'More users',
-    onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked')
+    onClick: (ev: React.MouseEvent<HTMLButtonElement>) => alert('overflow icon clicked'),
   },
   ariaDescription: 'To move through the items use left and right arrow keys.',
-  ariaLabel: 'Example list of Facepile personas'
+  ariaLabel: 'Example list of Facepile personas',
 };
 
 export interface IFacepileOverflowExampleState {
@@ -44,7 +44,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
 
     this.state = {
       displayedPersonas: 5,
-      overflowButtonType: OverflowButtonType.none
+      overflowButtonType: OverflowButtonType.none,
     };
   }
 
@@ -75,7 +75,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
               { key: OverflowButtonType.none, text: OverflowButtonType[OverflowButtonType.none] },
               { key: OverflowButtonType.descriptive, text: OverflowButtonType[OverflowButtonType.descriptive] },
               { key: OverflowButtonType.downArrow, text: OverflowButtonType[OverflowButtonType.downArrow] },
-              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] }
+              { key: OverflowButtonType.more, text: OverflowButtonType[OverflowButtonType.more] },
             ]}
             onChange={this._onChangeType}
           />
@@ -89,7 +89,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
       (prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
         prevState.displayedPersonas = value;
         return prevState;
-      }
+      },
     );
   };
 
@@ -98,7 +98,7 @@ export class FacepileOverflowExample extends React.Component<{}, IFacepileOverfl
       (prevState: IFacepileOverflowExampleState): IFacepileOverflowExampleState => {
         prevState.overflowButtonType = value.key as OverflowButtonType;
         return prevState;
-      }
+      },
     );
   };
 }

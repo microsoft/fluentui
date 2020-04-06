@@ -1,4 +1,4 @@
-import { Button } from '@fluentui/react';
+import { Button } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ButtonMinimalPerf = () => <Button />;

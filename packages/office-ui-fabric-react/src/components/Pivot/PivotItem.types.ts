@@ -23,7 +23,8 @@ export interface IPivotItemProps extends React.HTMLAttributes<HTMLDivElement> {
   headerText?: string;
 
   /**
-   * Props for the header command button supporting native props - data-* and aria-* - for each pivot header/link element
+   * Props for the header command button. This provides a way to pass in native props, such as data-* and aria-*,
+   * for each pivot header/link element.
    */
   headerButtonProps?: { [key: string]: string | number | boolean };
 

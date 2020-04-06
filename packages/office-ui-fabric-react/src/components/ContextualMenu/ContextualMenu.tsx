@@ -16,10 +16,10 @@ LocalContextualMenu = styled<IContextualMenuProps, IContextualMenuStyleProps, IC
   getStyles,
   () => {
     return {
-      onRenderSubMenu
+      onRenderSubMenu,
     };
   },
-  { scope: 'ContextualMenu' }
+  { scope: 'ContextualMenu' },
 );
 
 /**

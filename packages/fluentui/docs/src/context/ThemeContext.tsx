@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { themes } from '@fluentui/react';
+import { themes } from '@fluentui/react-northstar';
 
 type ThemeName = keyof typeof themes;
 type ThemeOption = { text: string; value: ThemeName };
@@ -25,7 +25,7 @@ export type ThemeContextData = {
 export const themeContextDefaults: ThemeContextData = {
   themeName: 'teams',
   themeOptions: getThemeOptions(),
-  changeTheme: () => {}
+  changeTheme: () => {},
 };
 
 export const ThemeContext = React.createContext<ThemeContextData>(themeContextDefaults);

@@ -26,13 +26,13 @@ const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
         'aria-expanded': props.open || undefined,
         'aria-haspopup': props.contextMenu ? undefined : 'true',
         id: props.triggerId,
-        ...(!props.contextMenu && props.open && { tabIndex: -1 })
+        ...(!props.contextMenu && props.open && { tabIndex: -1 }),
       },
 
       menu: {
         'aria-labelledby': props.triggerId,
-        id: props.menuId
-      }
+        id: props.menuId,
+      },
     },
     keyActions: {
       root: {
@@ -41,20 +41,20 @@ const menuButtonBehavior: Accessibility<MenuButtonBehaviorProps> = props => {
               closeMenu: {
                 keyCombinations: [
                   { keyCode: keyboardKey.Tab, shiftKey: false },
-                  { keyCode: keyboardKey.Tab, shiftKey: true }
-                ]
-              }
+                  { keyCode: keyboardKey.Tab, shiftKey: true },
+                ],
+              },
             }
           : _.includes(props.on, 'click') && {
               openAndFocusFirst: {
-                keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+                keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
               },
               openAndFocusLast: {
-                keyCombinations: [{ keyCode: keyboardKey.ArrowUp }]
-              }
-            })
-      }
-    }
+                keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
+              },
+            }),
+      },
+    },
   });
 };
 

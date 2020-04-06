@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { classNamesFunction, initializeComponentRef, EventGroup, KeyCodes, getWindow, warnDeprecations } from '../../../Utilities';
+import {
+  classNamesFunction,
+  initializeComponentRef,
+  EventGroup,
+  KeyCodes,
+  getWindow,
+  warnDeprecations,
+} from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 import { clamp } from '../../../utilities/color/clamp';
 
@@ -16,7 +23,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   public static defaultProps: Partial<IColorSliderProps> = {
     minValue: 0,
     maxValue: 100,
-    value: 0
+    value: 0,
   };
 
   private _events: EventGroup;
@@ -30,11 +37,11 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     warnDeprecations('ColorSlider', props, {
       thumbColor: 'styles.sliderThumb',
-      overlayStyle: 'overlayColor'
+      overlayStyle: 'overlayColor',
     });
 
     this.state = {
-      currentValue: props.value || 0
+      currentValue: props.value || 0,
     };
   }
 
@@ -55,6 +62,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   public render(): JSX.Element {
+    // tslint:disable-next-line:deprecation
     const { isAlpha, minValue, maxValue, overlayStyle, overlayColor, theme, className, styles } = this.props;
     const { ariaLabel = isAlpha ? 'Alpha' : 'Hue' } = this.props;
     const currentValue = this.value;
@@ -62,7 +70,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isAlpha
+      isAlpha,
     });
 
     const currentPercentage = (100 * (currentValue! - minValue!)) / (maxValue! - minValue!);
@@ -83,11 +91,15 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
         aria-label={ariaLabel}
         data-is-focusable={true}
       >
-        {!!(overlayStyle || overlayColor) && (
+        {!!(overlayColor || overlayStyle) && (
           <div
             className={classNames.sliderOverlay}
             // this isn't included in getStyles because it may change frequently
-            style={overlayStyle || { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }}
+            style={
+              overlayColor !== undefined
+                ? { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }
+                : overlayStyle
+            }
           />
         )}
         <div className={classNames.sliderThumb} style={{ left: currentPercentage + '%' }} />
@@ -167,7 +179,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
 
     if (!ev.defaultPrevented) {
       this.setState({
-        currentValue: newValue
+        currentValue: newValue,
       });
       ev.preventDefault();
     }

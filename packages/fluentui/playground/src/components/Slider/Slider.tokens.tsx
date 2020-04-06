@@ -52,7 +52,7 @@ const SliderTokens = {
   trackColorDisabled: 'rgb(161, 159, 157)',
   trackColorHovered: 'rgb(0, 120, 212)',
   trackColorPressed: { dependsOn: 'trackColorHovered' },
-  trackSize: 4
+  trackSize: 4,
 };
 
 export default SliderTokens;

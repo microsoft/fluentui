@@ -7,7 +7,7 @@ let _scrollbarWidth: number;
 let _bodyScrollDisabledCount = 0;
 
 const DisabledScrollClassName = mergeStyles({
-  overflow: 'hidden !important' as 'hidden'
+  overflow: 'hidden !important' as 'hidden',
 });
 
 /**

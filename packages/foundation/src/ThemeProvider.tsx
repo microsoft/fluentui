@@ -16,9 +16,9 @@ export interface IThemeProviderProps {
 export const ThemeProvider: React.FunctionComponent<IThemeProviderProps> = (props: IThemeProviderProps) => {
   const { scheme, theme, ...rest } = props;
 
-  // TODO: consider merging implementation with theme-proto, which only stores a reference / scheme name to theme in context
-  //        and uses quick global store accessor to trigger change by passing in theme object as child and triggering re-render.
-  //        (perf benefits need verification)
+  // TODO: consider merging implementation with theme-proto, which only stores a reference / scheme name to theme
+  //   in context and uses quick global store accessor to trigger change by passing in theme object as child and
+  //   triggering re-render. (perf benefits need verification)
   // tslint:disable-next-line:typedef
   const contextTransform: ICustomizerProps['contextTransform'] = context => {
     return getThemedContext(context, scheme, theme);

@@ -3,7 +3,7 @@ import { listItemBehavior, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibilit
 describe('ListItemBehavior.ts', () => {
   test('use SelectableListItemBehavior if selectable prop is defined', () => {
     const property = {
-      selectable: true
+      selectable: true,
     };
     const expectedResult = listItemBehavior(property);
     expect(expectedResult.attributes.root.role).toEqual('option');
@@ -11,7 +11,7 @@ describe('ListItemBehavior.ts', () => {
 
   test('use NavigableListItemBehavior if navigable prop is defined', () => {
     const property = {
-      navigable: true
+      navigable: true,
     };
     const expectedResult = listItemBehavior(property);
     expect(expectedResult.attributes.root.role).toEqual('menuitem');

@@ -81,7 +81,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -186,7 +185,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -261,7 +259,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -366,7 +363,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"
@@ -441,7 +437,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -546,7 +541,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Upload"
                 role="presentation"
@@ -621,7 +615,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -726,7 +719,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -801,7 +793,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -906,7 +897,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"
@@ -981,7 +971,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -1086,7 +1075,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Upload"
                 role="presentation"
@@ -1161,7 +1149,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -1266,7 +1253,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -1341,7 +1327,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -1446,7 +1431,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"
@@ -1521,7 +1505,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -1626,7 +1609,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Upload"
                 role="presentation"
@@ -1701,7 +1683,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -1806,7 +1787,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -1881,7 +1861,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -1986,7 +1965,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"
@@ -2061,7 +2039,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -2166,7 +2143,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Upload"
                 role="presentation"
@@ -2241,7 +2217,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -2346,7 +2321,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -2421,7 +2395,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -2526,7 +2499,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"
@@ -2601,7 +2573,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -2706,7 +2677,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Upload"
                 role="presentation"
@@ -2781,7 +2751,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -2886,7 +2855,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -2961,7 +2929,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -3066,7 +3033,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"
@@ -3141,7 +3107,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -3246,7 +3211,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Upload"
                 role="presentation"
@@ -3321,7 +3285,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -3426,7 +3389,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Add"
                 role="presentation"
@@ -3501,7 +3463,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   width: 100px;
                 }
                 &::-moz-focus-inner {
@@ -3606,7 +3567,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                       margin-right: 4px;
                       margin-top: 0;
                       text-align: center;
-                      vertical-align: middle;
                     }
                 data-icon-name="Share"
                 role="presentation"

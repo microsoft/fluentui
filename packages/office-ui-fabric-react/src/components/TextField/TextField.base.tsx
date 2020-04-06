@@ -15,7 +15,7 @@ import {
   textAreaProperties,
   warn,
   warnControlledUsage,
-  warnMutuallyExclusive
+  warnMutuallyExclusive,
 } from '../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
@@ -48,11 +48,12 @@ export interface ITextFieldSnapshot {
 const DEFAULT_STATE_VALUE = '';
 const COMPONENT_NAME = 'TextField';
 
-export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot> implements ITextField {
+export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot>
+  implements ITextField {
   public static defaultProps: ITextFieldProps = {
     resizable: true,
     deferredValidationTime: 200,
-    validateOnLoad: true
+    validateOnLoad: true,
   };
 
   /** Fallback ID if none is provided in props. Access proper value via `this._id`. */
@@ -77,7 +78,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive(COMPONENT_NAME, props, {
-        errorMessage: 'onGetErrorMessage'
+        errorMessage: 'onGetErrorMessage',
       });
     }
 
@@ -95,7 +96,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     this.state = {
       uncontrolledValue: this._isControlled ? undefined : defaultValue,
       isFocused: false,
-      errorMessage: ''
+      errorMessage: '',
     };
 
     this._delayedValidate = this._async.debounce(this._validate, this.props.deferredValidationTime);
@@ -123,11 +124,15 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   public getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null {
     return {
-      selection: [this.selectionStart, this.selectionEnd]
+      selection: [this.selectionStart, this.selectionEnd],
     };
   }
 
-  public componentDidUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState, snapshot: ITextFieldSnapshot): void {
+  public componentDidUpdate(
+    prevProps: ITextFieldProps,
+    prevState: ITextFieldState,
+    snapshot: ITextFieldSnapshot,
+  ): void {
     const props = this.props;
     const { selection = [null, null] } = snapshot || {};
     const [start, end] = selection;
@@ -188,7 +193,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       onRenderPrefix = this._onRenderPrefix,
       onRenderSuffix = this._onRenderSuffix,
       onRenderLabel = this._onRenderLabel,
-      onRenderDescription = this._onRenderDescription
+      onRenderDescription = this._onRenderDescription,
     } = this.props;
     const { isFocused } = this.state;
     const errorMessage = this._errorMessage;
@@ -207,7 +212,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       hasIcon: !!iconProps,
       underlined,
       inputClassName,
-      autoAdjustHeight
+      autoAdjustHeight,
     });
 
     return (
@@ -323,14 +328,14 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       valueProp: 'value',
       defaultValueProp: 'defaultValue',
       onChangeProp: 'onChange',
-      readOnlyProp: 'readOnly'
+      readOnlyProp: 'readOnly',
     });
 
     if (this.props.value === null && !this._hasWarnedNullValue) {
       this._hasWarnedNullValue = true;
       warn(
         `Warning: 'value' prop on '${COMPONENT_NAME}' should not be null. Consider using an ` +
-          'empty string to clear the component or undefined to indicate an uncontrolled component.'
+          'empty string to clear the component or undefined to indicate an uncontrolled component.',
       );
     }
   }
@@ -423,9 +428,11 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(this.props, textAreaProperties, [
-      'defaultValue'
-    ]);
+    const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
+      this.props,
+      textAreaProperties,
+      ['defaultValue'],
+    );
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <textarea
@@ -448,7 +455,9 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
+    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+      'defaultValue',
+    ]);
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <input
@@ -474,8 +483,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _onInputChange = (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>): void => {
     // Previously, we needed to call both onInput and onChange due to some weird IE/React issues,
     // which have *probably* been fixed now:
-    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/744 (likely fixed)
-    // - https://github.com/OfficeDev/office-ui-fabric-react/issues/824 (confirmed fixed)
+    // - https://github.com/microsoft/fluentui/issues/744 (likely fixed)
+    // - https://github.com/microsoft/fluentui/issues/824 (confirmed fixed)
 
     // TODO (Fabric 8?) - Switch to calling only onChange. This switch is pretty disruptive for
     // tests (ours and maybe consumers' too), so it seemed best to do the switch in a major bump.
@@ -512,7 +521,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
         if (!isSameValue && onChange) {
           onChange(event, value);
         }
-      }
+      },
     );
   };
 

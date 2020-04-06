@@ -41,6 +41,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
+  // tslint:disable-next-line:deprecation
   onDismiss?: (ev?: React.MouseEvent<HTMLElement | BaseButton | Button>) => any;
 
   /**
@@ -221,5 +222,5 @@ export enum MessageBarType {
    * Deprecated at v0.48.0, to be removed at \>= v1.0.0. Use `blocked` instead.
    * @deprecated Use `blocked` instead.
    */
-  remove = 90000
+  remove = 90000,
 }

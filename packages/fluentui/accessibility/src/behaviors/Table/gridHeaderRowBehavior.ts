@@ -18,26 +18,26 @@ const gridHeaderRowBehavior: Accessibility = props => ({
   attributes: {
     root: {
       [IS_FOCUSABLE_ATTRIBUTE]: true,
-      role: 'row'
-    }
+      role: 'row',
+    },
   },
   focusZone: {
     props: {
       direction: FocusZoneDirection.horizontal,
       shouldFocusInnerElementWhenReceivedFocus: true,
-      shouldResetActiveElementWhenTabFromZone: true
-    }
+      shouldResetActiveElementWhenTabFromZone: true,
+    },
   },
   keyActions: {
     root: {
       unsetRowTabbable: {
-        keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }]
-      }
-    }
+        keyCombinations: [{ keyCode: keyboardKey.Tab, shiftKey: true }],
+      },
+    },
   },
   childBehaviors: {
-    cell: gridHeaderCellBehavior
-  }
+    cell: gridHeaderCellBehavior,
+  },
 });
 
 export default gridHeaderRowBehavior;

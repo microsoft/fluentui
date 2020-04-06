@@ -46,7 +46,7 @@ export const enum TilesGridMode {
   /**
    * Items in the row are stretched horizontally only if necessary to fill the row.
    */
-  fillHorizontal
+  fillHorizontal,
 }
 
 export interface ITilesGridSegment<TItem> {
@@ -104,7 +104,10 @@ export interface ITilesGridSegment<TItem> {
 
 export { ISize as ITileSize };
 
-export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
+export interface ITilesListProps<TItem>
+  extends IBaseProps,
+    React.Props<TilesList<TItem>>, // tslint:disable-line:deprecation
+    React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.

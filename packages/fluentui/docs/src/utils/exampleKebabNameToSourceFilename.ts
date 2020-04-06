@@ -10,7 +10,8 @@ const exampleKebabNameToSourceFilename = (exampleKebabName: string) => {
     .replace(/ /g, '')
     .replace(/Shorthand$/, '.shorthand')
     .replace(/Rtl$/, '.rtl')
-    .replace(/Perf$/, '.perf')}.source.json`;
+    .replace(/Perf$/, '.perf')
+    .replace(/Bsize$/, '.bsize')}.source.json`;
 };
 
 export default exampleKebabNameToSourceFilename;

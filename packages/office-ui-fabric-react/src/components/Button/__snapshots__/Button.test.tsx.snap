@@ -29,7 +29,6 @@ exports[`Button renders ActionButton correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -155,7 +154,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -258,7 +256,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="Add"
       role="presentation"
@@ -322,7 +319,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
@@ -370,7 +366,6 @@ exports[`Button renders CompoundButton correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -520,7 +515,6 @@ exports[`Button renders DefaultButton correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -640,7 +634,6 @@ exports[`Button renders IconButton correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
         width: 32px;
       }
       &::-moz-focus-inner {
@@ -730,7 +723,6 @@ exports[`Button renders IconButton correctly 1`] = `
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="Emoji2"
       role="presentation"
@@ -776,7 +768,6 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;

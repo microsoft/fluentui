@@ -14,7 +14,7 @@ describe('NestingAuto', () => {
           .childAt(0)
           .childAt(0)
           .childAt(0)
-          .is('NestingChild')
+          .is('NestingChild'),
       ).toBe(true);
     });
 
@@ -25,14 +25,14 @@ describe('NestingAuto', () => {
 
       expect(children).toBeCalledWith(
         expect.any(Function),
-        expect.objectContaining({ current: expect.objectContaining({ tagName: 'DIV' }) })
+        expect.objectContaining({ current: expect.objectContaining({ tagName: 'DIV' }) }),
       );
       expect(getRefs()).toEqual(
         expect.arrayContaining([
           expect.objectContaining({
-            current: expect.objectContaining({ tagName: 'DIV' })
-          })
-        ])
+            current: expect.objectContaining({ tagName: 'DIV' }),
+          }),
+        ]),
       );
     });
   });

@@ -2,7 +2,7 @@ export enum FontFormatting {
   Paragraph = 'Paragraph',
   Heading1 = 'Heading 1',
   Heading2 = 'Heading 2',
-  Heading3 = 'Heading 3'
+  Heading3 = 'Heading 3',
 }
 
 export type EditorToolbarState = {
@@ -63,7 +63,7 @@ export const initialState: EditorToolbarState = {
   //
   important: false,
   //
-  more: false
+  more: false,
 };
 
 export function editorToolbarReducer(state: EditorToolbarState, action: EditorToolbarAction): EditorToolbarState {

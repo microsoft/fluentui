@@ -1,11 +1,16 @@
-import { Accessibility, AccessibilityAttributes, AccessibilityAttributesBySlot, AccessibilityDefinition } from '@fluentui/accessibility';
+import {
+  Accessibility,
+  AccessibilityAttributes,
+  AccessibilityAttributesBySlot,
+  AccessibilityDefinition,
+} from '@fluentui/accessibility';
 
 import getKeyDownHandlers from './getKeyDownHandlers';
 import { AccessibilityActionHandlers, ReactAccessibilityBehavior } from './types';
 
 const emptyBehavior: ReactAccessibilityBehavior = {
   attributes: {},
-  keyHandlers: {}
+  keyHandlers: {},
 };
 
 const getAccessibility = <Props extends Record<string, any>>(
@@ -13,7 +18,7 @@ const getAccessibility = <Props extends Record<string, any>>(
   behavior: Accessibility<Props>,
   behaviorProps: Props,
   isRtlEnabled: boolean,
-  actionHandlers?: AccessibilityActionHandlers
+  actionHandlers?: AccessibilityActionHandlers,
 ): ReactAccessibilityBehavior => {
   if (behavior === null || behavior === undefined) {
     return emptyBehavior;
@@ -21,7 +26,9 @@ const getAccessibility = <Props extends Record<string, any>>(
 
   const definition: AccessibilityDefinition = behavior(behaviorProps);
   const keyHandlers =
-    actionHandlers && definition.keyActions ? getKeyDownHandlers(actionHandlers, definition.keyActions, isRtlEnabled) : {};
+    actionHandlers && definition.keyActions
+      ? getKeyDownHandlers(actionHandlers, definition.keyActions, isRtlEnabled)
+      : {};
 
   if (process.env.NODE_ENV !== 'production') {
     // For the non-production builds we enable the runtime accessibility attributes validator.
@@ -43,7 +50,7 @@ const getAccessibility = <Props extends Record<string, any>>(
   return {
     ...emptyBehavior,
     ...definition,
-    keyHandlers
+    keyHandlers,
   };
 };
 

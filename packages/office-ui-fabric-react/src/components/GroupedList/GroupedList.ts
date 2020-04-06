@@ -10,5 +10,5 @@ export const GroupedList: React.FunctionComponent<IGroupedListProps> = styled<
   IGroupedListStyleProps,
   IGroupedListStyles
 >(GroupedListBase, getStyles, undefined, {
-  scope: 'GroupedList'
+  scope: 'GroupedList',
 });

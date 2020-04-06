@@ -1,6 +1,13 @@
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
 import { ICalloutContentStyleProps } from '../../Callout';
-import { AnimationVariables, FontWeights, getGlobalClassNames, GlobalClassNames, IStyle, keyframes } from '../../Styling';
+import {
+  AnimationVariables,
+  FontWeights,
+  getGlobalClassNames,
+  GlobalClassNames,
+  IStyle,
+  keyframes,
+} from '../../Styling';
 
 const globalClassNames = {
   root: 'ms-TeachingBubble',
@@ -22,19 +29,19 @@ const globalClassNames = {
   // TODO: Button global class name usage should be converted to a styles function once
   //        Button supports JS styling, which means these button names can be removed.
   button: 'ms-Button',
-  buttonLabel: 'ms-Button-label'
+  buttonLabel: 'ms-Button-label',
 };
 
 const opacityFadeIn: string = keyframes({
   '0%': {
     opacity: 0,
     animationTimingFunction: AnimationVariables.easeFunction1,
-    transform: 'scale3d(.90,.90,.90)'
+    transform: 'scale3d(.90,.90,.90)',
   },
   '100%': {
     opacity: 1,
-    transform: 'scale3d(1,1,1)'
-  }
+    transform: 'scale3d(1,1,1)',
+  },
 });
 
 const rootStyle = (isWide?: boolean, calloutProps?: ICalloutContentStyleProps): IStyle[] => {
@@ -50,25 +57,25 @@ const rootStyle = (isWide?: boolean, calloutProps?: ICalloutContentStyleProps): 
       animationName: `${opacityFadeIn}`,
       animationDuration: '300ms',
       animationTimingFunction: 'linear',
-      animationFillMode: 'both'
+      animationFillMode: 'both',
     },
     isWide && {
-      maxWidth: calloutMaxWidth || 456
-    }
+      maxWidth: calloutMaxWidth || 456,
+    },
   ];
 };
 
 const headerStyle = (
   classNames: Partial<GlobalClassNames<typeof globalClassNames>>,
   hasCondensedHeadline?: boolean,
-  hasSmallHeadline?: boolean
+  hasSmallHeadline?: boolean,
 ): IStyle[] => {
   if (hasCondensedHeadline) {
     return [
       classNames.headerIsCondensed,
       {
-        marginBottom: 14
-      }
+        marginBottom: 14,
+      },
     ];
   }
 
@@ -78,10 +85,10 @@ const headerStyle = (
     {
       selectors: {
         ':not(:last-child)': {
-          marginBottom: 14
-        }
-      }
-    }
+          marginBottom: 14,
+        },
+      },
+    },
   ];
 };
 
@@ -95,7 +102,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     primaryButtonClassName,
     secondaryButtonClassName,
     theme,
-    calloutProps = { className: undefined, theme }
+    calloutProps = { className: undefined, theme },
   } = props;
   const hasLargeHeadline: boolean = !hasCondensedHeadline && !hasSmallHeadline;
   const { palette, semanticColors, fonts } = theme;
@@ -109,16 +116,16 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       {
         selectors: {
           ':not(:last-child)': {
-            marginBottom: 20
-          }
-        }
-      }
+            marginBottom: 20,
+          },
+        },
+      },
     ],
     bodyContent: [
       classNames.bodyContent,
       {
-        padding: '20px 24px 20px 24px'
-      }
+        padding: '20px 24px 20px 24px',
+      },
     ],
     closeButton: [
       classNames.closeButton,
@@ -133,24 +140,24 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           ':hover': {
             background: palette.themeDarkAlt,
-            color: palette.white
+            color: palette.white,
           },
           ':active': {
             background: palette.themeDark,
-            color: palette.white
+            color: palette.white,
           },
           ':focus': {
-            border: `1px solid ${semanticColors.variantBorder}`
-          }
-        }
-      }
+            border: `1px solid ${semanticColors.variantBorder}`,
+          },
+        },
+      },
     ],
     content: [
       classNames.content,
       ...rootStyle(isWide),
       isWide && {
-        display: 'flex'
-      }
+        display: 'flex',
+      },
     ],
     footer: [
       classNames.footer,
@@ -160,12 +167,12 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         alignItems: 'center',
         color: palette.white,
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          // TODO: global class name usage should be converted to a styles function once Button supports JS styling
           [`.${classNames.button}:not(:first-child)`]: {
-            marginLeft: 10
-          }
-        }
-      }
+            marginLeft: 10,
+          },
+        },
+      },
     ],
     header: [
       classNames.header,
@@ -174,22 +181,22 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       (hasCondensedHeadline || hasSmallHeadline) && [
         fonts.medium,
         {
-          fontWeight: FontWeights.semibold
-        }
-      ]
+          fontWeight: FontWeights.semibold,
+        },
+      ],
     ],
     headline: [
       classNames.headline,
       {
         margin: 0,
         color: palette.white,
-        fontWeight: FontWeights.semibold
+        fontWeight: FontWeights.semibold,
       },
       hasLargeHeadline && [
         {
-          fontSize: fonts.xLarge.fontSize
-        }
-      ]
+          fontSize: fonts.xLarge.fontSize,
+        },
+      ],
     ],
     imageContent: [
       classNames.header,
@@ -197,8 +204,8 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       isWide && {
         display: 'flex',
         alignItems: 'center',
-        maxWidth: 154
-      }
+        maxWidth: 154,
+      },
     ],
     primaryButton: [
       classNames.primaryButton,
@@ -209,24 +216,24 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         color: palette.themePrimary,
         whiteSpace: 'nowrap',
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          // TODO: global class name usage should be converted to a styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: fonts.medium,
           ':hover': {
             backgroundColor: palette.themeLighter,
             borderColor: palette.themeLighter,
-            color: palette.themePrimary
+            color: palette.themePrimary,
           },
           ':focus': {
             backgroundColor: palette.themeLighter,
-            borderColor: palette.white
+            borderColor: palette.white,
           },
           ':active': {
             backgroundColor: palette.white,
             borderColor: palette.white,
-            color: palette.themePrimary
-          }
-        }
-      }
+            color: palette.themePrimary,
+          },
+        },
+      },
     ],
     secondaryButton: [
       classNames.secondaryButton,
@@ -236,23 +243,23 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         borderColor: palette.white,
         whiteSpace: 'nowrap',
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
+          // TODO: global class name usage should be converted to a styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
             fonts.medium,
             {
-              color: palette.white
-            }
+              color: palette.white,
+            },
           ],
           '&:hover, &:focus': {
             backgroundColor: palette.themeDarkAlt,
-            borderColor: palette.white
+            borderColor: palette.white,
           },
           ':active': {
             backgroundColor: palette.themePrimary,
-            borderColor: palette.white
-          }
-        }
-      }
+            borderColor: palette.white,
+          },
+        },
+      },
     ],
     subText: [
       classNames.subText,
@@ -260,23 +267,23 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         margin: 0,
         fontSize: fonts.medium.fontSize,
         color: palette.white,
-        fontWeight: FontWeights.regular
-      }
+        fontWeight: FontWeights.regular,
+      },
     ],
     subComponentStyles: {
       callout: {
         root: [...rootStyle(isWide, calloutProps), fonts.medium],
         beak: [
           {
-            background: palette.themePrimary
-          }
+            background: palette.themePrimary,
+          },
         ],
         calloutMain: [
           {
-            background: palette.themePrimary
-          }
-        ]
-      }
-    }
+            background: palette.themePrimary,
+          },
+        ],
+      },
+    },
   };
 };

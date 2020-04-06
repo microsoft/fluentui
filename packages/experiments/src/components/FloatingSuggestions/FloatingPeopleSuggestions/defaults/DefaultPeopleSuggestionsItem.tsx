@@ -4,7 +4,9 @@ import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import * as stylesImport from './DefaultPeopleSuggestionsItem.scss';
 
-export const DefaultPeopleSuggestionsItem = <TPersona extends IPersonaProps>(props: ISuggestionModel<TPersona>): JSX.Element => {
+export const DefaultPeopleSuggestionsItem = <TPersona extends IPersonaProps>(
+  props: ISuggestionModel<TPersona>,
+): JSX.Element => {
   const item = props.item;
   return (
     <div className={css('ms-PeoplePicker-personaContent', stylesImport.peoplePickerPersonaContent)}>

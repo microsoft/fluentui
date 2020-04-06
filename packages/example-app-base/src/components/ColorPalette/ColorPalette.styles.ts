@@ -12,9 +12,9 @@ const square: IRawStyle = {
       content: '" "',
       display: 'block',
       float: 'left',
-      paddingTop: '100%'
-    }
-  }
+      paddingTop: '100%',
+    },
+  },
 };
 
 export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteStyles> = props => {
@@ -24,9 +24,9 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
       {
         alignItems: 'flex-start',
         display: 'flex',
-        marginTop: 28
+        marginTop: 28,
       },
-      className
+      className,
     ],
     grid: {
       display: 'flex',
@@ -36,7 +36,7 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
       padding: 0,
       margin: 0,
       marginRight: 40,
-      paddingLeft: 0
+      paddingLeft: 0,
     },
     swatch: [
       square,
@@ -50,12 +50,12 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
         marginRight: swatchGap,
         position: 'relative',
         minWidth: isCondensed ? 'unset' : 112,
-        width: `calc(100% / ${isCondensed ? swatchesPerRowCondensed : swatchesPerRow} - ${swatchGap})`
+        width: `calc(100% / ${isCondensed ? swatchesPerRowCondensed : swatchesPerRow} - ${swatchGap})`,
       },
       getFocusStyle(theme!, {
         inset: -1,
-        width: 2
-      })
+        width: 2,
+      }),
     ],
     swatchSelected: {
       border: '2px solid ' + NeutralColors.gray100,
@@ -67,15 +67,15 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
           bottom: 0,
           left: 0,
           right: 0,
-          top: 0
-        }
-      }
+          top: 0,
+        },
+      },
     },
     swatchTooltip: {
       width: '100%',
       height: '100%',
       display: 'flex',
-      alignItems: 'flex-end'
+      alignItems: 'flex-end',
     },
     swatchContent: {
       alignItems: 'center',
@@ -86,17 +86,17 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
       lineHeight: '1.2', // must be a string to prevent interpretation as px
       overflow: 'hidden',
       padding: isCondensed ? 4 : 12,
-      width: '100%'
+      width: '100%',
     },
     swatchContentSelected: [
       {
-        padding: '12px 10px 10px 10px'
+        padding: '12px 10px 10px 10px',
       },
       isCondensed && {
         selectors: {
-          span: { display: 'none' }
-        }
-      }
+          span: { display: 'none' },
+        },
+      },
     ],
     swatchIcon: {
       display: isCondensed ? 'none' : 'flex',
@@ -107,11 +107,11 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
       right: 0,
       fontSize: '42px',
       justifyContent: 'center',
-      alignItems: 'center'
+      alignItems: 'center',
     },
     swatchName: {
       overflow: 'hidden',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
     },
     detail: [
       square,
@@ -122,34 +122,34 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
         maxWidth: '40%',
         position: 'sticky',
         top: -20,
-        transition: `background-color ${MotionDurations.duration2} ${MotionTimings.standard}`
-      }
+        transition: `background-color ${MotionDurations.duration2} ${MotionTimings.standard}`,
+      },
     ],
     detailContentWrapper: {
       padding: '10%',
       overflow: 'hidden',
       textOverflow: 'ellipsis',
-      width: '100%'
+      width: '100%',
     },
     detailName: {
       fontSize: '28px',
       fontWeight: FontWeights.semibold,
       lineHeight: 32,
-      marginBottom: 12
+      marginBottom: 12,
     },
     detailValues: {
-      fontSize: '14px'
+      fontSize: '14px',
     },
     detailHex: {
       fontWeight: FontWeights.semibold,
-      paddingRight: 8
+      paddingRight: 8,
     },
     detailCode: {
-      display: 'inline-block'
+      display: 'inline-block',
     },
     detailCodeInfoIcon: {
       position: 'relative',
-      top: 2
-    }
+      top: 2,
+    },
   };
 };

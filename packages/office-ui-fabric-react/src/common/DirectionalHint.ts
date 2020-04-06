@@ -15,7 +15,8 @@ export const DirectionalHint = {
   topRightEdge: 2 as 2,
 
   /**
-   * Appear above the target element, aligning with the target element such that the callout tends toward the center of the screen.
+   * Appear above the target element, aligning with the target element such that the callout tends toward
+   * the center of the screen.
    */
   topAutoEdge: 3 as 3,
 
@@ -35,7 +36,8 @@ export const DirectionalHint = {
   bottomRightEdge: 6 as 6,
 
   /**
-   * Appear below the target element, aligning with the target element such that the callout tends toward the center of the screen.
+   * Appear below the target element, aligning with the target element such that the callout tends toward
+   * the center of the screen.
    */
   bottomAutoEdge: 7 as 7,
 
@@ -67,7 +69,7 @@ export const DirectionalHint = {
   /**
    * Appear to the right of the target element, with the bottom edges of the callout and target aligning.
    */
-  rightBottomEdge: 13 as 13
+  rightBottomEdge: 13 as 13,
 };
 
 export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];

@@ -11,7 +11,7 @@ export default migration(
       const replacements = {
         componentWillMount: 'UNSAFE_componentWillMount',
         componentWillReceiveProps: 'UNSAFE_componentWillReceiveProps',
-        componentWillUpdate: 'UNSAFE_componentWillUpdate'
+        componentWillUpdate: 'UNSAFE_componentWillUpdate',
       };
 
       if (ts.isClassDeclaration(node)) {
@@ -26,5 +26,5 @@ export default migration(
         }
       }
     }).files;
-  }
+  },
 );

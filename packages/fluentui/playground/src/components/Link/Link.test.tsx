@@ -17,7 +17,7 @@ describe('LinkBase', () => {
           Link 2
         </LinkBase>
         <LinkBase ref={link3}>Link 3</LinkBase>
-      </div>
+      </div>,
     );
 
     const links = wrapper.getDOMNode().querySelectorAll('a') as NodeListOf<HTMLAnchorElement>;

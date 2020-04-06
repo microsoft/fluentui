@@ -6,7 +6,7 @@ import { TextStyles as styles } from './Text.styles';
 
 export const Text: React.FunctionComponent<ITextProps> = createComponent(TextView, {
   displayName: 'Text',
-  styles
+  styles,
 });
 
 export default Text;

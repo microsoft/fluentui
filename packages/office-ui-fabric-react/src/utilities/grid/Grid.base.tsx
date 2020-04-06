@@ -1,15 +1,24 @@
 import * as React from 'react';
-import { BaseComponent, getId, toMatrix, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import {
+  getId,
+  toMatrix,
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties,
+  initializeComponentRef,
+} from '../../Utilities';
 import { FocusZone } from '../../FocusZone';
 import { IGrid, IGridProps, IGridStyleProps, IGridStyles } from './Grid.types';
 
 const getClassNames = classNamesFunction<IGridStyleProps, IGridStyles>();
 
-export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
+export class GridBase extends React.Component<IGridProps, {}> implements IGrid {
   private _id: string;
 
   constructor(props: IGridProps) {
     super(props);
+
+    initializeComponentRef(this);
     this._id = props.id || getId();
   }
 
@@ -19,17 +28,21 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
       items,
       columnCount,
       onRenderItem,
+
+      // tslint:disable:deprecation
       ariaPosInSet = props.positionInSet,
       ariaSetSize = props.setSize,
+      // tslint:enable:deprecation
+
       styles,
-      doNotContainWithinFocusZone
+      doNotContainWithinFocusZone,
     } = props;
 
     const htmlProps = getNativeProps<React.HTMLAttributes<HTMLTableElement>>(
       this.props,
       htmlElementProperties,
       // avoid applying onBlur on the table if it's being used in the FocusZone
-      doNotContainWithinFocusZone ? [] : ['onBlur']
+      doNotContainWithinFocusZone ? [] : ['onBlur'],
     );
 
     const classNames = getClassNames(styles!, { theme: this.props.theme! });
@@ -38,14 +51,25 @@ export class GridBase extends BaseComponent<IGridProps, {}> implements IGrid {
     const rowsOfItems: any[][] = toMatrix(items, columnCount);
 
     const content = (
-      <table aria-posinset={ariaPosInSet} aria-setsize={ariaSetSize} id={this._id} role="grid" {...htmlProps} className={classNames.root}>
+      <table
+        aria-posinset={ariaPosInSet}
+        aria-setsize={ariaSetSize}
+        id={this._id}
+        role="grid"
+        {...htmlProps}
+        className={classNames.root}
+      >
         <tbody>
           {rowsOfItems.map((rows: any[], rowIndex: number) => {
             return (
               <tr role={'row'} key={this._id + '-' + rowIndex + '-row'}>
                 {rows.map((cell: any, cellIndex: number) => {
                   return (
-                    <td role={'presentation'} key={this._id + '-' + cellIndex + '-cell'} className={classNames.tableCell}>
+                    <td
+                      role={'presentation'}
+                      key={this._id + '-' + cellIndex + '-cell'}
+                      className={classNames.tableCell}
+                    >
                       {onRenderItem(cell, cellIndex)}
                     </td>
                   );

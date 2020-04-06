@@ -12,7 +12,7 @@ export interface IFocusTrapZoneFocusZoneExampleState {
 
 export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTrapZoneFocusZoneExampleState> {
   public state: IFocusTrapZoneFocusZoneExampleState = {
-    useTrapZone: false
+    useTrapZone: false,
   };
 
   private _toggle = React.createRef<IToggle>();

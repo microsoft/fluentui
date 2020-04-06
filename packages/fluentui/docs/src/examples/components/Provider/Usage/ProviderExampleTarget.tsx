@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Attachment, Button, Provider, themes } from '@fluentui/react';
+import { Attachment, Button, Provider, themes } from '@fluentui/react-northstar';
 
 type PortalWindowProps = {
   children: (externalDocument: Document) => React.ReactElement;

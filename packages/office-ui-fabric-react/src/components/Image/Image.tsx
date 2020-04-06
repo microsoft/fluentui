@@ -9,7 +9,7 @@ export const Image: React.FunctionComponent<IImageProps> = styled<IImageProps, I
   getStyles,
   undefined,
   {
-    scope: 'Image'
+    scope: 'Image',
   },
-  true
+  true,
 );

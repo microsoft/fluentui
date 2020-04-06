@@ -13,10 +13,10 @@ const treeTitleAsListItemTitleBehavior: Accessibility<TreeTitleBehavior> = props
     attributes: {
       root: {
         ...(!props.hasSubtree && {
-          role: 'listitem'
-        })
-      }
-    }
+          role: 'listitem',
+        }),
+      },
+    },
   });
 };
 

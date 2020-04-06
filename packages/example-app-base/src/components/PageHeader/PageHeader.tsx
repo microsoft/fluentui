@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { IPageHeaderProps, IPageHeaderStyleProps, IPageHeaderStyles } from './PageHeader.types';
-import { css, ScreenWidthMinUhfMobile, FontWeights, IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react';
+import {
+  css,
+  ScreenWidthMinUhfMobile,
+  FontWeights,
+  IStyleFunction,
+  classNamesFunction,
+  styled,
+} from 'office-ui-fabric-react';
 import { FontSizes } from '@uifabric/fluent-theme';
 import { appPaddingSm, appPaddingLg, pageHeaderFullHeight } from '../../styles/constants';
 
@@ -14,9 +21,9 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
         [`@media screen and (min-width: ${ScreenWidthMinUhfMobile}px)`]: {
           marginBottom: 0,
           padding: `${appPaddingLg}px 0`,
-          minHeight: pageHeaderFullHeight
-        }
-      }
+          minHeight: pageHeaderFullHeight,
+        },
+      },
     },
     title: {
       alignItems: 'baseline',
@@ -25,14 +32,14 @@ const getStyles: IStyleFunction<IPageHeaderStyleProps, IPageHeaderStyles> = prop
       fontSize: FontSizes.size32,
       fontWeight: FontWeights.semibold,
       lineHeight: '1', // must have quotes to prevent interpretation as px
-      margin: 0
+      margin: 0,
     },
     subTitle: {
       marginLeft: '1em',
       fontSize: FontSizes.size14,
       fontWeight: FontWeights.regular,
-      color: palette.neutralSecondary
-    }
+      color: palette.neutralSecondary,
+    },
   };
 };
 
@@ -52,9 +59,8 @@ const PageHeaderBase: React.FunctionComponent<IPageHeaderProps> = props => {
   );
 };
 
-export const PageHeader: React.FunctionComponent<IPageHeaderProps> = styled<IPageHeaderProps, IPageHeaderStyleProps, IPageHeaderStyles>(
-  PageHeaderBase,
-  getStyles,
-  undefined,
-  { scope: 'PageHeader' }
-);
+export const PageHeader: React.FunctionComponent<IPageHeaderProps> = styled<
+  IPageHeaderProps,
+  IPageHeaderStyleProps,
+  IPageHeaderStyles
+>(PageHeaderBase, getStyles, undefined, { scope: 'PageHeader' });

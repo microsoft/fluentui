@@ -4,5 +4,5 @@ module.exports = {
   webpackFinal: config => {
     return custom({ config });
   },
-  addons: ['@storybook/addon-a11y/register']
+  addons: ['@storybook/addon-a11y/register'],
 };

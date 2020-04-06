@@ -69,7 +69,7 @@ Example:
 const result = concatStyleSetsWithProps<IFooProps, IFooStyles>(
   { foo: 'bar' },
   (props: IFooProps) => ({ root: { background: props.foo } }),
-  (props: IFooProps) => ({ root: { color: props.foo } })
+  (props: IFooProps) => ({ root: { color: props.foo } }),
 );
 ```
 
@@ -80,7 +80,7 @@ A **style object** represents the collection of css rules, except that the names
 ```tsx
 let style = {
   backgroundColor: 'red',
-  left: 42
+  left: 42,
 };
 ```
 
@@ -104,7 +104,7 @@ A **style set** represents a map of area to style object. When building a compon
 ```tsx
 let styleSet = {
   root: { background: 'red' },
-  button: { margin: 42 }
+  button: { margin: 42 },
 };
 ```
 
@@ -126,16 +126,16 @@ export interface IComponentClassNames {
 export const getClassNames = (): IComponentClassNames => {
   return mergeStyleSets({
     root: {
-      background: 'red'
+      background: 'red',
     },
 
     button: {
-      backgroundColor: 'green'
+      backgroundColor: 'green',
     },
 
     buttonIcon: {
-      margin: 10
-    }
+      margin: 10,
+    },
   });
 };
 ```
@@ -241,12 +241,12 @@ mergeStyles({
   background: 'red',
   selectors: {
     '@media(max-width: 600px)': {
-      background: 'green'
+      background: 'green',
     },
     '@supports(display: grid)': {
-      display: 'grid'
-    }
-  }
+      display: 'grid',
+    },
+  },
 });
 ```
 
@@ -298,7 +298,7 @@ to target the parent elements:
 ```tsx
 const classNames = {
   root: 'Foo-root',
-  child: 'Foo-child'
+  child: 'Foo-child',
 };
 
 mergeStyleSets({
@@ -309,11 +309,11 @@ mergeStyleSets({
     {
       selectors: {
         [`.${classNames.root}:hover &`]: {
-          background: 'green'
-        }
-      }
-    }
-  ]
+          background: 'green',
+        },
+      },
+    },
+  ],
 });
 ```
 
@@ -367,12 +367,12 @@ export const getClassNames = (isToggled: boolean): IComponentClassNames => {
   return mergeStyleSets({
     root: [
       {
-        background: 'red'
+        background: 'red',
       },
       isToggled && {
-        background: 'green'
-      }
-    ]
+        background: 'green',
+      },
+    ],
   });
 };
 ```
@@ -387,7 +387,7 @@ In rare condition where you want to avoid auto flipping, you can annotate the ru
 
 ```tsx
 mergeStyles({
-  left: '42px @noflip'
+  left: '42px @noflip',
 });
 ```
 
@@ -419,7 +419,7 @@ import { fontFace } from '@uifabric/merge-styles';
 fontFace({
   fontFamily: `"Segoe UI"`,
   src: `url("//cdn.com/fontface.woff2) format(woff2)`,
-  fontWeight: 'normal'
+  fontWeight: 'normal',
 });
 ```
 
@@ -434,18 +434,18 @@ import { keyframes, mergeStyleSets } from '@uifabric/merge-styles';
 
 let fadeIn = keyframes({
   from: {
-    opacity: 0
+    opacity: 0,
   },
   to: {
-    opacity: 1
-  }
+    opacity: 1,
+  },
 });
 
 export const getClassNames = () => {
   return mergeStyleSets({
     root: {
-      animationName: fadeIn
-    }
+      animationName: fadeIn,
+    },
   });
 };
 ```
@@ -502,7 +502,7 @@ Some content security policies prevent style injection without a nonce. To set t
 
 ```ts
 Stylesheet.getInstance().setConfig({
-  cspSettings: { nonce: 'your nonce here' }
+  cspSettings: { nonce: 'your nonce here' },
 });
 ```
 
@@ -511,7 +511,7 @@ If you're working inside a Fabric app, this setting can also be applied using th
 ```ts
 window.FabricConfig = {
   mergeStyles: {
-    cspSettings: { nonce: 'your nonce here' }
-  }
+    cspSettings: { nonce: 'your nonce here' },
+  },
 };
 ```

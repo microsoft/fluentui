@@ -1,7 +1,8 @@
 import { createCallbackLogFormatter } from '@fluentui/code-sandbox';
 import { useLogKnob } from '@fluentui/docs-components';
-import { Toolbar } from '@fluentui/react';
+import { Toolbar } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { MoreIcon, PauseIcon, PlayIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleMenuWithSubmenuShorthand = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -9,32 +10,32 @@ const ToolbarExampleMenuWithSubmenuShorthand = () => {
   const onMenuOpenChange = useLogKnob(
     'onMenuOpenChange',
     (e, { menuOpen }) => setMenuOpen(menuOpen),
-    createCallbackLogFormatter(['menuOpen'])
+    createCallbackLogFormatter(['menuOpen']),
   );
 
   return (
     <Toolbar
       items={[
         {
+          icon: <MoreIcon />,
           key: 'more',
-          icon: 'more',
           active: menuOpen,
           menu: [
             {
               key: 'play',
               content: 'Play',
-              icon: 'play',
+              icon: <PlayIcon />,
               menu: {
-                items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }]
-              }
+                items: ['Play with audio', { content: 'Play with video', key: 'playVideo', menu: ['HD', 'Full HD'] }],
+              },
             },
-            { key: 'pause', content: 'Pause', icon: 'pause' },
+            { key: 'pause', content: 'Pause', icon: <PauseIcon /> },
             { key: 'divider', kind: 'divider' },
-            'Without icon'
+            'Without icon',
           ],
           menuOpen,
-          onMenuOpenChange
-        }
+          onMenuOpenChange,
+        },
       ]}
     />
   );

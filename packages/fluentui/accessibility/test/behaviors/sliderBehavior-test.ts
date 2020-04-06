@@ -15,7 +15,7 @@ function generatePropertyTest({ result, attrName, propName, propValue, slotName 
       [propName]: propValue,
       getA11yValueMessageOnChange: () => {
         return undefined;
-      }
+      },
     };
     const expectedResult = sliderBehavior(props);
     expect(expectedResult.attributes[slotName][attrName]).toEqual(resultValue);
@@ -27,39 +27,39 @@ describe('SliderBehavior.ts', () => {
     propName: 'disabled',
     propValue: true,
     slotName: 'root',
-    attrName: 'aria-disabled'
+    attrName: 'aria-disabled',
   });
   generatePropertyTest({
     propName: 'min',
     propValue: 0,
     slotName: 'input',
-    attrName: 'aria-valuemin'
+    attrName: 'aria-valuemin',
   });
   generatePropertyTest({
     propName: 'max',
     propValue: 0,
     slotName: 'input',
-    attrName: 'aria-valuemax'
+    attrName: 'aria-valuemax',
   });
   generatePropertyTest({
     propName: 'value',
     propValue: 0,
     slotName: 'input',
-    attrName: 'aria-valuenow'
+    attrName: 'aria-valuenow',
   });
   generatePropertyTest({
     propName: 'vertical',
     propValue: true,
     slotName: 'input',
     attrName: 'aria-orientation',
-    result: 'vertical'
+    result: 'vertical',
   });
   generatePropertyTest({
     propName: 'vertical',
     propValue: false,
     slotName: 'input',
     attrName: 'aria-orientation',
-    result: 'horizontal'
+    result: 'horizontal',
   });
 
   test('aria-valuetext is set based on the property getA11yValueMessageOnChange', () => {
@@ -68,7 +68,7 @@ describe('SliderBehavior.ts', () => {
       return ariaValueText;
     };
     const property = {
-      getA11yValueMessageOnChange: customAriaValueText
+      getA11yValueMessageOnChange: customAriaValueText,
     };
     const expectedResult = sliderBehavior(property);
     expect(expectedResult.attributes.input['aria-valuetext']).toEqual(ariaValueText);

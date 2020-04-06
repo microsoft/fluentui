@@ -35,8 +35,8 @@ export class Rectangle {
    * Tests if another rect is approximately equal to this rect (within 4 decimal places.)
    */
   public equals(rect: Rectangle): boolean {
-    // I'm fixing it to 4 decimal places because it allows enough precision and will handle cases when something should be rounded,
-    // like .999999 should round to 1.
+    // Fixing to 4 decimal places because it allows enough precision and will handle cases when something
+    // should be rounded, like .999999 should round to 1.
     return (
       parseFloat(this.top.toFixed(4)) === parseFloat(rect.top.toFixed(4)) &&
       parseFloat(this.bottom.toFixed(4)) === parseFloat(rect.bottom.toFixed(4)) &&

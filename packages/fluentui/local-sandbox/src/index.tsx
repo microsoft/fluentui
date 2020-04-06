@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Provider, themes, Header, Text } from '@fluentui/react';
+import { Provider, themes, Header, Text } from '@fluentui/react-northstar';
 
 const App = () => (
   <Provider theme={themes.teams}>

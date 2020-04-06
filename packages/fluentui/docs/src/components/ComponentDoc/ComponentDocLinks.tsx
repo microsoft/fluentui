@@ -1,11 +1,11 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Flex, Icon, constants } from '@fluentui/react';
+import { Flex, Icon, constants } from '@fluentui/react-northstar';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {
     repoPath: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired
+    type: PropTypes.string.isRequired,
   };
 
   render() {
@@ -21,7 +21,7 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
           display: 'flex',
           flexDirection: 'row',
           height: '0%',
-          verticalAlign: 'middle'
+          verticalAlign: 'middle',
         }}
       >
         <>

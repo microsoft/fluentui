@@ -58,6 +58,16 @@ export interface IDonutChartProps {
   legendsOverflowProps?: Partial<IOverflowSetProps>;
 
   /**
+   * text for overflow legends string
+   */
+  legendsOverflowText?: string;
+
+  /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
+
+  /**
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;

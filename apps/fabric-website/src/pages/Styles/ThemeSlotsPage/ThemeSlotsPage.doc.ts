@@ -8,6 +8,6 @@ export const ThemeSlotsPageProps: TFabricPlatformPageProps = {
   web: {
     componentUrl,
     related,
-    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsOverview.md') as string
-  }
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ThemeSlotsPage/docs/web/ThemeSlotsOverview.md') as string,
+  },
 };

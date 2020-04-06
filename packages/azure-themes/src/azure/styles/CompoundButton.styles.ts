@@ -8,7 +8,7 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   const labelTextColor = (color: string) => {
     return {
       '.ms-Button-description': { color },
-      '.ms-Button-label': { color }
+      '.ms-Button-label': { color },
     };
   };
 
@@ -23,10 +23,10 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           backgroundColor: semanticColors.primaryButtonBackground,
           border: `0px`,
           selectors: {
-            ...labelTextColor(semanticColors.primaryButtonText)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.primaryButtonText),
+          },
+        },
+      },
     },
     rootHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
@@ -34,18 +34,18 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       selectors: {
         '&.ms-Button--compound:hover': {
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextHovered)
-          }
+            ...labelTextColor(semanticColors.buttonTextHovered),
+          },
         },
         '&.ms-Button--compoundPrimary:hover': {
           backgroundColor: semanticColors.primaryButtonBackgroundHovered,
           color: semanticColors.primaryButtonTextHovered,
           border: `0px`,
           selectors: {
-            ...labelTextColor(semanticColors.primaryButtonTextHovered)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.primaryButtonTextHovered),
+          },
+        },
+      },
     },
     rootPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
@@ -53,18 +53,18 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       selectors: {
         '&.ms-Button--compound:active': {
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextPressed)
-          }
+            ...labelTextColor(semanticColors.buttonTextPressed),
+          },
         },
         '&.ms-Button--compoundPrimary:active': {
           backgroundColor: semanticColors.primaryButtonBackgroundPressed,
           color: semanticColors.primaryButtonTextPressed,
           border: '0px',
           selectors: {
-            ...labelTextColor(semanticColors.primaryButtonTextPressed)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.primaryButtonTextPressed),
+          },
+        },
+      },
     },
     rootDisabled: {
       backgroundColor: semanticColors.buttonBackgroundDisabled,
@@ -74,10 +74,10 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: semanticColors.buttonBackgroundDisabled,
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextDisabled)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.buttonTextDisabled),
+          },
+        },
+      },
     },
     rootChecked: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
@@ -88,10 +88,10 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           backgroundColor: semanticColors.primaryButtonBackgroundPressed,
           border: `0px`,
           selectors: {
-            ...labelTextColor(semanticColors.primaryButtonTextPressed)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.primaryButtonTextPressed),
+          },
+        },
+      },
     },
     rootCheckedHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
@@ -102,10 +102,10 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           backgroundColor: semanticColors.primaryButtonBackgroundHovered,
           border: `0px`,
           selectors: {
-            ...labelTextColor(semanticColors.primaryButtonTextHovered)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.primaryButtonTextHovered),
+          },
+        },
+      },
     },
     rootCheckedPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
@@ -116,10 +116,10 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           backgroundColor: semanticColors.primaryButtonBackgroundPressed,
           border: `0px`,
           selectors: {
-            ...labelTextColor(semanticColors.primaryButtonTextPressed)
-          }
-        }
-      }
+            ...labelTextColor(semanticColors.primaryButtonTextPressed),
+          },
+        },
+      },
     },
     rootCheckedDisabled: {
       backgroundColor: semanticColors.buttonBackgroundDisabled,
@@ -129,10 +129,10 @@ export const CompoundButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
         '&.ms-Button--compoundPrimary.is-checked.is-disabled': {
           backgroundColor: semanticColors.buttonBackgroundDisabled,
           selectors: {
-            ...labelTextColor(semanticColors.buttonTextDisabled)
-          }
-        }
-      }
-    }
+            ...labelTextColor(semanticColors.buttonTextDisabled),
+          },
+        },
+      },
+    },
   };
 };

@@ -136,6 +136,11 @@ export interface ILegendsProps {
    * focus zone props in hover card
    */
   focusZonePropsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * text for overflow legends string
+   */
+  overflowText?: string;
 }
 
 /**

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader/root';
-import { Provider, Debug, themes } from '@fluentui/react';
+import { Provider, Debug, themes } from '@fluentui/react-northstar';
 
 import { mergeThemes } from '@fluentui/styles';
 import { ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
@@ -20,7 +20,7 @@ class App extends React.Component<any, ThemeContextData> {
   // be passed down into the context provider
   state: ThemeContextData = {
     ...themeContextDefaults,
-    changeTheme: (e, { value: item }) => this.setState({ themeName: item.value })
+    changeTheme: (e, { value: item }) => this.setState({ themeName: item.value }),
   };
 
   render() {
@@ -33,10 +33,10 @@ class App extends React.Component<any, ThemeContextData> {
             staticStyles: [
               {
                 a: {
-                  textDecoration: 'none'
-                }
-              }
-            ]
+                  textDecoration: 'none',
+                },
+              },
+            ],
           })}
         >
           <PerfDataProvider>

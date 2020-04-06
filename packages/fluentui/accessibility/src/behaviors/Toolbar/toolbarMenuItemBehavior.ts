@@ -29,8 +29,8 @@ const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = pro
 export default toolbarMenuItemBehavior;
 
 export type ToolbarMenuItemBehaviorProps = {
-  /** Indicated if menu item has submenu. */
-  menu?: boolean | object;
+  /** Indicated if menu item has submenu. TODO: fix types for all behaviours */
+  menu?: any;
   /** Defines if submenu is opened. */
   menuOpen?: boolean;
   /** If a menu item can is currently unable to be interacted with. */

@@ -6,11 +6,11 @@ const BUNDLE_NAME = 'variants';
 
 module.exports = resources.createConfig(BUNDLE_NAME, true, {
   entry: {
-    [BUNDLE_NAME]: './lib/index.js'
+    [BUNDLE_NAME]: './lib/index.js',
   },
 
   output: {
     libraryTarget: 'var',
-    library: 'Variants'
-  }
+    library: 'Variants',
+  },
 });

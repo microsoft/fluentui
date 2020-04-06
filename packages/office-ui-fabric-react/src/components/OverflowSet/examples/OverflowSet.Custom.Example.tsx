@@ -5,8 +5,8 @@ const noOp = () => undefined;
 
 const checkboxStyles = {
   root: {
-    marginRight: 5
-  }
+    marginRight: 5,
+  },
 };
 
 export class OverflowSetCustomExample extends React.PureComponent {
@@ -20,7 +20,7 @@ export class OverflowSetCustomExample extends React.PureComponent {
             key: 'checkbox',
             onRender: () => {
               return <Checkbox inputProps={{ role: 'menuitemcheckbox' }} label="A Checkbox" styles={checkboxStyles} />;
-            }
+            },
           },
           {
             key: 'newItem',
@@ -33,55 +33,55 @@ export class OverflowSetCustomExample extends React.PureComponent {
                 {
                   key: 'emailMessage',
                   name: 'Email message',
-                  icon: 'Mail'
+                  icon: 'Mail',
                 },
                 {
                   key: 'calendarEvent',
                   name: 'Calendar event',
-                  icon: 'Calendar'
-                }
-              ]
-            }
+                  icon: 'Calendar',
+                },
+              ],
+            },
           },
           {
             key: 'upload',
             name: 'Upload',
             icon: 'Upload',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'share',
             name: 'Share',
             icon: 'Share',
-            onClick: noOp
-          }
+            onClick: noOp,
+          },
         ]}
         overflowItems={[
           {
             key: 'move',
             name: 'Move to...',
             icon: 'MoveToFolder',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'copy',
             name: 'Copy to...',
             icon: 'Copy',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'rename',
             name: 'Rename...',
             icon: 'Edit',
-            onClick: noOp
+            onClick: noOp,
           },
           {
             key: 'disabled',
             name: 'Disabled...',
             icon: 'Cancel',
             disabled: true,
-            onClick: noOp
-          }
+            onClick: noOp,
+          },
         ]}
         onRenderOverflowButton={this._onRenderOverflowButton}
         onRenderItem={this._onRenderItem}
@@ -93,7 +93,14 @@ export class OverflowSetCustomExample extends React.PureComponent {
     if (item.onRender) {
       return item.onRender(item);
     }
-    return <CommandBarButton role="menuitem" iconProps={{ iconName: item.icon }} menuProps={item.subMenuProps} text={item.name} />;
+    return (
+      <CommandBarButton
+        role="menuitem"
+        iconProps={{ iconName: item.icon }}
+        menuProps={item.subMenuProps}
+        text={item.name}
+      />
+    );
   };
 
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
@@ -102,8 +109,8 @@ export class OverflowSetCustomExample extends React.PureComponent {
         minWidth: 0,
         padding: '0 4px',
         alignSelf: 'stretch',
-        height: 'auto'
-      }
+        height: 'auto',
+      },
     };
     return (
       <CommandBarButton

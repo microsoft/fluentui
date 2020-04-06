@@ -10,5 +10,5 @@ export interface AtMentionItem {
 export const atMentionItems: AtMentionItem[] = _.times(10, () => ({
   header: `${name.firstName()} ${name.lastName()}`,
   image: internet.avatar(),
-  content: name.title()
+  content: name.title(),
 }));

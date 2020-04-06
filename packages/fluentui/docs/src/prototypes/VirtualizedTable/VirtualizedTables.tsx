@@ -1,4 +1,11 @@
-import { Accordion, gridCellBehavior, gridHeaderCellBehavior, gridNestedBehavior, gridRowBehavior, Table } from '@fluentui/react';
+import {
+  Accordion,
+  gridCellBehavior,
+  gridHeaderCellBehavior,
+  gridNestedBehavior,
+  gridRowBehavior,
+  Table,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 import { AutoSizer, List as ReactVirtualizedList, WindowScroller, ListProps, ListRowRenderer } from 'react-virtualized';
 import getItems from './itemsGenerator';
@@ -13,13 +20,13 @@ function VirtualizedTablesPrototype() {
     {
       key: 'table1',
       title: <div>Table one</div>,
-      content: <VirtualizedTable scrollElementRef={ref} label={'table1'} />
+      content: <VirtualizedTable scrollElementRef={ref} label={'table1'} />,
     },
     {
       key: 'table2',
       title: <div>Custom table title</div>,
-      content: <VirtualizedTable scrollElementRef={ref} label={'table2'} />
-    }
+      content: <VirtualizedTable scrollElementRef={ref} label={'table2'} />,
+    },
   ];
 
   return (
@@ -39,13 +46,13 @@ const accessibilityListProperties: Partial<ListProps> = {
   'aria-readonly': undefined,
   containerRole: 'presentation',
   role: 'presentation',
-  tabIndex: null
+  tabIndex: null,
 };
 
 const accessibilityWrapperProperties: React.HTMLAttributes<HTMLDivElement> = {
   'aria-label': '',
   'aria-readonly': undefined,
-  role: 'presentation'
+  role: 'presentation',
 };
 
 function VirtualizedTable(props: VirtualizedTableProps) {

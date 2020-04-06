@@ -12,7 +12,7 @@ const strings = {
   deleteItemTitle: 'Delete this item.',
   deleteItemAriaLabel: 'Delete',
   workingOnSpinnerLabel: 'Working on...',
-  titleEmptyErrorMessage: 'You can not leave this blank.'
+  titleEmptyErrorMessage: 'You can not leave this blank.',
 };
 
 export default strings;

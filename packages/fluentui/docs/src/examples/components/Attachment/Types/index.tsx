@@ -4,7 +4,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample title="Default" description="A default Attachment." examplePath="components/Attachment/Types/AttachmentExample" />
+    <ComponentExample
+      title="Default"
+      description="A default Attachment."
+      examplePath="components/Attachment/Types/AttachmentExample"
+    />
     <ComponentExample
       title="Progress"
       description="An attachment can show upload progress."

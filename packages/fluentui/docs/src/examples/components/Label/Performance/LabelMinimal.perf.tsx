@@ -1,4 +1,4 @@
-import { Label } from '@fluentui/react';
+import { Label } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const LabelMinimalPerf = () => <Label />;

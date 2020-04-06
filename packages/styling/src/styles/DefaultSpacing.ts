@@ -5,5 +5,5 @@ export const DefaultSpacing: ISpacing = {
   s1: '8px',
   m: '16px',
   l1: '20px',
-  l2: '32px'
+  l2: '32px',
 };

@@ -9,7 +9,7 @@ import { Sidebar, SidebarButton } from '@uifabric/experiments/lib/Sidebar';
 export class SidebarBasicExample extends React.Component {
   public render(): JSX.Element {
     this.state = {
-      active: true
+      active: true,
     };
 
     /*
@@ -34,16 +34,16 @@ export class SidebarBasicExample extends React.Component {
                 key: 'basic-example-footer-item-link1',
                 name: 'Footer Item 1',
                 iconProps: { iconName: 'CollegeFootball' },
-                active: false
+                active: false,
               },
               {
                 key: 'basic-example-footer-item-link2',
                 name: 'Footer Item 2',
                 iconProps: { iconName: 'Soccer' },
-                active: false
-              }
-            ]
-          }
+                active: false,
+              },
+            ],
+          },
         ]}
         theme={getTheme()}
         items={[
@@ -51,13 +51,13 @@ export class SidebarBasicExample extends React.Component {
             key: 'basic-example-item1',
             name: 'Item 1',
             iconProps: { iconName: 'Home' },
-            active: false
+            active: false,
           },
           {
             key: 'basic-example-item2',
             name: 'Item 2',
             iconProps: { iconName: 'Bullseye' },
-            active: true
+            active: true,
           },
           {
             key: 'basic-example-item3',
@@ -66,9 +66,9 @@ export class SidebarBasicExample extends React.Component {
             active: false,
             styles: {
               root: {
-                backgroundColor: 'red'
-              }
-            }
+                backgroundColor: 'red',
+              },
+            },
           },
           {
             key: 'basic-example-accordion1',
@@ -79,15 +79,15 @@ export class SidebarBasicExample extends React.Component {
                 key: 'basic-example-accordion1-link1',
                 name: 'Inner Link 1',
                 iconProps: { iconName: 'Mail' },
-                active: false
+                active: false,
               },
               {
                 key: 'basic-example-accordion1-link2',
                 name: 'Inner Link 2',
                 iconProps: { iconName: 'AlarmClock' },
-                active: true
-              }
-            ]
+                active: true,
+              },
+            ],
           },
           {
             key: 'basic-example-accordion2',
@@ -98,24 +98,32 @@ export class SidebarBasicExample extends React.Component {
                 key: 'basic-example-accordion2-link1',
                 name: 'Inner Link 1',
                 iconProps: { iconName: 'DiamondSolid' },
-                active: false
+                active: false,
               },
               {
                 key: 'basic-example-accordion2-link2',
                 name: 'Inner Link 2',
                 iconProps: { iconName: 'DeliveryTruck' },
-                active: false
-              }
-            ]
+                active: false,
+              },
+            ],
           },
           {
             key: 'basic-example-render1',
             name: 'onRender Example',
             iconProps: { iconName: 'AirTickets' },
             onRender: item => {
-              return <SidebarButton key={item.key} text={item.name} iconProps={item.iconProps} role="menuitem" theme={getTheme()} />;
-            }
-          }
+              return (
+                <SidebarButton
+                  key={item.key}
+                  text={item.name}
+                  iconProps={item.iconProps}
+                  role="menuitem"
+                  theme={getTheme()}
+                />
+              );
+            },
+          },
         ]}
       />
     );

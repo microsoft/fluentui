@@ -1,15 +1,15 @@
 {
   "name": "@fluentui/perf",
-  "version": "0.44.0",
+  "version": "0.47.0",
   "private": true,
   "license": "MIT",
   "devDependencies": {
     "@babel/polyfill": "^7.7.0",
-    "@uifabric/build": "^7.0.0",
-    "@fluentui/react": "^0.44.0",
+    "@fluentui/react-northstar": "^0.47.0",
+    "@types/react": "16.8.11",
     "@types/webpack-env": "1.15.1",
-    "minimatch": "^3.0.4",
-    "@types/react": "16.8.11"
+    "@uifabric/build": "^7.0.0",
+    "minimatch": "^3.0.4"
   },
   "publishConfig": {
     "access": "public"

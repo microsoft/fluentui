@@ -10,14 +10,14 @@ import { Accessibility } from '../../types';
 const toolbarMenuItemCheckboxBehavior: Accessibility<ToolbarMenuItemCheckboxBehaviorProps> = props => ({
   attributes: {
     wrapper: {
-      role: 'presentation'
+      role: 'presentation',
     },
     root: {
       'aria-checked': props.active,
       'aria-disabled': props.disabled,
-      role: 'menuitemcheckbox'
-    }
-  }
+      role: 'menuitemcheckbox',
+    },
+  },
 });
 
 export default toolbarMenuItemCheckboxBehavior;

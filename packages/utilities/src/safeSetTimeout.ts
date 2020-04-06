@@ -17,7 +17,7 @@ export const safeSetTimeout = (component: React.Component) => {
       extendComponent(component, {
         componentWillUnmount: () => {
           activeTimeouts.forEach((id: NodeJS.Timer) => clearTimeout(id));
-        }
+        },
       });
     }
 

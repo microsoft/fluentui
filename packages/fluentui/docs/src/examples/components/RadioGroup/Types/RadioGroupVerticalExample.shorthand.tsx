@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, RadioGroup, Input, Text } from '@fluentui/react';
+import { Divider, RadioGroup, Input, Text } from '@fluentui/react-northstar';
 
 class RadioGroupVerticalExample extends React.Component {
   state = { selectedValue: '', inputTabIndex: '-1' };
@@ -10,7 +10,12 @@ class RadioGroupVerticalExample extends React.Component {
       <div style={{ maxWidth: '400px' }}>
         The selected value is: {selectedValue}
         <Divider />
-        <RadioGroup vertical defaultCheckedValue="prosciutto" items={this.getItems()} onCheckedValueChange={this.handleChange} />
+        <RadioGroup
+          vertical
+          defaultCheckedValue="prosciutto"
+          items={this.getItems()}
+          onCheckedValueChange={this.handleChange}
+        />
       </div>
     );
   }
@@ -21,20 +26,20 @@ class RadioGroupVerticalExample extends React.Component {
         name: 'pizza',
         key: 'Capricciosa',
         label: 'Capricciosa',
-        value: 'capricciosa'
+        value: 'capricciosa',
       },
       {
         name: 'pizza',
         key: 'Prosciutto',
         label: 'Prosciutto',
         value: 'prosciutto',
-        disabled: true
+        disabled: true,
       },
       {
         name: 'pizza',
         key: 'Pepperoni',
         label: 'Pepperoni',
-        value: 'pepperoni'
+        value: 'pepperoni',
       },
       {
         name: 'pizza',
@@ -48,8 +53,8 @@ class RadioGroupVerticalExample extends React.Component {
               styles={{
                 fontSize: '12px',
                 '& .ui-input__input': {
-                  padding: '2px 8px'
-                }
+                  padding: '2px 8px',
+                },
               }}
               placeholder="flavour"
             />
@@ -57,8 +62,8 @@ class RadioGroupVerticalExample extends React.Component {
         ),
         value: 'custom',
         checkedChanged: this.handleCustomCheckedChange,
-        'aria-label': 'Press Tab to change flavour'
-      }
+        'aria-label': 'Press Tab to change flavour',
+      },
     ];
   }
 

@@ -9,15 +9,15 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
       theme.fonts.medium,
       {
         position: 'relative',
-        maxWidth: 300
+        maxWidth: 300,
       },
-      className
+      className,
     ],
     panel: [
       'ms-ColorPicker-panel',
       {
-        padding: '16px'
-      }
+        padding: '16px',
+      },
     ],
     table: [
       'ms-ColorPicker-table',
@@ -26,25 +26,25 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         width: '100%',
         selectors: {
           'tbody td:last-of-type .ms-ColorPicker-input': {
-            paddingRight: 0
-          }
-        }
-      }
+            paddingRight: 0,
+          },
+        },
+      },
     ],
     tableHeader: [
       theme.fonts.small,
       {
         selectors: {
           td: {
-            paddingBottom: 4
-          }
-        }
-      }
+            paddingBottom: 4,
+          },
+        },
+      },
     ],
     tableHexCell: [
       {
-        width: '25%'
-      }
+        width: '25%',
+      },
     ],
     colorSquare: [
       'ms-ColorPicker-colorSquare',
@@ -52,23 +52,23 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         width: 48,
         height: 48,
         margin: '0 0 0 8px',
-        border: '1px solid #c8c6c4'
-      }
+        border: '1px solid #c8c6c4',
+      },
     ],
     flexContainer: [
       {
-        display: 'flex'
-      }
+        display: 'flex',
+      },
     ],
     flexSlider: [
       {
-        flexGrow: '1'
-      }
+        flexGrow: '1',
+      },
     ],
     flexPreviewBox: [
       {
-        flexGrow: '0'
-      }
+        flexGrow: '0',
+      },
     ],
     input: [
       'ms-ColorPicker-input',
@@ -79,15 +79,15 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         height: 30,
         selectors: {
           '&.ms-TextField': {
-            paddingRight: 4
+            paddingRight: 4,
           },
           '& .ms-TextField-field': {
             minWidth: 'auto',
             padding: 5,
-            textOverflow: 'clip'
-          }
-        }
-      }
-    ]
+            textOverflow: 'clip',
+          },
+        },
+      },
+    ],
   };
 };

@@ -7,32 +7,32 @@ export const PrimaryButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   return {
     root: {
       backgroundColor: semanticColors.primaryButtonBackground,
-      color: semanticColors.primaryButtonText
+      color: semanticColors.primaryButtonText,
     },
     rootDisabled: {
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-      color: semanticColors.primaryButtonTextDisabled
+      color: semanticColors.primaryButtonTextDisabled,
     },
     rootHovered: {
       backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-      color: semanticColors.primaryButtonTextHovered
+      color: semanticColors.primaryButtonTextHovered,
     },
     rootPressed: {
       backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed
+      color: semanticColors.primaryButtonTextPressed,
     },
     rootChecked: {
       backgroundColor: semanticColors.primaryButtonBackgroundPressed,
       color: semanticColors.primaryButtonTextPressed,
-      border: 'none'
+      border: 'none',
     },
     rootCheckedHovered: {
       backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-      color: semanticColors.primaryButtonTextHovered
+      color: semanticColors.primaryButtonTextHovered,
     },
     rootCheckedPressed: {
       backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-      color: semanticColors.primaryButtonTextPressed
-    }
+      color: semanticColors.primaryButtonTextPressed,
+    },
   };
 };

@@ -2,6 +2,167 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/experiments_v7.22.12",
+      "version": "7.22.12",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adding build tool dependency for type safety of scss modules.",
+            "author": "dzearing@microsoft.com",
+            "commit": "ada208a94fa8033afa8049b7997636b96b5e7193"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/experiments_v7.22.8",
+      "version": "7.22.8",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/experiments_v7.22.7",
+      "version": "7.22.7",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/experiments_v7.22.6",
+      "version": "7.22.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/experiments_v7.22.3",
+      "version": "7.22.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/experiments_v7.22.0",
+      "version": "7.22.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "convert initializeFocusRects to hook",
+            "author": "xgao@microsoft.com",
+            "commit": "b0ce989570bbf0394bb14913017150357ebccee2"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/experiments_v7.21.6",
+      "version": "7.21.6",
+      "comments": {
+        "none": [
+          {
+            "comment": "Remove typedef rule override",
+            "author": "elcraig@microsoft.com",
+            "commit": "12186bf0a00e97c34af5c510007b70610876c500"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Mar 2020 12:27:02 GMT",
+      "tag": "@uifabric/experiments_v7.21.4",
+      "version": "7.21.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshots",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "3e9562ca49b5e9b3eeb5a789edcbf6c03b5eb885"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Added demo page for FloatingSuggestionsComposite",
+            "author": "sanredd@microsoft.com",
+            "commit": "94bd7374b7a08e037f3b195e4997acde2027c51e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 03 Mar 2020 12:27:24 GMT",
+      "tag": "@uifabric/experiments_v7.21.3",
+      "version": "7.21.3",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Turning on tslint 'deprecation' rule.",
+            "author": "Humberto.Morimoto@microsoft.com",
+            "commit": "54a88d96894aeb605e765a1d3d66e02198c38a7e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Feb 2020 12:23:46 GMT",
+      "tag": "@uifabric/experiments_v7.21.0",
+      "version": "7.21.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updated Tile (in experiments) to pass some link-specific props (e.g. 'target', 'download') to its internal link so that users of Tile can customize the link behavior. The Tile link now also defaults to <span> (instead of <button>) when no href or onClick is passed. Updated Tile.Media.Example to include a linking demo showing the new functionality.",
+            "author": "Graham.Langston@microsoft.com",
+            "commit": "e6839e8b1e2e70aa08653ae936ecf828ca6ac597"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 26 Feb 2020 12:28:12 GMT",
+      "tag": "@uifabric/experiments_v7.20.3",
+      "version": "7.20.3",
+      "comments": {
+        "none": [
+          {
+            "comment": "New composite FloatingSuggestion component, to be used in UnifiedPicker",
+            "author": "sanredd@microsoft.com",
+            "commit": "222b78a9e29247dc74de795a4e1925ee53c545f5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 21 Feb 2020 12:20:14 GMT",
       "tag": "@uifabric/experiments_v7.20.0",
       "version": "7.20.0",

@@ -2,7 +2,7 @@ import { getGlobalClassNames, FontWeights } from '../../Styling';
 import { IDocumentCardLocationStyleProps, IDocumentCardLocationStyles } from './DocumentCardLocation.types';
 
 export const DocumentCardLocationGlobalClassNames = {
-  root: 'ms-DocumentCardLocation'
+  root: 'ms-DocumentCardLocation',
 };
 
 export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCardLocationStyles => {
@@ -29,11 +29,11 @@ export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCard
         selectors: {
           ':hover': {
             color: palette.themePrimary,
-            cursor: 'pointer'
-          }
-        }
+            cursor: 'pointer',
+          },
+        },
       },
-      className
-    ]
+      className,
+    ],
   };
 };

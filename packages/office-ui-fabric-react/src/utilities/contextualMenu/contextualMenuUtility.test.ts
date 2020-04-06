@@ -23,7 +23,7 @@ describe('getIsChecked', () => {
   it('when item cannot be checked', () => {
     const menuItem: IContextualMenuItem = {
       key: '123',
-      canCheck: false
+      canCheck: false,
     };
     expect(getIsChecked(menuItem)).toBe(null);
   });

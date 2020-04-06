@@ -5,7 +5,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
   { key: 'C', text: 'Option C', disabled: true },
-  { key: 'D', text: 'Option D' }
+  { key: 'D', text: 'Option D' },
 ];
 
 export const ChoiceGroupControlledExample: React.FunctionComponent = () => {

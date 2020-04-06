@@ -9,7 +9,7 @@ import {
   getDocument,
   focusAsync,
   initializeComponentRef,
-  on
+  on,
 } from '../../Utilities';
 import { IFocusTrapZone, IFocusTrapZoneProps } from './FocusTrapZone.types';
 
@@ -47,8 +47,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public componentDidUpdate(prevProps: IFocusTrapZoneProps) {
-    const prevForceFocusInsideTrap = prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
-    const newForceFocusInsideTrap = this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
+    const prevForceFocusInsideTrap =
+      prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
+    const newForceFocusInsideTrap =
+      this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
     const prevDisabled = prevProps.disabled !== undefined ? prevProps.disabled : false;
     const newDisabled = this.props.disabled !== undefined ? this.props.disabled : false;
 
@@ -96,10 +98,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const bumperProps = {
       style: {
         pointerEvents: 'none',
-        position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
+        position: 'fixed', // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
       tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
-      'data-is-visible': true
+      'data-is-visible': true,
     } as React.HTMLAttributes<HTMLDivElement>;
 
     return (
@@ -133,7 +135,9 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     }
 
     const focusSelector =
-      typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
+      typeof firstFocusableSelector === 'string'
+        ? firstFocusableSelector
+        : firstFocusableSelector && firstFocusableSelector();
 
     let _firstFocusableChild: HTMLElement | null = null;
 
@@ -144,7 +148,14 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
       // Fall back to first element if query selector did not match any elements.
       if (!_firstFocusableChild) {
-        _firstFocusableChild = getNextElement(this._root.current, this._root.current.firstChild as HTMLElement, false, false, false, true);
+        _firstFocusableChild = getNextElement(
+          this._root.current,
+          this._root.current.firstChild as HTMLElement,
+          false,
+          false,
+          false,
+          true,
+        );
       }
     }
     if (_firstFocusableChild) {
@@ -199,7 +210,9 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
       return;
     }
 
-    const currentBumper = (isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current) as HTMLElement;
+    const currentBumper = (isFirstBumper === this._hasFocus
+      ? this._lastBumper.current
+      : this._firstBumper.current) as HTMLElement;
 
     if (this._root.current) {
       const nextFocusable =
@@ -209,7 +222,8 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
       if (nextFocusable) {
         if (this._isBumper(nextFocusable)) {
-          // This can happen when FTZ contains no tabbable elements. focus will take care of finding a focusable element in FTZ.
+          // This can happen when FTZ contains no tabbable elements.
+          // focus will take care of finding a focusable element in FTZ.
           this.focus();
         } else {
           nextFocusable.focus();

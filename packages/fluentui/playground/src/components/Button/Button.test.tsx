@@ -13,7 +13,7 @@ describe('ButtonBase', () => {
         <ButtonBase ref={button1}>Button 1</ButtonBase>
         <ButtonBase ref={button2}>Button 2</ButtonBase>
         <ButtonBase ref={button3}>Button 3</ButtonBase>
-      </div>
+      </div>,
     );
 
     const buttons = wrapper.getDOMNode().querySelectorAll('button') as NodeListOf<HTMLButtonElement>;

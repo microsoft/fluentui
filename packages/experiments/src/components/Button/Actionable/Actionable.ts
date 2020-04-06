@@ -11,7 +11,7 @@ export const Actionable: React.FunctionComponent<IActionableProps> = composed({
   state,
   styles,
   tokens,
-  view
+  view,
 });
 
 export default Actionable;

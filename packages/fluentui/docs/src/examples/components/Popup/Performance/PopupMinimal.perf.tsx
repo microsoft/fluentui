@@ -1,4 +1,4 @@
-import { Popup } from '@fluentui/react';
+import { Popup } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const PopupMinimalPerf = () => <Popup />;

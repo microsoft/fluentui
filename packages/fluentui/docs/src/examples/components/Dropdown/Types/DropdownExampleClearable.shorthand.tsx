@@ -1,4 +1,4 @@
-import { Dropdown } from '@fluentui/react';
+import { Dropdown } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const inputItems = [
@@ -10,7 +10,7 @@ const inputItems = [
   'Imperator Furiosa',
   'Bruce Banner',
   'Peter Parker',
-  'Selina Kyle'
+  'Selina Kyle',
 ];
 
 const DropdownClearableExample = () => <Dropdown clearable items={inputItems} placeholder="Select your hero" />;

@@ -9,7 +9,7 @@ const getKnobControls = (knobsContext: KnobContextValue): Record<'Control' | 'Fi
   const controls = {
     Control: KnobControl,
     Field: KnobField,
-    Label: KnobLabel
+    Label: KnobLabel,
   };
 
   if (process.env.NODE_ENV !== 'production') {
@@ -30,7 +30,7 @@ const getKnobComponents = (knobsContext: KnobContextValue): Record<KnobDefinitio
     number: KnobNumber,
     range: KnobRange,
     select: KnobSelect,
-    string: KnobString
+    string: KnobString,
   };
 
   if (process.env.NODE_ENV !== 'production') {

@@ -21,7 +21,7 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
             { key: 'B', text: 'Option b' },
             { key: 'C', text: 'Option c', disabled: true },
             { key: 'D', text: 'Option d' },
-            { key: 'E', text: 'Option e' }
+            { key: 'E', text: 'Option e' },
           ]}
           required={true}
           styles={{ dropdown: { width: 300 } }}
@@ -36,7 +36,7 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
           { key: 'B', text: 'Option b' },
           { key: 'C', text: 'Option c', disabled: true },
           { key: 'D', text: 'Option d' },
-          { key: 'E', text: 'Option e' }
+          { key: 'E', text: 'Option e' },
         ]}
         required={true}
         styles={{ dropdown: { width: 300 } }}

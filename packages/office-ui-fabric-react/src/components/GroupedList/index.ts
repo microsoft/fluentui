@@ -9,3 +9,4 @@ export * from './GroupShowAll';
 export { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 export { GroupSpacer } from './GroupSpacer';
 export * from './GroupSpacer.types';
+export * from './GroupedListSection';

@@ -10,6 +10,6 @@ module.exports = resources.createServeConfig({
   entry: './src/index.scenarios.tsx',
   mode: 'production',
   output: {
-    filename: 'perf-test.js'
-  }
+    filename: 'perf-test.js',
+  },
 });

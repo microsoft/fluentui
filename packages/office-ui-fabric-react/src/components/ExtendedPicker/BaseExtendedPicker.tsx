@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css } from '../../Utilities';
+import { KeyCodes, css, initializeComponentRef } from '../../Utilities';
 import { Autofill } from '../../Autofill';
 import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
@@ -17,7 +17,8 @@ export interface IBaseExtendedPickerState<T> {
   suggestionItems: T[] | null;
 }
 
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>>
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
+  extends React.Component<P, IBaseExtendedPickerState<T>>
   implements IBaseExtendedPicker<T> {
   public floatingPicker = React.createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = React.createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
@@ -31,6 +32,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
   constructor(basePickerProps: P) {
     super(basePickerProps);
 
+    initializeComponentRef(this);
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
 
     this.state = {
@@ -40,7 +42,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
         ? (this.props.defaultSelectedItems as T[])
         : this.props.selectedItems
         ? (this.props.selectedItems as T[])
-        : null
+        : null,
     };
 
     this.floatingPickerProps = this.props.floatingPickerProps;
@@ -204,8 +206,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     }
 
     if (this.floatingPicker.current && this.inputElement) {
-      // Update the value if the input value is empty or it is different than the current inputText from the floatingPicker
-      const shoudUpdateValue = this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
+      // Update the value if the input value is empty or is different than the current inputText from the floatingPicker
+      const shoudUpdateValue =
+        this.inputElement.value === '' || this.inputElement.value !== this.floatingPicker.current.inputText;
       this.floatingPicker.current.showPicker(shoudUpdateValue);
     }
   };
@@ -260,7 +263,9 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     const currentRenderedQueryString = this.props.currentRenderedQueryString;
     const queryString = this.state.queryString;
     if (currentRenderedQueryString === undefined || currentRenderedQueryString === queryString) {
-      const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+      const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
+        ? (this.props.onItemSelected as any)(item)
+        : item;
 
       if (processedItem === null) {
         return;

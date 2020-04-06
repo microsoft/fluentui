@@ -6,9 +6,13 @@ import {
   KeyCodes,
   getId,
   warnMutuallyExclusive,
-  warnConditionallyRequiredProps
+  warnConditionallyRequiredProps,
 } from '../../Utilities';
-import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
+import {
+  ISwatchColorPickerProps,
+  ISwatchColorPickerStyleProps,
+  ISwatchColorPickerStyles,
+} from './SwatchColorPicker.types';
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
@@ -27,7 +31,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     cellShape: 'circle',
     disabled: false,
     shouldFocusCircularNavigate: true,
-    cellMargin: 10
+    cellMargin: 10,
   } as ISwatchColorPickerProps;
 
   private _id: string;
@@ -52,14 +56,20 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
 
     if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive(COMPONENT_NAME, props, {
-        focusOnHover: 'onHover'
+        focusOnHover: 'onHover',
       });
 
-      warnConditionallyRequiredProps(COMPONENT_NAME, props, ['focusOnHover'], 'mouseLeaveParentSelector', !!props.mouseLeaveParentSelector);
+      warnConditionallyRequiredProps(
+        COMPONENT_NAME,
+        props,
+        ['focusOnHover'],
+        'mouseLeaveParentSelector',
+        !!props.mouseLeaveParentSelector,
+      );
 
       warnDeprecations(COMPONENT_NAME, props, {
         positionInSet: 'ariaPosInSet',
-        setSize: 'ariaSetSize'
+        setSize: 'ariaSetSize',
       });
     }
 
@@ -72,7 +82,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     }
 
     this.state = {
-      selectedIndex
+      selectedIndex,
     };
   }
 
@@ -80,7 +90,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
   public UNSAFE_componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
     if (newProps.selectedId !== undefined) {
       this.setState({
-        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId)
+        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId),
       });
     }
   }
@@ -97,19 +107,21 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     const {
       colorCells,
       columnCount,
+      // tslint:disable:deprecation
       ariaPosInSet = this.props.positionInSet,
       ariaSetSize = this.props.setSize,
+      // tslint:enable:deprecation
       shouldFocusCircularNavigate,
       className,
       doNotContainWithinFocusZone,
       styles,
-      cellMargin
+      cellMargin,
     } = this.props;
 
     const classNames = getClassNames(styles!, {
       theme: this.props.theme!,
       className,
-      cellMargin
+      cellMargin,
     });
 
     if (colorCells.length < 1 || columnCount < 1) {
@@ -131,7 +143,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
         styles={{
           root: classNames.root,
           tableCell: classNames.tableCell,
-          focusedContainer: classNames.focusedContainer
+          focusedContainer: classNames.focusedContainer,
         }}
       />
     );
@@ -274,7 +286,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
    * Callback that
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLButtonElement>): void => {
-    if (ev.which === KeyCodes.up || ev.which === KeyCodes.down || ev.which === KeyCodes.left || ev.which === KeyCodes.right) {
+    if (
+      ev.which === KeyCodes.up ||
+      ev.which === KeyCodes.down ||
+      ev.which === KeyCodes.left ||
+      ev.which === KeyCodes.right
+    ) {
       this.setNavigationTimeout();
     }
   };
@@ -350,7 +367,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
       // Update internal state only if the component is uncontrolled
       if (this.props.isControlled !== true) {
         this.setState({
-          selectedIndex: index
+          selectedIndex: index,
         });
       }
     }

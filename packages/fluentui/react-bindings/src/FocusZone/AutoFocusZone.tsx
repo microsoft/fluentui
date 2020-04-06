@@ -15,7 +15,7 @@ export default class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
 
   static propTypes = {
     as: PropTypes.elementType,
-    firstFocusableSelector: PropTypes.oneOfType([PropTypes.func, PropTypes.string])
+    firstFocusableSelector: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   };
 
   static handledProps = _.keys(AutoFocusZone.propTypes) as any;

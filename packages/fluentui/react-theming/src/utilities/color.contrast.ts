@@ -205,7 +205,7 @@ export type RequiredContrast = 'low' | 'medium' | 'high';
 const _contrastDefaults: { [K in RequiredContrast]: number } = {
   low: 3.0,
   medium: 4.5,
-  high: 6.0
+  high: 6.0,
 };
 
 /**
@@ -230,7 +230,7 @@ interface IContrastCache {
  */
 const _contrastCache: IContrastCache = {
   rgbLookup: {},
-  cache: {}
+  cache: {},
 };
 
 /**
@@ -241,7 +241,11 @@ const _contrastCache: IContrastCache = {
  * @param backgroundColor - background color to that the color needs to be shown on
  * @param desiredRatio - desired contrast ratio, defaults to 4.5
  */
-export function getContrastingColor(color: string, backgroundColor: string, requiredContrast: RequiredContrast = 'medium'): string {
+export function getContrastingColor(
+  color: string,
+  backgroundColor: string,
+  requiredContrast: RequiredContrast = 'medium',
+): string {
   const desiredRatio = _contrastDefaults[requiredContrast];
   const cache = _contrastCache.cache;
   /* eslint-disable no-multi-assign */

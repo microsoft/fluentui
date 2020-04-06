@@ -6,7 +6,7 @@ import {
   IContextualMenuItemProps,
   ContextualMenuItem,
   IContextualMenuItemStyles,
-  IContextualMenuStyles
+  IContextualMenuStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
@@ -15,11 +15,11 @@ const theme = getTheme();
 const itemStyles: Partial<IContextualMenuItemStyles> = {
   label: { fontSize: 18 },
   icon: { color: theme.palette.red },
-  iconHovered: { color: theme.palette.redDark }
+  iconHovered: { color: theme.palette.redDark },
 };
 // For passing the styles through to the context menus
 const menuStyles: Partial<IContextualMenuStyles> = {
-  subComponentStyles: { menuItem: itemStyles, callout: {} }
+  subComponentStyles: { menuItem: itemStyles, callout: {} },
 };
 
 // Custom renderer for main command bar items
@@ -31,7 +31,7 @@ const CustomButton: React.FunctionComponent<IButtonProps> = props => {
       onClick={buttonOnMouseClick}
       styles={{
         ...props.styles,
-        ...itemStyles
+        ...itemStyles,
       }}
     />
   );
@@ -56,8 +56,8 @@ const overflowProps: IButtonProps = {
     isBeakVisible: true,
     beakWidth: 20,
     gapSpace: 10,
-    directionalHint: DirectionalHint.topCenter
-  }
+    directionalHint: DirectionalHint.topCenter,
+  },
 };
 
 export const CommandBarButtonAsExample: React.FunctionComponent = () => {
@@ -86,19 +86,19 @@ const _items: ICommandBarItemProps[] = [
       styles: menuStyles,
       items: [
         { key: 'emailMessage', text: 'Email message', iconProps: { iconName: 'Mail' } },
-        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } }
-      ]
-    }
+        { key: 'calendarEvent', text: 'Calendar event', iconProps: { iconName: 'Calendar' } },
+      ],
+    },
   },
   { key: 'upload', text: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric' },
   { key: 'share', text: 'Share', iconProps: { iconName: 'Share' }, onClick: () => console.log('Share') },
-  { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') }
+  { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') },
 ];
 
 const _overflowItems: ICommandBarItemProps[] = [
   { key: 'move', text: 'Move to...', onClick: () => console.log('Move to'), iconProps: { iconName: 'MoveToFolder' } },
   { key: 'copy', text: 'Copy to...', onClick: () => console.log('Copy to'), iconProps: { iconName: 'Copy' } },
-  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } }
+  { key: 'rename', text: 'Rename...', onClick: () => console.log('Rename'), iconProps: { iconName: 'Edit' } },
 ];
 
 const _farItems: ICommandBarItemProps[] = [
@@ -109,7 +109,14 @@ const _farItems: ICommandBarItemProps[] = [
     ariaLabel: 'Grid view',
     iconOnly: true,
     iconProps: { iconName: 'Tiles' },
-    onClick: () => console.log('Tiles')
+    onClick: () => console.log('Tiles'),
   },
-  { key: 'info', text: 'Info', ariaLabel: 'Info', iconOnly: true, iconProps: { iconName: 'Info' }, onClick: () => console.log('Info') }
+  {
+    key: 'info',
+    text: 'Info',
+    ariaLabel: 'Info',
+    iconOnly: true,
+    iconProps: { iconName: 'Info' },
+    onClick: () => console.log('Info'),
+  },
 ];

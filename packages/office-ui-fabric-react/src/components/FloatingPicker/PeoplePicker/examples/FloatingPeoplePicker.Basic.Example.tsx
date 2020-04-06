@@ -5,7 +5,7 @@ import {
   IBaseFloatingPicker,
   IBaseFloatingPickerSuggestionProps,
   FloatingPeoplePicker,
-  SuggestionsStore
+  SuggestionsStore,
 } from 'office-ui-fabric-react/lib/FloatingPicker';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
 import { people } from '@uifabric/example-data';
@@ -24,7 +24,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
 
     this.state = {
       peopleList: people,
-      searchValue: ''
+      searchValue: '',
     };
   }
 
@@ -39,9 +39,9 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
           shouldShow: () => {
             const picker = this._picker.current;
             return !!picker && picker.suggestions.length > 0;
-          }
-        }
-      ]
+          },
+        },
+      ],
     };
 
     return (
@@ -104,7 +104,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
 
     if (itemIndex >= 0) {
       this.setState({
-        peopleList: peopleList.slice(0, itemIndex).concat(peopleList.slice(itemIndex + 1))
+        peopleList: peopleList.slice(0, itemIndex).concat(peopleList.slice(itemIndex + 1)),
       });
     }
   };

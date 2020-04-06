@@ -23,7 +23,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this.state = {
       selectedDate: null,
       selectedDateRange: null,
-      daysToSelectInDayView: props.calendarDayProps ? props.calendarDayProps.daysToSelectInDayView : 1
+      daysToSelectInDayView: props.calendarDayProps ? props.calendarDayProps.daysToSelectInDayView : 1,
     };
 
     this._onDismiss = this._onDismiss.bind(this);
@@ -44,7 +44,8 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       <div className={styles.wrapper}>
         {
           <div>
-            Selected date(s): <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
+            Selected date(s):{' '}
+            <span>{!this.state.selectedDate ? 'Not set' : this.state.selectedDate.toLocaleString()}</span>
           </div>
         }
         <div>
@@ -81,7 +82,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           strings={defaultDayPickerStrings}
           calendarDayProps={{
             ...this.props.calendarDayProps,
-            daysToSelectInDayView: this.state.daysToSelectInDayView
+            daysToSelectInDayView: this.state.daysToSelectInDayView,
           }}
         />
         {this.props.showNavigateButtons && (
@@ -102,7 +103,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
                 { key: 3, text: '3' },
                 { key: 4, text: '4' },
                 { key: 5, text: '5' },
-                { key: 6, text: '6' }
+                { key: 6, text: '6' },
               ]}
               onChange={this._onDaysToSelectInDayViewDropdownChange}
             />
@@ -112,11 +113,14 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     );
   }
 
-  private _onDaysToSelectInDayViewDropdownChange = (ev: React.FormEvent<HTMLElement>, option: IDropdownOption | undefined): void => {
+  private _onDaysToSelectInDayViewDropdownChange = (
+    ev: React.FormEvent<HTMLElement>,
+    option: IDropdownOption | undefined,
+  ): void => {
     this.setState((prevState: ICalendarInlineExampleState) => {
       return {
         ...prevState,
-        daysToSelectInDayView: option && (option.key as number)
+        daysToSelectInDayView: option && (option.key as number),
       };
     });
   };
@@ -143,7 +147,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const newSelectedDate = addDays(subtractFrom, -daysToSubtract);
 
       return {
-        selectedDate: newSelectedDate
+        selectedDate: newSelectedDate,
       };
     });
   }
@@ -155,7 +159,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
       const newSelectedDate = addDays(dateRangeArray.pop()!, 1);
 
       return {
-        selectedDate: newSelectedDate
+        selectedDate: newSelectedDate,
       };
     });
   }
@@ -164,7 +168,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
     this.setState((prevState: ICalendarInlineExampleState) => {
       return {
         selectedDate: date,
-        selectedDateRange: dateRangeArray
+        selectedDateRange: dateRangeArray,
       };
     });
   }

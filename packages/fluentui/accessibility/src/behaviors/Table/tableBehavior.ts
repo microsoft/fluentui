@@ -11,12 +11,12 @@ import tableRowBehavior from './tableRowBehavior';
 const tableBehavior: Accessibility = props => ({
   attributes: {
     root: {
-      role: 'table'
-    }
+      role: 'table',
+    },
   },
   childBehaviors: {
-    row: tableRowBehavior
-  }
+    row: tableRowBehavior,
+  },
 });
 
 export default tableBehavior;

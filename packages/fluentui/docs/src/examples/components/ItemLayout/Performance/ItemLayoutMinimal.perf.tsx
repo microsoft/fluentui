@@ -1,4 +1,4 @@
-import { ItemLayout } from '@fluentui/react';
+import { ItemLayout } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const ItemLayoutMinimalPerf = () => <ItemLayout />;

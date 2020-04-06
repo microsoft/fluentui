@@ -20,7 +20,9 @@ class NestingRoot<T extends Node> extends React.Component<NestingProps> {
 
   render() {
     return (
-      <NestingContext.Provider value={this.registry}>{this.props.children(this.getRefs, this.parentRef as any)}</NestingContext.Provider>
+      <NestingContext.Provider value={this.registry}>
+        {this.props.children(this.getRefs, this.parentRef as any)}
+      </NestingContext.Provider>
     );
   }
 }

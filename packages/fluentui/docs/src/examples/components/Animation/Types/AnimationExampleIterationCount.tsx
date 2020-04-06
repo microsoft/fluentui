@@ -1,17 +1,18 @@
 import * as React from 'react';
-import { Animation, Icon, Grid, Text, Provider } from '@fluentui/react';
+import { Animation, Grid, Text, Provider } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
     from: {
-      transform: 'rotate(0deg)'
+      transform: 'rotate(0deg)',
     },
     to: {
-      transform: 'rotate(360deg)'
-    }
+      transform: 'rotate(360deg)',
+    },
   },
   duration: '5s',
-  iterationCount: 'infinite'
+  iterationCount: 'infinite',
 };
 
 const AnimationExampleIterationCount = () => (
@@ -23,22 +24,22 @@ const AnimationExampleIterationCount = () => (
       <Text content="Infinite" />
       <div>
         <Animation name="spinner" iterationCount="1">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" iterationCount="2">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" iterationCount="5">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
       <div>
         <Animation name="spinner" iterationCount="infinite">
-          <Icon name="mention" circular bordered />
+          <MentionIcon circular bordered />
         </Animation>
       </div>
     </Grid>

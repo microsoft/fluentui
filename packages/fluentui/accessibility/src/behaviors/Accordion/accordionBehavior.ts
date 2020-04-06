@@ -12,25 +12,25 @@ import { Accessibility } from '../../types';
 const accordionBehavior: Accessibility = () => ({
   attributes: {
     root: {
-      role: 'presentation'
-    }
+      role: 'presentation',
+    },
   },
   keyActions: {
     root: {
       moveNext: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowDown }],
       },
       movePrevious: {
-        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }]
+        keyCombinations: [{ keyCode: keyboardKey.ArrowUp }],
       },
       moveFirst: {
-        keyCombinations: [{ keyCode: keyboardKey.Home }]
+        keyCombinations: [{ keyCode: keyboardKey.Home }],
       },
       moveLast: {
-        keyCombinations: [{ keyCode: keyboardKey.End }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.End }],
+      },
+    },
+  },
 });
 
 export default accordionBehavior;

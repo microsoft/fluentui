@@ -4,7 +4,14 @@ import * as puppeteer from 'puppeteer';
 import { convertAxeToSarif, SarifLog } from 'axe-sarif-converter';
 import { Stylesheet, InjectionMode, resetIds } from 'office-ui-fabric-react';
 
-const disabledAxeRules = ['document-title', 'html-has-lang', 'landmark-one-main', 'page-has-heading-one', 'region', 'bypass'];
+const disabledAxeRules = [
+  'document-title',
+  'html-has-lang',
+  'landmark-one-main',
+  'page-has-heading-one',
+  'region',
+  'bypass',
+];
 
 /* tslint:disable-next-line:no-any */
 function renderTestHtml(element: React.ReactElement<any>): string {

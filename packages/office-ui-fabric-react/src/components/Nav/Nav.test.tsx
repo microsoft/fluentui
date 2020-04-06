@@ -10,13 +10,13 @@ import { INavLink } from './Nav.types';
 const linkOne: INavLink = {
   key: 'Bing',
   name: 'Bing',
-  url: 'http://localhost/#/testing1'
+  url: 'http://localhost/#/testing1',
 };
 
 const linkTwo: INavLink = {
   key: 'OneDrive',
   name: 'OneDrive',
-  url: 'http://localhost/#/testing2'
+  url: 'http://localhost/#/testing2',
 };
 
 describe('Nav', () => {
@@ -28,12 +28,12 @@ describe('Nav', () => {
             links: [
               {
                 name: '',
-                url: ''
-              }
-            ]
-          }
+                url: '',
+              },
+            ],
+          },
         ]}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -49,12 +49,12 @@ describe('Nav', () => {
               {
                 name: 'foo',
                 url: 'http://example.com',
-                onClick: handler
-              }
-            ]
-          }
+                onClick: handler,
+              },
+            ],
+          },
         ]}
-      />
+      />,
     );
 
     const link = nav.find('a.ms-Button');
@@ -73,12 +73,12 @@ describe('Nav', () => {
                 name: 'foo',
                 url: 'http://example.com',
                 onClick: handler,
-                disabled: true
-              }
-            ]
-          }
+                disabled: true,
+              },
+            ],
+          },
         ]}
-      />
+      />,
     );
 
     const link = nav.find('button.ms-Button');
@@ -97,10 +97,10 @@ describe('Nav', () => {
       <Nav
         groups={[
           {
-            links: [linkOne, linkTwo]
-          }
+            links: [linkOne, linkTwo],
+          },
         ]}
-      />
+      />,
     );
     window.history.pushState({}, '', '/#/testing1');
     nav.instance().forceUpdate();
@@ -114,10 +114,10 @@ describe('Nav', () => {
       <Nav
         groups={[
           {
-            links: [linkOne, linkTwo]
-          }
+            links: [linkOne, linkTwo],
+          },
         ]}
-      />
+      />,
     );
     window.history.pushState({}, '', '/#/testing2');
     nav.instance().forceUpdate();
@@ -134,28 +134,32 @@ describe('Nav', () => {
     const linkWithNoTargetSpecified: INavLink = {
       key: 'Link1',
       name: 'Link1',
-      url: 'https://cdpn.io/bar'
+      url: 'https://cdpn.io/bar',
     };
     const linkWithRelativeURL: INavLink = {
       key: 'Link2',
       name: 'Link2',
       target: '_blank',
-      url: '/foo'
+      url: '/foo',
     };
     const linkWithNonRelativeURL: INavLink = {
       key: 'Link3',
       name: 'Link3',
       target: '_blank',
-      url: 'https://cdpn.io/bar'
+      url: 'https://cdpn.io/bar',
     };
     const linkWithNonRelativeURL2: INavLink = {
       key: 'Link4',
       name: 'Link4',
       target: '_blank',
-      url: 'http://cdpn.io/bar'
+      url: 'http://cdpn.io/bar',
     };
     const nav = mount<NavBase>(
-      <Nav groups={[{ links: [linkWithNoTargetSpecified, linkWithRelativeURL, linkWithNonRelativeURL, linkWithNonRelativeURL2] }]} />
+      <Nav
+        groups={[
+          { links: [linkWithNoTargetSpecified, linkWithRelativeURL, linkWithNonRelativeURL, linkWithNonRelativeURL2] },
+        ]}
+      />,
     );
 
     const links = nav.getDOMNode().querySelectorAll('.ms-Nav-link');

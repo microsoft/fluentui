@@ -25,7 +25,7 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
   listGridExample: {
     overflow: 'hidden',
     fontSize: 0,
-    position: 'relative'
+    position: 'relative',
   },
   listGridExampleTile: {
     textAlign: 'center',
@@ -42,19 +42,19 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
         top: 2,
         bottom: 2,
         boxSizing: 'border-box',
-        border: `1px solid ${palette.white}`
-      }
-    }
+        border: `1px solid ${palette.white}`,
+      },
+    },
   },
   listGridExampleSizer: {
-    paddingBottom: '100%'
+    paddingBottom: '100%',
   },
   listGridExamplePadder: {
     position: 'absolute',
     left: 2,
     top: 2,
     right: 2,
-    bottom: 2
+    bottom: 2,
   },
   listGridExampleLabel: {
     background: 'rgba(0, 0, 0, 0.3)',
@@ -65,14 +65,14 @@ const classNames: IListGridExampleClassObject = mergeStyleSets({
     left: 0,
     width: '100%',
     fontSize: fonts.small.fontSize,
-    boxSizing: 'border-box'
+    boxSizing: 'border-box',
   },
   listGridExampleImage: {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '100%'
-  }
+    width: '100%',
+  },
 });
 
 const ROWS_PER_PAGE = 3;
@@ -124,7 +124,7 @@ export class ListGridExample extends React.Component<IListGridExampleProps> {
         className={classNames.listGridExampleTile}
         data-is-focusable={true}
         style={{
-          width: 100 / this._columnCount + '%'
+          width: 100 / this._columnCount + '%',
         }}
       >
         <div className={classNames.listGridExampleSizer}>

@@ -36,10 +36,10 @@ const theme = createTheme({
   components: {
     Slider: {
       tokens: {
-        railColor: 'green'
-      }
-    }
-  }
+        railColor: 'green',
+      },
+    },
+  },
 });
 
 // Render the slider using the theme.

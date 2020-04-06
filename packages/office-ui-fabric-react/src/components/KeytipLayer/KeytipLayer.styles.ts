@@ -7,9 +7,9 @@ export const getLayerStyles = (props: ILayerStyleProps): ILayerStyles => {
     root: [
       {
         // Prioritize the Keytips above all other Layers
-        zIndex: ZIndexes.KeytipLayer
-      }
-    ]
+        zIndex: ZIndexes.KeytipLayer,
+      },
+    ],
   };
 };
 
@@ -24,8 +24,8 @@ export const getStyles = (props: IKeytipLayerStyleProps): IKeytipLayerStyles => 
         padding: 0,
         border: 0,
         overflow: 'hidden',
-        visibility: 'hidden'
-      }
-    ]
+        visibility: 'hidden',
+      },
+    ],
   };
 };

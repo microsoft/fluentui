@@ -9,7 +9,7 @@ import {
   disabledTokens,
   enabledTokens,
   hrefTokens,
-  ButtonStyles as styles
+  ButtonStyles as styles,
 } from '../Button.styles';
 import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from '../Button.types';
 import { ButtonSlots as slots, ButtonView as view } from '../Button.view';
@@ -20,7 +20,7 @@ export const DefaultButtonTokens: IButtonComponent['tokens'] = (props, theme): I
   !props.disabled && enabledTokens,
   props.circular && circularTokens,
   props.checked && checkedTokens,
-  props.disabled && disabledTokens
+  props.disabled && disabledTokens,
 ];
 
 export const DefaultButton: React.FunctionComponent<IButtonProps> = composed({
@@ -29,5 +29,5 @@ export const DefaultButton: React.FunctionComponent<IButtonProps> = composed({
   state,
   styles,
   tokens: DefaultButtonTokens,
-  view
+  view,
 });

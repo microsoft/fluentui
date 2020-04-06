@@ -34,9 +34,9 @@ describe('SearchBox', () => {
     wrapper = mount(
       <SearchBox
         clearButtonProps={{
-          onClick: () => (clickExecuted = true)
+          onClick: () => (clickExecuted = true),
         }}
-      />
+      />,
     );
 
     expect(wrapper.find('input').prop('value')).toEqual('');
@@ -76,9 +76,9 @@ describe('SearchBox', () => {
     wrapper = mount(
       <SearchBox
         iconProps={{
-          iconName: 'Filter'
+          iconName: 'Filter',
         }}
-      />
+      />,
     );
 
     const filterIcon = '';

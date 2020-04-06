@@ -3,7 +3,20 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  months: [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -20,7 +33,7 @@ const DayPickerStrings: IDatePickerStrings = {
 
   isRequiredErrorMessage: 'Field is required.',
 
-  invalidInputErrorMessage: 'Invalid date format.'
+  invalidInputErrorMessage: 'Invalid date format.',
 };
 
 export interface IDatePickerRequiredExampleState {
@@ -30,8 +43,8 @@ export interface IDatePickerRequiredExampleState {
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
-    maxWidth: '300px'
-  }
+    maxWidth: '300px',
+  },
 });
 
 export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRequiredExampleState> {
@@ -39,7 +52,7 @@ export class DatePickerRequiredExample extends React.Component<{}, IDatePickerRe
     super(props);
 
     this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday
+      firstDayOfWeek: DayOfWeek.Sunday,
     };
   }
 

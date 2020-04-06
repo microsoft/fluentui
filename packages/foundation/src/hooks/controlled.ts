@@ -6,9 +6,9 @@ export interface IControlledStateOptions<TProps, TProp extends keyof TProps, TDe
 }
 
 /**
- * Controlled state helper that gives priority to props value. Useful for components that have props with both controlled
- * and uncontrolled modes. Any props values will override state, but will not update internal state. If prop is defined
- * and then later undefined, state will revert to its previous value.
+ * Controlled state helper that gives priority to props value. Useful for components that have props with both
+ * controlled and uncontrolled modes. Any props values will override state, but will not update internal state.
+ * If prop is defined and then later undefined, state will revert to its previous value.
  *
  * @param props - The props object containing controlled prop values.
  * @param propName - The controlled prop name.
@@ -17,7 +17,7 @@ export interface IControlledStateOptions<TProps, TProp extends keyof TProps, TDe
 export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(
   props: Readonly<TProps>,
   propName: TProp,
-  options?: IControlledStateOptions<TProps, TProp, TDefaultProp>
+  options?: IControlledStateOptions<TProps, TProp, TDefaultProp>,
 ): [TProps[TProp] | undefined, React.Dispatch<React.SetStateAction<TProps[TProp]>>] {
   let defaultValue: TProps[TProp] | undefined;
   if (options) {
@@ -48,7 +48,7 @@ export function useControlledState<TProps, TProp extends keyof TProps, TDefaultP
 export function getControlledDerivedProps<TProps, TProp extends keyof TProps>(
   props: Readonly<TProps>,
   propName: TProp,
-  derivedValue: TProps[TProp]
+  derivedValue: TProps[TProp],
 ): TProps[TProp] {
   if (props[propName] !== undefined) {
     return props[propName];

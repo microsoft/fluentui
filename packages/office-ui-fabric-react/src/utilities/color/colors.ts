@@ -16,7 +16,6 @@ export * from './getFullColorString';
 export * from './updateSV';
 export * from './updateH';
 export * from './updateRGB';
-export * from './getColorFromString';
 export * from './updateA';
 export * from './correctRGB';
 export * from './correctHSV';

@@ -21,7 +21,7 @@ const useRangeKnob = <T extends number | string>(options: UseRangeKnobOptions<T>
     max: parseValue(max),
     step: parseValue(step),
     type: 'range',
-    ...rest
+    ...rest,
   });
 };
 

@@ -1,9 +1,16 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
+import {
+  DelayedRender,
+  getId,
+  classNamesFunction,
+  getNativeProps,
+  htmlElementProperties,
+  css,
+  initializeComponentRef,
+} from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
-import { css } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IMessageBarStyleProps, IMessageBarStyles>();
 
@@ -13,11 +20,11 @@ export interface IMessageBarState {
   expandSingleLine?: boolean;
 }
 
-export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
+export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
   public static defaultProps: IMessageBarProps = {
     messageBarType: MessageBarType.info,
     onDismiss: undefined,
-    isMultiline: true
+    isMultiline: true,
   };
 
   private ICON_MAP = {
@@ -25,9 +32,10 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     [MessageBarType.warning]: 'Info',
     [MessageBarType.error]: 'ErrorBadge',
     [MessageBarType.blocked]: 'Blocked2',
+    // tslint:disable-next-line:deprecation
     [MessageBarType.remove]: 'Blocked', // TODO remove deprecated value at >= 1.0.0
     [MessageBarType.severeWarning]: 'Warning',
-    [MessageBarType.success]: 'Completed'
+    [MessageBarType.success]: 'Completed',
   };
 
   private _classNames: { [key in keyof IMessageBarStyles]: string };
@@ -35,10 +43,11 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   constructor(props: IMessageBarProps) {
     super(props);
 
+    initializeComponentRef(this);
     this.state = {
       labelId: getId('MessageBar'),
       showContent: false,
-      expandSingleLine: false
+      expandSingleLine: false,
     };
   }
 
@@ -146,10 +155,17 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderInnerText(): JSX.Element {
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, htmlElementProperties, [
+      'className',
+    ]);
 
     return (
-      <div className={this._classNames.text} id={this.state.labelId} role="status" aria-live={this._getAnnouncementPriority()}>
+      <div
+        className={this._classNames.text}
+        id={this.state.labelId}
+        role="status"
+        aria-live={this._getAnnouncementPriority()}
+      >
         <span className={this._classNames.innerText} {...nativeProps}>
           <DelayedRender>
             <span>{this.props.children}</span>
@@ -163,7 +179,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     const hasActions = !!this._getActionsDiv() || !!this._getDismissDiv();
     const regionProps = {
       'aria-describedby': this.state.labelId,
-      role: 'region'
+      role: 'region',
     };
 
     return hasActions ? regionProps : {};
@@ -181,7 +197,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
       truncated: truncated,
       isMultiline: isMultiline,
       expandSingleLine: expandSingleLine,
-      className
+      className,
     });
   }
 

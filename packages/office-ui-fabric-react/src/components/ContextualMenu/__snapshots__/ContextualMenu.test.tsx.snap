@@ -33,7 +33,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         text-align: center;
         text-decoration: none;
         user-select: none;
-        vertical-align: top;
       }
       &::-moz-focus-inner {
         border: 0;
@@ -121,7 +120,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             margin-right: 4px;
             margin-top: 0;
             text-align: center;
-            vertical-align: middle;
           }
       data-icon-name="ChevronDown"
       role="presentation"
@@ -139,8 +137,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
       <div
         className=
             ms-Fabric
-            is-focusHidden
-            ms-Fabric--isFocusHidden
             ms-Layer-content
             {
               -moz-osx-font-smoothing: grayscale;

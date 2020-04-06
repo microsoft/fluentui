@@ -18,15 +18,15 @@ export const FluentTheme: ITheme = createTheme({
     neutralLighterAlt: NeutralColors.gray10,
     // Shared Colors
     red: SharedColors.red10,
-    redDark: SharedColors.red20
+    redDark: SharedColors.red20,
   },
   effects: {
     roundedCorner2: '2px',
     elevation4: Depths.depth4,
     elevation8: Depths.depth8,
     elevation16: Depths.depth16,
-    elevation64: Depths.depth64
-  }
+    elevation64: Depths.depth64,
+  },
 });
 
 export default FluentTheme;

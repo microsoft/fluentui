@@ -146,5 +146,5 @@ export const COLOR_VALUES = {
   white: [255, 255, 255],
   whitesmoke: [245, 245, 245],
   yellow: [255, 255, 0],
-  yellowgreen: [154, 205, 5]
+  yellowgreen: [154, 205, 5],
 };

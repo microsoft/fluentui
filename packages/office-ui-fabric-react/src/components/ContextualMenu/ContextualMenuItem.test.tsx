@@ -12,6 +12,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when a checkmark icon', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
+    // tslint:disable-next-line:deprecation
     let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -27,7 +28,7 @@ describe('ContextMenuItemChildren', () => {
           index={1}
           hasIcons={undefined}
           onCheckmarkClick={onCheckmarkClick}
-        />
+        />,
       );
     });
 
@@ -51,6 +52,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when hide checkmark icon for toggle command', () => {
     let onCheckmarkClick: jest.Mock;
     let menuItem: IContextualMenuItem;
+    // tslint:disable-next-line:deprecation
     let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -66,7 +68,7 @@ describe('ContextMenuItemChildren', () => {
           index={1}
           hasIcons={undefined}
           onCheckmarkClick={onCheckmarkClick}
-        />
+        />,
       );
     });
 
@@ -94,6 +96,7 @@ describe('ContextMenuItemChildren', () => {
   describe('when it has icons', () => {
     describe('when it has iconProps', () => {
       let menuItem: IContextualMenuItem;
+      // tslint:disable-next-line:deprecation
       let menuClassNames: IMenuItemClassNames;
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -101,7 +104,9 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: { iconName: 'itemIcon' }, text: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
+        wrapper = shallow(
+          <ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />,
+        );
       });
 
       it('renders the icon', () => {
@@ -111,6 +116,7 @@ describe('ContextMenuItemChildren', () => {
 
     describe('when it doesnt have iconProps', () => {
       let menuItem: IContextualMenuItem;
+      // tslint:disable-next-line:deprecation
       let menuClassNames: IMenuItemClassNames;
       let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -118,7 +124,9 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: {} };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
+        wrapper = shallow(
+          <ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />,
+        );
       });
 
       it('renders the icon with iconName', () => {
@@ -129,6 +137,7 @@ describe('ContextMenuItemChildren', () => {
 
   describe('when it has a sub menu', () => {
     let menuItem: IContextualMenuItem;
+    // tslint:disable-next-line:deprecation
     let menuClassNames: IMenuItemClassNames;
     let wrapper: ShallowWrapper<IContextualMenuItemProps, {}>;
 
@@ -137,7 +146,9 @@ describe('ContextMenuItemChildren', () => {
       menuItem = { key: '123', iconProps: {}, submenuIconProps: {} };
       menuClassNames = getMenuItemClassNames();
 
-      wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
+      wrapper = shallow(
+        <ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />,
+      );
     });
 
     it('renders the menu icon', () => {
@@ -146,6 +157,7 @@ describe('ContextMenuItemChildren', () => {
   });
 });
 
+// tslint:disable-next-line:deprecation
 function getMenuItemClassNames(): IMenuItemClassNames {
   return {
     item: 'item',
@@ -160,6 +172,6 @@ function getMenuItemClassNames(): IMenuItemClassNames {
     splitContainer: 'splitContainer',
     splitPrimary: 'splitPrimary',
     splitMenu: 'splitMenu',
-    linkContentMenu: 'linkContentMenu'
+    linkContentMenu: 'linkContentMenu',
   };
 }

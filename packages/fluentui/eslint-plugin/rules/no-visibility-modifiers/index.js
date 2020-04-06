@@ -3,7 +3,7 @@ const isTypeScriptFile = require('../../utils/isTypeScriptFile');
 const { AST_NODE_TYPES, ESLintUtils } = require('@typescript-eslint/experimental-utils');
 
 const createRule = ESLintUtils.RuleCreator(
-  name => `https://github.com/microsoft/fluent-ui-react/tree/master/packages/eslint-plugin/rules/${name}/index.js`
+  name => `https://github.com/microsoft/fluentui/blob/master/packages/fluentui/eslint-plugin/rules/${name}/index.js`,
 );
 
 module.exports = createRule({
@@ -13,12 +13,12 @@ module.exports = createRule({
     docs: {
       description: 'Require omit modifiers on class properties and methods',
       category: 'Best Practices',
-      recommended: 'error'
+      recommended: 'error',
     },
     messages: {
-      presentModifier: 'Present accessibility modifier on {{type}} {{name}}.'
+      presentModifier: 'Present accessibility modifier on {{type}} {{name}}.',
     },
-    schema: []
+    schema: [],
   },
   defaultOptions: [],
   create(context) {
@@ -33,8 +33,8 @@ module.exports = createRule({
         messageId,
         data: {
           type: nodeType,
-          name: nodeName
-        }
+          name: nodeName,
+        },
       });
     }
 
@@ -83,7 +83,10 @@ module.exports = createRule({
 
       if (isTypeScriptFile(context.getFilename())) {
         // HAS to be an identifier or assignment or TSC will throw
-        if (node.parameter.type !== AST_NODE_TYPES.Identifier && node.parameter.type !== AST_NODE_TYPES.AssignmentPattern) {
+        if (
+          node.parameter.type !== AST_NODE_TYPES.Identifier &&
+          node.parameter.type !== AST_NODE_TYPES.AssignmentPattern
+        ) {
           return;
         }
 
@@ -102,7 +105,7 @@ module.exports = createRule({
     return {
       TSParameterProperty: checkParameterPropertyAccessibilityModifier,
       ClassProperty: checkPropertyAccessibilityModifier,
-      MethodDefinition: checkMethodAccessibilityModifier
+      MethodDefinition: checkMethodAccessibilityModifier,
     };
-  }
+  },
 });

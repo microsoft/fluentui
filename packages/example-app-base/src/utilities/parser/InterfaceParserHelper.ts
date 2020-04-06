@@ -13,7 +13,7 @@ const JSDOC_DEPRECATED = '@deprecated';
 enum ParseState {
   default,
   comment,
-  declaration
+  declaration,
 }
 
 /**
@@ -144,7 +144,7 @@ export class InterfaceParserHelper extends BaseParser {
               type,
               defaultValue: defaultValue,
               interfacePropertyType: propType,
-              deprecatedMessage
+              deprecatedMessage,
             });
 
             // resets

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Alert } from '@fluentui/react/';
+import { Alert } from '@fluentui/react-northstar';
 
 import { LayoutSuggestions } from '../../../components/ComponentDoc/Suggestions';
 import Types from './Types';

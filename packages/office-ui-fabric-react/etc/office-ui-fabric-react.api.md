@@ -4,7 +4,6 @@
 
 ```ts
 
-import { BaseComponent } from '@uifabric/utilities';
 import { EventGroup } from '@uifabric/utilities';
 import { IBaseProps } from '@uifabric/utilities';
 import { IComponent } from '@uifabric/foundation';
@@ -18,6 +17,7 @@ import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
 import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
+import { IProcessedStyleSet } from '@uifabric/styling';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
@@ -43,10 +43,9 @@ import { SelectionDirection } from '@uifabric/utilities';
 import { SelectionMode } from '@uifabric/utilities';
 
 // @public (undocumented)
-export class ActionButton extends BaseComponent<IButtonProps, {}> {
+export class ActionButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -71,12 +70,14 @@ export class AnnouncedBase extends React.Component<IAnnouncedProps> {
 }
 
 // @public (undocumented)
-export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
+export class Autofill extends React.Component<IAutofillProps, IAutofillState> implements IAutofill {
     constructor(props: IAutofillProps);
     // (undocumented)
     clear(): void;
     // (undocumented)
     componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     readonly cursorLocation: number | null;
     // (undocumented)
@@ -106,12 +107,14 @@ export class BaseAutoFill extends Autofill {
 }
 
 // @public (undocumented)
-export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
-    constructor(props: IBaseButtonProps, rootClassName: string);
+export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonState> implements IButton {
+    constructor(props: IBaseButtonProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Partial<IBaseButtonProps>;
     // (undocumented)
@@ -129,7 +132,7 @@ export class BaseExtendedPeoplePicker extends BaseExtendedPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends BaseComponent<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
+export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extends React.Component<P, IBaseExtendedPickerState<T>> implements IBaseExtendedPicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected canAddItems(): boolean;
@@ -192,7 +195,7 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 }
 
 // @public (undocumented)
-export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends BaseComponent<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
+export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extends React.Component<P, IBaseFloatingPickerState> implements IBaseFloatingPicker {
     constructor(basePickerProps: P);
     // (undocumented)
     completeSuggestion: () => void;
@@ -267,7 +270,7 @@ export class BasePeopleSelectedItemsList extends BaseSelectedItemsList<IExtended
 }
 
 // @public (undocumented)
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState> implements IBasePicker<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     protected addItem: (item: T) => void;
@@ -381,7 +384,7 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
 }
 
 // @public (undocumented)
-export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends BaseComponent<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
+export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> extends React.Component<P, IBaseSelectedItemsListState<T>> implements IBaseSelectedItemsList<T> {
     constructor(basePickerProps: P);
     // (undocumented)
     addItems: (items: T[]) => void;
@@ -457,11 +460,10 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
 export function buildColumns(items: any[], canResizeColumns?: boolean, onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void, sortedColumnKey?: string, isSortedDescending?: boolean, groupedColumnKey?: string, isMultiline?: boolean): IColumn[];
 
 // @public @deprecated
-export class Button extends BaseComponent<IButtonProps, {}> {
+export class Button extends React.Component<IButtonProps, {}> {
     constructor(props: IButtonProps);
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -483,7 +485,7 @@ export enum ButtonType {
 }
 
 // @public (undocumented)
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
+export class Calendar extends React.Component<ICalendarProps, ICalendarState> implements ICalendar {
     constructor(props: ICalendarProps);
     // (undocumented)
     componentDidUpdate(): void;
@@ -568,12 +570,14 @@ export const Coachmark: React.FunctionComponent<ICoachmarkProps>;
 export const COACHMARK_ATTRIBUTE_NAME = "data-coachmarkid";
 
 // @public (undocumented)
-export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
+export class CoachmarkBase extends React.Component<ICoachmarkProps, ICoachmarkState> implements ICoachmark {
     constructor(props: ICoachmarkProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: ICoachmarkProps, prevState: ICoachmarkState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: Partial<ICoachmarkProps>;
     // (undocumented)
@@ -636,7 +640,7 @@ export enum ColumnDragEndLocation {
 }
 
 // @public (undocumented)
-export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
+export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
     constructor(props: IComboBoxProps);
     // (undocumented)
     componentDidMount(): void;
@@ -662,7 +666,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 export const CommandBar: React.FunctionComponent<ICommandBarProps>;
 
 // @public (undocumented)
-export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implements ICommandBar {
+export class CommandBarBase extends React.Component<ICommandBarProps, {}> implements ICommandBar {
+    constructor(props: ICommandBarProps);
     // (undocumented)
     static defaultProps: ICommandBarProps;
     // (undocumented)
@@ -674,10 +679,9 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     }
 
 // @public (undocumented)
-export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
+export class CommandBarButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -696,10 +700,9 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
 }
 
 // @public (undocumented)
-export class CompoundButton extends BaseComponent<IButtonProps, {}> {
+export class CompoundButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -712,7 +715,7 @@ export enum ConstrainMode {
 export const ContextualMenu: React.FunctionComponent<IContextualMenuProps>;
 
 // @public (undocumented)
-export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
+export class ContextualMenuBase extends React.Component<IContextualMenuProps, IContextualMenuState> {
     constructor(props: IContextualMenuProps);
     // (undocumented)
     componentDidMount(): void;
@@ -736,7 +739,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 export const ContextualMenuItem: React.FunctionComponent<IContextualMenuItemProps>;
 
 // @public (undocumented)
-export class ContextualMenuItemBase extends BaseComponent<IContextualMenuItemProps, {}> {
+export class ContextualMenuItemBase extends React.Component<IContextualMenuItemProps, {}> {
+    constructor(props: IContextualMenuItemProps);
     // (undocumented)
     dismissMenu: (dismissAll?: boolean | undefined) => void;
     // (undocumented)
@@ -783,7 +787,7 @@ export function cssColor(color?: string): IRGB | undefined;
 export const DatePicker: React.FunctionComponent<IDatePickerProps>;
 
 // @public (undocumented)
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+export class DatePickerBase extends React.Component<IDatePickerProps, IDatePickerState> implements IDatePicker {
     constructor(props: IDatePickerProps);
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
@@ -833,10 +837,9 @@ export enum DayOfWeek {
 export const DEFAULT_MASK_CHAR = "_";
 
 // @public (undocumented)
-export class DefaultButton extends BaseComponent<IButtonProps, {}> {
+export class DefaultButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -984,7 +987,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 export const DialogContent: React.FunctionComponent<IDialogContentProps>;
 
 // @public (undocumented)
-export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
+export class DialogContentBase extends React.Component<IDialogContentProps, {}> {
     constructor(props: IDialogContentProps);
     // (undocumented)
     static defaultProps: IDialogContentProps;
@@ -996,7 +999,8 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
 export const DialogFooter: React.FunctionComponent<IDialogFooterProps>;
 
 // @public (undocumented)
-export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
+export class DialogFooterBase extends React.Component<IDialogFooterProps, {}> {
+    constructor(props: IDialogFooterProps);
     // (undocumented)
     render(): JSX.Element;
     }
@@ -1100,7 +1104,7 @@ export enum ElementType {
 export const ExpandingCard: React.FunctionComponent<IExpandingCardProps>;
 
 // @public (undocumented)
-export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpandingCardState> {
+export class ExpandingCardBase extends React.Component<IExpandingCardProps, IExpandingCardState> {
     constructor(props: IExpandingCardProps);
     // (undocumented)
     componentDidMount(): void;
@@ -1127,7 +1131,7 @@ export class ExtendedPeoplePicker extends BaseExtendedPeoplePicker {
 }
 
 // @public (undocumented)
-export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
+export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemProps, IPeoplePickerItemState> {
     constructor(props: ISelectedPeopleItemProps);
     // (undocumented)
     protected persona: React.RefObject<HTMLDivElement>;
@@ -1139,10 +1143,7 @@ export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
-export class FabricBase extends React.Component<IFabricProps, {
-    isFocusVisible: boolean;
-}> {
-    constructor(props: IFabricProps);
+export class FabricBase extends React.Component<IFabricProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -1203,7 +1204,7 @@ export enum FabricSlots {
 export const Facepile: React.FunctionComponent<IFacepileProps>;
 
 // @public
-export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
+export class FacepileBase extends React.Component<IFacepileProps, {}> {
     constructor(props: IFacepileProps);
     // (undocumented)
     static defaultProps: IFacepileProps;
@@ -1352,6 +1353,23 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     }
 
 // @public (undocumented)
+export class GroupedListSection extends React.Component<IGroupedListSectionProps, IGroupedListSectionState> {
+    constructor(props: IGroupedListSectionProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(previousProps: IGroupedListSectionProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    forceListUpdate(): void;
+    // (undocumented)
+    forceUpdate(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
 export const GroupFooter: React.FunctionComponent<IGroupFooterProps>;
 
 // @public (undocumented)
@@ -1370,12 +1388,14 @@ export const HEX_REGEX: RegExp;
 export const HoverCard: React.FunctionComponent<IHoverCardProps>;
 
 // @public (undocumented)
-export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardState> implements IHoverCard {
+export class HoverCardBase extends React.Component<IHoverCardProps, IHoverCardState> implements IHoverCard {
     constructor(props: IHoverCardProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IHoverCardProps, prevState: IHoverCardState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
         cardOpenDelay: number;
@@ -2884,10 +2904,9 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
 }
 
 // @public (undocumented)
-export class IconButton extends BaseComponent<IButtonProps, {}> {
+export class IconButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public (undocumented)
@@ -2960,6 +2979,20 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
 }
 
 // @public (undocumented)
+export interface IContextualMenuItemRenderProps extends IContextualMenuItem {
+    // (undocumented)
+    focusableElementIndex: number;
+    // (undocumented)
+    hasCheckmarks: boolean;
+    // (undocumented)
+    hasIcons: boolean;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    totalItemCount: number;
+}
+
+// @public (undocumented)
 export interface IContextualMenuItemStyleProps {
     checked: boolean;
     className?: string;
@@ -2996,6 +3029,8 @@ export interface IContextualMenuItemStyles extends IButtonStyles {
 
 // @public (undocumented)
 export interface IContextualMenuListProps {
+    // (undocumented)
+    defaultMenuItemRenderer: (item: IContextualMenuItemRenderProps) => React.ReactNode;
     // (undocumented)
     hasCheckmarks: boolean;
     // (undocumented)
@@ -4512,8 +4547,6 @@ export interface IFabricProps extends React.HTMLAttributes<HTMLDivElement> {
 // @public (undocumented)
 export interface IFabricStyleProps extends IFabricProps {
     // (undocumented)
-    isFocusVisible: boolean;
-    // (undocumented)
     theme: ITheme;
 }
 
@@ -4783,6 +4816,46 @@ export interface IGroupedListProps extends React.ClassAttributes<GroupedListBase
     theme?: ITheme;
     usePageCache?: boolean;
     viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionProps extends React.ClassAttributes<GroupedListSection> {
+    compact?: boolean;
+    componentRef?: () => void;
+    dragDropEvents?: IDragDropEvents;
+    dragDropHelper?: IDragDropHelper;
+    eventsToRegister?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    footerProps?: IGroupFooterProps;
+    getGroupItemLimit?: (group: IGroup) => number;
+    group?: IGroup;
+    groupedListClassNames?: IProcessedStyleSet<IGroupedListStyles>;
+    groupIndex?: number;
+    groupNestingDepth?: number;
+    groupProps?: IGroupRenderProps;
+    groups?: IGroup[];
+    headerProps?: IGroupHeaderProps;
+    items: any[];
+    listProps?: IListProps;
+    onRenderCell: (nestingDepth?: number, item?: any, index?: number) => React.ReactNode;
+    onRenderGroupFooter?: IRenderFunction<IGroupFooterProps>;
+    onRenderGroupHeader?: IRenderFunction<IGroupHeaderProps>;
+    onRenderGroupShowAll?: IRenderFunction<IGroupShowAllProps>;
+    onShouldVirtualize?: (props: IListProps) => boolean;
+    selection?: ISelection;
+    selectionMode?: SelectionMode;
+    showAllProps?: IGroupShowAllProps;
+    viewport?: IViewport;
+}
+
+// @public (undocumented)
+export interface IGroupedListSectionState {
+    // (undocumented)
+    isDropping?: boolean;
+    // (undocumented)
+    isSelected?: boolean;
 }
 
 // @public (undocumented)
@@ -5592,6 +5665,7 @@ export interface INavButtonProps extends IButtonProps {
 // @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
+    ariaCurrent?: 'page' | 'step' | 'location' | 'date' | 'time' | 'true';
     ariaLabel?: string;
     automationId?: string;
     collapseAriaLabel?: string;
@@ -5639,6 +5713,7 @@ export interface INavProps {
     onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
     onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
     onRenderLink?: IRenderFunction<INavLink>;
+    // @deprecated
     selectedAriaLabel?: string;
     selectedKey?: string;
     styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
@@ -5725,6 +5800,7 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
     onRenderItem: (item: IOverflowSetItemProps) => any;
     onRenderOverflowButton: IRenderFunction<any[]>;
     overflowItems?: IOverflowSetItemProps[];
+    overflowSide?: 'start' | 'end';
     role?: string;
     styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
     vertical?: boolean;
@@ -6017,7 +6093,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size' | 'presenceColors'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -6058,6 +6134,15 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     onRenderPersonaCoin?: IRenderFunction<IPersonaSharedProps>;
     optionalText?: string;
     presence?: PersonaPresence;
+    presenceColors?: {
+        available: string;
+        away: string;
+        busy: string;
+        dnd: string;
+        offline: string;
+        oof: string;
+        background: string;
+    };
     presenceTitle?: string;
     // @deprecated
     primaryText?: string;
@@ -7336,6 +7421,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
     resultsMaximumNumber?: number;
+    // @deprecated
     searchErrorText?: string;
     searchForMoreText?: string;
     searchingText?: string;
@@ -7438,7 +7524,7 @@ export interface ISwatchColorPickerStyles {
 
 // @public
 export interface ITag {
-    key: string;
+    key: string | number;
     name: string;
 }
 
@@ -7699,21 +7785,13 @@ export interface IThemeRules {
 
 // @public (undocumented)
 export interface IThemeSlotRule {
-    // (undocumented)
     asShade?: Shade;
-    // (undocumented)
     color?: IColor;
-    // (undocumented)
     dependentRules: IThemeSlotRule[];
-    // (undocumented)
     inherits?: IThemeSlotRule;
-    // (undocumented)
     isBackgroundShade?: boolean;
-    // (undocumented)
     isCustomized?: boolean;
-    // (undocumented)
     name: string;
-    // (undocumented)
     value?: string;
 }
 
@@ -7743,7 +7821,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     // @deprecated (undocumented)
     onChanged?: (checked: boolean) => void;
     onText?: string;
-    role?: 'checkbox' | 'switch';
+    role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
     styles?: IStyleFunctionOrObject<IToggleStyleProps, IToggleStyles>;
     theme?: ITheme;
 }
@@ -7929,7 +8007,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
 export const KeytipLayer: React.FunctionComponent<IKeytipLayerProps>;
 
 // @public
-export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
+export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipLayerState> {
     constructor(props: IKeytipLayerProps, context: any);
     // (undocumented)
     componentDidMount(): void;
@@ -7995,7 +8073,8 @@ export class LayerHost extends React.Component<ILayerHostProps> {
 export const Link: React.FunctionComponent<ILinkProps>;
 
 // @public (undocumented)
-export class LinkBase extends BaseComponent<ILinkProps, any> implements ILink {
+export class LinkBase extends React.Component<ILinkProps, {}> implements ILink {
+    constructor(props: ILinkProps);
     // (undocumented)
     focus(): void;
     // (undocumented)
@@ -8076,7 +8155,6 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
     setSelectionStart(value: number): void;
     // (undocumented)
     setValue(newValue: string): void;
-    protected _skipComponentRefResolution: boolean;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ITextFieldProps): void;
     // (undocumented)
@@ -8120,7 +8198,7 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 export const MessageBar: React.FunctionComponent<IMessageBarProps>;
 
 // @public (undocumented)
-export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarState> {
+export class MessageBarBase extends React.Component<IMessageBarProps, IMessageBarState> {
     constructor(props: IMessageBarProps);
     // (undocumented)
     static defaultProps: IMessageBarProps;
@@ -8129,7 +8207,7 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
     }
 
 // @public (undocumented)
-export class MessageBarButton extends BaseComponent<IButtonProps, {}> {
+export class MessageBarButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
 }
@@ -8156,12 +8234,14 @@ export const MIN_RGBA_LENGTH = 1;
 export const Modal: React.FunctionComponent<IModalProps>;
 
 // @public (undocumented)
-export class ModalBase extends BaseComponent<IModalProps, IDialogState> implements IModal {
+export class ModalBase extends React.Component<IModalProps, IDialogState> implements IModal {
     constructor(props: IModalProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IModalProps, prevState: IDialogState): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IModalProps;
     // (undocumented)
@@ -8226,7 +8306,7 @@ export enum OverflowButtonType {
 export const OverflowSet: React.FunctionComponent<IOverflowSetProps>;
 
 // @public (undocumented)
-export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implements IOverflowSet {
+export class OverflowSetBase extends React.Component<IOverflowSetProps, {}> implements IOverflowSet {
     constructor(props: IOverflowSetProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8246,7 +8326,7 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
 export const Overlay: React.FunctionComponent<IOverlayProps>;
 
 // @public (undocumented)
-export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
+export class OverlayBase extends React.Component<IOverlayProps, {}> {
     constructor(props: IOverlayProps);
     // (undocumented)
     componentDidMount(): void;
@@ -8473,7 +8553,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     }
 
 // @public (undocumented)
-export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
+export class PivotItem extends React.Component<IPivotItemProps, {}> {
     constructor(props: IPivotItemProps);
     // (undocumented)
     render(): JSX.Element;
@@ -8495,7 +8575,8 @@ export enum PivotLinkSize {
 export const PlainCard: React.FunctionComponent<IPlainCardProps>;
 
 // @public (undocumented)
-export class PlainCardBase extends BaseComponent<IPlainCardProps, {}> {
+export class PlainCardBase extends React.Component<IPlainCardProps, {}> {
+    constructor(props: IPlainCardProps);
     // (undocumented)
     render(): JSX.Element;
 }
@@ -8520,12 +8601,14 @@ export class Popup extends React.Component<IPopupProps, IPopupState> {
     }
 
 // @public (undocumented)
-export class PositioningContainer extends BaseComponent<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
+export class PositioningContainer extends React.Component<IPositioningContainerProps, IPositioningContainerState> implements PositioningContainer {
     constructor(props: IPositioningContainerProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: IPositioningContainerProps;
     // @deprecated
@@ -8559,10 +8642,9 @@ export const presenceBoolean: (presence: PersonaPresence) => {
 };
 
 // @public (undocumented)
-export class PrimaryButton extends BaseComponent<IButtonProps, {}> {
+export class PrimaryButton extends React.Component<IButtonProps, {}> {
     // (undocumented)
     render(): JSX.Element;
-    protected _skipComponentRefResolution: boolean;
 }
 
 // @public
@@ -8604,12 +8686,14 @@ export enum RatingSize {
 export const ResizeGroup: typeof ResizeGroupBase;
 
 // @public (undocumented)
-export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGroupState> {
+export class ResizeGroupBase extends React.Component<IResizeGroupProps, IResizeGroupState> {
     constructor(props: IResizeGroupProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IResizeGroupProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     remeasure(): void;
     // (undocumented)
@@ -8657,7 +8741,7 @@ export const RGBA_REGEX: RegExp;
 export const ScrollablePane: React.FunctionComponent<IScrollablePaneProps>;
 
 // @public (undocumented)
-export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
+export class ScrollablePaneBase extends React.Component<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
     constructor(props: IScrollablePaneProps);
     // (undocumented)
     addSticky: (sticky: Sticky) => void;
@@ -8781,12 +8865,14 @@ export { SelectionDirection }
 export { SelectionMode }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, ISelectionZoneState> {
+export class SelectionZone extends React.Component<ISelectionZoneProps, ISelectionZoneState> {
     constructor(props: ISelectionZoneProps);
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(previousProps: ISelectionZoneProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: {
         isSelectedOnFocus: boolean;
@@ -8928,8 +9014,10 @@ export const sizeToPixels: {
 export const Slider: React.FunctionComponent<ISliderProps>;
 
 // @public (undocumented)
-export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
+export class SliderBase extends React.Component<ISliderProps, ISliderState> implements ISlider {
     constructor(props: ISliderProps);
+    // (undocumented)
+    componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: ISliderProps;
     // (undocumented)
@@ -8994,7 +9082,7 @@ export const Stack: React.FunctionComponent<IStackProps> & {
 export const StackItem: React.FunctionComponent<IStackItemProps>;
 
 // @public (undocumented)
-export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
+export class Sticky extends React.Component<IStickyProps, IStickyState> {
     constructor(props: IStickyProps);
     // (undocumented)
     addSticky(stickyContent: HTMLDivElement): void;
@@ -9062,7 +9150,7 @@ export enum SuggestionItemType {
 }
 
 // @public (undocumented)
-export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
+export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISuggestionsState> {
     constructor(suggestionsProps: ISuggestionsProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -9094,7 +9182,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 }
 
 // @public
-export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
+export class SuggestionsControl<T> extends React.Component<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
     constructor(suggestionsProps: ISuggestionsControlProps<T>);
     // (undocumented)
     componentDidMount(): void;
@@ -9103,7 +9191,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    readonly currentSuggestion: ISuggestionModel<T>;
+    readonly currentSuggestion: ISuggestionModel<T> | undefined;
     // (undocumented)
     readonly currentSuggestionIndex: number;
     // (undocumented)
@@ -9133,13 +9221,13 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     // (undocumented)
     readonly selectedElement: HTMLDivElement | undefined;
     // (undocumented)
-    protected _selectedElement: HTMLDivElement;
+    protected _selectedElement: React.RefObject<HTMLDivElement>;
     protected selectFirstItem(): void;
     protected selectLastItem(): void;
     protected selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void;
     // (undocumented)
-    protected _suggestions: SuggestionsCore<T>;
+    protected _suggestions: React.RefObject<SuggestionsCore<T>>;
     // (undocumented)
     UNSAFE_componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void;
 }
@@ -9178,7 +9266,7 @@ export class SuggestionsController<T> {
 }
 
 // @public
-export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
+export class SuggestionsCore<T> extends React.Component<ISuggestionsCoreProps<T>, {}> {
     constructor(suggestionsProps: ISuggestionsCoreProps<T>);
     // (undocumented)
     componentDidUpdate(): void;
@@ -9205,19 +9293,21 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
     // (undocumented)
     readonly selectedElement: HTMLDivElement | undefined;
     // (undocumented)
-    protected _selectedElement: HTMLDivElement;
+    protected _selectedElement: React.RefObject<HTMLDivElement>;
     // (undocumented)
     setSelectedSuggestion(index: number): void;
     }
 
 // @public (undocumented)
-export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeaderFooterItemProps, {}> {
+export class SuggestionsHeaderFooterItem extends React.Component<ISuggestionsHeaderFooterItemProps, {}> {
+    constructor(props: ISuggestionsHeaderFooterItemProps);
     // (undocumented)
     render(): JSX.Element;
 }
 
 // @public (undocumented)
-export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
+export class SuggestionsItem<T> extends React.Component<ISuggestionItemProps<T>, {}> {
+    constructor(props: ISuggestionItemProps<T>);
     // (undocumented)
     render(): JSX.Element;
 }
@@ -9277,6 +9367,7 @@ export const TagPicker: React.FunctionComponent<ITagPickerProps>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
+    constructor(props: ITagPickerProps);
     // (undocumented)
     static defaultProps: {
         onRenderItem: (props: ITagItemProps) => JSX.Element;
@@ -9291,7 +9382,7 @@ export type Target = Element | string | MouseEvent | IPoint | null | React.RefOb
 export const TeachingBubble: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
     constructor(props: ITeachingBubbleProps);
     // (undocumented)
     static defaultProps: {
@@ -9315,7 +9406,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
 export const TeachingBubbleContent: React.FunctionComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
-export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProps, ITeachingBubbleState> {
+export class TeachingBubbleContentBase extends React.Component<ITeachingBubbleProps, ITeachingBubbleState> {
     constructor(props: ITeachingBubbleProps);
     // (undocumented)
     componentDidMount(): void;
@@ -9381,18 +9472,12 @@ export const TextView: ITextComponent['view'];
 
 // @public (undocumented)
 export class ThemeGenerator {
-    // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
     static getThemeAsCodeWithCreateTheme(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeAsSass(slotRules: IThemeRules): any;
-    // (undocumented)
     static getThemeForPowerShell(slotRules: IThemeRules): any;
-    // (undocumented)
     static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
-    // (undocumented)
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }
 
@@ -9403,7 +9488,7 @@ export function themeRulesStandardCreator(): IThemeRules;
 export const Toggle: React.FunctionComponent<IToggleProps>;
 
 // @public (undocumented)
-export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implements IToggle {
+export class ToggleBase extends React.Component<IToggleProps, IToggleState> implements IToggle {
     constructor(props: IToggleProps);
     readonly checked: boolean;
     // (undocumented)
@@ -9482,7 +9567,8 @@ export enum ValidationState {
 export const VerticalDivider: React.FunctionComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
-export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
+export class VirtualizedComboBox extends React.Component<IComboBoxProps, {}> implements IComboBox {
+    constructor(props: IComboBoxProps);
     // (undocumented)
     dismissMenu(): void;
     // (undocumented)

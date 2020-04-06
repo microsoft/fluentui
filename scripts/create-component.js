@@ -6,8 +6,28 @@ const stateless = argv.stateless;
 const fs = require('fs');
 
 // Template Sequences
-const statefulSequence = ['GlobalIndex', 'Styles', 'Test', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State', 'StateTest'];
-const statelessSequence = ['GlobalIndex', 'Styles', 'Test', 'Index', 'View', 'ViewTest', 'TypesStateless', 'ComponentStateless'];
+const statefulSequence = [
+  'GlobalIndex',
+  'Styles',
+  'Test',
+  'Index',
+  'View',
+  'ViewTest',
+  'Types',
+  'Component',
+  'State',
+  'StateTest',
+];
+const statelessSequence = [
+  'GlobalIndex',
+  'Styles',
+  'Test',
+  'Index',
+  'View',
+  'ViewTest',
+  'TypesStateless',
+  'ComponentStateless',
+];
 
 // Paths/File Names
 const rootComponentFolderPath = './packages/experiments/src/';
@@ -28,7 +48,7 @@ const outputFiles = {
   Types: componentPathNamePrefix + '.types.ts',
   TypesStateless: componentPathNamePrefix + '.types.ts',
   View: componentPathNamePrefix + '.view.tsx',
-  ViewTest: componentPathNamePrefix + '.view.test.tsx'
+  ViewTest: componentPathNamePrefix + '.view.test.tsx',
 };
 
 // Error strings
@@ -68,7 +88,7 @@ function createComponentFiles(sequence, stepIndex) {
       outputFiles[step],
       () => createComponentFiles(sequence, stepIndex + 1),
       errorUnableToOpenTemplate(mustacheTemplateName),
-      errorUnableToWriteFile(step)
+      errorUnableToWriteFile(step),
     );
   });
 }

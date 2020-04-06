@@ -23,7 +23,7 @@ export const ImplementationSection: React.FunctionComponent<IImplementationSecti
     propertiesTablesSources,
     jsonDocs,
     hideImplementationTitle,
-    id
+    id,
   } = props;
   return (
     <div className={className} style={style}>
@@ -69,9 +69,9 @@ function _getNativePropsInfo(props: IImplementationSectionProps): JSX.Element | 
 
   return (
     <MessageBar>
-      <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
-      {elementsArr}, including all aria and custom data attributes, can be applied as native props on {componentNameJsx || 'this component'}
-      .
+      <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes
+      native to the {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
+      {componentNameJsx || 'this component'}.
     </MessageBar>
   );
 }

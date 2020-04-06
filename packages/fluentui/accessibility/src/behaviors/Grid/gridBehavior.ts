@@ -12,9 +12,9 @@ const gridBehavior: Accessibility = () => ({
   attributes: {},
   focusZone: {
     props: {
-      direction: FocusZoneDirection.bidirectional
-    }
-  }
+      direction: FocusZoneDirection.bidirectional,
+    },
+  },
 });
 
 export default gridBehavior;

@@ -8,7 +8,7 @@ import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const exampleChildClass = mergeStyles({
   display: 'block',
-  marginBottom: '10px'
+  marginBottom: '10px',
 });
 
 export interface IDetailsListCompactExampleItem {
@@ -31,7 +31,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
     super(props);
 
     this._selection = new Selection({
-      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
+      onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() }),
     });
 
     this._allItems = [];
@@ -39,18 +39,18 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
       this._allItems.push({
         key: i,
         name: 'Item ' + i,
-        value: i
+        value: i,
       });
     }
 
     this._columns = [
       { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
-      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true },
     ];
 
     this.state = {
       items: this._allItems,
-      selectionDetails: this._getSelectionDetails()
+      selectionDetails: this._getSelectionDetails(),
     };
   }
 
@@ -102,7 +102,7 @@ export class DetailsListCompactExample extends React.Component<{}, IDetailsListC
 
   private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
     this.setState({
-      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems,
     });
   };
 

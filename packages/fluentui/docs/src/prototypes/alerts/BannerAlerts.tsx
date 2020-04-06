@@ -1,9 +1,18 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Provider, RadioGroup, ThemeAnimation, RadioGroupItemProps, Header, Button } from '@fluentui/react';
+import {
+  Flex,
+  Provider,
+  RadioGroup,
+  ThemeAnimation,
+  RadioGroupItemProps,
+  Header,
+  Button,
+} from '@fluentui/react-northstar';
 
 import AnimatedBannerAlert from './AnimatedBannerAlert';
 import ComposeMessage from '../chatPane/composeMessage';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 type BannerName = 'info' | 'oof' | 'danger' | 'urgent';
 
@@ -17,18 +26,18 @@ const bannerNames: BannerName[] = ['info', 'oof', 'danger', 'urgent'];
 const bannerRadioItems: RadioGroupItemProps[] = bannerNames.map(bannerName => ({
   key: bannerName,
   value: bannerName,
-  label: `${_.startCase(bannerName)}`
+  label: `${_.startCase(bannerName)}`,
 }));
 
 const slideDown: ThemeAnimation = {
   keyframe: {
     from: { transform: 'translateY(0)' },
-    to: { transform: 'translateY(100%)', display: 'none' }
+    to: { transform: 'translateY(100%)', display: 'none' },
   },
   duration: '.2s',
   iterationCount: '1',
   timingFunction: 'linear',
-  fillMode: 'forwards'
+  fillMode: 'forwards',
 };
 
 interface BannerAlertsState {
@@ -39,7 +48,7 @@ interface BannerAlertsState {
 class BannerAlerts extends React.Component<{}, BannerAlertsState> {
   state = {
     selectedBannerName: bannerRadioItems[0].value as BannerName,
-    open: true
+    open: true,
   };
 
   openSelectedBanner = () => this.setState({ open: true });
@@ -57,7 +66,7 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
             width: '50%',
             backgroundColor: '#f3f2f1',
             padding: '10px 50px',
-            position: 'relative'
+            position: 'relative',
           }}
         >
           <Flex space="between" vAlign="center">
@@ -67,7 +76,9 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
           <RadioGroup
             checkedValue={selectedBannerName}
             items={bannerRadioItems}
-            onCheckedValueChange={(e, { value }) => this.setState({ selectedBannerName: value as BannerName, open: true })}
+            onCheckedValueChange={(e, { value }) =>
+              this.setState({ selectedBannerName: value as BannerName, open: true })
+            }
           />
           <br />
           <AnimatedBannerAlert
@@ -79,8 +90,8 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
               content: getBannerContent(selectedBannerName),
               ...(isAlertClosable(selectedBannerName) && {
                 open,
-                action: { icon: 'close', onClick: this.closeSelectedBanner }
-              })
+                action: { icon: <CloseIcon />, onClick: this.closeSelectedBanner },
+              }),
             }}
           />
           <ComposeMessage attached />

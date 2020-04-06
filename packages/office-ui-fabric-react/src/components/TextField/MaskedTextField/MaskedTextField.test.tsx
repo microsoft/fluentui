@@ -82,7 +82,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should backspace', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -96,7 +98,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should delete', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -110,7 +114,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should ctrl backspace', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -125,7 +131,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should ctrl delete', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -139,7 +147,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should backspace and delete selections', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -161,7 +171,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should paste characters', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -187,7 +199,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should paste over selected characters', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -207,7 +221,9 @@ describe('MaskedTextField', () => {
   });
 
   it('should replace selected text a char added', () => {
-    const component = mount(<MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />);
+    const component = mount(
+      <MaskedTextField label="With input mask" mask="m\ask: (999) 999 - 9999" value="123-456-7890" />,
+    );
 
     const input = component.find('input'),
       inputDOM = input.getDOMNode() as HTMLInputElement;
@@ -237,7 +253,7 @@ describe('MaskedTextField', () => {
         label="With input mask"
         mask="m\ask: (999) 999 - 9999"
         value="123-456-7890"
-      />
+      />,
     );
 
     const input = component.find('input'),

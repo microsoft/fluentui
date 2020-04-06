@@ -1,4 +1,4 @@
-import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react';
+import { ComponentSlotStylesInput, ThemeInput } from '@fluentui/react-northstar';
 
 type ThemeOverrides = ThemeInput & {
   componentStyles: {
@@ -20,7 +20,7 @@ const themeOverrides: ThemeOverrides = {
 
         position: 'static',
         visibility: 'hidden',
-        zIndex: 1000
+        zIndex: 1000,
       }),
       overlay: () => ({
         alignItems: 'center',
@@ -32,10 +32,10 @@ const themeOverrides: ThemeOverrides = {
         overflow: 'auto',
         position: 'fixed',
         right: 0,
-        top: 0
-      })
-    }
-  }
+        top: 0,
+      }),
+    },
+  },
 };
 
 export default themeOverrides;

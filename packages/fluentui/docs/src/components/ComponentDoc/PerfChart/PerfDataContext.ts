@@ -19,6 +19,7 @@ export type PerfSample = {
       };
     }
   >;
+  bundleSize: Record<string, { size: number }>;
 };
 
 export type PerfData = PerfSample[];
@@ -32,7 +33,7 @@ export type PerfDataContextValue = {
 const PerfDataContext = React.createContext<PerfDataContextValue>({
   loading: true,
   error: undefined,
-  data: undefined
+  data: undefined,
 });
 
 export default PerfDataContext;

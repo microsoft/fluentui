@@ -4,7 +4,11 @@ import ExampleSection from '../../../../components/ComponentDoc/ExampleSection';
 
 const Types = () => (
   <ExampleSection title="Types">
-    <ComponentExample title="Default" description="A default Divider." examplePath="components/Divider/Types/DividerExample" />
+    <ComponentExample
+      title="Default"
+      description="A default Divider."
+      examplePath="components/Divider/Types/DividerExample"
+    />
     <ComponentExample
       title="Divider with content"
       description="A Divider can contain text or other content displayed alongside with the line."

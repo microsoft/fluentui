@@ -11,5 +11,5 @@ export const LinkBase: ForwardRefComponent<ILinkProps, HTMLElement> = React.forw
     const { slotProps = {} } = useLink({ ...props, componentRef });
 
     return <Root {...slotProps.root}>{children}</Root>;
-  }
+  },
 );

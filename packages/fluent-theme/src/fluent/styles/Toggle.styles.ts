@@ -11,45 +11,45 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
         width: '40px',
         height: '20px',
         borderRadius: '10px',
-        padding: '0 3px'
+        padding: '0 3px',
       },
       !disabled && [
         checked && {
           selectors: {
             ':hover': [
               {
-                backgroundColor: palette.themeDark
-              }
-            ]
-          }
+                backgroundColor: palette.themeDark,
+              },
+            ],
+          },
         },
         !checked && {
           selectors: {
             ':hover .ms-Toggle-thumb': {
-              backgroundColor: palette.neutralDark
-            }
-          }
-        }
-      ]
+              backgroundColor: palette.neutralDark,
+            },
+          },
+        },
+      ],
     ],
     thumb: [
       {
         width: '12px',
         height: '12px',
         borderRadius: '12px',
-        borderColor: 'transparent'
+        borderColor: 'transparent',
       },
       !disabled &&
         !checked && {
-          backgroundColor: palette.neutralSecondary
-        }
+          backgroundColor: palette.neutralSecondary,
+        },
     ],
     text: {
       selectors: {
         '&.ms-Toggle-stateText': {
-          fontWeight: FontWeights.regular
-        }
-      }
-    }
+          fontWeight: FontWeights.regular,
+        },
+      },
+    },
   };
 };

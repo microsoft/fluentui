@@ -3,7 +3,8 @@
 exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
 <div>
   <p>
-    When a link has an href, 
+    When a link has an href,
+     
     <a
       className=
           ms-Link
@@ -19,6 +20,7 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
@@ -46,7 +48,8 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
     >
       it renders as an anchor tag.
     </a>
-     Without an href, 
+     Without an href,
+     
     <button
       className=
           ms-Link
@@ -80,6 +83,7 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;
@@ -133,6 +137,7 @@ exports[`Component Examples renders Link.Basic.Example.tsx correctly 1`] = `
           }
           .ms-Fabric--isFocusVisible &:focus {
             box-shadow: 0 0 0 1px #605e5c inset;
+            outline: 1px auto #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
             outline: 1px solid WindowText;

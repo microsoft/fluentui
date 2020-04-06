@@ -10,8 +10,8 @@ export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePic
       borderRadius: effects.roundedCorner2,
       boxShadow: effects.elevation8,
       selectors: {
-        '.ms-Callout-main': { borderRadius: effects.roundedCorner2 }
-      }
-    }
+        '.ms-Callout-main': { borderRadius: effects.roundedCorner2 },
+      },
+    },
   };
 };

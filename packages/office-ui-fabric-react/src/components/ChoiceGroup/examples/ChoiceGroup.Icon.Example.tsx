@@ -4,7 +4,7 @@ import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/Choi
 const options: IChoiceGroupOption[] = [
   { key: 'day', text: 'Day', iconProps: { iconName: 'CalendarDay' } },
   { key: 'week', text: 'Week', iconProps: { iconName: 'CalendarWeek' } },
-  { key: 'month', text: 'Month', iconProps: { iconName: 'Calendar' }, disabled: true }
+  { key: 'month', text: 'Month', iconProps: { iconName: 'Calendar' }, disabled: true },
 ];
 
 export const ChoiceGroupIconExample: React.FunctionComponent = () => {

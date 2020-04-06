@@ -6,5 +6,5 @@ import { createComponent } from '../../../Foundation';
 export const VerticalPersona: React.FunctionComponent<IVerticalPersonaProps> = createComponent(VerticalPersonaView, {
   displayName: 'VerticalPersona',
   styles: VerticalPersonaStyles,
-  tokens: VerticalPersonaTokens
+  tokens: VerticalPersonaTokens,
 });

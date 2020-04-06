@@ -38,6 +38,7 @@ export namespace personaPresenceSize {
 // TODO: remove the deprecated parts in a future major release.
 export const sizeBoolean = (size: PersonaSize) => ({
   isSize8: size === PersonaSize.size8,
+  // tslint:disable:deprecation
   isSize10: size === PersonaSize.size10 || size === PersonaSize.tiny,
   isSize16: size === PersonaSize.size16,
   isSize24: size === PersonaSize.size24 || size === PersonaSize.extraExtraSmall,
@@ -48,7 +49,7 @@ export const sizeBoolean = (size: PersonaSize) => ({
   isSize56: size === PersonaSize.size56,
   isSize72: size === PersonaSize.size72 || size === PersonaSize.large,
   isSize100: size === PersonaSize.size100 || size === PersonaSize.extraLarge,
-  isSize120: size === PersonaSize.size120
+  isSize120: size === PersonaSize.size120,
 });
 
 export const sizeToPixels: { [key: number]: number } = {
@@ -66,13 +67,14 @@ export const sizeToPixels: { [key: number]: number } = {
   [PersonaSize.size16]: 16, // TODO: deprecated (not in the design specs)
   [PersonaSize.size24]: 24,
   [PersonaSize.size28]: 28, // TODO: deprecated (not in the design specs)
+  // tslint:enable:deprecation
   [PersonaSize.size32]: 32,
   [PersonaSize.size40]: 40,
   [PersonaSize.size48]: 48,
   [PersonaSize.size56]: 56,
   [PersonaSize.size72]: 72,
   [PersonaSize.size100]: 100,
-  [PersonaSize.size120]: 120
+  [PersonaSize.size120]: 120,
 };
 
 export const presenceBoolean = (presence: PersonaPresence) => ({
@@ -81,5 +83,5 @@ export const presenceBoolean = (presence: PersonaPresence) => ({
   isBlocked: presence === PersonaPresence.blocked,
   isBusy: presence === PersonaPresence.busy,
   isDoNotDisturb: presence === PersonaPresence.dnd,
-  isOffline: presence === PersonaPresence.offline
+  isOffline: presence === PersonaPresence.offline,
 });

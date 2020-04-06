@@ -14,52 +14,52 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
       selectors: {
         '.ms-Button': {
           backgroundColor: semanticColors.bodyBackground,
-          color: semanticColors.inputText
+          color: semanticColors.inputText,
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.bodyBackground,
-          color: semanticColors.inputText
+          color: semanticColors.inputText,
         },
         '&.is-open': {
-          borderColor: semanticColors.focusBorder
+          borderColor: semanticColors.focusBorder,
         },
         '.ms-Button-icon': {
-          height: StyleConstants.inputControlHeightInner
-        }
-      }
+          height: StyleConstants.inputControlHeightInner,
+        },
+      },
     },
     input: {
       height: StyleConstants.inputControlHeightInner,
       selectors: {
         '::placeholder': {
-          fontStyle: 'italic'
+          fontStyle: 'italic',
         },
         '::-ms-input-placeholder': {
-          fontStyle: 'italic'
-        }
-      }
+          fontStyle: 'italic',
+        },
+      },
     },
     rootDisabled: {
       selectors: {
         '.ms-Button': {
           backgroundColor: semanticColors.disabledBackground,
-          color: semanticColors.inputText
+          color: semanticColors.inputText,
         },
         '.ms-Button:hover': {
           backgroundColor: semanticColors.disabledBackground,
-          color: semanticColors.inputText
-        }
-      }
+          color: semanticColors.inputText,
+        },
+      },
     },
     rootFocused: {
-      borderColor: semanticColors.focusBorder
+      borderColor: semanticColors.focusBorder,
     },
     rootError: {
       borderColor: semanticColors.errorBackground,
-      borderWidth: StyleConstants.borderWidthError
+      borderWidth: StyleConstants.borderWidthError,
     },
     rootPressed: {
-      borderColor: semanticColors.focusBorder
+      borderColor: semanticColors.focusBorder,
     },
     callout: {
       border: 'none',
@@ -69,25 +69,25 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
           backgroundColor: semanticColors.inputBackground,
           borderColor: semanticColors.inputBorder,
           borderStyle: StyleConstants.borderSolid,
-          borderWidth: StyleConstants.borderWidth
-        }
-      }
+          borderWidth: StyleConstants.borderWidth,
+        },
+      },
     },
     divider: {
       backgroundColor: semanticColors.inputBorder,
       border: 'none',
-      height: '1px'
+      height: '1px',
     },
     errorMessage: {
       color: semanticColors.errorText,
-      fontSize: FontSizes.size12
+      fontSize: FontSizes.size12,
     },
     optionsContainer: {
       verticalAlign: 'middle',
       selectors: {
         '.ms-ComboBox-header': {
           color: semanticColors.focusBorder,
-          fontSize: FontSizes.size12
+          fontSize: FontSizes.size12,
         },
         '.ms-ComboBox-option': {
           color: semanticColors.bodyText,
@@ -96,17 +96,17 @@ export const ComboBoxStyles = (theme: ITheme): Partial<IComboBoxStyles> => {
             ':hover': {
               backgroundColor: semanticColors.menuItemBackgroundHovered,
               border: '1px solid transparent',
-              color: semanticColors.bodyText
-            }
-          }
+              color: semanticColors.bodyText,
+            },
+          },
         },
         '.is-checked': {
-          backgroundColor: semanticColors.listItemBackgroundChecked
+          backgroundColor: semanticColors.listItemBackgroundChecked,
         },
         '.is-disabled': {
-          color: semanticColors.disabledBodyText
-        }
-      }
-    }
+          color: semanticColors.disabledBodyText,
+        },
+      },
+    },
   };
 };

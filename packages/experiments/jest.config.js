@@ -7,10 +7,10 @@ const config = createConfig({
   moduleNameMapper: {
     '@uifabric/foundation/lib/(.*)$': '@uifabric/foundation/lib-commonjs/$1',
     'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1',
-    '@uifabric/experiments/lib/(.*)': '<rootDir>/src/$1'
+    '@uifabric/experiments/lib/(.*)': '<rootDir>/src/$1',
   },
 
-  snapshotSerializers: [resolveMergeStylesSerializer()]
+  snapshotSerializers: [resolveMergeStylesSerializer()],
 });
 
 module.exports = config;

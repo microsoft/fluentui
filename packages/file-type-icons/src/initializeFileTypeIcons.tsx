@@ -60,10 +60,10 @@ function _initializeIcons(baseUrl: string, size: number, options?: Partial<IIcon
       style: {
         width: size,
         height: size,
-        overflow: 'hidden'
+        overflow: 'hidden',
       },
-      icons: fileTypeIcons
+      icons: fileTypeIcons,
     },
-    options
+    options,
   );
 }

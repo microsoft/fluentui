@@ -17,7 +17,7 @@ const DEFAULT_OPTIONS: IColorCellProps[] = [
   { id: 'k', label: 'black', color: '#000' },
   { id: 'l', label: 'grey', color: '#888' },
   { id: 'm', label: 'white', color: '#fff' },
-  { id: 'n', label: 'something', color: '#123' }
+  { id: 'n', label: 'something', color: '#123' },
 ];
 
 describe('SwatchColorPicker', () => {
@@ -52,7 +52,9 @@ describe('SwatchColorPicker', () => {
 
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
     const onChange = jest.fn();
-    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onColorChanged={onChange} columnCount={4} />);
+    const wrapper = mount(
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onColorChanged={onChange} columnCount={4} />,
+    );
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);
@@ -66,7 +68,9 @@ describe('SwatchColorPicker', () => {
 
   it('Can fire the hover event on a cell in non-collapsable swatch color picker ', () => {
     const onHover = jest.fn();
-    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />);
+    const wrapper = mount(
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />,
+    );
 
     wrapper
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')
@@ -77,7 +81,9 @@ describe('SwatchColorPicker', () => {
 
   it('Can fire the focus event on a cell in non-collapsable swatch color picker ', () => {
     const onFocus = jest.fn();
-    const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />);
+    const wrapper = mount(
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />,
+    );
 
     wrapper
       .find('.ms-swatchColorPickerBodyContainer [role="gridcell"]')

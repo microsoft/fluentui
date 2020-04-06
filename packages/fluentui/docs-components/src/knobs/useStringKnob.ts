@@ -5,7 +5,7 @@ const useStringKnob = (options: UseKnobOptions<string>) =>
   useKnob<string>({
     initialValue: '',
     type: 'string',
-    ...options
+    ...options,
   });
 
 export default useStringKnob;

@@ -2,7 +2,7 @@ import { getGlobalClassNames, HighContrastSelector } from '@uifabric/styling';
 import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
 
 const GlobalClassNames = {
-  root: 'ms-Card'
+  root: 'ms-Card',
 };
 
 const baseTokens: ICardComponent['tokens'] = (props, theme) => {
@@ -17,14 +17,14 @@ const baseTokens: ICardComponent['tokens'] = (props, theme) => {
     highContrastBoxShadow: '0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight',
     minHeight: '348px',
     minWidth: '212px',
-    maxWidth: '286px'
+    maxWidth: '286px',
   };
 };
 
 const horizontalTokens: ICardComponent['tokens'] = {
   height: 'auto',
   minWidth: '300px',
-  maxWidth: '500px'
+  maxWidth: '500px',
 };
 
 const clickableTokens: ICardComponent['tokens'] = (props, theme) => {
@@ -33,14 +33,14 @@ const clickableTokens: ICardComponent['tokens'] = (props, theme) => {
   return {
     boxShadowHovered: effects.elevation8,
     cursor: 'pointer',
-    highContrastBoxShadowHovered: '0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight'
+    highContrastBoxShadowHovered: '0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight',
   };
 };
 
 export const CardTokens: ICardComponent['tokens'] = (props, theme): ICardTokenReturnType => [
   baseTokens,
   props.horizontal && horizontalTokens,
-  props.onClick && clickableTokens
+  props.onClick && clickableTokens,
 ];
 
 export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICardStylesReturnType => {
@@ -64,15 +64,15 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
             boxShadow: tokens.boxShadowHovered,
             selectors: {
               [HighContrastSelector]: {
-                boxShadow: tokens.highContrastBoxShadowHovered
-              }
-            }
+                boxShadow: tokens.highContrastBoxShadowHovered,
+              },
+            },
           },
           [HighContrastSelector]: {
-            boxShadow: tokens.highContrastBoxShadow
-          }
-        }
-      }
-    ]
+            boxShadow: tokens.highContrastBoxShadow,
+          },
+        },
+      },
+    ],
   };
 };

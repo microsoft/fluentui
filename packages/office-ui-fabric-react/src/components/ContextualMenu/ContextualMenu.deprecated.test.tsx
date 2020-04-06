@@ -7,6 +7,8 @@ import { ContextualMenuItemType } from './ContextualMenu.types';
 import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
 
+// tslint:disable:deprecation
+
 let customClassNames: () => IMenuItemClassNames;
 
 describe('ContextualMenu', () => {
@@ -30,7 +32,7 @@ describe('ContextualMenu', () => {
         splitContainer: 'splitContainerFoo',
         splitPrimary: 'splitPrimaryFoo',
         splitMenu: 'splitMenuFoo',
-        linkContentMenu: 'linkContentMenuFoo'
+        linkContentMenu: 'linkContentMenuFoo',
       };
     };
   });
@@ -58,11 +60,13 @@ describe('ContextualMenu', () => {
         list: 'listFoo',
         header: 'headerFoo',
         title: 'titleFoo',
-        subComponentStyles: { callout: { root: ['calloutFoo'] }, menuItem: { root: ['itemFoo'] } }
+        subComponentStyles: { callout: { root: ['calloutFoo'] }, menuItem: { root: ['itemFoo'] } },
       };
     };
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} getMenuClassNames={getClassNames} />);
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+      <ContextualMenu items={items} getMenuClassNames={getClassNames} />,
+    );
 
     const container = document.querySelector('.containerFoo') as HTMLElement;
     const rootEl = document.querySelector('.rootFoo') as HTMLElement;
@@ -99,11 +103,11 @@ describe('ContextualMenu', () => {
           items: [
             {
               key: 'share',
-              text: 'Share'
-            }
-          ]
-        }
-      }
+              text: 'Share',
+            },
+          ],
+        },
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -129,8 +133,8 @@ describe('ContextualMenu', () => {
         canCheck: true,
         isChecked: false,
         onClick: () => console.log('Edit clicked'),
-        getItemClassNames: customClassNames
-      }
+        getItemClassNames: customClassNames,
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -145,12 +149,12 @@ describe('ContextualMenu', () => {
       {
         key: 'Later Today',
         iconProps: {
-          iconName: 'Clock'
+          iconName: 'Clock',
         },
         text: 'Later Today',
         secondaryText: '7:00 PM',
-        getItemClassNames: customClassNames
-      }
+        getItemClassNames: customClassNames,
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -164,13 +168,13 @@ describe('ContextualMenu', () => {
     const items: IContextualMenuItem[] = [
       {
         key: 'Later Today',
-        text: 'Later Today'
+        text: 'Later Today',
       },
       {
         key: 'divider_1',
         itemType: ContextualMenuItemType.Divider,
-        getItemClassNames: customClassNames
-      }
+        getItemClassNames: customClassNames,
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -185,12 +189,12 @@ describe('ContextualMenu', () => {
       {
         key: 'Later Today',
         iconProps: {
-          iconName: 'Clock'
+          iconName: 'Clock',
         },
         text: 'Later Today',
         secondaryText: '7:00 PM',
-        getItemClassNames: customClassNames
-      }
+        getItemClassNames: customClassNames,
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -206,8 +210,8 @@ describe('ContextualMenu', () => {
         key: 'newItem',
         text: 'New',
         onClick: () => console.log('New clicked'),
-        getItemClassNames: customClassNames
-      }
+        getItemClassNames: customClassNames,
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -232,10 +236,10 @@ describe('ContextualMenu', () => {
           {
             name: 'SubmenuText 1',
             key: 'SubmenuKey1',
-            className: 'SubMenuClass'
-          }
-        ]
-      }
+            className: 'SubMenuClass',
+          },
+        ],
+      },
     ];
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
@@ -250,7 +254,7 @@ describe('ContextualMenu', () => {
 describe('getItemClassNames', () => {
   // This test exists to validate that getItemClassNames signature has not changed
   // to avoid breaking internal partners relying on this private API.
-  // See: https://github.com/OfficeDev/office-ui-fabric-react/pull/6738
+  // See: https://github.com/microsoft/fluentui/pull/6738
   it('accepts an argument list of style props values', () => {
     const NoClassNamesTheme = createTheme({ disableGlobalClassNames: true });
     const isDisabled = false;
@@ -271,7 +275,7 @@ describe('getItemClassNames', () => {
       isKnownIcon,
       itemClassName,
       dividerClassName,
-      iconClassName
+      iconClassName,
     );
 
     expect(itemClassNames).toBeDefined();
@@ -297,7 +301,7 @@ describe('getItemClassNames', () => {
       isKnownIcon,
       itemClassName,
       dividerClassName,
-      iconClassName
+      iconClassName,
     );
 
     expect(itemClassNames.item).toContain('foo');

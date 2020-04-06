@@ -43,7 +43,7 @@ describe('deepmerge', () => {
     expect(deepmerge(target, source)).toStrictEqual({
       overridden: true,
       keep: true,
-      add: true
+      add: true,
     });
   });
 
@@ -62,9 +62,9 @@ describe('deepmerge', () => {
           deepNullToValue: null,
           deepUndefinedToValue: undefined,
           deepValueToNull: 'targetDVTN',
-          deepValueToUndefined: 'targetDVTU'
-        }
-      }
+          deepValueToUndefined: 'targetDVTU',
+        },
+      },
     };
     const source = {
       nested: {
@@ -80,9 +80,9 @@ describe('deepmerge', () => {
           deepNullToValue: 'sourceDNTV',
           deepUndefinedToValue: 'sourceDUTV',
           deepValueToNull: null,
-          deepValueToUndefined: undefined
-        }
-      }
+          deepValueToUndefined: undefined,
+        },
+      },
     };
 
     expect(deepmerge(target, source)).toStrictEqual({
@@ -101,9 +101,9 @@ describe('deepmerge', () => {
           deepNullToValue: 'sourceDNTV',
           deepUndefinedToValue: 'sourceDUTV',
           deepValueToNull: null,
-          deepValueToUndefined: undefined
-        }
-      }
+          deepValueToUndefined: undefined,
+        },
+      },
     });
   });
 
@@ -112,25 +112,25 @@ describe('deepmerge', () => {
     const source = { overridden: [4, 5] };
 
     expect(deepmerge(target, source)).toStrictEqual({
-      overridden: [4, 5]
+      overridden: [4, 5],
     });
   });
 
   test('different value types replace previous value', () => {
     expect(deepmerge({ color: 'black' }, { color: ['green', 'red'] })).toStrictEqual({
-      color: ['green', 'red']
+      color: ['green', 'red'],
     });
     expect(deepmerge({ color: ['green', 'red'] }, { color: 'black' })).toStrictEqual({
-      color: 'black'
+      color: 'black',
     });
     expect(deepmerge({ color: { nested: 'object' } }, { color: ['green', 'red'] })).toStrictEqual({
-      color: ['green', 'red']
+      color: ['green', 'red'],
     });
     expect(deepmerge({ color: ['green', 'red'] }, { color: { nested: 'object' } })).toStrictEqual({
-      color: { nested: 'object' }
+      color: { nested: 'object' },
     });
     expect(deepmerge({ color: { nested: 'object' } }, { color: undefined })).toStrictEqual({
-      color: undefined
+      color: undefined,
     });
   });
 
@@ -148,7 +148,7 @@ describe('deepmerge', () => {
       e: 5,
       bb: 'bbS1',
       cc: 'bbS2',
-      dd: 'bbS3'
+      dd: 'bbS3',
     });
   });
 });

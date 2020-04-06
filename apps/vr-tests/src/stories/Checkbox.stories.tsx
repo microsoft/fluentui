@@ -15,7 +15,7 @@ storiesOf('Checkbox', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Unchecked', () => <Checkbox label="Unchecked checkbox" />, { rtl: true })
   .addStory('Checked', () => <Checkbox label="Checked checkbox" checked />)
@@ -66,7 +66,7 @@ storiesOf('Checkbox Indeterminate', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </Screener>,
   )
   .addStory('Uncontrolled Indeterminate checkbox', () => (
     <Checkbox label="Uncontrolled Indeterminate checkbox" defaultIndeterminate />

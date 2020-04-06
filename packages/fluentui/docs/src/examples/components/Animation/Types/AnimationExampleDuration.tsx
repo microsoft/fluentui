@@ -1,23 +1,24 @@
 import * as React from 'react';
-import { Animation, Icon, Provider } from '@fluentui/react';
+import { Animation, Provider } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
     from: {
-      transform: 'rotate(0deg)'
+      transform: 'rotate(0deg)',
     },
     to: {
-      transform: 'rotate(360deg)'
-    }
+      transform: 'rotate(360deg)',
+    },
   },
   duration: '5s',
-  iterationCount: 'infinite'
+  iterationCount: 'infinite',
 };
 
 const AnimationExampleDuration = () => (
   <Provider theme={{ animations: { spinner } }}>
     <Animation name="spinner" duration="1s">
-      <Icon name="mention" circular bordered />
+      <MentionIcon circular bordered />
     </Animation>
   </Provider>
 );

@@ -1,7 +1,55 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 12 Feb 2020 12:24:27 GMT and should not be manually modified.
+This log was last generated on Tue, 31 Mar 2020 12:27:26 GMT and should not be manually modified.
 
+## 7.10.15
+Tue, 31 Mar 2020 12:27:26 GMT
+
+### Patches
+
+- update website banner and remove reference to fabric in context menu docs (mgodbolt@microsoft.com)
+## 7.10.14
+Mon, 30 Mar 2020 19:10:08 GMT
+
+### Patches
+
+- More Fabric=>Fluent fixes (elcraig@microsoft.com)
+## 7.10.12
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Updating docs for fluent transition (mgodbolt@microsoft.com)
+## 7.10.11
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
+## 7.10.5
+Fri, 13 Mar 2020 12:30:22 GMT
+
+### Patches
+
+- new blog announcement, support jsx in message bar, move hig link (mgodbolt@microsoft.com)
+## 7.10.4
+Thu, 12 Mar 2020 12:35:00 GMT
+
+### Patches
+
+- use ms-Fabric--isFocusVisible instead of .is-focusVisible (xgao@microsoft.com)
+## 7.10.0
+Wed, 04 Mar 2020 12:27:02 GMT
+
+### Minor changes
+
+- Added ApplicationInsights to public site to enable usage tracking (joschemd@microsoft.com)
+## 7.9.9
+Thu, 27 Feb 2020 12:23:46 GMT
+
+### Patches
+
+- Controls page: fix links to controls with sub-pages (elcraig@microsoft.com)
 ## 7.9.0
 Wed, 12 Feb 2020 12:24:27 GMT
 

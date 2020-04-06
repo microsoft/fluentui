@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Header, Text } from '@fluentui/react';
+import { Header, Text } from '@fluentui/react-northstar';
 
 const titleStyle = {
-  margin: 0
+  margin: 0,
 };
 
 interface ComponentExampleTitleProps {

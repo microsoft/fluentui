@@ -6,4 +6,4 @@ Fabric React is a responsive, mobile-first collection of robust components desig
 
 The `utilities` package includes a number of basic utility functions required by most Fabric components.
 
-See [Office UI Fabric React](https://github.com/OfficeDev/office-ui-fabric-react) for more details on the project and packages within.
+See [Office UI Fabric React](https://github.com/microsoft/fluentui) for more details on the project and packages within.

@@ -6,7 +6,7 @@ const parseDocblock = (docblock: string) => {
   return {
     ...rest,
     description,
-    tags
+    tags,
   };
 };
 

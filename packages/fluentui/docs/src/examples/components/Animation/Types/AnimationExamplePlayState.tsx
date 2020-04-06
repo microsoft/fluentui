@@ -1,27 +1,28 @@
 import * as React from 'react';
-import { Icon, Button, Animation, Provider } from '@fluentui/react';
+import { Button, Animation, Provider } from '@fluentui/react-northstar';
+import { PauseIcon, PlayIcon, MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
     from: {
-      transform: 'rotate(0deg)'
+      transform: 'rotate(0deg)',
     },
     to: {
-      transform: 'rotate(360deg)'
-    }
+      transform: 'rotate(360deg)',
+    },
   },
   duration: '5s',
-  iterationCount: 'infinite'
+  iterationCount: 'infinite',
 };
 
 class AnimationExamplePlayState extends React.Component {
   state = {
-    playState: 'running'
+    playState: 'running',
   };
 
   changePlayState = () => {
     this.setState(prevState => ({
-      playState: (prevState as any).playState === 'running' ? 'paused' : 'running'
+      playState: (prevState as any).playState === 'running' ? 'paused' : 'running',
     }));
   };
 
@@ -30,7 +31,7 @@ class AnimationExamplePlayState extends React.Component {
       <Provider theme={{ animations: { spinner } }}>
         <div>
           <Button
-            icon={this.state.playState === 'running' ? 'pause' : 'play'}
+            icon={this.state.playState === 'running' ? <PauseIcon /> : <PlayIcon />}
             content={this.state.playState === 'running' ? 'Pause' : 'Start'}
             onClick={this.changePlayState}
             primary
@@ -38,7 +39,7 @@ class AnimationExamplePlayState extends React.Component {
           <br />
           <br />
           <Animation name="spinner" playState={this.state.playState}>
-            <Icon name="mention" circular bordered />
+            <MentionIcon circular bordered />
           </Animation>
         </div>
       </Provider>

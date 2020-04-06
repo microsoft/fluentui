@@ -51,7 +51,6 @@ exports[`Component Examples renders Tooltip.AbsolutePosition.Example.tsx correct
             text-align: center;
             text-decoration: none;
             user-select: none;
-            vertical-align: top;
           }
           &::-moz-focus-inner {
             border: 0;

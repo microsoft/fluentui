@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Divider, ICSSInJSStyle, Segment, Text } from '@fluentui/react';
+import { Divider, ICSSInJSStyle, Segment, Text } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import ComponentExampleTitle from './ComponentExample/ComponentExampleTitle';
 import BehaviorDescription from './BehaviorDescription';
@@ -11,7 +11,7 @@ export const behaviorVariantDisplayName = (fileName: string) => {
 };
 
 export const exampleStyle: ICSSInJSStyle = {
-  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)'
+  boxShadow: '0 1px 2px rgba(0, 0, 0, 0.2)',
 };
 
 type BehaviorCardProps = {

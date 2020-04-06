@@ -11,8 +11,8 @@ import {
   Input,
   Segment,
   Text,
-  ShorthandValue
-} from '@fluentui/react';
+  ShorthandValue,
+} from '@fluentui/react-northstar';
 import { CopyToClipboard } from '@fluentui/docs-components';
 import Logo from '../Logo/Logo';
 import { getComponentPathname } from '../../utils';
@@ -21,10 +21,11 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
+import { SearchIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
-const pkg = require('@fluentui/react/package.json');
+const pkg = require('@fluentui/react-northstar/package.json');
 const componentMenu: ComponentMenuItem[] = require('../../componentMenu');
 const behaviorMenu: ComponentMenuItem[] = require('../../behaviorMenu');
 
@@ -35,7 +36,7 @@ class Sidebar extends React.Component<any, any> {
     match: PropTypes.object.isRequired,
     location: PropTypes.object.isRequired,
     history: PropTypes.object.isRequired,
-    style: PropTypes.object
+    style: PropTypes.object,
   };
   state: any = { query: '', activeCategoryIndex: 0 };
   searchInputRef = React.createRef<HTMLInputElement>();
@@ -143,8 +144,8 @@ class Sidebar extends React.Component<any, any> {
               exact: true,
               activeClassName: 'active',
               as: NavLink,
-              to: '/'
-            }
+              to: '/',
+            },
           },
           {
             key: 'composition',
@@ -152,8 +153,8 @@ class Sidebar extends React.Component<any, any> {
               as: NavLink,
               content: 'Composition',
               activeClassName: 'active',
-              to: '/composition'
-            }
+              to: '/composition',
+            },
           },
           {
             key: 'shorthand',
@@ -161,8 +162,8 @@ class Sidebar extends React.Component<any, any> {
               as: NavLink,
               content: 'Shorthand Props',
               activeClassName: 'active',
-              to: '/shorthand-props'
-            }
+              to: '/shorthand-props',
+            },
           },
           {
             key: 'component-architecture',
@@ -170,8 +171,8 @@ class Sidebar extends React.Component<any, any> {
               as: NavLink,
               content: 'Component Architecture',
               activeClassName: 'active',
-              to: '/component-architecture'
-            }
+              to: '/component-architecture',
+            },
           },
           ...(process.env.NODE_ENV !== 'production'
             ? [
@@ -181,12 +182,12 @@ class Sidebar extends React.Component<any, any> {
                     as: NavLink,
                     content: 'Theming Specification',
                     activeClassName: 'active',
-                    to: '/theming-specification'
-                  }
-                }
+                    to: '/theming-specification',
+                  },
+                },
               ]
-            : [])
-        ]
+            : []),
+        ],
       },
       {
         key: 'guides',
@@ -198,12 +199,12 @@ class Sidebar extends React.Component<any, any> {
               content: 'QuickStart',
               as: NavLink,
               activeClassName: 'active',
-              to: '/quick-start'
-            }
+              to: '/quick-start',
+            },
           },
           {
             key: 'faq',
-            title: { content: 'FAQ', as: NavLink, activeClassName: 'active', to: '/faq' }
+            title: { content: 'FAQ', as: NavLink, activeClassName: 'active', to: '/faq' },
           },
           {
             key: 'accessiblity',
@@ -211,12 +212,12 @@ class Sidebar extends React.Component<any, any> {
               content: 'Accessibility',
               as: NavLink,
               activeClassName: 'active',
-              to: '/accessibility'
-            }
+              to: '/accessibility',
+            },
           },
           {
             key: 'theming',
-            title: { content: 'Theming', as: NavLink, activeClassName: 'active', to: '/theming' }
+            title: { content: 'Theming', as: NavLink, activeClassName: 'active', to: '/theming' },
           },
           {
             key: 'theming-examples',
@@ -224,16 +225,16 @@ class Sidebar extends React.Component<any, any> {
               content: 'Theming Examples',
               as: NavLink,
               activeClassName: 'active',
-              to: '/theming-examples'
-            }
+              to: '/theming-examples',
+            },
           },
           {
             key: 'colorpalette',
-            title: { content: 'Colors', as: NavLink, activeClassName: 'active', to: '/colors' }
+            title: { content: 'Colors', as: NavLink, activeClassName: 'active', to: '/colors' },
           },
           {
             key: 'layout',
-            title: { content: 'Layout', as: NavLink, activeClassName: 'active', to: '/layout' }
+            title: { content: 'Layout', as: NavLink, activeClassName: 'active', to: '/layout' },
           },
           {
             key: 'integrate-custom',
@@ -241,8 +242,8 @@ class Sidebar extends React.Component<any, any> {
               content: 'Integrate Custom Components',
               as: NavLink,
               activeClassName: 'active',
-              to: '/integrate-custom-components'
-            }
+              to: '/integrate-custom-components',
+            },
           },
           {
             key: 'performance',
@@ -250,11 +251,11 @@ class Sidebar extends React.Component<any, any> {
               content: 'Performance',
               as: NavLink,
               activeClassName: 'active',
-              to: '/performance'
-            }
-          }
-        ]
-      }
+              to: '/performance',
+            },
+          },
+        ],
+      },
     ];
   }
 
@@ -268,7 +269,7 @@ class Sidebar extends React.Component<any, any> {
     const prototypeTreeSection = {
       key: 'prototypes',
       title: 'Prototypes',
-      items: prototypes
+      items: prototypes,
     };
     return currentSections.concat(prototypeTreeSection);
   }
@@ -291,7 +292,7 @@ class Sidebar extends React.Component<any, any> {
         .filter(({ displayName }) => !_.includes(componentsBlackList, displayName))
         .map(info => ({
           key: info.displayName.concat(nextType),
-          title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) }
+          title: { content: info.displayName, as: NavLink, to: getComponentPathname(info) },
         }))
         .value();
 
@@ -302,126 +303,126 @@ class Sidebar extends React.Component<any, any> {
       {
         key: 'chatpane',
         title: { content: 'Chat Pane', as: NavLink, to: '/prototype-chat-pane' },
-        public: false
+        public: false,
       },
       {
         key: 'chatMssages',
         title: { content: 'Chat Messages', as: NavLink, to: '/prototype-chat-messages' },
-        public: true
+        public: true,
       },
       {
         key: 'customscrollbar',
         title: { content: 'Custom Scrollbar', as: NavLink, to: '/prototype-custom-scrollbar' },
-        public: true
+        public: true,
       },
       {
         key: 'customtoolbar',
         title: { content: 'Custom Styled Toolbar', as: NavLink, to: '/prototype-custom-toolbar' },
-        public: true
+        public: true,
       },
       {
         key: 'editor-toolbar',
         title: { content: 'Editor Toolbar', as: NavLink, to: '/prototype-editor-toolbar' },
-        public: true
+        public: true,
       },
       {
         key: 'dropdowns',
         title: { content: 'Dropdowns', as: NavLink, to: '/prototype-dropdowns' },
-        public: false
+        public: false,
       },
       {
         key: 'alerts',
         title: { content: 'Alerts', as: NavLink, to: '/prototype-alerts' },
-        public: false
+        public: false,
       },
       {
         key: 'asyncshorthand',
         title: { content: 'Async Shorthand', as: NavLink, to: '/prototype-async-shorthand' },
-        public: false
+        public: false,
       },
       {
         key: 'employeecard',
         title: { content: 'Employee Card', as: NavLink, to: '/prototype-employee-card' },
-        public: false
+        public: false,
       },
       {
         key: 'meetingoptions',
         title: { content: 'Meeting Options', as: NavLink, to: '/prototype-meeting-options' },
-        public: false
+        public: false,
       },
       {
         key: 'mentions',
         title: { content: 'Mentions', as: NavLink, to: '/prototype-mentions' },
-        public: true
+        public: true,
       },
       {
         key: 'participants-list',
         title: { content: 'Participants list', as: NavLink, to: '/prototype-participants-list' },
-        public: true
+        public: true,
       },
       {
         key: 'searchpage',
         title: { content: 'Search Page', as: NavLink, to: '/prototype-search-page' },
-        public: false
+        public: false,
       },
       {
         key: 'popups',
         title: { content: 'Popups', as: NavLink, to: '/prototype-popups' },
-        public: false
+        public: false,
       },
       {
         key: 'nested-popups-and-dialogs',
         title: {
           content: 'Nested Popups & Dialogs',
           as: NavLink,
-          to: '/prototype-nested-popups-and-dialogs'
+          to: '/prototype-nested-popups-and-dialogs',
         },
-        public: true
+        public: true,
       },
       {
         key: 'iconviewer',
         title: { content: 'Processed Icons', as: NavLink, to: '/icon-viewer' },
-        public: false
+        public: false,
       },
       {
         key: 'virtualized-tree',
         title: { content: 'VirtualizedTree', as: NavLink, to: '/virtualized-tree' },
-        public: true
+        public: true,
       },
       {
         key: 'copy-to-clipboard',
         title: { content: 'Copy to Clipboard', as: NavLink, to: '/prototype-copy-to-clipboard' },
-        public: true
+        public: true,
       },
       {
         key: 'hexagonal-avatar',
         title: {
           content: 'Hexagonal Avatar',
           as: NavLink,
-          to: '/prototype-hexagonal-avatar'
+          to: '/prototype-hexagonal-avatar',
         },
-        public: true
+        public: true,
       },
       {
         key: 'table',
         title: {
           content: 'Table',
           as: NavLink,
-          to: '/prototype-table'
+          to: '/prototype-table',
         },
-        public: true
+        public: true,
       },
       {
         key: 'virtualized-table',
         title: { content: 'VirtualizedTable', as: NavLink, to: '/virtualized-table' },
-        public: true
-      }
+        public: true,
+      },
     ];
 
     const componentTreeSection = {
       key: 'components',
       title: 'Components',
-      items: treeItemsByType[0].items
+      items: treeItemsByType[0].items,
     };
 
     const treeItems = this.getTreeItems();
@@ -439,31 +440,34 @@ class Sidebar extends React.Component<any, any> {
       left: 0,
       padding: 0,
       height: '100%',
-      zIndex: 1000
+      zIndex: 1000,
     };
 
     const logoStyles: ICSSInJSStyle = {
       marginRight: '0.5rem',
-      width: '36px'
+      width: '36px',
     };
 
-    const changeLogUrl: string = `${constants.repoURL}/blob/master/CHANGELOG.md`;
+    const changeLogUrl: string = `${constants.repoURL}/blob/master/packages/fluentui/CHANGELOG.md`;
     const allSectionsWithoutSearchFilter = this.getSectionsWithoutSearchFilter();
 
     const escapedQuery = _.escapeRegExp(this.state.query);
     const regexQuery = new RegExp(`^${escapedQuery}`, 'i');
-    const allSectionsWithPossibleEmptySections = _.map(allSectionsWithoutSearchFilter, (section: HierarchicalTreeItemProps) => {
-      return {
-        ...section,
-        items: _.filter(section.items as HierarchicalTreeItemProps[], item =>
-          regexQuery.test((item.title as HierarchicalTreeTitleProps).content as string)
-        )
-      };
-    });
+    const allSectionsWithPossibleEmptySections = _.map(
+      allSectionsWithoutSearchFilter,
+      (section: HierarchicalTreeItemProps) => {
+        return {
+          ...section,
+          items: _.filter(section.items as HierarchicalTreeItemProps[], item =>
+            regexQuery.test((item.title as HierarchicalTreeTitleProps).content as string),
+          ),
+        };
+      },
+    );
 
     let allSections = _.filter(
       allSectionsWithPossibleEmptySections,
-      (section: HierarchicalTreeItemProps) => Array.isArray(section.items) && section.items.length > 0
+      (section: HierarchicalTreeItemProps) => Array.isArray(section.items) && section.items.length > 0,
     );
 
     if (this.state.query !== '') {
@@ -489,7 +493,7 @@ class Sidebar extends React.Component<any, any> {
       ...this.props.treeItemStyle,
       padding: undefined,
       margin: '0.5em 0em 0.5em 1em',
-      width: `${0.9 * this.props.width}px`
+      width: `${0.9 * this.props.width}px`,
     };
 
     const gradientTextStyles: React.CSSProperties = {
@@ -498,7 +502,7 @@ class Sidebar extends React.Component<any, any> {
 
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
-      fontWeight: 100
+      fontWeight: 100,
     };
 
     // TODO: bring back the active elements indicators
@@ -513,7 +517,7 @@ class Sidebar extends React.Component<any, any> {
               fontSize: '1.25rem',
               color: 'white',
               fontWeight: 600,
-              textAlign: 'center'
+              textAlign: 'center',
             }}
           >
             Fluent <span style={gradientTextStyles}>UI</span>
@@ -533,9 +537,9 @@ class Sidebar extends React.Component<any, any> {
                   cursor: 'pointer',
                   ...(!active && {
                     ':hover': {
-                      opacity: 0.75
-                    }
-                  })
+                      opacity: 0.75,
+                    },
+                  }),
                 }}
               >
                 {active ? 'Copied! Happy coding :)' : `yarn add ${pkg.name}@${pkg.version}`}
@@ -561,7 +565,7 @@ class Sidebar extends React.Component<any, any> {
             inverted
             fluid
             clearable
-            icon="search"
+            icon={<SearchIcon />}
             placeholder="Search"
             iconPosition="end"
             role="search"

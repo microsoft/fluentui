@@ -13,7 +13,7 @@ const styles = mergeStyleSets({
     width: 164,
     justifyContent: 'center',
     overflow: 'hidden',
-    position: 'relative'
+    position: 'relative',
   },
   playButton: {
     backgroundColor: NeutralColors.white,
@@ -31,25 +31,25 @@ const styles = mergeStyleSets({
     transition: `opacity ${MotionDurations.duration2} ${MotionTimings.standard}`,
     selectors: {
       ':focus': {
-        outline: 'none'
-      }
-    }
+        outline: 'none',
+      },
+    },
   },
   isHidden: {
-    opacity: '0.6'
+    opacity: '0.6',
   },
   element: {
     boxShadow: Depths.depth4,
     backgroundColor: NeutralColors.white,
-    position: 'absolute'
+    position: 'absolute',
   },
   notification: {
     width: 108,
-    height: 56
+    height: 56,
   },
   opacityOff: {
-    opacity: 0
-  }
+    opacity: 0,
+  },
 });
 
 const iconStyles: IStyleSet<Partial<IIconStyles>> = {
@@ -58,8 +58,8 @@ const iconStyles: IStyleSet<Partial<IIconStyles>> = {
     top: 1,
     left: 1,
     color: NeutralColors.gray110,
-    fontSize: '20px'
-  }
+    fontSize: '20px',
+  },
 };
 
 export interface IAnimationExampleState {
@@ -70,7 +70,7 @@ export interface IAnimationExampleState {
 export class AnimationExample extends React.Component<IAnimationExampleProps, IAnimationExampleState> {
   public state = {
     isReadyToPlay: true,
-    isAnimating: false
+    isAnimating: false,
   };
 
   public render(): JSX.Element {
@@ -125,7 +125,7 @@ export class AnimationExample extends React.Component<IAnimationExampleProps, IA
       <div className={styles.root} onClick={this.play}>
         <button
           className={css(styles.playButton, {
-            [styles.isHidden]: !this.state.isReadyToPlay
+            [styles.isHidden]: !this.state.isReadyToPlay,
           })}
         >
           <Icon styles={iconStyles} iconName="Play" />
@@ -138,27 +138,27 @@ export class AnimationExample extends React.Component<IAnimationExampleProps, IA
   public play = () => {
     // Hide the play overlay.
     this.setState({
-      isReadyToPlay: false
+      isReadyToPlay: false,
     });
 
     // Apply the animation.
     setTimeout(() => {
       this.setState({
-        isAnimating: true
+        isAnimating: true,
       });
     }, 200);
 
     // Reset the animation.
     setTimeout(() => {
       this.setState({
-        isAnimating: false
+        isAnimating: false,
       });
     }, 1400);
 
     // Show the play overlay.
     setTimeout(() => {
       this.setState({
-        isReadyToPlay: true
+        isReadyToPlay: true,
       });
     }, 1400);
   };

@@ -2,21 +2,23 @@ import {
   Attachment,
   Extendable,
   Popup,
+  Icon,
   Menu,
   AvatarProps,
   ChatMessageProps,
   DividerProps,
   StatusProps,
-  ShorthandValue
-} from '@fluentui/react';
+  ShorthandValue,
+} from '@fluentui/react-northstar';
 import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
+import { AcceptIcon, DownloadIcon } from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
-  divider
+  divider,
 }
 
 interface ChatItemType {
@@ -38,10 +40,10 @@ type ChatItem = {
 type StatusPropsExtendable = Extendable<StatusProps>;
 
 const statusMap: Map<UserStatus, StatusPropsExtendable> = new Map([
-  ['Available', { color: 'green', icon: 'check', title: 'Available' }],
-  ['DoNotDisturb', { color: 'red', icon: 'minus', title: 'Do not disturb' }],
-  ['Away', { color: 'yellow', icon: 'clock', title: 'Away' }],
-  ['Offline', { color: 'grey', title: 'Offline' }]
+  ['Available', { color: 'green', icon: <AcceptIcon />, title: 'Available' }],
+  ['DoNotDisturb', { color: 'red', icon: <Icon name="minus" />, title: 'Do not disturb' }],
+  ['Away', { color: 'yellow', icon: <Icon name="clock" />, title: 'Away' }],
+  ['Offline', { color: 'grey', title: 'Offline' }],
 ] as [UserStatus, StatusPropsExtendable][]);
 
 function generateChatMsgProps(message: MessageData, fromUser: UserData): ChatItem {
@@ -58,20 +60,20 @@ function generateChatMsgProps(message: MessageData, fromUser: UserData): ChatIte
       id: `timestamp-${message.id}`,
       // put aria-label as it was not narrating title, where we have already this information.
       // without aria-label it narrates content of the element, which has date in wrong format.
-      'aria-label': `${message.timestampLong}`
+      'aria-label': `${message.timestampLong}`,
     },
     author: fromUser && {
       content: `${fromUser.firstName} ${fromUser.lastName} `,
-      id: `sender-${message.id}`
+      id: `sender-${message.id}`,
     },
     itemType: ChatItemTypes.message,
-    text: content
+    text: content,
   };
 
   return {
     mine,
     message: messageProps,
-    gutter: !message.mine && { image: fromUser.avatar, status: statusMap.get(fromUser.status) }
+    gutter: !message.mine && { image: fromUser.avatar, status: statusMap.get(fromUser.status) },
   };
 }
 
@@ -79,7 +81,7 @@ function createMessageContent(message: MessageData): ShorthandValue<ChatMessageP
   const messageId = `content-${message.id}`;
   return {
     id: message.withAttachment ? undefined : messageId,
-    content: message.withAttachment ? createMessageContentWithAttachments(message.content, messageId) : message.content
+    content: message.withAttachment ? createMessageContentWithAttachments(message.content, messageId) : message.content,
   };
 }
 
@@ -94,22 +96,22 @@ function createMessageContentWithAttachments(content: string, messageId: string)
       items={[
         {
           key: 'download',
+          icon: <DownloadIcon />,
           content: 'Download',
-          icon: 'download',
-          onClick: menuClickHandler('Download')
+          onClick: menuClickHandler('Download'),
         },
         {
           key: 'linkify',
+          icon: <Icon name="linkify" />,
           content: 'Get link',
-          icon: 'linkify',
-          onClick: menuClickHandler('Get link')
+          onClick: menuClickHandler('Get link'),
         },
         {
           key: 'tab',
+          icon: <Icon name="folder open" />,
           content: 'Make this a tab',
-          icon: 'folder open',
-          onClick: menuClickHandler('Make tab')
-        }
+          onClick: menuClickHandler('Make tab'),
+        },
       ]}
       vertical
       pills
@@ -126,10 +128,12 @@ function createMessageContentWithAttachments(content: string, messageId: string)
     'aria-label': 'More attachment options',
     iconOnly: true,
     circular: true,
-    icon: 'ellipsis horizontal',
+    icon: <Icon name="ellipsis horizontal" />,
     onClick: e => e.stopPropagation(),
     onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, keyboardKey.Spacebar]),
-    children: (Component, props) => <Popup content={{ content: contextMenu }} trapFocus trigger={<Component {...props} />} />
+    children: (Component, props) => (
+      <Popup content={{ content: contextMenu }} trapFocus trigger={<Component {...props} />} />
+    ),
   };
 
   return (
@@ -141,13 +145,13 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         {_.map(['MeetingNotes.pptx', 'Document.docx'], (fileName, index) => (
           <Attachment
             key={`attachment-${index}`}
-            icon="file word outline"
+            icon={<Icon name="file word outline" />}
             aria-label={`File attachment ${fileName}. Press tab for more options Press Enter to open the file`}
             header={fileName}
             action={action}
             data-is-focusable={true}
             styles={{
-              ...(index === 1 ? { marginLeft: '15px' } : {})
+              ...(index === 1 ? { marginLeft: '15px' } : {}),
             }}
             onClick={() => alert(`Opening ${fileName}`)}
           />
@@ -191,7 +195,11 @@ export function generateChatProps(chat: ChatData): ChatItem[] {
   // Last read divider
   const myLastMsgIndex = _.findLastIndex(chatProps, item => item.mine);
   if (myLastMsgIndex < chatProps.length - 1) {
-    chatProps.splice(myLastMsgIndex + 1, 0, generateDividerProps({ content: 'Last read', color: 'brand', important: true }));
+    chatProps.splice(
+      myLastMsgIndex + 1,
+      0,
+      generateDividerProps({ content: 'Last read', color: 'brand', important: true }),
+    );
   }
 
   return chatProps;

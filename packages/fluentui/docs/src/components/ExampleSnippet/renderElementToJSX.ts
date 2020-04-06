@@ -29,9 +29,9 @@ const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: bo
       // Fluent UI props
       'accessibility',
       'onClick',
-      'onChange'
+      'onChange',
     ],
-    functionValue: () => (renderHasFunction = true)
+    functionValue: () => (renderHasFunction = true),
   });
 
   if (process.env.NODE_ENV !== 'production') {
@@ -44,8 +44,8 @@ const renderElementToJSX = (element: React.ReactNode, triggerErrorOnRenderFn: bo
           '\n\n',
           'RENDERED:',
           '\n\n',
-          jsxMarkup
-        ].join('')
+          jsxMarkup,
+        ].join(''),
       );
     }
   }

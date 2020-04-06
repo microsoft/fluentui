@@ -8,6 +8,6 @@ export const AnnouncedQuickActionsPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'Announced - Quick Actions',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

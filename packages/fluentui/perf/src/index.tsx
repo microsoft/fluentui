@@ -1,6 +1,6 @@
 import '@babel/polyfill';
 
-import { Provider, Telemetry, themes } from '@fluentui/react';
+import { Provider, Telemetry, themes } from '@fluentui/react-northstar';
 import * as _ from 'lodash';
 import * as minimatch from 'minimatch';
 import * as React from 'react';
@@ -26,7 +26,11 @@ const asyncRender = (element: React.ReactElement<any>, container: Element) =>
     });
   });
 
-const renderCycle = async (exampleName: string, Component: React.ComponentType, exampleIndex: number): Promise<ProfilerMeasure> => {
+const renderCycle = async (
+  exampleName: string,
+  Component: React.ComponentType,
+  exampleIndex: number,
+): Promise<ProfilerMeasure> => {
   let profilerMeasure: ProfilerMeasure;
   const telemetryRef: React.Ref<Telemetry> = React.createRef();
 
@@ -40,10 +44,10 @@ const renderCycle = async (exampleName: string, Component: React.ComponentType, 
             (acc, next) => {
               return {
                 componentCount: acc.componentCount + next.count,
-                renderComponentTime: acc.renderComponentTime + next.msTotal
+                renderComponentTime: acc.renderComponentTime + next.msTotal,
               };
             },
-            { componentCount: 0, renderComponentTime: 0 }
+            { componentCount: 0, renderComponentTime: 0 },
           );
 
           profilerMeasure = {
@@ -52,14 +56,14 @@ const renderCycle = async (exampleName: string, Component: React.ComponentType, 
             phase,
             commitTime,
             startTime,
-            ...renderComponentTelemetry
+            ...renderComponentTelemetry,
           };
         }}
       >
         <Component />
       </Profiler>
     </Provider>,
-    mountNode
+    mountNode,
   );
 
   return profilerMeasure;
@@ -67,7 +71,7 @@ const renderCycle = async (exampleName: string, Component: React.ComponentType, 
 
 const satisfiesFilter = (componentFilePath: string, filter: string) =>
   minimatch(componentFilePath, filter || '*', {
-    matchBase: true
+    matchBase: true,
   });
 
 window.runMeasures = async (filter: string = '') => {
@@ -81,7 +85,11 @@ window.runMeasures = async (filter: string = '') => {
 
     const Component = performanceExamplesContext(exampleName).default;
 
-    performanceMeasures[componentName] = await renderCycle(componentName, Component, performanceExampleNames.indexOf(exampleName));
+    performanceMeasures[componentName] = await renderCycle(
+      componentName,
+      Component,
+      performanceExampleNames.indexOf(exampleName),
+    );
   }
 
   return performanceMeasures;
@@ -103,7 +111,9 @@ const Control: React.FunctionComponent = () => {
       </label>
       <input onChange={e => setFilter(e.target.value)} type="text" value={filter} />
 
-      <pre>{_.filter(performanceExamplesContext.keys(), exampleName => satisfiesFilter(exampleName, filter)).join('\n')}</pre>
+      <pre>
+        {_.filter(performanceExamplesContext.keys(), exampleName => satisfiesFilter(exampleName, filter)).join('\n')}
+      </pre>
 
       <button
         onClick={async () => {

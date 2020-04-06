@@ -8,6 +8,6 @@ export const DetailsListGroupedPageProps: TFabricPlatformPageProps = {
     ...(ExternalProps as any),
     title: 'DetailsList - Grouped',
     isFeedbackVisible: false,
-    related
-  }
+    related,
+  },
 };

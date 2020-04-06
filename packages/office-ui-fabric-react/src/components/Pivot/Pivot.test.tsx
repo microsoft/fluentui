@@ -16,7 +16,7 @@ describe('Pivot', () => {
       <Pivot>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -32,7 +32,7 @@ describe('Pivot', () => {
         <PivotItem headerText="Test Link 3">
           <div>This is Item 3</div>
         </PivotItem>
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -43,7 +43,7 @@ describe('Pivot', () => {
       <Pivot linkSize={PivotLinkSize.large}>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -54,7 +54,7 @@ describe('Pivot', () => {
       <Pivot linkFormat={PivotLinkFormat.tabs}>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -65,7 +65,7 @@ describe('Pivot', () => {
       <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
         <PivotItem headerText="Test Link 1" />
         <PivotItem headerText="" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -76,7 +76,7 @@ describe('Pivot', () => {
       <Pivot className="specialClassName">
         <PivotItem headerText="Test Link 1" className="specialClassName" />
         <PivotItem headerText="Test Link 2" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -88,7 +88,7 @@ describe('Pivot', () => {
         <PivotItem itemCount={12} />
         <PivotItem headerText="Test Link" itemCount={12} />
         <PivotItem headerText="Text with icon" itemIcon="Recent" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
@@ -99,7 +99,7 @@ describe('Pivot', () => {
       <Pivot>
         <PivotItem headerText="test" />
         <PivotItem headerText="Test Link" itemCount="20+" />
-      </Pivot>
+      </Pivot>,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

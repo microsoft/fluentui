@@ -10,18 +10,19 @@ const ToggleCustomLabelExampleCode = require('!raw-loader!office-ui-fabric-react
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
   componentName: 'Toggle',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
+  componentUrl:
+    'https://github.com/microsoft/fluentui/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
   examples: [
     {
       title: 'Basic Toggles',
       code: ToggleBasicExampleCode,
-      view: <ToggleBasicExample />
+      view: <ToggleBasicExample />,
     },
     {
       title: 'Toggles with Custom Labels',
       code: ToggleCustomLabelExampleCode,
-      view: <ToggleCustomLabelExample />
-    }
+      view: <ToggleCustomLabelExample />,
+    },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
   bestPractices: '',
@@ -30,5 +31,5 @@ export const TogglePageProps: IDocPageProps = {
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,
-  nativePropsElement: 'input'
+  nativePropsElement: 'input',
 };

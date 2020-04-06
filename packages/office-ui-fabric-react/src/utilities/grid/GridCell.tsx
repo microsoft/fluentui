@@ -6,7 +6,7 @@ import { CommandButton } from '../../Button';
 export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P, {}> {
   public static defaultProps = {
     disabled: false,
-    id: getId('gridCell')
+    id: getId('gridCell'),
   };
 
   public render(): JSX.Element {
@@ -22,7 +22,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
       cellIsSelectedStyle,
       index,
       label,
-      getClassNames
+      getClassNames,
     } = this.props;
 
     return (
@@ -33,7 +33,7 @@ export class GridCell<T, P extends IGridCellProps<T>> extends React.Component<P,
         disabled={disabled}
         className={css(className, {
           ['' + cellIsSelectedStyle]: selected,
-          ['' + cellDisabledStyle]: disabled
+          ['' + cellDisabledStyle]: disabled,
         })}
         onClick={this._onClick}
         onMouseEnter={this._onMouseEnter}

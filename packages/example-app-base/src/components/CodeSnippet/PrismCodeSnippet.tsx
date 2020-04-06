@@ -33,7 +33,7 @@ const codeStyle: IRawStyle = {
   lineHeight: '1.6',
   border: 'none',
   overflow: undefined,
-  margin: 0
+  margin: 0,
 };
 
 // Customize imported styles based on
@@ -50,14 +50,14 @@ for (const key of Object.keys(style)) {
     style[key] = {
       ...style[key],
       ...codeStyle,
-      padding: '4px 0'
+      padding: '4px 0',
     };
   } else if (key.indexOf('pre[') === 0) {
     style[key] = {
       ...style[key],
       ...codeStyle,
       padding: 8,
-      overflowX: 'auto'
+      overflowX: 'auto',
     };
   } else if (key.indexOf(':not(pre) > code') === 0) {
     // inline code styles
@@ -123,7 +123,7 @@ const languageMapping: { [key: string]: string } = {
   jsx: 'tsx',
   shell: 'bash',
   md: 'markdown',
-  css: 'scss'
+  css: 'scss',
 };
 
 const PrismCodeSnippetBase: React.FunctionComponent<ICodeSnippetProps> = props => {
@@ -145,5 +145,5 @@ export const PrismCodeSnippet: React.FunctionComponent<ICodeSnippetProps> = styl
   ICodeSnippetStyleProps,
   ICodeSnippetStyles
 >(PrismCodeSnippetBase, getStyles, undefined, {
-  scope: 'CodeSnippet'
+  scope: 'CodeSnippet',
 });

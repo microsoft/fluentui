@@ -9,7 +9,7 @@ export {
   registerIcons,
   registerIconAlias,
   unregisterIcons,
-  setIconOptions
+  setIconOptions,
 } from './icons';
 
 export { getIconClassName } from './getIconClassName';

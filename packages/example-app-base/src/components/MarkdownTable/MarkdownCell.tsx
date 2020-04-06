@@ -10,7 +10,7 @@ export class MarkdownCellBase extends React.PureComponent<IMarkdownTableCellProp
     const { as = 'td', children, styles, theme } = this.props;
 
     const classNames = getClassNames(styles, {
-      theme: theme!
+      theme: theme!,
     });
 
     const Tag = as;
@@ -28,5 +28,5 @@ export const MarkdownCell = styled<IMarkdownTableCellProps, IMarkdownTableStyleP
   MarkdownCellBase,
   getStyles,
   undefined,
-  { scope: 'MarkdownTable' }
+  { scope: 'MarkdownTable' },
 );

@@ -1,7 +1,7 @@
-import { ChatMessage } from '@fluentui/react';
+import { ChatMessage } from '@fluentui/react-northstar';
 
 const selectors = {
-  message: `.${ChatMessage.className}`
+  message: `.${ChatMessage.className}`,
 };
 
 const config: ScreenerTestsConfig = {
@@ -12,8 +12,8 @@ const config: ScreenerTestsConfig = {
       builder
         .click(selectors.message)
         .keys(selectors.message, keys.downArrow)
-        .snapshot('Focuses second message')
-  ]
+        .snapshot('Focuses second message'),
+  ],
 };
 
 export default config;

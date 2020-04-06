@@ -68,7 +68,6 @@ Array [
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 44px;
             }
             &::-moz-focus-inner {
@@ -158,7 +157,6 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   color: HighlightText;
@@ -405,7 +403,6 @@ Array [
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 33px;
             }
             &::-moz-focus-inner {
@@ -495,7 +492,6 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   color: HighlightText;
@@ -581,7 +577,6 @@ Array [
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 44px;
             }
             &::-moz-focus-inner {
@@ -671,7 +666,6 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   color: HighlightText;
@@ -918,7 +912,6 @@ Array [
               text-align: center;
               text-decoration: none;
               user-select: none;
-              vertical-align: top;
               width: 33px;
             }
             &::-moz-focus-inner {
@@ -1008,7 +1001,6 @@ Array [
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   color: HighlightText;

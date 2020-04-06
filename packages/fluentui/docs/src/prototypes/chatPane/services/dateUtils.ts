@@ -18,7 +18,7 @@ export const getRandomDates = (count, daysAgo: number): Date[] => {
     date.between(now, midnight),
     date.between(midnight, yesterdayMidnight),
     date.between(midnight, yesterdayMidnight),
-    ..._.times(count - 3).map(() => date.recent(daysAgo))
+    ..._.times(count - 3).map(() => date.recent(daysAgo)),
   ].slice(0, count);
 };
 
@@ -28,7 +28,7 @@ export const getTimestamp = (inputDate: Date): { short: string; long: string } =
 
   return {
     short: `${areMomentsSameDay(dateMoment) ? '' : `${dateMoment.format('M/D')} `}${timeString}`,
-    long: `${dateMoment.format('ll')} ${timeString}`
+    long: `${dateMoment.format('ll')} ${timeString}`,
   };
 };
 

@@ -1,4 +1,5 @@
-import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react';
+import { Accessibility, Menu, Icon, menuAsToolbarBehavior } from '@fluentui/react-northstar';
+import { TranslationIcon } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import cx from 'classnames';
 
@@ -25,7 +26,7 @@ const popoverBehavior: Accessibility = (props: any) => {
 
 class Popover extends React.Component<PopoverProps, PopoverState> {
   state = {
-    focused: false
+    focused: false,
   };
 
   handleFocus = () => this.setState({ focused: true });
@@ -53,35 +54,35 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         className={cx(this.props.className, this.state.focused ? 'focused' : '')}
         items={[
           {
+            icon: <Icon name="smile" />,
             key: 'smile',
-            icon: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile one',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile2',
-            icon: 'smile',
+            icon: <Icon name="smile" />,
             className: 'smile-emoji',
             'aria-label': 'smile two',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile3',
-            icon: 'smile',
+            icon: <Icon name="smile" />,
             className: 'smile-emoji',
             'aria-label': 'smile three',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'a',
-            icon: 'thumbs up',
+            icon: <Icon name="thumbs up" />,
             'aria-label': 'thumbs up',
-            onClick: this.handleActionableItemClick
+            onClick: this.handleActionableItemClick,
           },
           {
             key: 'c',
-            icon: 'ellipsis horizontal',
+            icon: <Icon name="ellipsis horizontal" />,
             onMenuOpenChange: (e, { menuOpen }) => {
               onShowActionMenuChange(true);
               onForceShowActionMenuChange(menuOpen);
@@ -91,12 +92,12 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: 'folder', content: 'Save this message' },
-                { key: 'linkify', icon: 'linkify', content: 'Copy link' },
-                { key: 'translate', icon: 'translate', content: 'Translate' }
-              ]
-            }
-          }
+                { key: 'bookmark', icon: <Icon name="folder" />, content: 'Save this message' },
+                { key: 'linkify', icon: <Icon name="linkify" />, content: 'Copy link' },
+                { key: 'translate', icon: <TranslationIcon />, content: 'Translate' },
+              ],
+            },
+          },
         ]}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}

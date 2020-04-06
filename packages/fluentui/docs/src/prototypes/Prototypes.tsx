@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Box, Header, ICSSInJSStyle, Segment } from '@fluentui/react';
+import { Box, Header, ICSSInJSStyle, Segment } from '@fluentui/react-northstar';
 
 interface PrototypeSectionProps {
   title?: React.ReactNode;

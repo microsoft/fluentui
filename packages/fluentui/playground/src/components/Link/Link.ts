@@ -6,5 +6,5 @@ import tokens from './Link.tokens';
 export const Link = compose(LinkBase, {
   name: 'Link',
   styles,
-  tokens
+  tokens,
 });

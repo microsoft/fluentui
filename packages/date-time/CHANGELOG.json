@@ -2,6 +2,76 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/date-time_v7.8.45",
+      "version": "7.8.45",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/date-time_v7.8.44",
+      "version": "7.8.44",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/date-time_v7.8.43",
+      "version": "7.8.43",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Mar 2020 12:28:58 GMT",
+      "tag": "@uifabric/date-time_v7.8.41",
+      "version": "7.8.41",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove all usages of BaseComponent and initializeFocusRects",
+            "author": "xgao@microsoft.com",
+            "commit": "cb3fa154d4cfc66bc9f31942c3657581d1d814ad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Mar 2020 12:28:27 GMT",
+      "tag": "@uifabric/date-time_v7.8.40",
+      "version": "7.8.40",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CalendarDayGrid: navigatedDate should have defaultValue of today",
+            "author": "aneeshak@microsoft.com",
+            "commit": "57428b9f8b27b0aa6d048cbab9d43ac2f0f83b2e"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Feb 2020 12:25:39 GMT",
       "tag": "@uifabric/date-time_v7.8.28",
       "version": "7.8.28",

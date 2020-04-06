@@ -1,14 +1,34 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, elementContains, getId, classNamesFunction, styled } from '../../Utilities';
+import {
+  Async,
+  KeyCodes,
+  css,
+  elementContains,
+  getId,
+  classNamesFunction,
+  styled,
+  initializeComponentRef,
+} from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
-import { ISuggestions, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions/Suggestions.types';
+import {
+  ISuggestions,
+  ISuggestionsProps,
+  ISuggestionsStyleProps,
+  ISuggestionsStyles,
+} from './Suggestions/Suggestions.types';
 import { getStyles as suggestionsStyles } from './Suggestions/Suggestions.styles';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
-import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import {
+  IBasePicker,
+  IBasePickerProps,
+  ValidationState,
+  IBasePickerStyleProps,
+  IBasePickerStyles,
+} from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
 import * as stylesImport from './BasePicker.scss';
@@ -52,15 +72,21 @@ const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyle
  * Should be removed once new picker without inheritance is created
  */
 function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<T>) => Suggestions<T>) {
-  return styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(suggestionsType, suggestionsStyles, undefined, {
-    scope: 'Suggestions'
-  });
+  return styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(
+    suggestionsType,
+    suggestionsStyles,
+    undefined,
+    {
+      scope: 'Suggestions',
+    },
+  );
 }
 
 /**
  * {@docCategory Pickers}
  */
-export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
+export class BasePicker<T, P extends IBasePickerProps<T>> extends React.Component<P, IBasePickerState>
+  implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
   protected input = React.createRef<IAutofill>();
@@ -75,12 +101,17 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
+  // tslint:disable-next-line:deprecation
   private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
   private _requestSuggestionsOnClick = false;
+  private _async: Async;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
+
+    initializeComponentRef(this);
+    this._async = new Async(this);
 
     const items: T[] = basePickerProps.selectedItems || basePickerProps.defaultSelectedItems || [];
 
@@ -88,7 +119,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this._ariaMap = {
       selectedItems: `selected-items-${this._id}`,
       selectedSuggestionAlert: `selected-suggestion-alert-${this._id}`,
-      suggestionList: `suggestion-list-${this._id}`
+      suggestionList: `suggestion-list-${this._id}`,
     };
     this.suggestionStore = new SuggestionsController<T>();
     this.selection = new Selection({ onSelectionChanged: () => this.onSelectionChange() });
@@ -100,7 +131,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       moreSuggestionsAvailable: false,
       isFocused: false,
       isSearching: false,
-      selectedIndices: []
+      selectedIndices: [],
     };
   }
 
@@ -135,7 +166,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       this.setState(
         {
-          items: newProps.selectedItems
+          items: newProps.selectedItems,
         },
         () => {
           // Only update the focus if this component is currently focused to ensure that the basepicker
@@ -145,16 +176,16 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             // See _onSelectedItemsUpdated.
             this.resetFocus(focusIndex);
           }
-        }
+        },
       );
     }
   }
 
   public componentWillUnmount(): void {
-    super.componentWillUnmount();
     if (this.currentPromise) {
       this.currentPromise = undefined;
     }
+    this._async.dispose();
   }
 
   public focus() {
@@ -172,7 +203,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   public dismissSuggestions = (ev?: any): void => {
     const selectItemFunction = () => {
       if (this.props.onDismiss) {
-        this.props.onDismiss(ev, this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined);
+        this.props.onDismiss(
+          ev,
+          this.suggestionStore.currentSuggestion ? this.suggestionStore.currentSuggestion.item : undefined,
+        );
       }
 
       if (!ev || (ev && !ev.defaultPrevented)) {
@@ -216,7 +250,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const { suggestedDisplayValue, isFocused, items } = this.state;
     const { className, inputProps, disabled, theme, styles } = this.props;
 
-    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert ? this._ariaMap.selectedSuggestionAlert : '';
+    const selectedSuggestionAlertId = this.props.enableSelectedSuggestionAlert
+      ? this._ariaMap.selectedSuggestionAlert
+      : '';
     const suggestionsAvailable = this.state.suggestionsVisible ? this._ariaMap.suggestionList : '';
 
     // TODO
@@ -234,14 +270,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           className,
           isFocused,
           disabled,
-          inputClassName: inputProps && inputProps.className
+          inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           itemsWrapper: legacyStyles.pickerItems,
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
+          screenReaderText: legacyStyles.screenReaderOnly,
         };
 
     return (
@@ -254,9 +290,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
           aria-expanded={!!this.state.suggestionsVisible}
           aria-owns={suggestionsAvailable || undefined}
           // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
-          // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
-          // A bug tracking this can be found:
-          // https://github.com/dequelabs/axe-core/issues/1009
+          // Currently accessibility insights will flag this as not a valid child because the AXE rules are
+          // out of date. Tracking issue: https://github.com/dequelabs/axe-core/issues/1009
           aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
         >
           {this.getSuggestionsAlert(classNames.screenReaderText)}
@@ -350,8 +385,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         onRemoveItem: () => this.removeItem(item, true),
         disabled: disabled,
         onItemChange: this.onItemChange,
-        removeButtonAriaLabel: removeButtonAriaLabel
-      })
+        removeButtonAriaLabel: removeButtonAriaLabel,
+      }),
     );
   }
 
@@ -361,7 +396,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (items.length && index! >= 0) {
       const newEl: HTMLElement | null =
         this.root.current &&
-        (this.root.current.querySelectorAll('[data-selection-index]')[Math.min(index!, items.length - 1)] as HTMLElement | null);
+        (this.root.current.querySelectorAll('[data-selection-index]')[
+          Math.min(index!, items.length - 1)
+        ] as HTMLElement | null);
       if (newEl && this.focusZone.current) {
         this.focusZone.current.focusElement(newEl);
       }
@@ -384,7 +421,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onSelectionChange() {
     this.setState({
-      selectedIndices: this.selection.getSelectedIndices()
+      selectedIndices: this.selection.getSelectedIndices(),
     });
   }
 
@@ -396,7 +433,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onEmptyInputFocus() {
     const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
       ? this.props.onEmptyResolveSuggestions
-      : this.props.onEmptyInputFocus;
+      : // tslint:disable-next-line:deprecation
+        this.props.onEmptyInputFocus;
 
     const suggestions = emptyResolveSuggestions!(this.state.items);
     this.updateSuggestionsList(suggestions);
@@ -411,12 +449,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
     // Check to see if the returned value is an array, if it is then just pass it into the next function .
-    // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
+    // If the returned value is not an array then check to see if it's a promise or PromiseLike.
+    // If it is then resolve it asynchronously.
     if (Array.isArray(suggestionsArray)) {
       this._updateAndResolveValue(updatedValue, suggestionsArray);
     } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
       this.setState({
-        suggestionsLoading: true
+        suggestionsLoading: true,
       });
 
       // Clear suggestions
@@ -424,11 +463,11 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
       if (updatedValue !== undefined) {
         this.setState({
-          suggestionsVisible: this._getShowSuggestions()
+          suggestionsVisible: this._getShowSuggestions(),
         });
       } else {
         this.setState({
-          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement
+          suggestionsVisible: this.input.current! && this.input.current!.inputElement === document.activeElement,
         });
       }
 
@@ -456,9 +495,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState(
       {
         suggestedDisplayValue: itemValue,
-        suggestionsVisible: this._getShowSuggestions()
+        suggestionsVisible: this._getShowSuggestions(),
       },
-      () => this.setState({ suggestionsLoading: false })
+      () => this.setState({ suggestionsLoading: false }),
     );
   }
 
@@ -472,7 +511,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.updateValue(value);
     this.setState({
       moreSuggestionsAvailable: true,
-      isMostRecentlyUsedVisible: false
+      isMostRecentlyUsedVisible: false,
     });
   };
 
@@ -499,6 +538,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       if (
         this.input.current &&
         this.input.current.value === '' &&
+        // tslint:disable-next-line:deprecation
         (this.props.onEmptyResolveSuggestions || this.props.onEmptyInputFocus) &&
         !this._requestSuggestionsOnClick
       ) {
@@ -506,12 +546,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         this.setState({
           isMostRecentlyUsedVisible: true,
           moreSuggestionsAvailable: false,
-          suggestionsVisible: true
+          suggestionsVisible: true,
         });
       } else if (this.input.current && this.input.current.value && !this._requestSuggestionsOnClick) {
         this.setState({
           isMostRecentlyUsedVisible: false,
-          suggestionsVisible: true
+          suggestionsVisible: true,
         });
       }
       if (this.props.inputProps && this.props.inputProps.onFocus) {
@@ -528,7 +568,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected onBlur = (ev: React.FocusEvent<HTMLElement | Autofill>): void => {
     if (this.state.isFocused) {
-      // Only blur the entire component if an unrelated element gets focus. Otherwise treat it as though it still has focus.
+      // Only blur the entire component if an unrelated element gets focus.
+      // Otherwise treat it as though it still has focus.
       // Do nothing if the blur is coming from something
       // inside the comboBox root or the comboBox menu since
       // it we are not really bluring from the whole comboBox
@@ -566,7 +607,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     if (ev.button === 0 && !this.state.suggestionsVisible) {
       const emptyResolveSuggestions = this.props.onEmptyResolveSuggestions
         ? this.props.onEmptyResolveSuggestions
-        : this.props.onEmptyInputFocus;
+        : // tslint:disable-next-line:deprecation
+          this.props.onEmptyInputFocus;
 
       if (input === '') {
         if (emptyResolveSuggestions) {
@@ -710,11 +752,14 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   protected onGetMoreResults = (): void => {
     this.setState(
       {
-        isSearching: true
+        isSearching: true,
       },
       () => {
         if (this.props.onGetMoreResults && this.input.current) {
-          const suggestions: T[] | PromiseLike<T[]> = (this.props.onGetMoreResults as any)(this.input.current.value, this.state.items);
+          const suggestions: T[] | PromiseLike<T[]> = (this.props.onGetMoreResults as any)(
+            this.input.current.value,
+            this.state.items,
+          );
           const suggestionsArray: T[] = suggestions as T[];
           const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
 
@@ -737,9 +782,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
         this.setState({
           moreSuggestionsAvailable: false,
-          isResultsFooterVisible: true
+          isResultsFooterVisible: true,
         });
-      }
+      },
     );
   };
 
@@ -757,7 +802,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   };
 
   protected addItem = (item: T): void => {
-    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected ? (this.props.onItemSelected as any)(item) : item;
+    const processedItem: T | PromiseLike<T> | null = this.props.onItemSelected
+      ? (this.props.onItemSelected as any)(item)
+      : item;
 
     if (processedItem === null) {
       return;
@@ -841,7 +888,12 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         currentIndex > -1 ? this.suggestionStore.getSuggestionAtIndex(this.suggestionStore.currentIndex) : undefined;
       const selectedSuggestionAlertText = selectedSuggestion ? selectedSuggestion.ariaLabel : undefined;
       return (
-        <div className={suggestionAlertClassName} role="alert" id={this._ariaMap.selectedSuggestionAlert} aria-live="assertive">
+        <div
+          className={suggestionAlertClassName}
+          role="alert"
+          id={this._ariaMap.selectedSuggestionAlert}
+          aria-live="assertive"
+        >
           {selectedSuggestionAlertText}{' '}
         </div>
       );
@@ -859,7 +911,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       this.suggestionStore.updateSuggestions(newSuggestions, -1);
       if (this.state.suggestionsLoading) {
         this.setState({
-          suggestionsLoading: false
+          suggestionsLoading: false,
         });
       }
     }
@@ -867,7 +919,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   /**
    * Controls what happens whenever there is an action that impacts the selected items.
-   * If selectedItems is provided as a property then this will act as a controlled component and it will not update it's own state.
+   * If `selectedItems` is provided, this will act as a controlled component and it will not update its own state.
    */
   private _updateSelectedItems(items: T[], focusIndex?: number): void {
     if (this.props.selectedItems) {
@@ -900,13 +952,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     return areSuggestionsVisible;
   }
 
-  private _onResolveSuggestions(updatedValue: string): void {
+  private _onResolveSuggestions = (updatedValue: string): void => {
     const suggestions: T[] | PromiseLike<T[]> | null = this.props.onResolveSuggestions(updatedValue, this.state.items);
 
     if (suggestions !== null) {
       this.updateSuggestionsList(suggestions, updatedValue);
     }
-  }
+  };
 
   private _completeGenericSuggestion = (): void => {
     if (
@@ -915,7 +967,10 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
       (this.props.onValidateInput as any)(this.input.current.value) !== ValidationState.invalid &&
       this.props.createGenericItem
     ) {
-      const itemToConvert = this.props.createGenericItem(this.input.current.value, this.props.onValidateInput(this.input.current.value));
+      const itemToConvert = this.props.createGenericItem(
+        this.input.current.value,
+        this.props.onValidateInput(this.input.current.value),
+      );
       this.suggestionStore.createGenericSuggestion(itemToConvert);
       this.completeSuggestion();
     }
@@ -954,13 +1009,13 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
           theme,
           className,
           isFocused,
-          inputClassName: inputProps && inputProps.className
+          inputClassName: inputProps && inputProps.className,
         })
       : {
           root: css('ms-BasePicker', className ? className : ''),
           text: css('ms-BasePicker-text', legacyStyles.pickerText, this.state.isFocused && legacyStyles.inputFocused),
           input: css('ms-BasePicker-input', legacyStyles.pickerInput, inputProps && inputProps.className),
-          screenReaderText: legacyStyles.screenReaderOnly
+          screenReaderText: legacyStyles.screenReaderOnly,
         };
 
     return (
@@ -972,9 +1027,8 @@ export class BasePickerListBelow<T, P extends IBasePickerProps<T>> extends BaseP
             aria-owns={suggestionsAvailable || undefined}
             aria-expanded={!!this.state.suggestionsVisible}
             // Dialog is an acceptable child of a combobox according to the aria specs: https://www.w3.org/TR/wai-aria-practices/#combobox
-            // Currently accessibility insights will flag this as not a valid child because the AXE rules are out of a date.
-            // A bug tracking this can be found:
-            // https://github.com/dequelabs/axe-core/issues/1009
+            // Currently accessibility insights will flag this as not a valid child because the AXE rules are
+            // out of date. Tracking issue: https://github.com/dequelabs/axe-core/issues/1009
             aria-haspopup={suggestionsAvailable && this.suggestionStore.suggestions.length > 0 ? 'listbox' : 'dialog'}
             role="combobox"
           >

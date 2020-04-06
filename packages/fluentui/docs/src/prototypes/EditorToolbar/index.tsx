@@ -5,7 +5,7 @@ import * as React from 'react';
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import EditorToolbar from './EditorToolbar';
 import { editorToolbarReducer, initialState } from './editorToolbarReducer';
-import { Button, Divider, Provider, themes } from '@fluentui/react';
+import { Button, Divider, Provider, themes } from '@fluentui/react-northstar';
 import PortalWindow from './PortalWindow';
 
 const EditorToolbarPrototype = () => {

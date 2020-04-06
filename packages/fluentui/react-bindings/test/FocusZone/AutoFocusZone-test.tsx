@@ -21,7 +21,7 @@ describe('AutoFocusZone', () => {
     element: HTMLElement,
     {
       clientRect,
-      isVisible = true
+      isVisible = true,
     }: {
       clientRect: {
         top: number;
@@ -30,7 +30,7 @@ describe('AutoFocusZone', () => {
         right: number;
       };
       isVisible?: boolean;
-    }
+    },
   ): void => {
     // @ts-ignore
     element.getBoundingClientRect = () => ({
@@ -39,7 +39,7 @@ describe('AutoFocusZone', () => {
       bottom: clientRect.bottom,
       right: clientRect.right,
       width: clientRect.right - clientRect.left,
-      height: clientRect.bottom - clientRect.top
+      height: clientRect.bottom - clientRect.top,
     });
 
     element.setAttribute('data-is-visible', String(isVisible));
@@ -69,7 +69,7 @@ describe('AutoFocusZone', () => {
             </FocusZone>
           </AutoFocusZone>
           <button className={'z'}>z</button>
-        </div>
+        </div>,
       ) as HTMLElement;
 
       const buttonF = topLevelDiv.querySelector('.f') as HTMLElement;

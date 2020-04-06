@@ -9,5 +9,5 @@ export const ShimmerLine: React.FunctionComponent<IShimmerLineProps> = styled<
   IShimmerLineStyleProps,
   IShimmerLineStyles
 >(ShimmerLineBase, getStyles, undefined, {
-  scope: 'ShimmerLine'
+  scope: 'ShimmerLine',
 });

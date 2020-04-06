@@ -2,6 +2,90 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.24",
+      "version": "7.12.24",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Mar 2020 12:28:29 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.23",
+      "version": "7.12.23",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui",
+            "author": "elcraig@microsoft.com",
+            "commit": "94a0cc4f2c7129b66cb69159889f0ac95e8c88ee"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Mar 2020 12:29:37 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.22",
+      "version": "7.12.22",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier: 120 line length, trailing commas",
+            "author": "elcraig@microsoft.com",
+            "commit": "b55b99b22a9972f79dd9b0c45dcb983233b2c157"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Mar 2020 12:30:22 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.18",
+      "version": "7.12.18",
+      "comments": {
+        "patch": [
+          {
+            "comment": "new blog announcement, support jsx in message bar, move hig link",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "59f0c66f540deefe7a108a4be8e2760d16e2dc56"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Mar 2020 12:35:00 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.17",
+      "version": "7.12.17",
+      "comments": {
+        "patch": [
+          {
+            "comment": "use ms-Fabric--isFocusVisible instead of .is-focusVisible",
+            "author": "xgao@microsoft.com",
+            "commit": "56ef8bc2f930978aaa63be962726cff5a6ce5b87"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 07 Mar 2020 01:39:37 GMT",
+      "tag": "@uifabric/example-app-base_v7.12.15",
+      "version": "7.12.15",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on .d.ts files",
+            "author": "elcraig@microsoft.com",
+            "commit": "eb6203e8aa6f934c2a86e1f5912d8cf5a2cfb1cb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Feb 2020 17:06:50 GMT",
       "tag": "@uifabric/example-app-base_v7.12.2",
       "version": "7.12.2",

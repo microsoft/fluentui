@@ -17,21 +17,21 @@ const tooltipAsDescriptionBehavior: Accessibility<TooltipBehaviorProps> = props 
   return {
     attributes: {
       trigger: {
-        'aria-describedby': defaultAriaDescribedBy || props['aria-describedby']
+        'aria-describedby': defaultAriaDescribedBy || props['aria-describedby'],
       },
       tooltip: {
         role: 'tooltip',
         id: defaultAriaDescribedBy,
-        'aria-hidden': !props.open
-      }
+        'aria-hidden': !props.open,
+      },
     },
     keyActions: {
       trigger: {
         close: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }]
-        }
-      }
-    }
+          keyCombinations: [{ keyCode: keyboardKey.Escape }],
+        },
+      },
+    },
   };
 };
 

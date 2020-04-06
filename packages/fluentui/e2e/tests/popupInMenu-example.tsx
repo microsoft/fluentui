@@ -1,18 +1,18 @@
 import * as React from 'react';
-import { Menu, Popup, Button } from '@fluentui/react';
+import { Menu, Popup, Button } from '@fluentui/react-northstar';
 
 export const selectors = {
   menuId: 'menu',
   menuItemId: index => `menu-item-${index}`,
   popupContentClass: Popup.slotClassNames.content,
-  popupContentId: index => `popup-content-${index}`
+  popupContentId: index => `popup-content-${index}`,
 };
 
 const items = [
   { key: 'editorials', content: 'Editorials' },
   { key: 'review', content: 'Reviews' },
   { key: 'events', content: 'Upcoming Events' },
-  { key: 'focus-trap', content: 'Focus trap' }
+  { key: 'focus-trap', content: 'Focus trap' },
 ];
 
 const PopupInMenuExample = () => (

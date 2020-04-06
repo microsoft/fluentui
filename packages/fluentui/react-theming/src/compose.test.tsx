@@ -53,7 +53,7 @@ describe('compose', () => {
 
     it('stacks optionSets', () => {
       const composed: any = compose(compose(baseComponent(), { slots: { foo: 'div' } }), {
-        slots: { bar: 'baz' }
+        slots: { bar: 'baz' },
       });
       expect(composed.__optionsSet).toEqual([{ slots: { foo: 'div' } }, { slots: { bar: 'baz' } }]);
     });
@@ -64,7 +64,7 @@ describe('compose', () => {
       composed({});
       expect(mock).toBeCalledWith({
         slots: {},
-        classes: {}
+        classes: {},
       });
     });
 
@@ -73,21 +73,21 @@ describe('compose', () => {
       const composed = compose(
         compose(compose(mock, { name: 'Mock', slots: { foo: 'foo', bar: 'bar' } }), {
           name: 'Mock2',
-          slots: { baz: 'baz2', bar: 'bar2' }
+          slots: { baz: 'baz2', bar: 'bar2' },
         }),
         {
           name: 'Mock3',
-          slots: { foo: 'foo3' }
-        }
+          slots: { foo: 'foo3' },
+        },
       );
       composed({});
       expect(mock).toBeCalledWith({
         slots: {
           foo: 'foo3',
           bar: 'bar2',
-          baz: 'baz2'
+          baz: 'baz2',
         },
-        classes: {}
+        classes: {},
       });
     });
 
@@ -98,7 +98,7 @@ describe('compose', () => {
       expect(mock).toBeCalledWith({
         slots: {},
         foo: 'bar',
-        classes: {}
+        classes: {},
       });
     });
   });
@@ -106,7 +106,7 @@ describe('compose', () => {
   describe('resolveSlots', () => {
     it("merges slots that don't overlap (simple)", () => {
       expect(compose.resolveSlots('', [{ slots: { foo: 'bar' } }], makeBlankTheme())).toEqual({
-        foo: 'bar'
+        foo: 'bar',
       });
     });
     it("merges slots that don't overlap", () => {});
@@ -121,7 +121,7 @@ describe('compose', () => {
       expect(compose.resolveSlots('', opts, makeBlankTheme())).toEqual({
         foo: 'baz',
         button: 'button',
-        x: 'y'
+        x: 'y',
       });
     });
 
@@ -132,15 +132,15 @@ describe('compose', () => {
           Mock: {
             slots: {
               foo: 'foo-from-theme',
-              bar: 'bar-from-theme'
-            }
-          }
-        }
+              bar: 'bar-from-theme',
+            },
+          },
+        },
       });
       expect(compose.resolveSlots('Mock', opts, theme)).toEqual({
         bar: 'bar-from-theme',
         foo: 'foo-from-theme',
-        baz: 'baz'
+        baz: 'baz',
       });
     });
   });

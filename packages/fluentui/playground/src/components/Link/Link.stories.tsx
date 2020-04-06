@@ -5,12 +5,12 @@ import { LinkBase } from './Link.base';
 
 export default {
   component: 'Link',
-  title: 'Link'
+  title: 'Link',
 };
 
 const defaultColorRamp = {
   values: [],
-  index: -1
+  index: -1,
 };
 
 const fluentLight: ITheme = createTheme({
@@ -26,43 +26,43 @@ const fluentLight: ITheme = createTheme({
     success: defaultColorRamp,
     warning: defaultColorRamp,
     danger: defaultColorRamp,
-    text: defaultColorRamp
+    text: defaultColorRamp,
   },
   components: {},
   icons: {},
   radius: {
     base: 0,
     scale: 0,
-    unit: 'px'
+    unit: 'px',
   },
   fonts: {
     default: '',
     userContent: '',
-    mono: ''
+    mono: '',
   },
   fontSizes: {
     base: 0,
     scale: 0,
-    unit: 'px'
+    unit: 'px',
   },
   animations: {
     fadeIn: {},
-    fadeOut: {}
+    fadeOut: {},
   },
   spacing: {
     base: 0,
     scale: 0,
-    unit: 'px'
+    unit: 'px',
   },
 
   schemes: {
     header: {
       colors: {
         background: 'black',
-        bodyText: 'white'
-      }
-    }
-  }
+        bodyText: 'white',
+      },
+    },
+  },
 });
 
 const Wrapper = (p: React.HTMLAttributes<any>) => <ThemeProvider theme={fluentLight} {...p} />;

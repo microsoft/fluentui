@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HierarchicalTree, HierarchicalTreeItem, HierarchicalTreeTitle } from '@fluentui/react';
+import { HierarchicalTree, HierarchicalTreeItem, HierarchicalTreeTitle } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -12,17 +12,17 @@ const items = [
         items: [
           {
             key: '111',
-            title: 'Jaime'
+            title: 'Jaime',
           },
           {
             key: '112',
-            title: 'Cersei'
+            title: 'Cersei',
           },
           {
             key: '113',
-            title: 'Tyrion'
-          }
-        ]
+            title: 'Tyrion',
+          },
+        ],
       },
       {
         key: '21',
@@ -30,19 +30,19 @@ const items = [
         items: [
           {
             key: '211',
-            title: 'Lancel'
+            title: 'Lancel',
           },
           {
             key: '212',
-            title: 'Willem'
+            title: 'Willem',
           },
           {
             key: '213',
-            title: 'Martyn'
-          }
-        ]
-      }
-    ]
+            title: 'Martyn',
+          },
+        ],
+      },
+    ],
   },
   {
     key: '2',
@@ -54,26 +54,26 @@ const items = [
         items: [
           {
             key: '211',
-            title: 'Rhaegar'
+            title: 'Rhaegar',
           },
           {
             key: '212',
-            title: 'Viserys'
+            title: 'Viserys',
           },
           {
             key: '213',
-            title: 'Daenerys'
-          }
-        ]
-      }
-    ]
-  }
+            title: 'Daenerys',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const selectors = {
   treeClass: HierarchicalTree.className,
   treeItemClass: HierarchicalTreeItem.className,
-  treeTitleClass: HierarchicalTreeTitle.className
+  treeTitleClass: HierarchicalTreeTitle.className,
 };
 
 const TreeExample = () => <HierarchicalTree items={items} />;

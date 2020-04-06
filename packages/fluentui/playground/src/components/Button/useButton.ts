@@ -15,7 +15,7 @@ const useButtonState = (userProps: IStateProps<IButtonProps>): IButtonState => {
   React.useImperativeHandle(componentRef, () => ({
     focus: () => {
       rootRef.current && rootRef.current.focus();
-    }
+    },
   }));
 
   const onButtonClick = (ev: MouseEvent) => {
@@ -30,7 +30,7 @@ const useButtonState = (userProps: IStateProps<IButtonProps>): IButtonState => {
 
   return {
     onClick: onButtonClick,
-    rootRef
+    rootRef,
   };
 };
 
@@ -48,12 +48,12 @@ export const useButton = (props: IStateProps<IButtonProps>) => {
       onClick,
       ref: rootRef,
       role: 'button',
-      type: href ? 'link' : 'button'
+      type: href ? 'link' : 'button',
     },
-    startIcon: {}
+    startIcon: {},
   });
   return {
     slotProps,
-    state
+    state,
   };
 };

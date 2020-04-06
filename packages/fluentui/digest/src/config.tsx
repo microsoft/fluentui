@@ -5,15 +5,15 @@ import * as React from 'react';
 const stories = {
   SampleKind: {
     sampleStory1: () => <div>Sample Story</div>,
-    sampleStory2: () => <div>If you're seeing this, digest was not configured or unable to find your stories.</div>
-  }
+    sampleStory2: () => <div>If you're seeing this, digest was not configured or unable to find your stories.</div>,
+  },
 };
 
 const decorator = content => content;
 
 const config = {
   decorator,
-  stories
+  stories,
 };
 
 export default config;

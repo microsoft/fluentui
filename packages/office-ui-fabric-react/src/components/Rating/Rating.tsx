@@ -8,5 +8,5 @@ export const Rating: React.FunctionComponent<IRatingProps> = styled<IRatingProps
   RatingBase,
   getStyles,
   undefined,
-  { scope: 'Rating' }
+  { scope: 'Rating' },
 );

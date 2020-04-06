@@ -66,7 +66,9 @@ describe('PersonaPresence', () => {
 
   it('renders blocked + out of office', () => {
     // Blocked + out of office does not exist and is the same as regular blocked
-    const component = renderer.create(<PersonaPresence presence={PersonaTypes.PersonaPresence.blocked} isOutOfOffice />);
+    const component = renderer.create(
+      <PersonaPresence presence={PersonaTypes.PersonaPresence.blocked} isOutOfOffice />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -78,7 +80,9 @@ describe('PersonaPresence', () => {
   });
 
   it('renders offline + out of office', () => {
-    const component = renderer.create(<PersonaPresence presence={PersonaTypes.PersonaPresence.offline} isOutOfOffice />);
+    const component = renderer.create(
+      <PersonaPresence presence={PersonaTypes.PersonaPresence.offline} isOutOfOffice />,
+    );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

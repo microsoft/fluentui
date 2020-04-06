@@ -7,6 +7,6 @@ export const DetailsListBasicPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     title: 'DetailsList - Basic',
-    related
-  }
+    related,
+  },
 };

@@ -18,17 +18,17 @@ const radioGroupItemBehavior: Accessibility<RadioGroupItemBehaviorProps> = props
       tabIndex: props.checked ? 0 : -1,
       ...(props.checked && { [IS_FOCUSABLE_ATTRIBUTE]: true }),
       'aria-checked': props.checked,
-      'aria-disabled': props.disabled
-    }
+      'aria-disabled': props.disabled,
+    },
   },
 
   keyActions: {
     root: {
       performClick: {
-        keyCombinations: [{ keyCode: keyboardKey.Spacebar }]
-      }
-    }
-  }
+        keyCombinations: [{ keyCode: keyboardKey.Spacebar }],
+      },
+    },
+  },
 });
 
 export default radioGroupItemBehavior;

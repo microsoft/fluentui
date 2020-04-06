@@ -1,28 +1,29 @@
 import * as React from 'react';
-import { SplitButton } from '@fluentui/react';
+import { SplitButton } from '@fluentui/react-northstar';
+import { FilesGifIcon, FilesIllustratorIcon, FilesPdfIcon, FilesPhotoshopIcon } from '@fluentui/react-icons-northstar';
 
 const items = [
   {
     key: 'pdf',
     content: 'Export to PDF',
-    icon: 'files-pdf'
+    icon: <FilesPdfIcon />,
   },
   {
     key: 'pds',
     content: 'Export to PDS',
-    icon: 'files-photoshop'
+    icon: <FilesPhotoshopIcon />,
   },
   {
     key: 'gif',
     content: 'Export as GIF',
-    icon: 'files-gif',
-    disabled: true
+    icon: <FilesGifIcon />,
+    disabled: true,
   },
   {
     key: 'eps',
     content: 'Export to EPS',
-    icon: 'files-illustrator'
-  }
+    icon: <FilesIllustratorIcon />,
+  },
 ];
 
 const SplitButtonIconAndContentExampleShorthand = () => (
@@ -34,7 +35,7 @@ const SplitButtonIconAndContentExampleShorthand = () => (
         key: items[0].key,
         icon: items[0].icon,
         'aria-roledescription': 'splitbutton',
-        'aria-describedby': 'instruction-message-icon-content'
+        'aria-describedby': 'instruction-message-icon-content',
       }}
       onMainButtonClick={() => alert('button was clicked')}
       toggleButton={{ 'aria-label': 'more options' }}

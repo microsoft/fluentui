@@ -1,4 +1,4 @@
-import { List } from '@fluentui/react';
+import { List } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 const items = [
@@ -8,7 +8,7 @@ const items = [
     header: 'Golden19',
     headerMedia: '2/11/2019',
     content: 'Veritatis labore tenetur eius similique voluptatem qui labore consequuntur eaque.',
-    contentMedia: 'Molestiae modi qui ipsam odio unde praesentium.'
+    contentMedia: 'Molestiae modi qui ipsam odio unde praesentium.',
   },
   {
     key: 'item-1',
@@ -16,7 +16,7 @@ const items = [
     header: 'Christine.Feeney',
     headerMedia: '3/8/2019',
     content: 'Sequi voluptas corporis vel deleniti exercitationem ipsam rem hic.',
-    contentMedia: 'Nulla quae minima.'
+    contentMedia: 'Nulla quae minima.',
   },
   {
     key: 'item-2',
@@ -24,7 +24,7 @@ const items = [
     header: 'Amaya.Ritchie',
     headerMedia: '6/22/2019',
     content: 'Neque nobis totam rerum.',
-    contentMedia: 'Aut tempora eaque rem blanditiis.'
+    contentMedia: 'Aut tempora eaque rem blanditiis.',
   },
   {
     key: 'item-3',
@@ -32,7 +32,7 @@ const items = [
     header: 'Cora.Rippin22',
     headerMedia: '7/13/2019',
     content: 'Alias error tempore dolorem laudantium sapiente.',
-    contentMedia: 'Quis ducimus explicabo quia quia rerum dolor deserunt unde.'
+    contentMedia: 'Quis ducimus explicabo quia quia rerum dolor deserunt unde.',
   },
   {
     key: 'item-4',
@@ -40,7 +40,7 @@ const items = [
     header: 'Melyssa_Walker3',
     headerMedia: '9/26/2019',
     content: 'Eum quo non eum repellendus facere sint.',
-    contentMedia: 'Fuga explicabo et ad labore voluptas voluptatibus et perspiciatis.'
+    contentMedia: 'Fuga explicabo et ad labore voluptas voluptatibus et perspiciatis.',
   },
   {
     key: 'item-5',
@@ -48,7 +48,7 @@ const items = [
     header: 'Martina.Cronin',
     headerMedia: '11/27/2019',
     content: 'Dolorem eveniet dolores repellat officia temporibus sequi.',
-    contentMedia: 'Odio commodi laborum nobis quia.'
+    contentMedia: 'Odio commodi laborum nobis quia.',
   },
   {
     key: 'item-6',
@@ -56,7 +56,7 @@ const items = [
     header: 'Trinity16',
     headerMedia: '1/16/2020',
     content: 'Debitis culpa sit consequatur corrupti.',
-    contentMedia: 'Vero placeat id.'
+    contentMedia: 'Vero placeat id.',
   },
   {
     key: 'item-7',
@@ -64,7 +64,7 @@ const items = [
     header: 'Emmet14',
     headerMedia: '5/10/2019',
     content: 'Ratione omnis nesciunt repellendus voluptatem aut sint amet voluptatem.',
-    contentMedia: 'Enim aliquam error quaerat.'
+    contentMedia: 'Enim aliquam error quaerat.',
   },
   {
     key: 'item-8',
@@ -72,7 +72,7 @@ const items = [
     header: 'Chet87',
     headerMedia: '7/30/2019',
     content: 'Dolor dolor inventore illum eum nulla.',
-    contentMedia: 'Ut debitis aut.'
+    contentMedia: 'Ut debitis aut.',
   },
   {
     key: 'item-9',
@@ -80,7 +80,7 @@ const items = [
     header: 'Horacio39',
     headerMedia: '5/6/2019',
     content: 'Laborum fugit ut debitis voluptatum enim ea voluptas quas fugiat.',
-    contentMedia: 'Sint minus ut.'
+    contentMedia: 'Sint minus ut.',
   },
   {
     key: 'item-10',
@@ -88,7 +88,7 @@ const items = [
     header: 'Aletha.Heaney28',
     headerMedia: '7/12/2019',
     content: 'Magnam velit et quo.',
-    contentMedia: 'Distinctio delectus modi et.'
+    contentMedia: 'Distinctio delectus modi et.',
   },
   {
     key: 'item-11',
@@ -96,7 +96,7 @@ const items = [
     header: 'Lempi85',
     headerMedia: '6/3/2019',
     content: 'Consequatur pariatur vel.',
-    contentMedia: 'Quis quibusdam at repellendus vero fuga accusamus atque provident aperiam.'
+    contentMedia: 'Quis quibusdam at repellendus vero fuga accusamus atque provident aperiam.',
   },
   {
     key: 'item-12',
@@ -104,7 +104,7 @@ const items = [
     header: 'Dayton19',
     headerMedia: '9/9/2019',
     content: 'Tempora sint corrupti.',
-    contentMedia: 'Ea est id aut facilis ex possimus.'
+    contentMedia: 'Ea est id aut facilis ex possimus.',
   },
   {
     key: 'item-13',
@@ -112,7 +112,7 @@ const items = [
     header: 'Jerel_Dooley95',
     headerMedia: '4/7/2019',
     content: 'Ullam nostrum est et necessitatibus possimus distinctio dolorum impedit dolor.',
-    contentMedia: 'Vitae tempore minima dolores tempora ea.'
+    contentMedia: 'Vitae tempore minima dolores tempora ea.',
   },
   {
     key: 'item-14',
@@ -120,7 +120,7 @@ const items = [
     header: 'Tate.Kuhic',
     headerMedia: '8/8/2019',
     content: 'In rerum molestiae.',
-    contentMedia: 'Omnis voluptate nesciunt voluptatem.'
+    contentMedia: 'Omnis voluptate nesciunt voluptatem.',
   },
   {
     key: 'item-15',
@@ -128,7 +128,7 @@ const items = [
     header: 'Rosalee56',
     headerMedia: '11/19/2019',
     content: 'Mollitia quia saepe ut nihil et iure expedita repellendus.',
-    contentMedia: 'Consequuntur ea quia recusandae ratione.'
+    contentMedia: 'Consequuntur ea quia recusandae ratione.',
   },
   {
     key: 'item-16',
@@ -136,7 +136,7 @@ const items = [
     header: 'Dorothy_Osinski96',
     headerMedia: '6/28/2019',
     content: 'Eum temporibus dicta impedit quas.',
-    contentMedia: 'Consequatur autem minus ut eveniet quo suscipit illo.'
+    contentMedia: 'Consequatur autem minus ut eveniet quo suscipit illo.',
   },
   {
     key: 'item-17',
@@ -144,7 +144,7 @@ const items = [
     header: 'Connie65',
     headerMedia: '4/1/2019',
     content: 'In ad beatae debitis.',
-    contentMedia: 'Quia quaerat ut aut in aspernatur et.'
+    contentMedia: 'Quia quaerat ut aut in aspernatur et.',
   },
   {
     key: 'item-18',
@@ -152,7 +152,7 @@ const items = [
     header: 'Raphael44',
     headerMedia: '3/6/2019',
     content: 'Perferendis soluta hic sint eum.',
-    contentMedia: 'Ut voluptas et consectetur est.'
+    contentMedia: 'Ut voluptas et consectetur est.',
   },
   {
     key: 'item-19',
@@ -160,7 +160,7 @@ const items = [
     header: 'Roberta36',
     headerMedia: '5/5/2019',
     content: 'Molestiae nihil laborum hic pariatur deserunt ullam similique quibusdam quia.',
-    contentMedia: 'Qui qui id aut deserunt quidem temporibus voluptas.'
+    contentMedia: 'Qui qui id aut deserunt quidem temporibus voluptas.',
   },
   {
     key: 'item-20',
@@ -168,7 +168,7 @@ const items = [
     header: 'Amara45',
     headerMedia: '5/13/2019',
     content: 'Placeat a sed quam vel ipsa et quisquam aspernatur.',
-    contentMedia: 'Aut vero accusamus veritatis atque laboriosam harum ab fugit aut.'
+    contentMedia: 'Aut vero accusamus veritatis atque laboriosam harum ab fugit aut.',
   },
   {
     key: 'item-21',
@@ -176,7 +176,7 @@ const items = [
     header: 'Cassandra86',
     headerMedia: '1/21/2020',
     content: 'Ut eaque id deserunt consequatur cupiditate.',
-    contentMedia: 'Ducimus aliquam voluptatem sed dolores reiciendis.'
+    contentMedia: 'Ducimus aliquam voluptatem sed dolores reiciendis.',
   },
   {
     key: 'item-22',
@@ -184,7 +184,7 @@ const items = [
     header: 'Kasandra.Jacobson',
     headerMedia: '6/4/2019',
     content: 'Ut culpa nobis enim.',
-    contentMedia: 'Repellat ut nesciunt quis consequuntur ea.'
+    contentMedia: 'Repellat ut nesciunt quis consequuntur ea.',
   },
   {
     key: 'item-23',
@@ -192,7 +192,7 @@ const items = [
     header: 'Orrin65',
     headerMedia: '1/9/2020',
     content: 'Sit facilis nihil enim sint.',
-    contentMedia: 'Atque quia dolorem porro delectus libero optio ea ut.'
+    contentMedia: 'Atque quia dolorem porro delectus libero optio ea ut.',
   },
   {
     key: 'item-24',
@@ -200,7 +200,7 @@ const items = [
     header: 'Imelda79',
     headerMedia: '1/28/2019',
     content: 'Aliquam odio repudiandae quia qui tenetur accusantium officia.',
-    contentMedia: 'Ullam accusamus facere sed iure omnis fuga.'
+    contentMedia: 'Ullam accusamus facere sed iure omnis fuga.',
   },
   {
     key: 'item-25',
@@ -208,7 +208,7 @@ const items = [
     header: 'Gerson81',
     headerMedia: '4/29/2019',
     content: 'Quo quam dolores consequuntur autem nisi unde placeat eum.',
-    contentMedia: 'Harum eos repellat nihil.'
+    contentMedia: 'Harum eos repellat nihil.',
   },
   {
     key: 'item-26',
@@ -216,7 +216,7 @@ const items = [
     header: 'Ladarius7',
     headerMedia: '12/9/2019',
     content: 'Doloremque corporis vero explicabo est similique in.',
-    contentMedia: 'Voluptas consequatur voluptates.'
+    contentMedia: 'Voluptas consequatur voluptates.',
   },
   {
     key: 'item-27',
@@ -224,7 +224,7 @@ const items = [
     header: 'Dedric68',
     headerMedia: '2/4/2019',
     content: 'Pariatur ab aspernatur minus.',
-    contentMedia: 'Asperiores vel aliquam doloribus quam maxime cumque nisi distinctio autem.'
+    contentMedia: 'Asperiores vel aliquam doloribus quam maxime cumque nisi distinctio autem.',
   },
   {
     key: 'item-28',
@@ -232,7 +232,7 @@ const items = [
     header: 'Noemie_Nicolas50',
     headerMedia: '12/24/2019',
     content: 'Ipsam inventore est omnis eveniet.',
-    contentMedia: 'Animi tempore consequatur voluptatem eaque rerum sit ut et.'
+    contentMedia: 'Animi tempore consequatur voluptatem eaque rerum sit ut et.',
   },
   {
     key: 'item-29',
@@ -240,7 +240,7 @@ const items = [
     header: 'Natalie_Kessler12',
     headerMedia: '9/13/2019',
     content: 'Officiis aperiam sed et beatae animi.',
-    contentMedia: 'Et impedit numquam.'
+    contentMedia: 'Et impedit numquam.',
   },
   {
     key: 'item-30',
@@ -248,7 +248,7 @@ const items = [
     header: 'Liza.Tromp92',
     headerMedia: '2/25/2019',
     content: 'Occaecati a exercitationem dolor.',
-    contentMedia: 'Tempora eaque quo consectetur.'
+    contentMedia: 'Tempora eaque quo consectetur.',
   },
   {
     key: 'item-31',
@@ -256,7 +256,7 @@ const items = [
     header: 'Corrine.Ondricka',
     headerMedia: '9/17/2019',
     content: 'Quia sint omnis saepe exercitationem et necessitatibus minima.',
-    contentMedia: 'Necessitatibus eum neque totam accusamus iste.'
+    contentMedia: 'Necessitatibus eum neque totam accusamus iste.',
   },
   {
     key: 'item-32',
@@ -264,7 +264,7 @@ const items = [
     header: 'Xzavier.Torphy',
     headerMedia: '8/15/2019',
     content: 'Sed saepe et.',
-    contentMedia: 'Nihil similique sunt ducimus.'
+    contentMedia: 'Nihil similique sunt ducimus.',
   },
   {
     key: 'item-33',
@@ -272,7 +272,7 @@ const items = [
     header: 'Odell89',
     headerMedia: '2/10/2019',
     content: 'Ut in voluptatem laudantium adipisci deleniti fugiat nam natus.',
-    contentMedia: 'Molestiae id dolorem sit.'
+    contentMedia: 'Molestiae id dolorem sit.',
   },
   {
     key: 'item-34',
@@ -280,7 +280,7 @@ const items = [
     header: 'Shakira.Wuckert51',
     headerMedia: '1/19/2020',
     content: 'Recusandae maiores laborum voluptas excepturi numquam.',
-    contentMedia: 'Alias et earum exercitationem rerum sed.'
+    contentMedia: 'Alias et earum exercitationem rerum sed.',
   },
   {
     key: 'item-35',
@@ -288,7 +288,7 @@ const items = [
     header: 'Stephan30',
     headerMedia: '8/8/2019',
     content: 'Laborum numquam dolores deserunt incidunt accusamus ipsam.',
-    contentMedia: 'Iusto voluptas nobis.'
+    contentMedia: 'Iusto voluptas nobis.',
   },
   {
     key: 'item-36',
@@ -296,7 +296,7 @@ const items = [
     header: 'Kenton_Vandervort68',
     headerMedia: '11/19/2019',
     content: 'Blanditiis nemo possimus autem et sunt exercitationem inventore dolorum.',
-    contentMedia: 'Odio aspernatur at sapiente voluptatem qui reiciendis suscipit non aut.'
+    contentMedia: 'Odio aspernatur at sapiente voluptatem qui reiciendis suscipit non aut.',
   },
   {
     key: 'item-37',
@@ -304,7 +304,7 @@ const items = [
     header: 'Milton39',
     headerMedia: '4/16/2019',
     content: 'Ratione nihil omnis enim aut rerum molestias nulla sit rem.',
-    contentMedia: 'Rem dolorem ab cupiditate consequatur cum incidunt et vero eveniet.'
+    contentMedia: 'Rem dolorem ab cupiditate consequatur cum incidunt et vero eveniet.',
   },
   {
     key: 'item-38',
@@ -312,7 +312,7 @@ const items = [
     header: 'Domenic.Bernier63',
     headerMedia: '7/20/2019',
     content: 'Amet et soluta rerum vero totam non consequatur sit dolorum.',
-    contentMedia: 'Explicabo in voluptas esse et sint.'
+    contentMedia: 'Explicabo in voluptas esse et sint.',
   },
   {
     key: 'item-39',
@@ -320,7 +320,7 @@ const items = [
     header: 'Deshawn68',
     headerMedia: '9/20/2019',
     content: 'Mollitia ut sapiente ex eaque ducimus sit culpa et corrupti.',
-    contentMedia: 'Amet voluptatem vero et est dicta est.'
+    contentMedia: 'Amet voluptatem vero et est dicta est.',
   },
   {
     key: 'item-40',
@@ -328,7 +328,7 @@ const items = [
     header: 'Eda_Willms',
     headerMedia: '6/19/2019',
     content: 'Nihil quasi et voluptatem dolore et.',
-    contentMedia: 'Rerum dolores reiciendis asperiores fuga nostrum vitae et.'
+    contentMedia: 'Rerum dolores reiciendis asperiores fuga nostrum vitae et.',
   },
   {
     key: 'item-41',
@@ -336,7 +336,7 @@ const items = [
     header: 'Eliza44',
     headerMedia: '10/18/2019',
     content: 'Veniam ab ducimus ut repellat.',
-    contentMedia: 'Et voluptatibus error nihil numquam similique.'
+    contentMedia: 'Et voluptatibus error nihil numquam similique.',
   },
   {
     key: 'item-42',
@@ -344,7 +344,7 @@ const items = [
     header: 'Garry.Connelly',
     headerMedia: '9/25/2019',
     content: 'Accusamus esse impedit ratione id sit vero veniam odit nemo.',
-    contentMedia: 'Eveniet vel dolor dolores quam animi rerum temporibus.'
+    contentMedia: 'Eveniet vel dolor dolores quam animi rerum temporibus.',
   },
   {
     key: 'item-43',
@@ -352,7 +352,7 @@ const items = [
     header: 'Sigrid4',
     headerMedia: '10/4/2019',
     content: 'Quis ut est sunt sit sed facilis rerum debitis iusto.',
-    contentMedia: 'Quos assumenda quam ab sed ea assumenda explicabo suscipit vero.'
+    contentMedia: 'Quos assumenda quam ab sed ea assumenda explicabo suscipit vero.',
   },
   {
     key: 'item-44',
@@ -360,7 +360,7 @@ const items = [
     header: 'Armando.Durgan',
     headerMedia: '5/12/2019',
     content: 'Et numquam non hic et occaecati suscipit.',
-    contentMedia: 'Fugiat voluptatum quia amet aut ut ea nam.'
+    contentMedia: 'Fugiat voluptatum quia amet aut ut ea nam.',
   },
   {
     key: 'item-45',
@@ -368,7 +368,7 @@ const items = [
     header: 'Theresia.Thiel',
     headerMedia: '12/30/2019',
     content: 'Enim animi sit beatae nisi rerum vitae velit maiores quia.',
-    contentMedia: 'Ut quisquam est doloremque voluptatem iure similique ab sit.'
+    contentMedia: 'Ut quisquam est doloremque voluptatem iure similique ab sit.',
   },
   {
     key: 'item-46',
@@ -376,7 +376,7 @@ const items = [
     header: 'Yazmin_Kertzmann',
     headerMedia: '10/27/2019',
     content: 'Deleniti iste ab est ut nihil soluta aut rem ex.',
-    contentMedia: 'Distinctio fugit fugiat commodi consequatur laudantium aut quod.'
+    contentMedia: 'Distinctio fugit fugiat commodi consequatur laudantium aut quod.',
   },
   {
     key: 'item-47',
@@ -384,7 +384,7 @@ const items = [
     header: 'Terry.Schuppe42',
     headerMedia: '8/1/2019',
     content: 'Repellendus necessitatibus minima fugit autem odio vel accusantium accusamus quas.',
-    contentMedia: 'Nihil aliquam tenetur veritatis atque.'
+    contentMedia: 'Nihil aliquam tenetur veritatis atque.',
   },
   {
     key: 'item-48',
@@ -392,7 +392,7 @@ const items = [
     header: 'Gilda_Kuhlman41',
     headerMedia: '5/22/2019',
     content: 'Eum aut assumenda quia aperiam culpa aliquid pariatur qui sit.',
-    contentMedia: 'Voluptatem delectus odit.'
+    contentMedia: 'Voluptatem delectus odit.',
   },
   {
     key: 'item-49',
@@ -400,7 +400,7 @@ const items = [
     header: 'Mathew_Bashirian',
     headerMedia: '11/27/2019',
     content: 'Iusto rerum voluptas.',
-    contentMedia: 'Ea molestiae quos cupiditate laborum.'
+    contentMedia: 'Ea molestiae quos cupiditate laborum.',
   },
   {
     key: 'item-50',
@@ -408,7 +408,7 @@ const items = [
     header: 'Roma84',
     headerMedia: '7/6/2019',
     content: 'Deleniti sunt doloremque perferendis quod assumenda ipsa.',
-    contentMedia: 'Est commodi illo incidunt provident alias ab aut ut placeat.'
+    contentMedia: 'Est commodi illo incidunt provident alias ab aut ut placeat.',
   },
   {
     key: 'item-51',
@@ -416,7 +416,7 @@ const items = [
     header: 'Hans_Hayes',
     headerMedia: '4/29/2019',
     content: 'Dolores quibusdam nihil et modi earum officia earum incidunt et.',
-    contentMedia: 'Et officiis ea velit tempore enim at commodi dolores.'
+    contentMedia: 'Et officiis ea velit tempore enim at commodi dolores.',
   },
   {
     key: 'item-52',
@@ -424,7 +424,7 @@ const items = [
     header: 'Sam80',
     headerMedia: '11/14/2019',
     content: 'Eaque quam distinctio.',
-    contentMedia: 'Vel numquam asperiores ut assumenda veniam est dolorum officiis.'
+    contentMedia: 'Vel numquam asperiores ut assumenda veniam est dolorum officiis.',
   },
   {
     key: 'item-53',
@@ -432,7 +432,7 @@ const items = [
     header: 'Madaline53',
     headerMedia: '5/6/2019',
     content: 'Et error rerum odio ex molestiae.',
-    contentMedia: 'In quidem numquam omnis voluptas nam et ratione.'
+    contentMedia: 'In quidem numquam omnis voluptas nam et ratione.',
   },
   {
     key: 'item-54',
@@ -440,7 +440,7 @@ const items = [
     header: 'Ardith46',
     headerMedia: '7/18/2019',
     content: 'Qui possimus quae hic ea ex voluptatum culpa.',
-    contentMedia: 'Cupiditate sequi vel.'
+    contentMedia: 'Cupiditate sequi vel.',
   },
   {
     key: 'item-55',
@@ -448,7 +448,7 @@ const items = [
     header: 'Linnea22',
     headerMedia: '2/22/2019',
     content: 'Rerum quis in ad ad maiores possimus error optio.',
-    contentMedia: 'Eaque quo explicabo sunt et rerum.'
+    contentMedia: 'Eaque quo explicabo sunt et rerum.',
   },
   {
     key: 'item-56',
@@ -456,7 +456,7 @@ const items = [
     header: 'Mervin.Hickle85',
     headerMedia: '10/6/2019',
     content: 'Quo nesciunt culpa aliquam consequuntur.',
-    contentMedia: 'Iure eos perferendis.'
+    contentMedia: 'Iure eos perferendis.',
   },
   {
     key: 'item-57',
@@ -464,7 +464,7 @@ const items = [
     header: 'Abel78',
     headerMedia: '8/22/2019',
     content: 'Voluptatem saepe est sit illo nihil enim iure ut quia.',
-    contentMedia: 'Rerum officia ut eveniet aut consequatur.'
+    contentMedia: 'Rerum officia ut eveniet aut consequatur.',
   },
   {
     key: 'item-58',
@@ -472,7 +472,7 @@ const items = [
     header: 'Lexi.Pacocha18',
     headerMedia: '7/11/2019',
     content: 'Autem qui voluptatem.',
-    contentMedia: 'Quis nostrum repellat maxime.'
+    contentMedia: 'Quis nostrum repellat maxime.',
   },
   {
     key: 'item-59',
@@ -480,7 +480,7 @@ const items = [
     header: 'Braeden44',
     headerMedia: '9/29/2019',
     content: 'Quae consequatur pariatur et ea.',
-    contentMedia: 'Quisquam odit ipsa quo.'
+    contentMedia: 'Quisquam odit ipsa quo.',
   },
   {
     key: 'item-60',
@@ -488,7 +488,7 @@ const items = [
     header: 'Dena44',
     headerMedia: '11/4/2019',
     content: 'Odio enim corrupti doloribus neque velit eum quaerat modi.',
-    contentMedia: 'Quo totam dolorum officia nihil corporis earum doloremque voluptas quod.'
+    contentMedia: 'Quo totam dolorum officia nihil corporis earum doloremque voluptas quod.',
   },
   {
     key: 'item-61',
@@ -496,7 +496,7 @@ const items = [
     header: 'Donato12',
     headerMedia: '9/7/2019',
     content: 'Et expedita vero recusandae soluta autem assumenda.',
-    contentMedia: 'Ullam fuga minima laboriosam facilis velit.'
+    contentMedia: 'Ullam fuga minima laboriosam facilis velit.',
   },
   {
     key: 'item-62',
@@ -504,7 +504,7 @@ const items = [
     header: 'Walker.Heidenreich5',
     headerMedia: '11/30/2019',
     content: 'Beatae dolorem eveniet.',
-    contentMedia: 'Et voluptas ullam beatae corporis quaerat et sint quasi.'
+    contentMedia: 'Et voluptas ullam beatae corporis quaerat et sint quasi.',
   },
   {
     key: 'item-63',
@@ -512,7 +512,7 @@ const items = [
     header: 'Rosalinda_Kuphal75',
     headerMedia: '5/27/2019',
     content: 'Atque animi consectetur laborum.',
-    contentMedia: 'Aut quisquam rem.'
+    contentMedia: 'Aut quisquam rem.',
   },
   {
     key: 'item-64',
@@ -520,7 +520,7 @@ const items = [
     header: 'Bella_Becker46',
     headerMedia: '12/6/2019',
     content: 'Similique placeat et possimus voluptates quia non non.',
-    contentMedia: 'Sit et reiciendis ad unde est porro quibusdam.'
+    contentMedia: 'Sit et reiciendis ad unde est porro quibusdam.',
   },
   {
     key: 'item-65',
@@ -528,7 +528,7 @@ const items = [
     header: 'Zechariah.Zulauf75',
     headerMedia: '12/9/2019',
     content: 'Optio dolorem aut.',
-    contentMedia: 'Blanditiis voluptas quia corrupti laborum.'
+    contentMedia: 'Blanditiis voluptas quia corrupti laborum.',
   },
   {
     key: 'item-66',
@@ -536,7 +536,7 @@ const items = [
     header: 'Amina_Reilly',
     headerMedia: '4/2/2019',
     content: 'Sed earum fuga pariatur ipsam officia amet.',
-    contentMedia: 'Minus facilis quam.'
+    contentMedia: 'Minus facilis quam.',
   },
   {
     key: 'item-67',
@@ -544,7 +544,7 @@ const items = [
     header: 'Jackson.Bauch17',
     headerMedia: '12/31/2019',
     content: 'Non corrupti quisquam et.',
-    contentMedia: 'Nulla soluta explicabo esse ea in nemo id reiciendis.'
+    contentMedia: 'Nulla soluta explicabo esse ea in nemo id reiciendis.',
   },
   {
     key: 'item-68',
@@ -552,7 +552,7 @@ const items = [
     header: 'Marcelo99',
     headerMedia: '9/19/2019',
     content: 'Odit nobis dicta vero impedit expedita voluptates aliquid.',
-    contentMedia: 'Ipsum consequatur accusantium.'
+    contentMedia: 'Ipsum consequatur accusantium.',
   },
   {
     key: 'item-69',
@@ -560,7 +560,7 @@ const items = [
     header: 'Leonora_Wolf35',
     headerMedia: '10/17/2019',
     content: 'Beatae ut cum et occaecati excepturi molestiae sequi aut esse.',
-    contentMedia: 'Ipsa laboriosam rerum.'
+    contentMedia: 'Ipsa laboriosam rerum.',
   },
   {
     key: 'item-70',
@@ -568,7 +568,7 @@ const items = [
     header: 'Haleigh.Williamson',
     headerMedia: '9/23/2019',
     content: 'Animi fuga in omnis.',
-    contentMedia: 'Eos reiciendis quidem nam corrupti vero atque dolores ut.'
+    contentMedia: 'Eos reiciendis quidem nam corrupti vero atque dolores ut.',
   },
   {
     key: 'item-71',
@@ -576,7 +576,7 @@ const items = [
     header: 'Elian_Lang',
     headerMedia: '11/12/2019',
     content: 'Autem nesciunt quia magnam qui.',
-    contentMedia: 'Repudiandae atque ipsum perspiciatis possimus tempora deleniti a.'
+    contentMedia: 'Repudiandae atque ipsum perspiciatis possimus tempora deleniti a.',
   },
   {
     key: 'item-72',
@@ -584,7 +584,7 @@ const items = [
     header: 'Filiberto_Runolfsdottir',
     headerMedia: '6/16/2019',
     content: 'Itaque nesciunt sit ducimus error adipisci et est vitae.',
-    contentMedia: 'Doloribus praesentium ut ut qui sint mollitia quasi rem non.'
+    contentMedia: 'Doloribus praesentium ut ut qui sint mollitia quasi rem non.',
   },
   {
     key: 'item-73',
@@ -592,7 +592,7 @@ const items = [
     header: 'Darwin_Price',
     headerMedia: '1/18/2020',
     content: 'Sit delectus corrupti omnis et alias reprehenderit praesentium nihil.',
-    contentMedia: 'Aut minus sunt ut.'
+    contentMedia: 'Aut minus sunt ut.',
   },
   {
     key: 'item-74',
@@ -600,7 +600,7 @@ const items = [
     header: 'River.Shields',
     headerMedia: '4/12/2019',
     content: 'Nobis voluptatem ipsum.',
-    contentMedia: 'Deserunt non ex eos deserunt.'
+    contentMedia: 'Deserunt non ex eos deserunt.',
   },
   {
     key: 'item-75',
@@ -608,7 +608,7 @@ const items = [
     header: 'Marcelina97',
     headerMedia: '11/12/2019',
     content: 'Dolores ex aut.',
-    contentMedia: 'Ad dolorem ullam libero ipsam vel eum id molestiae qui.'
+    contentMedia: 'Ad dolorem ullam libero ipsam vel eum id molestiae qui.',
   },
   {
     key: 'item-76',
@@ -616,7 +616,7 @@ const items = [
     header: 'Hector_Jacobs',
     headerMedia: '6/19/2019',
     content: 'Assumenda nostrum aut eum.',
-    contentMedia: 'Accusamus quae rerum molestias reprehenderit ducimus in.'
+    contentMedia: 'Accusamus quae rerum molestias reprehenderit ducimus in.',
   },
   {
     key: 'item-77',
@@ -624,7 +624,7 @@ const items = [
     header: 'Hank.Gutkowski',
     headerMedia: '11/28/2019',
     content: 'Nam itaque et.',
-    contentMedia: 'Esse aut ducimus illo sint error doloremque consequatur sunt assumenda.'
+    contentMedia: 'Esse aut ducimus illo sint error doloremque consequatur sunt assumenda.',
   },
   {
     key: 'item-78',
@@ -632,7 +632,7 @@ const items = [
     header: 'Bianka_Bode',
     headerMedia: '10/14/2019',
     content: 'Hic incidunt officia.',
-    contentMedia: 'Vitae sunt nostrum nobis occaecati sed molestiae est impedit.'
+    contentMedia: 'Vitae sunt nostrum nobis occaecati sed molestiae est impedit.',
   },
   {
     key: 'item-79',
@@ -640,7 +640,7 @@ const items = [
     header: 'Neil81',
     headerMedia: '2/23/2019',
     content: 'Excepturi et corporis sed autem unde qui doloribus.',
-    contentMedia: 'Distinctio consequatur dignissimos enim.'
+    contentMedia: 'Distinctio consequatur dignissimos enim.',
   },
   {
     key: 'item-80',
@@ -648,7 +648,7 @@ const items = [
     header: 'Finn.Abshire29',
     headerMedia: '2/20/2019',
     content: 'Explicabo magni omnis eum consequatur numquam tenetur.',
-    contentMedia: 'Quas exercitationem delectus quasi sequi ut repellat maiores recusandae aut.'
+    contentMedia: 'Quas exercitationem delectus quasi sequi ut repellat maiores recusandae aut.',
   },
   {
     key: 'item-81',
@@ -656,7 +656,7 @@ const items = [
     header: 'Bartholome_Bartoletti44',
     headerMedia: '8/11/2019',
     content: 'Adipisci et ducimus et pariatur consequatur quibusdam.',
-    contentMedia: 'Omnis architecto odit illo enim.'
+    contentMedia: 'Omnis architecto odit illo enim.',
   },
   {
     key: 'item-82',
@@ -664,7 +664,7 @@ const items = [
     header: 'Amanda_Eichmann',
     headerMedia: '10/6/2019',
     content: 'Libero vitae laborum omnis consectetur beatae aut quas architecto quis.',
-    contentMedia: 'Est iusto tempore quaerat.'
+    contentMedia: 'Est iusto tempore quaerat.',
   },
   {
     key: 'item-83',
@@ -672,7 +672,7 @@ const items = [
     header: 'Izaiah30',
     headerMedia: '5/5/2019',
     content: 'Voluptate provident omnis sequi enim dolorem quod.',
-    contentMedia: 'Assumenda aut officia deleniti velit corporis.'
+    contentMedia: 'Assumenda aut officia deleniti velit corporis.',
   },
   {
     key: 'item-84',
@@ -680,7 +680,7 @@ const items = [
     header: 'Emmanuelle_Hodkiewicz',
     headerMedia: '10/20/2019',
     content: 'Quis quasi reiciendis cupiditate necessitatibus deleniti.',
-    contentMedia: 'Nam debitis voluptate labore ea non vel eveniet sint consequuntur.'
+    contentMedia: 'Nam debitis voluptate labore ea non vel eveniet sint consequuntur.',
   },
   {
     key: 'item-85',
@@ -688,7 +688,7 @@ const items = [
     header: 'Bailee_Metz4',
     headerMedia: '9/11/2019',
     content: 'Cumque ut et ut voluptates aliquam dolore occaecati quisquam rem.',
-    contentMedia: 'Consequatur deleniti sed illum cupiditate aliquam.'
+    contentMedia: 'Consequatur deleniti sed illum cupiditate aliquam.',
   },
   {
     key: 'item-86',
@@ -696,7 +696,7 @@ const items = [
     header: 'Roel14',
     headerMedia: '1/9/2020',
     content: 'Facere omnis itaque facere eligendi iusto corporis.',
-    contentMedia: 'Et autem pariatur iste magnam esse ab.'
+    contentMedia: 'Et autem pariatur iste magnam esse ab.',
   },
   {
     key: 'item-87',
@@ -704,7 +704,7 @@ const items = [
     header: 'Liliane.Welch',
     headerMedia: '4/7/2019',
     content: 'Aut unde nostrum quis corrupti placeat quibusdam.',
-    contentMedia: 'Saepe sit quis ullam.'
+    contentMedia: 'Saepe sit quis ullam.',
   },
   {
     key: 'item-88',
@@ -712,7 +712,7 @@ const items = [
     header: 'Emmet_Fritsch58',
     headerMedia: '11/5/2019',
     content: 'Sint culpa et corporis consequatur doloremque placeat fugiat nemo rerum.',
-    contentMedia: 'Deserunt deleniti et consequuntur consequuntur nemo molestias excepturi rerum.'
+    contentMedia: 'Deserunt deleniti et consequuntur consequuntur nemo molestias excepturi rerum.',
   },
   {
     key: 'item-89',
@@ -720,7 +720,7 @@ const items = [
     header: 'Alba9',
     headerMedia: '10/17/2019',
     content: 'Expedita commodi qui.',
-    contentMedia: 'Quasi non sunt suscipit nesciunt enim ipsam quaerat.'
+    contentMedia: 'Quasi non sunt suscipit nesciunt enim ipsam quaerat.',
   },
   {
     key: 'item-90',
@@ -728,7 +728,7 @@ const items = [
     header: 'Colton_Stroman9',
     headerMedia: '11/6/2019',
     content: 'Impedit dolorum ut facilis neque qui.',
-    contentMedia: 'At amet hic.'
+    contentMedia: 'At amet hic.',
   },
   {
     key: 'item-91',
@@ -736,7 +736,7 @@ const items = [
     header: 'Baylee.Leffler9',
     headerMedia: '7/14/2019',
     content: 'Aut dolores aperiam.',
-    contentMedia: 'Voluptatem aut aut molestias labore optio deserunt harum quos reprehenderit.'
+    contentMedia: 'Voluptatem aut aut molestias labore optio deserunt harum quos reprehenderit.',
   },
   {
     key: 'item-92',
@@ -744,7 +744,7 @@ const items = [
     header: 'Emmanuel.Crona',
     headerMedia: '2/6/2019',
     content: 'Facere repudiandae rem voluptatem saepe rerum est velit porro.',
-    contentMedia: 'Molestiae aut eum reiciendis et voluptatibus quasi ut quasi consectetur.'
+    contentMedia: 'Molestiae aut eum reiciendis et voluptatibus quasi ut quasi consectetur.',
   },
   {
     key: 'item-93',
@@ -752,7 +752,7 @@ const items = [
     header: 'Aurelia.Olson4',
     headerMedia: '10/17/2019',
     content: 'Tempore aut facilis laboriosam minus.',
-    contentMedia: 'Id omnis est voluptatem sit non quo quaerat.'
+    contentMedia: 'Id omnis est voluptatem sit non quo quaerat.',
   },
   {
     key: 'item-94',
@@ -760,7 +760,7 @@ const items = [
     header: 'Morris_Morar',
     headerMedia: '10/27/2019',
     content: 'Qui explicabo non.',
-    contentMedia: 'Dolore consequatur totam modi et.'
+    contentMedia: 'Dolore consequatur totam modi et.',
   },
   {
     key: 'item-95',
@@ -768,7 +768,7 @@ const items = [
     header: 'Ray.Berge',
     headerMedia: '8/8/2019',
     content: 'Et amet ut rerum debitis consequatur.',
-    contentMedia: 'Omnis voluptatum ut quisquam ut quidem.'
+    contentMedia: 'Omnis voluptatum ut quisquam ut quidem.',
   },
   {
     key: 'item-96',
@@ -776,7 +776,7 @@ const items = [
     header: 'Freida.Keeling99',
     headerMedia: '7/7/2019',
     content: 'Et eveniet quae sapiente.',
-    contentMedia: 'Ea optio voluptatem maxime sunt aliquam nesciunt quia dicta sint.'
+    contentMedia: 'Ea optio voluptatem maxime sunt aliquam nesciunt quia dicta sint.',
   },
   {
     key: 'item-97',
@@ -784,7 +784,7 @@ const items = [
     header: 'Frederic_Schuppe',
     headerMedia: '2/10/2019',
     content: 'Aliquam incidunt est aut sit esse.',
-    contentMedia: 'Non voluptatem quae adipisci et voluptatem voluptas velit ut.'
+    contentMedia: 'Non voluptatem quae adipisci et voluptatem voluptas velit ut.',
   },
   {
     key: 'item-98',
@@ -792,7 +792,7 @@ const items = [
     header: 'Selena.Schultz16',
     headerMedia: '5/21/2019',
     content: 'Quam dolorem rerum quo nulla.',
-    contentMedia: 'Laudantium ut quia iusto.'
+    contentMedia: 'Laudantium ut quia iusto.',
   },
   {
     key: 'item-99',
@@ -800,8 +800,8 @@ const items = [
     header: 'Chloe_Shields0',
     headerMedia: '2/10/2019',
     content: 'Optio quas culpa eum unde debitis laudantium et excepturi.',
-    contentMedia: 'Molestias officia est delectus harum inventore dolor.'
-  }
+    contentMedia: 'Molestias officia est delectus harum inventore dolor.',
+  },
 ];
 
 const ListNestedPerf = () => (
@@ -818,19 +818,19 @@ const ListNestedPerf = () => (
               ...items,
               {
                 key: 'list-1',
-                content: <List items={items} style={{ backgroundColor: 'green' }} />
+                content: <List items={items} style={{ backgroundColor: 'green' }} />,
               },
               {
                 key: 'list-2',
-                content: <List items={items} style={{ backgroundColor: 'yellow' }} />
+                content: <List items={items} style={{ backgroundColor: 'yellow' }} />,
               },
               {
                 key: 'list-3',
-                content: <List items={items} style={{ backgroundColor: 'red' }} />
-              }
+                content: <List items={items} style={{ backgroundColor: 'red' }} />,
+              },
             ]}
           />
-        )
+        ),
       },
       {
         key: 'list-2',
@@ -841,20 +841,20 @@ const ListNestedPerf = () => (
               ...items,
               {
                 key: 'list-1',
-                content: <List items={items} style={{ backgroundColor: 'green' }} />
+                content: <List items={items} style={{ backgroundColor: 'green' }} />,
               },
               {
                 key: 'list-2',
-                content: <List items={items} style={{ backgroundColor: 'yellow' }} />
+                content: <List items={items} style={{ backgroundColor: 'yellow' }} />,
               },
               {
                 key: 'list-3',
-                content: <List items={items} style={{ backgroundColor: 'red' }} />
-              }
+                content: <List items={items} style={{ backgroundColor: 'red' }} />,
+              },
             ]}
           />
-        )
-      }
+        ),
+      },
     ]}
   />
 );

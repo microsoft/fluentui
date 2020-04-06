@@ -1,73 +1,73 @@
 import * as React from 'react';
-import { Tree, treeAsListBehavior } from '@fluentui/react';
+import { Tree, treeAsListBehavior } from '@fluentui/react-northstar';
 
 const items = [
   {
-    id: '1',
+    id: 'tree-as-list-item-1',
     title: 'House Lannister',
     items: [
       {
-        id: '11',
+        id: 'tree-as-list-item-11',
         title: 'Tywin',
         items: [
           {
-            id: '111',
-            title: 'Jaime'
+            id: 'tree-as-list-item-111',
+            title: 'Jaime',
           },
           {
-            id: '112',
-            title: 'Cersei'
+            id: 'tree-as-list-item-112',
+            title: 'Cersei',
           },
           {
-            id: '113',
-            title: 'Tyrion'
-          }
-        ]
+            id: 'tree-as-list-item-113',
+            title: 'Tyrion',
+          },
+        ],
       },
       {
-        id: '12',
+        id: 'tree-as-list-item-12',
         title: 'Kevan',
         items: [
           {
-            id: '121',
-            title: 'Lancel'
+            id: 'tree-as-list-item-121',
+            title: 'Lancel',
           },
           {
-            id: '122',
-            title: 'Willem'
+            id: 'tree-as-list-item-122',
+            title: 'Willem',
           },
           {
-            id: '123',
-            title: 'Martyn'
-          }
-        ]
-      }
-    ]
+            id: 'tree-as-list-item-123',
+            title: 'Martyn',
+          },
+        ],
+      },
+    ],
   },
   {
-    id: '2',
+    id: 'tree-as-list-item-2',
     title: 'House Targaryen',
     items: [
       {
-        id: '21',
+        id: 'tree-as-list-item-21',
         title: 'Aerys',
         items: [
           {
-            id: '211',
-            title: 'Rhaegar'
+            id: 'tree-as-list-item-211',
+            title: 'Rhaegar',
           },
           {
-            id: '212',
-            title: 'Viserys'
+            id: 'tree-as-list-item-212',
+            title: 'Viserys',
           },
           {
-            id: '213',
-            title: 'Daenerys'
-          }
-        ]
-      }
-    ]
-  }
+            id: 'tree-as-list-item-213',
+            title: 'Daenerys',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 const TreeAsListExampleShorthand = () => (

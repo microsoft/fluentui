@@ -12,13 +12,13 @@ const suggestionProps: IBasePickerSuggestionsProps = {
   loadingText: 'Loading',
   showRemoveButtons: true,
   suggestionsAvailableAlertText: 'People Picker Suggestions available',
-  suggestionsContainerAriaLabel: 'Suggested contacts'
+  suggestionsContainerAriaLabel: 'Suggested contacts',
 };
 
 const checkboxStyles = {
   root: {
-    marginTop: 10
-  }
+    marginTop: 10,
+  },
 };
 
 export const PeoplePickerControlledExample: React.FunctionComponent = () => {
@@ -32,7 +32,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
   const onFilterChanged = (
     filterText: string,
     currentPersonas: IPersonaProps[],
-    limitResults?: number
+    limitResults?: number,
   ): IPersonaProps[] | Promise<IPersonaProps[]> => {
     if (filterText) {
       let filteredPersonas: IPersonaProps[] = filterPersonasByText(filterText);
@@ -90,7 +90,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           onChange={onItemsChange}
           inputProps={{
             onBlur: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onBlur called'),
-            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called')
+            onFocus: (ev: React.FocusEvent<HTMLInputElement>) => console.log('onFocus called'),
           }}
           componentRef={picker}
           resolveDelay={300}
@@ -109,7 +109,12 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
           </div>
         ))}
       </div>
-      <Checkbox label="Disable People Picker" checked={isPickerDisabled} onChange={onDisabledButtonClick} styles={checkboxStyles} />
+      <Checkbox
+        label="Disable People Picker"
+        checked={isPickerDisabled}
+        onChange={onDisabledButtonClick}
+        styles={checkboxStyles}
+      />
       <Checkbox
         label="Delay Suggestion Results"
         defaultChecked={delayResults}

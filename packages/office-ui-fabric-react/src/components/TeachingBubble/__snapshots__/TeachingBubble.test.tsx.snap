@@ -455,7 +455,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   white-space: nowrap;
                 }
                 &::-moz-focus-inner {
@@ -590,7 +589,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   text-align: center;
                   text-decoration: none;
                   user-select: none;
-                  vertical-align: top;
                   white-space: nowrap;
                 }
                 &::-moz-focus-inner {
@@ -745,7 +743,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               text-decoration: none;
               top: 0px;
               user-select: none;
-              vertical-align: top;
               width: 32px;
             }
             &::-moz-focus-inner {
@@ -839,7 +836,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
                   margin-right: 4px;
                   margin-top: 0;
                   text-align: center;
-                  vertical-align: middle;
                 }
             data-icon-name="Cancel"
             role="presentation"

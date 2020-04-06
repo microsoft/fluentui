@@ -1,7 +1,19 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Tue, 25 Feb 2020 12:25:39 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 7.2.40
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 7.2.39
+Mon, 23 Mar 2020 12:28:29 GMT
+
+### Patches
+
+- Replace OfficeDev/office-ui-fabric-react with microsoft/fluentui (elcraig@microsoft.com)
 ## 7.2.22
 Tue, 25 Feb 2020 12:25:39 GMT
 

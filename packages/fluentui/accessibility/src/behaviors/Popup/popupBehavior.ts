@@ -14,7 +14,9 @@ import { Accessibility } from '../../types';
  */
 const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
   const onAsArray = _.isArray(props.on) ? props.on : [props.on];
-  const tabbableTriggerProps = props.tabbableTrigger ? { tabIndex: getAriaAttributeFromProps('tabIndex', props, 0) } : undefined;
+  const tabbableTriggerProps = props.tabbableTrigger
+    ? { tabIndex: getAriaAttributeFromProps('tabIndex', props, 0) }
+    : undefined;
 
   if (tabbableTriggerProps) {
     tabbableTriggerProps['aria-haspopup'] = 'true';
@@ -29,17 +31,17 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
     attributes: {
       trigger: {
         ...tabbableTriggerProps,
-        'aria-disabled': props.disabled
+        'aria-disabled': props.disabled,
       },
       popup: {
         role: props.trapFocus ? 'dialog' : 'complementary',
-        'aria-modal': props.trapFocus ? true : undefined
-      }
+        'aria-modal': props.trapFocus ? true : undefined,
+      },
     },
     keyActions: {
       popup: {
         closeAndFocusTrigger: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }]
+          keyCombinations: [{ keyCode: keyboardKey.Escape }],
         },
         preventScroll: {
           keyCombinations: props.isOpenedByRightClick &&
@@ -49,23 +51,26 @@ const popupBehavior: Accessibility<PopupBehaviorProps> = props => {
               { keyCode: keyboardKey.PageDown },
               { keyCode: keyboardKey.PageUp },
               { keyCode: keyboardKey.Home },
-              { keyCode: keyboardKey.End }
-            ]
-        }
+              { keyCode: keyboardKey.End },
+            ],
+        },
       },
       trigger: {
         close: {
-          keyCombinations: [{ keyCode: keyboardKey.Escape }]
+          keyCombinations: [{ keyCode: keyboardKey.Escape }],
         },
         toggle: {
-          keyCombinations: _.includes(onAsArray, 'click') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
+          keyCombinations: _.includes(onAsArray, 'click') && [
+            { keyCode: keyboardKey.Enter },
+            { keyCode: keyboardKey.Spacebar },
+          ],
         },
         open: {
           keyCombinations: _.includes(onAsArray, 'hover') &&
-            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }]
-        }
-      }
-    }
+            !_.includes(onAsArray, 'context') && [{ keyCode: keyboardKey.Enter }, { keyCode: keyboardKey.Spacebar }],
+        },
+      },
+    },
   };
 };
 

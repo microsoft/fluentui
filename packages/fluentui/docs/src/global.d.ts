@@ -3,25 +3,25 @@
 /* eslint-disable spaced-comment */
 /// <reference types="react" />
 
-declare const __DEV__: boolean
-declare const __PATH_SEP__: string
-declare const __BASENAME__: string
+declare const __DEV__: boolean;
+declare const __PATH_SEP__: string;
+declare const __BASENAME__: string;
 
 declare module '*.json' {
-  const value: any
-  export default value
+  const value: any;
+  export default value;
 }
 
 declare module '*.mdx' {
   export const meta: {
-    title: string
-  }
-  const value: React.ComponentType
+    title: string;
+  };
+  const value: React.ComponentType;
 
-  export default value
+  export default value;
 }
 
 declare interface Window {
-  resetExternalLayout?: () => void
-  switchTheme?: (themeName: string) => void
+  resetExternalLayout?: () => void;
+  switchTheme?: (themeName: string) => void;
 }

@@ -14,7 +14,11 @@ export const FocusZoneDisabledExample: React.FunctionComponent = () => {
           <span>Enabled FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField placeholder="FocusZone TextField" styles={{ root: { width: 200 } }} ariaLabel="FocusZone TextField" />
+          <TextField
+            placeholder="FocusZone TextField"
+            styles={{ root: { width: 200 } }}
+            ariaLabel="FocusZone TextField"
+          />
           <DefaultButton>Button 3</DefaultButton>
         </Stack>
       </FocusZone>

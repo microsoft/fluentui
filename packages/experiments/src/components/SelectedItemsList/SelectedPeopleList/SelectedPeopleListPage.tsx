@@ -37,19 +37,29 @@ export class SelectedPeopleListPage extends React.Component<IComponentDemoPagePr
             <ExampleCard title="With A Context Menu" isOptIn={true} code={SelectedPeopleListWithContextMenuExampleCode}>
               <SelectedPeopleListWithContextMenuExample />
             </ExampleCard>
-            <ExampleCard title="With Expandable Groups" isOptIn={true} code={SelectedPeopleListWithGroupExpandExampleCode}>
+            <ExampleCard
+              title="With Expandable Groups"
+              isOptIn={true}
+              code={SelectedPeopleListWithGroupExpandExampleCode}
+            >
               <SelectedPeopleListWithGroupExpandExample />
             </ExampleCard>
             <ExampleCard title="With Editing" isOptIn={true} code={SelectedPeopleListWithEditExampleCode}>
               <SelectedPeopleListWithEditExample />
             </ExampleCard>
-            <ExampleCard title="With Edit as an option in the context menu" isOptIn={true} code={SelectedPeopleListWithEditExampleCode}>
+            <ExampleCard
+              title="With Edit as an option in the context menu"
+              isOptIn={true}
+              code={SelectedPeopleListWithEditExampleCode}
+            >
               <SelectedPeopleListWithEditInContextMenuExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Tile/Tile.types.ts')]} />
+          <PropertiesTableSet
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Tile/Tile.types.ts')]}
+          />
         }
         overview={<div />}
         bestPractices={<div />}

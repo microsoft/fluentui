@@ -7,7 +7,7 @@ import {
   KeyCodes,
   classNamesFunction,
   getNativeProps,
-  inputProperties
+  inputProperties,
 } from '../../Utilities';
 
 import { IconButton } from '../../Button';
@@ -24,7 +24,7 @@ export interface ISearchBoxState {
 export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxState> {
   public static defaultProps: Pick<ISearchBoxProps, 'disableAnimation' | 'clearButtonProps'> = {
     disableAnimation: false,
-    clearButtonProps: { ariaLabel: 'Clear text' }
+    clearButtonProps: { ariaLabel: 'Clear text' },
   };
 
   private _rootElement = React.createRef<HTMLDivElement>();
@@ -39,7 +39,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 
     warnDeprecations(COMPONENT_NAME, props, {
       labelText: 'placeholder',
-      defaultValue: 'value'
+      defaultValue: 'value',
     });
 
     this._latestValue = props.value || '';
@@ -47,7 +47,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 
     this.state = {
       value: this._latestValue,
-      hasFocus: false
+      hasFocus: false,
     };
   }
 
@@ -58,7 +58,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       // If the user passes in null, substitute an empty string
       // (passing null is not allowed per typings, but users might do it anyway)
       this.setState({
-        value: newProps.value || ''
+        value: newProps.value || '',
       });
     }
   }
@@ -71,12 +71,13 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       disabled,
       underlined,
       styles,
+      // tslint:disable-next-line:deprecation
       labelText,
       theme,
       clearButtonProps,
       disableAnimation,
       iconProps,
-      id = this._fallbackId
+      id = this._fallbackId,
     } = this.props;
     const { value, hasFocus } = this.state;
     const placeholderValue = placeholder !== undefined ? placeholder : labelText;
@@ -88,7 +89,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       hasFocus,
       disabled,
       hasInput: value!.length > 0,
-      disableAnimation
+      disableAnimation,
     });
 
     const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
@@ -96,7 +97,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       'placeholder',
       'onFocus',
       'onBlur',
-      'value'
+      'value',
     ]);
 
     return (
@@ -155,7 +156,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
     if (!ev.defaultPrevented) {
       this._latestValue = '';
       this.setState({
-        value: ''
+        value: '',
       });
       this._callOnChange(undefined, '');
       ev.stopPropagation();
@@ -175,7 +176,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 
   private _onFocusCapture = (ev: React.FocusEvent<HTMLElement>) => {
     this.setState({
-      hasFocus: true
+      hasFocus: true,
     });
 
     if (this.props.onFocus) {
@@ -227,7 +228,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
 
   private _onBlur = (ev: React.FocusEvent<HTMLInputElement>): void => {
     this.setState({
-      hasFocus: false
+      hasFocus: false,
     });
 
     if (this.props.onBlur) {
@@ -248,6 +249,7 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
   };
 
   private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
+    // tslint:disable-next-line:deprecation
     const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.

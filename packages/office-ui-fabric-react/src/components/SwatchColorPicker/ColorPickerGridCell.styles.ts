@@ -15,11 +15,20 @@ const cellHighContrastFocus = {
   bottom: -2,
   right: -2,
   border: 'none',
-  outlineColor: 'ButtonText'
+  outlineColor: 'ButtonText',
 };
 
 export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGridCellStyles => {
-  const { theme, disabled, selected, circle, isWhite, height = DEFAULT_CELL_SIZE, width = DEFAULT_CELL_SIZE, borderWidth } = props;
+  const {
+    theme,
+    disabled,
+    selected,
+    circle,
+    isWhite,
+    height = DEFAULT_CELL_SIZE,
+    width = DEFAULT_CELL_SIZE,
+    borderWidth,
+  } = props;
   const { semanticColors, palette } = theme;
 
   const buttonBorderHovered = palette.neutralLighter;
@@ -28,7 +37,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
   const buttonBorderIsWhite = palette.neutralTertiary;
 
   // If user provided a value, use it. If not, then we decide depending on the 24px size breakpoint.
-  const calculatedBorderWidth = borderWidth ? borderWidth : width < CELL_BORDER_BREAKPOINT ? SMALL_BORDER : LARGE_BORDER;
+  const calculatedBorderWidth = borderWidth
+    ? borderWidth
+    : width < CELL_BORDER_BREAKPOINT
+    ? SMALL_BORDER
+    : LARGE_BORDER;
 
   return {
     // this is a button that wraps the color
@@ -45,15 +58,15 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         borderRadius: 0,
         border: 'none',
         height: height,
-        width: width
+        width: width,
       },
       !circle && {
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus::after`]: {
             // -1px so that we don't increase visually the size of the cell.
-            outlineOffset: `${calculatedBorderWidth - 1}px`
-          }
-        }
+            outlineOffset: `${calculatedBorderWidth - 1}px`,
+          },
+        },
       },
       // In focus state for circle we want a round border which is not possible with outline.
       circle && {
@@ -69,11 +82,11 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             bottom: -calculatedBorderWidth,
             selectors: {
               [HighContrastSelector]: {
-                outline: `1px solid ButtonText`
-              }
-            }
-          }
-        }
+                outline: `1px solid ButtonText`,
+              },
+            },
+          },
+        },
       },
       selected && {
         padding: DIVIDING_PADDING,
@@ -87,16 +100,16 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             top: -calculatedBorderWidth,
             left: -calculatedBorderWidth,
             borderRadius: circle ? '50%' : 'default',
-            boxShadow: `inset 0 0 0 1px ${buttonBorderCheckedHovered}`
-          }
-        }
+            boxShadow: `inset 0 0 0 1px ${buttonBorderCheckedHovered}`,
+          },
+        },
       },
       !selected && {
         selectors: {
           ['&:hover, &:active, &:focus']: {
             backgroundColor: semanticColors.bodyBackground, // overwrite white's override
             padding: DIVIDING_PADDING,
-            border: `${calculatedBorderWidth}px solid ${buttonBorderHovered}`
+            border: `${calculatedBorderWidth}px solid ${buttonBorderHovered}`,
           },
           ['&:focus']: {
             borderColor: semanticColors.bodyBackground,
@@ -104,33 +117,33 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
             selectors: {
               ':hover': {
                 borderColor: theme.palette.neutralLight,
-                padding: DIVIDING_PADDING
-              }
-            }
-          }
-        }
+                padding: DIVIDING_PADDING,
+              },
+            },
+          },
+        },
       },
       disabled && {
         color: semanticColors.disabledBodyText,
         pointerEvents: 'none',
-        opacity: 0.3
+        opacity: 0.3,
       },
       isWhite &&
         !selected && {
           // fake a border for white
           backgroundColor: buttonBorderIsWhite,
-          padding: 1
-        }
+          padding: 1,
+        },
     ],
     // the <svg> that holds the color
     svg: [
       {
         width: '100%',
-        height: '100%'
+        height: '100%',
       },
       circle && {
-        borderRadius: '50%'
-      }
-    ]
+        borderRadius: '50%',
+      },
+    ],
   };
 };

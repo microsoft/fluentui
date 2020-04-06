@@ -36,7 +36,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       legend: '',
       refArray: [],
       refSelected: null,
-      color: ''
+      color: '',
     };
     this._uniqLineText =
       '_HorizontalLine_' +
@@ -63,9 +63,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             legend: '',
             horizontalBarChartdata: {
               x: points.chartData![0].horizontalBarChartdata!.y - datapoint!,
-              y: points.chartData![0].horizontalBarChartdata!.y
+              y: points.chartData![0].horizontalBarChartdata!.y,
             },
-            color: palette.neutralTertiaryAlt
+            color: palette.neutralTertiaryAlt,
           };
 
           const chartDataText = this._getChartDataText(points!);
@@ -91,7 +91,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       this,
                       points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','),
                       points!.chartData![0].color,
-                      points!.chartData![0].legend
+                      points!.chartData![0].legend,
                     )}
                     onMouseLeave={this._hoverOff}
                   >
@@ -127,13 +127,16 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _hoverOn(hoverValue: string | number | Date | null, lineColor: string, legend: string): void {
     if (!this.state.isCalloutVisible || this.state.legend !== legend) {
       const refArray = this.state.refArray;
-      const currentHoveredElement = find(refArray, (currentElement: IRefArrayData) => currentElement.legendText === legend);
+      const currentHoveredElement = find(
+        refArray,
+        (currentElement: IRefArrayData) => currentElement.legendText === legend,
+      );
       this.setState({
         isCalloutVisible: true,
         hoverValue: hoverValue,
         lineColor: lineColor,
         legend: legend,
-        refSelected: currentHoveredElement!.refElement
+        refSelected: currentHoveredElement!.refElement,
       });
     }
   }
@@ -145,7 +148,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         hoverValue: '',
         refSelected: null,
         lineColor: '',
-        legend: ''
+        legend: '',
       });
     }
   }
@@ -158,7 +161,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       width: width,
       className,
       barHeight: this._barHeight,
-      color: this.state.lineColor
+      color: this.state.lineColor,
     });
   };
 
@@ -169,7 +172,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     switch (chartDataMode) {
       case 'default':
-        return <div className={this._classNames.chartDataText}>{x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>;
+        return (
+          <div className={this._classNames.chartDataText}>{x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>
+        );
       case 'fraction':
         return (
           <div>
@@ -190,7 +195,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
     const benchmarkStyles = {
       marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
-      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)'
+      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)',
     };
 
     // tslint:disable-next-line:jsx-ban-props
@@ -202,8 +207,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
     const total = data.chartData!.reduce(
-      (acc: number, point: IChartDataPoint) => acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
-      0
+      (acc: number, point: IChartDataPoint) =>
+        acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
+      0,
     );
     let prevPosition = 0;
     let value = 0;
@@ -216,7 +222,16 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       value = (pointData / total) * 100;
       value >= 0 ? (value = value) : (value = 0);
       startingPoint.push(prevPosition);
-      return <rect key={index} x={startingPoint[index] + '%'} y={0} width={value + '%'} height={this._barHeight} fill={color} />;
+      return (
+        <rect
+          key={index}
+          x={startingPoint[index] + '%'}
+          y={0}
+          width={value + '%'}
+          height={this._barHeight}
+          fill={color}
+        />
+      );
     });
     return bars;
   }

@@ -27,11 +27,11 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none'
-            }
-          }
-        }
-      }
+              MsHighContrastAdjust: 'none',
+            },
+          },
+        },
+      },
     },
     rootPressed: {
       backgroundColor: palette.neutralQuaternaryAlt,
@@ -45,11 +45,11 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none'
-            }
-          }
-        }
-      }
+              MsHighContrastAdjust: 'none',
+            },
+          },
+        },
+      },
     },
     rootChecked: {
       backgroundColor: palette.neutralQuaternaryAlt,
@@ -64,11 +64,11 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
             [HighContrastSelector]: {
               color: 'Window',
               backgroundColor: 'WindowText',
-              MsHighContrastAdjust: 'none'
-            }
-          }
-        }
-      }
+              MsHighContrastAdjust: 'none',
+            },
+          },
+        },
+      },
     },
     rootDisabled: {
       borderColor: palette.neutralLighter,
@@ -76,9 +76,9 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
       selectors: {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.neutralLighter,
-          borderColor: palette.neutralLighter
-        }
-      }
-    }
+          borderColor: palette.neutralLighter,
+        },
+      },
+    },
   };
 };

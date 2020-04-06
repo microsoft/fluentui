@@ -67,11 +67,24 @@ export type AriaDocumentStructureRole =
   | 'separator'
   | 'toolbar';
 
-export type AriaLandmarkRole = 'application' | 'banner' | 'complementary' | 'contentinfo' | 'form' | 'main' | 'navigation' | 'search';
+export type AriaLandmarkRole =
+  | 'application'
+  | 'banner'
+  | 'complementary'
+  | 'contentinfo'
+  | 'form'
+  | 'main'
+  | 'navigation'
+  | 'search';
 
 export type AriaLiveRegionRole = 'alert' | 'log' | 'marquee' | 'status' | 'timer';
 
-export type AriaRole = AriaWidgetRole | AriaCompositeRole | AriaDocumentStructureRole | AriaLandmarkRole | AriaLiveRegionRole;
+export type AriaRole =
+  | AriaWidgetRole
+  | AriaCompositeRole
+  | AriaDocumentStructureRole
+  | AriaLandmarkRole
+  | AriaLiveRegionRole;
 
 export interface AriaWidgetAttributes {
   role?: string;
@@ -124,7 +137,10 @@ export interface ElementStateAttributes {
   checked?: boolean;
 }
 
-export interface AccessibilityAttributes extends AriaWidgetAttributes, AriaRelationshipAttributes, ElementStateAttributes {
+export interface AccessibilityAttributes
+  extends AriaWidgetAttributes,
+    AriaRelationshipAttributes,
+    ElementStateAttributes {
   // Is used in @fluentui/ability-attributes for accessibility validations.
   // Do not set it manually and do not rely on it in production
   'data-aa-class'?: string;

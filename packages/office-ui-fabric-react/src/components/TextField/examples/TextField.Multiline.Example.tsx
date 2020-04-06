@@ -15,7 +15,7 @@ export class TextFieldMultilineExample extends React.Component<{}, ITextFieldMul
     // TextFields don't have to be inside Stacks, we're just using Stacks for layout
     const columnProps: Partial<IStackProps> = {
       tokens: { childrenGap: 15 },
-      styles: { root: { width: 300 } }
+      styles: { root: { width: 300 } },
     };
 
     return (

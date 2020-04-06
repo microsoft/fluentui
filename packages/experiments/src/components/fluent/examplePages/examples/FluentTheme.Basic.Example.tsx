@@ -24,7 +24,7 @@ export class FluentThemeBasicExample extends React.Component<{}, {}> {
             { text: 'Files', key: 'Files' },
             { text: 'This is folder 1', key: 'f1' },
             { text: 'This is folder 2', key: 'f2' },
-            { text: 'This is folder 3', key: 'f3', isCurrentItem: true }
+            { text: 'This is folder 3', key: 'f3', isCurrentItem: true },
           ]}
         />
       </div>

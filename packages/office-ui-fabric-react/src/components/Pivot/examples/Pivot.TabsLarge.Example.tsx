@@ -6,7 +6,11 @@ export class PivotTabsLargeExample extends React.Component<any, any> {
   public render(): JSX.Element {
     return (
       <div>
-        <Pivot aria-label="Links of Large Tabs Pivot Example" linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
+        <Pivot
+          aria-label="Links of Large Tabs Pivot Example"
+          linkFormat={PivotLinkFormat.tabs}
+          linkSize={PivotLinkSize.large}
+        >
           <PivotItem headerText="Foo">
             <Label>Pivot #1</Label>
           </PivotItem>

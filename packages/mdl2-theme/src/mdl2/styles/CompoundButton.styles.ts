@@ -1,5 +1,6 @@
 import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 
 export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;
@@ -20,12 +21,21 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.themePrimary,
           borderColor: palette.themePrimary,
-          ...getFocusStyle(theme, { inset: -1, borderColor: palette.white })
+          ...getFocusStyle(theme, { inset: -1, borderColor: palette.white }),
+          selectors: {
+            [`.${IsFocusVisibleClassName} &:focus`]: {
+              selectors: {
+                ':after': {
+                  outlineColor: palette.neutralSecondary,
+                },
+              },
+            },
+          },
         },
         '&.ms-Button--compound': {
-          ...getFocusStyle(theme, { inset: -1, borderColor: palette.white })
-        }
-      }
+          ...getFocusStyle(theme, { inset: -1, borderColor: palette.white }),
+        },
+      },
     },
     rootHovered: {
       backgroundColor: palette.neutralLight,
@@ -34,9 +44,9 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
       selectors: {
         '&.ms-Button--compoundPrimary:hover': {
           backgroundColor: palette.themeDarkAlt,
-          borderColor: palette.themeDarkAlt
-        }
-      }
+          borderColor: palette.themeDarkAlt,
+        },
+      },
     },
     rootPressed: {
       backgroundColor: palette.neutralTertiaryAlt,
@@ -45,9 +55,9 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
       selectors: {
         '&.ms-Button--compoundPrimary:active': {
           backgroundColor: palette.themeDark,
-          borderColor: palette.themeDark
-        }
-      }
+          borderColor: palette.themeDark,
+        },
+      },
     },
     rootChecked: {
       backgroundColor: palette.neutralTertiaryAlt,
@@ -56,9 +66,9 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
       selectors: {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.themeDark,
-          borderColor: palette.themeDark
-        }
-      }
+          borderColor: palette.themeDark,
+        },
+      },
     },
     rootDisabled: {
       borderColor: palette.neutralLighter,
@@ -67,9 +77,9 @@ export const CompoundButtonStyles = (props: IButtonProps): Partial<IButtonStyles
       selectors: {
         '&.ms-Button--compoundPrimary': {
           backgroundColor: palette.neutralLighter,
-          borderColor: palette.neutralLighter
-        }
-      }
-    }
+          borderColor: palette.neutralLighter,
+        },
+      },
+    },
   };
 };

@@ -7,7 +7,7 @@ const GlobalClassNames = {
   root: 'ms-TagItem',
   text: 'ms-TagItem-text',
   close: 'ms-TagItem-close',
-  isSelected: 'is-selected'
+  isSelected: 'is-selected',
 };
 
 const TAG_HEIGHT = 26;
@@ -47,33 +47,33 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
                 background: palette.neutralLight,
                 selectors: {
                   '.ms-TagItem-close': {
-                    color: palette.neutralPrimary
-                  }
-                }
+                    color: palette.neutralPrimary,
+                  },
+                },
               },
             disabled && { background: palette.neutralLighter },
-            selected && !disabled && { background: palette.themePrimary }
+            selected && !disabled && { background: palette.themePrimary },
           ],
           [HighContrastSelector]: {
-            border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`
-          }
-        }
+            border: `1px solid ${!selected ? 'WindowText' : 'WindowFrame'}`,
+          },
+        },
       },
       disabled && {
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'GrayText'
-          }
-        }
+            borderColor: 'GrayText',
+          },
+        },
       },
       selected &&
         !disabled && [
           classNames.isSelected,
           {
-            color: palette.white
-          }
+            color: palette.white,
+          },
         ],
-      className
+      className,
     ],
     text: [
       classNames.text,
@@ -82,15 +82,15 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         minWidth: 30,
-        margin: '0 8px'
+        margin: '0 8px',
       },
       disabled && {
         selectors: {
           [HighContrastSelector]: {
-            color: 'GrayText'
-          }
-        }
-      }
+            color: 'GrayText',
+          },
+        },
+      },
     ],
     close: [
       classNames.close,
@@ -105,30 +105,30 @@ export function getStyles(props: ITagItemStyleProps): ITagItemStyles {
         selectors: {
           ':hover': {
             background: palette.neutralQuaternaryAlt,
-            color: palette.neutralPrimary
+            color: palette.neutralPrimary,
           },
           ':active': {
             color: palette.white,
-            backgroundColor: palette.themeDark
-          }
-        }
+            backgroundColor: palette.themeDark,
+          },
+        },
       },
       selected && {
         color: palette.white,
         selectors: {
           ':hover': {
             color: palette.white,
-            background: palette.themeDark
-          }
-        }
+            background: palette.themeDark,
+          },
+        },
       },
       disabled && {
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: palette.neutralSecondary
-          }
-        }
-      }
-    ]
+            color: palette.neutralSecondary,
+          },
+        },
+      },
+    ],
   };
 }

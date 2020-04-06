@@ -21,15 +21,15 @@ export async function digestStories(digestConfig: DigestConfig) {
       ...webpackConfig,
       output: {
         ...webpackConfig.output,
-        ...{ path: digestConfig.outputDir }
+        ...{ path: digestConfig.outputDir },
       },
       resolve: {
         ...webpackConfig.resolve,
         alias: {
           ...webpackConfig.resolve.alias,
-          ...{ stories: digestConfig.configDir }
-        }
-      }
+          ...{ stories: digestConfig.configDir },
+        },
+      },
     };
     webpackConfigs.push(mergedConfig);
   });
@@ -62,7 +62,7 @@ export async function digestStories(digestConfig: DigestConfig) {
           // TODO: call require.context output and enumerate here? how can it be called within bundle?
           resolve(stats);
         });
-      })
+      }),
   );
 
   return Promise.all(webpackTasks);

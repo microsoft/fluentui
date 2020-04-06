@@ -1,25 +1,25 @@
 import * as React from 'react';
-import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react';
+import { Carousel, Image, Flex, Text, Button, Toolbar, Header } from '@fluentui/react-northstar';
 
 const imageAltTags = {
   ade: 'Portrait of Ade',
   elliot: 'Portrait of Elliot',
   kristy: 'Portrait of Kristy',
-  nan: 'Portrait of Nan'
+  nan: 'Portrait of Nan',
 };
 
 const tabAriaLabel = {
   ade: 'Ade',
   elliot: 'Elliot',
   kristy: 'Kristy',
-  nan: 'Nan'
+  nan: 'Nan',
 };
 
 const carouselTextContent = (
   <Text>
     <Header as="h3"> Card </Header>
-    text or any other text 1 , text or any other text 2, text or any other text 3 text or any other text 4, text or any other text 5, text
-    or any other text 6
+    text or any other text 1 , text or any other text 2, text or any other text 3 text or any other text 4, text or any
+    other text 5, text or any other text 6
   </Text>
 );
 
@@ -35,20 +35,20 @@ const carouselToolbarContent = (
         key: 'custom-button-1',
         kind: 'custom',
         content: <Button content="First" />,
-        fitted: 'horizontally'
+        fitted: 'horizontally',
       },
       {
         key: 'custom-button-2',
         kind: 'custom',
         content: <Button content="Second" />,
-        fitted: 'horizontally'
+        fitted: 'horizontally',
       },
       {
         key: 'custom-button-3',
         kind: 'custom',
         content: <Button content="Third" />,
-        fitted: 'horizontally'
-      }
+        fitted: 'horizontally',
+      },
     ]}
   />
 );
@@ -66,7 +66,7 @@ const carouselItems = [
         <Button content="Open" styles={buttonStyles} />
       </div>
     ),
-    'aria-label': 'Ade card'
+    'aria-label': 'Ade card',
   },
   {
     key: 'elliot',
@@ -80,7 +80,7 @@ const carouselItems = [
         {carouselToolbarContent}
       </div>
     ),
-    'aria-label': 'Elliot card'
+    'aria-label': 'Elliot card',
   },
   {
     key: 'kristy',
@@ -97,8 +97,8 @@ const carouselItems = [
         </Flex>
       </div>
     ),
-    'aria-label': 'Kristy card'
-  }
+    'aria-label': 'Kristy card',
+  },
 ];
 
 const CarouselExample = () => (
@@ -109,8 +109,8 @@ const CarouselExample = () => (
       items: carouselItems.map((item, index) => ({
         key: item.id,
         'aria-label': tabAriaLabel[item.id],
-        'aria-controls': item.id
-      }))
+        'aria-controls': item.id,
+      })),
     }}
     items={carouselItems}
     getItemPositionText={(index: number, size: number) => `${index + 1} of ${size}`}

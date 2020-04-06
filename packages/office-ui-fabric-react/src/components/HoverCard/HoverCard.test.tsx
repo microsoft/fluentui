@@ -22,21 +22,21 @@ const expandingCardProps: IExpandingCardProps = {
   },
   renderData: { key: 'TEST' },
   directionalHint: DirectionalHint.rightTopEdge,
-  gapSpace: 16
+  gapSpace: 16,
 };
 
 const PlainCardProps: IPlainCardProps = {
   onRenderPlainCard: (item: any) => {
     return <div style={{ width: '200px', height: '500px' }}>{item.key}</div>;
   },
-  renderData: { key: 'TEST' }
+  renderData: { key: 'TEST' },
 };
 
 describe('HoverCard', () => {
   it('renders target wrapped by HoverCard correctly', () => {
     const createNodeMock = (el: React.ReactElement<{}>) => {
       return {
-        __events__: {}
+        __events__: {},
       };
     };
     const component = renderer.create(<HoverCardBase>Content</HoverCardBase>, { createNodeMock });
@@ -99,7 +99,7 @@ describe('HoverCard', () => {
         setInitialFocus={true}
         trapFocus={true}
         openHotKey={KeyCodes.enter}
-      />
+      />,
     );
 
     expect(component.prop('cardOpenDelay')).toEqual(1000);
@@ -134,7 +134,7 @@ describe('HoverCard', () => {
         componentRef={ref => (hoverCard = ref)}
       >
         <div>Child</div>
-      </HoverCardBase>
+      </HoverCardBase>,
     );
     jest.useFakeTimers();
 

@@ -11,7 +11,7 @@ export class PortalAtCursorPosition extends React.Component<PortalAtCursorPositi
   mountNodeInstance: HTMLElement = null;
 
   static defaultProps = {
-    mountNodeId: 'portal-at-cursor-position'
+    mountNodeId: 'portal-at-cursor-position',
   };
 
   componentWillUnmount() {

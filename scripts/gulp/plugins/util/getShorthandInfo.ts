@@ -54,12 +54,12 @@ const getShorthandInfo = (componentFile: t.File, componentName: string): Shortha
           mappedShorthandProp = 'children';
         }
       }
-    }
+    },
   });
 
   return {
     implementsCreateShorthand,
-    mappedShorthandProp
+    mappedShorthandProp,
   };
 };
 

@@ -16,9 +16,9 @@ const useSelectedIndeces = (inputSelection: Selection | undefined): [Selection, 
               //
               // tslint:disable-next-line:no-use-before-declare
               setSelectedIndeces(selection.getSelectedIndices());
-            }
+            },
           }),
-    [inputSelection]
+    [inputSelection],
   );
 
   const [selectedIndices, setSelectedIndeces] = React.useState(selection.getSelectedIndices());
@@ -27,7 +27,7 @@ const useSelectedIndeces = (inputSelection: Selection | undefined): [Selection, 
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
-  ref: React.Ref<ISelectedItemsList<TItem>>
+  ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
   const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
   const renderedItems = React.useMemo(() => props.selectedItems || items, [items, props.selectedItems]);
@@ -36,10 +36,10 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   // only updates if seleciton becomes set in props (e.g. compoennt transitions from
   // being controlled to uncontrolled)
   const [selection, selectedIndices] = useSelectedIndeces(props.selection);
-  const itemsInSelection = React.useMemo(() => selectedIndices.filter(i => i > 0 && i < items.length).map(i => items[i]), [
-    items,
-    selectedIndices
-  ]);
+  const itemsInSelection = React.useMemo(
+    () => selectedIndices.filter(i => i > 0 && i < items.length).map(i => items[i]),
+    [items, selectedIndices],
+  );
 
   React.useEffect(() => {
     selection.setItems(items);
@@ -49,7 +49,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     (itemsToRemove: TItem[]): void => {
       updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
     },
-    [items]
+    [items],
   );
 
   const replaceItem = React.useCallback(
@@ -62,7 +62,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
         updateItems(newItems);
       }
     },
-    [updateItems, items]
+    [updateItems, items],
   );
 
   const copyItemsInSelection = React.useCallback((): void => {
@@ -78,7 +78,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     (newItems: TItem[]) => {
       updateItems(items.concat(newItems));
     },
-    [items]
+    [items],
   );
 
   const unselectAll = React.useCallback(() => {
@@ -93,9 +93,9 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       itemsInSelection,
       addItems,
       unselectAll,
-      removeItems
+      removeItems,
     }),
-    [items, addItems]
+    [items, addItems],
   );
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -103,7 +103,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
       items.map((item: TItem) => () => removeItems([item])),
-    [items]
+    [items],
   );
 
   const SelectedItem = props.onRenderItem;

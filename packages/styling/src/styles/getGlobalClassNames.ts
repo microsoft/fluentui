@@ -22,7 +22,7 @@ const _getGlobalClassNames = memoizeFunction(
 
     // use global classnames
     return classNames;
-  }
+  },
 );
 
 /**
@@ -37,7 +37,10 @@ const _getGlobalClassNames = memoizeFunction(
 export function getGlobalClassNames<T>(
   classNames: GlobalClassNames<T>,
   theme: ITheme,
-  disableGlobalClassNames?: boolean
+  disableGlobalClassNames?: boolean,
 ): Partial<GlobalClassNames<T>> {
-  return _getGlobalClassNames(classNames, disableGlobalClassNames !== undefined ? disableGlobalClassNames : theme.disableGlobalClassNames);
+  return _getGlobalClassNames(
+    classNames,
+    disableGlobalClassNames !== undefined ? disableGlobalClassNames : theme.disableGlobalClassNames,
+  );
 }

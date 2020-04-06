@@ -4,12 +4,16 @@ import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsPresencePageProps } from './PresencePage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
-const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
+const baseUrl = 'https://github.com/microsoft/fluentui/tree/master/apps/fabric-website/src/pages/Styles/Colors/docs';
 
 export const ColorsPresencePage: React.FunctionComponent<IStylesPageProps> = props => {
   const { platform } = props;
   return (
-    <StylesAreaPage {...props} {...ColorsPresencePageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />
+    <StylesAreaPage
+      {...props}
+      {...ColorsPresencePageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
   );
 };
 
@@ -23,7 +27,9 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           content: (
             <>
               <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsPresence.md') as string}
+                {
+                  require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/Colors/docs/web/ColorsPresence.md') as string
+                }
               </Markdown>
               <ColorPalette
                 colors={[
@@ -32,38 +38,38 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     hex: '#ffaa44',
                     code: {
                       core: '$ms-color-sharedOrange10',
-                      react: 'SharedColors.orange10'
-                    }
+                      react: 'SharedColors.orange10',
+                    },
                   },
                   {
                     name: 'Do Not Disturb',
-                    hex: '#c50f1f'
+                    hex: '#c50f1f',
                   },
                   {
                     name: 'Online',
-                    hex: '#6bb700'
+                    hex: '#6bb700',
                   },
                   {
                     name: 'Invisible',
-                    hex: '#8a8886'
+                    hex: '#8a8886',
                   },
                   {
                     name: 'Out of Office',
-                    hex: '#b4009e'
-                  }
+                    hex: '#b4009e',
+                  },
                 ]}
               />
             </>
-          )
-        }
+          ),
+        },
       ];
 
     default:
       return [
         {
           sectionName: 'Coming soon',
-          content: '...'
-        }
+          content: '...',
+        },
       ];
   }
 }

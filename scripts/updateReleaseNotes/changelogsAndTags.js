@@ -89,8 +89,8 @@ function forEachFileRecursive(folder, fileName, cb) {
     .forEach(matchedFileName =>
       cb({
         path: path.resolve(folder, matchedFileName),
-        content: fs.readFileSync(path.resolve(folder, matchedFileName), 'utf8')
-      })
+        content: fs.readFileSync(path.resolve(folder, matchedFileName), 'utf8'),
+      }),
     );
 
   folderContent.forEach(itemName => {

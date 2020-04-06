@@ -13,8 +13,8 @@ import {
   ToolbarItemProps,
   ToolbarItemShorthandKinds,
   ToolbarMenuItemProps,
-  ToolbarMenuItemShorthandKinds
-} from '@fluentui/react';
+  ToolbarMenuItemShorthandKinds,
+} from '@fluentui/react-northstar';
 import { useEventListener } from '@fluentui/react-component-event-listener';
 import * as keyboardKey from 'keyboard-key';
 import * as _ from 'lodash';
@@ -22,6 +22,21 @@ import * as React from 'react';
 
 import { EditorToolbarAction, EditorToolbarState, FontFormatting } from './editorToolbarReducer';
 import EditorToolbarTable from './EditorToolbarTable';
+import {
+  BoldIcon,
+  BulletsIcon,
+  CodeSnippetIcon,
+  FontColorIcon,
+  FontSizeIcon,
+  HighlightIcon,
+  ItalicIcon,
+  LinkIcon,
+  NumberListIcon,
+  RemoveFormatIcon,
+  TableIcon,
+  TrashCanIcon,
+  UnderlineIcon,
+} from '@fluentui/react-icons-northstar';
 
 type EditorToolbarProps = EditorToolbarState & {
   dispatch: React.Dispatch<EditorToolbarAction>;
@@ -42,26 +57,26 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       key: 'heading1',
       content: FontFormatting.Heading1,
       active: props.fontFormatting === FontFormatting.Heading1,
-      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Heading1 })
+      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Heading1 }),
     },
     {
       key: 'heading2',
       content: FontFormatting.Heading2,
       active: props.fontFormatting === FontFormatting.Heading2,
-      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Heading2 })
+      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Heading2 }),
     },
     {
       key: 'heading3',
       content: FontFormatting.Heading3,
       active: props.fontFormatting === FontFormatting.Heading3,
-      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Heading3 })
+      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Heading3 }),
     },
     {
       key: 'paragraph',
       content: FontFormatting.Paragraph,
       active: props.fontFormatting === FontFormatting.Paragraph,
-      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Paragraph })
-    }
+      onClick: () => props.dispatch({ type: 'FONT_FORMATTING', value: FontFormatting.Paragraph }),
+    },
   ];
 
   const combinedItems: {
@@ -71,33 +86,33 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'bold',
-        icon: 'bold',
+        icon: <BoldIcon />,
         active: props.bold,
-        onClick: () => props.dispatch({ type: 'BOLD', value: !props.bold })
-      }
+        onClick: () => props.dispatch({ type: 'BOLD', value: !props.bold }),
+      },
     },
     {
       toolbarItem: {
         key: 'italic',
-        icon: 'italic',
+        icon: <ItalicIcon />,
         active: props.italic,
-        onClick: () => props.dispatch({ type: 'ITALIC', value: !props.italic })
-      }
+        onClick: () => props.dispatch({ type: 'ITALIC', value: !props.italic }),
+      },
     },
     {
       toolbarItem: {
         key: 'underline',
-        icon: 'underline',
+        icon: <UnderlineIcon />,
         active: props.underline,
-        onClick: () => props.dispatch({ type: 'UNDERLINE', value: !props.underline })
-      }
+        onClick: () => props.dispatch({ type: 'UNDERLINE', value: !props.underline }),
+      },
     },
 
     { toolbarItem: { key: 'divider-1', kind: 'divider' } },
 
-    { toolbarItem: { key: 'highlight', icon: 'highlight', active: props.fontHighlight } },
-    { toolbarItem: { key: 'font-color', icon: 'font-color', active: props.fontColor } },
-    { toolbarItem: { key: 'font-size', icon: 'font-size', active: props.fontSize } },
+    { toolbarItem: { key: 'highlight', icon: <HighlightIcon />, active: props.fontHighlight } },
+    { toolbarItem: { key: 'font-color', icon: <FontColorIcon />, active: props.fontColor } },
+    { toolbarItem: { key: 'font-size', icon: <FontSizeIcon />, active: props.fontSize } },
 
     {
       toolbarItem: {
@@ -109,7 +124,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
             <Text styles={{ whiteSpace: 'nowrap' }} content={props.fontFormatting} />
             <Icon name="chevron-down" />
           </Flex>
-        )
+        ),
       },
       overflowItem: {
         popup: {
@@ -124,41 +139,41 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
                 }}
                 vertical
               />
-            )
+            ),
           },
           onOpenChange: (e, { open }) => {
             props.dispatch({ type: 'FONT_FORMATTING_OPEN', value: open });
           },
-          open: props.fontFormattingOpen
+          open: props.fontFormattingOpen,
         },
-        icon: 'question',
-        content: props.fontFormatting
-      }
+        icon: <Icon name="question" />,
+        content: props.fontFormatting,
+      },
     },
 
     {
-      toolbarItem: { key: 'remove-format', icon: 'remove-format' },
-      overflowItem: { key: 'remove-format', icon: 'remove-format', content: 'Clear formatting' }
+      toolbarItem: { key: 'remove-format', icon: <RemoveFormatIcon /> },
+      overflowItem: { key: 'remove-format', icon: <RemoveFormatIcon />, content: 'Clear formatting' },
     },
     { toolbarItem: { key: 'divider-2', kind: 'divider' } },
 
     {
-      toolbarItem: { key: 'bullets', icon: 'bullets', active: props.itemList },
+      toolbarItem: { key: 'bullets', icon: <BulletsIcon />, active: props.itemList },
       overflowItem: {
         key: 'bullets',
-        icon: 'bullets',
+        icon: <BulletsIcon />,
         active: props.itemList,
-        content: 'Bulleted list'
-      }
+        content: 'Bulleted list',
+      },
     },
     {
-      toolbarItem: { key: 'number-list', icon: 'number-list', active: props.numberList },
+      toolbarItem: { key: 'number-list', icon: <NumberListIcon />, active: props.numberList },
       overflowItem: {
         key: 'number-list',
-        icon: 'number-list',
+        icon: <NumberListIcon />,
         active: props.numberList,
-        content: 'Number list'
-      }
+        content: 'Number list',
+      },
     },
 
     { toolbarItem: { key: 'divider-3', kind: 'divider' } },
@@ -166,39 +181,39 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
     {
       toolbarItem: {
         key: 'link',
-        icon: 'link',
+        icon: <LinkIcon />,
         active: props.link,
         children: (Component, props) => (
           <Ref innerRef={linkItemRef}>
             <Component {...props} />
           </Ref>
         ),
-        onClick: () => props.dispatch({ type: 'LINK', value: true })
+        onClick: () => props.dispatch({ type: 'LINK', value: true }),
       },
       overflowItem: {
         key: 'link',
-        icon: 'link',
+        icon: <LinkIcon />,
         content: 'Insert link',
-        onClick: () => props.dispatch({ type: 'LINK', value: true })
-      }
+        onClick: () => props.dispatch({ type: 'LINK', value: true }),
+      },
     },
     {
       toolbarItem: {
         key: 'code',
-        icon: 'code-snippet',
-        active: props.code
+        icon: <CodeSnippetIcon />,
+        active: props.code,
       },
       overflowItem: {
         key: 'code',
-        icon: 'code-snippet',
+        icon: <CodeSnippetIcon />,
         content: 'Code snippet',
-        active: props.code
-      }
+        active: props.code,
+      },
     },
     {
       toolbarItem: {
         key: 'table',
-        icon: 'table',
+        icon: <TableIcon />,
         content: 'Insert table',
         active: props.table,
 
@@ -215,15 +230,15 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
             </>
           ),
           onOpenChange: (e, { open }) => props.dispatch({ type: 'TABLE', value: open }),
-          open: props.table
-        }
-      }
-    }
+          open: props.table,
+        },
+      },
+    },
   ];
 
   const linkItemIndex = combinedItems.findIndex(
     // @ts-ignore
-    item => item.overflowItem && item.overflowItem.key === 'link'
+    item => item.overflowItem && item.overflowItem.key === 'link',
   );
   const linkInOverflowMenu = overflowIndex.current <= linkItemIndex;
   // Based on position of link item we choose target element for Popup. It's safe to access
@@ -241,7 +256,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       }
     },
     type: 'keydown',
-    target: props.target
+    target: props.target,
   });
   useEventListener({
     listener: () => {
@@ -256,7 +271,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
       }
     },
     type: 'resize',
-    target: props.target.defaultView
+    target: props.target.defaultView,
   });
 
   return (
@@ -272,8 +287,8 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
                   id: 'link-address',
                   key: 'address',
                   required: true,
-                  inline: true
-                }
+                  inline: true,
+                },
               ]}
             />
             <Divider hidden />
@@ -313,14 +328,14 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
             }}
           />
         </Ref>
-        <Toolbar items={[{ key: 'trash', icon: { name: 'trash-can', outline: true } }]} />
+        <Toolbar items={[{ key: 'trash', icon: <TrashCanIcon {...{ outline: true }} /> }]} />
       </Flex>
     </>
   );
 };
 
 EditorToolbar.defaultProps = {
-  target: document
+  target: document,
 };
 
 export default EditorToolbar;

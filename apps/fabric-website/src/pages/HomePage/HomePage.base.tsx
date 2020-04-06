@@ -13,7 +13,7 @@ import {
   ActionButton,
   Stack,
   IRawStyle,
-  css
+  css,
 } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
@@ -28,11 +28,12 @@ registerIcons({
   icons: {
     'AndroidLogo-homePage': AndroidLogo({ iconColor: 'black', iconSize: 64 }),
     'AppleLogo-homePage': AppleLogo({ iconColor: 'black', iconSize: 64 }),
-    'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 })
-  }
+    'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 }),
+  },
 });
 
-const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
+const fabricUsageIconBaseUrl =
+  'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
 
 /**
  * List of App/Brand icon names that use UI Fabric.
@@ -45,15 +46,15 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'powerpoint_48x1.svg', title: 'PowerPoint' },
   { src: fabricUsageIconBaseUrl + 'onenote_48x1.svg', title: 'OneNote' },
   { src: fabricUsageIconBaseUrl + 'sharepoint_48x1.svg', title: 'SharePoint' },
-  { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
+  { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' },
 ];
 
 const CURRENT_VERSION = '7';
 const VERSIONS = ['7', '6', '5'];
 const fabricVersionOptions: IContextualMenuItem[] = VERSIONS.map(version => ({
   key: version,
-  text: 'Fabric ' + version,
-  checked: version === CURRENT_VERSION
+  text: `${Number(version) >= 7 ? 'Fluent UI React' : 'Fabric React'} ${version}`,
+  checked: version === CURRENT_VERSION,
 }));
 
 interface IRenderLinkOptions {
@@ -77,7 +78,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     this.state = {
       isMounted: false,
-      isMountedOffset: false
+      isMountedOffset: false,
     };
   }
 
@@ -102,7 +103,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
 
     this._classNames = getClassNames(styles, {
       theme,
-      isMountedOffset
+      isMountedOffset,
     });
 
     return (
@@ -125,8 +126,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created UI Fabric, a collection of UX frameworks you can use to build Fluent experiences that fit seamlessly
-              into a broad range of Microsoft products.
+              Together, we’ve created Fluent UI, a collection of UX frameworks you can use to build Fluent experiences
+              that fit seamlessly into a broad range of Microsoft products.
             </p>
             <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
             <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
@@ -150,7 +151,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isMountedOffset,
       beforeColor,
       afterColor,
-      isInverted: true
+      isInverted: true,
     });
 
     const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
@@ -174,7 +175,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   menuIcon: versionSwitcherColor,
                   rootHovered: versionSwitcherActiveColor,
                   rootPressed: versionSwitcherActiveColor,
-                  rootExpanded: versionSwitcherActiveColor
+                  rootExpanded: versionSwitcherActiveColor,
                 }}
                 menuProps={{
                   gapSpace: 3,
@@ -185,11 +186,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
                   directionalHint: DirectionalHint.bottomCenter,
                   onItemClick: this._onVersionMenuClick,
                   styles: {
-                    root: { minWidth: 100 }
-                  }
+                    root: { minWidth: 100 },
+                  },
                 }}
               >
-                Fabric React {reactPackageData.version}
+                Fluent UI React {reactPackageData.version}
               </ActionButton>
             </Stack>
             <ul className={classNames.cardList}>
@@ -231,7 +232,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     const classNames = getClassNames(styles, {
       theme,
       isMountedOffset,
-      isInverted: true
+      isInverted: true,
     });
 
     return (
@@ -242,8 +243,8 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={classNames.oneFourth}>
             <p>
-              We're broadening our guidance to include more platforms and create an open source system, making it possible for us all to
-              evolve together.
+              We're broadening our guidance to include more platforms and create an open source system, making it
+              possible for us all to evolve together.
             </p>
           </div>
         </div>
@@ -265,7 +266,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <h2 className={this._classNames.resourcesTitle}>Discover resources</h2>
-            <p>Find design, inclusive and developer onboarding resources, and learn about how to become a contributor.</p>
+            <p>
+              Find design, inclusive and developer onboarding resources, and learn about how to become a contributor.
+            </p>
             <p>{this._renderLink('#/resources', 'See resources', { dark: false })}</p>
           </div>
         </div>
@@ -278,8 +281,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.usageSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fabric?</h2>
-            <p>From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fabric.</p>
+            <h2 className={this._classNames.usageTitle}>Who at Microsoft uses Fluent UI?</h2>
+            <p>
+              From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fluent
+              UI.
+            </p>
           </div>
           <div className={this._classNames.oneFourth} />
           <figure className={this._classNames.oneHalf}>
@@ -331,7 +337,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       currentArea: getSiteArea(),
       nextArea: getSiteArea(undefined, url),
       nextPage: url,
-      currentPage: window.location.hash
+      currentPage: window.location.hash,
     });
   };
 

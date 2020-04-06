@@ -25,14 +25,14 @@ function convertChangeFiles() {
         packageName: change.packageName,
         email: legacyJson.email,
         commit: getCommitByFile(legacy),
-        date: fileStat.ctime.toISOString()
+        date: fileStat.ctime.toISOString(),
       };
 
       const prefix = change.packageName.replace(/[^a-zA-Z0-9@]/g, '-');
 
       fs.writeFileSync(
         path.join(changePath, `${prefix}-${getTimeStamp(fileStat.ctime)}.json`),
-        JSON.stringify(beachballChangeJson, null, 2)
+        JSON.stringify(beachballChangeJson, null, 2),
       );
     });
 
@@ -60,7 +60,7 @@ function getTimeStamp(date) {
     leftPadTwoZeros(date.getDate().toString()),
     leftPadTwoZeros(date.getHours().toString()),
     leftPadTwoZeros(date.getMinutes().toString()),
-    leftPadTwoZeros(date.getSeconds().toString())
+    leftPadTwoZeros(date.getSeconds().toString()),
   ].join('-');
 }
 

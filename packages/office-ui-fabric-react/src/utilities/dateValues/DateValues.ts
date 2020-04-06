@@ -9,7 +9,7 @@ export enum DayOfWeek {
   Wednesday = 3,
   Thursday = 4,
   Friday = 5,
-  Saturday = 6
+  Saturday = 6,
 }
 
 /**
@@ -28,7 +28,7 @@ export enum MonthOfYear {
   September = 8,
   October = 9,
   November = 10,
-  December = 11
+  December = 11,
 }
 
 /**
@@ -38,7 +38,7 @@ export enum MonthOfYear {
 export enum FirstWeekOfYear {
   FirstDay = 0,
   FirstFullWeek = 1,
-  FirstFourDayWeek = 2
+  FirstFourDayWeek = 2,
 }
 
 /**
@@ -49,5 +49,5 @@ export enum DateRangeType {
   Day = 0,
   Week = 1,
   Month = 2,
-  WorkWeek = 3
+  WorkWeek = 3,
 }

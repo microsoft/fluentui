@@ -24,7 +24,7 @@ function onResolveSuggestions(text: string): ISimple[] {
     'rose',
     'violet',
     'white',
-    'yellow'
+    'yellow',
   ]
     .filter((tag: string) => tag.toLowerCase().indexOf(text.toLowerCase()) === 0)
     .map((item: string) => ({ key: item, name: item }));
@@ -47,10 +47,9 @@ export type TypedBaseFloatingPicker = BaseFloatingPicker<ISimple, IBaseFloatingP
 
 describe('Pickers', () => {
   describe('BaseFloatingPicker', () => {
-    const BaseFloatingPickerWithType = BaseFloatingPicker as new (props: IBaseFloatingPickerProps<ISimple>) => BaseFloatingPicker<
-      ISimple,
-      IBaseFloatingPickerProps<ISimple>
-    >;
+    const BaseFloatingPickerWithType = BaseFloatingPicker as new (
+      props: IBaseFloatingPickerProps<ISimple>,
+    ) => BaseFloatingPicker<ISimple, IBaseFloatingPickerProps<ISimple>>;
 
     it('renders BaseFloatingPicker correctly', () => {
       const component = renderer.create(
@@ -58,7 +57,7 @@ describe('Pickers', () => {
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
           suggestionsStore={new SuggestionsStore<ISimple>()}
-        />
+        />,
       );
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
@@ -78,7 +77,7 @@ describe('Pickers', () => {
           onZeroQuerySuggestion={onZeroQuerySuggestion}
           inputElement={input}
         />,
-        root
+        root,
       ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'a';
@@ -93,6 +92,7 @@ describe('Pickers', () => {
     });
 
     it('updates suggestions on query string changed', () => {
+      jest.useFakeTimers();
       const root = document.createElement('div');
       const input = document.createElement('input');
       document.body.appendChild(input);
@@ -105,11 +105,12 @@ describe('Pickers', () => {
           suggestionsStore={new SuggestionsStore<ISimple>()}
           inputElement={input}
         />,
-        root
+        root,
       ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'b';
       picker.onQueryStringChanged('b');
+      jest.runAllTimers();
 
       expect(picker.suggestions.length).toEqual(3);
 

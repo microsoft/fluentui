@@ -31,16 +31,18 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts')]}
+            sources={[
+              require<
+                string
+              >('!raw-loader!@uifabric/charting/src/components/VerticalBarChart/VerticalBarChart.types.ts'),
+            ]}
           />
         }
-        /* tslint:disable:max-line-length */
         overview={
           <div>
             <p>VerticalBarChart description</p>
           </div>
         }
-        /* tslint:enable:max-line-length */
         bestPractices={<div />}
         dos={
           <div>

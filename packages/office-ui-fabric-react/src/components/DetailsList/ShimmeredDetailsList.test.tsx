@@ -10,7 +10,7 @@ function mockItems(count: number): any {
     items.push({
       key: i,
       name: 'Item ' + i,
-      value: i
+      value: i,
     });
   }
 
@@ -30,7 +30,7 @@ describe('ShimmeredDetailsList', () => {
         skipViewportMeasures={true}
         // tslint:disable-next-line:jsx-no-lambda
         onShouldVirtualize={() => false}
-      />
+      />,
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

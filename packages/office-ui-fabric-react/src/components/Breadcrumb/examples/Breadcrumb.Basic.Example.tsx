@@ -5,7 +5,7 @@ import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 const labelStyles: Partial<ILabelStyles> = {
-  root: { margin: '10px 0', selectors: { '&:not(:first-child)': { marginTop: 24 } } }
+  root: { margin: '10px 0', selectors: { '&:not(:first-child)': { marginTop: 24 } } },
 };
 
 const items: IBreadcrumbItem[] = [
@@ -14,7 +14,7 @@ const items: IBreadcrumbItem[] = [
   { text: 'Folder 2', key: 'f2', onClick: _onBreadcrumbItemClicked },
   { text: 'Folder 3', key: 'f3', onClick: _onBreadcrumbItemClicked },
   { text: 'Folder 4 (non-clickable)', key: 'f4' },
-  { text: 'Folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true }
+  { text: 'Folder 5', key: 'f5', onClick: _onBreadcrumbItemClicked, isCurrentItem: true },
 ];
 const itemsWithHref: IBreadcrumbItem[] = [
   // Normally each breadcrumb would have a unique href, but to make the navigation less disruptive
@@ -24,14 +24,14 @@ const itemsWithHref: IBreadcrumbItem[] = [
   { text: 'Folder 2', key: 'f2', href: '#/controls/web/breadcrumb' },
   { text: 'Folder 3', key: 'f3', href: '#/controls/web/breadcrumb' },
   { text: 'Folder 4 (non-clickable)', key: 'f4' },
-  { text: 'Folder 5', key: 'f5', href: '#/controls/web/breadcrumb', isCurrentItem: true }
+  { text: 'Folder 5', key: 'f5', href: '#/controls/web/breadcrumb', isCurrentItem: true },
 ];
 const itemsWithHeading: IBreadcrumbItem[] = [
   { text: 'Files', key: 'Files', onClick: _onBreadcrumbItemClicked },
   { text: 'Folder 1', key: 'd1', onClick: _onBreadcrumbItemClicked },
   // Generally, only the last item should ever be a heading.
   // It would typically be h1 or h2, but we're using h4 here to better fit the structure of the page.
-  { text: 'Folder 2', key: 'd2', isCurrentItem: true, as: 'h4' }
+  { text: 'Folder 2', key: 'd2', isCurrentItem: true, as: 'h4' },
 ];
 
 export const BreadcrumbBasicExample: React.FunctionComponent = () => {
@@ -54,7 +54,11 @@ export const BreadcrumbBasicExample: React.FunctionComponent = () => {
       />
 
       <Label styles={labelStyles}>With last item rendered as heading</Label>
-      <Breadcrumb items={itemsWithHeading} ariaLabel="With last item rendered as heading" overflowAriaLabel="More links" />
+      <Breadcrumb
+        items={itemsWithHeading}
+        ariaLabel="With last item rendered as heading"
+        overflowAriaLabel="More links"
+      />
 
       <Label styles={labelStyles}>With custom rendered divider and overflow icon</Label>
       <Breadcrumb

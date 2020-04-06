@@ -59,12 +59,14 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   offAriaLabel?: string;
 
   /**
-   * Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to `defaultChecked`.
+   * Checked state of the toggle. If you are maintaining state yourself, use this property.
+   * Otherwise use `defaultChecked`.
    */
   checked?: boolean;
 
   /**
-   * Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.
+   * Initial state of the toggle. If you want the toggle to maintain its own state, use this.
+   * Otherwise use `checked`.
    */
   defaultChecked?: boolean;
 
@@ -109,7 +111,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
    * (Optional) Specify whether to use the "switch" role (ARIA 1.1) or the checkbox role (ARIA 1.0).
    * If unspecified, defaults to "switch".
    */
-  role?: 'checkbox' | 'switch';
+  role?: 'checkbox' | 'switch' | 'menuitemcheckbox';
 }
 
 /**

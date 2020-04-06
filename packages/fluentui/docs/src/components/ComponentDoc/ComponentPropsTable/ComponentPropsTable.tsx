@@ -1,4 +1,4 @@
-import { Loader } from '@fluentui/react';
+import { Loader } from '@fluentui/react-northstar';
 import * as React from 'react';
 
 import useComponentProps from '../useComponentProps';
@@ -7,7 +7,7 @@ import ComponentPropsRow from './ComponentPropsRow';
 const tableStyles: React.CSSProperties = {
   textAlign: 'left',
   borderCollapse: 'collapse',
-  width: '100%'
+  width: '100%',
 };
 
 type ComponentPropsTable = {

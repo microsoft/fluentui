@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text } from '@fluentui/react';
+import { Text } from '@fluentui/react-northstar';
 
 const CustomText = props => {
   const { muted, ...restProps } = props;

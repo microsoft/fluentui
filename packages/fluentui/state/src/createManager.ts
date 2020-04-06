@@ -1,6 +1,8 @@
 import { AnyActions, EnhancedAction, Manager, ManagerConfig } from './types';
 
-const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<State, Actions>): Manager<State, Actions> => {
+const createManager = <State, Actions extends AnyActions>(
+  config: ManagerConfig<State, Actions>,
+): Manager<State, Actions> => {
   const { actions, debug, middleware = [], sideEffects = [], state } = config;
   const _state: State = Object.assign({}, state) as State;
 
@@ -11,7 +13,7 @@ const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<
     actions: {} as Actions,
     get state() {
       return getState();
-    }
+    },
   };
 
   // assign actions to manager's api
@@ -31,6 +33,7 @@ const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<
   const applyAction = <A extends EnhancedAction<State, Actions>>(action: A, ...args: Parameters<A>) => {
     if (process.env.NODE_ENV !== 'production') {
       if (debug) {
+        // eslint-disable-next-line no-console
         console.log('manager ACTION', action.name || 'Anonymous');
       }
     }
@@ -45,9 +48,10 @@ const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<
     middleware.forEach((middlewareItem, index) => {
       if (process.env.NODE_ENV !== 'production') {
         if (debug) {
+          // eslint-disable-next-line no-console
           console.log(`manager MIDDLEWARE[${index}]`, {
             prev: prevState,
-            next: getState()
+            next: getState(),
           });
         }
       }
@@ -60,6 +64,7 @@ const createManager = <State, Actions extends AnyActions>(config: ManagerConfig<
     sideEffects.forEach((sideEffect, index) => {
       if (process.env.NODE_ENV !== 'production') {
         if (debug) {
+          // eslint-disable-next-line no-console
           console.log(`manager SIDE_EFFECT[${index}]`);
         }
       }

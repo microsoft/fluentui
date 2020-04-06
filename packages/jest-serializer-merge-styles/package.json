@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/jest-serializer-merge-styles",
-  "version": "7.0.11",
+  "version": "7.0.16",
   "description": "Jest serializer for merge-styles.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -10,7 +10,7 @@
   "typings": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/OfficeDev/office-ui-fabric-react"
+    "url": "https://github.com/microsoft/fluentui"
   },
   "license": "MIT",
   "scripts": {
@@ -28,7 +28,7 @@
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
-    "@uifabric/tslint-rules": "^7.0.6",
+    "@uifabric/tslint-rules": "^7.1.2",
     "react": "16.8.6",
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
@@ -36,7 +36,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^7.0.5",
-    "@uifabric/merge-styles": "^7.8.6"
+    "@uifabric/set-version": "^7.0.9",
+    "@uifabric/merge-styles": "^7.8.11"
   }
 }

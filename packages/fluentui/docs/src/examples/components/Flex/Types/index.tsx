@@ -9,8 +9,16 @@ const Types = () => (
       description="Flex items alignment options."
       examplePath="components/Flex/Types/FlexExampleMediaCard"
     />
-    <ComponentExample title="Input" description="Flex items alignment options." examplePath="components/Flex/Types/FlexExampleInput" />
-    <ComponentExample title="Nav Menu" description="Flex items alignment options." examplePath="components/Flex/Types/FlexExampleNavMenu" />
+    <ComponentExample
+      title="Input"
+      description="Flex items alignment options."
+      examplePath="components/Flex/Types/FlexExampleInput"
+    />
+    <ComponentExample
+      title="Nav Menu"
+      description="Flex items alignment options."
+      examplePath="components/Flex/Types/FlexExampleNavMenu"
+    />
     <ComponentExample
       title="Items Alignment"
       description="Flex items alignment options."

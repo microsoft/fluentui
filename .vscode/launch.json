@@ -104,7 +104,13 @@
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
       // Use the config file for fabric-website, plus command line options used in start.js
-      "args": ["--nolazy", "--debug", "--config", "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js", "--open"],
+      "args": [
+        "--nolazy",
+        "--debug",
+        "--config",
+        "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js",
+        "--open"
+      ],
       "env": {
         "NODE_ENV": "development"
       }
@@ -183,6 +189,24 @@
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Debug gulp task",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/node_modules/gulp/bin/gulp.js",
+      "stopOnEntry": false,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      // You can change the task name and cwd locally as needed
+      "args": ["build"],
+      "cwd": "${workspaceRoot}/packages/fluentui/react-northstar",
+      "env": {
+        "NODE_ENV": "development",
+        // This is used in scripts/babel/index.js to enable sourcemaps
+        "DEBUG": "1"
       },
       "sourceMaps": true,
       "console": "integratedTerminal"

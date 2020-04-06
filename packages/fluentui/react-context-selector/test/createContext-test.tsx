@@ -40,16 +40,17 @@ describe('createContext', () => {
       mount(
         <TestBoundary onError={onError}>
           <TestComponent />
-        </TestBoundary>
+        </TestBoundary>,
       );
 
       expect(onError).toBeCalledWith(
         expect.objectContaining({
-          message: 'Please use <Provider /> component from "@fluentui/react-context-selector"'
-        })
+          message: 'Please use <Provider /> component from "@fluentui/react-context-selector"',
+        }),
       );
 
       // We need to clean up mocks to avoid errors reported by React
+      // eslint-disable-next-line no-console
       (console.error as any).mockClear();
     });
 
@@ -64,7 +65,7 @@ describe('createContext', () => {
       mount(
         <TestBoundary onError={onError}>
           <TestComponent />
-        </TestBoundary>
+        </TestBoundary>,
       );
 
       expect(onError).not.toBeCalled();

@@ -167,5 +167,5 @@ export const SidebarStylingConstants = {
   /**
    * The width of the sidebar when it is in the collapsed state
    */
-  sidebarIconSize: '16px'
+  sidebarIconSize: '16px',
 };

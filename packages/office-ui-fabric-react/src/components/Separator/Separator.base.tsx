@@ -11,7 +11,7 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = (props: I
     theme: theme!,
     className,
     alignContent: alignContent,
-    vertical: vertical
+    vertical: vertical,
   });
 
   return (

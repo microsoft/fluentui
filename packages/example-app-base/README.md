@@ -8,7 +8,7 @@ These components are primarily intended for use within the office-ui-fabric-reac
 
 To set up the live code editor in the demo app for a package other than the `office-ui-fabric-react` package itself:
 
-1. Follow the setup steps from the [`@uifabric/monaco-editor` readme](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/monaco-editor/README.md) (the helpers mentioned are also re-exported from `@uifabric/tsx-editor` for convenience).
+1. Follow the setup steps from the [`@uifabric/monaco-editor` readme](https://github.com/microsoft/fluentui/blob/master/packages/monaco-editor/README.md) (the helpers mentioned are also re-exported from `@uifabric/tsx-editor` for convenience).
 
 2. Set up a `.d.ts` rollup file for your package using API Extractor.
 
@@ -44,7 +44,7 @@ export const editorSupportedPackages: IPackageGroup[] = [
           // If you don't care about that, you could use require() instead.
           // @ts-ignore: import is handled by webpack
           return import('!raw-loader!my-package/dist/my-package.d.ts');
-        }
+        },
       },
       {
         // my-package re-exports my-package-utilities from its root, so it goes under the same global
@@ -52,10 +52,10 @@ export const editorSupportedPackages: IPackageGroup[] = [
         loadTypes: () => {
           // @ts-ignore: import is handled by webpack
           return import('!raw-loader!my-package-utilities/dist/my-package-utilities.d.ts');
-        }
-      }
-    ]
-  }
+        },
+      },
+    ],
+  },
 ];
 ```
 
@@ -84,8 +84,8 @@ const appDefinition: IAppDefinition = {
   // ...
   customizations: {
     scopedSettings: {
-      ExampleCard: exampleCardProps
-    }
-  }
+      ExampleCard: exampleCardProps,
+    },
+  },
 };
 ```

@@ -38,32 +38,32 @@ export const TeamsCustomizations: ICustomizerProps = {
         neutralPrimary: '#282424',
         neutralDark: '#585151',
         black: '#403b3b',
-        white: '#fff'
-      }
-    }) as ITheme
+        white: '#fff',
+      },
+    }) as ITheme,
   },
 
   scopedSettings: {
     PrimaryButton: {
       styles: {
         root: {
-          borderRadius: 3
-        } as IButtonStyles
-      }
+          borderRadius: 3,
+        } as IButtonStyles,
+      },
     },
     DefaultButton: {
       styles: {
         root: {
           background: 'transparent',
           border: '2px solid #BDBDBD',
-          borderRadius: 3
+          borderRadius: 3,
         },
         rootHovered: {
-          background: 'transparent'
-        }
-      } as IButtonStyles
-    }
-  }
+          background: 'transparent',
+        },
+      } as IButtonStyles,
+    },
+  },
 };
 
 export default TeamsCustomizations;

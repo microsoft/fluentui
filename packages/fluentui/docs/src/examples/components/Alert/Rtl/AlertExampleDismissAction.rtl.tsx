@@ -1,18 +1,19 @@
 import * as React from 'react';
-import { Alert } from '@fluentui/react';
+import { Alert } from '@fluentui/react-northstar';
+import { ExclamationTriangleIcon } from '@fluentui/react-icons-northstar';
 
 const AlertExampleDismissActionRtl = () => (
   <Alert
     actions={[
       {
         content: 'مرحبا',
-        primary: true
+        primary: true,
       },
       {
-        content: 'عالم'
-      }
+        content: 'عالم',
+      },
     ]}
-    icon="exclamation-triangle"
+    icon={<ExclamationTriangleIcon />}
     content="مرحبا العالم"
   />
 );
