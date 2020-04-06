@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Icon, Button, Animation, Provider } from '@fluentui/react-northstar';
-import { PauseIcon, PlayIcon } from '@fluentui/react-icons-northstar';
-
+import { Button, Animation, Provider } from '@fluentui/react-northstar';
+import { PauseIcon, PlayIcon, MentionIcon } from '@fluentui/react-icons-northstar';
 const spinner = {
   keyframe: {
     from: {
@@ -39,7 +38,7 @@ class AnimationExamplePlayState extends React.Component {
           <br />
           <br />
           <Animation name="spinner" playState={this.state.playState}>
-            <Icon name="mention" circular bordered />
+            <MentionIcon circular bordered />
           </Animation>
         </div>
       </Provider>

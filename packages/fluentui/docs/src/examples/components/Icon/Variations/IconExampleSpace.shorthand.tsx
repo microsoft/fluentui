@@ -1,31 +1,32 @@
 import * as React from 'react';
-import { Icon, Label } from '@fluentui/react-northstar';
+import { Label } from '@fluentui/react-northstar';
+import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const IconExampleSpace = () => (
   <div>
     <p>
       <Label>Default</Label>
-      <Icon name="call-video" />
+      <CallVideoIcon />
       <Label>Default</Label>
     </p>
     <p>
       <Label>Before</Label>
-      <Icon name="call-video" xSpacing="before" />
+      <CallVideoIcon xSpacing="before" />
       <Label>Before</Label>
     </p>
     <p>
       <Label>After</Label>
-      <Icon name="call-video" xSpacing="after" />
+      <CallVideoIcon xSpacing="after" />
       <Label>After</Label>
     </p>
     <p>
       <Label>Both</Label>
-      <Icon name="call-video" xSpacing="both" />
+      <CallVideoIcon xSpacing="both" />
       <Label>Both</Label>
     </p>
     <p>
       <Label>None</Label>
-      <Icon name="call-video" xSpacing="none" />
+      <CallVideoIcon xSpacing="none" />
       <Label>None</Label>
     </p>
   </div>

@@ -1,11 +1,13 @@
 import * as React from 'react';
-import { Grid, Segment, Header, Icon } from '@fluentui/react-northstar';
+import { Grid, Segment, Header } from '@fluentui/react-northstar';
+// TODO: find replacement
+import { GameIcon } from '@fluentui/react-icons-northstar';
 
 const PageNotFound = () => (
   <Grid>
     <div>
       <Header as="h1" align="center">
-        <Icon name="game" />
+        <GameIcon />
         404
         <Header.Description>How about some good old Atari?</Header.Description>
       </Header>

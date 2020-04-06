@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Icon, Provider, Text, Animation, Header } from '@fluentui/react-northstar';
+import { Button, Provider, Text, Animation, Header } from '@fluentui/react-northstar';
 
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
-import { CalendarIcon } from '@fluentui/react-icons-northstar';
+import { CalendarIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
 
 export default () => (
   <DocPage title="Theming">
@@ -86,8 +86,8 @@ export default () => (
     <ExampleSnippet
       render={() => (
         <>
-          <Icon name="calendar" circular />
-          <Icon name="calendar" circular variables={{ color: 'cornflowerblue' }} />
+          <CalendarIcon circular />
+          <CalendarIcon circular variables={{ color: 'cornflowerblue' }} />
         </>
       )}
     />
@@ -99,13 +99,13 @@ export default () => (
     <ExampleSnippet
       render={() => (
         <>
-          <Icon name="calendar" circular />
-          <Icon name="calendar" circular />
+          <CalendarIcon circular />
+          <CalendarIcon circular />
 
           <Provider theme={{ componentVariables: { Icon: { color: 'cornflowerblue' } } }}>
             <span>
-              <Icon name="calendar" circular />
-              <Icon name="calendar" circular />
+              <CalendarIcon circular />
+              <CalendarIcon circular />
             </span>
           </Provider>
         </>
@@ -236,7 +236,7 @@ export default () => (
         >
           <div>
             <Animation name="spinner">
-              <Icon name="calendar" circular />
+              <CalendarIcon circular />
             </Animation>
           </div>
         </Provider>
@@ -272,10 +272,10 @@ export default () => (
         >
           <div>
             <Animation name="spinner" delay="2s" duration="1s">
-              <Icon name="calendar" circular />
+              <CalendarIcon circular />
             </Animation>
             <Animation name="spinner" delay="5s" duration="2s">
-              <Icon name="emoji" circular />
+              <EmojiIcon circular />
             </Animation>
           </div>
         </Provider>

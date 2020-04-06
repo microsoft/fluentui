@@ -1,6 +1,8 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Icon, Popup } from '@fluentui/react-northstar';
+import { Popup } from '@fluentui/react-northstar';
+// TODO: find replacement
+import { AsteriskIcon } from '@fluentui/react-icons-northstar';
 
 export default class ComponentPropName extends React.PureComponent<any, any> {
   static propTypes = {
@@ -24,7 +26,7 @@ export default class ComponentPropName extends React.PureComponent<any, any> {
             content="Required"
             align="center"
             styles={{ fontSize: 'x-small' }}
-            trigger={<Icon styles={{ color: 'red' }} name="asterisk" size="small" />}
+            trigger={<AsteriskIcon styles={{ color: 'red' }} size="small" />}
           />
         )}
         {slot && (

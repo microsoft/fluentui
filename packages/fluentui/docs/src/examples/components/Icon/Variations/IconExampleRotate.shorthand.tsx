@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Flex, Icon } from '@fluentui/react-northstar';
+import { Flex } from '@fluentui/react-northstar';
+import { CallVideoIcon, SkypeLogoIcon, EmojiIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const IconExampleRotate = () => (
   <Flex gap="gap.smaller">
-    <Icon name="call-video" rotate={45} />
-    <Icon name="skype-logo" rotate={45} />
-    <Icon name="emoji" rotate={45} />
-    <Icon name="more" rotate={45} />
+    <CallVideoIcon rotate={45} />
+    <SkypeLogoIcon rotate={45} />
+    <EmojiIcon rotate={45} />
+    <MoreIcon rotate={45} />
   </Flex>
 );
 

@@ -1,7 +1,7 @@
-import { Icon } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
-const IconMinimalPerf = () => <Icon name="user" />;
+const IconMinimalPerf = () => <UserFriendsIcon />;
 
 IconMinimalPerf.iterations = 5000;
 IconMinimalPerf.filename = 'IconMinimal.perf.tsx';

@@ -3,6 +3,7 @@ import { Avatar, Button, Divider, Icon, Segment, Text, Flex } from '@fluentui/re
 import chatProtoStyle from './chatProtoStyle';
 
 import { ChatData } from './services';
+import { TeamCreateIcon } from '@fluentui/react-icons-northstar';
 
 export interface ChatPaneHeaderProps {
   chat?: ChatData;
@@ -23,11 +24,7 @@ class ChatPaneHeader extends React.PureComponent<ChatPaneHeaderProps> {
     return (
       <Segment
         content={
-          <Icon
-            name="team-create"
-            styles={{ margin: 'auto 8px' }}
-            variables={siteVars => ({ color: siteVars.colors.white })}
-          />
+          <TeamCreateIcon styles={{ margin: 'auto 8px' }} variables={siteVars => ({ color: siteVars.colors.white })} />
         }
         styles={({ variables: v }) => ({
           backgroundColor: v.backgroundColor,

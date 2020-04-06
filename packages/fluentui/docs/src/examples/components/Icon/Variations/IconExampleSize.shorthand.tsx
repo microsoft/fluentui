@@ -1,28 +1,29 @@
 import * as React from 'react';
-import { Grid, Icon } from '@fluentui/react-northstar';
+import { Grid } from '@fluentui/react-northstar';
+import { EmojiIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const IconExampleSize = () => (
   <Grid rows={2} styles={{ textAlign: 'center' }}>
-    <Icon name="emoji" size="smallest" />
-    <Icon name="call-video" size="smallest" />
+    <EmojiIcon size="smallest" />
+    <CallVideoIcon size="smallest" />
 
-    <Icon name="emoji" size="smaller" />
-    <Icon name="call-video" size="smaller" />
+    <EmojiIcon size="smaller" />
+    <CallVideoIcon size="smaller" />
 
-    <Icon name="emoji" size="small" />
-    <Icon name="call-video" size="small" />
+    <EmojiIcon size="small" />
+    <CallVideoIcon size="small" />
 
-    <Icon name="emoji" />
-    <Icon name="call-video" />
+    <EmojiIcon />
+    <CallVideoIcon />
 
-    <Icon name="emoji" size="large" />
-    <Icon name="call-video" size="large" />
+    <EmojiIcon size="large" />
+    <CallVideoIcon size="large" />
 
-    <Icon name="emoji" size="larger" />
-    <Icon name="call-video" size="larger" />
+    <EmojiIcon size="larger" />
+    <CallVideoIcon size="larger" />
 
-    <Icon name="emoji" size="largest" />
-    <Icon name="call-video" size="largest" />
+    <EmojiIcon size="largest" />
+    <CallVideoIcon size="largest" />
   </Grid>
 );
 

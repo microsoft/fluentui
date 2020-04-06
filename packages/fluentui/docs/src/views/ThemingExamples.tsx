@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Button, Icon, Label, Provider, Header } from '@fluentui/react-northstar';
+import { Button, Label, Provider, Header } from '@fluentui/react-northstar';
 
 import DocPage from '../components/DocPage/DocPage';
 import ExampleSnippet from '../components/ExampleSnippet/ExampleSnippet';
 
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
-import { AddIcon, EmailIcon, CloseIcon, LockIcon } from '@fluentui/react-icons-northstar';
+import { AddIcon, EmailIcon, CloseIcon, LockIcon, EmojiIcon } from '@fluentui/react-icons-northstar';
 
 export default () => (
   <DocPage title="Theming Examples">
@@ -44,14 +44,15 @@ export default () => (
       value={`
         import React from 'react'
         import { Button, Icon, Label, Provider, themes } from '@fluentui/react-northstar'
+        import { AddIcon, EmailIcon, EmojiIcon, CloseIcon } from '@fluentui/react-icons-northstar'
 
         export default () =>
          <Provider theme={themes.teams}>
             <Button content="Button" />
-            <Button icon="add" iconOnly primary />
-            <Button icon="email" content="Send email" secondary />
-            <Icon name="emoji" size="larger" />
-            <Label content="Label with icon" icon="close" />
+            <Button icon={<AddIcon />} iconOnly primary />
+            <Button icon={<EmailIcon />} content="Send email" secondary />
+            <EmojiIcon size="larger" />
+            <Label content="Label with icon" icon={<CloseIcon />} />
          </Provider>
       `}
       render={() => (
@@ -59,7 +60,7 @@ export default () => (
           <Button content="Button" />
           <Button icon={<AddIcon />} iconOnly primary />
           <Button icon={<EmailIcon />} content="Send email" secondary />
-          <Icon name="emoji" size="larger" />
+          <EmojiIcon size="larger" />
           <Label content="Label with icon" icon={<CloseIcon />} />
         </>
       )}
@@ -77,6 +78,7 @@ export default () => (
       value={`
         import React from 'react'
         import { Button } from '@fluentui/react-northstar'
+        import { EmailIcon } from '@fluentui/react-icons-northstar'
 
         const styles = {
           color: "coral",
@@ -87,10 +89,7 @@ export default () => (
         const btnExample = () =>
           <Button
             content="Send email"
-            icon={{
-              name: "email",
-              styles: { color: "brown" },
-            }}
+            icon={<EmailIcon styles={{ color: 'brown' }} />}
             secondary
             styles={styles}
           />
@@ -117,16 +116,12 @@ export default () => (
       value={`
         import React from 'react'
         import { Button } from '@fluentui/react-northstar'
+        import { LockIcon } from '@fluentui/react-icons-northstar'
 
         const btnExample = () => (
         <Button
           content="Secure payment"
-          icon={{
-            name: 'lock',
-            variables: {
-              color: 'blue'
-            }
-          }}
+          icon={<LockIcon variables={{ color: 'blue' }} />}
           secondary
           variables={{
             color: 'coral',
@@ -187,6 +182,7 @@ export default () => (
       value={`
         import React from 'react'
         import { Button, Icon, Label, Provider } from '@fluentui/react-northstar'
+        import { AddIcon, EmailIcon, EmojiIcon, CloseIcon } from '@fluentui/react-icons-northstar'
 
         const theme = {
           siteVariables: {
@@ -221,10 +217,10 @@ export default () => (
           <Provider theme={theme}>
             <div>
               <Button content="Button" />
-              <Button icon="add" iconOnly primary />
-              <Button icon="email" content="Send email" secondary />
-              <Icon name="emoji" size="larger" />
-              <Label content="Label with icon" icon="close" />
+              <Button icon={<AddIcon />} iconOnly primary />
+              <Button icon={<EmailIcon />} content="Send email" secondary />
+              <EmojiIcon size="larger" />
+              <Label content="Label with icon" icon={<CloseIcon />} />
             </div>
           </Provider>
         )
@@ -267,7 +263,7 @@ export default () => (
               <Button content="Button" />
               <Button icon={<AddIcon />} iconOnly primary />
               <Button icon={<EmailIcon />} content="Send email" secondary />
-              <Icon name="emoji" size="larger" />
+              <EmojiIcon size="larger" />
               <Label content="Label with icon" icon={<CloseIcon />} />
             </div>
           </Provider>
@@ -286,10 +282,10 @@ export default () => (
           {/* Default theming */}
           <Header as="h3" content="Default theming" />
           <Button content="Button" />
-          <Button icon="add" iconOnly primary />
-          <Button icon="email" content="Send email" secondary />
-          <Icon name="emoji" size="larger" />
-          <Label content="Label with icon" icon="close" />
+          <Button icon={<AddIcon />} iconOnly primary />
+          <Button icon={<EmailIcon />} content="Send email" secondary />
+          <EmojiIcon size="larger" />
+          <Label content="Label with icon" icon={<CloseIcon />} />
 
           {/* First nested theming */}
           <Provider
@@ -306,10 +302,10 @@ export default () => (
               <Header as="h3" content="First nested theming" />
 
               <Button content="Button" />
-              <Button icon="add" iconOnly primary />
-              <Button icon="email" content="Send email" secondary />
-              <Icon name="emoji" size="larger" />
-              <Label content="Label with icon" icon="close" />
+              <Button icon={<AddIcon />} iconOnly primary />
+              <Button icon={<EmailIcon />} content="Send email" secondary />
+              <EmojiIcon size="larger" />
+              <Label content="Label with icon" icon={<CloseIcon />} />
 
               {/* Second nested theming */}
               <Provider
@@ -325,10 +321,10 @@ export default () => (
                   <Header as="h3" content="Second nested theming" />
 
                   <Button content="Button" />
-                  <Button icon="plus" iconOnly primary />
-                  <Button icon="email" content="Send email" secondary />
-                  <Icon name="emoji" size="larger" />
-                  <Label content="Label with icon" icon="close" />
+                  <Button icon={<AddIcon />} iconOnly primary />
+                  <Button icon={<EmailIcon />} content="Send email" secondary />
+                  <EmojiIcon size="larger" />
+                  <Label content="Label with icon" icon={<CloseIcon />} />
                 </div>
               </Provider>
             </div>
@@ -341,7 +337,7 @@ export default () => (
           <Button content="Button" />
           <Button icon={<AddIcon />} iconOnly primary />
           <Button icon={<EmailIcon />} content="Send email" secondary />
-          <Icon name="emoji" size="larger" />
+          <EmojiIcon size="larger" />
           <Label content="Label with icon" icon={<CloseIcon />} />
 
           <Provider
@@ -359,7 +355,7 @@ export default () => (
               <Button content="Button" />
               <Button icon={<AddIcon />} iconOnly primary />
               <Button icon={<EmailIcon />} content="Send email" secondary />
-              <Icon name="emoji" size="larger" />
+              <EmojiIcon size="larger" />
               <Label content="Label with icon" icon={<CloseIcon />} />
 
               <Provider
@@ -377,7 +373,7 @@ export default () => (
                   <Button content="Button" />
                   <Button icon={<AddIcon />} iconOnly primary />
                   <Button icon={<EmailIcon />} content="Send email" secondary />
-                  <Icon name="emoji" size="larger" />
+                  <EmojiIcon size="larger" />
                   <Label content="Label with icon" icon={<CloseIcon />} />
                 </>
               </Provider>

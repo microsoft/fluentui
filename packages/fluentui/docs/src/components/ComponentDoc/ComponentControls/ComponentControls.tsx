@@ -8,6 +8,8 @@ import { ComponentSourceManagerLanguage } from '../ComponentSourceManager';
 import ComponentControlsCodeSandbox, {
   CodeSandboxState,
 } from './ComponentControlsCodeSandbox/ComponentControlsCodeSandbox';
+// TODO: find replacements
+import { CodeIcon, AdjustIcon, LinkifyIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentControlsProps = {
   exampleCode: string;
@@ -69,7 +71,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
             aria-label={toolbarAriaLabel || null}
             items={[
               {
-                icon: <Icon name={'code'} {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <CodeIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowCode,
                 active: showCode,
                 children: (Component, props) => (
@@ -91,7 +93,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 kind: 'divider',
               },
               {
-                icon: <Icon name={'adjust'} {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <AdjustIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 onClick: onShowTransparent,
                 active: showTransparent,
                 children: (Component, props) => (
@@ -135,7 +137,7 @@ const ComponentControls: React.FC<ComponentControlsProps> = props => {
                 ),
               },
               {
-                icon: <Icon name={'linkify'} {...{ style: { width: '20px', height: '20px' } }} />,
+                icon: <LinkifyIcon {...{ style: { width: '20px', height: '20px' } }} />,
                 children: (Component, props) => (
                   <CopyToClipboard key="copy-link" value={anchorName}>
                     {(active, onClick) => (

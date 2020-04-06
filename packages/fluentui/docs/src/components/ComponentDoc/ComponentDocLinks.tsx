@@ -1,6 +1,8 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
-import { Flex, Icon, constants } from '@fluentui/react-northstar';
+import { Flex, constants } from '@fluentui/react-northstar';
+// TODO: find replacement
+import { GithubIcon } from '@fluentui/react-icons-northstar';
 
 export default class ComponentDocLinks extends React.PureComponent<any, any> {
   static propTypes = {
@@ -25,7 +27,7 @@ export default class ComponentDocLinks extends React.PureComponent<any, any> {
         }}
       >
         <>
-          <Icon name="github" />
+          <GithubIcon />
           <code>
             <a
               style={{ color: 'rgba(0,0,0,.4)' }}

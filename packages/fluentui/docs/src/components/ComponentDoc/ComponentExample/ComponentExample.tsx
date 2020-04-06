@@ -27,6 +27,8 @@ import ComponentExampleTitle from './ComponentExampleTitle';
 import ComponentSourceManager, { ComponentSourceManagerRenderProps } from '../ComponentSourceManager';
 import VariableResolver from '../../VariableResolver/VariableResolver';
 import ComponentExampleVariables from './ComponentExampleVariables';
+// TODO: find replacement
+import { RefreshIcon, GithubIcon } from '@fluentui/react-icons-northstar';
 
 const ERROR_COLOR = '#D34';
 
@@ -325,7 +327,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         content: 'Reset',
-        icon: <Icon name="refresh" />,
+        icon: <RefreshIcon />,
         key: 'reset',
         onClick: this.resetSourceCode,
         disabled: !wasCodeChanged,
@@ -342,7 +344,7 @@ class ComponentExample extends React.Component<ComponentExampleProps, ComponentE
       },
       {
         disabled: currentCodeLanguage !== 'ts',
-        icon: <Icon name="github" />,
+        icon: <GithubIcon />,
         content: 'Edit',
         href: ghEditHref,
         rel: 'noopener noreferrer',

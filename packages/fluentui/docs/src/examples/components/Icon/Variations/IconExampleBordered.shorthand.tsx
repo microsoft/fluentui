@@ -1,16 +1,22 @@
 import * as React from 'react';
-import { Flex, Icon } from '@fluentui/react-northstar';
+import { Flex } from '@fluentui/react-northstar';
+import {
+  SkypeLogoIcon,
+  EmojiIcon,
+  PlayIcon,
+  CallIcon,
+  CallVideoIcon,
+  TranslationIcon,
+} from '@fluentui/react-icons-northstar';
 
 const IconExampleBordered = () => (
   <Flex gap="gap.smaller">
-    <Icon name="skype-logo" bordered />
-    <Icon name="emoji" bordered />
-    <Icon name="play" bordered />
-    <Icon name="call" bordered />
-    <Icon name="call-video" bordered />
-    <Icon name="calendar outline" bordered />
-    <Icon name="translation" bordered />
-    <Icon name="star outline" bordered />
+    <SkypeLogoIcon bordered />
+    <EmojiIcon bordered />
+    <PlayIcon bordered />
+    <CallIcon bordered />
+    <CallVideoIcon bordered />
+    <TranslationIcon bordered />
   </Flex>
 );
 

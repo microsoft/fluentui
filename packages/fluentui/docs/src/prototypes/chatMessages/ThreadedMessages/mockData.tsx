@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ThreadReplyProps } from './ThreadReplies';
-import { Icon } from '@fluentui/react-northstar';
 import {
   AcceptIcon,
   BoldIcon,
@@ -10,6 +9,8 @@ import {
   MoreIcon,
   UnderlineIcon,
 } from '@fluentui/react-icons-northstar';
+// TODO: find replacements
+import { SmileIcon, PictureIcon } from '@fluentui/react-icons-northstar';
 
 export const actionMenu = {
   iconOnly: true,
@@ -85,11 +86,11 @@ export const toolbarItems = [
   },
   {
     key: 'smile',
-    icon: <Icon name="smile" outline />,
+    icon: <SmileIcon outline />,
   },
   {
     key: 'picture',
-    icon: <Icon name="picture" outline />,
+    icon: <PictureIcon outline />,
   },
   {
     key: 'calendar',

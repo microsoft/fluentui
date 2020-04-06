@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Flex, Icon } from '@fluentui/react-northstar';
+import { Flex } from '@fluentui/react-northstar';
+import { CallVideoIcon, SkypeLogoIcon, EmojiIcon, CircleIcon } from '@fluentui/react-icons-northstar';
 
 const IconExample = () => (
   <Flex gap="gap.smaller">
-    <Icon name="call-video" />
-    <Icon name="skype-logo" />
-    <Icon name="emoji" />
-    <Icon name="circle" />
+    <CallVideoIcon />
+    <SkypeLogoIcon />
+    <EmojiIcon />
+    <CircleIcon />
   </Flex>
 );
 

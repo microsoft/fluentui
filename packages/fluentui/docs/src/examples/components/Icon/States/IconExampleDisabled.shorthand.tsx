@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Icon } from '@fluentui/react-northstar';
+import { CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const IconExampleDisabled = () => (
   <div>
-    <Icon disabled name="call-video" />
+    <CallVideoIcon disabled />
   </div>
 );
 

@@ -87,6 +87,7 @@ export const Embed: KnobComponentGenerators<EmbedProps> = {
 
 export const Icon: KnobComponentGenerators<IconProps> = {
   name: ({ componentInfo, propDef, propName, theme }) => {
+    // TODO: fix this...
     const values = Object.keys(theme.icons).slice(0, 10);
 
     // This generator can be used for shorthands via recursion.

@@ -22,6 +22,8 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { NavLink, NavLinkProps, withRouter } from 'react-router-dom';
 import { SearchIcon } from '@fluentui/react-icons-northstar';
+// TODO: find replacement
+import { GithubIcon } from '@fluentui/react-icons-northstar';
 
 type ComponentMenuItem = { displayName: string; type: string };
 
@@ -551,7 +553,7 @@ class Sidebar extends React.Component<any, any> {
           <a href={constants.repoURL} target="_blank" rel="noopener noreferrer" style={topItemTheme}>
             <Box>
               GitHub
-              <Icon name="github" styles={{ float: 'right' }} />
+              <GithubIcon styles={{ float: 'right' }} />
             </Box>
           </a>
           <a href={changeLogUrl} target="_blank" rel="noopener noreferrer" style={topItemTheme}>

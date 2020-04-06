@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Flex, Icon, Grid, Text, ProviderConsumer } from '@fluentui/react-northstar';
+import { Flex, Grid, Text, ProviderConsumer } from '@fluentui/react-northstar';
+import { CalendarIcon, CallIcon, CallVideoIcon } from '@fluentui/react-icons-northstar';
 
 const IconExampleColor = () => (
   <Grid
@@ -19,9 +20,9 @@ const IconExampleColor = () => (
         color: siteVariables.colorScheme.brand.foreground,
       })}
     >
-      <Icon name="calendar" bordered />
-      <Icon name="call" bordered />
-      <Icon name="call-video" bordered />
+      <CalendarIcon bordered />
+      <CallIcon bordered />
+      <CallVideoIcon bordered />
     </Flex>
     <Text content="INHERITED COLOR FOR OUTLINED ICONS:" weight="bold" />
     <Flex
@@ -30,9 +31,9 @@ const IconExampleColor = () => (
         color: siteVariables.colorScheme.brand.foreground,
       })}
     >
-      <Icon name="calendar" bordered outline />
-      <Icon name="call" bordered outline />
-      <Icon name="call-video" bordered outline />
+      <CalendarIcon bordered outline />
+      <CallIcon bordered outline />
+      <CallVideoIcon bordered outline />
     </Flex>
     <Text weight="bold">
       USING THE <code>color</code> PROP:
@@ -41,7 +42,7 @@ const IconExampleColor = () => (
       <ProviderConsumer
         render={({ siteVariables: { contextualColors, naturalColors } }) =>
           _.keys({ ...contextualColors, ...naturalColors }).map(color => (
-            <Icon color={color} name="calendar" title={color} key={color} />
+            <CalendarIcon color={color} title={color} key={color} />
           ))
         }
       />
@@ -53,7 +54,7 @@ const IconExampleColor = () => (
       <ProviderConsumer
         render={({ siteVariables: { contextualColors, naturalColors } }) =>
           _.keys({ ...contextualColors, ...naturalColors }).map(color => (
-            <Icon color={color} name="calendar" outline title={color} key={color} />
+            <CalendarIcon color={color} outline title={color} key={color} />
           ))
         }
       />

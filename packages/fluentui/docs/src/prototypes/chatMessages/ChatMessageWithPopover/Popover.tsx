@@ -2,6 +2,8 @@ import { Accessibility, Menu, Icon, menuAsToolbarBehavior } from '@fluentui/reac
 import { TranslationIcon } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import cx from 'classnames';
+// TODO: find replacements
+import { SmileIcon, FolderIcon, LinkifyIcon, LikeIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 export interface PopoverProps {
   className?: string;
@@ -54,7 +56,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         className={cx(this.props.className, this.state.focused ? 'focused' : '')}
         items={[
           {
-            icon: <Icon name="smile" />,
+            icon: <SmileIcon />,
             key: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile one',
@@ -62,27 +64,27 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           },
           {
             key: 'smile2',
-            icon: <Icon name="smile" />,
+            icon: <SmileIcon />,
             className: 'smile-emoji',
             'aria-label': 'smile two',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile3',
-            icon: <Icon name="smile" />,
+            icon: <SmileIcon />,
             className: 'smile-emoji',
             'aria-label': 'smile three',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'a',
-            icon: <Icon name="thumbs up" />,
+            icon: <LikeIcon />,
             'aria-label': 'thumbs up',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'c',
-            icon: <Icon name="ellipsis horizontal" />,
+            icon: <MoreIcon />,
             onMenuOpenChange: (e, { menuOpen }) => {
               onShowActionMenuChange(true);
               onForceShowActionMenuChange(menuOpen);
@@ -92,8 +94,8 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: <Icon name="folder" />, content: 'Save this message' },
-                { key: 'linkify', icon: <Icon name="linkify" />, content: 'Copy link' },
+                { key: 'bookmark', icon: <FolderIcon />, content: 'Save this message' },
+                { key: 'linkify', icon: <LinkifyIcon />, content: 'Copy link' },
                 { key: 'translate', icon: <TranslationIcon />, content: 'Translate' },
               ],
             },
