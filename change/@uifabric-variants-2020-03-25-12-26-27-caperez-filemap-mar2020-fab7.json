@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Folding https://github.com/microsoft/fluentui/pull/12363 into Fabric7 - Step 1: First pass at very manual cherry-picking",
-  "packageName": "@uifabric/variants",
-  "email": "caperez@microsoft.com",
-  "commit": "60dd19fdca483abb4891096ddba8d1c9bdb9c236",
-  "dependentChangeType": "patch",
-  "date": "2020-03-25T19:26:25.206Z"
-}
