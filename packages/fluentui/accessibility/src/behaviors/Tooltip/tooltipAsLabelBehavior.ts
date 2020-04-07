@@ -14,7 +14,7 @@ import tooltipAsDescriptionBehavior, { TooltipBehaviorProps } from './tooltipAsD
  */
 const tooltipAsLabelBehavior: Accessibility<TooltipBehaviorProps> = props => {
   const behaviorData = tooltipAsDescriptionBehavior(props);
-  const triggerAriaLabel = props.triggerAriaLabel || props['aria-label'];
+  const { triggerAriaLabel } = props;
 
   behaviorData.attributes = {
     trigger: {

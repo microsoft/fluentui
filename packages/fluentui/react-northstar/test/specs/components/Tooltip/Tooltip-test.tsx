@@ -11,24 +11,13 @@ describe('Tooltip', () => {
     requiredProps: { open: true },
   });
 
-  describe('aria-labelledby', () => {
-    test('is not added on trigger if aria-label is passed', () => {
-      const ariaLabelTestValue = 'test-aria-label';
-      const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button />} aria-label={ariaLabelTestValue} />);
-      const trigger = findIntrinsicElement(wrapper, `.${Tooltip.slotClassNames.trigger}`);
+  test('aria-labelledby is not added on trigger if aria-label is passed to trigger shorthand', () => {
+    const ariaLabelTestValue = 'test-aria-label';
+    const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button aria-label={ariaLabelTestValue} />} />);
+    const trigger = findIntrinsicElement(wrapper, `.${Tooltip.slotClassNames.trigger}`);
 
-      expect(trigger.getDOMNode()).toHaveAttribute('aria-label', ariaLabelTestValue);
-      expect(trigger.getDOMNode()).not.toHaveAttribute('aria-labelledby');
-    });
-
-    test('is not added on trigger if aria-label is passed to trigger shorthand', () => {
-      const ariaLabelTestValue = 'test-aria-label';
-      const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button aria-label={ariaLabelTestValue} />} />);
-      const trigger = findIntrinsicElement(wrapper, `.${Tooltip.slotClassNames.trigger}`);
-
-      expect(trigger.getDOMNode()).toHaveAttribute('aria-label', ariaLabelTestValue);
-      expect(trigger.getDOMNode()).not.toHaveAttribute('aria-labelledby');
-    });
+    expect(trigger.getDOMNode()).toHaveAttribute('aria-label', ariaLabelTestValue);
+    expect(trigger.getDOMNode()).not.toHaveAttribute('aria-labelledby');
   });
 
   describe('content', () => {
