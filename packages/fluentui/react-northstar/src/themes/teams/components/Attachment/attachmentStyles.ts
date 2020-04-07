@@ -1,5 +1,6 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { AttachmentProps } from '../../../../components/Attachment/Attachment';
+
+import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
@@ -7,7 +8,7 @@ import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import Button from '../../../../components/Button/Button';
 
-const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentVariables> = {
+const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const borderFocusStyles = getBorderFocusStyles({
       variables: siteVariables,
@@ -32,7 +33,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
 
       ...borderFocusStyles,
 
-      ...((p.actionable || p.onClick) && {
+      ...(p.actionable && {
         cursor: 'pointer',
 
         ':focus-visible': {
@@ -130,7 +131,6 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentProps, AttachmentV
     display: 'block',
     bottom: 0,
     left: 0,
-    width: `${p.progress}%`,
     maxWidth: '100%',
     height: pxToRem(v.progressHeight),
     background: v.progressColor,
