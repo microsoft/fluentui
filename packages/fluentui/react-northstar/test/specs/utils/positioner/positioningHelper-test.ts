@@ -75,7 +75,7 @@ describe('positioningHelper', () => {
       expect(applyRtlToOffset([10, 10])).toEqual([-10, 10]);
     });
 
-    it('flips an axis value RTL for an array', () => {
+    it('flips an axis value RTL for a function', () => {
       const offsetFn: OffsetFunction = () => [10, 10];
       const flippedFn = applyRtlToOffset(offsetFn) as OffsetFunction;
 
