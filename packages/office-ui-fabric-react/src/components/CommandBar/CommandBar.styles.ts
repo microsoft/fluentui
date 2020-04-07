@@ -1,6 +1,6 @@
 import { ICommandBarStyleProps, ICommandBarStyles } from './CommandBar.types';
+import { IButtonStyles } from '../Button/Button.types';
 import { memoizeFunction } from '../../Utilities';
-import { IButtonStyles } from '../Button';
 import { IStyle } from '../../Styling';
 
 const COMMAND_BAR_HEIGHT = 44;
@@ -40,17 +40,21 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
   };
 };
 
-export const getCommandButtonStyles = memoizeFunction((customStyles: IButtonStyles | undefined) => {
-  const rootStyles: IStyle = {
-    height: '100%',
-  };
-  const labelStyles: IStyle = {
-    whiteSpace: 'nowrap',
-  };
+export const getCommandButtonStyles = memoizeFunction(
+  (customStyles: IButtonStyles | undefined): IButtonStyles => {
+    const rootStyles: IStyle = {
+      height: '100%',
+    };
+    const labelStyles: IStyle = {
+      whiteSpace: 'nowrap',
+    };
 
-  return {
-    customStyles,
-    root: customStyles ? [rootStyles, customStyles.root] : rootStyles,
-    label: customStyles ? [labelStyles, customStyles.label] : labelStyles,
-  };
-});
+    const { root, label, ...restCustomStyles } = customStyles || {};
+
+    return {
+      ...restCustomStyles,
+      root: root ? [rootStyles, root] : rootStyles,
+      label: label ? [labelStyles, label] : labelStyles,
+    };
+  },
+);
