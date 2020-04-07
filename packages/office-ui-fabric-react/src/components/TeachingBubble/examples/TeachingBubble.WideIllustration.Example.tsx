@@ -1,86 +1,49 @@
 import * as React from 'react';
-
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ITeachingBubbleWideIllustrationExampleState {
-  isTeachingBubbleVisible?: boolean;
-}
+const examplePrimaryButton: IButtonProps = {
+  children: 'Try it out',
+};
 
-export class TeachingBubbleWideIllustrationExample extends React.Component<
-  {},
-  ITeachingBubbleWideIllustrationExampleState
-> {
-  private _menuButtonElement: HTMLElement;
+const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
 
-  constructor(props: {}) {
-    super(props);
+export const TeachingBubbleWideIllustrationExample: React.FunctionComponent = () => {
+  const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
+  const exampleSecondaryButtonProps: IButtonProps = {
+    children: 'Maybe later',
+    onClick: toggleTeachingBubbleVisible,
+  };
 
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onShow = this._onShow.bind(this);
+  return (
+    <div className="ms-TeachingBubbleExample">
+      <DefaultButton
+        id="targetButton"
+        onClick={toggleTeachingBubbleVisible}
+        text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+      />
 
-    this.state = {
-      isTeachingBubbleVisible: false,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { isTeachingBubbleVisible } = this.state;
-    const exampleImageProps: IImageProps = { src: 'http://placehold.it/154x220', alt: 'Example placeholder image' };
-    const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out',
-    };
-    const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'Maybe later',
-      onClick: this._onDismiss,
-    };
-
-    return (
-      <div className="ms-TeachingBubbleExample">
-        <span
-          className="ms-TeachingBubbleBasicExample-buttonArea"
-          ref={menuButton => (this._menuButtonElement = menuButton!)}
+      {teachingBubbleVisible && (
+        <TeachingBubble
+          illustrationImage={exampleImageProps}
+          calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
+          isWide={true}
+          hasSmallHeadline={true}
+          hasCloseButton={true}
+          closeButtonAriaLabel="Close"
+          target="#targetButton"
+          primaryButtonProps={examplePrimaryButton}
+          secondaryButtonProps={exampleSecondaryButtonProps}
+          onDismiss={toggleTeachingBubbleVisible}
+          headline="Discover what’s trending around you"
         >
-          <DefaultButton
-            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
-            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
-          />
-        </span>
-        {isTeachingBubbleVisible ? (
-          <div>
-            <TeachingBubble
-              illustrationImage={exampleImageProps}
-              calloutProps={{ directionalHint: DirectionalHint.bottomCenter }}
-              isWide={true}
-              hasSmallHeadline={true}
-              hasCloseButton={true}
-              closeButtonAriaLabel="Close"
-              target={this._menuButtonElement}
-              primaryButtonProps={examplePrimaryButton}
-              secondaryButtonProps={exampleSecondaryButtonProps}
-              onDismiss={this._onDismiss}
-              headline="Discover what’s trending around you"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
-              magni harum non?
-            </TeachingBubble>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
-
-  private _onDismiss(ev: any): void {
-    this.setState({
-      isTeachingBubbleVisible: false,
-    });
-  }
-
-  private _onShow(ev: any): void {
-    this.setState({
-      isTeachingBubbleVisible: true,
-    });
-  }
-}
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni
+          harum non?
+        </TeachingBubble>
+      )}
+    </div>
+  );
+};

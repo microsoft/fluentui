@@ -1,74 +1,39 @@
 import * as React from 'react';
-
 import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface ITeachingBubbleBasicExampleState {
-  isTeachingBubbleVisible?: boolean;
-}
+const examplePrimaryButton: IButtonProps = {
+  children: 'Try it out',
+};
 
-export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBubbleBasicExampleState> {
-  private _menuButtonElement: HTMLElement;
+export const TeachingBubbleBasicExample: React.FunctionComponent = () => {
+  const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
+  const exampleSecondaryButtonProps: IButtonProps = {
+    children: 'Maybe later',
+    onClick: toggleTeachingBubbleVisible,
+  };
 
-  constructor(props: {}) {
-    super(props);
+  return (
+    <div className="ms-TeachingBubbleExample">
+      <DefaultButton
+        id="targetButton"
+        onClick={toggleTeachingBubbleVisible}
+        text={teachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+      />
 
-    this._onDismiss = this._onDismiss.bind(this);
-    this._onShow = this._onShow.bind(this);
-
-    this.state = {
-      isTeachingBubbleVisible: false,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { isTeachingBubbleVisible } = this.state;
-    const examplePrimaryButton: IButtonProps = {
-      children: 'Try it out',
-    };
-    const exampleSecondaryButtonProps: IButtonProps = {
-      children: 'Maybe later',
-      onClick: this._onDismiss,
-    };
-
-    return (
-      <div className="ms-TeachingBubbleExample">
-        <span
-          className="ms-TeachingBubbleBasicExample-buttonArea"
-          ref={menuButton => (this._menuButtonElement = menuButton!)}
+      {teachingBubbleVisible && (
+        <TeachingBubble
+          target="#targetButton"
+          primaryButtonProps={examplePrimaryButton}
+          secondaryButtonProps={exampleSecondaryButtonProps}
+          onDismiss={toggleTeachingBubbleVisible}
+          headline="Discover what’s trending around you"
         >
-          <DefaultButton
-            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
-            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
-          />
-        </span>
-        {isTeachingBubbleVisible ? (
-          <div>
-            <TeachingBubble
-              target={this._menuButtonElement}
-              primaryButtonProps={examplePrimaryButton}
-              secondaryButtonProps={exampleSecondaryButtonProps}
-              onDismiss={this._onDismiss}
-              headline="Discover what’s trending around you"
-            >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam
-              magni harum non?
-            </TeachingBubble>
-          </div>
-        ) : null}
-      </div>
-    );
-  }
-
-  private _onDismiss(ev: any): void {
-    this.setState({
-      isTeachingBubbleVisible: false,
-    });
-  }
-
-  private _onShow(ev: any): void {
-    this.setState({
-      isTeachingBubbleVisible: true,
-    });
-  }
-}
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni
+          harum non?
+        </TeachingBubble>
+      )}
+    </div>
+  );
+};
