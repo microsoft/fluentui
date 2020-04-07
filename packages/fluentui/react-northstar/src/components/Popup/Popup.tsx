@@ -377,10 +377,6 @@ const Popup: React.FC<PopupProps> &
   };
 
   const shouldBlurClose = e => {
-    console.log('shouldBlurClose', e);
-    console.log('e.currentTarget', e.currentTarget);
-    console.log('popupContentRef', popupContentRef.current);
-
     return (
       !e.currentTarget ||
       !popupContentRef.current ||
