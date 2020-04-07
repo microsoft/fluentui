@@ -98,7 +98,7 @@ export function asAsync<TProps>(options: IAsAsyncOptions<TProps>) {
     }
   }
 
-  return React.forwardRef<React.ElementType<TProps>, TProps & { asyncPlaceholder?: any }>((props, ref) => (
-    <Async {...props} forwardedRef={ref} />
-  ));
+  return React.forwardRef<React.ElementType<TProps>, TProps & { asyncPlaceholder?: React.ElementType }>(
+    (props, ref) => <Async {...props} forwardedRef={ref} />,
+  );
 }
