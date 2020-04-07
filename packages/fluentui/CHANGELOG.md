@@ -26,6 +26,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - `pointerHorizontalOffset` & `pointerVerticalOffset` are removed `TooltipContentVariables` @layershifter ([#12514](https://github.com/microsoft/fluentui/pull/12514))
 - Replaced `Alert.slotClassNames.dismissAction` with `AlertDismissAction.className` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
 - Changed `icon` prop to be `ShorthandValue<BoxProps>` in all Fluent components (Alert, Attachment, Button, DropdownSelectedItem, Input, Label, MenuItem, Reaction, Status, ToolbarItem, ToolbarMenuitem) @mnajdova ([#12489](https://github.com/microsoft/fluentui/pull/12489))
+- Removed `Icon` component (`@fluentui/react-icons-northstar` icons should be used instead) @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
+- Removed `icons` from `theme` object (`@fluentui/react-icons-northstar` icons should be used instead) @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
+Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecWithStyles` @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
 - `offset` for components that use `Popper` (`Popup`, `Tooltip`, `MenuButton`, etc.) can be specified only as a tuple or function @layershifter ([#12530](https://github.com/microsoft/fluentui/pull/12530))
 
 ### Fixes
@@ -47,12 +50,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Add `@fluentui/react-icons-northstar` package that contains all Teams theme icons and moved `createSvgIcon` to this package @mnajdova ([#12453](https://github.com/microsoft/fluentui/pull/12453))
 - Add `selected` property to TableRow component and selectable table prototype @pompomon ([#12475](https://github.com/microsoft/fluentui/pull/12475))
 - Add `AlertDismissAction` component for the dismissAction slot in the `Alert` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
+- Add `borderRadius` variables to `Card` component @pompomon ([#12552](https://github.com/microsoft/fluentui/pull/12552))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
 - Fix crash on `Loader` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
 - Improve playground on `Card` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
 - Add an example for Children API for `Toolbar` @layershifter ([#12473](https://github.com/microsoft/fluentui/pull/12473))
+- Removed Icon Viewer prototype and processed icons @mnajdova ([#12553](https://github.com/microsoft/fluentui/pull/12553))
 
 <!--------------------------------[ v0.47.0 ]------------------------------- -->
 ## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)
