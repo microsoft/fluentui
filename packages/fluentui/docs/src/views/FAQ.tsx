@@ -44,6 +44,7 @@ export default () => (
         {link('Teams Specific', '#teams-specific')}
         <ul>
           <li>{link('How to add Icons to Fluent UI?', '#how-to-add-icons-to-fluent-ui')}</li>
+          <li>{link('How can I reset or replace existing fonts?', '#how-can-i-reset-or-replace-existing-fonts')}</li>
         </ul>
       </li>
     </ul>
@@ -148,6 +149,17 @@ export default () => (
       }
     />
 
+    <Category content="Teams Specific" />
+    <Question content="How to add Icons to Fluent UI" />
+    <Answer
+      content={
+        <p>
+          Teams should be using SVG icons only. The process for adding new icons in the
+          `@fluentui/react-icons-northstar` package is described in{' '}
+          {link('PR 12571', 'https://github.com/microsoft/fluentui/pull/12571')}.
+        </p>
+      }
+    />
     <Question content="How can I reset or replace existing fonts?" />
     <Answer
       content={
