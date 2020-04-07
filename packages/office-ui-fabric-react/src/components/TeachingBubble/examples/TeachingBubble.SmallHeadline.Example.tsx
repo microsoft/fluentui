@@ -5,13 +5,13 @@ import { useBoolean } from '@uifabric/react-hooks';
 
 export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent = () => {
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
-  const examplePrimaryButton: IButtonProps = {
+  const examplePrimaryButtonProps: IButtonProps = {
     children: 'Try it out',
     onClick: toggleTeachingBubbleVisible,
   };
 
   return (
-    <div className="ms-TeachingBubbleExample">
+    <div>
       <DefaultButton
         id="targetButton"
         onClick={toggleTeachingBubbleVisible}
@@ -21,7 +21,7 @@ export const TeachingBubbleSmallHeadlineExample: React.FunctionComponent = () =>
       {teachingBubbleVisible && (
         <TeachingBubble
           target="#targetButton"
-          primaryButtonProps={examplePrimaryButton}
+          primaryButtonProps={examplePrimaryButtonProps}
           hasSmallHeadline={true}
           onDismiss={toggleTeachingBubbleVisible}
           headline="Discover what’s trending around you"

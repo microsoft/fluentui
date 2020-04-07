@@ -6,20 +6,23 @@ import { useBoolean } from '@uifabric/react-hooks';
 
 const exampleImageProps: IImageProps = { src: 'http://placehold.it/364x180', alt: 'Example placeholder image' };
 
-const examplePrimaryButton: IButtonProps = {
+const examplePrimaryButtonProps: IButtonProps = {
   children: 'Try it out',
 };
 
-export const TeachingBubbleIllustrationExampleState: React.FunctionComponent = () => {
+export const TeachingBubbleIllustrationExample: React.FunctionComponent = () => {
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 
-  const exampleSecondaryButtonProps: IButtonProps = {
-    children: 'Maybe later',
-    onClick: toggleTeachingBubbleVisible,
-  };
+  const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
+    () => ({
+      children: 'Maybe later',
+      onClick: toggleTeachingBubbleVisible,
+    }),
+    [toggleTeachingBubbleVisible],
+  );
 
   return (
-    <div className="ms-TeachingBubbleExample">
+    <div>
       <DefaultButton
         id="targetButton"
         onClick={toggleTeachingBubbleVisible}
@@ -30,7 +33,7 @@ export const TeachingBubbleIllustrationExampleState: React.FunctionComponent = (
         <TeachingBubble
           target="#targetButton"
           illustrationImage={exampleImageProps}
-          primaryButtonProps={examplePrimaryButton}
+          primaryButtonProps={examplePrimaryButtonProps}
           secondaryButtonProps={exampleSecondaryButtonProps}
           onDismiss={toggleTeachingBubbleVisible}
           headline="Discover what’s trending around you"

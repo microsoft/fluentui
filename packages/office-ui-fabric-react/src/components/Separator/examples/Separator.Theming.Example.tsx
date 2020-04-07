@@ -14,11 +14,10 @@ const theme: ITheme = createTheme({
 });
 
 const stackTokens: IStackTokens = { childrenGap: 12 };
-const content = 'Today';
 
 export const SeparatorThemingExample: React.FC = () => (
   <Stack tokens={stackTokens}>
     <Text>Horizontal center aligned with custom theme</Text>
-    <Separator theme={theme}>{content}</Separator>
+    <Separator theme={theme}>Today</Separator>
   </Stack>
 );

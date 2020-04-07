@@ -8,7 +8,7 @@ export const TeachingBubbleWideExample: React.FunctionComponent = () => {
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 
   return (
-    <div className="ms-TeachingBubbleExample">
+    <div>
       <DefaultButton
         id="targetButton"
         onClick={toggleTeachingBubbleVisible}

@@ -3,19 +3,22 @@ import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { TeachingBubble } from 'office-ui-fabric-react/lib/TeachingBubble';
 import { useBoolean } from '@uifabric/react-hooks';
 
-const examplePrimaryButton: IButtonProps = {
+const examplePrimaryButtonProps: IButtonProps = {
   children: 'Next',
 };
 export const TeachingBubbleMultiStepExample: React.FunctionComponent = () => {
   const [teachingBubbleVisible, { toggle: toggleTeachingBubbleVisible }] = useBoolean(false);
 
-  const exampleSecondaryButtonProps: IButtonProps = {
-    children: 'Previous',
-    onClick: toggleTeachingBubbleVisible,
-  };
+  const exampleSecondaryButtonProps: IButtonProps = React.useMemo(
+    () => ({
+      children: 'Previous',
+      onClick: toggleTeachingBubbleVisible,
+    }),
+    [toggleTeachingBubbleVisible],
+  );
 
   return (
-    <div className="ms-TeachingBubbleExample">
+    <div>
       <DefaultButton
         id="targetButton"
         onClick={toggleTeachingBubbleVisible}
@@ -25,7 +28,7 @@ export const TeachingBubbleMultiStepExample: React.FunctionComponent = () => {
       {teachingBubbleVisible && (
         <TeachingBubble
           target="#targetButton"
-          primaryButtonProps={examplePrimaryButton}
+          primaryButtonProps={examplePrimaryButtonProps}
           secondaryButtonProps={exampleSecondaryButtonProps}
           onDismiss={toggleTeachingBubbleVisible}
           footerContent="2 of 3"
