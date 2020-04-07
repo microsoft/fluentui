@@ -48,7 +48,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Allow to specify `overflowBoundary` & `flipBoundary` props in Popper shorthands @layershifter ([#12405](https://github.com/microsoft/fluentui/pull/12405))
 - Add `@fluentui/react-icons-northstar` package that contains all Teams theme icons and moved `createSvgIcon` to this package @mnajdova ([#12453](https://github.com/microsoft/fluentui/pull/12453))
 - Add `selected` property to TableRow component and selectable table prototype @pompomon ([#12475](https://github.com/microsoft/fluentui/pull/12475))
-- Adding `contact group call`, `customer hub`, `ocr on`, `ocr off` icons @bcalvery ([#12520](https://github.com/microsoft/fluentui/pull/12520))
+- Adding `ContactGroupCallIcon`, `CustomerHubIcon`, `OcrOnIcon`, `OcrOffIcon` @bcalvery ([#12520](https://github.com/microsoft/fluentui/pull/12520))
 - Add `AlertDismissAction` component for the dismissAction slot in the `Alert` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
 - Add `borderRadius` variables to `Card` component @pompomon ([#12552](https://github.com/microsoft/fluentui/pull/12552))
 
