@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import * as FUI from '@fluentui/react-northstar';
+import * as FUIIcons from '@fluentui/react-icons-northstar';
 import { JSONTreeElement } from './components/types';
 
 type FiberNavigator = FUI.FiberNavigator;
@@ -18,12 +19,12 @@ export const DRAGGING_PROPS = {
     panels: [{ title: 'Accordion title', content: 'Accordion content' }],
   } as FUI.AccordionProps,
 
-  Alert: { warning: true, icon: 'info', content: 'Info alert' } as FUI.AlertProps,
+  Alert: { warning: true, icon: <FUIIcons.InfoIcon />, content: 'Info alert' } as FUI.AlertProps,
 
   // Animation: { name: 'fade' } as FUI.AnimationProps,
 
   Attachment: {
-    icon: 'msftword',
+    icon: <FUIIcons.WordIcon />,
     header: 'A file attachment',
     description: '100kb',
   } as FUI.AttachmentProps,
@@ -33,7 +34,7 @@ export const DRAGGING_PROPS = {
   Box: { content: 'A Box' } as FUI.BoxProps,
 
   Button: {
-    icon: 'call',
+    icon: <FUIIcons.CallIcon />,
     content: 'Button',
   } as FUI.ButtonProps,
 
@@ -57,7 +58,10 @@ export const DRAGGING_PROPS = {
     items: [
       {
         gutter: (
-          <FUI.Avatar image="public/images/avatar/small/ade.jpg" status={{ color: 'green', icon: 'icon-checkmark' }} />
+          <FUI.Avatar
+            image="public/images/avatar/small/ade.jpg"
+            status={{ color: 'green', icon: <FUIIcons.AcceptIcon /> }}
+          />
         ),
         message: <FUI.Chat.Message content="Hi!" author="Jane Doe" timestamp="Yesterday, 10:15 PM" />,
         attached: 'top',
@@ -138,7 +142,7 @@ export const DRAGGING_PROPS = {
 
   // HierarchicalTree: { content: 'HierarchicalTree' } as FUI.HierarchicalTreeProps,
 
-  Icon: { name: 'like' } as FUI.IconProps,
+  // Icon: { name: 'like' } as FUI.IconProps,
 
   Image: { src: 'https://picsum.photos/200' } as FUI.ImageProps,
 
@@ -146,7 +150,7 @@ export const DRAGGING_PROPS = {
 
   // ItemLayout: { content: 'ItemLayout' } as FUI.ItemLayoutProps,
 
-  Label: { icon: 'mail', content: '23 Messages' } as FUI.LabelProps,
+  Label: { icon: <FUIIcons.EmailIcon />, content: '23 Messages' } as FUI.LabelProps,
 
   Layout: {
     debug: true,
@@ -219,7 +223,7 @@ export const DRAGGING_PROPS = {
     ],
   } as FUI.RadioGroupProps,
 
-  Reaction: { icon: 'like', content: 10 } as FUI.ReactionProps,
+  Reaction: { icon: <FUIIcons.LikeIcon />, content: 10 } as FUI.ReactionProps,
 
   Segment: { content: 'Segment' } as FUI.SegmentProps,
 
@@ -310,7 +314,7 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
 
   // TODO: This is where we'd handle special drop logic and json tree updates
   //       Right now, we just update the children of the element that was dropped on.
-
+  // TODO: Icon component was removed
   if (target.type === 'Button' && source.type === 'Icon') {
     target.props.icon = source.props;
     return;
