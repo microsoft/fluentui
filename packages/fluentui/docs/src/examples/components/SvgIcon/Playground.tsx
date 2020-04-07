@@ -2,13 +2,13 @@ import { useBooleanKnob, useNumberKnob, useSelectKnob } from '@fluentui/docs-com
 import { CalendarIcon, SvgIconSizeValue } from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 
-const MenuPlayground: React.FunctionComponent = () => {
+const SvgPlayground: React.FunctionComponent = () => {
   const [bordered] = useBooleanKnob({ name: 'bordered' });
   const [circular] = useBooleanKnob({ name: 'circular' });
   const [outline] = useBooleanKnob({ name: 'outline' });
   const [disabled] = useBooleanKnob({ name: 'disabled' });
   const [rotate] = useNumberKnob({ name: 'rotate' });
-  const [size] = useSelectKnob({
+  const [size] = useSelectKnob<SvgIconSizeValue>({
     name: 'size',
     initialValue: 'medium',
     values: ['smallest', 'smaller', 'small', 'medium', 'large', 'larger', 'largest'],
@@ -21,9 +21,9 @@ const MenuPlayground: React.FunctionComponent = () => {
       outline={outline}
       rotate={rotate}
       disabled={disabled}
-      size={size as SvgIconSizeValue}
+      size={size}
     />
   );
 };
 
-export default MenuPlayground;
+export default SvgPlayground;
