@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 
-export const SpinButtonBasicWithIconDisabledExample = () => (
+export const SpinButtonBasicWithIconDisabledExample: React.FC = () => (
   <div style={{ width: '400px' }}>
     <SpinButton
       defaultValue="0"

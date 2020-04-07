@@ -26,7 +26,7 @@ const downArrowButtonStyles: Partial<IButtonStyles> = {
   },
 };
 
-export const SpinButtonCustomStyledExample = () => (
+export const SpinButtonCustomStyledExample: React.FC = () => (
   <div>
     <SpinButton
       styles={styles}

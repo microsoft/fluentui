@@ -3,11 +3,11 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
-// tslint:disable:jsx-no-lambda
-
 export const PivotOverrideExample = () => {
   const [selectedKey, setSelectedKey] = React.useState(0);
-
+  const DefaultButtonOnClick = () => {
+    setSelectedKey((selectedKey + 1) % 3);
+  };
   return (
     <div>
       <Pivot aria-label="Override Selected Item Pivot Example" selectedKey={String(selectedKey)}>
@@ -21,7 +21,7 @@ export const PivotOverrideExample = () => {
           <Label>Pivot #3</Label>
         </PivotItem>
       </Pivot>
-      <DefaultButton onClick={() => setSelectedKey((selectedKey + 1) % 3)}>Select next item</DefaultButton>
+      <DefaultButton onClick={DefaultButtonOnClick}>Select next item</DefaultButton>
     </div>
   );
 };

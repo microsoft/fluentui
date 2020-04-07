@@ -5,7 +5,7 @@ import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 const StackTokens: Partial<IStackTokens> = { childrenGap: 20 };
 const StackStyles = { root: { width: 400 } };
 
-export const SpinButtonBasicExample = () => (
+export const SpinButtonBasicExample: React.FC = () => (
   <Stack tokens={StackTokens} styles={StackStyles}>
     <SpinButton
       defaultValue="0"
