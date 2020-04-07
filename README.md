@@ -41,9 +41,9 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 
 ## Using Fluent UI React
 
-### Create a new app
+### Creating a new app
 
-To create a simple React app  [install node.js](https://nodejs.org), then run:
+To create a simple React app using [Create React App](https://create-react-app.dev), [install Node.js](https://nodejs.org), then run:
 
 ```sh
 npx create-react-app my-app
@@ -52,7 +52,7 @@ npm install @fluentui/react
 npm start
 ```
 
-For further information, visit https://create-react-app.dev
+See the next section for some starter code using Fluent UI React controls.
 
 ### Integrating in your project
 
