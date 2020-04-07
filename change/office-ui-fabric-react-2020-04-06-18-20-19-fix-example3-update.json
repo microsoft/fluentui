@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Pivot and SpinButton updated to function components",
+  "packageName": "office-ui-fabric-react",
+  "email": "czearing@outlook.com",
+  "commit": "e692e029e50dc209e2e9e7536847631bd52efc25",
+  "dependentChangeType": "patch",
+  "date": "2020-04-07T01:20:19.727Z"
+}
