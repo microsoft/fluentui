@@ -566,13 +566,7 @@ export default function isConformant(
       });
 
       wrapper.unmount();
-
-      expect(telemetry.performance).toHaveProperty(
-        Component.displayName,
-        expect.objectContaining({
-          count: 1,
-        }),
-      );
+      expect(telemetry.performance).toHaveProperty(Component.displayName);
     });
   });
 }
