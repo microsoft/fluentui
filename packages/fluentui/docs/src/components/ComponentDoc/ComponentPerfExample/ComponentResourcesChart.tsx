@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ResourcesChart, usePerfData, ComponentChart } from '../PerfChart';
-import { Checkbox } from 'src/index';
+import { Checkbox } from '@fluentui/react-northstar';
 
 const filterReducer = (state, action) => {
   if (!Object.hasOwnProperty.call(state, action.name)) {

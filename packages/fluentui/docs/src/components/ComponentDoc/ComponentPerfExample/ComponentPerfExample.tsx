@@ -17,12 +17,6 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
   const { title, description, examplePath } = props;
 
   const [currentChart, setCurrentChart] = React.useState<'perf' | 'resources'>('perf');
-  const onShowPerfChart = React.useCallback(() => {
-    setCurrentChart('perf');
-  }, []);
-  const onShowResourcesChart = React.useCallback(() => {
-    setCurrentChart('resources');
-  }, []);
 
   // "components/Divider/Performance/Divider.perf" -> dividerPerfTsx
   const perfTestName = `${_.camelCase(_.last(examplePath.split('/')))}Tsx`;
@@ -39,12 +33,12 @@ const ComponentPerfExample: React.FC<ComponentPerfExampleProps> = props => {
                 {
                   content: 'Performance',
                   active: currentChart === 'perf',
-                  onClick: onShowPerfChart,
+                  onClick: () => setCurrentChart('perf'),
                 },
                 {
                   content: 'Resources',
                   active: currentChart === 'resources',
-                  onClick: onShowResourcesChart,
+                  onClick: () => setCurrentChart('resources'),
                 },
               ]}
             />

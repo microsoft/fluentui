@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { PerfChart, usePerfData, ComponentChart } from '../PerfChart';
-import { Checkbox } from 'src/index';
+import { Checkbox } from '@fluentui/react-northstar';
 
 const ExtremesFilter = ({ onChange }) => (
   <Checkbox label="Show extremes" onChange={(e, { checked }) => onChange({ extremes: checked })} />
