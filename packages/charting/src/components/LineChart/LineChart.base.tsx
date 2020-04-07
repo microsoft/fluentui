@@ -95,7 +95,7 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat } = this.props;
+    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -115,7 +115,7 @@ export class LineChartBase extends React.Component<
     if (dataPresent) {
       dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
       const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-      this._createYAxis();
+      this._createYAxis(yAxisTickFormat);
       lines = this._createLines(strokeWidth);
     }
     const legendBars = this._createLegends(this._points!);
@@ -398,7 +398,8 @@ export class LineChartBase extends React.Component<
     }
   };
 
-  private _createYAxis = () => {
+  // tslint:disable-next-line: no-any
+  private _createYAxis = (yAxisTickFormat: any) => {
     const { yMaxValue = 0, yMinValue = 0 } = this.props;
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
@@ -416,7 +417,8 @@ export class LineChartBase extends React.Component<
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))
       .tickPadding(12)
-      .tickValues(domainValues);
+      .tickValues(domainValues)
+      .tickFormat(yAxisTickFormat);
     this.yAxisElement
       ? d3Select(this.yAxisElement)
           .call(yAxis)
