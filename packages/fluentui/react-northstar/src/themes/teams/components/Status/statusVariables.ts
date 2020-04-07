@@ -27,7 +27,7 @@ export default siteVariables => ({
   warningBackgroundColor: siteVariables.colorScheme.yellow.background,
   warningTextColor: siteVariables.colorScheme.yellow.foreground2,
   errorBackgroundColor: siteVariables.colorScheme.red.background,
-  errorTextColor: siteVariables.colorScheme.default.foreground2,
+  errorTextColor: siteVariables.colorScheme.red.foreground2,
   defaultBackgroundColor: siteVariables.colorScheme.default.background5,
   defaultTextColor: siteVariables.colorScheme.default.foreground4,
 });
