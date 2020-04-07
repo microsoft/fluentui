@@ -35,7 +35,7 @@ import {
   commonPropTypes,
   rtlTextContainer,
 } from '../../utils';
-import { PopperChildrenProps } from '../../utils/positioner';
+import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
 
 export interface PopupContentSlotClassNames {
   content: string;
@@ -75,7 +75,9 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
   autoFocus?: boolean | AutoFocusZoneProps;
 }
 
-export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'placement' | 'pointing'>>;
+export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
+  basePlacement: Popper.Position;
+};
 
 const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
   FluentComponentStaticProps<PopupContentProps> & { slotClassNames: PopupContentSlotClassNames } = props => {
@@ -105,8 +107,8 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
   const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
     className: PopupContent.className,
     mapPropsToStyles: () => ({
+      basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
-      placement,
     }),
     mapPropsToInlineStyles: () => ({ className, design, styles, variables }),
     rtl: context.rtl,

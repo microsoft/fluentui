@@ -24,6 +24,8 @@ export { default as AccordionContent } from './components/Accordion/AccordionCon
 
 export * from './components/Alert/Alert';
 export { default as Alert } from './components/Alert/Alert';
+export * from './components/Alert/AlertDismissAction';
+export { default as AlertDismissAction } from './components/Alert/AlertDismissAction';
 
 export * from './components/Attachment/Attachment';
 export { default as Attachment } from './components/Attachment/Attachment';
@@ -99,10 +101,8 @@ export { default as Header } from './components/Header/Header';
 export * from './components/Header/HeaderDescription';
 export { default as HeaderDescription } from './components/Header/HeaderDescription';
 
-export * from './components/Icon/Icon';
-export { default as Icon } from './components/Icon/Icon';
-export * from './components/Icon/SvgIcon';
-export { default as SvgIcon } from './components/Icon/SvgIcon';
+export * from './components/SvgIcon/SvgIcon';
+export { default as SvgIcon } from './components/SvgIcon/SvgIcon';
 
 export * from './components/Image/Image';
 export { default as Image } from './components/Image/Image';

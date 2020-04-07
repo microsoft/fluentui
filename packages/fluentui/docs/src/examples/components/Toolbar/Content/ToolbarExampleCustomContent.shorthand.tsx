@@ -1,11 +1,16 @@
 import * as React from 'react';
 import { Button, Text, Toolbar } from '@fluentui/react-northstar';
+import { BoldIcon } from '@fluentui/react-icons-northstar';
 
 const ToolbarExampleCustomContentShorthand = () => (
   <Toolbar
     aria-label="Toolbar can contain custom content"
     items={[
-      { key: 'bold', icon: 'bold', title: 'Bold' },
+      {
+        icon: <BoldIcon />,
+        key: 'bold',
+        title: 'Bold',
+      },
       {
         key: 'custom-text',
         content: <Text content="Text" />,

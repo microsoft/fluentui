@@ -32,6 +32,8 @@ export interface MenuVariables {
 
   outlineColorFocus: string;
   colorActive: string;
+
+  iconSize: string;
   iconOnlyColorActive: string;
   iconOnlyColorFocus: string;
   iconOnlyBackgroundColorHover: string;
@@ -133,6 +135,8 @@ export default (siteVars: any): MenuVariables => {
     backgroundColorFocus: undefined,
     backgroundColorHover: undefined,
     backgroundColorActive: undefined,
+
+    iconSize: pxToRem(16),
 
     iconOnlyColorActive: siteVars.colors.brand[600],
     iconOnlyColorFocus: siteVars.colors.brand[600],

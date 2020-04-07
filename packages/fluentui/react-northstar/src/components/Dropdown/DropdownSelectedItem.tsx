@@ -3,6 +3,7 @@ import * as customPropTypes from '@fluentui/react-proptypes';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 import keyboardKey from 'keyboard-key';
 import {
@@ -20,7 +21,6 @@ import {
   commonPropTypes,
   ShorthandFactory,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
 import Image, { ImageProps } from '../Image/Image';
 import Label from '../Label/Label';
 import Box, { BoxProps } from '../Box/Box';
@@ -39,7 +39,7 @@ export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSele
   header?: ShorthandValue<BoxProps>;
 
   /** Icon of the selected item. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** Image of the selected item. */
   image?: ShorthandValue<ImageProps>;
@@ -84,7 +84,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
     }),
     active: PropTypes.bool,
     header: customPropTypes.itemShorthand,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     image: customPropTypes.itemShorthandWithoutJSX,
     onClick: PropTypes.func,
     onKeyDown: PropTypes.func,
@@ -92,7 +92,8 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
   };
 
   static defaultProps = {
-    icon: 'close',
+    // TODO: fix me
+    icon: <CloseIcon />,
   };
 
   componentDidUpdate(prevProps: DropdownSelectedItemProps) {
@@ -109,14 +110,14 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
     _.invoke(this.props, 'onKeyDown', e, this.props);
   };
 
-  handleIconOverrides = props => (predefinedProps: IconProps) => ({
+  handleIconOverrides = props => (predefinedProps: BoxProps) => ({
     ...props,
-    onClick: (e: React.SyntheticEvent, iconProps: IconProps) => {
+    onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
       _.invoke(this.props, 'onRemove', e, this.props);
       _.invoke(predefinedProps, 'onClick', e, iconProps);
     },
-    onKeyDown: (e: React.SyntheticEvent, iconProps: IconProps) => {
+    onKeyDown: (e: React.SyntheticEvent, iconProps: BoxProps) => {
       e.stopPropagation();
       if (keyboardKey.getCode(e) === keyboardKey.Enter) {
         _.invoke(this.props, 'onRemove', e, this.props);
@@ -140,7 +141,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
       : {
           name: null,
           children: (ComponentType, props) =>
-            Icon.create(icon, {
+            Box.create(icon, {
               defaultProps: () => ({
                 'aria-label': `Remove ${header} from selection.`, // TODO: Extract this in a behaviour.
                 className: DropdownSelectedItem.slotClassNames.icon,

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Fri, 03 Apr 2020 12:27:13 GMT and should not be manually modified.
 
+## 7.1.0
+Fri, 03 Apr 2020 12:27:13 GMT
+
+### Minor changes
+
+- Add useBoolean hook (elcraig@microsoft.com)
 ## 7.0.24
 Wed, 25 Mar 2020 12:30:04 GMT
 
