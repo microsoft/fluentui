@@ -26,7 +26,7 @@ export const CardView: ICardComponent['view'] = props => {
 
   // The map function below takes the Card children and applies the correct margin and gap tokens to them,
   // ensuring at the same time that they are of type CardItem or CardSection.
-  const cardChildren: (React.ReactChild | null)[] = React.Children.map(
+  const cardChildren: (React.ReactChild | null)[] | null | undefined = React.Children.map(
     children,
     (child: React.ReactElement<ICardItemProps | ICardSectionProps>, index: number) => {
       if (!child) {
