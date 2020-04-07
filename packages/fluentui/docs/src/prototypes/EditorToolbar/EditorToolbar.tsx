@@ -3,7 +3,6 @@ import {
   Divider,
   Flex,
   Form,
-  Icon,
   Menu,
   Popup,
   Ref,
@@ -37,6 +36,7 @@ import {
   TrashCanIcon,
   UnderlineIcon,
 } from '@fluentui/react-icons-northstar';
+import { ChevronDownIcon, QnaIcon } from '@fluentui/react-icons-northstar';
 
 type EditorToolbarProps = EditorToolbarState & {
   dispatch: React.Dispatch<EditorToolbarAction>;
@@ -122,7 +122,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
         children: (
           <Flex gap="gap.smaller">
             <Text styles={{ whiteSpace: 'nowrap' }} content={props.fontFormatting} />
-            <Icon name="chevron-down" />
+            <ChevronDownIcon />
           </Flex>
         ),
       },
@@ -146,7 +146,7 @@ const EditorToolbar: React.FC<EditorToolbarProps> = props => {
           },
           open: props.fontFormattingOpen,
         },
-        icon: <Icon name="question" />,
+        icon: <QnaIcon />,
         content: props.fontFormatting,
       },
     },

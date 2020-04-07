@@ -16,7 +16,6 @@ import {
   ThemeComponentStylesPrepared,
   ThemeComponentVariablesInput,
   ThemeComponentVariablesPrepared,
-  ThemeIcons,
   ThemeInput,
   ThemePrepared,
 } from './types';
@@ -35,7 +34,6 @@ export const emptyTheme: ThemePrepared = {
   componentStyles: {},
   fontFaces: [],
   staticStyles: [],
-  icons: {},
   animations: {},
 };
 
@@ -304,10 +302,6 @@ export const mergeStaticStyles = (...sources: StaticStyle[]) => {
   return toCompactArray<StaticStyle>(...sources);
 };
 
-export const mergeIcons = (...sources: ThemeIcons[]): ThemeIcons => {
-  return Object.assign({}, ...sources);
-};
-
 export const mergeAnimations = (...sources: { [key: string]: ThemeAnimation }[]): { [key: string]: ThemeAnimation } => {
   return Object.assign({}, ...sources);
 };
@@ -334,9 +328,6 @@ const mergeThemes = (...themes: ThemeInput[]): ThemePrepared => {
       );
 
       acc.componentStyles = mergeThemeStyles(acc.componentStyles, withDebugId(next.componentStyles, nextDebugId));
-
-      // Merge icons set, last one wins in case of collisions
-      acc.icons = mergeIcons(acc.icons, next.icons);
 
       acc.fontFaces = mergeFontFaces(...acc.fontFaces, ...(next.fontFaces || []));
 

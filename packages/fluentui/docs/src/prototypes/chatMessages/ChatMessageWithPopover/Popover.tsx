@@ -1,5 +1,12 @@
-import { Accessibility, Menu, Icon, menuAsToolbarBehavior } from '@fluentui/react-northstar';
-import { TranslationIcon } from '@fluentui/react-icons-northstar';
+import { Accessibility, Menu, menuAsToolbarBehavior } from '@fluentui/react-northstar';
+import {
+  BookmarkIcon,
+  TranslationIcon,
+  EmojiIcon,
+  LinkIcon,
+  LikeIcon,
+  MoreIcon,
+} from '@fluentui/react-icons-northstar';
 import * as React from 'react';
 import cx from 'classnames';
 
@@ -54,7 +61,7 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         className={cx(this.props.className, this.state.focused ? 'focused' : '')}
         items={[
           {
-            icon: <Icon name="smile" />,
+            icon: <EmojiIcon />,
             key: 'smile',
             className: 'smile-emoji',
             'aria-label': 'smile one',
@@ -62,27 +69,27 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
           },
           {
             key: 'smile2',
-            icon: <Icon name="smile" />,
+            icon: <EmojiIcon />,
             className: 'smile-emoji',
             'aria-label': 'smile two',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'smile3',
-            icon: <Icon name="smile" />,
+            icon: <EmojiIcon />,
             className: 'smile-emoji',
             'aria-label': 'smile three',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'a',
-            icon: <Icon name="thumbs up" />,
+            icon: <LikeIcon />,
             'aria-label': 'thumbs up',
             onClick: this.handleActionableItemClick,
           },
           {
             key: 'c',
-            icon: <Icon name="ellipsis horizontal" />,
+            icon: <MoreIcon />,
             onMenuOpenChange: (e, { menuOpen }) => {
               onShowActionMenuChange(true);
               onForceShowActionMenuChange(menuOpen);
@@ -92,8 +99,8 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: <Icon name="folder" />, content: 'Save this message' },
-                { key: 'linkify', icon: <Icon name="linkify" />, content: 'Copy link' },
+                { key: 'bookmark', icon: <BookmarkIcon />, content: 'Save this message' },
+                { key: 'linkify', icon: <LinkIcon />, content: 'Copy link' },
                 { key: 'translate', icon: <TranslationIcon />, content: 'Translate' },
               ],
             },

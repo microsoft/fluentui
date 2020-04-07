@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Avatar, Icon } from '@fluentui/react-northstar';
-import { AcceptIcon } from '@fluentui/react-icons-northstar';
+import { Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon, LockIcon } from '@fluentui/react-icons-northstar';
 
 const AvatarExampleImageCustomizationShorthand = () => (
   <>
@@ -20,9 +20,8 @@ const AvatarExampleImageCustomizationShorthand = () => (
         // This example does not react to the avatar size variable
         // and otherwise produces bad results when border is applied compared to "normal" image
         children: (ComponentType, props) => (
-          <Icon
+          <LockIcon
             {...{ ...props, avatar: undefined, fluid: undefined }}
-            name="lock"
             circular
             bordered
             variables={{ color: 'blue' }}

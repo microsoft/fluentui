@@ -2,7 +2,6 @@ import {
   Attachment,
   Extendable,
   Popup,
-  Icon,
   Menu,
   AvatarProps,
   ChatMessageProps,
@@ -14,7 +13,15 @@ import * as React from 'react';
 import * as _ from 'lodash';
 import * as keyboardKey from 'keyboard-key';
 import { ChatData, UserStatus, MessageData, UserData, areSameDay, getFriendlyDateString } from '.';
-import { AcceptIcon, DownloadIcon } from '@fluentui/react-icons-northstar';
+import {
+  AcceptIcon,
+  DownloadIcon,
+  MoreIcon,
+  TabsIcon,
+  WordIcon,
+  PhoneClockIcon,
+  LinkIcon,
+} from '@fluentui/react-icons-northstar';
 
 export enum ChatItemTypes {
   message,
@@ -41,8 +48,8 @@ type StatusPropsExtendable = Extendable<StatusProps>;
 
 const statusMap: Map<UserStatus, StatusPropsExtendable> = new Map([
   ['Available', { color: 'green', icon: <AcceptIcon />, title: 'Available' }],
-  ['DoNotDisturb', { color: 'red', icon: <Icon name="minus" />, title: 'Do not disturb' }],
-  ['Away', { color: 'yellow', icon: <Icon name="clock" />, title: 'Away' }],
+  ['DoNotDisturb', { color: 'red', title: 'Do not disturb' }],
+  ['Away', { color: 'yellow', icon: <PhoneClockIcon />, title: 'Away' }],
   ['Offline', { color: 'grey', title: 'Offline' }],
 ] as [UserStatus, StatusPropsExtendable][]);
 
@@ -102,13 +109,13 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         },
         {
           key: 'linkify',
-          icon: <Icon name="linkify" />,
+          icon: <LinkIcon />,
           content: 'Get link',
           onClick: menuClickHandler('Get link'),
         },
         {
           key: 'tab',
-          icon: <Icon name="folder open" />,
+          icon: <TabsIcon />,
           content: 'Make this a tab',
           onClick: menuClickHandler('Make tab'),
         },
@@ -128,7 +135,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
     'aria-label': 'More attachment options',
     iconOnly: true,
     circular: true,
-    icon: <Icon name="ellipsis horizontal" />,
+    icon: <MoreIcon />,
     onClick: e => e.stopPropagation(),
     onKeyDown: stopPropagationOnKeys([keyboardKey.Enter, keyboardKey.Spacebar]),
     children: (Component, props) => (
@@ -145,7 +152,7 @@ function createMessageContentWithAttachments(content: string, messageId: string)
         {_.map(['MeetingNotes.pptx', 'Document.docx'], (fileName, index) => (
           <Attachment
             key={`attachment-${index}`}
-            icon={<Icon name="file word outline" />}
+            icon={<WordIcon />}
             aria-label={`File attachment ${fileName}. Press tab for more options Press Enter to open the file`}
             header={fileName}
             action={action}
