@@ -20,7 +20,6 @@ import helpers from './commonHelpers';
 
 import * as FluentUI from 'src/index';
 import { getEventTargetComponent, EVENT_TARGET_ATTRIBUTE } from './eventTarget';
-import { expectMissing } from 'office-ui-fabric-react/src/common/testUtilities';
 
 export interface Conformant {
   constructorName?: string;
