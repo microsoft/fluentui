@@ -4,10 +4,10 @@ import {
   IFloatingSuggestionItem,
   IFloatingPeopleSuggestionsProps,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
-import { UnifiedPeoplePicker } from '@uifabric/experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker';
+import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
-import { ISelectedPeopleListProps } from '../../../SelectedItemsList';
+import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 const _suggestions = [
