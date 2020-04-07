@@ -1,4 +1,4 @@
-import { Table, Button, Flex, MenuButton, TableRow, TableCell } from '@fluentui/react-northstar';
+import { Table, Button, Flex, MenuButton, TableRow, TableCell, Ref } from '@fluentui/react-northstar';
 import {
   gridNestedBehavior,
   gridCellWithFocusableElementBehavior,
@@ -14,10 +14,15 @@ export const selectors = {
   beforeTableId: 'before-table',
   afterTableId: 'after-table',
   moreOptionsButtonId: 'more-options',
+  rowOnclickTestId: 'row-onclick',
+  buttonInCellOnclickTestId: 'button-in-cell-onlick',
 };
 
+const rowOnclickTestRef = React.createRef<HTMLButtonElement>();
+const buttonInCellOnclickTestRef = React.createRef<HTMLButtonElement>();
+
 function handleRowClick(index) {
-  alert(`OnClick on the row ${index} executed.`);
+  rowOnclickTestRef.current.focus();
 }
 
 const header = {
@@ -37,7 +42,7 @@ const moreOptionCell = {
   truncateContent: true,
   accessibility: gridCellWithFocusableElementBehavior,
   onClick: e => {
-    alert('more option button clicked');
+    buttonInCellOnclickTestRef.current.focus();
     e.stopPropagation();
   },
 };
@@ -47,8 +52,6 @@ const moreActionCell = {
     <Flex gap="gap.small" vAlign="center">
       <Button size="small" content="tag 1" />
       <Button size="small" content="tag 2" />
-      {/* table layout not support now more content in the cell */}
-      {/* <Button tabIndex={-1} icon="edit" circular text iconOnly title="edit tags" /> */}
     </Flex>
   ),
   accessibility: gridCellMultipleFocusableBehavior,
@@ -116,6 +119,12 @@ const StaticTable = () => (
       accessibility={gridNestedBehavior}
     />
     <Button id={selectors.afterTableId} content="after table" />
+    <Ref innerRef={rowOnclickTestRef}>
+      <Button id={selectors.rowOnclickTestId}>row onclick test</Button>
+    </Ref>
+    <Ref innerRef={buttonInCellOnclickTestRef}>
+      <Button id={selectors.buttonInCellOnclickTestId}>button in cell onclick test</Button>
+    </Ref>
   </>
 );
 
