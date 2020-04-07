@@ -41,32 +41,22 @@ Please see the [wiki](https://github.com/microsoft/fluentui/wiki).
 
 ## Using Fluent UI React
 
-### Starter apps
+### Create a new app
 
-To create a simple starter app using Fluent UI components, [install the latest LTS node.js](https://nodejs.org), then run:
+To create a simple React app [install node.js](https://nodejs.org), then run:
 
-```
-npm init uifabric
-```
-
-It'll prompt you for a project name. If you choose to create a project called `my-app`, you can start working on the project like this:
-
-```
+```sh
+npx create-react-app my-app
 cd my-app
+npm install @fluentui/react
 npm start
 ```
 
-This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow for customization on its configurations.
-
-If you prefer to use `create-react-app`, [follow these instructions](https://github.com/microsoft/fluentui/wiki/Getting-Started-with-UI-Fabric#create-react-app).
+For further information, visit https://create-react-app.dev
 
 ### Integrating in your project
 
-How to integrate components into your project depends heavily on your setup. The recommended setup is to use a bundler such as [Webpack](https://webpack.js.org/) which can resolve NPM package imports in your code and bundle only the specific things you import.
-
-Within an npm project, you should install the package and save it as a dependency:
-
-```
+```sh
 npm i @fluentui/react
 
 # Or, use yarn
@@ -77,7 +67,7 @@ This will add the package as a dependency in your `package.json` file and downlo
 
 The library includes ES2015 module entry points under the `lib` folder (use `lib-amd` if you need AMD, or `lib-commonjs` if you need commonjs). To use a control, import it and then use it in your render method:
 
-```js
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
