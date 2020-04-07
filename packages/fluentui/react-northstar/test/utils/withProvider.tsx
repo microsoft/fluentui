@@ -1,5 +1,5 @@
 import { Telemetry } from '@fluentui/react-bindings';
-import { emptyTheme, ThemeInput } from '@fluentui/styles';
+import { emptyTheme } from '@fluentui/styles';
 import { mount, MountRendererProps, ComponentType } from 'enzyme';
 import * as React from 'react';
 import { ThemeProvider } from 'react-fela';
@@ -35,7 +35,6 @@ export const mountWithProviderAndGetComponent = <C extends React.Component, P = 
   Component: ComponentType<P>,
   elementToMount: React.ReactElement<P>,
   options?: MountRendererProps,
-  theme?: ThemeInput,
 ) => {
-  return mountWithProvider(elementToMount, options, theme).find(Component);
+  return mountWithProvider(elementToMount, options).find(Component);
 };
