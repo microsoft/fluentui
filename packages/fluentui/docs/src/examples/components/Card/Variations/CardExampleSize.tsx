@@ -6,15 +6,17 @@ const CardExampleSize = () => (
   <Flex gap="gap.small">
     <Card size="small">
       <Card.Header>
-        <Flex gap="gap.small" column>
+        <Flex gap="gap.small">
           <Avatar
             image="public/images/avatar/small/matt.jpg"
             label="Copy bandwidth"
             name="Evie yundt"
             status="unknown"
           />
-          <Text content="Small card" weight="bold" />
-          <Text content="Secondary line" size="small" />
+          <Flex column>
+            <Text content="Small card" weight="bold" />
+            <Text content="Secondary line" size="small" />
+          </Flex>
         </Flex>
       </Card.Header>
       <Card.Body>
@@ -38,15 +40,17 @@ const CardExampleSize = () => (
 
     <Card>
       <Card.Header>
-        <Flex gap="gap.small" column>
+        <Flex gap="gap.small">
           <Avatar
             image="public/images/avatar/small/matt.jpg"
             label="Copy bandwidth"
             name="Evie yundt"
             status="unknown"
           />
-          <Text content="Medium(default) card" weight="bold" />
-          <Text content="Secondary line" size="small" />
+          <Flex column>
+            <Text content="Medium (default) card" weight="bold" />
+            <Text content="Secondary line" size="small" />
+          </Flex>
         </Flex>
       </Card.Header>
       <Card.Body>
@@ -71,15 +75,17 @@ const CardExampleSize = () => (
 
     <Card size="large">
       <Card.Header>
-        <Flex gap="gap.small" column>
+        <Flex gap="gap.small">
           <Avatar
             image="public/images/avatar/small/matt.jpg"
             label="Copy bandwidth"
             name="Evie yundt"
             status="unknown"
           />
-          <Text content="Large card" weight="bold" />
-          <Text content="Secondary line" size="small" />
+          <Flex column>
+            <Text content="Large card" weight="bold" />
+            <Text content="Secondary line" size="small" />
+          </Flex>
         </Flex>
       </Card.Header>
       <Card.Body>

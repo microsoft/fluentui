@@ -5,10 +5,12 @@ import { StarIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northsta
 const CardExample = () => (
   <Card fluid>
     <Card.Header>
-      <Flex gap="gap.small" column>
+      <Flex gap="gap.small">
         <Avatar image="public/images/avatar/small/matt.jpg" label="Copy bandwidth" name="Evie yundt" status="unknown" />
-        <Text content="Sample card" weight="bold" />
-        <Text content="Secondary line" size="small" />
+        <Flex column>
+          <Text content="Fluid card" weight="bold" />
+          <Text content="Secondary line" size="small" />
+        </Flex>
       </Flex>
     </Card.Header>
     <Card.Body>
