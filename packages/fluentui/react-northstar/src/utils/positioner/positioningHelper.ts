@@ -1,5 +1,5 @@
 import * as PopperJs from '@popperjs/core';
-import { Alignment, OffsetFunctionParam, OffsetModifier, Position } from './types';
+import { Alignment, Offset, OffsetFunction, OffsetFunctionParam, Position } from './types';
 
 enum PlacementParts {
   top = 'top',
@@ -66,16 +66,16 @@ export const getPlacement = ({
   return `${computedPosition}${stringifiedAlignment}` as PopperJs.Placement;
 };
 
-export const applyRtlToOffset = (
-  offset: OffsetModifier['options']['offset'] | undefined,
-): OffsetModifier['options']['offset'] | undefined => {
+export const applyRtlToOffset = (offset: Offset | undefined): Offset | undefined => {
   if (typeof offset === 'undefined') {
     return undefined;
   }
 
   if (Array.isArray(offset)) {
-    return offset.map(item => (item ? item * -1 : item)) as [number, number];
+    offset[0] = offset[0] * -1;
+
+    return offset;
   }
 
-  return (param: OffsetFunctionParam) => offset(param).map(item => (item ? item * -1 : item)) as [number, number];
+  return ((param: OffsetFunctionParam) => applyRtlToOffset(offset(param))) as OffsetFunction;
 };

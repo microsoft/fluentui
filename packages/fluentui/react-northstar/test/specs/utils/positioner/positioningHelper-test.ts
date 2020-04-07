@@ -1,7 +1,7 @@
 import * as PopperJs from '@popperjs/core';
 
-import { Alignment, Position } from 'src/utils/positioner';
-import { getPlacement } from 'src/utils/positioner/positioningHelper';
+import { Alignment, OffsetFunction, Position } from 'src/utils/positioner';
+import { applyRtlToOffset, getPlacement } from 'src/utils/positioner/positioningHelper';
 
 type PositionTestInput = {
   align: Alignment;
@@ -67,6 +67,19 @@ describe('positioningHelper', () => {
       position: 'after',
       align: 'bottom',
       expectedPlacement: 'left-end',
+    });
+  });
+
+  describe('positioningHelper offset argument transformed correctly in RTL', () => {
+    it('flips an axis value RTL for an array', () => {
+      expect(applyRtlToOffset([10, 10])).toEqual([-10, 10]);
+    });
+
+    it('flips an axis value RTL for an array', () => {
+      const offsetFn: OffsetFunction = () => [10, 10];
+      const flippedFn = applyRtlToOffset(offsetFn) as OffsetFunction;
+
+      expect(flippedFn({} as any)).toEqual([-10, 10]);
     });
   });
 });

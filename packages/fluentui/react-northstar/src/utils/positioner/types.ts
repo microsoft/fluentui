@@ -35,9 +35,9 @@ export type OffsetFunctionParam = {
   placement: PopperJs.Placement;
 };
 
-declare type OffsetFunction = (param: OffsetFunctionParam) => [number | null | undefined, number | null | undefined];
+export type OffsetFunction = (param: OffsetFunctionParam) => [number | null | undefined, number | null | undefined];
 
-declare type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
+export type Offset = OffsetFunction | [number | null | undefined, number | null | undefined];
 
 export type OffsetModifier = ModifierProps<
   'offset',
