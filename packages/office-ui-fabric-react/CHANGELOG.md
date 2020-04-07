@@ -1,7 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 06 Apr 2020 12:27:21 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Apr 2020 12:35:07 GMT and should not be manually modified.
 
+## 7.105.11
+Tue, 07 Apr 2020 12:35:07 GMT
+
+### Patches
+
+- GroupedList: Only invoke range selection on header click when in multiple selection mode (KevinTCoughlin@users.noreply.github.com)
+- Updated search box and divider examples to functional components (czearing@outlook.com)
 ## 7.105.10
 Mon, 06 Apr 2020 12:27:21 GMT
 

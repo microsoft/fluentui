@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "date": "Tue, 07 Apr 2020 12:35:07 GMT",
+      "tag": "office-ui-fabric-react_v7.105.11",
+      "version": "7.105.11",
+      "comments": {
+        "patch": [
+          {
+            "comment": "GroupedList: Only invoke range selection on header click when in multiple selection mode",
+            "author": "KevinTCoughlin@users.noreply.github.com",
+            "commit": "acb240ee8505ba72dc4a2644e9809600d597a2d7"
+          },
+          {
+            "comment": "Updated search box and divider examples to functional components",
+            "author": "czearing@outlook.com",
+            "commit": "dc750cf04a51eecd5e96b20b86dfdfc9096e3fa2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 06 Apr 2020 12:27:21 GMT",
       "tag": "office-ui-fabric-react_v7.105.10",
       "version": "7.105.10",
