@@ -74,7 +74,6 @@ describe('customizable', () => {
       </Customizer>,
     );
     const component = wrapper.find('ConcatStyles');
-    wrapper.update();
     expect((component.props() as IComponentProps).styles).toEqual({ root: [globalStyles, componentStyles] });
   });
 
