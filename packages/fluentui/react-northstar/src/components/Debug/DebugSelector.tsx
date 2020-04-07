@@ -61,6 +61,10 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
     this.debugDOMNode(e.target);
   };
 
+  handleMouseLeave = e => {
+    this.setState({ fiberNav: null });
+  };
+
   handleDOMNodeClick = e => {
     e.preventDefault();
     e.stopPropagation();
@@ -75,6 +79,7 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
     return (
       <>
         {active && <EventListener listener={this.handleMouseMove} target={mountDocument.body} type="mousemove" />}
+        {active && <EventListener listener={this.handleMouseLeave} target={mountDocument.body} type="mouseleave" />}
         {active && fiberNav && fiberNav.domNode && (
           <EventListener listener={this.handleDOMNodeClick} target={fiberNav.domNode} type="click" />
         )}

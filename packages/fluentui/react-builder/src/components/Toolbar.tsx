@@ -9,18 +9,22 @@ const Toolbar = ({
   onModeChange,
   onShowCodeChange,
   onShowJSONTreeChange,
+  onSelectingChange,
   mode,
   showCode,
   showJSONTree,
+  isSelecting,
 }: {
   style?: React.CSSProperties;
   onReset: () => void;
   onModeChange: (mode: DesignerMode) => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
+  onSelectingChange: (isSelecting: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
+  isSelecting: boolean;
 }) => (
   <div
     style={{
@@ -58,6 +62,13 @@ const Toolbar = ({
           toggle
           checked={!!showJSONTree}
           onChange={(e, data) => onShowJSONTreeChange(data.checked)}
+        />
+        &emsp;
+        <Checkbox
+          label="Select"
+          toggle
+          checked={!!isSelecting}
+          onChange={(e, data) => onSelectingChange(data.checked)}
         />
         &emsp;
         <div>

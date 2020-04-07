@@ -250,6 +250,10 @@ class Designer extends React.Component<any, DesignerState> {
     this.setState({ isSelecting: false });
   };
 
+  handleSelecting = isSelecting => {
+    this.setState({ isSelecting });
+  };
+
   render() {
     const {
       draggingElement,
@@ -300,8 +304,10 @@ class Designer extends React.Component<any, DesignerState> {
         <Toolbar
           showCode={showCode}
           showJSONTree={showJSONTree}
+          isSelecting={isSelecting}
           onShowCodeChange={this.handleShowCodeChange}
           onShowJSONTreeChange={this.handleShowJSONTreeChange}
+          onSelectingChange={this.handleSelecting}
           onReset={this.handleReset}
           onModeChange={this.handleModeChange}
           style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}

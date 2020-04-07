@@ -358,7 +358,14 @@ export const renderJSONTreeToJSXElement = (tree: any) => {
     });
   }
 
-  return React.createElement(tree.type, tree.props, children);
+  return React.createElement(
+    tree.type,
+    {
+      ...tree.props,
+      key: tree.props?.key || tree.uuid,
+    },
+    children,
+  );
 };
 
 /**
