@@ -6,7 +6,7 @@ import {
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { UnifiedPeoplePicker } from '@uifabric/experiments/lib/UnifiedPeoplePicker';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { mru } from '@uifabric/example-data';
+import { mru, people } from '@uifabric/example-data';
 import { ISelectedPeopleListProps } from '@uifabric/experiments/lib/SelectedItemsList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
@@ -97,6 +97,20 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
     return copyText;
   };
 
+  const _onInputChange = (filterText: string): void => {
+    console.log(people[40]);
+    const allPeople = people;
+    const suggestions = allPeople.filter((item: IPersonaProps) => _startsWith(item.text || '', filterText));
+    const suggestionList = suggestions.map(item => {
+      return { item: item, isSelected: false, key: item.key } as IFloatingSuggestionItem<IPersonaProps>;
+    });
+    setPeopleSuggestions(suggestionList.splice(0, 5));
+  };
+
+  function _startsWith(text: string, filterText: string): boolean {
+    return text.toLowerCase().indexOf(filterText.toLowerCase()) === 0;
+  }
+
   const selectionListSelection: Selection = new Selection();
 
   const floatingPeoplePickerProps = {
@@ -128,6 +142,7 @@ export const UnifiedPeoplePickerExample = (): JSX.Element => {
       <UnifiedPeoplePicker
         selectedItemsListProps={selectedPeopleListProps}
         floatingSuggestionProps={floatingPeoplePickerProps}
+        onInputChange={_onInputChange}
       />
     </>
   );

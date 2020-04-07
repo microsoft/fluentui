@@ -17,11 +17,15 @@ export interface IUseFloatingSuggestionItems<T> {
 export const useFloatingSuggestionItems = <T extends {}>(
   floatingSuggestionItems: T[],
   focusSuggestionIndex?: number,
-  isSuggestionsVisible?: boolean
+  isSuggestionsVisible?: boolean,
 ) => {
   const [focusItemIndex, setFocusItemIndex] = React.useState(focusSuggestionIndex || -1);
   const [suggestionItems, setSuggestionItems] = React.useState(floatingSuggestionItems);
   const [isSuggestionsShown, setIsSuggestionsShown] = React.useState(isSuggestionsVisible || false);
+
+  React.useEffect(() => {
+    setSuggestionItems(floatingSuggestionItems);
+  }, [floatingSuggestionItems]);
 
   const showPicker = (show: boolean) => {
     setFocusItemIndex(-1);
@@ -80,6 +84,6 @@ export const useFloatingSuggestionItems = <T extends {}>(
     selectPreviousSuggestion: selectPreviousSuggestion,
     getFocusedSuggestion: getFocusedSuggestion,
     hasSuggestionSelected: hasSuggestionSelected,
-    removeSuggestion: removeSuggestion
+    removeSuggestion: removeSuggestion,
   };
 };

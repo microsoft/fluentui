@@ -77,4 +77,9 @@ export interface IUnifiedPickerProps<T> {
    * On paste to input
    */
   onPaste?: (pastedValue: string, selectedItemsList: T[]) => void;
+
+  /**
+   * On input value change
+   */
+  onInputChange?: (filter: string) => void;
 }

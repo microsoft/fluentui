@@ -55,6 +55,7 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     onRederFloatingSuggestions,
     floatingSuggestionProps,
     headerComponent,
+    onInputChange,
   } = props;
 
   const activeDescendant = '';
@@ -139,7 +140,8 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
     if (!composing) {
       // update query string
       setQueryString(value);
-      // update floatingpicker suggestions
+      !isSuggestionsVisible ? showPicker(true) : null;
+      onInputChange ? onInputChange(value) : null;
     }
   };
   const _onPaste = (ev: React.ClipboardEvent<Autofill | HTMLInputElement>) => {
@@ -171,6 +173,9 @@ export const UnifiedPicker = <T extends {}>(props: IUnifiedPickerProps<T>): JSX.
       props.floatingSuggestionProps.onSuggestionSelected(ev, item);
     }
     addItems([item.item]);
+    if (input.current) {
+      input.current.clear();
+    }
     showPicker(false);
   };
   const _onRemoveSelectedItems = (itemsToRemove: T[]) => {
