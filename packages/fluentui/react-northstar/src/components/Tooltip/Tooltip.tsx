@@ -145,6 +145,7 @@ const Tooltip: React.FC<TooltipProps> &
       'aria-label': props['aria-label'],
       'aria-labelledby': props['aria-labelledby'],
       contentId: contentId.current,
+      triggerAriaLabel: trigger && trigger.props['aria-label'],
       open,
     }),
   });
