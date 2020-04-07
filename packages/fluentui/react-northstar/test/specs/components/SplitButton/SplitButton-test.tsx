@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as keyboardKey from 'keyboard-key';
 
 import SplitButton from 'src/components/SplitButton/SplitButton';
+import SplitButtonToggle from 'src/components/SplitButton/SplitButtonToggle';
 import { isConformant } from 'test/specs/commonTests';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
 import { mountWithProvider, findIntrinsicElement } from '../../../utils';
@@ -12,7 +13,7 @@ import Button from 'src/components/Button/Button';
 const mockMenu = { items: ['1', '2', '3'] };
 
 const getToggleButton = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${SplitButton.slotClassNames.toggleButton}`);
+  findIntrinsicElement(wrapper, `.${SplitButtonToggle.className}`);
 const getMainButton = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${MenuButton.className} .${Button.className}`);
 const getMenuItems = (wrapper: ReactWrapper): CommonWrapper =>

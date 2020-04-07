@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/charting_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DonutChart: Add prop to allow string inside Donut.",
+            "author": "v-satgar@microsoft.com",
+            "commit": "d33c765ff319e4aff2ffe788e618663974b92b84"
+          },
+          {
+            "comment": "providing Ymin and Ymax as props to the user",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3c6820fba99b1ec60e4de4a4465015675c91552b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/charting_v1.0.0",
       "version": "1.0.0",

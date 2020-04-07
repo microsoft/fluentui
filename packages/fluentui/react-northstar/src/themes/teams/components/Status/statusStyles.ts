@@ -73,8 +73,21 @@ const statusStyles: ComponentSlotStylesPrepared<StatusStylesProps, StatusVariabl
     };
   },
 
-  icon: ({ props: { state }, variables }): ICSSInJSStyle => ({
-    color: getTextColor(state, variables),
+  icon: ({ props: { state }, variables: v }): ICSSInJSStyle => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: v.iconSize,
+    height: v.iconSize,
+    color: getTextColor(state, v),
+    '& > :first-child': {
+      height: '100%',
+      width: '100%',
+      '& svg': {
+        height: '100%',
+        width: '100%',
+      },
+    },
   }),
 };
 

@@ -43,6 +43,9 @@ const reactionStyles: ComponentSlotStylesPrepared<ReactionProps, ReactionVariabl
     },
   }),
   icon: ({ props: p }) => ({
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     marginRight: p.content ? pxToRem(4) : pxToRem(0),
   }),
   content: ({ variables: v }) => ({

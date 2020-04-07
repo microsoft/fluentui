@@ -1,18 +1,19 @@
 import { useBooleanKnob, useRangeKnob } from '@fluentui/docs-components';
 import { List, Image, ButtonGroup } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { AcceptIcon, CloseIcon } from '@fluentui/react-icons-northstar';
 
 const actions = (
   <ButtonGroup
     buttons={[
       {
-        icon: 'icon-checkmark',
+        icon: <AcceptIcon />,
         iconOnly: true,
         text: true,
         title: 'Check',
       },
       {
-        icon: 'icon-close',
+        icon: <CloseIcon />,
         iconOnly: true,
         text: true,
         title: 'Close',

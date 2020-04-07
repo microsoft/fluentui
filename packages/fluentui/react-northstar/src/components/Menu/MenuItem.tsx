@@ -21,11 +21,10 @@ import {
   applyAccessibilityKeyHandlers,
   ShorthandFactory,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
 import Menu, { MenuProps, MenuShorthandKinds } from './Menu';
 import Box, { BoxProps } from '../Box/Box';
 import { ComponentEventHandler, WithAsProp, ShorthandValue, ShorthandCollection, withSafeTypeForAs } from '../../types';
-import { Popper } from '../../utils/positioner';
+import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
 
 export interface MenuItemSlotClassNames {
   wrapper: string;
@@ -47,7 +46,7 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   disabled?: boolean;
 
   /** Name or shorthand for Menu Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** A menu may have just icons. */
   iconOnly?: boolean;
@@ -108,7 +107,9 @@ export interface MenuItemProps extends UIComponentProps, ChildrenComponentProps,
   wrapper?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the submenu. */
-  menu?: ShorthandValue<MenuProps> | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
+  menu?:
+    | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
+    | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
   /** Indicates if the menu inside the item is open. */
   menuOpen?: boolean;
@@ -155,7 +156,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
     ...commonPropTypes.createCommon(),
     active: PropTypes.bool,
     disabled: PropTypes.bool,
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
     iconOnly: PropTypes.bool,
     index: PropTypes.number,
     itemPosition: PropTypes.number,
@@ -222,10 +223,10 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
           {...(!wrapper && { onClick: this.handleClick })}
           {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
         >
-          {Icon.create(icon, {
+          {Box.create(icon, {
             defaultProps: () => ({
-              xSpacing: !!content ? 'after' : 'none',
               styles: styles.icon,
+              as: 'span',
             }),
           })}
           {Box.create(content, {
@@ -251,6 +252,7 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
               align={vertical ? 'top' : rtl ? 'end' : 'start'}
               position={vertical ? (rtl ? 'before' : 'after') : 'below'}
               targetRef={this.itemRef}
+              {...getPopperPropsFromShorthand(menu)}
             >
               {Menu.create(menu, {
                 defaultProps: () => ({
