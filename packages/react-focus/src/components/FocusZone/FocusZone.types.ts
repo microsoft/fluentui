@@ -141,6 +141,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   handleTabKey?: FocusZoneTabbableElements;
 
   /**
+   * If true and TAB key is not handled by FocusZone, resets current active element to null value.
+   * For example, when roving index is not desirable and focus should always reset to the default tabbable element.
+   */
+  shouldResetActiveElementWhenTabFromZone?: boolean;
+
+  /**
    * A callback method to determine if the input element should lose focus on arrow keys
    *  @param inputElement - The input element which is to loose focus.
    *  @returns True if input element should loose focus or false otherwise.
