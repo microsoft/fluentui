@@ -36,5 +36,5 @@ export default (siteVars: any): TooltipContentVariables => ({
   color: siteVars.colorScheme.default.foreground3,
   backgroundColor: siteVars.colors.grey[500],
 
-  zIndex: siteVars.zIndexes.overlay,
+  zIndex: siteVars.zIndexes.overlayPriority,
 });
