@@ -26,64 +26,66 @@ const getDir = memoizeFunction((theme?: ITheme, dir?: IFabricProps['dir']) => {
   return getRTL() ? 'rtl' : 'ltr';
 });
 
-export class FabricBase extends React.Component<IFabricProps> {
-  private _rootElement = React.createRef<HTMLDivElement>();
-  private _removeClassNameFromBody?: () => void = undefined;
+// tslint:disable-next-line:function-name
+export function FabricBase(props: IFabricProps) {
+  const { className, theme, applyTheme, applyThemeToBody } = props;
 
-  public render() {
-    const { as: Root = 'div', theme, dir } = this.props;
-    const classNames = this._getClassNames();
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['dir']);
-    const componentDir = getDir(theme, dir);
-    const parentDir = getDir(theme);
+  const classNames = getClassNames(getStyles, {
+    theme: theme!,
+    applyTheme: applyTheme,
+    className,
+  });
 
-    let renderedContent = <Root dir={componentDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
+  const rootElement = React.useRef<HTMLDivElement>();
+  useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
 
-    // Create the contextual theme if component direction does not match parent direction.
-    if (componentDir !== parentDir) {
-      renderedContent = (
-        <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
-      );
-    }
+  return (
+    <>
+      {getRenderedContent(props, classNames, rootElement)}
+      <FocusRects rootRef={rootElement} />
+    </>
+  );
+}
 
-    return (
-      <>
-        {renderedContent}
-        <FocusRects rootRef={this._rootElement} />
-      </>
+function getRenderedContent(
+  props: IFabricProps,
+  { root }: IProcessedStyleSet<IFabricStyles>,
+  rootElement: React.RefObject<HTMLDivElement | undefined>,
+) {
+  const { as: Root = 'div', dir, theme } = props;
+  const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['dir']);
+
+  const componentDir = getDir(theme, dir);
+  const parentDir = getDir(theme);
+
+  let renderedContent = <Root dir={componentDir} {...divProps} className={root} ref={rootElement} />;
+
+  // Create the contextual theme if component direction does not match parent direction.
+  if (componentDir !== parentDir) {
+    renderedContent = (
+      <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
     );
   }
 
-  public componentDidMount(): void {
-    this._addClassNameToBody();
-  }
+  return renderedContent;
+}
 
-  public componentWillUnmount(): void {
-    if (this._removeClassNameFromBody) {
-      this._removeClassNameFromBody();
-    }
-  }
-
-  private _getClassNames(): IProcessedStyleSet<IFabricStyles> {
-    const { className, theme, applyTheme } = this.props;
-    const classNames = getClassNames(getStyles, {
-      theme: theme!,
-      applyTheme: applyTheme,
-      className,
-    });
-    return classNames;
-  }
-
-  private _addClassNameToBody(): void {
-    if (this.props.applyThemeToBody) {
-      const classNames = this._getClassNames();
-      const currentDoc = getDocument(this._rootElement.current);
+function useApplyThemeToBody(
+  applyThemeToBody: boolean | undefined,
+  { bodyThemed }: IProcessedStyleSet<IFabricStyles>,
+  rootElement: React.RefObject<HTMLDivElement | undefined>,
+) {
+  React.useEffect((): void | (() => void) => {
+    if (applyThemeToBody) {
+      const currentDoc = getDocument(rootElement.current);
       if (currentDoc) {
-        currentDoc.body.classList.add(classNames.bodyThemed);
-        this._removeClassNameFromBody = () => {
-          currentDoc.body.classList.remove(classNames.bodyThemed);
+        currentDoc.body.classList.add(bodyThemed);
+        return () => {
+          currentDoc.body.classList.remove(bodyThemed);
         };
       }
     }
-  }
+  }, [bodyThemed]);
+
+  return rootElement;
 }

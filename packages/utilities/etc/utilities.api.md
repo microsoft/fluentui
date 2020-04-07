@@ -287,9 +287,9 @@ export function focusAsync(element: HTMLElement | {
 export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
-export const FocusRects: React.FunctionComponent<{
-    rootRef?: React.RefObject<HTMLElement>;
-}>;
+export const FocusRects: <TElement extends HTMLElement | undefined>(props: {
+    rootRef?: React.RefObject<TElement> | undefined;
+}) => null;
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -1172,7 +1172,7 @@ export const trProperties: string[];
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export function useFocusRects(rootRef?: React.RefObject<HTMLElement>): void;
+export function useFocusRects<TElement extends HTMLElement | undefined>(rootRef?: React.RefObject<TElement>): void;
 
 // @public
 export function values<T>(obj: any): T[];
