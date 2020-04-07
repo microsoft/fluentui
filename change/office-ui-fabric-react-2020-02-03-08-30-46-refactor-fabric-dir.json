@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Fabric: cleanup dir logic, don't add 'dir' unless different from context",
+  "packageName": "office-ui-fabric-react",
+  "email": "mgodbolt@microsoft.com",
+  "commit": "7e27ce55ceee46cf888650969389677eadc4dc34",
+  "dependentChangeType": "patch",
+  "date": "2020-02-03T16:30:45.985Z"
+}

@@ -625,7 +625,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     & textarea {
                       font-family: inherit;
                     }
-                dir="ltr"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onClick={[Function]}

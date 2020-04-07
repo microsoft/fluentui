@@ -26,7 +26,6 @@ exports[`Panel renders Panel correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-    dir="ltr"
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
