@@ -17,49 +17,39 @@ describe('Table', () => {
   beforeEach(async () => {
     await e2e.gotoTestCase(__filename, tableHeaderClass);
     await e2e.focusOn(buttonBeforeTable);
-    await e2e.pressKey('Tab');
-    // currently focus always land to the first cell in the header
+    await e2e.pressKey('Tab'); // currently focus always land to the first cell in the header
     expect(await e2e.isFocused(tableCell(0, 0))).toBe(true);
   });
 
   describe('Row navigation', () => {
     it('navigate down and up on the rows', async () => {
-      await e2e.pressKey('ArrowDown');
-      // arrow down key from the header cell will focus next row
+      await e2e.pressKey('ArrowDown'); // arrow down key from the header cell will focus next row
       expect(await e2e.isFocused(tableRow(1))).toBe(true);
 
-      // arrow down key on the row will focus next row
-      await e2e.pressKey('ArrowDown');
+      await e2e.pressKey('ArrowDown'); // arrow down key on the row will focus next row
       expect(await e2e.isFocused(tableRow(2))).toBe(true);
 
-      // arrow up key on the row will focus previous row
-      await e2e.pressKey('ArrowUp');
+      await e2e.pressKey('ArrowUp'); // arrow up key on the row will focus previous row
       expect(await e2e.isFocused(tableRow(1))).toBe(true);
 
-      // if focus goes from row to the header row then it goes to the firt cell in the header
-      await e2e.pressKey('ArrowUp');
+      await e2e.pressKey('ArrowUp'); // if focus goes from row to the header row then it goes to the firt cell in the header
       expect(await e2e.isFocused(tableCell(0, 0))).toBe(true);
     });
 
     it('navigate to the row from the cell', async () => {
-      await e2e.pressKey('ArrowDown');
-      // arrow down key from the header cell will focus next row
+      await e2e.pressKey('ArrowDown'); // arrow down key from the header cell will focus next row
       expect(await e2e.isFocused(tableRow(1))).toBe(true);
 
-      //  arrow right key on the row will focus first cell in the row
-      await e2e.pressKey('ArrowRight');
+      await e2e.pressKey('ArrowRight'); //  arrow right key on the row will focus first cell in the row
       expect(await e2e.isFocused(tableCell(1, 0))).toBe(true);
 
-      // arrow down key on the cell will focus next row
-      await e2e.pressKey('ArrowDown');
+      await e2e.pressKey('ArrowDown'); // arrow down key on the cell will focus next row
       expect(await e2e.isFocused(tableRow(2))).toBe(true);
 
-      //  arrow right key on the row will focus first cell in the row
-      await e2e.pressKey('ArrowRight');
+      await e2e.pressKey('ArrowRight'); //  arrow right key on the row will focus first cell in the row
       expect(await e2e.isFocused(tableCell(2, 0))).toBe(true);
 
-      // arrow down key on the cell will focus next row
-      await e2e.pressKey('ArrowDown');
+      await e2e.pressKey('ArrowDown'); // arrow down key on the cell will focus next row
       expect(await e2e.isFocused(tableRow(3))).toBe(true);
     });
   });
