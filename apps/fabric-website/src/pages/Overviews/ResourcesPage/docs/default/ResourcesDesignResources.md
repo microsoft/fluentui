@@ -5,12 +5,11 @@ These design toolkits provide styles, controls and layout templates that enable 
 <ul class="md-list--flex">
   <li class="mdut--half">[Download Web toolkit (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
   <li class="mdut--half">[Download Web toolkit (Figma)](https://aka.ms/FluentToolkits/Web/Figma)</li>
-  <li class="mdut--half">[Download Windows toolkit (Figma)](https://aka.ms/figmatoolkit)</li>
   <li class="mdut--half">[Download iOS toolkit (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
   <li class="mdut--half">[Download iOS toolkit (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
   <li class="mdut--half">[Download Android toolkit (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
   <li class="mdut--half">[Download Android toolkit (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
-  <li class="mdut--half">macOS toolkit (coming soon)</li>
+  <li class="mdut--half">[Download Windows toolkit (Figma)](https://aka.ms/figmatoolkit)</li>
   <li class="mdut--half">[Download Figma plug-in](https://www.figma.com/community/plugin/794492287931420611/Fluent-Theme-Designer)</li>
 
 </ul>
