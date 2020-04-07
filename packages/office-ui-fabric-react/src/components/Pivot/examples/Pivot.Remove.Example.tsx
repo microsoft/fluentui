@@ -8,7 +8,7 @@ export const PivotRemoveExample = () => {
   const [showFirstItem, { toggle: toggleShowFirstItem }] = useBoolean(true);
   return (
     <div>
-      <Pivot aria-label="Removre Pivot Example" linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
+      <Pivot aria-label="Remove Pivot Example" linkSize={PivotLinkSize.large} linkFormat={PivotLinkFormat.tabs}>
         {showFirstItem && (
           <PivotItem headerText="Foo" itemKey="Foo" key="Foo">
             <Label>Click the button below to show/hide this pivot item.</Label>
