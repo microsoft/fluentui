@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Customizable: improve perf by avoid mutating styles when concatination is enabled",
+  "packageName": "@uifabric/utilities",
+  "email": "xgao@microsoft.com",
+  "commit": "7236969c06c5d5e732da1087e229de9db9881309",
+  "dependentChangeType": "patch",
+  "date": "2020-04-07T21:00:52.058Z"
+}
