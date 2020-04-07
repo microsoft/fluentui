@@ -5,7 +5,6 @@ import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
-import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import Button from '../../../../components/Button/Button';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
@@ -17,9 +16,10 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
     return {
       position: 'relative',
-      display: 'inline-flex',
+      display: 'flex',
       alignItems: 'center',
       width: '100%',
+
       maxWidth: pxToRem(440),
       minHeight: pxToRem(48),
       padding: v.padding,
@@ -70,62 +70,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     flex: 1,
   }),
 
-  header: ({ variables: v }): ICSSInJSStyle => ({
-    fontSize: v.headerFontSize,
-    fontWeight: v.headerFontWeight,
-    lineHeight: v.headerLineHeight,
-  }),
-
-  description: ({ variables: v }): ICSSInJSStyle => ({
-    display: 'block',
-    fontSize: v.descriptionFontSize,
-    fontWeight: v.descriptionFontWeight,
-    lineHeight: v.descriptionLineHeight,
-  }),
-
-  icon: ({ variables: v }): ICSSInJSStyle => ({
-    flex: '0 0 auto',
-    height: v.iconSize,
-    width: v.iconSize,
-    [`& .${SvgIcon.className}`]: {
-      height: '100%',
-      width: '100%',
-      '& svg': {
-        height: '100%',
-        width: '100%',
-      },
-    },
-    marginRight: v.iconSpace,
-  }),
-
-  action: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
-    const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
-    const borderFocusStyles = getBorderFocusStyles({
-      variables: siteVariables,
-      borderRadius: v.borderRadius,
-    });
-
-    return {
-      [`& .${SvgIcon.className}`]: {
-        color: v.textColor, // this breaks the color change on hover
-      },
-
-      ...getIconFillOrOutlineStyles({ outline: true }),
-
-      ':hover': {
-        ...iconFilledStyles,
-        background: 'transparent',
-      },
-
-      ':focus': borderFocusStyles[':focus'],
-      ':focus-visible': {
-        ...iconFilledStyles,
-        ...borderFocusStyles[':focus-visible'],
-      },
-    };
-  },
-
-  progress: ({ props: p, variables: v }): ICSSInJSStyle => ({
+  progress: ({ variables: v }): ICSSInJSStyle => ({
     transition: 'width 0.2s',
     position: 'absolute',
     display: 'block',

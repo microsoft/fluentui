@@ -9,38 +9,39 @@ import { ThemeContext } from 'react-fela';
 
 import {
   WithAsProp,
-  ShorthandValue,
   ComponentEventHandler,
   withSafeTypeForAs,
   FluentComponentStaticProps,
   ProviderContextPrepared,
+  ShorthandValue,
 } from '../../types';
 import { createShorthandFactory, commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
-import Box, { BoxProps } from '../Box/Box';
-import Button, { ButtonProps } from '../Button/Button';
-import Text, { TextProps } from '../Text/Text';
+import AttachmentAction, { AttachmentActionProps } from './AttachmentAction';
+import AttachmentDescription, { AttachmentDescriptionProps } from './AttachmentDescription';
+import AttachmentHeader, { AttachmentHeaderProps } from './AttachmentHeader';
+import AttachmentIcon, { AttachmentIconProps } from './AttachmentIcon';
 
 export interface AttachmentProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility<AttachmentBehaviorProps>;
 
   /** Button shorthand for the action slot. */
-  action?: ShorthandValue<ButtonProps>;
+  action?: ShorthandValue<AttachmentActionProps>;
 
   /** An Attachment can be styled to indicate possible user interaction. */
   actionable?: boolean;
 
   /** A string describing the attachment. */
-  description?: ShorthandValue<TextProps>;
+  description?: ShorthandValue<AttachmentDescriptionProps>;
 
   /** An attachment can show that it cannot be interacted with. */
   disabled?: boolean;
 
   /** The name of the attachment. */
-  header?: ShorthandValue<TextProps>;
+  header?: ShorthandValue<AttachmentHeaderProps>;
 
   /** Shorthand for the icon. */
-  icon?: ShorthandValue<BoxProps>;
+  icon?: ShorthandValue<AttachmentIconProps>;
 
   /** Value indicating percent complete. */
   progress?: string | number;
@@ -55,12 +56,13 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
 
 export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>>;
 
-export interface AttachmentSlotClassNames {
-  action: string;
-}
-
 const Attachment: React.FC<WithAsProp<AttachmentProps>> &
-  FluentComponentStaticProps<AttachmentProps> & { slotClassNames: AttachmentSlotClassNames } = props => {
+  FluentComponentStaticProps<AttachmentProps> & {
+    Action: typeof AttachmentAction;
+    Description: typeof AttachmentDescription;
+    Header: typeof AttachmentHeader;
+    Icon: typeof AttachmentIcon;
+  } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Attachment.displayName, context.telemetry);
   setStart();
@@ -93,7 +95,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
     },
     rtl: context.rtl,
   });
-  const { classes, styles: resolvedStyles } = useStyles<AttachmentStylesProps>(Attachment.displayName, {
+  const { classes } = useStyles<AttachmentStylesProps>(Attachment.displayName, {
     className: Attachment.className,
     mapPropsToStyles: () => ({
       actionable: actionable || !!onClick,
@@ -122,28 +124,16 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
 
   const element = (
     <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ...unhandledProps })}>
-      {Box.create(icon, {
-        defaultProps: () => ({ styles: resolvedStyles.icon }),
-      })}
+      {AttachmentIcon.create(icon)}
+
       {(header || description) && (
         <div className={classes.content}>
-          {Text.create(header, {
-            defaultProps: () => ({ styles: resolvedStyles.header }),
-          })}
-
-          {Text.create(description, {
-            defaultProps: () => ({ styles: resolvedStyles.description }),
-          })}
+          {AttachmentHeader.create(header)}
+          {AttachmentDescription.create(description)}
         </div>
       )}
-      {Button.create(action, {
-        defaultProps: () => ({
-          iconOnly: true,
-          text: true,
-          styles: resolvedStyles.action,
-          className: Attachment.slotClassNames.action,
-        }),
-      })}
+
+      {AttachmentAction.create(action)}
       {!_.isNil(progress) && <div className={classes.progress} style={{ width: `${progress}%` }} />}
     </ElementType>
   );
@@ -153,9 +143,6 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
 };
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
-Attachment.slotClassNames = {
-  action: `${Attachment.className}__action`,
-};
 
 Attachment.className = 'ui-attachment';
 Attachment.displayName = 'Attachment';
@@ -168,12 +155,17 @@ Attachment.propTypes = {
   actionable: PropTypes.bool,
   description: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
-  icon: customPropTypes.shorthandAllowingChildren,
+  icon: customPropTypes.itemShorthand,
   progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 Attachment.defaultProps = {
   accessibility: attachmentBehavior,
 };
+
+Attachment.Action = AttachmentAction;
+Attachment.Description = AttachmentDescription;
+Attachment.Header = AttachmentHeader;
+Attachment.Icon = AttachmentIcon;
 
 Attachment.handledProps = Object.keys(Attachment.propTypes) as any;
 

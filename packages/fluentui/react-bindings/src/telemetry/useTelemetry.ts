@@ -1,5 +1,6 @@
 import useComposeOptions from '../compose/useComposeOptions';
 import { Telemetry, UseTelemetryResult } from './types';
+import useComposeOptions from '../compose/useComposeOptions';
 
 export const getTelemetry = (displayName: string, telemetry: Telemetry | undefined): UseTelemetryResult => {
   let start: number = -1;
