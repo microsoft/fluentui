@@ -312,7 +312,7 @@ export interface IContextualMenuItem {
 
   /**
    * Text description for the menu item to display
-   * If a standard dash (-) is passed in the item will be rendered as a divider
+   * If a standard dash (-) is passed in, then the item will be rendered as a divider
    * If a dash must appear as text then the alternatives of
    * emdash (—), figuredash (‒), or minus symbol (−)
    * can be used instead
@@ -525,7 +525,7 @@ export interface IContextualMenuItem {
 
   /**
    * Text description for the menu item to display
-   * If a standard dash (-) is passed in the item will be rendered as a divider
+   * If a standard dash (-) is passed in, then the item will be rendered as a divider
    * If a dash must appear as text then the alternatives of
    * emdash (—), figuredash (‒), or minus symbol (−)
    * can be used instead
