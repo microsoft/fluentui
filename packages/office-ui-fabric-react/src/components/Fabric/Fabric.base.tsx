@@ -28,7 +28,7 @@ const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
     rootDir: componentDir !== contextDir || componentDir !== pageDir ? componentDir : undefined,
     // If dir !== contextDir || pageDir
     // then set contextual theme around content
-    needsTheme: componentDir !== contextDir
+    needsTheme: componentDir !== contextDir,
   };
 };
 
@@ -45,7 +45,9 @@ export class FabricBase extends React.Component<IFabricProps> {
     let renderedContent = <Root dir={rootDir} {...divProps} className={classNames.root} ref={this._rootElement} />;
 
     if (needsTheme) {
-      renderedContent = <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>;
+      renderedContent = (
+        <Customizer settings={{ theme: getFabricTheme(theme, dir === 'rtl') }}>{renderedContent}</Customizer>
+      );
     }
 
     return (
