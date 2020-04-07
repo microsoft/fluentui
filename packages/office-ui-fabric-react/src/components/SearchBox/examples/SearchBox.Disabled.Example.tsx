@@ -1,22 +1,12 @@
 import * as React from 'react';
 import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 
-// tslint:disable:jsx-no-lambda
+const stackTokens: Partial<IStackTokens> = { childrenGap: 20 };
+
 export const SearchBoxDisabledExample = () => (
-  <Stack tokens={{ childrenGap: 20 }}>
-    <SearchBox
-      placeholder="Search"
-      onFocus={() => console.log('onFocus called')}
-      onBlur={() => console.log('onBlur called')}
-      disabled
-    />
-    <SearchBox
-      placeholder="Search"
-      onFocus={() => console.log('onFocus called')}
-      onBlur={() => console.log('onBlur called')}
-      underlined={true}
-      disabled
-    />
+  <Stack tokens={stackTokens}>
+    <SearchBox placeholder="Search" disabled />
+    <SearchBox placeholder="Search" underlined={true} disabled />
   </Stack>
 );
