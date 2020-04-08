@@ -148,7 +148,8 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
   preventDefaultWhenHandled?: boolean;
 
   /**
-   * If focus is on root element after componentDidUpdate, will attempt to restore the focus to inner element
+   * If true and focus is on the root element after componentDidUpdate, this will attempt to restore the focus to the
+   * inner element.
    */
   restoreFocusFromRoot?: boolean;
 }

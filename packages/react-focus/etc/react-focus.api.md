@@ -77,6 +77,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     onActiveElementChanged?: (element?: HTMLElement, ev?: React.FocusEvent<HTMLElement>) => void;
     onBeforeFocus?: (childElement?: HTMLElement) => boolean;
     onFocusNotification?: () => void;
+    restoreFocusFromRoot?: boolean;
     // @deprecated
     rootProps?: React.HTMLAttributes<HTMLDivElement>;
     shouldInputLoseFocusOnArrowKey?: (inputElement: HTMLInputElement) => boolean;

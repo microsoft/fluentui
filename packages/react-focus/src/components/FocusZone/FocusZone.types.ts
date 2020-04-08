@@ -163,6 +163,12 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
    * Callback to notify creators that focus has been set on the FocusZone
    */
   onFocusNotification?: () => void;
+
+  /**
+   * If true and focus is on the root element after componentDidUpdate, this will attempt to restore the focus to the
+   * inner element.
+   */
+  restoreFocusFromRoot?: boolean;
 }
 /**
  * {@docCategory FocusZone}

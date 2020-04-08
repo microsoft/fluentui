@@ -338,7 +338,7 @@ describe('FocusZone', () => {
       ReactDOM.render(
         <div>
           <button key="z" id="z" />
-          <FocusZone id="fz">
+          <FocusZone id="fz" restoreFocusFromRoot={true}>
             <button key="a" id="a" data-is-visible="true">
               button a
             </button>
