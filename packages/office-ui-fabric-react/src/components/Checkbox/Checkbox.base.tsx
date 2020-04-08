@@ -5,12 +5,6 @@ import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox
 import { KeytipData } from '../../KeytipData';
 import { useId, useControllableValue } from '@uifabric/react-hooks';
 
-export interface ICheckboxState {
-  /** Is true when Uncontrolled control is checked. */
-  isChecked?: boolean;
-  isIndeterminate?: boolean;
-}
-
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
 // tslint:disable-next-line:no-function-expression

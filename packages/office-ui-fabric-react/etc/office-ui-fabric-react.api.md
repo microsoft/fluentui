@@ -2148,13 +2148,6 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 }
 
 // @public (undocumented)
-export interface ICheckboxState {
-    isChecked?: boolean;
-    // (undocumented)
-    isIndeterminate?: boolean;
-}
-
-// @public (undocumented)
 export interface ICheckboxStyleProps {
     // (undocumented)
     checked?: boolean;
