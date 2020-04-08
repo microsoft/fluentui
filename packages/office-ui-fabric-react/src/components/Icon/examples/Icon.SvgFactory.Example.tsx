@@ -11,11 +11,6 @@ const iconClass = mergeStyles({
 });
 
 export const IconSvgFactoryExample: React.FunctionComponent = () => {
-  // TODO: add props support
-  const color1 = 'red',
-    color2 = 'green',
-    color3 = 'pink';
-
   return (
     <div>
       <OneDriveIcon className={iconClass} />
@@ -29,23 +24,7 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
           },
         })}
       />
-      <BorderBlindsIcon
-        className={mergeStyles(iconClass, {
-          width: 50,
-          height: 50,
-          selectors: {
-            '.borderblinds-part1': {
-              fill: color1,
-            },
-            '.borderblinds-part2': {
-              fill: color2,
-            },
-            '.borderblinds-part3': {
-              fill: color3,
-            },
-          },
-        })}
-      />
+      <BorderBlindsIcon className={iconClass} color3="pink" />
     </div>
   );
 };

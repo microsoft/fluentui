@@ -10,5 +10,4 @@ export interface ISvgIconProps extends React.HTMLAttributes<HTMLElement> {
 
 export interface ISvgIconStyles {
   root?: IStyle;
-  svg?: IStyle;
 }

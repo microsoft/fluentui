@@ -5,12 +5,12 @@ import { mergeStyleSets } from '../../Styling';
 /** Class names used in themeable and non-themeable Icon components */
 export const classNames = mergeStyleSets({
   root: {
-    // width: '16px',
-    // height: '16px',
-  },
-  svg: {
-    height: 50,
-    width: 50,
+    selectors: {
+      svg: {
+        height: 50,
+        width: 50,
+      },
+    },
   },
 });
 /** Class name used only in non-themeable Icon components */
@@ -21,6 +21,5 @@ export const getStyles = (props: IIconStyleProps): ISvgIconStyles => {
 
   return {
     root: [classNames.root, iconClassName, className, styles && styles.root],
-    svg: [classNames.svg],
   };
 };
