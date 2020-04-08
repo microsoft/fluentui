@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, Flex, Image, Text, Avatar, Card, Layout } from '@fluentui/react-northstar';
+import { Button, Flex, Text, Avatar, Card, Layout } from '@fluentui/react-northstar';
 import { StarIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExample = () => (
@@ -13,12 +13,6 @@ const CardExample = () => (
         </Flex>
       </Flex>
     </Card.Header>
-    <Card.Body>
-      <Flex column gap="gap.small">
-        <Image src="public/images/wireframe/square-image.png" fluid />
-        <Text content="Content text" />
-      </Flex>
-    </Card.Body>
     <Card.Footer>
       <Flex space="between">
         <Button content="Action" />

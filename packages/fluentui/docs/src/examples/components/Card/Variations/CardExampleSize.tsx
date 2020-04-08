@@ -1,6 +1,5 @@
-import { Button, Flex, Image, Text, Avatar, Card, Divider } from '@fluentui/react-northstar';
+import { Flex, Image, Text, Avatar, Card } from '@fluentui/react-northstar';
 import * as React from 'react';
-import { StarIcon, DownloadIcon, MoreIcon } from '@fluentui/react-icons-northstar';
 
 const CardExampleSize = () => (
   <Flex gap="gap.small">
@@ -25,17 +24,7 @@ const CardExampleSize = () => (
           <Text content="Content text" />
         </Flex>
       </Card.Body>
-      <Card.Footer>
-        <Flex space="between">
-          <Button content="Action" />
-          <Flex>
-            <Button icon={<StarIcon />} iconOnly text title="Favourite" />
-            <Button icon={<MoreIcon />} iconOnly text title="More" />
-          </Flex>
-        </Flex>
-      </Card.Footer>
     </Card>
-
 
     <Card>
       <Card.Header>
@@ -58,18 +47,7 @@ const CardExampleSize = () => (
           <Text content="Content text" />
         </Flex>
       </Card.Body>
-      <Card.Footer>
-        <Flex space="between">
-          <Button content="Action" />
-          <Flex>
-            <Button icon={<StarIcon />} iconOnly text title="Favourite" />
-            <Button icon={<DownloadIcon />} iconOnly text title="Download" />
-            <Button icon={<MoreIcon />} iconOnly text title="More" />
-          </Flex>
-        </Flex>
-      </Card.Footer>
     </Card>
-
 
     <Card size="large">
       <Card.Header>
@@ -92,16 +70,6 @@ const CardExampleSize = () => (
           <Text content="Content text" />
         </Flex>
       </Card.Body>
-      <Card.Footer>
-        <Flex space="between">
-          <Button content="Action" />
-          <Flex>
-            <Button icon={<StarIcon />} iconOnly text title="Favourite" />
-            <Button icon={<DownloadIcon />} iconOnly text title="Download" />
-            <Button icon={<MoreIcon />} iconOnly text title="More" />
-          </Flex>
-        </Flex>
-      </Card.Footer>
     </Card>
   </Flex>
 );
