@@ -1,0 +1,9 @@
+{
+  "type": "minor",
+  "comment": "Support List overrides for rendering root and surface elements",
+  "packageName": "office-ui-fabric-react",
+  "email": "tmichon@microsoft.com",
+  "commit": "d8a2f14c09d6c8fe70b7308894f58b12ca2243fe",
+  "dependentChangeType": "patch",
+  "date": "2020-04-02T22:03:59.462Z"
+}
