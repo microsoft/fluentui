@@ -10,15 +10,10 @@ ${min.toLocaleDateString()} - ${max.toLocaleDateString()}.`;
 
 const ControlledDatePicker = () => {
   const [date, setDate] = React.useState<Date | undefined>(new Date('2020-04-03'));
+  const selectedDateCallback = (newDate: Date | null | undefined) => setDate(newDate || undefined);
   return (
     <div>
-      <DatePicker
-        allowTextInput
-        value={date}
-        onSelectDate={newDate => setDate(newDate || undefined)}
-        minDate={min}
-        maxDate={max}
-      />
+      <DatePicker allowTextInput value={date} onSelectDate={selectedDateCallback} minDate={min} maxDate={max} />
       <div>Selected date: {date?.toLocaleDateString()}</div>
     </div>
   );
