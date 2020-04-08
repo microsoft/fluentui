@@ -36,6 +36,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Fix positioning for `ToolbarMenu` in `overflowItem` @layershifter ([#12390](https://github.com/microsoft/fluentui/pull/12390))
 - Add `inverted` prop to propTypes check in `Button` @silviuavram ([#12414](https://github.com/microsoft/fluentui/pull/12414))
 - Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
+- Updating `Dropdown` styles to match redlines for Teams theme @notandrew ([#12397](https://github.com/microsoft/fluentui/pull/12397))
 - Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
 - Fix colors for keyboard navigation in vertical Menu component in Teams theme high contrast mode @TanelVari ([#12462](https://github.com/microsoft/fluentui/pull/12462))
 - Fix size of `Status` and `Avatar` sizes for Teams theme @notandrew ([#12502](https://github.com/microsoft/fluentui/pull/12502))
@@ -56,6 +57,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Add `AlertDismissAction` component for the dismissAction slot in the `Alert` @mnajdova ([#12531](https://github.com/microsoft/fluentui/pull/12531))
 - Add `borderRadius` variables to `Card` component @pompomon ([#12552](https://github.com/microsoft/fluentui/pull/12552))
 - Add `CustomerHubIcon`, `OcrOffIcon`, `OcrOnIcon` and `ContactGroupCallIcon` icons @mnajdova ([#12571](https://github.com/microsoft/fluentui/pull/12571))
+- Add `SwitchCameraIcon`, `PanoramaOffIcon`, `AttendeeIcon` and `GroupVideoCallGridIcon`. Updated `PanoramaIcon`. @TanelVari ([#12566](https://github.com/microsoft/fluentui/pull/12566))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
@@ -63,6 +65,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Improve playground on `Card` documentation page @layershifter ([#12417](https://github.com/microsoft/fluentui/pull/12417))
 - Add an example for Children API for `Toolbar` @layershifter ([#12473](https://github.com/microsoft/fluentui/pull/12473))
 - Removed Icon Viewer prototype and processed icons @mnajdova ([#12553](https://github.com/microsoft/fluentui/pull/12553))
+- Add resource (memory) usage charts @miroslavstastny ([#12557](https://github.com/microsoft/fluentui/pull/12557))
 
 <!--------------------------------[ v0.47.0 ]------------------------------- -->
 ## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)

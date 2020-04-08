@@ -5400,6 +5400,22 @@ export interface IList {
     scrollToIndex: (index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
 }
 
+// @public
+export interface IListOnRenderRootProps<T> {
+    divProps: React.HTMLAttributes<HTMLDivElement>;
+    pages: IPage<T>[];
+    rootRef: React.Ref<HTMLDivElement>;
+    surfaceElement: JSX.Element | null;
+}
+
+// @public
+export interface IListOnRenderSurfaceProps<T> {
+    divProps: React.HTMLAttributes<HTMLDivElement>;
+    pageElements: JSX.Element[];
+    pages: IPage<T>[];
+    surfaceRef: React.Ref<HTMLDivElement>;
+}
+
 // @public (undocumented)
 export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
     className?: string;
@@ -5415,7 +5431,9 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
     onPageRemoved?: (page: IPage<T>) => void;
     onPagesUpdated?: (pages: IPage<T>[]) => void;
     onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
-    onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
+    onRenderPage?: IRenderFunction<IPageProps<T>>;
+    onRenderRoot?: IRenderFunction<IListOnRenderRootProps<T>>;
+    onRenderSurface?: IRenderFunction<IListOnRenderSurfaceProps<T>>;
     onShouldVirtualize?: (props: IListProps<T>) => boolean;
     renderCount?: number;
     renderedWindowsAhead?: number;
@@ -8105,7 +8123,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         [key: string]: React.ReactInstance;
     };
     // (undocumented)
-    render(): JSX.Element;
+    render(): JSX.Element | null;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
