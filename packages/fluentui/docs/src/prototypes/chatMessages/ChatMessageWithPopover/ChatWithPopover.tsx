@@ -10,17 +10,18 @@ import * as React from 'react';
 import Popover from './Popover';
 import ReactionPopup from './ReactionPopup';
 import { Ref } from '@fluentui/react-component-ref';
+import { AcceptIcon, EmojiIcon, LikeIcon } from '@fluentui/react-icons-northstar';
 
 const reactions: ShorthandCollection<ReactionProps> = [
   {
-    icon: 'thumbs up',
+    icon: <LikeIcon />,
     content: '1K',
     key: 'likes',
     variables: { meReacting: true },
     children: (Component, props) => <ReactionPopup {...props} />,
   },
   {
-    icon: 'emoji',
+    icon: <EmojiIcon />,
     content: 2,
     key: 'smiles',
     children: (Component, props) => <ReactionPopup {...props} />,
@@ -29,7 +30,7 @@ const reactions: ShorthandCollection<ReactionProps> = [
 
 const janeAvatar = {
   image: 'public/images/avatar/small/ade.jpg',
-  status: { color: 'green', icon: 'check' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 const ChatWithPopover = () => {

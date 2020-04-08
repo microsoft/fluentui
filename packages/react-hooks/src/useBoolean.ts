@@ -30,7 +30,7 @@ export function useBoolean(initialState: boolean): [boolean, IUseBooleanCallback
     {
       setTrue,
       setFalse,
-      toggle: value ? setFalse : setTrue
-    }
+      toggle: value ? setFalse : setTrue,
+    },
   ];
 }

@@ -1,5 +1,5 @@
 import { Accessibility, AriaRole, IS_FOCUSABLE_ATTRIBUTE } from '@fluentui/accessibility';
-import { FocusZone } from '@fluentui/react-bindings';
+import { FocusZone, Telemetry } from '@fluentui/react-bindings';
 import { Ref, RefFindNode } from '@fluentui/react-component-ref';
 import * as faker from 'faker';
 import * as _ from 'lodash';
@@ -554,32 +554,19 @@ export default function isConformant(
     });
   });
 
-  const validListenerNames = _.reduce(syntheticEvent.types, (result, { listeners }) => [...result, ...listeners], []);
-
   // ---------------------------------------
-  // Opt-in tests
+  // Telemetry
   // ---------------------------------------
-  return {
-    // -------------------------------------
-    // Ensure that props are passed as a
-    // second argument to event handler
-    // -------------------------------------
-    hasExtendedHandlerFor(onEventName) {
-      describe(`has extended handler for '${onEventName}' event`, () => {
-        test(`'${onEventName}' is a valid event listener name`, () => {
-          expect(validListenerNames).toContain(onEventName);
-        });
 
-        test(`is declared in props`, () => {
-          expect(Component.propTypes[onEventName]).toBeTruthy();
-        });
+  describe('telemetry', () => {
+    test('reports telemetry to its Provider', () => {
+      const telemetry = new Telemetry();
+      const wrapper = mount(<Component {...requiredProps} />, {
+        wrappingComponentProps: { telemetry },
       });
 
-      // -----------------------------------
-      // Allows chained calls for optional
-      // test suites
-      // -----------------------------------
-      return this;
-    },
-  };
+      wrapper.unmount();
+      expect(telemetry.performance).toHaveProperty(Component.displayName);
+    });
+  });
 }

@@ -96,19 +96,21 @@ const TableCell: React.FC<WithAsProp<TableCellProps>> &
 
   const element = (
     <Ref innerRef={cellRef}>
-      <ElementType
-        {...getA11yProps('root', {
-          className: classes.root,
-          onClick: handleClick,
-          ...unhandledProps,
-        })}
-      >
-        {hasChildren
-          ? children
-          : Box.create(content, {
-              defaultProps: () => ({ styles: resolvedStyles.content }),
-            })}
-      </ElementType>
+      {getA11yProps.unstable_wrapWithFocusZone(
+        <ElementType
+          {...getA11yProps('root', {
+            className: classes.root,
+            onClick: handleClick,
+            ...unhandledProps,
+          })}
+        >
+          {hasChildren
+            ? children
+            : Box.create(content, {
+                defaultProps: () => ({ styles: resolvedStyles.content }),
+              })}
+        </ElementType>,
+      )}
     </Ref>
   );
   setEnd();

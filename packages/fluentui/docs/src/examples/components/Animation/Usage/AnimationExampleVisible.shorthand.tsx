@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { Provider, Animation, Button, Icon } from '@fluentui/react-northstar';
+import { Provider, Animation, Button } from '@fluentui/react-northstar';
 import { useLogKnob } from '@fluentui/docs-components';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const AnimationExampleVisible = () => {
   const [visible, setVisible] = React.useState(false);
@@ -52,7 +53,7 @@ const AnimationExampleVisible = () => {
         mountOnEnter
         unmountOnExit
       >
-        {({ classes }) => <Icon name="mention" className={classes} />}
+        {({ classes }) => <MentionIcon className={classes} />}
       </Animation>
       {/* Children as element */}
       <Animation
@@ -67,7 +68,7 @@ const AnimationExampleVisible = () => {
         mountOnEnter
         unmountOnExit
       >
-        <Icon name="mention" />
+        <MentionIcon />
       </Animation>
     </Provider>
   );
