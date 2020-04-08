@@ -125,17 +125,14 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
       {Box.create(icon, {
         defaultProps: () => ({ styles: resolvedStyles.icon }),
       })}
-      {(header || description) && (
-        <div className={classes.content}>
-          {Text.create(header, {
-            defaultProps: () => ({ styles: resolvedStyles.header }),
-          })}
 
-          {Text.create(description, {
-            defaultProps: () => ({ styles: resolvedStyles.description }),
-          })}
-        </div>
-      )}
+      {Text.create(header, {
+        defaultProps: () => ({ styles: resolvedStyles.header }),
+      })}
+      {Text.create(description, {
+        defaultProps: () => ({ styles: resolvedStyles.description }),
+      })}
+
       {Button.create(action, {
         defaultProps: () => ({
           iconOnly: true,

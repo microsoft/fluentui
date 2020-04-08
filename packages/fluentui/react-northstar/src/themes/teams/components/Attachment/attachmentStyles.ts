@@ -16,9 +16,12 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     });
 
     return {
-      position: 'relative',
-      display: 'inline-flex',
+      display: ['inline-grid', '-ms-inline-grid'] as any,
       alignItems: 'center',
+      gridTemplateColumns: 'auto 1fr auto',
+      msGridColumns: 'auto 1fr auto',
+      position: 'relative',
+
       width: '100%',
       maxWidth: pxToRem(440),
       minHeight: pxToRem(48),
@@ -66,11 +69,15 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     };
   },
 
-  content: (): ICSSInJSStyle => ({
-    flex: 1,
-  }),
-
   header: ({ variables: v }): ICSSInJSStyle => ({
+    display: 'block',
+
+    gridColumn: 2,
+    gridRow: 1,
+
+    msGridColumn: 2,
+    msGridRow: 1,
+
     fontSize: v.headerFontSize,
     fontWeight: v.headerFontWeight,
     lineHeight: v.headerLineHeight,
@@ -78,13 +85,26 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
   description: ({ variables: v }): ICSSInJSStyle => ({
     display: 'block',
+
+    gridColumn: 2,
+    gridRow: 2,
+
+    msGridColumn: 2,
+    msGridRow: 2,
+
     fontSize: v.descriptionFontSize,
     fontWeight: v.descriptionFontWeight,
     lineHeight: v.descriptionLineHeight,
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
-    flex: '0 0 auto',
+    gridColumn: 1,
+    gridRow: '1 / 3',
+
+    msGridColumn: 1,
+    msGridRow: 1,
+    msGridRowSpan: 2,
+
     height: v.iconSize,
     width: v.iconSize,
     [`& .${SvgIcon.className}`]: {
@@ -106,6 +126,13 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     });
 
     return {
+      gridColumn: 3,
+      gridRow: '1 / 3',
+
+      msGridColumn: 3,
+      msGridRow: 1,
+      msGridRowSpan: 2,
+
       [`& .${SvgIcon.className}`]: {
         color: v.textColor, // this breaks the color change on hover
       },
