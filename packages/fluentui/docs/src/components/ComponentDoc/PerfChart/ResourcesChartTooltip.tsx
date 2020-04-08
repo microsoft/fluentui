@@ -2,8 +2,9 @@ import * as _ from 'lodash';
 import * as React from 'react';
 import { Crosshair } from 'react-vis';
 import { PerfSample } from './PerfDataContext';
+import { ResourcesChartValues } from './ResourcesChartValues';
 
-const values = [
+const values: ResourcesChartValues[] = [
   'Documents',
   'Frames',
   'JSEventListeners',

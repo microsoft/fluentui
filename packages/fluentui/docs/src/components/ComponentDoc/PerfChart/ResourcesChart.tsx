@@ -2,23 +2,11 @@ import * as React from 'react';
 import ResourcesChartTooltip from './ResourcesChartTooltip';
 import { PerfData } from './PerfDataContext';
 import Chart, { ChartDataSeries } from './Chart';
+import { ResourcesChartValues } from './ResourcesChartValues';
 
 export type ResourcesChartProps = {
   perfData: PerfData;
-  filter: (
-    | 'Documents'
-    | 'Frames'
-    | 'JSEventListeners'
-    | 'Nodes'
-    | 'LayoutCount'
-    | 'RecalcStyleCount'
-    | 'LayoutDuration'
-    | 'RecalcStyleDuration'
-    | 'ScriptDuration'
-    | 'TaskDuration'
-    | 'JSHeapUsedSize'
-    | 'JSHeapTotalSize'
-  )[];
+  filter: ResourcesChartValues[];
 };
 
 function hashCode(str) {
@@ -35,13 +23,12 @@ function intToRGB(i) {
   return '00000'.substring(0, 6 - c.length) + c;
 }
 
-const ResourcesChart: React.FC<ResourcesChartProps> = ({ perfData, filter }) => {
-  const dataSeries: ChartDataSeries[] =
-    filter?.map(d => ({
-      name: d,
-      data: `flamegrill.profile.metrics.${d}`,
-      color: intToRGB(hashCode(d)),
-    })) || [];
+const ResourcesChart: React.FC<ResourcesChartProps> = ({ perfData, filter = [] }) => {
+  const dataSeries: ChartDataSeries[] = filter.map(d => ({
+    name: d,
+    data: `flamegrill.profile.metrics.${d}`,
+    color: intToRGB(hashCode(d)),
+  }));
 
   return <Chart perfData={perfData} group="performance" Tooltip={ResourcesChartTooltip} dataSeries={dataSeries} />;
 };
