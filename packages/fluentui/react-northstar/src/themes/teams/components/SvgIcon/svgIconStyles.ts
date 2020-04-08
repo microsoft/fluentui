@@ -1,4 +1,4 @@
-import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
+import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { SvgIconXSpacing, SvgIconProps, iconClassNames } from '@fluentui/react-icons-northstar';
 
 import { pxToRem, SizeValue } from '../../../../utils';
@@ -81,6 +81,7 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
         }),
       },
 
+      // TODO: fix svgFlippingInRtl
       [`& svg`]: {
         display: 'block',
         width: iconSizeInRems,
@@ -95,55 +96,6 @@ const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVari
       },
     };
   },
-
-  outlinePart: ({ props: p }): ICSSInJSStyle => {
-    return {
-      display: 'none',
-
-      ...(p.outline && {
-        display: 'block',
-      }),
-    };
-  },
-
-  filledPart: ({ props: p }): ICSSInJSStyle => {
-    return {
-      ...(p.outline && {
-        display: 'none',
-      }),
-    };
-  },
-
-  svg: ({ props: { size, disabled, rotate }, variables: v }): ICSSInJSStyle => {
-    const iconSizeInRems = getIconSize(size, v);
-
-    return {
-      display: 'block',
-      width: iconSizeInRems,
-      height: iconSizeInRems,
-      fill: v.color || 'currentColor',
-
-      ...(disabled && {
-        fill: v.disabledColor,
-      }),
-
-      transform: `rotate(${rotate}deg)`,
-    };
-  },
-
-  svgFlippingInRtl: config => {
-    const { props, rtl } = config;
-    return {
-      ...callable(svgIconStyles.svg)(config),
-      ...(rtl && {
-        transform: `scaleX(-1) rotate(${-1 * props.rotate}deg)`,
-      }),
-    };
-  },
-
-  redPath: ({ variables: v }) => ({
-    fill: v.redColor,
-  }),
 };
 
 export default svgIconStyles;
