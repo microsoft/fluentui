@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { FontIcon } from 'office-ui-fabric-react/lib/Icon';
-import { Icon } from '@fluentui/react-icons';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const iconClass = mergeStyles({
@@ -18,7 +17,6 @@ export const IconBasicExample: React.FunctionComponent = () => {
       <FontIcon iconName="CompassNW" className={iconClass} />
       <FontIcon iconName="Dictionary" className={iconClass} />
       <FontIcon iconName="TrainSolid" className={iconClass} />
-      <Icon />
     </div>
   );
 };
