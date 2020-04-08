@@ -45,6 +45,8 @@ export type DesignerState = {
 };
 
 class Designer extends React.Component<any, DesignerState> {
+  potentialDropTarget: JSONTreeElement | null = null;
+
   constructor(props) {
     super(props);
 
@@ -167,18 +169,18 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   handleCanvasMouseUp = () => {
-    this.setState(({ draggingElement, selectedJSONTreeElement, jsonTree }) => {
+    this.setState(({ draggingElement, jsonTree }) => {
       console.log('Designer:handleCanvasMouseUp', {
         drop: draggingElement,
-        on: selectedJSONTreeElement,
+        on: this.potentialDropTarget,
       });
 
-      if (selectedJSONTreeElement) {
+      if (this.potentialDropTarget) {
         // TODO: it sucks we have to rely on referential mutation of the jsonTree to update it.
         //       example, here we can't simply drop 'draggingElement' on 'selectedJSONTreeElement'.
         //       otherwise, it won't get updated in state because it isn't a reference to the jsonTree element.
         //       we first must get a reference to the element with the same uuid, then mutated that reference. womp.
-        const droppedOn = jsonTreeFindElement(jsonTree, selectedJSONTreeElement.uuid);
+        const droppedOn = jsonTreeFindElement(jsonTree, this.potentialDropTarget.uuid);
         console.log({ droppedOn });
         resolveDrop(draggingElement, droppedOn);
       }
@@ -188,6 +190,16 @@ class Designer extends React.Component<any, DesignerState> {
         jsonTree,
       };
     });
+  };
+
+  handleSelectorHover = jsonTreeElement => {
+    if (this.potentialDropTarget?.uuid === jsonTreeElement?.uuid) {
+      return;
+    }
+
+    console.log('Designer:handleSelectorHover', jsonTreeElement);
+
+    this.potentialDropTarget = jsonTreeElement;
   };
 
   handleSelectComponent = jsonTreeElement => {
@@ -347,6 +359,7 @@ class Designer extends React.Component<any, DesignerState> {
                   })}
                   isSelecting={!!isSelecting || !!draggingElement}
                   onSelectComponent={this.handleSelectComponent}
+                  onSelectorHover={this.handleSelectorHover}
                   jsonTree={jsonTree}
                 />
               </BrowserWindow>

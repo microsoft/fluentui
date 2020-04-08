@@ -11,6 +11,7 @@ export type DebugSelectorProps = {
   /** Existing document the popup should add listeners. */
   mountDocument?: Document;
   onSelect?: (fiberNav: FiberNavigator) => void;
+  onHover?: (fiberNav: FiberNavigator) => void;
   filter?: (fiberNav: FiberNavigator) => FiberNavigator | null;
   active?: boolean;
 };
@@ -52,9 +53,17 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
 
     fiberNav = this.props.filter(fiberNav);
 
-    if (fiberNav !== this.state.fiberNav) {
-      this.setState({ fiberNav });
-    }
+    this.setCurrentFiberNav(fiberNav);
+  };
+
+  setCurrentFiberNav = (fiberNav: FiberNavigator | null) => {
+    this.setState(prevState => {
+      if (fiberNav !== prevState.fiberNav) {
+        this.props.onHover?.(fiberNav); // TODO: is it ok to call a cb() from inside setState()?
+        return { fiberNav };
+      }
+      return null;
+    });
   };
 
   handleMouseMove = e => {
@@ -62,14 +71,14 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
   };
 
   handleMouseLeave = e => {
-    this.setState({ fiberNav: null });
+    this.setCurrentFiberNav(null);
   };
 
   handleDOMNodeClick = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    this.props?.onSelect(this.state.fiberNav);
+    this.props.onSelect?.(this.state.fiberNav);
   };
 
   render() {

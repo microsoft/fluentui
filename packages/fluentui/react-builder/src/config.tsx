@@ -371,7 +371,7 @@ export const renderJSONTreeToJSXElement = (tree: any) => {
 /**
  * Converts a fiberNav into a JSON Tree element
  */
-export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeElement => {
+export const fiberNavToJSONTreeElement = (fiberNav: FiberNavigator): JSONTreeElement | null => {
   if (!fiberNav) {
     return null;
   }
@@ -414,7 +414,7 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
   return newTree;
 };
 
-export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string): JSONTreeElement | null => {
+export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
   if (typeof uuid === 'undefined' || uuid === null) {
     return null;
   }

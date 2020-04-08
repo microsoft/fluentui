@@ -65,7 +65,7 @@ const Toolbar = ({
         />
         &emsp;
         <Checkbox
-          label="Select"
+          label="Inspect"
           toggle
           checked={!!isSelecting}
           onChange={(e, data) => onSelectingChange(data.checked)}

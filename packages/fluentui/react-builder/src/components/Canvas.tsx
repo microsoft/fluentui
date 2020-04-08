@@ -13,6 +13,7 @@ const Canvas = ({
   onMouseMove,
   onMouseUp,
   onSelectComponent,
+  onSelectorHover,
 }: {
   style?: React.CSSProperties;
   jsonTree: JSONTreeElement;
@@ -20,6 +21,7 @@ const Canvas = ({
   onMouseMove?: ({ clientX, clientY }: { clientX: number; clientY: number }) => void;
   onMouseUp?: () => void;
   onSelectComponent?: (jsonTreeElement: JSONTreeElement) => void;
+  onSelectorHover?: (jsonTreeElement: JSONTreeElement) => void;
 }) => {
   const id = React.useMemo(
     () =>
@@ -56,11 +58,16 @@ const Canvas = ({
 
   const handleSelectComponent = React.useCallback(
     (fiberNav: FiberNavigator) => {
-      if (!onSelectComponent) return;
-
-      onSelectComponent(fiberNavToJSONTreeElement(fiberNav));
+      onSelectComponent?.(fiberNavToJSONTreeElement(fiberNav));
     },
     [onSelectComponent],
+  );
+
+  const handleSelectorHover = React.useCallback(
+    (fiberNav: FiberNavigator) => {
+      onSelectorHover?.(fiberNavToJSONTreeElement(fiberNav));
+    },
+    [onSelectorHover],
   );
 
   return (
@@ -87,19 +94,17 @@ const Canvas = ({
 
             <DebugSelector
               active={isSelecting}
-              filter={fiberNav => {
-                const result = fiberNavFindOwnerInJSONTree(fiberNav, jsonTree);
-                handleSelectComponent(result);
-                return result;
-              }}
+              filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
               mountDocument={document}
               onSelect={handleSelectComponent}
+              onHover={handleSelectorHover}
             />
 
             <Provider theme={themes.teams} target={document}>
               {onMouseMove && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {onMouseUp && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree)}
+              <div>bellow</div>
             </Provider>
           </>
         )}
