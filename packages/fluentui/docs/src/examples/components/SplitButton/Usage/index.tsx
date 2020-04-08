@@ -10,6 +10,11 @@ const Usage = () => (
       description="A split button can have its main option changed based on last selection."
       examplePath="components/SplitButton/Usage/SplitButtonMainOptionChangeExample"
     />
+    <ComponentExample
+      title="Align menu on the right"
+      description="Set the menu to be aligned on the right"
+      examplePath="components/SplitButton/Usage/SplitButtonAlignMenuRightExample"
+    />
   </ExampleSection>
 );
 
