@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "Update experiments testing instructions",
+  "packageName": "@uifabric/experiments",
+  "email": "elcraig@microsoft.com",
+  "commit": "487b511145d057e31c12bc570a41c27b39650629",
+  "dependentChangeType": "patch",
+  "date": "2020-04-08T23:51:22.242Z"
+}
