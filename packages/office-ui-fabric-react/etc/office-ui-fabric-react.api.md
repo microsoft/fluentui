@@ -1143,14 +1143,7 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
 export const Fabric: React.FunctionComponent<IFabricProps>;
 
 // @public (undocumented)
-export class FabricBase extends React.Component<IFabricProps> {
-    // (undocumented)
-    componentDidMount(): void;
-    // (undocumented)
-    componentWillUnmount(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    }
+export const FabricBase: React.ForwardRefExoticComponent<IFabricProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum FabricSlots {

@@ -4,6 +4,8 @@
 
 ```ts
 
+import * as React from 'react';
+
 // @public
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
@@ -22,6 +24,9 @@ export function useConstCallback<T extends (...args: any[]) => any>(callback: T)
 
 // @public
 export function useId(prefix?: string): string;
+
+// @public (undocumented)
+export function useMergedRefs<T>(...refs: React.Ref<T>[]): (value: T) => void;
 
 
 // (No @packageDocumentation comment for this package)

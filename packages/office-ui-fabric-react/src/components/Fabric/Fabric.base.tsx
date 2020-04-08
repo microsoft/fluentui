@@ -13,6 +13,7 @@ import { getStyles } from './Fabric.styles';
 import { IFabricProps, IFabricStyleProps, IFabricStyles } from './Fabric.types';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { ITheme, createTheme } from '../../Styling';
+import { useMergedRefs } from '@uifabric/react-hooks';
 
 const getClassNames = classNamesFunction<IFabricStyleProps, IFabricStyles>();
 const getFabricTheme = memoizeFunction((theme?: ITheme, isRTL?: boolean) => createTheme({ ...theme, rtl: isRTL }));
@@ -32,8 +33,8 @@ const getDir = (theme?: ITheme, dir?: IFabricProps['dir']) => {
   };
 };
 
-// tslint:disable-next-line:function-name
-export function FabricBase(props: IFabricProps) {
+// tslint:disable-next-line:function-name no-function-expression
+export const FabricBase = React.forwardRef(function(props: IFabricProps, ref: React.Ref<HTMLDivElement>) {
   const { className, theme, applyTheme, applyThemeToBody } = props;
 
   const classNames = getClassNames(getStyles, {
@@ -47,23 +48,24 @@ export function FabricBase(props: IFabricProps) {
 
   return (
     <>
-      {getRenderedContent(props, classNames, rootElement)}
+      {useRenderedContent(props, classNames, rootElement, ref)}
       <FocusRects rootRef={rootElement} />
     </>
   );
-}
+});
 
-function getRenderedContent(
+function useRenderedContent(
   props: IFabricProps,
   { root }: IProcessedStyleSet<IFabricStyles>,
   rootElement: React.RefObject<HTMLDivElement | undefined>,
+  ref: React.Ref<HTMLDivElement>,
 ) {
   const { as: Root = 'div', dir, theme } = props;
   const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, ['dir']);
 
   const { rootDir, needsTheme } = getDir(theme, dir);
 
-  let renderedContent = <Root dir={rootDir} {...divProps} className={root} ref={rootElement} />;
+  let renderedContent = <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />;
 
   // Create the contextual theme if component direction does not match parent direction.
   if (needsTheme) {
