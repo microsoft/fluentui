@@ -494,13 +494,9 @@ export class DatePickerBase extends React.Component<IDatePickerProps, IDatePicke
         // The formatted string might be ambiguous (ex: "1/2/3" or "New Year Eve") and the parser might
         // not be able to come up with the exact same date.
         if (this.state.selectedDate && formatDate && formatDate(this.state.selectedDate) === inputValue) {
-          this.setState({
-            errorMessage: '',
-          });
           return;
-        } else {
-          date = parseDateFromString!(inputValue);
         }
+        date = parseDateFromString!(inputValue);
 
         // Check if date is null, or date is Invalid Date
         if (!date || isNaN(date.getTime())) {
