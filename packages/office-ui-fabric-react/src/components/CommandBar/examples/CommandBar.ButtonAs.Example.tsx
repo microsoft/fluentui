@@ -25,16 +25,7 @@ const menuStyles: Partial<IContextualMenuStyles> = {
 // Custom renderer for main command bar items
 const CustomButton: React.FunctionComponent<IButtonProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.text} clicked`);
-  return (
-    <CommandBarButton
-      {...props}
-      onClick={buttonOnMouseClick}
-      styles={{
-        ...props.styles,
-        ...itemStyles,
-      }}
-    />
-  );
+  return <CommandBarButton {...props} onClick={buttonOnMouseClick} styles={itemStyles} />;
 };
 
 // Custom renderer for menu items (these must have a separate custom renderer because it's unlikely

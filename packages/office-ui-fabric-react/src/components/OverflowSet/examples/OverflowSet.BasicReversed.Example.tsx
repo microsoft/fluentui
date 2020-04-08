@@ -1,9 +1,19 @@
 import * as React from 'react';
 import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Link, ILinkStyles } from 'office-ui-fabric-react/lib/Link';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 
 const noOp = () => undefined;
+
+const linkStyles: Partial<ILinkStyles> = { root: { marginRight: 10 } };
+const iconButtonStyles: Partial<IButtonStyles> = {
+  root: {
+    minWidth: 0,
+    padding: '0 4px',
+    alignSelf: 'stretch',
+    height: 'auto',
+  },
+};
 
 export class OverflowSetBasicReversedExample extends React.PureComponent {
   public render(): JSX.Element {
@@ -49,26 +59,18 @@ export class OverflowSetBasicReversedExample extends React.PureComponent {
 
   private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
-      <Link role="menuitem" styles={{ root: { marginRight: 10 } }} onClick={item.onClick}>
+      <Link role="menuitem" styles={linkStyles} onClick={item.onClick}>
         {item.name}
       </Link>
     );
   };
 
   private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
-    const buttonStyles: Partial<IButtonStyles> = {
-      root: {
-        minWidth: 0,
-        padding: '0 4px',
-        alignSelf: 'stretch',
-        height: 'auto',
-      },
-    };
     return (
       <IconButton
         role="menuitem"
         title="More options"
-        styles={buttonStyles}
+        styles={iconButtonStyles}
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}
       />

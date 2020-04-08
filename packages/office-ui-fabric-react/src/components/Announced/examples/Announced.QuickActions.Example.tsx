@@ -11,7 +11,7 @@ import {
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, PrimaryButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 
@@ -28,6 +28,8 @@ const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map
     isResizable: true,
   };
 });
+
+const iconButtonStyles: Partial<IButtonStyles> = { root: { float: 'right', height: 'inherit' } };
 
 const _names: string[] = [
   'Annie Lindqvist',
@@ -154,7 +156,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
             role="button"
             aria-haspopup={true}
             aria-label="Show actions"
-            styles={{ root: { float: 'right', height: 'inherit' } }}
+            styles={iconButtonStyles}
             menuProps={{
               items: [
                 {
