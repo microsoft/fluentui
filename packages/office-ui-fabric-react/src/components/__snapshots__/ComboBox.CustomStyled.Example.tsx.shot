@@ -27,7 +27,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       & .ms-ComboBox {
         max-width: 300px;
       }
-  dir="ltr"
 >
   <div
     className=

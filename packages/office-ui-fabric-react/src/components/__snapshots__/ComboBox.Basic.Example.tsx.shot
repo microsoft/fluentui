@@ -27,7 +27,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       & .ms-ComboBox {
         max-width: 300px;
       }
-  dir="ltr"
 >
   <div>
     <div
@@ -1772,7 +1771,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             & textarea {
               font-family: inherit;
             }
-        dir="ltr"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
