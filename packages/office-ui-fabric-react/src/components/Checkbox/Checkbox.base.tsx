@@ -3,7 +3,7 @@ import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive, Fo
 import { Icon } from '../../Icon';
 import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
-import { useId } from '@uifabric/react-hooks';
+import { useId, useControllableValue } from '@uifabric/react-hooks';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
@@ -34,38 +34,13 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
     label,
   } = props;
 
-  const [isChecked, setIsChecked] = React.useState<boolean>(
-    !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-  );
-  const [isIndeterminate, setIsIndeterminate] = React.useState<boolean>(
-    !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate),
-  );
-
-  if (typeof props.checked === 'boolean' && props.checked !== isChecked) {
-    setIsChecked(props.checked);
-  }
-  if (typeof props.indeterminate === 'boolean' && props.indeterminate !== isIndeterminate) {
-    setIsIndeterminate(props.indeterminate);
-  }
-
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production') {
-      warnMutuallyExclusive('Checkbox', props, {
-        checked: 'defaultChecked',
-        indeterminate: 'defaultIndeterminate',
-      });
-    }
-  }, []);
-
-  const onRenderLabel = (): JSX.Element | null => {
-    return label ? (
-      <span aria-hidden="true" className={classNames.text} title={title}>
-        {label}
-      </span>
-    ) : null;
-  };
-
   const checkBox = React.useRef<HTMLInputElement>(null);
+  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
+  const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
+
+  useDebugWarning(props);
+  useComponentRef(props, isChecked, isIndeterminate, checkBox);
+
   const id = useId('checkbox-', props.id);
   const classNames: { [key in keyof ICheckboxStyles]: string } = getClassNames(styles!, {
     theme: theme!,
@@ -77,24 +52,15 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
     isUsingCustomLabelRender: !!props.onRenderLabel,
   });
 
-  React.useImperativeHandle(
-    props.componentRef,
-    () => ({
-      get checked() {
-        return isChecked;
-      },
-      get indeterminate() {
-        return isIndeterminate;
-      },
-      focus() {
-        if (checkBox.current) {
-          checkBox.current.focus();
-        }
-      },
-    }),
-    [isChecked, isIndeterminate],
-  );
+  const onRenderLabel = (): JSX.Element | null => {
+    return label ? (
+      <span aria-hidden="true" className={classNames.text} title={title}>
+        {label}
+      </span>
+    ) : null;
+  };
 
+  //#region Input callbacks
   const _onFocus = React.useCallback(
     (ev: React.FocusEvent<HTMLElement>): void => {
       if (inputProps?.onFocus) {
@@ -138,6 +104,7 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
     },
     [props.onChange, props.checked, props.indeterminate, isChecked, isIndeterminate],
   );
+  //#endregion
 
   return (
     <KeytipData keytipProps={keytipProps} disabled={disabled}>
@@ -148,7 +115,7 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
             type="checkbox"
             {...inputProps}
             data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-            checked={isChecked}
+            checked={!!isChecked}
             disabled={disabled}
             className={classNames.input}
             ref={checkBox}
@@ -177,3 +144,39 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
     </KeytipData>
   );
 });
+
+function useDebugWarning(props: ICheckboxProps) {
+  React.useEffect(() => {
+    if (process.env.NODE_ENV !== 'production') {
+      warnMutuallyExclusive('Checkbox', props, {
+        checked: 'defaultChecked',
+        indeterminate: 'defaultIndeterminate',
+      });
+    }
+  }, []);
+}
+
+function useComponentRef(
+  props: ICheckboxProps,
+  isChecked: boolean | undefined,
+  isIndeterminate: boolean | undefined,
+  checkBox: React.RefObject<HTMLInputElement>,
+) {
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      get checked() {
+        return !!isChecked;
+      },
+      get indeterminate() {
+        return !!isIndeterminate;
+      },
+      focus() {
+        if (checkBox.current) {
+          checkBox.current.focus();
+        }
+      },
+    }),
+    [isChecked, isIndeterminate],
+  );
+}

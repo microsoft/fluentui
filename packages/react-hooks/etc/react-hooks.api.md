@@ -4,6 +4,8 @@
 
 ```ts
 
+import * as React from 'react';
+
 // @public
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
@@ -19,6 +21,9 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 
 // @public
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
+
+// @public
+export function useControllableValue<TValue>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): readonly [TValue | undefined, React.Dispatch<React.SetStateAction<TValue | undefined>>];
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
