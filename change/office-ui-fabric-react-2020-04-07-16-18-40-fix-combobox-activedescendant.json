@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Combobox: Fix getActiveDescendantValue",
+  "comment": "Combobox: Fix getActiveDescendantValue would sometimes return -listundefined.",
   "packageName": "office-ui-fabric-react",
   "email": "joschect@microsoft.com",
   "commit": "14809d043b9728bd0bdeb6f335f2bb5e00992756",
