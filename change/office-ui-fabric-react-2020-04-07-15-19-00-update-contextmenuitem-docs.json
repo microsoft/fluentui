@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "ContextualMenuDocs: Make text prop behavior more clear",
+  "packageName": "office-ui-fabric-react",
+  "email": "joschect@microsoft.com",
+  "commit": "a765142872132b3f81a7ef857d3561642b86a63d",
+  "dependentChangeType": "none",
+  "date": "2020-04-07T22:19:00.199Z"
+}
