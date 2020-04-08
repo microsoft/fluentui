@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "applying package updates",
+  "packageName": "@uifabric/api-docs",
+  "email": "v-satgar@microsoft.com",
+  "commit": "cc80ddaae85eaeb812cce097cab4732b0091f42b",
+  "dependentChangeType": "none",
+  "date": "2020-04-08T07:21:10.505Z"
+}
