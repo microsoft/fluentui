@@ -5,7 +5,8 @@ exports[`Component Examples renders DatePicker.Controlled.Example.tsx correctly 
   className="docs-DatePickerExample"
 >
   <p>
-    DatePicker controlled using useState with min/max validation. Fri, 06 Jan 2017 04:41:20 GMT - Fri, 06 Jan 2017 04:41:20 GMT.
+    DatePicker controlled using useState with min/max validation.
+Fri, 06 Jan 2017 04:41:20 GMT - Fri, 06 Jan 2017 04:41:20 GMT.
   </p>
   <div>
     <div
