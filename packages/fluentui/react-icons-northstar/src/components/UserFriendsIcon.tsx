@@ -1,13 +1,12 @@
 import * as React from 'react';
-import cx from 'classnames';
 import createSvgIcon from '../utils/createSvgIcon';
 import { iconClassNames } from '../utils/iconClassNames';
 
 const UserFriendsIcon = createSvgIcon({
-  svg: ({ classes }) => (
-    <svg viewBox="8 8 16 16" role="presentation" focusable="false" className={classes.svg}>
+  svg: () => (
+    <svg viewBox="8 8 16 16" role="presentation" focusable="false">
       <path
-        className={cx(iconClassNames.outline, classes.outlinePart)}
+        className={iconClassNames.outline}
         d="M13.832,17.1445c0.0962,0.0967,0.1445,0.21,0.1445,0.3398c0,0.125-0.0483,0.2373-0.1445,0.3359
         c-0.0967,0.0996-0.21,0.1484-0.3398,0.1484H9.9766v2.3984c0,0.5,0.2188,0.8857,0.6562,1.1562
         c0.3281,0.2139,0.8071,0.3574,1.4375,0.4297c0.3486,0.042,0.8228,0.0625,1.4219,0.0625c0.1299,0,0.2432,0.0488,0.3398,0.1445
@@ -43,7 +42,7 @@ const UserFriendsIcon = createSvgIcon({
         S18.6895,10,18.4922,10C18.2939,10,18.1055,10.0391,17.9258,10.1172z"
       />
       <path
-        className={cx(iconClassNames.filled, classes.filledPart)}
+        className={iconClassNames.filled}
         d="M13.9766,22.9844h-1.1484c-0.6094,0-1.1826-0.0781-1.7188-0.2344
         c-0.6201-0.1719-1.1123-0.4424-1.4766-0.8125c-0.417-0.4268-0.625-0.9502-0.625-1.5703V17h4.9688V22.9844z M22,20.8984
         c0,0.5684-0.1904,1.0469-0.5703,1.4375c-0.3281,0.3281-0.7793,0.5762-1.3516,0.7422c-0.4902,0.1406-1.0156,0.2109-1.5781,0.2109

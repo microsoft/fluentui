@@ -1,5 +1,5 @@
 import { callable, ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
-import { SvgIconXSpacing, SvgIconProps } from '@fluentui/react-icons-northstar';
+import { SvgIconXSpacing, SvgIconProps, iconClassNames } from '@fluentui/react-icons-northstar';
 
 import { pxToRem, SizeValue } from '../../../../utils';
 import { SvgIconVariables } from './svgIconVariables';
@@ -48,22 +48,53 @@ const getXSpacingStyles = (xSpacing: SvgIconXSpacing, horizontalSpace: string): 
 };
 
 const svgIconStyles: ComponentSlotStylesPrepared<SvgIconStylesProps, SvgIconVariables> = {
-  root: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    speak: 'none',
-    verticalAlign: 'middle',
+  root: ({ props: p, variables: v }): ICSSInJSStyle => {
+    const iconSizeInRems = getIconSize(p.size, v);
 
-    ...getXSpacingStyles(p.xSpacing, v.horizontalSpace),
+    return {
+      speak: 'none',
+      verticalAlign: 'middle',
 
-    ...(p.circular && { ...getPaddedStyle(), borderRadius: '50%' }),
-    ...(p.disabled && {
-      color: v.disabledColor,
-    }),
-    display: 'inline-block',
+      ...getXSpacingStyles(p.xSpacing, v.horizontalSpace),
 
-    ...((p.bordered || v.borderColor) && getBorderedStyles(v.borderColor || v.color || 'currentColor')),
+      ...(p.circular && { ...getPaddedStyle(), borderRadius: '50%' }),
+      ...(p.disabled && {
+        color: v.disabledColor,
+      }),
+      display: 'inline-block',
 
-    backgroundColor: v.backgroundColor,
-  }),
+      ...((p.bordered || v.borderColor) && getBorderedStyles(v.borderColor || v.color || 'currentColor')),
+
+      backgroundColor: v.backgroundColor,
+
+      [`& .${iconClassNames.outline}`]: {
+        display: 'none',
+
+        ...(p.outline && {
+          display: 'block',
+        }),
+      },
+
+      [`& .${iconClassNames.filled}`]: {
+        ...(p.outline && {
+          display: 'none',
+        }),
+      },
+
+      [`& svg`]: {
+        display: 'block',
+        width: iconSizeInRems,
+        height: iconSizeInRems,
+        fill: v.color || 'currentColor',
+
+        ...(p.disabled && {
+          fill: v.disabledColor,
+        }),
+
+        transform: `rotate(${p.rotate}deg)`,
+      },
+    };
+  },
 
   outlinePart: ({ props: p }): ICSSInJSStyle => {
     return {

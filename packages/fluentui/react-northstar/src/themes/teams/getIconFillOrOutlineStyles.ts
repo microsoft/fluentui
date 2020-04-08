@@ -1,12 +1,12 @@
 import { ICSSInJSStyle } from '@fluentui/styles';
-import { iconClassNames } from '@fluentui/react-icons-northstar';
+import { iconClassNames, svgIconClassName } from '@fluentui/react-icons-northstar';
 
 const getIconFillOrOutlineStyles = ({ outline }: { outline: boolean }): ICSSInJSStyle => ({
-  [`& .${iconClassNames.filled}`]: {
+  [`& .${svgIconClassName} .${iconClassNames.filled}`]: {
     display: outline ? 'none' : 'block',
   },
 
-  [`& .${iconClassNames.outline}`]: {
+  [`& .${svgIconClassName} .${iconClassNames.outline}`]: {
     display: outline ? 'block' : 'none',
   },
 });
