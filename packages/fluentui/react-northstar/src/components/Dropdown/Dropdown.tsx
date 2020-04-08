@@ -146,7 +146,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
   /** A message to be displayed in the list footer. */
-  footerMessage?: ShorthandValue<DropdownItemProps>;
+  headerMessage?: ShorthandValue<DropdownItemProps>;
 
   /** A slot for dropdown list. */
   list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
@@ -305,7 +305,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     items: customPropTypes.collectionShorthand,
     itemToString: PropTypes.func,
     itemToValue: PropTypes.func,
-    footerMessage: customPropTypes.itemShorthand,
+    headerMessage: customPropTypes.itemShorthand,
     list: customPropTypes.itemShorthand,
     loading: PropTypes.bool,
     loadingMessage: customPropTypes.itemShorthand,
@@ -739,6 +739,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     const { renderItem, checkable, checkableIndicator } = this.props;
     const { filteredItems, value } = this.state;
     const footerItem = this.renderItemsListFooter(styles);
+    const headerItem = this.renderItemsListHeader(styles);
 
     const items = _.map(filteredItems, (item, index) => ({
       children: () => {
@@ -768,11 +769,29 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       items.push(footerItem);
     }
 
-    return items;
+    return headerItem ? [headerItem, ...items] : items;
+  }
+
+  renderItemsListHeader(styles: ComponentSlotStylesInput) {
+    const { headerMessage } = this.props;
+
+    if (headerMessage) {
+      return {
+        children: () =>
+          DropdownItem.create(headerMessage, {
+            defaultProps: () => ({
+              key: 'items-list-footer-message',
+              styles: styles.headerMessage,
+            }),
+          }),
+      };
+    }
+
+    return null;
   }
 
   renderItemsListFooter(styles: ComponentSlotStylesInput) {
-    const { loading, loadingMessage, noResultsMessage, items, footerMessage } = this.props;
+    const { loading, loadingMessage, noResultsMessage, items } = this.props;
 
     if (loading) {
       return {
@@ -793,18 +812,6 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
             defaultProps: () => ({
               key: 'no-results-message',
               styles: styles.noResultsMessage,
-            }),
-          }),
-      };
-    }
-
-    if (footerMessage) {
-      return {
-        children: () =>
-          DropdownItem.create(footerMessage, {
-            defaultProps: () => ({
-              key: 'items-list-footer-message',
-              styles: styles.footerMessage,
             }),
           }),
       };

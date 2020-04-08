@@ -58,7 +58,7 @@ export interface DropdownVariables {
   listItemHeaderColor: string;
   listItemContentFontSize: string;
   listItemContentColor: string;
-  footerMessageBackgroundColor: string;
+  headerMessageBackgroundColor: string;
   noResultsMessageBackgroundColor: string;
   loadingMessageBackgroundColor: string;
 }
@@ -128,7 +128,7 @@ export default (siteVars): DropdownVariables => ({
   listItemHeaderColor: siteVars.colorScheme.default.foreground1,
   listItemContentFontSize: siteVars.fontSizes.small,
   listItemContentColor: siteVars.colorScheme.default.foreground2,
-  footerMessageBackgroundColor: siteVars.colors.white,
+  headerMessageBackgroundColor: siteVars.colors.white,
   noResultsMessageBackgroundColor: siteVars.colors.white,
   loadingMessageBackgroundColor: siteVars.colors.white,
 });

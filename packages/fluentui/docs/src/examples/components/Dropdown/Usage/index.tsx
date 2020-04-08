@@ -15,9 +15,9 @@ const Usage = () => (
       examplePath="components/Dropdown/Usage/DropdownExampleRender"
     />
     <ComponentExample
-      title="Custom list footer"
-      description="You can add a custom message in the list footer."
-      examplePath="components/Dropdown/Usage/DropdownItemsListFooterExample"
+      title="Custom list header"
+      description="You can add a custom message as the list header."
+      examplePath="components/Dropdown/Usage/DropdownExampleHeaderMessage"
     />
   </ExampleSection>
 );

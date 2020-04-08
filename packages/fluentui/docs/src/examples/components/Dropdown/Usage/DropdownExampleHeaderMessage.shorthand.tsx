@@ -65,7 +65,7 @@ const DropdownExampleSearch = () => {
         searchQuery !== externalSearchItem && setSearchQuery(searchQuery);
       }}
       noResultsMessage="We couldn't find any matches."
-      footerMessage={externalSearch ? "We couldn't find any matches, but you can search externally!" : undefined}
+      headerMessage={externalSearch ? "We couldn't find any matches, but you can search externally!" : undefined}
       getA11yStatusMessage={({ resultCount }) =>
         externalSearch ? 'no results, but you can search externally' : `${resultCount} results available`
       }
