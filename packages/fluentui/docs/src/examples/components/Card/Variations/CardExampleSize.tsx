@@ -36,7 +36,6 @@ const CardExampleSize = () => (
       </Card.Footer>
     </Card>
 
-    <Divider />
 
     <Card>
       <Card.Header>
@@ -71,7 +70,6 @@ const CardExampleSize = () => (
       </Card.Footer>
     </Card>
 
-    <Divider />
 
     <Card size="large">
       <Card.Header>
