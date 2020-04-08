@@ -53,7 +53,9 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
   onClick?: ComponentEventHandler<AttachmentProps>;
 }
 
-export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>>;
+export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' | 'disabled'>> & {
+  hasDescription: boolean;
+};
 
 export interface AttachmentSlotClassNames {
   action: string;
@@ -98,6 +100,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
     mapPropsToStyles: () => ({
       actionable: actionable || !!onClick,
       disabled,
+      hasDescription: !!description,
     }),
     mapPropsToInlineStyles: () => ({
       className,

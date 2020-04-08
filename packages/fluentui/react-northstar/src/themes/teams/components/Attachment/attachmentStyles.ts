@@ -69,18 +69,24 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     };
   },
 
-  header: ({ variables: v }): ICSSInJSStyle => ({
+  header: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
 
     gridColumn: 2,
-    gridRow: 1,
+    gridRow: '1 / 3',
 
     msGridColumn: 2,
     msGridRow: 1,
+    msGridRowSpan: 2,
 
     fontSize: v.headerFontSize,
     fontWeight: v.headerFontWeight,
     lineHeight: v.headerLineHeight,
+
+    ...(p.hasDescription && {
+      gridRow: 1,
+      msGridRowSpan: undefined,
+    }),
   }),
 
   description: ({ variables: v }): ICSSInJSStyle => ({
