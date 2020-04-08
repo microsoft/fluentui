@@ -1,0 +1,9 @@
+{
+  "type": "patch",
+  "comment": "CommandBar: prevent command button style mutation if possible",
+  "packageName": "office-ui-fabric-react",
+  "email": "xgao@microsoft.com",
+  "commit": "4212e45c58077f93f56f60a65d967e43f230e259",
+  "dependentChangeType": "patch",
+  "date": "2020-04-07T21:33:17.251Z"
+}

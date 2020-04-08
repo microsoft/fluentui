@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Add useBoolean hook",
-  "packageName": "@uifabric/react-hooks",
-  "email": "elcraig@microsoft.com",
-  "commit": "0c1876284c8d6ce80e9c22fee6a188ef43c27d93",
-  "dependentChangeType": "patch",
-  "date": "2020-04-02T17:31:30.721Z"
-}

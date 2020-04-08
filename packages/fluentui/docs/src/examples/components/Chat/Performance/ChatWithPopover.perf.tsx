@@ -2,6 +2,15 @@ import { Accessibility, Avatar, Chat, Menu, Provider, menuAsToolbarBehavior } fr
 import * as _ from 'lodash';
 import cx from 'classnames';
 import * as React from 'react';
+import {
+  DownloadIcon,
+  EmojiIcon,
+  LikeIcon,
+  LinkIcon,
+  MoreIcon,
+  TranslationIcon,
+  AcceptIcon,
+} from '@fluentui/react-icons-northstar';
 
 const avatars = {
   ade:
@@ -10,7 +19,7 @@ const avatars = {
 
 const janeAvatar = {
   image: `data:image/jpeg;base64,${avatars.ade}`,
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 
 export interface PopoverProps {
@@ -51,39 +60,39 @@ class Popover extends React.Component<PopoverProps, PopoverState> {
         className={cx(this.props.className, this.state.focused ? 'focused' : '')}
         items={[
           {
+            icon: <EmojiIcon />,
             key: 'smile',
-            icon: 'emoji',
             className: 'smile-emoji',
             'aria-label': 'smile one',
           },
           {
+            icon: <EmojiIcon />,
             key: 'smile2',
-            icon: 'emoji',
             className: 'smile-emoji',
             'aria-label': 'smile two',
           },
           {
+            icon: <EmojiIcon />,
             key: 'smile3',
-            icon: 'emoji',
             className: 'smile-emoji',
             'aria-label': 'smile three',
           },
           {
+            icon: <LikeIcon />,
             key: 'a',
-            icon: 'like',
             'aria-label': 'thumbs up',
           },
           {
+            icon: <MoreIcon />,
             key: 'c',
-            icon: 'more',
             'aria-label': 'more options',
             indicator: false,
             menu: {
               pills: true,
               items: [
-                { key: 'bookmark', icon: 'download', content: 'Save this message' },
-                { key: 'linkify', icon: 'link', content: 'Copy link' },
-                { key: 'translate', icon: 'translate', content: 'Translate' },
+                { key: 'bookmark', icon: <DownloadIcon />, content: 'Save this message' },
+                { key: 'linkify', icon: <LinkIcon />, content: 'Copy link' },
+                { key: 'translate', icon: <TranslationIcon />, content: 'Translate' },
               ],
             },
           },

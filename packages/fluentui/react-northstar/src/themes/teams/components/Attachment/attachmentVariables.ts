@@ -3,6 +3,7 @@ import { pxToRem } from '../../../../utils';
 export type AttachmentVariables = {
   padding: string;
   iconSpace: string;
+  iconSize: string;
 
   borderColor: string;
   borderRadius: string;
@@ -33,6 +34,7 @@ export type AttachmentVariables = {
 export default (siteVariables: any): AttachmentVariables => ({
   padding: `${pxToRem(7)} ${pxToRem(3)} ${pxToRem(7)} ${pxToRem(11)}`, // padding set to 1px less to account for 1px border
   iconSpace: pxToRem(12),
+  iconSize: pxToRem(32),
   borderColor: siteVariables.colors.grey[200],
   borderRadius: pxToRem(3),
   backgroundColor: siteVariables.colors.grey[100],

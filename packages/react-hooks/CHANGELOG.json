@@ -2,6 +2,34 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Tue, 07 Apr 2020 12:35:07 GMT",
+      "tag": "@uifabric/react-hooks_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Simplifying some of the examples for VerticalDivider and SearchBox.",
+            "author": "czearing@outlook.com",
+            "commit": "98b0a66dc03088debe67e9469fc775b6000414e0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Apr 2020 12:27:13 GMT",
+      "tag": "@uifabric/react-hooks_v7.1.0",
+      "version": "7.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add useBoolean hook",
+            "author": "elcraig@microsoft.com",
+            "commit": "0c1876284c8d6ce80e9c22fee6a188ef43c27d93"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/react-hooks_v7.0.24",
       "version": "7.0.24",

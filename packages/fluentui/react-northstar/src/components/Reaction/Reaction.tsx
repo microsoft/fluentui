@@ -15,7 +15,6 @@ import {
 import { Accessibility } from '@fluentui/accessibility';
 
 import { WithAsProp, ShorthandValue, withSafeTypeForAs } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 import ReactionGroup from './ReactionGroup';
 
@@ -34,7 +33,7 @@ export interface ReactionProps
   accessibility?: Accessibility;
 
   /** A reaction can have icon for the indicator of the reaction. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 }
 
 class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
@@ -50,7 +49,7 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
     ...commonPropTypes.createCommon({
       content: 'shorthand',
     }),
-    icon: customPropTypes.itemShorthandWithoutJSX,
+    icon: customPropTypes.shorthandAllowingChildren,
   };
 
   static defaultProps = {
@@ -73,7 +72,7 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
           children
         ) : (
           <>
-            {Icon.create(icon, {
+            {Box.create(icon, {
               defaultProps: () => ({
                 className: Reaction.slotClassNames.icon,
                 styles: styles.icon,

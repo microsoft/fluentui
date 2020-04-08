@@ -95,6 +95,12 @@ const toolbarMenuItemStyles: ComponentSlotStylesPrepared<ToolbarMenuItemStylesPr
   wrapper: () => ({
     display: 'block',
   }),
+
+  icon: ({ props: p }) => ({
+    ...(p.hasContent && {
+      marginRight: pxToRem(10),
+    }),
+  }),
 };
 
 export default toolbarMenuItemStyles;

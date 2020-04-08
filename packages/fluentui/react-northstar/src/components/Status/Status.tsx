@@ -14,7 +14,7 @@ import {
   ProviderContextPrepared,
   FluentComponentStaticProps,
 } from '../../types';
-import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
 
 export interface StatusProps extends UIComponentProps {
   /** Accessibility behavior if overridden by the user. */
@@ -24,7 +24,7 @@ export interface StatusProps extends UIComponentProps {
   color?: string;
 
   /** Shorthand for the icon, to provide customizing status */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** Size multiplier */
   size?: SizeValue;
@@ -37,7 +37,7 @@ export type StatusStylesProps = Pick<StatusProps, 'color' | 'size' | 'state'>;
 
 const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { setStart, setEnd } = useTelemetry(Icon.displayName, context.telemetry);
+  const { setStart, setEnd } = useTelemetry(Status.displayName, context.telemetry);
   setStart();
 
   const { className, color, icon, size, state, design, styles, variables } = props;
@@ -63,12 +63,11 @@ const Status: React.FC<WithAsProp<StatusProps>> & FluentComponentStaticProps = p
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Status.handledProps, props);
 
-  const iconElement = Icon.create(icon, {
+  const iconElement = Box.create(icon, {
     defaultProps: () =>
       getA11Props('icon', {
-        size: 'smallest',
         styles: resolvedStyles.icon,
-        xSpacing: 'none',
+        as: 'span',
       }),
   });
 
@@ -88,7 +87,7 @@ Status.propTypes = {
     content: false,
   }),
   color: PropTypes.string,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   size: customPropTypes.size,
   state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
 };

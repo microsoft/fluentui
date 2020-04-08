@@ -156,7 +156,6 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
             & textarea {
               font-family: inherit;
             }
-        dir="ltr"
         onBlur={[Function]}
         onChange={[Function]}
         onClick={[Function]}
