@@ -1,7 +1,7 @@
 import { Button, Dialog, Tooltip } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const DialogExampleContent: React.FC = () => (
+const TooltipExampleDialogContentShorthand: React.FC = () => (
   <Dialog
     cancelButton="Cancel"
     content={<Tooltip trigger={<Button content="Click me!" />} content="Hello from tooltip!" />}
@@ -10,4 +10,4 @@ const DialogExampleContent: React.FC = () => (
   />
 );
 
-export default DialogExampleContent;
+export default TooltipExampleDialogContentShorthand;
