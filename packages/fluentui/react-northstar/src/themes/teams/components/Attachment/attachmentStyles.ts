@@ -17,7 +17,6 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
     return {
       display: ['inline-grid', '-ms-inline-grid'] as any,
-      alignItems: 'center',
       gridTemplateColumns: 'auto 1fr auto',
       msGridColumns: 'auto 1fr auto',
       position: 'relative',
@@ -72,9 +71,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
   header: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
 
+    alignSelf: 'center',
     gridColumn: 2,
     gridRow: '1 / 3',
 
+    msGridRowAlign: 'center',
     msGridColumn: 2,
     msGridRow: 1,
     msGridRowSpan: 2,
@@ -84,7 +85,9 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     lineHeight: v.headerLineHeight,
 
     ...(p.hasDescription && {
+      alignSelf: 'end',
       gridRow: 1,
+
       msGridRowSpan: undefined,
     }),
   }),
@@ -92,6 +95,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
   description: ({ variables: v }): ICSSInJSStyle => ({
     display: 'block',
 
+    alignSelf: 'start',
     gridColumn: 2,
     gridRow: 2,
 
@@ -104,6 +108,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
   }),
 
   icon: ({ variables: v }): ICSSInJSStyle => ({
+    alignSelf: 'center',
     gridColumn: 1,
     gridRow: '1 / 3',
 
@@ -132,6 +137,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     });
 
     return {
+      alignSelf: 'center',
       gridColumn: 3,
       gridRow: '1 / 3',
 
