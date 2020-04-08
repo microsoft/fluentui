@@ -1,15 +1,9 @@
 import * as React from 'react';
-import {
-  getId,
-  classNamesFunction,
-  mergeAriaAttributeValues,
-  initializeComponentRef,
-  warnMutuallyExclusive,
-  FocusRects,
-} from '../../Utilities';
+import { classNamesFunction, mergeAriaAttributeValues, warnMutuallyExclusive, FocusRects } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
+import { ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
+import { useId } from '@uifabric/react-hooks';
 
 export interface ICheckboxState {
   /** Is true when Uncontrolled control is checked. */
@@ -19,189 +13,167 @@ export interface ICheckboxState {
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
-export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState> implements ICheckbox {
-  public static defaultProps: ICheckboxProps = {
-    boxSide: 'start',
-  };
+// tslint:disable-next-line:no-function-expression
+export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref: React.Ref<HTMLDivElement>) {
+  const {
+    className,
+    disabled,
+    inputProps,
+    name,
+    boxSide = 'start',
+    theme,
+    ariaLabel,
+    ariaLabelledBy,
+    ariaDescribedBy,
+    styles,
+    checkmarkIconProps,
+    ariaPositionInSet,
+    ariaSetSize,
+    keytipProps,
+    title,
+    label,
+  } = props;
 
-  private _checkBox = React.createRef<HTMLInputElement>();
-  private _id: string;
-  private _classNames: { [key in keyof ICheckboxStyles]: string };
+  const [isChecked, setIsChecked] = React.useState<boolean>(
+    !!(props.checked !== undefined ? props.checked : props.defaultChecked),
+  );
+  const [isIndeterminate, setIsIndeterminate] = React.useState<boolean>(
+    !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate),
+  );
 
-  public static getDerivedStateFromProps(
-    nextProps: Readonly<ICheckboxProps>,
-    prevState: Readonly<ICheckboxState>,
-  ): ICheckboxState | null {
-    const stateUpdate: Partial<ICheckboxState> = {};
-    if (nextProps.indeterminate !== undefined) {
-      stateUpdate.isIndeterminate = !!nextProps.indeterminate;
-    }
-    if (nextProps.checked !== undefined) {
-      stateUpdate.isChecked = !!nextProps.checked;
-    }
-    return Object.keys(stateUpdate).length ? stateUpdate : null;
+  if (typeof props.checked === 'boolean' && props.checked !== isChecked) {
+    setIsChecked(props.checked);
+  }
+  if (typeof props.indeterminate === 'boolean' && props.indeterminate !== isIndeterminate) {
+    setIsIndeterminate(props.indeterminate);
   }
 
-  /**
-   * Initialize a new instance of the Checkbox
-   * @param props - Props for the component
-   * @param context - Context or initial state for the base component.
-   */
-  constructor(props: ICheckboxProps, context?: any) {
-    super(props, context);
-
-    initializeComponentRef(this);
-
+  React.useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive('Checkbox', props, {
         checked: 'defaultChecked',
         indeterminate: 'defaultIndeterminate',
       });
     }
+  }, []);
 
-    this._id = this.props.id || getId('checkbox-');
-    this.state = {
-      isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked),
-      isIndeterminate: !!(props.indeterminate !== undefined ? props.indeterminate : props.defaultIndeterminate),
-    };
-  }
-
-  /**
-   * Render the Checkbox based on passed props
-   */
-  public render(): JSX.Element {
-    const {
-      className,
-      disabled,
-      inputProps,
-      name,
-      boxSide,
-      theme,
-      ariaLabel,
-      ariaLabelledBy,
-      ariaDescribedBy,
-      styles,
-      onRenderLabel = this._onRenderLabel,
-      checkmarkIconProps,
-      ariaPositionInSet,
-      ariaSetSize,
-      keytipProps,
-      title,
-      label,
-    } = this.props;
-
-    const { isChecked, isIndeterminate } = this.state;
-
-    this._classNames = getClassNames(styles!, {
-      theme: theme!,
-      className,
-      disabled,
-      indeterminate: isIndeterminate,
-      checked: isChecked,
-      reversed: boxSide !== 'start',
-      isUsingCustomLabelRender: onRenderLabel !== this._onRenderLabel,
-    });
-
-    return (
-      <KeytipData keytipProps={keytipProps} disabled={disabled}>
-        {(keytipAttributes: any): JSX.Element => (
-          <div className={this._classNames.root} title={title}>
-            <FocusRects />
-            <input
-              type="checkbox"
-              {...inputProps}
-              data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
-              checked={isChecked}
-              disabled={disabled}
-              className={this._classNames.input}
-              ref={this._checkBox}
-              name={name}
-              id={this._id}
-              title={title}
-              onChange={this._onChange}
-              onFocus={this._onFocus}
-              onBlur={this._onBlur}
-              aria-disabled={disabled}
-              aria-label={ariaLabel || label}
-              aria-labelledby={ariaLabelledBy}
-              aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
-              aria-posinset={ariaPositionInSet}
-              aria-setsize={ariaSetSize}
-              aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
-            />
-            <label className={this._classNames.label} htmlFor={this._id}>
-              <div className={this._classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
-                <Icon iconName="CheckMark" {...checkmarkIconProps} className={this._classNames.checkmark} />
-              </div>
-              {onRenderLabel(this.props, this._onRenderLabel)}
-            </label>
-          </div>
-        )}
-      </KeytipData>
-    );
-  }
-
-  public get indeterminate(): boolean {
-    return !!this.state.isIndeterminate;
-  }
-
-  public get checked(): boolean {
-    return !!this.state.isChecked;
-  }
-
-  public focus(): void {
-    if (this._checkBox.current) {
-      this._checkBox.current.focus();
-    }
-  }
-
-  private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
-    const { inputProps } = this.props;
-
-    if (inputProps && inputProps.onFocus) {
-      inputProps.onFocus(ev);
-    }
-  };
-
-  private _onBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    const { inputProps } = this.props;
-
-    if (inputProps && inputProps.onBlur) {
-      inputProps.onBlur(ev);
-    }
-  };
-
-  private _onChange = (ev: React.FormEvent<HTMLElement>): void => {
-    const { onChange } = this.props;
-    const { isChecked, isIndeterminate } = this.state;
-
-    if (!isIndeterminate) {
-      if (onChange) {
-        onChange(ev, !isChecked);
-      }
-      if (this.props.checked === undefined) {
-        this.setState({ isChecked: !isChecked });
-      }
-    } else {
-      // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
-      // controlled, lets the consumer know to change it by calling onChange). It doesn't
-      // change the checked state.
-      if (onChange) {
-        onChange(ev, isChecked);
-      }
-      if (this.props.indeterminate === undefined) {
-        this.setState({ isIndeterminate: false });
-      }
-    }
-  };
-
-  private _onRenderLabel = (props: ICheckboxProps): JSX.Element | null => {
-    const { label, title } = props;
-
+  const onRenderLabel = (): JSX.Element | null => {
     return label ? (
-      <span aria-hidden="true" className={this._classNames.text} title={title}>
+      <span aria-hidden="true" className={classNames.text} title={title}>
         {label}
       </span>
     ) : null;
   };
-}
+
+  const checkBox = React.useRef<HTMLInputElement>(null);
+  const id = useId('checkbox-', props.id);
+  const classNames: { [key in keyof ICheckboxStyles]: string } = getClassNames(styles!, {
+    theme: theme!,
+    className,
+    disabled,
+    indeterminate: isIndeterminate,
+    checked: isChecked,
+    reversed: boxSide !== 'start',
+    isUsingCustomLabelRender: !!props.onRenderLabel,
+  });
+
+  React.useImperativeHandle(
+    props.componentRef,
+    () => ({
+      get checked() {
+        return isChecked;
+      },
+      get indeterminate() {
+        return isIndeterminate;
+      },
+      focus() {
+        if (checkBox.current) {
+          checkBox.current.focus();
+        }
+      },
+    }),
+    [isChecked, isIndeterminate],
+  );
+
+  const _onFocus = React.useCallback(
+    (ev: React.FocusEvent<HTMLElement>): void => {
+      if (inputProps?.onFocus) {
+        inputProps.onFocus(ev);
+      }
+    },
+    [inputProps?.onFocus],
+  );
+
+  const _onBlur = React.useCallback(
+    (ev: React.FocusEvent<HTMLElement>): void => {
+      if (inputProps?.onBlur) {
+        inputProps.onBlur(ev);
+      }
+    },
+    [inputProps?.onBlur],
+  );
+
+  const _onChange = React.useCallback(
+    (ev: React.ChangeEvent<HTMLElement>): void => {
+      const { onChange, checked, indeterminate } = props;
+
+      if (!isIndeterminate) {
+        if (onChange) {
+          onChange(ev, !isChecked);
+        }
+        if (checked === undefined) {
+          setIsChecked(!isChecked);
+        }
+      } else {
+        // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
+        // controlled, lets the consumer know to change it by calling onChange). It doesn't
+        // change the checked state.
+        if (onChange) {
+          onChange(ev, isChecked);
+        }
+        if (indeterminate === undefined) {
+          setIsIndeterminate(false);
+        }
+      }
+    },
+    [props.onChange, props.checked, props.indeterminate, isChecked, isIndeterminate],
+  );
+
+  return (
+    <KeytipData keytipProps={keytipProps} disabled={disabled}>
+      {(keytipAttributes: any): JSX.Element => (
+        <div className={classNames.root} title={title} ref={ref}>
+          <FocusRects />
+          <input
+            type="checkbox"
+            {...inputProps}
+            data-ktp-execute-target={keytipAttributes['data-ktp-execute-target']}
+            checked={isChecked}
+            disabled={disabled}
+            className={classNames.input}
+            ref={checkBox}
+            name={name}
+            id={id}
+            title={title}
+            onChange={_onChange}
+            onFocus={_onFocus}
+            onBlur={_onBlur}
+            aria-disabled={disabled}
+            aria-label={ariaLabel || label}
+            aria-labelledby={ariaLabelledBy}
+            aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
+            aria-posinset={ariaPositionInSet}
+            aria-setsize={ariaSetSize}
+            aria-checked={isIndeterminate ? 'mixed' : isChecked ? 'true' : 'false'}
+          />
+          <label className={classNames.label} htmlFor={id}>
+            <div className={classNames.checkbox} data-ktp-target={keytipAttributes['data-ktp-target']}>
+              <Icon iconName="CheckMark" {...checkmarkIconProps} className={classNames.checkmark} />
+            </div>
+            {(props.onRenderLabel || onRenderLabel)(props, onRenderLabel)}
+          </label>
+        </div>
+      )}
+    </KeytipData>
+  );
+});

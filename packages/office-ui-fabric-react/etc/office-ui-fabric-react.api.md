@@ -520,20 +520,7 @@ export const CheckBase: React.FunctionComponent<ICheckProps>;
 export const Checkbox: React.FunctionComponent<ICheckboxProps>;
 
 // @public (undocumented)
-export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState> implements ICheckbox {
-    constructor(props: ICheckboxProps, context?: any);
-    // (undocumented)
-    readonly checked: boolean;
-    // (undocumented)
-    static defaultProps: ICheckboxProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    static getDerivedStateFromProps(nextProps: Readonly<ICheckboxProps>, prevState: Readonly<ICheckboxState>): ICheckboxState | null;
-    // (undocumented)
-    readonly indeterminate: boolean;
-    render(): JSX.Element;
-}
+export const CheckboxBase: React.ForwardRefExoticComponent<ICheckboxProps & React.RefAttributes<HTMLDivElement>>;
 
 // @public (undocumented)
 export enum CheckboxVisibility {

@@ -21,7 +21,7 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
 // @public
-export function useId(prefix?: string): string;
+export function useId(prefix?: string, providedId?: string): string;
 
 
 // (No @packageDocumentation comment for this package)
