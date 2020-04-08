@@ -86,6 +86,7 @@ steps:
     condition: ne(variables.buildReason, 'PullRequest')
     displayName: Performance Tests (master only)
 
+  # HEADS UP: also see tag-version-prefix in fluentui-publish.js
   - script: |
       yarn stats:save --tag=`git tag --points-at HEAD | grep -o 'northstar_v.*'`
     condition: ne(variables.buildReason, 'PullRequest')
