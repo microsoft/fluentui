@@ -1,22 +1,14 @@
 import { gridCellMultipleFocusableBehavior, gridCellWithFocusableElementBehavior } from '@fluentui/accessibility';
-import {
-  Avatar,
-  Button,
-  Checkbox,
-  Dropdown,
-  Flex,
-  Icon,
-  Menu,
-  MenuButton,
-  Text,
-  Table,
-} from '@fluentui/react-northstar';
+import { Avatar, Button, Checkbox, Dropdown, Flex, Menu, MenuButton, Text, Table } from '@fluentui/react-northstar';
 import * as React from 'react';
 import chatProtoStyle from '.././chatPane/chatProtoStyle';
 import { ComponentPrototype, PrototypeSection } from '../Prototypes';
 import AdvancedTable, { stringCellComparator } from './AdvancedTable';
 import InteractiveTable from './InteractiveTable';
 import ResponsiveTableContainer from './ResponsiveTableContainer';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
+import SelectableTable from './SelectableTable';
+import { BookmarkIcon } from '@fluentui/react-icons-northstar';
 
 function handleRowClick(index) {
   alert(`OnClick on the row ${index} executed.`);
@@ -108,7 +100,7 @@ const rowsMembers = [
 
 const menuButton = (
   <MenuButton
-    trigger={<Button tabIndex={-1} icon="more" circular text iconOnly title="More options" />}
+    trigger={<Button tabIndex={-1} icon={<MoreIcon />} circular text iconOnly title="More options" />}
     menu={[
       '1',
       '2',
@@ -162,7 +154,7 @@ const rowsChannels = [
         key: '3',
       },
       { content: 'Some description', key: '5' },
-      { content: <Icon name="bookmark" title="Random icon" />, key: '6' },
+      { content: <BookmarkIcon title="Random icon" />, key: '6' },
       { content: 'yesterday', key: '7' },
       moreOptionButton,
     ],
@@ -220,6 +212,9 @@ export default () => (
       <ResponsiveTableContainer columns={responsiveColumnsConfigPriorityOrder}>
         <Table rows={rowsPerson} header={columnsPerson} arial-label="Persons" />
       </ResponsiveTableContainer>
+    </ComponentPrototype>
+    <ComponentPrototype title="Selectable table" description="Table with rows that can be selected">
+      <SelectableTable />
     </ComponentPrototype>
   </PrototypeSection>
 );

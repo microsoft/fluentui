@@ -191,19 +191,7 @@
   }
 
   function loadAppScripts() {
-    var scripts = [appPath + entryPointFilename + (isDev ? '.js' : '.min.js')];
-
-    if (!window.React) {
-      // Only needed for Fabric 5 and 6 (Fabric/Fluent UI 7 bundles React)
-      // DO NOT replace 16.3.2 with a newer version!
-      var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react.production.min.js';
-      var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom.production.min.js';
-
-      scripts.unshift(reactDomPath);
-      scripts.unshift(reactPath);
-    }
-
-    loadScripts(scripts);
+    loadScripts([appPath + entryPointFilename + (isDev ? '.js' : '.min.js')]);
 
     window.MonacoConfig = {
       baseUrl: appPath,

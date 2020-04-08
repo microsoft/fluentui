@@ -1,7 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Apr 2020 12:28:27 GMT and should not be manually modified.
 
+## 7.22.16
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
+## 7.22.12
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- Adding build tool dependency for type safety of scss modules. (dzearing@microsoft.com)
 ## 7.22.8
 Wed, 25 Mar 2020 12:30:04 GMT
 

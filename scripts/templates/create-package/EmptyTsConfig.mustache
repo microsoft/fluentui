@@ -20,7 +20,19 @@
     "paths": {
       "{{{packageNpmName}}}/lib/*": ["./src/*"],
       "{{{packageNpmName}}}": ["./src"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "asIs",
+          "customMatcher": "\\.scss$",
+          "dotenvOptions": {},
+          "postCssOptions": {},
+          "rendererOptions": {}
+        }
+      }
+    ]
   },
   "include": ["src"]
 }

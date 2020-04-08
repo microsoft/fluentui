@@ -4,9 +4,9 @@ import { mountWithProvider, findIntrinsicElement } from 'test/utils';
 import * as keyboardKey from 'keyboard-key';
 
 import Attachment from 'src/components/Attachment/Attachment';
-import Text from 'src/components/Text/Text';
-import Icon from 'src/components/Icon/Icon';
+import Box from 'src/components/Box/Box';
 import Button from 'src/components/Button/Button';
+import Text from 'src/components/Text/Text';
 import { ReactWrapper } from 'enzyme';
 
 const attachmentImplementsShorthandProp = implementsShorthandProp(Attachment);
@@ -25,14 +25,12 @@ const getAttachment = (onClickAttachment: jest.Mock, onClickButton: jest.Mock): 
 };
 
 describe('Attachment', () => {
-  isConformant(Attachment);
-  attachmentImplementsShorthandProp('header', Text);
-  attachmentImplementsShorthandProp('description', Text);
-  attachmentImplementsShorthandProp('icon', Icon, {
-    mapsValueToProp: 'name',
-    requiredShorthandProps: { name: 'at' },
-  });
+  isConformant(Attachment, { constructorName: 'Attachment' });
+
   attachmentImplementsShorthandProp('action', Button);
+  attachmentImplementsShorthandProp('description', Text);
+  attachmentImplementsShorthandProp('icon', Box, { mapsValueToProp: 'children' });
+  attachmentImplementsShorthandProp('header', Text);
 
   describe('accessibility', () => {
     handlesAccessibility(Attachment, {
