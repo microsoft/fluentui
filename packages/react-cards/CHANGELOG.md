@@ -1,7 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
+This log was last generated on Wed, 08 Apr 2020 12:28:27 GMT and should not be manually modified.
 
+## 0.109.53
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
 ## 0.109.45
 Wed, 25 Mar 2020 12:30:04 GMT
 
