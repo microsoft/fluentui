@@ -22,16 +22,16 @@ export async function renderHeader(renderInfo: PackageChangelogRenderInfo): Prom
 
   // Also include a compare link to the previous tag if available
   const previousTag = previousJson?.entries?.[0]?.tag;
-  const compareLink = tag && previousTag ? `[Compare changes](${repoUrl}/compare/${previousTag}..${tag})` : '';
+  const compareLink = tag && previousTag ? `<br/>\n[Compare changes](${repoUrl}/compare/${previousTag}..${tag})` : '';
 
-  return `## ${header}\n${date.toUTCString()}\n${compareLink}`.trim();
+  return `## ${header}\n\n${date.toUTCString()}${compareLink}`;
 }
 
 export async function renderEntry(entry: ChangelogEntry): Promise<string> {
   // Link to the PR for this changelog entry (or the commit if PR isn't found)
   const prNumber = await _getPrNumber(entry);
   const commitLink = prNumber
-    ? `[PR #${prNumber}](${repoUrl}/pulls/${prNumber})`
+    ? `[PR #${prNumber}](${repoUrl}/pull/${prNumber})`
     : `[commit](${repoUrl}/commit/${entry.commit})`;
   return `- ${entry.comment} (${commitLink} by ${entry.author})`;
 }
