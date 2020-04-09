@@ -1,6 +1,5 @@
 import * as React from 'react';
-// @ts-ignore
-import { css, getNativeProps, htmlElementProperties } from '@uifabric/utilities/src';
+import { css, getNativeProps, htmlElementProperties } from '@uifabric/utilities';
 import { classNames, MS_ICON } from 'office-ui-fabric-react/src/components/Icon/SvgIcon.styles';
 import { ISvgIconProps } from 'office-ui-fabric-react/src/components/Icon/SvgIcon.types';
 
