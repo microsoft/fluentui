@@ -6003,6 +6003,12 @@ export interface IPanelStyles {
     overlay: IStyle;
     root: IStyle;
     scrollableContent: IStyle;
+    subComponentStyles: IPanelSubComponentStyles;
+}
+
+// @public (undocumented)
+export interface IPanelSubComponentStyles {
+    closeButton: Partial<IButtonStyles>;
 }
 
 // @public (undocumented)
