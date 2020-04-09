@@ -421,7 +421,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     const { children, renderedItems } = this.props;
 
     return (
-      <TreeContext.Provider value={{ ...this.contextValue }}>
+      <TreeContext.Provider value={this.contextValue}>
         <Ref innerRef={this.treeRef}>
           <ElementType
             className={classes.root}
