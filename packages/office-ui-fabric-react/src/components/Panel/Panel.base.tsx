@@ -332,7 +332,9 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
   private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton, onRenderHeader = this._onRenderHeader } = props;
     if (hasCloseButton) {
-      const iconButtonStyles = this._classNames.subComponentStyles.closeButton();
+      const iconButtonStyles = this._classNames.subComponentStyles
+        ? this._classNames.subComponentStyles.closeButton()
+        : undefined;
 
       return (
         <>
