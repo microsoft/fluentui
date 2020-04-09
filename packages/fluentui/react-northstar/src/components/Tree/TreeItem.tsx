@@ -283,7 +283,7 @@ TreeItem.propTypes = {
   renderItemTitle: PropTypes.func,
   treeSize: PropTypes.number,
   title: customPropTypes.itemShorthand,
-  selectionIndicator: customPropTypes.itemShorthand,
+  selectionIndicator: customPropTypes.shorthandAllowingChildren,
   selected: PropTypes.bool,
   selectable: PropTypes.bool,
   selectableParent: PropTypes.bool,
