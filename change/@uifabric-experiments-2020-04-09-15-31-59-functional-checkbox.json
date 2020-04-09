@@ -1,0 +1,9 @@
+{
+  "type": "none",
+  "comment": "applying package updates",
+  "packageName": "@uifabric/experiments",
+  "email": "miclo@microsoft.com",
+  "commit": "9345093760dad3ebad62a6234453817a080c022d",
+  "dependentChangeType": "none",
+  "date": "2020-04-09T15:31:24.633Z"
+}
