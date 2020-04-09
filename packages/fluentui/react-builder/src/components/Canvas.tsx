@@ -84,7 +84,7 @@ const Canvas = ({
         {({ document, window }) => (
           <>
             {(!jsonTree.children || jsonTree.children.length === 0) && (
-              <div style={{ padding: '8rem', textAlign: 'center' }}>
+              <div style={{ padding: '8rem', textAlign: 'center', position: 'absolute', pointerEvents: 'none' }}>
                 <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
                   👈
                 </span>
@@ -104,7 +104,6 @@ const Canvas = ({
               {onMouseMove && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {onMouseUp && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
               {renderJSONTreeToJSXElement(jsonTree)}
-              <div>bellow</div>
             </Provider>
           </>
         )}

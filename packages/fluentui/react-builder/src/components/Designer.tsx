@@ -69,22 +69,22 @@ class Designer extends React.Component<any, DesignerState> {
     };
   }
 
-  getDefaultJSONTree = (): JSONTreeElement => {
-    return {
+  // TEMPORARY DEBUG DATA
+  nestedChildren = [
+    {
       uuid: getUUID(),
-      type: 'div',
-      props: {
-        style: {
-          padding: '3rem',
-          background: 'red',
-          border: '2px dotted gray',
-        },
-      },
+      type: 'Segment',
       children: [
         {
           uuid: getUUID(),
-          type: 'Segment',
+          type: 'Button',
+          props: { content: 'click me' },
+        },
+        {
+          uuid: getUUID(),
+          type: 'div',
           children: [
+            'This is div',
             {
               uuid: getUUID(),
               type: 'Button',
@@ -92,31 +92,32 @@ class Designer extends React.Component<any, DesignerState> {
             },
             {
               uuid: getUUID(),
-              type: 'div',
+              type: 'Segment',
               children: [
-                'This is div',
+                'Hello there!',
                 {
                   uuid: getUUID(),
                   type: 'Button',
                   props: { content: 'click me' },
-                },
-                {
-                  uuid: getUUID(),
-                  type: 'Segment',
-                  children: [
-                    'Hello there!',
-                    {
-                      uuid: getUUID(),
-                      type: 'Button',
-                      props: { content: 'click me' },
-                    },
-                  ],
                 },
               ],
             },
           ],
         },
       ],
+    },
+  ];
+
+  getDefaultJSONTree = (): JSONTreeElement => {
+    return {
+      uuid: getUUID(),
+      type: 'div',
+      props: {
+        style: {
+          minHeight: '100vh',
+          padding: '3rem',
+        },
+      },
     };
   };
 
