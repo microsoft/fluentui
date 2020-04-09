@@ -26,10 +26,20 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
     keytipProps,
     title,
     label,
+    onChange,
   } = props;
 
   const checkBox = React.useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked);
+  const [isChecked, setIsChecked] = useControllableValue(
+    props.checked,
+    props.defaultChecked,
+    React.useCallback(
+      (newValue: boolean, ev: React.ChangeEvent<HTMLElement>) => {
+        onChange?.(ev, newValue);
+      },
+      [onChange],
+    ),
+  );
   const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
 
   useDebugWarning(props);
@@ -75,28 +85,17 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
 
   const _onChange = React.useCallback(
     (ev: React.ChangeEvent<HTMLElement>): void => {
-      const { onChange, checked, indeterminate } = props;
-
       if (!isIndeterminate) {
-        if (onChange) {
-          onChange(ev, !isChecked);
-        }
-        if (checked === undefined) {
-          setIsChecked(!isChecked);
-        }
+        setIsChecked(!isChecked, ev);
       } else {
         // If indeterminate, clicking the checkbox *only* removes the indeterminate state (or if
         // controlled, lets the consumer know to change it by calling onChange). It doesn't
         // change the checked state.
-        if (onChange) {
-          onChange(ev, isChecked);
-        }
-        if (indeterminate === undefined) {
-          setIsIndeterminate(false);
-        }
+        setIsChecked(!!isChecked, ev);
+        setIsIndeterminate(false);
       }
     },
-    [props.onChange, props.checked, props.indeterminate, isChecked, isIndeterminate],
+    [isChecked, isIndeterminate],
   );
   //#endregion
 
