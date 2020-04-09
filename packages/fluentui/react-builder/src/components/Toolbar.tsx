@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { Button, Checkbox } from '@fluentui/react-northstar';
+import { Button, Checkbox, Text } from '@fluentui/react-northstar';
 import Logo from '@fluentui/docs/src/components/Logo/Logo';
 import { DesignerMode } from './types';
+import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
 
 const Toolbar = ({
   style,
@@ -47,6 +48,9 @@ const Toolbar = ({
       checked={mode === 'use'}
       onChange={(e, data) => onModeChange(data.checked ? 'use' : 'build')}
     />
+    <Text as="a" href="/builder/maximize" target="_blank" rel="noopener noreferrer">
+      <OpenOutsideIcon />
+    </Text>
     {mode === 'build' && (
       <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
         &emsp;

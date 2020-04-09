@@ -19,6 +19,8 @@ import {
   resolveDraggingProps,
   resolveDrop,
 } from '../config';
+import { readTreeFromStore, removeTreeFromStore, writeTreeToStore } from '../utils/treeStore';
+
 import { DesignerMode, JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { CodeSnippet } from '@fluentui/docs-components';
@@ -52,10 +54,7 @@ class Designer extends React.Component<any, DesignerState> {
   constructor(props) {
     super(props);
 
-    const storedJSONTree = localStorage.getItem('jsonTree');
-
-    // TODO: Initialize JSON tree drop listeners
-    const jsonTree = storedJSONTree ? JSON.parse(storedJSONTree) : null;
+    const jsonTree = readTreeFromStore();
 
     this.state = {
       draggingElement: null,
@@ -122,12 +121,12 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<DesignerState>, snapshot?: any): void {
-    localStorage.setItem('jsonTree', JSON.stringify(this.state.jsonTree));
+    writeTreeToStore(this.state.jsonTree);
   }
 
   handleReset = () => {
     if (confirm('Lose your changes?')) {
-      localStorage.removeItem('jsonTree');
+      removeTreeFromStore();
 
       this.setState({
         jsonTree: this.getDefaultJSONTree(),

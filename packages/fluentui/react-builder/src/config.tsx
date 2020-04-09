@@ -335,6 +335,10 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
 //       It is internal implementation details.
 
 export const renderJSONTreeToJSXElement = (tree: any) => {
+  if (tree === null) {
+    return null;
+  }
+
   let { children = null } = tree;
 
   if (Array.isArray(children)) {
