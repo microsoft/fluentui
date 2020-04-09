@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`] = `
+exports[`Component Examples renders ComboBox.ControlledMulti.Example.tsx correctly 1`] = `
 <div
   className="ms-ComboBox-container "
   style={
@@ -35,7 +35,28 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
         }
     id="ComboBox0-label"
   >
-    Controlled single-select ComboBox (allowFreeform: T)
+    Controlled multi-select ComboBox (allowFreeform: T)
+    <span
+      className=
+
+          {
+            border: 0px;
+            height: 1px;
+            margin-bottom: -1px;
+            margin-left: -1px;
+            margin-right: -1px;
+            margin-top: -1px;
+            overflow: hidden;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: absolute;
+            width: 1px;
+          }
+    >
+      Option C, Option D
+    </span>
   </label>
   <div
     className=
@@ -234,7 +255,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
       role="combobox"
       spellCheck={false}
       type="text"
-      value="Option C"
+      value="Option C, Option D"
     />
     <button
       aria-hidden={true}
