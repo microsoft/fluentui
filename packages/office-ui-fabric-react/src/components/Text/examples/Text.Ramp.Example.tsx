@@ -1,8 +1,6 @@
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IFontStyles } from 'office-ui-fabric-react/lib/Styling';
 import {
   DetailsList,
-  IColumn,
   DetailsListLayoutMode,
   SelectionMode,
   DetailsRow,
@@ -12,11 +10,7 @@ import * as React from 'react';
 
 const TestText = 'The quick brown fox jumped over the lazy dog.';
 
-interface ISetting<TType> {
-  name: TType;
-}
-
-const Variants: ISetting<keyof IFontStyles>[] = [
+const Variants = [
   { name: 'tiny' },
   { name: 'xSmall' },
   { name: 'small' },
@@ -29,63 +23,85 @@ const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'mega' },
 ];
 
-export interface ITextRampExampleItem {
-  key: string;
-  variant: string;
-  example: JSX.Element;
-}
+const renderDetailsRow = (props: IDetailsRowProps) => <DetailsRow {...props} styles={{ root: { color: 'inherit' } }} />;
 
-export interface ITextRampExampleState {
-  items: ITextRampExampleItem[];
-}
+const allItems = [];
 
-export class TextRampExample extends React.Component<{}, ITextRampExampleState> {
-  private _allItems: ITextRampExampleItem[];
-  private _columns: IColumn[];
+Variants.forEach((setting, index: number) =>
+  allItems.push({
+    key: setting.name + index,
+    variant: setting.name,
+    example: (
+      <Text key={setting.name + 'text' + index} variant={setting.name} nowrap block>
+        {TestText}
+      </Text>
+    ),
+  }),
+);
 
-  constructor(props: {}) {
-    super(props);
+const columns = [
+  { key: 'column1', name: 'Variant', fieldName: 'variant', minWidth: 100, maxWidth: 150, isResizable: true },
+  { key: 'column2', name: 'Example', fieldName: 'example', minWidth: 200, maxWidth: 1600, isResizable: true },
+];
 
-    this._allItems = [];
+export const TextRampExample: React.FC = () => (
+  <DetailsList
+    items={allItems}
+    columns={columns}
+    setKey="set"
+    selectionMode={SelectionMode.none}
+    layoutMode={DetailsListLayoutMode.fixedColumns}
+    onRenderRow={renderDetailsRow}
+  />
+);
 
-    Variants.forEach((setting: ISetting<keyof IFontStyles>, index: number) =>
-      this._allItems.push({
-        key: setting.name + index,
-        variant: setting.name,
-        example: (
-          <Text key={setting.name + 'text' + index} variant={setting.name} nowrap block>
-            {TestText}
-          </Text>
-        ),
-      }),
-    );
+// export class TextRampExample extends React.Component<{}, ITextRampExampleState> {
+//   private _allItems: ITextRampExampleItem[];
+//   private _columns: IColumn[];
 
-    this._columns = [
-      { key: 'column1', name: 'Variant', fieldName: 'variant', minWidth: 100, maxWidth: 150, isResizable: true },
-      { key: 'column2', name: 'Example', fieldName: 'example', minWidth: 200, maxWidth: 1600, isResizable: true },
-    ];
+//   constructor(props: {}) {
+//     super(props);
 
-    this.state = {
-      items: this._allItems,
-    };
-  }
+//     this._allItems = [];
 
-  public render(): JSX.Element {
-    const { items } = this.state;
+//     Variants.forEach((setting: ISetting<keyof IFontStyles>, index: number) =>
+//       this._allItems.push({
+//         key: setting.name + index,
+//         variant: setting.name,
+//         example: (
+//           <Text key={setting.name + 'text' + index} variant={setting.name} nowrap block>
+//             {TestText}
+//           </Text>
+//         ),
+//       }),
+//     );
 
-    return (
-      <DetailsList
-        items={items}
-        columns={this._columns}
-        setKey="set"
-        selectionMode={SelectionMode.none}
-        layoutMode={DetailsListLayoutMode.fixedColumns}
-        onRenderRow={this._renderDetailsRow}
-      />
-    );
-  }
+//     this._columns = [
+//       { key: 'column1', name: 'Variant', fieldName: 'variant', minWidth: 100, maxWidth: 150, isResizable: true },
+//       { key: 'column2', name: 'Example', fieldName: 'example', minWidth: 200, maxWidth: 1600, isResizable: true },
+//     ];
 
-  private _renderDetailsRow(props: IDetailsRowProps): JSX.Element {
-    return <DetailsRow {...props} styles={{ root: { color: 'inherit' } }} />;
-  }
-}
+//     this.state = {
+//       items: this._allItems,
+//     };
+//   }
+
+//   public render(): JSX.Element {
+//     const { items } = this.state;
+
+//     return (
+//       <DetailsList
+//         items={items}
+//         columns={this._columns}
+//         setKey="set"
+//         selectionMode={SelectionMode.none}
+//         layoutMode={DetailsListLayoutMode.fixedColumns}
+//         onRenderRow={this._renderDetailsRow}
+//       />
+//     );
+//   }
+
+//   private _renderDetailsRow(props: IDetailsRowProps): JSX.Element {
+//     return <DetailsRow {...props} styles={{ root: { color: 'inherit' } }} />;
+//   }
+// }
