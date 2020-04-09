@@ -24,6 +24,7 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { CodeSnippet } from '@fluentui/docs-components';
 import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
 import { ComponentDesignProp } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
 
 const HEADER_HEIGHT = '3rem';
 
@@ -35,7 +36,6 @@ const getUUID = () =>
 export type DesignerState = {
   selectedJSONTreeElement: any;
   draggingElement: JSONTreeElement;
-  draggingPosition: { x: number; y: number };
   isSelecting: boolean;
   jsonTree: JSONTreeElement;
   mode: DesignerMode;
@@ -46,6 +46,8 @@ export type DesignerState = {
 
 class Designer extends React.Component<any, DesignerState> {
   potentialDropTarget: JSONTreeElement | null = null;
+  draggingPosition: { x: number; y: number } = { x: 0, y: 0 };
+  draggingElementRef = React.createRef<HTMLElement>();
 
   constructor(props) {
     super(props);
@@ -57,7 +59,6 @@ class Designer extends React.Component<any, DesignerState> {
 
     this.state = {
       draggingElement: null,
-      draggingPosition: { x: 0, y: 0 },
       isSelecting: false,
       jsonTree: jsonTree || this.getDefaultJSONTree(),
       mode: 'build',
@@ -151,21 +152,24 @@ class Designer extends React.Component<any, DesignerState> {
         displayName: info.displayName,
         props: resolveDraggingProps(info.displayName),
       },
-      draggingPosition: { x: e.clientX, y: e.clientY },
     });
+    this.draggingPosition = { x: e.clientX, y: e.clientY };
   };
 
   handleDragAbort = () => {
     this.stopSelecting();
     this.setState({
       draggingElement: null,
-      draggingPosition: null,
     });
   };
 
   handleDrag = (e: MouseEvent) => {
     // console.log('Designer:handleDrag', this.state.draggingDisplayName, e)
-    this.setState({ draggingPosition: { x: e.clientX, y: e.clientY } });
+    this.draggingPosition = { x: e.clientX, y: e.clientY };
+    if (this.draggingElementRef.current) {
+      this.draggingElementRef.current.style.left = `${this.draggingPosition.x}px`;
+      this.draggingElementRef.current.style.top = `${this.draggingPosition.y}px`;
+    }
   };
 
   handleCanvasMouseUp = () => {
@@ -177,7 +181,7 @@ class Designer extends React.Component<any, DesignerState> {
 
       if (this.potentialDropTarget) {
         // TODO: it sucks we have to rely on referential mutation of the jsonTree to update it.
-        //       example, here we can't simply drop 'draggingElement' on 'selectedJSONTreeElement'.
+        //       example, here we can't simply drop 'draggingElement' on 'potentialDropTarget'.
         //       otherwise, it won't get updated in state because it isn't a reference to the jsonTree element.
         //       we first must get a reference to the element with the same uuid, then mutated that reference. womp.
         const droppedOn = jsonTreeFindElement(jsonTree, this.potentialDropTarget.uuid);
@@ -269,7 +273,6 @@ class Designer extends React.Component<any, DesignerState> {
   render() {
     const {
       draggingElement,
-      draggingPosition,
       isSelecting,
       jsonTree,
       mode,
@@ -295,21 +298,23 @@ class Designer extends React.Component<any, DesignerState> {
           <>
             <EventListener type="mousemove" listener={this.handleDrag} target={document} />
             <EventListener type="mouseup" listener={this.handleDragAbort} target={document} />
-            <div
-              style={{
-                display: 'block',
-                flex: '0 0 auto',
-                position: 'fixed',
-                ...(draggingPosition && {
-                  left: draggingPosition.x,
-                  top: draggingPosition.y,
-                }),
-                pointerEvents: 'none',
-                zIndex: 999999,
-              }}
-            >
-              {React.createElement(resolveComponent(draggingElement.type), draggingElement.props)}
-            </div>
+            <Ref innerRef={this.draggingElementRef}>
+              <div
+                style={{
+                  display: 'block',
+                  flex: '0 0 auto',
+                  position: 'fixed',
+                  ...(this.draggingPosition && {
+                    left: this.draggingPosition.x,
+                    top: this.draggingPosition.y,
+                  }),
+                  pointerEvents: 'none',
+                  zIndex: 999999,
+                }}
+              >
+                {React.createElement(resolveComponent(draggingElement.type), draggingElement.props)}
+              </div>
+            </Ref>
           </>
         )}
 
