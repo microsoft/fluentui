@@ -1,56 +1,22 @@
 import * as React from 'react';
-import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 import { ISelectedItemsList, ISelectedItemsListProps, BaseSelectedItem } from './SelectedItemsList.types';
-import { copyToClipboard } from './utils/copyToClipboard';
-
-const useSelectedIndeces = (inputSelection: Selection | undefined): [Selection, number[]] => {
-  const selection: Selection = React.useMemo(
-    () =>
-      inputSelection
-        ? inputSelection
-        : new Selection({
-            onSelectionChanged: () => {
-              // selectedIndeces depends on selection, which has to be initialized
-              // with the setSelectedIndeces callback. Capture it in a closure.
-              //
-              // tslint:disable-next-line:no-use-before-declare
-              setSelectedIndeces(selection.getSelectedIndices());
-            },
-          }),
-    [inputSelection],
-  );
-
-  const [selectedIndices, setSelectedIndeces] = React.useState(selection.getSelectedIndices());
-  return [selection, selectedIndices];
-};
 
 const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   props: ISelectedItemsListProps<TItem>,
   ref: React.Ref<ISelectedItemsList<TItem>>,
 ) => {
-  const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
-  const renderedItems = React.useMemo(() => props.selectedItems || items, [items, props.selectedItems]);
-
-  // Selection which initializes at the beginning of the component and
-  // only updates if seleciton becomes set in props (e.g. compoennt transitions from
-  // being controlled to uncontrolled)
-  const [selection, selectedIndices] = useSelectedIndeces(props.selection);
-  const itemsInSelection = React.useMemo(
-    () => selectedIndices.filter(i => i > 0 && i < items.length).map(i => items[i]),
-    [items, selectedIndices],
-  );
+  const [items, updateItems] = React.useState(props.selectedItems || []);
+  const renderedItems = React.useMemo(() => items, [items]);
 
   React.useEffect(() => {
-    selection.setItems(items);
-  });
+    updateItems(props.selectedItems || []);
+  }, [props.selectedItems]);
 
-  const removeItems = React.useCallback(
-    (itemsToRemove: TItem[]): void => {
-      updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
-    },
-    [items],
-  );
+  const removeItems = (itemsToRemove: TItem[]): void => {
+    updateItems(items.filter(item => itemsToRemove.indexOf(item) === -1));
+    props.onItemsRemoved ? props.onItemsRemoved(itemsToRemove) : null;
+  };
 
   const replaceItem = React.useCallback(
     (newItem: TItem | TItem[], index: number): void => {
@@ -65,39 +31,6 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     [updateItems, items],
   );
 
-  const copyItemsInSelection = React.useCallback((): void => {
-    if (props.getItemCopyText && selectedIndices.length > 0) {
-      const copyText = props.getItemCopyText(itemsInSelection);
-      copyToClipboard(copyText);
-    }
-  }, [itemsInSelection, selectedIndices]);
-
-  // Callbacks only used in the imperitive handle
-
-  const addItems = React.useCallback(
-    (newItems: TItem[]) => {
-      updateItems(items.concat(newItems));
-    },
-    [items],
-  );
-
-  const unselectAll = React.useCallback(() => {
-    selection.setAllSelected(false);
-  }, [items]);
-
-  // For usage as a controlled component with a ref
-  React.useImperativeHandle(
-    ref,
-    (): ISelectedItemsList<TItem> => ({
-      items,
-      itemsInSelection,
-      addItems,
-      unselectAll,
-      removeItems,
-    }),
-    [items, addItems],
-  );
-
   const onRemoveItemCallbacks = React.useMemo(
     () =>
       // create callbacks ahead of time with memo.
@@ -109,18 +42,18 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {renderedItems.map((item: TItem, index: number) => (
-        <SelectedItem
-          item={item}
-          index={index}
-          key={item.key !== undefined ? item.key : index}
-          selected={selectedIndices.indexOf(index) !== -1}
-          removeButtonAriaLabel={props.removeButtonAriaLabel}
-          onRemoveItem={onRemoveItemCallbacks[index]}
-          onItemChange={replaceItem}
-          onCopyItem={copyItemsInSelection}
-        />
-      ))}
+      {SelectedItem &&
+        renderedItems.map((item: TItem, index: number) => (
+          <SelectedItem
+            item={item}
+            index={index}
+            key={item.key !== undefined ? item.key : index}
+            selected={props.focusedItemIndices?.includes(index)}
+            removeButtonAriaLabel={props.removeButtonAriaLabel}
+            onRemoveItem={onRemoveItemCallbacks[index]}
+            onItemChange={replaceItem}
+          />
+        ))}
     </>
   );
 };
