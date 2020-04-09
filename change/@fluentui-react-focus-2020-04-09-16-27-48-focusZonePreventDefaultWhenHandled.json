@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "FocusZone: Adding preventDefaultWhenHandled to v7 version.",
+  "packageName": "@fluentui/react-focus",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-09T23:27:48.048Z"
+}
