@@ -8,9 +8,8 @@ import {
   IContextualMenuItemStyles,
   IContextualMenuStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
-import { IButtonStyles } from '../../Button';
-import { concatStyleSets } from '@uifabric/styling';
+import { getTheme, concatStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const theme = getTheme();

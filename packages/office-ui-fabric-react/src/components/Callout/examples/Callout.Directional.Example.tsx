@@ -12,8 +12,8 @@ import {
   FontWeights,
   Link,
   getId,
+  ICheckboxStyles,
 } from 'office-ui-fabric-react';
-import { ICheckboxStyles } from 'office-ui-fabric-react/lib/components/Checkbox';
 
 export interface ICalloutDirectionalExampleState {
   isCalloutVisible?: boolean;

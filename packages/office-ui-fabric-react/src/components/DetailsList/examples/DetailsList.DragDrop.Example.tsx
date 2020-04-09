@@ -12,9 +12,8 @@ import {
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { createListItems, IExampleItem } from '@uifabric/example-data';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { IToggleStyles } from '../../Toggle';
 
 const theme = getTheme();
 const margin = '0 30px 20px 0';

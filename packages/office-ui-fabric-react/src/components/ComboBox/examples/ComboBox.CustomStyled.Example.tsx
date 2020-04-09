@@ -6,8 +6,8 @@ import {
   Fabric,
   mergeStyles,
   IButtonStyles,
+  IComboBoxStyles,
 } from 'office-ui-fabric-react';
-import { IComboBoxStyles } from 'office-ui-fabric-react/lib/components/ComboBox/ComboBox.types';
 
 const wrapperClassName = mergeStyles({
   selectors: {

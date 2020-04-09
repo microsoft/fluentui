@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IComboBoxOption, VirtualizedComboBox, Fabric } from 'office-ui-fabric-react/lib/index';
-import { IComboBoxStyles } from '../ComboBox.types';
+import { IComboBoxOption, IComboBoxStyles, VirtualizedComboBox, Fabric } from 'office-ui-fabric-react';
 
 const comboBoxStyles: Partial<IComboBoxStyles> = { root: { maxWidth: '300px' } };
 
