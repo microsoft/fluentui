@@ -1,11 +1,12 @@
-const GitHubApi = require('@octokit/rest');
-const yargs = require('yargs');
+import GitHubApi from '@octokit/rest';
+import * as yargs from 'yargs';
+import { fluentRepoDetails } from '../github/index';
 
 const tokenMsg =
   '\nA GitHub personal access token is required even for dry runs due to the potential high rate of requests.\n' +
   'Generate one here: https://github.com/settings/tokens\n';
 
-const argv = yargs
+export const argv = yargs
   .option('token', { describe: 'GitHub personal access token', type: 'string', required: tokenMsg })
   .option('apply', {
     describe: 'Actually apply changes (without this option, do a dry run)',
@@ -25,8 +26,8 @@ const argv = yargs
   .option('debug', { describe: 'Use debug mode for the GitHub API', type: 'boolean', default: false })
   // Default to checking the past 5 days in case there were any missed days or other issues
   .option('age', { describe: 'Get tags/releases up to this many days old', type: 'number', default: 5 })
-  .option('owner', { describe: 'Owner of the repo to work against', type: 'string', default: 'microsoft' })
-  .option('repo', { describe: 'Repo to work against', type: 'string', default: 'fluentui' })
+  .option('owner', { describe: 'Owner of the repo to work against', type: 'string', default: fluentRepoDetails.owner })
+  .option('repo', { describe: 'Repo to work against', type: 'string', default: fluentRepoDetails.repo })
   .version(false)
   .help().argv;
 
@@ -41,12 +42,13 @@ if (argv.token === 'your token here') {
   process.exit(1);
 }
 
-const repoDetails = {
+export const repoDetails = {
   owner: argv.owner,
   repo: argv.repo,
 };
 
 // Authenticate with github and set up logging if debug arg is provided
-const github = new GitHubApi({ ...(argv.debug ? { log: console } : {}), auth: 'token ' + argv.token });
-
-module.exports = { argv, repoDetails, github };
+export const github = new GitHubApi({
+  ...(argv.debug && { log: console }),
+  auth: 'token ' + argv.token,
+});

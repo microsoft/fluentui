@@ -1,18 +1,14 @@
-// @ts-check
-/// <reference path="./index.d.ts" />
-
-const GitHubApi = require('@octokit/rest');
-const { repoDetails, github } = require('./init');
+import * as GitHubApi from '@octokit/rest';
+import { repoDetails, github } from './init';
+import { IRelease } from './types';
 
 /**
  * Gets all releases from github.
- * @param {string[]} [tags] - If provided, only get the releases for these tags (it's okay if a tag
+ * @param tags - If provided, only get the releases for these tags (it's okay if a tag
  * doesn't have a release yet). Otherwise get all the releases.
- * @returns {Promise<Map<string, IRelease>>}
  */
-async function getReleases(tags) {
-  /** @type {Map<string, IRelease>} */
-  const releases = new Map();
+export async function getReleases(tags?: string[]): Promise<Map<string, IRelease>> {
+  const releases = new Map<string, IRelease>();
 
   if (tags) {
     // Only get a subset of releases
@@ -36,8 +32,9 @@ async function getReleases(tags) {
     // Get all the releases
     console.log('Getting all releases...');
     try {
-      /** @type {GitHubApi.ReposListReleasesResponseItem[]} */
-      const res = await github.paginate(github.repos.listReleases.endpoint.merge(repoDetails));
+      const res: GitHubApi.ReposListReleasesResponseItem[] = await github.paginate(
+        github.repos.listReleases.endpoint.merge(repoDetails),
+      );
 
       res.forEach(release => {
         releases.set(release.tag_name, { id: release.id, tagName: release.tag_name });
@@ -51,5 +48,3 @@ async function getReleases(tags) {
 
   return releases;
 }
-
-module.exports = { getReleases };
