@@ -32,10 +32,6 @@ const DayPickerStrings: IDatePickerStrings = {
   closeButtonAriaLabel: 'Close date picker',
 };
 
-export interface IDatePickerDisabledExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
-
 const controlClass = mergeStyleSets({
   control: {
     margin: '0 0 15px 0',
