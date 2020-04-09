@@ -6,7 +6,7 @@ const BorderBlindsIcon = createSvgIconWithRoot<{ color1?: string; color2?: strin
   // TODO: convert classNames.svg to selector to selector
 
   children: ({ classNames, props, processedRootProps }) => {
-    const { className, ...restRootPRops } = processedRootProps;
+    const { className, ...restRootProps } = processedRootProps;
     const { color1 = 'red', color2 = 'green', color3 = 'blue' } = props;
 
     const classesOverrides = mergeStyles(className, {
