@@ -41,7 +41,7 @@ export async function getPullRequestForCommit(
       return processPullRequestApiResponse(prs[0], authorEmail);
     }
   } catch (ex) {
-    console.warn(`Error finding PR for ${commit}: ${ex}`);
+    console.warn(`Error finding PR for ${commit}`, ex);
     return;
   }
 

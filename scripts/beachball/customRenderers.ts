@@ -53,7 +53,7 @@ async function _getPrNumber(entry: ChangelogEntry): Promise<number | undefined> 
       }
     }
   } catch (ex) {
-    // ignore
+    console.log(`Could not get commit message for ${entry.commit} to find PR number (trying another method):`, ex);
   }
 
   // Or fetch from GitHub API
