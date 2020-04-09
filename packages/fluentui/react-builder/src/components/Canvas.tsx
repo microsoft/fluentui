@@ -84,7 +84,15 @@ const Canvas = ({
         {({ document, window }) => (
           <>
             {(!jsonTree.children || jsonTree.children.length === 0) && (
-              <div style={{ padding: '8rem', textAlign: 'center', position: 'absolute', pointerEvents: 'none' }}>
+              <div
+                style={{
+                  padding: '8rem',
+                  textAlign: 'center',
+                  position: 'absolute',
+                  pointerEvents: 'none',
+                  width: '100%',
+                }}
+              >
                 <span style={{ fontSize: '4rem' }} role="img" aria-label="Finger pointing left">
                   👈
                 </span>
