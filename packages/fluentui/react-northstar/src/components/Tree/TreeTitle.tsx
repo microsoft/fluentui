@@ -128,7 +128,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     className: TreeTitle.className,
     mapPropsToStyles: () => ({
       selected,
-      selectableParent: props.selectableParent,
+      selectableParent,
       disabled,
     }),
     mapPropsToInlineStyles: () => ({
