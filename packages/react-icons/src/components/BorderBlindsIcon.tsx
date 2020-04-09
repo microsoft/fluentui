@@ -26,7 +26,7 @@ const BorderBlindsIcon = createSvgIconWithRoot<{ color1?: string; color2?: strin
     });
 
     return (
-      <span {...restRootPRops} className={classesOverrides}>
+      <span {...restRootProps} className={classesOverrides}>
         <svg viewBox="0 0 40 40">
           <g transform="scale(0.03125 0.03125)">
             <path className="borderblinds-part1" d="M0 192l320-128v768l-320 128z" />
