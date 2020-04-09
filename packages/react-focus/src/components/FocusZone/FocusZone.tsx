@@ -75,6 +75,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
   public static defaultProps: IFocusZoneProps = {
     isCircularNavigation: false,
     direction: FocusZoneDirection.bidirectional,
+    preventDefaultWhenHandled: true,
   };
 
   private _disposables: Function[] = [];
@@ -500,6 +501,10 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
     }
   }
 
+  private _preventDefaultWhenHandled(ev: React.KeyboardEvent<HTMLElement>): void {
+    this.props.preventDefaultWhenHandled && ev.preventDefault();
+  }
+
   /**
    * Handle the keystrokes.
    */
@@ -568,26 +573,38 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           return;
 
         case KeyCodes.left:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusLeft()) {
-            break;
+          if (direction !== FocusZoneDirection.vertical) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusLeft()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.right:
-          if (direction !== FocusZoneDirection.vertical && this._moveFocusRight()) {
-            break;
+          if (direction !== FocusZoneDirection.vertical) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusRight()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.up:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusUp()) {
-            break;
+          if (direction !== FocusZoneDirection.horizontal) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusUp()) {
+              break;
+            }
           }
           return;
 
         case KeyCodes.down:
-          if (direction !== FocusZoneDirection.horizontal && this._moveFocusDown()) {
-            break;
+          if (direction !== FocusZoneDirection.horizontal) {
+            this._preventDefaultWhenHandled(ev);
+            if (this._moveFocusDown()) {
+              break;
+            }
           }
           return;
         case KeyCodes.pageDown:
