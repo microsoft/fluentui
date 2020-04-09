@@ -1,4 +1,3 @@
-// tslint:disable:jsx-wrap-multiline max-line-length
 import * as React from 'react';
 import { OneDriveIcon, YammerIcon, BorderBlindsIcon } from '@fluentui/react-icons';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
