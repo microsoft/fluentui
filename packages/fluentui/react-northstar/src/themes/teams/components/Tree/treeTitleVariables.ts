@@ -38,7 +38,7 @@ export default (siteVars: any): TreeTitleVariables => {
     selectionIndicatorMargin: `0 0 0 0`,
     background: 'transparent',
 
-    checkedBackground: _.get(siteVars, 'colorScheme.brand.backgroundActive1', defaultValue),
+    checkedBackground: siteVars.colorScheme.brand.backgroundActive1,
     checkedBorderColor: _.get(siteVars, 'colorScheme.brand.backgroundActive1', defaultValue),
     checkedIndicatorColor: _.get(siteVars, 'colorScheme.default.background', defaultValue),
 
