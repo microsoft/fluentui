@@ -33,13 +33,6 @@ export interface TreeSlotClassNames {
   item: string;
 }
 
-export type CustomSelectIndicatorProps = {
-  selectableParent: boolean;
-  selectable: boolean;
-  selected: boolean;
-  expanded: boolean;
-} & Record<string, unknown>;
-
 export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
   /** Accessibility behavior if overridden by the user. */
   accessibility?: Accessibility;
@@ -96,9 +89,6 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Whether or not tree items are selectable. */
   selectable?: boolean;
-
-  /** Allows user to pass a custom component to replace the current checkbox */
-  customSelectIndicator?: (props: CustomSelectIndicatorProps) => JSX.Element;
 }
 
 export interface TreeItemForRenderProps {
@@ -134,7 +124,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     selectedItemIds: customPropTypes.collectionShorthand,
     defaultActiveItemIds: customPropTypes.collectionShorthand,
     defaultSelectedItemIds: customPropTypes.collectionShorthand,
-    customSelectIndicator: PropTypes.any,
     exclusive: PropTypes.bool,
     selectable: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
@@ -365,7 +354,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     onSiblingsExpand: this.onSiblingsExpand,
     onFocusFirstChild: this.onFocusFirstChild,
     onTitleClick: this.onTitleClick,
-    customSelectIndicator: this.props.customSelectIndicator,
   };
 
   renderContent(accessibility: ReactAccessibilityBehavior): React.ReactElement[] {

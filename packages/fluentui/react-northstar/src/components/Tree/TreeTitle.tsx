@@ -8,7 +8,6 @@ import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { TreeContext } from './utils/index';
 
 import {
   childrenExist,
@@ -80,7 +79,6 @@ export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
-  const { customSelectIndicator } = React.useContext(TreeContext);
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
 
@@ -146,33 +144,22 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
     _.invoke(props, 'onClick', e, props);
   };
 
-  const selectIndicator = Box.create(
-    customSelectIndicator
-      ? {
-          selected,
-          selectable: selectable && !hasSubtree,
-          selectableParent,
-          expanded,
-        }
-      : selectionIndicator,
-    {
-      defaultProps: () => ({
-        as: customSelectIndicator || 'span',
-        ...getA11Props('indicator', {
-          className: TreeTitle.slotClassNames.indicator,
-          styles:
-            (hasSubtree && selectableParent && expanded) || customSelectIndicator
-              ? resolvedStyles.customSelectionIndicator
-              : !hasSubtree
-              ? resolvedStyles.selectionIndicator
-              : {
-                  // How to avoid this?
-                  display: 'none',
-                },
-        }),
+  const selectIndicator = Box.create(selectionIndicator, {
+    defaultProps: () => ({
+      as: 'span',
+      ...getA11Props('indicator', {
+        className: TreeTitle.slotClassNames.indicator,
+        styles:
+          selectableParent && expanded
+            ? resolvedStyles.customSelectionIndicator
+            : selectable && !hasSubtree
+            ? resolvedStyles.selectionIndicator
+            : {
+                display: 'none',
+              },
       }),
-    },
-  );
+    }),
+  });
 
   const element = (
     <ElementType
