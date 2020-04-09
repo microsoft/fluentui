@@ -3,10 +3,10 @@ import { Tree, CustomSelectIndicatorProps, Flex } from '@fluentui/react-northsta
 
 const customCheckbox = ({ selected, selectable, selectableParent, expanded, ...props }: CustomSelectIndicatorProps) => {
   return (
-    <>
-      <Flex {...props}>{selectableParent && expanded && 'custom select all'}</Flex>
-      {selectable && <input data-is-focusable={false} type="checkbox" readOnly checked={selected} {...props} />}
-    </>
+    <Flex {...props}>
+      {selectableParent && expanded && 'custom select all'}
+      {selectable && <input data-is-focusable={false} type="checkbox" readOnly checked={selected} />}
+    </Flex>
   );
 };
 
