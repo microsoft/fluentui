@@ -273,7 +273,6 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         height: commandBarHeight,
       },
     ],
-    closeButton: [],
     contentInner: [
       classNames.contentInner,
       {

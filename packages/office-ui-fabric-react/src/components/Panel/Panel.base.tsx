@@ -341,6 +341,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
           {!this._hasCustomNavigation && onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
           <IconButton
             styles={iconButtonStyles}
+            // tslint:disable-next-line:deprecation
             className={this._classNames.closeButton}
             onClick={this._onPanelClick}
             ariaLabel={closeButtonAriaLabel}

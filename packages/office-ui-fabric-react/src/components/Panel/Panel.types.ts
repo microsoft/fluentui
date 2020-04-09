@@ -4,8 +4,8 @@ import { ILayerProps } from '../../Layer';
 import { IOverlayProps } from '../../Overlay';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IButtonStyles } from '../Button/Button.types';
 import { PanelBase } from './Panel.base';
-import { IButtonStyles } from '../Button';
 
 /**
  * {@docCategory Panel}
@@ -475,8 +475,9 @@ export interface IPanelStyles {
 
   /**
    * Style for the close button IconButton element.
+   * @deprecated Use `subComponentStyles.closeButton` instead.
    */
-  closeButton: IStyle;
+  closeButton?: IStyle;
 
   /**
    * Style for the header container div element.

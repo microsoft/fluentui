@@ -4420,6 +4420,7 @@ export interface IDropdownStyles {
     dropdownOptionText: IStyle;
     errorMessage: IStyle;
     label: IStyle;
+    // @deprecated
     panel: IStyle;
     root: IStyle;
     subComponentStyles: IDropdownSubComponentStyles;
@@ -5989,7 +5990,8 @@ export interface IPanelStyleProps {
 
 // @public (undocumented)
 export interface IPanelStyles {
-    closeButton: IStyle;
+    // @deprecated
+    closeButton?: IStyle;
     commands: IStyle;
     content: IStyle;
     contentInner: IStyle;
