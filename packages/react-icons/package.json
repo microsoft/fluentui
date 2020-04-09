@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.9",
+    "@uifabric/utilities": "^7.15.5",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

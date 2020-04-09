@@ -1,9 +1,9 @@
 import { IIconStyleProps } from './Icon.types';
 import { ISvgIconStyles } from './SvgIcon.types';
-import { mergeStyleSets } from '../../Styling';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 /** Class names used in themeable and non-themeable Icon components */
-export const classNames = mergeStyleSets({
+export const classes = mergeStyleSets({
   root: {
     selectors: {
       svg: {
@@ -13,6 +13,7 @@ export const classNames = mergeStyleSets({
     },
   },
 });
+
 /** Class name used only in non-themeable Icon components */
 export const MS_ICON = 'ms-Icon';
 
@@ -20,6 +21,6 @@ export const getStyles = (props: IIconStyleProps): ISvgIconStyles => {
   const { className, iconClassName, styles } = props;
 
   return {
-    root: [classNames.root, iconClassName, className, styles && styles.root],
+    root: [classes.root, iconClassName, className, styles && styles.root],
   };
 };
