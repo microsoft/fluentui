@@ -4,7 +4,7 @@ import { classes, MS_ICON } from './SvgIcon.styles';
 import { ISvgIconProps } from './SvgIcon.types';
 import { SvgIconCreateFnWithRootParams } from './types';
 
-const createSvgIcon = <TProps = {}>({ children, displayName }: SvgIconCreateFnWithRootParams<TProps>) => {
+const createSvgIconWithRoot = <TProps = {}>({ children, displayName }: SvgIconCreateFnWithRootParams<TProps>) => {
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & ISvgIconProps> = props => {
     const { className, style = {} } = props;
 
@@ -31,4 +31,4 @@ const createSvgIcon = <TProps = {}>({ children, displayName }: SvgIconCreateFnWi
   return Component;
 };
 
-export default createSvgIcon;
+export default createSvgIconWithRoot;
