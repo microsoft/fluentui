@@ -48,4 +48,7 @@ export const repoDetails = {
 };
 
 // Authenticate with github and set up logging if debug arg is provided
-export const github = new GitHubApi({ ...(argv.debug ? { log: console } : {}), auth: 'token ' + argv.token });
+export const github = new GitHubApi({
+  ...(argv.debug && { log: console }),
+  auth: 'token ' + argv.token,
+});
