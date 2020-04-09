@@ -25,7 +25,7 @@ export function useConstCallback<T extends (...args: any[]) => any>(callback: T)
 // @public
 export function useId(prefix?: string): string;
 
-// @public (undocumented)
+// @public
 export function useMergedRefs<T>(...refs: React.Ref<T>[]): (value: T) => void;
 
 
