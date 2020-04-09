@@ -7,7 +7,7 @@ import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getStackStyles = memoizeFunction(
   (useTrapZone: boolean): Partial<IStackStyles> => ({

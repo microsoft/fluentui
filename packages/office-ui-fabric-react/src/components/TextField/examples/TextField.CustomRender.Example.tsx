@@ -5,9 +5,8 @@ import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { getId, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { getId, IRenderFunction, memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getTheme, FontWeights, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction } from '@uifabric/utilities';
 
 export interface ITextFieldCustomRenderExampleState {
   isCalloutVisible: boolean;

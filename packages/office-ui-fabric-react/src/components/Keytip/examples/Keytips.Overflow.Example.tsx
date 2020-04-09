@@ -4,7 +4,7 @@ import { IOverflowSetItemProps, OverflowSet, IOverflowSetStyles } from 'office-u
 import { CommandBarButton, DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
 const overflowSetStyles: Partial<IOverflowSetStyles> = { root: { marginBottom: 28 } };
-const commandBarButton: Partial<IButtonStyles> = { root: { padding: '10px' } };
+const commandBarButtonStyles: Partial<IButtonStyles> = { root: { padding: '10px' } };
 
 export interface IKeytipsOverflowExampleState {
   items: IOverflowSetItemProps[];
@@ -129,7 +129,7 @@ export class KeytipsOverflowExample extends React.Component<{}, IKeytipsOverflow
 
   private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
     return (
-      <CommandBarButton role="menuitem" {...item} styles={commandBarButton} menuProps={item.subMenuProps}>
+      <CommandBarButton role="menuitem" {...item} styles={commandBarButtonStyles} menuProps={item.subMenuProps}>
         {item.name}
       </CommandBarButton>
     );

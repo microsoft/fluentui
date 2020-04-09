@@ -4,7 +4,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const getStackStyles = memoizeFunction(
   (isActive: boolean): Partial<IStackStyles> => ({

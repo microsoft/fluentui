@@ -5,7 +5,7 @@ import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { memoizeFunction } from '@uifabric/utilities';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const tokens: IStackTokens = { childrenGap: 10 };
 
