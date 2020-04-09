@@ -14,7 +14,7 @@
   },
   "devDependencies": {
     "@types/classnames": "^2.2.9",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-is": "^16.7.1",
     "@uifabric/build": "^7.0.0",
     "lerna-alias": "^3.0.3-0",

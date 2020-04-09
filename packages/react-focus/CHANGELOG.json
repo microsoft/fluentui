@@ -2,6 +2,20 @@
   "name": "@fluentui/react-focus",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@fluentui/react-focus_v7.1.13",
+      "version": "7.1.13",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 30 Mar 2020 19:10:08 GMT",
       "tag": "@fluentui/react-focus_v7.1.12",
       "version": "7.1.12",

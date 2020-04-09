@@ -10,7 +10,7 @@ module.exports.fluentuiLernaPublish = function(bumpType) {
     const lernaPublishArgs = [
       'lerna',
       'publish',
-      "--tag-version-prefix='fluentuizero_v'",
+      "--tag-version-prefix='@fluentui/react-northstar_v'", // HEADS UP: also see yarn stats:save in azure-pipelines.perf-test.yml
       '--no-git-reset',
       '--registry',
       argv().registry,
