@@ -270,7 +270,6 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   };
 
   onTitleClick = (e: React.SyntheticEvent, treeItemProps: TreeItemProps) => {
-    // debugger;
     if (!treeItemProps) {
       return;
     }
