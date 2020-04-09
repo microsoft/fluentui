@@ -79,4 +79,4 @@ const TreeMultiselectExample = () => (
   <Tree defaultSelectedItemIds={['tree-item-122', 'tree-item-123']} selectable aria-label="default" items={items} />
 );
 
-export default TreMultiselectExample;
+export default TreeMultiselectExample;
