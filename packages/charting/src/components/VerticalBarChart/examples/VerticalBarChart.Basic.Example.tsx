@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps } from '../index';
+import { VerticalBarChart, IVerticalBarChartProps } from '@uifabric/charting/lib/VerticalBarChart';
 
 export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, {}> {
   constructor(props: IVerticalBarChartProps) {
