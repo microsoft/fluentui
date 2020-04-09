@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-hooks",
-  "version": "7.1.0",
+  "version": "7.1.2",
   "description": "UI Fabric React hooks.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -28,7 +28,7 @@
     "@types/enzyme": "3.10.3",
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/jest": "~24.9.0",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
@@ -40,7 +40,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.9",
-    "@uifabric/utilities": "^7.15.4",
+    "@uifabric/utilities": "^7.15.5",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

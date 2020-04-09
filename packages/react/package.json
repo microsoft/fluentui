@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react",
-  "version": "7.105.11",
+  "version": "7.105.13",
   "description": "Reusable React components for building web experiences.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -23,7 +23,7 @@
     "update-api": "just-scripts update-api"
   },
   "devDependencies": {
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.9",
-    "office-ui-fabric-react": "^7.105.10",
+    "office-ui-fabric-react": "^7.105.12",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

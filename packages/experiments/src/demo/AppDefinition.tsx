@@ -153,6 +153,14 @@ export const AppDefinition: IAppDefinition = {
           name: 'Theming',
           url: '#/examples/theming',
         },
+        {
+          component: require<any>('../components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePickerPage')
+            .UnifiedPeoplePickerPage,
+          key: 'UnifiedPeoplePickerPage',
+          name: 'UnifiedPeoplePickerPage',
+          url: '#examples/unifiedpeoplepicker',
+          category: 'Data Collections',
+        },
       ],
     },
   ],
