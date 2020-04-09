@@ -5,6 +5,11 @@ export interface CardVariables {
   borderColor: string;
   borderWidth: string;
   borderRadius: string;
+  boxShadow: string;
+  boxShadowHover: string;
+  boxShadowPressed: string;
+  boxShadowSelected: string;
+  boxShadowDisabled: string;
   padding: string;
   compactPadding: string;
   previewMargin: string;
@@ -36,6 +41,11 @@ export default (siteVars): CardVariables => {
     borderColor: siteVars.colors.black,
     borderWidth: siteVars.borderWidth,
     borderRadius: pxToRem(4),
+    boxShadow: undefined,
+    boxShadowHover: siteVars.shadowLevel3,
+    boxShadowPressed: undefined,
+    boxShadowSelected: undefined,
+    boxShadowDisabled: undefined,
     padding: pxToRem(10),
     compactPadding: pxToRem(0),
     previewMargin: `0 0 ${pxToRem(10)} 0`,
