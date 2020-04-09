@@ -1,16 +1,13 @@
 import * as React from 'react';
 import {
   ComboBox,
-  Fabric,
   IComboBox,
   IComboBoxOption,
-  IComboBoxProps,
-  mergeStyles,
   PrimaryButton,
   SelectableOptionMenuItemType,
 } from 'office-ui-fabric-react/lib/index';
 
-const INITIAL_OPTIONS: IComboBoxOption[] = [
+const comboBoxBasicOptions: IComboBoxOption[] = [
   { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
   { key: 'A', text: 'Option A' },
   { key: 'B', text: 'Option B' },
@@ -26,16 +23,35 @@ const INITIAL_OPTIONS: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' },
 ];
 
-const wrapperClassName = mergeStyles({
-  selectors: {
-    '& > *': { marginBottom: '20px' },
-    '& .ms-ComboBox': { maxWidth: '300px' },
-  },
-});
+const comboBoxMultiStyle = { maxWidth: 300, display: 'block', marginTop: '10px' };
 
-interface IComboBoxBasicExampleState {
-  dynamicErrorValue: number | string;
-}
+export const ComboBoxBasicExample: React.FC = () => {
+  return (
+    <div>
+      <ComboBox
+        defaultSelectedKey="C"
+        label="Basic ComboBox"
+        allowFreeform
+        autoComplete="on"
+        options={comboBoxBasicOptions}
+      />
+      <PrimaryButton text="Open ComboBox" style={comboBoxMultiStyle} onClick={} />
+    </div>
+  );
+};
+
+// private _onChange: IComboBoxProps['onChange'] = (event, option) => {
+//   if (option) {
+//     this.setState({ dynamicErrorValue: option.key });
+//   }
+// };
+
+// private _getErrorMessage(value: number | string) {
+//   if (value === 'B') {
+//     return 'B is not an allowed option!';
+//   }
+//   return '';
+// }
 
 // tslint:disable:jsx-no-lambda
 export class ComboBoxBasicExample extends React.Component<{}, IComboBoxBasicExampleState> {
