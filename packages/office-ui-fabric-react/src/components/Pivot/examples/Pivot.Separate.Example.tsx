@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 
+const getTabId = (itemKey: string) => {
+  return `ShapeColorPivot_${itemKey}`;
+};
+
 export const PivotSeparateExample = () => {
   const [selectedKey, setSelectedKey] = React.useState('rectangleRed');
 
   const handleLinkClick = (item: PivotItem) => {
     setSelectedKey(item.props.itemKey!);
-  };
-
-  const getTabId = (itemKey: string) => {
-    return `ShapeColorPivot_${itemKey}`;
   };
 
   return (
