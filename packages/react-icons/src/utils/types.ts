@@ -15,13 +15,11 @@ export type SvgIconCreateFnParams<TProps> = {
   // handledProps?: (keyof TProps)[];
 };
 
-export type ProcessedRootProps<TProps> = TProps & React.HTMLAttributes<HTMLSpanElement>;
-
 export type SvgIconFuncWithRootArg<TProps = ISvgIconProps> = {
   classes: { [iconSlot: string]: string }; // renamed from classes
   // rtl: boolean; // how do we support this?
   props: TProps;
-  processedRootProps: ProcessedRootProps<TProps & ISvgIconProps>;
+  processedRootProps: React.HTMLAttributes<HTMLElement>;
 };
 
 export type SvgIconChildrenFnWithRoot<TProps = ISvgIconProps> = (

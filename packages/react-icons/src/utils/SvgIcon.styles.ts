@@ -4,13 +4,10 @@ import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 /** Class names used in themeable and non-themeable Icon components */
 export const classes = mergeStyleSets({
-  root: {
-    selectors: {
-      svg: {
-        height: 50,
-        width: 50,
-      },
-    },
+  root: {},
+  svg: {
+    height: '100%',
+    width: '100%',
   },
 });
 
@@ -22,5 +19,6 @@ export const getStyles = (props: IIconStyleProps): ISvgIconStyles => {
 
   return {
     root: [classes.root, iconClassName, className, styles && styles.root],
+    svg: [classes.svg],
   };
 };

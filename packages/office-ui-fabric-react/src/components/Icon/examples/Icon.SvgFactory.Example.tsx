@@ -2,28 +2,23 @@ import * as React from 'react';
 import { OneDriveIcon, YammerIcon, BorderBlindsIcon } from '@fluentui/react-icons';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const iconClass = mergeStyles({
-  fontSize: 50,
-  height: 50,
-  width: 50,
-  margin: '0 25px',
+const rootClass = mergeStyles({
+  display: 'flex',
+  selectors: {
+    '> *': {
+      height: 50,
+      width: 50,
+      marginRight: 25,
+    },
+  },
 });
 
 export const IconSvgFactoryExample: React.FunctionComponent = () => {
   return (
-    <div>
-      <OneDriveIcon className={iconClass} />
-      <YammerIcon
-        className={mergeStyles(iconClass, {
-          fill: 'red',
-          selectors: {
-            '.thing': {
-              fill: 'green',
-            },
-          },
-        })}
-      />
-      <BorderBlindsIcon className={iconClass} color3="pink" />
+    <div className={rootClass}>
+      <OneDriveIcon />
+      <YammerIcon />
+      <BorderBlindsIcon color3="pink" />
     </div>
   );
 };
