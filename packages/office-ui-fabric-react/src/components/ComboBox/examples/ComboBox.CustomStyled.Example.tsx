@@ -53,18 +53,21 @@ const optionsForCustomRender: IComboBoxOption[] = [
 ];
 
 const onRenderOption = (item: IComboBoxOption) => {
-  if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
-    return <span>{item.text}</span>;
+  switch (item.itemType) {
+    case SelectableOptionMenuItemType.Header:
+    case SelectableOptionMenuItemType.Divider:
+      return <span>{item.text}</span>;
+
+    default:
+      let fontFamily = fontMapping[item.text];
+
+      if (!fontFamily) {
+        const newFontName = item.text;
+        fontFamily = fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
+      }
+
+      return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
   }
-
-  let fontFamily = fontMapping[item.text];
-
-  if (!fontFamily) {
-    const newFontName = item.text;
-    fontFamily = fontMapping[newFontName] = `"${newFontName}","Segoe UI",Tahoma,Sans-Serif`;
-  }
-
-  return <span style={{ fontFamily: fontFamily }}>{item.text}</span>;
 };
 
 export const ComboBoxCustomStyledExample: React.FC = () => (
