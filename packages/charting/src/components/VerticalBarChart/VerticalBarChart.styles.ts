@@ -1,7 +1,7 @@
 import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './VerticalBarChart.types';
 
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
-  const { className, theme, width, height, legendColor, shouldHighlight, href } = props;
+  const { className, theme, width, height, legendColor, shouldHighlight } = props;
 
   const chartWidth = width + 50;
   const chartPadding = 20;
