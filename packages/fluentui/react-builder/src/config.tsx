@@ -102,7 +102,7 @@ export const DRAGGING_PROPS = {
 
   // Embed: { content: 'Embed' } as FUI.EmbedProps,
 
-  Flex: { content: 'Flex' } as FUI.FlexProps,
+  Flex: { children: 'Flex' } as FUI.FlexProps,
 
   // FocusZone: { content: 'FocusZone' } as FUI.FocusZoneProps,
 
@@ -334,7 +334,7 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
 // TODO: From here down probably does not belong in client config.
 //       It is internal implementation details.
 
-export const renderJSONTreeToJSXElement = (tree: any) => {
+export const renderJSONTreeToJSXElement = (tree: JSONTreeElement, cb = x => x) => {
   if (tree === null) {
     return null;
   }
@@ -342,32 +342,25 @@ export const renderJSONTreeToJSXElement = (tree: any) => {
   let { children = null } = tree;
 
   if (Array.isArray(children)) {
-    children = children.map((child, i) => {
+    // @ts-ignore
+    children = children.map(child => {
       if (typeof child === 'string') {
         return child;
       }
 
       if (typeof child === 'object' && child !== null) {
-        return renderJSONTreeToJSXElement({
-          type: resolveComponent(child.type),
-          props: {
-            ...(child as JSONTreeElement).props,
-            key: (child as JSONTreeElement).uuid || i,
-          },
-          children: child.children,
-        });
+        return renderJSONTreeToJSXElement(child, cb);
       }
 
       return null;
     });
   }
 
+  const modifiedTree = cb(tree);
+
   return React.createElement(
-    tree.type,
-    {
-      ...tree.props,
-      key: tree.props?.key || tree.uuid,
-    },
+    resolveComponent(modifiedTree.type),
+    { ...modifiedTree.props, key: modifiedTree.uuid },
     children,
   );
 };

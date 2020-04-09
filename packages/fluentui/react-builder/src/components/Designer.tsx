@@ -107,18 +107,7 @@ class Designer extends React.Component<any, DesignerState> {
     },
   ];
 
-  getDefaultJSONTree = (): JSONTreeElement => {
-    return {
-      uuid: getUUID(),
-      type: 'div',
-      props: {
-        style: {
-          minHeight: '100vh',
-          padding: '3rem',
-        },
-      },
-    };
-  };
+  getDefaultJSONTree = (): JSONTreeElement => ({ uuid: 'root', type: 'div' });
 
   componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<DesignerState>, snapshot?: any): void {
     writeTreeToStore(this.state.jsonTree);
@@ -332,7 +321,7 @@ class Designer extends React.Component<any, DesignerState> {
         />
 
         <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-          {mode === 'build' && <List onDragStart={this.handleDragStart} style={{ overflowY: 'auto' }} />}
+          <List onDragStart={this.handleDragStart} style={{ overflowY: 'auto' }} />
 
           <div
             style={{
@@ -350,14 +339,27 @@ class Designer extends React.Component<any, DesignerState> {
                 minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
               }}
             >
-              <BrowserWindow
-                style={{
-                  flex: 1,
-                  margin: mode === 'build' ? '2rem' : '1rem',
-                  transition: 'margin 0.2s',
-                }}
-              >
+              <BrowserWindow style={{ flex: 1, margin: '1rem' }}>
                 <Canvas
+                  renderJSONTreeElement={treeElement => {
+                    console.log('BUILD MODE ADD STYLE TO', treeElement);
+                    treeElement.props = treeElement.props || {};
+
+                    // TODO: Need to ensure when turning build mode off, styles are restored
+                    if (mode === 'build') {
+                      treeElement.props.style = {
+                        ...treeElement?.props?.style,
+                        ...(treeElement.uuid === 'root' && { minHeight: '100vh' }),
+                        padding: '1rem',
+                        margin: '1rem',
+                        border: '1px dashed cornflowerblue',
+                      };
+                    } else {
+                      treeElement.props.style = {};
+                    }
+
+                    return treeElement;
+                  }}
                   {...(draggingElement && {
                     onMouseMove: this.handleDrag,
                     onMouseUp: this.handleCanvasMouseUp,
@@ -369,7 +371,7 @@ class Designer extends React.Component<any, DesignerState> {
                 />
               </BrowserWindow>
 
-              {mode === 'build' && (showCode || showJSONTree) && (
+              {(showCode || showJSONTree) && (
                 <div style={{ flex: '0 0 auto', maxHeight: '30vh', overflow: 'auto' }}>
                   {showCode && (
                     <CodeSnippet
@@ -391,7 +393,7 @@ class Designer extends React.Component<any, DesignerState> {
             </div>
           </div>
 
-          {selectedComponentInfo && mode !== 'use' && (
+          {selectedComponentInfo && (
             <div style={{ width: '20rem', padding: '1rem', overflow: 'auto' }}>
               <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
               <Anatomy componentInfo={selectedComponentInfo} />

@@ -43,48 +43,41 @@ const Toolbar = ({
     </div>
     &emsp;
     <Checkbox
-      label="Preview"
+      label="Build Mode"
       toggle
-      checked={mode === 'use'}
-      onChange={(e, data) => onModeChange(data.checked ? 'use' : 'build')}
+      checked={mode === 'build'}
+      onChange={(e, data) => onModeChange(data.checked ? 'build' : 'use')}
     />
     <Text as="a" href="/builder/maximize" target="_blank" rel="noopener noreferrer">
       <OpenOutsideIcon />
     </Text>
-    {mode === 'build' && (
-      <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
-        &emsp;
-        <Checkbox
-          label="Show Code"
-          toggle
-          checked={!!showCode}
-          onChange={(e, data) => onShowCodeChange(data.checked)}
-        />
-        &emsp;
-        <Checkbox
-          label="Show JSON"
-          toggle
-          checked={!!showJSONTree}
-          onChange={(e, data) => onShowJSONTreeChange(data.checked)}
-        />
-        &emsp;
-        <Checkbox
-          label="Inspect"
-          toggle
-          checked={!!isSelecting}
-          onChange={(e, data) => onSelectingChange(data.checked)}
-        />
-        &emsp;
-        <div>
-          <code>
-            <strong>⌥ ⌃ C</strong>
-          </code>{' '}
-          - Select a component
-        </div>
-        &emsp;
-        <Button onClick={onReset} content="Start Over" />
+    <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+      &emsp;
+      <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
+      &emsp;
+      <Checkbox
+        label="Show JSON"
+        toggle
+        checked={!!showJSONTree}
+        onChange={(e, data) => onShowJSONTreeChange(data.checked)}
+      />
+      &emsp;
+      <Checkbox
+        label="Inspect"
+        toggle
+        checked={!!isSelecting}
+        onChange={(e, data) => onSelectingChange(data.checked)}
+      />
+      &emsp;
+      <div>
+        <code>
+          <strong>⌥ ⌃ C</strong>
+        </code>{' '}
+        - Select a component
       </div>
-    )}
+      &emsp;
+      <Button onClick={onReset} content="Start Over" />
+    </div>
   </div>
 );
 

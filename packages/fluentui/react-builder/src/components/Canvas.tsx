@@ -7,6 +7,7 @@ import { EventListener } from '@fluentui/react-component-event-listener';
 import { fiberNavFindOwnerInJSONTree, fiberNavToJSONTreeElement, renderJSONTreeToJSXElement } from '../config';
 
 const Canvas = ({
+  renderJSONTreeElement,
   style,
   isSelecting,
   jsonTree,
@@ -15,6 +16,7 @@ const Canvas = ({
   onSelectComponent,
   onSelectorHover,
 }: {
+  renderJSONTreeElement?: (jsonTreeElement: JSONTreeElement) => JSONTreeElement;
   style?: React.CSSProperties;
   jsonTree: JSONTreeElement;
   isSelecting: boolean;
@@ -111,7 +113,7 @@ const Canvas = ({
             <Provider theme={themes.teams} target={document}>
               {onMouseMove && <EventListener type="mousemove" listener={handleMouseMove} target={document} />}
               {onMouseUp && <EventListener type="mouseup" listener={handleMouseUp} target={document} />}
-              {renderJSONTreeToJSXElement(jsonTree)}
+              {renderJSONTreeToJSXElement(jsonTree, renderJSONTreeElement)}
             </Provider>
           </>
         )}
