@@ -239,11 +239,12 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     // push all tree items under particular parent into selection array
     // not parent itself, therefore not procced with selection
     if (isExpandedSelectableParent) {
-      items.forEach(item => {
+      items.reduce((acc: string[], item) => {
         if (selectedItemIds.indexOf(item['id']) === -1) {
-          selectedItemIds.push(item['id']);
+          acc.push(item['id']);
         }
-      });
+        return acc;
+      }, selectedItemIds);
       this.setSelectedItemIds(e, selectedItemIds);
       return;
     }
