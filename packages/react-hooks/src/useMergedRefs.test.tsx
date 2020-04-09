@@ -20,6 +20,7 @@ describe('useMergedRefs', () => {
   it('reuses the same ref callback if refs remain stable', () => {
     const refObject: React.RefObject<boolean> = React.createRef<boolean>();
 
+    // tslint:disable-next-line:no-empty
     const refValueFunc = (val: boolean) => {};
 
     let refCallback: Function | undefined = undefined;
