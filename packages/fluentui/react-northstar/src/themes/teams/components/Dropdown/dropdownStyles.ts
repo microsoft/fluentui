@@ -80,22 +80,20 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ...(p.open && {
         borderColor: v.openBorderColorHover,
       }),
-
-      ...(p.disabled && {
-        backgroundColor: v.disabledBackgroundColorHover,
-        borderColor: v.disabledBorderColorHover,
-      }),
-
-      [`& .${Dropdown.slotClassNames.triggerButton}`]: {
-        color: v.triggerButtonColorHover,
-
-        ...(p.disabled && {
-          color: v.disabledTriggerColorHover,
-        }),
-      },
+    },
+    ':active': {
+      backgroundColor: v.backgroundColor,
+    },
+    ':focus-within': {
+      // when dropdown's selected items are focused
+      // keep the focus border style
+      borderBottomColor: v.borderColorFocus,
     },
     ...(p.focused && {
-      ...(p.search && { borderBottomColor: v.borderColorFocus }),
+      backgroundColor: v.backgroundColor,
+      ...(p.search && {
+        borderBottomColor: v.borderColorFocus,
+      }),
       ...(!p.search &&
         !p.open &&
         p.isFromKeyboard &&
@@ -105,6 +103,38 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ...transparentColorStyleObj,
       alignItems: 'center',
     }),
+    ...(p.inverted && {
+      backgroundColor: v.invertedBackgroundColor,
+      ':hover': {
+        backgroundColor: v.invertedBackgroundColorHover,
+      },
+      ':active': {
+        backgroundColor: v.invertedBackgroundColorHover,
+      },
+      ':focus': {
+        backgroundColor: v.invertedBackgroundColorHover,
+      },
+    }),
+
+    ...(p.disabled && {
+      backgroundColor: siteVariables.colorScheme.default.backgroundDisabled,
+      borderColor: siteVariables.colorScheme.default.borderDisabled,
+      userSelect: 'none',
+
+      ':hover': {
+        backgroundColor: siteVariables.colorScheme.default.backgroundDisabled,
+      },
+
+      ':active': {
+        backgroundColor: siteVariables.colorScheme.default.backgroundDisabled,
+      },
+    }),
+
+    [`& .${Dropdown.slotClassNames.triggerButton}`]: {
+      ...(p.disabled && {
+        color: siteVariables.colorScheme.default.foregroundDisabled,
+      }),
+    },
   }),
 
   selectedItems: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -120,6 +150,7 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
     return {
       overflow: 'hidden',
       boxShadow: 'none',
+      ...transparentColorStyleObj,
       margin: '0',
       justifyContent: 'left',
       padding: v.comboboxPaddingButton,
@@ -127,24 +158,29 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
       ...transparentColorStyleObj,
       ':focus': {
         color: v.color,
-        ':active': {
-          color: v.triggerButtonColorFocusActive,
-        },
+        ...transparentColorStyleObj,
       },
       ':focus-visible': {
         color: v.color,
         ...transparentColorStyle,
         ':after': {
           borderColor: 'transparent',
+          borderRightWidth: 0,
         },
         ':before': {
           borderColor: 'transparent',
+          borderRightWidth: 0,
         },
-        ':active': transparentColorStyle,
+      },
+      ':active': {
+        color: v.color, // required for HC theme
+        ...transparentColorStyle,
+        animationName: 'unset',
+        animationDuration: 'unset',
       },
       ':hover': {
         ...transparentColorStyle,
-        color: v.triggerButtonColorHover,
+        color: v.color, // required for HC theme
       },
       ...(p.inline && {
         paddingLeft: 0,
