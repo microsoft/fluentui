@@ -23,7 +23,7 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
 // @public
-export function useControllableValue<TValue>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): readonly [TValue | undefined, React.Dispatch<React.SetStateAction<TValue | undefined>>];
+export function useControllableValue<TValue, TOnChangeArgs extends unknown[]>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: (newValue: TValue, ...args: TOnChangeArgs) => void): readonly [TValue | undefined, (newValue: TValue, ...args: TOnChangeArgs) => void];
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
