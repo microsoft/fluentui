@@ -1,8 +1,0 @@
-{
-  "type": "none",
-  "comment": "Reference custom-global everywhere for partial Set types",
-  "packageName": "@uifabric/styling",
-  "email": "elcraig@microsoft.com",
-  "dependentChangeType": "none",
-  "date": "2020-04-08T21:11:25.504Z"
-}

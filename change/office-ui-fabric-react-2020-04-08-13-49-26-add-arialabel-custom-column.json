@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "DetailsList: add missing aria-label to example",
-  "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com",
-  "commit": "5473caaa3faf91b72813ed96438df8234ee102ca",
-  "dependentChangeType": "patch",
-  "date": "2020-04-08T20:49:26.685Z"
-}
