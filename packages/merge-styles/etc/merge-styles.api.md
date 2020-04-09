@@ -39,7 +39,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
-        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, IStyleSet<any>>;
+        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
     };
 };
 
@@ -401,7 +401,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
-        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, IStyleSet<any>>;
+        [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
 };
 
@@ -421,7 +421,7 @@ export function keyframes(timeline: {
 }): string;
 
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public
 export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions): string;
 
@@ -459,7 +459,7 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
@@ -486,7 +486,7 @@ export class Stylesheet {
 
 
 // Warnings were encountered during analysis:
-// 
+//
 // lib/IStyleSet.d.ts:48:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
