@@ -130,7 +130,7 @@ function _range(start: number, end: number): number[] {
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const configureStackTokens: IStackTokens = { childrenGap: 20 };
 
-const shawdowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
+const shadowItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 const wrapItemCheckboxStyles: Partial<ICheckboxStyles> = { root: { marginBottom: 10 } };
 
 export class HorizontalStackConfigureExample extends React.Component<{}, IExampleOptions> {
@@ -187,7 +187,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
                 <Checkbox
                   label="Shadow around items"
                   onChange={this._onBoxShadowChange}
-                  styles={shawdowItemCheckboxStyles}
+                  styles={shadowItemCheckboxStyles}
                 />
                 <Checkbox label="Prevent item overflow" onChange={this._onPreventOverflowChange} />
               </Stack>
