@@ -38,6 +38,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Fix hover color for disabled `Dropdown` trigger button @silviuavram ([#12418](https://github.com/microsoft/fluentui/pull/12418))
 - Updating `Dropdown` styles to match redlines for Teams theme @notandrew ([#12397](https://github.com/microsoft/fluentui/pull/12397))
 - Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
+- Fix `Status` to use the colorScheme in Teams theme @notandrew ([#12481](https://github.com/microsoft/fluentui/pull/12481))
 - Fix colors for keyboard navigation in vertical Menu component in Teams theme high contrast mode @TanelVari ([#12462](https://github.com/microsoft/fluentui/pull/12462))
 - Fix navigation into cell which has multiple actionable elements @kolaps33 ([#12533](https://github.com/microsoft/fluentui/pull/12533))
 - In `Tooltip` don't add `aria-labelledby` to `trigger` if it has `aria-label` @silviuavram ([#12555](https://github.com/microsoft/fluentui/pull/12555))
@@ -57,6 +58,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Add `borderRadius` variables to `Card` component @pompomon ([#12552](https://github.com/microsoft/fluentui/pull/12552))
 - Add `CustomerHubIcon`, `OcrOffIcon`, `OcrOnIcon` and `ContactGroupCallIcon` icons @mnajdova ([#12571](https://github.com/microsoft/fluentui/pull/12571))
 - Add `SwitchCameraIcon`, `PanoramaOffIcon`, `AttendeeIcon` and `GroupVideoCallGridIcon`. Updated `PanoramaIcon`. @TanelVari ([#12566](https://github.com/microsoft/fluentui/pull/12566))
+- Add `size` and `fluid` props to `Card` component @pompomon ([#12589](https://github.com/microsoft/fluentui/pull/12589))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))

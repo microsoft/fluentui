@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
@@ -40,7 +40,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/set-version": "^7.0.9",
-    "office-ui-fabric-react": "^7.105.12",
+    "office-ui-fabric-react": "^7.106.0",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

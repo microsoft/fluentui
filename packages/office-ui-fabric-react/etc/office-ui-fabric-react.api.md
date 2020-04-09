@@ -2435,6 +2435,7 @@ export type ICoachmarkTypes = ICoachmarkProps;
 export interface IColor extends IRGB, IHSV {
     hex: string;
     str: string;
+    t?: number;
 }
 
 // @public (undocumented)
@@ -2504,7 +2505,9 @@ export interface IColorPickerGridCellStyles {
 export interface IColorPickerProps {
     // @deprecated
     alphaLabel?: string;
+    // @deprecated
     alphaSliderHidden?: boolean;
+    alphaType?: 'alpha' | 'transparency' | 'none';
     // @deprecated
     blueLabel?: string;
     className?: string;
@@ -2525,11 +2528,9 @@ export interface IColorPickerProps {
 
 // @public (undocumented)
 export interface IColorPickerState {
-    // (undocumented)
     color: IColor;
-    // (undocumented)
     editingColor?: {
-        component: keyof IRGBHex;
+        component: ColorComponent;
         value: string;
     };
 }
@@ -2549,13 +2550,12 @@ export interface IColorPickerStrings {
     svAriaDescription?: string;
     svAriaLabel?: string;
     svAriaValueFormat?: string;
+    transparency?: string;
+    transparencyAriaLabel?: string;
 }
 
 // @public (undocumented)
-export interface IColorPickerStyleProps {
-    className?: string;
-    theme: ITheme;
-}
+export type IColorPickerStyleProps = Required<Pick<IColorPickerProps, 'theme'>> & Pick<IColorPickerProps, 'className' | 'alphaType'>;
 
 // @public (undocumented)
 export interface IColorPickerStyles {
@@ -2568,6 +2568,7 @@ export interface IColorPickerStyles {
     panel?: IStyle;
     root?: IStyle;
     table?: IStyle;
+    tableAlphaCell?: IStyle;
     tableHeader?: IStyle;
     tableHexCell?: IStyle;
 }
@@ -2617,8 +2618,11 @@ export interface IColorSliderProps {
     ariaLabel?: string;
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
+    // @deprecated
     isAlpha?: boolean;
+    // @deprecated
     maxValue?: number;
+    // @deprecated
     minValue?: number;
     onChange?: (event: React.MouseEvent | React.KeyboardEvent, newValue?: number) => void;
     overlayColor?: string;
@@ -2628,11 +2632,14 @@ export interface IColorSliderProps {
     theme?: ITheme;
     // @deprecated
     thumbColor?: string;
+    type?: 'hue' | 'alpha' | 'transparency';
     value?: number;
 }
 
 // @public (undocumented)
-export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'isAlpha'>;
+export type IColorSliderStyleProps = Required<Pick<IColorSliderProps, 'theme'>> & Pick<IColorSliderProps, 'className' | 'type'> & {
+    isAlpha?: boolean;
+};
 
 // @public (undocumented)
 export interface IColorSliderStyles {
@@ -9555,6 +9562,9 @@ export function updateRGB(color: IColor, component: keyof IRGB, value: number): 
 export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
+export function updateT(color: IColor, t: number): IColor;
+
+// @public
 export enum ValidationState {
     invalid = 2,
     valid = 0,
@@ -9588,7 +9598,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 //
-// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
+// lib/components/ColorPicker/ColorPicker.base.d.ts:11:9 - (ae-forgotten-export) The symbol "ColorComponent" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,7 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 Apr 2020 12:28:27 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
 
+## 7.106.0
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Minor changes
+
+- Support List overrides for rendering root and surface elements (tmichon@microsoft.com)
+- ColorPicker: Add support for selecting transparency instead of alpha (elcraig@microsoft.com)
+### Patches
+
+- Combobox: Fix getActiveDescendantValue would sometimes return -listundefined. (joschect@microsoft.com)
+- DetailsList: add missing aria-label to example (joschect@microsoft.com)
 ## 7.105.12
 Wed, 08 Apr 2020 12:28:27 GMT
 
