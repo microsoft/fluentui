@@ -91,6 +91,14 @@ export interface ILineChartProps {
    * focus zone props in hover card for legends
    */
   focusZonePropsForLegendsInHoverCard?: IFocusZoneProps;
+
+  /**
+   * the format in for the data on y-axis. For data object this can be specified to your requirement.
+   *  Eg: d3.format(".0%")(0.123),d3.format("+20")(42);
+   * Please look at https://github.com/d3/d3-format for all the formats supported
+   */
+  // tslint:disable-next-line: no-any
+  yAxisTickFormat?: any;
 }
 
 export interface ILineChartStyleProps {
