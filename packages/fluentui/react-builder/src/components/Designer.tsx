@@ -345,7 +345,6 @@ class Designer extends React.Component<any, DesignerState> {
                     console.log('BUILD MODE ADD STYLE TO', treeElement);
                     treeElement.props = treeElement.props || {};
 
-                    // TODO: Need to ensure when turning build mode off, styles are restored
                     if (mode === 'build') {
                       treeElement.props.style = {
                         ...treeElement?.props?.style,
@@ -355,7 +354,8 @@ class Designer extends React.Component<any, DesignerState> {
                         border: '1px dashed cornflowerblue',
                       };
                     } else {
-                      treeElement.props.style = {};
+                      // TODO: Need to ensure when turning build mode off, styles are restored
+                      delete treeElement.props.style;
                     }
 
                     return treeElement;
@@ -375,7 +375,6 @@ class Designer extends React.Component<any, DesignerState> {
                 <div style={{ flex: '0 0 auto', maxHeight: '30vh', overflow: 'auto' }}>
                   {showCode && (
                     <CodeSnippet
-                      style={{ height: '100%' }}
                       fitted
                       mode="jsx"
                       label="Copy"

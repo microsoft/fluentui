@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { Button, Checkbox, Text } from '@fluentui/react-northstar';
+import { Button, Checkbox, Menu, Text } from '@fluentui/react-northstar';
 import Logo from '@fluentui/docs/src/components/Logo/Logo';
 import { DesignerMode } from './types';
 import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
+import buttonStyles from '../../../react-northstar/src/themes/teams/components/Button/buttonStyles';
 
 const Toolbar = ({
   style,
@@ -48,9 +49,17 @@ const Toolbar = ({
       checked={mode === 'build'}
       onChange={(e, data) => onModeChange(data.checked ? 'build' : 'use')}
     />
-    <Text as="a" href="/builder/maximize" target="_blank" rel="noopener noreferrer">
-      <OpenOutsideIcon />
-    </Text>
+    <Button
+      // TODO: Button accessibility doesn't allow use as `a` tag, fix that or make a Link component for these cases
+      accessibility={undefined}
+      text
+      as="a"
+      href="/builder/maximize"
+      target="_blank"
+      rel="noopener noreferrer"
+      icon={<OpenOutsideIcon />}
+      content="Preview"
+    />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
       &emsp;
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
