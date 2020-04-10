@@ -73,6 +73,8 @@ const onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
   );
 };
 
+const dropdownStyles = { dropdown: { width: 300 } };
+
 export const DropdownCustomExample: React.FC = () => (
   <Stack tokens={stackTokens}>
     <Dropdown
@@ -83,7 +85,7 @@ export const DropdownCustomExample: React.FC = () => (
       onRenderTitle={onRenderTitle}
       onRenderOption={onRenderOption}
       onRenderCaretDown={onRenderCaretDown}
-      styles={{ dropdown: { width: 300 } }}
+      styles={dropdownStyles}
       options={exampleOptions}
     />
 
@@ -91,7 +93,7 @@ export const DropdownCustomExample: React.FC = () => (
       placeholder="Select an option"
       label="Custom label"
       ariaLabel="Custom dropdown label example"
-      styles={{ dropdown: { width: 300 } }}
+      styles={dropdownStyles}
       options={exampleOptions}
       onRenderLabel={onRenderLabel}
     />

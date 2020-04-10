@@ -4,12 +4,20 @@ import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/O
 
 const noOp = () => undefined;
 
+const onRenderItemStyles = {
+  root: { padding: '10px' },
+};
+const onRenderOverflowButtonStyles = {
+  root: { padding: '10px' },
+  menuIcon: { fontSize: '16px' },
+};
+
 const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return (
     <CommandBarButton
       role="menuitem"
       aria-label={item.name}
-      styles={{ root: { padding: '10px' } }}
+      styles={onRenderItemStyles}
       iconProps={{ iconName: item.icon }}
       onClick={item.onClick}
     />
@@ -21,7 +29,7 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
     <CommandBarButton
       role="menuitem"
       title="More items"
-      styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
+      styles={onRenderOverflowButtonStyles}
       menuIconProps={{ iconName: 'More' }}
       menuProps={{ items: overflowItems! }}
     />

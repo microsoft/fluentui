@@ -15,27 +15,21 @@ const DropdownControlledMultiExampleOptions = [
 ];
 
 export const DropdownControlledMultiExample: React.FC = () => {
-  const [selectedItems, setSelectedItems] = React.useState();
+  const [selectedKeys, setSelectedKeys] = React.useState<string[]>([]);
 
   const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
-    setSelectedItems(item);
-    const newSelectedItems = selectedItems;
-    if (item.selected) {
-      newSelectedItems.push(item.key as string);
-    } else {
-      const currIndex = newSelectedItems.indexOf(item.key as string);
-      if (currIndex > -1) {
-        newSelectedItems.splice(currIndex, 1);
-      }
+    if (item) {
+      setSelectedKeys(
+        item.selected ? [...selectedKeys, item.key as string] : selectedKeys.filter(key => key !== item.key),
+      );
     }
-    setSelectedItems(newSelectedItems);
   };
 
   return (
     <Dropdown
       placeholder="Select options"
       label="Multi-select controlled example"
-      selectedKeys={selectedItems}
+      selectedKeys={selectedKeys}
       onChange={onChange}
       multiSelect
       options={DropdownControlledMultiExampleOptions}

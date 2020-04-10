@@ -23,7 +23,8 @@ const variants = [
   { name: 'mega' },
 ];
 
-const renderDetailsRow = (props: IDetailsRowProps) => <DetailsRow {...props} styles={{ root: { color: 'inherit' } }} />;
+const renderDetailsRowStyles = { root: { color: 'inherit' } };
+const renderDetailsRow = (props: IDetailsRowProps) => <DetailsRow {...props} styles={renderDetailsRowStyles} />;
 
 const allItems: any[] = [];
 

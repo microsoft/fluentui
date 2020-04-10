@@ -14,6 +14,7 @@ const dropdownControlledExampleOptions = [
   { key: 'lettuce', text: 'Lettuce' },
 ];
 
+const dropdownStyles = { dropdown: { width: 300 } };
 export const DropdownControlledExample: React.FC = () => {
   const [selectedItem, setSelectedItem] = React.useState();
 
@@ -28,7 +29,7 @@ export const DropdownControlledExample: React.FC = () => {
       onChange={onChange}
       placeholder="Select an option"
       options={dropdownControlledExampleOptions}
-      styles={{ dropdown: { width: 300 } }}
+      styles={dropdownStyles}
     />
   );
 };

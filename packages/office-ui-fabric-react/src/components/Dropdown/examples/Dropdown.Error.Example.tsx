@@ -18,21 +18,19 @@ const DropdownErrorExampleOptions = [
   { key: 'E', text: 'Option e' },
 ];
 
+const dropdownStyles = { dropdown: { width: 300 }, root: { height: 100 } };
+
 export const DropdownErrorExample: React.FC = () => {
   const [showError, { toggle: toggleShowError }] = useBoolean(false);
-  const updateShowError = () => {
-    toggleShowError;
-  };
-
   return (
     <Stack horizontal tokens={stackTokens} verticalAlign="start">
-      <Toggle label="Show error message" onText="Yes" offText="No" checked={showError} onChange={updateShowError} />
+      <Toggle label="Show error message" onText="Yes" offText="No" checked={showError} onChange={toggleShowError} />
       <Dropdown
         placeholder="Select an option"
         label="Dropdown with error message"
         options={DropdownErrorExampleOptions}
         errorMessage={showError ? 'This dropdown has an error' : undefined}
-        styles={{ dropdown: { width: 300 }, root: { height: 100 } }}
+        styles={dropdownStyles}
       />
     </Stack>
   );
