@@ -1,5 +1,4 @@
 import {
-  Icon,
   Popup,
   Table,
   gridNestedBehavior,
@@ -9,6 +8,7 @@ import {
   MenuButton,
 } from '@fluentui/react-northstar';
 import * as React from 'react';
+import { InfoIcon } from '@fluentui/react-icons-northstar';
 
 const columnDescription = 'ID uniquely identifies a uniquely indetifiable item';
 
@@ -35,7 +35,7 @@ const InteractiveTable = () => {
               <>
                 <span>Id</span>
                 <Popup
-                  trigger={<Icon name="info" xSpacing="before" />}
+                  trigger={<InfoIcon xSpacing="before" />}
                   content={columnDescription}
                   onOpenChange={(e, { open }) => setPopupOpen(open)}
                   on="hover"

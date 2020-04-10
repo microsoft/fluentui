@@ -30,6 +30,7 @@ import ToolbarMenuItem, { ToolbarMenuItemProps } from './ToolbarMenuItem';
 import ToolbarMenuRadioGroup from './ToolbarMenuRadioGroup';
 import ToolbarRadioGroup from './ToolbarRadioGroup';
 import { ToolbarVariablesProvider } from './toolbarVariablesContext';
+import { MoreIcon } from '@fluentui/react-icons-northstar';
 
 export type ToolbarItemShorthandKinds = 'divider' | 'item' | 'group' | 'toggle' | 'custom';
 
@@ -447,7 +448,8 @@ class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
       <Ref innerRef={this.overflowItemRef}>
         {ToolbarItem.create(overflowItem, {
           defaultProps: () => ({
-            icon: { name: 'more', outline: true },
+            // TODO: ups
+            icon: <MoreIcon {...{ outline: true }} />,
           }),
           overrideProps: {
             menu: this.props.overflowOpen ? this.getOverflowItems() : [],
