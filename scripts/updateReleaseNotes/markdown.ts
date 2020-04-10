@@ -1,31 +1,29 @@
-// @ts-check
-/// <reference path="./index.d.ts" />
-
-const { repoDetails } = require('./init');
-const { getPullRequest } = require('./pullRequests');
+import { ChangelogEntry } from 'beachball';
+import { repoDetails } from './init';
+import { getPullRequest } from './pullRequests';
+import { IChangelogEntry } from './types';
 
 const EOL = '\n';
 
 /**
  * Build up the markdown from the entry description.
  * This includes fetching info about relevant pull requests, which can be slow/expensive.
- * @param {IChangelogEntry} entry
  */
-async function getMarkdownForEntry(entry) {
+export async function getMarkdownForEntry(entry: IChangelogEntry): Promise<string> {
   const comments =
-    (await getChangeComments('Breaking changes', entry.comments.major)) +
-    (await getChangeComments('Minor changes', entry.comments.minor)) +
-    (await getChangeComments('Patches', entry.comments.patch));
+    (await _getChangeComments('Breaking changes', entry.comments.major)) +
+    (await _getChangeComments('Minor changes', entry.comments.minor)) +
+    (await _getChangeComments('Patches', entry.comments.patch));
 
   return (comments || '*No change notes provided*') + EOL + EOL;
 }
 
 /**
  * Gets the release notes markdown corresponding to the comment array.
- * @param {string} title - Section title (probably change type, major/minor/patch)
- * @param {IChangelogComment[]} comments - Changelog comments for a version
+ * @param title - Section title (probably change type, major/minor/patch)
+ * @param comments - Changelog comments for a version
  */
-async function getChangeComments(title, comments) {
+async function _getChangeComments(title: string, comments: ChangelogEntry[] | undefined): Promise<string> {
   if (comments) {
     const lines = ['## ' + title, ''];
     for (const comment of comments) {
@@ -34,7 +32,7 @@ async function getChangeComments(title, comments) {
         // Prefer linking to the PR if we can find it (this is generally more useful than the commit)
         const pr = await getPullRequest(comment);
         if (pr) {
-          line += `PR #${pr.number} by [${pr.author}](${pr.authorUrl})`;
+          line += `PR #${pr.number} by [${pr.author}](${pr.author.url})`;
         } else {
           line += `[commit](https://github.com/${repoDetails.owner}/${repoDetails.repo}/commit/${comment.commit})`;
         }
@@ -48,5 +46,3 @@ async function getChangeComments(title, comments) {
   }
   return '';
 }
-
-module.exports = { getMarkdownForEntry };

@@ -1,17 +1,14 @@
-// @ts-check
-/// <reference path="./index.d.ts" />
-
 /**
  * This script sends release notes to github. The release notes are pulled from
  * CHANGELOG.json entries and are only sent if there aren't already notes for a
  * given tag.
  */
 
-const GitHubApi = require('@octokit/rest');
-const { argv, repoDetails, github } = require('./init');
-const { getTagToChangelogMap, getTags } = require('./changelogsAndTags');
-const { getReleases } = require('./releases');
-const { getMarkdownForEntry } = require('./markdown');
+import * as GitHubApi from '@octokit/rest';
+import { argv, repoDetails, github } from './init';
+import { getTagToChangelogMap, getTags } from './changelogsAndTags';
+import { getReleases } from './releases';
+import { getMarkdownForEntry } from './markdown';
 
 if (!argv.apply) {
   console.warn(
@@ -38,7 +35,7 @@ async function updateReleaseNotes() {
   const tags = getTags().filter(tag => changelogEntries.has(tag));
   // do NOT use forEach here, since it doesn't handle async properly
   for (const tag of tags) {
-    const entry = changelogEntries.get(tag);
+    const entry = changelogEntries.get(tag)!;
     const hasBeenReleased = releasesByTag.has(tag);
 
     if (hasBeenReleased && !(argv.patch || argv.patchAll)) {
@@ -52,8 +49,7 @@ async function updateReleaseNotes() {
     console.log(`${hasBeenReleased ? 'Patching' : 'Creating'} release notes for ${entryInfo}...\n`);
     count++;
 
-    /** @type {Partial<GitHubApi.ReposUpdateReleaseParams>} */
-    const releaseDetails = {
+    const releaseDetails: Partial<GitHubApi.ReposUpdateReleaseParams> = {
       ...repoDetails,
       tag_name: entry.tag,
       name: `${entry.name} v${entry.version}`,
@@ -62,15 +58,15 @@ async function updateReleaseNotes() {
       body: await getMarkdownForEntry(entry),
     };
     if (hasBeenReleased) {
-      releaseDetails.release_id = releasesByTag.get(tag).id;
+      releaseDetails.release_id = releasesByTag.get(tag)!.id;
     }
 
     if (argv.apply) {
       try {
         if (hasBeenReleased) {
-          await github.repos.updateRelease(/** @type {GitHubApi.ReposUpdateReleaseParams} */ (releaseDetails));
+          await github.repos.updateRelease(releaseDetails as GitHubApi.ReposUpdateReleaseParams);
         } else {
-          await github.repos.createRelease(/** @type {GitHubApi.ReposCreateReleaseParams} */ (releaseDetails));
+          await github.repos.createRelease(releaseDetails as GitHubApi.ReposCreateReleaseParams);
         }
         console.log(`Successfully ${hasBeenReleased ? 'updated' : 'created'} release notes for ${entryInfo}`);
       } catch (err) {
