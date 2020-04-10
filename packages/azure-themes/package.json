@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/azure-themes",
   "version": "7.0.57",
-  "description": "Azure themes for Office UI Components",
+  "description": "Azure themes for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",

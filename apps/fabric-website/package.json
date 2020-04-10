@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/fabric-website",
   "version": "7.10.21",
-  "description": "The official website for the UI Fabric project.",
+  "description": "The official website for the Fluent UI project.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": true,
