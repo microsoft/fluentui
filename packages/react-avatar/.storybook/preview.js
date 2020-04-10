@@ -3,7 +3,9 @@ import generateStoriesFromExamples from '@uifabric/build/storybook/generateStori
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { withA11y } from '@storybook/addon-a11y';
+import { withPerformance } from 'storybook-addon-performance';
 
+addDecorator(withPerformance);
 addDecorator(withInfo());
 addDecorator(withA11y());
 addParameters({

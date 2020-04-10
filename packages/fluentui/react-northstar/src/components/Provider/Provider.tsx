@@ -100,8 +100,6 @@ const registerStyles = (stylesheet: string, target: Document) => {
   if (!styleMap.has(stylesheet)) {
     const styleElement = target.createElement('style');
 
-    styleElement.setAttribute('data-funkytown', 'true');
-
     styleElement.textContent = stylesheet;
     target.head.appendChild(styleElement);
 

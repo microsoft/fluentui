@@ -4,7 +4,7 @@ import { Provider, themes, Header, Status as FUIStatus, Flex } from '@fluentui/r
 
 // tslint:disable:no-any
 
-export const BasicStatus = () => (
+export const StatusFela = () => (
   <Provider theme={themes.teams}>
     <Flex column gap="gap.small">
       <Header>Status (fela)</Header>
@@ -17,7 +17,13 @@ export const BasicStatus = () => (
         <FUIStatus size="larger" />
         <FUIStatus size="largest" />
       </Flex>
+    </Flex>
+  </Provider>
+);
 
+export const StatusCss = () => (
+  <Provider theme={themes.teams}>
+    <Flex column gap="gap.small">
       <Header>Status (css)</Header>
       <Flex gap="gap.small">
         <Status size="smallest" state="error" />
@@ -28,13 +34,28 @@ export const BasicStatus = () => (
         <Status size="larger" />
         <Status size="largest" />
       </Flex>
+    </Flex>
+  </Provider>
+);
 
+export const ShorthandStatus = () => (
+  <Provider theme={themes.teams}>
+    <Flex column gap="gap.small">
       <Header>Shorthand icons (css)</Header>
       <Flex gap="gap.small">
         <Status state="error" icon="X" />
         <Status state="error" icon={<i>X</i>} />
         <Status state="error" icon={{ children: <i>X</i> }} />
-        <Status state="error" icon={{ children: (C: React.ElementType, p: any) => <div>X</div> }} />
+        <Status
+          state="error"
+          icon={{
+            children: (C: React.ElementType, p: any) => (
+              <div data-tooltip="true">
+                <C {...p} />
+              </div>
+            ),
+          }}
+        />
       </Flex>
     </Flex>
   </Provider>

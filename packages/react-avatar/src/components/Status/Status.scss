@@ -1,12 +1,12 @@
-$sizeSmallest: 8px;
-$sizeSmaller: 8px;
-$sizeSmall: 8px;
-$sizeMedium: 10px;
-$sizeLarge: 12px;
-$sizeLarger: 14px;
-$sizeLargest: 16px;
-
 :root {
+  --statusSizeSmallest: 8px;
+  --statusSizeSmaller: 8px;
+  --statusSizeSmall: 8px;
+  --statusSizeMedium: 10px;
+  --statusSizeLarge: 12px;
+  --statusSizeLarger: 14px;
+  --statusSizeLargest: 16px;
+
   --borderColor: transparent;
   --borderWidth: 2px;
   --defaultBackgroundColor: var(--siteVariables-colors-grey-350, rgb(151, 149, 147));
@@ -32,8 +32,8 @@ $sizeLargest: 16px;
   border-style: solid;
   background-color: var(--backgroundColor, var(--defaultBackgroundColor));
   color: var(--defaultTextColor);
-  width: $sizeMedium;
-  height: $sizeMedium;
+  width: var(--statusSizeMedium);
+  height: var(--statusSizeMedium);
 }
 
 ._state_success {
@@ -57,26 +57,26 @@ $sizeLargest: 16px;
 }
 
 ._size_smallest {
-  width: $sizeSmallest;
-  height: $sizeSmallest;
+  width: var(--statusSizeSmallest);
+  height: var(--statusSizeSmallest);
 }
 ._size_smaller {
-  width: $sizeSmaller;
-  height: $sizeSmaller;
+  width: var(--statusSizeSmaller);
+  height: var(--statusSizeSmaller);
 }
 ._size_small {
-  width: $sizeSmall;
-  height: $sizeSmall;
+  width: var(--statusSizeSmall);
+  height: var(--statusSizeSmall);
 }
 ._size_large {
-  width: $sizeLarge;
-  height: $sizeLarge;
+  width: var(--statusSizeLarge);
+  height: var(--statusSizeLarge);
 }
 ._size_larger {
-  width: $sizeLarger;
-  height: $sizeLarger;
+  width: var(--statusSizeLarger);
+  height: var(--statusSizeLarger);
 }
 ._size_largest {
-  width: $sizeLargest;
-  height: $sizeLargest;
+  width: var(--statusSizeLargest);
+  height: var(--statusSizeLargest);
 }

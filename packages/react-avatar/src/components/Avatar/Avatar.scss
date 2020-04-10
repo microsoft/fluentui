@@ -1,54 +1,57 @@
-// Hardcoded values used more than once.
-$sizeSmallest: 24px;
-$sizeSmaller: 24px;
-$sizeSmall: 24px;
-$sizeMedium: 32px;
-$sizeLarge: 36px;
-$sizeLarger: 42px;
-$sizeLargest: 48px;
-
-// Default variable values
+// Define default variable values
 :root {
+  --avatarSizeSmallest: 24px;
+  --avatarSizeSmaller: 24px;
+  --avatarSizeSmall: 24px;
+  --avatarSizeMedium: 32px;
+  --avatarSizeLarge: 36px;
+  --avatarSizeLarger: 42px;
+  --avatarSizeLargest: 48px;
   --avatarBorderColor: transparent;
   --avatarBorderWidth: 0;
   --squareAvatarBorderRadius: 3px;
-  --statusBorderColor: var(--bodyBackground);
+  --statusBorderColor: var(--bodyBackground, white);
   --statusBorderWidth: 2px;
+
+  --avatarFill: rgb(232, 232, 232);
 }
 
 // Root slot
 .root {
   position: relative;
   background-color: inherit;
-  display: inline-flex;
-  justify-content: stretch;
-  align-items: stretch;
+  display: inline-block;
   vertical-align: middle;
-  width: $sizeMedium;
-  height: $sizeMedium;
+  flex-shrink: 0;
+  width: var(--avatarSize, var(--avatarSizeMedium));
+  height: var(--avatarSize, var(--avatarSizeMedium));
 }
 
 // Image slot
 .image {
+  position: absolute;
   border-style: solid;
   border-color: var(--avatarBorderColor);
   border-width: var(--avatarBorderWidth);
   height: 100%;
   object-fit: cover;
   vertical-align: top;
-  width: 100%;
 }
 
 // Label slot
 .label {
   display: inline-block;
-  // width: sizeInRem,
-  // height: sizeInRem,
-  // lineHeight: sizeInRem,
-  // fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
+  background-color: var(--avatarFill);
+  flex-shrink: 0;
+
+  width: var(--avatarSize, var(--avatarSizeMedium));
+  height: var(--avatarSize, var(--avatarSizeMedium));
+
+  // fontSize: pxToRem(sizeToPxValue[p._size_ 2.333),
   vertical-align: top;
   text-align: center;
   padding: 0px;
+  border-radius: 99999px;
 }
 
 // Status slot
@@ -59,45 +62,39 @@ $sizeLargest: 48px;
   box-shadow: 0 0 0 var(--statusBorderWidth) var(--statusBorderColor);
 }
 
-// Root modifier when props.size == smallest
-.sizeSmallest {
-  width: $sizeSmallest;
-  height: $sizeSmallest;
+// Root modifier when props._size_ smallest
+._size_smallest {
+  --avatarSize: var(--avatarSizeSmallest);
 }
 
-// Root modifier when props.size == smaller
-.sizeSmaller {
-  width: $sizeSmaller;
-  height: $sizeSmaller;
+// Root modifier when props._size_ smaller
+._size_smaller {
+  --avatarSize: var(--avatarSizeSmaller);
 }
 
-// Root modifier when props.size == small
-.sizeSmall {
-  width: $sizeSmall;
-  height: $sizeSmall;
+// Root modifier when props._size_ small
+._size_small {
+  --avatarSize: var(--avatarSizeSmall);
 }
 
-// Root modifier when props.size == large
-.sizeLarge {
-  width: $sizeLarge;
-  height: $sizeLarge;
+// Root modifier when props._size_ large
+._size_large {
+  --avatarSize: var(--avatarSizeLarge);
 }
 
-// Root modifier when props.size == larger
+// Root modifier when props._size_ larger
 // larger-abc123
-.sizeLarger {
-  width: $sizeLarger;
-  height: $sizeLarger;
+._size_larger {
+  --avatarSize: var(--avatarSizeLarger);
 }
 
-// Root modifier when props.size == largest
-.sizeLargest {
-  width: $sizeLargest;
-  height: $sizeLargest;
+// Root modifier when props._size_ largest
+._size_largest {
+  --avatarSize: var(--avatarSizeLargest);
 }
 
 // Modifiers
-.square {
+._square {
   .image {
     border-radius: var(--squareAvatarBorderRadius);
   }
