@@ -110,7 +110,7 @@ const PlaygroundCard = props => {
                 type="number"
                 placeholder="Enter angle of rotation"
                 value={rotate}
-                onChange={e => setRotate(Number(e.target.value))}
+                onChange={(e, data) => setRotate(Number(data.value))}
               />
             </div>
             <div style={{ marginBottom: '7px' }}>
