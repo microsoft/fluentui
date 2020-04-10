@@ -1,5 +1,13 @@
-import { TilesGridMode, ITilesGridItem, ITilesGridSegment, ITileSize } from '@uifabric/experiments/lib/TilesList';
+import {
+  TilesGridMode,
+  ITilesGridItem,
+  ITilesGridSegment,
+  ITilesGridItemCellProps,
+  ITilesListRootProps,
+  ITilesListRowProps,
+} from '@uifabric/experiments/lib/TilesList';
 import { lorem } from '@uifabric/example-data';
+import { IRenderFunction } from '@uifabric/utilities';
 
 type IAspectRatioByProbability = { [probability: string]: number };
 
@@ -76,7 +84,42 @@ export function createGroup(items: IExampleItem[], type: 'document' | 'media', i
   };
 }
 
-export function getTileCells(
+export function onRenderTilesListExampleRoot(
+  rootProps?: ITilesListRootProps<IExampleItem>,
+  defaultRender?: IRenderFunction<ITilesListRootProps<IExampleItem>>,
+): JSX.Element | null {
+  if (!rootProps || !defaultRender) {
+    return null;
+  }
+
+  return defaultRender({
+    ...rootProps,
+    divProps: {
+      ...rootProps.divProps,
+      'aria-colcount': rootProps.columnCount,
+      'aria-rowcount': rootProps.rowCount,
+    },
+  });
+}
+
+export function onRenderTilesListExampleRow(
+  rowProps?: ITilesListRowProps<IExampleItem>,
+  defaultRender?: IRenderFunction<ITilesListRowProps<IExampleItem>>,
+): JSX.Element | null {
+  if (!rowProps || !defaultRender) {
+    return null;
+  }
+
+  return defaultRender({
+    ...rowProps,
+    divProps: {
+      ...rowProps.divProps,
+      role: 'row',
+    },
+  });
+}
+
+export function getExampleTilesListCells(
   groups: IExampleGroup[],
   {
     onRenderCell,
@@ -84,8 +127,8 @@ export function getTileCells(
     size = 'large',
     shimmerMode = false,
   }: {
-    onRenderHeader: (item: IExampleItem) => JSX.Element;
-    onRenderCell: (item: IExampleItem, finalSize?: ITileSize) => JSX.Element;
+    onRenderHeader: (props: ITilesGridItemCellProps<IExampleItem>) => JSX.Element | null;
+    onRenderCell: (props: ITilesGridItemCellProps<IExampleItem>) => JSX.Element | null;
     size?: 'large' | 'small';
     shimmerMode?: boolean;
   },
@@ -102,7 +145,7 @@ export function getTileCells(
         name: group.name,
         index: group.index,
       },
-      onRender: onRenderHeader,
+      onRenderCell: onRenderHeader,
       isPlaceholder: shimmerMode,
     };
 
@@ -124,7 +167,7 @@ export function getTileCells(
                     width: isLargeSize ? 171 * item.aspectRatio : 135 * item.aspectRatio,
                     height: isLargeSize ? 171 : 135,
                   },
-            onRender: onRenderCell,
+            onRenderCell: onRenderCell,
             isPlaceholder: shimmerMode,
           };
         },

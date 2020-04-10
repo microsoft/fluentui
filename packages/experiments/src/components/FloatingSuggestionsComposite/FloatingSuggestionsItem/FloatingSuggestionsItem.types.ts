@@ -7,6 +7,9 @@ export interface IFloatingSuggestionItemProps<T> {
   onRemoveItem?: (ev: React.MouseEvent<HTMLElement>, item: IFloatingSuggestionItemProps<T>) => void;
   displayText?: string;
   className?: string;
+  /**
+   * Takes precedence over showSuggestionRemoveButton
+   */
   showRemoveButton?: boolean;
   ariaLabel?: string;
   removeButtonAriaLabel?: string;
@@ -15,6 +18,11 @@ export interface IFloatingSuggestionItemProps<T> {
   theme?: ITheme;
   onRenderSuggestion?: (renderProps: IFloatingSuggestionOnRenderItemProps<T>) => JSX.Element;
 }
+
+export type IFloatingSuggestionItem<T> = Omit<
+  IFloatingSuggestionItemProps<T>,
+  'onRenderSuggestion' | 'onClick' | 'onRemoveItem' | 'theme'
+>;
 
 export type IFloatingSuggestionOnClickItemProps<T> = Pick<
   IFloatingSuggestionItemProps<T>,
