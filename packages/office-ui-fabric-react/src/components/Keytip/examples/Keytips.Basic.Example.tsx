@@ -4,13 +4,14 @@ import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { ComboBox } from 'office-ui-fabric-react/lib/ComboBox';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
+import { SpinButton, ISpinButtonStyles } from 'office-ui-fabric-react/lib/SpinButton';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
 const stackTokens: IStackTokens = { childrenGap: 20 };
+const spinButtonStyles: Partial<ISpinButtonStyles> = { root: { maxWidth: 200 } };
 
 export class KeytipsBasicExample extends React.Component<{}> {
   private _sampleOptions = [
@@ -30,11 +31,7 @@ export class KeytipsBasicExample extends React.Component<{}> {
         <Pivot>
           <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
             <Stack tokens={stackTokens}>
-              <SpinButton
-                label="Spin Button"
-                keytipProps={keytipMap.SpinButtonKeytip}
-                styles={{ root: { maxWidth: 200 } }}
-              />
+              <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={spinButtonStyles} />
               <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
               <span>
                 Go to{' '}

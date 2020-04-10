@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton, CompoundButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, CompoundButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { keytipMap } from 'office-ui-fabric-react/lib/components/Keytip/examples/KeytipSetup';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
@@ -10,6 +10,7 @@ export interface IKeytipsButtonExampleState {
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 const marginBottom = { root: { marginBottom: 28 } };
+const splitButtonStyles: Partial<IButtonStyles> = { splitButtonContainer: { height: 32 } };
 
 export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExampleState> {
   constructor(props: {}) {
@@ -66,7 +67,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
             }}
           />
           <DefaultButton
-            styles={{ splitButtonContainer: { height: 32 } }}
+            styles={splitButtonStyles}
             keytipProps={keytipMap.SplitButton}
             text="Split Button"
             split={true}
