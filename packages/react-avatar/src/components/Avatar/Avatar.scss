@@ -30,6 +30,12 @@
 // Image slot
 .image {
   position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--avatarSize, var(--avatarSizeMedium));
+  height: var(--avatarSize, var(--avatarSizeMedium));
+  border-radius: 99999px;
+
   border-style: solid;
   border-color: var(--avatarBorderColor);
   border-width: var(--avatarBorderWidth);

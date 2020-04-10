@@ -15,7 +15,7 @@ export const useAvatar = (props: AvatarProps, options: AvatarOptions) => {
 
   return mergeProps<AvatarProps, AvatarSlots, AvatarSlotProps>(props, options, {
     // TODO: should this be shorthand string?
-    label: { children: getInitials(props.name, false) },
+    label: { children: getInitials(props.name || '', false) },
     status: {
       size: props.size,
     },
