@@ -36,12 +36,13 @@ const getUUID = () =>
     .slice(2);
 
 export type DesignerState = {
-  selectedJSONTreeElement: any;
   draggingElement: JSONTreeElement;
+  isExpanding: boolean;
   isSelecting: boolean;
   jsonTree: JSONTreeElement;
   mode: DesignerMode;
   selectedComponentInfo: ComponentInfo;
+  selectedJSONTreeElement: any;
   showCode: boolean;
   showJSONTree: boolean;
 };
@@ -58,7 +59,8 @@ class Designer extends React.Component<any, DesignerState> {
 
     this.state = {
       draggingElement: null,
-      isSelecting: false,
+      isSelecting: true,
+      isExpanding: true,
       jsonTree: jsonTree || this.getDefaultJSONTree(),
       mode: 'build',
       selectedComponentInfo: null,
@@ -107,7 +109,7 @@ class Designer extends React.Component<any, DesignerState> {
     },
   ];
 
-  getDefaultJSONTree = (): JSONTreeElement => ({ uuid: 'root', type: 'div' });
+  getDefaultJSONTree = (): JSONTreeElement => ({ uuid: 'json-tree-root', type: 'div' });
 
   componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<DesignerState>, snapshot?: any): void {
     writeTreeToStore(this.state.jsonTree);
@@ -122,6 +124,10 @@ class Designer extends React.Component<any, DesignerState> {
         selectedComponentInfo: null,
       });
     }
+  };
+
+  handleIsExpandingChange = isExpanding => {
+    this.setState({ isExpanding });
   };
 
   handleShowCodeChange = showCode => {
@@ -146,7 +152,6 @@ class Designer extends React.Component<any, DesignerState> {
   };
 
   handleDragAbort = () => {
-    this.stopSelecting();
     this.setState({
       draggingElement: null,
     });
@@ -212,7 +217,11 @@ class Designer extends React.Component<any, DesignerState> {
 
   handleModeChange = mode => {
     // console.log('Designer:onModeChange')
-    this.setState({ mode });
+    this.setState({
+      mode,
+      isExpanding: mode === 'build',
+      isSelecting: mode === 'build',
+    });
   };
 
   handlePropChange = ({ jsonTreeElement, name, value }) => {
@@ -231,30 +240,6 @@ class Designer extends React.Component<any, DesignerState> {
     });
   };
 
-  handleKeyDown = e => {
-    const code = keyboardKey.getCode(e);
-
-    switch (code) {
-      case keyboardKey.Escape:
-        this.stopSelecting();
-        break;
-
-      case keyboardKey.c:
-        if (e.altKey && e.shiftKey) {
-          this.startSelecting();
-        }
-        break;
-    }
-  };
-
-  startSelecting = () => {
-    this.setState({ isSelecting: true });
-  };
-
-  stopSelecting = () => {
-    this.setState({ isSelecting: false });
-  };
-
   handleSelecting = isSelecting => {
     this.setState({ isSelecting });
   };
@@ -262,6 +247,7 @@ class Designer extends React.Component<any, DesignerState> {
   render() {
     const {
       draggingElement,
+      isExpanding,
       isSelecting,
       jsonTree,
       mode,
@@ -282,7 +268,6 @@ class Designer extends React.Component<any, DesignerState> {
           overflow: 'hidden',
         }}
       >
-        <EventListener type="keydown" listener={this.handleKeyDown} target={document} />
         {draggingElement && (
           <>
             <EventListener type="mousemove" listener={this.handleDrag} target={document} />
@@ -293,11 +278,18 @@ class Designer extends React.Component<any, DesignerState> {
                   display: 'block',
                   flex: '0 0 auto',
                   position: 'fixed',
+                  padding: '4px',
                   ...(this.draggingPosition && {
                     left: this.draggingPosition.x,
                     top: this.draggingPosition.y,
                   }),
                   pointerEvents: 'none',
+                  lineHeight: 1,
+                  border: `1px solid rgba(0, 0, 0, 0.5)`,
+                  backgroundColor: 'rgba(255, 255, 255, 0.5)',
+                  backgroundImage:
+                    'url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAKUlEQVQoU2NkYGAwZkAD////RxdiYBwKCv///4/hGUZGkNNRAeMQUAgAtxof+nLDzyUAAAAASUVORK5CYII=")',
+                  backgroundBlendMode: 'softlight',
                   zIndex: 999999,
                 }}
               >
@@ -308,20 +300,24 @@ class Designer extends React.Component<any, DesignerState> {
         )}
 
         <Toolbar
-          showCode={showCode}
-          showJSONTree={showJSONTree}
+          isExpanding={isExpanding}
           isSelecting={isSelecting}
+          mode={mode}
+          onExpandLayoutChange={this.handleIsExpandingChange}
           onShowCodeChange={this.handleShowCodeChange}
           onShowJSONTreeChange={this.handleShowJSONTreeChange}
           onSelectingChange={this.handleSelecting}
           onReset={this.handleReset}
           onModeChange={this.handleModeChange}
+          showCode={showCode}
+          showJSONTree={showJSONTree}
           style={{ flex: '0 0 auto', width: '100%', height: HEADER_HEIGHT }}
-          mode={mode}
         />
 
-        <div style={{ display: 'flex', flex: 1, overflow: 'hidden' }}>
-          <List onDragStart={this.handleDragStart} style={{ overflowY: 'auto' }} />
+        <div style={{ display: 'flex', flex: 1, minWidth: '10rem', overflow: 'hidden' }}>
+          <div style={{ overflowY: 'auto', minWidth: '12rem' }}>
+            <List onDragStart={this.handleDragStart} />
+          </div>
 
           <div
             style={{
@@ -339,19 +335,21 @@ class Designer extends React.Component<any, DesignerState> {
                 minHeight: `calc(100vh - ${HEADER_HEIGHT}`,
               }}
             >
-              <BrowserWindow style={{ flex: 1, margin: '1rem' }}>
+              <BrowserWindow showNavBar={false} style={{ flex: 1, margin: '1rem' }}>
                 <Canvas
                   renderJSONTreeElement={treeElement => {
-                    console.log('BUILD MODE ADD STYLE TO', treeElement);
                     treeElement.props = treeElement.props || {};
 
-                    if (mode === 'build') {
+                    if (isExpanding) {
                       treeElement.props.style = {
                         ...treeElement?.props?.style,
-                        ...(treeElement.uuid === 'root' && { minHeight: '100vh' }),
-                        padding: '1rem',
-                        margin: '1rem',
-                        border: '1px dashed cornflowerblue',
+                        ...(treeElement.uuid === 'json-tree-root'
+                          ? { minHeight: '100vh' }
+                          : {
+                              padding: '0.25rem',
+                              margin: '1rem',
+                              outline: '1px dashed cornflowerblue',
+                            }),
                       };
                     } else {
                       // TODO: Need to ensure when turning build mode off, styles are restored
@@ -372,7 +370,7 @@ class Designer extends React.Component<any, DesignerState> {
               </BrowserWindow>
 
               {(showCode || showJSONTree) && (
-                <div style={{ flex: '0 0 auto', maxHeight: '30vh', overflow: 'auto' }}>
+                <div style={{ flex: '0 0 auto', maxHeight: '35vh', overflow: 'auto' }}>
                   {showCode && (
                     <CodeSnippet
                       fitted

@@ -1,32 +1,35 @@
 import * as React from 'react';
-import { Button, Checkbox, Menu, Text } from '@fluentui/react-northstar';
+import { Button, Checkbox, RadioGroup, RadioGroupItemProps } from '@fluentui/react-northstar';
 import Logo from '@fluentui/docs/src/components/Logo/Logo';
 import { DesignerMode } from './types';
-import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
-import buttonStyles from '../../../react-northstar/src/themes/teams/components/Button/buttonStyles';
+import { OpenOutsideIcon, TrashCanIcon } from '@fluentui/react-icons-northstar';
 
 const Toolbar = ({
-  style,
-  onReset,
+  isExpanding,
+  isSelecting,
+  onExpandLayoutChange,
   onModeChange,
+  onReset,
   onShowCodeChange,
   onShowJSONTreeChange,
   onSelectingChange,
   mode,
   showCode,
   showJSONTree,
-  isSelecting,
+  style,
 }: {
-  style?: React.CSSProperties;
-  onReset: () => void;
+  isExpanding: boolean;
+  isSelecting: boolean;
+  onExpandLayoutChange: (isExpanding: boolean) => void;
   onModeChange: (mode: DesignerMode) => void;
+  onReset: () => void;
   onShowCodeChange: (showCode: boolean) => void;
   onShowJSONTreeChange: (showJSONTree: boolean) => void;
   onSelectingChange: (isSelecting: boolean) => void;
   mode: DesignerMode;
   showCode: boolean;
   showJSONTree: boolean;
-  isSelecting: boolean;
+  style?: React.CSSProperties;
 }) => (
   <div
     style={{
@@ -38,29 +41,51 @@ const Toolbar = ({
     }}
   >
     <Logo styles={{ height: '1.5rem', marginRight: '0.25rem' }} />
-    <div style={{ fontSize: '18px', lineHeight: 1, marginTop: '0.8rem', marginRight: '1rem' }}>
+    <div style={{ position: 'relative', width: '8em', fontSize: '18px', lineHeight: 1 }}>
       FluentUI
-      <div style={{ fontSize: '11px', lineHeight: 1, opacity: 0.625, textAlign: 'right' }}>builder</div>
+      <div style={{ position: 'absolute', fontSize: '11px', opacity: 0.625 }}>Builder</div>
     </div>
-    &emsp;
-    <Checkbox
-      label="Build Mode"
-      toggle
-      checked={mode === 'build'}
-      onChange={(e, data) => onModeChange(data.checked ? 'build' : 'use')}
+    <RadioGroup
+      checkedValue={mode}
+      onCheckedValueChange={(e, data: RadioGroupItemProps & { value: DesignerMode }) => {
+        onModeChange(data.value);
+      }}
+      items={[
+        {
+          key: 'build',
+          label: 'Build',
+          value: 'build',
+        },
+        {
+          key: 'use',
+          label: 'Test',
+          value: 'use',
+        },
+      ]}
     />
+    &nbsp;
     <Button
-      // TODO: Button accessibility doesn't allow use as `a` tag, fix that or make a Link component for these cases
-      accessibility={undefined}
       text
-      as="a"
-      href="/builder/maximize"
-      target="_blank"
-      rel="noopener noreferrer"
       icon={<OpenOutsideIcon />}
-      content="Preview"
+      content="Popout"
+      onClick={() => {
+        window.open('/builder/maximize', '_blank', 'noopener noreferrer');
+      }}
     />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+      <Checkbox
+        toggle
+        label="Expand Layout"
+        checked={!!isExpanding}
+        onChange={(e, data) => onExpandLayoutChange(data.checked)}
+      />
+      &emsp;
+      <Checkbox
+        toggle
+        label="Select Components"
+        checked={!!isSelecting}
+        onChange={(e, data) => onSelectingChange(data.checked)}
+      />
       &emsp;
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;
@@ -71,21 +96,7 @@ const Toolbar = ({
         onChange={(e, data) => onShowJSONTreeChange(data.checked)}
       />
       &emsp;
-      <Checkbox
-        label="Inspect"
-        toggle
-        checked={!!isSelecting}
-        onChange={(e, data) => onSelectingChange(data.checked)}
-      />
-      &emsp;
-      <div>
-        <code>
-          <strong>⌥ ⌃ C</strong>
-        </code>{' '}
-        - Select a component
-      </div>
-      &emsp;
-      <Button onClick={onReset} content="Start Over" />
+      <Button text onClick={onReset} icon={<TrashCanIcon />} content="Start Over" />
     </div>
   </div>
 );

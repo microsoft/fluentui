@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 import * as React from 'react';
-import { Box, Menu, MenuItemProps } from '@fluentui/react-northstar';
+import { Box, Menu } from '@fluentui/react-northstar';
 import { ComponentInfo } from '@fluentui/docs/src/types';
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
 import { DRAGGING_PROPS, EXCLUDED_COMPONENTS, resolveComponent, resolveDraggingProps } from '../config';
@@ -41,17 +41,19 @@ const List = ({
         styles={{ padding: '0.5em 0.5em 0 0.5em' }}
         items={[
           {
-            key: 'Display Name',
-            content: 'Display Name',
+            key: 'name',
+            content: 'Name',
+            'data-display-mode': 'Display Name',
           },
           {
-            key: 'rendered',
-            content: 'Rendered',
+            key: 'preview',
+            content: 'Preview',
+            'data-display-mode': 'Rendered',
           },
         ]}
         defaultActiveIndex={0}
-        onItemClick={(e, props: MenuItemProps & { content: ListDisplayModes }) => {
-          setDisplayMode(props.content);
+        onItemClick={(e, props) => {
+          setDisplayMode(props['data-display-mode']);
         }}
       />
 

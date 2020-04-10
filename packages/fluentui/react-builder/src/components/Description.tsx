@@ -16,10 +16,10 @@ const ComponentDescription = ({
 
   return (
     <div>
-      <FUI.Header as="h3" styles={{ display: 'inline-block', marginBottom: 0 }}>
+      <FUI.Header as="h3" styles={{ display: 'inline-block', margin: 0 }}>
         {componentInfo.displayName}
       </FUI.Header>{' '}
-      uuid: <code>{selectedJSONTreeElement.uuid}</code>
+      <code style={{ float: 'right' }}>uuid: {selectedJSONTreeElement.uuid}</code>
       <br />
       <span style={{ opacity: 0.5 }}>{componentInfo.docblock.description}</span>
     </div>
