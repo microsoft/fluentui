@@ -26,11 +26,11 @@ const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>()
 
 registerIcons({
   icons: {
-    'AndroidLogo-homePage': AndroidLogo({ iconColor: 'black', iconSize: 64 }),
-    'AppleLogo-homePage': AppleLogo({ iconColor: 'black', iconSize: 64 }),
-    'WebLogo-homePage': WebLogo({ iconColor: 'black', iconSize: 64 }),
-    'WindowsLogo-homePage': WindowsLogo({ iconColor: 'black', iconSize: 64 }),
-    'MacLogo-homePage': MacLogo({ iconColor: 'black', iconSize: 64 }),
+    'AndroidLogo-homePage': AndroidLogo({ iconColor: 'white', iconSize: 64 }),
+    'AppleLogo-homePage': AppleLogo({ iconColor: 'white', iconSize: 64 }),
+    'WebLogo-homePage': WebLogo({ iconColor: 'white', iconSize: 64 }),
+    'WindowsLogo-homePage': WindowsLogo({ iconColor: 'white', iconSize: 64 }),
+    'MacLogo-homePage': MacLogo({ iconColor: 'white', iconSize: 64 }),
   },
 });
 
@@ -124,14 +124,34 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.heroSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
-            <h2 className={this._classNames.heroTitle}>Create amazing experiences</h2>
+            <h2 className={this._classNames.heroTitle}>
+              Fluent{' '}
+              <svg width="107" height="92" viewBox="0 0 107 92" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <text x="0" y="90" fill="url(#paint0_linear)">
+                  UI
+                </text>
+                <defs>
+                  <linearGradient
+                    id="paint0_linear"
+                    x1="-10"
+                    y1="-43"
+                    x2="129.319"
+                    y2="-32.448"
+                    gradientUnits="userSpaceOnUse"
+                  >
+                    <stop stop-color="#4FE5FF" />
+                    <stop offset="1" stop-color="#69E56E" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </h2>
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created Fluent UI, a collection of UX frameworks you can use to build Fluent experiences
-              that fit seamlessly into a broad range of Microsoft products.
+              A collection of UX frameworks for creating beatufiul, cross-platforms apps that share code, design, and
+              interaction behavior.
             </p>
-            <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
+            <p>Build for one platform or for all. Everything you need is here.</p>
             <p>{this._renderLink('#/get-started', 'Get started', { isCTA: true, dark: false })}</p>
           </div>
         </div>
@@ -156,86 +176,101 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true,
     });
 
-    const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
-    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.neutralPrimary };
+    const versionSwitcherColor: IRawStyle = { color: theme.palette.white };
+    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.white };
+
+    const TitleStack = props => (
+      <Stack style={{ marginBottom: 8 }} horizontal verticalAlign="center" tokens={{ childrenGap: 16 }} {...props} />
+    );
 
     return (
       <div className={classNames.platformCardsSection}>
         <div className={classNames.inner}>
-          <div className={classNames.card} style={{ background: platforms.web.color }}>
-            <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
-            <Stack horizontal verticalAlign="baseline" horizontalAlign="space-between">
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
               <MarkdownHeader as="h3" className={classNames.cardTitle}>
                 Web
               </MarkdownHeader>
-              <ActionButton
-                allowDisabledFocus={true}
-                className={classNames.versionSwitcher}
-                styles={{
-                  root: versionSwitcherColor,
-                  flexContainer: { fontFamily: monoFont },
-                  menuIcon: versionSwitcherColor,
-                  rootHovered: versionSwitcherActiveColor,
-                  rootPressed: versionSwitcherActiveColor,
-                  rootExpanded: versionSwitcherActiveColor,
-                }}
-                menuProps={{
-                  gapSpace: 3,
-                  beakWidth: 8,
-                  isBeakVisible: true,
-                  shouldFocusOnMount: true,
-                  items: fabricVersionOptions,
-                  directionalHint: DirectionalHint.bottomCenter,
-                  onItemClick: this._onVersionMenuClick,
-                  styles: {
-                    root: { minWidth: 100 },
-                  },
-                }}
-              >
-                Fluent UI React {reactPackageData.version}
-              </ActionButton>
-            </Stack>
+            </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/styles/web', 'Styles')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/web', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/web', 'Get started')}</li>
+              <li>
+                <ActionButton
+                  allowDisabledFocus={true}
+                  className={classNames.versionSwitcher}
+                  styles={{
+                    root: { ...versionSwitcherColor, padding: '12px 0' },
+                    flexContainer: { fontFamily: monoFont },
+                    menuIcon: versionSwitcherColor,
+                    rootHovered: { ...versionSwitcherActiveColor, borderBottom: '1px solid white' },
+                    rootPressed: versionSwitcherActiveColor,
+                    rootExpanded: versionSwitcherActiveColor,
+                  }}
+                  menuProps={{
+                    gapSpace: 3,
+                    beakWidth: 8,
+                    isBeakVisible: true,
+                    shouldFocusOnMount: true,
+                    items: fabricVersionOptions,
+                    directionalHint: DirectionalHint.bottomCenter,
+                    onItemClick: this._onVersionMenuClick,
+                    styles: {
+                      root: { minWidth: 100 },
+                    },
+                  }}
+                >
+                  Fluent UI React {reactPackageData.version}
+                </ActionButton>
+              </li>
             </ul>
           </div>
-          <div className={classNames.card} style={{ background: platforms.ios.color }}>
-            <Icon iconName="AppleLogo-homePage" className={classNames.cardIcon} />
-            <MarkdownHeader as="h3" className={classNames.cardTitle}>
-              iOS
-            </MarkdownHeader>
-            <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/ios', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/ios', 'Get started')}</li>
-            </ul>
-          </div>
-          <div className={classNames.card} style={{ background: platforms.android.color }}>
-            <Icon iconName="AndroidLogo-homePage" className={classNames.cardIcon} />
-            <MarkdownHeader as="h3" className={classNames.cardTitle}>
-              Android
-            </MarkdownHeader>
-            <ul className={classNames.cardList}>
-              <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
-              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/android', 'Get started')}</li>
-            </ul>
-          </div>
-          <div className={classNames.card} style={{ background: platforms.windows.color }}>
-            <Icon iconName="WindowsLogo-homePage" className={classNames.cardIcon} />
-            <MarkdownHeader as="h3" className={classNames.cardTitle}>
-              Windows
-            </MarkdownHeader>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="WindowsLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Windows
+              </MarkdownHeader>
+            </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/windows', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/windows', 'Get started')}</li>
             </ul>
           </div>
-          <div className={classNames.card} style={{ background: platforms.mac.color }}>
-            <Icon iconName="MacLogo-homePage" className={classNames.cardIcon} />
-            <MarkdownHeader as="h3" className={classNames.cardTitle}>
-              macOS
-            </MarkdownHeader>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="AppleLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                iOS
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/ios', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/ios', 'Get started')}</li>
+            </ul>
+          </div>
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="AndroidLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Android
+              </MarkdownHeader>
+            </TitleStack>
+            <ul className={classNames.cardList}>
+              <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
+              <li className={classNames.cardListItem}>{this._renderLink('#/get-started/android', 'Get started')}</li>
+            </ul>
+          </div>
+
+          <div className={classNames.card} style={{}}>
+            <TitleStack>
+              <Icon iconName="MacLogo-homePage" className={classNames.cardIcon} />
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                macOS
+              </MarkdownHeader>
+            </TitleStack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/mac', 'Controls')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/get-started/mac', 'Get started')}</li>

@@ -163,7 +163,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       classNames.heroTitle,
       {
         fontSize: FontSizes.size68, // @TODO: Mock uses 64
-        color: '#cf8fff', // @TODO: Fluent color palette?
+        color: palette.white, // @TODO: Fluent color palette?
         lineHeight: '1.1',
         margin: 0,
       },
@@ -174,29 +174,6 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         transitionDelay: '0.2s',
         position: 'relative',
-
-        selectors: {
-          '&:before, &:after': {
-            content: '""',
-            width: '50vw',
-            height: '100%',
-            position: 'absolute',
-            top: 0,
-            zIndex: 1,
-          },
-
-          '&:before': {
-            left: 0,
-            // background: beforeColor // Adjust saturation
-            background: beforeAlt,
-          },
-
-          '&:after': {
-            right: 0,
-            // background: afterColor // Adjust saturation
-            background: afterAlt,
-          },
-        },
       },
       ...sectionAnimation,
     ],
@@ -328,6 +305,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         padding: appPadding.small,
         flex: '0 0 25%',
         minWidth: 300,
+        minHeight: 384,
 
         selectors: {
           [mediaQuery.maxLarge]: {
@@ -341,7 +319,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       classNames.cardTitle,
       ...sectionTitleStyles,
       {
-        color: palette.black,
+        color: palette.white,
         marginBottom: '1em',
       },
     ],
@@ -379,13 +357,6 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         fontSize: FontSizes.size68,
         color: palette.black,
-        marginBottom: '1em',
-
-        selectors: {
-          [mediaQuery.maxMobile]: {
-            marginBottom: '.25em',
-          },
-        },
       },
     ],
 
@@ -417,10 +388,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     linkDark: [
       classNames.linkDark,
       {
-        color: theme.palette.black,
+        color: theme.palette.white,
         selectors: {
           [allLinkStatesSelector]: {
-            color: theme.palette.black,
+            color: theme.palette.white,
           },
         },
       },
