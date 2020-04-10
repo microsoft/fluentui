@@ -18,8 +18,7 @@ export const DropdownControlledMultiExample: React.FC = () => {
   const [selectedItems, setSelectedItems] = React.useState();
 
   const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
-    setSelectedItems(item);
-    const newSelectedItems = selectedItems;
+    const newSelectedItems = [...selectedItems];
     if (item.selected) {
       newSelectedItems.push(item.key as string);
     } else {
