@@ -22,21 +22,9 @@ const comboBoxBasicOptions: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' },
 ];
 
-const getErrorMessage = (value: number | string) => {
-  if (value === 'B') {
-    return 'B is not an allowed option';
-  }
-  return '';
-};
-
 export const ComboBoxErrorHandlingExample: React.FC = () => {
-  const [dynamicErrorValue, setDynamicErrorValue] = React.useState('');
-
-  const onChange: IComboBoxProps['onChange'] = (event, option) => {
-    if (option) {
-      setDynamicErrorValue(option.key);
-    }
-  };
+  const [selectedKey, setSelectedKey] = React.useState('');
+  const onChange: IComboBoxProps['onChange'] = (event, option) => setSelectedKey(option?.key);
 
   return (
     <div>
@@ -46,12 +34,13 @@ export const ComboBoxErrorHandlingExample: React.FC = () => {
         errorMessage="Oh no! This ComboBox has an error!"
         options={comboBoxBasicOptions}
       />
+
       <ComboBox
-        label="ComboBox with dynamic error message"
-        onChange={onChange}
-        selectedKey={dynamicErrorValue}
-        errorMessage={getErrorMessage(dynamicErrorValue)}
+        label="ComboBox that errors when Option B is selected"
         options={comboBoxBasicOptions}
+        onChange={onChange}
+        selectedKey={selectedKey}
+        errorMessage={selectedKey === 'B' && 'B is not an allowed option'}
       />
     </div>
   );
