@@ -18,7 +18,7 @@ initializeFileTypeIcons();
 initializeFileTypeIcons('https://my.cdn.com/path/to/icons/');
 ```
 
-**NOTE** Do not use the `item-types-fluent` iconset that was previously uploaded to the Fabric CDN, it is deprecated.
+**NOTE:** Do not use the `item-types-fluent` icon set that was previously uploaded to the Fabric CDN; it is deprecated.
 
 ## Usage in code
 
