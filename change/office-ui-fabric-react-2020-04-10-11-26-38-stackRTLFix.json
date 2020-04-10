@@ -1,0 +1,8 @@
+{
+  "type": "patch",
+  "comment": "Stack: Fixing RTL not applying to childrenGap.",
+  "packageName": "office-ui-fabric-react",
+  "email": "humbertomakotomorimoto@gmail.com",
+  "dependentChangeType": "patch",
+  "date": "2020-04-10T18:26:38.735Z"
+}
