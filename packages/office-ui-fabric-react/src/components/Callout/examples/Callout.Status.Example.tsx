@@ -1,11 +1,7 @@
 import * as React from 'react';
 import { DefaultButton, getTheme, FontWeights, mergeStyleSets, DelayedRender, Callout } from 'office-ui-fabric-react';
+import { useBoolean } from '@uifabric/react-hooks';
 
-export interface IStatusCalloutExampleState {
-  isCalloutVisible?: boolean;
-}
-
-// Themed styles for the example.
 const theme = getTheme();
 const styles = mergeStyleSets({
   buttonArea: {
@@ -31,56 +27,36 @@ const styles = mergeStyleSets({
   ],
 });
 
-// Example code
-export class StatusCalloutExample extends React.Component<{}, IStatusCalloutExampleState> {
-  public state: IStatusCalloutExampleState = {
-    isCalloutVisible: false,
-  };
+const menuButtonElement = React.createRef<HTMLDivElement>();
 
-  private _menuButtonElement = React.createRef<HTMLDivElement>();
-
-  public render(): JSX.Element {
-    const { isCalloutVisible } = this.state;
-
-    return (
-      <>
-        <div className={styles.buttonArea} ref={this._menuButtonElement}>
-          <DefaultButton
-            onClick={this._onShowMenuClicked}
-            text={isCalloutVisible ? 'Hide StatusCallout' : 'Show StatusCallout'}
-          />
-        </div>
-        {this.state.isCalloutVisible && (
-          <Callout
-            className={styles.callout}
-            target={this._menuButtonElement.current}
-            onDismiss={this._onCalloutDismiss}
-            role="status"
-            aria-live="assertive"
-          >
-            <DelayedRender>
-              <>
-                <p className={styles.subtext}>
-                  This message is treated as an aria-live assertive status message, and will be read by a screen reader
-                  regardless of focus.
-                </p>
-              </>
-            </DelayedRender>
-          </Callout>
-        )}
-      </>
-    );
-  }
-
-  private _onShowMenuClicked = (): void => {
-    this.setState({
-      isCalloutVisible: !this.state.isCalloutVisible,
-    });
-  };
-
-  private _onCalloutDismiss = (): void => {
-    this.setState({
-      isCalloutVisible: false,
-    });
-  };
-}
+export const CalloutStatusExample: React.FunctionComponent = () => {
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
+  return (
+    <>
+      <div className={styles.buttonArea} ref={menuButtonElement}>
+        <DefaultButton
+          onClick={toggleIsCalloutVisible}
+          text={isCalloutVisible ? 'Hide StatusCallout' : 'Show StatusCallout'}
+        />
+      </div>
+      {isCalloutVisible && (
+        <Callout
+          className={styles.callout}
+          target={menuButtonElement.current}
+          onDismiss={toggleIsCalloutVisible}
+          role="status"
+          aria-live="assertive"
+        >
+          <DelayedRender>
+            <>
+              <p className={styles.subtext}>
+                This message is treated as an aria-live assertive status message, and will be read by a screen reader
+                regardless of focus.
+              </p>
+            </>
+          </DelayedRender>
+        </Callout>
+      )}
+    </>
+  );
+};
