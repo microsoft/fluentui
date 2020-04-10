@@ -40,10 +40,12 @@
 
 // Label slot
 .label {
-  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: var(--avatarFill);
-  flex-shrink: 0;
 
+  font-size: calc(var(--avatarSize) / 2.333);
   width: var(--avatarSize, var(--avatarSizeMedium));
   height: var(--avatarSize, var(--avatarSizeMedium));
 

@@ -8,7 +8,7 @@ export const AvatarBase = compose<AvatarProps, AvatarSlots, AvatarSlotProps, Com
   (props: AvatarProps & AvatarOptions, ref: React.RefObject<HTMLElement>, options: AvatarOptions) => {
     // A base component refers to a state hook to derive slots and slot props. This keeps the
     // function component focused on the DOM shape.
-    const { state, slots, slotProps } = useAvatar(props, options);
+    const { slots, slotProps } = useAvatar(props, options);
 
     // The slot props are used to define the final DOM structure. User input and
     // state can be used to conditionally render parts of the markup.
