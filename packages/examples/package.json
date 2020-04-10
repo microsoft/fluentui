@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/examples",
   "version": "0.1.30",
-  "description": "Example code and docs for Fluent UI and UI Fabric packages.",
+  "description": "Example code and docs for Fluent UI packages.",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"

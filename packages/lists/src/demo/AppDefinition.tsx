@@ -2,7 +2,7 @@
 import { IAppDefinition } from '@uifabric/example-app-base';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - Lists',
+  appTitle: 'Fluent UI React - Lists',
 
   testPages: [],
   examplePages: [

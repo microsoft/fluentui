@@ -26,7 +26,7 @@ function loadReferences(): IAppLink[] {
 }
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - React',
+  appTitle: 'Fluent UI React',
   customizations: AppCustomizations,
   testPages: [
     {

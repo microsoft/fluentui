@@ -1,8 +1,8 @@
 # @uifabric/example-app-base
 
-**Deprecated** components and utilities used to build internal documentation sites and inner loops for various [Fluent UI React](https://developer.microsoft.com/en-us/fluentui) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) packages.
+Components and utilities used to build internal documentation sites and inner loops for various [Fluent UI React](https://developer.microsoft.com/en-us/fluentui) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) packages.
 
-**For new inner loops and documentation sites, please use [Storybook](https://storybook.js.org/) instead.** Storybook is a well-supported, well-documented platform for component development and documentation. `example-app-base` components have always been primarily intended for internal use and are now deprecated.
+**This package is in maintenance mode while we work on a replacement.** It should only be used in new projects if you must have a published documentation site that looks like the official Fluent UI React docs. If all you need is an inner loop for component development, **please use [Storybook](https://storybook.js.org/) instead.** Storybook is a well-supported, well-documented platform for component development and documentation.
 
 ## Live editor support
 

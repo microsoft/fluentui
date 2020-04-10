@@ -35,7 +35,7 @@ registerIcons({
 const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/';
 
 /**
- * List of App/Brand icon names that use UI Fabric.
+ * List of App/Brand icon names that use Fluent UI.
  */
 const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'outlook_48x1.svg', title: 'Outlook' },
