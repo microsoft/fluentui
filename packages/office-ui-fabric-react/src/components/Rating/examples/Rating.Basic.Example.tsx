@@ -20,9 +20,11 @@ export const RatingBasicExample: React.FC = () => {
   const onLargeStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     setLargeStarsRating(rating);
   };
+
   const onSmallStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     setSmallStarRating(rating);
   };
+
   const onTenStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     setTenStarRatingg(rating);
   };
@@ -47,6 +49,7 @@ export const RatingBasicExample: React.FC = () => {
       />
       Small Stars
       <Rating
+        id="small"
         min={1}
         max={5}
         rating={smallStarRating}
