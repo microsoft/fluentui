@@ -23,8 +23,8 @@ const comboBoxBasicOptions: IComboBoxOption[] = [
 ];
 
 export const ComboBoxErrorHandlingExample: React.FC = () => {
-  const [selectedKey, setSelectedKey] = React.useState('');
-  const onChange: IComboBoxProps['onChange'] = (event, option) => setSelectedKey(option?.key);
+  const [selectedKey, setSelectedKey] = React.useState<string | undefined>('');
+  const onChange: IComboBoxProps['onChange'] = (event, option) => setSelectedKey(option!.key as string);
 
   return (
     <div>
