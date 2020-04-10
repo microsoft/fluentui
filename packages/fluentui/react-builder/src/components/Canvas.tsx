@@ -106,6 +106,7 @@ const Canvas = ({
               active={isSelecting}
               filter={fiberNav => fiberNavFindOwnerInJSONTree(fiberNav, jsonTree)}
               mountDocument={document}
+              renderLabel={fiberNav => fiberNav.name}
               showElement={false}
               showClassName={false}
               onSelect={handleSelectComponent}

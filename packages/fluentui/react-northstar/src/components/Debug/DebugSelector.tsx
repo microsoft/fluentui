@@ -12,6 +12,7 @@ export type DebugSelectorProps = {
   mountDocument?: Document;
   onSelect?: (fiberNav: FiberNavigator) => void;
   onHover?: (fiberNav: FiberNavigator) => void;
+  renderLabel?: (fiberNav: FiberNavigator) => string;
   showClassName?: boolean;
   showElement?: boolean;
   filter?: (fiberNav: FiberNavigator) => FiberNavigator | null;
@@ -84,7 +85,7 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
   };
 
   render() {
-    const { active, mountDocument, showClassName, showElement } = this.props;
+    const { active, mountDocument, renderLabel, showClassName, showElement } = this.props;
     const { fiberNav } = this.state;
 
     return (
@@ -99,7 +100,7 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
             showClassName={showClassName}
             showElement={showElement}
             fiberNav={fiberNav}
-            renderLabel={fiberNav => fiberNav.name}
+            renderLabel={renderLabel}
           />
         )}
       </>

@@ -2,16 +2,24 @@ import * as React from 'react';
 import FiberNavigator from './FiberNavigator';
 
 interface DebugRectProps {
-  showClassName: boolean;
-  showElement: boolean;
+  showClassName?: boolean;
+  showCropMarks?: boolean;
+  showElement?: boolean;
   fiberNav: FiberNavigator;
+  renderLabel?: (fiberNav: FiberNavigator) => string;
 }
+
+const cropMarkStyle: React.CSSProperties = {
+  position: 'absolute',
+  background: '#6495ed88',
+};
 
 class DebugRect extends React.Component<DebugRectProps> {
   selectorRef = React.createRef<HTMLPreElement>();
 
   static defaultProps = {
     showClassName: true,
+    showCropMarks: true,
     showElement: true,
     renderLabel: fiberNav => `<${fiberNav.name} />`,
   };
@@ -46,11 +54,13 @@ class DebugRect extends React.Component<DebugRectProps> {
   };
 
   render() {
-    const { fiberNav, showClassName, showElement, renderLabel } = this.props;
+    const { fiberNav, showClassName, showCropMarks, showElement, renderLabel } = this.props;
 
     if (!fiberNav) {
       return null;
     }
+
+    const label = renderLabel(fiberNav);
 
     return (
       <pre
@@ -59,26 +69,111 @@ class DebugRect extends React.Component<DebugRectProps> {
           position: 'fixed',
           padding: 0,
           margin: 0,
-          background: '#6495ed22',
+          background: '#6495ed11',
           border: '1px solid #6495edcc',
           zIndex: 99999999,
           pointerEvents: 'none',
           userSelect: 'none',
         }}
       >
-        <div
-          style={{
-            position: 'absolute',
-            padding: '2px 4px',
-            margin: '-1px 0 0 -1px',
-            bottom: '100%',
-            left: 0,
-            color: '#fff',
-            background: '#6495ed',
-          }}
-        >
-          <span style={{ fontWeight: 'bold' }}>{renderLabel(fiberNav)}</span>
-        </div>
+        {label && (
+          <div
+            style={{
+              position: 'absolute',
+              padding: '2px 4px',
+              margin: '-1px 0 0 -1px',
+              bottom: '100%',
+              left: 0,
+              color: '#fff',
+              background: '#6495ed',
+            }}
+          >
+            <span style={{ fontWeight: 'bold' }}>{renderLabel(fiberNav)}</span>
+          </div>
+        )}
+        {showCropMarks && (
+          <>
+            {/* Top Left */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                top: '0',
+                left: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                top: '-20px',
+                left: '0',
+              }}
+            />
+
+            {/* Top Right */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                top: '0',
+                right: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                top: '-20px',
+                right: '0',
+              }}
+            />
+
+            {/* Bottom Left */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                bottom: '0',
+                left: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                bottom: '-20px',
+                left: '0',
+              }}
+            />
+
+            {/* Bottom Right */}
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '12px',
+                height: '1px',
+                bottom: '0',
+                right: '-20px',
+              }}
+            />
+            <div
+              style={{
+                ...cropMarkStyle,
+                width: '1px',
+                height: '12px',
+                bottom: '-20px',
+                right: '0',
+              }}
+            />
+          </>
+        )}
         {fiberNav.domNode && (showElement || showClassName) && (
           <div
             style={{

@@ -340,15 +340,16 @@ class Designer extends React.Component<any, DesignerState> {
                   renderJSONTreeElement={treeElement => {
                     treeElement.props = treeElement.props || {};
 
-                    if (isExpanding) {
+                    if (mode === 'build') {
                       treeElement.props.style = {
                         ...treeElement?.props?.style,
                         ...(treeElement.uuid === 'json-tree-root'
-                          ? { minHeight: '100vh' }
+                          ? { minHeight: '100vh', padding: '1rem' }
                           : {
-                              padding: '0.25rem',
-                              margin: '1rem',
-                              outline: '1px dashed cornflowerblue',
+                              padding: '0.5rem',
+                              margin: '0.5rem',
+                              outline: '1px dashed rgba(0, 0, 0, 0.25)',
+                              outlineOffset: '-1px',
                             }),
                       };
                     } else {
