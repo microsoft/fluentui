@@ -296,12 +296,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={classNames.platformsSection}>
         <div className={classNames.sectionContent}>
           <div className={classNames.oneHalf}>
-            <h2 className={classNames.platformsTitle}>Build across platforms</h2>
+            <h2 className={classNames.platformsTitle}>Powering Microsoft 365 apps</h2>
           </div>
-          <div className={classNames.oneFourth}>
+          <div className={classNames.oneThird}>
             <p>
-              We're broadening our guidance to include more platforms and create an open source system, making it
-              possible for us all to evolve together.
+              Build your own apps using the same open source components we do—with accessibility, globalization, and
+              performance included.
             </p>
           </div>
         </div>
@@ -322,11 +322,12 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             />
           </div>
           <div className={this._classNames.oneFourth}>
-            <h2 className={this._classNames.resourcesTitle}>Discover resources</h2>
+            <h2 className={this._classNames.resourcesTitle}>Discover more</h2>
             <p>
-              Find design, inclusive and developer onboarding resources, and learn about how to become a contributor.
+              From tutorials to a fun collection of API references, find what you need to design and develop your own
+              Fluent experience.
             </p>
-            <p>{this._renderLink('#/resources', 'See resources', { dark: false })}</p>
+            <p>{this._renderLink('#/resources', 'Browse resources', { dark: false })}</p>
           </div>
         </div>
       </section>
@@ -345,10 +346,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
             </p>
           </div>
           <div className={this._classNames.oneFourth} />
-          <figure className={this._classNames.oneHalf}>
+          <figure style={{ alignSelf: 'flex-end' }} className={this._classNames.oneHalf}>
             <ul className={this._classNames.usageIconList}>{this._renderUsageIconList()}</ul>
             <figcaption>
-              <strong>+ many additional Microsoft sites and products</strong>
+              <strong>+ many more apps and services</strong>
             </figcaption>
           </figure>
         </div>

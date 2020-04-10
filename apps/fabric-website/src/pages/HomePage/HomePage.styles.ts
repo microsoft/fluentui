@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString, FontWeights } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -21,6 +21,7 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   usageIcon: 'ms-HomePage-usageIcon',
   sectionContent: 'ms-HomePage-sectionContent',
   oneHalf: 'ms-HomePage-oneHalf',
+  oneThird: 'ms-HomePage-oneThird',
   oneFourth: 'ms-HomePage-oneFourth',
   inner: 'ms-HomePage-inner',
   card: 'ms-HomePage-card',
@@ -143,6 +144,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           p: {
+            fontWeight: FontWeights.semibold,
             color: isInverted ? palette.black : palette.white,
           },
         },
@@ -154,8 +156,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionStyles,
       {
         transitionDelay: '0.1s',
-        paddingTop: 132,
-        paddingBottom: 132,
+        paddingTop: 32,
+        paddingBottom: 32,
+        selectors: {
+          [mediaQuery.minMobile]: {
+            paddingTop: 132,
+            paddingBottom: 132,
+          },
+        },
       },
     ],
 
@@ -183,16 +191,15 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...sectionStyles,
       {
         transitionDelay: '0.2s',
-        paddingBottom: 160,
-        background: '#50e3c2', // @TODO: Fluent color palette?
+        background: '#CF8FFF',
         color: palette.black,
-
         selectors: {
-          [mediaQuery.maxLarge]: {
-            paddingTop: appPadding.medium,
+          [mediaQuery.minMobile]: {
+            paddingBottom: appPadding.small,
           },
-          [mediaQuery.maxMobile]: {
-            paddingTop: appPadding.large,
+          [mediaQuery.minLarge]: {
+            minHeight: 384,
+            paddingBottom: appPadding.large,
           },
         },
       },
@@ -217,7 +224,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     resourcesTitle: [
       ...sectionTitleStyles,
       {
-        color: '#4A90E2',
+        color: palette.white,
       },
     ],
 
@@ -272,6 +279,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       ...columnStyles,
     ],
 
+    oneThird: [
+      classNames.oneThird,
+      {
+        flex: '0 0 33%',
+      },
+      ...columnStyles,
+    ],
+
     oneFourth: [
       classNames.oneFourth,
       {
@@ -305,9 +320,11 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         padding: appPadding.small,
         flex: '0 0 25%',
         minWidth: 300,
-        minHeight: 384,
 
         selectors: {
+          [mediaQuery.minMobile]: {
+            minHeight: 384,
+          },
           [mediaQuery.maxLarge]: {
             flex: '1 0 25%',
           },
@@ -327,7 +344,6 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     versionSwitcher: [
       classNames.versionSwitcher,
       {
-        marginBottom: sectionTitleSize,
         height: '1em',
       },
     ],
