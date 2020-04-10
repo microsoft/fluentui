@@ -373,7 +373,7 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
           }
       id="ComboBox4-label"
     >
-      ComboBox with dynamic error message
+      ComboBox that errors when Option B is selected
     </label>
     <div
       className=
@@ -507,7 +507,6 @@ exports[`Component Examples renders ComboBox.ErrorHandling.Example.tsx correctly
     >
       <input
         aria-autocomplete="both"
-        aria-describedby="ComboBox4-error"
         aria-expanded={false}
         aria-labelledby="ComboBox4-label"
         autoCapitalize="off"
