@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Updating Rating, Text, OverflowSet, and Dropdown to use function components",
+  "comment": "Updating Rating, Text, OverflowSet, and Dropdown examples to use function components",
   "packageName": "office-ui-fabric-react",
   "email": "czearing@outlook.com",
   "dependentChangeType": "patch",
