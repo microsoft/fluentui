@@ -17,23 +17,26 @@ const items: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' },
 ];
 
-const comboBoxStyle = { maxWidth: 300 };
+const comboBoxMultiStyle = { maxWidth: 300 };
 
-export const ComboBoxControlledExample: React.FC = () => {
-  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>('C');
+export const ComoBoxControlledMultiExample: React.FC = () => {
+  const [selectedKeys, setSelectedKeys] = React.useState<string[]>(['C', 'D']);
 
   const onChange = React.useCallback(
     (ev: React.FormEvent<IComboBox>, option?: IComboBoxOption): void => {
-      setSelectedKey(option?.key);
+      setSelectedKeys(
+        option?.selected ? [...selectedKeys, option.key as string] : selectedKeys.filter(key => key !== option?.key),
+      );
     },
-    [setSelectedKey],
+    [selectedKeys],
   );
 
   return (
     <ComboBox
-      style={comboBoxStyle}
-      selectedKey={selectedKey}
-      label="Controlled single-select ComboBox (allowFreeform: T)"
+      multiSelect
+      style={comboBoxMultiStyle}
+      selectedKey={selectedKeys}
+      label="Controlled multi-select ComboBox (allowFreeform: T)"
       allowFreeform
       autoComplete="on"
       options={items}
