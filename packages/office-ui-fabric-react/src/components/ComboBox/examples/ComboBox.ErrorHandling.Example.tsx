@@ -40,7 +40,7 @@ export const ComboBoxErrorHandlingExample: React.FC = () => {
         options={comboBoxBasicOptions}
         onChange={onChange}
         selectedKey={selectedKey}
-        errorMessage={selectedKey === 'B' && 'B is not an allowed option'}
+        errorMessage={selectedKey === 'B' ? 'B is not an allowed option' : undefined}
       />
     </div>
   );
