@@ -2,11 +2,19 @@ import * as React from 'react';
 import FiberNavigator from './FiberNavigator';
 
 interface DebugRectProps {
+  showClassName: boolean;
+  showElement: boolean;
   fiberNav: FiberNavigator;
 }
 
 class DebugRect extends React.Component<DebugRectProps> {
   selectorRef = React.createRef<HTMLPreElement>();
+
+  static defaultProps = {
+    showClassName: true,
+    showElement: true,
+    renderLabel: fiberNav => `<${fiberNav.name} />`,
+  };
 
   componentDidMount() {
     this.setDebugSelectorPosition();
@@ -38,7 +46,7 @@ class DebugRect extends React.Component<DebugRectProps> {
   };
 
   render() {
-    const { fiberNav } = this.props;
+    const { fiberNav, showClassName, showElement, renderLabel } = this.props;
 
     if (!fiberNav) {
       return null;
@@ -69,9 +77,9 @@ class DebugRect extends React.Component<DebugRectProps> {
             background: '#6495ed',
           }}
         >
-          <span style={{ fontWeight: 'bold' }}>{`<${fiberNav.name} />`}</span>
+          <span style={{ fontWeight: 'bold' }}>{renderLabel(fiberNav)}</span>
         </div>
-        {fiberNav.domNode && (
+        {fiberNav.domNode && (showElement || showClassName) && (
           <div
             style={{
               fontSize: '0.9em',
@@ -83,10 +91,13 @@ class DebugRect extends React.Component<DebugRectProps> {
               background: '#6495ed',
             }}
           >
-            <strong style={{ fontWeight: 'bold', color: 'hsl(160, 100%, 80%)' }}>
-              {fiberNav.domNode.tagName && fiberNav.domNode.tagName.toLowerCase()}
-            </strong>
-            {fiberNav.domNode.hasAttribute &&
+            {showElement && (
+              <strong style={{ fontWeight: 'bold', color: 'hsl(160, 100%, 80%)' }}>
+                {fiberNav.domNode.tagName && fiberNav.domNode.tagName.toLowerCase()}
+              </strong>
+            )}
+            {showClassName &&
+              fiberNav.domNode.hasAttribute &&
               typeof fiberNav.domNode.hasAttribute === 'function' &&
               fiberNav.domNode.hasAttribute('class') && (
                 <span style={{ color: 'rgba(255, 255, 255, 0.75)' }}>

@@ -12,6 +12,8 @@ export type DebugSelectorProps = {
   mountDocument?: Document;
   onSelect?: (fiberNav: FiberNavigator) => void;
   onHover?: (fiberNav: FiberNavigator) => void;
+  showClassName?: boolean;
+  showElement?: boolean;
   filter?: (fiberNav: FiberNavigator) => FiberNavigator | null;
   active?: boolean;
 };
@@ -33,10 +35,10 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
   state = INITIAL_STATE;
 
   static defaultProps = {
-    // eslint-disable-next-line no-undef
-    mountDocument: isBrowser() ? window.document : null,
     active: false,
     filter: fiberNav => fiberNav,
+    // eslint-disable-next-line no-undef
+    mountDocument: isBrowser() ? window.document : null,
   };
 
   static propTypes = {
@@ -82,7 +84,7 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
   };
 
   render() {
-    const { active, mountDocument } = this.props;
+    const { active, mountDocument, showClassName, showElement } = this.props;
     const { fiberNav } = this.state;
 
     return (
@@ -92,7 +94,14 @@ class DebugSelector extends React.Component<DebugSelectorProps, DebugSelectorSta
         {active && fiberNav && fiberNav.domNode && (
           <EventListener listener={this.handleDOMNodeClick} target={fiberNav.domNode} type="click" />
         )}
-        {active && fiberNav && <DebugRect fiberNav={fiberNav} />}
+        {active && fiberNav && (
+          <DebugRect
+            showClassName={showClassName}
+            showElement={showElement}
+            fiberNav={fiberNav}
+            renderLabel={fiberNav => fiberNav.name}
+          />
+        )}
       </>
     );
   }
