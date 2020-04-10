@@ -1,6 +1,6 @@
 # TSLint standard rules
 
-This project contains the baseline standard TSLint rules for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) projects.
+This project contains the baseline standard TSLint rules for [Fluent UI](https://developer.microsoft.com/en-us/fluentui) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) projects.
 
 ## Using tslint-rules
 
