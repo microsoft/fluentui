@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-focus",
-  "version": "7.1.12",
+  "version": "7.1.13",
   "description": "Focus helpers to be used in React applications.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@types/enzyme-adapter-react-16": "1.0.3",
     "@types/es6-promise": "0.0.32",
     "@types/jest": "~24.9.0",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.15.1",
@@ -49,8 +49,8 @@
   "dependencies": {
     "@uifabric/merge-styles": "^7.8.11",
     "@uifabric/set-version": "^7.0.9",
-    "@uifabric/styling": "^7.11.1",
-    "@uifabric/utilities": "^7.15.4",
+    "@uifabric/styling": "^7.11.2",
+    "@uifabric/utilities": "^7.15.6",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

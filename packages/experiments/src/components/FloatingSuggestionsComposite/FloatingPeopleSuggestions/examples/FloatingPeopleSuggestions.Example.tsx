@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
   IFloatingSuggestionItemProps,
   FloatingPeopleSuggestions,
+  IFloatingSuggestionItem,
 } from '@uifabric/experiments/lib/FloatingPeopleSuggestionsComposite';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { mru } from '@uifabric/example-data';
@@ -47,14 +48,12 @@ const _suggestions = [
     isSelected: false,
     showRemoveButton: true,
   },
-] as IFloatingSuggestionItemProps<IPersonaProps>[];
+] as IFloatingSuggestionItem<IPersonaProps>[];
 
 export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
-  React.useEffect(() => {
-    setPeopleSuggestions([..._suggestions]);
-  }, []);
-
-  const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([]);
+  const [peopleSuggestions, setPeopleSuggestions] = React.useState<IFloatingSuggestionItemProps<IPersonaProps>[]>([
+    ..._suggestions,
+  ]);
 
   const _onSuggestionSelected = (
     ev: React.MouseEvent<HTMLElement, MouseEvent>,
@@ -85,16 +84,18 @@ export const FloatingPeopleSuggestionsExample = (): JSX.Element => {
   };
 
   return (
-    <FloatingPeopleSuggestions
-      suggestions={[...peopleSuggestions]}
-      isSuggestionsVisible={true}
-      targetElement={null}
-      onSuggestionSelected={_onSuggestionSelected}
-      onRemoveSuggestion={_onSuggestionRemoved}
-      suggestionsHeaderText={'People suggestions'}
-      noResultsFoundText={'No suggestions'}
-      onFloatingSuggestionsDismiss={undefined}
-      showSuggestionRemoveButton={true}
-    />
+    <>
+      <FloatingPeopleSuggestions
+        suggestions={[...peopleSuggestions]}
+        isSuggestionsVisible={true}
+        targetElement={null}
+        onSuggestionSelected={_onSuggestionSelected}
+        onRemoveSuggestion={_onSuggestionRemoved}
+        suggestionsHeaderText={'People suggestions'}
+        noResultsFoundText={'No suggestions'}
+        onFloatingSuggestionsDismiss={undefined}
+        showSuggestionRemoveButton={true}
+      />
+    </>
   );
 };

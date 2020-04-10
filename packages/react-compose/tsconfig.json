@@ -14,7 +14,8 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"]
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "webpack-env", "custom-global"]
   },
   "include": ["src"]
 }

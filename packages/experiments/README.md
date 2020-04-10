@@ -18,12 +18,4 @@ import { ComponentName } from 'office-ui-fabric-react/lib/ComponentName';
 
 ### Testing locally
 
-To run the local demo app for this project, first follow the [setup instructions](https://github.com/microsoft/fluentui/wiki/Setup) for the `office-ui-fabric-react` repo. Then run the following starting from the root folder (**not** the `experiments` folder):
-
-```
-yarn
-yarn buildto experiments
-cd packages
-cd experiments
-yarn start
-```
+To run the local demo app for this project, first follow the [setup instructions](https://github.com/microsoft/fluentui/wiki/Setup) for the Fluent UI React repo. Then when running `yarn start` from the root of the repo, choose the `@uifabric/experiments` option.

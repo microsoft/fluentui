@@ -1,6 +1,7 @@
 export { default as alertBehavior } from './Alert/alertBehavior';
 export { default as alertWarningBehavior } from './Alert/alertWarningBehavior';
 export { default as alertBaseBehavior } from './Alert/alertBaseBehavior';
+export * from './Attachment/attachmentBehavior';
 export { default as attachmentBehavior } from './Attachment/attachmentBehavior';
 export { default as buttonBehavior } from './Button/buttonBehavior';
 export * from './Button/buttonBehavior';
