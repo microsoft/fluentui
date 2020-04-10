@@ -19,7 +19,6 @@ export { default as Toolbar } from './components/Toolbar/toolbarVariables';
 export { default as ToolbarItem } from './components/Toolbar/toolbarItemVariables';
 export { default as ToolbarMenuItem } from './components/Toolbar/toolbarMenuItemVariables';
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleVariables';
-export { default as Status } from './components/Status/statusVariables';
 export { default as Reaction } from './components/Reaction/reactionVariables';
 export { default as Alert } from './components/Alert/alertVariables';
 export { default as AlertDismissAction } from './components/Alert/alertDismissActionVariables';

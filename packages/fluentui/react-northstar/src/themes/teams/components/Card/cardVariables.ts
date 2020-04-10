@@ -18,6 +18,16 @@ export interface CardVariables {
   previewMarginHorizontal: string;
   topControlsTop: string;
   topControlsRight: string;
+  width: string;
+  height: string;
+  sizeSmallWidth: string;
+  sizeSmallHeight: string;
+  sizeSmallPadding: string;
+  sizeLargeWidth: string;
+  sizeLargeHeight: string;
+  sizeLargePadding: string;
+  fluidHeight: string;
+  fluidWidth: string;
 }
 
 export default (siteVars): CardVariables => {
@@ -39,5 +49,16 @@ export default (siteVars): CardVariables => {
     previewMarginHorizontal: `0 ${pxToRem(10)} 0 0`,
     topControlsTop: pxToRem(10),
     topControlsRight: pxToRem(0),
+    // TODO: update with latest values from design
+    width: pxToRem(300),
+    height: '100%',
+    sizeSmallWidth: pxToRem(200),
+    sizeSmallHeight: '100%',
+    sizeSmallPadding: pxToRem(5),
+    sizeLargeWidth: pxToRem(500),
+    sizeLargeHeight: '100%',
+    sizeLargePadding: pxToRem(20),
+    fluidWidth: '100%',
+    fluidHeight: '100%',
   };
 };
