@@ -1,6 +1,7 @@
 import { IStackComponent, IStackStyles, IStackStylesReturnType } from './Stack.types';
 import { parseGap, parsePadding } from './StackUtils';
 import { getGlobalClassNames } from '../../Styling';
+import { getRTL } from '../../Utilities';
 
 const nameMap: { [key: string]: string } = {
   start: 'flex-start',
@@ -159,7 +160,7 @@ export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackS
           // and the last direct one if it is
           [reversed ? '> *:not(:last-child)' : '> *:not(:first-child)']: [
             horizontal && {
-              marginLeft: `${columnGap.value}${columnGap.unit}`,
+              [getRTL(theme) ? 'marginRight' : 'marginLeft']: `${columnGap.value}${columnGap.unit}`,
             },
             !horizontal && {
               marginTop: `${rowGap.value}${rowGap.unit}`,
