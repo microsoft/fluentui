@@ -5,4 +5,5 @@ module.exports = {
     return custom({ config });
   },
   addons: ['@storybook/addon-a11y/register'],
+  addons: ['storybook-addon-performance/register'],
 };
