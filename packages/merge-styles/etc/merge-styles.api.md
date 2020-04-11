@@ -410,6 +410,9 @@ export interface IStyleSheetConfig {
     cspSettings?: ICSPSettings;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
+    keyToClassName?: {
+        [key: string]: string;
+    };
     namespace?: string;
     onInsertRule?: (rule: string) => void;
     rtl?: boolean;
@@ -473,6 +476,9 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     getClassName(displayName?: string): string;
+    getClassNameCache(): {
+        [key: string]: string;
+    };
     static getInstance(): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
