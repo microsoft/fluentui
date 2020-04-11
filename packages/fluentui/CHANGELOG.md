@@ -40,6 +40,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
 - Fix `Status` to use the colorScheme in Teams theme @notandrew ([#12481](https://github.com/microsoft/fluentui/pull/12481))
 - Fix colors for keyboard navigation in vertical Menu component in Teams theme high contrast mode @TanelVari ([#12462](https://github.com/microsoft/fluentui/pull/12462))
+- Fix size of `Status` and `Avatar` sizes for Teams theme @notandrew ([#12502](https://github.com/microsoft/fluentui/pull/12502))
 - Fix navigation into cell which has multiple actionable elements @kolaps33 ([#12533](https://github.com/microsoft/fluentui/pull/12533))
 - In `Tooltip` don't add `aria-labelledby` to `trigger` if it has `aria-label` @silviuavram ([#12555](https://github.com/microsoft/fluentui/pull/12555))
 - Give higher `zIndex` to `Tooltip` to make it appear on top of `Dialog` @silviuavram ([#12572](https://github.com/microsoft/fluentui/pull/12572))
