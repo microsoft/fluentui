@@ -49,14 +49,15 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
           keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
         },
       }),
-      ...(!isSubtreeExpanded(props) && {
-        expand: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
-        },
-        focusParent: {
-          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
-        },
-      }),
+      ...(!isSubtreeExpanded(props) &&
+        props.hasSubtree && {
+          expand: {
+            keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
+          },
+          focusParent: {
+            keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+          },
+        }),
       expandSiblings: {
         keyCombinations: [{ keyCode: keyboardKey['*'] }],
       },
