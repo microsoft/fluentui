@@ -238,13 +238,21 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
 
     // push all tree items under particular parent into selection array
     // not parent itself, therefore not procced with selection
-    if (isExpandedSelectableParent) {
-      items.reduce((acc: string[], item) => {
+
+    const selectItems = (items): string[] => {
+      return items.reduce((acc: string[], item) => {
         if (selectedItemIds.indexOf(item['id']) === -1) {
-          acc.push(item['id']);
+          if (item.items) {
+            acc.push(...selectItems(item.items));
+          } else {
+            acc.push(item['id']);
+          }
         }
         return acc;
       }, selectedItemIds);
+    };
+    if (isExpandedSelectableParent) {
+      const selectedItemIds = selectItems(items);
       this.setSelectedItemIds(e, selectedItemIds);
       return;
     }
@@ -253,7 +261,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     if (selectedItemIds.indexOf(id) === -1) {
       selectedItemIds.push(id);
     } else {
-      selectedItemIds = removeItemAtIndex(selectedItemIds, selectedItemIds.indexOf(id));
+      selectedItemIds = selectedItemIds.filter(itemID => itemID !== id);
     }
 
     this.setSelectedItemIds(e, selectedItemIds);

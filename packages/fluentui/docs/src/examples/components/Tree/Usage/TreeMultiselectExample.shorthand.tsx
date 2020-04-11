@@ -15,15 +15,25 @@ const items = [
         },
         items: [
           {
-            id: 'tree-item-111',
+            id: '1',
             title: 'Jaime',
+            items: [
+              {
+                id: '2',
+                title: 'Jaime 2',
+              },
+              {
+                id: '3',
+                title: 'Jaime 3',
+              },
+            ],
           },
           {
-            id: 'tree-item-112',
+            id: '4',
             title: 'Cersei',
           },
           {
-            id: 'tree-item-113',
+            id: '5',
             title: 'Tyrion',
           },
         ],
