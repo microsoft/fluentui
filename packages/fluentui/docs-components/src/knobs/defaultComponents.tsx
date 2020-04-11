@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { KnobComponentProps, KnobComponents, KnobRangeKnobComponentProps, LogInspectorProps } from './types';
+import {
+  KnobComponentProps,
+  KnobComponents,
+  KnobRangeKnobComponentProps,
+  LogInspectorProps,
+  KnobNumberKnobComponentProps,
+} from './types';
 import parseValue from './utils/parseRangeValue';
 
 const KnobField: React.FunctionComponent<KnobComponentProps> = props => (
@@ -35,11 +41,16 @@ const KnobBoolean: React.FunctionComponent<KnobComponentProps> = props => (
   />
 );
 
-const KnobNumber: React.FunctionComponent<KnobComponentProps> = props => (
+const KnobNumber: React.FunctionComponent<KnobNumberKnobComponentProps> = props => (
   <input
     onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setValue(parseInt(e.target.value, 10));
+      let newValue = parseInt(e.target.value, 10);
+      newValue = newValue < props.min ? props.min : newValue > props.max ? props.max : newValue;
+      props.setValue(newValue);
     }}
+    min={props.min}
+    max={props.max}
+    step={props.step}
     type="number"
     value={props.value}
   />
