@@ -15,7 +15,6 @@ const styles = mergeStyleSets({
   callout: {
     maxWidth: 300,
   },
-
   subtext: [
     theme.fonts.small,
     {
