@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/utilities",
   "version": "7.15.6",
-  "description": "Office UI Fabric utilities for building React components.",
+  "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [

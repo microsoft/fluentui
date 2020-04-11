@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
+
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
 const DropdownControlledMultiExampleOptions = [
   { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },
@@ -33,7 +35,7 @@ export const DropdownControlledMultiExample: React.FC = () => {
       onChange={onChange}
       multiSelect
       options={DropdownControlledMultiExampleOptions}
-      styles={{ dropdown: { width: 300 } }}
+      styles={dropdownStyles}
     />
   );
 };

@@ -25,7 +25,7 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
             { key: 'D', text: 'Option d' },
             { key: 'E', text: 'Option e' },
           ]}
-          required={true}
+          required
           styles={dropdownStyles}
         />
         <PrimaryButton text="Set focus" onClick={onSetFocus} />

@@ -8,7 +8,9 @@ import {
   IContextualMenuItemStyles,
   IContextualMenuStyles,
 } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, concatStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const theme = getTheme();
 // Styles for both command bar and overflow/menu items
@@ -22,19 +24,20 @@ const menuStyles: Partial<IContextualMenuStyles> = {
   subComponentStyles: { menuItem: itemStyles, callout: {} },
 };
 
+const getCommandBarButtonStyles = memoizeFunction(
+  (originalStyles: IButtonStyles | undefined): Partial<IContextualMenuItemStyles> => {
+    if (!originalStyles) {
+      return itemStyles;
+    }
+
+    return concatStyleSets(originalStyles, itemStyles);
+  },
+);
+
 // Custom renderer for main command bar items
 const CustomButton: React.FunctionComponent<IButtonProps> = props => {
   const buttonOnMouseClick = () => alert(`${props.text} clicked`);
-  return (
-    <CommandBarButton
-      {...props}
-      onClick={buttonOnMouseClick}
-      styles={{
-        ...props.styles,
-        ...itemStyles,
-      }}
-    />
-  );
+  return <CommandBarButton {...props} onClick={buttonOnMouseClick} styles={getCommandBarButtonStyles(props.styles)} />;
 };
 
 // Custom renderer for menu items (these must have a separate custom renderer because it's unlikely
@@ -90,7 +93,12 @@ const _items: ICommandBarItemProps[] = [
       ],
     },
   },
-  { key: 'upload', text: 'Upload', iconProps: { iconName: 'Upload' }, href: 'https://dev.office.com/fabric' },
+  {
+    key: 'upload',
+    text: 'Upload',
+    iconProps: { iconName: 'Upload' },
+    href: 'https://developer.microsoft.com/en-us/fluentui',
+  },
   { key: 'share', text: 'Share', iconProps: { iconName: 'Share' }, onClick: () => console.log('Share') },
   { key: 'download', text: 'Download', iconProps: { iconName: 'Download' }, onClick: () => console.log('Download') },
 ];

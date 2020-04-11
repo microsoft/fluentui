@@ -45,7 +45,7 @@ const columns = [
   { key: 'column2', name: 'Example', fieldName: 'example', minWidth: 200, maxWidth: 1600, isResizable: true },
 ];
 
-export const TextRampExample: React.FC = () => (
+export const TextRampExample: React.FunctionComponent = () => (
   <DetailsList
     items={allItems}
     columns={columns}

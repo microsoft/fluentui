@@ -104,7 +104,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   <ul className={styles.exampleIcons}>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_16x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_16x1.png`}
                         width="16"
                         height="16"
                         alt="Outlook 16x1 PNG product icon"
@@ -113,7 +113,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </li>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_32x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_32x1.png`}
                         width="32"
                         height="32"
                         alt="Outlook 32x1 PNG product icon"
@@ -122,7 +122,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </li>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_48x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_48x1.png`}
                         width="48"
                         height="48"
                         alt="Outlook 48x1 PNG product icon"
@@ -131,7 +131,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     </li>
                     <li>
                       <Image
-                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_96x1.png`}
+                        src={`${fabricCDN}/brand-icons/product/png/outlook_96x1.png`}
                         width="96"
                         height="96"
                         alt="Outlook 96x1 PNG product icon"

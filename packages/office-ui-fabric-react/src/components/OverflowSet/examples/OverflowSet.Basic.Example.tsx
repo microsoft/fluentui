@@ -33,7 +33,7 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   );
 };
 
-export const OverflowSetBasicExample: React.FC = () => (
+export const OverflowSetBasicExample: React.FunctionComponent = () => (
   <OverflowSet
     aria-label="Basic Menu Example"
     role="menubar"

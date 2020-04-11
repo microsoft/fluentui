@@ -1,9 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Simplifying Separator and TeachingBubble code examples.",
-  "packageName": "office-ui-fabric-react",
-  "email": "czearing@outlook.com",
-  "commit": "07e0ce751ec93d744f6355a295e020e7aa3d1d57",
-  "dependentChangeType": "patch",
-  "date": "2020-04-07T21:01:10.416Z"
-}

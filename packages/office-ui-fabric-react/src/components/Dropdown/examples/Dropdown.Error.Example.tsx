@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { useBoolean } from '@uifabric/react-hooks';
 
-export interface IDropdownErrorExampleState {
-  showError: boolean;
-}
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 }, root: { height: 100 } };
 
 const stackTokens: IStackTokens = { childrenGap: 30 };
 
@@ -18,9 +16,7 @@ const DropdownErrorExampleOptions = [
   { key: 'E', text: 'Option e' },
 ];
 
-const dropdownStyles = { dropdown: { width: 300 }, root: { height: 100 } };
-
-export const DropdownErrorExample: React.FC = () => {
+export const DropdownErrorExample: React.FunctionComponent = () => {
   const [showError, { toggle: toggleShowError }] = useBoolean(false);
   return (
     <Stack horizontal tokens={stackTokens} verticalAlign="start">

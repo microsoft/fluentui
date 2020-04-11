@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
@@ -21,11 +22,12 @@ const exampleOptions: IDropdownOption[] = [
 ];
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
+const iconStyles = { marginRight: '8px' };
 
 const onRenderLabel = (props: IDropdownProps): JSX.Element => {
   return (
     <Stack horizontal verticalAlign="center">
-      <span style={{ fontWeight: 600 }}>{props.label}</span>
+      <Label>{props.label}</Label>
       <IconButton
         iconProps={{ iconName: 'Info' }}
         title="Info"
@@ -40,7 +42,7 @@ const onRenderOption = (option: IDropdownOption): JSX.Element => {
   return (
     <div>
       {option.data && option.data.icon && (
-        <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+        <Icon style={iconStyles} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
       )}
       <span>{option.text}</span>
     </div>
@@ -53,7 +55,7 @@ const onRenderTitle = (options: IDropdownOption[]): JSX.Element => {
   return (
     <div>
       {option.data && option.data.icon && (
-        <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+        <Icon style={iconStyles} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
       )}
       <span>{option.text}</span>
     </div>
@@ -67,7 +69,7 @@ const onRenderCaretDown = (): JSX.Element => {
 const onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
   return (
     <div className="dropdownExample-placeholder">
-      <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
+      <Icon style={iconStyles} iconName={'MessageFill'} aria-hidden="true" />
       <span>{props.placeholder}</span>
     </div>
   );
@@ -75,7 +77,7 @@ const onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
 
 const dropdownStyles = { dropdown: { width: 300 } };
 
-export const DropdownCustomExample: React.FC = () => (
+export const DropdownCustomExample: React.FunctionComponent = () => (
   <Stack tokens={stackTokens}>
     <Dropdown
       placeholder="Select an option"
