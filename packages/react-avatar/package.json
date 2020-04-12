@@ -54,6 +54,7 @@
     "@fluentui/accessibility": "^0.47.0",
     "@fluentui/react-bindings": "^0.47.0",
     "@fluentui/react-northstar": "^0.47.0",
+    "office-ui-fabric-react": "^7.105.11",
     "@fluentui/react-proptypes": "^0.47.0",
     "@uifabric/set-version": "^7.0.8",
     "@uifabric/utilities": "^7.15.4",
