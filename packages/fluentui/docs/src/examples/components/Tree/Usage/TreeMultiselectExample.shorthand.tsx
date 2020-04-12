@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree } from '@fluentui/react-northstar';
+import { Tree, Text } from '@fluentui/react-northstar';
 
 const items = [
   {
@@ -11,7 +11,9 @@ const items = [
         title: 'Tywin',
         selectableParent: true,
         selectionIndicator: {
-          content: 'Select All',
+          children: (Component, { expanded, ...props }) => {
+            return <Text {...props} content={expanded && 'select all'} />;
+          },
         },
         items: [
           {
@@ -31,6 +33,15 @@ const items = [
           {
             id: '4',
             title: 'Cersei',
+            selectionIndicator: {
+              children: (Component, { selected, onClick, ...props }) => {
+                return (
+                  <Component {...props}>
+                    <input type="checkbox" checked={selected} onClick={onClick} onChange={() => {}} />
+                  </Component>
+                );
+              },
+            },
           },
           {
             id: '5',

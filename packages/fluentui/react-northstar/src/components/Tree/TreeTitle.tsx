@@ -148,16 +148,13 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   const selectIndicator = Box.create(selectionIndicator, {
     defaultProps: () => ({
       as: 'span',
+      selected,
+      ...(selectableParent && { expanded }),
       ...getA11Props('indicator', {
         className: TreeTitle.slotClassNames.indicator,
-        styles:
-          selectableParent && expanded
-            ? resolvedStyles.customSelectionIndicator
-            : selectable && !hasSubtree
-            ? resolvedStyles.selectionIndicator
-            : {
-                display: 'none',
-              },
+        ...(selectable &&
+          !hasSubtree &&
+          _.isEmpty(selectionIndicator) && { styles: resolvedStyles.selectionIndicator }),
       }),
     }),
   });
