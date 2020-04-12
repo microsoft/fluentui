@@ -70,9 +70,9 @@ export interface IStyleSheetConfig {
   onInsertRule?: (rule: string) => void;
 
   /**
-   * Initial value for keyToClassName cache
+   * Initial value for classnames cache. Key is serialized css rules associated with a classname.
    */
-  keyToClassName?: { [key: string]: string };
+  classNameCache?: { [key: string]: string };
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
@@ -140,7 +140,7 @@ export class Stylesheet {
       ...config,
     };
 
-    this._keyToClassName = this._config.keyToClassName || {};
+    this._keyToClassName = this._config.classNameCache || {};
   }
 
   /**
@@ -195,7 +195,7 @@ export class Stylesheet {
   }
 
   /**
-   * Gets all classnames cache with the stylesheet
+   * Gets all classnames cache with the stylesheet.
    */
   public getClassNameCache(): { [key: string]: string } {
     return this._keyToClassName;

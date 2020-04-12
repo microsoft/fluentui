@@ -407,12 +407,12 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
 
 // @public
 export interface IStyleSheetConfig {
+    classNameCache?: {
+        [key: string]: string;
+    };
     cspSettings?: ICSPSettings;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
-    keyToClassName?: {
-        [key: string]: string;
-    };
     namespace?: string;
     onInsertRule?: (rule: string) => void;
     rtl?: boolean;
