@@ -48,6 +48,9 @@ const treeItemBehavior: Accessibility<TreeItemBehaviorProps> = props => ({
         focusFirstChild: {
           keyCombinations: [{ keyCode: keyboardKey.ArrowRight }],
         },
+        focusParent: {
+          keyCombinations: [{ keyCode: keyboardKey.ArrowLeft }],
+        },
       }),
       ...(!isSubtreeExpanded(props) &&
         props.hasSubtree && {
