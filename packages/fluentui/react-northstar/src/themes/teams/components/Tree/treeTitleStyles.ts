@@ -7,17 +7,23 @@ import { pxToRem } from '../../../../utils';
 import checkboxIndicatorUrl from '../Checkbox/checkboxIndicatorUrl';
 
 const treeTitleStyles: ComponentSlotStylesPrepared<TreeTitleStylesProps, TreeTitleVariables> = {
-  root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
+  root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => ({
     padding: v.padding,
     cursor: 'pointer',
     color: v.color,
     position: 'relative',
+    ...(p.selectable && {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    }),
     ...getBorderFocusStyles({ variables: siteVariables }),
   }),
 
   selectionIndicator: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'inline-block',
     float: 'right',
+    verticalAlign: 'middle',
     boxShadow: 'unset',
     width: pxToRem(16),
     height: pxToRem(16),

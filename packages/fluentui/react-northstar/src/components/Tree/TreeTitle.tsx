@@ -74,7 +74,7 @@ export interface TreeTitleProps extends UIComponentProps, ChildrenComponentProps
   selectable?: boolean;
 }
 
-export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'disabled' | 'selectableParent'>;
+export type TreeTitleStylesProps = Pick<TreeTitleProps, 'selected' | 'selectable' | 'disabled' | 'selectableParent'>;
 
 const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
   FluentComponentStaticProps<TreeTitleProps> & { slotClassNames: TreeTitleSlotClassNames } = props => {
@@ -128,6 +128,7 @@ const TreeTitle: React.FC<WithAsProp<TreeTitleProps>> &
       selected,
       selectableParent,
       disabled,
+      selectable,
     }),
     mapPropsToInlineStyles: () => ({
       className,
