@@ -112,6 +112,9 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    */
   shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
 
+  /** Allow focus to move to root */
+  allowFocusRoot?: boolean;
+
   /**
    * Allows TAB key to be handled, thus alows tabbing through a focusable list of items in the
    * focus zone. A side effect is that users will not be able to TAB out of the focus zone and
