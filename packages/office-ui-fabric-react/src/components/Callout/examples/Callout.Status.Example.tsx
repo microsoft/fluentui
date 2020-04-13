@@ -26,13 +26,11 @@ const styles = mergeStyleSets({
   ],
 });
 
-const menuButtonElement = React.createRef<HTMLDivElement>();
-
 export const CalloutStatusExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   return (
     <>
-      <div className={styles.buttonArea} ref={menuButtonElement}>
+      <div className={styles.buttonArea}>
         <DefaultButton
           onClick={toggleIsCalloutVisible}
           text={isCalloutVisible ? 'Hide StatusCallout' : 'Show StatusCallout'}
@@ -41,18 +39,16 @@ export const CalloutStatusExample: React.FunctionComponent = () => {
       {isCalloutVisible && (
         <Callout
           className={styles.callout}
-          target={menuButtonElement.current}
+          target={`.${styles.buttonArea}`}
           onDismiss={toggleIsCalloutVisible}
           role="status"
           aria-live="assertive"
         >
           <DelayedRender>
-            <>
-              <p className={styles.subtext}>
-                This message is treated as an aria-live assertive status message, and will be read by a screen reader
-                regardless of focus.
-              </p>
-            </>
+            <p className={styles.subtext}>
+              This message is treated as an aria-live assertive status message, and will be read by a screen reader
+              regardless of focus.
+            </p>
           </DelayedRender>
         </Callout>
       )}

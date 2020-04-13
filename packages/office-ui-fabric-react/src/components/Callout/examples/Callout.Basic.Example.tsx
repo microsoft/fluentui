@@ -52,14 +52,13 @@ const styles = mergeStyleSets({
 
 const labelId: string = getId('callout-label');
 const descriptionId: string = getId('callout-description');
-const menuButtonElement = React.createRef<HTMLDivElement>();
 
 export const CalloutBasicExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
 
   return (
     <>
-      <div className={styles.buttonArea} ref={menuButtonElement}>
+      <div className={styles.buttonArea}>
         <DefaultButton onClick={toggleIsCalloutVisible} text={isCalloutVisible ? 'Hide Callout' : 'Show Callout'} />
       </div>
       {isCalloutVisible && (
@@ -69,7 +68,7 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           ariaDescribedBy={descriptionId}
           role="alertdialog"
           gapSpace={0}
-          target={menuButtonElement.current}
+          target={`.${styles.buttonArea}`}
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
         >

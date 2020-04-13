@@ -61,8 +61,6 @@ const styles = mergeStyleSets({
   },
 });
 
-let menuButtonElement: HTMLElement | null;
-
 export const CalloutCoverExample: React.FunctionComponent = () => {
   const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const [directionalHint, setDirectionalHint] = React.useState<DirectionalHint>(DirectionalHint.bottomLeftEdge);
@@ -81,14 +79,14 @@ export const CalloutCoverExample: React.FunctionComponent = () => {
           onChange={onDirectionalChanged}
         />
       </div>
-      <div className={styles.buttonArea} ref={menuButton => (menuButtonElement = menuButton)}>
+      <div className={styles.buttonArea}>
         <DefaultButton text={isCalloutVisible ? 'Hide callout' : 'Show callout'} onClick={toggleIsCalloutVisible} />
       </div>
       {isCalloutVisible ? (
         <Callout
           className={styles.callout}
           onDismiss={toggleIsCalloutVisible}
-          target={menuButtonElement}
+          target={`.${styles.buttonArea}`}
           directionalHint={directionalHint}
           coverTarget
           isBeakVisible={false}

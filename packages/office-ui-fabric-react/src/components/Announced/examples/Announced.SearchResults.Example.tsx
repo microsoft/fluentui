@@ -22,18 +22,11 @@ const _testTags: ITag[] = [
   'white',
   'yellow',
 ].map(item => ({ key: item, name: item }));
-
-export interface IAnnouncedSearchResultsExampleState {
-  seconds: number;
-  numberOfSuggestions: number;
-  emptyInput: boolean;
-}
-
 const stackTokens: IStackTokens = { childrenGap: 10 };
-
 const getTextFromItem = (item: ITag): string => {
   return item.name;
 };
+
 export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
   const [emptyInput, { toggle: toggleEmptyInput }] = useBoolean(false);
   const [numberOfSuggestions, setNumberOfSuggestions] = React.useState(0);
@@ -65,7 +58,6 @@ export const AnnouncedSearchResultsExample: React.FunctionComponent = () => {
           .filter(tag => tag.name.toLowerCase().indexOf(filterText.toLowerCase()) === 0)
           .filter(tag => !listContainsDocument(tag, tagList))
       : [];
-
     if (filteredTags.length !== numberOfSuggestions) {
       setNumberOfSuggestions(filteredTags.length);
     }

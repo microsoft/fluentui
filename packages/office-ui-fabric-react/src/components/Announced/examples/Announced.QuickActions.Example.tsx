@@ -61,12 +61,6 @@ export interface IAnnouncedQuickActionsExampleState {
   announced?: JSX.Element;
 }
 
-// export const AnnouncedQuickActionsExample: React.FunctionComponent = () => {
-//   return (
-
-//   );
-// }
-
 export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnouncedQuickActionsExampleState> {
   private _selection: Selection;
   private _detailsList = React.createRef<IDetailsList>();

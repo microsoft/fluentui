@@ -12,7 +12,6 @@ import {
   FontWeights,
   Link,
   getId,
-  ICheckboxStyles,
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 
@@ -34,6 +33,7 @@ const DIRECTION_OPTIONS = [
 ];
 
 const theme = getTheme();
+const checkBoxStyles = { root: { margin: '10px 0' } };
 const styles = mergeStyleSets({
   buttonArea: {
     verticalAlign: 'top',
@@ -88,7 +88,6 @@ const styles = mergeStyleSets({
   },
 });
 
-let menuButtonElement: HTMLElement | null;
 const labelId: string = getId('callout-label');
 const descriptionId: string = getId('callout-description');
 
@@ -118,12 +117,7 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
   return (
     <>
       <div className={styles.configArea}>
-        <Checkbox
-          styles={{ root: { margin: '10px 0' } }}
-          label="Show beak"
-          checked={isBeakVisible}
-          onChange={onShowBeakChange}
-        />
+        <Checkbox styles={checkBoxStyles} label="Show beak" checked={isBeakVisible} onChange={onShowBeakChange} />
 
         <Slider max={30} label="Gap Space" min={0} defaultValue={0} onChange={onGapSlider} />
         {isBeakVisible && (
@@ -136,7 +130,7 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
           onChange={onDirectionalChanged}
         />
       </div>
-      <div className={styles.buttonArea} ref={menuButton => (menuButtonElement = menuButton)}>
+      <div className={styles.buttonArea}>
         <DefaultButton
           className={styles.calloutExampleButton}
           onClick={toggleIsCalloutVisible}
@@ -149,7 +143,7 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
           ariaDescribedBy={descriptionId}
           className={styles.callout}
           gapSpace={gapSpace}
-          target={menuButtonElement}
+          target={`.${styles.buttonArea}`}
           isBeakVisible={isBeakVisible}
           beakWidth={beakWidth}
           onDismiss={toggleIsCalloutVisible}
