@@ -170,6 +170,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
 
     const getNativeProps = renderAsAnchor ? getNativeAnchorProps : getNativeButtonProps;
     const nativeProps = getNativeProps(
+      // tslint:disable-next-line:deprecation
       assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
       new Set([
         'disabled', // let disabled buttons be focused and styled as disabled.
