@@ -1,6 +1,8 @@
 {
   "extends": "./typescript/tsconfig.common.json",
+  // This config is used for running build scripts through ts-node
   "compilerOptions": {
+    "module": "CommonJS",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,

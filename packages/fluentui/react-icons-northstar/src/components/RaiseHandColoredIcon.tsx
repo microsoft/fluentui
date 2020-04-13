@@ -3,7 +3,7 @@ import createSvgIcon from '../utils/createSvgIcon';
 
 const RaiseHandColoredIcon = createSvgIcon({
   svg: ({ classes }) => (
-    <svg role="presentation" focusable="false" viewBox="0 0 32 32" className={classes.svg}>
+    <svg role="presentation" focusable="false" viewBox="8 8 16 16" className={classes.svg}>
       <defs>
         <linearGradient
           id="a"

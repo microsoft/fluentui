@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 
 const noOp = () => undefined;
+
+const itemStyles: Partial<IButtonStyles> = { root: { padding: '10px' } };
+const overflowItemStyles: Partial<IButtonStyles> = { root: { padding: '10px' }, menuIcon: { fontSize: '16px' } };
 
 export class OverflowSetVerticalExample extends React.PureComponent {
   public render(): JSX.Element {
@@ -57,7 +60,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
       <CommandBarButton
         role="menuitem"
         aria-label={item.name}
-        styles={{ root: { padding: '10px' } }}
+        styles={itemStyles}
         iconProps={{ iconName: item.icon }}
         onClick={item.onClick}
       />
@@ -69,7 +72,7 @@ export class OverflowSetVerticalExample extends React.PureComponent {
       <CommandBarButton
         role="menuitem"
         title="More items"
-        styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
+        styles={overflowItemStyles}
         menuIconProps={{ iconName: 'More' }}
         menuProps={{ items: overflowItems! }}
       />

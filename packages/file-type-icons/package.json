@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/file-type-icons",
-  "version": "7.2.27",
-  "description": "Office UI Fabric file type icon set.",
+  "version": "7.2.28",
+  "description": "Fluent UI React file type icon set.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -23,7 +23,7 @@
     "code-style": "just-scripts code-style"
   },
   "devDependencies": {
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.15.1",
     "@uifabric/build": "^7.0.0",
@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "@uifabric/set-version": "^7.0.9",
-    "@uifabric/styling": "^7.11.1",
+    "@uifabric/styling": "^7.11.2",
     "tslib": "^1.10.0"
   },
   "peerDependencies": {

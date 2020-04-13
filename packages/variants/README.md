@@ -1,6 +1,9 @@
-# [variants](https://dev.microsoft.com/fabric)
+# @uifabric/variants
 
-Variants are [themes](https://github.com/microsoft/fluentui/wiki/Theming) generated from an existing theme, as opposed to [from raw colors](https://developer.microsoft.com/en-us/fabric#/styles/themegenerator). A variant will share the same colors as the original theme it was generated from, but will use those colors differently. For example, the background color and text color might be swapped. Variants can be used to highlight or de-emphasize portions of the page.
+**Theme variant generator for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/))
+
+Variants are [themes](https://github.com/microsoft/fluentui/wiki/Theming) generated from an existing theme, as opposed to [from raw colors](https://developer.microsoft.com/en-us/fluentui#/styles/themegenerator). A variant will share the same colors as the original theme it was generated from, but will use those colors differently. For example, the background color and text color might be swapped. Variants can be used to highlight or de-emphasize portions of the page.
 
 Example of normal, soft, and strong variants:
 

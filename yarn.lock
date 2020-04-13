@@ -3549,6 +3549,11 @@
   dependencies:
     "@types/d3-selection" "*"
 
+"@types/d3-format@^1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@types/d3-format/-/d3-format-1.3.1.tgz#35bf88264bd6bcda39251165bb827f67879c4384"
+  integrity sha512-KAWvReOKMDreaAwOjdfQMm0HjcUMlQG47GwqdVKgmm20vTd2pucj0a70c3gUSHrnsmo6H2AMrkBsZU2UhJLq8A==
+
 "@types/d3-path@*":
   version "1.0.8"
   resolved "https://registry.yarnpkg.com/@types/d3-path/-/d3-path-1.0.8.tgz#48e6945a8ff43ee0a1ce85c8cfa2337de85c7c79"
@@ -4025,10 +4030,10 @@
     "@types/prop-types" "*"
     "@types/react" "*"
 
-"@types/react@*", "@types/react@16.8.11":
-  version "16.8.11"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.11.tgz#2b13a7ab797b7ed1309e3cbf69994405d2391623"
-  integrity sha512-xEqvjpe7L5xAMlbZYUxxrgo3+ZXBvdnbhDtLWE/Md5LRw/quMRebZBIbqyKCl/77i64rqVtC2/WVDuYmO/diJQ==
+"@types/react@*", "@types/react@16.8.25":
+  version "16.8.25"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.8.25.tgz#0247613ab58b1b11ba10fed662e1947c5f2bb89c"
+  integrity sha512-ydAAkLnNTC4oYSxJ3zwK/4QcVmEecACJ4ZdxXITbxz/dhahBSDKY6OQ1uawAW6rE/7kfHccxulYLSAIZVrSq0A==
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
@@ -4298,16 +4303,6 @@
     lodash.unescape "4.0.1"
     semver "^6.3.0"
     tsutils "^3.17.1"
-
-"@uifabric/utilities@^7.15.5":
-  version "7.15.5"
-  resolved "https://registry.yarnpkg.com/@uifabric/utilities/-/utilities-7.15.5.tgz#8c7c4046344f6dc56fe8373aa24cc2a93d8db3ee"
-  integrity sha512-cjnhT7tTvHNXt0rvuajk5s/RQtSWFh2JfRhbmS7dTGfg3vNieoHg2EiNt+ulzKXxtdkFriXoFHRSNkTuV4/L9w==
-  dependencies:
-    "@uifabric/merge-styles" "^7.8.11"
-    "@uifabric/set-version" "^7.0.9"
-    prop-types "^15.7.2"
-    tslib "^1.10.0"
 
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
@@ -5767,15 +5762,16 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beachball@^1.20.4:
-  version "1.20.4"
-  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.20.4.tgz#f455d646bff4f08c2366fa0d75253f6b691d8a65"
-  integrity sha512-Sm8oamsV3EEUsz14l06He9DF+Da3zxa1wfdD7Yu2FeYxzGvFdcJKO4o7vIYRgFQaGIC2cWRI3uXO9Actund4pA==
+beachball@^1.28.1:
+  version "1.28.1"
+  resolved "https://registry.yarnpkg.com/beachball/-/beachball-1.28.1.tgz#ac71ffbdc9ccfd9ec15d0d332cca9ac708c87891"
+  integrity sha512-i/aynDcXbXCI7QoLn8D3t4BrZHD/oqpnupPTGUe+wlIxnPVys9Mej2TeR4AWsI3PevbyxTPRinVn5ytpqBaY0A==
   dependencies:
     cosmiconfig "^6.0.0"
     fs-extra "^8.0.1"
     git-url-parse "^11.1.2"
     glob "^7.1.4"
+    lodash "^4.17.15"
     minimatch "^3.0.4"
     prompts "~2.1.0"
     semver "^6.1.1"
@@ -7802,6 +7798,11 @@ d3-format@^1.2.0:
   version "1.4.3"
   resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.3.tgz#4e8eb4dff3fdcb891a8489ec6e698601c41b96f1"
   integrity sha512-mm/nE2Y9HgGyjP+rKIekeITVgBtX97o1nrvHCWX8F/yBYyevUTvu9vb5pUnKwrcSw7o7GuwMOWjS9gFDs4O+uQ==
+
+d3-format@^1.4.4:
+  version "1.4.4"
+  resolved "https://registry.yarnpkg.com/d3-format/-/d3-format-1.4.4.tgz#356925f28d0fd7c7983bfad593726fce46844030"
+  integrity sha512-TWks25e7t8/cqctxCmxpUuzZN11QxIA7YrMbram94zMQ0PXjE4LVIMe/f6a4+xxL8HQ3OsAFULOINQi1pE62Aw==
 
 d3-geo@^1.6.4:
   version "1.11.9"

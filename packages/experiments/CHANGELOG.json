@@ -2,6 +2,53 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/experiments_v7.23.0",
+      "version": "7.23.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Support TilesList overrides for altering list semantics for grid accessibility",
+            "author": "tmichon@microsoft.com",
+            "commit": "d8a2f14c09d6c8fe70b7308894f58b12ca2243fe"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Unified picker, work in progress",
+            "author": "sanredd@microsoft.com",
+            "commit": "296e5c243a78378ab639c2de1abe2c1c79848800"
+          },
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update experiments testing instructions",
+            "author": "elcraig@microsoft.com",
+            "commit": "487b511145d057e31c12bc570a41c27b39650629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Apr 2020 12:28:27 GMT",
+      "tag": "@uifabric/experiments_v7.22.16",
+      "version": "7.22.16",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix: fix typings for asAsync & internal usages of React.Children.map",
+            "author": "olfedias@microsoft.com",
+            "commit": "5d5891f4757c292ad5a59a7522a00437ae7ac248"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Apr 2020 12:30:40 GMT",
       "tag": "@uifabric/experiments_v7.22.12",
       "version": "7.22.12",

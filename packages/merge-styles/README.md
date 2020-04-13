@@ -506,7 +506,7 @@ Stylesheet.getInstance().setConfig({
 });
 ```
 
-If you're working inside a Fabric app, this setting can also be applied using the global `window.FabricConfig.mergeStyles.cspSettings`. Note that this must be set before any Fabric code is loaded, or it may not be applied properly.
+If you're working inside a Fluent UI React app ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)), this setting can also be applied using the global `window.FabricConfig.mergeStyles.cspSettings`. Note that this must be set before any Fluent UI React code is loaded, or it may not be applied properly.
 
 ```ts
 window.FabricConfig = {
