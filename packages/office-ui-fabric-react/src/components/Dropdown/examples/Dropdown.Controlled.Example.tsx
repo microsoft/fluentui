@@ -16,7 +16,7 @@ const dropdownControlledExampleOptions = [
   { key: 'lettuce', text: 'Lettuce' },
 ];
 
-export const DropdownControlledExample: React.FC = () => {
+export const DropdownControlledExample: React.FunctionComponent = () => {
   const [selectedItem, setSelectedItem] = React.useState();
 
   const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
