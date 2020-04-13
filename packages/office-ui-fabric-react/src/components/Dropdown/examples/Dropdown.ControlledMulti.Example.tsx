@@ -1,5 +1,7 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
+
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
 export interface IDropdownControlledMultiExampleState {
   selectedItems: string[];
@@ -32,7 +34,7 @@ export class DropdownControlledMultiExample extends React.Component<{}, IDropdow
           { key: 'carrot', text: 'Carrot' },
           { key: 'lettuce', text: 'Lettuce' },
         ]}
-        styles={{ dropdown: { width: 300 } }}
+        styles={dropdownStyles}
       />
     );
   }

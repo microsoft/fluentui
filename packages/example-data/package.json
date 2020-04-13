@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/example-data",
   "version": "7.0.9",
-  "description": "Data generators for Office UI Fabric React examples.",
+  "description": "Data generators for Fluent UI React examples.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",

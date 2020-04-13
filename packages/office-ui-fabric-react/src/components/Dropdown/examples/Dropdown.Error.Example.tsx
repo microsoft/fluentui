@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 }, root: { height: 100 } };
 
 export interface IDropdownErrorExampleState {
   showError: boolean;
@@ -36,7 +38,7 @@ export class DropdownErrorExample extends React.Component<{}, IDropdownErrorExam
             { key: 'E', text: 'Option e' },
           ]}
           errorMessage={showError ? 'This dropdown has an error' : undefined}
-          styles={{ dropdown: { width: 300 }, root: { height: 100 } }}
+          styles={dropdownStyles}
         />
       </Stack>
     );
