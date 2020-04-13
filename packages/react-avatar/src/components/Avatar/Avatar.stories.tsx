@@ -3,7 +3,7 @@ import { Avatar } from './Avatar';
 import { PersonaCoin, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Provider, themes, Header, Avatar as FUIAvatar, Flex } from '@fluentui/react-northstar';
 
-const imageUrl = 'http://www.fillmurray.com/200/200';
+const imageUrl = 'http://www.fillmurray.com/96/96';
 
 export const AvatarFela = () => (
   <Provider theme={themes.teams}>
