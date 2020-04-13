@@ -13,6 +13,16 @@ const sizeToPxValue = {
   largest: 96,
 };
 
+const iconSizeToPxValue = {
+  smallest: 10,
+  smaller: 12,
+  small: 16,
+  medium: 16,
+  large: 20,
+  larger: 32,
+  largest: 40,
+};
+
 const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
   root: ({ props: { size } }): ICSSInJSStyle => {
     const sizeInRem = pxToRem(sizeToPxValue[size]);
@@ -24,6 +34,32 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       verticalAlign: 'middle',
       height: sizeInRem,
       width: sizeInRem,
+    };
+  },
+  icon: ({ props: p, variables: v }) => {
+    const sizeInRem = pxToRem(sizeToPxValue[p.size]);
+    const iconsizeInRem = pxToRem(iconSizeToPxValue[p.size]);
+
+    return {
+      color: v.iconColor,
+      background: v.iconBackgroundColor,
+      width: sizeInRem,
+      height: sizeInRem,
+      borderRadius: '50%',
+      display: 'inline-flex',
+      alignItems: 'center',
+      ...(p.square && {
+        borderRadius: v.squareAvatarBorderRadius,
+      }),
+      '& > :first-child': {
+        margin: '0 auto',
+        width: iconsizeInRem,
+        height: iconsizeInRem,
+        '& svg': {
+          width: '100%',
+          height: '100%',
+        },
+      },
     };
   },
   image: ({ props: p, variables: v }): ICSSInJSStyle => ({

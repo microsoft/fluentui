@@ -6,6 +6,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
+import Box, { BoxProps } from '../Box/Box';
 import Image, { ImageProps } from '../Image/Image';
 import Label, { LabelProps } from '../Label/Label';
 import Status, { StatusProps } from '../Status/Status';
@@ -23,6 +24,9 @@ export interface AvatarProps extends UIComponentProps {
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<never>;
+
+  /** Avatar can contain icon. */
+  icon?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the image. */
   image?: ShorthandValue<ImageProps>;
@@ -59,6 +63,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
     design,
     getInitials,
     label,
+    icon,
     image,
     name,
     square,
@@ -98,6 +103,15 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
           }),
       })}
       {!image &&
+        Box.create(icon, {
+          defaultProps: () =>
+            getA11Props('icon', {
+              title: name,
+              styles: resolvedStyles.icon,
+            }),
+        })}
+      {!image &&
+        !icon &&
         Label.create(label || {}, {
           defaultProps: () =>
             getA11Props('label', {
@@ -156,6 +170,7 @@ Avatar.propTypes = {
     content: false,
   }),
   name: PropTypes.string,
+  icon: customPropTypes.shorthandAllowingChildren,
   image: customPropTypes.itemShorthandWithoutJSX,
   label: customPropTypes.itemShorthand,
   square: PropTypes.bool,
