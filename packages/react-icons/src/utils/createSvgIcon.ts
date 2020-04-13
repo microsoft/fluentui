@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, getNativeProps, htmlElementProperties } from '@uifabric/utilities';
-import { classes, MS_ICON } from './SvgIcon.styles';
+import { classes } from './SvgIcon.styles';
 import { ISvgIconProps } from './SvgIcon.types';
 import { SvgIconCreateFnParams } from './types';
 
@@ -21,7 +21,7 @@ const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<
       {
         ...containerProps,
         ...nativeProps,
-        className: css(MS_ICON, classes.root, className),
+        className: css(classes.root, className),
         style,
       },
       svg({ classes, props }),

@@ -11,9 +11,6 @@ export const classes = mergeStyleSets({
   },
 });
 
-/** Class name used only in non-themeable Icon components */
-export const MS_ICON = 'ms-Icon';
-
 export const getStyles = (props: IIconStyleProps): ISvgIconStyles => {
   const { className, iconClassName, styles } = props;
 
