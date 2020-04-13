@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { divProperties, getNativeProps } from '../../Utilities';
+import { getNativeHtmlElementProps } from '../../Utilities';
 import { classNamesFunction } from '../../Utilities';
 import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
@@ -17,7 +17,7 @@ export class LabelBase extends React.Component<ILabelProps, {}> {
       theme: theme!,
     });
     return (
-      <RootType {...getNativeProps(this.props, divProperties)} className={classNames.root}>
+      <RootType {...getNativeHtmlElementProps(this.props)} className={classNames.root}>
         {children}
       </RootType>
     );

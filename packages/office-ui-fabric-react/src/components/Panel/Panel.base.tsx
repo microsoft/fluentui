@@ -8,10 +8,9 @@ import {
   allowScrollOnElement,
   allowOverscrollOnElement,
   classNamesFunction,
-  divProperties,
   elementContains,
   getId,
-  getNativeProps,
+  getNativeDivProps,
   getRTL,
   css,
   warnDeprecations,
@@ -176,7 +175,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     const isRTL = getRTL(theme);
     const isOnRightSide = isRTL ? isLeft : !isLeft;
     const customWidthStyles = type === PanelType.custom || type === PanelType.customNear ? { width: customWidth } : {};
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const nativeProps = getNativeDivProps(this.props);
     const isOpen = this.isActive;
     const isAnimating =
       visibility === PanelVisibilityState.animatingClosed || visibility === PanelVisibilityState.animatingOpen;

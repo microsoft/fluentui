@@ -333,8 +333,29 @@ export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLE
 // @public
 export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
+// @public (undocumented)
+export function getNativeAnchorProps(props: {}, excludedPropNames?: Set<string>): React.AnchorHTMLAttributes<HTMLAnchorElement>;
+
+// @public (undocumented)
+export function getNativeButtonProps(props: {}, excludedPropNames?: Set<string>): React.ButtonHTMLAttributes<HTMLButtonElement>;
+
+// @public (undocumented)
+export function getNativeDataOrAriaProps<T>(props: {}): T;
+
+// @public (undocumented)
+export function getNativeDivProps(props: {}, excludedPropNames?: Set<string>): React.HTMLAttributes<HTMLDivElement>;
+
+// @public (undocumented)
+export function getNativeHtmlElementProps<T>(props: {}, excludedPropNames?: Set<string>): T;
+
+// @public (undocumented)
+export function getNativeInputProps(props: {}, excludedPropNames?: Set<string>): React.InputHTMLAttributes<HTMLInputElement>;
+
 // @public
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
+
+// @public (undocumented)
+export function getNativeTextareaProps(props: {}, excludedPropNames?: Set<string>): React.TextareaHTMLAttributes<HTMLTextAreaElement>;
 
 // @public
 export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;

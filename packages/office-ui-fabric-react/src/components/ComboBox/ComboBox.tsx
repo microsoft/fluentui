@@ -4,12 +4,11 @@ import {
   initializeComponentRef,
   css,
   customizable,
-  divProperties,
   findElementRecursive,
   findIndex,
   focusAsync,
   getId,
-  getNativeProps,
+  getNativeDivProps,
   isIOS,
   isMac,
   KeyCodes,
@@ -370,10 +369,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
       ? this._getMultiselectDisplayString(this.state.selectedIndices, this.state.currentOptions, suggestedDisplayValue)
       : undefined;
 
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
-      'onChange',
-      'value',
-    ]);
+    const divProps = getNativeDivProps(this.props, new Set(['onChange', 'value']));
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 

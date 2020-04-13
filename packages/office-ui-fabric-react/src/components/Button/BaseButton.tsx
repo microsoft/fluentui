@@ -1,11 +1,8 @@
 import * as React from 'react';
 import {
   IRenderFunction,
-  anchorProperties,
   assign,
-  buttonProperties,
   getId,
-  getNativeProps,
   KeyCodes,
   css,
   mergeAriaAttributeValues,
@@ -18,6 +15,9 @@ import {
   initializeComponentRef,
   Async,
   FocusRects,
+  getNativeAnchorProps,
+  getNativeButtonProps,
+  getNativeDataOrAriaProps,
 } from '../../Utilities';
 import { Icon, FontIcon, ImageIcon } from '../../Icon';
 import { DirectionalHint } from '../../common/DirectionalHint';
@@ -168,13 +168,12 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
     const renderAsAnchor: boolean = !isPrimaryButtonDisabled && !!href;
     const tag = renderAsAnchor ? 'a' : 'button';
 
+    const getNativeProps = renderAsAnchor ? getNativeAnchorProps : getNativeButtonProps;
     const nativeProps = getNativeProps(
-      // tslint:disable-next-line:deprecation
       assign(renderAsAnchor ? {} : { type: 'button' }, this.props.rootProps, this.props),
-      renderAsAnchor ? anchorProperties : buttonProperties,
-      [
+      new Set([
         'disabled', // let disabled buttons be focused and styled as disabled.
-      ],
+      ]),
     );
 
     // Check for ariaLabel passed in via Button props, and fall back to aria-label passed in via native props
@@ -599,7 +598,7 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
-    const containerProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(buttonProps, [], ['disabled']);
+    const containerProps = getNativeDataOrAriaProps(buttonProps);
 
     // Add additional props to apply on primary action button
     if (primaryActionButtonProps) {

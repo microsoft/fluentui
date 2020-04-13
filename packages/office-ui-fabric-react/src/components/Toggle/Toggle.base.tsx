@@ -3,8 +3,7 @@ import {
   initializeComponentRef,
   classNamesFunction,
   getId,
-  inputProperties,
-  getNativeProps,
+  getNativeInputProps,
   warnDeprecations,
   warnMutuallyExclusive,
   FocusRects,
@@ -85,7 +84,7 @@ export class ToggleBase extends React.Component<IToggleProps, IToggleState> impl
     const { checked } = this.state;
     const stateText = checked ? onText : offText;
     const badAriaLabel = checked ? onAriaLabel : offAriaLabel;
-    const toggleNativeProps = getNativeProps(this.props, inputProperties, ['defaultChecked']);
+    const toggleNativeProps = getNativeInputProps(this.props, new Set(['defaultChecked']));
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,

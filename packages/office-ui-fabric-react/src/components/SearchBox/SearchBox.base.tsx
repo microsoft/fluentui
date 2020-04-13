@@ -6,8 +6,7 @@ import {
   getId,
   KeyCodes,
   classNamesFunction,
-  getNativeProps,
-  inputProperties,
+  getNativeInputProps,
 } from '../../Utilities';
 
 import { IconButton } from '../../Button';
@@ -92,13 +91,10 @@ export class SearchBoxBase extends React.Component<ISearchBoxProps, ISearchBoxSt
       disableAnimation,
     });
 
-    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'className',
-      'placeholder',
-      'onFocus',
-      'onBlur',
-      'value',
-    ]);
+    const nativeProps = getNativeInputProps(
+      this.props,
+      new Set(['className', 'placeholder', 'onFocus', 'onBlur', 'value']),
+    );
 
     return (
       <div role="search" ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>

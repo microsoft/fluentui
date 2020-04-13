@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  initializeComponentRef,
-  getRTL,
-  classNamesFunction,
-  getNativeProps,
-  htmlElementProperties,
-} from '../../Utilities';
+import { initializeComponentRef, getRTL, classNamesFunction, getNativeDivProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -193,9 +187,7 @@ export class BreadcrumbBase extends React.Component<IBreadcrumbProps, any> {
       );
     }
 
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, [
-      'className',
-    ]);
+    const nativeProps = getNativeDivProps(this.props, new Set(['className']));
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>

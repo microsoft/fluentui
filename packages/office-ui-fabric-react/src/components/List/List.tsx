@@ -5,13 +5,12 @@ import {
   IRectangle,
   IRenderFunction,
   css,
-  divProperties,
   findIndex,
   findScrollableParent,
-  getNativeProps,
   getParent,
   getWindow,
   initializeComponentRef,
+  getNativeDivProps,
 } from '../../Utilities';
 import {
   IList,
@@ -410,7 +409,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const { className, role = 'list', onRenderSurface, onRenderRoot } = this.props;
     const { pages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const divProps = getNativeDivProps(this.props);
 
     for (const page of pages) {
       pageElements.push(this._renderPage(page));

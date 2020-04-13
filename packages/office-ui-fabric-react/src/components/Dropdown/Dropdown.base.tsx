@@ -5,13 +5,12 @@ import {
   IStyleFunctionOrObject,
   KeyCodes,
   classNamesFunction,
-  divProperties,
   findIndex,
   getDocument,
   getFirstFocusable,
   getId,
   getLastFocusable,
-  getNativeProps,
+  getNativeDivProps,
   initializeComponentRef,
   isIOS,
   isMac,
@@ -226,7 +225,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = getAllSelectedOptions(options, selectedIndices);
-    const divProps = getNativeProps(props, divProperties);
+    const divProps = getNativeDivProps(props);
 
     const disabled = this._isDisabled();
 

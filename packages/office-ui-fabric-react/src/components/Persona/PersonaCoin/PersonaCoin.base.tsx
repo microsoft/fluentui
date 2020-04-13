@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  warnDeprecations,
-  classNamesFunction,
-  divProperties,
-  getInitials,
-  getNativeProps,
-  getRTL,
-} from '../../../Utilities';
+import { warnDeprecations, classNamesFunction, getInitials, getNativeDivProps, getRTL } from '../../../Utilities';
 import { mergeStyles } from '../../../Styling';
 import { PersonaPresence } from '../PersonaPresence/index';
 import { Icon } from '../../../Icon';
@@ -85,8 +78,8 @@ export class PersonaCoinBase extends React.Component<IPersonaCoinProps, IPersona
     } = this.props;
 
     const size = this.props.size as PersonaSize;
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
-    const divCoinProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(coinProps || {}, divProperties);
+    const divProps = getNativeDivProps(this.props);
+    const divCoinProps = coinProps ? getNativeDivProps(coinProps) : {};
     const coinSizeStyle = coinSize ? { width: coinSize, height: coinSize } : undefined;
     const hideImage = showUnknownPersonaCoin;
 

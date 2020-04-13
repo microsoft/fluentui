@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  warnDeprecations,
-  KeyCodes,
-  getId,
-  getNativeProps,
-  divProperties,
-  classNamesFunction,
-  warn,
-} from '../../Utilities';
+import { warnDeprecations, KeyCodes, getId, getNativeDivProps, classNamesFunction, warn } from '../../Utilities';
 import { CommandButton } from '../../Button';
 import { IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { IPivotItemProps } from './PivotItem.types';
@@ -94,7 +86,7 @@ export class PivotBase extends React.Component<IPivotProps, IPivotState> {
     const linkCollection = this._getPivotLinks(this.props);
     const selectedKey = this._getSelectedKey(linkCollection);
 
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const divProps = getNativeDivProps(this.props);
 
     this._classNames = this._getClassNames(this.props);
 

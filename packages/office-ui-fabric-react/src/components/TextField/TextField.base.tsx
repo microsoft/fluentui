@@ -8,11 +8,10 @@ import {
   IStyleFunctionOrObject,
   classNamesFunction,
   getId,
-  getNativeProps,
+  getNativeInputProps,
+  getNativeTextareaProps,
   initializeComponentRef,
-  inputProperties,
   isControlled,
-  textAreaProperties,
   warn,
   warnControlledUsage,
   warnMutuallyExclusive,
@@ -428,11 +427,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
-      this.props,
-      textAreaProperties,
-      ['defaultValue'],
-    );
+    const textAreaProps = getNativeTextareaProps(this.props, new Set(['defaultValue']));
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <textarea
@@ -455,9 +450,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
-    const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
-      'defaultValue',
-    ]);
+    const inputProps = getNativeInputProps(this.props, new Set(['defaultValue']));
     const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <input

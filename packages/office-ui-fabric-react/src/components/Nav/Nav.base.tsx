@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ActionButton } from '../../Button';
 import { buttonStyles } from './Nav.styles';
-import { classNamesFunction, divProperties, getNativeProps, getWindow, initializeComponentRef } from '../../Utilities';
+import { classNamesFunction, getNativeDivProps, getWindow, initializeComponentRef } from '../../Utilities';
 import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
 import { Icon } from '../../Icon';
 import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
@@ -133,7 +133,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
-    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
+    const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeDivProps(link, new Set(['onClick'])) };
     // tslint:disable-next-line:deprecation
     const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {

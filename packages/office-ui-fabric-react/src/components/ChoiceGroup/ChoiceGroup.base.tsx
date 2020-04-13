@@ -9,8 +9,7 @@ import {
   find,
   getId,
   isControlled,
-  getNativeProps,
-  divProperties,
+  getNativeDivProps,
 } from '../../Utilities';
 import {
   IChoiceGroup,
@@ -99,11 +98,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     const { className, theme, styles, options = [], label, required, disabled, name } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
-      'onChange',
-      'className',
-      'required',
-    ]);
+    const divProps = getNativeDivProps(this.props, new Set(['onChange', 'className', 'required']));
 
     const classNames = getClassNames(styles!, {
       theme: theme!,

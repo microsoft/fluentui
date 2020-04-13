@@ -4,10 +4,9 @@ import {
   css,
   nullRender,
   IComponentAs,
-  getNativeProps,
-  divProperties,
   composeComponentAs,
   initializeComponentRef,
+  getNativeDivProps,
 } from '../../Utilities';
 import {
   ICommandBar,
@@ -88,7 +87,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     // ResizeGroup will render these attributes to the root <div>.
     // TODO We may need to elevate classNames from <FocusZone> into <ResizeGroup> ?
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const nativeProps = getNativeDivProps(this.props);
 
     return (
       <ResizeGroup

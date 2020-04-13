@@ -1,4 +1,5 @@
 import { filteredAssign } from './object';
+import * as React from 'react';
 
 /**
  * An array of events that are allowed on every html element type.
@@ -375,6 +376,13 @@ export const imageProperties = imgProperties;
  */
 export const divProperties = htmlElementProperties;
 
+const htmlElementPropertiesSet = new Set(htmlElementProperties);
+const divPropertiesSet = htmlElementPropertiesSet;
+const inputPropertiesSet = new Set(inputProperties);
+const anchorPropertiesSet = new Set<string>(anchorProperties);
+const buttonPropertiesSet = new Set<string>(buttonProperties);
+const textAreaPropertiesSet = new Set<string>(textAreaProperties);
+
 /**
  * Gets native supported props for an html element provided the allowance set. Use one of the property
  * sets defined (divProperties, buttonPropertes, etc) to filter out supported properties from a given
@@ -390,19 +398,85 @@ export const divProperties = htmlElementProperties;
  * @returns The filtered props
  */
 export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T {
-  // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
-  // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
-  // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
-  // return native props.
-  // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
   return filteredAssign(
     (propName: string) => {
       return (
         (!excludedPropNames || excludedPropNames.indexOf(propName) < 0) &&
-        (propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0 || allowedPropNames.indexOf(propName) >= 0)
+        (isDataOrAriaProp(propName) || allowedPropNames.indexOf(propName) >= 0)
       );
     },
     {},
     props,
   ) as T;
+}
+
+export function getNativeDivProps(props: {}, excludedPropNames?: Set<string>): React.HTMLAttributes<HTMLDivElement> {
+  return getNativePropsFast<React.HTMLAttributes<HTMLDivElement>>(props, divPropertiesSet, excludedPropNames);
+}
+
+export function getNativeAnchorProps(
+  props: {},
+  excludedPropNames?: Set<string>,
+): React.AnchorHTMLAttributes<HTMLAnchorElement> {
+  return getNativePropsFast<React.AnchorHTMLAttributes<HTMLAnchorElement>>(
+    props,
+    anchorPropertiesSet,
+    excludedPropNames,
+  );
+}
+
+export function getNativeButtonProps(
+  props: {},
+  excludedPropNames?: Set<string>,
+): React.ButtonHTMLAttributes<HTMLButtonElement> {
+  return getNativePropsFast<React.ButtonHTMLAttributes<HTMLButtonElement>>(
+    props,
+    buttonPropertiesSet,
+    excludedPropNames,
+  );
+}
+
+export function getNativeInputProps(
+  props: {},
+  excludedPropNames?: Set<string>,
+): React.InputHTMLAttributes<HTMLInputElement> {
+  return getNativePropsFast<React.InputHTMLAttributes<HTMLInputElement>>(props, inputPropertiesSet, excludedPropNames);
+}
+
+export function getNativeHtmlElementProps<T>(props: {}, excludedPropNames?: Set<string>): T {
+  return getNativePropsFast(props, htmlElementPropertiesSet, excludedPropNames);
+}
+
+export function getNativeTextareaProps(
+  props: {},
+  excludedPropNames?: Set<string>,
+): React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  return getNativePropsFast<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(
+    props,
+    textAreaPropertiesSet,
+    excludedPropNames,
+  );
+}
+
+export function getNativeDataOrAriaProps<T>(props: {}): T {
+  return filteredAssign((propName: string) => isDataOrAriaProp(propName), {}, props) as T;
+}
+
+function getNativePropsFast<T>(props: {}, allowedPropNames: Set<string>, excludedPropNames?: Set<string>): T {
+  return filteredAssign(
+    (propName: string) => {
+      return !excludedPropNames?.has(propName) && (isDataOrAriaProp(propName) || allowedPropNames.has(propName));
+    },
+    {},
+    props,
+  ) as T;
+}
+
+function isDataOrAriaProp(propName: string): boolean {
+  // It'd be great to properly type this while allowing 'aria-` and 'data-' attributes like TypeScript does for
+  // JSX attributes, but that ability is hardcoded into the TS compiler with no analog in TypeScript typings.
+  // Then we'd be able to enforce props extends native props (including aria- and data- attributes), and then
+  // return native props.
+  // We should be able to do this once this PR is merged: https://github.com/microsoft/TypeScript/pull/26797
+  return propName.indexOf('data-') === 0 || propName.indexOf('aria-') === 0;
 }

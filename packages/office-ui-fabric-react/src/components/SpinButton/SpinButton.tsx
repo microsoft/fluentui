@@ -12,8 +12,7 @@ import {
   calculatePrecision,
   precisionRound,
   mergeAriaAttributeValues,
-  getNativeProps,
-  divProperties,
+  getNativeDivProps,
 } from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
@@ -175,11 +174,7 @@ export class SpinButton extends React.Component<ISpinButtonProps, ISpinButtonSta
           className,
         );
 
-    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, [
-      'onBlur',
-      'onFocus',
-      'className',
-    ]);
+    const nativeProps = getNativeDivProps(this.props, new Set(['onBlur', 'onFocus', 'className']));
 
     return (
       <div className={classNames.root}>

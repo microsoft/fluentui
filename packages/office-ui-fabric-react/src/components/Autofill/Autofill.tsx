@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IAutofillProps, IAutofill } from './Autofill.types';
-import { KeyCodes, getNativeProps, inputProperties, isIE11, Async, initializeComponentRef } from '../../Utilities';
+import { KeyCodes, isIE11, Async, initializeComponentRef, getNativeInputProps } from '../../Utilities';
 
 export interface IAutofillState {
   displayValue?: string;
@@ -134,7 +134,7 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   public render(): JSX.Element {
     const { displayValue } = this.state;
 
-    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
+    const nativeProps = getNativeInputProps(this.props);
     return (
       <input
         autoCapitalize="off"

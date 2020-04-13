@@ -6,9 +6,14 @@ import {
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles,
 } from './ChoiceGroupOption.types';
-import { classNamesFunction, getNativeProps, inputProperties, css, initializeComponentRef } from '../../../Utilities';
+import {
+  composeRenderFunction,
+  classNamesFunction,
+  getNativeInputProps,
+  css,
+  initializeComponentRef,
+} from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
-import { composeRenderFunction } from '@uifabric/utilities';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
@@ -60,7 +65,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       focused,
     });
 
-    const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
+    const { className, ...nativeProps } = getNativeInputProps(rest);
 
     return (
       <div className={this._classNames.root}>

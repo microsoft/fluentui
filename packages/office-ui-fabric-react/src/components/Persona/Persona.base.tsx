@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { warnDeprecations, classNamesFunction, divProperties, getNativeProps, IRenderFunction } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, getNativeDivProps, IRenderFunction } from '../../Utilities';
 import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip';
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
@@ -107,7 +107,7 @@ export class PersonaBase extends React.Component<IPersonaProps, {}> {
       size,
     });
 
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
+    const divProps = getNativeDivProps(this.props);
     const personaDetails = (
       <div className={classNames.details}>
         {this._renderElement(classNames.primaryText, onRenderPrimaryText, _onRenderPrimaryText)}
