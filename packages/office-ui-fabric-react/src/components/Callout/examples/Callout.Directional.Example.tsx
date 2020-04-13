@@ -12,6 +12,7 @@ import {
   FontWeights,
   Link,
   getId,
+  ICheckboxStyles,
 } from 'office-ui-fabric-react';
 import { useBoolean } from '@uifabric/react-hooks';
 

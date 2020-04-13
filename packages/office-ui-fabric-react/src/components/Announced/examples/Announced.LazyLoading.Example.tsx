@@ -216,7 +216,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<
         <DefaultButton
           text={loading ? 'Pause loading' : 'Load photos'}
           onClick={loading ? this._pauseLoading : this._startLoading}
-          styles={{ root: { width: 150 } }}
+          styles={defaultButtonStyles}
         />
         <ProgressIndicator
           label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'}

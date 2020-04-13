@@ -7,6 +7,7 @@ import {
   SelectionMode,
   DetailsRow,
   IDetailsRowProps,
+  IDetailsRowStyles,
 } from 'office-ui-fabric-react/lib/DetailsList';
 import * as React from 'react';
 
@@ -28,6 +29,8 @@ const Variants: ISetting<keyof IFontStyles>[] = [
   { name: 'xxLarge' },
   { name: 'mega' },
 ];
+
+const detailsRowStyles: Partial<IDetailsRowStyles> = { root: { color: 'inherit' } };
 
 export interface ITextRampExampleItem {
   key: string;
@@ -86,6 +89,6 @@ export class TextRampExample extends React.Component<{}, ITextRampExampleState> 
   }
 
   private _renderDetailsRow(props: IDetailsRowProps): JSX.Element {
-    return <DetailsRow {...props} styles={{ root: { color: 'inherit' } }} />;
+    return <DetailsRow {...props} styles={detailsRowStyles} />;
   }
 }

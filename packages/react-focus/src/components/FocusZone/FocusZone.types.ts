@@ -16,6 +16,12 @@ export interface IFocusZone {
   focus(forceIntoFirstElement?: boolean): boolean;
 
   /**
+   * Sets focus to the last tabbable item in the zone.
+   * @returns True if focus could be set to an active element, false if no operation was taken.
+   */
+  focusLast(): boolean;
+
+  /**
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)

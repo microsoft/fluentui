@@ -147,7 +147,6 @@
     "tslint": "^5.7.0",
     "tslint-config-airbnb": "^5.11.1",
     "tslint-config-prettier": "^1.18.0",
-    "tslint-microsoft-contrib": "^5.0.1",
     "typescript": "3.7.2",
     "webpack": "4.35.0",
     "webpack-bundle-analyzer": "^3.6.0",

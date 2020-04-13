@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/styling",
   "version": "7.11.2",
-  "description": "Styling helpers for Office UI Fabric.",
+  "description": "Styling helpers for Fluent UI React.",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
