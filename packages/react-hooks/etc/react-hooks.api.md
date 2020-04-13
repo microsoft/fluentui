@@ -22,8 +22,11 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 // @public
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
+// Warning: (ae-forgotten-export) The symbol "ChangeCallback" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "Setter" needs to be exported by the entry point index.d.ts
+//
 // @public
-export function useControllableValue<TValue, TOnChangeArgs extends unknown[]>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: (newValue: TValue, ...args: TOnChangeArgs) => void): readonly [TValue | undefined, (newValue: TValue, ...args: TOnChangeArgs) => void];
+export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined, TSetter extends Setter<TValue, TElement, TCallback>>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: TCallback): [TValue | undefined, TSetter];
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
