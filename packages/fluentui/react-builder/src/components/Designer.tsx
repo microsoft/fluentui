@@ -340,7 +340,7 @@ class Designer extends React.Component<any, DesignerState> {
                   renderJSONTreeElement={treeElement => {
                     treeElement.props = treeElement.props || {};
 
-                    if (mode === 'build') {
+                    if (isExpanding) {
                       treeElement.props.style = {
                         ...treeElement?.props?.style,
                         ...(treeElement.uuid === 'json-tree-root'
