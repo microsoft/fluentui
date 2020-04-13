@@ -407,6 +407,9 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
 
 // @public
 export interface IStyleSheetConfig {
+    classNameCache?: {
+        [key: string]: string;
+    };
     cspSettings?: ICSPSettings;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
@@ -473,6 +476,9 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     getClassName(displayName?: string): string;
+    getClassNameCache(): {
+        [key: string]: string;
+    };
     static getInstance(): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
