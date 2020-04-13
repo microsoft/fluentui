@@ -14,7 +14,6 @@ import {
   IVerticalBarChartStyleProps,
   IVerticalBarChartStyles,
   IVerticalBarChartDataPoint,
-  // IDataPoint,
 } from './VerticalBarChart.types';
 
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
