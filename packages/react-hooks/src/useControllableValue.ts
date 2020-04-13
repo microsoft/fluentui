@@ -5,14 +5,6 @@ type ChangeCallback<TElement extends HTMLElement, TValue> = (
   newValue: TValue | undefined,
 ) => void;
 
-type Setter<
-  TValue,
-  TElement extends HTMLElement,
-  TCallback extends ChangeCallback<TElement, TValue> | undefined
-> = TCallback extends ChangeCallback<TElement, TValue>
-  ? (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void
-  : (newValue: TValue | undefined) => void;
-
 /**
  * Hook to manage a value that could be either controlled or uncontrolled, such as a checked state or
  * text box string.
@@ -21,16 +13,24 @@ type Setter<
  * @param defaultUncontrolledValue- Initial value for the internal state in the uncontrolled case.
  * @see https://reactjs.org/docs/uncontrolled-components.html
  */
+export function useControllableValue<TValue, TElement extends HTMLElement>(
+  controlledValue: TValue | undefined,
+  defaultUncontrolledValue: TValue | undefined,
+): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
 export function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TCallback extends ChangeCallback<TElement, TValue> | undefined,
-  TSetter extends Setter<TValue, TElement, TCallback>
+  TCallback extends ChangeCallback<TElement, TValue> | undefined
 >(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,
-  onChange?: TCallback,
-): [TValue | undefined, TSetter] {
+  onChange: TCallback,
+): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>;
+export function useControllableValue<
+  TValue,
+  TElement extends HTMLElement,
+  TCallback extends ChangeCallback<TElement, TValue> | undefined
+>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: TCallback) {
   const [value, setValue] = React.useState<TValue | undefined>(
     controlledValue !== undefined ? controlledValue : defaultUncontrolledValue,
   );
@@ -45,7 +45,7 @@ export function useControllableValue<
       }
     },
     [onChange, controlledValue === undefined],
-  ) as TSetter;
+  );
 
-  return [controlledValue !== undefined ? controlledValue : value, setValueOrCallOnChange];
+  return [controlledValue !== undefined ? controlledValue : value, setValueOrCallOnChange] as const;
 }

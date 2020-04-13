@@ -22,11 +22,13 @@ export function useConst<T>(initialValue: T | (() => T)): T;
 // @public
 export function useConstCallback<T extends (...args: any[]) => any>(callback: T): T;
 
-// Warning: (ae-forgotten-export) The symbol "ChangeCallback" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "Setter" needs to be exported by the entry point index.d.ts
-//
 // @public
-export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined, TSetter extends Setter<TValue, TElement, TCallback>>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange?: TCallback): [TValue | undefined, TSetter];
+export function useControllableValue<TValue, TElement extends HTMLElement>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined): Readonly<[TValue | undefined, (newValue: TValue | undefined) => void]>;
+
+// Warning: (ae-forgotten-export) The symbol "ChangeCallback" needs to be exported by the entry point index.d.ts
+//
+// @public (undocumented)
+export function useControllableValue<TValue, TElement extends HTMLElement, TCallback extends ChangeCallback<TElement, TValue> | undefined>(controlledValue: TValue | undefined, defaultUncontrolledValue: TValue | undefined, onChange: TCallback): Readonly<[TValue | undefined, (newValue: TValue | undefined, ev: React.FormEvent<TElement>) => void]>;
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
