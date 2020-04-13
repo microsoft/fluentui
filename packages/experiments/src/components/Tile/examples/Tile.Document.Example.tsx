@@ -143,7 +143,7 @@ export class TileDocumentExample extends React.Component<{}, ITileDocumentExampl
             itemActivity={<SignalField before={<SharedSignal />}>{ITEMS[3].activity}</SignalField>}
             foreground={
               <img
-                src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg`}
+                src={`https://static2.sharepointonline.com/files/fabric/assets/item-types/64/docx.svg`}
                 style={{
                   display: 'block',
                   width: '64px',

@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/utilities",
-  "version": "7.15.4",
-  "description": "Office UI Fabric utilities for building React components.",
+  "version": "7.15.6",
+  "description": "Fluent UI React utilities for building components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "sideEffects": [
@@ -31,7 +31,7 @@
     "@types/jest": "~24.9.0",
     "@types/node": "^10.3.2",
     "@types/prop-types": "15.7.1",
-    "@types/react": "16.8.11",
+    "@types/react": "16.8.25",
     "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",

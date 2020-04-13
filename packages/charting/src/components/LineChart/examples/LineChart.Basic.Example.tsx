@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IChartProps, ILineChartProps, LineChart } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import * as d3 from 'd3-format';
 
 interface IRootStyles {
   height: string;
@@ -94,7 +95,13 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
     const rootStyle: IRootStyles = { width: '700px', height: '300px' };
     return (
       <div className={mergeStyles(rootStyle)}>
-        <LineChart data={data} legendsOverflowText={'Overflow Items'} yMinValue={282} yMaxValue={301} />
+        <LineChart
+          data={data}
+          legendsOverflowText={'Overflow Items'}
+          yMinValue={282}
+          yMaxValue={301}
+          yAxisTickFormat={d3.format('$,')}
+        />
       </div>
     );
   }

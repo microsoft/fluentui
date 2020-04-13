@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { Dropdown, IDropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdown, IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
 export const DropdownRequiredExample: React.FunctionComponent = () => {
   const dropdownRef = React.createRef<IDropdown>();
@@ -24,7 +26,7 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
             { key: 'E', text: 'Option e' },
           ]}
           required={true}
-          styles={{ dropdown: { width: 300 } }}
+          styles={dropdownStyles}
         />
         <PrimaryButton text="Set focus" onClick={onSetFocus} />
       </Stack>
@@ -39,7 +41,7 @@ export const DropdownRequiredExample: React.FunctionComponent = () => {
           { key: 'E', text: 'Option e' },
         ]}
         required={true}
-        styles={{ dropdown: { width: 300 } }}
+        styles={dropdownStyles}
       />
     </Stack>
   );

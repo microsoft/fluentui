@@ -1,7 +1,6 @@
 import './version';
 
 export { default as createSvgIcon } from './utils/createSvgIcon';
-export { default as createSvgIconWithRoot } from './utils/createSvgIconWithRoot';
 
 export { default as AADLogoIcon } from './components/AADLogoIcon';
 export { default as AcceptIcon } from './components/AcceptIcon';
