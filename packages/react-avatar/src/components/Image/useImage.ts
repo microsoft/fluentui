@@ -1,5 +1,5 @@
 import { ImageProps, ImageOptions } from './Image.types';
-import { mergeProps } from '../temp/mergeProps';
+import { mergeProps } from '../utils/mergeProps';
 
 /**
  * The useImage hook processes the Image component props and returns

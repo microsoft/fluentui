@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StatusProps, StatusOptions, StatusSlots, StatusSlotProps } from './Status.types';
-import { compose, ComposeStandardStatics } from '../temp/compose';
+import { compose, ComposeStandardStatics } from '../utils/compose';
 import { useStatus } from './useStatus';
 
 export const StatusBase = compose<StatusProps, StatusSlots, StatusSlotProps, ComposeStandardStatics>(

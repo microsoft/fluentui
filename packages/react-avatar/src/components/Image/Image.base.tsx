@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ImageProps, ImageOptions } from './Image.types';
-import { compose, ComposeStandardStatics } from '../temp/compose';
+import { compose, ComposeStandardStatics } from '../utils/compose';
 import { useImage } from './useImage';
 
 export const ImageBase = compose<ImageProps, {}, {}, ComposeStandardStatics>(

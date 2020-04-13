@@ -1,5 +1,5 @@
 import { StatusProps, StatusOptions, StatusSlots, StatusSlotProps } from './Status.types';
-import { mergeProps } from '../temp/mergeProps';
+import { mergeProps } from '../utils/mergeProps';
 
 /**
  * The useStatus hook processes the status component props and returns

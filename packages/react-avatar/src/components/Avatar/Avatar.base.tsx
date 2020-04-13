@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AvatarProps, AvatarOptions, AvatarSlots, AvatarSlotProps } from './Avatar.types';
-import { compose, ComposeStandardStatics } from '../temp/compose';
+import { compose, ComposeStandardStatics } from '../utils/compose';
 import { useAvatar } from './useAvatar';
 
 export const AvatarBase = compose<AvatarProps, AvatarSlots, AvatarSlotProps, ComposeStandardStatics>(

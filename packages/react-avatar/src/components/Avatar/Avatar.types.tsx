@@ -1,6 +1,6 @@
 import { StatusProps } from '../Status/index';
-import { ComponentProps, ShorthandValue } from '../temp/commonTypes';
-import { ComposeOptions, ComposeStandardStatics } from '../temp/compose';
+import { ComponentProps, ShorthandValue } from '../utils/commonTypes';
+import { ComposeOptions, ComposeStandardStatics } from '../utils/compose';
 
 export type SizeValue = 'smallest' | 'smaller' | 'small' | 'medium' | 'large' | 'larger' | 'largest';
 

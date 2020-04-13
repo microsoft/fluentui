@@ -1,5 +1,5 @@
 import { AvatarProps, AvatarOptions, AvatarSlots, AvatarSlotProps } from './Avatar.types';
-import { mergeProps } from '../temp/mergeProps';
+import { mergeProps } from '../utils/mergeProps';
 import { getInitials as defaultGetInitials } from '@uifabric/utilities';
 
 /**

@@ -1,5 +1,5 @@
 import { AvatarBase } from './Avatar.base';
-import { compose } from '../temp/compose';
+import { compose } from '../utils/compose';
 import { Status } from '../Status/index';
 import { Image } from '../Image/index';
 
