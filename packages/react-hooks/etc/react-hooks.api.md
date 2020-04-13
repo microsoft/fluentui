@@ -4,6 +4,8 @@
 
 ```ts
 
+import * as React from 'react';
+
 // @public
 export interface IUseBooleanCallbacks {
     setFalse: () => void;
@@ -25,6 +27,9 @@ export function useControllableValue<TValue, TOnChangeArgs extends unknown[]>(co
 
 // @public
 export function useId(prefix?: string, providedId?: string): string;
+
+// @public
+export function useMergedRefs<T>(...refs: React.Ref<T>[]): (value: T) => void;
 
 
 // (No @packageDocumentation comment for this package)
