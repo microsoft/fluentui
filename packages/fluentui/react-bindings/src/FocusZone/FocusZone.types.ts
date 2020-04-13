@@ -112,7 +112,7 @@ export interface FocusZoneProps extends FocusZoneProperties, React.HTMLAttribute
    */
   shouldReceiveFocus?: (childElement?: HTMLElement) => boolean;
 
-  /** Allow focus to move to root */
+  /** Allows focus to park on root when focus is in the `FocusZone` at render time. */
   allowFocusRoot?: boolean;
 
   /**
