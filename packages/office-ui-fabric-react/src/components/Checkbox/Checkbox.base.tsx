@@ -30,16 +30,7 @@ export const CheckboxBase = React.forwardRef(function(props: ICheckboxProps, ref
   } = props;
 
   const checkBox = React.useRef<HTMLInputElement>(null);
-  const [isChecked, setIsChecked] = useControllableValue(
-    props.checked,
-    props.defaultChecked,
-    React.useCallback(
-      (newValue: boolean, ev: React.ChangeEvent<HTMLElement>) => {
-        onChange?.(ev, newValue);
-      },
-      [onChange],
-    ),
-  );
+  const [isChecked, setIsChecked] = useControllableValue(props.checked, props.defaultChecked, onChange);
   const [isIndeterminate, setIsIndeterminate] = useControllableValue(props.indeterminate, props.defaultIndeterminate);
 
   useDebugWarning(props);
