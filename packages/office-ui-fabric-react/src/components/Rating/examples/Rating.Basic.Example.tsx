@@ -10,7 +10,7 @@ const customTheme: ITheme = createTheme(getTheme());
 customTheme.semanticColors.bodySubtext = '#DFDFDF';
 customTheme.semanticColors.bodyTextChecked = '#1E9FE8';
 
-export const RatingBasicExample: React.FC = () => {
+export const RatingBasicExample: React.FunctionComponent = () => {
   const [largeStarRating, setLargeStarsRating] = React.useState(1);
   const [smallStarRating, setSmallStarRating] = React.useState(3);
   const [tenStarRating, setTenStarRatingg] = React.useState(1);
