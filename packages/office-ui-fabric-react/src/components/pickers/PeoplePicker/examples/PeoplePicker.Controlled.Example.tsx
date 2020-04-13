@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IPersonaProps, Persona } from 'office-ui-fabric-react/lib/Persona';
 import { IBasePickerSuggestionsProps, NormalPeoplePicker } from 'office-ui-fabric-react/lib/Pickers';
@@ -20,6 +20,8 @@ const checkboxStyles = {
     marginTop: 10,
   },
 };
+
+const defaultButtonStyles: Partial<IButtonStyles> = { root: { height: 'auto' } };
 
 export const PeoplePickerControlledExample: React.FunctionComponent = () => {
   const [currentSelectedItems, setCurrentSelectedItems] = React.useState<IPersonaProps[]>([]);
@@ -100,7 +102,7 @@ export const PeoplePickerControlledExample: React.FunctionComponent = () => {
         {controlledItems.map((item, index) => (
           <div key={index}>
             <DefaultButton
-              styles={{ root: { height: 'auto' } }}
+              styles={defaultButtonStyles}
               // tslint:disable-next-line:jsx-no-lambda
               onClick={() => setCurrentSelectedItems(currentSelectedItems.concat([item]))}
             >

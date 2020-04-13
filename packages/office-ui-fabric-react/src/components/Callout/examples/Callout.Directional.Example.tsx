@@ -12,6 +12,7 @@ import {
   FontWeights,
   Link,
   getId,
+  ICheckboxStyles,
 } from 'office-ui-fabric-react';
 
 export interface ICalloutDirectionalExampleState {
@@ -94,6 +95,8 @@ const styles = mergeStyleSets({
   },
 });
 
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
+
 export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirectionalExampleState> {
   private _menuButtonElement: HTMLElement | null;
 
@@ -120,7 +123,7 @@ export class CalloutDirectionalExample extends React.Component<{}, ICalloutDirec
       <>
         <div className={styles.configArea}>
           <Checkbox
-            styles={{ root: { margin: '10px 0' } }}
+            styles={checkboxStyles}
             label="Show beak"
             checked={isBeakVisible}
             onChange={this._onShowBeakChange}

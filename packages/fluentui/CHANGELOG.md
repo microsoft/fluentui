@@ -40,10 +40,12 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Fix `ButtonContent` className and added conformat test @mnajdova ([#12431](https://github.com/microsoft/fluentui/pull/12431))
 - Fix `Status` to use the colorScheme in Teams theme @notandrew ([#12481](https://github.com/microsoft/fluentui/pull/12481))
 - Fix colors for keyboard navigation in vertical Menu component in Teams theme high contrast mode @TanelVari ([#12462](https://github.com/microsoft/fluentui/pull/12462))
+- Fix size of `Status` and `Avatar` sizes for Teams theme @notandrew ([#12502](https://github.com/microsoft/fluentui/pull/12502))
 - Fix navigation into cell which has multiple actionable elements @kolaps33 ([#12533](https://github.com/microsoft/fluentui/pull/12533))
 - In `Tooltip` don't add `aria-labelledby` to `trigger` if it has `aria-label` @silviuavram ([#12555](https://github.com/microsoft/fluentui/pull/12555))
 - Give higher `zIndex` to `Tooltip` to make it appear on top of `Dialog` @silviuavram ([#12572](https://github.com/microsoft/fluentui/pull/12572))
 - Fix classes cache miss on empty string result @mnajdova ([#12584](https://github.com/microsoft/fluentui/pull/12584))
+- An update to the `RaiseHandColoredIcon` @TanelVari ([#12618](https://github.com/microsoft/fluentui/pull/12618))
 
 ### Features
 - Add `createSvgIcon` factory in `@fluentui/react-bindings` and `SvgIcon` component in `@fluentui/react-northstar` @mnajdova ([#12319](https://github.com/OfficeDev/office-ui-fabric-react/pull/12319))
@@ -67,6 +69,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Add an example for Children API for `Toolbar` @layershifter ([#12473](https://github.com/microsoft/fluentui/pull/12473))
 - Removed Icon Viewer prototype and processed icons @mnajdova ([#12553](https://github.com/microsoft/fluentui/pull/12553))
 - Add resource (memory) usage charts @miroslavstastny ([#12557](https://github.com/microsoft/fluentui/pull/12557))
+- Improved Sidebar search query regexp to include matching anywhere in the word @mnajdova ([#12642](https://github.com/microsoft/fluentui/pull/12642))
 
 <!--------------------------------[ v0.47.0 ]------------------------------- -->
 ## [v0.47.0](https://github.com/OfficeDev/office-ui-fabric-react/tree/fluentui_v0.47.0) (2020-03-19)
