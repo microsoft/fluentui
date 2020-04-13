@@ -17,10 +17,6 @@ export function useControllableValue<TValue, TOnChangeArgs extends unknown[]>(
     controlledValue !== undefined ? controlledValue : defaultUncontrolledValue,
   );
 
-  if (controlledValue !== undefined && controlledValue !== value) {
-    setValue(controlledValue);
-  }
-
   const setValueOrCallOnChange = React.useCallback(
     (newValue: TValue, ...args: TOnChangeArgs) => {
       if (onChange) {
@@ -30,8 +26,8 @@ export function useControllableValue<TValue, TOnChangeArgs extends unknown[]>(
         setValue(newValue);
       }
     },
-    [onChange, controlledValue],
+    [onChange, controlledValue === undefined],
   );
 
-  return [value, setValueOrCallOnChange] as const;
+  return [controlledValue !== undefined ? controlledValue : value, setValueOrCallOnChange] as const;
 }
