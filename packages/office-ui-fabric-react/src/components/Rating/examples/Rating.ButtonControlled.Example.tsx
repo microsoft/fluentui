@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Rating } from 'office-ui-fabric-react/lib/Rating';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 
-export const RatingButtonControlledExample: React.FC = () => {
+export const RatingButtonControlledExample: React.FunctionComponent = () => {
   const [currentRating, setCurrentRating] = React.useState(5);
   const currentRatingToggle = () => {
     if (currentRating === 0) {
