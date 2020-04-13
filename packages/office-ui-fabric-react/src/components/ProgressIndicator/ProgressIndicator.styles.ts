@@ -1,5 +1,5 @@
 import { HighContrastSelector, keyframes, noWrap, getGlobalClassNames, IRawStyle } from '../../Styling';
-import { getRTL } from '../../Utilities';
+import { getRTL, memoizeFunction } from '../../Utilities';
 import { IProgressIndicatorStyleProps, IProgressIndicatorStyles } from './ProgressIndicator.types';
 
 const GlobalClassNames = {
@@ -11,22 +11,27 @@ const GlobalClassNames = {
   progressBar: 'ms-ProgressIndicator-progressBar',
 };
 
-const IndeterminateProgress = keyframes({
-  '0%': {
-    left: '-30%',
-  },
-  '100%': {
-    left: '100%',
-  },
-});
-const IndeterminateProgressRTL = keyframes({
-  '100%': {
-    right: '-30%',
-  },
-  '0%': {
-    right: '100%',
-  },
-});
+const IndeterminateProgress = memoizeFunction(() =>
+  keyframes({
+    '0%': {
+      left: '-30%',
+    },
+    '100%': {
+      left: '100%',
+    },
+  }),
+);
+
+const IndeterminateProgressRTL = memoizeFunction(() =>
+  keyframes({
+    '100%': {
+      right: '-30%',
+    },
+    '0%': {
+      right: '100%',
+    },
+  }),
+);
 
 export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicatorStyles => {
   const isRTL = getRTL(props.theme);
@@ -109,7 +114,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
             background:
               `linear-gradient(to right, ${progressTrackColor} 0%, ` +
               `${palette.themePrimary} 50%, ${progressTrackColor} 100%)`,
-            animation: `${isRTL ? IndeterminateProgressRTL : IndeterminateProgress} 3s infinite`,
+            animation: `${isRTL ? IndeterminateProgressRTL() : IndeterminateProgress()} 3s infinite`,
             selectors: {
               [HighContrastSelector]: {
                 background: `highlight`,
