@@ -1,23 +1,25 @@
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { Icon, Segment, Text, ICSSInJSStyle, constants } from '@fluentui/react-northstar';
+import { Segment, Text, ICSSInJSStyle, constants } from '@fluentui/react-northstar';
+import { OpenOutsideIcon } from '@fluentui/react-icons-northstar';
+import MegaphoneIcon from './MegaphoneIcon';
 
 const wrapStyle: ICSSInJSStyle = { wordBreak: 'break-word' };
 
 const ContributionPrompt: any = ({ children }) => (
   <Segment inverted styles={wrapStyle}>
-    <Icon name="bullhorn" />
+    <MegaphoneIcon />
     <Text>
       {children && <div>{children}</div>}
       <p>
         If there's no{' '}
         <a href={`${constants.repoURL}/pulls`}>
-          pull request <Icon size="small" name="external" />
+          pull request <OpenOutsideIcon size="small" />
         </a>{' '}
         open for this, you should{' '}
         <a href={`${constants.repoURL}/blob/master/.github/CONTRIBUTING.md`}>
-          contribute <Icon size="small" name="external" />
+          contribute <OpenOutsideIcon size="small" />
         </a>{' '}
         one!
       </p>

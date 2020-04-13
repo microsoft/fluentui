@@ -2,6 +2,74 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/charting_v1.1.4",
+      "version": "1.1.4",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Apr 2020 12:30:40 GMT",
+      "tag": "@uifabric/charting_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DonutChart: Add prop to allow string inside Donut.",
+            "author": "v-satgar@microsoft.com",
+            "commit": "d33c765ff319e4aff2ffe788e618663974b92b84"
+          },
+          {
+            "comment": "providing Ymin and Ymax as props to the user",
+            "author": "v-sivsar@microsoft.com",
+            "commit": "3c6820fba99b1ec60e4de4a4465015675c91552b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@uifabric/charting_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "comment": "Vertical stacked bar chart added to charting package",
+            "author": "v-jasha@microsoft.com",
+            "commit": "a231cb8de5291e0e6a0ec718d89485044231e68e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Changing references of Fabric to Fluent",
+            "author": "mgodbolt@microsoft.com",
+            "commit": "3ec9a0efa90dc462104e717dc0f9c41e1b4fcd60"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 Mar 2020 12:26:03 GMT",
+      "tag": "@uifabric/charting_v0.143.0",
+      "version": "0.143.0",
+      "comments": {
+        "minor": [
+          {
+            "comment": "expose prop for overflow items text in legends",
+            "author": "v-satgar@microsoft.com",
+            "commit": "f5951ed478cea07cbdd9aa14ad0c24e46eaa9db4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Mar 2020 12:28:29 GMT",
       "tag": "@uifabric/charting_v0.142.0",
       "version": "0.142.0",

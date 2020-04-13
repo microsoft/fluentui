@@ -26,7 +26,7 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      git config user.name "UI Fabric Build"
+      git config user.name "Fluent UI Build"
       git config user.email "fluentui-internal@service.microsoft.com"
       git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
     displayName: Authenticate git for pushes
@@ -79,10 +79,12 @@ steps:
 
   - script: |
       npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+    env:
+      GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
-      node scripts/updateReleaseNotes/index.js --token=$(githubPAT) --apply --debug
+      yarn ts-node --dir scripts updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
   - script: |

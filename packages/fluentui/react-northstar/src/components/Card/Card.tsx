@@ -7,7 +7,8 @@ import {
   ProviderContextPrepared,
 } from '../../types';
 import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
-import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
+import * as CustomPropTypes from '@fluentui/react-proptypes';
+import { UIComponentProps, commonPropTypes, createShorthandFactory, SizeValue } from '../../utils';
 import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as _ from 'lodash';
@@ -20,11 +21,14 @@ import CardFooter from './CardFooter';
 import CardTopControls from './CardTopControls';
 import CardColumn from './CardColumn';
 
-export interface CardProps extends UIComponentProps, ChildrenComponentProps {
+export interface CardProps extends UIComponentProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<CardBehaviorProps>;
+
+  /** A primary content. */
+  children?: React.ReactNode;
 
   /**
    * Called on click.
@@ -42,9 +46,15 @@ export interface CardProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Centers content in a card. */
   centered?: boolean;
+
+  /** A card can be sized. */
+  size?: SizeValue;
+
+  /** A card can take up the width and height of its container. */
+  fluid?: boolean;
 }
 
-export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered'>;
+export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'>;
 
 export interface CardSlotClassNames {
   header: string;
@@ -68,7 +78,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
 
-  const { className, design, styles, variables, children, compact, horizontal, centered } = props;
+  const { className, design, styles, variables, children, compact, horizontal, centered, size, fluid } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -87,6 +97,8 @@ const Card: React.FC<WithAsProp<CardProps>> &
       centered,
       horizontal,
       compact,
+      size,
+      fluid,
     }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -133,10 +145,13 @@ Card.propTypes = {
   compact: PropTypes.bool,
   horizontal: PropTypes.bool,
   centered: PropTypes.bool,
+  size: CustomPropTypes.size,
+  fluid: PropTypes.bool,
 };
 
 Card.defaultProps = {
   accessibility: cardBehavior,
+  size: 'medium',
 };
 
 Card.handledProps = Object.keys(Card.propTypes) as any;

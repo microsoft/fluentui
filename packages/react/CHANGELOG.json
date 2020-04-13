@@ -2,6 +2,34 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@fluentui/react_v7.106.0",
+      "version": "7.106.0",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 Mar 2020 12:30:04 GMT",
+      "tag": "@fluentui/react_v7.105.4",
+      "version": "7.105.4",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update docs: Fabric to Fluent",
+            "author": "micahgodbolt@gmail.com",
+            "commit": "44ae97a55b2d7bfdab1044f3f5e5b579fc42cac0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Mar 2020 12:28:29 GMT",
       "tag": "@fluentui/react_v7.105.3",
       "version": "7.105.3",

@@ -211,7 +211,8 @@ const resolveStyles = (
       get(): string {
         if (cacheEnabled && theme) {
           const classesThemeCache = classesCache.get(theme) || {};
-          if (classesThemeCache[slotCacheKey]) {
+
+          if (classesThemeCache[slotCacheKey] || classesThemeCache[slotCacheKey] === '') {
             return slotName === 'root'
               ? cx(componentClassName, classesThemeCache[slotCacheKey], className)
               : classesThemeCache[slotCacheKey];

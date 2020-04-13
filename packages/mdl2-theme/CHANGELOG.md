@@ -1,7 +1,14 @@
 # Change Log - @uifabric/mdl2-theme
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Wed, 25 Mar 2020 12:30:04 GMT and should not be manually modified.
 
+## 0.1.44
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+- Fix focus styles for buttons in MDL2 package (vibraga@microsoft.com)
 ## 0.1.43
 Mon, 23 Mar 2020 12:28:29 GMT
 

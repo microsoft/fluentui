@@ -16,11 +16,24 @@
     "moduleResolution": "node",
     "preserveConstEnums": true,
     "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"],
+    "typeRoots": ["../../node_modules/@types", "../../typings"],
+    "types": ["jest", "webpack-env", "custom-global"],
     "paths": {
       "{{{packageNpmName}}}/lib/*": ["./src/*"],
       "{{{packageNpmName}}}": ["./src"]
-    }
+    },
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules",
+        "options": {
+          "classnameTransform": "asIs",
+          "customMatcher": "\\.scss$",
+          "dotenvOptions": {},
+          "postCssOptions": {},
+          "rendererOptions": {}
+        }
+      }
+    ]
   },
   "include": ["src"]
 }

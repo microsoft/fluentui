@@ -1,7 +1,29 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Apr 2020 12:30:40 GMT and should not be manually modified.
 
+## 1.1.0
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Minor changes
+
+- DonutChart: Add prop to allow string inside Donut. (v-satgar@microsoft.com)
+- providing Ymin and Ymax as props to the user (v-sivsar@microsoft.com)
+## 1.0.0
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Major
+
+- Vertical stacked bar chart added to charting package (v-jasha@microsoft.com)
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
+## 0.143.0
+Tue, 24 Mar 2020 12:26:03 GMT
+
+### Minor changes
+
+- expose prop for overflow items text in legends (v-satgar@microsoft.com)
 ## 0.142.0
 Mon, 23 Mar 2020 12:28:29 GMT
 

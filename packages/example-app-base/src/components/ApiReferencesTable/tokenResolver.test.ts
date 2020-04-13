@@ -6,7 +6,7 @@ describe('getTokenResolver', () => {
   });
 
   describe('in website', () => {
-    runTests('https://developer.microsoft.com/en-us/fabric', '#/controls/web');
+    runTests('https://developer.microsoft.com/en-us/fluentui', '#/controls/web');
   });
 
   function runTests(appUrl: string, areaPath: string) {

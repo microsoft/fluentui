@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Avatar, Grid, SizeValue } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 
 const statusProps = {
-  icon: 'icon-checkmark',
+  icon: <AcceptIcon />,
   color: 'green',
   title: 'Available',
 };

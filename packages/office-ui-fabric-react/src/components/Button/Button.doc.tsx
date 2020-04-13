@@ -6,6 +6,7 @@ import { ButtonActionExample } from './examples/Button.Action.Example';
 import { ButtonCommandBarExample } from './examples/Button.CommandBar.Example';
 import { ButtonCommandExample } from './examples/Button.Command.Example';
 import { ButtonIconExample } from './examples/Button.Icon.Example';
+import { ButtonIconWithTooltipExample } from './examples/Button.IconWithTooltip.Example';
 import { ButtonAnchorExample } from './examples/Button.Anchor.Example';
 import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Example';
 import { ButtonSplitExample } from './examples/Button.Split.Example';
@@ -21,6 +22,7 @@ const ButtonContextualMenuExampleCode = require('!raw-loader!office-ui-fabric-re
 const ButtonCustomSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.CustomSplit.Example.tsx') as string;
 const ButtonDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Default.Example.tsx') as string;
 const ButtonIconExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Icon.Example.tsx') as string;
+const ButtonIconWithTooltipExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.IconWithTooltip.Example.tsx') as string;
 const ButtonScreenReaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.ScreenReader.Example.tsx') as string;
 const ButtonSplitExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Split.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
@@ -66,6 +68,11 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Icon Button',
       code: ButtonIconExampleCode,
       view: <ButtonIconExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />,
+    },
+    {
+      title: 'Icon Button with Tooltip',
+      code: ButtonIconWithTooltipExampleCode,
+      view: <ButtonIconWithTooltipExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />,
     },
     {
       title: 'Contextual Menu Button',

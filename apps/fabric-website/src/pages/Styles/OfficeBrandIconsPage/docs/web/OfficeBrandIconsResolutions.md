@@ -1,4 +1,4 @@
-Fabric provides multicolor icons of each type and size at different resolutions to accommodate pixel densities and scaling factors across mobile, laptop, and desktop screens. Choose the right resolution for your viewport to avoid icons that appear blurry. The resolution guidance doesn’t apply to the single-color font icons.
+Fluent UI provides multicolor icons of each type and size at different resolutions to accommodate pixel densities and scaling factors across mobile, laptop, and desktop screens. Choose the right resolution for your viewport to avoid icons that appear blurry. The resolution guidance doesn’t apply to the single-color font icons.
 
 | Resolution | Devices                                                    |
 | ---------- | ---------------------------------------------------------- |

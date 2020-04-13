@@ -177,6 +177,6 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
     ];
 
-    return <Legends legends={legends} />;
+    return <Legends legends={legends} overflowText={'Overflow Items'} />;
   }
 }

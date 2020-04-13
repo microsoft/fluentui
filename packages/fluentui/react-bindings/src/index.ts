@@ -1,6 +1,9 @@
 export { default as unstable_getAccessibility } from './accessibility/getAccessibility';
 export * from './accessibility/types';
 
+export { compose } from '@fluentui/react-compose';
+export { default as useComposeOptions } from './compose/useComposeOptions';
+
 export { default as AutoFocusZone } from './FocusZone/AutoFocusZone';
 export * from './FocusZone/AutoFocusZone.types';
 export { default as FocusTrapZone } from './FocusZone/FocusTrapZone';
@@ -21,10 +24,6 @@ export { default as unstable_createAnimationStyles } from './styles/createAnimat
 export { default as unstable_calculateAnimationTimeout } from './styles/calculateAnimationTimeout';
 export { default as unstable_getStyles } from './styles/getStyles';
 export * from './styles/types';
-
-export { default as createSvgIcon } from './icons/createSvgIcon';
-export * from './icons/createSvgIcon';
-export * from './icons/types';
 
 export { default as useTelemetry } from './telemetry/useTelemetry';
 export * from './telemetry/types';

@@ -66,6 +66,11 @@ export interface IArcProps {
    * internal prop for href
    */
   href?: string;
+
+  /**
+   * props for inside donut value
+   */
+  valueInsideDonut?: string | number;
 }
 
 export interface IArcData {
@@ -100,4 +105,9 @@ export interface IArcStyles {
    * Style set for the card header component root
    */
   root: IStyle;
+
+  /**
+   * Style set for the inside donut string
+   */
+  insideDonutString: IStyle;
 }

@@ -10,7 +10,6 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
-import { PivotSeparateNoSelectedKeyExample } from './examples/Pivot.SeparateNoSelectedKey.Example';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
@@ -21,7 +20,6 @@ const PivotOnChangeExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PivotIconCountExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
 const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Override.Example.tsx') as string;
 const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
-const PivotNoSelectedKeyExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.SeparateNoSelectedKey.Example.tsx') as string;
 
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
@@ -73,11 +71,6 @@ export const PivotPageProps: IDocPageProps = {
       title: 'Render content separately',
       code: PivotSeparateExampleCode,
       view: <PivotSeparateExample />,
-    },
-    {
-      title: 'No pivots selected',
-      code: PivotNoSelectedKeyExampleCode,
-      view: <PivotSeparateNoSelectedKeyExample />,
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),

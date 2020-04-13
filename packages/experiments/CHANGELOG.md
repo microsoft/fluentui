@@ -1,7 +1,34 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 23 Mar 2020 12:28:29 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
 
+## 7.23.0
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Minor changes
+
+- Support TilesList overrides for altering list semantics for grid accessibility (tmichon@microsoft.com)
+### Patches
+
+- Update experiments testing instructions (elcraig@microsoft.com)
+## 7.22.16
+Wed, 08 Apr 2020 12:28:27 GMT
+
+### Patches
+
+- fix: fix typings for asAsync & internal usages of React.Children.map (olfedias@microsoft.com)
+## 7.22.12
+Thu, 02 Apr 2020 12:30:40 GMT
+
+### Patches
+
+- Adding build tool dependency for type safety of scss modules. (dzearing@microsoft.com)
+## 7.22.8
+Wed, 25 Mar 2020 12:30:04 GMT
+
+### Patches
+
+- Changing references of Fabric to Fluent (mgodbolt@microsoft.com)
 ## 7.22.7
 Mon, 23 Mar 2020 12:28:29 GMT
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { CommandBar, ICommandBarStyles } from 'office-ui-fabric-react/lib/CommandBar';
 import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import {
   IContextualMenuProps,
@@ -59,6 +59,8 @@ const classNames = mergeStyleSets({
     },
   },
 });
+
+const commandBarStyles: Partial<ICommandBarStyles> = { root: { marginBottom: '40px' } };
 
 const DEFAULT_ITEM_LIMIT = 5;
 const PAGING_SIZE = 10;
@@ -161,7 +163,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
     return (
       <div className={classNames.root}>
         <CommandBar
-          styles={{ root: { marginBottom: '40px' } }}
+          styles={commandBarStyles}
           items={this._getCommandItems(
             canResizeColumns,
             checkboxVisibility,

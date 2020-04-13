@@ -315,6 +315,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         legends={actions}
         overflowProps={this.props.legendsOverflowProps}
         focusZonePropsInHoverCard={this.props.focusZonePropsForLegendsInHoverCard}
+        overflowText={this.props.legendsOverflowText}
       />
     );
   };

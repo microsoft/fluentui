@@ -17,7 +17,7 @@ import {
   rtlTextContainer,
 } from '../../utils';
 
-import { PopperChildrenProps } from '../../utils/positioner';
+import { getBasePlacement, PopperChildrenProps } from '../../utils/positioner';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 
 export interface TooltipContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -38,6 +38,10 @@ export interface TooltipContentProps extends UIComponentProps, ChildrenComponent
   /** A ref to a pointer element. */
   pointerRef?: React.Ref<HTMLDivElement>;
 }
+
+export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'pointing' | 'open'>> & {
+  basePlacement: Popper.Position;
+};
 
 const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
   FluentComponentStaticProps<TooltipContentProps> = props => {
@@ -63,11 +67,11 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
     debugName: TooltipContent.displayName,
     rtl: context.rtl,
   });
-  const { classes } = useStyles(TooltipContent.displayName, {
+  const { classes } = useStyles<TooltipContentStylesProps>(TooltipContent.displayName, {
     className: TooltipContent.className,
     mapPropsToStyles: () => ({
+      basePlacement: getBasePlacement(placement, context.rtl),
       open,
-      placement,
       pointing,
     }),
     mapPropsToInlineStyles: () => ({

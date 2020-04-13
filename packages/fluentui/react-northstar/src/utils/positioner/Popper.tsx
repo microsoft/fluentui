@@ -65,8 +65,10 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
     align,
     children,
     enabled,
+    flipBoundary,
     modifiers: userModifiers,
     offset,
+    overflowBoundary,
     pointerTargetRef,
     position,
     positionFixed,
@@ -126,6 +128,9 @@ const Popper: React.FunctionComponent<PopperProps> = props => {
           preventOverflow: { escapeWithReference: true },
           flip: { boundariesElement: 'scrollParent' },
         },
+
+        flipBoundary && { flip: { boundariesElement: flipBoundary } },
+        overflowBoundary && { preventOverflow: { boundariesElement: overflowBoundary } },
 
         userModifiers,
 

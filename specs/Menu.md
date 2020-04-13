@@ -429,7 +429,7 @@ Note: Class names removed
 </ul>
 ```
 
-### Office-ui-fabric-react DOM Structure
+### office-ui-fabric-react DOM Structure
 
 _Note:_ Some long class names removed
 

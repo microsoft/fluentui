@@ -31,10 +31,9 @@ import {
   FluentComponentStaticProps,
   ProviderContextPrepared,
 } from '../../types';
-import { Popper } from '../../utils/positioner';
+import { getPopperPropsFromShorthand, Popper, PopperShorthandProps } from '../../utils/positioner';
 
 import ToolbarMenu, { ToolbarMenuProps } from './ToolbarMenu';
-import Icon, { IconProps } from '../Icon/Icon';
 import Box, { BoxProps } from '../Box/Box';
 import Popup, { PopupProps } from '../Popup/Popup';
 import { ToolbarMenuItemProps } from '../Toolbar/ToolbarMenuItem';
@@ -52,13 +51,15 @@ export interface ToolbarItemProps extends UIComponentProps, ChildrenComponentPro
   disabled?: boolean;
 
   /** Name or shorthand for Toolbar Item Icon */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /**
    * Shorthand for the submenu.
    * If submenu is specified, the item is wrapped to group the item and the menu elements together.
    */
-  menu?: ShorthandValue<ToolbarMenuProps> | ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>;
+  menu?:
+    | ShorthandValue<ToolbarMenuProps & { popper?: PopperShorthandProps }>
+    | ShorthandCollection<ToolbarMenuItemProps, ToolbarItemShorthandKinds>;
 
   /** Indicates if the menu inside the item is open. */
   menuOpen?: boolean;
@@ -257,7 +258,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
         onClick: handleClick,
       })}
     >
-      {childrenExist(children) ? children : Icon.create(icon)}
+      {childrenExist(children) ? children : Box.create(icon)}
     </ElementType>
   );
 
@@ -280,6 +281,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
                 },
               }}
               targetRef={itemRef}
+              {...getPopperPropsFromShorthand(menu)}
             >
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {
@@ -363,7 +365,7 @@ ToolbarItem.propTypes = {
   ...commonPropTypes.createCommon(),
   active: PropTypes.bool,
   disabled: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   menu: PropTypes.oneOfType([
     customPropTypes.shorthandAllowingChildren,
     PropTypes.arrayOf(customPropTypes.shorthandAllowingChildren),

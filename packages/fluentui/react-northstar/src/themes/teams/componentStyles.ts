@@ -3,6 +3,7 @@ export { default as AccordionContent } from './components/Accordion/accordionCon
 export { default as AccordionTitle } from './components/Accordion/accordionTitleStyles';
 
 export { default as Alert } from './components/Alert/alertStyles';
+export { default as AlertDismissAction } from './components/Alert/alertDismissActionStyles';
 
 export { default as Attachment } from './components/Attachment/attachmentStyles';
 
@@ -45,8 +46,7 @@ export { default as HierarchicalTree } from './components/HierarchicalTree/hiera
 export { default as HierarchicalTreeItem } from './components/HierarchicalTree/hierarchicalTreeItemStyles';
 export { default as HierarchicalTreeTitle } from './components/HierarchicalTree/hierarchicalTreeTitleStyles';
 
-export { default as Icon } from './components/Icon/iconStyles';
-export { default as SvgIcon } from './components/Icon/svgIconStyles';
+export { default as SvgIcon } from './components/SvgIcon/svgIconStyles';
 
 export { default as Image } from './components/Image/imageStyles';
 
@@ -85,6 +85,7 @@ export { default as ReactionGroup } from './components/Reaction/reactionGroupSty
 export { default as Status } from './components/Status/statusStyles';
 
 export { default as SplitButton } from './components/SplitButton/splitButtonStyles';
+export { default as SplitButtonToggle } from './components/SplitButton/splitButtonToggleStyles';
 
 export { default as Text } from './components/Text/textStyles';
 
@@ -112,6 +113,7 @@ export { default as Carousel } from './components/Carousel/carouselStyles';
 export { default as CarouselItem } from './components/Carousel/carouselItemStyles';
 export { default as CarouselNavigation } from './components/Carousel/carouselNavigationStyles';
 export { default as CarouselNavigationItem } from './components/Carousel/carouselNavigationItemStyles';
+export { default as CarouselPaddle } from './components/Carousel/carouselPaddleStyles';
 
 export { default as Table } from './components/Table/tableStyles';
 export { default as TableRow } from './components/Table/tableRowStyles';

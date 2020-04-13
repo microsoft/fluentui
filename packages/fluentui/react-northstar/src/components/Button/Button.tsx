@@ -14,7 +14,7 @@ import {
   rtlTextContainer,
   SizeValue,
 } from '../../utils';
-import Icon, { IconProps } from '../Icon/Icon';
+import Box, { BoxProps } from '../Box/Box';
 import Loader, { LoaderProps } from '../Loader/Loader';
 import {
   ComponentEventHandler,
@@ -47,13 +47,16 @@ export interface ButtonProps
   fluid?: boolean;
 
   /** A button can have an icon. */
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
 
   /** A button can contain only an icon. */
   iconOnly?: boolean;
 
   /** An icon button can format its Icon to appear before or after its content */
   iconPosition?: 'before' | 'after';
+
+  /** A button that inherits its background and has a subtle appearance */
+  inverted?: boolean;
 
   /** Shorthand to customize a button's loader. */
   loader?: ShorthandValue<LoaderProps>;
@@ -84,16 +87,13 @@ export interface ButtonProps
   /** A button can emphasize that it represents an alternative action. */
   secondary?: boolean;
 
-  /** A button that inherits its background and has a subtle appearance */
-  inverted?: boolean;
-
   /** A button can be sized. */
   size?: SizeValue;
 }
 
 export type ButtonStylesProps = Pick<
   ButtonProps,
-  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid'
+  'text' | 'primary' | 'disabled' | 'circular' | 'size' | 'loading' | 'inverted' | 'iconOnly' | 'fluid' | 'iconPosition'
 > & {
   hasContent?: boolean;
 };
@@ -158,6 +158,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
       loading,
       inverted,
       iconOnly,
+      iconPosition,
       fluid,
       hasContent: !!content,
     }),
@@ -174,11 +175,10 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
   const ElementType = getElementType(props);
 
   const renderIcon = () => {
-    return Icon.create(icon, {
+    return Box.create(icon, {
       defaultProps: () =>
         getA11Props('icon', {
           styles: resolvedStyles.icon,
-          xSpacing: !content ? 'none' : iconPosition === 'after' ? 'before' : 'after',
         }),
     });
   };
@@ -253,9 +253,10 @@ Button.propTypes = {
   circular: PropTypes.bool,
   disabled: PropTypes.bool,
   fluid: PropTypes.bool,
-  icon: customPropTypes.itemShorthandWithoutJSX,
+  icon: customPropTypes.shorthandAllowingChildren,
   iconOnly: PropTypes.bool,
   iconPosition: PropTypes.oneOf(['before', 'after']),
+  inverted: PropTypes.bool,
   loader: customPropTypes.itemShorthandWithoutJSX,
   loading: PropTypes.bool,
   onClick: PropTypes.func,

@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
+import {
+  Dropdown,
+  DropdownMenuItemType,
+  IDropdownOption,
+  IDropdownProps,
+  IDropdownStyles,
+} from 'office-ui-fabric-react/lib/Dropdown';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
 const exampleOptions: IDropdownOption[] = [
   { key: 'Header', text: 'Options', itemType: DropdownMenuItemType.Header },
@@ -22,6 +28,9 @@ const exampleOptions: IDropdownOption[] = [
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
 
+const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
+const iconButtonStyles: Partial<IButtonStyles> = { root: { marginBottom: -3 } };
+
 export class DropdownCustomExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
@@ -34,7 +43,7 @@ export class DropdownCustomExample extends React.PureComponent {
           onRenderTitle={this._onRenderTitle}
           onRenderOption={this._onRenderOption}
           onRenderCaretDown={this._onRenderCaretDown}
-          styles={{ dropdown: { width: 300 } }}
+          styles={dropdownStyles}
           options={exampleOptions}
         />
 
@@ -42,7 +51,7 @@ export class DropdownCustomExample extends React.PureComponent {
           placeholder="Select an option"
           label="Custom label"
           ariaLabel="Custom dropdown label example"
-          styles={{ dropdown: { width: 300 } }}
+          styles={dropdownStyles}
           options={exampleOptions}
           onRenderLabel={this._onRenderLabel}
         />
@@ -101,12 +110,7 @@ export class DropdownCustomExample extends React.PureComponent {
     return (
       <Stack horizontal verticalAlign="center">
         <span style={{ fontWeight: 600 }}>{props.label}</span>
-        <IconButton
-          iconProps={{ iconName: 'Info' }}
-          title="Info"
-          ariaLabel="Info"
-          styles={{ root: { marginBottom: -3 } }}
-        />
+        <IconButton iconProps={{ iconName: 'Info' }} title="Info" ariaLabel="Info" styles={iconButtonStyles} />
       </Stack>
     );
   };

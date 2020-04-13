@@ -32,6 +32,8 @@ export interface MenuVariables {
 
   outlineColorFocus: string;
   colorActive: string;
+
+  iconSize: string;
   iconOnlyColorActive: string;
   iconOnlyColorFocus: string;
   iconOnlyBackgroundColorHover: string;
@@ -134,6 +136,8 @@ export default (siteVars: any): MenuVariables => {
     backgroundColorHover: undefined,
     backgroundColorActive: undefined,
 
+    iconSize: pxToRem(16),
+
     iconOnlyColorActive: siteVars.colors.brand[600],
     iconOnlyColorFocus: siteVars.colors.brand[600],
     iconOnlyWrapperBackgroundColorFocus: undefined,
@@ -153,7 +157,7 @@ export default (siteVars: any): MenuVariables => {
     verticalItemBorderWidth: pxToRem(2),
     verticalItemBorderColor: 'transparent',
     verticalPointingBorderColor: siteVars.colorScheme.brand.borderActive,
-    verticalBackgroundColorFocus: siteVars.colors.grey[150],
+    verticalBackgroundColorFocus: undefined,
 
     activeUnderlinedColor: undefined,
     activeUnderlinedPrimaryColor: siteVars.colors.brand[600],

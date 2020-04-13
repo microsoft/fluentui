@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Provider, Text, Icon, IconProps, ShorthandValue } from '@fluentui/react-northstar';
+import { Provider, Text, Box, BoxProps, ShorthandValue } from '@fluentui/react-northstar';
 
 export interface LogoProps {
   companyName?: string;
-  icon?: ShorthandValue<IconProps>;
+  icon?: ShorthandValue<BoxProps>;
   style?: React.CSSProperties;
 }
 
@@ -15,12 +15,10 @@ class MSTeamsLogo extends React.Component<LogoProps, any> {
         render={({ siteVariables }) => {
           return (
             <div style={style}>
-              {Icon.create(icon, {
+              {Box.create(icon, {
                 defaultProps: () => ({
-                  variables: { color: siteVariables.colors.brand[600] },
-                  size: 'largest',
-                  xSpacing: 'after',
-                  styles: { verticalAlign: 'middle' },
+                  as: 'span',
+                  styles: { verticalAlign: 'middle', color: siteVariables.colors.white },
                 }),
               })}
               <Text

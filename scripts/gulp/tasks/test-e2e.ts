@@ -15,7 +15,7 @@ const argv = yargs
   .option('testNamePattern', { alias: 't' })
   .option('testFilePattern', { alias: 'F' }).argv;
 
-task('test:e2e:clean', () => del(paths.e2eDist()));
+task('test:e2e:clean', () => del(paths.e2eDist(), { force: true }));
 
 task('test:e2e:build', cb => {
   webpackPlugin(require('../../webpack/webpack.config.e2e').default, cb);
