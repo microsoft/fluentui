@@ -199,6 +199,7 @@ function _translateShorthand<TProps extends ValidProps, TShorthandProp extends V
 function _constructFinalProps<TProps extends IProcessedSlotProps>(
   defaultStyles: IStyle,
   theme?: ITheme,
+  // tslint:disable-next-line:missing-optional-annotation
   ...allProps: (TProps | undefined)[]
 ): TProps {
   const finalProps: TProps = {} as any;
