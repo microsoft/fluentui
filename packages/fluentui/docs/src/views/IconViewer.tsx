@@ -203,6 +203,7 @@ const IconViewer = () => {
                         <Box
                           as="code"
                           onClick={onClick}
+                          title='Click to copy JSX to your clipboard'
                           styles={{
                             fontSize: '10px !improtant',
                             opacity: active ? 1 : 0.6,
