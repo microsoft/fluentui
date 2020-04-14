@@ -1,8 +1,8 @@
 # @uifabric/react-hooks
 
-**UI Fabric React hooks**
+**[Fluent UI React](https://developer.microsoft.com/en-us/fluentui) hooks**
 
-Helpful hooks not provided by React itself.
+Helpful hooks not provided by React itself. These hooks were built for use in Fluent UI React ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)) but can be used in React apps built with any UI library.
 
 - [useConst](#useconst) - Initialize and return a value that's always constant
 - [useConstCallback](#useconstcallback) - Like `useConst` but for functions

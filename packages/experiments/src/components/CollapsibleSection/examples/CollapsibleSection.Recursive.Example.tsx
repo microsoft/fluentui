@@ -14,25 +14,26 @@ const _fileItems: IFileItem[] = [];
 
 const fileIcons: { name: string }[] = [
   { name: 'accdb' },
+  { name: 'audio' },
+  { name: 'code' },
   { name: 'csv' },
   { name: 'docx' },
   { name: 'dotx' },
-  { name: 'mpp' },
   { name: 'mpt' },
-  { name: 'odp' },
-  { name: 'ods' },
-  { name: 'odt' },
+  { name: 'model' },
   { name: 'one' },
-  { name: 'onepkg' },
   { name: 'onetoc' },
-  { name: 'potx' },
-  { name: 'ppsx' },
+  { name: 'pdf' },
+  { name: 'photo' },
   { name: 'pptx' },
+  { name: 'presentation' },
+  { name: 'potx' },
   { name: 'pub' },
+  { name: 'rtf' },
+  { name: 'spreadsheet' },
+  { name: 'txt' },
+  { name: 'vector' },
   { name: 'vsdx' },
-  { name: 'vssx' },
-  { name: 'vstx' },
-  { name: 'xls' },
   { name: 'xlsx' },
   { name: 'xltx' },
   { name: 'xsn' },
@@ -142,7 +143,7 @@ export class CollapsibleSectionRecursiveExample extends React.Component<{}, {}> 
     const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
     return {
       docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`,
+      url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
     };
   }
 }

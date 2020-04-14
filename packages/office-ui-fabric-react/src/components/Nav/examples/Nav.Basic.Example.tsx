@@ -1,5 +1,15 @@
 import * as React from 'react';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink, INavStyles } from 'office-ui-fabric-react/lib/Nav';
+
+const navStyles: Partial<INavStyles> = {
+  root: {
+    width: 208,
+    height: 350,
+    boxSizing: 'border-box',
+    border: '1px solid #eee',
+    overflowY: 'auto',
+  },
+};
 
 export const NavBasicExample: React.FunctionComponent = () => {
   return (
@@ -7,15 +17,7 @@ export const NavBasicExample: React.FunctionComponent = () => {
       onLinkClick={_onLinkClick}
       selectedKey="key3"
       ariaLabel="Nav basic example"
-      styles={{
-        root: {
-          width: 208,
-          height: 350,
-          boxSizing: 'border-box',
-          border: '1px solid #eee',
-          overflowY: 'auto',
-        },
-      }}
+      styles={navStyles}
       groups={[
         {
           links: [

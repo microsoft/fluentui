@@ -14,7 +14,8 @@ const alphaStyle = {
 };
 
 export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => {
-  const { theme, className, isAlpha } = props;
+  // tslint:disable-next-line:deprecation
+  const { theme, className, type = 'hue', isAlpha: useAlphaBackground = type !== 'hue' } = props;
   const { palette, effects } = theme;
 
   return {
@@ -35,7 +36,7 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
           },
         },
       },
-      isAlpha ? alphaStyle : hueStyle,
+      useAlphaBackground ? alphaStyle : hueStyle,
       className,
     ],
     sliderOverlay: [

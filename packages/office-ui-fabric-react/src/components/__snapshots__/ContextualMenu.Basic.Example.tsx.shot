@@ -37,7 +37,6 @@ exports[`Component Examples renders ContextualMenu.Basic.Example.tsx correctly 1
           & textarea {
             font-family: inherit;
           }
-      dir="ltr"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}

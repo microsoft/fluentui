@@ -13,7 +13,16 @@ import {
   getWindow,
   initializeComponentRef,
 } from '../../Utilities';
-import { IList, IListProps, IPage, IPageProps, ScrollToMode } from './List.types';
+import {
+  IList,
+  IListProps,
+  IPage,
+  IPageProps,
+  ScrollToMode,
+  IListOnRenderSurfaceProps,
+  IListOnRenderRootProps,
+} from './List.types';
+import { composeRenderFunction } from '../../Utilities';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -397,28 +406,42 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     return this._surfaceRect!.height;
   }
 
-  public render(): JSX.Element {
-    const { className, role = 'list' } = this.props;
+  public render(): JSX.Element | null {
+    const { className, role = 'list', onRenderSurface, onRenderRoot } = this.props;
     const { pages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     for (const page of pages) {
       pageElements.push(this._renderPage(page));
     }
 
-    return (
-      <div
-        ref={this._root}
-        {...divProps}
-        role={pageElements.length > 0 ? role : undefined}
-        className={css('ms-List', className)}
-      >
-        <div ref={this._surface} className={'ms-List-surface'} role="presentation">
-          {pageElements}
-        </div>
-      </div>
-    );
+    const finalOnRenderSurface = onRenderSurface
+      ? composeRenderFunction(onRenderSurface, this._onRenderSurface)
+      : this._onRenderSurface;
+
+    const finalOnRenderRoot = onRenderRoot
+      ? composeRenderFunction(onRenderRoot, this._onRenderRoot)
+      : this._onRenderRoot;
+
+    return finalOnRenderRoot({
+      rootRef: this._root,
+      pages,
+      surfaceElement: finalOnRenderSurface({
+        surfaceRef: this._surface,
+        pages,
+        pageElements,
+        divProps: {
+          role: 'presentation',
+          className: 'ms-List-surface',
+        },
+      }),
+      divProps: {
+        ...divProps,
+        className: css('ms-List', className),
+        role: pageElements.length > 0 ? role : undefined,
+      },
+    });
   }
 
   private _shouldVirtualize(props: IListProps<T> = this.props): boolean {
@@ -472,6 +495,26 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     }
     return pageElement;
   }
+
+  private _onRenderRoot = (props: IListOnRenderRootProps<T>): JSX.Element => {
+    const { rootRef, surfaceElement, divProps } = props;
+
+    return (
+      <div ref={rootRef} {...divProps}>
+        {surfaceElement}
+      </div>
+    );
+  };
+
+  private _onRenderSurface = (props: IListOnRenderSurfaceProps<T>): JSX.Element => {
+    const { surfaceRef, pageElements, divProps } = props;
+
+    return (
+      <div ref={surfaceRef} {...divProps}>
+        {pageElements}
+      </div>
+    );
+  };
 
   /** Generate the style object for the page. */
   private _getPageStyle(page: IPage<T>): React.StyleHTMLAttributes<HTMLDivElement> {
