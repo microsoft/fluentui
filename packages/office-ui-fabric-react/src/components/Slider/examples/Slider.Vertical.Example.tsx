@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+
+const stackStyles: Partial<IStackStyles> = { root: { height: 200 } };
 
 export interface ISliderVerticalExampleState {
   value: number;
@@ -11,7 +13,7 @@ export const SliderVerticalExample: React.FunctionComponent = () => {
   const stackTokens: IStackTokens = { childrenGap: 20 };
 
   return (
-    <Stack horizontal tokens={stackTokens} styles={{ root: { height: 200 } }}>
+    <Stack horizontal tokens={stackTokens} styles={stackStyles}>
       <Slider // prettier-ignore
         label="Basic"
         min={1}

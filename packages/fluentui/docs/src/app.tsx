@@ -5,7 +5,6 @@ import { Provider, Debug, themes } from '@fluentui/react-northstar';
 import { mergeThemes } from '@fluentui/styles';
 import { ThemeContext, ThemeContextData, themeContextDefaults } from './context/ThemeContext';
 import Routes from './routes';
-import { PerfDataProvider } from './components/ComponentDoc/PerfChart';
 
 // Experimental dev-time accessibility attributes integrity validation.
 import { setup } from '@fluentui/ability-attributes';
@@ -39,12 +38,8 @@ class App extends React.Component<any, ThemeContextData> {
             ],
           })}
         >
-          <PerfDataProvider>
-            <div>
-              <Debug />
-              <Routes />
-            </div>
-          </PerfDataProvider>
+          <Debug />
+          <Routes />
         </Provider>
       </ThemeContext.Provider>
     );

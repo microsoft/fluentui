@@ -3,7 +3,7 @@ import { IAppDefinition } from '@uifabric/example-app-base';
 import { AppCustomizations } from './customizations';
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - Cards',
+  appTitle: 'Fluent UI React - Cards',
   customizations: AppCustomizations,
   testPages: [],
   examplePages: [
@@ -25,7 +25,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric',
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
       name: 'GitHub',

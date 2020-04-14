@@ -1,8 +1,8 @@
 # @uifabric/tsx-editor
 
-Monaco-based TypeScript+React live code editor with full typing support. It was primarily written for component examples on the [UI Fabric website](https://developer.microsoft.com/en-us/fabric#/controls/web), but it can be configured to work with other libraries too.
+Monaco-based TypeScript+React live code editor with full typing support. It was primarily written for component examples on the [Fluent UI React website](https://developer.microsoft.com/en-us/fluentui#/controls/web) ([formerly Office UI Fabric React](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)), but it can be configured to work with other libraries too.
 
-**WARNING:** The editor component's API is still **highly unstable**, so it **should not** be used outside the UI Fabric repo yet.
+**WARNING:** The editor component's API is still **highly unstable**, so it **should not** be used outside the Fluent UI React repo yet.
 
 ## Features
 
@@ -12,7 +12,7 @@ As the user edits TypeScript+React example code, it will be transpiled and rende
 
 ### Typings support
 
-By default, the editor will load types for React and UI Fabric. It can also be configured to load types for any package.
+By default, the editor will load types for React and Fluent UI React. It can also be configured to load types for any package.
 
 ### Delay loading
 

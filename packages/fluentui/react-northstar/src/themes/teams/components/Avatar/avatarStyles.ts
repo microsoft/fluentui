@@ -4,13 +4,13 @@ import { AvatarStylesProps } from '../../../../components/Avatar/Avatar';
 import { AvatarVariables } from './avatarVariables';
 
 const sizeToPxValue = {
-  smallest: 24,
+  smallest: 20,
   smaller: 24,
-  small: 24,
+  small: 28,
   medium: 32,
-  large: 36,
-  larger: 42,
-  largest: 48,
+  large: 44,
+  larger: 64,
+  largest: 96,
 };
 
 const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariables> = {
@@ -50,7 +50,7 @@ const avatarStyles: ComponentSlotStylesPrepared<AvatarStylesProps, AvatarVariabl
       fontSize: pxToRem(sizeToPxValue[p.size] / 2.333),
       verticalAlign: 'top',
       textAlign: 'center',
-      padding: '0px',
+      padding: '0',
       ...(p.square && {
         borderRadius: v.squareAvatarBorderRadius,
       }),

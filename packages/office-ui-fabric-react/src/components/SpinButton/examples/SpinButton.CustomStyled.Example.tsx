@@ -26,23 +26,19 @@ const downArrowButtonStyles: Partial<IButtonStyles> = {
   },
 };
 
-export class SpinButtonCustomStyledExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <div>
-        <SpinButton
-          styles={styles}
-          upArrowButtonStyles={upArrowButtonStyles}
-          downArrowButtonStyles={downArrowButtonStyles}
-          defaultValue="0"
-          label={'Custom styled SpinButton:'}
-          min={0}
-          max={100}
-          step={1}
-          incrementButtonAriaLabel={'Increase value by 1'}
-          decrementButtonAriaLabel={'Decrease value by 1'}
-        />
-      </div>
-    );
-  }
-}
+export const SpinButtonCustomStyledExample: React.FC = () => (
+  <div>
+    <SpinButton
+      styles={styles}
+      upArrowButtonStyles={upArrowButtonStyles}
+      downArrowButtonStyles={downArrowButtonStyles}
+      defaultValue="0"
+      label={'Custom styled SpinButton:'}
+      min={0}
+      max={100}
+      step={1}
+      incrementButtonAriaLabel={'Increase value by 1'}
+      decrementButtonAriaLabel={'Decrease value by 1'}
+    />
+  </div>
+);
