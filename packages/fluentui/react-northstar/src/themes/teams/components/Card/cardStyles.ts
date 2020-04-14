@@ -28,7 +28,7 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
-      '&:hover': {
+      ':hover': {
         boxShadow: v.boxShadowHover,
       },
 
