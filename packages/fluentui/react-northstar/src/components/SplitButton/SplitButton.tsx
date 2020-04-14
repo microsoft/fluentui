@@ -23,13 +23,13 @@ import { MenuProps } from '../Menu/Menu';
 import { MenuItemProps } from '../Menu/MenuItem';
 import { PopupProps } from '../Popup/Popup';
 import { Ref } from '@fluentui/react-component-ref';
-import { PopperShorthandProps } from '../../utils/positioner/types';
+import { PositioningProps } from '../../utils/positioner/types';
 
 export interface SplitButtonProps
   extends UIComponentProps,
     ChildrenComponentProps,
     ContentComponentProps,
-    PopperShorthandProps {
+    PositioningProps {
   /**
    * Accessibility behavior if overridden by the user.
    */
@@ -120,6 +120,17 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     toggleButton: customPropTypes.itemShorthand,
     position: PropTypes.oneOf(POSITIONS),
     align: PropTypes.oneOf(ALIGNMENTS),
+    flipBoundary: PropTypes.oneOfType([
+      PropTypes.object as PropTypes.Requireable<Element>,
+      PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    ]),
+    overflowBoundary: PropTypes.oneOfType([
+      PropTypes.object as PropTypes.Requireable<Element>,
+      PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
+    ]),
+    positionFixed: PropTypes.bool,
+    offset: PropTypes.string,
+    unstable_pinned: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -173,7 +184,22 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
     styles,
     unhandledProps,
   }: RenderResultConfig<MenuButtonProps>): React.ReactNode {
-    const { button, disabled, menu, primary, secondary, toggleButton, size, position, align } = this.props;
+    const {
+      button,
+      disabled,
+      menu,
+      primary,
+      secondary,
+      toggleButton,
+      size,
+      position,
+      align,
+      flipBoundary,
+      overflowBoundary,
+      positionFixed,
+      offset,
+      unstable_pinned,
+    } = this.props;
     const trigger = Button.create(button, {
       defaultProps: () => ({
         styles: styles.menuButton,
@@ -200,6 +226,11 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
                 target: this.targetRef.current,
                 position,
                 align,
+                flipBoundary,
+                overflowBoundary,
+                positionFixed,
+                offset,
+                unstable_pinned,
               }),
               overrideProps: this.handleMenuButtonOverrides,
             },

@@ -11,9 +11,9 @@ const Usage = () => (
       examplePath="components/SplitButton/Usage/SplitButtonMainOptionChangeExample"
     />
     <ComponentExample
-      title="Align menu on the right"
+      title="SplitButton can be positioned differently"
       description="Set the menu to be aligned on the right"
-      examplePath="components/SplitButton/Usage/SplitButtonAlignMenuRightExample"
+      examplePath="components/SplitButton/Usage/SplitButtonPositioningExampleShorthand"
     />
   </ExampleSection>
 );

@@ -7,10 +7,10 @@ import Usage from './Usage';
 
 const SplitButtonExamples = () => (
   <>
-    <Usage />
     <Types />
     <States />
     <Slots />
+    <Usage />
   </>
 );
 

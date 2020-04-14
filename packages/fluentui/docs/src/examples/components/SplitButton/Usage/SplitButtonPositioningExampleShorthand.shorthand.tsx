@@ -26,18 +26,15 @@ const items = [
   },
 ];
 
-const SplitButtonAlignMenuRightExampleShorthand = () => (
+const SplitButtonPositioningExampleShorthand = () => (
   <>
     <SplitButton
       menu={items}
       button={{
-        content: items[0].content,
-        key: items[0].key,
-        icon: items[0].icon,
+        ...items[0],
         'aria-roledescription': 'splitbutton',
         'aria-describedby': 'instruction-message-icon-content',
       }}
-      onMainButtonClick={() => alert('button was clicked')}
       toggleButton={{ 'aria-label': 'more options' }}
       align="end"
     />
@@ -47,4 +44,4 @@ const SplitButtonAlignMenuRightExampleShorthand = () => (
   </>
 );
 
-export default SplitButtonAlignMenuRightExampleShorthand;
+export default SplitButtonPositioningExampleShorthand;
