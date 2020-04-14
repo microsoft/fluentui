@@ -16,7 +16,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
     return {
       position: 'relative',
-      display: 'flex',
+      display: 'inline-flex',
       alignItems: 'center',
       width: '100%',
 
