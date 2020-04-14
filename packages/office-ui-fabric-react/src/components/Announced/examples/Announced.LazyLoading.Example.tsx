@@ -5,7 +5,7 @@ import { Image } from 'office-ui-fabric-react/lib/Image';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
@@ -20,6 +20,8 @@ const photoStackStyles: Partial<IStackStyles> = {
     padding: 0,
   },
 };
+
+const defaultButtonStyles: Partial<IButtonStyles> = { root: { width: 150 } };
 
 const photoCellClass = mergeStyles({
   display: 'block',
@@ -112,7 +114,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<
         <DefaultButton
           text={loading ? 'Pause loading' : 'Load photos'}
           onClick={loading ? this._pauseLoading : this._startLoading}
-          styles={{ root: { width: 150 } }}
+          styles={defaultButtonStyles}
         />
         <ProgressIndicator
           label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'}

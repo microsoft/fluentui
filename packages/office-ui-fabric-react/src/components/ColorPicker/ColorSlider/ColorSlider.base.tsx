@@ -6,9 +6,11 @@ import {
   KeyCodes,
   getWindow,
   warnDeprecations,
+  warn,
 } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles, IColorSlider } from './ColorSlider.types';
 import { clamp } from '../../../utilities/color/clamp';
+import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color/consts';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
 
@@ -21,8 +23,6 @@ export interface IColorSliderState {
  */
 export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSliderState> implements IColorSlider {
   public static defaultProps: Partial<IColorSliderProps> = {
-    minValue: 0,
-    maxValue: 100,
     value: 0,
   };
 
@@ -38,7 +38,14 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     warnDeprecations('ColorSlider', props, {
       thumbColor: 'styles.sliderThumb',
       overlayStyle: 'overlayColor',
+      isAlpha: 'type',
+      maxValue: 'type',
+      minValue: 'type',
     });
+    // tslint:disable-next-line:deprecation
+    if (this._type !== 'hue' && !(props.overlayColor || props.overlayStyle)) {
+      warn(`ColorSlider: 'overlayColor' is required when 'type' is "alpha" or "transparency"`);
+    }
 
     this.state = {
       currentValue: props.value || 0,
@@ -62,18 +69,26 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   public render(): JSX.Element {
-    // tslint:disable-next-line:deprecation
-    const { isAlpha, minValue, maxValue, overlayStyle, overlayColor, theme, className, styles } = this.props;
-    const { ariaLabel = isAlpha ? 'Alpha' : 'Hue' } = this.props;
+    const type = this._type;
+    const maxValue = this._maxValue;
+    const {
+      // tslint:disable-next-line:deprecation
+      overlayStyle,
+      overlayColor,
+      theme,
+      className,
+      styles,
+      ariaLabel = type,
+    } = this.props;
     const currentValue = this.value;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
-      isAlpha,
+      type,
     });
 
-    const currentPercentage = (100 * (currentValue! - minValue!)) / (maxValue! - minValue!);
+    const currentPercentage = (100 * currentValue) / maxValue;
 
     return (
       <div
@@ -86,7 +101,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
         aria-valuenow={currentValue}
         // Narrator doesn't read aria-valuenow properly
         aria-valuetext={String(currentValue)}
-        aria-valuemin={minValue}
+        aria-valuemin={0}
         aria-valuemax={maxValue}
         aria-label={ariaLabel}
         data-is-focusable={true}
@@ -96,8 +111,13 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
             className={classNames.sliderOverlay}
             // this isn't included in getStyles because it may change frequently
             style={
-              overlayColor !== undefined
-                ? { background: `linear-gradient(to right, transparent 0, #${overlayColor} 100%)` }
+              overlayColor
+                ? {
+                    background:
+                      type === 'transparency'
+                        ? `linear-gradient(to right, #${overlayColor}, transparent)`
+                        : `linear-gradient(to right, transparent, #${overlayColor})`,
+                  }
                 : overlayStyle
             }
           />
@@ -107,9 +127,19 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     );
   }
 
+  private get _type(): IColorSliderProps['type'] {
+    // tslint:disable-next-line:deprecation
+    const { isAlpha, type = isAlpha ? 'alpha' : 'hue' } = this.props;
+    return type;
+  }
+
+  private get _maxValue(): number {
+    return this._type === 'hue' ? MAX_COLOR_HUE : MAX_COLOR_ALPHA;
+  }
+
   private _onKeyDown = (ev: React.KeyboardEvent): void => {
     let currentValue = this.value;
-    const { minValue, maxValue } = this.props;
+    const maxValue = this._maxValue;
     const increment = ev.shiftKey ? 10 : 1;
 
     // Intentionally DO NOT flip the color picker in RTL: its orientation is not very meaningful,
@@ -124,11 +154,11 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
         break;
       }
       case KeyCodes.home: {
-        currentValue = minValue!;
+        currentValue = 0;
         break;
       }
       case KeyCodes.end: {
-        currentValue = maxValue!;
+        currentValue = maxValue;
         break;
       }
       default: {
@@ -136,7 +166,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
       }
     }
 
-    this._updateValue(ev, clamp(currentValue, maxValue!, minValue));
+    this._updateValue(ev, clamp(currentValue, maxValue));
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
@@ -153,11 +183,11 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
       return;
     }
 
-    const { minValue, maxValue } = this.props;
+    const maxValue = this._maxValue;
     const rectSize = this._root.current.getBoundingClientRect();
 
     const currentPercentage = (ev.clientX - rectSize.left) / rectSize.width;
-    const newValue = clamp(Math.round(currentPercentage * maxValue!), maxValue!, minValue!);
+    const newValue = clamp(Math.round(currentPercentage * maxValue), maxValue);
 
     this._updateValue(ev, newValue);
   };

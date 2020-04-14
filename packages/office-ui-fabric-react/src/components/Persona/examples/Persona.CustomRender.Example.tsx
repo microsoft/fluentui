@@ -2,13 +2,17 @@ import * as React from 'react';
 import {
   IPersonaProps,
   IPersonaSharedProps,
+  IPersonaStyles,
   Persona,
   PersonaSize,
   PersonaPresence,
 } from 'office-ui-fabric-react/lib/Persona';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TestImages } from '@uifabric/example-data';
+
+const personaStyles: Partial<IPersonaStyles> = { root: { margin: '0 0 10px 0' } };
+const iconStyles: Partial<IIconStyles> = { root: { marginRight: 5 } };
 
 export const PersonaCustomRenderExample: React.FunctionComponent = () => {
   const examplePersona: IPersonaSharedProps = {
@@ -28,7 +32,7 @@ export const PersonaCustomRenderExample: React.FunctionComponent = () => {
         size={PersonaSize.size72}
         presence={PersonaPresence.offline}
         onRenderSecondaryText={_onRenderSecondaryText}
-        styles={{ root: { margin: '0 0 10px 0' } }}
+        styles={personaStyles}
         imageAlt="Annie Lindqvist, status is offline."
       />
     </Stack>
@@ -38,7 +42,7 @@ export const PersonaCustomRenderExample: React.FunctionComponent = () => {
 function _onRenderSecondaryText(props: IPersonaProps): JSX.Element {
   return (
     <div>
-      <Icon iconName="Suitcase" styles={{ root: { marginRight: 5 } }} />
+      <Icon iconName="Suitcase" styles={iconStyles} />
       {props.secondaryText}
     </div>
   );

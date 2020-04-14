@@ -95,7 +95,7 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat } = this.props;
+    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -115,7 +115,7 @@ export class LineChartBase extends React.Component<
     if (dataPresent) {
       dataType ? this._createDateXAxis(tickValues, tickFormat) : this._createNumericXAxis();
       const strokeWidth = this.props.strokeWidth ? this.props.strokeWidth : 4;
-      this._createYAxis();
+      this._createYAxis(yAxisTickFormat);
       lines = this._createLines(strokeWidth);
     }
     const legendBars = this._createLegends(this._points!);
@@ -169,11 +169,24 @@ export class LineChartBase extends React.Component<
             <div className={this._classNames.calloutContentRoot} role={'presentation'}>
               <span className={this._classNames.calloutContentX}>{this.state.hoverXValue}</span>
               {this.state.YValueHover &&
-                this.state.YValueHover.map((xValue: { legend?: string; y?: number; color?: string }, index: number) => (
-                  <span key={index} className={mergeStyles(this._classNames.calloutContentY, { color: xValue.color })}>
-                    <span>{xValue.legend}</span> <span>{xValue.y}</span>
-                  </span>
-                ))}
+                this.state.YValueHover.map(
+                  (
+                    xValue: {
+                      legend?: string;
+                      y?: number;
+                      color?: string;
+                      yAxisCalloutData?: string;
+                    },
+                    index: number,
+                  ) => (
+                    <span
+                      key={index}
+                      className={mergeStyles(this._classNames.calloutContentY, { color: xValue.color })}
+                    >
+                      <span>{xValue.yAxisCalloutData ? xValue.yAxisCalloutData : `${xValue.legend} ${xValue.y}`}</span>
+                    </span>
+                  ),
+                )}
             </div>
           </Callout>
         ) : null}
@@ -182,7 +195,13 @@ export class LineChartBase extends React.Component<
   }
 
   private CalloutData = (values: ILineChartPoints[]) => {
-    let combinedResult: { legend: string; y: number; x: number | Date | string; color: string }[] = [];
+    let combinedResult: {
+      legend: string;
+      y: number;
+      x: number | Date | string;
+      color: string;
+      yAxisCalloutData?: string;
+    }[] = [];
 
     values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string }) => {
       const elements = element.data.map((ele: ILineChartDataPoint) => {
@@ -193,17 +212,27 @@ export class LineChartBase extends React.Component<
 
     const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
     combinedResult.forEach(
-      (e1: { legend: string; y: number; x: number | Date | string; color: string }, index: number) => {
+      (
+        e1: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string },
+        index: number,
+      ) => {
         e1.x = e1.x instanceof Date ? e1.x.toLocaleDateString() : e1.x;
-        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color }];
+        const filteredValues = [{ legend: e1.legend, y: e1.y, color: e1.color, yAxisCalloutData: e1.yAxisCalloutData }];
         combinedResult
           .slice(index + 1)
-          .forEach((e2: { legend: string; y: number; x: number | Date | string; color: string }) => {
-            e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
-            if (e1.x === e2.x) {
-              filteredValues.push({ legend: e2.legend, y: e2.y, color: e2.color });
-            }
-          });
+          .forEach(
+            (e2: { legend: string; y: number; x: number | Date | string; color: string; yAxisCalloutData: string }) => {
+              e2.x = e2.x instanceof Date ? e2.x.toLocaleDateString() : e2.x;
+              if (e1.x === e2.x) {
+                filteredValues.push({
+                  legend: e2.legend,
+                  y: e2.y,
+                  color: e2.color,
+                  yAxisCalloutData: e2.yAxisCalloutData,
+                });
+              }
+            },
+          );
         result.push({ x: e1.x, values: filteredValues });
       },
     );
@@ -356,7 +385,8 @@ export class LineChartBase extends React.Component<
     }
   };
 
-  private _createYAxis = () => {
+  // tslint:disable-next-line: no-any
+  private _createYAxis = (yAxisTickFormat: any) => {
     const { yMaxValue = 0, yMinValue = 0 } = this.props;
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
@@ -374,7 +404,8 @@ export class LineChartBase extends React.Component<
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))
       .tickPadding(12)
-      .tickValues(domainValues);
+      .tickValues(domainValues)
+      .tickFormat(yAxisTickFormat);
     this.yAxisElement
       ? d3Select(this.yAxisElement)
           .call(yAxis)
@@ -407,6 +438,7 @@ export class LineChartBase extends React.Component<
         const keyVal = this._uniqLineText + i + '_' + j;
         const x1 = this._points[i].data[j - 1].x;
         const y1 = this._points[i].data[j - 1].y;
+        const xAxisCalloutData = this._points[i].data[j - 1].xAxisCalloutData;
         if (this.state.activeLegend === legendVal || this.state.activeLegend === '') {
           lines.push(
             <line
@@ -420,12 +452,12 @@ export class LineChartBase extends React.Component<
               ref={this.currentRef}
               stroke={lineColor}
               strokeLinecap={'round'}
-              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor)}
-              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor)}
+              onMouseOver={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
+              onMouseMove={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
               onMouseOut={this._handleMouseOut}
               opacity={1}
               data-is-focusable={i === 0 ? true : false}
-              onFocus={this._handleHover.bind(this, x1, y1, lineColor)}
+              onFocus={this._handleHover.bind(this, x1, y1, lineColor, xAxisCalloutData)}
               onBlur={this._handleMouseOut}
               aria-labelledby={this._calloutId}
             />,
@@ -455,6 +487,7 @@ export class LineChartBase extends React.Component<
     x: number | Date,
     y: number | string,
     lineColor: string,
+    xAxisCalloutData: string,
     mouseEvent: React.MouseEvent<SVGPathElement>,
   ) => {
     mouseEvent.persist();
@@ -464,7 +497,7 @@ export class LineChartBase extends React.Component<
     this.setState({
       isCalloutVisible: true,
       refSelected: mouseEvent,
-      hoverXValue: '' + formattedData,
+      hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
       hoverYValue: y,
       YValueHover: found.values,
       lineColor: lineColor,

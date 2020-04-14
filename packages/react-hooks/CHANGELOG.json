@@ -2,6 +2,34 @@
   "name": "@uifabric/react-hooks",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/react-hooks_v7.1.2",
+      "version": "7.1.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "chore: bump @types/react",
+            "author": "olfedias@microsoft.com",
+            "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Apr 2020 12:35:07 GMT",
+      "tag": "@uifabric/react-hooks_v7.1.1",
+      "version": "7.1.1",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Simplifying some of the examples for VerticalDivider and SearchBox.",
+            "author": "czearing@outlook.com",
+            "commit": "98b0a66dc03088debe67e9469fc775b6000414e0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Apr 2020 12:27:13 GMT",
       "tag": "@uifabric/react-hooks_v7.1.0",
       "version": "7.1.0",
