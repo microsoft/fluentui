@@ -20,10 +20,8 @@
     "build": "just-scripts build",
     "clean": "just-scripts clean",
     "just": "just-scripts",
-    "lint": "yarn lint:eslint && yarn lint:old",
-    "lint:eslint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint:eslint --fix && yarn lint:old --fix",
-    "lint:old": "tslint -t stylish -p .",
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "lint:fix": "yarn lint --fix",
     "start-test": "just-scripts test:watch",
     "test": "just-scripts test"
   },
