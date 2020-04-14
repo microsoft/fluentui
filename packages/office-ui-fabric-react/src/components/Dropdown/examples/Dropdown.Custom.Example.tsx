@@ -1,14 +1,9 @@
 import * as React from 'react';
-import {
-  Dropdown,
-  DropdownMenuItemType,
-  IDropdownOption,
-  IDropdownProps,
-  IDropdownStyles,
-} from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownProps } from 'office-ui-fabric-react/lib/Dropdown';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IconButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
 const exampleOptions: IDropdownOption[] = [
   { key: 'Header', text: 'Options', itemType: DropdownMenuItemType.Header },
@@ -27,91 +22,82 @@ const exampleOptions: IDropdownOption[] = [
 ];
 
 const stackTokens: IStackTokens = { childrenGap: 20 };
+const iconStyles = { marginRight: '8px' };
 
-const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
-const iconButtonStyles: Partial<IButtonStyles> = { root: { marginBottom: -3 } };
+const onRenderLabel = (props: IDropdownProps): JSX.Element => {
+  return (
+    <Stack horizontal verticalAlign="center">
+      <Label>{props.label}</Label>
+      <IconButton
+        iconProps={{ iconName: 'Info' }}
+        title="Info"
+        ariaLabel="Info"
+        styles={{ root: { marginBottom: -3 } }}
+      />
+    </Stack>
+  );
+};
 
-export class DropdownCustomExample extends React.PureComponent {
-  public render(): JSX.Element {
-    return (
-      <Stack tokens={stackTokens}>
-        <Dropdown
-          placeholder="Select an option"
-          label="Custom example"
-          ariaLabel="Custom dropdown example"
-          onRenderPlaceholder={this._onRenderPlaceholder}
-          onRenderTitle={this._onRenderTitle}
-          onRenderOption={this._onRenderOption}
-          onRenderCaretDown={this._onRenderCaretDown}
-          styles={dropdownStyles}
-          options={exampleOptions}
-        />
+const onRenderOption = (option: IDropdownOption): JSX.Element => {
+  return (
+    <div>
+      {option.data && option.data.icon && (
+        <Icon style={iconStyles} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+      )}
+      <span>{option.text}</span>
+    </div>
+  );
+};
 
-        <Dropdown
-          placeholder="Select an option"
-          label="Custom label"
-          ariaLabel="Custom dropdown label example"
-          styles={dropdownStyles}
-          options={exampleOptions}
-          onRenderLabel={this._onRenderLabel}
-        />
-      </Stack>
-    );
-  }
+const onRenderTitle = (options: IDropdownOption[]): JSX.Element => {
+  const option = options[0];
 
-  private _onRenderOption = (option: IDropdownOption): JSX.Element => {
-    return (
-      <div>
-        {option.data && option.data.icon && (
-          <Icon
-            style={{ marginRight: '8px' }}
-            iconName={option.data.icon}
-            aria-hidden="true"
-            title={option.data.icon}
-          />
-        )}
-        <span>{option.text}</span>
-      </div>
-    );
-  };
+  return (
+    <div>
+      {option.data && option.data.icon && (
+        <Icon style={iconStyles} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+      )}
+      <span>{option.text}</span>
+    </div>
+  );
+};
 
-  private _onRenderTitle = (options: IDropdownOption[]): JSX.Element => {
-    const option = options[0];
+const onRenderCaretDown = (): JSX.Element => {
+  return <Icon iconName="CirclePlus" />;
+};
 
-    return (
-      <div>
-        {option.data && option.data.icon && (
-          <Icon
-            style={{ marginRight: '8px' }}
-            iconName={option.data.icon}
-            aria-hidden="true"
-            title={option.data.icon}
-          />
-        )}
-        <span>{option.text}</span>
-      </div>
-    );
-  };
+const onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
+  return (
+    <div className="dropdownExample-placeholder">
+      <Icon style={iconStyles} iconName={'MessageFill'} aria-hidden="true" />
+      <span>{props.placeholder}</span>
+    </div>
+  );
+};
 
-  private _onRenderPlaceholder = (props: IDropdownProps): JSX.Element => {
-    return (
-      <div className="dropdownExample-placeholder">
-        <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
-        <span>{props.placeholder}</span>
-      </div>
-    );
-  };
+const dropdownStyles = { dropdown: { width: 300 } };
 
-  private _onRenderCaretDown = (props: IDropdownProps): JSX.Element => {
-    return <Icon iconName="CirclePlus" />;
-  };
+export const DropdownCustomExample: React.FunctionComponent = () => (
+  <Stack tokens={stackTokens}>
+    <Dropdown
+      placeholder="Select an option"
+      label="Custom example"
+      ariaLabel="Custom dropdown example"
+      onRenderPlaceholder={onRenderPlaceholder}
+      onRenderTitle={onRenderTitle}
+      onRenderOption={onRenderOption}
+      onRenderCaretDown={onRenderCaretDown}
+      styles={dropdownStyles}
+      options={exampleOptions}
+    />
 
-  private _onRenderLabel = (props: IDropdownProps): JSX.Element => {
-    return (
-      <Stack horizontal verticalAlign="center">
-        <span style={{ fontWeight: 600 }}>{props.label}</span>
-        <IconButton iconProps={{ iconName: 'Info' }} title="Info" ariaLabel="Info" styles={iconButtonStyles} />
-      </Stack>
-    );
-  };
-}
+    <Dropdown
+      placeholder="Select an option"
+      label="Custom label"
+      ariaLabel="Custom dropdown label example"
+      styles={dropdownStyles}
+      options={exampleOptions}
+      onRenderLabel={onRenderLabel}
+    />
+  </Stack>
+);
