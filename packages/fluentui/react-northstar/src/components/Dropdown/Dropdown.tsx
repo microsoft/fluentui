@@ -145,7 +145,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** Used when comparing two items in multiple selection. Default comparison is by the header prop. */
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
-  /** A message to be displayed in the list footer. */
+  /** A message to be displayed in the list header. */
   headerMessage?: ShorthandValue<DropdownItemProps>;
 
   /** A slot for dropdown list. */
