@@ -1,0 +1,8 @@
+{
+  "type": "major",
+  "comment": "type definitions updates and code optimizations",
+  "packageName": "@uifabric/charting",
+  "email": "email not defined",
+  "dependentChangeType": "patch",
+  "date": "2020-04-14T14:55:46.893Z"
+}
