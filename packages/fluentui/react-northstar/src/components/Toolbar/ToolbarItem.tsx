@@ -163,6 +163,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
       hasMenu: !!menu,
       hasPopup: !!popup,
       menuOpen,
+      active,
     }),
     rtl: context.rtl,
   });

@@ -209,12 +209,16 @@ const dropdownStyles: ComponentSlotStylesPrepared<DropdownPropsAndState, Dropdow
   }),
 
   loadingMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.listItemBackgroundColor,
+    backgroundColor: v.loadingMessageBackgroundColor,
   }),
 
   noResultsMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.listItemBackgroundColor,
+    backgroundColor: v.noResultsMessageBackgroundColor,
     fontWeight: 'bold',
+  }),
+
+  headerMessage: ({ variables: v }): ICSSInJSStyle => ({
+    backgroundColor: v.headerMessageBackgroundColor,
   }),
 
   toggleIndicator: ({ props: p, variables: v }) => ({

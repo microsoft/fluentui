@@ -166,6 +166,15 @@ class Sidebar extends React.Component<any, any> {
             },
           },
           {
+            key: 'icons-viewer',
+            title: {
+              as: NavLink,
+              content: 'Icons',
+              activeClassName: 'active',
+              to: '/icon-viewer',
+            },
+          },
+          {
             key: 'component-architecture',
             title: {
               as: NavLink,
