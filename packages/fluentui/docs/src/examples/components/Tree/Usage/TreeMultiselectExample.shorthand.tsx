@@ -37,7 +37,13 @@ const items = [
               children: (Component, { selected, onClick, ...props }) => {
                 return (
                   <Component {...props}>
-                    <input type="checkbox" checked={selected} onClick={onClick} onChange={() => {}} />
+                    <input
+                      data-is-focusable={false}
+                      type="checkbox"
+                      checked={selected}
+                      onClick={onClick}
+                      onChange={() => {}}
+                    />
                   </Component>
                 );
               },
