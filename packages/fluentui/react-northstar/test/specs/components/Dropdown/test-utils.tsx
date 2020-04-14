@@ -20,12 +20,14 @@ const renderDropdown = (props: DropdownProps = {}) => {
 
   return {
     wrapper,
+    rerender: props => wrapper.setProps(props),
     triggerButtonNode: triggerButtonWrapper.length ? triggerButtonWrapper.getDOMNode<HTMLElement>() : null,
     toggleIndicatorNode: toggleIndicatorWrapper.length ? toggleIndicatorWrapper.getDOMNode<HTMLElement>() : null,
     itemsListNode: itemsListWrapper.getDOMNode<HTMLElement>(),
     searchInputNode: searchInputWrapper.length ? searchInputWrapper.getDOMNode<HTMLInputElement>() : null,
     getA11yMessageContainerNode: () => findIntrinsicElement(wrapper, '[role="status"]').getDOMNode(),
     getItemNodes: () => getItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
+    getItemNodeAtIndex: index => getItemWrapperAtIndex(index).getDOMNode(),
     getSelectedItemNodes: () => getSelectedItemsWrapper().map(nodeWrapper => nodeWrapper.getDOMNode()),
     getSelectedItemNodeAtIndex: index => getSelectedItemWrapperAtIndex(index).getDOMNode(),
     mouseOverItemAtIndex: index => getItemWrapperAtIndex(index).simulate('mousemove'),

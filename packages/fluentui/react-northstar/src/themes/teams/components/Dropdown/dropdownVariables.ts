@@ -51,6 +51,9 @@ export interface DropdownVariables {
   disabledBorderColorHover: string;
   disabledTriggerColorHover: string;
   disabledBackgroundColorHover: string;
+  headerMessageBackgroundColor: string;
+  noResultsMessageBackgroundColor: string;
+  loadingMessageBackgroundColor: string;
 }
 
 const [cornerRadius, _12px_asRem] = [3, 12].map(v => pxToRem(v));
@@ -110,4 +113,7 @@ export default (siteVars): DropdownVariables => ({
   listItemHeaderColor: siteVars.colors.grey[1000],
   listItemContentFontSize: siteVars.fontSizes.small,
   listItemContentColor: siteVars.colors.grey[450],
+  headerMessageBackgroundColor: siteVars.colors.white,
+  noResultsMessageBackgroundColor: siteVars.colors.white,
+  loadingMessageBackgroundColor: siteVars.colors.white,
 });
