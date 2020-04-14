@@ -1,8 +1,8 @@
 {
   "type": "major",
-  "comment": "type definitions updates and code optimizations",
+  "comment": "Grouped verical bar chart",
   "packageName": "@uifabric/charting",
-  "email": "email not defined",
+  "email": "v-jasha@microsoft.com",
   "dependentChangeType": "patch",
   "date": "2020-04-14T14:55:46.893Z"
 }
