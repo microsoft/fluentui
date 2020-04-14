@@ -2,7 +2,7 @@
   "name": "a11y-tests",
   "version": "7.0.0",
   "private": true,
-  "description": "A11y Tests for Office UI Fabric React",
+  "description": "A11y Tests for Fluent UI React",
   "scripts": {
     "build": "just-scripts build",
     "bundle": "just-scripts bundle",

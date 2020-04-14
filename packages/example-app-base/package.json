@@ -1,7 +1,7 @@
 {
   "name": "@uifabric/example-app-base",
   "version": "7.12.32",
-  "description": "UI Fabric components for building documentation sites.",
+  "description": "Fluent UI React components for building documentation sites.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",

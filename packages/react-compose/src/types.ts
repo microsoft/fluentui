@@ -6,6 +6,7 @@ export type ComposedComponent<
   ParentProps = {},
   ParentStylesProps = {}
 > = React.FunctionComponent<InputProps & ParentProps> & {
+  className: string;
   fluentComposeConfig: ComposePreparedOptions<InputProps, InputStylesProps, ParentProps, ParentStylesProps>;
 };
 

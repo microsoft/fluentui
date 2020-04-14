@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Facepile, IFacepilePersona, IFacepileProps } from 'office-ui-fabric-react/lib/Facepile';
 import { PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
@@ -31,6 +31,8 @@ const styles = mergeStyleSets({
     margin: '10px 0',
   },
 });
+
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { margin: '10px 0' } };
 
 export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExampleState> {
   constructor(props: {}) {
@@ -93,7 +95,7 @@ export class FacepileBasicExample extends React.Component<{}, IFacepileBasicExam
           />
           <Checkbox
             className={styles.checkbox}
-            styles={{ root: { margin: '10px 0' } }}
+            styles={checkboxStyles}
             label="Fade In"
             checked={this.state.imagesFadeIn}
             onChange={this._onChangeFadeIn}

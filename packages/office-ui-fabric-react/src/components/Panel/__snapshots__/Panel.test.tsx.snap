@@ -218,9 +218,9 @@ exports[`Panel renders Panel correctly 1`] = `
               <button
                 className=
                     ms-Button
-                    ms-Button--icon
                     ms-Panel-closeButton
                     ms-PanelAction-close
+                    ms-Button--icon
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;

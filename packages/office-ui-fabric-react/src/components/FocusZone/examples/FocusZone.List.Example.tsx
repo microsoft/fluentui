@@ -4,7 +4,13 @@ import { useConst } from '@uifabric/react-hooks';
 import { TextField } from 'office-ui-fabric-react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
+import {
+  DetailsRow,
+  IDetailsRowStyles,
+  IColumn,
+  Selection,
+  SelectionMode,
+} from 'office-ui-fabric-react/lib/DetailsList';
 
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
@@ -42,6 +48,8 @@ const COLUMNS: IColumn[] = [
   },
 ];
 
+const detailsRowStyles: Partial<IDetailsRowStyles> = { root: { display: 'block', width: '100%' } };
+
 export const FocusZoneListExample: React.FunctionComponent = () => {
   //  Initialize the selection when the component is first rendered (same instance will be reused)
   const selection = useConst(() => {
@@ -65,7 +73,7 @@ export const FocusZoneListExample: React.FunctionComponent = () => {
           columns={COLUMNS}
           selectionMode={SelectionMode.none}
           selection={selection}
-          styles={{ root: { display: 'block', width: '100%' } }}
+          styles={detailsRowStyles}
         />
       ))}
     </FocusZone>

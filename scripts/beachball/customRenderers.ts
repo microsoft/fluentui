@@ -4,7 +4,7 @@ import { PackageChangelogRenderInfo, ChangelogEntry } from 'beachball';
 import { getPullRequestForCommit, fluentRepoDetails } from '../github';
 
 const githubPAT = process.env.GITHUB_PAT;
-if (!githubPAT) {
+if (!githubPAT && (process.argv.includes('bump') || process.argv.includes('publish'))) {
   console.warn('\nGITHUB_PAT environment variable not found. GitHub requests may be rate-limited.\n');
 }
 
