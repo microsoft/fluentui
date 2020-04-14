@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactIcons from '@fluentui/react-icons';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import Button from '@uifabric/experiments/src';
 
 const rootClass = mergeStyles({
   selectors: {
@@ -51,15 +51,15 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
   return (
     <div>
       <div>
-        <Button onClick={prevPage} disabled={page === 1}>
+        <PrimaryButton onClick={prevPage} disabled={page === 1}>
           Prev
-        </Button>
+        </PrimaryButton>
         <span className={navigationTextClasses}>
           Page {page} of {numOfPages}
         </span>
-        <Button onClick={nextPage} disabled={page === numOfPages}>
+        <PrimaryButton onClick={nextPage} disabled={page === numOfPages}>
           Next
-        </Button>
+        </PrimaryButton>
       </div>
       <div className={rootClass}>
         {icons.slice((page - 1) * 100, (page - 1) * 100 + 100).map(Icon => (
