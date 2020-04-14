@@ -17,11 +17,18 @@ import {
 import * as exports from '@fluentui/react-icons-northstar';
 import { CodeSnippet, CopyToClipboard } from '@fluentui/docs-components';
 import GuidesNavigationFooter from '../components/GuidesNavigationFooter';
+import ComponentPlaygroundSnippet from '../../src/components/ComponentPlayground/ComponentPlaygroundSnippet';
 
 const iconFlexStyles = {
   '> *:nth-child(5n)': {
     marginRight: '0px',
   },
+};
+
+const cardsStyles = {
+  background: 'white',
+  minHeight: 330,
+  overflow: 'unset',
 };
 
 const icons = Object.keys(exports).reduce((acc: React.FC<SvgIconProps>[], exportName) => {
@@ -47,7 +54,7 @@ const Example = () => (
 const IntroCard = props => {
   const { QnaIcon } = exports;
   return (
-    <Card variables={{ borderColor: '#f2f2f2' }} style={{ background: 'white' }} {...props}>
+    <Card variables={{ borderColor: '#f2f2f2' }} style={cardsStyles} {...props}>
       <Card.Header>
         <Flex gap="gap.small">
           <QnaIcon size="largest" />
@@ -66,6 +73,17 @@ const IntroCard = props => {
       </Card.Header>
       <Card.Body>
         <CodeSnippet mode="jsx" value={exampleCode} />
+        <div>
+          <Text>
+            Checkout our{' '}
+            <Link to="components/svg-icon/definition">
+              <Text color="brand" weight="bold">
+                icon
+              </Text>
+            </Link>{' '}
+            docs for more examples!
+          </Text>
+        </div>
       </Card.Body>
     </Card>
   );
@@ -113,8 +131,18 @@ const PlaygroundCard = props => {
     size: 'largest',
   });
 
+  const element = (
+    <QnaIcon
+      size={state.size}
+      outline={state.outline}
+      bordered={state.bordered}
+      circular={state.circular}
+      rotate={state.rotate}
+    />
+  );
+
   return (
-    <Card variables={{ borderColor: '#f2f2f2' }} style={{ background: 'white', overflow: 'unset' }} {...props}>
+    <Card variables={{ borderColor: '#f2f2f2' }} style={cardsStyles} {...props}>
       <Card.Header>
         <Flex gap="gap.small">
           <EditIcon size="largest" />
@@ -162,29 +190,19 @@ const PlaygroundCard = props => {
                 onChange={(e, d) => dispatch({ type: 'change_size', value: d.value.toString() as SizeValue })}
               />
             </div>
-            <Divider />
-            <div>
-              <Text>
-                Checkout our <Link to="components/svg-icon/definition">icon</Link> docs for more examples!
-              </Text>
-            </div>
           </Flex>
           <Flex.Item grow>
             <Flex hAlign="center" vAlign="center">
               <Flex.Item>
-                <div>
-                  <QnaIcon
-                    size={state.size}
-                    outline={state.outline}
-                    bordered={state.bordered}
-                    circular={state.circular}
-                    rotate={state.rotate}
-                  />
-                </div>
+                <div>{element}</div>
               </Flex.Item>
             </Flex>
           </Flex.Item>
         </Flex>
+        <Divider />
+        <div>
+          <ComponentPlaygroundSnippet element={element} />
+        </div>
       </Card.Body>
     </Card>
   );
