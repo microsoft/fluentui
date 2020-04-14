@@ -57,6 +57,11 @@ const Toolbar = ({
           value: 'build',
         },
         {
+          key: 'design',
+          label: 'Design',
+          value: 'design',
+        },
+        {
           key: 'use',
           label: 'Test',
           value: 'use',
@@ -73,6 +78,7 @@ const Toolbar = ({
       }}
     />
     <div style={{ display: 'flex', alignItems: 'center', marginLeft: 'auto' }}>
+      {/*
       <Checkbox
         toggle
         label="Expand Layout"
@@ -87,6 +93,7 @@ const Toolbar = ({
         onChange={(e, data) => onSelectingChange(data.checked)}
       />
       &emsp;
+      */}
       <Checkbox label="Show Code" toggle checked={!!showCode} onChange={(e, data) => onShowCodeChange(data.checked)} />
       &emsp;
       <Checkbox

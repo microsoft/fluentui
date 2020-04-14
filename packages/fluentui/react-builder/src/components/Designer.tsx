@@ -218,7 +218,7 @@ class Designer extends React.Component<any, DesignerState> {
     this.setState({
       mode,
       isExpanding: mode === 'build',
-      isSelecting: mode === 'build',
+      isSelecting: mode === 'build' || mode === 'design',
     });
   };
 

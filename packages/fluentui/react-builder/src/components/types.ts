@@ -6,4 +6,4 @@ export type JSONTreeElement = {
   children?: (string | JSONTreeElement)[];
 };
 
-export type DesignerMode = 'build' | 'use';
+export type DesignerMode = 'build' | 'design' | 'use';
