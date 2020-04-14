@@ -6,7 +6,7 @@ import { getColorScheme } from '../../colors';
 
 const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationProps, CarouselNavigationVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { iconOnly, primary, vertical } = p;
+    const { iconOnly, primary, vertical, thumbnails } = p;
     const colors = getColorScheme(v.colorScheme, null, primary);
 
     return {
@@ -18,10 +18,11 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
       justifyContent: 'center',
-      ...(!vertical && {
-        transform: `translateX(${pxToRem(v.width / 2 + 40 - +p.activeIndex * 75)})`,
-        transition: 'transform .5s ease',
-      }),
+      ...(!vertical &&
+        thumbnails && {
+          transform: `translateX(${pxToRem(v.width / 2 + 40 - +p.activeIndex * 75)})`,
+          transition: 'transform .5s ease',
+        }),
       ...(iconOnly && { alignItems: 'center' }),
 
       ...(vertical && {
