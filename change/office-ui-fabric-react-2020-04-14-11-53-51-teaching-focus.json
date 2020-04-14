@@ -1,0 +1,8 @@
+{
+  "type": "minor",
+  "comment": "Allow forwarding of FocusTrapZone props in TeachingBubble",
+  "packageName": "office-ui-fabric-react",
+  "email": "mhensler@microsoft.com",
+  "dependentChangeType": "minor",
+  "date": "2020-04-14T18:53:50.992Z"
+}
