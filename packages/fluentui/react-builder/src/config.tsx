@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as FUI from '@fluentui/react-northstar';
 import * as FUIIcons from '@fluentui/react-icons-northstar';
 import { JSONTreeElement } from './components/types';
+import * as _ from 'lodash';
 
 type FiberNavigator = FUI.FiberNavigator;
 
@@ -290,12 +291,86 @@ export const DRAGGING_PROPS = {
   // Video: { content: 'Video' } as FUI.VideoProps,
 };
 
+/**
+ * Displays a knob with the ability to switch between data `types`.
+ */
+export const MultiTypeKnob: React.FC<{
+  label: string;
+  types: ('boolean' | 'number' | 'string' | 'literal')[];
+  value: any;
+  onChange: (value: any) => void;
+  literalOptions: string[];
+}> = ({ label, types, value, onChange, literalOptions }) => {
+  const valueType = typeof value;
+  const defaultType = valueType !== 'undefined' ? valueType : types[0];
+  const [type, setType] = React.useState(defaultType);
+  const knob = knobs[type];
+  const handleChangeType = React.useCallback(
+    e => setType(e.target.value), // @ts-ignore
+    [],
+  );
+
+  console.log('MultiTypeKnob', { label, value, type, types });
+
+  return (
+    <div style={{ paddingBottom: '4px', marginBottom: '4px', opacity: knob ? 1 : 0.4 }}>
+      <div>
+        {type !== 'boolean' && <label>{label} </label>}
+        {types.length === 1 ? (
+          <code style={{ float: 'right' }}>{type}</code>
+        ) : (
+          types.map(t => (
+            <button key={t} onClick={() => handleChangeType(t)}>
+              {t}
+            </button>
+          ))
+        )}
+      </div>
+      {knob && knob({ options: literalOptions, value, onChange })}
+      {type === 'boolean' && <label> {label}</label>}
+    </div>
+  );
+};
+
+export const knobs = {
+  boolean: ({ value, onChange }) => (
+    <input type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
+  ),
+
+  number: ({ value, onChange }) => (
+    <input
+      style={{ width: '100%' }}
+      type="number"
+      value={Number(value)}
+      onChange={e => onChange(Number(e.target.value))}
+    />
+  ),
+
+  string: ({ value, onChange }) => (
+    <input style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
+  ),
+
+  literal: ({ options, value, onChange }) => (
+    <select onChange={e => onChange(e.target.value)} value={value}>
+      {options.map(opt => (
+        <option key={opt} value={opt}>
+          {opt}
+        </option>
+      ))}
+    </select>
+  ),
+
+  ReactText: (value, onChange) => knobs.string({ value, onChange }),
+  'React.ElementType': (value, onChange) => knobs.string({ value, onChange }),
+};
+
 export const resolveComponent = (displayName): React.ElementType => {
   return FUI[displayName] || displayName;
 };
 
 export const resolveDraggingProps = displayName => {
-  return DRAGGING_PROPS[displayName];
+  // TODO: if references aren't broken, then json tree updates mutate the config's props
+  return _.cloneDeep(DRAGGING_PROPS[displayName]);
 };
 
 // TODO: this allows mutating `target`, OK?
@@ -325,6 +400,10 @@ export const resolveDrop = (source: JSONTreeElement, target: JSONTreeElement) =>
   if (!target.children) {
     target.children = [];
   }
+
+  // clean up props that are incompatible with element children
+  delete target.props.children;
+  delete target.props.content;
 
   target.children = [...target.children, source];
 
@@ -412,18 +491,30 @@ export const jsonTreeMap = (tree: JSONTreeElement, cb) => {
 };
 
 export const jsonTreeFindElement = (tree: JSONTreeElement, uuid: string | number): JSONTreeElement | null => {
-  if (typeof uuid === 'undefined' || uuid === null) {
+  // TODO: When dropping components into Flex, React prefixes the fiber key with ".$"
+  //       This prefix must be stripped to find the element in the JSON tree by its original uuid.
+  //       Otherwise, we're looking for `".$" + uuid` in the JSON tree
+  //       -- WHY?
+  //       This is apparently due to the use of Reach.children.map which prefixes the new children's keys.
+  //       If you replace React.Children.map from Flex and just return `children`, no prefixing occurs.
+  //       -- FIX?
+  //       The builder could use some other way of relating JSON tree elements to React elements besides key.
+  const keyToUUID = key => (typeof key === 'string' ? key.replace(/^\.\$/, '') : key);
+
+  const uuidFromKey = keyToUUID(uuid);
+
+  if (typeof uuidFromKey === 'undefined' || uuidFromKey === null) {
     return null;
   }
 
-  if (tree.uuid === uuid) return tree;
+  if (tree.uuid === uuidFromKey) return tree;
 
   let ret = null;
   if (Array.isArray(tree.children)) {
     for (let i = 0; i < tree.children.length && ret === null; ++i) {
       const e = tree.children[i];
       if (typeof e !== 'string') {
-        ret = jsonTreeFindElement(e, uuid);
+        ret = jsonTreeFindElement(e, uuidFromKey);
       }
     }
   }

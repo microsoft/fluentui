@@ -1,4 +1,3 @@
-import keyboardKey from 'keyboard-key';
 import * as React from 'react';
 
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
@@ -25,7 +24,6 @@ import { DesignerMode, JSONTreeElement } from './types';
 import { EventListener } from '@fluentui/react-component-event-listener';
 import { CodeSnippet } from '@fluentui/docs-components';
 import renderElementToJSX from '@fluentui/docs/src/components/ExampleSnippet/renderElementToJSX';
-import { ComponentDesignProp } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 
 const HEADER_HEIGHT = '3rem';
@@ -229,14 +227,11 @@ class Designer extends React.Component<any, DesignerState> {
     this.setState(state => {
       const element = jsonTreeFindElement(state.jsonTree, jsonTreeElement.uuid);
 
-      element.props.design = {
-        ...element.props.design,
-        [name]: `${value}px`,
-      } as ComponentDesignProp;
+      console.log('...BEFORE PROP CHANGE', element);
+      element.props[name] = value;
+      console.log('...AFTER PROP CHANGE', element);
 
-      console.log(jsonTreeElement.uuid === element.uuid, element);
-
-      return state;
+      return { selectedJSONTreeElement: element };
     });
   };
 

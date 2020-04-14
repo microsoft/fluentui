@@ -16,7 +16,7 @@ const ComponentDescription = ({
 
   return (
     <div>
-      <FUI.Header as="h3" styles={{ display: 'inline-block', margin: 0 }}>
+      <FUI.Header as="h2" styles={{ display: 'inline-block', margin: 0 }}>
         {componentInfo.displayName}
       </FUI.Header>{' '}
       <code style={{ float: 'right' }}>uuid: {selectedJSONTreeElement.uuid}</code>

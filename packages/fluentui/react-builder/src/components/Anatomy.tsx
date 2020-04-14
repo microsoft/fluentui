@@ -15,7 +15,7 @@ const ComponentAnatomy = ({ componentInfo }: { componentInfo: ComponentInfo }) =
 
   return (
     <div>
-      <FUI.Header as="h4">Slots</FUI.Header>
+      <FUI.Header as="h3">Slots</FUI.Header>
       <ComponentAnatomy.Slot name="before" />
       {shorthandProps.map(propDef => (
         <ComponentAnatomy.Slot key={propDef.name} name={propDef.name} />
