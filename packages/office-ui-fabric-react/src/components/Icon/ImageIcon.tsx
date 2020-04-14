@@ -13,7 +13,9 @@ import { classNames, MS_ICON } from './Icon.styles';
 export const ImageIcon: React.FunctionComponent<IImageIconProps> = props => {
   const { className, imageProps } = props;
 
-  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties);
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, htmlElementProperties, [
+    'aria-label',
+  ]);
   const imageAlt = imageProps['alt'] || props['aria-label'] || '';
 
   return (
