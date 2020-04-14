@@ -18,7 +18,10 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
       justifyContent: 'center',
-      ...(!vertical && { marginLeft: pxToRem(v.width / 2 - 35 - +p.activeIndex * 80) }),
+      ...(!vertical && {
+        transform: `translateX(${pxToRem(v.width / 2 + 40 - +p.activeIndex * 75)})`,
+        transition: 'transform .5s ease',
+      }),
       ...(iconOnly && { alignItems: 'center' }),
 
       ...(vertical && {

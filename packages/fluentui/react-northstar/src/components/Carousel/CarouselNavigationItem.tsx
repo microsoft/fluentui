@@ -21,6 +21,7 @@ import Box, { BoxProps } from '../Box/Box';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;
+  content: string;
 }
 
 export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
