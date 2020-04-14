@@ -154,3 +154,51 @@ export interface IVerticalStackedChartProps {
    */
   chartTitle?: string;
 }
+
+export interface IGVBarChartSeriesPoint {
+  /**
+   * Text for // need to check use of this
+   */
+  key: string;
+
+  /**
+   * Data for bar height of Grouped vertical bar chart
+   */
+  data: number;
+
+  /**
+   * Color for the legend in the chart
+   */
+  color: string;
+
+  /**
+   * Legend text in the chart
+   */
+  legend: string;
+}
+
+export interface IGroupedVerticalBarChartData {
+  /**
+   * Data for X axis label
+   */
+  name: string;
+
+  /**
+   * Data points for Grouped vertical bar chart
+   */
+  series: IGVBarChartSeriesPoint[];
+}
+
+export interface IGVDataPoint {
+  [key: string]: number | string;
+}
+
+export interface IGVSingleDataPoint {
+  [key: string]: IGVDataPoint;
+}
+
+export interface IGV {
+  [key: string]: IGVBarChartSeriesPoint;
+  // xAxisPoint?: string | undefined;
+  // indexNum?: number;
+}
