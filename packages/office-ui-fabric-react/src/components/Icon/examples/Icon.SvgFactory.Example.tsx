@@ -1,35 +1,34 @@
 import * as React from 'react';
 import * as ReactIcons from '@fluentui/react-icons';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
-const rootClass = mergeStyles({
-  selectors: {
-    '> *': {
-      height: 50,
-      width: 50,
-      marginRight: 25,
+const classes = mergeStyleSets({
+  root: {
+    selectors: {
+      '> *': {
+        height: 50,
+        width: 50,
+        marginRight: 25,
+      },
     },
   },
-});
-
-const cellClass = mergeStyles({
-  display: 'flex',
-  flexDirection: 'column',
-  alignItems: 'center',
-  margin: '80px',
-  float: 'left',
-});
-
-const codeClass = mergeStyles({
-  background: '#f2f2f2',
-  borderRadius: '4px',
-  padding: '4px',
-});
-
-const navigationTextClasses = mergeStyles({
-  width: 100,
-  margin: '0 5px',
+  cell: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    margin: '80px',
+    float: 'left',
+  },
+  code: {
+    background: '#f2f2f2',
+    borderRadius: '4px',
+    padding: '4px',
+  },
+  navigationText: {
+    width: 100,
+    margin: '0 5px',
+  },
 });
 
 const icons = Object.keys(ReactIcons).reduce((acc: React.FC[], exportName) => {
@@ -54,19 +53,19 @@ export const IconSvgFactoryExample: React.FunctionComponent = () => {
         <PrimaryButton onClick={prevPage} disabled={page === 1}>
           Prev
         </PrimaryButton>
-        <span className={navigationTextClasses}>
+        <span className={classes.navigationText}>
           Page {page} of {numOfPages}
         </span>
         <PrimaryButton onClick={nextPage} disabled={page === numOfPages}>
           Next
         </PrimaryButton>
       </div>
-      <div className={rootClass}>
+      <div className={classes.root}>
         {icons.slice((page - 1) * 100, (page - 1) * 100 + 100).map(Icon => (
-          <div key={Icon.displayName} className={cellClass}>
+          <div key={Icon.displayName} className={classes.cell}>
             <Icon />
             <br />
-            <code className={codeClass}>{Icon.displayName}</code>
+            <code className={classes.code}>{Icon.displayName}</code>
           </div>
         ))}
       </div>
