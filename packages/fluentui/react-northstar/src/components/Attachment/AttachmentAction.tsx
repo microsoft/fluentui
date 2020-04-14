@@ -26,6 +26,7 @@ const AttachmentAction = compose<
 
 AttachmentAction.defaultProps = {
   accessibility: buttonBehavior,
+  as: 'button',
   iconOnly: true,
   text: true,
 };

@@ -19,7 +19,6 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
       display: 'inline-flex',
       alignItems: 'center',
       width: '100%',
-
       maxWidth: pxToRem(440),
       minHeight: pxToRem(48),
       padding: v.padding,
