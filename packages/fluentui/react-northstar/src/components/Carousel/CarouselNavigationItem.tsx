@@ -61,6 +61,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
 
   static slotClassNames: CarouselNavigationItemSlotClassNames = {
     indicator: `${CarouselNavigationItem.className}__indicator`,
+    content: `${CarouselNavigationItem.className}__content`,
   };
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;
@@ -99,15 +100,17 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
         {...unhandledProps}
       >
-        {Box.create(indicator, {
-          defaultProps: () => ({
-            className: CarouselNavigationItem.slotClassNames.indicator,
-            styles: styles.indicator,
-          }),
-        })}
-        {Box.create(content, {
-          defaultProps: () => ({ as: 'span', styles: styles.content }),
-        })}
+        {!content &&
+          Box.create(indicator, {
+            defaultProps: () => ({
+              className: CarouselNavigationItem.slotClassNames.indicator,
+              styles: styles.indicator,
+            }),
+          })}
+        {content &&
+          Box.create(content, {
+            defaultProps: () => ({ as: 'span', styles: styles.content }),
+          })}
       </ElementType>
     );
   }

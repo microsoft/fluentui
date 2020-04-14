@@ -18,13 +18,13 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       backgroundColor: v.backgroundColor || 'inherit',
       listStyleType: 'none',
       justifyContent: 'center',
-
+      ...(!vertical && { marginLeft: pxToRem(v.width / 2 - 35 - +p.activeIndex * 80) }),
       ...(iconOnly && { alignItems: 'center' }),
 
       ...(vertical && {
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
-        width: 'fit-content',
+
         padding: `${pxToRem(8)} 0`,
         ...(iconOnly && {
           display: 'inline-block',
