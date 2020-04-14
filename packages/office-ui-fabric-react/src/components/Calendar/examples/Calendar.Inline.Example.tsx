@@ -3,7 +3,7 @@ import { Calendar, DayOfWeek, DateRangeType } from 'office-ui-fabric-react/lib/C
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
-const DayPickerStrings = {
+const dayPickerStrings = {
   months: [
     'January',
     'February',
@@ -153,7 +153,7 @@ export const CalendarInlineExample: React.FunctionComponent<ICalendarInlineExamp
         showGoToToday={props.showGoToToday}
         value={selectedDate!}
         firstDayOfWeek={props.firstDayOfWeek ? props.firstDayOfWeek : DayOfWeek.Sunday}
-        strings={DayPickerStrings}
+        strings={dayPickerStrings}
         highlightCurrentMonth={props.highlightCurrentMonth}
         highlightSelectedMonth={props.highlightSelectedMonth}
         isDayPickerVisible={props.isDayPickerVisible}
