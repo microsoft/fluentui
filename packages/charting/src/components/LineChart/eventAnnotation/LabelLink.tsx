@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Callout, FocusZone, FocusZoneDirection, List, mergeStyles } from 'office-ui-fabric-react';
-// import { formatString, ComponentStrings } from '../../shared/localizationInitializer';
-// import { ColorPlate } from '../../shared/colorPlate.types';
+import { Callout, FocusZone, FocusZoneDirection, List } from 'office-ui-fabric-react';
 import { Textbox } from '@uifabric/charting/lib/components/LineChart/eventAnnotation/Textbox';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
 
@@ -29,18 +27,18 @@ interface ILabelLinkProps {
 export function LabelLink(props: ILabelLinkProps) {
   const gRef = React.useRef<SVGGElement>(null);
   const [showCard, setShowCard] = React.useState(false);
+  const onDismiss = () => setShowCard(false);
+  const onClick = () => setShowCard(true);
+  const onRenderCell = (i: (() => React.ReactNode) | undefined) => <div data-is-focusable={true}>{i && i()}</div>;
 
   let callout: React.ReactNode = null;
   if (showCard) {
     const cards = props.labelDef.aggregatedIdx.map(i => props.lineDefs[i].onRenderCard!).filter(c => !!c);
     if (cards.length > 0) {
       callout = (
-        <Callout target={gRef.current} onDismiss={() => setShowCard(false)} setInitialFocus={true} role="dialog">
+        <Callout target={gRef.current} onDismiss={onDismiss} setInitialFocus={true} role="dialog">
           <FocusZone isCircularNavigation={true} direction={FocusZoneDirection.vertical}>
-            <List<() => React.ReactNode>
-              items={cards}
-              onRenderCell={i => <div data-is-focusable={true}>{i && i()}</div>}
-            />
+            <List<() => React.ReactNode> items={cards} onRenderCell={onRenderCell} />
           </FocusZone>
         </Callout>
       );
@@ -49,7 +47,7 @@ export function LabelLink(props: ILabelLinkProps) {
 
   let text: string;
   let fill: string | undefined;
-  if (props.labelDef.aggregatedIdx.length == 1) {
+  if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
     fill = props.textColor;
   } else {
@@ -59,7 +57,7 @@ export function LabelLink(props: ILabelLinkProps) {
 
   return (
     <>
-      <g ref={gRef} onClick={() => setShowCard(true)} data-is-focusable={true} style={{ cursor: 'pointer' }}>
+      <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
           x={props.labelDef.x}

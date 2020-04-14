@@ -17,7 +17,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
   const textPadding = 5;
   const lineHeight = 18;
   const fontSize = '10pt';
-  const range = props.scale.range();
+  const axisRange = props.scale.range();
 
   const lineDefs: ILineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
 
@@ -35,7 +35,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
     />
   ));
 
-  const labelLinks = calculateLabels(lineDefs, textWidth + textPadding, range[1], range[0]).map((x, i) => (
+  const labelLinks = calculateLabels(lineDefs, textWidth + textPadding, axisRange[1], axisRange[0]).map((x, i) => (
     <LabelLink
       key={i}
       {...{
@@ -62,7 +62,7 @@ export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
 function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, minX: number): ILabelDef[] {
   const calculateLabel = (lastX: number, currentIdx: number): ILabelDef[] => {
     // base case 1
-    if (currentIdx == lineDefs.length) {
+    if (currentIdx === lineDefs.length) {
       return [];
     }
 
@@ -75,7 +75,7 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
     }
 
     // base case 2
-    if (currentIdx == lineDefs.length - 1) {
+    if (currentIdx === lineDefs.length - 1) {
       if (lastX < leftXBoundary) {
         return [{ x: x, anchor: 'end', aggregatedIdx: [currentIdx] }];
       } else if (x + textWidth < maxX) {
@@ -102,12 +102,12 @@ function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, 
       ds => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
       currentIdx + 1,
     );
-    if (idx == -1) {
+    if (idx === -1) {
       idx = lineDefs.length;
     }
 
     const aggregatedIdx = range(currentIdx, idx);
-    let next = calculateLabel(bd, idx);
+    const next = calculateLabel(bd, idx);
 
     next.unshift({ x: lineDefs[currentIdx].x, anchor, aggregatedIdx });
     return next;

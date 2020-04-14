@@ -16,7 +16,7 @@ import {
 } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
-import { EventsAnnotation } from '@uifabric/charting/lib/components/LineChart/eventAnnotation/EventAnnotation';
+import { EventsAnnotation } from './eventAnnotation/EventAnnotation';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
