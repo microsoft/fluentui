@@ -29,7 +29,8 @@ const DropdownExampleSearchMultipleFrenchLanguage = () => (
   />
 );
 
-const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount, resultCount, selectedItem }) => {
+// fix type error in downshift by passing previousResultCount in hooks as well.
+const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount = -1, resultCount, selectedItem }) => {
   if (!isOpen) {
     return selectedItem ? itemToString(selectedItem) : '';
   }
