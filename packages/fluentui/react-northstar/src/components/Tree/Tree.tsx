@@ -270,7 +270,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
     if (!treeItemProps) {
       return;
     }
-    if (this.props.selectable) {
+    if (treeItemProps.selectable) {
       this.processItemsForSelection(e, treeItemProps);
       // do not continue with collapsing if the parent is selectable and selection on parent was executed
       if (treeItemProps.selectableParent && treeItemProps.expanded && e.target !== e.currentTarget) {
