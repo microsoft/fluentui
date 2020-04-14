@@ -16,7 +16,7 @@
     "@fluentui/react-proptypes": "^0.47.0",
     "@fluentui/styles": "^0.47.0",
     "classnames": "^2.2.6",
-    "downshift": "3.2.14",
+    "downshift": "5.0.5",
     "fela": "^10.6.1",
     "fela-plugin-embedded": "^10.6.1",
     "fela-plugin-fallback-value": "^10.6.1",
