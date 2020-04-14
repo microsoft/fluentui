@@ -33,7 +33,7 @@ const navigationTextClasses = mergeStyles({
 });
 
 const icons = Object.keys(ReactIcons).reduce((acc: React.FC[], exportName) => {
-  if (!!(ReactIcons as any)[exportName]) {
+  if (!!(ReactIcons as any)[exportName].displayName) {
     acc.push((ReactIcons as any)[exportName] as React.FC);
   }
 
