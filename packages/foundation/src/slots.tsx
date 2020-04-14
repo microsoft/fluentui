@@ -209,9 +209,7 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(
     assign(finalProps, props);
   }
 
-  const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
-
-  finalProps.className = mergeCss([defaultStyles, classNames], { rtl: !!rtl });
+  finalProps.className = mergeCss([defaultStyles, classNames], { rtl: getRTL(theme) });
 
   return finalProps;
 }
