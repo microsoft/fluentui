@@ -2,6 +2,9 @@ import './version';
 
 export { default as createSvgIcon } from './utils/createSvgIcon';
 
+export { default as OneDriveIcon } from './components/OneDriveIcon';
+export { default as YammerIcon } from './components/YammerIcon';
+export { default as BorderBlindsIcon } from './components/BorderBlindsIcon';
 export { default as AADLogoIcon } from './components/AADLogoIcon';
 export { default as AcceptIcon } from './components/AcceptIcon';
 export { default as AcceptMediumIcon } from './components/AcceptMediumIcon';
