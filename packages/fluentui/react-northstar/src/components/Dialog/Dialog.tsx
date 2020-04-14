@@ -8,6 +8,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as keyboardKey from 'keyboard-key';
+import { disableBodyScroll, enableBodyScroll } from './utils';
 
 import {
   UIComponentProps,
@@ -105,6 +106,7 @@ export interface DialogState {
   headerId?: string;
   open?: boolean;
 }
+const dialogsCounterAttribute = 'fluent-dialogs-count';
 
 class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogState> {
   static displayName = 'Dialog';
@@ -227,6 +229,50 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
     }
   };
 
+  lockBodyScroll() {
+    const openDialogs = (+this.context.target.body.getAttribute(dialogsCounterAttribute) || 0) + 1;
+    this.context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
+
+    // Avoid to block scroll in nested dialogs
+    if (openDialogs === 1) {
+      disableBodyScroll(this.context.target.body);
+    }
+  }
+
+  unlockBodyScroll() {
+    const openDialogs = (+this.context.target.body.getAttribute(dialogsCounterAttribute) || 0) - 1;
+    this.context.target.body.setAttribute(dialogsCounterAttribute, `${openDialogs}`);
+
+    // Only enables scroll if all dialogs are closed
+    if (openDialogs === 0) {
+      enableBodyScroll(this.context.target.body);
+      this.context.target.body.removeAttribute(dialogsCounterAttribute);
+    }
+  }
+
+  componentDidUpdate(_, prevState) {
+    // Open -> Closed
+    if (prevState.open && !this.state.open) {
+      this.unlockBodyScroll();
+    }
+    // Closed -> Open
+    if (!prevState.open && this.state.open) {
+      this.lockBodyScroll();
+    }
+  }
+
+  componentDidMount() {
+    if (this.state.open) {
+      this.lockBodyScroll();
+    }
+  }
+
+  componentWillUnmount() {
+    if (this.state.open) {
+      this.unlockBodyScroll();
+    }
+  }
+
   renderComponent({ accessibility, classes, ElementType, styles, unhandledProps, rtl }) {
     const {
       actions,
@@ -294,7 +340,6 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               ...accessibility.attributes.headerAction,
             }),
           })}
-
           {Box.create(content, {
             defaultProps: () => ({
               styles: styles.content,
@@ -302,7 +347,6 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
               ...accessibility.attributes.content,
             }),
           })}
-
           {DialogFooter.create(footer, {
             overrideProps: {
               content: dialogActions,

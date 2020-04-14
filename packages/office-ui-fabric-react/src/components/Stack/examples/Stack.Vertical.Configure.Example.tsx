@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox, ICheckboxStyles } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack, IStackStyles, IStackTokens, IStackItemStyles, IStackProps } from 'office-ui-fabric-react/lib/Stack';
@@ -24,6 +24,8 @@ export interface IExampleOptions {
   hideEmptyChildren: boolean;
   emptyChildren: string[];
 }
+
+const checkboxStyles: Partial<ICheckboxStyles> = { root: { marginRight: 10 } };
 
 const VerticalStackConfigureExampleContent: React.FunctionComponent<IExampleOptions> = props => {
   const {
@@ -169,21 +171,13 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleO
                 onChange={this._onNumItemsChange}
               />
               <Stack horizontal>
-                <Checkbox
-                  label="Shadow around items"
-                  onChange={this._onBoxShadowChange}
-                  styles={{ root: { marginRight: 10 } }}
-                />
+                <Checkbox label="Shadow around items" onChange={this._onBoxShadowChange} styles={checkboxStyles} />
                 <Checkbox
                   label="Prevent item overflow"
                   onChange={this._onPreventOverflowChange}
-                  styles={{ root: { marginRight: 10 } }}
+                  styles={checkboxStyles}
                 />
-                <Checkbox
-                  label="Shrink items"
-                  onChange={this._onShrinkItemsChange}
-                  styles={{ root: { marginRight: 10 } }}
-                />
+                <Checkbox label="Shrink items" onChange={this._onShrinkItemsChange} styles={checkboxStyles} />
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} />
               </Stack>
             </Stack>

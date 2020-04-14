@@ -164,14 +164,19 @@
       "name": "Debug update release notes",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/updateReleaseNotes/index.js",
+      "protocol": "inspector",
       "cwd": "${workspaceRoot}",
-      "stopOnEntry": false,
-      // For local testing, generate a personal access token (https://github.com/settings/tokens)
-      // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
-      "args": ["--token", "your token here", "--patch", "--age", "20"],
-      "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "args": [
+        "${workspaceRoot}/scripts/updateReleaseNotes/index.ts",
+        "--token",
+        // For local testing, generate a personal access token (https://github.com/settings/tokens)
+        // and replace "your token here" with the token. DO NOT COMMIT YOUR TOKEN!
+        "your token here",
+        "--patch",
+        "--age",
+        "10"
+      ],
+      "runtimeArgs": ["--nolazy", "--debug", "-r", "${workspaceRoot}/scripts/ts-node-register"],
       "env": {
         "NODE_ENV": "development"
       },

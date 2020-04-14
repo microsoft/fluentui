@@ -42,7 +42,7 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
       }),
     }),
   }),
-  image: ({ props: p }): ICSSInJSStyle => ({
+  image: (): ICSSInJSStyle => ({
     margin: `${pxToRem(3)} ${pxToRem(12)} ${pxToRem(3)} ${pxToRem(4)}`,
   }),
   header: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -61,6 +61,7 @@ const dropdownItemStyles: ComponentSlotStylesPrepared<DropdownItemStylesProps, D
       fontWeight: v.listItemSelectedFontWeight,
       color: v.listItemSelectedColor,
     }),
+    whiteSpace: 'normal',
   }),
   content: ({ variables: v }): ICSSInJSStyle => ({
     flexGrow: 1,

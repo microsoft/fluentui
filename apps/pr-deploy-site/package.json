@@ -14,11 +14,10 @@
   "dependencies": {
     "@uifabric/charting": "^1.1.4",
     "@uifabric/date-time": "^7.8.53",
-    "@uifabric/experiments": "^7.22.16",
+    "@uifabric/experiments": "^7.23.0",
     "@uifabric/fabric-website": "^7.10.21",
     "@uifabric/fabric-website-resources": "^7.6.34",
-    "@uifabric/foundation-scenarios": "^0.102.56",
-    "office-ui-fabric-react": "^7.105.12",
+    "office-ui-fabric-react": "^7.106.0",
     "perf-test": "^7.0.0",
     "theming-designer": "^7.0.0",
     "todo-app": "^7.0.0"
