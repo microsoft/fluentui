@@ -107,7 +107,7 @@ function _getDefinition(groups: ExampleGroup[]): IAppDefinition {
       },
       {
         name: 'Fabric',
-        url: 'https://dev.microsoft.com/fabric',
+        url: 'https://developer.microsoft.com/en-us/fluentui',
       },
       {
         name: 'GitHub',

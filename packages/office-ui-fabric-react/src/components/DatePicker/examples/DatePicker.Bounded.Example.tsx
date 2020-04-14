@@ -53,37 +53,21 @@ const controlClass = mergeStyleSets({
   },
 });
 
-export interface IDatePickerRequiredExampleState {
-  firstDayOfWeek?: DayOfWeek;
-}
+const firstDayOfWeek = DayOfWeek.Sunday;
 
-export class DatePickerBoundedExample extends React.Component<{}, IDatePickerRequiredExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      firstDayOfWeek: DayOfWeek.Sunday,
-    };
-  }
-
-  public render(): JSX.Element {
-    const { firstDayOfWeek } = this.state;
-
-    return (
-      <div className="docs-DatePickerExample">
-        <p>{description}</p>
-        <DatePicker
-          className={controlClass.control}
-          isRequired={false}
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          ariaLabel="Select a date"
-          minDate={minDate}
-          maxDate={maxDate}
-          allowTextInput={true}
-        />
-      </div>
-    );
-  }
-}
+export const DatePickerBoundedExample: React.FC = () => (
+  <div>
+    <p>{description}</p>
+    <DatePicker
+      className={controlClass.control}
+      isRequired={false}
+      firstDayOfWeek={firstDayOfWeek}
+      strings={DayPickerStrings}
+      placeholder="Select a date..."
+      ariaLabel="Select a date"
+      minDate={minDate}
+      maxDate={maxDate}
+      allowTextInput={true}
+    />
+  </div>
+);

@@ -20,5 +20,6 @@ export * from './updateH';
 export * from './updateRGB';
 export * from './getColorFromString';
 export * from './updateA';
+export * from './updateT';
 export * from './correctRGB';
 export * from './correctHSV';

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 08 Apr 2020 12:28:27 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Apr 2020 12:24:31 GMT and should not be manually modified.
 
+## 7.15.6
+Thu, 09 Apr 2020 12:24:31 GMT
+
+### Patches
+
+- chore: bump @types/react (olfedias@microsoft.com)
 ## 7.15.5
 Wed, 08 Apr 2020 12:28:27 GMT
 

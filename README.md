@@ -4,11 +4,11 @@ The `office-ui-fabric-react` repo has moved! This should not disrupt any current
 
 We have a lot in store for Fluent UI - [Read our announcement here.](https://developer.microsoft.com/en-us/office/blogs/ui-fabric-is-evolving-into-fluent-ui/)
 
-# [Fluent UI React](https://dev.microsoft.com/fabric)
+# [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)
 
 **The React-based front-end framework for building experiences for Microsoft 365.**
 
-[![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react) [![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
+[![npm version](https://badge.fury.io/js/%40fluentui%2Freact.svg)](https://badge.fury.io/js/%40fluentui%2Freact) [![Build Status](https://dev.azure.com/uifabric/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://dev.azure.com/uifabric/fabricpublic/_build/latest?definitionId=84&branchName=master)
 
 Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.
 
@@ -72,10 +72,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 
-ReactDOM.render(
-  <PrimaryButton>I am a button.</PrimaryButton>,
-  document.getElementById('root')
-);
+ReactDOM.render(<PrimaryButton>I am a button.</PrimaryButton>, document.getElementById('root'));
 ```
 
 ### Version policy

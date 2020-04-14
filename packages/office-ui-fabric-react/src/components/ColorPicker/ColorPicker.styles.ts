@@ -1,7 +1,7 @@
 import { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 
 export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => {
-  const { className, theme } = props;
+  const { className, theme, alphaType } = props;
 
   return {
     root: [
@@ -41,11 +41,13 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         },
       },
     ],
-    tableHexCell: [
-      {
-        width: '25%',
-      },
-    ],
+    tableHexCell: {
+      width: '25%',
+    },
+    // Account for "Transparency" being a longer word
+    tableAlphaCell: alphaType === 'transparency' && {
+      width: '22%',
+    },
     colorSquare: [
       'ms-ColorPicker-colorSquare',
       {
@@ -55,21 +57,15 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         border: '1px solid #c8c6c4',
       },
     ],
-    flexContainer: [
-      {
-        display: 'flex',
-      },
-    ],
-    flexSlider: [
-      {
-        flexGrow: '1',
-      },
-    ],
-    flexPreviewBox: [
-      {
-        flexGrow: '0',
-      },
-    ],
+    flexContainer: {
+      display: 'flex',
+    },
+    flexSlider: {
+      flexGrow: '1',
+    },
+    flexPreviewBox: {
+      flexGrow: '0',
+    },
     input: [
       'ms-ColorPicker-input',
       {
