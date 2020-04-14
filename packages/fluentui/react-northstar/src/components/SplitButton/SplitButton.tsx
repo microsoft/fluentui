@@ -142,7 +142,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
 
   static autoControlledProps = ['open'];
 
-  targetRef = React.createRef<HTMLButtonElement>();
+  targetRef = React.createRef<HTMLDivElement>();
 
   getInitialAutoControlledState(): SplitButtonState {
     return {
