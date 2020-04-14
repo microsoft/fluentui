@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IStyle, mergeStyles } from '@uifabric/styling';
-import { memoizeFunction } from '@uifabric/utilities';
+import { mergeCss } from '@uifabric/merge-styles';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { getRTL, memoizeFunction } from '@uifabric/utilities';
 import { assign } from './utilities';
 import { IFactoryOptions } from './IComponent';
 import {
@@ -80,14 +81,20 @@ export function createFactory<TProps extends ValidProps, TShorthandProp extends 
 ): ISlotFactory<TProps, TShorthandProp> {
   const { defaultProp = 'children' } = options;
 
-  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, userProps, userSlotOptions, defaultStyles) => {
+  const result: ISlotFactory<TProps, TShorthandProp> = (
+    componentProps,
+    userProps,
+    userSlotOptions,
+    defaultStyles,
+    theme,
+  ) => {
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
     }
 
     const flattenedUserProps: TProps | undefined = _translateShorthand(defaultProp as string, userProps);
-    const finalProps = _constructFinalProps(defaultStyles, componentProps, flattenedUserProps);
+    const finalProps = _constructFinalProps(defaultStyles, theme, componentProps, flattenedUserProps);
 
     if (userSlotOptions) {
       if (userSlotOptions.component) {
@@ -153,6 +160,7 @@ export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots
           // _defaultStyles should always be present, but a check for existence is added to make view tests
           // easier to use.
           mixedProps._defaultStyles && mixedProps._defaultStyles[name],
+          (mixedProps as any).theme,
         );
       };
       slot.isSlot = true;
@@ -190,6 +198,7 @@ function _translateShorthand<TProps extends ValidProps, TShorthandProp extends V
  */
 function _constructFinalProps<TProps extends IProcessedSlotProps>(
   defaultStyles: IStyle,
+  theme?: ITheme,
   ...allProps: (TProps | undefined)[]
 ): TProps {
   const finalProps: TProps = {} as any;
@@ -200,7 +209,9 @@ function _constructFinalProps<TProps extends IProcessedSlotProps>(
     assign(finalProps, props);
   }
 
-  finalProps.className = mergeStyles(defaultStyles, classNames);
+  const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
+
+  finalProps.className = mergeCss([defaultStyles, classNames], { rtl: !!rtl });
 
   return finalProps;
 }
@@ -222,6 +233,7 @@ function _renderSlot<
   userProps: ISlotProp<TSlotProps, TSlotShorthand>,
   slotOptions: ISlotOptions<TSlotProps> | undefined,
   defaultStyles: IStyle,
+  theme?: ITheme,
 ): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
@@ -232,6 +244,7 @@ function _renderSlot<
       userProps,
       slotOptions,
       defaultStyles,
+      theme,
     );
   }
 }
