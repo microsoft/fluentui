@@ -13,7 +13,7 @@ const sizeToPxValue = {
   largest: 96,
 };
 
-const iconSizeToPxValue = {
+const iconSizeToPxValue: Record<SizeValue, number> = {
   smallest: 10,
   smaller: 12,
   small: 16,
