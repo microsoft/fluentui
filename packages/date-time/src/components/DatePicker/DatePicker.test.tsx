@@ -130,6 +130,32 @@ describe('DatePicker', () => {
     datePicker.unmount();
   });
 
+  it('should not clear initial error when datepicker is opened', () => {
+    const datePicker = mount(
+      <DatePickerBase
+        isRequired={true}
+        allowTextInput={true}
+        maxDate={new Date('2020-04-01')}
+        value={new Date('2020-04-02')}
+      />,
+    );
+
+    // assert initial error exists
+    expect(datePicker.state('errorMessage')).not.toBe('');
+
+    const textField = datePicker.find('input');
+
+    expect(textField).toBeDefined();
+
+    // open the datepicker
+    textField.simulate('click').simulate('click');
+
+    // assert initial error remains
+    expect(datePicker.state('errorMessage')).not.toBe('');
+
+    datePicker.unmount();
+  });
+
   // @todo: usage of document.querySelector is incorrectly testing DOM mounted by previous tests and needs to be fixed.
   it('should call onSelectDate only once when allowTextInput is true and popup is used to select the value', () => {
     const onSelectDate = jest.fn();
