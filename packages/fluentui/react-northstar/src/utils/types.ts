@@ -9,7 +9,7 @@ export type RendererChange = {
   type: 'RULE' | 'KEYFRAME' | 'FONT' | 'STATIC' | 'CLEAR';
   className: string;
   selector: string;
-  declaration: Object;
+  declaration: string;
   pseudo: string;
   media: string;
   support: string;
