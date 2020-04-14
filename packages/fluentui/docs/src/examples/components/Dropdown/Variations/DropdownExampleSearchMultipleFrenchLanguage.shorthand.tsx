@@ -29,7 +29,8 @@ const DropdownExampleSearchMultipleFrenchLanguage = () => (
   />
 );
 
-// fix type error in downshift by passing previousResultCount in hooks as well.
+// ToDo: remove default parameter from previousResultCount when issue is fixed
+// https://github.com/downshift-js/downshift/issues/999
 const getA11yStatusMessage = ({ isOpen, itemToString, previousResultCount = -1, resultCount, selectedItem }) => {
   if (!isOpen) {
     return selectedItem ? itemToString(selectedItem) : '';
