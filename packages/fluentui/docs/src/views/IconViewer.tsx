@@ -12,7 +12,7 @@ import {
   Dropdown,
   Checkbox,
   Divider,
-  SvgIconSizeValue,
+  SizeValue,
 } from '@fluentui/react-northstar';
 import * as exports from '@fluentui/react-icons-northstar';
 import { CodeSnippet, CopyToClipboard } from '@fluentui/docs-components';
@@ -35,7 +35,7 @@ const icons = Object.keys(exports).reduce((acc: React.FC<SvgIconProps>[], export
 const exampleCode = `
 import { QnaIcon } from '@fluentui/react-icons-northstar';
 
-const Icons = () => (
+const Example = () => (
   <>
     <QnaIcon />
     <QnaIcon outline />
@@ -71,14 +71,47 @@ const IntroCard = props => {
   );
 };
 
+interface PlaygroundAction {
+  type: 'toggle_bordered' | 'toggle_circular' | 'toggle_outline' | 'change_rotate' | 'change_size';
+  value?: SizeValue | number;
+}
+
+interface PlaygroundCardState {
+  bordered: boolean;
+  circular: boolean;
+  outline: boolean;
+  rotate: number;
+  size: SizeValue;
+}
+
+const playgroundStateReducer = (state: PlaygroundCardState, action: PlaygroundAction) => {
+  switch (action.type) {
+    case 'toggle_bordered':
+      return { ...state, bordered: !state.bordered };
+    case 'toggle_outline':
+      return { ...state, outline: !state.outline };
+    case 'toggle_circular':
+      return { ...state, circular: !state.circular };
+    case 'change_rotate':
+      return { ...state, rotate: action.value as number };
+    case 'change_size':
+      return { ...state, size: action.value as SizeValue };
+
+    default:
+      throw new Error(`Action ${action.type} is not supported`);
+  }
+};
+
 const PlaygroundCard = props => {
   const { QnaIcon, EditIcon } = exports;
 
-  const [bordered, setBordered] = React.useState(false);
-  const [circular, setCircular] = React.useState(false);
-  const [outline, setOutline] = React.useState(false);
-  const [rotate, setRotate] = React.useState(0);
-  const [size, setSize] = React.useState('largest');
+  const [state, dispatch] = React.useReducer(playgroundStateReducer, {
+    bordered: false,
+    circular: false,
+    outline: false,
+    rotate: 0,
+    size: 'largest',
+  });
 
   return (
     <Card variables={{ borderColor: '#f2f2f2' }} style={{ background: 'white', overflow: 'unset' }} {...props}>
@@ -95,13 +128,21 @@ const PlaygroundCard = props => {
         <Flex>
           <Flex column>
             <div>
-              <Checkbox checked={outline} label="Outline" onChange={() => setOutline(!outline)} />
+              <Checkbox checked={state.outline} label="Outline" onChange={() => dispatch({ type: 'toggle_outline' })} />
             </div>
             <div>
-              <Checkbox checked={bordered} label="Bordered" onChange={() => setBordered(!bordered)} />
+              <Checkbox
+                checked={state.bordered}
+                label="Bordered"
+                onChange={() => dispatch({ type: 'toggle_bordered' })}
+              />
             </div>
             <div>
-              <Checkbox checked={circular} label="Circular" onChange={() => setCircular(!circular)} />
+              <Checkbox
+                checked={state.circular}
+                label="Circular"
+                onChange={() => dispatch({ type: 'toggle_circular' })}
+              />
             </div>
             <div>
               <Text weight="semibold">Rotate</Text>
@@ -109,16 +150,16 @@ const PlaygroundCard = props => {
               <Input
                 type="number"
                 placeholder="Enter angle of rotation"
-                value={rotate}
-                onChange={(e, data) => setRotate(Number(data.value))}
+                value={state.rotate}
+                onChange={(e, data) => dispatch({ type: 'change_rotate', value: Number(data.value) })}
               />
             </div>
             <div style={{ marginBottom: '7px' }}>
               <Text weight="semibold">Size</Text>
               <Dropdown
                 items={['smallest', 'smaller', 'small', 'medium', 'large', 'larger', 'largest']}
-                value={size}
-                onChange={(e, d) => setSize(d.value.toString())}
+                value={state.size}
+                onChange={(e, d) => dispatch({ type: 'change_size', value: d.value.toString() as SizeValue })}
               />
             </div>
             <Divider />
@@ -133,11 +174,11 @@ const PlaygroundCard = props => {
               <Flex.Item>
                 <div>
                   <QnaIcon
-                    size={size as SvgIconSizeValue}
-                    outline={outline}
-                    bordered={bordered}
-                    circular={circular}
-                    rotate={rotate}
+                    size={state.size}
+                    outline={state.outline}
+                    bordered={state.bordered}
+                    circular={state.circular}
+                    rotate={state.rotate}
                   />
                 </div>
               </Flex.Item>
@@ -203,7 +244,7 @@ const IconViewer = () => {
                         <Box
                           as="code"
                           onClick={onClick}
-                          title='Click to copy JSX to your clipboard'
+                          title="Click to copy JSX to your clipboard"
                           styles={{
                             fontSize: '10px !improtant',
                             opacity: active ? 1 : 0.6,
