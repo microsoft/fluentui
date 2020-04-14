@@ -180,7 +180,7 @@ const IconViewer = () => {
           fluid
           clearable
           icon={<SearchIcon />}
-          placeholder={`Search ${icons.length} icons`}
+          placeholder={`Search across ${icons.length} icons`}
           iconPosition="end"
           role="search"
           onChange={handleQueryChange}
