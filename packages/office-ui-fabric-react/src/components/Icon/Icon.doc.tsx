@@ -5,11 +5,13 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { IconSvgExample } from './examples/Icon.Svg.Example';
 import { IconColorExample } from './examples/Icon.Color.Example';
 import { IconImageSheetExample } from './examples/Icon.ImageSheet.Example';
+import { IconSvgFactoryExample } from './examples/Icon.SvgFactory.Example';
 
 const IconBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Basic.Example.tsx') as string;
 const IconSvgExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Svg.Example.tsx') as string;
 const IconColorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.Color.Example.tsx') as string;
 const IconImageSheetExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.ImageSheet.Example.tsx') as string;
+const IconSvgFactoryExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Icon/examples/Icon.SvgFactory.Example.tsx') as string;
 
 export const IconPageProps: IDocPageProps = {
   title: 'Icon',
@@ -35,6 +37,11 @@ export const IconPageProps: IDocPageProps = {
       title: 'Icon using image sheet',
       code: IconImageSheetExampleCode,
       view: <IconImageSheetExample />,
+    },
+    {
+      title: 'Icon using svg factory',
+      code: IconSvgFactoryExampleCode,
+      view: <IconSvgFactoryExample />,
     },
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
