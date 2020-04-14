@@ -1,9 +1,9 @@
-import { pxToRem } from '../../../../utils';
+import { pxToRem, SizeValue } from '../../../../utils';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { AvatarStylesProps } from '../../../../components/Avatar/Avatar';
 import { AvatarVariables } from './avatarVariables';
 
-const sizeToPxValue = {
+const sizeToPxValue: Record<SizeValue, number> = {
   smallest: 20,
   smaller: 24,
   small: 28,

@@ -25,7 +25,7 @@ export interface AvatarProps extends UIComponentProps {
    */
   accessibility?: Accessibility<never>;
 
-  /** Avatar can contain icon. */
+  /** Avatar can contain icon. It will be rendered only if the image is not present. */
   icon?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the image. */
@@ -91,36 +91,40 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
 
+  const imageElement = Image.create(image, {
+    defaultProps: () =>
+      getA11Props('image', {
+        fluid: true,
+        avatar: !square,
+        title: name,
+        styles: resolvedStyles.image,
+      }),
+  });
+
+  const iconElement = Box.create(icon, {
+    defaultProps: () =>
+      getA11Props('icon', {
+        title: name,
+        styles: resolvedStyles.icon,
+      }),
+  });
+
+  const labelElement = Label.create(label || {}, {
+    defaultProps: () =>
+      getA11Props('label', {
+        content: getInitials(name),
+        circular: !square,
+        title: name,
+        styles: resolvedStyles.label,
+      }),
+  });
+
+  const hasGlyph = !!image || !!icon;
+
   const result = (
     <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-      {Image.create(image, {
-        defaultProps: () =>
-          getA11Props('image', {
-            fluid: true,
-            avatar: !square,
-            title: name,
-            styles: resolvedStyles.image,
-          }),
-      })}
-      {!image &&
-        Box.create(icon, {
-          defaultProps: () =>
-            getA11Props('icon', {
-              title: name,
-              styles: resolvedStyles.icon,
-            }),
-        })}
-      {!image &&
-        !icon &&
-        Label.create(label || {}, {
-          defaultProps: () =>
-            getA11Props('label', {
-              content: getInitials(name),
-              circular: !square,
-              title: name,
-              styles: resolvedStyles.label,
-            }),
-        })}
+      {hasGlyph && (imageElement || iconElement)}
+      {!hasGlyph && labelElement}
       {Status.create(status, {
         defaultProps: () =>
           getA11Props('status', {
