@@ -2,11 +2,11 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { AttachmentActionStylesProps } from '../../../../components/Attachment/AttachmentAction';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
-import { AttachmentVariables } from './attachmentVariables';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
+import { AttachmentActionVariables } from './attachmentActionVariables';
 
-const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStylesProps, AttachmentVariables> = {
+const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStylesProps, AttachmentActionVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
     const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
     const borderFocusStyles = getBorderFocusStyles({
