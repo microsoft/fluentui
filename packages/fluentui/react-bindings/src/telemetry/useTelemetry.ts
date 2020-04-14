@@ -1,4 +1,3 @@
-import useComposeOptions from '../compose/useComposeOptions';
 import { Telemetry, UseTelemetryResult } from './types';
 import useComposeOptions from '../compose/useComposeOptions';
 
