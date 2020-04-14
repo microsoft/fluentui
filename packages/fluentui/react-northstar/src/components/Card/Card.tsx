@@ -1,25 +1,26 @@
+import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
+import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandledProps } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
+import * as CustomPropTypes from '@fluentui/react-proptypes';
+import * as _ from 'lodash';
+import * as PropTypes from 'prop-types';
 import * as React from 'react';
+// @ts-ignore
+import { ThemeContext } from 'react-fela';
 import {
-  WithAsProp,
-  withSafeTypeForAs,
   ComponentEventHandler,
   FluentComponentStaticProps,
   ProviderContextPrepared,
+  WithAsProp,
+  withSafeTypeForAs,
 } from '../../types';
-import { Accessibility, cardBehavior, CardBehaviorProps } from '@fluentui/accessibility';
-import * as CustomPropTypes from '@fluentui/react-proptypes';
-import { UIComponentProps, commonPropTypes, createShorthandFactory, SizeValue } from '../../utils';
-import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
-import * as PropTypes from 'prop-types';
-import * as _ from 'lodash';
-// @ts-ignore
-import { ThemeContext } from 'react-fela';
-import CardHeader from './CardHeader';
+import { commonPropTypes, createShorthandFactory, SizeValue, UIComponentProps } from '../../utils';
 import CardBody from './CardBody';
-import CardPreview from './CardPreview';
-import CardFooter from './CardFooter';
-import CardTopControls from './CardTopControls';
 import CardColumn from './CardColumn';
+import CardFooter from './CardFooter';
+import CardHeader from './CardHeader';
+import CardPreview from './CardPreview';
+import CardTopControls from './CardTopControls';
 
 export interface CardProps extends UIComponentProps {
   /**
@@ -52,6 +53,9 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can take up the width and height of its container. */
   fluid?: boolean;
+
+  /** A card should have a human-readable, author-localized description for the role of an element. */
+  ariaRoleDescription: string;
 }
 
 export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'>;
@@ -69,8 +73,21 @@ const Card: React.FC<WithAsProp<CardProps>> &
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
   setStart();
+  const cardRef = React.useRef<HTMLElement>();
 
-  const { className, design, styles, variables, children, compact, horizontal, centered, size, fluid } = props;
+  const {
+    className,
+    design,
+    styles,
+    variables,
+    children,
+    compact,
+    horizontal,
+    centered,
+    size,
+    fluid,
+    ariaRoleDescription,
+  } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -79,7 +96,14 @@ const Card: React.FC<WithAsProp<CardProps>> &
       performClick: e => {
         handleClick(e);
       },
+      focusCell: e => {
+        e.preventDefault();
+        cardRef.current.focus();
+      },
     },
+    mapPropsToBehavior: () => ({
+      ariaRoleDescription,
+    }),
     rtl: context.rtl,
   });
 
@@ -106,15 +130,19 @@ const Card: React.FC<WithAsProp<CardProps>> &
   };
 
   const element = (
-    <ElementType
-      {...getA11yProps('root', {
-        className: classes.root,
-        onClick: handleClick,
-        ...unhandledProps,
-      })}
-    >
-      {children}
-    </ElementType>
+    <Ref innerRef={cardRef}>
+      {getA11yProps.unstable_wrapWithFocusZone(
+        <ElementType
+          {...getA11yProps('root', {
+            className: classes.root,
+            onClick: handleClick,
+            ...unhandledProps,
+          })}
+        >
+          {children}
+        </ElementType>,
+      )}
+    </Ref>
   );
   setEnd();
   return element;
@@ -131,6 +159,7 @@ Card.propTypes = {
   centered: PropTypes.bool,
   size: CustomPropTypes.size,
   fluid: PropTypes.bool,
+  ariaRoleDescription: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -150,5 +179,10 @@ Card.create = createShorthandFactory({ Component: Card });
 
 /**
  * A Card is used to display data in sematically grouped way.
+ * * @accessibility
+ * By default adds `group` role ([more information available in aria documentation](https://www.w3.org/TR/wai-aria-1.1/#group)), thus it's necessary to provide `ariaRoleDescription` for correct widget description. [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription-property)
+ * When card is actionable (i.e. has `onClick` property), use [cardFocusableBehavior](/components/card/accessibility#card-focusable). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
+ * When card contains multiple actionable elements, use [cardMultipleFocusableBehavior](/components/card/accessibility#card-multiple-focusable).
+ *
  */
 export default withSafeTypeForAs<typeof Card, CardProps, 'div'>(Card);

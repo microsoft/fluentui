@@ -22,20 +22,27 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       width: v.width,
       height: v.height,
       boxShadow: v.boxShadow,
+      ':hover': {
+        boxShadow: v.boxShadowHover,
+      },
+      ':focus': {
+        boxShadow: v.boxShadowFocus,
+      },
+      ':active': {
+        boxShadow: v.boxShadowPressed,
+      },
+      borderWidth: v.borderWidth,
+      borderStyle: v.borderStyle,
+      borderColor: v.borderColor,
+      borderRadius: v.borderRadius,
+
       ...(p.size === 'small' && { width: v.sizeSmallWidth, height: v.sizeSmallHeight, padding: v.sizeSmallPadding }),
       ...(p.size === 'large' && { width: v.sizeLargeWidth, height: v.sizeLargeHeight, padding: v.sizeLargePadding }),
       ...(p.fluid && { width: v.fluidWidth, height: v.fluidHeight }),
       ...(p.horizontal && { flexDirection: 'row' }),
       ...(p.compact && { padding: v.compactPadding }),
       ...(p.centered && { alignItems: 'center' }),
-      ':hover': {
-        boxShadow: v.boxShadowHover,
-      },
 
-      borderWidth: v.borderWidth,
-      borderStyle: v.borderStyle,
-      borderColor: v.borderColor,
-      borderRadius: v.borderRadius,
       ...borderFocusStyles,
     };
   },
