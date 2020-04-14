@@ -3,7 +3,7 @@ import * as React from 'react';
 import componentInfoContext from '@fluentui/docs/src/utils/componentInfoContext';
 import { ComponentInfo } from '@fluentui/docs/src/types';
 
-import Anatomy from './Anatomy';
+// import Anatomy from './Anatomy';
 import BrowserWindow from './BrowserWindow';
 import Canvas from './Canvas';
 import Description from './Description';
@@ -389,7 +389,7 @@ class Designer extends React.Component<any, DesignerState> {
           {selectedComponentInfo && (
             <div style={{ width: '20rem', padding: '1rem', overflow: 'auto' }}>
               <Description selectedJSONTreeElement={selectedJSONTreeElement} componentInfo={selectedComponentInfo} />
-              <Anatomy componentInfo={selectedComponentInfo} />
+              {/*<Anatomy componentInfo={selectedComponentInfo} />*/}
               {selectedJSONTreeElement && (
                 <Knobs
                   onPropChange={this.handlePropChange}
