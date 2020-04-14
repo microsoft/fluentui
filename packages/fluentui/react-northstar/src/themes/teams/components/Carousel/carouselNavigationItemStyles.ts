@@ -12,7 +12,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
   CarouselNavigationVariables
 > = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => {
-    const { active, iconOnly, primary, vertical } = p;
+    const { active, iconOnly, primary, vertical, thumbnails } = p;
 
     const colors = getColorScheme(v.colorScheme, null, primary);
 
@@ -50,7 +50,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       // focus styles
       ':focus-visible': {
         ...(iconOnly && {
-          borderRadius: '50%',
+          borderRadius: thumbnails ? '0' : '50%',
           borderColor: v.iconOnlyColorActive,
           ...getIconFillOrOutlineStyles({ outline: false }),
         }),

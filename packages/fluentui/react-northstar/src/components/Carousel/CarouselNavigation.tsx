@@ -85,7 +85,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
   });
 
   renderItems = (variables: ComponentVariablesObject, accessibility: ReactAccessibilityBehavior) => {
-    const { activeIndex, iconOnly, items, primary, secondary, vertical } = this.props;
+    const { activeIndex, iconOnly, items, primary, secondary, vertical, thumbnails } = this.props;
 
     return _.map(items, (item, index) =>
       CarouselNavigationItem.create(item, {
@@ -96,6 +96,7 @@ class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>
           primary,
           secondary,
           vertical,
+          thumbnails,
           accessibility: accessibility.childBehaviors ? accessibility.childBehaviors.item : undefined,
         }),
         overrideProps: this.handleItemOverrides(variables),

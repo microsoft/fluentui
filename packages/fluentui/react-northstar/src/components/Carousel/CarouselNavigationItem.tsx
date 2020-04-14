@@ -53,6 +53,8 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
 
   /** A vertical carousel navigation displays elements vertically. */
   vertical?: boolean;
+
+  thumbnails?: boolean;
 }
 
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
