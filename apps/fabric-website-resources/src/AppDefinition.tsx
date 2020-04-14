@@ -26,7 +26,7 @@ function loadReferences(): IAppLink[] {
 }
 
 export const AppDefinition: IAppDefinition = {
-  appTitle: 'UI Fabric - React',
+  appTitle: 'Fluent UI React',
   customizations: AppCustomizations,
   testPages: [
     {
@@ -583,7 +583,7 @@ export const AppDefinition: IAppDefinition = {
     },
     {
       name: 'Fabric',
-      url: 'https://dev.microsoft.com/fabric',
+      url: 'https://developer.microsoft.com/en-us/fluentui',
     },
     {
       name: 'GitHub',

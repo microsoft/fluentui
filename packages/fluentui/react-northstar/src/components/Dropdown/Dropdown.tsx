@@ -49,7 +49,6 @@ import {
   PopperShorthandProps,
   getPopperPropsFromShorthand,
 } from '../../utils/positioner';
-import ListItem, { ListItemProps } from '../List/ListItem';
 
 export interface DropdownSlotClassNames {
   clearIndicator: string;
@@ -129,6 +128,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** A dropdown can be formatted to appear inline next to other elements. */
   inline?: boolean;
 
+  /** A dropdown can have inverted colors. */
+  inverted?: boolean;
+
   /** Array of props for generating list options (Dropdown.Item[]) and selected item labels (Dropdown.SelectedItem[]), if it's a multiple selection. */
   items?: ShorthandCollection<DropdownItemProps>;
 
@@ -143,6 +145,9 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   /** Used when comparing two items in multiple selection. Default comparison is by the header prop. */
   itemToValue?: (item: ShorthandValue<DropdownItemProps>) => any;
 
+  /** A message to be displayed in the list header. */
+  headerMessage?: ShorthandValue<DropdownItemProps>;
+
   /** A slot for dropdown list. */
   list?: ShorthandValue<ListProps & { popper?: PopperShorthandProps }>;
 
@@ -150,7 +155,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   loading?: boolean;
 
   /** A message to be displayed in the list when the dropdown is loading. */
-  loadingMessage?: ShorthandValue<ListItemProps>;
+  loadingMessage?: ShorthandValue<DropdownItemProps>;
 
   /** When selecting an element with Tab, focus stays on the dropdown by default. If true, the focus will jump to next/previous element in DOM. Only available to multiple selection dropdowns. */
   moveFocusOnTab?: boolean;
@@ -159,7 +164,7 @@ export interface DropdownProps extends UIComponentProps<DropdownProps, DropdownS
   multiple?: boolean;
 
   /** A message to be displayed in the list when the dropdown has no items. */
-  noResultsMessage?: ShorthandValue<ListItemProps>;
+  noResultsMessage?: ShorthandValue<DropdownItemProps>;
 
   /**
    * Called when the dropdown's selected items index change.
@@ -296,9 +301,11 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     highlightFirstItemOnOpen: PropTypes.bool,
     highlightedIndex: PropTypes.number,
     inline: PropTypes.bool,
+    inverted: PropTypes.bool,
     items: customPropTypes.collectionShorthand,
     itemToString: PropTypes.func,
     itemToValue: PropTypes.func,
+    headerMessage: customPropTypes.itemShorthand,
     list: customPropTypes.itemShorthand,
     loading: PropTypes.bool,
     loadingMessage: customPropTypes.itemShorthand,
@@ -729,8 +736,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
     getItemProps: (options: GetItemPropsOptions<ShorthandValue<DropdownItemProps>>) => any,
     highlightedIndex: number,
   ) {
-    const { loading, loadingMessage, noResultsMessage, renderItem, checkable, checkableIndicator } = this.props;
+    const { renderItem, checkable, checkableIndicator } = this.props;
     const { filteredItems, value } = this.state;
+    const footerItem = this.renderItemsListFooter(styles);
+    const headerItem = this.renderItemsListHeader(styles);
 
     const items = _.map(filteredItems, (item, index) => ({
       children: () => {
@@ -756,28 +765,59 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
       },
     }));
 
-    return [
-      ...items,
-      loading && {
+    if (footerItem) {
+      items.push(footerItem);
+    }
+
+    return headerItem ? [headerItem, ...items] : items;
+  }
+
+  renderItemsListHeader(styles: ComponentSlotStylesInput) {
+    const { headerMessage } = this.props;
+
+    if (headerMessage) {
+      return {
         children: () =>
-          ListItem.create(loadingMessage, {
+          DropdownItem.create(headerMessage, {
+            defaultProps: () => ({
+              key: 'items-list-footer-message',
+              styles: styles.headerMessage,
+            }),
+          }),
+      };
+    }
+
+    return null;
+  }
+
+  renderItemsListFooter(styles: ComponentSlotStylesInput) {
+    const { loading, loadingMessage, noResultsMessage, items } = this.props;
+
+    if (loading) {
+      return {
+        children: () =>
+          DropdownItem.create(loadingMessage, {
             defaultProps: () => ({
               key: 'loading-message',
               styles: styles.loadingMessage,
             }),
           }),
-      },
-      !loading &&
-        items.length === 0 && {
-          children: () =>
-            ListItem.create(noResultsMessage, {
-              defaultProps: () => ({
-                key: 'no-results-message',
-                styles: styles.noResultsMessage,
-              }),
+      };
+    }
+
+    if (items && items.length === 0) {
+      return {
+        children: () =>
+          DropdownItem.create(noResultsMessage, {
+            defaultProps: () => ({
+              key: 'no-results-message',
+              styles: styles.noResultsMessage,
             }),
-        },
-    ];
+          }),
+      };
+    }
+
+    return null;
   }
 
   renderSelectedItems(variables, rtl: boolean) {
@@ -912,6 +952,13 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         }
 
         break;
+      case Downshift.stateChangeTypes.mouseUp:
+        if (open) {
+          newState.open = false;
+          newState.highlightedIndex = null;
+        }
+
+        break;
       case Downshift.stateChangeTypes.clickButton:
       case Downshift.stateChangeTypes.keyDownSpaceButton:
         newState.open = changes.isOpen;
@@ -947,6 +994,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         }
       default:
         break;
+    }
+
+    if (_.isEmpty(newState)) {
+      return;
     }
 
     const handlers: (keyof DropdownProps)[] = [

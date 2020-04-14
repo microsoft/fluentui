@@ -9,9 +9,9 @@ const menuButtonStyles: ComponentSlotStylesPrepared<MenuButtonProps> = {
   }),
   popupContent: () => ({
     [`& .${PopupContent.slotClassNames.content}`]: {
+      borderWidth: '0px',
       padding: '0px',
     },
-    borderWidth: '0px',
   }),
 };
 

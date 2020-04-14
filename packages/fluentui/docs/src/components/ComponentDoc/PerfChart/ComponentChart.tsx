@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'lodash';
-import { Box, Flex, RadioGroup, Text, Checkbox } from '@fluentui/react-northstar';
+import { Box, Flex, RadioGroup, Text } from '@fluentui/react-northstar';
 import { PerfData, PerfSample } from './PerfDataContext';
 
 enum FILTER_BY {
@@ -10,11 +10,13 @@ enum FILTER_BY {
   MONTH = 'month',
 }
 
-const ComponentChart = ({ chartData, withExtremesFilter = true, Chart }) => {
+export type ComponentChartProps = { chartData; Filter?; Chart };
+
+const ComponentChart: React.FunctionComponent<ComponentChartProps> = ({ chartData, Filter, Chart }) => {
   const { loading, error, data } = chartData;
 
   const [filterBy, setFilterBy] = React.useState(FILTER_BY.CI_BUILD);
-  const [withExtremes, setWithExtremes] = React.useState(false);
+  const [filter, setFilter] = React.useState();
 
   let filteredData: PerfData = data;
 
@@ -98,13 +100,7 @@ const ComponentChart = ({ chartData, withExtremesFilter = true, Chart }) => {
             ]}
           />
         )}
-        {withExtremesFilter && (
-          <Checkbox
-            label="Show extremes"
-            defaultChecked={withExtremes}
-            onChange={(e, { checked }) => setWithExtremes(checked)}
-          />
-        )}
+        {Filter && <Filter onChange={setFilter} />}
       </Flex>
 
       <Box
@@ -134,7 +130,7 @@ const ComponentChart = ({ chartData, withExtremesFilter = true, Chart }) => {
           ) : error ? (
             <Text error content={`Error: ${error.message}`} />
           ) : (
-            <Chart perfData={filteredData} withExtremes={withExtremes} />
+            <Chart perfData={filteredData} filter={filter} />
           )}
         </Flex>
       </Box>

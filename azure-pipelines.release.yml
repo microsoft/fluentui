@@ -79,10 +79,12 @@ steps:
 
   - script: |
       npm run publish:beachball -- -b origin/master -n $(npmToken) --access public -y
+    env:
+      GITHUB_PAT: $(githubPAT)
     displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
-      node scripts/updateReleaseNotes/index.js --token=$(githubPAT) --apply --debug
+      yarn ts-node --dir scripts updateReleaseNotes/index.ts --token=$(githubPAT) --apply --debug
     displayName: 'Update github release notes'
 
   - script: |

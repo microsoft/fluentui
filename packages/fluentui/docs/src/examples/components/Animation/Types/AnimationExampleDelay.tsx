@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Animation, Icon, Provider } from '@fluentui/react-northstar';
+import { Animation, Provider } from '@fluentui/react-northstar';
+import { MentionIcon } from '@fluentui/react-icons-northstar';
 
 const spinner = {
   keyframe: {
@@ -20,7 +21,7 @@ const AnimationExampleDelay = () => (
     <br />
     <Provider theme={{ animations: { spinner } }}>
       <Animation name="spinner" delay="5s">
-        <Icon name="mention" circular bordered />
+        <MentionIcon circular bordered />
       </Animation>
     </Provider>
   </div>

@@ -351,14 +351,18 @@ export default class FocusZone extends React.Component<FocusZoneProps> implement
       this._isParked = isParked;
 
       if (isParked) {
-        this._parkedTabIndex = this._root.current.getAttribute('tabindex');
-        this._root.current.setAttribute('tabindex', '-1');
+        if (!this.props.allowFocusRoot) {
+          this._parkedTabIndex = this._root.current.getAttribute('tabindex');
+          this._root.current.setAttribute('tabindex', '-1');
+        }
         this._root.current.focus();
-      } else if (this._parkedTabIndex) {
-        this._root.current.setAttribute('tabindex', this._parkedTabIndex);
-        this._parkedTabIndex = undefined;
-      } else {
-        this._root.current.removeAttribute('tabindex');
+      } else if (!this.props.allowFocusRoot) {
+        if (this._parkedTabIndex) {
+          this._root.current.setAttribute('tabindex', this._parkedTabIndex);
+          this._parkedTabIndex = undefined;
+        } else {
+          this._root.current.removeAttribute('tabindex');
+        }
       }
     }
   }

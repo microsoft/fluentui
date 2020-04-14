@@ -12,6 +12,7 @@ import {
 
 import AnimatedBannerAlert from './AnimatedBannerAlert';
 import ComposeMessage from '../chatPane/composeMessage';
+import { CloseIcon } from '@fluentui/react-icons-northstar';
 
 type BannerName = 'info' | 'oof' | 'danger' | 'urgent';
 
@@ -89,7 +90,7 @@ class BannerAlerts extends React.Component<{}, BannerAlertsState> {
               content: getBannerContent(selectedBannerName),
               ...(isAlertClosable(selectedBannerName) && {
                 open,
-                action: { icon: 'close', onClick: this.closeSelectedBanner },
+                action: { icon: <CloseIcon />, onClick: this.closeSelectedBanner },
               }),
             }}
           />

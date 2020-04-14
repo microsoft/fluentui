@@ -27,8 +27,8 @@ export default () => (
     <p>
       Fluent UI leverages Focus Trap Zone component which is based on the{' '}
       {link(
-        'Focus Trap Zone from Office UI Fabric.',
-        'https://developer.microsoft.com/en-us/fabric#/components/focustrapzone',
+        'Focus Trap Zone from Fluent UI React.',
+        'https://developer.microsoft.com/en-us/fluentui#/controls/web/focustrapzone',
       )}
     </p>
     <Header as="h2">Usage</Header>

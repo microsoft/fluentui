@@ -1,4 +1,5 @@
 import { List, Avatar } from '@fluentui/react-northstar';
+import { AcceptIcon } from '@fluentui/react-icons-northstar';
 import * as _ from 'lodash';
 import * as React from 'react';
 
@@ -8,7 +9,7 @@ const avatars = {
 };
 const janeAvatar = {
   image: `data:image/jpeg;base64,${avatars.ade}`,
-  status: { color: 'green', icon: 'icon-checkmark' },
+  status: { color: 'green', icon: <AcceptIcon /> },
 };
 const headers = ['Irving Kuhic', 'Skyler Parks', 'Dante Schneider'];
 const headerMedias = ['7:26:56 AM', '11:30:17 PM', '5:22:40 PM'];

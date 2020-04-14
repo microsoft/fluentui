@@ -21,7 +21,6 @@ exports[`Component Examples renders DetailsList.Animation.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
-  dir="ltr"
 >
   <div
     className="ms-Viewport"
