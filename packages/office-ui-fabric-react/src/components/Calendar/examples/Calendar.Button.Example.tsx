@@ -34,12 +34,38 @@ const DayPickerStrings = {
   closeButtonAriaLabel: 'Close',
 };
 
+export interface ICalendarButtonExampleState {
+  showCalendar: boolean;
+  selectedDate: Date | null;
+}
+
+export interface ICalendarButtonExampleProps {
+  isDayPickerVisible?: boolean;
+  isMonthPickerVisible?: boolean;
+  highlightCurrentMonth?: boolean;
+  highlightSelectedMonth?: boolean;
+  buttonString?: string;
+  showMonthPickerAsOverlay?: boolean;
+  showGoToToday?: boolean;
+}
+
 let calendarButtonElement: HTMLElement;
 
-export const CalendarButtonExample: React.FunctionComponent = () => {
+export const CalendarButtonExample: React.FunctionComponent<ICalendarButtonExampleProps> = (
+  props: ICalendarButtonExampleProps,
+) => {
   const [showCalendar, { toggle: toggleShowCalendar }] = useBoolean(false);
   const [selectedDate, setSelectedDate] = React.useState();
 
+  const {
+    showMonthPickerAsOverlay = false,
+    isDayPickerVisible = true,
+    isMonthPickerVisible = true,
+    showGoToToday = true,
+    buttonString = 'Click for Calendar',
+    highlightCurrentMonth,
+    highlightSelectedMonth,
+  } = props;
   const onSelectDate = (date: Date): void => {
     toggleShowCalendar();
     setSelectedDate(date);
@@ -50,7 +76,7 @@ export const CalendarButtonExample: React.FunctionComponent = () => {
       <div ref={calendarBtn => (calendarButtonElement = calendarBtn!)}>
         <DefaultButton
           onClick={toggleShowCalendar}
-          text={!selectedDate ? 'Click for Calendar' : selectedDate.toLocaleDateString()}
+          text={!selectedDate ? buttonString : selectedDate.toLocaleDateString()}
         />
       </div>
       {showCalendar && (
@@ -64,19 +90,19 @@ export const CalendarButtonExample: React.FunctionComponent = () => {
           onDismiss={toggleShowCalendar}
           setInitialFocus
         >
-          <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap>
+          <FocusTrapZone firstFocusableSelector="ms-DatePicker-day--today" isClickableOutsideFocusTrap={true}>
             <Calendar
               onSelectDate={onSelectDate}
               onDismiss={toggleShowCalendar}
-              isMonthPickerVisible
+              isMonthPickerVisible={isMonthPickerVisible}
               value={selectedDate!}
               firstDayOfWeek={DayOfWeek.Sunday}
               strings={DayPickerStrings}
-              isDayPickerVisible
-              highlightCurrentMonth
-              highlightSelectedMonth
-              showMonthPickerAsOverlay={false}
-              showGoToToday
+              isDayPickerVisible={isDayPickerVisible}
+              highlightCurrentMonth={highlightCurrentMonth}
+              highlightSelectedMonth={highlightSelectedMonth}
+              showMonthPickerAsOverlay={showMonthPickerAsOverlay}
+              showGoToToday={showGoToToday}
             />
           </FocusTrapZone>
         </Callout>
