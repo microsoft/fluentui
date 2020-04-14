@@ -23,7 +23,7 @@ export class UnifiedPeoplePickerPage extends React.Component<IComponentDemoPageP
               require<
                 string
                 // tslint:disable-next-line:max-line-length
-              >('!raw-loader!@uifabric/experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker.types.ts')
+              >('!raw-loader!@uifabric/experiments/src/components/UnifiedPicker/UnifiedPeoplePicker/UnifiedPeoplePicker.types.ts'),
             ]}
           />
         }
