@@ -948,6 +948,13 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         }
 
         break;
+      case Downshift.stateChangeTypes.mouseUp:
+        if (open) {
+          newState.open = false;
+          newState.highlightedIndex = null;
+        }
+
+        break;
       case Downshift.stateChangeTypes.clickButton:
       case Downshift.stateChangeTypes.keyDownSpaceButton:
         newState.open = changes.isOpen;
@@ -983,6 +990,10 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
         }
       default:
         break;
+    }
+
+    if (_.isEmpty(newState)) {
+      return;
     }
 
     const handlers: (keyof DropdownProps)[] = [
