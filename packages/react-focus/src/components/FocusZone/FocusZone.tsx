@@ -432,14 +432,12 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
           root.setAttribute('tabindex', '-1');
         }
         root.focus();
-      } else {
-        if (!this.props.allowFocusRoot) {
-          if (this._parkedTabIndex) {
-            root.setAttribute('tabindex', this._parkedTabIndex);
-            this._parkedTabIndex = undefined;
-          } else {
-            root.removeAttribute('tabindex');
-          }
+      } else if (!this.props.allowFocusRoot) {
+        if (this._parkedTabIndex) {
+          root.setAttribute('tabindex', this._parkedTabIndex);
+          this._parkedTabIndex = undefined;
+        } else {
+          root.removeAttribute('tabindex');
         }
       }
     }
