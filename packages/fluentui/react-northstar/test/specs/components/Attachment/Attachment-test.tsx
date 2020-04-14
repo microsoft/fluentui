@@ -50,7 +50,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      findIntrinsicElement(attachment, `.${Attachment.slotClassNames.action}`).simulate('keydown', {
+      findIntrinsicElement(attachment, `.${AttachmentAction.className}`).simulate('keydown', {
         keyCode: keyboardKey.Enter,
       });
       expect(onClickAttachment).not.toBeCalled();
