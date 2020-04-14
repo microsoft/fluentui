@@ -2,7 +2,7 @@ import { compose } from '@fluentui/react-bindings';
 import * as React from 'react';
 
 import { WithAsProp } from '../../types';
-import { createShorthandFactory, ShorthandFactory } from '../../utils';
+import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
 import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface AttachmentDescriptionOwnProps {}
@@ -28,9 +28,11 @@ const AttachmentDescription = compose<
   className: string;
 };
 
-AttachmentDescription.create = createShorthandFactory({ Component: AttachmentDescription, mappedProp: 'content' });
 AttachmentDescription.defaultProps = {
   as: 'span',
 };
+AttachmentDescription.propTypes = commonPropTypes.createCommon();
+
+AttachmentDescription.create = createShorthandFactory({ Component: AttachmentDescription, mappedProp: 'content' });
 
 export default AttachmentDescription;

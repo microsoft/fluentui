@@ -23,10 +23,12 @@ const AttachmentAction = compose<
   displayName: 'AttachmentAction',
 }) as React.FC<AttachmentActionProps> & { create?: ShorthandFactory<AttachmentActionProps>; className: string };
 
-AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
 AttachmentAction.defaultProps = {
   iconOnly: true,
   text: true,
 };
+AttachmentAction.propTypes = (Button as React.FC).propTypes;
+
+AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
 
 export default AttachmentAction;
