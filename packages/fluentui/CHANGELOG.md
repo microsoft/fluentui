@@ -31,6 +31,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecWithStyles` @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
 - Restricted prop sets in the `Attachment` component which are passed to styles functions @layershifter ([#12576](https://github.com/microsoft/fluentui/pull/12576))
 - Replace `ListItemProps` with `DropdownItemProps` for `Dropdown` slots `noResultsMessage` and `loadingMessage` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
+- CSS Grid, `linear-gradient()`, `background-clip`, `cross-fade()` are not prefixed @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
 
 ### Fixes
 - Fix default focused input outline in Safari @sheff146 ([#12279](https://github.com/microsoft/fluentui/pull/12279))
@@ -67,6 +68,9 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Add `headerMessage` slot for `Dropdown` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
 - Add `size` and `fluid` props to `Card` component @pompomon ([#12589](https://github.com/microsoft/fluentui/pull/12589))
 - Add shadow styles to `Card` component @pompomon ([#12624](https://github.com/microsoft/fluentui/pull/12624))
+
+### Performance
+- Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/OfficeDev/office-ui-fabric-react/pull/12289))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
@@ -106,9 +110,6 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Adding `raise hand`, `raise hand colored`, `raise hand disabled`, `merge calls`, `share location`, `panorama` and `spotlight` icons @TanelVari ([#12212](https://github.com/OfficeDev/office-ui-fabric-react/pull/12212))
 - Expose `contentWrapper` shorthand from `AccordionTitle` @silviuavram ([#12265](https://github.com/OfficeDev/office-ui-fabric-react/pull/12265))
 - Add `disabled` versions for `Dropdown` and `Input` @silviuavram ([#12250](https://github.com/OfficeDev/office-ui-fabric-react/pull/12250))
-
-### Performance
-- Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/OfficeDev/office-ui-fabric-react/pull/12289))
 
 ### Documentation
 - Adding context menu for table row to example and prototype @kolaps33 ([#12253](https://github.com/OfficeDev/office-ui-fabric-react/pull/12253))
