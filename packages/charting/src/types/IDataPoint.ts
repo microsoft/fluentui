@@ -190,15 +190,25 @@ export interface IGroupedVerticalBarChartData {
 }
 
 export interface IGVDataPoint {
+  /**
+   * This interface used for - While forming datapoints from given prop "data" in code
+   * datapoints are used for to draw graph
+   */
   [key: string]: number | string;
 }
 
 export interface IGVSingleDataPoint {
+  /**
+   * While forming datapoints from given prop "data" in code.
+   * These datapoints are used for to draw graph easily.
+   */
   [key: string]: IGVDataPoint;
 }
 
-export interface IGV {
+export interface IGVForBarChart {
+  /**
+   * While forming datapoints from given prop "data"
+   * These datapoints are used for to draw graph.
+   */
   [key: string]: IGVBarChartSeriesPoint;
-  // xAxisPoint?: string | undefined;
-  // indexNum?: number;
 }

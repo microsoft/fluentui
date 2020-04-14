@@ -1,5 +1,5 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IGroupedVerticalBarChartDataPoint } from '@uifabric/charting';
+import { IGroupedVerticalBarChartData } from '@uifabric/charting';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
@@ -8,7 +8,7 @@ export interface IGroupedVerticalBarChartProps {
   /**
    * Data to render in the chart.
    */
-  data: IGroupedVerticalBarChartDataPoint[];
+  data: IGroupedVerticalBarChartData[];
 
   /**
    * Width of the chart.

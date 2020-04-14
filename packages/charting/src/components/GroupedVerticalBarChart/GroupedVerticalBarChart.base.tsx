@@ -19,11 +19,11 @@ import {
   IGVBarChartSeriesPoint,
   IGVDataPoint,
   IGVSingleDataPoint,
-  IGV,
+  IGVForBarChart,
 } from '../../types';
 
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
-type stringAxis = D3Axis<string>; // Partial<D3Axis<string>>;partial for not having all props
+type stringAxis = D3Axis<string>;
 type numericAxis = D3Axis<number | { valueOf(): number }>;
 
 export interface IRefArrayData {
@@ -62,9 +62,13 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _refArray: IRefArrayData[];
   private _reqID: number;
   private _yMax: number;
+  // tslint:disable-next-line:no-any
   private _datasetForBars: any;
+  // tslint:disable-next-line:no-any
   private _xScale0: any;
+  // tslint:disable-next-line:no-any
   private _xScale1: any;
+  // tslint:disable-next-line:no-any
   private _yBarScale: any;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
@@ -127,7 +131,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
     const legends: JSX.Element = this._getLegendData(this.props.theme!.palette);
 
     this._classNames = getClassNames(styles!, {
-      // check this again
       theme: theme!,
       width: this.state._width,
       height: this.state._height,
@@ -304,7 +307,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .data(this._datasetForBars)
       .enter()
       .append('g')
-      .attr('transform', (d: IGV) => `translate(${this._xScale0(d.xAxisPoint)}, 0)`);
+      .attr('transform', (d: IGVForBarChart) => `translate(${this._xScale0(d.xAxisPoint)}, 0)`);
 
     const tempDataSet = Object.keys(this._datasetForBars[0]).splice(0, 3);
     tempDataSet.map((datasetKey: string, index: number) => {
@@ -317,7 +320,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('focusable', true)
         .attr('data-is-focusable', true)
         .attr('class', this._classNames.opacityChangeOnHover)
-        .attr('fill-opacity', (d: IGV) => that._getOpacity(d[datasetKey].legend))
+        .attr('fill-opacity', (d: IGVForBarChart) => that._getOpacity(d[datasetKey].legend))
         .attr('x', (d: IGVSingleDataPoint) => this._xScale1(datasetKey)!)
         .attr('y', (d: IGVSingleDataPoint) => {
           return this.state.containerHeight - this.margins.bottom - this._yBarScale(d[datasetKey].data);
@@ -326,14 +329,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('height', (d: IGVSingleDataPoint) => {
           return this._yBarScale(d[datasetKey].data);
         })
-        .on('mouseover', (d: IGV) => {
-          console.log(typeof d, 'd type', d);
+        .on('mouseover', (d: IGVForBarChart) => {
           return that.mouseAction('mouseover', d[datasetKey].color, d[datasetKey].data, d[datasetKey].legend);
         })
-        .on('mousemove', (d: IGV) =>
+        .on('mousemove', (d: IGVForBarChart) =>
           that.mouseAction('mousemove', d[datasetKey].color, d[datasetKey].data, d[datasetKey].legend),
         )
         .on('mouseout', this._onBarLeave)
+        // tslint:disable-next-line:no-any
         .on('focus', (d: any) =>
           that.focusAction(
             'focus',
@@ -344,7 +347,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
           ),
         )
         .on('blur', that._onBarLeave)
-        .on('click', (d: IGV) => that._redirectToUrl(this.props.href!));
+        .on('click', (d: IGVForBarChart) => that._redirectToUrl(this.props.href!));
     });
   };
 
@@ -367,12 +370,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return xAxisLabels;
   };
 
-  private _createDataset = (): any => {
+  private _createDataset = () => {
+    // tslint:disable-next-line:no-any
     const datasetForBars: any = [];
     const dataset: IGVDataPoint[] = [];
 
     this._points.map((point: IGroupedVerticalBarChartData, index: number) => {
       const singleDatasetPoint: IGVDataPoint = {};
+      // tslint:disable-next-line:no-any
       const singleDatasetPointforBars: any = {};
 
       point.series.map((seriesPoint: IGVBarChartSeriesPoint) => {
@@ -392,7 +397,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return datasetForBars;
   };
 
-  private _createX0Scale = (xAxisLabels: string[]): any => {
+  private _createX0Scale = (xAxisLabels: string[]) => {
     const x0Axis = d3ScaleBand()
       .domain(xAxisLabels.map((label: string) => label))
       .range([this.margins.left, this.state.containerWidth - this.margins.right])
@@ -400,6 +405,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return x0Axis;
   };
 
+  // tslint:disable-next-line:no-any
   private _createX1Scale = (xScale0: any): any => {
     return d3ScaleBand()
       .domain(this._keys)
@@ -407,6 +413,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
       .padding(this._barPadding / 100);
   };
 
+  // tslint:disable-next-line:no-any
   private _createx0Axis = (xScale0: any): any => {
     const x0Axis = d3AxisBottom(xScale0).tickPadding(10);
 
@@ -416,6 +423,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   private _createYAxis(dataset: IGVDataPoint[]): numericAxis {
+    // tslint:disable-next-line:no-any
     const yMax: number = d3Max(dataset, (point: any) => d3Max(this._keys, (key: string) => point[key]));
     this._yMax = yMax;
     const interval = Math.ceil(yMax / this._yAxisTickCount);

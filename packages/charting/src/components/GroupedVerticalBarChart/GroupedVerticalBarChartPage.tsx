@@ -4,8 +4,10 @@ import { ComponentPage, ExampleCard, IComponentDemoPageProps, PropertiesTableSet
 
 import { GroupedVerticalBarChartBasicExample } from './examples/GroupedVerticalBarChart.Basic.Example';
 import { GroupedVerticalBarChartStyledExample } from './examples/GroupedVerticalBarChart.Styled.Example';
-// check types and linter
+
+// tslint:disable-next-line: max-line-length
 const GroupedVerticalBasicExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVericalBarChart/examples/GroupedVeritcalBarChart.Basic.Example.tsx') as string;
+// tslint:disable-next-line: max-line-length
 const GroupedVerticalStyledExampleCode = require('!raw-loader!@uifabric/charting/src/components/GroupedVericalBarChart/examples/GroupedVeritcalBarChart.Styled.Example.tsx') as string;
 
 export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageProps, {}> {

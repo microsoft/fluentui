@@ -68,20 +68,3 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<Readonl
     );
   }
 }
-
-// const a = [
-//   {
-//     series1: {
-//       data: 10,
-//       legend: 'a',
-//     },
-//     series2: {
-//       data: 90,
-//       legend: 'b',
-//     },
-//     xPoint: 'India',
-//   },
-//   {
-
-//   }
-// ];
