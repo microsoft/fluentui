@@ -4,6 +4,10 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import * as d3 from 'd3-format';
 
+export const calloutItemStyle = mergeStyles({
+  borderBottom: '1px solid #D9D9D9',
+});
+
 interface IRootStyles {
   height: string;
   width: string;
@@ -101,6 +105,39 @@ export class LineChartBasicExample extends React.Component<{}, {}> {
           yMinValue={282}
           yMaxValue={301}
           yAxisTickFormat={d3.format('$,')}
+          eventAnnotationProps={{
+            events: [
+              {
+                event: 'Insider risk case opened',
+                date: new Date('2020-03-05T00:00:00.000Z'),
+                onRenderCard: () => (
+                  <div className={calloutItemStyle}>
+                    3Insider risk case opened a Insider risk case openedInsider risk case openedInsider risk case
+                    openedInsider risk case openedInsider risk case openedInsider risk case openedInsider risk case
+                    opened,
+                  </div>
+                ),
+              },
+              {
+                event: 'Employment change (role/job)',
+                date: new Date('2020-03-08T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>Employment change (role/job)</div>,
+              },
+              {
+                event: 'Employment change (role/job)',
+                date: new Date('2020-03-05T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>Employment change (role/job)</div>,
+              },
+              {
+                event: 'Employment change (role/job)',
+                date: new Date('2020-03-05T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>Employment change (role/job) 2</div>,
+              },
+            ],
+            strokeColor: '#111111',
+            labelColor: '#111111',
+            mergedLabel: (count: number) => `${count} selected!`,
+          }}
         />
       </div>
     );

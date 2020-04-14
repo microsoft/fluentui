@@ -16,6 +16,7 @@ import {
 } from './LineChart.types';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react';
+import { EventsAnnotation } from '@uifabric/charting/lib/components/LineChart/eventAnnotation/EventAnnotation';
 
 const getClassNames = classNamesFunction<ILineChartStyleProps, ILineChartStyles>();
 
@@ -95,7 +96,7 @@ export class LineChartBase extends React.Component<
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat } = this.props;
+    const { theme, className, styles, tickValues, tickFormat, yAxisTickFormat, eventAnnotationProps } = this.props;
     this._points = this.props.data.lineChartData ? this.props.data.lineChartData : [];
     if (this.props.parentRef) {
       this._fitParentContainer();
@@ -153,6 +154,14 @@ export class LineChartBase extends React.Component<
               className={this._classNames.yAxis}
             />
             <g>{lines}</g>
+            {eventAnnotationProps && (
+              <EventsAnnotation
+                {...eventAnnotationProps}
+                scale={this._xAxisScale}
+                chartYTop={this.margins.top + 36}
+                chartYBottom={svgDimensions.height - 35}
+              />
+            )}
           </svg>
         </FocusZone>
         <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
@@ -399,7 +408,10 @@ export class LineChartBase extends React.Component<
     const domainValues = this._prepareDatapoints(finalYmax, finalYmin, 4);
     const yAxisScale = d3ScaleLinear()
       .domain([finalYmin, domainValues[domainValues.length - 1]])
-      .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);
+      .range([
+        this.state.containerHeight - this.margins.bottom,
+        this.margins.top + (this.props.eventAnnotationProps ? 36 : 0),
+      ]);
     this._yAxisScale = yAxisScale;
     const yAxis = d3AxisLeft(yAxisScale)
       .tickSize(-(this.state.containerWidth - this.margins.left - this.margins.right))

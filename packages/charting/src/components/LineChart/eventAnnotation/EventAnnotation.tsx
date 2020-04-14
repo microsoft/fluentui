@@ -1,19 +1,16 @@
 import * as React from 'react';
-import * as _ from 'lodash';
+import { findIndex, range, unionBy } from 'lodash';
 import { ScaleTime } from 'd3-scale';
-import { EventAnnotation } from './BubbleChart.types';
-import { LineDef, LabelLink, LabelDef } from './LabelLink';
+import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
+import { IEventsAnnotationProps } from '../LineChart.types';
 
-interface EventsAnnotationProps {
-  events: EventAnnotation[];
+interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
   scale: ScaleTime<number, number>;
   chartYBottom: number;
   chartYTop: number;
-  color: string;
-  referenceDate?: Date;
 }
 
-export function EventsAnnotation(props: EventsAnnotationProps) {
+export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
   const textWidth = 105;
   const textY = props.chartYTop - 20;
   const lineTopY = textY + 7;
@@ -22,12 +19,20 @@ export function EventsAnnotation(props: EventsAnnotationProps) {
   const fontSize = '10pt';
   const range = props.scale.range();
 
-  const lineDefs: LineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
+  const lineDefs: ILineDef[] = props.events.map(e => ({ ...e, x: props.scale(e.date) }));
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
 
-  const lines = lineDefs.map((x, i) => (
-    <line key={i} x1={x.x} x2={x.x} y1={lineTopY} y2={props.chartYBottom} stroke={props.color} strokeDasharray="4" />
+  const lines = unionBy(lineDefs, x => x.date.toString()).map((x, i) => (
+    <line
+      key={i}
+      x1={x.x}
+      x2={x.x}
+      y1={lineTopY}
+      y2={props.chartYBottom}
+      stroke={props.strokeColor}
+      strokeDasharray="8"
+    />
   ));
 
   const labelLinks = calculateLabels(lineDefs, textWidth + textPadding, range[1], range[0]).map((x, i) => (
@@ -40,7 +45,8 @@ export function EventsAnnotation(props: EventsAnnotationProps) {
         textWidth,
         textLineHeight: lineHeight,
         textFontSize: fontSize,
-        textColor: props.color,
+        textColor: props.labelColor,
+        mergedLabel: props.mergedLabel,
       }}
     />
   ));
@@ -53,8 +59,8 @@ export function EventsAnnotation(props: EventsAnnotationProps) {
   );
 }
 
-function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, minX: number): LabelDef[] {
-  const calculateLabel = (lastX: number, currentIdx: number): LabelDef[] => {
+function calculateLabels(lineDefs: ILineDef[], textWidth: number, maxX: number, minX: number): ILabelDef[] {
+  const calculateLabel = (lastX: number, currentIdx: number): ILabelDef[] => {
     // base case 1
     if (currentIdx == lineDefs.length) {
       return [];
@@ -88,19 +94,19 @@ function calculateLabels(lineDefs: LineDef[], textWidth: number, maxX: number, m
     }
   };
 
-  const backtrack = (currentIdx: number, anchor: 'start' | 'end'): LabelDef[] => {
+  const backtrack = (currentIdx: number, anchor: 'start' | 'end'): ILabelDef[] => {
     const bd = anchor === 'end' ? lineDefs[currentIdx].x : lineDefs[currentIdx].x + textWidth;
 
-    let idx = _.findIndex(
+    let idx = findIndex(
       lineDefs,
-      ds => ds.x >= bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
+      ds => ds.x > bd && (ds.x - textWidth >= bd || ds.x + textWidth < maxX),
       currentIdx + 1,
     );
     if (idx == -1) {
       idx = lineDefs.length;
     }
 
-    const aggregatedIdx = _.range(currentIdx, idx);
+    const aggregatedIdx = range(currentIdx, idx);
     let next = calculateLabel(bd, idx);
 
     next.unshift({ x: lineDefs[currentIdx].x, anchor, aggregatedIdx });

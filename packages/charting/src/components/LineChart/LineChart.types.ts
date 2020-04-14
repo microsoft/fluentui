@@ -3,6 +3,7 @@ import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IOverflowSetProps } from 'office-ui-fabric-react/lib/OverflowSet';
 import { IFocusZoneProps } from 'office-ui-fabric-react/lib/FocusZone';
 import { IChartProps } from '../../types/IDataPoint';
+import { IEventAnnotation } from '../../types/IEventAnnotation';
 
 export { IChartProps, IDataPoint, ILineChartDataPoint, ILineChartPoints } from '../../types/IDataPoint';
 
@@ -99,6 +100,15 @@ export interface ILineChartProps {
    */
   // tslint:disable-next-line: no-any
   yAxisTickFormat?: any;
+
+  eventAnnotationProps?: IEventsAnnotationProps;
+}
+
+export interface IEventsAnnotationProps {
+  events: IEventAnnotation[];
+  strokeColor: string;
+  labelColor: string;
+  mergedLabel: (count: number) => string;
 }
 
 export interface ILineChartStyleProps {

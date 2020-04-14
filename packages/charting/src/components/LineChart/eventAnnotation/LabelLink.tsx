@@ -1,33 +1,29 @@
 import * as React from 'react';
 import { Callout, FocusZone, FocusZoneDirection, List, mergeStyles } from 'office-ui-fabric-react';
-import { EventAnnotation } from './BubbleChart.types';
-// import { calloutItemStyle } from './AnimatedCircle';
 // import { formatString, ComponentStrings } from '../../shared/localizationInitializer';
 // import { ColorPlate } from '../../shared/colorPlate.types';
-import { Textbox } from './Textbox';
+import { Textbox } from '@uifabric/charting/lib/components/LineChart/eventAnnotation/Textbox';
+import { IEventAnnotation } from '../../../types/IEventAnnotation';
 
-export const calloutItemStyle = mergeStyles({
-  borderBottom: '1px solid #D9D9D9',
-});
-
-export interface LineDef extends EventAnnotation {
+export interface ILineDef extends IEventAnnotation {
   x: number;
 }
 
-export interface LabelDef {
+export interface ILabelDef {
   x: number;
   aggregatedIdx: number[];
   anchor: 'start' | 'end';
 }
 
 interface ILabelLinkProps {
-  lineDefs: LineDef[];
-  labelDef: LabelDef;
+  lineDefs: ILineDef[];
+  labelDef: ILabelDef;
   textY: number;
   textWidth: number;
   textLineHeight: number;
   textFontSize: string;
   textColor: string;
+  mergedLabel: (count: number) => string;
 }
 
 export function LabelLink(props: ILabelLinkProps) {
@@ -40,15 +36,10 @@ export function LabelLink(props: ILabelLinkProps) {
     if (cards.length > 0) {
       callout = (
         <Callout target={gRef.current} onDismiss={() => setShowCard(false)} setInitialFocus={true} role="dialog">
-          <div className={calloutItemStyle}>{`${cards.length} selected 1`}</div>
           <FocusZone isCircularNavigation={true} direction={FocusZoneDirection.vertical}>
             <List<() => React.ReactNode>
               items={cards}
-              onRenderCell={i => (
-                <div className={calloutItemStyle} data-is-focusable={true}>
-                  {i && i()}
-                </div>
-              )}
+              onRenderCell={i => <div data-is-focusable={true}>{i && i()}</div>}
             />
           </FocusZone>
         </Callout>
@@ -62,8 +53,8 @@ export function LabelLink(props: ILabelLinkProps) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
     fill = props.textColor;
   } else {
-    text = `${props.labelDef.aggregatedIdx.length} selected 2`;
-    fill = props.textColor;
+    text = props.mergedLabel(props.labelDef.aggregatedIdx.length);
+    fill = props.textColor; // special color
   }
 
   return (
