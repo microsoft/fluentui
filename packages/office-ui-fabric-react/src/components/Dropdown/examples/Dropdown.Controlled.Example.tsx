@@ -3,43 +3,34 @@ import { Dropdown, DropdownMenuItemType, IDropdownOption, IDropdownStyles } from
 
 const dropdownStyles: Partial<IDropdownStyles> = { dropdown: { width: 300 } };
 
-export interface IDropdownControlledExampleState {
-  selectedItem?: { key: string | number | undefined };
-}
+const dropdownControlledExampleOptions = [
+  { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },
+  { key: 'apple', text: 'Apple' },
+  { key: 'banana', text: 'Banana' },
+  { key: 'orange', text: 'Orange', disabled: true },
+  { key: 'grape', text: 'Grape' },
+  { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
+  { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
+  { key: 'broccoli', text: 'Broccoli' },
+  { key: 'carrot', text: 'Carrot' },
+  { key: 'lettuce', text: 'Lettuce' },
+];
 
-export class DropdownControlledExample extends React.Component<{}, IDropdownControlledExampleState> {
-  public state: IDropdownControlledExampleState = {
-    selectedItem: undefined,
+export const DropdownControlledExample: React.FunctionComponent = () => {
+  const [selectedItem, setSelectedItem] = React.useState();
+
+  const onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
+    setSelectedItem(item);
   };
 
-  public render() {
-    const { selectedItem } = this.state;
-
-    return (
-      <Dropdown
-        label="Controlled example"
-        selectedKey={selectedItem ? selectedItem.key : undefined}
-        onChange={this._onChange}
-        placeholder="Select an option"
-        options={[
-          { key: 'fruitsHeader', text: 'Fruits', itemType: DropdownMenuItemType.Header },
-          { key: 'apple', text: 'Apple' },
-          { key: 'banana', text: 'Banana' },
-          { key: 'orange', text: 'Orange', disabled: true },
-          { key: 'grape', text: 'Grape' },
-          { key: 'divider_1', text: '-', itemType: DropdownMenuItemType.Divider },
-          { key: 'vegetablesHeader', text: 'Vegetables', itemType: DropdownMenuItemType.Header },
-          { key: 'broccoli', text: 'Broccoli' },
-          { key: 'carrot', text: 'Carrot' },
-          { key: 'lettuce', text: 'Lettuce' },
-        ]}
-        styles={dropdownStyles}
-      />
-    );
-  }
-
-  private _onChange = (event: React.FormEvent<HTMLDivElement>, item: IDropdownOption): void => {
-    console.log(`Selection change: ${item.text} ${item.selected ? 'selected' : 'unselected'}`);
-    this.setState({ selectedItem: item });
-  };
-}
+  return (
+    <Dropdown
+      label="Controlled example"
+      selectedKey={selectedItem ? selectedItem.key : undefined}
+      onChange={onChange}
+      placeholder="Select an option"
+      options={dropdownControlledExampleOptions}
+      styles={dropdownStyles}
+    />
+  );
+};
