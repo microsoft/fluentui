@@ -3,8 +3,8 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { AttachmentActionStylesProps } from '../../../../components/Attachment/AttachmentAction';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import { AttachmentVariables } from './attachmentVariables';
-import getIconFillOrOutlineStyles from 'src/themes/teams/getIconFillOrOutlineStyles';
-import getBorderFocusStyles from 'src/themes/teams/getBorderFocusStyles';
+import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
+import getBorderFocusStyles from '../../getBorderFocusStyles';
 
 const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStylesProps, AttachmentVariables> = {
   root: ({ variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
