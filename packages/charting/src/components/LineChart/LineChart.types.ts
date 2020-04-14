@@ -108,6 +108,8 @@ export interface IEventsAnnotationProps {
   events: IEventAnnotation[];
   strokeColor: string;
   labelColor: string;
+  labelHeight?: number;
+  labelWidth?: number;
   mergedLabel: (count: number) => string;
 }
 

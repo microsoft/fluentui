@@ -58,6 +58,7 @@ export class LineChartBase extends React.Component<
   // These margins are necessary for d3Scales to appear without cutting off
   private margins = { top: 20, right: 20, bottom: 35, left: 40 };
   private minLegendContainerHeight: number = 32;
+  private eventLabelHeight: number = 36;
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
@@ -84,6 +85,9 @@ export class LineChartBase extends React.Component<
         .toString(36)
         .substring(7);
     this._fitParentContainer = this._fitParentContainer.bind(this);
+    props.eventAnnotationProps &&
+      props.eventAnnotationProps.labelHeight &&
+      (this.eventLabelHeight = props.eventAnnotationProps.labelHeight);
   }
 
   public componentDidMount(): void {
@@ -158,7 +162,7 @@ export class LineChartBase extends React.Component<
               <EventsAnnotation
                 {...eventAnnotationProps}
                 scale={this._xAxisScale}
-                chartYTop={this.margins.top + 36}
+                chartYTop={this.margins.top + this.eventLabelHeight}
                 chartYBottom={svgDimensions.height - 35}
               />
             )}
@@ -410,7 +414,7 @@ export class LineChartBase extends React.Component<
       .domain([finalYmin, domainValues[domainValues.length - 1]])
       .range([
         this.state.containerHeight - this.margins.bottom,
-        this.margins.top + (this.props.eventAnnotationProps ? 36 : 0),
+        this.margins.top + (this.props.eventAnnotationProps ? this.eventLabelHeight : 0),
       ]);
     this._yAxisScale = yAxisScale;
     const yAxis = d3AxisLeft(yAxisScale)

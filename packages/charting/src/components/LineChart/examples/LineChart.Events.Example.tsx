@@ -6,6 +6,7 @@ import * as d3 from 'd3-format';
 
 export const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
+  padding: '3px',
 });
 
 interface IRootStyles {
@@ -118,34 +119,35 @@ export class LineChartEventsExample extends React.Component<{}, {}> {
           eventAnnotationProps={{
             events: [
               {
-                event: 'Insider risk case opened',
-                date: new Date('2020-03-05T00:00:00.000Z'),
-                onRenderCard: () => (
-                  <div className={calloutItemStyle}>
-                    3Insider risk case opened a Insider risk case openedInsider risk case openedInsider risk case
-                    openedInsider risk case openedInsider risk case openedInsider risk case openedInsider risk case
-                    opened,
-                  </div>
-                ),
+                event: 'event 1',
+                date: new Date('2020-03-04T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>event 1 message</div>,
               },
               {
-                event: 'Employment change (role/job)',
+                event: 'event 2',
+                date: new Date('2020-03-04T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>event 2 message</div>,
+              },
+              {
+                event: 'event 3',
+                date: new Date('2020-03-04T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>event 3 message</div>,
+              },
+              {
+                event: 'event 4',
+                date: new Date('2020-03-06T00:00:00.000Z'),
+                onRenderCard: () => <div className={calloutItemStyle}>event 4 message</div>,
+              },
+              {
+                event: 'event 5',
                 date: new Date('2020-03-08T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>Employment change (role/job)</div>,
-              },
-              {
-                event: 'Employment change (role/job)',
-                date: new Date('2020-03-05T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>Employment change (role/job)</div>,
-              },
-              {
-                event: 'Employment change (role/job)',
-                date: new Date('2020-03-05T00:00:00.000Z'),
-                onRenderCard: () => <div className={calloutItemStyle}>Employment change (role/job) 2</div>,
+                onRenderCard: () => <div className={calloutItemStyle}>event 5 message</div>,
               },
             ],
             strokeColor: '#111111',
             labelColor: '#111111',
+            labelHeight: 18,
+            labelWidth: 50,
             mergedLabel: (count: number) => `${count} events`,
           }}
         />

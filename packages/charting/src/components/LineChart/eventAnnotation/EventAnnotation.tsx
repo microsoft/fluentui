@@ -11,7 +11,7 @@ interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
 }
 
 export function EventsAnnotation(props: IEventsAnnotationExtendProps) {
-  const textWidth = 105;
+  const textWidth = props.labelWidth ? props.labelWidth : 105;
   const textY = props.chartYTop - 20;
   const lineTopY = textY + 7;
   const textPadding = 5;

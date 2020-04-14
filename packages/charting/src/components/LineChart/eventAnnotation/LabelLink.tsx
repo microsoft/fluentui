@@ -52,7 +52,7 @@ export function LabelLink(props: ILabelLinkProps) {
     fill = props.textColor;
   } else {
     text = props.mergedLabel(props.labelDef.aggregatedIdx.length);
-    fill = props.textColor; // special color
+    fill = props.textColor;
   }
 
   return (
