@@ -60,22 +60,27 @@
   width: var(--statusSizeSmallest);
   height: var(--statusSizeSmallest);
 }
+
 ._size_smaller {
   width: var(--statusSizeSmaller);
   height: var(--statusSizeSmaller);
 }
+
 ._size_small {
   width: var(--statusSizeSmall);
   height: var(--statusSizeSmall);
 }
+
 ._size_large {
   width: var(--statusSizeLarge);
   height: var(--statusSizeLarge);
 }
+
 ._size_larger {
   width: var(--statusSizeLarger);
   height: var(--statusSizeLarger);
 }
+
 ._size_largest {
   width: var(--statusSizeLargest);
   height: var(--statusSizeLargest);

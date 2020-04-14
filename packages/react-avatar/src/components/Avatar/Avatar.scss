@@ -1,18 +1,17 @@
 // Define default variable values
 :root {
-  --avatarSizeSmallest: 24px;
+  --avatarSizeSmallest: 20px;
   --avatarSizeSmaller: 24px;
-  --avatarSizeSmall: 24px;
+  --avatarSizeSmall: 28px;
   --avatarSizeMedium: 32px;
-  --avatarSizeLarge: 36px;
-  --avatarSizeLarger: 42px;
-  --avatarSizeLargest: 48px;
+  --avatarSizeLarge: 44px;
+  --avatarSizeLarger: 64px;
+  --avatarSizeLargest: 96px;
   --avatarBorderColor: transparent;
   --avatarBorderWidth: 0;
   --squareAvatarBorderRadius: 3px;
   --statusBorderColor: var(--bodyBackground, white);
   --statusBorderWidth: 2px;
-
   --avatarFill: rgb(232, 232, 232);
 }
 

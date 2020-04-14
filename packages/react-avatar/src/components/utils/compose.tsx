@@ -32,6 +32,14 @@ export interface ComposeStandardStatics {
   handledProp?: string;
 }
 
+// tslint:disable-next-line:no-any
+export const extractStylesFromSass = (classes: any) => {
+  return {
+    classes: classes.locals,
+    stylesheet: classes && classes[0] && classes[0][1],
+  };
+};
+
 export function compose<TProps = {}, TSlots = {}, TSlotProps = {}, TStatics = ComposeStandardStatics>(
   render:
     | ComposeRender<TProps, ComposeOptions<TProps, TSlots, TSlotProps, TStatics>>
@@ -41,21 +49,22 @@ export function compose<TProps = {}, TSlots = {}, TSlotProps = {}, TStatics = Co
   // tslint:disable-next-line:no-any
   const parentOptions = (render as any)[OPTIONS_NAME] || {};
 
-  const { classes, ...rest } = options;
+  // const { classes, ...rest } = options;
 
-  const classDefinition = {
-    // tslint:disable-next-line:no-any
-    classes: classes && (classes as any).locals,
-    // tslint:disable-next-line:no-any
-    stylesheet: classes && (classes as any)[0][1],
-  };
+  // const classDefinition = {
+  //   // tslint:disable-next-line:no-any
+  //   classes: classes && (classes as any).locals,
+  //   // tslint:disable-next-line:no-any
+  //   stylesheet: classes && (classes as any)[0][1],
+  // };
 
   // Initial merge of options.
   const mergedOptions = merge<ComposeOptions<TProps, TSlots, TSlotProps, TStatics>>(
     {},
     parentOptions,
-    rest,
-    classDefinition,
+    options,
+    // rest,
+    // classDefinition,
     {
       render: parentOptions.render || render,
     },

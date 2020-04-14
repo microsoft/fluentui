@@ -1,9 +1,9 @@
 import { StatusBase } from './Status.base';
-import { compose } from '../utils/compose';
+import { compose, extractStylesFromSass } from '../utils/compose';
 import * as classes from './Status.scss';
 
 export const Status = compose(StatusBase, {
-  classes,
+  ...extractStylesFromSass(classes),
   slots: {
     icon: 'div',
   },

@@ -47,7 +47,6 @@
     "react-app-polyfill": "~1.0.1",
     "react-dom": "16.8.6",
     "react-test-renderer": "^16.3.0",
-    "storybook-addon-performance": "^0.7.0",
     "typescript-plugin-css-modules": "^2.2.0"
   },
   "dependencies": {

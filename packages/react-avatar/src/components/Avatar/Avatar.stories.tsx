@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Avatar } from './Avatar';
 import { PersonaCoin, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Provider, themes, Header, Avatar as FUIAvatar, Flex } from '@fluentui/react-northstar';
+import { LoadingAvatar } from './LoadingAvatar';
 
-const imageUrl = 'http://www.fillmurray.com/96/96';
+const imageUrl = 'http://www.fillmurray.com/192/192';
 
 export const AvatarFela = () => (
   <Provider theme={themes.teams}>
@@ -189,5 +190,11 @@ export const AvatarCss = () => (
         <Avatar square size="largest" name="Lorem Ipsum" status="warning" image={imageUrl} />
       </Flex>
     </Flex>
+  </Provider>
+);
+
+export const LoadingAvatarExample = () => (
+  <Provider theme={themes.teams}>
+    <LoadingAvatar name="David Zearing" />
   </Provider>
 );
