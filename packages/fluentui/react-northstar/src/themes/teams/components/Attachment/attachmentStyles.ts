@@ -1,11 +1,11 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 
 import { AttachmentStylesProps } from '../../../../components/Attachment/Attachment';
+import AttachmentAction from '../../../../components/Attachment/AttachmentAction';
 import { AttachmentVariables } from './attachmentVariables';
 import { pxToRem } from '../../../../utils';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
-import Button from '../../../../components/Button/Button';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -33,6 +33,21 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
       ...borderFocusStyles,
 
+      '& .ui-attachment__content': {
+        flex: 1,
+      },
+
+      '& .ui-attachment__progress': {
+        transition: 'width 0.2s',
+        position: 'absolute',
+        display: 'block',
+        bottom: 0,
+        left: 0,
+        maxWidth: '100%',
+        height: pxToRem(v.progressHeight),
+        background: v.progressColor,
+      },
+
       ...(p.actionable && {
         cursor: 'pointer',
 
@@ -41,7 +56,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${Button.className}`]: {
+          [`& .${AttachmentAction.className}`]: {
             color: v.siblingsFocusColor,
           },
 
@@ -54,7 +69,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           background: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${Button.className}`]: {
+          [`& .${AttachmentAction.className}`]: {
             color: v.siblingsHoverColor,
           },
 
@@ -65,21 +80,6 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
       }),
     };
   },
-
-  content: (): ICSSInJSStyle => ({
-    flex: 1,
-  }),
-
-  progress: ({ variables: v }): ICSSInJSStyle => ({
-    transition: 'width 0.2s',
-    position: 'absolute',
-    display: 'block',
-    bottom: 0,
-    left: 0,
-    maxWidth: '100%',
-    height: pxToRem(v.progressHeight),
-    background: v.progressColor,
-  }),
 };
 
 export default attachmentStyles;

@@ -1,9 +1,9 @@
 import { compose } from '@fluentui/react-bindings';
 import * as React from 'react';
 
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 import { WithAsProp } from '../../types';
 import { commonPropTypes, createShorthandFactory, ShorthandFactory } from '../../utils';
+import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
 
 interface AttachmentIconOwnProps {}
 export interface AttachmentIconProps extends AttachmentIconOwnProps, WithAsProp<BoxProps> {}
@@ -21,13 +21,13 @@ const AttachmentIcon = compose<AttachmentIconOwnProps, AttachmentIconStylesProps
 
     overrideStyles: true,
   },
-) as React.FC<AttachmentIconProps> & { create?: ShorthandFactory<AttachmentIconProps> };
+) as React.FC<AttachmentIconProps> & { create?: ShorthandFactory<AttachmentIconProps>; className: string };
 
 AttachmentIcon.defaultProps = {
   as: 'span',
 };
 AttachmentIcon.propTypes = commonPropTypes.createCommon();
 
-AttachmentIcon.create = createShorthandFactory({ Component: AttachmentIcon });
+AttachmentIcon.create = createShorthandFactory({ Component: AttachmentIcon, mappedProp: 'content' });
 
 export default AttachmentIcon;

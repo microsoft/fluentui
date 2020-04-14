@@ -1,12 +1,12 @@
 import { compose } from '@fluentui/react-bindings';
-
-import Box, { BoxProps, BoxStylesProps } from '../Box/Box';
-import { WithAsProp } from '../../types';
-import { createShorthandFactory, ShorthandFactory } from '../../utils';
 import * as React from 'react';
 
+import { WithAsProp } from '../../types';
+import { createShorthandFactory, ShorthandFactory } from '../../utils';
+import Button, { ButtonProps, ButtonStylesProps } from '../Button/Button';
+
 interface AttachmentActionOwnProps {}
-export interface AttachmentActionProps extends AttachmentActionOwnProps, WithAsProp<BoxProps> {}
+export interface AttachmentActionProps extends AttachmentActionOwnProps, WithAsProp<ButtonProps> {}
 
 export type AttachmentActionStylesProps = never;
 
@@ -16,18 +16,17 @@ export type AttachmentActionStylesProps = never;
 const AttachmentAction = compose<
   AttachmentActionOwnProps,
   AttachmentActionStylesProps,
-  WithAsProp<BoxProps>,
-  BoxStylesProps
->(Box, {
+  WithAsProp<ButtonProps>,
+  ButtonStylesProps
+>(Button, {
   className: 'ui-attachment__action',
   displayName: 'AttachmentAction',
+}) as React.FC<AttachmentActionProps> & { create?: ShorthandFactory<AttachmentActionProps>; className: string };
 
-  overrideStyles: true,
-}) as React.FC<AttachmentActionProps> & { create?: ShorthandFactory<AttachmentActionProps> };
-
-AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction });
+AttachmentAction.create = createShorthandFactory({ Component: AttachmentAction, mappedProp: 'content' });
 AttachmentAction.defaultProps = {
-  as: 'button',
+  iconOnly: true,
+  text: true,
 };
 
 export default AttachmentAction;

@@ -15,14 +15,11 @@ const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActionStyles
     });
 
     return {
-      background: 'transparent',
-      border: 'none',
-      cursor: 'pointer',
-
-      ...getIconFillOrOutlineStyles({ outline: true }),
       [`& .${SvgIcon.className}`]: {
         color: v.textColor, // this breaks the color change on hover
       },
+
+      ...getIconFillOrOutlineStyles({ outline: true }),
 
       ':hover': {
         ...iconFilledStyles,

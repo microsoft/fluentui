@@ -127,14 +127,14 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
       {AttachmentIcon.create(icon)}
 
       {(header || description) && (
-        <div className={classes.content}>
+        <div className="ui-attachment__content">
           {AttachmentHeader.create(header)}
           {AttachmentDescription.create(description)}
         </div>
       )}
 
       {AttachmentAction.create(action)}
-      {!_.isNil(progress) && <div className={classes.progress} style={{ width: `${progress}%` }} />}
+      {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
     </ElementType>
   );
   setEnd();
