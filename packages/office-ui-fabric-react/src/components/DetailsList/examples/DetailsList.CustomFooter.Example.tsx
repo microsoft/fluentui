@@ -8,6 +8,7 @@ import {
   SelectionMode,
   DetailsRowCheck,
   IDetailsRowBaseProps,
+  IDetailsRowCheckStyles,
 } from 'office-ui-fabric-react/lib/DetailsList';
 
 export interface IDetailsListCustomFooterExampleItem {
@@ -82,6 +83,8 @@ const _renderDetailsFooterItemColumn: IDetailsRowBaseProps['onRenderItemColumn']
   return undefined;
 };
 
+const detailsRowCheckStyles: Partial<IDetailsRowCheckStyles> = { root: { visibility: 'hidden' } };
+
 const _onRenderCheckForFooterRow: IDetailsRowBaseProps['onRenderCheck'] = (props): JSX.Element => {
-  return <DetailsRowCheck {...props} styles={{ root: { visibility: 'hidden' } }} selected={true} />;
+  return <DetailsRowCheck {...props} styles={detailsRowCheckStyles} selected={true} />;
 };

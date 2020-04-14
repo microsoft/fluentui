@@ -2,6 +2,19 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "date": "Thu, 09 Apr 2020 12:24:31 GMT",
+      "tag": "@uifabric/styling_v7.11.2",
+      "version": "7.11.2",
+      "comments": {
+        "none": [
+          {
+            "comment": "Reference custom-global everywhere for partial Set types",
+            "author": "elcraig@microsoft.com"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 25 Mar 2020 12:30:04 GMT",
       "tag": "@uifabric/styling_v7.11.0",
       "version": "7.11.0",

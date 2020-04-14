@@ -11,6 +11,15 @@ describe('Tooltip', () => {
     requiredProps: { open: true },
   });
 
+  test('aria-labelledby is not added on trigger if aria-label is passed to trigger shorthand', () => {
+    const ariaLabelTestValue = 'test-aria-label';
+    const wrapper = mountWithProvider(<Tooltip defaultOpen trigger={<Button aria-label={ariaLabelTestValue} />} />);
+    const trigger = findIntrinsicElement(wrapper, `.${Button.className}`);
+
+    expect(trigger.getDOMNode()).toHaveAttribute('aria-label', ariaLabelTestValue);
+    expect(trigger.getDOMNode()).not.toHaveAttribute('aria-labelledby');
+  });
+
   describe('content', () => {
     it('uses "id" if "content" with "id" is passed', () => {
       const contentId = 'element-id';
@@ -65,7 +74,7 @@ describe('Tooltip', () => {
       const wrapper = mountWithProvider(<Tooltip trigger={<button />} content="Foo" />);
       expect(wrapper.find('Popper').prop('enabled')).toBe(false);
 
-      wrapper.setProps({ open: true } as any);
+      wrapper.setProps({ open: true });
       expect(wrapper.find('Popper').prop('enabled')).toBe(true);
     });
   });

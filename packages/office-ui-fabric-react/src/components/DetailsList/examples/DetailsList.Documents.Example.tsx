@@ -359,19 +359,33 @@ function _randomDate(start: Date, end: Date): { value: number; dateFormatted: st
 
 const FILE_ICONS: { name: string }[] = [
   { name: 'accdb' },
+  { name: 'audio' },
+  { name: 'code' },
   { name: 'csv' },
   { name: 'docx' },
   { name: 'dotx' },
+  { name: 'mpp' },
   { name: 'mpt' },
-  { name: 'odt' },
+  { name: 'model' },
   { name: 'one' },
-  { name: 'onepkg' },
   { name: 'onetoc' },
+  { name: 'potx' },
+  { name: 'ppsx' },
+  { name: 'pdf' },
+  { name: 'photo' },
   { name: 'pptx' },
+  { name: 'presentation' },
+  { name: 'potx' },
   { name: 'pub' },
+  { name: 'rtf' },
+  { name: 'spreadsheet' },
+  { name: 'txt' },
+  { name: 'vector' },
   { name: 'vsdx' },
-  { name: 'xls' },
+  { name: 'vssx' },
+  { name: 'vstx' },
   { name: 'xlsx' },
+  { name: 'xltx' },
   { name: 'xsn' },
 ];
 
@@ -379,7 +393,7 @@ function _randomFileIcon(): { docType: string; url: string } {
   const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
   return {
     docType,
-    url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`,
+    url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
   };
 }
 

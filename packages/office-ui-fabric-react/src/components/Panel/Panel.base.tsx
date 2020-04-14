@@ -3,7 +3,7 @@ import { IconButton } from '../../Button';
 import { Layer } from '../../Layer';
 import { Overlay } from '../../Overlay';
 import { Popup } from '../../Popup';
-import { getTheme, IconFontSizes, IProcessedStyleSet } from '../../Styling';
+import { IProcessedStyleSet } from '../../Styling';
 import {
   allowScrollOnElement,
   allowOverscrollOnElement,
@@ -331,34 +331,15 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
   private _onRenderNavigationContent = (props: IPanelProps): JSX.Element | null => {
     const { closeButtonAriaLabel, hasCloseButton, onRenderHeader = this._onRenderHeader } = props;
-    const theme = getTheme();
     if (hasCloseButton) {
-      // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-      // const iconButtonStyles = this._classNames.subComponentStyles
-      // ? (this._classNames.subComponentStyles.iconButton as IStyleFunctionOrObject<IButtonStyleProps, IButtonStyles>)
-      // : undefined;
+      const iconButtonStyles = this._classNames.subComponentStyles?.closeButton();
 
       return (
-        <React.Fragment>
+        <>
           {!this._hasCustomNavigation && onRenderHeader(this.props, this._onRenderHeader, this._headerTextId)}
           <IconButton
-            // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
-            // className={iconButtonStyles}
-            styles={{
-              root: [
-                this._hasCustomNavigation && {
-                  height: 'auto',
-                  width: '44px',
-                },
-                {
-                  color: theme.palette.neutralSecondary,
-                  fontSize: IconFontSizes.large,
-                },
-              ],
-              rootHovered: {
-                color: theme.palette.neutralPrimary,
-              },
-            }}
+            styles={iconButtonStyles}
+            // tslint:disable-next-line:deprecation
             className={this._classNames.closeButton}
             onClick={this._onPanelClick}
             ariaLabel={closeButtonAriaLabel}
@@ -366,7 +347,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
             data-is-visible={true}
             iconProps={{ iconName: 'Cancel' }}
           />
-        </React.Fragment>
+        </>
       );
     }
     return null;
