@@ -4,10 +4,9 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
 const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState, CarouselVariables> = {
-  root: (): ICSSInJSStyle => ({
+  root: ({ variables: v }): ICSSInJSStyle => ({
     display: 'inline-block',
-    maxWidth: pxToRem(300),
-    overflow: 'hidden',
+    maxWidth: pxToRem(v.width),
   }),
   itemsContainerWrapper: ({ variables: v, props: p }): ICSSInJSStyle => ({
     display: 'flex',
