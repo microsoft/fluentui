@@ -172,8 +172,10 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     const win = getWindow(this as any);
 
     if (win) {
-      this._disposables.push(on(win, 'mousemove', this._onMouseMove, true));
-      this._disposables.push(on(win, 'mouseup', this._disposeListeners, true));
+      this._disposables.push(
+        on(win, 'mousemove', this._onMouseMove, true),
+        on(win, 'mouseup', this._disposeListeners, true),
+      );
     }
 
     this._onMouseMove(ev);

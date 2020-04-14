@@ -166,8 +166,10 @@ export class ColorRectangleBase extends React.Component<IColorRectangleProps, IC
   }
 
   private _onMouseDown = (ev: React.MouseEvent): void => {
-    this._disposables.push(on(window, 'mousemove', this._onMouseMove, true));
-    this._disposables.push(on(window, 'mouseup', this._disposeListeners, true));
+    this._disposables.push(
+      on(window, 'mousemove', this._onMouseMove, true),
+      on(window, 'mouseup', this._disposeListeners, true),
+    );
 
     this._onMouseMove(ev);
   };

@@ -221,11 +221,15 @@ export class SliderBase extends React.Component<ISliderProps, ISliderState> impl
 
   private _onMouseDownOrTouchStart = (event: MouseEvent | TouchEvent): void => {
     if (event.type === 'mousedown') {
-      this._disposables.push(on(window, 'mousemove', this._onMouseMoveOrTouchMove, true));
-      this._disposables.push(on(window, 'mouseup', this._onMouseUpOrTouchEnd, true));
+      this._disposables.push(
+        on(window, 'mousemove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'mouseup', this._onMouseUpOrTouchEnd, true),
+      );
     } else if (event.type === 'touchstart') {
-      this._disposables.push(on(window, 'touchmove', this._onMouseMoveOrTouchMove, true));
-      this._disposables.push(on(window, 'touchend', this._onMouseUpOrTouchEnd, true));
+      this._disposables.push(
+        on(window, 'touchmove', this._onMouseMoveOrTouchMove, true),
+        on(window, 'touchend', this._onMouseUpOrTouchEnd, true),
+      );
     }
     this._onMouseMoveOrTouchMove(event, true);
   };
