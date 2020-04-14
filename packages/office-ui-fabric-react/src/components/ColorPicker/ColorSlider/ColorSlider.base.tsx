@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   classNamesFunction,
   initializeComponentRef,
-  EventGroup,
+  on,
   KeyCodes,
   getWindow,
   warnDeprecations,
@@ -26,14 +26,13 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     value: 0,
   };
 
-  private _events: EventGroup;
+  private _disposables: (() => void)[] = [];
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorSliderProps) {
     super(props);
 
     initializeComponentRef(this);
-    this._events = new EventGroup(this);
 
     warnDeprecations('ColorSlider', props, {
       thumbColor: 'styles.sliderThumb',
@@ -65,7 +64,7 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   }
 
   public componentWillUnmount() {
-    this._events.dispose();
+    this._disposeListeners();
   }
 
   public render(): JSX.Element {
@@ -172,8 +171,10 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
     const win = getWindow(this as any);
 
-    this._events.on(win, 'mousemove', this._onMouseMove, true);
-    this._events.on(win, 'mouseup', this._onMouseUp, true);
+    if (win) {
+      this._disposables.push(on(win, 'mousemove', this._onMouseMove, true));
+      this._disposables.push(on(win, 'mouseup', this._disposeListeners, true));
+    }
 
     this._onMouseMove(ev);
   };
@@ -192,8 +193,9 @@ export class ColorSliderBase extends React.Component<IColorSliderProps, IColorSl
     this._updateValue(ev, newValue);
   };
 
-  private _onMouseUp = (): void => {
-    this._events.off();
+  private _disposeListeners = (): void => {
+    this._disposables.forEach(dispose => dispose());
+    this._disposables = [];
   };
 
   private _updateValue(ev: React.MouseEvent | React.KeyboardEvent, newValue: number) {
