@@ -1,3 +1,4 @@
+import { buttonBehavior } from '@fluentui/accessibility';
 import { compose } from '@fluentui/react-bindings';
 import * as React from 'react';
 
@@ -24,6 +25,7 @@ const AttachmentAction = compose<
 }) as React.FC<AttachmentActionProps> & { create?: ShorthandFactory<AttachmentActionProps>; className: string };
 
 AttachmentAction.defaultProps = {
+  accessibility: buttonBehavior,
   iconOnly: true,
   text: true,
 };
