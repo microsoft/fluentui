@@ -30,4 +30,4 @@ const CardExampleClickable = () => {
   );
 };
 
-export default CardExampleClickable;
+export default CardExampleFocusableChildren;

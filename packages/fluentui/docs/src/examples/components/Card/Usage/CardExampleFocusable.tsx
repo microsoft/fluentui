@@ -21,4 +21,4 @@ const CardExampleClickable = () => {
   );
 };
 
-export default CardExampleClickable;
+export default CardExampleFocusable;
