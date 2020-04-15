@@ -32,10 +32,6 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
 
       ...borderFocusStyles,
 
-      '& .ui-attachment__content': {
-        flex: 1,
-      },
-
       '& .ui-attachment__progress': {
         transition: 'width 0.2s',
         position: 'absolute',

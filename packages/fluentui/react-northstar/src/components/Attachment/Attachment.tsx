@@ -17,6 +17,7 @@ import {
 } from '../../types';
 import { createShorthandFactory, commonPropTypes, UIComponentProps, ChildrenComponentProps } from '../../utils';
 import AttachmentAction, { AttachmentActionProps } from './AttachmentAction';
+import AttachmentBody, { AttachmentBodyProps } from './AttachmentBody';
 import AttachmentDescription, { AttachmentDescriptionProps } from './AttachmentDescription';
 import AttachmentHeader, { AttachmentHeaderProps } from './AttachmentHeader';
 import AttachmentIcon, { AttachmentIconProps } from './AttachmentIcon';
@@ -30,6 +31,9 @@ export interface AttachmentProps extends UIComponentProps, ChildrenComponentProp
 
   /** An Attachment can be styled to indicate possible user interaction. */
   actionable?: boolean;
+
+  /** Contains a header and a description for an Attachment. */
+  body?: ShorthandValue<AttachmentBodyProps>;
 
   /** A string describing the attachment. */
   description?: ShorthandValue<AttachmentDescriptionProps>;
@@ -71,6 +75,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
     accessibility,
     action,
     actionable,
+    body,
     className,
     description,
     design,
@@ -126,12 +131,12 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
     <ElementType {...getA11Props('root', { className: classes.root, onClick: handleClick, ...unhandledProps })}>
       {AttachmentIcon.create(icon)}
 
-      {(header || description) && (
-        <div className="ui-attachment__content">
-          {AttachmentHeader.create(header)}
-          {AttachmentDescription.create(description)}
-        </div>
-      )}
+      {(header || description) &&
+        AttachmentBody.create(body, {
+          overrideProps: {
+            content: [AttachmentHeader.create(header), AttachmentDescription.create(description)],
+          },
+        })}
 
       {AttachmentAction.create(action)}
       {!_.isNil(progress) && <div className="ui-attachment__progress" style={{ width: `${progress}%` }} />}
@@ -160,6 +165,7 @@ Attachment.propTypes = {
 };
 Attachment.defaultProps = {
   accessibility: attachmentBehavior,
+  body: {},
 };
 
 Attachment.Action = AttachmentAction;
