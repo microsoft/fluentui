@@ -67,7 +67,7 @@ export default function isConformant(
 
   const componentType = typeof Component;
   // composed components store `handledProps` under config
-  const handledProps = Component.handledProps || (Component as ComposedComponent).fluentComposeConfig?.handledProps;
+  const handledProps = (Component as ComposedComponent).fluentComposeConfig?.handledProps || Component.handledProps;
 
   const helperComponentNames = [...[Ref, RefFindNode], ...(wrapperComponent ? [wrapperComponent] : [])].map(
     getDisplayName,
