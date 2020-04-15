@@ -52,13 +52,15 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   // exist in the trie. At the last node, if there is a `__retval__` we return that. Otherwise
   // we call the `getStyles` api to evaluate, cache on the property, and return that.
   let map: IRecursiveMemoNode = new Map();
-  let resultCount = 0;
+  let styleCalcCount = 0;
+  let getClassNamesCount = 0;
   let currentMemoizedClassNames = _memoizedClassNames;
 
   const getClassNames = (
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
     styleProps: TStyleProps = {} as TStyleProps,
   ): IProcessedStyleSet<TStyleSet> => {
+    getClassNamesCount++;
     let current: Map<any, any> = map;
     const { theme } = styleProps as any;
     const rtl = theme && theme.rtl !== undefined ? theme.rtl : getRTL();
@@ -69,7 +71,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     if (currentMemoizedClassNames !== _memoizedClassNames) {
       currentMemoizedClassNames = _memoizedClassNames;
       map = new Map();
-      resultCount = 0;
+      styleCalcCount = 0;
     }
 
     if (!options.disableCaching) {
@@ -92,26 +94,26 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       }
 
       if (!disableCaching) {
-        resultCount++;
+        styleCalcCount++;
       }
     }
 
-    if (resultCount > MAX_CACHE_COUNT) {
+    if (styleCalcCount > MAX_CACHE_COUNT) {
       map.clear();
-      resultCount = 0;
+      styleCalcCount = 0;
 
       // Mutate the options passed in, that's all we can do.
       options.disableCaching = true;
 
-      // Note: this code is great for debugging problems with styles being recaculated, but commenting it out
-      // to avoid confusing consumers.
-
-      // if (process.env.NODE_ENV !== 'production') {
-      //  console.log(
-      //    'Styles are being recalculated far too frequently. Something is mutating the class over and over.');
-      //  // tslint:disable-next-line:no-console
-      //  console.trace();
-      // }
+      if (process.env.NODE_ENV !== 'production') {
+        console.warn(
+          'Styles are being recalculated too frequently. ' +
+            `Cache miss rate is ${styleCalcCount}/${getClassNamesCount}.\n` +
+            `Check out our wiki on performance: https://github.com/microsoft/fluentui/wiki/Performance. `,
+        );
+        // tslint:disable-next-line:no-console
+        console.trace();
+      }
     }
 
     // Note: the RetVal is an attached property on the Map; not a key in the Map. We use this attached property to
