@@ -12,7 +12,7 @@ import * as React from 'react';
 
 const CardExampleFocusableChildren = () => {
   return (
-    <Card accessibility={cardMultipleFocusableBehavior} ariaRoleDescription="card with action buttons">
+    <Card accessibility={cardMultipleFocusableBehavior} aria-roledescription="card with action buttons">
       <Card.Header>
         <Text content="Sample title" weight="bold" />
       </Card.Header>

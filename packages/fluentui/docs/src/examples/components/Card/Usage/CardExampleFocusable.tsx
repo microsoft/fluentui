@@ -8,7 +8,7 @@ const CardExampleFocusable = () => {
   };
 
   return (
-    <Card accessibility={cardFocusableBehavior} onClick={updateClickCount} ariaRoleDescription="clickable card">
+    <Card accessibility={cardFocusableBehavior} onClick={updateClickCount} aria-roledescription="clickable card">
       <Card.Header>
         <Text content={`Card was clicked ${clickCount} times.`} weight="bold" />
       </Card.Header>

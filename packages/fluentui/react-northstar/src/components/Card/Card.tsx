@@ -53,9 +53,6 @@ export interface CardProps extends UIComponentProps {
 
   /** A card can take up the width and height of its container. */
   fluid?: boolean;
-
-  /** A card should have a human-readable, author-localized description for the role of an element. */
-  ariaRoleDescription: string;
 }
 
 export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'> & {
@@ -78,20 +75,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
   setStart();
   const cardRef = React.useRef<HTMLElement>();
 
-  const {
-    className,
-    design,
-    styles,
-    variables,
-    children,
-    compact,
-    horizontal,
-    centered,
-    size,
-    fluid,
-    ariaRoleDescription,
-    onClick,
-  } = props;
+  const { className, design, styles, variables, children, compact, horizontal, centered, size, fluid, onClick } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
   const getA11yProps = useAccessibility(props.accessibility, {
@@ -104,9 +88,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
         cardRef.current.focus();
       },
     },
-    mapPropsToBehavior: () => ({
-      ariaRoleDescription,
-    }),
     rtl: context.rtl,
   });
 
@@ -163,7 +144,6 @@ Card.propTypes = {
   centered: PropTypes.bool,
   size: CustomPropTypes.size,
   fluid: PropTypes.bool,
-  ariaRoleDescription: PropTypes.string,
 };
 
 Card.defaultProps = {
@@ -184,7 +164,7 @@ Card.create = createShorthandFactory({ Component: Card });
 /**
  * A Card is used to display data in sematically grouped way.
  * * @accessibility
- * By default adds `group` role ([more information available in aria documentation](https://www.w3.org/TR/wai-aria-1.1/#group)), thus it's necessary to provide `ariaRoleDescription` for correct widget description. [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription-property)
+ * By default adds `group` role ([more information available in aria documentation](https://www.w3.org/TR/wai-aria-1.1/#group)), thus it's necessary to provide `aria-roledescription` for correct widget description. [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-1.1/#aria-roledescription-property)
  * When card is actionable (i.e. has `onClick` property), use [cardFocusableBehavior](/components/card/accessibility#card-focusable). [More information available in aria documentation.](https://www.w3.org/TR/wai-aria-practices/#gridNav_focus)
  * When card contains multiple actionable elements, use [cardMultipleFocusableBehavior](/components/card/accessibility#card-multiple-focusable).
  *

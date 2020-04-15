@@ -252,7 +252,7 @@ const IconViewer = () => {
                 centered
                 variables={{ borderColor: '#f2f2f2', width: 'calc(20% - 12px)' }}
                 styles={{ marginTop: '10px', background: 'white' }}
-                ariaRoleDescription="Icon card"
+                aria-roledescription="Icon card"
               >
                 <Card.Header>
                   <Flex gap="gap.small" column hAlign="center">
