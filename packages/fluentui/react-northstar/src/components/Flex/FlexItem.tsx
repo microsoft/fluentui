@@ -71,7 +71,7 @@ const applyStyles = (
 /**
  * A FlexItem is a layout component that customizes alignment of Flex child.
  */
-const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boolean } = props => {
+const FlexItem: React.FC<FlexItemProps> & { deprecated_className: string; __isFlexItem: boolean } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(FlexItem.displayName, context.telemetry);
   setStart();

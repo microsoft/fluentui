@@ -47,7 +47,7 @@ export type FlexStylesProps = Pick<
 >;
 
 const Flex: React.FC<WithAsProp<FlexProps>> & {
-  className: string;
+  deprecated_className: string;
   handledProps: (keyof FlexProps)[];
   Item: typeof FlexItem;
 } = props => {

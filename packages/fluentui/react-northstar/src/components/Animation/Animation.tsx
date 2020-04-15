@@ -144,7 +144,7 @@ export interface AnimationProps
  * An Animation provides animation effects to rendered elements.
  */
 const Animation: React.FC<AnimationProps> & {
-  className: string;
+  deprecated_className: string;
   handledProps: (keyof AnimationProps)[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);

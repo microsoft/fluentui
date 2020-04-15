@@ -1,7 +1,7 @@
 import { Attachment } from '@fluentui/react-northstar';
 
 const selectors = {
-  root: `.${Attachment.className}`,
+  root: `.${Attachment.deprecated_className}`,
   action: `.${Attachment.slotClassNames.action}`,
 };
 
