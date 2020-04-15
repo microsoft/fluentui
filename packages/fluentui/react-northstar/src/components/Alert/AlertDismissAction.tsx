@@ -69,9 +69,7 @@ export type AlertDismissActionStylesProps = Pick<
 };
 
 const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
-  FluentComponentStaticProps<AlertDismissActionProps> & {
-    slotClassNames: AlertDismissActionSlotClassNames;
-  } = props => {
+  FluentComponentStaticProps<AlertDismissActionProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(AlertDismissAction.displayName, context.telemetry);
   setStart();

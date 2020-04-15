@@ -1,6 +1,7 @@
 import { pxToRem } from '../../../../utils';
-import CarouselNavigationItem, {
+import {
   CarouselNavigationItemProps,
+  carouselNavigationItemSlotClassNames,
 } from '../../../../components/Carousel/CarouselNavigationItem';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselNavigationVariables } from './carouselNavigationVariables';
@@ -70,7 +71,7 @@ const carouselNavigationItemStyles: ComponentSlotStylesPrepared<
       ':hover': {
         color: 'inherit',
 
-        [`& .${CarouselNavigationItem.slotClassNames.indicator}`]: {
+        [`& .${carouselNavigationItemSlotClassNames.indicator}`]: {
           background: v.indicatorBackgroundColor,
         },
 
