@@ -164,6 +164,7 @@ Attachment.propTypes = {
   }),
   action: customPropTypes.itemShorthand,
   actionable: PropTypes.bool,
+  body: customPropTypes.itemShorthand,
   description: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
   icon: customPropTypes.shorthandAllowingChildren,
