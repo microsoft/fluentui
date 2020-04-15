@@ -37,6 +37,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Export `componentNameClassName` and `componentNameSlotClassName` const inside `Dialog`*, `Divider`, `Dropdown`*, `Embed` @mnajdova ([#12734](https://github.com/microsoft/fluentui/pull/12734))
 - Export `componentNameClassName` and `componentNameSlotClassName` const inside `Flex`*, `Form`*, `Grid`, `Header`*, `HierarchicalTree`*, `Image`, `Input` @mnajdova ([#12735](https://github.com/microsoft/fluentui/pull/12735))
 - Export `componentNameClassName` and `componentNameSlotClassName` const inside `ItemLayout`, `Label`*, `Layout`, `List`*, `Loader`, `Menu`* @mnajdova ([#12736](https://github.com/microsoft/fluentui/pull/12736))
+- Add `onClick` prop and focusable behaviors to `Card` component @pompomon ([#12688](https://github.com/microsoft/fluentui/pull/12688))
 
 ### Performance
 - Replace `fela-plugin-prexifer` with `stylis` @layershifter ([#12289](https://github.com/microsoft/fluentui/pull/12289))
