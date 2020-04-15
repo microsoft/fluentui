@@ -25,10 +25,8 @@ const cardStyles: ComponentSlotStylesPrepared<CardStylesProps, CardVariables> = 
       ':hover': {
         boxShadow: v.boxShadowHover,
       },
-      ...(p.interactive && {
-        ':hover': {
-          cursor: 'pointer',
-        },
+      ...(p.actionable && {
+        cursor: 'pointer',
         ':focus': {
           boxShadow: v.boxShadowFocus,
         },

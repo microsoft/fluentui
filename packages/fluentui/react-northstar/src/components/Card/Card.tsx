@@ -59,7 +59,7 @@ export interface CardProps extends UIComponentProps {
 }
 
 export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'> & {
-  interactive;
+  actionable: boolean;
 };
 
 export const cardClassName = 'ui-card';
@@ -118,7 +118,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       compact,
       size,
       fluid,
-      interactive: onClick !== undefined,
+      actionable: onClick !== undefined,
     }),
     mapPropsToInlineStyles: () => ({
       className,
