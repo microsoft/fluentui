@@ -28,10 +28,10 @@ const getAttachment = (onClickAttachment: jest.Mock, onClickButton: jest.Mock): 
 describe('Attachment', () => {
   isConformant(Attachment, { constructorName: 'Attachment' });
 
-  attachmentImplementsShorthandProp('action', AttachmentAction, { mapsValueToProp: 'children' });
-  attachmentImplementsShorthandProp('description', AttachmentDescription, { mapsValueToProp: 'children' });
-  attachmentImplementsShorthandProp('icon', AttachmentIcon, { mapsValueToProp: 'children' });
-  attachmentImplementsShorthandProp('header', AttachmentHeader, { mapsValueToProp: 'children' });
+  attachmentImplementsShorthandProp('action', AttachmentAction);
+  attachmentImplementsShorthandProp('description', AttachmentDescription);
+  attachmentImplementsShorthandProp('icon', AttachmentIcon);
+  attachmentImplementsShorthandProp('header', AttachmentHeader);
 
   describe('accessibility', () => {
     handlesAccessibility(Attachment, {
