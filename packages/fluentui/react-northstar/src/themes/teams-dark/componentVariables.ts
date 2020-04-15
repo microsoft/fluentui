@@ -4,6 +4,7 @@ export { default as AttachmentDescription } from './components/Attachment/attach
 export { default as AttachmentHeader } from './components/Attachment/attachmentHeaderVariables';
 export { default as AttachmentIcon } from './components/Attachment/attachmentIconVariables';
 
+export { default as Avatar } from './components/Avatar/avatarVariables';
 export { default as Chat } from './components/Chat/chatVariables';
 export { default as ChatMessage } from './components/Chat/chatMessageVariables';
 export { default as Dialog } from './components/Dialog/dialogVariables';
