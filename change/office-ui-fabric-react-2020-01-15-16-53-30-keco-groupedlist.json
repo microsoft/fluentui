@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "GroupedList: Only invoke range selection on header click when in multiple selection mode",
-  "packageName": "office-ui-fabric-react",
-  "email": "KevinTCoughlin@users.noreply.github.com",
-  "commit": "acb240ee8505ba72dc4a2644e9809600d597a2d7",
-  "date": "2020-01-16T00:53:30.385Z"
-}

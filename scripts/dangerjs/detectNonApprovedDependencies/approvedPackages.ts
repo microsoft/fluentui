@@ -88,6 +88,7 @@ export default [
   'rtl-css-js@1.11.0',
   'scheduler@0.13.3',
   'scheduler@0.13.6',
+  'stylis@3.5.4',
   'webpack@4.25.1',
 ];
 

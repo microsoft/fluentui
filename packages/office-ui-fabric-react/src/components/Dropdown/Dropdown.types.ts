@@ -257,7 +257,7 @@ export interface IDropdownStyles {
 
   /**
    * Refers to the panel that hosts the Dropdown options in small viewports.
-   * Note: This will be deprecated when Panel supports JS Styling.
+   * @deprecated Use `subComponentStyles.panel` instead.
    */
   panel: IStyle;
 

@@ -1,7 +1,13 @@
 # Change Log - @uifabric/react-hooks
 
-This log was last generated on Fri, 03 Apr 2020 12:27:13 GMT and should not be manually modified.
+This log was last generated on Tue, 07 Apr 2020 12:35:07 GMT and should not be manually modified.
 
+## 7.1.1
+Tue, 07 Apr 2020 12:35:07 GMT
+
+### Patches
+
+- Simplifying some of the examples for VerticalDivider and SearchBox. (czearing@outlook.com)
 ## 7.1.0
 Fri, 03 Apr 2020 12:27:13 GMT
 

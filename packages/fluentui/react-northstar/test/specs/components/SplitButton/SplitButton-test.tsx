@@ -9,6 +9,7 @@ import { mountWithProvider, findIntrinsicElement } from '../../../utils';
 import Menu from 'src/components/Menu/Menu';
 import MenuButton from 'src/components/MenuButton/MenuButton';
 import Button from 'src/components/Button/Button';
+import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps';
 
 const mockMenu = { items: ['1', '2', '3'] };
 
@@ -22,6 +23,7 @@ const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(w
 
 describe('SplitButton', () => {
   isConformant(SplitButton, { autoControlledProps: ['open'] });
+  implementsPopperProps(SplitButton, { requiredProps: { open: true } });
 
   describe('open', () => {
     test('is toggled between true and false on toggle button click', () => {

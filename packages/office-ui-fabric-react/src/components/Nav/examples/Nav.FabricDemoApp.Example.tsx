@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavStyles } from 'office-ui-fabric-react/lib/Nav';
+
+const navStyles: Partial<INavStyles> = { root: { width: 300 } };
 
 export const NavFabricDemoAppExample: React.FunctionComponent = () => {
   return (
     <Nav
-      styles={{ root: { width: 300 } }}
+      styles={navStyles}
       ariaLabel="Nav example similiar to one found in this demo page"
       groups={[
         {

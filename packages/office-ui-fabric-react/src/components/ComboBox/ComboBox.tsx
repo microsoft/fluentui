@@ -77,14 +77,14 @@ enum HoverStatus {
   default = -1,
 }
 
-const ScrollIdleDelay = 250 /* ms */;
+const ScrollIdleDelay = 250; /* ms */
 const TouchIdleDelay = 500; /* ms */
 
 /**
  * This is used to clear any pending autocomplete text (used when autocomplete is true and
  * allowFreeform is false)
  */
-const ReadOnlyPendingAutoCompleteTimeout = 1000 /* ms */;
+const ReadOnlyPendingAutoCompleteTimeout = 1000; /* ms */
 
 interface IComboBoxOptionWrapperProps extends IComboBoxOption {
   /** True if the option is currently selected */
@@ -442,7 +442,7 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
                     ? mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'], errorMessageId)
                     : mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])
                 }
-                aria-activedescendant={this._getAriaActiveDescentValue()}
+                aria-activedescendant={this._getAriaActiveDescendantValue()}
                 aria-required={required}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
@@ -2194,9 +2194,9 @@ export class ComboBox extends React.Component<IComboBoxProps, IComboBoxState> {
    * @returns the id of the current focused combo item, otherwise the id of the currently selected element,
    * null otherwise
    */
-  private _getAriaActiveDescentValue(): string | undefined {
+  private _getAriaActiveDescendantValue(): string | undefined {
     let descendantText =
-      this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length >= 0
+      this.state.isOpen && this.state.selectedIndices && this.state.selectedIndices.length > 0
         ? this._id + '-list' + this.state.selectedIndices[0]
         : undefined;
     if (this.state.isOpen && this.state.focused && this.state.currentPendingValueValidIndex !== -1) {
