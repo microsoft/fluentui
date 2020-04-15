@@ -40,7 +40,7 @@ const icons = Object.keys(ReactIcons).reduce((acc: React.FC[], exportName) => {
 }, []);
 
 const numOfIcons = icons.length;
-const numOfPages = parseInt((numOfIcons / 100).toString(), 10) + 1;
+const numOfPages = parseInt((numOfIcons / 100).toString(), 10) + (numOfIcons % 100 > 0 ? 1 : 0);
 
 export const IconSvgFactoryExample: React.FunctionComponent = () => {
   const [page, setPage] = React.useState(1);
