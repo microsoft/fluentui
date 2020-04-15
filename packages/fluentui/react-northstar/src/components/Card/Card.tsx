@@ -96,7 +96,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       performClick: e => {
         handleClick(e);
       },
-      focusCell: e => {
+      focusCard: e => {
         e.preventDefault();
         cardRef.current.focus();
       },
