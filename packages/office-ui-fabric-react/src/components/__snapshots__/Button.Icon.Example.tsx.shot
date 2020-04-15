@@ -142,7 +142,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="Emoji2"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-0\\"",
@@ -276,7 +275,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="Emoji2"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons-0\\"",
@@ -313,7 +311,6 @@ exports[`Component Examples renders Button.Icon.Example.tsx correctly 1`] = `
                 text-align: center;
               }
           data-icon-name="ChevronDown"
-          role="presentation"
           style={
             Object {
               "fontFamily": "\\"FabricMDL2Icons\\"",

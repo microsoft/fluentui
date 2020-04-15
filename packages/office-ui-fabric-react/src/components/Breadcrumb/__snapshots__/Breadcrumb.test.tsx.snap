@@ -1400,7 +1400,6 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                           text-align: center;
                         }
                     data-icon-name="More"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1634,7 +1633,6 @@ exports[`Breadcrumb rendering renders correctly with maxDisplayedItems and overf
                           text-align: center;
                         }
                     data-icon-name="More"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1868,7 +1866,6 @@ exports[`Breadcrumb rendering renders correctly with overflow 1`] = `
                           text-align: center;
                         }
                     data-icon-name="More"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -2366,7 +2363,6 @@ exports[`Breadcrumb rendering renders correctly with overflow and overflowIndex 
                           text-align: center;
                         }
                     data-icon-name="More"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",

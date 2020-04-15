@@ -826,7 +826,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                             padding-top: 0px;
                           }
                       data-icon-name="Page"
-                      role="presentation"
                       style={
                         Object {
                           "fontFamily": "\\"FabricMDL2Icons\\"",
@@ -1039,7 +1038,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                           top: 1px;
                         }
                     data-icon-name="SortUp"
-                    role="presentation"
                     style={
                       Object {
                         "fontFamily": "\\"FabricMDL2Icons\\"",
