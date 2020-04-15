@@ -39,7 +39,7 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
 
   static displayName = 'CarouselItem';
 
-  static className = 'ui-carousel__item';
+  static deprecated_className = 'ui-carousel__item';
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -53,7 +53,7 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
   };
 
   static slotClassNames: CarouselItemSlotClassNames = {
-    itemPositionText: `${CarouselItem.className}__itemPositionText`,
+    itemPositionText: `${CarouselItem.deprecated_className}__itemPositionText`,
   };
 
   actionHandlers = {

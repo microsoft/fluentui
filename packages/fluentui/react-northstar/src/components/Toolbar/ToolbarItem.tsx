@@ -168,7 +168,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
-    className: ToolbarItem.className,
+    className: ToolbarItem.deprecated_className,
     mapPropsToStyles: () => ({ active, disabled }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -273,17 +273,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
               menuRef.current = node;
             }}
           >
-            <Popper
-              align="start"
-              position="above"
-              modifiers={{
-                preventOverflow: {
-                  escapeWithReference: false, // escapeWithReference breaks positioning of ToolbarMenu in overflow mode because Popper components sets modifiers on scrollable container
-                },
-              }}
-              targetRef={itemRef}
-              {...getPopperPropsFromShorthand(menu)}
-            >
+            <Popper align="start" position="above" targetRef={itemRef} {...getPopperPropsFromShorthand(menu)}>
               <ToolbarVariablesProvider value={mergedVariables}>
                 {ToolbarMenu.create(menu, {
                   overrideProps: handleMenuOverrides(getRefs),
@@ -350,11 +340,11 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   return refElement;
 };
 
-ToolbarItem.className = 'ui-toolbar__item';
+ToolbarItem.deprecated_className = 'ui-toolbar__item';
 ToolbarItem.displayName = 'ToolbarItem';
 
 ToolbarItem.slotClassNames = {
-  wrapper: `${ToolbarItem.className}__wrapper`,
+  wrapper: `${ToolbarItem.deprecated_className}__wrapper`,
 };
 
 ToolbarItem.defaultProps = {

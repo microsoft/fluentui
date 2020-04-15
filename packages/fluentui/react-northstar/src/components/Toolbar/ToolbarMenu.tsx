@@ -86,7 +86,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarMenuStylesProps>(ToolbarMenu.displayName, {
-    className: ToolbarMenu.className,
+    className: ToolbarMenu.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -162,7 +162,7 @@ const ToolbarMenu: React.FC<WithAsProp<ToolbarMenuProps>> & FluentComponentStati
   return element;
 };
 
-ToolbarMenu.className = 'ui-toolbar__menu';
+ToolbarMenu.deprecated_className = 'ui-toolbar__menu';
 ToolbarMenu.displayName = 'ToolbarMenu';
 
 ToolbarMenu.propTypes = {

@@ -5,9 +5,9 @@ const config: ScreenerTestsConfig = {
   steps: [
     (builder, keys) =>
       builder
-        .click(`.${ToolbarItem.className}:nth-child(1)`)
+        .click(`.${ToolbarItem.deprecated_className}:nth-child(1)`)
         .snapshot('Shows menu')
-        .keys(`.${ToolbarMenuItem.className}:nth-child(1)`, keys.rightArrow)
+        .keys(`.${ToolbarMenuItem.deprecated_className}:nth-child(1)`, keys.rightArrow)
         .snapshot('Opens submenu'),
   ],
 };

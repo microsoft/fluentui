@@ -93,7 +93,7 @@ describe('useCompose', () => {
   });
 
   it('"className" is added as statics on composed component', () => {
-    expect(ComposedComponent).toHaveProperty('className', 'ui-composed');
+    expect(ComposedComponent).toHaveProperty('deprecated_className', 'ui-composed');
   });
 
   it('applies props on composed component', () => {

@@ -1,8 +1,9 @@
 import { List } from '@fluentui/react-northstar';
 
 const selectors = {
-  list: `.${List.className}`,
-  item: (itemIndex: number) => `.${List.className} .${List.Item.className}:nth-of-type(${itemIndex})`,
+  list: `.${List.deprecated_className}`,
+  item: (itemIndex: number) =>
+    `.${List.deprecated_className} .${List.Item.deprecated_className}:nth-of-type(${itemIndex})`,
 };
 
 const config: ScreenerTestsConfig = {

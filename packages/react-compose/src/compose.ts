@@ -44,11 +44,11 @@ function compose<InputProps, InputStylesProps, ParentProps, ParentStylesProps>(
     ...(InputComponent.displayName && { displayNames: [InputComponent.displayName] }),
   };
 
-  Component.className = composeOptions.className || inputOptions.className;
+  Component.deprecated_className = composeOptions.className || inputOptions.className;
   Component.displayName = composeOptions.displayName || InputComponent.displayName;
 
   Component.fluentComposeConfig = {
-    className: Component.className,
+    className: Component.deprecated_className,
     displayNames: computeDisplayNames(inputOptions, composeOptions),
 
     mapPropsToStylesPropsChain: (composeOptions.mapPropsToStylesProps

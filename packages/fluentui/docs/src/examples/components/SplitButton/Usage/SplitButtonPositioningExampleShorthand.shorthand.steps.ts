@@ -1,7 +1,7 @@
 import { SplitButton } from '@fluentui/react-northstar';
 
 const selectors = {
-  triggerButton: `.${SplitButton.Toggle.className}`,
+  triggerButton: `.${SplitButton.Toggle.deprecated_className}`,
 };
 
 const config: ScreenerTestsConfig = {

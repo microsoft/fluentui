@@ -92,7 +92,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
   });
 
   const { classes } = useStyles<CardStylesProps>(Card.displayName, {
-    className: Card.className,
+    className: Card.deprecated_className,
     mapPropsToStyles: () => ({
       centered,
       horizontal,
@@ -129,14 +129,14 @@ const Card: React.FC<WithAsProp<CardProps>> &
 };
 
 Card.displayName = 'Card';
-Card.className = 'ui-card';
+Card.deprecated_className = 'ui-card';
 
 Card.slotClassNames = {
-  header: `${Card.className}__header`,
-  body: `${Card.className}__body`,
-  footer: `${Card.className}__footer`,
-  preview: `${Card.className}__preview`,
-  topControls: `${Card.className}__top-controls`,
+  header: `${Card.deprecated_className}__header`,
+  body: `${Card.deprecated_className}__body`,
+  footer: `${Card.deprecated_className}__footer`,
+  preview: `${Card.deprecated_className}__preview`,
+  topControls: `${Card.deprecated_className}__top-controls`,
 };
 
 Card.propTypes = {

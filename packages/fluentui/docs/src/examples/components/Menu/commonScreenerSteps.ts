@@ -7,8 +7,8 @@ interface StepsOptions {
 }
 
 export const selectors = {
-  menu: `.${Menu.className}`,
-  item: (itemIndex: number) => `.${Menu.className} li:nth-child(${itemIndex}) a`,
+  menu: `.${Menu.deprecated_className}`,
+  item: (itemIndex: number) => `.${Menu.deprecated_className} li:nth-child(${itemIndex}) a`,
 };
 
 const getScreenerSteps = ({ vertical, startItem = 2, endItem = 3 }: StepsOptions = {}): ScreenerSteps => [

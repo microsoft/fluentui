@@ -3,7 +3,7 @@ import { Popup, Button } from '@fluentui/react-northstar';
 
 export const selectors = {
   popupContent: Popup.slotClassNames.content,
-  button: Button.className,
+  button: Button.deprecated_className,
 };
 
 const PopupWithoutTriggerExample = () => {

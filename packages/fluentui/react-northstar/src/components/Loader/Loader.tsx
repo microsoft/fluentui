@@ -59,11 +59,11 @@ export interface LoaderState {
 class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static create: ShorthandFactory<LoaderProps>;
   static displayName = 'Loader';
-  static className = 'ui-loader';
+  static deprecated_className = 'ui-loader';
   static slotClassNames: LoaderSlotClassNames = {
-    indicator: `${Loader.className}__indicator`,
-    label: `${Loader.className}__label`,
-    svg: `${Loader.className}__svg`,
+    indicator: `${Loader.deprecated_className}__indicator`,
+    label: `${Loader.deprecated_className}__label`,
+    svg: `${Loader.deprecated_className}__svg`,
   };
 
   static propTypes = {

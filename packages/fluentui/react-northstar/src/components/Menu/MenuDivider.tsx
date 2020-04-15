@@ -30,7 +30,7 @@ class MenuDivider extends UIComponent<WithAsProp<MenuDividerProps>> {
 
   static create: ShorthandFactory<MenuDividerProps>;
 
-  static className = 'ui-menu__divider';
+  static deprecated_className = 'ui-menu__divider';
 
   static defaultProps = {
     as: 'li',
