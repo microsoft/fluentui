@@ -58,7 +58,10 @@ export interface CardProps extends UIComponentProps {
   ariaRoleDescription: string;
 }
 
-export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'>;
+export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'> & {
+  interactive;
+};
+
 export const cardClassName = 'ui-card';
 
 const Card: React.FC<WithAsProp<CardProps>> &
@@ -87,6 +90,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
     size,
     fluid,
     ariaRoleDescription,
+    onClick,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Card.handledProps, props);
@@ -97,7 +101,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
         handleClick(e);
       },
       focusCard: e => {
-        e.preventDefault();
         cardRef.current.focus();
       },
     },
@@ -115,6 +118,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
       compact,
       size,
       fluid,
+      interactive: onClick !== undefined,
     }),
     mapPropsToInlineStyles: () => ({
       className,
