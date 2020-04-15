@@ -7,7 +7,7 @@ const PopupExamplePointerOffset = () => (
       <Popup
         align="center"
         position="above"
-        offset="50px"
+        offset={[50, 0]}
         open
         pointing
         trigger={<Button>Click</Button>}
@@ -19,28 +19,28 @@ const PopupExamplePointerOffset = () => (
           </p>
         }
       />
-      {/* Enable for V2 */}
-      {/*<Popup*/}
-      {/*  align="center"*/}
-      {/*  position="above"*/}
-      {/*  offset={({ popper }) => [-popper.height, -popper.height]}*/}
-      {/*  open*/}
-      {/*  trigger={<Button>Click</Button>}*/}
-      {/*  content={*/}
-      {/*    <p>*/}
-      {/*      The popup is rendered at above-start*/}
-      {/*      <br />*/}
-      {/*      corner of the trigger.*/}
-      {/*    </p>*/}
-      {/*  }*/}
-      {/*/>*/}
+
+      <Popup
+        align="center"
+        position="above"
+        offset={({ popper }) => [-popper.height, -popper.height]}
+        open
+        trigger={<Button>Click</Button>}
+        content={
+          <p>
+            The popup is rendered at above-start
+            <br />
+            corner of the trigger.
+          </p>
+        }
+      />
     </Grid>
     <Provider rtl>
       <Grid columns={1} styles={{ gridGap: '50px', margin: '200px' }}>
         <Popup
           align="center"
           position="above"
-          offset="50px"
+          offset={[50, 0]}
           open
           pointing
           trigger={<Button>Click</Button>}
@@ -53,21 +53,20 @@ const PopupExamplePointerOffset = () => (
           }
         />
 
-        {/* Enable for V2 */}
-        {/*<Popup*/}
-        {/*  align="center"*/}
-        {/*  position="above"*/}
-        {/*  offset={({ popper }) => [-popper.height, -popper.height]}*/}
-        {/*  open*/}
-        {/*  trigger={<Button>Click</Button>}*/}
-        {/*  content={*/}
-        {/*    <p>*/}
-        {/*      The popup is rendered at above-start*/}
-        {/*      <br />*/}
-        {/*      corner of the trigger.*/}
-        {/*    </p>*/}
-        {/*  }*/}
-        {/*/>*/}
+        <Popup
+          align="center"
+          position="above"
+          offset={({ popper }) => [-popper.height, -popper.height]}
+          open
+          trigger={<Button>Click</Button>}
+          content={
+            <p>
+              The popup is rendered at above-start
+              <br />
+              corner of the trigger.
+            </p>
+          }
+        />
       </Grid>
     </Provider>
   </>
