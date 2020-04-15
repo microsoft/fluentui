@@ -5,7 +5,6 @@ import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorth
 import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessibility } from '@fluentui/react-bindings';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { cardClassName } from './Card';
 
 export interface CardColumnProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -15,6 +14,7 @@ export interface CardColumnProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type CardColumnStylesProps = never;
+export const cardColumnClassName = 'ui-card__column';
 
 const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticProps<CardColumnProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -55,7 +55,6 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
 };
 
 CardColumn.displayName = 'CardColumn';
-export const cardColumnClassName = `${cardClassName}__column`;
 
 CardColumn.propTypes = {
   ...commonPropTypes.createCommon(),

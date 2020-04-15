@@ -66,6 +66,10 @@ export type AlertDismissActionStylesProps = Pick<
 > & {
   hasContent?: boolean;
 };
+export const alertDismissActionClassName = 'ui-alert__dismissaction';
+export const alertDismissActionSlotClassNames = {
+  content: `${alertDismissActionClassName}__content`,
+};
 
 const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
   FluentComponentStaticProps<AlertDismissActionProps> = props => {
@@ -187,11 +191,6 @@ AlertDismissAction.propTypes = {
 AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as any;
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
-
-export const alertDismissActionClassName = `ui-alert__dismissaction`;
-export const alertDismissActionSlotClassNames = {
-  content: `${alertDismissActionClassName}__content`,
-};
 
 /**
  * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.

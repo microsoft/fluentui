@@ -6,7 +6,6 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import { cardClassName } from './Card';
 
 export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -19,6 +18,7 @@ export interface CardHeaderProps extends UIComponentProps, ChildrenComponentProp
 }
 
 export type CardHeaderStylesProps = Pick<CardHeaderProps, 'fitted'>;
+export const cardHeaderClassName = 'ui-card__header';
 
 const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticProps<CardHeaderProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -60,7 +60,6 @@ const CardHeader: React.FC<WithAsProp<CardHeaderProps>> & FluentComponentStaticP
 };
 
 CardHeader.displayName = 'CardHeader';
-export const cardHeaderClassName = `${cardClassName}__header`;
 
 CardHeader.propTypes = {
   ...commonPropTypes.createCommon(),

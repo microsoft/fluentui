@@ -58,6 +58,10 @@ export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' 
 export interface AttachmentSlotClassNames {
   action: string;
 }
+export const attachmentClassName = 'ui-attachment';
+export const attachmentSlotClassNames: AttachmentSlotClassNames = {
+  action: `${attachmentClassName}__action`,
+};
 
 const Attachment: React.FC<WithAsProp<AttachmentProps>> & FluentComponentStaticProps<AttachmentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -170,11 +174,6 @@ Attachment.defaultProps = {
   accessibility: attachmentBehavior,
 };
 Attachment.handledProps = Object.keys(Attachment.propTypes) as any;
-
-export const attachmentClassName = 'ui-attachment';
-export const attachmentSlotClassNames = {
-  action: `${attachmentClassName}__action`,
-};
 
 /**
  * An Attachment represents a file or media attachment, which may contain some metadata or actions.

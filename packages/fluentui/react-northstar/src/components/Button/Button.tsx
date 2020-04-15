@@ -97,6 +97,7 @@ export type ButtonStylesProps = Pick<
 > & {
   hasContent?: boolean;
 };
+export const buttonClassName = 'ui-button';
 
 const Button: React.FC<WithAsProp<ButtonProps>> &
   FluentComponentStaticProps<ButtonProps> & { Group: typeof ButtonGroup; Content: typeof ButtonContent } = props => {
@@ -244,7 +245,6 @@ Button.defaultProps = {
 };
 
 Button.displayName = 'Button';
-export const buttonClassName = 'ui-button';
 
 Button.propTypes = {
   ...commonPropTypes.createCommon({

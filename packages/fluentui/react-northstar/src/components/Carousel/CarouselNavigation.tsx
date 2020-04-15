@@ -18,7 +18,6 @@ import {
 } from '../../utils';
 import { withSafeTypeForAs, WithAsProp, ShorthandCollection, ComponentEventHandler } from '../../types';
 import CarouselNavigationItem, { CarouselNavigationItemProps } from './CarouselNavigationItem';
-import { carouselClassName } from './Carousel';
 
 export interface CarouselNavigationProps extends UIComponentProps, ChildrenComponentProps {
   /** Index of the currently active item. */
@@ -48,7 +47,7 @@ export interface CarouselNavigationProps extends UIComponentProps, ChildrenCompo
   vertical?: boolean;
 }
 
-export const carouselNavigationClassName = `${carouselClassName}__navigation`;
+export const carouselNavigationClassName = 'ui-carousel__navigation';
 
 class CarouselNavigation extends UIComponent<WithAsProp<CarouselNavigationProps>> {
   static displayName = 'CarouselNavigation';

@@ -55,6 +55,7 @@ export interface CardProps extends UIComponentProps {
 }
 
 export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'>;
+export const cardClassName = 'ui-card';
 
 const Card: React.FC<WithAsProp<CardProps>> &
   FluentComponentStaticProps<CardProps> & {
@@ -120,7 +121,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
 };
 
 Card.displayName = 'Card';
-export const cardClassName = 'ui-card';
 
 Card.propTypes = {
   ...commonPropTypes.createCommon(),

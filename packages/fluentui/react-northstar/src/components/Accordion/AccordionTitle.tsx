@@ -19,7 +19,6 @@ import {
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, ShorthandValue, withSafeTypeForAs } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
-import { accordionClassName } from './Accordion';
 
 export interface AccordionTitleSlotClassNames {
   contentWrapper: string;
@@ -69,7 +68,7 @@ export interface AccordionTitleProps
   indicator?: ShorthandValue<BoxProps>;
 }
 
-export const accordionTitleClassName = `${accordionClassName}__title`;
+export const accordionTitleClassName = 'ui-accordion__title';
 
 class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static displayName = 'AccordionTitle';

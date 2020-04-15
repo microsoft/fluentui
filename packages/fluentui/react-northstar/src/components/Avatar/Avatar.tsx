@@ -47,6 +47,7 @@ export interface AvatarProps extends UIComponentProps {
 }
 
 export type AvatarStylesProps = Pick<AvatarProps, 'size' | 'square'>;
+export const avatarClassName = 'ui-avatar';
 
 const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<AvatarProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -122,7 +123,6 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   return result;
 };
 
-export const avatarClassName = 'ui-avatar';
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {

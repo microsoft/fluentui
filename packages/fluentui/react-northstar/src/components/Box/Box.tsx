@@ -21,6 +21,7 @@ export interface BoxProps extends UIComponentProps<BoxProps>, ContentComponentPr
 }
 
 export type BoxStylesProps = never;
+export const boxClassName = 'ui-box';
 
 const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -65,7 +66,6 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
   return result;
 };
 
-export const boxClassName = 'ui-box';
 Box.displayName = 'Box';
 
 Box.propTypes = commonPropTypes.createCommon();

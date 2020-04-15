@@ -6,7 +6,6 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
-import { cardClassName } from './Card';
 
 export interface CardPreviewProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -22,6 +21,7 @@ export interface CardPreviewProps extends UIComponentProps, ChildrenComponentPro
 }
 
 export type CardPreviewStylesProps = Pick<CardPreviewProps, 'horizontal' | 'fitted'>;
+export const cardPreviewClassName = 'ui-card__preview';
 
 const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStaticProps<CardPreviewProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -63,7 +63,6 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 };
 
 CardPreview.displayName = 'CardPreview';
-export const cardPreviewClassName = `${cardClassName}__preview`;
 
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),

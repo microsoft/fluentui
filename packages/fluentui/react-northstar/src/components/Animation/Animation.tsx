@@ -139,6 +139,7 @@ export interface AnimationProps
    */
   onExited?: ComponentEventHandler<AnimationProps>;
 }
+export const animationClassName = 'ui-animation';
 
 /**
  * An Animation provides animation effects to rendered elements.
@@ -259,7 +260,6 @@ const Animation: React.FC<AnimationProps> & {
   return element;
 };
 
-export const animationClassName = 'ui-animation';
 Animation.displayName = 'Animation';
 
 Animation.propTypes = {

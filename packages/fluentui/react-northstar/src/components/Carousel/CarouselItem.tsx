@@ -15,7 +15,6 @@ import {
 } from '../../utils';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import { WithAsProp, withSafeTypeForAs } from '../../types';
-import { carouselClassName } from './Carousel';
 
 export interface CarouselItemSlotClassNames {
   itemPositionText: string;
@@ -35,7 +34,7 @@ export interface CarouselItemProps extends UIComponentProps, ChildrenComponentPr
   navigation?: boolean;
 }
 
-export const carouselItemClassName = `${carouselClassName}__item`;
+export const carouselItemClassName = 'ui-carousel__item';
 
 class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
   static create: ShorthandFactory<CarouselItemProps>;

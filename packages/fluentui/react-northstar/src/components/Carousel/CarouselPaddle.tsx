@@ -26,7 +26,6 @@ import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandled
 import Box, { BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { carouselClassName } from './Carousel';
 
 export interface CarouselPaddleProps
   extends UIComponentProps,
@@ -162,7 +161,7 @@ CarouselPaddle.defaultProps = {
 };
 
 CarouselPaddle.displayName = 'CarouselPaddle';
-export const carouselPaddleClassName = `${carouselClassName}__paddle`;
+export const carouselPaddleClassName = 'ui-carousel__paddle';
 
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
