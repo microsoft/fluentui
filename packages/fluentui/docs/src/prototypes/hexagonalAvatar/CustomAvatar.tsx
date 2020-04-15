@@ -27,6 +27,7 @@ const CustomAvatar = (props: AvatarProps & { image?: string; hexagonal?: boolean
                   clipPath="url(#bot-hexagon-clip-path)"
                   width="34px"
                   height="34px"
+                  xlinkHref={src}
                   {...restImageProps}
                 />
               </svg>
