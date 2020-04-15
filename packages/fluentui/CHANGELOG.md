@@ -31,6 +31,8 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecWithStyles` @mnajdova ([#12549](https://github.com/microsoft/fluentui/pull/12549))
 - Restricted prop sets in the `Attachment` component which are passed to styles functions @layershifter ([#12576](https://github.com/microsoft/fluentui/pull/12576))
 - Replace `ListItemProps` with `DropdownItemProps` for `Dropdown` slots `noResultsMessage` and `loadingMessage` @silviuavram ([#12493](https://github.com/microsoft/fluentui/pull/12493))
+- `Attachment.slotClassNames` were removed @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
+- Styles from `Attachment` slots were moved to exact components (`AttachmentAction`, `AttachmentHeader`, etc.) @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 
 ### Fixes
 - Fix default focused input outline in Safari @sheff146 ([#12279](https://github.com/microsoft/fluentui/pull/12279))
@@ -68,6 +70,7 @@ Removed types: `TeamsSvgIconSpec`, `ThemeIconSpec`, `SvgIconSpec`, `SvgIconSpecW
 - Add `size` and `fluid` props to `Card` component @pompomon ([#12589](https://github.com/microsoft/fluentui/pull/12589))
 - Add shadow styles to `Card` component @pompomon ([#12624](https://github.com/microsoft/fluentui/pull/12624))
 - Add `icon` prop to `Avatar` component @mnajdova ([#12660](https://github.com/microsoft/fluentui/pull/12660))
+- Add `body` slot to `Attachment` component @layershifter ([#12674](https://github.com/microsoft/fluentui/pull/12674))
 
 ### Documentation
 - Add per-component bundle size charts @miroslavstastny ([#12374](https://github.com/microsoft/fluentui/pull/12374))
