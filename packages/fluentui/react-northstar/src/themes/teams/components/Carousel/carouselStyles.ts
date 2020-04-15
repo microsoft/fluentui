@@ -4,7 +4,7 @@ import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { CarouselVariables } from './carouselVariables';
 
 const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState, CarouselVariables> = {
-  root: ({ variables: v }): ICSSInJSStyle => ({
+  root: (): ICSSInJSStyle => ({
     display: 'inline-block',
   }),
   itemsContainerWrapper: ({ variables: v, props: p }): ICSSInJSStyle => ({

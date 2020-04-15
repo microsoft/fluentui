@@ -33,13 +33,13 @@ const carouselItems = [
     thumbnail: <Image src="public/images/avatar/small/nan.jpg" fluid alt={imageAltTags.nan} />,
   },
   {
-    key: 'elliot',
+    key: 'elliot1',
     id: 'elliot1',
     content: <Image src="public/images/avatar/large/elliot.jpg" fluid alt={imageAltTags.elliot} />,
     thumbnail: <Image src="public/images/avatar/small/elliot.jpg" fluid alt={imageAltTags.elliot} />,
   },
   {
-    key: 'ade',
+    key: 'ade1',
     id: 'ade1',
     content: <Image src="public/images/avatar/large/ade.jpg" fluid alt={imageAltTags.ade} />,
     thumbnail: <Image src="public/images/avatar/small/ade.jpg" fluid alt={imageAltTags.ade} />,
