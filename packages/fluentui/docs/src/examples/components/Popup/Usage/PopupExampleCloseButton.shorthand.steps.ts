@@ -3,7 +3,7 @@ import { Dropdown, Button } from '@fluentui/react-northstar';
 const selectors = {
   toggleIndicator: `.${Dropdown.slotClassNames.toggleIndicator}`,
   item: (itemIndex: number) => `.${Dropdown.slotClassNames.itemsList} li:nth-child(${itemIndex})`,
-  popupTrigger: `.${Button.className}`,
+  popupTrigger: `.${Button.deprecated_className}`,
 };
 
 const config: ScreenerTestsConfig = {

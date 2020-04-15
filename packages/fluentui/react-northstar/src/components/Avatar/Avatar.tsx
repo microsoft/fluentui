@@ -6,6 +6,7 @@ import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
+import Box, { BoxProps } from '../Box/Box';
 import Image, { ImageProps } from '../Image/Image';
 import Label, { LabelProps } from '../Label/Label';
 import Status, { StatusProps } from '../Status/Status';
@@ -23,6 +24,9 @@ export interface AvatarProps extends UIComponentProps {
    * Accessibility behavior if overridden by the user.
    */
   accessibility?: Accessibility<never>;
+
+  /** Avatar can contain icon. It will be rendered only if the image is not present. */
+  icon?: ShorthandValue<BoxProps>;
 
   /** Shorthand for the image. */
   image?: ShorthandValue<ImageProps>;
@@ -59,6 +63,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
     design,
     getInitials,
     label,
+    icon,
     image,
     name,
     square,
@@ -73,7 +78,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles(Avatar.displayName, {
-    className: Avatar.className,
+    className: Avatar.deprecated_className,
     mapPropsToStyles: () => ({ size, square }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -86,27 +91,40 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Avatar.handledProps, props);
 
+  const imageElement = Image.create(image, {
+    defaultProps: () =>
+      getA11Props('image', {
+        fluid: true,
+        avatar: !square,
+        title: name,
+        styles: resolvedStyles.image,
+      }),
+  });
+
+  const iconElement = Box.create(icon, {
+    defaultProps: () =>
+      getA11Props('icon', {
+        title: name,
+        styles: resolvedStyles.icon,
+      }),
+  });
+
+  const labelElement = Label.create(label || {}, {
+    defaultProps: () =>
+      getA11Props('label', {
+        content: getInitials(name),
+        circular: !square,
+        title: name,
+        styles: resolvedStyles.label,
+      }),
+  });
+
+  const hasGlyph = !!image || !!icon;
+
   const result = (
     <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>
-      {Image.create(image, {
-        defaultProps: () =>
-          getA11Props('image', {
-            fluid: true,
-            avatar: !square,
-            title: name,
-            styles: resolvedStyles.image,
-          }),
-      })}
-      {!image &&
-        Label.create(label || {}, {
-          defaultProps: () =>
-            getA11Props('label', {
-              content: getInitials(name),
-              circular: !square,
-              title: name,
-              styles: resolvedStyles.label,
-            }),
-        })}
+      {hasGlyph && (imageElement || iconElement)}
+      {!hasGlyph && labelElement}
       {Status.create(status, {
         defaultProps: () =>
           getA11Props('status', {
@@ -122,7 +140,7 @@ const Avatar: React.FC<WithAsProp<AvatarProps>> & FluentComponentStaticProps<Ava
   return result;
 };
 
-Avatar.className = 'ui-avatar';
+Avatar.deprecated_className = 'ui-avatar';
 Avatar.displayName = 'Avatar';
 
 Avatar.defaultProps = {
@@ -156,6 +174,7 @@ Avatar.propTypes = {
     content: false,
   }),
   name: PropTypes.string,
+  icon: customPropTypes.shorthandAllowingChildren,
   image: customPropTypes.itemShorthandWithoutJSX,
   label: customPropTypes.itemShorthand,
   square: PropTypes.bool,

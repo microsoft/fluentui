@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
+
+const searchBoxStyles: Partial<ISearchBoxStyles> = { root: { width: 200 } };
 
 // tslint:disable:jsx-no-lambda
 export const SearchBoxSmallExample = () => (
   <SearchBox
-    styles={{ root: { width: 200 } }}
+    styles={searchBoxStyles}
     placeholder="Search"
     onEscape={ev => {
       console.log('Custom onEscape Called');

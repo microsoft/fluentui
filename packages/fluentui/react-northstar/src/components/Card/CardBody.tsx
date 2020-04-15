@@ -33,7 +33,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
   });
 
   const { classes } = useStyles<CardBodyStylesProps>(CardBody.displayName, {
-    className: CardBody.className,
+    className: CardBody.deprecated_className,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +59,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
 };
 
 CardBody.displayName = 'CardBody';
-CardBody.className = 'ui-card__body';
+CardBody.deprecated_className = 'ui-card__body';
 
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),

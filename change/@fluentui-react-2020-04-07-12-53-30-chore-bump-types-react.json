@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: bump @types/react",
-  "packageName": "@fluentui/react",
-  "email": "olfedias@microsoft.com",
-  "commit": "1c25191a3a6a1b6e8a0aca3c7cf7f3a629171738",
-  "dependentChangeType": "none",
-  "date": "2020-04-07T10:53:23.159Z"
-}

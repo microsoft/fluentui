@@ -1,9 +1,0 @@
-{
-  "type": "minor",
-  "comment": "ColorPicker: Add support for selecting transparency instead of alpha",
-  "packageName": "office-ui-fabric-react",
-  "email": "elcraig@microsoft.com",
-  "commit": "8daab0296711d7edf6060e0f43d2794653db4387",
-  "dependentChangeType": "patch",
-  "date": "2020-04-06T16:05:28.690Z"
-}

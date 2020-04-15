@@ -58,6 +58,30 @@ export interface IChartDataPoint {
   placeHolder?: boolean;
 }
 
+export interface IVerticalBarChartDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If x is a string, then the data is evenly spaced along the x-axis.
+   */
+  x: number | string;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+}
+
 export interface ILineChartDataPoint {
   /**
    * Independent value of the data point, rendered along the x-axis.
@@ -70,6 +94,16 @@ export interface ILineChartDataPoint {
    * Dependent value of the data point, rendered along the y-axis.
    */
   y: number;
+
+  /**
+   * Callout data for x axis
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   */
+  yAxisCalloutData?: string;
 }
 
 export interface ILineChartPoints {

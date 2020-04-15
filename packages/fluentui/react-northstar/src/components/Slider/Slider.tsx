@@ -170,7 +170,7 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
     }),
   });
   const { classes, styles: resolvedStyles } = useStyles<SliderStylesProps>(Slider.displayName, {
-    className: Slider.className,
+    className: Slider.deprecated_className,
     mapPropsToStyles: () => ({
       fluid,
       vertical,
@@ -256,15 +256,15 @@ const Slider: React.FC<WithAsProp<SliderProps>> &
   return element;
 };
 
-Slider.className = 'ui-slider';
+Slider.deprecated_className = 'ui-slider';
 Slider.displayName = 'Slider';
 
 Slider.slotClassNames = {
-  input: `${Slider.className}__input`,
-  inputWrapper: `${Slider.className}__input-wrapper`,
-  rail: `${Slider.className}__rail`,
-  thumb: `${Slider.className}__thumb`,
-  track: `${Slider.className}__track`,
+  input: `${Slider.deprecated_className}__input`,
+  inputWrapper: `${Slider.deprecated_className}__input-wrapper`,
+  rail: `${Slider.deprecated_className}__rail`,
+  thumb: `${Slider.deprecated_className}__thumb`,
+  track: `${Slider.deprecated_className}__track`,
 };
 
 Slider.defaultProps = {

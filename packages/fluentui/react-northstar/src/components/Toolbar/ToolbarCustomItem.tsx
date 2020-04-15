@@ -69,7 +69,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarCustomItemStylesProps>(ToolbarCustomItem.displayName, {
-    className: ToolbarCustomItem.className,
+    className: ToolbarCustomItem.deprecated_className,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -113,7 +113,7 @@ const ToolbarCustomItem: React.FC<WithAsProp<ToolbarCustomItemProps>> & FluentCo
   return element;
 };
 
-ToolbarCustomItem.className = 'ui-toolbar__customitem';
+ToolbarCustomItem.deprecated_className = 'ui-toolbar__customitem';
 ToolbarCustomItem.displayName = 'ToolbarCustomItem';
 
 ToolbarCustomItem.propTypes = {

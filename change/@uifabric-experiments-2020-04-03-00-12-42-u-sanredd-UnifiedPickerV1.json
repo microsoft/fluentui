@@ -1,9 +1,0 @@
-{
-  "type": "none",
-  "comment": "Unified picker, work in progress",
-  "packageName": "@uifabric/experiments",
-  "email": "sanredd@microsoft.com",
-  "commit": "296e5c243a78378ab639c2de1abe2c1c79848800",
-  "dependentChangeType": "patch",
-  "date": "2020-04-03T07:12:42.140Z"
-}

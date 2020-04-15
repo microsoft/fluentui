@@ -28,6 +28,7 @@ import PageNotFound from './views/PageNotFound';
 import QuickStart from './views/QuickStart';
 import Theming from './views/Theming';
 import ThemingExamples from './views/ThemingExamples';
+import IconViewer from './views/IconViewer';
 import IntegrateCustomComponents from './views/IntegrateCustomComponents';
 import AccessibilityBehaviors from './views/AccessibilityBehaviors';
 import FocusZone from './views/FocusZoneDoc';
@@ -107,6 +108,7 @@ const Routes = () => (
             <Route exact path="/shorthand-props">
               <MarkdownPage page={ShorthandProps} />
             </Route>
+            <Route exact path="/icon-viewer" component={IconViewer} />
             <Route exact path="/component-architecture">
               <MarkdownPage page={ComponentArchitecture} />
             </Route>

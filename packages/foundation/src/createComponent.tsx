@@ -83,6 +83,7 @@ export function createComponent<
       styles,
       tokens,
       _defaultStyles: styles,
+      theme,
     } as TViewProps & IDefaultSlotProps<any>;
 
     return view(viewProps);

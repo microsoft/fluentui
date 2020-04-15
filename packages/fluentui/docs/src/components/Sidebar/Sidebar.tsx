@@ -166,6 +166,15 @@ class Sidebar extends React.Component<any, any> {
             },
           },
           {
+            key: 'icons-viewer',
+            title: {
+              as: NavLink,
+              content: 'Icons',
+              activeClassName: 'active',
+              to: '/icon-viewer',
+            },
+          },
+          {
             key: 'component-architecture',
             title: {
               as: NavLink,
@@ -447,7 +456,7 @@ class Sidebar extends React.Component<any, any> {
     const allSectionsWithoutSearchFilter = this.getSectionsWithoutSearchFilter();
 
     const escapedQuery = _.escapeRegExp(this.state.query);
-    const regexQuery = new RegExp(`^${escapedQuery}`, 'i');
+    const regexQuery = new RegExp(`.*${escapedQuery}`, 'i');
     const allSectionsWithPossibleEmptySections = _.map(
       allSectionsWithoutSearchFilter,
       (section: HierarchicalTreeItemProps) => {

@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+
+const stackStyles: Partial<IStackStyles> = { root: { width: 650 } };
 
 export const TextFieldBorderlessExample: React.FunctionComponent = () => {
   const columnProps: Partial<IStackProps> = {
@@ -9,7 +11,7 @@ export const TextFieldBorderlessExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack horizontal tokens={{ childrenGap: 50 }} styles={{ root: { width: 650 } }}>
+    <Stack horizontal tokens={{ childrenGap: 50 }} styles={stackStyles}>
       {/* Underlined fields */}
       <Stack {...columnProps}>
         <TextField label="Standard:" underlined />
