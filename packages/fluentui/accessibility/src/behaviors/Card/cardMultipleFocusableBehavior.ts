@@ -12,7 +12,7 @@ import * as keyboardKey from 'keyboard-key';
  * Adds attribute 'data-is-focusable=true' to 'root' slot.
  * Adds attribute 'aria-roledescription' based on the property 'ariaRoleDescription' to 'root' slot.
  * Provides arrow key navigation in bidirectional direction.
- * Triggers 'focusCell' action with 'Escape' on 'root'.
+ * Triggers 'focusCard' action with 'Escape' on 'root'.
  */
 const cardMultipleFocusableBehavior: Accessibility<CardBehaviorProps> = props => ({
   attributes: {
