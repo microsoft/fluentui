@@ -48,7 +48,7 @@ class Form extends UIComponent<WithAsProp<FormProps>, any> {
   static deprecated_className = 'ui-form';
 
   static slotClassNames: FormSlotClassNames = {
-    field: `${Form.className}__field`,
+    field: `${Form.deprecated_className}__field`,
   };
 
   static propTypes = {

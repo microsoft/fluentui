@@ -44,7 +44,7 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<
   } = props;
 
   const { classes } = useStyles<SvgIconStylesProps>(SvgIcon.displayName, {
-    className: SvgIcon.className,
+    className: SvgIcon.deprecated_className,
     mapPropsToStyles: () => ({
       bordered,
       circular,
@@ -77,7 +77,7 @@ const SvgIcon: React.FC<WithAsProp<SvgIconProps & { children: SvgIconChildrenFn<
   return element;
 };
 
-SvgIcon.className = svgIconClassName;
+SvgIcon.deprecated_className = svgIconClassName;
 SvgIcon.displayName = svgIconDisplayName;
 SvgIcon.handledProps = [...svgIconHandledProps, 'children'];
 SvgIcon.defaultProps = {

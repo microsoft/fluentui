@@ -60,7 +60,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
   static deprecated_className = 'ui-carousel__navigationitem';
 
   static slotClassNames: CarouselNavigationItemSlotClassNames = {
-    indicator: `${CarouselNavigationItem.className}__indicator`,
+    indicator: `${CarouselNavigationItem.deprecated_className}__indicator`,
   };
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;

@@ -178,7 +178,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     },
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
-    className: ChatMessage.className,
+    className: ChatMessage.deprecated_className,
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
@@ -353,7 +353,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   return element;
 };
 
-ChatMessage.className = 'ui-chat__message';
+ChatMessage.deprecated_className = 'ui-chat__message';
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
@@ -383,12 +383,12 @@ ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
 ChatMessage.slotClassNames = {
-  actionMenu: `${ChatMessage.className}__actions`,
-  author: `${ChatMessage.className}__author`,
-  timestamp: `${ChatMessage.className}__timestamp`,
-  badge: `${ChatMessage.className}__badge`,
-  content: `${ChatMessage.className}__content`,
-  reactionGroup: `${ChatMessage.className}__reactions`,
+  actionMenu: `${ChatMessage.deprecated_className}__actions`,
+  author: `${ChatMessage.deprecated_className}__author`,
+  timestamp: `${ChatMessage.deprecated_className}__timestamp`,
+  badge: `${ChatMessage.deprecated_className}__badge`,
+  content: `${ChatMessage.deprecated_className}__content`,
+  reactionGroup: `${ChatMessage.deprecated_className}__reactions`,
 };
 
 /**

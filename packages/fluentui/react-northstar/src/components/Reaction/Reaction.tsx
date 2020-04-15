@@ -93,8 +93,8 @@ class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
 
 Reaction.create = createShorthandFactory({ Component: Reaction, mappedProp: 'content' });
 Reaction.slotClassNames = {
-  icon: `${Reaction.className}__icon`,
-  content: `${Reaction.className}__content`,
+  icon: `${Reaction.deprecated_className}__icon`,
+  content: `${Reaction.deprecated_className}__content`,
 };
 
 /**

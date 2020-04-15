@@ -53,7 +53,7 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
   };
 
   static slotClassNames: CarouselItemSlotClassNames = {
-    itemPositionText: `${CarouselItem.className}__itemPositionText`,
+    itemPositionText: `${CarouselItem.deprecated_className}__itemPositionText`,
   };
 
   actionHandlers = {

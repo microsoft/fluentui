@@ -105,8 +105,8 @@ class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
   static deprecated_className = 'ui-menu';
 
   static slotClassNames: MenuSlotClassNames = {
-    divider: `${Menu.className}__divider`,
-    item: `${Menu.className}__item`,
+    divider: `${Menu.deprecated_className}__divider`,
+    item: `${Menu.deprecated_className}__item`,
   };
 
   static create: ShorthandFactory<MenuProps>;

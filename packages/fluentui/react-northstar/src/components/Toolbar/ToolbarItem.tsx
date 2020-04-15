@@ -168,7 +168,7 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarItemStylesProps>(ToolbarItem.displayName, {
-    className: ToolbarItem.className,
+    className: ToolbarItem.deprecated_className,
     mapPropsToStyles: () => ({ active, disabled }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -350,11 +350,11 @@ const ToolbarItem: React.FC<WithAsProp<ToolbarItemProps>> &
   return refElement;
 };
 
-ToolbarItem.className = 'ui-toolbar__item';
+ToolbarItem.deprecated_className = 'ui-toolbar__item';
 ToolbarItem.displayName = 'ToolbarItem';
 
 ToolbarItem.slotClassNames = {
-  wrapper: `${ToolbarItem.className}__wrapper`,
+  wrapper: `${ToolbarItem.deprecated_className}__wrapper`,
 };
 
 ToolbarItem.defaultProps = {

@@ -68,7 +68,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<TooltipContentStylesProps>(TooltipContent.displayName, {
-    className: TooltipContent.className,
+    className: TooltipContent.deprecated_className,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       open,
@@ -107,7 +107,7 @@ const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
 };
 
 TooltipContent.displayName = 'TooltipContent';
-TooltipContent.className = 'ui-tooltip__content';
+TooltipContent.deprecated_className = 'ui-tooltip__content';
 
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),

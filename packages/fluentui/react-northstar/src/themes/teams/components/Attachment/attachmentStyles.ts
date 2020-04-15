@@ -41,11 +41,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${Button.className}`]: {
+          [`& .${Button.deprecated_className}`]: {
             color: v.siblingsFocusColor,
           },
 
-          [`& .${SvgIcon.className}`]: {
+          [`& .${SvgIcon.deprecated_className}`]: {
             color: v.siblingsFocusColor,
           },
         },
@@ -54,11 +54,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           background: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${Button.className}`]: {
+          [`& .${Button.deprecated_className}`]: {
             color: v.siblingsHoverColor,
           },
 
-          [`& .${SvgIcon.className}`]: {
+          [`& .${SvgIcon.deprecated_className}`]: {
             color: v.siblingsHoverColor,
           },
         },
@@ -87,7 +87,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     flex: '0 0 auto',
     height: v.iconSize,
     width: v.iconSize,
-    [`& .${SvgIcon.className}`]: {
+    [`& .${SvgIcon.deprecated_className}`]: {
       height: '100%',
       width: '100%',
       '& svg': {
@@ -106,7 +106,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
     });
 
     return {
-      [`& .${SvgIcon.className}`]: {
+      [`& .${SvgIcon.deprecated_className}`]: {
         color: v.textColor, // this breaks the color change on hover
       },
 

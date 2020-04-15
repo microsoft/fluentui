@@ -96,7 +96,7 @@ class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> 
   static autoControlledProps = ['active'];
 
   static slotClassNames: EmbedSlotClassNames = {
-    control: `${Embed.className}__control`,
+    control: `${Embed.deprecated_className}__control`,
   };
 
   actionHandlers = {

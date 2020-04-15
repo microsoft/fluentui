@@ -147,7 +147,7 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
     return Box.create(wrapper, {
       defaultProps: () => ({
         ...accessibility.attributes.root,
-        className: cx(Input.className, className),
+        className: cx(Input.deprecated_className, className),
         children: (
           <>
             <Ref
@@ -231,8 +231,8 @@ class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> 
 }
 
 Input.slotClassNames = {
-  input: `${Input.className}__input`,
-  icon: `${Input.className}__icon`,
+  input: `${Input.deprecated_className}__input`,
+  icon: `${Input.deprecated_className}__icon`,
 };
 
 /**

@@ -58,7 +58,7 @@ const applyStyles = (
   // if element is DOM element
   if (typeof element.type === 'string') {
     return React.cloneElement(element, {
-      className: cx(element.props.className, classes.root),
+      className: cx(element.props.deprecated_className, classes.root),
     });
   }
 
@@ -79,7 +79,7 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
   const { align, children, className, design, grow, flexDirection, push, shrink, size, styles, variables } = props;
 
   const { classes, styles: resolvedStyles } = useStyles<FlexItemStylesProps>(FlexItem.displayName, {
-    className: FlexItem.className,
+    className: FlexItem.deprecated_className,
     mapPropsToStyles: () => ({
       align,
       grow,
@@ -116,7 +116,7 @@ const FlexItem: React.FC<FlexItemProps> & { className: string; __isFlexItem: boo
   return element;
 };
 
-FlexItem.className = 'ui-flex__item';
+FlexItem.deprecated_className = 'ui-flex__item';
 FlexItem.displayName = 'FlexItem';
 
 FlexItem.propTypes = {

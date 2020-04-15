@@ -97,8 +97,8 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
   static deprecated_className = 'ui-accordion';
 
   static slotClassNames: AccordionSlotClassNames = {
-    content: `${Accordion.className}__content`,
-    title: `${Accordion.className}__title`,
+    content: `${Accordion.deprecated_className}__content`,
+    title: `${Accordion.deprecated_className}__title`,
   };
 
   static propTypes = {

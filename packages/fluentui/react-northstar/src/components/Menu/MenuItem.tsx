@@ -145,9 +145,9 @@ class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuIt
   static deprecated_className = 'ui-menu__item';
 
   static slotClassNames: MenuItemSlotClassNames = {
-    submenu: `${MenuItem.className}__submenu`,
-    wrapper: `${MenuItem.className}__wrapper`,
-    indicator: `${MenuItem.className}__indicator`,
+    submenu: `${MenuItem.deprecated_className}__submenu`,
+    wrapper: `${MenuItem.deprecated_className}__wrapper`,
+    indicator: `${MenuItem.deprecated_className}__indicator`,
   };
 
   static create: ShorthandFactory<MenuItemProps>;

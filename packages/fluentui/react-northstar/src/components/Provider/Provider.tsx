@@ -132,7 +132,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   }
 
   const { classes } = unstable_getStyles({
-    className: Provider.className,
+    className: Provider.deprecated_className,
     displayNames: [Provider.displayName],
     props: {
       className,
@@ -196,7 +196,7 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   );
 };
 
-Provider.className = 'ui-provider';
+Provider.deprecated_className = 'ui-provider';
 Provider.displayName = 'Provider';
 
 Provider.defaultProps = {

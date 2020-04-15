@@ -61,9 +61,9 @@ class Loader extends UIComponent<WithAsProp<LoaderProps>, LoaderState> {
   static displayName = 'Loader';
   static deprecated_className = 'ui-loader';
   static slotClassNames: LoaderSlotClassNames = {
-    indicator: `${Loader.className}__indicator`,
-    label: `${Loader.className}__label`,
-    svg: `${Loader.className}__svg`,
+    indicator: `${Loader.deprecated_className}__indicator`,
+    label: `${Loader.deprecated_className}__label`,
+    svg: `${Loader.deprecated_className}__svg`,
   };
 
   static propTypes = {

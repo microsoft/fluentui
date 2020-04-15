@@ -184,9 +184,9 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
 }
 
 DropdownSelectedItem.slotClassNames = {
-  header: `${DropdownSelectedItem.className}__header`,
-  icon: `${DropdownSelectedItem.className}__icon`,
-  image: `${DropdownSelectedItem.className}__image`,
+  header: `${DropdownSelectedItem.deprecated_className}__header`,
+  icon: `${DropdownSelectedItem.deprecated_className}__icon`,
+  image: `${DropdownSelectedItem.deprecated_className}__image`,
 };
 
 DropdownSelectedItem.create = createShorthandFactory({

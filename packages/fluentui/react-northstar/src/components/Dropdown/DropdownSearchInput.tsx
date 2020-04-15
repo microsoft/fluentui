@@ -142,8 +142,8 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
 }
 
 DropdownSearchInput.slotClassNames = {
-  input: `${DropdownSearchInput.className}__input`,
-  wrapper: `${DropdownSearchInput.className}__wrapper`,
+  input: `${DropdownSearchInput.deprecated_className}__input`,
+  wrapper: `${DropdownSearchInput.deprecated_className}__wrapper`,
 };
 
 DropdownSearchInput.create = createShorthandFactory({ Component: DropdownSearchInput });

@@ -95,7 +95,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   } = props;
 
   const { classes, styles: resolvedStyles } = useStyles(DropdownItem.displayName, {
-    className: DropdownItem.className,
+    className: DropdownItem.deprecated_className,
     mapPropsToStyles: () => ({
       active,
       isFromKeyboard,
@@ -170,7 +170,7 @@ const DropdownItem: React.FC<WithAsProp<DropdownItemProps> & { index: number }> 
   return element;
 };
 
-DropdownItem.className = 'ui-dropdown__item';
+DropdownItem.deprecated_className = 'ui-dropdown__item';
 DropdownItem.displayName = 'DropdownItem';
 
 DropdownItem.defaultProps = {
@@ -199,11 +199,11 @@ DropdownItem.propTypes = {
 DropdownItem.handledProps = Object.keys(DropdownItem.propTypes) as any;
 
 DropdownItem.slotClassNames = {
-  main: `${DropdownItem.className}__main`,
-  content: `${DropdownItem.className}__content`,
-  header: `${DropdownItem.className}__header`,
-  image: `${DropdownItem.className}__image`,
-  checkableIndicator: `${DropdownItem.className}__checkable-indicator`,
+  main: `${DropdownItem.deprecated_className}__main`,
+  content: `${DropdownItem.deprecated_className}__content`,
+  header: `${DropdownItem.deprecated_className}__header`,
+  image: `${DropdownItem.deprecated_className}__image`,
+  checkableIndicator: `${DropdownItem.deprecated_className}__checkable-indicator`,
 };
 
 DropdownItem.create = createShorthandFactory({ Component: DropdownItem, mappedProp: 'header' });

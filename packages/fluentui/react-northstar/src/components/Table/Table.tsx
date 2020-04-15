@@ -54,7 +54,7 @@ class Table extends UIComponent<WithAsProp<TableProps>> {
   static Row = TableRow;
 
   static slotClassNames: TableSlotClassNames = {
-    header: `${Table.className}__header`,
+    header: `${Table.deprecated_className}__header`,
   };
 
   static propTypes = {

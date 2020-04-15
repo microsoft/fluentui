@@ -38,7 +38,7 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<ToolbarDividerStylesProps>(ToolbarDivider.displayName, {
-    className: ToolbarDivider.className,
+    className: ToolbarDivider.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -57,7 +57,7 @@ const ToolbarDivider: React.FC<WithAsProp<ToolbarDividerProps>> &
   return element;
 };
 
-ToolbarDivider.className = 'ui-toolbar__divider';
+ToolbarDivider.deprecated_className = 'ui-toolbar__divider';
 ToolbarDivider.displayName = 'ToolbarDivider';
 
 ToolbarDivider.propTypes = commonPropTypes.createCommon();

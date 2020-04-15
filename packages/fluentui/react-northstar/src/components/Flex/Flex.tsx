@@ -74,7 +74,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   } = props;
 
   const { classes } = useStyles<FlexStylesProps>(Flex.displayName, {
-    className: Flex.className,
+    className: Flex.deprecated_className,
     mapPropsToStyles: () => ({
       column,
       debug,
@@ -118,7 +118,7 @@ const Flex: React.FC<WithAsProp<FlexProps>> & {
   return element;
 };
 
-Flex.className = 'ui-flex';
+Flex.deprecated_className = 'ui-flex';
 Flex.displayName = 'Flex';
 
 Flex.propTypes = {

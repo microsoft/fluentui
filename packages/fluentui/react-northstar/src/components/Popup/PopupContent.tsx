@@ -105,7 +105,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
     rtl: context.rtl,
   });
   const { classes } = useStyles<PopupContentStylesProps>(PopupContent.displayName, {
-    className: PopupContent.className,
+    className: PopupContent.deprecated_className,
     mapPropsToStyles: () => ({
       basePlacement: getBasePlacement(placement, context.rtl),
       pointing,
@@ -167,7 +167,7 @@ const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
 };
 
 PopupContent.displayName = 'PopupContent';
-PopupContent.className = 'ui-popup__content';
+PopupContent.deprecated_className = 'ui-popup__content';
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
@@ -198,7 +198,7 @@ PopupContent.propTypes = {
 PopupContent.handledProps = Object.keys(PopupContent.propTypes) as any;
 
 PopupContent.slotClassNames = {
-  content: `${PopupContent.className}__content`,
+  content: `${PopupContent.deprecated_className}__content`,
 };
 
 PopupContent.create = createShorthandFactory({ Component: PopupContent, mappedProp: 'content' });

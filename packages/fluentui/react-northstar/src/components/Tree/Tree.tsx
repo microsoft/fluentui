@@ -96,7 +96,7 @@ class Tree extends AutoControlledComponent<WithAsProp<TreeProps>, TreeState> {
   static deprecated_className = 'ui-tree';
 
   static slotClassNames: TreeSlotClassNames = {
-    item: `${Tree.className}__item`,
+    item: `${Tree.deprecated_className}__item`,
   };
 
   static propTypes = {

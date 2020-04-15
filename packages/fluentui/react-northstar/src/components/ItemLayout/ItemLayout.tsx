@@ -203,13 +203,13 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
 
 ItemLayout.create = createShorthandFactory({ Component: ItemLayout, mappedProp: 'content' });
 ItemLayout.slotClassNames = {
-  header: `${ItemLayout.className}__header`,
-  headerMedia: `${ItemLayout.className}__headerMedia`,
-  main: `${ItemLayout.className}__main`,
-  content: `${ItemLayout.className}__content`,
-  contentMedia: `${ItemLayout.className}__contentMedia`,
-  media: `${ItemLayout.className}__media`,
-  endMedia: `${ItemLayout.className}__endMedia`,
+  header: `${ItemLayout.deprecated_className}__header`,
+  headerMedia: `${ItemLayout.deprecated_className}__headerMedia`,
+  main: `${ItemLayout.deprecated_className}__main`,
+  content: `${ItemLayout.deprecated_className}__content`,
+  contentMedia: `${ItemLayout.deprecated_className}__contentMedia`,
+  media: `${ItemLayout.deprecated_className}__media`,
+  endMedia: `${ItemLayout.deprecated_className}__endMedia`,
 };
 
 /**

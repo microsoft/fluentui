@@ -179,7 +179,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
 
 AccordionTitle.slotClassNames = {
-  contentWrapper: `${AccordionTitle.className}__content-wrapper`,
+  contentWrapper: `${AccordionTitle.deprecated_className}__content-wrapper`,
 };
 
 /**

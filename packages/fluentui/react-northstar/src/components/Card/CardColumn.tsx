@@ -29,7 +29,7 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardColumnStylesProps>(CardColumn.displayName, {
-    className: CardColumn.className,
+    className: CardColumn.deprecated_className,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -54,7 +54,7 @@ const CardColumn: React.FC<WithAsProp<CardColumnProps>> & FluentComponentStaticP
 };
 
 CardColumn.displayName = 'CardColumn';
-CardColumn.className = 'ui-card__column';
+CardColumn.deprecated_className = 'ui-card__column';
 
 CardColumn.propTypes = {
   ...commonPropTypes.createCommon(),

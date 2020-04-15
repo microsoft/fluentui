@@ -105,7 +105,7 @@ export default class MenuButton extends AutoControlledComponent<MenuButtonProps,
   static create: ShorthandFactory<MenuButtonProps>;
 
   static slotClassNames: MenuButtonSlotClassNames = {
-    menu: `${MenuButton.className}__menu`,
+    menu: `${MenuButton.deprecated_className}__menu`,
   };
 
   static propTypes = {

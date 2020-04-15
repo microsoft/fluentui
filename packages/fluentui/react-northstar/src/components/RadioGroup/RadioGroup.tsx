@@ -53,7 +53,7 @@ class RadioGroup extends AutoControlledComponent<WithAsProp<RadioGroupProps>, an
   static deprecated_className = 'ui-radiogroup';
 
   static slotClassNames: RadioGroupSlotClassNames = {
-    item: `${RadioGroup.className}__item`,
+    item: `${RadioGroup.deprecated_className}__item`,
   };
 
   static create: ShorthandFactory<RadioGroupProps>;

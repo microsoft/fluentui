@@ -195,7 +195,7 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
   });
 
   const { classes, styles: resolvedStyles } = useStyles<ToolbarMenuItemStylesProps>(ToolbarMenuItem.displayName, {
-    className: ToolbarMenuItem.className,
+    className: ToolbarMenuItem.deprecated_className,
     mapPropsToStyles: () => ({
       disabled,
       hasContent: !!content,
@@ -437,13 +437,13 @@ const ToolbarMenuItem: React.FC<WithAsProp<ToolbarMenuItemProps>> &
 
 ToolbarMenuItem.displayName = 'ToolbarMenuItem';
 
-ToolbarMenuItem.className = 'ui-toolbar__menuitem';
+ToolbarMenuItem.deprecated_className = 'ui-toolbar__menuitem';
 
 ToolbarMenuItem.slotClassNames = {
-  activeIndicator: `${ToolbarMenuItem.className}__activeIndicator`,
-  wrapper: `${ToolbarMenuItem.className}__wrapper`,
-  submenu: `${ToolbarMenuItem.className}__submenu`,
-  submenuIndicator: `${ToolbarMenuItem.className}__submenuIndicator`,
+  activeIndicator: `${ToolbarMenuItem.deprecated_className}__activeIndicator`,
+  wrapper: `${ToolbarMenuItem.deprecated_className}__wrapper`,
+  submenu: `${ToolbarMenuItem.deprecated_className}__submenu`,
+  submenuIndicator: `${ToolbarMenuItem.deprecated_className}__submenuIndicator`,
 };
 
 ToolbarMenuItem.propTypes = {

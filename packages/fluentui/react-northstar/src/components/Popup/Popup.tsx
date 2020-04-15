@@ -545,10 +545,10 @@ const Popup: React.FC<PopupProps> &
   return element;
 };
 
-Popup.className = 'ui-popup';
+Popup.deprecated_className = 'ui-popup';
 Popup.displayName = 'Popup';
 Popup.slotClassNames = {
-  content: `${Popup.className}__content`,
+  content: `${Popup.deprecated_className}__content`,
 };
 
 Popup.propTypes = {
