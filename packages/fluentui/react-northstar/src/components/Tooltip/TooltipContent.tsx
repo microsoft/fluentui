@@ -1,7 +1,7 @@
 import { Accessibility } from '@fluentui/accessibility';
 import { getElementType, useUnhandledProps, useAccessibility, useStyles, useTelemetry } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
-import Popper from 'popper.js';
+import * as PopperJs from '@popperjs/core';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -40,7 +40,7 @@ export interface TooltipContentProps extends UIComponentProps, ChildrenComponent
 }
 
 export type TooltipContentStylesProps = Required<Pick<TooltipContentProps, 'pointing' | 'open'>> & {
-  basePlacement: Popper.Position;
+  basePlacement: PopperJs.BasePlacement;
 };
 
 const TooltipContent: React.FC<WithAsProp<TooltipContentProps>> &
@@ -111,7 +111,7 @@ TooltipContent.deprecated_className = 'ui-tooltip__content';
 
 TooltipContent.propTypes = {
   ...commonPropTypes.createCommon(),
-  placement: PropTypes.oneOf<Popper.Placement>([
+  placement: PropTypes.oneOf<PopperJs.Placement>([
     'auto-start',
     'auto',
     'auto-end',

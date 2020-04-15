@@ -129,7 +129,10 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
       PropTypes.oneOf<'scrollParent' | 'window' | 'viewport'>(['scrollParent', 'window', 'viewport']),
     ]),
     positionFixed: PropTypes.bool,
-    offset: PropTypes.string,
+    offset: PropTypes.oneOfType([
+      PropTypes.func,
+      PropTypes.arrayOf(PropTypes.number) as PropTypes.Requireable<[number, number]>,
+    ]),
     unstable_pinned: PropTypes.bool,
   };
 
