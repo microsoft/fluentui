@@ -1,0 +1,8 @@
+{
+  "type": "none",
+  "comment": "fix out-of-sync package version",
+  "packageName": "@uifabric/charting",
+  "email": "xgao@microsoft.com",
+  "dependentChangeType": "none",
+  "date": "2020-04-15T22:55:30.402Z"
+}
