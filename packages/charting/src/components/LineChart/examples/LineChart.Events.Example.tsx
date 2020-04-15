@@ -4,7 +4,7 @@ import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import * as d3 from 'd3-format';
 
-export const calloutItemStyle = mergeStyles({
+const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
   padding: '3px',
 });
