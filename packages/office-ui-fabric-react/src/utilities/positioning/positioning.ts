@@ -649,7 +649,11 @@ function _getTargetRect(bounds: Rectangle, target: Element | MouseEvent | IPoint
       // HTMLImgElements can have x and y values. The check for it being a point must go last.
     } else {
       const point: IPoint = target as IPoint;
-      targetRectangle = new Rectangle(point.x, point.x, point.y, point.y);
+      // tslint:disable-next-line:deprecation
+      const left = point.left || point.x;
+      // tslint:disable-next-line:deprecation
+      const top = point.top || point.y;
+      targetRectangle = new Rectangle(left, left, top, top);
     }
 
     if (!_isRectangleWithinBounds(targetRectangle, bounds)) {
@@ -872,10 +876,15 @@ export function getMaxHeight(
     ? _getRectangleFromIRect(bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
 
+  // tslint:disable-next-line:deprecation
+  const left = pointTarget.left || pointTarget.x;
+  // tslint:disable-next-line:deprecation
+  const top = pointTarget.top || pointTarget.y;
+
   if (!!mouseTarget.stopPropagation) {
     targetRect = new Rectangle(mouseTarget.clientX, mouseTarget.clientX, mouseTarget.clientY, mouseTarget.clientY);
-  } else if (pointTarget.x !== undefined && pointTarget.y !== undefined) {
-    targetRect = new Rectangle(pointTarget.x, pointTarget.x, pointTarget.y, pointTarget.y);
+  } else if (left !== undefined && top !== undefined) {
+    targetRect = new Rectangle(left, left, top, top);
   } else {
     targetRect = _getRectangleFromElement(elementTarget);
   }
