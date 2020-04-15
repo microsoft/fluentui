@@ -79,6 +79,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
     primary: customPropTypes.every([customPropTypes.disallow(['secondary']), PropTypes.bool]),
     secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
     vertical: PropTypes.bool,
+    thumbnails: PropTypes.bool,
   };
 
   static defaultProps = {

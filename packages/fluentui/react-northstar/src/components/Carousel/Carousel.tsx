@@ -160,7 +160,6 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
     accessibility: carouselBehavior as Accessibility,
     paddlePrevious: {},
     paddleNext: {},
-    thumbnails: false,
   };
 
   static Item = CarouselItem;
