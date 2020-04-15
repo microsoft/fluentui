@@ -25,7 +25,6 @@ import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandled
 import Box, { BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
-import { alertClassName } from './Alert';
 
 export interface AlertDismissActionProps
   extends UIComponentProps,
@@ -189,7 +188,7 @@ AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as a
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
 
-export const alertDismissActionClassName = `${alertClassName}__dismissaction`;
+export const alertDismissActionClassName = `ui-alert__dismissaction`;
 export const alertDismissActionSlotClassNames = {
   content: `${alertDismissActionClassName}__content`,
 };
