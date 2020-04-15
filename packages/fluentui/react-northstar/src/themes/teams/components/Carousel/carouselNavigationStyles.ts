@@ -29,7 +29,7 @@ const carouselNavigationStyles: ComponentSlotStylesPrepared<CarouselNavigationPr
       ...(vertical && {
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
-
+        width: 'fit-content',
         padding: `${pxToRem(8)} 0`,
         ...(iconOnly && {
           display: 'inline-block',
