@@ -155,7 +155,7 @@ Attachment.propTypes = {
   actionable: PropTypes.bool,
   description: customPropTypes.itemShorthand,
   header: customPropTypes.itemShorthand,
-  icon: customPropTypes.itemShorthand,
+  icon: customPropTypes.shorthandAllowingChildren,
   progress: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 Attachment.defaultProps = {
