@@ -472,14 +472,13 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
     return (
       <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
-          const menuItem = this._renderMenuItem({
-            ...item,
-            index,
-            focusableElementIndex: indexCorrection,
-            totalItemCount: menuListProps.totalItemCount,
-            hasCheckmarks: menuListProps.hasCheckmarks,
-            hasIcons: menuListProps.hasIcons,
-          });
+          let contextualMenuItemRenderProps = item as IContextualMenuItemRenderProps;
+          contextualMenuItemRenderProps.index = index;
+          contextualMenuItemRenderProps.focusableElementIndex = indexCorrection;
+          contextualMenuItemRenderProps.totalItemCount = menuListProps.totalItemCount;
+          contextualMenuItemRenderProps.hasCheckmarks = menuListProps.hasCheckmarks;
+          contextualMenuItemRenderProps.hasIcons = menuListProps.hasIcons;
+          const menuItem = this._renderMenuItem(contextualMenuItemRenderProps);
           if (item.itemType !== ContextualMenuItemType.Divider && item.itemType !== ContextualMenuItemType.Header) {
             const indexIncrease = item.customOnRenderListLength ? item.customOnRenderListLength : 1;
             indexCorrection += indexIncrease;
@@ -631,16 +630,15 @@ export class ContextualMenuBase extends React.Component<IContextualMenuProps, IC
               {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
               {headerItem &&
                 this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
-              {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem({
-                  ...contextualMenuItem,
-                  index: itemsIndex,
-                  focusableElementIndex: itemsIndex,
-                  totalItemCount: sectionProps.items.length,
-                  hasCheckmarks,
-                  hasIcons,
-                }),
-              )}
+              {sectionProps.items.map((contextualMenuItem, itemsIndex) => {
+                let contextualMenuItemRenderProps = contextualMenuItem as IContextualMenuItemRenderProps;
+                contextualMenuItemRenderProps.index = itemsIndex;
+                contextualMenuItemRenderProps.focusableElementIndex = itemsIndex;
+                contextualMenuItemRenderProps.totalItemCount = sectionProps.items.length;
+                contextualMenuItemRenderProps.hasCheckmarks = hasCheckmarks;
+                contextualMenuItemRenderProps.hasIcons = hasIcons;
+                return this._renderMenuItem(contextualMenuItemRenderProps);
+              })}
               {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
           </div>
