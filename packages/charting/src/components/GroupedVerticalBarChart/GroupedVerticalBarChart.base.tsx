@@ -68,8 +68,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
   private _xScale0: any;
   // tslint:disable-next-line:no-any
   private _xScale1: any;
-  // tslint:disable-next-line:no-any
-  private _yBarScale: any;
   private _dataset: IGVDataPoint[];
   private _keys: string[];
   private _isGraphDraw: boolean = true;
@@ -145,10 +143,6 @@ export class GroupedVerticalBarChartBase extends React.Component<
       width: this.state.containerWidth || 600,
       height: this.state.containerHeight || 350,
     };
-
-    this._yBarScale = d3ScaleLinear()
-      .domain([0, this._yMax])
-      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
 
     return (
       <div
@@ -297,6 +291,11 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   private _drawGraph = (): void => {
     const that = this;
+
+    const yBarScale = d3ScaleLinear()
+      .domain([0, this._yMax])
+      .range([0, this.state.containerHeight - this.margins.bottom - this.margins.top]);
+
     // previous <g> - graph need to remove otherwise multile g elements will create
     d3Select('#firstGElementForBars').remove();
     const barContainer = d3Select('#barGElement')
@@ -322,12 +321,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
         .attr('class', this._classNames.opacityChangeOnHover)
         .attr('fill-opacity', (d: IGVForBarChart) => that._getOpacity(d[datasetKey].legend))
         .attr('x', (d: IGVSingleDataPoint) => this._xScale1(datasetKey)!)
-        .attr('y', (d: IGVSingleDataPoint) => {
-          return this.state.containerHeight - this.margins.bottom - this._yBarScale(d[datasetKey].data);
+        .attr('y', (d: IGVForBarChart) => {
+          return this.state.containerHeight - this.margins.bottom - yBarScale(d[datasetKey].data);
         })
         .attr('width', this._xScale1.bandwidth())
-        .attr('height', (d: IGVSingleDataPoint) => {
-          return this._yBarScale(d[datasetKey].data);
+        .attr('height', (d: IGVForBarChart) => {
+          return yBarScale(d[datasetKey].data);
         })
         .on('mouseover', (d: IGVForBarChart) => {
           return that.mouseAction('mouseover', d[datasetKey].color, d[datasetKey].data, d[datasetKey].legend);
