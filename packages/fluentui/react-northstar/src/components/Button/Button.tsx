@@ -148,7 +148,7 @@ const Button: React.FC<WithAsProp<ButtonProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<ButtonStylesProps>(Button.displayName, {
-    className: Button.className,
+    className: buttonClassName,
     mapPropsToStyles: () => ({
       text,
       primary,
@@ -244,7 +244,7 @@ Button.defaultProps = {
 };
 
 Button.displayName = 'Button';
-Button.className = 'ui-button';
+export const buttonClassName = 'ui-button';
 
 Button.propTypes = {
   ...commonPropTypes.createCommon({

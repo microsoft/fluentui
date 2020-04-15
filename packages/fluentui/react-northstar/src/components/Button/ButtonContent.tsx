@@ -7,7 +7,7 @@ import { ThemeContext } from 'react-fela';
 import { childrenExist, commonPropTypes, createShorthandFactory, rtlTextContainer } from '../../utils';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { BoxProps } from '../Box/Box';
-import { ButtonProps } from './Button';
+import { buttonClassName, ButtonProps } from './Button';
 
 export interface ButtonContentProps extends BoxProps {
   size?: ButtonProps['size'];
@@ -54,7 +54,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
 };
 
 ButtonContent.displayName = 'ButtonContent';
-ButtonContent.className = 'ui-button__content';
+ButtonContent.className = `${buttonClassName}__content`;
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),

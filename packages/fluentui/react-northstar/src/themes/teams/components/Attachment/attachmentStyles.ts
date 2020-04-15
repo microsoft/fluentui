@@ -6,7 +6,7 @@ import { pxToRem } from '../../../../utils';
 import SvgIcon from '../../../../components/SvgIcon/SvgIcon';
 import getBorderFocusStyles from '../../getBorderFocusStyles';
 import getIconFillOrOutlineStyles from '../../getIconFillOrOutlineStyles';
-import Button from '../../../../components/Button/Button';
+import { buttonClassName } from '../../../../components/Button/Button';
 
 const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, AttachmentVariables> = {
   root: ({ props: p, variables: v, theme: { siteVariables } }): ICSSInJSStyle => {
@@ -41,7 +41,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${Button.className}`]: {
+          [`& .${buttonClassName}`]: {
             color: v.siblingsFocusColor,
           },
 
@@ -54,7 +54,7 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           background: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${Button.className}`]: {
+          [`& .${buttonClassName}`]: {
             color: v.siblingsHoverColor,
           },
 
