@@ -1,7 +1,7 @@
 import { Flex, Image, Text, Card, cardFocusableBehavior } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const CardExampleClickable = () => {
+const CardExampleFocusable = () => {
   const [clickCount, setClickCount] = React.useState(0);
   const updateClickCount = () => {
     setClickCount(clickCount + 1);

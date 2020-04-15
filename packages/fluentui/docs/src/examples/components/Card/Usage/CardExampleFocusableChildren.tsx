@@ -10,7 +10,7 @@ import {
 } from '@fluentui/react-northstar';
 import * as React from 'react';
 
-const CardExampleClickable = () => {
+const CardExampleFocusableChildren = () => {
   return (
     <Card accessibility={cardMultipleFocusableBehavior} ariaRoleDescription="card with action buttons">
       <Card.Header>
