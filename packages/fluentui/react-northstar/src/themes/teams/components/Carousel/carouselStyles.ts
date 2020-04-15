@@ -6,7 +6,6 @@ import { CarouselVariables } from './carouselVariables';
 const carouselStyles: ComponentSlotStylesPrepared<CarouselProps & CarouselState, CarouselVariables> = {
   root: ({ variables: v }): ICSSInJSStyle => ({
     display: 'inline-block',
-    maxWidth: pxToRem(v.width),
   }),
   itemsContainerWrapper: ({ variables: v, props: p }): ICSSInJSStyle => ({
     display: 'flex',
