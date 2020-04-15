@@ -18,6 +18,11 @@ const people: IDocumentCardActivityPerson[] = [
   { name: 'Christian Bergqvist', profileImageSrc: '', initials: 'CB' },
 ];
 
+const oneNoteIconProps = {
+  iconName: 'OneNoteLogo',
+  styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
+};
+
 export const DocumentCardImageExample: React.FunctionComponent = () => {
   const cardStyles: IDocumentCardStyles = {
     root: { display: 'inline-block', marginRight: 20, marginBottom: 20, width: 320 },
@@ -47,14 +52,7 @@ export const DocumentCardImageExample: React.FunctionComponent = () => {
         styles={cardStyles}
         onClickHref="http://bing.com"
       >
-        <DocumentCardImage
-          height={150}
-          imageFit={ImageFit.cover}
-          iconProps={{
-            iconName: 'OneNoteLogo',
-            styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
-          }}
-        />
+        <DocumentCardImage height={150} imageFit={ImageFit.cover} iconProps={oneNoteIconProps} />
         <DocumentCardDetails>
           <DocumentCardTitle title="How to make a good design" shouldTruncate />
         </DocumentCardDetails>
