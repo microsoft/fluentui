@@ -31,6 +31,8 @@ export * from './components/Attachment/Attachment';
 export { default as Attachment } from './components/Attachment/Attachment';
 export * from './components/Attachment/AttachmentAction';
 export { default as AttachmentAction } from './components/Attachment/AttachmentAction';
+export * from './components/Attachment/AttachmentBody';
+export { default as AttachmentBody } from './components/Attachment/AttachmentBody';
 export * from './components/Attachment/AttachmentDescription';
 export { default as AttachmentDescription } from './components/Attachment/AttachmentDescription';
 export * from './components/Attachment/AttachmentHeader';

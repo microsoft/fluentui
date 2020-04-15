@@ -63,6 +63,7 @@ export type AttachmentStylesProps = Required<Pick<AttachmentProps, 'actionable' 
 const Attachment: React.FC<WithAsProp<AttachmentProps>> &
   FluentComponentStaticProps<AttachmentProps> & {
     Action: typeof AttachmentAction;
+    Body: typeof AttachmentBody;
     Description: typeof AttachmentDescription;
     Header: typeof AttachmentHeader;
     Icon: typeof AttachmentIcon;
@@ -174,6 +175,7 @@ Attachment.defaultProps = {
 };
 
 Attachment.Action = AttachmentAction;
+Attachment.Body = AttachmentBody;
 Attachment.Description = AttachmentDescription;
 Attachment.Header = AttachmentHeader;
 Attachment.Icon = AttachmentIcon;
