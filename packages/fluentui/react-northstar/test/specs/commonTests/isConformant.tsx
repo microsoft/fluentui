@@ -48,7 +48,7 @@ export default function isConformant(
   Component: React.ComponentType<any> & {
     handledProps?: string[];
     autoControlledProps?: string[];
-    className?: string;
+    deprecated_className?: string;
   },
   options: Conformant = {},
 ) {
@@ -490,7 +490,7 @@ export default function isConformant(
     };
 
     test(`is a static equal to "${componentClassName}"`, () => {
-      expect(Component.className).toEqual(componentClassName);
+      expect(Component.deprecated_className).toEqual(componentClassName);
     });
 
     test(`is applied to the root element`, () => {
