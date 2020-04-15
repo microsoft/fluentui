@@ -21,7 +21,6 @@
     "fela-plugin-embedded": "^10.6.1",
     "fela-plugin-fallback-value": "^10.6.1",
     "fela-plugin-placeholder-prefixer": "^10.6.1",
-    "fela-plugin-prefixer": "^10.6.1",
     "fela-plugin-rtl": "^10.6.1",
     "inline-style-expand-shorthand": "^1.2.0",
     "keyboard-key": "1.0.1",
@@ -29,7 +28,8 @@
     "popper.js": "^1.15.0",
     "prop-types": "^15.7.2",
     "react-fela": "^10.6.1",
-    "react-transition-group": "^4.3.0"
+    "react-transition-group": "^4.3.0",
+    "stylis": "^3.5.4"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.1.1",
