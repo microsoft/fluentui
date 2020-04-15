@@ -134,7 +134,12 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
       {(header || description) &&
         AttachmentBody.create(body, {
           overrideProps: {
-            content: [AttachmentHeader.create(header), AttachmentDescription.create(description)],
+            content: (
+              <>
+                {AttachmentHeader.create(header)}
+                {AttachmentDescription.create(description)}
+              </>
+            ),
           },
         })}
 
