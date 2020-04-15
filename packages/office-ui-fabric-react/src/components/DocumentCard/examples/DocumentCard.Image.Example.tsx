@@ -8,6 +8,7 @@ import {
   IDocumentCardStyles,
   IDocumentCardActivityPerson,
 } from 'office-ui-fabric-react/lib/DocumentCard';
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '@uifabric/example-data';
 
@@ -18,7 +19,7 @@ const people: IDocumentCardActivityPerson[] = [
   { name: 'Christian Bergqvist', profileImageSrc: '', initials: 'CB' },
 ];
 
-const oneNoteIconProps = {
+const oneNoteIconProps: IIconProps = {
   iconName: 'OneNoteLogo',
   styles: { root: { color: '#813a7c', fontSize: '120px', width: '120px', height: '120px' } },
 };

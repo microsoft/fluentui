@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Nav, INavStyles } from 'office-ui-fabric-react/lib/Nav';
-import { INavLinkGroup } from '../Nav.types';
+import { Nav, INavStyles, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
 
 const navStyles: Partial<INavStyles> = { root: { width: 300 } };
 
