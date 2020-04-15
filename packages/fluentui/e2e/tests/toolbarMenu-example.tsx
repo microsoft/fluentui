@@ -6,7 +6,7 @@ export const selectors = {
   afterToolbarId: 'after',
   triggerButtonId: 'trigger',
   menuItemButtonId: 'menu-button',
-  toolbarMenu: ToolbarMenu.className,
+  toolbarMenu: ToolbarMenu.deprecated_className,
 };
 
 const ToolbarExampleMenuShorthand = () => {

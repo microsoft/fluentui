@@ -3,8 +3,8 @@ import _ from 'lodash';
 import { Toolbar, ToolbarItem } from '@fluentui/react-northstar';
 
 export const selectors = {
-  toolbarItem: ToolbarItem.className,
-  toolbar: Toolbar.className,
+  toolbarItem: ToolbarItem.deprecated_className,
+  toolbar: Toolbar.deprecated_className,
   toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper,
 };
 

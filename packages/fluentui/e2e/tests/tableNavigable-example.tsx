@@ -8,9 +8,9 @@ import * as React from 'react';
 
 export const selectors = {
   tableHeaderClass: Table.slotClassNames.header,
-  row: TableRow.className,
-  cell: TableCell.className,
-  buttonClassName: Button.className,
+  row: TableRow.deprecated_className,
+  cell: TableCell.deprecated_className,
+  buttonClassName: Button.deprecated_className,
   beforeTableId: 'before-table',
   afterTableId: 'after-table',
   moreOptionsButtonId: 'more-options',

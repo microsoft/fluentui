@@ -42,7 +42,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      attachment.find(`.${Attachment.className}`).simulate('keydown', { keyCode: keyboardKey.Enter });
+      attachment.find(`.${Attachment.deprecated_className}`).simulate('keydown', { keyCode: keyboardKey.Enter });
       expect(onClickAttachment).toHaveBeenCalledTimes(1);
     });
 
@@ -50,7 +50,7 @@ describe('Attachment', () => {
       const onClickAttachment = jest.fn();
       const onClickButton = jest.fn();
       const attachment = getAttachment(onClickAttachment, onClickButton);
-      findIntrinsicElement(attachment, `.${AttachmentAction.className}`).simulate('keydown', {
+      findIntrinsicElement(attachment, `.${AttachmentAction.deprecated_className}`).simulate('keydown', {
         keyCode: keyboardKey.Enter,
       });
       expect(onClickAttachment).not.toBeCalled();

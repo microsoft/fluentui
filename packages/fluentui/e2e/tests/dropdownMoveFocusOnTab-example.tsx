@@ -17,7 +17,7 @@ export const selectors = {
   previousFocusableSibling: 'previous-focusable-sibling',
   nextFocusableSibling: 'next-focusable-sibling',
   triggerButtonClass: Dropdown.slotClassNames.triggerButton,
-  listItem: DropdownItem.className,
+  listItem: DropdownItem.deprecated_className,
 };
 
 const DropdownMoveFocusOnTabExample = () => (
