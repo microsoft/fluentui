@@ -11,13 +11,18 @@ import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import PopperJs from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
 
-import { Popper, PopperShorthandProps, getPopperPropsFromShorthand } from '../../utils/positioner';
+import {
+  getScrollParent,
+  Popper,
+  PopperShorthandProps,
+  getPopperPropsFromShorthand,
+  PopperModifiers,
+} from '../../utils/positioner';
 import {
   childrenExist,
   createShorthandFactory,
@@ -155,7 +160,6 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   const [focused, setFocused] = React.useState<boolean>(false);
   const [messageNode, setMessageNode] = React.useState<HTMLElement | null>(null);
 
-  const menuRef = React.useRef<HTMLElement>();
   const updateActionsMenuPosition = React.useRef<(() => void) | null>(null);
 
   const getA11Props = useAccessibility(accessibility, {
@@ -178,7 +182,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
     },
   });
   const { classes, styles: resolvedStyles } = useStyles<ChatMessageStylesProps>(ChatMessage.displayName, {
-    className: ChatMessage.className,
+    className: ChatMessage.deprecated_className,
     mapPropsToStyles: () => ({
       attached,
       badgePosition,
@@ -231,32 +235,21 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
       return actionMenuElement;
     }
 
-    const messageRect: DOMRect | undefined = positionActionMenu && messageNode?.getBoundingClientRect();
-    const overflowPadding: PopperJs.Padding = { top: Math.round(messageRect?.height || 0) };
+    const modifiers: PopperModifiers | undefined = positionActionMenu && [
+      // https://popper.js.org/docs/v2/modifiers/flip/
+      // Forces to flip only in "top-*" positions
+      { name: 'flip', options: { fallbackPlacements: ['top'] } },
+      overflow && {
+        name: 'preventOverflow',
+        options: { boundary: getScrollParent(messageNode) },
+      },
+    ];
 
     return (
       <Popper
         enabled={positionActionMenu}
         align="end"
-        modifiers={
-          positionActionMenu && {
-            // https://popper.js.org/popper-documentation.html#modifiers..flip.behavior
-            // Forces to flip only in "top-*" positions
-            flip: { behavior: ['top'] },
-            preventOverflow: {
-              escapeWithReference: false,
-              // https://popper.js.org/popper-documentation.html#modifiers..preventOverflow.priority
-              // Forces to stop prevent overflow on bottom and bottom
-              priority: ['left', 'right'],
-
-              // Is required to properly position action items
-              ...(overflow && {
-                boundariesElement: 'scrollParent',
-                padding: overflowPadding,
-              }),
-            },
-          }
-        }
+        modifiers={modifiers}
         position="above"
         positionFixed={overflow}
         targetRef={messageNode}
@@ -265,7 +258,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
         {({ scheduleUpdate }) => {
           updateActionsMenuPosition.current = scheduleUpdate;
 
-          return <Ref innerRef={menuRef}>{actionMenuElement}</Ref>;
+          return actionMenuElement;
         }}
       </Popper>
     );
@@ -353,7 +346,7 @@ const ChatMessage: React.FC<WithAsProp<ChatMessageProps>> &
   return element;
 };
 
-ChatMessage.className = 'ui-chat__message';
+ChatMessage.deprecated_className = 'ui-chat__message';
 ChatMessage.displayName = 'ChatMessage';
 
 ChatMessage.defaultProps = {
@@ -383,12 +376,12 @@ ChatMessage.handledProps = Object.keys(ChatMessage.propTypes) as any;
 
 ChatMessage.create = createShorthandFactory({ Component: ChatMessage, mappedProp: 'content' });
 ChatMessage.slotClassNames = {
-  actionMenu: `${ChatMessage.className}__actions`,
-  author: `${ChatMessage.className}__author`,
-  timestamp: `${ChatMessage.className}__timestamp`,
-  badge: `${ChatMessage.className}__badge`,
-  content: `${ChatMessage.className}__content`,
-  reactionGroup: `${ChatMessage.className}__reactions`,
+  actionMenu: `${ChatMessage.deprecated_className}__actions`,
+  author: `${ChatMessage.deprecated_className}__author`,
+  timestamp: `${ChatMessage.deprecated_className}__timestamp`,
+  badge: `${ChatMessage.deprecated_className}__badge`,
+  content: `${ChatMessage.deprecated_className}__content`,
+  reactionGroup: `${ChatMessage.deprecated_className}__reactions`,
 };
 
 /**

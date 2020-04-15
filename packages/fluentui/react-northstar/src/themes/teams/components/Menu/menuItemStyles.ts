@@ -254,7 +254,7 @@ const menuItemStyles: ComponentSlotStylesPrepared<MenuItemPropsAndState, MenuVar
           color: v.iconOnlyColorHover,
         }),
 
-        [`&>.${MenuItem.className}>.${MenuItem.slotClassNames.indicator}`]: {
+        [`&>.${MenuItem.deprecated_className}>.${MenuItem.slotClassNames.indicator}`]: {
           backgroundImage: submenuIndicatorUrl(v.indicatorColorHover, vertical),
 
           ...(primary && {

@@ -36,7 +36,7 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
 
   static displayName = 'ButtonGroup';
 
-  static className = 'ui-buttons';
+  static deprecated_className = 'ui-buttons';
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

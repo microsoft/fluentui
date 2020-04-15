@@ -45,7 +45,7 @@ class Divider extends UIComponent<WithAsProp<DividerProps>, any> {
 
   static create: ShorthandFactory<DividerProps>;
 
-  static className = 'ui-divider';
+  static deprecated_className = 'ui-divider';
 
   static propTypes = {
     ...commonPropTypes.createCommon({ color: true }),

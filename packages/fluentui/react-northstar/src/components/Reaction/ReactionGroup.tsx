@@ -32,7 +32,7 @@ class ReactionGroup extends UIComponent<WithAsProp<ReactionGroupProps>> {
 
   static displayName = 'ReactionGroup';
 
-  static className = 'ui-reactions';
+  static deprecated_className = 'ui-reactions';
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

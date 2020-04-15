@@ -11,7 +11,7 @@ const treeItemStyles: ComponentSlotStylesPrepared<TreeItemStylesProps> = {
     ...getBorderFocusStyles({ variables: siteVariables })[':focus'],
     ':focus-visible': {
       outline: 0,
-      [`> .${TreeTitle.className}`]: {
+      [`> .${TreeTitle.deprecated_className}`]: {
         position: 'relative',
         ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
       },

@@ -54,11 +54,11 @@ const getPaddlePreviousWrapper = (wrapper: ReactWrapper): CommonWrapper =>
 const getPaginationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${Carousel.slotClassNames.pagination}`);
 const getNavigationNavigationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${CarouselNavigation.className}`);
+  findIntrinsicElement(wrapper, `.${CarouselNavigation.deprecated_className}`);
 const getNavigationNavigationItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${CarouselNavigationItem.className}`).at(index);
+  findIntrinsicElement(wrapper, `.${CarouselNavigationItem.deprecated_className}`).at(index);
 const getItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${CarouselItem.className}`).at(index);
+  findIntrinsicElement(wrapper, `.${CarouselItem.deprecated_className}`).at(index);
 const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `#${buttonName}`);
 
 jest.useFakeTimers();

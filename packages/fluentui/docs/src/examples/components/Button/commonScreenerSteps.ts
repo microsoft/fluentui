@@ -1,6 +1,6 @@
 import { Button } from '@fluentui/react-northstar';
 
-const button = `.${Button.className}`;
+const button = `.${Button.deprecated_className}`;
 
 const getScreenerSteps = (): ScreenerSteps => [
   builder => builder.hover(button).snapshot('Hovers the first button'),
