@@ -17,7 +17,7 @@ describe('Loader', () => {
     it('renders children only when "delay" is passed', () => {
       jest.useFakeTimers();
 
-      const selector = `.${Loader.className}`;
+      const selector = `.${Loader.deprecated_className}`;
       const wrapper = mountWithProvider(<Loader delay={500} />);
 
       expect(wrapper.find(selector).exists()).toBe(false);

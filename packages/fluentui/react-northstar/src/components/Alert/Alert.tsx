@@ -103,14 +103,14 @@ export interface AlertState {
 
 class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> {
   static displayName = 'Alert';
-  static className = 'ui-alert';
+  static deprecated_className = 'ui-alert';
 
   static slotClassNames: AlertSlotClassNames = {
-    content: `${Alert.className}__content`,
-    actions: `${Alert.className}__actions`,
-    icon: `${Alert.className}__icon`,
-    header: `${Alert.className}__header`,
-    body: `${Alert.className}__body`,
+    content: `${Alert.deprecated_className}__content`,
+    actions: `${Alert.deprecated_className}__actions`,
+    icon: `${Alert.deprecated_className}__icon`,
+    header: `${Alert.deprecated_className}__header`,
+    body: `${Alert.deprecated_className}__body`,
   };
 
   static propTypes = {

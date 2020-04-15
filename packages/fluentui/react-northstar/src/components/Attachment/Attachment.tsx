@@ -101,8 +101,9 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
     },
     rtl: context.rtl,
   });
+
   const { classes } = useStyles<AttachmentStylesProps>(Attachment.displayName, {
-    className: Attachment.className,
+    className: Attachment.deprecated_className,
     mapPropsToStyles: () => ({
       actionable: actionable || !!onClick,
       disabled,
@@ -155,7 +156,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
 
-Attachment.className = 'ui-attachment';
+Attachment.deprecated_className = 'ui-attachment';
 Attachment.displayName = 'Attachment';
 
 Attachment.propTypes = {

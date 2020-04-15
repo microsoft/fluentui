@@ -33,7 +33,7 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardFooterStylesProps>(CardFooter.displayName, {
-    className: CardFooter.className,
+    className: CardFooter.deprecated_className,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +59,7 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
 };
 
 CardFooter.displayName = 'CardFooter';
-CardFooter.className = 'ui-card__footer';
+CardFooter.deprecated_className = 'ui-card__footer';
 
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),

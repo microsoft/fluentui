@@ -14,12 +14,13 @@ import implementsPopperProps from 'test/specs/commonTests/implementsPopperProps'
 const mockMenu = { items: ['1', '2', '3'] };
 
 const getToggleButton = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${SplitButtonToggle.className}`);
+  findIntrinsicElement(wrapper, `.${SplitButtonToggle.deprecated_className}`);
 const getMainButton = (wrapper: ReactWrapper): CommonWrapper =>
-  findIntrinsicElement(wrapper, `.${MenuButton.className} .${Button.className}`);
+  findIntrinsicElement(wrapper, `.${MenuButton.deprecated_className} .${Button.deprecated_className}`);
 const getMenuItems = (wrapper: ReactWrapper): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${Menu.slotClassNames.item}`);
-const getMenu = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `.${Menu.className}`);
+const getMenu = (wrapper: ReactWrapper): CommonWrapper =>
+  findIntrinsicElement(wrapper, `.${Menu.deprecated_className}`);
 
 describe('SplitButton', () => {
   isConformant(SplitButton, { autoControlledProps: ['open'] });

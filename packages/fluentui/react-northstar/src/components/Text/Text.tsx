@@ -113,7 +113,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
     rtl: context.rtl,
   });
   const { classes } = useStyles<TextStylesProps>(Text.displayName, {
-    className: Text.className,
+    className: Text.deprecated_className,
     mapPropsToStyles: () => ({
       atMention,
       color,
@@ -157,7 +157,7 @@ const Text: React.FC<WithAsProp<TextProps>> & FluentComponentStaticProps<TextPro
   return element;
 };
 
-Text.className = 'ui-text';
+Text.deprecated_className = 'ui-text';
 Text.displayName = 'Text';
 
 Text.defaultProps = {

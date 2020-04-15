@@ -3,12 +3,12 @@ import _ from 'lodash';
 import { Toolbar, ToolbarItem, ToolbarMenu, Ref, Button } from '@fluentui/react-northstar';
 
 export const selectors = {
-  toolbarItem: ToolbarItem.className,
-  toolbar: Toolbar.className,
+  toolbarItem: ToolbarItem.deprecated_className,
+  toolbar: Toolbar.deprecated_className,
   toolbarItemWrapper: ToolbarItem.slotClassNames.wrapper,
   menuTrigger: 'menu-trigger',
   itemButtonId: 'item-button',
-  toolbarMenu: ToolbarMenu.className,
+  toolbarMenu: ToolbarMenu.deprecated_className,
   afterToolbarId: 'after',
 };
 

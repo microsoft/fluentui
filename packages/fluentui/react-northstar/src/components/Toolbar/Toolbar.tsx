@@ -92,7 +92,7 @@ export interface ToolbarProps
 class Toolbar extends UIComponent<WithAsProp<ToolbarProps>> {
   static create: ShorthandFactory<ToolbarProps>;
 
-  static className = 'ui-toolbar';
+  static deprecated_className = 'ui-toolbar';
 
   static displayName = 'Toolbar';
 

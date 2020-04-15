@@ -23,7 +23,10 @@ const AttachmentHeader = compose<
   displayName: 'AttachmentHeader',
 
   overrideStyles: true,
-}) as React.FC<AttachmentHeaderProps> & { create?: ShorthandFactory<AttachmentHeaderProps>; className: string };
+}) as React.FC<AttachmentHeaderProps> & {
+  create?: ShorthandFactory<AttachmentHeaderProps>;
+  deprecated_className: string;
+};
 
 AttachmentHeader.defaultProps = {
   as: 'span',

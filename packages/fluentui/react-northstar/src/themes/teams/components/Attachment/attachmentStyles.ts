@@ -51,11 +51,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           backgroundColor: v.focusBackgroundColor,
           color: v.focusColor,
 
-          [`& .${AttachmentAction.className}`]: {
+          [`& .${AttachmentAction.deprecated_className}`]: {
             color: v.siblingsFocusColor,
           },
 
-          [`& .${SvgIcon.className}`]: {
+          [`& .${SvgIcon.deprecated_className}`]: {
             color: v.siblingsFocusColor,
           },
         },
@@ -64,11 +64,11 @@ const attachmentStyles: ComponentSlotStylesPrepared<AttachmentStylesProps, Attac
           background: v.backgroundColorHover,
           color: v.textColorHover,
 
-          [`& .${AttachmentAction.className}`]: {
+          [`& .${AttachmentAction.deprecated_className}`]: {
             color: v.siblingsHoverColor,
           },
 
-          [`& .${SvgIcon.className}`]: {
+          [`& .${SvgIcon.deprecated_className}`]: {
             color: v.siblingsHoverColor,
           },
         },

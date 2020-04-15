@@ -37,7 +37,7 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
 
   static create: ShorthandFactory<AccordionContentProps>;
 
-  static className = 'ui-accordion__content';
+  static deprecated_className = 'ui-accordion__content';
 
   static propTypes = {
     ...commonPropTypes.createCommon(),

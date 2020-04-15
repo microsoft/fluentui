@@ -24,7 +24,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   const { size, content, children, className, styles, variables, design } = props;
 
   const { classes } = useStyles<ButtonContentStylesProps>(ButtonContent.displayName, {
-    className: ButtonContent.className,
+    className: ButtonContent.deprecated_className,
     mapPropsToStyles: () => ({ size }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -54,7 +54,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
 };
 
 ButtonContent.displayName = 'ButtonContent';
-ButtonContent.className = 'ui-button__content';
+ButtonContent.deprecated_className = 'ui-button__content';
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),

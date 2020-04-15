@@ -110,7 +110,7 @@ const dialogsCounterAttribute = 'fluent-dialogs-count';
 
 class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogState> {
   static displayName = 'Dialog';
-  static className = 'ui-dialog';
+  static deprecated_className = 'ui-dialog';
 
   static slotClassNames: DialogSlotClassNames;
 
@@ -408,11 +408,11 @@ class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogStat
 }
 
 Dialog.slotClassNames = {
-  header: `${Dialog.className}__header`,
-  headerAction: `${Dialog.className}__headerAction`,
-  content: `${Dialog.className}__content`,
-  overlay: `${Dialog.className}__overlay`,
-  footer: `${Dialog.className}__footer`,
+  header: `${Dialog.deprecated_className}__header`,
+  headerAction: `${Dialog.deprecated_className}__headerAction`,
+  content: `${Dialog.deprecated_className}__content`,
+  overlay: `${Dialog.deprecated_className}__overlay`,
+  footer: `${Dialog.deprecated_className}__footer`,
 };
 
 /**

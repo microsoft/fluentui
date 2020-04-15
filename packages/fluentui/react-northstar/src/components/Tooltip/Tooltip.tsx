@@ -254,11 +254,11 @@ const Tooltip: React.FC<TooltipProps> &
   return element;
 };
 
-Tooltip.className = 'ui-tooltip';
+Tooltip.deprecated_className = 'ui-tooltip';
 Tooltip.displayName = 'Tooltip';
 
 Tooltip.slotClassNames = {
-  content: `${Tooltip.className}__content`,
+  content: `${Tooltip.deprecated_className}__content`,
 };
 
 Tooltip.defaultProps = {

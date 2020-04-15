@@ -71,11 +71,11 @@ class HierarchicalTreeItem extends UIComponent<WithAsProp<HierarchicalTreeItemPr
 
   static displayName = 'HierarchicalTreeItem';
 
-  static className = 'ui-hierarchicaltree__item';
+  static deprecated_className = 'ui-hierarchicaltree__item';
 
   static slotClassNames: HierarchicalTreeItemSlotClassNames = {
-    title: `${HierarchicalTreeItem.className}__title`,
-    subtree: `${HierarchicalTreeItem.className}__subtree`,
+    title: `${HierarchicalTreeItem.deprecated_className}__title`,
+    subtree: `${HierarchicalTreeItem.deprecated_className}__subtree`,
   };
 
   static propTypes = {

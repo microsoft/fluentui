@@ -36,7 +36,7 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
   });
 
   const { classes } = useStyles<CardPreviewStylesProps>(CardPreview.displayName, {
-    className: CardPreview.className,
+    className: CardPreview.deprecated_className,
     mapPropsToStyles: () => ({ horizontal, fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -62,7 +62,7 @@ const CardPreview: React.FC<WithAsProp<CardPreviewProps>> & FluentComponentStati
 };
 
 CardPreview.displayName = 'CardPreview';
-CardPreview.className = 'ui-card__preview';
+CardPreview.deprecated_className = 'ui-card__preview';
 
 CardPreview.propTypes = {
   ...commonPropTypes.createCommon(),

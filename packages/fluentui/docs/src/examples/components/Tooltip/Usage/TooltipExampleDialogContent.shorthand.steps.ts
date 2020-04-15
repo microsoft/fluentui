@@ -4,8 +4,8 @@ const config: ScreenerTestsConfig = {
   steps: [
     builder =>
       builder
-        .click(`.${Button.className}`)
-        .hover(`.${Dialog.slotClassNames.content} .${Button.className}`)
+        .click(`.${Button.deprecated_className}`)
+        .hover(`.${Dialog.slotClassNames.content} .${Button.deprecated_className}`)
         .snapshot('Shows tooltip in a dialog'),
   ],
 };

@@ -10,7 +10,7 @@ const attachmentIconStyles: ComponentSlotStylesPrepared<AttachmentIconStylesProp
     width: v.iconSize,
     marginRight: v.iconSpace,
 
-    [`& .${SvgIcon.className}`]: {
+    [`& .${SvgIcon.deprecated_className}`]: {
       height: '100%',
       width: '100%',
       '& svg': {

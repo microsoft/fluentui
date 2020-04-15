@@ -270,7 +270,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   static displayName = 'Dropdown';
 
-  static className = 'ui-dropdown';
+  static deprecated_className = 'ui-dropdown';
 
   static a11yStatusCleanupTime = 500;
   static charKeyPressedCleanupTime = 500;
@@ -1516,15 +1516,15 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 }
 
 Dropdown.slotClassNames = {
-  clearIndicator: `${Dropdown.className}__clear-indicator`,
-  container: `${Dropdown.className}__container`,
-  toggleIndicator: `${Dropdown.className}__toggle-indicator`,
-  item: `${Dropdown.className}__item`,
-  itemsList: `${Dropdown.className}__items-list`,
-  searchInput: `${Dropdown.className}__searchinput`,
-  selectedItem: `${Dropdown.className}__selecteditem`,
-  selectedItems: `${Dropdown.className}__selected-items`,
-  triggerButton: `${Dropdown.className}__trigger-button`,
+  clearIndicator: `${Dropdown.deprecated_className}__clear-indicator`,
+  container: `${Dropdown.deprecated_className}__container`,
+  toggleIndicator: `${Dropdown.deprecated_className}__toggle-indicator`,
+  item: `${Dropdown.deprecated_className}__item`,
+  itemsList: `${Dropdown.deprecated_className}__items-list`,
+  searchInput: `${Dropdown.deprecated_className}__searchinput`,
+  selectedItem: `${Dropdown.deprecated_className}__selecteditem`,
+  selectedItems: `${Dropdown.deprecated_className}__selected-items`,
+  triggerButton: `${Dropdown.deprecated_className}__trigger-button`,
 };
 
 /**
