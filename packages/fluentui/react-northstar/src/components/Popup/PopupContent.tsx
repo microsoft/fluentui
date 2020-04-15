@@ -11,9 +11,9 @@ import {
   useUnhandledProps,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
+import * as PopperJs from '@popperjs/core';
 import cx from 'classnames';
 import * as _ from 'lodash';
-import Popper from 'popper.js';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 // @ts-ignore
@@ -76,7 +76,7 @@ export interface PopupContentProps extends UIComponentProps, ChildrenComponentPr
 }
 
 export type PopupContentStylesProps = Required<Pick<PopupContentProps, 'pointing'>> & {
-  basePlacement: Popper.Position;
+  basePlacement: PopperJs.BasePlacement;
 };
 
 const PopupContent: React.FC<WithAsProp<PopupContentProps>> &
@@ -171,7 +171,7 @@ PopupContent.deprecated_className = 'ui-popup__content';
 
 PopupContent.propTypes = {
   ...commonPropTypes.createCommon(),
-  placement: PropTypes.oneOf<Popper.Placement>([
+  placement: PropTypes.oneOf<PopperJs.Placement>([
     'auto-start',
     'auto',
     'auto-end',
