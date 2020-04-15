@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Replace uses of EventGroup with the 'on' function and _disposabels pattern in ColorRectangle, ColorSlider, and Slider",
+  "comment": "Update 'on' function to accept React events",
   "packageName": "@uifabric/utilities",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",

@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Replace uses of EventGroup with the 'on' function and _disposabels pattern in ColorRectangle, ColorSlider, and Slider",
+  "comment": "Replace uses of EventGroup with the 'on' function and _disposables pattern in ColorRectangle, ColorSlider, and Slider",
   "packageName": "office-ui-fabric-react",
   "email": "behowell@microsoft.com",
   "dependentChangeType": "patch",
