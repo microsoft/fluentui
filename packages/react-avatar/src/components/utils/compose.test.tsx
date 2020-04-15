@@ -1,9 +1,11 @@
+console.warn = () => {
+  /* */
+};
+
 import * as React from 'react';
 import { compose } from './compose';
-// import { mount } from 'enzyme';
-// import { Provider } from '@fluentui/react-northstar';
-
-// tslint:disable: jsx-no-lambda
+import { mount } from 'enzyme';
+import { StylesheetProvider } from '../utils/StylesheetProvider';
 
 describe('compose', () => {
   it('registers stylesheets in the correct order', () => {
@@ -11,13 +13,16 @@ describe('compose', () => {
     const SomeSlot = compose(SomeSlotBase, { stylesheet: 'slot' });
     const SomeComponentBase = compose(() => <div />, { stylesheet: 'componentbase' });
     const SomeComponent = compose(SomeComponentBase, { slots: { thing: SomeSlot }, stylesheet: 'component' });
-    const registeredSheets: string[] = [];
+    let registeredSheets: string[] = [];
+    const register = (stylesheets: string[]) => {
+      registeredSheets = [...registeredSheets, ...stylesheets];
+    };
 
-    // mount(
-    //   <Provider registerStyles={(stylesheet: string) => registeredSheets.push(stylesheet)}>
-    //     <SomeComponent />
-    //   </Provider>,
-    // );
+    mount(
+      <StylesheetProvider register={register}>
+        <SomeComponent />
+      </StylesheetProvider>,
+    );
 
     expect(registeredSheets).toEqual(['slotbase', 'slot', 'componentbase', 'component']);
   });

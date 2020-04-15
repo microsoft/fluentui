@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeProps, htmlElementProperties, imgProperties } from '@uifabric/utilities';
 import cx from 'classnames';
 import { ComposeOptions } from './compose';
+import { resolveClasses } from './resolveClasses';
 
 // tslint:disable-next-line:no-any
 type GenericDictionary = { [key: string]: any };
@@ -36,6 +37,8 @@ const mergeClassesIntoSlotProps = (
   // "_size_large" = enum where "size" is the enum prop and "large" is the value
   // default: slot class
   if (classes) {
+    // classes = resolveClasses(props, classes);
+
     Object.keys(classes).forEach(key => {
       // If the classname starts with "_", break it up.
       const parts = key.split('_');

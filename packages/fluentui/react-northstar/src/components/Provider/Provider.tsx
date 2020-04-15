@@ -38,6 +38,7 @@ export interface ProviderProps extends ChildrenComponentProps, UIComponentProps 
   overwrite?: boolean;
   target?: Document;
   theme?: ThemeInput;
+  registerStyles?: (stylesheet: string, target: Document) => void;
   telemetryRef?: React.MutableRefObject<Telemetry>;
 }
 
@@ -89,7 +90,7 @@ const renderStaticStyles = (renderer: Renderer, theme: ThemeInput, siteVariables
 // Cache for which documents have registered which stylesheets.
 const docStyleMap = new WeakMap<Document, Map<string, boolean>>();
 
-const registerStyles = (stylesheet: string, target: Document) => {
+const defaultRegisterStyles = (stylesheet: string, target: Document) => {
   let styleMap = docStyleMap.get(target);
 
   if (!styleMap) {
@@ -115,7 +116,16 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
   Consumer: typeof ProviderConsumer;
   handledProps: (keyof ProviderProps)[];
 } = props => {
-  const { children, className, design, overwrite, styles, variables, telemetryRef } = props;
+  const {
+    children,
+    className,
+    design,
+    overwrite,
+    styles,
+    variables,
+    telemetryRef,
+    registerStyles = defaultRegisterStyles,
+  } = props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Provider.handledProps, props);
@@ -139,7 +149,6 @@ const Provider: React.FC<WithAsProp<ProviderProps>> & {
     renderer: props.renderer,
     target: props.target,
     telemetry,
-    // TODO: test RTL, fix it
     registerStyles,
   };
 
@@ -230,6 +239,7 @@ Provider.propTypes = {
   design: PropTypes.object,
   variables: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
   styles: PropTypes.oneOfType([PropTypes.object, PropTypes.func]),
+  registerStyles: PropTypes.func,
   theme: PropTypes.shape({
     siteVariables: PropTypes.object,
     componentVariables: PropTypes.object,
