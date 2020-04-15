@@ -9,6 +9,7 @@ interface AttachmentIconOwnProps {}
 export interface AttachmentIconProps extends AttachmentIconOwnProps, WithAsProp<BoxProps> {}
 
 export type AttachmentIconStylesProps = never;
+export const attachmentIconClassName = 'ui-attachment__icon';
 
 /**
  * An AttachmentIcon provides a slot for a glyph that describes content in the Attachment.
@@ -16,7 +17,7 @@ export type AttachmentIconStylesProps = never;
 const AttachmentIcon = compose<AttachmentIconOwnProps, AttachmentIconStylesProps, WithAsProp<BoxProps>, BoxStylesProps>(
   Box,
   {
-    className: 'ui-attachment__icon',
+    className: attachmentIconClassName,
     displayName: 'AttachmentIcon',
 
     overrideStyles: true,

@@ -91,15 +91,18 @@ export interface AccordionState {
   focusedIndex: number;
 }
 
+export const accordionClassName = 'ui-accordion';
+export const accordionSlotClassNames: AccordionSlotClassNames = {
+  content: `${accordionClassName}__content`,
+  title: `${accordionClassName}__title`,
+};
+
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
   static displayName = 'Accordion';
 
-  static deprecated_className = 'ui-accordion';
+  static deprecated_className = accordionClassName;
 
-  static slotClassNames: AccordionSlotClassNames = {
-    content: `${Accordion.deprecated_className}__content`,
-    title: `${Accordion.deprecated_className}__title`,
-  };
+  static slotClassNames = accordionSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({

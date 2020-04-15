@@ -101,17 +101,20 @@ export interface AlertState {
   bodyId: string;
 }
 
+export const alertClassName = 'ui-alert';
+export const alertSlotClassNames: AlertSlotClassNames = {
+  content: `${alertClassName}__content`,
+  actions: `${alertClassName}__actions`,
+  icon: `${alertClassName}__icon`,
+  header: `${alertClassName}__header`,
+  body: `${alertClassName}__body`,
+};
+
 class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> {
   static displayName = 'Alert';
-  static deprecated_className = 'ui-alert';
+  static deprecated_className = alertClassName;
 
-  static slotClassNames: AlertSlotClassNames = {
-    content: `${Alert.deprecated_className}__content`,
-    actions: `${Alert.deprecated_className}__actions`,
-    icon: `${Alert.deprecated_className}__icon`,
-    header: `${Alert.deprecated_className}__header`,
-    body: `${Alert.deprecated_className}__body`,
-  };
+  static slotClassNames = alertSlotClassNames;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),

@@ -67,6 +67,11 @@ export type AlertDismissActionStylesProps = Pick<
   hasContent?: boolean;
 };
 
+export const alertDismissActionClassName = 'ui-alert__dismissaction';
+export const alertDismissActionSlotClassNames: AlertDismissActionSlotClassNames = {
+  content: `${alertDismissActionClassName}__content`,
+};
+
 const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
   FluentComponentStaticProps<AlertDismissActionProps> & {
     slotClassNames: AlertDismissActionSlotClassNames;
@@ -109,7 +114,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<AlertDismissActionStylesProps>(AlertDismissAction.displayName, {
-    className: AlertDismissAction.deprecated_className,
+    className: alertDismissActionClassName,
     mapPropsToStyles: () => ({
       disabled,
       danger,
@@ -174,7 +179,7 @@ AlertDismissAction.defaultProps = {
 };
 
 AlertDismissAction.displayName = 'AlertDismissAction';
-AlertDismissAction.deprecated_className = 'ui-alert__dismissaction';
+AlertDismissAction.deprecated_className = alertDismissActionClassName;
 
 AlertDismissAction.propTypes = {
   ...commonPropTypes.createCommon({
@@ -191,9 +196,7 @@ AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as a
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
 
-AlertDismissAction.slotClassNames = {
-  content: `${AlertDismissAction.deprecated_className}__content`,
-};
+AlertDismissAction.slotClassNames = alertDismissActionSlotClassNames;
 
 /**
  * A AlertDismissAction allows users to customize the dismissAction slot  inside the Alert component.
