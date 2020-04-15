@@ -60,7 +60,7 @@
     "vrtest": "cd apps && cd vr-tests && npm run screener"
   },
   "devDependencies": {
-    "beachball": "^1.28.1",
+    "beachball": "^1.28.3",
     "lerna": "^3.15.0",
     "lint-staged": "^7.0.5",
     "cross-env": "^5.1.4",
