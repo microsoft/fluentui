@@ -36,8 +36,6 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
 
   static displayName = 'ButtonGroup';
 
-  static className = 'ui-buttons';
-
   static propTypes = {
     ...commonPropTypes.createCommon(),
     buttons: customPropTypes.collectionShorthand,
@@ -91,6 +89,8 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
     return resultStyles;
   };
 }
+
+export const buttonGroupClassName = 'ui-buttons';
 
 ButtonGroup.create = createShorthandFactory({
   Component: ButtonGroup,

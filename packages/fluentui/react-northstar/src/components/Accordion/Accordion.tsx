@@ -94,13 +94,6 @@ export interface AccordionState {
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
   static displayName = 'Accordion';
 
-  static className = 'ui-accordion';
-
-  static slotClassNames: AccordionSlotClassNames = {
-    content: `${Accordion.className}__content`,
-    title: `${Accordion.className}__title`,
-  };
-
   static propTypes = {
     ...commonPropTypes.createCommon({
       content: false,
@@ -264,7 +257,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       children.push(
         AccordionTitle.create(title, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.title,
+            className: accordionSlotClassNames.title,
             active,
             index,
             contentRef,
@@ -279,7 +272,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       children.push(
         AccordionContent.create(content, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.content,
+            className: accordionSlotClassNames.content,
             active,
             id: contentId,
             accordionTitleId: titleId,
@@ -308,6 +301,13 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
     );
   }
 }
+
+export const accordionClassName = 'ui-accordion';
+
+export const accordionSlotClassNames: AccordionSlotClassNames = {
+  content: `${accordionClassName}__content`,
+  title: `${accordionClassName}__title`,
+};
 
 /**
  * An Accordion represents stacked set of content sections, with action elements to toggle the display of these sections.

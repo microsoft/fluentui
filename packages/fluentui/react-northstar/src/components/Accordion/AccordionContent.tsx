@@ -15,6 +15,7 @@ import {
   ShorthandFactory,
 } from '../../utils';
 import { WithAsProp, ComponentEventHandler, withSafeTypeForAs } from '../../types';
+import { accordionClassName } from './Accordion';
 
 export interface AccordionContentProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
   /** Id of the title it belongs to. */
@@ -36,8 +37,6 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
   static displayName = 'AccordionContent';
 
   static create: ShorthandFactory<AccordionContentProps>;
-
-  static className = 'ui-accordion__content';
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -71,6 +70,8 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
     );
   }
 }
+
+export const accordionContentClassName = `${accordionClassName}__content`;
 
 AccordionContent.create = createShorthandFactory({
   Component: AccordionContent,

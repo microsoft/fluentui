@@ -35,7 +35,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
   });
 
   const { classes } = useStyles<BoxStylesProps>(Box.displayName, {
-    className: Box.className,
+    className: boxClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -65,7 +65,7 @@ const Box: React.FC<WithAsProp<BoxProps>> & FluentComponentStaticProps<BoxProps>
   return result;
 };
 
-Box.className = 'ui-box';
+export const boxClassName = 'ui-box';
 Box.displayName = 'Box';
 
 Box.propTypes = commonPropTypes.createCommon();

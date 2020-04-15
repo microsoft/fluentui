@@ -24,7 +24,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
   const { size, content, children, className, styles, variables, design } = props;
 
   const { classes } = useStyles<ButtonContentStylesProps>(ButtonContent.displayName, {
-    className: ButtonContent.className,
+    className: buttonContentClassName,
     mapPropsToStyles: () => ({ size }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -54,7 +54,7 @@ const ButtonContent: React.FC<WithAsProp<ButtonContentProps>> &
 };
 
 ButtonContent.displayName = 'ButtonContent';
-ButtonContent.className = `${buttonClassName}__content`;
+export const buttonContentClassName = `${buttonClassName}__content`;
 
 ButtonContent.propTypes = {
   ...commonPropTypes.createCommon(),

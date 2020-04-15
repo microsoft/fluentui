@@ -25,6 +25,7 @@ import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandled
 import Box, { BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { alertClassName } from './Alert';
 
 export interface AlertDismissActionProps
   extends UIComponentProps,
@@ -109,7 +110,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<AlertDismissActionStylesProps>(AlertDismissAction.displayName, {
-    className: AlertDismissAction.className,
+    className: alertDismissActionClassName,
     mapPropsToStyles: () => ({
       disabled,
       danger,
@@ -155,7 +156,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
             defaultProps: () =>
               getA11Props('content', {
                 as: 'span',
-                className: AlertDismissAction.slotClassNames.content,
+                className: alertDismissActionSlotClassNames.content,
                 styles: resolvedStyles.content,
               }),
           })}
@@ -174,7 +175,6 @@ AlertDismissAction.defaultProps = {
 };
 
 AlertDismissAction.displayName = 'AlertDismissAction';
-AlertDismissAction.className = 'ui-alert__dismissaction';
 
 AlertDismissAction.propTypes = {
   ...commonPropTypes.createCommon({
@@ -191,8 +191,9 @@ AlertDismissAction.handledProps = Object.keys(AlertDismissAction.propTypes) as a
 
 AlertDismissAction.create = createShorthandFactory({ Component: AlertDismissAction, mappedProp: 'content' });
 
-AlertDismissAction.slotClassNames = {
-  content: `${AlertDismissAction.className}__content`,
+export const alertDismissActionClassName = `${alertClassName}__dismissaction`;
+export const alertDismissActionSlotClassNames = {
+  content: `${alertDismissActionClassName}__content`,
 };
 
 /**

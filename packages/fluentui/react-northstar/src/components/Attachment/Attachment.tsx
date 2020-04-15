@@ -59,8 +59,7 @@ export interface AttachmentSlotClassNames {
   action: string;
 }
 
-const Attachment: React.FC<WithAsProp<AttachmentProps>> &
-  FluentComponentStaticProps<AttachmentProps> & { slotClassNames: AttachmentSlotClassNames } = props => {
+const Attachment: React.FC<WithAsProp<AttachmentProps>> & FluentComponentStaticProps<AttachmentProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Attachment.displayName, context.telemetry);
   setStart();
@@ -94,7 +93,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<AttachmentStylesProps>(Attachment.displayName, {
-    className: Attachment.className,
+    className: attachmentClassName,
     mapPropsToStyles: () => ({
       actionable: actionable || !!onClick,
       disabled,
@@ -141,7 +140,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
           iconOnly: true,
           text: true,
           styles: resolvedStyles.action,
-          className: Attachment.slotClassNames.action,
+          className: attachmentSlotClassNames.action,
         }),
       })}
       {!_.isNil(progress) && <div className={classes.progress} style={{ width: `${progress}%` }} />}
@@ -153,11 +152,7 @@ const Attachment: React.FC<WithAsProp<AttachmentProps>> &
 };
 
 Attachment.create = createShorthandFactory({ Component: Attachment, mappedProp: 'header' });
-Attachment.slotClassNames = {
-  action: `${Attachment.className}__action`,
-};
 
-Attachment.className = 'ui-attachment';
 Attachment.displayName = 'Attachment';
 
 Attachment.propTypes = {
@@ -174,8 +169,12 @@ Attachment.propTypes = {
 Attachment.defaultProps = {
   accessibility: attachmentBehavior,
 };
-
 Attachment.handledProps = Object.keys(Attachment.propTypes) as any;
+
+export const attachmentClassName = 'ui-attachment';
+export const attachmentSlotClassNames = {
+  action: `${attachmentClassName}__action`,
+};
 
 /**
  * An Attachment represents a file or media attachment, which may contain some metadata or actions.

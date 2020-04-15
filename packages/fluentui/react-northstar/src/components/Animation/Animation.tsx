@@ -144,7 +144,6 @@ export interface AnimationProps
  * An Animation provides animation effects to rendered elements.
  */
 const Animation: React.FC<AnimationProps> & {
-  className: string;
   handledProps: (keyof AnimationProps)[];
 } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
@@ -190,7 +189,7 @@ const Animation: React.FC<AnimationProps> & {
     };
 
     return getStyles({
-      className: Animation.className,
+      className: animationClassName,
       displayNames: [Animation.displayName],
       props: {
         className,
@@ -260,7 +259,7 @@ const Animation: React.FC<AnimationProps> & {
   return element;
 };
 
-Animation.className = 'ui-animation';
+export const animationClassName = 'ui-animation';
 Animation.displayName = 'Animation';
 
 Animation.propTypes = {
