@@ -100,7 +100,7 @@ export interface MenuButtonState {
 export default class MenuButton extends AutoControlledComponent<MenuButtonProps, MenuButtonState> {
   static displayName = 'MenuButton';
 
-  static className = 'ui-menubutton';
+  static deprecated_className = 'ui-menubutton';
 
   static create: ShorthandFactory<MenuButtonProps>;
 

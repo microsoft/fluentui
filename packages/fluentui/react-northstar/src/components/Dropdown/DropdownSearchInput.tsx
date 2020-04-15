@@ -75,7 +75,7 @@ class DropdownSearchInput extends UIComponent<WithAsProp<DropdownSearchInputProp
   static displayName = 'DropdownSearchInput';
   static create: ShorthandFactory<DropdownSearchInputProps>;
   static slotClassNames: DropdownSearchInputSlotClassNames;
-  static className = 'ui-dropdown__searchinput';
+  static deprecated_className = 'ui-dropdown__searchinput';
 
   static propTypes = {
     ...commonPropTypes.createCommon({

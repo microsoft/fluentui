@@ -98,7 +98,7 @@ class SplitButton extends AutoControlledComponent<WithAsProp<SplitButtonProps>, 
 
   static Toggle = SplitButtonToggle;
 
-  static className = 'ui-splitbutton';
+  static deprecated_className = 'ui-splitbutton';
 
   static propTypes = {
     ...commonPropTypes.createCommon({

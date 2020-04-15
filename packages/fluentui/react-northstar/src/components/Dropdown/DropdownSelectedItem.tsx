@@ -75,7 +75,7 @@ class DropdownSelectedItem extends UIComponent<WithAsProp<DropdownSelectedItemPr
   static displayName = 'DropdownSelectedItem';
   static create: ShorthandFactory<DropdownSelectedItemProps>;
   static slotClassNames: DropdownSelectedItemSlotClassNames;
-  static className = 'ui-dropdown__selecteditem';
+  static deprecated_className = 'ui-dropdown__selecteditem';
 
   static propTypes = {
     ...commonPropTypes.createCommon({

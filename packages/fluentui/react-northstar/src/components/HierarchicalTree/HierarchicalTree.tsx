@@ -72,7 +72,7 @@ class HierarchicalTree extends AutoControlledComponent<WithAsProp<HierarchicalTr
 
   static displayName = 'HierarchicalTree';
 
-  static className = 'ui-hierarchicaltree';
+  static deprecated_className = 'ui-hierarchicaltree';
 
   static slotClassNames: HierarchicalTreeSlotClassNames = {
     item: `${HierarchicalTree.className}__item`,

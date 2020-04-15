@@ -78,7 +78,7 @@ class RadioGroupItem extends AutoControlledComponent<WithAsProp<RadioGroupItemPr
 
   static displayName = 'RadioGroupItem';
 
-  static className = 'ui-radiogroup__item';
+  static deprecated_className = 'ui-radiogroup__item';
 
   static slotClassNames: RadioGroupItemSlotClassNames = {
     indicator: `${RadioGroupItem.className}__indicator`,

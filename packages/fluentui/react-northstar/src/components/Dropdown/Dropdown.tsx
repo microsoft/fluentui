@@ -270,7 +270,7 @@ class Dropdown extends AutoControlledComponent<WithAsProp<DropdownProps>, Dropdo
 
   static displayName = 'Dropdown';
 
-  static className = 'ui-dropdown';
+  static deprecated_className = 'ui-dropdown';
 
   static a11yStatusCleanupTime = 500;
   static charKeyPressedCleanupTime = 500;

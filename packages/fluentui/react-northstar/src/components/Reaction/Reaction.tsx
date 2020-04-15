@@ -39,7 +39,7 @@ export interface ReactionProps
 class Reaction extends UIComponent<WithAsProp<ReactionProps>> {
   static create: ShorthandFactory<ReactionProps>;
 
-  static className = 'ui-reaction';
+  static deprecated_className = 'ui-reaction';
 
   static slotClassNames: ReactionSlotClassNames;
 

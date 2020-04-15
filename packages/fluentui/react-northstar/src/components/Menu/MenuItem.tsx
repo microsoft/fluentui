@@ -142,7 +142,7 @@ export interface MenuItemState {
 class MenuItem extends AutoControlledComponent<WithAsProp<MenuItemProps>, MenuItemState> {
   static displayName = 'MenuItem';
 
-  static className = 'ui-menu__item';
+  static deprecated_className = 'ui-menu__item';
 
   static slotClassNames: MenuItemSlotClassNames = {
     submenu: `${MenuItem.className}__submenu`,

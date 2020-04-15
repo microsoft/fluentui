@@ -110,7 +110,7 @@ const dialogsCounterAttribute = 'fluent-dialogs-count';
 
 class Dialog extends AutoControlledComponent<WithAsProp<DialogProps>, DialogState> {
   static displayName = 'Dialog';
-  static className = 'ui-dialog';
+  static deprecated_className = 'ui-dialog';
 
   static slotClassNames: DialogSlotClassNames;
 

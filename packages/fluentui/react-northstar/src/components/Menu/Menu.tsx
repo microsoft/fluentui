@@ -102,7 +102,7 @@ export interface MenuState {
 class Menu extends AutoControlledComponent<WithAsProp<MenuProps>, MenuState> {
   static displayName = 'Menu';
 
-  static className = 'ui-menu';
+  static deprecated_className = 'ui-menu';
 
   static slotClassNames: MenuSlotClassNames = {
     divider: `${Menu.className}__divider`,

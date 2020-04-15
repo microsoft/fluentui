@@ -52,7 +52,7 @@ export interface FormFieldProps extends UIComponentProps, ChildrenComponentProps
 class FormField extends UIComponent<WithAsProp<FormFieldProps>, any> {
   static displayName = 'FormField';
 
-  static className = 'ui-form__field';
+  static deprecated_className = 'ui-form__field';
 
   static create: ShorthandFactory<FormFieldProps>;
 

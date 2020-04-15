@@ -47,7 +47,7 @@ export interface LayoutProps extends UIComponentProps {
 }
 
 class Layout extends UIComponent<WithAsProp<LayoutProps>, any> {
-  static className = 'ui-layout';
+  static deprecated_className = 'ui-layout';
 
   static displayName = 'Layout';
 

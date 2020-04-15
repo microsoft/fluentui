@@ -58,7 +58,7 @@ class ItemLayout extends UIComponent<WithAsProp<ItemLayoutProps>, any> {
 
   static displayName = 'ItemLayout';
 
-  static className = 'ui-itemlayout';
+  static deprecated_className = 'ui-itemlayout';
 
   static slotClassNames: ItemLayoutSlotClassNames;
 

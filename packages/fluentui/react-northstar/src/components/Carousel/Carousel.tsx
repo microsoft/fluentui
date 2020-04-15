@@ -122,7 +122,7 @@ class Carousel extends AutoControlledComponent<WithAsProp<CarouselProps>, Carous
 
   static displayName = 'Carousel';
 
-  static className = 'ui-carousel';
+  static deprecated_className = 'ui-carousel';
 
   static slotClassNames: CarouselSlotClassNames = {
     itemsContainer: `${Carousel.className}__itemscontainer`,

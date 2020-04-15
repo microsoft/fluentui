@@ -73,7 +73,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 
   static create: ShorthandFactory<AccordionTitleProps>;
 
-  static className = 'ui-accordion__title';
+  static deprecated_className = 'ui-accordion__title';
 
   static slotClassNames: AccordionTitleSlotClassNames;
 

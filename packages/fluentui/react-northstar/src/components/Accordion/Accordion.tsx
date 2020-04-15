@@ -94,7 +94,7 @@ export interface AccordionState {
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
   static displayName = 'Accordion';
 
-  static className = 'ui-accordion';
+  static deprecated_className = 'ui-accordion';
 
   static slotClassNames: AccordionSlotClassNames = {
     content: `${Accordion.className}__content`,

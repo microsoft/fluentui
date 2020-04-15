@@ -86,7 +86,7 @@ export interface InputState {
 class Input extends AutoControlledComponent<WithAsProp<InputProps>, InputState> {
   inputRef = React.createRef<HTMLElement>();
 
-  static className = 'ui-input';
+  static deprecated_className = 'ui-input';
 
   static displayName = 'Input';
 

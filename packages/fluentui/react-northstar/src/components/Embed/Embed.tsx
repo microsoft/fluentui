@@ -68,7 +68,7 @@ export interface EmbedState {
 class Embed extends AutoControlledComponent<WithAsProp<EmbedProps>, EmbedState> {
   static create: ShorthandFactory<EmbedProps>;
 
-  static className = 'ui-embed';
+  static deprecated_className = 'ui-embed';
 
   static displayName = 'Embed';
 
