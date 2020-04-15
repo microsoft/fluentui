@@ -18,6 +18,7 @@ import {
 } from '../../utils';
 import { withSafeTypeForAs, WithAsProp, ShorthandValue, ComponentEventHandler } from '../../types';
 import Box, { BoxProps } from '../Box/Box';
+import { carouselClassName } from './Carousel';
 
 export interface CarouselNavigationItemSlotClassNames {
   indicator: string;
@@ -54,14 +55,12 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   vertical?: boolean;
 }
 
+export const carouselNavigationItemClassName = `${carouselClassName}__navigationitem`;
+
 class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationItemProps>> {
   static displayName = 'CarouselNavigationItem';
 
-  static className = 'ui-carousel__navigationitem';
-
-  static slotClassNames: CarouselNavigationItemSlotClassNames = {
-    indicator: `${CarouselNavigationItem.className}__indicator`,
-  };
+  static className = carouselNavigationItemClassName;
 
   static create: ShorthandFactory<CarouselNavigationItemProps>;
 
@@ -101,7 +100,7 @@ class CarouselNavigationItem extends UIComponent<WithAsProp<CarouselNavigationIt
       >
         {Box.create(indicator, {
           defaultProps: () => ({
-            className: CarouselNavigationItem.slotClassNames.indicator,
+            className: carouselNavigationItemSlotClassNames.indicator,
             styles: styles.indicator,
           }),
         })}
@@ -133,6 +132,10 @@ CarouselNavigationItem.create = createShorthandFactory({
   Component: CarouselNavigationItem,
   mappedArrayProp: 'content',
 });
+
+export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotClassNames = {
+  indicator: `${carouselNavigationItemClassName}__indicator`,
+};
 
 /**
  * A CarouselItem is an actionable item within a Carousel.

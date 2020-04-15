@@ -6,6 +6,7 @@ import { useTelemetry, useStyles, getElementType, useUnhandledProps, useAccessib
 import * as PropTypes from 'prop-types';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { cardClassName } from './Card';
 
 export interface CardBodyProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -33,7 +34,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
   });
 
   const { classes } = useStyles<CardBodyStylesProps>(CardBody.displayName, {
-    className: CardBody.className,
+    className: cardBodyClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +60,7 @@ const CardBody: React.FC<WithAsProp<CardBodyProps>> & FluentComponentStaticProps
 };
 
 CardBody.displayName = 'CardBody';
-CardBody.className = 'ui-card__body';
+export const cardBodyClassName = `${cardClassName}__body`;
 
 CardBody.propTypes = {
   ...commonPropTypes.createCommon(),

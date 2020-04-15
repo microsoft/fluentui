@@ -25,6 +25,7 @@ export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 // ========================================================
 
 export type FluentComponentStaticProps<P = {}> = {
+  className?: string;
   handledProps: (keyof P)[];
   create: ShorthandFactory<P>;
 };

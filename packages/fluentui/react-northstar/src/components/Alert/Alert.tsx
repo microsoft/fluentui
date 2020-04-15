@@ -101,8 +101,12 @@ export interface AlertState {
   bodyId: string;
 }
 
+export const alertClassName = 'ui-alert';
+
 class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> {
   static displayName = 'Alert';
+
+  static className = alertClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
@@ -248,8 +252,6 @@ class Alert extends AutoControlledComponent<WithAsProp<AlertProps>, AlertState> 
     );
   }
 }
-
-export const alertClassName = 'ui-alert';
 
 export const alertSlotClassNames: AlertSlotClassNames = {
   content: `${alertClassName}__content`,

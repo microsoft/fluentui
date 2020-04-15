@@ -31,10 +31,14 @@ export interface ButtonGroupProps extends UIComponentProps, ChildrenComponentPro
   circular?: boolean;
 }
 
+export const buttonGroupClassName = 'ui-buttons';
+
 class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
   static create: ShorthandFactory<ButtonGroupProps>;
 
   static displayName = 'ButtonGroup';
+
+  static className = buttonGroupClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -89,8 +93,6 @@ class ButtonGroup extends UIComponent<WithAsProp<ButtonGroupProps>, any> {
     return resultStyles;
   };
 }
-
-export const buttonGroupClassName = 'ui-buttons';
 
 ButtonGroup.create = createShorthandFactory({
   Component: ButtonGroup,

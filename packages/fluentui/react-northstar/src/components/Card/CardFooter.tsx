@@ -6,6 +6,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { cardClassName } from './Card';
 
 export interface CardFooterProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -33,7 +34,7 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
   });
 
   const { classes } = useStyles<CardFooterStylesProps>(CardFooter.displayName, {
-    className: CardFooter.className,
+    className: cardFooterClassName,
     mapPropsToStyles: () => ({ fitted }),
     mapPropsToInlineStyles: () => ({
       className,
@@ -59,7 +60,7 @@ const CardFooter: React.FC<WithAsProp<CardFooterProps>> & FluentComponentStaticP
 };
 
 CardFooter.displayName = 'CardFooter';
-CardFooter.className = 'ui-card__footer';
+export const cardFooterClassName = `${cardClassName}__footer`;
 
 CardFooter.propTypes = {
   ...commonPropTypes.createCommon(),

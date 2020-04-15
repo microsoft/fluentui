@@ -69,10 +69,14 @@ export interface AccordionTitleProps
   indicator?: ShorthandValue<BoxProps>;
 }
 
+export const accordionTitleClassName = `${accordionClassName}__title`;
+
 class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
   static displayName = 'AccordionTitle';
 
   static create: ShorthandFactory<AccordionTitleProps>;
+
+  static className = accordionTitleClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({ content: 'shorthand' }),
@@ -174,8 +178,6 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
 }
 
 AccordionTitle.create = createShorthandFactory({ Component: AccordionTitle, mappedProp: 'content' });
-
-export const accordionTitleClassName = `${accordionClassName}__title`;
 
 export const accordionTitleSlotClassNames: AccordionTitleSlotClassNames = {
   contentWrapper: `${accordionTitleClassName}__content-wrapper`,

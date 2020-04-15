@@ -5,6 +5,7 @@ import * as React from 'react';
 import { ThemeContext } from 'react-fela';
 import { FluentComponentStaticProps, ProviderContextPrepared, WithAsProp, withSafeTypeForAs } from '../../types';
 import { ChildrenComponentProps, commonPropTypes, createShorthandFactory, UIComponentProps } from '../../utils';
+import { cardClassName } from './Card';
 
 export interface CardTopControlsProps extends UIComponentProps, ChildrenComponentProps {
   /**
@@ -30,7 +31,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
   });
 
   const { classes } = useStyles<CardTopControlsStylesProps>(CardTopControls.displayName, {
-    className: CardTopControls.className,
+    className: cardTopControlsClassName,
     mapPropsToInlineStyles: () => ({
       className,
       design,
@@ -55,7 +56,7 @@ const CardTopControls: React.FC<WithAsProp<CardTopControlsProps>> &
 };
 
 CardTopControls.displayName = 'CardTopControls';
-CardTopControls.className = 'ui-card__topcontrols';
+export const cardTopControlsClassName = `${cardClassName}__topcontrols`;
 
 CardTopControls.propTypes = {
   ...commonPropTypes.createCommon(),

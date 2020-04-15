@@ -15,6 +15,7 @@ import {
 } from '../../utils';
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import { WithAsProp, withSafeTypeForAs } from '../../types';
+import { carouselClassName } from './Carousel';
 
 export interface CarouselItemSlotClassNames {
   itemPositionText: string;
@@ -34,12 +35,14 @@ export interface CarouselItemProps extends UIComponentProps, ChildrenComponentPr
   navigation?: boolean;
 }
 
+export const carouselItemClassName = `${carouselClassName}__item`;
+
 class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
   static create: ShorthandFactory<CarouselItemProps>;
 
   static displayName = 'CarouselItem';
 
-  static className = 'ui-carousel__item';
+  static className = carouselItemClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon(),
@@ -50,10 +53,6 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
 
   static defaultProps = {
     accessibility: carouselItemBehavior,
-  };
-
-  static slotClassNames: CarouselItemSlotClassNames = {
-    itemPositionText: `${CarouselItem.className}__itemPositionText`,
   };
 
   actionHandlers = {
@@ -75,7 +74,7 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
         {...applyAccessibilityKeyHandlers(accessibility.keyHandlers.root, unhandledProps)}
       >
         {childrenExist(children) ? children : content}
-        <div className={CarouselItem.slotClassNames.itemPositionText} style={screenReaderContainerStyles}>
+        <div className={carouselItemSlotClassNames.itemPositionText} style={screenReaderContainerStyles}>
           {itemPositionText}
         </div>
       </ElementType>
@@ -84,6 +83,10 @@ class CarouselItem extends UIComponent<WithAsProp<CarouselItemProps>> {
 }
 
 CarouselItem.create = createShorthandFactory({ Component: CarouselItem, mappedProp: 'content' });
+
+export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
+  itemPositionText: `${CarouselItem.className}__itemPositionText`,
+};
 
 /**
  * A Carousel displays data organised as a gallery.

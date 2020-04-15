@@ -91,8 +91,12 @@ export interface AccordionState {
   focusedIndex: number;
 }
 
+export const accordionClassName = 'ui-accordion';
+
 class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, AccordionState> {
   static displayName = 'Accordion';
+
+  static className = accordionClassName;
 
   static propTypes = {
     ...commonPropTypes.createCommon({
@@ -301,8 +305,6 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
     );
   }
 }
-
-export const accordionClassName = 'ui-accordion';
 
 export const accordionSlotClassNames: AccordionSlotClassNames = {
   content: `${accordionClassName}__content`,

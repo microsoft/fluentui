@@ -33,8 +33,12 @@ export interface AccordionContentProps extends UIComponentProps, ChildrenCompone
   onClick?: ComponentEventHandler<AccordionContentProps>;
 }
 
+export const accordionContentClassName = `${accordionClassName}__content`;
+
 class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, any> {
   static displayName = 'AccordionContent';
+
+  static className = accordionContentClassName;
 
   static create: ShorthandFactory<AccordionContentProps>;
 
@@ -70,8 +74,6 @@ class AccordionContent extends UIComponent<WithAsProp<AccordionContentProps>, an
     );
   }
 }
-
-export const accordionContentClassName = `${accordionClassName}__content`;
 
 AccordionContent.create = createShorthandFactory({
   Component: AccordionContent,

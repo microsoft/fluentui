@@ -26,6 +26,7 @@ import { getElementType, useAccessibility, useStyles, useTelemetry, useUnhandled
 import Box, { BoxProps } from '../Box/Box';
 // @ts-ignore
 import { ThemeContext } from 'react-fela';
+import { carouselClassName } from './Carousel';
 
 export interface CarouselPaddleProps
   extends UIComponentProps,
@@ -61,7 +62,7 @@ export type CarouselPaddleSlotClassNames = {
 export type CarouselPaddleStylesProps = Pick<CarouselPaddleProps, 'disabled' | 'next' | 'previous' | 'hidden'>;
 
 const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
-  FluentComponentStaticProps<CarouselPaddleProps> & { slotClassNames: CarouselPaddleSlotClassNames } = props => {
+  FluentComponentStaticProps<CarouselPaddleProps> = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(CarouselPaddle.displayName, context.telemetry);
   setStart();
@@ -98,7 +99,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
     rtl: context.rtl,
   });
   const { classes, styles: resolvedStyles } = useStyles<CarouselPaddleStylesProps>(CarouselPaddle.displayName, {
-    className: CarouselPaddle.className,
+    className: carouselPaddleClassName,
     mapPropsToStyles: () => ({
       disabled,
       hidden,
@@ -142,7 +143,7 @@ const CarouselPaddle: React.FC<WithAsProp<CarouselPaddleProps>> &
             defaultProps: () =>
               getA11Props('content', {
                 as: 'span',
-                className: CarouselPaddle.slotClassNames.content,
+                className: carouselPaddleSlotClassNames.content,
                 styles: resolvedStyles.content,
               }),
           })}
@@ -161,7 +162,7 @@ CarouselPaddle.defaultProps = {
 };
 
 CarouselPaddle.displayName = 'CarouselPaddle';
-CarouselPaddle.className = 'ui-carousel__paddle';
+export const carouselPaddleClassName = `${carouselClassName}__paddle`;
 
 CarouselPaddle.propTypes = {
   ...commonPropTypes.createCommon({
@@ -178,8 +179,8 @@ CarouselPaddle.handledProps = Object.keys(CarouselPaddle.propTypes) as any;
 
 CarouselPaddle.create = createShorthandFactory({ Component: CarouselPaddle, mappedProp: 'content' });
 
-CarouselPaddle.slotClassNames = {
-  content: `${CarouselPaddle.className}__content`,
+export const carouselPaddleSlotClassNames = {
+  content: `${carouselPaddleClassName}__content`,
 };
 
 /**

@@ -56,14 +56,6 @@ export interface CardProps extends UIComponentProps {
 
 export type CardStylesProps = Pick<CardProps, 'compact' | 'horizontal' | 'centered' | 'size' | 'fluid'>;
 
-export interface CardSlotClassNames {
-  header: string;
-  body: string;
-  footer: string;
-  preview: string;
-  topControls: string;
-}
-
 const Card: React.FC<WithAsProp<CardProps>> &
   FluentComponentStaticProps<CardProps> & {
     Header: typeof CardHeader;
@@ -72,7 +64,6 @@ const Card: React.FC<WithAsProp<CardProps>> &
     Preview: typeof CardPreview;
     TopControls: typeof CardPreview;
     Column: typeof CardColumn;
-    slotClassNames: CardSlotClassNames;
   } = props => {
   const context: ProviderContextPrepared = React.useContext(ThemeContext);
   const { setStart, setEnd } = useTelemetry(Card.displayName, context.telemetry);
@@ -92,7 +83,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
   });
 
   const { classes } = useStyles<CardStylesProps>(Card.displayName, {
-    className: Card.className,
+    className: cardClassName,
     mapPropsToStyles: () => ({
       centered,
       horizontal,
@@ -129,15 +120,7 @@ const Card: React.FC<WithAsProp<CardProps>> &
 };
 
 Card.displayName = 'Card';
-Card.className = 'ui-card';
-
-Card.slotClassNames = {
-  header: `${Card.className}__header`,
-  body: `${Card.className}__body`,
-  footer: `${Card.className}__footer`,
-  preview: `${Card.className}__preview`,
-  topControls: `${Card.className}__top-controls`,
-};
+export const cardClassName = 'ui-card';
 
 Card.propTypes = {
   ...commonPropTypes.createCommon(),
