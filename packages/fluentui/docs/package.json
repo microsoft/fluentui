@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/docs",
-  "version": "0.47.0",
+  "version": "0.48.0",
   "private": true,
   "license": "MIT",
   "dependencies": {
