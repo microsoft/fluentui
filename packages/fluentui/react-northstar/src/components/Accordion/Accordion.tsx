@@ -267,7 +267,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       children.push(
         AccordionTitle.create(title, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.title,
+            className: accordionSlotClassNames.title,
             active,
             index,
             contentRef,
@@ -282,7 +282,7 @@ class Accordion extends AutoControlledComponent<WithAsProp<AccordionProps>, Acco
       children.push(
         AccordionContent.create(content, {
           defaultProps: () => ({
-            className: Accordion.slotClassNames.content,
+            className: accordionSlotClassNames.content,
             active,
             id: contentId,
             accordionTitleId: titleId,

@@ -139,7 +139,7 @@ class AccordionTitle extends UIComponent<WithAsProp<AccordionTitleProps>, any> {
       <Ref innerRef={contentRef}>
         {Box.create(contentWrapper, {
           defaultProps: () => ({
-            className: AccordionTitle.slotClassNames.contentWrapper,
+            className: accordionTitleSlotClassNames.contentWrapper,
             styles: styles.contentWrapper,
             ...accessibility.attributes.content,
             ...applyAccessibilityKeyHandlers(accessibility.keyHandlers.content, unhandledProps),

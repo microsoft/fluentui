@@ -160,7 +160,7 @@ const AlertDismissAction: React.FC<WithAsProp<AlertDismissActionProps>> &
             defaultProps: () =>
               getA11Props('content', {
                 as: 'span',
-                className: AlertDismissAction.slotClassNames.content,
+                className: alertDismissActionSlotClassNames.content,
                 styles: resolvedStyles.content,
               }),
           })}
